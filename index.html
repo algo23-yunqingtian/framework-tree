@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>有色金属产业指标树 · Metals Framework</title>
-<!-- ECharts CDN -->
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <!--
   有色金属产业指标树 · Metals Framework
   ========================================
@@ -125,21 +123,16 @@ button{font-family:inherit;color:inherit;border:none;background:none;cursor:poin
           <div style="font-size:12px;color:#30363d;">点击后显示 ECharts 四图看板</div>
         </div>
         <div id="charts" style="display:none;">
-          <div class="chart-box">
-            <div class="ctitle"><span class="dot" style="background:#58a6ff;"></span>时序走势</div>
-            <div class="chart" id="chart-trend"></div>
-          </div>
-          <div class="chart-box">
-            <div class="ctitle"><span class="dot" style="background:#3fb950;"></span>季节性分析</div>
-            <div class="chart" id="chart-season"></div>
-          </div>
-          <div class="chart-box">
-            <div class="ctitle"><span class="dot" style="background:#d29922;"></span>指标 vs 期货价格</div>
-            <div class="chart" id="chart-dual"></div>
-          </div>
-          <div class="chart-box">
-            <div class="ctitle"><span class="dot" style="background:#f85149;"></span>关键数据</div>
-            <div id="stats-card" class="stats-grid"></div>
+          <div id="chart-placeholder" style="grid-column:1/3;grid-row:1/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#161b22;border:1px dashed #30363d;border-radius:8px;padding:40px;">
+            <div style="font-size:56px;opacity:0.3;">📊</div>
+            <div style="font-size:16px;color:#8b949e;font-weight:500;">图表待接入</div>
+            <div style="font-size:12px;color:#484f58;max-width:420px;text-align:center;line-height:1.6;">
+              点击目录树指标后，此处将展示该指标的<br>
+              时序走势 / 季节性 / 价格叠加 / 关键数据
+            </div>
+            <div style="margin-top:6px;font-size:11px;color:#30363d;font-family:monospace;">
+              数据源: Zhiji API · /api/indicator?code=XX&amp;id=YY
+            </div>
           </div>
         </div>
       </div>
@@ -274,10 +267,14 @@ function renderCommodityBar() {
     const btn = document.createElement('button');
     btn.className = 'cbtn' + (c.code === state.currentCommodity ? ' active' : '');
     btn.innerHTML = `<span>${COMMODITY_ICONS[c.code]||'🔷'}</span> ${c.code} ${c.name}`;
+    // 品种按钮：双击跳子页看板，单击切换品种
+    if (c.local) {
+      btn.title = `双击打开 ${c.code} 品种看板`;
+      btn.ondblclick = () => window.open(c.local, '_blank');
+    }
     btn.onclick = () => {
       state.currentCommodity = c.code;
       renderCommodityBar();
-      if (state.currentIndicator) renderCharts(state.currentIndicator);
     };
     bar.appendChild(btn);
   });
@@ -319,7 +316,9 @@ function renderTree(filter = '') {
       item.dataset.id = child.id;
       item.dataset.code = child.code || '';
       item.innerHTML = `<span>▸</span> <span style="margin-left:6px;">${child.label}</span> <span style="margin-left:auto;font-size:11px;color:#484f58;">${child.code||''}</span>`;
-      item.onclick = () => selectIndicator(child, group);
+      // 如果指标有 link 字段 → 外部跳转（如 8品种联动总览 跳到宏观看板）
+      if (child.link) { item.onclick = () => window.open(child.link, '_blank'); }
+      else { item.onclick = () => selectIndicator(child, group); }
       children.appendChild(item);
     });
 
@@ -369,146 +368,8 @@ function selectIndicator(child, group) {
   document.querySelector('#panel-header .indicator-name').textContent =
     `${COMMODITY_ICONS[state.currentCommodity]||'🔷'} ${state.currentCommodity} ${child.label}`;
   document.getElementById('indicator-meta').textContent =
-    `代码: ${child.code || child.id}  |  分类: ${group.label}  |  数据: demo`;
-
-  renderCharts(child);
+    `代码: ${child.code || child.id}  |  分类: ${group.label}  |  状态: 待接入数据`;
 }
-
-// ====== 生成 demo 数据 ======
-function generateDemoData(points, seed) {
-  const arr = [];
-  const prices = [];
-  const dates = [];
-  const now = new Date();
-  for (let i = 0; i < points; i++) {
-    const t = i / points * Math.PI * 6;
-    const base = 50 + 20 * Math.sin(t + seed) + 8 * Math.sin(t * 2.3 + seed * 1.7);
-    const noise = (Math.random() - 0.5) * 6;
-    const val = base + noise;
-    arr.push(Math.round(val * 100) / 100);
-    // 模拟期货价格（同趋势不同幅度）
-    const pv = 60000 + 8000 * Math.sin(t * 0.8 + seed) + 3000 * Math.cos(t * 1.5) + (Math.random()-0.5)*2000;
-    prices.push(Math.round(pv));
-    // 日期
-    const d = new Date(now.getTime() - (points - i) * 86400000);
-    dates.push(d.toISOString().slice(5,10));
-  }
-  return { dates, values: arr, prices };
-}
-
-// ====== 渲染 4 张图表 ======
-let charts = {};
-function renderCharts(indicator) {
-  const seed = hashCode(indicator.id + state.currentCommodity);
-  const { dates, values, prices } = generateDemoData(120, seed);
-
-  const darkAxis = { axisLine:{lineStyle:{color:'#30363d'}}, axisLabel:{color:'#8b949e',fontSize:10}, splitLine:{lineStyle:{color:'#21262d'}} };
-
-  // ① 时序走势
-  charts.trend = charts.trend || echarts.init(document.getElementById('chart-trend'));
-  charts.trend.setOption({
-    backgroundColor:'transparent',
-    grid:{left:40,right:12,top:18,bottom:22},
-    tooltip:{trigger:'axis',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
-    xAxis:{type:'category',data:dates.slice(-30),axisLine:{lineStyle:{color:'#30363d'}},axisLabel:{color:'#8b949e',fontSize:9,interval:8}},
-    yAxis:{type:'value',...darkAxis},
-    series:[{
-      type:'line',data:values.slice(-30),smooth:true,symbol:'none',
-      lineStyle:{color:'#58a6ff',width:2},
-      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(88,166,255,0.3)'},{offset:1,color:'rgba(88,166,255,0)'}]}}
-    }]
-  });
-
-  // ② 季节性图：近 3 年同期叠加
-  charts.season = charts.season || echarts.init(document.getElementById('chart-season'));
-  const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-  const yearData = [];
-  const seasonColors = ['#58a6ff','#3fb950','#d29922'];
-  for (let y = 0; y < 3; y++) {
-    yearData.push(months.map((_,i) => {
-      const t = i/12 * Math.PI * 2;
-      return Math.round(50 + 25*Math.sin(t + y + seed) + (Math.random()-0.5)*5);
-    }));
-  }
-  charts.season.setOption({
-    backgroundColor:'transparent',
-    grid:{left:36,right:12,top:18,bottom:22},
-    tooltip:{trigger:'axis',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
-    legend:{data:['去年','前年','三年前'],textStyle:{color:'#8b949e',fontSize:10},top:0},
-    xAxis:{type:'category',data:months,axisLine:{lineStyle:{color:'#30363d'}},axisLabel:{color:'#8b949e',fontSize:9}},
-    yAxis:{type:'value',...darkAxis},
-    series: yearData.map((d,y) => ({
-      name: ['去年','前年','三年前'][y], type:'line', data:d, smooth:true,
-      lineStyle:{color:seasonColors[y],width:2,type:y===0?'solid':'dashed'}, symbol:'none'
-    }))
-  });
-
-  // ③ 双轴叠加：指标 vs 期货价格
-  charts.dual = charts.dual || echarts.init(document.getElementById('chart-dual'));
-  charts.dual.setOption({
-    backgroundColor:'transparent',
-    grid:{left:40,right:44,top:18,bottom:22},
-    tooltip:{trigger:'axis',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
-    legend:{data:['指标值','期货价格'],textStyle:{color:'#8b949e',fontSize:10},top:0},
-    xAxis:{type:'category',data:dates.slice(-30),axisLine:{lineStyle:{color:'#30363d'}},axisLabel:{color:'#8b949e',fontSize:9,interval:8}},
-    yAxis:[
-      {type:'value',name:'指标',nameTextStyle:{color:'#58a6ff'},...darkAxis},
-      {type:'value',name:'价格',nameTextStyle:{color:'#d29922'},...darkAxis}
-    ],
-    series:[
-      {name:'指标值',type:'line',data:values.slice(-30),smooth:true,symbol:'none',lineStyle:{color:'#58a6ff',width:2},yAxisIndex:0},
-      {name:'期货价格',type:'line',data:prices.slice(-30),smooth:true,symbol:'none',lineStyle:{color:'#d29922',width:2},yAxisIndex:1}
-    ]
-  });
-
-  // ④ 数据卡：最新值 / 周变化 / 月变化 / 年变化
-  const latest = values[values.length-1];
-  const weekAgo = values[values.length-8];
-  const monthAgo = values[values.length-30];
-  const yearAgo = values[0];
-  const weekChg = latest - weekAgo;
-  const monthChg = latest - monthAgo;
-  const yearChg = latest - yearAgo;
-  const statsCard = document.getElementById('stats-card');
-  statsCard.innerHTML = `
-    ${renderStatCard('最新值', latest.toFixed(2), '—')}
-    ${renderStatCard('周变化', weekChg.toFixed(2), weekChg >= 0 ? 'up' : 'down')}
-    ${renderStatCard('月变化', monthChg.toFixed(2), monthChg >= 0 ? 'up' : 'down')}
-    ${renderStatCard('年变化', yearChg.toFixed(2), yearChg >= 0 ? 'up' : 'down')}
-  `;
-
-  // 调整图表大小
-  setTimeout(() => {
-    Object.values(charts).forEach(c => c && c.resize());
-  }, 100);
-}
-
-function renderStatCard(label, value, changeClass) {
-  const arrow = changeClass === 'up' ? '▲' : changeClass === 'down' ? '▼' : '—';
-  return `<div class="stat-card">
-    <div class="slabel">${label}</div>
-    <div class="svalue">${value}</div>
-    <div class="schange ${changeClass}">${arrow} ${changeClass === 'flat' ? '持平' : Math.abs(parseFloat(value)).toFixed(2)}</div>
-  </div>`;
-}
-
-function hashCode(str) {
-  let h = 0;
-  for (let i = 0; i < str.length; i++) h = ((h << 5) - h + str.charCodeAt(i)) | 0;
-  return Math.abs(h);
-}
-
-// ====== 窗口 resize ======
-window.addEventListener('resize', () => Object.values(charts).forEach(c => c && c.resize()));
-
-// ====== 反拷贝保护 ======
-document.oncontextmenu = () => false;
-document.onkeydown = (e) => {
-  if (e.key === 'F12') { e.preventDefault(); return false; }
-  if (e.ctrlKey && ['c','C','s','S','p','P'].includes(e.key)) { e.preventDefault(); return false; }
-};
-document.onselectstart = () => false;
-document.ondragstart = () => false;
 
 // ====== 启动 ======
 window.addEventListener('DOMContentLoaded', init);
