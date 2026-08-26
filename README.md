@@ -1,39 +1,76 @@
 # 有色金属产业指标树 · Metals Framework
 
-多品种（8品种）产业指标目录树 + 看板体系。数据结构完全复刻 [metals-framework](https://amiya866.github.io/metals-framework/#/tree) 形态：**大类 → 指标叶(编号+名称+问题) → 叶行右侧挂品种 chip**。
+复刻 [metals-framework](https://amiya866.github.io/metals-framework/#/tree) 形态的 8 品种产业指标看板。数据来自 Zhiji API，前端为 Dark ECharts 高密度独立页面。
 
-## 在线地址
-- **GitHub Pages**: https://algo23-yunqingtian.github.io/framework-tree/
-- **源码仓库**: https://github.com/algo23-yunqingtian/framework-tree
+## 🚨 新参与 Agent 必读（按顺序）
 
-## 覆盖品种（8个）
-| 代码 | 品种 | 代码 | 品种 |
-|---|---|---|---|
-| CU | 铜 | SN | 锡 |
-| AL | 铝 | LC | 锂 |
-| PB | 铅 | SI | 硅 |
-| ZN | 锌 | NI | 镍 |
+| 顺序 | 文件 | 读它干什么 |
+|---|---|---|
+| 1️⃣ | `README.md` | 你在读这个 |
+| 2️⃣ | `COLLABORATION.md` | 项目协作机制：**两条线隔离、怎么交接、Git 规范** |
+| 3️⃣ | `STATUS.md` | **当前进度**——你负责什么、谁在等谁 |
+| 4️⃣ | `docs/handover_a.md` | 如果你是**线A（架构/前端）**，读这个开工 |
+| 4️⃣ | `analysis/iwencai/handover_b.md` | 如果你是**线B（指标/数据）**，读这个开工 |
 
-## 目录结构
+**严禁跳步。** 不读 STATUS.md 直接改代码 = 可能覆盖别人的工作。
+
+---
+
+## 两条线分工
+
+```
+线A：架构 + GitHub + 前端
+├── 目录树 UI / ECharts 图表 / API 服务器
+├── 写目录：/home/ubuntu/framework-tree/
+└── 交接：docs/handover_a.md
+
+线B：指标录入 + 数据整理
+├── 同花顺 Prompt / zhiji_id 验证 / 数据库录入
+├── 写目录：/home/ubuntu/analysis/iwencai/
+└── 交接：analysis/iwencai/handover_b.md
+```
+
+> 两条线通过 `STATUS.md` 做状态同步（GitHub 可追溯），严禁串线。
+> 详情见 `COLLABORATION.md`。
+
+---
+
+## 项目结构
+
 ```
 framework-tree/
 ├── index.html              # 前端单页（目录树+看板，配置已内联）
 ├── data/tree_config.json   # 目录树配置（品种/大类/指标）
-├── scripts/data_layer.py   # 数据层（SQLite + Zhiji 增量拉取）
+├── scripts/
+│   ├── api_server.py       # Flask API + 3天滑动缓存（本地:8786）
+│   └── data_layer.py       # 备用数据层
 ├── docs/
-│   ├── handover.md         # 交接文档
-│   └── architecture.md     # 数据架构设计
+│   ├── architecture.md     # 数据架构设计
+│   └── handover_a.md       # 线A交接文档
+├── COLLABORATION.md        # 协作机制（必读）
+├── STATUS.md               # 全局状态（必读）
 └── README.md               # 本文件
 ```
 
-## 快速开始
-1. **前端**：直接部署到 GitHub Pages，`index.html` 已含全部逻辑
-2. **数据层**：`python3 scripts/data_layer.py full` 首次全量拉取
-3. **每日增量**：cron 定时跑 `python3 scripts/data_layer.py inc`
+## 在线地址
 
-## 给其他 Agent 的运行规则
-- 前端配置已内联进 `index.html`，改目录树需同时改 HTML 内联部分 + `tree_config.json`
-- 数据源：Zhiji API（三合一，1秒限频，无月度配额）
-- 数据存储：本地 SQLite（`indicators.db`），不推 GitHub
-- 页面访问零配额消耗（只读本地），每天 cron 增量更新
-- 反拷贝保护：已禁用右键/Ctrl+C/F12
+- **GitHub Pages**: https://algo23-yunqingtian.github.io/framework-tree/
+- **源码**: https://github.com/algo23-yunqingtian/framework-tree
+
+## 覆盖品种
+
+铜(CU) · 铝(AL) · 铅(PB) · 锌(ZN) · 镍(NI) · 锡(SN) · 碳酸锂(LC) · 工业硅(SI)
+
+## 本地启动
+
+```bash
+python3 /home/ubuntu/framework-tree/scripts/api_server.py 8786
+# 浏览器访问 http://127.0.0.1:8786
+```
+
+## 技术要点
+
+- Zhiji 无月度配额，仅 1 秒/次限频
+- SQLite 缓存 DB（`api_cache.db`）不推 GitHub
+- 反拷贝保护：禁用右键/Ctrl+C/S/P/F12/选中/拖拽
+- 无 CSV/Excel 导出，去除"合计"行
