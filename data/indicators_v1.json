@@ -1,0 +1,140 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "updated": "2026-08-26",
+    "status": "部分验证",
+    "说明": "统一的Zhiji指标ID映射表（版本化）。两个数据层脚本都从此文件读取，不再各管各的。版本变更必须同步git commit + 更新STATUS.md通知对方。",
+    "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
+  },
+  "version_changelog": [
+    {"v": "1.0", "date": "2026-08-26", "change": "从api_server.py+data_layer.py合并抽取，铅i1-i5已验证，其余为占位"}
+  ],
+  "indicators": {
+    "主连": {
+      "name": "期货主连结算价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": false,
+      "ids": {
+        "CU": "FU00014941", "AL": "FU00014934", "PB": "FU00014946",
+        "ZN": "FU00014950", "NI": "FU00014982", "SN": "FU00014952",
+        "SI": "FU00015015", "LC": "FU00015030"
+      }
+    },
+    "LME库存": {
+      "name": "LME库存",
+      "unit": "吨",
+      "freq": "daily",
+      "verified": false,
+      "ids": {
+        "CU": "FU00014813", "AL": "FU00014812", "PB": "FU00014814",
+        "ZN": "FU00014815", "NI": "FU00014816", "SN": "FU00014817"
+      }
+    },
+    "SHFE库存": {
+      "name": "上期所库存",
+      "unit": "吨",
+      "freq": "daily",
+      "verified": false,
+      "ids": {
+        "CU": "FU00014935", "AL": "FU00014930", "PB": "FU00014943",
+        "ZN": "FU00014947", "NI": "FU00014980", "SN": "FU00014953",
+        "SI": "FU00015013", "LC": "FU00015028"
+      }
+    },
+    "社库": {
+      "name": "社会库存",
+      "unit": "万吨",
+      "freq": "weekly",
+      "verified": false,
+      "ids": {
+        "CU": "ID00188319", "AL": "ID00188307", "PB": "ID00188315",
+        "ZN": "ID00188329", "NI": "ID00185743", "SN": "ID01517441",
+        "LC": "ID01002500"
+      }
+    },
+    "TC": {
+      "name": "TC加工费",
+      "unit": "元/吨",
+      "freq": "weekly",
+      "verified": false,
+      "ids": {
+        "CU": "ID01154994", "PB": "a10127385", "ZN": "ID01320080",
+        "NI": "ID01002200", "SN": "ID01001800"
+      }
+    },
+    "精炼产量": {
+      "name": "精炼产量",
+      "unit": "万吨",
+      "freq": "monthly",
+      "verified": false,
+      "ids": {
+        "CU": "ID00188139", "AL": "a10124317", "PB": "a10017062",
+        "ZN": "ID01510883", "NI": "a10018516", "SN": "a10003083",
+        "SI": "ID01448337", "LC": "a10006555"
+      }
+    },
+    "表观消费": {
+      "name": "表观消费",
+      "unit": "万吨",
+      "freq": "monthly",
+      "verified": false,
+      "ids": {
+        "CU": "ID00188149", "AL": "ID00188317", "PB": "ID00188325",
+        "ZN": "ID01510893", "NI": "ID01001570", "SN": "ID00187499",
+        "SI": "ID01448347", "LC": "ID01002510"
+      }
+    },
+    "开工率": {
+      "name": "开工率",
+      "unit": "%",
+      "freq": "monthly",
+      "verified": false,
+      "ids": {
+        "CU": "ID01067717", "AL": "a10031808", "PB": "ID01030005",
+        "ZN": "a10097188", "NI": "a10019689", "SN": "a10083975",
+        "SI": "ID01448357", "LC": "a10001859"
+      }
+    },
+    "i1": {
+      "name": "LME铅库存",
+      "unit": "吨",
+      "freq": "daily",
+      "verified": true,
+      "category": "inventory",
+      "ids": {"PB": "a10193709"}
+    },
+    "i2": {
+      "name": "SHFE铅仓单",
+      "unit": "吨",
+      "freq": "daily",
+      "verified": true,
+      "category": "inventory",
+      "ids": {"PB": "a10157130"}
+    },
+    "i3": {
+      "name": "SMM铅锭五地社库",
+      "unit": "万吨",
+      "freq": "weekly",
+      "verified": true,
+      "category": "inventory",
+      "ids": {"PB": "a10017067"}
+    },
+    "i4": {
+      "name": "原生铅成品库存",
+      "unit": "万吨",
+      "freq": "weekly",
+      "verified": true,
+      "category": "inventory",
+      "ids": {"PB": "ID01167603"}
+    },
+    "i5": {
+      "name": "进口铅精矿港口库存",
+      "unit": "万吨",
+      "freq": "weekly",
+      "verified": true,
+      "category": "inventory",
+      "ids": {"PB": "ID01167590"}
+    }
+  }
+}

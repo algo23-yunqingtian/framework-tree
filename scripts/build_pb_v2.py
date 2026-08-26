@@ -247,12 +247,17 @@ def build_41():
     return h1+h2, c1+c2
 
 def build_42():
-    return "".join(skeleton(*s) for s in [
+    d6, d7 = DATA['i6'], DATA['i7']
+    h5, c5 = chart_dual("echart_p42_c5", "C05",
+        "LME注册 vs 注销仓单（全球显性库存核心监测）",
+        f"SMM · 日 · 左:吨(注册) / 右:吨(注销) · 共{d6['n']}/{d7['n']}点",
+        pairs("i6"), "#b06a32", "注册仓单", "吨",
+        pairs("i7"), "#7a8a9c", "注销仓单", "吨")
+    return h5 + "".join(skeleton(*s) for s in [
         ("C03", "仓单地区集中度 HHI", "横向条形 · 仓库名", "SHFE仓单明细 / SHFE API", "需拉取仓库维度仓单日报"),
         ("C04", "交割品牌结构", "堆叠柱状 · 品牌×占比", "SHFE交割品牌 / 上期所月报", "品牌维度数据"),
-        ("C05", "LME注册注销仓单", "双系列柱状 · 注册 vs 注销", "LME API · Registered/Unregistered", "LME Warehouse API"),
         ("C06", "仓单融资质押规模", "折线 · 季度", "中证协 / 券商研报", "间接估算，非标准化口径"),
-    ]), ""
+    ]), c5
 
 def build_43():
     d = DATA['i3']
@@ -260,12 +265,16 @@ def build_43():
         "echart_p43_c7", "C07",
         "五地社库去化斜率（总量时序）",
         f"SMM · 周 · 万吨 · 共{d['n']}点")
+    d9 = DATA['i9']
+    h9, c9 = chart_line("i9", "#c0392b", "元/吨",
+        "echart_p43_c9", "C09",
+        "沪铅期现价差（当月合约基差）",
+        f"SMM · 日 · 元/吨 · 共{d9['n']}点")
     htmls = [h] + [skeleton(*s) for s in [
         ("C08", "五地地区拆分", "多系列折线 · 5 地", "SMM · 五地分项", "沪津穗长青五项"),
-        ("C09", "基差与社库联动", "双轴 · 基差 vs 社库", "Mysteel基差 + SMM社库", "需补基差序列"),
         ("C10", "贸易商库存", "柱状 · 主要贸易商", "Mysteel/百川 · 月度", "月度贸易商样本"),
     ]]
-    return "".join(htmls), c
+    return "".join(htmls) + h9, c + c9
 
 def build_44():
     d = DATA['i4']
@@ -273,12 +282,26 @@ def build_44():
         "echart_p44_c11", "C11",
         "原生铅成品库存（厂库）",
         f"MYSTEEL · 周 · 万吨 · 共{d['n']}点")
+    d10 = DATA['i10']
+    h10, c10 = chart_line("i10", "#c0392b", "元/吨",
+        "echart_p44_c13", "C13",
+        "再生铅利润（不含税理论利润）",
+        f"SMM · 日 · 元/吨 · 共{d10['n']}点")
+    d13 = DATA['i13']
+    h13, c13 = chart_line("i13", "#7a8a9c", "万吨",
+        "echart_p44_c12", "C12",
+        "再生精铅产量（再生供给月度）",
+        f"SMM · 月 · 万吨 · 共{d13['n']}点")
+    d11 = DATA['i11']
+    h11, c11 = chart_line("i11", "#5b7a8c", "%",
+        "echart_p44_c14", "C14",
+        "铅蓄电池开工率（需求端核心指标）",
+        f"SMM · 周 · 百分比 · 共{d11['n']}点")
     htmls = [h] + [skeleton(*s) for s in [
-        ("C12", "电池厂原料+成品库存", "双柱 · 原料/成品", "Mysteel电池厂调研", "周度样本"),
-        ("C13", "废电瓶库存 + 再生利润", "柱+折线 · 双轴", "上海有色/百川 · 再生铅", "再生利润需补算"),
-        ("C14", "再生-原生铅价差", "折线 · 价格差", "SHFE铅价 + 再生铅报价", "价差=再生-原生"),
+        ("C12b", "电池厂原料+成品库存", "双柱 · 原料/成品", "Mysteel电池厂调研", "周度样本"),
+        ("C14b", "再生-原生铅价差", "折线 · 价格差", "SHFE铅价 + 再生铅报价", "价差=再生-原生"),
     ]]
-    return "".join(htmls), c
+    return "".join(htmls) + h10 + h13 + h11, c + c10 + c13 + c11
 
 def build_45():
     d = DATA['i5']
@@ -286,13 +309,28 @@ def build_45():
         "echart_p45_c16", "C16",
         "海关到港口岸库存（进口铅精矿）",
         f"MYSTEEL · 周 · 万吨 · 共{d['n']}点")
+    d8 = DATA['i8']
+    h8, c8 = chart_line("i8", "#c0392b", "比值",
+        "echart_p45_c15", "C15",
+        "沪伦比值（进口盈亏先行指标）",
+        f"SMM · 日 · 比值 · 共{d8['n']}点")
+    d14 = DATA['i14']
+    h14, c14 = chart_line("i14", "#7a8a9c", "吨",
+        "echart_p45_c17", "C17",
+        "铅精矿进口量（海关月度）",
+        f"China Customs · 月 · 吨 · 共{d14['n']}点")
+    d15 = DATA['i15']
+    h15, c15 = chart_line("i15", "#5b7a8c", "万金属吨",
+        "echart_p45_c18", "C18",
+        "铅精矿产量（国内供给）",
+        f"SMM · 月 · 万金属吨 · 共{d15['n']}点")
     htmls = [h] + [skeleton(*s) for s in [
-        ("C15", "铅进口盈亏", "折线 · 元/吨", "LME + SHFE 现货价 · 汇率", "盈亏=进口完税价-国内现货"),
-        ("C17", "亚洲可交仓数量", "柱状 · 国家×数量", "ILZSG · 各国库存", "含澳洲/智利/韩国"),
-        ("C18", "ILZSG全球供需平衡", "多系列柱 · 年度", "ILZSG年报", "需人工录入年度"),
+        ("C15b", "铅进口盈亏", "折线 · 元/吨", "LME + SHFE 现货价 · 汇率", "盈亏=进口完税价-国内现货"),
+        ("C17b", "亚洲可交仓数量", "柱状 · 国家×数量", "ILZSG · 各国库存", "含澳洲/智利/韩国"),
+        ("C18b", "ILZSG全球供需平衡", "多系列柱 · 年度", "ILZSG年报", "需人工录入年度"),
         ("C19", "冶炼厂检修 & 长单覆盖率", "双系列 · 停机率+长单%", "Mysteel/百川 · 月度", "冶炼产能开工样本"),
     ]]
-    return "".join(htmls), c
+    return "".join(htmls) + h8 + h14 + h15, c + c8 + c14 + c15
 
 P = {}
 C = {}
@@ -317,7 +355,7 @@ MAIN = f"""<!DOCTYPE html>
 <body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 4 库存 · 5 子类 · 19 图 (5 真 + 14 待补)</div>
+  <div class="hcrumbs">铅(PB) · 4 库存 · 5 子类 · 19 图 (11 真 + 8 待补)</div>
   <div class="hright">数据固化快照 · 2026-08-26 · Zhiji SMM/Mysteel</div>
 </div>
 <div class="kpi">
@@ -333,7 +371,7 @@ MAIN = f"""<!DOCTYPE html>
 <div id="panel_4.4" class="panel grid-wrap">{P['4.4']}</div>
 <div id="panel_4.5" class="panel grid-wrap">{P['4.5']}</div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB)库存 v2 完整版 · 静态快照 · 19 图 (5 真数据 + 14 骨架)</footer>
+<footer>有色金属产业指标树 · 铅(PB)库存 v2 完整版 · 静态快照 · 19 图 (11 真数据 + 8 骨架)</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.querySelectorAll('.tab').forEach(function(t){{
@@ -349,7 +387,7 @@ document.querySelectorAll('.tab').forEach(function(t){{
 {all_codes}
 
 window.addEventListener('resize', function(){{
-  ['echart_p41_c1','echart_p41_c2','echart_p43_c7','echart_p44_c11','echart_p45_c16'].forEach(function(id){{
+  ['echart_p41_c1','echart_p41_c2','echart_p42_c5','echart_p43_c7','echart_p43_c9','echart_p44_c11','echart_p44_c13','echart_p44_c12','echart_p44_c14','echart_p45_c16','echart_p45_c15','echart_p45_c17','echart_p45_c18'].forEach(function(id){{
     var el = document.getElementById(id);
     var inst = echarts.getInstanceByDom(el);
     if(inst) inst.resize();
