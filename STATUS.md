@@ -38,6 +38,22 @@
 
 ---
 
+---
+
+## 🔔 机制公告（2026-08-26 生效）
+
+**两条线隔离机制已上线。** 所有参与 agent 请注意：
+
+- **线A**（架构/前端/GitHub）→ 只写 `/home/ubuntu/framework-tree/`
+- **线B**（指标录入/数据）→ 只写 `/home/ubuntu/analysis/iwencai/` 等 analysis 目录
+- 文件锁白名单已强制隔离，违规写入会被拒
+- **协作唯一真源 = `STATUS.md`**：你完成一个品种 → 在 "B→A 待办" 加一行 → 通知线A
+- **不要往 framework-tree/ 里写数据产物**，你的数据只放 analysis/ 下
+
+协作细节见 `COLLABORATION.md`，线B交接见 `docs/handover_b.md`。
+
+---
+
 ## 近期变更记录
 
 | 日期 | 内容 |
