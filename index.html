@@ -260,19 +260,22 @@ function selectChip(leaf, commId, render){
     '<div class="ph-cell"><div class="lbl">数据源</div><div class="val">Zhiji API → 3天缓存</div></div>'+
     '<div class="ph-cell"><div class="lbl">状态</div><div class="val" id="ph-status">加载中…</div></div>';
 
-  // 调用 API 获取真实数据（本地模式走 Flask 代理，GitHub Pages 显示占位）
-  const API_BASE = (window.location.hostname.includes('github.io')) ? null : 'http://127.0.0.1:8787';
-  if(API_BASE){
-    fetch(API_BASE+'/api/indicator?code='+cm.code+'&metric='+encodeURIComponent(leaf.id))
-      .then(r=>r.json()).then(data=>{ renderData(data, cm, leaf); })
-      .catch(e=>{
-        document.getElementById('ph-note').textContent =
-          '⚠️ 加载失败: '+e.message+'（请启动: python3 scripts/api_server.py 8786）';
-      });
-  }else{
-    document.getElementById('ph-note').textContent =
-      '📡 GitHub Pages 静态版 — 图表需本地启动 api_server.py 后访问 http://127.0.0.1:8786';
+  // 跳转到对应品种的子类看板（静态页）
+  const PAGE_MAP = {
+    'PB_i1':'pb_stock_v2.html?tab=4.1',
+    'PB_i2':'pb_stock_v2.html?tab=4.2',
+    'PB_i3':'pb_stock_v2.html?tab=4.3',
+    'PB_i4':'pb_stock_v2.html?tab=4.4',
+    'PB_i5':'pb_stock_v2.html?tab=4.5',
+  };
+  const key = cm.code+'_'+leaf.id;
+  if(PAGE_MAP[key]){
+    window.location.href = PAGE_MAP[key];
+    return;
   }
+  // 其余品种/子类 → 显示占位
+  document.getElementById('ph-note').textContent =
+    '📡 '+cm.code+' '+leaf.name+' 看板开发中 · 参考铅(PB)库存看板模板';
 }
 
 /* ---- 渲染数据（有真实数据时展示迷你图+关键数字） ---- */
