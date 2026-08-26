@@ -261,9 +261,9 @@ function selectChip(leaf, commId, render){
     '<div class="ph-cell"><div class="lbl">状态</div><div class="val" id="ph-status">加载中…</div></div>';
 
   // 调用 API 获取真实数据（本地模式走 Flask 代理，GitHub Pages 显示占位）
-  const API_BASE = (window.location.hostname.includes('github.io')) ? null : 'http://127.0.0.1:8786';
+  const API_BASE = (window.location.hostname.includes('github.io')) ? null : 'http://127.0.0.1:8787';
   if(API_BASE){
-    fetch(API_BASE+'/api/indicator?code='+cm.code+'&metric='+encodeURIComponent(leaf.name))
+    fetch(API_BASE+'/api/indicator?code='+cm.code+'&metric='+encodeURIComponent(leaf.id))
       .then(r=>r.json()).then(data=>{ renderData(data, cm, leaf); })
       .catch(e=>{
         document.getElementById('ph-note').textContent =

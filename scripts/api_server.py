@@ -39,6 +39,13 @@ INDICATOR_IDS = {
                 "NI":"ID01001570","SN":"ID00187499","SI":"ID01448347","LC":"ID01002510","freq":"monthly"},
     "开工率": {"CU":"ID01067717","AL":"a10031808","PB":"ID01030005","ZN":"a10097188",
               "NI":"a10019689","SN":"a10083975","SI":"ID01448357","LC":"a10001859","freq":"monthly"},
+    # ===== 铅·库存 5子类（同花顺实测 v5 → 知几验证真实ID）=====
+    # 前端传 leaf.id（i1~i5），后端按此映射取真实 zhiji_id
+    "i1": {"PB":"a10193709","name":"LME铅库存","unit":"吨","freq":"daily"},          # 交易所库存
+    "i2": {"PB":"a10157130","name":"SHFE铅仓单","unit":"吨","freq":"daily"},         # 仓单
+    "i3": {"PB":"a10017067","name":"SMM铅锭五地社库","unit":"万吨","freq":"weekly"}, # 社会库存
+    "i4": {"PB":"ID01167603","name":"原生铅成品库存","unit":"万吨","freq":"weekly"}, # 工厂库存
+    "i5": {"PB":"ID01167590","name":"进口铅精矿港口库存","unit":"万吨","freq":"weekly"}, # 隐性在途
 }
 
 app = Flask(__name__)
@@ -136,8 +143,8 @@ def api_indicator():
     points = []
     if isinstance(data, dict) and "points" in data:
         pts = data["points"]
-        # 最近120点
-        points = pts[-120:] if len(pts) > 120 else pts
+        # 最近120点（data.points 是倒序：最新在前，所以取前120）
+        points = pts[:120] if len(pts) > 120 else pts
 
     return jsonify({
         "code": code,
@@ -164,4 +171,4 @@ if __name__ == "__main__":
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8786
     print(f"📡 framework-tree API 启动 → http://127.0.0.1:{port}")
     print(f"   缓存: {DB_PATH} (3天滑动)")
-    app.run(host="127.0.0.1", port=port, debug=False)
+    app.run(host="0.0.0.0", port=port, debug=False)
