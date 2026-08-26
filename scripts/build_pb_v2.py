@@ -70,6 +70,8 @@ html,body{height:100%;background:#10141b;color:#d8dce5;font-family:-apple-system
 .ch-name{font-size:12.5px;color:#cfc8b8;font-weight:500}
 .ch-src{font-size:10px;color:#6f6a5d;margin-left:auto}
 .chart-box{height:260px;width:100%}
+.mode-btn{font:600 10px/1 'PingFang SC',sans-serif;color:#8a8472;background:#20262f;border:1px solid #313a48;border-radius:4px;padding:3px 7px;cursor:pointer;margin-left:8px;transition:color .15s,background .15s,border-color .15s}
+.mode-btn:hover{color:#e8e2d0;background:#2a323e;border-color:#4a5568}
 .skeleton{height:220px;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #252b36;border-radius:6px;background:#131922;position:relative;overflow:hidden}
 .skeleton .sk-icon{font-size:34px;color:#252b36;margin-bottom:10px}
 .skeleton .sk-title{font-size:13px;color:#7a7468;margin-bottom:6px;font-weight:500}
@@ -162,6 +164,83 @@ def chart_line(metric, color, yname, cid, ch_code, ch_name, ch_src):
         f'</div>\n'
     )
     code = f'echarts.init(document.getElementById("{cid}"),"dark").setOption({opt});\n'
+    return html, code
+
+def season_stats(pairs_l):
+    """按自然月对齐，返回各月统计。pairs_l=[(date,value)]"""
+    mon = {}
+    for d, v in pairs_l:
+        k = (int(d[:4]), int(d[5:7]))
+        mon[k] = v  # 月末快照：取每月最后一条
+    ys = sorted({y for (y, m) in mon})
+    months = list(range(1, 13))
+    def mvals(m):
+        return [mon[(y, m)] for y in ys if (y, m) in mon]
+    mean5, p10, p90 = [], [], []
+    for m in months:
+        vals = sorted(mvals(m))
+        if len(vals) >= 4:
+            def pct(p):
+                k = (len(vals) - 1) * p / 100.0
+                f = int(k); c = min(f + 1, len(vals) - 1)
+                return round(vals[f] + (vals[c] - vals[f]) * (k - f), 4)
+            p10.append(pct(10)); p90.append(pct(90))
+            mean5.append(round(sum(vals) / len(vals), 4))
+        else:
+            p10.append(None); p90.append(None); mean5.append(None)
+    cur = ys[-1] if ys else 2026
+    recent = [y for y in ys if y >= cur - 2]
+    lines = {y: [(m, mon.get((y, m))) for m in months] for y in recent}
+    return months, lines, cur, mean5, p10, p90
+
+def opt_seasonal(pairs_l, color, yname):
+    months, lines, cur, mean5, p10, p90 = season_stats(pairs_l)
+    series = [
+        {"name": "10%分位", "type": "line", "data": p10, "symbol": "none",
+         "lineStyle": {"color": "#777", "type": "dashed", "width": 1}},
+        {"name": "90%分位", "type": "line", "data": p90, "symbol": "none",
+         "lineStyle": {"color": "#777", "type": "dashed", "width": 1}},
+        {"name": "历史均值", "type": "line", "data": mean5, "symbol": "none",
+         "lineStyle": {"color": "#e8e6dd", "width": 1.5}},
+    ]
+    for y in lines:
+        if y == cur:
+            continue
+        series.append({"name": f"{y}年", "type": "line", "data": lines[y], "symbol": "none",
+                       "lineStyle": {"color": color, "opacity": 0.22, "width": 1}})
+    series.append({"name": f"{cur}年(当前)", "type": "line", "data": lines[cur], "symbol": "none",
+                   "lineStyle": {"color": color, "width": 3}})
+    return json.dumps({
+        "grid": {"left": 60, "right": 25, "top": 34, "bottom": 35},
+        "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}},
+        "legend": {"data": [s["name"] for s in series], "textStyle": {"color": "#aaa"},
+                   "top": 5, "type": "scroll"},
+        "xAxis": {"type": "category", "data": [f"{m}月" for m in months],
+                  "axisLabel": {"color": "#999"}, "axisLine": {"lineStyle": {"color": "#555"}}},
+        "yAxis": {"type": "value", "name": yname, "nameTextStyle": {"color": "#999"},
+                  "axisLabel": {"color": "#999"}, "splitLine": {"lineStyle": {"color": "#333"}}},
+        "series": series,
+    }, ensure_ascii=False)
+
+def chart_line_t(metric, color, yname, cid, ch_code, ch_name, ch_src):
+    """单变量图：历史时序 ⇄ 季节性 双模式，右上角按钮切换"""
+    d = DATA[metric]
+    pairs_l = pairs(metric)
+    opt1 = opt_line(pairs_l, color, yname)
+    opt2 = opt_seasonal(pairs_l, color, yname)
+    html = (
+        f'<div class="chart-row">\n'
+        f'  <div class="chart-head"><span class="ch-code">{ch_code}</span>'
+        f'<span class="ch-name">{ch_name}</span>'
+        f'<span class="ch-src">{ch_src}</span>'
+        f'<button class="mode-btn" onclick="__tgl(\'{cid}\',this)" title="历史时序 / 季节性切换">⏱ 时序</button></div>\n'
+        f'  <div id="{cid}" class="chart-box"></div>\n'
+        f'</div>\n'
+    )
+    code = (f'window.__opts_{cid} = {{ts:{opt1}, se:{opt2}}};\n'
+            f'window.__mode_{cid} = "ts";\n'
+            f'window.__inst_{cid} = echarts.init(document.getElementById("{cid}"),"dark");\n'
+            f'window.__inst_{cid}.setOption(window.__opts_{cid}.ts);\n')
     return html, code
 
 def opt_multiline(series_list):
@@ -321,7 +400,7 @@ def build_42():
 
 def build_43():
     d = DATA['i3']
-    h, c = chart_line("i3", "#5b7a8c", "万吨",
+    h, c = chart_line_t("i3", "#5b7a8c", "万吨",
         "echart_p43_c7", "C07",
         "五地社库去化斜率（总量时序）",
         f"SMM · 周 · 万吨 · 共{d['n']}点")
@@ -332,7 +411,7 @@ def build_43():
     h8, c8 = chart_multiline("echart_p43_c8", "C08", "五地社会库存拆分（沪津粤浙苏）",
         "SMM · 周 · 万吨 · 5 地系列", slist)
     d9 = DATA['i9']
-    h9, c9 = chart_line("i9", "#c0392b", "元/吨",
+    h9, c9 = chart_line_t("i9", "#c0392b", "元/吨",
         "echart_p43_c9", "C09",
         "验证维度 · 沪铅期现价差（去库质量验证）",
         f"SMM · 日 · 元/吨 · 共{d9['n']}点")
@@ -343,22 +422,22 @@ def build_43():
 
 def build_44():
     d = DATA['i4']
-    h, c = chart_line("i4", "#7a8c5b", "万吨",
+    h, c = chart_line_t("i4", "#7a8c5b", "万吨",
         "echart_p44_c11", "C11",
         "原生铅成品库存（厂库）",
         f"MYSTEEL · 周 · 万吨 · 共{d['n']}点")
     d10 = DATA['i10']
-    h10, c10 = chart_line("i10", "#c0392b", "元/吨",
+    h10, c10 = chart_line_t("i10", "#c0392b", "元/吨",
         "echart_p44_c13", "C13",
         "验证维度 · 再生铅利润（上游原料约束）",
         f"SMM · 日 · 元/吨 · 共{d10['n']}点")
     d11 = DATA['i11']
-    h11, c11 = chart_line("i11", "#5b7a8c", "%",
+    h11, c11 = chart_line_t("i11", "#5b7a8c", "%",
         "echart_p44_c14", "C14",
         "铅蓄电池开工率（需求端核心指标）",
         f"SMM · 周 · 百分比 · 共{d11['n']}点")
     d26 = DATA['i26']
-    h26, c26 = chart_line("i26", "#8c6b9c", "KVAh",
+    h26, c26 = chart_line_t("i26", "#8c6b9c", "KVAh",
         "echart_p44_c12b", "C12b",
         "铅蓄电池企业成品库存（电池厂）",
         f"SMM · 月 · KVAh · 共{d26['n']}点")
@@ -369,7 +448,7 @@ def build_44():
 
 def build_45():
     d = DATA['i5']
-    h, c = chart_line("i5", "#8c6b9c", "万吨",
+    h, c = chart_line_t("i5", "#8c6b9c", "万吨",
         "echart_p45_c16", "C16",
         "海关到港口岸库存（进口铅精矿·在途）",
         f"MYSTEEL · 周 · 万吨 · 共{d['n']}点")
@@ -436,6 +515,12 @@ document.querySelectorAll('.tab').forEach(function(t){{
 }});
 
 {all_codes}
+function __tgl(id,btn){{
+  var cur=window['__mode_'+id], nxt = cur==='ts' ? 'se' : 'ts';
+  window['__mode_'+id]=nxt;
+  window['__inst_'+id].setOption(window['__opts_'+id][nxt], true);
+  btn.textContent = nxt==='ts' ? '⏱ 时序' : '☀ 季节';
+}}
 
 window.addEventListener('resize', function(){{
   ['echart_p41_c1','echart_p41_c2','echart_p42_c5','echart_p43_c7','echart_p43_c8','echart_p43_c9','echart_p44_c11','echart_p44_c13','echart_p44_c14','echart_p44_c12b','echart_p45_c16','echart_p45_c18b'].forEach(function(id){{
