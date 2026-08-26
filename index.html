@@ -2,377 +2,282 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>有色金属产业指标树 · Metals Framework</title>
-<!--
-  有色金属产业指标树 · Metals Framework
-  ========================================
-  说明：真实数据应从 Zhiji API 代理接口 /api/indicator?code=XX&id=YY 获取，
-        本处为纯静态 demo 数据（Math.sin + 随机噪声生成 120 点）。
-  数据来源（示意）:
-    - 行情数据: Zhiji 观 API   /api/indicator?code=<商品CODE>&id=<指标ID>
-    - 新闻快讯: Zhiji 讯 API
-    - 大宗指标: Zhiji 料 API
--->
 <style>
-/* ===== 全局 Dark 主题 ===== */
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;background:#0d1117;color:#e6edf3;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif;font-size:14px;}
-a{color:#58a6ff;text-decoration:none;}
-button{font-family:inherit;color:inherit;border:none;background:none;cursor:pointer;}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#f7f5f3;color:#3a332c;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif;font-size:13px;line-height:1.5}
+a{color:#b06a32;text-decoration:none}
 
-/* ===== 页面骨架 ===== */
-#app{display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+/* 顶部栏 */
+.topbar{background:#ede7e0;border-bottom:1px solid #d4cdc2;padding:10px 24px;display:flex;align-items:center;gap:20px}
+.topbar .brand{font-weight:700;font-size:15px;color:#7a5230;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.topbar .brand .sq{color:#b06a32}
+.topbar .brand small{font-weight:400;font-size:10px;color:#a8a49e;margin-left:6px;letter-spacing:1px}
+.topbar .mtabs{display:flex;gap:2px;flex:1}
+.topbar .mtab{padding:6px 12px;border-radius:4px;font-size:12px;color:#7a6f5f;cursor:pointer;background:transparent;border:none;font-family:inherit;transition:.15s}
+.topbar .mtab:hover{background:#e0d8ca;color:#3a332c}
+.topbar .mtab.active{background:#d9cfbc;color:#7a5230;font-weight:600}
+.topbar .right{font-size:11px;color:#a8a49e;white-space:nowrap}
 
-/* ===== 顶部导航栏 ===== */
-#navbar{height:44px;background:#161b22;border-bottom:1px solid #30363d;display:flex;align-items:center;padding:0 16px;gap:2px;flex-shrink:0;}
-#navbar .brand{font-weight:600;font-size:15px;margin-right:24px;color:#58a6ff;letter-spacing:0.5px;}
-#navbar .tab{padding:8px 12px;border-radius:6px;font-size:13px;color:#8b949e;transition:all .15s;}
-#navbar .tab:hover{color:#e6edf3;background:#21262d;}
-#navbar .tab.active{color:#e6edf3;background:#388bfd22;border-bottom:2px solid #58a6ff;}
-
-/* ===== 品种切换条 ===== */
-#commodity-bar{height:38px;background:#0d1117;border-bottom:1px solid #21262d;display:flex;align-items:center;padding:0 16px;gap:4px;flex-shrink:0;overflow-x:auto;}
-#commodity-bar .cbtn{padding:5px 12px;border-radius:16px;font-size:13px;background:#21262d;color:#8b949e;border:1px solid transparent;white-space:nowrap;transition:all .15s;}
-#commodity-bar .cbtn:hover{color:#e6edf3;background:#30363d;}
-#commodity-bar .cbtn.active{color:#fff;background:#1f6feb;border-color:#388bfd;}
-
-/* ===== 主体布局 ===== */
-#main{display:grid;grid-template-columns:320px 1fr;flex:1;overflow:hidden;}
+/* 主体 */
+#app{display:grid;grid-template-columns:1fr 380px;height:calc(100vh - 52px);overflow:hidden}
 
 /* ===== 左侧目录树 ===== */
-#sidenav{background:#0d1117;border-right:1px solid #21262d;display:flex;flex-direction:column;overflow:hidden;}
-#search-box{padding:10px 12px;border-bottom:1px solid #21262d;}
-#search-input{width:100%;padding:7px 10px;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;font-size:13px;outline:none;}
-#search-input:focus{border-color:#58a6ff;box-shadow:0 0 0 2px #388bfd44;}
-#search-input::placeholder{color:#484f58;}
-#tree-container{flex:1;overflow-y:auto;padding:6px 0;}
-#tree-container::-webkit-scrollbar{width:6px;}
-#tree-container::-webkit-scrollbar-thumb{background:#30363d;border-radius:3px;}
+#tree-pane{border-right:1px solid #d4cdc2;display:flex;flex-direction:column;overflow:hidden;background:#f7f5f3}
+#tree-header{padding:8px 16px;border-bottom:1px solid #e0d8ca;display:flex;align-items:center;gap:10px;background:#ede7e0}
+#tree-search{width:100%;padding:5px 8px;border:1px solid #c9c0ad;border-radius:3px;font-size:12px;background:#fbf8f4;color:#3a332c;outline:none;font-family:inherit}
+#tree-search:focus{border-color:#b06a32}
+#tree-search::placeholder{color:#b8af9e}
+#tree-box{flex:1;overflow-y:auto;padding:4px 0}
+#tree-box::-webkit-scrollbar{width:6px}
+#tree-box::-webkit-scrollbar-thumb{background:#c9c0ad;border-radius:3px}
 
-.tree-group{margin-bottom:2px;}
-.tree-header{display:flex;align-items:center;padding:5px 12px;cursor:pointer;font-size:13px;font-weight:500;color:#c9d1d9;border-radius:4px;margin:0 6px;transition:background .1s;}
-.tree-header:hover{background:#21262d;}
-.tree-header .arrow{display:inline-block;width:14px;font-size:11px;color:#8b949e;transition:transform .15s;}
-.tree-header .arrow.expanded{transform:rotate(90deg);}
-.tree-header .glabel{margin-left:4px;}
-.tree-header.highlighted{background:#1f6feb22;color:#79c0ff;}
-.tree-children{overflow:hidden;max-height:0;transition:max-height .25s ease;}
-.tree-children.open{max-height:800px;}
-.tree-item{display:flex;align-items:center;padding:4px 12px 4px 28px;cursor:pointer;font-size:12.5px;color:#8b949e;border-radius:4px;margin:0 6px;transition:all .12s;}
-.tree-item:hover{background:#21262d;color:#e6edf3;}
-.tree-item.active{background:#1f6feb44;color:#79c0ff;border-left:2px solid #58a6ff;}
-.tree-item.hidden{display:none;}
+/* 大类卡片 */
+.ncard{margin:2px 12px;border:1px solid #e0d8ca;border-radius:5px;background:#fbf8f4;overflow:hidden}
+.ncard>h4{padding:7px 12px;font-size:12px;font-weight:600;color:#7a5230;display:flex;align-items:center;gap:8px;background:#ede7e0;cursor:pointer;user-select:none}
+.ncard>h4 .caret{font-size:9px;color:#a8a49e;transition:.15s}
+.ncard.collapsed>h4 .caret{transform:rotate(-90deg)}
+.ncard.collapsed .ncard-body{display:none}
+.ncard-body{padding:2px 0}
 
-/* ===== 右侧看板 ===== */
-#panel{background:#0d1117;display:flex;flex-direction:column;overflow-y:auto;}
-#panel-header{padding:14px 20px;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:12px;flex-shrink:0;}
-#panel-header .indicator-name{font-size:17px;font-weight:600;color:#e6edf3;}
-#panel-header .indicator-meta{font-size:12px;color:#8b949e;}
-#panel-empty{display:flex;align-items:center;justify-content:center;height:100%;color:#484f58;font-size:14px;flex-direction:column;gap:10px;}
-#panel-empty .icon{font-size:48px;opacity:0.4;}
+/* 指标叶行：编号 + 名称 + 问题 + 品种chip */
+.t-leaf{display:flex;align-items:center;gap:8px;padding:4px 12px 4px 20px;cursor:pointer;transition:.1s}
+.t-leaf:hover{background:#f0e6da}
+.t-leaf.selected{background:#e8dcc6;font-weight:500}
+.tl-code{font:600 11px Consolas,monospace;color:#b06a32;min-width:36px;flex:none}
+.tl-name{font-size:12.5px;color:#3a332c;flex:none;white-space:nowrap}
+.tl-q{font-size:11px;color:#a8a49e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.tl-comm{display:flex;gap:3px;margin-left:auto;flex:none;padding-left:6px}
+.tl-comm span{padding:1px 6px;border-radius:3px;font-weight:600;color:#fff;font-size:9.5px;cursor:pointer;transition:.1s}
+.tl-comm span:hover{filter:brightness(1.15)}
+.tl-comm span.tl-none{background:#c9c0ad;cursor:default}
 
-/* 4 子图 2x2 网格 */
-#charts{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;padding:10px;flex:1;min-height:500px;}
-.chart-box{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;min-height:0;}
-.chart-box .ctitle{font-size:12px;color:#8b949e;margin-bottom:6px;font-weight:500;display:flex;align-items:center;gap:6px;}
-.chart-box .ctitle .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
-.chart-box .chart{flex:1;min-height:0;}
+/* 展开后的品种×图表子目录 */
+.t-sub{margin:1px 0 3px 52px;border-left:1px dashed #d4cdc2;padding-left:10px;max-height:0;overflow:hidden;transition:max-height .2s}
+.t-sub.open{max-height:800px}
+.t-subrow{display:flex;align-items:center;gap:8px;padding:2px 6px;font-size:11.5px;color:#7a6f5f;border-radius:3px}
+.t-subrow:hover{background:#f0e6da;color:#3a332c}
+.tl-chip{padding:1px 5px;border-radius:3px;font-weight:600;color:#fff;font-size:9px;flex:none}
+.tl-sub-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
 
-/* 数据卡 */
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;width:100%;height:100%;padding:4px;}
-.stat-card{background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;justify-content:center;}
-.stat-card .slabel{font-size:11px;color:#8b949e;margin-bottom:4px;}
-.stat-card .svalue{font-size:22px;font-weight:700;color:#e6edf3;}
-.stat-card .schange{font-size:12px;margin-top:4px;font-weight:500;}
-.stat-card .schange.up{color:#3fb950;}
-.stat-card .schange.down{color:#f85149;}
-.stat-card .schange.flat{color:#8b949e;}
+.t-hidden{display:none!important}
 
-/* ===== 底部状态栏 ===== */
-#footer{height:26px;background:#161b22;border-top:1px solid #21262d;display:flex;align-items:center;padding:0 16px;font-size:11px;color:#484f58;gap:16px;flex-shrink:0;}
-#footer .dot{width:6px;height:6px;border-radius:50%;background:#3fb950;display:inline-block;margin-right:4px;}
+/* ===== 右侧面板 ===== */
+#panel{background:#fbf8f4;display:flex;flex-direction:column;overflow-y:auto}
+#panel-head{padding:14px 20px;border-bottom:1px solid #d4cdc2;background:#ede7e0}
+#panel-head .pname{font-size:16px;font-weight:600;color:#3a332c;display:flex;align-items:center;gap:8px}
+#panel-head .pname .pchip{padding:2px 8px;border-radius:3px;color:#fff;font-size:10px;font-weight:600}
+#panel-head .pmeta{font-size:11px;color:#a8a49e;margin-top:4px}
+#panel-body{padding:16px 20px;flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+#panel-empty{display:flex;flex-direction:column;align-items:center;gap:10px;color:#a8a49e}
+#panel-empty .icon{font-size:44px;opacity:.35}
+#panel-empty .tip{font-size:12px;text-align:center;line-height:1.7;max-width:280px}
+#panel-placeholder{display:none;flex-direction:column;align-items:center;gap:14px;width:100%}
+#panel-placeholder.show{display:flex}
+#panel-placeholder .ph-box{border:2px dashed #c9c0ad;border-radius:8px;padding:40px 30px;text-align:center;width:100%}
+#panel-placeholder .ph-icon{font-size:48px;opacity:.3}
+#panel-placeholder .ph-title{font-size:14px;color:#7a6f5f;font-weight:500;margin-top:8px}
+#panel-placeholder .ph-note{font-size:11px;color:#a8a49e;margin-top:6px;line-height:1.6}
+#panel-placeholder .ph-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;width:100%}
+#panel-placeholder .ph-cell{background:#ede7e0;border-radius:5px;padding:10px 12px;text-align:left}
+#panel-placeholder .ph-cell .lbl{font-size:10px;color:#a8a49e;margin-bottom:3px}
+#panel-placeholder .ph-cell .val{font-size:13px;color:#3a332c;font-weight:500}
+
+footer{max-width:1460px;margin:0 auto;padding:12px 24px 24px;color:#a8a49e;font-size:11px;border-top:1px solid #d4cdc2;margin-top:0}
+
+@media(max-width:1000px){#app{grid-template-columns:1fr}.topbar{flex-wrap:wrap}}
 </style>
 </head>
 <body>
+<div class="topbar">
+  <div class="brand"><span class="sq">▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK</small></div>
+  <div class="mtabs" id="mtabs"></div>
+  <div class="right">数据持续更新 · v1.0 目录树</div>
+</div>
 <div id="app">
-  <!-- 顶部导航栏 -->
-  <nav id="navbar">
-    <div class="brand">🔷 Metals Framework</div>
-    <div id="tabs"></div>
-  </nav>
-  <!-- 品种切换条 -->
-  <div id="commodity-bar"></div>
-  <!-- 主体 -->
-  <div id="main">
-    <aside id="sidenav">
-      <div id="search-box">
-        <input type="text" id="search-input" placeholder="🔍 搜索指标名称..." />
-      </div>
-      <div id="tree-container"></div>
-    </aside>
-    <section id="panel">
-      <div id="panel-header">
-        <span class="indicator-name">📊 指标看板</span>
-        <span class="indicator-meta" id="indicator-meta">请选择左侧指标</span>
-      </div>
-      <div id="panel-body">
-        <div id="panel-empty">
-          <div class="icon">🌲</div>
-          <div>从左侧目录树选择一个指标</div>
-          <div style="font-size:12px;color:#30363d;">点击后显示 ECharts 四图看板</div>
-        </div>
-        <div id="charts" style="display:none;">
-          <div id="chart-placeholder" style="grid-column:1/3;grid-row:1/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#161b22;border:1px dashed #30363d;border-radius:8px;padding:40px;">
-            <div style="font-size:56px;opacity:0.3;">📊</div>
-            <div style="font-size:16px;color:#8b949e;font-weight:500;">图表待接入</div>
-            <div style="font-size:12px;color:#484f58;max-width:420px;text-align:center;line-height:1.6;">
-              点击目录树指标后，此处将展示该指标的<br>
-              时序走势 / 季节性 / 价格叠加 / 关键数据
-            </div>
-            <div style="margin-top:6px;font-size:11px;color:#30363d;font-family:monospace;">
-              数据源: Zhiji API · /api/indicator?code=XX&amp;id=YY
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div id="tree-pane">
+    <div id="tree-header">
+      <input id="tree-search" placeholder="🔍 搜索指标 / 编号 / 品种…" />
+    </div>
+    <div id="tree-box"></div>
   </div>
-  <div id="footer">
-    <span><span class="dot"></span>在线</span>
-    <span>数据源: Zhiji API (demo)</span>
-    <span>框架 v1.0 · 2026-08-26</span>
-    <span style="margin-left:auto;color:#30363d;">有色金属产业指标树</span>
+  <div id="panel">
+    <div id="panel-head">
+      <div class="pname"><span>📊</span> 指标看板 <span class="pchip" id="pchip" style="display:none"></span></div>
+      <div class="pmeta" id="pmeta">请选择左侧指标，再点品种 chip 查看该品种数据</div>
+    </div>
+    <div id="panel-body">
+      <div id="panel-empty">
+        <div class="icon">🌲</div>
+        <div class="tip">从左侧目录树选择指标<br>再点击品种 chip 切换到对应品种看板</div>
+      </div>
+      <div id="panel-placeholder">
+        <div class="ph-box">
+          <div class="ph-icon">📈</div>
+          <div class="ph-title" id="ph-title">图表待接入</div>
+          <div class="ph-note" id="ph-note">此指标×品种 的数据看板将通过 Zhiji API 接入</div>
+          <div class="ph-meta" id="ph-meta"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<footer>
+  有色金属产业指标树 · 8品种 × 8大类 · 数据源：Zhiji API · 框架版本 v1.0（2026-08-26）
+</footer>
+</body>
 
 <script>
 /* ============================================================
    有色金属产业指标树 · 主逻辑
-   说明：真实数据应从 Zhiji API 代理接口 /api/indicator?code=XX&id=YY 获取，
-         本处为纯静态 demo 数据（Math.sin + 随机噪声生成 120 点）。
+   结构完全复刻 metals-framework：
+   大类(展开/收起) → 指标叶行(编号+名称+问题) → 叶行右侧挂品种chip
+   点品种chip = 切换当前品种+该指标 → 右侧面板显示占位
    ============================================================ */
 
-// ====== 全局状态 ======
-const state = {
-  currentCommodity: 'CU',   // 当前选中品种代码
-  currentTab: 'price',      // 当前选中的 nav tab
-  currentIndicator: null,   // 当前选中的指标
-  config: null              // 从 data/tree_config.json 加载的配置
-};
+const CFG = { commodities: null, categories: null };
+let state = { curComm: null, curLeaf: null, curTab: null };
 
-// ====== 品种图标映射 ======
-const COMMODITY_ICONS = { CU:'🟤', AL:'⚪', PB:'🟢', ZN:'⚡', NI:'🔴', SN:'🟣', LC:'🔵', SI:'⚫' };
-
-// ====== 初始化：加载配置 ======
-async function init() {
-  try {
-    const res = await fetch('/data/tree_config.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    state.config = await res.json();
+async function loadConfig(){
+  try{
+    const r = await fetch('/data/tree_config.json');
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const cfg = await r.json();
+    CFG.commodities = cfg.commodities;
+    CFG.categories = cfg.categories;
     renderTabs();
-    renderCommodityBar();
     renderTree();
-  } catch (e) {
-    // 本地文件打开时 fetch 失败，使用内联兜底数据
-    console.warn('fetch tree_config.json 失败，使用内联兜底:', e);
-    loadFallback();
+    state.curTab = CFG.categories[0].id;
+    const first = CFG.categories[0].children[0];
+    selectChip(first, first.comms[0], true);
+  }catch(e){
+    document.getElementById('tree-box').innerHTML =
+      '<div style="padding:20px;color:#a8a49e;text-align:center">'+
+      '目录配置加载失败，请通过 GitHub Pages 访问<br>'+
+      '<code style="font-size:10px">algo23-yunqingtian.github.io/framework-tree/</code></div>';
   }
 }
 
-// ====== 内联兜底配置（fetch 失败时使用）======
-function loadFallback() {
-  state.config = {
-    nav: [
-      {id:'data_entry',label:'数据入口'},{id:'price',label:'价格'},
-      {id:'supply',label:'供应'},{id:'inventory',label:'库存'},
-      {id:'demand',label:'需求'},{id:'trade',label:'进出口'},
-      {id:'cost',label:'成本·利润'},{id:'balance',label:'供需平衡'},
-      {id:'dashboard',label:'数据看板'}
-    ],
-    commodities: [
-      {code:'CU',name:'铜',icon:'🟤'},{code:'AL',name:'铝',icon:'⚪'},
-      {code:'PB',name:'铅',icon:'🟢'},{code:'ZN',name:'锌',icon:'⚡'},
-      {code:'NI',name:'镍',icon:'🔴'},{code:'SN',name:'锡',icon:'🟣'},
-      {code:'LC',name:'锂',icon:'🔵'},{code:'SI',name:'硅',icon:'⚫'}
-    ],
-    tree: [
-      {id:'price',label:'价格信号',children:[
-        {id:'p1',label:'期货结算价',code:'主连'},{id:'p2',label:'现货价格',code:'现货'},
-        {id:'p3',label:'升贴水',code:'升贴水'},{id:'p4',label:'基差',code:'基差'},
-        {id:'p5',label:'月差/期限结构',code:'月差'},{id:'p6',label:'沪伦比/进口盈亏',code:'沪伦比'}
-      ]},
-      {id:'supply',label:'供给',children:[
-        {id:'s1',label:'矿山产量',code:'矿产量'},{id:'s2',label:'精炼产量',code:'精炼产量'},
-        {id:'s3',label:'冶炼开工率',code:'开工率'},{id:'s4',label:'TC/加工费',code:'TC'},
-        {id:'s5',label:'港口精矿库存',code:'港口库存'},{id:'s6',label:'冶炼利润',code:'冶炼利润'}
-      ]},
-      {id:'inventory',label:'库存',children:[
-        {id:'i1',label:'LME库存',code:'LME库存'},{id:'i2',label:'LME仓单(注册/注销)',code:'仓单'},
-        {id:'i3',label:'上期所库存/仓单',code:'SHFE库存'},{id:'i4',label:'社会库存',code:'社库'},
-        {id:'i5',label:'隐性/在途库存',code:'隐性库存'},{id:'i6',label:'工厂库存',code:'工厂库存'}
-      ]},
-      {id:'demand',label:'需求',children:[
-        {id:'d1',label:'表观消费',code:'表观消费'},{id:'d2',label:'下游开工率',code:'下游开工'},
-        {id:'d3',label:'制造业PMI',code:'PMI'},{id:'d4',label:'地产/基建/汽车',code:'终端'},
-        {id:'d5',label:'新能源需求',code:'新能源'},{id:'d6',label:'电网/电力',code:'电网'}
-      ]},
-      {id:'trade',label:'进出口',children:[
-        {id:'t1',label:'原料进口',code:'原料进口'},{id:'t2',label:'精炼金属进出口',code:'进出口'},
-        {id:'t3',label:'制品出口',code:'制品出口'},{id:'t4',label:'进口盈亏',code:'进口盈亏'},
-        {id:'t5',label:'沪伦比',code:'沪伦比'},{id:'t6',label:'保税区库存',code:'保税区库存'}
-      ]},
-      {id:'cost',label:'成本·利润',children:[
-        {id:'c1',label:'矿山成本曲线',code:'成本曲线'},{id:'c2',label:'冶炼利润',code:'冶炼利润'},
-        {id:'c3',label:'副产收益(硫酸等)',code:'副产'},{id:'c4',label:'能源成本',code:'能源'},
-        {id:'c5',label:'分位数估值',code:'分位数'}
-      ]},
-      {id:'balance',label:'供需平衡',children:[
-        {id:'b1',label:'平衡表',code:'平衡表'},{id:'b2',label:'表观消费',code:'表观消费'},
-        {id:'b3',label:'净库存变化',code:'净库存'}
-      ]},
-      {id:'dashboard',label:'数据看板',children:[
-        {id:'x1',label:'8品种联动总览',link:'#macro'},{id:'x2',label:'持仓席位',code:'席位'},
-        {id:'x3',label:'波动率',code:'波动率'}
-      ]}
-    ]
-  };
-  renderTabs();
-  renderCommodityBar();
-  renderTree();
-}
-
-// ====== 渲染顶部导航 tabs ======
-function renderTabs() {
-  const tabs = document.getElementById('tabs');
-  tabs.innerHTML = '';
-  state.config.nav.forEach(n => {
-    const btn = document.createElement('button');
-    btn.className = 'tab' + (n.id === state.currentTab ? ' active' : '');
-    btn.textContent = n.label;
-    btn.onclick = () => {
-      state.currentTab = n.id;
+function renderTabs(){
+  const el = document.getElementById('mtabs');
+  el.innerHTML='';
+  CFG.categories.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='mtab'+(c.id===state.curTab?' active':'');
+    b.textContent=c.label;
+    b.onclick=()=>{
+      state.curTab=c.id;
       renderTabs();
-      highlightTreeGroup(n.id);
+      const card=document.querySelector('.ncard[data-id="'+c.id+'"]');
+      if(card) card.scrollIntoView({behavior:'smooth',block:'center'});
     };
-    tabs.appendChild(btn);
+    el.appendChild(b);
   });
 }
 
-// ====== 渲染品种切换条 ======
-function renderCommodityBar() {
-  const bar = document.getElementById('commodity-bar');
-  bar.innerHTML = '';
-  state.config.commodities.forEach(c => {
-    const btn = document.createElement('button');
-    btn.className = 'cbtn' + (c.code === state.currentCommodity ? ' active' : '');
-    btn.innerHTML = `<span>${COMMODITY_ICONS[c.code]||'🔷'}</span> ${c.code} ${c.name}`;
-    // 品种按钮：双击跳子页看板，单击切换品种
-    if (c.local) {
-      btn.title = `双击打开 ${c.code} 品种看板`;
-      btn.ondblclick = () => window.open(c.local, '_blank');
-    }
-    btn.onclick = () => {
-      state.currentCommodity = c.code;
-      renderCommodityBar();
-    };
-    bar.appendChild(btn);
-  });
-}
+function renderTree(filter){
+  const box=document.getElementById('tree-box');
+  box.innerHTML='';
+  const fl=(filter||'').toLowerCase();
 
-// ====== 高亮树分区 ======
-function highlightTreeGroup(groupId) {
-  document.querySelectorAll('.tree-header').forEach(el => {
-    el.classList.toggle('highlighted', el.dataset.gid === groupId);
-  });
-}
+  CFG.categories.forEach(cat=>{
+    const card=document.createElement('div');
+    card.className='ncard';
+    card.dataset.id=cat.id;
 
-// ====== 渲染目录树 ======
-function renderTree(filter = '') {
-  const container = document.getElementById('tree-container');
-  container.innerHTML = '';
-  const fl = filter.toLowerCase();
-  state.config.tree.forEach(group => {
-    const grp = document.createElement('div');
-    grp.className = 'tree-group';
+    const h4=document.createElement('h4');
+    h4.innerHTML='<span class="caret">▼</span><span>'+cat.label+'</span>';
+    h4.onclick=(e)=>{ e.stopPropagation(); card.classList.toggle('collapsed'); };
 
-    // 一级节点：大类
-    const header = document.createElement('div');
-    header.className = 'tree-header' + (group.id === state.currentTab ? ' highlighted' : '');
-    header.dataset.gid = group.id;
-    header.innerHTML = `<span class="arrow expanded">▶</span><span class="glabel">${group.label}</span>`;
+    const body=document.createElement('div');
+    body.className='ncard-body';
+    let any=false;
 
-    // 二级节点：具体指标
-    const children = document.createElement('div');
-    children.className = 'tree-children open';
+    cat.children.forEach(leaf=>{
+      const hit = !fl ||
+        leaf.name.toLowerCase().includes(fl) ||
+        leaf.code.toLowerCase().includes(fl) ||
+        leaf.q.toLowerCase().includes(fl);
+      if(!hit) return;
+      any=true;
 
-    let anyVisible = false;
-    group.children.forEach(child => {
-      const match = !fl || child.label.toLowerCase().includes(fl) || (child.code && child.code.toLowerCase().includes(fl));
-      if (!match) return;
-      anyVisible = true;
-      const item = document.createElement('div');
-      item.className = 'tree-item' + (state.currentIndicator && state.currentIndicator.id === child.id ? ' active' : '');
-      item.dataset.id = child.id;
-      item.dataset.code = child.code || '';
-      item.innerHTML = `<span>▸</span> <span style="margin-left:6px;">${child.label}</span> <span style="margin-left:auto;font-size:11px;color:#484f58;">${child.code||''}</span>`;
-      // 如果指标有 link 字段 → 外部跳转（如 8品种联动总览 跳到宏观看板）
-      if (child.link) { item.onclick = () => window.open(child.link, '_blank'); }
-      else { item.onclick = () => selectIndicator(child, group); }
-      children.appendChild(item);
+      const row=document.createElement('div');
+      row.className='t-leaf'+(state.curLeaf&&state.curLeaf.id===leaf.id?' selected':'');
+
+      const code=document.createElement('span');
+      code.className='tl-code'; code.textContent=leaf.code;
+      row.appendChild(code);
+      const name=document.createElement('span');
+      name.className='tl-name'; name.textContent=leaf.name;
+      row.appendChild(name);
+      const q=document.createElement('span');
+      q.className='tl-q'; q.textContent=leaf.q;
+      row.appendChild(q);
+
+      const comm=document.createElement('span');
+      comm.className='tl-comm';
+      leaf.comms.forEach(cid=>{
+        const cm = CFG.commodities.find(m=>m.id===cid);
+        if(!cm) return;
+        const chip=document.createElement('span');
+        chip.textContent=cm.code;
+        chip.style.background=cm.color;
+        if(state.curLeaf&&state.curLeaf.id===leaf.id && state.curComm===cm.id){
+          chip.style.outline='2px solid #7a5230';
+          chip.style.outlineOffset='1px';
+        }
+        chip.onclick=(e)=>{ e.stopPropagation(); selectChip(leaf, cm.id, true); };
+        comm.appendChild(chip);
+      });
+      row.appendChild(comm);
+      row.onclick=()=>{ if(leaf.comms.length>0) selectChip(leaf, leaf.comms[0], true); };
+      body.appendChild(row);
     });
 
-    if (!anyVisible) {
-      const none = document.createElement('div');
-      none.className = 'tree-item';
-      none.style.color = '#484f58';
-      none.style.fontSize = '11px';
-      none.textContent = '无匹配指标';
-      children.appendChild(none);
-    }
-
-    header.onclick = () => {
-      const isExpanded = children.classList.contains('open');
-      children.classList.toggle('open');
-      header.querySelector('.arrow').classList.toggle('expanded');
-      state.currentTab = group.id;
-      renderTabs();
-      highlightTreeGroup(group.id);
-    };
-
-    grp.appendChild(header);
-    grp.appendChild(children);
-    container.appendChild(grp);
+    if(!any && fl) return;
+    card.appendChild(h4);
+    card.appendChild(body);
+    box.appendChild(card);
   });
 }
 
-// ====== 搜索框 ======
-let searchTimer = null;
-document.getElementById('search-input').addEventListener('input', (e) => {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => {
-    renderTree(e.target.value.trim());
-  }, 150);
-});
+function selectChip(leaf, commId, render){
+  state.curLeaf = leaf;
+  state.curComm = commId;
+  renderTree(document.getElementById('tree-search').value);
+  const cm = CFG.commodities.find(m=>m.id===commId);
+  document.getElementById('panel-empty').style.display='none';
+  document.getElementById('panel-placeholder').classList.add('show');
 
-// ====== 选择指标 → 显示看板 ======
-function selectIndicator(child, group) {
-  state.currentIndicator = child;
-  state.currentTab = group.id;
-  renderTabs();
-  renderTree(document.getElementById('search-input').value.trim());
+  document.querySelector('#panel-head .pname').innerHTML =
+    '<span>📊</span> '+leaf.code+' '+leaf.name+' <span class="pchip" style="background:'+cm.color+'">'+cm.code+' '+cm.name+'</span>';
+  document.getElementById('pmeta').textContent =
+    '类别: '+ CFG.categories.find(c=>c.id===state.curTab).label +' | 问题: '+leaf.q+' | 品种特性: '+cm.anchor;
 
-  document.getElementById('panel-empty').style.display = 'none';
-  document.getElementById('charts').style.display = 'grid';
+  document.getElementById('ph-title').textContent = leaf.code+' '+leaf.name+' · '+cm.code;
+  document.getElementById('ph-note').textContent =
+    '该指标×品种 的图表通过 Zhiji API 接入（/api/indicator?code='+cm.code+'&id='+leaf.name+'）';
 
-  document.querySelector('#panel-header .indicator-name').textContent =
-    `${COMMODITY_ICONS[state.currentCommodity]||'🔷'} ${state.currentCommodity} ${child.label}`;
-  document.getElementById('indicator-meta').textContent =
-    `代码: ${child.code || child.id}  |  分类: ${group.label}  |  状态: 待接入数据`;
+  document.getElementById('ph-meta').innerHTML =
+    '<div class="ph-cell"><div class="lbl">品种</div><div class="val">'+cm.code+' '+cm.name+'</div></div>'+
+    '<div class="ph-cell"><div class="lbl">指标</div><div class="val">'+leaf.code+' '+leaf.name+'</div></div>'+
+    '<div class="ph-cell"><div class="lbl">数据源</div><div class="val">Zhiji API（待接入）</div></div>'+
+    '<div class="ph-cell"><div class="lbl">建议图</div><div class="val">时序 / 季节性 / 价格叠加 / 关键数据</div></div>';
 }
 
-// ====== 启动 ======
-window.addEventListener('DOMContentLoaded', init);
+let st=null;
+document.getElementById('tree-search').addEventListener('input',e=>{
+  clearTimeout(st);
+  st=setTimeout(()=>renderTree(e.target.value.trim()),150);
+});
+
+document.oncontextmenu=()=>false;
+document.onkeydown=e=>{ if(e.key==='F12'||(e.ctrlKey&&['c','C','s','S','p','P'].includes(e.key))){ e.preventDefault(); return false; } };
+document.onselectstart=()=>false;
+document.ondragstart=()=>false;
+
+window.addEventListener('DOMContentLoaded', loadConfig);
 </script>
-</body>
+
 </html>
