@@ -222,25 +222,28 @@ def opt_seasonal(pairs_l, color, yname):
         "series": series,
     }, ensure_ascii=False)
 
-def chart_line_t(metric, color, yname, cid, ch_code, ch_name, ch_src):
-    """单变量图：历史时序 ⇄ 季节性 双模式，右上角按钮切换"""
-    d = DATA[metric]
-    pairs_l = pairs(metric)
+def chart_line_t(metric, color, yname, cid, ch_code, ch_name, ch_src,
+                 default_seasonal=False, data=None):
+    """单变量图：历史时序 ⇄ 季节性 双模式，右上角按钮切换
+    default_seasonal=True 时打开即季节视图；data 可传自定义 [[date,value],...]"""
+    pairs_l = data if data is not None else pairs(metric)
     opt1 = opt_line(pairs_l, color, yname)
     opt2 = opt_seasonal(pairs_l, color, yname)
+    mode_init = 'se' if default_seasonal else 'ts'
+    btn_init = '☀ 季节' if default_seasonal else '⏱ 时序'
     html = (
         f'<div class="chart-row">\n'
         f'  <div class="chart-head"><span class="ch-code">{ch_code}</span>'
         f'<span class="ch-name">{ch_name}</span>'
         f'<span class="ch-src">{ch_src}</span>'
-        f'<button class="mode-btn" onclick="__tgl(\'{cid}\',this)" title="历史时序 / 季节性切换">⏱ 时序</button></div>\n'
+        f'<button class="mode-btn" onclick="__tgl(\'{cid}\',this)" title="历史时序 / 季节性切换">{btn_init}</button></div>\n'
         f'  <div id="{cid}" class="chart-box"></div>\n'
         f'</div>\n'
     )
     code = (f'window.__opts_{cid} = {{ts:{opt1}, se:{opt2}}};\n'
-            f'window.__mode_{cid} = "ts";\n'
+            f'window.__mode_{cid} = "{mode_init}";\n'
             f'window.__inst_{cid} = echarts.init(document.getElementById("{cid}"),"dark");\n'
-            f'window.__inst_{cid}.setOption(window.__opts_{cid}.ts);\n')
+            f'window.__inst_{cid}.setOption(window.__opts_{cid}.{mode_init});\n')
     return html, code
 
 def opt_multiline(series_list):
@@ -364,8 +367,8 @@ for cls_id, cls_name, metric, extra in [
 KPI_HTML = "\n".join(KPI)
 
 TABS = [
-    ("4.1", "4.1 交易所库存", "2 图"),
-    ("4.2", "4.2 仓单", "4 图"),
+    ("4.1", "4.1 交易所库存", "3 图"),
+    ("4.2", "4.2 仓单", "5 图"),
     ("4.3", "4.3 社会库存", "4 图"),
     ("4.4", "4.4 工厂库存", "5 图"),
     ("4.5", "4.5 隐性·在途", "5 图"),
@@ -383,7 +386,12 @@ def build_41():
         pairs("i1"), "#b06a32", "LME铅库存", "吨 (LME)",
         pairs("i2"), "#7a8a9c", "SHFE铅仓单", "吨 (SHFE)")
     h2, c2 = chart_div("echart_p41_c2", DIV)
-    return h1+h2, c1+c2
+    d28 = DATA['i28']
+    h3, c3 = chart_line_t("i28", "#5b7a8c", "吨",
+        "echart_p41_c1b", "C01b",
+        "沪铅期货库存（SHFE 库存周报 · 本周库存期货）",
+        f"SMM · 周 · 吨 · 共{d28['n']}点", default_seasonal=True)
+    return h1+h2+h3, c1+c2+c3
 
 def build_42():
     d6, d7 = DATA['i6'], DATA['i7']
@@ -392,18 +400,28 @@ def build_42():
         f"SMM · 日 · 左:吨(注册) / 右:吨(注销) · 共{d6['n']}/{d7['n']}点",
         pairs("i6"), "#b06a32", "注册仓单", "吨",
         pairs("i7"), "#7a8a9c", "注销仓单", "吨")
-    return h5 + "".join(skeleton(*s) for s in [
+    m6 = dict(zip(DATA['i6']['dates'], DATA['i6']['values']))
+    m7 = dict(zip(DATA['i7']['dates'], DATA['i7']['values']))
+    rpairs = []
+    for dt in sorted(set(m6) & set(m7)):
+        denom = m6[dt] + m7[dt]
+        rpairs.append([dt, round(m7[dt] / denom * 100, 2) if denom else None])
+    h5b, c5b = chart_line_t("i7", "#7a8a9c", "%",
+        "echart_p42_c5b", "C05b",
+        "LME 注销仓单占比（逼仓风险监测）",
+        f"SMM · 日 · 百分比 · 共{len(rpairs)}点", default_seasonal=True, data=rpairs)
+    return h5 + h5b + "".join(skeleton(*s) for s in [
         ("C03", "仓单地区集中度 HHI", "横向条形 · 仓库名", "SHFE仓单明细 / SHFE API", "需拉取仓库维度仓单日报"),
         ("C04", "交割品牌结构", "堆叠柱状 · 品牌×占比", "SHFE交割品牌 / 上期所月报", "品牌维度数据"),
         ("C06", "仓单融资质押规模", "折线 · 季度", "中证协 / 券商研报", "间接估算，非标准化口径"),
-    ]), c5
+    ]), c5 + c5b
 
 def build_43():
     d = DATA['i3']
     h, c = chart_line_t("i3", "#5b7a8c", "万吨",
         "echart_p43_c7", "C07",
         "五地社库去化斜率（总量时序）",
-        f"SMM · 周 · 万吨 · 共{d['n']}点")
+        f"SMM · 周 · 万吨 · 共{d['n']}点", default_seasonal=True)
     locs = [("i16", "广东", "#c0392b"), ("i17", "江苏", "#5b7a8c"),
             ("i18", "浙江", "#7a8c5b"), ("i19", "天津", "#b06a32"),
             ("i20", "上海", "#8c6b9c")]
@@ -425,7 +443,7 @@ def build_44():
     h, c = chart_line_t("i4", "#7a8c5b", "万吨",
         "echart_p44_c11", "C11",
         "原生铅成品库存（厂库）",
-        f"MYSTEEL · 周 · 万吨 · 共{d['n']}点")
+        f"MYSTEEL · 周 · 万吨 · 共{d['n']}点", default_seasonal=True)
     d10 = DATA['i10']
     h10, c10 = chart_line_t("i10", "#c0392b", "元/吨",
         "echart_p44_c13", "C13",
@@ -479,13 +497,13 @@ def esc(s):  # escape braces for f-string safety
 MAIN = f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>铅(PB)库存 v2 · 19图完整版 · 有色金属研究框架</title>
+<title>铅(PB)库存 v2 · 22图完整版 · 有色金属研究框架</title>
 <style>{CSS}
 </style></head>
 <body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 4 库存 · 5 子类 · 20 图 (12 真 + 8 待补)</div>
+  <div class="hcrumbs">铅(PB) · 4 库存 · 5 子类 · 22 图 (14 真 + 8 待补)</div>
   <div class="hright">数据固化快照 · 2026-08-26 · Zhiji SMM/Mysteel</div>
 </div>
 <div class="kpi">
@@ -501,7 +519,7 @@ MAIN = f"""<!DOCTYPE html>
 <div id="panel_4.4" class="panel grid-wrap">{P['4.4']}</div>
 <div id="panel_4.5" class="panel grid-wrap">{P['4.5']}</div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB)库存 v2 完整版 · 静态快照 · 20 图 (12 真数据 + 8 骨架)</footer>
+<footer>有色金属产业指标树 · 铅(PB)库存 v2 完整版 · 静态快照 · 22 图 (14 真数据 + 8 骨架)</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.querySelectorAll('.tab').forEach(function(t){{
@@ -523,7 +541,7 @@ function __tgl(id,btn){{
 }}
 
 window.addEventListener('resize', function(){{
-  ['echart_p41_c1','echart_p41_c2','echart_p42_c5','echart_p43_c7','echart_p43_c8','echart_p43_c9','echart_p44_c11','echart_p44_c13','echart_p44_c14','echart_p44_c12b','echart_p45_c16','echart_p45_c18b'].forEach(function(id){{
+  ['echart_p41_c1','echart_p41_c2','echart_p41_c1b','echart_p42_c5','echart_p42_c5b','echart_p43_c7','echart_p43_c8','echart_p43_c9','echart_p44_c11','echart_p44_c13','echart_p44_c14','echart_p44_c12b','echart_p45_c16','echart_p45_c18b'].forEach(function(id){{
     var el = document.getElementById(id);
     var inst = echarts.getInstanceByDom(el);
     if(inst) inst.resize();
@@ -558,7 +576,7 @@ SUB = f"""<!DOCTYPE html>
   <div class="hright">数据固化快照 · 2026-08-26</div>
 </div>
 <div class="breadcrumb">
-  <a href="pb_stock_v2.html">← 铅库存 v2 总览</a> · 子类 4.1 交易所库存 · 2 图（全部真数据）
+  <a href="pb_stock_v2.html">← 铅库存 v2 总览</a> · 子类 4.1 交易所库存 · 3 图（全部真数据）
 </div>
 <div class="kpi" style="grid-template-columns:repeat(2,1fr)">
 <div class="kcard">
@@ -586,7 +604,7 @@ SUB = f"""<!DOCTYPE html>
 <script>
 {C['4.1']}
 window.addEventListener('resize', function(){{
-  ['echart_p41_c1','echart_p41_c2'].forEach(function(id){{
+  ['echart_p41_c1','echart_p41_c2','echart_p41_c1b'].forEach(function(id){{
     var el = document.getElementById(id);
     var inst = echarts.getInstanceByDom(el);
     if(inst) inst.resize();
