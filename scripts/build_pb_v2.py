@@ -164,6 +164,66 @@ def chart_line(metric, color, yname, cid, ch_code, ch_name, ch_src):
     code = f'echarts.init(document.getElementById("{cid}"),"dark").setOption({opt});\n'
     return html, code
 
+def opt_multiline(series_list):
+    return json.dumps({
+        "color": [s["color"] for s in series_list],
+        "grid": {"left": 60, "right": 25, "top": 40, "bottom": 35},
+        "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}},
+        "legend": {"data": [s["name"] for s in series_list], "textStyle": {"color": "#aaa"}, "top": 5},
+        "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#555"}},
+                  "axisLabel": {"color": "#999", "fontSize": 10},
+                  "splitLine": {"show": False}},
+        "yAxis": {"type": "value", "name": "万吨",
+                  "nameTextStyle": {"color": "#999"},
+                  "axisLabel": {"color": "#999"},
+                  "splitLine": {"lineStyle": {"color": "#333"}}},
+        "series": [{"name": s["name"], "type": "line", "showSymbol": False,
+                    "smooth": False, "data": s["data"]} for s in series_list],
+    }, ensure_ascii=False)
+
+def chart_multiline(cid, ch_code, ch_name, ch_src, series_list):
+    opt = opt_multiline(series_list)
+    html = (
+        f'<div class="chart-row">\n'
+        f'  <div class="chart-head"><span class="ch-code">{ch_code}</span>'
+        f'<span class="ch-name">{ch_name}</span>'
+        f'<span class="ch-src">{ch_src}</span></div>\n'
+        f'  <div id="{cid}" class="chart-box"></div>\n'
+        f'</div>\n'
+    )
+    code = f'echarts.init(document.getElementById("{cid}"),"dark").setOption({opt});\n'
+    return html, code
+
+def opt_bar(pairs_list, color, yname):
+    dates = [p[0][:4] for p in pairs_list]
+    vals = [p[1] for p in pairs_list]
+    return json.dumps({
+        "color": [color],
+        "grid": {"left": 55, "right": 25, "top": 30, "bottom": 35},
+        "tooltip": {"trigger": "axis"},
+        "xAxis": {"type": "category", "data": dates,
+                  "axisLabel": {"color": "#999", "fontSize": 10},
+                  "axisLine": {"lineStyle": {"color": "#555"}}},
+        "yAxis": {"type": "value", "name": yname,
+                  "nameTextStyle": {"color": "#999"},
+                  "axisLabel": {"color": "#999"},
+                  "splitLine": {"lineStyle": {"color": "#333"}}},
+        "series": [{"type": "bar", "data": vals}],
+    }, ensure_ascii=False)
+
+def chart_bar(cid, ch_code, ch_name, ch_src, data, color, yname):
+    opt = opt_bar(data, color, yname)
+    html = (
+        f'<div class="chart-row">\n'
+        f'  <div class="chart-head"><span class="ch-code">{ch_code}</span>'
+        f'<span class="ch-name">{ch_name}</span>'
+        f'<span class="ch-src">{ch_src}</span></div>\n'
+        f'  <div id="{cid}" class="chart-box"></div>\n'
+        f'</div>\n'
+    )
+    code = f'echarts.init(document.getElementById("{cid}"),"dark").setOption({opt});\n'
+    return html, code
+
 def chart_dual(cid, ch_code, ch_name, ch_src, p1, c1, n1, u1, p2, c2, n2, u2):
     opt = opt_dual(p1, c1, n1, u1, p2, c2, n2, u2)
     html = (
@@ -228,8 +288,8 @@ TABS = [
     ("4.1", "4.1 交易所库存", "2 图"),
     ("4.2", "4.2 仓单", "4 图"),
     ("4.3", "4.3 社会库存", "4 图"),
-    ("4.4", "4.4 工厂库存", "4 图"),
-    ("4.5", "4.5 隐性·在途", "5 图"),
+    ("4.4", "4.4 工厂库存", "6 图"),
+    ("4.5", "4.5 隐性·在途", "8 图"),
 ]
 TAB_HTML = "".join(
     f'<div class="tab{" active" if i==0 else ""}" data-tab="{tid}">{tid} <span style="opacity:.6;margin-left:6px">{nm}</span> <span style="opacity:.5;margin-left:8px;font-size:10px">{ct}</span></div>'
@@ -265,16 +325,21 @@ def build_43():
         "echart_p43_c7", "C07",
         "五地社库去化斜率（总量时序）",
         f"SMM · 周 · 万吨 · 共{d['n']}点")
+    locs = [("i16", "广东", "#c0392b"), ("i17", "江苏", "#5b7a8c"),
+            ("i18", "浙江", "#7a8c5b"), ("i19", "天津", "#b06a32"),
+            ("i20", "上海", "#8c6b9c")]
+    slist = [{"name": loc, "color": color, "data": pairs(m)} for m, loc, color in locs]
+    h8, c8 = chart_multiline("echart_p43_c8", "C08", "五地社会库存拆分（沪津粤浙苏）",
+        "SMM · 周 · 万吨 · 5 地系列", slist)
     d9 = DATA['i9']
     h9, c9 = chart_line("i9", "#c0392b", "元/吨",
         "echart_p43_c9", "C09",
         "沪铅期现价差（当月合约基差）",
         f"SMM · 日 · 元/吨 · 共{d9['n']}点")
-    htmls = [h] + [skeleton(*s) for s in [
-        ("C08", "五地地区拆分", "多系列折线 · 5 地", "SMM · 五地分项", "沪津穗长青五项"),
+    htmls = [h, h8] + [skeleton(*s) for s in [
         ("C10", "贸易商库存", "柱状 · 主要贸易商", "Mysteel/百川 · 月度", "月度贸易商样本"),
     ]]
-    return "".join(htmls) + h9, c + c9
+    return "".join(htmls) + h9, c + c8 + c9
 
 def build_44():
     d = DATA['i4']
@@ -297,11 +362,15 @@ def build_44():
         "echart_p44_c14", "C14",
         "铅蓄电池开工率（需求端核心指标）",
         f"SMM · 周 · 百分比 · 共{d11['n']}点")
-    htmls = [h] + [skeleton(*s) for s in [
-        ("C12b", "电池厂原料+成品库存", "双柱 · 原料/成品", "Mysteel电池厂调研", "周度样本"),
+    d26 = DATA['i26']
+    h26, c26 = chart_line("i26", "#8c6b9c", "KVAh",
+        "echart_p44_c12b", "C12b",
+        "铅蓄电池企业成品库存（电池厂）",
+        f"SMM · 月 · KVAh · 共{d26['n']}点")
+    htmls = [h, h26] + [skeleton(*s) for s in [
         ("C14b", "再生-原生铅价差", "折线 · 价格差", "SHFE铅价 + 再生铅报价", "价差=再生-原生"),
     ]]
-    return "".join(htmls) + h10 + h13 + h11, c + c10 + c13 + c11
+    return "".join(htmls) + h10 + h13 + h11, c + c26 + c10 + c13 + c11
 
 def build_45():
     d = DATA['i5']
@@ -324,13 +393,15 @@ def build_45():
         "echart_p45_c18", "C18",
         "铅精矿产量（国内供给）",
         f"SMM · 月 · 万金属吨 · 共{d15['n']}点")
-    htmls = [h] + [skeleton(*s) for s in [
-        ("C15b", "铅进口盈亏", "折线 · 元/吨", "LME + SHFE 现货价 · 汇率", "盈亏=进口完税价-国内现货"),
+    d27 = DATA['i27']
+    h27, c27 = chart_bar("echart_p45_c18b", "C18b", "铅锭供需平衡（年度结余）",
+        f"SMM · 年 · 万吨 · 共{d27['n']}点", pairs("i27"), "#7a8c5b", "万吨")
+    htmls = [h, h27] + [skeleton(*s) for s in [
+        ("C15b", "铅进口盈亏", "折线 · 元/吨 · 需原生/进口价差", "SMM进口成本 + 1#铅均价", "i12数据实为价格非盈亏,待重算"),
         ("C17b", "亚洲可交仓数量", "柱状 · 国家×数量", "ILZSG · 各国库存", "含澳洲/智利/韩国"),
-        ("C18b", "ILZSG全球供需平衡", "多系列柱 · 年度", "ILZSG年报", "需人工录入年度"),
         ("C19", "冶炼厂检修 & 长单覆盖率", "双系列 · 停机率+长单%", "Mysteel/百川 · 月度", "冶炼产能开工样本"),
     ]]
-    return "".join(htmls) + h8 + h14 + h15, c + c8 + c14 + c15
+    return "".join(htmls) + h8 + h14 + h15, c + c27 + c8 + c14 + c15
 
 P = {}
 C = {}
@@ -355,7 +426,7 @@ MAIN = f"""<!DOCTYPE html>
 <body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 4 库存 · 5 子类 · 19 图 (11 真 + 8 待补)</div>
+  <div class="hcrumbs">铅(PB) · 4 库存 · 5 子类 · 24 图 (16 真 + 8 待补)</div>
   <div class="hright">数据固化快照 · 2026-08-26 · Zhiji SMM/Mysteel</div>
 </div>
 <div class="kpi">
@@ -371,7 +442,7 @@ MAIN = f"""<!DOCTYPE html>
 <div id="panel_4.4" class="panel grid-wrap">{P['4.4']}</div>
 <div id="panel_4.5" class="panel grid-wrap">{P['4.5']}</div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB)库存 v2 完整版 · 静态快照 · 19 图 (11 真数据 + 8 骨架)</footer>
+<footer>有色金属产业指标树 · 铅(PB)库存 v2 完整版 · 静态快照 · 24 图 (16 真数据 + 8 骨架)</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.querySelectorAll('.tab').forEach(function(t){{
@@ -387,7 +458,7 @@ document.querySelectorAll('.tab').forEach(function(t){{
 {all_codes}
 
 window.addEventListener('resize', function(){{
-  ['echart_p41_c1','echart_p41_c2','echart_p42_c5','echart_p43_c7','echart_p43_c9','echart_p44_c11','echart_p44_c13','echart_p44_c12','echart_p44_c14','echart_p45_c16','echart_p45_c15','echart_p45_c17','echart_p45_c18'].forEach(function(id){{
+  ['echart_p41_c1','echart_p41_c2','echart_p42_c5','echart_p43_c7','echart_p43_c8','echart_p43_c9','echart_p44_c11','echart_p44_c13','echart_p44_c12','echart_p44_c14','echart_p44_c12b','echart_p45_c16','echart_p45_c15','echart_p45_c17','echart_p45_c18','echart_p45_c18b'].forEach(function(id){{
     var el = document.getElementById(id);
     var inst = echarts.getInstanceByDom(el);
     if(inst) inst.resize();
