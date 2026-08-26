@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "有色金属产业指标树",
+    "version": "1.0",
+    "updated": "2026-08-26"
+  },
+  "nav": [
+    {"id": "data_entry", "label": "数据入口"},
+    {"id": "price", "label": "价格"},
+    {"id": "supply", "label": "供应"},
+    {"id": "inventory", "label": "库存"},
+    {"id": "demand", "label": "需求"},
+    {"id": "trade", "label": "进出口"},
+    {"id": "cost", "label": "成本·利润"},
+    {"id": "balance", "label": "供需平衡"},
+    {"id": "dashboard", "label": "数据看板"}
+  ],
+  "commodities": [
+    {"code": "CU", "name": "铜", "local": "https://localhost:8780/", "icon": "🟤"},
+    {"code": "AL", "name": "铝", "local": "https://localhost:8782/", "icon": "⚪"},
+    {"code": "PB", "name": "铅", "local": "https://localhost:8781/", "icon": "🟢"},
+    {"code": "ZN", "name": "锌", "local": "https://localhost:8783/", "icon": "⚡"},
+    {"code": "NI", "name": "镍", "local": "https://algo23-yunqingtian.github.io/nickel-dashboard/", "icon": "🔴"},
+    {"code": "SN", "name": "锡", "local": "https://localhost:8784/", "icon": "🟣"},
+    {"code": "LC", "name": "锂", "local": "https://algo23-yunqingtian.github.io/lithium-dashboard/", "icon": "🔵"},
+    {"code": "SI", "name": "硅", "local": "https://localhost:8785/", "icon": "⚫"}
+  ],
+  "tree": [
+    {"id": "price", "label": "价格信号", "children": [
+      {"id": "p1", "label": "期货结算价", "code": "主连"},
+      {"id": "p2", "label": "现货价格", "code": "现货"},
+      {"id": "p3", "label": "升贴水", "code": "升贴水"},
+      {"id": "p4", "label": "基差", "code": "基差"},
+      {"id": "p5", "label": "月差/期限结构", "code": "月差"},
+      {"id": "p6", "label": "沪伦比/进口盈亏", "code": "沪伦比"}
+    ]},
+    {"id": "supply", "label": "供给", "children": [
+      {"id": "s1", "label": "矿山产量", "code": "矿产量"},
+      {"id": "s2", "label": "精炼产量", "code": "精炼产量"},
+      {"id": "s3", "label": "冶炼开工率", "code": "开工率"},
+      {"id": "s4", "label": "TC/加工费", "code": "TC"},
+      {"id": "s5", "label": "港口精矿库存", "code": "港口库存"},
+      {"id": "s6", "label": "冶炼利润", "code": "冶炼利润"}
+    ]},
+    {"id": "inventory", "label": "库存", "children": [
+      {"id": "i1", "label": "LME库存", "code": "LME库存"},
+      {"id": "i2", "label": "LME仓单(注册/注销)", "code": "仓单"},
+      {"id": "i3", "label": "上期所库存/仓单", "code": "SHFE库存"},
+      {"id": "i4", "label": "社会库存", "code": "社库"},
+      {"id": "i5", "label": "隐性/在途库存", "code": "隐性库存"},
+      {"id": "i6", "label": "工厂库存", "code": "工厂库存"}
+    ]},
+    {"id": "demand", "label": "需求", "children": [
+      {"id": "d1", "label": "表观消费", "code": "表观消费"},
+      {"id": "d2", "label": "下游开工率", "code": "下游开工"},
+      {"id": "d3", "label": "制造业PMI", "code": "PMI"},
+      {"id": "d4", "label": "地产/基建/汽车", "code": "终端"},
+      {"id": "d5", "label": "新能源需求", "code": "新能源"},
+      {"id": "d6", "label": "电网/电力", "code": "电网"}
+    ]},
+    {"id": "trade", "label": "进出口", "children": [
+      {"id": "t1", "label": "原料进口", "code": "原料进口"},
+      {"id": "t2", "label": "精炼金属进出口", "code": "进出口"},
+      {"id": "t3", "label": "制品出口", "code": "制品出口"},
+      {"id": "t4", "label": "进口盈亏", "code": "进口盈亏"},
+      {"id": "t5", "label": "沪伦比", "code": "沪伦比"},
+      {"id": "t6", "label": "保税区库存", "code": "保税区库存"}
+    ]},
+    {"id": "cost", "label": "成本·利润", "children": [
+      {"id": "c1", "label": "矿山成本曲线", "code": "成本曲线"},
+      {"id": "c2", "label": "冶炼利润", "code": "冶炼利润"},
+      {"id": "c3", "label": "副产收益(硫酸等)", "code": "副产"},
+      {"id": "c4", "label": "能源成本", "code": "能源"},
+      {"id": "c5", "label": "分位数估值", "code": "分位数"}
+    ]},
+    {"id": "balance", "label": "供需平衡", "children": [
+      {"id": "b1", "label": "平衡表", "code": "平衡表"},
+      {"id": "b2", "label": "表观消费", "code": "表观消费"},
+      {"id": "b3", "label": "净库存变化", "code": "净库存"}
+    ]},
+    {"id": "dashboard", "label": "数据看板", "children": [
+      {"id": "x1", "label": "8品种联动总览", "link": "#macro"},
+      {"id": "x2", "label": "持仓席位", "code": "席位"},
+      {"id": "x3", "label": "波动率", "code": "波动率"}
+    ]}
+  ]
+}
