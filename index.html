@@ -251,15 +251,72 @@ function selectChip(leaf, commId, render){
     '类别: '+ CFG.categories.find(c=>c.id===state.curTab).label +' | 问题: '+leaf.q+' | 品种特性: '+cm.anchor;
 
   document.getElementById('ph-title').textContent = leaf.code+' '+leaf.name+' · '+cm.code;
-  document.getElementById('ph-note').textContent =
-    '该指标×品种 的图表通过 Zhiji API 接入（/api/indicator?code='+cm.code+'&id='+leaf.name+'）';
+  document.getElementById('ph-note').innerHTML =
+    '<span class="loading" style="color:#b06a32;font-weight:500">⏳ 正在从 Zhiji 实时加载数据…</span>';
 
   document.getElementById('ph-meta').innerHTML =
     '<div class="ph-cell"><div class="lbl">品种</div><div class="val">'+cm.code+' '+cm.name+'</div></div>'+
     '<div class="ph-cell"><div class="lbl">指标</div><div class="val">'+leaf.code+' '+leaf.name+'</div></div>'+
-    '<div class="ph-cell"><div class="lbl">数据源</div><div class="val">Zhiji API（待接入）</div></div>'+
-    '<div class="ph-cell"><div class="lbl">建议图</div><div class="val">时序 / 季节性 / 价格叠加 / 关键数据</div></div>';
+    '<div class="ph-cell"><div class="lbl">数据源</div><div class="val">Zhiji API → 3天缓存</div></div>'+
+    '<div class="ph-cell"><div class="lbl">状态</div><div class="val" id="ph-status">加载中…</div></div>';
+
+  // 调用 API 获取真实数据（本地模式走 Flask 代理，GitHub Pages 显示占位）
+  const API_BASE = (window.location.hostname.includes('github.io')) ? null : 'http://127.0.0.1:8786';
+  if(API_BASE){
+    fetch(API_BASE+'/api/indicator?code='+cm.code+'&metric='+encodeURIComponent(leaf.name))
+      .then(r=>r.json()).then(data=>{ renderData(data, cm, leaf); })
+      .catch(e=>{
+        document.getElementById('ph-note').textContent =
+          '⚠️ 加载失败: '+e.message+'（请启动: python3 scripts/api_server.py 8786）';
+      });
+  }else{
+    document.getElementById('ph-note').textContent =
+      '📡 GitHub Pages 静态版 — 图表需本地启动 api_server.py 后访问 http://127.0.0.1:8786';
+  }
 }
+
+/* ---- 渲染数据（有真实数据时展示迷你图+关键数字） ---- */
+function renderData(data, cm, leaf){
+  const note = document.getElementById('ph-note');
+  const status = document.getElementById('ph-status');
+
+  if(data.error){
+    note.textContent = '⚠️ '+data.error;
+    status.textContent = '数据异常';
+    return;
+  }
+
+  const pts = data.points || [];
+  status.textContent = '✅ '+pts.length+' 条 · '+data.source;
+
+  const valid = pts.filter(p=>p.value!=null && p.value!==undefined);
+  if(valid.length < 2){
+    note.textContent = '📭 数据为空或不足（指标 ID 可能需要重新映射）· 已缓存 '+pts.length+' 条';
+    return;
+  }
+
+  // 关键数据计算
+  const latest = valid[valid.length-1];
+  const weekAgo = valid[Math.max(0, valid.length-8)];
+  const monthAgo = valid[Math.max(0, valid.length-30)];
+  const yearAgo = valid[Math.max(0, valid.length-250)];
+  const wkChg = latest.value - weekAgo.value;
+  const moChg = latest.value - monthAgo.value;
+  const yrChg = latest.value - yearAgo.value;
+  const firstDate = valid[0].date;
+  const lastDate = valid[valid.length-1].date;
+
+  note.innerHTML = '✅ 实时数据已加载 · '+firstDate+' → '+lastDate+' · 共 '+valid.length+' 条';
+
+  // 迷你趋势条 + 数据卡
+  document.getElementById('ph-meta').innerHTML =
+    '<div class="ph-cell"><div class="lbl">最新值</div><div class="val" style="font-size:18px">'+formatNum(latest.value)+'</div><div style="font-size:10px;color:#a8a49e">'+latest.date+'</div></div>'+
+    '<div class="ph-cell"><div class="lbl">周变化</div><div class="val" style="color:'+(wkChg>=0?'#388a30':'#c0392b')+'">'+(wkChg>=0?'▲':'▼')+' '+formatNum(Math.abs(wkChg))+'</div></div>'+
+    '<div class="ph-cell"><div class="lbl">月变化</div><div class="val" style="color:'+(moChg>=0?'#388a30':'#c0392b')+'">'+(moChg>=0?'▲':'▼')+' '+formatNum(Math.abs(moChg))+'</div></div>'+
+    '<div class="ph-cell"><div class="lbl">年变化</div><div class="val" style="color:'+(yrChg>=0?'#388a30':'#c0392b')+'">'+(yrChg>=0?'▲':'▼')+' '+formatNum(Math.abs(yrChg))+'</div></div>';
+}
+
+function formatNum(v){ return typeof v==='number' ? v.toLocaleString('zh-CN',{maximumFractionDigits:2}) : String(v); }
 
 let st=null;
 document.getElementById('tree-search').addEventListener('input',e=>{
