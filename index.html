@@ -136,27 +136,22 @@ footer{max-width:1460px;margin:0 auto;padding:12px 24px 24px;color:#a8a49e;font-
    点品种chip = 切换当前品种+该指标 → 右侧面板显示占位
    ============================================================ */
 
-const CFG = { commodities: null, categories: null };
+// 配置内联（避免 GitHub Pages 对 .json Content-Type 处理异常）
+window.TREE_CONFIG = {"commodities": [{"id": "cu", "code": "CU", "name": "铜", "color": "#b06a32", "anchor": "矿端定价 · 铜博士"}, {"id": "al", "code": "AL", "name": "铝", "color": "#7a8a9c", "anchor": "电力成本定价"}, {"id": "pb", "code": "PB", "name": "铅", "color": "#6b7280", "anchor": "再生铅定价"}, {"id": "zn", "code": "ZN", "name": "锌", "color": "#5b7a8c", "anchor": "矿定价消费弱"}, {"id": "ni", "code": "NI", "name": "镍", "color": "#7a8c5b", "anchor": "边际看印尼"}, {"id": "sn", "code": "SN", "name": "锡", "color": "#8c6b9c", "anchor": "矿定价电子金属"}, {"id": "li", "code": "LC", "name": "锂", "color": "#4f8a7a", "anchor": "成本曲线+政策"}, {"id": "si", "code": "SI", "name": "硅", "color": "#c08a3e", "anchor": "工业硅+多晶硅"}], "categories": [{"id": "price", "label": "价格信号", "children": [{"id": "p1", "code": "2.1", "name": "盘面结构", "q": "持仓/价/成交量", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "p2", "code": "2.2", "name": "现货与升贴水", "q": "升贴水/基差", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "p3", "code": "2.3", "name": "海外价格", "q": "LME/COMEX/现金", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "p4", "code": "2.4", "name": "价差体系", "q": "月差/期限结构", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "p5", "code": "2.5", "name": "估值与利润", "q": "分位数/冶炼利润", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "p6", "code": "2.6", "name": "持仓席位观察", "q": "多空前20", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "li"]}]}, {"id": "supply", "label": "供给", "children": [{"id": "s1", "code": "3.1.1", "name": "海外矿·财报产量", "q": "真源·季度", "comms": ["cu", "al", "pb", "zn", "ni", "sn"]}, {"id": "s2", "code": "3.1.2", "name": "海外矿·分国别总量", "q": "月/年", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "li", "si"]}, {"id": "s3", "code": "3.1.3", "name": "国内矿产量", "q": "月", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "s4", "code": "3.1.4", "name": "矿进口量与分国别", "q": "月 滞后15-20天", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "li"]}, {"id": "s5", "code": "3.1.5", "name": "TC 加工费", "q": "先行·矿紧松", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "li"]}, {"id": "s6", "code": "3.2.1", "name": "精炼产量", "q": "同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "s7", "code": "3.2.2", "name": "开工率与检修", "q": "同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "s8", "code": "3.2.3", "name": "再生/二次供应", "q": "同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "li", "si"]}, {"id": "s9", "code": "3.2.4", "name": "冶炼利润→供应弹性", "q": "先行", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}]}, {"id": "inventory", "label": "库存", "children": [{"id": "i1", "code": "4.1", "name": "交易所库存", "q": "日 同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "i2", "code": "4.2", "name": "仓单", "q": "日 同步偏领先", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "i3", "code": "4.3", "name": "社会库存", "q": "周 同步偏滞后", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "i4", "code": "4.4", "name": "工厂库存", "q": "月/周", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "i5", "code": "4.5", "name": "隐性/在途库存", "q": "周/月", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}]}, {"id": "demand", "label": "需求", "children": [{"id": "d1", "code": "5.1", "name": "初级消费", "q": "开工率 同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "d2", "code": "5.2", "name": "终端细分消费", "q": "滞后", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "d3", "code": "5.3", "name": "需求先行指标", "q": "先行1-2月", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}]}, {"id": "trade", "label": "进出口", "children": [{"id": "t1", "code": "6.1", "name": "原料进口", "q": "滞后", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "t2", "code": "6.2", "name": "精炼金属进出口", "q": "滞后", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "t3", "code": "6.3", "name": "制品出口", "q": "同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "t4", "code": "6.4", "name": "海外对华发运", "q": "先行1月", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "li"]}]}, {"id": "cost", "label": "成本·利润", "children": [{"id": "c1", "code": "7.1", "name": "成本曲线与分位", "q": "季 同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "c2", "code": "7.2", "name": "日度利润测算", "q": "日 同步", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "c3", "code": "7.3", "name": "能源/原料成本", "q": "月 先行", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}]}, {"id": "balance", "label": "供需平衡", "children": [{"id": "b1", "code": "8.1", "name": "年度锚（行业协会）", "q": "滞后定方向", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "b2", "code": "8.2", "name": "自建平衡表", "q": "季/月", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}, {"id": "b3", "code": "8.3", "name": "表观消费拟合", "q": "月", "comms": ["cu", "al", "pb", "zn", "ni", "sn", "si", "li"]}]}]};
+const CFG = { commodities: TREE_CONFIG.commodities, categories: TREE_CONFIG.categories };
 let state = { curComm: null, curLeaf: null, curTab: null };
 
-async function loadConfig(){
-  try{
-    const r = await fetch('/data/tree_config.json');
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    const cfg = await r.json();
-    CFG.commodities = cfg.commodities;
-    CFG.categories = cfg.categories;
-    renderTabs();
-    renderTree();
-    state.curTab = CFG.categories[0].id;
-    const first = CFG.categories[0].children[0];
-    selectChip(first, first.comms[0], true);
-  }catch(e){
+function loadConfig(){
+  if(!CFG.categories || !CFG.commodities){
     document.getElementById('tree-box').innerHTML =
-      '<div style="padding:20px;color:#a8a49e;text-align:center">'+
-      '目录配置加载失败，请通过 GitHub Pages 访问<br>'+
-      '<code style="font-size:10px">algo23-yunqingtian.github.io/framework-tree/</code></div>';
+      '<div style="padding:20px;color:#a8a49e;text-align:center">配置加载失败</div>';
+    return;
   }
+  renderTabs();
+  renderTree();
+  state.curTab = CFG.categories[0].id;
+  const first = CFG.categories[0].children[0];
+  selectChip(first, first.comms[0], true);
 }
 
 function renderTabs(){
