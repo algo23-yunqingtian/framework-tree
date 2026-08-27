@@ -1,3 +1,6 @@
+"""
+⚠ DEPRECATED — 功能并入 refresh_cache.py (v1.3 合并版) — 本文件仅存历史，勿再使用
+"""
 #!/usr/bin/env python3
 """
 refresh_cache_i6_i12.py

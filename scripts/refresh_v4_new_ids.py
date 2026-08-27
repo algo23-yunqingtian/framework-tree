@@ -1,3 +1,6 @@
+"""
+⚠ DEPRECATED — 功能并入 refresh_cache.py (v1.3 合并版) — 本文件仅存历史，勿再使用
+"""
 #!/usr/bin/env python3
 """按 v4 定稿刷新 api_cache：补充 v4 新增的关键 zhiji_id。"""
 import subprocess, sys, json, sqlite3, os, time
