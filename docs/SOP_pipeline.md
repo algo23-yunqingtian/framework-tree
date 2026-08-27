@@ -184,8 +184,9 @@ python3 zhiji_batch_verify.py \
 
 **输出**：`4_1_zhiji_match_*.json`，含 A_hit / B_weak / C_miss / SKIP 分级和每命中项的 `zhiji_id`
 
-> ⚠ **search 端点必须显式传 source**（`smm`/`mysteel`），不传或传 `all` 几乎返回 0；若脚本里用 `all`，需自行调 `zhiji_api.py search 关键词 smm 5` 和 `mysteel 5` 两遍合并（脚本当前实现默认 `all`，命中弱时改手动补搜）
-> ⚠ **zhiji_api.py 内部 rate limit**：本地无配额但每次调系列 API 应 `sleep 1s`（脚本已内建）
+> ⚠ **zhiji_batch_verify.py 已内置 smm + mysteel 双源搜索**（v1.3 修复，原先 `all` 必漏）；如命中仍弱，需手工调 `zhiji_api.py search 关键词 smm 5` / `mysteel 5` 各一次补搜
+> ⚠ **search 端点必须显式传 source**（`smm`/`mysteel`），不传或传 `all` 几乎一律返回 0
+> ⚠ **本地限频**：zhiji_api.py 每次调系列需 `sleep 1s`（脚本已内建）
 
 ### STEP 4: 入库（indicators_v1.json 更新）
 
