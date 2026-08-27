@@ -1,0 +1,24 @@
+{
+  "_comment": "批量渲染配置。新增任务只在此文件加一行。output_dir 相对 prompt_lib/",
+  "output_dir": "../pb_prompt/batch",
+  "tasks": [
+    {
+      "dim": "库存",
+      "variety": "PB",
+      "subdirs": "4.1交易所库存|4.2仓单|4.3社会库存|4.4工厂库存(含原料)|4.5隐性·在途",
+      "output": "PB_库存_v19.md"
+    },
+    {
+      "dim": "供应",
+      "variety": "ZN",
+      "subdirs": "4.1精矿供应|4.2冶炼产量|4.3开工率|4.4进口供应",
+      "output": "ZN_供应_v19.md"
+    },
+    {
+      "dim": "需求",
+      "variety": "PB",
+      "subdirs": "4.1终端消费|4.2表观需求|4.3出口|4.4下游开工",
+      "output": "PB_需求_v19.md"
+    }
+  ]
+}

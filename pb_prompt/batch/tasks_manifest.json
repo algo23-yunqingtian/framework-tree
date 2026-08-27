@@ -1,0 +1,42 @@
+[
+  {
+    "task": 1,
+    "variety": "PB",
+    "dim": "库存",
+    "output": "PB_库存_v19.md",
+    "subdirs": [
+      "4.1交易所库存",
+      "4.2仓单",
+      "4.3社会库存",
+      "4.4工厂库存(含原料)",
+      "4.5隐性·在途"
+    ],
+    "path": "/home/ubuntu/framework-tree/prompt_lib/../pb_prompt/batch/PB_库存_v19.md"
+  },
+  {
+    "task": 2,
+    "variety": "ZN",
+    "dim": "供应",
+    "output": "ZN_供应_v19.md",
+    "subdirs": [
+      "4.1精矿供应",
+      "4.2冶炼产量",
+      "4.3开工率",
+      "4.4进口供应"
+    ],
+    "path": "/home/ubuntu/framework-tree/prompt_lib/../pb_prompt/batch/ZN_供应_v19.md"
+  },
+  {
+    "task": 3,
+    "variety": "PB",
+    "dim": "需求",
+    "output": "PB_需求_v19.md",
+    "subdirs": [
+      "4.1终端消费",
+      "4.2表观需求",
+      "4.3出口",
+      "4.4下游开工"
+    ],
+    "path": "/home/ubuntu/framework-tree/prompt_lib/../pb_prompt/batch/PB_需求_v19.md"
+  }
+]

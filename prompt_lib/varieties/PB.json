@@ -1,0 +1,21 @@
+{
+  "variety": "PB",
+  "name": "铅",
+  "meta": {
+    "version": "1.0",
+    "updated": "2026-08-27",
+    "source": "PB库存工作流沉淀",
+    "usage": "render_prompt.py --variety PB"
+  },
+  "industry_terms": [
+    "原生铅",
+    "再生铅",
+    "粗铅",
+    "电解铅",
+    "铅锭",
+    "废电瓶",
+    "还原铅",
+    "蓄电池/启停电池"
+  ],
+  "note": "industry_terms 用于提示模型指标命名贴近业内口径，不改变筛选范围。空数组则模板不注入该段。"
+}
