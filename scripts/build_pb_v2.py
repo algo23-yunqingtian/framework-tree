@@ -21,7 +21,16 @@ for m, zid, dj in rows:
 
 def pairs(metric):
     d = DATA[metric]
-    return [[dt, v] for dt, v in zip(d['dates'], d['values'])]
+    out = []
+    for dt, v in zip(d['dates'], d['values']):
+        if v is None or v == '' or v == '-':
+            continue
+        try:
+            fv = float(v)
+        except (ValueError, TypeError):
+            continue
+        out.append([dt, fv])
+    return out
 
 def divergence(metric, ma_win=40):
     d = DATA[metric]
@@ -167,19 +176,29 @@ def chart_line(metric, color, yname, cid, ch_code, ch_name, ch_src):
     return html, code
 
 def season_stats(pairs_l):
-    """按自然月对齐，返回各月统计。pairs_l=[(date,value)]"""
+    """按自然月对齐，返回各月统计。pairs_l=[(date,value)]，仅使用完整年份避免当前年干扰分位数"""
+    # 升序
+    pairs_l = sorted(pairs_l, key=lambda x: x[0])
     mon = {}
     for d, v in pairs_l:
-        k = (int(d[:4]), int(d[5:7]))
-        mon[k] = v  # 月末快照：取每月最后一条
-    ys = sorted({y for (y, m) in mon})
+        try:
+            k = (int(d[:4]), int(d[5:7]))
+            mon[k] = v  # 月末快照：取每月最后一条
+        except (ValueError, TypeError, KeyError):
+            continue
+    years = sorted({y for (y, m) in mon})
+    if len(years) < 2:
+        return list(range(1,13)), {}, years[-1] if years else 2026, [], [], []
+    # 用「前 N-1 个完整年」算分位，当前年单独显示
+    full_years = years[:-1]
+    cur = years[-1]
     months = list(range(1, 13))
-    def mvals(m):
-        return [mon[(y, m)] for y in ys if (y, m) in mon]
+    def mvals(m, ylist=full_years):
+        return [mon[(y, m)] for y in ylist if (y, m) in mon]
     mean5, p10, p90 = [], [], []
     for m in months:
         vals = sorted(mvals(m))
-        if len(vals) >= 4:
+        if len(vals) >= 2:
             def pct(p):
                 k = (len(vals) - 1) * p / 100.0
                 f = int(k); c = min(f + 1, len(vals) - 1)
@@ -188,8 +207,7 @@ def season_stats(pairs_l):
             mean5.append(round(sum(vals) / len(vals), 4))
         else:
             p10.append(None); p90.append(None); mean5.append(None)
-    cur = ys[-1] if ys else 2026
-    recent = [y for y in ys if y >= cur - 2]
+    recent = [y for y in years if y >= cur - 2]
     lines = {y: [(m, mon.get((y, m))) for m in months] for y in recent}
     return months, lines, cur, mean5, p10, p90
 
@@ -404,17 +422,25 @@ def build_42():
     m7 = dict(zip(DATA['i7']['dates'], DATA['i7']['values']))
     rpairs = []
     for dt in sorted(set(m6) & set(m7)):
-        denom = m6[dt] + m7[dt]
-        rpairs.append([dt, round(m7[dt] / denom * 100, 2) if denom else None])
+        try:
+            v6 = float(m6[dt]); v7 = float(m7[dt])
+        except (ValueError, TypeError):
+            continue
+        denom = v6 + v7
+        rpairs.append([dt, round(v7 / denom * 100, 2) if denom else None])
     h5b, c5b = chart_line_t("i7", "#7a8a9c", "%",
         "echart_p42_c5b", "C05b",
         "LME 注销仓单占比（逼仓风险监测）",
         f"SMM · 日 · 百分比 · 共{len(rpairs)}点", default_seasonal=True, data=rpairs)
-    return h5 + h5b + "".join(skeleton(*s) for s in [
+    return h5 + h5b + h5b_placeholder(c5 + c5b), c5 + c5b
+
+def h5b_placeholder(real_codes):
+    # 骨架统一置底：仓单子类只有2张真图，占位说明"其余待补"
+    return "".join(skeleton(*s) for s in [
         ("C03", "仓单地区集中度 HHI", "横向条形 · 仓库名", "SHFE仓单明细 / SHFE API", "需拉取仓库维度仓单日报"),
         ("C04", "交割品牌结构", "堆叠柱状 · 品牌×占比", "SHFE交割品牌 / 上期所月报", "品牌维度数据"),
         ("C06", "仓单融资质押规模", "折线 · 季度", "中证协 / 券商研报", "间接估算，非标准化口径"),
-    ]), c5 + c5b
+    ])
 
 def build_43():
     d = DATA['i3']
