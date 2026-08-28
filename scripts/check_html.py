@@ -49,6 +49,14 @@ PAGES = {
         "label": "2.3 海外价格",
         "has_seasonal": True,
     },
+    "24": {
+        "file": "pb_24_spread_system.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_24_c1", "echart_24_c2", "echart_24_c3"],
+        "label": "2.4 价差体系",
+        "has_seasonal": False,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,

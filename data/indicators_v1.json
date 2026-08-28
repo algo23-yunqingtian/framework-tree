@@ -71,6 +71,11 @@
       "v": "2.2",
       "date": "2026-08-29",
       "change": "2.3海外价格: 新增 j23_lme_cash/lme_3m/lme_0to3/lme_sp3/imp_profit 5指标 (LME现货结算+官方3M+升贴水×2+SMM进口盈亏; LME现货2945点11年)"
+    },
+    {
+      "v": "2.3",
+      "date": "2026-08-29",
+      "change": "2.4价差体系: 新增 j24_spread_m/s(期现价差当月/次月), j24_regen_profit(再生铅利润), j24_refine_spread(精废价差)"
     }
   ],
   "indicators": {
@@ -805,6 +810,57 @@
       "category": "price",
       "subleaf": "2.3海外价格",
       "source": "SMM"
+    },
+    "j24_spread_m": {
+      "name": "SMM 沪铅期现价差 当月合约 收盘价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a12841344"
+      },
+      "category": "price",
+      "subleaf": "2.4价差体系",
+      "source": "SMM",
+      "note": "2025-08起"
+    },
+    "j24_spread_s": {
+      "name": "SMM 沪铅期现价差 次月合约 收盘价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a12841348"
+      },
+      "category": "price",
+      "subleaf": "2.4价差体系",
+      "source": "SMM",
+      "note": "2025-08起"
+    },
+    "j24_regen_profit": {
+      "name": "SMM 再生铅利润",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a10016953"
+      },
+      "category": "price",
+      "subleaf": "2.4价差体系",
+      "source": "SMM",
+      "note": "亏损为负"
+    },
+    "j24_refine_spread": {
+      "name": "SMM 铅精废价差",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "j00146945"
+      },
+      "category": "price",
+      "subleaf": "2.4价差体系",
+      "source": "SMM"
     }
   },
   "64_group": {
@@ -820,7 +876,7 @@
       "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
     }
   },
-  "version": "2.2",
+  "version": "2.3",
   "updated": "2026-08-29",
-  "change": "2.3海外价格: 新增 j23_lme_cash/lme_3m/lme_0to3/lme_sp3/imp_profit 5指标 (LME现货结算+官方3M+升贴水×2+SMM进口盈亏; LME现货2945点11年)"
+  "change": "2.4价差体系: 新增 j24_spread_m/s(期现价差当月/次月), j24_regen_profit(再生铅利润), j24_refine_spread(精废价差)"
 }
