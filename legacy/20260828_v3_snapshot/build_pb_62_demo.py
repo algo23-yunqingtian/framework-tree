@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""铅(PB) 6.1 原料进口子页 · v2 · 3 图全真数据（复用 build_pb_64 v2 模板）。
+"""铅(PB) 6.2 精炼金属进出口子页 · v3 · 3 图全真数据（用户反馈重构版）。
 
-图1 海关铅精矿月度进口（季节/时序切换）：i40（月，吨）
-图2 到港→消化：i9 冶炼厂精矿库存(月) + i5 港口库存(周)（双轴）
-图3 防城到港量（历史周频，过滤非零）：i16（周，万吨）
+图1 海关铅锭月度进口（季节/时序切换）：i17（月，吨）—— 同花顺图1"进出口总量季节"进口侧的落地
+图2 未锻轧铅进出口双向：i17 进口 + i41 出口 双轴 —— 同花顺图5"HS 7801 进出口双向月度时序"
+图3 精炼铅净进口（计算）：i17 - i41 —— 同花顺图1"净进口补充还是净出口外流"
 
-⚠️ 修正：v1 页面 6.1 图2 误用了 i17（海关铅锭进口，属 6.2 精炼金属）。本次 v2 剔除 i17，
-   6.1 正主 = i40 海关铅精矿进口（原料端）。参见 analysis/iwencai/PB/61_diversify_20260828.md。
+⚠️ 每张图下方带"图备注"= 观测用途(什么时候看) + 指标关系(图里各指标怎么配合)。
+i7 LME 全球注销仓单移出 6.2（用户反馈与进出口关联牵强）——它属 4.1/6.4 发运背景。
 """
 import sqlite3, json, os
 from datetime import datetime
@@ -38,8 +38,8 @@ def latest(m):
     return max(m["dates"]) if m["dates"] else "-"
 
 
-def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
-    """单变量双模式图（时序⇄季节切换）。default_seasonal=False 时默认时序。"""
+def chart_line_t(cid, title, sub, color, data, note, default_seasonal=False):
+    """单变量双模式图（时序⇄季节切换）+ 图备注。"""
     json_pts = json.dumps(data, ensure_ascii=False)
     color30 = color + "30"
     color00 = color + "00"
@@ -62,7 +62,7 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
           "    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},\n"
           "    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
           "    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},\n"
-          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:window.__seasonalize(__d)}]\n"
+          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:[null,null,null,null,null,null,null,null,null,null,null,null]}]\n"
           "  }\n"
           "};\n"
           "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
@@ -80,8 +80,8 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
     return html, js
 
 
-def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note=''):
-    """双轴复合图。"""
+def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note):
+    """双轴复合图 + 图备注。"""
     ja = json.dumps(data_a, ensure_ascii=False)
     jb = json.dumps(data_b, ensure_ascii=False)
     color_a20 = color_a + "20"
@@ -137,90 +137,89 @@ document.onselectstart=e=>{e.preventDefault();return false};"""
 NOW = datetime.now().strftime("%Y-%m-%d")
 
 # === 读数据 ===
-m40 = load_metric("i40")   # 海关铅精矿进口量（月, 吨）
-m9 = load_metric("i9")     # 冶炼厂铅精矿库存（月, 金属吨）
-m5 = load_metric("i5")     # 精矿港口库存（周, 万吨）
-m16 = load_metric("i16")   # 防城到港（周, 万吨）
+m17 = load_metric("i17")   # 海关铅锭进口量（月, 吨）
+m41 = load_metric("i41")   # 海关铅锭出口量（月, 吨）
 
-d40 = pairs(m40)
-d9 = pairs(m9)
-d5 = pairs(m5)
-# i16 防城到港近期数据源停更（连续 0），过滤非零
-d16_filtered = [[d, v] for d, v in pairs(m16) if v is not None and float(v) != 0]
+d17 = pairs(m17)
+d41 = pairs(m41)
 
-# === 图1：海关铅精矿月度进口（季节/时序切换）===
+# 净进口 = i17 - i41（计算指标）
+d17d = {d: v for d, v in d17}
+d41d = {d: v for d, v in d41}
+common = sorted(set(d17d.keys()) & set(d41d.keys()))
+d_net = [[d, d17d[d] - d41d.get(d, 0)] for d in common]
+
+# === 图1：海关铅锭月度进口（季节/时序切换）===
 h1, j1 = chart_line_t(
-    "echart_61_c1",
-    "海关铅精矿月度进口量（原料端补库节奏，季节/时序切换）",
-    "海关 · 月 · 吨 · i40 %d 点 · 2018-01 至 %s" % (m40["n"], latest(m40)),
-    "#9b6bb5",
-    d40,
-    "什么时候看：原料端补库节奏、是否偏离季节性、冶炼厂原料库存能否撑住。<br>"
-    "怎么看：单指标图，核心看同比偏离。切到季节视图后把 8 年每月叠一起，"
-    "今年这条线明显低于历史同期 = 原料补给不及、冶炼厂面临缺矿减产风险；"
-    "明显高于 = 抢原料囤矿（对下游成本是利多）。"
+    "echart_62_c1",
+    "中国海关铅锭进口量（月度）—— 6.2 精炼金属正主",
+    "海关 · 月 · 吨 · i17 %d 点 · 2018-01 至 %s" % (m17["n"], latest(m17)),
+    "#b06a32",
+    d17,
+    "什么时候看：进口窗口是否打开、国内缺口靠进口补多少。<br>"
+    "怎么看：进口量高于历史同期 = 进口窗口打开/LME-沪铅价差有利抄底；连续下降 = 窗口关闭或海外无货可发。",
+    default_seasonal=True
 )
 
-# === 图2：到港→消化（冶炼厂精矿库存 vs 港口库存）===
+# === 图2：进出口双向（同花顺图5）===
 h2, j2 = chart_dual(
-    "echart_61_c2",
-    "到港→消化：冶炼厂精矿库存(月) + 港口库存(周)",
-    "SMM 冶炼厂(月,金属吨) · 精矿港口(周,万吨) · i9 %d 点 / i5 %d 点 · 至 %s / %s" % (m9["n"], m5["n"], latest(m9), latest(m5)),
-    d9, "#b06a32", "冶炼厂精矿库存", "金属吨(月,左)",
-    d5, "#7a8c5b", "精矿港口库存", "万吨(周,右)",
-    "什么时候看：到港的矿有没有真的进冶炼厂、原料消化效率高不高。<br>"
-    "两个指标的关系：这是「存量-流量」配对——精矿先到港堆在港口(港口库存=滞留环节)，"
-    "被冶炼厂拉走后变成厂内原料库存(冶炼厂库存=可冶炼环节)。<br>"
-    "港口库存升 + 厂内库存降 = 货滞留港口(冶炼厂不愿拉货/原料价格高/开工不足)，"
-    "原料端宽松；港口库存降 + 厂内库存升 = 冶炼厂积极备料，开工率预期上升。"
+    "echart_62_c2",
+    "未锻轧铅进出口双向（HS 7801）—— 中国是净买方还是净卖方",
+    "海关 · 月 · 吨 · i17 进口 %d 点 / i41 出口 %d 点 · 至 %s" % (m17["n"], m41["n"], latest(m17)),
+    d17, "#b06a32", "精炼铅进口", "吨(月,左)",
+    d41, "#5b98c9", "精炼铅出口", "吨(月,右)",
+    "什么时候看：判断中国在全球铅贸易中的角色切换、出口窗口是否打开。<br>"
+    "两个指标的关系：进口(左轴)是把海外货拉回国内，出口(右轴)是把国内货送往海外；<br>"
+    "两者都是 HS 7801 精炼铅的月度物理流向。进口主线放大而出口无起色 = 净进口扩大 = 国内缺口靠进口补；<br>"
+    "出口跳升（如2024-2025铅价内外倒挂时） = 出口利润打开、货往外流。进口 vs 出口差距收窄 = 贸易流向反转信号。"
 )
 
-# === 图3：防城到港量（历史周频，过滤非零）===
+# === 图3：净进口（同花顺图1 净进口侧）===
 h3, j3 = chart_line_t(
-    "echart_61_c3",
-    "铅矿防城到港量（历史周频，非零数据）",
-    "沸腾环贸 · 周 · 万吨 · i16 %d 点(非零) · 2020-01 至 %s · 近期数据源停更" % (len(d16_filtered), max([d for d,_ in d16_filtered]) if d16_filtered else "-"),
-    "#7a8c5b",
-    d16_filtered,
-    "什么时候看：到港节奏（比海关月度报关数据领先 2-4 周）。<br>"
-    "怎么看：单指标周频图，到港峰谷 = 集中卸船冲击。到港高峰 + 港口库存积压 = "
-    "冶炼厂接货意愿弱；到港高峰 + 库存快速下降 = 货一进港就被拉走。<br>"
-    "⚠️ 数据源近期停更（2026.08 起连续 0），仅保留历史周频序列。"
+    "echart_62_c3",
+    "精炼铅净进口量（月度）—— 进口补库 vs 出口外流对冲后的净结果",
+    "海关 · 月 · 吨 · 计算 i17-i41 · %d 点 · 至 %s" % (len(d_net), latest(m17)),
+    "#9b6bb5",
+    d_net,
+    "什么时候看：只看一条线就知道国内净缺口方向。<br>"
+    "怎么看：净进口 >0 且放大 = 国内真缺货靠进口补（利多转弱信号，因供给在补）；<br>"
+    "净进口接近 0 或转负 = 国内不缺甚至外流（本地供给过剩，累库压力）。",
+    default_seasonal=True
 )
 
 # === 拼装页面 ===
 page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>铅(PB) 6.1 原料进口 · 有色金属研究框架</title>
+<title>铅(PB) 6.2 精炼金属进出口 · 有色金属研究框架</title>
 <style>""" + CSS + """</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.1 原料进口 · v3 3 图(带图备注)</div>
-  <div class="hright">数据固化快照 · """ + NOW + """ · 海关/SMM/沸腾环贸</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.2 精炼金属进出口 · v3 3 图(带图备注+双向)</div>
+  <div class="hright">数据固化快照 · """ + NOW + """ · 海关</div>
 </div>
 <div class="panel">
 """ + h1 + h2 + h3 + """
 <div class="note">
-<strong style="color:#c9d1d9">6.1 定义与数据源说明：</strong>6.1「原料进口」= 进口铅精矿(原料) → 港口到港 → 港口库存 → 冶炼厂原料库存 这条"原料端补库"链条。<br>
-<strong style="color:#c9d1d9">指标组</strong>：i40 海关铅精矿进口量(月,吨) · i5 精矿港口库存(周,万吨) · i9 冶炼厂铅精矿库存(月,金属吨) · i16 防城铅矿到港(周,万吨)。<br>
-<strong style="color:#c9d1d9">v2 关键修正</strong>：v1 页面 6.1 图2 误用了 i17（海关铅锭进口，属 6.2 精炼金属范畴），本次 v2 剔除 i17。6.1 正主 = i40 海关铅精矿进口（原料端）。<br>
-<strong style="color:#c9d1d9">数据源缺口</strong>：同花顺 6.1 推荐图中「进口来源国集中度」「年度累计来源国热力图」「银精矿伴生含铅量」知几无原始月度分国别矩阵或独立口径，已剔除（详见 analysis/iwencai/PB/61_diversify_20260828.md 自检报告）。同花顺确认前十大进口来源国 = 俄罗斯/秘鲁/澳大利亚/塔吉克斯坦/巴西（仅作定性参考）。<br>
-<strong style="color:#c9d1d9">数据源停更备注</strong>：i16 防城到港近期（2026.08）连续 0，数据源停更；图3 用过滤后 293 点（大部分 2020-2025 有值）。
+<strong style="color:#c9d1d9">6.2 定义：</strong>进口未锻轧精炼铅(HS 7801) → 出口 → 净进口，这条"精炼金属双向贸易"链条。<br>
+<strong style="color:#c9d1d9">指标组：</strong>i17 海关铅锭进口量(月,吨) · i41 海关铅锭出口量(月,吨,v1.9 新增) · 净进口=i17-i41(计算)。<br>
+<strong style="color:#c9d1d9">v3 变更（用户反馈）：</strong>图2 由"进口+全球注销仓单"(关联牵强)改为"进口+出口"双向(对应同花顺图5)；i7 LME 全球注销仓单移出 6.2（属 4.1/6.4 发运背景）；新增 i41 出口指标；所有图表补"图备注"(📌 什么时候看+指标关系)。<br>
+<strong style="color:#c9d1d9">数据源缺口：</strong>粗铅/铅合金独立口径、出口目的地分布（知几无分矩阵）、进口来源国月度矩阵（用总量代理，2026.7 印度 3626/澳洲 1613）。<br>
+详见 analysis/iwencai/PB/62_diversify_20260828.md。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.1 原料进口 · v2（3 图全真数据 · 原料端补库）· indicators_v1.json v1.9</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.2 精炼金属进出口 · v3（3 图全真数据 · HS 7801 双向）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 """ + ANTI + """
 """ + j1 + "\n" + j2 + "\n" + j3 + """
-function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
 function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
 window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
 btn.textContent=nxt==='ts'?'⏱ 时序':'☀ 季节';}
-window.addEventListener('resize',function(){['echart_61_c1','echart_61_c2','echart_61_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+window.addEventListener('resize',function(){['echart_62_c1','echart_62_c2','echart_62_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
 </script></body></html>"""
 
-out_path = os.path.join(os.path.dirname(BASE), "pb_61_raw_material_import.html")
+out_path = os.path.join(os.path.dirname(BASE), "pb_62_import_export.html")
 with open(out_path, "w", encoding="utf-8") as f:
     f.write(page_html)
 print("[OK] 已生成: %s (%d 字节)" % (out_path, len(page_html)))
-print("[POINTS] i40=%d i9=%d i5=%d i16_filtered=%d" % (m40["n"], m9["n"], m5["n"], len(d16_filtered)))
+print("[POINTS] i17=%d i41=%d 净进口计算=%d" % (m17["n"], m41["n"], len(d_net)))
+print("[SAMPLE 2026.07] 进口=%s 出口=%s 净进口=%s" % (d17d.get('2026-07-31'), d41d.get('2026-07-31'), (d17d.get('2026-07-31',0)-d41d.get('2026-07-31',0))))

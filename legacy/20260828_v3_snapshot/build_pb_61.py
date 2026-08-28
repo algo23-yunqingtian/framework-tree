@@ -62,7 +62,7 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
           "    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},\n"
           "    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
           "    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},\n"
-          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:window.__seasonalize(__d)}]\n"
+          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:[null,null,null,null,null,null,null,null,null,null,null,null]}]\n"
           "  }\n"
           "};\n"
           "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
@@ -212,7 +212,6 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 <script>
 """ + ANTI + """
 """ + j1 + "\n" + j2 + "\n" + j3 + """
-function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
 function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
 window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
 btn.textContent=nxt==='ts'?'⏱ 时序':'☀ 季节';}

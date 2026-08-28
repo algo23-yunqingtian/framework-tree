@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""铅(PB) 6.1 原料进口子页 · v2 · 3 图全真数据（复用 build_pb_64 v2 模板）。
+"""铅(PB) 6.3 制品出口子页 · v2 · 3 图全真数据（复用 build_pb_62_demo.py v2 模板）。
 
-图1 海关铅精矿月度进口（季节/时序切换）：i40（月，吨）
-图2 到港→消化：i9 冶炼厂精矿库存(月) + i5 港口库存(周)（双轴）
-图3 防城到港量（历史周频，过滤非零）：i16（周，万吨）
+图1 铅蓄电池出口总量（季节/时序切换）：i37（月，个）
+图2 启动型铅蓄电池出口（季节/时序切换）：i38（月，个）
+图3 启动型 vs 其他类型结构（双轴）：i38 起动型 + (i37-i38) 其他类型
 
-⚠️ 修正：v1 页面 6.1 图2 误用了 i17（海关铅锭进口，属 6.2 精炼金属）。本次 v2 剔除 i17，
-   6.1 正主 = i40 海关铅精矿进口（原料端）。参见 analysis/iwencai/PB/61_diversify_20260828.md。
+⚠️ 数据源缺口：铅蓄电池进口（HS 8507 含锂电池需剔除）、出口目的地分布（知几无矩阵）——详见 63_diversify_20260828.md。
+⚠️ 政策变量：海合会反倾销税率 25.8-74%，2026.1.13 生效。
 """
 import sqlite3, json, os
 from datetime import datetime
@@ -39,7 +39,7 @@ def latest(m):
 
 
 def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
-    """单变量双模式图（时序⇄季节切换）。default_seasonal=False 时默认时序。"""
+    """单变量双模式图（时序⇄季节切换）。"""
     json_pts = json.dumps(data, ensure_ascii=False)
     color30 = color + "30"
     color00 = color + "00"
@@ -62,7 +62,7 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
           "    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},\n"
           "    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
           "    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},\n"
-          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:window.__seasonalize(__d)}]\n"
+          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:[null,null,null,null,null,null,null,null,null,null,null,null]}]\n"
           "  }\n"
           "};\n"
           "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
@@ -137,90 +137,97 @@ document.onselectstart=e=>{e.preventDefault();return false};"""
 NOW = datetime.now().strftime("%Y-%m-%d")
 
 # === 读数据 ===
-m40 = load_metric("i40")   # 海关铅精矿进口量（月, 吨）
-m9 = load_metric("i9")     # 冶炼厂铅精矿库存（月, 金属吨）
-m5 = load_metric("i5")     # 精矿港口库存（周, 万吨）
-m16 = load_metric("i16")   # 防城到港（周, 万吨）
+m37 = load_metric("i37")   # 铅蓄电池出口总量（月, 个）
+m38 = load_metric("i38")   # 起动型铅蓄电池出口（月, 个）
+m39 = load_metric("i39")   # 铅蓄电池出口累计（月, 个）— 备用
 
-d40 = pairs(m40)
-d9 = pairs(m9)
-d5 = pairs(m5)
-# i16 防城到港近期数据源停更（连续 0），过滤非零
-d16_filtered = [[d, v] for d, v in pairs(m16) if v is not None and float(v) != 0]
+d37 = pairs(m37)
+d38 = pairs(m38)
 
-# === 图1：海关铅精矿月度进口（季节/时序切换）===
+# 计算"其他类型"= i37 - i38
+m37_dict = {d: v for d, v in d37}
+m38_dict = {d: v for d, v in d38}
+common_dates = sorted(set(m37_dict.keys()) & set(m38_dict.keys()))
+d_other = [[d, m37_dict[d] - m38_dict[d]] for d in common_dates]
+
+# === 图1：铅蓄电池出口总量（季节/时序切换）===
 h1, j1 = chart_line_t(
-    "echart_61_c1",
-    "海关铅精矿月度进口量（原料端补库节奏，季节/时序切换）",
-    "海关 · 月 · 吨 · i40 %d 点 · 2018-01 至 %s" % (m40["n"], latest(m40)),
+    "echart_63_c1",
+    "铅蓄电池出口总量（6.3 制品出口正主，季节/时序切换）",
+    "海关 · 月 · 个 · i37 %d 点 · 2018-01 至 %s" % (m37["n"], latest(m37)),
     "#9b6bb5",
-    d40,
-    "什么时候看：原料端补库节奏、是否偏离季节性、冶炼厂原料库存能否撑住。<br>"
-    "怎么看：单指标图，核心看同比偏离。切到季节视图后把 8 年每月叠一起，"
-    "今年这条线明显低于历史同期 = 原料补给不及、冶炼厂面临缺矿减产风险；"
-    "明显高于 = 抢原料囤矿（对下游成本是利多）。"
+    d37,
+    "什么时候看：出口旺季成色、海合会反倾销生效后出口是否受冲击。<br>"
+    "怎么看：单指标月度图，季节性强（Q4/Q1 旺）。切季节视图对比历史同期，"
+    "今年旺季线明显低于历史 = 旺季成色差、需求外流受抑；"
+    "反倾销 2026.1.13 生效后 1-6 月线持续走弱 = 政策直接杀伤可见。",
+    default_seasonal=True
 )
 
-# === 图2：到港→消化（冶炼厂精矿库存 vs 港口库存）===
-h2, j2 = chart_dual(
-    "echart_61_c2",
-    "到港→消化：冶炼厂精矿库存(月) + 港口库存(周)",
-    "SMM 冶炼厂(月,金属吨) · 精矿港口(周,万吨) · i9 %d 点 / i5 %d 点 · 至 %s / %s" % (m9["n"], m5["n"], latest(m9), latest(m5)),
-    d9, "#b06a32", "冶炼厂精矿库存", "金属吨(月,左)",
-    d5, "#7a8c5b", "精矿港口库存", "万吨(周,右)",
-    "什么时候看：到港的矿有没有真的进冶炼厂、原料消化效率高不高。<br>"
-    "两个指标的关系：这是「存量-流量」配对——精矿先到港堆在港口(港口库存=滞留环节)，"
-    "被冶炼厂拉走后变成厂内原料库存(冶炼厂库存=可冶炼环节)。<br>"
-    "港口库存升 + 厂内库存降 = 货滞留港口(冶炼厂不愿拉货/原料价格高/开工不足)，"
-    "原料端宽松；港口库存降 + 厂内库存升 = 冶炼厂积极备料，开工率预期上升。"
+# === 图2：启动型铅蓄电池出口（季节/时序切换）===
+h2, j2 = chart_line_t(
+    "echart_63_c2",
+    "启动型铅蓄电池出口量（HS 85071000，季节/时序切换）",
+    "海关 · 月 · 个 · i38 %d 点 · 2018-01 至 %s" % (m38["n"], latest(m38)),
+    "#b06a32",
+    d38,
+    "什么时候看：汽车启动用电池这条主力线的景气度。<br>"
+    "怎么看：单指标月度图。启动型是铅蓄电池出口的绝对主力（约 30%），"
+    "它的斜率 = 汽车产业链的海外需求；若整体出口(i37)走弱但启动型坚挺 = "
+    "结构在切向储能/两轮（非启动型），铅需求拉动逻辑会变。",
+    default_seasonal=True
 )
 
-# === 图3：防城到港量（历史周频，过滤非零）===
-h3, j3 = chart_line_t(
-    "echart_61_c3",
-    "铅矿防城到港量（历史周频，非零数据）",
-    "沸腾环贸 · 周 · 万吨 · i16 %d 点(非零) · 2020-01 至 %s · 近期数据源停更" % (len(d16_filtered), max([d for d,_ in d16_filtered]) if d16_filtered else "-"),
-    "#7a8c5b",
-    d16_filtered,
-    "什么时候看：到港节奏（比海关月度报关数据领先 2-4 周）。<br>"
-    "怎么看：单指标周频图，到港峰谷 = 集中卸船冲击。到港高峰 + 港口库存积压 = "
-    "冶炼厂接货意愿弱；到港高峰 + 库存快速下降 = 货一进港就被拉走。<br>"
-    "⚠️ 数据源近期停更（2026.08 起连续 0），仅保留历史周频序列。"
+# === 图3：启动型 vs 其他类型结构（双轴）===
+h3, j3 = chart_dual(
+    "echart_63_c3",
+    "铅蓄电池出口结构：启动型 vs 其他类型（HS 85071000 vs 85072000）",
+    "海关 · 月 · 个 · i38 启动型 %d 点 / (i37-i38) 其他类型 %d 点 · 至 %s" % (m38["n"], len(d_other), latest(m38)),
+    d38, "#b06a32", "启动型铅蓄电池", "个(月,左)",
+    d_other, "#5b98c9", "其他类型铅蓄电池", "个(月,右)",
+    "什么时候看：出口结构是否切换、铅需求拉动逻辑是否改变。<br>"
+    "两个指标的关系：左轴启动型(85071000)是汽车链，右轴其他(85072000)是储能/UPS/两轮链，"
+    "两者相加 = 铅蓄电池出口总量(i37)。<br>"
+    "启动型上升 = 汽车链强势；其他类型上升 = 储能/两轮崛起。两条线走势分化 = "
+    "产品结构切换；若启动型塌而总量稳 = 出口全靠储能撑（铅单耗不同，需求折算要重估）。"
 )
 
 # === 拼装页面 ===
 page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>铅(PB) 6.1 原料进口 · 有色金属研究框架</title>
+<title>铅(PB) 6.3 制品出口 · 有色金属研究框架</title>
 <style>""" + CSS + """</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.1 原料进口 · v3 3 图(带图备注)</div>
-  <div class="hright">数据固化快照 · """ + NOW + """ · 海关/SMM/沸腾环贸</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.3 制品出口 · v3 3 图(带图备注)</div>
+  <div class="hright">数据固化快照 · """ + NOW + """ · 海关</div>
 </div>
 <div class="panel">
 """ + h1 + h2 + h3 + """
 <div class="note">
-<strong style="color:#c9d1d9">6.1 定义与数据源说明：</strong>6.1「原料进口」= 进口铅精矿(原料) → 港口到港 → 港口库存 → 冶炼厂原料库存 这条"原料端补库"链条。<br>
-<strong style="color:#c9d1d9">指标组</strong>：i40 海关铅精矿进口量(月,吨) · i5 精矿港口库存(周,万吨) · i9 冶炼厂铅精矿库存(月,金属吨) · i16 防城铅矿到港(周,万吨)。<br>
-<strong style="color:#c9d1d9">v2 关键修正</strong>：v1 页面 6.1 图2 误用了 i17（海关铅锭进口，属 6.2 精炼金属范畴），本次 v2 剔除 i17。6.1 正主 = i40 海关铅精矿进口（原料端）。<br>
-<strong style="color:#c9d1d9">数据源缺口</strong>：同花顺 6.1 推荐图中「进口来源国集中度」「年度累计来源国热力图」「银精矿伴生含铅量」知几无原始月度分国别矩阵或独立口径，已剔除（详见 analysis/iwencai/PB/61_diversify_20260828.md 自检报告）。同花顺确认前十大进口来源国 = 俄罗斯/秘鲁/澳大利亚/塔吉克斯坦/巴西（仅作定性参考）。<br>
-<strong style="color:#c9d1d9">数据源停更备注</strong>：i16 防城到港近期（2026.08）连续 0，数据源停更；图3 用过滤后 293 点（大部分 2020-2025 有值）。
+<strong style="color:#c9d1d9">6.3 定义与数据源说明：</strong>6.3「制品出口」= 铅蓄电池出口(HS 8507) → 分启动型(85071000)/其他(85072000)结构 → 分目的地 → 海合会反倾销政策。这条"下游制品出口"链条。<br>
+<strong style="color:#c9d1d9">指标组</strong>：i37 铅蓄电池出口总量(月,个) · i38 起动型铅蓄电池出口(月,个) · 计算"其他类型"=(i37-i38)。<br>
+<strong style="color:#c9d1d9">数据源缺口</strong>：<br>
+· 铅蓄电池进口：HS 8507 含锂电池需剔除，知几无独立"铅蓄电池进口"序列 → 用 i37 总量代理"净出口"概念；<br>
+· 出口目的地分布：知几无分目的地矩阵 → 剔除；<br>
+· HS 7806 铅材制品（铅条/铅板/铅焊料）：口径不清 → 剔除。<br>
+<strong style="color:#c9d1d9">政策变量</strong>：海合会反倾销税率 25.8-74%，2026.1.13 生效；2026.7 出口 1904.58 万只，累计同比-6.57%。<br>
+详见 analysis/iwencai/PB/63_diversify_20260828.md 自检报告。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.1 原料进口 · v2（3 图全真数据 · 原料端补库）· indicators_v1.json v1.9</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.3 制品出口 · v2（3 图全真数据 · HS 8507 制品出口）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 """ + ANTI + """
 """ + j1 + "\n" + j2 + "\n" + j3 + """
-function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
 function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
 window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
 btn.textContent=nxt==='ts'?'⏱ 时序':'☀ 季节';}
-window.addEventListener('resize',function(){['echart_61_c1','echart_61_c2','echart_61_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+window.addEventListener('resize',function(){['echart_63_c1','echart_63_c2','echart_63_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
 </script></body></html>"""
 
-out_path = os.path.join(os.path.dirname(BASE), "pb_61_raw_material_import.html")
+out_path = os.path.join(os.path.dirname(BASE), "pb_63_product_export.html")
 with open(out_path, "w", encoding="utf-8") as f:
     f.write(page_html)
 print("[OK] 已生成: %s (%d 字节)" % (out_path, len(page_html)))
-print("[POINTS] i40=%d i9=%d i5=%d i16_filtered=%d" % (m40["n"], m9["n"], m5["n"], len(d16_filtered)))
+print("[POINTS] i37=%d i38=%d 其他类型计算=%d" % (m37["n"], m38["n"], len(d_other)))
+print("[SAMPLE] 2026.07 i37=%d i38=%d 其他=%d" % (m37_dict.get('2026-07-31', 0), m38_dict.get('2026-07-31', 0), m37_dict.get('2026-07-31', 0) - m38_dict.get('2026-07-31', 0)))
