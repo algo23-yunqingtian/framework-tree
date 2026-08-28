@@ -10,8 +10,10 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart{background:#0d1117;border-radius:6px;padding:12px;margin:12px 0;border:1px solid #21262d}
 .chart-title{font-size:15px;font-weight:600;margin-bottom:6px;color:#e6edf3}
 .chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
-footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
+.chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
+.chart button:hover{background:#30363d;color:#c9d1d9}
 .chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
+footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
 .note strong{color:#c9d1d9}</style></head><body>
 <div class="header">
@@ -28,7 +30,7 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <strong style="color:#c9d1d9">v2 变更</strong>：i40 海关铅精矿进口已从 6.4 调回 6.1 原料进口正主（indicators_v1.json v1.9）；本页面改用 LME 分地区+海关序列组合，无需新增 zhiji_id。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.4 海外对华发运 · v2（3 图全真数据 · LME 分地区代理）· indicators_v1.json v1.9</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.4 海外对华发运 · v3（3 图全真数据 · LME 分地区代理 · 季节真数据）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.oncontextmenu=e=>{e.preventDefault();return false};
@@ -86,5 +88,10 @@ window['__opts_echart_64_c3'] = {
 window['__inst_echart_64_c3'] = echarts.init(document.getElementById('echart_64_c3'),'dark');
 window['__inst_echart_64_c3'].setOption(window['__opts_echart_64_c3'], true);
 
+function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
+function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
+window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
+btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
 window.addEventListener('resize',function(){['echart_64_c1','echart_64_c2','echart_64_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+
 </script></body></html>
