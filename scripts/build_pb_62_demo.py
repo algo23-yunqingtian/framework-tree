@@ -34,61 +34,64 @@ def chart_line_t(mid, color, unit, cid, title, sub, default_seasonal=False, data
     color30 = color + "30"
     color00 = color + "00"
     color20 = color + "20"
-    js = """
-window['__opts_{cid}'] = {{
-  ts: {{
-    tooltip:{{trigger:'axis'}},grid:{{left:55,right:60,top:30,bottom:40}},
-    xAxis:{{type:'time',axisLabel:{{color:'#aaa',interval:0}},splitLine:{{show:false}},axisLine:{{lineStyle:{{color:'#444'}}}},axisTick:{{lineStyle:{{color:'#444'}}}}}},
-    yAxis:{{type:'value',axisLabel:{{color:'#aaa'}},splitLine:{{lineStyle:{{color:'#333',type:'dashed'}}}},axisLine:{{lineStyle:{{color:'#444'}}}}}},
-    series:[{{name:'{title}',type:'line',smooth:true,symbol:'circle',symbolSize:4,
-      lineStyle:{{color:'{color}',width:2}},
-      areaStyle:{{color:{{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{{offset:0,color:'{color30}'}},{{offset:1,color:'{color00}'}}]}}}},
-      data:__d,markPoint:{{symbol:'circle',symbolSize:6,data:[{{coord:[__d[__d.length-1][0],__d[__d.length-1][1]],
-        itemStyle:{{color:'{color}' }},label:{{show:false}}}}]}}}}]
-  }},
-  se: {{
-    tooltip:{{trigger:'axis'}},grid:{{left:55,right:60,top:30,bottom:40}},
-    xAxis:{{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-      axisLabel:{{color:'#aaa'}},splitLine:{{show:false}},axisLine:{{lineStyle:{{color:'#444'}}}}}},
-    yAxis:{{type:'value',axisLabel:{{color:'#aaa'}},splitLine:{{lineStyle:{{color:'#333',type:'dashed'}}}},axisLine:{{lineStyle:{{color:'#444'}}}}}},
-    series:[{{name:'{title}',type:'line',smooth:true,symbol:'circle',symbolSize:4,
-      lineStyle:{{color:'{color}',width:2}},areaStyle:{{color:'{color20}' }},data:[null,null,null,null,null,null,null,null,null,null,null,null]}}]
-  }}
-}};
-window['__inst_{cid}'] = echarts.init(document.getElementById('{cid}'),'dark');
-window['__mode_{cid}'] = '{mode}';
-window['__inst_{cid}'].setOption(window['__opts_{cid}']['{mode}'], true);
-window.__data_{cid} = {json_pts};
-""".replace("{cid}", cid).replace("{title}", title).replace("{color}", color)\
-       .replace("{color30}", color30).replace("{color00}", color00).replace("{color20}", color20)\
-       .replace("{mode}", "se" if default_seasonal else "ts").replace("{json_pts}", json_pts)
-    mode_init = "se" if default_seasonal else "ts"
-    html = '<div class="chart"><div class="chart-title">%s</div><div class="chart-sub">%s</div><div id="%s" style="width:100%%;height:260px"></div><button onclick="window.__tgl(\'%s\',this)">☀ 季节</button></div>' % (title, sub, cid, cid)
+    mode = "se" if default_seasonal else "ts"
+    js = ("window['__opts_%s'] = {\n"
+          "  ts: {\n"
+          "    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},\n"
+          "    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},\n"
+          "    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,\n"
+          "      lineStyle:{color:'%s',width:2},\n"
+          "      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'%s'},{offset:1,color:'%s'}]}},\n"
+          "      data:__d,markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[__d[__d.length-1][0],__d[__d.length-1][1]],\n"
+          "        itemStyle:{color:'%s'},label:{show:false}}]}}]\n"
+          "  },\n"
+          "  se: {\n"
+          "    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},\n"
+          "    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "    series:[{name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:[null,null,null,null,null,null,null,null,null,null,null,null]}]\n"
+          "  }\n"
+          "};\n"
+          "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
+          "window['__mode_%s'] = '%s';\n"
+          "window['__inst_%s'].setOption(window['__opts_%s']['%s'], true);\n"
+          "window.__data_%s = %s;\n"
+          ) % (cid, title, color, color30, color00, color,
+               title, color, color20,
+               cid, cid, cid, mode, cid, cid, mode, cid, json_pts)
+    html = ('<div class="chart"><div class="chart-title">%s</div>'
+            '<div class="chart-sub">%s</div>'
+            '<div id="%s" style="width:100%%;height:260px"></div>'
+            '<button onclick="window.__tgl(\'%s\',this)">☀ 季节</button></div>'
+            ) % (title, sub, cid, cid)
     return html, js
 
 def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b):
     ja = json.dumps(data_a, ensure_ascii=False); jb = json.dumps(data_b, ensure_ascii=False)
-    js = """
-window['__opts_%s'] = {
-    tooltip:{trigger:'axis'},
-    legend:{data:['%s','%s'],textStyle:{color:'#ccc'},top:0},
-    grid:{left:55,right:55,top:45,bottom:40},
-    xAxis:{type:'time',axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
-    yAxis:[
-      {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
-      {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}}
-    ],
-    series:[
-      {name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},
-       areaStyle:{color:'%s20'},data:%s},
-      {name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},
-       yAxisIndex:1,areaStyle:{color:'%s20'},data:%s}
-    ]
-};
-window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');
-window['__inst_%s'].setOption(window['__opts_%s'], true);
-""" % (cid, name_a, name_b, unit_a, unit_b, name_a, color_a, color_a, ja, name_b, color_b, color_b, jb, cid, cid, cid, cid)
-    html = '<div class="chart"><div class="chart-title">%s</div><div class="chart-sub">%s</div><div id="%s" style="width:100%%;height:300px"></div></div>' % (title, sub, cid)
+    color_a20 = color_a + "20"; color_b20 = color_b + "20"
+    js = ("window['__opts_%s'] = {\n"
+          "  tooltip:{trigger:'axis'},\n"
+          "  legend:{data:['%s','%s'],textStyle:{color:'#ccc'},top:0},\n"
+          "  grid:{left:55,right:55,top:45,bottom:40},\n"
+          "  xAxis:{type:'time',axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "  yAxis:[\n"
+          "    {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "    {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}}\n"
+          "  ],\n"
+          "  series:[\n"
+          "    {name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:%s},\n"
+          "    {name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'%s',width:2},yAxisIndex:1,areaStyle:{color:'%s'},data:%s}\n"
+          "  ]\n"
+          "};\n"
+          "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
+          "window['__inst_%s'].setOption(window['__opts_%s'], true);\n"
+          ) % (cid, name_a, name_b, unit_a, unit_b, name_a, color_a, color_a20, ja,
+               name_b, color_b, color_b20, jb, cid, cid, cid, cid)
+    html = ('<div class="chart"><div class="chart-title">%s</div>'
+            '<div class="chart-sub">%s</div>'
+            '<div id="%s" style="width:100%%;height:300px"></div></div>'
+            ) % (title, sub, cid)
     return html, js
 
 # 反拷贝保护 CSS + JS
