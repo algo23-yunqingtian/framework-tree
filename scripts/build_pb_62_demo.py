@@ -35,7 +35,9 @@ def chart_line_t(mid, color, unit, cid, title, sub, default_seasonal=False, data
     color00 = color + "00"
     color20 = color + "20"
     mode = "se" if default_seasonal else "ts"
-    js = ("window['__opts_%s'] = {\n"
+    js = ("window['__data_%s'] = %s;\n"
+          "var __d = window['__data_%s'];\n"
+          "window['__opts_%s'] = {\n"
           "  ts: {\n"
           "    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},\n"
           "    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},\n"
@@ -56,10 +58,9 @@ def chart_line_t(mid, color, unit, cid, title, sub, default_seasonal=False, data
           "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
           "window['__mode_%s'] = '%s';\n"
           "window['__inst_%s'].setOption(window['__opts_%s']['%s'], true);\n"
-          "window.__data_%s = %s;\n"
-          ) % (cid, title, color, color30, color00, color,
+          ) % (cid, json_pts, cid, cid, title, color, color30, color00, color,
                title, color, color20,
-               cid, cid, cid, mode, cid, cid, mode, cid, json_pts)
+               cid, cid, cid, mode, cid, cid, mode)
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
             '<div id="%s" style="width:100%%;height:260px"></div>'
