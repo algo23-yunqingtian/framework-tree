@@ -510,6 +510,49 @@
       "ids": {
         "PB": "a10017070"
       }
+    },
+    "i37": {
+      "name": "中国海关铅蓄电池出口量",
+      "unit": "个",
+      "freq": "monthly",
+      "verified": true,
+      "category": "trade_product",
+      "ids": {
+        "PB": "a10017078"
+      }
+    },
+    "i38": {
+      "name": "中国海关起动型铅蓄电池出口量",
+      "unit": "个",
+      "freq": "monthly",
+      "verified": true,
+      "category": "trade_product",
+      "ids": {
+        "PB": "a10151429"
+      }
+    },
+    "i39": {
+      "name": "中国海关铅蓄电池出口量累计",
+      "unit": "个",
+      "freq": "monthly",
+      "verified": true,
+      "category": "trade_product",
+      "ids": {
+        "PB": "a10151427"
+      }
+    },
+    "i40": {
+      "name": "中国海关铅精矿进口量(海外对华发运代理)",
+      "unit": "吨",
+      "freq": "monthly",
+      "verified": true,
+      "category": "trade_overseas_shipping",
+      "ids": {
+        "PB": "a10017055"
+      }
     }
-  }
+  },
+  "version": "1.4",
+  "updated": "2026-08-28",
+  "change": "补录 i19-i36 18 个指标；v1.4 新增 i37-i40(铅蓄电池出口/起动型/累计/海外对华发运代理)"
 }
