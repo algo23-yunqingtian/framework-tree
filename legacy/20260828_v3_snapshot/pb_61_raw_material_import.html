@@ -24,14 +24,14 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <div class="panel">
 <div class="chart"><div class="chart-title">海关铅精矿月度进口量（原料端补库节奏，季节/时序切换）</div><div class="chart-sub">海关 · 月 · 吨 · i40 103 点 · 2018-01 至 2026-07-31</div><div id="echart_61_c1" style="width:100%;height:280px"></div><button onclick="window.__tgl('echart_61_c1',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：原料端补库节奏、是否偏离季节性、冶炼厂原料库存能否撑住。<br>怎么看：单指标图，核心看同比偏离。切到季节视图后把 8 年每月叠一起，今年这条线明显低于历史同期 = 原料补给不及、冶炼厂面临缺矿减产风险；明显高于 = 抢原料囤矿（对下游成本是利多）。</div></div><div class="chart"><div class="chart-title">到港→消化：冶炼厂精矿库存(月) + 港口库存(周)</div><div class="chart-sub">SMM 冶炼厂(月,金属吨) · 精矿港口(周,万吨) · i9 103 点 / i5 155 点 · 至 2026-07-31 / 2026-08-21</div><div id="echart_61_c2" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：到港的矿有没有真的进冶炼厂、原料消化效率高不高。<br>两个指标的关系：这是「存量-流量」配对——精矿先到港堆在港口(港口库存=滞留环节)，被冶炼厂拉走后变成厂内原料库存(冶炼厂库存=可冶炼环节)。<br>港口库存升 + 厂内库存降 = 货滞留港口(冶炼厂不愿拉货/原料价格高/开工不足)，原料端宽松；港口库存降 + 厂内库存升 = 冶炼厂积极备料，开工率预期上升。</div></div><div class="chart"><div class="chart-title">铅矿防城到港量（历史周频，非零数据）</div><div class="chart-sub">沸腾环贸 · 周 · 万吨 · i16 62 点(非零) · 2020-01 至 2026-07-24 · 近期数据源停更</div><div id="echart_61_c3" style="width:100%;height:280px"></div><button onclick="window.__tgl('echart_61_c3',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：到港节奏（比海关月度报关数据领先 2-4 周）。<br>怎么看：单指标周频图，到港峰谷 = 集中卸船冲击。到港高峰 + 港口库存积压 = 冶炼厂接货意愿弱；到港高峰 + 库存快速下降 = 货一进港就被拉走。<br>⚠️ 数据源近期停更（2026.08 起连续 0），仅保留历史周频序列。</div></div>
 <div class="note">
-<strong style="color:#c9d1d9">6.1 定义与数据源说明：</strong>6.1「原料进口」= 进口铅精矿(原料) → 港口到港 → 港口库存 → 冶炼厂原料库存 这条「原料端补库」链条。<br>
+<strong style="color:#c9d1d9">6.1 定义与数据源说明：</strong>6.1「原料进口」= 进口铅精矿(原料) → 港口到港 → 港口库存 → 冶炼厂原料库存 这条"原料端补库"链条。<br>
 <strong style="color:#c9d1d9">指标组</strong>：i40 海关铅精矿进口量(月,吨) · i5 精矿港口库存(周,万吨) · i9 冶炼厂铅精矿库存(月,金属吨) · i16 防城铅矿到港(周,万吨)。<br>
-<strong style="color:#c9d1d9">v2 关键修正</strong>：v1 页面 6.1 图2 误用了 i17（海关铅锭进口，属 6.2 精炼金属范畴），本次剔除 i17。6.1 正主 = i40 海关铅精矿进口（原料端）。<br>
+<strong style="color:#c9d1d9">v2 关键修正</strong>：v1 页面 6.1 图2 误用了 i17（海关铅锭进口，属 6.2 精炼金属范畴），本次 v2 剔除 i17。6.1 正主 = i40 海关铅精矿进口（原料端）。<br>
 <strong style="color:#c9d1d9">数据源缺口</strong>：同花顺 6.1 推荐图中「进口来源国集中度」「年度累计来源国热力图」「银精矿伴生含铅量」知几无原始月度分国别矩阵或独立口径，已剔除（详见 analysis/iwencai/PB/61_diversify_20260828.md 自检报告）。同花顺确认前十大进口来源国 = 俄罗斯/秘鲁/澳大利亚/塔吉克斯坦/巴西（仅作定性参考）。<br>
-<strong style="color:#c9d1d9">数据源停更备注</strong>：i16 防城到港近期（2026.08）连续 0，数据源停更；图3 用过滤后 62 点（大部分 2020-2025 有值）。
+<strong style="color:#c9d1d9">数据源停更备注</strong>：i16 防城到港近期（2026.08）连续 0，数据源停更；图3 用过滤后 293 点（大部分 2020-2025 有值）。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.1 原料进口 · v3（3 图全真数据 · 原料端补库 · 季节真数据）· indicators_v1.json v1.9</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.1 原料进口 · v2（3 图全真数据 · 原料端补库）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.oncontextmenu=e=>{e.preventDefault();return false};
@@ -54,7 +54,7 @@ window['__opts_echart_61_c1'] = {
     tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
     xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
     yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
-    series:[{name:'海关铅精矿月度进口量（原料端补库节奏，季节/时序切换）',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'#9b6bb5',width:2},areaStyle:{color:'#9b6bb520'},data:window.__seasonalize(__d)}]
+    series:[{name:'海关铅精矿月度进口量（原料端补库节奏，季节/时序切换）',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'#9b6bb5',width:2},areaStyle:{color:'#9b6bb520'},data:[null,null,null,null,null,null,null,null,null,null,null,null]}]
   }
 };
 window['__inst_echart_61_c1'] = echarts.init(document.getElementById('echart_61_c1'),'dark');
@@ -96,17 +96,15 @@ window['__opts_echart_61_c3'] = {
     tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
     xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
     yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
-    series:[{name:'铅矿防城到港量（历史周频，非零数据）',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'#7a8c5b',width:2},areaStyle:{color:'#7a8c5b20'},data:window.__seasonalize(__d)}]
+    series:[{name:'铅矿防城到港量（历史周频，非零数据）',type:'line',smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'#7a8c5b',width:2},areaStyle:{color:'#7a8c5b20'},data:[null,null,null,null,null,null,null,null,null,null,null,null]}]
   }
 };
 window['__inst_echart_61_c3'] = echarts.init(document.getElementById('echart_61_c3'),'dark');
 window['__mode_echart_61_c3'] = 'ts';
 window['__inst_echart_61_c3'].setOption(window['__opts_echart_61_c3']['ts'], true);
 
-function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
 function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
 window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
-btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
+btn.textContent=nxt==='ts'?'⏱ 时序':'☀ 季节';}
 window.addEventListener('resize',function(){['echart_61_c1','echart_61_c2','echart_61_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
-
 </script></body></html>
