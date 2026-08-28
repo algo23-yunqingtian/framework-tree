@@ -1,0 +1,4 @@
+# This repository serves static HTML/CSS/JS via GitHub Pages (pure static).
+# Jekyll processing is intentionally disabled because our docs/ SOPs contain
+# curly-brace placeholders ({cid}, {json_pts}, {维度}, etc.) that Jekyll's
+# Liquid engine would misinterpret as template variables and crash the build.
