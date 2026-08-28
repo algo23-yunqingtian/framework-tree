@@ -67,6 +67,8 @@
 | 2026-08-28 | 6.2 子页 ECharts 修复三连:①双重花括号转义(chart_line_t/chart_dual 输出 {{}})→②JS 变量赋值顺序(__d 引用必须晚于数据赋值行)→③主页跳转验证通过;build_pb_62_demo.py 沉淀为通用 build 模板 | 线B |
 | 2026-08-28 | [T4-DEMO] 铅 6.2 精炼金属进出口子页上线(pb_62_import_export.html,2图全真数据);build_pb_62_demo.py 生成脚本;修复 Pages build 连续失败(加 .nojekyll 禁用 Jekyll,因 SOP 内 {占位符} 被 Liquid 当模板变量解析崩溃) | 线B |
 | 2026-08-28 | [T5-P1试点] 铅 6.4 海外对华发运子页扩到 3 图(LME 新加坡出发仓/发运-到港节奏/分地区结构);indicators_v1.json v1.5;i40 从 trade_overseas_shipping 调回 trade_raw_import(6.1 正主);64_group 指标组定义;无需新增 zhiji_id;Step1.5 AI 自检报告 64_diversify_20260828.md | 线B |
+| 2026-08-28 | [T5-P2.1+P2.2] 铅 6.1 原料进口 + 6.2 精炼金属进出口子页扩到 3 图;indicators_v1.json v1.7;6.1 修正 i40 归属为 6.1 正主(剔除旧 i17);6.2 采用方案A复用缓存(无需新增 zhiji_id),i7 作全球发运背景;Step1.5 自检报告 61/62_diversify_20260828.md | 线B |
+| 2026-08-28 | [T5-P2.3] 铅 6.3 制品出口子页扩到 3 图(铅蓄电池出口总量/启动型/启动型vs其他类型结构);indicators_v1.json v1.8;复用 i37/i38 现有缓存;i39 累计作备用;剔除出口目的地分布/HS 7806 铅材;标注海合会反倾销 25.8-74% 2026.1.13 生效;Step1.5 自检报告 63_diversify_20260828.md。**6.1-6.4 四节点全部完成，指标树补全任务 P1+P2 闭环** | 线B |
 
 ---
 
