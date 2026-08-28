@@ -66,6 +66,7 @@
 | 2026-08-27 | 方向A落地：i28(沪铅期货库存 a10026547)入库；新增C01b/C05b；4张图默认季节视图(切换按钮可切回)；22图=14真+8骨。i29(中国精炼铅进口量)查无序列，按预案跳过进口图。 |
 | 2026-08-28 | 6.2 子页 ECharts 修复三连:①双重花括号转义(chart_line_t/chart_dual 输出 {{}})→②JS 变量赋值顺序(__d 引用必须晚于数据赋值行)→③主页跳转验证通过;build_pb_62_demo.py 沉淀为通用 build 模板 | 线B |
 | 2026-08-28 | [T4-DEMO] 铅 6.2 精炼金属进出口子页上线(pb_62_import_export.html,2图全真数据);build_pb_62_demo.py 生成脚本;修复 Pages build 连续失败(加 .nojekyll 禁用 Jekyll,因 SOP 内 {占位符} 被 Liquid 当模板变量解析崩溃) | 线B |
+| 2026-08-28 | [T5-P1试点] 铅 6.4 海外对华发运子页扩到 3 图(LME 新加坡出发仓/发运-到港节奏/分地区结构);indicators_v1.json v1.5;i40 从 trade_overseas_shipping 调回 trade_raw_import(6.1 正主);64_group 指标组定义;无需新增 zhiji_id;Step1.5 AI 自检报告 64_diversify_20260828.md | 线B |
 
 ---
 

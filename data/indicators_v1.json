@@ -26,6 +26,16 @@
       "v": "1.3",
       "date": "2026-08-28",
       "change": "补录缓存中已有但缺失的 18 个指标(i19,i20,i21,i22,i23,i24...等)：LME新加坡系列/仁川/迪拜/五地社库分项/i26蓄电池成品库存/i27铅锭平衡/i28SHFE周报/i29-30/31现货库存。JSON恢复为api_cache.db唯一真源，两refresh脚本合并为refresh_cache.py"
+    },
+    {
+      "v": "1.4",
+      "date": "2026-08-28",
+      "change": "补录 i37-i40：i37 海关铅蓄电池出口量、i38 起动型铅蓄电池出口量、i39 铅蓄电池出口量累计、i40 海关铅精矿进口量(当时标注为海外发运代理)"
+    },
+    {
+      "v": "1.5",
+      "date": "2026-08-28",
+      "change": "P1 试点 6.4 完成：i40 从 trade_overseas_shipping 调回 trade_raw_import(6.1 正主归属)；新增 64_group 指标组定义(复用 i19/i20/i25/i29/i30/i17/i7，无需新增 zhiji_id)；6.4 页扩到 3 图(LME 新加坡出发仓/发运-到港节奏/分地区结构)。同花顺 6.4 提单/升贴水/在途量数据源缺失已剔除，详见 analysis/iwencai/PB/64_diversify_20260828.md"
     }
   ],
   "indicators": {
@@ -542,17 +552,31 @@
       }
     },
     "i40": {
-      "name": "中国海关铅精矿进口量(海外对华发运代理)",
+      "name": "中国海关铅精矿进口量",
       "unit": "吨",
       "freq": "monthly",
       "verified": true,
-      "category": "trade_overseas_shipping",
+      "category": "trade_raw_import",
+      "note": "归属 6.1 原料进口，非海外发运代理。v1.5 修正。",
       "ids": {
         "PB": "a10017055"
       }
     }
   },
-  "version": "1.4",
+  "64_group": {
+    "name": "6.4 海外对华发运指标组（复用既有 LME 分地区+海关序列）",
+    "note": "i40 已调回 6.1。6.4 用 i19 SG 注册/i20 SG 注销/i25 SG 出库/i29 仁川/i30 迪拜/i17 海关铅锭进口/i7 LME 全球注销，组合观测'出发仓→发运→到港'链条。同花顺 6.4 提单/升贴水数据源缺失已剔除（见 analysis/iwencai/PB/64_diversify_20260828.md）。",
+    "members": {
+      "i19": "SG 注册仓单 出发仓水位",
+      "i20": "SG 注销仓单 发运前置信号",
+      "i25": "SG 出库量 发运动作",
+      "i29": "仁川 LME 库 分仓对照",
+      "i30": "迪拜 LME 库 分仓对照",
+      "i17": "海关铅锭月度进口 到港结果",
+      "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
+    }
+  },
+  "version": "1.5",
   "updated": "2026-08-28",
-  "change": "补录 i19-i36 18 个指标；v1.4 新增 i37-i40(铅蓄电池出口/起动型/累计/海外对华发运代理)"
+  "change": "i40 从 trade_overseas_shipping 调回 trade_raw_import(6.1 正主)；新增 6.4 指标组定义（复用 i19/i20/i25/i29/i30/i17/i7，无需新增 zhiji_id）"
 }
