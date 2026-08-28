@@ -60,7 +60,7 @@ PAGES = {
 }
 
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
-COMMON_JS_TOKENS = ["function __seasonalize", "function __tgl", "addEventListener('resize'"]
+COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
 
 
 def run_builds():
@@ -107,8 +107,10 @@ def check_page(cfg, html, source):
     res.append(("公共 JS 完整", not miss_js, "缺 %s" % miss_js if miss_js else "3/3 OK"))
     # 7. 季节真数据（仅含 chart_line_t 的页）
     if cfg.get("has_seasonal"):
-        res.append(("季节真数据 __seasonalize(__d)", "window.__seasonalize(__d)" in html,
-                    "缺失：可能仍是 12 个 null 假按钮"))
+        # v1.1：季节视图改用 __seasonalizeByYear(data, years, palette) 产出历年 series
+        ok = ("window.__seasonalizeByYear" in html and "__yrs_" in html and "__pal_" in html)
+        res.append(("季节真数据 __seasonalizeByYear", ok,
+                    "缺失：可能未用新的历年 series 函数"))
     else:
         res.append(("季节真数据", True, "本页无季节模式，跳过"))
     # 额外：echarts 引用

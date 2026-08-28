@@ -1,15 +1,18 @@
 /**
- * verify_render.js — framework-tree 页面真实渲染验证（P1/P2 验收门禁）
+ * verify_render.js — framework-tree 页面真实渲染验证（P1/P2 验收门禁，v1.1 历年 series）
  *
  * 做法：用 jsdom 加载真实 HTML，mock 掉 ECharts（jsdom 无 canvas），
  *       通过 echarts.init 捕获 window.__opts_*，直接调用页面内的
- *       __seasonalize / __tgl 函数，验证"季节按钮切换"是否产出真数据。
+ *       __seasonalizeByYear / __tgl 函数，验证"季节按钮切换"是否产出历年 series。
  *
  * 校验点：
- *   1. __seasonalize 存在且可调用
- *   2. 对每个含季节模式的图，__seasonalize(data) 产出 12 个月均值（非 null ≥ 6）
+ *   1. __seasonalizeByYear 存在且可调用
+ *   2. 对每个含季节模式的图，__seasonalizeByYear(data, years, pal) 产出 series：
+ *      - series 数量 = 年份数量
+ *      - 每个 series.data 长度=12
+ *      - 每个 series.data 非空≥3（有 3 个月以上数据）
+ *      - 每个 series.name 含"年"字
  *   3. __tgl 切换后 mode 翻转 + 按钮文字与 mode 对应关系正确
- *      （按钮文字 = 点击后将要切到的视图：ts 状态→"☀ 季节"，se 状态→"⏱ 时序"）
  *   4. 无季节模式的页（64）跳过 2/3
  */
 const fs = require('fs');
@@ -24,7 +27,6 @@ const PAGES = [
   { key: '64', file: 'pb_64_overseas_shipping.html',   seasonal: [] },
 ];
 
-// 按钮文字 ↔ mode 对应关系（按钮显示"点击后将切到的视图"）
 function expectedBtnText(mode) {
   return mode === 'ts' ? '☀ 季节' : '⏱ 时序';
 }
@@ -63,9 +65,9 @@ for (const p of PAGES) {
   const doc = win.document;
   const checks = [];
 
-  // 1. __seasonalize 存在
-  const hasSzn = typeof win.__seasonalize === 'function';
-  checks.push(['__seasonalize 函数存在', hasSzn, hasSzn ? '' : '未定义']);
+  // 1. __seasonalizeByYear 存在
+  const hasByYear = typeof win.__seasonalizeByYear === 'function';
+  checks.push(['__seasonalizeByYear 函数存在', hasByYear, hasByYear ? '' : '未定义']);
 
   // 图表容器数量
   const nChart = doc.querySelectorAll('div.chart').length;
@@ -76,22 +78,38 @@ for (const p of PAGES) {
     const nPts = Array.isArray(data) ? data.length : 0;
     checks.push([cid + ' 数据点数>20', nPts > 20, nPts + ' 点']);
 
-    // 2. __seasonalize 产出 12 个月均值
-    let seData = null, nonNull = 0;
-    if (hasSzn && Array.isArray(data)) {
-      try {
-        seData = win.__seasonalize(data);
-        nonNull = (seData || []).filter(v => v !== null).length;
-      } catch (e) {
-        checks.push([cid + ' __seasonalize 调用', false, '抛异常: ' + e.message]);
-        continue;
-      }
-      const ok = seData.length === 12 && nonNull >= 6;
-      checks.push([cid + ' 季节数据=12月且非空≥6', ok,
-        'len=' + (seData ? seData.length : 'null') + ' 非空=' + nonNull]);
+    // 从 opts.se.series 直接读真实生成的 series
+    const opts = win['__opts_' + cid];
+    if (!opts || !opts.se || !opts.se.series) {
+      checks.push([cid + ' opts.se.series 存在', false, 'opts 或 se 或 series 缺失']);
+      continue;
+    }
+    const series = opts.se.series;
+    const seriesLen = Array.isArray(series) ? series.length : 0;
+    // series 数量 = 年份数（>=3，<=6 合理范围）
+    checks.push([cid + ' 历年 series 数量≥3', seriesLen >= 3,
+      '实际 ' + seriesLen + ' 条线']);
+
+    if (seriesLen > 0) {
+      // 每个 series 验证
+      const monthLenOk = series.every(s => Array.isArray(s.data) && s.data.length === 12);
+      checks.push([cid + ' 每条线 12 月数据', monthLenOk,
+        monthLenOk ? '' : '某条线长度≠12']);
+
+      const allHaveData = series.every(s => (s.data || []).filter(v => v !== null).length >= 3);
+      checks.push([cid + ' 每条线非空月份≥3', allHaveData,
+        allHaveData ? '' : '某条线有效月份<3']);
+
+      const allNamesHaveYear = series.every(s => /年/.test(s.name || ''));
+      checks.push([cid + ' 图例含年份名', allNamesHaveYear,
+        allNamesHaveYear ? '' : '图例名缺"年"字']);
+
+      // 打印实际 series 名称，便于人工核对
+      const names = series.map(s => s.name).join(', ');
+      console.log('    [INFO] ' + cid + ' 年份线: ' + names);
     }
 
-    // 3. __tgl：mode 翻转 + 按钮文字与 mode 对应关系
+    // __tgl：mode 翻转 + 按钮文字
     const hasInst = !!win['__inst_' + cid];
     const hasMode = win['__mode_' + cid] !== undefined;
     const initMode = win['__mode_' + cid];
@@ -103,7 +121,6 @@ for (const p of PAGES) {
       if (!btn) {
         checks.push([cid + ' 季节按钮存在', false, '未找到按钮']);
       } else {
-        // 初始状态：按钮文字应 = 点击后要切到的视图
         const initTxt = btn.textContent.trim();
         const expInit = expectedBtnText(initMode);
         checks.push([cid + ' 初始按钮文字匹配 mode(' + initMode + ')',
@@ -117,6 +134,15 @@ for (const p of PAGES) {
           checks.push([cid + ' __tgl mode 翻转', initMode !== after, initMode + '→' + after]);
           checks.push([cid + ' 点击后按钮文字匹配 mode(' + after + ')',
             txtAfter === expAfter, '实际「' + txtAfter + '」 期望「' + expAfter + '」']);
+
+          // 切换后 setOption 是否被调用：收到的 option 必须与切换后的 mode 一致
+          // （se=历年多线≥3，ts=单条时序线<3；兼容默认 ts 与默认 se 两种页面）
+          const lastOpt = win['__inst_' + cid]._last;
+          const isSeasonOpt = after === 'se'
+            ? !!(lastOpt && lastOpt.series && lastOpt.series.length >= 3)
+            : !!(lastOpt && Array.isArray(lastOpt.series) && lastOpt.series.length < 3);
+          checks.push([cid + ' __tgl 后 setOption 匹配 mode(' + after + ')', isSeasonOpt,
+            isSeasonOpt ? '' : 'setOption 未收到当前 mode 的 series']);
         } catch (e) {
           checks.push([cid + ' __tgl 调用', false, '抛异常: ' + e.message]);
         }
@@ -135,12 +161,12 @@ for (const p of PAGES) {
 }
 
 console.log('='.repeat(74));
-console.log('framework-tree 渲染验证 (jsdom + ECharts mock)');
+console.log('framework-tree 渲染验证 v1.1 (jsdom + ECharts mock, 历年 series)');
 console.log('='.repeat(74));
 for (const r of results) {
   console.log('\n%s %s %s  (%s)', r.ok ? 'OK' : 'XX', r.key, r.ok ? 'PASS' : 'FAIL', r.file);
   for (const [name, good, detail] of r.checks) {
-    console.log('    [%s] %-42s %s', good ? 'PASS' : 'FAIL', name, good ? '' : '← ' + detail);
+    console.log('    [%s] %-48s %s', good ? 'PASS' : 'FAIL', name, good ? '' : '← ' + detail);
   }
 }
 console.log('\n' + '='.repeat(74));
