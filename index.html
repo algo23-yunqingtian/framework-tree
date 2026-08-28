@@ -262,12 +262,13 @@ function selectChip(leaf, commId, render){
 
   // 跳转到对应品种的子类看板（静态页）
   const PAGE_MAP = {
-    'PB_i1':'pb_stock_v2.html?tab=4.1',
-    'PB_i2':'pb_stock_v2.html?tab=4.2',
-    'PB_i3':'pb_stock_v2.html?tab=4.3',
-    'PB_i4':'pb_stock_v2.html?tab=4.4',
-    'PB_i5':'pb_stock_v2.html?tab=4.5',
-  };
+       'PB_i1':'pb_stock_v2.html?tab=4.1',
+       'PB_i2':'pb_stock_v2.html?tab=4.2',
+       'PB_i3':'pb_stock_v2.html?tab=4.3',
+       'PB_i4':'pb_stock_v2.html?tab=4.4',
+       'PB_i5':'pb_stock_v2.html?tab=4.5',
+       'PB_t2':'pb_62_import_export.html',  // 6.2 精炼金属进出口 (示范)
+     };
   const key = cm.code+'_'+leaf.id;
   if(PAGE_MAP[key]){
     window.location.href = PAGE_MAP[key];
