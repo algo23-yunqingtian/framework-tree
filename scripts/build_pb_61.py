@@ -38,7 +38,7 @@ def latest(m):
     return max(m["dates"]) if m["dates"] else "-"
 
 
-def chart_line_t(cid, title, sub, color, data, default_seasonal=False):
+def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
     """单变量双模式图（时序⇄季节切换）。default_seasonal=False 时默认时序。"""
     json_pts = json.dumps(data, ensure_ascii=False)
     color30 = color + "30"
@@ -74,12 +74,13 @@ def chart_line_t(cid, title, sub, color, data, default_seasonal=False):
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
             '<div id="%s" style="width:100%%;height:280px"></div>'
-            '<button onclick="window.__tgl(\'%s\',this)">☀ 季节</button></div>'
-            ) % (title, sub, cid, cid)
+            '<button onclick="window.__tgl(\'%s\',this)">☀ 季节</button>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, cid, note)
     return html, js
 
 
-def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b):
+def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note=''):
     """双轴复合图。"""
     ja = json.dumps(data_a, ensure_ascii=False)
     jb = json.dumps(data_b, ensure_ascii=False)
@@ -106,8 +107,9 @@ def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b
                name_b, color_b, color_b20, jb, cid, cid, cid, cid)
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
-            '<div id="%s" style="width:100%%;height:320px"></div></div>'
-            ) % (title, sub, cid)
+            '<div id="%s" style="width:100%%;height:320px"></div>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, note)
     return html, js
 
 
@@ -123,6 +125,7 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
 .chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
 .chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
 .note strong{color:#c9d1d9}"""
@@ -151,7 +154,11 @@ h1, j1 = chart_line_t(
     "海关铅精矿月度进口量（原料端补库节奏，季节/时序切换）",
     "海关 · 月 · 吨 · i40 %d 点 · 2018-01 至 %s" % (m40["n"], latest(m40)),
     "#9b6bb5",
-    d40
+    d40,
+    "什么时候看：原料端补库节奏、是否偏离季节性、冶炼厂原料库存能否撑住。<br>"
+    "怎么看：单指标图，核心看同比偏离。切到季节视图后把 8 年每月叠一起，"
+    "今年这条线明显低于历史同期 = 原料补给不及、冶炼厂面临缺矿减产风险；"
+    "明显高于 = 抢原料囤矿（对下游成本是利多）。"
 )
 
 # === 图2：到港→消化（冶炼厂精矿库存 vs 港口库存）===
@@ -160,7 +167,12 @@ h2, j2 = chart_dual(
     "到港→消化：冶炼厂精矿库存(月) + 港口库存(周)",
     "SMM 冶炼厂(月,金属吨) · 精矿港口(周,万吨) · i9 %d 点 / i5 %d 点 · 至 %s / %s" % (m9["n"], m5["n"], latest(m9), latest(m5)),
     d9, "#b06a32", "冶炼厂精矿库存", "金属吨(月,左)",
-    d5, "#7a8c5b", "精矿港口库存", "万吨(周,右)"
+    d5, "#7a8c5b", "精矿港口库存", "万吨(周,右)",
+    "什么时候看：到港的矿有没有真的进冶炼厂、原料消化效率高不高。<br>"
+    "两个指标的关系：这是「存量-流量」配对——精矿先到港堆在港口(港口库存=滞留环节)，"
+    "被冶炼厂拉走后变成厂内原料库存(冶炼厂库存=可冶炼环节)。<br>"
+    "港口库存升 + 厂内库存降 = 货滞留港口(冶炼厂不愿拉货/原料价格高/开工不足)，"
+    "原料端宽松；港口库存降 + 厂内库存升 = 冶炼厂积极备料，开工率预期上升。"
 )
 
 # === 图3：防城到港量（历史周频，过滤非零）===
@@ -169,7 +181,11 @@ h3, j3 = chart_line_t(
     "铅矿防城到港量（历史周频，非零数据）",
     "沸腾环贸 · 周 · 万吨 · i16 %d 点(非零) · 2020-01 至 %s · 近期数据源停更" % (len(d16_filtered), max([d for d,_ in d16_filtered]) if d16_filtered else "-"),
     "#7a8c5b",
-    d16_filtered
+    d16_filtered,
+    "什么时候看：到港节奏（比海关月度报关数据领先 2-4 周）。<br>"
+    "怎么看：单指标周频图，到港峰谷 = 集中卸船冲击。到港高峰 + 港口库存积压 = "
+    "冶炼厂接货意愿弱；到港高峰 + 库存快速下降 = 货一进港就被拉走。<br>"
+    "⚠️ 数据源近期停更（2026.08 起连续 0），仅保留历史周频序列。"
 )
 
 # === 拼装页面 ===
@@ -178,7 +194,7 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 <style>""" + CSS + """</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.1 原料进口 · v2 3 图</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.1 原料进口 · v3 3 图(带图备注)</div>
   <div class="hright">数据固化快照 · """ + NOW + """ · 海关/SMM/沸腾环贸</div>
 </div>
 <div class="panel">
@@ -191,7 +207,7 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 <strong style="color:#c9d1d9">数据源停更备注</strong>：i16 防城到港近期（2026.08）连续 0，数据源停更；图3 用过滤后 293 点（大部分 2020-2025 有值）。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.1 原料进口 · v2（3 图全真数据 · 原料端补库）· indicators_v1.json v1.6</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.1 原料进口 · v2（3 图全真数据 · 原料端补库）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 """ + ANTI + """

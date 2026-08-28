@@ -12,16 +12,17 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
 .chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
 .chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
 .note strong{color:#c9d1d9}</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.3 制品出口 · v2 3 图</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.3 制品出口 · v3 3 图(带图备注)</div>
   <div class="hright">数据固化快照 · 2026-08-28 · 海关</div>
 </div>
 <div class="panel">
-<div class="chart"><div class="chart-title">铅蓄电池出口总量（6.3 制品出口正主，季节/时序切换）</div><div class="chart-sub">海关 · 月 · 个 · i37 103 点 · 2018-01 至 2026-07-31</div><div id="echart_63_c1" style="width:100%;height:280px"></div><button onclick="window.__tgl('echart_63_c1',this)">☀ 季节</button></div><div class="chart"><div class="chart-title">启动型铅蓄电池出口量（HS 85071000，季节/时序切换）</div><div class="chart-sub">海关 · 月 · 个 · i38 103 点 · 2018-01 至 2026-07-31</div><div id="echart_63_c2" style="width:100%;height:280px"></div><button onclick="window.__tgl('echart_63_c2',this)">☀ 季节</button></div><div class="chart"><div class="chart-title">铅蓄电池出口结构：启动型 vs 其他类型（HS 85071000 vs 85072000）</div><div class="chart-sub">海关 · 月 · 个 · i38 启动型 103 点 / (i37-i38) 其他类型 103 点 · 至 2026-07-31</div><div id="echart_63_c3" style="width:100%;height:320px"></div></div>
+<div class="chart"><div class="chart-title">铅蓄电池出口总量（6.3 制品出口正主，季节/时序切换）</div><div class="chart-sub">海关 · 月 · 个 · i37 103 点 · 2018-01 至 2026-07-31</div><div id="echart_63_c1" style="width:100%;height:280px"></div><button onclick="window.__tgl('echart_63_c1',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：出口旺季成色、海合会反倾销生效后出口是否受冲击。<br>怎么看：单指标月度图，季节性强（Q4/Q1 旺）。切季节视图对比历史同期，今年旺季线明显低于历史 = 旺季成色差、需求外流受抑；反倾销 2026.1.13 生效后 1-6 月线持续走弱 = 政策直接杀伤可见。</div></div><div class="chart"><div class="chart-title">启动型铅蓄电池出口量（HS 85071000，季节/时序切换）</div><div class="chart-sub">海关 · 月 · 个 · i38 103 点 · 2018-01 至 2026-07-31</div><div id="echart_63_c2" style="width:100%;height:280px"></div><button onclick="window.__tgl('echart_63_c2',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：汽车启动用电池这条主力线的景气度。<br>怎么看：单指标月度图。启动型是铅蓄电池出口的绝对主力（约 30%），它的斜率 = 汽车产业链的海外需求；若整体出口(i37)走弱但启动型坚挺 = 结构在切向储能/两轮（非启动型），铅需求拉动逻辑会变。</div></div><div class="chart"><div class="chart-title">铅蓄电池出口结构：启动型 vs 其他类型（HS 85071000 vs 85072000）</div><div class="chart-sub">海关 · 月 · 个 · i38 启动型 103 点 / (i37-i38) 其他类型 103 点 · 至 2026-07-31</div><div id="echart_63_c3" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：出口结构是否切换、铅需求拉动逻辑是否改变。<br>两个指标的关系：左轴启动型(85071000)是汽车链，右轴其他(85072000)是储能/UPS/两轮链，两者相加 = 铅蓄电池出口总量(i37)。<br>启动型上升 = 汽车链强势；其他类型上升 = 储能/两轮崛起。两条线走势分化 = 产品结构切换；若启动型塌而总量稳 = 出口全靠储能撑（铅单耗不同，需求折算要重估）。</div></div>
 <div class="note">
 <strong style="color:#c9d1d9">6.3 定义与数据源说明：</strong>6.3「制品出口」= 铅蓄电池出口(HS 8507) → 分启动型(85071000)/其他(85072000)结构 → 分目的地 → 海合会反倾销政策。这条"下游制品出口"链条。<br>
 <strong style="color:#c9d1d9">指标组</strong>：i37 铅蓄电池出口总量(月,个) · i38 起动型铅蓄电池出口(月,个) · 计算"其他类型"=(i37-i38)。<br>
@@ -33,7 +34,7 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 详见 analysis/iwencai/PB/63_diversify_20260828.md 自检报告。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.3 制品出口 · v2（3 图全真数据 · HS 8507 制品出口）· indicators_v1.json v1.8</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.3 制品出口 · v2（3 图全真数据 · HS 8507 制品出口）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.oncontextmenu=e=>{e.preventDefault();return false};

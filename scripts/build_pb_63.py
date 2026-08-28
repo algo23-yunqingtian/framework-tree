@@ -38,7 +38,7 @@ def latest(m):
     return max(m["dates"]) if m["dates"] else "-"
 
 
-def chart_line_t(cid, title, sub, color, data, default_seasonal=False):
+def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False):
     """单变量双模式图（时序⇄季节切换）。"""
     json_pts = json.dumps(data, ensure_ascii=False)
     color30 = color + "30"
@@ -74,12 +74,13 @@ def chart_line_t(cid, title, sub, color, data, default_seasonal=False):
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
             '<div id="%s" style="width:100%%;height:280px"></div>'
-            '<button onclick="window.__tgl(\'%s\',this)">☀ 季节</button></div>'
-            ) % (title, sub, cid, cid)
+            '<button onclick="window.__tgl(\'%s\',this)">☀ 季节</button>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, cid, note)
     return html, js
 
 
-def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b):
+def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note=''):
     """双轴复合图。"""
     ja = json.dumps(data_a, ensure_ascii=False)
     jb = json.dumps(data_b, ensure_ascii=False)
@@ -106,8 +107,9 @@ def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b
                name_b, color_b, color_b20, jb, cid, cid, cid, cid)
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
-            '<div id="%s" style="width:100%%;height:320px"></div></div>'
-            ) % (title, sub, cid)
+            '<div id="%s" style="width:100%%;height:320px"></div>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, note)
     return html, js
 
 
@@ -123,6 +125,7 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
 .chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
 .chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
 .note strong{color:#c9d1d9}"""
@@ -154,6 +157,10 @@ h1, j1 = chart_line_t(
     "海关 · 月 · 个 · i37 %d 点 · 2018-01 至 %s" % (m37["n"], latest(m37)),
     "#9b6bb5",
     d37,
+    "什么时候看：出口旺季成色、海合会反倾销生效后出口是否受冲击。<br>"
+    "怎么看：单指标月度图，季节性强（Q4/Q1 旺）。切季节视图对比历史同期，"
+    "今年旺季线明显低于历史 = 旺季成色差、需求外流受抑；"
+    "反倾销 2026.1.13 生效后 1-6 月线持续走弱 = 政策直接杀伤可见。",
     default_seasonal=True
 )
 
@@ -164,6 +171,10 @@ h2, j2 = chart_line_t(
     "海关 · 月 · 个 · i38 %d 点 · 2018-01 至 %s" % (m38["n"], latest(m38)),
     "#b06a32",
     d38,
+    "什么时候看：汽车启动用电池这条主力线的景气度。<br>"
+    "怎么看：单指标月度图。启动型是铅蓄电池出口的绝对主力（约 30%），"
+    "它的斜率 = 汽车产业链的海外需求；若整体出口(i37)走弱但启动型坚挺 = "
+    "结构在切向储能/两轮（非启动型），铅需求拉动逻辑会变。",
     default_seasonal=True
 )
 
@@ -173,7 +184,12 @@ h3, j3 = chart_dual(
     "铅蓄电池出口结构：启动型 vs 其他类型（HS 85071000 vs 85072000）",
     "海关 · 月 · 个 · i38 启动型 %d 点 / (i37-i38) 其他类型 %d 点 · 至 %s" % (m38["n"], len(d_other), latest(m38)),
     d38, "#b06a32", "启动型铅蓄电池", "个(月,左)",
-    d_other, "#5b98c9", "其他类型铅蓄电池", "个(月,右)"
+    d_other, "#5b98c9", "其他类型铅蓄电池", "个(月,右)",
+    "什么时候看：出口结构是否切换、铅需求拉动逻辑是否改变。<br>"
+    "两个指标的关系：左轴启动型(85071000)是汽车链，右轴其他(85072000)是储能/UPS/两轮链，"
+    "两者相加 = 铅蓄电池出口总量(i37)。<br>"
+    "启动型上升 = 汽车链强势；其他类型上升 = 储能/两轮崛起。两条线走势分化 = "
+    "产品结构切换；若启动型塌而总量稳 = 出口全靠储能撑（铅单耗不同，需求折算要重估）。"
 )
 
 # === 拼装页面 ===
@@ -182,7 +198,7 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 <style>""" + CSS + """</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.3 制品出口 · v2 3 图</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.3 制品出口 · v3 3 图(带图备注)</div>
   <div class="hright">数据固化快照 · """ + NOW + """ · 海关</div>
 </div>
 <div class="panel">
@@ -198,7 +214,7 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 详见 analysis/iwencai/PB/63_diversify_20260828.md 自检报告。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.3 制品出口 · v2（3 图全真数据 · HS 8507 制品出口）· indicators_v1.json v1.8</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.3 制品出口 · v2（3 图全真数据 · HS 8507 制品出口）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 """ + ANTI + """

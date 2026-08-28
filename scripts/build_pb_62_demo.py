@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""铅(PB) 6.2 精炼金属进出口子页 · v2 · 3 图全真数据（复用 build_pb_61.py v2 模板）。
+"""铅(PB) 6.2 精炼金属进出口子页 · v3 · 3 图全真数据（用户反馈重构版）。
 
-图1 海关铅锭月度进口（季节/时序切换）：i17（月，吨）
-图2 中国进口 vs 全球发运背景：i17 精炼铅进口(月) + i7 LME 全球注销仓单(日)（双轴）
-图3 LME 全球注销仓单（季节/时序切换）：i7（日，吨）
+图1 海关铅锭月度进口（季节/时序切换）：i17（月，吨）—— 同花顺图1"进出口总量季节"进口侧的落地
+图2 未锻轧铅进出口双向：i17 进口 + i41 出口 双轴 —— 同花顺图5"HS 7801 进出口双向月度时序"
+图3 精炼铅净进口（计算）：i17 - i41 —— 同花顺图1"净进口补充还是净出口外流"
 
-⚠️ 归属说明：i7 LME 全球注销仓单本身属 4.1，但作为 6.2 的"全球发运背景"辅轴是合理的对比参照，非归属错误。
-⚠️ 数据源缺口：粗铅/铅合金独立口径、出口目的地分布、铅锭出口总量(a10017091 量级极小)——详见 62_diversify_20260828.md。
+⚠️ 每张图下方带"图备注"= 观测用途(什么时候看) + 指标关系(图里各指标怎么配合)。
+i7 LME 全球注销仓单移出 6.2（用户反馈与进出口关联牵强）——它属 4.1/6.4 发运背景。
 """
 import sqlite3, json, os
 from datetime import datetime
@@ -38,8 +38,8 @@ def latest(m):
     return max(m["dates"]) if m["dates"] else "-"
 
 
-def chart_line_t(cid, title, sub, color, data, default_seasonal=False):
-    """单变量双模式图（时序⇄季节切换）。"""
+def chart_line_t(cid, title, sub, color, data, note, default_seasonal=False):
+    """单变量双模式图（时序⇄季节切换）+ 图备注。"""
     json_pts = json.dumps(data, ensure_ascii=False)
     color30 = color + "30"
     color00 = color + "00"
@@ -74,13 +74,14 @@ def chart_line_t(cid, title, sub, color, data, default_seasonal=False):
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
             '<div id="%s" style="width:100%%;height:280px"></div>'
-            '<button onclick="window.__tgl(\'%s\',this)">☀ 季节</button></div>'
-            ) % (title, sub, cid, cid)
+            '<button onclick="window.__tgl(\'%s\',this)">☀ 季节</button>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, cid, note)
     return html, js
 
 
-def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b):
-    """双轴复合图。"""
+def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note):
+    """双轴复合图 + 图备注。"""
     ja = json.dumps(data_a, ensure_ascii=False)
     jb = json.dumps(data_b, ensure_ascii=False)
     color_a20 = color_a + "20"
@@ -106,8 +107,9 @@ def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b
                name_b, color_b, color_b20, jb, cid, cid, cid, cid)
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
-            '<div id="%s" style="width:100%%;height:320px"></div></div>'
-            ) % (title, sub, cid)
+            '<div id="%s" style="width:100%%;height:320px"></div>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, note)
     return html, js
 
 
@@ -123,6 +125,7 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
 .chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
 .chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
 .note strong{color:#c9d1d9}"""
@@ -135,37 +138,52 @@ NOW = datetime.now().strftime("%Y-%m-%d")
 
 # === 读数据 ===
 m17 = load_metric("i17")   # 海关铅锭进口量（月, 吨）
-m7 = load_metric("i7")     # LME 全球注销仓单（日, 吨）
+m41 = load_metric("i41")   # 海关铅锭出口量（月, 吨）
 
 d17 = pairs(m17)
-d7 = pairs(m7)
+d41 = pairs(m41)
+
+# 净进口 = i17 - i41（计算指标）
+d17d = {d: v for d, v in d17}
+d41d = {d: v for d, v in d41}
+common = sorted(set(d17d.keys()) & set(d41d.keys()))
+d_net = [[d, d17d[d] - d41d.get(d, 0)] for d in common]
 
 # === 图1：海关铅锭月度进口（季节/时序切换）===
 h1, j1 = chart_line_t(
     "echart_62_c1",
-    "海关铅锭月度进口量（6.2 精炼金属正主，季节/时序切换）",
+    "中国海关铅锭进口量（月度）—— 6.2 精炼金属正主",
     "海关 · 月 · 吨 · i17 %d 点 · 2018-01 至 %s" % (m17["n"], latest(m17)),
     "#b06a32",
     d17,
+    "什么时候看：进口窗口是否打开、国内缺口靠进口补多少。<br>"
+    "怎么看：进口量高于历史同期 = 进口窗口打开/LME-沪铅价差有利抄底；连续下降 = 窗口关闭或海外无货可发。",
     default_seasonal=True
 )
 
-# === 图2：中国进口 vs 全球发运背景（双轴）===
+# === 图2：进出口双向（同花顺图5）===
 h2, j2 = chart_dual(
     "echart_62_c2",
-    "中国精炼铅进口(月) vs LME 全球注销仓单(日) —— 中国补库 vs 全球发运背景",
-    "海关(月,吨) · LME(日,吨) · i17 %d 点 / i7 %d 点 · 至 %s / %s" % (m17["n"], m7["n"], latest(m17), latest(m7)),
-    d17, "#b06a32", "中国精炼铅进口", "吨(海关,月,左)",
-    d7, "#c96a5b", "LME 全球注销仓单", "吨(LME,日,右)"
+    "未锻轧铅进出口双向（HS 7801）—— 中国是净买方还是净卖方",
+    "海关 · 月 · 吨 · i17 进口 %d 点 / i41 出口 %d 点 · 至 %s" % (m17["n"], m41["n"], latest(m17)),
+    d17, "#b06a32", "精炼铅进口", "吨(月,左)",
+    d41, "#5b98c9", "精炼铅出口", "吨(月,右)",
+    "什么时候看：判断中国在全球铅贸易中的角色切换、出口窗口是否打开。<br>"
+    "两个指标的关系：进口(左轴)是把海外货拉回国内，出口(右轴)是把国内货送往海外；<br>"
+    "两者都是 HS 7801 精炼铅的月度物理流向。进口主线放大而出口无起色 = 净进口扩大 = 国内缺口靠进口补；<br>"
+    "出口跳升（如2024-2025铅价内外倒挂时） = 出口利润打开、货往外流。进口 vs 出口差距收窄 = 贸易流向反转信号。"
 )
 
-# === 图3：LME 全球注销仓单（季节/时序切换）===
+# === 图3：净进口（同花顺图1 净进口侧）===
 h3, j3 = chart_line_t(
     "echart_62_c3",
-    "LME 全球注销仓单（发运背景分母，季节/时序切换）",
-    "LME · 日 · 吨 · i7 %d 点 · 2018-01 至 %s" % (m7["n"], latest(m7)),
-    "#c96a5b",
-    d7,
+    "精炼铅净进口量（月度）—— 进口补库 vs 出口外流对冲后的净结果",
+    "海关 · 月 · 吨 · 计算 i17-i41 · %d 点 · 至 %s" % (len(d_net), latest(m17)),
+    "#9b6bb5",
+    d_net,
+    "什么时候看：只看一条线就知道国内净缺口方向。<br>"
+    "怎么看：净进口 >0 且放大 = 国内真缺货靠进口补（利多转弱信号，因供给在补）；<br>"
+    "净进口接近 0 或转负 = 国内不缺甚至外流（本地供给过剩，累库压力）。",
     default_seasonal=True
 )
 
@@ -175,24 +193,20 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 <style>""" + CSS + """</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.2 精炼金属进出口 · v2 3 图</div>
-  <div class="hright">数据固化快照 · """ + NOW + """ · 海关/LME</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.2 精炼金属进出口 · v3 3 图(带图备注+双向)</div>
+  <div class="hright">数据固化快照 · """ + NOW + """ · 海关</div>
 </div>
 <div class="panel">
 """ + h1 + h2 + h3 + """
 <div class="note">
-<strong style="color:#c9d1d9">6.2 定义与数据源说明：</strong>6.2「精炼金属进出口」= 进口未锻轧精炼铅(HS 7801) → 分国别来源 → 国内消费；同时铅锭出口 → 分目的地。这条"精炼金属双向贸易"链条。<br>
-<strong style="color:#c9d1d9">指标组</strong>：i17 海关铅锭进口量(月,吨) · i7 LME 全球注销仓单(日,吨,作全球发运背景)。<br>
-<strong style="color:#c9d1d9">归属说明</strong>：i7 LME 全球注销仓单本身属 4.1 库存，但作为 6.2 的"全球发运背景"辅轴是合理的对比参照（中国进口与全球发运量的对照），非归属错误。<br>
-<strong style="color:#c9d1d9">数据源缺口</strong>：<br>
-· 粗铅/铅合金独立口径：知几无独立序列 → 剔除；<br>
-· 进口来源国月度矩阵：无原始数据 → 用 i17 总量代理 + 页脚备注印度 3626/澳洲 1613(2026.7)；<br>
-· 出口目的地分布：SMM 有总量 a10017091 但非分目的地 → 剔除；<br>
-· 铅锭出口总量 a10017091：SMM 有但量级极小（2026.7=2178 吨 vs 进口 9215 吨，<1/4）→ 不入库，标注为"出口数据缺口"。<br>
-详见 analysis/iwencai/PB/62_diversify_20260828.md 自检报告。
+<strong style="color:#c9d1d9">6.2 定义：</strong>进口未锻轧精炼铅(HS 7801) → 出口 → 净进口，这条"精炼金属双向贸易"链条。<br>
+<strong style="color:#c9d1d9">指标组：</strong>i17 海关铅锭进口量(月,吨) · i41 海关铅锭出口量(月,吨,v1.9 新增) · 净进口=i17-i41(计算)。<br>
+<strong style="color:#c9d1d9">v3 变更（用户反馈）：</strong>图2 由"进口+全球注销仓单"(关联牵强)改为"进口+出口"双向(对应同花顺图5)；i7 LME 全球注销仓单移出 6.2（属 4.1/6.4 发运背景）；新增 i41 出口指标；所有图表补"图备注"(📌 什么时候看+指标关系)。<br>
+<strong style="color:#c9d1d9">数据源缺口：</strong>粗铅/铅合金独立口径、出口目的地分布（知几无分矩阵）、进口来源国月度矩阵（用总量代理，2026.7 印度 3626/澳洲 1613）。<br>
+详见 analysis/iwencai/PB/62_diversify_20260828.md。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.2 精炼金属进出口 · v2（3 图全真数据 · HS 7801 精炼金属正主）· indicators_v1.json v1.7</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.2 精炼金属进出口 · v3（3 图全真数据 · HS 7801 双向）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 """ + ANTI + """
@@ -207,4 +221,5 @@ out_path = os.path.join(os.path.dirname(BASE), "pb_62_import_export.html")
 with open(out_path, "w", encoding="utf-8") as f:
     f.write(page_html)
 print("[OK] 已生成: %s (%d 字节)" % (out_path, len(page_html)))
-print("[POINTS] i17=%d i7=%d" % (m17["n"], m7["n"]))
+print("[POINTS] i17=%d i41=%d 净进口计算=%d" % (m17["n"], m41["n"], len(d_net)))
+print("[SAMPLE 2026.07] 进口=%s 出口=%s 净进口=%s" % (d17d.get('2026-07-31'), d41d.get('2026-07-31'), (d17d.get('2026-07-31',0)-d41d.get('2026-07-31',0))))

@@ -38,8 +38,8 @@ def latest(m):
     return max(m["dates"]) if m["dates"] else "-"
 
 
-def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b):
-    """双轴复合图：data_a 走左轴，data_b 走右轴。"""
+def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note):
+    """双轴复合图：data_a 走左轴，data_b 走右轴。带图备注。"""
     ja = json.dumps(data_a, ensure_ascii=False)
     jb = json.dumps(data_b, ensure_ascii=False)
     color_a20 = color_a + "20"
@@ -65,15 +65,16 @@ def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b
                name_b, color_b, color_b20, jb, cid, cid, cid, cid)
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
-            '<div id="%s" style="width:100%%;height:320px"></div></div>'
-            ) % (title, sub, cid)
+            '<div id="%s" style="width:100%%;height:320px"></div>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, note)
     return html, js
 
 
 def chart_triple(cid, title, sub, data_a, color_a, name_a, unit_a,
                  data_b, color_b, name_b, unit_b,
-                 data_c, color_c, name_c, unit_c):
-    """三系列堆叠面积图：三个指标共享左轴，用于展示分仓占比结构。"""
+                 data_c, color_c, name_c, unit_c, note):
+    """三系列堆叠面积图：三个指标共享左轴，用于展示分仓占比结构。带图备注。"""
     ja = json.dumps(data_a, ensure_ascii=False)
     jb = json.dumps(data_b, ensure_ascii=False)
     jc = json.dumps(data_c, ensure_ascii=False)
@@ -102,8 +103,9 @@ def chart_triple(cid, title, sub, data_a, color_a, name_a, unit_a,
                cid, cid, cid, cid)
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
-            '<div id="%s" style="width:100%%;height:320px"></div></div>'
-            ) % (title, sub, cid)
+            '<div id="%s" style="width:100%%;height:320px"></div>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, note)
     return html, js
 
 
@@ -118,6 +120,7 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-title{font-size:15px;font-weight:600;margin-bottom:6px;color:#e6edf3}
 .chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
 .note strong{color:#c9d1d9}"""
 
@@ -148,7 +151,11 @@ h1, j1 = chart_dual(
     "LME 新加坡出发仓：注册仓单 + 注销仓单（发运前置信号）",
     "LME(SG) · 日 · 吨 · i19 注册 %d 点 / i20 注销 %d 点 · 至 %s" % (m19["n"], m20["n"], max(latest(m19), latest(m20))),
     d19, "#5b98c9", "SG 注册仓单", "吨(左)",
-    d20, "#c96a5b", "SG 注销仓单", "吨(右)"
+    d20, "#c96a5b", "SG 注销仓单", "吨(右)",
+    "什么时候看：LME 高库存是否即将转化为对华发运——这是 6.4 最前置的领先指标。<br>"
+    "两个指标的关系：注册仓单=锁在仓库里待卖的水位；注销仓单=贸易商申请「提货出海」的开闸信号。"
+    "注册高而注销不动 = 货趴在库不动（市场弱、无人接货）；"
+    "注销仓单突然激增而总库存仍高位 = 这批货即将动身，1-3 周后到华，国内现货承压。"
 )
 
 # === 图2：发运-到港节奏（SG 出库量日度 + 海关月度进口） ===
@@ -157,7 +164,12 @@ h2, j2 = chart_dual(
     "发运动作 → 到港结果：SG 出库量(日) + 海关铅锭月度进口",
     "LME(SG)出库(日,吨) · 海关(月,吨) · i25 %d 点 / i17 %d 点 · 至 %s / %s" % (m25["n"], m17["n"], latest(m25), latest(m17)),
     d25, "#7a8c5b", "SG 出库量", "吨(日,左)",
-    d17, "#b06a32", "海关铅锭进口", "吨(月,右)"
+    d17, "#b06a32", "海关铅锭进口", "吨(月,右)",
+    "什么时候看：海关数据发布前 2-4 周预判国内进口冲击节奏。<br>"
+    "两个指标的关系：SG 出库量(左,日频)是「货已离仓」的动作，"
+    "海关铅锭进口(右,月频)是「货已到港报关」的结果——中间隔着 1-3 周海运+报关。"
+    "左轴连续放量 → 1-3 周后右轴月度数字必然抬升；"
+    "左轴熄火 → 右轴下月转弱。这张图是海关数据的前瞻。"
 )
 
 # === 图3：LME 分地区结构（SG + 仁川 + 迪拜） ===
@@ -167,7 +179,12 @@ h3, j3 = chart_triple(
     "LME · 日 · 吨 · i19 SG %d 点 / i29 仁川 %d 点 / i30 迪拜 %d 点" % (m19["n"], m29["n"], m30["n"]),
     d19, "#5b98c9", "SG 新加坡", "吨(堆叠)",
     d29, "#b0a332", "仁川", "吨(堆叠)",
-    d30, "#9b6bb5", "迪拜", "吨(堆叠)"
+    d30, "#9b6bb5", "迪拜", "吨(堆叠)",
+    "什么时候看：对华发运的货到底从哪个仓出发——决定运距、运费、到港节奏。<br>"
+    "三个指标的关系：堆叠面积 = LME 亚太三大仓的库存分布（新加坡/仁川/迪拜）。"
+    "新加坡面积几乎压满 = 亚太铅全部堆在新加坡（中国最近的出发仓，海运 2-4 天），"
+    "意味着一旦开闸，冲击中国最快；仁川/迪拜面积抬升 = 货源向远端仓迁移，"
+    "到华运距变长、节奏变慢。当前仁川/迪拜近乎 0，印证新加坡吸纳超 90%。"
 )
 
 # === 拼装页面 ===
@@ -176,7 +193,7 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 <style>""" + CSS + """</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.4 海外对华发运 · v2 3 图</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.4 海外对华发运 · v3 3 图(带图备注)</div>
   <div class="hright">数据固化快照 · """ + NOW + """ · Zhiji/LME/海关</div>
 </div>
 <div class="panel">
@@ -185,10 +202,10 @@ page_html = """<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><me
 <strong style="color:#c9d1d9">6.4 定义与数据源说明：</strong>6.4「海外对华发运」= 出发仓(LME 分地区)→发运动作(出库量)→到港(海关月度)链条。<br>
 <strong style="color:#c9d1d9">指标组</strong>：i19 SG 注册仓单 / i20 SG 注销仓单 / i25 SG 出库量 / i29 仁川 / i30 迪拜 / i17 海关铅锭进口(月) / i7 LME 全球注销仓单。<br>
 <strong style="color:#c9d1d9">数据源缺口</strong>：同花顺 6.4 推荐图中「在途量」「提单量」「提单库存」「升贴水」SMM/Mysteel 均无公开序列，已剔除（详见 analysis/iwencai/PB/64_diversify_20260828.md 自检报告）；「印度/哈萨克斯坦分国别月度矩阵」印度无 LME 授权仓，暂用 SG 总量作代理。<br>
-<strong style="color:#c9d1d9">v2 变更</strong>：i40 海关铅精矿进口已从 6.4 调回 6.1 原料进口正主（indicators_v1.json v1.5）；本页面改用 LME 分地区+海关序列组合，无需新增 zhiji_id。
+<strong style="color:#c9d1d9">v2 变更</strong>：i40 海关铅精矿进口已从 6.4 调回 6.1 原料进口正主（indicators_v1.json v1.9）；本页面改用 LME 分地区+海关序列组合，无需新增 zhiji_id。
 </div>
 </div>
-<footer>有色金属产业指标树 · 铅(PB) 6.4 海外对华发运 · v2（3 图全真数据 · LME 分地区代理）· indicators_v1.json v1.5</footer>
+<footer>有色金属产业指标树 · 铅(PB) 6.4 海外对华发运 · v2（3 图全真数据 · LME 分地区代理）· indicators_v1.json v1.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 """ + ANTI + """
