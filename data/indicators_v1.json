@@ -61,6 +61,11 @@
       "v": "2.0",
       "date": "2026-08-29",
       "change": "2.1盘面结构: 新增 j21_close/j21_volume/j21_oi (沪铅主力连续收盘价/成交量/持仓量, 3751交易日, zhiji观kline)"
+    },
+    {
+      "v": "2.1",
+      "date": "2026-08-29",
+      "change": "2.2现货与升贴水: 新增 j22_spot 等8指标 (SMM1#铅现货全国+沪/粤/豫/津, 再生精铅, 上海升贴水, 沪伦比值; 日频2101点)"
     }
   ],
   "indicators": {
@@ -636,6 +641,104 @@
       "subleaf": "2.1盘面结构",
       "source": "上期所·主力连续",
       "note": "图1仓/图2成交持仓比分母"
+    },
+    "j22_spot": {
+      "name": "SMM 1#铅锭现货均价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "s20017202"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM",
+      "note": "基差计算现货端"
+    },
+    "j22_spot_sh": {
+      "name": "SMM 1#铅锭上海现货均价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "s20001968"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM"
+    },
+    "j22_spot_gd": {
+      "name": "SMM 1#铅锭广东现货均价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "s20001971"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM"
+    },
+    "j22_spot_hn": {
+      "name": "SMM 1#铅锭河南现货均价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "s20001976"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM"
+    },
+    "j22_spot_tj": {
+      "name": "SMM 1#铅锭天津现货均价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "s20001983"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM"
+    },
+    "j22_premium": {
+      "name": "SMM 上海铅现货升贴水",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a10017061"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM"
+    },
+    "j22_regen": {
+      "name": "SMM 再生精铅平均价",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "s20017192"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM",
+      "note": "原生-再生价差再生端"
+    },
+    "j22_shfe_ratio": {
+      "name": "SMM 沪伦比值 铅 现货",
+      "unit": "",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a10155854"
+      },
+      "category": "price",
+      "subleaf": "2.2现货与升贴水",
+      "source": "SMM"
     }
   },
   "64_group": {
@@ -651,7 +754,7 @@
       "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
     }
   },
-  "version": "2.0",
+  "version": "2.1",
   "updated": "2026-08-29",
-  "change": "2.1盘面结构: 新增 j21_close/j21_volume/j21_oi (沪铅主力连续收盘价/成交量/持仓量, 3751交易日, zhiji观kline)"
+  "change": "2.2现货与升贴水: 新增 j22_spot 等8指标 (SMM1#铅现货全国+沪/粤/豫/津, 再生精铅, 上海升贴水, 沪伦比值; 日频2101点)"
 }

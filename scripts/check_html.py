@@ -33,6 +33,14 @@ PAGES = {
         "label": "2.1 盘面结构",
         "has_seasonal": True,
     },
+    "22": {
+        "file": "pb_22_spot_premium.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_22_c1", "echart_22_c2", "echart_22_c3"],
+        "label": "2.2 现货与升贴水",
+        "has_seasonal": True,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
