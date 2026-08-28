@@ -208,6 +208,47 @@ def chart_triple(cid, title, sub, data_a, color_a, name_a, unit_a,
             ) % (title, sub, cid, note)
     return html, js
 
+
+def chart_pv(cid, title, sub, data_p, color_p, name_p, unit_p,
+             data_v, color_v, name_v, unit_v,
+             data_o, color_o, name_o, unit_o, note=''):
+    """量价仓三联动复合图：价格折线左轴 + 成交量/持仓量 右轴双系列。带图备注。
+
+    用于"盘面结构"子类：一图看价格方向 + 资金参与度（量/仓）。
+    """
+    jp = json.dumps(data_p, ensure_ascii=False)
+    jv = json.dumps(data_v, ensure_ascii=False)
+    jo = json.dumps(data_o, ensure_ascii=False)
+    js = ("window['__data_%s'] = [%s, %s, %s];\n"
+          "window['__opts_%s'] = {\n"
+          "  tooltip:{trigger:'axis'},\n"
+          "  legend:{data:['%s','%s','%s'],textStyle:{color:'#ccc'},top:0},\n"
+          "  grid:{left:55,right:55,top:45,bottom:40},\n"
+          "  xAxis:{type:'time',axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "  yAxis:[\n"
+          "    {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "    {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}}\n"
+          "  ],\n"
+          "  series:[\n"
+          "    {name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:3,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:%s},\n"
+          "    {name:'%s',type:'bar',yAxisIndex:1,barMaxWidth:8,itemStyle:{color:'%s',opacity:0.65},data:%s},\n"
+          "    {name:'%s',type:'line',yAxisIndex:1,smooth:true,symbol:'none',lineStyle:{color:'%s',width:1.5},data:%s}\n"
+          "  ]\n"
+          "};\n"
+          "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
+          "window['__inst_%s'].setOption(window['__opts_%s'], true);\n"
+          ) % (cid, jp, jv, jo, cid, name_p, name_v, name_o, unit_p, unit_v,
+               name_p, color_p, color_p + "30", jp,
+               name_v, color_v, jv,
+               name_o, color_o, jo,
+               cid, cid, cid, cid)
+    html = ('<div class="chart"><div class="chart-title">%s</div>'
+            '<div class="chart-sub">%s</div>'
+            '<div id="%s" style="width:100%%;height:320px"></div>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, note)
+    return html, js
+
 # ============================================================
 # 页面公共件
 # ============================================================

@@ -23,8 +23,16 @@ import os, sys, re, subprocess, json
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(SCRIPT_DIR)
 
-# 4 页的期望配置：文件名 / 最小字节 / 图数 / 图表 id 列表
+# 5 页的期望配置：文件名 / 最小字节 / 图数 / 图表 id 列表
 PAGES = {
+    "21": {
+        "file": "pb_21_price_structure.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_21_c1", "echart_21_c2", "echart_21_c3"],
+        "label": "2.1 盘面结构",
+        "has_seasonal": True,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
@@ -65,7 +73,7 @@ COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventL
 
 def run_builds():
     """重新 build 4 页。"""
-    scripts = ["build_pb_61.py", "build_pb_62_demo.py", "build_pb_63.py", "build_pb_64.py"]
+    scripts = ["build_pb_21.py", "build_pb_61.py", "build_pb_62_demo.py", "build_pb_63.py", "build_pb_64.py"]
     for s in scripts:
         r = subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, s)],
                            cwd=SCRIPT_DIR, capture_output=True, text=True, timeout=120)
@@ -115,8 +123,8 @@ def check_page(cfg, html, source):
         res.append(("季节真数据", True, "本页无季节模式，跳过"))
     # 额外：echarts 引用
     res.append(("echarts.min.js 引用", "assets/echarts.min.js" in html, ""))
-    # 额外：v1.9 指标版本
-    res.append(("indicators_v1.json v1.9", "indicators_v1.json v1.9" in html, ""))
+    # 额外：指标版本（跟随 indicators_v1.json 实际版本）
+    res.append(("indicators_v1.json 版本", "indicators_v1.json v2.0" in html or "indicators_v1.json v1.9" in html, ""))
     return res
 
 

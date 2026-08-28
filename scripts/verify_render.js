@@ -21,6 +21,7 @@ const { JSDOM } = require('/tmp/node_modules/jsdom');
 
 const ROOT = '/home/ubuntu/framework-tree';
 const PAGES = [
+  { key: '21', file: 'pb_21_price_structure.html',       seasonal: ['echart_21_c2'] },
   { key: '61', file: 'pb_61_raw_material_import.html', seasonal: ['echart_61_c1', 'echart_61_c3'] },
   { key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_62_c1', 'echart_62_c3'] },
   { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },
