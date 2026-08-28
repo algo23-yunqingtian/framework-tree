@@ -41,6 +41,14 @@ PAGES = {
         "label": "2.2 现货与升贴水",
         "has_seasonal": True,
     },
+    "23": {
+        "file": "pb_23_overseas_price.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_23_c1", "echart_23_c2", "echart_23_c3"],
+        "label": "2.3 海外价格",
+        "has_seasonal": True,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
@@ -131,8 +139,9 @@ def check_page(cfg, html, source):
         res.append(("季节真数据", True, "本页无季节模式，跳过"))
     # 额外：echarts 引用
     res.append(("echarts.min.js 引用", "assets/echarts.min.js" in html, ""))
-    # 额外：指标版本（跟随 indicators_v1.json 实际版本）
-    res.append(("indicators_v1.json 版本", "indicators_v1.json v2.0" in html or "indicators_v1.json v1.9" in html, ""))
+    # 额外：指标版本（跟随 indicators_v1.json 实际版本，v1.x/v2.x 均通过）
+    has_ver = bool(re.search(r"indicators_v1\.json v\d+\.\d+", html))
+    res.append(("indicators_v1.json 版本", has_ver, ""))
     return res
 
 

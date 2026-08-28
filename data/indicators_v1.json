@@ -66,6 +66,11 @@
       "v": "2.1",
       "date": "2026-08-29",
       "change": "2.2现货与升贴水: 新增 j22_spot 等8指标 (SMM1#铅现货全国+沪/粤/豫/津, 再生精铅, 上海升贴水, 沪伦比值; 日频2101点)"
+    },
+    {
+      "v": "2.2",
+      "date": "2026-08-29",
+      "change": "2.3海外价格: 新增 j23_lme_cash/lme_3m/lme_0to3/lme_sp3/imp_profit 5指标 (LME现货结算+官方3M+升贴水×2+SMM进口盈亏; LME现货2945点11年)"
     }
   ],
   "indicators": {
@@ -739,6 +744,67 @@
       "category": "price",
       "subleaf": "2.2现货与升贴水",
       "source": "SMM"
+    },
+    "j23_lme_cash": {
+      "name": "LME 铅现货结算价",
+      "unit": "美元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a10193708"
+      },
+      "category": "price",
+      "subleaf": "2.3海外价格",
+      "source": "LME"
+    },
+    "j23_lme_3m": {
+      "name": "LME 铅官方3M卖价",
+      "unit": "美元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a10193707"
+      },
+      "category": "price",
+      "subleaf": "2.3海外价格",
+      "source": "LME",
+      "note": "2022-06起有数据"
+    },
+    "j23_lme_0to3": {
+      "name": "LME 铅0-3月升贴水",
+      "unit": "美元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a10021406"
+      },
+      "category": "price",
+      "subleaf": "2.3海外价格",
+      "source": "LME"
+    },
+    "j23_lme_sp3": {
+      "name": "LME 铅(现货/三个月)升贴水",
+      "unit": "美元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "j02797772"
+      },
+      "category": "price",
+      "subleaf": "2.3海外价格",
+      "source": "LME"
+    },
+    "j23_imp_profit": {
+      "name": "SMM 进口盈亏 铅 现货 盈亏额",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "a12759796"
+      },
+      "category": "price",
+      "subleaf": "2.3海外价格",
+      "source": "SMM"
     }
   },
   "64_group": {
@@ -754,7 +820,7 @@
       "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
     }
   },
-  "version": "2.1",
+  "version": "2.2",
   "updated": "2026-08-29",
-  "change": "2.2现货与升贴水: 新增 j22_spot 等8指标 (SMM1#铅现货全国+沪/粤/豫/津, 再生精铅, 上海升贴水, 沪伦比值; 日频2101点)"
+  "change": "2.3海外价格: 新增 j23_lme_cash/lme_3m/lme_0to3/lme_sp3/imp_profit 5指标 (LME现货结算+官方3M+升贴水×2+SMM进口盈亏; LME现货2945点11年)"
 }
