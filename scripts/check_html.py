@@ -57,6 +57,14 @@ PAGES = {
         "label": "2.4 价差体系",
         "has_seasonal": False,
     },
+    "25": {
+        "file": "pb_25_valuation_profit.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_25_c1", "echart_25_c2", "echart_25_c3"],
+        "label": "2.5 估值与利润",
+        "has_seasonal": False,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,

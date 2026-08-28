@@ -25,6 +25,7 @@ const PAGES = [
   { key: '22', file: 'pb_22_spot_premium.html',          seasonal: ['echart_22_c2'] },
   { key: '23', file: 'pb_23_overseas_price.html',        seasonal: ['echart_23_c2'] },
   { key: '24', file: 'pb_24_spread_system.html',          seasonal: [] },
+  { key: '25', file: 'pb_25_valuation_profit.html',        seasonal: [] },
   { key: '61', file: 'pb_61_raw_material_import.html', seasonal: ['echart_61_c1', 'echart_61_c3'] },
   { key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_62_c1', 'echart_62_c3'] },
   { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },
