@@ -387,6 +387,7 @@ curl -s "https://algo23-yunqingtian.github.io/framework-tree/pb_stock_v2.html?no
 | Werkzeug dev server 崩 | `PackageNotFoundError: werkzeug` | 用 `python3 -m http.server` 或 gunicorn |
 | ECharts CDN 加载失败 | 页白 | 离线化 echarts.min.js 进仓库 |
 | gh push 超时 | `Command timed out` | 走 SSH remote |
+| Pages build failed | 连续 errored，新页 404 | **加 `.nojekyll` 禁用 Jekyll**（SOP/doc 内 `{占位符}` 被 Liquid 当模板变量解析崩溃。根目录放空文件 `.nojekyll` 即可） |
 | 浏览器禁本地地址 | 127.0.0.1 拒 | 走本机外网 IP 或线上 Pages |
 | 长 prompt 注入被截 | `browser_console` 表达式超长度 | 用 base64 分段注入或手工粘贴 |
 | `cmd_series`/`cmd_search` 直接调用 | 返回 None | 必须 `subprocess.run` 调 CLI |

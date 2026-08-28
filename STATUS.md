@@ -64,7 +64,7 @@
 |---|---|
 | 2026-08-26 | 项目启动。两条线隔离方案定稿，协作机制上线。 |
 | 2026-08-27 | 方向A落地：i28(沪铅期货库存 a10026547)入库；新增C01b/C05b；4张图默认季节视图(切换按钮可切回)；22图=14真+8骨。i29(中国精炼铅进口量)查无序列，按预案跳过进口图。 |
-| 2026-08-27 | 旧产物归档：pb_stock.html / pb_stock_demo.html / build_pb_stock.py → `legacy/20260826_pb_stock_v1/`。根目录仅保留 pb_stock_v2.html + pb_41_stock.html 为唯一最新版。 |
+| 2026-08-28 | [T4-DEMO] 铅 6.2 精炼金属进出口子页上线(pb_62_import_export.html,2图全真数据);build_pb_62_demo.py 生成脚本;修复 Pages build 连续失败(加 .nojekyll 禁用 Jekyll,因 SOP 内 {占位符} 被 Liquid 当模板变量解析崩溃) | 线B |
 
 ---
 
