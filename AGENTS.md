@@ -30,8 +30,9 @@
 
 ---
 
-## 2. 目录写权限（文件锁强制）
+## 2. 目录写权限 + 并行安全
 
+**同服务器**：文件锁强制隔离
 - **线A（架构/前端）**：只能写 `framework-tree/`
 - **线B（指标/数据）**：只能写 `analysis/` 下目录
 - 写文件前必须拿锁，写完释放：
@@ -41,6 +42,17 @@ python3 ~/.hermes/scripts/file_write_lock.py acquire /home/ubuntu/framework-tree
 python3 ~/.hermes/scripts/file_write_lock.py release /home/ubuntu/framework-tree
 ```
 - 拿不到锁 = 有人在写，等待再试。
+
+**跨服务器并行（重要）**：文件锁只在本机 `/tmp` 生效，**不同机器之间无效**。所以跨服务器协作必须走 **git 分支**：
+- 每个任务单独建分支：`git checkout -b task/<品种>_<板块>`（如 `task/cu_price`）
+- 在你的分支上开发、提交，**不要直接 push 到 main**
+- 完成后开 PR：`gh pr create --fill`，由主脑 review 后 merge
+- 分支前缀规范：`task/` 个人任务、`feature/` 功能开发
+
+**冲突预防**：
+- 改公共文件（`STATUS.md`/`chart_kits.py`/`indicators_v1.json`）前，先 `git pull` 看主脑最近改动
+- 同时改同一文件 = 必然冲突，先问主脑或走 PR 合并
+- `chart_kits.py` 公共模块只有主脑能改，其他人只能在分支上提 PR
 
 ---
 
@@ -68,7 +80,11 @@ GIT_CURL_OPT="--max-time 300 --retry 5 --retry-delay 10" git push origin main
 ```
 4. 主脑跑 `python3 scripts/reclaim.py` 校验 → 全 PASS 后 merge 你的产出。
 
-**你的产出 = GitHub 上的 commit + STATUS.md 行记录**，主脑从这个仓库直接回收合并，不需要你单独发任何文件。
+**任务可见性**（主脑怎么知道新 agent 在做什么）：
+1. `STATUS.md` 是唯一真源——他每完成一项必须写变更记录
+2. `git log origin/main` 看提交历史 = 他改了什么、什么时间
+3. 跑 `python3 scripts/reclaim.py` 自动输出任务语义标注（哪个品种/板块 + 前缀统计）
+4. 若他在自己的 `task/*` 分支上开发，主脑看 PR 列表 + `git log <branch>` 即可
 
 ---
 

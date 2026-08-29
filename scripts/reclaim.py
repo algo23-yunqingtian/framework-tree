@@ -50,14 +50,29 @@ def main():
     log("PASS" if behind > 0 or "--force" in sys.argv else "WARN",
         f"本地领先 {ahead} 条, 落后远端 {behind} 条 → {'有成果待回收' if behind else '无新成果' if not '--force' in sys.argv else '强制模式'}")
 
-    # 2. 待回收的新提交列表
+    # 2. 待回收的新提交列表 + 任务语义标注
     print("\n[2/5] 远端待回收提交:")
     commits = run("git log --oneline HEAD..origin/main").stdout.strip()
     if commits:
         for line in commits.split("\n")[:10]:
             print(f"    {line}")
+        # 任务语义标注: 从 commit 前缀推断任务归属
+        prefixes = re.findall(r"\[([^\]]+)\]", commits)
+        from collections import Counter
+        for k, v in Counter(prefixes).most_common():
+            print(f"    → [{k}] ×{v}")
+        # 推断当前任务(哪个品种/板块)
+        task_hint = ""
+        for kw, label in [("价格", "价格板块"), ("进出口", "进出口板块"), ("库存", "库存板块"),
+                          ("供给", "供给板块"), ("需求", "需求板块"), ("成本", "成本利润板块"),
+                          ("平衡", "供需平衡板块")]:
+            if kw in commits:
+                task_hint = label
+                break
+        print(f"    → 任务推断: {task_hint or '未识别(看 STATUS.md 变更记录)'}")
     else:
         print("    (无)")
+        print("    → 任务推断: 暂无进行中的任务")
 
     # 3. STATUS.md 格式契约校验
     print("\n[3/5] STATUS.md 格式契约:")
