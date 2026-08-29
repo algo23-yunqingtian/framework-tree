@@ -97,14 +97,17 @@ for (const p of PAGES) {
       '实际 ' + seriesLen + ' 条线']);
 
     if (seriesLen > 0) {
-      // 每个 series 验证
-      const monthLenOk = series.every(s => Array.isArray(s.data) && s.data.length === 12);
-      checks.push([cid + ' 每条线 12 月数据', monthLenOk,
-        monthLenOk ? '' : '某条线长度≠12']);
+      // 每个 series 验证：长度按粒度 12(月度) 或 365(日度)
+      const dayish = series.some(s => Array.isArray(s.data) && s.data.length === 365);
+      const monthLenOk = series.every(s => Array.isArray(s.data)
+        && (s.data.length === 12 || s.data.length === 365));
+      checks.push([cid + ' 每条线长度=12或365', monthLenOk,
+        monthLenOk ? '' : '某条线长度≠12/365']);
 
-      const allHaveData = series.every(s => (s.data || []).filter(v => v !== null).length >= 3);
-      checks.push([cid + ' 每条线非空月份≥3', allHaveData,
-        allHaveData ? '' : '某条线有效月份<3']);
+      const minNonNull = dayish ? 30 : 3;
+      const allHaveData = series.every(s => (s.data || []).filter(v => v !== null).length >= minNonNull);
+      checks.push([cid + ' 每条线非空' + (dayish ? '日' : '月') + '≥' + minNonNull, allHaveData,
+        allHaveData ? '' : '某条线有效' + (dayish ? '日' : '月') + '<' + minNonNull]);
 
       const allNamesHaveYear = series.every(s => /年/.test(s.name || ''));
       checks.push([cid + ' 图例含年份名', allNamesHaveYear,

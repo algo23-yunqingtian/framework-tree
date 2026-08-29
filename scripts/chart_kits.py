@@ -66,6 +66,31 @@ def sub_series(m_a, m_b, name_a, name_b):
     common = sorted(set(da.keys()) & set(db.keys()))
     return [[d, da[d] - db.get(d, 0)] for d in common], da, db
 
+
+def _detect_gran(data):
+    """自动检测数据粒度：日度('D') vs 月度/周度('M')。
+
+    取最近 120 个点算平均日期间隔，<3 天 → 日度（季节图按日 365/366 类目），
+    否则按月（保留原有 12 类目，周度数据也归入月度近似，避免过密）。
+    """
+    if not data or len(data) < 10:
+        return 'M'
+    recent = data[-120:]
+    total = 0
+    n = 0
+    from datetime import date
+    for i in range(1, len(recent)):
+        try:
+            d0 = date.fromisoformat(recent[i-1][0][:10])
+            d1 = date.fromisoformat(recent[i][0][:10])
+            total += (d1 - d0).days
+            n += 1
+        except Exception:
+            pass
+    if n == 0:
+        return 'M'
+    return 'D' if (total / n) < 3 else 'M'
+
 # ============================================================
 # 图表 JS/HTML 模板（% 格式化，勿改 f-string）
 # ============================================================
@@ -74,7 +99,9 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False,
                  seasonal_max_years=5, seasonal_min_year=None, seasonal_max_year=None):
     """单变量双模式图（时序⇄季节切换）+ 图备注。
 
-    季节视图 = 历年各一条线，图例标年份，横轴 1-12 月（按年份分组的月度原始值，不做均值）。
+    季节视图 = 历年各一条线，图例标年份，横轴按原始数据粒度对齐：
+      · 日度数据 → 366 天类目（MM-DD），历年同日对齐（__seasonalizeByDay）
+      · 月度/周度 → 12 月类目（__seasonalizeByYear）
     参数：
       seasonal_max_years: 最多显示最近 N 年（默认 5，含当年）
       seasonal_min_year / seasonal_max_year: 显式覆盖年份范围（传了就不自动算）
@@ -93,11 +120,26 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False,
         if seasonal_max_years and len(years) > seasonal_max_years:
             years = years[-seasonal_max_years:]
         years_str = json.dumps(years, ensure_ascii=False)
+    gran = _detect_gran(data)
     mode = "se" if default_seasonal else "ts"
     # 按钮初始文字 = 点击后会切到的视图（与 __tgl 翻转语义对齐）
     #   当前 ts(时序) → 按钮显示「☀ 季节」（点了切到季节）
     #   当前 se(季节) → 按钮显示「⏱ 时序」（点了切回时序）
     btn_txt = "⏱ 时序" if mode == "se" else "☀ 季节"
+    # 季节横轴：日度 → MM-DD 365 类目（IIFE 内联，不依赖 JS_COMMON 注入顺序）
+    # ⚠️ opts 在构造时即调用 __seasonalizeByDay 和 data，故相关定义必须内联到图表 JS 内部
+    _day_labels_iife = ("(function(){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var L=[];"
+                        "for(var m=0;m<12;m++){for(var d=1;d<=md[m];d++){L.push((m+1)+'-'+d);}}"
+                        "return L;})()")
+    if gran == 'D':
+        se_xaxis = ("xAxis:{type:'category',data:" + _day_labels_iife + ",axisLabel:{color:'#aaa',interval:29,"
+                    "formatter:function(v){return v.split('-')[0]+'月';}},splitLine:{show:false},"
+                    "axisLine:{lineStyle:{color:'#444'}}},\n")
+        se_series = ("series:window.__seasonalizeByDay(window['__data_%s'], __yrs_%s, __pal_%s)\n")
+    else:
+        se_xaxis = ("xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],"
+                    "axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n")
+        se_series = "series:window.__seasonalizeByYear(window['__data_%s'], __yrs_%s, __pal_%s)\n"
     js = ("var __yrs_%s=%s;\n"
           "var __pal_%s=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];\n"
           "window['__data_%s'] = %s;\n"
@@ -116,9 +158,9 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False,
           "    tooltip:{trigger:'axis',confine:true},\n"
           "    legend:{data:__yrs_%s.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},\n"
           "    grid:{left:55,right:60,top:35,bottom:40},\n"
-          "    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "    %s"
           "    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},\n"
-          "    series:window.__seasonalizeByYear(window['__data_%s'], __yrs_%s, __pal_%s)\n"
+          "    %s"
           "  }\n"
           "};\n"
           "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
@@ -126,8 +168,9 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False,
           "window['__inst_%s'].setOption(window['__opts_%s']['%s'], true);\n"
           ) % (cid, years_str, cid, cid, json_pts, cid, title, color, color30, color00,
                cid, cid, cid, cid, cid, color,
-               cid, cid, cid,
-               cid, cid, cid, cid, mode, cid, cid, mode)
+               cid, se_xaxis,
+               se_series % (cid, cid, cid),
+               cid, cid, cid, mode, cid, cid, mode)
     html = ('<div class="chart"><div class="chart-title">%s</div>'
             '<div class="chart-sub">%s</div>'
             '<div id="%s" style="width:100%%;height:320px"></div>'
@@ -287,6 +330,8 @@ def JS_COMMON(cids):
             "out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}"
             "return out;}\n"
             "function __seasonalizeByYear(arr,years,palette){var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);var mm=parseInt(d.substring(5,7),10)-1;if(mm<0||mm>11)continue;if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(12);by[yr][mm]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi %% pal.length];var nonNull=0;for(var k=0;k<12;k++)if(dat[k]!==null)nonNull++;if(nonNull<3)continue;var rounded=[];for(var k=0;k<12;k++)rounded.push(dat[k]===null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:true,symbol:'circle',symbolSize:5,connectNulls:true,lineStyle:{color:color,width:2},itemStyle:{color:color},data:rounded});}return series;}\n"
+            "var __mdays=[31,28,31,30,31,30,31,31,30,31,30,31];\n"
+            "function __seasonalizeByDay(arr,years,palette){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var doy=function(s){var p=s.split('-');var m=parseInt(p[1],10)-1,d=parseInt(p[2],10),k=0;for(var i=0;i<m;i++)k+=md[i];return k+d-1;};var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(365);by[yr][doy(d)]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi %% pal.length];var nonNull=0;for(var k=0;k<365;k++)if(dat[k]!=null)nonNull++;if(nonNull<30)continue;var rounded=[];for(var k=0;k<365;k++)rounded.push(dat[k]==null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:false,symbol:'none',connectNulls:true,lineStyle:{color:color,width:1.6},itemStyle:{color:color},data:rounded});}return series;}\n"
             "function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';\n"
             "window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);\n"
             "btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}\n"

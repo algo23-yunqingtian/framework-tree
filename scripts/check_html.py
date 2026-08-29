@@ -155,9 +155,10 @@ def check_page(cfg, html, source):
     res.append(("公共 JS 完整", not miss_js, "缺 %s" % miss_js if miss_js else "3/3 OK"))
     # 7. 季节真数据（仅含 chart_line_t 的页）
     if cfg.get("has_seasonal"):
-        # v1.1：季节视图改用 __seasonalizeByYear(data, years, palette) 产出历年 series
-        ok = ("window.__seasonalizeByYear" in html and "__yrs_" in html and "__pal_" in html)
-        res.append(("季节真数据 __seasonalizeByYear", ok,
+        # v1.1+：季节视图用 __seasonalizeByYear(月度/周度) 或 __seasonalizeByDay(日度) 产出历年 series
+        ok = (("window.__seasonalizeByYear" in html or "window.__seasonalizeByDay" in html)
+              and "__yrs_" in html and "__pal_" in html)
+        res.append(("季节真数据 历年series函数", ok,
                     "缺失：可能未用新的历年 series 函数"))
     else:
         res.append(("季节真数据", True, "本页无季节模式，跳过"))
