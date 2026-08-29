@@ -54,6 +54,16 @@ python3 ~/.hermes/scripts/file_write_lock.py release /home/ubuntu/framework-tree
 - 同时改同一文件 = 必然冲突，先问主脑或走 PR 合并
 - `chart_kits.py` 公共模块只有主脑能改，其他人只能在分支上提 PR
 
+**开工前基线同步（强制，犯过错的教训）**：
+```bash
+git fetch origin
+git rebase origin/main          # 必须做！否则你的指标表/页面会缺 main 已有的东西
+python3 -c "import json; d=json.load(open('data/indicators_v1.json')); print('指标数:', len(d['indicators']))"
+# 指标数必须 ≥ main 的 78（以 STATUS.md 最新记载为准）；少了 = 基线旧，先 rebase
+```
+- 分支基线必须是最新 main，禁止基于旧 commit 直接开工（实测教训：分支停在旧 main 会缺 5 个 j323_* 指标、diff 巨大、merge 冲突面扩大）
+- 每一次新任务开始前重复上述步骤
+
 ---
 
 ## 3. 质量门禁（产出必须全绿才算完成）
@@ -79,6 +89,8 @@ python3 scripts/reclaim.py
 | 3 | **数据可得性** | 同花顺推荐 ≠ 知几一定有序列。优先选知几能搜到、有连续序列的；搜不到的进备用库标「待外部源」 |
 | 4 | **正主 vs 辅助** | 每子节点 1 个正主指标，其余作辅助/交叉验证，不喧宾夺主 |
 | 5 | **产出可查** | 剔除项必须在发散记录 md 的「排除项」栏写明为何剔除，供后续回溯 |
+
+**正主防串用（强制）**：做任何节点前，先查这个指标是否已经是**其他页面**的正主（grep 已有 build 脚本 / 已发布 HTML 的指标 ID）。已在别页做正主的指标（如 i18 铅锭社库=4.3 正主、j25_tc=2.5 正主）**禁止在本页重复当正主**，只能作辅助交叉或进备用库。正主必须贴合本节点 tree_config 的 q 字段定义（例：5.1 q=开工率·同步 → 正主应为铅酸电池开工率，不是表观消费）。
 
 > 完整方法论见 `pb_prompt/batch/PB_库存_v19.md` 规则3（题材对象一致原则）+ 规则7（边界归属提示）；备用库生命周期规范见 `pb_prompt/Pb_看板指标定稿_v2.md`。
 
