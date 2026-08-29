@@ -65,6 +65,14 @@ PAGES = {
         "label": "2.5 估值与利润",
         "has_seasonal": False,
     },
+    "26": {
+        "file": "pb_26_position_holder.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_26_c1", "echart_26_c2", "echart_26_c3"],
+        "label": "2.6 持仓席位观察",
+        "has_seasonal": True,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
