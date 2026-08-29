@@ -73,6 +73,14 @@ PAGES = {
         "label": "2.6 持仓席位观察",
         "has_seasonal": True,
     },
+    "51": {
+        "file": "pb_51_primary_consumption.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_51_c1", "echart_51_c2", "echart_51_c3"],
+        "label": "5.1 初级消费",
+        "has_seasonal": True,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
