@@ -33,6 +33,7 @@
 | **旧版产物归档** | ✅ 完成 → `legacy/20260826_pb_stock_v1/` (pb_stock.html / pb_stock_demo.html / build_pb_stock.py) | 线A |
 | 铅 4.1 交易所库存子页 (2图全真) | ✅ 完成 pb_41_stock.html | 线A |
 | 主站 chip 点击跳转品类看板 | ✅ 完成 index.html PAGE_MAP | 线A |
+| 板块1 价格信号 6 节点全做 (2.1-2.6, 18图全真) | ✅ 完成 (pb_21~26 + 总览页, 73指标) | 线A |
 | ECharts 四图接入 (其余品种) | ❌ 待做 | 线A |
 | 同花顺 Prompt v5 定稿 | ✅ 完成 | 线B |
 | 铅库存实测 | ✅ v5 发散版 19 图方案已落盘 | 线B |
@@ -73,6 +74,12 @@
 | 2026-08-28 | [P1+P2] build 脚本公共模块重构 + 自动验证门禁。P1: 新增 `scripts/chart_kits.py`(269 行)，把 4 个 build 脚本重复的 `load_metric/pairs/latest/chart_line_t/chart_dual/chart_triple/CSS/ANTI/__seasonalize/__tgl/resize` 全部抽公共；4 个 build 脚本从 220+ 行降到 82-90 行(-60%)，只写"读哪个指标+画哪张图+什么备注"。P2: 新增 `scripts/check_html.py`(185 行,7 项校验×4 页) + `scripts/verify_render.js`(jsdom+ECharts mock 真实渲染验证,62 项检查)。**顺手修掉 3 个隐性 bug**:①6.2/6.3 季节按钮假数据(`data:[null×12]`)→统一真数据 `window.__seasonalize(__d)`;②6.4 缺 button CSS 样式 + 无公共 JS 封装→补齐;③`__tgl` 按钮文字语义错配(nxt==='ts' 时误显示「⏱ 时序」,与初始按钮文字语义对撞导致点击后文字看似不变)→统一为「按钮=点击后的视图」语义。三道验证全绿:check_html 4/4、Node 语法 4/4、jsdom 渲染 4/4(62 项)。备份: `/home/ubuntu/backups/framework-tree-t5-20260828/`(bundle+tar.gz+git tag `T5_P1P2_BEFORE_20260828`)，3 天观察期后删除 | 线A |
 | 2026-08-29 | **[T6b] 季节图改造上线 v1.1**：季节视图由「12 月均值线」改为「历年各一条线+图例标年份」(默认近 5 年 2022-2026)。修复 chart_kits.py itemStyle 括号顺序 bug(`}}}]}]`→`}}]}}]`,与 v3 逐字节一致)；新增 `__seasonalizeByYear`；verify_render.js 的 setOption 检查改为兼容默认 ts/se 两种 mode(修复 62/63 误 FAIL)。三道验证全绿 4/4。已推 main `767221e`，线上 4 页 curl 验证 `__seasonalizeByYear` 均 ≥1。回退点:git tag `T6b_SEASONAL_V3_BEFORE_20260828` + 备份 `/home/ubuntu/backups/framework-tree-t6b-online-before-20260828/` | 线A |
 | 2026-08-29 | **[T7-2.1] 铅价格信号·2.1盘面结构子页上线 v1**（指标树填充板块1第1子节点，全流程：同花顺v18发散→自检→知几验证→入库→build→push）。新增 `pb_21_price_structure.html` 3图全真：图1 沪铅主力量价仓三联动(chart_pv 新公共函数,价左轴+量仓右轴)、图2 月末收盘价季节图(近5年历年线)、图3 成交持仓比(量/仓日频计算)。数据源=zhiji 观 kline PB D 3751交易日全量(2011-03至2026-08-28)，灌 api_cache.db j21_close/j21_volume/j21_oi。indicators_v1.json v1.9→v2.0(+3指标)。待外部源：前20会员多空/集中度(知几无,需上期所会员持仓排名)。三道验证 5/5 ALL PASS，已推 `1b0b59b`，线上 curl 验证通过 | 线A |
+| 2026-08-29 | **[T7-2.2] 铅价格信号·2.2现货与升贴水子页上线 v1**（板块1第2子节点）。新增 `pb_22_spot_premium.html` 3图全真：图1 1#铅现货价vs沪铅主力基差、图2 现货价季节图(近5年历年线)、图3 原生铅vs再生铅价差。数据源=SMM 1#铅现货均价+区域价+升贴水，灌 api_cache.db j22_spot/j22_sh/j22_gd/j22_hn/j22_tj/j22_premium/j22_regen/j22_shfe_ratio。indicators_v1.json v2.0→v2.1。已推 `01b6a63`，线上 curl 565KB 验证通过 | 线A |
+| 2026-08-29 | **[T7-2.3] 铅价格信号·2.3海外价格子页上线 v1**（板块1第3子节点）。新增 `pb_23_overseas_price.html` 3图全真：图1 LME期限结构(Cash/3M/升贴水)、图2 LME现货价季节图、图3 现货升贴水vs SMM进口盈亏。数据源=LME现货+3M+升贴水+SMM进口盈亏，灌 j23_lme_cash/j23_lme_3m/j23_lme_0to3/j23_lme_sp3/j23_imp_profit。indicators_v1.json v2.1→v2.2。已推 `61612f5`，线上 curl 503KB 验证通过 | 线A |
+| 2026-08-29 | **[T7-2.4] 铅价格信号·2.4价差体系子页上线 v1**（板块1第4子节点）。新增 `pb_24_spread_system.html` 3图全真：图1 期现价差(主力月差/近远月)、图2 再生铅利润vs精废价差、图3 铅锌比价。数据源=期现价差+再生利润+精废价差，灌 j24_spread_m/j24_spread_s/j24_regen_profit/j24_refine_spread。indicators_v1.json v2.2→v2.3。已推 `212fb8d`，线上 curl 711KB 验证通过 | 线A |
+| 2026-08-29 | **[T7-2.5] 铅价格信号·2.5估值与利润子页上线 v1**（板块1第5子节点）。新增 `pb_25_valuation_profit.html` 3图全真：图1 原生vs再生铅冶炼利润、图2 废蓄电池价格vs再生精铅成本、图3 铅精矿TC矿端议价。数据源=加工成本+白银副产品收益+TC+废蓄电池，灌 j25_smelt_cost/j25_ag_revenue/j25_tc/j25_battery。indicators_v1.json v2.3→v2.4(+4指标, 累计73指标)。已推 `db4d7af`，线上 curl 589KB 验证通过 | 线A |
+| 2026-08-29 | **[T7-2.6] 铅价格信号·2.6持仓席位观察子页上线 v1 + 板块1收官**（板块1第6子节点）。新增 `pb_26_position_holder.html` 3图全真：图1 沪铅持仓量vs成交量(量仓结构双轴)、图2 持仓量季节图(近5年历年线)、图3 持仓vs收盘价(量价背离双轴)。落地决策：前20会员多空排名/集中度在知几【无数据】(仅LME/SHFE总持仓量)，前20席位体系在NOTE标注「待上期所会员持仓排名外部源」，用观 kline 已有 j21_oi/j21_volume/j21_close 做3图。三道验证 10/10 ALL PASS。已推 `5b0903e`，线上 curl 848KB 验证通过。**板块1【价格信号】6子节点/18图全部上线，indicators_v1.json v2.4 共73指标** | 线A |
+| 2026-08-29 | **[T7-板块1] 铅价格信号总览页 + 主站接入闭环**。新增 `pb_2_overview.html` 静态导航页(2.1-2.6 六卡片：每页3图摘要+指标组+数据量, 移动端自适应) + `scripts/build_pb_2_overview.py`。同时补齐主站 `index.html` 两处缺口：①`PAGE_MAP` 新增 `PB_p1~PB_p6` 六条映射(此前价格板块点击PB chip 只落到占位面板，无法跳转看板)；②分类卡片标题加数据驱动「📈 总览」入口(`OVERVIEW_MAP` 以 cat.id 为键, 后续板块可复用) + `.ov-link` 样式(margin-left:auto 右对齐, 不干扰 caret 折叠)。index.html JS 语法 node --check 通过。已推 `41982bb` + 本提交，线上 7 页 curl 全 200 验证 | 线A |
 
 ---
 

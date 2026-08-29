@@ -40,6 +40,10 @@ a{color:#b06a32;text-decoration:none}
 .ncard.collapsed>h4 .caret{transform:rotate(-90deg)}
 .ncard.collapsed .ncard-body{display:none}
 .ncard-body{padding:2px 0}
+.ncard>h4 .ov-link{margin-left:auto;font-size:10px;font-weight:600;color:#6b4f2a;
+     text-decoration:none;padding:2px 7px;border:1px solid #c9bfa9;border-radius:3px;
+     background:#fff;padding-left:6px}
+.ncard>h4 .ov-link:hover{background:#f0e6d6;border-color:#a8916a}
 
 /* 指标叶行：编号 + 名称 + 问题 + 品种chip */
 .t-leaf{display:flex;align-items:center;gap:8px;padding:4px 12px 4px 20px;cursor:pointer;transition:.1s}
@@ -185,6 +189,17 @@ function renderTree(filter){
     h4.innerHTML='<span class="caret">▼</span><span>'+cat.label+'</span>';
     h4.onclick=(e)=>{ e.stopPropagation(); card.classList.toggle('collapsed'); };
 
+    // 板块总览入口（数据驱动）：分类id → 总览页
+    const OVERVIEW_MAP={ 'price':'pb_2_overview.html' };
+    if(OVERVIEW_MAP[cat.id]){
+      const ov=document.createElement('a');
+      ov.className='ov-link'; ov.textContent='📈 总览';
+      ov.href=OVERVIEW_MAP[cat.id];
+      ov.title=cat.label+' 板块总览（全部子页导航）';
+      ov.onclick=(e)=>{ e.stopPropagation(); };
+      h4.appendChild(ov);
+    }
+
     const body=document.createElement('div');
     body.className='ncard-body';
     let any=false;
@@ -262,6 +277,12 @@ function selectChip(leaf, commId, render){
 
   // 跳转到对应品种的子类看板（静态页）
   const PAGE_MAP = {
+         'PB_p1':'pb_21_price_structure.html',  // 2.1 盘面结构
+         'PB_p2':'pb_22_spot_premium.html',  // 2.2 现货与升贴水
+         'PB_p3':'pb_23_overseas_price.html',  // 2.3 海外价格
+         'PB_p4':'pb_24_spread_system.html',  // 2.4 价差体系
+         'PB_p5':'pb_25_valuation_profit.html',  // 2.5 估值与利润
+         'PB_p6':'pb_26_position_holder.html',  // 2.6 持仓席位观察
          'PB_i1':'pb_stock_v2.html?tab=4.1',
          'PB_i2':'pb_stock_v2.html?tab=4.2',
          'PB_i3':'pb_stock_v2.html?tab=4.3',
