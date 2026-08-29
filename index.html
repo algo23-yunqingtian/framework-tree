@@ -190,7 +190,7 @@ function renderTree(filter){
     h4.onclick=(e)=>{ e.stopPropagation(); card.classList.toggle('collapsed'); };
 
     // 板块总览入口（数据驱动）：分类id → 总览页
-    const OVERVIEW_MAP={ 'price':'pb_2_overview.html', 'supply':'pb_3_overview.html', 'inventory':'pb_4_overview.html', 'trade':'pb_6_overview.html' };
+    const OVERVIEW_MAP={ 'price':'pb_2_overview.html', 'supply':'pb_3_overview.html', 'inventory':'pb_4_overview.html', 'demand':'pb_5_overview.html', 'trade':'pb_6_overview.html' };
     if(OVERVIEW_MAP[cat.id]){
       const ov=document.createElement('a');
       ov.className='ov-link'; ov.textContent='📈 总览';
