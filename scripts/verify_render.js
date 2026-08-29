@@ -32,6 +32,11 @@ const PAGES = [
   { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },
   { key: '64', file: 'pb_64_overseas_shipping.html',   seasonal: [] },
   { key: '32_3', file: 'pb_32_3_regen_supply.html',    charts: 4, seasonal: ['echart_32_3_c4'] },
+  { key: '41', file: 'pb_41_exchange_stock.html',   seasonal: ['echart_41_c1'] },
+  { key: '42', file: 'pb_42_warrant.html',          seasonal: ['echart_42_c1', 'echart_42_c2'] },
+  { key: '43', file: 'pb_43_social_stock.html',     seasonal: ['echart_43_c3'] },
+  { key: '44', file: 'pb_44_factory_stock.html',    seasonal: [] },
+  { key: '45', file: 'pb_45_hidden_stock.html',     charts: 2, seasonal: [] },
 ];
 
 function expectedBtnText(mode) {
@@ -161,7 +166,8 @@ for (const p of PAGES) {
     }
   }
 
-  for (let i = 1; i <= 3; i++) {
+  // DOM 存在性检查：按本页实际图数循环（2 图页不会找 _c3）
+  for (let i = 1; i <= expCharts; i++) {
     const cid = 'echart_' + p.key + '_c' + i;
     checks.push([cid + ' DOM 存在', !!doc.getElementById(cid), '']);
   }

@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+"""铅(PB) 板块4【库存】总览页 · v1 · 4.1-4.5 导航入口（对称 pb_2_overview / pb_6_overview）。
+
+静态导航页：不依赖数据接口，纯 HTML+CSS，列出 5 个子节点页面卡片 + 每页图摘要 + 指标覆盖情况。
+主题色 = 库存板块绿色 #7a8c5b（与 tree_config 板块配色一致）。
+"""
+import os
+from pathlib import Path
+
+CARDS = [
+    ("4.1", "交易所库存", "pb_41_exchange_stock.html",
+     "图1 LME库存·注销占比 / 图2 SG仓单结构 / 图3 SHFE+LME跨市",
+     "i1 LME总库存 · i2 SHFE仓单 · i7 LME注销 · i19/i20 SG注册注销", "501~2194 点"),
+    ("4.2", "仓单", "pb_42_warrant.html",
+     "图1 LME注销占比 / 图2 上期所上海仓占比 / 图3 LME注册+注销",
+     "i6 LME注册仓单 · i7 LME注销仓单 · i2 SHFE仓单 · i8 上海仓单", "485~2182 点"),
+    ("4.3", "社会库存", "pb_43_social_stock.html",
+     "图1 全国vs五地双口径 / 图2 五地销区结构 / 图3 全国日频季节",
+     "i31 Mysteel全国 · i18 SMM五地 · i32~i36 广粤苏浙津沪", "616~768 点"),
+    ("4.4", "工厂库存", "pb_44_factory_stock.html",
+     "图1 原生+再生成品厂库 / 图2 精矿+再生原料 / 图3 废电瓶+持有天数",
+     "i4/i11 成品厂库 · i9 精矿厂库 · i12 再生原料 · i13 废电瓶 · i15 持有天数", "91~378 点"),
+    ("4.5", "隐性·在途", "pb_45_hidden_stock.html",
+     "图1 SG非仓单库存 / 图2 海关进口+SG入库节奏",
+     "i23 SG非仓单 · i17 海关铅锭进口 · i24 SG入库量", "103~2194 点"),
+]
+
+# 卡片 HTML
+cards_html = ""
+for num, title, href, charts, metrics, quality in CARDS:
+    cards_html += f'''
+    <a class="card" href="{href}">
+      <div class="card-head">
+        <span class="card-num">{num}</span>
+        <span class="card-title">{title}</span>
+      </div>
+      <div class="card-charts">{charts}</div>
+      <div class="card-metrics">{metrics}</div>
+      <div class="card-foot">
+        <span class="badge">数据 {quality}</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>'''
+
+CSS = '''
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:32px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto}
+.h1{font-size:26px;font-weight:700;color:#7a8c5b;margin-bottom:6px}
+.sub{color:#8b949e;font-size:13px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+.card{display:block;text-decoration:none;color:inherit;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:18px;transition:all .2s}
+.card:hover{border-color:#7a8c5b;transform:translateY(-2px);background:#1a2028}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card-num{display:inline-block;background:#7a8c5b;color:#0f1419;font-weight:700;font-size:13px;padding:2px 8px;border-radius:4px}
+.card-title{font-size:17px;font-weight:600;color:#e6edf3}
+.card-charts{font-size:13px;color:#c9d1d9;margin-bottom:8px}
+.card-metrics{font-size:12px;color:#8b949e;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:12px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.badge{background:#21262d;color:#8b949e;padding:2px 8px;border-radius:10px;border:1px solid #30363d}
+.go{color:#7a8c5b;font-weight:600}
+.nav-back{display:flex;gap:16px;align-items:center;font-size:12px;margin-bottom:16px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 10px;background:#161b22;border:1px solid #21262d;border-radius:6px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}
+.note{background:#161b22;border:1px solid #30363d;border-left:3px solid #7a8c5b;border-radius:6px;padding:14px 16px;font-size:13px;color:#8b949e;margin-bottom:20px}
+.note b{color:#c9d1d9}
+.footer{border-top:1px solid #21262d;padding-top:16px;font-size:12px;color:#6e7681;text-align:center}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+'''
+
+HTML = f'''<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>铅(PB) 板块4 库存 · 总览</title>
+<style>{CSS}</style></head>
+<body>
+<div class="wrap">
+  <div class="nav-back"><a href="index.html">← 回主站</a></div>
+  <div class="h1">铅(PB) · 板块4【库存】总览</div>
+  <div class="sub">5 个子节点全部上线 · 共 14 张图全真数据 · 由 pb_stock_v2.html 拆分重构 · 2026-08-29</div>
+
+  <div class="note">
+    <b>板块4 覆盖：</b>交易所库存 · 仓单 · 社会库存 · 工厂库存 · 隐性/在途库存。<br>
+    <b>数据底座：</b>zhiji 料服务（SMM / Mysteel / LME / 海关），全部落盘 api_cache.db。日频(交易所/社库全国) + 周频(五地社库/原料) + 月频(工厂成品) 三粒度覆盖。<br>
+    <b>口径边界：</b>本页只做库存本体/结构/在途，价格·利润·价差·产量·开工率仅作辅轴（≤1），不单独立图。<br>
+    <b>待外部源：</b>交割品牌/质押/贸易商库存/亚洲可交仓(4.2) · Mysteel六市分城市(4.3) · 提单量/在途量(4.5) · 矿端供给4图（3.x 建页时接入）。以上按取舍规则3入备用库标「待外部源」。<br>
+    <b>数据新鲜度：</b>i1/i2（LME总库存/SHFE仓单）缓存止 2024-08，为历史口径快照；i19/i20/i23 部分止 2025。需最新值请跑 <code>refresh_cache.py</code>。
+  </div>
+
+  <div class="grid">{cards_html}
+  </div>
+
+  <div class="footer">
+    有色金属产业指标树 · 铅(PB) · 板块4 库存总览 · v1 · 2026-08-29<br>
+    <a href="/" style="color:#7a8c5b;text-decoration:none">← 返回 framework-tree 根目录</a>
+  </div>
+</div>
+</body></html>'''
+
+out = str(Path(__file__).resolve().parent.parent / 'pb_4_overview.html')
+with open(out, 'w', encoding='utf-8') as f:
+    f.write(HTML)
+print('[OK] 已生成 %s (%d 字节)' % (out, os.path.getsize(out)))

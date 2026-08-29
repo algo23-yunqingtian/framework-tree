@@ -113,6 +113,46 @@ PAGES = {
         "label": "3.2.3 再生/二次供应",
         "has_seasonal": True,   # 图4 chart_line_t 季节真数据
     },
+    "41": {
+        "file": "pb_41_exchange_stock.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_41_c1", "echart_41_c2", "echart_41_c3"],
+        "label": "4.1 交易所库存",
+        "has_seasonal": True,   # 图1 chart_line_t 注销占比季节
+    },
+    "42": {
+        "file": "pb_42_warrant.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_42_c1", "echart_42_c2", "echart_42_c3"],
+        "label": "4.2 仓单",
+        "has_seasonal": True,   # 图1/图2 chart_line_t
+    },
+    "43": {
+        "file": "pb_43_social_stock.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_43_c1", "echart_43_c2", "echart_43_c3"],
+        "label": "4.3 社会库存",
+        "has_seasonal": True,   # 图3 Mysteel全国 chart_line_t
+    },
+    "44": {
+        "file": "pb_44_factory_stock.html",
+        "min_bytes": 30000,
+        "charts": 3,
+        "cids": ["echart_44_c1", "echart_44_c2", "echart_44_c3"],
+        "label": "4.4 工厂库存",
+        "has_seasonal": False,  # 3 图全为 dual，无季节切换模式
+    },
+    "45": {
+        "file": "pb_45_hidden_stock.html",
+        "min_bytes": 20000,
+        "charts": 2,
+        "cids": ["echart_45_c1", "echart_45_c2"],
+        "label": "4.5 隐性·在途",
+        "has_seasonal": True,   # 图1 SG非仓单 chart_line_t
+    },
 }
 
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
