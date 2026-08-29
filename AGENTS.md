@@ -1,0 +1,123 @@
+# AGENTS.md · framework-tree 新 Agent 入职总入口
+
+> 你是新加入的 agent。**先读本文件**，然后严格按本文档顺序执行。
+> 目标：不问我、不看旧会话，仅凭本文档 + 仓库内文档，产出与既有页面**同一标准**的成果。
+
+---
+
+## 0. 快速判断你该做什么（30 秒）
+
+| 你想做的 | 归属 | 入口 |
+|---|---|---|
+| 做**新品种**看板（铜/铝/锌/镍/锡/锂/硅） | 指标录入线 | `docs/COLLABORATION_PLAYBOOK.md` 第3章 |
+| 做**铅的下一板块**（供给/需求/成本利润/供需平衡） | 同上 | 同上 + `STATUS.md` 卡点区 |
+| 改**前端页面**（样式/图表/跳转） | 架构线 | 同上第3章 + `scripts/chart_kits.py` |
+| 只想知道**现状** | — | `STATUS.md`（唯一真源） |
+
+---
+
+## 1. 必读顺序（不许跳步，读完全部再动手）
+
+```
+1. 本文件 AGENTS.md
+2. STATUS.md              ← 当前进度 + 谁负责什么（唯一真源）
+3. docs/COLLABORATION.md  ← 两条线隔离机制（防止覆盖别人的工作）
+4. docs/COLLABORATION_PLAYBOOK.md  ← 全流程 11 章（核心！含格式契约/坑速查）
+5. README.md              ← 项目一句话
+```
+
+**严禁**：不读 STATUS.md 直接改代码 = 可能覆盖别人成果，会被文件锁拒写。
+
+---
+
+## 2. 目录写权限（文件锁强制）
+
+- **线A（架构/前端）**：只能写 `framework-tree/`
+- **线B（指标/数据）**：只能写 `analysis/` 下目录
+- 写文件前必须拿锁，写完释放：
+```bash
+python3 ~/.hermes/scripts/file_write_lock.py acquire /home/ubuntu/framework-tree agent:<你的标识>
+# ... 工作完成后 ...
+python3 ~/.hermes/scripts/file_write_lock.py release /home/ubuntu/framework-tree
+```
+- 拿不到锁 = 有人在写，等待再试。
+
+---
+
+## 3. 质量门禁（产出必须全绿才算完成）
+
+```bash
+# 1) 静态校验
+python3 scripts/check_html.py
+# 2) 渲染校验（需 node）
+node scripts/verify_render.js
+# 3) 格式契约 + 产物完整性（提交前最后一道）
+python3 scripts/reclaim.py
+```
+三道全 PASS 才算完成。任何 FAIL 都要修复后重跑，不许带病提交。
+
+---
+
+## 4. 回传协议（做完必须回传，主脑一键回收）
+
+1. 更新 `STATUS.md`「近期变更记录」+ 对应待办区，**30 秒内** `git commit + push`
+2. commit 前缀规范：代码 `[A]` / 任务 `[Txx]` / 数据 `[B]` / 文档 `[DOC]`
+3. push 命令（Pages 有限频）：
+```bash
+GIT_CURL_OPT="--max-time 300 --retry 5 --retry-delay 10" git push origin main
+```
+4. 主脑跑 `python3 scripts/reclaim.py` 校验 → 全 PASS 后 merge 你的产出。
+
+**你的产出 = GitHub 上的 commit + STATUS.md 行记录**，主脑从这个仓库直接回收合并，不需要你单独发任何文件。
+
+---
+
+## 5. 常用命令速查
+
+```bash
+# 搜知几数据库（命中阈值 score≥12=A / 6-11=B / <6=C）
+python3 ~/.hermes/scripts/zhiji_api.py search "新加坡 铅 仓单"
+python3 ~/.hermes/scripts/zhiji_api.py series a10193708 2015-01-01 2026-08-29
+
+# 拉数据入库（1秒限频，自动写 api_cache.db）
+python3 scripts/refresh_cache.py
+
+# 重建全部页面
+for f in scripts/build_pb_*.py; do python3 "$f"; done
+
+# 本地预览
+python3 -m http.server 8786
+```
+
+---
+
+## 6. 关键路径
+
+| 文件 | 用途 | 谁能改 |
+|---|---|---|
+| `data/indicators_v1.json` | 指标元数据唯一真源 | 主脑合并 |
+| `data/tree_config.json` | 目录树配置 | 线A |
+| `scripts/chart_kits.py` | 图表公共模块 | **只有主脑能改** |
+| `scripts/reclaim.py` | 一键回收校验 | 主脑 |
+| `scripts/api_cache.db` | SQLite 缓存（不推 GitHub） | — |
+| `STATUS.md` | 全局状态唯一真源 | 所有人（拿锁） |
+
+---
+
+## 7. 硬性红线
+
+- ❌ 不推 `*.db` / `*.pyc` / `.env` 到 GitHub
+- ❌ 不在公开页暴露知几 API key（key 在 `~/.hermes/scripts/zhiji_api.py`，不进仓库）
+- ❌ 不经主脑允许改 `chart_kits.py` 公共模块
+- ❌ 用 f-string 写 JS 模板（必须 `%` 格式化 + `%%` 转义）
+- ❌ 看完 STATUS.md 前动手写代码
+
+---
+
+## 8. 当前进度快照（2026-08-29，详见 STATUS.md）
+
+- ✅ 铅板块1 价格信号 6 子节点 / 18 图全部上线
+- ✅ 铅板块2 进出口 6.1-6.4 四节点上线
+- ✅ 铅板块3 库存 4.1 子页上线
+- ⏳ 下一主线：铅板块2 供给(3.x)、板块4 需求(5.x)、板块5 成本利润(7.x)、板块6 供需平衡(8.x)
+- ⏳ 其余 7 品种（铜/铝/锌/镍/锡/锂/硅）目录已建，待填充

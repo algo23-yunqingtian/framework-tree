@@ -5,6 +5,7 @@
 供用户快速浏览板块1成果，也是后续板块总览页的模板。
 """
 import json, os
+from pathlib import Path
 
 CARDS = [
     ("2.1", "盘面结构", "pb_21_price_structure.html",
@@ -93,7 +94,7 @@ HTML = f'''<!DOCTYPE html>
 </div>
 </body></html>'''
 
-out = '/home/ubuntu/framework-tree/pb_2_overview.html'
+out = str(Path(__file__).resolve().parent.parent / 'pb_2_overview.html')
 with open(out, 'w', encoding='utf-8') as f:
     f.write(HTML)
 print('[OK] 已生成 %s (%d 字节)' % (out, os.path.getsize(out)))

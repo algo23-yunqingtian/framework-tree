@@ -18,9 +18,9 @@ refresh_cache.py — 统一缓存刷新脚本（v1.3 合并版）
 import subprocess, sys, json, sqlite3, os, time, argparse
 from pathlib import Path
 
-DB = Path("/home/ubuntu/framework-tree/scripts/api_cache.db")
+DB = Path(__file__).resolve().parent / "api_cache.db"
 ZHJI = Path.home() / ".hermes" / "scripts" / "zhiji_api.py"
-INDICATOR_JSON = Path("/home/ubuntu/framework-tree/data/indicators_v1.json")
+INDICATOR_JSON = Path(__file__).resolve().parent.parent / "data" / "indicators_v1.json"
 
 def zhiji_series(zhiji_id, start, end):
     r = subprocess.run(
