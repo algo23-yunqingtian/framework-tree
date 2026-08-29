@@ -77,7 +77,9 @@ def main():
     args = ap.parse_args()
 
     meta = json.loads(INDICATOR_JSON.read_text(encoding="utf-8"))
-    i_entries = {k: v for k, v in meta["indicators"].items() if k.startswith("i")}
+    # v1.4: 兼容 i*(库存) / j*(价格信号+供给 j21-j323) 前缀
+    i_entries = {k: v for k, v in meta["indicators"].items()
+                 if k.startswith("i") or k.startswith("j")}
     if args.metrics:
         wanted = set(m.strip() for m in args.metrics.split(","))
         i_entries = {k: v for k, v in i_entries.items() if k in wanted}

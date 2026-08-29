@@ -105,6 +105,14 @@ PAGES = {
         "label": "6.4 海外对华发运",
         "has_seasonal": False,  # 3 图全为 dual/triple，无季节切换模式
     },
+    "32_3": {
+        "file": "pb_32_3_regen_supply.html",
+        "min_bytes": 30000,
+        "charts": 4,
+        "cids": ["echart_32_3_c1", "echart_32_3_c2", "echart_32_3_c3", "echart_32_3_c4"],
+        "label": "3.2.3 再生/二次供应",
+        "has_seasonal": True,   # 图4 chart_line_t 季节真数据
+    },
 }
 
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）

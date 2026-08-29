@@ -190,7 +190,7 @@ function renderTree(filter){
     h4.onclick=(e)=>{ e.stopPropagation(); card.classList.toggle('collapsed'); };
 
     // 板块总览入口（数据驱动）：分类id → 总览页
-    const OVERVIEW_MAP={ 'price':'pb_2_overview.html', 'trade':'pb_6_overview.html' };
+    const OVERVIEW_MAP={ 'price':'pb_2_overview.html', 'supply':'pb_3_overview.html', 'trade':'pb_6_overview.html' };
     if(OVERVIEW_MAP[cat.id]){
       const ov=document.createElement('a');
       ov.className='ov-link'; ov.textContent='📈 总览';
@@ -288,6 +288,7 @@ function selectChip(leaf, commId, render){
          'PB_i3':'pb_stock_v2.html?tab=4.3',
          'PB_i4':'pb_stock_v2.html?tab=4.4',
          'PB_i5':'pb_stock_v2.html?tab=4.5',
+         'PB_s3':'pb_32_3_regen_supply.html',  // 3.2.3 再生/二次供应
          'PB_t1':'pb_61_raw_material_import.html',  // 6.1 原料进口
          'PB_t2':'pb_62_import_export.html',  // 6.2 精炼金属进出口
          'PB_t3':'pb_63_product_export.html',  // 6.3 制品出口

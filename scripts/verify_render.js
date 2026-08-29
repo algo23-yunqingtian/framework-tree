@@ -31,6 +31,7 @@ const PAGES = [
   { key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_62_c1', 'echart_62_c3'] },
   { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },
   { key: '64', file: 'pb_64_overseas_shipping.html',   seasonal: [] },
+  { key: '32_3', file: 'pb_32_3_regen_supply.html',    charts: 4, seasonal: ['echart_32_3_c4'] },
 ];
 
 function expectedBtnText(mode) {
@@ -75,9 +76,10 @@ for (const p of PAGES) {
   const hasByYear = typeof win.__seasonalizeByYear === 'function';
   checks.push(['__seasonalizeByYear 函数存在', hasByYear, hasByYear ? '' : '未定义']);
 
-  // 图表容器数量
+  // 图表容器数量（配置驱动，默认 3；4 图页需在 PAGES 显式声明 charts:4）
   const nChart = doc.querySelectorAll('div.chart').length;
-  checks.push(['chart 容器数=3', nChart === 3, '实际 ' + nChart]);
+  const expCharts = p.charts || 3;
+  checks.push(['chart 容器数=' + expCharts, nChart === expCharts, '实际 ' + nChart]);
 
   for (const cid of p.seasonal) {
     const data = win['__data_' + cid];
