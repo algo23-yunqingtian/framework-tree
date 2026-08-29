@@ -10,7 +10,8 @@
 ⚠️ 原生铅综合利润 = 白银收益 - 加工成本 + 铅价-精矿成本，SMM未直接给利润值，用加工成本+白银收益展示成本结构。
 """
 from chart_kits import (load_metric, pairs, latest, chart_dual, chart_line_t,
-                        page_html, write_html)
+                        page_html, write_html,
+                        make_crumb)
 
 CIDS = ["echart_25_c1", "echart_25_c2", "echart_25_c3"]
 
@@ -83,11 +84,13 @@ NOTE = """<strong style="color:#c9d1d9">2.5 定义：</strong>估值与利润 = 
 
 html = page_html(
     "铅(PB) 2.5 估值与利润",
-    "铅(PB) · 2 价格信号 · 2.5 估值与利润 · v1 3 图",
+    make_crumb("铅", "PB", "2", "价格信号", "2.5", "估值与利润", "1", 3),
     "SMM",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 2.5 估值与利润 · v1（3 图全真数据 · 原生再生利润 · 再生成本线 · TC矿端）· indicators_v1.json v2.4",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_25_valuation_profit.html", html)

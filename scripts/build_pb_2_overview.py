@@ -62,6 +62,9 @@ body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFo
 .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px}
 .badge{background:#21262d;color:#8b949e;padding:2px 8px;border-radius:10px;border:1px solid #30363d}
 .go{color:#e5c07b;font-weight:600}
+.nav-back{display:flex;gap:16px;align-items:center;font-size:12px;margin-bottom:16px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 10px;background:#161b22;border:1px solid #21262d;border-radius:6px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}
 .note{background:#161b22;border:1px solid #30363d;border-left:3px solid #e5c07b;border-radius:6px;padding:14px 16px;font-size:13px;color:#8b949e;margin-bottom:20px}
 .note b{color:#c9d1d9}
 .footer{border-top:1px solid #21262d;padding-top:16px;font-size:12px;color:#6e7681;text-align:center}
@@ -71,15 +74,16 @@ body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFo
 HTML = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>铅(PB) 板块1 价格信号 · 总览</title>
+<title>铅(PB) 板块2 价格信号 · 总览</title>
 <style>{CSS}</style></head>
 <body>
 <div class="wrap">
-  <div class="h1">铅(PB) · 板块1【价格信号】总览</div>
+  <div class="nav-back"><a href="index.html">← 回主站</a></div>
+  <div class="h1">铅(PB) · 板块2【价格信号】总览</div>
   <div class="sub">6 个子节点全部上线 · 共 18 张图全真数据 · indicators_v1.json v2.4（73 指标）· 2026-08-29</div>
 
   <div class="note">
-    <b>板块1 覆盖：</b>盘面结构 · 现货与升贴水 · 海外价格 · 价差体系 · 估值与利润 · 持仓席位观察。<br>
+    <b>板块2 覆盖：</b>盘面结构 · 现货与升贴水 · 海外价格 · 价差体系 · 估值与利润 · 持仓席位观察。<br>
     <b>数据底座：</b>zhiji 观服务（kline 全品种日K）+ 料服务（SMM/LME 日频指标），全部落盘 api_cache.db 日频全量。<br>
     <b>待外部源：</b>2.6 前20会员多空/集中度（上期所会员持仓排名，知几无数据）；2.3 COMEX铅价（知几仅库存）。
   </div>
@@ -88,7 +92,7 @@ HTML = f'''<!DOCTYPE html>
   </div>
 
   <div class="footer">
-    有色金属产业指标树 · 铅(PB) · 板块1 价格信号总览 · v1 · 2026-08-29<br>
+    有色金属产业指标树 · 铅(PB) · 板块2 价格信号总览 · v1 · 2026-08-29<br>
     <a href="/" style="color:#e5c07b;text-decoration:none">← 返回 framework-tree 根目录</a>
   </div>
 </div>

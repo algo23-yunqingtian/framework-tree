@@ -15,12 +15,17 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
-.note strong{color:#c9d1d9}</style></head><body>
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
   <div class="hcrumbs">铅(PB) · 2 价格信号 · 2.5 估值与利润 · v1 3 图</div>
   <div class="hright">数据固化快照 · 2026-08-29 · SMM</div>
 </div>
+<div class="nav-back"><a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
 <div class="chart"><div class="chart-title">原生铅 vs 再生铅冶炼利润</div><div class="chart-sub">原生净利≈白银收益-加工成本 + SMM再生铅利润 · 日 · 元/吨 · 原生1370点(2021起) / 再生2586点(2016起) · 至 2026-08-28</div><div id="echart_25_c1" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断冶炼端盈亏，利润是供给收缩/扩张的直接驱动。<br>怎么看：利润转负并加深 = 冶炼亏损、减产/停产预期强、支撑铅价底部（成本支撑）；利润高企 = 开工动力足、供给压力大。原生净利为估算(白银收益-加工成本)。最新(2026-08-28)：再生利润-512元(亏损)、原生净利约-238元。</div></div><div class="chart"><div class="chart-title">废蓄电池 vs 再生精铅（再生成本线）</div><div class="chart-sub">SMM 废蓄电池均价 + 再生精铅均价 · 日 · 元/吨 · 645/2101 点 · 至 2026-08-28</div><div id="echart_25_c2" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断再生铅的成本支撑。<br>怎么看：废电池(原料)与再生精铅(成品)价差=精废价差，决定再生利润弹性。废电池涨得快 = 再生成本抬升、利润被吞噬、减产风险；价差收窄 = 再生厂亏损。最新(2026-08-28)：废蓄电池9275 vs 再生精铅15975 = 价差6700元。注：废电池数据仅2.7年(2023-12起)。</div></div><div class="chart"><div class="chart-title">铅精矿TC vs 沪铅价（矿端紧松）</div><div class="chart-sub">SMM 国产铅精矿加工费TC + 沪铅主力 · 日 · TC元/金属吨 · 1370/3751 点 · 至 2026-08-28</div><div id="echart_25_c3" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断矿端紧松与原生冶炼利润的挤压关系。<br>怎么看：TC下行 = 矿端偏紧、原生冶炼原料成本上升、利润承压；TC上行 = 矿端宽松。最新(2026-08-28)：国产TC 150元(低位,矿端偏紧) + 沪铅16245元。</div></div>
 <div class="note">

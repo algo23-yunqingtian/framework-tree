@@ -11,7 +11,8 @@
    CSS 补回 button 样式，与其他 3 页结构一致。
 """
 from chart_kits import (load_metric, pairs, latest,
-                        chart_dual, chart_triple, page_html, write_html)
+                        chart_dual, chart_triple, page_html, write_html,
+                        make_crumb)
 
 CIDS = ["echart_64_c1", "echart_64_c2", "echart_64_c3"]
 
@@ -80,12 +81,14 @@ NOTE = """<strong style="color:#c9d1d9">6.4 定义与数据源说明：</strong>
 
 html = page_html(
     "铅(PB) 6.4 海外对华发运",
-    "铅(PB) · 6 进出口 · 6.4 海外对华发运 · v3 3 图(带图备注)",
+    make_crumb("铅", "PB", "6", "进出口", "6.4", "海外对华发运", "3", 3),
     "Zhiji/LME/海关",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 6.4 海外对华发运 · v3（3 图全真数据 · LME 分地区代理 · 季节真数据）· indicators_v1.json v1.9",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_6_overview.html">← 回板块6总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_64_overseas_shipping.html", html)
 print("[POINTS] i19=%d i20=%d i25=%d i17=%d i29=%d i30=%d" % (m19["n"], m20["n"], m25["n"], m17["n"], m29["n"], m30["n"]))

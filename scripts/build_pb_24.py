@@ -9,7 +9,8 @@
 ⚠️ 期限结构多合约曲线、跨期逼仓图：需要 SHFE 各月合约收盘价，本次用 SMM 期现价差当月/次月近似月差。
 """
 from chart_kits import (load_metric, pairs, latest, chart_dual, chart_line_t,
-                        page_html, write_html)
+                        page_html, write_html,
+                        make_crumb)
 import json
 
 CIDS = ["echart_24_c1", "echart_24_c2", "echart_24_c3"]
@@ -75,11 +76,13 @@ NOTE = """<strong style="color:#c9d1d9">2.4 定义：</strong>价差体系 = 月
 
 html = page_html(
     "铅(PB) 2.4 价差体系",
-    "铅(PB) · 2 价格信号 · 2.4 价差体系 · v1 3 图",
+    make_crumb("铅", "PB", "2", "价格信号", "2.4", "价差体系", "1", 3),
     "SMM / SHFE",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 2.4 价差体系 · v1（3 图全真数据 · 期现月差 · 再生利润精废价差 · 铅锌比价）· indicators_v1.json v2.3",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_24_spread_system.html", html)

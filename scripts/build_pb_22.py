@@ -10,7 +10,8 @@
    但升贴水仅上海有 (a10017061)，区域价差用 4 地现货价差展示。
 """
 from chart_kits import (load_metric, pairs, latest, chart_dual, chart_line_t,
-                        page_html, write_html)
+                        page_html, write_html,
+                        make_crumb)
 
 CIDS = ["echart_22_c1", "echart_22_c2", "echart_22_c3"]
 
@@ -85,11 +86,13 @@ NOTE = """<strong style="color:#c9d1d9">2.2 定义：</strong>现货价格 + 升
 
 html = page_html(
     "铅(PB) 2.2 现货与升贴水",
-    "铅(PB) · 2 价格信号 · 2.2 现货与升贴水 · v1 3 图",
+    make_crumb("铅", "PB", "2", "价格信号", "2.2", "现货与升贴水", "1", 3),
     "SMM",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 2.2 现货与升贴水 · v1（3 图全真数据 · 基差 · 现货季节 · 原生再生价差）· indicators_v1.json v2.0",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_22_spot_premium.html", html)

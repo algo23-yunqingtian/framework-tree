@@ -311,7 +311,11 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
-.note strong{color:#c9d1d9}"""
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}"""
 
 ANTI = """document.oncontextmenu=e=>{e.preventDefault();return false};
 document.onkeydown=e=>{if(e.ctrlKey&&['c','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();return false}};
@@ -339,8 +343,23 @@ def JS_COMMON(cids):
             "var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});\n")
 
 
-def page_html(title, hcrumbs, hright, h1, h2, h3, note_html, footer_text, js_body, cids):
-    """拼装完整页面骨架。js_body=各图 js 拼接，cids=本页全部图表id（resize用）。"""
+def make_crumb(commodity, code, section_no, section_name, node_no, node_name, version, n_charts):
+    """PAGE_SPEC v1: 统一面包屑格式。禁止尾部加括号注释。
+    输出: '铅(PB) · 2 价格信号 · 2.1 盘面结构 · v1 3 图'
+    """
+    return "%s(%s) · %s %s · %s %s · v%s %d 图" % (commodity, code, section_no, section_name, node_no, node_name, version, n_charts)
+
+
+def page_html(title, hcrumbs, hright, h1, h2, h3, note_html, footer_text, js_body, cids,
+              nav_back=None):
+    """拼装完整页面骨架。js_body=各图 js 拼接，cids=本页全部图表id（resize用）。
+
+    nav_back: 回链 HTML 片段（不含外层 <div>）。缺省给一个「← 回主站」兜底。
+    """
+    if nav_back is None:
+        nav_back_html = '<a href="index.html">← 回主站</a>'
+    else:
+        nav_back_html = nav_back
     return ("""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>%s · 有色金属研究框架</title>
 <style>""" + CSS + """</style></head><body>
@@ -349,6 +368,7 @@ def page_html(title, hcrumbs, hright, h1, h2, h3, note_html, footer_text, js_bod
   <div class="hcrumbs">%s</div>
   <div class="hright">数据固化快照 · """ + NOW + """ · %s</div>
 </div>
+<div class="nav-back">""" + nav_back_html + """</div>
 <div class="panel">
 %s
 <div class="note">

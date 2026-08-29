@@ -15,12 +15,17 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
-.note strong{color:#c9d1d9}</style></head><body>
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
-  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.2 精炼金属进出口 · v3 3 图(带图备注+双向)</div>
+  <div class="hcrumbs">铅(PB) · 6 进出口 · 6.2 精炼金属进出口 · v3 3 图</div>
   <div class="hright">数据固化快照 · 2026-08-29 · 海关</div>
 </div>
+<div class="nav-back"><a href="pb_6_overview.html">← 回板块6总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
 <div class="chart"><div class="chart-title">中国海关铅锭进口量（月度）—— 6.2 精炼金属正主</div><div class="chart-sub">海关 · 月 · 吨 · i17 103 点 · 2018-01 至 2026-07-31</div><div id="echart_62_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_62_c1',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：进口窗口是否打开、国内缺口靠进口补多少。<br>怎么看：进口量高于历史同期 = 进口窗口打开/LME-沪铅价差有利抄底；连续下降 = 窗口关闭或海外无货可发。</div></div><div class="chart"><div class="chart-title">未锻轧铅进出口双向（HS 7801）—— 中国是净买方还是净卖方</div><div class="chart-sub">海关 · 月 · 吨 · i17 进口 103 点 / i41 出口 103 点 · 至 2026-07-31</div><div id="echart_62_c2" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断中国在全球铅贸易中的角色切换、出口窗口是否打开。<br>两个指标的关系：进口(左轴)是把海外货拉回国内，出口(右轴)是把国内货送往海外；<br>两者都是 HS 7801 精炼铅的月度物理流向。进口主线放大而出口无起色 = 净进口扩大 = 国内缺口靠进口补；<br>出口跳升（如2024-2025铅价内外倒挂时） = 出口利润打开、货往外流。进口 vs 出口差距收窄 = 贸易流向反转信号。</div></div><div class="chart"><div class="chart-title">精炼铅净进口量（月度）—— 进口补库 vs 出口外流对冲后的净结果</div><div class="chart-sub">海关 · 月 · 吨 · 计算 i17-i41 · 103 点 · 至 2026-07-31</div><div id="echart_62_c3" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_62_c3',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：只看一条线就知道国内净缺口方向。<br>怎么看：净进口 >0 且放大 = 国内真缺货靠进口补（利多转弱信号，因供给在补）；<br>净进口接近 0 或转负 = 国内不缺甚至外流（本地供给过剩，累累压力）。</div></div>
 <div class="note">

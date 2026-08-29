@@ -9,7 +9,8 @@
 ⚠️ 前20会员多空持仓/集中度（同花顺图3/4）：知几料服务无数据，标注待外部源（上期所会员持仓排名）。
 """
 from chart_kits import (load_metric, pairs, latest, chart_pv, chart_line_t,
-                        page_html, write_html)
+                        page_html, write_html,
+                        make_crumb)
 from collections import OrderedDict
 
 CIDS = ["echart_21_c1", "echart_21_c2", "echart_21_c3"]
@@ -101,11 +102,13 @@ NOTE = """<strong style="color:#c9d1d9">2.1 定义：</strong>盘面结构 = 期
 
 html = page_html(
     "铅(PB) 2.1 盘面结构",
-    "铅(PB) · 2 价格信号 · 2.1 盘面结构 · v1 3 图",
+    make_crumb("铅", "PB", "2", "价格信号", "2.1", "盘面结构", "1", 3),
     "上期所",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 2.1 盘面结构 · v1（3 图全真数据 · 量价仓三联动 · 收盘价季节图）· indicators_v1.json v2.0",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_21_price_structure.html", html)

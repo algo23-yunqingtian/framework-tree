@@ -10,7 +10,8 @@
 ⚠️ v3（P1）：季节按钮改为 chart_kits 统一版（window.__seasonalize 按月份历年均值，真数据）。
 """
 from chart_kits import (load_metric, pairs, latest, chart_line_t, chart_dual,
-                        page_html, write_html)
+                        page_html, write_html,
+                        make_crumb)
 
 CIDS = ["echart_61_c1", "echart_61_c2", "echart_61_c3"]
 
@@ -76,12 +77,14 @@ NOTE = """<strong style="color:#c9d1d9">6.1 定义与数据源说明：</strong>
 
 html = page_html(
     "铅(PB) 6.1 原料进口",
-    "铅(PB) · 6 进出口 · 6.1 原料进口 · v3 3 图(带图备注)",
+    make_crumb("铅", "PB", "6", "进出口", "6.1", "原料进口", "3", 3),
     "海关/SMM/沸腾环贸",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 6.1 原料进口 · v3（3 图全真数据 · 原料端补库 · 季节真数据）· indicators_v1.json v1.9",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_6_overview.html">← 回板块6总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_61_raw_material_import.html", html)
 print("[POINTS] i40=%d i9=%d i5=%d i16_filtered=%d" % (m40["n"], m9["n"], m5["n"], len(d16_filtered)))

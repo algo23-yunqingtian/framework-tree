@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+"""铅(PB) 板块6【进出口】总览页 · v1 · 6.1-6.4 导航入口。
+
+对称 pb_2_overview.html，补齐板块6入口。静态导航页，不依赖数据接口。
+主题色沿用板块6的紫色 #9b6bb5（区别于板块2的 #e5c07b 金色）。
+"""
+import os
+from pathlib import Path
+
+CARDS = [
+    ("6.1", "原料进口", "pb_61_raw_material_import.html",
+     "图1 海关精矿月度进口 / 图2 冶炼厂精矿+港口库存 / 图3 防城到港",
+     "i40 海关铅精矿进口(月,吨) · i5 精矿港口库存(周,万吨) · i9 冶炼厂精矿库存(月,金属吨) · i16 防城到港(周,万吨)",
+     "103+103+155+62 点"),
+    ("6.2", "精炼金属进出口", "pb_62_import_export.html",
+     "图1 精炼铅锭进出口月度 / 图2 进口vs出口双向 / 图3 净进口",
+     "i17 海关铅锭进口(月,吨) · i41 海关铅锭出口(月,吨) · i7 LME注销仓单(背景)",
+     "复用缓存 无需新增"),
+    ("6.3", "制品出口", "pb_63_product_export.html",
+     "图1 铅蓄电池出口总量 / 图2 启动型出口 / 图3 结构占比",
+     "i37 铅蓄电池出口(月) · i38 启动型电池出口(月) · i39 累计(备用)",
+     "复用缓存 v3"),
+    ("6.4", "海外对华发运", "pb_64_overseas_shipping.html",
+     "图1 LME新加坡出发仓 / 图2 发运-到港节奏 / 图3 分地区结构",
+     "64_group 指标组：LME/新加坡/到港节奏/分地区（周频全量）",
+     "479KB 数据内嵌"),
+]
+
+# 卡片 HTML
+cards_html = ""
+for num, title, href, charts, metrics, quality in CARDS:
+    cards_html += f'''
+    <a class="card" href="{href}">
+      <div class="card-head">
+        <span class="card-num">{num}</span>
+        <span class="card-title">{title}</span>
+      </div>
+      <div class="card-charts">{charts}</div>
+      <div class="card-metrics">{metrics}</div>
+      <div class="card-foot">
+        <span class="badge">数据 {quality}</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>'''
+
+CSS = '''
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:32px;line-height:1.6;
+     user-select:none;-webkit-user-select:none;-moz-user-select:none}
+.wrap{max-width:1180px;margin:0 auto}
+.h1{font-size:26px;font-weight:700;color:#9b6bb5;margin-bottom:6px}
+.sub{color:#8b949e;font-size:13px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+.card{display:block;text-decoration:none;color:inherit;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:18px;transition:all .2s}
+.card:hover{border-color:#9b6bb5;transform:translateY(-2px);background:#1a2028}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card-num{display:inline-block;background:#9b6bb5;color:#0f1419;font-weight:700;font-size:13px;padding:2px 8px;border-radius:4px}
+.card-title{font-size:17px;font-weight:600;color:#e6edf3}
+.card-charts{font-size:13px;color:#c9d1d9;margin-bottom:8px}
+.card-metrics{font-size:12px;color:#8b949e;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:12px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.badge{background:#21262d;color:#8b949e;padding:2px 8px;border-radius:10px;border:1px solid #30363d}
+.go{color:#9b6bb5;font-weight:600}
+.nav-back{display:flex;gap:16px;align-items:center;font-size:12px;margin-bottom:16px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 10px;background:#161b22;border:1px solid #21262d;border-radius:6px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}
+.note{background:#161b22;border:1px solid #30363d;border-left:3px solid #9b6bb5;border-radius:6px;padding:14px 16px;font-size:13px;color:#8b949e;margin-bottom:20px}
+.note b{color:#c9d1d9}
+.footer{border-top:1px solid #21262d;padding-top:16px;font-size:12px;color:#6e7681;text-align:center}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+'''
+
+HTML = f'''<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>铅(PB) 板块6 进出口 · 总览</title>
+<style>{CSS}</style></head>
+<body>
+<div class="wrap">
+  <div class="nav-back"><a href="index.html">← 回主站</a></div>
+  <div class="h1">铅(PB) · 板块6【进出口】总览</div>
+  <div class="sub">4 个子节点全部上线 · 共 12 张图全真数据 · indicators_v1.json v1.9 · 2026-08-29</div>
+
+  <div class="note">
+    <b>板块6 覆盖：</b>原料进口 · 精炼金属进出口 · 制品出口 · 海外对华发运。覆盖「原料 → 精炼 → 制品 → 海外物流」全链条。<br>
+    <b>数据底座：</b>海关总署（月度，滞后 15-20 天）+ SMM 冶炼厂/港口库存（月/周）+ 沸腾环贸防城到港（周）+ LME 新加坡出发仓（周）。<br>
+    <b>待外部源：</b>6.1 进口来源国集中度（知几无月度分国别矩阵，同花顺仅定性：俄/秘鲁/澳/塔/巴）；6.1 i16 防城到港近期（2026.08 起）数据源停更，仅保留历史周频。
+  </div>
+
+  <div class="grid">{cards_html}
+  </div>
+
+  <div class="footer">
+    有色金属产业指标树 · 铅(PB) · 板块6 进出口总览 · v1 · 2026-08-29<br>
+    <a href="index.html" style="color:#9b6bb5;text-decoration:none">← 返回 framework-tree 主站</a>
+  </div>
+</div>
+</body></html>'''
+
+out = str(Path(__file__).resolve().parent.parent / 'pb_6_overview.html')
+with open(out, 'w', encoding='utf-8') as f:
+    f.write(HTML)
+print('[OK] 已生成 %s (%d 字节)' % (out, os.path.getsize(out)))

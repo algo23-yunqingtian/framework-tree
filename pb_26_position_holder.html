@@ -15,12 +15,17 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
-.note strong{color:#c9d1d9}</style></head><body>
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
   <div class="hcrumbs">铅(PB) · 2 价格信号 · 2.6 持仓席位观察 · v1 3 图</div>
   <div class="hright">数据固化快照 · 2026-08-29 · SHFE 观服务</div>
 </div>
+<div class="nav-back"><a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
 <div class="chart"><div class="chart-title">沪铅主力持仓量 vs 成交量（量仓结构）</div><div class="chart-sub">观 kline PB D 主连 · 日 · 手 · 3751 点 · 2011-03 至 2026-08-28</div><div id="echart_26_c1" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断资金参与度与换手强度。<br>怎么看：量增仓增 = 新资金入场、趋势延续；量增仓减 = 资金对倒/获利了结；量缩仓增 = 持仓集中、波动蓄势；量仓同缩 = 观望。最新(2026-08-28)：持仓约9.5万手。</div></div><div class="chart"><div class="chart-title">沪铅主力持仓量季节图（近5年各一条线 + 图例标年份）</div><div class="chart-sub">观 kline PB D · 日 · 手 · 3751 点 · 2011-03 至 2026-08-28</div><div id="echart_26_c2" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_26_c2',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：判断当前持仓量在历史季节性中的位置。<br>怎么看：切季节视图把近5年叠一起，今年持仓明显高于历史同期 = 资金聚集度高、行情波动潜力大；明显低于 = 资金撤离。持仓高位通常对应变盘窗口。</div></div><div class="chart"><div class="chart-title">沪铅持仓量 vs 收盘价（量价背离）</div><div class="chart-sub">观 kline PB D 主连 · 日 · 手/元每吨 · 3751 点 · 至 2026-08-28</div><div id="echart_26_c3" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断上涨/下跌是否由资金推动，识别顶背离。<br>怎么看：价涨仓增 = 多头资金推动、健康；价涨仓减 = 空头回补/情绪反弹、不可持续；价跌仓增 = 空头主动打压、弱势；价跌仓减 = 多头止损离场、接近底部。最新(2026-08-28)：收盘16245元。注：前20会员多空/集中度待上期所会员持仓排名外部源。</div></div>
 <div class="note">

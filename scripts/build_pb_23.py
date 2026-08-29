@@ -9,7 +9,8 @@
 ⚠️ COMEX铅价知几无 → 图3同花顺(COMEX联动)放弃；沪伦比(2.2已入库)并入进口盈亏NOTE。
 """
 from chart_kits import (load_metric, pairs, latest, chart_dual, chart_line_t,
-                        page_html, write_html)
+                        page_html, write_html,
+                        make_crumb)
 
 CIDS = ["echart_23_c1", "echart_23_c2", "echart_23_c3"]
 
@@ -68,11 +69,13 @@ NOTE = """<strong style="color:#c9d1d9">2.3 定义：</strong>海外价格（LME
 
 html = page_html(
     "铅(PB) 2.3 海外价格",
-    "铅(PB) · 2 价格信号 · 2.3 海外价格 · v1 3 图",
+    make_crumb("铅", "PB", "2", "价格信号", "2.3", "海外价格", "1", 3),
     "LME / SMM",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 2.3 海外价格 · v1（3 图全真数据 · LME期限结构 · 现货季节 · 升贴水与进口盈亏）· indicators_v1.json v2.2",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_23_overseas_price.html", html)

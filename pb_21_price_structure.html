@@ -15,12 +15,17 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
-.note strong{color:#c9d1d9}</style></head><body>
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
   <div class="hcrumbs">铅(PB) · 2 价格信号 · 2.1 盘面结构 · v1 3 图</div>
   <div class="hright">数据固化快照 · 2026-08-29 · 上期所</div>
 </div>
+<div class="nav-back"><a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
 <div class="chart"><div class="chart-title">沪铅主力量价仓三联动（价格方向 + 资金参与度）</div><div class="chart-sub">上期所·主力连续 · 日 · 价格元/吨 / 量仓手 · j21_close 3751 点 · 2011-03 至 2026-08-28</div><div id="echart_21_c1" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断铅价涨跌是否有资金参与、是趋势行情还是情绪反弹。<br>怎么看：价涨量增仓增 = 趋势确认（多头主动进场）；价涨量缩仓降 = 空头回补/情绪修复（不追）；价跌量增仓增 = 空头主导；持仓异常放大而价滞涨 = 高位分歧、警惕变盘。</div></div><div class="chart"><div class="chart-title">沪铅主力月末收盘价季节图（近5年各一条线 + 图例标年份）</div><div class="chart-sub">上期所·主力连续 · 月 · 元/吨 · 日频聚月末 · 2011-03 至 2026-08-28</div><div id="echart_21_c2" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_21_c2',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：判断当前价格在历史季节性中的位置。<br>怎么看：切到季节视图后把近5年每月收盘价叠一起，今年这条线明显高于历史同期 = 基本面驱动偏强；贴着历史均值 = 季节性波动为主，突破/跌破需额外逻辑确认。</div></div><div class="chart"><div class="chart-title">沪铅主力成交持仓比（单位持仓对应的交易活跃度）</div><div class="chart-sub">上期所·主力连续 · 日 · 比值 · 成交量/持仓量 计算 · 3749 点 · 至 2026-08-28</div><div id="echart_21_c3" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_21_c3',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：识别高位放量换手、筹码松动或趋势加速前的资金拥挤。<br>怎么看：比值持续高位 = 换手剧烈、短线资金主导，趋势不稳；比值低位放大伴随价格突破 = 新资金进场、趋势可信度高。比值与价格同升 = 趋势加速信号。</div></div>
 <div class="note">

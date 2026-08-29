@@ -15,12 +15,17 @@ body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;paddi
 .chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
 footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
 .note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
-.note strong{color:#c9d1d9}</style></head><body>
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
   <div class="hcrumbs">铅(PB) · 2 价格信号 · 2.3 海外价格 · v1 3 图</div>
   <div class="hright">数据固化快照 · 2026-08-29 · LME / SMM</div>
 </div>
+<div class="nav-back"><a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
 <div class="chart"><div class="chart-title">LME铅现货 vs 官方3个月（期限结构）</div><div class="chart-sub">LME 现货结算价 vs 官方3M卖价 · 日 · 美元/吨 · 现货2945点(2015起) / 3M 1056点(2022-06起) · 至 2026-08-28</div><div id="echart_23_c1" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：判断海外铅现货紧不紧。<br>怎么看：现货在3个月上方（现货升水/Backwardation）= 现货抢货、近端紧张、可能逼仓；现货在下方（Contango）= 库存宽松、远期更贵。最新(2026-08-28)：现货1880 vs 3M 1911 = 现货贴水约31美元。</div></div><div class="chart"><div class="chart-title">LME铅现货结算价季节图（近5年各一条线 + 图例标年份）</div><div class="chart-sub">LME · 日 · 美元/吨 · 2945 点 · 2015-01 至 2026-08-28</div><div id="echart_23_c2" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_23_c2',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：判断当前LME铅价在历史季节性中的位置。<br>怎么看：切季节视图把近5年叠一起，今年明显高于历史同期 = 海外价格强势（去库/逼仓）；明显低于 = 海外价格弱势（累库/需求差）。结合LME库存判断。</div></div><div class="chart"><div class="chart-title">LME升贴水 vs 铅进口盈亏（内外传导）</div><div class="chart-sub">LME(现货/3个月)升贴水 + SMM进口盈亏(现货) · 日 · 升贴水美元/吨 · 进口盈亏元/吨 · 1896 点 · 至 2026-08-28</div><div id="echart_23_c3" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：海外现货松紧 + 进口窗口是否打开。<br>怎么看：升贴水转正并扩大 = 海外现货紧张（利多外盘）；进口盈亏转正 = 进口窗口打开、海外偏贵将引流入、压制国内升水。最新(2026-08-28)：LME升贴水-35美元(Contango) + 进口盈亏16200元(大幅转正=进口有利)。沪伦比值(j22_shfe_ratio 8.5)并入2.2页。</div></div>
 <div class="note">

@@ -10,7 +10,8 @@ i7 LME 全球注销仓单移出 6.2（用户反馈与进出口关联牵强）—
 ⚠️ v3（P1）：季节按钮由 chart_kits 统一版提供（真数据，修复此前 12 个 null 假按钮）。
 """
 from chart_kits import (load_metric, pairs, latest, sub_series,
-                        chart_line_t, chart_dual, page_html, write_html)
+                        chart_line_t, chart_dual, page_html, write_html,
+                        make_crumb)
 
 CIDS = ["echart_62_c1", "echart_62_c2", "echart_62_c3"]
 
@@ -71,12 +72,14 @@ NOTE = """<strong style="color:#c9d1d9">6.2 定义：</strong>进口未锻轧精
 
 html = page_html(
     "铅(PB) 6.2 精炼金属进出口",
-    "铅(PB) · 6 进出口 · 6.2 精炼金属进出口 · v3 3 图(带图备注+双向)",
+    make_crumb("铅", "PB", "6", "进出口", "6.2", "精炼金属进出口", "3", 3),
     "海关",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 6.2 精炼金属进出口 · v3（3 图全真数据 · HS 7801 双向 · 季节真数据）· indicators_v1.json v1.9",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_6_overview.html">← 回板块6总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_62_import_export.html", html)
 print("[POINTS] i17=%d i41=%d 净进口计算=%d" % (m17["n"], m41["n"], len(d_net)))

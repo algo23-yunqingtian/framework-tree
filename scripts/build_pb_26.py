@@ -9,7 +9,8 @@
 ⚠️ 前20会员多空/集中度/多空比：上期所会员持仓排名，知几无数据 → 标注待外部源（上期所官网/商业终端）。
 """
 from chart_kits import (load_metric, pairs, latest, chart_dual, chart_line_t,
-                        page_html, write_html)
+                        page_html, write_html,
+                        make_crumb)
 
 CIDS = ["echart_26_c1", "echart_26_c2", "echart_26_c3"]
 
@@ -67,11 +68,13 @@ NOTE = """<strong style="color:#c9d1d9">2.6 定义：</strong>持仓席位观察
 
 html = page_html(
     "铅(PB) 2.6 持仓席位观察",
-    "铅(PB) · 2 价格信号 · 2.6 持仓席位观察 · v1 3 图",
+    make_crumb("铅", "PB", "2", "价格信号", "2.6", "持仓席位观察", "1", 3),
     "SHFE 观服务",
     h1, h2, h3, NOTE,
     "有色金属产业指标树 · 铅(PB) 2.6 持仓席位观察 · v1（3 图全真数据 · 量仓结构 · 持仓季节 · 量价背离）· indicators_v1.json v2.4",
     j1 + "\n" + j2 + "\n" + j3,
     CIDS,
+
+    nav_back='<a href="pb_2_overview.html">← 回板块2总览</a> <a href="index.html">← 回主站</a>',
 )
 write_html("pb_26_position_holder.html", html)
