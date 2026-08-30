@@ -21,58 +21,55 @@ const { JSDOM } = require('/tmp/node_modules/jsdom');
 
 const ROOT = '/home/ubuntu/framework-tree';
 const PAGES = [
-  { key: '21', file: 'pb_21_price_structure.html',       seasonal: ['echart_21_c2'] },
-  { key: '22', file: 'pb_22_spot_premium.html',          seasonal: ['echart_22_c2'] },
-  { key: '23', file: 'pb_23_overseas_price.html',        seasonal: ['echart_23_c2'] },
-  { key: '24', file: 'pb_24_spread_system.html',          seasonal: [] },
-  { key: '25', file: 'pb_25_valuation_profit.html',        seasonal: [] },
-  { key: '26', file: 'pb_26_position_holder.html',          seasonal: ['echart_26_c2'] },
-  { key: '51', file: 'pb_51_primary_consumption.html',   seasonal: ['echart_51_c2'] },
-  { key: '52', file: 'pb_52_terminal_consumption.html',  seasonal: ['echart_52_c2'] },
-  { key: '61', file: 'pb_61_raw_material_import.html', seasonal: ['echart_61_c1', 'echart_61_c3'] },
-  { key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_62_c1', 'echart_62_c3'] },
-  { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },
-  { key: '64', file: 'pb_64_overseas_shipping.html',   seasonal: [] },
-  { key: '32_3', file: 'pb_32_3_regen_supply.html',    charts: 4, seasonal: ['echart_32_3_c4'] },
-  { key: '41', file: 'pb_41_exchange_stock.html',   seasonal: ['echart_41_c1'] },
-  { key: '42', file: 'pb_42_warrant.html',          seasonal: ['echart_42_c1', 'echart_42_c2'] },
-  { key: '43', file: 'pb_43_social_stock.html',     seasonal: ['echart_43_c3'] },
-  { key: '44', file: 'pb_44_factory_stock.html',    seasonal: [] },
-  { key: '45', file: 'pb_45_hidden_stock.html',     charts: 2, seasonal: [] },
-  { key: 'cu_21', file: 'cu_2_1.html',             charts: 4, seasonal: ['echart_cu_21_c1'] },
-];
+{ key: '21', file: 'pb_21_price_structure.html',       seasonal: ['echart_21_c2'] },
+{ key: '22', file: 'pb_22_spot_premium.html',          seasonal: ['echart_22_c2'] },
+{ key: '23', file: 'pb_23_overseas_price.html',        seasonal: ['echart_23_c2'] },
+{ key: '24', file: 'pb_24_spread_system.html',          seasonal: [] },
+{ key: '25', file: 'pb_25_valuation_profit.html',        seasonal: [] },
+{ key: '26', file: 'pb_26_position_holder.html',          seasonal: ['echart_26_c2'] },
+{ key: '51', file: 'pb_51_primary_consumption.html',   seasonal: ['echart_51_c2'] },
+{ key: '52', file: 'pb_52_terminal_consumption.html',  seasonal: ['echart_52_c2'] },
+{ key: '61', file: 'pb_61_raw_material_import.html', seasonal: ['echart_61_c1', 'echart_61_c3'] },
+{ key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_62_c1', 'echart_62_c3'] },
+{ key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },
+{ key: '64', file: 'pb_64_overseas_shipping.html',   seasonal: [] },
+{ key: '32_3', file: 'pb_32_3_regen_supply.html',    charts: 4, seasonal: ['echart_32_3_c4'] },
+{ key: '41', file: 'pb_41_exchange_stock.html',   seasonal: ['echart_41_c1'] },
+{ key: '42', file: 'pb_42_warrant.html',          seasonal: ['echart_42_c1', 'echart_42_c2'] },
+{ key: '43', file: 'pb_43_social_stock.html',     seasonal: ['echart_43_c3'] },
+{ key: '44', file: 'pb_44_factory_stock.html',    seasonal: [] },
+{ key: '45', file: 'pb_45_hidden_stock.html',     charts: 2, seasonal: [] },
+{ key: '71', file: 'pb_71_cost_curve.html',       seasonal: ['echart_71_c2'] },
+{ key: '72', file: 'pb_72_daily_profit.html',     seasonal: ['echart_72_c2'] },
+{ key: '73', file: 'pb_73_energy_cost.html',      seasonal: ['echart_73_c2'] },
+{ key: "cu_21", file: "cu_2_1.html", charts: 4, seasonal: ["echart_cu_21_c1"] },
+  { key: 'cu_22', file: 'cu_2_2.html', charts: 2, seasonal: ["echart_cu_22_c1"] },
+  { key: 'cu_23', file: 'cu_2_3.html', charts: 3, seasonal: ["echart_cu_23_c1"] },
+  { key: 'cu_24', file: 'cu_2_4.html', charts: 4, seasonal: ["echart_cu_24_c1"] },
+  { key: 'cu_25', file: 'cu_2_5.html', charts: 2, seasonal: ["echart_cu_25_c1"] },
+  { key: 'cu_26', file: 'cu_2_6.html', charts: 2, seasonal: ["echart_cu_26_c1"] },
+  { key: 'cu_311', file: 'cu_3_1_1.html', charts: 2, seasonal: ["echart_cu_311_c1"] },
+  { key: 'cu_312', file: 'cu_3_1_2.html', charts: 1, seasonal: ["echart_cu_312_c1"] },
+  { key: 'cu_313', file: 'cu_3_1_3.html', charts: 2, seasonal: ["echart_cu_313_c1"] },
+  { key: 'cu_314', file: 'cu_3_1_4.html', charts: 1, seasonal: ["echart_cu_314_c1"] },
+  { key: 'cu_315', file: 'cu_3_1_5.html', charts: 3, seasonal: ["echart_cu_315_c1"] },
+  { key: 'cu_321', file: 'cu_3_2_1.html', charts: 3, seasonal: ["echart_cu_321_c1"] },
+  { key: 'cu_322', file: 'cu_3_2_2.html', charts: 2, seasonal: ["echart_cu_322_c1"] },
+  { key: 'al_323', file: 'al_3_2_3.html', charts: 2, seasonal: ["echart_al_323_c1"] },
+  { key: 'cu_324', file: 'cu_3_2_4.html', charts: 2, seasonal: ["echart_cu_324_c1"] },
+  { key: 'al_41', file: 'al_4_1.html', charts: 3, seasonal: ["echart_al_41_c1"] },
+  { key: 'al_42', file: 'al_4_2.html', charts: 3, seasonal: ["echart_al_42_c1"] },
+  { key: 'al_43', file: 'al_4_3.html', charts: 1, seasonal: [] },
+  { key: 'al_44', file: 'al_4_4.html', charts: 1, seasonal: [] },
+  { key: 'al_45', file: 'al_4_5.html', charts: 1, seasonal: ["echart_al_45_c1"] },
+  { key: 'al_52', file: 'al_5_2.html', charts: 2, seasonal: ["echart_al_52_c1"] },
+  { key: 'al_53', file: 'al_5_3.html', charts: 1, seasonal: ["echart_al_53_c1"] },
+  { key: 'cu_61', file: 'cu_6_1.html', charts: 2, seasonal: ["echart_cu_61_c1"] },
+  { key: 'cu_62', file: 'cu_6_2.html', charts: 2, seasonal: ["echart_cu_62_c1"] },
+  { key: 'al_63', file: 'al_6_3.html', charts: 1, seasonal: ["echart_al_63_c1"] },
+  { key: 'al_71', file: 'al_7_1.html', charts: 2, seasonal: ["echart_al_71_c1"] },
+  { key: 'al_72', file: 'al_7_2.html', charts: 2, seasonal: ["echart_al_72_c1"] }
 
-function expectedBtnText(mode) {
-  return mode === 'ts' ? '☀ 季节' : '⏱ 时序';
-}
-
-function loadPage(file) {
-  const html = fs.readFileSync(path.join(ROOT, file), 'utf-8');
-  const dom = new JSDOM(html, {
-    runScripts: 'dangerously',
-    resources: undefined,
-    pretendToBeVisual: true,
-    beforeParse(win) {
-      const store = {};
-      win.echarts = {
-        init: (el) => {
-          const inst = {
-            _el: el && el.id,
-            _last: null,
-            setOption(opt) { this._last = opt; store[el && el.id] = opt; },
-            resize() {},
-          };
-          return inst;
-        },
-        getInstanceByDom: (el) => (el && el.id && store[el.id] !== undefined) ? { resize() {} } : null,
-      };
-    },
-  });
-  return dom;
-}
-
-let failures = 0;
-const results = [];
 
 for (const p of PAGES) {
   const dom = loadPage(p.file);
