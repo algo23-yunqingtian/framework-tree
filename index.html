@@ -190,11 +190,19 @@ function renderTree(filter){
     h4.onclick=(e)=>{ e.stopPropagation(); card.classList.toggle('collapsed'); };
 
     // 板块总览入口（数据驱动）：分类id → 总览页
-    const OVERVIEW_MAP={ 'price':'pb_2_overview.html', 'supply':'pb_3_overview.html', 'inventory':'pb_4_overview.html', 'demand':'pb_5_overview.html', 'trade':'pb_6_overview.html', 'cost':'pb_7_overview.html' };
-    if(OVERVIEW_MAP[cat.id]){
+    // 按品种优先（同一分类下不同品种总览页不同），未声明的品种回退到铅的默认页
+    var OVERVIEW_MAP={ 'price':'pb_2_overview.html', 'supply':'pb_3_overview.html', 'inventory':'pb_4_overview.html', 'demand':'pb_5_overview.html', 'trade':'pb_6_overview.html', 'cost':'pb_7_overview.html' };
+    var OVERVIEW_BY_COMM={ cu:{ 'price':'cu_2_overview.html' }, al:{ 'price':'al_2_overview.html' } };
+    var ovFile = OVERVIEW_MAP[cat.id];
+    var commIds = (CFG.commodities||[]).map(function(c){ return c.id; });
+    for(var i=0; i<commIds.length; i++){
+      var cm = OVERVIEW_BY_COMM[commIds[i]];
+      if(cm && cm[cat.id]) ovFile = cm[cat.id];  // 任一品种声明了该分类总览即采用（CU/AL 的 price 页已建）
+    }
+    if(ovFile){
       const ov=document.createElement('a');
       ov.className='ov-link'; ov.textContent='📈 总览';
-      ov.href=OVERVIEW_MAP[cat.id];
+      ov.href=ovFile;
       ov.title=cat.label+' 板块总览（全部子页导航）';
       ov.onclick=(e)=>{ e.stopPropagation(); };
       h4.appendChild(ov);

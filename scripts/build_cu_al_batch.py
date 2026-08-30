@@ -111,17 +111,38 @@ def strip_season_button(html):
 
     按钮紧跟 </div> 无换行，onclick 内引号是转义的 \'，故不能用换行做前缀匹配。
     """
-    html = re.sub(r'<button onclick=.window\.__tgl\(.+?\)</button>', '', html)
+    html = re.sub(r'<button onclick="window\.__tgl\([^<]*</button>', '', html)
     html = html.replace('。切季节视图可对比近5年同期位置。', '。')
     return html
 
 
 def span_years(pairs_data):
-    """返回序列的年跨度（含首尾年份），用于判断季节视图是否有效。"""
+    """返回序列的年跨度（含首尾年份），用于显示标注。"""
     if not pairs_data:
         return 0
     ys = set(str(d[0])[:4] for d in pairs_data if d[0])
     return int(max(ys)) - int(min(ys)) + 1
+
+
+def full_years(pairs_data):
+    """返回【完整日历年份数】：该年内 12 个月都有数据才算完整。
+
+    季节视图（chart_line_t 的 __seasonalizeByYear）为每个年份产出一条历年 series，
+    verify_render 门禁要求历年 series 数量 ≥3，因此判定阈值必须是「完整年份数 ≥3」，
+    而非 span_years（跨越年份数）。例：2025-03 → 2026-08 跨越 3 个年份，
+    但 2025/2026 都不满 12 个月 → 完整年份数=0，span_years>=3 会误判为可建季节视图，
+    导致页面保留季节按钮却只有 2 条历年线（cu_25/cu_324 的 FAIL 根因）。
+    """
+    if not pairs_data:
+        return 0
+    from collections import defaultdict
+    ym = defaultdict(set)
+    for d in pairs_data:
+        ds = str(d[0])
+        if len(ds) >= 7:
+            ym[ds[:4]].add(ds[5:7])
+    return sum(1 for y, ms in ym.items() if len(ms) >= 12)
+
 
 
 def code_str_of(node, meta):
@@ -161,8 +182,8 @@ def build_node(node, ind_list, meta):
         mdata = to_monthly_mean(main["pairs"])
     else:
         mdata = main["pairs"]
-    # 季节视图降级：月频/季频数据不足 3 年时无法产出历年 series，改纯时序
-    can_season = span_years(main["pairs"]) >= 3
+    # 季节视图降级：完整日历年份数不足 3 个时无法产出 3 条历年 series，改纯时序
+    can_season = full_years(main["pairs"]) >= 3
     mdata = to_monthly_mean(main["pairs"]) if (can_season and is_daily(main["freq"])) else main["pairs"]
     h1, j1 = chart_line_t(
         cid, "%s（主图·%s）" % (main["name"], node),
@@ -262,9 +283,16 @@ def main():
             html, cids, n, comm_id = build_node(node, ind_list, meta)
             if html is None: continue
             fname = "%s_%s.html" % (comm_id, node.replace(".", "_"))
-            # 季节图 = 主图数据年跨度>=3年才有真实历年 series
-            main_m = load_metric(ind_list[0][0], ind_list[0][1])
-            seasonal = cids[:1] if (n >= 1 and span_years(pairs(main_m)) >= 3) else []
+            # 季节图 = 主图完整日历年份数>=3 才有 3 条真实历年 series
+            # 主图选择必须与 build_node 一致：第一个日频指标，而非 ind_list[0]
+            md = []
+            for mid, code, name, unit, freq in ind_list:
+                mm = load_metric(mid, code)
+                if mm is None or mm["n"] < MIN_POINTS:
+                    continue
+                md.append({"mid": mid, "freq": freq, "m": mm, "pairs": pairs(mm)})
+            main_m = next((d for d in md if is_daily(d["freq"])), md[0])
+            seasonal = cids[:1] if (n >= 1 and full_years(main_m["pairs"]) >= 3) else []
             key = "%s_%s" % (comm_id, node.replace(".", ""))
             print('    "%s": {' % node)
             print('        "file": "%s",' % fname)

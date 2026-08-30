@@ -46,17 +46,17 @@ const PAGES = [
   { key: 'cu_22', file: 'cu_2_2.html', charts: 2, seasonal: ["echart_cu_22_c1"] },
   { key: 'cu_23', file: 'cu_2_3.html', charts: 3, seasonal: ["echart_cu_23_c1"] },
   { key: 'cu_24', file: 'cu_2_4.html', charts: 4, seasonal: ["echart_cu_24_c1"] },
-  { key: 'cu_25', file: 'cu_2_5.html', charts: 2, seasonal: ["echart_cu_25_c1"] },
-  { key: 'cu_26', file: 'cu_2_6.html', charts: 2, seasonal: ["echart_cu_26_c1"] },
-  { key: 'cu_311', file: 'cu_3_1_1.html', charts: 2, seasonal: ["echart_cu_311_c1"] },
-  { key: 'cu_312', file: 'cu_3_1_2.html', charts: 1, seasonal: ["echart_cu_312_c1"] },
+  { key: 'cu_25', file: 'cu_2_5.html', charts: 2, seasonal: [] },
+  { key: 'cu_26', file: 'cu_2_6.html', charts: 2, seasonal: [] },
+  { key: 'cu_311', file: 'cu_3_1_1.html', charts: 2, seasonal: [] },
+  { key: 'cu_312', file: 'cu_3_1_2.html', charts: 1, seasonal: [] },
   { key: 'cu_313', file: 'cu_3_1_3.html', charts: 2, seasonal: ["echart_cu_313_c1"] },
   { key: 'cu_314', file: 'cu_3_1_4.html', charts: 1, seasonal: ["echart_cu_314_c1"] },
-  { key: 'cu_315', file: 'cu_3_1_5.html', charts: 3, seasonal: ["echart_cu_315_c1"] },
+  { key: 'cu_315', file: 'cu_3_1_5.html', charts: 3, seasonal: [] },
   { key: 'cu_321', file: 'cu_3_2_1.html', charts: 3, seasonal: ["echart_cu_321_c1"] },
   { key: 'cu_322', file: 'cu_3_2_2.html', charts: 2, seasonal: ["echart_cu_322_c1"] },
   { key: 'al_323', file: 'al_3_2_3.html', charts: 2, seasonal: ["echart_al_323_c1"] },
-  { key: 'cu_324', file: 'cu_3_2_4.html', charts: 2, seasonal: ["echart_cu_324_c1"] },
+  { key: 'cu_324', file: 'cu_3_2_4.html', charts: 2, seasonal: [] },
   { key: 'al_41', file: 'al_4_1.html', charts: 3, seasonal: ["echart_al_41_c1"] },
   { key: 'al_42', file: 'al_4_2.html', charts: 3, seasonal: ["echart_al_42_c1"] },
   { key: 'al_43', file: 'al_4_3.html', charts: 1, seasonal: [] },
@@ -69,7 +69,39 @@ const PAGES = [
   { key: 'al_63', file: 'al_6_3.html', charts: 1, seasonal: ["echart_al_63_c1"] },
   { key: 'al_71', file: 'al_7_1.html', charts: 2, seasonal: ["echart_al_71_c1"] },
   { key: 'al_72', file: 'al_7_2.html', charts: 2, seasonal: ["echart_al_72_c1"] }
+];
 
+function expectedBtnText(mode) {
+  return mode === 'ts' ? '☀ 季节' : '⏱ 时序';
+}
+
+function loadPage(file) {
+  const html = fs.readFileSync(path.join(ROOT, file), 'utf-8');
+  const dom = new JSDOM(html, {
+    runScripts: 'dangerously',
+    resources: undefined,
+    pretendToBeVisual: true,
+    beforeParse(win) {
+      const store = {};
+      win.echarts = {
+        init: (el) => {
+          const inst = {
+            _el: el && el.id,
+            _last: null,
+            setOption(opt) { this._last = opt; store[el && el.id] = opt; },
+            resize() {},
+          };
+          return inst;
+        },
+        getInstanceByDom: (el) => (el && el.id && store[el.id] !== undefined) ? { resize() {} } : null,
+      };
+    },
+  });
+  return dom;
+}
+
+let failures = 0;
+const results = [];
 
 for (const p of PAGES) {
   const dom = loadPage(p.file);

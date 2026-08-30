@@ -74,6 +74,7 @@
 
 | 日期 | 内容 |
 |---|---|
+| 2026-08-30 | [T14-OVERVIEW] 铜铝总览页解死链 + 门禁修复:①新增 cu_2_overview.html(6卡片,18图) + al_2_overview.html(规划占位,AL 2.x 无指标待发散) 解 cu_2_*.html 的 nav_back 死链;②index.html OVERVIEW_MAP 改为品种感知(OVERVIEW_BY_COMM,铜铝 price→各自总览,其余品种回退铅默认页);③修复 d4c89b5 遗留的门禁2损坏——verify_render.js 缺 loadPage/expectedBtnText 函数定义+PAGES 数组未闭合(缺 `];`)+failures/results 未声明,导致脚本无法运行(交接文档「46/46 PASS」不成立,实际 SyntaxError);④修复批量引擎降级判定 bug——`span_years>=3`(跨越年份数)改为 `full_years>=3`(完整12个月年份数),例 2025-07→2026-08 跨2年份但完整年=0;⑤修复 strip_season_button 正则失效(`.+?\)` 无法跨 `tgl(...)` 参数闭合括号,应为 `[^\u003c]*`);⑥修复 --emit 主图选择 bug(误用 ind_list[0],应与 build_node 一致取第一个日频指标);⑦重建 6 页(cu_2_5/2_6/3_1_1/3_1_2/3_1_5/3_2_4,均摘季节按钮)+同步 verify_render 注册为 seasonal:[]。结果:check_html 48/48 PASS + verify_render 48/48 PASS(原 46/48,2页 FAIL 已解) + reclaim 13/13 PASS。 |
 | 2026-08-30 | 铜铝 Step4 建页: 样板页 cu_2_1(进口盈亏与贸易流,4图) 已提交 3871add + 批量引擎 build_cu_al_batch.py 生成 26 子页(CU14+AL12) + 两道门禁注册(共48页) → check_html 48/48 PASS + verify_render 46/46 PASS; 踩坑: load_metric须传code/page_html仅h1h2h3三槽(4图页全塞h1)/cid加品种前缀防PB串台/混合节点按数据量判主品种(3.2.3·7.1归al)/min_bytes按图数动态/年跨度<3年自动降级纯时序并摘季节按钮。5.1 未做(al_51_cons仅7点待外部源)。 |
 | 2026-08-26 | 项目启动。两条线隔离方案定稿，协作机制上线。 |
 | 2026-08-27 | 方向A落地：i28(沪铅期货库存 a10026547)入库；新增C01b/C05b；4张图默认季节视图(切换按钮可切回)；22图=14真+8骨。i29(中国精炼铅进口量)查无序列，按预案跳过进口图。 |

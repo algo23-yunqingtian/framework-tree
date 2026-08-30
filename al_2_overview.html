@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>铝(AL) 板块2 价格信号 · 总览（规划中）</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:32px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto}
+.h1{font-size:26px;font-weight:700;color:#8fa3c4;margin-bottom:6px}
+.sub{color:#8b949e;font-size:13px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+.card{display:block;text-decoration:none;color:inherit;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:18px;transition:all .2s}
+.card:hover{border-color:#8fa3c4;transform:translateY(-2px);background:#1a2028}
+.card.todo{opacity:.62;pointer-events:none;cursor:default}
+.card.todo:hover{transform:none;border-color:#30363d;background:#161b22}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card-num{display:inline-block;background:#3d4d63;color:#dfe6f0;font-weight:700;font-size:13px;padding:2px 8px;border-radius:4px}
+.card-title{font-size:17px;font-weight:600;color:#e6edf3}
+.card-charts{font-size:13px;color:#8b949e;margin-bottom:8px;font-style:italic}
+.card-metrics{font-size:12px;color:#6e7681;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:12px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.badge{background:#21262d;color:#8b949e;padding:2px 8px;border-radius:10px;border:1px solid #30363d}
+.badge-todo{background:#2a2f36;color:#8b949e;border:1px dashed #484f58}
+.note{background:#161b22;border:1px solid #30363d;border-left:3px solid #8fa3c4;border-radius:6px;padding:14px 16px;font-size:13px;color:#8b949e;margin-bottom:20px}
+.note b{color:#c9d1d9}
+.note code{color:#8fa3c4;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.footer{border-top:1px solid #21262d;padding-top:16px;font-size:12px;color:#6e7681;text-align:center}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="h1">铝(AL) · 板块2【价格信号】总览</div>
+  <div class="sub">规划中 · 6 个子节点待同花顺发散 + 指标注册后建页 · indicators_v1.json v2.10（160 指标 · AL 32，<b style="color:#e3a857">无 al_2*</b>）· 2026-08-30</div>
+
+  <div class="note">
+    <b>现状：</b>铝的 2.x 价格信号节点目前全部未建。<code>_nodes</code> 里只有 <code>al_2_00</code> 总览占位，缓存与指标表中 <b>没有任何 al_2* 指标</b>——需要先做同花顺问财发散（见 <code>analysis/iwencai/AL/divergence_2.x.md</code>）+ 知几验证 + 指标注册，才能进入建页环节。<br>
+    <b>路线图（参考铜 2.x 已验证的题材划分，铝需重新发散，不可直接套用）：</b>2.1 进口盈亏与跨市贸易流 → 2.2 现货与升贴水 → 2.3 海外价格 → 2.4 价差体系 → 2.5 估值与利润 → 2.6 持仓席位观察。<br>
+    <b>铝与铜的关键差异：</b>铝无 COMEX 交易所（定价 = LME + 电力成本），2.3 海外价格需聚焦 LME 现货/3M/0-3 月差而非跨市比价；2.5 估值利润的正主应为电解铝完全成本曲线而非冶炼利润（详见 7.1/7.2 已建页）；沪伦比价与进口盈亏是铝 2.1 的核心矛盾，与铜的贸易流逻辑同源但关税/汇率弹性不同。<br>
+    <b>本页面用途：</b>解 <code>al_2_overview.html</code> 死链 + 作为路线图锚点。板块2 建页完成后本页自动替换为真实导航卡。
+  </div>
+
+  <div class="grid">
+    <div class="card todo">
+      <div class="card-head">
+        <span class="card-num">2.1</span>
+        <span class="card-title">进口盈亏与跨市贸易流</span>
+      </div>
+      <div class="card-charts">规划：进口盈亏时序⇄季节(正主) / 盈亏 vs 伦铝 / 盈亏 vs 沪铝 / 沪伦比价</div>
+      <div class="card-metrics">待发散 → 待知几验证 → 待注册（al_21_*）</div>
+      <div class="card-foot">
+        <span class="badge badge-todo">待外部源</span>
+        <span class="badge badge-todo">未建</span>
+      </div>
+    </div>
+    <div class="card todo">
+      <div class="card-head">
+        <span class="card-num">2.2</span>
+        <span class="card-title">现货与升贴水</span>
+      </div>
+      <div class="card-charts">规划：A00 铝锭现货升贴水(正主) / 沪铝主力对照 / 华东-华南地区价差</div>
+      <div class="card-metrics">待发散 → 待知几验证 → 待注册（al_22_*）</div>
+      <div class="card-foot">
+        <span class="badge badge-todo">待外部源</span>
+        <span class="badge badge-todo">未建</span>
+      </div>
+    </div>
+    <div class="card todo">
+      <div class="card-head">
+        <span class="card-num">2.3</span>
+        <span class="card-title">海外价格</span>
+      </div>
+      <div class="card-charts">规划：LME 现货/3M 结算价(正主) / LME 0-3 月期限结构 / LME 升贴水</div>
+      <div class="card-metrics">待发散 → 待知几验证 → 待注册（al_23_*）· 注：铝无 COMEX</div>
+      <div class="card-foot">
+        <span class="badge badge-todo">待外部源</span>
+        <span class="badge badge-todo">未建</span>
+      </div>
+    </div>
+    <div class="card todo">
+      <div class="card-head">
+        <span class="card-num">2.4</span>
+        <span class="card-title">价差体系</span>
+      </div>
+      <div class="card-charts">规划：沪伦比价(正主) / SHFE 主力月差 / LME vs 沪铝跨市 / 铝锭-铝棒价差</div>
+      <div class="card-metrics">待发散 → 待知几验证 → 待注册（al_24_*）</div>
+      <div class="card-foot">
+        <span class="badge badge-todo">待外部源</span>
+        <span class="badge badge-todo">未建</span>
+      </div>
+    </div>
+    <div class="card todo">
+      <div class="card-head">
+        <span class="card-num">2.5</span>
+        <span class="card-title">估值与利润</span>
+      </div>
+      <div class="card-charts">规划：电解铝吨铝毛利(正主) / 铝价 vs 完全成本 / 氧化铝成本传导</div>
+      <div class="card-metrics">待发散 → 待知几验证 → 待注册（al_25_*）· 详见已建 7.1/7.2</div>
+      <div class="card-foot">
+        <span class="badge badge-todo">待外部源</span>
+        <span class="badge badge-todo">未建</span>
+      </div>
+    </div>
+    <div class="card todo">
+      <div class="card-head">
+        <span class="card-num">2.6</span>
+        <span class="card-title">持仓席位观察</span>
+      </div>
+      <div class="card-charts">规划：LME 大头寸/期铝空头集中度(正主) / SHFE 铝持仓变化</div>
+      <div class="card-metrics">待发散 → 待知几验证 → 待注册（al_26_*）</div>
+      <div class="card-foot">
+        <span class="badge badge-todo">待外部源</span>
+        <span class="badge badge-todo">未建</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    有色金属产业指标树 · 铝(AL) · 板块2 价格信号总览（规划占位） · v1 · 2026-08-30<br>
+    <a href="index.html" style="color:#8fa3c4;text-decoration:none">← 返回 framework-tree 根目录</a>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>铜(CU) 板块2 价格信号 · 总览</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:32px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto}
+.h1{font-size:26px;font-weight:700;color:#e5c07b;margin-bottom:6px}
+.sub{color:#8b949e;font-size:13px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+.card{display:block;text-decoration:none;color:inherit;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:18px;transition:all .2s}
+.card:hover{border-color:#e5c07b;transform:translateY(-2px);background:#1a2028}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card-num{display:inline-block;background:#e5c07b;color:#0f1419;font-weight:700;font-size:13px;padding:2px 8px;border-radius:4px}
+.card-title{font-size:17px;font-weight:600;color:#e6edf3}
+.card-charts{font-size:13px;color:#c9d1d9;margin-bottom:8px}
+.card-metrics{font-size:12px;color:#8b949e;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:12px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.badge{background:#21262d;color:#8b949e;padding:2px 8px;border-radius:10px;border:1px solid #30363d}
+.badge-warn{background:#3a2a12;color:#e3a857;border:1px solid #6b4a1e}
+.go{color:#e5c07b;font-weight:600}
+.note{background:#161b22;border:1px solid #30363d;border-left:3px solid #e5c07b;border-radius:6px;padding:14px 16px;font-size:13px;color:#8b949e;margin-bottom:20px}
+.note b{color:#c9d1d9}
+.footer{border-top:1px solid #21262d;padding-top:16px;font-size:12px;color:#6e7681;text-align:center}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="h1">铜(CU) · 板块2【价格信号】总览</div>
+  <div class="sub">6 个子节点全部上线 · 共 18 张图全真数据 · indicators_v1.json v2.10（160 指标 · CU 37）· 2026-08-30</div>
+
+  <div class="note">
+    <b>板块2 覆盖：</b>进口盈亏与跨市贸易流 · 现货与升贴水 · 海外价格 · 价差体系 · 估值与利润 · 持仓席位观察。<br>
+    <b>数据底座：</b>zhiji 观服务（SHFE 日K + 持仓量）+ 料服务（SMM 现货/升贴水/进口盈亏/冶炼利润、LME 3M、COMEX 期价与持仓、铜精矿 TC），全部落盘 api_cache.db 日频全量。<br>
+    <b>命名冲突说明：</b>2.1 tree_config 模板题为「盘面结构」，但缓存无沪铜日度成交量/持仓量，按已注册指标 <code>cu_21_import</code> + decision_2.1.md + 同花顺发散结论改题为「进口盈亏与跨市贸易流」。<br>
+    <b>待外部源：</b>2.5 铜精矿现货 TC 仅 29 个季点（2025-03 起，待 SMM 长序列接入）；2.6 上期所会员持仓排名（知几无数据，现用 CFTC COMEX 集中度替代）。
+  </div>
+
+  <div class="grid">
+    <a class="card" href="cu_2_1.html">
+      <div class="card-head">
+        <span class="card-num">2.1</span>
+        <span class="card-title">进口盈亏与跨市贸易流</span>
+      </div>
+      <div class="card-charts">图1 进口盈亏(正主) / 图2 vs LME铜价 / 图3 vs 沪铜主力 / 图4 vs 铜精矿进口量</div>
+      <div class="card-metrics">cu_21_import · cu_21_import_conc · cu_23_lme_settle · cu_24_shfe_close_near</div>
+      <div class="card-foot">
+        <span class="badge">数据 2448 点全量</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>
+    <a class="card" href="cu_2_2.html">
+      <div class="card-head">
+        <span class="card-num">2.2</span>
+        <span class="card-title">现货与升贴水</span>
+      </div>
+      <div class="card-charts">图1 上海平水铜升贴水(主图) / 图2 主力收盘价对照</div>
+      <div class="card-metrics">cu_22_premium · cu_22_close_front（SMM 平水铜升贴水 + SHFE 主力）</div>
+      <div class="card-foot">
+        <span class="badge">数据 2833 点</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>
+    <a class="card" href="cu_2_3.html">
+      <div class="card-head">
+        <span class="card-num">2.3</span>
+        <span class="card-title">海外价格</span>
+      </div>
+      <div class="card-charts">图1 LME 3M 结算价(主图) / 图2 COMEX 期价+成交量 / 图3 COMEX 持仓量</div>
+      <div class="card-metrics">cu_23_lme_settle · cu_23_comex_close · cu_23_comex_volume · cu_23_comex_openinterest</div>
+      <div class="card-foot">
+        <span class="badge">数据 2918 点</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>
+    <a class="card" href="cu_2_4.html">
+      <div class="card-head">
+        <span class="card-num">2.4</span>
+        <span class="card-title">价差体系</span>
+      </div>
+      <div class="card-charts">图1 COMEX 近月(主图) / 图2 LME vs COMEX 跨市 / 图3 SHFE 月差 / 图4 SHFE 成交量</div>
+      <div class="card-metrics">cu_24_lme_close · cu_24_comex_close_far · cu_24_shfe_close_near/far · cu_24_openinterest_volume</div>
+      <div class="card-foot">
+        <span class="badge">数据 2833 点</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>
+    <a class="card" href="cu_2_5.html">
+      <div class="card-head">
+        <span class="card-num">2.5</span>
+        <span class="card-title">估值与利润</span>
+      </div>
+      <div class="card-charts">图1 SMM 现货冶炼利润(主图) / 图2 LME vs 铜精矿 TC</div>
+      <div class="card-metrics">cu_25_profit · cu_25_lme_close_front · cu_25_tc_conc</div>
+      <div class="card-foot">
+        <span class="badge badge-warn">TC 仅 29 季点</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>
+    <a class="card" href="cu_2_6.html">
+      <div class="card-head">
+        <span class="card-num">2.6</span>
+        <span class="card-title">持仓席位观察</span>
+      </div>
+      <div class="card-charts">图1 SHFE 空单前20合计(主图) / 图2 COMEX 前4家多头净持仓集中度</div>
+      <div class="card-metrics">cu_26_openinterest_top20_front · cu_26_openinterest · cu_23_comex_openinterest</div>
+      <div class="card-foot">
+        <span class="badge">数据 711 / 609 点</span>
+        <span class="go">查看 →</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">
+    有色金属产业指标树 · 铜(CU) · 板块2 价格信号总览 · v1 · 2026-08-30<br>
+    <a href="index.html" style="color:#e5c07b;text-decoration:none">← 返回 framework-tree 根目录</a>
+  </div>
+</div>
+</body></html>
