@@ -127,9 +127,21 @@ sb.dispatchEvent(new MouseEvent('click',o));
 }"""
 STATUS_JS = r"""
 var t=document.body.innerText;
-var done=t.indexOf('模型答案生成完成')>=0;
-var limited=t.indexOf('暂时处理不过来了')>=0;
+var ps=t.lastIndexOf('角色：你是有色金属产业研究的');
+var s=ps>=0?t.slice(ps):t;   // 只看本轮：历史轮次的「模型答案生成完成」会误判 done → 提前抓取带上轮答案
+var done=s.indexOf('模型答案生成完成')>=0;
+var limited=s.indexOf('暂时处理不过来了')>=0;
 JSON.stringify({len:t.length,done:done,limited:limited});"""
+
+# 抓取源：只取最后一个 .chat-response-message-container 的 innerText。
+# 实测对比（同页 35 个答案容器）：
+#   body.innerText        → 含历史全部轮次答案 + 本轮 prompt 回显 + 侧边栏/推荐区，只能靠字符串猜测切割
+#   答案容器.innerText    → 只有「状态行 + 答案正文」，天然不含 prompt 回显/推荐区/上轮答案（2287B 干净样本）
+EXTRACT_JS = r"""
+(function(){
+  var rs=document.querySelectorAll('.chat-response-message-container');
+  return rs.length ? (rs[rs.length-1].innerText||'') : (document.body.innerText||'');
+})()"""
 
 
 # ---------- 回复规范化 ----------
@@ -140,9 +152,18 @@ JSON.stringify({len:t.length,done:done,limited:limited});"""
 #   2. 去掉尾部技能条/页脚 chrome（大势研判…AI复盘）
 #   3. 连续含 \t 的行块 → markdown 管道表（补表头分隔行）
 #   4. 依据 AI 自己的「N 个归属其他子类」汇总行补「排除项」说明（铁律5：禁止静默丢弃）
+PROMPT_START = "角色：你是有色金属产业研究的"   # 本轮 prompt 回显首字符，唯一且稳定
 ANSWER_START = "模型答案生成完成"
+RECO_TAIL = re.compile(r"以下内容[:：]\s*$")   # 尾部推荐区引导语变体①②，均以「以下内容：」结尾：
+                                        # ①「问财从进一步投资的角度帮您推荐以下内容：」
+                                        # ②「跟您有相同需求的投资者还在看以下内容：」
+# 答案结论锚点：结论行之后的内容必是同花顺推荐区。引导语有 3 种以上变体（还有
+# 「基于您的问题，我们找到了以下您可能想进一步了解的投资内容：」），逐条枚举不可靠，
+# 改用结论锚点直接表达「答案到哪里结束」。
+CONCL_ANCHOR = re.compile(r"本维度（[^）]+）合计\s*\d+\s*个直接相关指标|后续可观察")
 CHROME_HEADS = ("大势研判", "走势预测", "买卖点研判", "股票诊断",
                 "行业分析", "选股票", "智能图说", "AI复盘")
+STATUS_LINE = re.compile(r"^\s*(问财\s*模型|快速推理中|已快速推理)")
 
 
 def _strip_chrome(lines):
@@ -191,12 +212,33 @@ def _extract_exclude_note(body):
 
 
 def normalize_reply(raw):
-    """把 document.body.innerText 原文规范成合格 divergence md 正文。"""
-    idx = raw.rfind(ANSWER_START)
-    if idx >= 0:
-        raw = raw[idx:]
+    """把答案容器 innerText 规范成合格 divergence md 正文（对 body.innerText 原文同样适用）。"""
+    # 1) 锚定最后一次发出的 prompt，丢弃之前全部历史轮次（含上一节点的完整答案）。
+    #    比 rfind('模型答案生成完成') 稳：完成标记会随本轮状态滞后翻转，rfind 会落到上一轮，
+    #    实测 ZN 批次 16/30 因此混入上一节点答案（ZN_2.1 里出现 NI 7.3 全文）。
+    ps = raw.rfind(PROMPT_START)
+    if ps >= 0:
+        raw = raw[ps:]
+    else:
+        idx = raw.rfind(ANSWER_START)
+        if idx >= 0:
+            raw = raw[idx:]
+    # 2) 去掉本轮 prompt 回显（一长行）+ 状态行（模型正在为你生成答案/快速推理中/已快速推理）
+    raw = re.sub(r"角色：你是有色金属产业研究的[^\n]*", "", raw, count=1)
     lines = [l for l in raw.splitlines()
-             if ANSWER_START not in l and not re.match(r"^\s*已快速推理", l)]
+             if not STATUS_LINE.match(l) and ANSWER_START not in l]
+    # 3) 截到末次结论行为止：结论之后必是同花顺推荐区，这是最稳的「答案终点」
+    last = -1
+    for i, l in enumerate(lines):
+        if CONCL_ANCHOR.search(l):
+            last = i
+    if last >= 0:
+        lines = lines[:last + 1]
+    # 4) 兜底：无结论锚点时按推荐区引导语结尾匹配（见 RECO_TAIL 注释）
+    for i, l in enumerate(lines):
+        if RECO_TAIL.search(l):
+            lines = lines[:i]
+            break
     lines = _strip_chrome(lines)
     lines = _tsv_to_md(lines)
     while lines and not lines[-1].strip():
@@ -293,9 +335,9 @@ def run_node(ws_url, task, var_cn_map):
         if st.get("done"):
             break
 
-    # 抓取回复并规范化：去 prompt 回显 + 去尾部技能条 chrome + TSV→markdown 管道表
-    # （原实现保留整轮 prompt 回显，且 TSV 不被 check_divergence.py 识别 → 全节点判不合格）
-    reply = normalize_reply(ev("document.body.innerText") or "")
+    # 抓取回复并规范化：只取最后一个答案容器（DOM 隔离，不带上轮答案/prompt 回显/推荐区），
+    # 再经 normalize_reply 兜底去状态行 + 尾部推荐区/chrome + TSV→markdown 管道表
+    reply = normalize_reply(ev(EXTRACT_JS) or "")
 
     outdir = os.path.join(OUT_ROOT, task["variety"])
     os.makedirs(outdir, exist_ok=True)
