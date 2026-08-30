@@ -33,6 +33,7 @@ PAGES = {
         "label": "2.1 盘面结构",
         "has_seasonal": True,
     },
+
     "22": {
         "file": "pb_22_spot_premium.html",
         "min_bytes": 20000,
@@ -41,6 +42,7 @@ PAGES = {
         "label": "2.2 现货与升贴水",
         "has_seasonal": True,
     },
+
     "23": {
         "file": "pb_23_overseas_price.html",
         "min_bytes": 20000,
@@ -49,6 +51,7 @@ PAGES = {
         "label": "2.3 海外价格",
         "has_seasonal": True,
     },
+
     "24": {
         "file": "pb_24_spread_system.html",
         "min_bytes": 20000,
@@ -57,6 +60,7 @@ PAGES = {
         "label": "2.4 价差体系",
         "has_seasonal": False,
     },
+
     "25": {
         "file": "pb_25_valuation_profit.html",
         "min_bytes": 20000,
@@ -65,6 +69,7 @@ PAGES = {
         "label": "2.5 估值与利润",
         "has_seasonal": False,
     },
+
     "26": {
         "file": "pb_26_position_holder.html",
         "min_bytes": 20000,
@@ -73,6 +78,7 @@ PAGES = {
         "label": "2.6 持仓席位观察",
         "has_seasonal": True,
     },
+
     "51": {
         "file": "pb_51_primary_consumption.html",
         "min_bytes": 20000,
@@ -81,6 +87,7 @@ PAGES = {
         "label": "5.1 初级消费",
         "has_seasonal": True,
     },
+
     "52": {
         "file": "pb_52_terminal_consumption.html",
         "min_bytes": 20000,
@@ -89,14 +96,7 @@ PAGES = {
         "label": "5.2 终端细分消费",
         "has_seasonal": True,
     },
-    "53": {
-        "file": "pb_53_demand_leading.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_53_c1", "echart_53_c2", "echart_53_c3"],
-        "label": "5.3 需求先行指标",
-        "has_seasonal": True,
-    },
+
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
@@ -105,6 +105,7 @@ PAGES = {
         "label": "6.1 原料进口",
         "has_seasonal": True,   # 有 chart_line_t 图，需校验季节真数据
     },
+
     "62": {
         "file": "pb_62_import_export.html",
         "min_bytes": 20000,
@@ -113,6 +114,7 @@ PAGES = {
         "label": "6.2 精炼金属进出口",
         "has_seasonal": True,
     },
+
     "63": {
         "file": "pb_63_product_export.html",
         "min_bytes": 20000,
@@ -121,6 +123,7 @@ PAGES = {
         "label": "6.3 制品出口",
         "has_seasonal": True,
     },
+
     "64": {
         "file": "pb_64_overseas_shipping.html",
         "min_bytes": 300000,
@@ -129,6 +132,7 @@ PAGES = {
         "label": "6.4 海外对华发运",
         "has_seasonal": False,  # 3 图全为 dual/triple，无季节切换模式
     },
+
     "32_3": {
         "file": "pb_32_3_regen_supply.html",
         "min_bytes": 30000,
@@ -137,70 +141,7 @@ PAGES = {
         "label": "3.2.3 再生/二次供应",
         "has_seasonal": True,   # 图4 chart_line_t 季节真数据
     },
-    "311": {
-        "file": "pb_311_overseas_mine.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_311_c1", "echart_311_c2", "echart_311_c3"],
-        "label": "3.1.1 海外矿·财报产量",
-        "has_seasonal": True,
-    },
-    "312": {
-        "file": "pb_312_overseas_by_country.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_312_c1", "echart_312_c2", "echart_312_c3"],
-        "label": "3.1.2 海外矿·分国别总量",
-        "has_seasonal": True,
-    },
-    "313": {
-        "file": "pb_313_domestic_mine.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_313_c1", "echart_313_c2", "echart_313_c3"],
-        "label": "3.1.3 国内矿产量",
-        "has_seasonal": True,
-    },
-    "314": {
-        "file": "pb_314_mine_import.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_314_c1", "echart_314_c2", "echart_314_c3"],
-        "label": "3.1.4 矿进口量与分国别",
-        "has_seasonal": True,
-    },
-    "315": {
-        "file": "pb_315_tc_fee.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_315_c1", "echart_315_c2", "echart_315_c3"],
-        "label": "3.1.5 TC加工费",
-        "has_seasonal": True,
-    },
-    "321": {
-        "file": "pb_321_refining_output.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_321_c1", "echart_321_c2", "echart_321_c3"],
-        "label": "3.2.1 精炼产量",
-        "has_seasonal": True,
-    },
-    "322": {
-        "file": "pb_322_operating_rate.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_322_c1", "echart_322_c2", "echart_322_c3"],
-        "label": "3.2.2 开工率与检修",
-        "has_seasonal": True,
-    },
-    "324": {
-        "file": "pb_324_profit_elasticity.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_324_c1", "echart_324_c2", "echart_324_c3"],
-        "label": "3.2.4 冶炼利润→供应弹性",
-        "has_seasonal": True,
-    },
+
     "41": {
         "file": "pb_41_exchange_stock.html",
         "min_bytes": 20000,
@@ -209,6 +150,7 @@ PAGES = {
         "label": "4.1 交易所库存",
         "has_seasonal": True,   # 图1 chart_line_t 注销占比季节
     },
+
     "42": {
         "file": "pb_42_warrant.html",
         "min_bytes": 20000,
@@ -217,6 +159,7 @@ PAGES = {
         "label": "4.2 仓单",
         "has_seasonal": True,   # 图1/图2 chart_line_t
     },
+
     "43": {
         "file": "pb_43_social_stock.html",
         "min_bytes": 20000,
@@ -225,6 +168,7 @@ PAGES = {
         "label": "4.3 社会库存",
         "has_seasonal": True,   # 图3 Mysteel全国 chart_line_t
     },
+
     "44": {
         "file": "pb_44_factory_stock.html",
         "min_bytes": 30000,
@@ -233,6 +177,7 @@ PAGES = {
         "label": "4.4 工厂库存",
         "has_seasonal": False,  # 3 图全为 dual，无季节切换模式
     },
+
     "45": {
         "file": "pb_45_hidden_stock.html",
         "min_bytes": 20000,
@@ -241,6 +186,7 @@ PAGES = {
         "label": "4.5 隐性·在途",
         "has_seasonal": True,   # 图1 SG非仓单 chart_line_t
     },
+
     "71": {
         "file": "pb_71_cost_curve.html",
         "min_bytes": 20000,
@@ -249,6 +195,7 @@ PAGES = {
         "label": "7.1 成本曲线与分位",
         "has_seasonal": True,   # 图2 chart_line_t 季节真数据
     },
+
     "72": {
         "file": "pb_72_daily_profit.html",
         "min_bytes": 20000,
@@ -257,6 +204,7 @@ PAGES = {
         "label": "7.2 日度利润测算",
         "has_seasonal": True,   # 图2 chart_line_t 季节真数据
     },
+
     "73": {
         "file": "pb_73_energy_cost.html",
         "min_bytes": 20000,
@@ -265,8 +213,394 @@ PAGES = {
         "label": "7.3 能源/原料成本",
         "has_seasonal": True,   # 图2 chart_line_t 季节真数据
     },
-}
 
+    "cu_2_1": {
+        "file": "cu_2_1.html",
+        "min_bytes": 20000,
+        "charts": 4,
+        "cids": ["echart_cu_21_c1", "echart_cu_21_c2", "echart_cu_21_c3", "echart_cu_21_c4"],
+        "label": "CU 2.1 进口盈亏与贸易流",
+        "has_seasonal": True,   # 图1 进口盈亏 chart_line_t 季节真数据
+    },
+
+    "cu_2_2": {
+        "file": "cu_2_2.html",
+        "min_bytes": 16000,
+        "charts": 2,
+        "cids": ["echart_cu_22_c1", "echart_cu_22_c2"],
+        "label": "现货与升贴水 2.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_2_3": {
+        "file": "cu_2_3.html",
+        "min_bytes": 259000,
+        "charts": 3,
+        "cids": ["echart_cu_23_c1", "echart_cu_23_c2", "echart_cu_23_c3"],
+        "label": "海外价格 2.3",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_2_4": {
+        "file": "cu_2_4.html",
+        "min_bytes": 421000,
+        "charts": 4,
+        "cids": ["echart_cu_24_c1", "echart_cu_24_c2", "echart_cu_24_c3", "echart_cu_24_c4"],
+        "label": "价差体系 2.4",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_2_5": {
+        "file": "cu_2_5.html",
+        "min_bytes": 62000,
+        "charts": 2,
+        "cids": ["echart_cu_25_c1", "echart_cu_25_c2"],
+        "label": "估值与利润 2.5",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_2_6": {
+        "file": "cu_2_6.html",
+        "min_bytes": 14000,
+        "charts": 2,
+        "cids": ["echart_cu_26_c1", "echart_cu_26_c2"],
+        "label": "持仓席位观察 2.6",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_2_1": {
+        "file": "al_2_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_21_c1", "echart_al_21_c2"],
+        "label": "CU→AL 2.1 盘面结构",
+        "has_seasonal": True,   # 主图沪铝持仓量 chart_line_t 季节真数据
+    },
+
+    "al_2_2": {
+        "file": "al_2_2.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_22_c1", "echart_al_22_c2"],
+        "label": "AL 2.2 现货与升贴水",
+        "has_seasonal": True,   # 主图现货升贴水 chart_line_t
+    },
+
+    "al_2_3": {
+        "file": "al_2_3.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_23_c1", "echart_al_23_c2", "echart_al_23_c3"],
+        "label": "AL 2.3 海外价格",
+        "has_seasonal": True,   # 主图 LME 3M 结算价 chart_line_t
+    },
+
+    "al_2_4": {
+        "file": "al_2_4.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_24_c1", "echart_al_24_c2"],
+        "label": "AL 2.4 价差体系",
+        "has_seasonal": True,   # 主图沪铝月差(自算) chart_line_t
+    },
+
+    "al_2_5": {
+        "file": "al_2_5.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_25_c1", "echart_al_25_c2"],
+        "label": "AL 2.5 估值与利润",
+        "has_seasonal": True,   # 主图沪铝估值分位(自算) chart_line_t
+    },
+
+    "al_2_6": {
+        "file": "al_2_6.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_26_c1", "echart_al_26_c2", "echart_al_26_c3"],
+        "label": "AL 2.6 持仓席位观察",
+        "has_seasonal": False,  # 主图为周/日混合序列，季节视图不适用
+    },
+
+    "cu_3_1_1": {
+        "file": "cu_3_1_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_cu_311_c1", "echart_cu_311_c2"],
+        "label": "铜矿产量·澳 3.1.1",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_3_1_2": {
+        "file": "cu_3_1_2.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_cu_312_c1"],
+        "label": "铜矿产量·波兰 3.1.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_3_1_3": {
+        "file": "cu_3_1_3.html",
+        "min_bytes": 13000,
+        "charts": 2,
+        "cids": ["echart_cu_313_c1", "echart_cu_313_c2"],
+        "label": "铜矿产量·中国 3.1.3",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_3_1_4": {
+        "file": "cu_3_1_4.html",
+        "min_bytes": 10000,
+        "charts": 1,
+        "cids": ["echart_cu_314_c1"],
+        "label": "铜精矿进口 3.1.4",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_3_1_5": {
+        "file": "cu_3_1_5.html",
+        "min_bytes": 107000,
+        "charts": 3,
+        "cids": ["echart_cu_315_c1", "echart_cu_315_c2", "echart_cu_315_c3"],
+        "label": "TC/RC加工费 3.1.5",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_3_2_1": {
+        "file": "cu_3_2_1.html",
+        "min_bytes": 29000,
+        "charts": 3,
+        "cids": ["echart_cu_321_c1", "echart_cu_321_c2", "echart_cu_321_c3"],
+        "label": "电解铜产能产量 3.2.1",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_3_2_2": {
+        "file": "cu_3_2_2.html",
+        "min_bytes": 20000,
+        "charts": 2,
+        "cids": ["echart_cu_322_c1", "echart_cu_322_c2"],
+        "label": "电解铜产量 3.2.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_3_2_3": {
+        "file": "al_3_2_3.html",
+        "min_bytes": 17000,
+        "charts": 2,
+        "cids": ["echart_al_323_c1", "echart_al_323_c2"],
+        "label": "再生铜供应 3.2.3",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_3_2_4": {
+        "file": "cu_3_2_4.html",
+        "min_bytes": 21000,
+        "charts": 2,
+        "cids": ["echart_cu_324_c1", "echart_cu_324_c2"],
+        "label": "冶炼利润 3.2.4",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_4_1": {
+        "file": "al_4_1.html",
+        "min_bytes": 528000,
+        "charts": 3,
+        "cids": ["echart_al_41_c1", "echart_al_41_c2", "echart_al_41_c3"],
+        "label": "交易所库存 4.1",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_4_2": {
+        "file": "al_4_2.html",
+        "min_bytes": 298000,
+        "charts": 3,
+        "cids": ["echart_al_42_c1", "echart_al_42_c2", "echart_al_42_c3"],
+        "label": "仓单 4.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_4_3": {
+        "file": "al_4_3.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_43_c1"],
+        "label": "社会库存 4.3",
+        "has_seasonal": False,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_4_4": {
+        "file": "al_4_4.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_44_c1"],
+        "label": "工厂库存 4.4",
+        "has_seasonal": False,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_4_5": {
+        "file": "al_4_5.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_45_c1"],
+        "label": "隐性·在途 4.5",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_5_1": {
+        "file": "al_5_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_51_c1", "echart_al_51_c2"],
+        "label": "初级消费 5.1",
+        "has_seasonal": True,   # 主图 al_51_util 月频 11 完整年，有真实历年 series
+    },
+
+    "al_5_2": {
+        "file": "al_5_2.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_52_c1", "echart_al_52_c2"],
+        "label": "终端消费 5.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_5_3": {
+        "file": "al_5_3.html",
+        "min_bytes": 10000,
+        "charts": 1,
+        "cids": ["echart_al_53_c1"],
+        "label": "消费价格 5.3",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_6_1": {
+        "file": "cu_6_1.html",
+        "min_bytes": 14000,
+        "charts": 2,
+        "cids": ["echart_cu_61_c1", "echart_cu_61_c2"],
+        "label": "原料进口 6.1",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "cu_6_2": {
+        "file": "cu_6_2.html",
+        "min_bytes": 15000,
+        "charts": 2,
+        "cids": ["echart_cu_62_c1", "echart_cu_62_c2"],
+        "label": "进出口 6.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_6_3": {
+        "file": "al_6_3.html",
+        "min_bytes": 10000,
+        "charts": 1,
+        "cids": ["echart_al_63_c1"],
+        "label": "制品出口 6.3",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_7_1": {
+        "file": "al_7_1.html",
+        "min_bytes": 103000,
+        "charts": 2,
+        "cids": ["echart_al_71_c1", "echart_al_71_c2"],
+        "label": "电解铝成本 7.1",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_7_2": {
+        "file": "al_7_2.html",
+        "min_bytes": 15000,
+        "charts": 2,
+        "cids": ["echart_al_72_c1", "echart_al_72_c2"],
+        "label": "铝价与成本 7.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "311": {
+        "file": "pb_311_overseas_mine.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_311_c1", "echart_311_c2", "echart_311_c3"],
+        "label": "3.1.1 海外矿·财报产量",
+        "has_seasonal": True,
+    },
+
+    "312": {
+        "file": "pb_312_overseas_by_country.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_312_c1", "echart_312_c2", "echart_312_c3"],
+        "label": "3.1.2 海外矿·分国别总量",
+        "has_seasonal": True,
+    },
+
+    "313": {
+        "file": "pb_313_domestic_mine.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_313_c1", "echart_313_c2", "echart_313_c3"],
+        "label": "3.1.3 国内矿产量",
+        "has_seasonal": True,
+    },
+
+    "314": {
+        "file": "pb_314_mine_import.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_314_c1", "echart_314_c2", "echart_314_c3"],
+        "label": "3.1.4 矿进口量与分国别",
+        "has_seasonal": True,
+    },
+
+    "315": {
+        "file": "pb_315_tc_fee.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_315_c1", "echart_315_c2", "echart_315_c3"],
+        "label": "3.1.5 TC加工费",
+        "has_seasonal": True,
+    },
+
+    "321": {
+        "file": "pb_321_refining_output.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_321_c1", "echart_321_c2", "echart_321_c3"],
+        "label": "3.2.1 精炼产量",
+        "has_seasonal": True,
+    },
+
+    "322": {
+        "file": "pb_322_operating_rate.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_322_c1", "echart_322_c2", "echart_322_c3"],
+        "label": "3.2.2 开工率与检修",
+        "has_seasonal": True,
+    },
+
+    "324": {
+        "file": "pb_324_profit_elasticity.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_324_c1", "echart_324_c2", "echart_324_c3"],
+        "label": "3.2.4 冶炼利润→供应弹性",
+        "has_seasonal": True,
+    },
+
+    "53": {
+        "file": "pb_53_demand_leading.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_53_c1", "echart_53_c2", "echart_53_c3"],
+        "label": "5.3 需求先行指标",
+        "has_seasonal": True,
+    }
+}
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
 

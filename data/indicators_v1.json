@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "version": "3.0",
+    "version": "3.41",
     "updated": "2026-08-31",
     "status": "部分验证",
-    "说明": "统一的Zhiji指标ID映射表（版本化）。两个数据层脚本都从此文件读取，不再各管各的。版本变更必须同步git commit + 更新STATUS.md通知对方。",
+    "说明": "统一Zhiji指标映射表。v3.41: 合并cu_price分支19条al_2x指标(main168→187)",
     "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
   },
   "version_changelog": [
@@ -103,9 +103,24 @@
       "change": "板块7成本利润: +3新指标(j72_smelt_profit a10127392铅冶炼利润/j73_imp_tc a10021355进口TC/j73_elec_price a12762872广西电解铝电价)"
     },
     {
+      "v": "2.11",
+      "date": "2026-08-30",
+      "change": "T14-5.1 铝5.1初级消费建页: +al_51_util(SMM电解铝开工率:月度 a10146957,139点,2015-01..2026-07,8个完整年份)作正主, 贴合tree_config q=开工率·同步(与铅5.1正主j51_util铅蓄电池开工率同构); +al_51_util_week(周度a12804269,86点)作高频辅助(仅1完整年,不可作季节主图)。发现并记录al_51_cons语义错误: zhiji_id ID01369383=氟化铝(含氟添加剂)表观消费,与电解铝无关,原被误挂5.1正主; 保留不动以免破坏已建成的al_5_2.html补充图。修复缓存payload死字段: step3只写frequency键但load_metric读freq键→is_daily恒为True,新增入库同时写freq。"
+    },
+    {
       "v": "3.0",
       "date": "2026-08-31",
       "change": "板块7成本利润+3指标(j72/j73) + 板块5需求5.3+3指标(j53) — 154→157"
+    },
+    {
+      "v": "3.4",
+      "date": "2026-08-31",
+      "change": "铝2.x价格信号6节点指标注册: 7条al_00_*占位重定向 + 新增16条实测/自算指标(含2条DERIVED分位+1条DERIVED月差+2条衍生原料)"
+    },
+    {
+      "v": "3.41",
+      "date": "2026-08-31",
+      "change": "主脑合并 task/cu_price: main 168 → 187 指标(append-only, +19 条 al_2x/al_00/al_5x 全为新增键零覆盖)。含 039b25e[T14-AL2X] 铝2.x六节点16条 + 3a22c9e[T14-5.1] 铝5.1开工率2条(al_51_util/al_51_util_week) + 1条al_00占位补全。同步 49 HTML + check_html.py 注册34页 + AGENT_PARALLEL_PROTOCOL.md"
     }
   ],
   "indicators": {
@@ -2258,6 +2273,290 @@
       "subleaf": "3.2.4冶炼利润→供应弹性",
       "source": "Mysteel",
       "note": "3.2.4 辅助: 再生铅富氧侧吹炉利润(日度),1870点至2026-08"
+    },
+    "al_51_util": {
+      "name": "SMM: 电解铝开工率: 月度",
+      "unit": "百分比",
+      "freq": "月",
+      "verified": true,
+      "ids": {
+        "AL": "a10146957"
+      },
+      "_origin": "step3_AL_电解铝开工率月度",
+      "_tier": "A",
+      "_nodes": [
+        "5.1"
+      ]
+    },
+    "al_51_util_week": {
+      "name": "SMM: 电解铝开工率: 周度",
+      "unit": "百分比",
+      "freq": "周",
+      "verified": true,
+      "ids": {
+        "AL": "a12804269"
+      },
+      "_origin": "step3_AL_电解铝开工率周度",
+      "_tier": "B",
+      "_nodes": [
+        "5.1"
+      ]
+    },
+    "al_22_spot": {
+      "name": "电解铝：A00：Al≥99.7%：现货价：上海华通（日）",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "ID00259727"
+      },
+      "_origin": "step3_AL_2.2 铝现货价（价差分母端·断更2022-10仅作辅助）",
+      "_tier": "B",
+      "_nodes": [
+        "2.2"
+      ]
+    },
+    "al_22_premium_cn": {
+      "name": "电解铝：A00：Al≥99.7%：升贴水：中国（日）",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "ID01319345"
+      },
+      "_origin": "step3_AL_2.2 铝现货升贴水（正主·全国口径）",
+      "_tier": "B",
+      "_nodes": [
+        "2.2"
+      ]
+    },
+    "al_23_lme_settle": {
+      "name": "LME：铝：3个月合约：结算价（日）",
+      "unit": "美元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00014308"
+      },
+      "_origin": "step3_AL_2.3 LME铝3M结算价（海外价格正主）",
+      "_tier": "B",
+      "_nodes": [
+        "2.3"
+      ]
+    },
+    "al_23_lme_oi": {
+      "name": "LME：铝：3个月合约：持仓量（日）",
+      "unit": "手",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00014314"
+      },
+      "_origin": "step3_AL_2.3 LME铝3M持仓量",
+      "_tier": "B",
+      "_nodes": [
+        "2.3"
+      ]
+    },
+    "al_23_lme_volume": {
+      "name": "LME：铝：3个月合约：成交量（日）",
+      "unit": "手",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00014307"
+      },
+      "_origin": "step3_AL_2.3 LME铝3M成交量",
+      "_tier": "B",
+      "_nodes": [
+        "2.3"
+      ]
+    },
+    "al_24_lme_settle": {
+      "name": "LME：铝：3个月合约：结算价（日）",
+      "unit": "美元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00014308"
+      },
+      "_origin": "step3_AL_2.4 LME铝月差正主（与2.3共用zhiji_id不重复注册）",
+      "_tier": "B",
+      "_nodes": [
+        "2.4"
+      ]
+    },
+    "al_24_lme_spread": {
+      "name": "LME：铝：3个月合约：结算价（日）· 月差参考锚",
+      "unit": "美元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00014308"
+      },
+      "_origin": "step3_AL_2.4 LME铝月差正主（Cash-3M口径,知几无LME月差直接序列）",
+      "_tier": "B",
+      "_nodes": [
+        "2.4"
+      ]
+    },
+    "al_25_profit": {
+      "name": "电解铝：利润（月）",
+      "unit": "元/吨",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "AL": "ID01732414"
+      },
+      "_origin": "step3_AL_2.5 铝冶炼端利润（绝对值主图归7.2,此处作估值验证线）",
+      "_tier": "B",
+      "_nodes": [
+        "2.5"
+      ]
+    },
+    "al_26_long_top20": {
+      "name": "SHFE：铝：08合约：多单持仓合计：前20期货公司（日）",
+      "unit": "手",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00021993"
+      },
+      "_origin": "step3_AL_2.6 沪铝前20大多单持仓（席位观察正主）",
+      "_tier": "B",
+      "_nodes": [
+        "2.6"
+      ]
+    },
+    "al_26_short_top20": {
+      "name": "SHFE：铝：08合约：空单持仓合计：前20期货公司（日）",
+      "unit": "手",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00021998"
+      },
+      "_origin": "step3_AL_2.6 沪铝前20大空单持仓（席位观察正主）",
+      "_tier": "B",
+      "_nodes": [
+        "2.6"
+      ]
+    },
+    "al_26_comex_nc_long": {
+      "name": "COMEX：铝：报告头寸非商业多头持仓数量（周）",
+      "unit": "手",
+      "freq": "weekly",
+      "verified": true,
+      "ids": {
+        "AL": "ID00303201"
+      },
+      "_origin": "step3_AL_2.6 COMEX铝非商业多头（海外席位对照）",
+      "_tier": "B",
+      "_nodes": [
+        "2.6"
+      ]
+    },
+    "al_26_comex_nc_short": {
+      "name": "COMEX：铝：报告头寸非商业空头持仓数量（周）",
+      "unit": "手",
+      "freq": "weekly",
+      "verified": true,
+      "ids": {
+        "AL": "ID00303202"
+      },
+      "_origin": "step3_AL_2.6 COMEX铝非商业空头（海外席位对照）",
+      "_tier": "B",
+      "_nodes": [
+        "2.6"
+      ]
+    },
+    "al_25_close_quantile": {
+      "name": "SHFE：铝：主力合约：收盘价（日）· 历史估值分位",
+      "unit": "%",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "DERIVED:QUANTILE:al_00_close_front"
+      },
+      "_origin": "step3_AL_2.5 沪铝估值分位（正主·本地自算）",
+      "_tier": "B",
+      "_nodes": [
+        "2.5"
+      ],
+      "_derived": {
+        "type": "quantile",
+        "source_metric": "al_00_close_front",
+        "window_days": 730,
+        "min_sample": 60
+      }
+    },
+    "al_25_lme_quantile": {
+      "name": "LME：铝：3个月合约：结算价（日）· 历史估值分位",
+      "unit": "%",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "DERIVED:QUANTILE:al_23_lme_settle"
+      },
+      "_origin": "step3_AL_2.5 LME铝估值分位（正主并列·内外盘估值对照）",
+      "_tier": "B",
+      "_nodes": [
+        "2.5"
+      ],
+      "_derived": {
+        "type": "quantile",
+        "source_metric": "al_23_lme_settle",
+        "window_days": 730,
+        "min_sample": 60
+      }
+    },
+    "al_24_shfe_spread": {
+      "name": "SHFE：铝：月差（主力合约结算价 - 连续合约结算价，日）",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "DERIVED:SPREAD:al_00_settle_front-al_00_settle_cont"
+      },
+      "_origin": "step3_AL_2.4 沪铝月差（正主·本地自算）",
+      "_tier": "B",
+      "_nodes": [
+        "2.4"
+      ],
+      "_derived": {
+        "type": "spread",
+        "near": "al_00_settle_front",
+        "far": "al_00_settle_cont",
+        "note": "跨月价差标准近似口径;知几无沪铝月差直接序列,见decision_2.4.md"
+      }
+    },
+    "al_00_settle_front": {
+      "name": "SHFE：铝：主力合约：结算价（日）",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00014630"
+      },
+      "_origin": "step3_AL_2.4 沪铝月差衍生原料·近月端",
+      "_tier": "B",
+      "_nodes": [
+        "00"
+      ]
+    },
+    "al_00_settle_cont": {
+      "name": "SHFE：铝：连续合约：结算价（日）",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "AL": "FU00014623"
+      },
+      "_origin": "step3_AL_2.4 沪铝月差衍生原料·远月端",
+      "_tier": "B",
+      "_nodes": [
+        "00"
+      ]
     }
   },
   "64_group": {
@@ -2273,7 +2572,7 @@
       "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
     }
   },
-  "version": "3.1",
+  "version": "3.41",
   "updated": "2026-08-31",
-  "change": "T15-3.x: +8指标 j311_ilm(全球铅矿产量) j313_qh(青海铅矿) j314_net_imp(铅精矿净进口) j322_native_util_w/m(原生开工率周/月) j324_primary_spread(精废价差) j324_regen_profit_refl/bof(再生铅炉型利润) (基线160→168)"
+  "change": "主脑合并 task/cu_price(精确checkout,非merge): +19条al指标→187; cu/al 49页上线; 后续补7板块总览页解22页死链"
 }

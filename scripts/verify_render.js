@@ -19,8 +19,9 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('/tmp/node_modules/jsdom');
 
-const ROOT = '/home/ubuntu/framework-tree';
+const ROOT = path.resolve(__dirname, '..');
 const PAGES = [
+  // ── 铅(PB) 30 页 ──
   { key: '21', file: 'pb_21_price_structure.html',       seasonal: ['echart_21_c2'] },
   { key: '22', file: 'pb_22_spot_premium.html',          seasonal: ['echart_22_c2'] },
   { key: '23', file: 'pb_23_overseas_price.html',        seasonal: ['echart_23_c2'] },
@@ -51,6 +52,43 @@ const PAGES = [
   { key: '71', file: 'pb_71_cost_curve.html',       seasonal: ['echart_71_c2'] },
   { key: '72', file: 'pb_72_daily_profit.html',     seasonal: ['echart_72_c2'] },
   { key: '73', file: 'pb_73_energy_cost.html',      seasonal: ['echart_73_c2'] },
+  // ── 铜(CU)/铝(AL) 34 页：主脑 2026-08-31 jsdom 实测注册 ──
+  // 铜铝页部分图无 season toggle 按钮（纯时序渲染），seasonal 留空；
+  // 不要按「__opts.se 存在」就注册——那些图初始即渲染历史年份线但无切换按钮 ──
+  { key: 'al_21', file: 'al_2_1.html', charts: 2, seasonal: ['echart_al_21_c1'] },
+  { key: 'al_22', file: 'al_2_2.html', charts: 2, seasonal: ['echart_al_22_c1'] },
+  { key: 'al_23', file: 'al_2_3.html', seasonal: ['echart_al_23_c1','echart_al_23_c3'] },
+  { key: 'al_24', file: 'al_2_4.html', charts: 2, seasonal: ['echart_al_24_c1','echart_al_24_c2'] },
+  { key: 'al_25', file: 'al_2_5.html', charts: 2, seasonal: ['echart_al_25_c1'] },
+  { key: 'al_26', file: 'al_2_6.html', seasonal: [] },
+  { key: 'al_323', file: 'al_3_2_3.html', charts: 2, seasonal: ['echart_al_323_c1'] },
+  { key: 'al_41', file: 'al_4_1.html', seasonal: ['echart_al_41_c1'] },
+  { key: 'al_42', file: 'al_4_2.html', seasonal: ['echart_al_42_c1','echart_al_42_c3'] },
+  { key: 'al_43', file: 'al_4_3.html', charts: 1, seasonal: [] },
+  { key: 'al_44', file: 'al_4_4.html', charts: 1, seasonal: [] },
+  { key: 'al_45', file: 'al_4_5.html', charts: 1, seasonal: ['echart_al_45_c1'] },
+  { key: 'al_51', file: 'al_5_1.html', charts: 2, seasonal: ['echart_al_51_c1'] },
+  { key: 'al_52', file: 'al_5_2.html', charts: 2, seasonal: ['echart_al_52_c1'] },
+  { key: 'al_53', file: 'al_5_3.html', charts: 1, seasonal: ['echart_al_53_c1'] },
+  { key: 'al_63', file: 'al_6_3.html', charts: 1, seasonal: ['echart_al_63_c1'] },
+  { key: 'al_71', file: 'al_7_1.html', charts: 2, seasonal: ['echart_al_71_c1'] },
+  { key: 'al_72', file: 'al_7_2.html', charts: 2, seasonal: ['echart_al_72_c1','echart_al_72_c2'] },
+  { key: 'cu_21', file: 'cu_2_1.html', charts: 4, seasonal: ['echart_cu_21_c1'] },
+  { key: 'cu_22', file: 'cu_2_2.html', charts: 2, seasonal: ['echart_cu_22_c1','echart_cu_22_c2'] },
+  { key: 'cu_23', file: 'cu_2_3.html', seasonal: ['echart_cu_23_c1','echart_cu_23_c3'] },
+  { key: 'cu_24', file: 'cu_2_4.html', charts: 4, seasonal: ['echart_cu_24_c1','echart_cu_24_c4'] },
+  { key: 'cu_25', file: 'cu_2_5.html', charts: 2, seasonal: [] },
+  { key: 'cu_26', file: 'cu_2_6.html', charts: 2, seasonal: ['echart_cu_26_c2'] },
+  { key: 'cu_311', file: 'cu_3_1_1.html', charts: 2, seasonal: ['echart_cu_311_c2'] },
+  { key: 'cu_312', file: 'cu_3_1_2.html', charts: 1, seasonal: [] },
+  { key: 'cu_313', file: 'cu_3_1_3.html', charts: 2, seasonal: ['echart_cu_313_c1','echart_cu_313_c2'] },
+  { key: 'cu_314', file: 'cu_3_1_4.html', charts: 1, seasonal: ['echart_cu_314_c1'] },
+  { key: 'cu_315', file: 'cu_3_1_5.html', seasonal: ['echart_cu_315_c3'] },
+  { key: 'cu_321', file: 'cu_3_2_1.html', seasonal: ['echart_cu_321_c1'] },
+  { key: 'cu_322', file: 'cu_3_2_2.html', charts: 2, seasonal: ['echart_cu_322_c1'] },
+  { key: 'cu_324', file: 'cu_3_2_4.html', charts: 2, seasonal: [] },
+  { key: 'cu_61', file: 'cu_6_1.html', charts: 2, seasonal: ['echart_cu_61_c1','echart_cu_61_c2'] },
+  { key: 'cu_62', file: 'cu_6_2.html', charts: 2, seasonal: ['echart_cu_62_c1','echart_cu_62_c2'] },
 ];
 
 function expectedBtnText(mode) {

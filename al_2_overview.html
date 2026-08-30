@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>铝(AL) 板块2 价格信号 · 总览（6 子节点全上线）</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:32px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto}
+.h1{font-size:26px;font-weight:700;color:#8fa3c4;margin-bottom:6px}
+.sub{color:#8b949e;font-size:13px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+.card{display:block;text-decoration:none;color:inherit;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:18px;transition:all .2s}
+.card:hover{border-color:#8fa3c4;transform:translateY(-2px);background:#1a2028}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card-num{display:inline-block;background:#3d4d63;color:#dfe6f0;font-weight:700;font-size:13px;padding:2px 8px;border-radius:4px}
+.card-title{font-size:17px;font-weight:600;color:#e6edf3}
+.card-charts{font-size:13px;color:#8b949e;margin-bottom:8px;font-style:italic}
+.card-metrics{font-size:12px;color:#6e7681;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:12px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px}
+.badge{background:#21262d;color:#8b949e;padding:2px 8px;border-radius:10px;border:1px solid #30363d}
+.note{background:#161b22;border:1px solid #30363d;border-left:3px solid #8fa3c4;border-radius:6px;padding:14px 16px;font-size:13px;color:#8b949e;margin-bottom:20px}
+.note b{color:#c9d1d9}
+.note code{color:#8fa3c4;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.footer{border-top:1px solid #21262d;padding-top:16px;font-size:12px;color:#6e7681;text-align:center}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="h1">铝(AL) · 板块2【价格信号】总览</div>
+  <div class="sub">6 个子节点全上线 · 11 张图 · indicators_v1.json v3.4（179 指标 · AL 43，其中 <b style="color:#e3a857">2.x 19 条</b>）· 数据至 2026-08-28 · 2026-08-31</div>
+  <div class="note"><b>板块2 价格信号：</b>铝价日度波动的六个切面——盘面资金(2.1) → 现货紧松(2.2) → 海外定价(2.3) → 期限结构(2.4) → 历史估值(2.5) → 席位方向(2.6)。<br>
+    <b>铝与铜的实质差异（已按 decision 文档落地）：</b>铝的 2.1 正主是<b>沪铝持仓/成交量</b>（tree_config q=持仓/价/成交量），不是铜那套「进口盈亏与贸易流」——铝进口盈亏不在知几序列内，已排除；2.3 海外价格<b>含 COMEX 铝</b>（期货库存 + CFTC 非商业多空均可得），非「只有 LME」。<br>
+    <b>三处自算指标（知几无直接序列，已标注 <code>_derived</code>）：</b>2.4 沪铝月差 = 主力合约结算价 − 连续合约结算价（2833点，Back 981天 / Contango 1559天）；2.5 估值分位 = 收盘价滚动 730 天窗口分位（沪铝最新 87.1、LME 88.4，均处历史高位，口径见各页数据质量栏）。<br>
+    <b>数据质量声明：</b><code>al_22_spot</code>（上海华通现货价）实测 n=1913 但末点停在 2022-10-13，已被建页引擎的断更保护（末点距今超过 180 天）自动剔除；席位数据取自 SHFE <b>08 合约</b>前20多/空单（知几按合约月分序列，无「主力席位」汇总），跨年需随主力合约轮月切换。</div>
+  <div class="grid">
+    <a class="card" href="al_2_1.html">
+      <div class="card-head">
+        <span class="card-num">2.1</span>
+        <span class="card-title">盘面结构</span>
+      </div>
+      <div class="card-charts">沪铝持仓量时序⇄季节(正主) / 成交量 / 收盘价</div>
+      <div class="card-metrics">al_00_openinterest_front · al_00_volume_front · al_00_close_front</div>
+      <div class="card-foot">
+        <span class="badge">2图 · 正主247909手 · 至2026-08-28</span>
+        <span class="badge">3条占位重定向</span>
+      </div>
+    </a>
+    <a class="card" href="al_2_2.html">
+      <div class="card-head">
+        <span class="card-num">2.2</span>
+        <span class="card-title">现货与升贴水</span>
+      </div>
+      <div class="card-charts">电解铝现货升贴水 重庆-SHFE(正主) / 沪铝基差</div>
+      <div class="card-metrics">al_00_premium · al_00_basis · al_22_premium_cn（al_22_spot 断更2022-10已剔除）</div>
+      <div class="card-foot">
+        <span class="badge">2图 · 正主-10元/吨 · 至2026-08-28</span>
+        <span class="badge">断更剔除1条</span>
+      </div>
+    </a>
+    <a class="card" href="al_2_3.html">
+      <div class="card-head">
+        <span class="card-num">2.3</span>
+        <span class="card-title">海外价格</span>
+      </div>
+      <div class="card-charts">LME铝3M结算价(正主) / LME持仓量 / LME成交量 / COMEX铝期货库存</div>
+      <div class="card-metrics">al_23_lme_settle · al_23_lme_oi · al_23_lme_volume · al_00_comex_inv</div>
+      <div class="card-foot">
+        <span class="badge">3图 · 正主3241美元/吨 · 至2026-08-28</span>
+        <span class="badge">3条新增</span>
+      </div>
+    </a>
+    <a class="card" href="al_2_4.html">
+      <div class="card-head">
+        <span class="card-num">2.4</span>
+        <span class="card-title">价差体系</span>
+      </div>
+      <div class="card-charts">沪铝月差 主力-连续结算价(正主·自算) / LME铝3M结算价锚</div>
+      <div class="card-metrics">al_24_shfe_spread(DERIVED) · al_24_lme_settle · al_24_lme_spread</div>
+      <div class="card-foot">
+        <span class="badge">2图 · 正主10元/吨 · 至2026-08-28</span>
+        <span class="badge">月差自算</span>
+      </div>
+    </a>
+    <a class="card" href="al_2_5.html">
+      <div class="card-head">
+        <span class="card-num">2.5</span>
+        <span class="card-title">估值与利润</span>
+      </div>
+      <div class="card-charts">沪铝历史估值分位(正主·自算) / 电解铝利润(月) / LME估值分位</div>
+      <div class="card-metrics">al_25_close_quantile(DERIVED) · al_25_lme_quantile(DERIVED) · al_25_profit</div>
+      <div class="card-foot">
+        <span class="badge">2图 · 正主87.1% · 至2026-08-28</span>
+        <span class="badge">分位自算</span>
+      </div>
+    </a>
+    <a class="card" href="al_2_6.html">
+      <div class="card-head">
+        <span class="card-num">2.6</span>
+        <span class="card-title">持仓席位观察</span>
+      </div>
+      <div class="card-charts">沪铝前20大多单(正主) / 前20大空单 / COMEX非商业多空 / CFTC净持仓占比</div>
+      <div class="card-metrics">al_26_long_top20 · al_26_short_top20 · al_26_comex_nc_long/short · al_00_openinterest_top20_struct</div>
+      <div class="card-foot">
+        <span class="badge">3图 · 正主14870手 · 至2026-08-17</span>
+        <span class="badge">席位数据实得</span>
+      </div>
+    </a>
+  </div>
+  <div class="footer">有色金属产业指标树 · 铝(AL) · 板块2 价格信号总览 · v2（6 子节点全上线 · 11 图全真数据）· 2026-08-31<br><a href="index.html" style="color:#8fa3c4;text-decoration:none">← 返回 framework-tree 根目录</a></div>
+</div>
+</body></html>
