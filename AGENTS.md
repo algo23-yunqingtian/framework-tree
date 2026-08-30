@@ -110,6 +110,8 @@ GIT_CURL_OPT="--max-time 300 --retry 5 --retry-delay 10" git push origin main
 > 安装（clone 后一次）：`git config core.hooksPath scripts/hooks`。
 > 逃生通道：确属无需记录时 `git commit --no-verify`。别滥用——主脑会看到变更记录缺失。
 
+> **🛡️ 上线自检（2026-08-31 上线）**：开工前必跑 `bash scripts/bootstrap_agent.sh`，6 项检查（git基线/hook/指标/门禁/死链/数据源），全绿才准开工。红色 ❌ = 阻断项，修完再动手。防止未提交改动被覆盖、基线旧导致 diff 爆炸。
+
 **任务可见性**（主脑怎么知道新 agent 在做什么）：
 1. `STATUS.md` 是唯一真源——他每完成一项必须写变更记录
 2. `git log origin/main` 看提交历史 = 他改了什么、什么时间
