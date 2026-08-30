@@ -2030,6 +2030,45 @@
     "7.1",
     "7.2"
    ]
+  },
+  "j52_car_sales": {
+   "name": "SMM 中国汽车产销量: 销量",
+   "unit": "万辆",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10128004"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "SMM",
+   "note": "5.2 正主: 汽车是铅蓄电池最大终端下游, 销量是终端消费核心代理指标"
+  },
+  "j52_base_station": {
+   "name": "中国工业产品产量: 移动通信基站设备",
+   "unit": "万信道",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "CM0000017742"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "Mysteel",
+   "note": "5.2 辅助: 通信基站是铅蓄电池重要下游(UPS备电), 设备产量反映通信基建需求"
+  },
+  "j52_battery_inv": {
+   "name": "SMM 铅蓄电池企业成品库存",
+   "unit": "KVAh",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a12813406"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "SMM",
+   "note": "5.2 辅助: 成品库存反映终端备货周期, 库存高=终端去库压力(需求弱), 库存低=需求强; 原i26指标复用, 不重复注册"
   }
  },
  "64_group": {
@@ -2045,7 +2084,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "2.8",
+ "version": "2.9",
  "updated": "2026-08-30",
- "change": "Step3 知几验证: 铜(CU) 37 + 铝(AL) 32 TierA/B 指标注册 (id去重跳过 93) | Step3 拉数入库: 成功1 失败0, verified置真 | Step3 拉数入库: 成功67 失败1, verified置真"
+ "change": "T13-5.2: +3指标 j52_car_sales/j52_base_station/j52_battery_inv (基线保留main 151→154)"
 }

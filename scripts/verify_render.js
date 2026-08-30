@@ -28,6 +28,7 @@ const PAGES = [
   { key: '25', file: 'pb_25_valuation_profit.html',        seasonal: [] },
   { key: '26', file: 'pb_26_position_holder.html',          seasonal: ['echart_26_c2'] },
   { key: '51', file: 'pb_51_primary_consumption.html',   seasonal: ['echart_51_c2'] },
+  { key: '52', file: 'pb_52_terminal_consumption.html',  seasonal: ['echart_52_c2'] },
   { key: '61', file: 'pb_61_raw_material_import.html', seasonal: ['echart_61_c1', 'echart_61_c3'] },
   { key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_62_c1', 'echart_62_c3'] },
   { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },

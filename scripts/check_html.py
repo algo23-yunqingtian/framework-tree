@@ -81,6 +81,14 @@ PAGES = {
         "label": "5.1 初级消费",
         "has_seasonal": True,
     },
+    "52": {
+        "file": "pb_52_terminal_consumption.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_52_c1", "echart_52_c2", "echart_52_c3"],
+        "label": "5.2 终端细分消费",
+        "has_seasonal": True,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
