@@ -130,7 +130,8 @@ var t=document.body.innerText;
 var ps=t.lastIndexOf('角色：你是有色金属产业研究的');
 var s=ps>=0?t.slice(ps):t;   // 只看本轮：历史轮次的「模型答案生成完成」会误判 done → 提前抓取带上轮答案
 var done=s.indexOf('模型答案生成完成')>=0;
-var limited=s.indexOf('暂时处理不过来了')>=0;
+var limited=t.indexOf('暂时处理不过来了')>=0;   // 限流用全文判定：s 已切到本轮 prompt 之后，
+                                                // 限流提示常落在本轮之前，用 s 会把信号切掉
 JSON.stringify({len:t.length,done:done,limited:limited});"""
 
 # 抓取源：只取最后一个 .chat-response-message-container 的 innerText。
@@ -141,6 +142,15 @@ EXTRACT_JS = r"""
 (function(){
   var rs=document.querySelectorAll('.chat-response-message-container');
   return rs.length ? (rs[rs.length-1].innerText||'') : (document.body.innerText||'');
+})()"""
+
+# 答案容器基线指纹：发送前后各取一次，确认「本轮真的产生了新答案」。
+# 返回 {n: 容器数, fp: 末容器 长度|尾部80字}。
+PRE_SEND_JS = r"""
+(function(){
+  var rs=document.querySelectorAll('.chat-response-message-container');
+  var last = rs.length ? (rs[rs.length-1].innerText||'') : '';
+  return JSON.stringify({n:rs.length, fp:(last.length+'|'+last.slice(-80))});
 })()"""
 
 
@@ -319,6 +329,11 @@ def run_node(ws_url, task, var_cn_map):
     if "NO_BUTTON" in send_note:
         return False, None, "NO_BUTTON"
 
+    # 发送前基线：答案容器数 + 末容器指纹。
+    # 用于事后确认「本轮真的产生了新答案」——免费版额度耗尽时发送静默失败，
+    # done 仍会立即为 True（历史轮次标记常驻），若无此校验会把上轮答案当成本轮结果写出。
+    pre = json.loads(ev(PRE_SEND_JS) or "null") or {"n": 0, "fp": ""}
+
     # 轮询等生成完成
     t0 = time.time()
     while time.time() - t0 < GEN_TIMEOUT:
@@ -334,6 +349,13 @@ def run_node(ws_url, task, var_cn_map):
             st = json.loads(val) if val.startswith("{") else {}
         if st.get("done"):
             break
+
+    # 校验本轮是否真的产生了新答案：容器数增加，或末容器指纹变化。
+    # 两者都没变 = 发送没成功（额度耗尽/发送按钮失效/页面失焦），末容器是上轮答案。
+    # 判失败而非写文件，避免 state 被污染导致断点续跑永久跳过该节点。
+    post = json.loads(ev(PRE_SEND_JS) or "null") or {"n": 0, "fp": ""}
+    if post.get("n", 0) <= pre.get("n", 0) and post.get("fp", "") == pre.get("fp", ""):
+        return False, None, "NO_NEW_REPLY"
 
     # 抓取回复并规范化：只取最后一个答案容器（DOM 隔离，不带上轮答案/prompt 回显/推荐区），
     # 再经 normalize_reply 兜底去状态行 + 尾部推荐区/chrome + TSV→markdown 管道表
