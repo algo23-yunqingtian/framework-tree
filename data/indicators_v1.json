@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.7",
+    "version": "2.8",
     "updated": "2026-08-30",
     "status": "部分验证",
     "说明": "统一的Zhiji指标ID映射表（版本化）。两个数据层脚本都从此文件读取，不再各管各的。版本变更必须同步git commit + 更新STATUS.md通知对方。",
@@ -96,6 +96,11 @@
       "v": "2.7",
       "date": "2026-08-30",
       "change": "T11-5.1 主脑验收修正: +j51_util(SMM铅蓄电池开工率: 总 a10151378 周度) 作5.1正主; j51_h2so4 硫酸价格标 note 归属7.x成本利润备用; 5.1图3改用工率+铅锭消费验证; rebase origin/main (7提交/584af27) 后基线81指标"
+    },
+    {
+      "v": "2.8",
+      "date": "2026-08-30",
+      "change": "T13-5.2: +3 需求 5.2终端细分消费指标 (j52_car_sales SMM汽车销量 a10128004/j52_base_station 基站设备产量 CM0000017742/j52_battery_inv 铅蓄电池成品库存 a12813406); 电动两轮车/储能装机知几无数据已标注; 出口数据归6.3不入5.x; 详见 analysis/iwencai/PB/52_diversify_20260830.md 排除项"
     }
   ],
   "indicators": {
@@ -1045,6 +1050,45 @@
       "subleaf": "5.1初级消费",
       "source": "SMM",
       "note": "5.1 正主: 开工率·同步 (per tree_config 5.1 q 字段). 主脑验收意见: 铅酸电池是铅最核心下游(90%+), 开工率=5.1正主"
+    },
+    "j52_car_sales": {
+      "name": "SMM 中国汽车产销量: 销量",
+      "unit": "万辆",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "a10128004"
+      },
+      "category": "demand",
+      "subleaf": "5.2终端细分消费",
+      "source": "SMM",
+      "note": "5.2 正主: 汽车是铅蓄电池最大终端下游, 销量是终端消费核心代理指标"
+    },
+    "j52_base_station": {
+      "name": "中国工业产品产量: 移动通信基站设备",
+      "unit": "万信道",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "CM0000017742"
+      },
+      "category": "demand",
+      "subleaf": "5.2终端细分消费",
+      "source": "Mysteel",
+      "note": "5.2 辅助: 通信基站是铅蓄电池重要下游(UPS备电), 设备产量反映通信基建需求"
+    },
+    "j52_battery_inv": {
+      "name": "SMM 铅蓄电池企业成品库存",
+      "unit": "KVAh",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "a12813406"
+      },
+      "category": "demand",
+      "subleaf": "5.2终端细分消费",
+      "source": "SMM",
+      "note": "5.2 辅助: 成品库存反映终端备货周期, 库存高=终端去库压力(需求弱), 库存低=需求强; 原i26指标复用, 不重复注册"
     }
   },
   "64_group": {
@@ -1060,7 +1104,7 @@
       "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
     }
   },
-  "version": "2.7",
-  "updated": "2026-08-29",
-  "change": "T11-5.1 修正: +j51_util(铅酸电池开工率 a10151378) 作 5.1 正主; 硫酸价(j51_h2so4)入备用(归属7.x成本利润); 社库(i18)归属4.3正主, 5.1不入图3; 详见 analysis/iwencai/PB/51_diversify_20260829.md 排除项"
+  "version": "2.8",
+  "updated": "2026-08-30",
+  "change": "T13-5.2: +3 需求 5.2终端细分消费指标 (j52_car_sales SMM汽车销量/j52_base_station 基站设备产量/j52_battery_inv 铅蓄电池成品库存)"
 }
