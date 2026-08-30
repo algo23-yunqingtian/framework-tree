@@ -169,29 +169,13 @@ PAGES = {
         "label": "4.5 隐性·在途",
         "has_seasonal": True,   # 图1 SG非仓单 chart_line_t
     },
-    "71": {
-        "file": "pb_71_cost_curve.html",
+    "cu_2_1": {
+        "file": "cu_2_1.html",
         "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_71_c1", "echart_71_c2", "echart_71_c3"],
-        "label": "7.1 成本曲线与分位",
-        "has_seasonal": True,   # 图2 chart_line_t 季节真数据
-    },
-    "72": {
-        "file": "pb_72_daily_profit.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_72_c1", "echart_72_c2", "echart_72_c3"],
-        "label": "7.2 日度利润测算",
-        "has_seasonal": True,   # 图2 chart_line_t 季节真数据
-    },
-    "73": {
-        "file": "pb_73_energy_cost.html",
-        "min_bytes": 20000,
-        "charts": 3,
-        "cids": ["echart_73_c1", "echart_73_c2", "echart_73_c3"],
-        "label": "7.3 能源/原料成本",
-        "has_seasonal": True,   # 图2 chart_line_t 季节真数据
+        "charts": 4,
+        "cids": ["echart_cu_21_c1", "echart_cu_21_c2", "echart_cu_21_c3", "echart_cu_21_c4"],
+        "label": "CU 2.1 进口盈亏与贸易流",
+        "has_seasonal": True,   # 图1 进口盈亏 chart_line_t 季节真数据
     },
 }
 
