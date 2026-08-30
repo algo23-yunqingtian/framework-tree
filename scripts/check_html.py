@@ -169,6 +169,30 @@ PAGES = {
         "label": "4.5 隐性·在途",
         "has_seasonal": True,   # 图1 SG非仓单 chart_line_t
     },
+    "71": {
+        "file": "pb_71_cost_curve.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_71_c1", "echart_71_c2", "echart_71_c3"],
+        "label": "7.1 成本曲线与分位",
+        "has_seasonal": True,   # 图2 chart_line_t 季节真数据
+    },
+    "72": {
+        "file": "pb_72_daily_profit.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_72_c1", "echart_72_c2", "echart_72_c3"],
+        "label": "7.2 日度利润测算",
+        "has_seasonal": True,   # 图2 chart_line_t 季节真数据
+    },
+    "73": {
+        "file": "pb_73_energy_cost.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_73_c1", "echart_73_c2", "echart_73_c3"],
+        "label": "7.3 能源/原料成本",
+        "has_seasonal": True,   # 图2 chart_line_t 季节真数据
+    },
 }
 
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）

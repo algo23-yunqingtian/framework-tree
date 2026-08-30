@@ -39,6 +39,9 @@ const PAGES = [
   { key: '43', file: 'pb_43_social_stock.html',     seasonal: ['echart_43_c3'] },
   { key: '44', file: 'pb_44_factory_stock.html',    seasonal: [] },
   { key: '45', file: 'pb_45_hidden_stock.html',     charts: 2, seasonal: [] },
+  { key: '71', file: 'pb_71_cost_curve.html',       seasonal: ['echart_71_c2'] },
+  { key: '72', file: 'pb_72_daily_profit.html',     seasonal: ['echart_72_c2'] },
+  { key: '73', file: 'pb_73_energy_cost.html',      seasonal: ['echart_73_c2'] },
 ];
 
 function expectedBtnText(mode) {
