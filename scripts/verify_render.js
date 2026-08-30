@@ -19,7 +19,8 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('/tmp/node_modules/jsdom');
 
-const ROOT = '/home/ubuntu/framework-tree';
+// 相对脚本自身位置推导仓库根目录：兼容 git worktree 多目录并行开发（硬编码原目录在 worktree 下失效）
+const ROOT = path.resolve(__dirname, '..');
 const PAGES = [
 { key: '21', file: 'pb_21_price_structure.html',       seasonal: ['echart_21_c2'] },
 { key: '22', file: 'pb_22_spot_premium.html',          seasonal: ['echart_22_c2'] },
@@ -69,7 +70,13 @@ const PAGES = [
   { key: 'cu_62', file: 'cu_6_2.html', charts: 2, seasonal: ["echart_cu_62_c1"] },
   { key: 'al_63', file: 'al_6_3.html', charts: 1, seasonal: ["echart_al_63_c1"] },
   { key: 'al_71', file: 'al_7_1.html', charts: 2, seasonal: ["echart_al_71_c1"] },
-  { key: 'al_72', file: 'al_7_2.html', charts: 2, seasonal: ["echart_al_72_c1"] }
+  { key: 'al_72', file: 'al_7_2.html', charts: 2, seasonal: ["echart_al_72_c1"] },
+  { key: 'al_21', file: 'al_2_1.html', charts: 2, seasonal: ["echart_al_21_c1"] },
+  { key: 'al_22', file: 'al_2_2.html', charts: 2, seasonal: ["echart_al_22_c1"] },
+  { key: 'al_23', file: 'al_2_3.html', charts: 3, seasonal: ["echart_al_23_c1"] },
+  { key: 'al_24', file: 'al_2_4.html', charts: 2, seasonal: ["echart_al_24_c1"] },
+  { key: 'al_25', file: 'al_2_5.html', charts: 2, seasonal: ["echart_al_25_c1"] },
+  { key: 'al_26', file: 'al_2_6.html', charts: 3, seasonal: [] }
 ];
 
 function expectedBtnText(mode) {

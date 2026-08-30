@@ -262,6 +262,54 @@ PAGES = {
         "label": "持仓席位观察 2.6",
         "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
     },
+    "al_2_1": {
+        "file": "al_2_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_21_c1", "echart_al_21_c2"],
+        "label": "CU→AL 2.1 盘面结构",
+        "has_seasonal": True,   # 主图沪铝持仓量 chart_line_t 季节真数据
+    },
+    "al_2_2": {
+        "file": "al_2_2.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_22_c1", "echart_al_22_c2"],
+        "label": "AL 2.2 现货与升贴水",
+        "has_seasonal": True,   # 主图现货升贴水 chart_line_t
+    },
+    "al_2_3": {
+        "file": "al_2_3.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_23_c1", "echart_al_23_c2", "echart_al_23_c3"],
+        "label": "AL 2.3 海外价格",
+        "has_seasonal": True,   # 主图 LME 3M 结算价 chart_line_t
+    },
+    "al_2_4": {
+        "file": "al_2_4.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_24_c1", "echart_al_24_c2"],
+        "label": "AL 2.4 价差体系",
+        "has_seasonal": True,   # 主图沪铝月差(自算) chart_line_t
+    },
+    "al_2_5": {
+        "file": "al_2_5.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_25_c1", "echart_al_25_c2"],
+        "label": "AL 2.5 估值与利润",
+        "has_seasonal": True,   # 主图沪铝估值分位(自算) chart_line_t
+    },
+    "al_2_6": {
+        "file": "al_2_6.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_26_c1", "echart_al_26_c2", "echart_al_26_c3"],
+        "label": "AL 2.6 持仓席位观察",
+        "has_seasonal": False,  # 主图为周/日混合序列，季节视图不适用
+    },
     "3.1.1": {
         "file": "cu_3_1_1.html",
         "min_bytes": 12000,

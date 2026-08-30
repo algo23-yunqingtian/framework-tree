@@ -40,12 +40,14 @@ MIN_BYTES_BY_CHARTS = {1: 8000, 2: 12000, 3: 20000, 4: 30000}
 # 主题词库（节点 → 页面标题/主题说明/看图口径）
 # ============================================================
 THEMES = {
-    "2.1": ("进口盈亏与贸易流", "内外盘套利窗口开合与贸易流是否支撑进口/套利"),
-    "2.2": ("现货与升贴水", "现货对期货基差与平水铜升贴水，判断流通货源紧松"),
-    "2.3": ("海外价格", "LME/COMEX 价格与成交量持仓，海外定价与资金参与度"),
-    "2.4": ("价差体系", "月差与期限结构（近远月/沪伦/COMEX），判断 Back/Contango"),
-    "2.5": ("估值与利润", "冶炼利润与 TC 加工费，矿端向冶炼端传导"),
-    "2.6": ("持仓席位观察", "多空前20与净持仓集中度，资金结构"),
+    # 2.x 主题对齐 data/tree_config.json 权威定义（category=price 的 name/q），
+    # 铜铝共用同一板块定义；旧文案是铜「进口盈亏与贸易流」口径，套到铝上是错的。
+    "2.1": ("盘面结构", "持仓/价/成交量，判断盘面波动是资金驱动还是现货驱动"),
+    "2.2": ("现货与升贴水", "升贴水/基差，现货供需紧张程度是否领先期货 1-2 个交易日"),
+    "2.3": ("海外价格", "LME/COMEX/现金，全球定价基准与海外资金参与度"),
+    "2.4": ("价差体系", "月差/期限结构（近远月/LME月差），判断 Back 还是 Contango"),
+    "2.5": ("估值与利润", "分位数/冶炼利润，价格所处的历史估值位置与利润弹性"),
+    "2.6": ("持仓席位观察", "多空前20，机构资金方向与多空博弈结构"),
     "3.1.1": ("铜矿产量·澳", "澳大利亚铜矿产量与粗铜产量结构"),
     "3.1.2": ("铜矿产量·波兰", "波兰铜矿产量（年频）"),
     "3.1.3": ("铜矿产量·中国", "中国铜精矿含铜产量与产能利用率"),
@@ -69,6 +71,21 @@ THEMES = {
     "7.1": ("电解铝成本", "氧化铝成本与TC加工费"),
     "7.2": ("铝价与成本", "铝价与成本传导验证"),
 }
+
+
+# 节点 × 品种 主题覆盖：铜 2.x 六个页面已全部验收上线，其主题文案沿用
+# decision_2.x.md 的口径（与 tree_config 通用名不同），锁定防止批量重跑改口径。
+THEME_BY_COMM = {
+    ("cu", "2.1"): ("进口盈亏与贸易流", "内外盘套利窗口开合与贸易流是否支撑进口/套利"),
+    ("cu", "2.2"): ("现货与升贴水", "现货对期货基差与平水铜升贴水，判断流通货源紧松"),
+    ("cu", "2.3"): ("海外价格", "LME/COMEX 价格与成交量持仓，海外定价与资金参与度"),
+    ("cu", "2.4"): ("价差体系", "月差与期限结构（近远月/沪伦/COMEX），判断 Back/Contango"),
+    ("cu", "2.5"): ("估值与利润", "冶炼利润与 TC 加工费，矿端向冶炼端传导"),
+    ("cu", "2.6"): ("持仓席位观察", "多空前20与净持仓集中度，资金结构"),
+}
+
+
+
 
 
 def node_indicators(indicators):
@@ -145,37 +162,97 @@ def full_years(pairs_data):
 
 
 
-def code_str_of(node, meta):
-    """节点 → 页面标题（取 THEMES 标题，缺省用节点号）。"""
-    return THEMES.get(node, (node, ""))[0]
+def theme_of(node, comm="cu"):
+    """节点 × 品种 → (标题, 主题说明)。先查 THEME_BY_COMM 品种覆盖，再退回 THEMES。
+
+    tree_config.json 里 2.x 通用名是「盘面结构/现货与升贴水/...」，但铜 2.1 的手写样板页
+    cu_2_1.html 主题是「进口盈亏与贸易流」(decision_2.1.md + 已注册 cu_21_import)，
+    两者冲突时按品种覆盖走，避免批量重跑把样板页口径改掉。
+    """
+    return THEME_BY_COMM.get((comm, node)) or THEMES.get(node, (node, ""))
 
 
-def build_node(node, ind_list, meta):
+def code_str_of(node, meta, comm="cu"):
+    """节点 → 页面标题。"""
+    return theme_of(node, comm)[0]
+
+
+# 显式主图覆盖：节点 → 指标key。批量引擎默认取「第一个日频指标」作主图，
+# 但混合节点上 ind_list 排序会把断更序列或跨品种指标误选为正主，此处按 decision 文档强制指定。
+MAIN_METRIC = {
+    "2.3": "al_23_lme_settle",    # LME铝3M结算价正主（避免被 JSON 排序靠前的 al_00_comex_inv 抢占）
+    "2.4": "al_24_shfe_spread",   # 沪铝月差正主（避免被断更的 al_22_spot 抢占）
+    "2.5": "al_25_close_quantile",# 估值分位正主（decision_2.5「分位是估值类唯一正主」）
+    "2.6": "al_26_long_top20",    # 沪铝前20多单正主（避免选到 COMEX CFTC 周度）
+}
+
+
+def pick_main(data, node):
+    """主图选择：优先按 MAIN_METRIC 显式指定，否则第一个日频指标，兜底取首个。"""
+    forced = MAIN_METRIC.get(node)
+    if forced:
+        hit = next((d for d in data if d["mid"] == forced), None)
+        if hit:
+            return hit
+    return next((d for d in data if is_daily(d["freq"])), data[0])
+
+
+def is_stale(points, max_gap_days=180):
+    """断更判定：序列最后一个点距今超过阈值天数。
+
+    al_22_spot（上海华通现货价）实测 n=1913 但 latest=2022-10-13，
+    被选为主图会把 2.2/2.4 页面降级成只到 2022 年的死图。
+    建页时跳过断更序列，主图改由下一条非断更指标承担。
+    """
+    if not points:
+        return True
+    import datetime as _dt
+    try:
+        last = _dt.date.fromisoformat(str(points[-1][0])[:10])
+    except (ValueError, IndexError):
+        return True
+    gap = (_dt.date.today() - last).days
+    return gap > max_gap_days
+
+
+def build_node(node, ind_list, meta, comm_only=None):
     """为单个节点生成 HTML。返回 (html, cids, n_charts) 或 None（数据不足）。"""
-    ver, version_str = meta.get("version", "2.9"), "v2.9"
+    ver, version_str = meta.get("version", "3.4"), "v" + str(meta.get("version", "3.4"))
     # 加载指标数据
     data = []
     for mid, code, name, unit, freq in ind_list:
         m = load_metric(mid, code)
         if m is None: continue
         if m["n"] < MIN_POINTS: continue
+        _pairs = pairs(m)
+        # 断更序列剔除：末点距今超 180 天的序列不进任何图（否则降级整页），仍列入 skipped 可追溯
+        if is_stale(_pairs):
+            continue
         data.append({"mid": mid, "code": code, "name": name, "unit": unit,
-                     "freq": freq, "m": m, "pairs": pairs(m)})
+                     "freq": freq, "m": m, "pairs": _pairs})
     if len(data) < 1:
         return None, [], 0, None
 
+    # comm_only: 混合节点（如 2.3/2.4/2.5 铜铝指标共存）按品种分别建页，避免两品种互相覆盖。
+    if comm_only:
+        data = [x for x in data if x["code"] == comm_only]
+        if not data:
+            return None, [], 0, None
     code_str = data[0]["code"]
     # 板块号（混合节点按树定义，不按数据判品种）
     sec_no = node.split(".")[0]
-    # 主品种（文件名/cid前缀/标题统一用）：混合节点按指标数据量判定
-    main_comm = "al" if sum(1 for x in data if x["code"] == "AL") > sum(1 for x in data if x["code"] == "CU") else "cu"
+    # 主品种（文件名/cid前缀/标题统一用）：以本节点「主图指标」的品种为准。
+    # 旧逻辑按指标条数投票，在 2.3/2.4/2.5 这类铜铝共存节点上会把节点误判给铜，
+    # 重跑时覆盖掉铜已有页面（cu_2_3/cu_2_4/cu_2_5 被铝数据覆盖）。
+    main_pick = pick_main(data, node)
+    main_comm = "al" if main_pick["code"] == "AL" else "cu"
     color = COLORS[main_comm]
-    title, topic = THEMES.get(node, (node, "综合指标"))
+    title, topic = theme_of(node, main_comm)
     cids, js_all, html_all = [], [], []
     note_metrics = []
 
     # --- 图1：第一个日频指标做 时序⇄季节 主图 ---
-    main = next((d for d in data if is_daily(d["freq"])), data[0])
+    main = pick_main(data, node)
     cid = "echart_%s_%s_c1" % (main_comm, node.replace(".", ""))
     cids.append(cid)
     if is_daily(main["freq"]):
@@ -263,12 +340,29 @@ def build_node(node, ind_list, meta):
     if len(html_all) < 1:
         return None, [], 0, None
 
-    skipped = [x[0] for x in ind_list if x[0] not in used]
+    # 跳过原因分类：本品种已加载但未入图的才是「真跳过」；
+    # comm_only 过滤掉的另一品种指标不是跳过（那是本页设计外的品种），断更序列单列。
+    loaded_mids = set(x["mid"] for x in data)
+    skipped = [x[0] for x in ind_list if x[0] not in used and x[0] in loaded_mids]
+    # 断更排除项（在 data 加载阶段被 is_stale 剔除，仍在 ind_list 里）
+    stale_excluded = []
+    for mid, code, name, unit, freq in ind_list:
+        if mid in loaded_mids:
+            continue
+        mm = load_metric(mid, code)
+        if mm is not None and is_stale(pairs(mm)):
+            stale_excluded.append(mid)
+    quality = "按可用序列生成 %d 图" % len(html_all)
+    if skipped:
+        quality += "，未入图 %s" % "、".join(skipped)
+    if stale_excluded:
+        quality += "，断更剔除 %s（末点距今>180天，避免整页降级）" % "、".join(stale_excluded)
+    if not skipped and not stale_excluded:
+        quality += "，全指标已入图"
     NOTE = ("<strong style=\"color:#c9d1d9\">%s 定义：</strong>%s。<br>"
             "<strong style=\"color:#c9d1d9\">指标组：</strong>%s。<br>"
-            "<strong style=\"color:#c9d1d9\">数据质量：</strong>按可用序列生成 %d 图，跳过 %s。") % (
-        node, topic, " · ".join(note_metrics), len(html_all),
-        "、".join(skipped) if skipped else "无（全指标已入图）")
+            "<strong style=\"color:#c9d1d9\">数据质量：</strong>%s。") % (
+        node, topic, " · ".join(note_metrics), quality)
 
     html = page_html(
         title="%s(%s) %s %s" % ("铜" if main_comm == "cu" else "铝", code_str, node, title),
@@ -288,6 +382,8 @@ def build_node(node, ind_list, meta):
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     dry = "--dry" in sys.argv
+    # 混合节点按品种单独建页：--al-only 只建铝页，--cu-only 只建铜页
+    comm_only = "AL" if "--al-only" in sys.argv else ("CU" if "--cu-only" in sys.argv else None)
     meta = json.load(open(os.path.join(ROOT, "data/indicators_v1.json"), encoding="utf-8"))
     g = node_indicators(meta["indicators"])
 
@@ -301,18 +397,23 @@ def main():
         # 输出门禁注册代码（check_html PAGES 字典 + verify_render PAGES 数组）
         for node in plan:
             ind_list = g[node]
-            html, cids, n, comm_id = build_node(node, ind_list, meta)
+            html, cids, n, comm_id = build_node(node, ind_list, meta, comm_only)
             if html is None: continue
             fname = "%s_%s.html" % (comm_id, node.replace(".", "_"))
             # 季节图 = 主图完整日历年份数>=3 才有 3 条真实历年 series
             # 主图选择必须与 build_node 一致：第一个日频指标，而非 ind_list[0]
             md = []
             for mid, code, name, unit, freq in ind_list:
+                if comm_only and code != comm_only:
+                    continue
                 mm = load_metric(mid, code)
                 if mm is None or mm["n"] < MIN_POINTS:
                     continue
-                md.append({"mid": mid, "freq": freq, "m": mm, "pairs": pairs(mm)})
-            main_m = next((d for d in md if is_daily(d["freq"])), md[0])
+                _p = pairs(mm)
+                if is_stale(_p):
+                    continue
+                md.append({"mid": mid, "freq": freq, "m": mm, "pairs": _p})
+            main_m = pick_main(md, node)
             seasonal = cids[:1] if (n >= 1 and full_years(main_m["pairs"]) >= 3) else []
             key = "%s_%s" % (comm_id, node.replace(".", ""))
             print('    "%s": {' % node)
@@ -329,7 +430,7 @@ def main():
     results = []
     for node in plan:
         ind_list = g[node]
-        html, cids, n, comm_id = build_node(node, ind_list, meta)
+        html, cids, n, comm_id = build_node(node, ind_list, meta, comm_only)
         if html is None:
             print("  ⚠️  %-8s 跳过（数据不足，%d 指标）" % (node, len(ind_list)))
             results.append((node, "SKIP", 0))
