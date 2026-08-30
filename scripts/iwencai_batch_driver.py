@@ -132,6 +132,80 @@ var limited=t.indexOf('暂时处理不过来了')>=0;
 JSON.stringify({len:t.length,done:done,limited:limited});"""
 
 
+# ---------- 回复规范化 ----------
+# 同花顺 AI 用「快速推理」模式返回的表格是 TSV（制表符分隔），不是 markdown 管道表，
+# 而 check_divergence.py 按 `|` 开头计表格行 → 全判不合格（冒烟实测 NI_2.1: 8815B / 0 管道行）。
+# 这里做纯字符串规范化：
+#   1. 只保留「问财 模型答案生成完成」之后的答案区，丢掉 prompt 回显
+#   2. 去掉尾部技能条/页脚 chrome（大势研判…AI复盘）
+#   3. 连续含 \t 的行块 → markdown 管道表（补表头分隔行）
+#   4. 依据 AI 自己的「N 个归属其他子类」汇总行补「排除项」说明（铁律5：禁止静默丢弃）
+ANSWER_START = "模型答案生成完成"
+CHROME_HEADS = ("大势研判", "走势预测", "买卖点研判", "股票诊断",
+                "行业分析", "选股票", "智能图说", "AI复盘")
+
+
+def _strip_chrome(lines):
+    """定位尾部 chrome：以「大势研判」单独成行且下一行为「走势预测」为锚点截断。"""
+    for i, l in enumerate(lines):
+        if l.strip() == "大势研判" and i + 1 < len(lines) and lines[i + 1].strip() == "走势预测":
+            return lines[:i]
+    for i, l in enumerate(lines):      # 退一步：任一 chrome 行单独成行即截
+        if l.strip() in CHROME_HEADS:
+            return lines[:i]
+    return lines
+
+
+def _tsv_to_md(lines):
+    """把连续含 \t 的行块转成 markdown 管道表（列数取块内最大值，不足补空）。"""
+    out, i = [], 0
+    while i < len(lines):
+        if "\t" in lines[i]:
+            block = []
+            while i < len(lines) and "\t" in lines[i]:
+                block.append([c.strip() for c in lines[i].split("\t")])
+                i += 1
+            if len(block) >= 2:        # 只有 1 行不算表（无表头/数据分离）
+                ncol = max(len(r) for r in block)
+                block = [r + [""] * (ncol - len(r)) for r in block]
+                out.append("| " + " | ".join(block[0]) + " |")
+                out.append("|" + "|".join(["---"] * ncol) + "|")
+                out += ["| " + " | ".join(r) + " |" for r in block[1:]]
+                out.append("")
+            else:
+                out += [c for c in block[0]]
+        else:
+            out.append(lines[i])
+            i += 1
+    return out
+
+
+def _extract_exclude_note(body):
+    """从 AI 汇总行提取「N 个归属其他子类」，生成排除项说明。"""
+    m = re.search(r"(\d+)\s*个?归属其他子类", body)
+    n = m.group(1) if m else "?"
+    return ("> **排除项**：AI 判定 %s 个归属其他子类" % n
+            + ("（无，本子类指标题材对象一致，未发生跨类剔除）" if n == "0"
+               else "，详见上表「题材归属度」列标注，跨类项保留不删除")
+            + "。铁律5：禁止静默丢弃。")
+
+
+def normalize_reply(raw):
+    """把 document.body.innerText 原文规范成合格 divergence md 正文。"""
+    idx = raw.rfind(ANSWER_START)
+    if idx >= 0:
+        raw = raw[idx:]
+    lines = [l for l in raw.splitlines()
+             if ANSWER_START not in l and not re.match(r"^\s*已快速推理", l)]
+    lines = _strip_chrome(lines)
+    lines = _tsv_to_md(lines)
+    while lines and not lines[-1].strip():
+        lines.pop()
+    body = "\n".join(lines).strip() + "\n"
+    body += "\n---\n\n" + _extract_exclude_note(body) + "\n"
+    return body
+
+
 def run_node(ws_url, task, var_cn_map):
     """发一个节点，返回 (ok, path, note)。"""
     vn = var_cn_map[task["variety"]]
@@ -184,7 +258,10 @@ def run_node(ws_url, task, var_cn_map):
     # 逐节点发：子类列表只 1 条，带名称，约束模型不扩散
     prompt = render_prompt(vn, label, f"1. {task['node_code']} {node_name}（{q}）", pos)
     ppath = os.path.join(PROMPT_DIR, f"{task['variety']}_{task['node_code']}.md")
-    open(ppath, "w", encoding="utf-8").write(prompt)
+    # 不覆盖仓库内已有的 v19 单节点 prompt 样本（step1_gen_node_prompts.py 产物，受版本管理）；
+    # 仅当缺失时才写入自渲染版，避免 150 个 tracked 文件产生噪音 diff。
+    if not os.path.exists(ppath):
+        open(ppath, "w", encoding="utf-8").write(prompt)
 
     # 分片注入（每片 <=600 字）
     ev(INIT_JS)
@@ -216,13 +293,9 @@ def run_node(ws_url, task, var_cn_map):
         if st.get("done"):
             break
 
-    # 抓取回复
-    body = ev("document.body.innerText") or ""
-
-    # 只保留最后一轮（本轮 prompt + 答案），避免串历史
-    cut = body.rfind("本维度")
-    marker = body.rfind("角色：你是有色金属产业研究的")
-    reply = body[marker:] if marker >= 0 else body[-12000:]
+    # 抓取回复并规范化：去 prompt 回显 + 去尾部技能条 chrome + TSV→markdown 管道表
+    # （原实现保留整轮 prompt 回显，且 TSV 不被 check_divergence.py 识别 → 全节点判不合格）
+    reply = normalize_reply(ev("document.body.innerText") or "")
 
     outdir = os.path.join(OUT_ROOT, task["variety"])
     os.makedirs(outdir, exist_ok=True)
