@@ -89,6 +89,14 @@ PAGES = {
         "label": "5.2 终端细分消费",
         "has_seasonal": True,
     },
+    "53": {
+        "file": "pb_53_demand_leading.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_53_c1", "echart_53_c2", "echart_53_c3"],
+        "label": "5.3 需求先行指标",
+        "has_seasonal": True,
+    },
     "61": {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
