@@ -1,0 +1,2909 @@
+{
+ "CU": {
+  "进口盈亏（元/吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01030232",
+    "name": "铜：进口盈亏（日）",
+    "source": "mysteel",
+    "unit": "元/吨"
+   },
+   "note": "命中3条, 最佳得分5: 铜：进口盈亏（日）"
+  },
+  "沪伦比（元/吨 ÷ 美元/吨）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): Mysteel：铜：沪伦比值（日）"
+  },
+  "洋山铜溢价（美元/吨）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "铜精矿进口量（万吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "CM0000206865",
+    "name": "铜精矿：进口数量初值：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "中国宏观 中国宏观 对外经济与贸易 进出口商品量值"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：进口数量初值：中国（月）"
+  },
+  "LME注册仓单、LME注销仓单、COMEX注册仓单": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分4, 阈5): LME：铜：注册仓单（日）"
+  },
+  "人民币兑美元中间价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "SMM 1#电解铜现货均价（元/吨）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 电解铜：1#：市场价：陕西（日）"
+  },
+  "平水铜升贴水（元/吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00302614",
+    "name": "电解铜：平水铜：升贴水：上海（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 电解铜：平水铜：升贴水：上海（日）"
+  },
+  "升水铜升贴水（元/吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00302613",
+    "name": "电解铜：升水铜：升贴水：上海（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 电解铜：升水铜：升贴水：上海（日）"
+  },
+  "湿法铜升贴水（元/吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00302615",
+    "name": "电解铜：湿法：升贴水：上海（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 电解铜：湿法：升贴水：上海（日）"
+  },
+  "非注册铜升贴水（元/吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00302614",
+    "name": "电解铜：平水铜：升贴水：上海（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 电解铜：平水铜：升贴水：上海（日）"
+  },
+  "LME 0-3 升贴水（美元/吨）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "沪铜主力合约收盘价（元/吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015764",
+    "name": "SHFE：电解铜：主力合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "商品数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中2条, 最佳得分5: SHFE：电解铜：主力合约：收盘价（日）"
+  },
+  "EQ-A 铜升贴水（元/吨）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00302614",
+    "name": "电解铜：平水铜：升贴水：上海（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 电解铜：平水铜：升贴水：上海（日）"
+  },
+  "LME铜现金结算价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015490",
+    "name": "LME：铜：3个月合约：结算价（日）",
+    "source": "mysteel",
+    "unit": "美元/吨",
+    "path": "商品数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中2条, 最佳得分5: LME：铜：3个月合约：结算价（日）"
+  },
+  "LME铜3个月期货价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "LME铜0—3升贴水": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分2, 阈5): 电解铜：平水铜：升贴水：上海（日）"
+  },
+  "LME铜15个月期货价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "COMEX铜活跃合约收盘价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015546",
+    "name": "COMEX：铜：主力合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "美元/磅",
+    "path": "商品数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: COMEX：铜：主力合约：收盘价（日）"
+  },
+  "COMEX铜成交量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015535",
+    "name": "COMEX：铜：主力合约：成交量（日）",
+    "source": "mysteel",
+    "unit": "手",
+    "path": "有色|铜数据库|电解铜|价格|COMEX：铜期货价格：日度"
+   },
+   "note": "命中3条, 最佳得分5: COMEX：铜：主力合约：成交量（日）"
+  },
+  "COMEX铜持仓量/空盘量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015536",
+    "name": "COMEX：铜：主力合约：持仓量（日）",
+    "source": "mysteel",
+    "unit": "手",
+    "path": "商品数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: COMEX：铜：主力合约：持仓量（日）"
+  },
+  "CFTC投机基金COMEX铜净多头持仓": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "COMEX注册仓库铜库存": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分2, 阈5): USGS：精铜：库存：美国（年）"
+  },
+  "美元兑相关货币汇率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "LME铜Cash收盘价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00080255",
+    "name": "LME：铜：3个月合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "美元/吨",
+    "path": "金融数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: LME：铜：3个月合约：收盘价（日）"
+  },
+  "COMEX铜指定远月合约收盘价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015546",
+    "name": "COMEX：铜：主力合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "美元/磅",
+    "path": "商品数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: COMEX：铜：主力合约：收盘价（日）"
+  },
+  "SHFE铜近月合约收盘价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015764",
+    "name": "SHFE：电解铜：主力合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "商品数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中1条, 最佳得分5: SHFE：电解铜：主力合约：收盘价（日）"
+  },
+  "SHFE铜远月合约收盘价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00015764",
+    "name": "SHFE：电解铜：主力合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "商品数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中1条, 最佳得分5: SHFE：电解铜：主力合约：收盘价（日）"
+  },
+  "各合约成交量与持仓量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00107602",
+    "name": "SHFE：铜（BC）：年成交量（日）",
+    "source": "mysteel",
+    "unit": "万手"
+   },
+   "note": "命中3条, 最佳得分5: SHFE：铜（BC）：年成交量（日）"
+  },
+  "LME铜3个月收盘价 / 沪铜主力收盘价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00080255",
+    "name": "LME：铜：3个月合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "美元/吨",
+    "path": "金融数据库 期货数据库 有色品种 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: LME：铜：3个月合约：收盘价（日）"
+  },
+  "全球铜矿C1现金成本": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铜冶炼现金成本": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "LC00167119",
+    "name": "紫金矿业：分产品：冶炼铜：成本比例（半年）",
+    "source": "mysteel",
+    "unit": "百分比"
+   },
+   "note": "命中3条, 最佳得分5: 紫金矿业：分产品：冶炼铜：成本比例（半年）"
+  },
+  "铜精矿现货TC": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01732413",
+    "name": "铜精矿：现货TC指导价（季）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "有色|铜数据库|铜精矿|价格|美元价格|Mysteel：铜精矿远期现货TC指导价（CSPT）：季度"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：现货TC指导价（季）"
+  },
+  "铜精矿现货RC": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：进口：25%Cu：RC指数：中国（日）"
+  },
+  "硫酸价格（冶炼酸出厂价）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 硫酸：98%冶炼酸：出厂价：华南地区：东南铜业（日）"
+  },
+  "硫磺价格": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "单吨铜硫酸副产品收益": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "冶炼综合利润/吨": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "j02870870",
+    "name": "SMM：中国铜冶炼厂现货冶炼利润：日度",
+    "source": "smm",
+    "unit": null,
+    "path": "0000001 / 0000011 / 0003944 / 0070000 / 0003962 / 0078767"
+   },
+   "note": "命中1条, 最佳得分5: SMM：中国铜冶炼厂现货冶炼利润：日度"
+  },
+  "铜企矿产铜自给率/权益矿比例": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "沪铜主力合约前20多单持仓量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00021997",
+    "name": "SHFE：电解铜：07合约：多单持仓合计：前20期货公司（日）",
+    "source": "mysteel",
+    "unit": "手"
+   },
+   "note": "命中3条, 最佳得分5: SHFE：电解铜：07合约：多单持仓合计：前20期货公司（日）"
+  },
+  "沪铜主力合约前20空单持仓量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00022000",
+    "name": "SHFE：电解铜：07合约：空单持仓合计：前20期货公司（日）",
+    "source": "mysteel",
+    "unit": "手"
+   },
+   "note": "命中3条, 最佳得分5: SHFE：电解铜：07合约：空单持仓合计：前20期货公司（日）"
+  },
+  "前20名多头持仓集中度": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "前20名空头持仓集中度": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "前5名多头持仓量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): SHFE：电解铜：07合约：持买单量合计：前5期货公司（日）"
+  },
+  "前5名空头持仓量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): SHFE：电解铜：07合约：持卖单量合计：前5期货公司（日）"
+  },
+  "席位方向性净持仓": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00110091",
+    "name": "COMEX：铜：1#：期货：所有多头净持仓占比集中度：前4家及以下交易者（周）",
+    "source": "mysteel",
+    "unit": "百分比"
+   },
+   "note": "命中3条, 最佳得分7: COMEX：铜：1#：期货：所有多头净持仓占比集中度：前4家及以下交易者（周）"
+  },
+  "CFTC商业多头/商业空头/非商业净多持仓": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分2, 阈5): COMEX：铜：1#：报告头寸多头总持仓数量周环比增减（周）"
+  },
+  "持仓成员类型结构": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "前20席位成交活跃度": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "海外上市矿企矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01706354",
+    "name": "计价铜：产量：South32：South32 Sierra Gorda矿区（季）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中2条, 最佳得分7: 计价铜：产量：South32：South32 Sierra Gorda矿区（季）"
+  },
+  "地区矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "矿山铜产量结构占比": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "权益产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299419",
+    "name": "ICSG：铜矿：产量：全球（月）",
+    "source": "mysteel",
+    "unit": "千吨"
+   },
+   "note": "命中2条, 最佳得分7: ICSG：铜矿：产量：全球（月）"
+  },
+  "铜矿石入选品位": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜矿石：出口数量：菲律宾→中国（月）"
+  },
+  "矿山产量指引": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01655723",
+    "name": "铜：矿山产量：澳大利亚（季）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中2条, 最佳得分7: 铜：矿山产量：澳大利亚（季）"
+  },
+  "矿山可采储量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：铜：储量：秘鲁（年）"
+  },
+  "矿山剩余开采年限": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜矿石及其精矿：出口数量：澳大利亚（季）"
+  },
+  "铜精矿含铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00300716",
+    "name": "中国有色金属工业年鉴：铜精矿：含铜：产量：中国（年）",
+    "source": "mysteel",
+    "unit": "吨",
+    "path": "有色|铜数据库|铜精矿|供给|有色协会：中国铜精矿产量：年度"
+   },
+   "note": "命中3条, 最佳得分7: 中国有色金属工业年鉴：铜精矿：含铜：产量：中国（年）"
+  },
+  "矿山现金成本与AIPC": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜矿石及其精矿：出口数量：澳大利亚（季）"
+  },
+  "智利矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01324780",
+    "name": "铜：产量：智利：英美智利股份（月）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "有色|铜数据库|铜精矿|供给|智利：智利铜矿产量：月度"
+   },
+   "note": "命中3条, 最佳得分7: 铜：产量：智利：英美智利股份（月）"
+  },
+  "秘鲁矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01324761",
+    "name": "铜：产量：秘鲁：Antapaccay（月）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "有色|铜数据库|铜精矿|供给|秘鲁：秘鲁铜矿产量：月度"
+   },
+   "note": "命中3条, 最佳得分7: 铜：产量：秘鲁：Antapaccay（月）"
+  },
+  "刚果（金）矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299733",
+    "name": "USGS：铜矿：产量：刚果（金）（年）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "专题|能源资源_矿产数据|有色金属|铜|美国地质勘探局：年度报告"
+   },
+   "note": "命中3条, 最佳得分7: USGS：铜矿：产量：刚果（金）（年）"
+  },
+  "印度尼西亚矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "美国矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01552133",
+    "name": "USGS：再生铜：产量：美国（年）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "专题|能源资源_矿产数据|有色金属|铜|美国地质勘探局：年度报告"
+   },
+   "note": "命中3条, 最佳得分7: USGS：再生铜：产量：美国（年）"
+  },
+  "赞比亚矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299736",
+    "name": "USGS：铜矿：产量：赞比亚（年）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "专题|能源资源_矿产数据|有色金属|铜|美国地质勘探局：年度报告"
+   },
+   "note": "命中3条, 最佳得分7: USGS：铜矿：产量：赞比亚（年）"
+  },
+  "蒙古矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中1条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "波兰矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299738",
+    "name": "USGS：铜矿：产量：波兰（年）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "专题|能源资源_矿产数据|有色金属|铜|美国地质勘探局：年度报告"
+   },
+   "note": "命中3条, 最佳得分7: USGS：铜矿：产量：波兰（年）"
+  },
+  "全球矿产铜总产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "各国铜精矿产量与湿法铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01655544",
+    "name": "铜精矿：产量：澳大利亚（季）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 铜精矿：产量：澳大利亚（季）"
+  },
+  "中国矿产铜产量（月）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "有色|铜数据库|铜金属|供给|Mysteel：中国粗铜总产量：月度"
+   },
+   "note": "命中2条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "西藏矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中2条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "云南矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中2条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "江西矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "内蒙古矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "新疆矿产铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "主要矿山项目产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299419",
+    "name": "ICSG：铜矿：产量：全球（月）",
+    "source": "mysteel",
+    "unit": "千吨"
+   },
+   "note": "命中2条, 最佳得分7: ICSG：铜矿：产量：全球（月）"
+  },
+  "矿山铜产量指引": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "矿石入选品位": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "中国铜矿砂及其精矿月度进口量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "CM0000451450",
+    "name": "铜矿砂及其精矿：进口数量：印尼→中国（月）",
+    "source": "mysteel",
+    "unit": "吨",
+    "path": "中国宏观 中国宏观 对外经济与贸易 进出口商品量值"
+   },
+   "note": "命中1条, 最佳得分5: 铜矿砂及其精矿：进口数量：印尼→中国（月）"
+  },
+  "智利进口铜精矿量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：外贸货物：发运量：智利（日）"
+  },
+  "秘鲁进口铜精矿量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：外贸货物：发运量：秘鲁（日）"
+  },
+  "蒙古进口铜精矿量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01154994",
+    "name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：进口：25%Cu：TC指数：中国（日）"
+  },
+  "俄罗斯进口铜精矿量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：发运量：俄罗斯（周）"
+  },
+  "印度尼西亚进口铜精矿量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01154994",
+    "name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：进口：25%Cu：TC指数：中国（日）"
+  },
+  "哈萨克斯坦进口铜精矿量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01154994",
+    "name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：进口：25%Cu：TC指数：中国（日）"
+  },
+  "铜精矿进口总金额与进口均价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01154994",
+    "name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中1条, 最佳得分5: 铜精矿：进口：25%Cu：TC指数：中国（日）"
+  },
+  "铜精矿进口来源国份额": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01154994",
+    "name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：进口：25%Cu：TC指数：中国（日）"
+  },
+  "铜精矿进口在途量/船期到港量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01537621",
+    "name": "铜精矿：到港量：全球（日）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 到港量"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：到港量：全球（日）"
+  },
+  "铜精矿长协TC": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01154994",
+    "name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：进口：25%Cu：TC指数：中国（日）"
+  },
+  "铜精矿长协RC": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：进口：25%Cu：RC指数：中国（日）"
+  },
+  "进口铜精矿指数": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID02407538",
+    "name": "铜精矿：进口：TC指数（周）",
+    "source": "mysteel",
+    "unit": "美元/干吨",
+    "path": "行业数据 有色金属 有色金属数据库 指数 价格指数"
+   },
+   "note": "命中3条, 最佳得分5: 铜精矿：进口：TC指数（周）"
+  },
+  "铜精矿现货成交价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：国产：20%Cu：现货价：中国（日）"
+  },
+  "铜精矿品位": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：港口库存：中国（周）"
+  },
+  "铜精矿进口均价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铜精矿：港口库存：中国（周）"
+  },
+  "中国电解铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00300661",
+    "name": "中国有色金属工业年鉴：电解铜：产量：中国（年）",
+    "source": "mysteel",
+    "unit": "吨",
+    "path": "有色|铜数据库|电解铜|供给|有色协会：中国电解铜产量：年度"
+   },
+   "note": "命中3条, 最佳得分7: 中国有色金属工业年鉴：电解铜：产量：中国（年）"
+  },
+  "中国电解铜冶炼产能": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00262813",
+    "name": "有色冶炼企业：电解铜：产能：安徽（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "有色|铜数据库|电解铜|供给|Mysteel：中国精炼铜产能|分省市：月度"
+   },
+   "note": "命中3条, 最佳得分5: 有色冶炼企业：电解铜：产能：安徽（月）"
+  },
+  "中国电解铜检修量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 电解铜：现货库存：中国（日）"
+  },
+  "中国废铜投料量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 黄铜沫：采购价格：江西保太有色（日）"
+  },
+  "中国进口阴极铜量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "a10020457",
+    "name": "中国海关: 阳极铜进口量: 月度",
+    "source": "smm",
+    "unit": null
+   },
+   "note": "命中2条, 最佳得分5: 中国海关: 阳极铜进口量: 月度"
+  },
+  "全球精炼铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299425",
+    "name": "ICSG：冶炼铜：产量：全球（年）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "有色|铜数据库|电解铜|供给|ICSG：全球精炼铜产量：年度"
+   },
+   "note": "命中3条, 最佳得分7: ICSG：冶炼铜：产量：全球（年）"
+  },
+  "海外精炼铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01655724",
+    "name": "精炼铜：产量：澳大利亚（季）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属"
+   },
+   "note": "命中3条, 最佳得分7: 精炼铜：产量：澳大利亚（季）"
+  },
+  "粗铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "有色|铜数据库|铜金属|供给|Mysteel：中国粗铜总产量：月度"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "再生铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01210944",
+    "name": "中国有色金属工业年鉴：再生铜：产量：埃及（年）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "有色|铜数据库|废铜|供需|有色协会：再生铜产量"
+   },
+   "note": "命中3条, 最佳得分7: 中国有色金属工业年鉴：再生铜：产量：埃及（年）"
+  },
+  "冶炼厂开工率/产能利用率": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01167296",
+    "name": "铜：产能利用率：中国：产能＜10万吨（月）",
+    "source": "mysteel",
+    "unit": "百分比"
+   },
+   "note": "命中3条, 最佳得分5: 铜：产能利用率：中国：产能＜10万吨（月）"
+  },
+  "中国电解铜冶炼厂开工率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 有色冶炼企业：样本企业：电解铜：产能利用率：中国（月）"
+  },
+  "冶炼厂计划检修数量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): SMM: 铜冶炼厂储酸罐容量分地区: 总计: 月度"
+  },
+  "冶炼厂检修影响量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "因原料问题导致的产量减量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01659225",
+    "name": "矿产粗铜：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨"
+   },
+   "note": "命中3条, 最佳得分7: 矿产粗铜：产量：中国（月）"
+  },
+  "计划外停产/降负荷冶炼厂数量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "粗铜/阳极铜开工率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "电解铜实际产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299393",
+    "name": "ICSG：电解铜：产量：全球（月）",
+    "source": "mysteel",
+    "unit": "千吨"
+   },
+   "note": "命中3条, 最佳得分7: ICSG：电解铜：产量：全球（月）"
+  },
+  "再生铜投料量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 中国有色金属工业年鉴：再生铜：产量：斯洛伐克（年）"
+  },
+  "废产阳极板供应量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "中国再生铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01210944",
+    "name": "中国有色金属工业年鉴：再生铜：产量：埃及（年）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "有色|铜数据库|废铜|供需|有色协会：再生铜产量"
+   },
+   "note": "命中3条, 最佳得分7: 中国有色金属工业年鉴：再生铜：产量：埃及（年）"
+  },
+  "再生精炼铜产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00303163",
+    "name": "ICSG：电解再生铜：产量：全球（年）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "有色|铜数据库|电解铜|供给|ICSG：全球精炼铜产量：年度"
+   },
+   "note": "命中3条, 最佳得分7: ICSG：电解再生铜：产量：全球（年）"
+  },
+  "直接利用再生铜量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 中国有色金属工业年鉴：再生铜：产量：斯洛伐克（年）"
+  },
+  "再生铜原料进口量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01552103",
+    "name": "USGS：铜矿石及铜精矿：进口数量：美国（年）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 进出口 进口数据 美国"
+   },
+   "note": "命中2条, 最佳得分5: USGS：铜矿石及铜精矿：进口数量：美国（年）"
+  },
+  "国内废铜回收量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 美国铜发展协会：旧废铜：回收量（年）"
+  },
+  "再生铜杆产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01049494",
+    "name": "再生铜杆：64家样本企业：产量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "有色|铜数据库|铜杆|供给|Mysteel：中国铜杆产量：月度|再生铜杆|64样本企业"
+   },
+   "note": "命中3条, 最佳得分7: 再生铜杆：64家样本企业：产量：中国（月）"
+  },
+  "再生铜企业开工率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 中国有色金属工业年鉴：再生铜：产量：美国（年）"
+  },
+  "再生铜杆开工率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 再生铜杆：64家样本企业：产量：中国（月）"
+  },
+  "精废价差": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 主流市场：精废铜：价差：广东（日）"
+  },
+  "再生铜社会库存": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID02014256",
+    "name": "美国铜发展协会：再生铜废料：库存（年）",
+    "source": "mysteel",
+    "unit": "千短吨",
+    "path": "有色|铜数据库|废铜|库存|美国铜发展协会：废铜库存"
+   },
+   "note": "命中3条, 最佳得分5: 美国铜发展协会：再生铜废料：库存（年）"
+  },
+  "硫酸出厂价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "冶炼厂单位现金加工成本": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "吨铜硫酸副产品收益": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "吨铜金银及稀散金属副产品收益": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  },
+  "现货冶炼综合利润/吨": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "j02870870",
+    "name": "SMM：中国铜冶炼厂现货冶炼利润：日度",
+    "source": "smm",
+    "unit": null,
+    "path": "0000001 / 0000011 / 0003944 / 0070000 / 0003962 / 0078767"
+   },
+   "note": "命中2条, 最佳得分5: SMM：中国铜冶炼厂现货冶炼利润：日度"
+  },
+  "计划外减产冶炼厂数量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 矿产粗铜：产量：中国（月）"
+  }
+ },
+ "AL": {
+  "持仓量 / 成交量 / 多空持仓比 / 收盘价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "沪铝主力合约持仓量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00018026",
+    "name": "SHFE：铝：主力合约：单边交易：持仓量（日）",
+    "source": "mysteel",
+    "unit": "手",
+    "path": "商品数据库 期货数据库 有色品种 铝金属"
+   },
+   "note": "命中2条, 最佳得分5: SHFE：铝：主力合约：单边交易：持仓量（日）"
+  },
+  "沪铝主力合约成交量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00018028",
+    "name": "SHFE：铝：主力合约：单边交易：成交量（日）",
+    "source": "mysteel",
+    "unit": "手",
+    "path": "商品数据库 期货数据库 有色品种 铝金属"
+   },
+   "note": "命中2条, 最佳得分5: SHFE：铝：主力合约：单边交易：成交量（日）"
+  },
+  "沪铝主力合约收盘价": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00014632",
+    "name": "SHFE：铝：主力合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "商品数据库 期货数据库 有色品种 铝金属"
+   },
+   "note": "命中2条, 最佳得分5: SHFE：铝：主力合约：收盘价（日）"
+  },
+  "沪铝主力合约多空持仓比": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "沪铝主力合约前20大净多头持仓量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "现货价 与 期货价之间的价差体系": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝现货升贴水": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00302567",
+    "name": "电解铝：现货升贴水：重庆—SHFE（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "有色|铝数据库|电解铝|价格|Mysteel：中国电解铝现货升贴水"
+   },
+   "note": "命中3条, 最佳得分5: 电解铝：现货升贴水：重庆—SHFE（日）"
+  },
+  "铝基差": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00024308",
+    "name": "SHFE：铝：基差（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "金融数据库 期货数据库 有色品种 铝金属"
+   },
+   "note": "命中3条, 最佳得分5: SHFE：铝：基差（日）"
+  },
+  "铝现货价": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): MCX：铝：现货价：赖布尔（日）"
+  },
+  "铝现货升水": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "LME铝现货升贴水": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "同'LME铝升贴水'：指标需 LME 现货(Cash)报价，hits 均为电解铝国内现货升贴水（上海/佛山—SHFE），非 LME 现货价 → unmatched"
+  },
+  "沪铝现货月-主力月差": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：混杂低含量铜颗粒的铝：均价：美国（月）"
+  },
+  "海外市场的铝价定价本身": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：混杂低含量铜颗粒的铝：均价：美国（月）"
+  },
+  "LME铝3M收盘价": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "FU00080250",
+    "name": "LME：铝：3个月合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "美元/吨"
+   },
+   "note": "命中 name='LME：铝：3个月合约：收盘价（日）'，交易所+品种+合约月+字段四项全部一致，美元/吨，日度；另两个命中为 SHFE 铝、口径不明的 3M 铝价，均劣于此项"
+  },
+  "LME铝现金价（Cash）": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "LME Cash 报价在知几无对应序列，hits 为 USGS 粗铝进出口与均价 → unmatched"
+  },
+  "LME铝升贴水": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "指标指向 LME 官方报价升贴水（Cash 与 3M 之差），hits 中 ID01319345/ID01319340 是电解铝 A00 现货升贴水（中国/华南，元/吨），与 LME 3M 升贴水口径不同（国内现货价差 vs 伦盘升贴水），无 LME 升贴水主口径 → unmatched"
+  },
+  "COMEX铝收盘价": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 中无 COMEX 铝价格序列：FU00014632 为 SHFE 铝（非 COMEX），FU00015546 为 COMEX 铜，FU00014310 仅写'铝：3个月合约'（美元/吨，实为 LME 口径），无明确 COMEX 铝 → unmatched"
+  },
+  "COMEX铝库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "FU00078766",
+    "name": "COMEX：铝：期货库存（日）",
+    "source": "mysteel",
+    "unit": "吨"
+   },
+   "note": "命中 name='COMEX：铝：期货库存（日）'，品种(COMEX铝)+字段(库存)完全一致，mysteel 官方源，日度频率合理；另有 FU00078768 有担保/ FU00078775 无担保两口径，主口径选总库存 FU00078766"
+  },
+  "LME铝总库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 全为镍生铁库存与 USGS 粗铝进口量，无任何 LME 库存序列 → unmatched"
+  },
+  "期货合约间的期限结构": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): CFTC: 纯期货合约: 纽约商品交易所（COMEX）上市的铝合约: 报告头寸: 资产管理机构: 多"
+  },
+  "沪铝近月-远月月差": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "LME铝近月-远月月差": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "跨月月差属于价差衍生指标，知几无序列；hits 为 USGS 粗铝贸易数据 → unmatched"
+  },
+  "沪铝基差": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00024308",
+    "name": "SHFE：铝：基差（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "金融数据库 期货数据库 有色品种 铝金属"
+   },
+   "note": "命中2条, 最佳得分5: SHFE：铝：基差（日）"
+  },
+  "LME铝基差": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "指标指向 LME 基差（现货与3M），hits 中 FU00024308 是 SHFE 铝基差、FU00051049 是氧化铝基差、ID00402707 是豆粕基差，均非 LME 口径 → unmatched"
+  },
+  "沪铝主力-次主力月差序列（跨月价差结构）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "价格所处的历史估值位置": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "由此推导的冶炼/加工端利润弹性": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "分位（估值贵/便宜）归 2.5，成本与利润的绝对值测算归 7.x": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "设计说明/口径注释, 非可检索指标"
+  },
+  "沪铝主力合约估值分位": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "LME铝估值分位": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "分位数属于本地计算衍生指标（需先有价格序列再滚动分位），知几无直接序列；hits 为 USGS 粗铝进出口/均价与无关项 → unmatched"
+  },
+  "铝冶炼端日度利润": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "绝对值测算主图归 7.2": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "设计说明/口径注释, 非可检索指标"
+  },
+  "铝加工端日度利润": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝加工端加工费分位": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝冶炼端完全成本分位 / 现金成本分位": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "a12802047",
+    "name": "SMM: 电解铝分地区成本: 全国加权平均: 现金成本: 季度",
+    "source": "smm",
+    "unit": null,
+    "path": "0000001 / 0000023 / 0004191 / 0004217 / 0070764 / 0068817 / "
+   },
+   "note": "命中2条, 最佳得分7: SMM: 电解铝分地区成本: 全国加权平均: 现金成本: 季度"
+  },
+  "主图归 7.1": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "设计说明/口径注释, 非可检索指标"
+  },
+  "前20大席位的持仓结构": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "g02865544",
+    "name": "CFTC: 纯期货合约: 纽约商品交易所（COMEX）上市的铝合约: 最大的前N个交易商持仓占全部持仓的比重%: 按净头寸统计: 头四个最大的交易商: 多头: 所有: 周度",
+    "source": "smm",
+    "unit": null,
+    "path": "0000001 / 0000023 / 0004191 / 0004215 / 0070760 / 0078184 / "
+   },
+   "note": "命中2条, 最佳得分5: CFTC: 纯期货合约: 纽约商品交易所（COMEX）上市的铝合约: 最大的前N个交易商持仓占全部持"
+  },
+  "席位明细（前20大）归 2.6，全市场总持仓量/成交量归 2.1": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "设计说明/口径注释, 非可检索指标"
+  },
+  "沪铝主力合约前20大多头持仓量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "沪铝主力合约前20大空头持仓量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "LME铝前20大净多头持仓量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "同上一条，LME 持仓明细/净多量无序列；hits 为 USGS 粗铝贸易与河南环保税，均不匹配 → unmatched"
+  },
+  "LME铝前20大/后20大多空持仓明细": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "LME 龙虎榜 20 大明细在知几无对应序列，hits 全为河南铝化合物环保税，品种语义虽含'铝'但字段与数据源完全错位 → unmatched"
+  },
+  "海外铝矿端的财报/协会口径季度产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01547719",
+    "name": "USGS：铝矿：含铝：产量：美国（季）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铝金属"
+   },
+   "note": "命中1条, 最佳得分7: USGS：铝矿：含铝：产量：美国（季）"
+  },
+  "氧化铝矿（铝土矿）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：铝矿：储量：美国（年）"
+  },
+  "电解铝（精炼）产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01445793",
+    "name": "电解铝：产量：中国（日）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铝金属"
+   },
+   "note": "命中3条, 最佳得分7: 电解铝：产量：中国（日）"
+  },
+  "本节点按 IAI/LME 电解铝季度口径为准": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "设计说明/口径注释, 非可检索指标"
+  },
+  "海外铝精炼产量（季度）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "海外铝矿产量（季度）": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01547719",
+    "name": "USGS：铝矿：含铝：产量：美国（季）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铝金属"
+   },
+   "note": "命中1条, 最佳得分7: USGS：铝矿：含铝：产量：美国（季）"
+  },
+  "海外铝矿产能利用率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "海外铝精炼厂开工率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "海外铝精炼新增/关停产能（在建项目）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "主要产铝国的月度/年度产量总量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01706326",
+    "name": "氧化铝及其水合物：产量：South32：South32沃斯利氧化铝部门（季）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铝金属"
+   },
+   "note": "命中2条, 最佳得分7: 氧化铝及其水合物：产量：South32：South32沃斯利氧化铝部门（季）"
+  },
+  "产量总量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "3.1.1 管总量趋势，3.1.2 管国别结构": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "这不是可检索的指标名（是看板设计说明/节点口径描述），hits 为 CFTC 1号铜持仓与表氯醇出口量，均非铝指标，也无法对应单一序列 → unmatched"
+  },
+  "全球铝矿/电解铝总产量（月/年）": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 中国有色金属工业年鉴：电解铝：消费总量：全球（年）"
+  },
+  "俄罗斯产量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "印度产量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "北非产量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中东产量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "指标名未含铝，hits 为中东原油产量（OPEC/伊朗/沙特），应指向中东电解铝产量（卡塔尔/阿联酋）→ unmatched"
+  },
+  "东南亚产量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为 SEAISI 生铁产量（韩国/日本/印尼），指标名未限定品种，且东南亚口径应为氧化铝/电解铝产量，与生铁产量语义不符 → unmatched"
+  },
+  "分国别产量占全球比重": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00299863",
+    "name": "国际铝业协会：氧化铝：产量：全球（月）",
+    "source": "mysteel",
+    "unit": "千吨",
+    "path": "行业数据 有色金属 有色金属数据库 供给 产量 铝金属"
+   },
+   "note": "命中1条, 最佳得分7: 国际铝业协会：氧化铝：产量：全球（月）"
+  },
+  "中国铝矿产量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "唯一近似的铝矿命中为 ID01547719 'USGS：铝矿：含铝：产量：美国（季）'，品种词一致但国别口径为美国而非中国，另两项为沥青产量与铁精粉产量 → unmatched"
+  },
+  "中国铝精炼产量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为精炼镍/精炼锌/氧化铝产量，全部非铝 → unmatched"
+  },
+  "中国铝矿产能利用率": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为钢铁高炉/焦化厂/独立电炉产能利用率，全部非铝土矿 → unmatched"
+  },
+  "中国铝精炼厂开工率": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00188132",
+    "name": "原铝系铝合金锭：开工率：中国（月）",
+    "source": "mysteel",
+    "unit": "百分比",
+    "path": "行业数据 有色金属 有色金属数据库 Mymetal调研 供给调研 开工率"
+   },
+   "note": "命中2条, 最佳得分7: 原铝系铝合金锭：开工率：中国（月）"
+  },
+  "中国铝矿检修量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为 USGS 美国铝矿储量/消费量/供应量，无检修量 → unmatched"
+  },
+  "中国铝精炼厂检修量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝矿开工天数": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为铝矿砂及精矿进口数量（海关口径），非矿山开工天数 → unmatched"
+  },
+  "中国铝精炼厂开工天数": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝矿进口总量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为 USGS 净进口依赖度与'X→美国'口径，目的地全为美国 → unmatched"
+  },
+  "中国从几内亚铝矿进口量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 全为 USGS'X→美国'口径（含中国→美国），无'几内亚→中国'序列；注：CM0000451540 铝矿砂进口 几内亚→中国 出现在'中国铝矿砂进口量'项下，非本项 hits → 按本项 hits 判 unmatched"
+  },
+  "中国从澳大利亚铝矿进口量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为 USGS 澳大利亚→美国、中国→美国、日本→美国，目的地口径全错 → unmatched"
+  },
+  "中国从印度尼西亚铝矿进口量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为 USGS 印尼→美国/马来西亚→美国/罗马尼亚→美国，目的地均为美国，与'中国进口'口径不符 → unmatched"
+  },
+  "中国从巴西铝矿进口量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为 USGS 巴西→美国（目的地美国）与两项镍生铁/镍铁进口，均非'巴西→中国'铝矿进口 → unmatched"
+  },
+  "中国铝矿进口量分国别占比": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "占比为衍生指标；hits 为 USGS 'X→美国'口径 → unmatched"
+  },
+  "中国铝矿进口到岸价": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为铝矿砂进口数量类序列（数量/终值/同比），无价格序列 → unmatched"
+  },
+  "中国铝矿进口盈亏": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为氧化铝/镍铁进口盈亏，无铝土矿进口盈亏 → unmatched"
+  },
+  "铝矿TC加工费": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝精炼厂TC加工费": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00259465",
+    "name": "铝棒：6063：Φ120：加工费：佛山（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 加工费 铝金属"
+   },
+   "note": "命中3条, 最佳得分5: 铝棒：6063：Φ120：加工费：佛山（日）"
+  },
+  "铝矿TC加工费分位": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝精炼厂TC加工费分位": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00259465",
+    "name": "铝棒：6063：Φ120：加工费：佛山（日）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 价格 加工费 铝金属"
+   },
+   "note": "命中3条, 最佳得分5: 铝棒：6063：Φ120：加工费：佛山（日）"
+  },
+  "铝矿TC加工费进口盈亏": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝冶炼端完全成本": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝精炼厂产能": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为钒氮合金产能/棕榈油精炼厂产能/精炼镍产能，全部非铝 → unmatched"
+  },
+  "中国铝精炼厂产能利用率": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为重交沥青/焦化厂/成品油常减压产能利用率，全部非铝 → unmatched"
+  },
+  "中国铝精炼厂再生产量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为豆粕/精炼镍/豆油产量，全部非铝再生 → unmatched"
+  },
+  "中国铝精炼厂进口量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝精炼厂检修天数": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国再生铝产量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "品种词'再生铝'命中，但 hits 为再生铝产量全球/巴西/波兰，缺中国口径 → unmatched（口径不符）"
+  },
+  "中国废铝进口量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "CM0000173848",
+    "name": "废铝：进口数量终值：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨"
+   },
+   "note": "命中 name='废铝：进口数量终值：中国（月）'，品种+字段+国别全部一致，万吨，月度；另两项为韩国海关/USGS 的 X→美国 口径，主口径选 CM0000173848"
+  },
+  "中国废铝进口分国别量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为大豆船舶到港数与玉米价格，全部非废铝进口 → unmatched"
+  },
+  "中国再生铝加工费": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为 PTA/纯涤纱/冷轧不锈钢加工费，全部非铝 → unmatched"
+  },
+  "中国废铝库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "ID01001944",
+    "name": "废铝：社会库存：中国（月）",
+    "source": "mysteel",
+    "unit": "吨"
+   },
+   "note": "命中 name='废铝：社会库存：中国（月）'，'废铝库存'与'废铝社会库存'字段语义一致，吨，月度；另两项为重庆/福建分省口径，主口径选全国 FU/ID01001944"
+  },
+  "中国再生铝产能利用率": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为重交沥青/焦炭/矿山产能利用率，全部非铝行业 → unmatched"
+  },
+  "中国再生铝检修量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为玉米价格与铁精粉产量，与再生铝检修完全无关 → unmatched"
+  },
+  "中国废铝进口盈亏": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为氧化铝进口盈亏与两项镍铁进口盈亏，无废铝（再生铝）进口盈亏序列 → unmatched"
+  },
+  "铝冶炼端现金成本": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01001947",
+    "name": "氧化铝：现金成本：中国（月）",
+    "source": "mysteel",
+    "unit": "元/吨",
+    "path": "行业数据 有色金属 有色金属数据库 其他 经济指标 生产技术经济指标"
+   },
+   "note": "命中3条, 最佳得分7: 氧化铝：现金成本：中国（月）"
+  },
+  "铝冶炼端检修量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝冶炼端开工率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝冶炼端产能利用率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "铝冶炼端日度利润分位": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "沪铝交易所库存": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01721697",
+    "name": "氧化铝：库存：中国（周）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 库存 社会库存 铝金属"
+   },
+   "note": "命中2条, 最佳得分5: 氧化铝：库存：中国（周）"
+  },
+  "LME铝交易所库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 全部为 USGS 口径（美国粗铝进出口/均价），且原产国分国别月度库存，缺 LME 库存总量主口径 → unmatched"
+  },
+  "沪铝仓单": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "LME铝仓单": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "FU00014315",
+    "name": "LME：铝：注册仓单（日）",
+    "source": "mysteel",
+    "unit": "吨"
+   },
+   "note": "命中 name='LME：铝：注册仓单（日）'，LME+铝+仓单完全一致，吨，日度；FU00014316 为注销仓单、FU00094559 为香港仓单，主口径选总量注册仓单 FU00014315"
+  },
+  "沪铝注销仓单": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00014316",
+    "name": "LME：铝：注销仓单（日）",
+    "source": "mysteel",
+    "unit": "吨",
+    "path": "商品数据库 期货数据库 有色品种 铝金属"
+   },
+   "note": "命中3条, 最佳得分7: LME：铝：注销仓单（日）"
+  },
+  "LME铝注销仓单": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "FU00014316",
+    "name": "LME：铝：注销仓单（日）",
+    "source": "mysteel",
+    "unit": "吨"
+   },
+   "note": "命中 name='LME：铝：注销仓单（日）'，与指标名完全一致，吨，日度；另两项为香港/新加坡分地区口径，主口径选总量 FU00014316"
+  },
+  "沪铝注销仓单占比": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "FU00014316",
+    "name": "LME：铝：注销仓单（日）",
+    "source": "mysteel",
+    "unit": "吨",
+    "path": "商品数据库 期货数据库 有色品种 铝金属"
+   },
+   "note": "命中3条, 最佳得分7: LME：铝：注销仓单（日）"
+  },
+  "LME铝注销仓单占比": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "FU00023742",
+    "name": "LME：铝：注销占比（日）",
+    "source": "mysteel",
+    "unit": "百分比"
+   },
+   "note": "命中 name='LME：铝：注销占比（日）'，字段语义等价（注销仓单占比），百分比，日度；另两项为分地区口径"
+  },
+  "沪铝在途仓单": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): USGS：粗铝：进口数量：美国（年）"
+  },
+  "LME铝在途仓单": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "LME 在途仓单（transits）在知几无独立字段，hits 全为 USGS 粗铝进出口 → unmatched"
+  },
+  "中国铝社会库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "指标指电解铝社会库存（国内铝锭社库），hits 全为废铝社会库存（中国/重庆/福建），品种错位（废铝≠电解铝铝锭）→ unmatched"
+  },
+  "中国铝厂内库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "a12820686",
+    "name": "SMM: 国内电解铝厂内库存: 周度",
+    "source": "smm",
+    "unit": null
+   },
+   "note": "命中 name='SMM: 国内电解铝厂内库存: 周度'，SMM 官方源、口径最贴合（电解铝厂内库存，周度）；ID01721691 为氧化铝厂内库存（原料而非铝锭）、a12855652 为预焙阳极库存分省（成本品项）→ 选 a12820686"
+  },
+  "中国铝隐性库存": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝社会库存天数": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为焦炭/炼焦煤库存可用天数，非铝 → unmatched"
+  },
+  "中国铝社会库存分位": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "分位为衍生指标；hits 为废铝社库/螺纹钢社库/铝合金锭社库，均非电解铝铝锭社库分位 → unmatched"
+  },
+  "中国铝社会库存分地区量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为螺纹钢/热轧板卷分省社库，全部非铝 → unmatched"
+  },
+  "中国铝厂内库存占比": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "占比为衍生指标，hits 为电动汽车/电动卡车/电动公交库存占比，全部非铝 → unmatched"
+  },
+  "中国铝隐性库存占比": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝工厂库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为焦炭/炼焦煤/豆粕库存，全部非铝 → unmatched"
+  },
+  "中国铝工厂库存天数": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为焦炭/炼焦煤库存可用天数，非铝 → unmatched"
+  },
+  "中国铝工厂库存分位": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "同上，分位衍生 + hits 全为黑色系库存 → unmatched"
+  },
+  "中国铝工厂库存分地区量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为氧化铝库存/铝土矿样本企业库存/焦炭库存，均非铝锭工厂库存分省口径 → unmatched"
+  },
+  "中国铝在途库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为氧化铝在途/站台库存（两项）与 LME 香港非注册仓单，非铝锭在途库存主口径 → unmatched"
+  },
+  "中国铝在途库存占比": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "占比为衍生指标，hits 为大豆余粮库存占比 → unmatched"
+  },
+  "中国铝隐性库存天数": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝在途库存天数": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为焦炭/炼焦煤库存可用天数，无铝在途天数 → unmatched"
+  },
+  "中国铝隐性库存分位": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01721697",
+    "name": "氧化铝：库存：中国（周）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 库存 社会库存 铝金属"
+   },
+   "note": "命中2条, 最佳得分5: 氧化铝：库存：中国（周）"
+  },
+  "中国铝在途库存分位": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "分位为衍生指标；hits 为锂矿在途库存、氧化铝在途库存与电解铝现货库存 → unmatched"
+  },
+  "中国铝加工企业开工率": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为钢铁高炉/建筑钢材/硅锰企业开工率，全部非铝行业 → unmatched"
+  },
+  "中国铝表观消费量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01369383",
+    "name": "氟化铝：表观消费量：中国（年）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "能化|氟化工数据库|氟化盐|氟化铝|消费"
+   },
+   "note": "命中2条, 最佳得分5: 氟化铝：表观消费量：中国（年）"
+  },
+  "中国铝排产计划": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为冷轧不锈钢排产（两项分系与合计），无铝排产（铝棒/铝板带材排产）→ unmatched"
+  },
+  "中国铝加工企业日度利润": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为建筑用钢电炉利润，非铝加工利润（挤压/铝棒加工费利润）→ unmatched"
+  },
+  "中国铝加工企业产能利用率": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为矿山/破碎料/重交沥青产能利用率，无铝加工企业（铝加工/SMM 铝加工开工）序列 → unmatched"
+  },
+  "中国铝加工企业检修量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为铁精粉产量/大豆压榨量/焦炭库存，无铝加工检修 → unmatched"
+  },
+  "中国铝加工企业开工天数": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为焦炭库存、库存可用天数与豆粕库存，无铝加工开工天数 → unmatched"
+  },
+  "中国铝表观消费占比": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝终端消费量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "RE00012044",
+    "name": "电解铝：消费量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "研究专题及衍生指标 研究专题衍生指标 有色金属"
+   },
+   "note": "命中1条, 最佳得分5: 电解铝：消费量：中国（月）"
+  },
+  "中国铝终端消费占比": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 电解铝：现货库存：中国（日）"
+  },
+  "中国铝终端产量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "RE00033166",
+    "name": "氟化铝：产量：中国（季）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "能化|氟化工数据库|氟化盐|氟化铝|产量"
+   },
+   "note": "命中3条, 最佳得分7: 氟化铝：产量：中国（季）"
+  },
+  "中国铝订单量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝需求增速": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝终端消费分地区量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "RE00012044",
+    "name": "电解铝：消费量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "研究专题及衍生指标 研究专题衍生指标 有色金属"
+   },
+   "note": "命中2条, 最佳得分5: 电解铝：消费量：中国（月）"
+  },
+  "中国铝铝出口量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铝合金锭：铸造级：ADC12：市场价：东北地区（日）"
+  },
+  "中国铝宏观PMI": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "指标名混淆（PMI 为全国制造业宏观指标，非铝专属）；hits 为玉米价格与螺纹钢社库 → unmatched"
+  },
+  "中国铝M2增速": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "M2 增速是宏观货币指标，与铝产业无直接序列对应；hits 为玉米价格与螺纹钢社库 → unmatched"
+  },
+  "中国铝沪铝主力合约收盘价": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "FU00014632",
+    "name": "SHFE：铝：主力合约：收盘价（日）",
+    "source": "mysteel",
+    "unit": "元/吨"
+   },
+   "note": "命中 name='SHFE：铝：主力合约：收盘价（日）'，'沪铝主力合约收盘价'与 SHFE 铝主力完全一致，元/吨，日度；另两项为氧化铝/铝合金铸造，均非沪铝 → 选 FU00014632"
+  },
+  "中国铝铝出口占比": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铝合金锭：铸造级：ADC12：市场价：东北地区（日）"
+  },
+  "中国铝订单量分地区量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 电解铝：出库量：中国（日）"
+  },
+  "中国铝矿砂进口量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "3 个 hits 全部是铝矿砂及其精矿进口的分国别子集（几内亚→中国 / 澳大利亚→中国 / 印尼→中国），方向与国别目的地正确但均非'中国进口总量'口径，本批 hits 中无合计序列（CM0000138659 合计口径出现在'中国铝矿开工天数'项下，非本项）→ unmatched，建议后续检索'铝矿砂 进口 合计'补总量主口径"
+  },
+  "中国铝原料进口占比": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为韩国制造业进口占比（宏观贸易结构），与铝原料无关 → unmatched"
+  },
+  "中国铝保税区库存": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为电解钴库存/氧化铝库存/锌锭上海保税区库存，全部非铝 → unmatched"
+  },
+  "中国铝关税税率": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为纯苯关税税率与两项库存，无铝（铝锭/铝矿/废铝）关税税率序列 → unmatched"
+  },
+  "中国铝原料进口盈亏": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为氧化铝进口盈亏与两项镍铁进口盈亏；虽与铝产业链相关，但'铝原料进口盈亏'需铝土矿进口盈亏主口径 → unmatched"
+  },
+  "中国铝海外发运量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为混凝土发运量分省，非铝出口发运 → unmatched"
+  },
+  "中国铝精炼金属进口量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝精炼金属出口量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝精炼金属净进口量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01360671",
+    "name": "电解铝：净进口数量：中国（月）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 Mymetal调研 需求调研"
+   },
+   "note": "命中2条, 最佳得分7: 电解铝：净进口数量：中国（月）"
+  },
+  "中国铝保税区仓单": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为电解铜保税区库存、精炼镍/镍板保税区库存，全部非铝 → unmatched"
+  },
+  "中国铝精炼金属进口分国别量": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID00302795",
+    "name": "铝土矿：进口：港口库存：中国（周）",
+    "source": "mysteel",
+    "unit": "万吨",
+    "path": "行业数据 有色金属 有色金属数据库 库存 现货库存"
+   },
+   "note": "命中1条, 最佳得分5: 铝土矿：进口：港口库存：中国（周）"
+  },
+  "中国铝精炼金属进出口金额": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝铝制品出口量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 建筑模板铝型材：产量：中国（年）"
+  },
+  "中国铝铝制品出口占比": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝铝制品出口金额": {
+   "nodes": [],
+   "tier": "B",
+   "matched": true,
+   "chosen": {
+    "id": "ID01118480",
+    "name": "铝制品：出口金额：安徽（月）",
+    "source": "mysteel",
+    "unit": "美元",
+    "path": "有色|铝数据库|铝制品|进出口|海关总署：中国铝制品进出口|分省市|出口金额：月度"
+   },
+   "note": "命中3条, 最佳得分5: 铝制品：出口金额：安徽（月）"
+  },
+  "中国铝铝制品出口分国别量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 3C铝型材：产量：中国（年）"
+  },
+  "中国铝铝出口分国别量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 铝合金锭：铸造级：ADC12：市场价：东北地区（日）"
+  },
+  "中国铝铝制品出口关税税率": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分3, 阈5): 3C铝型材：产量：中国（年）"
+  },
+  "中国铝铝制品出口发运量": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝发运天数": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为焦炭库存可用天数/混凝土发运量，无铝发运天数 → unmatched"
+  },
+  "中国铝海外发运分国别量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为混凝土发运量与玉米价格，全部非铝 → unmatched"
+  },
+  "中国铝海外发运占比": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为混凝土发运量与生猪存栏占比 → unmatched"
+  },
+  "中国铝海外发运金额": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为工业产成品金额/储备资产/外汇储备，与铝出口金额无关 → unmatched"
+  },
+  "中国铝海外发运盈亏": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为鸡苗/肉鸡屠宰企业盈亏，全部非铝 → unmatched"
+  },
+  "中国铝冶炼成本": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为赖氨酸/苏氨酸饲料成本，全部非铝冶炼 → unmatched"
+  },
+  "中国铝电解成本": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为赖氨酸/苏氨酸成本，全部非电解成本 → unmatched"
+  },
+  "中国铝现金成本": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "ID01001779",
+    "name": "电解铝：生产现金成本：中国（月）",
+    "source": "mysteel",
+    "unit": "元/吨"
+   },
+   "note": "命中 name='电解铝：生产现金成本：中国（月）'，'铝现金成本'即电解铝生产现金成本，元/吨，月度；另两项为氧化铝现金成本（上游原料），口径不同 → 选 ID01001779"
+  },
+  "中国铝冶炼成本分位": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "分位为衍生指标且 hits 为豆粕成交量，均不匹配 → unmatched"
+  },
+  "中国铝电价": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为铁合金行业电价（内蒙/陕西/宁夏），铝冶炼电价应为电解铝/电力现货口径，行业错位 → unmatched"
+  },
+  "中国铝原料成本": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为赖氨酸/苏氨酸成本，全部非铝 → unmatched"
+  },
+  "中国铝加工费": {
+   "nodes": [],
+   "tier": "A",
+   "matched": true,
+   "chosen": {
+    "id": "ID00275563",
+    "name": "铝棒：6063：Φ120：加工费均价：中国（日）",
+    "source": "mysteel",
+    "unit": "元/吨"
+   },
+   "note": "命中 name='铝棒：6063：Φ120：加工费均价：中国（日）'，铝加工费最常用代理指标（铝棒加工费），元/吨，日度；另两项为 Φ178/Φ90 规格，同族口径，主口径选 Φ120 标准规格 ID00275563"
+  },
+  "中国铝冶炼成本分地区量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为成品油/芳烃/硫磺成本，无电解铝分省冶炼成本 → unmatched"
+  },
+  "中国铝冶炼日度利润": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为建筑用钢电炉分时段利润，全部非铝 → unmatched"
+  },
+  "中国铝电解日度利润": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为建筑用钢电炉利润，非电解铝利润 → unmatched"
+  },
+  "中国铝加工日度利润": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "与'中国铝加工企业日度利润'重复指标，hits 仍为建筑用钢电炉利润 → unmatched"
+  },
+  "中国铝冶炼日度利润分地区量": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "同上，hits 为建筑用钢电炉利润分省，非电解铝利润 → unmatched"
+  },
+  "中国铝煤炭成本": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为洗煤厂产能利用率/煤炭进口量/成品油炼油成本，均非电解铝煤炭成本项 → unmatched"
+  },
+  "中国铝铝矿砂成本": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝废铝成本": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为赖氨酸/苏氨酸成本，全部非废铝成本 → unmatched"
+  },
+  "中国铝能源成本占比": {
+   "nodes": [],
+   "tier": "C",
+   "matched": false,
+   "chosen": null,
+   "note": "存在通过品种词但字段/口径弱 (最佳得分0, 阈5): 无"
+  },
+  "中国铝原料成本占比": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "占比为衍生指标且 hits 为饲料成本 → unmatched"
+  },
+  "中国铝电力现货价格": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为切片铝料/铝轮毂/带皮铝线（美国）现货价，全部是废铝产品价格而非电力现货价 → unmatched"
+  },
+  "中国铝煤炭现货价格": {
+   "nodes": [],
+   "tier": "A",
+   "matched": false,
+   "chosen": null,
+   "note": "hits 为玉米油/铝壳电池废料/铜精矿现货价，无煤炭现货价格 → unmatched"
+  }
+ }
+}

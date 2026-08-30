@@ -1,1066 +1,2051 @@
 {
-  "_meta": {
-    "version": "2.7",
-    "updated": "2026-08-30",
-    "status": "部分验证",
-    "说明": "统一的Zhiji指标ID映射表（版本化）。两个数据层脚本都从此文件读取，不再各管各的。版本变更必须同步git commit + 更新STATUS.md通知对方。",
-    "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
-  },
-  "version_changelog": [
-    {
-      "v": "1.0",
-      "date": "2026-08-26",
-      "change": "从api_server.py+data_layer.py合并抽取，铅i1-i5已验证，其余为占位"
-    },
-    {
-      "v": "1.1",
-      "date": "2026-08-27",
-      "change": "v4验证后新增i6-i18共13个已验证ID; 社库Mysteel(ID00188315)从占位升级为已验证"
-    },
-    {
-      "v": "1.2",
-      "date": "2026-08-27",
-      "change": "看板统一：旧版产物(pb_stock.html/demo/build_pb_stock.py)归档至 legacy/20260826_pb_stock_v1/；当前唯一最新版 = pb_stock_v2.html (22图) + pb_41_stock.html (4.1子页)；search 搜索词策略：主连写+辅空格分词(详见 analysis/iwencai/PB/zhiji_batch_verify.py)"
-    },
-    {
-      "v": "1.3",
-      "date": "2026-08-28",
-      "change": "补录缓存中已有但缺失的 18 个指标(i19,i20,i21,i22,i23,i24...等)：LME新加坡系列/仁川/迪拜/五地社库分项/i26蓄电池成品库存/i27铅锭平衡/i28SHFE周报/i29-30/31现货库存。JSON恢复为api_cache.db唯一真源，两refresh脚本合并为refresh_cache.py"
-    },
-    {
-      "v": "1.4",
-      "date": "2026-08-28",
-      "change": "补录 i37-i40：i37 海关铅蓄电池出口量、i38 起动型铅蓄电池出口量、i39 铅蓄电池出口量累计、i40 海关铅精矿进口量(当时标注为海外发运代理)"
-    },
-    {
-      "v": "1.5",
-      "date": "2026-08-28",
-      "change": "P1 试点 6.4 完成：i40 从 trade_overseas_shipping 调回 trade_raw_import(6.1 正主归属)；新增 64_group 指标组定义(复用 i19/i20/i25/i29/i30/i17/i7，无需新增 zhiji_id)；6.4 页扩到 3 图(LME 新加坡出发仓/发运-到港节奏/分地区结构)。同花顺 6.4 提单/升贴水/在途量数据源缺失已剔除，详见 analysis/iwencai/PB/64_diversify_20260828.md"
-    },
-    {
-      "v": "1.6",
-      "date": "2026-08-28",
-      "change": "P2.1 6.1 原料进口完成：i40 归属已修正为 trade_raw_import 正主；6.1 页扩到 3 图(海关铅精矿月度进口/到港→消化/防城到港历史)；剔除 i17(属 6.2 精炼金属)、银精矿(数据源缺失)、分国别热力图(无月度矩阵)；复用 i40/i5/i9/i16 现有缓存，无需新增 zhiji_id；i16 防城到港数据源近期停更已标注。详见 analysis/iwencai/PB/61_diversify_20260828.md"
-    },
-    {
-      "v": "1.7",
-      "date": "2026-08-28",
-      "change": "P2.2 6.2 精炼金属进出口完成：6.2 页扩到 3 图(海关铅锭月度进口/中国进口vs全球注销仓单/LME 全球注销仓单)；采用方案A复用现有缓存(无需新增 zhiji_id)；i7 LME 全球注销仓单作 6.2 全球发运背景辅轴(本身属 4.1 但作为对比参照合理)；剔除粗铅/铅合金(数据源缺失)、出口目的地分布(数据源不足)、a10017091 铅锭出口总量(量级极小 2178 吨 <1/4 进口量)。详见 analysis/iwencai/PB/62_diversify_20260828.md"
-    },
-    {
-      "v": "1.8",
-      "date": "2026-08-28",
-      "change": "P2.3 6.3 制品出口完成：6.3 页扩到 3 图(铅蓄电池出口总量/启动型铅蓄电池出口/启动型vs其他类型结构)；复用 i37/i38 现有缓存(无需新增 zhiji_id)，i39 累计作备用；计算'其他类型'=(i37-i38)作为结构指标；剔除出口目的地分布(知几无矩阵)、HS 7806 铅材制品(口径不清)；标注海合会反倾销税率 25.8-74% 2026.1.13 生效。详见 analysis/iwencai/PB/63_diversify_20260828.md"
-    },
-    {
-      "v": "1.9",
-      "date": "2026-08-28",
-      "change": "用户反馈 6.2 图2 组合牵强：i17+i7 全球注销仓单改为 i17 进口+i41 出口(双向进出口,对应同花顺图5)；新增 i41 海关铅锭出口(月,吨) a10017091 已验证；所有节点页面补'图备注'(观测用途+指标关联)。"
-    },
-    {
-      "v": "2.0",
-      "date": "2026-08-29",
-      "change": "2.1盘面结构: 新增 j21_close/j21_volume/j21_oi (沪铅主力连续收盘价/成交量/持仓量, 3751交易日, zhiji观kline)"
-    },
-    {
-      "v": "2.1",
-      "date": "2026-08-29",
-      "change": "2.2现货与升贴水: 新增 j22_spot 等8指标 (SMM1#铅现货全国+沪/粤/豫/津, 再生精铅, 上海升贴水, 沪伦比值; 日频2101点)"
-    },
-    {
-      "v": "2.2",
-      "date": "2026-08-29",
-      "change": "2.3海外价格: 新增 j23_lme_cash/lme_3m/lme_0to3/lme_sp3/imp_profit 5指标 (LME现货结算+官方3M+升贴水×2+SMM进口盈亏; LME现货2945点11年)"
-    },
-    {
-      "v": "2.3",
-      "date": "2026-08-29",
-      "change": "2.4价差体系: 新增 j24_spread_m/s(期现价差当月/次月), j24_regen_profit(再生铅利润), j24_refine_spread(精废价差)"
-    },
-    {
-      "v": "2.4",
-      "date": "2026-08-29",
-      "change": "2.5估值与利润: 新增 j25_smelt_cost/ag_revenue/tc/battery 4指标 (原生冶炼加工成本+白银收益+国产TC+废蓄电池价)"
-    },
-    {
-      "v": "2.5",
-      "date": "2026-08-29",
-      "change": "[T10-3.2.3] 新增 j323_regen_output(SMM再生精铅产量 a10098385)/j323_regen_util(Mysteel再生铅产能利用率 ID01167229)/j323_regen_util_w(30家样本周度 ID01030006)/j323_native_output(原生铅产量 ID01001562)/j323_smm_regen_rate(SMM再生铅开工率 a10017000); 复用 i11/i12/i14 归属改 supply"
-    },
-    {
-      "v": "2.6",
-      "date": "2026-08-29",
-      "change": "5.1初级消费: 新增 j51_apparent/j51_cons/j51_h2so4 3指标 (SMM铅锭表观消费量+消费量+硫酸价格); 主脑验收意见: 硫酸价(硫酸价格属7.x)与社库(i18属4.3正主)不入5.1图3正主, 5.1图3改用铅酸电池开工率(a10151378)+铅锭消费验证, 详见 analysis/iwencai/PB/51_diversify_20260829.md 排除项"
-    },
-    {
-      "v": "2.7",
-      "date": "2026-08-30",
-      "change": "T11-5.1 主脑验收修正: +j51_util(SMM铅蓄电池开工率: 总 a10151378 周度) 作5.1正主; j51_h2so4 硫酸价格标 note 归属7.x成本利润备用; 5.1图3改用工率+铅锭消费验证; rebase origin/main (7提交/584af27) 后基线81指标"
-    }
-  ],
-  "indicators": {
-    "主连": {
-      "name": "期货主连结算价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": false,
-      "ids": {
-        "CU": "FU00014941",
-        "AL": "FU00014934",
-        "PB": "FU00014946",
-        "ZN": "FU00014950",
-        "NI": "FU00014982",
-        "SN": "FU00014952",
-        "SI": "FU00015015",
-        "LC": "FU00015030"
-      }
-    },
-    "LME库存": {
-      "name": "LME库存",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": false,
-      "ids": {
-        "CU": "FU00014813",
-        "AL": "FU00014812",
-        "PB": "FU00014814",
-        "ZN": "FU00014815",
-        "NI": "FU00014816",
-        "SN": "FU00014817"
-      }
-    },
-    "SHFE库存": {
-      "name": "上期所库存",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": false,
-      "ids": {
-        "CU": "FU00014935",
-        "AL": "FU00014930",
-        "PB": "FU00014943",
-        "ZN": "FU00014947",
-        "NI": "FU00014980",
-        "SN": "FU00014953",
-        "SI": "FU00015013",
-        "LC": "FU00015028"
-      }
-    },
-    "社库": {
-      "name": "社会库存",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "ids": {
-        "CU": "ID00188319",
-        "AL": "ID00188307",
-        "PB": "ID00188315",
-        "ZN": "ID00188329",
-        "NI": "ID00185743",
-        "SN": "ID01517441",
-        "LC": "ID01002500"
-      }
-    },
-    "TC": {
-      "name": "TC加工费",
-      "unit": "元/吨",
-      "freq": "weekly",
-      "verified": false,
-      "ids": {
-        "CU": "ID01154994",
-        "PB": "a10127385",
-        "ZN": "ID01320080",
-        "NI": "ID01002200",
-        "SN": "ID01001800"
-      }
-    },
-    "精炼产量": {
-      "name": "精炼产量",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": false,
-      "ids": {
-        "CU": "ID00188139",
-        "AL": "a10124317",
-        "PB": "a10017062",
-        "ZN": "ID01510883",
-        "NI": "a10018516",
-        "SN": "a10003083",
-        "SI": "ID01448337",
-        "LC": "a10006555"
-      }
-    },
-    "表观消费": {
-      "name": "表观消费",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": false,
-      "ids": {
-        "CU": "ID00188149",
-        "AL": "ID00188317",
-        "PB": "ID00188325",
-        "ZN": "ID01510893",
-        "NI": "ID01001570",
-        "SN": "ID00187499",
-        "SI": "ID01448347",
-        "LC": "ID01002510"
-      }
-    },
-    "开工率": {
-      "name": "开工率",
-      "unit": "%",
-      "freq": "monthly",
-      "verified": false,
-      "ids": {
-        "CU": "ID01067717",
-        "AL": "a10031808",
-        "PB": "ID01030005",
-        "ZN": "a10097188",
-        "NI": "a10019689",
-        "SN": "a10083975",
-        "SI": "ID01448357",
-        "LC": "a10001859"
-      }
-    },
-    "i1": {
-      "name": "LME铅库存",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10193709"
-      }
-    },
-    "i2": {
-      "name": "SHFE铅仓单",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10157130"
-      }
-    },
-    "i3": {
-      "name": "SMM铅锭五地社库",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017067"
-      }
-    },
-    "i4": {
-      "name": "原生铅成品库存",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "ID01167603"
-      }
-    },
-    "i5": {
-      "name": "进口铅精矿港口库存",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "ID01167590"
-      }
-    },
-    "i6": {
-      "name": "LME铅注册仓单",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10193710"
-      }
-    },
-    "i7": {
-      "name": "LME铅注销仓单",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10193711"
-      }
-    },
-    "i8": {
-      "name": "SHFE铅仓单分地区_上海",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10174861"
-      }
-    },
-    "i9": {
-      "name": "冶炼厂铅精矿库存",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10126655"
-      }
-    },
-    "i10": {
-      "name": "铅精矿原料库存_中国",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "ID01590235"
-      }
-    },
-    "i11": {
-      "name": "再生铅成品库存",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": true,
-      "category": "supply",
-      "ids": {
-        "PB": "ID01691626"
-      },
-      "subleaf": "3.2.3再生/二次供应"
-    },
-    "i12": {
-      "name": "再生铅原材料库存_周",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "supply",
-      "ids": {
-        "PB": "ID01167591"
-      },
-      "subleaf": "3.2.3再生/二次供应"
-    },
-    "i13": {
-      "name": "废电瓶库存动态",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a12767751"
-      }
-    },
-    "i14": {
-      "name": "废电瓶及含铅废料处理能力_周",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "supply",
-      "ids": {
-        "PB": "ID01691540"
-      },
-      "subleaf": "3.2.3再生/二次供应"
-    },
-    "i15": {
-      "name": "再生铅原料库存天数",
-      "unit": "天",
-      "freq": "monthly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a12810628"
-      }
-    },
-    "i16": {
-      "name": "铅矿到港_防城",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10127618"
-      }
-    },
-    "i17": {
-      "name": "中国海关铅锭进口量",
-      "unit": "吨",
-      "freq": "monthly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017037"
-      }
-    },
-    "i18": {
-      "name": "SMM铅锭五地社库总计",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017067"
-      }
-    },
-    "i19": {
-      "name": "LME：铅：注册仓单：新加坡（日）",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "FU00023414"
-      }
-    },
-    "i20": {
-      "name": "LME：铅：注销仓单：新加坡（日）",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "FU00023622"
-      }
-    },
-    "i21": {
-      "name": "LME: 铅库存分仓库: 新加坡: 注册仓单: 日度",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017113"
-      }
-    },
-    "i22": {
-      "name": "LME: 铅库存分仓库: 新加坡: 注销仓单: 日度",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017166"
-      }
-    },
-    "i23": {
-      "name": "LME：铅：非仓单库存：亚洲：新加坡（日）",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "FU00103556"
-      }
-    },
-    "i24": {
-      "name": "LME：铅：入库量：新加坡（日）",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "FU00023194"
-      }
-    },
-    "i25": {
-      "name": "LME：铅：出库量：新加坡（日）",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "FU00022450"
-      }
-    },
-    "i26": {
-      "name": "SMM: 铅蓄电池企业成品库存: 月度",
-      "unit": "KVAh",
-      "freq": "unknown",
-      "verified": true,
-      "category": "demand_primary",
-      "ids": {
-        "PB": "a12813406"
-      }
-    },
-    "i27": {
-      "name": "SMM: 铅锭平衡: 供求平衡: 年度",
-      "unit": "万吨",
-      "freq": "unknown",
-      "verified": true,
-      "category": "balance",
-      "ids": {
-        "PB": "a10097232"
-      }
-    },
-    "i28": {
-      "name": "SHFE: 铅: 库存周报: 本周库存期货: 周度",
-      "unit": "吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10026547"
-      }
-    },
-    "i29": {
-      "name": "LME: 铅库存_仁川: 日度",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10100437"
-      }
-    },
-    "i30": {
-      "name": "LME: 铅: 非注册仓单库存: 阿联酋: 迪拜: 日度",
-      "unit": "吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a12809923"
-      }
-    },
-    "i31": {
-      "name": "铅锭：现货库存（日）",
-      "unit": "万吨",
-      "freq": "daily",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "ID00188315"
-      }
-    },
-    "i32": {
-      "name": "SMM: 铅锭五地社会库存: 广东: 周度",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017065"
-      }
-    },
-    "i33": {
-      "name": "SMM: 铅锭五地社会库存: 江苏: 周度",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017066"
-      }
-    },
-    "i34": {
-      "name": "SMM: 铅锭五地社会库存: 浙江: 周度",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017068"
-      }
-    },
-    "i35": {
-      "name": "SMM: 铅锭五地社会库存: 天津: 周度",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017069"
-      }
-    },
-    "i36": {
-      "name": "SMM: 铅锭五地社会库存: 上海: 周度",
-      "unit": "万吨",
-      "freq": "weekly",
-      "verified": true,
-      "category": "inventory",
-      "ids": {
-        "PB": "a10017070"
-      }
-    },
-    "i37": {
-      "name": "中国海关铅蓄电池出口量",
-      "unit": "个",
-      "freq": "monthly",
-      "verified": true,
-      "category": "trade_product",
-      "ids": {
-        "PB": "a10017078"
-      }
-    },
-    "i38": {
-      "name": "中国海关起动型铅蓄电池出口量",
-      "unit": "个",
-      "freq": "monthly",
-      "verified": true,
-      "category": "trade_product",
-      "ids": {
-        "PB": "a10151429"
-      }
-    },
-    "i39": {
-      "name": "中国海关铅蓄电池出口量累计",
-      "unit": "个",
-      "freq": "monthly",
-      "verified": true,
-      "category": "trade_product",
-      "ids": {
-        "PB": "a10151427"
-      }
-    },
-    "i40": {
-      "name": "中国海关铅精矿进口量",
-      "unit": "吨",
-      "freq": "monthly",
-      "verified": true,
-      "category": "trade_raw_import",
-      "note": "归属 6.1 原料进口，非海外发运代理。v1.5 修正。",
-      "ids": {
-        "PB": "a10017055"
-      }
-    },
-    "i41": {
-      "name": "中国海关铅锭出口量",
-      "unit": "吨",
-      "freq": "monthly",
-      "verified": true,
-      "category": "trade_refined",
-      "note": "对应同花顺 6.2 图5 双向进出口；SMM a10017091 已验证。v1.9 新增，补齐 6.2 出口侧。",
-      "ids": {
-        "PB": "a10017091"
-      }
-    },
-    "j21_close": {
-      "name": "沪铅主力连续收盘价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "kline:PB:D"
-      },
-      "category": "price",
-      "subleaf": "2.1盘面结构",
-      "source": "上期所·主力连续",
-      "note": "图1量价仓三联动主图价格轴"
-    },
-    "j21_volume": {
-      "name": "沪铅主力连续成交量",
-      "unit": "手",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "kline:PB:D"
-      },
-      "category": "price",
-      "subleaf": "2.1盘面结构",
-      "source": "上期所·主力连续",
-      "note": "图1量/图2成交持仓比分子"
-    },
-    "j21_oi": {
-      "name": "沪铅主力连续持仓量",
-      "unit": "手",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "kline:PB:D"
-      },
-      "category": "price",
-      "subleaf": "2.1盘面结构",
-      "source": "上期所·主力连续",
-      "note": "图1仓/图2成交持仓比分母"
-    },
-    "j22_spot": {
-      "name": "SMM 1#铅锭现货均价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "s20017202"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM",
-      "note": "基差计算现货端"
-    },
-    "j22_spot_sh": {
-      "name": "SMM 1#铅锭上海现货均价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "s20001968"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM"
-    },
-    "j22_spot_gd": {
-      "name": "SMM 1#铅锭广东现货均价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "s20001971"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM"
-    },
-    "j22_spot_hn": {
-      "name": "SMM 1#铅锭河南现货均价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "s20001976"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM"
-    },
-    "j22_spot_tj": {
-      "name": "SMM 1#铅锭天津现货均价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "s20001983"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM"
-    },
-    "j22_premium": {
-      "name": "SMM 上海铅现货升贴水",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10017061"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM"
-    },
-    "j22_regen": {
-      "name": "SMM 再生精铅平均价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "s20017192"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM",
-      "note": "原生-再生价差再生端"
-    },
-    "j22_shfe_ratio": {
-      "name": "SMM 沪伦比值 铅 现货",
-      "unit": "",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10155854"
-      },
-      "category": "price",
-      "subleaf": "2.2现货与升贴水",
-      "source": "SMM"
-    },
-    "j23_lme_cash": {
-      "name": "LME 铅现货结算价",
-      "unit": "美元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10193708"
-      },
-      "category": "price",
-      "subleaf": "2.3海外价格",
-      "source": "LME"
-    },
-    "j23_lme_3m": {
-      "name": "LME 铅官方3M卖价",
-      "unit": "美元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10193707"
-      },
-      "category": "price",
-      "subleaf": "2.3海外价格",
-      "source": "LME",
-      "note": "2022-06起有数据"
-    },
-    "j23_lme_0to3": {
-      "name": "LME 铅0-3月升贴水",
-      "unit": "美元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10021406"
-      },
-      "category": "price",
-      "subleaf": "2.3海外价格",
-      "source": "LME"
-    },
-    "j23_lme_sp3": {
-      "name": "LME 铅(现货/三个月)升贴水",
-      "unit": "美元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "j02797772"
-      },
-      "category": "price",
-      "subleaf": "2.3海外价格",
-      "source": "LME"
-    },
-    "j23_imp_profit": {
-      "name": "SMM 进口盈亏 铅 现货 盈亏额",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a12759796"
-      },
-      "category": "price",
-      "subleaf": "2.3海外价格",
-      "source": "SMM"
-    },
-    "j24_spread_m": {
-      "name": "SMM 沪铅期现价差 当月合约 收盘价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a12841344"
-      },
-      "category": "price",
-      "subleaf": "2.4价差体系",
-      "source": "SMM",
-      "note": "2025-08起"
-    },
-    "j24_spread_s": {
-      "name": "SMM 沪铅期现价差 次月合约 收盘价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a12841348"
-      },
-      "category": "price",
-      "subleaf": "2.4价差体系",
-      "source": "SMM",
-      "note": "2025-08起"
-    },
-    "j24_regen_profit": {
-      "name": "SMM 再生铅利润",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10016953"
-      },
-      "category": "price",
-      "subleaf": "2.4价差体系",
-      "source": "SMM",
-      "note": "亏损为负"
-    },
-    "j24_refine_spread": {
-      "name": "SMM 铅精废价差",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "j00146945"
-      },
-      "category": "price",
-      "subleaf": "2.4价差体系",
-      "source": "SMM"
-    },
-    "j25_smelt_cost": {
-      "name": "SMM 精炼铅成本及利润 铅冶炼加工成本",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10127391"
-      },
-      "category": "price",
-      "subleaf": "2.5估值与利润",
-      "source": "SMM",
-      "note": "2021-01起"
-    },
-    "j25_ag_revenue": {
-      "name": "SMM 精炼铅成本及利润 白银收益",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10127387"
-      },
-      "category": "price",
-      "subleaf": "2.5估值与利润",
-      "source": "SMM",
-      "note": "副产品抵扣"
-    },
-    "j25_tc": {
-      "name": "SMM 精炼铅成本及利润 铅精矿加工费(国产)",
-      "unit": "元/金属吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10127385"
-      },
-      "category": "price",
-      "subleaf": "2.5估值与利润",
-      "source": "SMM"
-    },
-    "j25_battery": {
-      "name": "SMM 废蓄电池平均价",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "s22731628"
-      },
-      "category": "price",
-      "subleaf": "2.5估值与利润",
-      "source": "SMM",
-      "note": "2023-12起"
-    },
-    "j323_regen_output": {
-      "name": "SMM 再生精铅产量(中国)",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": true,
-      "ids": {
-        "PB": "a10098385"
-      },
-      "category": "supply",
-      "subleaf": "3.2.3再生/二次供应",
-      "source": "SMM"
-    },
-    "j323_regen_util": {
-      "name": "Mysteel 再生铅产能利用率(中国)",
-      "unit": "%",
-      "freq": "monthly",
-      "verified": true,
-      "ids": {
-        "PB": "ID01167229"
-      },
-      "category": "supply",
-      "subleaf": "3.2.3再生/二次供应",
-      "source": "Mysteel"
-    },
-    "j323_regen_util_w": {
-      "name": "Mysteel 再生铅产能利用率(30家样本)",
-      "unit": "%",
-      "freq": "weekly",
-      "verified": true,
-      "ids": {
-        "PB": "ID01030006"
-      },
-      "category": "supply",
-      "subleaf": "3.2.3再生/二次供应",
-      "source": "Mysteel"
-    },
-    "j323_native_output": {
-      "name": "Mysteel 原生铅产量(中国)",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": true,
-      "ids": {
-        "PB": "ID01001562"
-      },
-      "category": "supply",
-      "subleaf": "3.2.3再生/二次供应",
-      "source": "Mysteel"
-    },
-    "j323_smm_regen_rate": {
-      "name": "SMM 再生铅开工率(总)",
-      "unit": "%",
-      "freq": "monthly",
-      "verified": true,
-      "ids": {
-        "PB": "a10017000"
-      },
-      "category": "supply",
-      "subleaf": "3.2.3再生/二次供应",
-      "source": "SMM"
-    },
-    "j51_apparent": {
-      "name": "SMM 铅锭平衡: 表观消费量",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": true,
-      "ids": {
-        "PB": "a10017183"
-      },
-      "category": "demand",
-      "subleaf": "5.1初级消费",
-      "source": "SMM"
-    },
-    "j51_cons": {
-      "name": "SMM 铅锭平衡: 消费量",
-      "unit": "万吨",
-      "freq": "monthly",
-      "verified": true,
-      "ids": {
-        "PB": "a10017180"
-      },
-      "category": "demand",
-      "subleaf": "5.1初级消费",
-      "source": "SMM"
-    },
-    "j51_h2so4": {
-      "name": "SMM 精炼铅成本及利润: 硫酸价格",
-      "unit": "元/吨",
-      "freq": "daily",
-      "verified": true,
-      "ids": {
-        "PB": "a10127388"
-      },
-      "category": "demand",
-      "subleaf": "5.1初级消费",
-      "source": "SMM",
-      "note": "主脑验收: 硫酸价格属7.x成本利润, 5.1不入正主, 作备用"
-    },
-    "j51_util": {
-      "name": "SMM 铅蓄电池开工率: 总",
-      "unit": "%",
-      "freq": "weekly",
-      "verified": true,
-      "ids": {
-        "PB": "a10151378"
-      },
-      "category": "demand",
-      "subleaf": "5.1初级消费",
-      "source": "SMM",
-      "note": "5.1 正主: 开工率·同步 (per tree_config 5.1 q 字段). 主脑验收意见: 铅酸电池是铅最核心下游(90%+), 开工率=5.1正主"
-    }
-  },
-  "64_group": {
-    "name": "6.4 海外对华发运指标组（复用既有 LME 分地区+海关序列）",
-    "note": "i40 已调回 6.1。6.4 用 i19 SG 注册/i20 SG 注销/i25 SG 出库/i29 仁川/i30 迪拜/i17 海关铅锭进口/i7 LME 全球注销，组合观测'出发仓→发运→到港'链条。同花顺 6.4 提单/升贴水数据源缺失已剔除（见 analysis/iwencai/PB/64_diversify_20260828.md）。",
-    "members": {
-      "i19": "SG 注册仓单 出发仓水位",
-      "i20": "SG 注销仓单 发运前置信号",
-      "i25": "SG 出库量 发运动作",
-      "i29": "仁川 LME 库 分仓对照",
-      "i30": "迪拜 LME 库 分仓对照",
-      "i17": "海关铅锭月度进口 到港结果",
-      "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
-    }
-  },
+ "_meta": {
   "version": "2.7",
-  "updated": "2026-08-29",
-  "change": "T11-5.1 修正: +j51_util(铅酸电池开工率 a10151378) 作 5.1 正主; 硫酸价(j51_h2so4)入备用(归属7.x成本利润); 社库(i18)归属4.3正主, 5.1不入图3; 详见 analysis/iwencai/PB/51_diversify_20260829.md 排除项"
+  "updated": "2026-08-30",
+  "status": "部分验证",
+  "说明": "统一的Zhiji指标ID映射表（版本化）。两个数据层脚本都从此文件读取，不再各管各的。版本变更必须同步git commit + 更新STATUS.md通知对方。",
+  "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
+ },
+ "version_changelog": [
+  {
+   "v": "1.0",
+   "date": "2026-08-26",
+   "change": "从api_server.py+data_layer.py合并抽取，铅i1-i5已验证，其余为占位"
+  },
+  {
+   "v": "1.1",
+   "date": "2026-08-27",
+   "change": "v4验证后新增i6-i18共13个已验证ID; 社库Mysteel(ID00188315)从占位升级为已验证"
+  },
+  {
+   "v": "1.2",
+   "date": "2026-08-27",
+   "change": "看板统一：旧版产物(pb_stock.html/demo/build_pb_stock.py)归档至 legacy/20260826_pb_stock_v1/；当前唯一最新版 = pb_stock_v2.html (22图) + pb_41_stock.html (4.1子页)；search 搜索词策略：主连写+辅空格分词(详见 analysis/iwencai/PB/zhiji_batch_verify.py)"
+  },
+  {
+   "v": "1.3",
+   "date": "2026-08-28",
+   "change": "补录缓存中已有但缺失的 18 个指标(i19,i20,i21,i22,i23,i24...等)：LME新加坡系列/仁川/迪拜/五地社库分项/i26蓄电池成品库存/i27铅锭平衡/i28SHFE周报/i29-30/31现货库存。JSON恢复为api_cache.db唯一真源，两refresh脚本合并为refresh_cache.py"
+  },
+  {
+   "v": "1.4",
+   "date": "2026-08-28",
+   "change": "补录 i37-i40：i37 海关铅蓄电池出口量、i38 起动型铅蓄电池出口量、i39 铅蓄电池出口量累计、i40 海关铅精矿进口量(当时标注为海外发运代理)"
+  },
+  {
+   "v": "1.5",
+   "date": "2026-08-28",
+   "change": "P1 试点 6.4 完成：i40 从 trade_overseas_shipping 调回 trade_raw_import(6.1 正主归属)；新增 64_group 指标组定义(复用 i19/i20/i25/i29/i30/i17/i7，无需新增 zhiji_id)；6.4 页扩到 3 图(LME 新加坡出发仓/发运-到港节奏/分地区结构)。同花顺 6.4 提单/升贴水/在途量数据源缺失已剔除，详见 analysis/iwencai/PB/64_diversify_20260828.md"
+  },
+  {
+   "v": "1.6",
+   "date": "2026-08-28",
+   "change": "P2.1 6.1 原料进口完成：i40 归属已修正为 trade_raw_import 正主；6.1 页扩到 3 图(海关铅精矿月度进口/到港→消化/防城到港历史)；剔除 i17(属 6.2 精炼金属)、银精矿(数据源缺失)、分国别热力图(无月度矩阵)；复用 i40/i5/i9/i16 现有缓存，无需新增 zhiji_id；i16 防城到港数据源近期停更已标注。详见 analysis/iwencai/PB/61_diversify_20260828.md"
+  },
+  {
+   "v": "1.7",
+   "date": "2026-08-28",
+   "change": "P2.2 6.2 精炼金属进出口完成：6.2 页扩到 3 图(海关铅锭月度进口/中国进口vs全球注销仓单/LME 全球注销仓单)；采用方案A复用现有缓存(无需新增 zhiji_id)；i7 LME 全球注销仓单作 6.2 全球发运背景辅轴(本身属 4.1 但作为对比参照合理)；剔除粗铅/铅合金(数据源缺失)、出口目的地分布(数据源不足)、a10017091 铅锭出口总量(量级极小 2178 吨 <1/4 进口量)。详见 analysis/iwencai/PB/62_diversify_20260828.md"
+  },
+  {
+   "v": "1.8",
+   "date": "2026-08-28",
+   "change": "P2.3 6.3 制品出口完成：6.3 页扩到 3 图(铅蓄电池出口总量/启动型铅蓄电池出口/启动型vs其他类型结构)；复用 i37/i38 现有缓存(无需新增 zhiji_id)，i39 累计作备用；计算'其他类型'=(i37-i38)作为结构指标；剔除出口目的地分布(知几无矩阵)、HS 7806 铅材制品(口径不清)；标注海合会反倾销税率 25.8-74% 2026.1.13 生效。详见 analysis/iwencai/PB/63_diversify_20260828.md"
+  },
+  {
+   "v": "1.9",
+   "date": "2026-08-28",
+   "change": "用户反馈 6.2 图2 组合牵强：i17+i7 全球注销仓单改为 i17 进口+i41 出口(双向进出口,对应同花顺图5)；新增 i41 海关铅锭出口(月,吨) a10017091 已验证；所有节点页面补'图备注'(观测用途+指标关联)。"
+  },
+  {
+   "v": "2.0",
+   "date": "2026-08-29",
+   "change": "2.1盘面结构: 新增 j21_close/j21_volume/j21_oi (沪铅主力连续收盘价/成交量/持仓量, 3751交易日, zhiji观kline)"
+  },
+  {
+   "v": "2.1",
+   "date": "2026-08-29",
+   "change": "2.2现货与升贴水: 新增 j22_spot 等8指标 (SMM1#铅现货全国+沪/粤/豫/津, 再生精铅, 上海升贴水, 沪伦比值; 日频2101点)"
+  },
+  {
+   "v": "2.2",
+   "date": "2026-08-29",
+   "change": "2.3海外价格: 新增 j23_lme_cash/lme_3m/lme_0to3/lme_sp3/imp_profit 5指标 (LME现货结算+官方3M+升贴水×2+SMM进口盈亏; LME现货2945点11年)"
+  },
+  {
+   "v": "2.3",
+   "date": "2026-08-29",
+   "change": "2.4价差体系: 新增 j24_spread_m/s(期现价差当月/次月), j24_regen_profit(再生铅利润), j24_refine_spread(精废价差)"
+  },
+  {
+   "v": "2.4",
+   "date": "2026-08-29",
+   "change": "2.5估值与利润: 新增 j25_smelt_cost/ag_revenue/tc/battery 4指标 (原生冶炼加工成本+白银收益+国产TC+废蓄电池价)"
+  },
+  {
+   "v": "2.5",
+   "date": "2026-08-29",
+   "change": "[T10-3.2.3] 新增 j323_regen_output(SMM再生精铅产量 a10098385)/j323_regen_util(Mysteel再生铅产能利用率 ID01167229)/j323_regen_util_w(30家样本周度 ID01030006)/j323_native_output(原生铅产量 ID01001562)/j323_smm_regen_rate(SMM再生铅开工率 a10017000); 复用 i11/i12/i14 归属改 supply"
+  },
+  {
+   "v": "2.6",
+   "date": "2026-08-29",
+   "change": "5.1初级消费: 新增 j51_apparent/j51_cons/j51_h2so4 3指标 (SMM铅锭表观消费量+消费量+硫酸价格); 主脑验收意见: 硫酸价(硫酸价格属7.x)与社库(i18属4.3正主)不入5.1图3正主, 5.1图3改用铅酸电池开工率(a10151378)+铅锭消费验证, 详见 analysis/iwencai/PB/51_diversify_20260829.md 排除项"
+  },
+  {
+   "v": "2.7",
+   "date": "2026-08-30",
+   "change": "T11-5.1 主脑验收修正: +j51_util(SMM铅蓄电池开工率: 总 a10151378 周度) 作5.1正主; j51_h2so4 硫酸价格标 note 归属7.x成本利润备用; 5.1图3改用工率+铅锭消费验证; rebase origin/main (7提交/584af27) 后基线81指标"
+  }
+ ],
+ "indicators": {
+  "主连": {
+   "name": "期货主连结算价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "FU00014941",
+    "AL": "FU00014934",
+    "PB": "FU00014946",
+    "ZN": "FU00014950",
+    "NI": "FU00014982",
+    "SN": "FU00014952",
+    "SI": "FU00015015",
+    "LC": "FU00015030"
+   }
+  },
+  "LME库存": {
+   "name": "LME库存",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "FU00014813",
+    "AL": "FU00014812",
+    "PB": "FU00014814",
+    "ZN": "FU00014815",
+    "NI": "FU00014816",
+    "SN": "FU00014817"
+   }
+  },
+  "SHFE库存": {
+   "name": "上期所库存",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "FU00014935",
+    "AL": "FU00014930",
+    "PB": "FU00014943",
+    "ZN": "FU00014947",
+    "NI": "FU00014980",
+    "SN": "FU00014953",
+    "SI": "FU00015013",
+    "LC": "FU00015028"
+   }
+  },
+  "社库": {
+   "name": "社会库存",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00188319",
+    "AL": "ID00188307",
+    "PB": "ID00188315",
+    "ZN": "ID00188329",
+    "NI": "ID00185743",
+    "SN": "ID01517441",
+    "LC": "ID01002500"
+   }
+  },
+  "TC": {
+   "name": "TC加工费",
+   "unit": "元/吨",
+   "freq": "weekly",
+   "verified": false,
+   "ids": {
+    "CU": "ID01154994",
+    "PB": "a10127385",
+    "ZN": "ID01320080",
+    "NI": "ID01002200",
+    "SN": "ID01001800"
+   }
+  },
+  "精炼产量": {
+   "name": "精炼产量",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": false,
+   "ids": {
+    "CU": "ID00188139",
+    "AL": "a10124317",
+    "PB": "a10017062",
+    "ZN": "ID01510883",
+    "NI": "a10018516",
+    "SN": "a10003083",
+    "SI": "ID01448337",
+    "LC": "a10006555"
+   }
+  },
+  "表观消费": {
+   "name": "表观消费",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": false,
+   "ids": {
+    "CU": "ID00188149",
+    "AL": "ID00188317",
+    "PB": "ID00188325",
+    "ZN": "ID01510893",
+    "NI": "ID01001570",
+    "SN": "ID00187499",
+    "SI": "ID01448347",
+    "LC": "ID01002510"
+   }
+  },
+  "开工率": {
+   "name": "开工率",
+   "unit": "%",
+   "freq": "monthly",
+   "verified": false,
+   "ids": {
+    "CU": "ID01067717",
+    "AL": "a10031808",
+    "PB": "ID01030005",
+    "ZN": "a10097188",
+    "NI": "a10019689",
+    "SN": "a10083975",
+    "SI": "ID01448357",
+    "LC": "a10001859"
+   }
+  },
+  "i1": {
+   "name": "LME铅库存",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10193709"
+   }
+  },
+  "i2": {
+   "name": "SHFE铅仓单",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10157130"
+   }
+  },
+  "i3": {
+   "name": "SMM铅锭五地社库",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017067"
+   }
+  },
+  "i4": {
+   "name": "原生铅成品库存",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "ID01167603"
+   }
+  },
+  "i5": {
+   "name": "进口铅精矿港口库存",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "ID01167590"
+   }
+  },
+  "i6": {
+   "name": "LME铅注册仓单",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10193710"
+   }
+  },
+  "i7": {
+   "name": "LME铅注销仓单",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10193711"
+   }
+  },
+  "i8": {
+   "name": "SHFE铅仓单分地区_上海",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10174861"
+   }
+  },
+  "i9": {
+   "name": "冶炼厂铅精矿库存",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10126655"
+   }
+  },
+  "i10": {
+   "name": "铅精矿原料库存_中国",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "ID01590235"
+   }
+  },
+  "i11": {
+   "name": "再生铅成品库存",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "category": "supply",
+   "ids": {
+    "PB": "ID01691626"
+   },
+   "subleaf": "3.2.3再生/二次供应"
+  },
+  "i12": {
+   "name": "再生铅原材料库存_周",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "supply",
+   "ids": {
+    "PB": "ID01167591"
+   },
+   "subleaf": "3.2.3再生/二次供应"
+  },
+  "i13": {
+   "name": "废电瓶库存动态",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a12767751"
+   }
+  },
+  "i14": {
+   "name": "废电瓶及含铅废料处理能力_周",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "supply",
+   "ids": {
+    "PB": "ID01691540"
+   },
+   "subleaf": "3.2.3再生/二次供应"
+  },
+  "i15": {
+   "name": "再生铅原料库存天数",
+   "unit": "天",
+   "freq": "monthly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a12810628"
+   }
+  },
+  "i16": {
+   "name": "铅矿到港_防城",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10127618"
+   }
+  },
+  "i17": {
+   "name": "中国海关铅锭进口量",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017037"
+   }
+  },
+  "i18": {
+   "name": "SMM铅锭五地社库总计",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017067"
+   }
+  },
+  "i19": {
+   "name": "LME：铅：注册仓单：新加坡（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "FU00023414"
+   }
+  },
+  "i20": {
+   "name": "LME：铅：注销仓单：新加坡（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "FU00023622"
+   }
+  },
+  "i21": {
+   "name": "LME: 铅库存分仓库: 新加坡: 注册仓单: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017113"
+   }
+  },
+  "i22": {
+   "name": "LME: 铅库存分仓库: 新加坡: 注销仓单: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017166"
+   }
+  },
+  "i23": {
+   "name": "LME：铅：非仓单库存：亚洲：新加坡（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "FU00103556"
+   }
+  },
+  "i24": {
+   "name": "LME：铅：入库量：新加坡（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "FU00023194"
+   }
+  },
+  "i25": {
+   "name": "LME：铅：出库量：新加坡（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "FU00022450"
+   }
+  },
+  "i26": {
+   "name": "SMM: 铅蓄电池企业成品库存: 月度",
+   "unit": "KVAh",
+   "freq": "unknown",
+   "verified": true,
+   "category": "demand_primary",
+   "ids": {
+    "PB": "a12813406"
+   }
+  },
+  "i27": {
+   "name": "SMM: 铅锭平衡: 供求平衡: 年度",
+   "unit": "万吨",
+   "freq": "unknown",
+   "verified": true,
+   "category": "balance",
+   "ids": {
+    "PB": "a10097232"
+   }
+  },
+  "i28": {
+   "name": "SHFE: 铅: 库存周报: 本周库存期货: 周度",
+   "unit": "吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10026547"
+   }
+  },
+  "i29": {
+   "name": "LME: 铅库存_仁川: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10100437"
+   }
+  },
+  "i30": {
+   "name": "LME: 铅: 非注册仓单库存: 阿联酋: 迪拜: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a12809923"
+   }
+  },
+  "i31": {
+   "name": "铅锭：现货库存（日）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "ID00188315"
+   }
+  },
+  "i32": {
+   "name": "SMM: 铅锭五地社会库存: 广东: 周度",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017065"
+   }
+  },
+  "i33": {
+   "name": "SMM: 铅锭五地社会库存: 江苏: 周度",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017066"
+   }
+  },
+  "i34": {
+   "name": "SMM: 铅锭五地社会库存: 浙江: 周度",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017068"
+   }
+  },
+  "i35": {
+   "name": "SMM: 铅锭五地社会库存: 天津: 周度",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017069"
+   }
+  },
+  "i36": {
+   "name": "SMM: 铅锭五地社会库存: 上海: 周度",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "category": "inventory",
+   "ids": {
+    "PB": "a10017070"
+   }
+  },
+  "i37": {
+   "name": "中国海关铅蓄电池出口量",
+   "unit": "个",
+   "freq": "monthly",
+   "verified": true,
+   "category": "trade_product",
+   "ids": {
+    "PB": "a10017078"
+   }
+  },
+  "i38": {
+   "name": "中国海关起动型铅蓄电池出口量",
+   "unit": "个",
+   "freq": "monthly",
+   "verified": true,
+   "category": "trade_product",
+   "ids": {
+    "PB": "a10151429"
+   }
+  },
+  "i39": {
+   "name": "中国海关铅蓄电池出口量累计",
+   "unit": "个",
+   "freq": "monthly",
+   "verified": true,
+   "category": "trade_product",
+   "ids": {
+    "PB": "a10151427"
+   }
+  },
+  "i40": {
+   "name": "中国海关铅精矿进口量",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "category": "trade_raw_import",
+   "note": "归属 6.1 原料进口，非海外发运代理。v1.5 修正。",
+   "ids": {
+    "PB": "a10017055"
+   }
+  },
+  "i41": {
+   "name": "中国海关铅锭出口量",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "category": "trade_refined",
+   "note": "对应同花顺 6.2 图5 双向进出口；SMM a10017091 已验证。v1.9 新增，补齐 6.2 出口侧。",
+   "ids": {
+    "PB": "a10017091"
+   }
+  },
+  "j21_close": {
+   "name": "沪铅主力连续收盘价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "kline:PB:D"
+   },
+   "category": "price",
+   "subleaf": "2.1盘面结构",
+   "source": "上期所·主力连续",
+   "note": "图1量价仓三联动主图价格轴"
+  },
+  "j21_volume": {
+   "name": "沪铅主力连续成交量",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "kline:PB:D"
+   },
+   "category": "price",
+   "subleaf": "2.1盘面结构",
+   "source": "上期所·主力连续",
+   "note": "图1量/图2成交持仓比分子"
+  },
+  "j21_oi": {
+   "name": "沪铅主力连续持仓量",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "kline:PB:D"
+   },
+   "category": "price",
+   "subleaf": "2.1盘面结构",
+   "source": "上期所·主力连续",
+   "note": "图1仓/图2成交持仓比分母"
+  },
+  "j22_spot": {
+   "name": "SMM 1#铅锭现货均价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20017202"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM",
+   "note": "基差计算现货端"
+  },
+  "j22_spot_sh": {
+   "name": "SMM 1#铅锭上海现货均价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20001968"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM"
+  },
+  "j22_spot_gd": {
+   "name": "SMM 1#铅锭广东现货均价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20001971"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM"
+  },
+  "j22_spot_hn": {
+   "name": "SMM 1#铅锭河南现货均价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20001976"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM"
+  },
+  "j22_spot_tj": {
+   "name": "SMM 1#铅锭天津现货均价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20001983"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM"
+  },
+  "j22_premium": {
+   "name": "SMM 上海铅现货升贴水",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10017061"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM"
+  },
+  "j22_regen": {
+   "name": "SMM 再生精铅平均价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20017192"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM",
+   "note": "原生-再生价差再生端"
+  },
+  "j22_shfe_ratio": {
+   "name": "SMM 沪伦比值 铅 现货",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10155854"
+   },
+   "category": "price",
+   "subleaf": "2.2现货与升贴水",
+   "source": "SMM"
+  },
+  "j23_lme_cash": {
+   "name": "LME 铅现货结算价",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10193708"
+   },
+   "category": "price",
+   "subleaf": "2.3海外价格",
+   "source": "LME"
+  },
+  "j23_lme_3m": {
+   "name": "LME 铅官方3M卖价",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10193707"
+   },
+   "category": "price",
+   "subleaf": "2.3海外价格",
+   "source": "LME",
+   "note": "2022-06起有数据"
+  },
+  "j23_lme_0to3": {
+   "name": "LME 铅0-3月升贴水",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10021406"
+   },
+   "category": "price",
+   "subleaf": "2.3海外价格",
+   "source": "LME"
+  },
+  "j23_lme_sp3": {
+   "name": "LME 铅(现货/三个月)升贴水",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "j02797772"
+   },
+   "category": "price",
+   "subleaf": "2.3海外价格",
+   "source": "LME"
+  },
+  "j23_imp_profit": {
+   "name": "SMM 进口盈亏 铅 现货 盈亏额",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a12759796"
+   },
+   "category": "price",
+   "subleaf": "2.3海外价格",
+   "source": "SMM"
+  },
+  "j24_spread_m": {
+   "name": "SMM 沪铅期现价差 当月合约 收盘价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a12841344"
+   },
+   "category": "price",
+   "subleaf": "2.4价差体系",
+   "source": "SMM",
+   "note": "2025-08起"
+  },
+  "j24_spread_s": {
+   "name": "SMM 沪铅期现价差 次月合约 收盘价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a12841348"
+   },
+   "category": "price",
+   "subleaf": "2.4价差体系",
+   "source": "SMM",
+   "note": "2025-08起"
+  },
+  "j24_regen_profit": {
+   "name": "SMM 再生铅利润",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10016953"
+   },
+   "category": "price",
+   "subleaf": "2.4价差体系",
+   "source": "SMM",
+   "note": "亏损为负"
+  },
+  "j24_refine_spread": {
+   "name": "SMM 铅精废价差",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "j00146945"
+   },
+   "category": "price",
+   "subleaf": "2.4价差体系",
+   "source": "SMM"
+  },
+  "j25_smelt_cost": {
+   "name": "SMM 精炼铅成本及利润 铅冶炼加工成本",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10127391"
+   },
+   "category": "price",
+   "subleaf": "2.5估值与利润",
+   "source": "SMM",
+   "note": "2021-01起"
+  },
+  "j25_ag_revenue": {
+   "name": "SMM 精炼铅成本及利润 白银收益",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10127387"
+   },
+   "category": "price",
+   "subleaf": "2.5估值与利润",
+   "source": "SMM",
+   "note": "副产品抵扣"
+  },
+  "j25_tc": {
+   "name": "SMM 精炼铅成本及利润 铅精矿加工费(国产)",
+   "unit": "元/金属吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10127385"
+   },
+   "category": "price",
+   "subleaf": "2.5估值与利润",
+   "source": "SMM"
+  },
+  "j25_battery": {
+   "name": "SMM 废蓄电池平均价",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s22731628"
+   },
+   "category": "price",
+   "subleaf": "2.5估值与利润",
+   "source": "SMM",
+   "note": "2023-12起"
+  },
+  "j323_regen_output": {
+   "name": "SMM 再生精铅产量(中国)",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10098385"
+   },
+   "category": "supply",
+   "subleaf": "3.2.3再生/二次供应",
+   "source": "SMM"
+  },
+  "j323_regen_util": {
+   "name": "Mysteel 再生铅产能利用率(中国)",
+   "unit": "%",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "ID01167229"
+   },
+   "category": "supply",
+   "subleaf": "3.2.3再生/二次供应",
+   "source": "Mysteel"
+  },
+  "j323_regen_util_w": {
+   "name": "Mysteel 再生铅产能利用率(30家样本)",
+   "unit": "%",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "PB": "ID01030006"
+   },
+   "category": "supply",
+   "subleaf": "3.2.3再生/二次供应",
+   "source": "Mysteel"
+  },
+  "j323_native_output": {
+   "name": "Mysteel 原生铅产量(中国)",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "ID01001562"
+   },
+   "category": "supply",
+   "subleaf": "3.2.3再生/二次供应",
+   "source": "Mysteel"
+  },
+  "j323_smm_regen_rate": {
+   "name": "SMM 再生铅开工率(总)",
+   "unit": "%",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017000"
+   },
+   "category": "supply",
+   "subleaf": "3.2.3再生/二次供应",
+   "source": "SMM"
+  },
+  "j51_apparent": {
+   "name": "SMM 铅锭平衡: 表观消费量",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017183"
+   },
+   "category": "demand",
+   "subleaf": "5.1初级消费",
+   "source": "SMM"
+  },
+  "j51_cons": {
+   "name": "SMM 铅锭平衡: 消费量",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017180"
+   },
+   "category": "demand",
+   "subleaf": "5.1初级消费",
+   "source": "SMM"
+  },
+  "j51_h2so4": {
+   "name": "SMM 精炼铅成本及利润: 硫酸价格",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10127388"
+   },
+   "category": "demand",
+   "subleaf": "5.1初级消费",
+   "source": "SMM",
+   "note": "主脑验收: 硫酸价格属7.x成本利润, 5.1不入正主, 作备用"
+  },
+  "j51_util": {
+   "name": "SMM 铅蓄电池开工率: 总",
+   "unit": "%",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "PB": "a10151378"
+   },
+   "category": "demand",
+   "subleaf": "5.1初级消费",
+   "source": "SMM",
+   "note": "5.1 正主: 开工率·同步 (per tree_config 5.1 q 字段). 主脑验收意见: 铅酸电池是铅最核心下游(90%+), 开工率=5.1正主"
+  },
+  "cu_21_import": {
+   "name": "铜：进口盈亏（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01030232"
+   },
+   "_origin": "step3_CU_进口盈亏（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "cu_21_import_conc": {
+   "name": "铜精矿：进口数量初值：中国（月）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "CM0000206865"
+   },
+   "_origin": "step3_CU_铜精矿进口量（万吨）",
+   "_tier": "B",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "cu_22_premium": {
+   "name": "电解铜：平水铜：升贴水：上海（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID00302614"
+   },
+   "_origin": "step3_CU_EQ-A 铜升贴水（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "cu_22_close_front": {
+   "name": "SHFE：电解铜：主力合约：收盘价（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015764"
+   },
+   "_origin": "step3_CU_沪铜主力合约收盘价（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "cu_23_lme_settle": {
+   "name": "LME：铜：3个月合约：结算价（日）",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015490"
+   },
+   "_origin": "step3_CU_LME铜现金结算价",
+   "_tier": "B",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "cu_23_comex_close": {
+   "name": "COMEX：铜：主力合约：收盘价（日）",
+   "unit": "美元/磅",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015546"
+   },
+   "_origin": "step3_CU_COMEX铜活跃合约收盘价",
+   "_tier": "B",
+   "_nodes": [
+    "2.3",
+    "2.4"
+   ]
+  },
+  "cu_23_comex_volume": {
+   "name": "COMEX：铜：主力合约：成交量（日）",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015535"
+   },
+   "_origin": "step3_CU_COMEX铜成交量",
+   "_tier": "B",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "cu_23_comex_openinterest": {
+   "name": "COMEX：铜：主力合约：持仓量（日）",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015536"
+   },
+   "_origin": "step3_CU_COMEX铜持仓量/空盘量",
+   "_tier": "B",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "cu_24_lme_close": {
+   "name": "LME：铜：3个月合约：收盘价（日）",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00080255"
+   },
+   "_origin": "step3_CU_LME铜Cash收盘价",
+   "_tier": "B",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "cu_24_comex_close_far": {
+   "name": "COMEX：铜：主力合约：收盘价（日）",
+   "unit": "美元/磅",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015546"
+   },
+   "_origin": "step3_CU_COMEX铜指定远月合约收盘价",
+   "_tier": "B",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "cu_24_shfe_close_near": {
+   "name": "SHFE：电解铜：主力合约：收盘价（日）",
+   "unit": "元/吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015764"
+   },
+   "_origin": "step3_CU_SHFE铜近月合约收盘价",
+   "_tier": "B",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "cu_24_shfe_close_far": {
+   "name": "SHFE：电解铜：主力合约：收盘价（日）",
+   "unit": "元/吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015764"
+   },
+   "_origin": "step3_CU_SHFE铜远月合约收盘价",
+   "_tier": "B",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "cu_24_openinterest_volume": {
+   "name": "SHFE：铜（BC）：年成交量（日）",
+   "unit": "万手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00107602"
+   },
+   "_origin": "step3_CU_各合约成交量与持仓量",
+   "_tier": "B",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "cu_25_lme_close_front": {
+   "name": "LME：铜：3个月合约：收盘价（日）",
+   "unit": "美元/吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "FU00080255"
+   },
+   "_origin": "step3_CU_LME铜3个月收盘价 / 沪铜主力收盘价",
+   "_tier": "B",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "cu_25_tc_conc": {
+   "name": "铜精矿：现货TC指导价（季）",
+   "unit": "美元/干吨",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01732413"
+   },
+   "_origin": "step3_CU_铜精矿现货TC",
+   "_tier": "B",
+   "_nodes": [
+    "2.5",
+    "3.1.5",
+    "3.2.4",
+    "7.1"
+   ]
+  },
+  "cu_25_profit": {
+   "name": "SMM：中国铜冶炼厂现货冶炼利润：日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "j02870870"
+   },
+   "_origin": "step3_CU_冶炼综合利润/吨",
+   "_tier": "B",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "cu_26_openinterest_top20_front": {
+   "name": "SHFE：电解铜：07合约：空单持仓合计：前20期货公司（日）",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00022000"
+   },
+   "_origin": "step3_CU_沪铜主力合约前20空单持仓量",
+   "_tier": "B",
+   "_nodes": [
+    "2.6"
+   ]
+  },
+  "cu_26_openinterest": {
+   "name": "COMEX：铜：1#：期货：所有多头净持仓占比集中度：前4家及以下交易者（周）",
+   "unit": "百分比",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00110091"
+   },
+   "_origin": "step3_CU_席位方向性净持仓",
+   "_tier": "B",
+   "_nodes": [
+    "2.6"
+   ]
+  },
+  "cu_311_output": {
+   "name": "铜：矿山产量：澳大利亚（季）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01655723"
+   },
+   "_origin": "step3_CU_矿山产量指引",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.1"
+   ]
+  },
+  "cu_311_output_ratio_struct": {
+   "name": "矿产粗铜：产量：中国（月）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01659225"
+   },
+   "_origin": "step3_CU_矿山铜产量结构占比",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.1"
+   ]
+  },
+  "cu_311_output_conc": {
+   "name": "中国有色金属工业年鉴：铜精矿：含铜：产量：中国（年）",
+   "unit": "吨",
+   "freq": "yearly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00300716"
+   },
+   "_origin": "step3_CU_铜精矿含铜产量",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.1",
+    "3.1.3"
+   ]
+  },
+  "cu_312_output": {
+   "name": "USGS：铜矿：产量：波兰（年）",
+   "unit": "千吨",
+   "freq": "yearly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00299738"
+   },
+   "_origin": "step3_CU_波兰矿产铜产量",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "cu_312_output_conc": {
+   "name": "铜精矿：产量：澳大利亚（季）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01655544"
+   },
+   "_origin": "step3_CU_各国铜精矿产量与湿法铜产量",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "cu_313_output": {
+   "name": "矿产粗铜：产量：中国（月）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01659225"
+   },
+   "_origin": "step3_CU_矿山铜产量指引",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.3"
+   ]
+  },
+  "cu_314_import": {
+   "name": "铜矿砂及其精矿：进口数量：印尼→中国（月）",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "CM0000451450"
+   },
+   "_origin": "step3_CU_中国铜矿砂及其精矿月度进口量",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "cu_314_import_conc_arrival": {
+   "name": "铜精矿：到港量：全球（日）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "ID01537621"
+   },
+   "_origin": "step3_CU_铜精矿进口在途量/船期到港量",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "cu_315_import_conc": {
+   "name": "铜精矿：进口：TC指数（周）",
+   "unit": "美元/干吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID02407538"
+   },
+   "_origin": "step3_CU_进口铜精矿指数",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.5"
+   ]
+  },
+  "cu_321_output": {
+   "name": "矿产粗铜：产量：中国（月）",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01659225"
+   },
+   "_origin": "step3_CU_粗铜产量",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.1"
+   ]
+  },
+  "cu_321_capacity": {
+   "name": "有色冶炼企业：电解铜：产能：安徽（月）",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00262813"
+   },
+   "_origin": "step3_CU_中国电解铜冶炼产能",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.1",
+    "3.2.2"
+   ]
+  },
+  "cu_321_import": {
+   "name": "中国海关: 阳极铜进口量: 月度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "a10020457"
+   },
+   "_origin": "step3_CU_中国进口阴极铜量",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.1",
+    "6.1",
+    "6.2"
+   ]
+  },
+  "cu_321_output_recycle": {
+   "name": "中国有色金属工业年鉴：再生铜：产量：埃及（年）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01210944"
+   },
+   "_origin": "step3_CU_再生铜产量",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.1"
+   ]
+  },
+  "cu_321_util_capacity_util": {
+   "name": "铜：产能利用率：中国：产能＜10万吨（月）",
+   "unit": "百分比",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01167296"
+   },
+   "_origin": "step3_CU_冶炼厂开工率/产能利用率",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.1"
+   ]
+  },
+  "cu_322_output": {
+   "name": "ICSG：电解铜：产量：全球（月）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID00299393"
+   },
+   "_origin": "step3_CU_电解铜实际产量",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.2"
+   ]
+  },
+  "cu_323_output_recycle": {
+   "name": "再生铜杆：64家样本企业：产量：中国（月）",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01049494"
+   },
+   "_origin": "step3_CU_再生铜杆产量",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.3"
+   ]
+  },
+  "cu_323_import_recycle": {
+   "name": "USGS：铜矿石及铜精矿：进口数量：美国（年）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID01552103"
+   },
+   "_origin": "step3_CU_再生铜原料进口量",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.3"
+   ]
+  },
+  "cu_323_inv_recycle": {
+   "name": "美国铜发展协会：再生铜废料：库存（年）",
+   "unit": "千短吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "ID02014256"
+   },
+   "_origin": "step3_CU_再生铜社会库存",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.3"
+   ]
+  },
+  "cu_324_profit": {
+   "name": "SMM：中国铜冶炼厂现货冶炼利润：日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "j02870870"
+   },
+   "_origin": "step3_CU_现货冶炼综合利润/吨",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.4"
+   ]
+  },
+  "al_00_openinterest_front": {
+   "name": "SHFE：铝：主力合约：单边交易：持仓量（日）",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00018026"
+   },
+   "_origin": "step3_AL_沪铝主力合约持仓量",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_volume_front": {
+   "name": "SHFE：铝：主力合约：单边交易：成交量（日）",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00018028"
+   },
+   "_origin": "step3_AL_沪铝主力合约成交量",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_close_front": {
+   "name": "SHFE：铝：主力合约：收盘价（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00014632"
+   },
+   "_origin": "step3_AL_沪铝主力合约收盘价",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_premium": {
+   "name": "电解铝：现货升贴水：重庆—SHFE（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00302567"
+   },
+   "_origin": "step3_AL_铝现货升贴水",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_basis": {
+   "name": "SHFE：铝：基差（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00024308"
+   },
+   "_origin": "step3_AL_沪铝基差",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_lme_close": {
+   "name": "LME：铝：3个月合约：收盘价（日）",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00080250"
+   },
+   "_origin": "step3_AL_LME铝3M收盘价",
+   "_tier": "A",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_comex_inv": {
+   "name": "COMEX：铝：期货库存（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00078766"
+   },
+   "_origin": "step3_AL_COMEX铝库存",
+   "_tier": "A",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_cost_percentile": {
+   "name": "SMM: 电解铝分地区成本: 全国加权平均: 现金成本: 季度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a12802047"
+   },
+   "_origin": "step3_AL_铝冶炼端完全成本分位 / 现金成本分位",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_openinterest_top20_struct": {
+   "name": "CFTC: 纯期货合约: 纽约商品交易所（COMEX）上市的铝合约: 最大的前N个交易商持仓占全部持仓的比重%: 按净头寸统计: 头四个最大的交易商: 多头: 所有: 周度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "g02865544"
+   },
+   "_origin": "step3_AL_前20大席位的持仓结构",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_output_bauxite": {
+   "name": "USGS：铝矿：含铝：产量：美国（季）",
+   "unit": "千吨",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01547719"
+   },
+   "_origin": "step3_AL_海外铝矿产量（季度）",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_00_output": {
+   "name": "国际铝业协会：氧化铝：产量：全球（月）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00299863"
+   },
+   "_origin": "step3_AL_分国别产量占全球比重",
+   "_tier": "B",
+   "_nodes": [
+    "00"
+   ]
+  },
+  "al_313_util": {
+   "name": "原铝系铝合金锭：开工率：中国（月）",
+   "unit": "百分比",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00188132"
+   },
+   "_origin": "step3_AL_中国铝精炼厂开工率",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.3",
+    "3.2.1",
+    "3.2.2"
+   ]
+  },
+  "al_315_tc_tc": {
+   "name": "铝棒：6063：Φ120：加工费：佛山（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00259465"
+   },
+   "_origin": "step3_AL_铝精炼厂TC加工费",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.5"
+   ]
+  },
+  "al_315_tc_tc_percentile": {
+   "name": "铝棒：6063：Φ120：加工费：佛山（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00259465"
+   },
+   "_origin": "step3_AL_铝精炼厂TC加工费分位",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.5"
+   ]
+  },
+  "al_323_import_scrap": {
+   "name": "废铝：进口数量终值：中国（月）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "CM0000173848"
+   },
+   "_origin": "step3_AL_中国废铝进口量",
+   "_tier": "A",
+   "_nodes": [
+    "3.2.3",
+    "6.1"
+   ]
+  },
+  "al_323_inv_scrap": {
+   "name": "废铝：社会库存：中国（月）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001944"
+   },
+   "_origin": "step3_AL_中国废铝库存",
+   "_tier": "A",
+   "_nodes": [
+    "3.2.3"
+   ]
+  },
+  "al_324_cost": {
+   "name": "氧化铝：现金成本：中国（月）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001947"
+   },
+   "_origin": "step3_AL_铝冶炼端现金成本",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.4"
+   ]
+  },
+  "al_41_inv": {
+   "name": "氧化铝：库存：中国（周）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01721697"
+   },
+   "_origin": "step3_AL_沪铝交易所库存",
+   "_tier": "B",
+   "_nodes": [
+    "4.1"
+   ]
+  },
+  "al_41_lme_warrant": {
+   "name": "LME：铝：注销仓单（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00014316"
+   },
+   "_origin": "step3_AL_LME铝注销仓单",
+   "_tier": "A",
+   "_nodes": [
+    "4.1",
+    "4.2"
+   ]
+  },
+  "al_41_warrant": {
+   "name": "LME：铝：注销仓单（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00014316"
+   },
+   "_origin": "step3_AL_沪铝注销仓单",
+   "_tier": "B",
+   "_nodes": [
+    "4.1",
+    "4.2"
+   ]
+  },
+  "al_41_warrant_ratio": {
+   "name": "LME：铝：注销仓单（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00014316"
+   },
+   "_origin": "step3_AL_沪铝注销仓单占比",
+   "_tier": "B",
+   "_nodes": [
+    "4.1",
+    "4.2"
+   ]
+  },
+  "al_41_lme_warrant_ratio": {
+   "name": "LME：铝：注销占比（日）",
+   "unit": "百分比",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00023742"
+   },
+   "_origin": "step3_AL_LME铝注销仓单占比",
+   "_tier": "A",
+   "_nodes": [
+    "4.1",
+    "4.2"
+   ]
+  },
+  "al_43_inv_plant": {
+   "name": "SMM: 国内电解铝厂内库存: 周度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a12820686"
+   },
+   "_origin": "step3_AL_中国铝厂内库存",
+   "_tier": "A",
+   "_nodes": [
+    "4.3",
+    "4.4"
+   ]
+  },
+  "al_45_inv_implicit_percentile": {
+   "name": "氧化铝：库存：中国（周）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01721697"
+   },
+   "_origin": "step3_AL_中国铝隐性库存分位",
+   "_tier": "B",
+   "_nodes": [
+    "4.5"
+   ]
+  },
+  "al_51_cons": {
+   "name": "氟化铝：表观消费量：中国（年）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01369383"
+   },
+   "_origin": "step3_AL_中国铝表观消费量",
+   "_tier": "B",
+   "_nodes": [
+    "5.1",
+    "5.2"
+   ]
+  },
+  "al_52_cons": {
+   "name": "电解铝：消费量：中国（月）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "RE00012044"
+   },
+   "_origin": "step3_AL_中国铝终端消费分地区量",
+   "_tier": "B",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "al_52_output": {
+   "name": "氟化铝：产量：中国（季）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "RE00033166"
+   },
+   "_origin": "step3_AL_中国铝终端产量",
+   "_tier": "B",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "al_53_close_front": {
+   "name": "SHFE：铝：主力合约：收盘价（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00014632"
+   },
+   "_origin": "step3_AL_中国铝沪铝主力合约收盘价",
+   "_tier": "A",
+   "_nodes": [
+    "5.3",
+    "7.2"
+   ]
+  },
+  "al_62_import": {
+   "name": "铝土矿：进口：港口库存：中国（周）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00302795"
+   },
+   "_origin": "step3_AL_中国铝精炼金属进口分国别量",
+   "_tier": "B",
+   "_nodes": [
+    "6.2"
+   ]
+  },
+  "al_63_export": {
+   "name": "铝制品：出口金额：安徽（月）",
+   "unit": "美元",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01118480"
+   },
+   "_origin": "step3_AL_中国铝铝制品出口金额",
+   "_tier": "B",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "al_71_cost": {
+   "name": "电解铝：生产现金成本：中国（月）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001779"
+   },
+   "_origin": "step3_AL_中国铝现金成本",
+   "_tier": "A",
+   "_nodes": [
+    "7.1"
+   ]
+  },
+  "al_71_tc": {
+   "name": "铝棒：6063：Φ120：加工费均价：中国（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00275563"
+   },
+   "_origin": "step3_AL_中国铝加工费",
+   "_tier": "A",
+   "_nodes": [
+    "7.1",
+    "7.2"
+   ]
+  }
+ },
+ "64_group": {
+  "name": "6.4 海外对华发运指标组（复用既有 LME 分地区+海关序列）",
+  "note": "i40 已调回 6.1。6.4 用 i19 SG 注册/i20 SG 注销/i25 SG 出库/i29 仁川/i30 迪拜/i17 海关铅锭进口/i7 LME 全球注销，组合观测'出发仓→发运→到港'链条。同花顺 6.4 提单/升贴水数据源缺失已剔除（见 analysis/iwencai/PB/64_diversify_20260828.md）。",
+  "members": {
+   "i19": "SG 注册仓单 出发仓水位",
+   "i20": "SG 注销仓单 发运前置信号",
+   "i25": "SG 出库量 发运动作",
+   "i29": "仁川 LME 库 分仓对照",
+   "i30": "迪拜 LME 库 分仓对照",
+   "i17": "海关铅锭月度进口 到港结果",
+   "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
+  }
+ },
+ "version": "2.8",
+ "updated": "2026-08-30",
+ "change": "Step3 知几验证: 铜(CU) 37 + 铝(AL) 32 TierA/B 指标注册 (id去重跳过 93) | Step3 拉数入库: 成功1 失败0, verified置真 | Step3 拉数入库: 成功67 失败1, verified置真"
 }

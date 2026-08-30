@@ -1,0 +1,537 @@
+{
+ "3.1.1 管总量趋势，3.1.2 管国别结构": {
+  "matched": false,
+  "chosen": null,
+  "note": "这不是可检索的指标名（是看板设计说明/节点口径描述），hits 为 CFTC 1号铜持仓与表氯醇出口量，均非铝指标，也无法对应单一序列 → unmatched"
+ },
+ "COMEX铝库存": {
+  "matched": true,
+  "chosen": {
+   "id": "FU00078766",
+   "name": "COMEX：铝：期货库存（日）",
+   "source": "mysteel",
+   "unit": "吨"
+  },
+  "note": "命中 name='COMEX：铝：期货库存（日）'，品种(COMEX铝)+字段(库存)完全一致，mysteel 官方源，日度频率合理；另有 FU00078768 有担保/ FU00078775 无担保两口径，主口径选总库存 FU00078766"
+ },
+ "COMEX铝收盘价": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 中无 COMEX 铝价格序列：FU00014632 为 SHFE 铝（非 COMEX），FU00015546 为 COMEX 铜，FU00014310 仅写'铝：3个月合约'（美元/吨，实为 LME 口径），无明确 COMEX 铝 → unmatched"
+ },
+ "LME铝3M收盘价": {
+  "matched": true,
+  "chosen": {
+   "id": "FU00080250",
+   "name": "LME：铝：3个月合约：收盘价（日）",
+   "source": "mysteel",
+   "unit": "美元/吨"
+  },
+  "note": "命中 name='LME：铝：3个月合约：收盘价（日）'，交易所+品种+合约月+字段四项全部一致，美元/吨，日度；另两个命中为 SHFE 铝、口径不明的 3M 铝价，均劣于此项"
+ },
+ "LME铝交易所库存": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 全部为 USGS 口径（美国粗铝进出口/均价），且原产国分国别月度库存，缺 LME 库存总量主口径 → unmatched"
+ },
+ "LME铝仓单": {
+  "matched": true,
+  "chosen": {
+   "id": "FU00014315",
+   "name": "LME：铝：注册仓单（日）",
+   "source": "mysteel",
+   "unit": "吨"
+  },
+  "note": "命中 name='LME：铝：注册仓单（日）'，LME+铝+仓单完全一致，吨，日度；FU00014316 为注销仓单、FU00094559 为香港仓单，主口径选总量注册仓单 FU00014315"
+ },
+ "LME铝估值分位": {
+  "matched": false,
+  "chosen": null,
+  "note": "分位数属于本地计算衍生指标（需先有价格序列再滚动分位），知几无直接序列；hits 为 USGS 粗铝进出口/均价与无关项 → unmatched"
+ },
+ "LME铝前20大/后20大多空持仓明细": {
+  "matched": false,
+  "chosen": null,
+  "note": "LME 龙虎榜 20 大明细在知几无对应序列，hits 全为河南铝化合物环保税，品种语义虽含'铝'但字段与数据源完全错位 → unmatched"
+ },
+ "LME铝前20大净多头持仓量": {
+  "matched": false,
+  "chosen": null,
+  "note": "同上一条，LME 持仓明细/净多量无序列；hits 为 USGS 粗铝贸易与河南环保税，均不匹配 → unmatched"
+ },
+ "LME铝升贴水": {
+  "matched": false,
+  "chosen": null,
+  "note": "指标指向 LME 官方报价升贴水（Cash 与 3M 之差），hits 中 ID01319345/ID01319340 是电解铝 A00 现货升贴水（中国/华南，元/吨），与 LME 3M 升贴水口径不同（国内现货价差 vs 伦盘升贴水），无 LME 升贴水主口径 → unmatched"
+ },
+ "LME铝在途仓单": {
+  "matched": false,
+  "chosen": null,
+  "note": "LME 在途仓单（transits）在知几无独立字段，hits 全为 USGS 粗铝进出口 → unmatched"
+ },
+ "LME铝基差": {
+  "matched": false,
+  "chosen": null,
+  "note": "指标指向 LME 基差（现货与3M），hits 中 FU00024308 是 SHFE 铝基差、FU00051049 是氧化铝基差、ID00402707 是豆粕基差，均非 LME 口径 → unmatched"
+ },
+ "LME铝总库存": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 全为镍生铁库存与 USGS 粗铝进口量，无任何 LME 库存序列 → unmatched"
+ },
+ "LME铝注销仓单": {
+  "matched": true,
+  "chosen": {
+   "id": "FU00014316",
+   "name": "LME：铝：注销仓单（日）",
+   "source": "mysteel",
+   "unit": "吨"
+  },
+  "note": "命中 name='LME：铝：注销仓单（日）'，与指标名完全一致，吨，日度；另两项为香港/新加坡分地区口径，主口径选总量 FU00014316"
+ },
+ "LME铝注销仓单占比": {
+  "matched": true,
+  "chosen": {
+   "id": "FU00023742",
+   "name": "LME：铝：注销占比（日）",
+   "source": "mysteel",
+   "unit": "百分比"
+  },
+  "note": "命中 name='LME：铝：注销占比（日）'，字段语义等价（注销仓单占比），百分比，日度；另两项为分地区口径"
+ },
+ "LME铝现货升贴水": {
+  "matched": false,
+  "chosen": null,
+  "note": "同'LME铝升贴水'：指标需 LME 现货(Cash)报价，hits 均为电解铝国内现货升贴水（上海/佛山—SHFE），非 LME 现货价 → unmatched"
+ },
+ "LME铝现金价（Cash）": {
+  "matched": false,
+  "chosen": null,
+  "note": "LME Cash 报价在知几无对应序列，hits 为 USGS 粗铝进出口与均价 → unmatched"
+ },
+ "LME铝近月-远月月差": {
+  "matched": false,
+  "chosen": null,
+  "note": "跨月月差属于价差衍生指标，知几无序列；hits 为 USGS 粗铝贸易数据 → unmatched"
+ },
+ "东南亚产量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为 SEAISI 生铁产量（韩国/日本/印尼），指标名未限定品种，且东南亚口径应为氧化铝/电解铝产量，与生铁产量语义不符 → unmatched"
+ },
+ "中东产量": {
+  "matched": false,
+  "chosen": null,
+  "note": "指标名未含铝，hits 为中东原油产量（OPEC/伊朗/沙特），应指向中东电解铝产量（卡塔尔/阿联酋）→ unmatched"
+ },
+ "中国从几内亚铝矿进口量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 全为 USGS'X→美国'口径（含中国→美国），无'几内亚→中国'序列；注：CM0000451540 铝矿砂进口 几内亚→中国 出现在'中国铝矿砂进口量'项下，非本项 hits → 按本项 hits 判 unmatched"
+ },
+ "中国从印度尼西亚铝矿进口量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为 USGS 印尼→美国/马来西亚→美国/罗马尼亚→美国，目的地均为美国，与'中国进口'口径不符 → unmatched"
+ },
+ "中国从巴西铝矿进口量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为 USGS 巴西→美国（目的地美国）与两项镍生铁/镍铁进口，均非'巴西→中国'铝矿进口 → unmatched"
+ },
+ "中国从澳大利亚铝矿进口量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为 USGS 澳大利亚→美国、中国→美国、日本→美国，目的地口径全错 → unmatched"
+ },
+ "中国再生铝产能利用率": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为重交沥青/焦炭/矿山产能利用率，全部非铝行业 → unmatched"
+ },
+ "中国再生铝产量": {
+  "matched": false,
+  "chosen": null,
+  "note": "品种词'再生铝'命中，但 hits 为再生铝产量全球/巴西/波兰，缺中国口径 → unmatched（口径不符）"
+ },
+ "中国再生铝加工费": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为 PTA/纯涤纱/冷轧不锈钢加工费，全部非铝 → unmatched"
+ },
+ "中国再生铝检修量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为玉米价格与铁精粉产量，与再生铝检修完全无关 → unmatched"
+ },
+ "中国废铝库存": {
+  "matched": true,
+  "chosen": {
+   "id": "ID01001944",
+   "name": "废铝：社会库存：中国（月）",
+   "source": "mysteel",
+   "unit": "吨"
+  },
+  "note": "命中 name='废铝：社会库存：中国（月）'，'废铝库存'与'废铝社会库存'字段语义一致，吨，月度；另两项为重庆/福建分省口径，主口径选全国 FU/ID01001944"
+ },
+ "中国废铝进口分国别量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为大豆船舶到港数与玉米价格，全部非废铝进口 → unmatched"
+ },
+ "中国废铝进口盈亏": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为氧化铝进口盈亏与两项镍铁进口盈亏，无废铝（再生铝）进口盈亏序列 → unmatched"
+ },
+ "中国废铝进口量": {
+  "matched": true,
+  "chosen": {
+   "id": "CM0000173848",
+   "name": "废铝：进口数量终值：中国（月）",
+   "source": "mysteel",
+   "unit": "万吨"
+  },
+  "note": "命中 name='废铝：进口数量终值：中国（月）'，品种+字段+国别全部一致，万吨，月度；另两项为韩国海关/USGS 的 X→美国 口径，主口径选 CM0000173848"
+ },
+ "中国铝M2增速": {
+  "matched": false,
+  "chosen": null,
+  "note": "M2 增速是宏观货币指标，与铝产业无直接序列对应；hits 为玉米价格与螺纹钢社库 → unmatched"
+ },
+ "中国铝保税区仓单": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为电解铜保税区库存、精炼镍/镍板保税区库存，全部非铝 → unmatched"
+ },
+ "中国铝保税区库存": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为电解钴库存/氧化铝库存/锌锭上海保税区库存，全部非铝 → unmatched"
+ },
+ "中国铝关税税率": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为纯苯关税税率与两项库存，无铝（铝锭/铝矿/废铝）关税税率序列 → unmatched"
+ },
+ "中国铝冶炼成本": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为赖氨酸/苏氨酸饲料成本，全部非铝冶炼 → unmatched"
+ },
+ "中国铝冶炼成本分位": {
+  "matched": false,
+  "chosen": null,
+  "note": "分位为衍生指标且 hits 为豆粕成交量，均不匹配 → unmatched"
+ },
+ "中国铝冶炼成本分地区量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为成品油/芳烃/硫磺成本，无电解铝分省冶炼成本 → unmatched"
+ },
+ "中国铝冶炼日度利润": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为建筑用钢电炉分时段利润，全部非铝 → unmatched"
+ },
+ "中国铝冶炼日度利润分地区量": {
+  "matched": false,
+  "chosen": null,
+  "note": "同上，hits 为建筑用钢电炉利润分省，非电解铝利润 → unmatched"
+ },
+ "中国铝加工企业产能利用率": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为矿山/破碎料/重交沥青产能利用率，无铝加工企业（铝加工/SMM 铝加工开工）序列 → unmatched"
+ },
+ "中国铝加工企业开工天数": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为焦炭库存、库存可用天数与豆粕库存，无铝加工开工天数 → unmatched"
+ },
+ "中国铝加工企业开工率": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为钢铁高炉/建筑钢材/硅锰企业开工率，全部非铝行业 → unmatched"
+ },
+ "中国铝加工企业日度利润": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为建筑用钢电炉利润，非铝加工利润（挤压/铝棒加工费利润）→ unmatched"
+ },
+ "中国铝加工企业检修量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为铁精粉产量/大豆压榨量/焦炭库存，无铝加工检修 → unmatched"
+ },
+ "中国铝加工日度利润": {
+  "matched": false,
+  "chosen": null,
+  "note": "与'中国铝加工企业日度利润'重复指标，hits 仍为建筑用钢电炉利润 → unmatched"
+ },
+ "中国铝加工费": {
+  "matched": true,
+  "chosen": {
+   "id": "ID00275563",
+   "name": "铝棒：6063：Φ120：加工费均价：中国（日）",
+   "source": "mysteel",
+   "unit": "元/吨"
+  },
+  "note": "命中 name='铝棒：6063：Φ120：加工费均价：中国（日）'，铝加工费最常用代理指标（铝棒加工费），元/吨，日度；另两项为 Φ178/Φ90 规格，同族口径，主口径选 Φ120 标准规格 ID00275563"
+ },
+ "中国铝厂内库存": {
+  "matched": true,
+  "chosen": {
+   "id": "a12820686",
+   "name": "SMM: 国内电解铝厂内库存: 周度",
+   "source": "smm",
+   "unit": null
+  },
+  "note": "命中 name='SMM: 国内电解铝厂内库存: 周度'，SMM 官方源、口径最贴合（电解铝厂内库存，周度）；ID01721691 为氧化铝厂内库存（原料而非铝锭）、a12855652 为预焙阳极库存分省（成本品项）→ 选 a12820686"
+ },
+ "中国铝厂内库存占比": {
+  "matched": false,
+  "chosen": null,
+  "note": "占比为衍生指标，hits 为电动汽车/电动卡车/电动公交库存占比，全部非铝 → unmatched"
+ },
+ "中国铝原料成本": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为赖氨酸/苏氨酸成本，全部非铝 → unmatched"
+ },
+ "中国铝原料成本占比": {
+  "matched": false,
+  "chosen": null,
+  "note": "占比为衍生指标且 hits 为饲料成本 → unmatched"
+ },
+ "中国铝原料进口占比": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为韩国制造业进口占比（宏观贸易结构），与铝原料无关 → unmatched"
+ },
+ "中国铝原料进口盈亏": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为氧化铝进口盈亏与两项镍铁进口盈亏；虽与铝产业链相关，但'铝原料进口盈亏'需铝土矿进口盈亏主口径 → unmatched"
+ },
+ "中国铝发运天数": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为焦炭库存可用天数/混凝土发运量，无铝发运天数 → unmatched"
+ },
+ "中国铝在途库存": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为氧化铝在途/站台库存（两项）与 LME 香港非注册仓单，非铝锭在途库存主口径 → unmatched"
+ },
+ "中国铝在途库存分位": {
+  "matched": false,
+  "chosen": null,
+  "note": "分位为衍生指标；hits 为锂矿在途库存、氧化铝在途库存与电解铝现货库存 → unmatched"
+ },
+ "中国铝在途库存占比": {
+  "matched": false,
+  "chosen": null,
+  "note": "占比为衍生指标，hits 为大豆余粮库存占比 → unmatched"
+ },
+ "中国铝在途库存天数": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为焦炭/炼焦煤库存可用天数，无铝在途天数 → unmatched"
+ },
+ "中国铝宏观PMI": {
+  "matched": false,
+  "chosen": null,
+  "note": "指标名混淆（PMI 为全国制造业宏观指标，非铝专属）；hits 为玉米价格与螺纹钢社库 → unmatched"
+ },
+ "中国铝工厂库存": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为焦炭/炼焦煤/豆粕库存，全部非铝 → unmatched"
+ },
+ "中国铝工厂库存分位": {
+  "matched": false,
+  "chosen": null,
+  "note": "同上，分位衍生 + hits 全为黑色系库存 → unmatched"
+ },
+ "中国铝工厂库存分地区量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为氧化铝库存/铝土矿样本企业库存/焦炭库存，均非铝锭工厂库存分省口径 → unmatched"
+ },
+ "中国铝工厂库存天数": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为焦炭/炼焦煤库存可用天数，非铝 → unmatched"
+ },
+ "中国铝废铝成本": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为赖氨酸/苏氨酸成本，全部非废铝成本 → unmatched"
+ },
+ "中国铝排产计划": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为冷轧不锈钢排产（两项分系与合计），无铝排产（铝棒/铝板带材排产）→ unmatched"
+ },
+ "中国铝沪铝主力合约收盘价": {
+  "matched": true,
+  "chosen": {
+   "id": "FU00014632",
+   "name": "SHFE：铝：主力合约：收盘价（日）",
+   "source": "mysteel",
+   "unit": "元/吨"
+  },
+  "note": "命中 name='SHFE：铝：主力合约：收盘价（日）'，'沪铝主力合约收盘价'与 SHFE 铝主力完全一致，元/吨，日度；另两项为氧化铝/铝合金铸造，均非沪铝 → 选 FU00014632"
+ },
+ "中国铝海外发运分国别量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为混凝土发运量与玉米价格，全部非铝 → unmatched"
+ },
+ "中国铝海外发运占比": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为混凝土发运量与生猪存栏占比 → unmatched"
+ },
+ "中国铝海外发运盈亏": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为鸡苗/肉鸡屠宰企业盈亏，全部非铝 → unmatched"
+ },
+ "中国铝海外发运量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为混凝土发运量分省，非铝出口发运 → unmatched"
+ },
+ "中国铝海外发运金额": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为工业产成品金额/储备资产/外汇储备，与铝出口金额无关 → unmatched"
+ },
+ "中国铝煤炭成本": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为洗煤厂产能利用率/煤炭进口量/成品油炼油成本，均非电解铝煤炭成本项 → unmatched"
+ },
+ "中国铝煤炭现货价格": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为玉米油/铝壳电池废料/铜精矿现货价，无煤炭现货价格 → unmatched"
+ },
+ "中国铝现金成本": {
+  "matched": true,
+  "chosen": {
+   "id": "ID01001779",
+   "name": "电解铝：生产现金成本：中国（月）",
+   "source": "mysteel",
+   "unit": "元/吨"
+  },
+  "note": "命中 name='电解铝：生产现金成本：中国（月）'，'铝现金成本'即电解铝生产现金成本，元/吨，月度；另两项为氧化铝现金成本（上游原料），口径不同 → 选 ID01001779"
+ },
+ "中国铝电价": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为铁合金行业电价（内蒙/陕西/宁夏），铝冶炼电价应为电解铝/电力现货口径，行业错位 → unmatched"
+ },
+ "中国铝电力现货价格": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为切片铝料/铝轮毂/带皮铝线（美国）现货价，全部是废铝产品价格而非电力现货价 → unmatched"
+ },
+ "中国铝电解成本": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为赖氨酸/苏氨酸成本，全部非电解成本 → unmatched"
+ },
+ "中国铝电解日度利润": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为建筑用钢电炉利润，非电解铝利润 → unmatched"
+ },
+ "中国铝矿产能利用率": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为钢铁高炉/焦化厂/独立电炉产能利用率，全部非铝土矿 → unmatched"
+ },
+ "中国铝矿产量": {
+  "matched": false,
+  "chosen": null,
+  "note": "唯一近似的铝矿命中为 ID01547719 'USGS：铝矿：含铝：产量：美国（季）'，品种词一致但国别口径为美国而非中国，另两项为沥青产量与铁精粉产量 → unmatched"
+ },
+ "中国铝矿开工天数": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为铝矿砂及精矿进口数量（海关口径），非矿山开工天数 → unmatched"
+ },
+ "中国铝矿检修量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为 USGS 美国铝矿储量/消费量/供应量，无检修量 → unmatched"
+ },
+ "中国铝矿砂进口量": {
+  "matched": false,
+  "chosen": null,
+  "note": "3 个 hits 全部是铝矿砂及其精矿进口的分国别子集（几内亚→中国 / 澳大利亚→中国 / 印尼→中国），方向与国别目的地正确但均非'中国进口总量'口径，本批 hits 中无合计序列（CM0000138659 合计口径出现在'中国铝矿开工天数'项下，非本项）→ unmatched，建议后续检索'铝矿砂 进口 合计'补总量主口径"
+ },
+ "中国铝矿进口到岸价": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为铝矿砂进口数量类序列（数量/终值/同比），无价格序列 → unmatched"
+ },
+ "中国铝矿进口总量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为 USGS 净进口依赖度与'X→美国'口径，目的地全为美国 → unmatched"
+ },
+ "中国铝矿进口盈亏": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为氧化铝/镍铁进口盈亏，无铝土矿进口盈亏 → unmatched"
+ },
+ "中国铝矿进口量分国别占比": {
+  "matched": false,
+  "chosen": null,
+  "note": "占比为衍生指标；hits 为 USGS 'X→美国'口径 → unmatched"
+ },
+ "中国铝社会库存": {
+  "matched": false,
+  "chosen": null,
+  "note": "指标指电解铝社会库存（国内铝锭社库），hits 全为废铝社会库存（中国/重庆/福建），品种错位（废铝≠电解铝铝锭）→ unmatched"
+ },
+ "中国铝社会库存分位": {
+  "matched": false,
+  "chosen": null,
+  "note": "分位为衍生指标；hits 为废铝社库/螺纹钢社库/铝合金锭社库，均非电解铝铝锭社库分位 → unmatched"
+ },
+ "中国铝社会库存分地区量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为螺纹钢/热轧板卷分省社库，全部非铝 → unmatched"
+ },
+ "中国铝社会库存天数": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为焦炭/炼焦煤库存可用天数，非铝 → unmatched"
+ },
+ "中国铝精炼产量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为精炼镍/精炼锌/氧化铝产量，全部非铝 → unmatched"
+ },
+ "中国铝精炼厂产能": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为钒氮合金产能/棕榈油精炼厂产能/精炼镍产能，全部非铝 → unmatched"
+ },
+ "中国铝精炼厂产能利用率": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为重交沥青/焦化厂/成品油常减压产能利用率，全部非铝 → unmatched"
+ },
+ "中国铝精炼厂再生产量": {
+  "matched": false,
+  "chosen": null,
+  "note": "hits 为豆粕/精炼镍/豆油产量，全部非铝再生 → unmatched"
+ }
+}
