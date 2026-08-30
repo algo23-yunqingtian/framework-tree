@@ -106,6 +106,10 @@ GIT_CURL_OPT="--max-time 300 --retry 5 --retry-delay 10" git push origin main
 ```
 4. 主脑跑 `python3 scripts/reclaim.py` 校验 → 全 PASS 后 merge 你的产出。
 
+> **🚨 pre-commit 强制（2026-08-31 上线）**：改产物文件（`*.html/*.py/*.js`/`data/*.json`）但没动 `STATUS.md` 会被 hook 拦截。
+> 安装（clone 后一次）：`git config core.hooksPath scripts/hooks`。
+> 逃生通道：确属无需记录时 `git commit --no-verify`。别滥用——主脑会看到变更记录缺失。
+
 **任务可见性**（主脑怎么知道新 agent 在做什么）：
 1. `STATUS.md` 是唯一真源——他每完成一项必须写变更记录
 2. `git log origin/main` 看提交历史 = 他改了什么、什么时间
@@ -156,10 +160,17 @@ python3 -m http.server 8786
 
 ---
 
-## 8. 当前进度快照（2026-08-29，详见 STATUS.md）
+## 8. 当前进度快照（2026-08-31 06:30，详见 STATUS.md 近期变更记录）
 
-- ✅ 铅板块1 价格信号 6 子节点 / 18 图全部上线
-- ✅ 铅板块2 进出口 6.1-6.4 四节点上线
-- ✅ 铅板块3 库存 4.1 子页上线
-- ⏳ 下一主线：铅板块2 供给(3.x)、板块4 需求(5.x)、板块5 成本利润(7.x)、板块6 供需平衡(8.x)
-- ⏳ 其余 7 品种（铜/铝/锌/镍/锡/锂/硅）目录已建，待填充
+**全库：94 页 / 指标 196（v3.42）/ 门禁 75/75 + reclaim 12/0 / 死链 0**
+
+| 品种 | 上线板块 | 说明 |
+|---|---|---|
+| 铅(PB) 37页 | 价格2(6节点)/库存4.1/供给3.x/需求5.3/成本7.x + 进出口6.1-6.4 | 老牌完整，多为 3 图真数据页 |
+| 铜(CU) 25页 | 3.x供给 + 4.2/4.3库存 + 5.1需求 + 6.1/6.2进出口 + 总览 | 缺口：4.1/4.4/4.5/5.2/5.3/6.3/7.x 待外部源 |
+| 铝(AL) 31页 | 2.x价格 + 3.x供给 + 4.x库存全 + 5.x需求 + 6.3 + 7.x + 总览 | 缺口：6.1/6.2/6.4/7.3 待外部源 |
+
+- ⚠️ **知几 API 配额已耗尽（10000 次/2026-08-31）**：`zhiji_api.py` search/series 全返 429，`refresh_cache.py` 失效。**数据类任务全部阻塞**，需充值或换源后再做。
+- ⏳ 三表灌库（indicator_meta/series）设计已定（`analysis/spec/db_design.md`），待五金属注册后执行
+- ⏳ 五金属（ZN/NI/SN/SI/LI）Step3 产物已落盘（`analysis/iwencai/step3_final_5m.json`，138节点），待注册指标 + Step4 建页
+- 🚨 **协作机制（2026-08-31 加固）**：`git config core.hooksPath scripts/hooks` 后，改产物不写 STATUS.md 会被 pre-commit 拦截

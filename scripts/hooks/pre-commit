@@ -1,0 +1,22 @@
+#!/bin/bash
+# framework-tree pre-commit hook — 强制「改产物必须同步 STATUS.md 近期变更记录」
+# 协作红线：任何 agent（主脑/并行/未来新人）改动产物文件但不更新变更记录，
+# 会导致主脑无法回收、交接文档失真（已实测：最近10提交仅3个带 STATUS）。
+# 逃生通道：确属无需记录时 `git commit --no-verify`（会打印本警告）。
+# 安装：git config core.hooksPath scripts/hooks   （本机生效，随仓库分发）
+
+CHANGED=$(git diff --cached --name-only)
+
+PROD=$(echo "$CHANGED" | grep -E '\.(html|py|js)$|^data/.*\.json$' || true)
+if [ -n "$PROD" ] && ! echo "$CHANGED" | grep -qx 'STATUS.md'; then
+  echo ""
+  echo "⛔ pre-commit 拦截: 本次提交改了产物文件，但未更新 STATUS.md「近期变更记录」"
+  echo "   回传协议要求「完成一项必须写变更记录」（AGENTS.md §4）。"
+  echo "   产物文件:"
+  echo "$PROD" | sed 's/^/     - /'
+  echo "   ── 请先更新 STATUS.md（+1行变更记录）后重新 git add STATUS.md && git commit"
+  echo "   ── 若确认无需记录，用: git commit --no-verify 强制通过"
+  echo ""
+  exit 1
+fi
+exit 0
