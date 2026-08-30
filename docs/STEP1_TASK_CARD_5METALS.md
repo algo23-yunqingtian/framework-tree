@@ -99,6 +99,14 @@ python3 scripts/iwencai_batch_driver.py \
 - 限流保护已内置：每节点间隔 50 秒（COOLDOWN=50），单节点最长等 420 秒
 - **150 节点 ≈ 150 × 60s ≈ 2.5-3 小时**（含同花顺生成耗时），建议按品种分批跑
 
+**汇报节奏（每完成一个品种报一次，共 5 次）**：
+1. 每跑完一个品种（30 节点），先跑 `check_divergence.py --variety <CODE>` 自检
+2. 退出码 0 就 commit + push，报「<CODE> 推了」（例：「NI 推了」）
+3. 主脑验收通过后再开下一个品种
+4. 单品种约 30-45 分钟，5 个品种共 2.5-3 小时
+
+> 不建议一次性跑完 150 个再报——若第一个品种就发现格式/污染问题，早改能省 3 小时。
+
 **产物**：`analysis/iwencai/<品种>/divergence_<节点>.md`
 **状态**：`analysis/iwencai/_driver_state_5metals_step1.json`（断点续跑）
 
