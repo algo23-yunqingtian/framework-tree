@@ -2154,6 +2154,110 @@
       "subleaf": "5.3需求先行指标",
       "source": "SMM",
       "note": "5.3 辅助: 再生铅原料库存天数反映原料端备货周期"
+    },
+    "j311_ilm": {
+      "name": "ILZSG 全球铅矿产量: 月度",
+      "unit": "千吨",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "ID00299370"
+      },
+      "category": "supply",
+      "subleaf": "3.1.1海外矿·财报产量",
+      "source": "Mysteel/ILZSG",
+      "note": "3.1.1 正主: ILZSG全球铅矿产量(海外矿无铅专用序列,全球为最佳代理)"
+    },
+    "j313_qh": {
+      "name": "NBS 铅精矿产量-青海: 月度",
+      "unit": "万吨",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "a10026726"
+      },
+      "category": "supply",
+      "subleaf": "3.1.3国内矿产量",
+      "source": "SMM/NBS",
+      "note": "3.1.3 正主: 青海为中国铅矿第一大省,NBS月度数据为国内矿产量最佳代理"
+    },
+    "j314_net_imp": {
+      "name": "SMM 铅精矿净进口量(实物吨): 月度",
+      "unit": "万实物吨",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "a12871183"
+      },
+      "category": "supply",
+      "subleaf": "3.1.4矿进口量与分国别",
+      "source": "SMM",
+      "note": "3.1.4 正主: 铅精矿净进口量(实物吨,月度)"
+    },
+    "j322_native_util_w": {
+      "name": "Mysteel 原生铅产能利用率: 周度",
+      "unit": "%",
+      "freq": "weekly",
+      "verified": true,
+      "ids": {
+        "PB": "ID01030007"
+      },
+      "category": "supply",
+      "subleaf": "3.2.2开工率与检修",
+      "source": "Mysteel",
+      "note": "3.2.2 正主: 原生铅产能利用率(周度),338点至2026-08"
+    },
+    "j322_native_util_m": {
+      "name": "Mysteel 原生铅产能利用率: 月度",
+      "unit": "%",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "ID01167231"
+      },
+      "category": "supply",
+      "subleaf": "3.2.2开工率与检修",
+      "source": "Mysteel",
+      "note": "3.2.2 辅助: 原生铅产能利用率(月度),79点至2026-07"
+    },
+    "j324_primary_spread": {
+      "name": "Mysteel 铅锭-再生精铅价差: 日度",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "ID01501478"
+      },
+      "category": "supply",
+      "subleaf": "3.2.4冶炼利润→供应弹性",
+      "source": "Mysteel",
+      "note": "3.2.4 正主: 铅锭vs再生精铅价差(日度),1478点至2026-08"
+    },
+    "j324_regen_profit_refl": {
+      "name": "Mysteel 再生铅反射炉利润: 日度",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "ID01167269"
+      },
+      "category": "supply",
+      "subleaf": "3.2.4冶炼利润→供应弹性",
+      "source": "Mysteel",
+      "note": "3.2.4 辅助: 再生铅反射炉利润(日度),1870点至2026-08"
+    },
+    "j324_regen_profit_bof": {
+      "name": "Mysteel 再生铅富氧侧吹炉利润: 日度",
+      "unit": "元/吨",
+      "freq": "daily",
+      "verified": true,
+      "ids": {
+        "PB": "ID01167270"
+      },
+      "category": "supply",
+      "subleaf": "3.2.4冶炼利润→供应弹性",
+      "source": "Mysteel",
+      "note": "3.2.4 辅助: 再生铅富氧侧吹炉利润(日度),1870点至2026-08"
     }
   },
   "64_group": {
@@ -2169,7 +2273,7 @@
       "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
     }
   },
-  "version": "2.9",
-  "updated": "2026-08-30",
-  "change": "T13-5.2: +3指标 j52_car_sales/j52_base_station/j52_battery_inv (基线保留main 151→154)"
+  "version": "3.1",
+  "updated": "2026-08-31",
+  "change": "T15-3.x: +8指标 j311_ilm(全球铅矿产量) j313_qh(青海铅矿) j314_net_imp(铅精矿净进口) j322_native_util_w/m(原生开工率周/月) j324_primary_spread(精废价差) j324_regen_profit_refl/bof(再生铅炉型利润) (基线160→168)"
 }
