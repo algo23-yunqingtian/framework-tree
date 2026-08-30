@@ -104,7 +104,7 @@ def main():
         log_lines = run("git log --format='%s' -10").stdout.strip()
     ok = 0
     for line in log_lines.split("\n"):
-        if line and re.match(r"^\[(A|B|DOC|T\d+[^\]]*)\]", line.strip()):
+        if line and re.match(r"^\[(A|B|DOC|FIX[^]]*|T\d+[^]]*)\]", line.strip()):
             ok += 1
     total = len([l for l in log_lines.split("\n") if l.strip()])
     if total == 0:
