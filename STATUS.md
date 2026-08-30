@@ -23,7 +23,7 @@
 
 **图表看板范围 = 板块 2/3/4/5/6/7 六个板块。板块 8（供需平衡）不做图表**，改用独立模式（自建平衡表/表观消费拟合）另行制作。新 agent 做指标发散时**不要**为 8.1/8.2/8.3 发散或建页。
 
-**当前任务**：5.1 已交付 v2（主脑验收修正：rebase + 图3正主归属修正，详见近期变更 2026-08-30 条目）。**下一主线**：5.2 终端细分（滞后）+ 5.3 需求先行（先行1-2月），同模板逐节点；之后按顺序做板块3供给9节点(矿端3.1.x + 冶炼3.2.1/3.2.2/3.2.4) → 板块7成本利润3节点 → 库存骨架补漏5张 → 总览页(pb_5_overview/pb_7_overview)。
+**当前任务**：5.1 v2 + 5.2 v1 均已交付。pb_5_overview.html 已由主脑 c95622a 补齐(修 5.1 nav_back 死链)。**下一主线**：5.3 需求先行（先行1-2月：排产/订单/经销商库存）；之后按顺序做板块3供给9节点(矿端3.1.x + 冶炼3.2.1/3.2.2/3.2.4) → 板块7成本利润3节点 → 库存骨架补漏5张 → pb_7_overview.html。
 
 > ⚠️ **pb_stock_v2.html 已归档**（保留作历史快照，不再更新）。新页面一律照 `build_pb_25.py`（3图）或 `build_pb_32_3.py`（4图+季节）写，用 `chart_kits.py` 公共模块，**不要以 pb_stock_v2.html 为模板**。
 
@@ -97,6 +97,7 @@
 | 2026-08-29 | **[T8-季节图] 季节视图按原始数据粒度对齐 v1.2**。解决用户反馈「2.3 铅现货结算价明明有日度数据，转季节图却变成月度」。改动：chart_kits.py 新增 `_detect_gran()` 自动检测粒度(近120点平均间隔<3天→日度)；`chart_line_t` 季节模式按粒度分支——日度用新函数 `__seasonalizeByDay`(365天类目 MM-DD，历年同日对齐，有效日<30条跳过该年)、月度保留 `__seasonalizeByYear`(12月类目)；`check_html.py` 季节函数检查兼容 ByYear/ByDay；`verify_render.js` 长度检查兼容12/365、非空阈值按月/日区分(3/30)。**顺手修 2 个隐性 bug**：①opts 在构造时即调用季节函数，`__mdays`/`__dayLabels` 在 JS_COMMON 后才注入导致 undefined 报错→改为 IIFE 内联 + 函数内 `md[]` 内联，自包含不依赖注入顺序；②非空判断 `===null` 漏判 `undefined` 致 `Math.round(undefined)=NaN` 混入数据→改 `==null`。重建 10 页。验证：日度页(2.2/2.3/2.6) 365类目、每年有效241-253点、2026年167点(至8月底)、NaN=0；月度页(2.1/6.1/6.2/6.3) 保持12类目不受影响。check_html 10/10 + verify_render 10/10 ALL PASS。已推 `6d402bc` | 线A |
 | 2026-08-29 | **[T11-5.1] 铅需求·5.1初级消费子页上线 v1**（板块5第1子节点，全流程：Chrome CDP 同花顺发散→知几验证→注册→入库→build→push）。新增 `pb_51_primary_consumption.html` 3图全真：图1 铅锭表观消费vs实际消费(月频双轴)、图2 表观消费量季节图(近5年历年线)、图3 铅锭社会库存vs硫酸价格(日频双轴,供需平衡+生产利润)。数据源=SMM铅锭平衡(a10017183/a10017180)+SMM五地社库总计(i18)+SMM硫酸价格(a10127388)。indicators_v1.json v2.4→v2.5(+3指标 j51_apparent/j51_cons/j51_h2so4, 累计76指标)。发散记录 `analysis/iwencai/PB/51_diversify_20260829.md`。三道门禁全绿：check_html 11/11 + verify_render 11/11 + reclaim PASS=12 | 线A |
 | 2026-08-30 | **[T11-5.1] 主脑验收修正 v2：rebase + 图3正主归属修正**（主脑验收意见落地）。**rebase**：task/pb_51 基于旧 55e4bfc(落后 origin/main 7 提交)，rebase 至 584af27 后基线 81 指标(78 base + 3 j51)。indicators_v1.json 冲突解：以 origin/main 为基(78 指标/16 版 changelog)，j51 追加成 v2.6，再 v2.7 增 j51_util；_meta 同步 2.7。**图3 修正**（指标取舍规则1 归属优先）：原图3 社库(i18)+硫酸价(j51_h2so4) 跨类——i18 是 4.3 库存正主、硫酸价属 7.x 成本利润；改为铅酸电池开工率(j51_util, SMM a10151378 周度404点)+铅锭消费验证(j51_cons 月度)，贴合 tree_config 5.1 q=「开工率·同步」。发散记录 `51_diversify_20260829.md` 增「主脑验收修正记录」+ 排除项表(5 项剔除指标及归属说明) + 5.1/5.2/5.3 边界表。indicators_v1.json v2.7(+j51_util, 82 指标)。缓存刷新 `refresh_cache.py --metrics j51_util` 404 点入库。三道门禁：check_html 17/17 ✅ + verify_render 17/17 ALL PASS ✅ + reclaim PASS=11 FAIL=1(FAIL 为 Windows 下 `--format='%s'` 单引号字面传递致前缀抽查预存 bug，非本改动引入，参见 T12 条目备注) | 线A |
+| 2026-08-30 | **[T13-5.2] 铅需求·5.2终端细分消费子页上线 v1**（板块5第2子节点）。新增 `pb_52_terminal_consumption.html` 3图全真：图1 汽车销量vs铅蓄电池成品库存(月频双轴, 5.2正主)、图2 汽车销量季节图(近5年历年线)、图3 基站设备产量vs铅蓄电池成品库存(月频双轴, 通信终端)。数据源=SMM中国汽车产销量(a10128004 102点)+Mysteel移动通信基站设备(CM0000017742 85点)+SMM铅蓄电池成品库存(a12813406 31点)。indicators_v1.json v2.7→v2.8(+3指标 j52_car_sales/j52_base_station/j52_battery_inv, 累计85指标)。发散记录 `analysis/iwencai/PB/52_diversify_20260830.md`。排除项：电动两轮车/储能装机(知几无月度数据)、铅蓄电池出口量(归6.3)、铅蓄电池进口量(归6.x)、铅锭消费量(j51_cons归5.1)。5.1/5.2/5.3边界表写入NOTE。三道门禁：check_html 18/18 ✅ + verify_render 18/18 ALL PASS ✅ + reclaim PASS=12 FAIL=1(预存Windows bug)。已推 `feb0e86` | 线A |
 
 ---
 
