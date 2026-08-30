@@ -1,0 +1,21 @@
+{
+ "variety": "SN",
+ "name": "锡",
+ "meta": {
+  "version": "1.0",
+  "updated": "2026-08-30",
+  "source": "主脑批量创建（Step1 发散前置）",
+  "usage": "render_prompt.py --variety SN"
+ },
+ "industry_terms": [
+  "精炼锡",
+  "锡锭",
+  "锡精矿",
+  "再生锡",
+  "焊锡/锡焊料",
+  "锡化工",
+  "电子级锡",
+  "缅甸锡矿"
+ ],
+ "note": "industry_terms 用于提示模型指标命名贴近业内口径，不改变筛选范围。空数组则模板不注入该段。"
+}

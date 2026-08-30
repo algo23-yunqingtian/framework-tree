@@ -1,0 +1,21 @@
+{
+ "variety": "SI",
+ "name": "工业硅",
+ "meta": {
+  "version": "1.0",
+  "updated": "2026-08-30",
+  "source": "主脑批量创建（Step1 发散前置）",
+  "usage": "render_prompt.py --variety SI"
+ },
+ "industry_terms": [
+  "工业硅/多晶硅",
+  "金属硅",
+  "硅块/硅片",
+  "有机硅单体",
+  "光伏多晶硅",
+  "硅锭",
+  "硅粉",
+  "低铁硅/553#"
+ ],
+ "note": "industry_terms 用于提示模型指标命名贴近业内口径，不改变筛选范围。空数组则模板不注入该段。"
+}

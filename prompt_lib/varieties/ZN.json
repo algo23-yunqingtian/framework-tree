@@ -1,0 +1,22 @@
+{
+ "variety": "ZN",
+ "name": "锌",
+ "meta": {
+  "version": "1.0",
+  "updated": "2026-08-30",
+  "source": "主脑批量创建（Step1 发散前置）",
+  "usage": "render_prompt.py --variety ZN"
+ },
+ "industry_terms": [
+  "电锌",
+  "锌锭",
+  "锌精矿",
+  "再生锌",
+  "锌合金",
+  "镀锌板/热镀锌",
+  "氧化锌",
+  "压铸合金",
+  "电池级锌"
+ ],
+ "note": "industry_terms 用于提示模型指标命名贴近业内口径，不改变筛选范围。空数组则模板不注入该段。"
+}

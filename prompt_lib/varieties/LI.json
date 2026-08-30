@@ -1,0 +1,22 @@
+{
+ "variety": "LI",
+ "name": "锂",
+ "meta": {
+  "version": "1.0",
+  "updated": "2026-08-30",
+  "source": "主脑批量创建（Step1 发散前置）",
+  "usage": "render_prompt.py --variety LI"
+ },
+ "industry_terms": [
+  "碳酸锂",
+  "氢氧化锂",
+  "锂矿",
+  "盐湖提锂",
+  "锂云母/锂辉石",
+  "电池级碳酸锂",
+  "工业级碳酸锂",
+  "三元前驱体",
+  "磷酸铁锂"
+ ],
+ "note": "industry_terms 用于提示模型指标命名贴近业内口径，不改变筛选范围。空数组则模板不注入该段。"
+}

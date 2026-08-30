@@ -1,0 +1,22 @@
+{
+ "variety": "NI",
+ "name": "镍",
+ "meta": {
+  "version": "1.0",
+  "updated": "2026-08-30",
+  "source": "主脑批量创建（Step1 发散前置）",
+  "usage": "render_prompt.py --variety NI"
+ },
+ "industry_terms": [
+  "镍生铁/NPI",
+  "高冰镍",
+  "电解镍",
+  "精炼镍",
+  "镍矿/硫化矿",
+  "镍铁一体化",
+  "不锈钢镍",
+  "电池级镍",
+  "高纯镍/电积镍"
+ ],
+ "note": "industry_terms 用于提示模型指标命名贴近业内口径，不改变筛选范围。空数组则模板不注入该段。"
+}
