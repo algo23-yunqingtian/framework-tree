@@ -374,6 +374,14 @@ PAGES = {
         "label": "隐性·在途 4.5",
         "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
     },
+    "5.1": {
+        "file": "al_5_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_51_c1", "echart_al_51_c2"],
+        "label": "初级消费 5.1",
+        "has_seasonal": True,   # 主图 al_51_util 月频 11 完整年，有真实历年 series
+    },
     "5.2": {
         "file": "al_5_2.html",
         "min_bytes": 12000,

@@ -60,7 +60,7 @@ THEMES = {
     "4.3": ("社会库存", "铝社会库存水平"),
     "4.4": ("工厂库存", "铝厂库水平"),
     "4.5": ("隐性·在途", "隐性库存与在途量"),
-    "5.1": ("初级消费", "铝初级消费（表观消费/电解铝产量）"),
+    "5.1": ("初级消费", "电解铝开工率（产能利用水平与供给弹性）"),
     "5.2": ("终端消费", "铝终端细分消费（汽车/建筑/电力）"),
     "5.3": ("消费价格", "铝价与消费的联动验证"),
     "6.1": ("原料进口", "阳极铜/废铜原料进口量"),
@@ -185,12 +185,19 @@ def build_node(node, ind_list, meta):
     # 季节视图降级：完整日历年份数不足 3 个时无法产出 3 条历年 series，改纯时序
     can_season = full_years(main["pairs"]) >= 3
     mdata = to_monthly_mean(main["pairs"]) if (can_season and is_daily(main["freq"])) else main["pairs"]
+    # 看图口径按单位分派：价格/利润类走「负值=亏损」，百分比（开工率/利用率/占比）走区间解读
+    # 否则开工率页会被贴上「负值区=亏损」的错误解读（al_51_util 正主坑）
+    if main["unit"] in ("百分比", "百分比(%)", "%"):
+        howto = ("高位(接近或超过长期均值)=产能利用充分、供给刚性增强；低位=开工不足、"
+                 "产能闲置，供给弹性释放。最新(%s)：%s%%。") % (latest(main["m"]), main["pairs"][-1][1])
+    else:
+        howto = ("负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(%s)：%s%s。") % (
+            latest(main["m"]), main["pairs"][-1][1], main["unit"])
     h1, j1 = chart_line_t(
         cid, "%s（主图·%s）" % (main["name"], node),
         "%s · %s · %s · %d点 · %d年跨度 · 至 %s" % (main["mid"], main["freq"], main["unit"], main["m"]["n"], span_years(main["pairs"]), latest(main["m"])),
         color, mdata,
-        "什么时候看：%s。<br>怎么看：负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(%s)：%s%s。切季节视图可对比近5年同期位置。" % (
-            topic, latest(main["m"]), main["pairs"][-1][1], main["unit"]),
+        "什么时候看：%s。<br>怎么看：%s切季节视图可对比近5年同期位置。" % (topic, howto),
         default_seasonal=can_season,
     )
     if not can_season:
@@ -225,15 +232,29 @@ def build_node(node, ind_list, meta):
     for s in single[:1]:
         if ci > 4: break
         cid = "echart_%s_%s_c%d" % (main_comm, node.replace(".", ""), ci)
+        # 辅助图口径：高频指标看边际，低频看确认；避免生成「结合主图判断<主图主题>」的泛化解读
+        if s["freq"] in ("周", "week", "weekly"):
+            st = ("什么时候看：主图为月度口径、发布滞后，本图周度口径用于提前捕捉边际变化。<br>"
+                  "怎么看：周度与月度同向=趋势确认；周度先拐而月度未变=领先信号，需连续2-3周验证后确认。")
+        elif s["freq"] in ("年", "annual"):
+            st = ("什么时候看：本图为年度口径，用于确认中期趋势而非追踪边际。<br>"
+                  "怎么看：年度值与主图趋势一致=中期方向确认；明显偏离=结构变化，需查统计口径是否调整。")
+        else:
+            st = ("什么时候看：主图的高频补充，用于验证边际变化。<br>"
+                  "怎么看：与主图同向=趋势确认；反向=背离信号，需判断谁主导。")
         cids.append(cid)
-        mdata = to_monthly_mean(s["pairs"]) if is_daily(s["freq"]) else s["pairs"]
+        # 落单图同样做季节降级：完整年份<3 时无法产出 3 条历年 series
+        s_can_season = full_years(s["pairs"]) >= 3
+        mdata = to_monthly_mean(s["pairs"]) if (s_can_season and is_daily(s["freq"])) else s["pairs"]
         h, j = chart_line_t(
             cid, "%s（补充·%s）" % (s["name"], node),
-            "%s · %s · %s · %d点 · 至 %s" % (s["mid"], s["freq"], s["unit"], s["m"]["n"], latest(s["m"])),
+            "%s · %s · %s · %d点 · %d年跨度 · 至 %s" % (s["mid"], s["freq"], s["unit"], s["m"]["n"], span_years(s["pairs"]), latest(s["m"])),
             ALT_COLORS[(ci - 2) % len(ALT_COLORS)], mdata,
-            "什么时候看：补充验证 %s。<br>怎么看：结合主图判断 %s 的边际变化。" % (topic, s["name"]),
-            default_seasonal=is_daily(s["freq"]),
+            st,
+            default_seasonal=s_can_season,
         )
+        if not s_can_season:
+            h = strip_season_button(h)
         html_all.append(h); js_all.append(j)
         note_metrics.append("%s %s(%s)" % (s["mid"], s["name"], s["unit"]))
         used.add(s["mid"])

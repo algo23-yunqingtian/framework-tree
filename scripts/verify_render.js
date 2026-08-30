@@ -62,6 +62,7 @@ const PAGES = [
   { key: 'al_43', file: 'al_4_3.html', charts: 1, seasonal: [] },
   { key: 'al_44', file: 'al_4_4.html', charts: 1, seasonal: [] },
   { key: 'al_45', file: 'al_4_5.html', charts: 1, seasonal: ["echart_al_45_c1"] },
+  { key: 'al_51', file: 'al_5_1.html', charts: 2, seasonal: ["echart_al_51_c1"] },
   { key: 'al_52', file: 'al_5_2.html', charts: 2, seasonal: ["echart_al_52_c1"] },
   { key: 'al_53', file: 'al_5_3.html', charts: 1, seasonal: ["echart_al_53_c1"] },
   { key: 'cu_61', file: 'cu_6_1.html', charts: 2, seasonal: ["echart_cu_61_c1"] },
