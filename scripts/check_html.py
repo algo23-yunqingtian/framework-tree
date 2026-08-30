@@ -583,6 +583,42 @@ PAGES = {
         "has_seasonal": True,
     },
 
+    "cu_42": {
+        "file": "cu_4_2.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_cu_42_c1", "echart_cu_42_c2"],
+        "label": "仓单 4.2",
+        "has_seasonal": True,
+    },
+
+    "cu_43": {
+        "file": "cu_4_3.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_cu_43_c1", "echart_cu_43_c2"],
+        "label": "社会库存 4.3",
+        "has_seasonal": True,
+    },
+
+    "cu_51": {
+        "file": "cu_5_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_cu_51_c1", "echart_cu_51_c2"],
+        "label": "初级消费 5.1",
+        "has_seasonal": True,
+    },
+
+    "al_311": {
+        "file": "al_3_1_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_311_c1", "echart_al_311_c2"],
+        "label": "铝土矿产量 3.1.1",
+        "has_seasonal": True,
+    },
+
     "311": {
         "file": "pb_311_overseas_mine.html",
         "min_bytes": 20000,

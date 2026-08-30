@@ -78,8 +78,9 @@ def main():
 
     meta = json.loads(INDICATOR_JSON.read_text(encoding="utf-8"))
     # v1.4: 兼容 i*(库存) / j*(价格信号+供给 j21-j323) 前缀
+    # v3.42: 兼容 cu_/al_ 前缀（铜铝 Step3 注册指标）
     i_entries = {k: v for k, v in meta["indicators"].items()
-                 if k.startswith("i") or k.startswith("j")}
+                 if k.startswith(("i", "j", "cu_", "al_", "zn_", "ni_", "sn_", "si_", "li_", "pb_"))}
     if args.metrics:
         wanted = set(m.strip() for m in args.metrics.split(","))
         i_entries = {k: v for k, v in i_entries.items() if k in wanted}
