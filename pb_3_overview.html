@@ -36,110 +36,111 @@ body{background:#0f1419;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFo
 <div class="wrap">
   <div class="nav-back"><a href="index.html">← 回主站</a></div>
   <div class="h1">铅(PB) · 板块3【供给】总览</div>
-  <div class="sub">10 个子节点 · 3.2.3 再生/二次供应已上线（3 图全真数据）· 其余 9 节点待填充 · indicators_v1.json v2.5 · 2026-08-29</div>
+  <div class="sub">10 个子节点 · 3.1.1-3.2.4 全部上线（3.2.3 先上线，后 8 节点全上线）· indicators_v1.json v3.1 · 2026-08-31</div>
 
   <div class="note">
     <b>板块3 覆盖：</b>矿端（3.1.1 海外矿财报 / 3.1.2 分国别 / 3.1.3 国内矿 / 3.1.4 矿进口 / 3.1.5 TC加工费）+ 冶炼端（3.2.1 精炼产量 / 3.2.2 开工率与检修 / 3.2.3 再生二次供应 / 3.2.4 冶炼利润供应弹性）。<br>
-    <b>先行上线 3.2.3 的原因：</b>铅的核心定价锚是「再生铅定价」，再生铅 2025 年已占中国铅总产量约 51.6%（SMM 口径），是供给端的主导变量；而矿端节点（3.1.x）缓存数据陈旧（i16 防城到港止于 2020、i5 精矿港口库存止于 2023-09、i10 原料库存止于 2022-04），需换外部数据源后再建。<br>
-    <b>跨板块复用提示：</b>3.1.4 矿进口（i40）已在 6.1 展示；3.1.5 TC加工费（j25_tc）与 3.2.4 冶炼利润（j24_regen_profit）已在 2.5 / 2.4 展示，建页时需换视角避免口径重复。<br>
-    <b>数据底座：</b>SMM 再生精铅产量（月）+ Mysteel 再生铅产能利用率（月/30家周度）+ Mysteel 原生铅产量（月）+ SMM 再生铅原料库存（周）。
+    <b>3.1.5 TC加工费正主：</b>国产TC(a10127385)为正主，题材对象完全一致（树config定义）；进口TC(a10021355)=7.3正主，3.1.5仅作辅助交叉。<br>
+    <b>3.2.2 开工率：</b>原生铅产能利用率(周,ID01030007)为正主，338点至2026-08；再生铅开工率(月)作辅助对比。<br>
+    <b>3.2.4 供应弹性：</b>铅锭-再生精铅价差(ID01501478)为正主，1478点至2026-08；反射炉/富氧侧吹炉利润作炉型对比。<br>
+    <b>数据底座：</b>ILZSG全球铅矿产量 + NBS青海铅精矿产量 + 中国海关铅精矿进口 + SMM国产TC/进口TC + Mysteel原生铅产量/产能利用率/精废价差/再生铅炉型利润。
   </div>
 
-  <div class="grid"><div class="card card-off">
+  <div class="grid"><a class="card" href="pb_311_overseas_mine.html">
       <div class="card-head">
         <span class="card-num">3.1.1</span>
         <span class="card-title">海外矿·财报产量</span>
       </div>
-      <div class="card-charts">主要铅矿企业季度产量（ILZSG/USGS）</div>
-      <div class="card-metrics">待知几验证：USGS/ILZSG 海外矿产量序列</div>
+      <div class="card-charts">图1 全球铅矿产量(正主) / 图2 铅矿到港防城 / 图3 进口铅精矿港口库存</div>
+      <div class="card-metrics">j311_ilm 全球铅矿产量(月) · i16 铅矿到港防城(月) · i5 进口铅精矿港口库存(周)</div>
       <div class="card-foot">
-        <span class="badge">待填充</span>
-        <span class="go off">待填充</span>
-      </div></div><div class="card card-off">
+        <span class="badge">102月+294月+432周 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a><a class="card" href="pb_312_overseas_by_country.html">
       <div class="card-head">
         <span class="card-num">3.1.2</span>
         <span class="card-title">海外矿·分国别总量</span>
       </div>
-      <div class="card-charts">中国/秘鲁/澳/塔/巴 分国别矿产量</div>
-      <div class="card-metrics">ID00300294 系列 中国有色金属工业年鉴分国别(年)</div>
+      <div class="card-charts">图1 全球产量vs中国进口 / 图2 全球产量季节图 / 图3 分港口结构</div>
+      <div class="card-metrics">j311_ilm 全球铅矿产量(月) · i40 海关铅精矿进口(月) · i16 防城到港(月) · i5 港口库存(周)</div>
       <div class="card-foot">
-        <span class="badge">待填充</span>
-        <span class="go off">待填充</span>
-      </div></div><div class="card card-off">
+        <span class="badge">102月+103月+294月+432周 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a><a class="card" href="pb_313_domestic_mine.html">
       <div class="card-head">
         <span class="card-num">3.1.3</span>
         <span class="card-title">国内矿产量</span>
       </div>
-      <div class="card-charts">国内铅矿矿产量 + 精矿产量</div>
-      <div class="card-metrics">Mysteel 国内铅矿产量(月)</div>
+      <div class="card-charts">图1 青海铅精矿产量(正主) / 图2 产量季节图 / 图3 国内原料库存</div>
+      <div class="card-metrics">j313_qh 青海铅精矿产量(月) · i10 铅精矿原料库存(月)</div>
       <div class="card-foot">
-        <span class="badge">待填充</span>
-        <span class="go off">待填充</span>
-      </div></div><div class="card card-off">
+        <span class="badge">65月+227月 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a><a class="card" href="pb_314_mine_import.html">
       <div class="card-head">
         <span class="card-num">3.1.4</span>
         <span class="card-title">矿进口量与分国别</span>
       </div>
-      <div class="card-charts">海关铅精矿月度进口 + 分国别</div>
-      <div class="card-metrics">i40 海关铅精矿进口(月) · 已在 6.1 展示</div>
+      <div class="card-charts">图1 海关铅精矿进口量(正主) / 图2 SMM净进口季节图 / 图3 进口vs到港节奏</div>
+      <div class="card-metrics">i40 海关铅精矿进口(月) · j314_net_imp SMM净进口(月) · i16 防城到港(月)</div>
       <div class="card-foot">
-        <span class="badge">跨板块复用</span>
-        <span class="go off">待填充</span>
-      </div></div><div class="card card-off">
+        <span class="badge">103月+31月+294月 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a><a class="card" href="pb_315_tc_fee.html">
       <div class="card-head">
         <span class="card-num">3.1.5</span>
         <span class="card-title">TC 加工费</span>
       </div>
-      <div class="card-charts">国产TC + 进口TC + 矿端紧松</div>
-      <div class="card-metrics">j25_tc 国产TC · 已在 2.5 展示</div>
+      <div class="card-charts">图1 国产TC正主+进口辅助 / 图2 国产TC季节图 / 图3 TC分位带</div>
+      <div class="card-metrics">j25_tc 国产TC(日,正主) · j73_imp_tc 进口TC(日,辅助)</div>
       <div class="card-foot">
-        <span class="badge">跨板块复用</span>
-        <span class="go off">待填充</span>
-      </div></div><div class="card card-off">
+        <span class="badge">1370日+2042日 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a><a class="card" href="pb_321_refining_output.html">
       <div class="card-head">
         <span class="card-num">3.2.1</span>
         <span class="card-title">精炼产量</span>
       </div>
-      <div class="card-charts">精炼铅总产量 + 冶炼产量</div>
-      <div class="card-metrics">Mysteel 精炼铅产量(月)</div>
+      <div class="card-charts">图1 原生铅产量(正主) / 图2 原生vs再生对比 / 图3 原生产量季节图</div>
+      <div class="card-metrics">j323_native_output 原生铅产量(月) · j323_regen_output 再生精铅产量(月)</div>
       <div class="card-foot">
-        <span class="badge">待填充</span>
-        <span class="go off">待填充</span>
-      </div></div><div class="card card-off">
+        <span class="badge">101月+91月 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a><a class="card" href="pb_322_operating_rate.html">
       <div class="card-head">
         <span class="card-num">3.2.2</span>
         <span class="card-title">开工率与检修</span>
       </div>
-      <div class="card-charts">原生铅开工率 + 检修停产损失量</div>
-      <div class="card-metrics">Mysteel 原生铅开工率/检修事件</div>
+      <div class="card-charts">图1 原生铅产能利用率周(正主) / 图2 原生vs再生开工率 / 图3 开工率季节图</div>
+      <div class="card-metrics">j322_native_util_w 原生产能利用率(周) · j323_smm_regen_rate 再生铅开工率(月)</div>
       <div class="card-foot">
-        <span class="badge">待填充</span>
-        <span class="go off">待填充</span>
-      </div></div><a class="card" href="pb_32_3_regen_supply.html">
+        <span class="badge">338周+103月 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a><a class="card" href="pb_32_3_regen_supply.html">
       <div class="card-head">
         <span class="card-num">3.2.3</span>
         <span class="card-title">再生/二次供应</span>
       </div>
-      <div class="card-charts">图1 再生铅有效供应(产量×利用率×原料库存) / 图2 原生vs再生供应结构(再生占比) / 图3 产能利用率双口径 / 图4 产量季节图</div>
-      <div class="card-metrics">j323_regen_output 再生精铅产量(月) · j323_regen_util 产能利用率(月) · j323_regen_util_w 30家样本(周) · j323_native_output 原生铅产量(月) · i12 再生原料库存(周)</div>
+      <div class="card-charts">图1 再生铅有效供应 / 图2 原生vs再生供应结构 / 图3 产能利用率双口径 / 图4 产量季节图</div>
+      <div class="card-metrics">j323_regen_output 再生精铅产量(月) · j323_regen_util 产能利用率(月) · j323_regen_util_w 30家样本(周) · j323_native_output 原生铅产量(月)</div>
       <div class="card-foot">
         <span class="badge">91月+380周 4图全真</span>
         <span class="go">查看 →</span>
-      </div></a><div class="card card-off">
+      </div></a><a class="card" href="pb_324_profit_elasticity.html">
       <div class="card-head">
         <span class="card-num">3.2.4</span>
         <span class="card-title">冶炼利润→供应弹性</span>
       </div>
-      <div class="card-charts">冶炼利润驱动的供应弹性</div>
-      <div class="card-metrics">j24_regen_profit 再生利润 · 已在 2.4 展示</div>
+      <div class="card-charts">图1 铅锭-再生精铅价差(正主) / 图2 再生铅炉型利润对比 / 图3 利润季节图</div>
+      <div class="card-metrics">j324_primary_spread 精废价差(日) · j324_regen_profit_refl 反射炉利润(日) · j324_regen_profit_bof 富氧炉利润(日)</div>
       <div class="card-foot">
-        <span class="badge">跨板块复用</span>
-        <span class="go off">待填充</span>
-      </div></div>
+        <span class="badge">1478日+1870日 3图全真</span>
+        <span class="go">查看 →</span>
+      </div></a>
   </div>
 
   <div class="footer">
-    有色金属产业指标树 · 铅(PB) · 板块3 供给总览 · v1 · 2026-08-29<br>
+    有色金属产业指标树 · 铅(PB) · 板块3 供给总览 · v2 · 2026-08-31<br>
     <a href="index.html" style="color:#7a8c5b;text-decoration:none">← 返回 framework-tree 主站</a>
   </div>
 </div>
