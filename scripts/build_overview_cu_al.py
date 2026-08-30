@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-build_overview_cu_al.py — 主脑补建 7 个铜铝板块总览页，解 22 页死链。
+build_overview_cu_al.py — 补建铜铝板块总览页（静态卡片页），解子页 nav_back 死链。
 
-背景：铜铝 agent 在 task/cu_price 建成 36 个铜铝页，但 22 个子页 nav_back 指向
-不存在的板块总览页（cu_3_overview ×9 / cu_6_overview ×2 / al_3_overview ×1 /
-al_4_overview ×5 / al_5_overview ×3 / al_6_overview ×1 / al_7_overview ×2）。
-本脚本按已有 al_2_overview.html / cu_2_overview.html 的模板风格补齐这 7 个，
-使 22 页 nav_back 全部可达。
+背景：铜铝 agent 建成 36+ 个铜铝子页，但大量子页 nav_back 指向不存在的板块总览页。
+本脚本按已有 al_2_overview.html / cu_2_overview.html 的模板风格统一补齐 9 个：
+  cu_3 / cu_4 / cu_5 / cu_6 + al_3 / al_4 / al_5 / al_6 / al_7。
+
+静态页说明（为何不进 check_html/verify_render）：
+  总览页是纯静态卡片导航页，无 ECharts、无季节视图、无 cid，
+  与含 chart 的指标页结构不同。既有 7 个 overview 亦未注册两套门禁
+  （check_html/verify_render 专为 <div class="chart">+echarts.min.js 页设计）。
+  保持口径一致：overview 页走独立 smoke 校验，不塞入 75/75 图表页计数。
+  smoke 校验：`python3 scripts/check_html.py` 之后手动
+  `python3 -c "..."` 或见 docs/STATUS 死链检查（href 可达性）。
 
 红线：
 - 数据内嵌零服务器依赖，零 fetch
