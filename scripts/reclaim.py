@@ -102,9 +102,12 @@ def main():
     log_lines = run("git log --format='%s' -10 HEAD..origin/main").stdout.strip()
     if not log_lines:
         log_lines = run("git log --format='%s' -10").stdout.strip()
+    # 白名单：[A] [B] [DOC] [FIX-...] [T<数字>...]
+    # 注意：必须允许后缀变体（[B-5M-Step3] / [DOC-Step1] / [T14-7.fix] 均为实际在用格式）
+    # 2026-08-31 修：原正则 T\d+ 紧贴 ]，导致 [B-5M-*]/[DOC-*] 被误判 FAIL
     ok = 0
     for line in log_lines.split("\n"):
-        if line and re.match(r"^\[(A|B|DOC|FIX[^]]*|T\d+[^]]*)\]", line.strip()):
+        if line and re.match(r"^\[(A|B|DOC|FIX|T\d+)[^\]]*\]", line.strip()):
             ok += 1
     total = len([l for l in log_lines.split("\n") if l.strip()])
     if total == 0:

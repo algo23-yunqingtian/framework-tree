@@ -89,6 +89,13 @@ const PAGES = [
   { key: 'cu_324', file: 'cu_3_2_4.html', charts: 2, seasonal: [] },
   { key: 'cu_61', file: 'cu_6_1.html', charts: 2, seasonal: ['echart_cu_61_c1','echart_cu_61_c2'] },
   { key: 'cu_62', file: 'cu_6_2.html', charts: 2, seasonal: ['echart_cu_62_c1','echart_cu_62_c2'] },
+  { key: 'cu_323', file: 'cu_3_2_3.html', charts: 1, seasonal: ['echart_cu_323_c1'] },
+  { key: 'al_313', file: 'al_3_1_3.html', charts: 1, seasonal: ['echart_al_313_c1'] },
+  { key: 'al_315', file: 'al_3_1_5.html', charts: 2, seasonal: ['echart_al_315_c1'] },
+  { key: 'al_321', file: 'al_3_2_1.html', charts: 1, seasonal: ['echart_al_321_c1'] },
+  { key: 'al_322', file: 'al_3_2_2.html', charts: 1, seasonal: ['echart_al_322_c1'] },
+  { key: 'al_324', file: 'al_3_2_4.html', charts: 1, seasonal: ['echart_al_324_c1'] },
+  { key: 'al_62', file: 'al_6_2.html', charts: 1, seasonal: ['echart_al_62_c1'] },
 ];
 
 function expectedBtnText(mode) {

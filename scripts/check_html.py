@@ -520,6 +520,69 @@ PAGES = {
         "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
     },
 
+    "al_313": {
+        "file": "al_3_1_3.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_313_c1"],
+        "label": "国内矿·开工率 3.1.3",
+        "has_seasonal": True,
+    },
+
+    "al_315": {
+        "file": "al_3_1_5.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_al_315_c1", "echart_al_315_c2"],
+        "label": "加工费 3.1.5",
+        "has_seasonal": True,
+    },
+
+    "al_321": {
+        "file": "al_3_2_1.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_321_c1"],
+        "label": "产能与开工 3.2.1",
+        "has_seasonal": True,
+    },
+
+    "al_322": {
+        "file": "al_3_2_2.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_322_c1"],
+        "label": "开工率 3.2.2",
+        "has_seasonal": True,
+    },
+
+    "al_324": {
+        "file": "al_3_2_4.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_324_c1"],
+        "label": "成本与利润 3.2.4",
+        "has_seasonal": True,
+    },
+
+    "al_62": {
+        "file": "al_6_2.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_al_62_c1"],
+        "label": "原料进口·港口库存 6.2",
+        "has_seasonal": True,
+    },
+
+    "cu_323": {
+        "file": "cu_3_2_3.html",
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_cu_323_c1"],
+        "label": "再生铜供应 3.2.3",
+        "has_seasonal": True,
+    },
+
     "311": {
         "file": "pb_311_overseas_mine.html",
         "min_bytes": 20000,
