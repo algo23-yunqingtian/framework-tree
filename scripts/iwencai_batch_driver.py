@@ -156,6 +156,16 @@ def run_node(ws_url, task, var_cn_map):
         dim = {"2": "price", "3": "supply", "4": "inventory", "5": "demand",
                "6": "trade", "7": "cost"}.get(code0, "inventory")
     pos = POS[dim]
+    # 品种特化增强（主脑 2026-08-30）：读 prompt_lib/varieties/<CODE>.json 的
+    # industry_terms 追加进正例词，防止泛化词污染（镍→镍生铁NPI/高冰镍/印尼等）
+    try:
+        vlib_path = os.path.join(BASE, "prompt_lib", "varieties", f"{task['variety']}.json")
+        with open(vlib_path, encoding="utf-8") as _f:
+            _terms = json.load(_f).get("industry_terms", [])
+        if _terms:
+            pos = pos + "," + ",".join(_terms)
+    except Exception:
+        pass
     label = task["label"] or {"price": "价格信号", "supply": "供给", "inventory": "库存",
                               "demand": "需求", "trade": "进出口", "cost": "成本·利润"}[dim]
     node_name = task["node_name"] or ""

@@ -9,11 +9,14 @@
 
 | 资产 | 路径 | 数量 |
 |---|---|---|
-| **Prompt 文件** | `pb_prompt/batch/<CODE>_<维度>_v19.md` | **30 份**（5金属 × 6维度） |
-| **任务清单** | `pb_prompt/batch/batch_manifest_5metals.json` | 5金属 × 6维度 × 节点列表 |
+| **驱动脚本** | `scripts/iwencai_batch_driver.py` | 已打补丁（支持 `--manifest` + 全品种映射 + 品种词库注入）|
+| **校验器** | `scripts/check_divergence.py` | `--all` / `--variety` / `--strict` |
+| **任务清单** | `analysis/iwencai/5metals_step1_manifest.json` | **150 tasks**（dim 已为英文值）|
+| **单品种清单** | `analysis/iwencai/<CODE>_manifest.json` | 5 份（各 30 tasks）|
 | **节点数** | — | **150 个**待发散节点 |
-| **词库** | `prompt_lib/varieties/{ZN,NI,SN,SI,LI}.json` | 5 个品种词库 |
-| **维度库** | `prompt_lib/dimensions/{价格,供应,库存,需求,进出口,成本利润}.json` | 6 个维度 |
+| **品种词库** | `prompt_lib/varieties/{ZN,NI,SN,SI,LI}.json` | 5 个（驱动脚本会读，自动注入正例词）|
+| **维度词库** | `prompt_lib/dimensions/{价格,供应,库存,需求,进出口,成本利润}.json` | 6 个 |
+| **Prompt 样本** | `analysis/iwencai/prompts/<CODE>_<节点>.md` | 150 份（仅供参考，驱动脚本会自渲染）|
 
 **6 个维度 → 7 个板块的对应**（板块8 供需平衡不做图表，不发散）：
 
@@ -34,10 +37,31 @@
 git fetch origin
 git checkout -b task/multi_metals_divergence origin/main
 git rebase origin/main
-# 确认提示词已拿到（应看到 30 份 v19 文件 + manifest）
-ls pb_prompt/batch/*_v19.md | wc -l    # 应为 30+（含之前的 PB/ZN 旧文件）
-python3 -c "import json; print('待发散节点:', sum(len(m['subdirs']) for m in json.load(open('pb_prompt/batch/batch_manifest_5metals.json'))))"
+# 确认弹药已拿到（3 项全绿才算基线对）
+ls analysis/iwencai/prompts/NI_*.md | wc -l        # 应为 30
+python3 -c "import json; m=json.load(open('analysis/iwencai/5metals_step1_manifest.json')); print('待发散 tasks:', len(m['tasks']))"  # 应为 150
+python3 scripts/check_divergence.py --all          # 应显示 5 金属各 30 节点全缺（0/150）
 ```
+
+### 1.1 前置依赖：`--ws`（唯一外部依赖，先搞定这个）
+
+驱动脚本走 CDP 连本地 Chrome，**必须提供一个 page 级 websocket endpoint**。
+
+```bash
+# ① 确认本机有 Chrome 且已登录同花顺（iwencai.com）
+# ② attach 后拿 page ws endpoint（示例：CDP 反查 /chat 页 target 的 webSocketDebuggerUrl）
+python3 -c "
+import json, urllib.request
+tabs = json.load(urllib.request.urlopen('http://localhost:9222/json'))
+for t in tabs:
+    if 'iwencai' in t.get('url',''):
+        print(t['url'][:60]); print('ws:', t['webSocketDebuggerUrl']); break
+"
+# 把打印出的 webSocketDebuggerUrl 填到下面命令的 --ws 参数
+```
+
+> 如果 Chrome 没开远程调试端口，需带 `--remote-debugging-port=9222` 重启。
+> 同花顺页面必须先打开一个「新对话」页（脚本靠 `.ql-editor` 输入框定位，无此框会返回 `NO_EDITOR`）。
 
 ---
 
