@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.8",
+    "version": "3.0",
     "updated": "2026-08-31",
     "status": "部分验证",
     "说明": "统一的Zhiji指标ID映射表（版本化）。两个数据层脚本都从此文件读取，不再各管各的。版本变更必须同步git commit + 更新STATUS.md通知对方。",
@@ -101,6 +101,11 @@
       "v": "2.8",
       "date": "2026-08-31",
       "change": "板块7成本利润: +3新指标(j72_smelt_profit a10127392铅冶炼利润/j73_imp_tc a10021355进口TC/j73_elec_price a12762872广西电解铝电价)"
+    },
+    {
+      "v": "3.0",
+      "date": "2026-08-31",
+      "change": "板块7成本利润+3指标(j72/j73) + 板块5需求5.3+3指标(j53) — 154→157"
     }
   ],
   "indicators": {
@@ -2110,6 +2115,45 @@
       "category": "cost",
       "subleaf": "7.3能源/原料成本",
       "source": "SMM"
+    },
+    "j53_next_rate": {
+      "name": "SMM 铅蓄电池下月预计开工率: 总",
+      "unit": "%",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "a10151372"
+      },
+      "category": "demand",
+      "subleaf": "5.3需求先行指标",
+      "source": "SMM",
+      "note": "5.3 正主: 下月预计开工率是需求先行最核心指标(领先1-2月), SMM调研数据"
+    },
+    "j53_waste_inv": {
+      "name": "SMM 废电瓶库存动态指标",
+      "unit": "-",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "a12767751"
+      },
+      "category": "demand",
+      "subleaf": "5.3需求先行指标",
+      "source": "SMM",
+      "note": "5.3 辅助: 废电瓶库存动态反映再生铅原料端先行信号"
+    },
+    "j53_regen_days": {
+      "name": "SMM 再生铅原料库存天数",
+      "unit": "天",
+      "freq": "monthly",
+      "verified": true,
+      "ids": {
+        "PB": "a12810628"
+      },
+      "category": "demand",
+      "subleaf": "5.3需求先行指标",
+      "source": "SMM",
+      "note": "5.3 辅助: 再生铅原料库存天数反映原料端备货周期"
     }
   },
   "64_group": {
