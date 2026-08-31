@@ -72,6 +72,7 @@
 ---
 
 ## 近期变更记录
+| 2026-09-01 | **[A-STEP1] 指标翻译线 Agent A：Step1 同花顺板块审计 23/24 完成** | 主脑 | **卡点突破**：审计 prompt 长文本发送失败真根因=①同花顺编辑器硬性 10000 字上限（超限 sendBtn 渲染但点击无效）→ 新增 `compact_divergence()` 精简提取（只留表行 图名|指标|数据源，单板块 38KB→3-6KB）+ build_prompt 只取模板代码块正文；②裸顶层 `var` 语句与全局绑定冲突（SyntaxError）→ 全部 JS 改 IIFE；③发送改用 CDP `Input.dispatchMouseEvent` 真实点击 + body 长度增量判据。**产出** `translation-workspace/audit/{ZN,CU,AL,NI}/audit_{板块}.md` **23 份**（ZN 6/CU 5/AL 6/NI 6，各 7-27KB，AI 回复含核心结论+三类删除+跨节点去重+新增信号建议）。**剩余 1 份 CU_进出口 被同花顺 AI 稳定拒答**（5 次返回"我是同花顺研发的投资助理问财..."拒绝语，疑似海关/关税/国别贸易主题触发内容风控，加中性化声明仍拒）→ 待人工重试或换措辞。驱动脚本 `translation-workspace/scripts/iwencai_audit_driver.py` 已加失败自动重试（REPLY_TOO_SHORT/TIMEOUT 重跑最多 2 次）。Skill 已同步根因 | agent |
 | 2026-09-01 | **[A-STEP0] 指标翻译线 Agent A：Step0 提取+去重完成（ZN/NI/CU/AL 四品种）** | 主脑 | 修复 step0_extract.py 兼容 3 种历史格式（管道表 ZN/NI + tab枚举表 + tab图表表 CU/AL），产出 `analysis/iwencai/{品种}/concept_indicators.json`：ZN 298 指标 / NI 343 / CU 642 / AL 218 独立指标。待 Step1 同花顺审计（4×6=24 板块轮询） | agent |
 | 2026-08-31 | **[A-OVERVIEW] 补 31 总览页消除 133 死链** | agent | 生成 `scripts/build_overview_all.py` 批量构建 31 个 `*_overview.html`（cu_7 + zn/ni/sn/si/li 各 2~7 板块），覆盖 153 个节点卡片（133 可点 + 20 待填充静态卡）。锂 LC→li 文件名映射修复。**门禁**：check_html 210/210 PASS + verify_render 210/210 ALL PASS + reclaim PASS=12 FAIL=0 + 死链=0。基线 786/v3.43 未动 | agent |
 | 2026-08-31 | **[A-EXPORT] 主题筛选导出功能上线（纯 GitHub Pages，零服务器成本）** | 主脑 | 新增 export_selector.html（主题选单 UI：品种下拉 → 板块勾选 → 一键生成 HTML 幻灯片报告）+ data/export_node_map.json（自动生成 117 个节点映射）+ scripts/chart_kits.py 加 __chartsReady 信号（供截图等待）+ scripts/gen_screenshots.py（批量截图脚本）+ scripts/gen_screenshots_cron.sh（cron 周更新）+ 试截图 pb_21_price_structure.png 验证通过。**产出物**：浏览器打开看是翻页式幻灯片（←→键盘切换 + 全屏 + 进度条），Ctrl+P 打印自动横版 A4 每页一图（导航栏自动隐藏）。**反拷贝**：继承主站 ANTI 策略 + 右键禁用 + Ctrl+C/S/P/U 拦截。**跨域解法**：纯前端方案，不需要本地服务器，截图预生成到 screenshots/ 目录。NI 品种 23 个页面同步更新（价格/供给/库存/需求/进出口/成本）。门禁待跑 | 主脑 |
@@ -139,4 +140,5 @@
 | 4 | C01b/C05b 数据源备忘：i28=SHFE 库存周报 (SMM 名义，周度，2018 起 435 点)；C05b=i7/(i6+i7) 计算，2019-05 起 1832 点。i29 中国精炼铅进口总量在知几无序列 (仅美/新/泰海关分国别)——若需进口图需换外部源 (海关总署) | 线 B |
 | 5 | 五金属 Step4 建页：138 节点×786 指标已就绪，待主脑排期 (ZN 29/NI 30/SN 29/SI 27/LI 15 页已存在，需补剩余 ~20 页) | 待排期 |
 | 6 | 铜铝缺口 10 页：铜 5 页 (4.1/5.2/5.3/6.3/6.4) + 铝 5 页 (3.1.2/3.1.4/6.1/6.4/7.3)，需走 Step1 发散全流程 | 铜铝 agent 进行中 |
-| 7 | 锂缺口 14 页：指标注册=0，需从零发散 | 锂 agent 进行中 |- 2026-09-01: 创建 translation-workspace 协作空间（提取脚本+Prompt模板+双Agent交接文档）
+| 7 | 锂缺口 14 页：指标注册=0，需从零发散 | 锂 agent 进行中 |
+| 8 | **指标翻译线 CU_进出口 审计被同花顺 AI 稳定拒答**（5 次"我是同花顺研发的投资助理问财..."拒绝语，疑似海关/关税/国别贸易主题触发风控）→ 待重试或换措辞 | Agent A |
