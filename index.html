@@ -285,23 +285,82 @@ function selectChip(leaf, commId, render){
 
   // 跳转到对应品种的子类看板（静态页）
   const PAGE_MAP = {
+         'AL_c1':'al_7_1.html',  // 7.1 c1
+         'AL_c2':'al_7_2.html',  // 7.2 c2
+         'AL_d1':'al_5_1.html',  // 5.1 d1
+         'AL_d2':'al_5_2.html',  // 5.2 d2
+         'AL_d3':'al_5_3.html',  // 5.3 d3
+         'AL_i1':'al_4_1.html',  // 4.1 i1
+         'AL_i2':'al_4_2.html',  // 4.2 i2
+         'AL_i3':'al_4_3.html',  // 4.3 i3
+         'AL_i4':'al_4_4.html',  // 4.4 i4
+         'AL_i5':'al_4_5.html',  // 4.5 i5
+         'AL_p1':'al_2_1.html',  // 2.1 p1
+         'AL_p2':'al_2_2.html',  // 2.2 p2
+         'AL_p3':'al_2_3.html',  // 2.3 p3
+         'AL_p4':'al_2_4.html',  // 2.4 p4
+         'AL_p5':'al_2_5.html',  // 2.5 p5
+         'AL_p6':'al_2_6.html',  // 2.6 p6
+         'AL_s1':'al_3_1_1.html',  // 3.1.1 s1
+         'AL_s3':'al_3_1_3.html',  // 3.1.3 s3
+         'AL_s5':'al_3_1_5.html',  // 3.1.5 s5
+         'AL_s6':'al_3_2_1.html',  // 3.2.1 s6
+         'AL_s7':'al_3_2_2.html',  // 3.2.2 s7
+         'AL_s8':'al_3_2_3.html',  // 3.2.3 s8
+         'AL_s9':'al_3_2_4.html',  // 3.2.4 s9
+         'AL_t2':'al_6_2.html',  // 6.2 t2
+         'AL_t3':'al_6_3.html',  // 6.3 t3
+         'CU_d1':'cu_5_1.html',  // 5.1 d1
+         'CU_i2':'cu_4_2.html',  // 4.2 i2
+         'CU_i3':'cu_4_3.html',  // 4.3 i3
+         'CU_p1':'cu_2_1.html',  // 2.1 p1
+         'CU_p2':'cu_2_2.html',  // 2.2 p2
+         'CU_p3':'cu_2_3.html',  // 2.3 p3
+         'CU_p4':'cu_2_4.html',  // 2.4 p4
+         'CU_p5':'cu_2_5.html',  // 2.5 p5
+         'CU_p6':'cu_2_6.html',  // 2.6 p6
+         'CU_s1':'cu_3_1_1.html',  // 3.1.1 s1
+         'CU_s2':'cu_3_1_2.html',  // 3.1.2 s2
+         'CU_s3':'cu_3_1_3.html',  // 3.1.3 s3
+         'CU_s4':'cu_3_1_4.html',  // 3.1.4 s4
+         'CU_s5':'cu_3_1_5.html',  // 3.1.5 s5
+         'CU_s6':'cu_3_2_1.html',  // 3.2.1 s6
+         'CU_s7':'cu_3_2_2.html',  // 3.2.2 s7
+         'CU_s8':'cu_3_2_3.html',  // 3.2.3 s8
+         'CU_s9':'cu_3_2_4.html',  // 3.2.4 s9
+         'CU_t1':'cu_6_1.html',  // 6.1 t1
+         'CU_t2':'cu_6_2.html',  // 6.2 t2
+         'PB_c1':'pb_71_cost_curve.html',  // 7.1 成本曲线
+         'PB_c2':'pb_72_daily_profit.html',  // 7.2 日度利润
+         'PB_c3':'pb_73_energy_cost.html',  // 7.3 能源成本
+         'PB_d1':'pb_51_primary_consumption.html',  // 5.1 主要消费
+         'PB_d2':'pb_52_terminal_consumption.html',  // 5.2 终端消费
+         'PB_d3':'pb_53_demand_leading.html',  // 5.3 需求先行
+         'PB_i1':'pb_41_exchange_stock.html',  // 4.1 交易所库存
+         'PB_i2':'pb_42_warrant.html',  // 4.2 仓单
+         'PB_i3':'pb_43_social_stock.html',  // 4.3 社会库存
+         'PB_i4':'pb_44_factory_stock.html',  // 4.4 工厂库存
+         'PB_i5':'pb_45_hidden_stock.html',  // 4.5 隐性·在途
          'PB_p1':'pb_21_price_structure.html',  // 2.1 盘面结构
          'PB_p2':'pb_22_spot_premium.html',  // 2.2 现货与升贴水
          'PB_p3':'pb_23_overseas_price.html',  // 2.3 海外价格
          'PB_p4':'pb_24_spread_system.html',  // 2.4 价差体系
          'PB_p5':'pb_25_valuation_profit.html',  // 2.5 估值与利润
          'PB_p6':'pb_26_position_holder.html',  // 2.6 持仓席位观察
-         'PB_i1':'pb_41_exchange_stock.html',  // 4.1 交易所库存
-         'PB_i2':'pb_42_warrant.html',         // 4.2 仓单
-         'PB_i3':'pb_43_social_stock.html',    // 4.3 社会库存
-         'PB_i4':'pb_44_factory_stock.html',   // 4.4 工厂库存
-         'PB_i5':'pb_45_hidden_stock.html',    // 4.5 隐性·在途
-         'PB_s8':'pb_32_3_regen_supply.html',  // 3.2.3 再生/二次供应（s8=tree 的 3.2.3 槽位）
+         'PB_s1':'pb_311_overseas_mine.html',  // 3.1.1 海外矿产量
+         'PB_s2':'pb_312_overseas_by_country.html',  // 3.1.2 海外分国别
+         'PB_s3':'pb_313_domestic_mine.html',  // 3.1.3 国内矿产量
+         'PB_s4':'pb_314_mine_import.html',  // 3.1.4 矿进口
+         'PB_s5':'pb_315_tc_fee.html',  // 3.1.5 TC加工费
+         'PB_s6':'pb_321_refining_output.html',  // 3.2.1 精炼产量
+         'PB_s7':'pb_322_operating_rate.html',  // 3.2.2 开工率
+         'PB_s8':'pb_32_3_regen_supply.html',  // 3.2.3 再生/二次供应
+         'PB_s9':'pb_324_profit_elasticity.html',  // 3.2.4 冶炼利润
          'PB_t1':'pb_61_raw_material_import.html',  // 6.1 原料进口
          'PB_t2':'pb_62_import_export.html',  // 6.2 精炼金属进出口
          'PB_t3':'pb_63_product_export.html',  // 6.3 制品出口
          'PB_t4':'pb_64_overseas_shipping.html',  // 6.4 海外对华发运
-     };
+      };
   const key = cm.code+'_'+leaf.id;
   if(PAGE_MAP[key]){
     window.location.href = PAGE_MAP[key];
