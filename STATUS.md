@@ -71,6 +71,7 @@
 ---
 
 ## 近期变更记录
+| 2026-08-31 | **[B-5M-Step3-register-dryrun] 五金属Step3注册dry-run方案**（主脑）：从 step3_5metals_candidates.json(138节点×17指标) + final.json(621 A级) 生成 `analysis/iwencai/step3_register_plan.json`（621可注册 ZN113/NI162/SI137/SN130/LI79 + 31 ID冲突全为通用指标真重复+724非A级入备用库）；⚠️发现 tree_config 五金属 comms 全 0 节点未建，注册前须补节点 | 主脑 |
 
 | 日期 | 内容 |
 |---|---|
