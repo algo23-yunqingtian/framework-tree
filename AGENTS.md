@@ -162,17 +162,18 @@ python3 -m http.server 8786
 
 ---
 
-## 8. 当前进度快照（2026-08-31 06:30，详见 STATUS.md 近期变更记录）
+## 8. 当前进度快照（2026-08-31 11:40，详见 STATUS.md 近期变更记录）
 
-**全库：94 页 / 指标 196（v3.42）/ 门禁 75/75 + reclaim 12/0 / 死链 0**
+**全库：指标 786（v3.43）/ 注册页门禁 75/75 + reclaim 全绿 / 死链 0 / 页面数见 check_html**
 
 | 品种 | 上线板块 | 说明 |
 |---|---|---|
 | 铅(PB) 37页 | 价格2(6节点)/库存4.1/供给3.x/需求5.3/成本7.x + 进出口6.1-6.4 | 老牌完整，多为 3 图真数据页 |
 | 铜(CU) 25页 | 3.x供给 + 4.2/4.3库存 + 5.1需求 + 6.1/6.2进出口 + 总览 | 缺口：4.1/4.4/4.5/5.2/5.3/6.3/7.x 待外部源 |
 | 铝(AL) 31页 | 2.x价格 + 3.x供给 + 4.x库存全 + 5.x需求 + 6.3 + 7.x + 总览 | 缺口：6.1/6.2/6.4/7.3 待外部源 |
+| 五金属(ZN/NI/SN/SI/LI) | Step3 注册完成（590 指标），**建页/拉数待做** | zhiji 配额已恢复，可拉数 |
 
-- ⚠️ **知几 API 配额已耗尽（10000 次/2026-08-31）**：`zhiji_api.py` search/series 全返 429，`refresh_cache.py` 失效。**数据类任务全部阻塞**，需充值或换源后再做。
-- ⏳ 三表灌库（indicator_meta/series）设计已定（`analysis/spec/db_design.md`），待五金属注册后执行
-- ⏳ 五金属（ZN/NI/SN/SI/LI）Step3 产物已落盘（`analysis/iwencai/step3_final_5m.json`，138节点），待注册指标 + Step4 建页
+- ✅ **知几 API 配额已恢复（2026-08-31 实测）**：`zhiji_api.py` search/series 正常返回，数据类任务可执行。**bootstrap_agent.sh 的"配额耗尽"假阳性已修复**（探测词改"锌 社会库存"+error 字段判定）。
+- ⏳ 三表灌库（indicator_meta/series）设计已定（`analysis/spec/db_design.md`），待五金属 JSONL 导出后由灌库·主脑执行
+- ⏳ 五金属 Step4 建页 138 节点待做（等拉数）
 - 🚨 **协作机制（2026-08-31 加固）**：`git config core.hooksPath scripts/hooks` 后，改产物不写 STATUS.md 会被 pre-commit 拦截

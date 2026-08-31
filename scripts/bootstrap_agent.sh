@@ -77,9 +77,12 @@ fi
 # ── 6. 知几配额 ────────────────────────────────────────
 echo ""
 echo "── [6/6] 数据源可用性 ──"
-Q=$(python3 ~/.hermes/scripts/zhiji_api.py search "测试 配额" 2>&1 | head -1)
-if echo "$Q" | grep -q "429\|配额"; then
-  echo "  ⚠️ 知几 API 配额耗尽（HTTP 429）→ 数据拉取/复核任务阻塞，勿浪费时间尝试"
+# 2026-08-31 修：原探测词"测试 配额"含"配额"，zhiji_api.py 会原样回显 query 字段，
+# grep "429\|配额" 必然自命中 → API 正常时也永久假阳性报配额耗尽。
+# 改法：探测词换无触发词，改判 "error" 字段 / HTTP 状态码。
+Q=$(python3 ~/.hermes/scripts/zhiji_api.py search "锌 社会库存" 2>&1 | head -1)
+if echo "$Q" | grep -qE '"error"|HTTP 429'; then
+  echo "  ⚠️ 知几 API 不可用（$(echo "$Q" | grep -o 'HTTP [0-9]*' | head -1)）→ 数据拉取/复核任务阻塞"
   WARN=1
 else
   echo "  ✅ 知几 API 可用"
