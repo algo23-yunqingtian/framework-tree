@@ -1,0 +1,821 @@
+{
+  "audit": {
+    "variety": "NI",
+    "variety_zh": "镍",
+    "timestamp": "2026-08-31T17:20:01.719451",
+    "summary": {
+      "total_pages": 30,
+      "total_charts": 81,
+      "total_indicators": 102,
+      "max_charts_expected": 25,
+      "max_indicators_expected": 55,
+      "severity_counts": {
+        "🟡": 36,
+        "🔴": 16
+      },
+      "issue_counts": {
+        "overuse": 3,
+        "cross_board": 22,
+        "missing_anchor": 24,
+        "bloat": 2,
+        "empty": 1
+      }
+    },
+    "issues": {
+      "overuse": [
+        {
+          "indicator_id": "ni_21_premium",
+          "title": "水淬镍：15-22%Ni：印尼产：升贴水（日）",
+          "used_in_n_nodes": 4,
+          "nodes": [
+            "2.1",
+            "2.2",
+            "4.1",
+            "4.2"
+          ],
+          "severity": "🟡",
+          "recommendation": "此指标被4个节点使用，建议只保留在最核心的1-2个节点作为主图/辅轴，其余节点移除"
+        },
+        {
+          "indicator_id": "ni_323_import_nickel_powder",
+          "title": "冰镍：进口数量：印尼→中国（月） vs 镍生铁：进口数量：中国：以金属量计（月）",
+          "used_in_n_nodes": 3,
+          "nodes": [
+            "3.2.3",
+            "6.1",
+            "6.2"
+          ],
+          "severity": "🟡",
+          "recommendation": "此指标被3个节点使用，建议只保留在最核心的1-2个节点作为主图/辅轴，其余节点移除"
+        },
+        {
+          "indicator_id": "ni_71_cost_nickel_ore",
+          "title": "Ramu镍钴矿：镍：实际现金成本：镍28公司（季） vs 精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
+          "used_in_n_nodes": 3,
+          "nodes": [
+            "7.1",
+            "7.2",
+            "7.3"
+          ],
+          "severity": "🟡",
+          "recommendation": "此指标被3个节点使用，建议只保留在最核心的1-2个节点作为主图/辅轴，其余节点移除"
+        }
+      ],
+      "cross_board": [
+        {
+          "node": "2.2",
+          "file": "ni_2_2.html",
+          "chart_title": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日） vs SMM: 进口盈亏: 镍: 现货: LME价",
+          "chart_role": "普通",
+          "actual_board": "2",
+          "actual_board_name": "价格信号",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属6.进出口，当前在2.价格信号"
+        },
+        {
+          "node": "2.3",
+          "file": "ni_2_3.html",
+          "chart_title": "SMM: 进口盈亏: 镍: 现货: LME价格: 日度 vs 冰镍：进口数量合计：中国（月）",
+          "chart_role": "普通",
+          "actual_board": "2",
+          "actual_board_name": "价格信号",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属6.进出口，当前在2.价格信号"
+        },
+        {
+          "node": "2.5",
+          "file": "ni_2_5.html",
+          "chart_title": "高冰镍：Ni≥65%，Co≥1%：钴远期现货价格：中国主要港口（日） vs SMM: 电解镍进口盈亏（沪伦价格差）: 日",
+          "chart_role": "普通",
+          "actual_board": "2",
+          "actual_board_name": "价格信号",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属6.进出口，当前在2.价格信号"
+        },
+        {
+          "node": "2.5",
+          "file": "ni_2_5.html",
+          "chart_title": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）（补充·2.5）",
+          "chart_role": "补充",
+          "actual_board": "2",
+          "actual_board_name": "价格信号",
+          "expected_board": "5",
+          "expected_board_name": "需求",
+          "severity": "🟡",
+          "recommendation": "补充指标应归属5.需求，当前在2.价格信号"
+        },
+        {
+          "node": "3.1.3",
+          "file": "ni_3_1_3.html",
+          "chart_title": "镍生铁：进口数量：中国：以金属量计（月） vs 冰镍：进口数量合计：中国（月）",
+          "chart_role": "普通",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属6.进出口，当前在3.供给"
+        },
+        {
+          "node": "3.1.4",
+          "file": "ni_3_1_4.html",
+          "chart_title": "镍生铁：进口数量：中国：以金属量计（月） vs 冰镍：进口数量合计：中国（月）",
+          "chart_role": "普通",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属6.进出口，当前在3.供给"
+        },
+        {
+          "node": "3.1.4",
+          "file": "ni_3_1_4.html",
+          "chart_title": "中国海关: 镍矿进口量: 总: 月度 vs 镍生铁：进口数量：中国：以金属量计（月）",
+          "chart_role": "普通",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属6.进出口，当前在3.供给"
+        },
+        {
+          "node": "3.1.4",
+          "file": "ni_3_1_4.html",
+          "chart_title": "冰镍：进口数量：印尼→中国（月）（补充·3.1.4）",
+          "chart_role": "补充",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "补充指标应归属6.进出口，当前在3.供给"
+        },
+        {
+          "node": "3.1.5",
+          "file": "ni_3_1_5.html",
+          "chart_title": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）（补充·3.1.5）",
+          "chart_role": "补充",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "5",
+          "expected_board_name": "需求",
+          "severity": "🟡",
+          "recommendation": "补充指标应归属5.需求，当前在3.供给"
+        },
+        {
+          "node": "3.2.3",
+          "file": "ni_3_2_3.html",
+          "chart_title": "冰镍：进口数量：印尼→中国（月）（主图·3.2.3）",
+          "chart_role": "主图",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🔴",
+          "recommendation": "主图指标应归属6.进出口，当前在3.供给"
+        },
+        {
+          "node": "3.2.3",
+          "file": "ni_3_2_3.html",
+          "chart_title": "冰镍：进口数量：印尼→中国（月） vs 镍生铁：进口数量：中国：以金属量计（月）",
+          "chart_role": "普通",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属6.进出口，当前在3.供给"
+        },
+        {
+          "node": "3.2.4",
+          "file": "ni_3_2_4.html",
+          "chart_title": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）（补充·3.2.4）",
+          "chart_role": "补充",
+          "actual_board": "3",
+          "actual_board_name": "供给",
+          "expected_board": "5",
+          "expected_board_name": "需求",
+          "severity": "🟡",
+          "recommendation": "补充指标应归属5.需求，当前在3.供给"
+        },
+        {
+          "node": "4.1",
+          "file": "ni_4_1.html",
+          "chart_title": "水淬镍：15-22%Ni：印尼产：升贴水（日） vs 镍豆：进口盈亏（日）",
+          "chart_role": "普通",
+          "actual_board": "4",
+          "actual_board_name": "库存",
+          "expected_board": "2",
+          "expected_board_name": "价格信号",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属2.价格信号，当前在4.库存"
+        },
+        {
+          "node": "4.2",
+          "file": "ni_4_2.html",
+          "chart_title": "水淬镍：15-22%Ni：印尼产：升贴水（日） vs LME：镍：期货库存：迪拜（日）",
+          "chart_role": "普通",
+          "actual_board": "4",
+          "actual_board_name": "库存",
+          "expected_board": "2",
+          "expected_board_name": "价格信号",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属2.价格信号，当前在4.库存"
+        },
+        {
+          "node": "4.5",
+          "file": "ni_4_5.html",
+          "chart_title": "冰镍：进口数量：印尼→中国（月）（补充·4.5）",
+          "chart_role": "补充",
+          "actual_board": "4",
+          "actual_board_name": "库存",
+          "expected_board": "6",
+          "expected_board_name": "进出口",
+          "severity": "🟡",
+          "recommendation": "补充指标应归属6.进出口，当前在4.库存"
+        },
+        {
+          "node": "5.1",
+          "file": "ni_5_1.html",
+          "chart_title": "硫酸镍企业：开工率：中国（月） vs 硫酸镍企业：开工率：中国（月）",
+          "chart_role": "普通",
+          "actual_board": "5",
+          "actual_board_name": "需求",
+          "expected_board": "3",
+          "expected_board_name": "供给",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属3.供给，当前在5.需求"
+        },
+        {
+          "node": "5.1",
+          "file": "ni_5_1.html",
+          "chart_title": "精炼镍：开工率：中国（月） vs 精炼镍：开工率：中国（月）",
+          "chart_role": "普通",
+          "actual_board": "5",
+          "actual_board_name": "需求",
+          "expected_board": "3",
+          "expected_board_name": "供给",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属3.供给，当前在5.需求"
+        },
+        {
+          "node": "5.1",
+          "file": "ni_5_1.html",
+          "chart_title": "精炼镍：开工率：中国（月）（补充·5.1）",
+          "chart_role": "补充",
+          "actual_board": "5",
+          "actual_board_name": "需求",
+          "expected_board": "3",
+          "expected_board_name": "供给",
+          "severity": "🟡",
+          "recommendation": "补充指标应归属3.供给，当前在5.需求"
+        },
+        {
+          "node": "5.2",
+          "file": "ni_5_2.html",
+          "chart_title": "精炼镍：产量：中国（月） vs 精炼镍：产量：中国（月）",
+          "chart_role": "普通",
+          "actual_board": "5",
+          "actual_board_name": "需求",
+          "expected_board": "3",
+          "expected_board_name": "供给",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属3.供给，当前在5.需求"
+        },
+        {
+          "node": "5.3",
+          "file": "ni_5_3.html",
+          "chart_title": "精炼镍：开工率：中国（月） vs 冰镍：进口数量：印尼→中国（月）",
+          "chart_role": "普通",
+          "actual_board": "5",
+          "actual_board_name": "需求",
+          "expected_board": "3",
+          "expected_board_name": "供给",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属3.供给，当前在5.需求"
+        },
+        {
+          "node": "7.2",
+          "file": "ni_7_2.html",
+          "chart_title": "Ramu镍钴矿：镍：实际现金成本：镍28公司（季） vs 冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
+          "chart_role": "普通",
+          "actual_board": "7",
+          "actual_board_name": "成本利润",
+          "expected_board": "5",
+          "expected_board_name": "需求",
+          "severity": "🟡",
+          "recommendation": "普通指标应归属5.需求，当前在7.成本利润"
+        },
+        {
+          "node": "7.2",
+          "file": "ni_7_2.html",
+          "chart_title": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）（补充·7.2）",
+          "chart_role": "补充",
+          "actual_board": "7",
+          "actual_board_name": "成本利润",
+          "expected_board": "5",
+          "expected_board_name": "需求",
+          "severity": "🟡",
+          "recommendation": "补充指标应归属5.需求，当前在7.成本利润"
+        }
+      ],
+      "missing_anchor": [
+        {
+          "node": "2.2",
+          "file": "ni_2_2.html",
+          "chart_count": 4,
+          "expected_keywords": [
+            "升贴水",
+            "基差",
+            "现货"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "SHFE：镍：主力合约：收盘价（日）",
+            "水淬镍：15-22%Ni：印尼产：升贴水（日） vs SHFE: 镍: 仓单日报: 期货: 日度",
+            "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日） vs SMM: 进口盈亏: 镍",
+            "镍豆：Ni≥99.88%：澳大利亚产：现货到岸价格：中国（日）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点2.2的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "2.3",
+          "file": "ni_2_3.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "沪伦比",
+            "比价",
+            "进口盈亏"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
+            "SMM: 进口盈亏: 镍: 现货: LME价格: 日度 vs 冰镍：进口数量合计：中国（月）",
+            "水淬镍：15-22%Ni：印尼产：升贴水（日）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点2.3的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "2.4",
+          "file": "ni_2_4.html",
+          "chart_count": 4,
+          "expected_keywords": [
+            "期限结构",
+            "月差",
+            "价差"
+          ],
+          "actual_titles": [
+            "电解镍：Ni≥99.96%：俄罗斯产：现货到岸价格：中国（日）",
+            "镍生铁：13%＞Ni＞10%：印尼产：远期现货价格：中国主要港口（日） vs 高冰镍：Ni≥65%，",
+            "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日） vs MHP：NI≥34%，C",
+            "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点2.4所有图表均未命中预期关键词(期限结构/月差/价差)，正主指标确实缺失"
+        },
+        {
+          "node": "2.5",
+          "file": "ni_2_5.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "加工费",
+            "TC"
+          ],
+          "actual_titles": [
+            "电解镍：Ni≥99.96%：俄罗斯产：现货到岸价格：中国（日） vs 镍生铁：13%＞Ni＞10%：",
+            "高冰镍：Ni≥65%，Co≥1%：钴远期现货价格：中国主要港口（日） vs SMM: 电解镍进口盈亏",
+            "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点2.5所有图表均未命中预期关键词(加工费/TC)，正主指标确实缺失"
+        },
+        {
+          "node": "3.1.2",
+          "file": "ni_3_1_2.html",
+          "chart_count": 4,
+          "expected_keywords": [
+            "产能",
+            "投产"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "精炼镍：产量：印尼（月）",
+            "精炼镍：产量：印尼（月） vs 精炼镍：产量：中国（月）",
+            "精炼镍：二级：产量：澳大利亚（季） vs 镍生铁企业：产能：以金属量计：印尼（月）",
+            "镍生铁企业：产能：以金属量计：印尼（月）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点3.1.2的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "3.1.3",
+          "file": "ni_3_1_3.html",
+          "chart_count": 2,
+          "expected_keywords": [
+            "镍铁",
+            "NPI"
+          ],
+          "actual_titles": [
+            "精炼镍：产量：中国（月）",
+            "镍生铁：进口数量：中国：以金属量计（月） vs 冰镍：进口数量合计：中国（月）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点3.1.3所有图表均未命中预期关键词(镍铁/NPI)，正主指标确实缺失"
+        },
+        {
+          "node": "3.1.4",
+          "file": "ni_3_1_4.html",
+          "chart_count": 4,
+          "expected_keywords": [
+            "矿",
+            "进口",
+            "红土"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "精炼镍：产量：中国（月）",
+            "镍生铁：进口数量：中国：以金属量计（月） vs 冰镍：进口数量合计：中国（月）",
+            "中国海关: 镍矿进口量: 总: 月度 vs 镍生铁：进口数量：中国：以金属量计（月）",
+            "冰镍：进口数量：印尼→中国（月）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点3.1.4的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "3.1.5",
+          "file": "ni_3_1_5.html",
+          "chart_count": 1,
+          "expected_keywords": [
+            "精炼",
+            "电解镍"
+          ],
+          "actual_titles": [
+            "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点3.1.5所有图表均未命中预期关键词(精炼/电解镍)，正主指标确实缺失"
+        },
+        {
+          "node": "3.2.4",
+          "file": "ni_3_2_4.html",
+          "chart_count": 1,
+          "expected_keywords": [
+            "硫酸镍",
+            "产量"
+          ],
+          "actual_titles": [
+            "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点3.2.4所有图表均未命中预期关键词(硫酸镍/产量)，正主指标确实缺失"
+        },
+        {
+          "node": "4.1",
+          "file": "ni_4_1.html",
+          "chart_count": 2,
+          "expected_keywords": [
+            "LME",
+            "库存"
+          ],
+          "found_in_role": "补充",
+          "actual_titles": [
+            "水淬镍：15-22%Ni：印尼产：升贴水（日） vs 镍豆：进口盈亏（日）",
+            "LME：镍：期货库存：迪拜（日）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点4.1的正主指标以补充形式存在，建议提升为主图"
+        },
+        {
+          "node": "4.2",
+          "file": "ni_4_2.html",
+          "chart_count": 2,
+          "expected_keywords": [
+            "SHFE",
+            "上期所",
+            "库存"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "水淬镍：15-22%Ni：印尼产：升贴水（日） vs LME：镍：期货库存：迪拜（日）",
+            "LME：镍：注销占比：香港（日）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点4.2的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "4.3",
+          "file": "ni_4_3.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "社会库存",
+            "社库"
+          ],
+          "actual_titles": [
+            "精炼镍：库存：中国：27家样本仓库（周） vs LME：镍：原产国库存：埃及（月）",
+            "LME：镍：原产国库存：埃及（月） vs LME：镍：原产国库存：埃及（月）",
+            "精炼镍：库存：中国：27家样本仓库（周）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点4.3所有图表均未命中预期关键词(社会库存/社库)，正主指标确实缺失"
+        },
+        {
+          "node": "4.4",
+          "file": "ni_4_4.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "镍豆",
+            "库存"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "镍豆：库存：中国：27家样本仓库（周） vs 精炼镍：库存：中国：27家样本仓库（周）",
+            "精炼镍：库存：中国：27家样本仓库（周） vs 精炼镍：库存：中国：27家样本仓库（周）",
+            "精炼镍：库存：中国：27家样本仓库（周）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点4.4的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "4.5",
+          "file": "ni_4_5.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "仓单",
+            "注销"
+          ],
+          "actual_titles": [
+            "精炼镍：库存：中国：27家样本仓库（周） vs 冰镍：进口数量合计：中国（月）",
+            "精炼镍：库存：中国：27家样本仓库（周） vs 精炼镍：库存：中国：27家样本仓库（周）",
+            "冰镍：进口数量：印尼→中国（月）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点4.5所有图表均未命中预期关键词(仓单/注销)，正主指标确实缺失"
+        },
+        {
+          "node": "5.1",
+          "file": "ni_5_1.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "不锈钢",
+            "排产"
+          ],
+          "actual_titles": [
+            "硫酸镍企业：开工率：中国（月） vs 硫酸镍企业：开工率：中国（月）",
+            "精炼镍：开工率：中国（月） vs 精炼镍：开工率：中国（月）",
+            "精炼镍：开工率：中国（月）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点5.1所有图表均未命中预期关键词(不锈钢/排产)，正主指标确实缺失"
+        },
+        {
+          "node": "5.2",
+          "file": "ni_5_2.html",
+          "chart_count": 1,
+          "expected_keywords": [
+            "硫酸镍",
+            "电池",
+            "新能源"
+          ],
+          "actual_titles": [
+            "精炼镍：产量：中国（月） vs 精炼镍：产量：中国（月）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点5.2所有图表均未命中预期关键词(硫酸镍/电池/新能源)，正主指标确实缺失"
+        },
+        {
+          "node": "5.3",
+          "file": "ni_5_3.html",
+          "chart_count": 1,
+          "expected_keywords": [
+            "表观消费",
+            "消费"
+          ],
+          "actual_titles": [
+            "精炼镍：开工率：中国（月） vs 冰镍：进口数量：印尼→中国（月）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点5.3所有图表均未命中预期关键词(表观消费/消费)，正主指标确实缺失"
+        },
+        {
+          "node": "6.1",
+          "file": "ni_6_1.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "进口",
+            "矿"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "镍生铁：进口数量：中国：以金属量计（月） vs 镍矿：进口数量：印尼→中国（月）",
+            "镍铁：哥伦比亚产：进口盈亏：中国（日） vs 镍生铁：进口数量：中国：以金属量计（月）",
+            "镍铁：哥伦比亚产：进口盈亏：中国（日）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点6.1的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "6.2",
+          "file": "ni_6_2.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "精炼",
+            "进口"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "镍生铁：进口数量：中国：以金属量计（月） vs 镍铁：哥伦比亚产：进口盈亏：中国（日）",
+            "镍豆：进口盈亏（日） vs 冰镍：进口数量：印尼→中国（月）",
+            "冰镍：进口数量：印尼→中国（月）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点6.2的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "6.3",
+          "file": "ni_6_3.html",
+          "chart_count": 2,
+          "expected_keywords": [
+            "出口"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "未锻轧非合金镍：出口金额合计：中国（月） vs 中国海关: 电解镍出口量: 月度",
+            "镍矿石：出口数量：菲律宾→印尼（月） vs 镍矿石：出口数量：菲律宾→印尼（月）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点6.3的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "6.4",
+          "file": "ni_6_4.html",
+          "chart_count": 0,
+          "expected_keywords": [
+            "LME",
+            "地区",
+            "库存"
+          ],
+          "actual_titles": [],
+          "severity": "🔴",
+          "recommendation": "节点6.4所有图表均未命中预期关键词(LME/地区/库存)，正主指标确实缺失"
+        },
+        {
+          "node": "7.1",
+          "file": "ni_7_1.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "冶炼",
+            "利润",
+            "成本"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "Ramu镍钴矿：镍：实际现金成本：镍28公司（季） vs 精炼镍：生产成本：中国：外采：高冰镍加工工",
+            "精炼镍：生产成本：中国：红土镍矿：高冰镍加工工艺（日） vs 精炼镍：生产成本：中国：外采：高冰镍加",
+            "精炼镍：生产成本：中国：红土镍矿：高冰镍加工工艺（日）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点7.1的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "7.2",
+          "file": "ni_7_2.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "RKEF",
+            "镍铁",
+            "成本"
+          ],
+          "found_in_role": "普通",
+          "actual_titles": [
+            "Ramu镍钴矿：镍：实际现金成本：镍28公司（季） vs 冷轧不锈钢：外购低镍铁：201/J1：利润",
+            "精炼镍：生产利润：中国：红土镍矿：高冰镍加工工艺（日） vs 精炼镍：生产利润：中国：外采：硫酸镍加",
+            "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）"
+          ],
+          "severity": "🟡",
+          "recommendation": "节点7.2的正主指标以普通形式存在，建议提升为主图"
+        },
+        {
+          "node": "7.3",
+          "file": "ni_7_3.html",
+          "chart_count": 3,
+          "expected_keywords": [
+            "硫酸镍",
+            "利润"
+          ],
+          "actual_titles": [
+            "Ramu镍钴矿：镍：实际现金成本：镍28公司（季） vs 精炼镍：生产成本：中国：外采：高冰镍加工工",
+            "精炼镍：生产成本：中国：外采：高冰镍加工工艺（日） vs 低镍生铁：成本（日）",
+            "精炼镍：生产成本：中国：红土镍矿：氢氧化镍加工工艺（日）"
+          ],
+          "severity": "🔴",
+          "recommendation": "节点7.3所有图表均未命中预期关键词(硫酸镍/利润)，正主指标确实缺失"
+        }
+      ],
+      "bloat": [
+        {
+          "total_charts": 81,
+          "max_expected": 25,
+          "ratio": "3.2x",
+          "severity": "🔴",
+          "recommendation": "全品种81张图远超标准25张，需精简。优先删除万金油指标的重复引用"
+        },
+        {
+          "total_indicators": 102,
+          "max_expected": 55,
+          "ratio": "1.9x",
+          "severity": "🔴",
+          "recommendation": "共102个独立指标超过标准55个，需检查是否有同义指标(不同ID但相同含义)"
+        }
+      ],
+      "empty": [
+        {
+          "node": "6.4",
+          "file": "ni_6_4.html",
+          "severity": "🔴",
+          "recommendation": "节点6.4无图表，需补充数据或合并到相邻节点"
+        }
+      ]
+    }
+  },
+  "fix_plan": {
+    "variety": "NI",
+    "remove_indicators": [
+      {
+        "indicator_id": "ni_21_premium",
+        "title": "水淬镍：15-22%Ni：印尼产：升贴水（日）",
+        "keep_in": [
+          "2.1",
+          "2.2"
+        ],
+        "remove_from": [
+          "4.1",
+          "4.2"
+        ],
+        "reason": "万金油: 被4个节点使用, 保留['2.1', '2.2']"
+      },
+      {
+        "indicator_id": "ni_323_import_nickel_powder",
+        "title": "冰镍：进口数量：印尼→中国（月） vs 镍生铁：进口数量：中国：以金属量计（月）",
+        "keep_in": [
+          "3.2.3",
+          "6.1"
+        ],
+        "remove_from": [
+          "6.2"
+        ],
+        "reason": "万金油: 被3个节点使用, 保留['3.2.3', '6.1']"
+      },
+      {
+        "indicator_id": "ni_71_cost_nickel_ore",
+        "title": "Ramu镍钴矿：镍：实际现金成本：镍28公司（季） vs 精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
+        "keep_in": [
+          "7.1",
+          "7.2"
+        ],
+        "remove_from": [
+          "7.3"
+        ],
+        "reason": "万金油: 被3个节点使用, 保留['7.1', '7.2']"
+      },
+      {
+        "indicator_id": "见HTML",
+        "title": "冰镍：进口数量：印尼→中国（月）（主图·3.2.3）",
+        "node": "3.2.3",
+        "reason": "板块串用: 供给页的主图应归属进出口"
+      }
+    ],
+    "keep_indicators": [],
+    "add_indicators": [],
+    "merge_candidates": [
+      {
+        "base_title": "未锻轧非合金镍",
+        "indicator_ids": [
+          "ni_63_export",
+          "ni_63_export_2"
+        ],
+        "count": 2,
+        "reason": "2个指标标题相似, 可能可合并"
+      },
+      {
+        "base_title": "Ramu镍钴矿",
+        "indicator_ids": [
+          "ni_71_cost_nickel_ore",
+          "ni_71_cost_nickel_powder",
+          "ni_72_profit"
+        ],
+        "count": 3,
+        "reason": "3个指标标题相似, 可能可合并"
+      }
+    ]
+  }
+}

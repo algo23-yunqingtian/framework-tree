@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>主题筛选与导出 · Metals Framework</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+a{color:#b06a32;text-decoration:none}
+a:hover{text-decoration:underline}
+
+.container{max-width:1200px;margin:0 auto;padding:20px}
+
+/* 顶部 */
+.topbar{background:#2a2a2a;border-bottom:1px solid #444;padding:16px 24px;margin-bottom:24px;border-radius:8px}
+.topbar h1{font-size:22px;color:#b06a32;font-weight:700}
+.topbar p{color:#888;margin-top:4px;font-size:13px}
+
+/* 品种选择器 */
+.variety-section{margin-bottom:24px}
+.variety-section label{font-size:15px;font-weight:600;margin-right:12px}
+.variety-select{background:#2a2a2a;color:#e0e0e0;border:1px solid #555;padding:10px 16px;font-size:15px;border-radius:6px;min-width:200px;cursor:pointer}
+.variety-select:focus{outline:none;border-color:#b06a32}
+
+/* 板块分组 */
+.category-group{margin-bottom:16px;border:1px solid #3a3a3a;border-radius:8px;overflow:hidden}
+.category-header{background:#2a2a2a;padding:14px 20px;font-weight:700;font-size:16px;color:#b06a32;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.category-header:hover{background:#333}
+.category-header .arrow{transition:transform 0.2s;font-size:12px;color:#888}
+.category-header.collapsed .arrow{transform:rotate(-90deg)}
+
+.node-list{padding:8px 20px}
+.node-list.hidden{display:none}
+
+.node-item{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #2a2a2a}
+.node-item:last-child{border-bottom:none}
+
+.node-item input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:#b06a32}
+.node-label{flex:1;display:flex;gap:8px;align-items:center}
+.node-code{color:#888;font-size:13px;min-width:50px;font-family:monospace}
+.node-name{font-size:14px}
+.node-q{color:#666;font-size:12px;font-style:italic}
+.node-no-page{color:#555;font-size:12px}
+
+.preview-link{color:#5b98c9;font-size:12px;padding:2px 8px;border:1px solid #5b98c9;border-radius:3px}
+.preview-link:hover{background:#5b98c9;color:#fff;text-decoration:none}
+
+/* 操作栏 */
+.action-bar{position:sticky;bottom:0;background:#2a2a2a;border-top:1px solid #444;padding:16px 20px;display:flex;gap:12px;align-items:center;margin:24px -20px -20px;border-radius:0 0 8px 8px;z-index:100}
+.action-bar .count{color:#888;font-size:14px;margin-right:auto}
+.action-bar .count strong{color:#b06a32;font-size:16px}
+
+.export-btn{padding:12px 24px;border:none;color:#fff;font-size:15px;font-weight:600;border-radius:6px;cursor:pointer;transition:background 0.2s}
+.export-btn:disabled{background:#444!important;cursor:not-allowed;opacity:0.5}
+.export-btn.html-btn{background:#5b98c9}
+.export-btn.html-btn:hover:not(:disabled){background:#4a87b8}
+.export-btn.select-all-btn{background:#4a4a4a}
+.export-btn.select-all-btn:hover{background:#5a5a5a}
+.export-btn.clear-btn{background:#4a4a4a}
+.export-btn.clear-btn:hover{background:#5a5a5a}
+
+/* 弹窗 */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1000;justify-content:center;align-items:center}
+.modal-overlay.active{display:flex}
+.modal-content{background:#2a2a2a;border-radius:12px;padding:24px;max-width:90vw;max-height:90vh;overflow:auto;position:relative}
+.modal-close{position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:24px;cursor:pointer}
+.modal-close:hover{color:#fff}
+
+/* 空状态 */
+.empty-state{text-align:center;padding:60px 20px;color:#666}
+.empty-state .icon{font-size:48px;margin-bottom:16px}
+
+/* toast */
+.toast{position:fixed;top:20px;right:20px;background:#333;color:#fff;padding:12px 20px;border-radius:8px;z-index:2000;display:none;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+.toast.show{display:block}
+.toast.success{border-left:4px solid #4caf50}
+.toast.error{border-left:4px solid #f44336}
+
+/* 反拷贝 */
+*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="topbar">
+        <h1>📊 主题筛选与导出</h1>
+        <p>选择品种 → 勾选需要的页面 → 一键生成 HTML 幻灯片报告（打印即横版 PPT）</p>
+    </div>
+
+    <div class="variety-section">
+        <label>品种：</label>
+        <select class="variety-select" id="variety-select">
+            <option value="">-- 请选择品种 --</option>
+        </select>
+    </div>
+
+    <div id="category-container">
+        <div class="empty-state">
+            <div class="icon">📋</div>
+            <p>请先选择一个品种</p>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <span class="count">已选 <strong id="selected-count">0</strong> 页</span>
+        <button class="export-btn select-all-btn" id="select-all-btn" disabled>全选当前板块</button>
+        <button class="export-btn clear-btn" id="clear-btn" disabled>清空</button>
+        <button class="export-btn html-btn" id="export-btn" disabled>📄 生成 HTML 报告</button>
+    </div>
+</div>
+
+<!-- 预览弹窗 -->
+<div class="modal-overlay" id="preview-modal">
+    <div class="modal-content" style="width:90vw;height:85vh;padding:0">
+        <button class="modal-close" id="modal-close" style="z-index:10">×</button>
+        <iframe id="preview-iframe" style="width:100%;height:100%;border:none;border-radius:12px"></iframe>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ========== 数据加载 ==========
+let treeConfig = null;
+let nodeMap = null;
+let varietyInfo = {};
+
+Promise.all([
+    fetch('data/tree_config.json').then(r => r.json()),
+    fetch('data/export_node_map.json').then(r => r.json())
+]).then(([tc, nm]) => {
+    treeConfig = tc;
+    nodeMap = nm;
+    
+    // 填充品种下拉
+    const sel = document.getElementById('variety-select');
+    tc.commodities.forEach(c => {
+        varietyInfo[c.code] = c;
+        const opt = document.createElement('option');
+        opt.value = c.code;
+        opt.textContent = c.name + ' (' + c.code + ') — ' + c.anchor;
+        sel.appendChild(opt);
+    });
+    
+    sel.addEventListener('change', onVarietyChange);
+}).catch(err => {
+    showToast('数据加载失败: ' + err.message, 'error');
+});
+
+// ========== 品种切换 ==========
+function onVarietyChange(e) {
+    const variety = e.target.value;
+    const container = document.getElementById('category-container');
+    
+    if (!variety) {
+        container.innerHTML = '<div class="empty-state"><div class="icon">📋</div><p>请先选择一个品种</p></div>';
+        updateActionBar();
+        return;
+    }
+    
+    const vLower = variety.toLowerCase();
+    let html = '';
+    
+    treeConfig.categories.forEach(cat => {
+        let nodesHTML = '';
+        let hasNodes = false;
+        
+        cat.children.forEach(child => {
+            if (!child.comms || !child.comms.includes(vLower)) return;
+            
+            const mapKey = variety + ':' + child.code.replace(/\./g, '');
+            const pages = nodeMap[mapKey] || [];
+            // 也尝试带点的格式
+            const mapKey2 = variety + ':' + child.code;
+            const pages2 = nodeMap[mapKey2] || [];
+            const allPages = [...new Set([...pages, ...pages2])];
+            
+            hasNodes = true;
+            const hasPage = allPages.length > 0;
+            
+            nodesHTML += `
+                <div class="node-item">
+                    <input type="checkbox" data-pages='${JSON.stringify(allPages)}' ${hasPage ? '' : 'disabled'} />
+                    <div class="node-label">
+                        <span class="node-code">${child.code}</span>
+                        <span class="node-name">${child.name}</span>
+                        ${child.q ? '<span class="node-q">' + child.q + '</span>' : ''}
+                        ${!hasPage ? '<span class="node-no-page">（暂无页面）</span>' : ''}
+                    </div>
+                    ${hasPage ? '<a class="preview-link" href="javascript:void(0)" data-page="' + allPages[0] + '">预览</a>' : ''}
+                </div>
+            `;
+        });
+        
+        if (hasNodes) {
+            html += `
+                <div class="category-group">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span>${cat.label}</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="node-list">${nodesHTML}</div>
+                </div>
+            `;
+        }
+    });
+    
+    container.innerHTML = html || '<div class="empty-state"><div class="icon">📭</div><p>该品种暂无可用板块</p></div>';
+    
+    // 绑定事件
+    container.querySelectorAll('input[type=checkbox]').forEach(cb => {
+        cb.addEventListener('change', updateActionBar);
+    });
+    container.querySelectorAll('.preview-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            openPreview(e.target.dataset.page);
+        });
+    });
+    
+    updateActionBar();
+}
+
+// ========== 板块折叠 ==========
+function toggleCategory(header) {
+    header.classList.toggle('collapsed');
+    const list = header.nextElementSibling;
+    list.classList.toggle('hidden');
+}
+
+// ========== 更新操作栏 ==========
+function updateActionBar() {
+    const checked = document.querySelectorAll('#category-container input[type=checkbox]:checked');
+    const count = checked.length;
+    document.getElementById('selected-count').textContent = count;
+    document.getElementById('export-btn').disabled = count === 0;
+    document.getElementById('clear-btn').disabled = count === 0;
+    
+    const variety = document.getElementById('variety-select').value;
+    document.getElementById('select-all-btn').disabled = !variety;
+}
+
+// ========== 全选/清空 ==========
+document.getElementById('select-all-btn').addEventListener('click', () => {
+    document.querySelectorAll('#category-container input[type=checkbox]:not(:disabled)').forEach(cb => {
+        cb.checked = true;
+    });
+    updateActionBar();
+});
+
+document.getElementById('clear-btn').addEventListener('click', () => {
+    document.querySelectorAll('#category-container input[type=checkbox]').forEach(cb => {
+        cb.checked = false;
+    });
+    updateActionBar();
+});
+
+// ========== 预览弹窗 ==========
+function openPreview(page) {
+    document.getElementById('preview-iframe').src = page;
+    document.getElementById('preview-modal').classList.add('active');
+}
+document.getElementById('modal-close').addEventListener('click', () => {
+    document.getElementById('preview-modal').classList.remove('active');
+    document.getElementById('preview-iframe').src = '';
+});
+document.getElementById('preview-modal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+        document.getElementById('preview-modal').classList.remove('active');
+        document.getElementById('preview-iframe').src = '';
+    }
+});
+
+// ========== Toast ==========
+function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show ' + (type || 'success');
+    setTimeout(() => t.className = 'toast', 3000);
+}
+
+// ========== 生成 HTML 报告 ==========
+document.getElementById('export-btn').addEventListener('click', generateReport);
+
+async function generateReport() {
+    const variety = document.getElementById('variety-select').value;
+    if (!variety) return;
+    
+    const checked = Array.from(document.querySelectorAll('#category-container input[type=checkbox]:checked'));
+    if (checked.length === 0) return;
+    
+    const vInfo = varietyInfo[variety];
+    const today = new Date().toISOString().split('T')[0];
+    
+    // 收集所有选中页面
+    let selectedPages = [];
+    checked.forEach(cb => {
+        const pages = JSON.parse(cb.dataset.pages || '[]');
+        const nodeItem = cb.closest('.node-item');
+        const code = nodeItem.querySelector('.node-code').textContent;
+        const name = nodeItem.querySelector('.node-name').textContent;
+        pages.forEach(p => {
+            selectedPages.push({ page: p, code, name });
+        });
+    });
+    
+    if (selectedPages.length === 0) {
+        showToast('没有可导出的页面', 'error');
+        return;
+    }
+    
+    showToast('正在加载页面截图...', 'success');
+    
+    // 尝试加载预生成截图，失败则用 iframe 实时截取
+    let screenshots = {};
+    for (const sp of selectedPages) {
+        try {
+            const resp = await fetch('screenshots/' + sp.page.replace('.html', '.png'));
+            if (resp.ok) {
+                const blob = await resp.blob();
+                screenshots[sp.page] = await blobToBase64(blob);
+            }
+        } catch(e) {
+            // 截图不存在，稍后用占位
+        }
+    }
+    
+    // 生成 HTML
+    const html = buildSlideHTML(vInfo, selectedPages, screenshots, today);
+    
+    // 下载
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = vInfo.name + '_' + vInfo.code + '_主题梳理_' + today + '.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showToast('✅ 报告已生成！打印时选择横向即为 PPT 效果', 'success');
+}
+
+function blobToBase64(blob) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+    });
+}
+
+// ========== 构建幻灯片 HTML ==========
+function buildSlideHTML(vInfo, pages, screenshots, today) {
+    let slidesHTML = '';
+    let totalSlides = pages.length + 2; // +封面 +目录
+    
+    // 封面
+    slidesHTML += `
+    <div class="slide-container active" data-slide="0">
+        <div class="slide cover-slide">
+            <div class="cover-content">
+                <div class="cover-badge" style="background:${vInfo.color || '#b06a32'}">${vInfo.code}</div>
+                <h1>${vInfo.name}(${vInfo.code}) 主题梳理</h1>
+                <p class="cover-anchor">${vInfo.anchor || ''}</p>
+                <p class="cover-meta">生成时间：${today}<br>共 ${totalSlides} 页</p>
+            </div>
+        </div>
+    </div>`;
+    
+    // 目录
+    slidesHTML += `
+    <div class="slide-container" data-slide="1">
+        <div class="slide">
+            <h2>📑 目录</h2>
+            <div class="toc-list">
+                ${pages.map((p, i) => '<div class="toc-item"><span class="toc-num">' + (i+1) + '</span><span class="toc-code">' + p.code + '</span><span class="toc-name">' + p.name + '</span><span class="toc-file">' + p.page + '</span></div>').join('')}
+            </div>
+        </div>
+    </div>`;
+    
+    // 内容页
+    pages.forEach((p, i) => {
+        const img = screenshots[p.page];
+        slidesHTML += `
+        <div class="slide-container" data-slide="${i+2}">
+            <div class="slide">
+                <div class="slide-header">
+                    <span class="slide-code">${p.code}</span>
+                    <h2>${p.name}</h2>
+                </div>
+                <div class="slide-body">
+                    ${img 
+                        ? '<img src="' + img + '" alt="' + p.name + '" />' 
+                        : '<div class="slide-placeholder"><p>📊 请查看原始页面</p><a href="' + p.page + '" target="_blank">' + p.page + '</a></div>'
+                    }
+                </div>
+                <div class="slide-footer">
+                    <span>${vInfo.name}(${vInfo.code})</span>
+                    <span>${today}</span>
+                    <span>${i+3} / ${totalSlides}</span>
+                </div>
+            </div>
+        </div>`;
+    });
+    
+    return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>${vInfo.name}(${vInfo.code}) 主题梳理 · ${today}</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif;overflow:hidden}
+
+/* === 幻灯片容器 === */
+.slide-container{
+    width:100vw;height:100vh;display:none;
+    justify-content:center;align-items:center;flex-direction:column;
+}
+.slide-container.active{display:flex}
+
+/* === 幻灯片 === */
+.slide{
+    width:92vw;max-width:1400px;aspect-ratio:16/9;
+    background:#1e1e1e;border-radius:12px;
+    padding:40px 48px;box-shadow:0 8px 40px rgba(0,0,0,0.6);
+    display:flex;flex-direction:column;position:relative;
+    border:1px solid #333;
+}
+
+/* 封面 */
+.cover-slide{justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)}
+.cover-content{max-width:800px}
+.cover-badge{display:inline-block;padding:8px 24px;border-radius:20px;color:#fff;font-size:18px;font-weight:700;margin-bottom:24px;letter-spacing:2px}
+.cover-slide h1{font-size:42px;color:#fff;margin-bottom:16px}
+.cover-anchor{font-size:18px;color:#b06a32;margin-bottom:32px}
+.cover-meta{font-size:14px;color:#888;line-height:2}
+
+/* 目录 */
+.toc-list{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding-top:16px}
+.toc-item{display:flex;gap:12px;align-items:center;padding:8px 16px;background:#252525;border-radius:6px}
+.toc-num{background:#b06a32;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.toc-code{color:#888;font-family:monospace;font-size:13px;min-width:50px}
+.toc-name{flex:1;font-size:15px}
+.toc-file{color:#555;font-size:12px;font-family:monospace}
+
+/* 内容页 */
+.slide-header{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.slide-code{background:${vInfo.color || '#b06a32'};color:#fff;padding:4px 12px;border-radius:4px;font-size:14px;font-weight:700}
+.slide-header h2{font-size:26px;color:#e0e0e0}
+
+.slide-body{flex:1;display:flex;justify-content:center;align-items:center;overflow:hidden;min-height:0}
+.slide-body img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px}
+
+.slide-placeholder{text-align:center;color:#666}
+.slide-placeholder p{font-size:48px;margin-bottom:16px}
+.slide-placeholder a{color:#5b98c9;font-size:14px}
+
+.slide-footer{position:absolute;bottom:12px;left:48px;right:48px;display:flex;justify-content:space-between;font-size:11px;color:#555;border-top:1px solid #2a2a2a;padding-top:8px}
+
+/* === 导航 === */
+.nav-bar{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+    background:rgba(30,30,30,0.95);padding:10px 24px;border-radius:40px;
+    display:flex;gap:16px;align-items:center;z-index:100;
+    border:1px solid #444;backdrop-filter:blur(10px);
+}
+.nav-btn{
+    background:#4a4a4a;border:none;color:#fff;padding:8px 20px;
+    border-radius:20px;cursor:pointer;font-size:14px;transition:all 0.2s;
+}
+.nav-btn:hover{background:#b06a32}
+.nav-btn:disabled{opacity:0.3;cursor:not-allowed;background:#4a4a4a}
+.page-indicator{color:#ccc;font-size:15px;font-weight:600;min-width:80px;text-align:center}
+
+/* 工具栏 */
+.toolbar{position:fixed;top:16px;right:16px;display:flex;gap:8px;z-index:100}
+.tool-btn{
+    background:rgba(40,40,40,0.9);border:1px solid #444;color:#ccc;
+    padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;transition:all 0.2s;
+}
+.tool-btn:hover{background:#b06a32;color:#fff;border-color:#b06a32}
+
+/* 进度条 */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:#b06a32;z-index:200;transition:width 0.3s}
+
+/* === 打印 === */
+@media print{
+    body{background:white;color:black;overflow:visible}
+    .slide-container{
+        display:block!important;
+        page-break-after:always;
+        page-break-inside:avoid;
+        width:100%;height:auto;
+    }
+    .slide-container:last-child{page-break-after:auto}
+    .slide{
+        width:100%;max-width:none;aspect-ratio:auto;
+        height:180mm;background:white;box-shadow:none;
+        border:1px solid #ddd;border-radius:0;padding:8mm;
+    }
+    .cover-slide{background:white!important}
+    .cover-slide h1{color:#333}
+    .cover-anchor{color:#b06a32}
+    .cover-meta{color:#666}
+    .slide-header h2{color:#333}
+    .slide-code{color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .slide-footer{color:#999}
+    .slide-body img{max-height:150mm}
+    .nav-bar,.toolbar,.progress-bar{display:none!important}
+    .toc-item{background:#f5f5f5}
+    .toc-num{color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    @page{size:A4 landscape;margin:5mm}
+}
+
+/* 反拷贝 */
+*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{*{-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;user-select:auto}}
+</style>
+</head>
+<body>
+
+${slidesHTML}
+
+<div class="progress-bar" id="progress-bar"></div>
+
+<div class="nav-bar">
+    <button class="nav-btn" id="prev-btn">← 上一页</button>
+    <span class="page-indicator"><span id="current-page">1</span> / <span id="total-pages">${totalSlides}</span></span>
+    <button class="nav-btn" id="next-btn">下一页 →</button>
+</div>
+
+<div class="toolbar">
+    <button class="tool-btn" id="fullscreen-btn" title="全屏 (F)">⛶ 全屏</button>
+    <button class="tool-btn" onclick="window.print()" title="打印 (Ctrl+P)">🖨 打印</button>
+</div>
+
+<script>
+var currentSlide=0;
+var slides=document.querySelectorAll('.slide-container');
+var totalSlides=slides.length;
+document.getElementById('total-pages').textContent=totalSlides;
+
+function showSlide(idx){
+    slides.forEach(function(s){s.classList.remove('active')});
+    slides[idx].classList.add('active');
+    document.getElementById('current-page').textContent=idx+1;
+    document.getElementById('prev-btn').disabled=idx===0;
+    document.getElementById('next-btn').disabled=idx===totalSlides-1;
+    document.getElementById('progress-bar').style.width=((idx+1)/totalSlides*100)+'%';
+}
+
+document.getElementById('prev-btn').addEventListener('click',function(){
+    if(currentSlide>0){currentSlide--;showSlide(currentSlide)}
+});
+document.getElementById('next-btn').addEventListener('click',function(){
+    if(currentSlide<totalSlides-1){currentSlide++;showSlide(currentSlide)}
+});
+
+document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft'&&currentSlide>0){currentSlide--;showSlide(currentSlide)}
+    else if(e.key==='ArrowRight'&&currentSlide<totalSlides-1){currentSlide++;showSlide(currentSlide)}
+    else if(e.key==='Home'){currentSlide=0;showSlide(0)}
+    else if(e.key==='End'){currentSlide=totalSlides-1;showSlide(currentSlide)}
+    else if((e.key==='f'||e.key==='F')&&!e.ctrlKey){toggleFullscreen()}
+    else if(e.key==='Escape'&&document.fullscreenElement){document.exitFullscreen()}
+});
+
+function toggleFullscreen(){
+    if(!document.fullscreenElement){document.documentElement.requestFullscreen()}
+    else{document.exitFullscreen()}
+}
+document.getElementById('fullscreen-btn').addEventListener('click',toggleFullscreen);
+
+// 触摸滑动
+var touchStartX=0;
+document.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX});
+document.addEventListener('touchend',function(e){
+    var diff=e.changedTouches[0].screenX-touchStartX;
+    if(diff<-50&&currentSlide<totalSlides-1){currentSlide++;showSlide(currentSlide)}
+    else if(diff>50&&currentSlide>0){currentSlide--;showSlide(currentSlide)}
+});
+
+// 反拷贝
+document.addEventListener('contextmenu',function(e){e.preventDefault()});
+document.addEventListener('keydown',function(e){
+    if(e.ctrlKey&&(e.key==='c'||e.key==='s'||e.key==='p'||e.key==='u'))e.preventDefault();
+});
+
+showSlide(0);
+</script>
+</body>
+</html>`;
+}
+</script>
+</body>
+</html>

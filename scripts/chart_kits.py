@@ -339,8 +339,9 @@ def JS_COMMON(cids):
             "function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';\n"
             "window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);\n"
             "btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}\n"
-            "window.addEventListener('resize',function(){[" + ids_js + "].forEach(function(id){"
-            "var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});\n")
+            "window.addEventListener('resize',function(){[" + ids_js + "].forEach(function(id){"\
+            "var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});\n"\
+            "setTimeout(function(){window.__chartsReady=true;},1200);\n")
 
 
 def make_crumb(commodity, code, section_no, section_name, node_no, node_name, version, n_charts):
