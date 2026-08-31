@@ -493,6 +493,24 @@ PAGES = {
         "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
     },
 
+    "cu_63": {
+        "file": "cu_6_3.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_cu_63_c1", "echart_cu_63_c2", "echart_cu_63_c3"],
+        "label": "制品出口 6.3",
+        "has_seasonal": True,
+    },
+
+    "cu_64": {
+        "file": "cu_6_4.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_cu_64_c1", "echart_cu_64_c2", "echart_cu_64_c3"],
+        "label": "海外发运 6.4",
+        "has_seasonal": True,
+    },
+
     "al_6_3": {
         "file": "al_6_3.html",
         "min_bytes": 10000,

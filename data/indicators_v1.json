@@ -1,12 +1,16 @@
 {
  "_meta": {
-  "version": "3.46",
+  "version": "3.47",
   "updated": "2026-08-31",
   "status": "部分验证",
-  "说明": "B-CU-AL-GAP: CU 5.3 需求先行指标 +4 指标(铜缺口页第3节点)",
+  "说明": "B-CU-AL-GAP: CU 6.3 制品出口 +4, CU 6.4 海外发运 +4(铜缺口页第4/5节点)",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
  },
  "version_changelog": [
+  {
+   "version": "3.47",
+   "change": "B-CU-AL-GAP: CU 6.3 制品出口 +4, CU 6.4 海外发运 +4(铜缺口页第4/5节点)"
+  },
   {
    "version": "3.46",
    "change": "B-CU-AL-GAP: CU 5.3 需求先行指标 +4 指标(铜缺口页第3节点)"
@@ -11443,6 +11447,142 @@
    "_tier": "A",
    "_nodes": [
     "5.3"
+   ]
+  },
+  "cu_63_rod_exp": {
+   "name": "中国海关：铜杆线出口量（月）",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127153"
+   },
+   "category": "trade",
+   "subleaf": "6.3制品出口",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_63_plate_exp": {
+   "name": "中国海关：铜板带出口量（月）",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127123"
+   },
+   "category": "trade",
+   "subleaf": "6.3制品出口",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_63_pipe_exp": {
+   "name": "中国海关：铜管出口量（月）",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127083"
+   },
+   "category": "trade",
+   "subleaf": "6.3制品出口",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_63_plate_value": {
+   "name": "中国海关：铜板带出口额（月）",
+   "unit": "美元",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127128"
+   },
+   "category": "trade",
+   "subleaf": "6.3制品出口",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_64_conc_arrival": {
+   "name": "沸腾环贸：铜精矿到港：港口汇总（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "CU": "a10118482"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "沸腾环贸/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_64_conc_import": {
+   "name": "中国海关：铜精矿进口量（月）",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10015145"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_64_conc_portinv": {
+   "name": "铜精矿：港口库存：中国（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01002000"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "mysteel",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_64_jinzhou_arrival": {
+   "name": "沸腾环贸：铜精矿到港：锦州港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "CU": "a10118512"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "沸腾环贸/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
    ]
   }
  },
