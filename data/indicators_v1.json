@@ -1,12 +1,16 @@
 {
  "_meta": {
-  "version": "3.47",
+  "version": "3.48",
   "updated": "2026-08-31",
   "status": "部分验证",
-  "说明": "B-CU-AL-GAP: CU 6.3 制品出口 +4, CU 6.4 海外发运 +4(铜缺口页第4/5节点)",
+  "说明": "B-CU-AL-GAP: AL 5缺口节点(3.1.2/3.1.4/6.1/6.4/7.3) +20指标, 铝缺口全部完成",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
  },
  "version_changelog": [
+  {
+   "version": "3.48",
+   "change": "B-CU-AL-GAP: AL 5缺口节点(3.1.2/3.1.4/6.1/6.4/7.3) +20指标, 铝缺口全部完成"
+  },
   {
    "version": "3.47",
    "change": "B-CU-AL-GAP: CU 6.3 制品出口 +4, CU 6.4 海外发运 +4(铜缺口页第4/5节点)"
@@ -11583,6 +11587,346 @@
    "_tier": "A",
    "_nodes": [
     "6.4"
+   ]
+  },
+  "al_312_russia": {
+   "name": "SMM：海外电解铝产量：俄罗斯（月）",
+   "unit": "千吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12749981"
+   },
+   "category": "supply",
+   "subleaf": "3.1.2海外矿分国别产量",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_312_europe": {
+   "name": "SMM：海外电解铝产量：欧洲除俄罗斯（月）",
+   "unit": "千吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12749982"
+   },
+   "category": "supply",
+   "subleaf": "3.1.2海外矿分国别产量",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_312_india": {
+   "name": "SMM：海外电解铝产量：印度（月）",
+   "unit": "千吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12749984"
+   },
+   "category": "supply",
+   "subleaf": "3.1.2海外矿分国别产量",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_312_africa": {
+   "name": "SMM：海外电解铝产量：非洲（月）",
+   "unit": "千吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12749977"
+   },
+   "category": "supply",
+   "subleaf": "3.1.2海外矿分国别产量",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_314_total": {
+   "name": "中国海关：铝土矿进口量（月）",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10016324"
+   },
+   "category": "supply",
+   "subleaf": "3.1.4矿进口量与分国别",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_314_guinea_price": {
+   "name": "中国海关：铝土矿进口均价：几内亚（月）",
+   "unit": "美元/吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10016313"
+   },
+   "category": "supply",
+   "subleaf": "3.1.4矿进口量与分国别",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_314_guinea_sea": {
+   "name": "铝土矿：进口：海漂库存：几内亚（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01201229"
+   },
+   "category": "supply",
+   "subleaf": "3.1.4矿进口量与分国别",
+   "source": "mysteel",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_314_au_sea": {
+   "name": "铝土矿：进口：海漂库存：澳大利亚（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01201232"
+   },
+   "category": "supply",
+   "subleaf": "3.1.4矿进口量与分国别",
+   "source": "mysteel",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_61_scrap_total": {
+   "name": "中国海关：废铝进口量（月）",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10015866"
+   },
+   "category": "trade",
+   "subleaf": "6.1原料进口",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_61_scrap_guinea": {
+   "name": "中国海关：中国废铝进口量：几内亚（月）",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10166279"
+   },
+   "category": "trade",
+   "subleaf": "6.1原料进口",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_61_scrap_aidi": {
+   "name": "SMM：印尼废铝进口量（月）",
+   "unit": "千吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12867625"
+   },
+   "category": "trade",
+   "subleaf": "6.1原料进口",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_61_bauxite": {
+   "name": "中国海关：铝土矿进口量（月）",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10016324"
+   },
+   "category": "trade",
+   "subleaf": "6.1原料进口",
+   "source": "中国海关/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_64_lianyungang": {
+   "name": "沸腾环贸：铝土矿到港量：连云港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "a10118041"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "沸腾环贸/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_64_fangcheng": {
+   "name": "沸腾环贸：铝土矿到港量：防城港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "a10118051"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "沸腾环贸/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_64_longkou": {
+   "name": "沸腾环贸：铝土矿到港量：龙口港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "a10118045"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "沸腾环贸/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_64_qingdao": {
+   "name": "沸腾环贸：铝土矿到港量：青岛港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "a10118042"
+   },
+   "category": "trade",
+   "subleaf": "6.4海外发运",
+   "source": "沸腾环贸/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_73_alumina": {
+   "name": "SMM：电解铝成本利润模型：氧化铝价格（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a10016210"
+   },
+   "category": "cost",
+   "subleaf": "7.3能源/原料成本",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_73_yn_elec": {
+   "name": "SMM：云南电解铝平均电价（月）",
+   "unit": "元/kWh",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12762868"
+   },
+   "category": "cost",
+   "subleaf": "7.3能源/原料成本",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_73_hn_elec": {
+   "name": "SMM：河南电解铝平均电价（月）",
+   "unit": "元/kWh",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12762865"
+   },
+   "category": "cost",
+   "subleaf": "7.3能源/原料成本",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_73_cost": {
+   "name": "SMM：中国电解铝平均成本（月）",
+   "unit": "元/吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12804845"
+   },
+   "category": "cost",
+   "subleaf": "7.3能源/原料成本",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
    ]
   }
  },

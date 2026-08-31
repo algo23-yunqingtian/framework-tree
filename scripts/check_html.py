@@ -538,6 +538,51 @@ PAGES = {
         "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
     },
 
+    "al_312": {
+        "file": "al_3_1_2.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_312_c1", "echart_al_312_c2", "echart_al_312_c3"],
+        "label": "海外矿分国别 3.1.2",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_314": {
+        "file": "al_3_1_4.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_314_c1", "echart_al_314_c2", "echart_al_314_c3"],
+        "label": "矿进口分国别 3.1.4",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_61": {
+        "file": "al_6_1.html",
+        "min_bytes": 20000,
+        "charts": 2,
+        "cids": ["echart_al_61_c1", "echart_al_61_c2"],
+        "label": "原料进口 6.1",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_64": {
+        "file": "al_6_4.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_64_c1", "echart_al_64_c2", "echart_al_64_c3"],
+        "label": "海外发运 6.4",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
+    "al_73": {
+        "file": "al_7_3.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_al_73_c1", "echart_al_73_c2", "echart_al_73_c3"],
+        "label": "能源/原料成本 7.3",
+        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+    },
+
     "al_313": {
         "file": "al_3_1_3.html",
         "min_bytes": 8000,
