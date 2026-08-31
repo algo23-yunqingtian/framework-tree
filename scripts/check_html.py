@@ -583,6 +583,15 @@ PAGES = {
         "has_seasonal": True,
     },
 
+    "cu_41": {
+        "file": "cu_4_1.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_cu_41_c1", "echart_cu_41_c2", "echart_cu_41_c3"],
+        "label": "交易所库存 4.1",
+        "has_seasonal": True,
+    },
+
     "cu_42": {
         "file": "cu_4_2.html",
         "min_bytes": 12000,
@@ -607,6 +616,15 @@ PAGES = {
         "charts": 2,
         "cids": ["echart_cu_51_c1", "echart_cu_51_c2"],
         "label": "初级消费 5.1",
+        "has_seasonal": True,
+    },
+
+    "cu_52": {
+        "file": "cu_5_2.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_cu_52_c1", "echart_cu_52_c2", "echart_cu_52_c3"],
+        "label": "终端消费 5.2",
         "has_seasonal": True,
     },
 

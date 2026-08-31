@@ -1,12 +1,20 @@
 {
  "_meta": {
-  "version": "3.43",
+  "version": "3.45",
   "updated": "2026-08-31",
   "status": "部分验证",
-  "说明": "v3.42: gap_fill_20260831 补19空白节点第一批 +9 指标(CU 4.2/4.3/5.1/7.1 + AL 3.1.1)",
+  "说明": "B-CU-AL-GAP: CU 5.2 终端细分消费 +5 指标(铜缺口页第2节点)",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
  },
  "version_changelog": [
+  {
+   "version": "3.45",
+   "change": "B-CU-AL-GAP: CU 5.2 终端细分消费 +5 指标(铜缺口页第2节点)"
+  },
+  {
+   "version": "3.44",
+   "change": "B-CU-AL-GAP: CU 4.1 交易所库存 +4 指标(铜缺口页第1节点)"
+  },
   {
    "version": "3.42",
    "change": "gap_fill：补铜铝空白节点指标 +9 条"
@@ -11209,6 +11217,160 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
+   ]
+  },
+  "cu_41_lme_inv": {
+   "name": "LME：铜：库存（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "a10134435"
+   },
+   "category": "inventory",
+   "subleaf": "4.1交易所库存",
+   "source": "SMM/LME",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "4.1"
+   ]
+  },
+  "cu_41_lme_cancel": {
+   "name": "LME：铜：注销仓单（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015498"
+   },
+   "category": "inventory",
+   "subleaf": "4.1交易所库存(注销占比计算输入)",
+   "source": "LME",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "4.1"
+   ],
+   "_note": "注销仓单正主属4.2仓单；本页仅作注销占比(注销/总)的分子计算输入,辅助交叉"
+  },
+  "cu_41_shfe_warrant": {
+   "name": "SHFE：铜：仓单日报·期货（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "a10157141"
+   },
+   "category": "inventory",
+   "subleaf": "4.1交易所库存",
+   "source": "SMM/SHFE",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "4.1"
+   ]
+  },
+  "cu_41_comex_inv": {
+   "name": "COMEX：电解铜库存总计（日）",
+   "unit": "短吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "j02749559"
+   },
+   "category": "inventory",
+   "subleaf": "4.1交易所库存",
+   "source": "SMM/COMEX",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "4.1"
+   ]
+  },
+  "cu_52_grid_inv": {
+   "name": "CEC：电网工程投资完成额：累计（月）",
+   "unit": "亿元",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a12756033"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "CEC/SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_52_ac_output": {
+   "name": "产业在线：家用空调：产量：中国（月）",
+   "unit": "万台",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00181009"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "产业在线/mysteel",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_52_car_output": {
+   "name": "汽车：产量：中国（月）",
+   "unit": "辆",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00185322"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "中汽协/mysteel",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_52_fridge": {
+   "name": "产业在线：冰箱：产量：中国（月）",
+   "unit": "万台",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00181157"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "产业在线/mysteel",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_52_washer": {
+   "name": "产业在线：洗衣机：产量：中国（月）",
+   "unit": "万台",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID00104496"
+   },
+   "category": "demand",
+   "subleaf": "5.2终端细分消费",
+   "source": "产业在线/mysteel",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
    ]
   }
  },
