@@ -155,7 +155,7 @@ function loadConfig(){
   renderTree();
   state.curTab = CFG.categories[0].id;
   const first = CFG.categories[0].children[0];
-  selectChip(first, first.comms[0], true);
+  selectChip(first, first.comms[0], false, true);
 }
 
 function renderTabs(){
@@ -245,11 +245,11 @@ function renderTree(filter){
           chip.style.outline='2px solid #7a5230';
           chip.style.outlineOffset='1px';
         }
-        chip.onclick=(e)=>{ e.stopPropagation(); selectChip(leaf, cm.id, true); };
+        chip.onclick=(e)=>{ e.stopPropagation(); selectChip(leaf, cm.id, true, true); };
         comm.appendChild(chip);
       });
       row.appendChild(comm);
-      row.onclick=()=>{ if(leaf.comms.length>0) selectChip(leaf, leaf.comms[0], true); };
+      row.onclick=()=>{ if(leaf.comms.length>0) selectChip(leaf, leaf.comms[0], true, true); };
       body.appendChild(row);
     });
 
@@ -260,7 +260,8 @@ function renderTree(filter){
   });
 }
 
-function selectChip(leaf, commId, render){
+function selectChip(leaf, commId, autoNav, render){
+  autoNav = autoNav === true;
   state.curLeaf = leaf;
   state.curComm = commId;
   renderTree(document.getElementById('tree-search').value);
@@ -367,13 +368,30 @@ function selectChip(leaf, commId, render){
          'PB_t4':'pb_64_overseas_shipping.html',  // 6.4 海外对华发运
       };
   const key = cm.code+'_'+leaf.id;
-  if(PAGE_MAP[key]){
-    window.location.href = PAGE_MAP[key];
+
+  // 五金属(ZN/NI/SN/SI/LI)：根据 leaf.code 动态推导文件名（例：zn + 2.1 → zn_2_1.html）
+  if(!PAGE_MAP[key] && ['ZN','NI','SN','SI','LI'].indexOf(cm.code)>=0){
+    const v = cm.code.toLowerCase();
+    const fname = v + '_' + leaf.code.replace(/\./g,'_') + '.html';
+    if(autoNav){
+      window.location.href = fname;
+      return;
+    }
+    // 未主动点击时显示占位
+    document.getElementById('ph-note').textContent =
+      '📡 '+cm.code+' '+leaf.name+' → '+fname+'（点击 chip 跳转）';
     return;
   }
-  // 其余品种/子类 → 显示占位
+
+  if(PAGE_MAP[key]){
+    if(autoNav){
+      window.location.href = PAGE_MAP[key];
+      return;
+    }
+  }
+  // 其余品种/子类 或 未主动点击 → 显示占位
   document.getElementById('ph-note').textContent =
-    '📡 '+cm.code+' '+leaf.name+' 看板开发中 · 参考铅(PB)库存看板模板';
+    '📡 '+cm.code+' '+leaf.name+' 看板'+(PAGE_MAP[key]? '（点击 chip 跳转）':'开发中 · 参考铅(PB)库存看板模板');
 }
 
 /* ---- 渲染数据（有真实数据时展示迷你图+关键数字） ---- */
