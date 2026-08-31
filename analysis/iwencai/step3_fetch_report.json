@@ -1,4 +1,13 @@
 {
+ "CU:cu_21_import": {
+  "ok": true,
+  "metric": "cu_21_import",
+  "code": "CU",
+  "zhiji_id": "ID01030232",
+  "n_points": 2448,
+  "latest": "2016-05-09",
+  "first": "2026-08-28"
+ },
  "CU:cu_21_import_conc": {
   "ok": true,
   "metric": "cu_21_import_conc",
@@ -180,13 +189,11 @@
   "first": "2023-12-31"
  },
  "CU:cu_312_output": {
-  "ok": true,
+  "ok": false,
   "metric": "cu_312_output",
   "code": "CU",
   "zhiji_id": "ID00299738",
-  "n_points": 7,
-  "latest": "2019-12-31",
-  "first": "2025-12-31"
+  "err": "空数据"
  },
  "CU:cu_312_output_conc": {
   "ok": true,
@@ -340,13 +347,11 @@
   "first": "2026-08-28"
  },
  "AL:al_00_close_front": {
-  "ok": true,
+  "ok": false,
   "metric": "al_00_close_front",
   "code": "AL",
   "zhiji_id": "FU00014632",
-  "n_points": 2833,
-  "latest": "2015-01-05",
-  "first": "2026-08-28"
+  "err": "空数据"
  },
  "AL:al_00_premium": {
   "ok": true,
@@ -430,13 +435,11 @@
   "first": "2026-07-31"
  },
  "AL:al_315_tc_tc": {
-  "ok": true,
+  "ok": false,
   "metric": "al_315_tc_tc",
   "code": "AL",
   "zhiji_id": "ID00259465",
-  "n_points": 2333,
-  "latest": "2017-03-09",
-  "first": "2026-08-28"
+  "err": "空数据"
  },
  "AL:al_315_tc_tc_percentile": {
   "ok": true,
@@ -601,12 +604,1746 @@
   "first": "2026-07-31"
  },
  "AL:al_71_tc": {
-  "ok": true,
+  "ok": false,
   "metric": "al_71_tc",
   "code": "AL",
   "zhiji_id": "ID00275563",
+  "err": "空数据"
+ },
+ "AL:al_51_util": {
+  "ok": true,
+  "metric": "al_51_util",
+  "code": "AL",
+  "zhiji_id": "a10146957",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "AL:al_51_util_week": {
+  "ok": true,
+  "metric": "al_51_util_week",
+  "code": "AL",
+  "zhiji_id": "a12804269",
+  "n_points": 86,
+  "latest": "2025-01-02",
+  "first": "2026-08-27"
+ },
+ "AL:al_22_spot": {
+  "ok": true,
+  "metric": "al_22_spot",
+  "code": "AL",
+  "zhiji_id": "ID00259727",
+  "n_points": 1913,
+  "latest": "2015-01-05",
+  "first": "2022-10-13"
+ },
+ "AL:al_22_premium_cn": {
+  "ok": true,
+  "metric": "al_22_premium_cn",
+  "code": "AL",
+  "zhiji_id": "ID01319345",
+  "n_points": 1146,
+  "latest": "2021-12-01",
+  "first": "2026-08-28"
+ },
+ "AL:al_23_lme_settle": {
+  "ok": true,
+  "metric": "al_23_lme_settle",
+  "code": "AL",
+  "zhiji_id": "FU00014308",
+  "n_points": 2918,
+  "latest": "2015-01-02",
+  "first": "2026-08-28"
+ },
+ "AL:al_23_lme_oi": {
+  "ok": true,
+  "metric": "al_23_lme_oi",
+  "code": "AL",
+  "zhiji_id": "FU00014314",
+  "n_points": 2619,
+  "latest": "2015-01-02",
+  "first": "2026-08-27"
+ },
+ "AL:al_23_lme_volume": {
+  "ok": true,
+  "metric": "al_23_lme_volume",
+  "code": "AL",
+  "zhiji_id": "FU00014307",
+  "n_points": 2937,
+  "latest": "2015-01-02",
+  "first": "2026-08-27"
+ },
+ "AL:al_24_lme_settle": {
+  "ok": true,
+  "metric": "al_24_lme_settle",
+  "code": "AL",
+  "zhiji_id": "FU00014308",
+  "n_points": 2918,
+  "latest": "2015-01-02",
+  "first": "2026-08-28"
+ },
+ "AL:al_24_lme_spread": {
+  "ok": true,
+  "metric": "al_24_lme_spread",
+  "code": "AL",
+  "zhiji_id": "FU00014308",
+  "n_points": 2918,
+  "latest": "2015-01-02",
+  "first": "2026-08-28"
+ },
+ "AL:al_25_profit": {
+  "ok": false,
+  "metric": "al_25_profit",
+  "code": "AL",
+  "zhiji_id": "ID01732414",
+  "err": "空数据"
+ },
+ "AL:al_26_long_top20": {
+  "ok": true,
+  "metric": "al_26_long_top20",
+  "code": "AL",
+  "zhiji_id": "FU00021993",
+  "n_points": 706,
+  "latest": "2020-03-11",
+  "first": "2026-08-17"
+ },
+ "AL:al_26_short_top20": {
+  "ok": true,
+  "metric": "al_26_short_top20",
+  "code": "AL",
+  "zhiji_id": "FU00021998",
+  "n_points": 706,
+  "latest": "2020-03-11",
+  "first": "2026-08-17"
+ },
+ "AL:al_26_comex_nc_long": {
+  "ok": true,
+  "metric": "al_26_comex_nc_long",
+  "code": "AL",
+  "zhiji_id": "ID00303201",
+  "n_points": 550,
+  "latest": "2016-02-19",
+  "first": "2026-08-28"
+ },
+ "AL:al_26_comex_nc_short": {
+  "ok": true,
+  "metric": "al_26_comex_nc_short",
+  "code": "AL",
+  "zhiji_id": "ID00303202",
+  "n_points": 550,
+  "latest": "2016-02-19",
+  "first": "2026-08-28"
+ },
+ "AL:al_25_close_quantile": {
+  "ok": false,
+  "metric": "al_25_close_quantile",
+  "code": "AL",
+  "zhiji_id": "DERIVED:QUANTILE:al_00_close_front",
+  "err": "空数据"
+ },
+ "AL:al_25_lme_quantile": {
+  "ok": false,
+  "metric": "al_25_lme_quantile",
+  "code": "AL",
+  "zhiji_id": "DERIVED:QUANTILE:al_23_lme_settle",
+  "err": "空数据"
+ },
+ "AL:al_24_shfe_spread": {
+  "ok": false,
+  "metric": "al_24_shfe_spread",
+  "code": "AL",
+  "zhiji_id": "DERIVED:SPREAD:al_00_settle_front-al_00_settle_cont",
+  "err": "空数据"
+ },
+ "AL:al_00_settle_front": {
+  "ok": true,
+  "metric": "al_00_settle_front",
+  "code": "AL",
+  "zhiji_id": "FU00014630",
+  "n_points": 2833,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "AL:al_00_settle_cont": {
+  "ok": true,
+  "metric": "al_00_settle_cont",
+  "code": "AL",
+  "zhiji_id": "FU00014623",
+  "n_points": 2836,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "CU:cu_42_warrant_reg": {
+  "ok": true,
+  "metric": "cu_42_warrant_reg",
+  "code": "CU",
+  "zhiji_id": "FU00015497",
+  "n_points": 3185,
+  "latest": "2015-01-02",
+  "first": "2026-08-28"
+ },
+ "CU:cu_42_warrant_cancel": {
+  "ok": true,
+  "metric": "cu_42_warrant_cancel",
+  "code": "CU",
+  "zhiji_id": "FU00015498",
+  "n_points": 3180,
+  "latest": "2015-01-02",
+  "first": "2026-08-28"
+ },
+ "CU:cu_43_social_stock": {
+  "ok": true,
+  "metric": "cu_43_social_stock",
+  "code": "CU",
+  "zhiji_id": "ID02041075",
+  "n_points": 109,
+  "latest": "2025-01-03",
+  "first": "2026-08-27"
+ },
+ "CU:cu_43_social_stock_ec": {
+  "ok": true,
+  "metric": "cu_43_social_stock_ec",
+  "code": "CU",
+  "zhiji_id": "ID02041074",
+  "n_points": 109,
+  "latest": "2025-01-03",
+  "first": "2026-08-27"
+ },
+ "CU:cu_51_apparent_cons": {
+  "ok": true,
+  "metric": "cu_51_apparent_cons",
+  "code": "CU",
+  "zhiji_id": "ID01167298",
+  "n_points": 115,
+  "latest": "2017-01-31",
+  "first": "2026-07-31"
+ },
+ "CU:cu_51_actual_cons": {
+  "ok": true,
+  "metric": "cu_51_actual_cons",
+  "code": "CU",
+  "zhiji_id": "ID01167297",
+  "n_points": 115,
+  "latest": "2017-01-31",
+  "first": "2026-07-31"
+ },
+ "AL:al_311_bauxite_gx": {
+  "ok": true,
+  "metric": "al_311_bauxite_gx",
+  "code": "AL",
+  "zhiji_id": "ID01724182",
+  "n_points": 61,
+  "latest": "2021-07-31",
+  "first": "2026-07-31"
+ },
+ "AL:al_311_bauxite_sx": {
+  "ok": true,
+  "metric": "al_311_bauxite_sx",
+  "code": "AL",
+  "zhiji_id": "ID01724178",
+  "n_points": 61,
+  "latest": "2021-07-31",
+  "first": "2026-07-31"
+ },
+ "CU:cu_71_cost_fq": {
+  "ok": true,
+  "metric": "cu_71_cost_fq",
+  "code": "CU",
+  "zhiji_id": "ID01839347",
+  "n_points": 18,
+  "latest": "2022-03-31",
+  "first": "2026-06-30"
+ },
+ "ZN:zn_00_close_front": {
+  "ok": true,
+  "metric": "zn_00_close_front",
+  "code": "ZN",
+  "zhiji_id": "FU00016362",
+  "n_points": 2833,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_openinterest": {
+  "ok": true,
+  "metric": "zn_00_openinterest",
+  "code": "ZN",
+  "zhiji_id": "FU00017554",
+  "n_points": 2833,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_volume": {
+  "ok": true,
+  "metric": "zn_00_volume",
+  "code": "ZN",
+  "zhiji_id": "FU00033044",
+  "n_points": 1128,
+  "latest": "2022-02-28",
+  "first": "2026-08-27"
+ },
+ "ZN:zn_00_basis": {
+  "ok": true,
+  "metric": "zn_00_basis",
+  "code": "ZN",
+  "zhiji_id": "FU00024317",
+  "n_points": 2834,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_premium": {
+  "ok": true,
+  "metric": "zn_00_premium",
+  "code": "ZN",
+  "zhiji_id": "ID02038762",
+  "n_points": 2294,
+  "latest": "2017-01-03",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_close_near": {
+  "ok": true,
+  "metric": "zn_00_close_near",
+  "code": "ZN",
+  "zhiji_id": "FU00016362",
+  "n_points": 2833,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_close_far": {
+  "ok": true,
+  "metric": "zn_00_close_far",
+  "code": "ZN",
+  "zhiji_id": "FU00016362",
+  "n_points": 2833,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_close": {
+  "ok": true,
+  "metric": "zn_00_close",
+  "code": "ZN",
+  "zhiji_id": "FU00016495",
+  "n_points": 2833,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_import": {
+  "ok": true,
+  "metric": "zn_00_import",
+  "code": "ZN",
+  "zhiji_id": "ID01314523",
+  "n_points": 52,
+  "latest": "2018-07-31",
+  "first": "2026-07-31"
+ },
+ "ZN:zn_00_lme_inv": {
+  "ok": true,
+  "metric": "zn_00_lme_inv",
+  "code": "ZN",
+  "zhiji_id": "ID02226129",
+  "n_points": 43,
+  "latest": "2023-01-31",
+  "first": "2026-07-31"
+ },
+ "ZN:zn_00_lme_close": {
+  "ok": true,
+  "metric": "zn_00_lme_close",
+  "code": "ZN",
+  "zhiji_id": "FU00080253",
+  "n_points": 1122,
+  "latest": "2022-03-21",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_cost_conc": {
+  "ok": true,
+  "metric": "zn_00_cost_conc",
+  "code": "ZN",
+  "zhiji_id": "LC00168976",
+  "n_points": 13,
+  "latest": "2015-06-30",
+  "first": "2025-12-31"
+ },
+ "ZN:zn_00_tc_conc": {
+  "ok": true,
+  "metric": "zn_00_tc_conc",
+  "code": "ZN",
+  "zhiji_id": "ID01320770",
+  "n_points": 1081,
+  "latest": "2022-04-29",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_profit_percentile": {
+  "ok": true,
+  "metric": "zn_00_profit_percentile",
+  "code": "ZN",
+  "zhiji_id": "LC00168929",
+  "n_points": 13,
+  "latest": "2015-06-30",
+  "first": "2025-12-31"
+ },
+ "ZN:zn_00_profit": {
+  "ok": true,
+  "metric": "zn_00_profit",
+  "code": "ZN",
+  "zhiji_id": "LC00139956",
+  "n_points": 46,
+  "latest": "2015-03-31",
+  "first": "2026-06-30"
+ },
+ "ZN:zn_00_openinterest_top20": {
+  "ok": true,
+  "metric": "zn_00_openinterest_top20",
+  "code": "ZN",
+  "zhiji_id": "FU00017554",
+  "n_points": 2833,
+  "latest": "2015-01-05",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_output": {
+  "ok": true,
+  "metric": "zn_00_output",
+  "code": "ZN",
+  "zhiji_id": "ID01167382",
+  "n_points": 115,
+  "latest": "2017-01-31",
+  "first": "2026-07-31"
+ },
+ "ZN:zn_00_output_recycle": {
+  "ok": true,
+  "metric": "zn_00_output_recycle",
+  "code": "ZN",
+  "zhiji_id": "ID01510884",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "ZN:zn_00_tc_percentile": {
+  "ok": true,
+  "metric": "zn_00_tc_percentile",
+  "code": "ZN",
+  "zhiji_id": "ID01320770",
+  "n_points": 1081,
+  "latest": "2022-04-29",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_tc": {
+  "ok": true,
+  "metric": "zn_00_tc",
+  "code": "ZN",
+  "zhiji_id": "ID01320770",
+  "n_points": 1081,
+  "latest": "2022-04-29",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_capacity_util": {
+  "ok": true,
+  "metric": "zn_00_capacity_util",
+  "code": "ZN",
+  "zhiji_id": "ID01167334",
+  "n_points": 115,
+  "latest": "2017-01-31",
+  "first": "2026-07-31"
+ },
+ "ZN:zn_00_import_recycle": {
+  "ok": true,
+  "metric": "zn_00_import_recycle",
+  "code": "ZN",
+  "zhiji_id": "ID01030236",
+  "n_points": 2299,
+  "latest": "2016-12-16",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_recycle_capacity_util": {
+  "ok": true,
+  "metric": "zn_00_recycle_capacity_util",
+  "code": "ZN",
+  "zhiji_id": "ID00407929",
+  "n_points": 115,
+  "latest": "2017-01-31",
+  "first": "2026-07-31"
+ },
+ "ZN:zn_00_lme_warrant": {
+  "ok": true,
+  "metric": "zn_00_lme_warrant",
+  "code": "ZN",
+  "zhiji_id": "FU00016166",
+  "n_points": 3180,
+  "latest": "2015-01-02",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_inv": {
+  "ok": true,
+  "metric": "zn_00_inv",
+  "code": "ZN",
+  "zhiji_id": "ID01552269",
+  "n_points": 8,
+  "latest": "2017-12-31",
+  "first": "2024-12-31"
+ },
+ "ZN:zn_00_inv_implicit": {
+  "ok": true,
+  "metric": "zn_00_inv_implicit",
+  "code": "ZN",
+  "zhiji_id": "ID00366838",
+  "n_points": 517,
+  "latest": "2016-09-23",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_inv_plant": {
+  "ok": true,
+  "metric": "zn_00_inv_plant",
+  "code": "ZN",
+  "zhiji_id": "ID01030219",
+  "n_points": 543,
+  "latest": "2016-01-01",
+  "first": "2026-08-21"
+ },
+ "ZN:zn_00_cons": {
+  "ok": true,
+  "metric": "zn_00_cons",
+  "code": "ZN",
+  "zhiji_id": "ID00303820",
+  "n_points": 9,
+  "latest": "2015-12-31",
+  "first": "2023-12-31"
+ },
+ "ZN:zn_00_util": {
+  "ok": true,
+  "metric": "zn_00_util",
+  "code": "ZN",
+  "zhiji_id": "ID01002075",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "ZN:zn_00_inv_conc": {
+  "ok": true,
+  "metric": "zn_00_inv_conc",
+  "code": "ZN",
+  "zhiji_id": "ID01590234",
+  "n_points": 227,
+  "latest": "2022-04-01",
+  "first": "2026-08-28"
+ },
+ "ZN:zn_00_export": {
+  "ok": false,
+  "metric": "zn_00_export",
+  "code": "ZN",
+  "zhiji_id": "ID00360140",
+  "err": "空数据"
+ },
+ "ZN:zn_00_cost": {
+  "ok": true,
+  "metric": "zn_00_cost",
+  "code": "ZN",
+  "zhiji_id": "ID01030235",
+  "n_points": 1860,
+  "latest": "2018-10-25",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_close_front": {
+  "ok": true,
+  "metric": "ni_00_close_front",
+  "code": "NI",
+  "zhiji_id": "FU00014997",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_volume_front": {
+  "ok": true,
+  "metric": "ni_00_volume_front",
+  "code": "NI",
+  "zhiji_id": "FU00018044",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_openinterest_front": {
+  "ok": true,
+  "metric": "ni_00_openinterest_front",
+  "code": "NI",
+  "zhiji_id": "FU00018043",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_near_price": {
+  "ok": true,
+  "metric": "ni_00_near_price",
+  "code": "NI",
+  "zhiji_id": "ID01363129",
+  "n_points": 1659,
+  "latest": "2020-01-02",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_far_price": {
+  "ok": true,
+  "metric": "ni_00_far_price",
+  "code": "NI",
+  "zhiji_id": "ID01363129",
+  "n_points": 1659,
+  "latest": "2020-01-02",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_premium": {
+  "ok": true,
+  "metric": "ni_00_premium",
+  "code": "NI",
+  "zhiji_id": "ID01319362",
+  "n_points": 1655,
+  "latest": "2020-01-02",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_warrant": {
+  "ok": true,
+  "metric": "ni_00_warrant",
+  "code": "NI",
+  "zhiji_id": "a10157136",
+  "n_points": 2764,
+  "latest": "2015-04-13",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_front_price": {
+  "ok": true,
+  "metric": "ni_00_front_price",
+  "code": "NI",
+  "zhiji_id": "ID01363129",
+  "n_points": 1659,
+  "latest": "2020-01-02",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_lme_price": {
+  "ok": true,
+  "metric": "ni_00_lme_price",
+  "code": "NI",
+  "zhiji_id": "a12760049",
+  "n_points": 1862,
+  "latest": "2018-10-10",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_volume_top20": {
+  "ok": true,
+  "metric": "ni_00_volume_top20",
+  "code": "NI",
+  "zhiji_id": "FU00014809",
+  "n_points": 2933,
+  "latest": "2015-01-02",
+  "first": "2026-08-27"
+ },
+ "NI:ni_00_percentile_openinterest": {
+  "ok": true,
+  "metric": "ni_00_percentile_openinterest",
+  "code": "NI",
+  "zhiji_id": "FU00082056",
+  "n_points": 346,
+  "latest": "2020-01-03",
+  "first": "2026-08-21"
+ },
+ "NI:ni_00_price": {
+  "ok": true,
+  "metric": "ni_00_price",
+  "code": "NI",
+  "zhiji_id": "a10000206",
+  "n_points": 1872,
+  "latest": "2018-10-10",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_basis": {
+  "ok": true,
+  "metric": "ni_00_basis",
+  "code": "NI",
+  "zhiji_id": "FU00024318",
+  "n_points": 2778,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_import": {
+  "ok": true,
+  "metric": "ni_00_import",
+  "code": "NI",
+  "zhiji_id": "ID01381352",
+  "n_points": 61,
+  "latest": "2016-02-29",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_premium_percentile": {
+  "ok": true,
+  "metric": "ni_00_premium_percentile",
+  "code": "NI",
+  "zhiji_id": "ID01319362",
+  "n_points": 1655,
+  "latest": "2020-01-02",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_percentile_price": {
+  "ok": true,
+  "metric": "ni_00_percentile_price",
+  "code": "NI",
+  "zhiji_id": "a10000206",
+  "n_points": 1872,
+  "latest": "2018-10-10",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_profit": {
+  "ok": true,
+  "metric": "ni_00_profit",
+  "code": "NI",
+  "zhiji_id": "ID01536581",
+  "n_points": 1745,
+  "latest": "2019-08-14",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_openinterest_top20_front": {
+  "ok": true,
+  "metric": "ni_00_openinterest_top20_front",
+  "code": "NI",
+  "zhiji_id": "FU00018043",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_percentile_openinterest_top2": {
+  "ok": true,
+  "metric": "ni_00_percentile_openinterest_top2",
+  "code": "NI",
+  "zhiji_id": "FU00017556",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_output": {
+  "ok": true,
+  "metric": "ni_00_output",
+  "code": "NI",
+  "zhiji_id": "ID01002085",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_capacity": {
+  "ok": true,
+  "metric": "ni_00_capacity",
+  "code": "NI",
+  "zhiji_id": "ID01002094",
+  "n_points": 91,
+  "latest": "2019-01-31",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_import_conc": {
+  "ok": true,
+  "metric": "ni_00_import_conc",
+  "code": "NI",
+  "zhiji_id": "ID01002130",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_capacity_util": {
+  "ok": true,
+  "metric": "ni_00_capacity_util",
+  "code": "NI",
+  "zhiji_id": "ID01002083",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_util": {
+  "ok": true,
+  "metric": "ni_00_util",
+  "code": "NI",
+  "zhiji_id": "ID01002084",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_import_scrap": {
+  "ok": true,
+  "metric": "ni_00_import_scrap",
+  "code": "NI",
+  "zhiji_id": "ID01363314",
+  "n_points": 54,
+  "latest": "2022-02-28",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_output_recycle": {
+  "ok": true,
+  "metric": "ni_00_output_recycle",
+  "code": "NI",
+  "zhiji_id": "ID01002085",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_lme_inv": {
+  "ok": true,
+  "metric": "ni_00_lme_inv",
+  "code": "NI",
+  "zhiji_id": "ID00302693",
+  "n_points": 2954,
+  "latest": "2015-01-02",
+  "first": "2026-08-27"
+ },
+ "NI:ni_00_ratio": {
+  "ok": true,
+  "metric": "ni_00_ratio",
+  "code": "NI",
+  "zhiji_id": "FU00094552",
+  "n_points": 281,
+  "latest": "2025-07-21",
+  "first": "2026-08-27"
+ },
+ "NI:ni_00_inv": {
+  "ok": true,
+  "metric": "ni_00_inv",
+  "code": "NI",
+  "zhiji_id": "ID01490913",
+  "n_points": 500,
+  "latest": "2015-01-30",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_inv_percentile": {
+  "ok": true,
+  "metric": "ni_00_inv_percentile",
+  "code": "NI",
+  "zhiji_id": "ID01490913",
+  "n_points": 500,
+  "latest": "2015-01-30",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_inv_implicit": {
+  "ok": true,
+  "metric": "ni_00_inv_implicit",
+  "code": "NI",
+  "zhiji_id": "ID01490913",
+  "n_points": 500,
+  "latest": "2015-01-30",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_inv_days": {
+  "ok": true,
+  "metric": "ni_00_inv_days",
+  "code": "NI",
+  "zhiji_id": "ID01490913",
+  "n_points": 500,
+  "latest": "2015-01-30",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_inv_implicit_ratio": {
+  "ok": true,
+  "metric": "ni_00_inv_implicit_ratio",
+  "code": "NI",
+  "zhiji_id": "ID01490913",
+  "n_points": 500,
+  "latest": "2015-01-30",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_inv_implicit_percentile": {
+  "ok": true,
+  "metric": "ni_00_inv_implicit_percentile",
+  "code": "NI",
+  "zhiji_id": "ID01490913",
+  "n_points": 500,
+  "latest": "2015-01-30",
+  "first": "2026-08-28"
+ },
+ "NI:ni_00_util_cons": {
+  "ok": true,
+  "metric": "ni_00_util_cons",
+  "code": "NI",
+  "zhiji_id": "ID01002084",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "NI:ni_00_export": {
+  "ok": true,
+  "metric": "ni_00_export",
+  "code": "NI",
+  "zhiji_id": "GM00194554",
+  "n_points": 28,
+  "latest": "2024-02-29",
+  "first": "2026-06-30"
+ },
+ "NI:ni_00_cost": {
+  "ok": true,
+  "metric": "ni_00_cost",
+  "code": "NI",
+  "zhiji_id": "ID01959851",
+  "n_points": 885,
+  "latest": "2023-01-03",
+  "first": "2026-08-21"
+ },
+ "NI:ni_00_cost_percentile": {
+  "ok": true,
+  "metric": "ni_00_cost_percentile",
+  "code": "NI",
+  "zhiji_id": "ID01959845",
+  "n_points": 885,
+  "latest": "2023-01-03",
+  "first": "2026-08-21"
+ },
+ "NI:ni_00_profit_percentile": {
+  "ok": true,
+  "metric": "ni_00_profit_percentile",
+  "code": "NI",
+  "zhiji_id": "ID01536581",
+  "n_points": 1745,
+  "latest": "2019-08-14",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_close_front": {
+  "ok": true,
+  "metric": "si_00_close_front",
+  "code": "SI",
+  "zhiji_id": "FU00048993",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_openinterest": {
+  "ok": true,
+  "metric": "si_00_openinterest",
+  "code": "SI",
+  "zhiji_id": "FU00048996",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_volume": {
+  "ok": true,
+  "metric": "si_00_volume",
+  "code": "SI",
+  "zhiji_id": "FU00088312",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_percentile_openinterest": {
+  "ok": true,
+  "metric": "si_00_percentile_openinterest",
+  "code": "SI",
+  "zhiji_id": "FU00088310",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_openinterest_longshort": {
+  "ok": true,
+  "metric": "si_00_openinterest_longshort",
+  "code": "SI",
+  "zhiji_id": "FU00048996",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_basis": {
+  "ok": true,
+  "metric": "si_00_basis",
+  "code": "SI",
+  "zhiji_id": "FU00051051",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_warrant": {
+  "ok": true,
+  "metric": "si_00_warrant",
+  "code": "SI",
+  "zhiji_id": "FU00050831",
+  "n_points": 774,
+  "latest": "2023-06-20",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_price": {
+  "ok": true,
+  "metric": "si_00_price",
+  "code": "SI",
+  "zhiji_id": "a10102024",
+  "n_points": 114,
+  "latest": "2017-01-31",
+  "first": "2026-06-30"
+ },
+ "SI:si_00_close": {
+  "ok": true,
+  "metric": "si_00_close",
+  "code": "SI",
+  "zhiji_id": "FU00048993",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_close_near": {
+  "ok": true,
+  "metric": "si_00_close_near",
+  "code": "SI",
+  "zhiji_id": "FU00048993",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_close_far": {
+  "ok": true,
+  "metric": "si_00_close_far",
+  "code": "SI",
+  "zhiji_id": "FU00048993",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_profit": {
+  "ok": true,
+  "metric": "si_00_profit",
+  "code": "SI",
+  "zhiji_id": "ID01528162",
+  "n_points": 186,
+  "latest": "2022-12-16",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_cost": {
+  "ok": true,
+  "metric": "si_00_cost",
+  "code": "SI",
+  "zhiji_id": "ID01523502",
+  "n_points": 187,
+  "latest": "2022-12-16",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_profit_percentile": {
+  "ok": true,
+  "metric": "si_00_profit_percentile",
+  "code": "SI",
+  "zhiji_id": "ID01528162",
+  "n_points": 186,
+  "latest": "2022-12-16",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_openinterest_top20": {
+  "ok": true,
+  "metric": "si_00_openinterest_top20",
+  "code": "SI",
+  "zhiji_id": "FU00048996",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_openinterest_longshort_top20": {
+  "ok": true,
+  "metric": "si_00_openinterest_longshort_top20",
+  "code": "SI",
+  "zhiji_id": "FU00048996",
+  "n_points": 893,
+  "latest": "2022-12-22",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_output": {
+  "ok": true,
+  "metric": "si_00_output",
+  "code": "SI",
+  "zhiji_id": "ID01245763",
+  "n_points": 126,
+  "latest": "2016-01-31",
+  "first": "2026-06-30"
+ },
+ "SI:si_00_util": {
+  "ok": true,
+  "metric": "si_00_util",
+  "code": "SI",
+  "zhiji_id": "ID01877463",
+  "n_points": 106,
+  "latest": "2024-08-02",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_capacity_util": {
+  "ok": true,
+  "metric": "si_00_capacity_util",
+  "code": "SI",
+  "zhiji_id": "ID01445990",
+  "n_points": 51,
+  "latest": "2022-05-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_output_recycle": {
+  "ok": true,
+  "metric": "si_00_output_recycle",
+  "code": "SI",
+  "zhiji_id": "ID01245763",
+  "n_points": 126,
+  "latest": "2016-01-31",
+  "first": "2026-06-30"
+ },
+ "SI:si_00_capacity": {
+  "ok": true,
+  "metric": "si_00_capacity",
+  "code": "SI",
+  "zhiji_id": "ID01998706",
+  "n_points": 11,
+  "latest": "2015-12-31",
+  "first": "2025-12-31"
+ },
+ "SI:si_00_import": {
+  "ok": true,
+  "metric": "si_00_import",
+  "code": "SI",
+  "zhiji_id": "CM0000136703",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_import_ratio": {
+  "ok": true,
+  "metric": "si_00_import_ratio",
+  "code": "SI",
+  "zhiji_id": "ID02467748",
+  "n_points": 3,
+  "latest": "2020-12-31",
+  "first": "2024-12-31"
+ },
+ "SI:si_00_recycle_capacity": {
+  "ok": true,
+  "metric": "si_00_recycle_capacity",
+  "code": "SI",
+  "zhiji_id": "ID01998706",
+  "n_points": 11,
+  "latest": "2015-12-31",
+  "first": "2025-12-31"
+ },
+ "SI:si_00_util_recycle": {
+  "ok": true,
+  "metric": "si_00_util_recycle",
+  "code": "SI",
+  "zhiji_id": "ID00278372",
+  "n_points": 363,
+  "latest": "2019-07-26",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_recycle_capacity_util": {
+  "ok": true,
+  "metric": "si_00_recycle_capacity_util",
+  "code": "SI",
+  "zhiji_id": "ID01445990",
+  "n_points": 51,
+  "latest": "2022-05-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_inv": {
+  "ok": true,
+  "metric": "si_00_inv",
+  "code": "SI",
+  "zhiji_id": "ID02032074",
+  "n_points": 133,
+  "latest": "2024-01-05",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_warrant_ratio": {
+  "ok": true,
+  "metric": "si_00_warrant_ratio",
+  "code": "SI",
+  "zhiji_id": "FU00050831",
+  "n_points": 774,
+  "latest": "2023-06-20",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_inv_days": {
+  "ok": true,
+  "metric": "si_00_inv_days",
+  "code": "SI",
+  "zhiji_id": "ID02032074",
+  "n_points": 133,
+  "latest": "2024-01-05",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_inv_implicit": {
+  "ok": true,
+  "metric": "si_00_inv_implicit",
+  "code": "SI",
+  "zhiji_id": "ID02032074",
+  "n_points": 133,
+  "latest": "2024-01-05",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_cons": {
+  "ok": true,
+  "metric": "si_00_cons",
+  "code": "SI",
+  "zhiji_id": "ID01552201",
+  "n_points": 6,
+  "latest": "2017-12-31",
+  "first": "2022-12-31"
+ },
+ "SI:si_00_import_tariff": {
+  "ok": true,
+  "metric": "si_00_import_tariff",
+  "code": "SI",
+  "zhiji_id": "CM0000136703",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_import_shipment_days": {
+  "ok": true,
+  "metric": "si_00_import_shipment_days",
+  "code": "SI",
+  "zhiji_id": "CM0000136703",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_export": {
+  "ok": true,
+  "metric": "si_00_export",
+  "code": "SI",
+  "zhiji_id": "CM0000136705",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_export_tariff": {
+  "ok": true,
+  "metric": "si_00_export_tariff",
+  "code": "SI",
+  "zhiji_id": "CM0000136705",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_export_shipment_days": {
+  "ok": true,
+  "metric": "si_00_export_shipment_days",
+  "code": "SI",
+  "zhiji_id": "CM0000136705",
+  "n_points": 139,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "SI:si_00_warrant_shipment": {
+  "ok": true,
+  "metric": "si_00_warrant_shipment",
+  "code": "SI",
+  "zhiji_id": "FU00050831",
+  "n_points": 774,
+  "latest": "2023-06-20",
+  "first": "2026-08-28"
+ },
+ "SI:si_00_cost_percentile": {
+  "ok": true,
+  "metric": "si_00_cost_percentile",
+  "code": "SI",
+  "zhiji_id": "ID01523502",
+  "n_points": 187,
+  "latest": "2022-12-16",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_close_front": {
+  "ok": true,
+  "metric": "sn_00_close_front",
+  "code": "SN",
+  "zhiji_id": "FU00016042",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_openinterest": {
+  "ok": true,
+  "metric": "sn_00_openinterest",
+  "code": "SN",
+  "zhiji_id": "FU00082095",
+  "n_points": 345,
+  "latest": "2020-01-03",
+  "first": "2026-08-21"
+ },
+ "SN:sn_00_volume": {
+  "ok": true,
+  "metric": "sn_00_volume",
+  "code": "SN",
+  "zhiji_id": "FU00107648",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_basis": {
+  "ok": true,
+  "metric": "sn_00_basis",
+  "code": "SN",
+  "zhiji_id": "FU00024289",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_premium": {
+  "ok": true,
+  "metric": "sn_00_premium",
+  "code": "SN",
+  "zhiji_id": "ID01668719",
+  "n_points": 1538,
+  "latest": "2020-05-06",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_close": {
+  "ok": true,
+  "metric": "sn_00_close",
+  "code": "SN",
+  "zhiji_id": "FU00016035",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_price": {
+  "ok": true,
+  "metric": "sn_00_price",
+  "code": "SN",
+  "zhiji_id": "ID00259809",
+  "n_points": 1825,
+  "latest": "2019-04-15",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_import": {
+  "ok": true,
+  "metric": "sn_00_import",
+  "code": "SN",
+  "zhiji_id": "ID01655500",
+  "n_points": 45,
+  "latest": "2015-03-31",
+  "first": "2026-03-31"
+ },
+ "SN:sn_00_lme_close": {
+  "ok": true,
+  "metric": "sn_00_lme_close",
+  "code": "SN",
+  "zhiji_id": "FU00080251",
+  "n_points": 1122,
+  "latest": "2022-03-21",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_lme_inv": {
+  "ok": true,
+  "metric": "sn_00_lme_inv",
+  "code": "SN",
+  "zhiji_id": "ID02226171",
+  "n_points": 43,
+  "latest": "2023-01-31",
+  "first": "2026-07-31"
+ },
+ "SN:sn_00_conc_price": {
+  "ok": true,
+  "metric": "sn_00_conc_price",
+  "code": "SN",
+  "zhiji_id": "ID00259809",
+  "n_points": 1825,
+  "latest": "2019-04-15",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_recycle_price": {
+  "ok": true,
+  "metric": "sn_00_recycle_price",
+  "code": "SN",
+  "zhiji_id": "ID01546731",
+  "n_points": 821,
+  "latest": "2023-04-14",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_openinterest_top20": {
+  "ok": true,
+  "metric": "sn_00_openinterest_top20",
+  "code": "SN",
+  "zhiji_id": "FU00017555",
+  "n_points": 2779,
+  "latest": "2015-03-27",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_output": {
+  "ok": true,
+  "metric": "sn_00_output",
+  "code": "SN",
+  "zhiji_id": "ID01838775",
+  "n_points": 41,
+  "latest": "2016-03-31",
+  "first": "2026-03-31"
+ },
+ "SN:sn_00_output_conc": {
+  "ok": true,
+  "metric": "sn_00_output_conc",
+  "code": "SN",
+  "zhiji_id": "ID00300777",
+  "n_points": 9,
+  "latest": "2015-12-31",
+  "first": "2023-12-31"
+ },
+ "SN:sn_00_output_ratio_conc": {
+  "ok": true,
+  "metric": "sn_00_output_ratio_conc",
+  "code": "SN",
+  "zhiji_id": "ID01590150",
+  "n_points": 101,
+  "latest": "2018-01-31",
+  "first": "2026-05-31"
+ },
+ "SN:sn_00_tc_tc": {
+  "ok": true,
+  "metric": "sn_00_tc_tc",
+  "code": "SN",
+  "zhiji_id": "ID00259453",
   "n_points": 2333,
   "latest": "2017-03-09",
   "first": "2026-08-28"
+ },
+ "SN:sn_00_util": {
+  "ok": true,
+  "metric": "sn_00_util",
+  "code": "SN",
+  "zhiji_id": "ID02226389",
+  "n_points": 64,
+  "latest": "2021-04-30",
+  "first": "2026-07-31"
+ },
+ "SN:sn_00_output_recycle": {
+  "ok": true,
+  "metric": "sn_00_output_recycle",
+  "code": "SN",
+  "zhiji_id": "ID01838775",
+  "n_points": 41,
+  "latest": "2016-03-31",
+  "first": "2026-03-31"
+ },
+ "SN:sn_00_import_recycle": {
+  "ok": true,
+  "metric": "sn_00_import_recycle",
+  "code": "SN",
+  "zhiji_id": "ID01655500",
+  "n_points": 45,
+  "latest": "2015-03-31",
+  "first": "2026-03-31"
+ },
+ "SN:sn_00_recycle_capacity": {
+  "ok": true,
+  "metric": "sn_00_recycle_capacity",
+  "code": "SN",
+  "zhiji_id": "ID00360286",
+  "n_points": 8,
+  "latest": "2015-12-31",
+  "first": "2024-12-31"
+ },
+ "SN:sn_00_warrant": {
+  "ok": true,
+  "metric": "sn_00_warrant",
+  "code": "SN",
+  "zhiji_id": "FU00015901",
+  "n_points": 3185,
+  "latest": "2015-01-02",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_ratio": {
+  "ok": true,
+  "metric": "sn_00_ratio",
+  "code": "SN",
+  "zhiji_id": "FU00023901",
+  "n_points": 2496,
+  "latest": "2016-07-01",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_inv_plant": {
+  "ok": true,
+  "metric": "sn_00_inv_plant",
+  "code": "SN",
+  "zhiji_id": "ID01976844",
+  "n_points": 45,
+  "latest": "2022-11-30",
+  "first": "2026-07-31"
+ },
+ "SN:sn_00_inv": {
+  "ok": true,
+  "metric": "sn_00_inv",
+  "code": "SN",
+  "zhiji_id": "a10020743",
+  "n_points": 333,
+  "latest": "2020-01-03",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_cons": {
+  "ok": true,
+  "metric": "sn_00_cons",
+  "code": "SN",
+  "zhiji_id": "ID00346045",
+  "n_points": 10,
+  "latest": "2015-12-31",
+  "first": "2024-12-31"
+ },
+ "SN:sn_00_import_conc": {
+  "ok": true,
+  "metric": "sn_00_import_conc",
+  "code": "SN",
+  "zhiji_id": "ID02105844",
+  "n_points": 79,
+  "latest": "2020-01-31",
+  "first": "2026-07-31"
+ },
+ "SN:sn_00_export": {
+  "ok": true,
+  "metric": "sn_00_export",
+  "code": "SN",
+  "zhiji_id": "a10171800",
+  "n_points": 137,
+  "latest": "2015-01-31",
+  "first": "2026-07-31"
+ },
+ "SN:sn_00_export_ratio": {
+  "ok": true,
+  "metric": "sn_00_export_ratio",
+  "code": "SN",
+  "zhiji_id": "ID01659306",
+  "n_points": 137,
+  "latest": "2015-01-31",
+  "first": "2026-05-31"
+ },
+ "SN:sn_00_tc": {
+  "ok": true,
+  "metric": "sn_00_tc",
+  "code": "SN",
+  "zhiji_id": "ID01538256",
+  "n_points": 2362,
+  "latest": "2017-01-03",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_cost": {
+  "ok": true,
+  "metric": "sn_00_cost",
+  "code": "SN",
+  "zhiji_id": "ID02105843",
+  "n_points": 1686,
+  "latest": "2019-11-06",
+  "first": "2026-08-28"
+ },
+ "SN:sn_00_cost_percentile": {
+  "ok": true,
+  "metric": "sn_00_cost_percentile",
+  "code": "SN",
+  "zhiji_id": "ID02105843",
+  "n_points": 1686,
+  "latest": "2019-11-06",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_close_front": {
+  "ok": true,
+  "metric": "li_00_close_front",
+  "code": "LI",
+  "zhiji_id": "FU00050088",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_openinterest": {
+  "ok": true,
+  "metric": "li_00_openinterest",
+  "code": "LI",
+  "zhiji_id": "FU00088313",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_volume": {
+  "ok": true,
+  "metric": "li_00_volume",
+  "code": "LI",
+  "zhiji_id": "FU00088311",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_openinterest_longshort": {
+  "ok": true,
+  "metric": "li_00_openinterest_longshort",
+  "code": "LI",
+  "zhiji_id": "FU00050089",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_basis": {
+  "ok": true,
+  "metric": "li_00_basis",
+  "code": "LI",
+  "zhiji_id": "FU00051053",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_premium": {
+  "ok": true,
+  "metric": "li_00_premium",
+  "code": "LI",
+  "zhiji_id": "ID01922207",
+  "n_points": 439,
+  "latest": "2024-11-14",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_warrant": {
+  "ok": true,
+  "metric": "li_00_warrant",
+  "code": "LI",
+  "zhiji_id": "FU00058102",
+  "n_points": 662,
+  "latest": "2023-12-06",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_close": {
+  "ok": true,
+  "metric": "li_00_close",
+  "code": "LI",
+  "zhiji_id": "FU00104839",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_premium_ratio": {
+  "ok": true,
+  "metric": "li_00_premium_ratio",
+  "code": "LI",
+  "zhiji_id": "ID01922188",
+  "n_points": 439,
+  "latest": "2024-11-14",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_close_near": {
+  "ok": true,
+  "metric": "li_00_close_near",
+  "code": "LI",
+  "zhiji_id": "FU00050088",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_close_far": {
+  "ok": true,
+  "metric": "li_00_close_far",
+  "code": "LI",
+  "zhiji_id": "FU00050088",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_profit": {
+  "ok": true,
+  "metric": "li_00_profit",
+  "code": "LI",
+  "zhiji_id": "ID02215004",
+  "n_points": 660,
+  "latest": "2024-01-02",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_openinterest_top20": {
+  "ok": true,
+  "metric": "li_00_openinterest_top20",
+  "code": "LI",
+  "zhiji_id": "FU00050089",
+  "n_points": 754,
+  "latest": "2023-07-21",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_output": {
+  "ok": true,
+  "metric": "li_00_output",
+  "code": "LI",
+  "zhiji_id": "ID01707130",
+  "n_points": 31,
+  "latest": "2024-01-31",
+  "first": "2026-07-31"
+ },
+ "LI:li_00_capacity": {
+  "ok": true,
+  "metric": "li_00_capacity",
+  "code": "LI",
+  "zhiji_id": "ID01666101",
+  "n_points": 3,
+  "latest": "2021-12-31",
+  "first": "2023-12-31"
+ },
+ "LI:li_00_capacity_util": {
+  "ok": true,
+  "metric": "li_00_capacity_util",
+  "code": "LI",
+  "zhiji_id": "ID01445893",
+  "n_points": 211,
+  "latest": "2022-08-05",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_inv": {
+  "ok": true,
+  "metric": "li_00_inv",
+  "code": "LI",
+  "zhiji_id": "ID01865189",
+  "n_points": 34,
+  "latest": "2023-10-31",
+  "first": "2026-07-31"
+ },
+ "LI:li_00_import": {
+  "ok": true,
+  "metric": "li_00_import",
+  "code": "LI",
+  "zhiji_id": "ID01666088",
+  "n_points": 16,
+  "latest": "2021-03-31",
+  "first": "2024-12-31"
+ },
+ "LI:li_00_output_recycle": {
+  "ok": true,
+  "metric": "li_00_output_recycle",
+  "code": "LI",
+  "zhiji_id": "RE00033510",
+  "n_points": 103,
+  "latest": "2018-01-31",
+  "first": "2026-07-31"
+ },
+ "LI:li_00_inv_implicit": {
+  "ok": true,
+  "metric": "li_00_inv_implicit",
+  "code": "LI",
+  "zhiji_id": "ID01865189",
+  "n_points": 34,
+  "latest": "2023-10-31",
+  "first": "2026-07-31"
+ },
+ "LI:li_00_warrant_ratio": {
+  "ok": true,
+  "metric": "li_00_warrant_ratio",
+  "code": "LI",
+  "zhiji_id": "FU00058102",
+  "n_points": 662,
+  "latest": "2023-12-06",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_inv_warrant_days": {
+  "ok": true,
+  "metric": "li_00_inv_warrant_days",
+  "code": "LI",
+  "zhiji_id": "FU00058102",
+  "n_points": 662,
+  "latest": "2023-12-06",
+  "first": "2026-08-28"
+ },
+ "LI:li_00_inv_plant": {
+  "ok": true,
+  "metric": "li_00_inv_plant",
+  "code": "LI",
+  "zhiji_id": "ID02226359",
+  "n_points": 31,
+  "latest": "2024-01-31",
+  "first": "2026-07-31"
+ },
+ "LI:li_00_inv_days": {
+  "ok": true,
+  "metric": "li_00_inv_days",
+  "code": "LI",
+  "zhiji_id": "ID01865189",
+  "n_points": 34,
+  "latest": "2023-10-31",
+  "first": "2026-07-31"
+ },
+ "LI:li_00_inv_plant_days": {
+  "ok": true,
+  "metric": "li_00_inv_plant_days",
+  "code": "LI",
+  "zhiji_id": "ID02226359",
+  "n_points": 31,
+  "latest": "2024-01-31",
+  "first": "2026-07-31"
  }
 }
