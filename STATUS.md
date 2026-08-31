@@ -71,6 +71,7 @@
 ---
 
 ## 近期变更记录
+| 2026-08-31 | **[DOC-交派] 三份委外任务卡落盘 docs/handover/**（主脑，方向/监督） | 主脑 | 为 3 路并行委外包出可直接开工的任务卡：①`CU_GAP_TASKCARD.md` 铜 4.4/4.5/7.1/7.2/7.3 零基础任务卡(含第9节名词速查，期货术语全解释，实测范围已收窄——al 4.4/4.5/5.2/5.3/6.3/7.x 已在 main，真正缺口只剩 cu 5 节点)；②`5METALS_FETCH_BUILD.md` 五金属拉数+建页3阶段任务单(强制每阶段回传，注明 build_5m_batch.py 需从 build_cu_al_batch.py 复制改造、cid 加品种前缀防串台)；③`DB_LOAD_MAIN.md` 灌库·主脑回收任务单(接收 JSONL→重建 indicator_tree.db→外键孤立=0 硬验收)。**双主脑分工命名**：总控·主脑(指方向/监督/门禁/merge，不下场) vs 灌库·主脑(飞书另一会话，执行灌库回收)。**顺手修坑**：`analysis/spec/db_design.md` 加权威声明「只定义2张表，『三表灌库』是表述误差」——防止下一个 agent 照『三表』造第三张表返工。主脑本轮未写任何产物代码/数据，仅文档+方向指引。 | 主脑 |
 | 2026-08-31 | **[B-5M-Step3-register-dryrun] 五金属Step3注册dry-run方案**（主脑）：从 step3_5metals_candidates.json(138节点×17指标) + final.json(621 A级) 生成 `analysis/iwencai/step3_register_plan.json`（621可注册 ZN113/NI162/SI137/SN130/LI79 + 31 ID冲突全为通用指标真重复+724非A级入备用库）；⚠️发现 tree_config 五金属 comms 全 0 节点未建，注册前须补节点 | 主脑 |
 
 | 日期 | 内容 |
