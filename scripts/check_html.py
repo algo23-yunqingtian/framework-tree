@@ -628,6 +628,15 @@ PAGES = {
         "has_seasonal": True,
     },
 
+    "cu_53": {
+        "file": "cu_5_3.html",
+        "min_bytes": 20000,
+        "charts": 3,
+        "cids": ["echart_cu_53_c1", "echart_cu_53_c2", "echart_cu_53_c3"],
+        "label": "需求先行 5.3",
+        "has_seasonal": True,
+    },
+
     "cu_44": {
         "file": "cu_4_4.html",
         "min_bytes": 8000,

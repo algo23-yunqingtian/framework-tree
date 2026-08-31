@@ -1,12 +1,16 @@
 {
  "_meta": {
-  "version": "3.45",
+  "version": "3.46",
   "updated": "2026-08-31",
   "status": "部分验证",
-  "说明": "B-CU-AL-GAP: CU 5.2 终端细分消费 +5 指标(铜缺口页第2节点)",
+  "说明": "B-CU-AL-GAP: CU 5.3 需求先行指标 +4 指标(铜缺口页第3节点)",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
  },
  "version_changelog": [
+  {
+   "version": "3.46",
+   "change": "B-CU-AL-GAP: CU 5.3 需求先行指标 +4 指标(铜缺口页第3节点)"
+  },
   {
    "version": "3.45",
    "change": "B-CU-AL-GAP: CU 5.2 终端细分消费 +5 指标(铜缺口页第2节点)"
@@ -11371,6 +11375,74 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
+   ]
+  },
+  "cu_53_rod_oprate": {
+   "name": "SMM：电解铜杆开工率：中国（周）",
+   "unit": "%",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "CU": "a10098775"
+   },
+   "category": "demand",
+   "subleaf": "5.3需求先行",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_53_rod_inv": {
+   "name": "SMM：铜杆社会库存：总计：中国（周）",
+   "unit": "吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "CU": "a12870190"
+   },
+   "category": "demand",
+   "subleaf": "5.3需求先行",
+   "source": "SMM",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_53_lme_cancel": {
+   "name": "LME：铜：注销仓单（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "FU00015498"
+   },
+   "category": "demand",
+   "subleaf": "5.3需求先行",
+   "source": "LME/金十",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_53_lme_inv": {
+   "name": "LME：铜：总库存（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "CU": "a10134435"
+   },
+   "category": "demand",
+   "subleaf": "5.3需求先行",
+   "source": "LME",
+   "_origin": "gap_cu_al_20260831",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
    ]
   }
  },
