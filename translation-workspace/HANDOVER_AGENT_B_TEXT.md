@@ -156,32 +156,163 @@ git push origin translation-workflow
 | 成本利润 | 7.1-7.3 | 3 | 2 | 0 |
 | **合计** | | **30** | **29** | **19** |
 
-## 协同机制
+## 完整工作流（4步端到端）
 
-1. **每完成一个板块就提交**
-   ```bash
-   git add translation-workspace/audit/
-   git commit -m "{品种}: {板块} 审计完成"
-   git push origin translation-workflow
-   ```
+### Step 2：分词提取精确指标名（每个板块5-10分钟）
 
-2. **全部完成后通知 Agent A**（飞书消息）
-   ```
-   我已完成 SN/SI/LI 的 Step 1 同花顺审计，
-   文件已推送到 translation-workflow 分支。
-   请执行 Step 2 知几搜索。
-   ```
+同花顺回复里会有一张指标表格，你需要从中提取 SMM/Mysteel 官方全称列，然后做分词拆解。
 
-3. **Agent A 会做**：
-   - 拉取你的审计回复
-   - 提取精确指标名
-   - 跑知几API搜索（限流1次/秒）
-   - 生成映射表
+#### 2a. 从回复中提取指标名
 
-4. **你审核映射表**（Agent A 发给你）
-   - A级（高置信）→ 确认
-   - B级（可能匹配）→ 人工判断
-   - C级（搜不到）→ 标备用库
+从同花顺回复的表格里，提取以下列：
+- 指标名（原始概念名）
+- SMM官方全称（精确）
+- Mysteel官方全称（精确）
+- LME英文变量名
+
+保存为 JSON：`translation-workspace/extracted/{品种}/{板块}_extracted.json`
+
+格式：
+```json
+[
+  {
+    "concept_name": "锌精矿TC水平",
+    "smm_name": "锌精矿加工费(国产)",
+    "mysteel_name": "锌精矿加工费",
+    "lme_name": "Zinc Concentrate TC",
+    "frequency": "周频",
+    "availability": "付费"
+  }
+]
+```
+
+#### 2b. 分词拆解（⚠️ 关键步骤！不要跳过）
+
+**为什么必须分词？**
+同花顺返回的"精确名"（如"锌精矿加工费(国产)"）直接拿去知几搜，大概率搜不到！因为知几的指标命名风格和同花顺不同。必须拆成关键词组合，用多个关键词去知几模糊搜索。
+
+**分词示例**：
+
+| 同花顺精确名 | 分词结果（搜索关键词） |
+|------------|---------------------|
+| 锌精矿加工费(国产) | ["锌精矿", "加工费"] → 搜"锌精矿 加工费" |
+| 电解锌冶炼利润 | ["电解锌", "冶炼", "利润"] → 搜"电解锌 利润" 或 "冶炼利润 锌" |
+| LME锌库存 | ["LME", "锌", "库存"] → 搜"LME 锌 库存" 或 "lme zinc stocks" |
+| SHFE锌仓单注册量 | ["SHFE", "锌", "仓单"] → 搜"锌 仓单" |
+| 精炼锌产量(月) | ["精炼锌", "产量"] → 搜"精炼锌 产量" 或 "锌锭 产量" |
+| 锌矿进口盈亏 | ["锌矿", "进口", "盈亏"] → 搜"锌 进口盈亏" |
+
+**分词规则**：
+1. 英文部分（LME/SHFE/TC等）保持完整
+2. 中文按"品种+产品+指标类型"三层拆分
+3. 括号内修饰词（国产/进口）单独拆出
+4. 去掉"近N年"、"同比"、"环比"、"月"、"周"等统计/频率词
+5. 同一指标准备 2-3 组不同关键词组合（SMM风格 + Mysteel风格 + 通用风格）
+
+**为什么准备多组关键词？**
+知几数据库可能用SMM的命名，也可能用Mysteel的命名，也可能用通用命名。如果第一组搜不到，换第二组再搜。3组都搜不到才标C级。
+
+#### 2c. 去重合并
+
+所有板块提取完后，合并去重（同一指标可能在多个板块出现）：
+```bash
+cd translation-workspace
+python scripts/step2_merge_extracted.py {品种}
+```
+
+输出：`translation-workspace/extracted/{品种}/all_unique_indicators.json`
+
+### Step 3：知几网页搜索验证（每个指标2-3分钟，总计约2小时）
+
+Agent B 自己去知几网页搜索每个指标。
+
+#### 操作流程
+
+1. 打开 https://zhiji.io （或知几数据平台地址）
+2. 在搜索框输入分词后的关键词（如"锌精矿 加工费"）
+3. 查看搜索结果，找到最匹配的指标
+4. 记录知几ID（格式如 FU00014997）
+5. 标记置信度：
+   - **A级**（高置信）：名称完全一致或高度匹配
+   - **B级**（可能匹配）：含义相近但名称有差异，需人工确认
+   - **C级**（搜不到）：知几数据库无对应指标
+
+#### 搜索技巧
+
+1. **先用精确全称搜**（如"锌精矿加工费"），找不到再用分词关键词
+2. **换关键词组合**：SMM名搜不到就换Mysteel名，再换LME英文名
+3. **模糊搜索**：只搜核心词（如"锌 加工费"、"锌 TC"）
+4. **英文搜索**：LME指标用英文搜（如"zinc stocks"、"zinc warrant"）
+5. **搜3次还找不到**：标记C级，不要硬凑
+
+#### 输出格式
+
+保存为 JSON：`translation-workspace/zhiji_results/{品种}/zhiji_{板块}.json`
+
+```json
+[
+  {
+    "concept_name": "锌精矿TC水平",
+    "search_keywords": ["锌精矿", "加工费", "TC"],
+    "zhiji_id": "FU00014997",
+    "zhiji_name": "锌精矿加工费(国产矿)",
+    "confidence": "A",
+    "source": "SMM"
+  },
+  {
+    "concept_name": "锌精矿进口盈亏",
+    "search_keywords": ["锌精矿", "进口", "盈亏"],
+    "zhiji_id": null,
+    "zhiji_name": null,
+    "confidence": "C",
+    "source": null
+  }
+]
+```
+
+### Step 4：生成映射表（每个品种10分钟）
+
+合并所有板块的知几搜索结果，生成最终映射表：
+
+```bash
+cd translation-workspace
+python scripts/step4_generate_mapping.py {品种}
+```
+
+输出：`translation-workspace/mapping/{品种}/final_mapping.csv`
+
+格式：
+| 同花顺概念名 | SMM/Mysteel精确名 | 知几ID | 知几名称 | 置信度 | 备注 |
+|------------|-----------------|--------|---------|--------|------|
+| 锌精矿TC水平 | 锌精矿加工费(国产) | FU00014997 | 锌精矿加工费(国产矿) | A | - |
+| 锌精矿进口盈亏 | 锌矿进口盈亏 | - | - | C | 待备用库 |
+
+#### 映射表汇总统计
+
+每个品种完成后，输出统计：
+- A级数量/占比（目标 >60%）
+- B级数量/占比（需人工确认）
+- C级数量/占比（进备用库）
+
+### Step 5：提交 + 通知
+
+1. 提交映射表到 GitHub：
+```bash
+git add translation-workspace/
+git commit -m "{品种}: 完成端到端映射表"
+git push origin translation-workflow
+```
+
+2. 通知 Agent A（飞书消息）：
+```
+我已完成 {品种} 的端到端翻译工作流：
+- Step 1 同花顺审计 ✅
+- Step 2 分词提取 ✅
+- Step 3 知几搜索 ✅ (A级X个, B级Y个, C级Z个)
+- Step 4 映射表 ✅
+文件已推送到 translation-workflow 分支。
+请拉取并合并到主映射表。
+```
 
 ## 注意事项
 
