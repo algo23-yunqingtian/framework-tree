@@ -11318,6 +11318,105 @@
       "_nodes": [
         "7.2"
       ]
+    },
+    "li_51_consumption": {
+      "name": "碳酸锂表观消费量中国（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "ID01245889",
+      "_nodes": [
+        "5.1"
+      ]
+    },
+    "li_51_lfp_output": {
+      "name": "磷酸铁锂产量中国（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "RE00033558",
+      "_nodes": [
+        "5.1"
+      ]
+    },
+    "li_51_smm_demand": {
+      "name": "SMM碳酸锂供需平衡需求（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "a10006556",
+      "_nodes": [
+        "5.1"
+      ]
+    },
+    "li_52_ev_sales": {
+      "name": "SMM新能源汽车销量（月）",
+      "unit": "万辆",
+      "freq": "monthly",
+      "zhiji_id": "a12775570",
+      "_nodes": [
+        "5.2"
+      ]
+    },
+    "li_52_battery": {
+      "name": "动力电池装车量宁德时代（月）",
+      "unit": "GWh",
+      "freq": "monthly",
+      "zhiji_id": "ID01660879",
+      "_nodes": [
+        "5.2"
+      ]
+    },
+    "li_53_plan": {
+      "name": "碳酸锂下月排产中国（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "ID01865201",
+      "_nodes": [
+        "5.3"
+      ]
+    },
+    "li_61_import_total": {
+      "name": "锂进口数量合计中国（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "ID01485909",
+      "_nodes": [
+        "6.1"
+      ]
+    },
+    "li_61_lipf6": {
+      "name": "六氟磷酸锂进口数量合计中国（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "ID01485929",
+      "_nodes": [
+        "6.1"
+      ]
+    },
+    "li_63_export_total": {
+      "name": "锂的碳酸盐出口数量合计中国（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "ID01218944",
+      "_nodes": [
+        "6.3"
+      ]
+    },
+    "li_63_export_value": {
+      "name": "锂的碳酸盐出口金额合计中国（月）",
+      "unit": "美元",
+      "freq": "monthly",
+      "zhiji_id": "ID01218956",
+      "_nodes": [
+        "6.3"
+      ]
+    },
+    "li_64_export_global": {
+      "name": "锂出口数量合计中国→全球（月）",
+      "unit": "吨",
+      "freq": "monthly",
+      "zhiji_id": "ID01486576",
+      "_nodes": [
+        "6.4"
+      ]
     }
   },
   "64_group": {
@@ -11333,7 +11432,7 @@
       "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
     }
   },
-  "version": "v3.44",
+  "version": "v3.45",
   "updated": "2026-08-31 08:08",
   "change": "Step3 五金属 TierA 指标注册: ZN 113 + NI 156 + SN 117 + SI 125 + LI 79 (id去重跳过 31)"
 }
