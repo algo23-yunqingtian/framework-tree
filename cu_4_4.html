@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>铜(CU) 4.4 工厂库存 · 有色金属研究框架</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;padding:20px;
+     user-select:none;-webkit-user-select:none;-moz-user-select:none}
+.header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#161b22;border-radius:8px;margin-bottom:16px;border:1px solid #21262d}
+.brand{font-size:20px;font-weight:600}.brand small{font-size:12px;color:#8b949e;margin-left:8px}
+.hcrumbs{color:#8b949e}.hright{color:#5b7a8c;font-size:13px}
+.panel{background:#161b22;border-radius:8px;padding:20px;border:1px solid #21262d}
+.chart{background:#0d1117;border-radius:6px;padding:12px;margin:12px 0;border:1px solid #21262d}
+.chart-title{font-size:15px;font-weight:600;margin-bottom:6px;color:#e6edf3}
+.chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
+.chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
+.chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
+footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
+.note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
+<div class="header">
+  <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
+  <div class="hcrumbs">铜(工厂库存) · 4 库存 · 4.4 工厂库存 · v1 1 图</div>
+  <div class="hright">数据固化快照 · 2026-08-31 · SMM + 观服务</div>
+</div>
+<div class="nav-back"><a href="cu_4_overview.html">← 回板块4总览</a> <a href="index.html">← 回主站</a></div>
+<div class="panel">
+<div class="chart"><div class="chart-title">SMM 冶炼厂电解铜库存（主图·4.4）</div><div class="chart-sub">cu_44_smelter_stock · 月 · 吨 · 139点 · 12年跨度 · 至 2026-07-31</div><div id="echart_cu_44_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_cu_44_c1',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：铜加工企业的库存水平（月/周）。<br>怎么看：负值区=压力/亏损；正值区=盈利/宽松。最新(2026-07-31)：77895.0吨。切季节视图可对比近5年同期位置。</div></div>
+<div class="note">
+<strong style="color:#c9d1d9">4.4 定义：</strong>铜加工企业的库存水平（月/周）。<br><strong style="color:#c9d1d9">指标组：</strong>cu_44_smelter_stock SMM 冶炼厂电解铜库存(月,吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 1 图，未入图 cu_44_anode_days。
+</div>
+</div>
+<footer>有色金属产业指标树 · 铜(CU) 4.4 工厂库存 · v1（1 图全真数据）· indicators_v1.json v3.43</footer>
+<script src="assets/echarts.min.js"></script>
+<script>
+document.oncontextmenu=e=>{e.preventDefault();return false};
+document.onkeydown=e=>{if(e.ctrlKey&&['c','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();return false}};
+document.onselectstart=e=>{e.preventDefault();return false};
+var __yrs_echart_cu_44_c1=[2022, 2023, 2024, 2025, 2026];
+var __pal_echart_cu_44_c1=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_cu_44_c1'] = [["2015-01-31", 61250.0], ["2015-02-28", 69875.0], ["2015-03-31", 60750.0], ["2015-04-30", 59000.0], ["2015-05-31", 44750.0], ["2015-06-30", 45438.0], ["2015-07-31", 61813.0], ["2015-08-31", 62500.0], ["2015-09-30", 62625.0], ["2015-10-31", 67250.0], ["2015-11-30", 66000.0], ["2015-12-31", 73000.0], ["2016-01-31", 58125.0], ["2016-02-29", 60000.0], ["2016-03-31", 55875.0], ["2016-04-30", 50412.0], ["2016-05-31", 54729.0], ["2016-06-30", 55222.0], ["2016-07-31", 54333.0], ["2016-08-31", 46056.0], ["2016-09-30", 45017.0], ["2016-10-31", 46500.0], ["2016-11-30", 52278.0], ["2016-12-31", 52667.0], ["2017-01-31", 72667.0], ["2017-02-28", 76389.0], ["2017-03-31", 52333.33], ["2017-04-30", 43722.22], ["2017-05-31", 47444.0], ["2017-06-30", 43944.0], ["2017-07-31", 42333.0], ["2017-08-31", 36944.0], ["2017-09-30", 34500.0], ["2017-10-31", 29500.0], ["2017-11-30", 28944.0], ["2017-12-31", 29778.0], ["2018-01-31", 25833.0], ["2018-02-28", 53111.0], ["2018-03-31", 38278.0], ["2018-04-30", 44278.0], ["2018-05-31", 48278.0], ["2018-06-30", 42000.0], ["2018-07-31", 42944.0], ["2018-08-31", 39889.0], ["2018-09-30", 37667.0], ["2018-10-31", 36467.0], ["2018-11-30", 35889.0], ["2018-12-31", 39067.0], ["2019-01-31", 49444.0], ["2019-02-28", 67889.0], ["2019-03-31", 47389.0], ["2019-04-30", 42611.0], ["2019-05-31", 25556.0], ["2019-06-30", 26978.0], ["2019-07-31", 31793.0], ["2019-08-31", 32935.0], ["2019-09-30", 40260.0], ["2019-10-31", 30978.0], ["2019-11-30", 33696.0], ["2019-12-31", 26630.0], ["2020-01-31", 76259.0], ["2020-02-29", 68283.0], ["2020-03-31", 79022.0], ["2020-04-30", 52065.0], ["2020-05-31", 48587.0], ["2020-06-30", 35217.0], ["2020-07-31", 30543.0], ["2020-08-31", 38696.0], ["2020-09-30", 30000.0], ["2020-10-31", 25543.0], ["2020-11-30", 21957.0], ["2020-12-31", 34022.0], ["2021-01-31", 29783.0], ["2021-02-28", 90674.0], ["2021-03-31", 50978.0], ["2021-04-30", 59348.0], ["2021-05-31", 35632.0], ["2021-06-30", 30842.0], ["2021-07-31", 32632.0], ["2021-08-31", 35789.0], ["2021-09-30", 44421.0], ["2021-10-31", 42211.0], ["2021-11-30", 30105.0], ["2021-12-31", 22366.0], ["2022-01-31", 33154.0], ["2022-02-28", 62232.0], ["2022-03-31", 44263.0], ["2022-04-30", 34458.0], ["2022-05-31", 32100.0], ["2022-06-30", 29615.0], ["2022-07-31", 25858.0], ["2022-08-31", 22284.0], ["2022-09-30", 37379.0], ["2022-10-31", 23158.0], ["2022-11-30", 20343.0], ["2022-12-31", 33438.0], ["2023-01-31", 72500.0], ["2023-02-28", 58842.0], ["2023-03-31", 31721.0], ["2023-04-30", 38765.0], ["2023-05-31", 30930.0], ["2023-06-30", 35442.0], ["2023-07-31", 31358.0], ["2023-08-31", 26842.0], ["2023-09-30", 22021.0], ["2023-10-31", 20737.0], ["2023-11-30", 25095.0], ["2023-12-31", 17579.0], ["2024-01-31", 25368.0], ["2024-02-29", 109158.0], ["2024-03-31", 63211.0], ["2024-04-30", 84084.0], ["2024-05-31", 71579.0], ["2024-06-30", 63905.0], ["2024-07-31", 63579.0], ["2024-08-31", 61579.0], ["2024-09-30", 85579.0], ["2024-10-31", 74737.0], ["2024-11-30", 41053.0], ["2024-12-31", 53789.0], ["2025-01-31", 82211.0], ["2025-02-28", 92947.0], ["2025-03-31", 65053.0], ["2025-04-30", 49684.0], ["2025-05-31", 55421.0], ["2025-06-30", 53158.0], ["2025-07-31", 59263.0], ["2025-08-31", 63579.0], ["2025-09-30", 66632.0], ["2025-10-31", 68000.0], ["2025-11-30", 70211.0], ["2025-12-31", 70211.0], ["2026-01-31", 78947.0], ["2026-02-28", 147053.0], ["2026-03-31", 98000.0], ["2026-04-30", 38421.0], ["2026-05-31", 62211.0], ["2026-06-30", 67158.0], ["2026-07-31", 77895.0]];
+window['__opts_echart_cu_44_c1'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'SMM 冶炼厂电解铜库存（主图·4.4）',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#b87333',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#b8733330'},{offset:1,color:'#b8733300'}]}},
+      data:window['__data_echart_cu_44_c1'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_cu_44_c1'][window['__data_echart_cu_44_c1'].length-1][0],window['__data_echart_cu_44_c1'][window['__data_echart_cu_44_c1'].length-1][1]],
+        itemStyle:{color:'#b87333'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_cu_44_c1.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_cu_44_c1'], __yrs_echart_cu_44_c1, __pal_echart_cu_44_c1)
+  }
+};
+window['__inst_echart_cu_44_c1'] = echarts.init(document.getElementById('echart_cu_44_c1'),'dark');
+window['__mode_echart_cu_44_c1'] = 'se';
+window['__inst_echart_cu_44_c1'].setOption(window['__opts_echart_cu_44_c1']['se'], true);
+
+function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
+function __seasonalizeByYear(arr,years,palette){var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);var mm=parseInt(d.substring(5,7),10)-1;if(mm<0||mm>11)continue;if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(12);by[yr][mm]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<12;k++)if(dat[k]!==null)nonNull++;if(nonNull<3)continue;var rounded=[];for(var k=0;k<12;k++)rounded.push(dat[k]===null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:true,symbol:'circle',symbolSize:5,connectNulls:true,lineStyle:{color:color,width:2},itemStyle:{color:color},data:rounded});}return series;}
+var __mdays=[31,28,31,30,31,30,31,31,30,31,30,31];
+function __seasonalizeByDay(arr,years,palette){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var doy=function(s){var p=s.split('-');var m=parseInt(p[1],10)-1,d=parseInt(p[2],10),k=0;for(var i=0;i<m;i++)k+=md[i];return k+d-1;};var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(365);by[yr][doy(d)]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<365;k++)if(dat[k]!=null)nonNull++;if(nonNull<30)continue;var rounded=[];for(var k=0;k<365;k++)rounded.push(dat[k]==null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:false,symbol:'none',connectNulls:true,lineStyle:{color:color,width:1.6},itemStyle:{color:color},data:rounded});}return series;}
+function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
+window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
+btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
+window.addEventListener('resize',function(){['echart_cu_44_c1'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+
+</script></body></html>
