@@ -336,6 +336,14 @@ function selectChip(leaf, commId, autoNav, render){
          'CU_c1':'cu_7_1.html',  // 7.1 c1
          'CU_c2':'cu_7_2.html',  // 7.2 c2
          'CU_c3':'cu_7_3.html',  // 7.3 c3
+         'LC_p3':'li_2_3.html',  // 2.3 p3
+         'LC_s4':'li_3_1_4.html',  // 3.1.4 s4
+         'LC_s5':'li_3_1_5.html',  // 3.1.5 s5
+         'LC_s7':'li_3_2_2.html',  // 3.2.2 s7
+         'LC_i5':'li_4_5.html',  // 4.5 i5
+         'LC_t2':'li_6_2.html',  // 6.2 t2
+         'LC_c1':'li_7_1.html',  // 7.1 c1
+         'LC_c2':'li_7_2.html',  // 7.2 c2
          'PB_c1':'pb_71_cost_curve.html',  // 7.1 成本曲线
          'PB_c2':'pb_72_daily_profit.html',  // 7.2 日度利润
          'PB_c3':'pb_73_energy_cost.html',  // 7.3 能源成本
@@ -370,8 +378,8 @@ function selectChip(leaf, commId, autoNav, render){
   const key = cm.code+'_'+leaf.id;
 
   // 五金属(ZN/NI/SN/SI/LI)：根据 leaf.code 动态推导文件名（例：zn + 2.1 → zn_2_1.html）
-  if(!PAGE_MAP[key] && ['ZN','NI','SN','SI','LI'].indexOf(cm.code)>=0){
-    const v = cm.code.toLowerCase();
+  if(!PAGE_MAP[key] && ['zn','ni','sn','si','li'].indexOf(cm.id)>=0){
+    const v = cm.id;
     const fname = v + '_' + leaf.code.replace(/\./g,'_') + '.html';
     if(autoNav){
       window.location.href = fname;
