@@ -24,7 +24,7 @@ from collections import OrderedDict, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from chart_kits import (load_metric, pairs, latest, chart_line_t, chart_dual,
-                        page_html, make_crumb, out, write_html)
+                        page_html, make_crumb, out, write_html, disambig_title)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CODES = {"cu": "CU", "al": "AL"}
@@ -299,13 +299,15 @@ def build_node(node, ind_list, meta, comm_only=None):
         cid = "echart_%s_%s_c%d" % (main_comm, node.replace(".", ""), ci)
         cids.append(cid)
         color_b = ALT_COLORS[(ci - 2) % len(ALT_COLORS)]
+        title_a, title_b = disambig_title(a["mid"], a["name"], b["mid"], b["name"])
+        note_a, note_b = title_a, title_b
         h, j = chart_dual(
-            cid, "%s vs %s" % (a["name"], b["name"]),
+            cid, "%s vs %s" % (title_a, title_b),
             "%s + %s · %s · 左轴%s / 右轴%s · %d/%d 点" % (
                 a["mid"], b["mid"], a["freq"], a["unit"], b["unit"], a["m"]["n"], b["m"]["n"]),
             a["pairs"], color, a["name"], a["unit"],
             b["pairs"], color_b, b["name"], b["unit"],
-            "什么时候看：%s 与 %s 的联动。<br>怎么看：同向走=共振趋势确认；反向走=背离信号，需判断谁主导。" % (a["name"], b["name"]),
+            "什么时候看：%s 与 %s 的联动。<br>怎么看：同向走=共振趋势确认；反向走=背离信号，需判断谁主导。" % (note_a, note_b),
         )
         html_all.append(h); js_all.append(j)
         note_metrics.append("%s %s(%s)" % (a["mid"], a["name"], a["unit"]))

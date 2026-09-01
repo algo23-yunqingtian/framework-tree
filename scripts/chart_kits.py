@@ -19,7 +19,7 @@
   · 季节按钮必须有真数据：se 分支 data=window.__seasonalize(__d)，不能硬编码 [null×12]
   · build 输出 HTML 到仓库根目录，用 out("pb_63_product_export.html") 定位
 """
-import sqlite3, json, os
+import sqlite3, json, os, re
 from datetime import datetime
 
 # ============================================================
@@ -31,6 +31,72 @@ def _connect():
     return BASE
 
 BASE = _connect()
+INDICATORS_V1 = os.path.join(os.path.dirname(BASE), "data", "indicators_v1.json")
+_DB_IND = {}
+
+def _load_indicators_v1():
+    global _DB_IND
+    if not _DB_IND:
+        _DB_IND = json.load(open(INDICATORS_V1, encoding="utf-8"))["indicators"]
+    return _DB_IND
+
+# ============================================================
+# 标题歧义消解（chart_dual 同名区分）
+# 五金属同节点内常出现"不同 mid 但 name 完全相同"的指标（近月/远月、均值/标准差、
+# 电池级/工业级等），chart_dual 用 name 拼 "A vs B" 标题时会撞成 "A vs A"。
+# 本函数用 indicators_v1.json 的 _origin 语义字段 + mid 后缀派生（近月/远月/均值/
+# 标准差/分位/电池级/工业级/多头/空头/注销/注册/占比/关税/发运 等）标签；两轴 name
+# 相同时，返回 (A,B) 其中含 disambig 标签的新 name；name 已不同则原样返回。
+# ============================================================
+def _mid_suffix(mid):
+    s = re.search(r'([a-z]+_\d+)$', str(mid))
+    if s:
+        return s.group(1)
+    s = re.search(r'([a-z]+\d+)$', str(mid))
+    return s.group(1) if s else ""
+
+_DISAMBIG_KEYS = [
+    ("近月", "近月"), ("远月", "远月"),
+    ("近3年同月利润均值", "均值"), ("近3年同期利润均值", "均值"),
+    ("标准差", "标准差"), ("分位", "分位"), ("均值", "均值"),
+    ("电池级", "电池级"), ("工业级", "工业级"),
+    ("碳酸锂", "碳酸锂"), ("氢氧化锂", "氢氧化锂"),
+    ("注销", "注销"), ("注册", "注册"), ("占比", "占比"), ("比", "占比"),
+    ("多头", "多头"), ("空头", "空头"), ("净持仓", "净持仓"), ("持仓比", "持仓比"),
+    ("不锈钢", "不锈钢"), ("动力电池", "动力电池"),
+    ("工业硅", "工业硅"), ("发运", "发运"), ("关税", "关税"),
+    ("缅甸", "缅甸"), ("印尼", "印尼"),
+    ("总量", "总量"), ("分国别", "分国别"),
+    ("同月", "同月"), ("同期", "同期"),
+    ("LME", "LME"), ("沪铝", "沪"),
+    ("天数", "天数"), ("万吨", "万吨"),
+    ("焊锡", "焊锡"), ("化工", "化工"), ("电子", "电子"),
+]
+
+def disambig_title(mid_a, name_a, mid_b, name_b):
+    """若两轴 name 相同，返回 (new_name_a, new_name_b) 含区分标签；否则原样返回。"""
+    if name_a != name_b:
+        return name_a, name_b
+    ind = _load_indicators_v1()
+    oa = ind.get(mid_a, {}).get("_origin", "")
+    ob = ind.get(mid_b, {}).get("_origin", "")
+    sa, sb = _mid_suffix(mid_a), _mid_suffix(mid_b)
+    da = db = ""
+    for kw, tag in _DISAMBIG_KEYS:
+        if kw in oa and kw not in ob:
+            da = tag
+        if kw in ob and kw not in oa:
+            db = tag
+    if da == db and da:
+        da = sa; db = sb
+    if not da and not db and sa != sb:
+        da = sa; db = sb
+    if da and not db:
+        db = sb
+    if db and not da:
+        da = sa
+    return (name_a + "（" + da + "）" if da else name_a,
+            name_b + "（" + db + "）" if db else name_b)
 DB = os.path.join(BASE, "api_cache.db")
 _CONN = sqlite3.connect(DB)
 _CURSOR = _CONN.cursor()
