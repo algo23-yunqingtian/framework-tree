@@ -72,6 +72,7 @@
 ---
 
 ## 近期变更记录
+| 2026-09-01 | **[A-STEP2-fix] 新增 csv_to_match_json.py 转换器** | agent | Agent B 的 step2 结果是 CSV（不是 XML），列头：品种/板块/子节点/图名称/同花顺概念名/知几ID/知几名称/置信度。新增 CSV→标准 JSON 转换器。⚠️ 字段校准：name 默认取"图名称"（图表标题短），用户如需原始概念名可 `--name-field 同花顺概念名`；⚠️ B 用 Win 无 git 无法推送，由 A 落盘处理；⚠️ 校正路线：正统引擎 build_5m_batch 读 indicators_v1+api_cache（不吃 mapping），翻译线另开 build_translation 旁路，二者增量并存 |
 | 2026-09-01 | **[A-STEP2-fix] 新增 xml_to_match_json.py 转换器** | agent | Agent B 的 step2 结果误存 XML → 新增自动转换器（探测字段→输出标准 step2_match JSON）。查证知几 API search 返回本来就是 JSON，B 侧存 XML 是流程偏差 |
 | 2026-09-01 | **[A-STEP5] 指标翻译线建页引擎上线，ZN/CU/AL/NI 共 20 页 427 图渲染完成** | agent | **核心成果：实现"指标表→网页稳定映射"**——用户核心诉求落地。新增 `scripts/build_translation.py`（读 step2 映射表驱动、不写死指标）+ `scripts/step2_cache_load.py`（hit_id 灌入 api_cache.db）。**数据质量**：A 级 318 实测 300 有数据 / 18 假A（搜得到无序列）已过滤；仅 2 个 NI 空。产出 zn_3/4/5/6/7.html、cu_3/4/5.html、al_3/4/6.html、ni_2/3/4/5/7.html（板块级子页）。**协作**：写入 `HANDOVER_AGENT_B_STEP5.md`，另一 agent 可照抄跑 SN/SI/LI。**改指标流程**：改映射表一行 → `build_translation.py --variety X` → 页面刷新，零改 HTML | agent |
 | 2026-09-01 | **[A-STEP1-fix] 审计驱动脚本补丁** | agent | CU_进出口 被同花顺 AI 稳定拒答 7 次（措辞弱化/投资研究声明均无效）→ 列入卡点区待人工重试。驱动脚本加 AI 回复页脚完成信号 + 冷却放宽（COOLDOWN 90s / GEN_TIMEOUT 1500s） |
