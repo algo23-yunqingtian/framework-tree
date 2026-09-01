@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>铝(AL) 板块0 · 有色金属研究框架 · 有色金属研究框架</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;padding:20px;
+     user-select:none;-webkit-user-select:none;-moz-user-select:none}
+.header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#161b22;border-radius:8px;margin-bottom:16px;border:1px solid #21262d}
+.brand{font-size:20px;font-weight:600}.brand small{font-size:12px;color:#8b949e;margin-left:8px}
+.hcrumbs{color:#8b949e}.hright{color:#5b7a8c;font-size:13px}
+.panel{background:#161b22;border-radius:8px;padding:20px;border:1px solid #21262d}
+.chart{background:#0d1117;border-radius:6px;padding:12px;margin:12px 0;border:1px solid #21262d}
+.chart-title{font-size:15px;font-weight:600;margin-bottom:6px;color:#e6edf3}
+.chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
+.chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
+.chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
+footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
+.note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
+<div class="header">
+  <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
+  <div class="hcrumbs">铝(AL) · 0 板块0 · 0.X 翻译线Step5 · v1 3 图</div>
+  <div class="hright">数据固化快照 · 2026-09-01 · 翻译线Step5 · 数据可得图</div>
+</div>
+<div class="nav-back"><a href="al_2_overview.html">← 回 铝 总览</a></div>
+<div class="panel">
+<div class="chart"><div class="chart-title">放在3.3显性库存</div><div class="chart-sub">万吨 · 周 · 至2026-08-28</div><div id="echart_al_0_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_al_0_c1',this)">☀ 季节</button><div class="chart-note">📌 📌 知几命中：氧化铝：库存：中国（周）
+最新(2026-08-28)：660.7万吨</div></div>
+<div class="chart"><div class="chart-title">日度价格可与日度利润同图；月度产量不得与日度价格直接做“联动因果图”，只能用双轴展示并标注频率差异</div><div class="chart-sub">千吨 · 季 · 至2026-06-30</div><div id="echart_al_0_c2" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_al_0_c2',this)">☀ 季节</button><div class="chart-note">📌 📌 知几命中：氧化铝及其水合物：产量：South32：South32沃斯利氧化铝部门（季）
+最新(2026-06-30)：947.0千吨</div></div>
+<div class="chart"><div class="chart-title">再生铝合金/原生铝合金龙头企业开工率</div><div class="chart-sub">百分比 · 月 · 至2026-07-31</div><div id="echart_al_0_c3" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_al_0_c3',this)">☀ 季节</button><div class="chart-note">📌 📌 知几命中：再生铝合金锭：开工率：中国（月）
+最新(2026-07-31)：37.09百分比</div></div>
+<div class="note">
+<div class="chart-note" style="margin-bottom:16px;"><strong>AL · 板块0</strong><br>映射来源：Step2 知几验证 · A/B 级 · 数据可得</div>
+</div>
+</div>
+<footer>有色金属产业指标树 · 铝(AL) 板块0 · 翻译线Step5 v1 · 3 图</footer>
+<script src="assets/echarts.min.js"></script>
+<script>
+document.oncontextmenu=e=>{e.preventDefault();return false};
+document.onkeydown=e=>{if(e.ctrlKey&&['c','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();return false}};
+document.onselectstart=e=>{e.preventDefault();return false};
+var __yrs_echart_al_0_c1=[2022, 2023, 2024, 2025, 2026];
+var __pal_echart_al_0_c1=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_al_0_c1'] = [["2022-01-07", 423.6], ["2022-01-14", 423.3], ["2022-01-21", 432.9], ["2022-01-28", 442.2], ["2022-02-11", 453.3], ["2022-02-18", 451.1], ["2022-02-25", 441.1], ["2022-03-04", 441.8], ["2022-03-11", 458.6], ["2022-03-18", 459.9], ["2022-03-25", 457.0], ["2022-04-01", 456.7], ["2022-04-08", 465.7], ["2022-04-15", 466.2], ["2022-04-22", 466.0], ["2022-04-29", 469.3], ["2022-05-06", 468.2], ["2022-05-13", 465.5], ["2022-05-20", 462.3], ["2022-05-27", 465.0], ["2022-06-03", 455.2], ["2022-06-10", 469.4], ["2022-06-17", 467.6], ["2022-06-24", 453.4], ["2022-07-01", 453.3], ["2022-07-08", 448.6], ["2022-07-15", 446.9], ["2022-07-22", 441.8], ["2022-07-29", 441.0], ["2022-08-05", 443.4], ["2022-08-12", 442.3], ["2022-08-19", 441.0], ["2022-08-26", 434.4], ["2022-09-02", 435.4], ["2022-09-09", 433.4], ["2022-09-16", 434.9], ["2022-09-23", 441.6], ["2022-09-30", 439.9], ["2022-10-07", 440.9], ["2022-10-14", 442.7], ["2022-10-21", 451.9], ["2022-10-28", 456.8], ["2022-11-04", 452.9], ["2022-11-11", 455.0], ["2022-11-18", 451.1], ["2022-11-25", 441.5], ["2022-12-02", 439.4], ["2022-12-09", 437.4], ["2022-12-16", 438.2], ["2022-12-23", 435.3], ["2022-12-30", 439.6], ["2023-01-06", 444.4], ["2023-01-13", 450.7], ["2023-01-20", 445.1], ["2023-01-27", 449.5], ["2023-02-03", 458.0], ["2023-02-10", 454.3], ["2023-02-17", 445.6], ["2023-02-24", 439.6], ["2023-03-03", 439.8], ["2023-03-10", 436.9], ["2023-03-17", 430.5], ["2023-03-24", 431.8], ["2023-03-31", 431.0], ["2023-04-07", 427.9], ["2023-04-14", 432.6], ["2023-04-21", 440.1], ["2023-04-28", 439.3], ["2023-05-05", 435.8], ["2023-05-12", 436.4], ["2023-05-19", 435.2], ["2023-05-26", 436.6], ["2023-06-02", 435.8], ["2023-06-09", 436.5], ["2023-06-16", 432.5], ["2023-06-23", 435.0], ["2023-06-30", 438.4], ["2023-07-07", 438.8], ["2023-07-14", 442.5], ["2023-07-21", 438.1], ["2023-07-28", 438.2], ["2023-08-04", 447.0], ["2023-08-11", 449.9], ["2023-08-18", 454.5], ["2023-08-25", 450.3], ["2023-09-01", 457.7], ["2023-09-08", 460.6], ["2023-09-15", 458.8], ["2023-09-22", 455.4], ["2023-09-29", 446.1], ["2023-10-06", 450.7], ["2023-10-13", 443.1], ["2023-10-20", 442.7], ["2023-10-27", 448.7], ["2023-11-03", 451.3], ["2023-11-10", 454.1], ["2023-11-17", 456.0], ["2023-11-24", 448.3], ["2023-12-01", 440.3], ["2023-12-08", 427.7], ["2023-12-15", 424.0], ["2023-12-22", 419.6], ["2023-12-29", 411.8], ["2024-01-05", 414.1], ["2024-01-12", 420.6], ["2024-01-19", 433.6], ["2024-01-26", 438.1], ["2024-02-02", 447.4], ["2024-02-09", 446.0], ["2024-02-16", 439.5], ["2024-02-23", 441.1], ["2024-03-01", 438.6], ["2024-03-08", 442.4], ["2024-03-15", 445.8], ["2024-03-22", 443.4], ["2024-03-29", 442.7], ["2024-04-05", 444.8], ["2024-04-12", 440.9], ["2024-04-19", 439.7], ["2024-04-26", 436.4], ["2024-05-03", 427.8], ["2024-05-10", 424.9], ["2024-05-17", 422.4], ["2024-05-24", 423.9], ["2024-05-31", 421.9], ["2024-06-07", 420.7], ["2024-06-14", 420.0], ["2024-06-21", 417.5], ["2024-06-28", 416.2], ["2024-07-05", 415.7], ["2024-07-12", 416.5], ["2024-07-19", 408.8], ["2024-07-26", 405.1], ["2024-08-02", 405.5], ["2024-08-09", 401.9], ["2024-08-16", 399.7], ["2024-08-23", 402.0], ["2024-08-30", 401.7], ["2024-09-06", 400.9], ["2024-09-13", 400.8], ["2024-09-20", 396.3], ["2024-09-27", 395.8], ["2024-10-04", 397.3], ["2024-10-11", 395.6], ["2024-10-18", 391.8], ["2024-10-25", 386.3], ["2024-11-01", 384.6], ["2024-11-08", 383.1], ["2024-11-15", 382.0], ["2024-11-22", 377.4], ["2024-11-29", 376.2], ["2024-12-06", 374.8], ["2024-12-13", 374.0], ["2024-12-20", 372.6], ["2024-12-27", 370.8], ["2025-01-03", 370.3], ["2025-01-10", 371.3], ["2025-01-17", 374.9], ["2025-01-24", 377.6], ["2025-01-31", 379.1], ["2025-02-07", 381.3], ["2025-02-14", 381.9], ["2025-02-21", 384.6], ["2025-02-28", 385.9], ["2025-03-07", 386.6], ["2025-03-14", 391.4], ["2025-03-21", 394.4], ["2025-03-28", 395.8], ["2025-04-04", 398.0], ["2025-04-11", 399.5], ["2025-04-18", 400.1], ["2025-04-25", 399.4], ["2025-05-02", 394.6], ["2025-05-09", 389.1], ["2025-05-16", 384.4], ["2025-05-23", 381.3], ["2025-05-30", 379.4], ["2025-06-06", 380.5], ["2025-06-13", 381.8], ["2025-06-20", 384.0], ["2025-06-27", 385.9], ["2025-07-04", 388.2], ["2025-07-11", 395.0], ["2025-07-18", 398.9], ["2025-07-25", 404.7], ["2025-08-01", 408.2], ["2025-08-08", 414.4], ["2025-08-15", 419.9], ["2025-08-22", 426.3], ["2025-08-29", 431.6], ["2025-09-05", 435.7], ["2025-09-12", 441.3], ["2025-09-19", 446.1], ["2025-09-26", 450.5], ["2025-10-03", 453.7], ["2025-10-10", 457.6], ["2025-10-17", 463.9], ["2025-10-24", 469.0], ["2025-10-31", 473.2], ["2025-11-07", 478.8], ["2025-11-14", 484.0], ["2025-11-21", 488.3], ["2025-11-28", 494.2], ["2025-12-05", 500.4], ["2025-12-12", 506.1], ["2025-12-19", 511.4], ["2025-12-26", 517.1], ["2026-01-02", 524.2], ["2026-01-09", 531.8], ["2026-01-16", 539.3], ["2026-01-23", 548.7], ["2026-01-30", 556.5], ["2026-02-06", 562.1], ["2026-02-13", 564.6], ["2026-02-20", 565.4], ["2026-02-27", 568.5], ["2026-03-06", 572.2], ["2026-03-13", 577.0], ["2026-03-20", 583.4], ["2026-03-27", 584.6], ["2026-04-03", 587.3], ["2026-04-10", 588.7], ["2026-04-17", 590.7], ["2026-04-24", 591.5], ["2026-05-01", 593.6], ["2026-05-08", 598.0], ["2026-05-15", 605.6], ["2026-05-22", 613.6], ["2026-05-29", 617.8], ["2026-06-05", 620.3], ["2026-06-12", 622.4], ["2026-06-19", 623.8], ["2026-06-26", 626.0], ["2026-07-03", 630.6], ["2026-07-10", 633.1], ["2026-07-17", 635.4], ["2026-07-24", 637.2], ["2026-07-31", 639.8], ["2026-08-07", 644.1], ["2026-08-14", 649.2], ["2026-08-21", 656.5], ["2026-08-28", 660.7]];
+window['__opts_echart_al_0_c1'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'放在3.3显性库存',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#7a8a9c',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#7a8a9c30'},{offset:1,color:'#7a8a9c00'}]}},
+      data:window['__data_echart_al_0_c1'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_al_0_c1'][window['__data_echart_al_0_c1'].length-1][0],window['__data_echart_al_0_c1'][window['__data_echart_al_0_c1'].length-1][1]],
+        itemStyle:{color:'#7a8a9c'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_al_0_c1.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_al_0_c1'], __yrs_echart_al_0_c1, __pal_echart_al_0_c1)
+  }
+};
+window['__inst_echart_al_0_c1'] = echarts.init(document.getElementById('echart_al_0_c1'),'dark');
+window['__mode_echart_al_0_c1'] = 'ts';
+window['__inst_echart_al_0_c1'].setOption(window['__opts_echart_al_0_c1']['ts'], true);
+
+var __yrs_echart_al_0_c2=[2022, 2023, 2024, 2025, 2026];
+var __pal_echart_al_0_c2=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_al_0_c2'] = [["2021-03-31", 977.0], ["2021-06-30", 992.0], ["2021-09-30", 997.0], ["2021-12-31", 997.0], ["2022-03-31", 972.0], ["2022-06-30", 1014.0], ["2022-09-30", 957.0], ["2022-12-31", 998.0], ["2023-03-31", 921.0], ["2023-06-30", 957.0], ["2023-09-30", 973.0], ["2023-12-31", 961.0], ["2024-03-31", 926.0], ["2024-06-30", 919.0], ["2024-09-30", 932.0], ["2024-12-31", 940.0], ["2025-03-31", 931.0], ["2025-06-30", 922.0], ["2025-09-30", 940.0], ["2025-12-31", 955.0], ["2026-03-31", 899.0], ["2026-06-30", 947.0]];
+window['__opts_echart_al_0_c2'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'日度价格可与日度利润同图；月度产量不得与日度价格直接做“联动因果图”，只能用双轴展示并标注频率差异',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#7a8a9c',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#7a8a9c30'},{offset:1,color:'#7a8a9c00'}]}},
+      data:window['__data_echart_al_0_c2'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_al_0_c2'][window['__data_echart_al_0_c2'].length-1][0],window['__data_echart_al_0_c2'][window['__data_echart_al_0_c2'].length-1][1]],
+        itemStyle:{color:'#7a8a9c'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_al_0_c2.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_al_0_c2'], __yrs_echart_al_0_c2, __pal_echart_al_0_c2)
+  }
+};
+window['__inst_echart_al_0_c2'] = echarts.init(document.getElementById('echart_al_0_c2'),'dark');
+window['__mode_echart_al_0_c2'] = 'ts';
+window['__inst_echart_al_0_c2'].setOption(window['__opts_echart_al_0_c2']['ts'], true);
+
+var __yrs_echart_al_0_c3=[2022, 2023, 2024, 2025, 2026];
+var __pal_echart_al_0_c3=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_al_0_c3'] = [["2021-01-31", 56.0], ["2021-02-28", 31.0], ["2021-03-31", 53.0], ["2021-04-30", 56.0], ["2021-05-31", 52.0], ["2021-06-30", 51.0], ["2021-07-31", 51.0], ["2021-08-31", 46.0], ["2021-09-30", 44.0], ["2021-10-31", 43.0], ["2021-11-30", 49.0], ["2021-12-31", 50.0], ["2022-01-31", 48.0], ["2022-02-28", 42.54], ["2022-03-31", 46.0], ["2022-04-30", 37.0], ["2022-05-31", 40.33], ["2022-06-30", 40.92], ["2022-07-31", 39.0], ["2022-08-31", 30.0], ["2022-09-30", 47.4], ["2022-10-31", 44.25], ["2022-11-30", 45.46], ["2022-12-31", 57.0], ["2023-01-31", 30.03], ["2023-02-28", 47.2], ["2023-03-31", 62.0], ["2023-04-30", 61.0], ["2023-05-31", 59.0], ["2023-06-30", 57.0], ["2023-07-31", 57.5], ["2023-08-31", 57.0], ["2023-09-30", 60.0], ["2023-10-31", 60.0], ["2023-11-30", 63.0], ["2023-12-31", 62.0], ["2024-01-31", 49.0], ["2024-02-29", 27.34], ["2024-03-31", 49.45], ["2024-04-30", 52.47], ["2024-05-31", 48.17], ["2024-06-30", 46.89], ["2024-07-31", 43.08], ["2024-08-31", 43.1], ["2024-09-30", 43.2], ["2024-10-31", 43.86], ["2024-11-30", 44.27], ["2024-12-31", 49.05], ["2025-01-31", 40.19], ["2025-02-28", 38.4], ["2025-03-31", 38.82], ["2025-04-30", 37.16], ["2025-05-31", 38.04], ["2025-06-30", 39.5], ["2025-07-31", 38.14], ["2025-08-31", 39.19], ["2025-09-30", 41.81], ["2025-10-31", 38.74], ["2025-11-30", 43.28], ["2025-12-31", 42.16], ["2026-01-31", 40.98], ["2026-02-28", 18.48], ["2026-03-31", 36.68], ["2026-04-30", 39.08], ["2026-05-31", 35.63], ["2026-06-30", 35.5], ["2026-07-31", 37.09]];
+window['__opts_echart_al_0_c3'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'再生铝合金/原生铝合金龙头企业开工率',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#7a8a9c',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#7a8a9c30'},{offset:1,color:'#7a8a9c00'}]}},
+      data:window['__data_echart_al_0_c3'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_al_0_c3'][window['__data_echart_al_0_c3'].length-1][0],window['__data_echart_al_0_c3'][window['__data_echart_al_0_c3'].length-1][1]],
+        itemStyle:{color:'#7a8a9c'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_al_0_c3.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_al_0_c3'], __yrs_echart_al_0_c3, __pal_echart_al_0_c3)
+  }
+};
+window['__inst_echart_al_0_c3'] = echarts.init(document.getElementById('echart_al_0_c3'),'dark');
+window['__mode_echart_al_0_c3'] = 'ts';
+window['__inst_echart_al_0_c3'].setOption(window['__opts_echart_al_0_c3']['ts'], true);
+
+function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
+function __seasonalizeByYear(arr,years,palette){var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);var mm=parseInt(d.substring(5,7),10)-1;if(mm<0||mm>11)continue;if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(12);by[yr][mm]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<12;k++)if(dat[k]!==null)nonNull++;if(nonNull<3)continue;var rounded=[];for(var k=0;k<12;k++)rounded.push(dat[k]===null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:true,symbol:'circle',symbolSize:5,connectNulls:true,lineStyle:{color:color,width:2},itemStyle:{color:color},data:rounded});}return series;}
+var __mdays=[31,28,31,30,31,30,31,31,30,31,30,31];
+function __seasonalizeByDay(arr,years,palette){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var doy=function(s){var p=s.split('-');var m=parseInt(p[1],10)-1,d=parseInt(p[2],10),k=0;for(var i=0;i<m;i++)k+=md[i];return k+d-1;};var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(365);by[yr][doy(d)]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<365;k++)if(dat[k]!=null)nonNull++;if(nonNull<30)continue;var rounded=[];for(var k=0;k<365;k++)rounded.push(dat[k]==null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:false,symbol:'none',connectNulls:true,lineStyle:{color:color,width:1.6},itemStyle:{color:color},data:rounded});}return series;}
+function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
+window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
+btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
+window.addEventListener('resize',function(){['echart_al_0_c1','echart_al_0_c2','echart_al_0_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+setTimeout(function(){window.__chartsReady=true;},1200);
+
+</script></body></html>
