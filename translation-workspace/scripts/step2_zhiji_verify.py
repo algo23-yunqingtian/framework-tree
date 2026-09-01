@@ -175,15 +175,21 @@ def build_search_terms(variety, name):
     try:
         d = json.load(open("/home/ubuntu/framework-tree/data/indicators_v1.json"))
         prefix = {"ZN": "zn_", "CU": "cu_", "AL": "al_", "NI": "ni_"}[variety]
-        search_chn = clean
+        # 用原始 name 判断来源（clean_name 会去掉 LME/SHFE 前缀，导致来源识别失败）
+        raw = name
         core_kw_list = ["TC", "加工费", "升贴水", "库存", "仓单", "价差", "月差", "基差",
                         "产量", "开工率", "利润", "成本", "价格", "持仓", "成交量",
                         "进口", "出口", "盈亏", "注册", "注销", "现货", "冶炼", "精炼"]
-        in_kw = [k for k in core_kw_list if k in search_chn]
+        in_kw = [k for k in core_kw_list if k in clean]
         if in_kw:
-            # 额外约束：库存类指标必须区分国内/海外（防"社会库存"命中"LME巴林"）
-            is_domestic = any(k in search_chn for k in ["社会", "国内", "七地", "中国", "主要", "厂内"])
-            is_overseas = any(k in search_chn for k in ["LME", "注销", "注册", "仓单"])
+            # 产品形态标记（防"锌矿"命中"镀锌板卷"）
+            is_ore = any(k in raw for k in ["矿", "精矿", "锌矿"])
+            is_plating = any(k in raw for k in ["镀锌", "氧化锌", "压铸", "锌合金"])
+            is_ingot = any(k in raw for k in ["锌锭", "锌片", "锌丝"])
+            # 来源标记
+            is_lme = any(k in raw for k in ["LME", "注销仓单", "注册仓单"])
+            is_shfe = any(k in raw for k in ["上期所", "SHFE"])
+            is_domestic = any(k in raw for k in ["社会", "国内", "七地", "中国", "主要", "厂内", "广东", "上海", "天津", "宁波"])
             # 在已有指标中找 name 含相同核心关键词 + 品种词的
             candidates = []
             for k, v in d["indicators"].items():
@@ -192,22 +198,32 @@ def build_search_terms(variety, name):
                 vname = v.get("name", "")
                 if not any(kw in vname for kw in in_kw):
                     continue
-                if cn not in vname and f"沪{cn}" not in vname and f"电解{cn}" not in vname:
+                if cn not in vname and f"沪{cn}" not in vname and f"电解{cn}" not in vname and f"LME{cn}" not in vname and f"{cn}矿" not in vname:
                     continue
                 zhiji_id = v.get("ids", {}).get(variety, "")
                 if not zhiji_id:
                     continue
-                # 库存类：国内/海外必须匹配
-                if "库存" in in_kw:
-                    v_is_dom = any(kw in vname for kw in ["社会", "国内", "厂内", "港口", "现货"])
-                    v_is_over = any(kw in vname for kw in ["LME", "注销", "注册", "海外"])
-                    if is_domestic and not v_is_dom:
-                        continue
-                    if is_overseas and not v_is_over:
-                        continue
+                v_is_lme = "LME" in vname
+                v_is_shfe = "SHFE" in vname or "上期所" in vname
+                v_is_dom = any(kw in vname for kw in ["社会", "国内", "厂内", "港口", "保税区", "现货", "广东", "上海", "天津", "宁波", "镀锌"])
+                v_is_ore = any(kw in vname for kw in ["矿", "精矿", "锌矿"])
+                v_is_plating = any(kw in vname for kw in ["镀锌", "氧化锌", "压铸"])
+                v_is_ingot = any(kw in vname for kw in ["锌锭", "原生锌", "电解锌", "锌片", "锌丝"])
+                if is_lme and not v_is_lme:
+                    continue
+                if is_shfe and not v_is_shfe:
+                    continue
+                if is_domestic and not v_is_dom:
+                    continue
+                # 产品形态约束
+                if is_ore and not v_is_ore:
+                    continue
+                if is_plating and not v_is_plating:
+                    continue
+                if is_ingot and not v_is_ingot:
+                    continue
                 candidates.append((vname, zhiji_id))
             if candidates:
-                # 取最精确的第一个（名字最短 = 最贴近主干）
                 candidates.sort(key=lambda x: len(x[0]))
                 vname, zhiji_id = candidates[0]
                 return [f"__DB__{zhiji_id}|{vname}"]
@@ -286,7 +302,7 @@ def grade_hit(variety, name, results):
     - C: 全部结果都不匹配
     """
     cn = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍"}[variety]
-    var_aliases = [cn, f"沪{cn}", f"电解{cn}", f"精{cn}", f"LME{cn}", f"{cn}锭", f"镀锌", f"压铸", f"氧化{cn}"]
+    var_aliases = [cn, f"沪{cn}", f"电解{cn}", f"精{cn}", f"LME{cn}", f"{cn}锭", f"镀锌", f"压铸", f"氧化{cn}", f"沪伦"]
     if not results:
         return "C", None, 0
 
@@ -297,7 +313,8 @@ def grade_hit(variety, name, results):
     core_kws = [k for k in ["TC", "加工费", "升贴水", "库存", "仓单", "价差", "月差", "基差",
                             "产量", "开工率", "利润", "成本", "价格", "持仓", "成交量",
                             "进口", "出口", "盈亏", "注册", "注销", "注销仓单", "现货",
-                            "电解", "精炼", "冶炼", "到港", "发运", "回收", "表观消费"] if k in clean]
+                            "电解", "精炼", "冶炼", "到港", "发运", "回收", "表观消费",
+                            "沪伦比"] if k in clean]
 
     is_english = bool(re.search(r"[A-Za-z]", clean)) and not re.search(r"[\u4e00-\u9fff]", clean)
     if is_english:
