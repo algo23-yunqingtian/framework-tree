@@ -23,7 +23,7 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
   <div class="hcrumbs">锌(ZN) · 4 库存 · 4.1 交易所库存 · v1 3 图</div>
-  <div class="hright">数据固化快照 · 2026-08-31 · SMM</div>
+  <div class="hright">数据固化快照 · 2026-09-01 · SMM</div>
 </div>
 <div class="nav-back"><a href="zn_4_overview.html">← 回板块4总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
@@ -109,5 +109,6 @@ function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
 window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
 btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
 window.addEventListener('resize',function(){['echart_zn_41_c1','echart_zn_41_c2','echart_zn_41_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+setTimeout(function(){window.__chartsReady=true;},1200);
 
 </script></body></html>
