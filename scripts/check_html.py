@@ -859,6 +859,20 @@ PAGES = {
     "li_42": {"file": "li_4_2.html", "min_bytes": 30000, "charts": 4, "cids": ["echart_li_42_c1", "echart_li_42_c2", "echart_li_42_c3", "echart_li_42_c4"], "label": "锂4.2仓单", "has_seasonal": False},
     "li_43": {"file": "li_4_3.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_43_c1", "echart_li_43_c2"], "label": "锂4.3社会库存", "has_seasonal": False},
     "li_44": {"file": "li_4_4.html", "min_bytes": 20000, "charts": 4, "cids": ["echart_li_44_c1", "echart_li_44_c2", "echart_li_44_c3", "echart_li_44_c4"], "label": "锂4.4工厂库存", "has_seasonal": False},
+    "li_23": {"file": "li_2_3.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_23_c1"], "label": "锂2.3海外价格", "has_seasonal": False},
+    "li_314": {"file": "li_3_1_4.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_314_c1"], "label": "锂3.1.4库存", "has_seasonal": False},
+    "li_315": {"file": "li_3_1_5.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_315_c1"], "label": "锂3.1.5毛利", "has_seasonal": True},
+    "li_322": {"file": "li_3_2_2.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_322_c1","echart_li_322_c2"], "label": "锂3.2.2产能利用", "has_seasonal": True},
+    "li_45": {"file": "li_4_5.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_45_c1"], "label": "锂4.5隐性在途", "has_seasonal": False},
+    "li_51": {"file": "li_5_1.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_51_c1","echart_li_51_c2"], "label": "锂5.1初级消费", "has_seasonal": True},
+    "li_52": {"file": "li_5_2.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_52_c1","echart_li_52_c2"], "label": "锂5.2终端消费", "has_seasonal": True},
+    "li_53": {"file": "li_5_3.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_53_c1"], "label": "锂5.3消费先行", "has_seasonal": False},
+    "li_61": {"file": "li_6_1.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_61_c1","echart_li_61_c2"], "label": "锂6.1原料进口", "has_seasonal": True},
+    "li_62": {"file": "li_6_2.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_62_c1"], "label": "锂6.2进出口", "has_seasonal": True},
+    "li_63": {"file": "li_6_3.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_63_c1","echart_li_63_c2"], "label": "锂6.3制品出口", "has_seasonal": True},
+    "li_64": {"file": "li_6_4.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_64_c1"], "label": "锂6.4全球出口", "has_seasonal": True},
+    "li_71": {"file": "li_7_1.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_71_c1","echart_li_71_c2"], "label": "锂7.1成本曲线", "has_seasonal": True},
+    "li_72": {"file": "li_7_2.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_72_c1","echart_li_72_c2"], "label": "锂7.2利润", "has_seasonal": True},
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]

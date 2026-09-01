@@ -236,6 +236,20 @@ const PAGES = [
   { key: 'li_42', file: 'li_4_2.html', charts: 4, seasonal: [] },
   { key: 'li_43', file: 'li_4_3.html', charts: 2, seasonal: [] },
   { key: 'li_44', file: 'li_4_4.html', charts: 4, seasonal: [] },
+  { key: 'li_23', file: 'li_2_3.html', charts: 1, seasonal: [] },
+  { key: 'li_314', file: 'li_3_1_4.html', charts: 1, seasonal: [] },
+  { key: 'li_315', file: 'li_3_1_5.html', charts: 1, seasonal: ["echart_li_315_c1"] },
+  { key: 'li_322', file: 'li_3_2_2.html', charts: 2, seasonal: ["echart_li_322_c1"] },
+  { key: 'li_45', file: 'li_4_5.html', charts: 1, seasonal: [] },
+  { key: 'li_51', file: 'li_5_1.html', charts: 2, seasonal: ["echart_li_51_c1"] },
+  { key: 'li_52', file: 'li_5_2.html', charts: 2, seasonal: ["echart_li_52_c1"] },
+  { key: 'li_53', file: 'li_5_3.html', charts: 1, seasonal: [] },
+  { key: 'li_61', file: 'li_6_1.html', charts: 2, seasonal: ["echart_li_61_c1"] },
+  { key: 'li_62', file: 'li_6_2.html', charts: 1, seasonal: ["echart_li_62_c1"] },
+  { key: 'li_63', file: 'li_6_3.html', charts: 2, seasonal: ["echart_li_63_c1"] },
+  { key: 'li_64', file: 'li_6_4.html', charts: 1, seasonal: ["echart_li_64_c1"] },
+  { key: 'li_71', file: 'li_7_1.html', charts: 2, seasonal: ["echart_li_71_c1"] },
+  { key: 'li_72', file: 'li_7_2.html', charts: 2, seasonal: ["echart_li_72_c1"] },
 ];
 
 function expectedBtnText(mode) {
