@@ -230,25 +230,36 @@ def build_search_terms(variety, name):
                "电解", "精炼", "冶炼", "到港", "发运", "回收", "表观消费"}
     for t in tokens:
         if any(k in t for k in CORE_KW):
+            # 短 token（<6 字中文）直接加；长 token 走策略2 拆短
+            is_long_chn = len(t) >= 6 and re.search(r"[\u4e00-\u9fff]", t) and not re.search(r"[A-Za-z]", t)
+            if is_long_chn:
+                continue
             if variety.lower() in t.lower() or cn in t:
                 terms.append(t)
             else:
                 terms.append(f"{cn} {t}")
 
-    # 策略2：中文长词拆短（≥8字的中文 token 切 2-5 字核心词）
+    # 策略2：中文长词多粒度拆短（含特征前缀 + 核心关键词窗口）
     for t in tokens:
-        if len(t) >= 8 and re.search(r"[\u4e00-\u9fff]", t) and not re.search(r"[A-Za-z]", t):
-            # 按核心关键词位置切
+        if len(t) >= 6 and re.search(r"[\u4e00-\u9fff]", t) and not re.search(r"[A-Za-z]", t):
+            # 2a: 取前缀 2-3 字（如"七地"、"镀锌"），独立候选
+            for w in [2, 3]:
+                prefix = t[:w]
+                if re.search(r"[\u4e00-\u9fff]", prefix):
+                    candidate = f"{cn} {prefix}" if cn not in prefix else prefix
+                    if candidate not in terms:
+                        terms.append(candidate)
+            # 2b: 围绕核心关键词切（短窗口）
             for kw in CORE_KW:
                 if kw in t:
                     idx = t.index(kw)
-                    # 取 kw 前 2-3 字 + kw
-                    head_start = max(0, idx - 3)
-                    chunk = t[head_start:idx + len(kw)]
-                    if len(chunk) >= 4:
-                        candidate = f"{cn} {chunk}" if cn not in chunk else chunk
-                        if candidate not in terms:
-                            terms.append(candidate)
+                    for w in [2, 3]:
+                        head_start = max(0, idx - w)
+                        chunk = t[head_start:idx + len(kw)]
+                        if len(chunk) >= 3:
+                            candidate = f"{cn} {chunk}" if cn not in chunk else chunk
+                            if candidate not in terms:
+                                terms.append(candidate)
 
     # 策略3：纯英文 token（LME 字段名），强制带品种前缀
     for t in tokens:
@@ -267,58 +278,62 @@ def build_search_terms(variety, name):
 
 
 def grade_hit(variety, name, results):
-    """语义分级（v3 重写：核心关键词必须匹配，仅品种词匹配不够）
+    """语义分级（v4 重写：遍历所有结果找最优命中，不再只看第一个）
 
-    逻辑：
-    - A: 命中名含品种词 AND 含核心关键词（TC命中TC/加工费，库存命中库存等）
-    - B: 命中名含品种词但核心关键词弱匹配（如"锌精矿"对"锌TC"——缺TC但有关联词）
-    - C: 品种词不匹配，或品种词匹配但核心关键词完全不相关
+    逻辑：遍历知几返回的全部结果，找品种词+核心关键词双匹配的：
+    - A: 命中名含品种词 AND 含核心关键词
+    - B: 品种词匹配 + 有衍生词弱相关
+    - C: 全部结果都不匹配
     """
     cn = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍"}[variety]
-    var_aliases = [cn, f"沪{cn}", f"电解{cn}", f"精{cn}", f"LME{cn}", f"{cn}锭"]
+    var_aliases = [cn, f"沪{cn}", f"电解{cn}", f"精{cn}", f"LME{cn}", f"{cn}锭", f"镀锌", f"压铸", f"氧化{cn}"]
     if not results:
         return "C", None, 0
-    hit = results[0]
-    hit_name = hit.get("name", "")
-    hit_path = hit.get("path", "") + hit_name
-    var_hit = any(a in hit_path for a in var_aliases)
 
     clean = clean_name(name)
     if not clean:
-        return "C", hit, 0
+        return "C", results[0], 0
 
-    # 提取查询侧核心关键词
     core_kws = [k for k in ["TC", "加工费", "升贴水", "库存", "仓单", "价差", "月差", "基差",
                             "产量", "开工率", "利润", "成本", "价格", "持仓", "成交量",
                             "进口", "出口", "盈亏", "注册", "注销", "注销仓单", "现货",
                             "电解", "精炼", "冶炼", "到港", "发运", "回收", "表观消费"] if k in clean]
 
-    # 纯英文(LME等)：要求命中含英文片段
     is_english = bool(re.search(r"[A-Za-z]", clean)) and not re.search(r"[\u4e00-\u9fff]", clean)
     if is_english:
         en_tokens = [t for t in re.split(r"[^A-Za-z]+", clean) if len(t) >= 3]
-        kw_hit = any(t.lower() in hit_name.lower() or t.lower() in hit.get("path", "").lower() for t in en_tokens)
-        related_hit = False
-    else:
-        kw_hit = bool(core_kws) and any(k in hit_path for k in core_kws)
-        # 弱相关：品种词匹配 + 有冶炼/精矿/仓单等衍生词（非严格匹配但相关）
+
+    best = None
+    best_grade = "C"
+    for hit in results:
+        hit_name = hit.get("name", "")
+        hit_path = hit.get("path", "") + hit_name
+        var_hit = any(a in hit_path for a in var_aliases)
+        if not var_hit:
+            continue
+
+        if is_english:
+            kw_hit = any(t.lower() in hit_name.lower() or t.lower() in hit.get("path", "").lower() for t in en_tokens)
+        else:
+            kw_hit = bool(core_kws) and any(k in hit_path for k in core_kws)
+
+        if kw_hit:
+            return "A", hit, 1  # 第一个 A 级立即返回
+
+        # 弱相关
         related_words = ["精矿", "冶炼", "仓单", "库存", "价格", "期货", "现货",
-                        "产能", "开工", "消费", "进出口"]
+                        "产能", "开工", "消费", "进出口", "七地"]
         related_hit = bool(core_kws) and any(w in hit_path for w in related_words)
+        if related_hit and best is None:
+            best = hit
+            best_grade = "B"
 
-    if var_hit and kw_hit:
-        return "A", hit, 1
-    # 品种词不匹配 → 一定 C，不再用弱相关救 B
-    if not var_hit:
-        return "C", hit, 0
-    # 品种词匹配但核心关键词不匹配 → C（v3 关键改动：之前标 B 的假命中）
-    # 除非有衍生词弱相关且核心关键词确实存在（保留少量合理 B）
-    if var_hit and related_hit and not kw_hit:
-        return "B", hit, 0.5
-    return "C", hit, 0
+    if best:
+        return "B", best, 0.5
+    return "C", results[0], 0
 
 
-def zhiji_search(query, limit=5):
+def zhiji_search(query, limit=10):
     r = subprocess.run(["/usr/bin/python3", ZHJ, "search", query, "all", str(limit)],
                        capture_output=True, text=True, timeout=60)
     try:
