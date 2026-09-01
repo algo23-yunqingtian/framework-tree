@@ -30,7 +30,7 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <div class="chart"><div class="chart-title">电解铜：表观消费量累计值：中国（月）（主图·5.1）</div><div class="chart-sub">cu_51_apparent_cons · monthly · 万吨 · 103点 · 9年跨度 · 至 2026-07-31</div><div id="echart_cu_51_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_cu_51_c1',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：电解铜表观消费量累计（初级需求总量，知几无铜开工率序列，以消费量代理）。<br>怎么看：累计口径逐年抬升，切季节视图对比同期即可判需求同比强弱；最新(2026-07-31)：938.4万吨。</div></div><div class="chart"><div class="chart-title">电解铜：实际消费量累计值：中国（月）（补充·5.1）</div><div class="chart-sub">cu_51_actual_cons · monthly · 万吨 · 103点 · 9年跨度 · 至 2026-07-31</div><div id="echart_cu_51_c2" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_cu_51_c2',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：主图的高频补充，用于验证边际变化。<br>怎么看：与主图同向=趋势确认；反向=背离信号，需判断谁主导。</div></div>
 <div class="note">
 <strong style="color:#c9d1d9">5.1 定义：</strong>铜初级消费（tree_config q=开工率，知几无铜开工率序列，以电解铜表观消费量累计代理）。<br><strong style="color:#c9d1d9">指标组：</strong>cu_51_apparent_cons 电解铜：表观消费量累计值：中国（月）(monthly,万吨) · cu_51_actual_cons 电解铜：实际消费量累计值：中国（月）(万吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 2 图，断更剔除 al_51_cons（末点距今>180天，避免整页降级）。
-</div>
+<br><strong style="color:#c9d1d9">辅助指标口径声明：</strong><code>al_51_cons</code> 为<b>铝跨金属辅助参照</b>——知几/同花顺在本节点缺乏连续的<b>cu本品种</b>指标序列，此处置为跨金属类比参照（<b>仅看相对趋势方向</b>，单位/频次/绝对量级与主图不同，不可直接加总或比数值）。本页正主指标以 cu 品种前缀为准。</div>
 </div>
 <footer>有色金属产业指标树 · 铜(CU) 5.1 初级消费 · v1（2 图全真数据 · 自动批量生成）· indicators_v1.json v3.42</footer>
 <script src="assets/echarts.min.js"></script>

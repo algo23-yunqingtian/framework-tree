@@ -30,9 +30,9 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <div class="chart"><div class="chart-title">电解铝：生产现金成本：中国（月）（主图·7.1）</div><div class="chart-sub">al_71_cost · daily · 元/吨 · 104点 · 10年跨度 · 至 2026-07-31</div><div id="echart_al_71_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_al_71_c1',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：氧化铝成本与TC加工费。<br>怎么看：负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(2026-07-31)：14284.0元/吨。切季节视图可对比近5年同期位置。</div></div><div class="chart"><div class="chart-title">铜精矿：现货TC指导价（季） vs 铝棒：6063：Φ120：加工费均价：中国（日）</div><div class="chart-sub">cu_25_tc_conc + al_71_tc · quarterly · 左轴美元/干吨 / 右轴元/吨 · 29/2333 点</div><div id="echart_al_71_c2" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：铜精矿：现货TC指导价（季） 与 铝棒：6063：Φ120：加工费均价：中国（日） 的联动。<br>怎么看：同向走=共振趋势确认；反向走=背离信号，需判断谁主导。</div></div>
 <div class="note">
 <strong style="color:#c9d1d9">7.1 定义：</strong>氧化铝成本与TC加工费。<br><strong style="color:#c9d1d9">指标组：</strong>al_71_cost 电解铝：生产现金成本：中国（月）(daily,元/吨) · cu_25_tc_conc 铜精矿：现货TC指导价（季）(美元/干吨) · al_71_tc 铝棒：6063：Φ120：加工费均价：中国（日）(元/吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 2 图，跳过 无（全指标已入图）。
+<br><strong style="color:#c9d1d9">辅助指标口径声明：</strong><code>cu_25_tc_conc</code> 为<b>铜跨金属辅助参照</b>——知几/同花顺在本节点缺乏连续的<b>al本品种</b>指标序列，此处置为跨金属类比参照（<b>仅看相对趋势方向</b>，单位/频次/绝对量级与主图不同，不可直接加总或比数值）。本页正主指标以 al 品种前缀为准。</div>
 </div>
-</div>
-<footer>有色金属产业指标树 · 铝(CU) 7.1 电解铝成本 · v1（2 图全真数据 · 自动批量生成）· indicators_v1.json v2.9</footer>
+<footer>有色金属产业指标树 · 铝(AL) 7.1 电解铝成本 · v1（2 图全真数据 · 自动批量生成）· indicators_v1.json v2.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.oncontextmenu=e=>{e.preventDefault();return false};

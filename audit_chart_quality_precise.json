@@ -1,0 +1,785 @@
+{
+  "P1_wrong_node": [],
+  "P2_footer_foreign": [],
+  "P3_declared_cross": [
+    {
+      "file": "al_2_5.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_25_tc_conc"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "al_3_1_1.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_311_output_conc"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "al_3_1_3.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_311_output_conc"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "al_3_1_5.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_25_tc_conc"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "al_3_2_1.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_321_output_recycle"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "al_3_2_3.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_323_inv_recycle",
+        "cu_323_output_recycle",
+        "cu_323_import_recycle"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "al_3_2_4.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_25_tc_conc"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "al_7_1.html",
+      "expected": "al",
+      "foreign_mids": [
+        "cu_25_tc_conc"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_3_1_3.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_313_util"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_3_1_5.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_315_tc_tc",
+        "al_315_tc_tc_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_3_2_1.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_313_util"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_3_2_2.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_313_util"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_3_2_3.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_323_import_scrap"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_3_2_4.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_324_cost"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_5_1.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_51_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_6_1.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_323_import_scrap"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "cu_6_2.html",
+      "expected": "cu",
+      "foreign_mids": [
+        "al_62_import"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "li_2_5.html",
+      "expected": "li",
+      "foreign_mids": [
+        "zn_25_cost_conc",
+        "zn_25_profit_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "li_3_1_1.html",
+      "expected": "li",
+      "foreign_mids": [
+        "ni_311_output_nickel_ore_2",
+        "sn_311_output_tin_ore",
+        "zn_311_output_recycle",
+        "ni_311_output_nickel_ore_3",
+        "ni_311_output_nickel_ore"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "li_3_1_2.html",
+      "expected": "li",
+      "foreign_mids": [
+        "zn_312_output_recycle_4",
+        "zn_312_output_6",
+        "zn_312_output_recycle_2",
+        "zn_312_output_4",
+        "zn_312_output_8",
+        "ni_312_output_nickel_ore",
+        "zn_312_output_recycle",
+        "zn_312_output_3",
+        "zn_312_import_3",
+        "zn_312_output_recycle_3",
+        "zn_312_output",
+        "ni_311_output_nickel_ore",
+        "ni_311_output_nickel_ore_2",
+        "si_312_output_recycle_2",
+        "sn_311_output_tin_ore",
+        "si_312_import",
+        "si_312_import_2",
+        "zn_312_output_9"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "li_3_1_3.html",
+      "expected": "li",
+      "foreign_mids": [
+        "ni_313_output_nickel_ore_6",
+        "ni_313_output_nickel_ore",
+        "ni_313_output_nickel_ore_2",
+        "sn_313_output",
+        "ni_313_output_nickel_ore_3",
+        "ni_313_output_nickel_ore_5",
+        "ni_313_output_2",
+        "ni_313_output_3",
+        "zn_313_output_recycle",
+        "ni_313_output_nickel_ore_4"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "li_3_2_1.html",
+      "expected": "li",
+      "foreign_mids": [
+        "sn_313_output",
+        "si_321_capacity_polysilicon",
+        "ni_313_output_2",
+        "si_321_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "li_3_2_3.html",
+      "expected": "li",
+      "foreign_mids": [
+        "sn_323_output_recycle_2",
+        "si_323_recycle_capacity",
+        "si_323_recycle_capacity_industrial_",
+        "si_323_recycle_capacity_polysilicon",
+        "sn_323_recycle_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_2_5.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_25_cost_conc",
+        "zn_25_profit_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_1_1.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "sn_311_output_tin_ore",
+        "li_311_output",
+        "zn_311_output_recycle"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_1_2.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_312_output_recycle_4",
+        "zn_312_output_6",
+        "zn_312_output_recycle_2",
+        "zn_312_output_4",
+        "zn_312_output_8",
+        "zn_312_output_recycle",
+        "zn_312_output_3",
+        "zn_312_import_3",
+        "zn_312_output_recycle_3",
+        "zn_312_output",
+        "li_312_output_2",
+        "li_312_output",
+        "si_312_output_recycle_2",
+        "sn_311_output_tin_ore",
+        "si_312_import",
+        "si_312_import_2",
+        "zn_312_output_9"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_1_3.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "sn_313_output",
+        "zn_313_output_recycle"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_1_4.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_312_import_3",
+        "li_314_import_2",
+        "li_314_import_4",
+        "zn_314_import_3",
+        "zn_314_import_4",
+        "li_314_import_3",
+        "si_314_import",
+        "si_314_import_ratio"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_1_5.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "sn_313_output",
+        "zn_25_profit_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_2_1.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "sn_313_output",
+        "si_321_capacity_polysilicon",
+        "si_321_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_2_3.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "sn_323_output_recycle_2",
+        "si_323_recycle_capacity",
+        "si_323_recycle_capacity_industrial_",
+        "si_323_recycle_capacity_polysilicon",
+        "sn_323_recycle_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_3_2_4.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "li_324_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_5_1.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_51_cons_2",
+        "zn_51_cons_3",
+        "sn_51_cons",
+        "si_51_cons",
+        "zn_51_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_5_2.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_52_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_5_3.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_51_cons_2",
+        "zn_51_cons_3",
+        "zn_51_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_6_1.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_314_import_3",
+        "zn_314_import_4",
+        "sn_61_import_5"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "ni_6_4.html",
+      "expected": "ni",
+      "foreign_mids": [
+        "zn_64_inv"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_2_5.html",
+      "expected": "si",
+      "foreign_mids": [
+        "zn_25_cost_conc",
+        "zn_25_profit_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_3_1_1.html",
+      "expected": "si",
+      "foreign_mids": [
+        "ni_311_output_nickel_ore_2",
+        "sn_311_output_tin_ore",
+        "zn_311_output_recycle",
+        "li_311_output",
+        "ni_311_output_nickel_ore_3",
+        "ni_311_output_nickel_ore"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_3_1_2.html",
+      "expected": "si",
+      "foreign_mids": [
+        "zn_312_output_recycle_4",
+        "zn_312_output_6",
+        "zn_312_output_recycle_2",
+        "zn_312_output_4",
+        "zn_312_output_8",
+        "ni_312_output_nickel_ore",
+        "zn_312_output_recycle",
+        "zn_312_output_3",
+        "zn_312_import_3",
+        "zn_312_output_recycle_3",
+        "zn_312_output",
+        "ni_311_output_nickel_ore",
+        "li_312_output_2",
+        "ni_311_output_nickel_ore_2",
+        "li_312_output",
+        "sn_311_output_tin_ore",
+        "zn_312_output_9"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_3_1_4.html",
+      "expected": "si",
+      "foreign_mids": [
+        "zn_314_import_3",
+        "zn_312_import_3",
+        "li_314_import_2",
+        "li_314_import_4",
+        "zn_314_import_4",
+        "li_314_import_3"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_3_1_5.html",
+      "expected": "si",
+      "foreign_mids": [
+        "sn_313_output",
+        "zn_25_profit_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_3_2_1.html",
+      "expected": "si",
+      "foreign_mids": [
+        "sn_313_output",
+        "ni_313_output_2"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_3_2_3.html",
+      "expected": "si",
+      "foreign_mids": [
+        "sn_323_output_recycle_2",
+        "sn_323_recycle_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_3_2_4.html",
+      "expected": "si",
+      "foreign_mids": [
+        "li_324_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_5_1.html",
+      "expected": "si",
+      "foreign_mids": [
+        "zn_51_cons_2",
+        "zn_51_cons_3",
+        "sn_51_cons",
+        "zn_51_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_5_2.html",
+      "expected": "si",
+      "foreign_mids": [
+        "zn_52_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_6_1.html",
+      "expected": "si",
+      "foreign_mids": [
+        "zn_314_import_3",
+        "sn_61_import_5",
+        "zn_314_import_4"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "si_6_4.html",
+      "expected": "si",
+      "foreign_mids": [
+        "zn_64_inv"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_2_5.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_25_cost_conc",
+        "zn_25_profit_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_3_1_1.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "ni_311_output_nickel_ore_2",
+        "li_311_output",
+        "zn_311_output_recycle",
+        "ni_311_output_nickel_ore_3",
+        "ni_311_output_nickel_ore"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_3_1_2.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_312_output_recycle_4",
+        "zn_312_output_6",
+        "zn_312_output_recycle_2",
+        "zn_312_output_4",
+        "zn_312_output_8",
+        "ni_312_output_nickel_ore",
+        "zn_312_output_recycle",
+        "zn_312_output_3",
+        "zn_312_import_3",
+        "zn_312_output_recycle_3",
+        "zn_312_output",
+        "ni_311_output_nickel_ore",
+        "li_312_output_2",
+        "ni_311_output_nickel_ore_2",
+        "li_312_output",
+        "si_312_output_recycle_2",
+        "si_312_import",
+        "si_312_import_2",
+        "zn_312_output_9"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_3_1_3.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "ni_313_output_nickel_ore_6",
+        "ni_313_output_nickel_ore",
+        "ni_313_output_nickel_ore_2",
+        "ni_313_output_nickel_ore_3",
+        "ni_313_output_nickel_ore_5",
+        "ni_313_output_2",
+        "ni_313_output_3",
+        "zn_313_output_recycle",
+        "ni_313_output_nickel_ore_4"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_3_1_4.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_312_import_3",
+        "li_314_import_2",
+        "li_314_import_4",
+        "zn_314_import_3",
+        "zn_314_import_4",
+        "li_314_import_3",
+        "si_314_import",
+        "si_314_import_ratio"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_3_1_5.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_25_profit_percentile"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_3_2_1.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "si_321_capacity_polysilicon",
+        "ni_313_output_2",
+        "si_321_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_3_2_3.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "si_323_recycle_capacity",
+        "si_323_recycle_capacity_industrial_",
+        "si_323_recycle_capacity_polysilicon"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_5_1.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_51_cons_2",
+        "zn_51_cons_3",
+        "si_51_cons",
+        "zn_51_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_5_2.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_52_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_5_3.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_51_cons_2",
+        "zn_51_cons_3",
+        "zn_51_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_6_1.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_314_import_3",
+        "zn_314_import_4"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "sn_6_4.html",
+      "expected": "sn",
+      "foreign_mids": [
+        "zn_64_inv"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_1_1.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "ni_311_output_nickel_ore_2",
+        "sn_311_output_tin_ore",
+        "li_311_output",
+        "ni_311_output_nickel_ore_3",
+        "ni_311_output_nickel_ore"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_1_2.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "ni_312_output_nickel_ore",
+        "ni_311_output_nickel_ore",
+        "li_312_output_2",
+        "ni_311_output_nickel_ore_2",
+        "li_312_output",
+        "si_312_output_recycle_2",
+        "sn_311_output_tin_ore",
+        "si_312_import",
+        "si_312_import_2"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_1_3.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "ni_313_output_nickel_ore_6",
+        "ni_313_output_nickel_ore",
+        "ni_313_output_nickel_ore_2",
+        "sn_313_output",
+        "ni_313_output_nickel_ore_3",
+        "ni_313_output_nickel_ore_5",
+        "ni_313_output_2",
+        "ni_313_output_3",
+        "ni_313_output_nickel_ore_4"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_1_4.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "si_314_import",
+        "li_314_import_2",
+        "li_314_import_4",
+        "li_314_import_3",
+        "si_314_import_ratio"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_1_5.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "sn_313_output"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_2_1.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "sn_313_output",
+        "si_321_capacity_polysilicon",
+        "ni_313_output_2",
+        "si_321_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_2_3.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "sn_323_output_recycle_2",
+        "si_323_recycle_capacity",
+        "si_323_recycle_capacity_industrial_",
+        "si_323_recycle_capacity_polysilicon",
+        "sn_323_recycle_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_3_2_4.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "li_324_capacity"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_5_1.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "sn_51_cons",
+        "si_51_cons"
+      ],
+      "status": "declared"
+    },
+    {
+      "file": "zn_6_1.html",
+      "expected": "zn",
+      "foreign_mids": [
+        "sn_61_import_5"
+      ],
+      "status": "declared"
+    }
+  ],
+  "counts": {
+    "P1": 0,
+    "P2": 0,
+    "P3_declared": 72
+  }
+}

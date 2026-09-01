@@ -30,9 +30,9 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <div class="chart"><div class="chart-title">废铝：进口数量终值：中国（月）（主图·3.2.3）</div><div class="chart-sub">al_323_import_scrap · daily · 万吨 · 59点 · 5年跨度 · 至 2019-12-31</div><div id="echart_al_323_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_al_323_c1',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：再生铜/废铜产量、进口与库存。<br>怎么看：负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(2019-12-31)：3.0万吨。切季节视图可对比近5年同期位置。</div></div><div class="chart"><div class="chart-title">再生铜杆：64家样本企业：产量：中国（月） vs 废铝：社会库存：中国（月）</div><div class="chart-sub">cu_323_output_recycle + al_323_inv_scrap · monthly · 左轴万吨 / 右轴吨 · 79/86 点</div><div id="echart_al_323_c2" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：再生铜杆：64家样本企业：产量：中国（月） 与 废铝：社会库存：中国（月） 的联动。<br>怎么看：同向走=共振趋势确认；反向走=背离信号，需判断谁主导。</div></div>
 <div class="note">
 <strong style="color:#c9d1d9">3.2.3 定义：</strong>再生铜/废铜产量、进口与库存。<br><strong style="color:#c9d1d9">指标组：</strong>al_323_import_scrap 废铝：进口数量终值：中国（月）(daily,万吨) · cu_323_output_recycle 再生铜杆：64家样本企业：产量：中国（月）(万吨) · al_323_inv_scrap 废铝：社会库存：中国（月）(吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 2 图，跳过 cu_323_import_recycle、cu_323_inv_recycle。
+<br><strong style="color:#c9d1d9">辅助指标口径声明：</strong><code>cu_323_import_recycle</code> · <code>cu_323_inv_recycle</code> · <code>cu_323_output_recycle</code> 为<b>铜跨金属辅助参照</b>——知几/同花顺在本节点缺乏连续的<b>al本品种</b>指标序列，此处置为跨金属类比参照（<b>仅看相对趋势方向</b>，单位/频次/绝对量级与主图不同，不可直接加总或比数值）。本页正主指标以 al 品种前缀为准。</div>
 </div>
-</div>
-<footer>有色金属产业指标树 · 铝(CU) 3.2.3 再生铜供应 · v1（2 图全真数据 · 自动批量生成）· indicators_v1.json v2.9</footer>
+<footer>有色金属产业指标树 · 铝(AL) 3.2.3 再生铝供应 · v1（2 图全真数据 · 自动批量生成）· indicators_v1.json v2.9</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.oncontextmenu=e=>{e.preventDefault();return false};
