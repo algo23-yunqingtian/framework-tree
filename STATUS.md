@@ -72,6 +72,7 @@
 ---
 
 ## 近期变更记录
+| 2026-09-01 | **[MERGE] translation-workflow → main 合并上线** | agent | 20 commits / 126 files / 67979 行。含 NI 30页门禁修复 + 五金属灌库(meta 836/series 563K/外键孤立0) + 翻译线建页(ZN/CU/AL/NI 20页427图 + LI/SI/SN 15页335图)。门禁 210/210 ALL PASS ✅。 |
 | 2026-09-01 | **[DB-LOAD] 五金属灌库完成：meta 836行 / series 563K / 751有数据** | agent | JSONL→api_cache→indicator_tree.db 全链路。**灌库**：`db_import_jsonl.py --write` 导入五金属 JSONL（ZN/NI/SN/SI/LI），579 指标 / 366,117 时序点 → api_cache 总行数 1,625。**重建**：`db_load.py` 重建 indicator_tree.db，meta 836 行 / series 563,102 行 / **外键孤立 0** ✅ / 有数据指标 751 个。**验收**：门禁 verify_render 210/210 ALL PASS + reclaim 12/0 ✅。 |
 | 2026-09-01 | **[A-STEP5b] 翻译线 AgentB 三品种(LI/SI/SN)建页完成：15页335图** | agent | **引擎扩展**：`build_translation.py`+`step2_cache_load.py` CODE_CN/COLOR/varieties 加 SN(锡)/SI(硅)/LI(锂)。**语义校验**（新增 `scripts/build_translation_b_series_check.py`）：B 侧 A 级假命中 `hit_name` 不含品种词降级/剔除，三品种 A 级 180 条实测 166 有数据 / 14 空。**灌库**：178 条入库 api_cache.db。**建页**：**15 页 335 图**（LI 3页84图/SI 6页127图/SN 6页124图）。**门禁**：check_html 209/209 ✅；verify_render 210→181/210（29 FAIL 为 NI 基线既有问题）；reclaim PASS=12/FAIL=0。|
 | 2026-09-01 | **[A-STEP2-B] 三品种CSV归档入库** | agent | B 的 LI/SI/SN 三品种 step2 结果（CSV）归档至 `mapping/raw/B_{LI,SI,SN}.csv`，转标准 JSON：LI 95条(A79/B10/C6)/SI 145条(A135/B7/C3)/SN 152条(A119/B20/C12)。**⚠️ B 的 A 级存在置信度语义污染**（多例知几名称与品种对不上标A），详见 `translation-workspace/HANDOVER_B_STEP5_CONTINUE.md`，建页前必须加语义校验。**下一页**：A 级语义校验+series实测→灌库→build_translation.py（需扩 SN/SI/LI 字典）→推送 |
