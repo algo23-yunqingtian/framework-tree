@@ -27,8 +27,9 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from chart_kits import (load_metric, pairs, latest, chart_line_t,
                         page_html, make_crumb, out, write_html)
 
-CODE_CN = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍"}
-CODE_COLOR = {"ZN": "#5b7a8c", "CU": "#b06a32", "AL": "#7a8a9c", "NI": "#7a8c5b"}
+CODE_CN = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍", "SN": "锡", "SI": "硅", "LI": "锂"}
+CODE_COLOR = {"ZN": "#5b7a8c", "CU": "#b06a32", "AL": "#7a8a9c", "NI": "#7a8c5b",
+              "SN": "#4a7c6f", "SI": "#8a6a7c", "LI": "#5a8a8a"}
 SECTION_NAME = {"2": "价格信号", "3": "供给", "4": "库存", "5": "需求", "6": "进出口", "7": "成本利润"}
 MIN_POINTS = 8
 
@@ -164,7 +165,7 @@ def main():
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--skip-series-check", action="store_true")
     args = ap.parse_args()
-    varieties = ["ZN", "CU", "AL", "NI"] if args.all or not args.variety else [args.variety]
+    varieties = ["ZN", "CU", "AL", "NI", "SN", "SI", "LI"] if args.all or not args.variety else [args.variety]
     for v in varieties:
         print(f"\n===== {v} =====", flush=True)
         build_variety(v, skip_series=args.skip_series_check, dry=args.dry)

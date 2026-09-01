@@ -18,7 +18,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ZHJ = os.path.expanduser("~/.hermes/scripts/zhiji_api.py")
 DB = os.path.join(ROOT, "scripts", "api_cache.db")
 RATE = 1.1
-CODE_CN = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍"}
+CODE_CN = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍", "SN": "锡", "SI": "硅", "LI": "锂"}
 
 def zhiji_series(zid, start, end):
     r = subprocess.run(["/usr/bin/python3", ZHJ, "series", zid, start, end],
@@ -64,7 +64,7 @@ def main():
     ap.add_argument("--variety")
     ap.add_argument("--only-verified", action="store_true")
     args = ap.parse_args()
-    varieties = ["ZN", "CU", "AL", "NI"] if args.all or not args.variety else [args.variety]
+    varieties = ["ZN", "CU", "AL", "NI", "SN", "SI", "LI"] if args.all or not args.variety else [args.variety]
     # 实测结果（有数据集合）——兼容两种格式: dict列表 或 (v, vv) 元组列表
     verified = set()
     if args.only_verified and os.path.exists("/tmp/series_ok.json"):
