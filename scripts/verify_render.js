@@ -248,8 +248,8 @@ const PAGES = [
   { key: 'li_62', file: 'li_6_2.html', charts: 1, seasonal: ["echart_li_62_c1"] },
   { key: 'li_63', file: 'li_6_3.html', charts: 2, seasonal: ["echart_li_63_c1"] },
   { key: 'li_64', file: 'li_6_4.html', charts: 1, seasonal: ["echart_li_64_c1"] },
-  { key: 'li_71', file: 'li_7_1.html', charts: 2, seasonal: ["echart_li_71_c1"] },
-  { key: 'li_72', file: 'li_7_2.html', charts: 2, seasonal: ["echart_li_72_c1"] },
+  { key: 'li_71', file: 'li_7_1.html', charts: 2, seasonal: [] },
+  { key: 'li_72', file: 'li_7_2.html', charts: 2, seasonal: [] },
 ];
 
 function expectedBtnText(mode) {

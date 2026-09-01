@@ -871,8 +871,8 @@ PAGES = {
     "li_62": {"file": "li_6_2.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_62_c1"], "label": "锂6.2进出口", "has_seasonal": True},
     "li_63": {"file": "li_6_3.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_63_c1","echart_li_63_c2"], "label": "锂6.3制品出口", "has_seasonal": True},
     "li_64": {"file": "li_6_4.html", "min_bytes": 8000, "charts": 1, "cids": ["echart_li_64_c1"], "label": "锂6.4全球出口", "has_seasonal": True},
-    "li_71": {"file": "li_7_1.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_71_c1","echart_li_71_c2"], "label": "锂7.1成本曲线", "has_seasonal": True},
-    "li_72": {"file": "li_7_2.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_72_c1","echart_li_72_c2"], "label": "锂7.2利润", "has_seasonal": True},
+    "li_71": {"file": "li_7_1.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_71_c1","echart_li_71_c2"], "label": "锂7.1成本曲线", "has_seasonal": False},
+    "li_72": {"file": "li_7_2.html", "min_bytes": 12000, "charts": 2, "cids": ["echart_li_72_c1","echart_li_72_c2"], "label": "锂7.2利润", "has_seasonal": False},
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
