@@ -10,6 +10,68 @@ LI/SI/SN 三品种建页全部完成：**15 页 335 图**（li_2/3/4 + si_2~7 + 
 
 ---
 
+## 下一棒任务（可分流另一台 server 的 agent）
+
+### 任务 ①：修 NI 29 页 verify_render FAIL（P0）
+
+**根因**：A 侧 `build_5m_batch.py` 生成的 NI 子页数据加载只灌了 2 个点（api_cache 里 NI 缓存不完整），导致季节图无法生成历年 series。
+
+**执行步骤**（纯脚本，~15min）：
+
+```bash
+cd /home/ubuntu/framework-tree && git fetch origin
+
+# 1) 重拉 NI 缓存（正统引擎走 indicators_v1.json，绕开 series_ok.json）
+/tmp/audit_env/bin/python scripts/refresh_cache.py --metrics 'ni_'
+
+# 2) 重建 NI 页面（正统引擎）
+/tmp/audit_env/bin/python scripts/build_5m_batch.py --variety NI
+
+# 3) 三道门禁
+python3 scripts/check_html.py        # 209/209
+node scripts/verify_render.js         # 期望 210/210
+python3 scripts/reclaim.py            # 12/0
+
+# 4) 提交
+git add . && git commit -m "[FIX-NI-CACHE] 重拉NI缓存+重建页面, verify_render NI 29 FAIL→0"
+git push origin translation-workflow
+```
+
+**风险**：`build_5m_batch.py` 如果不存在或缺失，改用 `build_translation.py --variety NI --skip-series-check`。
+
+---
+
+### 任务 ②：三表灌库 + db_load 重建 indicator_tree（P1）
+
+**背景**：`STATUS.md` 卡点区 #3 已闭环但主脑未执行。三表设计方案已定：`/home/ubuntu/analysis/spec/db_design.md`（注意："三表灌库"实为 2 表——indicator_meta + indicator_series，"三表"是表述误差）。
+
+**执行步骤**：
+
+```bash
+# 1) JSONL → api_cache.db 三表（indicator_meta / indicator_series）
+/tmp/audit_env/bin/python /home/ubuntu/analysis/spec/db_import_jsonl.py \
+    --input-dir /home/ubuntu/framework-tree/data/db_export/ \
+    --write
+
+# 2) 重建 indicator_tree.db
+/tmp/audit_env/bin/python /home/ubuntu/analysis/spec/db_load.py
+
+# 3) 验收：外键孤立=0、has_series 比例>85%
+```
+
+---
+
+## 主脑合并（本服务器 agent 收尾后）
+
+```bash
+cd /home/ubuntu/framework-tree
+git checkout main
+git merge translation-workflow  # 或 gh pr merge
+git push origin main
+```
+
+---
+
 ## 一、当前完成状态
 
 ### 已完成的（Agent A 承接，已推送）
