@@ -56,8 +56,30 @@ M scripts/verify_render.js       # 已 +14 条 li_* 注册
 - [ ] 三表灌库（`db_import_jsonl.py + db_load.py`）
 
 **待派 Windows agent**（需同花顺）：
-- [ ] 铜 5 缺口节点（4.1/5.2/5.3/6.3/6.4）
-- [ ] 铝 5 缺口节点（3.1.2/3.1.4/6.1/6.4/7.3）
+- [ ] 铜 5 缺口节点（4.1/5.2/5.3/6.3/6.4）→ **任务卡已更新**：`docs/handover/CU_GAP_TASKCARD.md`
+- [ ] 铝 5 缺口节点（3.1.2/3.1.4/6.1/6.4/7.3）→ 任务卡包含在第 9 节
+
+**环境搭建卡**：`docs/handover/GITHUB_CONNECT.md`（2026-09-01 更新，基线 commit 681f5d1，指标数 809）
+
+---
+
+## 五、Windows agent 任务卡清单（完整）
+
+| 文件 | 内容 | GitHub 链接 |
+|---|---|---|
+| `docs/handover/GITHUB_CONNECT.md` | 环境搭建 + 权限 + push 坑 | https://github.com/algo23-yunqingtian/framework-tree/blob/main/docs/handover/GITHUB_CONNECT.md |
+| `docs/handover/CU_GAP_TASKCARD.md` | 铜 5 缺口 + 铝 5 缺口任务卡（含第 9 节铝节点清单） | https://github.com/algo23-yunqingtian/framework-tree/blob/main/docs/handover/CU_GAP_TASKCARD.md |
+| `AGENTS.md` | 总入口：红线 + 协作规则 + 必读顺序 | https://github.com/algo23-yunqingtian/framework-tree/blob/main/AGENTS.md |
+| `STATUS.md` | **唯一真源**：当前进度 + 谁负责什么 | https://github.com/algo23-yunqingtian/framework-tree/blob/main/STATUS.md |
+
+**新 agent 开工流程**：
+1. 读 `AGENTS.md`（红线 + 必读顺序）
+2. 读 `STATUS.md`（确认进度）
+3. 读 `GITHUB_CONNECT.md`（环境搭建）
+4. 读 `CU_GAP_TASKCARD.md`（具体任务）
+5. 问用户要同花顺账号密码（第 2 节 Step 1）
+6. 按任务卡步骤执行
+7. 完成后发交付报告给主脑
 
 ### Step 1：补 index.html PAGE_MAP 14 条 LC_ 映射
 

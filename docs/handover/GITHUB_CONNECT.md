@@ -1,4 +1,4 @@
-# GitHub 连接 + 环境搭建卡（实测版 · 2026-08-31）
+# GitHub 连接 + 环境搭建卡（实测版 · 2026-09-01 更新）
 
 > 场景：你在**另一台服务器**，没连过这个仓库。
 > 目标：clone → 配推送 → 跑门禁 → 开工。
@@ -68,9 +68,9 @@ git rebase origin/main
 python3 -c "import json; d=json.load(open('data/indicators_v1.json')); print('指标数:', len(d['indicators']))"
 ```
 
-**指标数必须 ≥ 786**。少了说明基线旧或 rebase 失败，**停下报主脑**，别在旧基线上开工（否则 merge 冲突面爆炸）。
+**指标数必须 ≥ 809**（v3.45）。少了说明基线旧或 rebase 失败，**停下报主脑**，别在旧基线上开工（否则 merge 冲突面爆炸）。
 
-最新基线 commit 是 `fcad7eb`（截至本卡发布时）。
+最新基线 commit 是 `681f5d1`（截至本卡发布时）。
 
 ---
 
@@ -195,7 +195,7 @@ bash scripts/bootstrap_agent.sh
 - push 权限是否就绪：是/否
 - bootstrap 6 项：（第6项 zhiji_api.py 缺失属预期，注明即可）
 - 门禁：check_html ?/? / verify_render ?/? / reclaim ?/?
-- 指标数核验：（必须 ≥ 786）
+- 指标数核验：（必须 ≥ 809）
 - hook 是否已装：
 
 任务完成后另附：
