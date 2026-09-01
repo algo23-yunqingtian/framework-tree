@@ -97,91 +97,223 @@ def parse_audit_tables(path):
     return rows
 
 
+# 图表规范/说明性短语黑名单（命中即返回空，不参与搜索）
+SPEC_RULE_KEYWORDS = [
+    "避免", "左右双轴", "双轴", "坐标轴", "同一图", "放同一", "不宜", "可双轴",
+    "不要", "建议", "最好", "优先", "原则", "规范", "排版", "布局",
+    "横轴", "纵轴", "X轴", "Y轴", "单位", "图例", "标签",
+]
+# 说明性/元数据短语黑名单（命中且 <30 字即返回空）
+META_KEYWORDS = [
+    "无需补充", "已有", "删除", "保留", "合并", "移动", "调整",
+    "口径", "备注", "转载", "常写", "字段为", "通常", "一般",
+    "商业终端", "终端也标", "部分终端", "说明", "理由", "结论",
+    "频率", "可得性", "单位", "付费", "公开", "周度", "日度", "月频",
+    "无统一", "半结构化", "描述性",
+]
+
 def clean_name(name):
-    """清洗指标名：去来源前缀/括号注释/单位/口径说明，保留可搜索的主干。
-    v2: 更彻底——丢弃 '；' 分隔后的多余候选，取第一个为主干；去 'SMM研报常写'/'字段为' 等描述。"""
+    """清洗指标名 → 可搜索主干（v3 重写：分三层过滤，语义化，不再机械截断）
+
+    过滤层：
+    1. 图表规范短语（"避免双轴"等）→ 直接丢弃，不是指标
+    2. 元数据/说明短语（"无需补充/已有/删除"等）→ 直接丢弃
+    3. 有效指标名 → 去来源前缀/括号/单位/分隔符 → 返回主干
+    """
     n = name.strip()
-    # 纯说明性行直接返回空（无需补充/已有/删除/保留等决策行）——注意 "已有" 匹配需整词
-    if any(k in n for k in ["无需补充", "已有", "删除", "保留", "合并", "移动", "调整",
-                            "口径", "备注", "转载", "研报", "常写", "字段为", "通常", "一般",
-                            "商业终端", "终端也标", "部分终端", "说明", "理由", "结论"]) and len(n) > 12:
-        # 若分号前有实质片段则取之，否则判为说明行返回空
-        has_sep = False
+    # 第一层：图表规范短语（整句命中即丢弃）
+    if any(k in n for k in SPEC_RULE_KEYWORDS):
+        return ""
+    # 第二层：元数据/说明短语（命中且整句 <30 字 → 丢弃；≥30 字尝试取分号前）
+    if any(k in n for k in META_KEYWORDS):
         for sep in ["；", ";"]:
             if sep in n:
-                n = n.split(sep)[0]
-                has_sep = True
-                break
-        if not has_sep:
-            return ""
-    # 说明性单短句（含"已有/无需/补充/删除/保留/合并/移动"且 <25 字）→ 直接判空
-    if re.search(r"(无需补充|已有|不需要|已覆盖)", n) and len(n) < 25:
-        return ""
-    n = re.sub(r"^(SMM|Mysteel|LME|SHFE|上期所)\s*[:：]\s*", "", n)
-    n = re.sub(r"[（(][^）)]*[)）]", "", n)  # 去括号
-    n = n.replace("；", " ").replace(";", " ").replace("、", " ").replace(",", " ").replace("，", " ")
-    # 去说明尾
+                head = n.split(sep)[0].strip()
+                if len(head) >= 4 and not any(k in head for k in META_KEYWORDS):
+                    n = head
+                    break
+        else:
+            if len(n) < 30:
+                return ""
+    # 第三层：有效指标名清洗
+    n = re.sub(r"^(SMM|Mysteel|LME|SHFE|上期所)\s*[:：\s]*", "", n)
+    # 内联 SMM/Mysteel/LME/SHFE/上期所 前缀（词间出现也去掉）
+    n = re.sub(r"(?:^|\s)(SMM|Mysteel|LME|SHFE|上期所)\s*[:：\s]*", " ", n).strip()
+    n = re.sub(r"[（(][^）)]*[)）]", "", n)
+    # 去频率词（周度/日度/月频/季度/年内/年/月/周/季）
+    n = re.sub(r"(周度|日度|月频|月均|季频|季度|年内|近\d+年|近\d+月|同比|环比|均值|标准差|分位|最新|当周|当月)", "", n)
+    # 去"Zn50/Zn48/CU1"等浓度代码和纯数字噪声
+    n = re.sub(r"\b(?:Zn|Cu|Al|Ni|Sn|Pb|Li)\d+\b", " ", n)
+    n = re.sub(r"\b\d+\s*%\b", " ", n)
+    # 去分隔符
+    n = n.replace("；", " ").replace(";", " ").replace("、", " ").replace(",", " ").replace("，", " ").replace("/", " ")
     n = re.sub(r"(为[^ ]{2,}|按[^ ]{2,}|口径[^ ]{0,6})", "", n)
     n = re.sub(r"\s+", " ", n).strip()
     n = re.sub(r"[（(]?[0-9.]+\s*(吨|手|元/吨|美元/吨|万吨|美元|%|％)[）)]?$", "", n).strip()
-    # 去掉 <2 字的碎片
     if len(n) < 2:
         return ""
     return n
 
 
 def build_search_terms(variety, name):
-    """构造搜索词：品种词+空格+清洗主干（skill: 空格分词解盲区）。返回最多 2 个候选词。
-    v2: 纯英文名(LME)优先带品种前缀，中文名含品种词则直接用。"""
+    """构造搜索词（v4 重写：加查库回退 + 中文长词拆短）
+
+    原则：
+    0. 查库回退：在 indicators_v1.json 的 {variety}_ 指标中按关键词查已有 zhiji_id，命中直接返回
+    1. 先 clean_name 去噪声，得到主干
+    2. 主干按空格/中英文边界切成多个 token
+    3. 对含核心关键词的 token 构造搜索词（优先）
+    4. 中文长词拆短：≥8字切 2-5 字核心词（如"七地锌锭社会库存"→"锌锭 社会库存"）
+    5. 纯英文(LME)强制带品种前缀
+    """
     cn = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍"}[variety]
     clean = clean_name(name)
     if not clean:
         return []
+
+    # 策略0：查库回退（indicators_v1.json 已有 zhiji_id）
+    try:
+        d = json.load(open("/home/ubuntu/framework-tree/data/indicators_v1.json"))
+        prefix = {"ZN": "zn_", "CU": "cu_", "AL": "al_", "NI": "ni_"}[variety]
+        search_chn = clean
+        core_kw_list = ["TC", "加工费", "升贴水", "库存", "仓单", "价差", "月差", "基差",
+                        "产量", "开工率", "利润", "成本", "价格", "持仓", "成交量",
+                        "进口", "出口", "盈亏", "注册", "注销", "现货", "冶炼", "精炼"]
+        in_kw = [k for k in core_kw_list if k in search_chn]
+        if in_kw:
+            # 额外约束：库存类指标必须区分国内/海外（防"社会库存"命中"LME巴林"）
+            is_domestic = any(k in search_chn for k in ["社会", "国内", "七地", "中国", "主要", "厂内"])
+            is_overseas = any(k in search_chn for k in ["LME", "注销", "注册", "仓单"])
+            # 在已有指标中找 name 含相同核心关键词 + 品种词的
+            candidates = []
+            for k, v in d["indicators"].items():
+                if not k.startswith(prefix):
+                    continue
+                vname = v.get("name", "")
+                if not any(kw in vname for kw in in_kw):
+                    continue
+                if cn not in vname and f"沪{cn}" not in vname and f"电解{cn}" not in vname:
+                    continue
+                zhiji_id = v.get("ids", {}).get(variety, "")
+                if not zhiji_id:
+                    continue
+                # 库存类：国内/海外必须匹配
+                if "库存" in in_kw:
+                    v_is_dom = any(kw in vname for kw in ["社会", "国内", "厂内", "港口", "现货"])
+                    v_is_over = any(kw in vname for kw in ["LME", "注销", "注册", "海外"])
+                    if is_domestic and not v_is_dom:
+                        continue
+                    if is_overseas and not v_is_over:
+                        continue
+                candidates.append((vname, zhiji_id))
+            if candidates:
+                # 取最精确的第一个（名字最短 = 最贴近主干）
+                candidates.sort(key=lambda x: len(x[0]))
+                vname, zhiji_id = candidates[0]
+                return [f"__DB__{zhiji_id}|{vname}"]
+    except Exception:
+        pass
+
+    # 分词：按空格 + 中英文边界切
+    tokens = []
+    for part in re.split(r"\s+|(?<=[\u4e00-\u9fff])(?=[A-Za-z])|(?<=[A-Za-z])(?=[\u4e00-\u9fff])", clean):
+        t = part.strip()
+        if len(t) >= 2:
+            tokens.append(t)
+
     terms = []
-    is_english = bool(re.search(r"[A-Za-z]", clean)) and not re.search(r"[\u4e00-\u9fff]", clean)
-    # 纯英文(LME官方名) → 强制前置品种词，命中率更高
-    if is_english:
-        terms.append(f"{cn} {clean}")
-    # 中文：已含品种词/别名 → 直接用；否则前置品种词
-    elif (variety.lower() in clean.lower() or cn in clean
-            or f"沪{cn}" in clean or f"电解{cn}" in clean or f"精{cn}" in clean):
-        terms.append(clean)
-    else:
-        terms.append(f"{cn} {clean}")
-    # 若清洗名仍含空格(多指标)，加一个只取第一段的变体
-    if " " in clean and len(clean.split(" ")[0]) >= 2:
-        first = clean.split(" ")[0]
-        if not (variety.lower() in first.lower() or cn in first):
-            terms.append(f"{cn} {first}")
-    return terms[:2]
+
+    # 策略1：含核心关键词的 token 优先
+    CORE_KW = {"TC", "加工费", "升贴水", "库存", "仓单", "价差", "月差", "基差",
+               "产量", "开工率", "利润", "成本", "价格", "持仓", "成交量",
+               "进口", "出口", "盈亏", "注册", "注销", "注销仓单", "现货",
+               "电解", "精炼", "冶炼", "到港", "发运", "回收", "表观消费"}
+    for t in tokens:
+        if any(k in t for k in CORE_KW):
+            if variety.lower() in t.lower() or cn in t:
+                terms.append(t)
+            else:
+                terms.append(f"{cn} {t}")
+
+    # 策略2：中文长词拆短（≥8字的中文 token 切 2-5 字核心词）
+    for t in tokens:
+        if len(t) >= 8 and re.search(r"[\u4e00-\u9fff]", t) and not re.search(r"[A-Za-z]", t):
+            # 按核心关键词位置切
+            for kw in CORE_KW:
+                if kw in t:
+                    idx = t.index(kw)
+                    # 取 kw 前 2-3 字 + kw
+                    head_start = max(0, idx - 3)
+                    chunk = t[head_start:idx + len(kw)]
+                    if len(chunk) >= 4:
+                        candidate = f"{cn} {chunk}" if cn not in chunk else chunk
+                        if candidate not in terms:
+                            terms.append(candidate)
+
+    # 策略3：纯英文 token（LME 字段名），强制带品种前缀
+    for t in tokens:
+        if re.search(r"[A-Za-z]", t) and not re.search(r"[\u4e00-\u9fff]", t):
+            candidate = f"{cn} {t}"
+            if candidate not in terms:
+                terms.append(candidate)
+
+    # 策略4：兜底
+    if not terms:
+        for t in tokens[:1]:
+            if not (variety.lower() in t.lower() or cn in t):
+                terms.append(f"{cn} {t}")
+
+    return terms[:3]
 
 
 def grade_hit(variety, name, results):
-    """不依赖 score 字段（zhiji search 不返回 score），改用命中 name/path 的品种词+关键词匹配分级。
-    v2 (2026-09-01)：A=命中name含品种词且含核心关键词(或英文LME名命中英文片段)；B=只含品种词；C=未命中/错配。"""
+    """语义分级（v3 重写：核心关键词必须匹配，仅品种词匹配不够）
+
+    逻辑：
+    - A: 命中名含品种词 AND 含核心关键词（TC命中TC/加工费，库存命中库存等）
+    - B: 命中名含品种词但核心关键词弱匹配（如"锌精矿"对"锌TC"——缺TC但有关联词）
+    - C: 品种词不匹配，或品种词匹配但核心关键词完全不相关
+    """
     cn = {"ZN": "锌", "CU": "铜", "AL": "铝", "NI": "镍"}[variety]
-    var_aliases = [cn, f"沪{cn}", f"电解{cn}", f"精{cn}", f"LME{cn}", f"{cn}锭", f"镍"]
+    var_aliases = [cn, f"沪{cn}", f"电解{cn}", f"精{cn}", f"LME{cn}", f"{cn}锭"]
     if not results:
         return "C", None, 0
     hit = results[0]
     hit_name = hit.get("name", "")
     hit_path = hit.get("path", "") + hit_name
     var_hit = any(a in hit_path for a in var_aliases)
-    kw = clean_name(name)
-    # 核心关键词匹配
-    core_kws = [k for k in ["升贴水", "仓单", "库存", "TC", "利润", "开工率", "价差",
-                            "产量", "成交量", "持仓", "价格", "基差", "月差", "进口", "出口",
-                            "成本", "注册", "注销", "到港", "发运", "回收", "表观消费",
-                            "竣工", "排产", "开工", "产能", "溢价", "盈亏"] if k in kw]
-    kw_hit = any(k in hit_path for k in core_kws) if core_kws else False
-    # 纯英文名(LME等)：要求命中含英文片段（如 Zinc/Copper/Nickel/Aluminium/Stock/Warrant）
-    is_english = bool(re.search(r"[A-Za-z]", kw)) and not re.search(r"[\u4e00-\u9fff]", kw)
+
+    clean = clean_name(name)
+    if not clean:
+        return "C", hit, 0
+
+    # 提取查询侧核心关键词
+    core_kws = [k for k in ["TC", "加工费", "升贴水", "库存", "仓单", "价差", "月差", "基差",
+                            "产量", "开工率", "利润", "成本", "价格", "持仓", "成交量",
+                            "进口", "出口", "盈亏", "注册", "注销", "注销仓单", "现货",
+                            "电解", "精炼", "冶炼", "到港", "发运", "回收", "表观消费"] if k in clean]
+
+    # 纯英文(LME等)：要求命中含英文片段
+    is_english = bool(re.search(r"[A-Za-z]", clean)) and not re.search(r"[\u4e00-\u9fff]", clean)
     if is_english:
-        en_tokens = [t for t in re.split(r"[^A-Za-z]+", kw) if len(t) >= 3]
+        en_tokens = [t for t in re.split(r"[^A-Za-z]+", clean) if len(t) >= 3]
         kw_hit = any(t.lower() in hit_name.lower() or t.lower() in hit.get("path", "").lower() for t in en_tokens)
+        related_hit = False
+    else:
+        kw_hit = bool(core_kws) and any(k in hit_path for k in core_kws)
+        # 弱相关：品种词匹配 + 有冶炼/精矿/仓单等衍生词（非严格匹配但相关）
+        related_words = ["精矿", "冶炼", "仓单", "库存", "价格", "期货", "现货",
+                        "产能", "开工", "消费", "进出口"]
+        related_hit = bool(core_kws) and any(w in hit_path for w in related_words)
+
     if var_hit and kw_hit:
         return "A", hit, 1
-    if var_hit:
+    # 品种词不匹配 → 一定 C，不再用弱相关救 B
+    if not var_hit:
+        return "C", hit, 0
+    # 品种词匹配但核心关键词不匹配 → C（v3 关键改动：之前标 B 的假命中）
+    # 除非有衍生词弱相关且核心关键词确实存在（保留少量合理 B）
+    if var_hit and related_hit and not kw_hit:
         return "B", hit, 0.5
     return "C", hit, 0
 
@@ -266,6 +398,13 @@ def main():
             terms = build_search_terms(v, target)
             hits = None
             for t in terms:
+                if t.startswith("__DB__"):
+                    # 查库回退：直接构造命中
+                    parts = t[6:].split("|", 1)
+                    db_id = parts[0]
+                    db_name = parts[1] if len(parts) > 1 else ""
+                    hits = {"results": [{"id": db_id, "name": db_name, "path": "", "source": "db_cache"}]}
+                    break
                 res = zhiji_search(t)
                 if isinstance(res, dict) and res.get("results"):
                     hits = res
