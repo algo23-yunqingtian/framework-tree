@@ -1,8 +1,12 @@
 # HANDOVER — 指标翻译线 Agent B 三品种（LI/SI/SN）建页交接
 
 > 生成：2026-09-01 · 用途：上下文压缩/换会话后的续接入口
-> 当前工作分支：`translation-workflow`（远端最新 `7d9f8fc`）
+> 当前工作分支：`translation-workflow`（远端最新 `b97c38a`）
 > 浏览器预览（GitHub Pages）：`https://algo23-yunqingtian.github.io/framework-tree/`
+
+## ✅ 已完成（2026-09-01 b97c38a [A-STEP5b]）
+
+LI/SI/SN 三品种建页全部完成：**15 页 335 图**（li_2/3/4 + si_2~7 + sn_2~7），引擎已扩展 SN/SI/LI，语义校验脚本 `scripts/build_translation_b_series_check.py` 已落盘。reclaim PASS=12/FAIL=0。**剩余待办**：NI 既有 18 页 FAIL（main 基线问题：ni_2_5 等 register 期望4图实际3图）+ merge 到 main 由主脑执行。
 
 ---
 
