@@ -31,7 +31,33 @@ M scripts/verify_render.js       # 已 +14 条 li_* 注册
 
 ---
 
-## 三、待做（按顺序，共 5 步）
+## 三、当前状态（**已全部完成并 push main**）
+
+| 步骤 | 状态 |
+|---|---|
+| 14 页 HTML | ✅ 已落地，已 git tracked |
+| `data/indicators_v1.json` | ✅ 809 指标（v3.45） |
+| `scripts/check_html.py` | ✅ 已 +14 条注册 |
+| `scripts/verify_render.js` | ✅ 已 +14 条注册 |
+| `index.html` PAGE_MAP | ✅ 已 +14 条 LC_ 映射 |
+| 页脚版本 | ✅ 14 页 `vv3.44` → `v3.45` |
+| li_71/li_72 seasonal | ✅ 主图无季节按钮，seasonal 清空 |
+| STATUS.md | ✅ 2 条记录 |
+| commit + push | ✅ `6038233` + `a0e2f15` |
+
+**三道门禁**：check_html 223/223 ✅ + verify_render 224/224 ✅ + reclaim 12/0 ✅
+
+---
+
+## 四、剩余工作
+
+**主线收尾**（我本地，无需 agent）：
+- [ ] 五金属 NI/SN/SI 剩余子页补建（~20 页，`build_5m_batch.py` 跑）
+- [ ] 三表灌库（`db_import_jsonl.py + db_load.py`）
+
+**待派 Windows agent**（需同花顺）：
+- [ ] 铜 5 缺口节点（4.1/5.2/5.3/6.3/6.4）
+- [ ] 铝 5 缺口节点（3.1.2/3.1.4/6.1/6.4/7.3）
 
 ### Step 1：补 index.html PAGE_MAP 14 条 LC_ 映射
 
