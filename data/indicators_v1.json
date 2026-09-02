@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "3.61",
-  "updated": "2026-09-03 02:12",
+  "version": "3.62",
+  "updated": "2026-09-03 02:36",
   "status": "部分验证",
   "说明": "v3.49: merge win分支(110指标) + main锂硅(79指标)，7金属 correction 全合并",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
@@ -18503,6 +18503,34 @@
    "_nodes": [
     "7.3"
    ]
+  },
+  "si_53_polysilicon_q": {
+   "name": "多晶硅：产量：中国（季）",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "SI": "ID01245773"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "si_53_polysilicon_gs": {
+   "name": "多晶硅：产量：甘肃（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "SI": "ID02036184"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
   }
  },
  "64_group": {
@@ -18518,7 +18546,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.61",
+ "version": "v3.62",
  "updated": "2026-09-02 19:23",
  "change": "P1 series实测: 271条 verified=False→True → v3.54"
 }

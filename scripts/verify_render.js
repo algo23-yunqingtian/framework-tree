@@ -214,6 +214,7 @@ const PAGES = [
   { key: 'si_311', file: 'si_3_1_1.html', charts: 3, seasonal: ['echart_si_311_c1'] },
   { key: 'si_312', file: 'si_3_1_2.html', charts: 4, seasonal: ['echart_si_312_c1'] },
   { key: 'si_313', file: 'si_3_1_3.html', charts: 2, seasonal: [] },
+  { key: 'si_53', file: 'si_5_3.html', charts: 2, seasonal: [] },
   { key: 'si_314', file: 'si_3_1_4.html', charts: 2, seasonal: ['echart_si_314_c1'] },
   { key: 'si_315', file: 'si_3_1_5.html', charts: 3, seasonal: ['echart_si_315_c1'] },
   { key: 'si_321', file: 'si_3_2_1.html', charts: 3, seasonal: ['echart_si_321_c1'] },
