@@ -583,11 +583,20 @@ PAGES = {
         "has_seasonal": True,
     },
 
+    "cu_41": {
+        "file": "cu_4_1.html",
+        "min_bytes": 12000,
+        "charts": 2,
+        "cids": ["echart_cu_41_c1", "echart_cu_41_c2"],
+        "label": "三大交易所库存 4.1",
+        "has_seasonal": True,
+    },
+
     "cu_42": {
         "file": "cu_4_2.html",
         "min_bytes": 12000,
-        "charts": 2,
-        "cids": ["echart_cu_42_c1", "echart_cu_42_c2"],
+        "charts": 3,
+        "cids": ["echart_cu_42_c1", "echart_cu_42_c2", "echart_cu_42_c3"],
         "label": "仓单 4.2",
         "has_seasonal": True,
     },
@@ -595,8 +604,8 @@ PAGES = {
     "cu_43": {
         "file": "cu_4_3.html",
         "min_bytes": 12000,
-        "charts": 2,
-        "cids": ["echart_cu_43_c1", "echart_cu_43_c2"],
+        "charts": 3,
+        "cids": ["echart_cu_43_c1", "echart_cu_43_c2", "echart_cu_43_c3"],
         "label": "社会库存 4.3",
         "has_seasonal": True,
     },

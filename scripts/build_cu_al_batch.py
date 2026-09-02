@@ -225,7 +225,7 @@ def is_stale(points, max_gap_days=180):
 
 def build_node(node, ind_list, meta, comm_only=None):
     """为单个节点生成 HTML。返回 (html, cids, n_charts) 或 None（数据不足）。"""
-    ver, version_str = meta.get("version", "3.4"), "v" + str(meta.get("version", "3.4"))
+    ver, version_str = meta.get("version", "3.4"), "v" + str(meta.get("version", "3.4")).lstrip("v")
     # 加载指标数据
     data = []
     for mid, code, name, unit, freq in ind_list:
