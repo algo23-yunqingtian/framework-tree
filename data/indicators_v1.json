@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "3.58",
-  "updated": "2026-09-03 00:44",
+  "version": "3.59",
+  "updated": "2026-09-03 01:29",
   "status": "部分验证",
   "说明": "v3.49: merge win分支(110指标) + main锂硅(79指标)，7金属 correction 全合并",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
@@ -16627,6 +16627,986 @@
    "_nodes": [
     "3.1.3"
    ]
+  },
+  "pb_21_aux": {
+   "name": "SHFE: 铅: 主力合约: 收盘价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10023239"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "pb_21_aux_2": {
+   "name": "SHFE: 铅: 主力合约: 收盘价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10118360"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "pb_21_aux_3": {
+   "name": "SHFE：铅：主力合约：收盘价（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "FU00015390"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "pb_21_aux_4": {
+   "name": "SHFE: 铅: 六月合约: 成交量: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10027938"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "pb_21_aux_5": {
+   "name": "SHFE：铅：单边交易：成交量（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "FU00018031"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "pb_21_aux_6": {
+   "name": "SHFE: 铅: 一月合约: 持仓量: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10027889"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "pb_21_aux_7": {
+   "name": "SHFE：铅：单边交易：持仓量（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "FU00017553"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "pb_22_aux": {
+   "name": "铅锭：1#：汇总均价：中国（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID00188140"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_recycled_pb": {
+   "name": "再生精铅：Pb≥99.986%：市场价：中国（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID00259975"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_aux_2": {
+   "name": "铅锭：1#：现货升贴水：上海：驰宏（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01029987"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_aux_3": {
+   "name": "铅锭：国产：1#：≥99.994%：升贴水：广东（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID02422730"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_aux_4": {
+   "name": "铅锭：国产：1#：≥99.994%：升贴水：河南（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID02038699"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_aux_5": {
+   "name": "铅锭：国产：1#：≥99.994%：升贴水：天津（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID02422736"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_recycled_pb_2": {
+   "name": "SMM: 再生精铅(安徽)-最低价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20017504"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_recycled_pb_3": {
+   "name": "SMM: 再生精铅(山东)-最低价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20017499"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_recycled_pb_4": {
+   "name": "SMM: 再生精铅(江西)-最低价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20017284"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_recycled_pb_5": {
+   "name": "再生精铅：Pb≥99.986%：市场价：河南（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID00259977"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_recycled_pb_6": {
+   "name": "再生精铅：Pb≥99.986%：市场价：广东（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01041756"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_22_recycled_pb_7": {
+   "name": "再生精铅：Pb≥99.986%：市场价：河北（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01036617"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "pb_23_aux": {
+   "name": "LME: 铅: 现货价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20193714"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "pb_23_lme_close": {
+   "name": "LME: LME铅收盘价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10016980"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "pb_23_aux_2": {
+   "name": "LME：铅：CASH-3M合约：结算价差（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01244859"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "pb_23_aux_3": {
+   "name": "SMM: 进口盈亏: 铅: 现货: LME价格: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10023420"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "pb_23_aux_4": {
+   "name": "SMM: 进口盈亏: 铅: 现货: LME价格: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a12759795"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "pb_23_aux_5": {
+   "name": "铅锭：进口盈亏（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01030003"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "pb_23_lunlun": {
+   "name": "Mysteel：铅：沪伦比值（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "FU00015466"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "pb_24_cash_fut": {
+   "name": "SMM: 沪铅期现价差: 当月合约: 开盘价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a12841341"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "pb_24_cash_fut_2": {
+   "name": "SMM: 沪铅期现价差: 连二合约: 开盘价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a12841349"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "pb_25_aux": {
+   "name": "锌精矿：国产：汇总均价：中国（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID00188144"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "pb_25_waste_battery": {
+   "name": "SMM: 废电蓄(广东)-最低价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s20017404"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "pb_25_abs_scrap": {
+   "name": "ABS再生料：电瓶壳破碎料：蓝绿：市场低端价：河南（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01541364"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "pb_313_aux": {
+   "name": "NBS: 铅精矿产量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017018"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.3"
+   ]
+  },
+  "pb_313_aux_2": {
+   "name": "SMM: 铅精矿平衡(新): 矿产铅产量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a12871187"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.3"
+   ]
+  },
+  "pb_313_aux_3": {
+   "name": "SMM: 矿产铅产量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a12767867"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.3"
+   ]
+  },
+  "pb_313_aux_4": {
+   "name": "SMM: 原生铅冶炼企业月度原料库存天数: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017071"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.3"
+   ]
+  },
+  "pb_313_aux_5": {
+   "name": "SMM: 铅精矿平衡(新): 其他含铅伴生矿产量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a12871185"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.3"
+   ]
+  },
+  "pb_321_aux": {
+   "name": "SMM: 电解铅产量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10016982"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.2.1"
+   ]
+  },
+  "pb_323_aux": {
+   "name": "SMM: 再生铅冶炼企业原料库存天数: 周度",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "PB": "a12731474"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.2.3"
+   ]
+  },
+  "pb_324_aux": {
+   "name": "SMM: 规模再生铅企业综合盈亏: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10027224"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.2.4"
+   ]
+  },
+  "pb_324_aux_2": {
+   "name": "SMM: 中小规模再生铅企业综合盈亏: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10027225"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.2.4"
+   ]
+  },
+  "pb_41_aux": {
+   "name": "SHFE：铅：期货库存（周）",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "PB": "FU00015325"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.1"
+   ]
+  },
+  "pb_42_aux": {
+   "name": "SHFE：铅：期货库存：上海（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "FU00015330"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.2"
+   ]
+  },
+  "pb_43_aux": {
+   "name": "SMM: 铅锭五地库存变化: 周度",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "PB": "a12818504"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.3"
+   ]
+  },
+  "pb_44_aux": {
+   "name": "SMM: 电解铅冶炼企业成品库存: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10016989"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.4"
+   ]
+  },
+  "pb_44_aux_2": {
+   "name": "SMM: 再生铅冶炼企业成品库存: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10016956"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.4"
+   ]
+  },
+  "pb_44_aux_3": {
+   "name": "SMM: 再生铅冶炼企业原料库存: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10016955"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.4"
+   ]
+  },
+  "pb_44_aux_4": {
+   "name": "再生铅：原材料：库存：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "ID01691615"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.4"
+   ]
+  },
+  "pb_45_aux": {
+   "name": "LME: 铅: 非注册仓单库存: 总计: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a12810073"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.5"
+   ]
+  },
+  "pb_71_aux": {
+   "name": "SMM: 精炼铅成本及利润: 1号白银价格: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10127386"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.1"
+   ]
+  },
+  "pb_72_aux": {
+   "name": "SMM: 不含税再生铅利润: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10016954"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "pb_72_aux_2": {
+   "name": "SMM: 规模再生铅企业综合成本: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10027222"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "pb_72_aux_3": {
+   "name": "SMM: 中小规模再生铅企业综合成本: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "a10027223"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "pb_72_aux_4": {
+   "name": "SMM: 废管式电池 - 平均价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s22731638"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "pb_72_waste_battery": {
+   "name": "废铅蓄电池：电动车电池：采购价格：江苏春兴（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01220991"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "pb_72_waste_battery_2": {
+   "name": "废铅蓄电池：电动车电池：采购价格：湖北金洋（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01221108"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "pb_73_h2so4": {
+   "name": "硫酸：98%冶炼酸：出厂价：华中地区：河南金利金铅（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "ID01469807"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "pb_73_h2so4_2": {
+   "name": "SMM: 广西地区冶炼酸(硫酸)价格(出厂价) - 涨跌: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s22805607"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "pb_73_h2so4_3": {
+   "name": "SMM: 云南地区冶炼酸(硫酸)价格(出厂价) - 涨跌: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "PB": "s22805630"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "pb_62_plate_import": {
+   "name": "中国海关: 铅板进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017047"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.2"
+   ]
+  },
+  "pb_62_plate_export": {
+   "name": "中国海关: 铅板出口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017093"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.2"
+   ]
+  },
+  "pb_62_pb_import_total": {
+   "name": "中国海关: 铅锭及铅材进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "j02843318"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.2"
+   ]
+  },
+  "pb_63_aux": {
+   "name": "铅蓄电池：出口数量终值：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "CM0000192784"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "pb_63_battery_import": {
+   "name": "中国海关: 铅蓄电池进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017043"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "pb_63_aux_2": {
+   "name": "铅蓄电池：进口数量终值：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "CM0000192795"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "pb_63_alloy_export": {
+   "name": "中国海关: 铅合金出口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017084"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "pb_63_alloy_export_2": {
+   "name": "中国海关: 铅合金出口量: 累计: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017089"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "pb_63_alloy_import": {
+   "name": "中国海关: 铅合金进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017035"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "pb_63_other_import": {
+   "name": "中国海关: 其他铅材进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a10017051"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "pb_52_aux": {
+   "name": "CAAM: 中国汽车销量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a12775702"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "pb_52_aux_2": {
+   "name": "CAAM: 中国汽车月度销量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "PB": "a12870641"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
   }
  },
  "64_group": {
@@ -16642,7 +17622,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.58",
+ "version": "v3.59",
  "updated": "2026-09-02 19:23",
  "change": "P1 series实测: 271条 verified=False→True → v3.54"
 }

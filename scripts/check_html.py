@@ -477,11 +477,11 @@ PAGES = {
 
     "cu_6_1": {
         "file": "cu_6_1.html",
-        "min_bytes": 14000,
-        "charts": 2,
-        "cids": ["echart_cu_61_c1", "echart_cu_61_c2"],
+        "min_bytes": 8000,
+        "charts": 1,
+        "cids": ["echart_cu_61_c1"],
         "label": "原料进口 6.1",
-        "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
+        "has_seasonal": True,
     },
 
     "cu_6_2": {
