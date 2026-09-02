@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v3.47",
+  "version": "v3.48",
   "updated": "2026-08-31",
   "status": "部分验证",
   "说明": "v3.42: gap_fill_20260831 补19空白节点第一批 +9 指标(CU 4.2/4.3/5.1/7.1 + AL 3.1.1)",
@@ -13055,6 +13055,62 @@
    "_nodes": [
     "5.3"
    ]
+  },
+  "cu_22_warrant_premium_avg_price": {
+   "name": "铜：火法：仓单溢价均价：上海：美元（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "cu": "ID00302438"
+   },
+   "_origin": "correction_v2_CU_价格信号_2.2|沪铜现货溢价",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "cu_24_open_spread": {
+   "name": "SMM: 沪铜期现价差-当月合约: 开盘价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "cu": "a12841201"
+   },
+   "_origin": "correction_v2_CU_价格信号_2.4|沪铜月差结构",
+   "_tier": "A",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "sn_71_util": {
+   "name": "锡：冶炼厂：开工率：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "sn": "ID02226391"
+   },
+   "_origin": "correction_v2_SN_成本利润_7.1|锡冶炼企业开工率",
+   "_tier": "A",
+   "_nodes": [
+    "7.1"
+   ]
+  },
+  "sn_72_idx": {
+   "name": "冶炼锡：毛利（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "sn": "ID02105841"
+   },
+   "_origin": "correction_v2_SN_成本利润_7.2|锡冶炼利润",
+   "_tier": "A",
+   "_nodes": [
+    "7.2"
+   ]
   }
  },
  "64_group": {
@@ -13070,7 +13126,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.47",
- "updated": "2026-09-02 12:24",
- "change": "P1 correction v2注册: CU 0 + AL 7 + NI 0 + SN 0 (跳过 323)"
+ "version": "v3.48",
+ "updated": "2026-09-02 12:58",
+ "change": "P1 correction v2注册: CU 2 + AL 0 + NI 0 + SN 2 (跳过 333)"
 }
