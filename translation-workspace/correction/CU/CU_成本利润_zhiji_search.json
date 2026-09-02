@@ -1,0 +1,802 @@
+{
+  "|铜加工材加工费分位": {
+    "subnode": "",
+    "chart": "铜加工材加工费分位",
+    "names": [
+      "统计派生类，非原始可追踪指标"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "统计派生类，非原始可追踪指标"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|精铜杆加工费分位季节性图": {
+    "subnode": "",
+    "chart": "精铜杆加工费分位季节性图",
+    "names": [
+      "统计派生类+季节性统计图，双重不合格"
+    ],
+    "grade": "A",
+    "hit_id": "g02865544",
+    "hit_name": "CFTC: 纯期货合约: 纽约商品交易所（COMEX）上市的铝合约: 最大的前N个交易商持仓占全部持仓的比重%: 按净头寸统计: 头四个最大的交易商: 多头: 所有: 周度",
+    "hit_path": "0000001 / 0000023 / 0004191 / 0004215 / 0070760 / 0078184 / 0078185",
+    "hit_source": "smm",
+    "searched_terms": [
+      "统计派生类+季节性统计图，双重不合格"
+    ]
+  },
+  "|铜冶炼现金成本与完全成本分位图": {
+    "subnode": "",
+    "chart": "铜冶炼现金成本与完全成本分位图",
+    "names": [
+      "统计派生类，且现金成本/完全成本已在7.1保留原始值"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "统计派生类，且现金成本/完全成本已在7.1保留原始值"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜加工材加工费与开工率联动图": {
+    "subnode": "",
+    "chart": "铜加工材加工费与开工率联动图",
+    "names": [
+      "开工率非成本利润维度核心指标，属需求端"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "开工率非成本利润维度核心指标，属需求端"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼企业电价季节性图": {
+    "subnode": "",
+    "chart": "铜冶炼企业电价季节性图",
+    "names": [
+      "季节性统计图，电价无强季节性且市场不关注"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "季节性统计图，电价无强季节性且市场不关注"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|进口铜精矿利润与TC联动图": {
+    "subnode": "",
+    "chart": "进口铜精矿利润与TC联动图",
+    "names": [
+      "进口铜精矿利润=TC的衍生计算，非独立可追踪指标"
+    ],
+    "grade": "A",
+    "hit_id": "ID01154994",
+    "hit_name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "进口铜精矿利润=TC的衍生计算，非独立可追踪指标"
+    ]
+  },
+  "|铜精矿现货TC日度值": {
+    "subnode": "",
+    "chart": "铜精矿现货TC日度值",
+    "names": [
+      "日度不可追踪，TC仅周频/月频，日度为近似值"
+    ],
+    "grade": "A",
+    "hit_id": "ID01665097",
+    "hit_name": "镀锡铜：采购价格涨跌：江西保太有色（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 收购价格",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "日度不可追踪，TC仅周频/月频，日度为近似值"
+    ]
+  },
+  "|进口铜精矿日度利润": {
+    "subnode": "",
+    "chart": "进口铜精矿日度利润",
+    "names": [
+      "依赖日度TC，日度不可追踪"
+    ],
+    "grade": "A",
+    "hit_id": "ID01665097",
+    "hit_name": "镀锡铜：采购价格涨跌：江西保太有色（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 收购价格",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "依赖日度TC，日度不可追踪"
+    ]
+  },
+  "|精铜杆日度加工费": {
+    "subnode": "",
+    "chart": "精铜杆日度加工费",
+    "names": [
+      "Mysteel/SMM均无日度加工费，仅周频"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "Mysteel/SMM均无日度加工费，仅周频"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|精铜杆日度利润": {
+    "subnode": "",
+    "chart": "精铜杆日度利润",
+    "names": [
+      "依赖日度加工费，日度不可追踪"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "依赖日度加工费，日度不可追踪"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼日度现金成本": {
+    "subnode": "",
+    "chart": "铜冶炼日度现金成本",
+    "names": [
+      "现金成本仅季度，日度不可追踪"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "现金成本仅季度，日度不可追踪"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|精铜杆日度利润（复合图）": {
+    "subnode": "",
+    "chart": "精铜杆日度利润（复合图）",
+    "names": [
+      "依赖日度加工费，日度不可追踪"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "依赖日度加工费，日度不可追踪"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼日度现金成本与完全成本分位图": {
+    "subnode": "",
+    "chart": "铜冶炼日度现金成本与完全成本分位图",
+    "names": [
+      "日度不可追踪+分位统计派生，双重不合格"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "日度不可追踪+分位统计派生，双重不合格"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|精铜杆日度利润与开工率联动图": {
+    "subnode": "",
+    "chart": "精铜杆日度利润与开工率联动图",
+    "names": [
+      "日度不可追踪+开工率非成本利润核心"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "日度不可追踪+开工率非成本利润核心"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|精废价差日度季节性图": {
+    "subnode": "",
+    "chart": "精废价差日度季节性图",
+    "names": [
+      "日度不可追踪+季节性统计图"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "日度不可追踪+季节性统计图"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜管日度加工费与空调排产联动图": {
+    "subnode": "",
+    "chart": "铜管日度加工费与空调排产联动图",
+    "names": [
+      "日度不可追踪+排产计划属临时不可追踪"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "日度不可追踪+排产计划属临时不可追踪"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼企业燃油/天然气成本": {
+    "subnode": "",
+    "chart": "铜冶炼企业燃油/天然气成本",
+    "names": [
+      "Mysteel/SMM无此独立指标，燃油成本已纳入现金成本",
+      "燃油成本已纳入现金成本"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "Mysteel/SMM无此独立指标，燃油成本已纳入现金成本",
+      "燃油成本已纳入现金成本"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼企业煤耗": {
+    "subnode": "",
+    "chart": "铜冶炼企业煤耗",
+    "names": [
+      "SMM/Mysteel无独立煤耗指标，煤耗已纳入完全成本",
+      "煤耗已纳入完全成本"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "SMM/Mysteel无独立煤耗指标，煤耗已纳入完全成本",
+      "煤耗已纳入完全成本"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜加工材企业燃气成本": {
+    "subnode": "",
+    "chart": "铜加工材企业燃气成本",
+    "names": [
+      "SMM/Mysteel无此独立指标"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "SMM/Mysteel无此独立指标"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|硫酸价格季节性图": {
+    "subnode": "",
+    "chart": "硫酸价格季节性图",
+    "names": [
+      "季节性统计图，硫酸价格无强季节性且市场不关注"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "季节性统计图，硫酸价格无强季节性且市场不关注"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|冶炼端能源成本与完全成本分位联动图": {
+    "subnode": "",
+    "chart": "冶炼端能源成本与完全成本分位联动图",
+    "names": [
+      "分位统计派生类"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "分位统计派生类"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|废铜进口到岸价与精废价差联动图": {
+    "subnode": "",
+    "chart": "废铜进口到岸价与精废价差联动图",
+    "names": [
+      "废铜到岸价与精废价差为不同频率，联动无意义"
+    ],
+    "grade": "A",
+    "hit_id": "ID01001703",
+    "hit_name": "主流市场：精废铜：价差：广东（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 主流市场价差",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "废铜到岸价与精废价差为不同频率，联动无意义"
+    ]
+  },
+  "|铜加工材企业燃气成本与加工费联动图": {
+    "subnode": "",
+    "chart": "铜加工材企业燃气成本与加工费联动图",
+    "names": [
+      "燃气成本无统一口径，加工费为日度不可追踪"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "燃气成本无统一口径，加工费为日度不可追踪"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼企业平均电价": {
+    "subnode": "",
+    "chart": "铜冶炼企业平均电价",
+    "names": [
+      "7.1+7.3",
+      "保留在7.3，删除7.1中的重复项",
+      "电价属能源成本，7.3为能源/原料成本子节点，7.1为成本曲线子节点，电价不直接出现在成本曲线图中"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "7.1+7.3",
+      "保留在7.3，删除7.1中的重复项",
+      "电价属能源成本，7.3为能源/原料成本子节点，7.1为成本曲线子节点，电价不直接出现在成本曲线图中"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜精矿现货TC月度值": {
+    "subnode": "",
+    "chart": "铜精矿现货TC月度值",
+    "names": [
+      "移动至7.1",
+      "TC是成本曲线核心指标，7.1为成本曲线与分位子节点，7.3为能源/原料成本子节点，TC属原料成本而非能源成本"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "移动至7.1",
+      "TC是成本曲线核心指标，7.1为成本曲线与分位子节点，7.3为能源/原料成本子节点，TC属原料成本而非能源成本"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|进口铜精矿到岸价": {
+    "subnode": "",
+    "chart": "进口铜精矿到岸价",
+    "names": [
+      "保留在7.3",
+      "到岸价属原料成本，7.3为能源/原料成本子节点，合理归属"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "保留在7.3",
+      "到岸价属原料成本，7.3为能源/原料成本子节点，合理归属"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|废铜进口到岸价": {
+    "subnode": "",
+    "chart": "废铜进口到岸价",
+    "names": [
+      "保留在7.3",
+      "废铜到岸价属再生铜原料成本，7.3为能源/原料成本子节点，合理归属"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "保留在7.3",
+      "废铜到岸价属再生铜原料成本，7.3为能源/原料成本子节点，合理归属"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|硫酸价格": {
+    "subnode": "",
+    "chart": "硫酸价格",
+    "names": [
+      "保留在7.3",
+      "硫酸为冶炼副产物收益，属原料/副产物成本维度，7.3合理归属"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "保留在7.3",
+      "硫酸为冶炼副产物收益，属原料/副产物成本维度，7.3合理归属"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼现金成本": {
+    "subnode": "",
+    "chart": "铜冶炼现金成本",
+    "names": [
+      "保留在7.1",
+      "现金成本是成本曲线核心指标，7.1为成本曲线子节点，合理归属"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "保留在7.1",
+      "现金成本是成本曲线核心指标，7.1为成本曲线子节点，合理归属"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|铜冶炼完全成本": {
+    "subnode": "",
+    "chart": "铜冶炼完全成本",
+    "names": [
+      "保留在7.1",
+      "完全成本是成本曲线核心指标，7.1为成本曲线子节点，合理归属"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "保留在7.1",
+      "完全成本是成本曲线核心指标，7.1为成本曲线子节点，合理归属"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|精铜杆加工费": {
+    "subnode": "",
+    "chart": "精铜杆加工费",
+    "names": [
+      "7.1+7.2",
+      "保留在7.1，删除7.2中的日度版本",
+      "精铜杆加工费为周频，7.1为成本曲线子节点，7.2为日度利润测算子节点，日度版本不可追踪"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "7.1+7.2",
+      "保留在7.1，删除7.2中的日度版本",
+      "精铜杆加工费为周频，7.1为成本曲线子节点，7.2为日度利润测算子节点，日度版本不可追踪"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|精废价差": {
+    "subnode": "",
+    "chart": "精废价差",
+    "names": [
+      "7.2+7.3",
+      "保留在7.2，删除7.3中的引用",
+      "精废价差是加工端利润核心指标，7.2为日度利润测算子节点，7.3为能源/原料成本子节点，精废价差属加工端利润而非原料成本"
+    ],
+    "grade": "A",
+    "hit_id": "ID01001703",
+    "hit_name": "主流市场：精废铜：价差：广东（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 主流市场价差",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "7.2+7.3",
+      "保留在7.2，删除7.3中的引用",
+      "精废价差是加工端利润核心指标，7.2为日度利润测算子节点，7.3为能源/原料成本子节点，精废价差属加工端利润而非原料成本"
+    ]
+  },
+  "|7.1 成本曲线与分位": {
+    "subnode": "",
+    "chart": "7.1 成本曲线与分位",
+    "names": [
+      "铜冶炼企业开工率",
+      "开工率反映冶炼端对负TC的响应，SMM周频可追踪，当前降至近6年低位",
+      "开工率反映冶炼端对负TC的响应",
+      "当前降至近6年低位"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "铜冶炼企业开工率",
+      "开工率反映冶炼端对负TC的响应，SMM周频可追踪，当前降至近6年低位",
+      "开工率反映冶炼端对负TC的响应"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|7.2 日度利润测算": {
+    "subnode": "",
+    "chart": "7.2 日度利润测算",
+    "names": [
+      "硫酸价格",
+      "硫酸是冶炼利润核心调节器，SMM周频可追踪，当前1555元/吨",
+      "硫酸是冶炼利润核心调节器",
+      "当前1555元/吨（8月指导价）"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "硫酸价格",
+      "硫酸是冶炼利润核心调节器，SMM周频可追踪，当前1555元/吨",
+      "硫酸是冶炼利润核心调节器"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "|7.3 能源/原料成本": {
+    "subnode": "",
+    "chart": "7.3 能源/原料成本",
+    "names": [
+      "进口铜精矿到岸价",
+      "到岸价反映进口原料成本，SMM月频可追踪，与TC形成原料成本双指标",
+      "到岸价反映进口原料成本",
+      "与TC形成原料成本双指标"
+    ],
+    "grade": "A",
+    "hit_id": "ID01154994",
+    "hit_name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "进口铜精矿到岸价",
+      "到岸价反映进口原料成本，SMM月频可追踪，与TC形成原料成本双指标",
+      "到岸价反映进口原料成本"
+    ]
+  },
+  "7.1|1": {
+    "subnode": "7.1",
+    "chart": "1",
+    "names": [
+      "铜精矿现货TC历史时序图",
+      "铜精矿现货TC",
+      "单指标时序图",
+      "TC是冶炼端原料成本核心，SMM/Mysteel周频可追踪，当前深度负值是冶炼利润核心驱动"
+    ],
+    "grade": "A",
+    "hit_id": "ID01154994",
+    "hit_name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "铜精矿现货TC历史时序图",
+      "铜精矿现货TC",
+      "单指标时序图"
+    ]
+  },
+  "7.1|2": {
+    "subnode": "7.1",
+    "chart": "2",
+    "names": [
+      "铜冶炼现金成本与完全成本时序图",
+      "铜冶炼现金成本；铜冶炼完全成本",
+      "双指标时序图",
+      "现金成本与完全成本是冶炼端成本底线，SMM/安泰科季度可追踪，反映冶炼端最低成本与总成本"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "铜冶炼现金成本与完全成本时序图",
+      "铜冶炼现金成本；铜冶炼完全成本",
+      "双指标时序图"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "7.1|3": {
+    "subnode": "7.1",
+    "chart": "3",
+    "names": [
+      "铜冶炼企业开工率时序图",
+      "铜冶炼企业开工率",
+      "单指标时序图",
+      "开工率反映冶炼端对负TC的响应，SMM周频可追踪，当前降至近6年低位"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "铜冶炼企业开工率时序图",
+      "铜冶炼企业开工率",
+      "单指标时序图"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "7.1|4": {
+    "subnode": "7.1",
+    "chart": "4",
+    "names": [
+      "精铜杆加工费时序图",
+      "精铜杆加工费",
+      "单指标时序图",
+      "精铜杆加工费是加工端成本核心，Mysteel周频可追踪，当前受高铜价压制"
+    ],
+    "grade": "A",
+    "hit_id": "ID01049501",
+    "hit_name": "精铜杆：产量：中国（月）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "精铜杆加工费时序图",
+      "精铜杆加工费",
+      "单指标时序图"
+    ]
+  },
+  "7.1|5": {
+    "subnode": "7.1",
+    "chart": "5",
+    "names": [
+      "精废价差时序图",
+      "精废价差",
+      "单指标时序图",
+      "精废价差是再生铜与精铜成本差异核心，Mysteel周频可追踪，当前扩张至4523元/吨"
+    ],
+    "grade": "A",
+    "hit_id": "ID01001703",
+    "hit_name": "主流市场：精废铜：价差：广东（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 主流市场价差",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "精废价差时序图",
+      "精废价差",
+      "单指标时序图"
+    ]
+  },
+  "7.2|1": {
+    "subnode": "7.2",
+    "chart": "1",
+    "names": [
+      "冶炼端利润复合图",
+      "铜精矿现货TC；硫酸价格",
+      "双指标时序图",
+      "TC与硫酸是冶炼端利润双核心，TC负值拖累、硫酸正收益对冲，SMM周频可追踪"
+    ],
+    "grade": "A",
+    "hit_id": "ID01154994",
+    "hit_name": "铜精矿：进口：25%Cu：TC指数：中国（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "冶炼端利润复合图",
+      "铜精矿现货TC；硫酸价格",
+      "双指标时序图"
+    ]
+  },
+  "7.2|2": {
+    "subnode": "7.2",
+    "chart": "2",
+    "names": [
+      "加工端利润复合图",
+      "精铜杆加工费；精废价差",
+      "双指标时序图",
+      "精铜杆加工费与精废价差是加工端利润核心，Mysteel周频可追踪，高铜价压制精铜杆加工费"
+    ],
+    "grade": "A",
+    "hit_id": "ID01049501",
+    "hit_name": "精铜杆：产量：中国（月）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "加工端利润复合图",
+      "精铜杆加工费；精废价差",
+      "双指标时序图"
+    ]
+  },
+  "7.2|3": {
+    "subnode": "7.2",
+    "chart": "3",
+    "names": [
+      "硫酸价格时序图",
+      "硫酸价格",
+      "单指标时序图",
+      "硫酸是冶炼利润核心调节器，SMM周频可追踪，当前1555元/吨，硫酸利润可覆盖负TC损失"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "硫酸价格时序图",
+      "硫酸价格",
+      "单指标时序图"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "7.2|4": {
+    "subnode": "7.2",
+    "chart": "4",
+    "names": [
+      "铜冶炼现金成本时序图",
+      "铜冶炼现金成本",
+      "单指标时序图",
+      "现金成本是冶炼端成本底线，SMM/安泰科季度可追踪，反映冶炼端最低成本"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "铜冶炼现金成本时序图",
+      "铜冶炼现金成本",
+      "单指标时序图"
+    ],
+    "_fix_note": "hit_name不含CU品种词"
+  },
+  "7.2|5": {
+    "subnode": "7.2",
+    "chart": "5",
+    "names": [
+      "精铜杆加工费与精废价差联动图",
+      "精铜杆加工费；精废价差",
+      "双指标时序图",
+      "精铜杆加工费与精废价差联动反映加工端利润变化，Mysteel周频可追踪"
+    ],
+    "grade": "A",
+    "hit_id": "ID01049501",
+    "hit_name": "精铜杆：产量：中国（月）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "精铜杆加工费与精废价差联动图",
+      "精铜杆加工费；精废价差",
+      "双指标时序图"
+    ]
+  }
+}
