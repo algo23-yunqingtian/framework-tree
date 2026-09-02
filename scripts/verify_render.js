@@ -169,7 +169,7 @@ const PAGES = [
     { key: 'ni_73', file: 'ni_7_3.html', charts: 4, seasonal: ['echart_ni_73_c1'] },
   { key: 'sn_21', file: 'sn_2_1.html', charts: 4, seasonal: ['echart_sn_21_c1'] },
   { key: 'sn_22', file: 'sn_2_2.html', charts: 4, seasonal: ['echart_sn_22_c1'] },
-  { key: 'sn_23', file: 'sn_2_3.html', charts: 3, seasonal: ['echart_sn_23_c1'] },
+  { key: 'sn_23', file: 'sn_2_3.html', charts: 4, seasonal: ['echart_sn_23_c1'] },
   { key: 'sn_24', file: 'sn_2_4.html', charts: 2, seasonal: ['echart_sn_24_c1'] },
   { key: 'sn_25', file: 'sn_2_5.html', charts: 3, seasonal: ['echart_sn_25_c1'] },
   { key: 'sn_26', file: 'sn_2_6.html', charts: 4, seasonal: ['echart_sn_26_c1'] },
