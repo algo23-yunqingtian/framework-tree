@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "3.57",
-  "updated": "2026-09-03 00:30",
+  "version": "3.58",
+  "updated": "2026-09-03 00:44",
   "status": "部分验证",
   "说明": "v3.49: merge win分支(110指标) + main锂硅(79指标)，7金属 correction 全合并",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
@@ -16557,6 +16557,76 @@
    "_nodes": [
     "2.3"
    ]
+  },
+  "al_311_bauxite_cif": {
+   "name": "铝土矿：三水型：45%Al，3%Si：几内亚产：CIF价：山东主要港口（日）",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01004645"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.1"
+   ]
+  },
+  "al_321_molten_ratio": {
+   "name": "电解铝：铝水比例：中国（月）",
+   "unit": "%",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001759"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "B",
+   "_nodes": [
+    "3.2.1"
+   ]
+  },
+  "al_72_alf3_price": {
+   "name": "氟化铝：AF-1级：出厂价：华东地区：山东昭和（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00115564"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "B",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "al_62_lunlun": {
+   "name": "Mysteel：铝：沪伦比值（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "FU00014772"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "B",
+   "_nodes": [
+    "6.2"
+   ]
+  },
+  "al_313_alumina_fob": {
+   "name": "氧化铝：AO-1：Al2O3≥98.6%：澳大利亚产：FOB价：奎纳纳港（日）",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID00259770"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.3"
+   ]
   }
  },
  "64_group": {
@@ -16572,7 +16642,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.57",
+ "version": "v3.58",
  "updated": "2026-09-02 19:23",
  "change": "P1 series实测: 271条 verified=False→True → v3.54"
 }

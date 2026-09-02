@@ -523,8 +523,8 @@ PAGES = {
     "al_313": {
         "file": "al_3_1_3.html",
         "min_bytes": 8000,
-        "charts": 1,
-        "cids": ["echart_al_313_c1"],
+        "charts": 2,
+        "cids": ["echart_al_313_c1", "echart_al_313_c2"],
         "label": "国内矿·开工率 3.1.3",
         "has_seasonal": True,
     },
@@ -541,8 +541,8 @@ PAGES = {
     "al_321": {
         "file": "al_3_2_1.html",
         "min_bytes": 8000,
-        "charts": 1,
-        "cids": ["echart_al_321_c1"],
+        "charts": 2,
+        "cids": ["echart_al_321_c1", "echart_al_321_c2"],
         "label": "产能与开工 3.2.1",
         "has_seasonal": True,
     },
@@ -568,8 +568,8 @@ PAGES = {
     "al_62": {
         "file": "al_6_2.html",
         "min_bytes": 8000,
-        "charts": 1,
-        "cids": ["echart_al_62_c1"],
+        "charts": 2,
+        "cids": ["echart_al_62_c1", "echart_al_62_c2"],
         "label": "原料进口·港口库存 6.2",
         "has_seasonal": True,
     },
