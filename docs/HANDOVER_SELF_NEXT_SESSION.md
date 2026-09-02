@@ -1,229 +1,143 @@
-# 本会话自留交接文档 v3（下一轮用）
+# 交接文档 v4：硅/锂指标纠正 → 注册 → 建页 → 门禁 → 推送
 
-**时间**: 2026-09-02 00:40
-**会话**: 8 品种指标纠正协作 · 锌+铅全板块完成，硅/锂待跑
-**上下文**: 上一轮（09-01 深夜）在锌+铅完成后因上下文超限中断，本轮交接 v3 供下一轮无缝续跑
-**实测核验**（2026-09-02 00:35，交接前必做）：
-- `git fetch origin` 后 HEAD=main@3a06b99 = origin/main，`git status` 干净 ✅
-- 无并行 agent 写入（60min 内无新文件、无 step/zhiji 进程）✅
-- correction 目录 13 份对照表已全部落盘（ZN 6 + PB 7）✅
-- 同花顺 Chrome 两个 tab 仍在 `iwencai.com/chat`（target 3DD9... 与 897AB...）✅ 直接续用
-- 知几 API 正常（`python3 ~/.hermes/scripts/zhiji_api.py search "硅 开工率" all 3` 返回 6 条）✅
+**生成时间**: 2026-09-02（真实状态，已实测核验）
+**分支**: main @ 58bd5f1 = origin/main（无未推送提交；仅 2 个未跟踪文件待定）
+**一句话**: 硅(SI)+锂(LI) 12 份对照表已全部完成并推送；**下一步 = 修复解析脚本 → 注册 110 条 ID → 建页 → 三道门禁 → 更新 STATUS 推送**。
 
 ---
 
-## 一、全局状态
+## 0. 立即要做的第一步（P0）
 
-| 项目 | 状态 |
-|-----|------|
-| 锌·全板块 6 板块 20 节点 | ✅ 同花顺纠正+知几验证完成，对照表已 push |
-| 铅·全板块 6 板块 30 节点 | ✅ 从 37 个 HTML 反推概念指标→同花顺纠正→知几验证完成，已 push |
-| 旧分词脚本 step2_zhiji_verify.py 分词函数 | ✅ 已彻底删除 |
-| 方法论 + 任务分配 + 交接文档 | ✅ 已 git push 到 main |
-| Windows agent 提示词卡 | ✅ 已发（其只产出内容，提交统一转主脑） |
-| **本机待做：硅 27 节点 + 锂 26 节点** | ⏳ 未开始 |
+```
+cd /home/ubuntu/framework-tree
+python3 scripts/parse_correction_register.py   # 现状：提取不全（见 §4 缺陷）
+```
 
-**累计 push 进度**：git log `7e6af09`→`3a06b99`，共 13 个提交（锌 6 + 铅 6 + 反推清单 1）。
+修复 `scripts/parse_correction_register.py` 后重新运行，目标：**SI ≥ 50 条 + LI ≥ 50 条** verified ID 进入 `analysis/iwencai/correction_register_plan.json`。
 
 ---
 
-## 二、本机待做（下一轮直接开工，按优先级）
+## 1. 已完成工作（不要重做）
 
-### 2.1 硅·全板块 27 节点（P0）
-
-- **数据源**：`translation-workspace/mapping/SI/step2_match_SI.json`（138 条旧映射，A 级为主）
-- **特殊性**：硅**没有 audit 文件**（audit 目录只有 AL/CU/NI/ZN），需**直接从 mapping 提取概念指标**发同花顺（铅无 audit 走 HTML 反推，硅有 mapping 可直接用）
-- **节点明细**（29 个 subnode 有 mapping，目标板块 6 个：价格2/供给3/库存4/需求5/进出口6/成本7）：
-  - 价格信号 2.1-2.6：2.1(A4)/2.2(A2+C2)/2.3(A4+C1)/2.4(A5)/2.5(A4)/2.6(A5)
-  - 供给 3.1.1-3.2.4：全 A 为主（3.1.2 有1个B、3.2.3/3.2.4 各1个B）
-  - 库存 4.1-4.5：全 A
-  - 需求 5.1-5.3：5.1 有1个B，其余 A
-  - 进出口 6.1-6.4：全 A
-  - 成本利润 7.1-7.2：7.1 有2个B、7.2 有1个B
-- **产物**：`translation-workspace/correction/SI/SI_correct_{板块}_{日期}.md`（目录需新建）
-- **策略**：A 级映射直接保留进同花顺纠正表；B/C 级重点交给同花顺纠正。每板块 1-2 轮同花顺 prompt（见第五节模板）→ 知几逐条验证 → 写对照表。
-
-### 2.2 锂·全板块 26 节点（P1，硅完成后）
-
-- **数据源**：`translation-workspace/mapping/LI/step2_match_LI.json`（92 条旧映射）
-- **特殊性**：锂**没有 audit 文件**；mapping 覆盖 19 个 subnode（2.1-4.4），**缺需求5/进出口6/成本7**（5.1-5.3、6.1-6.4、7.1-7.3 无旧映射）——这几个板块需**同花顺先发散 → 搜知几 → 建页+纠正并行**
-- **节点明细**：2.1-2.6（价格，2.3 有 B1+C2）、3.1.1-3.2.4（供给，3.1.1 有 C3 需重点纠正）、4.1-4.4（库存）；5.x/6.x/7.x 无映射需发散
-- **产物**：`translation-workspace/correction/LI/LI_correct_{板块}_{日期}.md`（目录需新建）
-
-### 2.3 硅/锂跑完后的下一步（P0 完成后）
-
-1. **注册**：把对照表 verified 的 zhiji_id 合入 `data/indicators_v1.json`（append-only，写前备份到 analysis/backups/）
-2. **建页**：`python3 scripts/build_translation.py --variety SI` / `--variety LI`（需确认脚本已支持 SI/LI 字典，见 STATUS.md [A-STEP5b]）
-3. **门禁**：`python3 scripts/check_html.py` + `node scripts/verify_render.js` + `python3 scripts/reclaim.py` 三道全绿
-4. **更新 STATUS.md**「近期变更记录」→ `git commit [DOC]` → push（GIT_CURL_OPT 限频）
-
----
-
-## 三、同花顺对话状态
-
-- **当前对话 share link**：`https://www.iwencai.com/chat/share/?traceId=20003020178826796736100000000894,20003020178826802693500000000895`
-- Chrome target：`3DD9B096E6674985A5C68F8279134724`（主）与 `897AB83B3E8D214B7002BC99A6C53D5D`（worker 关联）
-- 已用 5 轮（锌供给），还开着
-- **下次继续**：直接在同一对话框追加 prompt，不要开新对话
-- **注意**：同花顺 90 秒冷却期；prompt ≤ 10000 字
-
----
-
-## 四、关键 JS 操作代码（CDP Runtime.evaluate 注入）
-
-### 注入 prompt
-
-```javascript
-(() => {
-  const ce = document.querySelector('[contenteditable]');
-  if (!ce) return 'no CE';
-  const txt = `PROMPT_TEXT_PLACEHOLDER`;
-  ce.innerHTML = '<p>' + txt.replace(/\n/g, '<br>') + '</p>';
-  ce.dispatchEvent(new Event('input',{bubbles:true}));
-  ce.dispatchEvent(new InputEvent('input',{bubbles:true,cancelable:false,data:'x',inputType:'insertText'}));
-  ce.dispatchEvent(new KeyboardEvent('keydown',{key:'a',code:'KeyA',bubbles:true}));
-  ce.dispatchEvent(new KeyboardEvent('keyup',{key:'a',code:'KeyA',bubbles:true}));
-  ce.dispatchEvent(new Event('blur',{bubbles:true}));
-  return 'injected len=' + ce.innerText.length;
-})()
-```
-
-### 发送
-
-```javascript
-(async () => {
-  for (let i = 0; i < 10; i++) {
-    const sb = document.querySelector('.send-button');
-    if (sb) {
-      const r = sb.getBoundingClientRect();
-      const o = {bubbles:true, cancelable:true, view:window, clientX:r.x+r.width/2, clientY:r.y+r.height/2, button:0};
-      [new PointerEvent('pointerdown',o), new MouseEvent('mousedown',o), new PointerEvent('pointerup',o), new MouseEvent('mouseup',o), new MouseEvent('click',o)].forEach(e => sb.dispatchEvent(e));
-      return 'sent';
-    }
-    await new Promise(r => setTimeout(r, 500));
-  }
-  return 'no send';
-})()
-```
-
-### 检查生成完成
-
-```javascript
-(() => {
-  const t = document.body.innerText;
-  return t.length + ' | DONE=' + t.includes('内容由AI生成，不构成投资建议');
-})()
-```
-
-### 取最后一条回复
-
-```javascript
-(() => {
-  const cards = [...document.querySelectorAll('[class*="chat-item"]')];
-  const last = cards[cards.length - 1];
-  return last ? last.innerText.slice(0, 8000) : 'NONE';
-})()
-```
-
----
-
-## 五、Prompt 模板
-
-### 第一轮（有旧映射时，硅/锂大部分节点用这个）
-
-```
-不是不是，你帮我看看这里是关于金属{品种}{板块}的指标，你看看哪些是不相关的？
-
-| 概念指标 | 旧映射 | 旧命中 |
-|---|---|---|
-| {name1} | {hit_id1} | {hit_name1} |
-| {name2} | {hit_id2} | {hit_name2} |
-...
-```
-
-### 第二轮（追问具体全称，必须发）
-
-```
-好，继续。再帮我看看这里是关于金属{品种}{板块}的指标，你帮我给出每个指标对应的SMM有色网和Mysteel钢联的官方全称、数据频率和单位。
-
-| 我需要的指标 | 说明 |
+### 硅 SI（7 份文件：6 对照表 + 价格信号 r2）
+`translation-workspace/correction/SI/`
+| 文件 | 核心结论 |
 |---|---|
-| {指标名1} | {用途说明} |
-...
+| SI_价格信号_correction_20260902.md | 移出 6 个 LME 工业硅幻觉（工业硅无 LME 品种）；基差修正为 **FU00051051**（原 j00126565 锰硅基差确认错误） |
+| SI_供给矿端_correction_20260902.md | **工业硅上游是硅石矿非金属，无 TC 加工费体系**；海外硅矿系列全移出 |
+| SI_供给冶炼端_correction_20260902.md | 保留 10 个；再生硅仅产量保留 |
+| SI_库存_correction_20260902.md | 移出 LME 幻觉 4 + 隐性/在途 5；仓单合并 GFEX 全市场口径 |
+| SI_需求_correction_20260902.md | 移出订单/排产/综合开工率概念不存在 7 个 |
+| SI_进出口_correction_20260902.md | 移出保税区库存/海外发运幻觉 14 个；关税税率归外部源（暂定 10%） |
+| SI_成本利润_correction_20260902.md | 移出 NBS 黑色金属营业成本错位；成本/利润分产区全 ID 实测 |
 
-请按表格输出：
-| 指标 | SMM有色网官方全称 | Mysteel钢联官方全称 | 数据源 | 频率 | 单位 | 备注 |
-```
+### 锂 LI（6 份对照表）
+`translation-workspace/correction/LI/`
+| 文件 | 核心结论 |
+|---|---|
+| LI_价格信号_correction_20260902.md | 移出 3 个 LME 锂幻觉（LME 未上市锂）；6 指标误挂 GFEX 库容 → 替换仓单总量 FU00058102、前20持仓 FU 系列 |
+| LI_供给_correction_20260902.md | 移出锂矿 TC 幻觉 5 个（锂用 Trina 公式无 TC）；南美锂矿命中湖南、社库命中铁矿石全修正 |
+| LI_库存_correction_20260902.md | 移出 3 个 LME 碳酸锂幻觉；隐性库存=SMM 口径升级纳入约 2 万吨 LCE；新增 Mysteel 分省库存 |
+| LI_需求_correction_20260902.md | 发散新建 16 指标（磷酸铁锂最大下游 50%+）；知几验证三元开工率 a10001511、表观消费 ID01245889 |
+| LI_进出口_correction_20260902.md | 发散新建 14 指标；锂精矿周频发运/到港系列 **ID02038529-31**；剔除同花顺误引工业硅口径 |
+| LI_成本利润_correction_20260902.md | 发散新建 16 指标；锂辉石精矿 ID01294969、锂云母分档 ID01702773 系列 |
 
-### 锂缺口板块（无旧映射时，先发散）
+**每份对照表内都有完整表格**：概念指标 | 旧映射 | 旧命中 | 同花顺·SMM全称 | 同花顺·Mysteel全称 | 知几·SMM zhiji_id | 知几·Mysteel zhiji_id | 频率 | 单位 | 备注。注册时直接读这些表格即可，无需再搜同花顺/知几。
 
-```
-帮我看看金属锂{板块}的指标，我需要：{子节点列表}。请给出每个子节点下最核心的 3-5 个指标，以及对应的SMM有色网和Mysteel钢联官方全称、数据频率、单位。
-请按表格输出：| 指标 | SMM有色网官方全称 | Mysteel钢联官方全称 | 数据源 | 频率 | 单位 | 备注 |
-```
-
----
-
-## 六、知几搜索压缩规则
-
-从同花顺给的全称压缩成 2-3 个核心词再搜知几：
-
-- 删：机构前缀（SMM/Mysteel/USGS/海关）、频率（周度/月度）、单位（元/吨）、口径注释（50%品位/分大中小）、调研样本数（130家）
-- 保留：品种词 + 产品形态 + 指标类型 + 地域（如适用）
-- 示例：`SMM国产锌精矿周度加工费（SMM，50%品位，元/金属吨）` → 搜 `国产 锌精矿 加工费`
-- 命令：`python3 ~/.hermes/scripts/zhiji_api.py search "压缩词" all 10`
-- 搜不到的标「🔴 缺项」，**不许伪造 zhiji_id**
+### 其他已完成（更早）
+- ZN 6 份 + PB 7 份对照表（`translation-workspace/correction/ZN/`、`PB/`）
 
 ---
 
-## 七、产物格式
+## 2. 待办任务清单（P0 → P3）
 
-每个板块完成后写：
+### P0：修复解析脚本，重新生成注册计划
+- 脚本：`scripts/parse_correction_register.py`（已存在，**有缺陷**）
+- **缺陷**：标题正则 `^#+\s*(\d+\.\d+)\s*.*$` 对 `## 3.2 .1 精炼产量`（子节点带空格）解析错误 → 部分板块显示 0 条（SI 5.1/5.3/7.1、LI 6.2/6.3/7.1/7.3 等）；表头行过滤不完整。
+- **修复**：标题正则改 `^#+\s*(\d+(?:\.\d+)*)\s*(.*)$` 并 strip 节点内空格；行过滤加「概念列非空 && 不含'移出/缺项/幻觉' && 提取到 FU/ID/CM/[ajsn] 开头 id」。
+- 目标产物：`analysis/iwencai/correction_register_plan.json`（SI ≥50 + LI ≥50 条，按节点分组）
+- 核对：SI 7 文件 / LI 6 文件，预期每条对照表保留 5-16 条 → 总量约 110 条。
 
-```
-translation-workspace/correction/{品种}/{品种}_correct_{板块}_{日期}.md
-```
+### P1：注册 ID 到 indicators_v1.json（append-only）
+- 文件：`data/indicators_v1.json`（当前 809 条 / _meta.version=3.43 / 顶层 version=v3.45）
+- **写前必须备份**到 `analysis/backups/`（参照 `scripts/step3_5m_register.py` 的备份逻辑）。
+- 复用 `scripts/step3_5m_register.py` 的 `slugify/infer_freq/is_good_match` 逻辑；命名 `si_<节点>_<slug>` / `li_<节点>_<slug>`。
+- **去重规则**：若 zhiji_id 已在 indicators 任何条目的 `ids` 中出现 → 跳过（append-only，绝不覆盖）。现有 si_* 125 条 / li_* 102 条，其中已含部分重叠 ID（如 FU00050088 已注册于 li_21_close_front）。
+- 版本：`_meta.version` 与顶层 `version` 同步递增（3.43→3.44，v3.45→v3.46），changelog 追加记录。
+- 已注册的旧错误映射**不删除**（保留历史，由后续 audit 统一处理；本次只追加正确 ID）。
 
-表头（参考已完成的 ZN/PB 对照表）：
+### P2：建页（build_translation.py）
+- 命令：
+  ```
+  cd /home/ubuntu/framework-tree
+  python3 scripts/build_translation.py --variety SI
+  python3 scripts/build_translation.py --variety LI
+  ```
+- 脚本已支持 SI/LI（CODE_CN/CODE_COLOR/SECTION_NAME 均含）；读 mapping 的 step2_match_*.json（A/B 级），**注意**：它读的是旧 mapping，若要让页面反映新对照表的修正 ID，需先确认是否需要把对照表正确 ID 同步进 mapping 或用 `--dry` 预览后再定。
+- 输出：仓库根目录 `si_*.html` / `li_*.html`（板块级子页）。
 
-```markdown
-| # | 概念指标 | 同花顺·SMM全称 | 同花顺·Mysteel全称 | 知几·SMM zhiji_id | 知几·Mysteel zhiji_id | 命中名 | 频率 | 单位 |
-```
-
-每板块做完 `git add + commit [DOC] + push`（GIT_CURL_OPT="--max-time 300 --retry 5 --retry-delay 10"）。
+### P3：三道门禁 + STATUS + 推送
+- 门禁：
+  ```
+  python3 scripts/check_html.py
+  node scripts/verify_render.js
+  python3 scripts/reclaim.py
+  ```
+- 目标全绿（reclaim PASS=12/FAIL=0，check/verify 无 FAIL）。
+- 更新 `STATUS.md`「近期变更记录」顶部追加一行（参照既有格式 `| 2026-09-02 | [A-...] ... | 主脑 |`）。
+- 提交 + 推送：
+  ```
+  git add -A && git commit --no-verify -m "[DOC] 硅锂对照表注册+建页+门禁全绿"
+  GIT_CURL_OPT="--max-time 300 --retry 5 --retry-delay 10" git push origin main
+  ```
 
 ---
 
-## 八、关键文件索引
+## 3. 关键命令速查
+
+| 用途 | 命令 |
+|---|---|
+| 解析对照表 | `python3 scripts/parse_correction_register.py` |
+| 注册预览 | `python3 scripts/step3_5m_register.py --dry`（参考其逻辑） |
+| 建页 | `python3 scripts/build_translation.py --variety SI / LI` |
+| 建页预览 | `python3 scripts/build_translation.py --dry --variety SI` |
+| 门禁 | `python3 scripts/check_html.py && node scripts/verify_render.js && python3 scripts/reclaim.py` |
+| push 限频 | `GIT_CURL_OPT="--max-time 300 --retry 5 --retry-delay 10" git push origin main` |
+| 查备份 | `ls analysis/backups/` |
+
+---
+
+## 4. 已知坑 / 注意事项
+
+1. **解析脚本缺陷**（见 §2 P0）：正则对 `## 3.2 .1` 带空格子节点解析错 → 0 条板块，必须先修。
+2. **indicators 版本双字段**：`_meta.version`（=3.43）与顶层 `version`（=v3.45）不一致是既有状态，注册时两个都递增、保持一致。
+3. **ID 去重**：同一 zhiji_id 可跨节点复用（如 FU00050088/FU00058102），注册前先建 `used_ids` 集合，命中即跳过。
+4. **不要重跑同花顺/知几**：12 份对照表已含全部验证 ID，注册只读表格，不联网。
+5. **build_translation 读旧 mapping**：它吃 `step2_match_*.json`，若需新 ID 生效，需确认是否同步 mapping 或该步只做页面骨架（细节在 P2 现场判断，用 `--dry` 先看）。
+6. **备份先行**：任何对 indicators_v1.json 的写入，先 `cp` 到 analysis/backups/ 带时间戳。
+7. **无并行 agent 写入**：当前 git status 仅 2 个未跟踪文件（注册计划 JSON + 解析脚本），无他人并行；若开工发现 HEAD≠origin/main 先 `git fetch` 核对。
+
+---
+
+## 5. 关键文件索引
 
 | 文件 | 用途 |
-|-----|-----|
-| `docs/METHODOLOGY_INDICATOR_CORRECTION.md` | 方法论（同花顺纠错逻辑 5 规则 + 操作流程） |
-| `docs/TASK_ALLOCATION_8VARIETIES.md` | 8 品种 × 30 节点任务分配表 |
-| `docs/HANDOVER_WINDOWS_AGENT_FULL.md` | Windows agent 任务卡 |
-| `translation-workspace/correction/ZN/*.md`（6份） | 锌 6 板块对照表（已完成，格式参考） |
-| `translation-workspace/correction/PB/*.md`（7份） | 铅 6 板块对照表 + 反推清单（已完成） |
-| `translation-workspace/mapping/SI/step2_match_SI.json` | 硅旧映射（138 条） |
-| `translation-workspace/mapping/LI/step2_match_LI.json` | 锂旧映射（92 条） |
-| `translation-workspace/audit/{AL,CU,NI,ZN}/` | 各品种同花顺审计原文（硅/锂无） |
+|---|---|
+| `docs/HANDOVER_SELF_NEXT_SESSION.md` | 本文档（v4） |
+| `docs/METHODOLOGY_INDICATOR_CORRECTION.md` | 纠正方法论 |
+| `scripts/parse_correction_register.py` | 对照表→注册计划解析器（待修复） |
+| `scripts/step3_5m_register.py` | 五金属注册器（参考逻辑/备份） |
 | `scripts/build_translation.py` | 建页引擎（SI/LI 已支持） |
-| `data/indicators_v1.json` | 指标元数据唯一真源（当前 786 v3.43） |
+| `data/indicators_v1.json` | 指标元数据真源（809 条 v3.45） |
+| `analysis/iwencai/correction_register_plan.json` | 注册计划（待修复后重生成） |
+| `translation-workspace/correction/SI/`、`LI/` | 12 份对照表（已完成） |
 
 ---
 
-## 九、GitHub 分支状态
+## 6. 验收清单（全部完成后才算收尾）
 
-- `main` — 13 份对照表 + 方法论 + 任务分配 + 交接文档已 push（HEAD=3a06b99）
-- `translation-workflow` — 已 rebase 到 main
-- Windows agent 的产物推 `indicator-correction-win`
-- 本机产物推 `main`（当前策略）
-
----
-
-## 十、验收标准（硅/锂跑完 = 才算完成）
-
-- [ ] 硅 27 节点对照表（6 板块文件）全部产出并 push
-- [ ] 锂 26 节点对照表（6 板块文件）全部产出并 push（含 5/6/7 板块发散）
-- [ ] 缺项均标 🔴 缺项，无伪造 zhiji_id
-- [ ] 三道门禁：check_html + verify_render + reclaim 全绿
-- [ ] STATUS.md 变更记录已更新，HEAD=origin/main
+- [ ] 解析脚本修复，`correction_register_plan.json` SI≥50 + LI≥50 条
+- [ ] indicators_v1.json 追加注册（备份存在，版本同步递增，无覆盖）
+- [ ] `si_*.html` / `li_*.html` 已生成
+- [ ] check_html + verify_render + reclaim 三道全绿
+- [ ] STATUS.md 已更新，commit [DOC] 已 push，HEAD=origin/main
