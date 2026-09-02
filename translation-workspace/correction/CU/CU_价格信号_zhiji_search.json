@@ -1,0 +1,325 @@
+{
+  "2.1|沪铜主力合约价格": {
+    "subnode": "2.1",
+    "chart": "沪铜主力合约价格",
+    "names": [
+      "沪铜主力合约收盘价",
+      "SHFE铜主力收盘价"
+    ],
+    "grade": "A",
+    "hit_id": "FU00015764",
+    "hit_name": "SHFE：电解铜：主力合约：收盘价（日）",
+    "hit_path": "商品数据库 期货数据库 有色品种 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪铜主力合约收盘价",
+      "SHFE铜主力收盘价"
+    ]
+  },
+  "2.1|沪铜持仓量": {
+    "subnode": "2.1",
+    "chart": "沪铜持仓量",
+    "names": [
+      "沪铜主力合约持仓量",
+      "SHFE铜主力持仓量"
+    ],
+    "grade": "B",
+    "hit_id": "FU00015536",
+    "hit_name": "COMEX：铜：主力合约：持仓量（日）",
+    "hit_path": "商品数据库 期货数据库 有色品种 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪铜主力合约持仓量",
+      "SHFE铜主力持仓量"
+    ],
+    "_fix_note": "COMEX铜(非SHFE)"
+  },
+  "2.1|沪铜成交量": {
+    "subnode": "2.1",
+    "chart": "沪铜成交量",
+    "names": [
+      "沪铜主力合约成交量",
+      "SHFE铜主力成交量"
+    ],
+    "grade": "B",
+    "hit_id": "FU00015535",
+    "hit_name": "COMEX：铜：主力合约：成交量（日）",
+    "hit_path": "商品数据库 期货数据库 有色品种 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪铜主力合约成交量",
+      "SHFE铜主力成交量"
+    ],
+    "_fix_note": "COMEX铜(非SHFE)"
+  },
+  "2.2|铜现货升贴水": {
+    "subnode": "2.2",
+    "chart": "铜现货升贴水",
+    "names": [
+      "SMM铜现货升贴水",
+      "SMM1#电解铜升贴水",
+      "电解铜现货升贴水"
+    ],
+    "grade": "A",
+    "hit_id": "ID00302616",
+    "hit_name": "电解铜：平水铜：现货升贴水：山东（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "SMM铜现货升贴水",
+      "SMM1#电解铜升贴水",
+      "电解铜现货升贴水"
+    ]
+  },
+  "2.2|沪铜现货溢价": {
+    "subnode": "2.2",
+    "chart": "沪铜现货溢价",
+    "names": [
+      "铜现货溢价",
+      "铜溢价",
+      "SMM铜溢价"
+    ],
+    "grade": "A",
+    "hit_id": "ID00302438",
+    "hit_name": "铜：火法：仓单溢价均价：上海：美元（日）",
+    "hit_path": "有色|铜数据库|电解铜|价格|中国电解铜仓单提单溢价：日度",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "铜现货溢价",
+      "铜溢价",
+      "SMM铜溢价"
+    ]
+  },
+  "2.3|LME铜主力合约价格": {
+    "subnode": "2.3",
+    "chart": "LME铜主力合约价格",
+    "names": [
+      "LME铜主力合约收盘价",
+      "LME铜3个月期货价格"
+    ],
+    "grade": "A",
+    "hit_id": "FU00015764",
+    "hit_name": "SHFE：电解铜：主力合约：收盘价（日）",
+    "hit_path": "商品数据库 期货数据库 有色品种 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME铜主力合约收盘价",
+      "LME铜3个月期货价格"
+    ]
+  },
+  "2.3|沪伦铜比价": {
+    "subnode": "2.3",
+    "chart": "沪伦铜比价",
+    "names": [
+      "沪伦铜比价",
+      "SHFE LME铜比价"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "沪伦铜比价",
+      "SHFE LME铜比价"
+    ],
+    "_fix_note": "hit_name=知几无数据 不含铜品种词"
+  },
+  "2.3|LME铜库存": {
+    "subnode": "2.3",
+    "chart": "LME铜库存",
+    "names": [
+      "LME铜仓库库存",
+      "LME铜库存总量",
+      "LME Copper Stock"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 库存 现货库存 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME铜仓库库存",
+      "LME铜库存总量",
+      "LME Copper Stock"
+    ],
+    "_fix_note": "黑名单ID ID01552124"
+  },
+  "2.4|沪铜月差结构": {
+    "subnode": "2.4",
+    "chart": "沪铜月差结构",
+    "names": [
+      "沪铜月差",
+      "沪铜近远月月差",
+      "沪铜期货月差"
+    ],
+    "grade": "A",
+    "hit_id": "a12841201",
+    "hit_name": "SMM: 沪铜期现价差-当月合约: 开盘价: 日度",
+    "hit_path": "0000001 / 0000011 / 0075894 / 0075911 / 0073118 / 0073130",
+    "hit_source": "smm",
+    "searched_terms": [
+      "沪铜月差",
+      "沪铜近远月月差",
+      "沪铜期货月差"
+    ]
+  },
+  "2.4|LME铜月差结构": {
+    "subnode": "2.4",
+    "chart": "LME铜月差结构",
+    "names": [
+      "LME铜月差",
+      "LME铜近远月月差"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME铜月差",
+      "LME铜近远月月差"
+    ],
+    "_fix_note": "黑名单ID ID01659225"
+  },
+  "2.4|沪伦月差比价": {
+    "subnode": "2.4",
+    "chart": "沪伦月差比价",
+    "names": [
+      "沪伦月差比价",
+      "SHFE LME月差比价"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "沪伦月差比价",
+      "SHFE LME月差比价"
+    ],
+    "_fix_note": "hit_name=知几无数据 不含铜品种词"
+  },
+  "2.5|沪铜估值分位": {
+    "subnode": "2.5",
+    "chart": "沪铜估值分位",
+    "names": [
+      "沪铜价格分位",
+      "铜价分位数"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪铜价格分位",
+      "铜价分位数"
+    ],
+    "_fix_note": "黑名单ID ID01659225"
+  },
+  "2.5|铜现货溢价均价": {
+    "subnode": "2.5",
+    "chart": "铜现货溢价均价",
+    "names": [
+      "铜仓单溢价均价",
+      "铜溢价均价"
+    ],
+    "grade": "A",
+    "hit_id": "ID00302438",
+    "hit_name": "铜：火法：仓单溢价均价：上海：美元（日）",
+    "hit_path": "有色|铜数据库|电解铜|价格|中国电解铜仓单提单溢价：日度",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "铜仓单溢价均价",
+      "铜溢价均价"
+    ]
+  },
+  "2.6|沪铜前20名持仓": {
+    "subnode": "2.6",
+    "chart": "沪铜前20名持仓",
+    "names": [
+      "沪铜前20名持仓",
+      "沪铜前20名净持仓"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪铜前20名持仓",
+      "沪铜前20名净持仓"
+    ],
+    "_fix_note": "黑名单ID ID01659225"
+  },
+  "2.6|LME铜注销仓单": {
+    "subnode": "2.6",
+    "chart": "LME铜注销仓单",
+    "names": [
+      "LME铜注销仓单",
+      "LME铜注销仓单数量"
+    ],
+    "grade": "A",
+    "hit_id": "FU00015498",
+    "hit_name": "LME：铜：注销仓单（日）",
+    "hit_path": "金融|期货|伦敦金属交易所（LME）|铜|仓单和交割库存|注销仓单",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME铜注销仓单",
+      "LME铜注销仓单数量"
+    ]
+  },
+  "2.6|LME铜注册仓单": {
+    "subnode": "2.6",
+    "chart": "LME铜注册仓单",
+    "names": [
+      "LME铜注册仓单",
+      "LME铜注册仓单数量"
+    ],
+    "grade": "A",
+    "hit_id": "FU00015497",
+    "hit_name": "LME：铜：注册仓单（日）",
+    "hit_path": "金融|期货|伦敦金属交易所（LME）|铜|仓单和交割库存|注册仓单",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME铜注册仓单",
+      "LME铜注册仓单数量"
+    ]
+  },
+  "2.6|LME铜仓单-月差联动": {
+    "subnode": "2.6",
+    "chart": "LME铜仓单-月差联动",
+    "names": [
+      "LME铜仓单月差联动",
+      "LME铜库存月差"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME铜仓单月差联动",
+      "LME铜库存月差"
+    ],
+    "_fix_note": "黑名单ID ID01659225"
+  },
+  "2.6|沪铜期限结构": {
+    "subnode": "2.6",
+    "chart": "沪铜期限结构",
+    "names": [
+      "沪铜期限结构",
+      "沪铜现金3个月升贴水"
+    ],
+    "grade": "A",
+    "hit_id": "ID00302614",
+    "hit_name": "电解铜：平水铜：升贴水：上海（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪铜期限结构",
+      "沪铜现金3个月升贴水"
+    ]
+  }
+}

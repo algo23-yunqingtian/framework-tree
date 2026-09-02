@@ -1,0 +1,318 @@
+{
+  "2.1|沪镍主力合约价格": {
+    "subnode": "2.1",
+    "chart": "沪镍主力合约价格",
+    "names": [
+      "沪镍主力合约收盘价",
+      "SHFE镍主力收盘价"
+    ],
+    "grade": "A",
+    "hit_id": "FU00014997",
+    "hit_name": "SHFE：镍：主力合约：收盘价（日）",
+    "hit_path": "商品数据库 期货数据库 有色品种 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪镍主力合约收盘价",
+      "SHFE镍主力收盘价"
+    ]
+  },
+  "2.1|沪镍持仓量": {
+    "subnode": "2.1",
+    "chart": "沪镍持仓量",
+    "names": [
+      "沪镍主力合约持仓量",
+      "SHFE镍主力持仓量"
+    ],
+    "grade": "A",
+    "hit_id": "FU00018043",
+    "hit_name": "SHFE：镍：主力合约：单边交易：持仓量（日）",
+    "hit_path": "商品数据库 期货数据库 有色品种 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪镍主力合约持仓量",
+      "SHFE镍主力持仓量"
+    ]
+  },
+  "2.1|沪镍期限结构": {
+    "subnode": "2.1",
+    "chart": "沪镍期限结构",
+    "names": [
+      "沪镍近远月月差",
+      "沪镍月差"
+    ],
+    "grade": "B",
+    "hit_id": "ID01363129",
+    "hit_name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 市场价格 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪镍近远月月差",
+      "沪镍月差"
+    ],
+    "fix_note": "命中MHP镍远期现货价格，非沪镍月差"
+  },
+  "2.2|镍现货升贴水": {
+    "subnode": "2.2",
+    "chart": "镍现货升贴水",
+    "names": [
+      "SMM1#电解镍升贴水",
+      "SMM 1#电解镍升贴水"
+    ],
+    "grade": "A",
+    "hit_id": "ID00302593",
+    "hit_name": "电解镍：Ni≥99.96%：甘肃产：升贴水：中国：金川（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "SMM1#电解镍升贴水",
+      "SMM 1#电解镍升贴水"
+    ]
+  },
+  "2.2|镍品种现货价差": {
+    "subnode": "2.2",
+    "chart": "镍品种现货价差",
+    "names": [
+      "电解镍现货价 NPI现货价",
+      "电解镍价格 镍生铁价格"
+    ],
+    "grade": "A",
+    "hit_id": "ID01532833",
+    "hit_name": "电解镍：Ni≥99.99%：挪威产：现货价：中国：保税区（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "电解镍现货价 NPI现货价",
+      "电解镍价格 镍生铁价格"
+    ]
+  },
+  "2.2|LME镍0-3升贴水": {
+    "subnode": "2.2",
+    "chart": "LME镍0-3升贴水",
+    "names": [
+      "LME镍0-3升贴水",
+      "LME镍CASH-3M"
+    ],
+    "grade": "B",
+    "hit_id": "ID01319373",
+    "hit_name": "水淬镍：30-35%Ni：北马其顿产：升贴水（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME镍0-3升贴水",
+      "LME镍CASH-3M"
+    ],
+    "fix_note": "命中水淬镍升贴水(北马其顿)，非LME镍0-3"
+  },
+  "2.3|LME镍主力合约价格": {
+    "subnode": "2.3",
+    "chart": "LME镍主力合约价格",
+    "names": [
+      "LME镍主力合约收盘价",
+      "LME镍3个月期货价格"
+    ],
+    "grade": "B",
+    "hit_id": "FU00014997",
+    "hit_name": "SHFE：镍：主力合约：收盘价（日）",
+    "hit_path": "商品数据库 期货数据库 有色品种 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME镍主力合约收盘价",
+      "LME镍3个月期货价格"
+    ],
+    "fix_note": "命中SHFE镍主力(非LME)"
+  },
+  "2.3|沪伦镍比价": {
+    "subnode": "2.3",
+    "chart": "沪伦镍比价",
+    "names": [
+      "沪伦镍比价",
+      "SHFE LME镍比价"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "沪伦镍比价",
+      "SHFE LME镍比价"
+    ]
+  },
+  "2.3|LME镍仓单数量": {
+    "subnode": "2.3",
+    "chart": "LME镍仓单数量",
+    "names": [
+      "LME镍仓单数量",
+      "LME镍注册仓单"
+    ],
+    "grade": "B",
+    "hit_id": "ID01363127",
+    "hit_name": "MHP：NI≥34%，CO≥2%：LME镍折扣系数：中国主要港口（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 市场价格 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME镍仓单数量",
+      "LME镍注册仓单"
+    ],
+    "fix_note": "命中MHP镍折扣系数，非LME镍仓单"
+  },
+  "2.4|沪镍月差结构": {
+    "subnode": "2.4",
+    "chart": "沪镍月差结构",
+    "names": [
+      "沪镍月差",
+      "沪镍近远月月差"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪镍月差",
+      "沪镍近远月月差"
+    ],
+    "fix_note": "命中精炼镍产量，完全无关"
+  },
+  "2.4|沪伦月差比价": {
+    "subnode": "2.4",
+    "chart": "沪伦月差比价",
+    "names": [
+      "沪伦月差比价",
+      "SHFE LME月差比价"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "沪伦月差比价",
+      "SHFE LME月差比价"
+    ]
+  },
+  "2.4|LME镍现金-3个月月差": {
+    "subnode": "2.4",
+    "chart": "LME镍现金-3个月月差",
+    "names": [
+      "LME镍现金3个月月差",
+      "LME镍Cash-3M"
+    ],
+    "grade": "B",
+    "hit_id": "ID01363127",
+    "hit_name": "MHP：NI≥34%，CO≥2%：LME镍折扣系数：中国主要港口（日）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 价格 市场价格 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME镍现金3个月月差",
+      "LME镍Cash-3M"
+    ],
+    "fix_note": "命中MHP镍折扣系数，非LME镍现金-3M月差"
+  },
+  "2.5|沪镍估值分位": {
+    "subnode": "2.5",
+    "chart": "沪镍估值分位",
+    "names": [
+      "沪镍价格分位",
+      "沪镍价格分位数"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪镍价格分位",
+      "沪镍价格分位数"
+    ],
+    "fix_note": "命中精炼镍产量，完全无关"
+  },
+  "2.5|镍冶炼利润NPI路线": {
+    "subnode": "2.5",
+    "chart": "镍冶炼利润NPI路线",
+    "names": [
+      "NPI冶炼利润",
+      "镍生铁冶炼利润"
+    ],
+    "grade": "A",
+    "hit_id": "ID01990804",
+    "hit_name": "镍生铁：RKEF工艺：利润：科纳韦：人民币计（日）",
+    "hit_path": "行业数据 钢铁 生铁数据库 Mysteel调研 其他调研 成本利润",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "NPI冶炼利润",
+      "镍生铁冶炼利润"
+    ]
+  },
+  "2.5|印尼高冰镍完全成本": {
+    "subnode": "2.5",
+    "chart": "印尼高冰镍完全成本",
+    "names": [
+      "印尼高冰镍完全成本",
+      "高冰镍完全成本"
+    ],
+    "grade": "B",
+    "hit_id": "ID01525679",
+    "hit_name": "高冰镍：以金属量计：产量：印尼：老口径（月）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "印尼高冰镍完全成本",
+      "高冰镍完全成本"
+    ],
+    "fix_note": "命中高冰镍产量，非完全成本"
+  },
+  "2.5|镍品种间利润分化": {
+    "subnode": "2.5",
+    "chart": "镍品种间利润分化",
+    "names": [
+      "镍品种利润分化",
+      "电解镍利润 NPI利润"
+    ],
+    "grade": "A",
+    "hit_id": "ID01536581",
+    "hit_name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
+    "hit_path": "行业数据 钢铁 不锈钢数据库 Mysteel调研 其他调研 成本利润",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "镍品种利润分化",
+      "电解镍利润 NPI利润"
+    ]
+  },
+  "2.6|沪镍前20名持仓": {
+    "subnode": "2.6",
+    "chart": "沪镍前20名持仓",
+    "names": [
+      "沪镍前20名持仓",
+      "沪镍前20名净持仓"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "沪镍前20名持仓",
+      "沪镍前20名净持仓"
+    ],
+    "fix_note": "命中精炼镍产量，完全无关"
+  },
+  "2.6|LME镍库存": {
+    "subnode": "2.6",
+    "chart": "LME镍库存",
+    "names": [
+      "LME镍仓库库存",
+      "LME镍库存总量"
+    ],
+    "grade": "B",
+    "hit_id": "ID01490913",
+    "hit_name": "精炼镍：库存：中国：27家样本仓库（周）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 库存 现货库存 镍金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "LME镍仓库库存",
+      "LME镍库存总量"
+    ],
+    "fix_note": "命中中国27家样本仓库，非LME镍库存"
+  }
+}
