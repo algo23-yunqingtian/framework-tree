@@ -475,6 +475,38 @@ PAGES = {
         "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
     },
 
+    "cu_5_2": {
+        "file": "cu_5_2.html",
+        "min_bytes": 22000,
+        "charts": 3,
+        "cids": ["echart_cu_52_c1", "echart_cu_52_c2", "echart_cu_52_c3"],
+        "label": "终端消费 5.2",
+        "has_seasonal": False,
+    },
+    "cu_5_3": {
+        "file": "cu_5_3.html",
+        "min_bytes": 37000,
+        "charts": 4,
+        "cids": ["echart_cu_53_c1", "echart_cu_53_c2", "echart_cu_53_c3", "echart_cu_53_c4"],
+        "label": "消费价格 5.3",
+        "has_seasonal": False,
+    },
+    "cu_6_3": {
+        "file": "cu_6_3.html",
+        "min_bytes": 39000,
+        "charts": 4,
+        "cids": ["echart_cu_63_c1", "echart_cu_63_c2", "echart_cu_63_c3", "echart_cu_63_c4"],
+        "label": "制品出口 6.3",
+        "has_seasonal": False,
+    },
+    "cu_6_4": {
+        "file": "cu_6_4.html",
+        "min_bytes": 36000,
+        "charts": 4,
+        "cids": ["echart_cu_64_c1", "echart_cu_64_c2", "echart_cu_64_c3", "echart_cu_64_c4"],
+        "label": "海外对华发运 6.4",
+        "has_seasonal": False,
+    },
     "cu_6_1": {
         "file": "cu_6_1.html",
         "min_bytes": 8000,
@@ -511,6 +543,46 @@ PAGES = {
         "has_seasonal": True,   # 主图年跨度>=3年才有季节视图
     },
 
+    "al_3_1_2": {
+        "file": "al_3_1_2.html",
+        "min_bytes": 29000,
+        "charts": 2,
+        "cids": ["echart_al_312_c1", "echart_al_312_c2"],
+        "label": "海外矿分国别 3.1.2",
+        "has_seasonal": False,
+    },
+    "al_3_1_4": {
+        "file": "al_3_1_4.html",
+        "min_bytes": 84000,
+        "charts": 4,
+        "cids": ["echart_al_314_c1", "echart_al_314_c2", "echart_al_314_c3", "echart_al_314_c4"],
+        "label": "矿进口 3.1.4",
+        "has_seasonal": False,
+    },
+    "al_6_1": {
+        "file": "al_6_1.html",
+        "min_bytes": 104000,
+        "charts": 4,
+        "cids": ["echart_al_61_c1", "echart_al_61_c2", "echart_al_61_c3", "echart_al_61_c4"],
+        "label": "原料进口 6.1",
+        "has_seasonal": False,
+    },
+    "al_6_4": {
+        "file": "al_6_4.html",
+        "min_bytes": 37000,
+        "charts": 4,
+        "cids": ["echart_al_64_c1", "echart_al_64_c2", "echart_al_64_c3", "echart_al_64_c4"],
+        "label": "海外对华发运 6.4",
+        "has_seasonal": False,
+    },
+    "al_7_3": {
+        "file": "al_7_3.html",
+        "min_bytes": 39000,
+        "charts": 4,
+        "cids": ["echart_al_73_c1", "echart_al_73_c2", "echart_al_73_c3", "echart_al_73_c4"],
+        "label": "能源/原料成本 7.3",
+        "has_seasonal": False,
+    },
     "al_7_2": {
         "file": "al_7_2.html",
         "min_bytes": 15000,

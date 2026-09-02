@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "3.60",
-  "updated": "2026-09-03 01:41",
+  "version": "3.61",
+  "updated": "2026-09-03 02:12",
   "status": "部分验证",
   "说明": "v3.49: merge win分支(110指标) + main锂硅(79指标)，7金属 correction 全合并",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
@@ -17621,6 +17621,888 @@
    "_nodes": [
     "2.6"
    ]
+  },
+  "cu_5_2_consumption": {
+   "name": "SMM: 电解铜供需平衡表: 终端消费量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10015270"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_5_2_consumption_2": {
+   "name": "SMM: 铜产业链平衡: 电解铜终端消费量: 季度",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "CU": "a10099746"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_5_2_consumption_3": {
+   "name": "SMM: 电解铜供需平衡表-预测值: 终端消费量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a12731920"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_5_2_consumption_4": {
+   "name": "SMM: 电解铝平衡: 终端消费量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10016034"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "cu_5_3_pmi": {
+   "name": "南非：制造业PMI：数值（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "GM0000000488"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_5_3_pmi_2": {
+   "name": "瑞典：制造业PMI：数值（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "GM0000000407"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_5_3_pmi_3": {
+   "name": "瑞士：制造业PMI：数值（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "GM0000000453"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_5_3_pmi_4": {
+   "name": "希腊：制造业PMI：数值（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "GM0000000444"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_5_3_pmi_5": {
+   "name": "香港：制造业PMI：数值（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "GM0000000521"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_5_3_balance": {
+   "name": "SMM: 铜产业链平衡: 铜精矿需求量: 季度",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "CU": "a10099732"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "cu_6_3_export": {
+   "name": "韩国：裸铜线：出口数量（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "GM00125550"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_3_export_2": {
+   "name": "未锻轧铜及铜材：出口数量终值：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "CM0000207453"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_3_export_3": {
+   "name": "未锻轧铜及铜材：出口数量终值同比：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "CM0000207455"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_3_export_4": {
+   "name": "中国海关: 铜材出口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10015356"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_3_export_5": {
+   "name": "中国海关: 铜杆线出口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127153"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_3_export_6": {
+   "name": "中国海关: 铜杆线出口额: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127158"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_3_export_7": {
+   "name": "中国海关: 铜板带出口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127123"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_3_export_8": {
+   "name": "中国海关: 铜板带出口额: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a10127128"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "cu_6_4_import": {
+   "name": "韩国海关：精炼铜坯料：进口金额合计：韩国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01869048"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_import_2": {
+   "name": "韩国海关：精炼铜坯料：进口数量合计：韩国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01869054"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_import_3": {
+   "name": "韩国海关：未锻造精炼铜：进口金额合计：韩国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01869076"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_import_4": {
+   "name": "韩国海关：未锻造精炼铜：进口数量合计：韩国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "ID01869074"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_import_5": {
+   "name": "中国海关: 其他精炼铜丝进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a12816544"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_import_6": {
+   "name": "中国海关: 最大截面尺寸＞6mm的精炼铜丝进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a12816521"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_export": {
+   "name": "中国海关: 其他精炼铜丝月度出口量: 进料加工贸易: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a12816560"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_import_7": {
+   "name": "中国海关: 其他精炼铜丝进口: 海关特殊监管区域进口设备: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a12816550"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "cu_6_4_export_2": {
+   "name": "中国海关: 其他精炼铜丝月度出口: 对外承包工程出口货物: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "CU": "a12816556"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_3_1_2_output": {
+   "name": "铝土矿：产量：澳大利亚（季）",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01655592"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_3_1_2_output_2": {
+   "name": "铝土矿：产量：西澳大利亚州（季）",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01655548"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_3_1_2_output_3": {
+   "name": "SMM:  海外铝土矿产量: 澳大利亚: 季度",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "AL": "a12798728"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_3_1_2_bauxite": {
+   "name": "沸腾环贸: 铝土矿出港量_澳大利亚: 韦帕: 周度",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "a10118554"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "al_3_1_4_bauxite": {
+   "name": "铝土矿：三水型：45%Al，3%Si：几内亚产：汇总价格：曹妃甸港（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01224766"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_3_1_4_bauxite_2": {
+   "name": "铝土矿：三水型：45%Al，3%Si：几内亚产：汇总价格：董家口港（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "ID01224769"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_3_1_4_import": {
+   "name": "中国海关: 铝土矿进口均价: 几内亚: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10016313"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_3_1_4_import_2": {
+   "name": "中国海关: 氧化铝进口量: 几内亚: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10167781"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_3_1_4_output": {
+   "name": "SMM:  海外铝土矿产量: 几内亚: 季度",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "AL": "a12798724"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_3_1_4_import_3": {
+   "name": "中国海关: 中国废铝进口量: 几内亚: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10166279"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "al_6_1_import": {
+   "name": "巴西：进口数量：氧化铝（周）",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "GM00229892"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_1_import_2": {
+   "name": "巴西：进口金额：氧化铝（周）",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "GM00231477"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_1_import_3": {
+   "name": "巴西：进口单价：氧化铝（周）",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "AL": "GM00232094"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_1_import_4": {
+   "name": "SMM: 山东氧化铝利润模型（进口矿产能）: 利润: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a12807524"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_1_import_5": {
+   "name": "SMM: 山西氧化铝利润模型（进口矿产能): 利润: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a12724750"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_1_import_6": {
+   "name": "SMM: 河南氧化铝利润模型（进口矿产能): 利润: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a12767880"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_1_import_7": {
+   "name": "SMM: 广西氧化铝利润模型（进口矿产能）: 利润: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a12807540"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_1_import_8": {
+   "name": "中国海关: 铝土矿进口量: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a10016324"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "al_6_4_output": {
+   "name": "氧化铝：产量：重庆（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001751"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_2": {
+   "name": "氧化铝：产量：广西（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001754"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_3": {
+   "name": "氧化铝：产量：贵州（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001749"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_4": {
+   "name": "氧化铝：产量：河南（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001748"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_5": {
+   "name": "SMM: 海外氧化铝产量 - 印度: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12750924"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_6": {
+   "name": "SMM: 海外氧化铝产量 - 印尼: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12751079"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_7": {
+   "name": "SMM: 海外氧化铝产量 - 北美: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12750921"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_8": {
+   "name": "SMM: 海外氧化铝产量 - 南美: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12750923"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_6_4_output_9": {
+   "name": "SMM: 海外氧化铝产量 - 俄罗斯: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12750927"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "al_7_3_cost": {
+   "name": "电解铝：生产完全成本：重庆（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001765"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_2": {
+   "name": "电解铝：生产完全成本：福建（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001778"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_3": {
+   "name": "电解铝：生产完全成本：甘肃（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001774"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_4": {
+   "name": "电解铝：生产完全成本：广西（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "ID01001768"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_5": {
+   "name": "SMM: 电解铝成本利润模型: 电价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "AL": "a10016215"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_6": {
+   "name": "SMM: 电解铝分地区成本: 云南: 电力: 季度",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "AL": "a12802035"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_7": {
+   "name": "SMM: 铝产业链价格预测模型: 电解铝成本: 季度",
+   "unit": "",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "AL": "a10016177"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_8": {
+   "name": "SMM: 2024: 铝产业价格链预测模型: 中国电解铝平均成本: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12804845"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "al_7_3_cost_9": {
+   "name": "SMM: 2022: 铝产业价格链预测模型: 中国电解铝平均成本: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "AL": "a12804791"
+   },
+   "_origin": "p4_gap_fill_20260903",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
   }
  },
  "64_group": {
@@ -17636,7 +18518,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.60",
+ "version": "v3.61",
  "updated": "2026-09-02 19:23",
  "change": "P1 series实测: 271条 verified=False→True → v3.54"
 }
