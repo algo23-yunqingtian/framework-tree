@@ -151,7 +151,7 @@ def is_stale(points, max_gap_days=180):
 
 
 def build_node(node, ind_list, meta, comm_only=None):
-    ver, version_str = meta.get("version", "3.4"), "v" + str(meta.get("version", "3.4"))
+    ver, version_str = meta.get("version", "3.4"), "v" + str(meta.get("version", "3.4")).lstrip("v")
     data = []
     for mid, code, name, unit, freq in ind_list:
         m = load_metric(mid, code)
