@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "3.55",
-  "updated": "2026-09-02 20:29",
+  "version": "3.56",
+  "updated": "2026-09-02 23:29",
   "status": "部分验证",
   "说明": "v3.49: merge win分支(110指标) + main锂硅(79指标)，7金属 correction 全合并",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
@@ -15532,6 +15532,1017 @@
    "_nodes": [
     "4.4"
    ]
+  },
+  "zn_73_elec": {
+   "name": "榆林：大工业用电：两部制：35千伏：电度用电价格（月）",
+   "unit": "元/千瓦小时",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "CM00932128"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "zn_23_comex": {
+   "name": "COMEX：锌：期货库存（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "FU00078777"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "zn_311_rc_imp": {
+   "name": "锌精矿：进口：50%Zn：粗炼费最低价：中国（日）",
+   "unit": "美元/干吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID00188151"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.1"
+   ]
+  },
+  "zn_312_port_inv": {
+   "name": "锌精矿：港口库存：中国（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID00188330"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2",
+    "6.1",
+    "7.2",
+    "7.3"
+   ]
+  },
+  "zn_52_gi_cap_util": {
+   "name": "镀锌板卷：钢铁企业：产能利用率：中国（周）",
+   "unit": "百分比",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID00366836"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "zn_314_output": {
+   "name": "样本企业：精炼锌：产量：中国（月）",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID00407922"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4",
+    "7.1",
+    "7.2"
+   ]
+  },
+  "zn_311_tc_imp": {
+   "name": "锌精矿：进口：50%Zn：加工费均价（日）",
+   "unit": "美元/干吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID00408213"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.1",
+    "3.1.3",
+    "6.1"
+   ]
+  },
+  "zn_25_aux": {
+   "name": "锌精矿：国产：50%Zn：加工费均价：广西（日）",
+   "unit": "元/金属吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01010065"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.5",
+    "3.1.2",
+    "3.1.3",
+    "7.1",
+    "7.2"
+   ]
+  },
+  "zn_312_aux": {
+   "name": "锌精矿：国产：50%Zn：加工费均价：河南（日）",
+   "unit": "元/金属吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01010068"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_312_aux_2": {
+   "name": "锌精矿：国产：50%Zn：加工费均价：湖南（日）",
+   "unit": "元/金属吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01010071"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_312_aux_3": {
+   "name": "锌精矿：国产：50%Zn：加工费均价：陕西（日）",
+   "unit": "元/金属吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01010077"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_312_aux_4": {
+   "name": "锌精矿：国产：50%Zn：加工费均价：四川（日）",
+   "unit": "元/金属吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01010080"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_312_port_inv_2": {
+   "name": "锌精矿：港口库存：锦州港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01150774"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_312_port_inv_3": {
+   "name": "锌精矿：港口库存：黄埔港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01150778"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_312_raw_days": {
+   "name": "锌精矿：原料：库存天数：中国（周）",
+   "unit": "日",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01167314"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_312_port_inv_4": {
+   "name": "锌精矿：港口库存：天津港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01167366"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_73_zinc_powder": {
+   "name": "锌粉：325目：汇总价格：湖南（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01243471"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "zn_52_gi_turnover": {
+   "name": "镀锌板卷：成交量：中国（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01306848"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "zn_315_zinc_oxide_low": {
+   "name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：河南（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01307531"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.5"
+   ]
+  },
+  "zn_315_zinc_oxide_low_2": {
+   "name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：江苏（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01307533"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.5"
+   ]
+  },
+  "zn_315_zinc_oxide_low_3": {
+   "name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：湖南（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01307534"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.5"
+   ]
+  },
+  "zn_315_zinc_oxide_low_4": {
+   "name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：河北（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01307537"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.5"
+   ]
+  },
+  "zn_314_net_exp": {
+   "name": "锌粉及片状粉末：进口数量合计：中国（月）",
+   "unit": "千克",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01314250"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "zn_313_h2so4": {
+   "name": "硫酸：98%：出厂价：山东：无棣鑫岳（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01563956"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.3"
+   ]
+  },
+  "zn_314_output_2": {
+   "name": "精炼锌：产量：中国（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01593781"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "zn_311_aux": {
+   "name": "锌：矿山产量：澳大利亚（季）",
+   "unit": "千吨",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01655718"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.1"
+   ]
+  },
+  "zn_313_h2so4_2": {
+   "name": "硫酸：98%：出厂价：山东：齐成石化（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01667528"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.3",
+    "7.3"
+   ]
+  },
+  "zn_312_port_inv_5": {
+   "name": "锌精矿：港口库存：钦州港（周）",
+   "unit": "万吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "ID01865643"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "zn_22_plant_inv": {
+   "name": "SMM: 精炼锌冶炼厂成品库存: 月度",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10001841"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "zn_61_conc_import": {
+   "name": "中国海关: 锌精矿进口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10001843"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "zn_61_conc_import_by_ctry": {
+   "name": "中国海关: 巴西进口矿数量: 月度",
+   "unit": "万吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10003464"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.1"
+   ]
+  },
+  "zn_23_lme_3m": {
+   "name": "LME: 锌 3M收盘价: 日度",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10017942"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "zn_53_lme_cancel": {
+   "name": "LME: 锌仓库注销仓单: 合计: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10017954"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.3",
+    "6.4"
+   ]
+  },
+  "zn_64_lme_reg": {
+   "name": "LME: 锌仓库注册仓单: 合计: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10017976"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.4"
+   ]
+  },
+  "zn_21_lme_inv": {
+   "name": "LME: 锌库存总计: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10017992"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1",
+    "4.1",
+    "5.3",
+    "6.4"
+   ]
+  },
+  "zn_53_alloy_export": {
+   "name": "中国海关: 锌合金出口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10018028"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.3",
+    "6.2"
+   ]
+  },
+  "zn_53_export": {
+   "name": "中国海关: 精炼锌出口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10018029"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.3",
+    "6.2"
+   ]
+  },
+  "zn_63_zno_trade": {
+   "name": "中国海关: 氧化锌出口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10018034"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "zn_62_import_4": {
+   "name": "中国海关: 精炼锌进口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10018062"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.2"
+   ]
+  },
+  "zn_23_lunlun": {
+   "name": "SMM: 精炼锌进口盈亏: 沪市锌锭升贴水: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10018158"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3",
+    "6.2"
+   ]
+  },
+  "zn_23_lunlun_2": {
+   "name": "SMM: 精炼锌进口盈亏: 锌沪伦比值: 日度",
+   "unit": "-",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10018159"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3",
+    "2.4",
+    "5.3"
+   ]
+  },
+  "zn_61_conc_imp_pnl": {
+   "name": "SMM: 锌精矿日度进口盈亏: 锌精矿进口盈亏: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10018183"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.1",
+    "7.2"
+   ]
+  },
+  "zn_25_cash_profit": {
+   "name": "SMM: 精炼锌企业生产利润（不含硫酸和小金属收益）: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10020636"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.5",
+    "7.2"
+   ]
+  },
+  "zn_22_aux": {
+   "name": "SMM: 上海锌锭现货升贴水_M合约: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10021321"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2",
+    "7.2"
+   ]
+  },
+  "zn_22_basis": {
+   "name": "SMM: 上海锌锭现货10: 15期货价格: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10021322"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "zn_24_term_struct": {
+   "name": "SHFE: 锌锭_当月收盘价: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10021326"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "zn_21_close_main": {
+   "name": "SHFE: 锌: 主力合约: 收盘价: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10023525"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "zn_42_warrant_cancel": {
+   "name": "SHFE: 锌: 仓单日报: 期货增减: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10023798"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.2"
+   ]
+  },
+  "zn_42_warrant": {
+   "name": "SHFE: 锌: 仓单日报分地区_上海: 期货: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10023853"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.2"
+   ]
+  },
+  "zn_41_aux": {
+   "name": "SHFE: 锌: 库存周报: 本周库存期货: 周度",
+   "unit": "吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10023862"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.1",
+    "6.4"
+   ]
+  },
+  "zn_21_aux": {
+   "name": "SHFE: 锌: 一月合约: 成交量: 日度",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10028045"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1",
+    "2.6"
+   ]
+  },
+  "zn_21_openinterest_2": {
+   "name": "SHFE: 锌: 六月合约: 持仓量: 日度",
+   "unit": "手",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10028100"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1"
+   ]
+  },
+  "zn_51_gi_raw_inv": {
+   "name": "SMM: 镀锌原料库存: 周度",
+   "unit": "吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10097189"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.1"
+   ]
+  },
+  "zn_51_gi_prod_inv": {
+   "name": "SMM: 镀锌成品库存: 周度",
+   "unit": "吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10097190"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.1",
+    "5.2"
+   ]
+  },
+  "zn_26_lme_oi": {
+   "name": "LME: 锌: 持仓量: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10097485"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.6"
+   ]
+  },
+  "zn_21_lme_03": {
+   "name": "LME: 锌0-3升贴水: 日度",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10097491"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1",
+    "6.4"
+   ]
+  },
+  "zn_63_prod_trade": {
+   "name": "中国海关: 电镀锌的铁或非合金钢平板轧材出口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10098157"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "zn_53_prod_export": {
+   "name": "中国海关: 其他镀或涂锌瓦楞形普通钢铁板材出口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10098189"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.3",
+    "6.3"
+   ]
+  },
+  "zn_22_spot": {
+   "name": "SMM: 锌产业链平衡及价格预测: 0#锌现货均价: 季度",
+   "unit": "元/吨",
+   "freq": "quarterly",
+   "verified": true,
+   "ids": {
+    "ZN": "a10099062"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "zn_21_warrant": {
+   "name": "SHFE: 锌: 仓单日报: 期货: 日度",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a10157132"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.1",
+    "2.4",
+    "4.2"
+   ]
+  },
+  "zn_63_zno_exp_by_ctry": {
+   "name": "中国海关: 氧化锌出口量: 越南: 月度",
+   "unit": "千克",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a12775018"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "zn_63_coated_export": {
+   "name": "中国海关: 镀锌板出口量: 月度",
+   "unit": "吨",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "a12803961"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "6.3"
+   ]
+  },
+  "zn_44_plant_inv": {
+   "name": "SMM: 厂库库存: SMM精炼锌冶炼厂样本企业周度成品库存: 周度",
+   "unit": "吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "a12811379"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.4"
+   ]
+  },
+  "zn_45_in_transit": {
+   "name": "SMM: 在途库存: SMM精炼锌冶炼厂样本企业周度成品库存: 周度",
+   "unit": "吨",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "a12811380"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "4.5"
+   ]
+  },
+  "zn_24_cash_fut": {
+   "name": "SMM: 沪锌期现价差: 当月合约: 开盘价: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "a12841411"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.4"
+   ]
+  },
+  "zn_25_port_inv": {
+   "name": "SMM: 进口锌矿库存: 主要港口汇总: 周度",
+   "unit": "",
+   "freq": "weekly",
+   "verified": true,
+   "ids": {
+    "ZN": "j02791569"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "zn_71_profit_by_prov": {
+   "name": "SMM: 甘肃精炼锌企业利润模型(国产矿): 硫酸利润: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "j02871285"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.1"
+   ]
+  },
+  "zn_53_pmi": {
+   "name": "NBS: 制造业采购经理指数: 月度",
+   "unit": "%",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "ZN": "n00112097"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
+  },
+  "zn_23_lme_cash": {
+   "name": "LME: 锌: 现货价: 日度",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "s20193728"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "2.3"
+   ]
+  },
+  "zn_73_sulfur": {
+   "name": "SMM: 硫磺(EXW山东) - 最低价: 日度",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "ZN": "s22857913"
+   },
+   "_origin": "p3_correction_fill_20260902",
+   "_tier": "A",
+   "_nodes": [
+    "7.3"
+   ]
   }
  },
  "64_group": {
@@ -15547,7 +16558,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.55",
+ "version": "v3.56",
  "updated": "2026-09-02 19:23",
  "change": "P1 series实测: 271条 verified=False→True → v3.54"
 }
