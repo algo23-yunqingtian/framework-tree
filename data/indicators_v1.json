@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v3.46",
+  "version": "v3.47",
   "updated": "2026-08-31",
   "status": "部分验证",
   "说明": "v3.42: gap_fill_20260831 补19空白节点第一批 +9 指标(CU 4.2/4.3/5.1/7.1 + AL 3.1.1)",
@@ -12957,6 +12957,104 @@
    "_nodes": [
     "5.3"
    ]
+  },
+  "al_22_open_spread": {
+   "name": "SMM: 沪铝期现价差: 当月合约: 开盘价: 日度",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "al": "a12841272"
+   },
+   "_origin": "correction_v2_AL_价格信号_2.2|铝期货期限结构",
+   "_tier": "A",
+   "_nodes": [
+    "2.2"
+   ]
+  },
+  "al_25_warrant_premium_avg_price": {
+   "name": "铝：仓单溢价均价（日）",
+   "unit": "",
+   "freq": "daily",
+   "verified": true,
+   "ids": {
+    "al": "ID01172779"
+   },
+   "_origin": "correction_v2_AL_价格信号_2.5|铝现货溢价",
+   "_tier": "A",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "al_51_util_capacity": {
+   "name": "铝板带箔：大型企业：开工率：产能＞20万吨（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "al": "ID01002090"
+   },
+   "_origin": "correction_v2_AL_需求_5.1|铝板带企业开工率",
+   "_tier": "A",
+   "_nodes": [
+    "5.1"
+   ]
+  },
+  "al_51_capacity_util": {
+   "name": "铝箔：加权平均产能利用率：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "al": "ID01532883"
+   },
+   "_origin": "correction_v2_AL_需求_5.1|铝箔企业开工率",
+   "_tier": "A",
+   "_nodes": [
+    "5.1"
+   ]
+  },
+  "al_51_capacity_util_2": {
+   "name": "铝型材：样本加权平均产能利用率：中国（月）",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "al": "ID01001620"
+   },
+   "_origin": "correction_v2_AL_需求_5.1|铝型材企业开工率",
+   "_tier": "A",
+   "_nodes": [
+    "5.1"
+   ]
+  },
+  "al_52_output_2": {
+   "name": "建筑铝型材：产量：中国（年）",
+   "unit": "",
+   "freq": "yearly",
+   "verified": true,
+   "ids": {
+    "al": "ID01668775"
+   },
+   "_origin": "correction_v2_AL_需求_5.2|建筑铝型材消费量",
+   "_tier": "A",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "al_53_export": {
+   "name": "中国海关: 铝材出口量: 环比: 月度",
+   "unit": "",
+   "freq": "monthly",
+   "verified": true,
+   "ids": {
+    "al": "a10096869"
+   },
+   "_origin": "correction_v2_AL_需求_5.3|铝材出口量",
+   "_tier": "A",
+   "_nodes": [
+    "5.3"
+   ]
   }
  },
  "64_group": {
@@ -12972,7 +13070,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.46",
- "updated": "2026-09-02 11:09",
- "change": "P1 correction注册: CU 30 + AL 38 + NI 31 + SN 11 (跳过 243)"
+ "version": "v3.47",
+ "updated": "2026-09-02 12:24",
+ "change": "P1 correction v2注册: CU 0 + AL 7 + NI 0 + SN 0 (跳过 323)"
 }

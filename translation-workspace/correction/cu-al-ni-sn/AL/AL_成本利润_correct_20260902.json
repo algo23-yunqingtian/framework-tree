@@ -53,17 +53,18 @@
       "Loss-making capacity ratio",
       "公开资讯/会员"
     ],
-    "grade": "B",
-    "hit_id": "ID01552110",
-    "hit_name": "USGS：粗铝：进口数量：美国（年）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 进出口 进口数据 美国",
-    "hit_source": "mysteel",
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
     "searched_terms": [
       "铝 亏损产量占比",
       "铝 亏损产量占比；盈利产量占比",
       "铝 行业亏损面/盈利占比",
       "铝 Loss-making capacity ratio"
-    ]
+    ],
+    "_fix_note": "黑名单ID ID01552110 被排除"
   },
   "7.2|氧化铝成本": {
     "subnode": "7.2",
@@ -75,18 +76,19 @@
       "Alumina spot price China",
       "公开/部分会员"
     ],
-    "grade": "B",
-    "hit_id": "ID01552110",
-    "hit_name": "USGS：粗铝：进口数量：美国（年）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 进出口 进口数据 美国",
-    "hit_source": "mysteel",
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
     "searched_terms": [
       "氧化铝现货均价",
       "SMM氧化铝指数；SMM全国氧化铝均价",
       "氧化铝指数；SMM全国氧化铝均价",
       "上海钢联分地区氧化铝价格；国内氧化铝现货均价",
       "铝 Alumina spot price China"
-    ]
+    ],
+    "_fix_note": "黑名单ID ID01552110 被排除"
   },
   "7.2|电力成本": {
     "subnode": "7.2",
@@ -122,7 +124,7 @@
       "Calcined anode price China",
       "公开/会员"
     ],
-    "grade": "A",
+    "grade": "B",
     "hit_id": "ID01001942",
     "hit_name": "预焙阳极：产量：中国（月）",
     "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铝金属",
@@ -133,7 +135,8 @@
       "预焙阳极均价；山东预焙阳极均价",
       "上海钢联主流地区预焙阳极价格；预焙阳极采购基准价",
       "铝 Calcined anode price China"
-    ]
+    ],
+    "_fix_note": "hit_name=预焙阳极：产量：中国（月） 不含AL品种词"
   },
   "7.2|辅料成本": {
     "subnode": "7.2",

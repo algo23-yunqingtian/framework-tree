@@ -1,215 +1,227 @@
 {
-  "|铜加工材表观消费量": {
-    "subnode": "",
-    "chart": "铜加工材表观消费量",
-    "names": [
-      "“产量+进口-出口”属于二次统计派生，且铜需求口径常被铝代铜、再生铜替代，不能代表真实终端消费"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "“产量+进口-出口”属于二次统计派生，且铜需求口径常被铝代铜、再生铜替代，不能代表真实终端消费"
-    ],
-    "_fix_note": "黑名单ID ID01659225"
-  },
-  "|铜加工材表观消费量季节性图": {
-    "subnode": "",
-    "chart": "铜加工材表观消费量季节性图",
-    "names": [
-      "属于统计派生+季节性装饰图，且表观消费量本身口径不稳"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "属于统计派生+季节性装饰图，且表观消费量本身口径不稳"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|铜加工行业库存周期热力图": {
-    "subnode": "",
-    "chart": "铜加工行业库存周期热力图",
-    "names": [
-      "“库存周期指数”偏模型化，且热力图不适合主报告；保留原料/成品库存天数更清晰"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "“库存周期指数”偏模型化，且热力图不适合主报告；保留原料/成品库存天数更清晰"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|铜加工材产量与开工率联动图（全行业打包）": {
-    "subnode": "",
-    "chart": "铜加工材产量与开工率联动图（全行业打包）",
-    "names": [
-      "不同产品产量单位、季节性和终端差异大，强凑一张图会降低可读性"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "不同产品产量单位、季节性和终端差异大，强凑一张图会降低可读性"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|铜加工材表观消费与精铜进口联动图": {
-    "subnode": "",
-    "chart": "铜加工材表观消费与精铜进口联动图",
-    "names": [
-      "表观消费口径不稳固，进口阴极铜更多是库存/套利变量，不是需求主指标"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "表观消费口径不稳固，进口阴极铜更多是库存/套利变量，不是需求主指标"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|终端消费结构占比图": {
-    "subnode": "",
-    "chart": "终端消费结构占比图",
-    "names": [
-      "降级为年度背景图",
-      "可作为背景，不适合作为高频跟踪图；应换成电网投资、家电排产、汽车产量等可验证指标"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "降级为年度背景图",
-      "可作为背景，不适合作为高频跟踪图；应换成电网投资、家电排产、汽车产量等可验证指标"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|空调+冰箱+洗衣机产量季节性图": {
-    "subnode": "",
-    "chart": "空调+冰箱+洗衣机产量季节性图",
-    "names": [
-      "删除季节性表述",
-      "可保留白电产量/排产时间序列，但不能做成近N年叠加+分位带的季节性图"
-    ],
-    "grade": "A",
-    "hit_id": "ID01324761",
-    "hit_name": "铜：产量：秘鲁：Antapaccay（月）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "删除季节性表述",
-      "可保留白电产量/排产时间序列，但不能做成近N年叠加+分位带的季节性图"
-    ]
-  },
-  "|铜线/铜棒出口与精铜杆开工率联动图": {
-    "subnode": "",
-    "chart": "铜线/铜棒出口与精铜杆开工率联动图",
-    "names": [
-      "铜线/铜棒出口归入5.2终端外需；精铜杆开工归入5.1加工端"
-    ],
-    "grade": "A",
-    "hit_id": "ID02035009",
-    "hit_name": "美国铜发展协会：裸铜线：可供量终端消费（年）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 需求 消费量 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "铜线/铜棒出口归入5.2终端外需；精铜杆开工归入5.1加工端"
-    ]
-  },
-  "|电网招标与电网投资联动图": {
-    "subnode": "",
-    "chart": "电网招标与电网投资联动图",
-    "names": [
-      "迁移至5.3",
-      "招标是电网投资的先行指标，更适合作为需求先行节点"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "迁移至5.3",
-      "招标是电网投资的先行指标，更适合作为需求先行节点"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|LME注销仓单占比季节性图": {
-    "subnode": "",
-    "chart": "LME注销仓单占比季节性图",
-    "names": [
-      "重构成LME仓单结构图",
-      "LME官方披露库存、open/cancelled warrants，但“注销仓单占比”是二次计算，且公开英文变量名无统一口径",
-      "但“注销仓单占比”是二次计算"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "重构成LME仓单结构图",
-      "LME官方披露库存、open/cancelled warrants，但“注销仓单占比”是二次计算，且公开英文变量名无统一口径",
-      "但“注销仓单占比”是二次计算"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|铜进口意向/到港量季节性图": {
-    "subnode": "",
-    "chart": "铜进口意向/到港量季节性图",
-    "names": [
-      "删除“意向量”和季节性图",
-      "“进口意向”不稳定、不可追踪；保留铜材进出口和精炼铜社会库存更硬"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "删除“意向量”和季节性图",
-      "“进口意向”不稳定、不可追踪；保留铜材进出口和精炼铜社会库存更硬"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "|制造业PMI新订单与铜价联动图": {
-    "subnode": "",
-    "chart": "制造业PMI新订单与铜价联动图",
-    "names": [
-      "保留但弱化铜价",
-      "PMI新订单可作为宏观先行指标，铜价属于价格变量，不适合与需求指标长期强绑定"
-    ],
-    "grade": "A",
-    "hit_id": "s20015629",
-    "hit_name": "SMM: 河北废铜: 保定光亮铜线-最低价: 日度",
-    "hit_path": "0000001 / 0000011 / 0003941 / 0003954 / 0047748 / 0047749",
-    "hit_source": "smm",
-    "searched_terms": [
-      "保留但弱化铜价",
-      "PMI新订单可作为宏观先行指标，铜价属于价格变量，不适合与需求指标长期强绑定"
-    ]
-  },
-  "5.1|国内主要精铜杆企业开工率": {
+  "5.1|精铜杆企业开工率": {
     "subnode": "5.1",
-    "chart": "国内主要精铜杆企业开工率",
+    "chart": "精铜杆企业开工率",
     "names": [
       "精铜杆企业开工率",
-      "国内主要精铜杆企业开工率；历史文中也出现“精铜制杆周度开工率”",
-      "精铜杆产能利用率；Mysteel曾使用“国内精铜杆产能利用率”",
-      "周度；SMM付费/VIP；Mysteel订阅；%**"
+      "精铜杆开工率 SMM",
+      "精铜制杆开工率"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "精铜杆企业开工率",
+      "精铜杆开工率 SMM",
+      "精铜制杆开工率"
+    ],
+    "fix_note": "命中钢铁高炉开工率"
+  },
+  "5.1|再生铜杆企业开工率": {
+    "subnode": "5.1",
+    "chart": "再生铜杆企业开工率",
+    "names": [
+      "再生铜杆开工率",
+      "再生铜杆开工率 SMM"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "再生铜杆开工率",
+      "再生铜杆开工率 SMM"
+    ],
+    "fix_note": "命中钢铁高炉开工率"
+  },
+  "5.1|黄铜棒企业开工率": {
+    "subnode": "5.1",
+    "chart": "黄铜棒企业开工率",
+    "names": [
+      "黄铜棒开工率",
+      "黄铜棒开工率 SMM",
+      "黄铜棒产能利用率"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "黄铜棒开工率",
+      "黄铜棒开工率 SMM",
+      "黄铜棒产能利用率"
+    ],
+    "fix_note": "命中钢铁高炉开工率"
+  },
+  "5.1|铜线缆企业开工率": {
+    "subnode": "5.1",
+    "chart": "铜线缆企业开工率",
+    "names": [
+      "铜线缆开工率",
+      "铜线缆企业开工率",
+      "电线电缆企业开工率"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "铜线缆开工率",
+      "铜线缆企业开工率",
+      "电线电缆企业开工率"
+    ],
+    "fix_note": "命中钢铁高炉开工率"
+  },
+  "5.1|铜管企业开工率": {
+    "subnode": "5.1",
+    "chart": "铜管企业开工率",
+    "names": [
+      "铜管企业开工率",
+      "铜管开工率 SMM",
+      "铜管产能利用率"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "铜管企业开工率",
+      "铜管开工率 SMM",
+      "铜管产能利用率"
+    ],
+    "fix_note": "命中钢铁高炉开工率"
+  },
+  "5.1|精铜杆待交订单与库存天数": {
+    "subnode": "5.1",
+    "chart": "精铜杆待交订单与库存天数",
+    "names": [
+      "精铜杆待交订单",
+      "精铜杆库存天数"
+    ],
+    "grade": "B",
+    "hit_id": "ID01049501",
+    "hit_name": "精铜杆：产量：中国（月）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "精铜杆待交订单",
+      "精铜杆库存天数"
+    ],
+    "fix_note": "命中精铜杆产量(非订单/库存天数)"
+  },
+  "5.2|家用空调排产与产量": {
+    "subnode": "5.2",
+    "chart": "家用空调排产与产量",
+    "names": [
+      "家用空调排产量",
+      "产业在线家用空调排产",
+      "空调排产量 国家统计局"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "家用空调排产量",
+      "产业在线家用空调排产",
+      "空调排产量 国家统计局"
+    ],
+    "fix_note": "命中家用空调(无品种词)"
+  },
+  "5.2|电网工程投资完成额": {
+    "subnode": "5.2",
+    "chart": "电网工程投资完成额",
+    "names": [
+      "电网投资完成额",
+      "电网工程投资完成额",
+      "CIE电网投资"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "电网投资完成额",
+      "电网工程投资完成额",
+      "CIE电网投资"
+    ],
+    "fix_note": "命中电网投资(无铜品种词)"
+  },
+  "5.2|汽车与新能源汽车产量": {
+    "subnode": "5.2",
+    "chart": "汽车与新能源汽车产量",
+    "names": [
+      "新能源汽车产量",
+      "汽车产量 中汽协",
+      "中国新能源汽车产量"
+    ],
+    "grade": "C",
+    "hit_id": null,
+    "hit_name": "知几无数据",
+    "hit_path": "",
+    "hit_source": null,
+    "searched_terms": [
+      "新能源汽车产量",
+      "汽车产量 中汽协",
+      "中国新能源汽车产量"
+    ],
+    "fix_note": "命中新能源汽车(无铜品种词)"
+  },
+  "5.2|铜材出口量": {
+    "subnode": "5.2",
+    "chart": "铜材出口量",
+    "names": [
+      "铜材出口量",
+      "铜线出口量",
+      "电线电缆出口量"
+    ],
+    "grade": "B",
+    "hit_id": "ID01668783",
+    "hit_name": "白铜管：产量：中国（年）",
+    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
+    "hit_source": "mysteel",
+    "searched_terms": [
+      "铜材出口量",
+      "铜线出口量",
+      "电线电缆出口量"
+    ],
+    "fix_note": "命中白铜管产量(非出口量)"
+  },
+  "5.3|电网工程招标量": {
+    "subnode": "5.3",
+    "chart": "电网工程招标量",
+    "names": [
+      "电网招标量",
+      "电网工程招标量",
+      "国家电网招标"
+    ],
+    "grade": "B",
+    "hit_id": "a12851912",
+    "hit_name": "SMM: 国网铜招标测算量: 月度",
+    "hit_path": "0000001 / 0000011 / 0003946 / 0003971 / 0074822",
+    "hit_source": "smm",
+    "searched_terms": [
+      "电网招标量",
+      "电网工程招标量",
+      "国家电网招标"
+    ],
+    "fix_note": "命中SMM国网铜招标(品种词命中但指标类型存疑)"
+  },
+  "5.3|SMM铜加工材订单": {
+    "subnode": "5.3",
+    "chart": "SMM铜加工材订单",
+    "names": [
+      "精铜杆企业新增订单",
+      "铜线缆企业订单",
+      "铜加工材订单"
     ],
     "grade": "A",
     "hit_id": "ID01001459",
@@ -217,298 +229,9 @@
     "hit_path": "行业数据 有色金属 有色金属数据库 供给 产能",
     "hit_source": "mysteel",
     "searched_terms": [
-      "精铜杆企业开工率",
-      "国内主要精铜杆企业开工率；历史文中也出现“精铜制杆周度开工率”",
-      "精铜杆产能利用率；Mysteel曾使用“国内精铜杆产能利用率”"
-    ]
-  },
-  "5.1|再生铜杆企业开工率": {
-    "subnode": "5.1",
-    "chart": "再生铜杆企业开工率",
-    "names": [
-      "再生铜杆企业开工率",
-      "再生铜杆企业开工率",
-      "再生铜杆企业产能利用率/开工率",
-      "周度；SMM付费/VIP；Mysteel部分公开；%**"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "再生铜杆企业开工率",
-      "再生铜杆企业开工率",
-      "再生铜杆企业产能利用率/开工率"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.1|黄铜棒样本企业周度开工率": {
-    "subnode": "5.1",
-    "chart": "黄铜棒样本企业周度开工率",
-    "names": [
-      "黄铜棒开工率",
-      "SMM黄铜棒样本企业周度开工率",
-      "国内黄铜棒大型生产企业周度产能利用率",
-      "周度；SMM/Mysteel订阅；%**"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "黄铜棒开工率",
-      "SMM黄铜棒样本企业周度开工率",
-      "国内黄铜棒大型生产企业周度产能利用率"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.1|铜线缆企业开工率": {
-    "subnode": "5.1",
-    "chart": "铜线缆企业开工率",
-    "names": [
-      "铜线缆开工率",
-      "SMM铜线缆企业开工率",
-      "铜线缆企业开工率；Mysteel更多用电线电缆企业产能利用率/调研口径",
-      "周度；SMM付费/VIP；Mysteel部分公开；%**"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "铜线缆开工率",
-      "SMM铜线缆企业开工率",
-      "铜线缆企业开工率；Mysteel更多用电线电缆企业产能利用率/调研口径"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.1|铜管企业开工率": {
-    "subnode": "5.1",
-    "chart": "铜管企业开工率",
-    "names": [
-      "铜管企业开工率",
-      "SMM铜管企业开工率/铜管月度开工率",
-      "铜管企业产能利用率；Mysteel更多在铜管周评/月评中以文字披露",
-      "月频更稳定，周度需看专项调研；SMM付费/VIP；%**"
-    ],
-    "grade": "A",
-    "hit_id": "ID01001705",
-    "hit_name": "铜管企业：产能利用率：中国（月）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产能",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "铜管企业开工率",
-      "SMM铜管企业开工率/铜管月度开工率",
-      "铜管企业产能利用率；Mysteel更多在铜管周评/月评中以文字披露"
-    ]
-  },
-  "5.1|精铜杆待交订单与原料库存天数": {
-    "subnode": "5.1",
-    "chart": "精铜杆待交订单与原料库存天数",
-    "names": [
-      "精铜杆待交订单、原料库存天数",
-      "精铜杆企业待交订单、原料库存天数、成品库存天数；SMM精铜制杆周评常披露",
-      "精铜杆企业订单、待交订单、原料库存、成品库存；Mysteel铜杆周度数据常披露",
-      "周度；SMM/Mysteel订阅；订单可用吨或周数，库存天数为天"
-    ],
-    "grade": "A",
-    "hit_id": "ID02014259",
-    "hit_name": "美国铜发展协会：铜杆：库存：轧制企业（年）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 库存 社会库存 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "精铜杆待交订单、原料库存天数",
-      "精铜杆企业待交订单、原料库存天数、成品库存天数；SMM精铜制杆周评常披露",
-      "精铜杆企业订单、待交订单、原料库存、成品库存；Mysteel铜杆周度数据常披露"
-    ]
-  },
-  "5.2|家用空调排产与产量": {
-    "subnode": "5.2",
-    "chart": "家用空调排产与产量",
-    "names": [
-      "家用空调排产量、产量",
-      "产业在线家用空调排产数据；SMM/券商常引用“产业在线三大白电排产报告”",
-      "三大白电排产报告：家用空调、冰箱、洗衣机排产；Mysteel转载产业在线数据",
-      "产业在线家用空调排产数据"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "家用空调排产量、产量",
-      "产业在线家用空调排产数据；SMM/券商常引用“产业在线三大白电排产报告”",
-      "三大白电排产报告：家用空调、冰箱、洗衣机排产；Mysteel转载产业在线数据"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.2|家电产量：空调、冰箱、洗衣机": {
-    "subnode": "5.2",
-    "chart": "家电产量：空调、冰箱、洗衣机",
-    "names": [
-      "家用空调/冰箱/洗衣机产量",
-      "国家统计局：家用空调产量、电冰箱产量、洗衣机产量",
-      "Mysteel/券商常引用国家统计局家电产量；Mysteel自身更多聚焦空调排产和出口",
-      "国家统计局"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "家用空调/冰箱/洗衣机产量",
-      "国家统计局：家用空调产量、电冰箱产量、洗衣机产量",
-      "Mysteel/券商常引用国家统计局家电产量；Mysteel自身更多聚焦空调排产和出口"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.2|家电出口：空调、冰箱、洗衣机": {
-    "subnode": "5.2",
-    "chart": "家电出口：空调、冰箱、洗衣机",
-    "names": [
-      "空调/冰箱/洗衣机出口量",
-      "海关总署：家用空调出口量、电冰箱出口量、洗衣机出口量",
-      "Mysteel/券商周报常整理海关家电出口数据",
-      "家用空调出口量、电冰箱出口量、洗衣机出口量"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "空调/冰箱/洗衣机出口量",
-      "海关总署：家用空调出口量、电冰箱出口量、洗衣机出口量",
-      "Mysteel/券商周报常整理海关家电出口数据"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.2|电网工程投资完成额": {
-    "subnode": "5.2",
-    "chart": "电网工程投资完成额",
-    "names": [
-      "国家电网、南方电网固定资产投资，或中国电力工程投资完成额",
-      "国家电网固定资产投资完成额、南方电网固定资产投资完成额；SMM/券商常引用国网、南网投资计划与实际完成",
-      "Mysteel/券商常用“电网投资完成额”“国网投资完成额”",
-      "月频/累计月频；电网公司披露、国家统计局/行业数据库；亿元"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "国家电网、南方电网固定资产投资，或中国电力工程投资完成额",
-      "国家电网固定资产投资完成额、南方电网固定资产投资完成额；SMM/券商常引用国网、南网投资计划与实际完成",
-      "Mysteel/券商常用“电网投资完成额”“国网投资完成额”"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.2|汽车与新能源汽车产量": {
-    "subnode": "5.2",
-    "chart": "汽车与新能源汽车产量",
-    "names": [
-      "汽车产量、新能源汽车产量",
-      "中国汽车工业协会：汽车产量、新能源汽车产量",
-      "Mysteel/券商常引用中汽协汽车和新能源汽车产销数据"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "汽车产量、新能源汽车产量",
-      "中国汽车工业协会：汽车产量、新能源汽车产量",
-      "Mysteel/券商常引用中汽协汽车和新能源汽车产销数据"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.2|铜材进出口：铜线、铜棒、电线电缆": {
-    "subnode": "5.2",
-    "chart": "铜材进出口：铜线、铜棒、电线电缆",
-    "names": [
-      "铜线/铜棒/电线电缆出口量",
-      "海关总署：铜线出口量、铜棒出口量、电线电缆出口量；具体HS编码需按海关口径确认",
-      "Mysteel/券商周报常披露“电线电缆出口总量、铜线缆出口量”",
-      "铜线出口量、铜棒出口量、电线电缆出口量"
-    ],
-    "grade": "A",
-    "hit_id": "GM00125555",
-    "hit_name": "韩国：裸铜线：库存（月）",
-    "hit_path": "全球宏观 韩国宏观 工业",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "铜线/铜棒/电线电缆出口量",
-      "海关总署：铜线出口量、铜棒出口量、电线电缆出口量；具体HS编码需按海关口径确认",
-      "Mysteel/券商周报常披露“电线电缆出口总量、铜线缆出口量”"
-    ]
-  },
-  "5.3|国家电网/南方电网招标对应铜需求": {
-    "subnode": "5.3",
-    "chart": "国家电网/南方电网招标对应铜需求",
-    "names": [
-      "国网、南网月度招标对应铜需求",
-      "国家电网/南方电网月度招标对应铜需求；券商据招标公告测算",
-      "Data电力、券商电新&金属跟踪；非交易所统一指标，属产业链测算",
-      "月频；公开研报/招标跟踪；万吨"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "国网、南网月度招标对应铜需求",
-      "国家电网/南方电网月度招标对应铜需求；券商据招标公告测算",
-      "Data电力、券商电新&金属跟踪；非交易所统一指标，属产业链测算"
-    ],
-    "_fix_note": "黑名单ID ID01659225"
-  },
-  "5.3|三大白电排产前瞻": {
-    "subnode": "5.3",
-    "chart": "三大白电排产前瞻",
-    "names": [
-      "家用空调、冰箱、洗衣机排产量",
-      "产业在线三大白电排产：家用空调/冰箱/洗衣机排产量",
-      "Mysteel转载产业在线；2026年9月三大白电排产合计2721万台，家用空调975万台",
-      "2026年9月三大白电排产合计2721万台"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "家用空调、冰箱、洗衣机排产量",
-      "产业在线三大白电排产：家用空调/冰箱/洗衣机排产量",
-      "Mysteel转载产业在线；2026年9月三大白电排产合计2721万台，家用空调975万台"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.3|SMM铜加工材订单与待交订单": {
-    "subnode": "5.3",
-    "chart": "SMM铜加工材订单与待交订单",
-    "names": [
-      "精铜杆/线缆/铜棒新增订单、待交订单",
-      "SMM精铜杆企业新增订单、待交订单；铜线缆企业订单需求",
-      "Mysteel铜杆企业待交订单、订单整体趋势",
-      "铜线缆企业订单需求"
-    ],
-    "grade": "A",
-    "hit_id": "ID00408033",
-    "hit_name": "铜棒：产量：中国（月）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "精铜杆/线缆/铜棒新增订单、待交订单",
-      "SMM精铜杆企业新增订单、待交订单；铜线缆企业订单需求",
-      "Mysteel铜杆企业待交订单、订单整体趋势"
+      "精铜杆企业新增订单",
+      "铜线缆企业订单",
+      "铜加工材订单"
     ]
   },
   "5.3|制造业PMI新订单指数": {
@@ -516,9 +239,7 @@
     "chart": "制造业PMI新订单指数",
     "names": [
       "制造业PMI新订单指数",
-      "国家统计局制造业PMI新订单指数",
-      "多数数据库沿用同一官方指标",
-      "月频；国家统计局公开；指数，荣枯线50"
+      "PMI新订单 国家统计局"
     ],
     "grade": "C",
     "hit_id": null,
@@ -527,38 +248,37 @@
     "hit_source": null,
     "searched_terms": [
       "制造业PMI新订单指数",
-      "国家统计局制造业PMI新订单指数",
-      "多数数据库沿用同一官方指标"
+      "PMI新订单 国家统计局"
     ],
-    "_fix_note": "hit_name不含CU品种词"
+    "fix_note": "命中中经院PMI(非铜指标)"
   },
-  "5.3|LME铜仓单结构": {
+  "5.3|LME铜总库存": {
     "subnode": "5.3",
-    "chart": "LME铜仓单结构",
+    "chart": "LME铜总库存",
     "names": [
-      "LME总库存、注册仓单、注销仓单",
-      "LME官网字段：open warrants / cancelled warrants / opening stocks / stock movements；LME Warehouse and stocks reports披露“cancelled and live warrants across locations and metals”",
-      "open warrants / cancelled warrants / opening stocks / stock movements"
+      "LME铜仓库库存",
+      "LME铜库存总量",
+      "LME Copper Stock"
     ],
     "grade": "C",
     "hit_id": null,
     "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
+    "hit_path": "行业数据 有色金属 有色金属数据库 库存 现货库存 铜金属",
+    "hit_source": "mysteel",
     "searched_terms": [
-      "LME总库存、注册仓单、注销仓单",
-      "LME官网字段：open warrants / cancelled warrants / opening stocks / stock movements；LME Warehouse and stocks reports披露“cancelled and live warrants across locations and metals”",
-      "open warrants / cancelled warrants / opening stocks / stock movements"
+      "LME铜仓库库存",
+      "LME铜库存总量",
+      "LME Copper Stock"
     ],
-    "_fix_note": "hit_name不含CU品种词"
+    "fix_note": "命中USGS黑名单ID01552124"
   },
   "5.3|沪铜现货升水/洋山铜溢价": {
     "subnode": "5.3",
     "chart": "沪铜现货升水/洋山铜溢价",
     "names": [
-      "沪铜现货升贴水、洋山铜溢价",
-      "SMM沪铜现货升贴水；洋山铜溢价；SMM铜价页面有“SMM沪铜现货、洋山铜溢价”入口",
-      "洋山铜溢价"
+      "沪铜现货升贴水",
+      "洋山铜溢价",
+      "SMM沪铜现货升贴水"
     ],
     "grade": "A",
     "hit_id": "ID00302616",
@@ -566,205 +286,30 @@
     "hit_path": "行业数据 有色金属 有色金属数据库 价格 现货价格 铜金属",
     "hit_source": "mysteel",
     "searched_terms": [
-      "沪铜现货升贴水、洋山铜溢价",
-      "SMM沪铜现货升贴水；洋山铜溢价；SMM铜价页面有“SMM沪铜现货、洋山铜溢价”入口",
-      "洋山铜溢价"
-    ]
-  },
-  "5.3|电力设备招标量/电网工程招标量": {
-    "subnode": "5.3",
-    "chart": "电力设备招标量/电网工程招标量",
-    "names": [
-      "5.2终端消费",
-      "5.3需求先行指标",
-      "招标领先电网投资和施工消耗1-2个季度，本质是订单先行"
+      "沪铜现货升贴水",
+      "洋山铜溢价",
+      "SMM沪铜现货升贴水"
     ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "5.2终端消费",
-      "5.3需求先行指标",
-      "招标领先电网投资和施工消耗1-2个季度，本质是订单先行"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.3|空调排产计划": {
-    "subnode": "5.3",
-    "chart": "空调排产计划",
-    "names": [
-      "5.2终端消费",
-      "保留在5.3，同步在5.2引用",
-      "排产领先空调产量和铜管需求1-2个月，更适合做先行指标；5.2只放“排产已兑现为产量”的验证"
-    ],
-    "grade": "A",
-    "hit_id": "ID00408067",
-    "hit_name": "铜管：产量：中国（月）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "5.2终端消费",
-      "保留在5.3，同步在5.2引用",
-      "排产领先空调产量和铜管需求1-2个月，更适合做先行指标；5.2只放“排产已兑现为产量”的验证"
-    ]
+    "fix_note": "命中电解铜现货升贴水(山东),正确"
   },
   "5.3|铜线杆社会库存": {
     "subnode": "5.3",
     "chart": "铜线杆社会库存",
     "names": [
-      "5.3先行指标",
-      "删除，不作为主指标",
-      "“铜线杆社会库存”无稳定统一口径，且多数公开数据为电解铜社会库存，不是铜线杆成品库存"
+      "铜杆社会库存",
+      "精铜杆社会库存",
+      "铜线杆库存"
     ],
     "grade": "A",
     "hit_id": "ID02041075",
     "hit_name": "铜杆：社会库存：中国（日）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 库存 社会库存 铜金属",
+    "hit_path": "有色|铜数据库|铜杆|库存|Mysteel：铜杆周度库存数据",
     "hit_source": "mysteel",
     "searched_terms": [
-      "5.3先行指标",
-      "删除，不作为主指标",
-      "“铜线杆社会库存”无稳定统一口径，且多数公开数据为电解铜社会库存，不是铜线杆成品库存"
-    ]
-  },
-  "5.3|精废价差": {
-    "subnode": "5.3",
-    "chart": "精废价差",
-    "names": [
-      "多处重复",
-      "仅保留在5.1精铜杆/再生铜杆分析中",
-      "精废价差本质是原料替代经济性，不是终端需求本身，只能解释再生铜杆开工受限"
+      "铜杆社会库存",
+      "精铜杆社会库存",
+      "铜线杆库存"
     ],
-    "grade": "A",
-    "hit_id": "ID01049501",
-    "hit_name": "精铜杆：产量：中国（月）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 供给 产量 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "多处重复",
-      "仅保留在5.1精铜杆/再生铜杆分析中",
-      "精废价差本质是原料替代经济性，不是终端需求本身，只能解释再生铜杆开工受限"
-    ]
-  },
-  "5.3|铜进口意向/到港量": {
-    "subnode": "5.3",
-    "chart": "铜进口意向/到港量",
-    "names": [
-      "5.3先行指标",
-      "删除“进口意向”，保留精炼铜社会库存和保税库存",
-      "进口意向不可稳定追踪；精炼铜社会库存、保税库存、到港和出口盈亏更能验证实物流动"
-    ],
-    "grade": "A",
-    "hit_id": "ID02014251",
-    "hit_name": "美国铜发展协会：精炼铜：库存（年）",
-    "hit_path": "行业数据 有色金属 有色金属数据库 库存 社会库存 铜金属",
-    "hit_source": "mysteel",
-    "searched_terms": [
-      "5.3先行指标",
-      "删除“进口意向”，保留精炼铜社会库存和保税库存",
-      "进口意向不可稳定追踪；精炼铜社会库存、保税库存、到港和出口盈亏更能验证实物流动"
-    ]
-  },
-  "5.3|LME铜总库存": {
-    "subnode": "5.3",
-    "chart": "LME铜总库存",
-    "names": [
-      "LME Copper Warehouse Stocks",
-      "LME Warehouse and stocks reports；daily stocks summary；open tonnage",
-      "LME官方披露库存报告和stock movements",
-      "daily stocks summary"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "LME Copper Warehouse Stocks",
-      "LME Warehouse and stocks reports；daily stocks summary；open tonnage",
-      "LME官方披露库存报告和stock movements"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.3|LME注册仓单": {
-    "subnode": "5.3",
-    "chart": "LME注册仓单",
-    "names": [
-      "LME Registered Warrants / Live Warrants",
-      "open warrants；live warrants；registered warrants",
-      "公开中文常称“注册仓单”；英文报告常用open warrants/live warrants"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "LME Registered Warrants / Live Warrants",
-      "open warrants；live warrants；registered warrants",
-      "公开中文常称“注册仓单”；英文报告常用open warrants/live warrants"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.3|LME注销仓单": {
-    "subnode": "5.3",
-    "chart": "LME注销仓单",
-    "names": [
-      "LME Cancelled Warrants",
-      "cancelled warrants；cancellation tonnage；stock movements by metal and location"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "LME Cancelled Warrants",
-      "cancelled warrants；cancellation tonnage；stock movements by metal and location"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.3|LME注销仓单占比": {
-    "subnode": "5.3",
-    "chart": "LME注销仓单占比",
-    "names": [
-      "Cancelled Warrant Ratio",
-      "无统一公开英文变量名；计算公式：cancelled warrants / total warehouse stocks",
-      "不建议标成LME官方直接发布指标，公开平台多从库存报表自行计算"
-    ],
-    "grade": "C",
-    "hit_id": null,
-    "hit_name": "知几无数据",
-    "hit_path": "",
-    "hit_source": null,
-    "searched_terms": [
-      "Cancelled Warrant Ratio",
-      "无统一公开英文变量名；计算公式：cancelled warrants / total warehouse stocks",
-      "不建议标成LME官方直接发布指标，公开平台多从库存报表自行计算"
-    ],
-    "_fix_note": "hit_name不含CU品种词"
-  },
-  "5.3|LME铜现货升水/期限结构": {
-    "subnode": "5.3",
-    "chart": "LME铜现货升水/期限结构",
-    "names": [
-      "Cash–3M Backwardation / Forward Curve",
-      "LME official cash price and 3-month price；term structure",
-      "官方价格可用LME Official Price；升水需由现货价与3个月合约价计算",
-      "term structure"
-    ],
-    "grade": "B",
-    "hit_id": "a12858821",
-    "hit_name": "LME: 铜: 官方3M买价",
-    "hit_path": "0000001 / 0000011 / 0075894 / 0075909 / 0075944 / 0058986",
-    "hit_source": "smm",
-    "searched_terms": [
-      "Cash–3M Backwardation / Forward Curve",
-      "LME official cash price and 3-month price；term structure",
-      "官方价格可用LME Official Price；升水需由现货价与3个月合约价计算"
-    ],
-    "_fix_note": "品种命中但指标类型未确认"
+    "fix_note": "命中铜杆社会库存,正确"
   }
 }
