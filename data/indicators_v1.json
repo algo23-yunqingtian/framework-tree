@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "3.53",
-  "updated": "2026-09-02 17:18",
+  "version": "3.54",
+  "updated": "2026-09-02 19:23",
   "status": "部分验证",
   "说明": "v3.49: merge win分支(110指标) + main锂硅(79指标)，7金属 correction 全合并",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
@@ -4355,7 +4355,7 @@
    "name": "SHFE：镍：主力合约：收盘价（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00014997"
    },
@@ -4380,13 +4380,14 @@
     "7.1",
     "7.2",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_volume_front": {
    "name": "SHFE：镍：主力合约：单边交易：成交量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00018044"
    },
@@ -4394,13 +4395,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_openinterest_front": {
    "name": "SHFE：镍：主力合约：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00018043"
    },
@@ -4408,13 +4410,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_near_price": {
    "name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363129"
    },
@@ -4422,13 +4425,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_far_price": {
    "name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363129"
    },
@@ -4436,13 +4440,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_premium": {
    "name": "水淬镍：15-22%Ni：印尼产：升贴水（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01319362"
    },
@@ -4453,13 +4458,14 @@
     "2.2",
     "4.1",
     "4.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_warrant": {
    "name": "SHFE: 镍: 仓单日报: 期货: 日度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a10157136"
    },
@@ -4468,13 +4474,14 @@
    "_nodes": [
     "2.1",
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_front_price": {
    "name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363129"
    },
@@ -4484,13 +4491,14 @@
     "2.1",
     "2.2",
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_lme_price": {
    "name": "SMM: 进口盈亏: 镍: 现货: LME价格: 日度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a12760049"
    },
@@ -4500,13 +4508,14 @@
     "2.1",
     "2.2",
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_volume_top20": {
    "name": "LME：镍：3个月合约：成交量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00014809"
    },
@@ -4514,13 +4523,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_21_percentile_openinterest": {
    "name": "LME：镍：其他报告头寸多头持仓量：投资基金（周）",
    "unit": "手",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00082056"
    },
@@ -4528,13 +4538,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_price": {
    "name": "镍豆：Ni≥99.88%：澳大利亚产：现货到岸价格：中国（日）",
    "unit": "美元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01532836"
    },
@@ -4542,13 +4553,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_basis": {
    "name": "SHFE：镍：基差（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00024318"
    },
@@ -4556,13 +4568,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_price_2": {
    "name": "电解镍：Ni≥99.96%：俄罗斯产：现货到岸价格：中国（日）",
    "unit": "美元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01532837"
    },
@@ -4572,13 +4585,14 @@
     "2.2",
     "2.4",
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_price_3": {
    "name": "镍生铁：13%＞Ni＞10%：印尼产：远期现货价格：中国主要港口（日）",
    "unit": "元/镍",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01294972"
    },
@@ -4588,13 +4602,14 @@
     "2.2",
     "2.4",
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_price_nickel_powder": {
    "name": "高冰镍：Ni≥65%，Co≥1%：钴远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02433774"
    },
@@ -4604,13 +4619,14 @@
     "2.2",
     "2.4",
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_import": {
    "name": "冰镍：进口数量合计：中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01364224"
    },
@@ -4619,13 +4635,14 @@
    "_nodes": [
     "2.2",
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_premium_percentile": {
    "name": "水淬镍：15-22%Ni：印尼产：升贴水（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01319362"
    },
@@ -4633,13 +4650,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_premium": {
    "name": "水淬镍：15-22%Ni：印尼产：升贴水（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01319362"
    },
@@ -4647,13 +4665,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_22_premium_2": {
    "name": "水淬镍：15-22%Ni：印尼产：升贴水（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01319362"
    },
@@ -4661,13 +4680,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_23_premium": {
    "name": "水淬镍：15-22%Ni：印尼产：升贴水（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01319362"
    },
@@ -4675,13 +4695,14 @@
    "_tier": "A",
    "_nodes": [
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_24_near_price": {
    "name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363129"
    },
@@ -4689,13 +4710,14 @@
    "_tier": "A",
    "_nodes": [
     "2.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_24_far_price": {
    "name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363129"
    },
@@ -4703,13 +4725,14 @@
    "_tier": "A",
    "_nodes": [
     "2.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_24_price": {
    "name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363129"
    },
@@ -4717,13 +4740,14 @@
    "_tier": "A",
    "_nodes": [
     "2.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_24_price_2": {
    "name": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
    "unit": "美元/金属吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363129"
    },
@@ -4731,13 +4755,14 @@
    "_tier": "A",
    "_nodes": [
     "2.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_25_percentile_price": {
    "name": "SMM: 电解镍进口盈亏（沪伦价格差）: 日度",
    "unit": "",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a10000206"
    },
@@ -4745,13 +4770,14 @@
    "_tier": "A",
    "_nodes": [
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_25_profit": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -4759,13 +4785,14 @@
    "_tier": "A",
    "_nodes": [
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_25_percentile_price_2": {
    "name": "SMM: 电解镍进口盈亏（沪伦价格差）: 日度",
    "unit": "",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a10000206"
    },
@@ -4773,13 +4800,14 @@
    "_tier": "A",
    "_nodes": [
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_25_price": {
    "name": "SMM: 电解镍进口盈亏（沪伦价格差）: 日度",
    "unit": "",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a10000206"
    },
@@ -4787,13 +4815,14 @@
    "_tier": "A",
    "_nodes": [
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_25_profit_2": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -4801,13 +4830,14 @@
    "_tier": "A",
    "_nodes": [
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_26_openinterest_top20_front": {
    "name": "SHFE：镍：主力合约：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00018043"
    },
@@ -4815,13 +4845,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_26_percentile_openinterest_top2": {
    "name": "SHFE：镍：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00017556"
    },
@@ -4829,13 +4860,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_26_openinterest_top20_front_2": {
    "name": "SHFE：镍：主力合约：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00018043"
    },
@@ -4843,13 +4875,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_output_nickel_ore": {
    "name": "USGS：镍矿：含镍：产量：印尼（年）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00299667"
    },
@@ -4858,13 +4891,14 @@
    "_nodes": [
     "3.1.1",
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_output_nickel_ore_2": {
    "name": "USGS：镍矿：含镍：产量：新喀里多尼亚（年）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00299672"
    },
@@ -4873,13 +4907,14 @@
    "_nodes": [
     "3.1.1",
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_output": {
    "name": "精炼镍：产量：印尼（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026189"
    },
@@ -4888,13 +4923,14 @@
    "_nodes": [
     "3.1.1",
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_output_2": {
    "name": "精炼镍：产量：印尼（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026189"
    },
@@ -4903,13 +4939,14 @@
    "_nodes": [
     "3.1.1",
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_output_3": {
    "name": "精炼镍：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002085"
    },
@@ -4918,13 +4955,14 @@
    "_nodes": [
     "3.1.1",
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_capacity": {
    "name": "精炼镍：运行产能：印尼（月）",
    "unit": "吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026190"
    },
@@ -4932,13 +4970,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_capacity_2": {
    "name": "精炼镍：产能：印尼（月）",
    "unit": "吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026192"
    },
@@ -4946,13 +4985,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_capacity_3": {
    "name": "精炼镍：产能：中国（月）",
    "unit": "吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002081"
    },
@@ -4960,13 +5000,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_311_output_nickel_ore_3": {
    "name": "USGS：镍矿：含镍：产量：印尼（年）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00299667"
    },
@@ -4974,13 +5015,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_312_output_nickel_ore": {
    "name": "USGS：镍矿：含镍：产量：澳大利亚（年）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00299661"
    },
@@ -4988,13 +5030,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_312_output": {
    "name": "精炼镍：二级：产量：澳大利亚（季）",
    "unit": "千吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01655713"
    },
@@ -5002,13 +5045,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_312_nickel_ore_capacity": {
    "name": "镍生铁企业：产能：以金属量计：印尼（月）",
    "unit": "万吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002094"
    },
@@ -5016,13 +5060,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_312_nickel_ore_capacity_2": {
    "name": "镍生铁企业：产能：以金属量计：印尼（月）",
    "unit": "万吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002094"
    },
@@ -5030,13 +5075,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_312_output_2": {
    "name": "精炼镍：产量：印尼（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026189"
    },
@@ -5044,13 +5090,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_312_output_3": {
    "name": "精炼镍：产量：印尼（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026189"
    },
@@ -5058,13 +5105,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_nickel_ore": {
    "name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01591506"
    },
@@ -5072,13 +5120,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_nickel_ore_2": {
    "name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01591506"
    },
@@ -5086,13 +5135,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_nickel_ore_3": {
    "name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01591506"
    },
@@ -5100,13 +5150,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output": {
    "name": "精炼镍：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002085"
    },
@@ -5115,13 +5166,14 @@
    "_nodes": [
     "3.1.3",
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_2": {
    "name": "镍铁：主要企业：产量：全球：以金属量计（年）",
    "unit": "万吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002093"
    },
@@ -5130,13 +5182,14 @@
    "_nodes": [
     "3.1.3",
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_nickel_ore_4": {
    "name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01591506"
    },
@@ -5144,13 +5197,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_3": {
    "name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01591506"
    },
@@ -5158,13 +5212,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_nickel_ore_5": {
    "name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01591506"
    },
@@ -5172,13 +5227,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_output_nickel_ore_6": {
    "name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01591506"
    },
@@ -5186,13 +5242,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_import": {
    "name": "镍生铁：进口数量：中国：以金属量计（月）",
    "unit": "万吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002130"
    },
@@ -5201,13 +5258,14 @@
    "_nodes": [
     "3.1.3",
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_313_import_2": {
    "name": "冰镍：进口数量合计：中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01364224"
    },
@@ -5216,13 +5274,14 @@
    "_nodes": [
     "3.1.3",
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import": {
    "name": "中国海关: 镍矿进口量: 总: 月度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a10128013"
    },
@@ -5230,13 +5289,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_2": {
    "name": "镍生铁：进口数量：中国：以金属量计（月）",
    "unit": "万吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002130"
    },
@@ -5244,13 +5304,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_3": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -5258,13 +5319,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_4": {
    "name": "镍矿：进口数量：菲律宾→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "CM0000450997"
    },
@@ -5272,13 +5334,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_5": {
    "name": "镍矿：进口数量：新喀里多尼亚→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "CM0000451009"
    },
@@ -5286,13 +5349,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_6": {
    "name": "冰镍：进口数量：澳大利亚→中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363307"
    },
@@ -5300,13 +5364,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_7": {
    "name": "未锻轧非合金镍：镍钴总量≥99.99%，钴≤0.005%：进口金额：挪威→中国（月）",
    "unit": "美元",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01381574"
    },
@@ -5314,13 +5379,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_8": {
    "name": "未锻轧非合金镍：镍钴总量≥99.99%，钴≤0.005%：进口金额：挪威→中国（月）",
    "unit": "美元",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01381574"
    },
@@ -5328,13 +5394,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_314_import_9": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -5342,13 +5409,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_315_profit": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -5357,13 +5425,14 @@
    "_nodes": [
     "3.1.5",
     "3.2.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_321_output_nickel_powder": {
    "name": "高冰镍：以金属量计：产量：印尼：老口径（月）",
    "unit": "万吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01525679"
    },
@@ -5371,13 +5440,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_321_output": {
    "name": "精炼镍：产量：华南地区（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01378978"
    },
@@ -5385,13 +5455,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_321_capacity_util": {
    "name": "精炼镍：产能利用率：中国（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002083"
    },
@@ -5399,13 +5470,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_321_output_2": {
    "name": "精炼镍：产量：华南地区（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01378978"
    },
@@ -5413,13 +5485,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_321_output_3": {
    "name": "精炼镍：产量：华南地区（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01378978"
    },
@@ -5427,13 +5500,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_321_output_4": {
    "name": "精炼镍：产量：华南地区（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01378978"
    },
@@ -5441,13 +5515,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_322_util": {
    "name": "镍生铁企业：开工率：以金属量计：印尼（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002077"
    },
@@ -5455,13 +5530,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_322_util_2": {
    "name": "精炼镍：开工率：印尼（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026188"
    },
@@ -5469,13 +5545,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_322_util_3": {
    "name": "精炼镍：开工率：印尼（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02026188"
    },
@@ -5483,13 +5560,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_322_util_4": {
    "name": "硫酸镍企业：开工率：中国（月）",
    "unit": "百分比",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002089"
    },
@@ -5498,13 +5576,14 @@
    "_nodes": [
     "3.2.2",
     "5.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_322_util_5": {
    "name": "硫酸镍企业：开工率：中国（月）",
    "unit": "百分比",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002089"
    },
@@ -5513,13 +5592,14 @@
    "_nodes": [
     "3.2.2",
     "5.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_323_import": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -5527,13 +5607,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_323_import_2": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -5541,13 +5622,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_323_import_nickel_powder": {
    "name": "镍生铁：进口数量：中国：以金属量计（月）",
    "unit": "万吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002130"
    },
@@ -5557,13 +5639,14 @@
     "3.2.3",
     "6.1",
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_323_output_recycle": {
    "name": "精炼镍：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002085"
    },
@@ -5571,13 +5654,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_41_import": {
    "name": "镍豆：进口盈亏（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00408378"
    },
@@ -5586,13 +5670,14 @@
    "_nodes": [
     "4.1",
     "5.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_41_lme_inv": {
    "name": "LME：镍：期货库存：迪拜（日）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00302693"
    },
@@ -5603,13 +5688,14 @@
     "4.2",
     "5.3",
     "6.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_42_ratio": {
    "name": "LME：镍：注销占比：香港（日）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "FU00094552"
    },
@@ -5617,13 +5703,14 @@
    "_tier": "A",
    "_nodes": [
     "4.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_43_inv": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5631,13 +5718,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_43_inv_2": {
    "name": "LME：镍：原产国库存：埃及（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02226167"
    },
@@ -5645,13 +5733,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_43_inv_3": {
    "name": "LME：镍：原产国库存：埃及（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02226167"
    },
@@ -5659,13 +5748,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_43_inv_percentile": {
    "name": "LME：镍：原产国库存：埃及（月）",
    "unit": "吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID02226167"
    },
@@ -5673,13 +5763,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_43_inv_4": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5687,13 +5778,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_43_inv_implicit": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5701,13 +5793,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv": {
    "name": "镍豆：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490915"
    },
@@ -5715,13 +5808,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv_2": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5729,13 +5823,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv_days": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5743,13 +5838,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv_3": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5757,13 +5853,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv_4": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5771,13 +5868,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv_5": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5785,13 +5883,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv_6": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5799,13 +5898,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_44_inv_percentile": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5813,13 +5913,14 @@
    "_tier": "A",
    "_nodes": [
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_inv": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5827,13 +5928,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_import": {
    "name": "冰镍：进口数量合计：中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01364224"
    },
@@ -5841,13 +5943,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_inv_implicit": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5855,13 +5958,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_inv_implicit_ratio": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5869,13 +5973,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_import_2": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -5883,13 +5988,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_import_3": {
    "name": "冰镍：进口数量合计：中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01364224"
    },
@@ -5897,13 +6003,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_import_4": {
    "name": "冰镍：进口数量合计：中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01364224"
    },
@@ -5911,13 +6018,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_inv_implicit_2": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5925,13 +6033,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_inv_implicit_3": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5939,13 +6048,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_45_inv_implicit_percentile": {
    "name": "精炼镍：库存：中国：27家样本仓库（周）",
    "unit": "吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01490913"
    },
@@ -5953,13 +6063,14 @@
    "_tier": "A",
    "_nodes": [
     "4.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_51_util": {
    "name": "精炼镍：开工率：中国（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002084"
    },
@@ -5968,13 +6079,14 @@
    "_nodes": [
     "5.1",
     "5.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_51_util_battery": {
    "name": "精炼镍：开工率：中国（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002084"
    },
@@ -5982,13 +6094,14 @@
    "_tier": "A",
    "_nodes": [
     "5.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_51_util_cons": {
    "name": "精炼镍：开工率：中国（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002084"
    },
@@ -5996,13 +6109,14 @@
    "_tier": "A",
    "_nodes": [
     "5.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_52_output": {
    "name": "精炼镍：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002085"
    },
@@ -6010,13 +6124,14 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_52_output_2": {
    "name": "精炼镍：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002085"
    },
@@ -6024,13 +6139,14 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_53_util": {
    "name": "精炼镍：开工率：中国（月）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002084"
    },
@@ -6038,13 +6154,14 @@
    "_tier": "A",
    "_nodes": [
     "5.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_53_import": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -6052,13 +6169,14 @@
    "_tier": "A",
    "_nodes": [
     "5.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_nickel_ore": {
    "name": "镍矿：进口数量：印尼→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "CM0000451010"
    },
@@ -6066,13 +6184,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_nickel_ore_2": {
    "name": "镍铁：哥伦比亚产：进口盈亏：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01001672"
    },
@@ -6080,13 +6199,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import": {
    "name": "镍生铁：进口数量：中国：以金属量计（月）",
    "unit": "万吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002130"
    },
@@ -6094,13 +6214,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_2": {
    "name": "镍铁：哥伦比亚产：进口盈亏：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01001672"
    },
@@ -6108,13 +6229,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_nickel_powder": {
    "name": "镍铁：哥伦比亚产：进口盈亏：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01001672"
    },
@@ -6123,13 +6245,14 @@
    "_nodes": [
     "6.1",
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_3": {
    "name": "镍豆：进口盈亏（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00408378"
    },
@@ -6138,13 +6261,14 @@
    "_nodes": [
     "6.1",
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_nickel_ore_3": {
    "name": "镍矿：进口数量：印尼→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "CM0000451010"
    },
@@ -6152,13 +6276,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_nickel_ore_4": {
    "name": "镍生铁：进口数量：中国：以金属量计（月）",
    "unit": "万吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01002130"
    },
@@ -6166,13 +6291,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_nickel_ore_5": {
    "name": "镍矿：进口数量：新喀里多尼亚→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "CM0000451009"
    },
@@ -6180,13 +6306,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_4": {
    "name": "中国海关: 镍矿进口量: 总: 月度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a10128013"
    },
@@ -6194,13 +6321,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_5": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -6209,13 +6337,14 @@
    "_nodes": [
     "6.1",
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_61_import_6": {
    "name": "冰镍：进口数量：印尼→中国（月）",
    "unit": "千克",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01363314"
    },
@@ -6224,13 +6353,14 @@
    "_nodes": [
     "6.1",
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_62_import": {
    "name": "镍豆：进口盈亏（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00408378"
    },
@@ -6238,13 +6368,14 @@
    "_tier": "A",
    "_nodes": [
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_62_import_2": {
    "name": "镍矿：进口数量：新喀里多尼亚→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "CM0000451009"
    },
@@ -6252,13 +6383,14 @@
    "_tier": "A",
    "_nodes": [
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_62_import_3": {
    "name": "未锻轧非合金镍：镍钴总量≥99.99%，钴≤0.005%：进口数量：北京（月）",
    "unit": "千克",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01381352"
    },
@@ -6266,13 +6398,14 @@
    "_tier": "A",
    "_nodes": [
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_63_export": {
    "name": "未锻轧非合金镍：出口金额合计：中国（月）",
    "unit": "美元",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID00188815"
    },
@@ -6280,13 +6413,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_63_export_2": {
    "name": "中国海关: 电解镍出口量: 月度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "a10000647"
    },
@@ -6294,13 +6428,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_63_export_3": {
    "name": "镍矿石：出口数量：菲律宾→印尼（月）",
    "unit": "千克",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "GM00194554"
    },
@@ -6308,13 +6443,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_63_export_4": {
    "name": "镍矿石：出口数量：菲律宾→印尼（月）",
    "unit": "千克",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "GM00194554"
    },
@@ -6322,13 +6458,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost_nickel_ore": {
    "name": "Ramu镍钴矿：镍：实际现金成本：镍28公司（季）",
    "unit": "美元/磅",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01675320"
    },
@@ -6338,13 +6475,14 @@
     "7.1",
     "7.2",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost_nickel_powder": {
    "name": "精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959851"
    },
@@ -6353,13 +6491,14 @@
    "_nodes": [
     "7.1",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost_percentile": {
    "name": "精炼镍：生产成本：中国：红土镍矿：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959845"
    },
@@ -6367,13 +6506,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost": {
    "name": "精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959851"
    },
@@ -6382,13 +6522,14 @@
    "_nodes": [
     "7.1",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost_2": {
    "name": "精炼镍：生产成本：中国：红土镍矿：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959845"
    },
@@ -6396,13 +6537,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost_3": {
    "name": "精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "quarterly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959851"
    },
@@ -6410,13 +6552,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost_4": {
    "name": "精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "quarterly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959851"
    },
@@ -6424,13 +6567,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_71_cost_5": {
    "name": "精炼镍：生产成本：中国：红土镍矿：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959845"
    },
@@ -6438,13 +6582,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_72_profit": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -6452,13 +6597,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_72_profit_nickel_powder": {
    "name": "精炼镍：生产利润：中国：红土镍矿：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959854"
    },
@@ -6466,13 +6612,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_72_profit_2": {
    "name": "精炼镍：生产利润：中国：外采：硫酸镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959853"
    },
@@ -6480,13 +6627,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_72_profit_percentile": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -6494,13 +6642,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_72_profit_3": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -6508,13 +6657,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_72_profit_4": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -6522,13 +6672,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_72_profit_5": {
    "name": "冷轧不锈钢：外购低镍铁：201/J1：利润：中国（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01536581"
    },
@@ -6536,13 +6687,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_73_cost": {
    "name": "低镍生铁：成本（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01360199"
    },
@@ -6550,13 +6702,14 @@
    "_tier": "A",
    "_nodes": [
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_73_cost_2": {
    "name": "精炼镍：生产成本：中国：红土镍矿：氢氧化镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959843"
    },
@@ -6564,13 +6717,14 @@
    "_tier": "A",
    "_nodes": [
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_73_cost_3": {
    "name": "精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959851"
    },
@@ -6578,13 +6732,14 @@
    "_tier": "A",
    "_nodes": [
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "ni_73_cost_4": {
    "name": "精炼镍：生产成本：中国：外采：高冰镍加工工艺（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "NI": "ID01959851"
    },
@@ -6592,13 +6747,14 @@
    "_tier": "A",
    "_nodes": [
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_close_front": {
    "name": "SHFE：锡：主力合约：收盘价（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00016042"
    },
@@ -6623,13 +6779,14 @@
     "7.1",
     "7.2",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_openinterest": {
    "name": "LME：锡：其他报告头寸多头持仓量：投资基金（周）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00082095"
    },
@@ -6637,13 +6794,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_volume": {
    "name": "SHFE：锡：年成交量（日）",
    "unit": "万手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00107648"
    },
@@ -6651,13 +6809,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_basis": {
    "name": "SHFE：锡：基差（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00024289"
    },
@@ -6665,13 +6824,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_premium": {
    "name": "电解铝：现货升贴水：无锡—SHFE（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00302552"
    },
@@ -6679,13 +6839,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_close": {
    "name": "SHFE：锡：指数合约：收盘价（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00016035"
    },
@@ -6693,13 +6854,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_close_2": {
    "name": "SHFE：锡：指数合约：收盘价（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00016035"
    },
@@ -6707,13 +6869,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_openinterest_2": {
    "name": "SHFE：锡：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00017555"
    },
@@ -6721,13 +6884,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_openinterest_3": {
    "name": "LME：锡：其他报告头寸多头持仓量：投资基金（周）",
    "unit": "手",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00082095"
    },
@@ -6735,13 +6899,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_openinterest_4": {
    "name": "LME：锡：其他报告头寸多头持仓量：投资基金（周）",
    "unit": "手",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00082095"
    },
@@ -6749,13 +6914,14 @@
    "_tier": "A",
    "_nodes": [
     "2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_22_premium": {
    "name": "锡锭：升贴水：中国：小牌（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01668718"
    },
@@ -6763,13 +6929,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_22_price": {
    "name": "SMM: 进口盈亏: 锡: 现货: LME价格: 日度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "a10147859"
    },
@@ -6778,13 +6945,14 @@
    "_nodes": [
     "2.2",
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_22_import": {
    "name": "锡锭：现货：进口盈亏（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590826"
    },
@@ -6792,13 +6960,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_22_premium_2": {
    "name": "锡锭：升贴水：中国：小牌（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01668718"
    },
@@ -6806,13 +6975,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_22_premium_3": {
    "name": "锡锭：升贴水：中国：云锡（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01668719"
    },
@@ -6820,13 +6990,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_22_premium_4": {
    "name": "锡锭：升贴水：中国：云锡（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01668719"
    },
@@ -6834,13 +7005,14 @@
    "_tier": "A",
    "_nodes": [
     "2.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_23_lme_close": {
    "name": "LME：锡：3个月合约：收盘价（日）",
    "unit": "美元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00080251"
    },
@@ -6850,13 +7022,14 @@
     "2.3",
     "2.4",
     "2.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_23_lme_inv": {
    "name": "LME：锡：原产国库存：埃及（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02226171"
    },
@@ -6864,13 +7037,14 @@
    "_tier": "A",
    "_nodes": [
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_23_import": {
    "name": "锡锭：现货：进口盈亏（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590826"
    },
@@ -6878,13 +7052,14 @@
    "_tier": "A",
    "_nodes": [
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_23_close": {
    "name": "SHFE：锡：指数合约：收盘价（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00016035"
    },
@@ -6892,13 +7067,14 @@
    "_tier": "A",
    "_nodes": [
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_23_close_2": {
    "name": "SHFE：锡：指数合约：收盘价（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00016035"
    },
@@ -6906,13 +7082,14 @@
    "_tier": "A",
    "_nodes": [
     "2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_25_price": {
    "name": "锡精矿：1#：40%Sn：汇总价格：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00259809"
    },
@@ -6921,13 +7098,14 @@
    "_nodes": [
     "2.5",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_25_recycle_price": {
    "name": "再生铝棒：6063：Fe0.2%-0.25%：汇总价格：无锡（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01546731"
    },
@@ -6936,13 +7114,14 @@
    "_nodes": [
     "2.5",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_26_openinterest_top20": {
    "name": "SHFE：锡：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00017555"
    },
@@ -6950,13 +7129,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_26_openinterest_top20_2": {
    "name": "SHFE：锡：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00017555"
    },
@@ -6964,13 +7144,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_26_openinterest_top20_3": {
    "name": "SHFE：锡：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00017555"
    },
@@ -6978,13 +7159,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_26_openinterest_top20_4": {
    "name": "SHFE：锡：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00017555"
    },
@@ -6992,13 +7174,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_26_openinterest_top20_5": {
    "name": "SHFE：锡：单边交易：持仓量（日）",
    "unit": "手",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00017555"
    },
@@ -7006,13 +7189,14 @@
    "_tier": "A",
    "_nodes": [
     "2.6"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_311_output_tin_ore": {
    "name": "USGS：锡矿：产量：缅甸（年）",
    "unit": "吨",
    "freq": "yearly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00299784"
    },
@@ -7021,13 +7205,14 @@
    "_nodes": [
     "3.1.1",
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_311_output": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7036,13 +7221,14 @@
    "_nodes": [
     "3.1.1",
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_311_output_tin_ore_2": {
    "name": "锡矿：产量：刚果：阿尔法明（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838776"
    },
@@ -7050,13 +7236,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_311_output_2": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7064,13 +7251,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_311_output_3": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7078,13 +7266,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output": {
    "name": "锡矿：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "quarterly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838778"
    },
@@ -7092,13 +7281,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_2": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7106,13 +7296,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_3": {
    "name": "锡矿：产量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655716"
    },
@@ -7120,13 +7311,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_ratio": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7134,13 +7326,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_ratio_2": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7148,13 +7341,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_ratio_3": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7162,13 +7356,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_4": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7179,13 +7374,14 @@
     "3.1.3",
     "3.2.1",
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_5": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7196,13 +7392,14 @@
     "3.1.3",
     "3.2.1",
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_312_output_6": {
    "name": "锡精矿：产量：中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01590150"
    },
@@ -7210,7 +7407,8 @@
    "_tier": "A",
    "_nodes": [
     "3.1.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_313_output": {
    "name": "中国有色金属工业年鉴：锡精矿：含锡：产量：云南（年）",
@@ -7232,7 +7430,7 @@
    "name": "锡矿：产量：刚果：阿尔法明（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838776"
    },
@@ -7240,13 +7438,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_313_import_tin_ore": {
    "name": "锡矿砂及其精矿：进口数量：云南（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "CM0000153444"
    },
@@ -7254,13 +7453,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_313_tc_tc": {
    "name": "铝棒：6063：Φ120：加工费：无锡（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00259453"
    },
@@ -7269,13 +7469,14 @@
    "_nodes": [
     "3.1.3",
     "3.1.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_313_tc_tc_2": {
    "name": "铝棒：6063：Φ120：加工费：无锡（日）",
    "unit": "元/吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00259453"
    },
@@ -7284,13 +7485,14 @@
    "_nodes": [
     "3.1.3",
     "3.1.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_tin_ore": {
    "name": "锡矿砂及其精矿：进口数量：缅甸→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "CM0000451826"
    },
@@ -7299,13 +7501,14 @@
    "_nodes": [
     "3.1.4",
     "3.1.5"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7313,13 +7516,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_tin_ore_2": {
    "name": "锡矿砂及其精矿：进口数量：印尼→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "CM0000451830"
    },
@@ -7327,13 +7531,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_tin_ore_3": {
    "name": "锡矿砂及其精矿：进口数量：俄罗斯→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "CM0000451821"
    },
@@ -7341,13 +7546,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_tin_ore_4": {
    "name": "锡矿砂及其精矿：进口数量：澳大利亚→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "CM0000454010"
    },
@@ -7355,13 +7561,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_tin_ore_5": {
    "name": "锡矿砂及其精矿：进口数量：缅甸→中国（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "CM0000451826"
    },
@@ -7369,13 +7576,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_2": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7386,13 +7594,14 @@
     "3.2.3",
     "6.1",
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_3": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7403,13 +7612,14 @@
     "3.2.3",
     "6.1",
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_4": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7417,13 +7627,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_5": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7431,13 +7642,14 @@
    "_tier": "A",
    "_nodes": [
     "3.1.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_321_output": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7445,13 +7657,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_321_import": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7459,13 +7672,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_321_util": {
    "name": "锡：加工企业：开工率：中国（月）",
    "unit": "百分比",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02226389"
    },
@@ -7476,13 +7690,14 @@
     "3.2.2",
     "3.2.3",
     "5.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_321_util_2": {
    "name": "锡：加工企业：开工率：中国（月）",
    "unit": "百分比",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02226389"
    },
@@ -7493,13 +7708,14 @@
     "3.2.2",
     "3.2.3",
     "5.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_323_output_recycle": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7507,13 +7723,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_323_import_recycle": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7522,13 +7739,14 @@
    "_nodes": [
     "3.2.3",
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_323_recycle_capacity": {
    "name": "SEAISI：镀锡板（带）：产能：印尼（年）",
    "unit": "千吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00360286"
    },
@@ -7536,13 +7754,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_323_output_recycle_2": {
    "name": "USGS：锡矿：含锡：产量：缅甸（年）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00299784"
    },
@@ -7550,13 +7769,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_323_output_recycle_3": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7564,13 +7784,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_323_output_recycle_4": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7578,13 +7799,14 @@
    "_tier": "A",
    "_nodes": [
     "3.2.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_41_lme_inv": {
    "name": "LME：锡：原产国库存：埃及（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02226171"
    },
@@ -7592,13 +7814,14 @@
    "_tier": "A",
    "_nodes": [
     "4.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_41_warrant": {
    "name": "LME：锡：注销仓单（日）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00015902"
    },
@@ -7607,13 +7830,14 @@
    "_nodes": [
     "4.1",
     "4.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_42_ratio": {
    "name": "LME：锡：注销占比（日）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00023901"
    },
@@ -7621,13 +7845,14 @@
    "_tier": "A",
    "_nodes": [
     "4.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_42_warrant": {
    "name": "LME：锡：注册仓单（日）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00015901"
    },
@@ -7635,13 +7860,14 @@
    "_tier": "A",
    "_nodes": [
     "4.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_42_warrant_2": {
    "name": "LME：锡：注册仓单（日）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00015901"
    },
@@ -7649,13 +7875,14 @@
    "_tier": "A",
    "_nodes": [
     "4.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_43_inv_plant": {
    "name": "镀锡板（带）：钢铁企业：厂内库存（月）",
    "unit": "万吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01976844"
    },
@@ -7664,13 +7891,14 @@
    "_nodes": [
     "4.3",
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_43_ratio": {
    "name": "LME：锡：注销占比（日）",
    "unit": "百分比",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "FU00023901"
    },
@@ -7679,13 +7907,14 @@
    "_nodes": [
     "4.3",
     "4.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_43_inv": {
    "name": "SMM: 锡锭社会库存: 上海: 周度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "a10020743"
    },
@@ -7693,13 +7922,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_43_inv_2": {
    "name": "SMM: 锡锭社会库存: 上海: 周度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "a10020743"
    },
@@ -7707,13 +7937,14 @@
    "_tier": "A",
    "_nodes": [
     "4.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_51_cons": {
    "name": "SEAISI：镀锡板（带）：表观消费量：印尼（年）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00346045"
    },
@@ -7721,13 +7952,14 @@
    "_tier": "A",
    "_nodes": [
     "5.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_51_output": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7736,13 +7968,14 @@
    "_nodes": [
     "5.1",
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_52_output": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7750,13 +7983,14 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_52_output_2": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7764,13 +7998,14 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_52_output_3": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7778,13 +8013,14 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_52_output_4": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7792,13 +8028,14 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_52_output_5": {
    "name": "精炼锡：产量：印尼：天马（季）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01838775"
    },
@@ -7806,13 +8043,14 @@
    "_tier": "A",
    "_nodes": [
     "5.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import": {
    "name": "锡精矿：进口数量：缅甸→中国（月）",
    "unit": "金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105844"
    },
@@ -7820,13 +8058,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import_2": {
    "name": "锡精矿：进口数量：缅甸→中国（月）",
    "unit": "金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105844"
    },
@@ -7834,13 +8073,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import_3": {
    "name": "锡精矿：进口数量：缅甸→中国（月）",
    "unit": "金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105844"
    },
@@ -7848,13 +8088,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import_4": {
    "name": "锡精矿：进口数量：缅甸→中国（月）",
    "unit": "金属吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105844"
    },
@@ -7862,13 +8103,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import_recycle": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7876,13 +8118,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import_recycle_2": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7890,13 +8133,14 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import_recycle_3": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7904,7 +8148,8 @@
    "_tier": "A",
    "_nodes": [
     "6.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_61_import_5": {
    "name": "电解锡：净进口数量：中国（年）",
@@ -7924,7 +8169,7 @@
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7932,13 +8177,14 @@
    "_tier": "A",
    "_nodes": [
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_62_export": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -7946,13 +8192,14 @@
    "_tier": "A",
    "_nodes": [
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_62_import_2": {
    "name": "精炼锡：进口数量：澳大利亚（季）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01655500"
    },
@@ -7960,13 +8207,14 @@
    "_tier": "A",
    "_nodes": [
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_62_export_2": {
    "name": "印尼：锡锭：出口数量：全球（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01593795"
    },
@@ -7974,13 +8222,14 @@
    "_tier": "A",
    "_nodes": [
     "6.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_62_export_3": {
    "name": "印尼：锡锭：出口数量：全球（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01593795"
    },
@@ -7989,13 +8238,14 @@
    "_nodes": [
     "6.2",
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_62_export_4": {
    "name": "印尼：锡锭：出口数量：全球（月）",
    "unit": "吨",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01593795"
    },
@@ -8004,13 +8254,14 @@
    "_nodes": [
     "6.2",
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_62_export_5": {
    "name": "锡：出口金额合计：关别（月）",
    "unit": "美元",
    "freq": "monthly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "CM0000629636"
    },
@@ -8020,13 +8271,14 @@
     "6.2",
     "6.3",
     "6.4"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -8034,13 +8286,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export_2": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -8048,13 +8301,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export_3": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -8062,13 +8316,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export_4": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -8076,13 +8331,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export_5": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -8090,13 +8346,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export_6": {
    "name": "韩国海关: 其他锡制品出口量: 总计: 月度",
    "unit": "",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "a10171800"
    },
@@ -8104,13 +8361,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export_ratio": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -8118,13 +8376,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_63_export_ratio_2": {
    "name": "精炼锡：出口数量：马来西亚（月）",
    "unit": "吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01659306"
    },
@@ -8132,13 +8391,14 @@
    "_tier": "A",
    "_nodes": [
     "6.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_71_tc": {
    "name": "锡精矿：40%Sn：加工费：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01538256"
    },
@@ -8148,13 +8408,14 @@
     "7.1",
     "7.2",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_71_cost": {
    "name": "精炼锡：成本（日）",
    "unit": "元",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105843"
    },
@@ -8164,13 +8425,14 @@
     "7.1",
     "7.2",
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_71_cost_percentile": {
    "name": "精炼锡：成本（日）",
    "unit": "元",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105843"
    },
@@ -8179,13 +8441,14 @@
    "_nodes": [
     "7.1",
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_71_cost_2": {
    "name": "精炼锡：成本（日）",
    "unit": "元",
    "freq": "quarterly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105843"
    },
@@ -8193,13 +8456,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_71_cost_3": {
    "name": "精炼锡：成本（日）",
    "unit": "元",
    "freq": "quarterly",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID02105843"
    },
@@ -8207,13 +8471,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_71_tc_2": {
    "name": "锡精矿：40%Sn：加工费：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01538256"
    },
@@ -8221,13 +8486,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_71_tc_3": {
    "name": "锡精矿：40%Sn：加工费：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01538256"
    },
@@ -8235,13 +8501,14 @@
    "_tier": "A",
    "_nodes": [
     "7.1"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_72_tc": {
    "name": "锡精矿：40%Sn：加工费：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01538256"
    },
@@ -8249,13 +8516,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_72_tc_2": {
    "name": "锡精矿：40%Sn：加工费：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID01538256"
    },
@@ -8263,13 +8531,14 @@
    "_tier": "A",
    "_nodes": [
     "7.2"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_73_price": {
    "name": "锡精矿：1#：40%Sn：汇总价格：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00259809"
    },
@@ -8277,13 +8546,14 @@
    "_tier": "A",
    "_nodes": [
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_73_price_2": {
    "name": "锡精矿：1#：40%Sn：汇总价格：云南（日）",
    "unit": "元/吨",
    "freq": "daily",
-   "verified": false,
+   "verified": true,
    "ids": {
     "SN": "ID00259809"
    },
@@ -8291,7 +8561,8 @@
    "_tier": "A",
    "_nodes": [
     "7.3"
-   ]
+   ],
+   "_verified_by": "zhiji_series_p1_20260902"
   },
   "si_21_close_front_industrial_si": {
    "name": "GFEX：工业硅：主力合约：收盘价（日）",
@@ -15164,7 +15435,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.53",
- "updated": "2026-09-02 17:18",
- "change": "P1 空壳修复: 23条 zhiji_id→ids + 23条实测verified → v3.53"
+ "version": "v3.54",
+ "updated": "2026-09-02 19:23",
+ "change": "P1 series实测: 271条 verified=False→True → v3.54"
 }
