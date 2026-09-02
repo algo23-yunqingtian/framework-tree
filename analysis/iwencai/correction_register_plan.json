@@ -4,34 +4,37 @@
    "title": "期货价格",
    "rows": [
     {
-     "concept": "1",
+     "concept": "工业硅主力合约收盘价",
      "ids": [
-      "a10154400",
       "a10154400",
       "FU00048993"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a10154400",
+     "mysteel_id": "FU00048993",
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "工业硅主力合约持仓量",
      "ids": [
-      "a10154412",
       "a10154412",
       "FU00088310"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": "a10154412",
+     "mysteel_id": "FU00088310",
+     "unit": "手",
+     "freq": "daily"
     },
     {
-     "concept": "3",
+     "concept": "工业硅主力合约成交量",
      "ids": [
-      "a10154413",
       "a10154413",
       "FU00088312"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": "a10154413",
+     "mysteel_id": "FU00088312",
+     "unit": "手",
+     "freq": "daily"
     }
    ]
   },
@@ -39,14 +42,15 @@
    "title": "期现关系（重点修正）",
    "rows": [
     {
-     "concept": "2",
+     "concept": "工业硅基差",
      "ids": [
-      "j00126565",
       "a12841761",
       "FU00051051"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12841761",
+     "mysteel_id": "FU00051051",
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
@@ -54,68 +58,97 @@
    "title": "期限结构（GFEX 多合约）",
    "rows": [
     {
-     "concept": "1",
+     "concept": "工业硅期货月差",
      "ids": [
-      "a12841761",
       "a12841764",
       "FU00039409",
       "FU00039384"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12841764",
+     "mysteel_id": "FU00039409",
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "工业硅期货期限结构",
      "ids": [
-      "ID01305502",
-      "FU00039384",
       "FU00039384"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "FU00039384",
+     "mysteel_id": "FU00039384",
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
   "2.5": {
    "title": "成本利润",
-   "rows": []
+   "rows": [
+    {
+     "concept": "工业硅冶炼利润",
+     "ids": [
+      "ID01528162",
+      "ID01528163",
+      "ID01528164"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01528162",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "工业硅冶炼成本",
+     "ids": [
+      "ID01523502",
+      "ID01523500",
+      "ID01523501"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01523502",
+     "unit": "元/吨",
+     "freq": "weekly"
+    }
+   ]
   },
   "2.6": {
    "title": "资金面（GFEX 前20持仓）",
    "rows": [
     {
-     "concept": "1",
+     "concept": "工业硅多头前20持仓量",
      "ids": [
-      "FU00039391",
       "j02803953",
       "FU00085345",
       "FU00085352",
       "FU00085351"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": "j02803953",
+     "mysteel_id": "FU00085345",
+     "unit": "手",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "工业硅空头前20持仓量",
      "ids": [
-      "FU00039379",
       "j02803953",
       "FU00085344",
       "FU00085350",
       "FU00085334"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": "j02803953",
+     "mysteel_id": "FU00085344",
+     "unit": "手",
+     "freq": "daily"
     },
     {
-     "concept": "5",
+     "concept": "工业硅前20总持仓量",
      "ids": [
-      "j02803953",
       "j02803953",
       "FU00088310"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": "j02803953",
+     "mysteel_id": "FU00088310",
+     "unit": "手",
+     "freq": "daily"
     }
    ]
   },
@@ -123,189 +156,307 @@
    "title": "现货价格（补充分地区口径）",
    "rows": [
     {
-     "concept": "1",
+     "concept": "工业硅现货价553#",
      "ids": [
-      "a10175359",
-      "FU00050831"
+      "ID01305502",
+      "ID01297272",
+      "ID00258572",
+      "ID00409301"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": null,
+     "mysteel_id": "ID01305502",
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "工业硅现货价421#",
      "ids": [
-      "a12768740",
-      "FU00050831"
+      "ID01305501",
+      "ID01530126",
+      "ID01297273"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": null,
+     "mysteel_id": "ID01305501",
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
-  "3.2": {
-   "title": ".1 精炼产量",
+  "2.4.final": {
+   "title": ".x 仓单库存（补充，供 4.1/4.2 参考）",
    "rows": [
     {
-     "concept": "1",
+     "concept": "GFEX工业硅仓单数量",
      "ids": [
-      "a12715175",
+      "FU00050831"
+     ],
+     "smm_id": null,
+     "mysteel_id": "FU00050831",
+     "unit": "手",
+     "freq": "daily"
+    },
+    {
+     "concept": "GFEX工业硅仓单增减",
+     "ids": [
+      "FU00050831"
+     ],
+     "smm_id": null,
+     "mysteel_id": "FU00050831",
+     "unit": "手",
+     "freq": "daily"
+    }
+   ]
+  },
+  "3.2.1": {
+   "title": "精炼产量",
+   "rows": [
+    {
+     "concept": "工业硅精炼月产量",
+     "ids": [
       "a12715175",
       "ID01448337"
      ],
-     "unit": "月",
-     "freq": "万吨"
+     "smm_id": "a12715175",
+     "mysteel_id": "ID01448337",
+     "unit": "万吨",
+     "freq": "monthly"
     },
     {
-     "concept": "4",
+     "concept": "工业硅精炼月产能",
      "ids": [
-      "a12715178",
+      "a12750402"
+     ],
+     "smm_id": "a12750402",
+     "mysteel_id": null,
+     "unit": "万吨/月",
+     "freq": "monthly"
+    },
+    {
+     "concept": "工业硅精炼月进口量",
+     "ids": [
       "a12715178",
       "ID01108445"
      ],
-     "unit": "月",
-     "freq": "吨"
-    },
-    {
-     "concept": "1",
-     "ids": [
-      "a10020040",
-      "a10123444",
-      "ID01877463"
-     ],
-     "unit": "周",
-     "freq": "%"
-    },
-    {
-     "concept": "5",
-     "ids": [
-      "ID01664944"
-     ],
-     "unit": "—",
-     "freq": "—"
-    },
-    {
-     "concept": "1",
-     "ids": [
-      "a12715177",
-      "a12715177"
-     ],
-     "unit": "月",
-     "freq": "万吨"
-    },
-    {
-     "concept": "4",
-     "ids": [
-      "ID01877463",
-      "a10123444",
-      "ID01877463"
-     ],
-     "unit": "周",
-     "freq": "%"
+     "smm_id": "a12715178",
+     "mysteel_id": "ID01108445",
+     "unit": "吨",
+     "freq": "monthly"
     }
    ]
   },
-  "3.1": {
-   "title": ".1 海外矿山（全部移出/替换）",
+  "3.2.2": {
+   "title": "精炼开工",
    "rows": [
     {
-     "concept": "1",
+     "concept": "工业硅开工率(周)",
      "ids": [
-      "a10128068",
+      "a10123444",
+      "ID01877463"
+     ],
+     "smm_id": "a10123444",
+     "mysteel_id": "ID01877463",
+     "unit": "%",
+     "freq": "weekly"
+    },
+    {
+     "concept": "工业硅精炼月产能利用率",
+     "ids": [
+      "ID01445990"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01445990",
+     "unit": "%",
+     "freq": "monthly"
+    }
+   ]
+  },
+  "3.2.3": {
+   "title": "再生硅",
+   "rows": [
+    {
+     "concept": "工业硅再生月产量",
+     "ids": [
+      "a12715177"
+     ],
+     "smm_id": "a12715177",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "monthly"
+    }
+   ]
+  },
+  "3.2.4": {
+   "title": "冶炼利润成本",
+   "rows": [
+    {
+     "concept": "工业硅冶炼利润",
+     "ids": [
+      "ID01528162",
+      "ID01528163",
+      "ID01528164"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01528162",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "工业硅冶炼厂开工率",
+     "ids": [
+      "a10123444",
+      "ID01877463"
+     ],
+     "smm_id": "a10123444",
+     "mysteel_id": "ID01877463",
+     "unit": "%",
+     "freq": "weekly"
+    }
+   ]
+  },
+  "3.1.1": {
+   "title": "海外矿山（全部移出/替换）",
+   "rows": []
+  },
+  "3.1.2": {
+   "title": "海外分国别（替换为工业硅产量）",
+   "rows": [
+    {
+     "concept": "中国工业硅月产量",
+     "ids": [
       "ID01448337",
       "a10123426",
       "a10123701"
      ],
-     "unit": "月",
-     "freq": "万吨"
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "美国工业硅产量",
      "ids": [
-      "a10113485",
       "ID01552216"
      ],
-     "unit": "年",
-     "freq": "千吨"
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "千吨",
+     "freq": "yearly"
     },
     {
-     "concept": "4",
+     "concept": "中国工业硅开工率",
      "ids": [
-      "a10123444",
       "ID01877463",
       "ID01664944",
       "a10123444"
      ],
-     "unit": "周/月",
-     "freq": "%"
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "weekly"
+    }
+   ]
+  },
+  "3.1.3": {
+   "title": "国内矿山（概念更名→冶炼端指标）",
+   "rows": [
+    {
+     "concept": "中国工业硅月产量",
+     "ids": [
+      "ID01448337"
+     ],
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "中国工业硅开工率",
      "ids": [
-      "a10123444",
       "ID01877463",
       "ID01664944"
      ],
-     "unit": "周/月",
-     "freq": "%"
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "weekly"
     },
     {
-     "concept": "5",
+     "concept": "中国工业硅产能利用率",
      "ids": [
-      "a10020032",
+      "ID01445990",
+      "ID01445977"
+     ],
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "monthly"
+    },
+    {
+     "concept": "工业硅社会库存",
+     "ids": [
       "a10020032",
       "a10020033"
      ],
-     "unit": "周",
-     "freq": "万吨"
-    },
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "weekly"
+    }
+   ]
+  },
+  "3.1.4": {
+   "title": "矿进口（移出+替换为产品进口）",
+   "rows": [
     {
-     "concept": "2",
+     "concept": "工业硅月进口量分国别",
      "ids": [
-      "ID02467748",
       "ID01108445",
       "ID01517912",
       "ID01517910"
      ],
-     "unit": "月",
-     "freq": "吨"
-    },
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
+    }
+   ]
+  },
+  "3.1.5": {
+   "title": "TC加工费（核心幻觉移出）",
+   "rows": [
     {
-     "concept": "5",
+     "concept": "工业硅冶炼厂开工率",
      "ids": [
-      "a12754668"
-     ],
-     "unit": "月",
-     "freq": "%"
-    },
-    {
-     "concept": "3",
-     "ids": [
-      "ID01877463",
       "ID01877463",
       "a10123444"
      ],
-     "unit": "工业硅开工率中国周",
-     "freq": "✅ 保留"
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "",
+     "freq": null
     },
     {
-     "concept": "4",
+     "concept": "工业硅冶炼厂产能利用率",
      "ids": [
-      "ID01445990",
       "ID01445990"
      ],
-     "unit": "工业硅产能利用率中国月",
-     "freq": "✅ 保留"
+     "smm_id": null,
+     "mysteel_id": null,
+     "unit": "",
+     "freq": null
     },
     {
-     "concept": "1",
+     "concept": "硅石价格",
      "ids": [
       "s20020363",
       "ID01857521",
       "ID01857512",
       "ID01857528"
      ],
-     "unit": "**ID01857521**(云南送到价日)/**ID01857512**(低端价)/**ID01857528**(高端价)",
-     "freq": "周/日"
+     "smm_id": "s20020363",
+     "mysteel_id": "ID01857521",
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
@@ -313,41 +464,104 @@
    "title": "期货仓单（GFEX）",
    "rows": [
     {
-     "concept": "1",
+     "concept": "GFEX工业硅仓单总量",
      "ids": [
-      "a10175359",
       "a10175359",
       "FU00050831"
      ],
-     "unit": "日",
-     "freq": "手/吨"
+     "smm_id": "a10175359",
+     "mysteel_id": "FU00050831",
+     "unit": "手/吨",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "GFEX工业硅仓单增减",
      "ids": [
-      "a12768740",
       "a10175361",
       "FU00050831"
      ],
-     "unit": "日",
-     "freq": "手/吨"
+     "smm_id": "a10175361",
+     "mysteel_id": "FU00050831",
+     "unit": "手/吨",
+     "freq": "daily"
     }
    ]
   },
   "4.3": {
    "title": "/4.4 社会库存与工厂库存",
-   "rows": []
+   "rows": [
+    {
+     "concept": "工业硅社会库存总量",
+     "ids": [
+      "a10020032",
+      "a10020033"
+     ],
+     "smm_id": "a10020032",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "工业硅工厂库存总量",
+     "ids": [
+      "a12811428"
+     ],
+     "smm_id": "a12811428",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "工业硅市场库存总量",
+     "ids": [
+      "a12811428"
+     ],
+     "smm_id": "a12811428",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "weekly"
+    }
+   ]
   },
   "7.1": {
    "title": "成本",
    "rows": [
     {
-     "concept": "5",
+     "concept": "工业硅冶炼成本",
      "ids": [
-      "a12811428"
+      "ID01523502",
+      "ID01523500",
+      "ID01523501"
      ],
-     "unit": "周",
-     "freq": "元/吨"
+     "smm_id": null,
+     "mysteel_id": "ID01523502",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "工业硅现金成本",
+     "ids": [
+      "ID02313934",
+      "ID02313971",
+      "ID02313948"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02313934",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "工业硅电价",
+     "ids": [
+      "ID01857538",
+      "ID01857548",
+      "ID01857551",
+      "ID01857527"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01857538",
+     "unit": "元/千瓦时",
+     "freq": "daily"
     }
    ]
   },
@@ -355,57 +569,28 @@
    "title": "利润",
    "rows": [
     {
-     "concept": "4",
+     "concept": "工业硅冶炼利润",
      "ids": [
-      "a12795316",
+      "ID01528162",
+      "ID01528163",
+      "ID01528164"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01528162",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "电力成本分项",
+     "ids": [
       "ID02313922",
       "ID02313926",
       "ID02313973"
      ],
-     "unit": "周",
-     "freq": "元/吨"
-    },
-    {
-     "concept": "电力",
-     "ids": [
-      "ID02313922",
-      "ID02313926",
-      "ID02313973",
-      "ID02313969",
-      "ID02313940"
-     ],
-     "unit": "ID02313973",
-     "freq": "ID02313969(521#)"
-    },
-    {
-     "concept": "硅煤",
-     "ids": [
-      "ID02313924",
-      "ID02313974"
-     ],
-     "unit": "ID02313974",
-     "freq": "—"
-    },
-    {
-     "concept": "石油焦",
-     "ids": [
-      "ID02313929",
-      "ID02313953"
-     ],
-     "unit": "—",
-     "freq": "—"
-    },
-    {
-     "concept": "电极",
-     "ids": [
-      "ID02313925",
-      "ID02313937",
-      "ID02313972",
-      "ID02313966",
-      "ID02313943"
-     ],
-     "unit": "ID02313972",
-     "freq": "ID02313966(521#)"
+     "smm_id": null,
+     "mysteel_id": "ID02313922",
+     "unit": "元/吨",
+     "freq": "weekly"
     }
    ]
   },
@@ -413,25 +598,27 @@
    "title": "进口",
    "rows": [
     {
-     "concept": "1",
+     "concept": "工业硅进口量",
      "ids": [
-      "a12715178",
       "a12715178",
       "CM0000287718"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12715178",
+     "mysteel_id": "CM0000287718",
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "工业硅进口量分国别",
      "ids": [
-      "a12754661",
       "a12754661",
       "CM0000287718",
       "CM0000287714"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12754661",
+     "mysteel_id": "CM0000287718",
+     "unit": "吨",
+     "freq": "monthly"
     }
    ]
   },
@@ -439,43 +626,38 @@
    "title": "出口",
    "rows": [
     {
-     "concept": "1",
+     "concept": "工业硅出口量",
      "ids": [
-      "a12715179",
       "a12715179",
       "CM0000287779"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12715179",
+     "mysteel_id": "CM0000287779",
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "工业硅出口量分国别",
      "ids": [
-      "a12754666",
       "a12754666",
       "CM0000287779",
       "CM0000287763"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12754666",
+     "mysteel_id": "CM0000287779",
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "3",
+     "concept": "工业硅(金属硅)出口量",
      "ids": [
-      "a12715179",
       "a12715179",
       "CM0000287779"
      ],
-     "unit": "月",
-     "freq": "吨"
-    },
-    {
-     "concept": "4",
-     "ids": [
-      "a12754666"
-     ],
-     "unit": "—",
-     "freq": "—"
+     "smm_id": "a12715179",
+     "mysteel_id": "CM0000287779",
+     "unit": "吨",
+     "freq": "monthly"
     }
    ]
   },
@@ -489,109 +671,97 @@
   },
   "5.1": {
    "title": "下游开工率/表观消费",
-   "rows": []
-  },
-  "5.2": {
-   "title": "下游产量",
    "rows": [
     {
-     "concept": "1",
+     "concept": "有机硅DMC开工率",
      "ids": [
-      "a12715181",
-      "a12715181"
+      "a10154946"
      ],
-     "unit": "月",
-     "freq": "万吨"
+     "smm_id": "a10154946",
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "有机硅开工率",
      "ids": [
-      "a10123979",
-      "a10123979"
+      "a10154946"
      ],
-     "unit": "年+月",
-     "freq": "万吨"
-    },
-    {
-     "concept": "3",
-     "ids": [
-      "a12811428",
-      "a12811428"
-     ],
-     "unit": "周",
-     "freq": "—"
-    }
-   ]
-  },
-  "5.3": {
-   "title": "订单/排产（概念不存在，全部移出）",
-   "rows": [
-    {
-     "concept": "5",
-     "ids": [
-      "a10123980",
-      "a10123980"
-     ],
-     "unit": "a10123980",
-     "freq": "有机硅单体产量同比"
+     "smm_id": "a10154946",
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "monthly"
     },
     {
      "concept": "工业硅表观消费量",
      "ids": [
       "a12715180"
      ],
-     "unit": "SMM平衡表",
-     "freq": "a12715180"
-    },
-    {
-     "concept": "工业硅终端消费量",
-     "ids": [
-      "a12715181"
-     ],
-     "unit": "SMM平衡表",
-     "freq": "a12715181"
-    },
-    {
-     "concept": "有机硅DMC开工率",
-     "ids": [
-      "a10154946"
-     ],
-     "unit": "SMM",
-     "freq": "a10154946"
+     "smm_id": "a12715180",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "monthly"
     },
     {
      "concept": "有机硅表观消费量",
      "ids": [
       "a12857251"
      ],
-     "unit": "SMM聚硅氧烷",
-     "freq": "a12857251"
+     "smm_id": "a12857251",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "monthly"
     },
     {
-     "concept": "有机硅单体产量",
+     "concept": "下游开工率与有机硅开工率",
+     "ids": [
+      "a10154946"
+     ],
+     "smm_id": "a10154946",
+     "mysteel_id": null,
+     "unit": "—",
+     "freq": null
+    }
+   ]
+  },
+  "5.2": {
+   "title": "下游产量",
+   "rows": [
+    {
+     "concept": "工业硅终端消费量",
+     "ids": [
+      "a12715181"
+     ],
+     "smm_id": "a12715181",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "有机硅单体产量+DMC产量",
      "ids": [
       "a10123979"
      ],
-     "unit": "SMM",
-     "freq": "a10123979"
-    },
-    {
-     "concept": "有机硅单体产量同比",
-     "ids": [
-      "a10123980"
-     ],
-     "unit": "SMM",
-     "freq": "a10123980"
+     "smm_id": "a10123979",
+     "mysteel_id": null,
+     "unit": "万吨",
+     "freq": "monthly"
     },
     {
      "concept": "下游工业硅原料库存",
      "ids": [
       "a12811428"
      ],
-     "unit": "SMM",
-     "freq": "a12811428"
+     "smm_id": "a12811428",
+     "mysteel_id": null,
+     "unit": "—",
+     "freq": "weekly"
     }
    ]
+  },
+  "5.3": {
+   "title": "订单/排产（概念不存在，全部移出）",
+   "rows": []
   }
  },
  "LI": {
@@ -599,33 +769,46 @@
    "title": "期货价格",
    "rows": [
     {
-     "concept": "1",
+     "concept": "碳酸锂期货主力合约收盘价",
      "ids": [
-      "a10172975",
       "a10172975",
       "FU00050088"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a10172975",
+     "mysteel_id": "FU00050088",
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "碳酸锂期货持仓量",
      "ids": [
-      "FU00088313",
       "j02803957",
       "FU00088313"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": "j02803957",
+     "mysteel_id": "FU00088313",
+     "unit": "手",
+     "freq": "daily"
     },
     {
-     "concept": "3",
+     "concept": "碳酸锂期货成交量",
      "ids": [
-      "FU00056916",
       "FU00088313"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": null,
+     "mysteel_id": "FU00088313",
+     "unit": "手",
+     "freq": "daily"
+    },
+    {
+     "concept": "GFEX仓单总量",
+     "ids": [
+      "FU00058102"
+     ],
+     "smm_id": null,
+     "mysteel_id": "FU00058102",
+     "unit": "手/吨",
+     "freq": "daily"
     }
    ]
   },
@@ -633,14 +816,45 @@
    "title": "期现关系",
    "rows": [
     {
-     "concept": "1",
+     "concept": "电池级碳酸锂现货升贴水",
      "ids": [
-      "ID01922207",
       "a12751985",
       "ID01922207"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12751985",
+     "mysteel_id": "ID01922207",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "工业级碳酸锂现货升贴水",
+     "ids": [
+      "ID01922204"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01922204",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂社会库存",
+     "ids": [
+      "a12795935"
+     ],
+     "smm_id": "a12795935",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "碳酸锂进口利润",
+     "ids": [
+      "a12751985"
+     ],
+     "smm_id": "a12751985",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
@@ -648,37 +862,50 @@
    "title": "期限结构",
    "rows": [
     {
-     "concept": "1",
+     "concept": "碳酸锂期货月差",
      "ids": [
-      "j02750901",
       "j02750901",
       "FU00050032",
       "FU00050040"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "j02750901",
+     "mysteel_id": "FU00050032",
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "碳酸锂期货期限结构",
      "ids": [
-      "a12723883",
-      "FU00050032",
       "FU00050032",
       "FU00050040",
       "FU00050048"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "FU00050032",
+     "mysteel_id": "FU00050032",
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "3",
+     "concept": "近月合约收盘价",
      "ids": [
-      "a12841695",
       "a12841695",
       "FU00050032"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12841695",
+     "mysteel_id": "FU00050032",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "远月合约收盘价",
+     "ids": [
+      "FU00050040",
+      "FU00050048"
+     ],
+     "smm_id": null,
+     "mysteel_id": "FU00050040",
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
@@ -686,42 +913,46 @@
    "title": "估值/利润",
    "rows": [
     {
-     "concept": "2",
+     "concept": "分路线利润",
      "ids": [
-      "a12751985",
       "a12795957",
       "a10181287",
       "a12795960"
      ],
-     "unit": "日/季",
-     "freq": "元/吨"
+     "smm_id": "a12795957",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "3",
+     "concept": "氢氧化锂冶炼利润",
      "ids": [
-      "a12763812",
       "a12763812"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12763812",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "4",
+     "concept": "盐湖提锂利润",
      "ids": [
-      "a12795960",
       "a12795960"
      ],
-     "unit": "季",
-     "freq": "元/吨"
+     "smm_id": "a12795960",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "quarterly"
     },
     {
-     "concept": "5",
+     "concept": "锂云母/锂辉石利润",
      "ids": [
-      "a10181287",
       "a10181287"
      ],
-     "unit": "季",
-     "freq": "元/吨"
+     "smm_id": "a10181287",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "quarterly"
     }
    ]
   },
@@ -729,26 +960,79 @@
    "title": "资金面（GFEX 前20持仓）",
    "rows": [
     {
-     "concept": "1",
+     "concept": "多头前20持仓量",
      "ids": [
-      "a12723883",
       "FU00085341",
       "FU00058195",
       "FU00085331"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": null,
+     "mysteel_id": "FU00085341",
+     "unit": "手",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "空头前20持仓量",
      "ids": [
-      "a12723883",
       "FU00085325",
       "FU00058209",
       "FU00085347"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": null,
+     "mysteel_id": "FU00085325",
+     "unit": "手",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂电池级早盘价",
+     "ids": [
+      "ID01551919"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01551919",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂工业级早盘价",
+     "ids": [
+      "ID01551906"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01551906",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂现货价格指数",
+     "ids": [
+      "ID01731627",
+      "ID01720084"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01731627",
+     "unit": "—",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂生产毛利",
+     "ids": [
+      "ID01349545"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01349545",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "碳酸锂生产成本",
+     "ids": [
+      "ID01349547"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01349547",
+     "unit": "元/吨",
+     "freq": "weekly"
     }
    ]
   },
@@ -756,32 +1040,35 @@
    "title": "海外矿山",
    "rows": [
     {
-     "concept": "1",
+     "concept": "澳洲/巴西/非洲锂矿产量",
      "ids": [
-      "a12817812",
       "a12808678",
       "a12814168"
      ],
-     "unit": "季",
-     "freq": "吨"
+     "smm_id": "a12808678",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "quarterly"
     },
     {
-     "concept": "2",
+     "concept": "海外碳酸锂产量(智利)",
      "ids": [
-      "a12796894",
       "a12817812"
      ],
-     "unit": "季",
-     "freq": "吨"
+     "smm_id": "a12817812",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "quarterly"
     },
     {
-     "concept": "3",
+     "concept": "海外产能",
      "ids": [
-      "a12715541",
       "a12715541"
      ],
-     "unit": "年",
-     "freq": "万吨LCE"
+     "smm_id": "a12715541",
+     "mysteel_id": null,
+     "unit": "万吨LCE",
+     "freq": "yearly"
     }
    ]
   },
@@ -789,65 +1076,54 @@
    "title": "分国别/分矿种",
    "rows": [
     {
-     "concept": "1",
+     "concept": "澳大利亚锂矿产量",
      "ids": [
-      "a12808678",
       "a12808678"
      ],
-     "unit": "季",
-     "freq": "吨"
+     "smm_id": "a12808678",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "quarterly"
     },
     {
-     "concept": "2",
+     "concept": "锂精矿进口分国别",
      "ids": [
-      "a12814168"
-     ],
-     "unit": "季",
-     "freq": "吨"
-    },
-    {
-     "concept": "5",
-     "ids": [
-      "a12857355",
       "a10001421"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a10001421",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "6",
+     "concept": "锂云母产量",
      "ids": [
-      "a12756591",
       "a12756591"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12756591",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "7",
-     "ids": [
-      "a12814168",
-      "a12814168"
-     ],
-     "unit": "季/周",
-     "freq": "吨"
-    },
-    {
-     "concept": "8",
+     "concept": "锂辉石产量",
      "ids": [
       "a12814168"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12814168",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
     },
     {
-     "concept": "9",
+     "concept": "盐湖提锂产量",
      "ids": [
-      "a12723867",
       "a12723867"
      ],
-     "unit": "周",
-     "freq": "吨"
+     "smm_id": "a12723867",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
     }
    ]
   },
@@ -855,40 +1131,44 @@
    "title": "锂矿进口",
    "rows": [
     {
-     "concept": "1",
+     "concept": "锂矿进口总量",
      "ids": [
-      "a10001421",
       "a10001421"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a10001421",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "锂矿进口量分国别",
      "ids": [
-      "a12857355",
       "a10001421"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a10001421",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "4",
+     "concept": "锂矿进口均价",
      "ids": [
-      "a12852994",
       "a12852994"
      ],
-     "unit": "月",
-     "freq": "美元/吨"
+     "smm_id": "a12852994",
+     "mysteel_id": null,
+     "unit": "美元/吨",
+     "freq": "monthly"
     },
     {
-     "concept": "5",
+     "concept": "碳酸锂进口利润",
      "ids": [
-      "a10178165",
       "a12751985"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12751985",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
@@ -900,84 +1180,84 @@
    "title": "精炼产量/开工",
    "rows": [
     {
-     "concept": "1",
+     "concept": "电池级碳酸锂产量",
      "ids": [
-      "a12715549",
       "a12715549"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12715549",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "工业级碳酸锂产量",
      "ids": [
-      "a12715548",
       "a12715548"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12715548",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "3",
+     "concept": "氢氧化锂产量",
      "ids": [
-      "a10001934",
       "a10001934"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a10001934",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "4",
+     "concept": "盐湖提锂精炼产量",
      "ids": [
-      "a12723867",
       "a12723867"
      ],
-     "unit": "周",
-     "freq": "吨"
+     "smm_id": "a12723867",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
     },
     {
-     "concept": "5",
+     "concept": "碳酸锂社会库存",
      "ids": [
-      "a12793286",
       "a12795935"
      ],
-     "unit": "周",
-     "freq": "吨"
+     "smm_id": "a12795935",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
     },
     {
-     "concept": "6",
+     "concept": "国内锂盐精炼开工率",
      "ids": [
-      "a12715874",
       "a12715874"
      ],
-     "unit": "月",
-     "freq": "%"
+     "smm_id": "a12715874",
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "monthly"
     },
     {
-     "concept": "8",
+     "concept": "氢氧化锂开工率",
      "ids": [
-      "a12818522"
-     ],
-     "unit": "月",
-     "freq": "%"
-    },
-    {
-     "concept": "9",
-     "ids": [
-      "a10167884",
       "a10167884"
      ],
-     "unit": "月",
-     "freq": "%"
+     "smm_id": "a10167884",
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "monthly"
     },
     {
-     "concept": "10",
+     "concept": "盐湖提锂开工率",
      "ids": [
-      "a12715874",
       "a12715874"
      ],
-     "unit": "月",
-     "freq": "%"
+     "smm_id": "a12715874",
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "monthly"
     }
    ]
   },
@@ -985,41 +1265,45 @@
    "title": "回收",
    "rows": [
     {
-     "concept": "1",
+     "concept": "回收料产碳酸锂",
      "ids": [
-      "a12715550",
       "a12715550",
       "a12754398"
      ],
-     "unit": "周/月",
-     "freq": "吨"
+     "smm_id": "a12715550",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
     },
     {
-     "concept": "2",
+     "concept": "再生氢氧化锂产量",
      "ids": [
-      "a10001934",
       "a10001934"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a10001934",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "3",
+     "concept": "回收企业产量",
      "ids": [
-      "a12754398",
       "a12754398"
      ],
-     "unit": "周",
-     "freq": "吨"
+     "smm_id": "a12754398",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
     },
     {
-     "concept": "4",
+     "concept": "再生碳酸锂社会库存",
      "ids": [
-      "a12795935",
       "a12795935"
      ],
-     "unit": "周",
-     "freq": "吨"
+     "smm_id": "a12795935",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "weekly"
     }
    ]
   },
@@ -1027,40 +1311,44 @@
    "title": "分路线利润",
    "rows": [
     {
-     "concept": "1",
+     "concept": "电池级碳酸锂冶炼利润",
      "ids": [
-      "a12795957",
       "a12795957"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12795957",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "2",
+     "concept": "氢氧化锂冶炼利润",
      "ids": [
-      "a12763812",
       "a12763812"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12763812",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "3",
+     "concept": "盐湖提锂冶炼利润",
      "ids": [
-      "a12763812",
       "a12795960"
      ],
-     "unit": "季",
-     "freq": "元/吨"
+     "smm_id": "a12795960",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "quarterly"
     },
     {
-     "concept": "4",
+     "concept": "锂云母冶炼利润",
      "ids": [
-      "a12763812",
       "a10181287"
      ],
-     "unit": "季",
-     "freq": "元/吨"
+     "smm_id": "a10181287",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "quarterly"
     }
    ]
   },
@@ -1068,14 +1356,25 @@
    "title": "交易所库存/仓单",
    "rows": [
     {
-     "concept": "1",
+     "concept": "GFEX碳酸锂仓单总量",
      "ids": [
-      "a12855065",
       "a12723883",
       "FU00058102"
      ],
-     "unit": "日",
-     "freq": "手/吨"
+     "smm_id": "a12723883",
+     "mysteel_id": "FU00058102",
+     "unit": "手/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂仓单注销占比",
+     "ids": [
+      "FU00058102"
+     ],
+     "smm_id": null,
+     "mysteel_id": "FU00058102",
+     "unit": "%",
+     "freq": "daily"
     }
    ]
   },
@@ -1083,30 +1382,24 @@
    "title": "仓单",
    "rows": [
     {
-     "concept": "1",
+     "concept": "碳酸锂仓单数量",
      "ids": [
-      "a12723883",
       "FU00058102"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": null,
+     "mysteel_id": "FU00058102",
+     "unit": "手",
+     "freq": "daily"
     },
     {
-     "concept": "2",
-     "ids": [
-      "a12723883",
-      "FU00058102"
-     ],
-     "unit": "日",
-     "freq": "手"
-    },
-    {
-     "concept": "3",
+     "concept": "仓单增减",
      "ids": [
       "FU00058102"
      ],
-     "unit": "日",
-     "freq": "手"
+     "smm_id": null,
+     "mysteel_id": "FU00058102",
+     "unit": "手",
+     "freq": "daily"
     }
    ]
   },
@@ -1114,26 +1407,38 @@
    "title": "社会库存",
    "rows": [
     {
-     "concept": "1",
+     "concept": "碳酸锂社会库存总量",
      "ids": [
-      "a12795935",
       "a12795935",
       "ID01865189"
      ],
-     "unit": "周",
-     "freq": "吨"
+     "smm_id": "a12795935",
+     "mysteel_id": "ID01865189",
+     "unit": "吨",
+     "freq": "weekly"
     },
     {
-     "concept": "2",
+     "concept": "库存结构",
      "ids": [
-      "a12795935",
       "a12795935",
       "ID01865185",
       "ID01865196",
       "ID01865203"
      ],
-     "unit": "周/月",
-     "freq": "吨"
+     "smm_id": "a12795935",
+     "mysteel_id": "ID01865185",
+     "unit": "吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "在途库存",
+     "ids": [
+      "ID02093014"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02093014",
+     "unit": "吨",
+     "freq": "monthly"
     }
    ]
   },
@@ -1141,122 +1446,701 @@
    "title": "工厂库存",
    "rows": [
     {
-     "concept": "1",
+     "concept": "碳酸锂工厂库存总量",
      "ids": [
-      "a12715574",
       "a12715574",
       "ID01865189"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12715574",
+     "mysteel_id": "ID01865189",
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "3",
+     "concept": "碳酸锂工厂库存天数",
      "ids": [
-      "a10097626",
+      "a12805120"
+     ],
+     "smm_id": "a12805120",
+     "mysteel_id": null,
+     "unit": "天",
+     "freq": "weekly"
+    },
+    {
+     "concept": "冶炼厂库存总量",
+     "ids": [
       "a10097626",
       "ID01865185",
       "ID01865196",
       "ID01865203"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a10097626",
+     "mysteel_id": "ID01865185",
+     "unit": "吨",
+     "freq": "monthly"
     }
    ]
   },
   "7.1": {
    "title": "成本",
-   "rows": []
+   "rows": [
+    {
+     "concept": "碳酸锂生产成本(完全成本)",
+     "ids": [
+      "ID01349547"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01349547",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "锂辉石精矿价格",
+     "ids": [
+      "ID01294969",
+      "ID01545073"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01294969",
+     "unit": "美元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "锂云母价格",
+     "ids": [
+      "ID01702773",
+      "ID01702750",
+      "ID01702776"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01702773",
+     "unit": "元/干吨度",
+     "freq": "daily"
+    },
+    {
+     "concept": "分路线完全成本",
+     "ids": [
+      "ID01835360",
+      "ID01835358"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01835360",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂现金成本",
+     "ids": [
+      "ID01349547"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01349547",
+     "unit": "元/吨",
+     "freq": "weekly"
+    }
+   ]
   },
   "7.2": {
    "title": "利润",
    "rows": [
     {
-     "concept": "1",
+     "concept": "碳酸锂分路线生产利润",
      "ids": [
       "a12795957",
       "ID01835359",
       "ID02215004"
      ],
-     "unit": "日",
-     "freq": "元/吨"
+     "smm_id": "a12795957",
+     "mysteel_id": "ID01835359",
+     "unit": "元/吨",
+     "freq": "daily"
     },
     {
-     "concept": "4",
+     "concept": "氢氧化锂冶炼利润",
+     "ids": [
+      "a12763812"
+     ],
+     "smm_id": "a12763812",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "盐湖提锂冶炼利润",
+     "ids": [
+      "a12795960"
+     ],
+     "smm_id": "a12795960",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "quarterly"
+    },
+    {
+     "concept": "锂云母/锂辉石冶炼利润",
      "ids": [
       "a10181287",
       "ID01835359"
      ],
-     "unit": "季/日",
-     "freq": "元/吨"
+     "smm_id": "a10181287",
+     "mysteel_id": "ID01835359",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂进口利润",
+     "ids": [
+      "a12751985"
+     ],
+     "smm_id": "a12751985",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
     }
    ]
   },
   "7.3": {
    "title": "冶炼成本",
-   "rows": []
+   "rows": [
+    {
+     "concept": "远期现货价",
+     "ids": [
+      "ID02194397",
+      "ID02194400",
+      "ID02194392",
+      "ID02194399"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02194397",
+     "unit": "美元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "锂云母完全成本",
+     "ids": [
+      "ID01702773"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01702773",
+     "unit": "元/干吨度",
+     "freq": "monthly"
+    },
+    {
+     "concept": "碳酸锂外采锂精矿生产成本",
+     "ids": [
+      "ID01835360"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01835360",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂外采锂云母生产成本",
+     "ids": [
+      "ID01835358"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01835358",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂碳化法生产成本",
+     "ids": [
+      "ID02215009"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02215009",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂生产成本(中国)",
+     "ids": [
+      "ID01349547"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01349547",
+     "unit": "元/吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "碳酸锂外采锂精矿生产利润",
+     "ids": [
+      "ID01835359"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01835359",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂碳化法生产利润",
+     "ids": [
+      "ID02215004"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02215004",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂(锂辉石原料)产量",
+     "ids": [
+      "ID01707140"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01707140",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "碳酸锂(盐湖卤水原料)产量",
+     "ids": [
+      "ID01707137"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01707137",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "碳酸锂(锂辉石原料)下月排产",
+     "ids": [
+      "ID01865207"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01865207",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "碳酸锂(盐湖卤水原料)下月排产",
+     "ids": [
+      "ID01865205"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01865205",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "碳酸锂电池级辉石料升贴水",
+     "ids": [
+      "ID01922187"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01922187",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "碳酸锂电池级盐湖料升贴水",
+     "ids": [
+      "ID01922198"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01922198",
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "锂辉石精矿CIF均价",
+     "ids": [
+      "ID01722298"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01722298",
+     "unit": "美元/吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "锂辉石精矿远期现货(澳洲)",
+     "ids": [
+      "ID02194397"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02194397",
+     "unit": "美元/吨",
+     "freq": "daily"
+    }
+   ]
   },
   "6.1": {
    "title": "进口",
    "rows": [
     {
-     "concept": "1",
+     "concept": "碳酸锂进口量",
      "ids": [
       "a12715657",
       "ID01666088"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": "a12715657",
+     "mysteel_id": "ID01666088",
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "2",
+     "concept": "碳酸锂进口分国别",
      "ids": [
       "ID01708886"
      ],
-     "unit": "月",
-     "freq": "吨"
+     "smm_id": null,
+     "mysteel_id": "ID01708886",
+     "unit": "吨",
+     "freq": "monthly"
     },
     {
-     "concept": "4",
+     "concept": "锂精矿进口总量",
+     "ids": [
+      "a10001421"
+     ],
+     "smm_id": "a10001421",
+     "mysteel_id": null,
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "锂精矿进口分国别",
      "ids": [
       "ID02038529",
       "ID02038530",
       "ID02038531"
      ],
-     "unit": "周/月",
-     "freq": "万吨"
+     "smm_id": null,
+     "mysteel_id": "ID02038529",
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "锂精矿进口均价",
+     "ids": [
+      "a12852994"
+     ],
+     "smm_id": "a12852994",
+     "mysteel_id": null,
+     "unit": "美元/吨",
+     "freq": "monthly"
     }
    ]
   },
   "6.2": {
    "title": "出口",
-   "rows": []
+   "rows": [
+    {
+     "concept": "氢氧化锂出口量",
+     "ids": [
+      "ID02005048"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02005048",
+     "unit": "吨",
+     "freq": "monthly"
+    }
+   ]
   },
   "6.3": {
    "title": "贸易",
-   "rows": []
+   "rows": [
+    {
+     "concept": "碳酸锂进口盈亏",
+     "ids": [
+      "a12751985"
+     ],
+     "smm_id": "a12751985",
+     "mysteel_id": null,
+     "unit": "元/吨",
+     "freq": "daily"
+    },
+    {
+     "concept": "锂精矿发运量(澳大利亚)",
+     "ids": [
+      "ID02038529"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02038529",
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "中国)",
+     "ids": [
+      "ID02038530"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02038530",
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "中国)",
+     "ids": [
+      "ID02038531"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02038531",
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "锂精矿海漂量(澳大利亚)",
+     "ids": [
+      "ID02038532"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02038532",
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "中国)",
+     "ids": [
+      "ID02038519"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02038519",
+     "unit": "万吨",
+     "freq": "weekly"
+    },
+    {
+     "concept": "锂精矿发运量(班伯里港)",
+     "ids": [
+      "ID02038526"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID02038526",
+     "unit": "万吨",
+     "freq": "weekly"
+    }
+   ]
   },
   "5.1": {
    "title": "下游开工率",
    "rows": [
     {
-     "concept": "2",
+     "concept": "三元材料开工率",
      "ids": [
       "a10001511",
       "ID01842003"
      ],
-     "unit": "月",
-     "freq": "%"
+     "smm_id": "a10001511",
+     "mysteel_id": "ID01842003",
+     "unit": "%",
+     "freq": "monthly"
+    },
+    {
+     "concept": "三元前驱体开工率",
+     "ids": [
+      "a10001510",
+      "a12775149"
+     ],
+     "smm_id": "a10001510",
+     "mysteel_id": null,
+     "unit": "%",
+     "freq": "monthly"
     }
    ]
   },
   "5.2": {
    "title": "下游需求",
-   "rows": []
+   "rows": [
+    {
+     "concept": "动力电池装车量",
+     "ids": [
+      "ID01660879"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01660879",
+     "unit": "GWh",
+     "freq": "monthly"
+    },
+    {
+     "concept": "储能电池产量",
+     "ids": [
+      "ID01464485"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01464485",
+     "unit": "GWh",
+     "freq": "weekly"
+    },
+    {
+     "concept": "新能源汽车销量",
+     "ids": [
+      "ID01442277"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01442277",
+     "unit": "万辆",
+     "freq": "monthly"
+    },
+    {
+     "concept": "磷酸铁锂产量",
+     "ids": [
+      "ID01245892",
+      "ID01245896"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245892",
+     "unit": "万吨",
+     "freq": "monthly"
+    }
+   ]
   },
   "5.3": {
    "title": "表观消费",
-   "rows": []
+   "rows": [
+    {
+     "concept": "碳酸锂表观消费量",
+     "ids": [
+      "ID01245889"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245889",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "氢氧化锂表观消费量",
+     "ids": [
+      "ID01245807"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245807",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "消费结构-磷酸铁锂",
+     "ids": [
+      "ID01245892"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245892",
+     "unit": "万吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "消费结构-三元材料",
+     "ids": [
+      "RE00033573"
+     ],
+     "smm_id": null,
+     "mysteel_id": "RE00033573",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "磷酸铁锂产量同比",
+     "ids": [
+      "ID01245892"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245892",
+     "unit": "%",
+     "freq": "monthly"
+    },
+    {
+     "concept": "磷酸铁锂产量环比",
+     "ids": [
+      "ID01245896"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245896",
+     "unit": "%",
+     "freq": "monthly"
+    },
+    {
+     "concept": "三元材料产量(总)",
+     "ids": [
+      "RE00033573"
+     ],
+     "smm_id": null,
+     "mysteel_id": "RE00033573",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "三元材料3系产量",
+     "ids": [
+      "ID01464213"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01464213",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "三元前驱体产量(总)",
+     "ids": [
+      "RE00033773"
+     ],
+     "smm_id": null,
+     "mysteel_id": "RE00033773",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "三元前驱体产量华东",
+     "ids": [
+      "ID01349519"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01349519",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "三元材料产能利用率",
+     "ids": [
+      "ID01842003"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01842003",
+     "unit": "%",
+     "freq": "monthly"
+    },
+    {
+     "concept": "碳酸锂表观消费量",
+     "ids": [
+      "ID01245889"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245889",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "氢氧化锂表观消费量",
+     "ids": [
+      "ID01245807"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01245807",
+     "unit": "吨",
+     "freq": "monthly"
+    },
+    {
+     "concept": "新能源汽车销量中国",
+     "ids": [
+      "ID01442277"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01442277",
+     "unit": "万辆",
+     "freq": "monthly"
+    },
+    {
+     "concept": "动力电池装车量(宁德时代)",
+     "ids": [
+      "ID01660879"
+     ],
+     "smm_id": null,
+     "mysteel_id": "ID01660879",
+     "unit": "GWh",
+     "freq": "monthly"
+    }
+   ]
   }
  }
 }
