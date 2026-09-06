@@ -149,12 +149,13 @@ def run_node(ws_url, task, var_cn_map):
         "demand": "表观消费,开工率,产量,库存,订单量,排产计划,社会库存,需求增速,消费占比,终端产量",
         "trade": "进口量,出口量,净进口量,保税区库存,保税区仓单,注销仓单分地区,海外发运,发运天数,进出口金额,关税税率",
         "cost": "冶炼成本,加工成本,电解成本,现金成本,分位成本,冶炼利润,加工费,能源成本,电价,原料成本",
+        "balance": "供需平衡,供需缺口,表观消费,产量,进口量,出口量,净进口,库存变化,消费量,消费增速,产量增速,平衡表,过剩量,缺口量,库存消费比",
     }
     dim = task["dim"]
     if not dim:   # --node 模式未带 dim，按节点编号反查
         code0 = task["node_code"].split(".")[0]
         dim = {"2": "price", "3": "supply", "4": "inventory", "5": "demand",
-               "6": "trade", "7": "cost"}.get(code0, "inventory")
+               "6": "trade", "7": "cost", "8": "balance"}.get(code0, "inventory")
     pos = POS[dim]
     # 品种特化增强（主脑 2026-08-30）：读 prompt_lib/varieties/<CODE>.json 的
     # industry_terms 追加进正例词，防止泛化词污染（镍→镍生铁NPI/高冰镍/印尼等）
@@ -167,7 +168,8 @@ def run_node(ws_url, task, var_cn_map):
     except Exception:
         pass
     label = task["label"] or {"price": "价格信号", "supply": "供给", "inventory": "库存",
-                              "demand": "需求", "trade": "进出口", "cost": "成本·利润"}[dim]
+                              "demand": "需求", "trade": "进出口", "cost": "成本·利润",
+                              "balance": "供需平衡"}[dim]
     node_name = task["node_name"] or ""
     q = task.get("q", "")
     if not node_name:   # --node 模式未带名，从 manifest/tree_config 反查
