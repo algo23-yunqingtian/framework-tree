@@ -1,0 +1,153 @@
+{
+  "variety": "ZN",
+  "agent": "主脑(server-A)样板",
+  "date": "2026-09-06",
+  "nodes": [
+    "2.1"
+  ],
+  "matches": [
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "锌主力合约收盘价（元/吨）",
+      "iwencai_priority": "正主",
+      "zhiji_id": "FU00016362",
+      "zhiji_name": "SHFE：锌：主力合约：收盘价（日）",
+      "zhiji_freq": "日",
+      "zhiji_unit": "元/吨",
+      "match_level": "A",
+      "verified": true,
+      "notes": "series验证: 2025-08-01=22320/2025-08-05=22380，口径正确。备选 a10023525(SMM同源日度)"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "持仓量（手）",
+      "iwencai_priority": "辅助",
+      "zhiji_id": "FU00047919",
+      "zhiji_freq": "日",
+      "zhiji_unit": "手",
+      "match_level": "B",
+      "verified": true,
+      "notes": "口径偏差: 为期货期权合约合计持仓，非锌期货总持仓。直接搜'锌 持仓量'首屏返回LME报告头寸(FU00082131等,周频,口径不符)，需限定'SHFE 锌 期货 持仓量'",
+      "zhiji_name": "SHFE：锌：期货期权合约：持仓量（日）"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "成交量（手）",
+      "iwencai_priority": "辅助",
+      "zhiji_id": "FU00047918",
+      "zhiji_name": "SHFE：锌：期货期权合约：成交量（日）",
+      "zhiji_freq": "日",
+      "zhiji_unit": "手",
+      "match_level": "B",
+      "verified": true,
+      "notes": "口径偏差: 期货期权合约合计成交量。直接搜'锌 成交量'首屏返回LME成交量(FU00033044)与LME3个月成交量(FU00016157)，需限定'SHFE 期货'"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "锌基差（元/吨）",
+      "iwencai_priority": "辅助",
+      "zhiji_id": "FU00024317",
+      "zhiji_name": "SHFE：锌：基差（日）",
+      "zhiji_freq": "日",
+      "zhiji_unit": "元/吨",
+      "match_level": "A",
+      "verified": true,
+      "notes": "series验证: -40/-15/30 元，口径正确。另有周频版 ID01167316(锌锭0#主力合约基差)"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "现货升贴水（元/吨）",
+      "iwencai_priority": "重要",
+      "zhiji_id": "ID02038785",
+      "zhiji_name": "锌锭：0#：Zn≥99.995%：升贴水：上海（日）",
+      "zhiji_freq": "日",
+      "zhiji_unit": "元/吨",
+      "match_level": "A",
+      "verified": true,
+      "notes": "series验证: 20/65/50 元，口径正确。分地区系列: 广东ID02038762/天津ID02038781/浙江ID02038789；1#锌有独立系列ID02038775等"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "锌近月/远月合约收盘价、月差（元/吨）",
+      "iwencai_priority": "辅助",
+      "zhiji_id": null,
+      "zhiji_name": null,
+      "zhiji_freq": null,
+      "zhiji_unit": null,
+      "match_level": "C",
+      "verified": false,
+      "notes": "未命中。已试:'锌 近月 远月 月差'(返回豆粕远月成交量ID01238061等,误命中)、'锌 月差'。知几无锌期货近/远月分合约价格与月差字段。仅周频'近月合约基差'ID01167312可近似"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "锌仓单注册量（手）/上期所锌仓单量（手）",
+      "iwencai_priority": "辅助",
+      "zhiji_id": "FU00016165",
+      "zhiji_name": "LME：锌：注册仓单（日）",
+      "zhiji_freq": "日",
+      "zhiji_unit": "吨",
+      "match_level": "B",
+      "verified": true,
+      "notes": "口径差异: 命中LME注册仓单(吨)而非上期所仓单(手)。series验证: 48600-57075吨。分地区仓单系列存在: 新加坡FU00023494/鹿特丹FU00023481/汉堡FU00023473/香港FU00094532。上期所仓单地区拆分仍缺(见锌库存试点报告)"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "多空持仓比（%）/前20大多头/空头持仓量（手）",
+      "iwencai_priority": "辅助",
+      "zhiji_id": "FU00111406",
+      "zhiji_name": "中国期货协会：锌：持仓量占比：上期所（月）",
+      "zhiji_freq": "月",
+      "zhiji_unit": "%",
+      "match_level": "C",
+      "verified": false,
+      "notes": "未命中。已试:'锌 多空持仓比'(返回月频持仓占比FU00111406/FU00112510,非多空比)、LME报告头寸系列FU00082131~FU00082146(周频,投资基金/商业机构分类型,非前20席位)。知几无上期所前20席位持仓数据"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "锌进口盈亏（元/吨）",
+      "iwencai_priority": "重要",
+      "zhiji_id": "ID01030236",
+      "zhiji_name": "锌锭：进口盈亏：含税（日）",
+      "zhiji_freq": "日",
+      "zhiji_unit": "元/吨",
+      "match_level": "A",
+      "verified": true,
+      "notes": "series验证: -1410.53 元(负=进口亏损)，口径正确。备选: 不含税ID01030238、SMM版a10018162"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "沪伦比（元/吨）",
+      "iwencai_priority": "辅助",
+      "zhiji_id": "FU00016498",
+      "zhiji_name": "Mysteel：锌：沪伦比值（日）",
+      "zhiji_freq": "日",
+      "zhiji_unit": "比值",
+      "match_level": "A",
+      "verified": true,
+      "notes": "series验证: 8.08-8.15，口径正确。备选: SMM日度a10018159"
+    },
+    {
+      "node": "2.1",
+      "node_name": "盘面结构",
+      "iwencai_indicator": "近3年同月收盘价均值/标准差（元/吨）",
+      "iwencai_priority": "排除",
+      "zhiji_id": null,
+      "zhiji_name": null,
+      "zhiji_freq": null,
+      "zhiji_unit": null,
+      "match_level": "C",
+      "verified": false,
+      "notes": "主动排除(未搜索): 统计派生指标(均值/标准差)，按图表设计规则不追踪。季节性分析应用期货结算价ID/FU00016362 + chart_kits季节性图在build时现算分位带"
+    }
+  ]
+}
