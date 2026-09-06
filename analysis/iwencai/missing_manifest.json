@@ -1,0 +1,546 @@
+{
+  "generated": "2026-09-06",
+  "description": "60个缺口节点的同花顺发散任务",
+  "tasks": [
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "price",
+      "label": "价格信号",
+      "node_code": "2.1",
+      "node_name": "盘面结构",
+      "q": "持仓/价/成交量"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "price",
+      "label": "价格信号",
+      "node_code": "2.2",
+      "node_name": "现货与升贴水",
+      "q": "升贴水/基差"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "price",
+      "label": "价格信号",
+      "node_code": "2.3",
+      "node_name": "海外价格",
+      "q": "LME/COMEX/现金"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "price",
+      "label": "价格信号",
+      "node_code": "2.4",
+      "node_name": "价差体系",
+      "q": "月差/期限结构"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "price",
+      "label": "价格信号",
+      "node_code": "2.5",
+      "node_name": "估值与利润",
+      "q": "分位数/冶炼利润"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "price",
+      "label": "价格信号",
+      "node_code": "2.6",
+      "node_name": "持仓席位观察",
+      "q": "多空前20"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.1.1",
+      "node_name": "海外矿·财报产量",
+      "q": "真源·季度"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.1.2",
+      "node_name": "海外矿·分国别总量",
+      "q": "月/年"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.1.3",
+      "node_name": "国内矿产量",
+      "q": "月"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.1.4",
+      "node_name": "矿进口量与分国别",
+      "q": "月 滞后15-20天"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.1.5",
+      "node_name": "TC 加工费",
+      "q": "先行·矿紧松"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.2.1",
+      "node_name": "精炼产量",
+      "q": "同步"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.2.2",
+      "node_name": "开工率与检修",
+      "q": "同步"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.2.3",
+      "node_name": "再生/二次供应",
+      "q": "同步"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "supply",
+      "label": "供给",
+      "node_code": "3.2.4",
+      "node_name": "冶炼利润→供应弹性",
+      "q": "先行"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "inventory",
+      "label": "库存",
+      "node_code": "4.1",
+      "node_name": "交易所库存",
+      "q": "日 同步"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "inventory",
+      "label": "库存",
+      "node_code": "4.2",
+      "node_name": "仓单",
+      "q": "日 同步偏领先"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "inventory",
+      "label": "库存",
+      "node_code": "4.3",
+      "node_name": "社会库存",
+      "q": "周 同步偏滞后"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "inventory",
+      "label": "库存",
+      "node_code": "4.4",
+      "node_name": "工厂库存",
+      "q": "月/周"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "inventory",
+      "label": "库存",
+      "node_code": "4.5",
+      "node_name": "隐性/在途库存",
+      "q": "周/月"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "inventory",
+      "label": "库存",
+      "node_code": "4.5",
+      "node_name": "隐性/在途库存",
+      "q": "周/月"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "demand",
+      "label": "需求",
+      "node_code": "5.1",
+      "node_name": "初级消费",
+      "q": "开工率 同步"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "demand",
+      "label": "需求",
+      "node_code": "5.2",
+      "node_name": "终端细分消费",
+      "q": "滞后"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "demand",
+      "label": "需求",
+      "node_code": "5.3",
+      "node_name": "需求先行指标",
+      "q": "先行1-2月"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.1",
+      "node_name": "原料进口",
+      "q": "滞后"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.1",
+      "node_name": "原料进口",
+      "q": "滞后"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.2",
+      "node_name": "精炼金属进出口",
+      "q": "滞后"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.2",
+      "node_name": "精炼金属进出口",
+      "q": "滞后"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.3",
+      "node_name": "制品出口",
+      "q": "同步"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.3",
+      "node_name": "制品出口",
+      "q": "同步"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.4",
+      "node_name": "海外对华发运",
+      "q": "先行1月"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "trade",
+      "label": "进出口",
+      "node_code": "6.4",
+      "node_name": "海外对华发运",
+      "q": "先行1月"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "cost",
+      "label": "成本·利润",
+      "node_code": "7.1",
+      "node_name": "成本曲线与分位",
+      "q": "季 同步"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "cost",
+      "label": "成本·利润",
+      "node_code": "7.2",
+      "node_name": "日度利润测算",
+      "q": "日 同步"
+    },
+    {
+      "variety": "SI",
+      "variety_cn": "硅",
+      "dim": "cost",
+      "label": "成本·利润",
+      "node_code": "7.3",
+      "node_name": "能源/原料成本",
+      "q": "月 先行"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "cost",
+      "label": "成本·利润",
+      "node_code": "7.3",
+      "node_name": "能源/原料成本",
+      "q": "月 先行"
+    },
+    {
+      "variety": "CU",
+      "variety_cn": "铜",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "AL",
+      "variety_cn": "铝",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "ZN",
+      "variety_cn": "锌",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "NI",
+      "variety_cn": "镍",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "SN",
+      "variety_cn": "锡",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "SI",
+      "variety_cn": "硅",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.1",
+      "node_name": "年度锚（行业协会）",
+      "q": "滞后定方向"
+    },
+    {
+      "variety": "CU",
+      "variety_cn": "铜",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "AL",
+      "variety_cn": "铝",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "ZN",
+      "variety_cn": "锌",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "NI",
+      "variety_cn": "镍",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "SN",
+      "variety_cn": "锡",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "SI",
+      "variety_cn": "硅",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.2",
+      "node_name": "自建平衡表",
+      "q": "季/月"
+    },
+    {
+      "variety": "CU",
+      "variety_cn": "铜",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    },
+    {
+      "variety": "AL",
+      "variety_cn": "铝",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    },
+    {
+      "variety": "PB",
+      "variety_cn": "铅",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    },
+    {
+      "variety": "ZN",
+      "variety_cn": "锌",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    },
+    {
+      "variety": "NI",
+      "variety_cn": "镍",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    },
+    {
+      "variety": "SN",
+      "variety_cn": "锡",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    },
+    {
+      "variety": "SI",
+      "variety_cn": "硅",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    },
+    {
+      "variety": "LI",
+      "variety_cn": "碳酸锂",
+      "dim": "balance",
+      "label": "供需平衡",
+      "node_code": "8.3",
+      "node_name": "表观消费拟合",
+      "q": "月"
+    }
+  ]
+}

@@ -10,17 +10,56 @@
 读 framework-tree 仓库里 `analysis/iwencai/<品种>/` 下的同花顺发散文件，对每个节点推荐的指标在知几数据库搜索对应指标，验证口径，能搜到的落盘成「知几指标名+代码」JSON 表格，搜不到的明确标注，今天内完成并汇报。
 
 ## 二、开工步骤（照顺序执行）
+## 二、关键网址与导航
 
+### 2.1 GitHub 仓库
+- 仓库地址：https://github.com/algo23-yunqingtian/framework-tree
+- 克隆命令：git clone git@github.com:algo23-yunqingtian/framework-tree.git
+- 仓库浏览器界面（看文件目录树、读文档、看 diff）：https://github.com/algo23-yunqingtian/framework-tree
+
+### 2.2 GitHub Pages 线上看板（最终产出）
+- 网址：https://algo23-yunqingtian.github.io/framework-tree/
+- 这就是 framework-tree 指标看板的线上地址。你做完的指标最终会通过主脑 build 成 HTML 页面发布到这里。
+- 你可以在浏览器里打开这个网址看看现有页面长什么样、哪些品种哪些节点已有页面。
+
+### 2.3 同花顺问财（同花顺AI问答平台，本任务不需要你访问）
+- 网址：https://www.iwencai.com/chat
+- 同花顺的发散已经由主脑完成（仓库 analysis/iwencai/ 里的 decision_*.md 就是回复）。你不需要自己上同花顺提问，只需要读仓库里已有的回复文件。
+
+### 2.4 知几数据库（你的搜索目标）
+- 知几 API 客户端脚本：~/.hermes/scripts/zhiji_api.py（主脑版，你有你自己的就用你自己的）
+- 搜索命令示例：python3 ~/.hermes/scripts/zhiji_api.py search "新加坡 锌 仓单"
+- 拉序列验证：python3 ~/.hermes/scripts/zhiji_api.py series FU00016163 2015-01-01 2026-09-06
+- 如果你有自己服务器上的知几搜索工具或浏览器搜索方法，用你自己的，搜索方法论通用。
+
+### 2.5 仓库内关键文档（clone 后在本地读，或直接在 GitHub 网页上读）
+| 文档 | 仓库内路径 | 说明 |
+|---|---|---|
+| 本任务卡 | docs/COLLAB_TASK_ZHJI_MATCH_20260906.md | 你正在读的这份 |
+| 完整交接手册 | docs/IWENCAI_ZHIJI_HANDBOOK_20260906.md | 主方法论（搜索原则+命中判定+口径验证） |
+| AGENTS.md | AGENTS.md | 新 agent 入职总入口（必读） |
+| STATUS.md | STATUS.md | 全局进度唯一真源 |
+| 树结构定义 | data/tree_config.json | 8品种×6板块×33节点的完整目录树 |
+| 指标元数据 | data/indicators_v1.json | 1290条已注册指标（你的搜索结果最终合并到这里） |
+| 同花顺逐节点发散 | analysis/iwencai/<品种>/decision_<节点>.md | 198份回复（你的搜索输入） |
+| 同花顺分类范式 | analysis/iwencai_classify/<品种>_<板块>.md | 48份宏观框架（参考用） |
+| 锌库存试点报告 | docs/HANDOVER_20260904_zn_stock.md | ZN库存知几搜索试点结果（可对照） |
+| 同花顺P0-P4方法论 | docs/iwencai_methodology_20260903.md | 6条标准+4层校验+速查表 |
+| 分板块P0-P4范式 | docs/iwencai_board_paradigm_20260903.md | 库存/供给/进出口分层 |
+| 铜库存完整演示 | docs/iwencai_P0P4_copper_demo_20260903.md | P0-P4用铜走一遍的示例 |
+
+## 三、开工步骤（照顺序执行）
 1. git clone git@github.com:algo23-yunqingtian/framework-tree.git
 2. cd framework-tree
 3. git fetch origin && git rebase origin/main
 4. 必读（按顺序，不要跳）：
    - AGENTS.md
-   - docs/IWENCAI_ZHIJI_HANDBOOK_20260906.md（← 这份是主脑写的完整交接手册，你的主方法论都在这）
+   - docs/IWENCAI_ZHIJI_HANDBOOK_20260906.md（← 完整交接手册，主方法论都在这）
+   - docs/COLLAB_TASK_ZHJI_MATCH_20260906.md（← 这张任务卡）
    - STATUS.md
+   - 可选：打开浏览器看 https://algo23-yunqingtian.github.io/framework-tree/ 了解看板长什么样
 5. 确认指标库基线：python3 -c "import json; d=json.load(open('data/indicators_v1.json')); print(len(d['indicators']))"
-   → 必须 ≥ 1290。少于说明基线旧，先 git pull。
-
+   → 必须 ≥ 1290。少了说明基线旧，先 git pull。
 ## 三、任务范围（已确认的418份同花顺产物）
 
 ### A. 逐节点发散（✱ 本次搜索的主体，198份）
