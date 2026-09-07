@@ -73,6 +73,13 @@
 
 ## 近期变更记录
 
+### 2026-09-07 20:30 主脑 — 统一指标表 + merge v4分支
+- merge `task/zhiji_match_v4` 到 main：8品种2667条 v4 重判产物（假A=0、复用>3=0、BUG全修复）
+- 写 `scripts/unify_indicators.py`：合并白名单(1192)+v4(2667)→去重 **1495条** 统一指标
+  - 两源交集234条、白名单独有1006条、v4独有255条（补入白名单缺的指标）
+  - 频率标准化：中英文混杂→英文标准（daily/monthly/weekly/quarterly/yearly/unknown）
+  - 输出 `analysis/unified_indicators.json`（642KB），可直接用于建页
+
 ### 2026-09-07 主脑 — 知几匹配v4重判器+任务卡
 - 审计另一agent提交(`origin/task/zhiji_match_all` @ `e7b4d31`): 7品种2322指标, A547/B900/C875, A级全对但B级系统性误配(抽检6组送同花顺5否1勉强)
 - 根因: `zhiji_match_v3.py` 的 `classify_match()` 纯字面命中零概念校验 + `gen_keywords()` 无同义词 + `limit=5` 截断 + `verified` 硬编码True
