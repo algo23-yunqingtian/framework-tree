@@ -60,7 +60,55 @@ THEMES = {
 }
 
 THEME_BY_COMM = {}  # 五金属无品种专属覆盖
-MAIN_METRIC = {}    # 五金属无显式主图覆盖
+
+# 显式主图覆盖：key = "品种_节点"（如 "NI_4.1"），value = 指标 mid
+# 用途：修正 build 脚本默认"挑第一个日频指标当主图"导致的 SHFE 价格万能占位问题
+# 选型依据：translation-workspace/correction/ 同花顺 A 级正主 + 节点板块主题匹配
+MAIN_METRIC = {
+    # NI 镍（15占位页 + 2错配页）
+    "NI_3.1.5": "ni_315_profit",           # 冷轧不锈钢：外购低镍铁：利润（供给弹性）
+    "NI_3.2.4": "ni_315_profit",           # 同上（供应弹性子节点，共用利润指标）
+    "NI_4.1":   "ni_41_lme_inv",           # LME镍期货库存迪拜（交易所库存正主）
+    "NI_4.2":   "ni_42_lme_warrant",       # LME镍注销仓单（仓单结构正主）
+    "NI_4.3":   "ni_43_inv",               # 精炼镍社会库存27家（社会库存正主）
+    "NI_4.4":   "ni_44_inv",               # 镍豆库存27家（厂内库存正主）
+    "NI_4.5":   "ni_45_inv",               # 精炼镍社会库存（隐性/在途库存正主）
+    "NI_7.1":   "ni_71_cost_h2so4",        # 硫酸镍生产成本（成本曲线正主）
+    "NI_7.2":   "ni_72_profit_2",          # 精炼镍生产利润（冶炼利润正主）
+    "NI_7.3":   "ni_71_cost_nickel_ore",   # Ramu镍钴矿现金成本（原料成本正主）
+    "NI_6.1":   "ni_323_import_nickel_powder",  # 镍生铁进口量（原料进口正主）
+    "NI_6.2":   "ni_323_import_nickel_powder",  # 镍生铁进口量（精炼金属进出口）
+    "NI_6.3":   "ni_63_export_3",          # 镍矿石出口量（制品出口正主）
+    "NI_5.1":   "ni_322_util_4",           # 硫酸镍企业开工率（初级消费正主）
+    "NI_5.2":   "ni_52_output",            # 精炼镍产量（终端消费正主）
+    "NI_5.3":   "ni_51_util",              # 精炼镍开工率（需求先行指标正主）
+    "NI_3.2.3": "ni_323_import",           # 冰镍进口量（再生/二次供应正主）
+    # SN 锡（14占位页 + 2错配页）
+    "SN_4.1":   "sn_41_warrant",           # LME锡注销仓单（交易所库存正主）
+    "SN_4.2":   "sn_41_warrant",           # LME锡注销仓单（仓单结构，SN无独立指标共用）
+    "SN_4.3":   "sn_43_inv_plant",          # 镀锡板厂内库存（社会库存正主）
+    "SN_4.4":   "sn_43_inv_plant",          # 镀锡板厂内库存（厂内库存正主，共用）
+    "SN_7.1":   "sn_71_tc",                # 锡精矿加工费（成本曲线正主）
+    "SN_7.2":   "sn_71_tc",                # 锡精矿加工费（冶炼利润正主，共用）
+    "SN_7.3":   "sn_71_tc",                # 锡精矿加工费（原料成本正主，共用）
+    "SN_6.2":   "sn_314_import_2",          # 精炼锡进口量（精炼金属进出口正主）
+    "SN_6.3":   "sn_62_export_3",          # 印尼锡锭出口量（制品出口正主）
+    "SN_6.4":   "sn_62_export_5",           # 锡出口金额合计（海外发运正主）
+    "SN_5.1":   "sn_321_util",             # 锡加工企业开工率（初级消费正主）
+    "SN_5.2":   "sn_51_output",            # 精炼锡产量（终端消费正主）
+    "SN_5.3":   "sn_53_output_tin_ore",    # 锡矿产量（需求先行正主）
+    "SN_3.1.4": "sn_314_import_tin_ore",   # 锡矿砂进口量缅甸（矿进口正主）
+    "SN_3.1.5": "sn_313_output",           # 锡精矿产量云南（国内矿正主）
+    # SN 4.5: 仅SHFE价格可用，无贴题候选，保留价格主图（已知例外）
+    # AL 铝（2占位 + 1错配）
+    "AL_7.2":   "al_71_tc",                # 铝棒加工费（冶炼利润正主）
+    "AL_5.3":   "al_53_export",            # 铝材出口量（需求先行正主）
+    "AL_5.1":   "al_51_cons",              # 氟化铝表观消费（初级消费正主）
+    # CU 铜（4错配）
+    "CU_2.5":   "cu_25_tc_conc",           # 铜精矿现货TC（估值利润正主）
+    "CU_4.5":   "cu_45_output",            # 电解铜产量（隐性库存正主）
+    # CU_7.2 / CU_7.3: 当前串台指标不够贴题，保留现有主图待后续发散补指标
+}
 
 
 def node_indicators(indicators):
@@ -129,8 +177,12 @@ def code_str_of(node, meta, comm="zn"):
     return theme_of(node, comm)[0]
 
 
-def pick_main(data, node):
-    forced = MAIN_METRIC.get(node)
+def pick_main(data, node, comm=None):
+    # 支持品种前缀 key（如 "NI_4.1"），优先查
+    if comm:
+        forced = MAIN_METRIC.get("%s_%s" % (comm, node))
+    else:
+        forced = MAIN_METRIC.get(node)
     if forced:
         hit = next((d for d in data if d["mid"] == forced), None)
         if hit:
@@ -171,7 +223,9 @@ def build_node(node, ind_list, meta, comm_only=None):
             return None, [], 0, None
     code_str = data[0]["code"]
     sec_no = node.split(".")[0]
-    main_pick = pick_main(data, node)
+    # 推断当前品种（用于 MAIN_METRIC 品种前缀 key）
+    _comm = comm_only or data[0]["code"]
+    main_pick = pick_main(data, node, _comm)
     main_comm = main_pick["code"].lower()
     if main_comm not in CODES:
         main_comm = "zn"
@@ -181,7 +235,7 @@ def build_node(node, ind_list, meta, comm_only=None):
     note_metrics = []
 
     # 图1：主图
-    main = pick_main(data, node)
+    main = pick_main(data, node, _comm)
     cid = "echart_%s_%s_c1" % (main_comm, node.replace(".", ""))
     cids.append(cid)
     if is_daily(main["freq"]):
@@ -332,7 +386,7 @@ def main():
                 if is_stale(_p):
                     continue
                 md.append({"mid": mid, "freq": freq, "m": mm, "pairs": _p})
-            main_m = pick_main(md, node)
+            main_m = pick_main(md, node, comm_id)
             seasonal = cids[:1] if (n >= 1 and full_years(main_m["pairs"]) >= 3) else []
             key = "%s_%s" % (comm_id, node.replace(".", ""))
             print('    "%s": {' % node)

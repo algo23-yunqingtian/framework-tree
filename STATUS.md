@@ -83,6 +83,15 @@
 - jsdom 渲染验证全通过：inst 存在、mode=ts、ts/se 双选项、按钮存在可切换、__seasonalizeByYear 可调用
 - **交接文档过时说明**：HANDOVER_20260907_next_step_build_pages.md 写"NI/SN/SI/LI 当前 0 页"，实际 NI 37/SN 35/SI 35/LI 36 页已全建好（另一 agent 未提交），P0-1 建页任务已被先行完成
 
+### 2026-09-08 主脑 — 门禁注册表同步修复（6 页 FAIL → 全绿）
+- **问题**：verify_render 238 页中 6 页 FAIL，check_html 234 页中 2 页 FAIL。根因=另一 agent 重建 ni/sn/zn 页面后，check_html.py + verify_render.js 注册表未同步（数据/图数已变，登记仍旧）
+- **修复（以页面实际为准同步两处注册表）**：
+  - zn_45 / zn_51：charts 2/3 → 4，cids 补全 c1-c4，seasonal 补 c4（页面实际 c1+c4 有按钮）
+  - ni_63 / sn_52 / sn_62：seasonal 清空（c1 为月频数据，无季节按钮，has_seasonal→False）
+  - ni_73：seasonal c1→c4（实际仅 c4 有按钮），cids 补 c2，has_seasonal→False
+- **门禁复验**：check_html 234/234 ✅ + verify_render 238/238 ALL PASS ✅
+- **已知缺口（未做）**：sn_3_2_4（冶炼利润→供应弹性）、si_7_3（能源/原料成本）两节点 0 指标 0 页面；板块 8（8.1/8.2/8.3 供需平衡）按 2026-08-29 公告不做图表，留用户自行填充
+
 ### 2026-09-07 20:30 主脑 — 统一指标表 + merge v4分支
 - merge `task/zhiji_match_v4` 到 main：8品种2667条 v4 重判产物（假A=0、复用>3=0、BUG全修复）
 - 写 `scripts/unify_indicators.py`：合并白名单(1192)+v4(2667)→去重 **1495条** 统一指标
