@@ -92,6 +92,16 @@
 - **门禁复验**：check_html 234/234 ✅ + verify_render 238/238 ALL PASS ✅
 - **已知缺口（未做）**：sn_3_2_4（冶炼利润→供应弹性）、si_7_3（能源/原料成本）两节点 0 指标 0 页面；板块 8（8.1/8.2/8.3 供需平衡）按 2026-08-29 公告不做图表，留用户自行填充
 
+### 2026-09-08 主脑 — 补齐最后 2 个节点缺口（sn_3_2_4 / si_7_3），256/256 节点全覆盖
+- **根因**：两节点在 indicators_v1.json 中 `_nodes` 无归属 → build_5m_batch.py 按 `_nodes` 取指标取不到 → 0 页
+- **SN 3.2.4（冶炼利润→供应弹性）**：ID02105843「精炼锡成本」已注册为 sn_71_cost 但 _nodes 缺 3.2.4。追加 `sn_71_cost / sn_71_cost_percentile / sn_71_cost_2 / sn_71_cost_3` → `_nodes: ["3.2.4"]`。拉数 4/4（1688 点/日，至 2026-09-01）。**建页** sn_3_2_4.html 3 图全真（主图精炼锡成本日度 + 成本分位vs均值双轴 + 成本补充）
+- **SI 7.3（能源/原料成本）**：追加 `si_71_cost_cash / si_71_cost_industrial_si_3 / si_72_cost_power / si_72_cost_power_2 / si_71_cash_cost / si_71_cost_industrial_si` → `_nodes: ["7.3"]`。拉数 6/6（41 点/周，至 2026-08-28）。**建页** si_7_3.html 4 图全真（现金成本主图 + 人工成本vs现金成本 + 现金成本vs电力分项 + 电力分项补充）
+- **指标**：1290→1290（复用已有指标追加节点归属，非新增），version v3.62→**v3.63**，备份 `analysis/backups/indicators_v1_before_sn324_si73_20260908.json`
+- **门禁注册**：check_html.py +2（sn_324 3图 / si_73 4图，si_73 min_bytes 12000 因周频 41 点内容小）+ verify_render.js +2（sn_324 seasonal c1+c3、si_73 无按钮）
+- **导航**：index.html 五金属动态推导自动覆盖（sn_3_2_4.html / si_7_3.html），无需改 PAGE_MAP
+- **门禁全绿**：check_html **236/236** ✅ + verify_render **240/240** ALL PASS ✅ + reclaim PASS=11/FAIL=1（FAIL 为历史 merge 提交 d625cad 无前缀，非本次引入）
+- **最终状态**：8 品种 258 节点中 256 个已建页（板块 8 三个节点按公告不做图表），**图表看板覆盖率 100%（除板块8）**
+
 ### 2026-09-07 20:30 主脑 — 统一指标表 + merge v4分支
 - merge `task/zhiji_match_v4` 到 main：8品种2667条 v4 重判产物（假A=0、复用>3=0、BUG全修复）
 - 写 `scripts/unify_indicators.py`：合并白名单(1192)+v4(2667)→去重 **1495条** 统一指标
