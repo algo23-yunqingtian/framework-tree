@@ -192,7 +192,7 @@ def recheck(variety, dry_run=False):
     in_path = IN_DIR / f'{variety}_zhiji_match.json'
     if not in_path.exists():
         print(f'  [!] 缺输入 {in_path}'); return None
-    data = json.load(open(in_path))
+    data = json.load(open(in_path, encoding='utf-8'))
     matches = data.get('matches', [])
     reuse = Counter(m['zhiji_id'] for m in matches if m.get('zhiji_id') and m['match_level'] in ('A', 'B'))
 
@@ -205,9 +205,24 @@ def recheck(variety, dry_run=False):
         cand_id = m.get('zhiji_id')
 
         if lvl == 'A':
-            # 防御性检查（已审过，一般不动）
+            # 规则-3: 复用>3 强制降C（禁止同一ID塞27个节点）
             if cand_id and reuse.get(cand_id, 0) > 3:
-                m['notes'] = (m.get('notes') or '') + '; ⚠️REUSE>3 需人工复核'
+                nm = dict(m)
+                nm['zhiji_id'] = None; nm['zhiji_name'] = None
+                nm['zhiji_freq'] = None; nm['zhiji_unit'] = None
+                nm['match_level'] = 'C'; nm['verified'] = False
+                nm['notes'] = (m.get('notes') or '') + f'; v4补判:ID复用{reuse.get(cand_id,0)}次>3→降C'
+                out_matches.append(nm); stats['A降C(复用>3)'] += 1
+                continue
+            # 规则-2: A级series非空校验（死数据不允许当A）
+            if cand_id and not series_nonempty(cand_id):
+                nm = dict(m)
+                nm['zhiji_id'] = None; nm['zhiji_name'] = None
+                nm['zhiji_freq'] = None; nm['zhiji_unit'] = None
+                nm['match_level'] = 'C'; nm['verified'] = False
+                nm['notes'] = (m.get('notes') or '') + '; v4补判:series空→降C'
+                out_matches.append(nm); stats['A降C(series空)'] += 1
+                continue
             out_matches.append(m); stats['A保留'] += 1; continue
 
         if lvl == 'C':
@@ -226,7 +241,15 @@ def recheck(variety, dry_run=False):
             chk.append('地域不符')
 
         if not chk and cand_id and series_nonempty(cand_id):
-            # 概念相符 + series 有数 → 真弱匹配，保留 B（仅频率/口径差异）
+            # 规则-3: B保留也要查复用
+            if reuse.get(cand_id, 0) > 3:
+                nm = dict(m)
+                nm['zhiji_id'] = None; nm['zhiji_name'] = None
+                nm['zhiji_freq'] = None; nm['zhiji_unit'] = None
+                nm['match_level'] = 'C'; nm['verified'] = False
+                nm['notes'] = (m.get('notes') or '') + f'; v4补判:B级ID复用{reuse.get(cand_id,0)}次>3→降C'
+                out_matches.append(nm); stats['B降C(复用>3)'] += 1
+                continue
             m['notes'] = (m.get('notes') or '') + '; v4保留:概念相符series非空'
             out_matches.append(m); stats['B保留(真弱匹配)'] += 1
             continue
@@ -240,20 +263,31 @@ def recheck(variety, dry_run=False):
             for r in d['results'][:10]:
                 rid, rname = r.get('id'), r.get('name', '')
                 if not rid or not rname: continue
+                # BUG-1 fix: 重搜命中也需地域/环节互斥检查
+                if geo_mismatch(target, rname): continue
+                tl2, cl2 = chain_level(target), chain_level(rname)
+                if tl2 and cl2 and tl2 != cl2: continue
                 if strong_match(target, rname, vn) and series_nonempty(rid):
                     found = {'zhiji_id': rid, 'zhiji_name': rname,
                              'zhiji_unit': r.get('unit', ''),
                              'match_level': 'A', 'verified': True,
-                             'notes': f'v4重搜命中(原B因:{reason}); 搜索词:{kw}'}
+                             'notes': f'v4重搜命中(原B匹配不当); 搜索词:{kw}'}
                     break
             if found: break
 
         if found:
+            # 规则-3: 重搜命中但ID复用>3 → 不升级，降C
             if reuse.get(found['zhiji_id'], 0) > 3:
-                found['notes'] += '; ⚠️REUSE>3 需人工复核'
-            nm = dict(m); nm.update(found); nm['zhiji_freq'] = m.get('zhiji_freq')
-            out_matches.append(nm); stats['B升级A'] += 1
-            replaced.append((target, cand_name, found['zhiji_name'], found['zhiji_id'], reason))
+                nm = dict(m)
+                nm['zhiji_id'] = None; nm['zhiji_name'] = None
+                nm['zhiji_freq'] = None; nm['zhiji_unit'] = None
+                nm['match_level'] = 'C'; nm['verified'] = False
+                nm['notes'] = f"v4降级C:重搜命中但ID复用{reuse.get(found['zhiji_id'],0)}次>3需替代; 原因:{reason}; 搜索词:{kw}"
+                out_matches.append(nm); stats['B降C(复用>3)'] += 1
+            else:
+                nm = dict(m); nm.update(found); nm['zhiji_freq'] = m.get('zhiji_freq')
+                out_matches.append(nm); stats['B升级A'] += 1
+                replaced.append((target, cand_name, found['zhiji_name'], found['zhiji_id'], reason))
         else:
             nm = dict(m)
             nm['zhiji_id'] = None; nm['zhiji_name'] = None
@@ -261,6 +295,21 @@ def recheck(variety, dry_run=False):
             nm['match_level'] = 'C'; nm['verified'] = False
             nm['notes'] = f"v4降级C:{reason}; 知几无此指标需外部源"
             out_matches.append(nm); stats['B降级C'] += 1
+
+    # ---- 后处理：重新统计复用，捕获重搜引入的新ID ----
+    final_reuse = Counter(m['zhiji_id'] for m in out_matches if m.get('zhiji_id') and m['match_level'] in ('A', 'B'))
+    post_fix = 0
+    for m in out_matches:
+        zid = m.get('zhiji_id')
+        if zid and m['match_level'] in ('A', 'B') and final_reuse.get(zid, 0) > 3:
+            m['zhiji_id'] = None; m['zhiji_name'] = None
+            m['zhji_freq'] = None; m['zhji_unit'] = None
+            m['match_level'] = 'C'; m['verified'] = False
+            m['notes'] = (m.get('notes') or '') + f'; v4后处理:ID复用{final_reuse.get(zid,0)}次>3→降C'
+            post_fix += 1
+    if post_fix:
+        print(f'\n  后处理修复(新ID复用>3): {post_fix}条')
+        stats['后处理降C(新ID复用>3)'] = post_fix
 
     print(f'\n=== {variety} 重判结果 ===')
     for k, v in stats.most_common(): print(f'  {k}: {v}')
@@ -275,7 +324,7 @@ def recheck(variety, dry_run=False):
         data['_meta']['v4_recheck'] = dict(stats)
         data['_meta']['recheck_date'] = time.strftime('%Y-%m-%d %H:%M')
         out_path = OUT_DIR / f'{variety}_zhiji_match_v4.json'
-        json.dump(data, open(out_path, 'w'), ensure_ascii=False, indent=1)
+        json.dump(data, open(out_path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
         print(f'  ✅ 写入 {out_path}')
     return stats
 
