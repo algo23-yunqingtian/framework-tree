@@ -17,8 +17,21 @@ import argparse
 import json
 import os
 import re
+import subprocess
 
 BASE = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(BASE)
+
+# 维度→板块映射（dimension name → board key in knowledge_base.json）
+DIM_BOARD_MAP = {
+    "价格": "price",
+    "供应": "supply",
+    "库存": "inventory",
+    "需求": "demand",
+    "进出口": "trade",
+    "成本": "cost",
+    "平衡": "balance",
+}
 
 
 def load_json(path):
@@ -34,6 +47,39 @@ def load_template():
 def bullet(items):
     """['a','b'] -> '- a\n- b'（每行 '- '，无数字前缀）"""
     return "\n".join(f"- {x}" for x in items)
+
+
+def render_whitelist(variety, dim):
+    """从 knowledge_base.json 提取白名单，渲染成 markdown 表格"""
+    board = DIM_BOARD_MAP.get(dim)
+    if not board:
+        return "(当前维度无白名单映射，跳过规则8约束)"
+    
+    kb_path = os.path.join(PROJECT_ROOT, "analysis", "knowledge_base.json")
+    if not os.path.exists(kb_path):
+        return "(knowledge_base.json 不存在，跳过白名单约束)"
+    
+    kb = load_json(kb_path)
+    v = variety.upper()
+    items = kb.get(v, {}).get(board, [])
+    
+    if not items:
+        return f"({v} 的 {dim}板块暂无已验证可用指标，请按规则1-7自由发散)"
+    
+    lines = [
+        f"以下 {len(items)} 条指标已在钢联(Mysteel)/有色网(SMM)数据库中验证存在，",
+        f"有连续数据序列。你只能从这些指标中选择，禁止推荐清单之外的指标名称：\n",
+        "| 知几ID | 指标标准名称 | 频率 | 单位 | 数据点数 | 最近数据日期 |",
+        "|--------|-------------|------|------|---------|------------|",
+    ]
+    for item in items:
+        pts = item.get('points', '?')
+        last = item.get('last_date', '?')
+        freq = item.get('freq', '?')
+        unit = item.get('unit', '?')
+        lines.append(f"| {item['id']} | {item['name']} | {freq} | {unit} | {pts} | {last} |")
+    lines.append("")
+    return '\n'.join(lines)
 
 
 def render(dim, variety, subdirs):
@@ -68,6 +114,7 @@ def render(dim, variety, subdirs):
         "{观测用途示例}": bullet(dim_conf["usage_examples"]),
         "{边界提示}": bullet(dim_conf["boundary_tips"]),
         "{品种行业词提示}": variety_hint,
+        "{白名单}": render_whitelist(variety, dim),
     }
 
     out = tpl
