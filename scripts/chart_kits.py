@@ -280,6 +280,138 @@ def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b
     return html, js
 
 
+def _full_years(pairs_data):
+    """完整日历年份数：该年 12 个月都有数据才算完整。季节降级判定必须用它。"""
+    from collections import defaultdict
+    if not pairs_data:
+        return 0
+    ym = defaultdict(set)
+    for d in pairs_data:
+        ds = str(d[0])
+        if len(ds) >= 7:
+            ym[ds[:4]].add(ds[5:7])
+    return sum(1 for y, ms in ym.items() if len(ms) >= 12)
+
+
+def _span_years(pairs_data):
+    """年跨度（含首尾年份）。⚠️ 仅用于页面标注，不用于降级判定。"""
+    if not pairs_data:
+        return 0
+    ys = set(str(d[0])[:4] for d in pairs_data if d[0])
+    if not ys:
+        return 0
+    return int(max(ys)) - int(min(ys)) + 1
+
+
+def strip_season_button(html):
+    """摘掉 chart_line_t/chart_dual_t 的季节切换按钮及其说明文字（完整日历年份数不足3时季节视图无效）。"""
+    html = re.sub(r'<button onclick="window\.__tgl\([^<]*</button>', '', html)
+    html = html.replace('。切季节视图可对比近5年同期位置。', '。')
+    return html
+
+
+def chart_dual_t(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note='',
+                 default_seasonal=False, seasonal_max_years=5):
+    """双轴复合图 + 时序⇄季节切换。
+
+    季节视图：两个指标各自出 N 条历年线（共用横轴），左轴指标用左 y 轴、右轴指标用右 y 轴。
+    降级判定：data_a 的完整日历年份数 >= 3 才启用季节（_full_years）。
+    粒度：日度 → __seasonalizeByDay（365 天 MM-DD 对齐），月度/周度 → __seasonalizeByYear（12 月）。
+    """
+    can_season = _full_years(data_a) >= 3 and _full_years(data_b) >= 3
+    if not can_season:
+        return chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a,
+                          data_b, color_b, name_b, unit_b, note)
+    # 季节模式启用
+    mode = "se" if default_seasonal else "ts"
+    btn_txt = "⏱ 时序" if mode == "se" else "☀ 季节"
+    ja = json.dumps(data_a, ensure_ascii=False)
+    jb = json.dumps(data_b, ensure_ascii=False)
+    color_a20 = color_a + "20"
+    color_b20 = color_b + "20"
+    # 年份范围：取两指标的交集年份数最近 N 年
+    yrs_a = sorted({int(p[0][:4]) for p in data_a if p[1] is not None})
+    yrs_b = sorted({int(p[0][:4]) for p in data_b if p[1] is not None})
+    yrs_all = sorted(set(yrs_a) & set(yrs_b))
+    if seasonal_max_years and len(yrs_all) > seasonal_max_years:
+        yrs_all = yrs_all[-seasonal_max_years:]
+    years_str = json.dumps(yrs_all, ensure_ascii=False)
+    gran = _detect_gran(data_a)
+    # 第二 palette：偏冷色系，与主 palette 区分
+    pal_b = ['#5b98c9', '#7a8c5b', '#9b6bb5', '#c87070', '#c9a227']
+    pal_b_js = json.dumps(pal_b, ensure_ascii=False)
+    # 季节横轴
+    _day_labels_iife = ("(function(){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var L=[];"
+                        "for(var m=0;m<12;m++){for(var d=1;d<=md[m];d++){L.push((m+1)+'-'+d);}}"
+                        "return L;})()")
+    if gran == 'D':
+        se_xaxis = ("xAxis:{type:'category',data:" + _day_labels_iife + ",axisLabel:{color:'#aaa',interval:29,"
+                    "formatter:function(v){return v.split('-')[0]+'月';}},splitLine:{show:false},"
+                    "axisLine:{lineStyle:{color:'#444'}}},\n")
+        se_series = ("series:window.__seasonalizeByDay(window['__dataA_%s'], __yrs_%s, __palA_%s)"
+                     ".concat(window.__seasonalizeByDay(window['__dataB_%s'], __yrs_%s, __palB_%s))\n")
+    else:
+        se_xaxis = ("xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],"
+                    "axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n")
+        se_series = ("series:window.__seasonalizeByYear(window['__dataA_%s'], __yrs_%s, __palA_%s)"
+                     ".concat(window.__seasonalizeByYear(window['__dataB_%s'], __yrs_%s, __palB_%s))\n")
+    # 季节视图 legend = 两指标各自的年份线
+    se_legend = ("legend:{data:__yrs_%s.map(function(y){return y+'年';}).concat(__yrs_%s.map(function(y){return y+'年·%s';})),"
+                 "textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},\n")
+    js = ("var __yrs_%s=%s;\n"
+          "var __palA_%s=['#b06a32','#c87070','#c9a227','#a67d5a','#5fb3a1','#8c6fb0','#6a8caf','#7a8c5b','#5b98c9','#9b6bb5'];\n"
+          "var __palB_%s=%s;\n"
+          "window['__dataA_%s'] = %s;\n"
+          "window['__dataB_%s'] = %s;\n"
+          "window['__opts_%s'] = {\n"
+          "  ts: {\n"
+          "    tooltip:{trigger:'axis'},\n"
+          "    legend:{data:['%s','%s'],textStyle:{color:'#ccc'},top:0},\n"
+          "    grid:{left:55,right:55,top:45,bottom:40},\n"
+          "    xAxis:{type:'time',axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "    yAxis:[\n"
+          "      {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "      {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}}\n"
+          "    ],\n"
+          "    series:[\n"
+          "      {name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:3,lineStyle:{color:'%s',width:2},areaStyle:{color:'%s'},data:window['__dataA_%s']},\n"
+          "      {name:'%s',type:'line',smooth:true,symbol:'circle',symbolSize:3,lineStyle:{color:'%s',width:2},yAxisIndex:1,areaStyle:{color:'%s'},data:window['__dataB_%s']}\n"
+          "    ]\n"
+          "  },\n"
+          "  se: {\n"
+          "    tooltip:{trigger:'axis',confine:true},\n"
+          "    %s"
+          "    grid:{left:55,right:55,top:35,bottom:40},\n"
+          "    %s"
+          "    yAxis:[\n"
+          "      {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},\n"
+          "      {type:'value',name:'%s',nameTextStyle:{color:'#aaa'},axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}}\n"
+          "    ],\n"
+          "    %s"
+          "  }\n"
+          "};\n"
+          "window['__inst_%s'] = echarts.init(document.getElementById('%s'),'dark');\n"
+          "window['__mode_%s'] = '%s';\n"
+          "window['__inst_%s'].setOption(window['__opts_%s']['%s'], true);\n"
+          ) % (cid, years_str, cid, cid, pal_b_js,
+               cid, ja, cid, jb, cid,
+               name_a, name_b, unit_a, unit_b,
+               name_a, color_a, color_a20, cid,
+               name_b, color_b, color_b20, cid,
+               se_legend % (cid, cid, name_b),
+               se_xaxis,
+               unit_a, unit_b,
+               se_series % (cid, cid, cid, cid, cid, cid),
+               cid, cid, cid, mode, cid, cid, mode)
+    html = ('<div class="chart"><div class="chart-title">%s</div>'
+            '<div class="chart-sub">%s</div>'
+            '<div id="%s" style="width:100%%;height:320px"></div>'
+            '<button onclick="window.__tgl(\'%s\',this)">%s</button>'
+            '<div class="chart-note">📌 %s</div></div>'
+            ) % (title, sub, cid, cid, btn_txt, note)
+    return html, js
+
+
 def chart_triple(cid, title, sub, data_a, color_a, name_a, unit_a,
                  data_b, color_b, name_b, unit_b,
                  data_c, color_c, name_c, unit_c, note=''):

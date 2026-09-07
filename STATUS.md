@@ -73,6 +73,16 @@
 
 ## 近期变更记录
 
+### 2026-09-08 主脑 — P0-2 chart_dual_t 双指标季节切换函数落地
+- 在 `scripts/chart_kits.py` 新增 `chart_dual_t()`：双轴复合图的时序⇄季节切换版本
+  - 季节视图：两指标各自出 N 条历年线（共用横轴），左轴指标用左 y 轴、右轴用右 y 轴
+  - 降级判定：`_full_years(data_a) >= 3 and _full_years(data_b) >= 3` 才启用季节，否则降级回普通 `chart_dual`
+  - 粒度自动检测：日度 → `__seasonalizeByDay`（365 天 MM-DD），月度/周度 → `__seasonalizeByYear`（12 月）
+  - 复用现有 `__tgl` 全局函数 + `__seasonalizeByYear`/`__seasonalizeByDay`（JS_COMMON 已定义）
+- 同步落地 `_full_years`/`_span_years`/`strip_season_button` 到 chart_kits.py 公共模块（原在 build_5m_batch.py 内联）
+- jsdom 渲染验证全通过：inst 存在、mode=ts、ts/se 双选项、按钮存在可切换、__seasonalizeByYear 可调用
+- **交接文档过时说明**：HANDOVER_20260907_next_step_build_pages.md 写"NI/SN/SI/LI 当前 0 页"，实际 NI 37/SN 35/SI 35/LI 36 页已全建好（另一 agent 未提交），P0-1 建页任务已被先行完成
+
 ### 2026-09-07 20:30 主脑 — 统一指标表 + merge v4分支
 - merge `task/zhiji_match_v4` 到 main：8品种2667条 v4 重判产物（假A=0、复用>3=0、BUG全修复）
 - 写 `scripts/unify_indicators.py`：合并白名单(1192)+v4(2667)→去重 **1495条** 统一指标
