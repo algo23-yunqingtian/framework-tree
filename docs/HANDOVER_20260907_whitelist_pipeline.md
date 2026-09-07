@@ -64,6 +64,7 @@
 | **批量驱动脚本** | `scripts/whitelist_batch_driver.py` | CDP自治驱动50任务（分片注入+setText+CDP真实点击+4条件完成判定） |
 | **批量产物目录** | `analysis/iwencai_whitelist/` | 47份白名单约束发散产物 |
 | **质量审计** | `analysis/iwencai_whitelist/_quality_audit.json` | 47份产物的质量审计结果 |
+| **审计脚本** | `scripts/whitelist_audit.py` | name+ID双匹配审计（口径修正版，替代内联审计） |
 | **Skill** | `~/.hermes/skills/indicator-tree-filling/zhiji-whitelist-constrained-recommendation/` | 方法论沉淀 |
 
 ### 白名单构建流程
@@ -148,13 +149,45 @@ analysis/iwencai_whitelist/{品种}_{板块}_whitelist.md
 
 ---
 
+## 六A、审计口径修正（2026-09-07 17:30，本次第二个核心产出）
+
+### 问题
+原内联审计只做「name 字面比对」，导致**系统性误判**：
+- 覆盖率虚低 48.2%（实测应为 55.1%）
+- 6 个任务被误判为 0 覆盖（实际内容全部合格）
+
+### 根因：同花顺三种引用风格
+1. 按 ID 标注：`SHFE镍主力合约收盘价（FU00014997）`
+2. 按中文名标注：`镍矿:进口数量:菲律宾→中国（月）`（与白名单 name `中国海关: 镍矿进口量: 总: 月度` 字面不同）
+3. 用业务名描述：`广西完全成本`（白名单 name 是 SMM 模型长名，字面完全对不上）
+
+→ 风格 2/3 让 name 字面匹配归零，但内容**完全合规**。
+
+### 修正产出
+1. **`scripts/whitelist_audit.py`**：name+ID 双匹配 + 独立报告「白名单外引用ID」为唯一真实违规信号
+   - 全库白名单外引用 ID **仅 3 个**（CM0000898632/FU00014999/ID00244864）
+2. **规则 8.1**（已加到驱动脚本 prompt）：强制同花顺用「指标名（知几ID）」格式回显 ID
+   - ZN_trade 实测：旧产物 0 个 ID → 新产物 **12 个 ID**，全部命中白名单，覆盖率 41.4%→OK
+   - 有了 ID 回显，审计可全自动、无需人工定性
+3. **全量重跑**：用规则 8.1 重跑 47 个任务，使所有产物都带 ID（约 65 分钟，同花顺 200 次/天免费配额）
+
+### 审计脚本踩坑（都已修）
+1. `^` 必须带 `(?m)`：`re.findall` 不带 flags，`^\s*\d+` 只匹配字符串开头 → table_rows 恒为 0
+2. 分隔符是 TAB 非 `|`：同花顺返回的表格用 `\t` 分隔，`[|｜\t]` 必须含 `\t`
+3. 子类标题混用格式：同花顺混用「1. xxx」和「一、xxx」「（一）xxx」，只认阿拉伯数字会误判
+
+---
+
 ## 七、下一步候选
 
-1. **P0**：重跑失败的3个（ZN_demand/SI_trade/LI_price）
-2. **P0**：验收另一agent的v4重判器修复（他修完BUG-1+规则2/3后重跑全7品种）
-3. **P1**：用白名单约束产物建页（NI/SN/SI/LI待建页，47份产物可直接消费）
-4. **P1**：把knowledge_base.json推main + 更新STATUS.md
-5. **P2**：增量更新白名单（新品种/新指标加入后重新生成）
+1. ✅ **已完成**：审计口径修正 → `scripts/whitelist_audit.py` name+ID双匹配
+2. ✅ **已完成**：规则8.1 强制回显 ID → 驱动脚本 prompt 已改
+3. ⏳ **进行中**：全量重跑 47 任务（规则8.1，约 65 分钟）
+4. **P0**：重跑原本失败的3个（ZN_demand/SI_trade/LI_price）——同花顺拒答/超时，需换 prompt 措辞
+5. **P0**：验收另一agent的v4重判器修复（他修完BUG-1+规则2/3后重跑全7品种）
+6. **P1**：用白名单约束产物建页（NI/SN/SI/LI待建页，47份产物可直接消费）
+7. **P1**：把 knowledge_base.json + 新产物 + 审计脚本推 main（git add 已完成，commit 已完成，需 push）
+8. **P2**：增量更新白名单（新品种/新指标加入后重新生成）
 
 ---
 

@@ -61,9 +61,20 @@ def audit_one(variety, board, text, whitelist):
     out_of_list = sorted(cited_ids - wl_ids)
     table_rows = len(TABLE_ROW_PATTERN.findall(text))  # 注意 findall 不带 flags，靠 pattern 内嵌 (?m)
 
-    # 子类标题：可能是阿拉伯数字「1. xxx」或中文序号「一、xxx」「（一）xxx」
-    # 实测同花顺两种都混用，只认阿拉伯数字会误判 LI_demand/PB_inventory 等合格产物为无结构。
-    has_subdir = bool(re.search(r"(?m)^\s*(\d+[.、]|[一二三四五六七八九十]+[.、]|[（(][一二三四五六七八九十\d][)）])", text))
+    # 子类标题：同花顺格式多变，实测至少 4 种：
+    #   阿拉伯数字「1. xxx」、中文序号「一、xxx」「（一）xxx」、
+    #   「子类1：xxx」「子目录一：xxx」
+    # 全部纳入，避免误判合格产物为无结构（NI_cost 实测踩坑）。
+    has_subdir = bool(re.search(
+        r"(?m)^\s*("
+        r"\d+[.、]"                      # 1. / 1、
+        r"|[一二三四五六七八九十]+[.、]"  # 一、/ 一.
+        r"|[（(][一二三四五六七八九十\d][)）]"  # （一）/ (1)
+        r"|子类\s*\d+"                    # 子类1
+        r"|子目录\s*[一二三四五六七八九十\d]"  # 子目录一
+        r")",
+        text,
+    ))
     declares_no_fabrication = any(kw in text for kw in ["未编造", "无编造", "不编造", "未列", "不派生"])
 
     return {
