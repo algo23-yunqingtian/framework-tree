@@ -182,8 +182,8 @@ analysis/iwencai_whitelist/{品种}_{板块}_whitelist.md
 
 1. ✅ **已完成**：审计口径修正 → `scripts/whitelist_audit.py` name+ID双匹配
 2. ✅ **已完成**：规则8.1 强制回显 ID → 驱动脚本 prompt 已改
-3. ⏳ **进行中**：全量重跑 47 任务（规则8.1，约 65 分钟）
-4. **P0**：重跑原本失败的3个（ZN_demand/SI_trade/LI_price）——同花顺拒答/超时，需换 prompt 措辞
+3. ✅ **已完成**：全量重跑 47 任务（规则8.1）→ 覆盖率 69.4%、白名单外引用 ID **归零**、47/47 全合格
+4. **P0**：重跑仍失败的3个（ZN_demand/SI_trade/LI_price）——同花顺拒答/超时，需求/价格板块可能触发风控，需换 prompt 措辞
 5. **P0**：验收另一agent的v4重判器修复（他修完BUG-1+规则2/3后重跑全7品种）
 6. **P1**：用白名单约束产物建页（NI/SN/SI/LI待建页，47份产物可直接消费）
 7. **P1**：把 knowledge_base.json + 新产物 + 审计脚本推 main（git add 已完成，commit 已完成，需 push）
