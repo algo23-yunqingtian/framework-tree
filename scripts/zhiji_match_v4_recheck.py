@@ -192,7 +192,7 @@ def recheck(variety, dry_run=False):
     in_path = IN_DIR / f'{variety}_zhiji_match.json'
     if not in_path.exists():
         print(f'  [!] 缺输入 {in_path}'); return None
-    data = json.load(open(in_path))
+    data = json.load(open(in_path, encoding='utf-8'))
     matches = data.get('matches', [])
     reuse = Counter(m['zhiji_id'] for m in matches if m.get('zhiji_id') and m['match_level'] in ('A', 'B'))
 
@@ -275,7 +275,7 @@ def recheck(variety, dry_run=False):
         data['_meta']['v4_recheck'] = dict(stats)
         data['_meta']['recheck_date'] = time.strftime('%Y-%m-%d %H:%M')
         out_path = OUT_DIR / f'{variety}_zhiji_match_v4.json'
-        json.dump(data, open(out_path, 'w'), ensure_ascii=False, indent=1)
+        json.dump(data, open(out_path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
         print(f'  ✅ 写入 {out_path}')
     return stats
 
