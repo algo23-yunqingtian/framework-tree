@@ -39,7 +39,7 @@ PREFIX_TO_NODE = {
     "ni_25_": "2.5", "ni_26_": "2.6",
     "ni_311_": "3.1.1", "ni_312_": "3.1.2", "ni_313_": "3.1.3",
     "ni_314_": "3.1.4", "ni_315_": "3.1.5",
-    "ni_321_": "3.2.1", "ni_322_": "3.2.2", "ni_323_": "3.2.3",
+    "ni_321_": "3.2.1", "ni_322_": "3.2.2", "ni_323_": "3.2.3", "ni_324_": "3.2.4",
     "ni_41_": "4.1", "ni_42_": "4.2", "ni_43_": "4.3",
     "ni_44_": "4.4", "ni_45_": "4.5",
     "ni_51_": "5.1", "ni_52_": "5.2", "ni_53_": "5.3",
@@ -270,19 +270,17 @@ def build_page(node, charts, dry=False):
     section = node.split(".")[0]
     section_name = SECTION_NAME.get(section, "")
     fname = "ni_%s.html" % node.replace(".", "_")
+    with open(os.path.join(ROOT, "data", "indicators_v1.json"), encoding="utf-8") as _f:
+        _ind_version = json.load(_f).get("version", "v3.64")
 
     # Chart HTML/JS
     all_html = "\n".join(c["html"] for c in charts)
     all_js = "\n".join(c["js"] for c in charts)
 
-    # Nav/crumb
+    # Nav/crumb（make_crumb 适配 chart_kits v2 签名：标量参数而非 list）
     nav_back = "ni_%s_overview.html" % section
-    crumb = make_crumb([
-        ("有色金属", "index.html"),
-        ("镍(NI)", "ni_2_overview.html"),
-        (section_name, nav_back),
-        ("%s %s" % (node, theme[0]), "")
-    ])
+    crumb = make_crumb(
+        "镍", "NI", section, section_name, node, theme[0], "2", len(charts))
 
     note_html = (
         '<div class="chart-note" style="margin-bottom:16px;">'
@@ -291,21 +289,23 @@ def build_page(node, charts, dry=False):
 
     footer = (
         "有色金属产业指标树 · 镍(NI) %s %s · v2（归属优先 · %d 图）"
-        " · indicators_v1.json v3.44"
-    ) % (node, theme[0], len(charts))
+        " · indicators_v1.json %s"
+    ) % (node, theme[0], len(charts), _ind_version)
 
     title_text = "镍(NI) %s %s · 有色金属研究框架" % (node, theme[0])
 
     html = page_html(
         title=title_text,
+        hcrumbs=crumb,
+        hright="SMM",
         h1=all_html,
         h2="",
         h3="",
         note_html=note_html,
         footer_text=footer,
-        nav_back=nav_back,
-        crumb_html=crumb,
-        extra_js=all_js
+        js_body=all_js,
+        cids=[],
+        nav_back='<a href="%s">← 回板块%s总览</a> <a href="index.html">← 回主站</a>' % (nav_back, section),
     )
 
     if not dry:

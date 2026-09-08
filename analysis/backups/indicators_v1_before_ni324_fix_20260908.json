@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v3.64",
+  "version": "v3.63",
   "updated": "2026-09-03 02:36",
   "status": "部分验证",
   "说明": "v3.49: merge win分支(110指标) + main锂硅(79指标)，7金属 correction 全合并",
@@ -18541,66 +18541,6 @@
    "_nodes": [
     "5.3"
    ]
-  },
-  "ni_324_profit": {
-   "name": "精炼镍：生产利润：中国：红土镍矿：高冰镍加工工艺（日）",
-   "unit": "元/吨",
-   "freq": "daily",
-   "verified": true,
-   "ids": {
-    "NI": "ID01959854"
-   },
-   "_origin": "3.2.4冶炼利润→供应弹性(复用7.2/7.3冶炼利润口径)",
-   "_tier": "A",
-   "_nodes": [
-    "3.2.4"
-   ],
-   "_verified_by": "zhiji_series_reuse_20260908"
-  },
-  "ni_324_profit_h2so4": {
-   "name": "精炼镍：生产利润：中国：外采：硫酸镍加工工艺（日）",
-   "unit": "元/吨",
-   "freq": "daily",
-   "verified": true,
-   "ids": {
-    "NI": "ID01959853"
-   },
-   "_origin": "3.2.4冶炼利润→供应弹性(复用7.2/7.3冶炼利润口径)",
-   "_tier": "A",
-   "_nodes": [
-    "3.2.4"
-   ],
-   "_verified_by": "zhiji_series_reuse_20260908"
-  },
-  "ni_324_cost": {
-   "name": "低镍生铁：成本（日）",
-   "unit": "元/吨",
-   "freq": "daily",
-   "verified": true,
-   "ids": {
-    "NI": "ID01360199"
-   },
-   "_origin": "3.2.4冶炼利润→供应弹性(复用7.2/7.3冶炼利润口径)",
-   "_tier": "A",
-   "_nodes": [
-    "3.2.4"
-   ],
-   "_verified_by": "zhiji_series_reuse_20260908"
-  },
-  "ni_324_cost_2": {
-   "name": "精炼镍：生产成本：中国：红土镍矿：氢氧化镍加工工艺（日）",
-   "unit": "元/吨",
-   "freq": "daily",
-   "verified": true,
-   "ids": {
-    "NI": "ID01959843"
-   },
-   "_origin": "3.2.4冶炼利润→供应弹性(复用7.2/7.3冶炼利润口径)",
-   "_tier": "A",
-   "_nodes": [
-    "3.2.4"
-   ],
-   "_verified_by": "zhiji_series_reuse_20260908"
   }
  },
  "64_group": {
@@ -18616,7 +18556,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.64",
+ "version": "v3.63",
  "updated": "2026-09-02 19:23",
  "change": "P1 series实测: 271条 verified=False→True → v3.54"
 }

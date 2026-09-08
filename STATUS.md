@@ -102,6 +102,18 @@
 - **门禁全绿**：check_html **236/236** ✅ + verify_render **240/240** ALL PASS ✅ + reclaim PASS=11/FAIL=1（FAIL 为历史 merge 提交 d625cad 无前缀，非本次引入）
 - **最终状态**：8 品种 258 节点中 256 个已建页（板块 8 三个节点按公告不做图表），**图表看板覆盖率 100%（除板块8）**
 
+### 2026-09-08 主脑 — 漏洞扫描与深度修复（check_html 漏注册 + 主图串台 + build 引擎适配）
+- **check_html.py 漏注册 4 页**（页面有效但门禁未登记，属假漏检）：ni_6_4（1图·季节）/ li_7_3（3图）/ si_3_1_3（2图·季节）/ si_5_3（2图）→ 已补注册，check_html 236→**240**
+- **overview 总览页未收录新页 5 处**：sn_3/si_7/li_7/si_3/si_5 五个总览页缺 sn_3_2_4、si_7_3、li_7_3、si_3_1_3、si_5_3 卡片 → 重跑 build_overview_all.py 31 页，可点卡片 **153/153**
+- **主图串台修正 2 处**：
+  - **ni_3_2_4**「冶炼利润→供应弹性」原用不锈钢冷轧利润+SHFE镍价格（严重串台，无 ni_324_ 前缀指标导致 fallback）→ 新增 `ni_324_profit / ni_324_profit_h2so4 / ni_324_cost / ni_324_cost_2` 4 条贴题指标（复用 7.2/7.3 冶炼利润与成本口径，ID01959854/ID01959853/ID01360199/ID01959843，拉数 892~2103 点），指标 1290→**1294**、version v3.63→**v3.64**；build_ni_batch.py 加 `"ni_324_": "3.2.4"` 前缀映射；build_5m_batch.py MAIN_METRIC 指定正主 → 重建 4 图
+  - **li_7_3**「能源/原料成本」原主图为「远期现货价」（属 2.x 价格板块，7.3 池中 7 条有 4 条是现货价）→ MAIN_METRIC 指定 `li_73_cost` 碳化法生产成本为正主，重建 3 图
+- **build_ni_batch.py 适配 chart_kits v2 签名**（原调用已失效会崩）：`make_crumb` 由 list 改 8 标量、`page_html` 由 `crumb_html/extra_js` 改 `hcrumbs/hright/js_body/cids`、页脚版本由写死 v3.44 改为动态读 indicators_v1.json
+- **check_html chart-note 检查由 == 改 ≥ 图数**：部分引擎（build_ni_batch）额外加页首定义块属正常，等值检查误报
+- **死链 0**（全库 href 扫描 329 页）；pb overview 的 `href="/"` 在 GitHub Pages 下即仓库根 index.html，语义正确非死链
+- **页脚版本碎片化**：v1.9~v3.63 共 23 种版本混存（历史批次不同步），check_html 对版本校验宽松不阻塞，暂不强制统一重建
+- 门禁最终：check_html **240/240** ✅ + verify_render **240/240** ALL PASS ✅ + reclaim 11/12（唯一 FAIL 为历史 merge 提交 d625cad 无前缀，非本次引入）
+
 ### 2026-09-07 20:30 主脑 — 统一指标表 + merge v4分支
 - merge `task/zhiji_match_v4` 到 main：8品种2667条 v4 重判产物（假A=0、复用>3=0、BUG全修复）
 - 写 `scripts/unify_indicators.py`：合并白名单(1192)+v4(2667)→去重 **1495条** 统一指标
