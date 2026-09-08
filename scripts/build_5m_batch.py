@@ -64,7 +64,17 @@ THEME_BY_COMM = {}  # 五金属无品种专属覆盖
 # 显式主图覆盖：key = "品种_节点"（如 "NI_4.1"），value = 指标 mid
 # 用途：修正 build 脚本默认"挑第一个日频指标当主图"导致的 SHFE 价格万能占位问题
 # 选型依据：translation-workspace/correction/ 同花顺 A 级正主 + 节点板块主题匹配
-MAIN_METRIC = {
+MAIN_METRIC = {}
+# 从 indicators_v1.json 的 _main_metric 字段读取（v3.68+ 写入的 119 条五金属覆盖）
+try:
+    import json as _json
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'indicators_v1.json'), encoding='utf-8') as _f:
+        _mm = _json.load(_f).get('_main_metric', {})
+        MAIN_METRIC.update(_mm)
+except Exception:
+    pass
+# 硬编码 fallback（CU/AL/PB 等品种）
+MAIN_METRIC.update({
     # NI 镍（15占位页 + 2错配页）
     "NI_3.1.5": "ni_315_profit",           # 冷轧不锈钢：外购低镍铁：利润（供给弹性）
     "NI_3.2.4": "ni_324_profit",            # 精炼镍生产利润（冶炼利润→供应弹性正主·v3.64新增）
@@ -109,7 +119,7 @@ MAIN_METRIC = {
     "CU_4.5":   "cu_45_output",            # 电解铜产量（隐性库存正主）
     "LI_7.3":   "li_73_cost",              # 碳酸锂碳化法生产成本（能源/原料成本正主，替代错配的远期现货价）
     # CU_7.2 / CU_7.3: 当前串台指标不够贴题，保留现有主图待后续发散补指标
-}
+})
 
 
 def node_indicators(indicators):
@@ -362,7 +372,8 @@ def main():
     comm_only_codes = [c.upper() for c, v in comm_flags.items() if v]
     comm_only = comm_only_codes[0] if len(comm_only_codes) == 1 else (comm_only_codes[0] if comm_only_codes else None)
     meta = json.load(open(os.path.join(ROOT, "data/indicators_v1.json"), encoding="utf-8"))
-    g = node_indicators(meta["indicators"])
+    # 兼容两种结构：顶层就是指标字典 vs 包裹在 "indicators" 键下
+    g = node_indicators(meta.get("indicators", meta))
 
     plan = sorted(g.keys()) if not args else [a for a in args if a in g]
     print("=" * 70)

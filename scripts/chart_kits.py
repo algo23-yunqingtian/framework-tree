@@ -37,7 +37,8 @@ _DB_IND = {}
 def _load_indicators_v1():
     global _DB_IND
     if not _DB_IND:
-        _DB_IND = json.load(open(INDICATORS_V1, encoding="utf-8"))["indicators"]
+        _db_raw = json.load(open(INDICATORS_V1, encoding="utf-8"))
+        _DB_IND = _db_raw.get("indicators", _db_raw)
     return _DB_IND
 
 # ============================================================

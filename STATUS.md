@@ -114,6 +114,20 @@
 - **页脚版本碎片化**：v1.9~v3.63 共 23 种版本混存（历史批次不同步），check_html 对版本校验宽松不阻塞，暂不强制统一重建
 - 门禁最终：check_html **240/240** ✅ + verify_render **240/240** ALL PASS ✅ + reclaim 11/12（唯一 FAIL 为历史 merge 提交 d625cad 无前缀，非本次引入）
 
+### 2026-09-08 主脑 — 串台根治：freq大清洗+_nodes归一化+MAIN_METRIC全品种覆盖
+- **根因**：三道防线全部失效
+  1. `infer_freq()` 逻辑 bug → 276 条 freq 误标为 daily（名字含「月」但标 daily）
+  2. `_nodes` 万能挂载 → 26 条指标挂 4-18 个节点（ni_21_close_front 挂 18 节点、zn_22_lme_inv 巴林库存挂 10 节点）
+  3. `MAIN_METRIC` 对 ZN/SN/SI/LI 零覆盖 → 引擎兜底取第一个 daily 指标当主图 = 价格/巴林库存当库存主图
+- **修复 1 freq 大清洗**：按名字括号内频率标记重算 → **397 条** freq 修正（170 daily→monthly、52 daily→weekly、38 daily→quarterly、27 daily→yearly 等），v3.65
+- **修复 2 _nodes 归一化**：23 条万能指标按板块清洗（价格类只留 2.x、库存类只留 4.x、产量类只留 3.x）+ 21 条 4.x 非库存指标移回正确板块 + zn_323_import_recycle 从 3.2.3 移至 6.x，v3.66→v3.70
+- **修复 3 MAIN_METRIC 全品种覆盖**：写 119 条（ZN 30 + SN 29 + SI 30 + LI 30）到 `_main_metric` 字段，build_5m_batch.py 改为从 JSON 动态读取，v3.68
+- **修复 4 引擎兼容**：build_5m_batch.py `meta["indicators"]` → `meta.get("indicators", meta)` 兼容 flat dict；chart_kits.py 同理
+- **效果**：主图串台 33 处→**7 处**（只剩 SI/SN/AL 少数节点因缺贴题指标用价格兜底）；zn_4_1 主图 LME锌库存 ✅、zn_4_2 SHFE仓单 ✅、zn_3_2_3 原生锌产量 ✅（精炼锌进口已消除）、zn_5_3 PMI ✅
+- **辅助图**仍有 59 处跨品种（_nodes 残留，影响远小于主图，后续逐品种清洗）
+- 重建 33 页 + 门禁注册表同步 8 页 + overview 31 页重建
+- 门禁：check_html **240/240** ✅ + verify_render **240/240** ALL PASS ✅
+
 ### 2026-09-07 20:30 主脑 — 统一指标表 + merge v4分支
 - merge `task/zhiji_match_v4` 到 main：8品种2667条 v4 重判产物（假A=0、复用>3=0、BUG全修复）
 - 写 `scripts/unify_indicators.py`：合并白名单(1192)+v4(2667)→去重 **1495条** 统一指标
