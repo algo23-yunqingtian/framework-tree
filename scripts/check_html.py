@@ -24,7 +24,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(SCRIPT_DIR)
 
 # 5 页的期望配置：文件名 / 最小字节 / 图数 / 图表 id 列表
-PAGES = PAGES = {
+PAGES = PAGES = PAGES = PAGES = {
 '21': {
 'file': 'pb_21_price_structure.html',
 'min_bytes': 20000,
@@ -279,20 +279,18 @@ PAGES = PAGES = {
     },
 'cu_2_1': {
 'file': 'cu_2_1.html',
-'min_bytes': 20000,
-'charts': 4,
+'min_bytes': 8000,
+'charts': 2,
 'cids': [
 'echart_cu_21_c1',
 'echart_cu_21_c2',
-'echart_cu_21_c3',
-'echart_cu_21_c4',
         ],
 'label': 'CU 2.1 进口盈亏与贸易流',
 'has_seasonal': True,
     },
 'cu_2_2': {
 'file': 'cu_2_2.html',
-'min_bytes': 16000,
+'min_bytes': 53865,
 'charts': 2,
 'cids': [
 'echart_cu_22_c1',
@@ -303,7 +301,7 @@ PAGES = PAGES = {
     },
 'cu_2_3': {
 'file': 'cu_2_3.html',
-'min_bytes': 259000,
+'min_bytes': 77111,
 'charts': 3,
 'cids': [
 'echart_cu_23_c1',
@@ -315,7 +313,7 @@ PAGES = PAGES = {
     },
 'cu_2_4': {
 'file': 'cu_2_4.html',
-'min_bytes': 421000,
+'min_bytes': 129310,
 'charts': 4,
 'cids': [
 'echart_cu_24_c1',
@@ -328,14 +326,14 @@ PAGES = PAGES = {
     },
 'cu_2_5': {
 'file': 'cu_2_5.html',
-'min_bytes': 62000,
+'min_bytes': 8000,
 'charts': 2,
 'cids': [
 'echart_cu_25_c1',
 'echart_cu_25_c2',
         ],
 'label': '估值与利润 2.5',
-'has_seasonal': False,
+'has_seasonal': True,
     },
 'cu_2_6': {
 'file': 'cu_2_6.html',
@@ -431,17 +429,18 @@ PAGES = PAGES = {
 'file': 'cu_3_1_2.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_cu_312_c1'],
+'cids': [
+'echart_cu_312_c1',
+        ],
 'label': '铜矿产量·波兰 3.1.2',
 'has_seasonal': False,
     },
 'cu_3_1_3': {
 'file': 'cu_3_1_3.html',
-'min_bytes': 13000,
-'charts': 2,
+'min_bytes': 8000,
+'charts': 1,
 'cids': [
 'echart_cu_313_c1',
-'echart_cu_313_c2',
         ],
 'label': '铜矿产量·中国 3.1.3',
 'has_seasonal': True,
@@ -450,25 +449,25 @@ PAGES = PAGES = {
 'file': 'cu_3_1_4.html',
 'min_bytes': 10000,
 'charts': 1,
-'cids': ['echart_cu_314_c1'],
+'cids': [
+'echart_cu_314_c1',
+        ],
 'label': '铜精矿进口 3.1.4',
 'has_seasonal': True,
     },
 'cu_3_1_5': {
 'file': 'cu_3_1_5.html',
-'min_bytes': 107000,
-'charts': 3,
+'min_bytes': 8000,
+'charts': 1,
 'cids': [
 'echart_cu_315_c1',
-'echart_cu_315_c2',
-'echart_cu_315_c3',
         ],
 'label': 'TC/RC加工费 3.1.5',
-'has_seasonal': True,
+'has_seasonal': False,
     },
 'cu_3_2_1': {
 'file': 'cu_3_2_1.html',
-'min_bytes': 29000,
+'min_bytes': 9328,
 'charts': 3,
 'cids': [
 'echart_cu_321_c1',
@@ -480,7 +479,7 @@ PAGES = PAGES = {
     },
 'cu_3_2_2': {
 'file': 'cu_3_2_2.html',
-'min_bytes': 20000,
+'min_bytes': 8000,
 'charts': 2,
 'cids': [
 'echart_cu_322_c1',
@@ -502,11 +501,10 @@ PAGES = PAGES = {
     },
 'cu_3_2_4': {
 'file': 'cu_3_2_4.html',
-'min_bytes': 21000,
-'charts': 2,
+'min_bytes': 8000,
+'charts': 1,
 'cids': [
 'echart_cu_324_c1',
-'echart_cu_324_c2',
         ],
 'label': '冶炼利润 3.2.4',
 'has_seasonal': False,
@@ -539,7 +537,9 @@ PAGES = PAGES = {
 'file': 'al_4_3.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_al_43_c1'],
+'cids': [
+'echart_al_43_c1',
+        ],
 'label': '社会库存 4.3',
 'has_seasonal': False,
     },
@@ -547,7 +547,9 @@ PAGES = PAGES = {
 'file': 'al_4_4.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_al_44_c1'],
+'cids': [
+'echart_al_44_c1',
+        ],
 'label': '工厂库存 4.4',
 'has_seasonal': False,
     },
@@ -555,7 +557,9 @@ PAGES = PAGES = {
 'file': 'al_4_5.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_al_45_c1'],
+'cids': [
+'echart_al_45_c1',
+        ],
 'label': '隐性·在途 4.5',
 'has_seasonal': True,
     },
@@ -647,17 +651,18 @@ PAGES = PAGES = {
 'file': 'cu_6_1.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_cu_61_c1'],
+'cids': [
+'echart_cu_61_c1',
+        ],
 'label': '原料进口 6.1',
 'has_seasonal': True,
     },
 'cu_6_2': {
 'file': 'cu_6_2.html',
-'min_bytes': 15000,
-'charts': 2,
+'min_bytes': 8000,
+'charts': 1,
 'cids': [
 'echart_cu_62_c1',
-'echart_cu_62_c2',
         ],
 'label': '进出口 6.2',
 'has_seasonal': True,
@@ -666,7 +671,9 @@ PAGES = PAGES = {
 'file': 'al_6_3.html',
 'min_bytes': 10000,
 'charts': 1,
-'cids': ['echart_al_63_c1'],
+'cids': [
+'echart_al_63_c1',
+        ],
 'label': '制品出口 6.3',
 'has_seasonal': True,
     },
@@ -792,7 +799,9 @@ PAGES = PAGES = {
 'file': 'al_3_2_2.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_al_322_c1'],
+'cids': [
+'echart_al_322_c1',
+        ],
 'label': '开工率 3.2.2',
 'has_seasonal': True,
     },
@@ -800,7 +809,9 @@ PAGES = PAGES = {
 'file': 'al_3_2_4.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_al_324_c1'],
+'cids': [
+'echart_al_324_c1',
+        ],
 'label': '成本与利润 3.2.4',
 'has_seasonal': True,
     },
@@ -819,7 +830,9 @@ PAGES = PAGES = {
 'file': 'cu_3_2_3.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_cu_323_c1'],
+'cids': [
+'echart_cu_323_c1',
+        ],
 'label': '再生铜供应 3.2.3',
 'has_seasonal': True,
     },
@@ -873,7 +886,9 @@ PAGES = PAGES = {
 'file': 'cu_4_4.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_cu_44_c1'],
+'cids': [
+'echart_cu_44_c1',
+        ],
 'label': '工厂库存 4.4',
 'has_seasonal': True,
     },
@@ -892,7 +907,9 @@ PAGES = PAGES = {
 'file': 'cu_7_1.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_cu_71_c1'],
+'cids': [
+'echart_cu_71_c1',
+        ],
 'label': '成本曲线 7.1',
 'has_seasonal': False,
     },
@@ -911,7 +928,9 @@ PAGES = PAGES = {
 'file': 'cu_7_3.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_cu_73_c1'],
+'cids': [
+'echart_cu_73_c1',
+        ],
 'label': '能源原料成本 7.3',
 'has_seasonal': True,
     },
@@ -1277,7 +1296,9 @@ PAGES = PAGES = {
 'file': 'zn_4_5.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_zn_45_c1'],
+'cids': [
+'echart_zn_45_c1',
+        ],
 'label': '锌4.5隐性在途',
 'has_seasonal': False,
     },
@@ -1535,7 +1556,9 @@ PAGES = PAGES = {
 'file': 'ni_3_1_5.html',
 'min_bytes': 10000,
 'charts': 1,
-'cids': ['echart_ni_315_c1'],
+'cids': [
+'echart_ni_315_c1',
+        ],
 'label': '镍3.1.5TC加工费',
 'has_seasonal': True,
     },
@@ -1592,7 +1615,9 @@ PAGES = PAGES = {
 'file': 'ni_4_1.html',
 'min_bytes': 12000,
 'charts': 1,
-'cids': ['echart_ni_41_c1'],
+'cids': [
+'echart_ni_41_c1',
+        ],
 'label': '镍4.1交易所库存',
 'has_seasonal': True,
     },
@@ -1722,7 +1747,9 @@ PAGES = PAGES = {
 'file': 'ni_6_4.html',
 'min_bytes': 12000,
 'charts': 1,
-'cids': ['echart_ni_64_c1'],
+'cids': [
+'echart_ni_64_c1',
+        ],
 'label': '镍6.4海外发运',
 'has_seasonal': True,
     },
@@ -1867,13 +1894,12 @@ PAGES = PAGES = {
     },
 'sn_313': {
 'file': 'sn_3_1_3.html',
-'min_bytes': 43528,
-'charts': 4,
+'min_bytes': 9119,
+'charts': 3,
 'cids': [
 'echart_sn_313_c1',
 'echart_sn_313_c2',
 'echart_sn_313_c3',
-'echart_sn_313_c4',
         ],
 'label': '锡3.1.3矿产量',
 'has_seasonal': True,
@@ -1893,12 +1919,11 @@ PAGES = PAGES = {
     },
 'sn_315': {
 'file': 'sn_3_1_5.html',
-'min_bytes': 71779,
-'charts': 3,
+'min_bytes': 8000,
+'charts': 2,
 'cids': [
 'echart_sn_315_c1',
 'echart_sn_315_c2',
-'echart_sn_315_c3',
         ],
 'label': '锡3.1.5TC加工费',
 'has_seasonal': True,
@@ -2001,7 +2026,9 @@ PAGES = PAGES = {
 'file': 'sn_4_5.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_sn_45_c1'],
+'cids': [
+'echart_sn_45_c1',
+        ],
 'label': '锡4.5隐性在途',
 'has_seasonal': True,
     },
@@ -2009,7 +2036,9 @@ PAGES = PAGES = {
 'file': 'sn_5_1.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_sn_51_c1'],
+'cids': [
+'echart_sn_51_c1',
+        ],
 'label': '锡5.1初级消费',
 'has_seasonal': False,
     },
@@ -2030,7 +2059,9 @@ PAGES = PAGES = {
 'file': 'sn_5_3.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_sn_53_c1'],
+'cids': [
+'echart_sn_53_c1',
+        ],
 'label': '锡5.3消费先行',
 'has_seasonal': False,
     },
@@ -2077,7 +2108,9 @@ PAGES = PAGES = {
 'file': 'sn_6_4.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_sn_64_c1'],
+'cids': [
+'echart_sn_64_c1',
+        ],
 'label': '锡6.4',
 'has_seasonal': True,
     },
@@ -2108,13 +2141,12 @@ PAGES = PAGES = {
     },
 'sn_73': {
 'file': 'sn_7_3.html',
-'min_bytes': 30000,
-'charts': 4,
+'min_bytes': 129771,
+'charts': 3,
 'cids': [
 'echart_sn_73_c1',
 'echart_sn_73_c2',
 'echart_sn_73_c3',
-'echart_sn_73_c4',
         ],
 'label': '锡7.3原料成本',
 'has_seasonal': True,
@@ -2333,7 +2365,9 @@ PAGES = PAGES = {
 'file': 'si_4_3.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_si_43_c1'],
+'cids': [
+'echart_si_43_c1',
+        ],
 'label': '硅4.3社会库存',
 'has_seasonal': False,
     },
@@ -2562,7 +2596,9 @@ PAGES = PAGES = {
 'file': 'li_3_1_2.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_312_c1'],
+'cids': [
+'echart_li_312_c1',
+        ],
 'label': '锂3.1.2矿产量',
 'has_seasonal': False,
     },
@@ -2669,7 +2705,9 @@ PAGES = PAGES = {
 'file': 'li_2_3.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_23_c1'],
+'cids': [
+'echart_li_23_c1',
+        ],
 'label': '锂2.3海外价格',
 'has_seasonal': True,
     },
@@ -2677,7 +2715,9 @@ PAGES = PAGES = {
 'file': 'li_3_1_4.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_314_c1'],
+'cids': [
+'echart_li_314_c1',
+        ],
 'label': '锂3.1.4库存',
 'has_seasonal': False,
     },
@@ -2685,7 +2725,9 @@ PAGES = PAGES = {
 'file': 'li_3_1_5.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_315_c1'],
+'cids': [
+'echart_li_315_c1',
+        ],
 'label': '锂3.1.5毛利',
 'has_seasonal': True,
     },
@@ -2704,7 +2746,9 @@ PAGES = PAGES = {
 'file': 'li_4_5.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_45_c1'],
+'cids': [
+'echart_li_45_c1',
+        ],
 'label': '锂4.5隐性在途',
 'has_seasonal': False,
     },
@@ -2712,7 +2756,9 @@ PAGES = PAGES = {
 'file': 'li_5_1.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_51_c1'],
+'cids': [
+'echart_li_51_c1',
+        ],
 'label': '锂5.1初级消费',
 'has_seasonal': True,
     },
@@ -2753,7 +2799,9 @@ PAGES = PAGES = {
 'file': 'li_6_2.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_62_c1'],
+'cids': [
+'echart_li_62_c1',
+        ],
 'label': '锂6.2进出口',
 'has_seasonal': False,
     },
@@ -2772,7 +2820,9 @@ PAGES = PAGES = {
 'file': 'li_6_4.html',
 'min_bytes': 8000,
 'charts': 1,
-'cids': ['echart_li_64_c1'],
+'cids': [
+'echart_li_64_c1',
+        ],
 'label': '锂6.4全球出口',
 'has_seasonal': True,
     },

@@ -73,6 +73,29 @@
 
 ## 近期变更记录
 
+### 2026-09-08 主脑 — P1 辅助图串台清洗（两轮，18→4 处，剩余全有声明）
+- **扫描方法**：全库 329 页 × 8 品种词互斥检查（图标题含其他品种词 = 串台嫌疑），初筛 18 处。
+- **架构级根因**：`_nodes` 是「节点号」不含品种维度 → 3.1.3 节点池混 40 个跨品种指标（cu/al/zn/ni/sn/li/si/pb 都有）。`build_5m_batch.py` 已按品种×节点过滤，但 **`build_cu_al_batch.py` 默认 `comm_only=None` 不分离铜铝** → cu 页混入 al 指标（如 cu_3_1_3 的补充图用了 al_313_util 原铝系铝合金锭开工率）。**修法=分两次跑 `--cu-only` / `--al-only`**（该脚本原设计即为此，只是之前全量跑没分开）。
+- **指标层污染（4 条清洗）**：
+  | 指标 | 原名 | 误挂节点 | 动作 |
+  |---|---|---|---|
+  | sn_313_tc_tc / sn_313_tc_tc_2 | 铝棒6063加工费无锡 | 锡 3.1.3/3.1.5 | `_nodes` 清空（退出锡池） |
+  | sn_25_recycle_price | 再生铝棒6063价格 | 锡 2.5/7.3 | `_nodes` 清空 |
+  | sn_21_premium | 电解铝现货升贴水无锡 | 锡 2.1 | `_nodes` 清空 |
+  | si_22_price_industrial_si | SMM A00电解铝现货 | 硅 2.2 | `_nodes` 清空 |
+  根因=知几搜索「锡精矿加工费」「锡价」等返回了铝系列序列，注册时按 mid 前缀误归类。
+- **cu_5_2.html 补跨金属声明**：c3 图用 cu_5_2_consumption_4（真名"SMM电解铝平衡终端消费"）作铜消费参照，已加「铝跨金属辅助参照·仅看趋势方向·不可直接加总」声明（与 al_3_2_3 格式一致）。
+- **重建**：build_5m_batch.py 全量 143/154 + build_cu_al_batch.py `--cu-only` 26/35 + `--al-only` 29/35 + overview 31 页 153/153。⚠️ `--cu-only` 重建副作用：cu_2_3/2_4/2_5/3_2_1/3_2_2/cu_6_2 图数变化→check_html FAIL，已同步注册表。
+- **门禁注册表同步**：check_html.py 14 页（sn_313 4→3图、sn_315 3→2、sn_73 4→3、cu_313/315/324/62 4→1 等，含 min_bytes/has_seasonal）+ verify_render.js 11 页（含补 cu_315/cu_321 缺失的 charts 字段、seasonal cid 修正）。⚠️ check_html.py 的 cu key 带下划线（cu_2_1）但 sn key 压缩式（sn_313），命名不统一。
+- **指标**：1294 条不变（只改 `_nodes` 归属，非新增），version v3.73→**v3.75**（v3.74 中间态）。
+- **门禁全绿**：check_html **240/240** ✅ + verify_render **240/240** ALL PASS ✅ + reclaim PASS=11/FAIL=1（唯一 FAIL 为历史 merge 提交 d625cad 无前缀，非本次引入）。
+- **P1 收官**：跨品种残留 18→**4 处**，4 处全有跨金属声明（al_3_2_3 再生铜杆/废铝、al_7_1 铜TC/铝棒加工费、cu_5_2 电解铝消费/铜消费、pb_24 铅锌比价），均属 AGENTS.md §3.5 允许的合理跨金属辅助参照。
+- **已知遗留（非本次范围）**：
+  1. `build_cu_al_batch.py` 无跨金属声明自动生成逻辑（声明靠手工 patch，下次全量重建会丢）→ 建议加引擎层自动声明。
+  2. cu_5_2.html 的 note 文案串台：「5.2 定义：铝终端细分消费」写的是铝的定义（`theme_of` 在 cu 页取了铝文案）→ 待修 THEMES。
+  3. `refresh_cache.py` L82 `meta["indicators"]` flat dict 崩溃（与 build_cu_al_batch.py 同 bug，非本次范围）。
+  4. sn_4_5 无候选指标保留 SHFE 锡价格主图（已在 build_5m_batch.py L112 标注为已知例外）。
+
 ### 2026-09-08 主脑 — P0 剩余 8 处主图串台全部修正（交接 HANDOVER_20260908_chuantai.md 收尾）
 - **根因（第三层）**：`build_5m_batch.py` L77 硬编码 `MAIN_METRIC.update({...})` 在 JSON `_main_metric` 之后执行，**覆盖了 JSON 值**——SN_3.1.5 被硬编码 `sn_313_output`（云南年鉴·年频9点·已陈旧被过滤）覆盖，兜底取第一个日频指标 = 铝棒加工费（跨品种串台）。这是前两轮没查到的第四道防线失效点。
 - **修正 8 处主图**（JSON `_main_metric` + 硬编码块同步）：

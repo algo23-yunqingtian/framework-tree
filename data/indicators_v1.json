@@ -6637,9 +6637,7 @@
     },
     "_origin": "step3_5m_SN_现货升贴水（元/吨）",
     "_tier": "A",
-    "_nodes": [
-      "2.1"
-    ],
+    "_nodes": [],
     "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_21_close": {
@@ -6911,10 +6909,7 @@
     },
     "_origin": "step3_5m_SN_再生锡价格（元/吨）",
     "_tier": "A",
-    "_nodes": [
-      "2.5",
-      "7.3"
-    ],
+    "_nodes": [],
     "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_26_openinterest_top20": {
@@ -7266,10 +7261,7 @@
     },
     "_origin": "step3_5m_SN_近3年同月加工费TC均值（美元/吨）",
     "_tier": "A",
-    "_nodes": [
-      "3.1.3",
-      "3.1.5"
-    ],
+    "_nodes": [],
     "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_313_tc_tc_2": {
@@ -7282,10 +7274,7 @@
     },
     "_origin": "step3_5m_SN_近3年同月加工费TC标准差（美元/吨）",
     "_tier": "A",
-    "_nodes": [
-      "3.1.3",
-      "3.1.5"
-    ],
+    "_nodes": [],
     "_verified_by": "zhiji_series_p1_20260902"
   },
   "sn_314_import_tin_ore": {
@@ -8537,9 +8526,7 @@
     },
     "_origin": "step3_5m_SI_工业硅现货价格（元/吨）",
     "_tier": "A",
-    "_nodes": [
-      "2.2"
-    ],
+    "_nodes": [],
     "_verified_by": "zhiji_series_p1_20260902"
   },
   "si_22_warrant_industrial_si": {
@@ -18370,7 +18357,7 @@
     ],
     "_verified_by": "zhiji_series_reuse_20260908"
   },
-  "version": "v3.73",
+  "version": "v3.75",
   "change": "4.x非库存指标二次清洗(zn_43_premium/cu_44/cu_46/cu_47/ni_42_premium)",
   "_main_metric": {
     "ZN_2.1": "zn_21_close_main",
@@ -18495,8 +18482,11 @@
     "AL_5.3": "al_53_export"
   },
   "_meta": {
-    "version": "v3.73",
+    "version": "v3.75",
     "changelog": [
+      "v3.75 2026-09-08 P1辅助图串台清洗第2批: sn_25_recycle_price(再生铝棒6063价)退出锡2.5/7.3, sn_21_premium(电解铝升贴水)退出锡2.1",
+      "v3.75 2026-09-08 P1辅助图串台清洗第2批: sn_25_recycle_price(再生铝棒6063价)退出锡2.5/7.3, sn_21_premium(电解铝升贴水)退出锡2.1",
+      "v3.74 2026-09-08 P1辅助图串台清洗: sn_313_tc_tc/_2(铝棒加工费)退出锡3.1.3/3.1.5节点, si_22_price_industrial_si(A00电解铝价)退出硅2.2节点",
       "v3.73 2026-09-08 P0串台整治: 8处主图串台修正(AL_5.3/SN_3.1.3/SN_3.1.5/SN_5.3/SI_3.1.5/SI_3.2.4/SI_4.3/ZN_6.3)，sn_71_tc追加3.1.5节点，补拉al_53_export/sn_53_output_tin_ore缓存"
     ]
   }
