@@ -1283,11 +1283,10 @@ PAGES = PAGES = PAGES = PAGES = {
 'zn_44': {
 'file': 'zn_4_4.html',
 'min_bytes': 38871,
-'charts': 3,
+'charts': 2,
 'cids': [
 'echart_zn_44_c1',
 'echart_zn_44_c2',
-'echart_zn_44_c3',
         ],
 'label': '锌4.4工厂库存',
 'has_seasonal': False,

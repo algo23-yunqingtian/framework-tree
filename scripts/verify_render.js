@@ -134,7 +134,7 @@ const PAGES = [
   { key: 'zn_41', file: 'zn_4_1.html', charts: 4, seasonal: ['echart_zn_41_c1'] },
   { key: 'zn_42', file: 'zn_4_2.html', charts: 4, seasonal: ['echart_zn_42_c1'] },
   { key: 'zn_43', file: 'zn_4_3.html', charts: 2, seasonal: ["echart_zn_43_c1"] },
-  { key: 'zn_44', file: 'zn_4_4.html', charts: 3, seasonal: [] },
+  { key: 'zn_44', file: 'zn_4_4.html', charts: 2, seasonal: [] },
   { key: 'zn_45', file: 'zn_4_5.html', charts: 1, seasonal: [] },
   { key: 'zn_51', file: 'zn_5_1.html', charts: 2, seasonal: ["echart_zn_51_c1"] },
   { key: 'zn_52', file: 'zn_5_2.html', charts: 4, seasonal: ['echart_zn_52_c1'] },

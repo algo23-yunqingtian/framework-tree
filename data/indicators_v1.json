@@ -3841,34 +3841,6 @@
       "4.4"
     ]
   },
-  "zn_44_inv_2": {
-    "name": "镀锌板卷：库存：中国（周）",
-    "unit": "万吨",
-    "freq": "weekly",
-    "verified": false,
-    "ids": {
-      "ZN": "ID00366838"
-    },
-    "_origin": "step3_5m_ZN_近3年同月/同周库存标准差（万吨）",
-    "_tier": "A",
-    "_nodes": [
-      "4.4"
-    ]
-  },
-  "zn_44_inv_plant_2": {
-    "name": "锌锭：库存：上海保税区（周）",
-    "unit": "万吨",
-    "freq": "weekly",
-    "verified": false,
-    "ids": {
-      "ZN": "ID01030219"
-    },
-    "_origin": "step3_5m_ZN_国内锌厂内锌锭库存分地区（万吨）",
-    "_tier": "A",
-    "_nodes": [
-      "4.4"
-    ]
-  },
   "zn_51_cons": {
     "name": "USGS：精炼锌：表观消费量：美国（年）",
     "unit": "千吨",
@@ -18482,7 +18454,7 @@
     "AL_5.3": "al_53_export"
   },
   "_meta": {
-    "version": "v3.75",
+    "version": "v3.76",
     "changelog": [
       "v3.75 2026-09-08 P1辅助图串台清洗第2批: sn_25_recycle_price(再生铝棒6063价)退出锡2.5/7.3, sn_21_premium(电解铝升贴水)退出锡2.1",
       "v3.75 2026-09-08 P1辅助图串台清洗第2批: sn_25_recycle_price(再生铝棒6063价)退出锡2.5/7.3, sn_21_premium(电解铝升贴水)退出锡2.1",
