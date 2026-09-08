@@ -23,16 +23,16 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
   <div class="hcrumbs">锡(SN) · 5 需求 · 5.3 消费先行 · v1 1 图</div>
-  <div class="hright">数据固化快照 · 2026-09-03 · SMM</div>
+  <div class="hright">数据固化快照 · 2026-09-08 · SMM</div>
 </div>
 <div class="nav-back"><a href="sn_5_overview.html">← 回板块5总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
-<div class="chart"><div class="chart-title">SHFE：锡：主力合约：收盘价（日）（主图·5.3）</div><div class="chart-sub">sn_21_close_front · daily · 元/吨 · 2103点 · 9年跨度 · 至 2026-09-01</div><div id="echart_sn_53_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_sn_53_c1',this)">⏱ 时序</button><div class="chart-note">📌 什么时候看：需求先行指标。<br>怎么看：负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(2026-09-01)：423500.0元/吨。切季节视图可对比近5年同期位置。</div></div>
+<div class="chart"><div class="chart-title">锡矿：产量：秘鲁：明苏尔（季）（主图·5.3）</div><div class="chart-sub">sn_53_output_tin_ore · quarterly ·  · 45点 · 12年跨度 · 至 2026-03-31</div><div id="echart_sn_53_c1" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：需求先行指标。<br>怎么看：负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(2026-03-31)：7993.0。</div></div>
 <div class="note">
-<strong style="color:#c9d1d9">5.3 定义：</strong>需求先行指标。<br><strong style="color:#c9d1d9">指标组：</strong>sn_21_close_front SHFE：锡：主力合约：收盘价（日）(daily,元/吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 1 图，断更剔除 zn_51_cons、zn_51_cons_2、zn_51_cons_3、li_53_apparent_cons（末点距今>180天，避免整页降级）。
+<strong style="color:#c9d1d9">5.3 定义：</strong>需求先行指标。<br><strong style="color:#c9d1d9">指标组：</strong>sn_53_output_tin_ore 锡矿：产量：秘鲁：明苏尔（季）(quarterly,)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 1 图，全指标已入图。
 </div>
 </div>
-<footer>有色金属产业指标树 · 锡(SN) 5.3 消费先行 · v1（1 图全真数据 · 自动批量生成）· indicators_v1.json v3.62</footer>
+<footer>有色金属产业指标树 · 锡(SN) 5.3 消费先行 · v1（1 图全真数据 · 自动批量生成）· indicators_v1.json v3.73</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.oncontextmenu=e=>{e.preventDefault();return false};
@@ -40,13 +40,13 @@ document.onkeydown=e=>{if(e.ctrlKey&&['c','s','p','u'].includes(e.key.toLowerCas
 document.onselectstart=e=>{e.preventDefault();return false};
 var __yrs_echart_sn_53_c1=[2022, 2023, 2024, 2025, 2026];
 var __pal_echart_sn_53_c1=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
-window['__data_echart_sn_53_c1'] = [["2018-01-01", 146210.45], ["2018-02-01", 148412.67], ["2018-03-01", 144772.73], ["2018-04-01", 145467.78], ["2018-05-01", 147733.18], ["2018-06-01", 148471.5], ["2018-07-01", 144882.73], ["2018-08-01", 145384.78], ["2018-09-01", 145314.74], ["2018-10-01", 147272.22], ["2018-11-01", 148286.36], ["2018-12-01", 145506.5], ["2019-01-01", 147147.27], ["2019-02-01", 149986.67], ["2019-03-01", 147786.19], ["2019-04-01", 147917.62], ["2019-05-01", 145560.0], ["2019-06-01", 144041.05], ["2019-07-01", 134881.74], ["2019-08-01", 132196.36], ["2019-09-01", 137916.5], ["2019-10-01", 137952.22], ["2019-11-01", 136854.76], ["2019-12-01", 139105.91], ["2020-01-01", 137716.25], ["2020-02-01", 134493.0], ["2020-03-01", 125005.0], ["2020-04-01", 125803.81], ["2020-05-01", 131747.78], ["2020-06-01", 136956.0], ["2020-07-01", 142384.78], ["2020-08-01", 143660.95], ["2020-09-01", 144224.55], ["2020-10-01", 145589.38], ["2020-11-01", 146813.81], ["2020-12-01", 150756.09], ["2021-01-01", 160413.0], ["2021-02-01", 175018.0], ["2021-03-01", 175498.26], ["2021-04-01", 183574.29], ["2021-05-01", 197665.56], ["2021-06-01", 206557.62], ["2021-07-01", 224069.55], ["2021-08-01", 237212.73], ["2021-09-01", 259074.0], ["2021-10-01", 280051.88], ["2021-11-01", 282615.45], ["2021-12-01", 286130.87], ["2022-01-01", 312221.05], ["2022-02-01", 335540.62], ["2022-03-01", 343554.35], ["2022-04-01", 336211.05], ["2022-05-01", 285437.37], ["2022-06-01", 241192.86], ["2022-07-01", 191489.52], ["2022-08-01", 196965.65], ["2022-09-01", 178256.19], ["2022-10-01", 168170.62], ["2022-11-01", 175740.45], ["2022-12-01", 196121.36], ["2023-01-01", 219134.38], ["2023-02-01", 217692.0], ["2023-03-01", 194956.52], ["2023-04-01", 205606.84], ["2023-05-01", 202938.5], ["2023-06-01", 212752.0], ["2023-07-01", 231620.0], ["2023-08-01", 219166.09], ["2023-09-01", 219225.0], ["2023-10-01", 214594.12], ["2023-11-01", 206467.27], ["2023-12-01", 207532.38], ["2024-01-01", 212674.55], ["2024-02-01", 215425.33], ["2024-03-01", 223319.52], ["2024-04-01", 252086.0], ["2024-05-01", 271550.5], ["2024-06-01", 268710.0], ["2024-07-01", 264905.65], ["2024-08-01", 258262.27], ["2024-09-01", 255928.95], ["2024-10-01", 259577.22], ["2024-11-01", 248467.62], ["2024-12-01", 245073.18], ["2025-01-01", 248750.0], ["2025-02-01", 259871.11], ["2025-03-01", 271873.81], ["2025-04-01", 264323.33], ["2025-05-01", 262361.58], ["2025-06-01", 263090.0], ["2025-07-01", 266720.43], ["2025-08-01", 268652.38], ["2025-09-01", 272144.55], ["2025-10-01", 283019.41], ["2025-11-01", 291097.0], ["2025-12-01", 326378.26], ["2026-01-01", 398650.5], ["2026-02-01", 391115.0], ["2026-03-01", 374894.55], ["2026-04-01", 381970.48], ["2026-05-01", 420373.89], ["2026-06-01", 411986.67], ["2026-07-01", 412089.13], ["2026-08-01", 426905.71], ["2026-09-01", 423500.0]];
+window['__data_echart_sn_53_c1'] = [["2015-03-31", 4576.0], ["2015-06-30", 4955.0], ["2015-09-30", 4852.0], ["2015-12-31", 5129.0], ["2016-03-31", 4274.0], ["2016-06-30", 4573.0], ["2016-09-30", 5114.0], ["2016-12-31", 4828.0], ["2017-03-31", 4710.0], ["2017-06-30", 4794.0], ["2017-09-30", 4844.0], ["2017-12-31", 4136.0], ["2018-03-31", 4062.0], ["2018-06-30", 4818.0], ["2018-09-30", 4877.0], ["2018-12-31", 4843.0], ["2019-03-31", 5045.0], ["2019-06-30", 5072.0], ["2019-09-30", 5107.0], ["2019-12-31", 5516.0], ["2020-03-31", 4978.0], ["2020-06-30", 2679.0], ["2020-09-30", 6274.0], ["2020-12-31", 6718.0], ["2021-03-31", 6435.0], ["2021-06-30", 6844.0], ["2021-09-30", 6964.0], ["2021-12-31", 6752.0], ["2022-03-31", 6818.0], ["2022-06-30", 7066.0], ["2022-09-30", 5960.0], ["2022-12-31", 6510.0], ["2023-03-31", 1860.0], ["2023-06-30", 7541.0], ["2023-09-30", 7973.0], ["2023-12-31", 8576.0], ["2024-03-31", 8121.0], ["2024-06-30", 8205.0], ["2024-09-30", 8308.0], ["2024-12-31", 7676.0], ["2025-03-31", 8508.0], ["2025-06-30", 8390.0], ["2025-09-30", 8978.0], ["2025-12-31", 8394.0], ["2026-03-31", 7993.0]];
 window['__opts_echart_sn_53_c1'] = {
   ts: {
     tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
     xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
     yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
-    series:[{name:'SHFE：锡：主力合约：收盘价（日）（主图·5.3）',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+    series:[{name:'锡矿：产量：秘鲁：明苏尔（季）（主图·5.3）',type:'line',smooth:true,symbol:'circle',symbolSize:4,
       lineStyle:{color:'#8c6b9c',width:2},
       areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#8c6b9c30'},{offset:1,color:'#8c6b9c00'}]}},
       data:window['__data_echart_sn_53_c1'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_sn_53_c1'][window['__data_echart_sn_53_c1'].length-1][0],window['__data_echart_sn_53_c1'][window['__data_echart_sn_53_c1'].length-1][1]],
@@ -62,8 +62,8 @@ window['__opts_echart_sn_53_c1'] = {
   }
 };
 window['__inst_echart_sn_53_c1'] = echarts.init(document.getElementById('echart_sn_53_c1'),'dark');
-window['__mode_echart_sn_53_c1'] = 'se';
-window['__inst_echart_sn_53_c1'].setOption(window['__opts_echart_sn_53_c1']['se'], true);
+window['__mode_echart_sn_53_c1'] = 'ts';
+window['__inst_echart_sn_53_c1'].setOption(window['__opts_echart_sn_53_c1']['ts'], true);
 
 function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
 function __seasonalizeByYear(arr,years,palette){var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);var mm=parseInt(d.substring(5,7),10)-1;if(mm<0||mm>11)continue;if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(12);by[yr][mm]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<12;k++)if(dat[k]!==null)nonNull++;if(nonNull<3)continue;var rounded=[];for(var k=0;k<12;k++)rounded.push(dat[k]===null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:true,symbol:'circle',symbolSize:5,connectNulls:true,lineStyle:{color:color,width:2},itemStyle:{color:color},data:rounded});}return series;}

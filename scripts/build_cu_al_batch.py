@@ -192,6 +192,7 @@ MAIN_METRIC = {
     "2.4": "al_24_shfe_spread",   # 沪铝月差正主（避免被断更的 al_22_spot 抢占）
     "2.5": "al_25_close_quantile",# 估值分位正主（decision_2.5「分位是估值类唯一正主」）
     "2.6": "al_26_long_top20",    # 沪铝前20多单正主（避免选到 COMEX CFTC 周度）
+    "5.3": "al_53_export",        # 铝材出口量（海关月）— 5.3 需求先行正主，替代 SHFE 铝收盘价串台（v3.73）
 }
 
 
@@ -395,7 +396,7 @@ def main():
     # 混合节点按品种单独建页：--al-only 只建铝页，--cu-only 只建铜页
     comm_only = "AL" if "--al-only" in sys.argv else ("CU" if "--cu-only" in sys.argv else None)
     meta = json.load(open(os.path.join(ROOT, "data/indicators_v1.json"), encoding="utf-8"))
-    g = node_indicators(meta["indicators"])
+    g = node_indicators(meta.get("indicators", meta))
 
     plan = sorted(g.keys()) if not args else [a for a in args if a in g]
     print("=" * 70)

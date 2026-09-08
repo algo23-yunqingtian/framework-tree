@@ -73,6 +73,29 @@
 
 ## 近期变更记录
 
+### 2026-09-08 主脑 — P0 剩余 8 处主图串台全部修正（交接 HANDOVER_20260908_chuantai.md 收尾）
+- **根因（第三层）**：`build_5m_batch.py` L77 硬编码 `MAIN_METRIC.update({...})` 在 JSON `_main_metric` 之后执行，**覆盖了 JSON 值**——SN_3.1.5 被硬编码 `sn_313_output`（云南年鉴·年频9点·已陈旧被过滤）覆盖，兜底取第一个日频指标 = 铝棒加工费（跨品种串台）。这是前两轮没查到的第四道防线失效点。
+- **修正 8 处主图**（JSON `_main_metric` + 硬编码块同步）：
+  | 页面 | 原主图（错） | 新正主 |
+  |---|---|---|
+  | al_5_3 | SHFE铝收盘价 | al_53_export 铝材出口量(139点·海关月) |
+  | sn_3_1_3 | 铝棒加工费 | sn_313_import_tin_ore 锡矿砂进口云南(103点·月) |
+  | sn_3_1_5 | 铝棒加工费 | sn_71_tc 锡精矿40%Sn加工费(2120点·日) |
+  | sn_5_3 | SHFE锡收盘价 | sn_53_output_tin_ore 秘鲁明苏尔锡矿产量(45点·季) |
+  | si_3_1_5 | 硅石价格(陈旧2025-11) | si_315_util_industrial_si 工业硅开工率(106点·周) |
+  | si_3_2_4 | 硅锰利润(多晶硅板块串台) | si_324_profit 工业硅421#利润新疆(186点·周) |
+  | si_4_3 | GFEX硅收盘价 | si_43_inv 工业硅工厂库存(65点·周) |
+  | zn_6_3 | SHFE锌收盘价 | zn_63_coated_export 镀锌板出口量(55点·月) |
+- **关键修复（连带损坏）**：`build_cu_al_batch.py` L399 `meta["indicators"]` → `meta.get("indicators", meta)` 兼容 flat dict（第二轮 freq 清洗后 JSON 改 flat dict，此脚本一直崩但未被触发，因之前一直跑 `--al-only` 带参数走另一分支）；`refresh_cache.py` L82 同 bug 未修（非本次任务范围）。
+- **补拉缓存**：al_53_export(139点/海关月)、sn_53_output_tin_ore(45点/季) 两条幽灵正主原无缓存（被 build 引擎过滤→从未进候选池→兜底取价格）。zn_62_export 拉数返回 Mysteel HTTP 500（无权限指标），放弃，改选 zn_63_coated_export。
+- **_nodes 归一化**：sn_71_tc 追加 `["3.1.5"]`（真正锡精矿TC加工费归属到TC节点，原仅挂7.1/7.2/7.3）。
+- **build_5m_batch.py CLI bug（未修，已知）**：传节点参数时 `plan=sorted(args)` 变纯字符串→L437 走 `g.get(node)` 跨品种聚合→只建 zn 页且退化回跨品种混入。**正确用法=不传参数全量重建**。
+- **指标**：1294→1294（复用已有指标，非新增），version v3.72→**v3.73**，`_main_metric` 119→120 条，备份 `analysis/backups/indicators_v1_before_p0_fix_20260908.json`。
+- **重建**：build_5m_batch.py 全量 143/154（11 跳过=数据不足节点）+ build_cu_al_batch.py `--al-only` 29/35 + overview 31 页 153/153。⚠️ `--al-only` 全量重建副作用：al_2_2/2_3/2_4/3_2_3 四页因 al_22_spot 陈旧(2022)/al_22_open_spread 无缓存/al_323_import_scrap 陈旧(2019) 图数退化→verify_render FAIL，已 `git checkout` 恢复这 4 页到 HEAD 版本（其退化是数据断更所致，非本次引入）。
+- **门禁注册表同步**：check_html.py 7 页（sn_315 charts 2→3、al_53 charts 1→2、sn_53 has_seasonal True→False 等）+ verify_render.js 7 页（含 seasonal cid 补全：zn_63/sn_313/si_324 加 c4、sn_315 加 c3、si_315 c1→c3）。check_html.py 的 PAGES 用 `ast.literal_eval` 解析（非 json.loads，单引号+True 格式）。
+- **门禁全绿**：check_html **240/240** ✅ + verify_render **240/240** ALL PASS ✅ + reclaim PASS=11/FAIL=1（唯一 FAIL 为历史 merge 提交 d625cad 无前缀，非本次引入，交接文档已记录可忽略）。
+- **P0 收官**：主图串台 5 处→**0 处**（sn_4_5 无候选指标保留价格主图，已在 build_5m_batch.py L112 标注为已知例外）。
+
 ### 2026-09-08 主脑 — P0-2 chart_dual_t 双指标季节切换函数落地
 - 在 `scripts/chart_kits.py` 新增 `chart_dual_t()`：双轴复合图的时序⇄季节切换版本
   - 季节视图：两指标各自出 N 条历年线（共用横轴），左轴指标用左 y 轴、右轴用右 y 轴
