@@ -23,16 +23,16 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <div class="header">
   <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
   <div class="hcrumbs">锂(LI) · 3 供给 · 3.1.2 3.1.2 · v1 1 图</div>
-  <div class="hright">数据固化快照 · 2026-08-31 · SMM</div>
+  <div class="hright">数据固化快照 · 2026-09-08 · SMM</div>
 </div>
 <div class="nav-back"><a href="li_3_overview.html">← 回板块3总览</a> <a href="index.html">← 回主站</a></div>
 <div class="panel">
-<div class="chart"><div class="chart-title">锂矿：库存：贸易商（周）（主图·3.1.2）</div><div class="chart-sub">li_312_inv · daily · 万吨 · 68点 · 2年跨度 · 至 2026-08-21</div><div id="echart_li_312_c1" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：。<br>怎么看：负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(2026-08-21)：14.97万吨。</div></div>
+<div class="chart"><div class="chart-title">锂矿：库存：贸易商（周）（主图·3.1.2）</div><div class="chart-sub">li_312_inv · weekly · 万吨 · 68点 · 2年跨度 · 至 2026-08-21</div><div id="echart_li_312_c1" style="width:100%;height:320px"></div><div class="chart-note">📌 什么时候看：。<br>怎么看：负值区=压力/亏损/收紧；正值区=盈利/宽松。最新(2026-08-21)：14.97万吨。</div></div>
 <div class="note">
-<strong style="color:#c9d1d9">3.1.2 定义：</strong>。<br><strong style="color:#c9d1d9">指标组：</strong>li_312_inv 锂矿：库存：贸易商（周）(daily,万吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 1 图，断更剔除 zn_312_output、zn_312_output_3、zn_312_output_4、zn_312_output_6、zn_312_import_3、zn_312_output_recycle、zn_312_output_recycle_2、zn_312_output_recycle_3、zn_312_output_recycle_4、zn_312_output_8、zn_312_output_9、ni_311_output_nickel_ore、ni_311_output_nickel_ore_2、ni_312_output_nickel_ore、sn_311_output_tin_ore、si_312_import、si_312_import_2、si_312_output_recycle_2、li_312_output、li_312_output_2（末点距今>180天，避免整页降级）。
-<br><strong style="color:#c9d1d9">辅助指标口径声明：</strong><code>zn_312_output_9</code> · <code>zn_312_output_8</code> · <code>ni_312_output_nickel_ore</code> · <code>ni_311_output_nickel_ore_2</code> · <code>si_312_output_recycle_2</code> · <code>zn_312_output_recycle_3</code> · <code>zn_312_output_recycle</code> · <code>si_312_import</code> · <code>zn_312_output_6</code> · <code>sn_311_output_tin_ore</code> · <code>zn_312_output_3</code> · <code>zn_312_output_4</code> · <code>si_312_import_2</code> · <code>ni_311_output_nickel_ore</code> · <code>zn_312_output_recycle_2</code> · <code>zn_312_import_3</code> · <code>zn_312_output</code> · <code>zn_312_output_recycle_4</code> 为<b>镍、硅、锡、锌跨金属辅助参照</b>——知几/同花顺在本节点缺乏连续的<b>li本品种</b>指标序列，此处置为跨金属类比参照（<b>仅看相对趋势方向</b>，单位/频次/绝对量级与主图不同，不可直接加总或比数值）。本页正主指标以 li 品种前缀为准。</div>
+<strong style="color:#c9d1d9">3.1.2 定义：</strong>。<br><strong style="color:#c9d1d9">指标组：</strong>li_312_inv 锂矿：库存：贸易商（周）(weekly,万吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 1 图，断更剔除 li_312_output、li_312_output_2（末点距今>180天，避免整页降级）。
 </div>
-<footer>有色金属产业指标树 · 锂(LI) 3.1.2 3.1.2 · v1（1 图全真数据 · 自动批量生成）· indicators_v1.json v3.43</footer>
+</div>
+<footer>有色金属产业指标树 · 锂(LI) 3.1.2 3.1.2 · v1（1 图全真数据 · 自动批量生成）· indicators_v1.json v3.72</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
 document.oncontextmenu=e=>{e.preventDefault();return false};
@@ -73,5 +73,6 @@ function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
 window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
 btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
 window.addEventListener('resize',function(){['echart_li_312_c1'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+setTimeout(function(){window.__chartsReady=true;},1200);
 
 </script></body></html>

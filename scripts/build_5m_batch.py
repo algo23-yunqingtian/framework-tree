@@ -228,6 +228,10 @@ def build_node(node, ind_list, meta, comm_only=None):
     if len(data) < 1:
         return None, [], 0, None
 
+    # 按第一个指标推断品种（文件名由此决定），然后过滤为同品种
+    inferred_code = data[0]["code"]
+    if not comm_only:
+        comm_only = inferred_code
     if comm_only:
         data = [x for x in data if x["code"] == comm_only]
         if not data:
@@ -375,9 +379,21 @@ def main():
     # 兼容两种结构：顶层就是指标字典 vs 包裹在 "indicators" 键下
     g = node_indicators(meta.get("indicators", meta))
 
-    plan = sorted(g.keys()) if not args else [a for a in args if a in g]
+    # 按品种×节点分组（修复跨品种串台：原版按节点聚合跨品种指标，导致 zn_4_3 混入 ni 库存）
+    comm_node_plan = defaultdict(list)
+    for node in sorted(g.keys()):
+        for item in g[node]:
+            code = item[1]  # CODE (ZN/NI/SI/SN/LI)
+            var = code.lower()
+            if item[0].startswith(var + "_"):
+                comm_node_plan[(code, node)].append(item)
+
+    if args:
+        plan = sorted(args)
+    else:
+        plan = [(code, node) for (code, node) in sorted(comm_node_plan.keys())]
     print("=" * 70)
-    print("五金属批量建页 v1 · 计划 %d 节点 · dry=%s · comm_only=%s" % (len(plan), dry, comm_only))
+    print("五金属批量建页 v1 · 计划 %d 页 · dry=%s · comm_only=%s" % (len(plan), dry, comm_only))
     print("=" * 70)
 
     results = []
@@ -413,8 +429,12 @@ def main():
         return
 
     results = []
-    for node in plan:
-        ind_list = g[node]
+    for item in plan:
+        if isinstance(item, tuple):
+            node, node_comm = item[1], item[0].lower()
+        else:
+            node, node_comm = item, None
+        ind_list = comm_node_plan.get((node_comm.upper() if node_comm else None, node), g.get(node, []))
         html, cids, n, comm_id = build_node(node, ind_list, meta, comm_only)
         if html is None:
             print("  ⚠️  %-8s 跳过（数据不足，%d 指标）" % (node, len(ind_list)))

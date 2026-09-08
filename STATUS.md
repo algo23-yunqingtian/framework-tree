@@ -114,6 +114,14 @@
 - **页脚版本碎片化**：v1.9~v3.63 共 23 种版本混存（历史批次不同步），check_html 对版本校验宽松不阻塞，暂不强制统一重建
 - 门禁最终：check_html **240/240** ✅ + verify_render **240/240** ALL PASS ✅ + reclaim 11/12（唯一 FAIL 为历史 merge 提交 d625cad 无前缀，非本次引入）
 
+### 2026-09-08 主脑 — 串台根治第二轮：build引擎按品种过滤+门禁注册表全量同步
+- **根因**：`build_5m_batch.py` 的 `node_indicators()` 按节点聚合跨品种指标，`build_node` 只在 `comm_only` 不为 None 时过滤（CLI `--zn-only` 等）。无 `--zn-only` 时所有品种的指标混在一起，zn_4_3.html 会混入 ni 的库存指标
+- **修复**：`node_indicators()` 改为按品种×节点分组，`main()` 的 plan 改为 `(code, node)` 元组列表，每页只含该品种的指标
+- **效果**：主图串台 7→5 处（剩余为缺贴题指标的价格兜底）；辅助图串台 59→21 处（剩余为 cu/sn 之间铝指标残留 + ni/pb 交叉页，属合理交叉验证）
+- **重建**：142 页（五金属全品种），门禁注册表批量同步 check_html 73 条 + verify_render 36 条
+- 重建 overview 31 页 153/153
+- 门禁：check_html **240/240** ✅ + verify_render **240/240** ALL PASS ✅
+
 ### 2026-09-08 主脑 — 串台根治：freq大清洗+_nodes归一化+MAIN_METRIC全品种覆盖
 - **根因**：三道防线全部失效
   1. `infer_freq()` 逻辑 bug → 276 条 freq 误标为 daily（名字含「月」但标 daily）
