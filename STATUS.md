@@ -73,6 +73,16 @@
 
 ## 近期变更记录
 
+### 2026-09-09 主脑 — 周报指标框架树导入（205 条 / v3.76 / 可回退）
+- **背景**：另一台服务器的周报指标框架树归档（`algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md`，518 指标 / 6 品种 / 95% 匹配率，含框架树 JSON + 扁平 CSV + 344 图表分析 JSON）。经比对与 framework-tree 仅 28 条重叠，增量价值高（氧化铝 63 条、铝 48、镍与不锈钢 39、锡 31、硅 35、碳酸锂 5）。
+- **回退锚点**：入库前已打 tag `PRE_WEEKLY_REPORT_IMPORT_20260909`（指向 e770ce8）+ 备份分支 `backup_pre_weekly_report_20260909`，另有本地备份 `data/indicators_v1.json.bak_pre_wr20260909`。**三层可回退**：`git reset --hard PRE_WEEKLY_REPORT_IMPORT_20260909`（彻底回退含版本号）或 `python3 scripts/remove_weekly_report_import.py --apply`（只删 wr* 键）。
+- **数据质量过滤（518 → 205，剔除 47 条）**：① 9 条周报自标错误匹配 ID；② 8 条硬错配（如「铝现货升贴水」配成氧化铝、「LME主要仓库注销仓单」配成镍、「锡净进口量」配成氧化铝）；③ 按 ID 去重（26 个重复，同一指标挂多个图表）；④ 6 条知几真名主品种不符；⑤ 7 条子类别不符（多晶硅/不锈钢/硫酸镍等）；⑥ 2 条知几查无此 ID；⑦ 3 条地理对立（「三网均价-山东」配成海外东澳FOB、「中国硫酸镍产量」配成印尼）。
+- **关键发现（周报数据缺陷）**：周报 `zhiji名称` 列被多候选污染——403 个有ID指标中 204 条的名称字段是 3-5 个候选指标拼在一起的（如「SMM: 铝杆产量 月度 SMMSMM: 铝棒产量 月度 SMMSMM: 铝箔产量…」），但 `zhiji_ID` 本身是可信的。**解法**：220 个去重 ID 全部用 `zhiji_api.py search <id>` 逐个查真名替换污染列，再校验品种/子类别/地区一致性。
+- **入库**：205 条写入 `data/indicators_v1.json`，全部用 `wr1`~`wr205` 独立命名空间（不碰任何既有键），每条带 `weekly_report_import` 元数据（variety/module/zhiji_name/source_file 等，便于批量移除与追溯）。其中 **192 条是我们未注册的净增量**，13 条与已有指标重叠（保留以补模块归属）。`verified` 统一保守标 `false`（未经 series 拉数验证），`unit` 留空待补。1308→1514 键，v3.75→v3.76，changelog 已记录。
+- **脚本**：`scripts/import_weekly_report_indicators.py`（可 dry-run，先备份再写入）、`scripts/remove_weekly_report_import.py`（逆操作，已验证可逆 1514→1309）。
+- **三道门禁全绿**：check_html 242/242 ✅ + reclaim PASS=12/FAIL=0 ✅（本次仅改 data/indicators_v1.json 与 scripts/，未动 HTML 页面，无需重建）。
+- **未做/后续**：氧化铝（AL-AX）与不锈钢链在我们 `tree_config.json` 里**没有独立品种节点**，这 48 条氧化铝指标目前是"有数据无归属"状态，需决定新增品种还是并入铝板块；`unit` 字段全空需补齐；`verified=false` 需后续 series 拉数验证后才能建页。
+
 ### 2026-09-09 主脑 — 锂缺口2页上线（li_3_1/li_3_3 Mysteel替代指标建页）
 - **背景**：交接文档 P2 锂缺口 14 页——实测锂已有 39 页 179 指标覆盖 33 节点，仅 3.1/3.3 两节点无页面（指标全为 SMM 源凭据失效不可用）。
 - **知几验证**：搜 Mysteel 源替代——锂辉石产量澳洲(ID01857198 季25点)、智利锂矿USGS(ID00299641 年8点)、锂辉石CIF均价(ID01722298 月36点)、锂进口广东(ID01487881 月89点)。

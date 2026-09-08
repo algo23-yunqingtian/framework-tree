@@ -18334,7 +18334,7 @@
     ],
     "_verified_by": "zhiji_series_reuse_20260908"
   },
-  "version": "v3.75",
+  "version": "v3.76",
   "change": "4.x非库存指标二次清洗(zn_43_premium/cu_44/cu_46/cu_47/ni_42_premium)",
   "_main_metric": {
     "ZN_2.1": "zn_21_close_main",
@@ -18636,5 +18636,5342 @@
     "_nodes": [
       "3.3"
     ]
-  }
+  },
+  "wr1": {
+    "name": "再生铝合金月产量",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a12856447"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "产量",
+      "indicator_no": "43",
+      "zhiji_name": "SMM: 中国再生铝合金产量: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr2": {
+    "name": "原生铝合金月产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a10181032"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "产量",
+      "indicator_no": "42",
+      "zhiji_name": "SMM: 原生铝合金产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr3": {
+    "name": "电解铝产量",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a12839418"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "产量",
+      "indicator_no": "37",
+      "zhiji_name": "SMM: 海外电解铝产量预测 - 非洲: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr4": {
+    "name": "铝型材月产量",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a10166705"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "产量",
+      "indicator_no": "39",
+      "zhiji_name": "SMM: 铝型材年产量: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr5": {
+    "name": "铝杆月产量",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a10166631"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "产量",
+      "indicator_no": "41",
+      "zhiji_name": "SMM: 铝杆产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr6": {
+    "name": "铝棒产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a12843072"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "产量",
+      "indicator_no": "38",
+      "zhiji_name": "SMM: 铝棒产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr7": {
+    "name": "A00升贴水-佛山",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "j00181985"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "价格",
+      "indicator_no": "03",
+      "zhiji_name": "SMM: A00铝（佛山）升贴水-月平均价: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr8": {
+    "name": "铝棒价格-包头",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "a12762880"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "价格",
+      "indicator_no": "74",
+      "zhiji_name": "SMM: 氟化铝出口价格: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr9": {
+    "name": "铝棒价格-广东",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "j00182087"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "价格",
+      "indicator_no": "75",
+      "zhiji_name": "SMM: φ150铝棒(广东) -平均价: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr10": {
+    "name": "铝棒价格-无锡",
+    "unit": "",
+    "freq": "unknown",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "a12802005"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "价格",
+      "indicator_no": "73",
+      "zhiji_name": "SMM: 无锡铝棒库存: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr11": {
+    "name": "铝棒价格-河南",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "j02767816"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "价格",
+      "indicator_no": "76",
+      "zhiji_name": "SMM: φ178铝棒(河南)-平均价: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr12": {
+    "name": "出口-未锻轧铝合金",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a12857063"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "出口",
+      "indicator_no": "52",
+      "zhiji_name": "中国海关: 中国未锻轧铝合金出口量分贸易方式: 合计: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr13": {
+    "name": "出口-铝制品",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a10167543"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "出口",
+      "indicator_no": "49",
+      "zhiji_name": "中国海关: 铝制品出口量_智利: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr14": {
+    "name": "铝材出口-北美",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a10015979"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "出口",
+      "indicator_no": "54",
+      "zhiji_name": "SMM: 铝材出口利润模型: 北美铝锭升水: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "截面柱状/饼图",
+      "chart_type": "截面",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr15": {
+    "name": "铝材出口-总量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a10096868"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "出口",
+      "indicator_no": "47",
+      "zhiji_name": "中国海关: 铝材出口总量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr16": {
+    "name": "电解铝生产利润",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL": "a12867227"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "利润",
+      "indicator_no": "23",
+      "zhiji_name": "SMM: 单吨废旧纯钴极片生产利润：提黑粉提铝粉: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr17": {
+    "name": "铝内外价差",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL": "a10021668"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "利润",
+      "indicator_no": "24",
+      "zhiji_name": "SMM: 国内外ADC12即时价差: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr18": {
+    "name": "铝材出口利润",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a10015965"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "利润",
+      "indicator_no": "25",
+      "zhiji_name": "SMM: 铝材出口利润模型: 港杂费: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr19": {
+    "name": "铝板带出口利润",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a10015974"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "利润",
+      "indicator_no": "26",
+      "zhiji_name": "SMM: 电解铝出口利润模型: 铝板带出口利润: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr20": {
+    "name": "1A60铝杆加工费-内蒙",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL": "a12818828"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "加工费",
+      "indicator_no": "80",
+      "zhiji_name": "SMM: 铝杆开工率: 内蒙古: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr21": {
+    "name": "1A60铝杆加工费-山东",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL": "j00181674"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "加工费",
+      "indicator_no": "79",
+      "zhiji_name": "SMM: 1A60铝杆加工费(广东) -平均价: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr22": {
+    "name": "低碳1系双零箔加工费",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL": "a10015985"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "加工费",
+      "indicator_no": "77",
+      "zhiji_name": "SMM: 铝材出口利润模型: 铝箔加工费: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr23": {
+    "name": "电解铝:社库",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL": "a12858085"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "库存",
+      "indicator_no": "31",
+      "zhiji_name": "SMM:国内电解铝平衡:社会库存变化:月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr24": {
+    "name": "电解铝:社库+厂库",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL": "a12858086"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "库存",
+      "indicator_no": "32",
+      "zhiji_name": "SMM:国内电解铝平衡:库存变化:月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr25": {
+    "name": "铝板带箔-原料库存",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL": "a10016361"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "库存",
+      "indicator_no": "35",
+      "zhiji_name": "SMM: 铝板带箔企业月度原料库存比: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr26": {
+    "name": "铝板带箔-成品库存",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL": "a10016360"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "库存",
+      "indicator_no": "36",
+      "zhiji_name": "SMM: 铝板带箔企业月度成品库存比: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr27": {
+    "name": "铝棒+铝锭总库存",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL": "j02798968"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "库存",
+      "indicator_no": "29",
+      "zhiji_name": "SMM: 铝锭三地库存合计: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr28": {
+    "name": "铝棒+铝锭社库",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL": "a10166772"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "库存",
+      "indicator_no": "28",
+      "zhiji_name": "SMM: 电解铝锭社会库存总计: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr29": {
+    "name": "铝杆开工率",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a10166632"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "开工",
+      "indicator_no": "70",
+      "zhiji_name": "SMM: 铝杆开工率: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr30": {
+    "name": "铝水比例",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a10148397"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "开工",
+      "indicator_no": "69",
+      "zhiji_name": "SMM: 宁夏铝水比例: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr31": {
+    "name": "铝溢价连一合约",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "j00182041"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "期货",
+      "indicator_no": "20",
+      "zhiji_name": "SMM: 洋山铝溢价（仓单）-月平均价: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr32": {
+    "name": "LME持仓情况",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "a12859510"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "期货",
+      "indicator_no": "14",
+      "zhiji_name": "LME: 铝: 持仓量增减: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr33": {
+    "name": "LME铝",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "a10172047"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "期货",
+      "indicator_no": "11",
+      "zhiji_name": "SMM: LME铝升贴水: 美国: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr34": {
+    "name": "LME铝0-3M价差",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "a12841095"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "期货",
+      "indicator_no": "12",
+      "zhiji_name": "SMM: LME/COMEX铝价差: 连七合约: 收盘价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr35": {
+    "name": "LME铝远月月差3-15",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "j02797778"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "期货",
+      "indicator_no": "13",
+      "zhiji_name": "LME: 铝3-15: 升贴水: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr36": {
+    "name": "SHFE铝连一-连二",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL": "j02843324"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "期货",
+      "indicator_no": "08",
+      "zhiji_name": "SMM: 镁铝价差（月均值）: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr37": {
+    "name": "铝终端消费",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "demand",
+    "ids": {
+      "AL": "a12802370"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "消费",
+      "indicator_no": "46",
+      "zhiji_name": "SMM: 铝合金平衡: 终端消费量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "5",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr38": {
+    "name": "废铝进口总量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a12867627"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "进口",
+      "indicator_no": "62",
+      "zhiji_name": "SMM: 英国废铝进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr39": {
+    "name": "未锻轧铝进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a12857053"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "进口",
+      "indicator_no": "60",
+      "zhiji_name": "中国海关: 中国未锻轧铝合金进口量分贸易方式: 其他: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr40": {
+    "name": "铝合金进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a12857054"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "进口",
+      "indicator_no": "61",
+      "zhiji_name": "中国海关: 中国未锻轧铝合金进口量分贸易方式: 合计: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr41": {
+    "name": "铝材进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "j02870475"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "进口",
+      "indicator_no": "57",
+      "zhiji_name": "中国海关: 铝材进口量总计环比: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr42": {
+    "name": "铝材进口量-铝箔",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a12854805"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "进口",
+      "indicator_no": "59",
+      "zhiji_name": "泰国海关: 泰国铝箔（厚度 ≤ 0.2 mm）进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr43": {
+    "name": "乘用车产量-当月",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL": "a12870653"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "需求",
+      "indicator_no": "84",
+      "zhiji_name": "CAAM: 中国乘用车产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr44": {
+    "name": "乘用车批发销量-当月",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "demand",
+    "ids": {
+      "AL": "a12805240"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "需求",
+      "indicator_no": "83",
+      "zhiji_name": "SMM: 中国新能源乘用车批发量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr45": {
+    "name": "乘用车零售量-当月",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "demand",
+    "ids": {
+      "AL": "a12805242"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "需求",
+      "indicator_no": "82",
+      "zhiji_name": "SMM: 中国新能源乘用车零售量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr46": {
+    "name": "光伏新增月装机容量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "demand",
+    "ids": {
+      "AL": "a12857935"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "需求",
+      "indicator_no": "89",
+      "zhiji_name": "SMM:全球光伏新增装机容量:中国:月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr47": {
+    "name": "新能源乘用车出口量-当月",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL": "a12796187"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "需求",
+      "indicator_no": "86",
+      "zhiji_name": "SMM: 中国新能源汽车销量: 出口: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr48": {
+    "name": "新能源乘用车销量-累计",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "demand",
+    "ids": {
+      "AL": "a12775659"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "铝",
+      "module": "需求",
+      "indicator_no": "81",
+      "zhiji_name": "SMM: 新能源乘用车销量-个人用户-湖南: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr49": {
+    "name": "组件月度产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12842708"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "组件",
+      "indicator_no": "61",
+      "zhiji_name": "SMM: 企业境外组件产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr50": {
+    "name": "氧化铝建成产能",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a12839415"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "产能",
+      "indicator_no": "55",
+      "zhiji_name": "SMM: 海外氧化铝产能预测 - 合计: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr51": {
+    "name": "氧化铝运行产能",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a12839459"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "产能",
+      "indicator_no": "52",
+      "zhiji_name": "SMM: 氧化铝运行产能: 合计: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr52": {
+    "name": "SMM中国氧化铝月度产量-山东",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a12792935"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "产量",
+      "indicator_no": "60",
+      "zhiji_name": "SMM: 氧化铝产量: 山东: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr53": {
+    "name": "SMM中国氧化铝月度产量-总量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10096752"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "产量",
+      "indicator_no": "57",
+      "zhiji_name": "SMM: 氧化铝产量预测: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr54": {
+    "name": "阿拉丁氧化铝产量-总计",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10180335"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "产量",
+      "indicator_no": "58",
+      "zhiji_name": "USGS: 氧化铝产量_总计: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr55": {
+    "name": "三网均价-内蒙古",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12839458"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "09",
+      "zhiji_name": "SMM: 氧化铝运行产能: 内蒙古: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr56": {
+    "name": "三网均价-山西",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12862476"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "05",
+      "zhiji_name": "SMM: 氧化铝成本结构: 山西_铝土矿成本 - 含税: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr57": {
+    "name": "三网均价-广西",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12807547"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "07",
+      "zhiji_name": "SMM: 广西氧化铝利润模型（国产矿产能）: 氧化铝-平均价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr58": {
+    "name": "三网均价-河南",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12862359"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "04",
+      "zhiji_name": "SMM: 氧化铝成本结构: 河南_铝土矿成本 - 含税: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr59": {
+    "name": "三网均价-贵州",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12820601"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "08",
+      "zhiji_name": "SMM: 氧化铝开工率: 贵州: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr60": {
+    "name": "印尼氧化铝FOB",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12751079"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "03",
+      "zhiji_name": "SMM: 海外氧化铝产量 - 印尼: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr61": {
+    "name": "氧化铝(河南)平均价",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12767887"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "37",
+      "zhiji_name": "SMM: 河南氧化铝利润模型（国产矿产能): 氧化铝-平均价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr62": {
+    "name": "氧化铝现货vs长协价格",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12804835"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "价格",
+      "indicator_no": "11",
+      "zhiji_name": "SMM: 2024: 铝产业价格链预测模型: 中国氧化铝价格: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr63": {
+    "name": "氧化铝利润",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL-AX": "a12807545"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "利润",
+      "indicator_no": "34",
+      "zhiji_name": "SMM: 广西氧化铝利润模型（国产矿产能）: 现金成本: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr64": {
+    "name": "河南国产矿现金流利润",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL-AX": "a12807548"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "利润",
+      "indicator_no": "39",
+      "zhiji_name": "SMM: 广西氧化铝利润模型（国产矿产能）: 利润: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr65": {
+    "name": "期货库存-氧化铝",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12797881"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "48",
+      "zhiji_name": "SHFE: 氧化铝: 库存周报分地区_广西: 库存增减期货: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr66": {
+    "name": "期货库存-氧化铝-山东",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12756237"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "50",
+      "zhiji_name": "SMM: 电解铝厂氧化铝库存天数: 山东: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr67": {
+    "name": "期货库存-氧化铝-新疆",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12717325"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "49",
+      "zhiji_name": "SHFE: 氧化铝: 库存周报分地区_新疆: 库存增减期货: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr68": {
+    "name": "氧化铝库存-钢联",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12818113"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "44",
+      "zhiji_name": "SMM: 全国氧化铝厂氧化铝库存量: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr69": {
+    "name": "氧化铝站台/在途库存-钢联",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12857834"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "47",
+      "zhiji_name": "SMM:中国氧化铝在途&站台堆积:库存量:周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr70": {
+    "name": "氧化铝库存-阿拉丁-总计",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12756244"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "41",
+      "zhiji_name": "SMM: 电解铝厂氧化铝库存: 重庆: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr71": {
+    "name": "氧化铝库存-阿拉丁-氧化铝厂",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12811637"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "43",
+      "zhiji_name": "SMM: 全国氧化铝厂内铝土矿库存总量: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr72": {
+    "name": "电解铝厂库存-钢联",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12756217"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "库存",
+      "indicator_no": "45",
+      "zhiji_name": "SMM: 电解铝厂氧化铝库存天数: 宁夏: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr73": {
+    "name": "氧化铝开工率",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a12751068"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "开工",
+      "indicator_no": "53",
+      "zhiji_name": "SMM: 海外氧化铝开工率 - 欧洲（除俄罗斯）: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr74": {
+    "name": "氧化铝(河南)完全成本",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "AL-AX": "a12767886"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "成本",
+      "indicator_no": "36",
+      "zhiji_name": "SMM: 河南氧化铝利润模型（国产矿产能): 完全成本: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr75": {
+    "name": "与前一合约价差",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12841653"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "盘面",
+      "indicator_no": "27",
+      "zhiji_name": "SMM: 氧化铝期现价差: 连七合约: 开盘价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr76": {
+    "name": "氧化铝AO盘面结构",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "AL-AX": "a12726287"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "盘面",
+      "indicator_no": "26",
+      "zhiji_name": "SMM: 铝_氧化铝无风险套利利润模型: 期货主力11: 30收盘价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr77": {
+    "name": "铝土矿产量-河南-SMM",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016226"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "81",
+      "zhiji_name": "SMM: 铝土矿产量: 河南: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr78": {
+    "name": "国产铝土矿-华南-低品(广西)",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "other",
+    "ids": {
+      "AL-AX": "a12862360"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿价",
+      "indicator_no": "17",
+      "zhiji_name": "SMM: 氧化铝成本结构: 广西_铝土矿成本 - 含税: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr79": {
+    "name": "国产铝土矿-华南-低品(贵州)",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "other",
+    "ids": {
+      "AL-AX": "a12862475"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿价",
+      "indicator_no": "19",
+      "zhiji_name": "SMM: 氧化铝成本结构: 贵州_铝土矿成本 - 含税: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr80": {
+    "name": "铝土矿产量-广西-百川",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016234"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "86",
+      "zhiji_name": "SMM: 铝土矿产量: 广西: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr81": {
+    "name": "铝土矿产量-贵州-百川",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016231"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "87",
+      "zhiji_name": "SMM: 铝土矿产量: 贵州: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr82": {
+    "name": "铝土矿海外-几内亚CIF",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "other",
+    "ids": {
+      "AL-AX": "a12798724"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿价",
+      "indicator_no": "22",
+      "zhiji_name": "SMM:  海外铝土矿产量: 几内亚: 季度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr83": {
+    "name": "几内亚矿业部周度出口-AGB2A",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10167783"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "97",
+      "zhiji_name": "中国海关: 铝土矿进口量: 几内亚: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr84": {
+    "name": "到港量-海关-几内亚",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016313"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "96",
+      "zhiji_name": "中国海关: 铝土矿进口均价: 几内亚: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr85": {
+    "name": "港口库存-合计-SMM",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12790695"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "72",
+      "zhiji_name": "SMM: 铝土矿港口库存-合计: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr86": {
+    "name": "港口库存-百川",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a12811636"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "69",
+      "zhiji_name": "SMM: 全国氧化铝厂内铝土矿库存天数: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr87": {
+    "name": "铝土矿产量-云南-百川",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016227"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "88",
+      "zhiji_name": "SMM: 铝土矿产量: 云南: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr88": {
+    "name": "铝土矿产量-合计-百川",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016229"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "83",
+      "zhiji_name": "SMM: 铝土矿产量: 全国总计: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr89": {
+    "name": "铝土矿产量-山西-SMM",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016225"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "78",
+      "zhiji_name": "SMM: 铝土矿产量: 山西: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr90": {
+    "name": "铝土矿产量-重庆-SMM",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016233"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "80",
+      "zhiji_name": "SMM: 铝土矿产量: 重庆: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr91": {
+    "name": "铝土矿到港量-曹妃甸港",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10118264"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "76",
+      "zhiji_name": "沸腾环贸: 铝土矿到港: 曹妃甸港: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr92": {
+    "name": "铝土矿到港量-烟台港",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10118270"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "74",
+      "zhiji_name": "沸腾环贸: 铝土矿到港: 烟台港: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr93": {
+    "name": "铝土矿到港量-青岛港",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10118268"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "75",
+      "zhiji_name": "沸腾环贸: 铝土矿到港: 青岛港: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr94": {
+    "name": "铝土矿库存-河南-SMM",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "AL-AX": "a10015882"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "66",
+      "zhiji_name": "SMM: 氧化铝厂铝土矿库存: 河南: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr95": {
+    "name": "铝土矿进口-总量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "AL-AX": "a10016324"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "矿端",
+      "indicator_no": "89",
+      "zhiji_name": "中国海关: 铝土矿进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr96": {
+    "name": "氧化铝出口",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL-AX": "a12811614"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "进出口",
+      "indicator_no": "61",
+      "zhiji_name": "中国海关: 氧化铝出口量_印度: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr97": {
+    "name": "氧化铝进口",
+    "unit": "",
+    "freq": "quarterly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "AL-AX": "a10179227"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "氧化铝",
+      "module": "进出口",
+      "indicator_no": "62",
+      "zhiji_name": "美国海关: 美国氧化铝进口量: 总计: 季度",
+      "zhiji_source": "smm",
+      "freq_report": "季",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr98": {
+    "name": "电池级碳酸锂 现货价格",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "LI": "ID01551919"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "碳酸锂",
+      "module": "价格",
+      "indicator_no": "01",
+      "zhiji_name": "碳酸锂：电池级：Li2CO3≥99.5%：早盘市场价格：中国（日）",
+      "zhiji_source": "mysteel",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "verified",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr99": {
+    "name": "碳酸锂 主力合约 收盘价",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "LI": "FU00050085"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "碳酸锂",
+      "module": "价格",
+      "indicator_no": "07",
+      "zhiji_name": "GFEX：碳酸锂：主力合约：结算价（日）",
+      "zhiji_source": "mysteel",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "verified",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr100": {
+    "name": "碳酸锂 升贴水 低幅",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "LI": "a12795869"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "碳酸锂",
+      "module": "价格",
+      "indicator_no": "09",
+      "zhiji_name": "SMM: 碳酸锂贸易市场对主力合约升贴水低幅: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "verified",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr101": {
+    "name": "碳酸锂 升贴水 高幅",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "LI": "a12795870"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "碳酸锂",
+      "module": "价格",
+      "indicator_no": "08",
+      "zhiji_name": "SMM: 碳酸锂贸易市场对主力合约升贴水高幅: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "verified",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr102": {
+    "name": "碳酸锂 月度进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "LI": "a10006557"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "碳酸锂",
+      "module": "进出口",
+      "indicator_no": "56",
+      "zhiji_name": "SMM: 碳酸锂供需平衡: 进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "verified",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr103": {
+    "name": "LME官方三月价",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SN": "a10147859"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "价格",
+      "indicator_no": "02",
+      "zhiji_name": "SMM: 进口盈亏: 锡: 现货: LME价格: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "月度时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr104": {
+    "name": "LME锡升贴水",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SN": "j02797784"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "价格",
+      "indicator_no": "04",
+      "zhiji_name": "LME: 锡3-15: 升贴水: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr105": {
+    "name": "沪锡价格走势",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SN": "a12841487"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "价格",
+      "indicator_no": "01",
+      "zhiji_name": "SMM: 沪锡期现价差: 连一合约: 开盘价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr106": {
+    "name": "沪锡总持仓量",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SN": "a10177562"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "价格",
+      "indicator_no": "08",
+      "zhiji_name": "SHFE: 锡: 九月合约: 持仓量: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr107": {
+    "name": "沪锡近半年月差变化",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SN": "a12841510"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "价格",
+      "indicator_no": "09",
+      "zhiji_name": "SMM: 沪锡期现价差: 连七合约: 开盘价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr108": {
+    "name": "锡沪伦比",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SN": "a10156329"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "价格",
+      "indicator_no": "07",
+      "zhiji_name": "SMM: 沪伦比值: 锡: 现货: 最新价: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "月度时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr109": {
+    "name": "锡锭进口利润",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a12764415"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "价格",
+      "indicator_no": "06",
+      "zhiji_name": "马来西亚海关: 锡锭进口量: 总计: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr110": {
+    "name": "国内智能手机产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a12775740"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "半导体",
+      "indicator_no": "38",
+      "zhiji_name": "NBS: 智能手机产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr111": {
+    "name": "国内集成电路产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a12755977"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "半导体",
+      "indicator_no": "39",
+      "zhiji_name": "NBS: 中国集成电路产量: 环比: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr112": {
+    "name": "LME库存变化",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SN": "a10006435"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "库存",
+      "indicator_no": "16",
+      "zhiji_name": "LME: 锡_显性库存变化: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr113": {
+    "name": "中国锡锭社会库存",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SN": "a10020743"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "库存",
+      "indicator_no": "13",
+      "zhiji_name": "SMM: 锡锭社会库存: 上海: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr114": {
+    "name": "锡全球显性库存变化",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SN": "a12731428"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "库存",
+      "indicator_no": "10",
+      "zhiji_name": "LME: 锡: 显性库存变化: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr115": {
+    "name": "印尼交易所锡锭成交量",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "other",
+    "ids": {
+      "SN": "a12755119"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "海外",
+      "indicator_no": "32",
+      "zhiji_name": "JFX,ICDX: 锡锭_印尼交易所成交量-每日成交量: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr116": {
+    "name": "印尼精炼锡出口量变化",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a12820786"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "海外",
+      "indicator_no": "31",
+      "zhiji_name": "印尼统计局: 锡锭出口金额: JAMBI:TURKEY: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr117": {
+    "name": "巴西精炼锡出口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a12840345"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "海外",
+      "indicator_no": "35",
+      "zhiji_name": "SMM: 锡锭巴西出口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr118": {
+    "name": "马来西亚精炼锡出口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a10099477"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "海外",
+      "indicator_no": "34",
+      "zhiji_name": "中国海关: 精炼锡出口量_马来西亚: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr119": {
+    "name": "国内锡矿进口量",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a12764410"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "矿端",
+      "indicator_no": "19",
+      "zhiji_name": "马来西亚海关: 锡矿进口量-总计: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr120": {
+    "name": "国内锡矿产量",
+    "unit": "",
+    "freq": "quarterly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a10118248"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "矿端",
+      "indicator_no": "18",
+      "zhiji_name": "SMM: MetalsX公司锡矿产量_矿石产量: 季度",
+      "zhiji_source": "smm",
+      "freq_report": "季",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr121": {
+    "name": "刚果进口至我国锡矿量",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a12764408"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "矿端",
+      "indicator_no": "23",
+      "zhiji_name": "马来西亚海关: 锡矿进口量-刚果（布）: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr122": {
+    "name": "缅甸进口至我国锡矿量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a10154831"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "矿端",
+      "indicator_no": "21",
+      "zhiji_name": "SMM: 预估从缅甸进口锡矿量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr123": {
+    "name": "印度锡净进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a12840355"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "进出口",
+      "indicator_no": "49",
+      "zhiji_name": "SMM: 锡锭印度进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr124": {
+    "name": "美国锡净进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a12840346"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "进出口",
+      "indicator_no": "46",
+      "zhiji_name": "SMM: 锡锭美国进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr125": {
+    "name": "韩国锡净进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a10173520"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "进出口",
+      "indicator_no": "48",
+      "zhiji_name": "韩国海关: 锡矿进口量: 泰国: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr126": {
+    "name": "中国精炼锡进口量变化",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a12749487"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "锭端",
+      "indicator_no": "29",
+      "zhiji_name": "中国海关: 精炼锡进口量_秘鲁: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr127": {
+    "name": "国内再生锡产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a12731582"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "锭端",
+      "indicator_no": "25",
+      "zhiji_name": "SMM: 国内精炼锡再生产量-预测值: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr128": {
+    "name": "国内锡开工率",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a10113278"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "锭端",
+      "indicator_no": "26",
+      "zhiji_name": "SMM: 精炼锡_云南开工率: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr129": {
+    "name": "国内锡锭产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a12731583"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "锭端",
+      "indicator_no": "24",
+      "zhiji_name": "SMM: 国内精炼锡产量-预测值: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr130": {
+    "name": "锡冶炼利润",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a10167093"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "锭端",
+      "indicator_no": "28",
+      "zhiji_name": "SMM: 国内锡市平衡（新）: 冶炼企业厂库库存: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr131": {
+    "name": "锡冶炼厂加工费",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a10000748"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "锭端",
+      "indicator_no": "27",
+      "zhiji_name": "SMM: 锡精矿加工费_江西60%: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr132": {
+    "name": "国内初级锡材产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SN": "a12810889"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "需求",
+      "indicator_no": "37",
+      "zhiji_name": "SMM: 锡材成品库存天数: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr133": {
+    "name": "国内贸易商成交量统计",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SN": "a12755120"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "锡",
+      "module": "需求",
+      "indicator_no": "36",
+      "zhiji_name": "JFX,ICDX: 锡锭_月累计成交量: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr134": {
+    "name": "中国工业硅周度产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12804276"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "产量",
+      "indicator_no": "25",
+      "zhiji_name": "SMM: 工业硅平衡新（按照下游消费算）-预测值: 工业硅产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr135": {
+    "name": "周产量-金属硅-云南",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12752860"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "产量",
+      "indicator_no": "27",
+      "zhiji_name": "SMM: 金属硅产量分省份预测值: 云南: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr136": {
+    "name": "周产量-金属硅-四川",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12752858"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "产量",
+      "indicator_no": "28",
+      "zhiji_name": "SMM: 金属硅产量分省份下月预测值: 四川: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr137": {
+    "name": "周产量-金属硅-新疆",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12752859"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "产量",
+      "indicator_no": "26",
+      "zhiji_name": "SMM: 金属硅产量分省份预测值: 新疆: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr138": {
+    "name": "工业硅价格-421#(昆明)",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SI": "a10154493"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "价格",
+      "indicator_no": "01",
+      "zhiji_name": "GFEX: 工业硅: 连四合约: 昨结算价格: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr139": {
+    "name": "新疆工业硅价格(SMM)",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SI": "a12842790"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "价格",
+      "indicator_no": "05",
+      "zhiji_name": "GFEX: 工业硅: 仓单日报_新疆戈恩斯: 增减: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr140": {
+    "name": "工业硅开炉情况",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12795315"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "供应",
+      "indicator_no": "21",
+      "zhiji_name": "SMM: 西北工业硅调研样本开工率: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr141": {
+    "name": "金属硅月度出口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "SI": "a12851045"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "出口",
+      "indicator_no": "62",
+      "zhiji_name": "SMM: 硅产业链价格: 中国金属硅净出口量-预测值: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr142": {
+    "name": "单晶电池片价格",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SI": "a10148778"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "43",
+      "zhiji_name": "中国海关: 光伏电池片出口额: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr143": {
+    "name": "多晶硅下月预计产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12731896"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "47",
+      "zhiji_name": "SMM: 多晶硅平衡表-预测值: 产量: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr144": {
+    "name": "多晶硅产能",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "j02799420"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "48",
+      "zhiji_name": "SMM: 多晶硅产能: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr145": {
+    "name": "多晶硅产量",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12853285"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "44",
+      "zhiji_name": "CPIA: 全国多晶硅产量: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr146": {
+    "name": "多晶硅价格-N型硅料",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SI": "a10102027"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "40",
+      "zhiji_name": "SMM: 硅产业链价格: 多晶硅致密料价格: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr147": {
+    "name": "多晶硅区域库存",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a12862948"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "59",
+      "zhiji_name": "广期所: 多晶硅库存: 分仓库: 杭州正才(中物流(石河子)): 晶诺: 增减: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr148": {
+    "name": "多晶硅开工率",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12749973"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "45",
+      "zhiji_name": "SMM: 海外多晶硅开工率: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr149": {
+    "name": "硅片价格-N型182mm",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SI": "a12857855"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "41",
+      "zhiji_name": "SMM:N型TOPCon210R组件成本:硅片利润:日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr150": {
+    "name": "硅片企业多晶硅库存",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a12810890"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "多晶硅",
+      "indicator_no": "60",
+      "zhiji_name": "SMM: 硅片企业多晶硅库存: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr151": {
+    "name": "多晶硅供需平衡",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "balance",
+    "ids": {
+      "SI": "a12809815"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "平衡",
+      "indicator_no": "63",
+      "zhiji_name": "SMM: 全球多晶硅供需平衡表: 需求量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr152": {
+    "name": "SMM-云南样本周度库存",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a10157304"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "库存",
+      "indicator_no": "15",
+      "zhiji_name": "SMM: 云南样本库存: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr153": {
+    "name": "SMM-四川样本周度库存",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a12812951"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "库存",
+      "indicator_no": "13",
+      "zhiji_name": "SMM: 四川样本库存（大）: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr154": {
+    "name": "工业硅显性总库存",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a12862942"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "库存",
+      "indicator_no": "12",
+      "zhiji_name": "广期所: 工业硅库存: 分仓库: 物产中大资本(云铝物流): 增减: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr155": {
+    "name": "工业硅社会库存(SMM)",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a12811428"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "库存",
+      "indicator_no": "11",
+      "zhiji_name": "SMM: 下游原料工业硅库存: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr156": {
+    "name": "金属硅社会库存-昆明",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a10020032"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "库存",
+      "indicator_no": "18",
+      "zhiji_name": "SMM: 金属硅社会库存: 昆明: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr157": {
+    "name": "金属硅社会库存-天津港",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a10020033"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "库存",
+      "indicator_no": "17",
+      "zhiji_name": "SMM: 金属硅社会库存: 天津港: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr158": {
+    "name": "工业硅成本",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "SI": "j02803954"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "成本",
+      "indicator_no": "07",
+      "zhiji_name": "SMM: 工业硅: 成交量: 总计: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr159": {
+    "name": "DMC全国开工率",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a10154946"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "有机硅",
+      "indicator_no": "35",
+      "zhiji_name": "SMM: 有机硅DMC开工率: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr160": {
+    "name": "DMC利润",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "SI": "a12767872"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "有机硅",
+      "indicator_no": "30",
+      "zhiji_name": "SMM: 有机硅DMC行业平均利润: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr161": {
+    "name": "DMC华东价格",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "SI": "a12868406"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "有机硅",
+      "indicator_no": "29",
+      "zhiji_name": "SMM: 有机硅DMC产量-同比: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr162": {
+    "name": "DMC周度产量",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12868407"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "有机硅",
+      "indicator_no": "36",
+      "zhiji_name": "SMM: 有机硅聚硅氧烷供需平衡: DMC产量: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr163": {
+    "name": "DMC工厂库存",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "SI": "a12753886"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "有机硅",
+      "indicator_no": "31",
+      "zhiji_name": "SMM: 有机硅聚硅氧烷库存: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr164": {
+    "name": "DMC行业成本",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "SI": "a12767871"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "有机硅",
+      "indicator_no": "34",
+      "zhiji_name": "SMM: 有机硅DMC行业平均成本: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr165": {
+    "name": "硅片周度产量",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a12853286"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "硅片",
+      "indicator_no": "54",
+      "zhiji_name": "CPIA: 全国硅片产量: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr166": {
+    "name": "硅片开工率",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a10169445"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "硅片",
+      "indicator_no": "55",
+      "zhiji_name": "SMM: 硅片开工率: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr167": {
+    "name": "硅片预测月度产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "SI": "a10169448"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "硅产业链",
+      "module": "硅片",
+      "indicator_no": "57",
+      "zhiji_name": "SMM: 硅片预测产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr168": {
+    "name": "不锈钢产量：300系（印尼）",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "NI": "a12748709"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "产量",
+      "indicator_no": "64",
+      "zhiji_name": "SMM: 中国及印尼不锈钢产量: 300系-预测值: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr169": {
+    "name": "中国高碳铬铁产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "NI": "a10031455"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "产量",
+      "indicator_no": "55",
+      "zhiji_name": "SMM: 高碳铬铁产量分地区: 四川: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr170": {
+    "name": "印尼冰镍产量（高冰镍+低冰镍）",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "NI": "a10193624"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "产量",
+      "indicator_no": "32",
+      "zhiji_name": "SMM: 印尼高冰镍产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr171": {
+    "name": "印尼精炼镍产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "NI": "a12870400"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "产量",
+      "indicator_no": "18",
+      "zhiji_name": "SMM: 印尼精炼镍产量: 原料来源: 高冰镍: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr172": {
+    "name": "印尼镍铁产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "NI": "a10181176"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "产量",
+      "indicator_no": "57",
+      "zhiji_name": "印尼海关: 镍铁出口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr173": {
+    "name": "LME C-3M升贴水",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "j02797787"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价差",
+      "indicator_no": "01",
+      "zhiji_name": "LME: 镍3-27: 升贴水: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr174": {
+    "name": "上期所不锈钢月间结构",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "a10026463"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价差",
+      "indicator_no": "06",
+      "zhiji_name": "SHFE: 不锈钢期货主力合约10: 30价格: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "截面柱状/饼图",
+      "chart_type": "截面",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr175": {
+    "name": "镍豆升贴水",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "a10098378"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价差",
+      "indicator_no": "07",
+      "zhiji_name": "SMM: 镍豆内贸现货升贴水: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr176": {
+    "name": "三元正极价格",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "a12775413"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "14",
+      "zhiji_name": "中国海关: NCM 正极材料出口量: 日本: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr177": {
+    "name": "不锈钢现货基价：无锡",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "a10019183"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "44",
+      "zhiji_name": "SMM: 304不锈钢冷轧卷价格: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr178": {
+    "name": "印尼镍矿价格（HPM 1.6%）",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "a12854374"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "48",
+      "zhiji_name": "SMM: 印尼镍矿1.2%湿法成本: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr179": {
+    "name": "纯镍价格",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "a10000206"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "04",
+      "zhiji_name": "SMM: 电解镍进口盈亏（沪伦价格差）: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": false,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr180": {
+    "name": "菲律宾镍矿价格：不同品味",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "j00182524"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "46",
+      "zhiji_name": "SMM: 菲律宾红土镍矿0.9%,Al<7%(CIF) -平均价: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr181": {
+    "name": "铬矿价格：不同品味",
+    "unit": "",
+    "freq": "annual",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "a12859201"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "51",
+      "zhiji_name": "SMM: 铬矿全球供需平衡: 南非铬铁对矿需求: 年度",
+      "zhiji_source": "smm",
+      "freq_report": "年",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr182": {
+    "name": "高碳铬铁价格（内蒙古）",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "j00182500"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "53",
+      "zhiji_name": "SMM: 内蒙古高碳铬铁价格-平均价: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr183": {
+    "name": "高碳铬铁价格（钢招价格）",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "price",
+    "ids": {
+      "NI": "j00123176"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "价格",
+      "indicator_no": "54",
+      "zhiji_name": "SMM: 全国高碳铬铁平均价格: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr184": {
+    "name": "MHP钴折扣系数",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "NI": "j00182985"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "利润",
+      "indicator_no": "11",
+      "zhiji_name": "SMM: MHP钴元素计价系数（对SMM硫酸钴均价）-平均价: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr185": {
+    "name": "MHP镍折扣系数",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "cost",
+    "ids": {
+      "NI": "a10192599"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "利润",
+      "indicator_no": "10",
+      "zhiji_name": "SMM: MHP对LME系数: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr186": {
+    "name": "LME镍库存",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a10018376"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "27",
+      "zhiji_name": "LME: LME镍库存分仓库: 釜山: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "截面柱状/饼图",
+      "chart_type": "截面",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr187": {
+    "name": "LME镍库存分布：仓库",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a10018441"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "25",
+      "zhiji_name": "LME: LME镍库存分仓库: 仁川: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "截面柱状/饼图",
+      "chart_type": "截面",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr188": {
+    "name": "LME镍库存分布：洲",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a10018568"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "24",
+      "zhiji_name": "LME: LME库存分型态: 镍板: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "截面柱状/饼图",
+      "chart_type": "截面",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr189": {
+    "name": "不锈钢库存：300系（总）",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a12805312"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "67",
+      "zhiji_name": "SHFE: 周库存: 不锈钢: 分仓库中储无锡: 可用库存容量增减: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr190": {
+    "name": "保税区库存",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a10148913"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "19",
+      "zhiji_name": "SMM: 保税区电解镍(板)_住友大板: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr191": {
+    "name": "沪镍仓单",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a12732396"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "20",
+      "zhiji_name": "LME: 镍: 注册仓单: 日度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr192": {
+    "name": "镍板库存",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a10018953"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "22",
+      "zhiji_name": "SMM: 纯镍社会库存: 国内镍板: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr193": {
+    "name": "镍社会库存",
+    "unit": "",
+    "freq": "weekly",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a10020774"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "21",
+      "zhiji_name": "SMM: 纯镍社会库存分地区: 上海: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "周",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr194": {
+    "name": "镍豆库存",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "inventory",
+    "ids": {
+      "NI": "a10018954"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "库存",
+      "indicator_no": "23",
+      "zhiji_name": "SMM: 纯镍社会库存: 国内镍豆: 周度",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr195": {
+    "name": "中国硫酸镍企业开工率",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "NI": "a12839552"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "开工",
+      "indicator_no": "31",
+      "zhiji_name": "SMM: 硫酸镍开工率-预测: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr196": {
+    "name": "不锈钢出口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "a12820603"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "62",
+      "zhiji_name": "印尼海关: 不锈钢出口量: 中国: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr197": {
+    "name": "不锈钢进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "a10018707"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "61",
+      "zhiji_name": "中国海关: 不锈钢出口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr198": {
+    "name": "中国冰镍进口量",
+    "unit": "",
+    "freq": "daily",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "j02857246"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "34",
+      "zhiji_name": "高镍生铁与进口镍铁价差",
+      "zhiji_source": "smm",
+      "freq_report": "日",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr199": {
+    "name": "中国电解镍净进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "a12864966"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "16",
+      "zhiji_name": "SMM: 电解镍进口量: 其他: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr200": {
+    "name": "中国硫酸镍出口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "a10099193"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "29",
+      "zhiji_name": "中国海关: 硫酸镍出口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr201": {
+    "name": "中国硫酸镍进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "a10128023"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "28",
+      "zhiji_name": "中国海关: 硫酸镍进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr202": {
+    "name": "镍铁进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "a10020781"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "59",
+      "zhiji_name": "中国海关: 镍铁进口量: 日本: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr203": {
+    "name": "高碳铬铁进口量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "trade",
+    "ids": {
+      "NI": "a10158279"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "进出口",
+      "indicator_no": "56",
+      "zhiji_name": "中国海关: 高碳铬铁进口量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "2",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr204": {
+    "name": "中国动力电池装车量：三元",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "demand",
+    "ids": {
+      "NI": "a12775594"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "需求",
+      "indicator_no": "36",
+      "zhiji_name": "SMM: 锂电池装机容量占比: 三元电池: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "wr205": {
+    "name": "新能源车产量",
+    "unit": "",
+    "freq": "monthly",
+    "verified": false,
+    "category": "supply",
+    "ids": {
+      "NI": "a12870637"
+    },
+    "weekly_report_import": {
+      "date": "2026-09-09",
+      "variety": "镍与不锈钢",
+      "module": "需求",
+      "indicator_no": "40",
+      "zhiji_name": "NBS: 中国新能源汽车产量: 月度",
+      "zhiji_source": "smm",
+      "freq_report": "月",
+      "pres": "时序折线",
+      "chart_type": "时序",
+      "legend_count": "1",
+      "is_seasonal": "否",
+      "report_status": "全匹配",
+      "is_new_to_ft": true,
+      "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md"
+    }
+  },
+  "changelog": [
+    {
+      "version": "v3.76",
+      "date": "2026-09-09",
+      "change": "导入周报指标框架树 205 条（来源: weekly-report-tree, 净增量 192 条, 已验证知几真名, 剔除47条问题数据）"
+    }
+  ]
 }
