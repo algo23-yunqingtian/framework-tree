@@ -11,7 +11,10 @@
 """
 import json, sys, os, shutil
 
-DST = '/home/ubuntu/framework-tree/data/indicators_v1.json'
+# 用仓库根目录相对路径，防止在 /tmp clone 里测试时误打主仓库
+import pathlib
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DST = str(ROOT / 'data/indicators_v1.json')
 DRY_RUN = '--apply' not in sys.argv
 
 def main():

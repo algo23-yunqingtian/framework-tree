@@ -83,6 +83,12 @@
 - **三道门禁全绿**：check_html 242/242 ✅ + reclaim PASS=12/FAIL=0 ✅（本次仅改 data/indicators_v1.json 与 scripts/，未动 HTML 页面，无需重建）。
 - **未做/后续**：氧化铝（AL-AX）与不锈钢链在我们 `tree_config.json` 里**没有独立品种节点**，这 48 条氧化铝指标目前是"有数据无归属"状态，需决定新增品种还是并入铝板块；`unit` 字段全空需补齐；`verified=false` 需后续 series 拉数验证后才能建页。
 
+### 2026-09-09 主脑 — 周报导入/移除脚本路径修复（防跨目录误操作）
+- **问题**：`import_weekly_report_indicators.py` / `remove_weekly_report_import.py` 的 `DST` 写死绝对路径 `/home/ubuntu/framework-tree/...`。回退演练时在 `/tmp/rb2/framework-tree` 隔离 clone 里跑移除脚本，**直接打到了主仓库**，把已入库的 205 条 wr* 指标删掉（文件从 1514 键掉到 1309）。实测触发 2 次。
+- **修复**：改用 `ROOT = pathlib.Path(__file__).resolve().parent.parent` + `DST = ROOT/'data/indicators_v1.json'` 相对推导，脚本永远只作用于自己所在的仓库。BAK 路径同步改为派生。
+- **数据恢复**：误删的指标用 `git checkout HEAD -- data/indicators_v1.json` 从 d79010e 完整恢复（1514 键 / 205 条 wr* / v3.76 确认无丢失），远端 d79010e 始终完好。
+- **教训**：演练类操作必须在**独立 clone 目录**内做 `git checkout <tag>`，不能在主工作区切 tag（会连带把工作区里未提交的脚本修复一起切走，导致后续步骤跑的还是旧版本）。
+
 ### 2026-09-09 主脑 — 锂缺口2页上线（li_3_1/li_3_3 Mysteel替代指标建页）
 - **背景**：交接文档 P2 锂缺口 14 页——实测锂已有 39 页 179 指标覆盖 33 节点，仅 3.1/3.3 两节点无页面（指标全为 SMM 源凭据失效不可用）。
 - **知几验证**：搜 Mysteel 源替代——锂辉石产量澳洲(ID01857198 季25点)、智利锂矿USGS(ID00299641 年8点)、锂辉石CIF均价(ID01722298 月36点)、锂进口广东(ID01487881 月89点)。

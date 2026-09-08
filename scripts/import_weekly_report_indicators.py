@@ -14,8 +14,11 @@ import json, sys, os, shutil, subprocess
 from datetime import date
 
 SRC = '/tmp/wr_extract/verified_final.jsonl'
-DST = '/home/ubuntu/framework-tree/data/indicators_v1.json'
-BAK = '/home/ubuntu/framework-tree/data/indicators_v1.json.bak_pre_wr20260909'
+# 用仓库根目录相对路径，防止在 /tmp clone 里测试时误打主仓库
+import pathlib
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DST = str(ROOT / 'data/indicators_v1.json')
+BAK = str(pathlib.Path(DST).with_suffix('.json.bak_pre_wr20260909'))
 CHANGED = '/tmp/wr_extract/import_changes.jsonl'
 DRY_RUN = '--apply' not in sys.argv
 
