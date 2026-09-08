@@ -2582,6 +2582,16 @@ PAGES = PAGES = PAGES = PAGES = {
 'label': '锂2.6持仓席位',
 'has_seasonal': False,
     },
+'li_31': {
+    'file': 'li_3_1.html',
+    'min_bytes': 9000,
+    'charts': 1,
+    'cids': [
+        'echart_li_31_c1',
+    ],
+    'label': '锂3.1海外矿产量',
+    'has_seasonal': False,
+},
 'li_311': {
 'file': 'li_3_1_1.html',
 'min_bytes': 12000,
@@ -2651,6 +2661,17 @@ PAGES = PAGES = PAGES = PAGES = {
 'label': '锂3.2.4冶炼利润',
 'has_seasonal': True,
     },
+'li_33': {
+    'file': 'li_3_3.html',
+    'min_bytes': 13000,
+    'charts': 2,
+    'cids': [
+        'echart_li_33_c1',
+        'echart_li_33_c2',
+    ],
+    'label': '锂3.3进口均价',
+    'has_seasonal': False,
+},
 'li_41': {
 'file': 'li_4_1.html',
 'min_bytes': 20000,
