@@ -243,6 +243,17 @@ def build_node(node, ind_list, meta, comm_only=None):
     if len(data) < 1:
         return None, [], 0, None
 
+    # 跨金属辅助声明：comm_only 过滤前记录跨品种指标（用于 NOTE 声明）
+    cross_var_inds = []
+    own_var = "cu"
+    other_var = "al"
+    if comm_only:
+        own_var = comm_only.lower()
+        for mid, code, name, unit, freq in ind_list:
+            mid_var = mid.split("_")[0] if "_" in mid else ""
+            if mid_var != own_var and mid in {x["mid"] for x in data}:
+                cross_var_inds.append(mid)
+
     # comm_only: 混合节点（如 2.3/2.4/2.5 铜铝指标共存）按品种分别建页，避免两品种互相覆盖。
     if comm_only:
         data = [x for x in data if x["code"] == comm_only]
@@ -375,6 +386,18 @@ def build_node(node, ind_list, meta, comm_only=None):
             "<strong style=\"color:#c9d1d9\">指标组：</strong>%s。<br>"
             "<strong style=\"color:#c9d1d9\">数据质量：</strong>%s。") % (
         node, topic, " · ".join(note_metrics), quality)
+
+    # --- 跨金属辅助声明自动生成 ---
+    if cross_var_inds:
+        cids_str = " · ".join("<code>%s</code>" % cr for cr in cross_var_inds)
+        other_var = "cu" if own_var == "al" else "al"
+        OTHER_CN = {"cu": "铝", "al": "铜"}[other_var]
+        own_var_cn = "铝" if own_var == "al" else "铜"
+        NOTE += ("<br><strong style=\"color:#c9d1d9\">辅助指标口径声明：</strong>"
+                 "%s 为<b>%s跨金属辅助参照</b>——知几/同花顺在本节点缺乏连续的<b>%s本品种</b>指标序列，"
+                 "此处置为跨金属类比参照（<b>仅看相对趋势方向</b>，单位/频次/绝对量级与主图不同，不可直接加总或比数值）。"
+                 "本页正主指标以 %s 品种前缀为准。") % (
+            cids_str, OTHER_CN, own_var_cn, own_var_cn)
 
     html = page_html(
         title="%s(%s) %s %s" % ("铜" if main_comm == "cu" else "铝", code_str, node, title),
