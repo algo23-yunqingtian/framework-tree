@@ -1882,7 +1882,8 @@
     "_origin": "step3_AL_中国铝精炼金属进口分国别量",
     "_tier": "B",
     "_nodes": [
-      "6.2"
+      "6.2",
+      "6.4"
     ]
   },
   "al_63_export": {
@@ -2441,7 +2442,8 @@
     "_origin": "gap_fill_20260831",
     "_tier": "A",
     "_nodes": [
-      "4.2"
+      "4.2",
+      "4.1"
     ]
   },
   "cu_42_warrant_cancel": {
@@ -2455,7 +2457,8 @@
     "_origin": "gap_fill_20260831",
     "_tier": "A",
     "_nodes": [
-      "4.2"
+      "4.2",
+      "4.1"
     ]
   },
   "cu_43_social_stock": {
@@ -18454,12 +18457,153 @@
     "AL_5.3": "al_53_export"
   },
   "_meta": {
-    "version": "v3.76",
+    "version": "3.77",
     "changelog": [
       "v3.75 2026-09-08 P1辅助图串台清洗第2批: sn_25_recycle_price(再生铝棒6063价)退出锡2.5/7.3, sn_21_premium(电解铝升贴水)退出锡2.1",
       "v3.75 2026-09-08 P1辅助图串台清洗第2批: sn_25_recycle_price(再生铝棒6063价)退出锡2.5/7.3, sn_21_premium(电解铝升贴水)退出锡2.1",
       "v3.74 2026-09-08 P1辅助图串台清洗: sn_313_tc_tc/_2(铝棒加工费)退出锡3.1.3/3.1.5节点, si_22_price_industrial_si(A00电解铝价)退出硅2.2节点",
-      "v3.73 2026-09-08 P0串台整治: 8处主图串台修正(AL_5.3/SN_3.1.3/SN_3.1.5/SN_5.3/SI_3.1.5/SI_3.2.4/SI_4.3/ZN_6.3)，sn_71_tc追加3.1.5节点，补拉al_53_export/sn_53_output_tin_ore缓存"
+      "v3.73 2026-09-08 P0串台整治: 8处主图串台修正(AL_5.3/SN_3.1.3/SN_3.1.5/SN_5.3/SI_3.1.5/SI_3.2.4/SI_4.3/ZN_6.3)，sn_71_tc追加3.1.5节点，补拉al_53_export/sn_53_output_tin_ore缓存",
+      "2026-09-09: P2铜铝缺口10页-13条指标注册+2条追加节点(v3.76→v3.77)"
+    ]
+  },
+  "cu_41_lme_inv": {
+    "name": "LME：铜：期货库存（日）",
+    "unit": "吨",
+    "freq": "daily",
+    "verified": true,
+    "ids": {
+      "CU": "ID00188283"
+    },
+    "_origin": "step3_CU_LME铜总库存",
+    "_tier": "A",
+    "_nodes": [
+      "4.1"
+    ]
+  },
+  "cu_52_grid_inv": {
+    "name": "中国：电网工程：投资完成额累计值（月）",
+    "unit": "元",
+    "freq": "monthly",
+    "verified": true,
+    "ids": {
+      "CU": "CM0000753806"
+    },
+    "_origin": "step3_CU_电网投资完成额",
+    "_tier": "A",
+    "_nodes": [
+      "5.2"
+    ]
+  },
+  "cu_64_cu_conc_port_inv": {
+    "name": "铜精矿：港口库存：中国（周）",
+    "unit": "吨",
+    "freq": "weekly",
+    "verified": true,
+    "ids": {
+      "CU": "ID01002000"
+    },
+    "_origin": "step3_CU_铜精矿港口库存",
+    "_tier": "A",
+    "_nodes": [
+      "6.4"
+    ]
+  },
+  "al_312_global_output": {
+    "name": "国际铝业协会：原铝：产量：全球（月）",
+    "unit": "吨",
+    "freq": "monthly",
+    "verified": true,
+    "ids": {
+      "AL": "ID00299926"
+    },
+    "_origin": "step3_AL_全球电解铝产量",
+    "_tier": "A",
+    "_nodes": [
+      "3.1.2"
+    ]
+  },
+  "al_314_bauxite_port_inv": {
+    "name": "铝土矿：进口：港口库存：中国（周）",
+    "unit": "吨",
+    "freq": "weekly",
+    "verified": true,
+    "ids": {
+      "AL": "ID00302795"
+    },
+    "_origin": "step3_AL_铝土矿港口库存",
+    "_tier": "A",
+    "_nodes": [
+      "3.1.4"
+    ]
+  },
+  "al_314_alumina_net_imp": {
+    "name": "氧化铝：净进口数量：中国（月）",
+    "unit": "吨",
+    "freq": "monthly",
+    "verified": true,
+    "ids": {
+      "AL": "ID01721702"
+    },
+    "_origin": "step3_AL_氧化铝净进口",
+    "_tier": "A",
+    "_nodes": [
+      "3.1.4"
+    ]
+  },
+  "al_61_alumina_port_inv": {
+    "name": "氧化铝：港口库存：中国（周）",
+    "unit": "吨",
+    "freq": "weekly",
+    "verified": true,
+    "ids": {
+      "AL": "ID00188314"
+    },
+    "_origin": "step3_AL_氧化铝港口库存",
+    "_tier": "A",
+    "_nodes": [
+      "6.1"
+    ]
+  },
+  "al_64_alumina_port_inv_jz": {
+    "name": "氧化铝：港口库存：锦州港（周）",
+    "unit": "吨",
+    "freq": "weekly",
+    "verified": true,
+    "ids": {
+      "AL": "ID01002068"
+    },
+    "_origin": "step3_AL_氧化铝港口库存锦州港",
+    "_tier": "A",
+    "_nodes": [
+      "6.4"
+    ]
+  },
+  "al_73_alumina_price_gx": {
+    "name": "氧化铝：长单均价：广西（月）",
+    "unit": "元/吨",
+    "freq": "monthly",
+    "verified": true,
+    "ids": {
+      "AL": "ID01721680"
+    },
+    "_origin": "step3_AL_氧化铝长单均价广西",
+    "_tier": "A",
+    "_nodes": [
+      "7.3"
+    ]
+  },
+  "al_73_anode_price_gx": {
+    "name": "预焙阳极：TY-1：市场价：广西（日）",
+    "unit": "元/吨",
+    "freq": "daily",
+    "verified": true,
+    "ids": {
+      "AL": "ID00260226"
+    },
+    "_origin": "step3_AL_预焙阳极市场价广西",
+    "_tier": "A",
+    "_nodes": [
+      "7.3"
     ]
   }
 }
