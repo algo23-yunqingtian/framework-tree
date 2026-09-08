@@ -393,9 +393,9 @@ function selectChip(leaf, commId, autoNav, render){
       };
   const key = cm.code+'_'+leaf.id;
 
-  // 五金属(ZN/NI/SN/SI/LI)：根据 leaf.code 动态推导文件名（例：zn + 2.1 → zn_2_1.html）
-  if(!PAGE_MAP[key] && ['ZN','NI','SN','SI','LI'].indexOf(cm.code)>=0){
-    const v = cm.code.toLowerCase();
+  // 五金属(ZN/NI/SN/SI/LI) + 碳酸锂(LC, id=li)：根据 leaf.code 动态推导文件名（例：li + 3.1.1 → li_3_1_1.html）
+  if(!PAGE_MAP[key] && ['ZN','NI','SN','SI','LI','LC'].indexOf(cm.code)>=0){
+    const v = cm.code === 'LC' ? 'li' : cm.code.toLowerCase();
     const fname = v + '_' + leaf.code.replace(/\./g,'_') + '.html';
     if(autoNav){
       window.location.href = fname;
