@@ -3040,6 +3040,30 @@ PAGES = PAGES = PAGES = PAGES = {
  'label': '锡2.3价格wr',
  'has_seasonal': True,
      },
+'li322wr': {
+ 'file': 'li_322wr_utilization.html',
+ 'min_bytes': 12000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_lc322wr_c1',
+ 'echart_lc322wr_c2',
+ 'echart_lc322wr_c3',
+         ],
+ 'label': '碳酸锂3.2.2开工率wr',
+ 'has_seasonal': True,
+     },
+'li61wr': {
+ 'file': 'li_61wr_trade.html',
+ 'min_bytes': 12000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_lc61wr_c1',
+ 'echart_lc61wr_c2',
+ 'echart_lc61wr_c3',
+         ],
+ 'label': '碳酸锂6.1进出口wr',
+ 'has_seasonal': True,
+     },
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
