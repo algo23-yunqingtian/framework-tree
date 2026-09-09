@@ -84,6 +84,19 @@
 - **备份**：`/tmp/indicators_v1.json.bak_p0v4`（操作前备份）
 - **后续**：① 待SMM凭据修复后重新拉数（182条）；② 覆盖率达50%后方可建页；③ AO品种建页（P1）可先用非SMM的84条verified指标
 
+### 2026-09-09 agent-2 — P2 非AO品种wr建页（7页 / 256/256门禁全绿）
+- **背景**：71条非AO verified wr指标（LC34/NI16/SI11/AL7/SN3）已拉数入api_cache.db，可建页。
+- **已完成**：7个wr页面，全部真数据，check_html 256/256 PASS
+  - `li_321_wr_production.html` — 碳酸锂3.2.1精炼产量（3图：四川+山东+青海）
+  - `li_41wr_exchange_inventory.html` — 碳酸锂4.1交易所库存（2图：仓单+总库存）
+  - `ni_41wr_exchange_inventory.html` — 镍4.1交易所库存（3图：总库存+精炼镍+电镀镍）
+  - `ni_23wr_price.html` — 镍2.3价格（3图：镍价+镍价周+镍只涨）
+  - `si_23wr_price.html` — 硅2.3价格（3图：441#+553#+多晶硅N182）
+  - `al_23wr_price.html` — 铝2.3价格（3图：LME月差+注销仓单+原产地）
+  - `sn_23wr_price.html` — 锡2.3价格（3图：升贴水+升水+出厂价）
+- **待做**：剩余wr指标可继续补建（LC开工率/进出口/锂矿加工费、NI库存/进出口、SI多晶硅产量/成本等）
+- **数据**：api_cache.db新增71条非AO指标（共84条），总数据点数万级
+
 ### 2026-09-09 agent-2 — P3 备用库维护（SMM源凭据失效指标清单）
 - **背景**：192条wr指标因SMM源凭据失效无法拉数，需标记为"待外部源"进备用库。
 - **产出**：`docs/P3_BACKUP_LIBRARY.md` — 完整列出所有未验证指标，按品种分组，标记SMM源问题。
