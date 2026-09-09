@@ -2993,6 +2993,41 @@ PAGES = PAGES = PAGES = PAGES = {
  'label': '硅2.3价格wr',
  'has_seasonal': True,
      },
+'li41wr': {
+ 'file': 'li_41wr_exchange_inventory.html',
+ 'min_bytes': 12000,
+ 'charts': 2,
+ 'cids': [
+ 'echart_lc41wr_c1',
+ 'echart_lc41wr_c2',
+         ],
+ 'label': '碳酸锂4.1交易所库存wr',
+ 'has_seasonal': True,
+     },
+'al23wr': {
+ 'file': 'al_23wr_price.html',
+ 'min_bytes': 20000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_al23wr_c1',
+ 'echart_al23wr_c2',
+ 'echart_al23wr_c3',
+         ],
+ 'label': '铝2.3价格wr',
+ 'has_seasonal': True,
+     },
+'ni23wr': {
+ 'file': 'ni_23wr_price.html',
+ 'min_bytes': 20000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_ni23wr_c1',
+ 'echart_ni23wr_c2',
+ 'echart_ni23wr_c3',
+         ],
+ 'label': '镍2.3价格wr',
+ 'has_seasonal': True,
+     },
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
