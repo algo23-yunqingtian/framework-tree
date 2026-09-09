@@ -3111,6 +3111,30 @@ PAGES = PAGES = PAGES = PAGES = {
  'label': '硅3.2.1多晶硅产量wr',
  'has_seasonal': True,
      },
+'si71wr': {
+ 'file': 'si_71wr_cost_curve.html',
+ 'min_bytes': 12000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_si71wr_c1',
+ 'echart_si71wr_c2',
+ 'echart_si71wr_c3',
+         ],
+ 'label': '硅7.1成本曲线wr',
+ 'has_seasonal': True,
+     },
+'al41wr': {
+ 'file': 'al_41wr_exchange_inventory.html',
+ 'min_bytes': 12000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_al41wr_c1',
+ 'echart_al41wr_c2',
+ 'echart_al41wr_c3',
+         ],
+ 'label': '铝4.1交易所库存wr',
+ 'has_seasonal': True,
+     },
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
