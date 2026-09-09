@@ -3135,6 +3135,29 @@ PAGES = PAGES = PAGES = PAGES = {
  'label': '铝4.1交易所库存wr',
  'has_seasonal': True,
      },
+'li313wr': {
+ 'file': 'li_313wr_lithium_inventory.html',
+ 'min_bytes': 12000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_lc313wr_c1',
+ 'echart_lc313wr_c2',
+ 'echart_lc313wr_c3',
+         ],
+ 'label': '碳酸锂3.1.3锂矿库存wr',
+ 'has_seasonal': True,
+     },
+'ni24wr': {
+ 'file': 'ni_24wr_spread.html',
+ 'min_bytes': 12000,
+ 'charts': 2,
+ 'cids': [
+ 'echart_ni24wr_c1',
+ 'echart_ni24wr_c2',
+         ],
+ 'label': '镍2.4价差wr',
+ 'has_seasonal': True,
+     },
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
