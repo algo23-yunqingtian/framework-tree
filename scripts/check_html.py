@@ -3028,6 +3028,18 @@ PAGES = PAGES = PAGES = PAGES = {
  'label': '镍2.3价格wr',
  'has_seasonal': True,
      },
+'sn23wr': {
+ 'file': 'sn_23wr_price.html',
+ 'min_bytes': 20000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_sn23wr_c1',
+ 'echart_sn23wr_c2',
+ 'echart_sn23wr_c3',
+         ],
+ 'label': '锡2.3价格wr',
+ 'has_seasonal': True,
+     },
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
