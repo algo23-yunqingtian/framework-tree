@@ -107,6 +107,13 @@ def main():
     #     [DB-LOAD-TOOL] [RECOVER-786]（后两者为 2026-08-31 实际在用格式）
     # 2026-08-31 修：原正则 T\d+ 紧贴 ]，导致 [B-5M-*]/[DOC-*] 被误判 FAIL
     # 2026-08-31 二次修：放宽为通用大写前缀，容纳 DB-LOAD-TOOL / RECOVER-786
+    # 2026-09-09 修：git 自动生成的 merge commit 标题（"Merge remote-tracking
+    #   branch..."）不带 [前缀]，必然误判 FAIL。用 --first-parent 只看主线提交，
+    #   并显式跳过 Merge 开头的标题。否则每次 merge 分支后门禁必红。
+    log_lines = run("git log --format='%s' --first-parent -10 HEAD..origin/main").stdout.strip()
+    if not log_lines:
+        log_lines = run("git log --format='%s' --first-parent -10").stdout.strip()
+    log_lines = "\n".join(l for l in log_lines.split("\n") if l.strip() and not l.strip().startswith("Merge "))
     ok = 0
     for line in log_lines.split("\n"):
         if line and re.match(r"^\[[A-Z][A-Z0-9-]*[^\]]*\]", line.strip()):
