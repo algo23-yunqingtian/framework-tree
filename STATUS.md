@@ -73,6 +73,23 @@
 
 ## 近期变更记录
 
+### 2026-09-09 主脑 — 周报指标 unit/freq/verified 批量回填（87/94 非SMM源 / v3.81）
+- **背景**：v3.80 落地 AO 独立品种后，276 条 wr* 指标 `verified` 全 false、`unit`/`freq` 全空。按任务卡 P0 优先做不依赖外部 key 的部分。
+- **关键发现**：知几 `zhiji_api.py series <id>` 响应**直接返回 unit/frequency 字段**（零猜测），无需从名称推断。94 条非 SMM 源（ID/CM00/FU 前缀）可正常拉通。
+- **回填结果**：94 条中 **87 条 OK**（覆盖率 92.6%），回填 `unit`/`freq`/`verified=true` + 留痕（`series_unit`/`series_freq`/`series_points`/`verified_date`/`verified_value_sample`）。unit 分布：吨 32 / 元/吨 23 / 万吨 15 / 美元 3 / 元/镍 2 / 百分比 2 / 其余零散。
+- **7 条失败**：wr65/wr68/wr86/wr194/wr240 `no_points`（USGS 年频仅 1-2 点或空）、wr70/wr72 `HTTP 500`（偶发，非凭据问题，可重试）。
+- **SMM 源 182 条（a1/j0/s2 前缀）待办**：凭据 `login failed code=10017 密码错误次数超限`，需用户修 key 后补跑（脚本幂等，已 verified 跳过）。
+- **脚本**：`/tmp/wr_fix/backfill_wr_meta.py`（幂等可重跑）、`/tmp/wr_fix/backfill_report.json`（明细）、备份 `/tmp/wr_fix/indicators_v1_v380_backup.json`。
+- **门禁全绿**：check_html 242/242 ✅ + verify_render 242/242 ✅ + reclaim PASS=12/FAIL=0 ✅（仅改 data/indicators_v1.json，未动 HTML）。
+
+### 2026-09-09 主脑 — 新增氧化铝 AO 独立品种节点（9 品种 / 13 子节点 / 零 HTML 改动）
+- **用户拍板**：不并入 AL（方案 B），单独建 AO 品种与其他 8 品种并列——氧化铝矿端指标多达 22 条，塞进 AL 板块会乱。
+- **tree_config.json 改动**：`commodities` 加 `{"id":"ao","code":"AO","name":"氧化铝","color":"#9a6b4f","anchor":"铝土矿定价·电解铝前驱"}`（8→9 品种）；13 个子节点的 `comms` 数组追加 `"ao"`；同步 index.html L144 内联 TREE_CONFIG 副本（json.dumps 紧凑单行，校验 chk==t 一致）。
+- **AO 13 子节点**（按 64 条 AL-AX 指标实际分布选）：p2 现货与升贴水(8条)、p3 海外价格 FOB(3条)、s3 国内矿产量(7条)、s4 矿进口发运到港(10条)、s6 精炼产量(4条)、s7 开工率(1条)、s9 冶炼利润→供应弹性 产能(2条)、i2 仓单(5条)、i4 工厂库存(3条)、i5 隐性/在途库存(4条)、t2 精炼进出口(3条)、c1 成本曲线(2条)、c2 日度利润(3条)。
+- **零 HTML 改动**：AO 页面尚未建；index.html 的 PAGE_MAP 按 code 前缀动态查表，AO 未建 chip 自动 fallback 到"开发中"占位（L397 特判列表 ZN/NI/SN/SI/LI/LC 不含 AO，不影响）。
+- **顺手修 reclaim.py 假阳性**：第 4 项"最近 10 条提交前缀规范"原用 `git log -10` 会取到 git 自动生成的 merge commit 标题（`Merge remote-tracking branch...`，不带 `[前缀]`），导致每次 merge 后门禁必红。改用 `--first-parent` + 显式跳过 `Merge ` 开头标题。
+- **门禁全绿**：check_html 242/242 + verify_render 242/242 + reclaim 12 PASS / 0 FAIL。
+
 ### 2026-09-09 主脑 — 周报指标框架树导入（205 条 / v3.76 / 可回退）
 - **背景**：另一台服务器的周报指标框架树归档（`algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md`，518 指标 / 6 品种 / 95% 匹配率，含框架树 JSON + 扁平 CSV + 344 图表分析 JSON）。经比对与 framework-tree 仅 28 条重叠，增量价值高（氧化铝 63 条、铝 48、镍与不锈钢 39、锡 31、硅 35、碳酸锂 5）。
 - **回退锚点**：入库前已打 tag `PRE_WEEKLY_REPORT_IMPORT_20260909`（指向 e770ce8）+ 备份分支 `backup_pre_weekly_report_20260909`，另有本地备份 `data/indicators_v1.json.bak_pre_wr20260909`。**三层可回退**：`git reset --hard PRE_WEEKLY_REPORT_IMPORT_20260909`（彻底回退含版本号）或 `python3 scripts/remove_weekly_report_import.py --apply`（只删 wr* 键）。

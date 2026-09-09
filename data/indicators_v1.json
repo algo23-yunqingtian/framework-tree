@@ -18334,7 +18334,7 @@
   ],
   "_verified_by": "zhiji_series_reuse_20260908"
  },
- "version": "v3.79",
+ "version": "v3.81",
  "change": "4.x非库存指标二次清洗(zn_43_premium/cu_44/cu_46/cu_47/ni_42_premium)",
  "_main_metric": {
   "ZN_2.1": "zn_21_close_main",
@@ -18697,7 +18697,8 @@
     ],
     "reason": "复核 review_list 时发现的低分错配: 图表名含品种词但清洗引擎的 ALIAS_CHECK 未覆盖 \"A00\"(未命中因真名是\"锌锭\"且图表名解析出的品种为AL), 与 \"锂精矿进口\"匹配到南非海关锌精矿"
    }
-  }
+  },
+  "2026-09-09: 批量回填94条非SMM源wr*指标unit/freq/verified(从知几API响应直接读,零猜测);SMM源182条待凭据修复后处理"
  ],
  "wr1": {
   "name": "A00升贴水-上海",
@@ -18821,9 +18822,9 @@
  },
  "wr5": {
   "name": "出口-未锻轧铝合金",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL": "ID01114279"
@@ -18854,7 +18855,12 @@
    "old_zhiji_id_review": "ID01543521",
    "old_zhiji_name_review": "日本海关：未锻轧铝合金：进口金额：加拿大→日本（月）",
    "zhiji_id": "ID01114279",
-   "series_check": "ok"
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "20813.842"
   }
  },
  "wr6": {
@@ -18919,9 +18925,9 @@
  },
  "wr8": {
   "name": "电解铝出库量-中国",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL": "ID01001760"
@@ -18944,14 +18950,20 @@
    "is_seasonal": "否",
    "report_status": "部分匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 131,
+   "series_unit": "万吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "12.1"
   }
  },
  "wr9": {
   "name": "铝棒出库量-中国",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL": "ID01029971"
@@ -18974,7 +18986,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 134,
+   "series_unit": "万吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3.93"
   }
  },
  "wr10": {
@@ -19169,9 +19187,9 @@
  },
  "wr16": {
   "name": "LME主要仓库注销仓单",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL": "FU00014808"
@@ -19194,14 +19212,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 653,
+   "series_unit": "吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "20"
   }
  },
  "wr17": {
   "name": "LME仓单原产地",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL": "FU00014807"
@@ -19224,7 +19248,13 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 654,
+   "series_unit": "吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1840"
   }
  },
  "wr18": {
@@ -19289,9 +19319,9 @@
  },
  "wr20": {
   "name": "LME铝远月月差3-15",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "美元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL": "FU00014801"
@@ -19319,7 +19349,13 @@
    "review_date": "2026-09-09",
    "review_verdict": "fix",
    "review_reason": "图表为月差(价差)，匹配到结算价，指标类型不对",
-   "fix_note": "LME铝3-15月差:知几仅有各月合约价格"
+   "fix_note": "LME铝3-15月差:知几仅有各月合约价格",
+   "series_check": "ok",
+   "series_points": 654,
+   "series_unit": "美元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1600"
   }
  },
  "wr21": {
@@ -19514,9 +19550,9 @@
  },
  "wr27": {
   "name": "铝合金进口量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL": "ID01114281"
@@ -19547,14 +19583,19 @@
    "old_zhiji_id_review": "a12854586",
    "old_zhiji_name_review": "马来西亚海关: 马来西亚未锻轧非铝合金进口量: 月度",
    "zhiji_id": "ID01114281",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "104788.078"
   }
  },
  "wr28": {
   "name": "氧化铝建成产能",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01001835"
@@ -19585,7 +19626,12 @@
    "old_zhiji_id_review": "a12839415",
    "old_zhiji_name_review": "SMM: 海外氧化铝产能预测 - 合计: 年度",
    "zhiji_id": "ID01001835",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "万吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "10220"
   }
  },
  "wr29": {
@@ -19680,9 +19726,9 @@
  },
  "wr32": {
   "name": "SMM中国氧化铝月度产量-河南",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01001748"
@@ -19713,7 +19759,12 @@
    "old_zhiji_id_review": "a12792934",
    "old_zhiji_name_review": "SMM: 氧化铝产量: 总计: 周度",
    "zhiji_id": "ID01001748",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "万吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "60.4"
   }
  },
  "wr33": {
@@ -19748,9 +19799,9 @@
  },
  "wr34": {
   "name": "三网均价-内蒙古",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01721686"
@@ -19773,14 +19824,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "元/吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3265"
   }
  },
  "wr35": {
   "name": "三网均价-山东",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01721687"
@@ -19803,7 +19860,13 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "元/吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3155"
   }
  },
  "wr36": {
@@ -19868,9 +19931,9 @@
  },
  "wr38": {
   "name": "三网均价-贵州",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01721683"
@@ -19893,7 +19956,13 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "元/吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3259"
   }
  },
  "wr39": {
@@ -19928,9 +19997,9 @@
  },
  "wr40": {
   "name": "中国平均价-氧化铝一级",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID00188139"
@@ -19953,7 +20022,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 624,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3142"
   }
  },
  "wr41": {
@@ -20138,9 +20213,9 @@
  },
  "wr47": {
   "name": "河南国产矿现金流利润",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01721669"
@@ -20163,7 +20238,13 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "元/吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "676.8"
   }
  },
  "wr48": {
@@ -20228,9 +20309,9 @@
  },
  "wr50": {
   "name": "期货库存-氧化铝-广西",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "FU00086790"
@@ -20253,7 +20334,13 @@
    "is_seasonal": "否",
    "report_status": "无结果",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 90,
+   "series_unit": "吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "0"
   }
  },
  "wr51": {
@@ -20288,9 +20375,9 @@
  },
  "wr52": {
   "name": "氧化铝厂内库存(除新疆)-钢联",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01721655"
@@ -20321,7 +20408,12 @@
    "old_zhiji_id_review": "a12756216",
    "old_zhiji_name_review": "SMM: 电解铝厂氧化铝库存: 宁夏: 月度",
    "zhiji_id": "ID01721655",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 135,
+   "series_unit": "万吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "13"
   }
  },
  "wr53": {
@@ -20416,9 +20508,9 @@
  },
  "wr56": {
   "name": "氧化铝库存-阿拉丁-氧化铝厂",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01721691"
@@ -20449,7 +20541,12 @@
    "old_zhiji_id_review": "a12811637",
    "old_zhiji_name_review": "SMM: 全国氧化铝厂内铝土矿库存总量: 周度",
    "zhiji_id": "ID01721691",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 135,
+   "series_unit": "万吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "301.1"
   }
  },
  "wr57": {
@@ -20950,9 +21047,9 @@
  },
  "wr73": {
   "name": "海漂库存-全球主要国家-钢联",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01201231"
@@ -20975,14 +21072,20 @@
    "is_seasonal": "否",
    "report_status": "部分匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 135,
+   "series_unit": "万吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "942.85"
   }
  },
  "wr74": {
   "name": "港口库存-中国-钢联",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID00188314"
@@ -21005,7 +21108,13 @@
    "is_seasonal": "否",
    "report_status": "无结果",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 135,
+   "series_unit": "万吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "26.2"
   }
  },
  "wr75": {
@@ -21416,9 +21525,9 @@
  },
  "wr88": {
   "name": "铝土矿进口-澳大利亚",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "百万澳元",
+  "freq": "季",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "AL-AX": "ID01655446"
@@ -21441,7 +21550,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 9,
+   "series_unit": "百万澳元",
+   "series_freq": "季",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "0.63"
   }
  },
  "wr89": {
@@ -21617,9 +21732,9 @@
  },
  "wr94": {
   "name": "碳酸锂 产量:四川",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01865198"
@@ -21642,14 +21757,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "6900"
   }
  },
  "wr95": {
   "name": "碳酸锂 产量:山东",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01380152"
@@ -21672,14 +21793,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 20,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3500"
   }
  },
  "wr96": {
   "name": "碳酸锂 产量:广西",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01865204"
@@ -21702,14 +21829,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "44790"
   }
  },
  "wr97": {
   "name": "碳酸锂 产量:江苏",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01380161"
@@ -21732,14 +21865,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 20,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "2400"
   }
  },
  "wr98": {
   "name": "碳酸锂 产量:江西",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01865200"
@@ -21762,14 +21901,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "17730"
   }
  },
  "wr99": {
   "name": "碳酸锂 产量:河北",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01380164"
@@ -21792,14 +21937,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 20,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1300"
   }
  },
  "wr100": {
   "name": "碳酸锂 产量:湖南",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01380160"
@@ -21822,14 +21973,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 20,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "600"
   }
  },
  "wr101": {
   "name": "碳酸锂 产量:青海",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01865195"
@@ -21852,7 +22009,13 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "8260"
   }
  },
  "wr102": {
@@ -21947,9 +22110,9 @@
  },
  "wr105": {
   "name": "碳酸锂 盐湖提锂 产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01707137"
@@ -21972,14 +22135,20 @@
    "is_seasonal": "否",
    "report_status": "scored_C",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "8260"
   }
  },
  "wr106": {
   "name": "碳酸锂 硫酸法 周度产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01349541"
@@ -22002,7 +22171,13 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "6700"
   }
  },
  "wr107": {
@@ -22097,9 +22272,9 @@
  },
  "wr110": {
   "name": "工业级碳酸锂 现货价格",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "年",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01666072"
@@ -22122,7 +22297,13 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 1,
+   "series_unit": "元/吨",
+   "series_freq": "年",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "74874"
   }
  },
  "wr111": {
@@ -22217,9 +22398,9 @@
  },
  "wr114": {
   "name": "电池级碳酸锂 现货价格",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01551919"
@@ -22242,14 +22423,20 @@
    "is_seasonal": "否",
    "report_status": "verified",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 640,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "101000"
   }
  },
  "wr115": {
   "name": "碳酸锂 主力合约 收盘价",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "FU00050085"
@@ -22272,7 +22459,13 @@
    "is_seasonal": "否",
    "report_status": "verified",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 624,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "108200"
   }
  },
  "wr116": {
@@ -22413,9 +22606,9 @@
  },
  "wr120": {
   "name": "碳酸锂 总需求",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01245889"
@@ -22438,7 +22631,13 @@
    "is_seasonal": "否",
    "report_status": "scored_C",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 19,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "51257.49"
   }
  },
  "wr121": {
@@ -22473,9 +22672,9 @@
  },
  "wr122": {
   "name": "碳酸锂 锂云母产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01707134"
@@ -22498,14 +22697,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "11230"
   }
  },
  "wr123": {
   "name": "碳酸锂 锂辉石总产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01707140"
@@ -22528,14 +22733,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "18250"
   }
  },
  "wr124": {
   "name": "碳酸锂 仓单量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "手",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "FU00058091"
@@ -22558,7 +22769,13 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 623,
+   "series_unit": "手",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "900"
   }
  },
  "wr125": {
@@ -22593,9 +22810,9 @@
  },
  "wr126": {
   "name": "碳酸锂 周度库存:其他",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01865191"
@@ -22618,7 +22835,13 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "4010"
   }
  },
  "wr127": {
@@ -22713,9 +22936,9 @@
  },
  "wr130": {
   "name": "碳酸锂 工厂库存",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01865189"
@@ -22738,7 +22961,13 @@
    "is_seasonal": "否",
    "report_status": "L5_external",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "22110"
   }
  },
  "wr131": {
@@ -22966,9 +23195,9 @@
  },
  "wr138": {
   "name": "钴酸锂 月度产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "百分比",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01244261"
@@ -22991,14 +23220,20 @@
    "is_seasonal": "否",
    "report_status": "scored_C",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 20,
+   "series_unit": "百分比",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "-4.28"
   }
  },
  "wr139": {
   "name": "其他电池 国内销量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "千吨",
+  "freq": "季",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01666080"
@@ -23021,7 +23256,13 @@
    "is_seasonal": "否",
    "report_status": "scored_C",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 4,
+   "series_unit": "千吨",
+   "series_freq": "季",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "164.43"
   }
  },
  "wr140": {
@@ -23064,9 +23305,9 @@
  },
  "wr141": {
   "name": "智利 碳酸锂 出口:中国",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01742018"
@@ -23089,14 +23330,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "9819"
   }
  },
  "wr142": {
   "name": "智利 硫酸锂 出口:全球",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02005026"
@@ -23119,14 +23366,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "204.6"
   }
  },
  "wr143": {
   "name": "智利 碳酸锂 出口:全球",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01742016"
@@ -23149,7 +23402,13 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "165"
   }
  },
  "wr144": {
@@ -23334,9 +23593,9 @@
  },
  "wr150": {
   "name": "锂矿 可售库存",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID01736015"
@@ -23359,14 +23618,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 130,
+   "series_unit": "万吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "11.8"
   }
  },
  "wr151": {
   "name": "锂矿 外采 厂内库存",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02069945"
@@ -23389,14 +23654,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 17,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "176000"
   }
  },
  "wr152": {
   "name": "锂矿 外采 在途库存",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02093014"
@@ -23419,14 +23690,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 18,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "63000"
   }
  },
  "wr153": {
   "name": "锂矿 库存:贸易商",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02069937"
@@ -23449,14 +23726,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 65,
+   "series_unit": "万吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "21.6"
   }
  },
  "wr154": {
   "name": "锂精矿进口 尼日利亚",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "美元",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02011553"
@@ -23479,7 +23762,13 @@
    "is_seasonal": "否",
    "report_status": "scored_C",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 19,
+   "series_unit": "美元",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "14895047"
   }
  },
  "wr155": {
@@ -23574,9 +23863,9 @@
  },
  "wr158": {
   "name": "锂辉石加工费 四川",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02067676"
@@ -23599,14 +23888,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 52,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "21000"
   }
  },
  "wr159": {
   "name": "锂辉石加工费 山东",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02067672"
@@ -23629,14 +23924,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 52,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "19250"
   }
  },
  "wr160": {
   "name": "锂辉石加工费 江苏",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02067673"
@@ -23659,14 +23960,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 52,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "21000"
   }
  },
  "wr161": {
   "name": "锂辉石加工费 江西",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02067677"
@@ -23689,14 +23996,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 52,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "20500"
   }
  },
  "wr162": {
   "name": "锂辉石加工费 河北",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02067671"
@@ -23719,14 +24032,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 52,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "19500"
   }
  },
  "wr163": {
   "name": "锂辉石加工费 湖南",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02067674"
@@ -23749,14 +24068,20 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 52,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "20500"
   }
  },
  "wr164": {
   "name": "锂辉石加工费 辽宁",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "LI": "ID02067675"
@@ -23779,7 +24104,13 @@
    "is_seasonal": "否",
    "report_status": "scored_B",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 52,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "19500"
   }
  },
  "wr165": {
@@ -23904,9 +24235,9 @@
  },
  "wr169": {
   "name": "国内品牌升贴水",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SN": "ID01668719"
@@ -23929,7 +24260,13 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 625,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1000"
   }
  },
  "wr170": {
@@ -24024,9 +24361,9 @@
  },
  "wr173": {
   "name": "锡沪伦比",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "百分比",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SN": "ID01895225"
@@ -24057,14 +24394,19 @@
    "old_zhiji_id_review": "ID00259809",
    "old_zhiji_name_review": "锡精矿：1#：40%Sn：汇总价格：云南（日）",
    "zhiji_id": "ID01895225",
-   "series_check": "ok"
+   "series_check": "ok",
+   "series_points": 609,
+   "series_unit": "百分比",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "8.32"
   }
  },
  "wr174": {
   "name": "锡锭进口利润",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SN": "ID01590826"
@@ -24095,7 +24437,12 @@
    "old_zhiji_id_review": "a12764415",
    "old_zhiji_name_review": "马来西亚海关: 锡锭进口量: 总计: 年度",
    "zhiji_id": "ID01590826",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 608,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "2844"
   }
  },
  "wr175": {
@@ -24465,9 +24812,9 @@
  },
  "wr187": {
   "name": "国内锡矿产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "年",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SN": "ID00299777"
@@ -24498,7 +24845,12 @@
    "old_zhiji_id_review": "a10118248",
    "old_zhiji_name_review": "SMM: MetalsX公司锡矿产量_矿石产量: 季度",
    "zhiji_id": "ID00299777",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 2,
+   "series_unit": "吨",
+   "series_freq": "年",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "71000"
   }
  },
  "wr188": {
@@ -25081,9 +25433,9 @@
  },
  "wr207": {
   "name": "工业硅价格-441#(天津港)",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID00258568"
@@ -25114,7 +25466,12 @@
    "old_zhiji_id_review": "j02857351",
    "old_zhiji_name_review": "441#硅(华东)-月平均价",
    "zhiji_id": "ID00258568",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 641,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "15650"
   }
  },
  "wr208": {
@@ -25149,9 +25506,9 @@
  },
  "wr209": {
   "name": "新疆工业硅价格(SMM)",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID01305501"
@@ -25174,14 +25531,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 641,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "15600"
   }
  },
  "wr210": {
   "name": "工业硅云南样本周度产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID01877461"
@@ -25204,7 +25567,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(3词中2个)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 102,
+   "series_unit": "吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "25284"
   }
  },
  "wr211": {
@@ -25239,9 +25608,9 @@
  },
  "wr212": {
   "name": "多晶硅云南产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID02036182"
@@ -25272,7 +25641,12 @@
    "old_zhiji_id_review": "a10148711",
    "old_zhiji_name_review": "SMM: 多晶硅产量: 月度",
    "zhiji_id": "ID02036182",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "万吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1.5"
   }
  },
  "wr213": {
@@ -25435,9 +25809,9 @@
  },
  "wr218": {
   "name": "多晶硅青海产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID02036185"
@@ -25460,14 +25834,20 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(3词中2个)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "万吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1.86"
   }
  },
  "wr219": {
   "name": "硅片价格-N型182mm",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "美元/片",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID01994882"
@@ -25498,14 +25878,19 @@
    "old_zhiji_id_review": "ID01994869",
    "old_zhiji_name_review": "硅片：单晶N型：210mm：130μm：市场价格涨跌：人民币计（周）",
    "zhiji_id": "ID01994882",
-   "series_check": "ok"
+   "series_check": "ok",
+   "series_points": 75,
+   "series_unit": "美元/片",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "0.148"
   }
  },
  "wr220": {
   "name": "硅片价格-N型210mm",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/片",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID02048300"
@@ -25528,14 +25913,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 123,
+   "series_unit": "元/片",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3.2"
   }
  },
  "wr221": {
   "name": "硅片企业多晶硅库存",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID02032074"
@@ -25566,7 +25957,12 @@
    "old_zhiji_id_review": "a10169468",
    "old_zhiji_name_review": "SMM: 多晶硅库存: 同比: 周度",
    "zhiji_id": "ID02032074",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 129,
+   "series_unit": "万吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "7.5"
   }
  },
  "wr222": {
@@ -25846,9 +26242,9 @@
  },
  "wr231": {
   "name": "云南木炭工艺生产成本",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID02313951"
@@ -25871,14 +26267,20 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(3词中2个)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 37,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1300"
   }
  },
  "wr232": {
   "name": "工业硅成本",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID01523500"
@@ -25901,14 +26303,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 130,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "16558"
   }
  },
  "wr233": {
   "name": "新疆中小厂化学级工业硅成本",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "SI": "ID01523502"
@@ -25931,7 +26339,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(3词中2个)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 130,
+   "series_unit": "元/吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "14305"
   }
  },
  "wr234": {
@@ -26094,9 +26508,9 @@
  },
  "wr239": {
   "name": "中国动力电池产量：三元",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "千公吨",
+  "freq": "季",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID00188827"
@@ -26119,7 +26533,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(2/3)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 9,
+   "series_unit": "千公吨",
+   "series_freq": "季",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "8655"
   }
  },
  "wr240": {
@@ -26154,9 +26574,9 @@
  },
  "wr241": {
   "name": "中国硫酸镍产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01002132"
@@ -26179,14 +26599,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "131610"
   }
  },
  "wr242": {
   "name": "中国精炼镍产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01002085"
@@ -26209,14 +26635,20 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(1/2)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "22729"
   }
  },
  "wr243": {
   "name": "中国镍铁产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01002124"
@@ -26239,14 +26671,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "万吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "33.35"
   }
  },
  "wr244": {
   "name": "中国高碳铬铁产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "实物万吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01685008"
@@ -26269,14 +26707,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "实物万吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "66.05"
   }
  },
  "wr245": {
   "name": "印尼冰镍产量（分品味）",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01858105"
@@ -26299,7 +26743,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(2/3)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "万吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1.72"
   }
  },
  "wr246": {
@@ -26364,9 +26814,9 @@
  },
  "wr248": {
   "name": "印尼镍铁产量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "金属吨",
+  "freq": "季",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01651125"
@@ -26389,7 +26839,13 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 10,
+   "series_unit": "金属吨",
+   "series_freq": "季",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "4789"
   }
  },
  "wr249": {
@@ -26489,9 +26945,9 @@
  },
  "wr252": {
   "name": "不锈钢基差",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/吨",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "FU00024325"
@@ -26514,7 +26970,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(1/2)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 624,
+   "series_unit": "元/吨",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "-80"
   }
  },
  "wr253": {
@@ -26549,9 +27011,9 @@
  },
  "wr254": {
   "name": "硫酸镍价格",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "万元/吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01722282"
@@ -26574,7 +27036,13 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(1/2)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 28,
+   "series_unit": "万元/吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "3"
   }
  },
  "wr255": {
@@ -26609,9 +27077,9 @@
  },
  "wr256": {
   "name": "镍铁价格（江苏，7%≤Ni≤13%）",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/镍",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID00185681"
@@ -26634,14 +27102,20 @@
    "is_seasonal": "否",
    "report_status": "部分匹配(1/2)",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 642,
+   "series_unit": "元/镍",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "930"
   }
  },
  "wr257": {
   "name": "镍铁折镍价",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "元/镍",
+  "freq": "日",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01878121"
@@ -26672,7 +27146,12 @@
    "old_zhiji_id_review": "CM0000560993",
    "old_zhiji_name_review": "镍铁：出口均价：中国（月）",
    "zhiji_id": "ID01878121",
-   "series_check": "ok"
+   "series_check": "ok",
+   "series_points": 642,
+   "series_unit": "元/镍",
+   "series_freq": "日",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "931.4"
   }
  },
  "wr258": {
@@ -26857,9 +27336,9 @@
  },
  "wr264": {
   "name": "不锈钢库存：300系（冷轧）",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01379001"
@@ -26890,7 +27369,12 @@
    "old_zhiji_id_review": "a10019692",
    "old_zhiji_name_review": "SMM: 无锡+佛山不锈钢库存天数: 月度",
    "zhiji_id": "ID01379001",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 132,
+   "series_unit": "吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "1013"
   }
  },
  "wr265": {
@@ -26933,9 +27417,9 @@
  },
  "wr266": {
   "name": "不锈钢库存：300系（热轧）",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "周",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01378994"
@@ -26966,7 +27450,12 @@
    "old_zhiji_id_review": "a10019691",
    "old_zhiji_name_review": "SMM: 不锈钢库存产量比分系别: 300系: 月度",
    "zhiji_id": "ID01378994",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 132,
+   "series_unit": "吨",
+   "series_freq": "周",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "131"
   }
  },
  "wr267": {
@@ -27099,9 +27588,9 @@
  },
  "wr271": {
   "name": "中国冰镍进口量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "美元",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01364207"
@@ -27124,14 +27613,20 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "美元",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "122240230"
   }
  },
  "wr272": {
   "name": "中国冰镍进口量：自印尼",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "美元",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "ID01363300"
@@ -27154,7 +27649,13 @@
    "is_seasonal": "否",
    "report_status": "全匹配",
    "source_file": "algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md",
-   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md"
+   "source_url": "https://github.com/algo23-yunqingtian/weekly-report-tree/blob/main/_HANDOVER_PACKAGE.md",
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "美元",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "116134004"
   }
  },
  "wr273": {
@@ -27219,9 +27720,9 @@
  },
  "wr275": {
   "name": "镍铁进口量",
-  "unit": "",
-  "freq": "",
-  "verified": false,
+  "unit": "吨",
+  "freq": "月",
+  "verified": true,
   "category": "weekly_report_import",
   "ids": {
    "NI": "CM0000138647"
@@ -27252,7 +27753,12 @@
    "old_zhiji_id_review": "a10020781",
    "old_zhiji_name_review": "中国海关: 镍铁进口量: 日本: 月度",
    "zhiji_id": "CM0000138647",
-   "series_check": "unavailable"
+   "series_check": "ok",
+   "series_points": 31,
+   "series_unit": "吨",
+   "series_freq": "月",
+   "verified_date": "2026-09-09",
+   "verified_value_sample": "886590.387"
   }
  },
  "wr276": {
