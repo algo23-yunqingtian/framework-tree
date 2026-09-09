@@ -97,6 +97,15 @@
 - **待人工复核（21 条）**：`fix_score`<75 或 `fix_issues` 含标记的 —— 如「A00升贴水-上海」被修成 `锌锭:升贴水:上海`(score 71, 品种错)、地区不符的「1A60铝杆加工费-山东→广东」。这些在 `weekly_report_import.fix_issues` 字段留痕，后续按品种分批核
 - **已知限制**：series 拉数验证做不了（SMM 源 HTTP 500 凭据失效），无法用数据量级交叉验证（如原煤千万吨 vs 碳酸锂万吨）
 
+### 2026-09-09 主脑 — 手工修正 2 条漏网错配（v3.78）
+- **触发**：复核 `fix_score<75` 的 135 条待审清单时发现 2 条真实错配漏网
+- **修正**：
+  - `wr1`「A00升贴水-上海」：`ID01167389 锌锭:升贴水:上海` → **`a12819790 SMM: A00铝升贴水`**（图表名含 A00，真名却是锌锭，ALIAS_CHECK 未命中因真名不含铝系词）
+  - `wr156`「锂精矿进口 津巴布韦」：`a12805150 南非海关:锌精矿出口量:津巴布韦` → **`a12805896 中国海关:锂辉石进口量:津巴布韦`**（南非海关出口 ≠ 中国海关进口，方向都反了）
+- **修复**：`fix_tag=manual_fix`、`fix_score=95`、`fix_issues=manual:...`，`ids` 保留 `old_zhiji_id` 留痕，v3.77→v3.78
+- **根因**：我的 `ALIAS_CHECK` 品种别名表没覆盖"A00"，且"南非海关:锌精矿:津巴布韦"这种名称不含任何锂词，`variety_unverified` 被降级为软标记而非淘汰
+- **剩余待人工复核 133 条**：清单在 `/tmp/wr_extract/review_list.jsonl`（已剔除上述 2 条）
+
 ### 2026-09-09 主脑 — 周报导入/移除脚本路径修复（防跨目录误操作）
 - **问题**：`import_weekly_report_indicators.py` / `remove_weekly_report_import.py` 的 `DST` 写死绝对路径 `/home/ubuntu/framework-tree/...`。回退演练时在 `/tmp/rb2/framework-tree` 隔离 clone 里跑移除脚本，**直接打到了主仓库**，把已入库的 205 条 wr* 指标删掉（文件从 1514 键掉到 1309）。实测触发 2 次。
 - **修复**：改用 `ROOT = pathlib.Path(__file__).resolve().parent.parent` + `DST = ROOT/'data/indicators_v1.json'` 相对推导，脚本永远只作用于自己所在的仓库。BAK 路径同步改为派生。

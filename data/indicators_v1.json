@@ -18334,7 +18334,7 @@
     ],
     "_verified_by": "zhiji_series_reuse_20260908"
   },
-  "version": "v3.77",
+  "version": "v3.78",
   "change": "4.x非库存指标二次清洗(zn_43_premium/cu_44/cu_46/cu_47/ni_42_premium)",
   "_main_metric": {
     "ZN_2.1": "zn_21_close_main",
@@ -18669,6 +18669,29 @@
         "replaced_version": "v3.76(205条)",
         "note": "清洗引擎修掉了 90 条 ID 错配（如\"碳酸锂产量:新疆\"从原煤改回碳酸锂），清洗 72 条多候选污染名称列；94 条上轮入库但本轮判定不合格已剔除"
       }
+    },
+    {
+      "date": "2026-09-09",
+      "version": "v3.78",
+      "change": "手工修正 2 条漏网错配（wr1 A00升贴水-上海 / wr156 锂精矿进口-津巴布韦）",
+      "details": {
+        "keys": 1585,
+        "fixed": [
+          {
+            "key": "wr1",
+            "from": "ID01167389",
+            "to": "a12819790",
+            "chart": "A00升贴水-上海"
+          },
+          {
+            "key": "wr156",
+            "from": "a12805150",
+            "to": "a12805896",
+            "chart": "锂精矿进口 津巴布韦"
+          }
+        ],
+        "reason": "复核 review_list 时发现的低分错配: 图表名含品种词但清洗引擎的 ALIAS_CHECK 未覆盖 \"A00\"(未命中因真名是\"锌锭\"且图表名解析出的品种为AL), 与 \"锂精矿进口\"匹配到南非海关锌精矿"
+      }
     }
   ],
   "wr1": {
@@ -18678,19 +18701,19 @@
     "verified": false,
     "category": "weekly_report_import",
     "ids": {
-      "AL": "ID01167389"
+      "AL": "a12819790"
     },
     "weekly_report_import": {
       "date": "2026-09-09",
       "variety": "铝",
       "module": "价格",
       "indicator_no": "04",
-      "zhiji_name": "锌锭：升贴水：上海（日）",
+      "zhiji_name": "SMM: A00铝升贴水: 涨跌: 日度",
       "zhiji_source": "mysteel",
-      "fix_tag": "corrected",
-      "fix_score": 71,
-      "fix_issues": "variety_unverified",
-      "old_zhiji_id": "a10017061",
+      "fix_tag": "manual_fix",
+      "fix_score": 95,
+      "fix_issues": "manual:手工修正: 原匹配为锌锭升贴水(ID01167389), 应为SMM A00铝升贴水",
+      "old_zhiji_id": "ID01167389",
       "freq_report": "日",
       "pres": "时序折线",
       "chart_type": "时序",
@@ -23328,18 +23351,18 @@
     "verified": false,
     "category": "weekly_report_import",
     "ids": {
-      "LI": "a12805150"
+      "LI": "a12805896"
     },
     "weekly_report_import": {
       "date": "2026-09-09",
       "variety": "碳酸锂",
       "module": "锂矿",
       "indicator_no": "15",
-      "zhiji_name": "南非海关: 锌精矿出口量: 津巴布韦: 月度",
+      "zhiji_name": "中国海关: 锂辉石进口量: 津巴布韦: 月度",
       "zhiji_source": "",
-      "fix_tag": "verified",
-      "fix_score": 63,
-      "fix_issues": "variety_unverified",
+      "fix_tag": "manual_fix",
+      "fix_score": 95,
+      "fix_issues": "manual:手工修正: 原匹配为南非海关锌精矿出口量(a12805150), 应为锂辉石进口量津巴布韦",
       "old_zhiji_id": "a12805150",
       "freq_report": "月",
       "pres": "时序折线",
