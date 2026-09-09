@@ -390,11 +390,37 @@ function selectChip(leaf, commId, autoNav, render){
          'PB_t2':'pb_62_import_export.html',  // 6.2 精炼金属进出口
          'PB_t3':'pb_63_product_export.html',  // 6.3 制品出口
          'PB_t4':'pb_64_overseas_shipping.html',  // 6.4 海外对华发运
+      // === wr周报页(周报视角, 与常规页并列) ===
+      'AO_p3': 'ao_23_price.html',
+      'AO_s3': 'ao_313_domestic_mine.html',
+      'AO_s4': 'ao_314_import_arrival.html',
+      'AO_s6': 'ao_321_production.html',
+      'AO_i2': 'ao_42_warehouse_receipts.html',
+      'AO_i4': 'ao_44_mill_inventory.html',
+      'AO_c1': 'ao_71_cost_curve.html',
+      'LC_wr_s3': 'li_313wr_lithium_inventory.html',
+      'LC_wr_s6': 'li_321_wr_production.html',
+      'LC_wr_s7': 'li_322wr_utilization.html',
+      'LC_wr_i1': 'li_41wr_exchange_inventory.html',
+      'LC_wr_t1': 'li_61wr_trade.html',
+      'LC_wr_c1': 'li_71wr_cost_curve.html',
+      'NI_wr_p3': 'ni_23wr_price.html',
+      'NI_wr_p4': 'ni_24wr_spread.html',
+      'NI_wr_i1': 'ni_41wr_exchange_inventory.html',
+      'NI_wr_i3': 'ni_43wr_social_inventory.html',
+      'NI_wr_t1': 'ni_61wr_trade.html',
+      'SI_wr_p3': 'si_23wr_price.html',
+      'SI_wr_s6': 'si_321wr_polysilicon.html',
+      'SI_wr_c1': 'si_71wr_cost_curve.html',
+      'AL_wr_p3': 'al_23wr_price.html',
+      'AL_wr_i1': 'al_41wr_exchange_inventory.html',
+      'SN_wr_p3': 'sn_23wr_price.html',
       };
   const key = cm.code+'_'+leaf.id;
+  const wrKey = cm.code+'_wr_'+leaf.id;  // 周报视角键
 
   // 五金属(ZN/NI/SN/SI/LI) + 碳酸锂(LC, id=li)：根据 leaf.code 动态推导文件名（例：li + 3.1.1 → li_3_1_1.html）
-  if(!PAGE_MAP[key] && ['ZN','NI','SN','SI','LI','LC'].indexOf(cm.code)>=0){
+  if(!PAGE_MAP[key] && !PAGE_MAP[wrKey] && ['ZN','NI','SN','SI','LI','LC','AO'].indexOf(cm.code)>=0){
     const v = cm.code === 'LC' ? 'li' : cm.code.toLowerCase();
     const fname = v + '_' + leaf.code.replace(/\./g,'_') + '.html';
     if(autoNav){
@@ -412,6 +438,16 @@ function selectChip(leaf, commId, autoNav, render){
       window.location.href = PAGE_MAP[key];
       return;
     }
+  }
+  // 周报(wr)视角: 同一节点的周报数据源页(与常规页并列, 独立入口)
+  if(PAGE_MAP[wrKey]){
+    if(autoNav){
+      window.location.href = PAGE_MAP[wrKey];
+      return;
+    }
+    document.getElementById('ph-note').textContent =
+      '📰 ' + cm.code + ' ' + leaf.name + ' 周报视角 → ' + PAGE_MAP[wrKey] + '（点击 chip 跳转）';
+    return;
   }
   // 其余品种/子类 或 未主动点击 → 显示占位
   document.getElementById('ph-note').textContent =
