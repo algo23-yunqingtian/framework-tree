@@ -2882,6 +2882,18 @@ PAGES = PAGES = PAGES = PAGES = {
 'label': '锂7.3能源/原料成本',
 'has_seasonal': False,
     },
+'ao23': {
+ 'file': 'ao_23_price.html',
+ 'min_bytes': 20000,
+ 'charts': 3,
+ 'cids': [
+ 'echart_ao23_c1',
+ 'echart_ao23_c2',
+ 'echart_ao23_c3',
+         ],
+ 'label': '氧化铝2.3价格',
+ 'has_seasonal': True,
+     },
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
