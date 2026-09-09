@@ -19222,7 +19222,7 @@
     }
   },
   "wr17": {
-    "name": "LME仓单原产地",
+    "name": "LME仓单-注册仓单(非原产地, 知几无原产地指标)",
     "unit": "吨",
     "freq": "日",
     "verified": true,
@@ -19318,10 +19318,10 @@
     }
   },
   "wr20": {
-    "name": "LME铝远月月差3-15",
+    "name": "LME铝远月月差3-15(知几无此指标, 需计算3M-15M价差, 当前ID是3M结算价代理)",
     "unit": "美元/吨",
     "freq": "日",
-    "verified": true,
+    "verified": false,
     "category": "weekly_report_import",
     "ids": {
       "AL": "FU00014801"
@@ -19356,7 +19356,8 @@
       "series_freq": "日",
       "verified_date": "2026-09-09",
       "verified_value_sample": "1600"
-    }
+    },
+    "review_fix_unresolved": "知几无铝月差序列, 当前用3M结算价代理, 非真实月差"
   },
   "wr21": {
     "name": "SHFE铝近3月虚实比",
@@ -20507,13 +20508,13 @@
     }
   },
   "wr56": {
-    "name": "氧化铝库存-阿拉丁-氧化铝厂",
+    "name": "氧化铝库存-阿拉丁-氧化铝厂(中国除新疆)",
     "unit": "万吨",
     "freq": "周",
     "verified": true,
     "category": "weekly_report_import",
     "ids": {
-      "AL-AX": "ID01721691"
+      "AL-AX": "ID01721655"
     },
     "weekly_report_import": {
       "date": "2026-09-09",
