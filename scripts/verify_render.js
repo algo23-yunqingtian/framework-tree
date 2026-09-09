@@ -268,6 +268,7 @@ const PAGES = [
   { key: 'li_71', file: 'li_7_1.html', charts: 2, seasonal: [] },
   { key: 'li_72', file: 'li_7_2.html', charts: 2, seasonal: [] },
   { key: 'li_73', file: 'li_7_3.html', charts: 3, seasonal: [] },
+  { key: 'ao22', file: 'ao_22_spot.html', charts: 2, seasonal: ['echart_ao22_c2'] },
 ];
 
 function expectedBtnText(mode) {

@@ -73,6 +73,14 @@
 
 ## 近期变更记录
 
+### 2026-09-09 主脑 — 氧化铝(AO)首节点建页 2.2 现货与升贴水（2图真数据/v3.81）
+- **背景**：AO 品种 v3.80 落地后 0 页面，index.html PAGE_MAP 自动 fallback 占位。按任务卡 P1 建 AO 首节点深度验证。
+- **选点**：AO 价格模块 11 条 wr* 中 wr34/wr35/wr38/wr40 已 verified（v3.81 回填），数据充足。
+- **拉数**：新建 scripts/fetch_wr_cache.py（refresh_cache 只认 i*/j*/cu_/al_ 前缀，wr* 需独立脚本），code=AO 拉 4 条进 api_cache.db：wr34/35 内蒙+山东长单均价(月,68点2021-26)、wr38 贵州(月,68点)、wr40 中国一级均价(日,2121点2018-26)。
+- **建页**：scripts/build_ao_22.py → ao_22_spot.html(68KB,2图)：图1 三网长单均价 内蒙 vs 山东(chart_dual)、图2 中国一级价季节图(chart_line_t 时序⇄季节,近5年历年对齐)。NOTE 含产业链位置(铝土矿→氧化铝→电解铝)与 SMM 待修指标清单。
+- **门禁**：check_html 243/243 + verify_render 243/243 + reclaim 12 PASS / 0 FAIL。verify_render key 用 ao22(匹配 cid 前缀 echart_ao22_cN)。
+- **脚本**：scripts/fetch_wr_cache.py(新)、scripts/build_ao_22.py(新)、check_html.py 加 ao22 条目、verify_render.js 加 ao22 条目。
+
 ### 2026-09-09 主脑 — 周报指标 unit/freq/verified 批量回填（87/94 非SMM源 / v3.81）
 - **背景**：v3.80 落地 AO 独立品种后，276 条 wr* 指标 `verified` 全 false、`unit`/`freq` 全空。按任务卡 P0 优先做不依赖外部 key 的部分。
 - **关键发现**：知几 `zhiji_api.py series <id>` 响应**直接返回 unit/frequency 字段**（零猜测），无需从名称推断。94 条非 SMM 源（ID/CM00/FU 前缀）可正常拉通。

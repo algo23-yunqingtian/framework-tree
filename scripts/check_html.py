@@ -61,6 +61,17 @@ PAGES = PAGES = PAGES = PAGES = {
 'label': '2.3 海外价格',
 'has_seasonal': True,
     },
+'ao22': {
+'file': 'ao_22_spot.html',
+'min_bytes': 20000,
+'charts': 2,
+'cids': [
+'echart_ao22_c1',
+'echart_ao22_c2',
+        ],
+'label': 'AO 2.2 现货与升贴水',
+'has_seasonal': True,
+    },
 '24': {
 'file': 'pb_24_spread_system.html',
 'min_bytes': 20000,
