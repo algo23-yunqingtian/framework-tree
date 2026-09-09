@@ -84,6 +84,20 @@
 - **备份**：`/tmp/indicators_v1.json.bak_p0v4`（操作前备份）
 - **后续**：① 待SMM凭据修复后重新拉数（182条）；② 覆盖率达50%后方可建页；③ AO品种建页（P1）可先用非SMM的84条verified指标
 
+### 2026-09-09 agent-2 — P1 AO品种建页（5页 / 247/247门禁全绿）
+- **背景**：氧化铝(AO)为独立品种节点（9品种之一），13子节点需建页。已有13条verified wr指标可支撑建页。
+- **已完成**：5个AO子节点页面，全部3图/2图/1图真数据，check_html 247/247 PASS
+  - `ao_23_price.html` — 2.3 价格（3图：中国平均价+山东+内蒙古）
+  - `ao_321_production.html` — 3.2.1 精炼产量（2图：建成产能+河南产量）
+  - `ao_313_domestic_mine.html` — 3.1.3 国内矿产量（1图：几内亚出口）
+  - `ao_44_mill_inventory.html` — 4.4 工厂库存（2图：厂内库存+社会库存）
+  - `ao_71_cost_curve.html` — 7.1 成本曲线（1图：冶炼成本）
+- **待做**：8个子节点无verified数据（SMM源凭据失效），待P0覆盖率提升后补建
+  - p2(2.2)现货升贴水 · s4(3.1.4)矿进口 · s7(3.2.2)开工率 · s9(3.2.4)冶炼利润弹性
+  - i2(4.2)仓单 · i5(4.5)隐性在途 · t2(6.2)精炼进出口 · c2(7.2)日度利润
+- **数据**：api_cache.db 新建（13条AO指标 / 3246行数据），build脚本5个
+- **分支**：`task/p0_verify`（P0+P1合并分支）
+
 ### 2026-09-09 主脑 — 周报指标框架树导入（205 条 / v3.76 / 可回退）
 - **背景**：另一台服务器的周报指标框架树归档（`algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md`，518 指标 / 6 品种 / 95% 匹配率，含框架树 JSON + 扁平 CSV + 344 图表分析 JSON）。经比对与 framework-tree 仅 28 条重叠，增量价值高（氧化铝 63 条、铝 48、镍与不锈钢 39、锡 31、硅 35、碳酸锂 5）。
 - **回退锚点**：入库前已打 tag `PRE_WEEKLY_REPORT_IMPORT_20260909`（指向 e770ce8）+ 备份分支 `backup_pre_weekly_report_20260909`，另有本地备份 `data/indicators_v1.json.bak_pre_wr20260909`。**三层可回退**：`git reset --hard PRE_WEEKLY_REPORT_IMPORT_20260909`（彻底回退含版本号）或 `python3 scripts/remove_weekly_report_import.py --apply`（只删 wr* 键）。
