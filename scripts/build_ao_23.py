@@ -1,25 +1,28 @@
 #!/usr/bin/env python3
-"""氧化铝(AO) 2.3 价格子页 · v1 · 3 图真数据（板块2·价格信号·海外价格）
+"""氧化铝(AO) 2.3 价格子页 · v2 · 4 图真数据（板块2·价格信号·海外价格）
 
 图1 中国氧化铝平均价(正主)：wr40 中国平均价-氧化铝一级(日) —— 国内现货价格基准
 图2 三网均价-山东(辅)：wr35 三网均价-山东(月) —— 主产区山东价格
 图3 三网均价-内蒙古(辅)：wr34 三网均价-内蒙古(月) —— 新兴产区内蒙古价格
+图4 印尼FOB氧化铝(辅)：wr88 印尼FOB-氧化铝(月) —— 海外价格对标
 """
 from chart_kits import (load_metric, pairs, latest, chart_line_t,
                         page_html, write_html, make_crumb)
 
-CIDS = ["echart_ao23_c1", "echart_ao23_c2", "echart_ao23_c3"]
+CIDS = ["echart_ao23_c1", "echart_ao23_c2", "echart_ao23_c3", "echart_ao23_c4"]
 
 m_avg = load_metric("wr40", code="AO")
 m_sd = load_metric("wr35", code="AO")
 m_nm = load_metric("wr34", code="AO")
+m_fob = load_metric("wr88", code="AO")
 
 d_avg = pairs(m_avg)
 d_sd = pairs(m_sd)
 d_nm = pairs(m_nm)
+d_fob = pairs(m_fob)
 
-print("[POINTS] 平均价=%d 山东=%d 内蒙古=%d" % (
-    len(d_avg), len(d_sd), len(d_nm)))
+print("[POINTS] 平均价=%d 山东=%d 内蒙古=%d 印尼FOB=%d" % (
+    len(d_avg), len(d_sd), len(d_nm), len(d_fob)))
 
 # === 图1：中国氧化铝平均价 ===
 h1, j1 = chart_line_t(
@@ -56,21 +59,32 @@ h3, j3 = chart_line_t(
     "怎么看：内蒙古价格低于山东=新产能价格竞争激烈=行业利润承压。"
 )
 
-NOTE = """<strong style="color:#c9d1d9">2.3 定义：</strong>海外价格 = 中国氧化铝平均价 + 分地区三网均价，判断国内现货价格基本面与地区价差。<br>
+# === 图4：印尼FOB氧化铝 ===
+h4, j4 = chart_line_t(
+    "echart_ao23_c4",
+    "印尼FOB氧化铝·季节图",
+    "印尼FOB-氧化铝 · 月 · 美元/吨 · %d 点 · 至 %s" % (
+        len(d_fob), latest(m_fob)),
+    "#7a8c5b", d_fob,
+    "什么时候看：印尼FOB价格是海外氧化铝定价基准，与中国内贸价格联动。<br>"
+    "怎么看：印尼FOB上行=海外氧化铝供应偏紧。与进口盈亏结合看：FOB+关税-运费 vs 国内价=进口盈亏。"
+)
+
+NOTE = """<strong style="color:#c9d1d9">2.3 定义：</strong>海外价格 = 中国氧化铝平均价 + 分地区三网均价 + 海外FOB价格，判断国内现货价格基本面与地区价差。<br>
 <strong style="color:#c9d1d9">指标组（正主）：</strong>wr40 中国平均价-氧化铝一级(元/吨/日) —— 国内现货价格基准。<br>
-<strong style="color:#c9d1d9">辅助指标：</strong>wr35 三网均价-山东(元/吨/月) · wr34 三网均价-内蒙古(元/吨/月) · wr38 三网均价-贵州(元/吨/月)。<br>
-<strong style="color:#c9d1d9">排除项：</strong>海外FOB价格 → 2.3正主(wr88) · 电解铝价格 → AL板块 · 铝土矿价格 → AO 3.1.x。<br>
-<strong style="color:#c9d1d9">数据源：</strong>知几 API（ID00188139 中国平均价 + ID01721687 山东 + ID01721686 内蒙古 + ID01721683 贵州）。<br>
-<strong style="color:#c9d1d9">数据质量：</strong>平均价1623点(2023-08起)；山东/内蒙古/贵州各68-20点(月度)。<br>
+<strong style="color:#c9d1d9">辅助指标：</strong>wr35 三网均价-山东(元/吨/月) · wr34 三网均价-内蒙古(元/吨/月) · wr38 三网均价-贵州(元/吨/月) · wr88 印尼FOB-氧化铝(美元/吨/月)。<br>
+<strong style="color:#c9d1d9">排除项：</strong>电解铝价格 → AL板块 · 铝土矿价格 → AO 3.1.x。<br>
+<strong style="color:#c9d1d9">数据源：</strong>知几 API（ID00188139 中国平均价 + ID01721687 山东 + ID01721686 内蒙古 + ID01721683 贵州 + ID01655446 印尼FOB）。<br>
+<strong style="color:#c9d1d9">数据质量：</strong>平均价1623点(2023-08起)；山东/内蒙古/贵州各68-20点(月度)；印尼FOB 25点(月度)。<br>
 <strong style="color:#c9d1d9">2.x 边界：</strong>2.1=盘面结构(持仓/价/成交量) · 2.2=现货升贴水 · 2.3=海外价格(正主=中国平均价) · 2.4=月差结构 · 2.5=库存 · 2.6=加工费。"""
 
 html = page_html(
     "氧化铝(AO) 2.3 价格",
-    make_crumb("氧化铝", "AO", "2", "价格信号", "2.3", "海外价格", "1", 3),
+    make_crumb("氧化铝", "AO", "2", "价格信号", "2.3", "海外价格", "2", 4),
     "知几/Mysteel",
-    h1, h2, h3, NOTE,
-    "有色金属产业指标树 · 氧化铝(AO) 2.3 价格 · v1（3 图真数据 · 中国平均价 · 山东 · 内蒙古）· indicators_v1.json v3.82",
-    j1 + "\n" + j2 + "\n" + j3,
+    h1, h2, h3 + h4, NOTE,
+    "有色金属产业指标树 · 氧化铝(AO) 2.3 价格 · v2（4 图真数据 · 中国平均价 · 山东 · 内蒙古 · 印尼FOB）· indicators_v1.json v3.82",
+    j1 + "\n" + j2 + "\n" + j3 + "\n" + j4,
     CIDS,
     nav_back='<a href="index.html">← 回主站</a>',
 )

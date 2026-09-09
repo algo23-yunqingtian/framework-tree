@@ -2885,11 +2885,12 @@ PAGES = PAGES = PAGES = PAGES = {
 'ao23': {
  'file': 'ao_23_price.html',
  'min_bytes': 20000,
- 'charts': 3,
+ 'charts': 4,
  'cids': [
  'echart_ao23_c1',
  'echart_ao23_c2',
  'echart_ao23_c3',
+ 'echart_ao23_c4',
          ],
  'label': '氧化铝2.3价格',
  'has_seasonal': True,
