@@ -84,9 +84,9 @@
 - **备份**：`/tmp/indicators_v1.json.bak_p0v4`（操作前备份）
 - **后续**：① 待SMM凭据修复后重新拉数（182条）；② 覆盖率达50%后方可建页；③ AO品种建页（P1）可先用非SMM的84条verified指标
 
-### 2026-09-09 agent-2 — P2 非AO品种wr建页（11页 / 260/260门禁全绿）
+### 2026-09-09 agent-2 — P2 非AO品种wr建页（13页 / 262/262门禁全绿）
 - **背景**：71条非AO verified wr指标（LC34/NI16/SI11/AL7/SN3）已拉数入api_cache.db，可建页。
-- **已完成**：11个wr页面，覆盖全部5个非AO品种，check_html 260/260 PASS
+- **已完成**：13个wr页面，覆盖全部5个非AO品种，check_html 262/262 PASS
   - `li_321_wr_production.html` — 碳酸锂3.2.1精炼产量（3图：四川+山东+青海）
   - `li_322wr_utilization.html` — 碳酸锂3.2.2开工率（3图：开工率+总能耗+月产量）
   - `li_41wr_exchange_inventory.html` — 碳酸锂4.1交易所库存（2图：仓单+总库存）
@@ -95,10 +95,12 @@
   - `ni_41wr_exchange_inventory.html` — 镍4.1交易所库存（3图：总库存+精炼镍+电镀镍）
   - `ni_43wr_social_inventory.html` — 镍4.3社会库存（2图：热轧+冷轧）
   - `ni_23wr_price.html` — 镍2.3价格（3图：镍价+镍价周+镍只涨）
+  - `ni_61wr_trade.html` — 镍6.1进出口（3图：进口量+印尼+总量）
   - `si_23wr_price.html` — 硅2.3价格（3图：441#+553#+多晶硅N182）
+  - `si_321wr_polysilicon.html` — 硅3.2.1多晶硅产量（3图：总量+青海+云南）
   - `al_23wr_price.html` — 铝2.3价格（3图：LME月差+注销仓单+原产地）
   - `sn_23wr_price.html` — 锡2.3价格（3图：升贴水+升水+出厂价）
-- **待做**：剩余wr指标可继续补建（LC锂矿/矿库存/进出口细分、NI进出口/成本、SI多晶硅产量/成本等）
+- **待做**：剩余wr指标可继续补建（LC锂矿库存/成本细分、SI成本/多晶硅价格、AL库存/进出口等）
 - **数据**：api_cache.db共84条指标（AO13+非AO71），总数据点数万级
 
 ### 2026-09-09 agent-2 — P3 备用库维护（SMM源凭据失效指标清单）
