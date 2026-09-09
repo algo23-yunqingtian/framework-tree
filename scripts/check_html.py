@@ -382,7 +382,7 @@ PAGES = PAGES = PAGES = PAGES = {
 'al_2_3': {
 'file': 'al_2_3.html',
 'min_bytes': 20000,
-'charts': 3,
+'charts': 6,
 'cids': [
 'echart_al_23_c1',
 'echart_al_23_c2',
@@ -523,7 +523,7 @@ PAGES = PAGES = PAGES = PAGES = {
 'al_4_1': {
 'file': 'al_4_1.html',
 'min_bytes': 528000,
-'charts': 3,
+'charts': 6,
 'cids': [
 'echart_al_41_c1',
 'echart_al_41_c2',
@@ -2530,7 +2530,7 @@ PAGES = PAGES = PAGES = PAGES = {
 'has_seasonal': False,
     },
 'li_21': {
-'file': 'li_2_1.html',
+'file': 'li_5_1.html',
 'min_bytes': 30000,
 'charts': 4,
 'cids': [
@@ -2767,7 +2767,7 @@ PAGES = PAGES = PAGES = PAGES = {
 'li_322': {
 'file': 'li_3_2_2.html',
 'min_bytes': 12000,
-'charts': 2,
+'charts': 5,
 'cids': [
 'echart_li_322_c1',
 'echart_li_322_c2',
@@ -2820,7 +2820,7 @@ PAGES = PAGES = PAGES = PAGES = {
 'li_61': {
 'file': 'li_6_1.html',
 'min_bytes': 12000,
-'charts': 2,
+'charts': 5,
 'cids': [
 'echart_li_61_c1',
 'echart_li_61_c2',
@@ -2862,7 +2862,7 @@ PAGES = PAGES = PAGES = PAGES = {
 'li_71': {
 'file': 'li_7_1.html',
 'min_bytes': 12000,
-'charts': 2,
+'charts': 5,
 'cids': [
 'echart_li_71_c1',
 'echart_li_71_c2',

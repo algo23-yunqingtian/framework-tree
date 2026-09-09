@@ -32,6 +32,105 @@ footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top
 <strong style="color:#c9d1d9">6.1 定义：</strong>原料进口量。<br><strong style="color:#c9d1d9">指标组：</strong>li_61_import_2 碳酸锂进口量(monthly,吨) · li_61_by_country_import 碳酸锂进口分国别(吨)。<br><strong style="color:#c9d1d9">数据质量：</strong>按可用序列生成 2 图，全指标已入图。
 </div>
 </div>
+<!-- === 周报视角(wr)补充 === -->
+<div class="panel" style="margin-top:20px;border:1px solid #21262d;border-radius:8px;padding:16px"><div style="color:#c9d1d9;font-size:14px;font-weight:600;margin-bottom:8px">📰 周报视角补充</div><div class="chart"><div class="chart-title">碳酸锂进口-中国（6.1 正主）</div><div class="chart-sub">碳酸锂进口-中国 · 月 · 吨 · 43 点 · 至 2026-07-31</div><div id="echart_li_61_c3" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_li_61_c3',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：6.1 进出口的正主图——判断中国碳酸锂进口依赖度。<br>怎么看：进口上行=国内供给不足=进口依赖增加。进口下行=国内供给充裕=进口依赖减少。</div></div><div class="chart"><div class="chart-title">碳酸锂出口-全球·季节图</div><div class="chart-sub">碳酸锂出口-全球 · 月 · 吨 · 31 点 · 至 2026-07-31</div><div id="echart_li_61_c4" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_li_61_c4',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：全球出口反映碳酸锂国际贸易格局。<br>怎么看：出口上行=全球需求旺盛。出口下行=全球需求疲软。</div></div><div class="chart"><div class="chart-title">碳酸锂产量-全球·季节图</div><div class="chart-sub">碳酸锂产量-全球 · 月 · 吨 · 43 点 · 至 2026-07-31</div><div id="echart_li_61_c5" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_li_61_c5',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：全球产量反映碳酸锂整体供给水平。<br>怎么看：全球产量上行=供给增加。全球产量下行=供给收缩。</div></div>
+</div>
+<script>
+// === 周报视角(wr)补充图表 ===
+document.oncontextmenu=e=>{e.preventDefault();return false};
+document.onkeydown=e=>{if(e.ctrlKey&&['c','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();return false}};
+document.onselectstart=e=>{e.preventDefault();return false};
+var __yrs_echart_li_61_c3=[2023, 2024, 2025, 2026];
+var __pal_echart_li_61_c3=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_li_61_c3'] = [["2023-01-31", 8905.0], ["2023-02-28", 9539.0], ["2023-03-31", 13285.0], ["2023-04-30", 8733.0], ["2023-05-31", 13107.0], ["2023-06-30", 10514.0], ["2023-07-31", 9117.0], ["2023-08-31", 12221.0], ["2023-09-30", 9102.0], ["2023-10-31", 16791.0], ["2023-11-30", 13592.0], ["2023-12-31", 8676.0], ["2024-01-31", 9819.0], ["2024-02-29", 16058.0], ["2024-03-31", 16095.0], ["2024-04-30", 22899.0], ["2024-05-31", 18040.0], ["2024-06-30", 17399.0], ["2024-07-31", 15755.0], ["2024-08-31", 12143.0], ["2024-09-30", 16601.0], ["2024-10-31", 16969.0], ["2024-11-30", 16936.0], ["2024-12-31", 13363.0], ["2025-01-31", 19120.0], ["2025-02-28", 12040.0], ["2025-03-31", 16594.0], ["2025-04-30", 15546.0], ["2025-05-31", 9655.0], ["2025-06-30", 10226.0], ["2025-07-31", 13633.0], ["2025-08-31", 12982.0], ["2025-09-30", 11101.0], ["2025-10-31", 16210.0], ["2025-11-30", 14692.0], ["2025-12-31", 11704.0], ["2026-01-31", 16950.0], ["2026-02-28", 22381.0], ["2026-03-31", 18927.0], ["2026-04-30", 22957.0], ["2026-05-31", 13601.0], ["2026-06-30", 15095.0], ["2026-07-31", 15051.0]];
+window['__opts_echart_li_61_c3'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'碳酸锂进口-中国（6.1 正主）',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#4f8a7a',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#4f8a7a30'},{offset:1,color:'#4f8a7a00'}]}},
+      data:window['__data_echart_li_61_c3'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_li_61_c3'][window['__data_echart_li_61_c3'].length-1][0],window['__data_echart_li_61_c3'][window['__data_echart_li_61_c3'].length-1][1]],
+        itemStyle:{color:'#4f8a7a'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_li_61_c3.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_li_61_c3'], __yrs_echart_li_61_c3, __pal_echart_li_61_c3)
+  }
+};
+window['__inst_echart_li_61_c3'] = echarts.init(document.getElementById('echart_li_61_c3'),'dark');
+window['__mode_echart_li_61_c3'] = 'ts';
+window['__inst_echart_li_61_c3'].setOption(window['__opts_echart_li_61_c3']['ts'], true);
+
+var __yrs_echart_li_61_c4=[2024, 2025, 2026];
+var __pal_echart_li_61_c4=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_li_61_c4'] = [["2024-01-31", 204.6], ["2024-02-29", 1432.2], ["2024-03-31", 1902.78], ["2024-04-30", 7918.02], ["2024-05-31", 4705.8], ["2024-06-30", 306.9], ["2024-07-31", 3838.296], ["2024-08-31", 7021.872], ["2024-09-30", 7645.206], ["2024-10-31", 4769.7], ["2024-11-30", 22057.52], ["2024-12-31", 9886.76], ["2025-01-31", 2103.56], ["2025-02-28", 10338.58], ["2025-03-31", 5820.1], ["2025-04-30", 9055.48], ["2025-05-31", 9729.469], ["2025-06-30", 7684.2], ["2025-07-31", 10387.9], ["2025-08-31", 6915.78], ["2025-09-30", 8367.24], ["2025-10-31", 1707.6], ["2025-11-30", 10131.76], ["2025-12-31", 4838.2], ["2026-01-31", 27833.88], ["2026-02-28", 12106.897], ["2026-03-31", 16535.26], ["2026-04-30", 12095.5], ["2026-05-31", 14201.54], ["2026-06-30", 14941.512], ["2026-07-31", 7712.66]];
+window['__opts_echart_li_61_c4'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'碳酸锂出口-全球·季节图',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#5b98c9',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#5b98c930'},{offset:1,color:'#5b98c900'}]}},
+      data:window['__data_echart_li_61_c4'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_li_61_c4'][window['__data_echart_li_61_c4'].length-1][0],window['__data_echart_li_61_c4'][window['__data_echart_li_61_c4'].length-1][1]],
+        itemStyle:{color:'#5b98c9'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_li_61_c4.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_li_61_c4'], __yrs_echart_li_61_c4, __pal_echart_li_61_c4)
+  }
+};
+window['__inst_echart_li_61_c4'] = echarts.init(document.getElementById('echart_li_61_c4'),'dark');
+window['__mode_echart_li_61_c4'] = 'ts';
+window['__inst_echart_li_61_c4'].setOption(window['__opts_echart_li_61_c4']['ts'], true);
+
+var __yrs_echart_li_61_c5=[2023, 2024, 2025, 2026];
+var __pal_echart_li_61_c5=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_li_61_c5'] = [["2023-01-31", 268.0], ["2023-02-28", 826.0], ["2023-03-31", 331.0], ["2023-04-30", 165.0], ["2023-05-31", 466.0], ["2023-06-30", 330.0], ["2023-07-31", 296.0], ["2023-08-31", 41.0], ["2023-09-30", 235.0], ["2023-10-31", 144.0], ["2023-11-30", 152.0], ["2023-12-31", 0.0], ["2024-01-31", 165.0], ["2024-02-29", 21.0], ["2024-03-31", 103.0], ["2024-04-30", 0.0], ["2024-05-31", 474.0], ["2024-06-30", 206.0], ["2024-07-31", 247.0], ["2024-08-31", 0.0], ["2024-09-30", 62.0], ["2024-10-31", 96.0], ["2024-11-30", 0.0], ["2024-12-31", 289.0], ["2025-01-31", 0.0], ["2025-02-28", 0.0], ["2025-03-31", 268.0], ["2025-04-30", 103.0], ["2025-05-31", 83.0], ["2025-06-30", 0.0], ["2025-07-31", 145.0], ["2025-08-31", 165.0], ["2025-09-30", 0.0], ["2025-10-31", 150.0], ["2025-11-30", 0.0], ["2025-12-31", 0.0], ["2026-01-31", 516.0], ["2026-02-28", 248.0], ["2026-03-31", 268.0], ["2026-04-30", 173.0], ["2026-05-31", 206.0], ["2026-06-30", 103.0], ["2026-07-31", 392.0]];
+window['__opts_echart_li_61_c5'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'碳酸锂产量-全球·季节图',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#e06c75',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#e06c7530'},{offset:1,color:'#e06c7500'}]}},
+      data:window['__data_echart_li_61_c5'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_li_61_c5'][window['__data_echart_li_61_c5'].length-1][0],window['__data_echart_li_61_c5'][window['__data_echart_li_61_c5'].length-1][1]],
+        itemStyle:{color:'#e06c75'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_li_61_c5.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_li_61_c5'], __yrs_echart_li_61_c5, __pal_echart_li_61_c5)
+  }
+};
+window['__inst_echart_li_61_c5'] = echarts.init(document.getElementById('echart_li_61_c5'),'dark');
+window['__mode_echart_li_61_c5'] = 'ts';
+window['__inst_echart_li_61_c5'].setOption(window['__opts_echart_li_61_c5']['ts'], true);
+
+function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
+function __seasonalizeByYear(arr,years,palette){var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);var mm=parseInt(d.substring(5,7),10)-1;if(mm<0||mm>11)continue;if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(12);by[yr][mm]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<12;k++)if(dat[k]!==null)nonNull++;if(nonNull<3)continue;var rounded=[];for(var k=0;k<12;k++)rounded.push(dat[k]===null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:true,symbol:'circle',symbolSize:5,connectNulls:true,lineStyle:{color:color,width:2},itemStyle:{color:color},data:rounded});}return series;}
+var __mdays=[31,28,31,30,31,30,31,31,30,31,30,31];
+function __seasonalizeByDay(arr,years,palette){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var doy=function(s){var p=s.split('-');var m=parseInt(p[1],10)-1,d=parseInt(p[2],10),k=0;for(var i=0;i<m;i++)k+=md[i];return k+d-1;};var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(365);by[yr][doy(d)]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<365;k++)if(dat[k]!=null)nonNull++;if(nonNull<30)continue;var rounded=[];for(var k=0;k<365;k++)rounded.push(dat[k]==null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:false,symbol:'none',connectNulls:true,lineStyle:{color:color,width:1.6},itemStyle:{color:color},data:rounded});}return series;}
+function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
+window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
+btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
+window.addEventListener('resize',function(){['echart_li_61_c3','echart_li_61_c4','echart_li_61_c5'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+setTimeout(function(){window.__chartsReady=true;},1200);
+</script>
 <footer>有色金属产业指标树 · 锂(LI) 6.1 原料进口 · v1（2 图全真数据 · 自动批量生成）· indicators_v1.json v3.75</footer>
 <script src="assets/echarts.min.js"></script>
 <script>
