@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>碳酸锂(LC) 6.1 进出口 · 有色金属研究框架</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;padding:20px;
+     user-select:none;-webkit-user-select:none;-moz-user-select:none}
+.header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#161b22;border-radius:8px;margin-bottom:16px;border:1px solid #21262d}
+.brand{font-size:20px;font-weight:600}.brand small{font-size:12px;color:#8b949e;margin-left:8px}
+.hcrumbs{color:#8b949e}.hright{color:#5b7a8c;font-size:13px}
+.panel{background:#161b22;border-radius:8px;padding:20px;border:1px solid #21262d}
+.chart{background:#0d1117;border-radius:6px;padding:12px;margin:12px 0;border:1px solid #21262d}
+.chart-title{font-size:15px;font-weight:600;margin-bottom:6px;color:#e6edf3}
+.chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
+.chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
+.chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
+footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
+.note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
+<div class="header">
+  <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
+  <div class="hcrumbs">碳酸锂(LC) · 6 进出口 · 6.1 进出口 · v1 3 图</div>
+  <div class="hright">数据固化快照 · 2026-09-09 · 知几</div>
+</div>
+<div class="nav-back"><a href="index.html">← 回主站</a></div>
+<div class="panel">
+<div class="chart"><div class="chart-title">碳酸锂进口-中国（6.1 正主）</div><div class="chart-sub">碳酸锂进口-中国 · 月 · 吨 · 43 点 · 至 2026-07-31</div><div id="echart_lc61wr_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_lc61wr_c1',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：6.1 进出口的正主图——判断中国碳酸锂进口依赖度。<br>怎么看：进口上行=国内供给不足=进口依赖增加。进口下行=国内供给充裕=进口依赖减少。</div></div><div class="chart"><div class="chart-title">碳酸锂出口-全球·季节图</div><div class="chart-sub">碳酸锂出口-全球 · 月 · 吨 · 31 点 · 至 2026-07-31</div><div id="echart_lc61wr_c2" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_lc61wr_c2',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：全球出口反映碳酸锂国际贸易格局。<br>怎么看：出口上行=全球需求旺盛。出口下行=全球需求疲软。</div></div><div class="chart"><div class="chart-title">碳酸锂产量-全球·季节图</div><div class="chart-sub">碳酸锂产量-全球 · 月 · 吨 · 43 点 · 至 2026-07-31</div><div id="echart_lc61wr_c3" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_lc61wr_c3',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：全球产量反映碳酸锂整体供给水平。<br>怎么看：全球产量上行=供给增加。全球产量下行=供给收缩。</div></div>
+<div class="note">
+<strong style="color:#c9d1d9">6.1 定义：</strong>进出口 = 碳酸锂进口-中国 + 全球出口 + 全球产量，判断国际贸易格局。<br>
+<strong style="color:#c9d1d9">指标组（正主）：</strong>wr141 碳酸锂进口-中国(吨/月) —— 进口依赖度。<br>
+<strong style="color:#c9d1d9">辅助指标：</strong>wr142 全球出口 · wr143 全球产量。<br>
+<strong style="color:#c9d1d9">数据源：</strong>知几 API（ID01380154 进口 + ID01380155 出口 + ID01380156 全球产量）。<br>
+<strong style="color:#c9d1d9">数据质量：</strong>进口43点；出口31点；全球产量43点(月度)。<br>
+<strong style="color:#c9d1d9">6.x 边界：</strong>6.1=进出口(正主=中国进口) · 6.2=精炼进出口 · 6.3=制品出口 · 6.4=全球化布局。
+</div>
+</div>
+<footer>有色金属产业指标树 · 碳酸锂(LC) 6.1 进出口 · v1（3 图真数据 · 中国进口 · 全球出口 · 全球产量）· indicators_v1.json v3.82</footer>
+<script src="assets/echarts.min.js"></script>
+<script>
+document.oncontextmenu=e=>{e.preventDefault();return false};
+document.onkeydown=e=>{if(e.ctrlKey&&['c','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();return false}};
+document.onselectstart=e=>{e.preventDefault();return false};
+var __yrs_echart_lc61wr_c1=[2023, 2024, 2025, 2026];
+var __pal_echart_lc61wr_c1=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_lc61wr_c1'] = [["2023-01-31", 8905.0], ["2023-02-28", 9539.0], ["2023-03-31", 13285.0], ["2023-04-30", 8733.0], ["2023-05-31", 13107.0], ["2023-06-30", 10514.0], ["2023-07-31", 9117.0], ["2023-08-31", 12221.0], ["2023-09-30", 9102.0], ["2023-10-31", 16791.0], ["2023-11-30", 13592.0], ["2023-12-31", 8676.0], ["2024-01-31", 9819.0], ["2024-02-29", 16058.0], ["2024-03-31", 16095.0], ["2024-04-30", 22899.0], ["2024-05-31", 18040.0], ["2024-06-30", 17399.0], ["2024-07-31", 15755.0], ["2024-08-31", 12143.0], ["2024-09-30", 16601.0], ["2024-10-31", 16969.0], ["2024-11-30", 16936.0], ["2024-12-31", 13363.0], ["2025-01-31", 19120.0], ["2025-02-28", 12040.0], ["2025-03-31", 16594.0], ["2025-04-30", 15546.0], ["2025-05-31", 9655.0], ["2025-06-30", 10226.0], ["2025-07-31", 13633.0], ["2025-08-31", 12982.0], ["2025-09-30", 11101.0], ["2025-10-31", 16210.0], ["2025-11-30", 14692.0], ["2025-12-31", 11704.0], ["2026-01-31", 16950.0], ["2026-02-28", 22381.0], ["2026-03-31", 18927.0], ["2026-04-30", 22957.0], ["2026-05-31", 13601.0], ["2026-06-30", 15095.0], ["2026-07-31", 15051.0]];
+window['__opts_echart_lc61wr_c1'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'碳酸锂进口-中国（6.1 正主）',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#4f8a7a',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#4f8a7a30'},{offset:1,color:'#4f8a7a00'}]}},
+      data:window['__data_echart_lc61wr_c1'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_lc61wr_c1'][window['__data_echart_lc61wr_c1'].length-1][0],window['__data_echart_lc61wr_c1'][window['__data_echart_lc61wr_c1'].length-1][1]],
+        itemStyle:{color:'#4f8a7a'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_lc61wr_c1.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_lc61wr_c1'], __yrs_echart_lc61wr_c1, __pal_echart_lc61wr_c1)
+  }
+};
+window['__inst_echart_lc61wr_c1'] = echarts.init(document.getElementById('echart_lc61wr_c1'),'dark');
+window['__mode_echart_lc61wr_c1'] = 'ts';
+window['__inst_echart_lc61wr_c1'].setOption(window['__opts_echart_lc61wr_c1']['ts'], true);
+
+var __yrs_echart_lc61wr_c2=[2024, 2025, 2026];
+var __pal_echart_lc61wr_c2=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_lc61wr_c2'] = [["2024-01-31", 204.6], ["2024-02-29", 1432.2], ["2024-03-31", 1902.78], ["2024-04-30", 7918.02], ["2024-05-31", 4705.8], ["2024-06-30", 306.9], ["2024-07-31", 3838.296], ["2024-08-31", 7021.872], ["2024-09-30", 7645.206], ["2024-10-31", 4769.7], ["2024-11-30", 22057.52], ["2024-12-31", 9886.76], ["2025-01-31", 2103.56], ["2025-02-28", 10338.58], ["2025-03-31", 5820.1], ["2025-04-30", 9055.48], ["2025-05-31", 9729.469], ["2025-06-30", 7684.2], ["2025-07-31", 10387.9], ["2025-08-31", 6915.78], ["2025-09-30", 8367.24], ["2025-10-31", 1707.6], ["2025-11-30", 10131.76], ["2025-12-31", 4838.2], ["2026-01-31", 27833.88], ["2026-02-28", 12106.897], ["2026-03-31", 16535.26], ["2026-04-30", 12095.5], ["2026-05-31", 14201.54], ["2026-06-30", 14941.512], ["2026-07-31", 7712.66]];
+window['__opts_echart_lc61wr_c2'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'碳酸锂出口-全球·季节图',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#5b98c9',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#5b98c930'},{offset:1,color:'#5b98c900'}]}},
+      data:window['__data_echart_lc61wr_c2'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_lc61wr_c2'][window['__data_echart_lc61wr_c2'].length-1][0],window['__data_echart_lc61wr_c2'][window['__data_echart_lc61wr_c2'].length-1][1]],
+        itemStyle:{color:'#5b98c9'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_lc61wr_c2.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_lc61wr_c2'], __yrs_echart_lc61wr_c2, __pal_echart_lc61wr_c2)
+  }
+};
+window['__inst_echart_lc61wr_c2'] = echarts.init(document.getElementById('echart_lc61wr_c2'),'dark');
+window['__mode_echart_lc61wr_c2'] = 'ts';
+window['__inst_echart_lc61wr_c2'].setOption(window['__opts_echart_lc61wr_c2']['ts'], true);
+
+var __yrs_echart_lc61wr_c3=[2023, 2024, 2025, 2026];
+var __pal_echart_lc61wr_c3=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_lc61wr_c3'] = [["2023-01-31", 268.0], ["2023-02-28", 826.0], ["2023-03-31", 331.0], ["2023-04-30", 165.0], ["2023-05-31", 466.0], ["2023-06-30", 330.0], ["2023-07-31", 296.0], ["2023-08-31", 41.0], ["2023-09-30", 235.0], ["2023-10-31", 144.0], ["2023-11-30", 152.0], ["2023-12-31", 0.0], ["2024-01-31", 165.0], ["2024-02-29", 21.0], ["2024-03-31", 103.0], ["2024-04-30", 0.0], ["2024-05-31", 474.0], ["2024-06-30", 206.0], ["2024-07-31", 247.0], ["2024-08-31", 0.0], ["2024-09-30", 62.0], ["2024-10-31", 96.0], ["2024-11-30", 0.0], ["2024-12-31", 289.0], ["2025-01-31", 0.0], ["2025-02-28", 0.0], ["2025-03-31", 268.0], ["2025-04-30", 103.0], ["2025-05-31", 83.0], ["2025-06-30", 0.0], ["2025-07-31", 145.0], ["2025-08-31", 165.0], ["2025-09-30", 0.0], ["2025-10-31", 150.0], ["2025-11-30", 0.0], ["2025-12-31", 0.0], ["2026-01-31", 516.0], ["2026-02-28", 248.0], ["2026-03-31", 268.0], ["2026-04-30", 173.0], ["2026-05-31", 206.0], ["2026-06-30", 103.0], ["2026-07-31", 392.0]];
+window['__opts_echart_lc61wr_c3'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'碳酸锂产量-全球·季节图',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#e06c75',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#e06c7530'},{offset:1,color:'#e06c7500'}]}},
+      data:window['__data_echart_lc61wr_c3'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_lc61wr_c3'][window['__data_echart_lc61wr_c3'].length-1][0],window['__data_echart_lc61wr_c3'][window['__data_echart_lc61wr_c3'].length-1][1]],
+        itemStyle:{color:'#e06c75'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_lc61wr_c3.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_lc61wr_c3'], __yrs_echart_lc61wr_c3, __pal_echart_lc61wr_c3)
+  }
+};
+window['__inst_echart_lc61wr_c3'] = echarts.init(document.getElementById('echart_lc61wr_c3'),'dark');
+window['__mode_echart_lc61wr_c3'] = 'ts';
+window['__inst_echart_lc61wr_c3'].setOption(window['__opts_echart_lc61wr_c3']['ts'], true);
+
+function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
+function __seasonalizeByYear(arr,years,palette){var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);var mm=parseInt(d.substring(5,7),10)-1;if(mm<0||mm>11)continue;if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(12);by[yr][mm]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<12;k++)if(dat[k]!==null)nonNull++;if(nonNull<3)continue;var rounded=[];for(var k=0;k<12;k++)rounded.push(dat[k]===null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:true,symbol:'circle',symbolSize:5,connectNulls:true,lineStyle:{color:color,width:2},itemStyle:{color:color},data:rounded});}return series;}
+var __mdays=[31,28,31,30,31,30,31,31,30,31,30,31];
+function __seasonalizeByDay(arr,years,palette){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var doy=function(s){var p=s.split('-');var m=parseInt(p[1],10)-1,d=parseInt(p[2],10),k=0;for(var i=0;i<m;i++)k+=md[i];return k+d-1;};var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(365);by[yr][doy(d)]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<365;k++)if(dat[k]!=null)nonNull++;if(nonNull<30)continue;var rounded=[];for(var k=0;k<365;k++)rounded.push(dat[k]==null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:false,symbol:'none',connectNulls:true,lineStyle:{color:color,width:1.6},itemStyle:{color:color},data:rounded});}return series;}
+function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
+window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
+btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
+window.addEventListener('resize',function(){['echart_lc61wr_c1','echart_lc61wr_c2','echart_lc61wr_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+setTimeout(function(){window.__chartsReady=true;},1200);
+
+</script></body></html>

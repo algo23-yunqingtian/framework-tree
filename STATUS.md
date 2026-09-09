@@ -73,6 +73,67 @@
 
 ## 近期变更记录
 
+### 2026-09-09 主脑 — 合并 task/p0_verify(他) + task/wr_unit_backfill(我) → v3.83
+### 2026-09-09 agent-2 — P0 拉数验证+补unit（276条wr / v3.82 / 30.4%覆盖）
+- **背景**：276条wr*指标（周报导入，v3.79入库）全部`verified=false`、`unit`空。需series拉数验证量级并补unit字段，覆盖率目标≥50%。
+- **执行**：逐条调用知几API `series?id=xxx&start=2025-01-01&end=2026-09-01`，要求返回≥3个数据点才算验证通过。
+- **结果**：84/276条验证通过（30.4%），`verified=true` + `unit`补全。
+  - 非SMM源（ID0/CM0/FU0前缀）：94条中84条成功（89.4%），10条失败（数据点不足或HTTP 500）
+  - SMM源（a1/j0/s2前缀）：182条全部失败——**知几服务器端SMM凭据失效**（`login failed: code=10004 msg=用户不存在或者密码不正确`），非API key问题，需服务端修复
+- **覆盖率30.4% < 50%目标**：182条SMM源凭据失效无法拉数，非SMM源已全部尝试。SMM替代搜索尝试过但因知几搜索返回结果质量不稳定（品种混淆/指标类型错配）而放弃，避免引入错误匹配。
+- **已补unit样例**：碳酸锂产量=吨(74k~106k)、铝出库量=万吨(6.6~18.8)、氧化铝三网均价=元/吨(2556~5083)、硫酸镍价格=元/吨、不锈钢库存=吨、镍铁进口=吨
+- **备份**：`/tmp/indicators_v1.json.bak_p0v4`（操作前备份）
+- **后续**：① 待SMM凭据修复后重新拉数（182条）；② 覆盖率达50%后方可建页；③ AO品种建页（P1）可先用非SMM的84条verified指标
+
+### 2026-09-09 agent-2 — P2 非AO品种wr建页（17页 / 266/266门禁全绿）
+- **背景**：71条非AO verified wr指标（LC34/NI16/SI11/AL7/SN3）已拉数入api_cache.db，可建页。
+- **已完成**：17个wr页面，覆盖全部5个非AO品种，check_html 266/266 PASS
+  - `li_321_wr_production.html` — 碳酸锂3.2.1精炼产量（3图：四川+山东+青海）
+  - `li_322wr_utilization.html` — 碳酸锂3.2.2开工率（3图：开工率+总能耗+月产量）
+  - `li_313wr_lithium_inventory.html` — 碳酸锂3.1.3锂矿库存（3图：总库存+国内+隐性）
+  - `li_41wr_exchange_inventory.html` — 碳酸锂4.1交易所库存（2图：仓单+总库存）
+  - `li_61wr_trade.html` — 碳酸锂6.1进出口（3图：中国进口+全球出口+全球产量）
+  - `li_71wr_cost_curve.html` — 碳酸锂7.1成本曲线（3图：四川+山东+江西加工费）
+  - `ni_41wr_exchange_inventory.html` — 镍4.1交易所库存（3图：总库存+精炼镍+电镀镍）
+  - `ni_43wr_social_inventory.html` — 镍4.3社会库存（2图：热轧+冷轧）
+  - `ni_23wr_price.html` — 镍2.3价格（3图：镍价+镍价周+镍只涨）
+  - `ni_24wr_spread.html` — 镍2.4价差（2图：硫酸镍+镍价）
+  - `ni_61wr_trade.html` — 镍6.1进出口（3图：进口量+印尼+总量）
+  - `si_23wr_price.html` — 硅2.3价格（3图：441#+553#+多晶硅N182）
+  - `si_321wr_polysilicon.html` — 硅3.2.1多晶硅产量（3图：总量+青海+云南）
+  - `si_71wr_cost_curve.html` — 硅7.1成本曲线（3图：441#+553#+光伏级）
+  - `al_23wr_price.html` — 铝2.3价格（3图：LME月差+注销仓单+原产地）
+  - `al_41wr_exchange_inventory.html` — 铝4.1交易所库存（3图：电解铝+铝棒+进口）
+  - `sn_23wr_price.html` — 锡2.3价格（3图：升贴水+升水+出厂价）
+- **待做**：剩余wr指标可继续补建（LC锂矿加工费/贸易量、SI多晶硅价格、AL进出口等）
+- **数据**：api_cache.db共84条指标（AO13+非AO71），总数据点数万级
+
+### 2026-09-09 agent-2 — P3 备用库维护（SMM源凭据失效指标清单）
+- **背景**：192条wr指标因SMM源凭据失效无法拉数，需标记为"待外部源"进备用库。
+- **产出**：`docs/P3_BACKUP_LIBRARY.md` — 完整列出所有未验证指标，按品种分组，标记SMM源问题。
+- **关键数据**：
+  - 总wr指标276条，已验证84条(30.4%)，未验证192条(69.6%)
+  - SMM源(a1/j0/s2前缀)182条，非SMM拉数失败10条
+  - 氧化铝51条未验证、碳酸锂41条、镍不锈钢24条、硅25条、铝20条、锡31条
+- **阻塞**：需主脑修复知几API的SMM源login凭据（`login failed: code=10004`），修复后覆盖率可从30.4%提升至~95%
+- **P2说明**：非AO品种（LC/NI/SI/SN/AL）已有36-41页/品种，wr指标为补充数据，现有页面已覆盖所有tree_config节点，无需新建页面。wr指标可作为现有页面的辅助图表或交叉验证数据。
+
+### 2026-09-09 agent-2 — P1 AO品种建页（5页 / 247/247门禁全绿）
+- **背景**：氧化铝(AO)为独立品种节点（9品种之一），13子节点需建页。已有13条verified wr指标可支撑建页。
+- **已完成**：7个AO子节点页面，全部真数据，check_html 249/249 PASS
+  - `ao_23_price.html` — 2.3 价格（3图：中国平均价+山东+内蒙古）
+  - `ao_321_production.html` — 3.2.1 精炼产量（2图：建成产能+河南产量）
+  - `ao_313_domestic_mine.html` — 3.1.3 国内矿产量（1图：几内亚出口）
+  - `ao_314_import_arrival.html` — 3.1.4 矿进口发运到港（1图：港口库存-中国）
+  - `ao_42_warehouse_receipts.html` — 4.2 仓单（1图：期货库存-广西）
+  - `ao_44_mill_inventory.html` — 4.4 工厂库存（2图：厂内库存+社会库存）
+  - `ao_71_cost_curve.html` — 7.1 成本曲线（1图：冶炼成本）
+- **待做**：6个子节点无verified数据（SMM源凭据失效），待P0覆盖率提升后补建
+  - p2(2.2)现货升贴水 · s7(3.2.2)开工率 · s9(3.2.4)冶炼利润弹性
+  - i5(4.5)隐性在途 · t2(6.2)精炼进出口 · c2(7.2)日度利润
+- **数据**：api_cache.db 新建（13条AO指标 / 3246行数据），build脚本5个
+- **分支**：`task/p0_verify`（P0+P1合并分支）
+
 ### 2026-09-09 主脑 — 氧化铝(AO)首节点建页 2.2 现货与升贴水（2图真数据/v3.81）
 - **背景**：AO 品种 v3.80 落地后 0 页面，index.html PAGE_MAP 自动 fallback 占位。按任务卡 P1 建 AO 首节点深度验证。
 - **选点**：AO 价格模块 11 条 wr* 中 wr34/wr35/wr38/wr40 已 verified（v3.81 回填），数据充足。
@@ -97,6 +158,7 @@
 - **零 HTML 改动**：AO 页面尚未建；index.html 的 PAGE_MAP 按 code 前缀动态查表，AO 未建 chip 自动 fallback 到"开发中"占位（L397 特判列表 ZN/NI/SN/SI/LI/LC 不含 AO，不影响）。
 - **顺手修 reclaim.py 假阳性**：第 4 项"最近 10 条提交前缀规范"原用 `git log -10` 会取到 git 自动生成的 merge commit 标题（`Merge remote-tracking branch...`，不带 `[前缀]`），导致每次 merge 后门禁必红。改用 `--first-parent` + 显式跳过 `Merge ` 开头标题。
 - **门禁全绿**：check_html 242/242 + verify_render 242/242 + reclaim 12 PASS / 0 FAIL。
+- **合并处理**：indicators_v1.json 85 冲突块全部取我方 freq 实测值(84个freq块, 对方空串无信息) + version 升 v3.83；check_html.py 自动合并；STATUS.md 两段进度取并集保留。两分支共同基线 42401e2，无基线漂移。
 
 ### 2026-09-09 主脑 — 周报指标框架树导入（205 条 / v3.76 / 可回退）
 - **背景**：另一台服务器的周报指标框架树归档（`algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md`，518 指标 / 6 品种 / 95% 匹配率，含框架树 JSON + 扁平 CSV + 344 图表分析 JSON）。经比对与 framework-tree 仅 28 条重叠，增量价值高（氧化铝 63 条、铝 48、镍与不锈钢 39、锡 31、硅 35、碳酸锂 5）。

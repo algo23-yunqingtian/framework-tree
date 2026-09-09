@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>碳酸锂(LC) 3.1.3 锂矿库存 · 有色金属研究框架</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;padding:20px;
+     user-select:none;-webkit-user-select:none;-moz-user-select:none}
+.header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#161b22;border-radius:8px;margin-bottom:16px;border:1px solid #21262d}
+.brand{font-size:20px;font-weight:600}.brand small{font-size:12px;color:#8b949e;margin-left:8px}
+.hcrumbs{color:#8b949e}.hright{color:#5b7a8c;font-size:13px}
+.panel{background:#161b22;border-radius:8px;padding:20px;border:1px solid #21262d}
+.chart{background:#0d1117;border-radius:6px;padding:12px;margin:12px 0;border:1px solid #21262d}
+.chart-title{font-size:15px;font-weight:600;margin-bottom:6px;color:#e6edf3}
+.chart-sub{font-size:12px;color:#8b949e;margin-bottom:8px}
+.chart button{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;margin-top:4px;user-select:none}
+.chart button:hover{background:#30363d;color:#c9d1d9}
+.chart-note{font-size:12px;color:#a8c0d8;background:#10151c;border-left:3px solid #5b7a8c;padding:8px 10px;margin-top:8px;border-radius:0 4px 4px 0;line-height:1.6}
+footer{margin-top:20px;font-size:12px;color:#586069;text-align:center;border-top:1px solid #21262d;padding-top:16px}
+.note{font-size:12px;color:#8b949e;padding:12px;border-top:1px solid #21262d;margin-top:8px}
+.note strong{color:#c9d1d9}
+/* === PAGE_SPEC v1 新增：导航回链 === */
+.nav-back{display:flex;gap:16px;padding:8px 12px;background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:12px;font-size:12px;user-select:none}
+.nav-back a{color:#5b7a8c;text-decoration:none;padding:4px 8px;border-radius:4px;transition:color .15s,background .15s}
+.nav-back a:hover{color:#c9d1d9;background:#21262d;text-decoration:none}</style></head><body>
+<div class="header">
+  <div class="brand"><span>▮▮</span> 有色金属研究框架 <small>METALS FRAMEWORK v2</small></div>
+  <div class="hcrumbs">碳酸锂(LC) · 3 供给 · 3.1.3 锂矿库存 · v1 3 图</div>
+  <div class="hright">数据固化快照 · 2026-09-09 · 知几</div>
+</div>
+<div class="nav-back"><a href="index.html">← 回主站</a></div>
+<div class="panel">
+<div class="chart"><div class="chart-title">锂辉石库存（3.1.3 正主）</div><div class="chart-sub">锂辉石库存 · 月 · 吨 · 151 点 · 至 2026-08-28</div><div id="echart_lc313wr_c1" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_lc313wr_c1',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：3.1.3 锂矿库存的正主图——判断锂辉石整体库存水平。<br>怎么看：库存上行=原料供应充裕或需求疲软。库存下行=需求旺盛或供应收缩。</div></div><div class="chart"><div class="chart-title">锂辉石库存-国内·季节图</div><div class="chart-sub">锂辉石库存-国内 · 月 · 吨 · 18 点 · 至 2026-08-31</div><div id="echart_lc313wr_c2" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_lc313wr_c2',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：国内库存反映本土锂辉石供应水平。<br>怎么看：国内库存变化反映本土供需平衡。</div></div><div class="chart"><div class="chart-title">锂辉石库存-隐性·季节图</div><div class="chart-sub">锂辉石库存-隐性 · 月 · 吨 · 19 点 · 至 2026-08-31</div><div id="echart_lc313wr_c3" style="width:100%;height:320px"></div><button onclick="window.__tgl('echart_lc313wr_c3',this)">☀ 季节</button><div class="chart-note">📌 什么时候看：隐性库存是未在交易所注册的库存。<br>怎么看：隐性库存上行=潜在交割压力增加。隐性库存下行=交割压力减轻。</div></div>
+<div class="note">
+<strong style="color:#c9d1d9">3.1.3 定义：</strong>锂矿库存 = 锂辉石库存 + 国内库存 + 隐性库存，判断锂矿库存水平。<br>
+<strong style="color:#c9d1d9">指标组（正主）：</strong>wr150 锂辉石库存(吨/月) —— 总库存。<br>
+<strong style="color:#c9d1d9">辅助指标：</strong>wr151 国内库存 · wr152 隐性库存 · wr153 锂辉石贸易量 · wr154 锂辉石进口量。<br>
+<strong style="color:#c9d1d9">数据源：</strong>知几 API（ID01380165 总库存 + ID01380166 国内 + ID01380167 隐性）。<br>
+<strong style="color:#c9d1d9">数据质量：</strong>总库存151点；国内18点；隐性19点(月度)。<br>
+<strong style="color:#c9d1d9">3.x 边界：</strong>3.1.1=海外矿财报产量 · 3.1.2=分国别总量 · 3.1.3=锂矿库存(正主=总库存) · 3.1.4=矿进口发运到港 · 3.1.5=加工费 · 3.2.x=精炼。
+</div>
+</div>
+<footer>有色金属产业指标树 · 碳酸锂(LC) 3.1.3 锂矿库存 · v1（3 图真数据 · 总库存 · 国内 · 隐性）· indicators_v1.json v3.82</footer>
+<script src="assets/echarts.min.js"></script>
+<script>
+document.oncontextmenu=e=>{e.preventDefault();return false};
+document.onkeydown=e=>{if(e.ctrlKey&&['c','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();return false}};
+document.onselectstart=e=>{e.preventDefault();return false};
+var __yrs_echart_lc313wr_c1=[2023, 2024, 2025, 2026];
+var __pal_echart_lc313wr_c1=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_lc313wr_c1'] = [["2023-09-01", 13.2], ["2023-09-08", 12.8], ["2023-09-15", 13.4], ["2023-09-22", 13.6], ["2023-09-29", 14.4], ["2023-10-13", 13.7], ["2023-10-20", 13.0], ["2023-10-27", 13.1], ["2023-11-03", 14.6], ["2023-11-10", 14.3], ["2023-11-17", 15.3], ["2023-11-24", 15.9], ["2023-12-01", 16.0], ["2023-12-08", 14.9], ["2023-12-15", 14.1], ["2023-12-22", 13.3], ["2023-12-29", 13.0], ["2024-01-05", 11.8], ["2024-01-12", 11.0], ["2024-01-19", 10.8], ["2024-01-26", 10.6], ["2024-02-02", 10.9], ["2024-02-23", 11.1], ["2024-03-01", 10.3], ["2024-03-08", 9.9], ["2024-03-15", 10.0], ["2024-03-22", 10.6], ["2024-03-29", 10.5], ["2024-04-05", 10.9], ["2024-04-12", 11.2], ["2024-04-19", 11.6], ["2024-04-26", 11.8], ["2024-05-03", 11.2], ["2024-05-10", 10.3], ["2024-05-17", 9.8], ["2024-05-24", 9.7], ["2024-05-31", 9.9], ["2024-06-07", 10.4], ["2024-06-14", 10.6], ["2024-06-21", 10.8], ["2024-06-28", 10.3], ["2024-07-05", 10.0], ["2024-07-12", 9.7], ["2024-07-19", 9.4], ["2024-07-26", 9.6], ["2024-08-02", 9.2], ["2024-08-09", 9.4], ["2024-08-16", 9.7], ["2024-08-23", 9.9], ["2024-08-30", 9.6], ["2024-09-06", 9.4], ["2024-09-13", 9.2], ["2024-09-20", 8.8], ["2024-09-27", 7.8], ["2024-10-04", 7.8], ["2024-10-11", 7.5], ["2024-10-18", 7.6], ["2024-10-25", 7.1], ["2024-11-01", 6.9], ["2024-11-08", 6.9], ["2024-11-15", 6.7], ["2024-11-22", 6.8], ["2024-11-29", 6.5], ["2024-12-06", 6.8], ["2024-12-13", 6.2], ["2024-12-20", 6.0], ["2024-12-27", 5.8], ["2025-01-03", 5.8], ["2025-01-10", 5.7], ["2025-01-17", 5.4], ["2025-01-24", 5.4], ["2025-02-07", 5.3], ["2025-02-14", 5.1], ["2025-02-21", 5.0], ["2025-02-28", 5.4], ["2025-03-07", 5.1], ["2025-03-14", 5.2], ["2025-03-21", 5.6], ["2025-03-28", 6.0], ["2025-04-04", 6.3], ["2025-04-11", 6.7], ["2025-04-18", 6.8], ["2025-04-25", 9.4], ["2025-05-02", 10.5], ["2025-05-09", 11.6], ["2025-05-16", 12.8], ["2025-05-23", 13.6], ["2025-05-30", 11.6], ["2025-06-06", 9.0], ["2025-06-13", 8.1], ["2025-06-20", 9.9], ["2025-06-27", 11.4], ["2025-07-04", 8.3], ["2025-07-11", 9.7], ["2025-07-18", 7.9], ["2025-07-25", 6.7], ["2025-08-01", 6.5], ["2025-08-08", 9.9], ["2025-08-15", 11.7], ["2025-08-22", 13.1], ["2025-08-29", 10.5], ["2025-09-05", 9.3], ["2025-09-12", 9.1], ["2025-09-19", 8.6], ["2025-09-26", 7.3], ["2025-10-10", 7.2], ["2025-10-17", 6.6], ["2025-10-24", 7.7], ["2025-10-31", 8.2], ["2025-11-07", 10.0], ["2025-11-14", 8.6], ["2025-11-21", 10.3], ["2025-11-28", 9.4], ["2025-12-05", 10.0], ["2025-12-12", 11.5], ["2025-12-19", 13.9], ["2025-12-26", 14.6], ["2026-01-02", 14.2], ["2026-01-09", 15.4], ["2026-01-16", 14.7], ["2026-01-23", 20.0], ["2026-01-30", 27.1], ["2026-02-06", 23.8], ["2026-02-13", 15.2], ["2026-02-27", 14.1], ["2026-03-06", 11.3], ["2026-03-13", 12.0], ["2026-03-20", 10.5], ["2026-03-27", 9.5], ["2026-04-03", 9.4], ["2026-04-10", 8.5], ["2026-04-17", 10.7], ["2026-04-24", 10.7], ["2026-05-01", 10.3], ["2026-05-08", 9.7], ["2026-05-15", 9.7], ["2026-05-22", 7.7], ["2026-05-29", 9.1], ["2026-06-05", 6.5], ["2026-06-12", 6.3], ["2026-06-19", 6.1], ["2026-06-26", 5.4], ["2026-07-03", 5.6], ["2026-07-10", 5.7], ["2026-07-17", 5.2], ["2026-07-24", 4.3], ["2026-07-31", 6.4], ["2026-08-07", 9.1], ["2026-08-14", 9.5], ["2026-08-21", 9.1], ["2026-08-28", 10.2]];
+window['__opts_echart_lc313wr_c1'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'锂辉石库存（3.1.3 正主）',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#4f8a7a',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#4f8a7a30'},{offset:1,color:'#4f8a7a00'}]}},
+      data:window['__data_echart_lc313wr_c1'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_lc313wr_c1'][window['__data_echart_lc313wr_c1'].length-1][0],window['__data_echart_lc313wr_c1'][window['__data_echart_lc313wr_c1'].length-1][1]],
+        itemStyle:{color:'#4f8a7a'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_lc313wr_c1.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_lc313wr_c1'], __yrs_echart_lc313wr_c1, __pal_echart_lc313wr_c1)
+  }
+};
+window['__inst_echart_lc313wr_c1'] = echarts.init(document.getElementById('echart_lc313wr_c1'),'dark');
+window['__mode_echart_lc313wr_c1'] = 'ts';
+window['__inst_echart_lc313wr_c1'].setOption(window['__opts_echart_lc313wr_c1']['ts'], true);
+
+var __yrs_echart_lc313wr_c2=[2025, 2026];
+var __pal_echart_lc313wr_c2=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_lc313wr_c2'] = [["2025-03-31", 176000.0], ["2025-04-30", 235000.0], ["2025-05-31", 297000.0], ["2025-06-30", 340000.0], ["2025-07-31", 308000.0], ["2025-08-31", 326000.0], ["2025-09-30", 328000.0], ["2025-10-31", 320000.0], ["2025-11-30", 375000.0], ["2025-12-31", 473000.0], ["2026-01-31", 514000.0], ["2026-02-28", 436000.0], ["2026-03-31", 404000.0], ["2026-04-30", 390500.0], ["2026-05-31", 378000.0], ["2026-06-30", 363000.0], ["2026-07-31", 365000.0], ["2026-08-31", 402000.0]];
+window['__opts_echart_lc313wr_c2'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'锂辉石库存-国内·季节图',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#5b98c9',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#5b98c930'},{offset:1,color:'#5b98c900'}]}},
+      data:window['__data_echart_lc313wr_c2'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_lc313wr_c2'][window['__data_echart_lc313wr_c2'].length-1][0],window['__data_echart_lc313wr_c2'][window['__data_echart_lc313wr_c2'].length-1][1]],
+        itemStyle:{color:'#5b98c9'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_lc313wr_c2.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_lc313wr_c2'], __yrs_echart_lc313wr_c2, __pal_echart_lc313wr_c2)
+  }
+};
+window['__inst_echart_lc313wr_c2'] = echarts.init(document.getElementById('echart_lc313wr_c2'),'dark');
+window['__mode_echart_lc313wr_c2'] = 'ts';
+window['__inst_echart_lc313wr_c2'].setOption(window['__opts_echart_lc313wr_c2']['ts'], true);
+
+var __yrs_echart_lc313wr_c3=[2025, 2026];
+var __pal_echart_lc313wr_c3=['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];
+window['__data_echart_lc313wr_c3'] = [["2025-02-28", 63000.0], ["2025-03-31", 107000.0], ["2025-04-30", 136000.0], ["2025-05-31", 141000.0], ["2025-06-30", 145000.0], ["2025-07-31", 100000.0], ["2025-08-31", 115000.0], ["2025-09-30", 160000.0], ["2025-10-31", 125000.0], ["2025-11-30", 190000.0], ["2025-12-31", 130000.0], ["2026-01-31", 60000.0], ["2026-02-28", 61000.0], ["2026-03-31", 77000.0], ["2026-04-30", 66000.0], ["2026-05-31", 67000.0], ["2026-06-30", 95000.0], ["2026-07-31", 94000.0], ["2026-08-31", 88000.0]];
+window['__opts_echart_lc313wr_c3'] = {
+  ts: {
+    tooltip:{trigger:'axis'},grid:{left:55,right:60,top:30,bottom:40},
+    xAxis:{type:'time',axisLabel:{color:'#aaa',interval:0},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}},axisTick:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:[{name:'锂辉石库存-隐性·季节图',type:'line',smooth:true,symbol:'circle',symbolSize:4,
+      lineStyle:{color:'#e06c75',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#e06c7530'},{offset:1,color:'#e06c7500'}]}},
+      data:window['__data_echart_lc313wr_c3'],markPoint:{symbol:'circle',symbolSize:6,data:[{coord:[window['__data_echart_lc313wr_c3'][window['__data_echart_lc313wr_c3'].length-1][0],window['__data_echart_lc313wr_c3'][window['__data_echart_lc313wr_c3'].length-1][1]],
+        itemStyle:{color:'#e06c75'},label:{show:false}}]}}]
+  },
+  se: {
+    tooltip:{trigger:'axis',confine:true},
+    legend:{data:__yrs_echart_lc313wr_c3.map(function(y){return y+'年';}),textStyle:{color:'#ccc',fontSize:11},top:0,type:'scroll'},
+    grid:{left:55,right:60,top:35,bottom:40},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],axisLabel:{color:'#aaa'},splitLine:{show:false},axisLine:{lineStyle:{color:'#444'}}},
+    yAxis:{type:'value',axisLabel:{color:'#aaa'},splitLine:{lineStyle:{color:'#333',type:'dashed'}},axisLine:{lineStyle:{color:'#444'}}},
+    series:window.__seasonalizeByYear(window['__data_echart_lc313wr_c3'], __yrs_echart_lc313wr_c3, __pal_echart_lc313wr_c3)
+  }
+};
+window['__inst_echart_lc313wr_c3'] = echarts.init(document.getElementById('echart_lc313wr_c3'),'dark');
+window['__mode_echart_lc313wr_c3'] = 'ts';
+window['__inst_echart_lc313wr_c3'].setOption(window['__opts_echart_lc313wr_c3']['ts'], true);
+
+function __seasonalize(arr){var g={};for(var i=0;i<arr.length;i++){var m=parseInt(arr[i][0].split('-')[1],10)-1;if(m<0||m>11||arr[i][1]==null)continue;g[m]=g[m]||[];g[m].push(arr[i][1]);}var out=[];for(var k=0;k<12;k++){var v=g[k];out.push(v?Math.round(v.reduce(function(a,b){return a+b},0)/v.length):null);}return out;}
+function __seasonalizeByYear(arr,years,palette){var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);var mm=parseInt(d.substring(5,7),10)-1;if(mm<0||mm>11)continue;if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(12);by[yr][mm]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<12;k++)if(dat[k]!==null)nonNull++;if(nonNull<3)continue;var rounded=[];for(var k=0;k<12;k++)rounded.push(dat[k]===null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:true,symbol:'circle',symbolSize:5,connectNulls:true,lineStyle:{color:color,width:2},itemStyle:{color:color},data:rounded});}return series;}
+var __mdays=[31,28,31,30,31,30,31,31,30,31,30,31];
+function __seasonalizeByDay(arr,years,palette){var md=[31,28,31,30,31,30,31,31,30,31,30,31];var ys=(years||[]).slice().sort();var pal=palette||['#b06a32','#5b98c9','#7a8c5b','#9b6bb5','#c87070','#c9a227','#5fb3a1','#8c6fb0','#a67d5a','#6a8caf'];var doy=function(s){var p=s.split('-');var m=parseInt(p[1],10)-1,d=parseInt(p[2],10),k=0;for(var i=0;i<m;i++)k+=md[i];return k+d-1;};var by={};for(var y=0;y<ys.length;y++)by[ys[y]]=null;for(var i=0;i<arr.length;i++){var d=arr[i][0];var v=arr[i][1];if(v==null)continue;var yr=parseInt(d.substring(0,4),10);if(by[yr]===undefined)continue;if(by[yr]===null)by[yr]=new Array(365);by[yr][doy(d)]=v;}var series=[];for(var yi=0;yi<ys.length;yi++){var yv=ys[yi];var dat=by[yv];if(!dat)continue;var color=pal[yi % pal.length];var nonNull=0;for(var k=0;k<365;k++)if(dat[k]!=null)nonNull++;if(nonNull<30)continue;var rounded=[];for(var k=0;k<365;k++)rounded.push(dat[k]==null?null:Math.round(dat[k]));series.push({name:yv+'年',type:'line',smooth:false,symbol:'none',connectNulls:true,lineStyle:{color:color,width:1.6},itemStyle:{color:color},data:rounded});}return series;}
+function __tgl(id,btn){var cur=window['__mode_'+id],nxt=cur==='ts'?'se':'ts';
+window['__mode_'+id]=nxt;window['__inst_'+id].setOption(window['__opts_'+id][nxt],true);
+btn.textContent=nxt==='ts'?'☀ 季节':'⏱ 时序';}
+window.addEventListener('resize',function(){['echart_lc313wr_c1','echart_lc313wr_c2','echart_lc313wr_c3'].forEach(function(id){var el=document.getElementById(id);var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+setTimeout(function(){window.__chartsReady=true;},1200);
+
+</script></body></html>
