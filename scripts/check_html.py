@@ -2916,6 +2916,26 @@ PAGES = PAGES = PAGES = PAGES = {
  'label': '氧化铝4.4工厂库存',
  'has_seasonal': True,
      },
+'ao313': {
+ 'file': 'ao_313_domestic_mine.html',
+ 'min_bytes': 8000,
+ 'charts': 1,
+ 'cids': [
+ 'echart_ao313_c1',
+         ],
+ 'label': '氧化铝3.1.3国内矿产量',
+ 'has_seasonal': True,
+     },
+'ao71': {
+ 'file': 'ao_71_cost_curve.html',
+ 'min_bytes': 8000,
+ 'charts': 1,
+ 'cids': [
+ 'echart_ao71_c1',
+         ],
+ 'label': '氧化铝7.1成本曲线',
+ 'has_seasonal': True,
+     },
 }
 # 公共 JS 必须包含的函数/特征（不含季节真数据调用，那项按页类型单独校验）
 COMMON_JS_TOKENS = ["function __seasonalizeByYear", "function __tgl", "addEventListener('resize'"]
