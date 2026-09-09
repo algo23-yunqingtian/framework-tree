@@ -73,6 +73,19 @@
 
 ## 近期变更记录
 
+### 2026-09-09 主脑 — wr* 指标缺口审计 + SMM上游确认 + 两分支合并
+- **合并**：task/p0_verify(他17页+84wr) + task/wr_unit_backfill(我87wr unit) → v3.83, 门禁267/267+243/243+12PASS
+- **指标缺口审计（276条wr*）**：
+  - ✅ verified=true: 87条（31.5%）— ID/FU00/CM00前缀，知几主接口可拉
+  - ❌ verified=false: 189条
+    - SMM前缀(a1/j0/s2): 182条 — 知几上游调SMM报code=10017(1小时密码错误超限)锁死，**非用户可修，需知几平台修复**
+    - ID前缀未verified: 6条 — 数据本身太旧(年频/2022后断更，如wr65 USGS CIF数据latest=2022-12-31)，非流程遗漏
+    - CM00未verified: 1条 — 同上年频断更
+  - **结论**：87条非SMM已尽力补齐，剩余189条全部因SMM上游故障或数据源本身陈旧，**当前无可通过流程修复的遗漏**
+- **P3衍生指标**：10条(review_fix_unresolved)：wr10铝材出口利润/wr13铝杆加工费/wr20 LME月差/wr21虚实比/wr22连一-连二/wr89氧化铝净出口/wr137正极产量/wr180光伏锡拟合/wr227工业硅社库/wr251冷热轧价差 — 需基础序列做差，建页时处理
+- **协作教训**：两agent(我Linux / 他Windows D:\DSH_WORK)同改indicators_v1.json+都做AO建页→85冲突块。建议分品种/分文件或一停一合
+
+
 ### 2026-09-09 主脑 — 合并 task/p0_verify(他) + task/wr_unit_backfill(我) → v3.83
 ### 2026-09-09 agent-2 — P0 拉数验证+补unit（276条wr / v3.82 / 30.4%覆盖）
 - **背景**：276条wr*指标（周报导入，v3.79入库）全部`verified=false`、`unit`空。需series拉数验证量级并补unit字段，覆盖率目标≥50%。
