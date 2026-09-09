@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-09-09 agent-2 — P0 拉数验证+补unit（276条wr / v3.82 / 30.4%覆盖）
+- **背景**：276条wr*指标（周报导入，v3.79入库）全部`verified=false`、`unit`空。需series拉数验证量级并补unit字段，覆盖率目标≥50%。
+- **执行**：逐条调用知几API `series?id=xxx&start=2025-01-01&end=2026-09-01`，要求返回≥3个数据点才算验证通过。
+- **结果**：84/276条验证通过（30.4%），`verified=true` + `unit`补全。
+  - 非SMM源（ID0/CM0/FU0前缀）：94条中84条成功（89.4%），10条失败（数据点不足或HTTP 500）
+  - SMM源（a1/j0/s2前缀）：182条全部失败——**知几服务器端SMM凭据失效**（`login failed: code=10004 msg=用户不存在或者密码不正确`），非API key问题，需服务端修复
+- **覆盖率30.4% < 50%目标**：182条SMM源凭据失效无法拉数，非SMM源已全部尝试。SMM替代搜索尝试过但因知几搜索返回结果质量不稳定（品种混淆/指标类型错配）而放弃，避免引入错误匹配。
+- **已补unit样例**：碳酸锂产量=吨(74k~106k)、铝出库量=万吨(6.6~18.8)、氧化铝三网均价=元/吨(2556~5083)、硫酸镍价格=元/吨、不锈钢库存=吨、镍铁进口=吨
+- **备份**：`/tmp/indicators_v1.json.bak_p0v4`（操作前备份）
+- **后续**：① 待SMM凭据修复后重新拉数（182条）；② 覆盖率达50%后方可建页；③ AO品种建页（P1）可先用非SMM的84条verified指标
+
 ### 2026-09-09 主脑 — 周报指标框架树导入（205 条 / v3.76 / 可回退）
 - **背景**：另一台服务器的周报指标框架树归档（`algo23-yunqingtian/weekly-report-tree/_HANDOVER_PACKAGE.md`，518 指标 / 6 品种 / 95% 匹配率，含框架树 JSON + 扁平 CSV + 344 图表分析 JSON）。经比对与 framework-tree 仅 28 条重叠，增量价值高（氧化铝 63 条、铝 48、镍与不锈钢 39、锡 31、硅 35、碳酸锂 5）。
 - **回退锚点**：入库前已打 tag `PRE_WEEKLY_REPORT_IMPORT_20260909`（指向 e770ce8）+ 备份分支 `backup_pre_weekly_report_20260909`，另有本地备份 `data/indicators_v1.json.bak_pre_wr20260909`。**三层可回退**：`git reset --hard PRE_WEEKLY_REPORT_IMPORT_20260909`（彻底回退含版本号）或 `python3 scripts/remove_weekly_report_import.py --apply`（只删 wr* 键）。
