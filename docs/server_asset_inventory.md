@@ -309,16 +309,51 @@
 | `~/lc_futures_data/` | 碳酸锂期货数据（732行,活跃使用） |
 | 所有 `.db` 文件（在上述目录内的） | 生产数据库 |
 
-### 磁盘总览
+### 磁盘总览（深层扫描修正后）
 
-| 类别 | 大小 | 占比 |
-|------|------|------|
-| venv环境 | ~537M (unified_venv 490M + export_proto_venv 5.7M + .venv_mysteel 41M) | 22% |
-| 看板项目 | ~1.2G (macro_dashboard 572M + zinc_gh 186M + nickel_gh 175M + framework-tree 216M) | 48% |
-| 数据库 | ~350M (LME 137M + 有色日度 68M + db_backups 165M + 其他) | 14% |
-| 分析库 | ~158M (analysis) | 6% |
-| 其他 | ~200M | 8% |
-| **总计** | ~2.5G | 100% |
+> ⚠️ 重要修正：`macro_dashboard/venv/` 与 `unified_venv/` 的 site-packages **全部硬链接**（同 inode），`du` 报的 490M+490M 实际只占一份磁盘空间。`zinc_venv` 和 `.mysteel_venv` 是符号链接到 unified_venv。
+
+| 类别 | 标称大小 | 实际占用 | 说明 |
+|------|----------|----------|------|
+| venv环境 | unified_venv 490M + macro_venv 490M + 其他 | ~537M | macro_venv与unified硬链接,不重复占盘; .venv_mysteel 41M可清理 |
+| Hermes state.db | 724M | 724M | 625会话/58496消息/双FTS索引,是全服务器最大单文件 |
+| 看板项目(含venv) | ~1.2G | ~710M | macro_dashboard非venv仅28M; zinc_gh 186M + nickel_gh 175M + framework-tree 216M |
+| 数据库 | LME 137M + 有色日度 68M + db_backups 165M + 其他 | ~440M | db_backups每日滚动保留2天 |
+| 分析库 | analysis 158M | 158M | 含db/97M + lithium_global/25M + output/5.3M |
+| output目录 | 248M | 248M | agent_setup 138M(含DB副本) + agent_split 80M + zip 27M |
+| Hermes日志 | 42M + sessions 64M | 106M | agent.log轮转5M×4 + gateway日志 + session dump |
+| skills curator备份 | 20M + dev profile 27M | 47M | 自动备份,5份tar.gz |
+| lc_futures_data备份 | 11个tar.gz | ~50M | 7月30日碳酸锂多版本备份 |
+| 其他 | ~200M | ~200M | |
+| **总计** | | ~2.5G(实际去重后~2.0G) | |
+
+### 深层发现补充
+
+#### state.db（724M）— 全服务器最大单文件
+- 路径：`~/.hermes/state.db`
+- 内容：625个会话 / 58496条消息 / 双FTS索引（messages_fts + messages_fts_trigram）
+- FTS索引几乎等于消息正文大小（58496×4表 ≈ 23万行索引数据）
+- ⚠️ 谨慎冗余：可考虑清理旧会话+VACUUM压缩（但属Hermes核心,归❌禁止触碰）
+
+#### output/agent_setup（138M）— 跨服务器交接包
+- 包含9个DB副本（lme_base_data.db 69M + lead_market.db 24M + zinc_v1.db 18M等）
+- agent_setup_li_pz.zip 27M = 同内容压缩版
+- ⚠️ 谨慎冗余：已完成交接,DB副本可清理(70M+)
+
+#### macro_dashboard/logs（16M）
+- error.log 12M（8月15日停止增长,看板已稳定）
+- supervisord.log 3M
+- ✅ 安全冗余：旧日志可清理
+
+#### lithium_calendar/static 旧备份
+- 5个 .bak_freq/.bak_v4/.bak_v5_20260730 HTML文件
+- battlefield_agents_backup_20260730.html, index.html_backup_20260730.html
+- 完整备份_20260629.md（在static目录中,位置不当）
+- ✅ 安全冗余：旧版HTML备份
+
+#### lithium_calendar 空DB文件
+- lc_position.db (0字节), lithium_global.db (0字节), lithium_empty_backup.db (88K空库)
+- ✅ 安全冗余：空/废弃DB
 
 ### 待补文档/任务
 
