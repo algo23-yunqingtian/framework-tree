@@ -73,6 +73,18 @@
 
 ## 近期变更记录
 
+### 2026-09-08 dsharnes — 全项目状态审计材料归档
+- 导出 6 章审计文档（`work_log/worker/EXPORT_全项目状态审计_20260908.md`，213.8KB / 3731行）
+- 章节1 项目概况（tree_config全文/334页面清单/双Agent分工/故障清单5类）
+- 章节2 Prompt存档（爱马仕【未找到】/dsharnes全文/同花顺v19模板/42个渲染产物/Skills【未找到】）
+- 章节3 会话管理（16会话归属/压缩策略【无】/HANDOVER文档链/token消耗量级）
+- 章节4 指标匹配全链路（6个同花顺原始响应/映射表55行/绘图脚本全文/匹配逻辑代码8个脚本全文/v3缺陷4条/v4规则8条）
+- 章节5 版本日志（8份HANDOVER/indicators_v1.json 12版本/git log 50+/11天每日归属/失败汇总25条）
+- 章节6 能力自评（dsharnes弱点3类/爱马仕弱点8项/机制缺陷4类/26项未找到）
+- 补充材料 `work_log/worker/audit_chapter5_raw_materials.md`（54.8KB / 1167行）
+- 任务回执 `task_queue/feedback/TASK_RECEIPT_审计材料归档_20260908.md`
+- 主文档末行【材料导出完成，等待豆包诊断】
+
 ### 2026-09-07 主脑 — 知几匹配v4重判器+任务卡
 - 审计另一agent提交(`origin/task/zhiji_match_all` @ `e7b4d31`): 7品种2322指标, A547/B900/C875, A级全对但B级系统性误配(抽检6组送同花顺5否1勉强)
 - 根因: `zhiji_match_v3.py` 的 `classify_match()` 纯字面命中零概念校验 + `gen_keywords()` 无同义词 + `limit=5` 截断 + `verified` 硬编码True
