@@ -74,9 +74,20 @@ _DISAMBIG_KEYS = [
 ]
 
 def disambig_title(mid_a, name_a, mid_b, name_b):
-    """若两轴 name 相同，返回 (new_name_a, new_name_b) 含区分标签；否则原样返回。"""
+    """若两轴 name 相同，返回 (new_name_a, new_name_b) 含区分标签；否则原样返回。
+    
+    v2.0 修复：
+      1. 过滤 mid_a == mid_b 的自身对比（返回 None 标记，调用方应跳过该图）
+      2. 若 _origin 关键词无法区分，用 mid 后缀兜底
+      3. 若 mid 后缀也相同，用 "左轴/右轴" 兜底，确保永不产出 "A vs A"
+    """
+    # ── 过滤：完全相同的 mid = 无意义自身对比 ──
+    if mid_a == mid_b:
+        return None  # 调用方应跳过
+
     if name_a != name_b:
         return name_a, name_b
+
     ind = _load_indicators_v1()
     oa = ind.get(mid_a, {}).get("_origin", "")
     ob = ind.get(mid_b, {}).get("_origin", "")
@@ -95,8 +106,16 @@ def disambig_title(mid_a, name_a, mid_b, name_b):
         db = sb
     if db and not da:
         da = sa
-    return (name_a + "（" + da + "）" if da else name_a,
-            name_b + "（" + db + "）" if db else name_b)
+    # ── 兜底：若仍无法区分，用 mid 本身 ──
+    if not da and not db:
+        da = str(mid_a)[:20]
+        db = str(mid_b)[:20]
+    # ── 最终兜底：确保永不产出 "A vs A" ──
+    if da == db:
+        da = "左轴"
+        db = "右轴"
+    return (name_a + "（" + da + "）",
+            name_b + "（" + db + "）")
 DB = os.path.join(BASE, "api_cache.db")
 _CONN = sqlite3.connect(DB)
 _CURSOR = _CONN.cursor()
