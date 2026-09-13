@@ -106,7 +106,7 @@ def judge(q, v, code):
         if sc >= 0:
             scored.append((sc, h))
     scored.sort(key=lambda x: -x[0])
-    if scored and scored[0][0] >= 5:
+    if scored and scored[0][0] >= 4:
         sc, best = scored[0]
         return {"matched": True, "chosen": best,
                 "note": "命中%d条, 最佳得分%d: %s" % (len(scored), sc,
@@ -114,7 +114,7 @@ def judge(q, v, code):
                 "hits": [h for _, h in scored]}
     top = scored[0] if scored else None
     return {"matched": False, "chosen": None,
-            "note": "存在通过品种词但字段/口径弱 (最佳得分%d, 阈5): %s" % (
+            "note": "存在通过品种词但字段/口径弱 (最佳得分%d, 阈4): %s" % (
                 top[0] if top else 0,
                 str(top[1].get("name", ""))[:50] if top else "无"),
             "hits": hits}

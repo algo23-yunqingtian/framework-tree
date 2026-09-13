@@ -10,10 +10,10 @@
   3. 交易所前缀: LME/SHFE/COMEX/CFTC/USGS 强校验 (不匹配 -3)
   4. 口径陷阱: 每品种自己的 正/反 词表 (防"镍生铁 vs 电解镍" 这类串台)
   5. 地理口径: 中国/海外/全球 反向词淘汰
-  6. 阈值: score>=5 → matched(Tier B), 否则 Tier C
+  6. 阈值: score>=4 → matched(Tier B), 否则 Tier C
 
 阈值说明: 五金属 search 零命中仅 13/1102, 说明知几覆盖较好;
-沿用 CU/AL 的阈5 (字段词+品种词+前缀), 保守优先避免误灌库。
+2026-09 降至4分: CU 73→74 B级, AL 保持96 A级人工判定, 五金属略增匹配。
 """
 import json, os, re
 
@@ -220,7 +220,7 @@ def judge(q, v, code):
         if sc >= 0:
             scored.append((sc, h))
     scored.sort(key=lambda x: -x[0])
-    if scored and scored[0][0] >= 5:
+    if scored and scored[0][0] >= 4:
         sc, best = scored[0]
         return {"matched": True, "chosen": best,
                 "note": "命中%d条, 最佳得分%d: %s" % (len(scored), sc,
@@ -228,7 +228,7 @@ def judge(q, v, code):
                 "hits": [h for _, h in scored]}
     top = scored[0] if scored else None
     return {"matched": False, "chosen": None,
-            "note": "存在通过品种词但字段/口径弱 (最佳得分%d, 阈5): %s" % (
+            "note": "存在通过品种词但字段/口径弱 (最佳得分%d, 阈4): %s" % (
                 top[0] if top else 0,
                 str(top[1].get("name", ""))[:50] if top else "无"),
             "hits": hits}

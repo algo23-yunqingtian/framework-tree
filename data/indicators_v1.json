@@ -1,8 +1,8 @@
 {
  "_meta": {
-  "version": "v3.48",
-  "updated": "2026-08-31",
-  "status": "部分验证",
+  "version": "3.49",
+  "updated": "2026-09-13",
+  "status": "待审核",
   "说明": "v3.42: gap_fill_20260831 补19空白节点第一批 +9 指标(CU 4.2/4.3/5.1/7.1 + AL 3.1.1)",
   "验证规则": "已验证=lineB通过search→series实测确认有数据；占位=未验证，使用前必须验证"
  },
@@ -13111,6 +13111,441 @@
    "_nodes": [
     "7.2"
    ]
+  },
+  "cu_00_premium": {
+   "name": "电解铜：升水铜：升贴水：上海（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "ID00302613"
+   },
+   "_origin": "step3_CU_升水铜升贴水（元/吨）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_premium_2": {
+   "name": "电解铜：湿法：升贴水：上海（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "ID00302615"
+   },
+   "_origin": "step3_CU_湿法铜升贴水（元/吨）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_openinterest_top20_front": {
+   "name": "SHFE：电解铜：07合约：多单持仓合计：前20期货公司（日）",
+   "unit": "手",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "FU00021997"
+   },
+   "_origin": "step3_CU_沪铜主力合约前20多单持仓量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_2": {
+   "name": "计价铜：产量：South32：South32 Sierra Gorda矿区（季）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "ID01706354"
+   },
+   "_origin": "step3_CU_海外上市矿企矿产铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_3": {
+   "name": "ICSG：铜矿：产量：全球（月）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "ID00299419"
+   },
+   "_origin": "step3_CU_权益产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_4": {
+   "name": "铜：产量：智利：英美智利股份（月）",
+   "unit": "千吨",
+   "freq": "monthly",
+   "verified": false,
+   "ids": {
+    "CU": "ID01324780"
+   },
+   "_origin": "step3_CU_智利矿产铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_5": {
+   "name": "USGS：铜矿：产量：刚果（金）（年）",
+   "unit": "千吨",
+   "freq": "yearly",
+   "verified": false,
+   "ids": {
+    "CU": "ID00299733"
+   },
+   "_origin": "step3_CU_刚果（金）矿产铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_6": {
+   "name": "USGS：再生铜：产量：美国（年）",
+   "unit": "千吨",
+   "freq": "yearly",
+   "verified": false,
+   "ids": {
+    "CU": "ID01552133"
+   },
+   "_origin": "step3_CU_美国矿产铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_7": {
+   "name": "USGS：铜矿：产量：赞比亚（年）",
+   "unit": "千吨",
+   "freq": "yearly",
+   "verified": false,
+   "ids": {
+    "CU": "ID00299736"
+   },
+   "_origin": "step3_CU_赞比亚矿产铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_8": {
+   "name": "ICSG：铜矿：产量：全球（月）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "ID00299419"
+   },
+   "_origin": "step3_CU_主要矿山项目产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_9": {
+   "name": "ICSG：冶炼铜：产量：全球（年）",
+   "unit": "千吨",
+   "freq": "yearly",
+   "verified": false,
+   "ids": {
+    "CU": "ID00299425"
+   },
+   "_origin": "step3_CU_全球精炼铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_10": {
+   "name": "精炼铜：产量：澳大利亚（季）",
+   "unit": "千吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "CU": "ID01655724"
+   },
+   "_origin": "step3_CU_海外精炼铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "cu_00_output_recycle": {
+   "name": "ICSG：电解再生铜：产量：全球（年）",
+   "unit": "千吨",
+   "freq": "yearly",
+   "verified": false,
+   "ids": {
+    "CU": "ID00303163"
+   },
+   "_origin": "step3_CU_再生精炼铜产量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "al_00_import": {
+   "name": "电解铝：净进口数量：中国（月）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "AL": "ID01360671"
+   },
+   "_origin": "step3_AL_中国铝精炼金属净进口量",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "zn_25_tc_conc_3": {
+   "name": "锌精矿：50%Zn：加工费：赤峰（日）",
+   "unit": "元/金属吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "ZN": "ID01320188"
+   },
+   "_origin": "step3_5m_ZN_锌精矿加工费（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "2.5"
+   ]
+  },
+  "zn_314_import_7": {
+   "name": "锌矿砂及其精矿：进口数量：内蒙古（月）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "ZN": "CM0000115692"
+   },
+   "_origin": "step3_5m_ZN_锌矿进口量（万吨）",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "zn_52_cons_2": {
+   "name": "中国有色金属工业年鉴：锌锭：消费量：日本（年）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "ZN": "ID00303817"
+   },
+   "_origin": "step3_5m_ZN_国内锌锭消费量（万吨）",
+   "_tier": "B",
+   "_nodes": [
+    "5.2"
+   ]
+  },
+  "zn_00_volume": {
+   "name": "镀锌板卷：成交量：中国（日）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "ZN": "ID01306848"
+   },
+   "_origin": "step3_5m_ZN_锌成交量（手）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "ni_21_premium_2": {
+   "name": "电解镍：Ni≥99.99%：挪威产：现货升贴水：中国：保税区（日）",
+   "unit": "美元/吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID01199114"
+   },
+   "_origin": "step3_5m_NI_镍现货升贴水（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "2.1",
+    "2.2",
+    "4.1",
+    "4.2"
+   ]
+  },
+  "ni_22_price_nickel_powder_2": {
+   "name": "高冰镍：Ni≥65%，Co≥1%：镍远期现货价格：中国主要港口（日）",
+   "unit": "美元/金属吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID01532829"
+   },
+   "_origin": "step3_5m_NI_高冰镍现货价格（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "2.2",
+    "2.4",
+    "2.5"
+   ]
+  },
+  "ni_311_nickel_ore_capacity_util": {
+   "name": "精炼镍：产能利用率：印尼（月）",
+   "unit": "百分比",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID02026191"
+   },
+   "_origin": "step3_5m_NI_印尼镍矿产能利用率（%）",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.1"
+   ]
+  },
+  "ni_312_output_4": {
+   "name": "精炼镍：产量：澳大利亚（季）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID01450146"
+   },
+   "_origin": "step3_5m_NI_澳大利亚镍精炼产量（万吨）",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.2"
+   ]
+  },
+  "ni_72_profit_6": {
+   "name": "镍生铁：RKEF工艺：利润：科纳韦：美元计（日）",
+   "unit": "美元/金属吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID01990801"
+   },
+   "_origin": "step3_5m_NI_镍冶炼日度利润（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "7.2"
+   ]
+  },
+  "ni_73_cost_5": {
+   "name": "镍生铁：RKEF工艺：生产成本：江苏（日）",
+   "unit": "元/镍",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID01001380"
+   },
+   "_origin": "step3_5m_NI_镍生铁/NPI成本（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "7.3"
+   ]
+  },
+  "ni_00_premium": {
+   "name": "电积镍：Ni≥99.96%：俄罗斯产：升贴水：中国：诺里尔斯克（日）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID00302596"
+   },
+   "_origin": "step3_5m_NI_镍升贴水（美元/吨）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "ni_00_profit": {
+   "name": "镍生铁：RKEF工艺：利润：科纳韦：美元计（日）",
+   "unit": "美元/金属吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID01990801"
+   },
+   "_origin": "step3_5m_NI_镍NPI冶炼利润（元/吨）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "ni_00_import": {
+   "name": "冰镍：进口数量：中国：以金属量计（月）",
+   "unit": "万吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID02146273"
+   },
+   "_origin": "step3_5m_NI_镍菲律宾进口量（万吨）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "ni_00_ratio": {
+   "name": "LME：镍：注销占比（日）",
+   "unit": "百分比",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "FU00023801"
+   },
+   "_origin": "step3_5m_NI_镍注销占比（%）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "ni_00_export": {
+   "name": "印尼统计局：冰镍：出口金额：印尼→中国（月）",
+   "unit": "美元",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "NI": "ID01462096"
+   },
+   "_origin": "step3_5m_NI_镍不锈钢出口金额（亿美元）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "si_71_cost_industrial_si_4": {
+   "name": "工业硅：421#：现金成本：新疆（周）",
+   "unit": "元/吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "SI": "ID02313934"
+   },
+   "_origin": "step3_5m_SI_工业硅现金成本（元/吨）",
+   "_tier": "B",
+   "_nodes": [
+    "7.1"
+   ]
+  },
+  "li_314_import_5": {
+   "name": "锂辉石：进口数量：津巴布韦→中国（月）",
+   "unit": "吨",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "LI": "ID02011567"
+   },
+   "_origin": "step3_5m_LI_锂辉石进口量（万吨LCE）",
+   "_tier": "B",
+   "_nodes": [
+    "3.1.4"
+   ]
+  },
+  "li_00_import": {
+   "name": "锂：进口数量：德国→中国（月）",
+   "unit": "千克",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "LI": "ID01488011"
+   },
+   "_origin": "step3_5m_LI_锂澳大利亚进口量（万吨LCE）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "li_00_import_2": {
+   "name": "锂：进口数量：韩国→中国（月）",
+   "unit": "千克",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "LI": "ID01488032"
+   },
+   "_origin": "step3_5m_LI_锂非洲进口量（万吨LCE）",
+   "_tier": "B",
+   "_nodes": []
+  },
+  "li_00_import_3": {
+   "name": "锂：进口数量：美国→中国（月）",
+   "unit": "千克",
+   "freq": "daily",
+   "verified": false,
+   "ids": {
+    "LI": "ID01488023"
+   },
+   "_origin": "step3_5m_LI_锂南美进口量（万吨LCE）",
+   "_tier": "B",
+   "_nodes": []
   }
  },
  "64_group": {
@@ -13126,7 +13561,7 @@
    "i7": "LME 全球注销仓单 SG 占全球比 计算分母"
   }
  },
- "version": "v3.48",
- "updated": "2026-09-02 12:58",
- "change": "P1 correction v2注册: CU 2 + AL 0 + NI 0 + SN 2 (跳过 333)"
+ "version": "3.49",
+ "updated": "2026-09-13 18:36",
+ "change": "Task1: 阈值5→4, CU/AL/五金属 B级指标批量注册 (+0 new)"
 }

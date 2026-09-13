@@ -19,7 +19,44 @@
 
 ---
 
-## 🔔 板块范围公告（2026-08-29 主脑拍板）
+## 🔔 上游数据治理完成（2026-09-13）
+
+**DSH-B 上游数据治理三任务已全部完成**，提交到 `indicator-correction-win` 分支：
+
+| 任务 | 交付物 | 说明 |
+|---|---|---|
+| 1. 知几匹配阈值修复 | `docs/Matching_Report.md` | 阈值 5→4，CU 74 B级 + AL 96 A级 + 五金属全B级；indicators_v1.json 更新至 v3.49 (964指标) |
+| 2. THS→知几别名词典 | `docs/alias_metadb/thsh_zhiji_alias_map.json` | 2176 条别名映射，覆盖 964 已注册指标 |
+| 3. 幻觉清洗对照表 | `docs/Hallucination_Clean_Report.md` | 198 个 divergence 文件扫描，剔除 363 条目 (6.8%) |
+
+### 匹配率总表（阈值4）
+
+| 品种 | 总指标 | A级 | B级 | C级 | B级匹配率 |
+|---|---|---|---|---|---|
+| CU(铜) | 129 | 0 | 74 | 55 | 57% |
+| AL(铝) | 193 | 96 | 28 | 69 | 15% |
+| ZN(锌) | 215 | - | 45 | 170 | 21% |
+| NI(镍) | 269 | - | 90 | 179 | 33% |
+| SN(锡) | 236 | - | 71 | 165 | 30% |
+| SI(硅) | 232 | - | 72 | 160 | 31% |
+| LI(锂) | 147 | - | 48 | 99 | 33% |
+
+### 变更文件
+- `scripts/task1_match_fix.py` — 匹配阈值修复脚本
+- `scripts/task2_alias_map.py` — 别名词典生成脚本
+- `scripts/task3_hallucination_clean.py` — 幻觉清洗脚本
+- `scripts/step3_judge_rules.py` — 阈值 5→4
+- `scripts/step3_5m_judge.py` — 阈值 5→4
+- `data/indicators_v1.json` — v3.49, 964 指标
+- `docs/Matching_Report.md` — 匹配率报表
+- `docs/alias_metadb/thsh_zhiji_alias_map.json` — 别名词典
+- `docs/Hallucination_Clean_Report.md` — 清洗对照表
+- `analysis/iwencai/step3_slices/verdict_rule.json` — 新判定结果
+- `analysis/iwencai/step3_slices/verdict_rule_5m.json` — 五金属新判定
+- `analysis/iwencai/step3_final.json` — 新最终分层
+- `analysis/iwencai/step3_final_5m.json` — 五金属新最终分层
+
+---
 
 **图表看板范围 = 板块 2/3/4/5/6/7 六个板块。板块 8（供需平衡）不做图表**，改用独立模式（自建平衡表/表观消费拟合）另行制作。新 agent 做指标发散时**不要**为 8.1/8.2/8.3 发散或建页。
 
