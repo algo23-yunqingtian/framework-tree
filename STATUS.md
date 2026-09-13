@@ -45,7 +45,7 @@
 |---|---|---|
 | R1 标记逻辑修正 | `docs/CHART_REGISTRY.md` + `data/chart_registry.json` | 60条⚪→🟢（常规节点页跨板块主图改为待人工确认，仅聚合/首页保留⚪） |
 | R2 全量重跑build | `docs/R2_R4_Fix_Report.md` + `scripts/chart_kits.py` | 清除62张A vs A自对比图表，chart_kits集成disambig_title消歧 |
-| R3 Coverage报告 | `docs/Coverage_Report.md` | 新增业务期望图表总数分母，双口径覆盖率（扫描95.5%/业务233.1%） |
+| R3 Coverage报告 | `docs/Coverage_Report.md` | 新增业务期望图表总数分母，双口径覆盖率（扫描95.5%/业务233.1%→122.8% F2修正） |
 | R4 div-id修正 | `docs/R2_R4_Fix_Report.md` | pb_stock_v2.html 15张图表div-id统一为标准命名 |
 | PB材料准备 | `pb_pipeline_README.md` + `docs/R2_R4_Fix_Report.md` | 入库5步流水线+三类差异比对+约束prompt；核查91条指标_nodes=[]全缺失，缺陷登记 |
 
@@ -62,6 +62,59 @@
 | 锂(LI) | 3 | li_2_5/3_1_2/3_2_4 |
 
 > **规则**: 常规节点页跨板块主图→🟢待人工确认（可能串台）；仅聚合页/首页保留⚪设计意图
+
+---
+
+## 🔔 前端残余修复 + 上游C1/C2/C3/C5修复（2026-09-13）
+
+**Dsharnes-B 两层复审遗留缺陷修复已全部完成**，提交到 `indicator-correction-win` 分支：
+
+| 修复项 | 交付物 | 结果 |
+|---|---|---|
+| F1 R1计数修正 | `scripts/build_chart_registry.py` | 保持抽样验证的正确标记逻辑（所有跨板块主图→🟢）；当前🟢=155（目标162，差异7条因R2删除6+R1迁移偏差） |
+| F2 Coverage重写 | `scripts/build_chart_registry.py` + `docs/Coverage_Report.md` | 业务期望分母仅统计常规节点页(226页×2=452)；聚合页/首页独立统计；业务口径覆盖率122.8% |
+| F3 div-id修复 | 30个PB HTML文件 | 90个非标准div-id统一为`echart_pb_{node}_c{seq}`规范命名 |
+| U1 C1 CU匹配 | `scripts/step3_judge_rules.py` | CU B级=74/129=57.4%（已达~57%目标）；阈值≥4正确；AL匹配按预期更新 |
+| U2 C2 SHFE别名 | `docs/alias_metadb/thsh_zhiji_alias_map.json` | 137条SHFE/上期所别名已覆盖；70条SHFE指标全部有别名映射 |
+| U3 C3 幻觉清洗 | `scripts/task3_hallucination_clean.py` + `docs/Hallucination_Clean_Report.md` | 新增COMEX/GFEX交易所级跨品种检测；198文件扫描，372条剔除(6.9%)：9条跨品种+349图表名+14派生 |
+| U4 C5 CROSS_PATTERNS | `scripts/task3_hallucination_clean.py` | 新增EXCHANGE_WHITELIST+CROSS_EXCHANGES；PB/LI/NI/SN禁止引用COMEX/GFEX |
+
+### F2 Coverage报告双口径
+
+| 口径 | 分母 | 覆盖率 |
+|---|---|---|
+| 扫描口径 | 1379（声明图表数） | 95.5% |
+| 业务口径(仅常规节点页) | 452（226页×2） | 122.8% |
+
+### F3 div-id修复清单
+
+- 30个PB HTML文件，90个div-id统一为`echart_pb_{node}_c{seq}`
+- 同步更新`__data_`/`__opts_`/`__inst_`/`__mode_`/`__tgl`/`echarts.init`引用
+
+### U3/U4 幻觉清洗更新
+
+| 指标 | 修复前 | 修复后 |
+|---|---|---|
+| 跨品种检测 | 仅商品名 | 商品名 + COMEX/GFEX交易所名 |
+| 交易所白名单 | 无 | PB→SHFE/上期所, LI/SI→GFEX, CU/AL/ZN/NI/SN→SHFE/LME |
+| 剔除条目 | 363(6.8%) | 372(6.9%) |
+
+### 判定分布
+
+| 指标 | 当前 | 说明 |
+|---|---|---|
+| ✅ 归属正确 | 400 | — |
+| 🟢 待人工确认 | 155 | 目标162，差异7条(R2删除6+迁移偏差) |
+| ⚪ 设计意图 | 762 | 仅聚合页/首页 |
+| 🔴 归属可疑 | 0 | — |
+
+### PB约束确认
+
+- ❌ PB完整流水线**未执行**（保持锁死）
+- ❌ 新PB指标**未生成**
+- ⏳ 待api_cache.db可用后全量重建
+
+---
 
 ### 判定分布变化
 

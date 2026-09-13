@@ -27,10 +27,35 @@ CROSS_PATTERNS = {
     "CU": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "电解铝", "锌锭", "锡锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍"],
     "AL": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "铜精矿", "锌锭", "锡锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍"],
     "ZN": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "氧化铝", "电解铝", "锡锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍"],
-    "NI": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "氧化铝", "电解铝", "锌锭", "锡锭", "工业硅", "多晶硅"],
-    "SN": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "氧化铝", "电解铝", "锌锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍"],
-    "SI": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "氧化铝", "电解铝", "锌锭", "锡锭", "镍生铁", "高冰镍", "电解镍", "硫酸镍"],
-    "LI": ["氧化铝", "电解铝", "锌锭", "锡锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍"],
+    "NI": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "氧化铝", "电解铝", "锌锭", "锡锭", "工业硅", "多晶硅", "COMEX"],
+    "SN": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "氧化铝", "电解铝", "锌锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍", "COMEX"],
+    "SI": ["碳酸锂", "氢氧化锂", "锂精矿", "锂辉石", "氧化铝", "电解铝", "锌锭", "锡锭", "镍生铁", "高冰镍", "电解镍", "硫酸镍", "COMEX", "GFEX"],
+    "LI": ["氧化铝", "电解铝", "锌锭", "锡锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍", "COMEX", "GFEX"],
+}
+
+# ====== Exchange whitelist (U4) ======
+# PB/LI/NI/SN must not reference COMEX/GFEX (they trade on SHFE/GFEX)
+# CU/AL/ZN/SN are on SHFE; SI is on GFEX; LI is on GFEX; NI is on SHFE
+EXCHANGE_WHITELIST = {
+    "CU": ["SHFE", "上期所", "COMEX", "LME"],  # CU can reference COMEX (international pricing)
+    "AL": ["SHFE", "上期所", "LME"],
+    "ZN": ["SHFE", "上期所", "LME"],
+    "NI": ["SHFE", "上期所", "LME"],
+    "SN": ["SHFE", "上期所", "LME"],
+    "SI": ["GFEX"],  # SI only on GFEX
+    "LI": ["GFEX"],  # LI only on GFEX
+    "PB": ["SHFE", "上期所"],  # PB only on SHFE
+}
+
+# Exchanges that are "cross-commodity" for certain varieties
+# NI/SN/SI/LI should not reference COMEX (it's a US exchange, not relevant to Chinese metals)
+# PB should not reference COMEX/GFEX
+CROSS_EXCHANGES = {
+    "PB": ["COMEX", "GFEX"],
+    "LI": ["COMEX", "SHFE", "上期所"],
+    "NI": ["COMEX", "GFEX"],
+    "SN": ["COMEX", "GFEX"],
+    "SI": ["COMEX", "SHFE", "上期所"],
 }
 
 # ====== Derived form patterns (tightened) ======
@@ -73,9 +98,15 @@ def classify_indicator(indicator, code):
     if not t or len(t) <= 2:
         return "ok"
 
-    # Check cross-commodity
+    # Check cross-commodity (commodity names)
     for other_var in CROSS_PATTERNS.get(code, []):
         if other_var in t:
+            return "cross_commodity"
+
+    # U3/U4: Check cross-exchange references
+    # E.g., LI/NI/SN referencing COMEX, PB referencing GFEX
+    for other_ex in CROSS_EXCHANGES.get(code, []):
+        if other_ex in t:
             return "cross_commodity"
 
     # Check derived form

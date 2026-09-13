@@ -304,6 +304,7 @@ def judge_placement(page_node_cat, page_type, indicator_name, indicator_ids, cha
             page_node_cat, CATEGORY_MAP.get(page_node_cat, '?'))
 
     # R1修复：常规节点页跨板块主图 → 🟢待人工确认（可能串台）
+    # F1修正：保留抽样验证的正确标记逻辑——所有跨板块主图均为串台，标记🟢
     # 仅聚合页/首页保留⚪设计意图（见上方 page_type in ('sector_aggregate','home') 分支）
     if chart_role == '主图':
         return '\U0001f7e2', expected_cat, '常规节点页跨板块主图（可能串台，需人工确认）：引用%s类指标·板块%s' % (
@@ -565,18 +566,12 @@ def _output_coverage_report(all_pages, all_charts, verdict_counts, page_type_cou
     total_declared = sum(p['total_charts_declared'] for p in all_pages if p['total_charts_declared'] > 0)
     coverage_scan = (len(all_charts) / total_declared * 100) if total_declared > 0 else 0
 
-    # 口径2：覆盖率 = 已注册图数 / 业务期望图表总数
-    # 业务期望定义（基于框架树节点设计）：
-    #   常规节点页: 每节点至少2图（主图 + 1补充）
-    #   板块聚合页: 每板块3图（板块汇总核心指标）
-    #   品种首页: 每首页5图（品种全景概览）
-    #   总览页: 0图（纯导航）
-    business_expect = (
-        type_stats.get('regular', {}).get('pages', 0) * 2 +
-        type_stats.get('sector_aggregate', {}).get('pages', 0) * 3 +
-        type_stats.get('home', {}).get('pages', 0) * 5
-    )
-    coverage_business = (len(all_charts) / business_expect * 100) if business_expect > 0 else 0
+    # 口径2：覆盖率 = 常规节点页图表数 / 业务期望图表总数（仅常规节点页）
+    # F2修正：业务期望分母仅统计常规节点页；聚合页/首页图表单独独立统计，不混入业务口径
+    regular_charts = sum(p['actual_charts'] for p in all_pages if p['page_type'] == 'regular')
+    regular_pages = type_stats.get('regular', {}).get('pages', 0)
+    business_expect = regular_pages * 2
+    coverage_business = (regular_charts / business_expect * 100) if business_expect > 0 else 0
 
     with open(OUT_COVERAGE, 'w', encoding='utf-8') as f:
         f.write("# 覆盖率报告 (Coverage Report)\n\n")
@@ -587,9 +582,10 @@ def _output_coverage_report(all_pages, all_charts, verdict_counts, page_type_cou
         f.write("| 扫描页面数 | %d |\n" % len(all_pages))
         f.write("| 已注册图表数 | %d |\n" % len(all_charts))
         f.write("| 声明图表数(含聚合页) | %d |\n" % total_declared)
-        f.write("| 业务期望图表总数 | %d |\n" % business_expect)
+        f.write("| 常规节点页图表数 | %d |\n" % regular_charts)
+        f.write("| 业务期望图表总数(仅常规节点页) | %d |\n" % business_expect)
         f.write("| 覆盖率-扫描口径 | %.1f%% (已注册/声明) |\n" % coverage_scan)
-        f.write("| 覆盖率-业务口径 | %.1f%% (已注册/业务期望) |\n" % coverage_business)
+        f.write("| 覆盖率-业务口径 | %.1f%% (常规节点页图表/业务期望) |\n" % coverage_business)
         f.write("| ✅ 归属正确 | %d |\n" % verdict_counts.get('\u2705', 0))
         f.write("| 🟢 待人工确认 | %d |\n" % verdict_counts.get('\U0001f7e2', 0))
         f.write("| 🔴 归属可疑 | %d |\n" % verdict_counts.get('\U0001f534', 0))
@@ -601,14 +597,10 @@ def _output_coverage_report(all_pages, all_charts, verdict_counts, page_type_cou
         f.write("| 常规节点页 | 2 | %d | %d |\n" % (
             type_stats.get('regular', {}).get('pages', 0),
             type_stats.get('regular', {}).get('pages', 0) * 2))
-        f.write("| 板块聚合页 | 3 | %d | %d |\n" % (
-            type_stats.get('sector_aggregate', {}).get('pages', 0),
-            type_stats.get('sector_aggregate', {}).get('pages', 0) * 3))
-        f.write("| 品种首页 | 5 | %d | %d |\n" % (
-            type_stats.get('home', {}).get('pages', 0),
-            type_stats.get('home', {}).get('pages', 0) * 5))
+        f.write("| 板块聚合页 | 独立统计 | %d | — |\n" % type_stats.get('sector_aggregate', {}).get('pages', 0))
+        f.write("| 品种首页 | 独立统计 | %d | — |\n" % type_stats.get('home', {}).get('pages', 0))
         f.write("| 总览页 | 0 | %d | 0 |\n" % type_stats.get('overview', {}).get('pages', 0))
-        f.write("| **合计** | — | %d | **%d** |\n" % (
+        f.write("| **合计** | — | %d | **%d**(业务口径仅计常规节点页) |\n" % (
             sum(ts.get('pages', 0) for ts in type_stats.values()), business_expect))
         f.write("\n")
 
@@ -616,11 +608,16 @@ def _output_coverage_report(all_pages, all_charts, verdict_counts, page_type_cou
         f.write("| 页面类型 | 页面数 | 图表数 | 覆盖率-业务 |\n|---|---|---|---|\n")
         for pt in ['regular', 'overview', 'sector_aggregate', 'home']:
             ts = type_stats.get(pt, {'pages': 0, 'charts': 0})
-            exp_per = {'regular': 2, 'sector_aggregate': 3, 'home': 5, 'overview': 0}.get(pt, 0)
-            exp_total = ts['pages'] * exp_per
-            cov = (ts['charts'] / exp_total * 100) if exp_total > 0 else 0
-            f.write("| %s | %d | %d | %.1f%% |\n" % (
-                PAGE_TYPE_ZH.get(pt, pt), ts['pages'], ts['charts'], cov))
+            if pt == 'regular':
+                exp_total = ts['pages'] * 2
+                cov = (ts['charts'] / exp_total * 100) if exp_total > 0 else 0
+                cov_str = "%.1f%%" % cov
+            elif pt in ('sector_aggregate', 'home'):
+                cov_str = "独立统计"
+            else:
+                cov_str = "—"
+            f.write("| %s | %d | %d | %s |\n" % (
+                PAGE_TYPE_ZH.get(pt, pt), ts['pages'], ts['charts'], cov_str))
         f.write("\n")
 
         f.write("## 按品种\n\n")
