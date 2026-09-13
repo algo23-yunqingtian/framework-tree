@@ -79,11 +79,11 @@
 |---|---|---|
 | F1 R1计数修正 | `scripts/build_chart_registry.py` | 保持抽样验证的正确标记逻辑（所有跨板块主图→🟢）；当前🟢=155（目标162，差异7条因R2删除6+R1迁移偏差） |
 | F2 Coverage重写 | `scripts/build_chart_registry.py` + `docs/Coverage_Report.md` | 业务期望分母仅统计常规节点页(226页×2=452)；聚合页/首页独立统计；业务口径覆盖率122.8% |
-| F3 div-id修复 | 30个PB HTML文件 | 90个非标准div-id统一为`echart_pb_{node}_c{seq}`规范命名 |
+| F3 div-id+JS修复 | 30个PB HTML文件 | 90个div-id + 全部JS引用同步（getElementById/window vars/__tgl/resize）；__tgl引号嵌套40处修复；verify_render 170/224达标 |
 | U1 C1 CU匹配 | `scripts/step3_judge_rules.py` | CU B级=74/129=57.4%（已达~57%目标）；阈值≥4正确；AL匹配按预期更新 |
-| U2 C2 SHFE别名 | `docs/alias_metadb/thsh_zhiji_alias_map.json` | 137条SHFE/上期所别名已覆盖；70条SHFE指标全部有别名映射 |
+| U2 C2 SHFE别名 | `docs/alias_metadb/thsh_zhiji_alias_map.json` | 145条SHFE/上期所别名（新增9条：PB主力合约收盘价/月差/成交量/持仓量/注销仓单, CU月差, ZN/NIA/SN注销仓单）；覆盖63条SHFE指标 |
 | U3 C3 幻觉清洗 | `scripts/task3_hallucination_clean.py` + `docs/Hallucination_Clean_Report.md` | 新增COMEX/GFEX交易所级跨品种检测；198文件扫描，372条剔除(6.9%)：9条跨品种+349图表名+14派生 |
-| U4 C5 CROSS_PATTERNS | `scripts/task3_hallucination_clean.py` | 新增EXCHANGE_WHITELIST+CROSS_EXCHANGES；PB/LI/NI/SN禁止引用COMEX/GFEX |
+| U4 C5 CROSS_PATTERNS | `scripts/task3_hallucination_clean.py` | 清理死代码EXCHANGE_WHITELIST，仅保留CROSS_EXCHANGES黑名单规则；PB/LI/NI/SN禁止引用COMEX/GFEX |
 
 ### F2 Coverage报告双口径
 
@@ -95,7 +95,10 @@
 ### F3 div-id修复清单
 
 - 30个PB HTML文件，90个div-id统一为`echart_pb_{node}_c{seq}`
-- 同步更新`__data_`/`__opts_`/`__inst_`/`__mode_`/`__tgl`/`echarts.init`引用
+- 同步更新JS引用：`getElementById` / `window['__data_']` / `__opts_']` / `__inst_']` / `__mode_']` / `__tgl` onclick / resize handler
+- 修复`__tgl` onclick引号嵌套：40处，26个PB页面，内部双引号改为单引号
+- 验证：verify_render.js **170/224页通过**（≥170目标达标）
+- `check_html.py` 新增JS引用一致性检查：自动比对div id / getElementById / window vars / __tgl / resize handler
 
 ### U3/U4 幻觉清洗更新
 

@@ -8,7 +8,8 @@
     "total_registered_indicators": 964,
     "coverage_note": "覆盖已注册指标+步三最终判定结果",
     "updated": "2026-09-13 19:30",
-    "shfe_alias_update": "U2: added 0 SHFE/上期所 aliases"
+    "shfe_alias_count": 145,
+    "last_update": "2026-09-13: Added 9 new SHFE alias entries (PB主力合约收盘价/月差/成交量/持仓量/注销仓单, CU月差, ZN/NIA/SN注销仓单)"
   },
   "by_tier": {
     "unknown": 122,
@@ -19608,6 +19609,87 @@
       "tier": "A",
       "indicator_key": "ni_323_import_nickel_powder",
       "unit": "万吨",
+      "freq": "daily"
+    },
+    "SHFE铅主力合约收盘价": {
+      "zhiji_name": "SHFE铅主力合约收盘价（日）",
+      "zhiji_id": "",
+      "code": "PB",
+      "tier": "B",
+      "indicator_key": "pb_21_close_front",
+      "unit": "元/吨",
+      "freq": "daily"
+    },
+    "SHFE铅月差": {
+      "zhiji_name": "SHFE铅月差（主力合约收盘价 - 次主力合约收盘价，日）",
+      "zhiji_id": "DERIVED:SPREAD:pb_00_close_front-pb_00_close_cont",
+      "code": "PB",
+      "tier": "B",
+      "indicator_key": "pb_24_shfe_spread",
+      "unit": "元/吨",
+      "freq": "daily"
+    },
+    "SHFE铅成交量": {
+      "zhiji_name": "SHFE铅主力合约日成交量（日）",
+      "zhiji_id": "",
+      "code": "PB",
+      "tier": "B",
+      "indicator_key": "pb_21_shfe_volume_front",
+      "unit": "手",
+      "freq": "daily"
+    },
+    "SHFE铅持仓量": {
+      "zhiji_name": "SHFE铅主力合约日持仓量（日）",
+      "zhiji_id": "",
+      "code": "PB",
+      "tier": "B",
+      "indicator_key": "pb_21_shfe_openinterest_front",
+      "unit": "手",
+      "freq": "daily"
+    },
+    "SHFE铅注销仓单": {
+      "zhiji_name": "SHFE铅注销仓单（日）",
+      "zhiji_id": "",
+      "code": "PB",
+      "tier": "B",
+      "indicator_key": "pb_42_warrant",
+      "unit": "吨",
+      "freq": "daily"
+    },
+    "SHFE铜月差": {
+      "zhiji_name": "SHFE铜月差（主力合约收盘价 - 次主力合约收盘价，日）",
+      "zhiji_id": "DERIVED:SPREAD:cu_00_close_front-cu_00_close_cont",
+      "code": "CU",
+      "tier": "B",
+      "indicator_key": "cu_24_shfe_spread",
+      "unit": "元/吨",
+      "freq": "daily"
+    },
+    "SHFE锌注销仓单": {
+      "zhiji_name": "SHFE锌注销仓单（日）",
+      "zhiji_id": "",
+      "code": "ZN",
+      "tier": "B",
+      "indicator_key": "zn_42_warrant",
+      "unit": "吨",
+      "freq": "daily"
+    },
+    "SHFE镍注销仓单": {
+      "zhiji_name": "SHFE镍注销仓单（日）",
+      "zhiji_id": "",
+      "code": "NI",
+      "tier": "B",
+      "indicator_key": "ni_42_warrant",
+      "unit": "吨",
+      "freq": "daily"
+    },
+    "SHFE锡注销仓单": {
+      "zhiji_name": "SHFE锡注销仓单（日）",
+      "zhiji_id": "",
+      "code": "SN",
+      "tier": "B",
+      "indicator_key": "sn_42_warrant",
+      "unit": "吨",
       "freq": "daily"
     }
   }

@@ -33,21 +33,8 @@ CROSS_PATTERNS = {
     "LI": ["氧化铝", "电解铝", "锌锭", "锡锭", "工业硅", "多晶硅", "镍生铁", "高冰镍", "电解镍", "硫酸镍", "COMEX", "GFEX"],
 }
 
-# ====== Exchange whitelist (U4) ======
-# PB/LI/NI/SN must not reference COMEX/GFEX (they trade on SHFE/GFEX)
-# CU/AL/ZN/SN are on SHFE; SI is on GFEX; LI is on GFEX; NI is on SHFE
-EXCHANGE_WHITELIST = {
-    "CU": ["SHFE", "上期所", "COMEX", "LME"],  # CU can reference COMEX (international pricing)
-    "AL": ["SHFE", "上期所", "LME"],
-    "ZN": ["SHFE", "上期所", "LME"],
-    "NI": ["SHFE", "上期所", "LME"],
-    "SN": ["SHFE", "上期所", "LME"],
-    "SI": ["GFEX"],  # SI only on GFEX
-    "LI": ["GFEX"],  # LI only on GFEX
-    "PB": ["SHFE", "上期所"],  # PB only on SHFE
-}
-
-# Exchanges that are "cross-commodity" for certain varieties
+# ====== Cross-exchange rules (U4) ======
+# Blacklist approach: each variety lists exchanges that are CROSS-COMMODITY (should be flagged)
 # NI/SN/SI/LI should not reference COMEX (it's a US exchange, not relevant to Chinese metals)
 # PB should not reference COMEX/GFEX
 CROSS_EXCHANGES = {
