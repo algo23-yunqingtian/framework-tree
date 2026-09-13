@@ -1,15 +1,15 @@
 {
   "_meta": {
     "version": "2.0",
-    "generated": "2026-09-13T17:40:04.699341",
+    "generated": "2026-09-13T19:07:56.601732",
     "total_pages": 309,
-    "total_charts": 1379,
+    "total_charts": 1317,
     "anomalies": 0,
-    "design_intent": 822,
+    "design_intent": 762,
     "verdict_counts": {
-      "⚪": 822,
-      "✅": 455,
-      "🟢": 102
+      "⚪": 762,
+      "✅": 400,
+      "🟢": 155
     }
   },
   "charts": [
@@ -697,10 +697,10 @@
       "data_points": [
         "112"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "7",
       "expected_cat_name": "成本利润",
-      "reason": "设计意图：主图跨板块引用（3页主图引用7类指标·板块成本利润）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用7类指标·板块成本利润"
     },
     {
       "variety": "al",
@@ -996,29 +996,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "LME：铝：注销仓单（日） vs LME：铝：注销仓单（日）",
-      "indicator_ids": [
-        "al_41_lme_warrant",
-        "al_41_warrant"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "4",
-      "expected_cat_name": "库存",
-      "reason": "匹配规则「库存」→ 板块4(库存) ✓"
-    },
-    {
-      "variety": "al",
-      "variety_zh": "铝",
-      "node": "4.1",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "al_4_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "LME：铝：注销仓单（日） vs LME：铝：注销占比（日）",
       "indicator_ids": [
         "al_41_warrant_ratio",
@@ -1066,29 +1043,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "LME：铝：注销仓单（日） vs LME：铝：注销仓单（日）",
-      "indicator_ids": [
-        "al_41_warrant",
-        "al_41_warrant_ratio"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "4",
-      "expected_cat_name": "库存",
-      "reason": "匹配规则「库存」→ 板块4(库存) ✓"
-    },
-    {
-      "variety": "al",
-      "variety_zh": "铝",
-      "node": "4.2",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "al_4_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "LME：铝：注销占比（日）（补充·4.2）",
       "indicator_ids": [
         "al_41_lme_warrant_ratio"
@@ -1290,10 +1244,10 @@
       "data_points": [
         "2833"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（5页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "al",
@@ -1454,10 +1408,10 @@
       "data_points": [
         "419"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "4",
       "expected_cat_name": "库存",
-      "reason": "设计意图：主图跨板块引用（6页主图引用4类指标·板块库存）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用4类指标·板块库存"
     },
     {
       "variety": "al",
@@ -1549,10 +1503,10 @@
       "data_points": [
         "2833"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "al",
@@ -2217,29 +2171,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "SHFE：电解铜：主力合约：收盘价（日） vs SHFE：电解铜：主力合约：收盘价（日）",
-      "indicator_ids": [
-        "cu_24_shfe_close_near",
-        "cu_24_shfe_close_far"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「价格」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "cu",
-      "variety_zh": "铜",
-      "node": "2.4",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "cu_2_4.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "SHFE：铜（BC）：年成交量（日）（补充·2.4）",
       "indicator_ids": [
         "cu_24_openinterest_volume"
@@ -2273,10 +2204,10 @@
       "data_points": [
         "280"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "7",
       "expected_cat_name": "成本利润",
-      "reason": "设计意图：主图跨板块引用（2页主图引用7类指标·板块成本利润）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用7类指标·板块成本利润"
     },
     {
       "variety": "cu",
@@ -2583,10 +2514,10 @@
       "data_points": [
         "139"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "6",
       "expected_cat_name": "进出口",
-      "reason": "设计意图：主图跨板块引用（3页主图引用6类指标·板块进出口）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用6类指标·板块进出口"
     },
     {
       "variety": "cu",
@@ -2724,10 +2655,10 @@
       "data_points": [
         "280"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "7",
       "expected_cat_name": "成本利润",
-      "reason": "设计意图：主图跨板块引用（3页主图引用7类指标·板块成本利润）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用7类指标·板块成本利润"
     },
     {
       "variety": "cu",
@@ -3303,10 +3234,10 @@
       "data_points": [
         "29"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "3",
       "expected_cat_name": "供给",
-      "reason": "设计意图：主图跨板块引用（7页主图引用3类指标·板块供给）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用3类指标·板块供给"
     },
     {
       "variety": "cu",
@@ -4179,10 +4110,10 @@
       "data_points": [
         "891"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "7",
       "expected_cat_name": "成本利润",
-      "reason": "设计意图：主图跨板块引用（2页主图引用7类指标·板块成本利润）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用7类指标·板块成本利润"
     },
     {
       "variety": "li",
@@ -4201,29 +4132,6 @@
       ],
       "role": "普通",
       "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "7",
-      "expected_cat_name": "成本利润",
-      "reason": "跨板块引用正常（普通·2页引用7类指标）"
-    },
-    {
-      "variety": "li",
-      "variety_zh": "锂",
-      "node": "2.5",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "li_2_5.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "碳酸锂：碳化法：生产利润（日） vs 碳酸锂：碳化法：生产利润（日）",
-      "indicator_ids": [
-        "li_25_profit_3",
-        "li_25_profit_4"
-      ],
-      "role": "普通",
-      "freq": "monthly",
       "data_points": [],
       "verdict": "✅",
       "expected_cat": "7",
@@ -4264,52 +4172,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "GFEX：碳酸锂：主力合约：单边交易：持仓量（日） vs GFEX：碳酸锂：主力合约：单边交易：持仓量（日）",
-      "indicator_ids": [
-        "li_21_openinterest_longshort",
-        "li_26_openinterest_top20"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「持仓/资金」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "li",
-      "variety_zh": "锂",
-      "node": "2.6",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "li_2_6.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "GFEX：碳酸锂：主力合约：单边交易：持仓量（日） vs GFEX：碳酸锂：主力合约：单边交易：持仓量（日）",
-      "indicator_ids": [
-        "li_26_openinterest_top20_2",
-        "li_26_openinterest_top20_3"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「持仓/资金」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "li",
-      "variety_zh": "锂",
-      "node": "2.6",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "li_2_6.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "GFEX：碳酸锂：主力合约：单边交易：持仓量（日）（补充·2.6）",
       "indicator_ids": [
         "li_26_openinterest_top20_4"
@@ -5190,10 +5052,10 @@
       "data_points": [
         "68"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "4",
       "expected_cat_name": "库存",
-      "reason": "设计意图：主图跨板块引用（3页主图引用4类指标·板块库存）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用4类指标·板块库存"
     },
     {
       "variety": "li",
@@ -5521,10 +5383,10 @@
       "data_points": [
         "891"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "7",
       "expected_cat_name": "成本利润",
-      "reason": "设计意图：主图跨板块引用（3页主图引用7类指标·板块成本利润）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用7类指标·板块成本利润"
     },
     {
       "variety": "li",
@@ -6037,52 +5899,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "GFEX：碳酸锂：仓单数量（日） vs GFEX：碳酸锂：仓单数量（日）",
-      "indicator_ids": [
-        "li_41_warrant_2",
-        "li_42_warrant_carbonate"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "4",
-      "expected_cat_name": "库存",
-      "reason": "匹配规则「库存」→ 板块4(库存) ✓"
-    },
-    {
-      "variety": "li",
-      "variety_zh": "锂",
-      "node": "4.2",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "li_4_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "GFEX：碳酸锂：仓单数量（日） vs GFEX：碳酸锂：仓单数量（日）",
-      "indicator_ids": [
-        "li_42_warrant_carbonate_battery",
-        "li_42_warrant_carbonate_industrial"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "4",
-      "expected_cat_name": "库存",
-      "reason": "匹配规则「库存」→ 板块4(库存) ✓"
-    },
-    {
-      "variety": "li",
-      "variety_zh": "锂",
-      "node": "4.2",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "li_4_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "GFEX：碳酸锂：仓单数量（日）（补充·4.2）",
       "indicator_ids": [
         "li_42_warrant_ratio"
@@ -6178,29 +5994,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "碳酸锂：库存：中国（月） vs 碳酸锂：库存：中国（月）",
-      "indicator_ids": [
-        "li_44_inv_carbonate_battery",
-        "li_44_inv_carbonate_industrial"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "🟢",
-      "expected_cat": null,
-      "expected_cat_name": "",
-      "reason": "无关键词命中（可能正确，需人工确认）"
-    },
-    {
-      "variety": "li",
-      "variety_zh": "锂",
-      "node": "4.4",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "li_4_4.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "碳酸锂：回收料：厂内库存：中国（月） vs 碳酸锂：回收料：厂内库存：华东地区（月）",
       "indicator_ids": [
         "li_44_inv_plant_days",
@@ -6223,7 +6016,7 @@
       "filename": "li_4_4.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "碳酸锂：回收料：厂内库存：中国（月）（补充·4.4）",
       "indicator_ids": [
         "li_44_inv_plant_2"
@@ -7999,29 +7792,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日） vs MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
-      "indicator_ids": [
-        "ni_21_near_price",
-        "ni_21_far_price"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「价格」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "2.1",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "ni_2_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "水淬镍：15-22%Ni：印尼产：升贴水（日）（补充·2.1）",
       "indicator_ids": [
         "ni_21_premium"
@@ -8258,29 +8028,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日） vs MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）",
-      "indicator_ids": [
-        "ni_24_near_price",
-        "ni_24_far_price"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「价格」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "2.4",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "ni_2_4.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "MHP：NI≥34%，CO≥2%：镍远期现货价格：中国主要港口（日）（补充·2.4）",
       "indicator_ids": [
         "ni_24_price"
@@ -10184,10 +9931,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（3页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -10270,29 +10017,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "精炼镍：产量：华南地区（月） vs 精炼镍：产量：华南地区（月）",
-      "indicator_ids": [
-        "ni_321_output_2",
-        "ni_321_output_3"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「精炼产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "3.2.1",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "ni_3_2_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "精炼镍：产量：华南地区（月）（补充·3.2.1）",
       "indicator_ids": [
         "ni_321_output_4"
@@ -10334,52 +10058,6 @@
     {
       "variety": "ni",
       "variety_zh": "镍",
-      "node": "3.2.2",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "ni_3_2_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 2,
-      "chart_title": "精炼镍：开工率：印尼（月） vs 精炼镍：开工率：印尼（月）",
-      "indicator_ids": [
-        "ni_322_util_2",
-        "ni_322_util_3"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「精炼产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "3.2.2",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "ni_3_2_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "硫酸镍企业：开工率：中国（月） vs 硫酸镍企业：开工率：中国（月）",
-      "indicator_ids": [
-        "ni_322_util_4",
-        "ni_322_util_5"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "🟢",
-      "expected_cat": null,
-      "expected_cat_name": "",
-      "reason": "无关键词命中（可能正确，需人工确认）"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
       "node": "3.2.3",
       "node_cat": "3",
       "node_cat_name": "供给",
@@ -10396,10 +10074,10 @@
       "data_points": [
         "54"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "6",
       "expected_cat_name": "进出口",
-      "reason": "设计意图：主图跨板块引用（3页主图引用6类指标·板块进出口）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用6类指标·板块进出口"
     },
     {
       "variety": "ni",
@@ -10467,10 +10145,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（3页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -11575,10 +11253,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -11646,10 +11324,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -11717,10 +11395,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -11755,29 +11433,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "LME：镍：原产国库存：埃及（月） vs LME：镍：原产国库存：埃及（月）",
-      "indicator_ids": [
-        "ni_43_inv_3",
-        "ni_43_inv_percentile"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "🟢",
-      "expected_cat": null,
-      "expected_cat_name": "",
-      "reason": "无关键词命中（可能正确，需人工确认）"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "4.3",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "ni_4_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "精炼镍：库存：中国：27家样本仓库（周）（补充·4.3）",
       "indicator_ids": [
         "ni_43_inv_4"
@@ -11811,10 +11466,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -11849,29 +11504,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "精炼镍：库存：中国：27家样本仓库（周） vs 精炼镍：库存：中国：27家样本仓库（周）",
-      "indicator_ids": [
-        "ni_44_inv_days",
-        "ni_44_inv_3"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·4页引用3类指标）"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "4.4",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "ni_4_4.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "精炼镍：库存：中国：27家样本仓库（周）（补充·4.4）",
       "indicator_ids": [
         "ni_44_inv_4"
@@ -11905,10 +11537,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -11943,29 +11575,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "精炼镍：库存：中国：27家样本仓库（周） vs 精炼镍：库存：中国：27家样本仓库（周）",
-      "indicator_ids": [
-        "ni_45_inv_implicit",
-        "ni_45_inv_implicit_ratio"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·4页引用3类指标）"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "4.5",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "ni_4_5.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "冰镍：进口数量：印尼→中国（月）（补充·4.5）",
       "indicator_ids": [
         "ni_45_import_2"
@@ -12299,10 +11908,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（5页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -12314,52 +11923,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "硫酸镍企业：开工率：中国（月） vs 硫酸镍企业：开工率：中国（月）",
-      "indicator_ids": [
-        "ni_322_util_4",
-        "ni_322_util_5"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "🟢",
-      "expected_cat": null,
-      "expected_cat_name": "",
-      "reason": "无关键词命中（可能正确，需人工确认）"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "5.1",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "ni_5_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "精炼镍：开工率：中国（月） vs 精炼镍：开工率：中国（月）",
-      "indicator_ids": [
-        "ni_51_util",
-        "ni_51_util_battery"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·5页引用3类指标）"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "5.1",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "ni_5_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "精炼镍：开工率：中国（月）（补充·5.1）",
       "indicator_ids": [
         "ni_51_util_cons"
@@ -12393,33 +11956,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（5页主图引用2类指标·板块价格）"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "5.2",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "ni_5_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 2,
-      "chart_title": "精炼镍：产量：中国（月） vs 精炼镍：产量：中国（月）",
-      "indicator_ids": [
-        "ni_52_output",
-        "ni_52_output_2"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·5页引用3类指标）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -12440,10 +11980,10 @@
       "data_points": [
         "1775"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（5页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -12510,10 +12050,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（6页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -12604,10 +12144,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（6页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -12698,10 +12238,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（6页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -12717,29 +12257,6 @@
       "indicator_ids": [
         "ni_63_export",
         "ni_63_export_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "匹配规则「进出口」→ 板块6(进出口) ✓"
-    },
-    {
-      "variety": "ni",
-      "variety_zh": "镍",
-      "node": "6.3",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "ni_6_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "镍矿石：出口数量：菲律宾→印尼（月） vs 镍矿石：出口数量：菲律宾→印尼（月）",
-      "indicator_ids": [
-        "ni_63_export_3",
-        "ni_63_export_4"
       ],
       "role": "普通",
       "freq": "monthly",
@@ -13052,10 +12569,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -13146,10 +12663,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -13240,10 +12757,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "ni",
@@ -15672,29 +15189,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "GFEX：工业硅：主力合约：单边交易：持仓量（日） vs GFEX：工业硅：主力合约：单边交易：持仓量（日）",
-      "indicator_ids": [
-        "si_21_openinterest_industrial_si_2",
-        "si_21_percentile_openinterest_indu"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「持仓/资金」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
-      "node": "2.1",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "si_2_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "GFEX：工业硅：主力合约：单边交易：持仓量（日）（补充·2.1）",
       "indicator_ids": [
         "si_21_openinterest_longshort_indus"
@@ -16073,29 +15567,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "GFEX：工业硅：主力合约：单边交易：持仓量（日） vs GFEX：工业硅：主力合约：单边交易：持仓量（日）",
-      "indicator_ids": [
-        "si_26_openinterest_top20_industria_2",
-        "si_26_openinterest_longshort_top20"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「持仓/资金」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
-      "node": "2.6",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "si_2_6.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "GFEX：工业硅：主力合约：单边交易：持仓量（日）（补充·2.6）",
       "indicator_ids": [
         "si_26_openinterest_longshort_indus"
@@ -17094,33 +16565,10 @@
       "data_points": [
         "139"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "6",
       "expected_cat_name": "进出口",
-      "reason": "设计意图：主图跨板块引用（3页主图引用6类指标·板块进出口）"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
-      "node": "3.1.4",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "si_3_1_4.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 2,
-      "chart_title": "工业硅：Si＜99.99%：进口数量：江苏（月） vs 工业硅：Si＜99.99%：进口数量：江苏（月）",
-      "indicator_ids": [
-        "si_314_import_3",
-        "si_314_import_4"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "跨板块引用正常（普通·3页引用6类指标）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用6类指标·板块进出口"
     },
     {
       "variety": "si",
@@ -17141,10 +16589,10 @@
       "data_points": [
         "893"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（3页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "si",
@@ -17319,29 +16767,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "工业硅：开工率：中国（月） vs 工业硅：开工率：中国（月）",
-      "indicator_ids": [
-        "si_322_util",
-        "si_322_util_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "🟢",
-      "expected_cat": null,
-      "expected_cat_name": "",
-      "reason": "无关键词命中（可能正确，需人工确认）"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
-      "node": "3.2.2",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "si_3_2_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "工业硅：开工率：中国（月）（补充·3.2.2）",
       "indicator_ids": [
         "si_322_util_3"
@@ -17446,10 +16871,10 @@
       "data_points": [
         "893"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（3页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "si",
@@ -17960,10 +17385,10 @@
       "data_points": [
         "893"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "si",
@@ -18031,10 +17456,10 @@
       "data_points": [
         "893"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "si",
@@ -18125,10 +17550,10 @@
       "data_points": [
         "893"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "si",
@@ -18524,29 +17949,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "工业硅：开工率：中国（月） vs 工业硅：开工率：中国（月）",
-      "indicator_ids": [
-        "si_322_util_2",
-        "si_322_util_3"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "🟢",
-      "expected_cat": null,
-      "expected_cat_name": "",
-      "reason": "无关键词命中（可能正确，需人工确认）"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
-      "node": "5.1",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "si_5_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "工业硅：开工率：中国（周） vs 多晶硅：产量：中国（月）",
       "indicator_ids": [
         "si_51_util",
@@ -19018,29 +18420,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "工业硅：Si＜99.99%：进口数量：江苏（月） vs 工业硅：Si＜99.99%：进口数量：江苏（月）",
-      "indicator_ids": [
-        "si_314_import_3",
-        "si_314_import_4"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "匹配规则「进出口」→ 板块6(进出口) ✓"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
-      "node": "6.1",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "si_6_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "工业硅：Si＜99.99%：进口数量合计：中国（月） vs 多晶硅：进口数量：陕西（月）",
       "indicator_ids": [
         "si_61_import_industrial_si_2",
@@ -19063,7 +18442,7 @@
       "filename": "si_6_1.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "多晶硅：进口数量合计：中国（月）（补充·6.1）",
       "indicator_ids": [
         "si_61_import_polysilicon_2"
@@ -19128,29 +18507,6 @@
     {
       "variety": "si",
       "variety_zh": "硅",
-      "node": "6.2",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "si_6_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "工业硅：Si＜99.99%：出口数量合计：中国（月） vs 工业硅：Si＜99.99%：出口数量合计：中国（月）",
-      "indicator_ids": [
-        "si_62_export_tariff_industrial_si",
-        "si_62_export_shipment_days"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "匹配规则「进出口」→ 板块6(进出口) ✓"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
       "node": "6.3",
       "node_cat": "6",
       "node_cat_name": "进出口",
@@ -19194,29 +18550,6 @@
       "expected_cat": "4",
       "expected_cat_name": "库存",
       "reason": "跨板块引用正常（普通·6页引用4类指标）"
-    },
-    {
-      "variety": "si",
-      "variety_zh": "硅",
-      "node": "6.3",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "si_6_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "工业硅：Si＜99.99%：出口数量合计：中国（月） vs 工业硅：Si＜99.99%：出口数量合计：中国（月）",
-      "indicator_ids": [
-        "si_63_export_tariff_industrial_si",
-        "si_63_export_shipment_days"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "匹配规则「进出口」→ 板块6(进出口) ✓"
     },
     {
       "variety": "si",
@@ -19508,10 +18841,10 @@
       "data_points": [
         "893"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "si",
@@ -19602,10 +18935,10 @@
       "data_points": [
         "893"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "si",
@@ -20475,29 +19808,6 @@
     {
       "variety": "sn",
       "variety_zh": "锡",
-      "node": "2.3",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "sn_2_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "SHFE：锡：指数合约：收盘价（日） vs SHFE：锡：指数合约：收盘价（日）",
-      "indicator_ids": [
-        "sn_23_close",
-        "sn_23_close_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「价格」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
       "node": "2.4",
       "node_cat": "2",
       "node_cat_name": "价格",
@@ -20647,52 +19957,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "SHFE：锡：单边交易：持仓量（日） vs SHFE：锡：单边交易：持仓量（日）",
-      "indicator_ids": [
-        "sn_26_openinterest_top20",
-        "sn_26_openinterest_top20_2"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「持仓/资金」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "2.6",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "sn_2_6.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "SHFE：锡：单边交易：持仓量（日） vs SHFE：锡：单边交易：持仓量（日）",
-      "indicator_ids": [
-        "sn_26_openinterest_top20_3",
-        "sn_26_openinterest_top20_4"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「持仓/资金」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "2.6",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "sn_2_6.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "SHFE：锡：单边交易：持仓量（日）（补充·2.6）",
       "indicator_ids": [
         "sn_26_openinterest_top20_5"
@@ -21635,29 +20899,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "锡精矿：产量：中国（月） vs 锡精矿：产量：中国（月）",
-      "indicator_ids": [
-        "sn_312_output_ratio",
-        "sn_312_output_ratio_2"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「矿端产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "3.1.2",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "sn_3_1_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "锡精矿：产量：中国（月）（补充·3.1.2）",
       "indicator_ids": [
         "sn_312_output_ratio_3"
@@ -21706,29 +20947,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "锡精矿：产量：中国（月） vs 锡精矿：产量：中国（月）",
-      "indicator_ids": [
-        "sn_312_output_4",
-        "sn_312_output_5"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「矿端产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "3.1.3",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "sn_3_1_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "锡矿砂及其精矿：进口数量：云南（月） vs 铝棒：6063：Φ120：加工费：无锡（日）",
       "indicator_ids": [
         "sn_313_import_tin_ore",
@@ -21751,7 +20969,7 @@
       "filename": "sn_3_1_3.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "铝棒：6063：Φ120：加工费：无锡（日）（补充·3.1.3）",
       "indicator_ids": [
         "sn_313_tc_tc_2"
@@ -21887,29 +21105,6 @@
     {
       "variety": "sn",
       "variety_zh": "锡",
-      "node": "3.1.5",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "sn_3_1_5.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 2,
-      "chart_title": "铝棒：6063：Φ120：加工费：无锡（日） vs 铝棒：6063：Φ120：加工费：无锡（日）",
-      "indicator_ids": [
-        "sn_313_tc_tc",
-        "sn_313_tc_tc_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「TC加工费」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
       "node": "3.2.1",
       "node_cat": "3",
       "node_cat_name": "供给",
@@ -21941,29 +21136,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "锡精矿：产量：中国（月） vs 锡精矿：产量：中国（月）",
-      "indicator_ids": [
-        "sn_312_output_4",
-        "sn_312_output_5"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「矿端产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "3.2.1",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "sn_3_2_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "精炼锡：产量：印尼：天马（季） vs 精炼锡：进口数量：澳大利亚（季）",
       "indicator_ids": [
         "sn_321_output",
@@ -21986,7 +21158,7 @@
       "filename": "sn_3_2_1.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "锡：加工企业：开工率：中国（月）（补充·3.2.1）",
       "indicator_ids": [
         "sn_321_util"
@@ -22083,52 +21255,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "锡精矿：产量：中国（月） vs 锡精矿：产量：中国（月）",
-      "indicator_ids": [
-        "sn_312_output_4",
-        "sn_312_output_5"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「矿端产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "3.2.3",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "sn_3_2_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "精炼锡：进口数量：澳大利亚（季） vs 精炼锡：进口数量：澳大利亚（季）",
-      "indicator_ids": [
-        "sn_314_import_2",
-        "sn_314_import_3"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「精炼产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "3.2.3",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "sn_3_2_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "锡：加工企业：开工率：中国（月）（补充·3.2.3）",
       "indicator_ids": [
         "sn_321_util"
@@ -22562,10 +21688,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -22609,10 +21735,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -22640,29 +21766,6 @@
     {
       "variety": "sn",
       "variety_zh": "锡",
-      "node": "4.2",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "sn_4_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "LME：锡：注册仓单（日） vs LME：锡：注册仓单（日）",
-      "indicator_ids": [
-        "sn_42_warrant",
-        "sn_42_warrant_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "4",
-      "expected_cat_name": "库存",
-      "reason": "匹配规则「库存」→ 板块4(库存) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
       "node": "4.3",
       "node_cat": "4",
       "node_cat_name": "库存",
@@ -22679,10 +21782,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -22698,29 +21801,6 @@
       "indicator_ids": [
         "sn_43_inv_plant",
         "sn_43_ratio"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "4",
-      "expected_cat_name": "库存",
-      "reason": "匹配规则「库存」→ 板块4(库存) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "4.3",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "sn_4_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "SMM: 锡锭社会库存: 上海: 周度 vs SMM: 锡锭社会库存: 上海: 周度",
-      "indicator_ids": [
-        "sn_43_inv",
-        "sn_43_inv_2"
       ],
       "role": "普通",
       "freq": "daily",
@@ -22749,10 +21829,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -22796,10 +21876,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -23100,10 +22180,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（5页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -23115,29 +22195,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "锡：加工企业：开工率：中国（月） vs 锡：加工企业：开工率：中国（月）",
-      "indicator_ids": [
-        "sn_321_util",
-        "sn_321_util_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "🟢",
-      "expected_cat": null,
-      "expected_cat_name": "",
-      "reason": "无关键词命中（可能正确，需人工确认）"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "5.1",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "sn_5_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "精炼锡：产量：印尼：天马（季）（补充·5.1）",
       "indicator_ids": [
         "sn_51_output"
@@ -23171,10 +22228,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（5页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -23186,52 +22243,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "精炼锡：产量：印尼：天马（季） vs 精炼锡：产量：印尼：天马（季）",
-      "indicator_ids": [
-        "sn_51_output",
-        "sn_52_output"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·5页引用3类指标）"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "5.2",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "sn_5_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "精炼锡：产量：印尼：天马（季） vs 精炼锡：产量：印尼：天马（季）",
-      "indicator_ids": [
-        "sn_52_output_2",
-        "sn_52_output_3"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·5页引用3类指标）"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "5.2",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "sn_5_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "精炼锡：产量：印尼：天马（季）（补充·5.2）",
       "indicator_ids": [
         "sn_52_output_4"
@@ -23265,10 +22276,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（5页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -23609,10 +22620,10 @@
       "data_points": [
         "45"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "3",
       "expected_cat_name": "供给",
-      "reason": "设计意图：主图跨板块引用（6页主图引用3类指标·板块供给）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用3类指标·板块供给"
     },
     {
       "variety": "sn",
@@ -23624,52 +22635,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "精炼锡：进口数量：澳大利亚（季） vs 精炼锡：进口数量：澳大利亚（季）",
-      "indicator_ids": [
-        "sn_314_import_2",
-        "sn_314_import_3"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·6页引用3类指标）"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "6.1",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "sn_6_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "锡精矿：进口数量：缅甸→中国（月） vs 锡精矿：进口数量：缅甸→中国（月）",
-      "indicator_ids": [
-        "sn_61_import",
-        "sn_61_import_2"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "匹配规则「进出口」→ 板块6(进出口) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "6.1",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "sn_6_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "锡精矿：进口数量：缅甸→中国（月）（补充·6.1）",
       "indicator_ids": [
         "sn_61_import_3"
@@ -23703,10 +22668,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（6页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -23718,29 +22683,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "精炼锡：进口数量：澳大利亚（季） vs 精炼锡：进口数量：澳大利亚（季）",
-      "indicator_ids": [
-        "sn_314_import_2",
-        "sn_314_import_3"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·6页引用3类指标）"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "6.2",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "sn_6_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "精炼锡：进口数量：澳大利亚（季） vs 精炼锡：出口数量：马来西亚（月）",
       "indicator_ids": [
         "sn_62_import",
@@ -23763,7 +22705,7 @@
       "filename": "sn_6_2.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "精炼锡：进口数量：澳大利亚（季）（补充·6.2）",
       "indicator_ids": [
         "sn_62_import_2"
@@ -23797,10 +22739,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（6页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -23812,29 +22754,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "印尼：锡锭：出口数量：全球（月） vs 印尼：锡锭：出口数量：全球（月）",
-      "indicator_ids": [
-        "sn_62_export_3",
-        "sn_62_export_4"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "匹配规则「进出口」→ 板块6(进出口) ✓"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "6.3",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "sn_6_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "锡：出口金额合计：关别（月） vs 精炼锡：出口数量：马来西亚（月）",
       "indicator_ids": [
         "sn_62_export_5",
@@ -23857,7 +22776,7 @@
       "filename": "sn_6_3.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "精炼锡：出口数量：马来西亚（月）（补充·6.3）",
       "indicator_ids": [
         "sn_63_export_2"
@@ -23891,10 +22810,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（6页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -24059,10 +22978,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -24097,29 +23016,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "精炼锡：成本（日） vs 精炼锡：成本（日）",
-      "indicator_ids": [
-        "sn_71_cost_percentile",
-        "sn_71_cost_2"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·7页引用3类指标）"
-    },
-    {
-      "variety": "sn",
-      "variety_zh": "锡",
-      "node": "7.1",
-      "node_cat": "7",
-      "node_cat_name": "成本利润",
-      "filename": "sn_7_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "精炼锡：成本（日）（补充·7.1）",
       "indicator_ids": [
         "sn_71_cost_3"
@@ -24153,10 +23049,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -24247,10 +23143,10 @@
       "data_points": [
         "2779"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（7页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "sn",
@@ -25313,29 +24209,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "SHFE：锌：主力合约：收盘价（日） vs SHFE：锌：主力合约：收盘价（日）",
-      "indicator_ids": [
-        "zn_21_close_near",
-        "zn_21_close_far"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「价格」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "2.2",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "zn_2_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "锌锭：进口盈亏：含税（日）（补充·2.2）",
       "indicator_ids": [
         "zn_21_import"
@@ -25478,29 +24351,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "SHFE：锌：主力合约：收盘价（日） vs SHFE：锌：主力合约：收盘价（日）",
-      "indicator_ids": [
-        "zn_21_close_near",
-        "zn_21_close_far"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「价格」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "2.4",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "zn_2_4.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "LME：锌：特高级：原产国库存：巴林（月） vs SHFE：锌：主力合约：收盘价（日）",
       "indicator_ids": [
         "zn_22_lme_inv",
@@ -25571,29 +24421,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "云南罗平锌电：营业利润（季） vs 云南罗平锌电：营业利润（季）",
-      "indicator_ids": [
-        "zn_25_profit",
-        "zn_25_profit_2"
-      ],
-      "role": "普通",
-      "freq": "",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "7",
-      "expected_cat_name": "成本利润",
-      "reason": "跨板块引用正常（普通·2页引用7类指标）"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "2.5",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "zn_2_5.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "云南罗平锌电：营业利润（季）（补充·2.5）",
       "indicator_ids": [
         "zn_25_profit_3"
@@ -25665,29 +24492,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "SHFE：锌：单边交易：持仓量（日） vs SHFE：锌：单边交易：持仓量（日）",
-      "indicator_ids": [
-        "zn_26_openinterest_top20",
-        "zn_26_openinterest"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "2",
-      "expected_cat_name": "价格",
-      "reason": "匹配规则「持仓/资金」→ 板块2(价格) ✓"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "2.6",
-      "node_cat": "2",
-      "node_cat_name": "价格",
-      "filename": "zn_2_6.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "SHFE：锌：单边交易：持仓量（日）（补充·2.6）",
       "indicator_ids": [
         "zn_26_openinterest_2"
@@ -27229,29 +26033,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "锌精矿：48%Zn：远期现货TC价：中国（日） vs 锌精矿：48%Zn：远期现货TC价：中国（日）",
-      "indicator_ids": [
-        "zn_315_tc_percentile",
-        "zn_315_tc"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「TC加工费」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "3.1.5",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "zn_3_1_5.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "锌精矿：48%Zn：远期现货TC价：中国（日）（补充·3.1.5）",
       "indicator_ids": [
         "zn_315_tc_2"
@@ -27300,29 +26081,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "锌精矿：产量：中国（月） vs 锌精矿：产量：中国（月）",
-      "indicator_ids": [
-        "zn_313_output",
-        "zn_313_output_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「矿端产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "3.2.1",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "zn_3_2_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "样本企业：原生锌：产量：中国（月） vs 样本企业：原生锌：产能利用率：中国（月）",
       "indicator_ids": [
         "zn_321_output",
@@ -27345,7 +26103,7 @@
       "filename": "zn_3_2_1.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "锌粉及片状粉末：进口数量：辽宁（月）（补充·3.2.1）",
       "indicator_ids": [
         "zn_321_import"
@@ -27465,29 +26223,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "锌精矿：产量：中国（月） vs 锌精矿：产量：中国（月）",
-      "indicator_ids": [
-        "zn_313_output",
-        "zn_313_output_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "匹配规则「矿端产量」→ 板块3(供给) ✓"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "3.2.3",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "zn_3_2_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "再生锌：产量：中国（月） vs 精炼锌：进口数量：哈萨克斯坦→中国（月）",
       "indicator_ids": [
         "zn_323_output_recycle",
@@ -27510,7 +26245,7 @@
       "filename": "zn_3_2_3.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "精炼锌：进口数量：哈萨克斯坦→中国（月）（补充·3.2.3）",
       "indicator_ids": [
         "zn_323_import_recycle_2"
@@ -27582,29 +26317,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 3,
-      "chart_title": "云南罗平锌电：营业利润（季） vs 云南罗平锌电：营业利润（季）",
-      "indicator_ids": [
-        "zn_25_profit_2",
-        "zn_25_profit_3"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "7",
-      "expected_cat_name": "成本利润",
-      "reason": "跨板块引用正常（普通·3页引用7类指标）"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "3.2.4",
-      "node_cat": "3",
-      "node_cat_name": "供给",
-      "filename": "zn_3_2_4.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 4,
       "chart_title": "锌锭：进口盈亏：含税（日）（补充·3.2.4）",
       "indicator_ids": [
         "zn_314_import"
@@ -28049,29 +26761,6 @@
     {
       "variety": "zn",
       "variety_zh": "锌",
-      "node": "4.1",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "zn_4_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
-      "chart_title": "镀锌板卷：库存：中国（周） vs 镀锌板卷：库存：中国（周）",
-      "indicator_ids": [
-        "zn_41_inv",
-        "zn_41_inv_2"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "5",
-      "expected_cat_name": "需求",
-      "reason": "跨板块引用正常（普通·4页引用5类指标）"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
       "node": "4.2",
       "node_cat": "4",
       "node_cat_name": "库存",
@@ -28135,10 +26824,10 @@
       "data_points": [
         "2833"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "zn",
@@ -28150,29 +26839,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "镀锌板卷：库存：中国（周） vs 镀锌板卷：库存：中国（周）",
-      "indicator_ids": [
-        "zn_43_inv",
-        "zn_43_inv_2"
-      ],
-      "role": "普通",
-      "freq": "weekly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "5",
-      "expected_cat_name": "需求",
-      "reason": "跨板块引用正常（普通·4页引用5类指标）"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "4.3",
-      "node_cat": "4",
-      "node_cat_name": "库存",
-      "filename": "zn_4_3.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "锌锭：0#：Zn≥99.995%：升贴水：广东（日）（补充·4.3）",
       "indicator_ids": [
         "zn_43_premium"
@@ -28206,10 +26872,10 @@
       "data_points": [
         "2294"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "zn",
@@ -28276,10 +26942,10 @@
       "data_points": [
         "2294"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（4页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "zn",
@@ -28480,10 +27146,10 @@
       "data_points": [
         "115"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "3",
       "expected_cat_name": "供给",
-      "reason": "设计意图：主图跨板块引用（5页主图引用3类指标·板块供给）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用3类指标·板块供给"
     },
     {
       "variety": "zn",
@@ -28528,10 +27194,10 @@
       "data_points": [
         "115"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "3",
       "expected_cat_name": "供给",
-      "reason": "设计意图：主图跨板块引用（5页主图引用3类指标·板块供给）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用3类指标·板块供给"
     },
     {
       "variety": "zn",
@@ -28543,29 +27209,6 @@
       "page_type": "regular",
       "page_type_zh": "常规节点页",
       "chart_seq": 2,
-      "chart_title": "锌精矿：产量：中国（月） vs 锌精矿：产量：中国（月）",
-      "indicator_ids": [
-        "zn_313_output",
-        "zn_313_output_2"
-      ],
-      "role": "普通",
-      "freq": "monthly",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·5页引用3类指标）"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "5.2",
-      "node_cat": "5",
-      "node_cat_name": "需求",
-      "filename": "zn_5_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 3,
       "chart_title": "样本企业：原生锌：产量：中国（月） vs 镀锌板卷：钢铁企业：开工率：中国（周）",
       "indicator_ids": [
         "zn_52_output_battery",
@@ -28588,7 +27231,7 @@
       "filename": "zn_5_2.html",
       "page_type": "regular",
       "page_type_zh": "常规节点页",
-      "chart_seq": 4,
+      "chart_seq": 3,
       "chart_title": "氧化锌企业：开工率：中国（月）（补充·5.2）",
       "indicator_ids": [
         "zn_52_util_2"
@@ -28756,10 +27399,10 @@
       "data_points": [
         "115"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "3",
       "expected_cat_name": "供给",
-      "reason": "设计意图：主图跨板块引用（6页主图引用3类指标·板块供给）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用3类指标·板块供给"
     },
     {
       "variety": "zn",
@@ -28811,29 +27454,6 @@
     {
       "variety": "zn",
       "variety_zh": "锌",
-      "node": "6.2",
-      "node_cat": "6",
-      "node_cat_name": "进出口",
-      "filename": "zn_6_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 2,
-      "chart_title": "锌粉及片状粉末：进口数量：辽宁（月） vs 锌粉及片状粉末：进口数量：辽宁（月）",
-      "indicator_ids": [
-        "zn_62_import_2",
-        "zn_62_import_3"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "6",
-      "expected_cat_name": "进出口",
-      "reason": "匹配规则「进出口」→ 板块6(进出口) ✓"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
       "node": "6.3",
       "node_cat": "6",
       "node_cat_name": "进出口",
@@ -28850,10 +27470,10 @@
       "data_points": [
         "2833"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "2",
       "expected_cat_name": "价格",
-      "reason": "设计意图：主图跨板块引用（6页主图引用2类指标·板块价格）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用2类指标·板块价格"
     },
     {
       "variety": "zn",
@@ -29421,33 +28041,10 @@
       "data_points": [
         "115"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "3",
       "expected_cat_name": "供给",
-      "reason": "设计意图：主图跨板块引用（7页主图引用3类指标·板块供给）"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "7.1",
-      "node_cat": "7",
-      "node_cat_name": "成本利润",
-      "filename": "zn_7_1.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 2,
-      "chart_title": "锌锭：进口：理论成本（日） vs 锌锭：进口：理论成本（日）",
-      "indicator_ids": [
-        "zn_71_cost",
-        "zn_71_cost_2"
-      ],
-      "role": "普通",
-      "freq": "",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "7",
-      "expected_cat_name": "成本利润",
-      "reason": "匹配规则「成本/利润」→ 板块7(成本利润) ✓"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用3类指标·板块供给"
     },
     {
       "variety": "zn",
@@ -29468,33 +28065,10 @@
       "data_points": [
         "115"
       ],
-      "verdict": "⚪",
+      "verdict": "🟢",
       "expected_cat": "3",
       "expected_cat_name": "供给",
-      "reason": "设计意图：主图跨板块引用（7页主图引用3类指标·板块供给）"
-    },
-    {
-      "variety": "zn",
-      "variety_zh": "锌",
-      "node": "7.2",
-      "node_cat": "7",
-      "node_cat_name": "成本利润",
-      "filename": "zn_7_2.html",
-      "page_type": "regular",
-      "page_type_zh": "常规节点页",
-      "chart_seq": 2,
-      "chart_title": "样本企业：原生锌：产量：中国（月） vs 样本企业：原生锌：产量：中国（月）",
-      "indicator_ids": [
-        "zn_72_output_2",
-        "zn_72_output_3"
-      ],
-      "role": "普通",
-      "freq": "daily",
-      "data_points": [],
-      "verdict": "✅",
-      "expected_cat": "3",
-      "expected_cat_name": "供给",
-      "reason": "跨板块引用正常（普通·7页引用3类指标）"
+      "reason": "常规节点页跨板块主图（可能串台，需人工确认）：引用3类指标·板块供给"
     }
   ],
   "pages": [
@@ -29648,7 +28222,7 @@
       "node_code": "4.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "al_4_2.html",
@@ -29656,7 +28230,7 @@
       "node_code": "4.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "al_4_3.html",
@@ -29824,7 +28398,7 @@
       "node_code": "2.4",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "cu_2_5.html",
@@ -30096,7 +28670,7 @@
       "node_code": "2.5",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "li_2_6.html",
@@ -30104,7 +28678,7 @@
       "node_code": "2.6",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 2
     },
     {
       "filename": "li_2_overview.html",
@@ -30224,7 +28798,7 @@
       "node_code": "4.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 2
     },
     {
       "filename": "li_4_3.html",
@@ -30240,7 +28814,7 @@
       "node_code": "4.4",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "li_4_5.html",
@@ -30376,7 +28950,7 @@
       "node_code": "2.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "ni_2_2.html",
@@ -30400,7 +28974,7 @@
       "node_code": "2.4",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "ni_2_5.html",
@@ -30480,7 +29054,7 @@
       "node_code": "3.2.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "ni_3_2_2.html",
@@ -30488,7 +29062,7 @@
       "node_code": "3.2.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 1
     },
     {
       "filename": "ni_3_2_3.html",
@@ -30544,7 +29118,7 @@
       "node_code": "4.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "ni_4_4.html",
@@ -30552,7 +29126,7 @@
       "node_code": "4.4",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "ni_4_5.html",
@@ -30560,7 +29134,7 @@
       "node_code": "4.5",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "ni_4_overview.html",
@@ -30584,7 +29158,7 @@
       "node_code": "5.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 2
     },
     {
       "filename": "ni_5_2.html",
@@ -30592,7 +29166,7 @@
       "node_code": "5.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 2
+      "actual_charts": 1
     },
     {
       "filename": "ni_5_3.html",
@@ -30632,7 +29206,7 @@
       "node_code": "6.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "ni_6_4.html",
@@ -31008,7 +29582,7 @@
       "node_code": "2.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "si_2_2.html",
@@ -31048,7 +29622,7 @@
       "node_code": "2.6",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "si_2_overview.html",
@@ -31088,7 +29662,7 @@
       "node_code": "3.1.4",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 2
+      "actual_charts": 1
     },
     {
       "filename": "si_3_1_5.html",
@@ -31112,7 +29686,7 @@
       "node_code": "3.2.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "si_3_2_3.html",
@@ -31208,7 +29782,7 @@
       "node_code": "5.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "si_5_2.html",
@@ -31240,7 +29814,7 @@
       "node_code": "6.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "si_6_2.html",
@@ -31248,7 +29822,7 @@
       "node_code": "6.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "si_6_3.html",
@@ -31256,7 +29830,7 @@
       "node_code": "6.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "si_6_4.html",
@@ -31336,7 +29910,7 @@
       "node_code": "2.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "sn_2_4.html",
@@ -31360,7 +29934,7 @@
       "node_code": "2.6",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 2
     },
     {
       "filename": "sn_2_overview.html",
@@ -31392,7 +29966,7 @@
       "node_code": "3.1.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "sn_3_1_3.html",
@@ -31400,7 +29974,7 @@
       "node_code": "3.1.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "sn_3_1_4.html",
@@ -31416,7 +29990,7 @@
       "node_code": "3.1.5",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 2
+      "actual_charts": 1
     },
     {
       "filename": "sn_3_2_1.html",
@@ -31424,7 +29998,7 @@
       "node_code": "3.2.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "sn_3_2_2.html",
@@ -31440,7 +30014,7 @@
       "node_code": "3.2.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 2
     },
     {
       "filename": "sn_3_overview.html",
@@ -31472,7 +30046,7 @@
       "node_code": "4.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "sn_4_3.html",
@@ -31480,7 +30054,7 @@
       "node_code": "4.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "sn_4_4.html",
@@ -31520,7 +30094,7 @@
       "node_code": "5.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "sn_5_2.html",
@@ -31528,7 +30102,7 @@
       "node_code": "5.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 2
     },
     {
       "filename": "sn_5_3.html",
@@ -31560,7 +30134,7 @@
       "node_code": "6.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 2
     },
     {
       "filename": "sn_6_2.html",
@@ -31568,7 +30142,7 @@
       "node_code": "6.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "sn_6_3.html",
@@ -31576,7 +30150,7 @@
       "node_code": "6.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "sn_6_4.html",
@@ -31608,7 +30182,7 @@
       "node_code": "7.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "sn_7_2.html",
@@ -31664,7 +30238,7 @@
       "node_code": "2.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_2_3.html",
@@ -31680,7 +30254,7 @@
       "node_code": "2.4",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "zn_2_5.html",
@@ -31688,7 +30262,7 @@
       "node_code": "2.5",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_2_6.html",
@@ -31696,7 +30270,7 @@
       "node_code": "2.6",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_2_overview.html",
@@ -31752,7 +30326,7 @@
       "node_code": "3.1.5",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_3_2_1.html",
@@ -31760,7 +30334,7 @@
       "node_code": "3.2.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_3_2_2.html",
@@ -31776,7 +30350,7 @@
       "node_code": "3.2.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_3_2_4.html",
@@ -31784,7 +30358,7 @@
       "node_code": "3.2.4",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_3_overview.html",
@@ -31808,7 +30382,7 @@
       "node_code": "4.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "zn_4_2.html",
@@ -31824,7 +30398,7 @@
       "node_code": "4.3",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 3
+      "actual_charts": 2
     },
     {
       "filename": "zn_4_4.html",
@@ -31872,7 +30446,7 @@
       "node_code": "5.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 4
+      "actual_charts": 3
     },
     {
       "filename": "zn_5_3.html",
@@ -31912,7 +30486,7 @@
       "node_code": "6.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 2
+      "actual_charts": 1
     },
     {
       "filename": "zn_6_3.html",
@@ -31952,7 +30526,7 @@
       "node_code": "7.1",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 2
+      "actual_charts": 1
     },
     {
       "filename": "zn_7_2.html",
@@ -31960,7 +30534,7 @@
       "node_code": "7.2",
       "page_type": "regular",
       "is_overview": false,
-      "actual_charts": 2
+      "actual_charts": 1
     },
     {
       "filename": "zn_7_overview.html",

@@ -19,6 +19,67 @@
 
 ---
 
+## 🔔 前端修复二次迭代 R1~R4 + PB材料准备（2026-09-13）
+
+**Dsharnes-B 前端修复二次迭代 4 项 + PB 材料准备已全部完成**，提交到 `indicator-correction-win` 分支：
+
+| 修复项 | 交付物 | 结果 |
+|---|---|---|
+| R1 标记逻辑修正 | `docs/CHART_REGISTRY.md` + `data/chart_registry.json` | 60条⚪→🟢（常规节点页跨板块主图改为待人工确认，仅聚合/首页保留⚪） |
+| R2 全量重跑build | `docs/R2_R4_Fix_Report.md` + `scripts/chart_kits.py` | 清除62张A vs A自对比图表，chart_kits集成disambig_title消歧 |
+| R3 Coverage报告 | `docs/Coverage_Report.md` | 新增业务期望图表总数分母，双口径覆盖率（扫描95.5%/业务233.1%） |
+| R4 div-id修正 | `docs/R2_R4_Fix_Report.md` | pb_stock_v2.html 15张图表div-id统一为标准命名 |
+| PB材料准备 | `pb_pipeline_README.md` + `docs/R2_R4_Fix_Report.md` | 入库5步流水线+三类差异比对+约束prompt；核查91条指标_nodes=[]全缺失，缺陷登记 |
+
+### R1 分类清单（⚪→🟢，60条）
+
+| 品种 | 数量 | 示例 |
+|---|---|---|
+| 铜(CU) | 4 | cu_3_2_1 C1（阳极铜进口量·3页主图引用6类指标）、cu_7_1 C1（TC指导价·7页主图引用3类指标） |
+| 铝(AL) | 4 | al_3_2_4 C1、al_5_3 C1、al_6_2 C1、al_7_2 C1 |
+| 锌(ZN) | 9 | zn_4_3/4_4/4_5/5_1/5_2/6_1/6_3/7_1/7_2 |
+| 镍(NI) | 17 | ni_3_1_5/3_2_3/3_2_4/4_1~4_5/5_1~5_3/6_1~6_3/7_1~7_3 |
+| 锡(SN) | 15 | sn_4_1~4_5/5_1~5_3/6_1~6_4/7_1~7_3 |
+| 硅(SI) | 8 | si_3_1_4/3_1_5/3_2_4/4_1~4_3/7_1/7_2 |
+| 锂(LI) | 3 | li_2_5/3_1_2/3_2_4 |
+
+> **规则**: 常规节点页跨板块主图→🟢待人工确认（可能串台）；仅聚合页/首页保留⚪设计意图
+
+### 判定分布变化
+
+| 指标 | 修复前 | 修复后 | 变化 |
+|---|---|---|---|
+| 总图表数 | 1379 | 1317 | -62 (A vs A清除) |
+| ✅ 归属正确 | 455 | 400 | -55 |
+| 🟢 待人工确认 | 102 | 155 | +53 |
+| ⚪ 设计意图 | 822 | 762 | -60 |
+| 🔴 归属可疑 | 0 | 0 | 0 |
+
+### PB缺陷登记
+
+- **PB指标总数**: 91条（i*/j*前缀）
+- **_nodes标注缺失**: 91/91（全部为None）
+- **影响**: 无法追溯节点归属、无法做节点级覆盖率统计
+- **约束**: ❌ 未执行PB完整流水线、❌ 未生成新PB指标、⏳ 待api_cache.db恢复后执行全量重建
+
+### 变更文件
+
+- `scripts/build_chart_registry.py` — R1标记逻辑 + R3双口径覆盖率
+- `scripts/chart_kits.py` — R2 chart_dual集成disambig_title消歧
+- `scripts/_r2_r4_fix.py` — A vs A清除 + div-id修复 + PB缺陷登记
+- `scripts/_r1_classify.py` — R1分类清单生成
+- `scripts/_pb_check.py`, `scripts/_pb_check2.py` — PB指标核查
+- `scripts/_r4_check_divids.py` — div-id检查
+- `docs/Coverage_Report.md` — 双口径覆盖率报告
+- `docs/R2_R4_Fix_Report.md` — R2/R4修复报告 + PB缺陷清单
+- `docs/CHART_REGISTRY.md` — 更新后图表注册表
+- `data/chart_registry.json` — 更新后注册表JSON
+- `pb_pipeline_README.md` — PB 5步流水线材料入库
+- 62个HTML文件 — A vs A图表块已清除
+- `pb_stock_v2.html` — 15个div-id已修正
+
+---
+
 ## 🔔 上游数据治理完成（2026-09-13）
 
 **DSH-B 上游数据治理三任务已全部完成**，提交到 `indicator-correction-win` 分支：

@@ -303,10 +303,11 @@ def judge_placement(page_node_cat, page_type, indicator_name, indicator_ids, cha
             rule_name, expected_cat, CATEGORY_MAP.get(expected_cat, '?'),
             page_node_cat, CATEGORY_MAP.get(page_node_cat, '?'))
 
-    # 主图：跨板块为设计意图（上下文参考图），标记⚪
+    # R1修复：常规节点页跨板块主图 → 🟢待人工确认（可能串台）
+    # 仅聚合页/首页保留⚪设计意图（见上方 page_type in ('sector_aggregate','home') 分支）
     if chart_role == '主图':
-        return '\u26aa', expected_cat, '设计意图：主图跨板块引用（%s页主图引用%s类指标·板块%s）' % (
-            page_node_cat, expected_cat, CATEGORY_MAP.get(expected_cat, '?'))
+        return '\U0001f7e2', expected_cat, '常规节点页跨板块主图（可能串台，需人工确认）：引用%s类指标·板块%s' % (
+            expected_cat, CATEGORY_MAP.get(expected_cat, '?'))
 
     return '\u2705', expected_cat, '跨板块引用正常（%s·%s页引用%s类指标）' % (
         chart_role, page_node_cat, expected_cat)
@@ -535,7 +536,7 @@ def build_registry():
 
 
 def _output_coverage_report(all_pages, all_charts, verdict_counts, page_type_counts):
-    """输出覆盖率报告"""
+    """输出覆盖率报告 — R3修复：新增业务期望图表总数分母，提供双口径覆盖率"""
     os.makedirs(os.path.dirname(OUT_COVERAGE), exist_ok=True)
 
     # 按页面类型的图表数
@@ -560,31 +561,66 @@ def _output_coverage_report(all_pages, all_charts, verdict_counts, page_type_cou
             'anomalies': v_anom,
         }
 
-    # 覆盖率 = 已注册图数 / 声明图数
+    # 口径1：覆盖率 = 已注册图数 / 声明图数（含聚合页）
     total_declared = sum(p['total_charts_declared'] for p in all_pages if p['total_charts_declared'] > 0)
-    coverage_pct = (len(all_charts) / total_declared * 100) if total_declared > 0 else 0
+    coverage_scan = (len(all_charts) / total_declared * 100) if total_declared > 0 else 0
+
+    # 口径2：覆盖率 = 已注册图数 / 业务期望图表总数
+    # 业务期望定义（基于框架树节点设计）：
+    #   常规节点页: 每节点至少2图（主图 + 1补充）
+    #   板块聚合页: 每板块3图（板块汇总核心指标）
+    #   品种首页: 每首页5图（品种全景概览）
+    #   总览页: 0图（纯导航）
+    business_expect = (
+        type_stats.get('regular', {}).get('pages', 0) * 2 +
+        type_stats.get('sector_aggregate', {}).get('pages', 0) * 3 +
+        type_stats.get('home', {}).get('pages', 0) * 5
+    )
+    coverage_business = (len(all_charts) / business_expect * 100) if business_expect > 0 else 0
 
     with open(OUT_COVERAGE, 'w', encoding='utf-8') as f:
         f.write("# 覆盖率报告 (Coverage Report)\n\n")
         f.write("> 生成时间: %s\n\n" % datetime.now().strftime('%Y-%m-%d %H:%M'))
 
-        f.write("## 总体覆盖率\n\n")
+        f.write("## 总体覆盖率（双口径）\n\n")
         f.write("| 指标 | 数值 |\n|---|---|\n")
         f.write("| 扫描页面数 | %d |\n" % len(all_pages))
         f.write("| 已注册图表数 | %d |\n" % len(all_charts))
         f.write("| 声明图表数(含聚合页) | %d |\n" % total_declared)
-        f.write("| 覆盖率 | %.1f%% |\n" % coverage_pct)
+        f.write("| 业务期望图表总数 | %d |\n" % business_expect)
+        f.write("| 覆盖率-扫描口径 | %.1f%% (已注册/声明) |\n" % coverage_scan)
+        f.write("| 覆盖率-业务口径 | %.1f%% (已注册/业务期望) |\n" % coverage_business)
         f.write("| ✅ 归属正确 | %d |\n" % verdict_counts.get('\u2705', 0))
         f.write("| 🟢 待人工确认 | %d |\n" % verdict_counts.get('\U0001f7e2', 0))
         f.write("| 🔴 归属可疑 | %d |\n" % verdict_counts.get('\U0001f534', 0))
         f.write("| ⚪ 设计意图 | %d |\n" % verdict_counts.get('\u26aa', 0))
         f.write("\n")
 
+        f.write("### 业务期望定义\n\n")
+        f.write("| 页面类型 | 期望图/页 | 页面数 | 期望图数 |\n|---|---|---|---|\n")
+        f.write("| 常规节点页 | 2 | %d | %d |\n" % (
+            type_stats.get('regular', {}).get('pages', 0),
+            type_stats.get('regular', {}).get('pages', 0) * 2))
+        f.write("| 板块聚合页 | 3 | %d | %d |\n" % (
+            type_stats.get('sector_aggregate', {}).get('pages', 0),
+            type_stats.get('sector_aggregate', {}).get('pages', 0) * 3))
+        f.write("| 品种首页 | 5 | %d | %d |\n" % (
+            type_stats.get('home', {}).get('pages', 0),
+            type_stats.get('home', {}).get('pages', 0) * 5))
+        f.write("| 总览页 | 0 | %d | 0 |\n" % type_stats.get('overview', {}).get('pages', 0))
+        f.write("| **合计** | — | %d | **%d** |\n" % (
+            sum(ts.get('pages', 0) for ts in type_stats.values()), business_expect))
+        f.write("\n")
+
         f.write("## 按页面类型\n\n")
-        f.write("| 页面类型 | 页面数 | 图表数 |\n|---|---|---|\n")
+        f.write("| 页面类型 | 页面数 | 图表数 | 覆盖率-业务 |\n|---|---|---|---|\n")
         for pt in ['regular', 'overview', 'sector_aggregate', 'home']:
             ts = type_stats.get(pt, {'pages': 0, 'charts': 0})
-            f.write("| %s | %d | %d |\n" % (PAGE_TYPE_ZH.get(pt, pt), ts['pages'], ts['charts']))
+            exp_per = {'regular': 2, 'sector_aggregate': 3, 'home': 5, 'overview': 0}.get(pt, 0)
+            exp_total = ts['pages'] * exp_per
+            cov = (ts['charts'] / exp_total * 100) if exp_total > 0 else 0
+            f.write("| %s | %d | %d | %.1f%% |\n" % (
+                PAGE_TYPE_ZH.get(pt, pt), ts['pages'], ts['charts'], cov))
         f.write("\n")
 
         f.write("## 按品种\n\n")
@@ -595,7 +631,8 @@ def _output_coverage_report(all_pages, all_charts, verdict_counts, page_type_cou
                 VARIETY_ZH.get(v, v), v.upper(), vs['pages'], vs['charts'], vs['anomalies']))
         f.write("\n")
 
-    print("  覆盖率报告 → %s" % OUT_COVERAGE)
+    print("  覆盖率报告 → %s (双口径: 扫描=%.1f%%, 业务=%.1f%%)" % (
+        OUT_COVERAGE, coverage_scan, coverage_business))
 
 
 if __name__ == '__main__':

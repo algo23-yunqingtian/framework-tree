@@ -266,8 +266,19 @@ def chart_line_t(cid, title, sub, color, data, note='', default_seasonal=False,
     return html, js
 
 
-def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note=''):
-    """双轴复合图：data_a 左轴，data_b 右轴。带图备注。"""
+def chart_dual(cid, title, sub, data_a, color_a, name_a, unit_a, data_b, color_b, name_b, unit_b, note='', mid_a=None, mid_b=None):
+    """双轴复合图：data_a 左轴，data_b 右轴。带图备注。
+
+    R2修复：集成 disambig_title 消歧函数。
+      · 若 mid_a/mid_b 提供且 name_a==name_b，调用 disambig_title 自动区分
+      · 若 mid_a==mid_b（自身对比），返回空字符串跳过该图
+    """
+    # R2: 消歧检查 — 防止 A vs A 自对比图表
+    if mid_a is not None and mid_b is not None:
+        dis = disambig_title(mid_a, name_a, mid_b, name_b)
+        if dis is None:
+            return '', ''  # 自身对比，跳过
+        name_a, name_b = dis
     ja = json.dumps(data_a, ensure_ascii=False)
     jb = json.dumps(data_b, ensure_ascii=False)
     color_a20 = color_a + "20"
