@@ -19,6 +19,8 @@
 
 **待复审（PB 流水线保持暂停）**：等 Dsharnes-B 提交缺陷修复 commit 后，对本次全部改动复审——前端 F1/F2/F3、上游 U1(CU匹配率)/U2(SHFE别名)/U3(COMEX幻觉漏检)/U4(CROSS_PATTERNS交易所规则)。复审报告写入 `task_queue/feedback/`。
 
+**🔴 二次复审结论（2026-09-13，`task_queue/feedback/REVIEW_SECONDARY_FIX_PENDING_20260913.md`）**：**前置受阻·待二次修复**。核查 `1def0f2` 之后全分支仅 `e9bf3d4`（本次交付物入库），**Dsharnes-B 的 F1-F5/U1-U4 缺陷修复 commit 尚未提交**，无改动可复审。F1-F5/U1-U4 缺陷基线与复审 checklist 已完整登记于复审报告。PB 流水线继续暂停，解锁需满足：①Dsharnes-B 提交修复 ②复审 checklist 全绿 ③任务书入库(✓已完成) ④收到启动指令。
+
 ---
 
 ## 🔔 机制公告（2026-08-26 生效）
