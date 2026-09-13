@@ -19,7 +19,13 @@
 
 **待复审（PB 流水线保持暂停）**：等 Dsharnes-B 提交缺陷修复 commit 后，对本次全部改动复审——前端 F1/F2/F3、上游 U1(CU匹配率)/U2(SHFE别名)/U3(COMEX幻觉漏检)/U4(CROSS_PATTERNS交易所规则)。复审报告写入 `task_queue/feedback/`。
 
-**🔴 二次复审结论（2026-09-13，`task_queue/feedback/REVIEW_SECONDARY_FIX_PENDING_20260913.md`）**：**前置受阻·待二次修复**。核查 `1def0f2` 之后全分支仅 `e9bf3d4`（本次交付物入库），**Dsharnes-B 的 F1-F5/U1-U4 缺陷修复 commit 尚未提交**，无改动可复审。F1-F5/U1-U4 缺陷基线与复审 checklist 已完整登记于复审报告。PB 流水线继续暂停，解锁需满足：①Dsharnes-B 提交修复 ②复审 checklist 全绿 ③任务书入库(✓已完成) ④收到启动指令。
+**🔴 二次复审结论（2026-09-13，`task_queue/feedback/REVIEW_SECONDARY_FIX_PENDING_20260913.md`）**：**前置受阻·待二次修复**。核查 `1def0f2` 之后全分支仅 `e9bf3d4`（本次交付物入库），**Dsharnes-B 的 F1-F5/U1-U4 缺陷修复 commit 尚未提交**，无改动可复审。F1-F5/U1-U4 缺陷基线与复审 checklist 已完整登记于复审报告。PB 流水线继续暂停。
+
+**❌ 三次复审结论（2026-09-13，`task_queue/feedback/REVIEW_267614D_F1F3_U1U4_20260913.md`）**：审 `267614d`（43 文件 +963），结论 **待二次修复**。
+- ✅ 通过：F1(⚪常规节点页残留=0、🟢155=95无关键词+60跨板块主图)、F2(555/452=122.8% 算术自洽)、U1(CU B级74/129=57.4%、阈值≥4)、U3(372剔除/9跨品种、前次4条COMEX漏检4/4命中、CU反例正确放行)、PB锁死(未发散/未生成指标)。
+- ❌ 阻断：F3 div-id 重命名是**半程修复**——90个`<div id>`改了，但 **40处`__tgl("...")` 引号嵌套致JS语法错误 + 90处`getElementById`仍用旧命名致ECharts全页挂不上**；`verify_render` 170/224→**140/224（净损30页）**。`check_html` 169/223 持平（存在盲区，未检出JS引用失配）。
+- ⚠️ 归因：U2「137条SHFE别名」系存量，**本次新增0条**（JSON内自述 `added 0`）；U4 `EXCHANGE_WHITELIST` 为**死代码**（仅定义未引用）。
+- **未执行**简版→完整版PB任务书替换（触发条件「全部通过」未满足）；PB 流水线保持暂停，须先修 F3 两项 P0 回归 + 门禁回绿。
 
 ---
 
