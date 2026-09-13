@@ -5,6 +5,22 @@
 
 ---
 
+## 🔔 审计交付物入库（2026-09-13）
+
+**5 份审计交付物提交入库**到 `indicator-correction-win` 分支（基线 HEAD=`1def0f2`），全程只读审计，未修改任何源码：
+
+| # | 交付物 | 路径 |
+|---|---|---|
+| 1 | 前端指标定义 vs GitHub Pages 前端图表一致性核验 | `work_log/hermes_daily_report/audit_indicator_vs_frontend_20260913.md` |
+| 2 | 上游链路审计（同花顺→转录→知几 三阶段一致性核验） | `task_queue/feedback/AUDIT_UPSTREAM_CHAIN_20260913.md` |
+| 3 | chart_registry v2.0 修复 + PB 流水线任务卡复审 | `task_queue/feedback/REVIEW_CHART_REGISTRY_V2_20260913.md` |
+| 4 | `1def0f2` + `78631cc` 复审报告 | `task_queue/feedback/REVIEW_1DEF0F2_AND_78631CC_20260913.md` |
+| 5 | PB 同花顺发散流水线任务书（材料交接，暂不执行） | `task_queue/to_B/PB_PIPELINE_TASK_20260913.md` |
+
+**待复审（PB 流水线保持暂停）**：等 Dsharnes-B 提交缺陷修复 commit 后，对本次全部改动复审——前端 F1/F2/F3、上游 U1(CU匹配率)/U2(SHFE别名)/U3(COMEX幻觉漏检)/U4(CROSS_PATTERNS交易所规则)。复审报告写入 `task_queue/feedback/`。
+
+---
+
 ## 🔔 机制公告（2026-08-26 生效）
 
 **两条线隔离机制已上线。** 所有参与 agent 请注意：
