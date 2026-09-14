@@ -1,0 +1,673 @@
+{
+  "correction_files_processed": 46,
+  "total_a_level_extracted": 801,
+  "unique_a_level": 257,
+  "already_registered": 193,
+  "not_registered": 64,
+  "new_entries": [
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.1",
+      "name": "全球锌矿产量（年）",
+      "zhiji_id": "ID00299788",
+      "zhiji_name": "USGS：锌矿：含锌：产量：全球（年）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "年",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.1",
+      "name": "秘鲁锌精矿产量（SMM）",
+      "zhiji_id": "a12794253",
+      "zhiji_name": "SMM: 锌精矿产量_秘鲁-合计: 年度",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "年",
+      "unit": "—"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.1",
+      "name": "澳大利亚矿山产量",
+      "zhiji_id": "ID01655718",
+      "zhiji_name": "锌：矿山产量：澳大利亚（季）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "季",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.1",
+      "name": "印度锌精矿产量（SMM）",
+      "zhiji_id": "a12793883",
+      "zhiji_name": "SMM: 锌精矿产量_印度-合计: 年度",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "年",
+      "unit": "—"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.1",
+      "name": "进口锌精矿TC",
+      "zhiji_id": "ID00408213",
+      "zhiji_name": "锌精矿：进口：50%Zn：加工费均价（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日/周",
+      "unit": "美元/干吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.1",
+      "name": "进口锌精矿粗炼费",
+      "zhiji_id": "ID00188151",
+      "zhiji_name": "锌精矿：进口：50%Zn：粗炼费最低价：中国（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "美元/干吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "锌精矿港口库存",
+      "zhiji_id": "ID00188330",
+      "zhiji_name": "锌精矿：港口库存：中国（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "锌精矿港口库存·分港口",
+      "zhiji_id": "ID01167366",
+      "zhiji_name": "锌精矿：港口库存：天津港（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "锌精矿港口库存·黄埔港",
+      "zhiji_id": "ID01150778",
+      "zhiji_name": "锌精矿：港口库存：黄埔港（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "锌精矿港口库存·锦州港",
+      "zhiji_id": "ID01150774",
+      "zhiji_name": "锌精矿：港口库存：锦州港（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "锌精矿港口库存·钦州港",
+      "zhiji_id": "ID01865643",
+      "zhiji_name": "锌精矿：港口库存：钦州港（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "国产锌精矿TC",
+      "zhiji_id": "ID01010065",
+      "zhiji_name": "锌精矿：国产：50%Zn：加工费均价：广西（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日/周",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "国产TC·河南",
+      "zhiji_id": "ID01010068",
+      "zhiji_name": "锌精矿：国产：50%Zn：加工费均价：河南（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "国产TC·湖南",
+      "zhiji_id": "ID01010071",
+      "zhiji_name": "锌精矿：国产：50%Zn：加工费均价：湖南（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "国产TC·陕西",
+      "zhiji_id": "ID01010077",
+      "zhiji_name": "锌精矿：国产：50%Zn：加工费均价：陕西（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "国产TC·四川",
+      "zhiji_id": "ID01010080",
+      "zhiji_name": "锌精矿：国产：50%Zn：加工费均价：四川（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.2",
+      "name": "冶炼厂原料库存天数",
+      "zhiji_id": "ID01167314",
+      "zhiji_name": "锌精矿：原料：库存天数：中国（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "天"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.3",
+      "name": "98%硫酸价格",
+      "zhiji_id": "ID01667528",
+      "zhiji_name": "硫酸：98%：出厂价：山东：齐成石化（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.3",
+      "name": "98%硫酸价格·无棣",
+      "zhiji_id": "ID01563956",
+      "zhiji_name": "硫酸：98%：出厂价：山东：无棣鑫岳（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.4",
+      "name": "中国精炼锌产量（周）",
+      "zhiji_id": "ID01593781",
+      "zhiji_name": "精炼锌：产量：中国（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.4",
+      "name": "SMM预计中国精炼锌产量",
+      "zhiji_id": "ID00407922",
+      "zhiji_name": "样本企业：精炼锌：产量：中国（月）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "月",
+      "unit": "万金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.4",
+      "name": "精炼锌净出口",
+      "zhiji_id": "ID01314250",
+      "zhiji_name": "锌粉及片状粉末：进口数量合计：中国（月）⚠",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "月",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.5",
+      "name": "再生锌产量（样本）",
+      "zhiji_id": "ID01510882",
+      "zhiji_name": "样本企业：再生锌：产量：中国（月）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "月",
+      "unit": "万金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.5",
+      "name": "次氧化锌价格",
+      "zhiji_id": "ID01307533",
+      "zhiji_name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：江苏（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.5",
+      "name": "次氧化锌·湖南",
+      "zhiji_id": "ID01307534",
+      "zhiji_name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：湖南（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.5",
+      "name": "次氧化锌·河南",
+      "zhiji_id": "ID01307531",
+      "zhiji_name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：河南（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_supply_correction_20260901.md",
+      "node": "3.1.5",
+      "name": "次氧化锌·河北",
+      "zhiji_id": "ID01307537",
+      "zhiji_name": "次氧化锌：50%Zn，CI10%，Pb8%：汇总价格：河北（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/金属吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_库存_correction_20260901.md",
+      "node": "4.1",
+      "name": "上期所锌库存",
+      "zhiji_id": "FU00016292",
+      "zhiji_name": "SHFE: 锌: 库存周报: 本周库存期货（周） / SHFE：锌：期货库存（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周/日",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_库存_correction_20260901.md",
+      "node": "4.1",
+      "name": "LME锌库存",
+      "zhiji_id": "FU00016163",
+      "zhiji_name": "LME: 锌库存总计（日） / LME：锌：期货库存（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_库存_correction_20260901.md",
+      "node": "4.1",
+      "name": "LME锌注销仓单占比",
+      "zhiji_id": "FU00023924",
+      "zhiji_name": "LME: 锌: 注销仓单（日） / LME：锌：注销占比（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "%"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_库存_correction_20260901.md",
+      "node": "4.2",
+      "name": "上期所锌仓单分地区",
+      "zhiji_id": "FU00016297（上海）/FU00016293（广东）等",
+      "zhiji_name": "SHFE: 锌: 仓单日报分地区_上海: 期货（日）等",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_库存_correction_20260901.md",
+      "node": "4.3",
+      "name": "社会库存与上期所库存联动",
+      "zhiji_id": "ID00188329 + FU00016292",
+      "zhiji_name": "联动图为两指标组合，无独立 zhiji_id",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "—"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_库存_correction_20260901.md",
+      "node": "4.4",
+      "name": "国内锌厂内锌锭库存",
+      "zhiji_id": "ID01167306",
+      "zhiji_name": "厂库库存: SMM精炼锌冶炼厂样本企业周度成品库存（周）/ 锌：冶炼厂：成品库存：中国（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_库存_correction_20260901.md",
+      "node": "4.4",
+      "name": "厂内库存与现货升贴水联动",
+      "zhiji_id": "ID01167306 + ID01167389（上海）",
+      "zhiji_name": "联动图为两指标组合",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "—"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_进出口_correction_20260901.md",
+      "node": "6.1",
+      "name": "锌精矿进口来源国结构",
+      "zhiji_id": "ID01105516 等哥伦比亚→中国",
+      "zhiji_name": "中国海关: 巴西进口矿数量 / 锌矿砂及其精矿：进口数量：哥伦比亚→中国",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "月",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_进出口_correction_20260901.md",
+      "node": "6.2",
+      "name": "沪伦比与精锌进口盈亏",
+      "zhiji_id": "FU00016498",
+      "zhiji_name": "SMM: 精炼锌进口盈亏: 锌沪伦比值（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "元/吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_进出口_correction_20260901.md",
+      "node": "6.2",
+      "name": "精炼锌进口来源国结构",
+      "zhiji_id": "ID02041901（安徽）等",
+      "zhiji_name": "分省/分国别",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "月",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_进出口_correction_20260901.md",
+      "node": "6.4",
+      "name": "LME注册仓单",
+      "zhiji_id": "FU00016165",
+      "zhiji_name": "LME: 锌仓库注册仓单: 合计（日） / LME：锌：注册仓单（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_需求_correction_20260901.md",
+      "node": "5.1",
+      "name": "压铸锌合金企业开工率",
+      "zhiji_id": "ID01002076",
+      "zhiji_name": "SMM: 压铸锌合金开工率（月） / 锌合金企业：开工率：中国（月）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "月",
+      "unit": "%"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_需求_correction_20260901.md",
+      "node": "5.2",
+      "name": "全国镀锌板卷产能利用率",
+      "zhiji_id": "ID00366836",
+      "zhiji_name": "镀锌板卷：钢铁企业：产能利用率：中国（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "%"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_需求_correction_20260901.md",
+      "node": "5.2",
+      "name": "全国镀锌板卷钢厂库存",
+      "zhiji_id": "ID00366837",
+      "zhiji_name": "SMM: 镀锌成品库存（周） / 镀锌板卷：钢铁企业：厂内库存：中国（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_需求_correction_20260901.md",
+      "node": "5.2",
+      "name": "全国镀锌板卷社会库存",
+      "zhiji_id": "ID00187701",
+      "zhiji_name": "镀锌板卷：社会库存：中国（周）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "周",
+      "unit": "万吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_需求_correction_20260901.md",
+      "node": "5.2",
+      "name": "全国镀锌板卷日成交",
+      "zhiji_id": "ID01306848",
+      "zhiji_name": "镀锌板卷：成交量：中国（日）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "日",
+      "unit": "吨"
+    },
+    {
+      "source": "translation-workspace\\correction\\ZN_需求_correction_20260901.md",
+      "node": "5.3",
+      "name": "制造业PMI",
+      "zhiji_id": "CM0000013261 等分项",
+      "zhiji_name": "NBS: 制造业采购经理指数（月）",
+      "level": "A",
+      "format": "zn_old",
+      "freq": "月",
+      "unit": "点"
+    },
+    {
+      "source": "translation-workspace\\correction\\SN\\SN_价格信号_correction_20260902.md",
+      "node": "2.3",
+      "name": "LME锡现货现金价时序图",
+      "zhiji_id": "ID01682111",
+      "zhiji_name": "IMEA：大豆：现货价：锡诺普（日）",
+      "level": "A",
+      "format": "new_plain"
+    },
+    {
+      "source": "translation-workspace\\correction\\SN\\SN_成本利润_correction_20260902.md",
+      "node": "7.3",
+      "name": "锡矿进口到岸价",
+      "zhiji_id": "ID00299770",
+      "zhiji_name": "USGS：锡矿：含锡：产量：全球（年）",
+      "level": "A",
+      "format": "new_plain"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_供给_correct_20260902.md",
+      "node": "2.",
+      "name": "上期所仓单",
+      "zhiji_id": "ID01552110",
+      "zhiji_name": "USGS：粗铝：进口数量：美国（年）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_供给_correct_20260902.md",
+      "node": "2.",
+      "name": "几内亚CIF到岸价",
+      "zhiji_id": "ID01004645",
+      "zhiji_name": "铝土矿：三水型：45%Al，3%Si：几内亚产：CIF价：山东主要港口",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_供给_correct_20260902.md",
+      "node": "2.",
+      "name": "废铝进口来源",
+      "zhiji_id": "ID01668771",
+      "zhiji_name": "易拉罐盖料：产量：中国（年）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_供给_correct_20260902.md",
+      "node": "2.",
+      "name": "铝水比例",
+      "zhiji_id": "ID01001759",
+      "zhiji_name": "电解铝：铝水比例：中国（月）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_成本利润_correct_20260902.md",
+      "node": "7.2",
+      "name": "辅料成本",
+      "zhiji_id": "ID00115564",
+      "zhiji_name": "氟化铝：AF-1级：出厂价：华东地区：山东昭和（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_成本利润_correct_20260902.md",
+      "node": "7.2",
+      "name": "阳极成本",
+      "zhiji_id": "ID01001942",
+      "zhiji_name": "预焙阳极：产量：中国（月）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_成本利润_correct_20260902.md",
+      "node": "7.3",
+      "name": "煤-电传导",
+      "zhiji_id": "ID01571914",
+      "zhiji_name": "USGS：混杂低含量铜颗粒的铝：均价：美国（月）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_进出口_correct_20260902.md",
+      "node": "3.",
+      "name": "沪伦比价",
+      "zhiji_id": "FU00014772",
+      "zhiji_name": "Mysteel：铝：沪伦比值（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_进出口_correct_20260902.md",
+      "node": "3.",
+      "name": "海外氧化铝供应",
+      "zhiji_id": "ID00259770",
+      "zhiji_name": "氧化铝：AO-1：Al2O3≥98.6%：澳大利亚产：FOB价：奎纳纳",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\AL\\AL_需求_correct_20260902.md",
+      "node": "5.2",
+      "name": "铝锭出库量",
+      "zhiji_id": "ID01001760",
+      "zhiji_name": "电解铝：出库量：中国（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\CU\\CU_供给_correct_20260902.md",
+      "node": "4.2",
+      "name": "国产矿品位与计价系数",
+      "zhiji_id": "ID01180412",
+      "zhiji_name": "铜精矿：国产：23%Cu：计价系数：中国（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\NI\\NI_价格信号_correct_20260902.md",
+      "node": "2.2",
+      "name": "LME镍0-3升贴水时序",
+      "zhiji_id": "ID01363127",
+      "zhiji_name": "MHP：NI≥34%，CO≥2%：LME镍折扣系数：中国主要港口（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\NI\\NI_价格信号_correct_20260902.md",
+      "node": "2.6",
+      "name": "沪镍前20名席位轮动",
+      "zhiji_id": "ID01654869",
+      "zhiji_name": "精炼镍：一级：产量：澳大利亚：当前财年（年）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\NI\\NI_价格信号_correct_20260902.md",
+      "node": "子节点",
+      "name": "2.2现货与升贴水",
+      "zhiji_id": "ID01319373",
+      "zhiji_name": "水淬镍：30-35%Ni：北马其顿产：升贴水（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\NI\\NI_库存_correct_20260902.md",
+      "node": "4.4",
+      "name": "电解镍厂库存",
+      "zhiji_id": "ID01041753",
+      "zhiji_name": "电解镍：Ni≥99.96%，大板：出厂价：金昌：金川集团（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\NI\\NI_成本利润_correct_20260902.md",
+      "node": "7.1",
+      "name": "镍矿CIF/FOB价格",
+      "zhiji_id": "ID00188184",
+      "zhiji_name": "红土镍矿：0.9%Ni，49%Fe，5%Al，33-35%含水：菲律宾",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\SN\\SN_价格信号_correct_20260902.md",
+      "node": "2.3",
+      "name": "LME锡期货收盘价时序图",
+      "zhiji_id": "FU00015896",
+      "zhiji_name": "锡：3个月合约：收盘价（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    },
+    {
+      "source": "translation-workspace\\correction\\cu-al-ni-sn\\SN\\SN_成本利润_correct_20260902.md",
+      "node": "7.3",
+      "name": "锡精矿价格时序图",
+      "zhiji_id": "ID01319767",
+      "zhiji_name": "锡精矿：60%Sn：市场最低价：湖南（日）",
+      "level": "A",
+      "format": "new_with_marker"
+    }
+  ]
+}
