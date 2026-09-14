@@ -29,7 +29,7 @@ PAGES = {
         "file": "pb_21_price_structure.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_21_c1", "echart_21_c2", "echart_21_c3"],
+        "cids": ["echart_pb_21_c1", "echart_pb_21_c2", "echart_pb_21_c3"],
         "label": "2.1 盘面结构",
         "has_seasonal": True,
     },
@@ -38,7 +38,7 @@ PAGES = {
         "file": "pb_22_spot_premium.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_22_c1", "echart_22_c2", "echart_22_c3"],
+        "cids": ["echart_pb_22_c1", "echart_pb_22_c2", "echart_pb_22_c3"],
         "label": "2.2 现货与升贴水",
         "has_seasonal": True,
     },
@@ -47,7 +47,7 @@ PAGES = {
         "file": "pb_23_overseas_price.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_23_c1", "echart_23_c2", "echart_23_c3"],
+        "cids": ["echart_pb_23_c1", "echart_pb_23_c2", "echart_pb_23_c3"],
         "label": "2.3 海外价格",
         "has_seasonal": True,
     },
@@ -56,7 +56,7 @@ PAGES = {
         "file": "pb_24_spread_system.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_24_c1", "echart_24_c2", "echart_24_c3"],
+        "cids": ["echart_pb_24_c1", "echart_pb_24_c2", "echart_pb_24_c3"],
         "label": "2.4 价差体系",
         "has_seasonal": False,
     },
@@ -65,7 +65,7 @@ PAGES = {
         "file": "pb_25_valuation_profit.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_25_c1", "echart_25_c2", "echart_25_c3"],
+        "cids": ["echart_pb_25_c1", "echart_pb_25_c2", "echart_pb_25_c3"],
         "label": "2.5 估值与利润",
         "has_seasonal": False,
     },
@@ -74,7 +74,7 @@ PAGES = {
         "file": "pb_26_position_holder.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_26_c1", "echart_26_c2", "echart_26_c3"],
+        "cids": ["echart_pb_26_c1", "echart_pb_26_c2", "echart_pb_26_c3"],
         "label": "2.6 持仓席位观察",
         "has_seasonal": True,
     },
@@ -83,7 +83,7 @@ PAGES = {
         "file": "pb_51_primary_consumption.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_51_c1", "echart_51_c2", "echart_51_c3"],
+        "cids": ["echart_pb_51_c1", "echart_pb_51_c2", "echart_pb_51_c3"],
         "label": "5.1 初级消费",
         "has_seasonal": True,
     },
@@ -92,7 +92,7 @@ PAGES = {
         "file": "pb_52_terminal_consumption.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_52_c1", "echart_52_c2", "echart_52_c3"],
+        "cids": ["echart_pb_52_c1", "echart_pb_52_c2", "echart_pb_52_c3"],
         "label": "5.2 终端细分消费",
         "has_seasonal": True,
     },
@@ -101,7 +101,7 @@ PAGES = {
         "file": "pb_61_raw_material_import.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_61_c1", "echart_61_c2", "echart_61_c3"],
+        "cids": ["echart_pb_61_c1", "echart_pb_61_c2", "echart_pb_61_c3"],
         "label": "6.1 原料进口",
         "has_seasonal": True,   # 有 chart_line_t 图，需校验季节真数据
     },
@@ -110,7 +110,7 @@ PAGES = {
         "file": "pb_62_import_export.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_62_c1", "echart_62_c2", "echart_62_c3"],
+        "cids": ["echart_pb_62_c1", "echart_pb_62_c2", "echart_pb_62_c3"],
         "label": "6.2 精炼金属进出口",
         "has_seasonal": True,
     },
@@ -119,7 +119,7 @@ PAGES = {
         "file": "pb_63_product_export.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_63_c1", "echart_63_c2", "echart_63_c3"],
+        "cids": ["echart_pb_63_c1", "echart_pb_63_c2", "echart_pb_63_c3"],
         "label": "6.3 制品出口",
         "has_seasonal": True,
     },
@@ -128,7 +128,7 @@ PAGES = {
         "file": "pb_64_overseas_shipping.html",
         "min_bytes": 300000,
         "charts": 3,
-        "cids": ["echart_64_c1", "echart_64_c2", "echart_64_c3"],
+        "cids": ["echart_pb_64_c1", "echart_pb_64_c2", "echart_pb_64_c3"],
         "label": "6.4 海外对华发运",
         "has_seasonal": False,  # 3 图全为 dual/triple，无季节切换模式
     },
@@ -137,7 +137,7 @@ PAGES = {
         "file": "pb_32_3_regen_supply.html",
         "min_bytes": 30000,
         "charts": 4,
-        "cids": ["echart_32_3_c1", "echart_32_3_c2", "echart_32_3_c3", "echart_32_3_c4"],
+        "cids": ["echart_pb_32_3_c1", "echart_pb_32_3_c2", "echart_pb_32_3_c3", "echart_pb_32_3_c4"],
         "label": "3.2.3 再生/二次供应",
         "has_seasonal": True,   # 图4 chart_line_t 季节真数据
     },
@@ -146,7 +146,7 @@ PAGES = {
         "file": "pb_41_exchange_stock.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_41_c1", "echart_41_c2", "echart_41_c3"],
+        "cids": ["echart_pb_41_c1", "echart_pb_41_c2", "echart_pb_41_c3"],
         "label": "4.1 交易所库存",
         "has_seasonal": True,   # 图1 chart_line_t 注销占比季节
     },
@@ -155,7 +155,7 @@ PAGES = {
         "file": "pb_42_warrant.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_42_c1", "echart_42_c2", "echart_42_c3"],
+        "cids": ["echart_pb_42_c1", "echart_pb_42_c2", "echart_pb_42_c3"],
         "label": "4.2 仓单",
         "has_seasonal": True,   # 图1/图2 chart_line_t
     },
@@ -164,7 +164,7 @@ PAGES = {
         "file": "pb_43_social_stock.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_43_c1", "echart_43_c2", "echart_43_c3"],
+        "cids": ["echart_pb_43_c1", "echart_pb_43_c2", "echart_pb_43_c3"],
         "label": "4.3 社会库存",
         "has_seasonal": True,   # 图3 Mysteel全国 chart_line_t
     },
@@ -173,7 +173,7 @@ PAGES = {
         "file": "pb_44_factory_stock.html",
         "min_bytes": 30000,
         "charts": 3,
-        "cids": ["echart_44_c1", "echart_44_c2", "echart_44_c3"],
+        "cids": ["echart_pb_44_c1", "echart_pb_44_c2", "echart_pb_44_c3"],
         "label": "4.4 工厂库存",
         "has_seasonal": False,  # 3 图全为 dual，无季节切换模式
     },
@@ -182,7 +182,7 @@ PAGES = {
         "file": "pb_45_hidden_stock.html",
         "min_bytes": 20000,
         "charts": 2,
-        "cids": ["echart_45_c1", "echart_45_c2"],
+        "cids": ["echart_pb_45_c1", "echart_pb_45_c2"],
         "label": "4.5 隐性·在途",
         "has_seasonal": True,   # 图1 SG非仓单 chart_line_t
     },
@@ -191,7 +191,7 @@ PAGES = {
         "file": "pb_71_cost_curve.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_71_c1", "echart_71_c2", "echart_71_c3"],
+        "cids": ["echart_pb_71_c1", "echart_pb_71_c2", "echart_pb_71_c3"],
         "label": "7.1 成本曲线与分位",
         "has_seasonal": True,   # 图2 chart_line_t 季节真数据
     },
@@ -200,7 +200,7 @@ PAGES = {
         "file": "pb_72_daily_profit.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_72_c1", "echart_72_c2", "echart_72_c3"],
+        "cids": ["echart_pb_72_c1", "echart_pb_72_c2", "echart_pb_72_c3"],
         "label": "7.2 日度利润测算",
         "has_seasonal": True,   # 图2 chart_line_t 季节真数据
     },
@@ -209,7 +209,7 @@ PAGES = {
         "file": "pb_73_energy_cost.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_73_c1", "echart_73_c2", "echart_73_c3"],
+        "cids": ["echart_pb_73_c1", "echart_pb_73_c2", "echart_pb_73_c3"],
         "label": "7.3 能源/原料成本",
         "has_seasonal": True,   # 图2 chart_line_t 季节真数据
     },
@@ -668,7 +668,7 @@ PAGES = {
         "file": "pb_311_overseas_mine.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_311_c1", "echart_311_c2", "echart_311_c3"],
+        "cids": ["echart_pb_311_c1", "echart_pb_311_c2", "echart_pb_311_c3"],
         "label": "3.1.1 海外矿·财报产量",
         "has_seasonal": True,
     },
@@ -677,7 +677,7 @@ PAGES = {
         "file": "pb_312_overseas_by_country.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_312_c1", "echart_312_c2", "echart_312_c3"],
+        "cids": ["echart_pb_312_c1", "echart_pb_312_c2", "echart_pb_312_c3"],
         "label": "3.1.2 海外矿·分国别总量",
         "has_seasonal": True,
     },
@@ -686,7 +686,7 @@ PAGES = {
         "file": "pb_313_domestic_mine.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_313_c1", "echart_313_c2", "echart_313_c3"],
+        "cids": ["echart_pb_313_c1", "echart_pb_313_c2", "echart_pb_313_c3"],
         "label": "3.1.3 国内矿产量",
         "has_seasonal": True,
     },
@@ -695,7 +695,7 @@ PAGES = {
         "file": "pb_314_mine_import.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_314_c1", "echart_314_c2", "echart_314_c3"],
+        "cids": ["echart_pb_314_c1", "echart_pb_314_c2", "echart_pb_314_c3"],
         "label": "3.1.4 矿进口量与分国别",
         "has_seasonal": True,
     },
@@ -704,7 +704,7 @@ PAGES = {
         "file": "pb_315_tc_fee.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_315_c1", "echart_315_c2", "echart_315_c3"],
+        "cids": ["echart_pb_315_c1", "echart_pb_315_c2", "echart_pb_315_c3"],
         "label": "3.1.5 TC加工费",
         "has_seasonal": True,
     },
@@ -713,7 +713,7 @@ PAGES = {
         "file": "pb_321_refining_output.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_321_c1", "echart_321_c2", "echart_321_c3"],
+        "cids": ["echart_pb_321_c1", "echart_pb_321_c2", "echart_pb_321_c3"],
         "label": "3.2.1 精炼产量",
         "has_seasonal": True,
     },
@@ -722,7 +722,7 @@ PAGES = {
         "file": "pb_322_operating_rate.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_322_c1", "echart_322_c2", "echart_322_c3"],
+        "cids": ["echart_pb_322_c1", "echart_pb_322_c2", "echart_pb_322_c3"],
         "label": "3.2.2 开工率与检修",
         "has_seasonal": True,
     },
@@ -731,7 +731,7 @@ PAGES = {
         "file": "pb_324_profit_elasticity.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_324_c1", "echart_324_c2", "echart_324_c3"],
+        "cids": ["echart_pb_324_c1", "echart_pb_324_c2", "echart_pb_324_c3"],
         "label": "3.2.4 冶炼利润→供应弹性",
         "has_seasonal": True,
     },
@@ -740,7 +740,7 @@ PAGES = {
         "file": "pb_53_demand_leading.html",
         "min_bytes": 20000,
         "charts": 3,
-        "cids": ["echart_53_c1", "echart_53_c2", "echart_53_c3"],
+        "cids": ["echart_pb_53_c1", "echart_pb_53_c2", "echart_pb_53_c3"],
         "label": "5.3 需求先行指标",
         "has_seasonal": True,
     },
@@ -900,6 +900,58 @@ def fetch_online(base_url):
     return out
 
 
+def check_js_consistency(cfg, html):
+    """F3 JS引用一致性检查：验证 div id / getElementById / window vars / __tgl / resize 全部对齐。
+
+    返回 [(check_name, ok, detail), ...]
+    """
+    res = []
+
+    # 1. 提取所有 div id
+    div_ids = set(re.findall(r'id="echart_([a-z]+)_([\d_]+_c\d+)"', html))
+    div_ids = {"echart_%s_%s" % (v, n) for v, n in div_ids}
+
+    if not div_ids:
+        res.append(("div id 提取", False, "未找到任何 echart_ div id"))
+        return res
+
+    # 2. 检查 getElementById 是否全部匹配 div id
+    getby_ids = set(re.findall(r"getElementById\('([^']+)'\)", html))
+    missing_getby = getby_ids - div_ids
+    used_getby = getby_ids & div_ids
+    res.append(("getElementById 匹配 div id",
+                len(used_getby) >= len(div_ids) and len(missing_getby) == 0,
+                "引用%d/%d, 缺失%d" % (len(used_getby), len(div_ids), len(missing_getby))))
+
+    # 3. 检查 window['__data_'] / '__opts_'] / '__inst_'] / '__mode_'] 是否匹配
+    for prefix in ['data', 'opts', 'inst', 'mode']:
+        wpat = re.findall(r"window\['__%s_([^']+)'\]" % prefix, html)
+        wpat = set(wpat)
+        missing_w = wpat - div_ids
+        res.append(("window __%s_ 匹配 div id" % prefix,
+                    len(missing_w) == 0,
+                    "不匹配: %s" % missing_w if missing_w else "OK"))
+
+    # 4. 检查 __tgl onclick 引用
+    tgl_ids = set(re.findall(r"__tgl\('([^']+)'\)", html))
+    missing_tgl = tgl_ids - div_ids
+    res.append(("__tgl onclick 匹配 div id",
+                len(missing_tgl) == 0,
+                "不匹配: %s" % missing_tgl if missing_tgl else "OK"))
+
+    # 5. 检查 resize handler
+    resize_ids = set()
+    m = re.search(r"resize.*?\[([^\]]+)\]", html)
+    if m:
+        resize_ids = set(re.findall(r"'([^']+)'", m.group(1)))
+    missing_resize = resize_ids - div_ids
+    res.append(("resize handler 匹配 div id",
+                len(missing_resize) == 0,
+                "不匹配: %s" % missing_resize if missing_resize else "OK"))
+
+    return res
+
+
 def check_page(cfg, html, source):
     """校验单页，返回 [(check_name, ok, detail), ...]"""
     res = []
@@ -934,6 +986,10 @@ def check_page(cfg, html, source):
     # 额外：指标版本（跟随 indicators_v1.json 实际版本，v1.x/v2.x 均通过）
     has_ver = bool(re.search(r"indicators_v1\.json v\d+\.\d+", html))
     res.append(("indicators_v1.json 版本", has_ver, ""))
+    # 额外：F3 JS引用一致性（仅对PB文件执行）
+    if cfg["file"].startswith("pb_"):
+        js_res = check_js_consistency(cfg, html)
+        res.extend(js_res)
     return res
 
 
@@ -989,7 +1045,7 @@ def main():
     print("%-4s %-16s %-6s %s" % ("页", "名称", "结果", "明细"))
     print("-" * 74)
     for k, label, ok, res in rows:
-        print("%-4s %-16s %-6s" % (k, label, "✅PASS" if ok else "❌FAIL"))
+        print("%-4s %-16s %-6s" % (k, label, "PASS" if ok else "FAIL"))
         for name, good, detail in res:
             print("        %s %-22s %s" % ("·" if good else "!", name, detail if not good else ""))
         print()

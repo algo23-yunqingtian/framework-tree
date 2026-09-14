@@ -22,36 +22,36 @@ const { JSDOM } = require('/tmp/node_modules/jsdom');
 const ROOT = path.resolve(__dirname, '..');
 const PAGES = [
   // ── 铅(PB) 30 页 ──
-  { key: '21', file: 'pb_21_price_structure.html',       seasonal: ['echart_21_c2'] },
-  { key: '22', file: 'pb_22_spot_premium.html',          seasonal: ['echart_22_c2'] },
-  { key: '23', file: 'pb_23_overseas_price.html',        seasonal: ['echart_23_c2'] },
+  { key: '21', file: 'pb_21_price_structure.html',       seasonal: ['echart_pb_21_c2'] },
+  { key: '22', file: 'pb_22_spot_premium.html',          seasonal: ['echart_pb_22_c2'] },
+  { key: '23', file: 'pb_23_overseas_price.html',        seasonal: ['echart_pb_23_c2'] },
   { key: '24', file: 'pb_24_spread_system.html',          seasonal: [] },
   { key: '25', file: 'pb_25_valuation_profit.html',        seasonal: [] },
-  { key: '26', file: 'pb_26_position_holder.html',          seasonal: ['echart_26_c2'] },
-  { key: '51', file: 'pb_51_primary_consumption.html',   seasonal: ['echart_51_c2'] },
-  { key: '52', file: 'pb_52_terminal_consumption.html',  seasonal: ['echart_52_c2'] },
-  { key: '53', file: 'pb_53_demand_leading.html',       seasonal: ['echart_53_c2'] },
-  { key: '61', file: 'pb_61_raw_material_import.html', seasonal: ['echart_61_c1', 'echart_61_c3'] },
-  { key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_62_c1', 'echart_62_c3'] },
-  { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_63_c1', 'echart_63_c2'] },
+  { key: '26', file: 'pb_26_position_holder.html',          seasonal: ['echart_pb_26_c2'] },
+  { key: '51', file: 'pb_51_primary_consumption.html',   seasonal: ['echart_pb_51_c2'] },
+  { key: '52', file: 'pb_52_terminal_consumption.html',  seasonal: ['echart_pb_52_c2'] },
+  { key: '53', file: 'pb_53_demand_leading.html',       seasonal: ['echart_pb_53_c2'] },
+  { key: '61', file: 'pb_61_raw_material_import.html', seasonal: ['echart_pb_61_c1', 'echart_pb_61_c3'] },
+  { key: '62', file: 'pb_62_import_export.html',       seasonal: ['echart_pb_62_c1', 'echart_pb_62_c3'] },
+  { key: '63', file: 'pb_63_product_export.html',      seasonal: ['echart_pb_63_c1', 'echart_pb_63_c2'] },
   { key: '64', file: 'pb_64_overseas_shipping.html',   seasonal: [] },
-  { key: '32_3', file: 'pb_32_3_regen_supply.html',    charts: 4, seasonal: ['echart_32_3_c4'] },
-  { key: '311', file: 'pb_311_overseas_mine.html',     seasonal: ['echart_311_c1', 'echart_311_c2', 'echart_311_c3'] },
-  { key: '312', file: 'pb_312_overseas_by_country.html', seasonal: ['echart_312_c2'] },
-  { key: '313', file: 'pb_313_domestic_mine.html',     seasonal: ['echart_313_c1', 'echart_313_c2', 'echart_313_c3'] },
-  { key: '314', file: 'pb_314_mine_import.html',       seasonal: ['echart_314_c1', 'echart_314_c2'] },
-  { key: '315', file: 'pb_315_tc_fee.html',            seasonal: ['echart_315_c2', 'echart_315_c3'] },
-  { key: '321', file: 'pb_321_refining_output.html',   seasonal: ['echart_321_c1', 'echart_321_c3'] },
-  { key: '322', file: 'pb_322_operating_rate.html',    seasonal: ['echart_322_c1', 'echart_322_c3'] },
-  { key: '324', file: 'pb_324_profit_elasticity.html', seasonal: ['echart_324_c1', 'echart_324_c3'] },
-  { key: '41', file: 'pb_41_exchange_stock.html',   seasonal: ['echart_41_c1'] },
-  { key: '42', file: 'pb_42_warrant.html',          seasonal: ['echart_42_c1', 'echart_42_c2'] },
-  { key: '43', file: 'pb_43_social_stock.html',     seasonal: ['echart_43_c3'] },
+  { key: '32_3', file: 'pb_32_3_regen_supply.html',    charts: 4, seasonal: ['echart_pb_32_3_c4'] },
+  { key: '311', file: 'pb_311_overseas_mine.html',     seasonal: ['echart_pb_311_c1', 'echart_pb_311_c2', 'echart_pb_311_c3'] },
+  { key: '312', file: 'pb_312_overseas_by_country.html', seasonal: ['echart_pb_312_c2'] },
+  { key: '313', file: 'pb_313_domestic_mine.html',     seasonal: ['echart_pb_313_c1', 'echart_pb_313_c2', 'echart_pb_313_c3'] },
+  { key: '314', file: 'pb_314_mine_import.html',       seasonal: ['echart_pb_314_c1', 'echart_pb_314_c2'] },
+  { key: '315', file: 'pb_315_tc_fee.html',            seasonal: ['echart_pb_315_c2', 'echart_pb_315_c3'] },
+  { key: '321', file: 'pb_321_refining_output.html',   seasonal: ['echart_pb_321_c1', 'echart_pb_321_c3'] },
+  { key: '322', file: 'pb_322_operating_rate.html',    seasonal: ['echart_pb_322_c1', 'echart_pb_322_c3'] },
+  { key: '324', file: 'pb_324_profit_elasticity.html', seasonal: ['echart_pb_324_c1', 'echart_pb_324_c3'] },
+  { key: '41', file: 'pb_41_exchange_stock.html',   seasonal: ['echart_pb_41_c1'] },
+  { key: '42', file: 'pb_42_warrant.html',          seasonal: ['echart_pb_42_c1', 'echart_pb_42_c2'] },
+  { key: '43', file: 'pb_43_social_stock.html',     seasonal: ['echart_pb_43_c3'] },
   { key: '44', file: 'pb_44_factory_stock.html',    seasonal: [] },
   { key: '45', file: 'pb_45_hidden_stock.html',     charts: 2, seasonal: [] },
-  { key: '71', file: 'pb_71_cost_curve.html',       seasonal: ['echart_71_c2'] },
-  { key: '72', file: 'pb_72_daily_profit.html',     seasonal: ['echart_72_c2'] },
-  { key: '73', file: 'pb_73_energy_cost.html',      seasonal: ['echart_73_c2'] },
+  { key: '71', file: 'pb_71_cost_curve.html',       seasonal: ['echart_pb_71_c2'] },
+  { key: '72', file: 'pb_72_daily_profit.html',     seasonal: ['echart_pb_72_c2'] },
+  { key: '73', file: 'pb_73_energy_cost.html',      seasonal: ['echart_pb_73_c2'] },
   // ── 铜(CU)/铝(AL) 34 页：主脑 2026-08-31 jsdom 实测注册 ──
   // 铜铝页部分图无 season toggle 按钮（纯时序渲染），seasonal 留空；
   // 不要按「__opts.se 存在」就注册——那些图初始即渲染历史年份线但无切换按钮 ──
@@ -381,7 +381,8 @@ for (const p of PAGES.filter(x => x)) {
 
   // DOM 存在性检查：按本页实际图数循环（2 图页不会找 _c3）
   for (let i = 1; i <= expCharts; i++) {
-    const cid = 'echart_' + p.key + '_c' + i;
+    const prefix = p.file.startsWith('pb_') ? 'echart_pb_' : 'echart_';
+    const cid = prefix + p.key + '_c' + i;
     checks.push([cid + ' DOM 存在', !!doc.getElementById(cid), '']);
   }
 
