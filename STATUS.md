@@ -556,7 +556,9 @@
 
 ---
 
-## 当前卡点
+| 2026-09-24 | **[B-MERGE-HIST-P3-FIX] 指标合并P3修复批次完成：N1/N4/N3/R1/R2/R-PREFIX-1六项修复+6交付物+12项自检全绿**（DSH-B） | DSH-B | **基线**：rebase到origin/main@404f7ee，废弃旧8fc7210。**六项修复**：①N1全量非ASCII扫描清理7条跨品种中文裸key→_meta；②N4将64_group迁移至_meta（业务指标1680→1672）；③N3为4条错配条目写入FLAGGED_FOR_REVIEW标记到JSON内部；④R1修复204组zhji_id重复（660条指标添加series_slice字段区分时序口径）；⑤R2废弃win优先覆盖策略，启用字段级合并（verified/freq/unit/_verified_by固定取自main，name取自win，verified降级=0/freq反向=0/_verified_by丢失=0）；⑥R-PREFIX-1清理40条外部数据源非法前缀key（32重命名+8移入_meta）。**自检12/12全绿**：指标1664≥1580/非ASCII=0/64_group已迁移/N3标记4/verified降级0/_verified_by丢失0/freq反向0/指定非法前缀残留0/中文key在_meta7/6份DELIVERABLE存在/series_slice已添加/FLAGGED_FOR_REVIEW在JSON中。**交付物**：6份DELIVERABLE+1份主回执+修复后indicators_v1.json(v3.50-p3fix)。**待HERMES二次审计**：204组ID重复（series_slice已加，需验证时序可拉取）、4条N3错配（需FT主脑裁决）、92条legacy前缀（j*/i*，需FT主脑另行裁决） |
+
+---
 
 | # | 卡点 | 谁在等 |
 |---|---|---|
