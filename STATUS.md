@@ -73,6 +73,14 @@
 
 ## 近期变更记录
 
+### 2026-09-28 工单2 — 看板清理+单位修正 (HERMES_GITHUB_READ_AND_CLEAN_BOARD_V85_20260928)
+- **T1 DSHB拉取**: 从 origin/task/p0_verify:analysis/e2e_output/v85/ 拉取 11 文件, JOB_READY STATUS=READY (64样本/55唯一ID/53成功); 注: DSHB的zhiji_fetch_result.json仅含元数据, 实际时序走本地缓存
+- **T2 看板去重**: fp32_v85_end2end_board.csv 32行中3行标记【冗余废弃】(ID01464616/ID01370137/ID01464612), 有效29行, 去重省3次API调用 → fp32_v85_cleaned_board.csv (32×42)
+- **T3 单位映射**: unit_convert_mapping.json (吨/万吨 10000倍换算)
+- **T4 重渲染**: 15张PNG (复用本地zhiji缓存, 零API消耗), 1单位冲突已换算(ID02069937 锂矿库存:贸易商 吨→万吨×10000) → render/
+- **T5 汇总**: board_clean_and_unit_fix_report.md + META_FIX_MD5.md
+- **约束**: 源文件MD5未变(4/4), 零zhiji API调用, REVIEW_SKIP保留, 禁绑ID, 产物全为新增不覆盖旧版
+
 ### 2026-09-09 主脑 — 周报图对应方案+覆盖统计+给本地agent交接
 - **覆盖统计**: 271节点/270图=99.6%覆盖率, 9品种(AO仅62%因新增)
 - **同花顺对照**: 29项建议25项已有, 缺4项(期货价/电解铝需求/海运费/边际成本)

@@ -1,0 +1,350 @@
+{
+  "work_order": "HERMES_GITHUB_READ_AND_CLEAN_BOARD_V85_20260928",
+  "task": "T4_render",
+  "timestamp": "2026-09-28T15:13:49.438096",
+  "total_rows": 32,
+  "effective_rows": 29,
+  "render_success": 15,
+  "render_skipped": 17,
+  "render_failed": 0,
+  "unit_conflicts": 1,
+  "unit_mapping": {
+    "吨": {
+      "万吨": 10000
+    },
+    "万吨": {
+      "吨": 0.0001
+    }
+  },
+  "results": [
+    {
+      "idx": "078",
+      "chart_name": "锂电池铝箔加工费13μ",
+      "zhiji_id": "ID01302428",
+      "status": "渲染成功",
+      "data_points": 179,
+      "board_unit": "元/吨",
+      "api_unit": "元/吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID01302428_锂电池铝箔加工费13μ.png",
+      "png_md5": "cd2d8ec435448e77a40fa4ab6b958f4d",
+      "date_range": "2026-09-28~2026-01-05"
+    },
+    {
+      "idx": "030",
+      "chart_name": "中国净进口量变化",
+      "zhiji_id": "GM00136127",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "004",
+      "chart_name": "三网均价-河南",
+      "zhiji_id": "ID01201816",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "005",
+      "chart_name": "三网均价-山西",
+      "zhiji_id": "ID01202753",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "006",
+      "chart_name": "SHFE铝总持仓",
+      "zhiji_id": "FU00039493",
+      "status": "渲染成功",
+      "data_points": 663,
+      "board_unit": "亿元",
+      "api_unit": "亿元",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/FU00039493_SHFE铝总持仓.png",
+      "png_md5": "da07ac48185807fc72be68f3315d68c9",
+      "date_range": "2026-09-24~2024-01-02"
+    },
+    {
+      "idx": "030",
+      "chart_name": "锂矿 库存:贸易商",
+      "zhiji_id": "ID02069937",
+      "status": "渲染成功",
+      "data_points": 65,
+      "board_unit": "吨",
+      "api_unit": "万吨",
+      "unit_match": false,
+      "conversion_factor": 10000,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID02069937_锂矿 库存_贸易商.png",
+      "png_md5": "d779f500bc6ad6e4de79157c1bd5b2ac",
+      "date_range": "2026-07-31~2025-04-25"
+    },
+    {
+      "idx": "031",
+      "chart_name": "DMC工厂库存",
+      "zhiji_id": "ID01037467",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "034",
+      "chart_name": "SMM 锂矿样本库存:矿山",
+      "zhiji_id": "ID01718576",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "036",
+      "chart_name": "DMC周度产量",
+      "zhiji_id": "ID01167236",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "037",
+      "chart_name": "铝合金开工率",
+      "zhiji_id": "ID00188132",
+      "status": "渲染成功",
+      "data_points": 103,
+      "board_unit": "百分比",
+      "api_unit": "百分比",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID00188132_铝合金开工率.png",
+      "png_md5": "563241749a5dac91f9c0b5ca16301fc0",
+      "date_range": "2026-07-31~2018-01-31"
+    },
+    {
+      "idx": "038",
+      "chart_name": "中国动力电池产量：三元",
+      "zhiji_id": "ID01464616",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "039",
+      "chart_name": "A356原生铝合金龙头开工率",
+      "zhiji_id": "ID00188135",
+      "status": "渲染成功",
+      "data_points": 32,
+      "board_unit": "百分比",
+      "api_unit": "百分比",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID00188135_A356原生铝合金龙头开工率.png",
+      "png_md5": "27b59506498e53941492de221c286d9f",
+      "date_range": "2026-08-31~2024-01-31"
+    },
+    {
+      "idx": "039",
+      "chart_name": "中国动力电池产量：磷酸铁锂",
+      "zhiji_id": "ID01464616",
+      "status": "跳过(冗余废弃)",
+      "data_points": 0
+    },
+    {
+      "idx": "093",
+      "chart_name": "锰酸锂 月度产量",
+      "zhiji_id": "RE00033560",
+      "status": "渲染成功",
+      "data_points": 32,
+      "board_unit": "吨",
+      "api_unit": "吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/RE00033560_锰酸锂 月度产量.png",
+      "png_md5": "958243bdcd5eb7ec4b78b608f43a3635",
+      "date_range": "2026-08-31~2024-01-31"
+    },
+    {
+      "idx": "031",
+      "chart_name": "锂矿 外采 厂内库存",
+      "zhiji_id": "ID02069945",
+      "status": "渲染成功",
+      "data_points": 18,
+      "board_unit": "吨",
+      "api_unit": "吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID02069945_锂矿 外采 厂内库存.png",
+      "png_md5": "f593270ff0f0e6bcdab4d20ecbe2d002",
+      "date_range": "2026-08-31~2025-03-31"
+    },
+    {
+      "idx": "032",
+      "chart_name": "锂矿 外采 在途库存",
+      "zhiji_id": "ID02093014",
+      "status": "渲染成功",
+      "data_points": 19,
+      "board_unit": "吨",
+      "api_unit": "吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID02093014_锂矿 外采 在途库存.png",
+      "png_md5": "b4be9a895166d8cbfa985e522a1dcb3c",
+      "date_range": "2026-08-31~2025-02-28"
+    },
+    {
+      "idx": "002",
+      "chart_name": "LME官方三月价",
+      "zhiji_id": "ID01465584",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "005",
+      "chart_name": "上期所镍月间结构",
+      "zhiji_id": "FU00112687",
+      "status": "渲染成功",
+      "data_points": 32,
+      "board_unit": "亿元",
+      "api_unit": "亿元",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/FU00112687_上期所镍月间结构.png",
+      "png_md5": "49470513b0eb1df880a300a6c817ea4c",
+      "date_range": "2026-08-31~2024-01-31"
+    },
+    {
+      "idx": "006",
+      "chart_name": "三网均价-山东",
+      "zhiji_id": "ID01201823",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "012",
+      "chart_name": "LME铝0-3M价差",
+      "zhiji_id": "ID01244864",
+      "status": "渲染成功",
+      "data_points": 693,
+      "board_unit": "美元/吨",
+      "api_unit": "美元/吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID01244864_LME铝0-3M价差.png",
+      "png_md5": "67fddeef94cc255a3af56e52f3fbd1f8",
+      "date_range": "2026-09-25~2024-01-02"
+    },
+    {
+      "idx": "016",
+      "chart_name": "国产铝土矿-华南-高品(广西)",
+      "zhiji_id": "ID01724127",
+      "status": "渲染成功",
+      "data_points": 32,
+      "board_unit": "万吨",
+      "api_unit": "万吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID01724127_国产铝土矿-华南-高品(广西).png",
+      "png_md5": "b20abe2b8fc2aaef8037e29f083a9632",
+      "date_range": "2026-08-31~2024-01-31"
+    },
+    {
+      "idx": "030",
+      "chart_name": "DMC利润",
+      "zhiji_id": "ID01370137",
+      "status": "渲染成功",
+      "data_points": 10,
+      "board_unit": "元/吨",
+      "api_unit": "元/吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID01370137_DMC利润.png",
+      "png_md5": "05732de3cd7cbf17a7f9e47fd3034c97",
+      "date_range": "2026-06-30~2024-03-31"
+    },
+    {
+      "idx": "030",
+      "chart_name": "买交割利润-近月",
+      "zhiji_id": "LC00299511",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "032",
+      "chart_name": "DMC行业利润",
+      "zhiji_id": "ID01370137",
+      "status": "跳过(冗余废弃)",
+      "data_points": 0
+    },
+    {
+      "idx": "032",
+      "chart_name": "卖交割利润-主力利润",
+      "zhiji_id": "FU00033092",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "034",
+      "chart_name": "DMC行业成本",
+      "zhiji_id": "ID01370124",
+      "status": "渲染成功",
+      "data_points": 10,
+      "board_unit": "元/吨",
+      "api_unit": "元/吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID01370124_DMC行业成本.png",
+      "png_md5": "fd31834eaca3b14dca5792f62cbad740",
+      "date_range": "2026-06-30~2024-03-31"
+    },
+    {
+      "idx": "036",
+      "chart_name": "中国动力电池装车量：三元",
+      "zhiji_id": "ID01464612",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "036",
+      "chart_name": "国内贸易商成交量统计",
+      "zhiji_id": "ID00183165",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "037",
+      "chart_name": "中国动力电池装车量：磷酸铁锂",
+      "zhiji_id": "ID01464612",
+      "status": "跳过(冗余废弃)",
+      "data_points": 0
+    },
+    {
+      "idx": "039",
+      "chart_name": "河南国产矿现金流利润",
+      "zhiji_id": "LC00160475",
+      "status": "跳过(无缓存时序数据)",
+      "data_points": 0
+    },
+    {
+      "idx": "043",
+      "chart_name": "单晶电池片价格",
+      "zhiji_id": "ID02048294",
+      "status": "渲染成功",
+      "data_points": 114,
+      "board_unit": "元/瓦",
+      "api_unit": "元/瓦",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID02048294_单晶电池片价格.png",
+      "png_md5": "5b72f0330e9a7d1abbf710a4b2ccd79e",
+      "date_range": "2026-09-25~2024-05-24"
+    },
+    {
+      "idx": "048",
+      "chart_name": "印尼镍矿价格（HPM 1.6%）",
+      "zhiji_id": "ID01737992",
+      "status": "渲染成功",
+      "data_points": 668,
+      "board_unit": "美元/湿吨",
+      "api_unit": "美元/湿吨",
+      "unit_match": true,
+      "conversion_factor": 1.0,
+      "png_path": "/home/ubuntu/analysis/temp/ind_compare_result/v85_end2end_output/renders/ID01737992_印尼镍矿价格（HPM 1.6%）.png",
+      "png_md5": "b3155db2acc29ce0bc06f58d882697d3",
+      "date_range": "2026-09-28~2024-01-02"
+    }
+  ]
+}
