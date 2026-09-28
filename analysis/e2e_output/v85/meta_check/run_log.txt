@@ -1,0 +1,73 @@
+========================================================================
+T1: 前置准备 — 工单 DSH-B_CHECK_META_DATA_QUALITY_V85_20260928
+运行时间: 2026-09-28T16:14:12.670214
+========================================================================
+
+[1/6] 读取看板: D:\DSH_WORK\framework-tree\analysis\e2e_output\v85\fp32_v85_final_board.csv
+  看板行数: 64
+
+[2/6] 读取fetch结果: D:\DSH_WORK\framework-tree\analysis\e2e_output\v85\zhiji_fetch_result.json
+  总TP样本: 64, 唯一ID: 55
+  成功: 53, 错误: 2
+
+[3/6] 读取重复ID清单: D:\DSH_WORK\framework-tree\analysis\e2e_output\v85\duplicate_id_list.json
+  重复ID数: 8, 可节省API调用: 9
+
+[4/6] 读取指标元数据: D:\DSH_WORK\framework-tree\data\indicators_v1.json
+  指标类别数: 1658
+
+[5/6] 构建unit_convert_mapping.json
+  写入unit_convert_mapping.json: 55个ID
+
+[6/6] MD5校验:
+  ✅ fp32_v85_final_board.csv: 80f07448523023362360f090186a0bdd
+  ✅ zhiji_fetch_result.json: 83f44a590fb8c3bbe6f93c6b630130f8
+  ✅ duplicate_id_list.json: 39d9d1c4355a232a78d8f0d4c6a40f91
+
+✅ MD5校验全部通过
+
+========================================================================
+T2: 元数据批量校验
+========================================================================
+
+✅ meta_warning_list.json 已写入 (4个警告条目)
+  警告分布: {'stale_indicator': 3, 'unit_match_false': 2, 'sparse_data': 2}
+  严重度: {'HIGH': 2, 'MEDIUM': 5}
+
+✅ meta_quality_summary.md 已写入
+
+========================================================================
+T3: 空数据指标复核
+========================================================================
+
+  📋 ID00259727 — 电解铝：A00：Al≥99.7%：现货价：上海华通（日）
+    错误类型: 无数据
+    错误详情: Empty points array
+    数据起始: 2022-10-13, 数据点: 0
+    数据源: mysteel, 知几单位: 元/吨, 粒度: 日
+    元数据单位: 元/吨, 元数据粒度: daily
+
+  📋 a12804329 — SMM: 电解铝社会库存变化: 周度
+    错误类型: 无数据
+    错误详情: Empty points array
+    数据起始: 2026-09-28, 数据点: 0
+    数据源: smm, 知几单位: 万吨, 粒度: 日
+    元数据单位: None, 元数据粒度: None
+
+  📋 根因分类:
+    ID00259727: ② 指标已下线/长期停更 — 最后更新 2022-10-13，已停更 1446 天。该指标可能已停止采集或被下架。
+    a12804329: ③ 接口权限/范围问题 — 最后更新 2026-09-28 在阈值内，但API返回空数据。可能是请求时间范围不匹配或权限限制。
+
+✅ empty_data_report.md 已写入
+
+========================================================================
+T4: 提交产物到共享仓库
+========================================================================
+
+生成文件:
+  unit_convert_mapping.json: 27,198 B
+  meta_warning_list.json: 2,993 B
+  meta_quality_summary.md: 6,297 B
+  empty_data_report.md: 2,906 B
+
+✅ MD5_CHECKSUM_LIST.md 已写入

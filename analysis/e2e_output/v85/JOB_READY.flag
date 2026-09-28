@@ -39,6 +39,42 @@ NO_ZHIJI_API_CALL=true
 READ_ONLY=true
 APPEND_ONLY=true
 
+# =============================================================================
+# 元数据质检 — DSH-B_CHECK_META_DATA_QUALITY_V85_20260928
+# 完成时间: 2026-09-28T16:14:12+08:00
+# =============================================================================
+META_CHECK_STATUS=COMPLETED
+META_CHECK_ID=DSH-B_CHECK_META_DATA_QUALITY_V85_20260928
+META_CHECK_TIMESTAMP=2026-09-28T16:14:12+08:00
+META_CHECK_DIR=meta_check/
+
+# --- 质检摘要 ---
+META_IDS_CHECKED=55
+META_TOTAL_WARNINGS=4
+META_WARN_HIGH=2
+META_WARN_MEDIUM=5
+META_WARN_LOW=0
+META_STALE_COUNT=3
+META_UNIT_CONFLICT=0
+META_FREQ_MISMATCH=0
+META_SPARSE_COUNT=2
+META_UNIT_MATCH_FAIL=2
+META_NO_META_MATCH=39
+
+# --- 元数据质检文件清单 ---
+META_FILES_BEGIN
+unit_convert_mapping.json|27198|802c432f656771cfe9aadc564110b9ae
+meta_warning_list.json|2993|ec59c47ba49c7fdf2ffd849482d85aa2
+meta_quality_summary.md|6297|38ce35409d82a030820d03d81585dc28
+empty_data_report.md|2906|97b223abb6a3d94267215c14c1b9a8f1
+MD5_CHECKSUM_LIST.md|668|10a71fbc935d65d9aaf323f147840bb3
+META_FILES_END
+
+# --- 空数据复核 ---
+EMPTY_DATA_COUNT=2
+EMPTY_DATA_IDS=ID00259727,a12804329
+EMPTY_DATA_REPORT=meta_check/empty_data_report.md
+
 # --- HERMES 消费指令 ---
 # 读取顺序建议:
 # 1. JOB_READY.flag           — 确认就绪
@@ -46,3 +82,6 @@ APPEND_ONLY=true
 # 3. fp32_v85_final_board.csv — 放行样本清单
 # 4. zhiji_fetch_result.json  — 完整时序数据
 # 5. zhiji_fetch_summary_report.md — 汇总报告
+# 6. meta_check/meta_warning_list.json — 元数据警告清单
+# 7. meta_check/meta_quality_summary.md — 元数据质检汇总
+# 8. meta_check/empty_data_report.md — 空数据复核报告
