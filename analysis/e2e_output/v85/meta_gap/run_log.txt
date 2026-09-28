@@ -1,0 +1,32 @@
+[2026-09-28T09:24:24.722] ============================================================
+[2026-09-28T09:24:24.722] T1: Loading input files
+[2026-09-28T09:24:24.729]   Loaded 55 IDs from unit_convert_mapping.json
+[2026-09-28T09:24:24.729]   Loaded 4 warnings from meta_warning_list.json
+[2026-09-28T09:24:24.729]   Loaded 64 rows from fp32_v85_final_board.csv
+[2026-09-28T09:24:24.729]   Loaded zhiji_fetch_result.json with 55 fetch details
+[2026-09-28T09:24:24.729] 
+[2026-09-28T09:24:24.729] ============================================================
+[2026-09-28T09:24:24.729] T2: 71% Metadata gap analysis
+[2026-09-28T09:24:24.729]   Total IDs: 55
+[2026-09-28T09:24:24.729]   Matched (has meta): 16
+[2026-09-28T09:24:24.729]   Missing (no meta): 39
+[2026-09-28T09:24:24.732]   Wrote meta_missing_id_list.json (39 entries)
+[2026-09-28T09:24:24.733]   Wrote meta_gap_analysis.md
+[2026-09-28T09:24:24.733] 
+[2026-09-28T09:24:24.733] ============================================================
+[2026-09-28T09:24:24.733] T3: Stale/empty data classification + data_status tags
+[2026-09-28T09:24:24.733]   Stale IDs: 3
+[2026-09-28T09:24:24.733]   Sparse IDs: 2
+[2026-09-28T09:24:24.733]   Empty data IDs: 1
+[2026-09-28T09:24:24.733]   Unit match fail IDs: 2
+[2026-09-28T09:24:24.737]   Wrote data_status_tag_candidate.json (55 entries)
+[2026-09-28T09:24:24.737] 
+[2026-09-28T09:24:24.737] ============================================================
+[2026-09-28T09:24:24.737] T4: Dataset scope diff analysis
+[2026-09-28T09:24:24.737]   Full board: 64 samples, 55 unique zhiji IDs
+[2026-09-28T09:24:24.737]   FP subset: 34 samples, 28 unique zhiji IDs
+[2026-09-28T09:24:24.737]   Non-FP subset: 30 samples, 29 unique zhiji IDs
+[2026-09-28T09:24:24.737]   IDs in FP only: 26
+[2026-09-28T09:24:24.737]   IDs in non-FP only: 27
+[2026-09-28T09:24:24.737]   IDs in both: 2
+[2026-09-28T09:24:24.741]   Wrote dataset_scope_diff.md

@@ -85,3 +85,53 @@ EMPTY_DATA_REPORT=meta_check/empty_data_report.md
 # 6. meta_check/meta_warning_list.json — 元数据警告清单
 # 7. meta_check/meta_quality_summary.md — 元数据质检汇总
 # 8. meta_check/empty_data_report.md — 空数据复核报告
+
+# =============================================================================
+# 元数据差距分析 — DSH-B_META_GAP_ANALYSIS_V85_20260928
+# 完成时间: 2026-09-28T09:24:24+08:00
+# =============================================================================
+META_GAP_ANALYSIS=COMPLETED
+META_GAP_ANALYSIS_ID=DSH-B_META_GAP_ANALYSIS_V85_20260928
+META_GAP_ANALYSIS_TIMESTAMP=2026-09-28T09:24:24+08:00
+META_GAP_ANALYSIS_DIR=meta_gap/
+
+# --- 分析摘要 ---
+GAP_TOTAL_IDS=55
+GAP_MATCHED_COUNT=16
+GAP_MISSING_COUNT=39
+GAP_MISSING_RATIO=70.9%
+GAP_ROOT_CAUSE_②=39
+GAP_ROOT_CAUSE_①=0
+GAP_ROOT_CAUSE_③=0
+
+# --- 数据状态标签 (候选) ---
+DATA_STATUS_NORMAL=51
+DATA_STATUS_SPARSE=2
+DATA_STATUS_STALE=0
+DATA_STATUS_DEPRECATED=1
+DATA_STATUS_PERMISSION=1
+
+# --- 数据集口径差异 ---
+BOARD_TOTAL_SAMPLES=64
+BOARD_UNIQUE_IDS=55
+BOARD_FP_SAMPLES=34
+BOARD_FP_UNIQUE_IDS=28
+BOARD_POS_SAMPLES=30
+BOARD_POS_UNIQUE_IDS=29
+BOARD_IDS_IN_FP_AND_POS=2
+
+# --- 差距分析文件清单 ---
+GAP_FILES_BEGIN
+meta_missing_id_list.json|22091|ffcc4eb43c648c57ba4fb144dd5181f7
+meta_gap_analysis.md|11484|e4e0d507925c8489ee06939731d5867b
+data_status_tag_candidate.json|22219|101f956c2381a208bb499dde65e7f604
+dataset_scope_diff.md|10854|b6547bcde200e0e6ec374ae2e1b6ade1
+run_log.txt|1949|53c1722eb0586f0d5f5e8fc9a8595911
+MD5_CHECKSUM_LIST.md|495|3A2DD6B73AFA63BB29A370D1D991724B
+GAP_FILES_END
+
+# --- HERMES 消费指令更新 ---
+# 新增读取建议:
+# 9.  meta_gap/meta_missing_id_list.json — 缺失元数据ID清单与根因分类
+# 10. meta_gap/data_status_tag_candidate.json — 数据状态标签候选（正常/稀疏/长期停更/数据源下线/权限缺失）
+# 11. meta_gap/dataset_scope_diff.md — 64样本 vs 32行FP看板口径差异分析
