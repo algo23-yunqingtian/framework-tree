@@ -1,0 +1,35 @@
+# 工单 HERMES_RENDER_ENHANCE_V85_20260928 产物MD5清单
+生成时间: 2026-09-28 16:47:42
+
+## 新增产物
+004a2bd8f84505f3efb236fa370f815e  analysis/e2e_output/v85/fp32_v85_meta_enhanced_board.csv
+955355217c0fc4ef2c42b395c350bea6  analysis/e2e_output/v85/render_enhance_receipt.json
+52d5ded1075c77bc18fea4517fa22971  analysis/e2e_output/v85/final_e2e_summary.md
+3b5f54d7f677e8eff9b12a2e7fe927f2  analysis/e2e_output/v85/T11_render_enhance.py
+bece65a52d5e4ad9b631e6032bf13052  analysis/e2e_output/v85/T12_board_enhance_report.py
+8cd7201946f1b929b0e861a3fa629300  analysis/e2e_output/v85/renders_enhanced/FU00039493_SHFE铝总持仓.png
+62d922267ca0fa6b358b4203e56027ec  analysis/e2e_output/v85/renders_enhanced/FU00112687_上期所镍月间结构.png
+8d292c34f9b3cea17ad6b691bc0ce5d2  analysis/e2e_output/v85/renders_enhanced/ID00188132_铝合金开工率.png
+e8ebb404998c3e1e73cf0d7b70d03c87  analysis/e2e_output/v85/renders_enhanced/ID00188135_A356原生铝合金龙头开工率.png
+1b168bd13a54877dd61d0098d6e6f17b  analysis/e2e_output/v85/renders_enhanced/ID01244864_LME铝0-3M价差.png
+cb723c64127554ade5ddcc9fb3b9b5a0  analysis/e2e_output/v85/renders_enhanced/ID01302428_锂电池铝箔加工费13μ.png
+2faae78e2216fbce1aafa9c36008b1ad  analysis/e2e_output/v85/renders_enhanced/ID01370124_DMC行业成本.png
+eb044af57b9b2ead8315ccd56e2fbd21  analysis/e2e_output/v85/renders_enhanced/ID01370137_DMC利润.png
+8586d6b024e0763e8e8a0e4ed3a48ff8  analysis/e2e_output/v85/renders_enhanced/ID01724127_国产铝土矿-华南-高品(广西).png
+ddeb16b3777d303b4a85ed08d40b6548  analysis/e2e_output/v85/renders_enhanced/ID01737992_印尼镍矿价格（HPM 1.6%）.png
+2c5c4088d21b9f0dbeec608845fcf78f  analysis/e2e_output/v85/renders_enhanced/ID02048294_单晶电池片价格.png
+49ec112086ce908e4bde54cddaf3103b  analysis/e2e_output/v85/renders_enhanced/ID02069937_锂矿 库存_贸易商.png
+99718c7dec5ef2655df2902e3b8a0063  analysis/e2e_output/v85/renders_enhanced/ID02069945_锂矿 外采 厂内库存.png
+d57347509127e0f6af9fafeca33236e0  analysis/e2e_output/v85/renders_enhanced/ID02093014_锂矿 外采 在途库存.png
+632ee583a58757ddea71b40b0099c0e2  analysis/e2e_output/v85/renders_enhanced/RE00033560_锰酸锂 月度产量.png
+
+## 元数据质检产物(T1拉取,未变)
+efad47c6e931c44ee55be76d59d28210  analysis/e2e_output/v85/meta_check/meta_warning_list.json
+db5ca01de054512828ede74cecc4d42e  analysis/e2e_output/v85/meta_check/unit_convert_mapping.json
+9d7aa49717824abec6f7e6ab0958e1be  analysis/e2e_output/v85/meta_check/empty_data_report.md
+2a886de66c62eee58b5bd578fefb58dd  analysis/e2e_output/v85/meta_check/MD5_CHECKSUM_LIST.md
+1d128cccd0e087737e738ded3924a13c  analysis/e2e_output/v85/meta_check/meta_quality_summary.md
+
+## 源文件基线(未变,校验用)
+a44d65f2aa09c60aa41373aa4f463e33  fp32_v85_final_board.csv (工单1基线)
+ba94e18192f2488f8d728222fc0a630b  fp32_v85_end2end_board.csv (工单1基线)

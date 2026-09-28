@@ -73,6 +73,14 @@
 
 ## 近期变更记录
 
+### 2026-09-28 工单3 — 绘图增强改造 (HERMES_RENDER_ENHANCE_V85_20260928)
+- **T1 元数据质检拉取**: 从 origin/task/p0_verify:analysis/e2e_output/v85/meta_check/ 拉取 7 文件; 55 ID 质检出 4 警告条目(停更3/单位不符2/稀疏2), 完整版 unit_convert_mapping.json(55 ID)
+- **T2 绘图增强**: 单位量级换算+坐标轴/图例同步、停更黄色水印、单位冲突红色人工复核标记、mdates时间轴交集对齐、跳过冗余行 → renders_enhanced/ 15张 (零API消耗)
+- **T3 看板二次优化**: fp32_v85_meta_enhanced_board.csv (32行×45列, 新增 meta_warning/data_expire_notice/unit_convert_status), REVIEW_SKIP保留(是禁自动ID绑定), 人工结论列全空
+- **T4 汇总**: render_enhance_receipt.json (成功15/换算1/停更告警0/跳过冗余3) + final_e2e_summary.md
+- **约束**: 源indicators_v1.json未修改(MD5 4db5418d), 零zhiji API调用, 产物全新增不覆盖, 渲染异常只记录不中断
+- **注**: 元数据质检4警告对应ID不在32行FP看板有效渲染集合(看板32行/质检64样本55ID口径不同), 故渲染命中停更告警=0, 警告仍记入看板meta_warning列备查
+
 ### 2026-09-28 工单2 — 看板清理+单位修正 (HERMES_GITHUB_READ_AND_CLEAN_BOARD_V85_20260928)
 - **T1 DSHB拉取**: 从 origin/task/p0_verify:analysis/e2e_output/v85/ 拉取 11 文件, JOB_READY STATUS=READY (64样本/55唯一ID/53成功); 注: DSHB的zhiji_fetch_result.json仅含元数据, 实际时序走本地缓存
 - **T2 看板去重**: fp32_v85_end2end_board.csv 32行中3行标记【冗余废弃】(ID01464616/ID01370137/ID01464612), 有效29行, 去重省3次API调用 → fp32_v85_cleaned_board.csv (32×42)

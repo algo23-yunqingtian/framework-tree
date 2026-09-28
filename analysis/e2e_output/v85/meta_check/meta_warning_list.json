@@ -1,0 +1,103 @@
+{
+  "work_order": "DSH-B_CHECK_META_DATA_QUALITY_V85_20260928",
+  "generated_at": "2026-09-28T16:14:12.789897",
+  "total_ids_checked": 55,
+  "total_warnings": 4,
+  "warnings_by_type": {
+    "stale_indicator": 3,
+    "unit_match_false": 2,
+    "sparse_data": 2
+  },
+  "warnings_by_severity": {
+    "HIGH": 2,
+    "MEDIUM": 5
+  },
+  "stale_threshold_days": 90,
+  "warnings": [
+    {
+      "zhiji_id": "ID00259727",
+      "series_name": "电解铝：A00：Al≥99.7%：现货价：上海华通（日）",
+      "source": "mysteel",
+      "indicator_category": "al_22_spot",
+      "indicator_variety": "AL",
+      "warnings": [
+        {
+          "check": "stale_indicator",
+          "severity": "HIGH",
+          "detail": "停更1446天 (最后更新: 2022-10-13) — 疑似指标已下线",
+          "data_latest": "2022-10-13",
+          "days_since_update": 1446
+        },
+        {
+          "check": "unit_match_false",
+          "severity": "MEDIUM",
+          "detail": "unit_match=False — 知几返回单位与预期不一致"
+        }
+      ],
+      "warning_count": 2,
+      "max_severity": "HIGH"
+    },
+    {
+      "zhiji_id": "CM0000053686",
+      "series_name": "SEAISI：钢铁：出口数量合计：东南亚（年）",
+      "source": "mysteel",
+      "indicator_category": "",
+      "indicator_variety": "",
+      "warnings": [
+        {
+          "check": "stale_indicator",
+          "severity": "HIGH",
+          "detail": "停更636天 (最后更新: 2024-12-31) — 疑似指标已下线",
+          "data_latest": "2024-12-31",
+          "days_since_update": 636
+        },
+        {
+          "check": "sparse_data",
+          "severity": "MEDIUM",
+          "detail": "数据点过少: 1条"
+        }
+      ],
+      "warning_count": 2,
+      "max_severity": "HIGH"
+    },
+    {
+      "zhiji_id": "a10166705",
+      "series_name": "SMM: 铝型材年产量: 年度",
+      "source": "smm",
+      "indicator_category": "",
+      "indicator_variety": "",
+      "warnings": [
+        {
+          "check": "stale_indicator",
+          "severity": "MEDIUM",
+          "detail": "停更271天 (最后更新: 2025-12-31)",
+          "data_latest": "2025-12-31",
+          "days_since_update": 271
+        },
+        {
+          "check": "sparse_data",
+          "severity": "MEDIUM",
+          "detail": "数据点过少: 2条"
+        }
+      ],
+      "warning_count": 2,
+      "max_severity": "MEDIUM"
+    },
+    {
+      "zhiji_id": "a12804329",
+      "series_name": "SMM: 电解铝社会库存变化: 周度",
+      "source": "smm",
+      "indicator_category": "",
+      "indicator_variety": "",
+      "warnings": [
+        {
+          "check": "unit_match_false",
+          "severity": "MEDIUM",
+          "detail": "unit_match=False — 知几返回单位与预期不一致"
+        }
+      ],
+      "warning_count": 1,
+      "max_severity": "MEDIUM"
+    }
+  ]
+}
