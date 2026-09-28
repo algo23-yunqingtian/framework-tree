@@ -1,0 +1,38 @@
+{
+  "work_order": "HERMES_TAG_AND_BOARD_FILTER_V85_20260928",
+  "generated_at": "2026-09-28T17:42:48.998857",
+  "data_source": "DSH-B meta_gap/ 正主产物 (55ID全量) + meta_check质检告警回填",
+  "data_source_note": "DSH-B meta_gap产物MD5清单与实际提交文件字节不一致(DSH侧问题), 实际内容完整; 本地推导meta_gap_local/已废弃, 以DSHB正主为准",
+  "board_input": "fp32_v85_meta_enhanced_board.csv (32×45)",
+  "board_output": "fp32_v85_final_filtered_board.csv",
+  "board_shape": [
+    32,
+    47
+  ],
+  "stats": {
+    "total_rows": 32,
+    "data_status_normal": 27,
+    "data_status_stale": 0,
+    "data_status_sparse": 0,
+    "data_status_offline": 0,
+    "skip_render_count": 0,
+    "skip_render_but_already_rendered": 0,
+    "unit_conflict_count": 0,
+    "warning_backfilled_to_board": 5,
+    "warning_not_in_board_recorded": 6
+  },
+  "render_actions": {
+    "正常渲染": 32
+  },
+  "note": "不重生PNG, 仅更新渲染清单; 跳过绘图的已渲染行保留原图",
+  "constraints": {
+    "NO_ZHIJI_API": true,
+    "NO_SOURCE_MODIFICATION": true,
+    "REVIEW_SKIP_PRESERVED": true,
+    "APPEND_ONLY": true
+  },
+  "outputs": [
+    "/home/ubuntu/framework-tree/analysis/e2e_output/v85/fp32_v85_final_filtered_board.csv",
+    "/home/ubuntu/framework-tree/analysis/e2e_output/v85/unified_warning_summary.md"
+  ]
+}

@@ -73,6 +73,13 @@
 
 ## 近期变更记录
 
+### 2026-09-28 工单4 — 标签过滤+统一告警 (HERMES_TAG_AND_BOARD_FILTER_V85_20260928)
+- **T1 meta_gap拉取**: 从 origin/task/p0_verify 拉取 meta_gap/ 7文件(DSHB正主产物); DSHB全量55ID分类: 正常51/稀疏2/数据源下线1/权限缺失1; 注: DSHB MD5清单与实际提交文件字节不一致(DSH侧问题,已记录,实际内容完整可用)
+- **T2 看板过滤升级**: 新增 data_status 列(按DSHB 55ID分类对齐看板), 渲染过滤规则(数据源下线/停更>90天跳过绘图); 看板命中非正常仅 a12804329(权限缺失)5行, 不触发跳过; REVIEW_SKIP保留, 人工结论空, 禁绑ID
+- **T3 统一告警口径**: unified_warning_summary.md 合并两套样本集错位; 看板∩DSH55=4ID, a12804329回填看板5行; DSHB标非正常但不在看板的3条(ID00259727下线停更1446天/CM0000053686稀疏/a10166705稀疏)全部记入汇总不丢失
+- **T4 输出**: fp32_v85_final_filtered_board.csv(32×47列, 新增data_status+unified_warning) + render_filter_receipt.json(正常27/权限缺失5, 跳过0/已渲染保留, 回填5行/不丢失6条); 不重生PNG仅更新清单
+- **约束**: 源indicators_v1.json未修改(MD5 4db5418d), 零zhiji API调用, 产物全新增不覆盖, 渲染异常不中断
+
 ### 2026-09-28 工单3 — 绘图增强改造 (HERMES_RENDER_ENHANCE_V85_20260928)
 - **T1 元数据质检拉取**: 从 origin/task/p0_verify:analysis/e2e_output/v85/meta_check/ 拉取 7 文件; 55 ID 质检出 4 警告条目(停更3/单位不符2/稀疏2), 完整版 unit_convert_mapping.json(55 ID)
 - **T2 绘图增强**: 单位量级换算+坐标轴/图例同步、停更黄色水印、单位冲突红色人工复核标记、mdates时间轴交集对齐、跳过冗余行 → renders_enhanced/ 15张 (零API消耗)
