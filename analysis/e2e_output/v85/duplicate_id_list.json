@@ -1,0 +1,230 @@
+{
+  "work_order": "DSH-B_GITHUB_SHARE_PUSH_V85_20260928",
+  "source_file": "zhiji_fetch_result.json",
+  "total_entries": 64,
+  "unique_zhiji_ids": 55,
+  "duplicate_id_count": 8,
+  "duplicate_entry_count": 17,
+  "dedup_saving": 9,
+  "note": "HERMES 清理看板时，相同 zhiji_id 只保留 1 条，避免重复 API 请求",
+  "duplicates": [
+    {
+      "zhiji_id": "a12802005",
+      "occurrence_count": 3,
+      "entries": [
+        {
+          "trace_id": "TRACE_0024",
+          "sample_id": "FUZ_013",
+          "chart_name": "铝棒:社库",
+          "matched_name": "SMM: 无锡铝棒库存: 日度",
+          "variety": "铝",
+          "data_points": 425,
+          "unit": "万吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0044",
+          "sample_id": "POS_010",
+          "chart_name": "铝棒价格-无锡",
+          "matched_name": "SMM: 6061铝棒(无锡) - 平均价",
+          "variety": "铝",
+          "data_points": 425,
+          "unit": "万吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0064",
+          "sample_id": "POS_030",
+          "chart_name": "铝棒+铝锭社库",
+          "matched_name": "SMM: 无锡铝棒库存: 日度",
+          "variety": "铝",
+          "data_points": 425,
+          "unit": "万吨",
+          "data_success": true
+        }
+      ]
+    },
+    {
+      "zhiji_id": "ID01001752",
+      "occurrence_count": 2,
+      "entries": [
+        {
+          "trace_id": "TRACE_0001",
+          "sample_id": "CAL_001",
+          "chart_name": "SMM中国氧化铝月度产量-山东",
+          "matched_name": "氧化铝：产量：山东（月）",
+          "variety": "氧化铝",
+          "data_points": 24,
+          "unit": "万吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0009",
+          "sample_id": "CAL_009",
+          "chart_name": "SMM中国氧化铝月度产量-山东",
+          "matched_name": "氧化铝：产量：山东（月）",
+          "variety": "氧化铝",
+          "data_points": 24,
+          "unit": "万吨",
+          "data_success": true
+        }
+      ]
+    },
+    {
+      "zhiji_id": "ID01001946",
+      "occurrence_count": 2,
+      "entries": [
+        {
+          "trace_id": "TRACE_0002",
+          "sample_id": "CAL_002",
+          "chart_name": "SMM中国氧化铝月度产量-总量",
+          "matched_name": "氧化铝：产量：中国（月）",
+          "variety": "氧化铝",
+          "data_points": 24,
+          "unit": "万吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0010",
+          "sample_id": "CAL_010",
+          "chart_name": "SMM中国氧化铝月度产量-总量",
+          "matched_name": "氧化铝：产量：中国（月）",
+          "variety": "氧化铝",
+          "data_points": 24,
+          "unit": "万吨",
+          "data_success": true
+        }
+      ]
+    },
+    {
+      "zhiji_id": "ID01001748",
+      "occurrence_count": 2,
+      "entries": [
+        {
+          "trace_id": "TRACE_0003",
+          "sample_id": "CAL_003",
+          "chart_name": "SMM中国氧化铝月度产量-河南",
+          "matched_name": "氧化铝：产量：河南（月）",
+          "variety": "氧化铝",
+          "data_points": 24,
+          "unit": "万吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0011",
+          "sample_id": "CAL_011",
+          "chart_name": "SMM中国氧化铝月度产量-河南",
+          "matched_name": "氧化铝：产量：河南（月）",
+          "variety": "氧化铝",
+          "data_points": 24,
+          "unit": "万吨",
+          "data_success": true
+        }
+      ]
+    },
+    {
+      "zhiji_id": "FU00107599",
+      "occurrence_count": 2,
+      "entries": [
+        {
+          "trace_id": "TRACE_0004",
+          "sample_id": "CAL_004",
+          "chart_name": "中国平均价-氧化铝一级",
+          "matched_name": "SHFE：氧化铝：加权平均价（日）",
+          "variety": "氧化铝",
+          "data_points": 483,
+          "unit": "元/吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0012",
+          "sample_id": "CAL_012",
+          "chart_name": "中国平均价-氧化铝一级",
+          "matched_name": "SHFE：氧化铝：加权平均价（日）",
+          "variety": "氧化铝",
+          "data_points": 483,
+          "unit": "元/吨",
+          "data_success": true
+        }
+      ]
+    },
+    {
+      "zhiji_id": "ID00302567",
+      "occurrence_count": 2,
+      "entries": [
+        {
+          "trace_id": "TRACE_0006",
+          "sample_id": "CAL_006",
+          "chart_name": "铝现货升贴水",
+          "matched_name": "电解铝：现货升贴水：重庆—SHFE（日）",
+          "variety": "铝",
+          "data_points": 484,
+          "unit": "元/吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0046",
+          "sample_id": "POS_012",
+          "chart_name": "铝现货升贴水",
+          "matched_name": "电解铝：现货升贴水：重庆—SHFE（日）",
+          "variety": "铝",
+          "data_points": 484,
+          "unit": "元/吨",
+          "data_success": true
+        }
+      ]
+    },
+    {
+      "zhiji_id": "ID01001760",
+      "occurrence_count": 2,
+      "entries": [
+        {
+          "trace_id": "TRACE_0007",
+          "sample_id": "CAL_007",
+          "chart_name": "电解铝出库量-中国",
+          "matched_name": "电解铝：出库量：中国（日）",
+          "variety": "铝",
+          "data_points": 102,
+          "unit": "万吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0021",
+          "sample_id": "FUZ_009",
+          "chart_name": "电解铝出库量-中国",
+          "matched_name": "电解铝：出库量：中国（日）",
+          "variety": "铝",
+          "data_points": 102,
+          "unit": "万吨",
+          "data_success": true
+        }
+      ]
+    },
+    {
+      "zhiji_id": "ID01029971",
+      "occurrence_count": 2,
+      "entries": [
+        {
+          "trace_id": "TRACE_0008",
+          "sample_id": "CAL_008",
+          "chart_name": "铝棒出库量-中国",
+          "matched_name": "铝棒：出库量：中国（日）",
+          "variety": "铝",
+          "data_points": 104,
+          "unit": "万吨",
+          "data_success": true
+        },
+        {
+          "trace_id": "TRACE_0022",
+          "sample_id": "FUZ_010",
+          "chart_name": "铝棒出库量-中国",
+          "matched_name": "铝棒：出库量：中国（日）",
+          "variety": "铝",
+          "data_points": 104,
+          "unit": "万吨",
+          "data_success": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+﻿trace_id,sample_id,chart_name,variety,category,matched_id,matched_name,match_level,match_confidence,ground_truth_id,pass_mark
+TRACE_0001,CAL_001,SMM中国氧化铝月度产量-山东,氧化铝,caliber_conflict,ID01001752,氧化铝：产量：山东（月）,A,high,,【放行】
+TRACE_0002,CAL_002,SMM中国氧化铝月度产量-总量,氧化铝,caliber_conflict,ID01001946,氧化铝：产量：中国（月）,A,high,,【放行】
+TRACE_0003,CAL_003,SMM中国氧化铝月度产量-河南,氧化铝,caliber_conflict,ID01001748,氧化铝：产量：河南（月）,A,high,,【放行】
+TRACE_0004,CAL_004,中国平均价-氧化铝一级,氧化铝,caliber_conflict,FU00107599,SHFE：氧化铝：加权平均价（日）,A,high,,【放行】
+TRACE_0005,CAL_005,氧化铝进口盈亏-中国,氧化铝,caliber_conflict,ID01721699,氧化铝：进口盈亏：中国（日）,A,high,,【放行】
+TRACE_0006,CAL_006,铝现货升贴水,铝,caliber_conflict,ID00302567,电解铝：现货升贴水：重庆—SHFE（日）,A,high,,【放行】
+TRACE_0007,CAL_007,电解铝出库量-中国,铝,caliber_conflict,ID01001760,电解铝：出库量：中国（日）,A,high,,【放行】
+TRACE_0008,CAL_008,铝棒出库量-中国,铝,caliber_conflict,ID01029971,铝棒：出库量：中国（日）,A,high,,【放行】
+TRACE_0009,CAL_009,SMM中国氧化铝月度产量-山东,氧化铝,caliber_conflict,ID01001752,氧化铝：产量：山东（月）,A,high,,【放行】
+TRACE_0010,CAL_010,SMM中国氧化铝月度产量-总量,氧化铝,caliber_conflict,ID01001946,氧化铝：产量：中国（月）,A,high,,【放行】
+TRACE_0011,CAL_011,SMM中国氧化铝月度产量-河南,氧化铝,caliber_conflict,ID01001748,氧化铝：产量：河南（月）,A,high,,【放行】
+TRACE_0012,CAL_012,中国平均价-氧化铝一级,氧化铝,caliber_conflict,FU00107599,SHFE：氧化铝：加权平均价（日）,A,high,,【放行】
+TRACE_0013,FUZ_001,A00价格,铝,fuzzy_abbreviation,ID00259727,电解铝：A00：Al≥99.7%：现货价：上海华通（日）,A,high,,【放行】
+TRACE_0014,FUZ_002,A00升贴水-上海,铝,fuzzy_abbreviation,a10017061,SMM: A00铝升贴水: 上海: 日度,A,high,,【放行】
+TRACE_0015,FUZ_003,A00升贴水-巩义,铝,fuzzy_abbreviation,ID00302573,电解铝：现货升贴水：巩义—SHFE（日）,A,high,,【放行】
+TRACE_0016,FUZ_004,出口-原铝,铝,fuzzy_abbreviation,a10096621,SMM: 原生铝合金新出口订单指数: 月度,A,high,,【放行】
+TRACE_0017,FUZ_005,出口-铝材-型材条杆,铝,fuzzy_abbreviation,ID01134195,冷轧不锈条杆：出口金额：海南（月）,A,high,,【放行】
+TRACE_0018,FUZ_006,出口-铝材-板带箔,铝,fuzzy_abbreviation,a10015993,SMM: 铝材出口利润模型: 铝板带加工费: 日度,A,high,,【放行】
+TRACE_0019,FUZ_007,铝材出口-EU27,铝,fuzzy_abbreviation,CM0000207359,未锻轧铝及铝材：出口数量初值：中国（月）,A,high,,【放行】
+TRACE_0020,FUZ_008,铝材出口-东南亚,铝,fuzzy_abbreviation,CM0000053686,SEAISI：钢铁：出口数量合计：东南亚（年）,A,high,,【放行】
+TRACE_0021,FUZ_009,电解铝出库量-中国,铝,fuzzy_abbreviation,ID01001760,电解铝：出库量：中国（日）,A,high,,【放行】
+TRACE_0022,FUZ_010,铝棒出库量-中国,铝,fuzzy_abbreviation,ID01029971,铝棒：出库量：中国（日）,A,high,,【放行】
+TRACE_0023,FUZ_012,电解铝:厂库,铝,fuzzy_abbreviation,a12820686,SMM: 国内电解铝厂内库存: 周度,A,high,,【放行】
+TRACE_0024,FUZ_013,铝棒:社库,铝,fuzzy_abbreviation,a12802005,SMM: 无锡铝棒库存: 日度,A,high,,【放行】
+TRACE_0025,FUZ_014,LME电解铝总库存,铝,fuzzy_abbreviation,a10166773,SMM: 电解铝锭库存差: 周度,A,high,,【放行】
+TRACE_0026,FUZ_031,LME主要仓库场内库存,铝,fuzzy_abbreviation,FU00103249,LME：非仓单库存：欧洲（日）,A,high,,【放行】
+TRACE_0027,FUZ_032,LME主要仓库注销仓单,铝,fuzzy_abbreviation,FU00023500,LME：钴：注销仓单（日）,A,high,,【放行】
+TRACE_0028,FUZ_033,LME仓单原产地,铝,fuzzy_abbreviation,a12805925,SHFE: 中质含硫原油: 仓单日报: 期货: 日度,A,high,,【放行】
+TRACE_0029,FUZ_034,LME俄铝外库存,铝,fuzzy_abbreviation,a10193695,LME: 铝: 库存: 日度,A,high,,【放行】
+TRACE_0030,FUZ_035,LME持仓情况,铝,fuzzy_abbreviation,FU00082345,LME：钴：其他报告头寸多头持仓量：投资基金（周）,A,high,,【放行】
+TRACE_0031,FUZ_036,LME铝,铝,fuzzy_abbreviation,FU00082215,LME：铝：报告头寸多头持仓数量合计：投资基金（周）,A,high,,【放行】
+TRACE_0032,FUZ_037,LME铝0-3M价差,铝,fuzzy_abbreviation,ID01244864,LME：铝：CASH-3M合约：结算价差（日）,A,high,,【放行】
+TRACE_0033,FUZ_038,LME铝远月月差3-15,铝,fuzzy_abbreviation,FU00014309,LME：铝：3个月合约：开盘价（日）,A,high,,【放行】
+TRACE_0034,FUZ_039,SHFE铝总持仓,铝,fuzzy_abbreviation,FU00039493,SHFE：铝：持仓市值（日）,A,high,,【放行】
+TRACE_0035,POS_001,再生铝合金月产量,铝,positive,ID01001542,再生铝合金锭：158家样本企业：产量：中国（月）,A,high,,【放行】
+TRACE_0036,POS_002,原生铝合金月产量,铝,positive,a10181032,SMM: 原生铝合金产量: 月度,A,high,,【放行】
+TRACE_0037,POS_003,电解铝产量,铝,positive,ID01445793,电解铝：产量：中国（日）,A,high,,【放行】
+TRACE_0038,POS_004,铝型材月产量,铝,positive,a10166705,SMM: 铝型材年产量: 年度,A,high,,【放行】
+TRACE_0039,POS_005,铝杆月产量,铝,positive,a10166631,SMM: 铝杆产量: 月度,A,high,,【放行】
+TRACE_0040,POS_006,铝棒产量,铝,positive,a12843072,SMM: 铝棒产量: 月度,A,high,,【放行】
+TRACE_0041,POS_007,A00升贴水-佛山,铝,positive,j00181985,SMM: A00铝（佛山）升贴水-月平均价: 月度,A,high,,【放行】
+TRACE_0042,POS_008,铝棒价格-包头,铝,positive,s20003836,SMM: φ90铝棒(包头)-平均价: 日度,A,high,,【放行】
+TRACE_0043,POS_009,铝棒价格-广东,铝,positive,ID01720201,再生铝棒：6063：Fe0.2%-0.25%：市场价：广东（日）,A,high,,【放行】
+TRACE_0044,POS_010,铝棒价格-无锡,铝,positive,a12802005,SMM: 6061铝棒(无锡) - 平均价,A,high,,【放行】
+TRACE_0045,POS_011,铝棒价格-河南,铝,positive,ID01720181,再生铝棒：6063：Fe0.2%-0.25%：市场价：河南（日）,A,high,,【放行】
+TRACE_0046,POS_012,铝现货升贴水,铝,positive,ID00302567,电解铝：现货升贴水：重庆—SHFE（日）,A,high,,【放行】
+TRACE_0047,POS_013,出口-未锻轧铝合金,铝,positive,a10154837,中国海关: 未锻轧铝合金出口量: 月度,A,high,,【放行】
+TRACE_0048,POS_014,出口-铝制品,铝,positive,ID01118480,铝制品：出口金额：安徽（月）,A,high,,【放行】
+TRACE_0049,POS_015,铝材出口-北美,铝,positive,a10015980,SMM: 电解铝出口利润模型: 北美: 日度,A,high,,【放行】
+TRACE_0050,POS_016,铝材出口-总量,铝,positive,a10096868,中国海关: 铝材出口总量: 月度,A,high,,【放行】
+TRACE_0051,POS_017,电解铝生产利润,铝,positive,a10016174,SMM: 铝产业链价格预测模型: 电解铝利润: 季度,A,high,,【放行】
+TRACE_0052,POS_018,铝内外价差,铝,positive,a10021668,SMM: 国内外ADC12即时价差: 日度,A,high,,【放行】
+TRACE_0053,POS_019,铝材出口利润,铝,positive,a10015965,SMM: 铝材出口利润模型: 港杂费: 日度,A,high,,【放行】
+TRACE_0054,POS_020,铝板带出口利润,铝,positive,a10015974,SMM: 电解铝出口利润模型: 铝板带出口利润: 日度,A,high,,【放行】
+TRACE_0055,POS_021,1A60铝杆加工费-内蒙,铝,positive,s20016761,SMM: 1A60铝杆加工费(内蒙) - 涨跌: 日度,A,high,,【放行】
+TRACE_0056,POS_022,1A60铝杆加工费-山东,铝,positive,s20016751,SMM: 1A60铝杆加工费(山东) - 涨跌: 日度,A,high,,【放行】
+TRACE_0057,POS_023,低碳1系双零箔加工费,铝,positive,s20164930,SMM: 低碳1系双零箔（加工费） - 最低价: 日度,A,high,,【放行】
+TRACE_0058,POS_024,锂电池铝箔加工费13μ,铝,positive,s22761949,SMM: 锂电池铝箔加工费13μ - 涨跌: 周度,A,high,,【放行】
+TRACE_0059,POS_025,电解铝:社库,铝,positive,a12858085,SMM:国内电解铝平衡:社会库存变化:月度,A,high,,【放行】
+TRACE_0060,POS_026,电解铝:社库+厂库,铝,positive,a12804329,SMM: 电解铝社会库存变化: 周度,A,high,,【放行】
+TRACE_0061,POS_027,铝板带箔-原料库存,铝,positive,a10016361,SMM: 铝板带箔企业月度原料库存比: 月度,A,high,,【放行】
+TRACE_0062,POS_028,铝板带箔-成品库存,铝,positive,a10016360,SMM: 铝板带箔企业月度成品库存比: 月度,A,high,,【放行】
+TRACE_0063,POS_029,铝棒+铝锭总库存,铝,positive,ID01720689,再生铝棒：厂内库存：中国（日）,A,high,,【放行】
+TRACE_0064,POS_030,铝棒+铝锭社库,铝,positive,a12802005,SMM: 无锡铝棒库存: 日度,A,high,,【放行】

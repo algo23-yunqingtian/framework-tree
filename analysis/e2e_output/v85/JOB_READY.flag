@@ -1,0 +1,48 @@
+# =============================================================================
+# JOB_READY.flag — 就绪锁文件
+# =============================================================================
+# 工单: DSH-B_GITHUB_SHARE_PUSH_V85_20260928
+# 作用: HERMES 读取此文件确认数据就绪，杜绝重复拉取 zhiji
+# 生成时间: 2026-09-28T14:52:00+08:00
+# =============================================================================
+
+JOB_ID=DSH-B_END2END_ZHIJI_DATA_FETCH_V85_20260928
+STATUS=READY
+VERSION=v85
+TIMESTAMP=2026-09-28T14:52:00+08:00
+TOTAL_TP_SAMPLES=64
+UNIQUE_ZHIJI_IDS=55
+SUCCESS_COUNT=53
+ERROR_COUNT=2
+SUCCESS_RATE=96.36%
+
+# --- 文件清单与 MD5 校验 ---
+# 格式: 文件名|大小(字节)|MD5
+FILES_BEGIN
+fp32_v85_final_board.csv|9051|80f07448523023362360f090186a0bdd
+zhiji_fetch_result.json|134746|83f44a590fb8c3bbe6f93c6b630130f8
+zhiji_fetch_summary_report.md|8107|23938f357bbe48cb5506c53c20a9c2a5
+fetch_log.txt|212|376c1183ab1fa1c8d72327f1d814ca28
+duplicate_id_list.json|7062|39d9d1c4355a232a78d8f0d4c6a40f91
+MD5_CHECKSUM_LIST.md|606|59fc393f0fc7c516b3a4be1988d33383
+FILES_END
+
+# --- 重复 ID 信息 (供 HERMES 看板去重) ---
+DUPLICATE_ID_COUNT=8
+DUPLICATE_ID_FILE=duplicate_id_list.json
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+READ_ONLY=true
+APPEND_ONLY=true
+
+# --- HERMES 消费指令 ---
+# 读取顺序建议:
+# 1. JOB_READY.flag           — 确认就绪
+# 2. duplicate_id_list.json   — 看板去重参考
+# 3. fp32_v85_final_board.csv — 放行样本清单
+# 4. zhiji_fetch_result.json  — 完整时序数据
+# 5. zhiji_fetch_summary_report.md — 汇总报告
