@@ -132,3 +132,84 @@
 
 最终核验结论：T2 四项核验 4/4 通过；reclaim PASS=12 FAIL=0；上游 DSHB 溯源 6/6 一致；
 REVIEW_SKIP 32/32、人工结论 32/32 留白、红线文件零改动。遗留 2 项待办（li_21 页面待建、jsdom 环境依赖），均不阻塞评审。
+
+---
+
+## 9. 版本锁定快照（工单 HERMES_V85_DASHBOARD_VERSION_LOCK_V85_20260928 · 2026-09-29）
+
+**锁定版本**: v85 看板锁定
+**锁定 Commit**: `c20f579`（`[AUTO] HERMES v85 静态复核看板最终核验归档`）
+**锁定状态**: 🔒 **已锁定**（`JOB_READY.flag` 追加 `DASHBOARD_VERSION_LOCKED=TRUE`）
+
+### 9.1 本工单新增/更新产物
+
+| 文件 | 大小(字节) | MD5 | 说明 |
+|------|-----------|-----|------|
+| `dashboard_release_note.md` | 12086 | `81277771e5a3f2a1e31c5f8f0e1c8e4d` | **新增**：版本锁定发布说明（修复内容 + 门禁结果 + 遗留项） |
+| `dashboard_index.md` | 11619 | `e5c2d0c6fd25d00e8db99acb247a705f` | 追加版本锁定段（顶部声明 + §5 能力边界 + §6 遗留待办 + §8 核验快照） |
+| `REVIEW_DASHBOARD_MD5.md` | 本文件 | 见下 | 追加 §9 版本锁定快照 |
+| `JOB_READY.flag` | 追加段 | 见 §9.4 | 追加 `DASHBOARD_VERSION_LOCKED=TRUE` 段 |
+
+> 注: 本文件与 `dashboard_release_note.md` 的 MD5 因内容自指，最终值在提交前由 shell `md5sum` 重新校验。
+
+### 9.2 c20f579 基线产物（未变）
+
+| 文件 | 大小(字节) | MD5 | 校验 |
+|------|-----------|-----|------|
+| `review_dashboard.html` | 156,180 | `a54dcf60a33c449abb52bc2cad221642` | 与 c20f579 一致 ✅ |
+| `ACCEPTANCE_REPORT_v85.md` | 13,880 | `2edabe240d236ff819f4706731cc9156` | 与 c20f579 一致 ✅ |
+| `dashboard_final_check_report.md` | 10,375 | `0a403cd8262e60c5cd919ccafbfb5bbd` | 与 c20f579 一致 ✅ |
+| `build_dashboard.py` | 25,981 | `6e1f69b6f315b99619632b50589adc76` | 与 c20f579 一致 ✅ |
+| `dashboard_stats.json` | 919 | `da0cb8e5597c73e2e3f5fb8b9a98c31c` | 与 c20f579 一致 ✅ |
+
+### 9.3 renders/（15 张，未变）
+
+`renders/*.png` 15 张全部保持 c20f579 基线 MD5，未变。详见 §3 增强渲染 PNG 表。
+
+### 9.4 JOB_READY.flag 追加段
+
+```
+# --- [APPEND 2026-09-29] v85 看板版本锁定 ---
+# 工单: HERMES_V85_DASHBOARD_VERSION_LOCK_V85_20260928
+# DASHBOARD_VERSION_LOCKED=TRUE
+# DASHBOARD_VERSION=v85 (锁定版本，commit c20f579)
+# RELEASE_NOTE=analysis/e2e_output/v85/review_dashboard/dashboard_release_note.md
+# LOCKED_AT=2026-09-29
+# LOCK_SUMMARY: T2 14项核验全通过(锚点32/32、失效0、CSV导出完整、32行全可用、15图0缺失、4份MD 0断链)
+#              DSHB release_note_v85.md 全机0命中，以 STATUS.md+v3产物为口径基准
+#              门禁基线 reclaim PASS=12/FAIL=0, check_html 266/267 (唯一FAIL=li_21 非本工单)
+```
+
+### 9.5 版本锁定核验 14 项（全通过）
+
+| # | 核验项 | 实测 | 期望 | 结果 |
+|---|--------|------|------|------|
+| 1 | `行号` 列（L1–L32）主键 | 32 行 | 32 | ✅ |
+| 2 | 锚点数 `id="rN"` | 32 | 32 | ✅ |
+| 3 | 锚点唯一性 | 32/32 唯一，范围 r1..r32 | 无重复 | ✅ |
+| 4 | 失效锚点引用 `href="#rN"` | 0 / 53 引用 | 0 | ✅ |
+| 5 | `data-lineno` 属性（导出用） | 32 | 32 | ✅ |
+| 6 | idx 列橙色警示 `!` | 32 处 | ≥32 | ✅ |
+| 7 | CSV 导出功能 | btnExport→Blob→URL.createObjectURL 完整 | 完整 | ✅ |
+| 8 | CSV 表头含行号 | `行号\|idx\|zhiji_id\|图表短名\|候选指标名\|人工结论` | 含行号 | ✅ |
+| 9 | renders/ 图片引用 | 15 唯一引用 0 缺失 | 15 存在 | ✅ |
+| 10 | `dashboard_index.md` 相对链接 | 0 断链 | 0 | ✅ |
+| 11 | `ACCEPTANCE_REPORT_v85.md` 相对链接 | 0 断链 | 0 | ✅ |
+| 12 | `dashboard_final_check_report.md` 相对链接 | 0 断链 | 0 | ✅ |
+| 13 | `REVIEW_DASHBOARD_MD5.md` 相对链接 | 0 断链 | 0 | ✅ |
+| 14 | 32 行复核页面全部可用 | 32/32 | 32 | ✅ |
+
+---
+
+## 10. 口径对齐声明
+
+工单 T1 前置读取目标 `DSHB release_note_v85.md` **全机 0 命中**（`find /home/ubuntu -name "*release_note*"` 与 `*DSHB*` 均为 0 结果），如实报告，不阻塞。
+
+**口径对齐基准**（替代）：
+1. `STATUS.md` §「2026-09-29 收尾工单 — 静态看板最终核验归档」
+2. `dashboard_final_check_report.md`（收尾工单核验报告）
+3. 上游真值源 `/home/ubuntu/analysis/temp/ind_compare_result/交接文档_会话收尾入口_20260928.md`
+
+---
+
+*版本锁定完成 · DASHBOARD_VERSION_LOCKED=TRUE*

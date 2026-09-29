@@ -73,6 +73,15 @@
 
 ## 近期变更记录
 
+### 2026-09-29 收尾工单 — v85 看板版本锁定归档 (HERMES_V85_DASHBOARD_VERSION_LOCK_V85_20260928)
+- **T2 版本锁定 14 项核验全通过**: 行号L1-L32主键32/32; 锚点id="rN"32/32唯一范围r1..r32; 失效href="#rN"引用0/53; data-lineno属性32/32; idx列橙色!警示32处; CSV导出功能完整(btnExport→Blob→URL.createObjectURL)表头含行号; renders/图片15唯一0缺失; 4份MD文档0断链; 32行复核页面全部可用32/32
+- **T3 归档校验**: 全量产物无失效链接无缺失图片; 新增 dashboard_release_note.md(看板修复内容+门禁结果+遗留项分级); REVIEW_DASHBOARD_MD5.md追加§9版本锁定快照(9.1本工单产物/9.2 c20f579基线未变/9.3 renders 15张未变/9.4 JOB_READY追加段/9.5 14项核验); JOB_READY.flag追加 DASHBOARD_VERSION_LOCKED=TRUE 段
+- **口径对齐说明**: DSHB release_note_v85.md 全机0命中(find /home/ubuntu -name "*release_note*" 与 "*DSHB*" 均0结果), 如实报告不阻塞; 以 STATUS.md §「2026-09-29 收尾工单」+ dashboard_final_check_report.md + 上游真值源 /home/ubuntu/analysis/temp/ind_compare_result/交接文档_会话收尾入口_20260928.md 为口径对齐基准
+- **门禁基线**: reclaim PASS=12 FAIL=0 ✅; check_html 266/267(唯一FAIL=li_21, 非本工单交付物, 五金属建页待办); verify_render按工单T1.3约束跳过(/tmp node_modules jsdom依赖缺失)
+- **约束**: 零zhiji API; indicators_v1.json(MD5 4db5418d)/tree_config.json/GT/匹配规则零改动; REVIEW_SKIP 32/32保留; 人工结论32/32留白; 禁止自动绑定指标ID; 未改动/tmp node_modules未安装jsdom; 历史HTML/报表/图片全部保留(review_dashboard.html MD5 a54dcf60a33c449abb52bc2cad221642 与c20f579一致未变); 仅新增dashboard_release_note.md+追加dashboard_index.md锁定段+追加REVIEW_DASHBOARD_MD5.md§9快照段
+- **遗留待办9项(分级, 均不阻塞评审)**: P0=32条人工结论(待填)全空(人工动作); P1=ID02069937单位冲突(吨vs万吨)/ID01370137重复行/39条缺失ID是否录入indicators_v1.json; P2=li_21待建页/jsdom环境/PDF短名→registry别名映射/动力电池路径格式污染; P3=JOB_READY.flag MD5声明不一致(观察项)
+- **锁定状态**: 🔒 v85看板锁定, commit c20f579(基线)+本次commit(锁定归档)
+
 ### 2026-09-29 收尾工单 — 静态看板最终核验归档 (HERMES_DASHBOARD_FINAL_CHECK_AND_ARCHIVE_V85_20260928)
 - **T2 核验 4/4 通过**: 唯一键 行号L1-L32作主键(32锚点全唯一/失效引用0/CSV导出含行号/idx列橙色!警示); 同ID重复行3组(ID01370137/ID01464612/ID01464616)黄色告警标签正常; 上游DSHB 6核心产物MD5与交接文档声明值6/6一致溯源完整; STATUS.md已记录且pre-commit hook生效(未用--no-verify)
 - **T3 缺失页面标注**: li_21锂2.1盘面结构在看板首页标注【NI/SN/SI/LI待建页面,非本次交付物】; 该页面未跟踪/本地缺失, 属五金属建页待办, 不阻断验收
