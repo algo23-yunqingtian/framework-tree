@@ -81,7 +81,26 @@
 | `../renders_enhanced/ID02093014_锂矿 外采 在途库存.png` | 30,599 | `d57347509127e0f6af9fafeca33236e0` |
 | `../renders_enhanced/RE00033560_锰酸锂 月度产量.png` | 30,139 | `632ee583a58757ddea71b40b0099c0e2` |
 
-## 4. 已知不一致（如实记录，未修正）
+## 4. 上游 DSHB 产物链（真值源，交接文档 §5）
+
+**位置**: `/home/ubuntu/analysis/temp/ind_compare_result/`（本机，非 git repo）
+**权威交接文档**: `交接文档_会话收尾入口_20260928.md`（2026-09-28 15:03，工单 1-4 全链路真值源）
+
+| 文件 | 大小(B) | 交接文档声明 MD5 | 实测 MD5 | 校验 |
+|------|---------|------------------|----------|------|
+| `v8_fix_fp_output/score_compare_v8.json` | 81,151 | `894f721b28c59b2a6a82457d6acc8d83` | `894f721b28c59b2a6a82457d6acc8d83` | ✅ 一致 |
+| `v8_fix_fp_output/skip_rescore_v8_fixed.json` | 680,929 | `370c23486ca331ec47fa582d807ec610` | `370c23486ca331ec47fa582d807ec610` | ✅ 一致 |
+| `v8_fix_fp_output/fp32_v85_final_board.csv` | 17,078 | `a44d65f2aa09c60aa41373aa4f463e33` | `a44d65f2aa09c60aa41373aa4f463e33` | ✅ 一致 |
+| `v8_fix_fp_output/fp32_v85_end2end_board.csv` | 23,179 | `ba94e18192f2488f8d728222fc0a630b` | `ba94e18192f2488f8d728222fc0a630b` | ✅ 一致 |
+| `v85_end2end_output/zhiji_fetch_result.json` | 8,599 | `0baa89a8a254f00a85cebe651f39d658` | `0baa89a8a254f00a85cebe651f39d658` | ✅ 一致 |
+| `v85_end2end_output/render_test_receipt.json` | 2,081 | `a2eb497bd108f1f381756ee2601060bc` | `a2eb497bd108f1f381756ee2601060bc` | ✅ 一致 |
+
+> 上游 DSHB 产物链 MD5 **全部一致** ✅，说明本看板的数据源（`fp32_v85_final_filtered_board.csv` 由工单 1-4 逐步加工而来）可追溯至真值源。
+> 另有 `v85_end2end_output/E2E_RENDER_MD5.md`（15 张 PNG 权威 MD5）与 `renders/` 目录在本机可用。
+
+---
+
+## 5. 已知不一致（如实记录，未修正）
 
 `JOB_READY.flag` 内声明的 6 个文件 MD5 与当前本地文件 MD5 **全部不一致**：
 

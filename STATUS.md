@@ -73,6 +73,14 @@
 
 ## 近期变更记录
 
+### 2026-09-29 工单5 — 上线复核静态看板与验收报告 (HERMES_BUILD_REVIEW_DASHBOARD_V85_20260928)
+- **T2 交互式复核看板**: review_dashboard.html (纯html+css+内联JS, 零后端, 纯静态); 32行×47源字段全量表(51列, 含锚点/状态/渲染图/行号导航); 颜色标记 正常27/稀疏0/权限缺失5/下线0; 15张renders_enhanced PNG相对路径引用(0缺失); 32锚点全通; 搜索+状态筛选; 32个人工结论输入框(localStorage暂存+CSV导出)
+- **T3 全链路验收报告**: ACCEPTANCE_REPORT_v85.md 四模块量化(匹配/API/绘图/告警); 误绑定0条, API增量0次, 去重节省3次调用, 单位换算生效1条(ID02069937万吨→吨×10000), 告警回填5行, 看板外兜底3ID/5条; 能力边界(可用4项/限制7项); 人工复核操作指引
+- **T4 归档**: dashboard_index.md入口(11链接全通) + REVIEW_DASHBOARD_MD5.md(本工单20产物+上游27只读+DSHB链6产物) + dashboard_stats.json + build_dashboard.py(确定性可重跑)
+- **交接文档§6 已知坑修复(v2)**: 坑1 idx非全局唯一(9组重复)→新增L1-L32行号列作唯一键+idx列橙色!警示+导出含行号; 坑2 ID01370137重复行→图表速览黄色同ID重复标签(3组); P2 DSHB产物位置→已定位 /home/ubuntu/analysis/temp/ind_compare_result/, 6个上游产物MD5全一致
+- **约束**: 源indicators_v1.json未修改(MD5 4db5418d), tree_config.json未修改, 匹配规则/GT真值未修改, 零zhiji API调用, REVIEW_SKIP保留32/32, 人工结论留白32/32, 产物全新增不覆盖旧版
+- **注**: JOB_READY.flag声明6文件MD5与实际全部不一致(flag生成于DSH-B T1阶段, 此后工单2/3加工看板致内容变更), 已在REVIEW_DASHBOARD_MD5.md §5如实标注未修正; 历史遗留data/indicators_v1.json.bak_v2.4曾被删除(非本工单产生), 已git checkout恢复与HEAD一致; task_queue/to_A/全程未跟踪未提交
+
 ### 2026-09-28 工单4 — 标签过滤+统一告警 (HERMES_TAG_AND_BOARD_FILTER_V85_20260928)
 - **T1 meta_gap拉取**: 从 origin/task/p0_verify 拉取 meta_gap/ 7文件(DSHB正主产物); DSHB全量55ID分类: 正常51/稀疏2/数据源下线1/权限缺失1; 注: DSHB MD5清单与实际提交文件字节不一致(DSH侧问题,已记录,实际内容完整可用)
 - **T2 看板过滤升级**: 新增 data_status 列(按DSHB 55ID分类对齐看板), 渲染过滤规则(数据源下线/停更>90天跳过绘图); 看板命中非正常仅 a12804329(权限缺失)5行, 不触发跳过; REVIEW_SKIP保留, 人工结论空, 禁绑ID

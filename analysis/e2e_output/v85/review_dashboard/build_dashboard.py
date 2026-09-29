@@ -75,12 +75,25 @@ def unit_cls(v):
 # ---------- 5. 关键展示字段 ----------
 # 任务要求「所有字段」→ 表头使用源 CSV 全量 47 列；人工结论列追加空白输入框供评审直接填写
 HUMAN_COL = "人工结论(待填)"
-KEY_COLS = [(c, c) for c in cols]
+# 坑1(交接文档§6.1): idx 列非全局唯一(9组重复) → 新增 L 行号列作为唯一定位键
+LINENO_KEY = "行号"
+KEY_COLS = [(LINENO_KEY, LINENO_KEY)] + [(c, c) for c in cols]
 
 
 def short(k):
     return (k.lower().replace(" ", "").replace("(", "").replace(")", "")
                 .replace(":", "").replace("（", "").replace("）", ""))
+
+
+# ---------- 坑1/坑2 (交接文档 §6) ----------
+# 坑2: 同一 zhiji_id 多条 → 标注需人工确认冗余
+from collections import Counter, defaultdict
+_zid_lines = defaultdict(list)
+for _i, _r in enumerate(rows):
+    _zid_lines[g(_r, "候选ID(v8_id)")].append(_i + 1)
+DUP_MAP = {k: ["行%d" % n for n in v] for k, v in _zid_lines.items() if len(v) > 1}
+# idx 唯一性统计（坑1 量化）
+_idx_cnt = Counter(g(r, "idx") for r in rows)
 
 
 def unit_wrap(r, k):
@@ -114,7 +127,8 @@ def esc(s):
     return html.escape(str(s) if s is not None else "", quote=True)
 
 def anchor(i):
-    return "r%d" % i
+    """锚点用行号 r{行号}，禁用 idx —— 交接文档坑1: idx 列非全局唯一(9组重复)"""
+    return "r%d" % (i + 1)
 
 tbody = []
 for i, r in enumerate(rows):
@@ -134,22 +148,29 @@ for i, r in enumerate(rows):
     ucls = unit_cls(g(r, "单位匹配"))
     cells = []
     for k, _ in KEY_COLS:
+        if k == LINENO_KEY:
+            cells.append('<td class="c-lineno"><b>L%d</b></td>' % (i + 1))
+            continue
         v = unit_wrap(r, k) if k in ("单位匹配", "unit_convert_status") else esc(g(r, k))
         if k == HUMAN_COL:
             cells.append('<td class="c-human"><input class="hconf" type="text" value="%s" '
                          'placeholder="人工结论(待填)"></td>' % esc(g(r, k)))
+        elif k == "idx":
+            mark = (' <span class="idx-warn" title="idx 非全局唯一，请勿仅凭 idx 定位行">!</span>')
+            cells.append('<td class="c-idx">%s%s</td>' % (esc(g(r, k)), mark))
         else:
             cells.append('<td class="c-%s" title="%s">%s</td>' % (short(k), esc(g(r, k)), v))
     cells = "".join(cells)
     tr = ('<tr class="{cls}" id="{aid}" data-status="{label}" data-idx="{idx}" '
-          'data-zid="{zid}" data-name="{name}" data-cand="{cand}">'
-          '<td class="c-anchor"><a href="#{aid}">#</a></td>'
+          'data-lineno="{lineno}" data-zid="{zid}" data-name="{name}" data-cand="{cand}">'
+          '<td class="c-anchor"><a href="#{aid}">L{lineno}</a></td>'
           '<td class="c-status"><span class="pill {cls}">{label}</span>{warn}</td>'
           '<td class="c-img">{img}</td>'
           '{cells}'
           '</tr>')
     tbody.append(tr.format(cls=cls, aid=anchor(i), label=label, warn=warn_html, img=img_html,
-                           cells=cells, idx=esc(g(r, "idx")), zid=esc(g(r, "候选ID(v8_id)")),
+                           cells=cells, idx=esc(g(r, "idx")), lineno=i + 1,
+                           zid=esc(g(r, "候选ID(v8_id)")),
                            name=esc(g(r, "图表短名(PDF)")), cand=esc(g(r, "候选指标名"))))
 
 THEAD = "".join(
@@ -157,11 +178,11 @@ THEAD = "".join(
     for k, _ in KEY_COLS
 )
 
-# 告警直达清单
+# 告警直达清单（用行号定位，idx 非唯一）
 warn_rows = [(i, r) for i, r in enumerate(rows) if row_class(r)[0] != "row-ok"]
 warn_nav = "".join(
-    '<a href="#r%d">idx%s · %s <span class="pill %s">%s</span></a>'
-    % (i, esc(g(r, "idx")), esc(g(r, "图表短名(PDF)")), row_class(r)[0], row_class(r)[1])
+    '<a href="#r%d">行%d · idx%s · %s <span class="pill %s">%s</span></a>'
+    % (i + 1, i + 1, esc(g(r, "idx")), esc(g(r, "图表短名(PDF)")), row_class(r)[0], row_class(r)[1])
     for i, r in warn_rows
 )
 
@@ -173,11 +194,18 @@ for i, r in enumerate(rows):
     if not rp:
         continue
     rc, rl = row_class(r)
+    # 坑2: 同一 zhiji_id 多条 → 标注【同ID重复行#N】，人工确认是否冗余
+    dup_no = DUP_MAP.get(zid, [])
+    dup_badge = ""
+    if dup_no:
+        dup_badge = ' <span class="dup-badge" title="同一 zhiji_id 在看板出现 %d 次，需人工确认冗余">%s</span>' % (
+            len(dup_no), dup_no)
     gc = ('<figure class="gcard {rc}"><img src="{rp}" alt="{alt}" loading="lazy">'
-          '<figcaption><a href="#r{i}">idx{idx}</a> · {name}<br>'
-          '{zid}<br><span class="tag">{label}</span> {points}点 · {unit}</figcaption></figure>')
-    gallery.append(gc.format(rc=rc, rp=esc(rp), alt=esc(zid), i=i, idx=esc(g(r, "idx")),
-                             name=esc(g(r, "图表短名(PDF)")), zid=esc(zid), label=rl,
+          '<figcaption><a href="#r{i}">行{lineno}</a> · idx{idx} · {name}<br>'
+          '{zid}{dup}<br><span class="tag">{label}</span> {points}点 · {unit}</figcaption></figure>')
+    gallery.append(gc.format(rc=rc, rp=esc(rp), alt=esc(zid), i=i + 1, lineno=i + 1,
+                             idx=esc(g(r, "idx")), name=esc(g(r, "图表短名(PDF)")),
+                             zid=esc(zid), dup=dup_badge, label=rl,
                              points=esc(g(r, "时序数据条数")), unit=esc(g(r, "时序单位(API)"))))
 
 CSS = """
@@ -249,6 +277,10 @@ th.sticky-l{position:sticky;left:0;z-index:5}
 .btn:hover{background:#2ea043}
 .btn2{background:#21262d;border:1px solid #30363d}
 .btn2:hover{background:#30363d}
+td.c-lineno{font-weight:700;color:#58a6ff;text-align:center;white-space:nowrap}
+td.c-anchor a{color:#58a6ff;font-weight:700}
+.idx-warn{color:#f0883e;font-weight:700;cursor:help}
+.dup-badge{display:inline-block;padding:1px 6px;border-radius:8px;font-size:10px;background:rgba(255,196,0,.15);color:#ffcc00;border:1px solid #9e6a03;margin-left:4px}
 """
 
 JS = """
@@ -288,16 +320,16 @@ document.querySelectorAll('#board input.hconf').forEach(function(inp){
 applyConf();
 document.getElementById('btnExport').addEventListener('click',function(){
   var o=loadConf();
-  var lines=['idx|zhiji_id|图表短名|候选指标名|人工结论'];
+  var lines=['行号|idx|zhiji_id|图表短名|候选指标名|人工结论'];
   document.querySelectorAll('#board tr[data-status]').forEach(function(tr){
-    var tds=tr.querySelectorAll('td');
     var inp=tr.querySelector('input.hconf');
     lines.push([
+      tr.getAttribute('data-lineno')||'',
       tr.getAttribute('data-idx')||'',
-      (tr.getAttribute('data-zid')||'').replace(/\\|/g,'/'),
-      (tr.getAttribute('data-name')||'').replace(/\\|/g,'/'),
-      (tr.getAttribute('data-cand')||'').replace(/\\|/g,'/'),
-      (inp?inp.value:'').replace(/\\|/g,'/')
+      (tr.getAttribute('data-zid')||'').replace(/\|/g,'/'),
+      (tr.getAttribute('data-name')||'').replace(/\|/g,'/'),
+      (tr.getAttribute('data-cand')||'').replace(/\|/g,'/'),
+      (inp?inp.value:'').replace(/\|/g,'/')
     ].join('|'));
   });
   var blob=new Blob([lines.join('\\n')],{type:'text/plain;charset=utf-8'});
@@ -387,6 +419,12 @@ HTML_DOC = """<!DOCTYPE html>
 <section id="board">
   <h2>4. 全量 32 行复核表（%d 个字段）</h2>
   <div class="note ok"><b>保留项</b>：REVIEW_SKIP 列 32/32 行均为「是(禁自动ID绑定)」；人工结论(待填) 列 32/32 行留白，本版未自动绑定任何指标 ID。表格支持顶部搜索与状态筛选；表头鼠标悬停可看完整字段名。</div>
+  <div class="note">
+    <b>⚠️ 行定位规则（务必遵守）</b>：源看板 <code>idx</code> 列<b>非全局唯一</b>——<br>
+    本表已新增 <code>行号</code>（L1–L32）作为唯一定位键，idx 列后带橙色 <b>!</b> 提示其不可单独使用。<br>
+    <b>定位任一记录请用「行号 + 图表短名」二元组</b>，切勿只凭 idx。<br>
+    <b>同 zhiji_id 重复行</b>（图表速览中黄色标签标注）需人工确认是否冗余。
+  </div>
   <div style="margin:8px 0 12px">
     <button class="btn" id="btnExport">导出人工结论 (.csv)</button>
     <button class="btn btn2" id="btnClear">清空暂存</button>
@@ -421,11 +459,17 @@ with open(DASH, "w", encoding="utf-8") as f:
     f.write(HTML_DOC)
 
 # ---------- 8. 统计落盘 ----------
+IDX_DUP = len([k for k, v in _idx_cnt.items() if v > 1])
 summary = {
     "generated_at": NOW,
     "source_board": "fp32_v85_final_filtered_board.csv",
+    "source_board_md5": hashlib.md5(open(BOARD_CSV, "rb").read()).hexdigest(),
+    "upstream_md5_doc": "/home/ubuntu/analysis/temp/ind_compare_result/交接文档_会话收尾入口_20260928.md",
     "total_rows": n_total,
     "field_count": len(KEY_COLS),
+    "idx_unique": len(_idx_cnt),
+    "idx_dup_groups": IDX_DUP,
+    "dup_zhiji_id_groups": len(DUP_MAP),
     "status": {"正常": n_ok, "稀疏": n_sparse, "权限缺失": n_perm, "数据源下线": n_dead},
     "domain_filter": {"放行": n_pass, "拦截": n_block, "弃权": n_abstain},
     "fetch_render": {"拉取成功": n_fetch_ok, "渲染成功": n_render_ok, "冗余废弃": n_redundant},
