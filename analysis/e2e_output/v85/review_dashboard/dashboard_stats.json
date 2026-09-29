@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-09-29 09:22:26",
+  "source_board": "fp32_v85_final_filtered_board.csv",
+  "total_rows": 32,
+  "field_count": 47,
+  "status": {
+    "正常": 27,
+    "稀疏": 0,
+    "权限缺失": 5,
+    "数据源下线": 0
+  },
+  "domain_filter": {
+    "放行": 16,
+    "拦截": 11,
+    "弃权": 5
+  },
+  "fetch_render": {
+    "拉取成功": 16,
+    "渲染成功": 15,
+    "冗余废弃": 3
+  },
+  "unit": {
+    "单位冲突(单位匹配=否)": 1,
+    "已换算": 1
+  },
+  "warnings": {
+    "unified_warning命中行": 5,
+    "看板外告警(仅汇总)": 3
+  },
+  "constraints": {
+    "REVIEW_SKIP保留": "32/32",
+    "人工结论留白": "32/32"
+  }
+}
