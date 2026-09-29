@@ -135,3 +135,41 @@ GAP_FILES_END
 # 9.  meta_gap/meta_missing_id_list.json — 缺失元数据ID清单与根因分类
 # 10. meta_gap/data_status_tag_candidate.json — 数据状态标签候选（正常/稀疏/长期停更/数据源下线/权限缺失）
 # 11. meta_gap/dataset_scope_diff.md — 64样本 vs 32行FP看板口径差异分析
+# 12. review_doc/v85_review_draft.md — 上线评审底稿（全链路指标+风险清单+验收结论）
+# 13. review_doc/final_overview_summary.csv — 汇总总表（55项指标×8维度）
+# 14. review_doc/file_index.csv — 文件索引清单（含commit hash+MD5）
+
+# =============================================================================
+# 上线评审材料 — DSH-B_PREPARE_REVIEW_MATERIALS_AND_SUMMARY_V85_20260928
+# 完成时间: 2026-09-28T17:34:00+08:00
+# =============================================================================
+REVIEW_MATERIAL_READY=COMPLETED
+REVIEW_MATERIAL_ID=DSH-B_PREPARE_REVIEW_MATERIALS_AND_SUMMARY_V85_20260928
+REVIEW_MATERIAL_TIMESTAMP=2026-09-28T17:34:00+08:00
+REVIEW_MATERIAL_DIR=review_doc/
+
+# --- 评审摘要 ---
+REVIEW_VERSION=v85
+REVIEW_TOTAL_WORK_ORDERS=4
+REVIEW_METRICS_COMPARISON=v4→v5→v7→v85
+REVIEW_CORE_METRICS=P=100% R=74.24% F1=85.22%
+REVIEW_FETCH_SUCCESS_RATE=96.36%
+REVIEW_META_COVERAGE=29.1% (39/55 missing)
+REVIEW_DATA_QUALITY_ANOMALIES=5/55
+REVIEW_RISK_LEVELS=1 HIGH / 1 MEDIUM / 1 LOW
+REVIEW_ACCEPTANCE=CONDITIONAL_PASS
+
+# --- 评审文件清单 ---
+REVIEW_FILES_BEGIN
+v85_review_draft.md|17833|ce8318d09141f665f4513ba5efab3d16
+final_overview_summary.csv|5545|3d09c01a920a802227b360b19340deff
+file_index.csv|4582|f76589c0bbcdc86b0acbe0f115509b35
+run_log.txt|1908|7dc56c8897fbc439424af8f4a23ef4da
+MD5_CHECKSUM_LIST.md|373|61dc856e131123f2dd6657c6a7c599aa
+REVIEW_FILES_END
+
+# --- HERMES 评审读取指令 ---
+# 评审顺序建议:
+# 15. review_doc/v85_review_draft.md — 完整评审底稿
+# 16. review_doc/final_overview_summary.csv — 汇总数据表（可直接导入Excel/BI）
+# 17. review_doc/file_index.csv — 全量产物索引（含commit hash）

@@ -1,0 +1,28 @@
+# Run Log — DSH-B_PREPARE_REVIEW_MATERIALS_AND_SUMMARY_V85_20260928
+
+[2026-09-28 17:28] T1: Branch checkout - task/p0_verify (HEAD=4aec2f4)
+[2026-09-28 17:28] T1: Read all v85 files - 33 files across meta_check/, meta_gap/, root/
+[2026-09-28 17:29] T1: MD5 verify - all checksums match
+[2026-09-28 17:29] T1: Read historical files - v5_evaluation_report.md, v7_evaluation_report.md, v5_v7_comparison_report.md, v5_v7_final_regression_report.md
+[2026-09-28 17:29] T1: Read all work order receipts - JOB_READY.flag (137 lines), 4 work orders completed
+[2026-09-28 17:30] T2: Compiled matching model metrics - v4→v5→v7→v85 progression table
+[2026-09-28 17:30] T2: Compiled e2e pipeline stats - 64 TP, 55 IDs, 96.36% success, 12858 data points
+[2026-09-28 17:30] T2: Compiled metadata gap stats - 39/55 missing (70.9%), 100% root cause ②
+[2026-09-28 17:30] T2: Compiled anomaly ledger - 1 deprecated, 1 permission, 2 sparse, 2 unit_match_fail
+[2026-09-28 17:31] T3: Risk register - 3 risks (1 HIGH, 1 MEDIUM, 1 LOW) with improvement plans
+[2026-09-28 17:32] T4: Generated review draft markdown - 7 sections, flow diagram, acceptance matrix
+[2026-09-28 17:33] T4: Generated final_overview_summary.csv - 55 metrics across 8 dimensions
+[2026-09-28 17:33] T4: Generated file_index.csv - 28 files with commit hashes and MD5
+[2026-09-28 17:34] T5: Created review_doc/ directory
+[2026-09-28 17:34] T5: Computed MD5 for all output files
+[2026-09-28 17:34] T5: Updated JOB_READY.flag with REVIEW_MATERIAL_READY
+[2026-09-28 17:34] T5: Committed all review_doc artifacts
+[2026-09-28 17:34] T5: PUSHED to task/p0_verify
+
+Constraints honored:
+- indicators_v1.json: READ-ONLY (not modified)
+- Ground Truth: READ-ONLY (not modified)
+- Matching rules: READ-ONLY (not modified)
+- zhiji API: NOT CALLED (zero quota consumed)
+- Historical artifacts: NOT OVERWRITTEN (append-only)
+- Only new files added under review_doc/
