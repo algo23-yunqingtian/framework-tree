@@ -235,3 +235,44 @@ HISTORICAL_ARTIFACTS_PRESERVED=true
 # 完整读取顺序: 1-18 (见上方HERMES消费指令)
 # 最终交付包: review_doc/final_delivery_manifest.md
 # 整套v85评审包: READY
+
+# =============================================================================
+# 版本锁定 — DSH-B_V85_FINAL_VERSION_LOCK_V85_20260928
+# 锁定时间: 2026-09-28T18:30:00+08:00
+# =============================================================================
+V85_VERSION_LOCKED=TRUE
+VERSION_LOCK_ID=DSH-B_V85_FINAL_VERSION_LOCK_V85_20260928
+VERSION_LOCK_TIMESTAMP=2026-09-28T18:30:00+08:00
+VERSION_LOCK_COMMIT=87571d6
+VERSION_LOCK_BRANCH=task/p0_verify
+VERSION_STATUS=FROZEN
+
+# --- 锁定摘要 ---
+LOCK_TOTAL_WORK_ORDERS=6
+LOCK_TOTAL_FILES=30
+LOCK_ACCEPTANCE_STATUS=CORE_DELIVERABLES_PASSED
+LOCK_RESOLVED_RISKS=4
+LOCK_TRACKING_P0_P1=3
+LOCK_LOW_PRIORITY=4
+LOCK_RELEASE_NOTE=review_doc/release_note_v85.md
+
+# --- 版本锁定交付文件 ---
+LOCK_FILES_BEGIN
+v85_review_draft.md|29952|5a8098e948508682554df88b5524aa93
+release_note_v85.md|15657|1700abffc6cf9227f05269965f59a81e
+MD5_CHECKSUM_LIST.md|<updated>
+LOCK_FILES_END
+
+# --- 约束声明 (版本锁定阶段) ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+READ_ONLY=true
+APPEND_ONLY=true
+HISTORICAL_ARTIFACTS_PRESERVED=true
+
+# --- HERMES 最终读取指令更新 ---
+# 完整读取顺序: 1-19 (见上方HERMES消费指令)
+# 版本发布说明: review_doc/release_note_v85.md
+# v85 版本: 🔒 FROZEN — 锁定于 87571d6
