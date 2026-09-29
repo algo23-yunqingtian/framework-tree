@@ -173,3 +173,65 @@ REVIEW_FILES_END
 # 15. review_doc/v85_review_draft.md — 完整评审底稿
 # 16. review_doc/final_overview_summary.csv — 汇总数据表（可直接导入Excel/BI）
 # 17. review_doc/file_index.csv — 全量产物索引（含commit hash）
+# 18. review_doc/final_delivery_manifest.md — 最终上线交付包清单
+
+# =============================================================================
+# 上线验收汇总 — DSH-B_REVIEW_ACCEPTANCE_SUMMARY_V85_20260928
+# 完成时间: 2026-09-28T18:00:00+08:00
+# =============================================================================
+FULL_REVIEW_PACKAGE=READY
+REVIEW_ACCEPTANCE_SUMMARY=COMPLETED
+REVIEW_ACCEPTANCE_SUMMARY_ID=DSH-B_REVIEW_ACCEPTANCE_SUMMARY_V85_20260928
+REVIEW_ACCEPTANCE_SUMMARY_TIMESTAMP=2026-09-28T18:00:00+08:00
+REVIEW_ACCEPTANCE_SUMMARY_DIR=review_doc/
+
+# --- 验收摘要 ---
+ACCEPTANCE_VERSION=v85
+ACCEPTANCE_STATUS=CORE_DELIVERABLES_PASSED
+ACCEPTANCE_NON_BLOCKING=2
+ACCEPTANCE_CONDITIONAL=2
+ACCEPTANCE_TOTAL_ITEMS=19
+ACCEPTANCE_AVAILABLE_NOW=11
+ACCEPTANCE_FUTURE_ITERATION=7
+
+# --- 核心指标 ---
+ACCEPTANCE_P=100%
+ACCEPTANCE_R=74.24%
+ACCEPTANCE_F1=85.22%
+ACCEPTANCE_FETCH_RATE=96.36%
+ACCEPTANCE_HERMES_DASHBOARD=FIXED_AND_VERIFIED
+ACCEPTANCE_INDEX_FIX=COMPOSITE_KEY_DEDUP
+ACCEPTANCE_DUPLICATE_MARK=8_OF_8_DONE
+ACCEPTANCE_MD5_TRACE=5_OF_5_CLOSED_LOOP
+
+# --- 非阻塞遗留项 ---
+NON_BLOCKING_1=li_21锂2.1页面待搭建 (P2)
+NON_BLOCKING_2=verify_render.js_jsdom依赖缺失 (P3,运维侧)
+
+# --- 有条件通过项 ---
+CONDITIONAL_1=元数据覆盖29.1%需补充P0的22个ID (P0,7天内)
+CONDITIONAL_2=POS告警漏报27个ID需分流通道 (P1,2周内)
+
+# --- 新增交付文件 ---
+FULL_FILES_BEGIN
+v85_review_draft.md|24270|a6649a407893030e06f75a7a399fa951
+final_overview_summary.csv|5545|3d09c01a920a802227b360b19340deff
+file_index.csv|4582|f76589c0bbcdc86b0acbe0f115509b35
+final_delivery_manifest.md|11472|9de32fc8cee1b83327d77c33b2a051e0
+MD5_CHECKSUM_LIST.md|<self>
+run_log.txt|2101|a38296485d903b533c8ed93c7e0eccb8
+FULL_FILES_END
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+READ_ONLY=true
+APPEND_ONLY=true
+HISTORICAL_ARTIFACTS_PRESERVED=true
+
+# --- HERMES 最终读取指令 ---
+# 完整读取顺序: 1-18 (见上方HERMES消费指令)
+# 最终交付包: review_doc/final_delivery_manifest.md
+# 整套v85评审包: READY
