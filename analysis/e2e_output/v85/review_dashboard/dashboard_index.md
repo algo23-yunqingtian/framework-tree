@@ -10,12 +10,15 @@
 
 | # | 文件 | 说明 |
 |---|------|------|
-| 1 | **[review_dashboard.html](review_dashboard.html)** | ⭐ 交互式复核看板（纯静态，零后端，双击打开）。32 行 × 47 字段全量表 + 颜色标记 + 15 张渲染图 + 告警直达锚点 + 人工结论填写/导出 |
+| 1 | **[review_dashboard.html](review_dashboard.html)** | ⭐ 交互式复核看板 **v3 最终核验归档版**（纯静态，零后端，双击打开）。32 行 × 47 字段全量表 + 行号 L1–L32 唯一主键 + 颜色标记 + 15 张渲染图 + 告警直达锚点 + 人工结论填写/导出 |
 | 2 | **[ACCEPTANCE_REPORT_v85.md](ACCEPTANCE_REPORT_v85.md)** | ⭐ 全链路验收汇总报告（匹配/API/绘图/告警四模块 + 能力边界 + 人工复核操作指引） |
-| 3 | `dashboard_stats.json` | 看板统计数据（机器可读，供下游脚本消费） |
-| 4 | `renders/` | 15 张增强渲染 PNG（从 `../renders_enhanced/` 归档拷贝） |
-| 5 | `build_dashboard.py` | 看板生成脚本（确定性，可重跑复现） |
-| 6 | `REVIEW_DASHBOARD_MD5.md` | 全部产物 MD5 校验清单 |
+| 3 | **[dashboard_final_check_report.md](dashboard_final_check_report.md)** | ⭐ 最终核验归档报告（收尾工单 T2 四项核验 + 门禁清单 + 3 坑修复 + 2 项待办） |
+| 4 | `dashboard_stats.json` | 看板统计数据（机器可读，供下游脚本消费） |
+| 5 | `renders/` | 15 张增强渲染 PNG（从 `../renders_enhanced/` 归档拷贝） |
+| 6 | `REVIEW_DASHBOARD_MD5.md` | 全部产物 MD5 校验清单（含上游 DSHB 溯源链） |
+| 7 | `dashboard_stats.json` | 看板统计数据（机器可读，供下游脚本消费） |
+| 8 | `renders/` | 15 张增强渲染 PNG（从 `../renders_enhanced/` 归档拷贝） |
+| 9 | `build_dashboard.py` | 看板生成脚本（确定性，可重跑复现） |
 
 ---
 

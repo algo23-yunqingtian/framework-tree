@@ -73,6 +73,14 @@
 
 ## 近期变更记录
 
+### 2026-09-29 收尾工单 — 静态看板最终核验归档 (HERMES_DASHBOARD_FINAL_CHECK_AND_ARCHIVE_V85_20260928)
+- **T2 核验 4/4 通过**: 唯一键 行号L1-L32作主键(32锚点全唯一/失效引用0/CSV导出含行号/idx列橙色!警示); 同ID重复行3组(ID01370137/ID01464612/ID01464616)黄色告警标签正常; 上游DSHB 6核心产物MD5与交接文档声明值6/6一致溯源完整; STATUS.md已记录且pre-commit hook生效(未用--no-verify)
+- **T3 缺失页面标注**: li_21锂2.1盘面结构在看板首页标注【NI/SN/SI/LI待建页面,非本次交付物】; 该页面未跟踪/本地缺失, 属五金属建页待办, 不阻断验收
+- **T4 归档**: 新增 dashboard_final_check_report.md(门禁清单+3坑修复+2项待办); JOB_READY.flag追加 DASHBOARD_FINAL_ARCHIVE=COMPLETED; dashboard_index.md入口同步; 全部链接0失效
+- **门禁**: reclaim PASS=12 FAIL=0 ✅; check_html 266/267(唯一FAIL=li_21非本次交付物); verify_render按工单约束跳过(/tmp node_modules jsdom依赖缺失, 标记环境低优先级运维问题, 不安装依赖不改/tmp)
+- **约束**: 零zhiji API; indicators_v1.json(MD5 4db5418d)/tree_config.json/GT/匹配规则零改动; REVIEW_SKIP 32/32保留; 人工结论32/32留白; 禁止自动绑定指标ID; 仅新增归档文件, 不删除不覆盖历史文件
+- **遗留待办2项(不阻塞评审)**: ①li_21锂2.1盘面结构页面待建设(中优先级, 五金属建页); ②jsdom依赖环境问题(低优先级, /tmp/node_modules)
+
 ### 2026-09-29 工单5 — 上线复核静态看板与验收报告 (HERMES_BUILD_REVIEW_DASHBOARD_V85_20260928)
 - **T2 交互式复核看板**: review_dashboard.html (纯html+css+内联JS, 零后端, 纯静态); 32行×47源字段全量表(51列, 含锚点/状态/渲染图/行号导航); 颜色标记 正常27/稀疏0/权限缺失5/下线0; 15张renders_enhanced PNG相对路径引用(0缺失); 32锚点全通; 搜索+状态筛选; 32个人工结论输入框(localStorage暂存+CSV导出)
 - **T3 全链路验收报告**: ACCEPTANCE_REPORT_v85.md 四模块量化(匹配/API/绘图/告警); 误绑定0条, API增量0次, 去重节省3次调用, 单位换算生效1条(ID02069937万吨→吨×10000), 告警回填5行, 看板外兜底3ID/5条; 能力边界(可用4项/限制7项); 人工复核操作指引

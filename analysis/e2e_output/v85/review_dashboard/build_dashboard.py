@@ -385,7 +385,21 @@ HTML_DOC = """<!DOCTYPE html>
     <div class="stat ok"><div class="k">单位已换算</div><div class="v">%d</div></div>
     <div class="stat warn"><div class="k">unified_warning 命中</div><div class="v">%d</div></div>
     <div class="stat ok"><div class="k">REVIEW_SKIP 保留</div><div class="v">%d/%d</div></div>
-    <div class="stat ok"><div class="k">人工结论留白</div><div class="v">%d/%d</div></div>
+    <div class="stat bad"><div class="k">数据源下线(红)</div><div class="v">%d</div></div>
+  </div>
+  <div class="stat ok" style="margin-top:8px"><div class="k">人工结论留白</div><div class="v">%d/%d</div></div>
+  <div class="note ok">
+    <b>✅ 最终核验归档版（v3）</b>。已修复交接文档 §6 三个核心坑：<br>
+    ① <b>idx 非全局唯一</b>（32 行仅 18 个不同 idx，9 组重复）→ 改用 <code>行号 L1–L32</code> 作唯一主键，idx 列保留橙色 <b>!</b> 警示，锚点/告警直达/CSV 导出全部基于行号。<br>
+    ② <b>3 组同 zhiji_id 重复行</b>（ID01370137 / ID01464612 / ID01464616）→ 图表速览黄色 <b>同ID重复行</b> 标签标注，冗余与否由人工确认。<br>
+    ③ <b>上游 DSHB 溯源</b> → 6 个核心产物 MD5 与交接文档声明值 <b>6/6 一致</b>，链路完整（详见 <code>REVIEW_DASHBOARD_MD5.md</code> §4）。
+  </div>
+  <div class="note warn">
+    <b>ℹ️ 范围说明（不阻断验收）</b>：<code>li_21</code> 锂 2.1 盘面结构页面<b>标记为【NI/SN/SI/LI 待建页面，非本次交付物】</b>，
+    属 STATUS.md 记载的五金属建页待办（ZN 29 页已完成，NI/SN/SI/LI 数据已拉、JSONL 已导、待建页）。
+    该页面不在本复核看板范围内，<code>scripts/check_html.py</code> 报 266/267 的唯一 FAIL 项即为此页面（本地未跟踪/缺失），
+    不影响本看板验收结论。另有 <code>verify_render.js</code> 因 <code>/tmp/node_modules</code> jsdom 依赖缺失<b>未执行</b>——
+    按工单约束不安装依赖、不改动 /tmp，标记为【环境低优先级运维问题，不阻塞评审】。
   </div>
   <h3>状态分布</h3>
   <div class="stats">
@@ -446,7 +460,8 @@ HTML_DOC = """<!DOCTYPE html>
 </html>""" % (
     CSS, NOW, n_total,
     n_total, n_pass, n_block, n_abstain, n_fetch_ok, n_render_ok, n_redundant,
-    n_unit_mismatch, n_unit_conv, n_unified_warn, n_skip_kept, n_total, n_human_blank, n_total,
+    n_unit_mismatch, n_unit_conv, n_unified_warn, n_skip_kept, n_total, n_total,
+    n_human_blank, n_total,
     n_ok, n_sparse, n_perm, n_dead,
     n_ok, n_sparse, n_perm, n_dead,
     len(warn_rows), warn_nav,

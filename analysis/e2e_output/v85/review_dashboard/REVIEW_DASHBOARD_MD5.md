@@ -119,3 +119,16 @@
 ---
 
 *约束: 零 zhiji API 调用 ｜ 未修改 indicators_v1.json ｜ 未修改匹配规则 ｜ 未修改 GT 真值 ｜ 原始历史文件未覆盖未删除*
+---
+
+## 8. 最终核验归档（收尾工单 2026-09-29）
+
+`JOB_READY.flag` 已追加 `DASHBOARD_FINAL_ARCHIVE=COMPLETED` 标记（看板 v3）。
+
+| 归档文件 | 大小(字节) | MD5 |
+|---------|-----------|-----|
+| `dashboard_final_check_report.md` | 10375 | `0a403cd8262e60c5cd919ccafbfb5bbd` |
+| `JOB_READY.flag`（含归档追加段） | 3554 | `2104043d02d531cb9e2db9c3ea6946fc` |
+
+最终核验结论：T2 四项核验 4/4 通过；reclaim PASS=12 FAIL=0；上游 DSHB 溯源 6/6 一致；
+REVIEW_SKIP 32/32、人工结论 32/32 留白、红线文件零改动。遗留 2 项待办（li_21 页面待建、jsdom 环境依赖），均不阻塞评审。
