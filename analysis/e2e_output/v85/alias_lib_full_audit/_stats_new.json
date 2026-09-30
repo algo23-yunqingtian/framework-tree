@@ -1,0 +1,1944 @@
+{
+ "task": "DSHE-B_V85_ALIAS_LIB_FULL_EXECUTE_AUDIT_AND_REGRESSION_TEST",
+ "generated_at": "2026-10-01 03:24:57",
+ "commit_base": "83f7e5cd4d93f749ff17e0eb80d5656db161b694",
+ "branch": "feature/v85-chart-template",
+ "constraints": {
+  "no_zhiji_api": true,
+  "no_source_modification": true,
+  "no_gt_modification": true,
+  "no_rule_modification": true,
+  "indicators_v1_readonly": true,
+  "add_only_new_files": true
+ },
+ "inputs": {
+  "indicators_v1.json": {
+   "bytes": 713207,
+   "sha256": "de174d3061c2426b287f82dd4c908881e34dc10863e1a5dad37ad94a9a2f4c22",
+   "md5": "ebcbd9a7cf69830384c696607bfeda76"
+  },
+  "ths_updated_match_stat.csv": {
+   "bytes": 435330,
+   "sha256": "3e4e8e7fefd8c2e37deed8c74080e0b93d65f7987ac91094bf833454ce5f015f",
+   "md5": "c566b68338c7e8131d74e0331aa502cb"
+  },
+  "revised_full_ok_list.md": {
+   "bytes": 24771,
+   "sha256": "ec364c58e2757c1b98aac37c60ec55ab8a82d03b901cc8e3ac24ff1ec4748728",
+   "md5": "ecd101238a135f0dc26fa22c0608aa0e"
+  },
+  "unified_indicator_risk_db.csv": {
+   "bytes": 11760,
+   "sha256": "a1b8c3dfece7b844a7ac3e7db52985dd7dbf35e7705a75106e0c457bf815efc7",
+   "md5": "1c56f59ad5329655753c23e6968e42f6"
+  },
+  "semantic_blacklist_fixed.json": {
+   "bytes": 16680,
+   "sha256": "7e033b8949bdc20f7bdf420e80bd33672d524154befc022a7b244f7b3ea27c42",
+   "md5": "c1efd55ee415fecc3c8d214b1f420d98"
+  }
+ },
+ "scale": {
+  "iv1_keys_total": 1658,
+  "iv1_canonical": 1652,
+  "iv1_unique_names": 1239,
+  "pdf_templates": 327,
+  "pdf_unique_titles": 259,
+  "ths_rows": 2354,
+  "ths_templates": 155,
+  "ths_series_unique": 1733,
+  "ths_matched_unique": 286,
+  "ths_fuzzy_name": 1134,
+  "risk_rows": 50,
+  "risk_uniq": 41,
+  "risk_p0": 25,
+  "risk_p1": 16,
+  "risk_uniq_targets": 18,
+  "blacklist_rules": 25,
+  "aliases_unique_norm": 4643
+ },
+ "alias_library": {
+  "rows": 4643,
+  "with_canonical": 2882,
+  "unregistered": 1734,
+  "canonical_conflict": 165,
+  "relation_dist": {
+   "canonical_conflict": 165,
+   "confusable_warn": 27,
+   "synonym_with_confusable_neighbor": 215,
+   "unregistered": 1734,
+   "synonym_merge": 2502
+  },
+  "source_dist": {
+   "INDICATORS_V1_NAME": 1234,
+   "THS_MATCHED": 286,
+   "THS_SERIES": 1572,
+   "PDF_TEMPLATE": 259,
+   "RISK_DB_MATCHED": 18,
+   "RISK_DB_SRC": 37,
+   "INDICATORS_V1_KEY": 1652
+  },
+  "family_dist": {
+   "AL": 337,
+   "AO": 135,
+   "CU": 151,
+   "PB": 161,
+   "LI": 376,
+   "NI": 692,
+   "ENTITY": 56,
+   "SI": 403,
+   "SN": 403,
+   "ZN": 363,
+   "LC": 2
+  },
+  "alias_type_dist": {
+   "mixed_script": 531,
+   "canonical": 521,
+   "numeric_code": 24,
+   "cross_report_synonym": 278,
+   "suffix_variant": 65,
+   "unit_variant": 1256,
+   "full_name": 309,
+   "latin_abbr": 1659
+  },
+  "manual_review": 407,
+  "register_pending": 1734,
+  "auto": 2502,
+  "covered_canonical_keys": 1652,
+  "confusable_neighbors": 292
+ },
+ "ambiguous": {
+  "rows": 448,
+  "by_source": {
+   "IV1_NEAR_PAIR": 206,
+   "BLACKLIST_RULE": 201,
+   "RISK_DB": 41
+  },
+  "P0_manual": 251,
+  "P1_manual": 176,
+  "conf_pairs_total": 633,
+  "near_pairs": 1198,
+  "near_pairs_ge_085": 295,
+  "iv1_near_cross_variety": 1147,
+  "iv1_near_same_family": 0
+ },
+ "rule_lint": {
+  "min_pattern_len": 2,
+  "rules_scanned": 25,
+  "patterns_total": 141,
+  "lint_findings": 39,
+  "dropped_short": 6,
+  "embedded_substring": 33,
+  "findings": [
+   {
+    "rule_id": "BL-001",
+    "rule_name": "产量与消费量互斥",
+    "side": "left",
+    "pattern": "产量",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 生产量"
+   },
+   {
+    "rule_id": "BL-001",
+    "rule_name": "产量与消费量互斥",
+    "side": "left",
+    "pattern": "产出",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 产出量"
+   },
+   {
+    "rule_id": "BL-001",
+    "rule_name": "产量与消费量互斥",
+    "side": "right",
+    "pattern": "消费",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 表观消费/消费量"
+   },
+   {
+    "rule_id": "BL-002",
+    "rule_name": "产量与销量互斥",
+    "side": "left",
+    "pattern": "产量",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 生产量"
+   },
+   {
+    "rule_id": "BL-002",
+    "rule_name": "产量与销量互斥",
+    "side": "left",
+    "pattern": "产出",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 产出量"
+   },
+   {
+    "rule_id": "BL-003",
+    "rule_name": "销量与产量互斥",
+    "side": "right",
+    "pattern": "产量",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 生产量"
+   },
+   {
+    "rule_id": "BL-003",
+    "rule_name": "销量与产量互斥",
+    "side": "right",
+    "pattern": "产出",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 产出量"
+   },
+   {
+    "rule_id": "BL-004",
+    "rule_name": "消费量与销量互斥",
+    "side": "left",
+    "pattern": "消费",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 表观消费/消费量"
+   },
+   {
+    "rule_id": "BL-008",
+    "rule_name": "出口与国内销量互斥",
+    "side": "left",
+    "pattern": "出口",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 净出口量/进出口/出口量"
+   },
+   {
+    "rule_id": "BL-008",
+    "rule_name": "出口与国内销量互斥",
+    "side": "left",
+    "pattern": "出口量",
+    "len": 3,
+    "issue": "为更长token子串, 需整词边界: 净出口量"
+   },
+   {
+    "rule_id": "BL-009",
+    "rule_name": "利润与需求互斥",
+    "side": "left",
+    "pattern": "利润",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 冶炼利润"
+   },
+   {
+    "rule_id": "BL-009",
+    "rule_name": "利润与需求互斥",
+    "side": "right",
+    "pattern": "需求",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 需求量"
+   },
+   {
+    "rule_id": "BL-010",
+    "rule_name": "库存与产能开工互斥",
+    "side": "left",
+    "pattern": "库存",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 工厂库存/在途库存/场内库存/厂内库存"
+   },
+   {
+    "rule_id": "BL-010",
+    "rule_name": "库存与产能开工互斥",
+    "side": "right",
+    "pattern": "产能",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 产能利用率/运行产能/建成产能"
+   },
+   {
+    "rule_id": "BL-011",
+    "rule_name": "价格与库存互斥",
+    "side": "left",
+    "pattern": "价格",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 现货价格"
+   },
+   {
+    "rule_id": "BL-011",
+    "rule_name": "价格与库存互斥",
+    "side": "right",
+    "pattern": "库存",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 工厂库存/在途库存/场内库存/厂内库存"
+   },
+   {
+    "rule_id": "BL-012",
+    "rule_name": "库存天数与库存量互斥",
+    "side": "right",
+    "pattern": "库存",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 工厂库存/在途库存/场内库存/厂内库存"
+   },
+   {
+    "rule_id": "BL-013",
+    "rule_name": "加工费与完全成本互斥",
+    "side": "left",
+    "pattern": "加工费",
+    "len": 3,
+    "issue": "为更长token子串, 需整词边界: 加工费TC"
+   },
+   {
+    "rule_id": "BL-014",
+    "rule_name": "供需平衡与价格互斥",
+    "side": "right",
+    "pattern": "价格",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 现货价格"
+   },
+   {
+    "rule_id": "BL-015",
+    "rule_name": "国内销量与出口互斥(反向)",
+    "side": "right",
+    "pattern": "出口",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 净出口量/进出口/出口量"
+   },
+   {
+    "rule_id": "BL-015",
+    "rule_name": "国内销量与出口互斥(反向)",
+    "side": "right",
+    "pattern": "出口量",
+    "len": 3,
+    "issue": "为更长token子串, 需整词边界: 净出口量"
+   },
+   {
+    "rule_id": "BL-016",
+    "rule_name": "利润与产量互斥",
+    "side": "left",
+    "pattern": "利润",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 冶炼利润"
+   },
+   {
+    "rule_id": "BL-016",
+    "rule_name": "利润与产量互斥",
+    "side": "right",
+    "pattern": "产量",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 生产量"
+   },
+   {
+    "rule_id": "BL-016",
+    "rule_name": "利润与产量互斥",
+    "side": "right",
+    "pattern": "产出",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 产出量"
+   },
+   {
+    "rule_id": "BL-017",
+    "rule_name": "价格与利润互斥",
+    "side": "left",
+    "pattern": "价格",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 现货价格"
+   },
+   {
+    "rule_id": "BL-017",
+    "rule_name": "价格与利润互斥",
+    "side": "right",
+    "pattern": "利润",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 冶炼利润"
+   },
+   {
+    "rule_id": "BL-018",
+    "rule_name": "跨品种匹配禁止",
+    "side": "left",
+    "pattern": "锡",
+    "len": 1,
+    "issue": "pattern过短(<2字), 子串误匹配风险, 已丢弃"
+   },
+   {
+    "rule_id": "BL-018",
+    "rule_name": "跨品种匹配禁止",
+    "side": "right",
+    "pattern": "镍",
+    "len": 1,
+    "issue": "pattern过短(<2字), 子串误匹配风险, 已丢弃"
+   },
+   {
+    "rule_id": "BL-019",
+    "rule_name": "硅与铜跨品种禁止",
+    "side": "left",
+    "pattern": "硅",
+    "len": 1,
+    "issue": "pattern过短(<2字), 子串误匹配风险, 已丢弃"
+   },
+   {
+    "rule_id": "BL-019",
+    "rule_name": "硅与铜跨品种禁止",
+    "side": "right",
+    "pattern": "铜",
+    "len": 1,
+    "issue": "pattern过短(<2字), 子串误匹配风险, 已丢弃"
+   },
+   {
+    "rule_id": "BL-022",
+    "rule_name": "镍与铜跨品种禁止",
+    "side": "left",
+    "pattern": "镍",
+    "len": 1,
+    "issue": "pattern过短(<2字), 子串误匹配风险, 已丢弃"
+   },
+   {
+    "rule_id": "BL-022",
+    "rule_name": "镍与铜跨品种禁止",
+    "side": "right",
+    "pattern": "铜",
+    "len": 1,
+    "issue": "pattern过短(<2字), 子串误匹配风险, 已丢弃"
+   },
+   {
+    "rule_id": "BL-023",
+    "rule_name": "升贴水与价格互斥",
+    "side": "left",
+    "pattern": "贴水",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 升贴水"
+   },
+   {
+    "rule_id": "BL-023",
+    "rule_name": "升贴水与价格互斥",
+    "side": "right",
+    "pattern": "价格",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 现货价格"
+   },
+   {
+    "rule_id": "BL-024",
+    "rule_name": "出库量与库存互斥",
+    "side": "left",
+    "pattern": "出库",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 出库量"
+   },
+   {
+    "rule_id": "BL-024",
+    "rule_name": "出库量与库存互斥",
+    "side": "right",
+    "pattern": "库存",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 工厂库存/在途库存/场内库存/厂内库存"
+   },
+   {
+    "rule_id": "BL-025",
+    "rule_name": "消费量与产量互斥(反向)",
+    "side": "left",
+    "pattern": "消费",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 表观消费/消费量"
+   },
+   {
+    "rule_id": "BL-025",
+    "rule_name": "消费量与产量互斥(反向)",
+    "side": "right",
+    "pattern": "产量",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 生产量"
+   },
+   {
+    "rule_id": "BL-025",
+    "rule_name": "消费量与产量互斥(反向)",
+    "side": "right",
+    "pattern": "产出",
+    "len": 2,
+    "issue": "为更长token子串, 需整词边界: 产出量"
+   }
+  ]
+ },
+ "dice_replication": {
+  "formula": "Dice(match_norm(series_name), canon_name(indicator_key))",
+  "tolerance": 0.011,
+  "rows_with_confidence": 1134,
+  "matched": 1021,
+  "by_resolution_source": {
+   "indicators_v1": {
+    "n": 621,
+    "matched": 557,
+    "unreproducible": 64
+   },
+   "zhiji_note": {
+    "n": 513,
+    "matched": 464,
+    "unreproducible": 49
+   }
+  },
+  "target_ablation": {
+   "canon_name": 1021,
+   "matched_name": 558,
+   "indicator_key": 81,
+   "canon_or_matched": 1021
+  },
+  "unreproducible_samples": [
+   {
+    "series": "电解铝企业厂内铝锭库存",
+    "match_norm": "电解铝企业厂内铝锭库存",
+    "canon_name": "电解铝:厂内库存:中国(日",
+    "matched_name": "电解铝:厂内库存:中国(日",
+    "indicator_key": "al_4_inv_aluminum_2",
+    "resolution_source": "indicators_v1[al_4_inv_aluminum_2]",
+    "recorded": 0.56,
+    "recalc_canon": 0.5833,
+    "recalc_matched": 0.5833,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "中国未锻轧铝及铝材月度出口量",
+    "match_norm": "中国未锻轧铝及铝材月度出口量",
+    "canon_name": "未锻轧铝及铝材:出口数量终值:中国(月",
+    "matched_name": "未锻轧铝及铝材:出口数量终值:中国(月",
+    "indicator_key": "al_00_export",
+    "resolution_source": "indicators_v1[al_00_export]",
+    "recorded": 0.588,
+    "recalc_canon": 0.7879,
+    "recalc_matched": 0.7879,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "中国未锻轧铝及铝材月度进口量",
+    "match_norm": "中国未锻轧铝及铝材月度进口量",
+    "canon_name": "未锻轧铝及铝材:进口数量终值:中国(月",
+    "matched_name": "未锻轧铝及铝材:进口数量终值:中国(月",
+    "indicator_key": "al_3_import",
+    "resolution_source": "indicators_v1[al_3_import]",
+    "recorded": 0.588,
+    "recalc_canon": 0.7879,
+    "recalc_matched": 0.7879,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "SMM EQ-A铜升贴水",
+    "match_norm": "SMMEQ-A铜升贴水",
+    "canon_name": "LMEC-3M升贴水",
+    "matched_name": "LMEC-3M升贴水",
+    "indicator_key": "wr249",
+    "resolution_source": "indicators_v1[wr249]",
+    "recorded": 0.571,
+    "recalc_canon": 0.6667,
+    "recalc_matched": 0.6667,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "成交量（手）",
+    "match_norm": "成交量",
+    "canon_name": "成交量(日",
+    "matched_name": "成交量(日",
+    "indicator_key": "pb_21_aux_10",
+    "resolution_source": "indicators_v1[pb_21_aux_10]",
+    "recorded": 0.667,
+    "recalc_canon": 0.75,
+    "recalc_matched": 0.75,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "进口盈亏（元/吨）",
+    "match_norm": "进口盈亏",
+    "canon_name": "铜:进口盈亏(日",
+    "matched_name": "铜:进口盈亏(日",
+    "indicator_key": "cu_21_import",
+    "resolution_source": "indicators_v1[cu_21_import]",
+    "recorded": 0.615,
+    "recalc_canon": 0.6667,
+    "recalc_matched": 0.6667,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "前20多头净持仓（手）",
+    "match_norm": "前20多头净持仓",
+    "canon_name": "空头前20持仓量",
+    "matched_name": "空头前20持仓量",
+    "indicator_key": "li_26_openinterest_top20_short_2",
+    "resolution_source": "indicators_v1[li_26_openinterest_top20_short_2]",
+    "recorded": 0.625,
+    "recalc_canon": 0.75,
+    "recalc_matched": 0.75,
+    "recalc_key": 0.1
+   },
+   {
+    "series": "成交量（手）",
+    "match_norm": "成交量",
+    "canon_name": "成交量(日",
+    "matched_name": "成交量(日",
+    "indicator_key": "pb_21_aux_10",
+    "resolution_source": "indicators_v1[pb_21_aux_10]",
+    "recorded": 0.667,
+    "recalc_canon": 0.75,
+    "recalc_matched": 0.75,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "前20空头净持仓（手）",
+    "match_norm": "前20空头净持仓",
+    "canon_name": "空头前20持仓量",
+    "matched_name": "空头前20持仓量",
+    "indicator_key": "li_26_openinterest_top20_short_2",
+    "resolution_source": "indicators_v1[li_26_openinterest_top20_short_2]",
+    "recorded": 0.625,
+    "recalc_canon": 0.875,
+    "recalc_matched": 0.875,
+    "recalc_key": 0.1
+   },
+   {
+    "series": "澳大利亚进口量（万吨LCE）",
+    "match_norm": "澳大利亚进口量",
+    "canon_name": "澳大利亚(季",
+    "matched_name": "澳大利亚(季",
+    "indicator_key": "pb_311_aux",
+    "resolution_source": "indicators_v1[pb_311_aux]",
+    "recorded": 0.571,
+    "recalc_canon": 0.6154,
+    "recalc_matched": 0.6154,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "澳大利亚TC（元/吨）",
+    "match_norm": "澳大利亚TC",
+    "canon_name": "澳大利亚(季",
+    "matched_name": "澳大利亚(季",
+    "indicator_key": "pb_311_aux",
+    "resolution_source": "indicators_v1[pb_311_aux]",
+    "recorded": 0.615,
+    "recalc_canon": 0.6667,
+    "recalc_matched": 0.6667,
+    "recalc_key": 0.0
+   },
+   {
+    "series": "国内锂盐开工天数（天）",
+    "match_norm": "国内锂盐开工天数(天",
+    "canon_name": "国内锂盐精炼开工率",
+    "matched_name": "国内锂盐精炼开工率",
+    "indicator_key": "li_35_util_2",
+    "resolution_source": "indicators_v1[li_35_util_2]",
+    "recorded": 0.706,
+    "recalc_canon": 0.6316,
+    "recalc_matched": 0.6316,
+    "recalc_key": 0.0
+   }
+  ],
+  "unreproducible_rate_pct": 10.0,
+  "matched_rate_pct": 90.0,
+  "unreproducible": 113,
+  "formula_shorten_longest_key_pct": 0.0,
+  "short_canon_risk": {
+   "threshold_chars": 4,
+   "rows_with_short_canon": 125,
+   "pct_of_fuzzy": 11.0,
+   "distinct_short_canon_names": 8,
+   "top_short_canon": [
+    [
+     "精炼产量",
+     32
+    ],
+    [
+     "开工率",
+     29
+    ],
+    [
+     "社会库存",
+     25
+    ],
+    [
+     "锡沪伦比",
+     19
+    ],
+    [
+     "海外产能",
+     8
+    ],
+    [
+     "表观消费",
+     6
+    ],
+    [
+     "镍铁库存",
+     5
+    ],
+    [
+     "硅石价格",
+     1
+    ]
+   ],
+   "bad_outcome_in_short_canon": {
+    "OK": 121,
+    "INVALID": 1,
+    "WARNING": 1,
+    "P0_CONFLICT": 2
+   }
+  }
+ },
+ "trigger_keywords": {
+  "distinct": 51,
+  "top25_by_hits": [
+   {
+    "kw": "硅",
+    "hits": 195
+   },
+   {
+    "kw": "库存",
+    "hits": 147
+   },
+   {
+    "kw": "产量",
+    "hits": 124
+   },
+   {
+    "kw": "工业硅",
+    "hits": 123
+   },
+   {
+    "kw": "锡",
+    "hits": 98
+   },
+   {
+    "kw": "镍",
+    "hits": 90
+   },
+   {
+    "kw": "开工率",
+    "hits": 72
+   },
+   {
+    "kw": "锂",
+    "hits": 52
+   },
+   {
+    "kw": "利润",
+    "hits": 51
+   },
+   {
+    "kw": "持仓",
+    "hits": 47
+   },
+   {
+    "kw": "产能",
+    "hits": 34
+   },
+   {
+    "kw": "仓单",
+    "hits": 33
+   },
+   {
+    "kw": "成本",
+    "hits": 32
+   },
+   {
+    "kw": "升贴水",
+    "hits": 31
+   },
+   {
+    "kw": "多晶硅",
+    "hits": 28
+   },
+   {
+    "kw": "锡矿",
+    "hits": 21
+   },
+   {
+    "kw": "碳酸锂",
+    "hits": 20
+   },
+   {
+    "kw": "加工费",
+    "hits": 14
+   },
+   {
+    "kw": "铝",
+    "hits": 11
+   },
+   {
+    "kw": "库存天数",
+    "hits": 11
+   },
+   {
+    "kw": "价格",
+    "hits": 9
+   },
+   {
+    "kw": "镍铁",
+    "hits": 8
+   },
+   {
+    "kw": "再生锡",
+    "hits": 8
+   },
+   {
+    "kw": "不锈钢",
+    "hits": 7
+   },
+   {
+    "kw": "锡锭",
+    "hits": 6
+   }
+  ],
+  "top25_by_bad_rate": [
+   {
+    "kw": "库存天数",
+    "total": 11,
+    "bad": 11,
+    "bad_rate_pct": 100.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 11,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 0
+   },
+   {
+    "kw": "硫酸镍",
+    "total": 2,
+    "bad": 2,
+    "bad_rate_pct": 100.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 2,
+    "OK": 0
+   },
+   {
+    "kw": "硫酸",
+    "total": 2,
+    "bad": 2,
+    "bad_rate_pct": 100.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 2,
+    "OK": 0
+   },
+   {
+    "kw": "加工费",
+    "total": 14,
+    "bad": 6,
+    "bad_rate_pct": 42.9,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 6,
+    "OK": 8
+   },
+   {
+    "kw": "盐湖提锂",
+    "total": 4,
+    "bad": 1,
+    "bad_rate_pct": 25.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 1,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 3
+   },
+   {
+    "kw": "碳酸锂",
+    "total": 20,
+    "bad": 3,
+    "bad_rate_pct": 15.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 3,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 17
+   },
+   {
+    "kw": "锂",
+    "total": 52,
+    "bad": 7,
+    "bad_rate_pct": 13.5,
+    "P0_CONFLICT": 0,
+    "WARNING": 4,
+    "UNRESOLVED": 0,
+    "INVALID": 3,
+    "OK": 45
+   },
+   {
+    "kw": "库存",
+    "total": 147,
+    "bad": 18,
+    "bad_rate_pct": 12.2,
+    "P0_CONFLICT": 4,
+    "WARNING": 13,
+    "UNRESOLVED": 0,
+    "INVALID": 1,
+    "OK": 129
+   },
+   {
+    "kw": "产量",
+    "total": 124,
+    "bad": 5,
+    "bad_rate_pct": 4.0,
+    "P0_CONFLICT": 3,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 2,
+    "OK": 119
+   },
+   {
+    "kw": "镍",
+    "total": 90,
+    "bad": 2,
+    "bad_rate_pct": 2.2,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 2,
+    "OK": 88
+   },
+   {
+    "kw": "持仓",
+    "total": 47,
+    "bad": 1,
+    "bad_rate_pct": 2.1,
+    "P0_CONFLICT": 1,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 46
+   },
+   {
+    "kw": "硅",
+    "total": 195,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 195
+   },
+   {
+    "kw": "工业硅",
+    "total": 123,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 123
+   },
+   {
+    "kw": "锡",
+    "total": 98,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 98
+   },
+   {
+    "kw": "开工率",
+    "total": 72,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 72
+   },
+   {
+    "kw": "利润",
+    "total": 51,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 51
+   },
+   {
+    "kw": "产能",
+    "total": 34,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 34
+   },
+   {
+    "kw": "仓单",
+    "total": 33,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 33
+   },
+   {
+    "kw": "成本",
+    "total": 32,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 32
+   },
+   {
+    "kw": "升贴水",
+    "total": 31,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 31
+   },
+   {
+    "kw": "多晶硅",
+    "total": 28,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 28
+   },
+   {
+    "kw": "锡矿",
+    "total": 21,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 21
+   },
+   {
+    "kw": "铝",
+    "total": 11,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 11
+   },
+   {
+    "kw": "价格",
+    "total": 9,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 9
+   },
+   {
+    "kw": "镍铁",
+    "total": 8,
+    "bad": 0,
+    "bad_rate_pct": 0.0,
+    "P0_CONFLICT": 0,
+    "WARNING": 0,
+    "UNRESOLVED": 0,
+    "INVALID": 0,
+    "OK": 8
+   }
+  ]
+ },
+ "replay_41": {
+  "total": 41,
+  "with_match_target": 37,
+  "no_match_target_recorded": 4,
+  "old_pipeline_fired": 37,
+  "new_blocked": 37,
+  "new_blocked_p0": 21,
+  "new_blocked_p1": 16,
+  "false_safe": 0,
+  "reason_dist": {
+   "blacklist_precheck": 15,
+   "no_match_target_recorded": 4,
+   "variety_anchor_violation": 22
+  },
+  "detail": [
+   {
+    "id": "RISK-001",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-AL-013",
+    "left": "LME主要仓库场内库存",
+    "right": "LME：非仓单库存：欧洲（日）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.48,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-005",
+    "blacklist_id": "BL-005",
+    "blacklist_name": "场内库存与非仓单库存互斥",
+    "conflict_type": "互斥",
+    "conflict_reason": "场内库存与非仓单库存互斥"
+   },
+   {
+    "id": "RISK-002",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-LC-054",
+    "left": "碳酸锂 三元523需求",
+    "right": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉（Li: 5.5%-6.5%）:",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.2667,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-009",
+    "blacklist_id": "BL-009",
+    "blacklist_name": "利润与需求互斥",
+    "conflict_type": "口径冲突",
+    "conflict_reason": "利润与需求口径冲突"
+   },
+   {
+    "id": "RISK-003",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-LC-084",
+    "left": "其他电池(磷酸铁锂) 销量",
+    "right": "SMM: 境内其他电池产量: 月度",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.3704,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-002",
+    "blacklist_id": "BL-003",
+    "blacklist_name": "销量与产量互斥",
+    "conflict_type": "互斥",
+    "conflict_reason": "销量与产量互斥"
+   },
+   {
+    "id": "RISK-005",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-LC-087",
+    "left": "磷酸铁锂 电池 国内销量",
+    "right": "",
+    "old_pipeline_fire": "N/A",
+    "old_dice": 0.0,
+    "new_accept": false,
+    "new_reason": "no_match_target_recorded",
+    "new_detail": "",
+    "new_rule": "",
+    "blacklist_id": "BL-015",
+    "blacklist_name": "国内销量与出口互斥(反向)",
+    "conflict_type": "互斥",
+    "conflict_reason": "国内销量与出口互斥(反向)"
+   },
+   {
+    "id": "RISK-006",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-LC-091",
+    "left": "新能源乘用车 产量",
+    "right": "SMM: 国产乘用车销量-新能源汽车: 周度",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5714,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-002",
+    "blacklist_id": "BL-002",
+    "blacklist_name": "产量与销量互斥",
+    "conflict_type": "互斥",
+    "conflict_reason": "产量与销量互斥"
+   },
+   {
+    "id": "RISK-010",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-NI-008",
+    "left": "中国电解镍净进口量",
+    "right": "",
+    "old_pipeline_fire": "N/A",
+    "old_dice": 0.0,
+    "new_accept": false,
+    "new_reason": "no_match_target_recorded",
+    "new_detail": "",
+    "new_rule": "",
+    "blacklist_id": "BL-022",
+    "blacklist_name": "镍与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "镍与铜跨品种禁止"
+   },
+   {
+    "id": "RISK-011",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-SI-014",
+    "left": "工业硅样本工厂库存(SMM)",
+    "right": "",
+    "old_pipeline_fire": "N/A",
+    "old_dice": 0.0,
+    "new_accept": false,
+    "new_reason": "no_match_target_recorded",
+    "new_detail": "",
+    "new_rule": "",
+    "blacklist_id": "BL-020",
+    "blacklist_name": "硅与苯乙烯跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "硅与苯乙烯跨品种禁止"
+   },
+   {
+    "id": "RISK-013",
+    "risk_level": "P0",
+    "source": "PDF",
+    "template_id": "TPL-SI-019",
+    "left": "工业硅供需平衡",
+    "right": "",
+    "old_pipeline_fire": "N/A",
+    "old_dice": 0.0,
+    "new_accept": false,
+    "new_reason": "no_match_target_recorded",
+    "new_detail": "",
+    "new_rule": "",
+    "blacklist_id": "BL-021",
+    "blacklist_name": "硅与黄金跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "硅与黄金跨品种禁止"
+   },
+   {
+    "id": "RISK-014",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-NI-2.3",
+    "left": "COMEX镍持仓量（手）",
+    "right": "COMEX：铜：主力合约：持仓量（日）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.6207,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['CU']",
+    "new_rule": "",
+    "blacklist_id": "BL-022",
+    "blacklist_name": "镍与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-022(镍与铜跨品种禁止)"
+   },
+   {
+    "id": "RISK-015",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-NI-2.3",
+    "left": "LME镍现金价格（美元/吨）、LME镍3个月期货价格（美元/吨）、现金-3个月月差（美元/吨）",
+    "right": "LME：铜：期货价格：全球（月）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.2951,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['CU']",
+    "new_rule": "",
+    "blacklist_id": "BL-022",
+    "blacklist_name": "镍与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-022(镍与铜跨品种禁止)"
+   },
+   {
+    "id": "RISK-016",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-NI-3.1",
+    "left": "印尼镍精矿TC（美元/吨干矿）",
+    "right": "铜精矿：长单TC价（年）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.4,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['CU']",
+    "new_rule": "",
+    "blacklist_id": "BL-022",
+    "blacklist_name": "镍与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-022(镍与铜跨品种禁止)"
+   },
+   {
+    "id": "RISK-017",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-NI-3.1",
+    "left": "菲律宾镍精矿TC（美元/吨干矿）",
+    "right": "铜精矿：长单TC价（年）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.3846,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['CU']",
+    "new_rule": "",
+    "blacklist_id": "BL-022",
+    "blacklist_name": "镍与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-022(镍与铜跨品种禁止)"
+   },
+   {
+    "id": "RISK-020",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-NI-4.4",
+    "left": "Mysteel镍精矿TC、Mysteel镍厂库存总量",
+    "right": "铜精矿：长单TC价（年）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.2162,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['CU']",
+    "new_rule": "",
+    "blacklist_id": "BL-022",
+    "blacklist_name": "镍与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-022(镍与铜跨品种禁止)"
+   },
+   {
+    "id": "RISK-021",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-NI-4.5",
+    "left": "Mysteel镍精矿TC、Mysteel中国精炼镍在途库存",
+    "right": "铜精矿：长单TC价（年）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.2,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['CU']",
+    "new_rule": "",
+    "blacklist_id": "BL-022",
+    "blacklist_name": "镍与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-022(镍与铜跨品种禁止)"
+   },
+   {
+    "id": "RISK-022",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SI-3.1.3",
+    "left": "国内硅矿月加工费TC（元/吨）",
+    "right": "铜管：H62：加工费：安徽（月）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.3448,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SI'] vs ['CU']",
+    "new_rule": "",
+    "blacklist_id": "BL-019",
+    "blacklist_name": "硅与铜跨品种禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-019(硅与铜跨品种禁止)"
+   },
+   {
+    "id": "RISK-024",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-2.3",
+    "left": "LME锡库存（吨）",
+    "right": "LME：镍：注册仓单（日）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.4,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['NI']",
+    "new_rule": "",
+    "blacklist_id": "BL-018",
+    "blacklist_name": "跨品种匹配禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-018(跨品种匹配禁止)"
+   },
+   {
+    "id": "RISK-025",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-2.3",
+    "left": "LME锡库存时序图",
+    "right": "LME：镍：注册仓单（日）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.2857,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['NI']",
+    "new_rule": "",
+    "blacklist_id": "BL-018",
+    "blacklist_name": "跨品种匹配禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-018(跨品种匹配禁止)"
+   },
+   {
+    "id": "RISK-026",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-3.1.2",
+    "left": "印尼锡精矿产量（万吨）",
+    "right": "印尼精炼镍产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5882,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['NI']",
+    "new_rule": "",
+    "blacklist_id": "BL-018",
+    "blacklist_name": "跨品种匹配禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-018(跨品种匹配禁止)"
+   },
+   {
+    "id": "RISK-027",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-3.1.2",
+    "left": "印尼锡精矿产量占比（%）",
+    "right": "印尼精炼镍产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5556,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['NI']",
+    "new_rule": "",
+    "blacklist_id": "BL-018",
+    "blacklist_name": "跨品种匹配禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-018(跨品种匹配禁止)"
+   },
+   {
+    "id": "RISK-028",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-3.1.2",
+    "left": "印尼锡精矿产量时序图",
+    "right": "印尼精炼镍产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5882,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['NI']",
+    "new_rule": "",
+    "blacklist_id": "BL-018",
+    "blacklist_name": "跨品种匹配禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-018(跨品种匹配禁止)"
+   },
+   {
+    "id": "RISK-029",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-4.1",
+    "left": "LME锡交易所库存（手）",
+    "right": "LME：镍：注册仓单（日）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.3478,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['NI']",
+    "new_rule": "",
+    "blacklist_id": "BL-018",
+    "blacklist_name": "跨品种匹配禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-018(跨品种匹配禁止)"
+   },
+   {
+    "id": "RISK-030",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-4.1",
+    "left": "LME锡交易所库存时序图",
+    "right": "LME：镍：注册仓单（日）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.25,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['NI']",
+    "new_rule": "",
+    "blacklist_id": "BL-018",
+    "blacklist_name": "跨品种匹配禁止",
+    "conflict_type": "跨品种",
+    "conflict_reason": "BL-018(跨品种匹配禁止)"
+   },
+   {
+    "id": "RISK-031",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-5.1",
+    "left": "锡表观消费量（万吨）",
+    "right": "镀锌板卷：钢铁企业：产量：中国（周）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.1538,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['ZN']",
+    "new_rule": "",
+    "blacklist_id": "BL-025",
+    "blacklist_name": "消费量与产量互斥(反向)",
+    "conflict_type": "口径冲突",
+    "conflict_reason": "BL-025(消费量与产量互斥(反向))"
+   },
+   {
+    "id": "RISK-032",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-SN-5.1",
+    "left": "焊锡表观消费量时序图",
+    "right": "镀锌板卷：钢铁企业：产量：中国（周）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.0741,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SN'] vs ['ZN']",
+    "new_rule": "",
+    "blacklist_id": "BL-025",
+    "blacklist_name": "消费量与产量互斥(反向)",
+    "conflict_type": "口径冲突",
+    "conflict_reason": "BL-025(消费量与产量互斥(反向))"
+   },
+   {
+    "id": "RISK-033",
+    "risk_level": "P0",
+    "source": "THS",
+    "template_id": "THS-ZN-5.2",
+    "left": "国内锌锭消费量（万吨）",
+    "right": "国内锡锭产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['ZN'] vs ['SN']",
+    "new_rule": "",
+    "blacklist_id": "BL-025",
+    "blacklist_name": "消费量与产量互斥(反向)",
+    "conflict_type": "口径冲突",
+    "conflict_reason": "BL-025(消费量与产量互斥(反向))"
+   },
+   {
+    "id": "RISK-034",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-LI-2.5",
+    "left": "盐湖提锂利润（元/吨）",
+    "right": "盐湖提锂产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-016",
+    "blacklist_id": "BL-016",
+    "blacklist_name": "利润与产量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-016(利润与产量互斥)"
+   },
+   {
+    "id": "RISK-035",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-LI-2.5",
+    "left": "工业级碳酸锂利润（元/吨）",
+    "right": "工业级碳酸锂产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.6,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-016",
+    "blacklist_id": "BL-016",
+    "blacklist_name": "利润与产量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-016(利润与产量互斥)"
+   },
+   {
+    "id": "RISK-036",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-LI-2.5",
+    "left": "电池级碳酸锂利润（元/吨）",
+    "right": "电池级碳酸锂产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.6,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-016",
+    "blacklist_id": "BL-016",
+    "blacklist_name": "利润与产量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-016(利润与产量互斥)"
+   },
+   {
+    "id": "RISK-037",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-LI-3.2.4",
+    "left": "电池级碳酸锂冶炼利润（元/吨）",
+    "right": "电池级碳酸锂产量",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5455,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-016",
+    "blacklist_id": "BL-016",
+    "blacklist_name": "利润与产量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-016(利润与产量互斥)"
+   },
+   {
+    "id": "RISK-038",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-LI-4.3",
+    "left": "库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5333,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-012",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-039",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-LI-4.4",
+    "left": "厂内库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5882,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-012",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-040",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-NI-4.4",
+    "left": "电解镍厂库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5263,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['LI']",
+    "new_rule": "",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-041",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-NI-4.4",
+    "left": "高冰镍厂库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5263,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['NI'] vs ['LI']",
+    "new_rule": "",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-042",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-SI-4.4",
+    "left": "多晶硅工厂库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.6,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SI'] vs ['LI']",
+    "new_rule": "",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-043",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-SI-4.4",
+    "left": "金属硅工厂库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.6,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['SI'] vs ['LI']",
+    "new_rule": "",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-044",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-SN-4.3",
+    "left": "社会库存天数（天）",
+    "right": "锡锭：库存：中国（周）",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.3333,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-012",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-045",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-SN-4.4",
+    "left": "工厂库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.7059,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-012",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-046",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-SN-4.4",
+    "left": "工厂库存天数时序图",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.6667,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-012",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-047",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-SN-4.5",
+    "left": "在途库存天数（天）",
+    "right": "锂矿 外采 在途库存",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-012",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-048",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-SN-5.1",
+    "left": "库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5333,
+    "new_accept": false,
+    "new_reason": "blacklist_precheck",
+    "new_detail": "",
+    "new_rule": "BL-012",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   },
+   {
+    "id": "RISK-050",
+    "risk_level": "P1",
+    "source": "THS",
+    "template_id": "THS-ZN-4.4",
+    "left": "国内锌厂内库存天数（天）",
+    "right": "碳酸锂工厂库存天数",
+    "old_pipeline_fire": "YES",
+    "old_dice": 0.5,
+    "new_accept": false,
+    "new_reason": "variety_anchor_violation",
+    "new_detail": "['ZN'] vs ['LI']",
+    "new_rule": "",
+    "blacklist_id": "BL-012",
+    "blacklist_name": "库存天数与库存量互斥",
+    "conflict_type": "警告",
+    "conflict_reason": "BL-012(库存天数与库存量互斥)"
+   }
+  ]
+ },
+ "noregress": {
+  "target_correction": {
+   "rows_where_matched_differs_from_canon": 499,
+   "pct_of_fuzzy": 44.0
+  },
+  "decision_semantics": {
+   "keep": "自动通过",
+   "review": "降级人工复核(禁止自动放行)",
+   "block": "硬拦截"
+  },
+  "fuzzy_total": 1134,
+  "old_accepted": 1134,
+  "kept": 303,
+  "review": 234,
+  "blocked": 597,
+  "blocked_but_already_flagged": 36,
+  "blocked_clean": 561,
+  "review_but_already_flagged": 7,
+  "keep_but_already_flagged": 9,
+  "block_reason_dist": {
+   "variety_anchor_violation": 351,
+   "below_threshold": 210,
+   "metric_exclusion_hard": 18,
+   "blacklist_precheck": 18
+  },
+  "review_reason_dist": {
+   "variety_neutral_target_review": 234
+  },
+  "blocked_by_blacklist_status": {
+   "CLEAN": 575,
+   "WARNING": 17,
+   "P0_CONFLICT": 5
+  },
+  "review_by_blacklist_status": {
+   "CLEAN": 228,
+   "P0_CONFLICT": 6
+  },
+  "blocked_by_verify_status": {
+   "INVALID": 14,
+   "FILLED": 383,
+   "VALID": 200
+  },
+  "review_by_verify_status": {
+   "FILLED": 134,
+   "VALID": 99,
+   "INVALID": 1
+  },
+  "keep_by_verify_status": {
+   "FILLED": 80,
+   "VALID": 214,
+   "INVALID": 9
+  },
+  "old_post_flagged_total": 52,
+  "new_pre_catches_old_flagged": 43,
+  "new_pre_missed_old_flagged": 9,
+  "catch_rate_pct": 82.7,
+  "missed_detail": [
+   {
+    "series": "海外锂矿进口量分国别（万吨LCE）",
+    "matched": "锂精矿进口分国别",
+    "target_canon": "锂精矿进口分国别",
+    "indicator_key": "li_61_by_country_import_conc_3",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "硫酸镍产量",
+    "matched": "中国硫酸镍产量",
+    "target_canon": "中国硫酸镍产量",
+    "indicator_key": "wr241",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "硫酸镍产量（万吨）",
+    "matched": "中国硫酸镍产量",
+    "target_canon": "中国硫酸镍产量",
+    "indicator_key": "wr241",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "加工费（元/吨）",
+    "matched": "TC加工费",
+    "target_canon": "TC加工费",
+    "indicator_key": "TC",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "加工费（元/吨）",
+    "matched": "TC加工费",
+    "target_canon": "TC加工费",
+    "indicator_key": "TC",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "加工费（元/吨）",
+    "matched": "TC加工费",
+    "target_canon": "TC加工费",
+    "indicator_key": "TC",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "加工费（元/吨）",
+    "matched": "TC加工费",
+    "target_canon": "TC加工费",
+    "indicator_key": "TC",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "加工费（元/吨）",
+    "matched": "TC加工费",
+    "target_canon": "TC加工费",
+    "indicator_key": "TC",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   },
+   {
+    "series": "加工费（元/吨）",
+    "matched": "TC加工费",
+    "target_canon": "TC加工费",
+    "indicator_key": "TC",
+    "bl": "CLEAN",
+    "vs": "INVALID",
+    "reason": "mid_dice_same_variety"
+   }
+  ]
+ }
+}

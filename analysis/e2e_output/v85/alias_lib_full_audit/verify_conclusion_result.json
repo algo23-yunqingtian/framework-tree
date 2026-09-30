@@ -1,0 +1,322 @@
+{
+ "task": "DSHE-B_V85_ALIAS_LIB_FULL_EXECUTE_AUDIT_AND_REGRESSION_TEST",
+ "generated_at": "2026-10-01 03:34:12",
+ "build_script": {
+  "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\alias_match_presearch\\build_alias_library.py",
+  "bytes": 52699,
+  "md5": "d375f963678d1e89c7e9949805f8433f",
+  "sha256": "b756c191ee24882fe6762ece11f77b239ba36e82f28b7bc1d3783a9be4d8f570",
+  "loaded_lines": "1..531 (分节标记 '# 7. 静态回放' 之前, 无写文件语句)"
+ },
+ "tolerance": 0.011,
+ "inputs": {
+  "ths_csv": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\tonghuashun_recheck_fixed\\ths_updated_match_stat.csv",
+  "ths_rows": 2354,
+  "fuzzy_rows_with_confidence": 1134,
+  "resolution_source_dist": {
+   "indicators_v1": 621,
+   "zhiji_note": 513
+  }
+ },
+ "conclusion_A": {
+  "claim": "matched_name 不是模糊匹配的比对目标, 真实比对目标为 canon_name(indicator_key)",
+  "target_ablation_hits": {
+   "canon_name": 1021,
+   "matched_name": 558,
+   "indicator_key": 81
+  },
+  "stratified_hits": {
+   "indicators_v1": {
+    "canon_name": 557,
+    "matched_name": 557
+   },
+   "zhiji_note": {
+    "canon_name": 464,
+    "indicator_key": 81,
+    "matched_name": 1
+   }
+  },
+  "strata_n": {
+   "indicators_v1": 621,
+   "zhiji_note": 513
+  },
+  "overlap": {
+   "both_canon_and_matched": 558,
+   "canon_only": 463,
+   "neither": 113
+  },
+  "decision_subset": {
+   "n": 200,
+   "dist": {
+    "canon_wins": 191,
+    "neither_within_tol": 9
+   }
+  },
+  "verdict": "VERIFIED",
+  "samples_divergent_gt_005": [
+   {
+    "series": "LME铝总库存",
+    "canon_name": "LME库存",
+    "matched_name": "镍：3个月合约：收盘价（日）",
+    "indicator_key": "LME库存",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.833,
+    "dice_canon": 0.8333,
+    "dice_matched": 0.0,
+    "dice_key": 0.8333,
+    "verdict": "canon"
+   },
+   {
+    "series": "电解铝社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "indicator_key": "社库",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.727,
+    "dice_canon": 0.7273,
+    "dice_matched": 0.5,
+    "dice_key": 0.4444,
+    "verdict": "canon"
+   },
+   {
+    "series": "铝棒社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "indicator_key": "社库",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.8,
+    "dice_canon": 0.8,
+    "dice_matched": 0.3158,
+    "dice_key": 0.5,
+    "verdict": "canon"
+   },
+   {
+    "series": "铝锭社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "indicator_key": "社库",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.8,
+    "dice_canon": 0.8,
+    "dice_matched": 0.3158,
+    "dice_key": 0.5,
+    "verdict": "canon"
+   },
+   {
+    "series": "铝棒社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "indicator_key": "社库",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.8,
+    "dice_canon": 0.8,
+    "dice_matched": 0.3158,
+    "dice_key": 0.5,
+    "verdict": "canon"
+   },
+   {
+    "series": "各LME仓库/地点铜库存",
+    "canon_name": "LME库存",
+    "matched_name": "LME：镍：3个月合约：最低价（日）",
+    "indicator_key": "LME库存",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.588,
+    "dice_canon": 0.5882,
+    "dice_matched": 0.2069,
+    "dice_key": 0.5882,
+    "verdict": "canon"
+   },
+   {
+    "series": "印尼镍矿产量",
+    "canon_name": "印尼镍铁产量",
+    "matched_name": "镍铁：产量（未审计）：印尼国有矿业（季）",
+    "indicator_key": "wr248",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.833,
+    "dice_canon": 0.8333,
+    "dice_matched": 0.48,
+    "dice_key": 0.0,
+    "verdict": "canon"
+   },
+   {
+    "series": "印尼镍矿产量（万吨）",
+    "canon_name": "印尼镍铁产量",
+    "matched_name": "镍铁：产量（未审计）：印尼国有矿业（季）",
+    "indicator_key": "wr248",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.833,
+    "dice_canon": 0.8333,
+    "dice_matched": 0.48,
+    "dice_key": 0.0,
+    "verdict": "canon"
+   },
+   {
+    "series": "镍精矿进口总量",
+    "canon_name": "镍铁进口量",
+    "matched_name": "镍铁：进口数量合计：中国（月）",
+    "indicator_key": "wr275",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.667,
+    "dice_canon": 0.6667,
+    "dice_matched": 0.381,
+    "dice_key": 0.0,
+    "verdict": "canon"
+   },
+   {
+    "series": "镍精矿进口总量（万吨）",
+    "canon_name": "镍铁进口量",
+    "matched_name": "镍铁：进口数量合计：中国（月）",
+    "indicator_key": "wr275",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.667,
+    "dice_canon": 0.6667,
+    "dice_matched": 0.381,
+    "dice_key": 0.0,
+    "verdict": "canon"
+   },
+   {
+    "series": "印尼镍精矿进口量",
+    "canon_name": "镍铁进口量",
+    "matched_name": "镍铁：进口数量合计：中国（月）",
+    "indicator_key": "wr275",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.615,
+    "dice_canon": 0.6154,
+    "dice_matched": 0.3636,
+    "dice_key": 0.0,
+    "verdict": "canon"
+   },
+   {
+    "series": "印尼镍精矿进口量（万吨）",
+    "canon_name": "镍铁进口量",
+    "matched_name": "镍铁：进口数量合计：中国（月）",
+    "indicator_key": "wr275",
+    "resolution_source": "zhiji_note",
+    "recorded": 0.615,
+    "dice_canon": 0.6154,
+    "dice_matched": 0.3636,
+    "dice_key": 0.0,
+    "verdict": "canon"
+   }
+  ]
+ },
+ "conclusion_B": {
+  "claim": "44.0% 的行 canon_name 与 matched_name 两列不一致",
+  "claimed_pct": 44.0,
+  "caliber_1_raw_string": {
+   "definition": "canon_name 与 matched_name 原始字符串逐字符比对, 与 build_alias_library.py 第576行 NR_TARGET_GAP 同口径",
+   "diff": 499,
+   "pct": 44.0,
+   "verdict": "REPRODUCED"
+  },
+  "caliber_2_semantic": {
+   "definition": "仅统计两侧均为真实名称(排除 matched_name 为空串或字面量'None')的行",
+   "same": 635,
+   "diff": 201,
+   "absent_matched_name": 298,
+   "absent_none_literal": 298,
+   "absent_empty": 0,
+   "canon_absent": 0,
+   "diff_pct_of_all": 17.72,
+   "verdict": "NOT_REPRODUCED"
+  },
+  "stratified_semantic": {
+   "indicators_v1": {
+    "same": 621,
+    "diff": 0
+   },
+   "zhiji_note": {
+    "same": 14,
+    "diff": 201
+   }
+  },
+  "verdict": "VERIFIED_WITH_CAVEAT",
+  "note": "44.0% 数值在原始字符串口径下可精确复现(499/1134), 但其中 298 行属于 matched_name 缺失而非两列冲突; 语义口径真实冲突仅 201 行 (17.7%)。旧报告将两者混同, 表述需修正。",
+  "samples": [
+   {
+    "series": "LME铝总库存",
+    "canon_name": "LME库存",
+    "matched_name": "镍：3个月合约：收盘价（日）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.833"
+   },
+   {
+    "series": "电解铝社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.727"
+   },
+   {
+    "series": "铝棒社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.8"
+   },
+   {
+    "series": "铝锭社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.8"
+   },
+   {
+    "series": "铝棒社会库存",
+    "canon_name": "社会库存",
+    "matched_name": "电解铝：现货库存：中国（日）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.8"
+   },
+   {
+    "series": "中国铝合金月度进口量/出口量",
+    "canon_name": "铝合金进口量",
+    "matched_name": "未锻轧铝合金：进口数量合计：中国（月）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.6"
+   },
+   {
+    "series": "各LME仓库/地点铜库存",
+    "canon_name": "LME库存",
+    "matched_name": "LME：镍：3个月合约：最低价（日）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.588"
+   },
+   {
+    "series": "印尼镍矿产量",
+    "canon_name": "印尼镍铁产量",
+    "matched_name": "镍铁：产量（未审计）：印尼国有矿业（季）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.833"
+   },
+   {
+    "series": "印尼镍矿产量（万吨）",
+    "canon_name": "印尼镍铁产量",
+    "matched_name": "镍铁：产量（未审计）：印尼国有矿业（季）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.833"
+   },
+   {
+    "series": "镍精矿进口总量",
+    "canon_name": "镍铁进口量",
+    "matched_name": "镍铁：进口数量合计：中国（月）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.667"
+   },
+   {
+    "series": "镍精矿进口总量（万吨）",
+    "canon_name": "镍铁进口量",
+    "matched_name": "镍铁：进口数量合计：中国（月）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.667"
+   },
+   {
+    "series": "印尼镍精矿进口量",
+    "canon_name": "镍铁进口量",
+    "matched_name": "镍铁：进口数量合计：中国（月）",
+    "resolution_source": "zhiji_note",
+    "confidence": "0.615"
+   }
+  ]
+ }
+}
