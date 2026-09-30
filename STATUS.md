@@ -83,6 +83,16 @@
 - **产出**: `analysis/e2e_output/v85/prep_for_ths_and_auto_check_enhance/` 5份材料（auto_semantic_check.py / semantic_blacklist_hermes.json / ths_template_static_check.py / ths_template_static_check_report.md / updated_review_portal.md）
 - **关键结论**: 同花顺模板是半成品元数据（仅有模板结构+指标名列表，缺zhiji_id和verify_status），必须先写适配层才能渲染，预计渲染前需完成6项适配工作
 
+### 2026-09-30 HERMES — 最终整合：统一风险库接入+渲染任务编排+评审门户v3 (HERMES_THS_RENDER_PREP_AND_PORTAL_FINAL_INTEGRATE)
+- **T2.1 风险绑定**: chart_risk_bound_all.json (1.6MB) — 10组语义互斥黑名单+8条P0+2条P1已知案例 绑定到 488张图表模板(333 PDF+155 THS) 每条series
+- **T2.2 校验脚本升级**: updated_auto_semantic_check.py v2.0 — 接入统一风险库v2.0-fixed，5级风险标记(P0/P1/BLOCKED/INFO/CLEAN)，THS内部互斥检测，P0回归6/6通过
+- **T2.3 全量静态扫描**: PDF 333模板(P0:243 P1:1 CLEAN:89) + THS 155模板(P0:24 P1:63 CLEAN:68) — 全部静态文本校验零zhiji API调用
+- **T2.4 渲染任务编排**: ths_render_task_list.json+ths_render_prep_script.py — 三级分组(89可直接渲染+132人工复核+267阻塞)，含元数据/风险标签/失败策略
+- **T2.5 评审门户v3**: final_integrated_review_portal.md — 全局总统计面板+双源合并看板+统一风险库接入+导出功能
+- **DSHB统一风险库缺失**: unified_indicator_risk_db.csv 全机0命中，使用等效真源 semantic_blacklist_hermes_fixed.json v2.0-fixed+comparison_v1.0_vs_v2.0.json 替代
+- **T4 约束全遵守**: feature/v85-chart-template分支未合并main；零zhiji API调用零时序拉取；原始模板/indicators_v1.json/tree_config.json只读未改
+- **产出**: analysis/e2e_output/v85/v85_final_integrate/ 8份材料
+
 ### 2026-09-30 HERMES — V85 人工评审材料准备 (HERMES_V85_ARTIFICIAL_REVIEW_PREP)
 - **T1 输入**: `output/v85_chart_online_test/` 7 项产物 + 333 张 HTML 全部齐备（render_detail.json 6.5MB）
 - **T2.1 评审入口**: `review_portal.md` — 品种分组(6品种)/评分排序(62张低于满分)/P0快速筛选(11张复合/堆叠/多折线)/86个图表一键跳转链接，全部链接可访问
