@@ -73,6 +73,16 @@
 
 ## 近期变更记录
 
+### 2026-09-30 HERMES — V85 同花顺模板准备 + 自动校验增强 (HERMES_V85_PREP_FOR_THS_AND_AUTO_CHECK_ENHANCE)
+- **T2.1 语义黑名单自动校验**: `auto_semantic_check.py` + `semantic_blacklist_hermes.json` — 10组语义互斥词黑名单（产量↔消费量/场内↔场外库存/库存↔在途/出口↔进口等），集成到渲染前自动校验，命中黑名单→打P0红标拦截渲染。**自测: 6/6 P0语义冲突案例全部识别通过，白名单正确放行**
+- **T2.2 同花顺模板静态结构校验**: `ths_template_static_check.py` + `ths_template_static_check_report.md` — 155个THS模板 vs schema_adapt_doc目标规范对照校验。**核心发现: THS模板与schema完全不兼容**（8字段与5个schema必需字段无交集），全部155个命中E1_SCHEMA_MISMATCH致命错误；315致命错误/391警告；3个node不在tree_config；153/155频率缺失；19/155单位缺失；LI/CU/ZN为THS独有品种（PDF无）
+- **T2.3 评审门户迭代**: `updated_review_portal.md` — 新增§3语义冲突风险标记章节（含10组互斥冲突速查+9条P0案例固定为风险示例+P0/P1/通过三级标记规则），原§3-§7顺延为§4-§8
+- **T2.4 产出适配预报告**: `ths_template_static_check_report.md` 含字段差距分析/致命错误清单/警告清单/品种覆盖对比/渲染前必做适配清单/6项风险预判
+- **T4 约束全遵守**: 仅 feature/v85-chart-template 分支未合并main；未调用zhiji接口未拉时序数据；未修改原始PDF模板/DSHB同花顺json；未改indicators_v1.json/tree_config.json
+- **T5 完成标准**: 语义黑名单校验可运行且识别9条P0案例✅；同花顺模板静态结构校验完成✅；评审门户更新支持语义冲突高亮✅；全部产物提交feature分支✅
+- **产出**: `analysis/e2e_output/v85/prep_for_ths_and_auto_check_enhance/` 5份材料（auto_semantic_check.py / semantic_blacklist_hermes.json / ths_template_static_check.py / ths_template_static_check_report.md / updated_review_portal.md）
+- **关键结论**: 同花顺模板是半成品元数据（仅有模板结构+指标名列表，缺zhiji_id和verify_status），必须先写适配层才能渲染，预计渲染前需完成6项适配工作
+
 ### 2026-09-30 HERMES — V85 人工评审材料准备 (HERMES_V85_ARTIFICIAL_REVIEW_PREP)
 - **T1 输入**: `output/v85_chart_online_test/` 7 项产物 + 333 张 HTML 全部齐备（render_detail.json 6.5MB）
 - **T2.1 评审入口**: `review_portal.md` — 品种分组(6品种)/评分排序(62张低于满分)/P0快速筛选(11张复合/堆叠/多折线)/86个图表一键跳转链接，全部链接可访问

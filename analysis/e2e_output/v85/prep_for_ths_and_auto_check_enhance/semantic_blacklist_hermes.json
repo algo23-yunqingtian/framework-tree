@@ -1,0 +1,110 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-09-30T00:00:00+08:00",
+  "task_id": "HERMES_V85_PREP_FOR_THS_AND_AUTO_CHECK_ENHANCE",
+  "description": "语义互斥词黑名单 —— 用于模板渲染前自动识别「指标口径不一致」的 P0 风险。当 PDF系列名/zhiji实际指标名 命中同一互斥组内的两个不同词根，即判定为口径冲突，打 P0 红标。",
+  "logic": {
+    "grouping": "同一 group 内的词根互为语义对立/不等价口径。若两个待校验文本分别命中同 group 的任意两个不同词根（且非纯前缀包含关系），则判定冲突。",
+    "severity": {
+      "P0": "语义互斥对立（产量↔消费量/销量/在场内↔场外、库存↔在途）。必须拦截，禁止投产。",
+      "P1": "近似但口径不等价（拟合↔指数、折价↔折合、社库↔仓单）。需人工复核。"
+    },
+    "scoring_note": "禁止依赖 DSHB 文本相似度 score（score=1.00 满分不代表口径正确）。本黑名单基于业务语义判定。"
+  },
+  "conflict_groups": [
+    {
+      "group_id": "G01_output_vs_consumption",
+      "severity": "P0",
+      "label": "产量 ↔ 消费量/销量（供给端↔需求端，完全相反口径）",
+      "keywords": ["产量", "消费量", "消费", "销量", "表观消费", "消费量指数"],
+      "explanation": "产量是供给端产出，消费量/销量是需求端消耗，产业逻辑相反。最典型的模糊匹配错配。",
+      "evidence_from_v85": "「铝土矿产量-华北」→「铝土矿：消费量：河北」(ID01724147, score 0.55)；「新能源乘用车 产量」→「乘用车销量-新能源汽车」(a12775712, score 1.00)"
+    },
+    {
+      "group_id": "G02_onsite_vs_offsite_inventory",
+      "severity": "P0",
+      "label": "场内库存 ↔ 场外/非仓单库存（仓库归属对立）",
+      "keywords": ["场内库存", "场内", "仓单库存", "非仓单", "非仓单库存", "场外库存", "场外", "仓外"],
+      "explanation": "场内（官方仓库/注册仓）与非仓单（场外/未注册）库存概念相反，不可互相替代。",
+      "evidence_from_v85": "「LME主要仓库场内库存」→「LME：非仓单库存：欧洲」(FU00103249, score 0.55)"
+    },
+    {
+      "group_id": "G03_inventory_vs_transit",
+      "severity": "P0",
+      "label": "库存 ↔ 在途/堆场（存量↔流量，性质对立）",
+      "keywords": ["库存", "在途", "在途库存", "堆场", "堆场站台", "站台堆积", "积压"],
+      "explanation": "库存是静态存量，在途/堆场是动态物流状态，口径不同。",
+      "evidence_from_v85": "「氧化铝库存-阿拉丁-堆场站台」→「氧化铝在途&站台堆积:库存量」(a12857834, score 0.57)"
+    },
+    {
+      "group_id": "G04_fitted_vs_official",
+      "severity": "P1",
+      "label": "拟合/估算 ↔ 官方指数（估算值↔官方统计，精度不等价）",
+      "keywords": ["拟合", "拟合值", "估算", "估算值", "消费指数", "指数"],
+      "explanation": "拟合/估算是模型推算，官方指数是统计部门发布，精度与口径不等价。",
+      "evidence_from_v85": "「汽车端消费用锡拟合」→「汽车：消费指数：中国」(ID01525089, score 0.44)"
+    },
+    {
+      "group_id": "G05_nickel_discount_vs_conversion",
+      "severity": "P1",
+      "label": "折镍价 ↔ 折合价（原料折价↔成品折算，方向不同）",
+      "keywords": ["折镍价", "折合", "折价", "废不锈钢折价", "折合镍铁"],
+      "explanation": "折镍价是从含镍废料折出镍的原料端价格，折合价是成品间的折算，方向不同。",
+      "evidence_from_v85": "「不同镍产品折镍价」→「304废不锈钢折合镍铁价格」(score 0.50)"
+    },
+    {
+      "group_id": "G06_social_vs_warrant_inventory",
+      "severity": "P1",
+      "label": "社会库存 ↔ 期货仓单（流通端↔交易所端）",
+      "keywords": ["社会库存", "社库", "期货仓单", "仓单", "交易所库存", "交易所仓单"],
+      "explanation": "社会库存是流通端总量，期货仓单是交易所注册仓单，统计范围不同。"
+    },
+    {
+      "group_id": "G07_utilization_vs_output",
+      "severity": "P1",
+      "label": "开工率/产能利用率 ↔ 产量（相对率↔绝对量）",
+      "keywords": ["开工率", "开工", "产能利用率", "负荷率"],
+      "explanation": "开工率是百分比相对值，产量是绝对吨数，单位与口径不同。注意：'产量'本身归入G01(产量↔消费)主对立组，G07仅保留开工率侧关键词，避免词根跨组歧义。",
+      "evidence_from_v85": "TPL-SI-026 DMC全国开工率 等 INVALID 案例"
+    },
+    {
+      "group_id": "G08_price_vs_cost",
+      "severity": "P1",
+      "label": "价格 ↔ 成本（收益端↔投入端）",
+      "keywords": ["价格", "均价", "现货价", "成本", "完全成本", "加工费"],
+      "explanation": "价格是销售端收益，成本是投入端支出，方向相反。注意仅当两者同时出现且语义对立时触发。"
+    },
+    {
+      "group_id": "G09_export_vs_import",
+      "severity": "P0",
+      "label": "出口 ↔ 进口（贸易方向相反）",
+      "keywords": ["出口", "进口", "出口量", "进口量", "出口额", "进口额"],
+      "explanation": "进出口方向完全相反，不可混用。"
+    },
+    {
+      "group_id": "G10_domestic_vs_imported",
+      "severity": "P0",
+      "label": "国产 ↔ 进口/海外（来源地相反）",
+      "keywords": ["国产", "进口", "海外", "境外", "海外仓"],
+      "explanation": "国产与进口是来源地的对立口径。"
+    }
+  ],
+  "known_p0_cases_v85": [
+    {"case_id": "P0-01", "template": "TPL-SN-034", "series": "汽车端消费用锡拟合", "zhiji_name": "汽车：消费指数：中国（月）", "group": "G04", "score": 0.44},
+    {"case_id": "P0-02", "template": "TPL-AL-013", "series": "LME主要仓库场内库存", "zhiji_name": "LME：非仓单库存：欧洲（日）", "group": "G02", "score": 0.55},
+    {"case_id": "P0-03", "template": "TPL-AO-020/TPL-AO-026", "series": "氧化铝库存-阿拉丁-堆场站台", "zhiji_name": "SMM:中国氧化铝在途&站台堆积:库存量:周度", "group": "G03", "score": 0.57},
+    {"case_id": "P0-04", "template": "TPL-LC-091/TPL-LC-092", "series": "新能源乘用车 产量", "zhiji_name": "SMM: 国产乘用车销量-新能源汽车: 周度", "group": "G01", "score": 1.00},
+    {"case_id": "P0-05", "template": "TPL-LC-023/TPL-LC-024", "series": "月度锂矿：外采：在途库存：中国：锂盐厂（月）", "zhiji_name": "锂矿：外采：在途库存：中国：锂盐厂（月）", "group": "G03", "score": null, "note": "键匹配无分数，系列名重复嵌入"},
+    {"case_id": "P0-06", "template": "TPL-AO-042", "series": "海漂库存-全球主要国家-钢联", "zhiji_name": "(INVALID, HTTP 500)", "group": null, "note": "INVALID, 无zhiji_id"},
+    {"case_id": "P0-07", "template": "TPL-AO-058", "series": "发运量-路透-几内亚总和", "zhiji_name": "(MISSING, HTTP 500)", "group": null, "note": "MISSING, 无zhiji_id"},
+    {"case_id": "P0-08", "template": "TPL-SI-026", "series": "DMC全国开工率", "zhiji_name": "(INVALID, HTTP 500)", "group": null, "note": "INVALID, 无zhiji_id"},
+    {"case_id": "P0-09", "template": "TPL-SI-028/TPL-SI-034", "series": "再生铝合金龙头开工率/多晶硅开工率", "zhiji_name": "(INVALID, HTTP 500)", "group": null, "note": "INVALID, 无zhiji_id"},
+    {"case_id": "P0-10", "template": "TPL-NI-033", "series": "镍铁理论利润（RKEF,山东）", "zhiji_name": "(MISSING, 未找到候选ID)", "group": null, "note": "MISSING, 无zhiji_id"},
+    {"case_id": "P0-11", "template": "多个铝土矿系列", "series": "铝土矿产量-XX-XX", "zhiji_name": "铝土矿：消费量：河北/河南", "group": "G01", "score": 0.55, "note": "同一zhiji_id覆盖4个不相关地区系列，模糊匹配完全失效"}
+  ],
+  "whitelist_patterns": [
+    {"pattern": "同名同义包含", "rule": "若两文本互为包含且无互斥词根对立，不触发", "example": "沪铝主力收盘价 / 沪铝主力收盘价（月）"},
+    {"pattern": "地区前缀差异", "rule": "仅地区/单位后缀不同，语义等价", "example": "铝土矿产量-华北 / 铝土矿产量-华东（同G01但非对立）"},
+    {"pattern": "频率后缀差异", "rule": "（日）/（周）/（月）差异不触发", "example": "氧化铝库存（周）/ 氧化铝库存（月）"}
+  ]
+}
