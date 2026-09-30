@@ -1,0 +1,8 @@
+﻿序号,状态,优先级,模板ID,品种,图表标题,图表类型,指标名称(PDF系列名),PDF指标键(indicator_key),原zhiji_id,单位,DHSB报错原因,模板状态,图表渲染评分,图表预览,PDF来源,当前状态,人工处理建议
+1,INVALID,P0,TPL-AO-042,AO 氧化铝,海漂库存-全球主要国家-钢联,单折线,海漂库存-全球主要国家-钢联,wr73,(已清空/无效),万吨,API错误: HTTP 500,PART_OK,0,../v85_chart_online_test/rendered/TPL-AO-042.html,氧化铝周报20260830.pdf 第20页,❌ 无有效数据，图表空渲染,在zhiji网页搜索该指标名，补新zhiji_id后重跑拉取
+2,MISSING,P0,TPL-AO-058,AO 氧化铝,发运量-路透-几内亚总和,单折线,发运量-路透-几内亚总和,,(已清空/无效),元/吨,候选ID无效: API错误: HTTP 500,PART_OK,0,../v85_chart_online_test/rendered/TPL-AO-058.html,氧化铝周报20260830.pdf 第24页,❌ 无有效数据，图表空渲染,在zhiji网页搜索该指标名，补新zhiji_id后重跑拉取
+3,INVALID,P0,TPL-SI-026,SI 工业硅,DMC全国开工率,复合混合(折线+柱状),DMC全国开工率,开工率,(已清空/无效),%,API错误: HTTP 500,PART_OK,0,../v85_chart_online_test/rendered/TPL-SI-026.html,硅产业链周报20260906.pdf 第21页,❌ 无有效数据，图表空渲染,在zhiji网页搜索该指标名，补新zhiji_id后重跑拉取
+4,INVALID,P0,TPL-SI-026,SI 工业硅,DMC全国开工率,复合混合(折线+柱状),DMC:全国:开工率,开工率,(已清空/无效),%,API错误: HTTP 500,PART_OK,0,../v85_chart_online_test/rendered/TPL-SI-026.html,硅产业链周报20260906.pdf 第21页,❌ 无有效数据，图表空渲染,在zhiji网页搜索该指标名，补新zhiji_id后重跑拉取
+5,INVALID,P0,TPL-SI-028,SI 工业硅,再生铝合金龙头开工率,单折线,再生铝合金龙头开工率,开工率,(已清空/无效),%,API错误: HTTP 500,PART_OK,0,../v85_chart_online_test/rendered/TPL-SI-028.html,硅产业链周报20260906.pdf 第22页,❌ 无有效数据，图表空渲染,在zhiji网页搜索该指标名，补新zhiji_id后重跑拉取
+6,INVALID,P0,TPL-SI-034,SI 工业硅,多晶硅开工率,多折线,中国多晶硅开工率,开工率,(已清空/无效),%,API错误: HTTP 500,PART_OK,9,../v85_chart_online_test/rendered/TPL-SI-034.html,硅产业链周报20260906.pdf 第26页,❌ 无有效数据，图表空渲染,在zhiji网页搜索该指标名，补新zhiji_id后重跑拉取
+7,MISSING,P0,TPL-NI-033,NI 镍,"镍铁理论利润（RKEF,山东）",单折线,"镍铁理论利润（RKEF,山东）",,(已清空/无效),元/吨,未找到候选ID,PART_OK,0,../v85_chart_online_test/rendered/TPL-NI-033.html,镍与不锈钢周报20260906.pdf 第24页,❌ 无有效数据，图表空渲染,在zhiji网页搜索该指标名，补新zhiji_id后重跑拉取

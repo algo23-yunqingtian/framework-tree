@@ -73,6 +73,21 @@
 
 ## 近期变更记录
 
+### 2026-09-30 HERMES — V85 人工评审材料准备 (HERMES_V85_ARTIFICIAL_REVIEW_PREP)
+- **T1 输入**: `output/v85_chart_online_test/` 7 项产物 + 333 张 HTML 全部齐备（render_detail.json 6.5MB）
+- **T2.1 评审入口**: `review_portal.md` — 品种分组(6品种)/评分排序(62张低于满分)/P0快速筛选(11张复合/堆叠/多折线)/86个图表一键跳转链接，全部链接可访问
+- **T2.2 字段适配文档**: `schema_adapt_doc.md` 21 项字段映射 + 6 项推导字段 + 状态枚举转换表 + 6 大关键陷阱 + §4 目标规范 JSON 示例（后续 DSHB 模板输出直接对齐）
+- **T2.3 异常指标**: `abnormal_indicator_list.csv` 7 条(5 INVALID + 2 MISSING)，18 列含图表ID/指标名/原zhiji_id/报错原因/图表预览/人工处理建议
+- **T2.4 模糊匹配抽检**: `fuzzy_match_sample_checklist.md` 124 条全量明细 + 风险分级 P0=9/P1=17/P2=12/P3=86，90 组去重唯一项，含 zhiji 实际指标名与数据点对比
+- **⚠️ 重大发现**: 124 条 FILLED 中存在**真实口径错误** — 多个「铝土矿产量-XX」系列全部指向 `ID01724147`（铝土矿：**消费量**：河北，score 0.55），产量与消费量是不同产业口径；另「新能源乘用车产量」→「乘用车销量」(score 1.00 但语义不等价，已升级为 P0)；「LME场内库存」→「LME非仓单库存」概念相反
+- **T2.5 权限标记**: FULL_OK 🟢正常展示(327) / PART_OK 🔴红色告警+禁止投产(6) / 口径待复核 🟠(P0项)，PART_OK 6 个模板 ID 在入口页全覆盖
+- **T2.6 上线前置**: `pre_merge_checklist.md` 8 项 Blocker + 6 项约束合规 + 合并步骤 + 部署步骤 + 4 层回滚方案 + 上线判定矩阵
+- **T4 约束全遵守**: 仅 `feature/v85-chart-template` 分支未合并 main；indicators_v1.json/tree_config.json/原始模板零改动；未发起任何生产部署
+- **T5 完成标准**: 评审入口可访问 ✅；字段适配文档完整 ✅；异常清单+模糊匹配抽检清单完整可直接用于业务评审会议 ✅
+- **评审工时预估**: 7 步流程合计约 130 分钟
+- **遗留项**: B1 P0 口径冲突 9 项 / B2 异常指标 7 条 / B3 PART_OK 6 张 / B4 P1 匹配 17 项 — 全部为合并前 Blocker
+- **产出**: `output/v85_review_package/` 5 份材料
+
 ### 2026-09-30 HERMES — V85 图表模板在线集成渲染 (HERMES_V85_CHART_TEMPLATE_INTEGRATION)
 - **T1 输入包**: DSHB 交付 commit `4061dcf` (origin/feature/v85-chart-template)，4 文件 18152 行；MD5 实测: template json `92371c0a` / verify_stat csv `dba27ff4` / hermes_readme `2c35c68a` / run_log `bb66bf35`
 - **T2.1 zhiji 拉取**: 248 唯一 zhiji_id × 1s 限速全量拉取，**248/248 成功 (100%)，0 失败**，2021-01-01~2026-08-31，结果落 `zhiji_data_cache/` + `fetch_summary.json`
