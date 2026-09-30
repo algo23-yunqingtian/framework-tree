@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-09-30T23:38:24.388061",
+  "task_id": "HERMES_V85_REVIEW_PORTAL_ENHANCE_AND_RENDER_SIMULATION",
+  "simulation_params": {
+    "random_seed": 42,
+    "stage_times_ms": {
+      "template_load": [
+        5,
+        25
+      ],
+      "schema_validate": [
+        10,
+        40
+      ],
+      "semantic_check": [
+        15,
+        50
+      ],
+      "task_route": [
+        2,
+        10
+      ],
+      "render_engine": [
+        100,
+        500
+      ]
+    },
+    "render_failure_rate": 0.02
+  },
+  "statistics": {
+    "total_tasks": 488,
+    "by_group": {
+      "can_render": 89,
+      "review_first": 132,
+      "blocked": 267
+    },
+    "by_source": {
+      "PDF": 333,
+      "THS": 155
+    },
+    "stage_times_total": {
+      "template_load": 7487.440534401326,
+      "schema_validate": 12204.029584488446,
+      "semantic_check": 16117.04107403864,
+      "task_route": 556.0009164825383,
+      "render_engine": 25405.873207849803
+    },
+    "failures": {
+      "p0_blocked": 267,
+      "invalid_zhiji": 0,
+      "ths_no_zhiji": 131,
+      "enum_invalid": 0,
+      "field_missing": 0,
+      "render_engine_error": 1
+    },
+    "successes": 89,
+    "simulated_renders": 88,
+    "final_status_dist": {
+      "RENDERED": 88,
+      "RENDER_FAILED": 1,
+      "QUEUED_FOR_REVIEW": 1,
+      "PENDING_MATCH": 131,
+      "BLOCKED_P0": 267
+    }
+  },
+  "avg_per_task_ms": 126.58,
+  "total_simulated_ms": 61770.4,
+  "actual_chart_types": [
+    "单折线",
+    "复合混合(折线+柱状)",
+    "堆叠柱状",
+    "多折线"
+  ],
+  "failure_scenarios": [
+    {
+      "scenario": "p0_blocked",
+      "desc": "命中P0语义冲突，拦截渲染"
+    },
+    {
+      "scenario": "invalid_zhiji",
+      "desc": "zhiji_id 为 INVALID/MISSING"
+    },
+    {
+      "scenario": "ths_no_zhiji",
+      "desc": "THS模板无zhiji_id，无法渲染"
+    },
+    {
+      "scenario": "enum_invalid",
+      "desc": "chart_type 枚举值非法"
+    },
+    {
+      "scenario": "field_missing",
+      "desc": "series 缺少必需字段"
+    }
+  ]
+}

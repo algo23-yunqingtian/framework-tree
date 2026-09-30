@@ -93,6 +93,14 @@
 - **T4 约束全遵守**: feature/v85-chart-template分支未合并main；零zhiji API调用零时序拉取；原始模板/indicators_v1.json/tree_config.json只读未改
 - **产出**: analysis/e2e_output/v85/v85_final_integrate/ 8份材料
 
+### 2026-09-30 HERMES — 评审门户v4增强+渲染仿真模拟 (HERMES_V85_REVIEW_PORTAL_ENHANCE_AND_RENDER_SIMULATION)
+- **T2.1 评审门户v4**: enhanced_review_portal.md — 多维筛选(来源/风险/品种/图表类型)+详情弹窗(全套元数据/风险说明/黑名单规则编号)+全局可视化大盘(饼图/柱状图)+PDF/THS差异对比+人工评审操作区(通过/驳回/临时白名单)
+- **T2.2 渲染仿真**: 488模板全量仿真跑批(5阶段链路: 加载->schema->语义->路由->渲染) — 88渲染成功+267 P0阻塞+131 THS待匹配+1渲染失败+1入复核队列; 容错评估4项边界缺陷+4项遗漏点+4条优化建议
+- **T2.3 校验器v3.0**: enhanced_auto_semantic_check.py — DSHB CSV动态加载(预留入口,自动识别列名,输出diff报告)+结构化日志(JSONL 10050条,记录规则ID/风险描述/系列名/zhiji名)
+- **T2.4 交付文档**: portal_operation_manual.md(筛选/详情/评审/导出/DSHB加载操作指南)+portal_changelog.md(v1->v2->v3->v4变更记录)
+- **T4 约束全遵守**: feature/v85-chart-template分支; 零zhiji API调用; 原始绑定文件只读未改; indicators_v1.json/tree_config.json只读; 仅新增文件
+- **产出**: analysis/e2e_output/v85/v85_portal_enhance_render_sim/ 9份材料
+
 ### 2026-09-30 HERMES — V85 人工评审材料准备 (HERMES_V85_ARTIFICIAL_REVIEW_PREP)
 - **T1 输入**: `output/v85_chart_online_test/` 7 项产物 + 333 张 HTML 全部齐备（render_detail.json 6.5MB）
 - **T2.1 评审入口**: `review_portal.md` — 品种分组(6品种)/评分排序(62张低于满分)/P0快速筛选(11张复合/堆叠/多折线)/86个图表一键跳转链接，全部链接可访问
