@@ -195,9 +195,13 @@ MD5 全大写；SHA256 完整值见 `_file_hashes.json`。
 | 5 | `verification_notes.md` | 10,541 | `96AB7F89D81BA01A5364A30E0D683D2D` |
 | 6 | `fuzzy_match_rule_optimization_rewrite.md` | 12,142 | `91B21BA46A230BC56B227349DDBE4646` |
 | 7 | `alias_lib_verification_report_rewrite.md` | 16,204 | `6BAC4B4F2DE5D414FA0C59F6E6666BB3` |
-| 8 | `alias_lib_maintain_guide_rewrite.md` | — | 见 `_file_hashes.json`（本文修改后重算） |
+| 8 | `alias_lib_maintain_guide_rewrite.md` | — | 自指项，不自嵌 MD5，见下方说明 |
 | 9 | `regression_test_report.md` | 9,115 | `9F3EA3F7D77B58660BD09A1C4B8230BB` |
 | 10 | `alias_lib_import_guide.md` | 10,799 | `D1989CFBF86C4FD15555963EAC41CB18` |
+
+
+**自指项说明**：第 8 行是本文自身。MD5 无法自嵌 —— 把 MD5 写进本文即改变本文的 MD5，属于预期行为，不构成校验失败。本文在本次写入说明之前的内容为 12,320 字节，MD5 `4AB953BA61F5C9CD25BD9CCC0EADD9E5`，SHA256 `653AF6B637ED6164A07506E1F8DD40C87132BC0D2C2B79AAA16314535447862B`。
+写入说明之后的最终值由 git 提交 blob 与 `_file_hashes.json` 承载（见下）。
 
 执行脚本与日志（复现工具链，一并提交）：
 
