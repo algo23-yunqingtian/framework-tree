@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>原铝进口-印度尼西亚 · TPL-AL-023</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif; background: #0f172a; color: #e2e8f0; padding: 18px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.meta { display: flex; justify-content: space-between; align-items: center; background: #16213e; border: 1px solid #7a8a9c55; border-radius: 8px 8px 0 0; padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
+.meta-left { display: flex; gap: 14px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+.tid { font-family: monospace; color: #64748b; background: #0f172a; padding: 2px 8px; border-radius: 4px; }
+.vtag { background: #7a8a9c33; color: #7a8a9c; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+.node { color: #94a3b8; }
+.st-full { background: #22c55e22; color: #22c55e; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+.st-part { background: #ef444422; color: #ef4444; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; border: 1px solid #ef444466; }
+.scount { font-size: 12px; color: #94a3b8; }
+.part-warning { background: #ef444415; border: 1px solid #ef444466; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.pw-title { color: #ef4444; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.part-warning ul { margin-left: 22px; font-size: 12px; color: #fca5a5; }
+.fail-panel { background: #7f1d1d18; border: 1px solid #ef444455; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.fp-title { color: #f87171; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #33415555; }
+th { color: #94a3b8; }
+.ftag { padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.ftag-INVALID { background: #f59e0b22; color: #f59e0b; }
+.ftag-MISSING, .ftag-NO_ID { background: #6b728022; color: #9ca3af; }
+.ftag-FETCH_FAIL { background: #ef444422; color: #ef4444; }
+.chart-box { background: #16213e; border-radius: 0 0 8px 8px; padding: 8px; margin-top: 12px; }
+#chart { width: 960px; height: 460px; }
+footer { margin-top: 14px; font-size: 11px; color: #475569; text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <div class="meta-left">
+      <span class="tid">TPL-AL-023</span>
+      <span class="vtag">AL 铝</span>
+      <span class="node">节点: 进出口</span>
+      <span class="node">单折线</span>
+      <span class="scount">1/1 系列有数据</span>
+    </div>
+    <span class="st-full">FULL_OK</span>
+  </div>
+  
+  <div class="chart-box"><div id="chart"></div></div>
+  
+  <footer>来源: 铝周报20260830.pdf · 第 26 页 · chart chart_64 · 测试环境渲染（未上线）</footer>
+</div>
+<script>
+var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+var option = {"backgroundColor": "#16213e", "title": {"text": "原铝进口-印度尼西亚", "subtext": "模板: TPL-AL-023 | 品种: 铝 | PDF: 铝周报20260830.pdf P26", "left": "center", "top": 8, "textStyle": {"color": "#e5e7eb", "fontSize": 16, "fontWeight": "bold"}, "subtextStyle": {"color": "#9ca3af", "fontSize": 11}}, "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}}, "legend": {"top": 52, "left": "center", "data": ["原铝进口-印度尼西亚"], "textStyle": {"color": "#cbd5e1", "fontSize": 12}, "type": "scroll"}, "grid": {"left": 64, "right": 30, "top": 96, "bottom": 42}, "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": false}}, "yAxis": [{"type": "value", "name": "元/吨", "nameTextStyle": {"color": "#6b7280", "fontSize": 11, "padding": [0, 0, 0, 24]}, "nameLocation": "end", "axisLine": {"show": true, "lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": true, "lineStyle": {"color": "#1f2937"}}}], "series": [{"name": "原铝进口-印度尼西亚", "yAxisIndex": 0, "type": "line", "data": [["2026-08-31", 2175.25], ["2026-07-31", 153.46], ["2026-06-30", 4624.69], ["2026-05-31", 1179.59], ["2026-04-30", 20988.43], ["2026-03-31", 12049.43], ["2026-02-28", 8554.52], ["2026-01-31", 8172.87], ["2025-12-31", 13562.19], ["2025-11-30", 15270.1], ["2025-10-31", 36435.96], ["2025-09-30", 30760.49], ["2025-08-31", 31359.52], ["2025-07-31", 38068.03], ["2025-06-30", 11347.24], ["2025-05-31", 7930.01], ["2025-04-30", 9498.23], ["2025-03-31", 598.31], ["2025-02-28", 6297.51], ["2025-01-31", 2997.22], ["2024-12-31", 4058.45], ["2024-11-30", 7196.52], ["2024-10-31", 7861.01], ["2024-09-30", 11468.29], ["2024-08-31", 19055.11], ["2024-07-31", 11763.64], ["2024-06-30", 10595.12], ["2024-05-31", 19768.07], ["2024-04-30", 18295.22], ["2024-03-31", 15296.09], ["2024-02-29", 22130.28], ["2024-01-31", 22084.59], ["2023-12-31", 10842.87], ["2023-11-30", 11804.21], ["2023-10-31", 18524.69], ["2023-09-30", 5551.68], ["2023-08-31", 8181.06], ["2023-07-31", 0.0], ["2023-06-30", 0.0], ["2023-05-31", 0.0], ["2023-04-30", 0.0], ["2023-03-31", 0.0], ["2023-02-28", 0.0], ["2023-01-31", 0.0], ["2022-12-31", 0.0], ["2022-11-30", 0.0], ["2022-10-31", 0.0], ["2022-09-30", 0.0], ["2022-08-31", 0.0], ["2022-07-31", 0.0], ["2022-06-30", 0.0], ["2022-05-31", 0.0], ["2022-04-30", 50.29], ["2022-03-31", 354.62], ["2022-02-28", 0.0], ["2022-01-31", 0.0], ["2021-12-31", 0.0], ["2021-11-30", 6712.59], ["2021-10-31", 1875.26], ["2021-09-30", 5725.98], ["2021-08-31", 1962.48], ["2021-07-31", 10702.25], ["2021-06-30", 2523.71], ["2021-05-31", 2448.37], ["2021-04-30", 6130.61], ["2021-03-31", 1230.95], ["2021-02-28", 0.0], ["2021-01-31", 373.56]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#5470c6"}, "itemStyle": {"color": "#5470c6"}}]};
+var failNames = [];
+if (failNames.length) {
+  chart.setOption(option);
+  chart.setOption({graphic: {elements: [{type:'text', right: 12, bottom: 8, style:{text:'🚫 ' + failNames.join('、'), fill:'#ef4444', fontSize:11}}]}});
+} else { chart.setOption(option); }
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

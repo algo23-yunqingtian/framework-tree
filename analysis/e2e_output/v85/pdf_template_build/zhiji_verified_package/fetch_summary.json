@@ -1,0 +1,3211 @@
+{
+  "task": "T2.1 zhiji bulk fetch",
+  "finished_at": "2026-09-30 13:27:40",
+  "elapsed_sec": 763.9,
+  "date_range": [
+    "2021-01-01",
+    "2026-08-31"
+  ],
+  "total_unique_ids": 248,
+  "success": 248,
+  "failed": 0,
+  "success_rate": 100.0,
+  "failed_detail": {},
+  "id_status_map": {
+    "CM0000077816": {
+      "names": [
+        "氧化铝与刚玉净出口"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-040"
+      ],
+      "fetch_ok": true
+    },
+    "CM0000138647": {
+      "names": [
+        "镍铁进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-039"
+      ],
+      "fetch_ok": true
+    },
+    "CM0000207383": {
+      "names": [
+        "铝材进口量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-020"
+      ],
+      "fetch_ok": true
+    },
+    "CM0000651342": {
+      "names": [
+        "不锈钢结构"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-027"
+      ],
+      "fetch_ok": true
+    },
+    "FU00014801": {
+      "names": [
+        "LME铝"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-007"
+      ],
+      "fetch_ok": true
+    },
+    "FU00014808": {
+      "names": [
+        "LME主要仓库注销仓单"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-014"
+      ],
+      "fetch_ok": true
+    },
+    "FU00014816": {
+      "names": [
+        "LME"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-003"
+      ],
+      "fetch_ok": true
+    },
+    "FU00014817": {
+      "names": [
+        "LME库存变化"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-030"
+      ],
+      "fetch_ok": true
+    },
+    "FU00014953": {
+      "names": [
+        "上期所库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-020"
+      ],
+      "fetch_ok": true
+    },
+    "FU00024325": {
+      "names": [
+        "不锈钢基差"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-028"
+      ],
+      "fetch_ok": true
+    },
+    "FU00039493": {
+      "names": [
+        "SHFE铝总持仓"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-005"
+      ],
+      "fetch_ok": true
+    },
+    "FU00103249": {
+      "names": [
+        "LME主要仓库场内库存"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-013"
+      ],
+      "fetch_ok": true
+    },
+    "FU00112687": {
+      "names": [
+        "上期所镍月间结构"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-001"
+      ],
+      "fetch_ok": true
+    },
+    "ID00185743": {
+      "names": [
+        "镍社会库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-009"
+      ],
+      "fetch_ok": true
+    },
+    "ID00188319": {
+      "names": [
+        "中国金属硅周度社会库存：天津港",
+        "金属硅周度社会库存-合计"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-014",
+        "TPL-SI-015"
+      ],
+      "fetch_ok": true
+    },
+    "ID00258568": {
+      "names": [
+        "工业硅价格-441#(天津港)"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-003"
+      ],
+      "fetch_ok": true
+    },
+    "ID00259602": {
+      "names": [
+        "镍铁价格（江苏，7%≤Ni"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-032"
+      ],
+      "fetch_ok": true
+    },
+    "ID00265336": {
+      "names": [
+        "中国电解镍净进口量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-008"
+      ],
+      "fetch_ok": true
+    },
+    "ID00265351": {
+      "names": [
+        "图、中国净进口量变化"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-019"
+      ],
+      "fetch_ok": true
+    },
+    "ID00299777": {
+      "names": [
+        "国内锡矿产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-010"
+      ],
+      "fetch_ok": true
+    },
+    "ID00302567": {
+      "names": [
+        "铝现货升贴水"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-009"
+      ],
+      "fetch_ok": true
+    },
+    "ID00408151": {
+      "names": [
+        "菲律宾镍矿价格（1.5%）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-030"
+      ],
+      "fetch_ok": true
+    },
+    "ID01001542": {
+      "names": [
+        "再生铝合金月产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-026"
+      ],
+      "fetch_ok": true
+    },
+    "ID01001748": {
+      "names": [
+        "SMM中国氧化铝月度产量-河南"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-036"
+      ],
+      "fetch_ok": true
+    },
+    "ID01001760": {
+      "names": [
+        "电解铝：出库量：中国"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-030"
+      ],
+      "fetch_ok": true
+    },
+    "ID01001835": {
+      "names": [
+        "氧化铝建成产能"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-032"
+      ],
+      "fetch_ok": true
+    },
+    "ID01002085": {
+      "names": [
+        "中国精炼镍产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-006"
+      ],
+      "fetch_ok": true
+    },
+    "ID01002090": {
+      "names": [
+        "铝板带箔-原料库存天数"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-016"
+      ],
+      "fetch_ok": true
+    },
+    "ID01002124": {
+      "names": [
+        "中国镍铁产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-038"
+      ],
+      "fetch_ok": true
+    },
+    "ID01002132": {
+      "names": [
+        "中国硫酸镍产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-016"
+      ],
+      "fetch_ok": true
+    },
+    "ID01029971": {
+      "names": [
+        "铝棒：出库量：中国"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-031"
+      ],
+      "fetch_ok": true
+    },
+    "ID01037467": {
+      "names": [
+        "工业硅样本工厂库存(SMM)",
+        "工业硅样本工厂库存(SMM)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SI-014",
+        "TPL-SI-017"
+      ],
+      "fetch_ok": true
+    },
+    "ID01114279": {
+      "names": [
+        "出口-未锻轧铝合金"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-034"
+      ],
+      "fetch_ok": true
+    },
+    "ID01114281": {
+      "names": [
+        "铝合金进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-018"
+      ],
+      "fetch_ok": true
+    },
+    "ID01118283": {
+      "names": [
+        "铝制品出口-北美"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-038"
+      ],
+      "fetch_ok": true
+    },
+    "ID01244261": {
+      "names": [
+        "钴酸锂 月度产量",
+        "钴酸锂 月度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-065",
+        "TPL-LC-083"
+      ],
+      "fetch_ok": true
+    },
+    "ID01305501": {
+      "names": [
+        "新疆工业硅价格(SMM)"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-005"
+      ],
+      "fetch_ok": true
+    },
+    "ID01319345": {
+      "names": [
+        "A00升贴水（上海）",
+        "A00升贴水（巩义）",
+        "A00升贴水（佛山）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-001",
+        "TPL-AL-002",
+        "TPL-AL-003"
+      ],
+      "fetch_ok": true
+    },
+    "ID01349541": {
+      "names": [
+        "碳酸锂 硫酸法 周度产量",
+        "碳酸锂 硫酸法 周度产量",
+        "碳酸锂 硫酸法 周度产量",
+        "碳酸锂 硫酸法 周度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-029",
+        "TPL-LC-036",
+        "TPL-LC-043",
+        "TPL-LC-068"
+      ],
+      "fetch_ok": true
+    },
+    "ID01363300": {
+      "names": [
+        "中国冰镍进口量：自印尼"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-021"
+      ],
+      "fetch_ok": true
+    },
+    "ID01364207": {
+      "names": [
+        "中国冰镍进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-020"
+      ],
+      "fetch_ok": true
+    },
+    "ID01366690": {
+      "names": [
+        "镍板库存"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-010"
+      ],
+      "fetch_ok": true
+    },
+    "ID01366691": {
+      "names": [
+        "镍豆库存"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-011"
+      ],
+      "fetch_ok": true
+    },
+    "ID01378994": {
+      "names": [
+        "不锈钢库存：300系（热轧）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-046"
+      ],
+      "fetch_ok": true
+    },
+    "ID01379001": {
+      "names": [
+        "不锈钢库存：300系（冷轧）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-045"
+      ],
+      "fetch_ok": true
+    },
+    "ID01511962": {
+      "names": [
+        "新能源车销量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-026"
+      ],
+      "fetch_ok": true
+    },
+    "ID01517441": {
+      "names": [
+        "SMM社会库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-023"
+      ],
+      "fetch_ok": true
+    },
+    "ID01525089": {
+      "names": [
+        "汽车端消费用锡拟合"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SN-034"
+      ],
+      "fetch_ok": true
+    },
+    "ID01551919": {
+      "names": [
+        "电池级碳酸锂 现货价格"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-004"
+      ],
+      "fetch_ok": true
+    },
+    "ID01590826": {
+      "names": [
+        "锡锭进口利润"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-009"
+      ],
+      "fetch_ok": true
+    },
+    "ID01601680": {
+      "names": [
+        "镍全球显性库存"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-012"
+      ],
+      "fetch_ok": true
+    },
+    "ID01655446": {
+      "names": [
+        "铝土矿进口-澳大利亚"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-060"
+      ],
+      "fetch_ok": true
+    },
+    "ID01660879": {
+      "names": [
+        "动力电池 装车量:插混乘用车",
+        "动力电池 装车量:插混乘用车",
+        "动力电池 装车量:纯电动乘用车",
+        "动力电池 装车量:插混乘用车",
+        "动力电池 装车量:纯电动乘用车",
+        "中国动力电池装车量：磷酸铁锂"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-090",
+        "TPL-LC-093",
+        "TPL-LC-094",
+        "TPL-LC-095",
+        "TPL-LC-096",
+        "TPL-NI-024"
+      ],
+      "fetch_ok": true
+    },
+    "ID01666080": {
+      "names": [
+        "其他电池 国内销量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-088"
+      ],
+      "fetch_ok": true
+    },
+    "ID01668719": {
+      "names": [
+        "国内品牌升贴水"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-004"
+      ],
+      "fetch_ok": true
+    },
+    "ID01685008": {
+      "names": [
+        "中国高碳铬铁产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-036"
+      ],
+      "fetch_ok": true
+    },
+    "ID01707134": {
+      "names": [
+        "碳酸锂 锂云母产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-060"
+      ],
+      "fetch_ok": true
+    },
+    "ID01707137": {
+      "names": [
+        "碳酸锂 盐湖提锂 产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-035"
+      ],
+      "fetch_ok": true
+    },
+    "ID01707140": {
+      "names": [
+        "碳酸锂 锂辉石总产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-061"
+      ],
+      "fetch_ok": true
+    },
+    "ID01721655": {
+      "names": [
+        "氧化铝厂内库存(除新疆)-钢联"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-024"
+      ],
+      "fetch_ok": true
+    },
+    "ID01721686": {
+      "names": [
+        "三网均价-内蒙古"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-001"
+      ],
+      "fetch_ok": true
+    },
+    "ID01721691": {
+      "names": [
+        "氧化铝库存-阿拉丁-氧化铝厂"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-022"
+      ],
+      "fetch_ok": true
+    },
+    "ID01722282": {
+      "names": [
+        "硫酸镍价格"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-005"
+      ],
+      "fetch_ok": true
+    },
+    "ID01724143": {
+      "names": [
+        "国产铝土矿-华南-高品(广西)",
+        "国产铝土矿-华南-高品(贵州)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-016",
+        "TPL-AO-017"
+      ],
+      "fetch_ok": true
+    },
+    "ID01724147": {
+      "names": [
+        "国产铝土矿-华北-低品(山西)",
+        "国产铝土矿-华北-低品(河南)",
+        "国产铝土矿-华北-高品(山西)",
+        "国产铝土矿-华北-高品(河南)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-010",
+        "TPL-AO-011",
+        "TPL-AO-012",
+        "TPL-AO-013"
+      ],
+      "fetch_ok": true
+    },
+    "ID01736015": {
+      "names": [
+        "锂矿 可售库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-025"
+      ],
+      "fetch_ok": true
+    },
+    "ID01737992": {
+      "names": [
+        "印尼镍矿价格（HPM,1.6%）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-031"
+      ],
+      "fetch_ok": true
+    },
+    "ID01857527": {
+      "names": [
+        "工业硅电价成本"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-009"
+      ],
+      "fetch_ok": true
+    },
+    "ID01858105": {
+      "names": [
+        "印尼冰镍产量（分品味）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-023"
+      ],
+      "fetch_ok": true
+    },
+    "ID01865189": {
+      "names": [
+        "碳酸锂 工厂库存",
+        "碳酸锂 工厂库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-053",
+        "TPL-LC-074"
+      ],
+      "fetch_ok": true
+    },
+    "ID01865204": {
+      "names": [
+        "中国碳酸锂周度产量（吨）",
+        "中国碳酸锂周度产量（吨）",
+        "中国碳酸锂周度产量（吨）",
+        "中国碳酸锂周度产量（吨）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-029",
+        "TPL-LC-031",
+        "TPL-LC-033",
+        "TPL-LC-038"
+      ],
+      "fetch_ok": true
+    },
+    "ID01877461": {
+      "names": [
+        "工业硅云南样本周度产量",
+        "工业硅云南样本周度产量",
+        "工业硅云南样本周度产量",
+        "工业硅云南样本周度产量",
+        "工业硅云南样本周度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-010",
+        "TPL-SI-021",
+        "TPL-SI-024",
+        "TPL-SI-038",
+        "TPL-SI-043"
+      ],
+      "fetch_ok": true
+    },
+    "ID01895225": {
+      "names": [
+        "锡沪伦比"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-008"
+      ],
+      "fetch_ok": true
+    },
+    "ID01994882": {
+      "names": [
+        "硅片价格-N型182mm"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-029"
+      ],
+      "fetch_ok": true
+    },
+    "ID02011553": {
+      "names": [
+        "锂精矿进口 尼日利亚"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-010"
+      ],
+      "fetch_ok": true
+    },
+    "ID02032074": {
+      "names": [
+        "硅片企业多晶硅库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-046"
+      ],
+      "fetch_ok": true
+    },
+    "ID02048300": {
+      "names": [
+        "硅片价格-N型210mm"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-030"
+      ],
+      "fetch_ok": true
+    },
+    "ID02067671": {
+      "names": [
+        "锂辉石加工费 河北"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-019"
+      ],
+      "fetch_ok": true
+    },
+    "ID02067672": {
+      "names": [
+        "锂辉石加工费 山东"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-016"
+      ],
+      "fetch_ok": true
+    },
+    "ID02067673": {
+      "names": [
+        "锂辉石加工费 江苏"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-017"
+      ],
+      "fetch_ok": true
+    },
+    "ID02067674": {
+      "names": [
+        "锂辉石加工费 湖南"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-020"
+      ],
+      "fetch_ok": true
+    },
+    "ID02067675": {
+      "names": [
+        "锂辉石加工费 辽宁"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-021"
+      ],
+      "fetch_ok": true
+    },
+    "ID02067676": {
+      "names": [
+        "锂辉石加工费 四川"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-015"
+      ],
+      "fetch_ok": true
+    },
+    "ID02067677": {
+      "names": [
+        "锂辉石加工费 江西"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-018"
+      ],
+      "fetch_ok": true
+    },
+    "ID02069945": {
+      "names": [
+        "锂矿 外采 厂内库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-026"
+      ],
+      "fetch_ok": true
+    },
+    "ID02093014": {
+      "names": [
+        "月度锂矿：外采：在途库存：中国：锂盐厂（月）",
+        "月度锂矿：外采：在途库存：中国：锂盐厂（月）",
+        "月度锂矿：外采：在途库存：中国：锂盐厂（月）",
+        "锂矿 外采 在途库存"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-023",
+        "TPL-LC-024",
+        "TPL-LC-026",
+        "TPL-LC-027"
+      ],
+      "fetch_ok": true
+    },
+    "ID02105841": {
+      "names": [
+        "锡冶炼利润"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SN-017"
+      ],
+      "fetch_ok": true
+    },
+    "ID02313951": {
+      "names": [
+        "云南木炭工艺生产成本"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-008"
+      ],
+      "fetch_ok": true
+    },
+    "a10000748": {
+      "names": [
+        "图、锡冶炼厂加工费",
+        "锡冶炼厂加工费"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-017",
+        "TPL-SN-018"
+      ],
+      "fetch_ok": true
+    },
+    "a10001424": {
+      "names": [
+        "锂精矿进口 澳大利亚"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-012"
+      ],
+      "fetch_ok": true
+    },
+    "a10001859": {
+      "names": [
+        "磷酸铁锂总产量（吨）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-073"
+      ],
+      "fetch_ok": true
+    },
+    "a10001951": {
+      "names": [
+        "三元材料 月度产量",
+        "三元材料 月度产量",
+        "三元材料 月度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-063",
+        "TPL-LC-081",
+        "TPL-LC-097"
+      ],
+      "fetch_ok": true
+    },
+    "a10003083": {
+      "names": [
+        "国内初级锡材产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-031"
+      ],
+      "fetch_ok": true
+    },
+    "a10003098": {
+      "names": [
+        "国内锡矿进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-011"
+      ],
+      "fetch_ok": true
+    },
+    "a10005166": {
+      "names": [
+        "光伏消费用锡拟合"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-033"
+      ],
+      "fetch_ok": true
+    },
+    "a10005270": {
+      "names": [
+        "国内智能手机产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-032"
+      ],
+      "fetch_ok": true
+    },
+    "a10006435": {
+      "names": [
+        "LME库存分布变化"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-029"
+      ],
+      "fetch_ok": true
+    },
+    "a10006516": {
+      "names": [
+        "锰酸锂 月度产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-066"
+      ],
+      "fetch_ok": true
+    },
+    "a10006556": {
+      "names": [
+        "碳酸锂 磷酸铁锂需求",
+        "碳酸锂 磷酸铁锂需求"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-055",
+        "TPL-LC-059"
+      ],
+      "fetch_ok": true
+    },
+    "a10006557": {
+      "names": [
+        "碳酸锂 月度进口量",
+        "碳酸锂 月度进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-009",
+        "TPL-LC-051"
+      ],
+      "fetch_ok": true
+    },
+    "a10015876": {
+      "names": [
+        "氧化铝库存-阿拉丁-总计",
+        "氧化铝库存-阿拉丁-总计",
+        "铝土矿库存：总计-SMM",
+        "铝土矿库存-总计-SMM"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-021",
+        "TPL-AO-027",
+        "TPL-AO-041",
+        "TPL-AO-053"
+      ],
+      "fetch_ok": true
+    },
+    "a10015882": {
+      "names": [
+        "铝土矿库存-河南-SMM"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-009"
+      ],
+      "fetch_ok": true
+    },
+    "a10015974": {
+      "names": [
+        "铝板带出口利润"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-012"
+      ],
+      "fetch_ok": true
+    },
+    "a10015979": {
+      "names": [
+        "铝材出口-北美"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-036"
+      ],
+      "fetch_ok": true
+    },
+    "a10015983": {
+      "names": [
+        "铝材出口利润"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-011"
+      ],
+      "fetch_ok": true
+    },
+    "a10016174": {
+      "names": [
+        "电解铝生产利润"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-010"
+      ],
+      "fetch_ok": true
+    },
+    "a10016225": {
+      "names": [
+        "铝土矿产量-山西-SMM",
+        "铝土矿产量-山西-SMM",
+        "铝土矿产量-山西省-百川"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-006",
+        "TPL-AO-048",
+        "TPL-AO-055"
+      ],
+      "fetch_ok": true
+    },
+    "a10016226": {
+      "names": [
+        "铝土矿产量-河南-SMM",
+        "铝土矿产量-河南-SMM",
+        "铝土矿产量-河南省-百川"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-007",
+        "TPL-AO-050",
+        "TPL-AO-056"
+      ],
+      "fetch_ok": true
+    },
+    "a10016229": {
+      "names": [
+        "铝土矿产量-合计-百川"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-054"
+      ],
+      "fetch_ok": true
+    },
+    "a10016233": {
+      "names": [
+        "铝土矿产量-重庆-SMM"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-052"
+      ],
+      "fetch_ok": true
+    },
+    "a10016313": {
+      "names": [
+        "到港量-海关-几内亚",
+        "铝土矿进口-塞拉利昂",
+        "到港量-海关-几内亚"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-057",
+        "TPL-AO-061",
+        "TPL-AO-062"
+      ],
+      "fetch_ok": true
+    },
+    "a10016324": {
+      "names": [
+        "铝土矿进口-总量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-059"
+      ],
+      "fetch_ok": true
+    },
+    "a10018441": {
+      "names": [
+        "LME镍库存分布：仓库"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-015"
+      ],
+      "fetch_ok": true
+    },
+    "a10018706": {
+      "names": [
+        "不锈钢进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-042"
+      ],
+      "fetch_ok": true
+    },
+    "a10019183": {
+      "names": [
+        "不锈钢冷热轧价差"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-029"
+      ],
+      "fetch_ok": true
+    },
+    "a10020743": {
+      "names": [
+        "中国锡锭社会库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-021"
+      ],
+      "fetch_ok": true
+    },
+    "a10026463": {
+      "names": [
+        "上期所不锈钢月间结构"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-002"
+      ],
+      "fetch_ok": true
+    },
+    "a10030068": {
+      "names": [
+        "SHFE铝：连一-连二"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-004"
+      ],
+      "fetch_ok": true
+    },
+    "a10031613": {
+      "names": [
+        "氧化铝净出口",
+        "氧化铝净出口减少30"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-038"
+      ],
+      "fetch_ok": true
+    },
+    "a10031808": {
+      "names": [
+        "铝杆开工率"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-027"
+      ],
+      "fetch_ok": true
+    },
+    "a10096752": {
+      "names": [
+        "SMM中国氧化铝月度产量-总量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-035"
+      ],
+      "fetch_ok": true
+    },
+    "a10096869": {
+      "names": [
+        "铝材出口-东南亚",
+        "铝材出口-中东"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-035",
+        "TPL-AL-037"
+      ],
+      "fetch_ok": true
+    },
+    "a10099193": {
+      "names": [
+        "中国硫酸镍出口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-019"
+      ],
+      "fetch_ok": true
+    },
+    "a10099477": {
+      "names": [
+        "马来西亚精炼锡出口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-027"
+      ],
+      "fetch_ok": true
+    },
+    "a10102016": {
+      "names": [
+        "工业硅价格-441#(华东)"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-002"
+      ],
+      "fetch_ok": true
+    },
+    "a10113278": {
+      "names": [
+        "国内锡开工率"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-015"
+      ],
+      "fetch_ok": true
+    },
+    "a10113450": {
+      "names": [
+        "原铝进口-印度"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-022"
+      ],
+      "fetch_ok": true
+    },
+    "a10113451": {
+      "names": [
+        "原铝进口-印度尼西亚"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-023"
+      ],
+      "fetch_ok": true
+    },
+    "a10118264": {
+      "names": [
+        "铝土矿到港量-曹妃甸港"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-043"
+      ],
+      "fetch_ok": true
+    },
+    "a10118268": {
+      "names": [
+        "铝土矿到港量-青岛港"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-046"
+      ],
+      "fetch_ok": true
+    },
+    "a10118269": {
+      "names": [
+        "铝土矿到港量-港口汇总-百川"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-044"
+      ],
+      "fetch_ok": true
+    },
+    "a10118270": {
+      "names": [
+        "铝土矿到港量-烟台港"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-045"
+      ],
+      "fetch_ok": true
+    },
+    "a10118796": {
+      "names": [
+        "三元材料总产量（吨）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-072"
+      ],
+      "fetch_ok": true
+    },
+    "a10128023": {
+      "names": [
+        "中国硫酸镍进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-018"
+      ],
+      "fetch_ok": true
+    },
+    "a10147859": {
+      "names": [
+        "LME官方三月价"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-007"
+      ],
+      "fetch_ok": true
+    },
+    "a10148155": {
+      "names": [
+        "不锈钢库存：300系（总）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-044"
+      ],
+      "fetch_ok": true
+    },
+    "a10148711": {
+      "names": [
+        "多晶硅月度产量(SMM)",
+        "多晶硅月度产量(SMM)",
+        "多晶硅月度产量(SMM)",
+        "多晶硅月度产量(SMM)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SI-006",
+        "TPL-SI-035",
+        "TPL-SI-037",
+        "TPL-SI-047"
+      ],
+      "fetch_ok": true
+    },
+    "a10148951": {
+      "names": [
+        "再生铝合金开工率"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-029"
+      ],
+      "fetch_ok": true
+    },
+    "a10151003": {
+      "names": [
+        "硅片月度产量(SMM)",
+        "硅片月度产量(SMM)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SI-007",
+        "TPL-SI-041"
+      ],
+      "fetch_ok": true
+    },
+    "a10154493": {
+      "names": [
+        "工业硅价格-421#(昆明)"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-001"
+      ],
+      "fetch_ok": true
+    },
+    "a10154831": {
+      "names": [
+        "缅甸进口至我国锡矿量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-012"
+      ],
+      "fetch_ok": true
+    },
+    "a10155018": {
+      "names": [
+        "多晶硅开工率"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-034"
+      ],
+      "fetch_ok": true
+    },
+    "a10157304": {
+      "names": [
+        "SMM-云南样本周度库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-012"
+      ],
+      "fetch_ok": true
+    },
+    "a10158279": {
+      "names": [
+        "高碳铬铁进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-037"
+      ],
+      "fetch_ok": true
+    },
+    "a10164825": {
+      "names": [
+        "未锻轧铝进口量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-017"
+      ],
+      "fetch_ok": true
+    },
+    "a10166188": {
+      "names": [
+        "废铝进口总量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-019"
+      ],
+      "fetch_ok": true
+    },
+    "a10167790": {
+      "names": [
+        "氧化铝进口"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-039"
+      ],
+      "fetch_ok": true
+    },
+    "a10167792": {
+      "names": [
+        "氧化铝出口"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-037"
+      ],
+      "fetch_ok": true
+    },
+    "a10169448": {
+      "names": [
+        "硅片预测月度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-042"
+      ],
+      "fetch_ok": true
+    },
+    "a10169466": {
+      "names": [
+        "多晶硅工厂库存",
+        "多晶硅工厂库存",
+        "多晶硅工厂库存"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SI-011",
+        "TPL-SI-025",
+        "TPL-SI-045"
+      ],
+      "fetch_ok": true
+    },
+    "a10169473": {
+      "names": [
+        "多晶硅供需平衡"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-048"
+      ],
+      "fetch_ok": true
+    },
+    "a10169478": {
+      "names": [
+        "DMC周度产量",
+        "SMM硅片周度产量(GW)",
+        "硅片周度产量",
+        "SMM硅片周度产量(GW)",
+        "百川盈孚硅片周度产量(GW)"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-027",
+        "TPL-SI-043",
+        "TPL-SI-044"
+      ],
+      "fetch_ok": true
+    },
+    "a10173520": {
+      "names": [
+        "韩国锡净进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-036"
+      ],
+      "fetch_ok": true
+    },
+    "a10177562": {
+      "names": [
+        "沪锡总持仓量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-005"
+      ],
+      "fetch_ok": true
+    },
+    "a10181032": {
+      "names": [
+        "原生铝合金月产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-025"
+      ],
+      "fetch_ok": true
+    },
+    "a10181063": {
+      "names": [
+        "SMM 碳酸锂 周度产量",
+        "SMM 碳酸锂 周度产量",
+        "SMM 碳酸锂 周度产量",
+        "SMM 碳酸锂 周度产量",
+        "SMM 碳酸锂 周度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-028",
+        "TPL-LC-033",
+        "TPL-LC-042",
+        "TPL-LC-047",
+        "TPL-LC-067"
+      ],
+      "fetch_ok": true
+    },
+    "a10193624": {
+      "names": [
+        "印尼冰镍产量（高冰镍+低冰镍）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-022"
+      ],
+      "fetch_ok": true
+    },
+    "a12715547": {
+      "names": [
+        "碳酸锂:周度产量（吨）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-045"
+      ],
+      "fetch_ok": true
+    },
+    "a12715657": {
+      "names": [
+        "碳酸锂月度进口量(万吨）"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-051"
+      ],
+      "fetch_ok": true
+    },
+    "a12715864": {
+      "names": [
+        "磷酸铁锂 同比增速"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-056"
+      ],
+      "fetch_ok": true
+    },
+    "a12715874": {
+      "names": [
+        "SMM 碳酸锂 月度开工率"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-041"
+      ],
+      "fetch_ok": true
+    },
+    "a12717300": {
+      "names": [
+        "期货库存:氧化铝"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-029"
+      ],
+      "fetch_ok": true
+    },
+    "a12717325": {
+      "names": [
+        "期货库存:氧化铝-新疆"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-030"
+      ],
+      "fetch_ok": true
+    },
+    "a12723867": {
+      "names": [
+        "碳酸锂 硫酸盐法 周度产量",
+        "碳酸锂 盐湖产:周度",
+        "碳酸锂 硫酸盐法 周度产量",
+        "碳酸锂 硫酸盐法 周度产量",
+        "碳酸锂 盐湖总产量"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-030",
+        "TPL-LC-034",
+        "TPL-LC-037",
+        "TPL-LC-044",
+        "TPL-LC-058"
+      ],
+      "fetch_ok": true
+    },
+    "a12724765": {
+      "names": [
+        "原铝进口-俄罗斯"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-021"
+      ],
+      "fetch_ok": true
+    },
+    "a12731428": {
+      "names": [
+        "锡全球显性库存变化"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-003"
+      ],
+      "fetch_ok": true
+    },
+    "a12731582": {
+      "names": [
+        "国内再生锡产量",
+        "国内再生锡产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-001",
+        "TPL-SN-014"
+      ],
+      "fetch_ok": true
+    },
+    "a12731583": {
+      "names": [
+        "国内锡锭产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-016"
+      ],
+      "fetch_ok": true
+    },
+    "a12731896": {
+      "names": [
+        "多晶硅下月预计产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-031"
+      ],
+      "fetch_ok": true
+    },
+    "a12748709": {
+      "names": [
+        "不锈钢产量：300系（印尼）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-041"
+      ],
+      "fetch_ok": true
+    },
+    "a12749487": {
+      "names": [
+        "中国精炼锡进口量变化"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-019"
+      ],
+      "fetch_ok": true
+    },
+    "a12750795": {
+      "names": [
+        "磷酸铁锂周度库存：铁锂厂"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-074"
+      ],
+      "fetch_ok": true
+    },
+    "a12755119": {
+      "names": [
+        "印尼交易所锡锭成交量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-024"
+      ],
+      "fetch_ok": true
+    },
+    "a12756244": {
+      "names": [
+        "氧化铝库存-阿拉丁-电解铝厂",
+        "氧化铝库存-阿拉丁-电解铝厂"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-023",
+        "TPL-AO-028"
+      ],
+      "fetch_ok": true
+    },
+    "a12763977": {
+      "names": [
+        "正极材料 周度产量",
+        "正极材料 周度产量",
+        "正极材料 周度产量",
+        "正极材料 周度产量",
+        "正极材料 周度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-032",
+        "TPL-LC-039",
+        "TPL-LC-046",
+        "TPL-LC-049",
+        "TPL-LC-070"
+      ],
+      "fetch_ok": true
+    },
+    "a12764408": {
+      "names": [
+        "刚果进口至我国锡矿量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-013"
+      ],
+      "fetch_ok": true
+    },
+    "a12764410": {
+      "names": [
+        "马来西亚锡矿进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-028"
+      ],
+      "fetch_ok": true
+    },
+    "a12764445": {
+      "names": [
+        "LME镍库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-013"
+      ],
+      "fetch_ok": true
+    },
+    "a12764460": {
+      "names": [
+        "LME镍库存分布：洲"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-014"
+      ],
+      "fetch_ok": true
+    },
+    "a12767886": {
+      "names": [
+        "氧化铝(河南)完全成本"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-019"
+      ],
+      "fetch_ok": true
+    },
+    "a12768036": {
+      "names": [
+        "锂辉石精矿出港:澳洲"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-014"
+      ],
+      "fetch_ok": true
+    },
+    "a12774864": {
+      "names": [
+        "磷酸铁锂 月度产量",
+        "磷酸铁锂 月度产量",
+        "磷酸铁锂 月度产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-064",
+        "TPL-LC-082",
+        "TPL-LC-098"
+      ],
+      "fetch_ok": true
+    },
+    "a12775712": {
+      "names": [
+        "新能源乘用车 产量",
+        "新能源乘用车 产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-091",
+        "TPL-LC-092"
+      ],
+      "fetch_ok": true
+    },
+    "a12792935": {
+      "names": [
+        "SMM中国氧化铝月度产量-山东"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-034"
+      ],
+      "fetch_ok": true
+    },
+    "a12795314": {
+      "names": [
+        "工业硅周度产量(SMM)",
+        "工业硅周度产量(百川)",
+        "工业硅周度产量(SMM)",
+        "工业硅周度产量(百川)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SI-022",
+        "TPL-SI-023",
+        "TPL-SI-039",
+        "TPL-SI-040"
+      ],
+      "fetch_ok": true
+    },
+    "a12795869": {
+      "names": [
+        "碳酸锂 升贴水 主力合约"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-006"
+      ],
+      "fetch_ok": true
+    },
+    "a12795955": {
+      "names": [
+        "碳酸锂 三元523需求"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-054"
+      ],
+      "fetch_ok": true
+    },
+    "a12796326": {
+      "names": [
+        "不同镍产品折镍价"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-004"
+      ],
+      "fetch_ok": true
+    },
+    "a12797861": {
+      "names": [
+        "期货库存:氧化铝-广西"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-031"
+      ],
+      "fetch_ok": true
+    },
+    "a12797968": {
+      "names": [
+        "SMM 锂矿样本库存:锂盐厂"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-024"
+      ],
+      "fetch_ok": true
+    },
+    "a12798728": {
+      "names": [
+        "铝土矿产量-贵州-SMM",
+        "铝土矿产量-全国总计-SMM",
+        "铝土矿产量-广西-SMM",
+        "铝土矿产量-贵州-SMM",
+        "铝土矿产量-全国总计-SMM"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-008",
+        "TPL-AO-047",
+        "TPL-AO-049",
+        "TPL-AO-051",
+        "TPL-AO-063"
+      ],
+      "fetch_ok": true
+    },
+    "a12799405": {
+      "names": [
+        "原生铝合金开工率"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-028"
+      ],
+      "fetch_ok": true
+    },
+    "a12803541": {
+      "names": [
+        "三元材料 周度产量",
+        "三元材料 周度产量",
+        "三元材料 周度产量",
+        "三元材料 周度产量",
+        "三元材料 周度产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-031",
+        "TPL-LC-038",
+        "TPL-LC-045",
+        "TPL-LC-048",
+        "TPL-LC-069"
+      ],
+      "fetch_ok": true
+    },
+    "a12804276": {
+      "names": [
+        "中国工业硅周度产量",
+        "中国工业硅周度产量（万吨）",
+        "中国工业硅周度产量（万吨）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-020",
+        "TPL-SI-022",
+        "TPL-SI-023"
+      ],
+      "fetch_ok": true
+    },
+    "a12804835": {
+      "names": [
+        "氧化铝现货vs长协价格"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-004"
+      ],
+      "fetch_ok": true
+    },
+    "a12805275": {
+      "names": [
+        "不锈钢仓单"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-047"
+      ],
+      "fetch_ok": true
+    },
+    "a12805896": {
+      "names": [
+        "锂精矿进口 津巴布韦"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-011"
+      ],
+      "fetch_ok": true
+    },
+    "a12807515": {
+      "names": [
+        "期货库存小计:铝"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-015"
+      ],
+      "fetch_ok": true
+    },
+    "a12807545": {
+      "names": [
+        "氧化铝利润"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-018"
+      ],
+      "fetch_ok": true
+    },
+    "a12808743": {
+      "names": [
+        "磷酸铁锂 周度产量",
+        "磷酸铁锂 周度产量",
+        "磷酸铁锂 周度产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-040",
+        "TPL-LC-050",
+        "TPL-LC-071"
+      ],
+      "fetch_ok": true
+    },
+    "a12811428": {
+      "names": [
+        "工业硅社会库存(SMM)",
+        "SMM工厂库存"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-018",
+        "TPL-SN-022"
+      ],
+      "fetch_ok": true
+    },
+    "a12812951": {
+      "names": [
+        "SMM-四川样本周度库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-013"
+      ],
+      "fetch_ok": true
+    },
+    "a12813406": {
+      "names": [
+        "SMM:",
+        "SMM:"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-032",
+        "TPL-AL-033"
+      ],
+      "fetch_ok": true
+    },
+    "a12818046": {
+      "names": [
+        "碳酸锂 出货情绪因子"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-005"
+      ],
+      "fetch_ok": true
+    },
+    "a12818047": {
+      "names": [
+        "碳酸锂 成交情绪因子"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-007"
+      ],
+      "fetch_ok": true
+    },
+    "a12818048": {
+      "names": [
+        "碳酸锂 购货情绪因子"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-008"
+      ],
+      "fetch_ok": true
+    },
+    "a12818113": {
+      "names": [
+        "氧化铝库存-钢联"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-025"
+      ],
+      "fetch_ok": true
+    },
+    "a12820239": {
+      "names": [
+        "锂辉石精矿出港:巴西"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-013"
+      ],
+      "fetch_ok": true
+    },
+    "a12820603": {
+      "names": [
+        "不锈钢出口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-043"
+      ],
+      "fetch_ok": true
+    },
+    "a12820786": {
+      "names": [
+        "印尼精炼锡出口量变化"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-025"
+      ],
+      "fetch_ok": true
+    },
+    "a12839459": {
+      "names": [
+        "氧化铝运行产能-阿拉丁"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-033"
+      ],
+      "fetch_ok": true
+    },
+    "a12839552": {
+      "names": [
+        "中国硫酸镍企业开工率"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-017"
+      ],
+      "fetch_ok": true
+    },
+    "a12840290": {
+      "names": [
+        "动力电池 出口:磷酸铁锂",
+        "动力电池 出口:磷酸铁锂",
+        "动力电池 出口:磷酸铁锂",
+        "动力电池 出口:磷酸铁锂",
+        "动力电池 出口:磷酸铁锂",
+        "动力电池 出口:磷酸铁锂",
+        "磷酸铁锂 电池 国内销量",
+        "磷酸铁锂 电池 国内销量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-057",
+        "TPL-LC-062",
+        "TPL-LC-073",
+        "TPL-LC-076",
+        "TPL-LC-077",
+        "TPL-LC-079",
+        "TPL-LC-087",
+        "TPL-LC-100"
+      ],
+      "fetch_ok": true
+    },
+    "a12840292": {
+      "names": [
+        "动力电池 出口:三元材料",
+        "动力电池 出口:三元材料",
+        "动力电池 出口:三元材料",
+        "动力电池 出口:三元材料"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-072",
+        "TPL-LC-075",
+        "TPL-LC-085",
+        "TPL-LC-089"
+      ],
+      "fetch_ok": true
+    },
+    "a12840345": {
+      "names": [
+        "巴西精炼锡出口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-026"
+      ],
+      "fetch_ok": true
+    },
+    "a12840347": {
+      "names": [
+        "日本锡净进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-035"
+      ],
+      "fetch_ok": true
+    },
+    "a12840355": {
+      "names": [
+        "印度锡净进口量图：美国锡净进口量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-037"
+      ],
+      "fetch_ok": true
+    },
+    "a12841510": {
+      "names": [
+        "沪锡近半年月差变化"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-002"
+      ],
+      "fetch_ok": true
+    },
+    "a12842747": {
+      "names": [
+        "磷酸铁锂电池 产量",
+        "磷酸铁锂电池 产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-078",
+        "TPL-LC-080"
+      ],
+      "fetch_ok": true
+    },
+    "a12852880": {
+      "names": [
+        "SHFE铝近3月虚实比"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AL-006"
+      ],
+      "fetch_ok": true
+    },
+    "a12853285": {
+      "names": [
+        "多晶硅产量",
+        "多晶硅产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-033",
+        "TPL-SI-036"
+      ],
+      "fetch_ok": true
+    },
+    "a12854829": {
+      "names": [
+        "原铝进口-其他国家"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-024"
+      ],
+      "fetch_ok": true
+    },
+    "a12854890": {
+      "names": [
+        "SMM 锂矿样本库存:矿山",
+        "SMM:锂矿样本库存:矿山:月度"
+      ],
+      "verify_status": [
+        "FILLED",
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-023",
+        "TPL-LC-024"
+      ],
+      "fetch_ok": true
+    },
+    "a12857834": {
+      "names": [
+        "氧化铝库存-阿拉丁-堆场站台",
+        "氧化铝库存-阿拉丁-堆场站台"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AO-020",
+        "TPL-AO-026"
+      ],
+      "fetch_ok": true
+    },
+    "a12858860": {
+      "names": [
+        "不锈钢粗钢产量：300系（中国）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-040"
+      ],
+      "fetch_ok": true
+    },
+    "a12862360": {
+      "names": [
+        "国产铝土矿-华南-低品(广西)"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-014"
+      ],
+      "fetch_ok": true
+    },
+    "a12862475": {
+      "names": [
+        "国产铝土矿-华南-低品(贵州)"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-015"
+      ],
+      "fetch_ok": true
+    },
+    "a12862942": {
+      "names": [
+        "工业硅显性总库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-016"
+      ],
+      "fetch_ok": true
+    },
+    "a12868665": {
+      "names": [
+        "工业硅供需平衡"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-SI-019"
+      ],
+      "fetch_ok": true
+    },
+    "a12870400": {
+      "names": [
+        "印尼精炼镍产量"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-007"
+      ],
+      "fetch_ok": true
+    },
+    "a12870637": {
+      "names": [
+        "新能源车产量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-025"
+      ],
+      "fetch_ok": true
+    },
+    "a12871104": {
+      "names": [
+        "碳酸锂 大样本库存",
+        "碳酸锂 大样本库存"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-022",
+        "TPL-LC-052"
+      ],
+      "fetch_ok": true
+    },
+    "a12871105": {
+      "names": [
+        "碳酸锂大样本库存:总计:周度SMM:"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-052"
+      ],
+      "fetch_ok": true
+    },
+    "j00123038": {
+      "names": [
+        "电池级-工业级碳酸锂 价差"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-002"
+      ],
+      "fetch_ok": true
+    },
+    "j00182500": {
+      "names": [
+        "高碳铬铁价格（内蒙古）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-035"
+      ],
+      "fetch_ok": true
+    },
+    "j00182825": {
+      "names": [
+        "电池级氢氧化锂(粗颗粒) 价格"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-003"
+      ],
+      "fetch_ok": true
+    },
+    "j00182868": {
+      "names": [
+        "工业级氢氧化锂 价格"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-LC-001"
+      ],
+      "fetch_ok": true
+    },
+    "j02797784": {
+      "names": [
+        "LME锡升贴水"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SN-006"
+      ],
+      "fetch_ok": true
+    },
+    "j02799373": {
+      "names": [
+        "其他电池(磷酸铁锂) 销量",
+        "其他电池(磷酸铁锂) 销量",
+        "其他电池(磷酸铁锂) 销量"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-LC-084",
+        "TPL-LC-086",
+        "TPL-LC-099"
+      ],
+      "fetch_ok": true
+    },
+    "j02799420": {
+      "names": [
+        "多晶硅产能",
+        "中国多晶硅产能统计"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-032",
+        "TPL-SI-034"
+      ],
+      "fetch_ok": true
+    },
+    "s20016733": {
+      "names": [
+        "澳洲氧化铝FOB"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-005"
+      ],
+      "fetch_ok": true
+    },
+    "s20016756": {
+      "names": [
+        "1A60铝杆加工费(山东)",
+        "1A60铝杆加工费(内蒙)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-032",
+        "TPL-AL-033"
+      ],
+      "fetch_ok": true
+    },
+    "s20020311": {
+      "names": [
+        "工业硅价格-通氧553#(华东)"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-SI-004"
+      ],
+      "fetch_ok": true
+    },
+    "s20148294": {
+      "names": [
+        "铬矿价格（块矿，36-38%Cr，南非产）"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-NI-034"
+      ],
+      "fetch_ok": true
+    },
+    "s22801708": {
+      "names": [
+        "东澳氧化铝FOB"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-002"
+      ],
+      "fetch_ok": true
+    },
+    "s22801713": {
+      "names": [
+        "印尼氧化铝FOB"
+      ],
+      "verify_status": [
+        "VALID"
+      ],
+      "templates": [
+        "TPL-AO-003"
+      ],
+      "fetch_ok": true
+    },
+    "s22840303": {
+      "names": [
+        "欧洲含税溢价(M3)"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-AL-008"
+      ],
+      "fetch_ok": true
+    },
+    "s22854641": {
+      "names": [
+        "元/镍点"
+      ],
+      "verify_status": [
+        "FILLED"
+      ],
+      "templates": [
+        "TPL-NI-032"
+      ],
+      "fetch_ok": true
+    }
+  }
+}

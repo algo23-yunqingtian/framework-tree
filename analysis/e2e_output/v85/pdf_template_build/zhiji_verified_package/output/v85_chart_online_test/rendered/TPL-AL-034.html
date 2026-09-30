@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出口-未锻轧铝合金 · TPL-AL-034</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif; background: #0f172a; color: #e2e8f0; padding: 18px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.meta { display: flex; justify-content: space-between; align-items: center; background: #16213e; border: 1px solid #7a8a9c55; border-radius: 8px 8px 0 0; padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
+.meta-left { display: flex; gap: 14px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+.tid { font-family: monospace; color: #64748b; background: #0f172a; padding: 2px 8px; border-radius: 4px; }
+.vtag { background: #7a8a9c33; color: #7a8a9c; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+.node { color: #94a3b8; }
+.st-full { background: #22c55e22; color: #22c55e; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+.st-part { background: #ef444422; color: #ef4444; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; border: 1px solid #ef444466; }
+.scount { font-size: 12px; color: #94a3b8; }
+.part-warning { background: #ef444415; border: 1px solid #ef444466; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.pw-title { color: #ef4444; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.part-warning ul { margin-left: 22px; font-size: 12px; color: #fca5a5; }
+.fail-panel { background: #7f1d1d18; border: 1px solid #ef444455; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.fp-title { color: #f87171; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #33415555; }
+th { color: #94a3b8; }
+.ftag { padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.ftag-INVALID { background: #f59e0b22; color: #f59e0b; }
+.ftag-MISSING, .ftag-NO_ID { background: #6b728022; color: #9ca3af; }
+.ftag-FETCH_FAIL { background: #ef444422; color: #ef4444; }
+.chart-box { background: #16213e; border-radius: 0 0 8px 8px; padding: 8px; margin-top: 12px; }
+#chart { width: 960px; height: 460px; }
+footer { margin-top: 14px; font-size: 11px; color: #475569; text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <div class="meta-left">
+      <span class="tid">TPL-AL-034</span>
+      <span class="vtag">AL 铝</span>
+      <span class="node">节点: 进出口</span>
+      <span class="node">单折线</span>
+      <span class="scount">1/1 系列有数据</span>
+    </div>
+    <span class="st-full">FULL_OK</span>
+  </div>
+  
+  <div class="chart-box"><div id="chart"></div></div>
+  
+  <footer>来源: 铝周报20260830.pdf · 第 32 页 · chart chart_89 · 测试环境渲染（未上线）</footer>
+</div>
+<script>
+var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+var option = {"backgroundColor": "#16213e", "title": {"text": "出口-未锻轧铝合金", "subtext": "模板: TPL-AL-034 | 品种: 铝 | PDF: 铝周报20260830.pdf P32", "left": "center", "top": 8, "textStyle": {"color": "#e5e7eb", "fontSize": 16, "fontWeight": "bold"}, "subtextStyle": {"color": "#9ca3af", "fontSize": 11}}, "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}}, "legend": {"top": 52, "left": "center", "data": ["出口-未锻轧铝合金"], "textStyle": {"color": "#cbd5e1", "fontSize": 12}, "type": "scroll"}, "grid": {"left": 64, "right": 30, "top": 96, "bottom": 42}, "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": false}}, "yAxis": [{"type": "value", "name": "吨", "nameTextStyle": {"color": "#6b7280", "fontSize": 11, "padding": [0, 0, 0, 24]}, "nameLocation": "end", "axisLine": {"show": true, "lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": true, "lineStyle": {"color": "#1f2937"}}}], "series": [{"name": "出口-未锻轧铝合金", "yAxisIndex": 0, "type": "line", "data": [["2026-08-31", 51605.234], ["2026-07-31", 58560.859], ["2026-06-30", 67155.878], ["2026-05-31", 60139.8], ["2026-04-30", 46299.054], ["2026-03-31", 27417.267], ["2026-02-28", 13290.039], ["2026-01-31", 24213.694], ["2025-12-31", 25719.943], ["2025-11-30", 30597.691], ["2025-10-31", 30971.024], ["2025-09-30", 23596.421], ["2025-08-31", 29063.705], ["2025-07-31", 24908.887], ["2025-06-30", 25770.181], ["2025-05-31", 24179.295], ["2025-04-30", 16555.022], ["2025-03-31", 18176.895], ["2025-02-28", 17485.812], ["2025-01-31", 18118.797], ["2024-12-31", 21204.118], ["2024-11-30", 20187.851], ["2024-10-31", 20525.778], ["2024-09-30", 23022.095], ["2024-08-31", 22654.526], ["2024-07-31", 18011.302], ["2024-06-30", 20818.402], ["2024-05-31", 24102.794], ["2024-04-30", 13361.261], ["2024-03-31", 17490.295], ["2024-02-29", 20124.239], ["2024-01-31", 20813.842], ["2023-12-31", 19721.814], ["2023-11-30", 15701.477], ["2023-10-31", 15433.402], ["2023-09-30", 28130.211], ["2023-08-31", 25102.285], ["2023-07-31", 23401.599], ["2023-06-30", 20724.574], ["2023-05-31", 19851.734], ["2023-04-30", 16436.259], ["2023-03-31", 19677.589], ["2023-02-28", 20982.173], ["2023-01-31", 16379.472], ["2022-12-31", 20362.452], ["2022-11-30", 18918.806], ["2022-10-31", 18287.153], ["2022-09-30", 21803.817], ["2022-08-31", 19460.213], ["2022-07-31", 25541.399], ["2022-06-30", 17042.696], ["2022-05-31", 20382.785], ["2022-04-30", 25354.002], ["2022-03-31", 18309.086], ["2022-02-28", 11765.535], ["2022-01-31", 7877.251], ["2021-12-31", 8783.48], ["2021-11-30", 12012.069], ["2021-10-31", 10940.227], ["2021-09-30", 16789.084], ["2021-08-31", 9166.65], ["2021-07-31", 9154.425], ["2021-06-30", 10130.252], ["2021-05-31", 11559.971], ["2021-04-30", 13905.876], ["2021-03-31", 17926.876], ["2021-02-28", 11874.06], ["2021-01-31", 18469.443]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#5470c6"}, "itemStyle": {"color": "#5470c6"}}]};
+var failNames = [];
+if (failNames.length) {
+  chart.setOption(option);
+  chart.setOption({graphic: {elements: [{type:'text', right: 12, bottom: 8, style:{text:'🚫 ' + failNames.join('、'), fill:'#ef4444', fontSize:11}}]}});
+} else { chart.setOption(option); }
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

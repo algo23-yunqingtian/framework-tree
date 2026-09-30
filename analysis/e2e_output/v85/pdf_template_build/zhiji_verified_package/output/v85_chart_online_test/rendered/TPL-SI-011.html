@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多晶硅工厂库存 · TPL-SI-011</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif; background: #0f172a; color: #e2e8f0; padding: 18px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.meta { display: flex; justify-content: space-between; align-items: center; background: #16213e; border: 1px solid #c08a3e55; border-radius: 8px 8px 0 0; padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
+.meta-left { display: flex; gap: 14px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+.tid { font-family: monospace; color: #64748b; background: #0f172a; padding: 2px 8px; border-radius: 4px; }
+.vtag { background: #c08a3e33; color: #c08a3e; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+.node { color: #94a3b8; }
+.st-full { background: #22c55e22; color: #22c55e; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+.st-part { background: #ef444422; color: #ef4444; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; border: 1px solid #ef444466; }
+.scount { font-size: 12px; color: #94a3b8; }
+.part-warning { background: #ef444415; border: 1px solid #ef444466; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.pw-title { color: #ef4444; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.part-warning ul { margin-left: 22px; font-size: 12px; color: #fca5a5; }
+.fail-panel { background: #7f1d1d18; border: 1px solid #ef444455; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.fp-title { color: #f87171; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #33415555; }
+th { color: #94a3b8; }
+.ftag { padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.ftag-INVALID { background: #f59e0b22; color: #f59e0b; }
+.ftag-MISSING, .ftag-NO_ID { background: #6b728022; color: #9ca3af; }
+.ftag-FETCH_FAIL { background: #ef444422; color: #ef4444; }
+.chart-box { background: #16213e; border-radius: 0 0 8px 8px; padding: 8px; margin-top: 12px; }
+#chart { width: 960px; height: 460px; }
+footer { margin-top: 14px; font-size: 11px; color: #475569; text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <div class="meta-left">
+      <span class="tid">TPL-SI-011</span>
+      <span class="vtag">SI 工业硅</span>
+      <span class="node">节点: 库存</span>
+      <span class="node">单折线</span>
+      <span class="scount">1/1 系列有数据</span>
+    </div>
+    <span class="st-full">FULL_OK</span>
+  </div>
+  
+  <div class="chart-box"><div id="chart"></div></div>
+  
+  <footer>来源: 硅产业链周报20260906.pdf · 第 11 页 · chart chart_11 · 测试环境渲染（未上线）</footer>
+</div>
+<script>
+var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+var option = {"backgroundColor": "#16213e", "title": {"text": "多晶硅工厂库存", "subtext": "模板: TPL-SI-011 | 品种: 工业硅 | PDF: 硅产业链周报20260906.pdf P11", "left": "center", "top": 8, "textStyle": {"color": "#e5e7eb", "fontSize": 16, "fontWeight": "bold"}, "subtextStyle": {"color": "#9ca3af", "fontSize": 11}}, "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}}, "legend": {"top": 52, "left": "center", "data": ["多晶硅工厂库存"], "textStyle": {"color": "#cbd5e1", "fontSize": 12}, "type": "scroll"}, "grid": {"left": 64, "right": 30, "top": 96, "bottom": 42}, "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": false}}, "yAxis": [{"type": "value", "name": "元/吨", "nameTextStyle": {"color": "#6b7280", "fontSize": 11, "padding": [0, 0, 0, 24]}, "nameLocation": "end", "axisLine": {"show": true, "lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": true, "lineStyle": {"color": "#1f2937"}}}], "series": [{"name": "多晶硅工厂库存", "yAxisIndex": 0, "type": "line", "data": [["2026-08-27", 30.9], ["2026-08-20", 30.7], ["2026-08-13", 29.1], ["2026-08-06", 28.0], ["2026-07-30", 27.6], ["2026-07-23", 31.9], ["2026-07-16", 31.8], ["2026-07-09", 31.0], ["2026-07-02", 30.1], ["2026-06-25", 29.6], ["2026-06-18", 28.5], ["2026-06-11", 28.8], ["2026-06-04", 29.5], ["2026-05-28", 29.9], ["2026-05-21", 30.1], ["2026-05-14", 31.3], ["2026-05-07", 30.7], ["2026-04-30", 30.2], ["2026-04-23", 29.3], ["2026-04-16", 32.1], ["2026-04-09", 33.5], ["2026-04-02", 33.0], ["2026-03-26", 33.2], ["2026-03-19", 34.4], ["2026-03-12", 35.7], ["2026-03-05", 34.8], ["2026-02-26", 34.4], ["2026-02-12", 34.9], ["2026-02-05", 34.1], ["2026-01-29", 33.3], ["2026-01-22", 33.0], ["2026-01-15", 32.1], ["2026-01-08", 30.2], ["2025-12-31", 30.6], ["2025-12-25", 30.3], ["2025-12-18", 29.3], ["2025-12-11", 29.3], ["2025-12-04", 29.1], ["2025-11-27", 28.1], ["2025-11-20", 27.1], ["2025-11-13", 26.7], ["2025-11-06", 25.9], ["2025-10-30", 26.1], ["2025-10-23", 25.8], ["2025-10-16", 25.3], ["2025-10-09", 24.0], ["2025-09-25", 22.6], ["2025-09-18", 20.4], ["2025-09-11", 21.9], ["2025-09-04", 21.1], ["2025-08-28", 21.3], ["2025-08-21", 24.9], ["2025-08-14", 24.2], ["2025-08-07", 23.3], ["2025-07-31", 22.9], ["2025-07-24", 24.3], ["2025-07-17", 24.9], ["2025-07-10", 27.6], ["2025-07-03", 27.2], ["2025-06-26", 27.0], ["2025-06-19", 26.2], ["2025-06-12", 27.5], ["2025-06-05", 26.9], ["2025-05-29", 27.0], ["2025-05-22", 26.0], ["2025-05-15", 25.0], ["2025-05-08", 25.7], ["2025-04-30", 26.1], ["2025-04-27", 25.9], ["2025-04-20", 25.1], ["2025-04-13", 24.4], ["2025-04-06", 23.6], ["2025-03-30", 24.7], ["2025-03-23", 25.3], ["2025-03-16", 26.7], ["2025-03-09", 26.1], ["2025-03-02", 27.1], ["2025-02-23", 28.0], ["2025-02-16", 26.4], ["2025-02-09", 26.3], ["2025-01-24", 25.9], ["2025-01-17", 24.7], ["2025-01-10", 23.1], ["2025-01-03", 22.8], ["2024-12-27", 22.2], ["2024-12-20", 25.9], ["2024-12-13", 28.0], ["2024-12-06", 28.6], ["2024-11-29", 29.1], ["2024-11-22", 28.5], ["2024-11-15", 28.1], ["2024-11-08", 27.7], ["2024-11-01", 26.1], ["2024-10-25", 24.6], ["2024-10-18", 24.5], ["2024-10-11", 22.8], ["2024-09-27", 22.0], ["2024-09-20", 21.9], ["2024-09-13", 23.4], ["2024-09-06", 23.2], ["2024-08-30", 21.6], ["2024-08-23", 20.8], ["2024-08-16", 22.9], ["2024-08-09", 23.2], ["2024-08-02", 22.1], ["2024-07-26", 22.4], ["2024-07-19", 23.5], ["2024-07-12", 27.8], ["2024-07-05", 26.7], ["2024-06-28", 25.0], ["2024-06-21", 25.4], ["2024-06-14", 24.7], ["2024-06-07", 22.4], ["2024-05-31", 26.8], ["2024-05-24", 30.3], ["2024-05-17", 29.5], ["2024-05-10", 27.4], ["2024-04-26", 24.3], ["2024-04-19", 21.0], ["2024-04-12", 18.3], ["2024-04-05", 16.3], ["2024-03-29", 15.1], ["2024-03-22", 11.2], ["2024-03-15", 9.2], ["2024-03-08", 8.3], ["2024-03-01", 7.8], ["2024-02-23", 7.8], ["2024-02-16", 7.1], ["2024-02-02", 6.0], ["2024-01-26", 6.7], ["2024-01-19", 5.8], ["2024-01-12", 6.0], ["2024-01-05", 6.6], ["2023-12-29", 7.3], ["2023-12-22", 6.8], ["2023-12-15", 7.0], ["2023-12-08", 7.1], ["2023-12-01", 6.4], ["2023-11-24", 6.2], ["2023-11-17", 7.4], ["2023-11-10", 7.2], ["2023-11-03", 7.0], ["2023-10-27", 6.7], ["2023-10-20", 5.3], ["2023-10-13", 4.8], ["2023-10-06", 4.2], ["2023-09-22", 3.0], ["2023-09-15", 2.8], ["2023-09-08", 2.5], ["2023-09-01", 2.3], ["2023-08-25", 2.0], ["2023-08-18", 2.1], ["2023-08-11", 2.5], ["2023-08-04", 3.9], ["2023-07-28", 4.1], ["2023-07-21", 4.6], ["2023-07-14", 5.9], ["2023-07-07", 6.8], ["2023-06-30", 7.8], ["2023-06-23", 9.5], ["2023-06-16", 11.8], ["2023-06-09", 13.1], ["2023-06-02", 12.8], ["2023-05-26", 12.4], ["2023-05-19", 11.4], ["2023-05-12", 11.0], ["2023-04-28", 9.2], ["2023-04-21", 8.8], ["2023-04-14", 8.7], ["2023-04-07", 8.0], ["2023-03-31", 7.3], ["2023-03-24", 7.5], ["2023-03-17", 7.8], ["2023-03-10", 8.4], ["2023-03-03", 9.1], ["2023-02-24", 9.6], ["2023-02-17", 11.8], ["2023-02-10", 10.5], ["2023-02-03", 10.0], ["2023-02-01", 9.6], ["2023-01-27", 9.4], ["2023-01-20", 8.5], ["2023-01-13", 6.9], ["2023-01-06", 6.2], ["2023-01-01", 9.7], ["2022-12-01", 6.1], ["2022-11-01", 3.6]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#5470c6"}, "itemStyle": {"color": "#5470c6"}}]};
+var failNames = [];
+if (failNames.length) {
+  chart.setOption(option);
+  chart.setOption({graphic: {elements: [{type:'text', right: 12, bottom: 8, style:{text:'🚫 ' + failNames.join('、'), fill:'#ef4444', fontSize:11}}]}});
+} else { chart.setOption(option); }
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

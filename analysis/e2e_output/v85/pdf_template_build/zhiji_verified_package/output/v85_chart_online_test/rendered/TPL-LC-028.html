@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMM 碳酸锂 周度产量 · TPL-LC-028</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif; background: #0f172a; color: #e2e8f0; padding: 18px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.meta { display: flex; justify-content: space-between; align-items: center; background: #16213e; border: 1px solid #4f8a7a55; border-radius: 8px 8px 0 0; padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
+.meta-left { display: flex; gap: 14px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+.tid { font-family: monospace; color: #64748b; background: #0f172a; padding: 2px 8px; border-radius: 4px; }
+.vtag { background: #4f8a7a33; color: #4f8a7a; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+.node { color: #94a3b8; }
+.st-full { background: #22c55e22; color: #22c55e; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+.st-part { background: #ef444422; color: #ef4444; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; border: 1px solid #ef444466; }
+.scount { font-size: 12px; color: #94a3b8; }
+.part-warning { background: #ef444415; border: 1px solid #ef444466; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.pw-title { color: #ef4444; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.part-warning ul { margin-left: 22px; font-size: 12px; color: #fca5a5; }
+.fail-panel { background: #7f1d1d18; border: 1px solid #ef444455; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.fp-title { color: #f87171; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #33415555; }
+th { color: #94a3b8; }
+.ftag { padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.ftag-INVALID { background: #f59e0b22; color: #f59e0b; }
+.ftag-MISSING, .ftag-NO_ID { background: #6b728022; color: #9ca3af; }
+.ftag-FETCH_FAIL { background: #ef444422; color: #ef4444; }
+.chart-box { background: #16213e; border-radius: 0 0 8px 8px; padding: 8px; margin-top: 12px; }
+#chart { width: 960px; height: 460px; }
+footer { margin-top: 14px; font-size: 11px; color: #475569; text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <div class="meta-left">
+      <span class="tid">TPL-LC-028</span>
+      <span class="vtag">LC 碳酸锂</span>
+      <span class="node">节点: 供给</span>
+      <span class="node">单折线</span>
+      <span class="scount">1/1 系列有数据</span>
+    </div>
+    <span class="st-full">FULL_OK</span>
+  </div>
+  
+  <div class="chart-box"><div id="chart"></div></div>
+  
+  <footer>来源: 碳酸锂周报20260823.pdf · 第 12 页 · chart chart_31 · 测试环境渲染（未上线）</footer>
+</div>
+<script>
+var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+var option = {"backgroundColor": "#16213e", "title": {"text": "SMM 碳酸锂 周度产量", "subtext": "模板: TPL-LC-028 | 品种: 碳酸锂 | PDF: 碳酸锂周报20260823.pdf P12", "left": "center", "top": 8, "textStyle": {"color": "#e5e7eb", "fontSize": 16, "fontWeight": "bold"}, "subtextStyle": {"color": "#9ca3af", "fontSize": 11}}, "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}}, "legend": {"top": 52, "left": "center", "data": ["SMM 碳酸锂 周度产量"], "textStyle": {"color": "#cbd5e1", "fontSize": 12}, "type": "scroll"}, "grid": {"left": 64, "right": 30, "top": 96, "bottom": 42}, "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": false}}, "yAxis": [{"type": "value", "name": "元/吨", "nameTextStyle": {"color": "#6b7280", "fontSize": 11, "padding": [0, 0, 0, 24]}, "nameLocation": "end", "axisLine": {"show": true, "lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": true, "lineStyle": {"color": "#1f2937"}}}], "series": [{"name": "SMM 碳酸锂 周度产量", "yAxisIndex": 0, "type": "line", "data": [["2026-08-27", 23808.0], ["2026-08-20", 23007.0], ["2026-08-13", 23152.0], ["2026-08-06", 22971.0], ["2026-07-30", 22841.0], ["2026-07-23", 23868.0], ["2026-07-16", 24548.0], ["2026-07-09", 24855.0], ["2026-07-02", 25715.0], ["2026-06-25", 26642.0], ["2026-06-18", 26399.0], ["2026-06-11", 26429.0], ["2026-06-04", 26344.0], ["2026-05-28", 25547.0], ["2026-05-21", 25893.0], ["2026-05-14", 26016.0], ["2026-05-07", 25894.0], ["2026-04-30", 26028.0], ["2026-04-23", 25947.0], ["2026-04-16", 25713.0], ["2026-04-09", 25627.0], ["2026-04-02", 25370.0], ["2026-03-26", 24814.0], ["2026-03-19", 24186.0], ["2026-03-12", 23426.0], ["2026-03-05", 22590.0], ["2026-02-26", 21822.0], ["2026-02-12", 20184.0], ["2026-02-05", 20744.0], ["2026-01-29", 21569.0], ["2026-01-22", 22217.0], ["2026-01-15", 22605.0], ["2026-01-08", 22535.0], ["2025-12-31", 22420.0], ["2025-12-25", 22161.0], ["2025-12-18", 22045.0], ["2025-12-11", 21998.0], ["2025-12-04", 21939.0], ["2025-11-27", 21865.0], ["2025-11-20", 22130.0], ["2025-11-13", 21545.0], ["2025-11-06", 21534.0], ["2025-10-30", 21080.0], ["2025-10-23", 21308.0], ["2025-10-16", 21066.0], ["2025-10-09", 20635.0], ["2025-09-25", 20516.0], ["2025-09-18", 20363.0], ["2025-09-11", 19963.0], ["2025-09-04", 19419.0], ["2025-08-28", 19030.0], ["2025-08-21", 19138.0], ["2025-08-14", 19980.0], ["2025-08-07", 19556.0], ["2025-07-31", 17268.0], ["2025-07-24", 18630.0], ["2025-07-17", 19115.0], ["2025-07-10", 18813.0], ["2025-07-03", 18123.0], ["2025-06-26", 18767.0], ["2025-06-19", 18462.0], ["2025-06-12", 18127.0], ["2025-06-05", 17471.0], ["2025-05-29", 16580.0], ["2025-05-22", 16093.0], ["2025-05-15", 16630.0], ["2025-05-08", 16055.0], ["2025-05-01", 16897.0], ["2025-04-24", 16900.0], ["2025-04-17", 17388.0], ["2025-04-10", 17962.0], ["2025-04-03", 17625.0], ["2025-03-27", 17318.0], ["2025-03-20", 17946.0], ["2025-03-13", 18400.0], ["2025-03-06", 18634.0], ["2025-02-27", 18456.0], ["2025-02-20", 17164.0], ["2025-02-13", 14612.0], ["2025-02-06", 12492.0], ["2025-01-23", 14157.0], ["2025-01-16", 14348.0], ["2025-01-09", 15000.0], ["2025-01-02", 15285.0], ["2024-12-26", 15802.0], ["2024-12-19", 16340.0], ["2024-12-12", 16142.0], ["2024-12-05", 15675.0], ["2024-11-28", 15566.0], ["2024-11-21", 15072.0], ["2024-11-14", 14507.0], ["2024-11-07", 13765.0], ["2024-10-31", 13364.0], ["2024-10-24", 13423.0], ["2024-10-17", 13357.0], ["2024-10-10", 13171.0], ["2024-09-26", 12635.0], ["2024-09-19", 12957.0], ["2024-09-12", 13654.0], ["2024-09-05", 13552.0], ["2024-08-29", 13450.0], ["2024-08-22", 13441.0], ["2024-08-15", 13519.0], ["2024-08-08", 14031.0], ["2024-08-01", 14173.0], ["2024-07-25", 14573.0], ["2024-07-18", 14709.0], ["2024-07-11", 14936.0], ["2024-07-04", 14823.0], ["2024-06-27", 15089.0], ["2024-06-20", 14814.0], ["2024-06-13", 14571.0], ["2024-06-06", 14705.0], ["2024-05-30", 14186.0], ["2024-05-23", 14074.0], ["2024-05-16", 14224.0], ["2024-05-09", 13696.0], ["2024-05-02", 12707.0], ["2024-04-25", 11925.0], ["2024-04-18", 11639.0], ["2024-04-11", 12990.0], ["2024-04-03", 9317.0], ["2024-03-28", 9899.0], ["2024-03-21", 9645.0], ["2024-03-14", 8945.0], ["2024-03-07", 8615.0], ["2024-02-29", 7595.0], ["2024-02-22", 7084.0], ["2024-02-08", 7555.0], ["2024-02-01", 8654.0], ["2024-01-25", 8584.0], ["2024-01-18", 8597.0], ["2024-01-11", 9125.0], ["2024-01-04", 9352.0], ["2023-12-29", 9077.0], ["2023-12-22", 8864.0], ["2023-12-15", 8757.0], ["2023-12-08", 8945.0], ["2023-12-01", 8984.0], ["2023-11-24", 9542.0], ["2023-11-17", 9735.0], ["2023-11-09", 10054.0], ["2023-11-04", 9825.0], ["2023-10-27", 9327.0], ["2023-10-20", 8430.0], ["2023-10-13", 8245.0], ["2023-10-06", 8318.0], ["2023-09-29", 8368.0], ["2023-09-22", 8595.0], ["2023-09-15", 8692.0], ["2023-09-08", 9557.0], ["2023-09-01", 9811.0], ["2023-08-25", 10048.0], ["2023-08-18", 10265.0], ["2023-08-11", 10500.0], ["2023-08-04", 10346.0], ["2023-07-28", 10403.0]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#5470c6"}, "itemStyle": {"color": "#5470c6"}}]};
+var failNames = [];
+if (failNames.length) {
+  chart.setOption(option);
+  chart.setOption({graphic: {elements: [{type:'text', right: 12, bottom: 8, style:{text:'🚫 ' + failNames.join('、'), fill:'#ef4444', fontSize:11}}]}});
+} else { chart.setOption(option); }
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

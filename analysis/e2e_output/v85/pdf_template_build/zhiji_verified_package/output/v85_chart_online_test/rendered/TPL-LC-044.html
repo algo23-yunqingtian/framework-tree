@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>碳酸锂 硫酸盐法 周度产量 · TPL-LC-044</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif; background: #0f172a; color: #e2e8f0; padding: 18px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.meta { display: flex; justify-content: space-between; align-items: center; background: #16213e; border: 1px solid #4f8a7a55; border-radius: 8px 8px 0 0; padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
+.meta-left { display: flex; gap: 14px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+.tid { font-family: monospace; color: #64748b; background: #0f172a; padding: 2px 8px; border-radius: 4px; }
+.vtag { background: #4f8a7a33; color: #4f8a7a; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+.node { color: #94a3b8; }
+.st-full { background: #22c55e22; color: #22c55e; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+.st-part { background: #ef444422; color: #ef4444; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; border: 1px solid #ef444466; }
+.scount { font-size: 12px; color: #94a3b8; }
+.part-warning { background: #ef444415; border: 1px solid #ef444466; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.pw-title { color: #ef4444; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.part-warning ul { margin-left: 22px; font-size: 12px; color: #fca5a5; }
+.fail-panel { background: #7f1d1d18; border: 1px solid #ef444455; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.fp-title { color: #f87171; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #33415555; }
+th { color: #94a3b8; }
+.ftag { padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.ftag-INVALID { background: #f59e0b22; color: #f59e0b; }
+.ftag-MISSING, .ftag-NO_ID { background: #6b728022; color: #9ca3af; }
+.ftag-FETCH_FAIL { background: #ef444422; color: #ef4444; }
+.chart-box { background: #16213e; border-radius: 0 0 8px 8px; padding: 8px; margin-top: 12px; }
+#chart { width: 960px; height: 460px; }
+footer { margin-top: 14px; font-size: 11px; color: #475569; text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <div class="meta-left">
+      <span class="tid">TPL-LC-044</span>
+      <span class="vtag">LC 碳酸锂</span>
+      <span class="node">节点: 供给</span>
+      <span class="node">单折线</span>
+      <span class="scount">1/1 系列有数据</span>
+    </div>
+    <span class="st-full">FULL_OK</span>
+  </div>
+  
+  <div class="chart-box"><div id="chart"></div></div>
+  
+  <footer>来源: 碳酸锂周报20260823.pdf · 第 15 页 · chart chart_51 · 测试环境渲染（未上线）</footer>
+</div>
+<script>
+var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+var option = {"backgroundColor": "#16213e", "title": {"text": "碳酸锂 硫酸盐法 周度产量", "subtext": "模板: TPL-LC-044 | 品种: 碳酸锂 | PDF: 碳酸锂周报20260823.pdf P15", "left": "center", "top": 8, "textStyle": {"color": "#e5e7eb", "fontSize": 16, "fontWeight": "bold"}, "subtextStyle": {"color": "#9ca3af", "fontSize": 11}}, "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}}, "legend": {"top": 52, "left": "center", "data": ["碳酸锂 硫酸盐法 周度产量"], "textStyle": {"color": "#cbd5e1", "fontSize": 12}, "type": "scroll"}, "grid": {"left": 64, "right": 30, "top": 96, "bottom": 42}, "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": false}}, "yAxis": [{"type": "value", "name": "元/吨", "nameTextStyle": {"color": "#6b7280", "fontSize": 11, "padding": [0, 0, 0, 24]}, "nameLocation": "end", "axisLine": {"show": true, "lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": true, "lineStyle": {"color": "#1f2937"}}}], "series": [{"name": "碳酸锂 硫酸盐法 周度产量", "yAxisIndex": 0, "type": "line", "data": [["2026-08-27", 5646.0], ["2026-08-20", 4811.0], ["2026-08-13", 5796.0], ["2026-08-06", 5656.0], ["2026-07-30", 5396.0], ["2026-07-23", 5269.0], ["2026-07-16", 5119.0], ["2026-07-09", 5079.0], ["2026-07-02", 4966.0], ["2026-06-25", 4585.0], ["2026-06-18", 4600.0], ["2026-06-11", 4630.0], ["2026-06-04", 4945.0], ["2026-05-28", 4885.0], ["2026-05-21", 4875.0], ["2026-05-14", 4795.0], ["2026-05-07", 4655.0], ["2026-04-30", 4520.0], ["2026-04-23", 4365.0], ["2026-04-16", 4166.0], ["2026-04-09", 4020.0], ["2026-04-02", 3815.0], ["2026-03-26", 3715.0], ["2026-03-19", 3565.0], ["2026-03-12", 3495.0], ["2026-03-05", 3475.0], ["2026-02-26", 3290.0], ["2026-02-12", 3040.0], ["2026-02-05", 3130.0], ["2026-01-29", 3205.0], ["2026-01-22", 3115.0], ["2026-01-15", 3145.0], ["2026-01-08", 3185.0], ["2025-12-31", 3145.0], ["2025-12-25", 3075.0], ["2025-12-18", 3095.0], ["2025-12-11", 3075.0], ["2025-12-04", 3090.0], ["2025-11-27", 3235.0], ["2025-11-20", 3635.0], ["2025-11-13", 3555.0], ["2025-11-06", 3319.0], ["2025-10-30", 3247.0], ["2025-10-23", 3227.0], ["2025-10-16", 3114.0], ["2025-10-09", 2904.0], ["2025-09-25", 2763.0], ["2025-09-18", 2745.0], ["2025-09-11", 2655.0], ["2025-09-04", 2593.0], ["2025-08-28", 2515.0], ["2025-08-21", 2552.0], ["2025-08-14", 2742.0], ["2025-08-07", 2442.0], ["2025-07-31", 2032.0], ["2025-07-24", 2847.0], ["2025-07-17", 3282.0], ["2025-07-10", 3265.0], ["2025-07-03", 3202.0], ["2025-06-26", 3087.0], ["2025-06-19", 3017.0], ["2025-06-12", 2977.0], ["2025-06-05", 2917.0], ["2025-05-29", 2907.0], ["2025-05-22", 2840.0], ["2025-05-15", 2798.0], ["2025-05-08", 2686.0], ["2025-05-01", 2865.0], ["2025-04-24", 2923.0], ["2025-04-17", 2903.0], ["2025-04-10", 2873.0], ["2025-04-03", 2748.0], ["2025-03-27", 2663.0], ["2025-03-20", 2733.0], ["2025-03-13", 2678.0], ["2025-03-06", 2670.0], ["2025-02-27", 2610.0], ["2025-02-20", 2380.0], ["2025-02-13", 2158.0], ["2025-02-06", 1890.0], ["2025-01-23", 1970.0], ["2025-01-16", 1975.0], ["2025-01-09", 2026.0], ["2025-01-02", 2084.0], ["2024-12-26", 2093.0], ["2024-12-19", 2413.0], ["2024-12-12", 2493.0], ["2024-12-05", 2581.0], ["2024-11-28", 2594.0], ["2024-11-21", 2666.0], ["2024-11-14", 2699.0], ["2024-11-07", 2714.0], ["2024-10-31", 2826.0], ["2024-10-24", 2877.0], ["2024-10-17", 2877.0], ["2024-10-10", 2877.0], ["2024-09-26", 3031.0], ["2024-09-19", 2986.0], ["2024-09-12", 2986.0], ["2024-09-05", 3027.0], ["2024-08-29", 3143.0], ["2024-08-22", 3143.0], ["2024-08-15", 3143.0], ["2024-08-08", 3123.0], ["2024-08-01", 3103.0], ["2024-07-25", 3098.0], ["2024-07-18", 3084.0], ["2024-07-11", 3064.0], ["2024-07-04", 3026.0], ["2024-06-27", 2994.0], ["2024-06-20", 2959.0], ["2024-06-13", 2914.0], ["2024-06-06", 2914.0], ["2024-05-30", 2689.0], ["2024-05-23", 2683.0], ["2024-05-16", 2634.0], ["2024-05-09", 2532.0], ["2024-05-02", 2042.0], ["2024-04-25", 1583.0], ["2024-04-18", 1583.0], ["2024-04-11", 2485.0], ["2024-04-03", 1731.0], ["2024-03-28", 1677.0], ["2024-03-21", 1761.0], ["2024-03-14", 1699.0], ["2024-03-07", 1676.0], ["2024-02-29", 1639.0], ["2024-02-22", 1639.0], ["2024-02-08", 1639.0], ["2024-02-01", 1691.0], ["2024-01-25", 1682.0], ["2024-01-18", 1682.0], ["2024-01-11", 1682.0], ["2024-01-04", 1612.0], ["2023-12-29", 1612.0], ["2023-12-22", 1612.0], ["2023-12-15", 1637.0], ["2023-12-08", 1657.0], ["2023-12-01", 1713.0], ["2023-11-24", 1718.0], ["2023-11-17", 1790.0], ["2023-11-09", 1837.0], ["2023-11-04", 2043.0], ["2023-10-27", 2043.0], ["2023-10-20", 2104.0], ["2023-10-13", 2139.0], ["2023-10-06", 2149.0], ["2023-09-29", 2173.0], ["2023-09-22", 2173.0], ["2023-09-15", 2183.0], ["2023-09-08", 2183.0], ["2023-09-01", 2246.0], ["2023-08-25", 2246.0], ["2023-08-18", 2246.0], ["2023-08-11", 2297.0], ["2023-08-04", 2229.0], ["2023-07-28", 2229.0]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#5470c6"}, "itemStyle": {"color": "#5470c6"}}]};
+var failNames = [];
+if (failNames.length) {
+  chart.setOption(option);
+  chart.setOption({graphic: {elements: [{type:'text', right: 12, bottom: 8, style:{text:'🚫 ' + failNames.join('、'), fill:'#ef4444', fontSize:11}}]}});
+} else { chart.setOption(option); }
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

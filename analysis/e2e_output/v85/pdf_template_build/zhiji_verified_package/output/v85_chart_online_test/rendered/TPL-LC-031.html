@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三元材料 周度产量 · TPL-LC-031</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif; background: #0f172a; color: #e2e8f0; padding: 18px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.meta { display: flex; justify-content: space-between; align-items: center; background: #16213e; border: 1px solid #4f8a7a55; border-radius: 8px 8px 0 0; padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
+.meta-left { display: flex; gap: 14px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+.tid { font-family: monospace; color: #64748b; background: #0f172a; padding: 2px 8px; border-radius: 4px; }
+.vtag { background: #4f8a7a33; color: #4f8a7a; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+.node { color: #94a3b8; }
+.st-full { background: #22c55e22; color: #22c55e; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+.st-part { background: #ef444422; color: #ef4444; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; border: 1px solid #ef444466; }
+.scount { font-size: 12px; color: #94a3b8; }
+.part-warning { background: #ef444415; border: 1px solid #ef444466; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.pw-title { color: #ef4444; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.part-warning ul { margin-left: 22px; font-size: 12px; color: #fca5a5; }
+.fail-panel { background: #7f1d1d18; border: 1px solid #ef444455; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.fp-title { color: #f87171; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #33415555; }
+th { color: #94a3b8; }
+.ftag { padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.ftag-INVALID { background: #f59e0b22; color: #f59e0b; }
+.ftag-MISSING, .ftag-NO_ID { background: #6b728022; color: #9ca3af; }
+.ftag-FETCH_FAIL { background: #ef444422; color: #ef4444; }
+.chart-box { background: #16213e; border-radius: 0 0 8px 8px; padding: 8px; margin-top: 12px; }
+#chart { width: 960px; height: 460px; }
+footer { margin-top: 14px; font-size: 11px; color: #475569; text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <div class="meta-left">
+      <span class="tid">TPL-LC-031</span>
+      <span class="vtag">LC 碳酸锂</span>
+      <span class="node">节点: 供给</span>
+      <span class="node">单折线</span>
+      <span class="scount">2/2 系列有数据</span>
+    </div>
+    <span class="st-full">FULL_OK</span>
+  </div>
+  
+  <div class="chart-box"><div id="chart"></div></div>
+  
+  <footer>来源: 碳酸锂周报20260823.pdf · 第 12 页 · chart chart_35 · 测试环境渲染（未上线）</footer>
+</div>
+<script>
+var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+var option = {"backgroundColor": "#16213e", "title": {"text": "三元材料 周度产量", "subtext": "模板: TPL-LC-031 | 品种: 碳酸锂 | PDF: 碳酸锂周报20260823.pdf P12", "left": "center", "top": 8, "textStyle": {"color": "#e5e7eb", "fontSize": 16, "fontWeight": "bold"}, "subtextStyle": {"color": "#9ca3af", "fontSize": 11}}, "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}}, "legend": {"top": 52, "left": "center", "data": ["三元材料 周度产量", "中国碳酸锂周度产量（吨）"], "textStyle": {"color": "#cbd5e1", "fontSize": 12}, "type": "scroll"}, "grid": {"left": 64, "right": 30, "top": 96, "bottom": 42}, "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": false}}, "yAxis": [{"type": "value", "name": "元/吨", "nameTextStyle": {"color": "#6b7280", "fontSize": 11, "padding": [0, 0, 0, 24]}, "nameLocation": "end", "axisLine": {"show": true, "lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": true, "lineStyle": {"color": "#1f2937"}}}], "series": [{"name": "三元材料 周度产量", "yAxisIndex": 0, "type": "line", "data": [["2026-08-27", 21002.0], ["2026-08-20", 20625.0], ["2026-08-13", 20682.0], ["2026-08-06", 20365.0], ["2026-07-30", 19677.0], ["2026-07-23", 19474.0], ["2026-07-16", 19925.0], ["2026-07-09", 19670.0], ["2026-07-02", 19501.0], ["2026-06-25", 19873.0], ["2026-06-18", 19990.0], ["2026-06-11", 20249.0], ["2026-06-04", 20319.0], ["2026-05-28", 19702.0], ["2026-05-21", 19467.0], ["2026-05-14", 18938.0], ["2026-05-07", 18541.0], ["2026-04-30", 18191.0], ["2026-04-23", 18037.0], ["2026-04-16", 18177.0], ["2026-04-09", 18053.0], ["2026-04-02", 18286.0], ["2026-03-26", 18060.0], ["2026-03-19", 17450.0], ["2026-03-12", 16924.0], ["2026-03-05", 16518.0], ["2026-02-26", 15617.0], ["2026-02-12", 16281.0], ["2026-02-05", 17116.0], ["2026-01-29", 18053.0], ["2026-01-22", 18256.0], ["2026-01-15", 17635.0], ["2026-01-08", 18053.0], ["2025-12-31", 18290.0], ["2025-12-25", 17726.0], ["2025-12-18", 17845.0], ["2025-12-11", 18313.0], ["2025-12-04", 18697.0], ["2025-11-27", 19261.0], ["2025-11-20", 19002.0], ["2025-11-13", 18884.0], ["2025-11-06", 19234.0], ["2025-10-30", 18568.0], ["2025-10-23", 17766.0], ["2025-10-16", 17247.0], ["2025-10-09", 16976.0], ["2025-09-25", 16762.0], ["2025-09-18", 16649.0], ["2025-09-11", 16491.0], ["2025-09-04", 16513.0], ["2025-08-28", 16667.0], ["2025-08-21", 16565.0], ["2025-08-14", 16283.0], ["2025-08-07", 15745.0], ["2025-07-31", 15655.0], ["2025-07-24", 15502.0], ["2025-07-17", 15016.0], ["2025-07-10", 14756.0], ["2025-07-03", 14775.0], ["2025-06-26", 14666.0], ["2025-06-19", 14519.0], ["2025-06-12", 14440.0], ["2025-06-05", 14406.0], ["2025-05-29", 14248.0], ["2025-05-22", 14045.0], ["2025-05-15", 13879.0], ["2025-05-08", 13965.0], ["2025-04-30", 14028.0], ["2025-04-24", 14107.0], ["2025-04-17", 14121.0], ["2025-04-10", 14091.0], ["2025-04-03", 13964.0], ["2025-03-27", 13524.0], ["2025-03-20", 13342.0], ["2025-03-13", 12886.0], ["2025-03-06", 11833.0], ["2025-02-27", 11075.0], ["2025-02-20", 11179.0], ["2025-02-13", 11619.0], ["2025-02-06", 11289.0], ["2025-01-23", 12090.0], ["2025-01-16", 12274.0], ["2025-01-09", 12381.0], ["2025-01-02", 12808.0], ["2024-12-26", 13693.0], ["2024-12-19", 13986.0], ["2024-12-12", 13644.0], ["2024-12-05", 13195.0]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#5470c6"}, "itemStyle": {"color": "#5470c6"}}, {"name": "中国碳酸锂周度产量（吨）", "yAxisIndex": 0, "type": "line", "data": [["2026-08-31", 106482.0], ["2026-07-31", 101229.0], ["2026-06-30", 105430.0], ["2026-05-31", 101185.0], ["2026-04-30", 103580.0], ["2026-03-31", 104750.0], ["2026-02-28", 82460.0], ["2026-01-31", 96200.0], ["2025-12-31", 98170.0], ["2025-11-30", 93886.0], ["2025-10-31", 89290.0], ["2025-09-30", 83500.0], ["2025-08-31", 82790.0], ["2025-07-31", 76570.0], ["2025-06-30", 74015.0], ["2025-05-31", 70020.0], ["2025-04-30", 68330.0], ["2025-03-31", 80210.0], ["2025-02-28", 64070.0], ["2025-01-31", 63530.0], ["2024-12-31", 72280.0], ["2024-11-30", 66750.0], ["2024-10-31", 58970.0], ["2024-09-30", 61190.0], ["2024-08-31", 62360.0], ["2024-07-31", 65510.0], ["2024-06-30", 67143.0], ["2024-05-31", 62130.0], ["2024-04-30", 48578.0], ["2024-03-31", 44550.0], ["2024-02-29", 36840.0], ["2024-01-31", 44790.0], ["2023-12-31", 43439.0], ["2023-11-30", 41520.0], ["2023-10-31", 38100.0], ["2023-09-30", 42840.0], ["2023-08-31", 43390.0], ["2023-07-31", 42934.0], ["2023-06-30", 43475.0], ["2023-05-31", 36030.0], ["2023-04-30", 30400.0], ["2023-03-31", 32570.0], ["2023-02-28", 32640.0], ["2023-01-31", 35910.0], ["2022-12-31", 35250.0], ["2022-11-30", 37550.0], ["2022-10-31", 32540.0], ["2022-09-30", 33000.0], ["2022-08-31", 28580.0], ["2022-07-31", 30980.0], ["2022-06-30", 31330.0], ["2022-05-31", 29720.0], ["2022-04-30", 27140.0], ["2022-03-31", 26580.0], ["2022-02-28", 22130.0], ["2022-01-31", 21390.0]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#91cc75"}, "itemStyle": {"color": "#91cc75"}}]};
+var failNames = [];
+if (failNames.length) {
+  chart.setOption(option);
+  chart.setOption({graphic: {elements: [{type:'text', right: 12, bottom: 8, style:{text:'🚫 ' + failNames.join('、'), fill:'#ef4444', fontSize:11}}]}});
+} else { chart.setOption(option); }
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

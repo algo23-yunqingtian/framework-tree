@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMM-云南样本周度库存 · TPL-SI-012</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif; background: #0f172a; color: #e2e8f0; padding: 18px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.meta { display: flex; justify-content: space-between; align-items: center; background: #16213e; border: 1px solid #c08a3e55; border-radius: 8px 8px 0 0; padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
+.meta-left { display: flex; gap: 14px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+.tid { font-family: monospace; color: #64748b; background: #0f172a; padding: 2px 8px; border-radius: 4px; }
+.vtag { background: #c08a3e33; color: #c08a3e; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+.node { color: #94a3b8; }
+.st-full { background: #22c55e22; color: #22c55e; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+.st-part { background: #ef444422; color: #ef4444; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; border: 1px solid #ef444466; }
+.scount { font-size: 12px; color: #94a3b8; }
+.part-warning { background: #ef444415; border: 1px solid #ef444466; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.pw-title { color: #ef4444; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.part-warning ul { margin-left: 22px; font-size: 12px; color: #fca5a5; }
+.fail-panel { background: #7f1d1d18; border: 1px solid #ef444455; border-radius: 8px; padding: 12px 18px; margin-top: 12px; }
+.fp-title { color: #f87171; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #33415555; }
+th { color: #94a3b8; }
+.ftag { padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.ftag-INVALID { background: #f59e0b22; color: #f59e0b; }
+.ftag-MISSING, .ftag-NO_ID { background: #6b728022; color: #9ca3af; }
+.ftag-FETCH_FAIL { background: #ef444422; color: #ef4444; }
+.chart-box { background: #16213e; border-radius: 0 0 8px 8px; padding: 8px; margin-top: 12px; }
+#chart { width: 960px; height: 460px; }
+footer { margin-top: 14px; font-size: 11px; color: #475569; text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <div class="meta-left">
+      <span class="tid">TPL-SI-012</span>
+      <span class="vtag">SI 工业硅</span>
+      <span class="node">节点: 库存</span>
+      <span class="node">单折线</span>
+      <span class="scount">1/1 系列有数据</span>
+    </div>
+    <span class="st-full">FULL_OK</span>
+  </div>
+  
+  <div class="chart-box"><div id="chart"></div></div>
+  
+  <footer>来源: 硅产业链周报20260906.pdf · 第 11 页 · chart chart_12 · 测试环境渲染（未上线）</footer>
+</div>
+<script>
+var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+var option = {"backgroundColor": "#16213e", "title": {"text": "SMM-云南样本周度库存", "subtext": "模板: TPL-SI-012 | 品种: 工业硅 | PDF: 硅产业链周报20260906.pdf P11", "left": "center", "top": 8, "textStyle": {"color": "#e5e7eb", "fontSize": 16, "fontWeight": "bold"}, "subtextStyle": {"color": "#9ca3af", "fontSize": 11}}, "tooltip": {"trigger": "axis", "axisPointer": {"type": "cross"}}, "legend": {"top": 52, "left": "center", "data": ["SMM-云南样本周度库存"], "textStyle": {"color": "#cbd5e1", "fontSize": 12}, "type": "scroll"}, "grid": {"left": 64, "right": 30, "top": 96, "bottom": 42}, "xAxis": {"type": "time", "axisLine": {"lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": false}}, "yAxis": [{"type": "value", "name": "元/吨", "nameTextStyle": {"color": "#6b7280", "fontSize": 11, "padding": [0, 0, 0, 24]}, "nameLocation": "end", "axisLine": {"show": true, "lineStyle": {"color": "#374151"}}, "axisLabel": {"color": "#9ca3af", "fontSize": 11}, "splitLine": {"show": true, "lineStyle": {"color": "#1f2937"}}}], "series": [{"name": "SMM-云南样本周度库存", "yAxisIndex": 0, "type": "line", "data": [["2026-08-27", 35800.0], ["2026-08-20", 36100.0], ["2026-08-13", 35500.0], ["2026-08-06", 34800.0], ["2026-07-30", 34500.0], ["2026-07-23", 34400.0], ["2026-07-16", 33400.0], ["2026-07-09", 32900.0], ["2026-07-02", 32200.0], ["2026-06-25", 32000.0], ["2026-06-18", 31500.0], ["2026-06-11", 31500.0], ["2026-06-04", 31300.0], ["2026-05-28", 31400.0], ["2026-05-21", 31600.0], ["2026-05-14", 32000.0], ["2026-05-07", 32000.0], ["2026-04-30", 32000.0], ["2026-04-23", 32000.0], ["2026-04-16", 32000.0], ["2026-04-09", 32700.0], ["2026-04-02", 33100.0], ["2026-03-26", 33200.0], ["2026-03-19", 33000.0], ["2026-03-12", 33300.0], ["2026-03-05", 32900.0], ["2026-02-26", 33100.0], ["2026-02-12", 32900.0], ["2026-02-05", 32900.0], ["2026-01-29", 33100.0], ["2026-01-22", 34100.0], ["2026-01-15", 34000.0], ["2026-01-08", 34000.0], ["2026-01-01", 34000.0], ["2025-12-25", 34000.0], ["2025-12-18", 34000.0], ["2025-12-11", 33800.0], ["2025-12-04", 33500.0], ["2025-11-27", 34100.0], ["2025-11-20", 34500.0], ["2025-11-13", 34300.0], ["2025-11-06", 34600.0], ["2025-10-30", 34600.0], ["2025-10-23", 34100.0], ["2025-10-16", 34300.0], ["2025-10-09", 34300.0], ["2025-09-25", 31850.0], ["2025-09-18", 30950.0], ["2025-09-11", 29350.0], ["2025-09-04", 28600.0], ["2025-08-28", 31600.0], ["2025-08-21", 31900.0], ["2025-08-14", 31400.0], ["2025-08-07", 30600.0], ["2025-07-31", 30600.0], ["2025-07-24", 29000.0], ["2025-07-17", 27300.0], ["2025-07-10", 27200.0], ["2025-07-03", 26700.0], ["2025-06-26", 26600.0], ["2025-06-19", 26200.0], ["2025-06-12", 25800.0], ["2025-06-05", 25100.0], ["2025-05-29", 24700.0], ["2025-05-22", 24100.0], ["2025-05-15", 23800.0], ["2025-05-08", 24000.0], ["2025-04-30", 24300.0], ["2025-04-25", 24050.0], ["2025-04-18", 24000.0], ["2025-04-11", 24100.0], ["2025-04-04", 27200.0], ["2025-03-28", 27200.0], ["2025-03-21", 27700.0], ["2025-03-14", 28000.0], ["2025-03-07", 28000.0], ["2025-02-28", 28030.0], ["2025-02-21", 28030.0], ["2025-02-14", 27800.0], ["2025-02-07", 27480.0], ["2025-01-24", 27800.0], ["2025-01-17", 27600.0], ["2025-01-10", 27350.0], ["2025-01-03", 27150.0], ["2024-12-27", 27000.0], ["2024-12-20", 26600.0], ["2024-12-13", 26200.0], ["2024-12-06", 26100.0], ["2024-11-29", 25600.0], ["2024-11-22", 25250.0], ["2024-11-15", 24750.0], ["2024-11-08", 24250.0], ["2024-11-01", 23950.0], ["2024-10-25", 22910.0], ["2024-10-18", 21900.0], ["2024-10-11", 20850.0], ["2024-09-27", 19500.0], ["2024-09-20", 18800.0], ["2024-09-13", 18150.0], ["2024-09-06", 17650.0], ["2024-08-30", 16350.0], ["2024-08-23", 15700.0], ["2024-08-16", 15030.0], ["2024-08-09", 14650.0], ["2024-08-02", 14300.0], ["2024-07-26", 14000.0], ["2024-07-19", 14200.0], ["2024-07-12", 13850.0], ["2024-07-05", 14000.0], ["2024-06-28", 13900.0], ["2024-06-21", 13620.0], ["2024-06-14", 14170.0], ["2024-06-07", 15020.0], ["2024-05-31", 15120.0], ["2024-05-24", 15820.0], ["2024-05-17", 16520.0], ["2024-05-10", 16820.0], ["2024-04-26", 17445.0], ["2024-04-19", 20545.0], ["2024-04-12", 20645.0], ["2024-04-05", 20245.0], ["2024-03-29", 20145.0], ["2024-03-22", 19945.0], ["2024-03-15", 20295.0], ["2024-03-08", 20895.0], ["2024-03-01", 21595.0], ["2024-02-23", 21895.0], ["2024-02-19", 23695.0], ["2024-02-09", 22295.0], ["2024-02-02", 21695.0], ["2024-01-26", 21395.0], ["2024-01-19", 19445.0], ["2024-01-12", 18945.0], ["2024-01-05", 18545.0], ["2023-12-29", 18895.0], ["2023-12-22", 18945.0], ["2023-12-15", 18545.0], ["2023-12-08", 18345.0], ["2023-12-01", 16515.0], ["2023-11-24", 13845.0], ["2023-11-17", 11045.0], ["2023-11-10", 8470.0], ["2023-11-03", 6720.0], ["2023-10-27", 5050.0], ["2023-10-20", 4410.0], ["2023-10-13", 4160.0], ["2023-10-06", 4000.0], ["2023-09-29", 3450.0], ["2023-09-22", 3300.0], ["2023-09-15", 3450.0], ["2023-09-08", 4000.0], ["2023-09-01", 4500.0], ["2023-08-25", 4800.0], ["2023-08-18", 5250.0], ["2023-08-11", 5650.0], ["2023-08-04", 6250.0], ["2023-07-28", 6450.0], ["2023-07-21", 6550.0], ["2023-07-14", 6500.0], ["2023-07-07", 6800.0], ["2023-06-30", 7000.0], ["2023-06-23", 7330.0], ["2023-06-16", 7250.0], ["2023-06-09", 7920.0], ["2023-06-02", 7800.0], ["2023-05-26", 8050.0], ["2023-05-19", 7350.0], ["2023-05-12", 7200.0], ["2023-05-05", 8050.0], ["2023-04-28", 7950.0], ["2023-04-21", 7600.0], ["2023-04-14", 7350.0], ["2023-04-07", 7150.0], ["2023-03-31", 6550.0], ["2023-03-24", 5950.0], ["2023-03-17", 6150.0], ["2023-03-10", 5450.0], ["2023-03-03", 3900.0], ["2023-02-24", 3750.0], ["2023-02-17", 3800.0], ["2023-02-10", 4000.0]], "symbol": "circle", "symbolSize": 5, "smooth": false, "lineStyle": {"width": 2, "type": "solid", "color": "#5470c6"}, "itemStyle": {"color": "#5470c6"}}]};
+var failNames = [];
+if (failNames.length) {
+  chart.setOption(option);
+  chart.setOption({graphic: {elements: [{type:'text', right: 12, bottom: 8, style:{text:'🚫 ' + failNames.join('、'), fill:'#ef4444', fontSize:11}}]}});
+} else { chart.setOption(option); }
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

@@ -73,6 +73,30 @@
 
 ## 近期变更记录
 
+### 2026-09-30 HERMES — V85 图表模板在线集成渲染 (HERMES_V85_CHART_TEMPLATE_INTEGRATION)
+- **T1 输入包**: DSHB 交付 commit `4061dcf` (origin/feature/v85-chart-template)，4 文件 18152 行；MD5 实测: template json `92371c0a` / verify_stat csv `dba27ff4` / hermes_readme `2c35c68a` / run_log `bb66bf35`
+- **T2.1 zhiji 拉取**: 248 唯一 zhiji_id × 1s 限速全量拉取，**248/248 成功 (100%)，0 失败**，2021-01-01~2026-08-31，结果落 `zhiji_data_cache/` + `fetch_summary.json`
+- **T2.2-T2.6 渲染**: 333 套模板全部渲染出 HTML；**328/333 (98.5%) 图表有有效数据**；series 362 条中 **355 有效 (98.1%)**，5 条 INVALID (HTTP 500) + 2 条 MISSING 已在图表内加红色告警标记与失败明细表
+- **T2.3 PART_OK 隔离**: 6 套 PART_OK 全部强制红色告警条「不纳入正式投产看板」+ 🚫 失败标记，与 FULL_OK 展示严格区分（一致性校验: 告警条/失败面板/PART_OK 集合三者完全吻合，FULL_OK 零误标）
+- **T2.4 视觉校验**: 内置 10 项校验自动评分，**平均 9.63/10**；271 图满分，43 图 9 分，12 图 8 分，2 图 7 分，5 图 0 分（= 5 张零数据 PART_OK 图表）
+- **T2.5 节点挂载**: **36 个品种×业务节点**全部挂载，333 模板 100% 映射，生成 `node_mapping_index.csv` + `node_index.json`
+- **T3 产出**: `output/v85_chart_online_test/` — chart_online_render_result.md / node_mapping_index.csv / node_index.json / visual_check_result.csv(333行) / failed_chart_list.md / online_readme.md / rendered/ (333 HTML) / render_detail.json
+- **T5 完成标准 4/4 达标**: 327 套 FULL_OK 全部成功拉取并渲染 ✅；节点映射索引完整 ✅；完整校验报告 ✅；可人工复核可视化页面 ✅
+- **T4 约束全遵守**: 仅 `feature/v85-chart-template` 分支（未合并 main）；indicators_v1.json (MD5 `7a864e10`) / tree_config.json (MD5 `9b98c8af`) 零改动；`data/` 目录零改动；PART_OK 强制告警
+- **数据质量说明**: 真实数据点平均 266 点/图，范围 1~1831 点；23 图点数<20（已在评分中扣分）；5 张零数据图 = TPL-AO-042 / TPL-AO-058 / TPL-NI-033 / TPL-SI-026 / TPL-SI-028（全部为 PART_OK）
+- **遗留项**: P0 = 5 项 INVALID zhiji_id (HTTP 500) + 2 项 MISSING series 需人工补 ID；P1 = 6 套 PART_OK 待补齐后升级 FULL_OK；P2 = `delivery_confirm.md` 未在 DSHB commit 中（以全文件 MD5 实测替代凭证）；P2 = 124 项 FILLED 重检索模糊匹配 (score 0.44-0.89) 建议人工抽检
+- **⛔ 未上线**: 渲染结果仅用于测试验收，人工评审通过后再走 merge 流程
+
+### 2026-09-29 HERMES — V85 图表模板渲染引擎前置框架开发 (HERMES_V85_CHART_RENDER_PREP)
+- **T2 全部5模块开发完成**: chart_template_schema.json(Schema定义) + chart_template_loader.py(模板加载器) + chart_renderer.py(渲染引擎,8/9图表类型) + node_mount.py(节点挂载框架) + visual_check.py(视觉校验页面)
+- **自测结果**: 9/9模板加载校验通过; 9/9图表渲染成功(含HTML输出); 9节点全部MOUNTED(8品种覆盖); 52KB视觉校验页面生成(10项检查+1-10星评分)
+- **渲染能力**: 复合混合图(折线+柱状)/双Y轴独立轴/堆叠柱状/面积图/多折线/季节图标记 全部✅; 表格⏳(预留未实现)
+- **产物目录**: analysis/e2e_output/v85/chart_template/ (schema/templates/rendered/visual_check/ + 4个Python模块 + render_test_readme.md + DEV_SELFTEST_REPORT.md)
+- **前置文档缺失**: pdf_chart_template_web_integration.md / pdf_web_chart_template_draft.json / pdf_chart_visual_checklist.md 全机0命中, 如实报告不阻塞(参照v85-review-dashboard-build skill的DSHB缺失处置原则)
+- **约束遵守**: 全部mock数据零zhiji API; feature/v85-chart-template测试分支开发; indicators_v1.json/tree_config.json/匹配规则/GT零改动; 不修改/tmp环境不安装jsdom
+- **分支**: feature/v85-chart-template (基于 main 001b06e)
+- **等待DSHB交付**: 等待 zhiji_verified_package 模板包交付后替换mock数据, 接入步骤见 render_test_readme.md §3
+
 ### 2026-09-09 agent-2 — P0 拉数验证+补unit（276条wr / v3.82 / 30.4%覆盖）
 - **背景**：276条wr*指标（周报导入，v3.79入库）全部`verified=false`、`unit`空。需series拉数验证量级并补unit字段，覆盖率目标≥50%。
 - **执行**：逐条调用知几API `series?id=xxx&start=2025-01-01&end=2026-09-01`，要求返回≥3个数据点才算验证通过。
