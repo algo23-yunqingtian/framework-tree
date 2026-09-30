@@ -102,6 +102,15 @@
 - **产出**: analysis/e2e_output/v85/v85_portal_enhance_render_sim/ 9份材料
 
 ### 2026-09-30 HERMES — 渲染脚本修复+人工评审工作包+Gate准入 (HERMES_V85_RENDER_SCRIPT_FIX_AND_MANUAL_REVIEW_PACKAGE)
+
+### 2026-09-30 HERMES — THS指标映射预处理+Gate缺口计划 (HERMES_V85_THS_INDICATOR_MAPPING_PREP_AND_GATE_GAP_PLAN)
+- **T2.1/2.2 候选召回**: 1580指标库×2360 THS series静态文本匹配(品种过滤+同义词归一); 高置信864(36%)/模糊1188(50%)/无候选307(13%); 有候选合计2052(86%)
+- **T2.3 Gap分解**: gap_exec_plan.md — 14项未通过逐条拆解(Agent/产物/前置/工时/豁免); 5硬性禁止条件解除标准; 4阶段编排(DSHB→HERMES→人工→复检)
+- **T2.4 门户v5**: enhanced_review_portal_v4_mapping.md — 新增THS候选映射预览面板+批量导出+映射统计
+- **T2.5 回写脚本**: mapping_fill_helper.py — export(highconf 864/unfilled 1495)+verify(schema校验)+apply(回写副本); 3条测试通过, 原始THS未改
+- **T2.6 汇总报告**: ths_mapping_prep_report.md — 品种×分类分布, 匹配质量样例, 典型误匹配类型
+- **T4约束全遵守**: feature分支; 零zhiji API; indicators_v1/原始THS只读; 仅新增
+- **产物**: analysis/e2e_output/v85/v85_ths_mapping_gap_prep/ 11份
 - **T2.1 渲染编排脚本v2.0**: ths_render_prep_fixed.py — 修复4缺陷(THS分组/部分阻塞降级/重试/并发)+4遗漏点(zhiji_id正则/series空列表/meta缺失/verify_note清洗)+两级白名单(模板级3+Series级2)
 - **T2.2 仿真对比**: v1.0 vs v2.0 — 新增partial_render(8)+pending_match(155); 35模板从失败到成功; 渲染就绪率18%到19%
 - **T2.3 白名单**: temp_whitelist_schema.json — 两级白名单配置(模板ID+Series指标粒度)+schema定义
