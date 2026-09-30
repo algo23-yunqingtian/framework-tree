@@ -1,0 +1,279 @@
+{
+  "version": "v85-bl-extend-candidate",
+  "generated_at": "2026-10-01 03:36:54",
+  "task": "DSH-B_V85_RISK_IMPLEMENT_VERIFY_AND_RISKDB_OFFICIAL_LANDING",
+  "description": "黑名单扩充候选条目清单（基于37条算法缺陷案例）",
+  "total_candidates": 8,
+  "status_summary": {
+    "confirmed_new": 5,
+    "needs_manual_review": 1,
+    "not_recommended": 2
+  },
+  "existing_rules_count": 25,
+  "existing_rule_ids": [
+    "BL-001",
+    "BL-002",
+    "BL-003",
+    "BL-004",
+    "BL-005",
+    "BL-006",
+    "BL-007",
+    "BL-008",
+    "BL-009",
+    "BL-010",
+    "BL-011",
+    "BL-012",
+    "BL-013",
+    "BL-014",
+    "BL-015",
+    "BL-016",
+    "BL-017",
+    "BL-018",
+    "BL-019",
+    "BL-020",
+    "BL-021",
+    "BL-022",
+    "BL-023",
+    "BL-024",
+    "BL-025"
+  ],
+  "candidates": [
+    {
+      "candidate_id": "BL-018a",
+      "action": "extend",
+      "category": "品种口径",
+      "severity": "P0",
+      "parent_rule": "BL-018",
+      "name": "锡与镍跨品种禁止",
+      "left_patterns": [
+        "锡",
+        "锡锭",
+        "锡矿",
+        "锡精矿",
+        "LME锡",
+        "焊锡",
+        "表观消费量"
+      ],
+      "right_patterns": [
+        "镍",
+        "镍板",
+        "镍豆",
+        "镍铁",
+        "镍矿",
+        "COMEX镍",
+        "LME镍",
+        "精炼镍"
+      ],
+      "rationale": "BL-018 通用跨品种规则细分：锡系指标匹配到镍系数据，涉及LME库存、印尼产量等",
+      "case_source": [
+        "RISK-024",
+        "RISK-025",
+        "RISK-026",
+        "RISK-027",
+        "RISK-028",
+        "RISK-029",
+        "RISK-030"
+      ],
+      "conflict_description": "锡指标被错误匹配到镍系数据（如LME锡库存→LME镍注册仓单）",
+      "replay_result": "回放验证：41条中BL-018触发的7条P0全部正确拦截，无新增回归",
+      "status": "confirmed_new",
+      "priority": "P0-紧急"
+    },
+    {
+      "candidate_id": "BL-018b",
+      "action": "extend",
+      "category": "品种口径",
+      "severity": "P0",
+      "parent_rule": "BL-018",
+      "name": "锡与钢铁跨品种禁止",
+      "left_patterns": [
+        "锡",
+        "锡锭",
+        "锡矿"
+      ],
+      "right_patterns": [
+        "钢铁",
+        "镀锌板卷",
+        "钢铁企业",
+        "冷轧",
+        "热轧"
+      ],
+      "rationale": "锡表观消费量被匹配到镀锌板卷产量（RISK-031/032）",
+      "case_source": [
+        "RISK-031",
+        "RISK-032"
+      ],
+      "conflict_description": "锡表观消费量→镀锌板卷产量，跨品种且口径冲突",
+      "replay_result": "回放验证：RISK-031/032 正确拦截",
+      "status": "confirmed_new",
+      "priority": "P0-紧急"
+    },
+    {
+      "candidate_id": "BL-019a",
+      "action": "extend",
+      "category": "品种口径",
+      "severity": "P0",
+      "parent_rule": "BL-019",
+      "name": "硅加工费与铜加工费跨品种禁止",
+      "left_patterns": [
+        "硅矿",
+        "硅加工费",
+        "工业硅TC",
+        "金属硅TC"
+      ],
+      "right_patterns": [
+        "铜加工费",
+        "铜管加工费",
+        "铜TC",
+        "铜精矿TC"
+      ],
+      "rationale": "硅矿加工费TC被匹配到铜管加工费（RISK-022/023），加工费术语跨金属通用",
+      "case_source": [
+        "RISK-022",
+        "RISK-023"
+      ],
+      "conflict_description": "国内硅矿月加工费TC→铜管加工费，跨金属品种TC术语混淆",
+      "replay_result": "回放验证：RISK-022/023 正确拦截",
+      "status": "confirmed_new",
+      "priority": "P0-紧急"
+    },
+    {
+      "candidate_id": "BL-026",
+      "action": "new",
+      "category": "品种口径",
+      "severity": "P0",
+      "parent_rule": "BL-012",
+      "name": "库存天数跨品种禁止",
+      "left_patterns": [
+        "库存天数"
+      ],
+      "right_patterns": [
+        "库存天数"
+      ],
+      "additional_filter": "variety_mismatch",
+      "rationale": "库存天数指标跨品种匹配（NI/SI/SN/ZN→LI），'库存天数'作为通用术语在多种金属间高度重叠",
+      "case_source": [
+        "RISK-040",
+        "RISK-041",
+        "RISK-042",
+        "RISK-043",
+        "RISK-045",
+        "RISK-046",
+        "RISK-047",
+        "RISK-048",
+        "RISK-050"
+      ],
+      "conflict_description": "库存天数指标跨品种匹配，涉及品种: NI, SI, SN, ZN",
+      "replay_result": "回放验证：9条P1库存天数跨品种正确拦截",
+      "status": "needs_manual_review",
+      "priority": "P1-重要"
+    },
+    {
+      "candidate_id": "BL-016a",
+      "action": "extend",
+      "category": "经济口径",
+      "severity": "P1",
+      "parent_rule": "BL-016",
+      "name": "利润与产量互斥（含碳酸锂子品类）",
+      "left_patterns": [
+        "盐湖提锂利润",
+        "碳酸锂利润",
+        "电池级碳酸锂利润",
+        "工业级碳酸锂利润",
+        "冶炼利润"
+      ],
+      "right_patterns": [
+        "盐湖提锂产量",
+        "碳酸锂产量",
+        "电池级碳酸锂产量",
+        "工业级碳酸锂产量"
+      ],
+      "rationale": "碳酸锂利润指标与产量指标共享长前缀但核心指标不同，需要子品类级映射",
+      "case_source": [
+        "RISK-034",
+        "RISK-035",
+        "RISK-036",
+        "RISK-037"
+      ],
+      "conflict_description": "碳酸锂系利润指标→碳酸锂系产量指标，利润vs产量混淆",
+      "replay_result": "回放验证：4条P1利润产量互斥正确拦截",
+      "status": "confirmed_new",
+      "priority": "P1-重要"
+    },
+    {
+      "candidate_id": "BL-025a",
+      "action": "extend",
+      "category": "供需口径",
+      "severity": "P0",
+      "parent_rule": "BL-025",
+      "name": "消费量与产量互斥（含锡锌子品类）",
+      "left_patterns": [
+        "锡表观消费量",
+        "焊锡表观消费量",
+        "锌锭消费量",
+        "国内锌锭消费量"
+      ],
+      "right_patterns": [
+        "镀锌板卷产量",
+        "钢铁企业产量",
+        "国内锡锭产量",
+        "锌锭产量"
+      ],
+      "rationale": "锡/锌消费量指标被匹配到钢铁/锌产量，跨品种且口径相反",
+      "case_source": [
+        "RISK-031",
+        "RISK-032",
+        "RISK-033"
+      ],
+      "conflict_description": "消费量→产量，跨品种且口径冲突",
+      "replay_result": "回放验证：3条P0消费量产量互斥正确拦截",
+      "status": "confirmed_new",
+      "priority": "P0-紧急"
+    },
+    {
+      "candidate_id": "BL-NEW-01",
+      "action": "new",
+      "category": "待定",
+      "severity": "待定",
+      "parent_rule": null,
+      "name": "所有库存类指标互斥",
+      "left_patterns": [
+        "库存"
+      ],
+      "right_patterns": [
+        "库存"
+      ],
+      "rationale": "不建议新增：过于宽泛，会将所有库存指标都标记为互斥，产生大量误报",
+      "case_source": [],
+      "conflict_description": "无具体案例",
+      "replay_result": "不建议：预估将产生100%误报",
+      "status": "not_recommended",
+      "priority": "不采纳"
+    },
+    {
+      "candidate_id": "BL-NEW-02",
+      "action": "new",
+      "category": "待定",
+      "severity": "待定",
+      "parent_rule": null,
+      "name": "跨品种通用禁止规则",
+      "left_patterns": [
+        "所有品种"
+      ],
+      "right_patterns": [
+        "所有品种"
+      ],
+      "rationale": "不建议新增：应使用品种隔离门（variety gate）在算法层解决，而非黑名单规则",
+      "case_source": [],
+      "conflict_description": "跨品种匹配应在算法层通过品种前置过滤解决",
+      "replay_result": "不建议：黑名单规则无法解决算法层问题",
+      "status": "not_recommended",
+      "priority": "不采纳"
+    }
+  ],
+  "constraints": {
+    "no_production_modification": true,
+    "candidate_only": true,
+    "requires_manual_review": true
+  }
+}

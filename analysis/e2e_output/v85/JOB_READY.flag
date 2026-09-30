@@ -625,3 +625,57 @@ NO_SOURCE_MODIFICATION=TRUE
 NO_GT_MODIFICATION=TRUE
 NO_RULE_MODIFICATION=TRUE
 NO_AUTO_ITERATION=TRUE
+
+# =============================================================================
+# 风险实施验证与风险库落地 — DSH-B_V85_RISK_IMPLEMENT_VERIFY_AND_RISKDB_OFFICIAL_LANDING
+# 完成时间: 2026-10-01T03:37:00+08:00
+# =============================================================================
+RISK_IMPLEMENT_VERIFY=COMPLETED
+RISK_IMPLEMENT_VERIFY_ID=DSH-B_V85_RISK_IMPLEMENT_VERIFY_AND_RISKDB_OFFICIAL_LANDING
+RISK_IMPLEMENT_VERIFY_TIMESTAMP=2026-10-01T03:37:00+08:00
+RISK_IMPLEMENT_VERIFY_DIR=risk_implement_verify/
+
+# --- 任务摘要 ---
+VERIFY_TOTAL_OUTPUTS=8
+VERIFY_BL012_FIX_PLAN=A/B对比+回放测试(PlanA:3FP消除/9回归,PlanB:2FP消除/0回归)
+VERIFY_BLACKLIST_CANDIDATES=8(5confirmed_new,1needs_review,2not_recommended)
+VERIFY_ALIAS_WORKBOOK=34条跨品种+口径案例
+VERIFY_RISK_DB_FINAL=41条独立条目完整入库,字段齐全
+VERIFY_GATE_ITEMS=14项(DSHB交付10项,DSHE依赖4项,可豁免9项)
+VERIFY_WHITELIST_CANDIDATE=1条(RISK-005,TPL-LC-087)
+VERIFY_V86_PLAN=18任务/41.5人天/4阶段(Alpha/Beta/RC1/GA)
+
+# --- Git提交信息 ---
+VERIFY_COMMIT_HASH=<pending>
+VERIFY_COMMIT_BRANCH=feature/v85-chart-template
+VERIFY_COMMIT_REMOTE=origin/feature/v85-chart-template
+
+# --- 交付文件清单 (MD5) ---
+VERIFY_FILES_BEGIN
+bl012_fix_compare.md|10431|56b87aefbe49a1dd73753e1293cedf4e
+blacklist_extend_candidate.json|8357|cdcaee9af940d59082a05c0bcdb5768f
+alias_mapping_manual_workbook.csv|8610|6e1d830c0f9aa9c84bfc71db3b2882f4
+unified_indicator_risk_db_final.csv|44960|178f993b09af4895769ecbfb41e61b5d
+risk_db_final_check.md|4048|603900e80db1eabe0ed968bc7e32f2d3
+gate_dsh_input_supplement.md|11438|2ad49c10d5d2ef4914d99f8219d11be0
+v85_temp_whitelist_candidate.csv|837|bf0703ff2f2007acb3da0b0bc38f9986
+v86_workitem_breakdown.md|13522|78df26f0b15ba2b20f495ac5ebb73e66
+MD5_CHECKSUM_LIST.md|1039|2c3c20a1ef194d86c338987dac604e94
+VERIFY_FILES_END
+
+# --- DSHE依赖标记 ---
+DSHE_HIGH_RISK_CONFUSION_PAIRS=NOT_FOUND（标记依赖,不阻塞）
+DSHE_TEMP_WHITELIST_SCHEMA=NOT_FOUND（DSHB侧已提供兼容格式）
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=TRUE
+NO_GT_MODIFICATION=TRUE
+NO_RULE_MODIFICATION=TRUE
+NO_ZHIJI_API_CALL=TRUE
+READ_ONLY=TRUE
+APPEND_ONLY=TRUE
+HISTORICAL_ARTIFACTS_PRESERVED=TRUE
+NO_AUTO_ITERATION=TRUE
+
+# --- 回锁标记 ---
+V85_ALL_ANALYSIS_COMPLETE=TRUE

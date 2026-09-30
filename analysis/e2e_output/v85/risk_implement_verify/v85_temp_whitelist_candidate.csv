@@ -1,0 +1,2 @@
+﻿template_id,series_index,variety,indicator_name,risk_level,risk_description,root_cause,blacklist_rule,whitelist_reason,manual_confirm_required,manual_confirm_action,risk_annotation,valid_until,remediation_plan,gate_status,hermes_compatible
+TPL-LC-087,RISK-005,LC,磷酸铁锂 电池 国内销量,P0,上游数据源问题：PDF模板'磷酸铁锂 电池 国内销量'被BL-015（国内销量与出口互斥）触发，但matched_name为空。推测PDF模板原始周报可能在同一图表/章节中同时提及'国内销量'与'出口',C-上游数据源,BL-015,人工确认该模板当前匹配正确，可临时白名单放行,YES,人工确认TPL-LC-087当前匹配是否与国内销量口径一致,risk_level: P0_WAIVED,V86上线时,方案3（上游修正PDF模板）优先，方案2（别名映射）兜底,CONDITIONAL_PASS,YES
