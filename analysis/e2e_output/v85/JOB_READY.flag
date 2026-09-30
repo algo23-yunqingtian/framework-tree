@@ -294,3 +294,26 @@ EXPORT_TIMESTAMP=2026-09-29T00:00:00+08:00
 EXPORT_NO_MATCHING=true
 EXPORT_NO_ZHIJI_API_CALL=true
 EXPORT_READ_ONLY=true
+
+# =============================================================================
+# V85 全量分析停机归档 — DSH-B_FINAL_SHUTDOWN_V85
+# 停机时间: 2026-09-29T01:00:00+08:00
+# =============================================================================
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+SHUTDOWN_TASK=DSH-B_FINAL_SHUTDOWN_V85
+SHUTDOWN_TIMESTAMP=2026-09-29T01:00:00+08:00
+
+# --- 停机规则 ---
+# 1. v85所有自动化迭代全部结束；不再自动发起PDF解析、匹配、回归、模板比对任务
+# 2. 后续仅响应只读查询：读取报告、导出csv/md；禁止自动修改indicators_v1、GT、匹配规则；禁止调用zhiji API
+# 3. 新迭代必须人工显式下发完整工单才启动
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+READ_ONLY=true
+APPEND_ONLY=true
+HISTORICAL_ARTIFACTS_PRESERVED=true
+NO_AUTO_ITERATION=true
