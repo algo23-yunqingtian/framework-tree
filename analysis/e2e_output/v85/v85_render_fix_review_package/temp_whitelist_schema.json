@@ -1,0 +1,81 @@
+{
+  "_schema_version": "1.0",
+  "_description": "V85 两级临时白名单配置 — 模板ID级 + Series指标级",
+  "_task_id": "HERMES_RENDER_SCRIPT_FIX_AND_MANUAL_REVIEW_PACKAGE",
+  "_usage": "命中P0但在白名单内 → 流转至人工复核队列，不直接阻塞",
+  "_expiry_note": "expiry_date 为 ISO 格式，过期后自动失效",
+
+  "template_whitelist": [
+    {
+      "template_id": "TPL-AO-020",
+      "reason": "堆场站台口径待复核但业务确认",
+      "reviewer": "（评审人）",
+      "review_date": "2026-09-30",
+      "expiry_date": "2026-10-07",
+      "notes": "G03库存vs在途堆场冲突，业务确认口径合理"
+    },
+    {
+      "template_id": "TPL-AO-026",
+      "reason": "同上，TPL-AO-026 与 TPL-AO-020 同一指标不同时间粒度",
+      "reviewer": "（评审人）",
+      "review_date": "2026-09-30",
+      "expiry_date": "2026-10-07",
+      "notes": "G03冲突，业务确认"
+    },
+    {
+      "template_id": "TPL-LC-084",
+      "reason": "电池销量vs电池产量，G01供给vs需求，业务口径已确认",
+      "reviewer": "（评审人）",
+      "review_date": "2026-09-30",
+      "expiry_date": "2026-10-07",
+      "notes": "G01冲突，业务已确认产量需求口径分离"
+    }
+  ],
+
+  "series_whitelist": [
+    {
+      "template_id": "TPL-LC-091",
+      "series_index": 0,
+      "series_name": "新能源乘用车 产量",
+      "zhiji_name": "国产乘用车销量-新能源汽车",
+      "reason": "系列名为产量标签但数据源为销量，业务确认该图展示销量趋势，产量标签为误导但数据正确",
+      "reviewer": "（评审人）",
+      "review_date": "2026-09-30",
+      "expiry_date": "2026-10-07",
+      "notes": "G01冲突，series级白名单——仅放行该series，模板级仍阻塞"
+    },
+    {
+      "template_id": "TPL-SN-034",
+      "series_index": 1,
+      "series_name": "汽车端消费用锡拟合",
+      "zhiji_name": "汽车：消费指数：中国",
+      "reason": "拟合vs指数，G04冲突但口径差异在可接受范围",
+      "reviewer": "（评审人）",
+      "review_date": "2026-09-30",
+      "expiry_date": "2026-10-07",
+      "notes": "P1风险，series级白名单放行"
+    }
+  ],
+
+  "_schema_definition": {
+    "template_whitelist_entry": {
+      "template_id": "必填，模板ID，如 TPL-LC-091",
+      "reason": "必填，放行原因",
+      "reviewer": "必填，评审人",
+      "review_date": "必填，评审日期 ISO格式 YYYY-MM-DD",
+      "expiry_date": "可选，过期日期 ISO格式，不填则永久有效",
+      "notes": "可选，备注"
+    },
+    "series_whitelist_entry": {
+      "template_id": "必填，模板ID",
+      "series_index": "必填，series 在模板中的索引号",
+      "series_name": "必填，系列名",
+      "zhiji_name": "可选，zhiji实际指标名",
+      "reason": "必填，放行原因",
+      "reviewer": "必填，评审人",
+      "review_date": "必填，评审日期",
+      "expiry_date": "可选，过期日期",
+      "notes": "可选，备注"
+    }
+  }
+}

@@ -101,6 +101,16 @@
 - **T4 约束全遵守**: feature/v85-chart-template分支; 零zhiji API调用; 原始绑定文件只读未改; indicators_v1.json/tree_config.json只读; 仅新增文件
 - **产出**: analysis/e2e_output/v85/v85_portal_enhance_render_sim/ 9份材料
 
+### 2026-09-30 HERMES — 渲染脚本修复+人工评审工作包+Gate准入 (HERMES_V85_RENDER_SCRIPT_FIX_AND_MANUAL_REVIEW_PACKAGE)
+- **T2.1 渲染编排脚本v2.0**: ths_render_prep_fixed.py — 修复4缺陷(THS分组/部分阻塞降级/重试/并发)+4遗漏点(zhiji_id正则/series空列表/meta缺失/verify_note清洗)+两级白名单(模板级3+Series级2)
+- **T2.2 仿真对比**: v1.0 vs v2.0 — 新增partial_render(8)+pending_match(155); 35模板从失败到成功; 渲染就绪率18%到19%
+- **T2.3 白名单**: temp_whitelist_schema.json — 两级白名单配置(模板ID+Series指标粒度)+schema定义
+- **T2.4 评审工作包**: review_batches/ — Batch-A(89可渲染)+Batch-B(155 THS待匹配)+Batch-C(244阻塞/复核/降级)+review_checklist.md(8类核对项)
+- **T2.5 回写脚本**: review_result_apply.py — 读取评审CSV回写chart_risk_bound_all_reviewed.json+评审汇总MD; dry-run验证通过
+- **T2.6 Gate准入**: v85_gate_checklist.md — 46项检查(31通过/14未通过); 5项禁止上线条件触发; V86迭代12项待办
+- **T4约束全遵守**: feature/v85-chart-template分支; 零zhiji API; 原始绑定文件只读; 仅新增文件
+- **产出**: analysis/e2e_output/v85/v85_render_fix_review_package/ 13份材料
+
 ### 2026-09-30 HERMES — V85 人工评审材料准备 (HERMES_V85_ARTIFICIAL_REVIEW_PREP)
 - **T1 输入**: `output/v85_chart_online_test/` 7 项产物 + 333 张 HTML 全部齐备（render_detail.json 6.5MB）
 - **T2.1 评审入口**: `review_portal.md` — 品种分组(6品种)/评分排序(62张低于满分)/P0快速筛选(11张复合/堆叠/多折线)/86个图表一键跳转链接，全部链接可访问
