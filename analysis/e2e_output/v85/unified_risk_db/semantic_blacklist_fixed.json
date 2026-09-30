@@ -1,0 +1,547 @@
+{
+  "version": "v85-bl021-fixed",
+  "description": "语义互斥黑名单 - 用于模糊匹配禁止规则",
+  "generated_at": "2026-09-30",
+  "task": "DSH-B_FUZZY_MATCH_CALIB_FIX",
+  "total_rules": 25,
+  "rules": [
+    {
+      "rule_id": "BL-001",
+      "name": "产量与消费量互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "产量（production/output）与消费量（consumption）是不同经济概念，不可互相匹配",
+      "left_patterns": [
+        "产量",
+        "产出",
+        "生产量",
+        "产出量"
+      ],
+      "right_patterns": [
+        "消费量",
+        "消费",
+        "消费额"
+      ],
+      "rationale": "产量代表供给侧产出，消费量代表需求侧消耗，两者经济含义完全不同"
+    },
+    {
+      "rule_id": "BL-002",
+      "name": "产量与销量互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "产量（production）与销量（sales volume）是不同统计口径，不可互相匹配",
+      "left_patterns": [
+        "产量",
+        "产出",
+        "生产量"
+      ],
+      "right_patterns": [
+        "销量",
+        "销售量",
+        "销售金额"
+      ],
+      "rationale": "产量指生产端产出，销量指销售端成交，两者统计维度不同"
+    },
+    {
+      "rule_id": "BL-003",
+      "name": "销量与产量互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "销量（sales volume）与产量（production）是不同统计口径，不可互相匹配",
+      "left_patterns": [
+        "销量",
+        "销售量"
+      ],
+      "right_patterns": [
+        "产量",
+        "产出",
+        "生产量"
+      ],
+      "rationale": "同BL-002，反向检查"
+    },
+    {
+      "rule_id": "BL-004",
+      "name": "消费量与销量互斥",
+      "category": "供需口径",
+      "severity": "P1",
+      "description": "消费量与销量虽然都属需求端，但统计口径不同（消费量含终端使用，销量含批发流转）",
+      "left_patterns": [
+        "消费量",
+        "消费"
+      ],
+      "right_patterns": [
+        "销量",
+        "销售量"
+      ],
+      "rationale": "消费量与销量的统计范围和口径存在差异"
+    },
+    {
+      "rule_id": "BL-005",
+      "name": "场内库存与非仓单库存互斥",
+      "category": "库存口径",
+      "severity": "P0",
+      "description": "场内库存（注册仓单/期货库存）与非仓单库存（现货库存）是互斥概念",
+      "left_patterns": [
+        "场内库存",
+        "注册仓单",
+        "期货库存",
+        "注册仓单库存"
+      ],
+      "right_patterns": [
+        "非仓单",
+        "非仓单库存",
+        "社会库存",
+        "厂内库存",
+        "社会仓库库存"
+      ],
+      "rationale": "场内库存指交易所注册的有效仓单量，非仓单库存指未注册现货库存，两者不可混用"
+    },
+    {
+      "rule_id": "BL-006",
+      "name": "场内库存与社会库存互斥",
+      "category": "库存口径",
+      "severity": "P0",
+      "description": "场内库存与社会库存是互斥概念",
+      "left_patterns": [
+        "场内库存",
+        "注册仓单",
+        "期货库存"
+      ],
+      "right_patterns": [
+        "社会库存",
+        "社会库存量",
+        "社会总库存"
+      ],
+      "rationale": "场内库存是交易所仓单库存，社会库存是现货市场库存"
+    },
+    {
+      "rule_id": "BL-007",
+      "name": "非仓单库存与社会库存互斥",
+      "category": "库存口径",
+      "severity": "P1",
+      "description": "非仓单库存与社会库存虽然都属于非注册库存，但统计范围不同",
+      "left_patterns": [
+        "非仓单",
+        "非仓单库存"
+      ],
+      "right_patterns": [
+        "社会库存",
+        "社会库存量"
+      ],
+      "rationale": "非仓单库存指非注册现货，社会库存可能包含多种库存类型"
+    },
+    {
+      "rule_id": "BL-008",
+      "name": "出口与国内销量互斥",
+      "category": "贸易口径",
+      "severity": "P0",
+      "description": "出口量（exports）与国内销量（domestic sales）是互斥概念",
+      "left_patterns": [
+        "出口",
+        "出口量",
+        "出口额"
+      ],
+      "right_patterns": [
+        "国内销量",
+        "内销",
+        "国内销售"
+      ],
+      "rationale": "出口指跨境贸易，国内销量指境内销售，两者流量方向不同"
+    },
+    {
+      "rule_id": "BL-009",
+      "name": "利润与需求互斥",
+      "category": "经济口径",
+      "severity": "P0",
+      "description": "利润（profit）与需求（demand）是完全不同的经济指标",
+      "left_patterns": [
+        "利润",
+        "盈利",
+        "盈亏",
+        "毛利"
+      ],
+      "right_patterns": [
+        "需求",
+        "需求量",
+        "需求侧"
+      ],
+      "rationale": "利润反映产业盈利能力，需求反映消费侧需求强度"
+    },
+    {
+      "rule_id": "BL-010",
+      "name": "库存与产能开工互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "库存（inventory）与产能/开工率（capacity/operation rate）是不同的统计维度",
+      "left_patterns": [
+        "库存",
+        "库存量",
+        "库存天数"
+      ],
+      "right_patterns": [
+        "产能",
+        "开工率",
+        "运行产能",
+        "建成产能",
+        "产能利用率"
+      ],
+      "rationale": "库存反映存量水平，产能开工反映生产端运行状态"
+    },
+    {
+      "rule_id": "BL-011",
+      "name": "价格与库存互斥",
+      "category": "基本面口径",
+      "severity": "P1",
+      "description": "价格指标与库存指标是不同维度的基本面数据",
+      "left_patterns": [
+        "价格",
+        "均价",
+        "市场价",
+        "结算价",
+        "现货价格"
+      ],
+      "right_patterns": [
+        "库存",
+        "库存量",
+        "库存天数"
+      ],
+      "rationale": "价格反映市场估值，库存反映供需蓄水池"
+    },
+    {
+      "rule_id": "BL-012",
+      "name": "库存天数与库存量互斥",
+      "category": "库存口径",
+      "severity": "P1",
+      "description": "库存天数（days of inventory）与库存量（inventory volume）是不同度量",
+      "left_patterns": [
+        "库存天数"
+      ],
+      "right_patterns": [
+        "库存",
+        "库存量",
+        "库存总计"
+      ],
+      "rationale": "库存天数是衍生指标，库存量是绝对值"
+    },
+    {
+      "rule_id": "BL-013",
+      "name": "加工费与完全成本互斥",
+      "category": "成本口径",
+      "severity": "P1",
+      "description": "加工费（processing fee）与完全成本（total cost）是不同成本口径",
+      "left_patterns": [
+        "加工费"
+      ],
+      "right_patterns": [
+        "完全成本",
+        "生产成本",
+        "总成本",
+        "单位成本"
+      ],
+      "rationale": "加工费是加工环节的附加值，完全成本包含原料+加工+期间费用"
+    },
+    {
+      "rule_id": "BL-014",
+      "name": "供需平衡与价格互斥",
+      "category": "基本面口径",
+      "severity": "P2",
+      "description": "供需平衡表与价格指标是不同维度的数据",
+      "left_patterns": [
+        "供需平衡",
+        "平衡表"
+      ],
+      "right_patterns": [
+        "价格",
+        "均价",
+        "市场价"
+      ],
+      "rationale": "供需平衡是预测分析工具，价格是市场交易结果"
+    },
+    {
+      "rule_id": "BL-015",
+      "name": "国内销量与出口互斥(反向)",
+      "category": "贸易口径",
+      "severity": "P0",
+      "description": "国内销量与出口量是互斥概念（BL-008的反向）",
+      "left_patterns": [
+        "国内销量",
+        "内销",
+        "国内销售"
+      ],
+      "right_patterns": [
+        "出口",
+        "出口量"
+      ],
+      "rationale": "同BL-008，反向检查"
+    },
+    {
+      "rule_id": "BL-016",
+      "name": "利润与产量互斥",
+      "category": "经济口径",
+      "severity": "P1",
+      "description": "利润指标与产量指标是不同维度的经济指标",
+      "left_patterns": [
+        "利润",
+        "盈利",
+        "盈亏"
+      ],
+      "right_patterns": [
+        "产量",
+        "产出"
+      ],
+      "rationale": "利润反映盈利能力，产量反映生产规模"
+    },
+    {
+      "rule_id": "BL-017",
+      "name": "价格与利润互斥",
+      "category": "基本面口径",
+      "severity": "P2",
+      "description": "价格与利润是不同的经济指标",
+      "left_patterns": [
+        "价格",
+        "均价",
+        "市场价"
+      ],
+      "right_patterns": [
+        "利润",
+        "盈利"
+      ],
+      "rationale": "价格是交易价格，利润是价差计算结果"
+    },
+    {
+      "rule_id": "BL-018",
+      "name": "跨品种匹配禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "不同品种之间的指标不可互相匹配（如锡的指标匹配到镍的数据）",
+      "left_patterns": [
+        "锡",
+        "锡锭",
+        "锡矿"
+      ],
+      "right_patterns": [
+        "镍",
+        "镍板",
+        "镍豆",
+        "镍铁",
+        "镍矿"
+      ],
+      "rationale": "不同金属品种的数据不可混用"
+    },
+    {
+      "rule_id": "BL-019",
+      "name": "硅与铜跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅/金属硅的指标不可匹配到电解铜",
+      "left_patterns": [
+        "工业硅",
+        "金属硅",
+        "硅"
+      ],
+      "right_patterns": [
+        "铜",
+        "电解铜",
+        "铜锭",
+        "铜矿"
+      ],
+      "rationale": "完全不同品种，数据不可混用"
+    },
+    {
+      "rule_id": "BL-020",
+      "name": "硅与苯乙烯跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅的指标不可匹配到苯乙烯",
+      "left_patterns": [
+        "工业硅",
+        "金属硅"
+      ],
+      "right_patterns": [
+        "苯乙烯",
+        "苯乙烯库存"
+      ],
+      "rationale": "完全不同品种"
+    },
+    {
+      "rule_id": "BL-021",
+      "name": "硅与黄金跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅的供需平衡不可匹配到黄金的供需平衡（修复版：仅匹配'黄金'，不再匹配'金属硅'/'铝合金'中的'金'）",
+      "left_patterns": [
+        "工业硅",
+        "金属硅"
+      ],
+      "right_patterns": [
+        "黄金"
+      ],
+      "rationale": "完全不同品种。修复版：原'金'关键词会误匹配'金属硅'/'铝合金'，改为仅匹配'黄金'"
+    },
+    {
+      "rule_id": "BL-022",
+      "name": "镍与铜跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "镍的指标不可匹配到铜的数据",
+      "left_patterns": [
+        "镍",
+        "电解镍",
+        "精炼镍"
+      ],
+      "right_patterns": [
+        "铜",
+        "电解铜"
+      ],
+      "rationale": "完全不同品种"
+    },
+    {
+      "rule_id": "BL-023",
+      "name": "升贴水与价格互斥",
+      "category": "基本面口径",
+      "severity": "P2",
+      "description": "升贴水（premium/discount）与绝对价格是不同指标",
+      "left_patterns": [
+        "升贴水",
+        "溢价",
+        "贴水"
+      ],
+      "right_patterns": [
+        "价格",
+        "均价",
+        "市场价"
+      ],
+      "rationale": "升贴水是相对价格，价格是绝对价格"
+    },
+    {
+      "rule_id": "BL-024",
+      "name": "出库量与库存互斥",
+      "category": "库存口径",
+      "severity": "P1",
+      "description": "出库量是流量指标，库存是存量指标",
+      "left_patterns": [
+        "出库",
+        "出库量"
+      ],
+      "right_patterns": [
+        "库存",
+        "库存量"
+      ],
+      "rationale": "流量与存量不可混用"
+    },
+    {
+      "rule_id": "BL-025",
+      "name": "消费量与产量互斥(反向)",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "消费量与产量互斥（BL-001的反向）",
+      "left_patterns": [
+        "消费量",
+        "消费"
+      ],
+      "right_patterns": [
+        "产量",
+        "产出",
+        "生产量"
+      ],
+      "rationale": "同BL-001，反向检查"
+    }
+  ],
+  "p0_cases_found": {
+    "total_entries": 7,
+    "unique_templates": 7,
+    "templates": [
+      "TPL-AL-013",
+      "TPL-LC-054",
+      "TPL-LC-084",
+      "TPL-LC-086",
+      "TPL-LC-091",
+      "TPL-LC-092",
+      "TPL-LC-099"
+    ],
+    "categories": {
+      "利润与需求口径冲突": [
+        {
+          "template_id": "TPL-LC-054",
+          "src": "碳酸锂 三元523需求",
+          "matched": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉（Li: 5.5%-6.5%）:",
+          "desc": "利润与需求口径冲突"
+        }
+      ],
+      "产量与销量口径冲突": [
+        {
+          "template_id": "TPL-LC-084",
+          "src": "其他电池(磷酸铁锂) 销量",
+          "matched": "SMM: 境内其他电池产量: 月度",
+          "desc": "产量与销量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-086",
+          "src": "其他电池(磷酸铁锂) 销量",
+          "matched": "SMM: 境内其他电池产量: 月度",
+          "desc": "产量与销量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-091",
+          "src": "新能源乘用车 产量",
+          "matched": "SMM: 国产乘用车销量-新能源汽车: 周度",
+          "desc": "产量与销量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-092",
+          "src": "新能源乘用车 产量",
+          "matched": "SMM: 国产乘用车销量-新能源汽车: 周度",
+          "desc": "产量与销量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-099",
+          "src": "其他电池(磷酸铁锂) 销量",
+          "matched": "SMM: 境内其他电池产量: 月度",
+          "desc": "产量与销量口径冲突"
+        }
+      ],
+      "销量与产量口径冲突": [
+        {
+          "template_id": "TPL-LC-084",
+          "src": "其他电池(磷酸铁锂) 销量",
+          "matched": "SMM: 境内其他电池产量: 月度",
+          "desc": "销量与产量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-086",
+          "src": "其他电池(磷酸铁锂) 销量",
+          "matched": "SMM: 境内其他电池产量: 月度",
+          "desc": "销量与产量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-091",
+          "src": "新能源乘用车 产量",
+          "matched": "SMM: 国产乘用车销量-新能源汽车: 周度",
+          "desc": "销量与产量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-092",
+          "src": "新能源乘用车 产量",
+          "matched": "SMM: 国产乘用车销量-新能源汽车: 周度",
+          "desc": "销量与产量口径冲突"
+        },
+        {
+          "template_id": "TPL-LC-099",
+          "src": "其他电池(磷酸铁锂) 销量",
+          "matched": "SMM: 境内其他电池产量: 月度",
+          "desc": "销量与产量口径冲突"
+        }
+      ],
+      "场内库存与非仓单库存口径冲突": [
+        {
+          "template_id": "TPL-AL-013",
+          "src": "LME主要仓库场内库存",
+          "matched": "LME：非仓单库存：欧洲（日）",
+          "desc": "场内库存与非仓单库存口径冲突"
+        }
+      ]
+    }
+  },
+  "fix_note": "BL-021 right_patterns: 移除'金'，仅保留'黄金'，消除金属硅/铝合金误报",
+  "fixed_at": "2026-09-30 14:58:04"
+}

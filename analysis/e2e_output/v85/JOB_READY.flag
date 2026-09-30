@@ -317,3 +317,263 @@ READ_ONLY=true
 APPEND_ONLY=true
 HISTORICAL_ARTIFACTS_PRESERVED=true
 NO_AUTO_ITERATION=true
+
+# =============================================================================
+# ZHIJI 校验 + HERMES 交付 — DSH-B_ZHIJI_MATCH_FOR_HERMES_DELIVER
+# 完成时间: 2026-09-30T11:13:50+08:00
+# =============================================================================
+ZHIJI_VERIFY_TASK=DSH-B_ZHIJI_MATCH_FOR_HERMES_DELIVER
+ZHIJI_VERIFY_STATUS=COMPLETED
+ZHIJI_VERIFY_TIMESTAMP=2026-09-30T11:13:50+08:00
+ZHIJI_VERIFY_DIR=pdf_template_build/zhiji_verified_package/
+
+# --- 校验摘要 ---
+ZHIJI_VERIFY_TOTAL_TEMPLATES=333
+ZHIJI_VERIFY_FULL_OK=327
+ZHIJI_VERIFY_PART_OK=6
+ZHIJI_VERIFY_TOTAL_SERIES=362
+ZHIJI_VERIFY_UNIQUE_IDS=183
+ZHIJI_VERIFY_VALID_IDS=181
+ZHIJI_VERIFY_INVALID_IDS=2
+ZHIJI_VERIFY_NULL_ORIGINAL=126
+ZHIJI_VERIFY_NULL_FILLED_INDICATORS=13
+ZHIJI_VERIFY_NULL_FILLED_SEARCH=111
+ZHIJI_VERIFY_NULL_MISSING=2
+
+# --- 交付文件清单 ---
+ZHIJI_VERIFY_FILES_BEGIN
+pdf_web_chart_template_hermes_ready.json|480677|HERMES可直接读取的完整模板
+zhiji_verify_stat.csv|39914|每条series校验明细(362行)
+hermes_readme.md|22894|HERMES交付说明文档
+run_log.txt|<self>|执行日志
+ZHIJI_VERIFY_FILES_END
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+READ_ONLY=true
+APPEND_ONLY=true
+HISTORICAL_ARTIFACTS_PRESERVED=true
+NO_AUTO_ITERATION=true
+
+# =============================================================================
+# HERMES Git Commit - DSH-B_COMMIT_HERMES_PACKAGE_TO_GIT
+# 完成时间: 2026-09-30T13:08:33+08:00
+# =============================================================================
+COMMIT_TASK=DSH-B_COMMIT_HERMES_PACKAGE_TO_GIT
+COMMIT_STATUS=COMPLETED
+COMMIT_TIMESTAMP=2026-09-30T13:08:33+08:00
+COMMIT_HASH=4061dcf60f5b221b848e3420c1e76d27840953d5
+COMMIT_BRANCH=feature/v85-chart-template
+COMMIT_REMOTE=origin/feature/v85-chart-template
+COMMIT_MESSAGE="feat(v85): add DSHB zhiji verified chart template package for HERMES integration"
+
+# --- 提交文件清单 ---
+COMMIT_FILES_BEGIN
+hermes_readme.md|22894|0D426685D16F791B72F0E57EBFC8F426
+pdf_web_chart_template_hermes_ready.json|480677|41AC0F770DFFDA074C8E019D13DBE8C5
+run_log.txt|299|E2910F47612C8EF31C33EBF3289F3A76
+zhiji_verify_stat.csv|39914|4BAEE438CCB616F5A921E48DDDBFD7FC
+COMMIT_FILES_END
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+NO_AUTO_ITERATION=false
+NO_MAIN_BRANCH_PUSH=true
+
+# =============================================================================
+# 任务结束 - 回锁 V85_ALL_ANALYSIS_COMPLETE=TRUE
+# =============================================================================
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+
+# =============================================================================
+# 同花顺模板提取与知几预匹配 — DSH-B_TONGHUA_SHUN_TEMPLATE_EXTRACT_AND_ZHIJI_PRE_MATCH
+# 完成时间: 2026-09-30T14:30:00+08:00
+# =============================================================================
+THS_TASK=DSH-B_TONGHUA_SHUN_TEMPLATE_EXTRACT_AND_ZHIJI_PRE_MATCH
+THS_STATUS=COMPLETED
+THS_TIMESTAMP=2026-09-30T14:30:00+08:00
+THS_DIR=tonghuashun_template_package/
+
+# --- 摘要 ---
+THS_TOTAL_TEMPLATES=155
+THS_FULL_OK=7
+THS_PART_OK=148
+THS_ALL_MISS=0
+THS_TOTAL_SERIES=2354
+THS_VALID=1006
+THS_FILLED=629
+THS_MISSING=669
+THS_INVALID=50
+THS_UNIQUE_ZHIJI_IDS=337
+THS_VALID_IDS=326
+THS_INVALID_IDS=11
+
+# --- 交付文件清单 ---
+THS_FILES_BEGIN
+tonghuashun_chart_template.json|1126688|a4da3d760e240b0fa8d41082112407dc
+th_zhiji_match_stat.csv|313381|37c7bbc5665f6800af19a1d95f3b6f79
+th_vs_pdf_compare.md|9482|0271a97d8ca74c03106704c014f79b90
+th_missing_risk.md|154283|b85bb01e6abb452d2118977c5131888a
+THS_FILES_END
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+READ_ONLY=true
+APPEND_ONLY=true
+NO_AUTO_ITERATION=false
+
+# =============================================================================
+# 任务结束 - 回锁
+# =============================================================================
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+NO_ZHIJI_API_CALL=TRUE
+
+# DSH-B_FUZZY_MATCH_CALIB_FIX (2026-09-30)
+# Output files (MD5):
+semantic_blacklist.json: 16372B
+fuzzy_match_review_result.md: 21079B
+revised_full_ok_list.md: 24771B
+match_rule_summary.md: 10987B
+# Summary:
+FILLED_entries_scanned=124
+ACCEPTABLE=111
+REJECTED=13
+P0_conflicts=13
+Templates_downgraded=13
+Revised_FULL_OK=314
+Revised_PART_OK=19
+Blacklist_rules=25
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+NO_AUTO_ITERATION=TRUE
+NO_ZHIJI_API_CALL=TRUE
+NO_SOURCE_MODIFICATION=TRUE
+NO_GT_MODIFICATION=TRUE
+NO_RULE_MODIFICATION=TRUE
+
+## DSH-B_THS_TEMPLATE_RECHECK_WITH_SEMANTIC_BLACKLIST
+# 同花顺模板语义黑名单重校验
+# Completed: 2026-09-30 14:45:59
+
+# 扫描范围
+THS_TOTAL_ENTRIES=2354
+THS_WITH_MATCH=1685
+
+# 黑名单扫描结果
+THS_P0_CONFLICTS=29
+THS_WARNINGS=17
+THS_CLEAN=2304
+THS_UNRESOLVED=4
+
+# 模板状态变更
+THS_FULL_OK_BEFORE=7
+THS_PART_OK_BEFORE=148
+THS_FULL_OK_AFTER=6
+THS_PART_OK_AFTER=149
+THS_DOWNGRADED=1
+
+# P0冲突分类
+THS_P0_品种口径=26
+THS_P0_供需口径=3
+
+# 输出文件
+THS_RECHECK_RESULT=analysis/e2e_output/v85/tonghuashun_recheck/ths_recheck_result.md
+THS_UPDATED_MATCH_STAT=analysis/e2e_output/v85/tonghuashun_recheck/ths_updated_match_stat.csv
+THS_UPDATED_TEMPLATE_RISK_LIST=analysis/e2e_output/v85/tonghuashun_recheck/ths_updated_template_risk_list.md
+
+# 状态标记
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+NO_ZHIJI_API_CALL=TRUE
+NO_SOURCE_MODIFICATION=TRUE
+NO_GT_MODIFICATION=TRUE
+NO_RULE_MODIFICATION=TRUE
+
+
+
+## DSH-B_BLACKLIST_BL021_FIX_AND_THS_RESCAN
+- TASK_ID: DSH-B_BLACKLIST_BL021_FIX_AND_THS_RESCAN
+- COMPLETED_AT: 2026-09-30 14:58:04
+- V85_ALL_ANALYSIS_COMPLETE=TRUE
+- NO_ZHIJI_API_CALL=TRUE
+- NO_SOURCE_MODIFICATION=TRUE
+- NO_GT_MODIFICATION=TRUE
+- NO_RULE_MODIFICATION=TRUE
+- BL021_FIX_APPLIED=TRUE
+- FIXED_BLACKLIST=saved to tonghuashun_recheck_fixed/semantic_blacklist_fixed.json
+- P0_AFTER_FIX=20
+- WARNING_AFTER_FIX=17
+- DOWNGRADED_TEMPLATES=0
+- OUTPUT_DIR=tonghuashun_recheck_fixed/
+
+## DSH-B_THS_MATCH_FINALIZE_AND_UNIFY_RISK_DB
+# 统一指标风险数据库 — PDF+THS合并
+# Completed: 2026-09-30 21:10:29
+#
+# 输出目录: analysis/e2e_output/v85/unified_risk_db/
+
+# --- 统一风险库摘要 ---
+UNIFIED_RISK_DB=COMPLETED
+UNIFIED_RISK_DB_ID=DSH-B_THS_MATCH_FINALIZE_AND_UNIFY_RISK_DB
+UNIFIED_RISK_DB_TIMESTAMP=2026-09-30T21:10:29+08:00
+UNIFIED_RISK_DB_DIR=unified_risk_db/
+
+# --- Git提交信息 ---
+COMMIT_HASH=97e59386b8dffcb53939d2d5c2ae4173d5cc04e3
+COMMIT_BRANCH=feature/v85-chart-template
+COMMIT_REMOTE=origin/feature/v85-chart-template
+COMMIT_MESSAGE="feat(v85): unified indicator risk DB - PDF+THS merge with BL-021 fix"
+
+# --- 风险库统计 ---
+UNIFIED_TOTAL_ENTRIES=50
+UNIFIED_UNIQUE_ENTRIES=41
+UNIFIED_DUPLICATE_ENTRIES=9
+UNIFIED_P0_CONFLICTS=33
+UNIFIED_P1_WARNINGS=17
+UNIFIED_P2_HINTS=0
+UNIFIED_PDF_ENTRIES=13
+UNIFIED_THS_P0_ENTRIES=20
+UNIFIED_THS_P1P2_ENTRIES=17
+UNIFIED_CROSS_VARIETY_P0=21
+UNIFIED_DEFINITION_ERRORS=12
+
+# --- PDF与THS重合度 ---
+PDF_VARIETIES=AL,LC,NI,SI
+THS_VARIETIES=LI,NI,SI,SN,ZN
+VARIETY_OVERLAP=NI,SI
+PDF_RULES=BL-002,BL-003,BL-005,BL-009,BL-015,BL-020,BL-021,BL-022
+THS_RULES=BL-012,BL-016,BL-018,BL-019,BL-022,BL-025
+RULE_OVERLAP=BL-022
+INDICATOR_OVERLAP=0
+
+# --- 交付文件清单 (MD5) ---
+UNIFIED_FILES_BEGIN
+unified_indicator_risk_db.csv|11760|1c56f59ad5329655753c23e6968e42f6
+unified_risk_summary_report.md|20197|a66de18190de77991d95870f30937acc
+risk_db_schema.md|5823|8b8cab55d479cde409077f7cb3bfb09f
+semantic_blacklist_fixed.json|16680|c1efd55ee415fecc3c8d214b1f420d98
+UNIFIED_FILES_END
+
+# --- 约束声明 ---
+NO_SOURCE_MODIFICATION=true
+NO_GT_MODIFICATION=true
+NO_RULE_MODIFICATION=true
+NO_ZHIJI_API_CALL=true
+READ_ONLY=true
+APPEND_ONLY=true
+HISTORICAL_ARTIFACTS_PRESERVED=true
+
+# --- 回锁标记 ---
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+NO_ZHIJI_API_CALL=TRUE
+NO_SOURCE_MODIFICATION=TRUE
+NO_GT_MODIFICATION=TRUE
+NO_RULE_MODIFICATION=TRUE
+NO_AUTO_ITERATION=TRUE
