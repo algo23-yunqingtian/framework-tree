@@ -577,3 +577,13 @@
 - DSHB/DSHE 6个最终版文件未落盘, HERMES等价版可用
 - 2个辅助脚本: mapping_fill_helper_v2 + batch_export_import
 - 产物目录: analysis/e2e_output/v85/hermes_portal_gate_final/
+
+### 2026-10-01 HERMES_V85_HUMAN_REVIEW_TOOL_ENHANCE_AND_BATCH_DATA_PREP
+- 人工评审工作台面板(门户v5增强): P0风险筛选+批量处置+回放查看+模板跳转
+- batch_export_import_v2.py: THS批量导出回填+跨品种风险预警+别名/混淆校验+变更日志
+- review_batches_v6: A(97)/B(155)/C(236)+RISK-ID/处置/Gate标记/不一致风险字段
+- Gate进度看板: 10项Gate跟踪(5 DSHB+5 HERMES), H5已解除
+- gate_pre_check.py: 一键46项Gate预校验
+- 归档规范: human_review_archive_spec.md
+- DSHB 6fded66产物已读: 34条P0验证/31规则黑名单/488模板回放2721行
+- 产物目录: analysis/e2e_output/v85/hermes_human_review_tool/
