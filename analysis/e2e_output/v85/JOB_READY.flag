@@ -1149,3 +1149,47 @@ NO_ZHIJI_API_CALL=TRUE
 NO_MODIFY_SOURCE=TRUE
 NO_CHANGE_GT=TRUE
 NO_EDIT_RULE=TRUE
+
+# ============================================================ #
+# V85_ARTIFACT_PERSIST_AND_SNAPSHOT_VERIFY 2026-10-01 20:30:00
+# task       : B_V85_ARTIFACT_PERSIST_AND_SNAPSHOT_VERIFY
+# branch     : feature/v85-chart-template
+# output_dir : analysis/e2e_output/v85/b_storage_persist/
+# md5_list   : analysis/e2e_output/v85/b_storage_persist/MD5_MANIFEST.md (4 files / 62,093 bytes)
+# deliverables (4):
+#   artifact_ingest_check.py              入库完整性校验脚本 (MD5/结构/解析/快照/只读 5模块)
+#   ingest_check_result.json              校验执行结果 (453文件, 453/453 MD5, 37/37结构, 449/453解析)
+#   v85_artifact_persist_report.md        V85持久化入库报告 (8章节: 概览/MD5/结构/解析/快照/只读/依赖/约束)
+#   v85_snapshot_monitor_config.md        V85快照监控基线配置 (8章节: 告警/篡改检测/快照探测/CI/CD/版本管理/仪表盘/故障恢复)
+# extras (1): MD5_MANIFEST.md
+# key_metrics : 453文件校验(387 V85+66归档), 31.18MB+1.20MB=32.38MB
+#              MD5 453/453(100%), 结构 37/37(100%), 解析 449/453(99.1%), 核心只读 21/21(100%)
+#              快照Tag: v85-final-persist, 3个MD5清单交叉比对(82条目)
+# caveat      : 4项CSV列数偏差(output_file_md5.csv+file_index.csv)为已知非阻塞问题
+# constraint  : NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_SOURCE_TEMPLATE=TRUE
+#               READ_ONLY=TRUE | NO_CHANGE_GT=TRUE | NO_EDIT_RULE=TRUE
+# ============================================================ #
+JOB_READY=TRUE
+B_V85_ARTIFACT_PERSIST_AND_SNAPSHOT_VERIFY=COMPLETE
+B_V85_ARTIFACT_PERSIST_COMMIT_HASH=4239cd4
+B_V85_ARTIFACT_PERSIST_COMMIT_BRANCH=feature/v85-chart-template
+B_V85_ARTIFACT_PERSIST_COMMIT_REMOTE=origin/feature/v85-chart-template
+B_V85_ARTIFACT_PERSIST_FILES=4
+B_V85_ARTIFACT_PERSIST_INSERTIONS=560
+B_V85_ARTIFACT_PERSIST_DELIVERABLES=4/4
+B_V85_ARTIFACT_PERSIST_MD5_LIST=MD5_MANIFEST.md
+B_V85_ARTIFACT_PERSIST_TOTAL_FILES_CHECKED=453
+B_V85_ARTIFACT_PERSIST_MD5_PASS=453/453 (100.0%)
+B_V85_ARTIFACT_PERSIST_STRUCTURE_PASS=37/37 (100.0%)
+B_V85_ARTIFACT_PERSIST_PARSE_PASS=449/453 (99.1%)
+B_V85_ARTIFACT_PERSIST_READONLY_PASS=21/21 (100.0%)
+B_V85_ARTIFACT_PERSIST_SNAPSHOT_TAG=v85-final-persist
+B_V85_ARTIFACT_PERSIST_ARCHIVE_FILES=66
+B_V85_ARTIFACT_PERSIST_ARCHIVE_SIZE=1258164 bytes
+B_V85_ARTIFACT_PERSIST_V85_OUTPUT_SIZE=31.18 MB
+B_V85_ARTIFACT_PERSIST_TOTAL_SIZE=32.38 MB
+NO_AUTO_ITERATE=TRUE
+NO_ZHIJI_API_CALL=TRUE
+NO_MODIFY_SOURCE=TRUE
+NO_CHANGE_GT=TRUE
+NO_EDIT_RULE=TRUE
