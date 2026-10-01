@@ -1,0 +1,357 @@
+{
+  "task": "DSHE-B_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN",
+  "generated_at": "2026-10-01 14:02:45",
+  "engine": {
+    "source": "analysis/e2e_output/v85/alias_match_presearch/build_alias_library.py",
+    "loaded_lines": "1..655",
+    "source_md5": "d375f963678d1e89c7e9949805f8433f",
+    "source_sha256": "b756c191ee24882fe6762ece11f77b239ba36e82f28b7bc1d3783a9be4d8f570",
+    "note": "new_matcher / resolve_canonical / norm_full / dice / metal_families 原样 exec()；BL_LR 通过 __globals__ 注入"
+  },
+  "defect": {
+    "location": "build_alias_library.py L260-L266, resolve_canonical()",
+    "source_lines": {
+      "L260": "def resolve_canonical(nm):",
+      "L262": "s |= set(name2canon.get(nm, []))",
+      "L263": "s |= set(key2canon.get(nm, []))",
+      "L264": "s |= set(name2canon.get(ALIAS[nm][\"light\"], []))",
+      "L265": "s |= set(key2canon.get(ALIAS[nm][\"light\"], []))",
+      "L266": "return sorted(s)"
+    },
+    "root_cause": "L264/L265 对 ALIAS 做硬索引 ALIAS[nm]，但 new_matcher 会把任意 norm_full 字符串交给 resolve_canonical；ALIAS 只收录 ingest 过的 canonical_name/alias_name，未收录的名字（如短度量词'产量'、实体词'场内库存'）必然 KeyError。",
+    "observed": {
+      "calls_total": 9714,
+      "keyerror": 2977,
+      "keyerror_rate_pct": 30.65,
+      "keyerror_samples": [
+        "场内库存",
+        "注册仓单库存",
+        "非仓单库存",
+        "电解镍",
+        "电解铜",
+        "注册仓单",
+        "非仓单",
+        "产量",
+        "销量",
+        "销量",
+        "产量",
+        "场内库存"
+      ],
+      "alias_registry_size": 4643,
+      "name2canon_size": 1234,
+      "key2canon_size": 1652
+    },
+    "note": "上一轮 guard_hits=382 为本轮的 2977 的 子集。本环境因测试集更大而放大。"
+  },
+  "fixes": {
+    "F1_minimal_patch": {
+      "code_before": "s |= set(name2canon.get(ALIAS[nm][\"light\"], []))\ns |= set(key2canon.get(ALIAS[nm][\"light\"], []))",
+      "code_after": "rec = ALIAS.get(nm)\nif rec is not None:\n    light = rec.get(\"light\", \"\")\n    s |= set(name2canon.get(light, []))\n    s |= set(key2canon.get(light, []))",
+      "scope": "2 行改 5 行，diff 最小；对已注册名行为零变化",
+      "resolves": "崩溃（KeyError）",
+      "does_not_resolve": "未注册名的语义状态（静默返回 []）、多 canonical 歧义、R-07 短路黑名单",
+      "effort": "0.25 人时",
+      "risk": "极低"
+    },
+    "F2_structured_return": {
+      "signature": "resolve_structured(nm) -> {state: UNREGISTERED|NO_MATCH|UNIQUE|AMBIGUOUS, canonicals: [...], alias: bool, light: str}",
+      "rationale": "把 0/1/N 三种状态显式化，让 R-07 能区分'未注册'与'歧义'，消除 silent-fail 与 sorted()[0] 静默选键",
+      "effort": "2 人时",
+      "risk": "低（新增返回类型，需同步调用方）"
+    },
+    "F4_pattern_boundary": {
+      "targets": [
+        "BL-012",
+        "BL-009",
+        "BL-026",
+        "BL-011",
+        "BL-013"
+      ],
+      "rule_a": "F4a 子串包含：L/R 在同一字符串内匹配且一侧区间被另一侧包含 -> 自触发",
+      "rule_b": "F4b 复合短语：同一字符串内 L 与 R 以互不重叠区间共现 -> 复合短语非单向指标",
+      "rationale": "黑名单的 L/R 语义是'x 侧讲 A、y 侧讲 B'。若 x 侧同时讲 A 和 B（复合短语或同义展开），拦截即为误伤。本轮抽样审计中 V86硬拦截(blacklist_precheck) 37 行有 9 行（24.3%）属此类",
+      "lint_source": "build_alias_library.py 的 bl_lint 已产出 43 条整词边界告警（BL-001/016/025 各 3 条，BL-002/003/008/009/010/011/015/017/018/019/022/023/024/018a/018b 各 2 条，BL-004/012/013/014 各 1 条），但仅为告警，未阻止上线",
+      "effort": "3 人时",
+      "risk": "中（需逐条黑名单规则人工确认 L/R 纯度，否则可能放过真实冲突）"
+    },
+    "F3_gate_reorder": {
+      "order_before": [
+        "empty_input",
+        "alias_exact(R-07)",
+        "variety_anchor_violation(R-01)",
+        "blacklist_precheck(R-05)",
+        "metric_exclusion_hard(R-03)",
+        "variety_neutral_target_review(R-01b)",
+        "R-06 阈值"
+      ],
+      "order_after": [
+        "empty_input",
+        "variety_anchor_violation(R-01)",
+        "blacklist_precheck(R-05, 收集全部命中)",
+        "alias_exact(R-07, UNIQUE 才放行)",
+        "metric_exclusion_hard(R-03)",
+        "variety_neutral_target_review(R-01b)",
+        "R-06 阈值"
+      ],
+      "rationale": "R-07 是'放行'型门禁，放在 R-01/R-05 之前会导致安全门禁被短路；同时 R-05 只上报首条命中规则，遮蔽了 BL-015/BL-018a/BL-022 等规则的归因",
+      "effort": "4 人时",
+      "risk": "中（改变 reason 分布，需同步测试集与下游消费方）"
+    }
+  },
+  "behavior_diff": {
+    "pairs_total": 4857,
+    "pairs_by_source": {
+      "play488": 2566,
+      "aliaslib": 1658,
+      "rerated": 444,
+      "selfpair": 165,
+      "boundary": 24
+    },
+    "matcher_variant": "F3 + F4（R-01 -> R-05 全量上报 -> R-07 UNIQUE 放行 -> R-03 -> R-01b -> R-06）",
+    "accept_dist_base": {
+      "False": 3013,
+      "True": 1844
+    },
+    "accept_dist_fixed": {
+      "False": 3178,
+      "True": 1679
+    },
+    "reason_dist_base": {
+      "alias_exact": 1824,
+      "variety_neutral_target_review": 1686,
+      "below_threshold": 864,
+      "variety_anchor_violation": 258,
+      "blacklist_precheck": 204,
+      "mid_dice_same_variety": 17,
+      "high_dice": 3,
+      "metric_exclusion_hard": 1
+    },
+    "reason_dist_fixed": {
+      "variety_neutral_target_review": 1686,
+      "alias_exact": 1657,
+      "below_threshold": 865,
+      "variety_anchor_violation": 258,
+      "blacklist_precheck": 201,
+      "alias_ambiguous_multi_canonical": 167,
+      "mid_dice_same_variety": 18,
+      "high_dice": 4,
+      "metric_exclusion_hard": 1
+    },
+    "state_transitions": {
+      "R->R": 1686,
+      "A->A": 1677,
+      "B->B": 1325,
+      "A->R": 167,
+      "B->A": 2
+    },
+    "alias_exact": {
+      "base": 1824,
+      "fixed_unique": 1657,
+      "fixed_ambiguous_review": 167,
+      "silent_key_pickup_count": 167
+    },
+    "blacklist_rule_reporting": {
+      "base_first_rule_only": {
+        "BL-005": 25,
+        "BL-002": 22,
+        "BL-009": 19,
+        "BL-001": 18,
+        "BL-008": 18,
+        "BL-010": 15,
+        "BL-011": 15,
+        "BL-012": 12,
+        "BL-016": 10,
+        "BL-023": 9,
+        "BL-017": 7,
+        "BL-020": 6,
+        "BL-014": 6,
+        "BL-024": 4,
+        "BL-007": 4,
+        "BL-004": 4,
+        "BL-013": 4,
+        "BL-006": 3,
+        "BL-021": 3
+      },
+      "fixed_all_rules": {
+        "BL-005": 25,
+        "BL-002": 22,
+        "BL-003": 19,
+        "BL-001": 18,
+        "BL-025": 18,
+        "BL-008": 18,
+        "BL-015": 18,
+        "BL-009": 18,
+        "BL-010": 15,
+        "BL-011": 15,
+        "BL-012": 11,
+        "BL-006": 10,
+        "BL-016": 10,
+        "BL-023": 9,
+        "BL-020": 6
+      },
+      "rules_never_reported_in_base": [
+        "BL-003",
+        "BL-025",
+        "BL-015",
+        "BL-026",
+        "BL-016a"
+      ]
+    },
+    "self_trigger_pairs": {
+      "total": 4,
+      "by_rule": {
+        "BL-012": 2,
+        "BL-026": 2
+      }
+    },
+    "f4_fullrun": {
+      "pairs_checked": 4857,
+      "self_trigger_skipped_total": 11,
+      "skipped_by_rule": {
+        "BL-012": 4,
+        "BL-026": 4,
+        "BL-009": 2,
+        "BL-017": 1
+      },
+      "skipped_by_reason": {
+        "F4a_span_contained": 8,
+        "F4b_compound_phrase": 3
+      },
+      "hits_before_f4": 332,
+      "hits_after_f4": 326,
+      "note": "F4 在全量 4857 pair 上的自触发抑制量；被抑制的拦截在真实场景下多为误伤（同名对 / 复合短语对）"
+    }
+  },
+  "tp_fp_impact": {
+    "method": "对同一 pair 集合比较 base 与 fixed 的三态；A=自动放行, R=降级复核, B=硬拦截",
+    "A->R_downgrade": 167,
+    "A->B_hardblock": 0,
+    "B->A_release": 2,
+    "B->R_review": 0,
+    "R->A_release": 0,
+    "R->B_hardblock": 0,
+    "stable": 0,
+    "tp_effect": "A->R/A->B 是把'静默放行'改为'复核或拦截'，在跨品种与黑名单命中场景下是 TP 的净增益（这些 pair 若被当作正确别名入库即为 TP 缺失）",
+    "fp_effect": "B->A/B->R 是放宽拦截。本轮实测 B->A=2，B->R=0，其中 B->A 全部来自 BL-012/BL-009 pattern 子串自触发的同名对（如 '锡厂库存天数（天）' <-> '锡厂库存天数（天）'），这类放行是 FP 修复而非 FP 引入。",
+    "f4_self_trigger_release": {
+      "pairs_with_blacklist_hit_before": 239,
+      "released_by_f4": 4,
+      "still_blocked_after_f4": 235,
+      "release_rate_pct": 1.67,
+      "note": "被 F4 释放的 4 pair 全部是同字符串自触发（同名对 / 复合短语对），属误伤修复；仍被拦截的 235 pair 是真实冲突"
+    },
+    "crash_eliminated": 2977,
+    "crash_note": "修复前这 2977 次调用会抛 KeyError。在生产管线中若上游无 try/except，整个批次会中断（相当于整批 TP 归零）；若上游 catch 后按拒绝处理，则相当于 2977 个隐性硬拦截。F1 修复后它们按'未注册'落入模糊匹配路径，由 R-06 阈值与 R-01/R-05 决定是否拦截。"
+  },
+  "unit_tests": {
+    "summary": {
+      "PASS": 19
+    },
+    "n": 19,
+    "tests": [
+      {
+        "id": "UT-01",
+        "result": "PASS",
+        "desc": "原实现：未注册归一名 '产量' -> KeyError（缺陷复现成功）"
+      },
+      {
+        "id": "UT-02",
+        "desc": "F1 修复：resolve_safe 对未注册名返回 [] 且不抛异常",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-03",
+        "desc": "F1 修复：resolve_safe 对已注册名与原实现一致",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-04",
+        "desc": "F2 结构化：未注册名 state=UNREGISTERED",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-05",
+        "desc": "F2 结构化：单键 state=UNIQUE",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-06",
+        "desc": "F2 结构化：复合键 alias_norm state=AMBIGUOUS（12 个原子键）",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-07",
+        "desc": "F3-only：R-07 命中但黑名单也命中 -> 黑名单优先",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-08",
+        "desc": "F3-only：黑名单上报全部命中规则而非首条",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-09",
+        "desc": "F3 重排：BL-015 不再被 BL-008 遮蔽",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-10",
+        "desc": "F3 重排：AMBIGUOUS 别名对降级复核而非自动放行",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-11",
+        "desc": "F3 重排：空输入 -> empty_input（不变）",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-12",
+        "desc": "F3 重排：品种锚点跨品种 -> 硬拦截（不变）",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-13",
+        "desc": "F3 重排：2 键别名对 -> AMBIGUOUS 降级复核（不再静默选首键）",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-15",
+        "desc": "F3 重排：1 键别名对 -> alias_exact 自动放行（LME库存）",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-14",
+        "desc": "F4 边界：BL-012 pattern 自触发的同名对不再命中",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-16",
+        "desc": "F4 边界：合法跨字符串冲突仍然命中（库存天数 vs 库存量）",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-17",
+        "desc": "F4 边界：BL-009 自触发（利润+需求同现一个名字）不再命中",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-18",
+        "desc": "F3+F4：BOUNDARY-013 安全负向样例恢复不阻塞（走 alias_exact）",
+        "result": "PASS"
+      },
+      {
+        "id": "UT-19",
+        "desc": "F3+F4：BOUNDARY-017/018 类自触发误伤修复（F4b 复合短语）",
+        "result": "PASS"
+      }
+    ]
+  },
+  "regression_risk": {
+    "r1_reason_semantics": "高：R-05 的 reason 从'首条命中规则'变为'全部命中规则 + 首个上报'，下游若按 rule_id 精确匹配需同步",
+    "r2_review_rate_increase": "中：新增 alias_ambiguous_multi_canonical 降级复核路径，人工复核队列会增长 167 条（本测试集内）",
+    "r3_alias_exact_decrease": "中：alias_exact 从 1824 降至 1657（167 条转为降级复核），别名库自动放行率下降，但消除了 167 条静默选键",
+    "r4_testset_labels": "高：blacklist_boundary_testset.json 的 24 例中 8 例的 expected_rule 在新门禁下不可达（BL-009a 不存在、R-01 先于 R-05），需重建期望",
+    "r5_no_gating_by_f1": "F1 单独上线不改变任何放行结论，只消除崩溃，是最低风险的第一步"
+  },
+  "recommendation": "分三步上线：(1) F1 立即上线消除崩溃（0.25 人时，零行为变化）；(2) F2 结构化返回 + R-07 多 canonical 降级复核（2 人时，消除 165 条静默选键）；(3) F3 门禁重排 + R-05 全量上报（4 人时，修复 BOUNDARY-013 类漏拦与 BL-015/BL-018a/BL-022 归因遮蔽）；(4) F4 整词边界 + 同侧纯度（3 人时，消除 BL-012/BL-009 pattern 自触发的 9 类误伤）。同步重建 blacklist_boundary_testset.json 的 24 例期望。"
+}

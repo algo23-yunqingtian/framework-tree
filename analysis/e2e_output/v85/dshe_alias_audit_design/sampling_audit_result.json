@@ -1,0 +1,1219 @@
+{
+  "task": "DSHE-B_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN",
+  "generated_at": "2026-10-01 13:30:34",
+  "base_commit": "00b3cd8",
+  "branch": "feature/v85-chart-template",
+  "seed": 20261001,
+  "engine": {
+    "source": "analysis/e2e_output/v85/alias_match_presearch/build_alias_library.py",
+    "loaded_lines": "1..655",
+    "source_md5": "d375f963678d1e89c7e9949805f8433f",
+    "source_sha256": "b756c191ee24882fe6762ece11f77b239ba36e82f28b7bc1d3783a9be4d8f570",
+    "note": "new_matcher / resolve_canonical / norm_full / dice / metal_families 原样 exec()；BL_LR 通过 __globals__ 注入"
+  },
+  "blacklist": {
+    "file": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshb_full_integrate\\semantic_blacklist_v85_final.json",
+    "rules_total": 31,
+    "rule_ids": [
+      "BL-001",
+      "BL-002",
+      "BL-003",
+      "BL-004",
+      "BL-005",
+      "BL-006",
+      "BL-007",
+      "BL-008",
+      "BL-009",
+      "BL-010",
+      "BL-011",
+      "BL-012",
+      "BL-013",
+      "BL-014",
+      "BL-015",
+      "BL-016",
+      "BL-016a",
+      "BL-017",
+      "BL-018",
+      "BL-018a",
+      "BL-018b",
+      "BL-019",
+      "BL-019a",
+      "BL-020",
+      "BL-021",
+      "BL-022",
+      "BL-023",
+      "BL-024",
+      "BL-025",
+      "BL-025a",
+      "BL-026"
+    ],
+    "bl_lint": [
+      {
+        "rule_id": "BL-001",
+        "rule_name": "产量与消费量互斥",
+        "side": "left",
+        "pattern": "产量",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 生产量"
+      },
+      {
+        "rule_id": "BL-001",
+        "rule_name": "产量与消费量互斥",
+        "side": "left",
+        "pattern": "产出",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 产出量"
+      },
+      {
+        "rule_id": "BL-001",
+        "rule_name": "产量与消费量互斥",
+        "side": "right",
+        "pattern": "消费",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 表观消费/消费量"
+      },
+      {
+        "rule_id": "BL-002",
+        "rule_name": "产量与销量互斥",
+        "side": "left",
+        "pattern": "产量",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 生产量"
+      },
+      {
+        "rule_id": "BL-002",
+        "rule_name": "产量与销量互斥",
+        "side": "left",
+        "pattern": "产出",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 产出量"
+      },
+      {
+        "rule_id": "BL-003",
+        "rule_name": "销量与产量互斥",
+        "side": "right",
+        "pattern": "产量",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 生产量"
+      },
+      {
+        "rule_id": "BL-003",
+        "rule_name": "销量与产量互斥",
+        "side": "right",
+        "pattern": "产出",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 产出量"
+      },
+      {
+        "rule_id": "BL-004",
+        "rule_name": "消费量与销量互斥",
+        "side": "left",
+        "pattern": "消费",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 表观消费/消费量"
+      },
+      {
+        "rule_id": "BL-008",
+        "rule_name": "出口与国内销量互斥",
+        "side": "left",
+        "pattern": "出口",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 净出口量/进出口/出口量"
+      },
+      {
+        "rule_id": "BL-008",
+        "rule_name": "出口与国内销量互斥",
+        "side": "left",
+        "pattern": "出口量",
+        "len": 3,
+        "issue": "为更长token子串, 需整词边界: 净出口量"
+      },
+      {
+        "rule_id": "BL-009",
+        "rule_name": "利润与需求互斥",
+        "side": "left",
+        "pattern": "利润",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 冶炼利润"
+      },
+      {
+        "rule_id": "BL-009",
+        "rule_name": "利润与需求互斥",
+        "side": "right",
+        "pattern": "需求",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 需求量"
+      },
+      {
+        "rule_id": "BL-010",
+        "rule_name": "库存与产能开工互斥",
+        "side": "left",
+        "pattern": "库存",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 场内库存/社会库存/期货库存/库存天数"
+      },
+      {
+        "rule_id": "BL-010",
+        "rule_name": "库存与产能开工互斥",
+        "side": "right",
+        "pattern": "产能",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 产能利用率/建成产能/运行产能"
+      },
+      {
+        "rule_id": "BL-011",
+        "rule_name": "价格与库存互斥",
+        "side": "left",
+        "pattern": "价格",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 现货价格"
+      },
+      {
+        "rule_id": "BL-011",
+        "rule_name": "价格与库存互斥",
+        "side": "right",
+        "pattern": "库存",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 场内库存/社会库存/期货库存/库存天数"
+      },
+      {
+        "rule_id": "BL-012",
+        "rule_name": "库存天数与库存量互斥",
+        "side": "right",
+        "pattern": "库存",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 场内库存/社会库存/期货库存/库存天数"
+      },
+      {
+        "rule_id": "BL-013",
+        "rule_name": "加工费与完全成本互斥",
+        "side": "left",
+        "pattern": "加工费",
+        "len": 3,
+        "issue": "为更长token子串, 需整词边界: 加工费TC"
+      },
+      {
+        "rule_id": "BL-014",
+        "rule_name": "供需平衡与价格互斥",
+        "side": "right",
+        "pattern": "价格",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 现货价格"
+      },
+      {
+        "rule_id": "BL-015",
+        "rule_name": "国内销量与出口互斥(反向)",
+        "side": "right",
+        "pattern": "出口",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 净出口量/进出口/出口量"
+      },
+      {
+        "rule_id": "BL-015",
+        "rule_name": "国内销量与出口互斥(反向)",
+        "side": "right",
+        "pattern": "出口量",
+        "len": 3,
+        "issue": "为更长token子串, 需整词边界: 净出口量"
+      },
+      {
+        "rule_id": "BL-016",
+        "rule_name": "利润与产量互斥",
+        "side": "left",
+        "pattern": "利润",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 冶炼利润"
+      },
+      {
+        "rule_id": "BL-016",
+        "rule_name": "利润与产量互斥",
+        "side": "right",
+        "pattern": "产量",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 生产量"
+      },
+      {
+        "rule_id": "BL-016",
+        "rule_name": "利润与产量互斥",
+        "side": "right",
+        "pattern": "产出",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 产出量"
+      },
+      {
+        "rule_id": "BL-017",
+        "rule_name": "价格与利润互斥",
+        "side": "left",
+        "pattern": "价格",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 现货价格"
+      },
+      {
+        "rule_id": "BL-017",
+        "rule_name": "价格与利润互斥",
+        "side": "right",
+        "pattern": "利润",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 冶炼利润"
+      },
+      {
+        "rule_id": "BL-018",
+        "rule_name": "跨品种匹配禁止",
+        "side": "left",
+        "pattern": "锡",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-018",
+        "rule_name": "跨品种匹配禁止",
+        "side": "right",
+        "pattern": "镍",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-019",
+        "rule_name": "硅与铜跨品种禁止",
+        "side": "left",
+        "pattern": "硅",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-019",
+        "rule_name": "硅与铜跨品种禁止",
+        "side": "right",
+        "pattern": "铜",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-022",
+        "rule_name": "镍与铜跨品种禁止",
+        "side": "left",
+        "pattern": "镍",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-022",
+        "rule_name": "镍与铜跨品种禁止",
+        "side": "right",
+        "pattern": "铜",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-023",
+        "rule_name": "升贴水与价格互斥",
+        "side": "left",
+        "pattern": "贴水",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 升贴水"
+      },
+      {
+        "rule_id": "BL-023",
+        "rule_name": "升贴水与价格互斥",
+        "side": "right",
+        "pattern": "价格",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 现货价格"
+      },
+      {
+        "rule_id": "BL-024",
+        "rule_name": "出库量与库存互斥",
+        "side": "left",
+        "pattern": "出库",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 出库量"
+      },
+      {
+        "rule_id": "BL-024",
+        "rule_name": "出库量与库存互斥",
+        "side": "right",
+        "pattern": "库存",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 场内库存/社会库存/期货库存/库存天数"
+      },
+      {
+        "rule_id": "BL-025",
+        "rule_name": "消费量与产量互斥(反向)",
+        "side": "left",
+        "pattern": "消费",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 表观消费/消费量"
+      },
+      {
+        "rule_id": "BL-025",
+        "rule_name": "消费量与产量互斥(反向)",
+        "side": "right",
+        "pattern": "产量",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 生产量"
+      },
+      {
+        "rule_id": "BL-025",
+        "rule_name": "消费量与产量互斥(反向)",
+        "side": "right",
+        "pattern": "产出",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 产出量"
+      },
+      {
+        "rule_id": "BL-018a",
+        "rule_name": "锡与镍跨品种禁止",
+        "side": "left",
+        "pattern": "锡",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-018a",
+        "rule_name": "锡与镍跨品种禁止",
+        "side": "right",
+        "pattern": "镍",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-018b",
+        "rule_name": "锡与钢铁跨品种禁止",
+        "side": "left",
+        "pattern": "锡",
+        "len": 1,
+        "issue": "pattern过短(<2字), 已丢弃"
+      },
+      {
+        "rule_id": "BL-018b",
+        "rule_name": "锡与钢铁跨品种禁止",
+        "side": "right",
+        "pattern": "钢铁",
+        "len": 2,
+        "issue": "为更长token子串, 需整词边界: 钢铁企业"
+      }
+    ],
+    "injection": "K.build_bl_lr + K.apply_rules (BL_LR via __globals__)"
+  },
+  "engine_guard": {
+    "guard_hits": 106,
+    "missing_samples": [
+      "场内库存",
+      "库存天数",
+      "库存",
+      "场内库存",
+      "非仓单库存",
+      "注册仓单库存",
+      "非仓单",
+      "消费量",
+      "销量",
+      "注册仓单库存",
+      "金属硅",
+      "黄金"
+    ],
+    "patched": true,
+    "total_alias_entries": 4643
+  },
+  "readonly_declaration": "未修改 indicator_alias_library.csv / indicators_v1.json / GT / semantic_blacklist_fixed.json / 终版黑名单; 无 zhiji API 调用",
+  "inputs": [
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\alias_lib_full_audit\\indicator_alias_library.csv",
+      "exists": true,
+      "bytes": 1081339,
+      "md5": "e9989c2938b1707739f85e6085e91414",
+      "rows": 4643,
+      "cols": 23
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshe_alias_integrate_test\\ambiguous_indicator_rerated.csv",
+      "exists": true,
+      "bytes": 243368,
+      "md5": "eb94bec2607e6c9660ea830173f94283",
+      "rows": 448,
+      "cols": 38
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshe_alias_integrate_test\\ths_missing_alias.csv",
+      "exists": true,
+      "bytes": 1197751,
+      "md5": "a1c796304a2aec66ba7dbc6be087e766",
+      "rows": 2359,
+      "cols": 22
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\alias_lib_full_audit\\high_risk_confusion_pairs.csv",
+      "exists": true,
+      "bytes": 77014,
+      "md5": "8c0b291795e2c4160b0cbb21170273e1",
+      "rows": 409,
+      "cols": 10
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\alias_lib_full_audit\\ambiguous_indicator_list.csv",
+      "exists": true,
+      "bytes": 139685,
+      "md5": "a19867bd8fcd1ff47c5500e903a33c28",
+      "rows": 448,
+      "cols": 17
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshb_full_integrate\\semantic_blacklist_v85_final.json",
+      "exists": true,
+      "bytes": 64798,
+      "md5": "1e1bdf48a7734bce50df263ce4c3ef1a",
+      "rows": 9,
+      "cols": null
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshb_full_integrate\\full_488_template_playback_result.csv",
+      "exists": true,
+      "bytes": 433488,
+      "md5": "68dcb7cd9bd4355e7245bc10f06b0644",
+      "rows": 2721,
+      "cols": 13
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\miss_risk_mining\\blacklist_boundary_testset.json",
+      "exists": true,
+      "bytes": 11489,
+      "md5": "bba79ab946b4d0d584406216e6d81455",
+      "rows": 7,
+      "cols": null
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\miss_risk_mining\\rule_defect_summary.md",
+      "exists": true,
+      "bytes": 7748,
+      "md5": "1d445da6ccec7c0a834518810338c420",
+      "rows": null,
+      "cols": null
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\miss_risk_mining\\unified_indicator_risk_db_v2.csv",
+      "exists": true,
+      "bytes": 47296,
+      "md5": "fbde5245b225876445fc0af72e926ef7",
+      "rows": 50,
+      "cols": 41
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshb_human_review_prep\\v85_p0_risk_human_workbook.csv",
+      "exists": true,
+      "bytes": 10267,
+      "md5": "cafdbe53c6fdfe88bfdf0261e0381042",
+      "rows": 41,
+      "cols": 16
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\hermes_human_review_tool\\v85_p0_risk_human_workbook.csv",
+      "exists": true,
+      "bytes": 4980,
+      "md5": "b7479d78ad3668b6bb402e60a094fa30",
+      "rows": 34,
+      "cols": 16
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\data\\indicators_v1.json",
+      "exists": true,
+      "bytes": 713207,
+      "md5": "ebcbd9a7cf69830384c696607bfeda76",
+      "rows": 1658,
+      "cols": null
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\hermes_human_review_tool\\review_batches_v6\\batch_A_review_v6.csv",
+      "exists": true,
+      "bytes": 9376,
+      "md5": "ddee31511b3804ef5a64a129c4da3eb4",
+      "rows": 97,
+      "cols": 23
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\hermes_human_review_tool\\review_batches_v6\\batch_B_review_v6.csv",
+      "exists": true,
+      "bytes": 21317,
+      "md5": "f6b422ab1443201b308b8dc483b6e87b",
+      "rows": 155,
+      "cols": 23
+    },
+    {
+      "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\hermes_human_review_tool\\review_batches_v6\\batch_C_review_v6.csv",
+      "exists": true,
+      "bytes": 22697,
+      "md5": "675f4c8a7cab4cd131b535441009e093",
+      "rows": 236,
+      "cols": 23
+    }
+  ],
+  "review_batches_v6": {
+    "batch_A_review_v6.csv": 97,
+    "batch_B_review_v6.csv": 155,
+    "batch_C_review_v6.csv": 236
+  },
+  "workbook_rows": {
+    "dshb": 41,
+    "hermes": 34
+  },
+  "play488_rows": 2721,
+  "play488_templates": 488,
+  "stats": {
+    "stratum_sizes": {
+      "W3_高风险": 6,
+      "W2_待复核": 3,
+      "W1_可靠同义": 2,
+      "W0_错误别名": 437
+    },
+    "sampling_allocation": [
+      {
+        "stratum": "W3_高风险",
+        "pool": 6,
+        "quota": 6,
+        "method": "层规模 < 抽样配额，全量普查（覆盖率 100%）"
+      },
+      {
+        "stratum": "W2_待复核",
+        "pool": 3,
+        "quota": 3,
+        "method": "层规模 < 抽样配额，全量普查（覆盖率 100%）"
+      },
+      {
+        "stratum": "W1_可靠同义",
+        "pool": 2,
+        "quota": 2,
+        "method": "层规模 < 抽样配额，全量普查（覆盖率 100%）"
+      },
+      {
+        "stratum": "W0_错误别名",
+        "pool": 437,
+        "quota": 89,
+        "basis_groups": {
+          "V86硬拦截(variety_anchor_violation)": 250,
+          "V86硬拦截(blacklist_precheck)": 183,
+          "别名库标注(canonical_conflict)": 3,
+          "V86硬拦截(metric_exclusion_hard)": 1
+        },
+        "allocation_by_basis": {
+          "V86硬拦截(variety_anchor_violation)": 50,
+          "V86硬拦截(blacklist_precheck)": 37,
+          "别名库标注(canonical_conflict)": 1,
+          "V86硬拦截(metric_exclusion_hard)": 1
+        },
+        "method": "每组保底1 + 最大余数法，SEED=20261001"
+      }
+    ],
+    "cross_variety_pool": 442,
+    "cross_variety_bucket_weights": {
+      "P1_UNREG_AMBIGUOUS": 278,
+      "P0_UNREG_NO_CANDIDATE": 146,
+      "P2_UNREG_HIGHCONF": 15,
+      "P0_TGT_NO_CANDIDATE": 3
+    },
+    "cross_variety_variety_weights": {
+      "SN": 120,
+      "NI": 97,
+      "LI": 88,
+      "ZN": 78,
+      "SI": 37,
+      "AL": 13,
+      "CU": 9
+    },
+    "cross_variety_allocation": {
+      "P1_UNREG_AMBIGUOUS": 11,
+      "P0_UNREG_NO_CANDIDATE": 6,
+      "P2_UNREG_HIGHCONF": 2,
+      "P0_TGT_NO_CANDIDATE": 1
+    },
+    "n_samples": 120,
+    "n_stratified": 100,
+    "n_cross": 20,
+    "verdict_dist_all": {
+      "E2_品种混淆": 70,
+      "E3_语义不匹配": 29,
+      "OK_正确别名": 17,
+      "NO_TARGET_数据缺失不可判": 4
+    },
+    "verdict_dist_stratified": {
+      "E2_品种混淆": 50,
+      "E3_语义不匹配": 29,
+      "OK_正确别名": 17,
+      "NO_TARGET_数据缺失不可判": 4
+    },
+    "error_type_dist": {
+      "品种混淆": 70,
+      "语义不匹配": 29,
+      "无": 17,
+      "数据缺失(候选匹配为空)": 4
+    },
+    "verdict_by_rerated_level": {
+      "W3_高风险": {
+        "NO_TARGET_数据缺失不可判": 4,
+        "OK_正确别名": 2
+      },
+      "W2_待复核": {
+        "OK_正确别名": 3
+      },
+      "W1_可靠同义": {
+        "OK_正确别名": 2
+      },
+      "W0_错误别名": {
+        "E2_品种混淆": 50,
+        "E3_语义不匹配": 29,
+        "OK_正确别名": 10
+      }
+    },
+    "verdict_by_basis": {
+      "别名库标注(canonical_conflict)": {
+        "OK_正确别名": 1
+      },
+      "V86硬拦截(blacklist_precheck)": {
+        "E3_语义不匹配": 28,
+        "OK_正确别名": 9
+      },
+      "V86通过(high_dice)": {
+        "OK_正确别名": 2
+      },
+      "dice边界(0.8333)": {
+        "OK_正确别名": 3
+      },
+      "V86硬拦截(variety_anchor_violation)": {
+        "E2_品种混淆": 50
+      },
+      "V86硬拦截(metric_exclusion_hard)": {
+        "E3_语义不匹配": 1
+      },
+      "RISK_DB_P0": {
+        "NO_TARGET_数据缺失不可判": 4
+      },
+      "V86降级复核(variety_neutral_target_review)": {
+        "OK_正确别名": 2
+      }
+    },
+    "cross_subtype_dist": {
+      "X1_同名异品种": 11,
+      "X2_语义无关": 9
+    },
+    "v86_reason_engine_dist": {
+      "variety_anchor_violation": 50,
+      "blacklist_precheck": 37,
+      "empty_input": 4,
+      "mid_dice_same_variety": 3,
+      "high_dice": 3,
+      "variety_neutral_target_review": 2,
+      "metric_exclusion_hard": 1
+    },
+    "engine_csv_reason_consistent": {
+      "1": 100
+    },
+    "engine_accept_dist": {
+      "false": 94,
+      "true": 6
+    },
+    "engine_review_dist": {
+      "false": 98,
+      "true": 2
+    },
+    "blacklist_hit_rows": 42,
+    "blacklist_hits_total": 56,
+    "dice_delta_nonzero": 5,
+    "audit_confidence_dist": {
+      "HIGH": 111,
+      "LOW": 9
+    },
+    "human_recheck_dist": {
+      "NO": 100,
+      "YES": 20
+    },
+    "variety_dist_sampled": {
+      "通用": 41,
+      "SI": 10,
+      "SN": 10,
+      "PB": 9,
+      "CU": 9,
+      "AL": 6,
+      "AL|AO": 4,
+      "ZN": 4,
+      "NI": 3,
+      "LI": 3,
+      "LC": 1
+    },
+    "sampled_alias_correct_rate_pct": 17.0,
+    "sampled_error_rate_pct": 83.0,
+    "conflict_analysis": {
+      "alias_rows_total": 4643,
+      "distinct_alias_norm": 2882,
+      "alias_norm_multi_atomic_keys": 165,
+      "rows_with_composite_canonical_key": 165,
+      "composite_rows_all_canonical_conflict": true,
+      "multi_set_equals_composite_rows": true,
+      "distinct_composite_keys": 165,
+      "n_atomic_keys_dist": {
+        "2": 75,
+        "3": 36,
+        "4": 20,
+        "5": 11,
+        "6": 7,
+        "7": 4,
+        "8": 4,
+        "9": 3,
+        "12": 2,
+        "10": 1,
+        "11": 1,
+        "16": 1
+      },
+      "variety_family_dist": {
+        "SI": 36,
+        "NI": 31,
+        "LI": 27,
+        "SN": 22,
+        "ZN": 20,
+        "CU": 6,
+        "AL": 5,
+        "PB": 5,
+        "AL|AO": 4,
+        "未识别": 3,
+        "ENTITY|NI": 2,
+        "ENTITY|ZN": 2,
+        "ENTITY": 1,
+        "AL|SN": 1
+      },
+      "review_priority_dist": {
+        "P0_manual": 165
+      },
+      "alias_type_dist": {
+        "canonical": 81,
+        "mixed_script": 45,
+        "cross_report_synonym": 19,
+        "unit_variant": 11,
+        "numeric_code": 8,
+        "suffix_variant": 1
+      },
+      "duplicate_canonical_name_rows": 4634,
+      "duplicate_canonical_name_distinct": 1231,
+      "metric_noun_top": {
+        "未识别": 43,
+        "产量": 25,
+        "持仓量|持仓": 12,
+        "库存": 11,
+        "开工率|开工": 8,
+        "利润": 8,
+        "成本": 8,
+        "升贴水|贴水": 7
+      },
+      "all_involving_variant_family_multiple": 9
+    },
+    "boundary_replay": {
+      "total": 24,
+      "blocked_correct": 13,
+      "blocked_accuracy_pct": 54.17,
+      "expected_blocked": 10,
+      "engine_blocked": 21,
+      "false_positive": [
+        "BOUNDARY-007",
+        "BOUNDARY-008",
+        "BOUNDARY-009",
+        "BOUNDARY-010",
+        "BOUNDARY-011",
+        "BOUNDARY-012",
+        "BOUNDARY-017",
+        "BOUNDARY-018",
+        "BOUNDARY-019",
+        "BOUNDARY-021",
+        "BOUNDARY-023"
+      ],
+      "false_negative": [],
+      "rule_label_mismatch": [
+        {
+          "case_id": "BOUNDARY-001",
+          "expected": "BL-009a",
+          "engine_rule": "BL-009",
+          "hits": "BL-009"
+        },
+        {
+          "case_id": "BOUNDARY-002",
+          "expected": "BL-009a",
+          "engine_rule": "BL-009",
+          "hits": "BL-009"
+        },
+        {
+          "case_id": "BOUNDARY-003",
+          "expected": "BL-009a",
+          "engine_rule": "BL-009",
+          "hits": "BL-009"
+        },
+        {
+          "case_id": "BOUNDARY-014",
+          "expected": "BL-012; BL-026",
+          "engine_rule": "",
+          "hits": "BL-012;BL-026"
+        },
+        {
+          "case_id": "BOUNDARY-016",
+          "expected": "BL-026",
+          "engine_rule": "",
+          "hits": "BL-012;BL-026"
+        },
+        {
+          "case_id": "BOUNDARY-020",
+          "expected": "BL-022",
+          "engine_rule": "",
+          "hits": ""
+        },
+        {
+          "case_id": "BOUNDARY-022",
+          "expected": "BL-018; BL-018a",
+          "engine_rule": "",
+          "hits": ""
+        },
+        {
+          "case_id": "BOUNDARY-024",
+          "expected": "BL-015",
+          "engine_rule": "BL-008",
+          "hits": "BL-008;BL-015"
+        }
+      ],
+      "by_category": {
+        "安全负向样例": {
+          "n": 7,
+          "correct": 3
+        },
+        "数据缺失样例": {
+          "n": 7,
+          "correct": 0
+        },
+        "正向危险样例": {
+          "n": 10,
+          "correct": 10
+        }
+      }
+    },
+    "high_priority": {
+      "n": 9,
+      "rows": [
+        {
+          "sample_id": "S-001",
+          "source_row_id": "AMB-0004",
+          "variety": "LC",
+          "series_name": "磷酸铁锂 电池 国内销量",
+          "candidate_name": "",
+          "alias_relation": "unregistered",
+          "alias_review_flag": "register_pending",
+          "alias_confidence": "0.30",
+          "canonical_key": "",
+          "dice_upstream": "",
+          "dice_computed": 0.0,
+          "v86_reason_engine": "empty_input",
+          "v86_reason_csv": "empty_input",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "销量",
+          "primary_metric_right": "",
+          "variety_left": "LI",
+          "variety_right": "",
+          "metric_left": "销量",
+          "metric_right": "",
+          "qualifier_left": "",
+          "qualifier_right": "",
+          "rerated_level": "W3_高风险",
+          "rerate_basis": "RISK_DB_P0",
+          "in_high_risk_pairs": "N",
+          "template_id": "TPL-LC-087",
+          "tpl488_rows": 1,
+          "tpl488_hit_csv": "Y",
+          "verdict": "NO_TARGET",
+          "verdict_label": "NO_TARGET_数据缺失不可判",
+          "error_type": "数据缺失(候选匹配为空)",
+          "error_reason": "candidate_match/matched_name 为空，别名映射不可判定",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-002",
+          "source_row_id": "AMB-0006",
+          "variety": "NI",
+          "series_name": "中国电解镍净进口量",
+          "candidate_name": "",
+          "alias_relation": "unregistered",
+          "alias_review_flag": "register_pending",
+          "alias_confidence": "0.30",
+          "canonical_key": "",
+          "dice_upstream": "",
+          "dice_computed": 0.0,
+          "v86_reason_engine": "empty_input",
+          "v86_reason_csv": "empty_input",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "净进口量",
+          "primary_metric_right": "",
+          "variety_left": "NI",
+          "variety_right": "",
+          "metric_left": "净进口|进口",
+          "metric_right": "",
+          "qualifier_left": "中国",
+          "qualifier_right": "",
+          "rerated_level": "W3_高风险",
+          "rerate_basis": "RISK_DB_P0",
+          "in_high_risk_pairs": "N",
+          "template_id": "TPL-NI-008",
+          "tpl488_rows": 1,
+          "tpl488_hit_csv": "Y",
+          "verdict": "NO_TARGET",
+          "verdict_label": "NO_TARGET_数据缺失不可判",
+          "error_type": "数据缺失(候选匹配为空)",
+          "error_reason": "candidate_match/matched_name 为空，别名映射不可判定",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-003",
+          "source_row_id": "AMB-0007",
+          "variety": "SI",
+          "series_name": "工业硅样本工厂库存(SMM)",
+          "candidate_name": "",
+          "alias_relation": "",
+          "alias_review_flag": "",
+          "alias_confidence": "",
+          "canonical_key": "",
+          "dice_upstream": "",
+          "dice_computed": 0.0,
+          "v86_reason_engine": "empty_input",
+          "v86_reason_csv": "empty_input",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "工厂库存",
+          "primary_metric_right": "",
+          "variety_left": "SI",
+          "variety_right": "",
+          "metric_left": "库存",
+          "metric_right": "",
+          "qualifier_left": "SMM|厂库",
+          "qualifier_right": "",
+          "rerated_level": "W3_高风险",
+          "rerate_basis": "RISK_DB_P0",
+          "in_high_risk_pairs": "N",
+          "template_id": "TPL-SI-014",
+          "tpl488_rows": 2,
+          "tpl488_hit_csv": "Y",
+          "verdict": "NO_TARGET",
+          "verdict_label": "NO_TARGET_数据缺失不可判",
+          "error_type": "数据缺失(候选匹配为空)",
+          "error_reason": "candidate_match/matched_name 为空，别名映射不可判定",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-004",
+          "source_row_id": "AMB-0008",
+          "variety": "SI",
+          "series_name": "工业硅供需平衡",
+          "candidate_name": "",
+          "alias_relation": "unregistered",
+          "alias_review_flag": "register_pending",
+          "alias_confidence": "0.30",
+          "canonical_key": "",
+          "dice_upstream": "",
+          "dice_computed": 0.0,
+          "v86_reason_engine": "empty_input",
+          "v86_reason_csv": "empty_input",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "供需平衡",
+          "primary_metric_right": "",
+          "variety_left": "SI",
+          "variety_right": "",
+          "metric_left": "供需平衡",
+          "metric_right": "",
+          "qualifier_left": "",
+          "qualifier_right": "",
+          "rerated_level": "W3_高风险",
+          "rerate_basis": "RISK_DB_P0",
+          "in_high_risk_pairs": "N",
+          "template_id": "TPL-SI-019",
+          "tpl488_rows": 1,
+          "tpl488_hit_csv": "Y",
+          "verdict": "NO_TARGET",
+          "verdict_label": "NO_TARGET_数据缺失不可判",
+          "error_type": "数据缺失(候选匹配为空)",
+          "error_reason": "candidate_match/matched_name 为空，别名映射不可判定",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-005",
+          "source_row_id": "AMB-0303",
+          "variety": "通用",
+          "series_name": "LME库存",
+          "candidate_name": "LME镍库存",
+          "alias_relation": "synonym_with_confusable_neighbor",
+          "alias_review_flag": "manual_review",
+          "alias_confidence": "0.75",
+          "canonical_key": "LME库存",
+          "dice_upstream": "0.9091",
+          "dice_computed": 0.9091,
+          "v86_reason_engine": "variety_neutral_target_review",
+          "v86_reason_csv": "variety_neutral_target_review",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "库存",
+          "primary_metric_right": "库存",
+          "variety_left": "",
+          "variety_right": "NI",
+          "metric_left": "库存",
+          "metric_right": "库存",
+          "qualifier_left": "LME",
+          "qualifier_right": "LME",
+          "rerated_level": "W3_高风险",
+          "rerate_basis": "V86降级复核(variety_neutral_target_review)",
+          "in_high_risk_pairs": "N",
+          "template_id": "",
+          "tpl488_rows": 0,
+          "tpl488_hit_csv": "N",
+          "verdict": "OK",
+          "verdict_label": "OK_正确别名",
+          "error_type": "无",
+          "error_reason": "同品种 + 同主度量词 + 无黑名单命中，口径粒度一致",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-006",
+          "source_row_id": "AMB-0304",
+          "variety": "通用",
+          "series_name": "LME库存",
+          "candidate_name": "LME铅库存",
+          "alias_relation": "synonym_with_confusable_neighbor",
+          "alias_review_flag": "manual_review",
+          "alias_confidence": "0.75",
+          "canonical_key": "LME库存",
+          "dice_upstream": "0.9091",
+          "dice_computed": 0.9091,
+          "v86_reason_engine": "variety_neutral_target_review",
+          "v86_reason_csv": "variety_neutral_target_review",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "库存",
+          "primary_metric_right": "库存",
+          "variety_left": "",
+          "variety_right": "PB",
+          "metric_left": "库存",
+          "metric_right": "库存",
+          "qualifier_left": "LME",
+          "qualifier_right": "LME",
+          "rerated_level": "W3_高风险",
+          "rerate_basis": "V86降级复核(variety_neutral_target_review)",
+          "in_high_risk_pairs": "N",
+          "template_id": "",
+          "tpl488_rows": 0,
+          "tpl488_hit_csv": "N",
+          "verdict": "OK",
+          "verdict_label": "OK_正确别名",
+          "error_type": "无",
+          "error_reason": "同品种 + 同主度量词 + 无黑名单命中，口径粒度一致",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-007",
+          "source_row_id": "AMB-0350",
+          "variety": "通用",
+          "series_name": "SMM-四川样本周度库存",
+          "candidate_name": "SMM-新疆样本周度库存",
+          "alias_relation": "synonym_with_confusable_neighbor",
+          "alias_review_flag": "manual_review",
+          "alias_confidence": "0.75",
+          "canonical_key": "wr224",
+          "dice_upstream": "0.8333",
+          "dice_computed": 0.8333,
+          "v86_reason_engine": "mid_dice_same_variety",
+          "v86_reason_csv": "mid_dice_same_variety",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "库存",
+          "primary_metric_right": "库存",
+          "variety_left": "",
+          "variety_right": "",
+          "metric_left": "库存",
+          "metric_right": "库存",
+          "qualifier_left": "SMM",
+          "qualifier_right": "SMM",
+          "rerated_level": "W2_待复核",
+          "rerate_basis": "dice边界(0.8333)",
+          "in_high_risk_pairs": "N",
+          "template_id": "",
+          "tpl488_rows": 0,
+          "tpl488_hit_csv": "N",
+          "verdict": "OK",
+          "verdict_label": "OK_正确别名",
+          "error_type": "无",
+          "error_reason": "同品种 + 同主度量词 + 无黑名单命中，口径粒度一致",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-008",
+          "source_row_id": "AMB-0351",
+          "variety": "通用",
+          "series_name": "SMM-云南样本周度库存",
+          "candidate_name": "SMM-新疆样本周度库存",
+          "alias_relation": "synonym_with_confusable_neighbor",
+          "alias_review_flag": "manual_review",
+          "alias_confidence": "0.75",
+          "canonical_key": "wr223",
+          "dice_upstream": "0.8333",
+          "dice_computed": 0.8333,
+          "v86_reason_engine": "mid_dice_same_variety",
+          "v86_reason_csv": "mid_dice_same_variety",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "库存",
+          "primary_metric_right": "库存",
+          "variety_left": "",
+          "variety_right": "",
+          "metric_left": "库存",
+          "metric_right": "库存",
+          "qualifier_left": "SMM",
+          "qualifier_right": "SMM",
+          "rerated_level": "W2_待复核",
+          "rerate_basis": "dice边界(0.8333)",
+          "in_high_risk_pairs": "N",
+          "template_id": "",
+          "tpl488_rows": 0,
+          "tpl488_hit_csv": "N",
+          "verdict": "OK",
+          "verdict_label": "OK_正确别名",
+          "error_type": "无",
+          "error_reason": "同品种 + 同主度量词 + 无黑名单命中，口径粒度一致",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        },
+        {
+          "sample_id": "S-009",
+          "source_row_id": "AMB-0352",
+          "variety": "通用",
+          "series_name": "SMM-云南样本周度库存",
+          "candidate_name": "SMM-四川样本周度库存",
+          "alias_relation": "synonym_with_confusable_neighbor",
+          "alias_review_flag": "manual_review",
+          "alias_confidence": "0.75",
+          "canonical_key": "wr223",
+          "dice_upstream": "0.8333",
+          "dice_computed": 0.8333,
+          "v86_reason_engine": "mid_dice_same_variety",
+          "v86_reason_csv": "mid_dice_same_variety",
+          "blacklist_hits_engine": "",
+          "primary_metric_left": "库存",
+          "primary_metric_right": "库存",
+          "variety_left": "",
+          "variety_right": "",
+          "metric_left": "库存",
+          "metric_right": "库存",
+          "qualifier_left": "SMM",
+          "qualifier_right": "SMM",
+          "rerated_level": "W2_待复核",
+          "rerate_basis": "dice边界(0.8333)",
+          "in_high_risk_pairs": "N",
+          "template_id": "",
+          "tpl488_rows": 0,
+          "tpl488_hit_csv": "N",
+          "verdict": "OK",
+          "verdict_label": "OK_正确别名",
+          "error_type": "无",
+          "error_reason": "同品种 + 同主度量词 + 无黑名单命中，口径粒度一致",
+          "audit_confidence": "HIGH",
+          "notes": ""
+        }
+      ]
+    }
+  }
+}

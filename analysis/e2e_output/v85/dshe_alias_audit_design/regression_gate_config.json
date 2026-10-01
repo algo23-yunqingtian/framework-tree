@@ -1,0 +1,158 @@
+{
+  "version": "v86-gate-1.1",
+  "gate_order": [
+    "G0_input_validation",
+    "G1_variety_anchor",
+    "G2_metric_exclusion_hard",
+    "G3_blacklist",
+    "G4_alias",
+    "G5_variety_neutral",
+    "G6_metric_exclusion_soft",
+    "G7_dice"
+  ],
+  "invariants": {
+    "INV-1": "任一 L1 安全门禁命中 => verdict 必为 BLOCK 或 REVIEW，永不为 PASS",
+    "INV-2": "R-07 是唯一拥有 PASS 主动放行权的门禁",
+    "INV-3": "任一 L1 门禁被短路未执行 => incomplete=true 且 verdict 不得为 PASS"
+  },
+  "regression_gates": {
+    "G1_NO_CRASH": {
+      "pass_criteria": "crashed == 0",
+      "block": "P0",
+      "caveat": "须在未打补丁引擎上验证；本脚本三变体均经 guard_resolve_canonical 装载，故恒 PASS"
+    },
+    "G2_LIVE_RULE_COVERAGE": {
+      "pass_criteria": "covered_live_rules == total_live_rules",
+      "block": "P0"
+    },
+    "G3_P0_BLOCK_RATE": {
+      "pass_criteria": "P0 目标用例被任一门禁阻断（R-01/R-03/R-05 均为有效安全层）",
+      "block": "P0"
+    },
+    "G3b_P0_R05_ATTRIBUTION": {
+      "pass_criteria": "信息性指标，不设门槛：P0 目标用例由 R-05 独占裁决的比例",
+      "block": "INFO"
+    },
+    "G4_BOUNDARY_ZERO_FP": {
+      "pass_criteria": "fp_in_D3_D4 == 0",
+      "block": "P0"
+    },
+    "G5_SAFE_NEG_FP_LE_1": {
+      "pass_criteria": "fp_rate_D2 <= 1.0",
+      "block": "P1"
+    },
+    "G6_ALL_RULES_COMPLETE": {
+      "pass_criteria": "在 R-05 成为裁决门禁的 D5 用例上 all_rules_set == expected_set；被上游门禁短路的用例不计入（此时不产生 R-05 上报）",
+      "block": "P1"
+    },
+    "G7_INV1_BLACKLIST_BEATS_ALIAS": {
+      "pass_criteria": "跨配对 D6 用例上 reason == 'blacklist_precheck'；自配对样例正确答案是 PASS（黑名单命中系 pattern 自触发）",
+      "block": "P1",
+      "vacuous_when": "语料内不存在跨配对样例时判 N/A 而非 PASS（不可判定）",
+      "measured_v85": "4821 归一名池中 alias_exact∩黑名单命中 = 14 条，全部自配对，跨配对 0 条 => N/A"
+    },
+    "G8_OVERALL_MATCH_GE_98": {
+      "pass_criteria": "verdict_ok_rate >= 98.0（接受 BLOCK/REVIEW/PASS 三态与 NO_R05 机制期望）",
+      "block": "P0"
+    },
+    "G9_UNIT_TESTS_PASS": {
+      "pass_criteria": "canonical_resolve_fix.py 19/19 UT PASS",
+      "block": "P0"
+    },
+    "G10_CORPUS_DIFF_BOUNDED": {
+      "pass_criteria": "accept_true_delta <= 9.1% on 4857-pair corpus",
+      "block": "P1"
+    },
+    "G11_EXPECTED_RULE_EXISTS": {
+      "pass_criteria": "all expected_rules exist in BL_LR",
+      "block": "P1"
+    },
+    "G12_MECHANISM_ATTRIBUTION": {
+      "pass_criteria": "expected_mechanism matches actual reason",
+      "block": "P1"
+    },
+    "G13_TRISTATE_EXPECTATION": {
+      "pass_criteria": "every case has BLOCK|REVIEW|PASS|NO_CRASH expectation",
+      "block": "P1"
+    },
+    "G14_DEAD_RULE_EXCLUDED": {
+      "pass_criteria": "dead rules appear in no case expectation",
+      "block": "P1"
+    }
+  },
+  "dimension_targets": {
+    "D1_POSITIVE": {
+      "tp_rate_target": {
+        "P0": 100.0,
+        "P1": 98.0,
+        "P2": 95.0
+      }
+    },
+    "D2_NEGATIVE": {
+      "fp_rate_target": 1.0
+    },
+    "D3_BOUNDARY": {
+      "fp_rate_target": 0.0
+    },
+    "D4_COMPOUND": {
+      "fp_rate_target": 0.0
+    },
+    "D5_COMBINATION": {
+      "all_rules_completeness_target": 100.0
+    },
+    "D6_GATE_CONFLICT": {
+      "cross_pair": "期望 BLOCK（黑名单必须胜，INV-1）",
+      "self_pair": "期望 PASS（黑名单命中系 pattern 自触发，F4 必须抑制）"
+    },
+    "D7_ROBUSTNESS": {
+      "crash_target": 0.0
+    }
+  },
+  "notable_findings": {
+    "inv1_vacuous_in_corpus": "语料池内 alias_exact 分支条件与黑名单命中同时成立的 pair 共 14 条，全部自配对（a == b），且其黑名单命中本身即 pattern 自触发误报；INV-1 在本语料上不可判定",
+    "f3_must_ship_with_f4": "F3 单独上线为负收益：G4 边界误拦 11/18 -> 17/18，且 8 条自配对由 PASS 变 BLOCK",
+    "blacklist_marginal_contribution": "R-05 在 D1 中独占裁决 10/26 = 38.5 %；其余由 R-01 品种锚点承担",
+    "dead_rules": [
+      "BL-019a",
+      "BL-020",
+      "BL-021"
+    ]
+  },
+  "execution": {
+    "script": "blacklist_rule_effectiveness_test.py",
+    "engine_variant": [
+      "base",
+      "f3",
+      "f3f4"
+    ],
+    "output": [
+      "blacklist_rule_test_result.json",
+      "blacklist_rule_test_result.md",
+      "regression_gate_config.json"
+    ],
+    "gate_evaluated_by_this_script": [
+      "G1_NO_CRASH",
+      "G2_LIVE_RULE_COVERAGE",
+      "G3_P0_BLOCK_RATE",
+      "G3b_P0_R05_ATTRIBUTION",
+      "G4_BOUNDARY_ZERO_FP",
+      "G5_SAFE_NEG_FP_LE_1",
+      "G6_ALL_RULES_COMPLETE",
+      "G7_INV1_BLACKLIST_BEATS_ALIAS",
+      "G8_OVERALL_MATCH_GE_98",
+      "G13_TRISTATE_EXPECTATION",
+      "G14_DEAD_RULE_EXCLUDED"
+    ],
+    "gate_ownership": {
+      "T2.2_canonical_resolve_fix.py": [
+        "G1_NO_CRASH(未打补丁引擎)",
+        "G9_UNIT_TESTS_PASS",
+        "G10_CORPUS_DIFF_BOUNDED"
+      ],
+      "T2.4_testset_governance": [
+        "G11_EXPECTED_RULE_EXISTS",
+        "G12_MECHANISM_ATTRIBUTION"
+      ]
+    }
+  }
+}

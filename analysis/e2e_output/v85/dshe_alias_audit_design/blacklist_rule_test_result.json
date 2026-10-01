@@ -1,0 +1,6021 @@
+{
+  "task": "DSHE-B_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN",
+  "engine": {
+    "md5": "d375f963678d1e89c7e9949805f8433f",
+    "engine_keys": [
+      "loaded_lines",
+      "note",
+      "source",
+      "source_md5",
+      "source_sha256"
+    ],
+    "source": "analysis/e2e_output/v85/alias_match_presearch/build_alias_library.py",
+    "rules_count": 31,
+    "lint_warnings": 43
+  },
+  "pool": {
+    "names": 4821,
+    "rows": 4643
+  },
+  "rules": {
+    "total": 31,
+    "live": 28,
+    "dead": [
+      "BL-019a",
+      "BL-020",
+      "BL-021"
+    ],
+    "clean_positive_constructible": [
+      "BL-001",
+      "BL-002",
+      "BL-003",
+      "BL-004",
+      "BL-005",
+      "BL-006",
+      "BL-007",
+      "BL-008",
+      "BL-009",
+      "BL-010",
+      "BL-011",
+      "BL-013",
+      "BL-014",
+      "BL-015",
+      "BL-016",
+      "BL-016a",
+      "BL-017",
+      "BL-018",
+      "BL-018a",
+      "BL-018b",
+      "BL-019",
+      "BL-022",
+      "BL-023",
+      "BL-024",
+      "BL-025",
+      "BL-025a"
+    ]
+  },
+  "cases": {
+    "total": 102,
+    "by_dimension": {
+      "D1_POSITIVE": 26,
+      "D2_NEGATIVE": 26,
+      "D7_ROBUSTNESS": 16,
+      "D3_BOUNDARY": 12,
+      "D5_COMBINATION": 8,
+      "D6_GATE_CONFLICT": 8,
+      "D4_COMPOUND": 6
+    }
+  },
+  "metrics": {
+    "base": {
+      "D1_POSITIVE": {
+        "n": 26,
+        "crashed": 0,
+        "verdict_match": 26,
+        "tp": 26,
+        "fp": 16,
+        "r05_attribution": 0,
+        "tp_rate": 100.0,
+        "fp_rate": 61.54,
+        "verdict_match_rate": 100.0
+      },
+      "D2_NEGATIVE": {
+        "n": 26,
+        "crashed": 0,
+        "verdict_match": 26,
+        "tp": 26,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      },
+      "D3_BOUNDARY": {
+        "n": 12,
+        "crashed": 0,
+        "verdict_match": 6,
+        "tp": 6,
+        "fp": 6,
+        "r05_attribution": null,
+        "tp_rate": 50.0,
+        "fp_rate": 50.0,
+        "verdict_match_rate": 50.0
+      },
+      "D4_COMPOUND": {
+        "n": 6,
+        "crashed": 0,
+        "verdict_match": 1,
+        "tp": 1,
+        "fp": 5,
+        "r05_attribution": null,
+        "tp_rate": 16.67,
+        "fp_rate": 83.33,
+        "verdict_match_rate": 16.67
+      },
+      "D5_COMBINATION": {
+        "n": 8,
+        "crashed": 0,
+        "verdict_match": 8,
+        "tp": 0,
+        "fp": 6,
+        "r05_attribution": null,
+        "tp_rate": 0.0,
+        "fp_rate": 75.0,
+        "verdict_match_rate": 100.0
+      },
+      "D6_GATE_CONFLICT": {
+        "n": 8,
+        "crashed": 0,
+        "verdict_match": 8,
+        "tp": 0,
+        "fp": 8,
+        "r05_attribution": null,
+        "tp_rate": 0.0,
+        "fp_rate": 100.0,
+        "verdict_match_rate": 100.0
+      },
+      "D7_ROBUSTNESS": {
+        "n": 16,
+        "crashed": 0,
+        "verdict_match": 16,
+        "tp": 16,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      }
+    },
+    "f3": {
+      "D1_POSITIVE": {
+        "n": 26,
+        "crashed": 0,
+        "verdict_match": 26,
+        "tp": 26,
+        "fp": 16,
+        "r05_attribution": 10,
+        "tp_rate": 100.0,
+        "fp_rate": 61.54,
+        "verdict_match_rate": 100.0
+      },
+      "D2_NEGATIVE": {
+        "n": 26,
+        "crashed": 0,
+        "verdict_match": 26,
+        "tp": 26,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      },
+      "D3_BOUNDARY": {
+        "n": 12,
+        "crashed": 0,
+        "verdict_match": 1,
+        "tp": 1,
+        "fp": 11,
+        "r05_attribution": null,
+        "tp_rate": 8.33,
+        "fp_rate": 91.67,
+        "verdict_match_rate": 8.33
+      },
+      "D4_COMPOUND": {
+        "n": 6,
+        "crashed": 0,
+        "verdict_match": 0,
+        "tp": 0,
+        "fp": 6,
+        "r05_attribution": null,
+        "tp_rate": 0.0,
+        "fp_rate": 100.0,
+        "verdict_match_rate": 0.0
+      },
+      "D5_COMBINATION": {
+        "n": 8,
+        "crashed": 0,
+        "verdict_match": 8,
+        "tp": 6,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 75.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      },
+      "D6_GATE_CONFLICT": {
+        "n": 8,
+        "crashed": 0,
+        "verdict_match": 0,
+        "tp": 8,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 0.0
+      },
+      "D7_ROBUSTNESS": {
+        "n": 16,
+        "crashed": 0,
+        "verdict_match": 16,
+        "tp": 16,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      }
+    },
+    "f3f4": {
+      "D1_POSITIVE": {
+        "n": 26,
+        "crashed": 0,
+        "verdict_match": 26,
+        "tp": 26,
+        "fp": 16,
+        "r05_attribution": 10,
+        "tp_rate": 100.0,
+        "fp_rate": 61.54,
+        "verdict_match_rate": 100.0
+      },
+      "D2_NEGATIVE": {
+        "n": 26,
+        "crashed": 0,
+        "verdict_match": 26,
+        "tp": 26,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      },
+      "D3_BOUNDARY": {
+        "n": 12,
+        "crashed": 0,
+        "verdict_match": 12,
+        "tp": 12,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      },
+      "D4_COMPOUND": {
+        "n": 6,
+        "crashed": 0,
+        "verdict_match": 6,
+        "tp": 6,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      },
+      "D5_COMBINATION": {
+        "n": 8,
+        "crashed": 0,
+        "verdict_match": 8,
+        "tp": 6,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 75.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      },
+      "D6_GATE_CONFLICT": {
+        "n": 8,
+        "crashed": 0,
+        "verdict_match": 8,
+        "tp": 0,
+        "fp": 8,
+        "r05_attribution": null,
+        "tp_rate": 0.0,
+        "fp_rate": 100.0,
+        "verdict_match_rate": 100.0
+      },
+      "D7_ROBUSTNESS": {
+        "n": 16,
+        "crashed": 0,
+        "verdict_match": 16,
+        "tp": 16,
+        "fp": 0,
+        "r05_attribution": null,
+        "tp_rate": 100.0,
+        "fp_rate": 0.0,
+        "verdict_match_rate": 100.0
+      }
+    }
+  },
+  "overall_verdict_match_rate": {
+    "base": 89.22,
+    "f3": 75.49,
+    "f3f4": 100.0
+  },
+  "gates": {
+    "base": {
+      "G1_NO_CRASH": {
+        "pass": true,
+        "crashed": 0,
+        "total": 102,
+        "detail": "全部用例无异常返回",
+        "block": "P0"
+      },
+      "G2_LIVE_RULE_COVERAGE": {
+        "pass": true,
+        "covered": 28,
+        "total": 28,
+        "missing": [],
+        "block": "P0"
+      },
+      "G3_P0_BLOCK_RATE": {
+        "pass": true,
+        "hit": 16,
+        "total": 16,
+        "rate": 100.0,
+        "detail": "P0 目标用例被任一门禁阻断",
+        "block": "P0"
+      },
+      "G3b_P0_R05_ATTRIBUTION": {
+        "pass": true,
+        "hit": 6,
+        "total": 16,
+        "rate": 37.5,
+        "detail": "P0 目标用例由 R-05 独占裁决（信息性指标，不设门槛）",
+        "block": "INFO"
+      },
+      "G4_BOUNDARY_ZERO_FP": {
+        "pass": false,
+        "fp": 11,
+        "total": 18,
+        "block": "P0"
+      },
+      "G5_SAFE_NEG_FP_LE_1": {
+        "pass": true,
+        "fp_rate": 0.0,
+        "n": 26,
+        "block": "P1"
+      },
+      "G6_ALL_RULES_COMPLETE": {
+        "pass": false,
+        "ok": 0,
+        "total": 6,
+        "short_circuited_by_upstream": 2,
+        "detail": "仅评估 R-05 裁决的组合用例（6 条）；其余 2 条被上游门禁短路，此时不产生 R-05 上报",
+        "block": "P1"
+      },
+      "G7_INV1_BLACKLIST_BEATS_ALIAS": {
+        "pass": null,
+        "ok": 0,
+        "total": 0,
+        "detail": "跨配对 0 条（INV-1 真检验对象）；黑名单成为裁决门禁 0 条。另有自配对 8 条，其黑名单命中系 pattern 自触发，正确答案是放行",
+        "block": "INFO"
+      },
+      "G8_OVERALL_MATCH_GE_98": {
+        "pass": false,
+        "rate": 89.22,
+        "ok": 91,
+        "total": 102,
+        "block": "P0"
+      }
+    },
+    "f3": {
+      "G1_NO_CRASH": {
+        "pass": true,
+        "crashed": 0,
+        "total": 102,
+        "detail": "全部用例无异常返回",
+        "block": "P0"
+      },
+      "G2_LIVE_RULE_COVERAGE": {
+        "pass": true,
+        "covered": 28,
+        "total": 28,
+        "missing": [],
+        "block": "P0"
+      },
+      "G3_P0_BLOCK_RATE": {
+        "pass": true,
+        "hit": 16,
+        "total": 16,
+        "rate": 100.0,
+        "detail": "P0 目标用例被任一门禁阻断",
+        "block": "P0"
+      },
+      "G3b_P0_R05_ATTRIBUTION": {
+        "pass": true,
+        "hit": 6,
+        "total": 16,
+        "rate": 37.5,
+        "detail": "P0 目标用例由 R-05 独占裁决（信息性指标，不设门槛）",
+        "block": "INFO"
+      },
+      "G4_BOUNDARY_ZERO_FP": {
+        "pass": false,
+        "fp": 17,
+        "total": 18,
+        "block": "P0"
+      },
+      "G5_SAFE_NEG_FP_LE_1": {
+        "pass": true,
+        "fp_rate": 0.0,
+        "n": 26,
+        "block": "P1"
+      },
+      "G6_ALL_RULES_COMPLETE": {
+        "pass": true,
+        "ok": 6,
+        "total": 6,
+        "short_circuited_by_upstream": 2,
+        "detail": "仅评估 R-05 裁决的组合用例（6 条）；其余 2 条被上游门禁短路，此时不产生 R-05 上报",
+        "block": "P1"
+      },
+      "G7_INV1_BLACKLIST_BEATS_ALIAS": {
+        "pass": null,
+        "ok": 0,
+        "total": 0,
+        "detail": "跨配对 0 条（INV-1 真检验对象）；黑名单成为裁决门禁 0 条。另有自配对 8 条，其黑名单命中系 pattern 自触发，正确答案是放行",
+        "block": "INFO"
+      },
+      "G8_OVERALL_MATCH_GE_98": {
+        "pass": false,
+        "rate": 75.49,
+        "ok": 77,
+        "total": 102,
+        "block": "P0"
+      }
+    },
+    "f3f4": {
+      "G1_NO_CRASH": {
+        "pass": true,
+        "crashed": 0,
+        "total": 102,
+        "detail": "全部用例无异常返回",
+        "block": "P0"
+      },
+      "G2_LIVE_RULE_COVERAGE": {
+        "pass": true,
+        "covered": 28,
+        "total": 28,
+        "missing": [],
+        "block": "P0"
+      },
+      "G3_P0_BLOCK_RATE": {
+        "pass": true,
+        "hit": 16,
+        "total": 16,
+        "rate": 100.0,
+        "detail": "P0 目标用例被任一门禁阻断",
+        "block": "P0"
+      },
+      "G3b_P0_R05_ATTRIBUTION": {
+        "pass": true,
+        "hit": 6,
+        "total": 16,
+        "rate": 37.5,
+        "detail": "P0 目标用例由 R-05 独占裁决（信息性指标，不设门槛）",
+        "block": "INFO"
+      },
+      "G4_BOUNDARY_ZERO_FP": {
+        "pass": true,
+        "fp": 0,
+        "total": 18,
+        "block": "P0"
+      },
+      "G5_SAFE_NEG_FP_LE_1": {
+        "pass": true,
+        "fp_rate": 0.0,
+        "n": 26,
+        "block": "P1"
+      },
+      "G6_ALL_RULES_COMPLETE": {
+        "pass": true,
+        "ok": 6,
+        "total": 6,
+        "short_circuited_by_upstream": 2,
+        "detail": "仅评估 R-05 裁决的组合用例（6 条）；其余 2 条被上游门禁短路，此时不产生 R-05 上报",
+        "block": "P1"
+      },
+      "G7_INV1_BLACKLIST_BEATS_ALIAS": {
+        "pass": null,
+        "ok": 0,
+        "total": 0,
+        "detail": "跨配对 0 条（INV-1 真检验对象）；黑名单成为裁决门禁 0 条。另有自配对 8 条，其黑名单命中系 pattern 自触发，正确答案是放行",
+        "block": "INFO"
+      },
+      "G8_OVERALL_MATCH_GE_98": {
+        "pass": true,
+        "rate": 100.0,
+        "ok": 102,
+        "total": 102,
+        "block": "P0"
+      }
+    }
+  },
+  "r05_rules_reported": {
+    "base": {},
+    "f3": {
+      "BL-012": 15,
+      "BL-026": 14,
+      "BL-017": 12,
+      "BL-002": 5,
+      "BL-003": 5,
+      "BL-005": 5,
+      "BL-023": 5,
+      "BL-006": 4,
+      "BL-008": 2,
+      "BL-015": 2,
+      "BL-004": 1,
+      "BL-007": 1,
+      "BL-016": 1,
+      "BL-016a": 1,
+      "BL-009": 1
+    },
+    "f3f4": {
+      "BL-002": 5,
+      "BL-003": 5,
+      "BL-005": 5,
+      "BL-006": 4,
+      "BL-008": 2,
+      "BL-015": 2,
+      "BL-012": 2,
+      "BL-004": 1,
+      "BL-007": 1,
+      "BL-016": 1,
+      "BL-016a": 1,
+      "BL-023": 1,
+      "BL-026": 1
+    }
+  },
+  "cases_detail": [
+    {
+      "case_id": "D1-POS-001",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-001",
+      "a_raw": "3C铝型材：产量：中国（年）",
+      "b_raw": "SEAISI：镀锡板（带）：表观消费量：印尼（年）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-001"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-001(P0)：产量 vs 消费",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-002",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-002",
+      "a_raw": "3C铝型材：产量：中国（年）",
+      "b_raw": "CAAM: 中国汽车月度销量: 月度",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-002"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-002(P0)：产量 vs 销量",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-003",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-003",
+      "a_raw": "CAAM: 中国汽车月度销量: 月度",
+      "b_raw": "3C铝型材：产量：中国（年）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-003"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-003(P0)：销量 vs 产量",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-004",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-004",
+      "a_raw": "SEAISI：镀锡板（带）：表观消费量：印尼（年）",
+      "b_raw": "CAAM: 中国汽车月度销量: 月度",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-004"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-004(P1)：消费 vs 销量",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-004"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-004"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-005",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-005",
+      "a_raw": "LME主要仓库场内库存",
+      "b_raw": "SMM: 国内电解铝厂内库存: 周度",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-005"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-005(P0)：场内库存 vs 厂内库存",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-006",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-006",
+      "a_raw": "LME主要仓库场内库存",
+      "b_raw": "Mysteel/SMM社会库存",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-006"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-006(P0)：场内库存 vs 社会库存",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-007",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-007",
+      "a_raw": "LME：原铝：非仓单库存：全球（日）",
+      "b_raw": "Mysteel/SMM社会库存",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-007"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-007(P1)：非仓单 vs 社会库存",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-007"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-007"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-008",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-008",
+      "a_raw": "SMM: 精炼铅出口盈亏: 中国台湾: 日度",
+      "b_raw": "其他电池 国内销量",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-008"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-008(P0)：出口 vs 内销",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-008",
+            "BL-015"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-008",
+            "BL-015"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-009",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-009",
+      "a_raw": "Mysteel 再生铅反射炉利润: 日度",
+      "b_raw": "SMM: 铜产业链平衡: 铜精矿需求量: 季度",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-009"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-009(P0)：利润 vs 需求",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-010",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-010",
+      "a_raw": "COMEX：铜：期货库存（日）",
+      "b_raw": "Mysteel 再生铅产能利用率(30家样本)",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-010"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-010(P0)：库存 vs 产能",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-011",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-011",
+      "a_raw": "LME工业硅现金价格（美元/吨）",
+      "b_raw": "COMEX：铜：期货库存（日）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-011"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-011(P1)：价格 vs 库存",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-012",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-013",
+      "a_raw": "1A60铝杆加工费-内蒙",
+      "b_raw": "SMM1#电解镍价格、电解镍冶炼完全成本、电解镍冶炼利润",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-013"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-013(P1)：加工费 vs 完全成本",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-013",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-014",
+      "a_raw": "SMM: 电解铜供需平衡表-预测值: 终端消费量: 月度",
+      "b_raw": "LME工业硅现金价格（美元/吨）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-014"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-014(P2)：供需平衡 vs 价格",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-014",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-015",
+      "a_raw": "其他电池 国内销量",
+      "b_raw": "SMM: 精炼铅出口盈亏: 中国台湾: 日度",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-015"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-015(P0)：内销 vs 出口",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-008",
+            "BL-015"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-008",
+            "BL-015"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-015",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-016",
+      "a_raw": "Mysteel 再生铅反射炉利润: 日度",
+      "b_raw": "3C铝型材：产量：中国（年）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-016"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-016(P1)：利润 vs 产量",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-016",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-016a",
+      "a_raw": "NPI冶炼利润（元/吨）",
+      "b_raw": "工业级碳酸锂产量",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-016a"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-016a(P1)：冶炼利润 vs 工业级碳酸锂产量",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-016",
+            "BL-016a"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-016",
+            "BL-016a"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-017",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-017",
+      "a_raw": "LME工业硅现金价格（美元/吨）",
+      "b_raw": "Mysteel 再生铅反射炉利润: 日度",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-017"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-017(P2)：价格 vs 利润",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-018",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-018",
+      "a_raw": "USGS：锡矿：产量：缅甸（年）",
+      "b_raw": "镍板库存",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-018"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-018(P0)：锡矿 vs 镍板",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-019",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-018a",
+      "a_raw": "LME锡交易所库存（手）",
+      "b_raw": "COMEX镍持仓量（手）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-018a"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-018a(P0)：LME锡 vs COMEX镍",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-020",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-018b",
+      "a_raw": "USGS：锡矿：产量：缅甸（年）",
+      "b_raw": "不锈钢库存：300系（冷轧）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-018b"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-018b(P0)：锡矿 vs 冷轧",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-021",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-019",
+      "a_raw": "COMEX工业硅持仓量（手）",
+      "b_raw": "ICSG：电解铜：产量：全球（月）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-019"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-019(P0)：工业硅 vs 电解铜",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-022",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-022",
+      "a_raw": "LME：电解镍：调期费：3个月合约（日）",
+      "b_raw": "ICSG：电解铜：产量：全球（月）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-022"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-022(P0)：电解镍 vs 电解铜",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-023",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-023",
+      "a_raw": "A00升贴水-上海",
+      "b_raw": "LME工业硅现金价格（美元/吨）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-023"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-023(P2)：升贴水 vs 价格",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-023"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-023"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-024",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-024",
+      "a_raw": "LME：铅：出库量：新加坡（日）",
+      "b_raw": "COMEX：铜：期货库存（日）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-024"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-024(P1)：出库 vs 库存",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-025",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-025",
+      "a_raw": "SEAISI：镀锡板（带）：表观消费量：印尼（年）",
+      "b_raw": "3C铝型材：产量：中国（年）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-025"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-025(P0)：消费 vs 产量",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D1-POS-026",
+      "dimension": "D1_POSITIVE",
+      "target_rule": "BL-025a",
+      "a_raw": "国内锌锭消费量（万吨）",
+      "b_raw": "国内锡锭产量",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-025a"
+      ],
+      "expect_no_crash": true,
+      "description": "BL-025a(P0)：国内锌锭消费量 vs 国内锡锭产量",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-001",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-001",
+      "a_raw": "3C铝型材：产量：中国（年）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-001：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-002",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-002",
+      "a_raw": "3C铝型材：产量：中国（年）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-002：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-003",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-003",
+      "a_raw": "CAAM: 中国汽车月度销量: 月度",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-003：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-004",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-004",
+      "a_raw": "SEAISI：镀锡板（带）：表观消费量：印尼（年）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-004：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-005",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-005",
+      "a_raw": "LME主要仓库场内库存",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-005：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-006",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-006",
+      "a_raw": "LME主要仓库场内库存",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-006：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-007",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-007",
+      "a_raw": "LME：原铝：非仓单库存：全球（日）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-007：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-008",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-008",
+      "a_raw": "SMM: 精炼铅出口盈亏: 中国台湾: 日度",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-008：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-009",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-009",
+      "a_raw": "Mysteel 再生铅反射炉利润: 日度",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-009：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-010",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-010",
+      "a_raw": "COMEX：铜：期货库存（日）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-010：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-011",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-011",
+      "a_raw": "LME工业硅现金价格（美元/吨）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-011：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-012",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-013",
+      "a_raw": "1A60铝杆加工费-内蒙",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-013：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-013",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-014",
+      "a_raw": "SMM: 电解铜供需平衡表-预测值: 终端消费量: 月度",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-014：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-014",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-015",
+      "a_raw": "其他电池 国内销量",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-015：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-015",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-016",
+      "a_raw": "Mysteel 再生铅反射炉利润: 日度",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-016：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-016",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-016a",
+      "a_raw": "NPI冶炼利润（元/吨）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-016a：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-017",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-017",
+      "a_raw": "LME工业硅现金价格（美元/吨）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-017：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-018",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-018",
+      "a_raw": "USGS：锡矿：产量：缅甸（年）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-018：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-019",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-018a",
+      "a_raw": "LME锡交易所库存（手）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-018a：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-020",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-018b",
+      "a_raw": "USGS：锡矿：产量：缅甸（年）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-018b：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-021",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-019",
+      "a_raw": "COMEX工业硅持仓量（手）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-019：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-022",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-022",
+      "a_raw": "LME：电解镍：调期费：3个月合约（日）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-022：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-023",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-023",
+      "a_raw": "A00升贴水-上海",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-023：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-024",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-024",
+      "a_raw": "LME：铅：出库量：新加坡（日）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-024：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-025",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-025",
+      "a_raw": "SEAISI：镀锡板（带）：表观消费量：印尼（年）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-025：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D2-NEG-026",
+      "dimension": "D2_NEGATIVE",
+      "target_rule": "BL-025a",
+      "a_raw": "国内锌锭消费量（万吨）",
+      "b_raw": "1,4-丁二醇：检修减损量：中国（年）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "NONE",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-025a：a 侧含 L token，b 侧无任何黑名单 token",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "REVIEW",
+          "reason": "variety_neutral_target_review",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": true,
+          "deciding_gate": "G5_variety_neutral"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-001",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-023",
+      "a_raw": "LME镍现货价格（美元/吨）、LME镍3个月期货价格（美元/吨）、升贴水（美元/吨）",
+      "b_raw": "LME镍现货价格（美元/吨）、LME镍3个月期货价格（美元/吨）、升贴水（美元/吨）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 LME镍现货价格（美元/吨）、LME镍3个月期货价格；同时含 L/R token（子串关系）-> F4a 应抑制 BL-023",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-023"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-002",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-023",
+      "a_raw": "SHFE铜仓单、沪铜主力价格、现货升贴水",
+      "b_raw": "SHFE铜仓单、沪铜主力价格、现货升贴水",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SHFE铜仓单、沪铜主力价格、现货升贴水；同时含 L/R token（子串关系）-> F4a 应抑制 BL-023",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-023"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-003",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "SMM 再生铅原料库存天数",
+      "b_raw": "SMM 再生铅原料库存天数",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM 再生铅原料库存天数；同时含 L/R token（子串关系）-> F4a 应抑制 BL-012|BL-026",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-004",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-017",
+      "a_raw": "SMM 精炼铅成本及利润: 硫酸价格",
+      "b_raw": "SMM 精炼铅成本及利润: 硫酸价格",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM 精炼铅成本及利润: 硫酸价格；同时含 L/R token（子串关系）-> F4a 应抑制 BL-017",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-005",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-017",
+      "a_raw": "SMM1#电解镍价格、SMM8-12%高镍生铁价格、SMM高冰镍价格、冶炼利润",
+      "b_raw": "SMM1#电解镍价格、SMM8-12%高镍生铁价格、SMM高冰镍价格、冶炼利润",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM1#电解镍价格、SMM8-12%高镍生铁价格、；同时含 L/R token（子串关系）-> F4a 应抑制 BL-017",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-006",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-017",
+      "a_raw": "SMM1#电解镍价格、电解镍冶炼完全成本、电解镍冶炼利润",
+      "b_raw": "SMM1#电解镍价格、电解镍冶炼完全成本、电解镍冶炼利润",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM1#电解镍价格、电解镍冶炼完全成本、电解镍冶炼；同时含 L/R token（子串关系）-> F4a 应抑制 BL-017",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-007",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-017",
+      "a_raw": "SMM8-12%高镍生铁价格、SMM1#电解镍价格、NPI冶炼利润",
+      "b_raw": "SMM8-12%高镍生铁价格、SMM1#电解镍价格、NPI冶炼利润",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM8-12%高镍生铁价格、SMM1#电解镍价格、；同时含 L/R token（子串关系）-> F4a 应抑制 BL-017",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-008",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "SMM: 再生铅冶炼企业原料库存天数: 周度",
+      "b_raw": "SMM: 再生铅冶炼企业原料库存天数: 周度",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM: 再生铅冶炼企业原料库存天数: 周度；同时含 L/R token（子串关系）-> F4a 应抑制 BL-012|BL-026",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-009",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "SMM: 原生铅冶炼企业月度原料库存天数: 月度",
+      "b_raw": "SMM: 原生铅冶炼企业月度原料库存天数: 月度",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM: 原生铅冶炼企业月度原料库存天数: 月度；同时含 L/R token（子串关系）-> F4a 应抑制 BL-012|BL-026",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-010",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-017",
+      "a_raw": "SMM: 精炼铅成本及利润: 1号白银价格: 日度",
+      "b_raw": "SMM: 精炼铅成本及利润: 1号白银价格: 日度",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM: 精炼铅成本及利润: 1号白银价格: 日度；同时含 L/R token（子串关系）-> F4a 应抑制 BL-017",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-011",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-001|BL-025",
+      "a_raw": "SMM: 铅精矿平衡(新): 矿产铅产量: 月度||SMM: 铅精矿平衡(新): 其他含铅伴生矿产量: 月度||SMM: 铅精矿平衡(新): 表观消费量: 月度",
+      "b_raw": "SMM: 铅精矿平衡(新): 矿产铅产量: 月度||SMM: 铅精矿平衡(新): 其他含铅伴生矿产量: 月度||SMM: 铅精矿平衡(新): 表观消费量: 月度",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM: 铅精矿平衡(新): 矿产铅产量: 月度||；同时含 L/R token（子串关系）-> F4a 应抑制 BL-001|BL-025",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D3-BDY-012",
+      "dimension": "D3_BOUNDARY",
+      "target_rule": "BL-017",
+      "a_raw": "SMM高冰镍价格、SMM1#电解镍价格、高冰镍冶炼利润",
+      "b_raw": "SMM高冰镍价格、SMM1#电解镍价格、高冰镍冶炼利润",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对 SMM高冰镍价格、SMM1#电解镍价格、高冰镍冶炼利；同时含 L/R token（子串关系）-> F4a 应抑制 BL-017",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D4-CMP-001",
+      "dimension": "D4_COMPOUND",
+      "target_rule": "BL-023",
+      "a_raw": "LME镍现货价格（美元/吨）、LME镍3个月期货价格（美元/吨）、升贴水（美元/吨）",
+      "b_raw": "LME镍现货价格（美元/吨）、LME镍3个月期货价格（美元/吨）、升贴水（美元/吨）",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-023 复合短语：升贴水 与 价格 不相交共现 -> F4b 应抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-023"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D4-CMP-002",
+      "dimension": "D4_COMPOUND",
+      "target_rule": "BL-023",
+      "a_raw": "SHFE铜仓单、沪铜主力价格、现货升贴水",
+      "b_raw": "SHFE铜仓单、沪铜主力价格、现货升贴水",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-023 复合短语：升贴水 与 价格 不相交共现 -> F4b 应抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-023"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D4-CMP-003",
+      "dimension": "D4_COMPOUND",
+      "target_rule": "BL-017",
+      "a_raw": "SMM 精炼铅成本及利润: 硫酸价格",
+      "b_raw": "SMM 精炼铅成本及利润: 硫酸价格",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-017 复合短语：价格 与 利润 不相交共现 -> F4b 应抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D4-CMP-004",
+      "dimension": "D4_COMPOUND",
+      "target_rule": "BL-017",
+      "a_raw": "SMM1#电解镍价格、SMM8-12%高镍生铁价格、SMM高冰镍价格、冶炼利润",
+      "b_raw": "SMM1#电解镍价格、SMM8-12%高镍生铁价格、SMM高冰镍价格、冶炼利润",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-017 复合短语：价格 与 利润 不相交共现 -> F4b 应抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D4-CMP-005",
+      "dimension": "D4_COMPOUND",
+      "target_rule": "BL-017",
+      "a_raw": "SMM1#电解镍价格、电解镍冶炼完全成本、电解镍冶炼利润",
+      "b_raw": "SMM1#电解镍价格、电解镍冶炼完全成本、电解镍冶炼利润",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-017 复合短语：价格 与 利润 不相交共现 -> F4b 应抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D4-CMP-006",
+      "dimension": "D4_COMPOUND",
+      "target_rule": "BL-017",
+      "a_raw": "SMM8-12%高镍生铁价格、SMM1#电解镍价格、NPI冶炼利润",
+      "b_raw": "SMM8-12%高镍生铁价格、SMM1#电解镍价格、NPI冶炼利润",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "BL-017 复合短语：价格 与 利润 不相交共现 -> F4b 应抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-001",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-002|BL-003",
+      "a_raw": "3C铝型材：产量：中国（年）",
+      "b_raw": "CAAM: 中国汽车月度销量: 月度",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-002",
+        "BL-003"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-002|BL-003",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-002",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-011|BL-023",
+      "a_raw": "A00铝现货均价",
+      "b_raw": "Mysteel精炼镍仓单库存、Mysteel纯镍现货升贴水",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-011",
+        "BL-023"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-011|BL-023",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-003",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-002|BL-003",
+      "a_raw": "CAAM: 中国汽车月度销量: 月度",
+      "b_raw": "3C铝型材：产量：中国（年）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-002",
+        "BL-003"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-002|BL-003",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-004",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-002|BL-003",
+      "a_raw": "CAAM: 中国汽车销量: 月度",
+      "b_raw": "3C铝型材：产量：中国（年）",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-002",
+        "BL-003"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-002|BL-003",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-002",
+            "BL-003"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-005",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-019|BL-023",
+      "a_raw": "COMEX工业硅现货升贴水（美元/磅）",
+      "b_raw": "SMM 1#电解铜现货均价",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-019",
+        "BL-023"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-019|BL-023",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "variety_anchor_violation",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G1_variety_anchor"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-006",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-005|BL-006",
+      "a_raw": "COMEX：铜：期货库存（日）",
+      "b_raw": "Mysteel/SMM社会库存",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-005",
+        "BL-006"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-005|BL-006",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-007",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-005|BL-006",
+      "a_raw": "COMEX：铝：期货库存（日）",
+      "b_raw": "Mysteel/SMM社会库存",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-005",
+        "BL-006"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-005|BL-006",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D5-COM-008",
+      "dimension": "D5_COMBINATION",
+      "target_rule": "BL-005|BL-006",
+      "a_raw": "COMEX：锌：期货库存（日）",
+      "b_raw": "Mysteel/SMM社会库存",
+      "expected_verdict": "BLOCK",
+      "expected_mechanism": "R-05",
+      "expected_rules": [
+        "BL-005",
+        "BL-006"
+      ],
+      "expect_no_crash": true,
+      "description": "组合命中 BL-005|BL-006",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-005",
+            "BL-006"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-001",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "SMM 再生铅原料库存天数",
+      "b_raw": "SMM 再生铅原料库存天数",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-012",
+        "BL-026"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-002",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-017",
+      "a_raw": "SMM 精炼铅成本及利润: 硫酸价格",
+      "b_raw": "SMM 精炼铅成本及利润: 硫酸价格",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-017"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-003",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "SMM: 再生铅冶炼企业原料库存天数: 周度",
+      "b_raw": "SMM: 再生铅冶炼企业原料库存天数: 周度",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-012",
+        "BL-026"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-004",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "SMM: 原生铅冶炼企业月度原料库存天数: 月度",
+      "b_raw": "SMM: 原生铅冶炼企业月度原料库存天数: 月度",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-012",
+        "BL-026"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-005",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-017",
+      "a_raw": "SMM: 精炼铅成本及利润: 1号白银价格: 日度",
+      "b_raw": "SMM: 精炼铅成本及利润: 1号白银价格: 日度",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-017"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-017"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-006",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "再生铅原料库存天数",
+      "b_raw": "再生铅原料库存天数",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-012",
+        "BL-026"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-007",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "碳酸锂 库存天数:上游",
+      "b_raw": "碳酸锂 库存天数:上游",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-012",
+        "BL-026"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D6-GTC-008",
+      "dimension": "D6_GATE_CONFLICT",
+      "target_rule": "BL-012|BL-026",
+      "a_raw": "碳酸锂 库存天数:总计",
+      "b_raw": "碳酸锂 库存天数:总计",
+      "expected_verdict": "PASS",
+      "expected_mechanism": "R-05_suppressed",
+      "expected_rules": [
+        "BL-012",
+        "BL-026"
+      ],
+      "expect_no_crash": true,
+      "description": "自配对；alias_exact 与黑名单同时成立。黑名单命中系 pattern 自触发（同一字符串内 L⊂R 子串关系），正确答案是放行，F4 必须抑制",
+      "expect_no_r05": true,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-001",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "",
+      "b_raw": "碳酸锂工厂库存天数",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "空 a",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-002",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数",
+      "b_raw": "",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "空 b",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-003",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "",
+      "b_raw": "",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "双空",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-004",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "   ",
+      "b_raw": "碳酸锂工厂库存天数",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "a 仅空白",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-005",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数",
+      "b_raw": "　",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "b 全角空白",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "empty_input",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G0_input"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-006",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数",
+      "b_raw": "碳酸锂工厂库存天数",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "同名对（alias_exact + BL-012/BL-026）",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-007",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "产量",
+      "b_raw": "库存",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "双短词（resolve_canonical KeyError 触发词）",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-008",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "场内库存",
+      "b_raw": "注册仓单库存",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "未注册归一名",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-009",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数",
+      "b_raw": "碳酸锂工厂库存天数",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "自触发同名对（F4a）",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-010",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂利润与需求分析",
+      "b_raw": "碳酸锂利润与需求预测",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "复合短语（F4b）",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-009"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "mid_dice_same_variety",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-011",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂",
+      "b_raw": "碳酸锂",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "单品种词",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "high_dice",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-012",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数碳酸锂工厂库存天数",
+      "b_raw": "碳酸锂工厂库存天数",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "超长输入（90 字）",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-013",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "12345",
+      "b_raw": "abcdefg",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "纯数字/纯字母",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "below_threshold",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G7_dice"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-014",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数",
+      "b_raw": "碳酸锂工厂库存天数（吨）",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "单位变体",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-015",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数",
+      "b_raw": "碳酸锂:工厂:库存:天数",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "分隔符变体",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        }
+      }
+    },
+    {
+      "case_id": "D7-MISS-016",
+      "dimension": "D7_ROBUSTNESS",
+      "target_rule": "-",
+      "a_raw": "碳酸锂工厂库存天数",
+      "b_raw": "碳酸锂工厂库存天数\n",
+      "expected_verdict": "NO_CRASH",
+      "expected_mechanism": "ANY",
+      "expected_rules": [],
+      "expect_no_crash": true,
+      "description": "含换行",
+      "expect_no_r05": false,
+      "results": {
+        "base": {
+          "gate": "base",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        },
+        "f3": {
+          "gate": "f3",
+          "crashed": false,
+          "verdict": "BLOCK",
+          "reason": "blacklist_precheck",
+          "r05_fired": true,
+          "all_rules": [
+            "BL-012",
+            "BL-026"
+          ],
+          "skipped": [],
+          "accept": false,
+          "review": false,
+          "deciding_gate": "G3_blacklist"
+        },
+        "f3f4": {
+          "gate": "f3f4",
+          "crashed": false,
+          "verdict": "PASS",
+          "reason": "alias_exact",
+          "r05_fired": false,
+          "all_rules": [],
+          "skipped": [],
+          "accept": true,
+          "review": false,
+          "deciding_gate": "G4_alias"
+        }
+      }
+    }
+  ]
+}

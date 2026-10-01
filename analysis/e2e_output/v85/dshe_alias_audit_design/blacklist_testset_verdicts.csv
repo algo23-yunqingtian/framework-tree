@@ -1,0 +1,25 @@
+﻿case_id,category,risk_level,indicator_name,matched_name,expected_blocked,expected_rule,rules_referenced_but_not_exist,rules_actually_hit_full_substring,all_expected_rules_hit,verdict_base,base_reason,verdict_f3,f3_reason,verdict_f3f4,f3f4_reason,f3f4_all_rules,base_matches_expectation,f3f4_matches_expectation,verdict_changed_by_fix
+BOUNDARY-001,正向危险样例,P0,碳酸锂 三元523需求,SMM: 碳酸锂现金生产利润: 外购三元极片黑粉,True,BL-009a,BL-009a,BL-009,NO,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BL-009,YES,YES,NO
+BOUNDARY-002,正向危险样例,P0,碳酸锂需求总量,碳酸锂冶炼利润（元/吨）,True,BL-009a,BL-009a,BL-009,NO,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BL-009,YES,YES,NO
+BOUNDARY-003,正向危险样例,P0,碳酸锂需求量（万吨）,碳酸锂现金生产利润: 外购三元极片黑粉,True,BL-009a,BL-009a,BL-009,NO,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BL-009,YES,YES,NO
+BOUNDARY-004,正向危险样例,P0,碳酸锂利润（元/吨）,碳酸锂三元523需求,True,BL-009,-,BL-009,YES,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BL-009,YES,YES,NO
+BOUNDARY-005,安全负向样例,SAFE,碳酸锂需求预测,碳酸锂需求分析,False,NONE,-,-,YES,PASS,mid_dice_same_variety,PASS,mid_dice_same_variety,PASS,mid_dice_same_variety,-,YES,YES,NO
+BOUNDARY-006,安全负向样例,SAFE,碳酸锂利润分析,碳酸锂利润预测,False,NONE,-,-,YES,PASS,mid_dice_same_variety,PASS,mid_dice_same_variety,PASS,mid_dice_same_variety,-,YES,YES,NO
+BOUNDARY-007,数据缺失样例,N/A,中国电解镍净进口量,N/A,False,NONE,-,-,YES,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,-,YES,YES,NO
+BOUNDARY-008,数据缺失样例,N/A,中国精炼镍净进口量,N/A,False,NONE,-,-,YES,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,-,YES,YES,NO
+BOUNDARY-009,数据缺失样例,N/A,工业硅样本工厂库存(SMM),N/A,False,NONE,-,-,YES,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,-,YES,YES,NO
+BOUNDARY-010,数据缺失样例,N/A,工业硅样本工厂库存,N/A,False,NONE,-,-,YES,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,-,YES,YES,NO
+BOUNDARY-011,数据缺失样例,N/A,工业硅供需平衡,N/A,False,NONE,-,-,YES,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,-,YES,YES,NO
+BOUNDARY-012,数据缺失样例,N/A,工业硅供需平衡表,N/A,False,NONE,-,-,YES,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,-,YES,YES,NO
+BOUNDARY-013,安全负向样例,SAFE,碳酸锂工厂库存天数,碳酸锂工厂库存天数,False,NONE,-,BL-012|BL-026,YES,PASS,alias_exact,BLOCK,blacklist_precheck,PASS,alias_exact,-,YES,YES,NO
+BOUNDARY-014,正向危险样例,P1,电解镍厂库存天数（天）,碳酸锂工厂库存天数,True,BL-012; BL-026,-,BL-012|BL-026,YES,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,-,YES,YES,NO
+BOUNDARY-015,正向危险样例,P1,碳酸锂工厂库存天数,碳酸锂工厂库存量,True,BL-012,-,BL-012,YES,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BL-012,YES,YES,NO
+BOUNDARY-016,正向危险样例,P1,锡厂库存天数（天）,碳酸锂工厂库存天数,True,BL-026,-,BL-012|BL-026,YES,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,-,YES,YES,NO
+BOUNDARY-017,安全负向样例,SAFE,锡厂库存天数（天）,锡厂库存天数（天）,False,NONE,-,BL-012|BL-026,YES,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,PASS,high_dice,-,NO,YES,YES
+BOUNDARY-018,安全负向样例,SAFE,碳酸锂利润与需求分析,碳酸锂利润与需求预测,False,NONE,-,BL-009,YES,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,PASS,mid_dice_same_variety,-,NO,YES,YES
+BOUNDARY-019,安全负向样例,SAFE,COMEX镍持仓量（手）,COMEX：镍：主力合约：持仓量（日）,False,NONE,-,-,YES,BLOCK,below_threshold,BLOCK,below_threshold,BLOCK,below_threshold,-,NO,NO,NO
+BOUNDARY-020,正向危险样例,P0,COMEX镍持仓量（手）,COMEX：铜：主力合约：持仓量（日）,True,BL-022,-,-,NO,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,-,YES,YES,NO
+BOUNDARY-021,安全负向样例,SAFE,LME锡库存（吨）,LME：锡：库存：中国（日）,False,NONE,-,-,YES,BLOCK,below_threshold,BLOCK,below_threshold,BLOCK,below_threshold,-,NO,NO,NO
+BOUNDARY-022,正向危险样例,P0,LME锡库存（吨）,LME：镍：注册仓单（日）,True,BL-018; BL-018a,-,-,NO,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,BLOCK,variety_anchor_violation,-,YES,YES,NO
+BOUNDARY-023,数据缺失样例,N/A,磷酸铁锂 电池 国内销量,N/A,False,NONE,-,-,YES,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,REVIEW,variety_neutral_target_review,-,YES,YES,NO
+BOUNDARY-024,正向危险样例,P0,磷酸铁锂 电池 国内销量,中国海关: 磷酸铁锂电池出口量: 月度,True,BL-015,-,BL-008|BL-015,YES,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BLOCK,blacklist_precheck,BL-008|BL-015,YES,YES,NO
