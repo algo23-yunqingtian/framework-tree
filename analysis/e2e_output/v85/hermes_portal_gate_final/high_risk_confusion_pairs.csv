@@ -1,0 +1,14 @@
+﻿pair_id,severity,chart_id,indicator_a,indicator_b,conflict_group,reason,impact,mitigation
+CONF-001,P0,TPL-AO-020,氧化铝库存-阿拉丁-堆场站台,"重检索填充: search (score=0.57, name=SMM:中国氧化铝在途&站台堆积:库存量:周度)",G03_inventory_vs_transit,"语义对立: A独有{'堆场站台', '堆场'} vs B独有{'在途', '站台堆积'}",口径对立，禁止同图,替换正确口径指标或移除
+CONF-002,P0,TPL-AO-026,氧化铝库存-阿拉丁-堆场站台,"重检索填充: search (score=0.57, name=SMM:中国氧化铝在途&站台堆积:库存量:周度)",G03_inventory_vs_transit,"语义对立: A独有{'堆场站台', '堆场'} vs B独有{'在途', '站台堆积'}",口径对立，禁止同图,替换正确口径指标或移除
+CONF-003,P0,TPL-LC-084,其他电池(磷酸铁锂) 销量,"重检索填充: search (score=0.86, name=SMM: 境内其他电池产量: 月度)",G01_output_vs_consumption,"语义互斥: A命中{'销量'} B命中{'产量'}, 同属G01_output_vs_consumption但对立",口径对立，禁止同图,替换正确口径指标或移除
+CONF-004,P0,TPL-LC-086,其他电池(磷酸铁锂) 销量,"重检索填充: search (score=0.86, name=SMM: 境内其他电池产量: 月度)",G01_output_vs_consumption,"语义互斥: A命中{'销量'} B命中{'产量'}, 同属G01_output_vs_consumption但对立",口径对立，禁止同图,替换正确口径指标或移除
+CONF-005,P0,TPL-LC-091,新能源乘用车 产量,"重检索填充: search (score=1.00, name=SMM: 国产乘用车销量-新能源汽车: 周度)",G01_output_vs_consumption,"语义互斥: A命中{'产量'} B命中{'销量'}, 同属G01_output_vs_consumption但对立",口径对立，禁止同图,替换正确口径指标或移除
+CONF-006,P0,TPL-LC-092,新能源乘用车 产量,"重检索填充: search (score=1.00, name=SMM: 国产乘用车销量-新能源汽车: 周度)",G01_output_vs_consumption,"语义互斥: A命中{'产量'} B命中{'销量'}, 同属G01_output_vs_consumption但对立",口径对立，禁止同图,替换正确口径指标或移除
+CONF-007,P0,TPL-LC-099,其他电池(磷酸铁锂) 销量,"重检索填充: search (score=0.86, name=SMM: 境内其他电池产量: 月度)",G01_output_vs_consumption,"语义互斥: A命中{'销量'} B命中{'产量'}, 同属G01_output_vs_consumption但对立",口径对立，禁止同图,替换正确口径指标或移除
+CONF-008,P0,TPL-AL-013,LME主要仓库场内库存,"重检索填充: search (score=0.55, name=LME：非仓单库存：欧洲（日）)",G02_onsite_vs_offsite_inventory,"语义互斥: A命中{'场内库存', '场内'} B命中{'非仓单', '仓单库存', '非仓单库存'}, 同属G02_onsite_vs_offsite_inventory但对立",口径对立，禁止同图,替换正确口径指标或移除
+CONF-009,P1,TPL-SI-029,硅片价格-N型182mm,硅片：单晶N型：182-183.75mm：130μm：市场均价：美元计（周）,G08_price_vs_cost,"语义互斥: A命中{'价格'} B命中{'均价'}, 同属G08_price_vs_cost但对立",语义近似但非对立，需人工确认,人工复核或白名单放行
+CONF-010,P1,TPL-SI-030,硅片价格-N型210mm,硅片：210单晶N型：210mm/130μm：均价（周）,G08_price_vs_cost,"语义互斥: A命中{'价格'} B命中{'均价'}, 同属G08_price_vs_cost但对立",语义近似但非对立，需人工确认,人工复核或白名单放行
+CONF-011,P1,TPL-SN-034,汽车端消费用锡拟合,"重检索填充: search (score=0.44, name=汽车：消费指数：中国（月）)",G04_fitted_vs_official,"语义互斥: A命中{'拟合'} B命中{'指数', '消费指数'}, 同属G04_fitted_vs_official但对立",语义近似但非对立，需人工确认,人工复核或白名单放行
+CONF-012,P1,TPL-NI-004,不同镍产品折镍价,"重检索填充: search (score=0.50, name=SMM: 304废不锈钢折合镍铁价格: 日度)",G05_nickel_discount_vs_conversion,"语义互斥: A命中{'折镍价'} B命中{'折合', '折合镍铁'}, 同属G05_nickel_discount_vs_conversion但对立",语义近似但非对立，需人工确认,人工复核或白名单放行
+CONF-013,P1,TPL-NI-005,硫酸镍价格,硫酸镍：电池级：22%Ni：成交均价：中国（月）,G08_price_vs_cost,"语义互斥: A命中{'价格'} B命中{'均价'}, 同属G08_price_vs_cost但对立",语义近似但非对立，需人工确认,人工复核或白名单放行
