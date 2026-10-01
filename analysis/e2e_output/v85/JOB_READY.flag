@@ -1193,3 +1193,52 @@ NO_ZHIJI_API_CALL=TRUE
 NO_MODIFY_SOURCE=TRUE
 NO_CHANGE_GT=TRUE
 NO_EDIT_RULE=TRUE
+
+# ============================================================ #
+# V85_ALL_ANALYSIS_COMPLETE 2026-10-01 20:30:00
+# task       : E_V85_READONLY_API_AND_V86_BACKEND_DESIGN
+# branch     : feature/v85-chart-template
+# baseline   : HERMES a2815c4 / DSHB 6771406 / DSHE f313570
+# output_dir : analysis/e2e_output/v85/e_api_design/
+# md5_list   : analysis/e2e_output/v85/e_api_design/MD5_CHECKSUM_LIST.md (5 files / 117,734 bytes)
+# deliverables (5):
+#   api_spec_v85_readonly.md          V85 只读接口文档 (9 端点 / 4 角色 / 31 制品白名单)
+#   v85_artifact_api.py               V85 只读访问接口实现 (标准库零依赖 / 冒烟 PASS)
+#   v86_backend_schema_design.md      V86 后端存储 schema (7 表 / 3 分域 / JSONB+MD5 绑定)
+#   v86_task_api_design.md            V86 异步任务调度接口 (6 task_type / 幂等 / 状态机)
+#   v85_to_v86_migration_verify_plan.md V85→V86 迁移校验方案 (6 阶段 / 阈值 / 回滚)
+# extras (1): MD5_CHECKSUM_LIST.md
+# key_metrics : 9 端点 / 31 制品 / 4 角色 / 3 层写保护
+#              冒烟测试 20/20 PASS (含健康/版本/元数据/MD5/查询/写保护/权限/路由)
+#              幂等设计 SHA256[:32] / TTL 24h / Worker SKIP LOCKED
+#              迁移阈值 7 指标 / 硬门禁 3 项 / 回滚 4 粒度
+# key_finding : V85 只读接口与 V86 计算层严格分离
+#               V85 接口永远只读, V86 任务接口读 V85 写 V86
+#               冻结数据走只读接口, 版本化数据走 DB, 审计链 task_run->gate_run->audit_log
+# dependency  : v86_init_backlog_total.md 未就绪 (HERMES 产出, DEPENDENCY_NOT_READY=TRUE)
+#               v85_version_freeze_decision.md 未就绪 (HERMES 产出, DEPENDENCY_NOT_READY=TRUE)
+#               占位约定: 基线版本 = f313570; V86 版本占位符 v86-dev 不开放读
+# constraint  : NO_SOURCE_MODIFICATION=TRUE | NO_GT_MODIFICATION=TRUE | NO_RULE_MODIFICATION=TRUE
+#               NO_ZHIJI_API_CALL=TRUE | READ_ONLY=TRUE | APPEND_ONLY=TRUE
+#               HISTORICAL_ARTIFACTS_PRESERVED=TRUE | BRANCH_LOCKED=feature/v85-chart-template
+# ============================================================ #
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+E_V85_READONLY_API_AND_V86_BACKEND_DESIGN=COMPLETE
+E_V85_READONLY_API_COMMIT_HASH=f313570
+E_V85_READONLY_API_COMMIT_BRANCH=feature/v85-chart-template
+E_V85_READONLY_API_OUTPUT_DIR=analysis/e2e_output/v85/e_api_design/
+E_V85_READONLY_API_DELIVERABLES=5/5
+E_V85_READONLY_API_FILES=6 (含 MD5_CHECKSUM_LIST.md)
+E_V85_READONLY_API_TOTAL_BYTES=117734
+E_V85_READONLY_API_MD5_LIST=MD5_CHECKSUM_LIST.md
+E_V85_READONLY_API_API_ENDPOINTS=9
+E_V85_READONLY_API_ARTIFACTS=31
+E_V85_READONLY_API_ROLES=4
+E_V85_READONLY_API_WRITE_PROTECTION_LAYERS=3
+E_V85_READONLY_API_SMOKE_TEST=PASS
+E_V85_READONLY_API_DEPENDENCY_NOT_READY=TRUE (v86_init_backlog_total.md, v85_version_freeze_decision.md)
+NO_AUTO_ITERATE=TRUE
+NO_ZHIJI_API_CALL=TRUE
+NO_MODIFY_SOURCE=TRUE
+NO_CHANGE_GT=TRUE
+NO_EDIT_RULE=TRUE
