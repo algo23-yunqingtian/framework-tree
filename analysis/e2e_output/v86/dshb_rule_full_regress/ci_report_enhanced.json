@@ -1,0 +1,1022 @@
+{
+  "task_id": "DSHB_V86_RULE_ENGINE_FULL_INTEGRATION_REGRESSION_AND_DOC_FINALIZE",
+  "version": "v2.0",
+  "branch": "feature/v85-chart-template",
+  "base_commits": {
+    "rule": "c7f5a40",
+    "alias": "5e874a7",
+    "portal": "03b3a73"
+  },
+  "timestamp": "2026-10-02T00:07:07.407756",
+  "overall_status": "PASS",
+  "exit_code": 0,
+  "alias_precheck": {
+    "status": "PASS",
+    "total_checks": 7,
+    "passed": 7,
+    "failed": 0,
+    "elapsed_ms": 24887.1,
+    "checks": [
+      {
+        "name": "engine_load",
+        "status": "PASS",
+        "detail": "V86AliasEngine loaded successfully"
+      },
+      {
+        "name": "version_info",
+        "status": "PASS",
+        "detail": "{\"engine\": \"V86AliasEngine\", \"mode\": \"f3+f4\", \"f1_enabled\": true, \"f2_enabled\": true, \"f3_enabled\": true, \"f4_enabled\": true, \"blacklist_rules\": 31, \"alias_entries\": 4643, \"init_time_ms\": 24861.2}"
+      },
+      {
+        "name": "resolve_samples",
+        "status": "PASS",
+        "detail": "1/5 samples resolved (need >= 1)",
+        "samples": [
+          {
+            "name": "碳酸锂工厂库存天数",
+            "state": "UNIQUE",
+            "canonicals_count": 1
+          },
+          {
+            "name": "LME：锌：库存（日）",
+            "state": "UNREGISTERED",
+            "canonicals_count": 0
+          },
+          {
+            "name": "锡厂库存天数（天）",
+            "state": "UNREGISTERED",
+            "canonicals_count": 0
+          },
+          {
+            "name": "碳酸锂价格",
+            "state": "UNREGISTERED",
+            "canonicals_count": 0
+          },
+          {
+            "name": "电解铜库存",
+            "state": "UNREGISTERED",
+            "canonicals_count": 0
+          }
+        ]
+      },
+      {
+        "name": "resolve_safe",
+        "status": "PASS",
+        "detail": "All resolve_safe calls returned lists",
+        "samples": [
+          {
+            "name": "碳酸锂工厂库存天数",
+            "returned_list": true,
+            "count": 1
+          },
+          {
+            "name": "电解铜库存",
+            "returned_list": true,
+            "count": 0
+          },
+          {
+            "name": "不存在名称",
+            "returned_list": true,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "name": "decide_verdicts",
+        "status": "PASS",
+        "detail": "All decide() calls returned valid verdicts",
+        "samples": [
+          {
+            "a": "碳酸锂工厂库存天数",
+            "b": "碳酸锂工厂库存天数",
+            "verdict": "PASS",
+            "reason": "alias_exact",
+            "dice": 1.0,
+            "valid": true
+          },
+          {
+            "a": "LME：锌：库存（日）",
+            "b": "LME：锡：库存（日）",
+            "verdict": "BLOCK",
+            "reason": "variety_anchor_violation",
+            "dice": 0.9,
+            "valid": true
+          },
+          {
+            "a": "碳酸锂利润",
+            "b": "碳酸锂需求",
+            "verdict": "BLOCK",
+            "reason": "blacklist_precheck",
+            "dice": 0.6,
+            "valid": true
+          },
+          {
+            "a": "碳酸锂工厂库存天数",
+            "b": "",
+            "verdict": "BLOCK",
+            "reason": "empty_input",
+            "dice": 0.0,
+            "valid": true
+          }
+        ]
+      },
+      {
+        "name": "summary_stats",
+        "status": "PASS",
+        "detail": "{\"f1\": {\"total_calls\": 5, \"alias_hits\": 3, \"alias_misses\": 2, \"guard_hits\": 2, \"miss_rate_pct\": 40.0}, \"f2\": {\"total_calls\": 5, \"unregistered\": 4, \"unique\": 1, \"ambiguous\": 0}, \"engine\": {\"engine\": \"V86AliasEngine\", \"mode\": \"f3+f4\", \"f1_enabled\": true, \"f2_enabled\": true, \"f3_enabled\": true, \"f4_enabled\": true, \"blacklist_rules\": 31, \"alias_entries\": 4643, \"init_time_ms\": 24861.2}}"
+      },
+      {
+        "name": "alias_entries_count",
+        "status": "PASS",
+        "detail": "4643 alias entries (need >= 1)"
+      }
+    ],
+    "errors": [],
+    "engine_version_info": null,
+    "exit_code": 0
+  },
+  "unit_test": {
+    "status": "PASS",
+    "p0": {
+      "status": "PASS",
+      "total": 22,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 3,
+      "exit_code": 0
+    },
+    "p1": {
+      "status": "PASS",
+      "total": 25,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 1,
+      "fault_tolerance": "9/9 passed",
+      "alias_conflicts_detected": 3,
+      "exit_code": 0
+    },
+    "total_tests": 47,
+    "total_passed": 43,
+    "total_failed": 0,
+    "exit_code": 0
+  },
+  "regression_test": {
+    "status": "PASS",
+    "v85_available": true,
+    "mode": "fallback_self_test",
+    "total_cases": 4,
+    "passed": 4,
+    "failed": 0,
+    "p0_interception_rate": 100.0,
+    "p1_interception_rate": 0.0,
+    "tp": 2,
+    "fp": 0,
+    "regression": 0,
+    "boundary_pass": 0,
+    "boundary_total": 0,
+    "details": [
+      {
+        "case_id": "P0-REG-001",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂 三元523需求",
+        "matched_name": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉",
+        "risk_id": "RISK-002",
+        "risk_level": "P0",
+        "expected": "BLOCKED",
+        "actual": "BLOCKED",
+        "expected_rule": "BL-009a",
+        "actual_rule": "BL-009a",
+        "verdict": "PASS",
+        "latency_ms": 0.0,
+        "error_code": "OK"
+      },
+      {
+        "case_id": "P0-REG-002",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂 三元523需求",
+        "matched_name": "SMM: 碳酸锂现金生产利润",
+        "risk_id": "RISK-002",
+        "risk_level": "P0",
+        "expected": "BLOCKED",
+        "actual": "BLOCKED",
+        "expected_rule": "BL-009a",
+        "actual_rule": "BL-009a",
+        "verdict": "PASS",
+        "latency_ms": 1.002,
+        "error_code": "OK"
+      },
+      {
+        "case_id": "P0-REG-NEG-001",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂需求预测",
+        "matched_name": "碳酸锂需求分析",
+        "risk_id": "SAFE",
+        "risk_level": "SAFE",
+        "expected": "PASS",
+        "actual": "PASSED",
+        "expected_rule": "NONE",
+        "actual_rule": null,
+        "verdict": "PASS",
+        "latency_ms": 0.0,
+        "error_code": "OK"
+      },
+      {
+        "case_id": "P0-REG-NEG-002",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂工厂库存天数",
+        "matched_name": "碳酸锂工厂库存天数",
+        "risk_id": "SAFE",
+        "risk_level": "SAFE",
+        "expected": "PASS",
+        "actual": "PASSED",
+        "expected_rule": "NONE",
+        "actual_rule": null,
+        "verdict": "PASS",
+        "latency_ms": 0.0,
+        "error_code": "OK"
+      }
+    ],
+    "exit_code": 0,
+    "v85_baseline": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshb_review_simulation\\sim_sceneA_result.csv",
+    "v86_engine": "v86.1-alpha-proto",
+    "note": "Full V85/V86 comparison: use v85_v86_rule_compare.py"
+  },
+  "performance_test": {
+    "status": "PASS",
+    "scenarios": [
+      {
+        "scenario": "batch_100_sequential",
+        "type": "batch",
+        "details": {
+          "total_cases": 100,
+          "total_blocked": 15,
+          "total_passed": 85,
+          "total_errors": 0,
+          "elapsed_ms": 13.62,
+          "cases_per_sec": 7341.82,
+          "avg_ms_per_case": 0.1362,
+          "p50_ms": 0.1458,
+          "p95_ms": 0.3429,
+          "p99_ms": 0.3888,
+          "max_ms": 0.3888,
+          "workers": 1
+        }
+      },
+      {
+        "scenario": "batch_1000_sequential",
+        "type": "batch",
+        "details": {
+          "total_cases": 1000,
+          "total_blocked": 152,
+          "total_passed": 848,
+          "total_errors": 0,
+          "elapsed_ms": 132.24,
+          "cases_per_sec": 7561.95,
+          "avg_ms_per_case": 0.1322,
+          "p50_ms": 0.1434,
+          "p95_ms": 0.3151,
+          "p99_ms": 0.3788,
+          "max_ms": 0.3788,
+          "workers": 1
+        }
+      }
+    ],
+    "batch_1000": {
+      "total_cases": 1000,
+      "total_blocked": 152,
+      "total_passed": 848,
+      "total_errors": 0,
+      "elapsed_ms": 132.24,
+      "cases_per_sec": 7561.95,
+      "avg_ms_per_case": 0.1322,
+      "p50_ms": 0.1434,
+      "p95_ms": 0.3151,
+      "p99_ms": 0.3788,
+      "max_ms": 0.3788,
+      "workers": 1
+    },
+    "avg_latency_ms": 0.1322,
+    "cases_per_sec": 7561.95,
+    "p50_ms": 0.1434,
+    "p95_ms": 0.3151,
+    "exit_code": 0
+  },
+  "fault_tolerance": {
+    "status": "PASS",
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "results": [
+      {
+        "case_id": "EMPTY_INDICATOR",
+        "indicator": "None",
+        "matched": "'test'",
+        "expected_error": true,
+        "actual_error_code": "EMPTY_INDICATOR",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "EMPTY_MATCHED_STRING",
+        "indicator": "'test'",
+        "matched": "''",
+        "expected_error": false,
+        "actual_error_code": "DATA_MISSING",
+        "actual_result": "DATA_MISSING",
+        "status": "PASS"
+      },
+      {
+        "case_id": "EMPTY_INDICATOR_STRING",
+        "indicator": "''",
+        "matched": "'test'",
+        "expected_error": true,
+        "actual_error_code": "EMPTY_INDICATOR",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "DATA_MISSING",
+        "indicator": "'test'",
+        "matched": "'N/A'",
+        "expected_error": false,
+        "actual_error_code": "DATA_MISSING",
+        "actual_result": "DATA_MISSING",
+        "status": "PASS"
+      },
+      {
+        "case_id": "TOO_LONG_INDICATOR",
+        "indicator": "'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "matched": "'test'",
+        "expected_error": true,
+        "actual_error_code": "INDICATOR_TOO_LONG",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "TOO_LONG_MATCHED",
+        "indicator": "'test'",
+        "matched": "'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "expected_error": true,
+        "actual_error_code": "MATCHED_TOO_LONG",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "NORMAL_CASE",
+        "indicator": "'碳酸锂价格'",
+        "matched": "'碳酸锂:价格:日度'",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      },
+      {
+        "case_id": "NUMERIC_INPUT",
+        "indicator": "12345",
+        "matched": "67890",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      },
+      {
+        "case_id": "UNICODE_INPUT",
+        "indicator": "'碳酸锂\\xa0\\xa0价格'",
+        "matched": "'碳酸锂:价格:日度'",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      },
+      {
+        "case_id": "CONTROL_CHARS",
+        "indicator": "'test\\x00\\x01\\x02'",
+        "matched": "'test'",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      }
+    ],
+    "exit_code": 0
+  },
+  "alias_validation": {
+    "status": "PASS",
+    "total_aliases": 10,
+    "total_conflicts": 3,
+    "conflicts_by_severity": {
+      "ERROR": 1,
+      "WARN": 1,
+      "INFO": 1
+    },
+    "conflicts_by_type": {
+      "规范名不一致": 1,
+      "品种不一致": 1,
+      "歧义映射(多对一)": 1
+    },
+    "conflict_details": [
+      {
+        "type": "规范名不一致",
+        "severity": "ERROR",
+        "description": "Alias '碳酸锂价格' maps to 2 different canonicals: {'碳酸锂:价格:周度', '碳酸锂:价格:日度'}",
+        "suggestion": "Merge or disambiguate canonical mappings"
+      },
+      {
+        "type": "品种不一致",
+        "severity": "WARN",
+        "description": "Alias '氧化铝产量' has inconsistent variety tags: {'AL', 'AO'}",
+        "suggestion": "Standardize variety tags for this alias"
+      },
+      {
+        "type": "歧义映射(多对一)",
+        "severity": "INFO",
+        "description": "Canonical '碳酸锂:价格:日度' has 2 aliases: {'碳酸锂价格', '锂价'}",
+        "suggestion": "Review if all aliases are truly equivalent"
+      }
+    ],
+    "exit_code": 0
+  },
+  "joint_chain": {
+    "status": "PASS",
+    "total_cases": 15,
+    "passed": 12,
+    "failed": 3,
+    "pass_rate": 80.0,
+    "new_fp": 0,
+    "new_regression": 0,
+    "elapsed_ms": 5.5,
+    "blocking_reasons": [],
+    "details": [
+      {
+        "case_id": "JC-001",
+        "indicator_name": "碳酸锂工厂库存天数",
+        "matched_name": "碳酸锂工厂库存天数",
+        "risk_level": "SAFE",
+        "description": "Same-name pair: alias PASS (alias_exact), rule PASSED",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNIQUE",
+          "indicator_alias_canonicals": 1,
+          "matched_alias_state": "UNIQUE",
+          "matched_alias_canonicals": 1,
+          "alias_verdict": "PASS",
+          "alias_reason": "alias_exact",
+          "alias_dice": 1.0
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "PASSED",
+          "rule_triggered": [],
+          "rule_blocked_by": null,
+          "rule_severity": null,
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "PASS",
+        "actual_alias_verdict": "PASS",
+        "expected_rule_result": "PASSED",
+        "actual_rule_result": "PASSED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-002",
+        "indicator_name": "碳酸锂 三元523需求",
+        "matched_name": "SMM: 碳酸锂现金生产利润",
+        "risk_level": "P0",
+        "description": "Demand vs profit: alias BLOCK (blacklist), rule BLOCKED (BL-009a)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "NO_MATCH",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "blacklist_precheck",
+          "alias_dice": 0.2609
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-009a"
+          ],
+          "rule_blocked_by": "BL-009a",
+          "rule_severity": "P0",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-003",
+        "indicator_name": "LME：锌：库存（日）",
+        "matched_name": "LME：锡：库存（日）",
+        "risk_level": "SAFE",
+        "description": "Cross-variety zinc/tin: alias BLOCK (variety_anchor), rule PASSED (no rule covers Zn-Sn)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "variety_anchor_violation",
+          "alias_dice": 0.9
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "PASSED",
+          "rule_triggered": [],
+          "rule_blocked_by": null,
+          "rule_severity": null,
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "PASSED",
+        "actual_rule_result": "PASSED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-004",
+        "indicator_name": "锡厂库存天数（天）",
+        "matched_name": "锡厂库存天数（天）",
+        "risk_level": "SAFE",
+        "description": "Same inventory days: alias PASS, rule PASSED",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "PASS",
+          "alias_reason": "high_dice",
+          "alias_dice": 1.0
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "PASSED",
+          "rule_triggered": [],
+          "rule_blocked_by": null,
+          "rule_severity": null,
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "PASS",
+        "actual_alias_verdict": "PASS",
+        "expected_rule_result": "PASSED",
+        "actual_rule_result": "PASSED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-005",
+        "indicator_name": "电解铝出库量",
+        "matched_name": "SHFE：铜：主力合约：库存（日）",
+        "risk_level": "P1",
+        "description": "Aluminum vs copper: alias BLOCK, rule BLOCKED (BL-027)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "variety_anchor_violation",
+          "alias_dice": 0.0909
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-027"
+          ],
+          "rule_blocked_by": "BL-027",
+          "rule_severity": "P1",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-006",
+        "indicator_name": "碳酸锂需求预测",
+        "matched_name": "碳酸锂需求分析",
+        "risk_level": "SAFE",
+        "description": "Related demand terms: alias PASS, rule PASSED (safe)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "PASS",
+          "alias_reason": "mid_dice_same_variety",
+          "alias_dice": 0.7143
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "PASSED",
+          "rule_triggered": [],
+          "rule_blocked_by": null,
+          "rule_severity": null,
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "PASS",
+        "actual_alias_verdict": "PASS",
+        "expected_rule_result": "PASSED",
+        "actual_rule_result": "PASSED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-007",
+        "indicator_name": "钴矿库存",
+        "matched_name": "碳酸锂价格",
+        "risk_level": "P1",
+        "description": "Cobalt vs lithium: alias BLOCK, rule BLOCKED (BL-031)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "blacklist_precheck",
+          "alias_dice": 0.0
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-031"
+          ],
+          "rule_blocked_by": "BL-031",
+          "rule_severity": "P1",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-008",
+        "indicator_name": "碳酸锂价格",
+        "matched_name": "碳酸锂:价格:日度",
+        "risk_level": "SAFE",
+        "description": "Lithium price canonical: alias PASS, rule PASSED",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "PASS",
+          "alias_reason": "mid_dice_same_variety",
+          "alias_dice": 0.7143
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "PASSED",
+          "rule_triggered": [],
+          "rule_blocked_by": null,
+          "rule_severity": null,
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "PASS",
+        "actual_alias_verdict": "PASS",
+        "expected_rule_result": "PASSED",
+        "actual_rule_result": "PASSED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-009",
+        "indicator_name": "铁矿石库存",
+        "matched_name": "螺纹钢产量",
+        "risk_level": "P1",
+        "description": "Iron ore vs steel: alias BLOCK, rule BLOCKED (BL-034)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "below_threshold",
+          "alias_dice": 0.0
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-034"
+          ],
+          "rule_blocked_by": "BL-034",
+          "rule_severity": "P1",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-010",
+        "indicator_name": "氧化铝月度产量",
+        "matched_name": "电解铝出库量",
+        "risk_level": "P1",
+        "description": "Alumina vs aluminum: alias BLOCK, rule BLOCKED (BL-029)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "below_threshold",
+          "alias_dice": 0.3077
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-029"
+          ],
+          "rule_blocked_by": "BL-029",
+          "rule_severity": "P1",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-011",
+        "indicator_name": "原油WTI价格",
+        "matched_name": "LNG进口量",
+        "risk_level": "P1",
+        "description": "Oil vs gas: alias BLOCK, rule BLOCKED (BL-033)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "below_threshold",
+          "alias_dice": 0.0
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-033"
+          ],
+          "rule_blocked_by": "BL-033",
+          "rule_severity": "P1",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "JC-012",
+        "indicator_name": "锌锭库存",
+        "matched_name": "锌锭产量",
+        "risk_level": "SAFE",
+        "description": "Same variety zinc: alias PASS, rule PASSED (safe)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "below_threshold",
+          "alias_dice": 0.5
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "PASSED",
+          "rule_triggered": [],
+          "rule_blocked_by": null,
+          "rule_severity": null,
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "PASS",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "PASSED",
+        "actual_rule_result": "PASSED",
+        "verdict": "FAIL"
+      },
+      {
+        "case_id": "JC-013",
+        "indicator_name": "碳酸锂冶炼利润",
+        "matched_name": "碳酸锂工厂库存天数",
+        "risk_level": "P1",
+        "description": "Profit vs inventory: alias REVIEW (variety_neutral), rule PASSED (no BL-026 for Li)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "NO_MATCH",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNIQUE",
+          "matched_alias_canonicals": 1,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "below_threshold",
+          "alias_dice": 0.375
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "PASSED",
+          "rule_triggered": [],
+          "rule_blocked_by": null,
+          "rule_severity": null,
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "REVIEW",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "PASSED",
+        "actual_rule_result": "PASSED",
+        "verdict": "FAIL"
+      },
+      {
+        "case_id": "JC-014",
+        "indicator_name": "黄金库存",
+        "matched_name": "电解铜库存",
+        "risk_level": "P1",
+        "description": "Gold vs copper: alias BLOCK, rule BLOCKED (BL-036)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "UNREGISTERED",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "UNREGISTERED",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "REVIEW",
+          "alias_reason": "variety_neutral_target_review",
+          "alias_dice": 0.4444
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-036"
+          ],
+          "rule_blocked_by": "BL-036",
+          "rule_severity": "P1",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "REVIEW",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "FAIL"
+      },
+      {
+        "case_id": "JC-015",
+        "indicator_name": "碳酸锂 三元523需求",
+        "matched_name": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉",
+        "risk_level": "P0",
+        "description": "Full profit vs demand: alias BLOCK, rule BLOCKED (BL-009a)",
+        "alias_ok": true,
+        "alias_details": {
+          "indicator_alias_state": "NO_MATCH",
+          "indicator_alias_canonicals": 0,
+          "matched_alias_state": "NO_MATCH",
+          "matched_alias_canonicals": 0,
+          "alias_verdict": "BLOCK",
+          "alias_reason": "blacklist_precheck",
+          "alias_dice": 0.3125
+        },
+        "rule_ok": true,
+        "rule_details": {
+          "rule_result": "BLOCKED",
+          "rule_triggered": [
+            "BL-009a"
+          ],
+          "rule_blocked_by": "BL-009a",
+          "rule_severity": "P0",
+          "rule_error_code": "OK"
+        },
+        "expected_alias_verdict": "BLOCK",
+        "actual_alias_verdict": "BLOCK",
+        "expected_rule_result": "BLOCKED",
+        "actual_rule_result": "BLOCKED",
+        "verdict": "PASS"
+      }
+    ],
+    "exit_code": 0
+  },
+  "gate_checks": [
+    {
+      "check_id": "GATE-000",
+      "name": "别名引擎前置检查",
+      "threshold": "ALL CHECKS PASS",
+      "actual": "PASS",
+      "status": "PASS",
+      "details": "All 7 checks passed in 24887.1ms"
+    },
+    {
+      "check_id": "GATE-001",
+      "name": "单元测试通过率",
+      "threshold": "100%",
+      "actual": "PASS",
+      "status": "PASS",
+      "details": "P0+P1单元测试: PASS"
+    },
+    {
+      "check_id": "GATE-002",
+      "name": "P0拦截率",
+      "threshold": ">= 88.2%",
+      "actual": "100.0%",
+      "status": "PASS",
+      "details": "V85基线: 88.2%"
+    },
+    {
+      "check_id": "GATE-003",
+      "name": "误报数(FP)",
+      "threshold": "= 0",
+      "actual": "0",
+      "status": "PASS",
+      "details": "允许最大值: 0"
+    },
+    {
+      "check_id": "GATE-004",
+      "name": "回归数",
+      "threshold": "= 0",
+      "actual": "0",
+      "status": "PASS",
+      "details": "允许最大值: 0"
+    },
+    {
+      "check_id": "GATE-005",
+      "name": "边界测试通过率",
+      "threshold": ">= 100.0%",
+      "actual": "100.0% (0/0)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-006",
+      "name": "平均延迟",
+      "threshold": "<= 100.0ms",
+      "actual": "0.132ms",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-007",
+      "name": "批量吞吐量",
+      "threshold": ">= 1000 cases/sec",
+      "actual": "7562 cases/sec",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-008",
+      "name": "p95延迟",
+      "threshold": "<= 10.0ms",
+      "actual": "0.315ms",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-009",
+      "name": "容错测试通过率",
+      "threshold": ">= 100.0%",
+      "actual": "100.0%",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-010",
+      "name": "别名映射校验",
+      "threshold": "PASS",
+      "actual": "PASS",
+      "status": "PASS",
+      "details": "检测到 3 个冲突"
+    },
+    {
+      "check_id": "GATE-011",
+      "name": "联合链路集成测试",
+      "threshold": "通过率>=80%, FP=0, 回归=0",
+      "actual": "PASS",
+      "status": "PASS",
+      "details": "通过率: 80.0% (12/15), 新增FP: 0, 新增回归: 0"
+    }
+  ],
+  "blocking_reasons": [],
+  "warnings": [],
+  "duration_ms": 25214.152,
+  "artifacts": {}
+}

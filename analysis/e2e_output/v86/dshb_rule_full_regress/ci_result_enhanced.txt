@@ -1,0 +1,74 @@
+======================================================================
+Enhanced CI Pipeline Report
+Task: DSHB_V86_RULE_ENGINE_FULL_INTEGRATION_REGRESSION_AND_DOC_FINALIZE
+Version: v2.0
+Branch: feature/v85-chart-template
+Base rule: c7f5a40
+Base alias: 5e874a7
+Base portal: 03b3a73
+Timestamp: 2026-10-02T00:07:07.407756
+Duration: 25214ms
+======================================================================
+
+OVERALL STATUS: PASS
+
+[GATE CHECKS]
+  [PASS] GATE-000: 别名引擎前置检查
+          Threshold: ALL CHECKS PASS  Actual: PASS
+          All 7 checks passed in 24887.1ms
+  [PASS] GATE-001: 单元测试通过率
+          Threshold: 100%  Actual: PASS
+          P0+P1单元测试: PASS
+  [PASS] GATE-002: P0拦截率
+          Threshold: >= 88.2%  Actual: 100.0%
+          V85基线: 88.2%
+  [PASS] GATE-003: 误报数(FP)
+          Threshold: = 0  Actual: 0
+          允许最大值: 0
+  [PASS] GATE-004: 回归数
+          Threshold: = 0  Actual: 0
+          允许最大值: 0
+  [PASS] GATE-005: 边界测试通过率
+          Threshold: >= 100.0%  Actual: 100.0% (0/0)
+  [PASS] GATE-006: 平均延迟
+          Threshold: <= 100.0ms  Actual: 0.132ms
+  [PASS] GATE-007: 批量吞吐量
+          Threshold: >= 1000 cases/sec  Actual: 7562 cases/sec
+  [PASS] GATE-008: p95延迟
+          Threshold: <= 10.0ms  Actual: 0.315ms
+  [PASS] GATE-009: 容错测试通过率
+          Threshold: >= 100.0%  Actual: 100.0%
+  [PASS] GATE-010: 别名映射校验
+          Threshold: PASS  Actual: PASS
+          检测到 3 个冲突
+  [PASS] GATE-011: 联合链路集成测试
+          Threshold: 通过率>=80%, FP=0, 回归=0  Actual: PASS
+          通过率: 80.0% (12/15), 新增FP: 0, 新增回归: 0
+
+[TEST RESULTS]
+  Alias Pre-Check (GATE-000): PASS
+    [PASS] engine_load: V86AliasEngine loaded successfully
+    [PASS] version_info: {"engine": "V86AliasEngine", "mode": "f3+f4", "f1_enabled": true, "f2_enabled": true, "f3_enabled": true, "f4_enabled": true, "blacklist_rules": 31, "alias_entries": 4643, "init_time_ms": 24861.2}
+    [PASS] resolve_samples: 1/5 samples resolved (need >= 1)
+    [PASS] resolve_safe: All resolve_safe calls returned lists
+    [PASS] decide_verdicts: All decide() calls returned valid verdicts
+    [PASS] summary_stats: {"f1": {"total_calls": 5, "alias_hits": 3, "alias_misses": 2, "guard_hits": 2, "miss_rate_pct": 40.0}, "f2": {"total_calls": 5, "unregistered": 4, "unique": 1, "ambiguous": 0}, "engine": {"engine": "V86AliasEngine", "mode": "f3+f4", "f1_enabled": true, "f2_enabled": true, "f3_enabled": true, "f4_enabled": true, "blacklist_rules": 31, "alias_entries": 4643, "init_time_ms": 24861.2}}
+    [PASS] alias_entries_count: 4643 alias entries (need >= 1)
+  Unit Tests (GATE-001): PASS
+  Regression (GATE-002~005): PASS
+    P0 Interception: 100.0%
+    FP: 0, Regression: 0
+  Performance (GATE-006~008): PASS
+    Avg Latency: 0.132ms, p95: 0.315ms
+    Throughput: 7562 cases/sec
+  Fault Tolerance (GATE-009): PASS
+    Pass Rate: 100.0% (10/10)
+  Alias Validation (GATE-010): PASS
+    Conflicts: 3
+  Joint Chain Integration (GATE-011): PASS
+    Pass Rate: 80.0% (12/15)
+    New FP: 0, New Regression: 0
+
+======================================================================
+EXIT CODE: 0
+======================================================================
