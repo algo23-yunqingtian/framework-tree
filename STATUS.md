@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-02 HERMES — V86 门户缺陷修复 + 全链路 E2E 测试 + 口径优化 + 验收演示 (HERMES_V86_PORTAL_DEFECT_FIX_AND_FULL_E2E_INTEGRATION_TEST)
+- **SMK-01 修复**: `v85_artifact_api.py` repo_root 硬编码 `D:/DSH_WORK/framework-tree` → 新增 `_resolve_default_repo_root()` 三级解析（环境变量 `FRAMEWORK_TREE` → `Path(__file__).parents[4]` 推导）；`__init__` 签名 + argparse + `_smoke` 调用 3 处修复；无参 `--smoke` 在 Linux 直接 PASS
+- **SMK-04 修复**: 4 项制品 relpath 过期 → `ambiguous_indicator_list` 改 `alias_lib_full_audit/`，`template_manifest`/`list`/`summary` 改 `v85_final_integrate/`；31/31 制品 `exists=true` + `verify_match=true`
+- **v86_dual_task_portal.md**: DSHB 规则 + DSHE 别名双任务面板 + 联合工作流（别名→canonical_keys→规则检查→三联表）+ 离线模式进程内直调
+- **v86_full_e2e_report.md**: 4 大 E2E 场景实测 — 场景1 V85 基线 7/7 PASS / 场景2 V86 规则 48 用例 13 组 `V86RuleEngine` 加载 PASS / 场景3 V86 别名 `audit_kit` 依赖缺失 FAIL（DSHE 自测 17/17 PASS） / 场景4 联合 PARTIAL；6 项缺陷汇总
+- **portal_metric_caliber_ui.md**: 口径切换器（原型 4 规则 vs 完整 35 规则）+ 口径说明卡片 + 指标卡片口径标注 + 瀑布图口径标注
+- **v86_demo_runbook.md**: 5 场景验收演示脚本（15 分钟）+ 环境准备 + 降级说明 + 预期问答
+- **🟡 E2E-D01 发现**: `V86AliasEngine` 依赖 `audit_kit` 模块（DSHE 开发环境特有，HERMES Linux 缺失），非代码缺陷；需 DSHE 提供依赖或改零依赖
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/`（5 文档 + MD5 清单）
+- **T4 约束**: 零 zhiji 调用 / V85 基线只读仅修 bug 未改计算结果 / 仅新增+bugfix / 分支锁定未合并 main
+
 ### 2026-10-02 HERMES — V86 门户集成前置 + V85 冻结演示环境锁定 (HERMES_V86_PORTAL_INTEGRATE_AND_V85_FROZEN_DEMO_LOCK)
 - **commit**: `03b3a73` (feature/v85-chart-template, 已 push)
 - **v85_frozen_portal_page.md**: V7-frozen 门户固化 — 数据层全部改走 E `v85_artifact_api.py` 只读 API（31 制品，`PortalReadOnlyClient` 单例适配层），门户不再持有任何本地业务数据副本；🔒 V85.0 FROZEN 版本横幅（commit f313570 / tag v85-final-persist）；新增 🔐 快照 MD5 校验面板（`verify_artifact(verify_file=1)` 实时重算，27 项实测 match=true）；演示锁定移除 10 项编辑入口

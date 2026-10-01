@@ -170,7 +170,7 @@ ARTIFACTS: Dict[str, Dict[str, Any]] = {
         "description": "V86 别名引擎回归测试集（893 用例）",
     },
     "ambiguous_indicator_list": {
-        "relpath": "hermes_portal_gate_final/ambiguous_indicator_list.csv",
+        "relpath": "alias_lib_full_audit/ambiguous_indicator_list.csv",
         "type": "csv",
         "content_type": "text/csv; charset=utf-8",
         "description": "歧义指标清单",
@@ -183,19 +183,19 @@ ARTIFACTS: Dict[str, Dict[str, Any]] = {
     },
     # --- 模板清单 ---
     "template_manifest": {
-        "relpath": "hermes_portal_gate_final/ths_render_task_manifest.json",
+        "relpath": "v85_final_integrate/ths_render_task_manifest.json",
         "type": "json",
         "content_type": "application/json; charset=utf-8",
         "description": "THS 渲染任务清单（155 模板）",
     },
     "template_task_list": {
-        "relpath": "hermes_portal_gate_final/ths_render_task_list.json",
+        "relpath": "v85_final_integrate/ths_render_task_list.json",
         "type": "json",
         "content_type": "application/json; charset=utf-8",
         "description": "THS 渲染任务列表",
     },
     "template_task_summary": {
-        "relpath": "hermes_portal_gate_final/ths_render_task_summary.csv",
+        "relpath": "v85_final_integrate/ths_render_task_summary.csv",
         "type": "csv",
         "content_type": "text/csv; charset=utf-8",
         "description": "THS 渲染任务汇总",
@@ -332,6 +332,24 @@ MAX_PAGE_SIZE = 1000
 # 2. 错误类型
 # --------------------------------------------------------------------------- #
 
+def _resolve_default_repo_root() -> str:
+    """SMK-01 修复：仓库根解析，消除硬编码路径。
+
+    优先级：
+      1. 环境变量 FRAMEWORK_TREE（部署注入）
+      2. 本文件所在仓库根（Path(__file__).parents[4]，
+         file: <repo>/analysis/e2e_output/v85/e_api_design/v85_artifact_api.py）
+    原实现硬编码 Windows 路径 D:/DSH_WORK/framework-tree，Linux 部署必崩。
+    """
+    env = os.environ.get("FRAMEWORK_TREE")
+    if env:
+        return env
+    return str(Path(__file__).resolve().parents[4])
+
+
+HARDCODED_REPO_ROOT_DEPRECATED: str = "D:/DSH_WORK/framework-tree"
+
+
 class ApiError(Exception):
     status = 500
 
@@ -446,11 +464,13 @@ class ArtifactAPI:
 
     def __init__(
         self,
-        repo_root: str = "D:/DSH_WORK/framework-tree",
+        repo_root: Optional[str] = None,
         token: Optional[str] = None,
         rate_limiter: Optional[bool] = True,
     ) -> None:
-        self.repo_root = Path(repo_root)
+        # SMK-01 修复：默认 repo_root 由 _resolve_default_repo_root() 决定
+        actual_root = repo_root or _resolve_default_repo_root()
+        self.repo_root = Path(actual_root)
         self.output_root = self.repo_root / "analysis" / "e2e_output" / "v85"
         self.token = token
         self.rate_limiter = rate_limiter
@@ -1152,13 +1172,15 @@ def _smoke(repo_root: str) -> int:
 def _main() -> int:
     parser = argparse.ArgumentParser(description="V85 Read-Only Artifact API")
     parser.add_argument("--smoke", action="store_true", help="Run smoke test")
-    parser.add_argument("--repo-root", default="D:/DSH_WORK/framework-tree")
+    parser.add_argument("--repo-root", default=None)
     parser.add_argument("--list-artifacts", action="store_true", help="List registered artifacts")
     parser.add_argument("--meta", help="Print artifact meta for given kind")
     args = parser.parse_args()
 
     if args.smoke:
-        return _smoke(args.repo_root)
+        # SMK-01 修复：未显式传参时走自动解析
+        rr = args.repo_root or _resolve_default_repo_root()
+        return _smoke(rr)
 
     api = ArtifactAPI(repo_root=args.repo_root, token="v85-portal-r-0001")
     if args.list_artifacts:
