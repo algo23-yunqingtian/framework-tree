@@ -1,0 +1,1903 @@
+{
+  "version": "v85-bl-final",
+  "description": "V85最终版语义互斥黑名单 - 合并25条原始规则 + 5条confirmed_new + BL-026(nested_review) + BL-012方案B前置过滤",
+  "generated_at": "2026-10-01 12:00:18",
+  "task": "DSH-B_V85_FULL_CHAIN_INTEGRATE_VALIDATE_AND_FINAL_GATE_PREP",
+  "total_rules": 31,
+  "rules": [
+    {
+      "rule_id": "BL-001",
+      "name": "产量与消费量互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "产量（production/output）与消费量（consumption）是不同经济概念，不可互相匹配",
+      "left_patterns": [
+        "产量",
+        "产出",
+        "生产量",
+        "产出量"
+      ],
+      "right_patterns": [
+        "消费量",
+        "消费",
+        "消费额"
+      ],
+      "rationale": "产量代表供给侧产出，消费量代表需求侧消耗，两者经济含义完全不同"
+    },
+    {
+      "rule_id": "BL-002",
+      "name": "产量与销量互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "产量（production）与销量（sales volume）是不同统计口径，不可互相匹配",
+      "left_patterns": [
+        "产量",
+        "产出",
+        "生产量"
+      ],
+      "right_patterns": [
+        "销量",
+        "销售量",
+        "销售金额"
+      ],
+      "rationale": "产量指生产端产出，销量指销售端成交，两者统计维度不同"
+    },
+    {
+      "rule_id": "BL-003",
+      "name": "销量与产量互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "销量（sales volume）与产量（production）是不同统计口径，不可互相匹配",
+      "left_patterns": [
+        "销量",
+        "销售量"
+      ],
+      "right_patterns": [
+        "产量",
+        "产出",
+        "生产量"
+      ],
+      "rationale": "同BL-002，反向检查"
+    },
+    {
+      "rule_id": "BL-004",
+      "name": "消费量与销量互斥",
+      "category": "供需口径",
+      "severity": "P1",
+      "description": "消费量与销量虽然都属需求端，但统计口径不同（消费量含终端使用，销量含批发流转）",
+      "left_patterns": [
+        "消费量",
+        "消费"
+      ],
+      "right_patterns": [
+        "销量",
+        "销售量"
+      ],
+      "rationale": "消费量与销量的统计范围和口径存在差异"
+    },
+    {
+      "rule_id": "BL-005",
+      "name": "场内库存与非仓单库存互斥",
+      "category": "库存口径",
+      "severity": "P0",
+      "description": "场内库存（注册仓单/期货库存）与非仓单库存（现货库存）是互斥概念",
+      "left_patterns": [
+        "场内库存",
+        "注册仓单",
+        "期货库存",
+        "注册仓单库存"
+      ],
+      "right_patterns": [
+        "非仓单",
+        "非仓单库存",
+        "社会库存",
+        "厂内库存",
+        "社会仓库库存"
+      ],
+      "rationale": "场内库存指交易所注册的有效仓单量，非仓单库存指未注册现货库存，两者不可混用"
+    },
+    {
+      "rule_id": "BL-006",
+      "name": "场内库存与社会库存互斥",
+      "category": "库存口径",
+      "severity": "P0",
+      "description": "场内库存与社会库存是互斥概念",
+      "left_patterns": [
+        "场内库存",
+        "注册仓单",
+        "期货库存"
+      ],
+      "right_patterns": [
+        "社会库存",
+        "社会库存量",
+        "社会总库存"
+      ],
+      "rationale": "场内库存是交易所仓单库存，社会库存是现货市场库存"
+    },
+    {
+      "rule_id": "BL-007",
+      "name": "非仓单库存与社会库存互斥",
+      "category": "库存口径",
+      "severity": "P1",
+      "description": "非仓单库存与社会库存虽然都属于非注册库存，但统计范围不同",
+      "left_patterns": [
+        "非仓单",
+        "非仓单库存"
+      ],
+      "right_patterns": [
+        "社会库存",
+        "社会库存量"
+      ],
+      "rationale": "非仓单库存指非注册现货，社会库存可能包含多种库存类型"
+    },
+    {
+      "rule_id": "BL-008",
+      "name": "出口与国内销量互斥",
+      "category": "贸易口径",
+      "severity": "P0",
+      "description": "出口量（exports）与国内销量（domestic sales）是互斥概念",
+      "left_patterns": [
+        "出口",
+        "出口量",
+        "出口额"
+      ],
+      "right_patterns": [
+        "国内销量",
+        "内销",
+        "国内销售"
+      ],
+      "rationale": "出口指跨境贸易，国内销量指境内销售，两者流量方向不同"
+    },
+    {
+      "rule_id": "BL-009",
+      "name": "利润与需求互斥",
+      "category": "经济口径",
+      "severity": "P0",
+      "description": "利润（profit）与需求（demand）是完全不同的经济指标",
+      "left_patterns": [
+        "利润",
+        "盈利",
+        "盈亏",
+        "毛利"
+      ],
+      "right_patterns": [
+        "需求",
+        "需求量",
+        "需求侧"
+      ],
+      "rationale": "利润反映产业盈利能力，需求反映消费侧需求强度"
+    },
+    {
+      "rule_id": "BL-010",
+      "name": "库存与产能开工互斥",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "库存（inventory）与产能/开工率（capacity/operation rate）是不同的统计维度",
+      "left_patterns": [
+        "库存",
+        "库存量",
+        "库存天数"
+      ],
+      "right_patterns": [
+        "产能",
+        "开工率",
+        "运行产能",
+        "建成产能",
+        "产能利用率"
+      ],
+      "rationale": "库存反映存量水平，产能开工反映生产端运行状态"
+    },
+    {
+      "rule_id": "BL-011",
+      "name": "价格与库存互斥",
+      "category": "基本面口径",
+      "severity": "P1",
+      "description": "价格指标与库存指标是不同维度的基本面数据",
+      "left_patterns": [
+        "价格",
+        "均价",
+        "市场价",
+        "结算价",
+        "现货价格"
+      ],
+      "right_patterns": [
+        "库存",
+        "库存量",
+        "库存天数"
+      ],
+      "rationale": "价格反映市场估值，库存反映供需蓄水池"
+    },
+    {
+      "rule_id": "BL-012",
+      "name": "库存天数与库存量互斥",
+      "category": "库存口径",
+      "severity": "P1",
+      "description": "库存天数（days of inventory）与库存量（inventory volume）是不同度量",
+      "left_patterns": [
+        "库存天数"
+      ],
+      "right_patterns": [
+        "库存",
+        "库存量",
+        "库存总计"
+      ],
+      "rationale": "库存天数是衍生指标，库存量是绝对值",
+      "pre_filter": {
+        "type": "variety_aware_skip",
+        "condition": "both_contain_库存天数_and_same_variety",
+        "description": "当模板指标和匹配指标都包含\"库存天数\"且属于同一品种时，跳过BL-012检查（方案B：品种感知前置过滤）",
+        "variety_keywords": {
+          "LI": [
+            "碳酸锂",
+            "锂",
+            "盐湖提锂"
+          ],
+          "NI": [
+            "镍",
+            "电解镍",
+            "精炼镍",
+            "镍精矿"
+          ],
+          "SI": [
+            "硅",
+            "工业硅",
+            "金属硅",
+            "多晶硅"
+          ],
+          "SN": [
+            "锡",
+            "锡锭",
+            "锡矿",
+            "焊锡"
+          ],
+          "ZN": [
+            "锌",
+            "锌锭",
+            "锌矿"
+          ],
+          "LC": [
+            "碳酸锂",
+            "磷酸铁锂"
+          ]
+        }
+      },
+      "fix_note": "v85-final: 方案B品种感知前置过滤，消除2个FP（RISK-038/039），保留9个TP（RISK-040~050），零回归",
+      "fix_version": "v85-bl012-planB"
+    },
+    {
+      "rule_id": "BL-013",
+      "name": "加工费与完全成本互斥",
+      "category": "成本口径",
+      "severity": "P1",
+      "description": "加工费（processing fee）与完全成本（total cost）是不同成本口径",
+      "left_patterns": [
+        "加工费"
+      ],
+      "right_patterns": [
+        "完全成本",
+        "生产成本",
+        "总成本",
+        "单位成本"
+      ],
+      "rationale": "加工费是加工环节的附加值，完全成本包含原料+加工+期间费用"
+    },
+    {
+      "rule_id": "BL-014",
+      "name": "供需平衡与价格互斥",
+      "category": "基本面口径",
+      "severity": "P2",
+      "description": "供需平衡表与价格指标是不同维度的数据",
+      "left_patterns": [
+        "供需平衡",
+        "平衡表"
+      ],
+      "right_patterns": [
+        "价格",
+        "均价",
+        "市场价"
+      ],
+      "rationale": "供需平衡是预测分析工具，价格是市场交易结果"
+    },
+    {
+      "rule_id": "BL-015",
+      "name": "国内销量与出口互斥(反向)",
+      "category": "贸易口径",
+      "severity": "P0",
+      "description": "国内销量与出口量是互斥概念（BL-008的反向）",
+      "left_patterns": [
+        "国内销量",
+        "内销",
+        "国内销售"
+      ],
+      "right_patterns": [
+        "出口",
+        "出口量"
+      ],
+      "rationale": "同BL-008，反向检查"
+    },
+    {
+      "rule_id": "BL-016",
+      "name": "利润与产量互斥",
+      "category": "经济口径",
+      "severity": "P1",
+      "description": "利润指标与产量指标是不同维度的经济指标",
+      "left_patterns": [
+        "利润",
+        "盈利",
+        "盈亏"
+      ],
+      "right_patterns": [
+        "产量",
+        "产出"
+      ],
+      "rationale": "利润反映盈利能力，产量反映生产规模"
+    },
+    {
+      "rule_id": "BL-017",
+      "name": "价格与利润互斥",
+      "category": "基本面口径",
+      "severity": "P2",
+      "description": "价格与利润是不同的经济指标",
+      "left_patterns": [
+        "价格",
+        "均价",
+        "市场价"
+      ],
+      "right_patterns": [
+        "利润",
+        "盈利"
+      ],
+      "rationale": "价格是交易价格，利润是价差计算结果"
+    },
+    {
+      "rule_id": "BL-018",
+      "name": "跨品种匹配禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "不同品种之间的指标不可互相匹配（如锡的指标匹配到镍的数据）",
+      "left_patterns": [
+        "锡",
+        "锡锭",
+        "锡矿"
+      ],
+      "right_patterns": [
+        "镍",
+        "镍板",
+        "镍豆",
+        "镍铁",
+        "镍矿"
+      ],
+      "rationale": "不同金属品种的数据不可混用"
+    },
+    {
+      "rule_id": "BL-019",
+      "name": "硅与铜跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅/金属硅的指标不可匹配到电解铜",
+      "left_patterns": [
+        "工业硅",
+        "金属硅",
+        "硅"
+      ],
+      "right_patterns": [
+        "铜",
+        "电解铜",
+        "铜锭",
+        "铜矿"
+      ],
+      "rationale": "完全不同品种，数据不可混用"
+    },
+    {
+      "rule_id": "BL-020",
+      "name": "硅与苯乙烯跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅的指标不可匹配到苯乙烯",
+      "left_patterns": [
+        "工业硅",
+        "金属硅"
+      ],
+      "right_patterns": [
+        "苯乙烯",
+        "苯乙烯库存"
+      ],
+      "rationale": "完全不同品种"
+    },
+    {
+      "rule_id": "BL-021",
+      "name": "硅与黄金跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅的供需平衡不可匹配到黄金的供需平衡（修复版：仅匹配'黄金'，不再匹配'金属硅'/'铝合金'中的'金'）",
+      "left_patterns": [
+        "工业硅",
+        "金属硅"
+      ],
+      "right_patterns": [
+        "黄金"
+      ],
+      "rationale": "完全不同品种。修复版：原'金'关键词会误匹配'金属硅'/'铝合金'，改为仅匹配'黄金'"
+    },
+    {
+      "rule_id": "BL-022",
+      "name": "镍与铜跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "镍的指标不可匹配到铜的数据",
+      "left_patterns": [
+        "镍",
+        "电解镍",
+        "精炼镍"
+      ],
+      "right_patterns": [
+        "铜",
+        "电解铜"
+      ],
+      "rationale": "完全不同品种"
+    },
+    {
+      "rule_id": "BL-023",
+      "name": "升贴水与价格互斥",
+      "category": "基本面口径",
+      "severity": "P2",
+      "description": "升贴水（premium/discount）与绝对价格是不同指标",
+      "left_patterns": [
+        "升贴水",
+        "溢价",
+        "贴水"
+      ],
+      "right_patterns": [
+        "价格",
+        "均价",
+        "市场价"
+      ],
+      "rationale": "升贴水是相对价格，价格是绝对价格"
+    },
+    {
+      "rule_id": "BL-024",
+      "name": "出库量与库存互斥",
+      "category": "库存口径",
+      "severity": "P1",
+      "description": "出库量是流量指标，库存是存量指标",
+      "left_patterns": [
+        "出库",
+        "出库量"
+      ],
+      "right_patterns": [
+        "库存",
+        "库存量"
+      ],
+      "rationale": "流量与存量不可混用"
+    },
+    {
+      "rule_id": "BL-025",
+      "name": "消费量与产量互斥(反向)",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "消费量与产量互斥（BL-001的反向）",
+      "left_patterns": [
+        "消费量",
+        "消费"
+      ],
+      "right_patterns": [
+        "产量",
+        "产出",
+        "生产量"
+      ],
+      "rationale": "同BL-001，反向检查"
+    },
+    {
+      "rule_id": "BL-018a",
+      "name": "锡与镍跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "锡指标被错误匹配到镍系数据（如LME锡库存→LME镍注册仓单）",
+      "left_patterns": [
+        "锡",
+        "锡锭",
+        "锡矿",
+        "锡精矿",
+        "LME锡",
+        "焊锡",
+        "表观消费量"
+      ],
+      "right_patterns": [
+        "镍",
+        "镍板",
+        "镍豆",
+        "镍铁",
+        "镍矿",
+        "COMEX镍",
+        "LME镍",
+        "精炼镍"
+      ],
+      "rationale": "BL-018 通用跨品种规则细分：锡系指标匹配到镍系数据，涉及LME库存、印尼产量等",
+      "parent_rule": "BL-018",
+      "case_source": [
+        "RISK-024",
+        "RISK-025",
+        "RISK-026",
+        "RISK-027",
+        "RISK-028",
+        "RISK-029",
+        "RISK-030"
+      ],
+      "replay_result": "回放验证：41条中BL-018触发的7条P0全部正确拦截，无新增回归",
+      "fix_version": "v85-bl-final",
+      "fix_note": "新增规则，覆盖7条案例（P0-紧急）"
+    },
+    {
+      "rule_id": "BL-018b",
+      "name": "锡与钢铁跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "锡表观消费量→镀锌板卷产量，跨品种且口径冲突",
+      "left_patterns": [
+        "锡",
+        "锡锭",
+        "锡矿"
+      ],
+      "right_patterns": [
+        "钢铁",
+        "镀锌板卷",
+        "钢铁企业",
+        "冷轧",
+        "热轧"
+      ],
+      "rationale": "锡表观消费量被匹配到镀锌板卷产量（RISK-031/032）",
+      "parent_rule": "BL-018",
+      "case_source": [
+        "RISK-031",
+        "RISK-032"
+      ],
+      "replay_result": "回放验证：RISK-031/032 正确拦截",
+      "fix_version": "v85-bl-final",
+      "fix_note": "新增规则，覆盖2条案例（P0-紧急）"
+    },
+    {
+      "rule_id": "BL-019a",
+      "name": "硅加工费与铜加工费跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "国内硅矿月加工费TC→铜管加工费，跨金属品种TC术语混淆",
+      "left_patterns": [
+        "硅矿",
+        "硅加工费",
+        "工业硅TC",
+        "金属硅TC"
+      ],
+      "right_patterns": [
+        "铜加工费",
+        "铜管加工费",
+        "铜TC",
+        "铜精矿TC"
+      ],
+      "rationale": "硅矿加工费TC被匹配到铜管加工费（RISK-022/023），加工费术语跨金属通用",
+      "parent_rule": "BL-019",
+      "case_source": [
+        "RISK-022",
+        "RISK-023"
+      ],
+      "replay_result": "回放验证：RISK-022/023 正确拦截",
+      "fix_version": "v85-bl-final",
+      "fix_note": "新增规则，覆盖2条案例（P0-紧急）"
+    },
+    {
+      "rule_id": "BL-016a",
+      "name": "利润与产量互斥（含碳酸锂子品类）",
+      "category": "经济口径",
+      "severity": "P1",
+      "description": "碳酸锂系利润指标→碳酸锂系产量指标，利润vs产量混淆",
+      "left_patterns": [
+        "盐湖提锂利润",
+        "碳酸锂利润",
+        "电池级碳酸锂利润",
+        "工业级碳酸锂利润",
+        "冶炼利润"
+      ],
+      "right_patterns": [
+        "盐湖提锂产量",
+        "碳酸锂产量",
+        "电池级碳酸锂产量",
+        "工业级碳酸锂产量"
+      ],
+      "rationale": "碳酸锂利润指标与产量指标共享长前缀但核心指标不同，需要子品类级映射",
+      "parent_rule": "BL-016",
+      "case_source": [
+        "RISK-034",
+        "RISK-035",
+        "RISK-036",
+        "RISK-037"
+      ],
+      "replay_result": "回放验证：4条P1利润产量互斥正确拦截",
+      "fix_version": "v85-bl-final",
+      "fix_note": "新增规则，覆盖4条案例（P1-重要）"
+    },
+    {
+      "rule_id": "BL-025a",
+      "name": "消费量与产量互斥（含锡锌子品类）",
+      "category": "供需口径",
+      "severity": "P0",
+      "description": "消费量→产量，跨品种且口径冲突",
+      "left_patterns": [
+        "锡表观消费量",
+        "焊锡表观消费量",
+        "锌锭消费量",
+        "国内锌锭消费量"
+      ],
+      "right_patterns": [
+        "镀锌板卷产量",
+        "钢铁企业产量",
+        "国内锡锭产量",
+        "锌锭产量"
+      ],
+      "rationale": "锡/锌消费量指标被匹配到钢铁/锌产量，跨品种且口径相反",
+      "parent_rule": "BL-025",
+      "case_source": [
+        "RISK-031",
+        "RISK-032",
+        "RISK-033"
+      ],
+      "replay_result": "回放验证：3条P0消费量产量互斥正确拦截",
+      "fix_version": "v85-bl-final",
+      "fix_note": "新增规则，覆盖3条案例（P0-紧急）"
+    },
+    {
+      "rule_id": "BL-026",
+      "name": "库存天数跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "库存天数指标跨品种匹配，涉及品种: NI, SI, SN, ZN",
+      "left_patterns": [
+        "库存天数"
+      ],
+      "right_patterns": [
+        "库存天数"
+      ],
+      "rationale": "库存天数指标跨品种匹配（NI/SI/SN/ZN→LI），'库存天数'作为通用术语在多种金属间高度重叠",
+      "parent_rule": "BL-012",
+      "case_source": [
+        "RISK-040",
+        "RISK-041",
+        "RISK-042",
+        "RISK-043",
+        "RISK-045",
+        "RISK-046",
+        "RISK-047",
+        "RISK-048",
+        "RISK-050"
+      ],
+      "replay_result": "回放验证：9条P1库存天数跨品种正确拦截",
+      "fix_version": "v85-bl-final",
+      "fix_note": "新增规则，覆盖库存天数跨品种匹配。标记needs_manual_review，需人工确认后启用",
+      "status": "needs_manual_review",
+      "additional_filter": "variety_mismatch"
+    }
+  ],
+  "dshe_auxiliary_hints": {
+    "description": "DSHE high_risk_confusion_pairs.csv 作为黑名单辅助触发提示（算法层参考，非规则层）",
+    "total_pairs": 409,
+    "severity_distribution": {
+      "P0": 102,
+      "P1": 307
+    },
+    "pairs": [
+      {
+        "left": "LME：锌：其他报告头寸多头持仓量：投资基金（周）",
+        "right": "LME：锡：其他报告头寸多头持仓量：投资基金（周）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9583,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.958",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：锌：其他报告头寸多头持仓量：投资基金（周）",
+        "right": "LME：镍：其他报告头寸多头持仓量：投资基金（周）",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9583,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.958",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：锡：其他报告头寸多头持仓量：投资基金（周）",
+        "right": "LME：镍：其他报告头寸多头持仓量：投资基金（周）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9583,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.958",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 进口盈亏: 锡: 现货: LME价格: 日度",
+        "right": "SMM: 进口盈亏: 镍: 现货: LME价格: 日度",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锡：主力合约：单边交易：成交量（日）",
+        "right": "SHFE：镍：主力合约：单边交易：成交量（日）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锡：主力合约：单边交易：持仓量（日）",
+        "right": "SHFE：镍：主力合约：单边交易：持仓量（日）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铅期现价差: 当月合约: 开盘价: 日度",
+        "right": "SMM: 沪锌期现价差: 当月合约: 开盘价: 日度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铅期现价差: 当月合约: 开盘价: 日度",
+        "right": "SMM: 沪铝期现价差: 当月合约: 开盘价: 日度",
+        "variety_left": "PB",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 进口盈亏: 铅: 现货: LME价格: 日度",
+        "right": "SMM: 进口盈亏: 锡: 现货: LME价格: 日度",
+        "variety_left": "PB",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 进口盈亏: 铅: 现货: LME价格: 日度",
+        "right": "SMM: 进口盈亏: 镍: 现货: LME价格: 日度",
+        "variety_left": "PB",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铅：CASH-3M合约：结算价差（日）",
+        "right": "LME：铝：CASH-3M合约：结算价差（日）",
+        "variety_left": "PB",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铝期现价差: 当月合约: 开盘价: 日度",
+        "right": "SMM: 沪锌期现价差: 当月合约: 开盘价: 日度",
+        "variety_left": "AL",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铝：主力合约：单边交易：成交量（日）",
+        "right": "SHFE：锡：主力合约：单边交易：成交量（日）",
+        "variety_left": "AL",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铝：主力合约：单边交易：成交量（日）",
+        "right": "SHFE：镍：主力合约：单边交易：成交量（日）",
+        "variety_left": "AL",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铝：主力合约：单边交易：持仓量（日）",
+        "right": "SHFE：锡：主力合约：单边交易：持仓量（日）",
+        "variety_left": "AL",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铝：主力合约：单边交易：持仓量（日）",
+        "right": "SHFE：镍：主力合约：单边交易：持仓量（日）",
+        "variety_left": "AL",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9545,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.955",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE: 铅: 库存周报: 本周库存期货: 周度",
+        "right": "SHFE: 锌: 库存周报: 本周库存期货: 周度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9524,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.952",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锌：单边交易：持仓量（日）",
+        "right": "SHFE：锡：单边交易：持仓量（日）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锌：单边交易：持仓量（日）",
+        "right": "SHFE：镍：单边交易：持仓量（日）",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE: 锌: 仓单日报: 期货: 日度",
+        "right": "SHFE: 镍: 仓单日报: 期货: 日度",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锡：单边交易：持仓量（日）",
+        "right": "SHFE：镍：单边交易：持仓量（日）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铅：单边交易：持仓量（日）",
+        "right": "SHFE：锌：单边交易：持仓量（日）",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铅：单边交易：持仓量（日）",
+        "right": "SHFE：锡：单边交易：持仓量（日）",
+        "variety_left": "PB",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铅：单边交易：持仓量（日）",
+        "right": "SHFE：镍：单边交易：持仓量（日）",
+        "variety_left": "PB",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铜：3个月合约：结算价（日）",
+        "right": "LME：铝：3个月合约：结算价（日）",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铝：3个月合约：成交量（日）",
+        "right": "LME：镍：3个月合约：成交量（日）",
+        "variety_left": "AL",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9412,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.941",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：锡：原产国库存：埃及（月）",
+        "right": "LME：镍：原产国库存：埃及（月）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9375,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.938",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 铅合金出口量: 月度",
+        "right": "中国海关: 锌合金出口量: 月度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9286,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.929",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "COMEX：铜：期货库存（日）",
+        "right": "COMEX：锌：期货库存（日）",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9286,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.929",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "COMEX：铜：期货库存（日）",
+        "right": "COMEX：铝：期货库存（日）",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.9286,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.929",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "COMEX：铝：期货库存（日）",
+        "right": "COMEX：锌：期货库存（日）",
+        "variety_left": "AL",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9286,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.929",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜精矿：港口库存：中国（周）",
+        "right": "锌精矿：港口库存：中国（周）",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9231,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.923",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜精矿：产量：澳大利亚（季）",
+        "right": "锌精矿：产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9231,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.923",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜：矿山产量：澳大利亚（季）",
+        "right": "锌：矿山产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9231,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.923",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：锌：注销仓单（日）",
+        "right": "LME：锡：注销仓单（日）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：锌：注销仓单（日）",
+        "right": "LME：镍：注销仓单（日）",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：锡：注销仓单（日）",
+        "right": "LME：镍：注销仓单（日）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铜：注册仓单（日）",
+        "right": "LME：锡：注册仓单（日）",
+        "variety_left": "CU",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铜：注册仓单（日）",
+        "right": "LME：铝：注册仓单（日）",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铜：注销仓单（日）",
+        "right": "LME：锌：注销仓单（日）",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铜：注销仓单（日）",
+        "right": "LME：锡：注销仓单（日）",
+        "variety_left": "CU",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铜：注销仓单（日）",
+        "right": "LME：镍：注销仓单（日）",
+        "variety_left": "CU",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铜：注销仓单（日）",
+        "right": "LME：铝：注销仓单（日）",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铝：注销仓单（日）",
+        "right": "LME：锌：注销仓单（日）",
+        "variety_left": "AL",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铝：注销仓单（日）",
+        "right": "LME：锡：注销仓单（日）",
+        "variety_left": "AL",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铝：注销仓单（日）",
+        "right": "LME：镍：注销仓单（日）",
+        "variety_left": "AL",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铝：注销占比（日）",
+        "right": "LME：锡：注销占比（日）",
+        "variety_left": "AL",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：铝：注册仓单（日）",
+        "right": "LME：锡：注册仓单（日）",
+        "variety_left": "AL",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9167,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.917",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "锌精矿：产量：中国（月）",
+        "right": "锡精矿：产量：中国（月）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锌：基差（日）",
+        "right": "SHFE：锡：基差（日）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锌：基差（日）",
+        "right": "SHFE：镍：基差（日）",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：锡：基差（日）",
+        "right": "SHFE：镍：基差（日）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铅期现价差: 当月合约: 开盘价: 日度",
+        "right": "SMM: 沪铜期现价差-当月合约: 开盘价: 日度",
+        "variety_left": "PB",
+        "variety_right": "CU",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铜期现价差-当月合约: 开盘价: 日度",
+        "right": "SMM: 沪锌期现价差: 当月合约: 开盘价: 日度",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铜期现价差-当月合约: 开盘价: 日度",
+        "right": "SMM: 沪铝期现价差: 当月合约: 开盘价: 日度",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铝：基差（日）",
+        "right": "SHFE：锌：基差（日）",
+        "variety_left": "AL",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铝：基差（日）",
+        "right": "SHFE：锡：基差（日）",
+        "variety_left": "AL",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铝：基差（日）",
+        "right": "SHFE：镍：基差（日）",
+        "variety_left": "AL",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9091,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.909",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "USGS：锌矿：含锌：产量：澳大利亚（年）",
+        "right": "USGS：镍矿：含镍：产量：澳大利亚（年）",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.900",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "USGS：锂矿：含锂：产量：澳大利亚（年）",
+        "right": "USGS：锌矿：含锌：产量：澳大利亚（年）",
+        "variety_left": "LI",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.9,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.900",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "USGS：锂矿：含锂：产量：澳大利亚（年）",
+        "right": "USGS：镍矿：含镍：产量：澳大利亚（年）",
+        "variety_left": "LI",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.9,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.900",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：电解铜：07合约：空单持仓合计：前20期货公司（日）",
+        "right": "SHFE：铝：08合约：空单持仓合计：前20期货公司（日）",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.8966,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.897",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE: 锌: 仓单日报: 期货增减: 日度",
+        "right": "SHFE: 镍: 仓单日报: 期货: 日度",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.8889,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.889",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "USGS：锡矿：含锡：产量：印尼（年）",
+        "right": "USGS：镍矿：含镍：产量：印尼（年）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.8889,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.889",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 铅板出口量: 月度",
+        "right": "中国海关: 镀锌板出口量: 月度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8889,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.889",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 铅板出口量: 月度",
+        "right": "中国海关: 铜板带出口量: 月度",
+        "variety_left": "PB",
+        "variety_right": "CU",
+        "cross_variety": "YES",
+        "dice": 0.8889,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.889",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE: 铅: 一月合约: 持仓量: 日度",
+        "right": "SHFE: 锌: 六月合约: 持仓量: 日度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8889,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.889",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE: 铅: 六月合约: 成交量: 日度",
+        "right": "SHFE: 锌: 一月合约: 成交量: 日度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8889,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.889",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 铅锭五地社会库存: 上海: 周度",
+        "right": "SMM: 锡锭社会库存: 上海: 周度",
+        "variety_left": "PB",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.8824,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.882",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "锌精矿：产量：澳大利亚（季）",
+        "right": "锡矿：产量：澳大利亚（季）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.88,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.880",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "锌：矿山产量：澳大利亚（季）",
+        "right": "锡矿：产量：澳大利亚（季）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.88,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.880",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜精矿：产量：澳大利亚（季）",
+        "right": "锡矿：产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.88,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.880",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜：矿山产量：澳大利亚（季）",
+        "right": "锡矿：产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.88,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.880",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铝土矿：产量：澳大利亚（季）",
+        "right": "锡矿：产量：澳大利亚（季）",
+        "variety_left": "AL|AO",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.88,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.880",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "GFEX：工业硅：主力合约：单边交易：持仓量（日）",
+        "right": "GFEX：碳酸锂：主力合约：单边交易：持仓量（日）",
+        "variety_left": "SI",
+        "variety_right": "LI",
+        "cross_variety": "YES",
+        "dice": 0.875,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.875",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 电解铜供需平衡表: 终端消费量: 月度",
+        "right": "SMM: 电解铝平衡: 终端消费量: 月度",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.8718,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.872",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铅期现价差: 连二合约: 开盘价: 日度",
+        "right": "SMM: 沪锌期现价差: 当月合约: 开盘价: 日度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8636,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.864",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SMM: 沪铅期现价差: 连二合约: 开盘价: 日度",
+        "right": "SMM: 沪铝期现价差: 当月合约: 开盘价: 日度",
+        "variety_left": "PB",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.8636,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.864",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：电解铜：07合约：空单持仓合计：前20期货公司（日）",
+        "right": "SHFE：铝：08合约：多单持仓合计：前20期货公司（日）",
+        "variety_left": "CU",
+        "variety_right": "AL",
+        "cross_variety": "YES",
+        "dice": 0.8621,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.862",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 铜板带出口量: 月度",
+        "right": "中国海关: 镀锌板出口量: 月度",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8571,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.857",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 铝土矿进口量: 月度",
+        "right": "中国海关: 锌精矿进口量: 月度",
+        "variety_left": "AL|AO",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8571,
+        "category": "算法高风险",
+        "severity": "P0",
+        "extra": "dice=0.857",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "精炼锌：产量：澳大利亚（季）",
+        "right": "铜精矿：产量：澳大利亚（季）",
+        "variety_left": "ZN",
+        "variety_right": "CU",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 铅板出口量: 月度",
+        "right": "中国海关: 铜材出口量: 月度",
+        "variety_left": "PB",
+        "variety_right": "CU",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "SHFE：铅：期货库存（周）",
+        "right": "SHFE：锡：期货库存（日）",
+        "variety_left": "PB",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜精矿：产量：澳大利亚（季）",
+        "right": "锌：矿山产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜精矿：产量：澳大利亚（季）",
+        "right": "铝土矿：产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "AL|AO",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜：矿山产量：澳大利亚（季）",
+        "right": "锌精矿：产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铜：矿山产量：澳大利亚（季）",
+        "right": "铝土矿：产量：澳大利亚（季）",
+        "variety_left": "CU",
+        "variety_right": "AL|AO",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铝土矿：产量：澳大利亚（季）",
+        "right": "锌精矿：产量：澳大利亚（季）",
+        "variety_left": "AL|AO",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "铝土矿：产量：澳大利亚（季）",
+        "right": "锌：矿山产量：澳大利亚（季）",
+        "variety_left": "AL|AO",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8462,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.846",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "GFEX：工业硅：单边交易：成交量（日）",
+        "right": "GFEX：碳酸锂：单边交易：成交量（日）",
+        "variety_left": "SI",
+        "variety_right": "LI",
+        "cross_variety": "YES",
+        "dice": 0.8421,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.842",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "GFEX：工业硅：单边交易：持仓量（日）",
+        "right": "GFEX：碳酸锂：单边交易：持仓量（日）",
+        "variety_left": "SI",
+        "variety_right": "LI",
+        "cross_variety": "YES",
+        "dice": 0.8421,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.842",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国有色金属工业年鉴：锡精矿：含锡：产量：云南（年）",
+        "right": "中国有色金属工业年鉴：镍精矿：含镍：产量：新疆（年）",
+        "variety_left": "SN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.84,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.840",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国有色金属工业年鉴：铜精矿：含铜：产量：中国（年）",
+        "right": "中国有色金属工业年鉴：锡精矿：含锡：产量：云南（年）",
+        "variety_left": "CU",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.84,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.840",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国有色金属工业年鉴：铜精矿：含铜：产量：中国（年）",
+        "right": "中国有色金属工业年鉴：镍精矿：含镍：产量：新疆（年）",
+        "variety_left": "CU",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.84,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.840",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 铅合金出口量: 累计: 月度",
+        "right": "中国海关: 锌合金出口量: 月度",
+        "variety_left": "PB",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8387,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.839",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "中国海关: 其他精炼铜丝进口量: 月度",
+        "right": "中国海关: 精炼锌进口量: 月度",
+        "variety_left": "CU",
+        "variety_right": "ZN",
+        "cross_variety": "YES",
+        "dice": 0.8387,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.839",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "LME：锌：注销仓单（日）",
+        "right": "LME：锡：注册仓单（日）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.8333,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.833",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "USGS：锌矿：含锌：产量：印度（年）",
+        "right": "USGS：锡矿：含锡：产量：印尼（年）",
+        "variety_left": "ZN",
+        "variety_right": "SN",
+        "cross_variety": "YES",
+        "dice": 0.8333,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.833",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      },
+      {
+        "left": "USGS：锌矿：含锌：产量：印度（年）",
+        "right": "USGS：镍矿：含镍：产量：印尼（年）",
+        "variety_left": "ZN",
+        "variety_right": "NI",
+        "cross_variety": "YES",
+        "dice": 0.8333,
+        "category": "算法高风险",
+        "severity": "P1",
+        "extra": "dice=0.833",
+        "source": "DSHE high_risk_confusion_pairs.csv"
+      }
+    ]
+  },
+  "fix_notes": {
+    "BL-012": "方案B：品种感知前置过滤，消除2个FP（RISK-038/039），保留9个TP（RISK-040~050），零回归",
+    "BL-018a": "新增：锡↔镍跨品种禁止，覆盖7条P0案例",
+    "BL-018b": "新增：锡↔钢铁跨品种禁止，覆盖2条P0案例",
+    "BL-019a": "新增：硅加工费↔铜加工费跨品种禁止，覆盖2条P0案例",
+    "BL-016a": "新增：碳酸锂利润↔产量互斥（含子品类），覆盖4条P1案例",
+    "BL-025a": "新增：消费量↔产量互斥（含锡锌子品类），覆盖3条P0案例",
+    "BL-026": "新增：库存天数跨品种禁止（needs_manual_review），覆盖9条P1案例",
+    "DSHE_auxiliary": "集成DSHE high_risk_confusion_pairs.csv作为辅助触发提示"
+  },
+  "constraints": {
+    "no_production_modification": true,
+    "new_file_only": true,
+    "original_preserved": true
+  }
+}
