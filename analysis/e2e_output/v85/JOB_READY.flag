@@ -1,4 +1,4 @@
-﻿﻿# =============================================================================
+﻿# =============================================================================
 # JOB_READY.flag — 就绪锁文件
 # =============================================================================
 # 工单: DSH-B_GITHUB_SHARE_PUSH_V85_20260928
@@ -1062,7 +1062,30 @@ DSHE_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN=STARTED
 #               NO_ZHIJI_API_CALL=TRUE | APPEND_ONLY=TRUE | HISTORICAL_ARTIFACTS_PRESERVED=TRUE
 V85_ALL_ANALYSIS_COMPLETE=TRUE
 DSHB_V85_HUMAN_REVIEW_SIMULATION_AND_PRECHECK=COMPLETE
-DSHB_REVIEW_SIMULATION_COMMIT_HASH=3ce1e14
+DSHB_REVIEW_SIMULATION_COMMIT_HASH=0d7b0e8
+# ============================================================ #
+
+# ============================================================ #
+# V85_ALL_ANALYSIS_COMPLETE 2026-10-01 16:00:00
+# task       : DSH-B_V85_FINAL_GATE_ACCEPTANCE_REPORT_AND_RULE_SUMMARY
+# branch     : feature/v85-chart-template
+# output_dir : analysis/e2e_output/v85/dshb_final_gate_summary/
+# md5_list   : analysis/e2e_output/v85/dshb_final_gate_summary/MD5_MANIFEST.md (5 files)
+# deliverables:
+#   dsh_final_gate_acceptance.md         DSHB侧Gate最终验收报告(10项Gate三态判定)
+#   v85_rule_full_summary.md             V85全套风险规则总览(31规则+1候选+模糊匹配校准)
+#   v85_risk_final_conclusion.md         V85风险最终结论(25条P0/16条P1+上线建议)
+#   v86_rule_milestone_ticket.md         V86规则迭代细化工单(12任务/22-38人天/4阶段)
+#   dshb_data_readme_for_hermes.md       HERMES数据口径说明(字段定义+指标口径+数据边界)
+# key_metrics : 10项Gate三态判定(基线/场景A/场景B) | 32条规则总览 | 53条风险分类
+#              V86 12任务细化 | 5交付文件72575字节
+# key_finding : 场景A 1/10+4改善(可豁免); 场景B 7/10+4阻塞(建议); BL-009a 0.5天1TP/0FP
+#              3条数据缺失需上游修复; BL-026条件全部满足建议启用; V86 Alpha 4.5-7人天
+# constraint  : NO_SOURCE_MODIFICATION=TRUE | NO_GT_MODIFICATION=TRUE | NO_RULE_MODIFICATION=TRUE
+#               NO_ZHIJI_API_CALL=TRUE | APPEND_ONLY=TRUE | HISTORICAL_ARTIFACTS_PRESERVED=TRUE
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+DSHB_V85_FINAL_GATE_ACCEPTANCE_REPORT_AND_RULE_SUMMARY=COMPLETE
+DSHB_FINAL_GATE_ACCEPTANCE_COMMIT_HASH=
 # ============================================================ #
 
 ## HERMES_V85_PORTAL_REFRESH_WITH_REAL_SIM_DATA_AND_REBUILD_ARCHIVE
