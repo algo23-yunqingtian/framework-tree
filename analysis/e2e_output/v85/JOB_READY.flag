@@ -1096,3 +1096,52 @@ GATE_SCENE_A=4项部分改善
 GATE_SCENE_B=8项完全解除
 ARCHIVE_REBUILT=63文件, 警告3→1
 TP_FP_INDICATORS=READY (TP+4/+7, FP+0)
+
+
+# ============================================================ #
+# V85_ALL_ANALYSIS_COMPLETE 2026-10-01 16:20:00
+# task       : DSHE-B_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN
+# branch     : feature/v85-chart-template
+# output_dir : analysis/e2e_output/v85/dshe_alias_audit_design/
+# md5_list   : analysis/e2e_output/v85/dshe_alias_audit_design/MD5_CHECKSUM_LIST.md (27 files / 1,531,461 bytes)
+# deliverables (7):
+#   alias_sampling_audit_report.md      T2.1 分层抽样人工审计 (120行 / 83.00pct 错误率)
+#   alias_audit_sample.csv              抽样明细 (120行 x 49列)
+#   canonical_resolve_fix_design.md     T2.2 F1-F4修复原型 (9714调用 / 19 UT PASS)
+#   high_prio_ambig_analysis.md         165条歧义重分诊 (P0 53 / P1 65 / P2 47)
+#   multi_canonical_conflict_solution.md 冲突类级处置方案
+#   v86_alias_engine_full_design.md     V86别名匹配引擎完整设计 (四层门禁 / F1-F4 / 14门禁)
+#   alias_test_case_set.json            893条测试用例 (5家族 + 4缺陷签名)
+# extras (20): T2_summary_report.md + audit_kit.py + v86_gate_fusion_framework.md
+#              + blacklist_rule_effectiveness_test.py + T2.6 102用例结果 + regression_gate_config.json
+#              + canonical_resolve_fix.py/_result.json + coverage/verdicts/coverage_matrix
+# key_metrics : F1 消除 2977/9714 KeyError (30.65pct)
+#              4857 pair accept=True 1844 -> 1679 (-8.95pct)
+#              T2.6 102用例: base 89.22pct -> f3 75.49pct -> f3+f4 102/102 (100pct)
+#              活规则28 / 死规则3 (BL-019a, BL-020, BL-021)
+#              R-05独占裁决 10/26 = 38.5pct
+#              G7 跨配对样本 0 条 -> 判 N/A (不可判定, 非 PASS)
+# key_finding : F3单独上线为净负收益 (G4边界误拦 11/18 -> 17/18 + 8条自配对 PASS->BLOCK);
+#               F3必须与F4同批上线; F2不得先于 53条 P0 歧义人工择优上线
+#              黑名单门禁价值不在拦截率 (三变体均 100pct) 而在可归因性
+# caveat      : G1在打补丁变体上不可证伪 (三变体均经 guard_resolve_canonical 装载)
+#              INV-1在本语料不可判定: 14条 alias_exact AND 黑名单命中 全为自配对且系自触发误报
+# constraint  : NO_SOURCE_MODIFICATION=TRUE | NO_GT_MODIFICATION=TRUE | NO_RULE_MODIFICATION=TRUE
+#               NO_ZHIJI_API_CALL=TRUE | READ_ONLY=TRUE | APPEND_ONLY=TRUE
+#               HISTORICAL_ARTIFACTS_PRESERVED=TRUE
+# ============================================================ #
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+DSHE_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN=COMPLETE
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_COMMIT_HASH=089fbb6042ddade02f5d47858ffa237fd35c745e
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_COMMIT_BRANCH=feature/v85-chart-template
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_COMMIT_REMOTE=origin/feature/v85-chart-template
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_COMMIT_SHORT=089fbb6
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_FILES=29
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_INSERTIONS=38738
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_DELIVERABLES=7/7
+DSHE_ALIAS_LIB_SAMPLING_AUDIT_MD5_LIST=MD5_CHECKSUM_LIST.md
+NO_AUTO_ITERATE=TRUE
+NO_ZHIJI_API_CALL=TRUE
+NO_MODIFY_SOURCE=TRUE
+NO_CHANGE_GT=TRUE
+NO_EDIT_RULE=TRUE
