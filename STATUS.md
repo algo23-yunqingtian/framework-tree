@@ -73,6 +73,18 @@
 
 ## 近期变更记录
 
+### 2026-10-02 HERMES — V86 门户集成前置 + V85 冻结演示环境锁定 (HERMES_V86_PORTAL_INTEGRATE_AND_V85_FROZEN_DEMO_LOCK)
+- **commit**: `03b3a73` (feature/v85-chart-template, 已 push)
+- **v85_frozen_portal_page.md**: V7-frozen 门户固化 — 数据层全部改走 E `v85_artifact_api.py` 只读 API（31 制品，`PortalReadOnlyClient` 单例适配层），门户不再持有任何本地业务数据副本；🔒 V85.0 FROZEN 版本横幅（commit f313570 / tag v85-final-persist）；新增 🔐 快照 MD5 校验面板（`verify_artifact(verify_file=1)` 实时重算，27 项实测 match=true）；演示锁定移除 10 项编辑入口
+- **v86_portal_integrate_doc.md**: 版本切换面板（V85.0 FROZEN / V86.0-alpha 双栏并排）+ 规则指标对比面板 + 异步任务面板（6 task_type 映射 DSHB `v86_rule_task_adapter.md` / DSHE `alias_task_adapter.py`）+ 48 用例测试样本面板（正向18/负向14/边界12，单条 case 预览与执行）；定义任务 API 未就绪时的降级路径（本地 task_queue/ 回放）
+- **v85_v86_compare_panel.md**: P0 拦截率 87.5% vs 75.0%（Δ−12.5pt）/ TP 44→40 / FP 0 / 回归 4 条瀑布图归因；**口径说明**: 4 条"回归"源于 V86 P0 原型仅 4 规则 vs V85 完整 31 规则（RISK-001/003/006 为 DATA_MISSING 非规则未覆盖），支持口径切换（原型 vs 完整黑名单+P0 35 规则）
+- **portal_e2e_smoke_report.md**: 18 项冒烟（13 PASS / 1 FAIL / 4 WARN）+ 10 项门户侧 API 真实实测（非模拟）：health(read_only:true/no_zhiji_api_call:true) / versions 隔离 / 31 制品 / query risk_db 50 行·P0=33 / scenario_replay 2721 行 / MD5 `2c85f402…` verify_match=true / v86-dev 403 VERSION_READ_FORBIDDEN / 写方法拒绝 / 未知 kind 404 / ops_read 令牌缺口
+- **portal_permission_config.md**: 7 角色映射（portal_read/audit_read/ops_read/task_submit/task_read/task_admin/portal_write 永拒）+ 双令牌配置（primary `v85-admin-readonly-0001` 覆盖 metrics）+ 后端三层写保护对齐（HTTP 405 / API 403 / 版本 VERSION_WRITABLE）+ 前端第二道防线（无写方法封装 + fetch 拦截 + 版本常量硬编码）+ 11 项权限验证用例
+- **🔴 实测发现 SMK-01（阻断缺陷）**: `v85_artifact_api.py` 的 `repo_root` 默认值硬编码为 `D:/DSH_WORK/framework-tree`，Linux 部署 `--smoke` 直接 `RuntimeError` 崩溃；必须显式传 `--repo-root /home/ubuntu/framework-tree` 才 PASS。建议改为 `os.environ.get("FRAMEWORK_TREE", Path(__file__).parents[4])`（1 行修复），责任方 E
+- **🟡 实测发现 SMK-04（警告）**: 4 项制品 relpath 过期 missing — `ambiguous_indicator_list`（实际在 alias_lib_full_audit/）、`template_manifest`/`template_task_list`/`template_task_summary`（实际在 v85_final_integrate/）。API `--smoke` 不校验存在性故未报错，门户快照面板会标红。需走 PR 修正 ARTIFACTS 表
+- **产物目录**: analysis/e2e_output/v86/hermes_portal_prep/（5 文档 + MD5 清单，共 48920 bytes）
+- **T4 约束**: 零 zhiji 调用 / V85 基线只读未改任何计算结果 / 仅新增 / 分支锁定未合并 main
+
 ### 2026-10-01 HERMES — V85 项目总复盘 + 版本冻结 + V86 backlog (HERMES_V85_PROJECT_FINAL_RETROSPECT_AND_VERSION_FREEZE_REPORT)
 - **commit**: `7c2ac86` (feature/v85-chart-template, 已 push)
 - **v85_project_retrospect_total.md**: 26 工单/896 文件/三方指标合并/17 风险/52 Gate(40通过/12未通过)/预估 5-7 天上线
