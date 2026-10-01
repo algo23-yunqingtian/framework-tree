@@ -1,0 +1,395 @@
+{
+  "task_id": "DSHB_V86_RULE_ENGINE_STRESS_TEST_AND_CI_PIPELINE_PROTOTYPE",
+  "version": "v1.0",
+  "branch": "feature/v85-chart-template",
+  "base_commit": "128275a",
+  "timestamp": "2026-10-01T23:11:25.336076",
+  "overall_status": "PASS",
+  "exit_code": 0,
+  "unit_test": {
+    "status": "PASS",
+    "p0": {
+      "status": "PASS",
+      "total": 22,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 3,
+      "exit_code": 0
+    },
+    "p1": {
+      "status": "PASS",
+      "total": 25,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 1,
+      "fault_tolerance": "9/9 passed",
+      "alias_conflicts_detected": 3,
+      "exit_code": 0
+    },
+    "total_tests": 47,
+    "total_passed": 43,
+    "total_failed": 0,
+    "exit_code": 0
+  },
+  "regression_test": {
+    "status": "PASS",
+    "v85_available": true,
+    "mode": "fallback_self_test",
+    "total_cases": 4,
+    "passed": 4,
+    "failed": 0,
+    "p0_interception_rate": 100.0,
+    "p1_interception_rate": 0.0,
+    "tp": 2,
+    "fp": 0,
+    "regression": 0,
+    "details": [
+      {
+        "case_id": "P0-REG-001",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂 三元523需求",
+        "matched_name": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉",
+        "risk_id": "RISK-002",
+        "risk_level": "P0",
+        "expected": "BLOCKED",
+        "actual": "BLOCKED",
+        "expected_rule": "BL-009a",
+        "actual_rule": "BL-009a",
+        "verdict": "PASS",
+        "latency_ms": 0.0,
+        "error_code": "OK"
+      },
+      {
+        "case_id": "P0-REG-002",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂 三元523需求",
+        "matched_name": "SMM: 碳酸锂现金生产利润",
+        "risk_id": "RISK-002",
+        "risk_level": "P0",
+        "expected": "BLOCKED",
+        "actual": "BLOCKED",
+        "expected_rule": "BL-009a",
+        "actual_rule": "BL-009a",
+        "verdict": "PASS",
+        "latency_ms": 0.0,
+        "error_code": "OK"
+      },
+      {
+        "case_id": "P0-REG-NEG-001",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂需求预测",
+        "matched_name": "碳酸锂需求分析",
+        "risk_id": "SAFE",
+        "risk_level": "SAFE",
+        "expected": "PASS",
+        "actual": "PASSED",
+        "expected_rule": "NONE",
+        "actual_rule": null,
+        "verdict": "PASS",
+        "latency_ms": 0.0,
+        "error_code": "OK"
+      },
+      {
+        "case_id": "P0-REG-NEG-002",
+        "source_type": "ci_regression",
+        "indicator_name": "碳酸锂工厂库存天数",
+        "matched_name": "碳酸锂工厂库存天数",
+        "risk_id": "SAFE",
+        "risk_level": "SAFE",
+        "expected": "PASS",
+        "actual": "PASSED",
+        "expected_rule": "NONE",
+        "actual_rule": null,
+        "verdict": "PASS",
+        "latency_ms": 0.0,
+        "error_code": "OK"
+      }
+    ],
+    "exit_code": 0,
+    "v85_baseline": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\dshb_review_simulation\\sim_sceneA_result.csv",
+    "v86_engine": "v86.1-alpha-proto",
+    "note": "Full V85/V86 comparison: use v85_v86_rule_compare.py"
+  },
+  "performance_test": {
+    "status": "PASS",
+    "scenarios": [
+      {
+        "scenario": "batch_100_sequential",
+        "type": "batch",
+        "details": {
+          "total_cases": 100,
+          "total_blocked": 14,
+          "total_passed": 86,
+          "total_errors": 0,
+          "elapsed_ms": 13.38,
+          "cases_per_sec": 7473.79,
+          "avg_ms_per_case": 0.1338,
+          "p50_ms": 0.1443,
+          "p95_ms": 0.1673,
+          "p99_ms": 0.1764,
+          "max_ms": 0.1764,
+          "workers": 1
+        }
+      },
+      {
+        "scenario": "batch_1000_sequential",
+        "type": "batch",
+        "details": {
+          "total_cases": 1000,
+          "total_blocked": 150,
+          "total_passed": 850,
+          "total_errors": 0,
+          "elapsed_ms": 140.43,
+          "cases_per_sec": 7121.21,
+          "avg_ms_per_case": 0.1404,
+          "p50_ms": 0.2157,
+          "p95_ms": 0.2626,
+          "p99_ms": 0.3737,
+          "max_ms": 0.3737,
+          "workers": 1
+        }
+      }
+    ],
+    "batch_1000": {
+      "total_cases": 1000,
+      "total_blocked": 150,
+      "total_passed": 850,
+      "total_errors": 0,
+      "elapsed_ms": 140.43,
+      "cases_per_sec": 7121.21,
+      "avg_ms_per_case": 0.1404,
+      "p50_ms": 0.2157,
+      "p95_ms": 0.2626,
+      "p99_ms": 0.3737,
+      "max_ms": 0.3737,
+      "workers": 1
+    },
+    "avg_latency_ms": 0.1404,
+    "cases_per_sec": 7121.21,
+    "p50_ms": 0.2157,
+    "p95_ms": 0.2626,
+    "exit_code": 0
+  },
+  "fault_tolerance": {
+    "status": "PASS",
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "results": [
+      {
+        "case_id": "EMPTY_INDICATOR",
+        "indicator": "None",
+        "matched": "'test'",
+        "expected_error": true,
+        "actual_error_code": "EMPTY_INDICATOR",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "EMPTY_MATCHED_STRING",
+        "indicator": "'test'",
+        "matched": "''",
+        "expected_error": false,
+        "actual_error_code": "DATA_MISSING",
+        "actual_result": "DATA_MISSING",
+        "status": "PASS"
+      },
+      {
+        "case_id": "EMPTY_INDICATOR_STRING",
+        "indicator": "''",
+        "matched": "'test'",
+        "expected_error": true,
+        "actual_error_code": "EMPTY_INDICATOR",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "DATA_MISSING",
+        "indicator": "'test'",
+        "matched": "'N/A'",
+        "expected_error": false,
+        "actual_error_code": "DATA_MISSING",
+        "actual_result": "DATA_MISSING",
+        "status": "PASS"
+      },
+      {
+        "case_id": "TOO_LONG_INDICATOR",
+        "indicator": "'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'",
+        "matched": "'test'",
+        "expected_error": true,
+        "actual_error_code": "INDICATOR_TOO_LONG",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "TOO_LONG_MATCHED",
+        "indicator": "'test'",
+        "matched": "'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'",
+        "expected_error": true,
+        "actual_error_code": "MATCHED_TOO_LONG",
+        "actual_result": "NOT_APPLICABLE",
+        "status": "PASS"
+      },
+      {
+        "case_id": "NORMAL_CASE",
+        "indicator": "'碳酸锂价格'",
+        "matched": "'碳酸锂:价格:日度'",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      },
+      {
+        "case_id": "NUMERIC_INPUT",
+        "indicator": "12345",
+        "matched": "67890",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      },
+      {
+        "case_id": "UNICODE_INPUT",
+        "indicator": "'碳酸锂\\xa0\\xa0价格'",
+        "matched": "'碳酸锂:价格:日度'",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      },
+      {
+        "case_id": "CONTROL_CHARS",
+        "indicator": "'test\\x00\\x01\\x02'",
+        "matched": "'test'",
+        "expected_error": false,
+        "actual_error_code": "OK",
+        "actual_result": "PASSED",
+        "status": "PASS"
+      }
+    ],
+    "exit_code": 0
+  },
+  "alias_validation": {
+    "status": "PASS",
+    "total_aliases": 10,
+    "total_conflicts": 3,
+    "conflicts_by_severity": {
+      "ERROR": 1,
+      "WARN": 1,
+      "INFO": 1
+    },
+    "conflicts_by_type": {
+      "规范名不一致": 1,
+      "品种不一致": 1,
+      "歧义映射(多对一)": 1
+    },
+    "conflict_details": [
+      {
+        "type": "规范名不一致",
+        "severity": "ERROR",
+        "description": "Alias '碳酸锂价格' maps to 2 different canonicals: {'碳酸锂:价格:日度', '碳酸锂:价格:周度'}",
+        "suggestion": "Merge or disambiguate canonical mappings"
+      },
+      {
+        "type": "品种不一致",
+        "severity": "WARN",
+        "description": "Alias '氧化铝产量' has inconsistent variety tags: {'AO', 'AL'}",
+        "suggestion": "Standardize variety tags for this alias"
+      },
+      {
+        "type": "歧义映射(多对一)",
+        "severity": "INFO",
+        "description": "Canonical '碳酸锂:价格:日度' has 2 aliases: {'锂价', '碳酸锂价格'}",
+        "suggestion": "Review if all aliases are truly equivalent"
+      }
+    ],
+    "exit_code": 0
+  },
+  "gate_checks": [
+    {
+      "check_id": "GATE-001",
+      "name": "单元测试通过率",
+      "threshold": "100%",
+      "actual": "PASS",
+      "status": "PASS",
+      "details": "P0+P1单元测试: PASS"
+    },
+    {
+      "check_id": "GATE-002",
+      "name": "P0拦截率",
+      "threshold": ">= 88.2%",
+      "actual": "100.0%",
+      "status": "PASS",
+      "details": "V85基线: 88.2%"
+    },
+    {
+      "check_id": "GATE-003",
+      "name": "误报数(FP)",
+      "threshold": "= 0",
+      "actual": "0",
+      "status": "PASS",
+      "details": "允许最大值: 0"
+    },
+    {
+      "check_id": "GATE-004",
+      "name": "回归数",
+      "threshold": "= 0",
+      "actual": "0",
+      "status": "PASS",
+      "details": "允许最大值: 0"
+    },
+    {
+      "check_id": "GATE-005",
+      "name": "边界测试通过率",
+      "threshold": ">= 100.0%",
+      "actual": "100.0% (0/0)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-006",
+      "name": "平均延迟",
+      "threshold": "<= 100.0ms",
+      "actual": "0.140ms",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-007",
+      "name": "批量吞吐量",
+      "threshold": ">= 1000 cases/sec",
+      "actual": "7121 cases/sec",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-008",
+      "name": "p95延迟",
+      "threshold": "<= 10.0ms",
+      "actual": "0.263ms",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-009",
+      "name": "容错测试通过率",
+      "threshold": ">= 100.0%",
+      "actual": "100.0%",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "check_id": "GATE-010",
+      "name": "别名映射校验",
+      "threshold": "PASS",
+      "actual": "PASS",
+      "status": "PASS",
+      "details": "检测到 3 个冲突"
+    }
+  ],
+  "blocking_reasons": [],
+  "warnings": [],
+  "duration_ms": 296.3242,
+  "artifacts": {}
+}

@@ -1,0 +1,406 @@
+{
+  "version": "v86-p1-rule-test-suite-v1",
+  "description": "V86 P1规则测试用例集 — 覆盖跨品种规则(BL-027~BL-038) + 别名映射一致性校验 + 容错测试",
+  "generated_at": "2026-10-01T22:50:00+08:00",
+  "task_id": "DSHB_V86_RULE_ENGINE_STRESS_TEST_AND_CI_PIPELINE_PROTOTYPE",
+  "branch": "feature/v85-chart-template",
+  "base_commit": "128275a",
+  "total_cases": 42,
+  "coverage": {
+    "BL-027_AL_CU": {"total": 3, "positive": 2, "negative": 1},
+    "BL-028_PB_ZN": {"total": 2, "positive": 1, "negative": 1},
+    "BL-029_AO_AL": {"total": 2, "positive": 1, "negative": 1},
+    "BL-030_LI_LFP": {"total": 2, "positive": 1, "negative": 1},
+    "BL-031_CO_LI": {"total": 2, "positive": 1, "negative": 1},
+    "BL-033_OE_NG": {"total": 2, "positive": 1, "negative": 1},
+    "BL-034_FE_ST": {"total": 2, "positive": 1, "negative": 1},
+    "BL-036_GO_NF": {"total": 2, "positive": 1, "negative": 1},
+    "BL-032_SS_CU": {"total": 2, "positive": 1, "negative": 1},
+    "BL-035_ST_CU": {"total": 2, "positive": 1, "negative": 1},
+    "P0_regression": {"total": 4, "positive": 2, "negative": 2},
+    "alias_validation": {"total": 2, "positive": 1, "negative": 1}
+  },
+  "suite_format_version": "1.0",
+  "compatible_with": ["v86_p1_rule_prototype.py", "v86_async_task_api"],
+  "notes": "可接入V86异步任务调度接口，通过task_type='dshb_rule_eval'调用。P1规则在P0基础上扩展12条跨品种规则+别名校验",
+  "test_groups": [
+    {
+      "group_id": "GROUP-P1-001",
+      "group_name": "BL-027铝↔铜跨品种禁止",
+      "rule_id": "BL-027",
+      "case_type": "cross_variety",
+      "description": "铝与铜是不同品种，不可互相匹配",
+      "test_cases": [
+        {
+          "case_id": "TC-BL027-001",
+          "category": "正向危险样例",
+          "indicator_name": "电解铝出库量-中国",
+          "matched_name": "SHFE：铜：主力合约：库存（日）",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-027",
+          "risk_level": "P1",
+          "description": "铝→铜跨品种，BL-027应拦截"
+        },
+        {
+          "case_id": "TC-BL027-002",
+          "category": "正向危险样例",
+          "indicator_name": "铝锭库存",
+          "matched_name": "铜库存",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-027",
+          "risk_level": "P1",
+          "description": "铝锭→铜库存，BL-027应拦截"
+        },
+        {
+          "case_id": "TC-BL027-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "电解铝出库量",
+          "matched_name": "SHFE：铝：库存（日）",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种铝→铝，不应被BL-027拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-002",
+      "group_name": "BL-028铅↔锌跨品种禁止",
+      "rule_id": "BL-028",
+      "case_type": "cross_variety",
+      "description": "铅与锌是不同品种，不可互相匹配",
+      "test_cases": [
+        {
+          "case_id": "TC-BL028-001",
+          "category": "正向危险样例",
+          "indicator_name": "铅锭库存",
+          "matched_name": "锌锭库存",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-028",
+          "risk_level": "P1",
+          "description": "铅→锌跨品种，BL-028应拦截"
+        },
+        {
+          "case_id": "TC-BL028-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "铅锭库存",
+          "matched_name": "铅锭产量",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种铅→铅，不应被BL-028拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-003",
+      "group_name": "BL-029氧化铝↔铝跨品种禁止",
+      "rule_id": "BL-029",
+      "case_type": "cross_variety",
+      "description": "氧化铝与电解铝是不同加工阶段品种",
+      "test_cases": [
+        {
+          "case_id": "TC-BL029-001",
+          "category": "正向危险样例",
+          "indicator_name": "氧化铝月度产量",
+          "matched_name": "电解铝出库量",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-029",
+          "risk_level": "P1",
+          "description": "氧化铝→铝跨品种，BL-029应拦截"
+        },
+        {
+          "case_id": "TC-BL029-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "氧化铝月度产量",
+          "matched_name": "氧化铝库存",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种氧化铝→氧化铝，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-004",
+      "group_name": "BL-030碳酸锂↔磷酸铁锂跨品种禁止",
+      "rule_id": "BL-030",
+      "case_type": "cross_variety",
+      "description": "碳酸锂与磷酸铁锂/三元是不同细分品种",
+      "test_cases": [
+        {
+          "case_id": "TC-BL030-001",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂价格",
+          "matched_name": "磷酸铁锂产量",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-030",
+          "risk_level": "P1",
+          "description": "碳酸锂→磷酸铁锂跨品种，BL-030应拦截"
+        },
+        {
+          "case_id": "TC-BL030-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂价格",
+          "matched_name": "碳酸锂产量",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种碳酸锂→碳酸锂，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-005",
+      "group_name": "BL-031钴↔锂跨品种禁止",
+      "rule_id": "BL-031",
+      "case_type": "cross_variety",
+      "description": "钴与锂是不同金属",
+      "test_cases": [
+        {
+          "case_id": "TC-BL031-001",
+          "category": "正向危险样例",
+          "indicator_name": "钴矿库存",
+          "matched_name": "碳酸锂价格",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-031",
+          "risk_level": "P1",
+          "description": "钴→锂跨品种，BL-031应拦截"
+        },
+        {
+          "case_id": "TC-BL031-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "钴矿库存",
+          "matched_name": "钴盐产量",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种钴→钴，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-006",
+      "group_name": "BL-033原油↔天然气跨品种禁止",
+      "rule_id": "BL-033",
+      "case_type": "cross_variety",
+      "description": "原油与天然气是不同能源品种",
+      "test_cases": [
+        {
+          "case_id": "TC-BL033-001",
+          "category": "正向危险样例",
+          "indicator_name": "原油WTI价格",
+          "matched_name": "LNG进口量",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-033",
+          "risk_level": "P1",
+          "description": "原油→天然气跨品种，BL-033应拦截"
+        },
+        {
+          "case_id": "TC-BL033-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "原油WTI价格",
+          "matched_name": "布伦特原油价格",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种原油→原油，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-007",
+      "group_name": "BL-034铁矿石↔钢材跨品种禁止",
+      "rule_id": "BL-034",
+      "case_type": "cross_variety",
+      "description": "铁矿石与钢材是上下游不同阶段品种",
+      "test_cases": [
+        {
+          "case_id": "TC-BL034-001",
+          "category": "正向危险样例",
+          "indicator_name": "铁矿石库存",
+          "matched_name": "螺纹钢产量",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-034",
+          "risk_level": "P1",
+          "description": "铁矿石→钢材跨品种，BL-034应拦截"
+        },
+        {
+          "case_id": "TC-BL034-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "铁矿石库存",
+          "matched_name": "铁矿进口量",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种铁矿石→铁矿石，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-008",
+      "group_name": "BL-036黄金↔有色金属跨品种禁止",
+      "rule_id": "BL-036",
+      "case_type": "cross_variety",
+      "description": "黄金与有色金属是不同资产类别",
+      "test_cases": [
+        {
+          "case_id": "TC-BL036-001",
+          "category": "正向危险样例",
+          "indicator_name": "黄金库存",
+          "matched_name": "电解铜库存",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-036",
+          "risk_level": "P1",
+          "description": "黄金→铜跨品种，BL-036应拦截"
+        },
+        {
+          "case_id": "TC-BL036-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "黄金库存",
+          "matched_name": "伦敦金库存",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种黄金→黄金，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-009",
+      "group_name": "BL-032不锈钢↔铜跨品种禁止",
+      "rule_id": "BL-032",
+      "case_type": "cross_variety",
+      "description": "不锈钢与铜是不同品种",
+      "test_cases": [
+        {
+          "case_id": "TC-BL032-001",
+          "category": "正向危险样例",
+          "indicator_name": "不锈钢产量",
+          "matched_name": "电解铜库存",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-032",
+          "risk_level": "P1",
+          "description": "不锈钢→铜跨品种，BL-032应拦截"
+        },
+        {
+          "case_id": "TC-BL032-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "不锈钢产量",
+          "matched_name": "不锈钢库存",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种不锈钢→不锈钢，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-010",
+      "group_name": "BL-035苯乙烯↔铜跨品种禁止",
+      "rule_id": "BL-035",
+      "case_type": "cross_variety",
+      "description": "苯乙烯与铜是不同品种",
+      "test_cases": [
+        {
+          "case_id": "TC-BL035-001",
+          "category": "正向危险样例",
+          "indicator_name": "苯乙烯库存",
+          "matched_name": "电解铜库存",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-035",
+          "risk_level": "P1",
+          "description": "苯乙烯→铜跨品种，BL-035应拦截"
+        },
+        {
+          "case_id": "TC-BL035-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "苯乙烯库存",
+          "matched_name": "苯乙烯产量",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种苯乙烯→苯乙烯，不应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-011",
+      "group_name": "P0回归测试",
+      "rule_id": "P0_REG",
+      "case_type": "regression",
+      "description": "验证P0规则在P1引擎中正常工作",
+      "test_cases": [
+        {
+          "case_id": "TC-P0-REG-001",
+          "category": "P0正向回归",
+          "indicator_name": "碳酸锂 三元523需求",
+          "matched_name": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009a",
+          "risk_level": "P0",
+          "description": "P0规则BL-009a在P1引擎中应正常工作"
+        },
+        {
+          "case_id": "TC-P0-REG-002",
+          "category": "P0正向回归",
+          "indicator_name": "电解镍厂库存天数",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-026",
+          "risk_level": "P0",
+          "description": "P0规则BL-026在P1引擎中应正常工作"
+        },
+        {
+          "case_id": "TC-P0-REG-NEG-001",
+          "category": "P0安全回归",
+          "indicator_name": "碳酸锂需求预测",
+          "matched_name": "碳酸锂需求分析",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "P0安全案例在P1引擎中应正常通过"
+        },
+        {
+          "case_id": "TC-P0-REG-NEG-002",
+          "category": "P0安全回归",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "同品种同指标在P1引擎中应正常通过"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-P1-012",
+      "group_name": "别名映射一致性校验",
+      "rule_id": "ALIAS",
+      "case_type": "alias_validation",
+      "description": "别名映射冲突检测",
+      "test_cases": [
+        {
+          "case_id": "TC-ALIAS-001",
+          "category": "规范名不一致",
+          "indicator_name": "碳酸锂价格",
+          "matched_name": "碳酸锂:价格:日度",
+          "expected_result": "ALIAS_CONFLICT",
+          "expected_rule": "CANONICAL_MISMATCH",
+          "risk_level": "P1",
+          "description": "同一别名映射到不同规范名，应报告CANONICAL_MISMATCH冲突"
+        },
+        {
+          "case_id": "TC-ALIAS-NEG-001",
+          "category": "无冲突",
+          "indicator_name": "碳酸锂价格",
+          "matched_name": "碳酸锂:价格:日度",
+          "expected_result": "PASS",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "description": "无冲突的别名映射应正常通过"
+        }
+      ]
+    }
+  ]
+}
