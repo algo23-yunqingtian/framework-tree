@@ -587,3 +587,13 @@
 - 归档规范: human_review_archive_spec.md
 - DSHB 6fded66产物已读: 34条P0验证/31规则黑名单/488模板回放2721行
 - 产物目录: analysis/e2e_output/v85/hermes_human_review_tool/
+
+### 2026-10-01 HERMES_V85_FINAL_DELIVERY_PACKAGE_BUILD_AND_ACCEPTANCE_PORTAL
+- V6验收门户(9面板): 版本总览+Gate大盘+风险库+别名库+评审进度+遗留风险+V86入口
+- 全交付清单v2: 13个工单完整commit链+MD5+责任人
+- 顶层README: 版本简介+核心能力+前置条件+Gate状态+V86规划+目录导读
+- delivery_package_check.py: 28文件全通过+红线未改+分支正确
+- Gate最终报告: 52项(HERMES46+DSHB6), H5已解除, 4项仍阻塞
+- 归档目录树+打包指引(tar/tag/异地备份)
+- 演示文档: 核心能力+截图索引+风险边界+上线路径
+- 产物目录: analysis/e2e_output/v85/hermes_v85_final_delivery/
