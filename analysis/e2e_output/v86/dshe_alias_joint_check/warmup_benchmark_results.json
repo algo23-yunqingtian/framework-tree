@@ -1,0 +1,119 @@
+{
+  "task_id": "DSHE_V86_ALIAS_ENGINE_JOINT_INTEGRATE_AND_PRE_LAUNCH_CHECK",
+  "version": "v1.0",
+  "branch": "feature/v85-chart-template",
+  "generated_at": "2026-10-01T16:43:14.702731+00:00",
+  "results": {
+    "cold_load": {
+      "init_ms": 22316.6,
+      "meets_target": true
+    },
+    "first_request_no_cache": {
+      "elapsed_ms": 0.03,
+      "from_cache": false,
+      "meets_target": true
+    },
+    "first_request_with_warmup": {
+      "elapsed_ms": 0.01,
+      "from_cache": true,
+      "meets_target": true
+    },
+    "batch_warmup": {
+      "samples": 19,
+      "total_ms": 0.3,
+      "avg_ms": 0.02,
+      "max_ms": 0.04,
+      "results": [
+        {
+          "sample": "碳酸锂工厂库存天数",
+          "elapsed_ms": 0.04
+        },
+        {
+          "sample": "电解铜库存",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "锌锭库存",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "锡锭库存",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "电解镍价格",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "工业硅库存",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "碳酸锂需求预测",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "碳酸锂开工率",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "LME：锌：库存（日）",
+          "elapsed_ms": 0.02
+        },
+        {
+          "sample": "SHFE：铅：库存（日）",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "COMEX：铜：主力合约：收盘价（日）",
+          "elapsed_ms": 0.02
+        },
+        {
+          "sample": "GFEX：碳酸锂：单边交易：持仓量（日）",
+          "elapsed_ms": 0.02
+        },
+        {
+          "sample": "碳酸锂工厂库存天数（天）",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "碳酸锂工厂库存天数(天)",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "碳酸锂需求分析",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "碳酸锂需求预测",
+          "elapsed_ms": 0.01
+        },
+        {
+          "sample": "GFEX：碳酸锂：主力合约：单边交易：持仓量（日）",
+          "elapsed_ms": 0.02
+        },
+        {
+          "sample": "GFEX：碳酸锂：仓单数量（日）",
+          "elapsed_ms": 0.02
+        },
+        {
+          "sample": "GFEX：工业硅：单边交易：持仓量（日）",
+          "elapsed_ms": 0.02
+        }
+      ]
+    },
+    "cache_hit_perf": {
+      "total_ms": 0.0,
+      "avg_ms": 0.0,
+      "hit_rate_pct": 100.0,
+      "meets_target": true
+    },
+    "summary": {
+      "cold_load_meets_target": true,
+      "first_request_no_cache_meets_target": true,
+      "first_request_with_warmup_meets_target": true,
+      "cache_hit_rate_meets_target": true,
+      "all_targets_met": true
+    }
+  }
+}

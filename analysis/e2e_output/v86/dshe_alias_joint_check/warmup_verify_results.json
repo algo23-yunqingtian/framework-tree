@@ -1,0 +1,54 @@
+{
+  "task_id": "DSHE_V86_ALIAS_ENGINE_JOINT_INTEGRATE_AND_PRE_LAUNCH_CHECK",
+  "version": "v1.0",
+  "generated_at": "2026-10-01T16:54:45.762355+00:00",
+  "checks": [
+    {
+      "name": "引擎加载",
+      "status": "PASS",
+      "detail": "init=25059.0 ms (target: <= 30000 ms)"
+    },
+    {
+      "name": "预热执行",
+      "status": "PASS",
+      "detail": "warmed=19 samples, total=22773.7 ms"
+    },
+    {
+      "name": "缓存填充",
+      "status": "PASS",
+      "detail": "cache_size=18, hit_rate=0.00%"
+    },
+    {
+      "name": "持久化保存",
+      "status": "PASS",
+      "detail": "path=D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v86\\dshe_alias_joint_check\\warmup_cache\\resolve_cache.pkl, size=2.3 KB"
+    },
+    {
+      "name": "单例一致性",
+      "status": "PASS",
+      "detail": "same instance: True"
+    },
+    {
+      "name": "缓存一致性",
+      "status": "PASS",
+      "detail": "state1=UNIQUE, state2=UNIQUE"
+    },
+    {
+      "name": "持久化加载",
+      "status": "PASS",
+      "detail": "loaded=18 entries"
+    },
+    {
+      "name": "首次请求(缓存加载后)",
+      "status": "PASS",
+      "detail": "elapsed=0.01 ms, from_cache=True (target: <= 50 ms)"
+    },
+    {
+      "name": "性能目标全达标",
+      "status": "PASS",
+      "detail": "cold=22773.3 ms, first_req_warm=0.01 ms, cache_hit=100.00%"
+    }
+  ],
+  "pass_count": 9,
+  "fail_count": 0
+}
