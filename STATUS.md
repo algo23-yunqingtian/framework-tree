@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-01 HERMES — V85 项目总复盘 + 版本冻结 + V86 backlog (HERMES_V85_PROJECT_FINAL_RETROSPECT_AND_VERSION_FREEZE_REPORT)
+- **commit**: `7c2ac86` (feature/v85-chart-template, 已 push)
+- **v85_project_retrospect_total.md**: 26 工单/896 文件/三方指标合并/17 风险/52 Gate(40通过/12未通过)/预估 5-7 天上线
+- **v85_version_freeze_decision.md**: 核心规则(31)/别名库(864)/风险库(50)/PDF映射(333)/Gate标准(52)冻结;白名单/THS映射/评审批次保留;Bug修复允许
+- **v86_init_backlog_total.md**: 28 任务/35-43 天,DSHB 12(P0×4/P1×3/P2×5)+DSHE 10(引擎升级)+HERMES 6(渲染/门户/回归),跨 Agent 依赖图,关键路径 9.25 天
+- **v85_full_artifact_index.md**: 896 文件 MD5 全索引+5 方 commit(HERMES/DSHB/DSHE/B/E)+git tag v85-final-persist
+- **v85_top_level_accept_checklist.md**: 16 模块交付/52 Gate/17 风险/12 文档/6 演示/10 冻结约束
+- **MD5_CHECKSUM_LIST.md**: 5 份产物 MD5 清单(总 144595 bytes)
+- **产物目录**: analysis/e2e_output/v85/v85_project_final_retrospect/
+- **T4 约束**: 零 zhiji 调用/原始模板只读/仅新增文件/分支锁定未合并 main/Git 真实提交
+
 ### 2026-09-30 HERMES — V85 同花顺模板准备 + 自动校验增强 (HERMES_V85_PREP_FOR_THS_AND_AUTO_CHECK_ENHANCE)
 - **T2.1 语义黑名单自动校验**: `auto_semantic_check.py` + `semantic_blacklist_hermes.json` — 10组语义互斥词黑名单（产量↔消费量/场内↔场外库存/库存↔在途/出口↔进口等），集成到渲染前自动校验，命中黑名单→打P0红标拦截渲染。**自测: 6/6 P0语义冲突案例全部识别通过，白名单正确放行**
 - **T2.2 同花顺模板静态结构校验**: `ths_template_static_check.py` + `ths_template_static_check_report.md` — 155个THS模板 vs schema_adapt_doc目标规范对照校验。**核心发现: THS模板与schema完全不兼容**（8字段与5个schema必需字段无交集），全部155个命中E1_SCHEMA_MISMATCH致命错误；315致命错误/391警告；3个node不在tree_config；153/155频率缺失；19/155单位缺失；LI/CU/ZN为THS独有品种（PDF无）
