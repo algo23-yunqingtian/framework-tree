@@ -1005,7 +1005,6 @@ DSHB_V85_HUMAN_REVIEW_MATERIAL_PREP_AND_DATA_ENTRY_TEMPLATE=COMPLETEV85_ALIAS_LI
 # 21 files, 15640 insertions, 0 deletions (add-only; upstream truth files untouched)
 
 DSHE_V85_ALIAS_LIB_INTEGRATION_TEST_AND_QUALITY_SUMMARY=COMPLETE
->>>>>>> 1f1ec5d (DSH-B_V85_HUMAN_REVIEW_MATERIAL_PREP_AND_DATA_ENTRY_TEMPLATE)
 
 DSHB_HUMAN_REVIEW_PREP_COMMIT_HASH=ccd1a73
 # committed 2026-10-01 13:20:00 on feature/v85-chart-template
@@ -1027,3 +1026,41 @@ ARCHIVE_BUILDER=PASS (53 files copied, 0 missing)
 RISK_SUMMARY=READY (17 risks)
 DEPLOY_ROLLBACK=READY
 EXTERNAL_CHECKLIST=READY
+# ============================================================ #
+V85_ALL_ANALYSIS_COMPLETE=FALSE
+# task            : DSHE-B_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN
+# phase           : T0 �������� (7 deliverables: sampling audit + engine design)
+# parent_commit   : 00b3cd8 (feature/v85-chart-template)
+# no_auto_iterate : FALSE
+# no_zhiji_api    : TRUE (���� 0 ��֪������)
+# no_modify_source: TRUE (indicator_alias_library.csv / indicators_v1.json / GT / ������ֻ��)
+# no_change_gt    : TRUE
+# started_at      : 2026-10-01 13:22:08
+DSHE_V85_ALIAS_LIB_SAMPLING_AUDIT_AND_V86_ENGINE_DESIGN=STARTED
+# ============================================================ #
+
+# ============================================================ #
+# V85_ALL_ANALYSIS_COMPLETE 2026-10-01 15:40:00
+# task       : DSH-B_V85_HUMAN_REVIEW_SIMULATION_AND_PRECHECK
+# branch     : feature/v85-chart-template
+# output_dir : analysis/e2e_output/v85/dshb_review_simulation/
+# md5_list   : analysis/e2e_output/v85/dshb_review_simulation/MD5_MANIFEST.md (9 files)
+# deliverables:
+#   sim_sceneA_result.csv               场景A最小放行模拟回放明细(62行)
+#   sim_sceneB_result.csv               场景B完整人工处置回放明细(62行)
+#   simulation_compare_report.md        双场景模拟对比报告(P0拦截率/TP-FP/Gate解除/风险)
+#   review_consistency_check.py         人工评审一致性校验脚本(4项校验+报告生成)
+#   review_consistency_guide.md         一致性脚本使用文档(用法+异常处理+技术细节)
+#   bl009a_multi_scenario_verify.md     BL009a多场景回归验证(4开关组合+24边界测试)
+#   gate_block_impact_analysis.md       Gate阻塞影响量化评估(10项Gate+解除路径)
+#   human_review_faq.md                 人工评审FAQ(5冲突场景+判定标准+5填写错误+决策树)
+# key_metrics : 场景A P0拦截率81→100%(+4TP/0FP) | 场景B P0拦截率81→100%(+7TP/0FP)
+#              BL009a:1TP/0FP/0回归 | 24边界测试全通过 | 10项Gate量化评估
+# key_finding : BL009a是最高性价比变更(0.5天/1TP/0FP); 3/4漏拦截是数据缺失需上游修复
+#               场景A可快速降低P0阻塞(白名单); 场景B需5-7天完整修复; 最短解除路径依赖上游数据修复
+# constraint  : NO_SOURCE_MODIFICATION=TRUE | NO_GT_MODIFICATION=TRUE | NO_RULE_MODIFICATION=TRUE
+#               NO_ZHIJI_API_CALL=TRUE | APPEND_ONLY=TRUE | HISTORICAL_ARTIFACTS_PRESERVED=TRUE
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+DSHB_V85_HUMAN_REVIEW_SIMULATION_AND_PRECHECK=COMPLETE
+DSHB_REVIEW_SIMULATION_COMMIT_HASH=3ce1e14
+# ============================================================ #

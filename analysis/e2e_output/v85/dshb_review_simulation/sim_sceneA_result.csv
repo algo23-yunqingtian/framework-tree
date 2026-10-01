@@ -1,0 +1,63 @@
+﻿source_type,case_id,template_id,indicator_name,matched_name,risk_id,risk_level,old_status,scene_action,rule_applied,new_status,tp_change,fp_change,notes
+cross_variety_p0,,TPL-LC-054,碳酸锂 三元523需求,SMM: 碳酸锂现金生产利润: 外购三元极片黑粉（Li: 5.5%-6.5%）:,RISK-002,P0,NOT_BLOCKED,BL-009a规则拦截（需求→利润反向）,BL-009a,BLOCKED,1,0,BL-009a补齐BL-009反向缺口
+cross_variety_p0,,TPL-NI-008,中国电解镍净进口量,N/A,RISK-010,P0,NOT_BLOCKED,人工白名单放行（RISK-010）,WHITELIST,WHITELISTED,0,0,数据缺失或无匹配数据，人工确认放行
+cross_variety_p0,,TPL-SI-014,工业硅样本工厂库存(SMM),N/A,RISK-011,P0,NOT_BLOCKED,人工白名单放行（RISK-011）,WHITELIST,WHITELISTED,0,0,数据缺失或无匹配数据，人工确认放行
+cross_variety_p0,,TPL-SI-019,工业硅供需平衡,N/A,RISK-013,P0,NOT_BLOCKED,人工白名单放行（RISK-013）,WHITELIST,WHITELISTED,0,0,数据缺失或无匹配数据，人工确认放行
+cross_variety_p0,,THS-NI-2.3,COMEX镍持仓量（手）,COMEX：铜：主力合约：持仓量（日）,RISK-014,P0,BLOCKED,保持现有拦截,BL-022,BLOCKED,0,0,
+cross_variety_p0,,THS-NI-2.3,LME镍现金价格（美元/吨）、LME镍3个月期货价格（美元/吨）、现金-3个月月差（美元/吨）,LME：铜：期货价格：全球（月）,RISK-015,P0,BLOCKED,保持现有拦截,BL-022,BLOCKED,0,0,
+cross_variety_p0,,THS-NI-3.1,印尼镍精矿TC（美元/吨干矿）,铜精矿：长单TC价（年）,RISK-016,P0,BLOCKED,保持现有拦截,BL-022,BLOCKED,0,0,
+cross_variety_p0,,THS-NI-3.1,菲律宾镍精矿TC（美元/吨干矿）,铜精矿：长单TC价（年）,RISK-017,P0,BLOCKED,保持现有拦截,BL-022,BLOCKED,0,0,
+cross_variety_p0,,THS-NI-4.4,Mysteel镍精矿TC、Mysteel镍厂库存总量,铜精矿：长单TC价（年）,RISK-020,P0,BLOCKED,保持现有拦截,BL-022,BLOCKED,0,0,
+cross_variety_p0,,THS-NI-4.5,Mysteel镍精矿TC、Mysteel中国精炼镍在途库存,铜精矿：长单TC价（年）,RISK-021,P0,BLOCKED,保持现有拦截,BL-022,BLOCKED,0,0,
+cross_variety_p0,,THS-SI-3.1.3,国内硅矿月加工费TC（元/吨）,铜管：H62：加工费：安徽（月）,RISK-022,P0,BLOCKED,保持现有拦截,BL-019,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-2.3,LME锡库存（吨）,LME：镍：注册仓单（日）,RISK-024,P0,BLOCKED,保持现有拦截,BL-018,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-2.3,LME锡库存时序图,LME：镍：注册仓单（日）,RISK-025,P0,BLOCKED,保持现有拦截,BL-018,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-3.1.2,印尼锡精矿产量（万吨）,印尼精炼镍产量,RISK-026,P0,BLOCKED,保持现有拦截,BL-018,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-3.1.2,印尼锡精矿产量占比（%）,印尼精炼镍产量,RISK-027,P0,BLOCKED,保持现有拦截,BL-018,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-3.1.2,印尼锡精矿产量时序图,印尼精炼镍产量,RISK-028,P0,BLOCKED,保持现有拦截,BL-018,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-4.1,LME锡交易所库存（手）,LME：镍：注册仓单（日）,RISK-029,P0,BLOCKED,保持现有拦截,BL-018,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-4.1,LME锡交易所库存时序图,LME：镍：注册仓单（日）,RISK-030,P0,BLOCKED,保持现有拦截,BL-018,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-5.1,锡表观消费量（万吨）,镀锌板卷：钢铁企业：产量：中国（周）,RISK-031,P0,BLOCKED,保持现有拦截,BL-025,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-5.1,焊锡表观消费量时序图,镀锌板卷：钢铁企业：产量：中国（周）,RISK-032,P0,BLOCKED,保持现有拦截,BL-025,BLOCKED,0,0,
+cross_variety_p0,,THS-ZN-5.2,国内锌锭消费量（万吨）,国内锡锭产量,RISK-033,P0,BLOCKED,保持现有拦截,BL-025,BLOCKED,0,0,
+cross_variety_p0,,THS-LI-2.5,盐湖提锂利润（元/吨）,盐湖提锂产量,RISK-034,P1,BLOCKED,保持现有拦截,BL-016,BLOCKED,0,0,
+cross_variety_p0,,THS-LI-2.5,工业级碳酸锂利润（元/吨）,工业级碳酸锂产量,RISK-035,P1,BLOCKED,保持现有拦截,BL-016,BLOCKED,0,0,
+cross_variety_p0,,THS-LI-2.5,电池级碳酸锂利润（元/吨）,电池级碳酸锂产量,RISK-036,P1,BLOCKED,保持现有拦截,BL-016,BLOCKED,0,0,
+cross_variety_p0,,THS-LI-3.2.4,电池级碳酸锂冶炼利润（元/吨）,电池级碳酸锂产量,RISK-037,P1,BLOCKED,保持现有拦截,BL-016,BLOCKED,0,0,
+cross_variety_p0,,THS-NI-4.4,电解镍厂库存天数（天）,碳酸锂工厂库存天数,RISK-040,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-NI-4.4,高冰镍厂库存天数（天）,碳酸锂工厂库存天数,RISK-041,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-SI-4.4,多晶硅工厂库存天数（天）,碳酸锂工厂库存天数,RISK-042,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-SI-4.4,金属硅工厂库存天数（天）,碳酸锂工厂库存天数,RISK-043,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-4.4,工厂库存天数（天）,碳酸锂工厂库存天数,RISK-045,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-4.4,工厂库存天数时序图,碳酸锂工厂库存天数,RISK-046,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-4.5,在途库存天数（天）,锂矿 外采 在途库存,RISK-047,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-SN-5.1,库存天数（天）,碳酸锂工厂库存天数,RISK-048,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+cross_variety_p0,,THS-ZN-4.4,国内锌厂内库存天数（天）,碳酸锂工厂库存天数,RISK-050,P1,BLOCKED,保持现有拦截,BL-012,BLOCKED,0,0,
+boundary_test,BOUNDARY-001,N/A,碳酸锂 三元523需求,SMM: 碳酸锂现金生产利润: 外购三元极片黑粉,RISK-002,P0,EXPECTED_BLOCKED,BL-009a规则拦截,BL-009a,BLOCKED,1,0,需求→利润反向匹配，BL-009a应拦截
+boundary_test,BOUNDARY-002,N/A,碳酸锂需求总量,碳酸锂冶炼利润（元/吨）,RISK-002,P0,EXPECTED_BLOCKED,BL-009a规则拦截,BL-009a,BLOCKED,1,0,需求→利润变体，BL-009a应拦截
+boundary_test,BOUNDARY-003,N/A,碳酸锂需求量（万吨）,碳酸锂现金生产利润: 外购三元极片黑粉,RISK-002,P0,EXPECTED_BLOCKED,BL-009a规则拦截,BL-009a,BLOCKED,1,0,需求量→利润，BL-009a应拦截
+boundary_test,BOUNDARY-004,N/A,碳酸锂利润（元/吨）,碳酸锂三元523需求,RISK-002,P0,EXPECTED_BLOCKED,BL-009规则拦截,BL-009,BLOCKED,0,0,利润→需求正向匹配，BL-009原始规则应拦截
+boundary_test,BOUNDARY-005,N/A,碳酸锂需求预测,碳酸锂需求分析,RISK-002,SAFE,EXPECTED_PASS,未触发任何规则,NONE,PASS,0,0,需求→需求，同口径，不应触发任何规则
+boundary_test,BOUNDARY-006,N/A,碳酸锂利润分析,碳酸锂利润预测,RISK-002,SAFE,EXPECTED_PASS,未触发任何规则,NONE,PASS,0,0,利润→利润，同口径，不应触发任何规则
+boundary_test,BOUNDARY-007,N/A（数据缺失）,中国电解镍净进口量,N/A,RISK-010,N/A,DATA_MISSING,人工白名单放行,WHITELIST,WHITELISTED,0,0,PDF模板无匹配数据，规则无法触发
+boundary_test,BOUNDARY-008,N/A（数据缺失）,中国精炼镍净进口量,N/A,RISK-010,N/A,DATA_MISSING,人工白名单放行,WHITELIST,WHITELISTED,0,0,PDF模板无匹配数据（电解镍变体）
+boundary_test,BOUNDARY-009,N/A（数据缺失）,工业硅样本工厂库存(SMM),N/A,RISK-011,N/A,DATA_MISSING,人工白名单放行,WHITELIST,WHITELISTED,0,0,PDF模板无匹配数据
+boundary_test,BOUNDARY-010,N/A（数据缺失）,工业硅样本工厂库存,N/A,RISK-011,N/A,DATA_MISSING,人工白名单放行,WHITELIST,WHITELISTED,0,0,PDF模板无匹配数据（SMM后缀去除变体）
+boundary_test,BOUNDARY-011,N/A（数据缺失）,工业硅供需平衡,N/A,RISK-013,N/A,DATA_MISSING,人工白名单放行,WHITELIST,WHITELISTED,0,0,PDF模板无匹配数据
+boundary_test,BOUNDARY-012,N/A（数据缺失）,工业硅供需平衡表,N/A,RISK-013,N/A,DATA_MISSING,人工白名单放行,WHITELIST,WHITELISTED,0,0,PDF模板无匹配数据（供需平衡表变体）
+boundary_test,BOUNDARY-013,N/A,碳酸锂工厂库存天数,碳酸锂工厂库存天数,BL-012 Plan B前置过滤,SAFE,EXPECTED_PASS,未触发任何规则,NONE,PASS,0,0,同品种同指标（碳酸锂→碳酸锂），BL-012前置过滤应跳过
+boundary_test,BOUNDARY-014,N/A,电解镍厂库存天数（天）,碳酸锂工厂库存天数,BL-012 Plan B前置过滤,P1,EXPECTED_BLOCKED,现有规则拦截（BL-012; BL-026）,BL-012; BL-026,BLOCKED,0,0,跨品种库存天数（镍→锂），BL-012+BL-026应拦截
+boundary_test,BOUNDARY-015,N/A,碳酸锂工厂库存天数,碳酸锂工厂库存量,BL-012 Plan B前置过滤,P1,EXPECTED_BLOCKED,现有规则拦截（BL-012）,BL-012,BLOCKED,0,0,库存天数→库存量，BL-012应拦截（不同度量的互斥）
+boundary_test,BOUNDARY-016,N/A,锡厂库存天数（天）,碳酸锂工厂库存天数,BL-026跨品种库存天数,P1,EXPECTED_BLOCKED,现有规则拦截（BL-026）,BL-026,BLOCKED,0,0,锡→锂库存天数，跨品种，BL-026应拦截
+boundary_test,BOUNDARY-017,N/A,锡厂库存天数（天）,锡厂库存天数（天）,BL-026跨品种库存天数,SAFE,EXPECTED_PASS,未触发任何规则,NONE,PASS,0,0,同品种同指标，不应触发BL-026
+boundary_test,BOUNDARY-018,N/A,碳酸锂利润与需求分析,碳酸锂利润与需求预测,BL-009方向性,SAFE,EXPECTED_PASS,未触发任何规则,NONE,PASS,0,0,同时包含利润和需求两侧指标，同口径不应触发
+boundary_test,BOUNDARY-019,N/A,COMEX镍持仓量（手）,COMEX：镍：主力合约：持仓量（日）,跨品种边界扩展,SAFE,EXPECTED_PASS,未触发任何规则,NONE,PASS,0,0,同品种（镍→镍），不应触发BL-022
+boundary_test,BOUNDARY-020,N/A,COMEX镍持仓量（手）,COMEX：铜：主力合约：持仓量（日）,跨品种边界扩展,P0,EXPECTED_BLOCKED,现有规则拦截（BL-022）,BL-022,BLOCKED,0,0,跨品种（镍→铜），BL-022应拦截
+boundary_test,BOUNDARY-021,N/A,LME锡库存（吨）,LME：锡：库存：中国（日）,跨品种边界扩展,SAFE,EXPECTED_PASS,未触发任何规则,NONE,PASS,0,0,同品种（锡→锡），不应触发BL-018
+boundary_test,BOUNDARY-022,N/A,LME锡库存（吨）,LME：镍：注册仓单（日）,跨品种边界扩展,P0,EXPECTED_BLOCKED,现有规则拦截（BL-018; BL-018a）,BL-018; BL-018a,BLOCKED,0,0,跨品种（锡→镍），BL-018+BL-018a应拦截
+boundary_test,BOUNDARY-023,N/A（数据缺失）,磷酸铁锂 电池 国内销量,N/A,数据缺失边界,N/A,DATA_MISSING,人工白名单放行,WHITELIST,WHITELISTED,0,0,RISK-005原始案例：PDF模板无匹配数据
+boundary_test,BOUNDARY-024,N/A,磷酸铁锂 电池 国内销量,中国海关: 磷酸铁锂电池出口量: 月度,数据缺失边界,P0,EXPECTED_BLOCKED,现有规则拦截（BL-015）,BL-015,BLOCKED,0,0,假设数据修复后：国内销量→出口，BL-015应拦截
+p0_workbook_extra,WORKBOOK-RISK-005,TPL-LC-087,磷酸铁锂 电池 国内销量,N/A（工作表记录）,RISK-005,P0,NOT_BLOCKED,人工白名单放行（RISK-005）,WHITELIST,WHITELISTED,0,0,①无匹配数据
+p0_workbook_extra,WORKBOOK-RISK-001,TPL-AL-013,LME主要仓库场内库存,N/A（工作表记录）,RISK-001,P0,BLOCKED,保持现有状态,黑名单BL-005已覆盖，场内库存与非仓单库存互斥,BLOCKED,0,0,模糊匹配算法缺陷
+p0_workbook_extra,WORKBOOK-RISK-003,TPL-LC-084,其他电池(磷酸铁锂) 销量,N/A（工作表记录）,RISK-003,P0,BLOCKED,保持现有状态,黑名单BL-003已覆盖，销量与产量互斥,BLOCKED,0,0,模糊匹配算法缺陷
+p0_workbook_extra,WORKBOOK-RISK-006,TPL-LC-091,新能源乘用车 产量,N/A（工作表记录）,RISK-006,P0,BLOCKED,保持现有状态,黑名单BL-002已覆盖，产量与销量互斥,BLOCKED,0,0,模糊匹配算法缺陷
