@@ -1,0 +1,64 @@
+{
+  "task_id": "DSHE_V86_ALIAS_ENGINE_JOINT_INTEGRATE_AND_PRE_LAUNCH_CHECK",
+  "version": "v1.0",
+  "branch": "feature/v85-chart-template",
+  "generated_at": "2026-10-01T16:30:49.901897+00:00",
+  "overall": "PASS",
+  "summary": {
+    "total_gates": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "p0_failed": 0,
+    "p1_failed": 0,
+    "pass_rate_pct": 100.0
+  },
+  "gates": [
+    {
+      "gate_id": "G06",
+      "name": "Init Time <= 30s",
+      "description": "引擎初始化耗时",
+      "severity": "P0",
+      "status": "PASS",
+      "detail": "Init time: 23441.0 ms (<= 30000 ms)",
+      "elapsed_ms": 23538.8,
+      "evidence": {
+        "init_ms": 23441.0
+      }
+    },
+    {
+      "gate_id": "G07",
+      "name": "First Request <= 50ms",
+      "description": "预热后首次请求延迟",
+      "severity": "P1",
+      "status": "PASS",
+      "detail": "First request: 0.01 ms, from_cache=True",
+      "elapsed_ms": 34217.2,
+      "evidence": {
+        "elapsed_ms": 0.01,
+        "from_cache": true
+      }
+    },
+    {
+      "gate_id": "G08",
+      "name": "Cache Hit >= 85%",
+      "description": "LRU 缓存命中率",
+      "severity": "P1",
+      "status": "PASS",
+      "detail": "Cache hit rate: 100.00%",
+      "elapsed_ms": 25143.1,
+      "evidence": {
+        "hit_rate_pct": 100.0,
+        "hits": 8,
+        "misses": 0
+      }
+    }
+  ],
+  "constraints": {
+    "no_zhiji_api_call": true,
+    "no_modify_source_template": true,
+    "no_modify_v85_frozen_files": true,
+    "v86_prototype_isolated": true,
+    "branch_locked": true
+  }
+}
