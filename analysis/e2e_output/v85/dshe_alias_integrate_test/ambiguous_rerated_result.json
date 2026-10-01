@@ -1,0 +1,312 @@
+{
+ "task": "DSHE-B_V85_ALIAS_LIB_INTEGRATION_TEST_AND_QUALITY_SUMMARY",
+ "generated_at": "2026-10-01 12:11:51",
+ "inputs": {
+  "ambiguous": 139685,
+  "alias_lib": 1081339,
+  "hrp": 77014,
+  "tpl488": 48992,
+  "sim488": 83327,
+  "combine": 214177
+ },
+ "rows": 448,
+ "level_dist": {
+  "W0_错误别名": 437,
+  "W1_可靠同义": 2,
+  "W3_高风险": 6,
+  "W2_待复核": 3
+ },
+ "level_dist_pct": {
+  "W0_错误别名": 97.54,
+  "W3_高风险": 1.34,
+  "W2_待复核": 0.67,
+  "W1_可靠同义": 0.45
+ },
+ "basis_dist": {
+  "V86硬拦截": 434,
+  "V86通过": 2,
+  "V86降级复核": 2,
+  "别名库标注": 3,
+  "RISK_DB_P0": 4,
+  "dice边界": 3
+ },
+ "v86_reason_dist": {
+  "variety_anchor_violation": 250,
+  "high_dice": 3,
+  "variety_neutral_target_review": 4,
+  "blacklist_precheck": 183,
+  "empty_input": 4,
+  "mid_dice_same_variety": 3,
+  "metric_exclusion_hard": 1
+ },
+ "engine_guard": {
+  "patched": true,
+  "guard_hits": 382,
+  "total_alias_entries": 4643,
+  "missing_samples": [
+   "场内库存",
+   "注册仓单库存",
+   "非仓单库存",
+   "电解镍",
+   "电解铜",
+   "注册仓单",
+   "非仓单",
+   "产量",
+   "销量",
+   "销量",
+   "产量",
+   "场内库存"
+  ],
+  "note": "build_alias_library.py 第264-265行对 ALIAS[nm] 硬索引, 未入库归一名抛 KeyError; 本脚本进程内加 .get() 守卫, 未改写源文件"
+ },
+ "rerate_delta_dist": {
+  "-3": 21,
+  "-2": 173,
+  "-1": 243,
+  "0": 9,
+  "2": 2
+ },
+ "consistency_with_original": {
+  "consistent": 252,
+  "inconsistent": 196,
+  "consistent_pct": 56.25,
+  "inconsistent_direction": [
+   {
+    "expected": "W2_待复核",
+    "actual": "W0_错误别名",
+    "n": 173
+   },
+   {
+    "expected": "W1_可靠同义",
+    "actual": "W0_错误别名",
+    "n": 21
+   },
+   {
+    "expected": "W3_高风险",
+    "actual": "W1_可靠同义",
+    "n": 2
+   }
+  ]
+ },
+ "by_orig_level": {
+  "P0": {
+   "W0_错误别名": 243,
+   "W1_可靠同义": 2,
+   "W3_高风险": 6
+  },
+  "P1": {
+   "W0_错误别名": 173,
+   "W2_待复核": 3
+  },
+  "P2": {
+   "W0_错误别名": 21
+  }
+ },
+ "tpl488": {
+  "hit": 41,
+  "miss": 407,
+  "hit_risk_level": {
+   "CLEAN": 19,
+   "P0": 13,
+   "P1": 9
+  },
+  "hit_final_status": {
+   "PENDING_MATCH": 33,
+   "BLOCKED": 5,
+   "QUEUED_FOR_REVIEW": 1,
+   "RENDERED": 2
+  },
+  "hit_fully_blocked": {
+   "False": 36,
+   "True": 5
+  },
+  "template_set_size": 488,
+  "simulation_set_size": 488,
+  "by_variety_templates": {
+   "AL": 47,
+   "AO": 63,
+   "CU": 6,
+   "LC": 100,
+   "LI": 19,
+   "NI": 79,
+   "SI": 77,
+   "SN": 67,
+   "ZN": 30
+  }
+ },
+ "in_high_risk_pairs": 4,
+ "samples": {
+  "W0": [
+   {
+    "id": "AMB-0243",
+    "a": "LME：锌：其他报告头寸多头持仓量：投资基金（周）",
+    "b": "LME：锡：其他报告头寸多头持仓量：投资基金（周）",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种ZN在488中模板30个, P0=5, CLEAN=14"
+   },
+   {
+    "id": "AMB-0244",
+    "a": "LME：锌：其他报告头寸多头持仓量：投资基金（周）",
+    "b": "LME：镍：其他报告头寸多头持仓量：投资基金（周）",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种ZN在488中模板30个, P0=5, CLEAN=14"
+   },
+   {
+    "id": "AMB-0245",
+    "a": "LME：锡：其他报告头寸多头持仓量：投资基金（周）",
+    "b": "LME：镍：其他报告头寸多头持仓量：投资基金（周）",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种SN在488中模板67个, P0=38, CLEAN=15"
+   },
+   {
+    "id": "AMB-0246",
+    "a": "SMM: 进口盈亏: 锡: 现货: LME价格: 日",
+    "b": "SMM: 进口盈亏: 镍: 现货: LME价格: 日",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种SN在488中模板67个, P0=38, CLEAN=15"
+   },
+   {
+    "id": "AMB-0247",
+    "a": "SHFE：锡：主力合约：单边交易：成交量（日）",
+    "b": "SHFE：镍：主力合约：单边交易：成交量（日）",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种SN在488中模板67个, P0=38, CLEAN=15"
+   },
+   {
+    "id": "AMB-0248",
+    "a": "SHFE：锡：主力合约：单边交易：持仓量（日）",
+    "b": "SHFE：镍：主力合约：单边交易：持仓量（日）",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种SN在488中模板67个, P0=38, CLEAN=15"
+   },
+   {
+    "id": "AMB-0249",
+    "a": "SMM: 沪铅期现价差: 当月合约: 开盘价: 日度",
+    "b": "SMM: 沪锌期现价差: 当月合约: 开盘价: 日度",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种PB在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0250",
+    "a": "SMM: 沪铅期现价差: 当月合约: 开盘价: 日度",
+    "b": "SMM: 沪铝期现价差: 当月合约: 开盘价: 日度",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种PB在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0251",
+    "a": "SMM: 进口盈亏: 铅: 现货: LME价格: 日",
+    "b": "SMM: 进口盈亏: 锡: 现货: LME价格: 日",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种PB在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0252",
+    "a": "SMM: 进口盈亏: 铅: 现货: LME价格: 日",
+    "b": "SMM: 进口盈亏: 镍: 现货: LME价格: 日",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种PB在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0253",
+    "a": "LME：铅：CASH-3M合约：结算价差（日）",
+    "b": "LME：铝：CASH-3M合约：结算价差（日）",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种PB在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0254",
+    "a": "SMM: 沪铝期现价差: 当月合约: 开盘价: 日度",
+    "b": "SMM: 沪锌期现价差: 当月合约: 开盘价: 日度",
+    "basis": "V86硬拦截(variety_anchor_violation)",
+    "tpl": "无模板命中; 品种AL在488中模板47个, P0=29, CLEAN=14"
+   }
+  ],
+  "W3": [
+   {
+    "id": "AMB-0303",
+    "a": "LME库存",
+    "b": "LME镍库存",
+    "basis": "V86降级复核(variety_neutral_target_review)",
+    "tpl": "无模板命中; 品种通用在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0304",
+    "a": "LME库存",
+    "b": "LME铅库存",
+    "basis": "V86降级复核(variety_neutral_target_review)",
+    "tpl": "无模板命中; 品种通用在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0004",
+    "a": "磷酸铁锂 电池 国内销量",
+    "b": "",
+    "basis": "RISK_DB_P0",
+    "tpl": "命中模板 TPL-LC-087 (risk=P0, fully_blocked="
+   },
+   {
+    "id": "AMB-0006",
+    "a": "中国电解镍净进口量",
+    "b": "",
+    "basis": "RISK_DB_P0",
+    "tpl": "命中模板 TPL-NI-008 (risk=CLEAN, fully_block"
+   },
+   {
+    "id": "AMB-0007",
+    "a": "工业硅样本工厂库存(SMM)",
+    "b": "",
+    "basis": "RISK_DB_P0",
+    "tpl": "命中模板 TPL-SI-014 (risk=CLEAN, fully_block"
+   },
+   {
+    "id": "AMB-0008",
+    "a": "工业硅供需平衡",
+    "b": "",
+    "basis": "RISK_DB_P0",
+    "tpl": "命中模板 TPL-SI-019 (risk=P0, fully_blocked="
+   }
+  ],
+  "W1": [
+   {
+    "id": "AMB-0270",
+    "a": "CAAM: 中国汽车月度销量: 月度",
+    "b": "CAAM: 中国汽车销量: 月度",
+    "basis": "V86通过(high_dice)",
+    "tpl": "无模板命中; 品种通用在488中模板0个, P0=0, CLEAN=0"
+   },
+   {
+    "id": "AMB-0275",
+    "a": "SMM: 云南地区冶炼酸(硫酸)价格(出厂价) - ",
+    "b": "SMM: 广西地区冶炼酸(硫酸)价格(出厂价) - ",
+    "basis": "V86通过(high_dice)",
+    "tpl": "无模板命中; 品种通用在488中模板0个, P0=0, CLEAN=0"
+   }
+  ]
+ },
+ "v86_snapshot": {},
+ "output_csv": "ambiguous_indicator_rerated.csv",
+ "columns_added": [
+  "v86_accept",
+  "v86_review",
+  "v86_reason",
+  "v86_rule",
+  "v86_blacklist_rule",
+  "alias_relation",
+  "alias_review_flag",
+  "alias_confusable_neighbor_count",
+  "in_high_risk_pairs",
+  "orig_risk_level",
+  "orig_expected_level",
+  "orig_consistent",
+  "rerated_level",
+  "rerate_basis",
+  "rerate_delta",
+  "tpl488_hit",
+  "tpl488_risk_level",
+  "tpl488_fully_blocked",
+  "tpl488_route_reason",
+  "tpl488_final_status",
+  "tpl488_trigger"
+ ],
+ "original_untouched": true
+}

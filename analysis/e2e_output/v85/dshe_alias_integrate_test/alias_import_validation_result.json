@@ -1,0 +1,295 @@
+{
+ "task": "DSHE-B_V85_ALIAS_LIB_INTEGRATION_TEST_AND_QUALITY_SUMMARY",
+ "generated_at": "2026-10-01 12:28:01",
+ "strict_mode": false,
+ "engine": {
+  "source": "build_alias_library.py",
+  "loaded_lines": "1..655",
+  "source_md5": "d375f963678d1e89c7e9949805f8433f",
+  "source_sha256": "b756c191ee24882fe6762ece11f77b239ba36e82f28b7bc1d3783a9be4d8f570"
+ },
+ "inputs": {
+  "alias_lib_csv": {
+   "path": "D:\\DSH_WORK\\framework-tree\\analysis\\e2e_output\\v85\\alias_lib_full_audit\\indicator_alias_library.csv",
+   "bytes": 1081339,
+   "md5": "e9989c2938b1707739f85e6085e91414",
+   "rows": 4643
+  },
+  "indicators_v1": {
+   "path": "D:\\DSH_WORK\\framework-tree\\data\\indicators_v1.json",
+   "bytes": 713207,
+   "md5": "ebcbd9a7cf69830384c696607bfeda76",
+   "keys": 1658,
+   "readonly": true
+  }
+ },
+ "readonly_declaration": "未修改 indicator_alias_library.csv / indicators_v1.json; 无 zhiji API 调用",
+ "checks": {
+  "V1": {
+   "rows": 4643,
+   "columns": [
+    "alias_id",
+    "canonical_key",
+    "canonical_name",
+    "canonical_unit",
+    "variety_family",
+    "metric_noun",
+    "variety_token",
+    "alias_name",
+    "alias_norm",
+    "alias_type",
+    "unit_suffix",
+    "chart_suffix",
+    "alias_source",
+    "alias_origin_sample",
+    "distinct_form_count",
+    "evidence_count",
+    "relation",
+    "confidence",
+    "blacklist_rule",
+    "risk_case_ids",
+    "review_flag",
+    "review_priority",
+    "confusable_neighbor_count"
+   ],
+   "missing_columns": [],
+   "duplicate_alias_id": 0,
+   "blank_alias_id": 0,
+   "blank_alias_norm": 0,
+   "blank_alias_name": 0,
+   "findings": []
+  },
+  "V2": {
+   "checked": 4643,
+   "identical": 4643,
+   "drift": 0,
+   "empty_alias_name": 0,
+   "drift_samples": [],
+   "findings": []
+  },
+  "V3": {
+   "canonical_keys_referenced": 0,
+   "canonical_key_tokens": 3300,
+   "missing_distinct_keys": 0,
+   "rows_with_missing_key": 0,
+   "missing_key_top20": [],
+   "iv1_total_keys": 1658,
+   "findings": []
+  },
+  "V4": {
+   "tier_dist": {
+    "W2_存疑": 380,
+    "W3_明确错误": 27,
+    "W0_待注册": 1734,
+    "W1_可靠同义": 2502
+   },
+   "unmapped_relations": [],
+   "relation_flag_mismatch": 0,
+   "mismatch_samples": [],
+   "findings": []
+  },
+  "V5": {
+   "b1_candidates": 2502,
+   "passed": 2502,
+   "dropped": 0,
+   "gate_fail_dist": {},
+   "dropped_by_gate": {},
+   "dropped_total_unique": 0,
+   "findings": [
+    {
+     "check": "V5_b1_gate_summary",
+     "severity": "INFO",
+     "detail": "B1 候选 2502, 通过 2502, 剔除 0",
+     "check_id": "V5"
+    },
+    {
+     "check": "V5_gate_not_independent",
+     "severity": "WARN",
+     "detail": "G1–G8 对全部 2502 条 B1 候选无一剔除: review_flag=auto 标签已在上游等价编码了这 8 项条件, 门禁未提供额外筛查力。导入前建议补一道独立抽检 (见 alias_import_validation_report.md)",
+     "check_id": "V5"
+    }
+   ]
+  },
+  "V6": {
+   "iv1_names": 1239,
+   "iv1_existing_aliases": 0,
+   "alias_rows_already_in_iv1_name": 1226,
+   "alias_rows_already_in_iv1_aliases": 0,
+   "findings": []
+  },
+  "V7": {
+   "distinct_canonical_names": 1239,
+   "duplicate_canonical_name": 170,
+   "duplicate_canonical_name_samples": {
+    "SHFE：铝：主力合约：收盘价（日）": [
+     "al_00_close_front",
+     "al_53_close_front"
+    ],
+    "LME：铝：3个月合约：结算价（日）": [
+     "al_23_lme_settle",
+     "al_24_lme_settle"
+    ],
+    "国际铝业协会：原铝：产量：全球（月）": [
+     "al_2_output_2",
+     "al_312_global_output"
+    ],
+    "氧化铝：净进口数量：中国（月）": [
+     "al_314_alumina_net_imp",
+     "al_3_import_alumina"
+    ],
+    "铝土矿：进口：港口库存：中国（周）": [
+     "al_314_bauxite_port_inv",
+     "al_62_import"
+    ],
+    "铝棒：6063：Φ120：加工费：佛山（日）": [
+     "al_315_tc_tc",
+     "al_315_tc_tc_percentile"
+    ],
+    "氧化铝：库存：中国（周）": [
+     "al_41_inv",
+     "al_45_inv_implicit_percentile"
+    ],
+    "LME：铝：注销仓单（日）": [
+     "al_41_lme_warrant",
+     "al_41_warrant",
+     "al_41_warrant_ratio"
+    ],
+    "氧化铝：港口库存：中国（周）": [
+     "al_52_inv_alumina",
+     "al_61_alumina_port_inv"
+    ],
+    "SHFE：电解铜：主力合约：收盘价（日）": [
+     "cu_22_close_front",
+     "cu_24_shfe_close_far",
+     "cu_24_shfe_close_near"
+    ]
+   },
+   "distinct_alias_norm": 2882,
+   "alias_norm_multi_canonical": 165,
+   "alias_norm_multi_canonical_samples": {
+    "SHFE:铝:主力合约:收盘价(日": [
+     "al_00_close_front",
+     "al_53_close_front"
+    ],
+    "LME:铝:3个月合约:结算价(日": [
+     "al_23_lme_settle",
+     "al_24_lme_settle"
+    ],
+    "国际铝业协会:原铝:产量:全球(月": [
+     "al_2_output_2",
+     "al_312_global_output"
+    ],
+    "氧化铝:净进口数量:中国(月": [
+     "al_314_alumina_net_imp",
+     "al_3_import_alumina"
+    ],
+    "铝土矿:进口:港口库存:中国(周": [
+     "al_314_bauxite_port_inv",
+     "al_62_import"
+    ],
+    "铝棒:6063:Φ120:加工费:佛山(日": [
+     "al_315_tc_tc",
+     "al_315_tc_tc_percentile"
+    ],
+    "氧化铝:库存:中国(周": [
+     "al_41_inv",
+     "al_45_inv_implicit_percentile"
+    ],
+    "LME:铝:注销仓单(日": [
+     "al_41_lme_warrant",
+     "al_41_warrant",
+     "al_41_warrant_ratio"
+    ],
+    "氧化铝:港口库存:中国(周": [
+     "al_52_inv_alumina",
+     "al_61_alumina_port_inv"
+    ],
+    "SHFE:电解铜:主力合约:收盘价(日": [
+     "cu_22_close_front",
+     "cu_24_shfe_close_far",
+     "cu_24_shfe_close_near"
+    ]
+   },
+   "canonical_norm_forms": 1234,
+   "alias_norm_is_self_canonical": 1230,
+   "alias_is_other_canonical": 0,
+   "alias_is_other_canonical_samples": [],
+   "findings": [
+    {
+     "check": "V7_duplicate_canonical_name",
+     "severity": "WARN",
+     "detail": "170 个 canonical_name 对应多个不同原子键",
+     "check_id": "V7"
+    },
+    {
+     "check": "V7_alias_norm_multi_canonical",
+     "severity": "BLOCK",
+     "detail": "165 个 alias_norm 指向多个不同原子键 (导入后歧义)",
+     "check_id": "V7"
+    }
+   ]
+  },
+  "V8": {
+   "illegal_char_rows": 0,
+   "illegal_samples": [],
+   "empty_norm_rows": 0,
+   "overlong_rows": 0,
+   "overlong_samples": [],
+   "max_len_observed": 78,
+   "findings": []
+  },
+  "V9": {
+   "b1_passed": 2502,
+   "single_key": 2502,
+   "multi_key": 0,
+   "distinct_target_keys": 1650,
+   "alias_writes_planned": 2253,
+   "already_present_skipped": 249,
+   "missing_target_keys": 0,
+   "iv1_keys_without_aliases_before": 1654,
+   "findings": []
+  }
+ },
+ "findings": [
+  {
+   "check": "V5_b1_gate_summary",
+   "severity": "INFO",
+   "detail": "B1 候选 2502, 通过 2502, 剔除 0",
+   "check_id": "V5"
+  },
+  {
+   "check": "V5_gate_not_independent",
+   "severity": "WARN",
+   "detail": "G1–G8 对全部 2502 条 B1 候选无一剔除: review_flag=auto 标签已在上游等价编码了这 8 项条件, 门禁未提供额外筛查力。导入前建议补一道独立抽检 (见 alias_import_validation_report.md)",
+   "check_id": "V5"
+  },
+  {
+   "check": "V7_duplicate_canonical_name",
+   "severity": "WARN",
+   "detail": "170 个 canonical_name 对应多个不同原子键",
+   "check_id": "V7"
+  },
+  {
+   "check": "V7_alias_norm_multi_canonical",
+   "severity": "BLOCK",
+   "detail": "165 个 alias_norm 指向多个不同原子键 (导入后歧义)",
+   "check_id": "V7"
+  }
+ ],
+ "summary": {
+  "total": 4,
+  "block": 1,
+  "warn": 2,
+  "info": 1,
+  "b1_candidates": 2502,
+  "b1_passed": 2502,
+  "b1_dropped": 0,
+  "b1_pass_rate_pct": 100.0,
+  "alias_writes_planned": 2253,
+  "alias_norm_multi_canonical": 165,
+  "alias_is_other_canonical": 0,
+  "duplicate_canonical_name": 170,
+  "manual_conflict_items": 165,
+  "import_ready": false
+ }
+}

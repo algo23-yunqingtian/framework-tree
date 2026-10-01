@@ -1,0 +1,114 @@
+==============================================================================
+ths_alias_gap.py · THS 指标别名覆盖专项评估 (T2.2)
+任务 : DSHE-B_V85_ALIAS_LIB_INTEGRATION_TEST_AND_QUALITY_SUMMARY
+执行时间(UTC+8): 2026-10-01 12:26:12
+判定引擎: build_alias_library.py 第1..655行 (MD5 d375f963678d1e89c7e9949805f8433f)
+==============================================================================
+
+【1】别名库索引
+  别名库行数          : 4643
+  唯一 alias_norm     : 4643
+  唯一 canonical_name : 1405 (拆 || 后 1235 个归一名)
+  indicators_v1 正名归一形态 (match_norm+norm_full 合并): 1246
+
+【2】HERMES THS 候选映射
+  行数            : 2359
+  match_category  : {'高置信': 864, '模糊待人工确认': 1188, '无候选/低置信': 307}
+  zhiji_id_null=Y : 2359 / 2359 (全部无 zhiji_id, 待别名链路补位)
+  distinct variety: 7 -> {'NI': 758, 'SN': 541, 'ZN': 381, 'SI': 343, 'LI': 228, 'AL': 69, 'CU': 39}
+
+【3】THS 别名覆盖判定结果
+  状态                      行数      占比 含义
+  UNREGISTERED_ONLY     2299   97.5%  库内有形态但无 canonical, 需补注册
+  TARGET_HIT               5    0.2%  原名缺映射, best_match 可解析
+  MISSING                  0    0.0%  别名库完全无该形态
+  RESOLVED_ALIAS_HIT      55    2.3%  已可解析到 canonical, 已覆盖
+  需补工作 (UNREGISTERED+TARGET+MISSING) = 2304 / 2359 = 97.7%
+  其中真正缺别名映射 (TARGET_HIT+MISSING) = 5 (0.2%)
+  其中缺 canonical 注册 (UNREGISTERED_ONLY) = 2299 (97.5%)
+
+  优先级分桶:
+    P1_UNREG_AMBIGUOUS        1185
+    P2_UNREG_HIGHCONF          812
+    P0_UNREG_NO_CANDIDATE      302
+    P9_RESOLVED_HIGH            52
+    P0_TGT_NO_CANDIDATE          5
+    P9_RESOLVED_AMBIG            3
+
+  未覆盖三类 × HERMES 分类 交叉表:
+  状态                       无候选/低置信        模糊待人工确认            高置信
+  UNREGISTERED_ONLY            302           1185            812
+  TARGET_HIT                     5              0              0
+  MISSING                        0              0              0
+
+  UNREGISTERED_ONLY 按品种 (Top12) — V86 canonical 注册重点:
+    NI       741
+    SN       536
+    ZN       381
+    SI       324
+    LI       209
+    AL        69
+    CU        39
+  TARGET_HIT 按品种:
+    NI         5
+  MISSING 按品种:
+
+  待补别名 Top25 明细 (priority_seq 前 25):
+  chart  variety idx original_ths_name                category     status              best_match
+  THS-AL AL     2   综合使用电价                           无候选/低置信      UNREGISTERED_ONLY   工业硅电价
+  THS-AL AL     5   单吨阳极成本                           无候选/低置信      UNREGISTERED_ONLY   工业硅成本
+  THS-AL AL     8   估算辅料成本                           无候选/低置信      UNREGISTERED_ONLY   工业硅成本
+  THS-AL AL     10  自备电价、网电价差、区域吨铝成本差                无候选/低置信      UNREGISTERED_ONLY   电解铝：生产现金成本：中国（月）
+  THS-AL AL     1   自备电厂成本/自备电价                      无候选/低置信      UNREGISTERED_ONLY   电力成本分项
+  THS-AL AL     2   无锡、佛山、巩义、上海、重庆、天津等区域库存           无候选/低置信      UNREGISTERED_ONLY   中国锡锭社会库存
+  THS-CU CU     2   仓单注册量、仓单注销量、仓单总量                 无候选/低置信      UNREGISTERED_ONLY   碳酸锂 仓单量
+  THS-CU CU     3   上海、江苏、广东、浙江等仓单数量                 无候选/低置信      UNREGISTERED_ONLY   GFEX：工业硅：仓单数量（日）
+  THS-CU CU     2   上海库存、广东库存、江苏库存                   无候选/低置信      UNREGISTERED_ONLY   电解铜：现货库存：广东（日）
+  THS-CU CU     3   上海、广东、江苏、浙江、江西等区域库存              无候选/低置信      UNREGISTERED_ONLY   多晶硅区域库存
+  THS-CU CU     0   LME-approved warehouses          无候选/低置信      UNREGISTERED_ONLY   LME库存
+  THS-CU CU     1   Cancelled warrants               无候选/低置信      UNREGISTERED_ONLY   硫化镍矿：产量：伦丁矿业：Eagle矿区
+  THS-CU CU     3   保税区库存、沪伦进口盈亏或COMEX-LME价差         无候选/低置信      UNREGISTERED_ONLY   SMM: 进口盈亏: 镍: 现货: LM
+  THS-CU CU     6   保税区库存、进口利润、精废价差                  无候选/低置信      UNREGISTERED_ONLY   锡锭进口利润
+  THS-LI LI     2   成交量（手）                           无候选/低置信      UNREGISTERED_ONLY   沪铅主力连续成交量
+  THS-LI LI     7   月差（元/吨）                          无候选/低置信      UNREGISTERED_ONLY   工业硅基差
+  THS-LI LI     6   月差（元/吨）                          无候选/低置信      UNREGISTERED_ONLY   工业硅基差
+  THS-LI LI     0   月差（元/吨）                          无候选/低置信      UNREGISTERED_ONLY   工业硅基差
+  THS-LI LI     6   近3年同月均值（元/吨）                     无候选/低置信      UNREGISTERED_ONLY   沪锡近半年月差变化
+  THS-LI LI     0   估值分位（%）                          无候选/低置信      UNREGISTERED_ONLY   分路线利润
+  THS-LI LI     8   近3年同月分位均值（%）                     无候选/低置信      UNREGISTERED_ONLY   沪锡近半年月差变化
+  THS-LI LI     10  近3年同月利润均值（元/吨）                   无候选/低置信      UNREGISTERED_ONLY   沪锡近半年月差变化
+  THS-LI LI     5   成交量（手）                           无候选/低置信      UNREGISTERED_ONLY   沪铅主力连续成交量
+  THS-LI LI     8   近3年同月多空持仓比均值（%）                  无候选/低置信      UNREGISTERED_ONLY   SHFE铝近3月虚实比
+  THS-LI LI     9   近3年同月多空持仓比标准差（%）                 无候选/低置信      UNREGISTERED_ONLY   沪锡近半年月差变化
+
+  未解析 2304 行的 best_match 跨品种审计 (候选可靠性):
+    同品种        :  1693
+    跨品种 (错误) :   442  (19.2%)
+    无品种标记    :   169
+    图表品种不在语料族表: 0
+      THS-AL-3.2   AL  综合使用电价                       -> 工业硅电价                        (SI)
+      THS-AL-3.2   AL  单吨阳极成本                       -> 工业硅成本                        (SI)
+      THS-AL-3.2   AL  估算辅料成本                       -> 工业硅成本                        (SI)
+      THS-AL-4.2   AL  无锡、佛山、巩义、上海、重庆、天津等区域库存       -> 中国锡锭社会库存                     (SN)
+      THS-CU-4.2   CU  仓单注册量、仓单注销量、仓单总量             -> 碳酸锂 仓单量                      (LI)
+      THS-CU-4.2   CU  上海、江苏、广东、浙江等仓单数量             -> GFEX：工业硅：仓单数量（日）             (SI)
+      THS-CU-4.3   CU  上海、广东、江苏、浙江、江西等区域库存          -> 多晶硅区域库存                      (SI)
+      THS-CU-4.4   CU  Cancelled warrants           -> 硫化镍矿：产量：伦丁矿业：Eagle矿区（季）      (NI)
+      THS-CU-4.4   CU  保税区库存、沪伦进口盈亏或COMEX-LME价差     -> SMM: 进口盈亏: 镍: 现货: LME价格: 日度  (NI)
+      THS-CU-4.4   CU  保税区库存、进口利润、精废价差              -> 锡锭进口利润                       (SN)
+      THS-LI-2.1   LI  成交量（手）                       -> 沪铅主力连续成交量                    (PB)
+      THS-LI-2.1   LI  月差（元/吨）                      -> 工业硅基差                        (SI)
+
+  按品种待补量 (V86 迭代估算):
+  variety  UNREGISTERED_ONLY     TARGET  MISSING       合计
+  NI                    741          5        0      746
+  SN                    536          0        0      536
+  ZN                    381          0        0      381
+  SI                    324          0        0      324
+  LI                    209          0        0      209
+  AL                     69          0        0       69
+  CU                     39          0        0       39
+
+已写出: D:\DSH_WORK\framework-tree\analysis\e2e_output\v85\dshe_alias_integrate_test\ths_missing_alias.csv (2359 行, 1197751 bytes)
+已写出: D:\DSH_WORK\framework-tree\analysis\e2e_output\v85\dshe_alias_integrate_test\ths_alias_gap_result.json
+==============================================================================

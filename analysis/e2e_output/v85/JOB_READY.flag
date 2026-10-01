@@ -1,4 +1,4 @@
-# =============================================================================
+﻿# =============================================================================
 # JOB_READY.flag — 就绪锁文件
 # =============================================================================
 # 工单: DSH-B_GITHUB_SHARE_PUSH_V85_20260928
@@ -943,6 +943,27 @@ NO_SOURCE_MODIFICATION=TRUE
 NO_GT_MODIFICATION=TRUE
 NO_RULE_MODIFICATION=TRUE
 NO_AUTO_ITERATE=TRUE
+# ============================================================ #
+# V85_ALL_ANALYSIS_COMPLETE 2026-10-01 12:45:13
+# task       : DSHE-B_V85_ALIAS_LIB_INTEGRATION_TEST_AND_QUALITY_SUMMARY
+# branch     : feature/v85-chart-template
+# output_dir : analysis/e2e_output/v85/dshe_alias_integrate_test/
+# md5_list   : dshe_alias_integrate_test/output_file_md5.csv (19 files)
+# deliverables:
+#   alias_blacklist_combine_eval.md      ������+���Ϻ�����(31)�ط����� 41+200+1134
+#   ths_missing_alias.csv                THS��������ר�� 2359�� (MISSING=0)
+#   alias_lib_import_validate.py         ������·У�� V1-V9 ������
+#   alias_import_validation_report.md    import_ready=FALSE (BLOCK1/WARN2/INFO1)
+#   ambiguous_indicator_rerated.csv      ����448�ж��θ����طּ�
+#   alias_lib_v86_roadmap.md             V86����·�� 10���� 16.25-24.25����
+#   alias_lib_v85_final_quality_report.md ������������
+# key_metrics : Recall=100.00% Precision=22.65% Specificity=42.86% F1=36.94% BA=71.43%
+# key_finding : 6��DSH-B��չ������������߼ʹ��� (delta=0); ע���������֤��Ч (2/6̽���Ž��ƶ�)
+# caveat      : semantic_blacklist_v85_final.json �� full_488_template_playback_result.csv ȱʧ, ���ô������
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+# ============================================================ #
+
+# ============================================================ #
 ## HERMES_V85_HUMAN_REVIEW_TOOL_ENHANCE_AND_BATCH_DATA_PREP
 JOB_READY=TRUE
 REVIEW_WORKBENCH=READY
@@ -958,4 +979,25 @@ DELIVERY_PACKAGE_CHECK=PASS (28/28 files)
 GATE_FINAL_REPORT=COMPLETED (52 items)
 ARCHIVE_SPEC=READY
 DEMO_OVERVIEW=READY
-V85_FINAL_DELIVERY=COMPLETE
+V85_FINAL_DELIVERY=COMPLETE# ============================================================ #
+
+# ============================================================ #
+# V85_ALL_ANALYSIS_COMPLETE 2026-10-01 13:10:00
+# task       : DSH-B_V85_HUMAN_REVIEW_MATERIAL_PREP_AND_DATA_ENTRY_TEMPLATE
+# branch     : feature/v85-chart-template
+# output_dir : analysis/e2e_output/v85/dshb_human_review_prep/
+# md5_list   : analysis/e2e_output/v85/dshb_human_review_prep/MD5_MANIFEST.md (7 files)
+# deliverables:
+#   v85_p0_risk_human_workbook.csv       P0风险人工处置总表(41行,含4漏拦截+1未命中+其余P0+P1)
+#   human_review_operation_guide.md      人工评审操作指引(2角色+判定标准+白名单条件+5案例)
+#   bl009a_review_package.md             BL-009a专项评审包(规则原文+触发样例+回放+TP/FP+副作用)
+#   data_missing_p0_summary.md           数据缺失P0汇总(RISK-010/011/013逐条+上游修复+V86计划)
+#   gate_block_tracker.csv               Gate阻塞跟踪表(10项:H1-H5+G-01/03/05/06+WL-EXPIRY)
+#   v86_rule_migration_checklist.md      V86规则迁移清单(P0:3+P1:3+P2:3,9项15-25人天)
+# key_metrics : 4漏拦截P0(1方向性+3数据缺失) | 5未命中P0 | 41工作表条目 | 10 Gate跟踪项
+# key_finding : BL-009a(confirmed_new)修复RISK-002方向性缺陷; 3条数据缺失需上游PDF修复
+# V86优先级   : P0:BL-009a+PDF修复+BL-026 | P1:跨品种规则+候选复核+完整性检查 | P2:双向引擎+CI+覆盖率
+# caveat      : 评审工作表为人工填写模板,review_decision/reviewer/review_time字段待人工填写
+V85_ALL_ANALYSIS_COMPLETE=TRUE
+# ============================================================ #
+DSHB_V85_HUMAN_REVIEW_MATERIAL_PREP_AND_DATA_ENTRY_TEMPLATE=COMPLETE

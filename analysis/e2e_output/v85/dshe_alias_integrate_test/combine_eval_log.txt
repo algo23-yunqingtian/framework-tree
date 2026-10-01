@@ -1,0 +1,176 @@
+==============================================================================
+combine_eval.py · 别名库 + 联合黑名单 回放质量评估 (T2.1)
+任务 : DSHE-B_V85_ALIAS_LIB_INTEGRATION_TEST_AND_QUALITY_SUMMARY
+执行时间(UTC+8): 2026-10-01 12:24:37
+源脚本: alias_match_presearch/build_alias_library.py
+  MD5 d375f963678d1e89c7e9949805f8433f / SHA256 b756c191ee24882fe6762ece11f77b239ba36e82f28b7bc1d3783a9be4d8f570
+  加载范围 第1..655行 (分节标记在第656行; 写文件语句已排除)
+  随机种子 20261001 (与上一轮一致, 测试集可复现)
+==============================================================================
+
+【0】T1 输入探测
+  别名库 indicator_alias_library.csv                FOUND rows=4643
+  歧义清单 ambiguous_indicator_list.csv              FOUND rows=448
+  高危混淆对 high_risk_confusion_pairs.csv            FOUND rows=409
+  上一轮回归报告 regression_test_report.md              FOUND 
+  上一轮 _stats_new.json                            FOUND rows=14
+  上一轮 quality_regression_result.json             FOUND rows=8
+  V85 基线黑名单 semantic_blacklist_fixed.json        FOUND rows=9
+  DSH-B 黑名单扩充候选 blacklist_extend_candidate.json  FOUND rows=10
+  DSH-B semantic_blacklist_v85_final.json        MISSING (REQUIRED - BLOCKING) 
+  DSH-B full_488_template_playback_result.csv    MISSING (REQUIRED - BLOCKING) 
+  代理: ths_render_task_summary.csv (488行)         FOUND rows=488
+  代理: render_simulation_log_fixed.csv (488行)     FOUND rows=488
+  HERMES ths_candidate_mapping.csv               FOUND rows=2359
+  HERMES ths_mapping_prep_report.md              FOUND 
+  data/indicators_v1.json (只读)                   FOUND rows=1658
+  -> 必需输入缺失 2 项: ['semantic_blacklist_v85_final.json', 'full_488_template_playback_result.csv']
+
+resolve_canonical 守卫: patched=True, ALIAS 条目 4643
+
+==============================================================================
+【1】联合黑名单构建
+==============================================================================
+基线规则数        : 25 (BL-001..BL-025, 来自 semantic_blacklist_fixed.json)
+扩展候选总数      : 8
+采纳 (非拒绝)     : 6 -> ['BL-018a', 'BL-018b', 'BL-019a', 'BL-026', 'BL-016a', 'BL-025a']
+拒绝 (not_recommended): 2 -> ['BL-NEW-01', 'BL-NEW-02']
+联合规则总数      : 31
+
+扩展候选明细 (lint 后实际生效 pattern 数):
+  rule_id    parent   severity  L_gen  L_eff  R_eff  name
+  BL-018a    BL-018   P0        7      6      7      锡与镍跨品种禁止
+  BL-018b    BL-018   P0        3      2      5      锡与钢铁跨品种禁止
+  BL-019a    BL-019   P0        4      4      4      硅加工费与铜加工费跨品种禁止
+  BL-026     BL-012   P0        1      1      1      库存天数跨品种禁止
+  BL-016a    BL-016   P1        5      5      4      利润与产量互斥（含碳酸锂子品类）
+  BL-025a    BL-025   P0        4      4      4      消费量与产量互斥（含锡锌子品类）
+  新增规则中 pattern lint: 丢弃 3 / 整词边界告警 1
+
+==============================================================================
+【2】测试集构建
+==============================================================================
+  负向测试集: 41 条历史 P0/P1 风险案例 (risk_rootcause_detail.csv)
+    级别分布: {'P0': 25, 'P1': 16}
+    有匹配目标: 37 / 无目标: 4
+  正向候选池: 1179 行 (match_type!=none 且 verify_status in {VALID,FILLED})
+     fuzzy_name     FILLED      597
+     fuzzy_name     VALID       513
+     exact_name     VALID        31
+     exact_name     FILLED       21
+     fuzzy_key      FILLED       11
+     fuzzy_key      VALID         6
+  正向测试集: 抽样 200 条 (seed=20261001)
+    match_type : {'fuzzy_name': 184, 'exact_name': 14, 'fuzzy_key': 2}
+    verify     : {'VALID': 96, 'FILLED': 104}
+
+==============================================================================
+【3】BEFORE — 别名库 + 基线黑名单 (25 条)
+==============================================================================
+  混淆矩阵 TP=41 FN=0 FP=140 TN=60
+  Accuracy=41.91% Precision=22.65% Recall=100.00% Specificity=42.86% F1=36.94% BalancedAcc=71.43%
+  负向拦截原因: {'blacklist_precheck': 15, 'no_match_target_recorded': 4, 'variety_anchor_violation': 22}
+  正向被拦原因: {'variety_neutral_target_review': 43, 'variety_anchor_violation': 55, 'below_threshold': 39, 'blacklist_precheck': 3}
+  R-07 别名库直查命中: 负向 0 / 正向 14
+
+==============================================================================
+【4】AFTER — 别名库 + 联合黑名单 (31 条)
+==============================================================================
+  混淆矩阵 TP=41 FN=0 FP=140 TN=60
+  Accuracy=41.91% Precision=22.65% Recall=100.00% Specificity=42.86% F1=36.94% BalancedAcc=71.43%
+  负向拦截原因: {'blacklist_precheck': 15, 'no_match_target_recorded': 4, 'variety_anchor_violation': 22}
+  正向被拦原因: {'variety_neutral_target_review': 43, 'variety_anchor_violation': 55, 'below_threshold': 39, 'blacklist_precheck': 3}
+
+==============================================================================
+【5】前后指标对比与差异归因
+==============================================================================
+  指标                     BEFORE(25)  AFTER(31)      delta
+  TP                          41.00      41.00      +0.00
+  FN                           0.00       0.00      +0.00
+  FP                         140.00     140.00      +0.00
+  TN                          60.00      60.00      +0.00
+  Accuracy(%)                 41.91      41.91      +0.00
+  Precision(%)                22.65      22.65      +0.00
+  Recall(%)                  100.00     100.00      +0.00
+  Specificity(%)              42.86      42.86      +0.00
+  F1(%)                       36.94      36.94      +0.00
+  BalancedAcc(%)              71.43      71.43      +0.00
+
+  逐条翻转: 负向 0 条 / 正向 0 条
+
+  新增规则边际贡献归因 (三种配置对照, delta 相对 base_only):
+  base_only (25 条): 负向 拦截合计 41 / 黑名单 15 | 正向 拦截合计 140 / 黑名单 3
+    BL-018a    本规则直接命中 负向  0 / 正向   0 | 黑名单拦截 delta 负向 +0 正向 +0
+    BL-018b    本规则直接命中 负向  0 / 正向   0 | 黑名单拦截 delta 负向 +0 正向 +0
+    BL-019a    本规则直接命中 负向  0 / 正向   0 | 黑名单拦截 delta 负向 +0 正向 +0
+    BL-026     本规则直接命中 负向  0 / 正向   0 | 黑名单拦截 delta 负向 +0 正向 +0
+    BL-016a    本规则直接命中 负向  0 / 正向   0 | 黑名单拦截 delta 负向 +0 正向 +0
+    BL-025a    本规则直接命中 负向  0 / 正向   0 | 黑名单拦截 delta 负向 +0 正向 +0
+  -> 6 条新增规则中, 边际生效 (拦截总数 delta!=0) 的规则数: 0 / 6
+  -> 6 条新增规则直接命中合计 (本规则触发) 0 行 (负向+正向)
+  -> 结论: 6 条 DSH-B 扩展规则在当前 41+200 回归套件上零边际贡献,
+     且『本规则直接命中』合计 0 行 —— 负向 15 条黑名单拦截全部由父规则 (BL-018/BL-016 等) 完成,
+     子规则 (BL-018a/BL-018b/BL-025a/BL-016a/BL-026/BL-019a) 无一触发。
+     根因见【8】注入机制自检 (2/6 探针可移动门禁) 与【9】1134 联合回放 (零翻转)。
+
+  AFTER 规则触发计数 (黑名单类):
+    BL-012         8
+    BL-016         6
+    BL-002         2
+    BL-005         1
+    BL-009         1
+
+==============================================================================
+【6】新增 FP 审计 (AFTER 相对 BEFORE 多拦截的正向样本)
+==============================================================================
+  BEFORE 已拦截的正向样本: 140
+  AFTER 新增拦截:         0
+  其中跨品种 (旧流水线错配, V86 拦截正确): 0
+  非跨品种 (可能真误拦): 0
+
+==============================================================================
+【7】488 模板回放联动 (代理数据 render_simulation_log_fixed.csv)
+==============================================================================
+  代理回放行数: 488 (DSH-B 声明的 full_488_template_playback_result.csv 缺失, 使用渲染模拟日志代理)
+  risk_level   : {'CLEAN': 157, 'P0': 267, 'P1': 64}
+  final_status : {'RENDERED': 88, 'RENDER_FAILED': 1, 'PARTIAL_RENDERED': 8, 'QUEUED_FOR_REVIEW': 4, 'PENDING_MATCH': 155, 'BLOCKED': 232}
+  fully_blocked=True: 234 | partial_blocked=True: 8
+  invalid_series 合计: 260 | valid_series 合计: 101
+  route_reason :
+     全部 series 无效 (P0/BLOCKED)                231
+     THS 模板无 zhiji_id，需后续匹配                   155
+     CLEAN，可直接渲染                               89
+     部分 series 无效 (1个)，降级渲染有效 series (1个)       8
+     P0 但在模板白名单中，放行至人工复核                        3
+     P1 风险，需人工复核                                1
+     P0 语义冲突，阻塞不渲染                              1
+
+==============================================================================
+【8】注入机制自检 (真实语料探针: 仅扩展黑名单可拦截的构造)
+==============================================================================
+  真实名称池: 3103 个 (indicators_v1 名 + ths series/matched)
+  BL-018a    WSA：粗钢：表观消费量：全球（年）       vs COMEX镍持仓量（手）           | 基线:variety_neutral_target_review -> 联合:blacklist_precheck     <<< 门禁移动
+  BL-018b    JFX,ICDX: 锡锭_月累计成交量: 日度  vs 热轧普碳钢：标准轨道钢：产量：日本（年）   | 基线:variety_neutral_target_review -> 联合:blacklist_precheck     <<< 门禁移动
+  BL-019a    语料命中 L=48 R=0 -> 无可用探针 (R-01 均触发)
+  BL-026     SMM 再生铅原料库存天数            vs SMM: 再生铅冶炼企业原料库存天数: 周度 | 基线:blacklist_precheck     -> 联合:blacklist_precheck     (上游门禁已覆盖)
+  BL-016a    NPI冶炼利润（元/吨）             vs 再生碳酸锂产量（万吨LCE）         | 基线:blacklist_precheck     -> 联合:blacklist_precheck     (上游门禁已覆盖)
+  BL-025a    焊锡表观消费量时序图               vs 国内锡锭产量                 | 基线:blacklist_precheck     -> 联合:blacklist_precheck     (上游门禁已覆盖)
+  -> 门禁发生移动的探针: 2 / 6 ; 联合后由新增规则直接触发的探针: 2 / 6
+  -> 注入机制判定: 生效 (BL_LR 改写被 new_matcher 感知)
+
+==============================================================================
+【9】1134 条 fuzzy_name 无回归联合回放 (完整面, 非抽样)
+==============================================================================
+  fuzzy_name 总数: 1134
+  基线三态: keep=303 review=234 block=597
+  联合三态: keep=303 review=234 block=597
+  三态 delta (联合-基线): keep +0 / review +0 / block +0
+  状态翻转条数: 0 / 1134
+  翻转按规则归因: 空 (新增黑名单规则未触发任何翻转)
+  1134 上扩展规则触发计数: 空
+  1134 上黑名单规则触发合计 (联合): {'BL-012': 12, 'BL-016': 4, 'BL-001': 2}
+
+==============================================================================
+已写出: D:\DSH_WORK\framework-tree\analysis\e2e_output\v85\dshe_alias_integrate_test\combine_eval_result.json (214833 bytes)
+已写出: D:\DSH_WORK\framework-tree\analysis\e2e_output\v85\dshe_alias_integrate_test\combine_eval_log.txt
+==============================================================================

@@ -1,0 +1,873 @@
+{
+ "task": "DSHE-B_V85_ALIAS_LIB_INTEGRATION_TEST_AND_QUALITY_SUMMARY",
+ "generated_at": "2026-10-01 12:26:12",
+ "source_norm": "build_alias_library.py::match_norm/norm_full (原样加载)",
+ "hermes_rows": 2359,
+ "alias_lib_rows": 4643,
+ "hermes_match_category_dist": {
+  "高置信": 864,
+  "模糊待人工确认": 1188,
+  "无候选/低置信": 307
+ },
+ "coverage_status": {
+  "UNREGISTERED_ONLY": 2299,
+  "RESOLVED_ALIAS_HIT": 55,
+  "TARGET_HIT": 5
+ },
+ "gap_total": 2304,
+ "gap_pct": 97.67,
+ "need_alias_mapping": 5,
+ "need_canonical_registration": 2299,
+ "priority_bucket_dist": {
+  "P0_UNREG_NO_CANDIDATE": 302,
+  "P0_TGT_NO_CANDIDATE": 5,
+  "P1_UNREG_AMBIGUOUS": 1185,
+  "P2_UNREG_HIGHCONF": 812,
+  "P9_RESOLVED_AMBIG": 3,
+  "P9_RESOLVED_HIGH": 52
+ },
+ "gap_by_category": {
+  "UNREGISTERED_ONLY": {
+   "无候选/低置信": 302,
+   "模糊待人工确认": 1185,
+   "高置信": 812
+  },
+  "TARGET_HIT": {
+   "无候选/低置信": 5
+  },
+  "MISSING": {}
+ },
+ "gap_by_variety": {
+  "UNREGISTERED_ONLY": {
+   "AL": 69,
+   "CU": 39,
+   "LI": 209,
+   "NI": 741,
+   "SI": 324,
+   "SN": 536,
+   "ZN": 381
+  },
+  "TARGET_HIT": {
+   "NI": 5
+  },
+  "MISSING": {}
+ },
+ "per_variety_gap": {
+  "AL": {
+   "UNREGISTERED_ONLY": 69
+  },
+  "CU": {
+   "UNREGISTERED_ONLY": 39
+  },
+  "LI": {
+   "UNREGISTERED_ONLY": 209
+  },
+  "NI": {
+   "UNREGISTERED_ONLY": 741,
+   "TARGET_HIT": 5
+  },
+  "SI": {
+   "UNREGISTERED_ONLY": 324
+  },
+  "SN": {
+   "UNREGISTERED_ONLY": 536
+  },
+  "ZN": {
+   "UNREGISTERED_ONLY": 381
+  }
+ },
+ "best_match_cross_variety_audit": {
+  "gap_rows": 2304,
+  "same_variety": 1693,
+  "cross_variety": 442,
+  "no_variety_token": 169,
+  "chart_variety_unknown": 0,
+  "cross_variety_pct": 19.18,
+  "cross_variety_samples": [
+   {
+    "chart": "THS-AL-3.2",
+    "variety": "AL",
+    "name": "综合使用电价",
+    "best_match": "工业硅电价",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-AL-3.2",
+    "variety": "AL",
+    "name": "单吨阳极成本",
+    "best_match": "工业硅成本",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-AL-3.2",
+    "variety": "AL",
+    "name": "估算辅料成本",
+    "best_match": "工业硅成本",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-AL-4.2",
+    "variety": "AL",
+    "name": "无锡、佛山、巩义、上海、重庆、天津等区域库存",
+    "best_match": "中国锡锭社会库存",
+    "bm_variety": [
+     "SN"
+    ]
+   },
+   {
+    "chart": "THS-CU-4.2",
+    "variety": "CU",
+    "name": "仓单注册量、仓单注销量、仓单总量",
+    "best_match": "碳酸锂 仓单量",
+    "bm_variety": [
+     "LI"
+    ]
+   },
+   {
+    "chart": "THS-CU-4.2",
+    "variety": "CU",
+    "name": "上海、江苏、广东、浙江等仓单数量",
+    "best_match": "GFEX：工业硅：仓单数量（日）",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-CU-4.3",
+    "variety": "CU",
+    "name": "上海、广东、江苏、浙江、江西等区域库存",
+    "best_match": "多晶硅区域库存",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-CU-4.4",
+    "variety": "CU",
+    "name": "Cancelled warrants",
+    "best_match": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
+    "bm_variety": [
+     "NI"
+    ]
+   },
+   {
+    "chart": "THS-CU-4.4",
+    "variety": "CU",
+    "name": "保税区库存、沪伦进口盈亏或COMEX-LME价差",
+    "best_match": "SMM: 进口盈亏: 镍: 现货: LME价格: 日度",
+    "bm_variety": [
+     "NI"
+    ]
+   },
+   {
+    "chart": "THS-CU-4.4",
+    "variety": "CU",
+    "name": "保税区库存、进口利润、精废价差",
+    "best_match": "锡锭进口利润",
+    "bm_variety": [
+     "SN"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.1",
+    "variety": "LI",
+    "name": "成交量（手）",
+    "best_match": "沪铅主力连续成交量",
+    "bm_variety": [
+     "PB"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.1",
+    "variety": "LI",
+    "name": "月差（元/吨）",
+    "best_match": "工业硅基差",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.2",
+    "variety": "LI",
+    "name": "月差（元/吨）",
+    "best_match": "工业硅基差",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.4",
+    "variety": "LI",
+    "name": "月差（元/吨）",
+    "best_match": "工业硅基差",
+    "bm_variety": [
+     "SI"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.4",
+    "variety": "LI",
+    "name": "近3年同月均值（元/吨）",
+    "best_match": "沪锡近半年月差变化",
+    "bm_variety": [
+     "SN"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.5",
+    "variety": "LI",
+    "name": "近3年同月分位均值（%）",
+    "best_match": "沪锡近半年月差变化",
+    "bm_variety": [
+     "SN"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.5",
+    "variety": "LI",
+    "name": "近3年同月利润均值（元/吨）",
+    "best_match": "沪锡近半年月差变化",
+    "bm_variety": [
+     "SN"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.6",
+    "variety": "LI",
+    "name": "成交量（手）",
+    "best_match": "沪铅主力连续成交量",
+    "bm_variety": [
+     "PB"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.6",
+    "variety": "LI",
+    "name": "近3年同月多空持仓比均值（%）",
+    "best_match": "SHFE铝近3月虚实比",
+    "bm_variety": [
+     "AL"
+    ]
+   },
+   {
+    "chart": "THS-LI-2.6",
+    "variety": "LI",
+    "name": "近3年同月多空持仓比标准差（%）",
+    "best_match": "沪锡近半年月差变化",
+    "bm_variety": [
+     "SN"
+    ]
+   }
+  ]
+ },
+ "top25_gap": [
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-AL-3.2",
+   "variety": "AL",
+   "series_index": "2",
+   "original_ths_name": "综合使用电价",
+   "match_category": "无候选/低置信",
+   "best_match_name": "工业硅电价",
+   "best_match_score": "36.36",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03892",
+   "best_match_canonical_key": "si_71_power|si_71_power_2",
+   "candidate_indicator_ids": "si_71_power|si_71_power_2|si_71_power_3|si_71_power_4|li_24_close_near_2",
+   "candidate_names": "工业硅电价|工业硅电价|工业硅电价|工业硅电价|近月合约收盘价",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 1
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-AL-3.2",
+   "variety": "AL",
+   "series_index": "5",
+   "original_ths_name": "单吨阳极成本",
+   "match_category": "无候选/低置信",
+   "best_match_name": "工业硅成本",
+   "best_match_score": "36.36",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02566",
+   "best_match_canonical_key": "wr232",
+   "candidate_indicator_ids": "wr232|sn_71_cost|sn_71_cost_percentile|sn_71_cost_2|sn_71_cost_3",
+   "candidate_names": "工业硅成本|精炼锡：成本（日）|精炼锡：成本（日）|精炼锡：成本（日）|精炼锡：成本（日）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 2
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-AL-3.2",
+   "variety": "AL",
+   "series_index": "8",
+   "original_ths_name": "估算辅料成本",
+   "match_category": "无候选/低置信",
+   "best_match_name": "工业硅成本",
+   "best_match_score": "36.36",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02437",
+   "best_match_canonical_key": "wr232",
+   "candidate_indicator_ids": "wr232|sn_71_cost|sn_71_cost_percentile|sn_71_cost_2|sn_71_cost_3",
+   "candidate_names": "工业硅成本|精炼锡：成本（日）|精炼锡：成本（日）|精炼锡：成本（日）|精炼锡：成本（日）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 3
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-AL-3.2",
+   "variety": "AL",
+   "series_index": "10",
+   "original_ths_name": "自备电价、网电价差、区域吨铝成本差",
+   "match_category": "无候选/低置信",
+   "best_match_name": "电解铝：生产现金成本：中国（月）",
+   "best_match_score": "34.67",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03944",
+   "best_match_canonical_key": "al_71_cost",
+   "candidate_indicator_ids": "al_71_cost|al_71_cost_aluminum|al_7_3_cost|al_7_3_cost_2|al_7_3_cost_3",
+   "candidate_names": "电解铝：生产现金成本：中国（月）|电解铝：生产完全成本：中国（月）|电解铝：生产完全成本：重庆（月）|电解铝：生产完全成本：福建（月）|电解铝：生产完全成本：甘肃（月）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 4
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-AL-3.3",
+   "variety": "AL",
+   "series_index": "1",
+   "original_ths_name": "自备电厂成本/自备电价",
+   "match_category": "无候选/低置信",
+   "best_match_name": "电力成本分项",
+   "best_match_score": "37.5",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03945",
+   "best_match_canonical_key": "si_72_cost|si_72_cost_power",
+   "candidate_indicator_ids": "si_72_cost|si_72_cost_power|si_72_cost_power_2|al_7_3_cost_5|si_71_power",
+   "candidate_names": "电力成本分项|电力成本分项|电力成本分项|SMM: 电解铝成本利润模型: 电价: 日度|工业硅电价",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 5
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-AL-4.2",
+   "variety": "AL",
+   "series_index": "2",
+   "original_ths_name": "无锡、佛山、巩义、上海、重庆、天津等区域库存",
+   "match_category": "无候选/低置信",
+   "best_match_name": "中国锡锭社会库存",
+   "best_match_score": "26.9",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03228",
+   "best_match_canonical_key": "wr177",
+   "candidate_indicator_ids": "wr177|wr179|sn_23_shfe_inv|sn_43_inv_plant|sn_23_lme_inv",
+   "candidate_names": "中国锡锭社会库存|锡全球显性库存变化|SHFE：锡：期货库存（日）|镀锡板（带）：钢铁企业：厂内库存（月）|LME：锡：原产国库存：埃及（月）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 6
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.2",
+   "variety": "CU",
+   "series_index": "2",
+   "original_ths_name": "仓单注册量、仓单注销量、仓单总量",
+   "match_category": "无候选/低置信",
+   "best_match_name": "碳酸锂 仓单量",
+   "best_match_score": "30.0",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02432",
+   "best_match_canonical_key": "wr124",
+   "candidate_indicator_ids": "wr124|si_21_warrant_industrial_si|si_22_warrant_industrial_si|si_24_warrant_industrial_si|si_42_warrant_polysilicon",
+   "candidate_names": "碳酸锂 仓单量|GFEX：工业硅：仓单数量（日）|GFEX：工业硅：仓单数量（日）|GFEX：工业硅：仓单数量（日）|GFEX：多晶硅：仓单数量（日）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 7
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.2",
+   "variety": "CU",
+   "series_index": "3",
+   "original_ths_name": "上海、江苏、广东、浙江等仓单数量",
+   "match_category": "无候选/低置信",
+   "best_match_name": "GFEX：工业硅：仓单数量（日）",
+   "best_match_score": "28.57",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02254",
+   "best_match_canonical_key": "si_21_warrant_industrial_si|si_22_warrant_industrial_si",
+   "candidate_indicator_ids": "si_21_warrant_industrial_si|si_22_warrant_industrial_si|si_24_warrant_industrial_si|si_42_warrant_polysilicon|si_42_warrant_ratio_industrial_si",
+   "candidate_names": "GFEX：工业硅：仓单数量（日）|GFEX：工业硅：仓单数量（日）|GFEX：工业硅：仓单数量（日）|GFEX：多晶硅：仓单数量（日）|GFEX：工业硅：仓单数量（日）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 8
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.3",
+   "variety": "CU",
+   "series_index": "2",
+   "original_ths_name": "上海库存、广东库存、江苏库存",
+   "match_category": "无候选/低置信",
+   "best_match_name": "电解铜：现货库存：广东（日）",
+   "best_match_score": "32.0",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02260",
+   "best_match_canonical_key": "cu_43_stock_gd",
+   "candidate_indicator_ids": "cu_43_stock_gd|cu_43_stock_js|wr49|wr50|i32",
+   "candidate_names": "电解铜：现货库存：广东（日）|电解铜：现货库存：江苏（日）|期货库存-氧化铝-山东|期货库存-氧化铝-广西|SMM: 铅锭五地社会库存: 广东: 周度",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 9
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.3",
+   "variety": "CU",
+   "series_index": "3",
+   "original_ths_name": "上海、广东、江苏、浙江、江西等区域库存",
+   "match_category": "无候选/低置信",
+   "best_match_name": "多晶硅区域库存",
+   "best_match_score": "32.0",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02252",
+   "best_match_canonical_key": "wr216",
+   "candidate_indicator_ids": "wr216|zn_44_inv_plant|wr73|cu_42_shfe_sh_week|SHFE库存",
+   "candidate_names": "多晶硅区域库存|锌锭：库存：上海保税区（周）|海漂库存-全球主要国家-钢联|SHFE：铜：库存周报分地区_上海：库存增减期货（周）|上期所库存",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 10
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.4",
+   "variety": "CU",
+   "series_index": "0",
+   "original_ths_name": "LME-approved warehouses",
+   "match_category": "无候选/低置信",
+   "best_match_name": "LME库存",
+   "best_match_score": "23.08",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-00078",
+   "best_match_canonical_key": "LME库存",
+   "candidate_indicator_ids": "LME库存|i1|wr260|j23_lme_sp3|wr19",
+   "candidate_names": "LME库存|LME铅库存|LME镍库存|LME 铅(现货/三个月)升贴水|LME持仓情况",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 11
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.4",
+   "variety": "CU",
+   "series_index": "1",
+   "original_ths_name": "Cancelled warrants",
+   "match_category": "无候选/低置信",
+   "best_match_name": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
+   "best_match_score": "16.22",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-00045",
+   "best_match_canonical_key": "ni_313_output_3|ni_313_output_nickel_ore",
+   "candidate_indicator_ids": "ni_313_output_nickel_ore|ni_313_output_nickel_ore_2|ni_313_output_nickel_ore_3|ni_313_output_nickel_ore_4|ni_313_output_3",
+   "candidate_names": "硫化镍矿：产量：伦丁矿业：Eagle矿区（季）|硫化镍矿：产量：伦丁矿业：Eagle矿区（季）|硫化镍矿：产量：伦丁矿业：Eagle矿区（季）|硫化镍矿：产量：伦丁矿业：Eagle矿区（季）|硫化镍矿：产量：伦丁矿业：Eagle矿区（季）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 12
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.4",
+   "variety": "CU",
+   "series_index": "3",
+   "original_ths_name": "保税区库存、沪伦进口盈亏或COMEX-LME价差",
+   "match_category": "无候选/低置信",
+   "best_match_name": "SMM: 进口盈亏: 镍: 现货: LME价格: 日度",
+   "best_match_score": "35.56",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02453",
+   "best_match_canonical_key": "ni_21_lme_price",
+   "candidate_indicator_ids": "ni_21_lme_price|sn_22_price|pb_23_aux_3|pb_23_aux_4|cu_23_comex_close",
+   "candidate_names": "SMM: 进口盈亏: 镍: 现货: LME价格: 日度|SMM: 进口盈亏: 锡: 现货: LME价格: 日度|SMM: 进口盈亏: 铅: 现货: LME价格: 日度|SMM: 进口盈亏: 铅: 现货: LME价格: 日度|COMEX：铜：主力合约：收盘价（日）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 13
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-CU-4.4",
+   "variety": "CU",
+   "series_index": "6",
+   "original_ths_name": "保税区库存、进口利润、精废价差",
+   "match_category": "无候选/低置信",
+   "best_match_name": "锡锭进口利润",
+   "best_match_score": "38.1",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02454",
+   "best_match_canonical_key": "wr174",
+   "candidate_indicator_ids": "wr174|j24_refine_spread|li_33_import_avg_price|wr10|cu_46_spread_scrap",
+   "candidate_names": "锡锭进口利润|SMM 铅精废价差|锂矿进口均价|铝材出口利润|精废铜：主流市场：价差：上海（日）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 14
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.1",
+   "variety": "LI",
+   "series_index": "2",
+   "original_ths_name": "成交量（手）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "沪铅主力连续成交量",
+   "best_match_score": "33.33",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03197",
+   "best_match_canonical_key": "j21_volume",
+   "candidate_indicator_ids": "j21_volume|zn_21_volume|si_21_volume_front|wr119|wr181",
+   "candidate_names": "沪铅主力连续成交量|LME：锌：成交量（日）|工业硅主力合约成交量|碳酸锂 成交情绪因子|印尼交易所锡锭成交量",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 15
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.1",
+   "variety": "LI",
+   "series_index": "7",
+   "original_ths_name": "月差（元/吨）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "工业硅基差",
+   "best_match_score": "28.57",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03241",
+   "best_match_canonical_key": "si_22_basis",
+   "candidate_indicator_ids": "si_22_basis|si_23_spread_futures|li_24_spread_futures|li_24_lc_spread|wr252",
+   "candidate_names": "工业硅基差|工业硅期货月差|碳酸锂期货月差|碳酸锂期货月差|不锈钢基差",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 16
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.2",
+   "variety": "LI",
+   "series_index": "6",
+   "original_ths_name": "月差（元/吨）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "工业硅基差",
+   "best_match_score": "28.57",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03241",
+   "best_match_canonical_key": "si_22_basis",
+   "candidate_indicator_ids": "si_22_basis|si_23_spread_futures|li_24_spread_futures|li_24_lc_spread|wr252",
+   "candidate_names": "工业硅基差|工业硅期货月差|碳酸锂期货月差|碳酸锂期货月差|不锈钢基差",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 17
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.4",
+   "variety": "LI",
+   "series_index": "0",
+   "original_ths_name": "月差（元/吨）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "工业硅基差",
+   "best_match_score": "28.57",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03241",
+   "best_match_canonical_key": "si_22_basis",
+   "candidate_indicator_ids": "si_22_basis|si_23_spread_futures|li_24_spread_futures|li_24_lc_spread|wr252",
+   "candidate_names": "工业硅基差|工业硅期货月差|碳酸锂期货月差|碳酸锂期货月差|不锈钢基差",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 18
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.4",
+   "variety": "LI",
+   "series_index": "6",
+   "original_ths_name": "近3年同月均值（元/吨）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "沪锡近半年月差变化",
+   "best_match_score": "37.5",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-04073",
+   "best_match_canonical_key": "wr172",
+   "candidate_indicator_ids": "wr172|wr21|li_24_close_near_2|j23_lme_0to3|sn_23_lme_close_3m",
+   "candidate_names": "沪锡近半年月差变化|SHFE铝近3月虚实比|近月合约收盘价|LME 铅0-3月升贴水|锡：3个月合约：收盘价（日）",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 19
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.5",
+   "variety": "LI",
+   "series_index": "0",
+   "original_ths_name": "估值分位（%）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "分路线利润",
+   "best_match_score": "22.22",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-02436",
+   "best_match_canonical_key": "li_25_by_route_profit|li_25_by_route_profit_2",
+   "candidate_indicator_ids": "li_25_profit_5|li_25_by_route_profit|li_25_by_route_profit_2|si_72_cost|si_72_cost_power",
+   "candidate_names": "分路线利润|分路线利润|分路线利润|电力成本分项|电力成本分项",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 20
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.5",
+   "variety": "LI",
+   "series_index": "8",
+   "original_ths_name": "近3年同月分位均值（%）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "沪锡近半年月差变化",
+   "best_match_score": "33.33",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-04057",
+   "best_match_canonical_key": "wr172",
+   "candidate_indicator_ids": "wr172|wr21|al_25_lme_quantile|li_24_close_near_2|j23_lme_0to3",
+   "candidate_names": "沪锡近半年月差变化|SHFE铝近3月虚实比|LME：铝：3个月合约：结算价（日）· 历史估值分位|近月合约收盘价|LME 铅0-3月升贴水",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 21
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.5",
+   "variety": "LI",
+   "series_index": "10",
+   "original_ths_name": "近3年同月利润均值（元/吨）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "沪锡近半年月差变化",
+   "best_match_score": "33.33",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-04059",
+   "best_match_canonical_key": "wr172",
+   "candidate_indicator_ids": "wr172|wr21|li_25_profit_5|li_25_by_route_profit|li_25_by_route_profit_2",
+   "candidate_names": "沪锡近半年月差变化|SHFE铝近3月虚实比|分路线利润|分路线利润|分路线利润",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 22
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.6",
+   "variety": "LI",
+   "series_index": "5",
+   "original_ths_name": "成交量（手）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "沪铅主力连续成交量",
+   "best_match_score": "33.33",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-03197",
+   "best_match_canonical_key": "j21_volume",
+   "candidate_indicator_ids": "j21_volume|zn_21_volume|si_21_volume_front|wr119|wr181",
+   "candidate_names": "沪铅主力连续成交量|LME：锌：成交量（日）|工业硅主力合约成交量|碳酸锂 成交情绪因子|印尼交易所锡锭成交量",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 23
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.6",
+   "variety": "LI",
+   "series_index": "8",
+   "original_ths_name": "近3年同月多空持仓比均值（%）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "SHFE铝近3月虚实比",
+   "best_match_score": "34.78",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-04074",
+   "best_match_canonical_key": "wr21",
+   "candidate_indicator_ids": "wr21|al_23_lme_oi|li_26_top20_openinterest|li_26_openinterest_top20_long|li_26_openinterest_top20_long_2",
+   "candidate_names": "SHFE铝近3月虚实比|LME：铝：3个月合约：持仓量（日）|空头前20持仓量|多头前20持仓量|多头前20持仓量",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 24
+  },
+  {
+   "priority_rank": 0,
+   "priority_bucket": "P0_UNREG_NO_CANDIDATE",
+   "ths_chart_id": "THS-LI-2.6",
+   "variety": "LI",
+   "series_index": "9",
+   "original_ths_name": "近3年同月多空持仓比标准差（%）",
+   "match_category": "无候选/低置信",
+   "best_match_name": "沪锡近半年月差变化",
+   "best_match_score": "36.36",
+   "ths_alias_status": "UNREGISTERED_ONLY",
+   "alias_form_hits": 1,
+   "alias_resolved_hits": 0,
+   "alias_unregistered_hits": 1,
+   "is_indicators_v1_name": "N",
+   "resolution_canonical_key": "",
+   "resolution_alias_id": "",
+   "unregistered_alias_id": "A-04075",
+   "best_match_canonical_key": "wr172",
+   "candidate_indicator_ids": "wr172|wr21|al_23_lme_oi|li_26_top20_openinterest|li_26_openinterest_top20_long",
+   "candidate_names": "沪锡近半年月差变化|SHFE铝近3月虚实比|LME：铝：3个月合约：持仓量（日）|空头前20持仓量|多头前20持仓量",
+   "recommended_action": "B4 通道: 库内有形态但无 canonical, 需 DSH-B 补 canonical 注册后回填映射",
+   "priority_seq": 25
+  }
+ ],
+ "output_csv": "ths_missing_alias.csv",
+ "output_rows": 2359
+}
