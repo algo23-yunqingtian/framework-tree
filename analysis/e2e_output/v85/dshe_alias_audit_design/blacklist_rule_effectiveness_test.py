@@ -181,14 +181,16 @@ for s in POOL:
     for rid in sorted(BL_LR):
         L, R, _s, _n = BL_LR[rid]
         lt, rt = None, None
-        for t in L:
+        # BL_LR 的 L/R 为 set（见 audit_kit.build_bl_lr），迭代顺序不确定；
+        # 排序保证同一语料池下 D4 用例的构造与描述完全可复现。
+        for t in sorted(L):
             i = s.find(t)
             if i >= 0:
                 lt = (t, i, i + len(t))
                 break
         if not lt:
             continue
-        for t in R:
+        for t in sorted(R):
             j = s.find(t)
             if j < 0:
                 continue

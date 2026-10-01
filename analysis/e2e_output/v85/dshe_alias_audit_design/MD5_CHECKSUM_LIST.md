@@ -32,7 +32,7 @@
 | 9 | `blacklist_testset_verdicts.py` | 5,514 | `B0D1FB553E8447F4BF0F90A1103DC445` |
 | 10 | `blacklist_testset_verdicts.csv` | 5,538 | `8E214936FDDC3DDAA197B02FBAC032B5` |
 | 11 | `blacklist_rule_testing_design.md` | 19,916 | `E84EBF23A4A5BD3C68F865BAF5B829BB` |
-| 12 | `blacklist_rule_effectiveness_test.py` | 46,675 | `B3D7B6D32BEA2D69C6A0600610DFF3B7` |
+| 12 | `blacklist_rule_effectiveness_test.py` | 46,868 | `97404AB126EA15DB4E489DA2AB4C3E98` |
 | 13 | `blacklist_rule_test_result.json` | 171,493 | `09340481D52866445977E0FE143D3BBB` |
 | 14 | `blacklist_rule_test_result.md` | 16,724 | `1376043EAF70CFC32CEDA74CD64F7B43` |
 | 15 | `regression_gate_config.json` | 5,250 | `AA0F1EC4685ED8B8C59DA946A5CE26DA` |
@@ -47,7 +47,7 @@
 - 指定交付物：7 / 7 全部存在
 - 配套产物：20
 - 合计文件：27
-- 合计字节：1,531,461
+- 合计字节：1,531,654
 
 ---
 
