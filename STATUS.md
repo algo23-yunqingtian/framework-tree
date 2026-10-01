@@ -615,3 +615,12 @@
 - v85_external_accept_checklist.md: 一页式40项勾选验收清单(8大类)
 - archive_builder_manual.md: 打包脚本使用手册
 - 产物目录: analysis/e2e_output/v85/hermes_v85_archive_prep/
+
+### 2026-10-01 HERMES_V85_PORTAL_REFRESH_WITH_REAL_SIM_DATA_AND_REBUILD_ARCHIVE
+- V6门户接入DSHB真实回放数据: P0拦截率81%→100%, TP+4/+7, FP+0
+- 场景A/B Gate刷新报告: 场景A 4项部分改善, 场景B 8项完全解除
+- 归档包重建: 53→63文件, 警告3→1(sim场景文件已消除)
+- Release Note刷新: 真实TP/FP指标+BL-009a/BL-026验证
+- 验收清单+演示脚本: 适配真实回放数据
+- enhanced_archive_builder.py更新: 新增dshb_review_simulation目录
+- 产物目录: analysis/e2e_output/v85/hermes_refresh_real_data/

@@ -1,8 +1,8 @@
 # V85 归档包 MD5清单
 
-> 生成时间: 2026-10-01T15:37:37.707087
+> 生成时间: 2026-10-01T15:57:03.102907
 > 归档目录: /home/ubuntu/framework-tree/v85_final_archive
-> 文件数: 53
+> 文件数: 63
 
 | # | 文件 | MD5 | 大小 |
 |---|------|-----|------|
@@ -53,9 +53,19 @@
 | 45 | dshb_human_review_prep/bl009a_review_package.md | `28cc65e3` | N/AB |
 | 46 | dshb_human_review_prep/data_missing_p0_summary.md | `993a99a9` | N/AB |
 | 47 | dshb_human_review_prep/v86_rule_migration_checklist.md | `ba2eebbb` | N/AB |
-| 48 | miss_risk_mining/unified_indicator_risk_db_v2.csv | `ba2bd340` | N/AB |
-| 49 | miss_risk_mining/dsh_gate_self_check_v2.md | `76b9f08f` | N/AB |
-| 50 | miss_risk_mining/p0_miss_4_case_analysis.md | `1acb46e2` | N/AB |
-| 51 | miss_risk_mining/p0_unhit_5_items_report.md | `74607a69` | N/AB |
-| 52 | miss_risk_mining/blacklist_extend_candidate_v2.json | `ed0bbfa2` | N/AB |
-| 53 | miss_risk_mining/rule_defect_summary.md | `ef1e845b` | N/AB |
+| 48 | dshb_review_simulation/sim_sceneA_result.csv | `00d08900` | N/AB |
+| 49 | dshb_review_simulation/sim_sceneB_result.csv | `67fa4c63` | N/AB |
+| 50 | dshb_review_simulation/simulation_compare_report.md | `10c328ae` | N/AB |
+| 51 | dshb_review_simulation/gate_block_impact_analysis.md | `9124943b` | N/AB |
+| 52 | dshb_review_simulation/bl009a_multi_scenario_verify.md | `2d0a9709` | N/AB |
+| 53 | dshb_review_simulation/review_consistency_check.py | `667adb34` | N/AB |
+| 54 | dshb_review_simulation/review_consistency_guide.md | `4143d471` | N/AB |
+| 55 | dshb_review_simulation/build_review_simulation.py | `126201e8` | N/AB |
+| 56 | dshb_review_simulation/MD5_MANIFEST.md | `77030ffc` | N/AB |
+| 57 | dshb_review_simulation/human_review_faq.md | `8533d0f3` | N/AB |
+| 58 | miss_risk_mining/unified_indicator_risk_db_v2.csv | `ba2bd340` | N/AB |
+| 59 | miss_risk_mining/dsh_gate_self_check_v2.md | `76b9f08f` | N/AB |
+| 60 | miss_risk_mining/p0_miss_4_case_analysis.md | `1acb46e2` | N/AB |
+| 61 | miss_risk_mining/p0_unhit_5_items_report.md | `74607a69` | N/AB |
+| 62 | miss_risk_mining/blacklist_extend_candidate_v2.json | `ed0bbfa2` | N/AB |
+| 63 | miss_risk_mining/rule_defect_summary.md | `ef1e845b` | N/AB |

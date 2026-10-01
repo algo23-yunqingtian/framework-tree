@@ -1,6 +1,6 @@
 # V85 增强归档打包报告
 
-> 生成时间: 2026-10-01T15:37:37.709736
+> 生成时间: 2026-10-01T15:57:03.105558
 > 基线目录: /home/ubuntu/framework-tree/analysis/e2e_output/v85
 > 归档目录: /home/ubuntu/framework-tree/v85_final_archive
 
@@ -10,9 +10,9 @@
 
 | 项目 | 数量 | 状态 |
 |------|------|------|
-| 已复制文件 | 53 | ✅ |
+| 已复制文件 | 63 | ✅ |
 | 跳过文件 | 3 | ⚠ |
-| 依赖警告 | 3 | ⚠ |
+| 依赖警告 | 1 | ⚠ |
 | 缺失文件 | 0 | ✅ |
 
 **总判定: ✅ PASS**
@@ -23,8 +23,8 @@
 
 | 依赖项 | 状态 | 说明 |
 |--------|------|------|
-| DSHB sim_sceneA_result.csv | ⚠ WARN | DSHB sim_sceneA_result.csv未落盘, 场景A演示数据使用自构建版 |
-| DSHB sim_sceneB_result.csv | ⚠ WARN | DSHB sim_sceneB_result.csv未落盘, 场景B演示数据使用自构建版 |
+| DSHB sim_sceneA_result.csv | ✅ OK | 存在 |
+| DSHB sim_sceneB_result.csv | ✅ OK | 存在 |
 | DSHB dshb_final_gate_acceptance.md | ⚠ WARN | DSHB最终Gate验收报告未落盘, 使用DSHB Gate v2自检替代 |
 
 ---
@@ -80,12 +80,22 @@
 | 45 | dshb_human_review_prep/bl009a_review_package.md | `28cc65e3` | 10,323B |
 | 46 | dshb_human_review_prep/data_missing_p0_summary.md | `993a99a9` | 13,465B |
 | 47 | dshb_human_review_prep/v86_rule_migration_checklist.md | `ba2eebbb` | 11,543B |
-| 48 | miss_risk_mining/unified_indicator_risk_db_v2.csv | `ba2bd340` | 47,245B |
-| 49 | miss_risk_mining/dsh_gate_self_check_v2.md | `76b9f08f` | 6,760B |
-| 50 | miss_risk_mining/p0_miss_4_case_analysis.md | `1acb46e2` | 10,649B |
-| 51 | miss_risk_mining/p0_unhit_5_items_report.md | `74607a69` | 9,831B |
-| 52 | miss_risk_mining/blacklist_extend_candidate_v2.json | `ed0bbfa2` | 6,856B |
-| 53 | miss_risk_mining/rule_defect_summary.md | `ef1e845b` | 7,561B |
+| 48 | dshb_review_simulation/sim_sceneA_result.csv | `00d08900` | 11,890B |
+| 49 | dshb_review_simulation/sim_sceneB_result.csv | `67fa4c63` | 12,909B |
+| 50 | dshb_review_simulation/simulation_compare_report.md | `10c328ae` | 6,868B |
+| 51 | dshb_review_simulation/gate_block_impact_analysis.md | `9124943b` | 9,527B |
+| 52 | dshb_review_simulation/bl009a_multi_scenario_verify.md | `2d0a9709` | 5,050B |
+| 53 | dshb_review_simulation/review_consistency_check.py | `667adb34` | 15,417B |
+| 54 | dshb_review_simulation/review_consistency_guide.md | `4143d471` | 5,928B |
+| 55 | dshb_review_simulation/build_review_simulation.py | `126201e8` | 102,117B |
+| 56 | dshb_review_simulation/MD5_MANIFEST.md | `77030ffc` | 1,906B |
+| 57 | dshb_review_simulation/human_review_faq.md | `8533d0f3` | 9,641B |
+| 58 | miss_risk_mining/unified_indicator_risk_db_v2.csv | `ba2bd340` | 47,245B |
+| 59 | miss_risk_mining/dsh_gate_self_check_v2.md | `76b9f08f` | 6,760B |
+| 60 | miss_risk_mining/p0_miss_4_case_analysis.md | `1acb46e2` | 10,649B |
+| 61 | miss_risk_mining/p0_unhit_5_items_report.md | `74607a69` | 9,831B |
+| 62 | miss_risk_mining/blacklist_extend_candidate_v2.json | `ed0bbfa2` | 6,856B |
+| 63 | miss_risk_mining/rule_defect_summary.md | `ef1e845b` | 7,561B |
 
 ---
 

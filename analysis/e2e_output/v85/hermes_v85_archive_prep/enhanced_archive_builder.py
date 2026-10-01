@@ -89,6 +89,18 @@ ARCHIVE_TREE = {
         'data_missing_p0_summary.md',
         'v86_rule_migration_checklist.md',
     ],
+    'dshb_review_simulation': [
+        'sim_sceneA_result.csv',
+        'sim_sceneB_result.csv',
+        'simulation_compare_report.md',
+        'gate_block_impact_analysis.md',
+        'bl009a_multi_scenario_verify.md',
+        'review_consistency_check.py',
+        'review_consistency_guide.md',
+        'build_review_simulation.py',
+        'MD5_MANIFEST.md',
+        'human_review_faq.md',
+    ],
     'miss_risk_mining': [
         'unified_indicator_risk_db_v2.csv',
         'dsh_gate_self_check_v2.md',
@@ -110,19 +122,19 @@ ARCHIVE_TREE = {
 DEPENDENCY_CHECKS = [
     {
         'name': 'DSHB sim_sceneA_result.csv',
-        'path': 'dshb_simulation/sim_sceneA_result.csv',
+        'path': 'dshb_review_simulation/sim_sceneA_result.csv',
         'required': False,
         'warning': 'DSHB sim_sceneA_result.csv未落盘, 场景A演示数据使用自构建版',
     },
     {
         'name': 'DSHB sim_sceneB_result.csv',
-        'path': 'dshb_simulation/sim_sceneB_result.csv',
+        'path': 'dshb_review_simulation/sim_sceneB_result.csv',
         'required': False,
         'warning': 'DSHB sim_sceneB_result.csv未落盘, 场景B演示数据使用自构建版',
     },
     {
         'name': 'DSHB dshb_final_gate_acceptance.md',
-        'path': 'dshb_full_integrate_extra/dshb_final_gate_acceptance.md',
+        'path': 'dshb_full_integrate/dsh_final_gate_acceptance.md',
         'required': False,
         'warning': 'DSHB最终Gate验收报告未落盘, 使用DSHB Gate v2自检替代',
     },

@@ -3,10 +3,10 @@
 ```
 git tag -a v85-final -m "V85 Final Delivery Package
 
-- Commit: 99b6c74
+- Commit: 0d7b0e8
 - 分支: feature/v85-chart-template
 - 日期: 2026-10-01
-- 文件数: 53
+- 文件数: 63
 - Gate状态: ❌ 4/5 BLOCKED (待人工评审5-7天)
 
 核心能力:
