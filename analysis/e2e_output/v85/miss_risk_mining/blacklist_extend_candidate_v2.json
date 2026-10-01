@@ -1,0 +1,182 @@
+{
+  "version": "v86-bl-extend-candidate",
+  "description": "V86黑名单扩充候选V2 — 基于4条漏拦截P0案例根因分析",
+  "generated_at": "2026-10-01 12:34:25",
+  "task": "DSH-B_V85_MISS_RISK_ROOTCAUSE_MINING_AND_BLACKLIST_BOUNDARY_EXPAND",
+  "total_candidates": 5,
+  "classification_summary": {
+    "confirmed_new": 1,
+    "needs_review": 3,
+    "not_recommended": 1
+  },
+  "candidates": [
+    {
+      "rule_id": "BL-009a",
+      "name": "需求与利润互斥（反向）",
+      "category": "经济口径",
+      "severity": "P0",
+      "description": "BL-009的反向版本。当indicator_name包含'需求'而matched_name包含'利润'时（需求→利润方向），应触发拦截。",
+      "left_patterns": [
+        "需求",
+        "需求量",
+        "需求侧"
+      ],
+      "right_patterns": [
+        "利润",
+        "盈利",
+        "盈亏",
+        "毛利"
+      ],
+      "parent_rule": "BL-009",
+      "case_source": [
+        "RISK-002"
+      ],
+      "classification": "confirmed_new",
+      "rationale": "BL-009仅检查forward方向（利润→需求）。RISK-002案例中indicator包含'需求'而match包含'利润'，是reverse方向，BL-009无法捕获。新增BL-009a补齐反向缺口。",
+      "impact_assessment": {
+        "new_tp": 1,
+        "new_tp_detail": "RISK-002正确拦截",
+        "new_fp": 0,
+        "new_fp_detail": "BL-009a仅匹配需求→利润组合，在488模板中无其他此类组合",
+        "regression_risk": "低",
+        "regression_detail": "方向性与BL-009对称，不引入新语义冲突。BL-009和BL-009a互补，不重叠。",
+        "replay_result": "回放验证：488模板中BL-009a触发1条TP（RISK-002），0条FP，0条回归"
+      },
+      "fix_version": "v86-bl-extend",
+      "fix_note": "修复BL-009单向匹配缺陷，补齐反向覆盖"
+    },
+    {
+      "rule_id": "BL-022a",
+      "name": "镍进口与铜进口跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "镍的进口/出口/净进口指标不应匹配到铜的进口/出口/净进口指标。",
+      "left_patterns": [
+        "电解镍净进口",
+        "精炼镍净进口",
+        "镍进口",
+        "镍出口",
+        "电解镍进口",
+        "电解镍出口"
+      ],
+      "right_patterns": [
+        "铜进口",
+        "铜出口",
+        "电解铜进口",
+        "电解铜出口",
+        "铜净进口"
+      ],
+      "parent_rule": "BL-022",
+      "case_source": [
+        "RISK-010"
+      ],
+      "classification": "needs_review",
+      "rationale": "RISK-010（中国电解镍净进口量）因PDF模板无匹配数据无法验证。BL-022a补充了BL-022在贸易口径子类别的覆盖。但由于无实际匹配数据，无法回放验证。",
+      "impact_assessment": {
+        "new_tp": 0,
+        "new_tp_detail": "RISK-010因无匹配数据无法验证",
+        "new_fp": 0,
+        "new_fp_detail": "无法评估（无匹配数据）",
+        "regression_risk": "中",
+        "regression_detail": "无法回放验证。规则设计合理，但需在有匹配数据的场景下验证。",
+        "replay_result": "无法回放（RISK-010无匹配数据）"
+      },
+      "fix_version": "v86-bl-extend",
+      "fix_note": "需人工复核。RISK-010数据缺失，规则设计基于推断。"
+    },
+    {
+      "rule_id": "BL-020a",
+      "name": "硅库存与苯乙烯库存跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅/多晶硅的库存指标不应匹配到苯乙烯的库存指标。",
+      "left_patterns": [
+        "工业硅库存",
+        "多晶硅库存",
+        "硅工厂库存",
+        "硅样本工厂库存",
+        "金属硅库存"
+      ],
+      "right_patterns": [
+        "苯乙烯库存",
+        "苯乙烯社会库存",
+        "苯乙烯厂内库存"
+      ],
+      "parent_rule": "BL-020",
+      "case_source": [
+        "RISK-011"
+      ],
+      "classification": "needs_review",
+      "rationale": "RISK-011（工业硅样本工厂库存）因PDF模板无匹配数据无法验证。BL-020a补充了BL-020在库存子类别的覆盖。",
+      "impact_assessment": {
+        "new_tp": 0,
+        "new_tp_detail": "RISK-011因无匹配数据无法验证",
+        "new_fp": 0,
+        "new_fp_detail": "无法评估",
+        "regression_risk": "中",
+        "regression_detail": "无法回放验证。",
+        "replay_result": "无法回放（RISK-011无匹配数据）"
+      },
+      "fix_version": "v86-bl-extend",
+      "fix_note": "需人工复核。RISK-011数据缺失。"
+    },
+    {
+      "rule_id": "BL-021a",
+      "name": "硅供需平衡与黄金供需平衡跨品种禁止",
+      "category": "品种口径",
+      "severity": "P0",
+      "description": "工业硅/多晶硅的供需平衡指标不应匹配到黄金的供需平衡指标。",
+      "left_patterns": [
+        "工业硅供需平衡",
+        "多晶硅供需平衡",
+        "硅供需平衡",
+        "硅平衡表",
+        "金属硅供需平衡"
+      ],
+      "right_patterns": [
+        "黄金供需平衡",
+        "黄金平衡表",
+        "黄金库存平衡"
+      ],
+      "parent_rule": "BL-021",
+      "case_source": [
+        "RISK-013"
+      ],
+      "classification": "needs_review",
+      "rationale": "RISK-013（工业硅供需平衡）因PDF模板无匹配数据无法验证。BL-021a补充了BL-021在供需平衡子类别的覆盖。",
+      "impact_assessment": {
+        "new_tp": 0,
+        "new_tp_detail": "RISK-013因无匹配数据无法验证",
+        "new_fp": 0,
+        "new_fp_detail": "无法评估",
+        "regression_risk": "中",
+        "regression_detail": "无法回放验证。",
+        "replay_result": "无法回放（RISK-013无匹配数据）"
+      },
+      "fix_version": "v86-bl-extend",
+      "fix_note": "需人工复核。RISK-013数据缺失。"
+    },
+    {
+      "rule_id": "NOT_FIXABLE_DATA_MISSING",
+      "name": "数据缺失案例（无法通过黑名单修复）",
+      "category": "数据质量",
+      "severity": "N/A",
+      "description": "RISK-010/011/013三条P0因PDF模板matched_name为空无法回放验证。黑名单规则无法对无匹配数据的条目触发拦截。需上游PDF模板数据源修复或人工白名单放行。",
+      "case_source": [
+        "RISK-010",
+        "RISK-011",
+        "RISK-013"
+      ],
+      "classification": "not_recommended",
+      "rationale": "数据缺失问题无法通过规则扩展解决。需上游数据修复。",
+      "impact_assessment": {
+        "new_tp": 0,
+        "new_fp": 0,
+        "regression_risk": "N/A",
+        "replay_result": "不适用"
+      },
+      "fix_version": "N/A",
+      "fix_note": "建议V86版本推动上游PDF模板数据补全"
+    }
+  ]
+}
