@@ -1,0 +1,78 @@
+{
+  "version": "v1.0",
+  "generated_at": "2026-10-01T22:11:16+08:00",
+  "task_id": "DSHB_V86_RULE_ENGINE_PREDEV_AND_BL_REGRESSION_TEST",
+  "branch": "feature/v85-chart-template",
+  "v85_baseline": "analysis/e2e_output/v85/dshb_review_simulation/sim_sceneA_result.csv",
+  "summary": {
+    "v85_total_cases": 62,
+    "v85_blocked": 44,
+    "v85_tp": 44,
+    "v85_fp": 0,
+    "v85_p0_interception_rate": 87.5,
+    "v86_total_cases": 62,
+    "v86_blocked": 40,
+    "v86_tp": 40,
+    "v86_fp": 0,
+    "v86_p0_interception_rate": 75.0,
+    "delta_blocked": -4,
+    "delta_tp": -4,
+    "delta_fp": 0,
+    "delta_p0_rate": -12.5,
+    "total_improvements": 0,
+    "total_regressions": 4,
+    "total_new_blocks": 0,
+    "total_new_passes": 0,
+    "total_unchanged": 58
+  },
+  "changed_cases": [
+    {
+      "case_id": "",
+      "risk_id": "RISK-022",
+      "risk_level": "P0",
+      "change_type": "REGRESSION",
+      "v85_status": "BLOCKED",
+      "v85_rule": "BL-019",
+      "v86_status": "PASSED",
+      "v86_rule": "",
+      "tp_change": -1,
+      "fp_change": 0
+    },
+    {
+      "case_id": "WORKBOOK-RISK-001",
+      "risk_id": "RISK-001",
+      "risk_level": "P0",
+      "change_type": "REGRESSION",
+      "v85_status": "BLOCKED",
+      "v85_rule": "黑名单BL-005已覆盖，场内库存与非仓单库存互斥",
+      "v86_status": "DATA_MISSING",
+      "v86_rule": "",
+      "tp_change": -1,
+      "fp_change": 0
+    },
+    {
+      "case_id": "WORKBOOK-RISK-003",
+      "risk_id": "RISK-003",
+      "risk_level": "P0",
+      "change_type": "REGRESSION",
+      "v85_status": "BLOCKED",
+      "v85_rule": "黑名单BL-003已覆盖，销量与产量互斥",
+      "v86_status": "DATA_MISSING",
+      "v86_rule": "",
+      "tp_change": -1,
+      "fp_change": 0
+    },
+    {
+      "case_id": "WORKBOOK-RISK-006",
+      "risk_id": "RISK-006",
+      "risk_level": "P0",
+      "change_type": "REGRESSION",
+      "v85_status": "BLOCKED",
+      "v85_rule": "黑名单BL-002已覆盖，产量与销量互斥",
+      "v86_status": "DATA_MISSING",
+      "v86_rule": "",
+      "tp_change": -1,
+      "fp_change": 0
+    }
+  ]
+}

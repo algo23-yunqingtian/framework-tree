@@ -1,0 +1,665 @@
+{
+  "version": "v86-rule-test-suite-v1",
+  "description": "V86 P0规则单元测试用例集 — 覆盖BL-009a、BL-026、BL-012方案B、PDF修复四项P0",
+  "generated_at": "2026-10-01T22:00:00+08:00",
+  "task_id": "DSHB_V86_RULE_ENGINE_PREDEV_AND_BL_REGRESSION_TEST",
+  "branch": "feature/v85-chart-template",
+  "base_commit": "6771406",
+  "total_cases": 48,
+  "coverage": {
+    "BL-009a": {"total": 12, "positive": 4, "negative": 4, "boundary": 4},
+    "BL-026": {"total": 12, "positive": 6, "negative": 4, "boundary": 2},
+    "BL-012_Plan_B": {"total": 8, "positive": 4, "negative": 2, "boundary": 2},
+    "PDF_Fix": {"total": 12, "positive": 4, "negative": 4, "boundary": 4}
+  },
+  "suite_format_version": "1.0",
+  "compatible_with": ["v86_p0_rule_prototype.py", "v86_async_task_api"],
+  "notes": "可接入V86异步任务调度接口，通过task_type='dshb_rule_eval'调用",
+  "test_groups": [
+    {
+      "group_id": "GROUP-001",
+      "group_name": "BL-009a正向触发用例",
+      "rule_id": "BL-009a",
+      "case_type": "positive_trigger",
+      "description": "需求→利润反向匹配，BL-009a应正确拦截",
+      "test_cases": [
+        {
+          "case_id": "TC-BL009A-001",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂 三元523需求",
+          "matched_name": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009a",
+          "risk_level": "P0",
+          "source_risk": "RISK-002",
+          "description": "原始RISK-002案例：需求→利润反向，BL-009a应拦截"
+        },
+        {
+          "case_id": "TC-BL009A-002",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂需求总量",
+          "matched_name": "碳酸锂冶炼利润（元/吨）",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009a",
+          "risk_level": "P0",
+          "source_risk": "RISK-002",
+          "description": "需求总量→利润变体，BL-009a应拦截"
+        },
+        {
+          "case_id": "TC-BL009A-003",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂需求量（万吨）",
+          "matched_name": "碳酸锂现金生产利润: 外购三元极片黑粉",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009a",
+          "risk_level": "P0",
+          "source_risk": "RISK-002",
+          "description": "需求量→利润，BL-009a应拦截"
+        },
+        {
+          "case_id": "TC-BL009A-004",
+          "category": "正向危险样例",
+          "indicator_name": "需求侧分析",
+          "matched_name": "盈利分析",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009a",
+          "risk_level": "P0",
+          "source_risk": "EXPANDED",
+          "description": "需求侧→盈利，扩展变体验证BL-009a覆盖"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-002",
+      "group_name": "BL-009a安全负向用例",
+      "rule_id": "BL-009a",
+      "case_type": "negative_safety",
+      "description": "同口径匹配不应被BL-009a拦截",
+      "test_cases": [
+        {
+          "case_id": "TC-BL009A-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂需求预测",
+          "matched_name": "碳酸锂需求分析",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "RISK-002",
+          "description": "需求→需求，同口径，不应触发"
+        },
+        {
+          "case_id": "TC-BL009A-NEG-002",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂利润分析",
+          "matched_name": "碳酸锂利润预测",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "RISK-002",
+          "description": "利润→利润，同口径，不应触发"
+        },
+        {
+          "case_id": "TC-BL009A-NEG-003",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂利润与需求分析",
+          "matched_name": "碳酸锂利润与需求预测",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "RISK-002",
+          "description": "同时包含利润和需求两侧指标，同口径不应触发（双向包含检测）"
+        },
+        {
+          "case_id": "TC-BL009A-NEG-004",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂需求预测",
+          "matched_name": "碳酸锂利润预测",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "需求→利润但均为预测，同口径不应触发（扩展验证）"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-003",
+      "group_name": "BL-009a边界压力测试",
+      "rule_id": "BL-009a",
+      "case_type": "boundary",
+      "description": "BL-009a与BL-009互补性及边界压力测试",
+      "test_cases": [
+        {
+          "case_id": "TC-BL009A-BND-001",
+          "category": "边界压力样例",
+          "indicator_name": "碳酸锂利润（元/吨）",
+          "matched_name": "碳酸锂三元523需求",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009",
+          "risk_level": "P0",
+          "source_risk": "RISK-002",
+          "description": "利润→需求正向，BL-009应拦截（互补验证）"
+        },
+        {
+          "case_id": "TC-BL009A-BND-002",
+          "category": "边界压力样例",
+          "indicator_name": "需求侧利润分析",
+          "matched_name": "需求侧利润预测",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "需求侧+利润同时出现，同口径不应触发（边界变体）"
+        },
+        {
+          "case_id": "TC-BL009A-BND-003",
+          "category": "边界压力样例",
+          "indicator_name": "毛利需求分析",
+          "matched_name": "毛利需求预测",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "毛利+需求同时出现，同口径不应触发（边界变体）"
+        },
+        {
+          "case_id": "TC-BL009A-BND-004",
+          "category": "边界压力样例",
+          "indicator_name": "需求量预测",
+          "matched_name": "需求量分析",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "需求量→需求量，同口径不应触发（边界变体）"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-004",
+      "group_name": "BL-026正向触发用例",
+      "rule_id": "BL-026",
+      "case_type": "positive_trigger",
+      "description": "库存天数跨品种匹配，BL-026应正确拦截",
+      "test_cases": [
+        {
+          "case_id": "TC-BL026-001",
+          "category": "正向危险样例",
+          "indicator_name": "电解镍厂库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-040",
+          "description": "镍→锂库存天数，跨品种，BL-026应拦截"
+        },
+        {
+          "case_id": "TC-BL026-002",
+          "category": "正向危险样例",
+          "indicator_name": "锡厂库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-045",
+          "description": "锡→锂库存天数，跨品种，BL-026应拦截"
+        },
+        {
+          "case_id": "TC-BL026-003",
+          "category": "正向危险样例",
+          "indicator_name": "多晶硅工厂库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-042",
+          "description": "硅→锂库存天数，跨品种，BL-026应拦截"
+        },
+        {
+          "case_id": "TC-BL026-004",
+          "category": "正向危险样例",
+          "indicator_name": "国内锌厂内库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-050",
+          "description": "锌→锂库存天数，跨品种，BL-026应拦截"
+        },
+        {
+          "case_id": "TC-BL026-005",
+          "category": "正向危险样例",
+          "indicator_name": "高冰镍厂库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-041",
+          "description": "高冰镍→锂库存天数，跨品种，BL-026应拦截"
+        },
+        {
+          "case_id": "TC-BL026-006",
+          "category": "正向危险样例",
+          "indicator_name": "金属硅工厂库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-043",
+          "description": "金属硅→锂库存天数，跨品种，BL-026应拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-005",
+      "group_name": "BL-026安全负向用例",
+      "rule_id": "BL-026",
+      "case_type": "negative_safety",
+      "description": "同品种库存天数匹配不应被BL-026拦截",
+      "test_cases": [
+        {
+          "case_id": "TC-BL026-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "同品种同指标（碳酸锂→碳酸锂），不应触发BL-026"
+        },
+        {
+          "case_id": "TC-BL026-NEG-002",
+          "category": "安全负向样例",
+          "indicator_name": "锡厂库存天数（天）",
+          "matched_name": "锡厂库存天数（天）",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "RISK-045",
+          "description": "同品种同指标（锡→锡），不应触发BL-026"
+        },
+        {
+          "case_id": "TC-BL026-NEG-003",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂需求预测",
+          "matched_name": "碳酸锂需求分析",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "需求→需求，同口径，不应触发BL-026（无关指标）"
+        },
+        {
+          "case_id": "TC-BL026-NEG-004",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂利润分析",
+          "matched_name": "碳酸锂利润预测",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "利润→利润，同口径，不应触发BL-026（无关指标）"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-006",
+      "group_name": "BL-026与BL-012互补边界测试",
+      "rule_id": "BL-026",
+      "case_type": "boundary",
+      "description": "BL-026与BL-012互补覆盖验证",
+      "test_cases": [
+        {
+          "case_id": "TC-BL026-BND-001",
+          "category": "边界压力样例",
+          "indicator_name": "电解镍厂库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-012; BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-040",
+          "description": "跨品种库存天数，BL-012+BL-026双重拦截"
+        },
+        {
+          "case_id": "TC-BL026-BND-002",
+          "category": "边界压力样例",
+          "indicator_name": "锡厂库存天数（天）",
+          "matched_name": "锡厂库存天数（天）",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "RISK-045",
+          "description": "同品种库存天数，BL-026不触发（互补边界）"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-007",
+      "group_name": "BL-012方案B正向触发用例",
+      "rule_id": "BL-012",
+      "case_type": "positive_trigger",
+      "description": "库存天数→库存量匹配，BL-012方案B应正确拦截",
+      "test_cases": [
+        {
+          "case_id": "TC-BL012B-001",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂工厂库存量",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-012",
+          "risk_level": "P1",
+          "source_risk": "RISK-038",
+          "description": "库存天数→库存量，BL-012应拦截"
+        },
+        {
+          "case_id": "TC-BL012B-002",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂库存总计",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-012",
+          "risk_level": "P1",
+          "source_risk": "RISK-038",
+          "description": "库存天数→库存总计，BL-012应拦截（变体）"
+        },
+        {
+          "case_id": "TC-BL012B-003",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂库存",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-012",
+          "risk_level": "P1",
+          "source_risk": "RISK-038",
+          "description": "库存天数→库存，BL-012应拦截（简写变体）"
+        },
+        {
+          "case_id": "TC-BL012B-004",
+          "category": "正向危险样例",
+          "indicator_name": "碳酸锂库存天数（天）",
+          "matched_name": "碳酸锂社会库存量",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-012",
+          "risk_level": "P1",
+          "source_risk": "EXPANDED",
+          "description": "库存天数→社会库存量，BL-012应拦截（跨口径变体）"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-008",
+      "group_name": "BL-012方案B安全负向用例",
+      "rule_id": "BL-012",
+      "case_type": "negative_safety",
+      "description": "同品种库存天数→库存天数不应被BL-012方案B拦截（FP消除验证）",
+      "test_cases": [
+        {
+          "case_id": "TC-BL012B-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "RISK-038",
+          "description": "同品种库存天数→库存天数，BL-012方案B前置过滤应跳过（FP消除）"
+        },
+        {
+          "case_id": "TC-BL012B-NEG-002",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂库存天数预测",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "同品种库存天数→库存天数预测，BL-012方案B前置过滤应跳过（变体）"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-009",
+      "group_name": "BL-012方案B边界压力测试",
+      "rule_id": "BL-012",
+      "case_type": "boundary",
+      "description": "BL-012方案B品种感知前置过滤边界",
+      "test_cases": [
+        {
+          "case_id": "TC-BL012B-BND-001",
+          "category": "边界压力样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "RISK-038",
+          "description": "同品种同指标，方案B前置过滤跳过（RISK-038 FP消除验证）"
+        },
+        {
+          "case_id": "TC-BL012B-BND-002",
+          "category": "边界压力样例",
+          "indicator_name": "电解镍厂库存天数（天）",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-012; BL-026",
+          "risk_level": "P1",
+          "source_risk": "RISK-040",
+          "description": "跨品种库存天数→库存天数，BL-012方案B不跳过，BL-026拦截"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-010",
+      "group_name": "PDF数据缺失检测用例",
+      "rule_id": "PDF_FIX",
+      "case_type": "positive_trigger",
+      "description": "PDF模板matched_name为空时，V86应检测并标记为DATA_MISSING",
+      "test_cases": [
+        {
+          "case_id": "TC-PDF-001",
+          "category": "数据缺失样例",
+          "indicator_name": "中国电解镍净进口量",
+          "matched_name": "N/A",
+          "expected_result": "DATA_MISSING",
+          "expected_rule": "BL-022",
+          "risk_level": "P0",
+          "source_risk": "RISK-010",
+          "description": "RISK-010：PDF模板matched_name为空，应检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-002",
+          "category": "数据缺失样例",
+          "indicator_name": "工业硅样本工厂库存(SMM)",
+          "matched_name": "N/A",
+          "expected_result": "DATA_MISSING",
+          "expected_rule": "BL-020",
+          "risk_level": "P0",
+          "source_risk": "RISK-011",
+          "description": "RISK-011：PDF模板matched_name为空，应检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-003",
+          "category": "数据缺失样例",
+          "indicator_name": "工业硅供需平衡",
+          "matched_name": "N/A",
+          "expected_result": "DATA_MISSING",
+          "expected_rule": "BL-021",
+          "risk_level": "P0",
+          "source_risk": "RISK-013",
+          "description": "RISK-013：PDF模板matched_name为空，应检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-004",
+          "category": "数据缺失样例",
+          "indicator_name": "磷酸铁锂 电池 国内销量",
+          "matched_name": "N/A（工作表记录）",
+          "expected_result": "DATA_MISSING",
+          "expected_rule": "BL-015",
+          "risk_level": "P0",
+          "source_risk": "RISK-005",
+          "description": "RISK-005：PDF模板matched_name为空，应检测为DATA_MISSING"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-011",
+      "group_name": "PDF数据修复模拟用例",
+      "rule_id": "PDF_FIX",
+      "case_type": "positive_trigger",
+      "description": "PDF数据修复后，规则应能正确触发",
+      "test_cases": [
+        {
+          "case_id": "TC-PDF-FIX-001",
+          "category": "数据修复模拟样例",
+          "indicator_name": "中国电解镍净进口量",
+          "matched_name": "中国海关:镍:净进口量:月度",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-022",
+          "risk_level": "P0",
+          "source_risk": "RISK-010",
+          "description": "RISK-010修复后：镍进口→铜进口，BL-022应触发"
+        },
+        {
+          "case_id": "TC-PDF-FIX-002",
+          "category": "数据修复模拟样例",
+          "indicator_name": "工业硅样本工厂库存(SMM)",
+          "matched_name": "苯乙烯库存:社会库存:月度",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-020",
+          "risk_level": "P0",
+          "source_risk": "RISK-011",
+          "description": "RISK-011修复后：硅库存→苯乙烯库存，BL-020应触发"
+        },
+        {
+          "case_id": "TC-PDF-FIX-003",
+          "category": "数据修复模拟样例",
+          "indicator_name": "工业硅供需平衡",
+          "matched_name": "黄金供需平衡表:月度",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-021",
+          "risk_level": "P0",
+          "source_risk": "RISK-013",
+          "description": "RISK-013修复后：硅供需平衡→黄金供需平衡，BL-021应触发"
+        },
+        {
+          "case_id": "TC-PDF-FIX-004",
+          "category": "数据修复模拟样例",
+          "indicator_name": "磷酸铁锂 电池 国内销量",
+          "matched_name": "中国海关:磷酸铁锂电池出口量:月度",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-015",
+          "risk_level": "P0",
+          "source_risk": "RISK-005",
+          "description": "RISK-005修复后：国内销量→出口，BL-015应触发"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-012",
+      "group_name": "PDF修复安全负向用例",
+      "rule_id": "PDF_FIX",
+      "case_type": "negative_safety",
+      "description": "非数据缺失的正常匹配不应被误判为DATA_MISSING",
+      "test_cases": [
+        {
+          "case_id": "TC-PDF-NEG-001",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂 三元523需求",
+          "matched_name": "SMM: 碳酸锂现金生产利润: 外购三元极片黑粉",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009a",
+          "risk_level": "P0",
+          "source_risk": "RISK-002",
+          "description": "正常matched_name，不应被检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-NEG-002",
+          "category": "安全负向样例",
+          "indicator_name": "COMEX镍持仓量（手）",
+          "matched_name": "COMEX：铜：主力合约：持仓量（日）",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-022",
+          "risk_level": "P0",
+          "source_risk": "RISK-014",
+          "description": "正常matched_name，不应被检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-NEG-003",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂工厂库存天数",
+          "matched_name": "碳酸锂工厂库存天数",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "正常matched_name，同品种同指标，不应被检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-NEG-004",
+          "category": "安全负向样例",
+          "indicator_name": "碳酸锂需求预测",
+          "matched_name": "碳酸锂需求分析",
+          "expected_result": "PASSED",
+          "expected_rule": "NONE",
+          "risk_level": "SAFE",
+          "source_risk": "EXPANDED",
+          "description": "正常matched_name，同口径，不应被检测为DATA_MISSING"
+        }
+      ]
+    },
+    {
+      "group_id": "GROUP-013",
+      "group_name": "PDF修复边界压力测试",
+      "rule_id": "PDF_FIX",
+      "case_type": "boundary",
+      "description": "PDF数据缺失检测边界（空值变体）",
+      "test_cases": [
+        {
+          "case_id": "TC-PDF-BND-001",
+          "category": "边界压力样例",
+          "indicator_name": "中国电解镍净进口量",
+          "matched_name": "",
+          "expected_result": "DATA_MISSING",
+          "expected_rule": "BL-022",
+          "risk_level": "P0",
+          "source_risk": "RISK-010",
+          "description": "matched_name为空字符串，应检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-BND-002",
+          "category": "边界压力样例",
+          "indicator_name": "中国电解镍净进口量",
+          "matched_name": "（工作表记录）",
+          "expected_result": "DATA_MISSING",
+          "expected_rule": "BL-022",
+          "risk_level": "P0",
+          "source_risk": "RISK-010",
+          "description": "matched_name为占位符，应检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-BND-003",
+          "category": "边界压力样例",
+          "indicator_name": "中国电解镍净进口量",
+          "matched_name": "N/A（数据缺失）",
+          "expected_result": "DATA_MISSING",
+          "expected_rule": "BL-022",
+          "risk_level": "P0",
+          "source_risk": "RISK-010",
+          "description": "matched_name为N/A变体，应检测为DATA_MISSING"
+        },
+        {
+          "case_id": "TC-PDF-BND-004",
+          "category": "边界压力样例",
+          "indicator_name": "碳酸锂 三元523需求",
+          "matched_name": "SMM: 碳酸锂现金生产利润",
+          "expected_result": "BLOCKED",
+          "expected_rule": "BL-009a",
+          "risk_level": "P0",
+          "source_risk": "RISK-002",
+          "description": "正常短matched_name，不应被误判为DATA_MISSING"
+        }
+      ]
+    }
+  ]
+}
