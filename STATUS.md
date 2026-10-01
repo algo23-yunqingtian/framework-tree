@@ -597,3 +597,12 @@
 - 归档目录树+打包指引(tar/tag/异地备份)
 - 演示文档: 核心能力+截图索引+风险边界+上线路径
 - 产物目录: analysis/e2e_output/v85/hermes_v85_final_delivery/
+
+### 2026-10-01 HERMES_V85_PORTAL_SIMULATION_DEMO_AND_GATE_DASHBOARD_TUNE
+- V6门户模拟演示: 场景切换控件(基线/场景A/场景B), Gate大盘三场景实时对比
+- Gate看板交互调优: 下钻P0风险+悬浮提示+可豁免标记+预估工时
+- 演示数据包: sim_sceneA/B结果+P0风险样例+人工填写样例行
+- Gate场景报告: 场景A(2/5 PASS,可豁免) + 场景B(5/5 PASS,全绿)
+- 场景对比: 基线4/5BLOCKED→场景A解除87%→场景B解除100%
+- 验收演示脚本: 8步骤逐字话术+操作指引
+- 产物目录: analysis/e2e_output/v85/hermes_portal_sim_demo/
