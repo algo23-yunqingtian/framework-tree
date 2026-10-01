@@ -606,3 +606,12 @@
 - 场景对比: 基线4/5BLOCKED→场景A解除87%→场景B解除100%
 - 验收演示脚本: 8步骤逐字话术+操作指引
 - 产物目录: analysis/e2e_output/v85/hermes_portal_sim_demo/
+
+### 2026-10-01 HERMES_V85_PRE_ARCHIVE_PACKAGE_PREP_AND_RELEASE_NOTE
+- V85 Release Note: 版本概述+功能新增6模块+规则优化+已知缺陷7项+Gate52项+3套上线场景+回滚方案
+- enhanced_archive_builder.py: 自动归档53文件+MD5清单+Git Tag说明+依赖检测(3警告不阻断)
+- v85_overall_risk_summary.md: 17项风险(高3中6低8), 8已缓解9待处理
+- v85_deploy_rollback_guide.md: 上线6步+回滚3方案(16分钟)+校验清单+应急预案
+- v85_external_accept_checklist.md: 一页式40项勾选验收清单(8大类)
+- archive_builder_manual.md: 打包脚本使用手册
+- 产物目录: analysis/e2e_output/v85/hermes_v85_archive_prep/
