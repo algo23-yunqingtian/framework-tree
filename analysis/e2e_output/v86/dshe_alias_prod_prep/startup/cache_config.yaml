@@ -1,0 +1,26 @@
+# V86 Alias Engine - Cache Configuration Template
+cache:
+  lru:
+    max_size: 1024
+    evict_policy: "lru"
+    persist_path: "/var/cache/v86-alias/resolve_cache.pkl"
+    persist_interval_seconds: 300
+    persist_on_shutdown: true
+  warmup:
+    enabled: true
+    verify_after_warmup: true
+    fail_on_warmup_error: false
+  directory: "/var/cache/v86-alias"
+  max_size_mb: 50
+  keep_last_n_files: 7
+
+metrics:
+  cache_hit_rate_threshold: 0.85
+  cache_size_alert: 800
+
+persistence:
+  enabled: true
+  format: "pickle"
+  compression: false
+  atomic_write: true
+  backup_on_write: true
