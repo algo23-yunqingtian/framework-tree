@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHB — V86 发布候选准备·P1闭环·发布说明·回滚预案·最终自检 V7 (DSHB_V86_RELEASE_CANDIDATE_PREPARATION_V7)
+- **T3.1 P1闭环**: `v86_p1_non_blocking_closure_v7.md` — 3项P1非阻塞项全部文档闭环(100%), 补充降级阈值定义/监控覆盖计划/冷启动指标定义, 发布后观察计划19项
+- **T3.2 发布元数据**: `v86_release_candidate_metadata_v7.md` — V86-RC1发布候选元数据锚点, 版本链V1→V7完整, 20 commits依赖关系图, 120发布文件清单
+- **T3.3 发布说明+回滚**: `v86_github_release_note_v7.md` + `v86_rollback_plan_v7.md` — 版本概述/Gate 5/5 PASS/指标图表概览/PDF匹配/已知限制/发布范围; 回滚Strategy A(16min)/B(30min), 5触发条件, 15验证项
+- **T3.4 发布清单**: `v86_launch_file_manifest_v7.md` — 172文件/22目录锁定, MD5全部校验通过, 清单与MD5_MANIFEST_v7一致
+- **T3.5 最终自检**: `v86_pre_launch_final_checklist_v7.md` — 43项检查全部通过(100%), 新P0=0, Gate FULL_PASS维持
+- **T3.6 MD5固化**: `MD5_MANIFEST_v7.md` (6文件95,744B) + `JOB_READY.flag` (JOB_READY=TRUE, V7发布候选固化)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (6新增V7文件 + 1 MD5清单 + 1 flag更新)
+- **T4约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PRODUCTION_DEPLOY 全部合规
+- **发布结论**: ✅ V86-RC1 READY FOR RELEASE WINDOW (Gate FULL_PASS, P0=0, P1=3全部闭环, 43/43自检通过, 风险评分2/10 LOW)
+
 ### 2026-10-03 DSHB — V86 指标图表PDF匹配·上线准入评估·Tree预校验 V6 (DSHB_V86_METRIC_CHART_PDF_MATCH_STATISTICS_V6)
 - **T3.1 量化统计**: `v86_metric_chart_pdf_match_statistics_v6.md` — 全局178指标(161匹配90.4%/10缺失全部降级/0口径冲突), 36图表(29完全匹配80.6%/7降级100%覆盖), DSHE V6迭代对比(90集成/0冗余/100%降级/100%门户), zhiji节省95.3%
 - **T3.2 Gate评估**: `v86_github_launch_gate_assessment_v6.md` — 163资产扫描/126MD5验证/V1→V6完整链路, P0阻塞=0, P1非阻塞=3(可管理), 43项上线前置检查清单, **Gate判定: ✅允许上线** (5/5 PASS, 0 OPEN)
