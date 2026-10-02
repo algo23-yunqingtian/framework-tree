@@ -73,6 +73,15 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHB — V86 全局指标对齐·图表校验·Tree 落地方案 V5 (DSHB_V86_METRIC_INVENTORY_DEDUP_MATCH_AND_TREE_SYNC_V5)
+- **T3.1 全局主清单**: `v86_global_metric_master_list_v5.md` — 交叉核验 DSHB 93 项与 DSHE 157 项指标, 生成全局唯一 178 项主清单 (161 已匹配 90.4%, 10 待补 5.6%, 0 口径冲突), zhiji 最小查询 5 次 (95.3% 节省), 可复用快照 64 项 (88.2%)
+- **T3.2 图表校验**: `v86_pdf_chart_panel_consistency_review_v5.md` — 校验 32+4=36 张图表与 6 面板一致性 (100% 对齐), 8 项差异全部非阻塞, 7 项缺失指标降级方案齐全 (6 降级 1 可接受)
+- **T3.3 落地方案**: `v86_framework_tree_execution_plan_v5.md` — 合并 DSHB 18+DSHE 10=28 项待办 (P1=10/12h, P2=12/20h, P3=6/6h, 总计 38h), 153 文件资产索引验证通过, V1→V5 版本链路完整
+- **T3.4 MD5 固化**: `MD5_MANIFEST_v5.md` (3 文件) + `JOB_READY.flag` (JOB_READY=TRUE, V5_COMMIT 固化)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (3 新增文件 + 1 MD5 清单 + 1 flag 更新)
+- **T4 约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED 全部合规
+- **Gate 结论**: FULL_PASS ✅ 维持 (5/5 PASS, 0 OPEN, 全局指标口径统一 0 冲突)
+
 ### 2026-10-03 DSHB — V86 指标盘点·去重·匹配·Tree 同步 V4 (DSHB_V86_METRIC_INVENTORY_DEDUP_MATCH_AND_TREE_SYNC_V4)
 - **T3.1 指标盘点**: `v86_metric_inventory_dedup_match_report_v4.md` — 全量 152 指标→去重 93 项 (39% 减少), 92.5% 匹配率, 7 项待补缺失指标, zhiji 外部查询节省 95% (107→5 次), 指标复用率 42%, 口径一致性 0 冲突
 - **T3.2 绘图定义**: `v86_pdf_chart_dataset_definition_v4.md` — 5 组 32 图 (Gate 大盘/风险监控/DEPENDENCY_GAP/巡检时序/P0 专项), 19 数据集, PDF 布局对齐 (8 规范项全部对齐), ECharts Dark 模板复用
