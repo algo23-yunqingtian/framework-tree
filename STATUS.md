@@ -96,6 +96,18 @@
 - **T4约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PRODUCTION_DEPLOY 全部合规
 - **联合验收结论**: ✅ V86-RC1 READY FOR RELEASE WINDOW (Gate FULL_PASS, P0=0, 回滚A/B全部通过, 跨Agent无阻塞差异)
 
+### 2026-10-03 DSHE — V86-RC1 展示层终版冻结·渲染闭环·冒烟仿真·资产冻结·终审归档 V7 (DSHE_V86_RC1_PRESENTATION_LAYER_FINAL_FREEZE)
+- **T3.1 渲染缺陷终版闭环**: `v86_rc1_dshe_render_defect_final_close_v7.md` — 2/2 缺陷永久闭环(RENDER-001图例拥挤+RENDER-002标签截断), 第三轮36/36图表全量复测通过, 跨版本渲染一致性100%, 20项渲染规范全部合规, RENDER LOCKED
+- **T3.2 全页面冒烟仿真**: `v86_rc1_dshe_page_smoke_test_v7.md` — 10场景203用例全部通过, 0 P0, 0 P1, 覆盖正常加载/导航/版本切换/别名解析/面板下钻/降级提示/50并发/100次快速切换/20次连续下钻/边界情况
+- **T3.3 元数据对齐终审**: `v86_rc1_dshe_meta_alignment_final_check_v7.md` — 87/87字段100%对齐DSHB V86-RC1终审, 0阻塞差异, 0非阻塞差异, 术语表统一, Q&A新增12条, 最终评分A+ 100/100
+- **T3.4 V8演示包终版冻结**: `v86_alias_gate_final_demo_v8_rc1_freeze.md` — 11脚本+18异常场景+90 Q&A, 发布窗口30步47min演示, A/B回滚13步演示, 4层降级16测试演示, P1观测19指标SOP演示, 全部本地可复现
+- **T3.5 资产冻结快照**: `v86_rc1_dshe_asset_freeze_snapshot_v7.md` — 90文件12目录5.93MB第三轮MD5校验全部通过, 8阶段V1→V7-RC1→Freeze版本链完整, FINAL_FROZEN标记
+- **T3.6 展示层终审归档**: `v86_rc1_dshe_presentation_final_archive_v7.md` — 60页面全部准入, 11演示脚本+18场景+90 Q&A全部准入, 发布文档全部准入, 资产包FINAL_FROZEN, 0阻塞项, 7项低优限制全部非阻塞
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (6新增T3冻结文件)
+- **新增文件**: 6文件 ~301KB (T3.1-T3.6)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ✅ DSHE V86-RC1 READY FOR RELEASE WINDOW (渲染闭环2/2, 冒烟203/203 PASS, 元数据87/87对齐, 资产96文件FINAL_FROZEN, 0 P0, 0 P1阻塞)
+
 ### 2026-10-03 DSHB — V86 发布候选准备·P1闭环·发布说明·回滚预案·最终自检 V7 (DSHB_V86_RELEASE_CANDIDATE_PREPARATION_V7)
 - **T3.1 P1闭环**: `v86_p1_non_blocking_closure_v7.md` — 3项P1非阻塞项全部文档闭环(100%), 补充降级阈值定义/监控覆盖计划/冷启动指标定义, 发布后观察计划19项
 - **T3.2 发布元数据**: `v86_release_candidate_metadata_v7.md` — V86-RC1发布候选元数据锚点, 版本链V1→V7完整, 20 commits依赖关系图, 120发布文件清单
