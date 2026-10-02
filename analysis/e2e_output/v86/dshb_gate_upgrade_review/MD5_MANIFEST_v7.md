@@ -24,8 +24,9 @@
 | 9 | `v86_rc1_rollback_simulation_v7.md` | `D1619B8F2CDB581B8613007A5CFC6A35` | 22,804 | T3.3 | ✅ |
 | 10 | `v86_rc1_p1_longterm_monitor_sop_v7.md` | `4827185235187F4D73F85ECBA07F4C6A` | 20,726 | T3.4 | ✅ |
 | 11 | `v86_rc1_cross_agent_asset_check_v7.md` | `674B624899FF6CF018D9E28A57EB258A` | 17,400 | T3.5 | ✅ |
+| 12 | `v86_rc1_release_monitor_dashboard_template_v7.md` | `C8E4496E652CDCFCBD9CCFC98DBD2467` | 96,409 | T3.3 | ✅ |
 
-**总计**: 11 文件, 193,924 字节
+**总计**: 12 文件, 290,333 字节
 
 ---
 
