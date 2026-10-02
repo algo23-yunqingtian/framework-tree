@@ -73,6 +73,15 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHB — V86 指标图表PDF匹配·上线准入评估·Tree预校验 V6 (DSHB_V86_METRIC_CHART_PDF_MATCH_STATISTICS_V6)
+- **T3.1 量化统计**: `v86_metric_chart_pdf_match_statistics_v6.md` — 全局178指标(161匹配90.4%/10缺失全部降级/0口径冲突), 36图表(29完全匹配80.6%/7降级100%覆盖), DSHE V6迭代对比(90集成/0冗余/100%降级/100%门户), zhiji节省95.3%
+- **T3.2 Gate评估**: `v86_github_launch_gate_assessment_v6.md` — 163资产扫描/126MD5验证/V1→V6完整链路, P0阻塞=0, P1非阻塞=3(可管理), 43项上线前置检查清单, **Gate判定: ✅允许上线** (5/5 PASS, 0 OPEN)
+- **T3.3 Tree预校验**: `v86_framework_tree_pre_launch_validation_v6.md` — 22目录/163文件/13版本节点全部校验通过, 8品种模块索引验证(7品种100%/AO 17%P2), 660页面渲染规则校验, 异常项=0
+- **T3.4 MD5固化**: `MD5_MANIFEST_v6.md` (3文件81,087B) + `JOB_READY.flag` (JOB_READY=TRUE, V6指标固化)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (3新增V6文件 + 1 MD5清单 + 1 flag更新)
+- **T4约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED 全部合规
+- **Gate结论**: FULL_PASS ✅ 维持 (允许上线, P0=0, P1=3可管理, 风险评分2/10 LOW)
+
 ### 2026-10-03 DSHB — V86 全局指标对齐·图表校验·Tree 落地方案 V5 (DSHB_V86_METRIC_INVENTORY_DEDUP_MATCH_AND_TREE_SYNC_V5)
 - **T3.1 全局主清单**: `v86_global_metric_master_list_v5.md` — 交叉核验 DSHB 93 项与 DSHE 157 项指标, 生成全局唯一 178 项主清单 (161 已匹配 90.4%, 10 待补 5.6%, 0 口径冲突), zhiji 最小查询 5 次 (95.3% 节省), 可复用快照 64 项 (88.2%)
 - **T3.2 图表校验**: `v86_pdf_chart_panel_consistency_review_v5.md` — 校验 32+4=36 张图表与 6 面板一致性 (100% 对齐), 8 项差异全部非阻塞, 7 项缺失指标降级方案齐全 (6 降级 1 可接受)
