@@ -25,8 +25,9 @@
 | 10 | `v86_rc1_p1_longterm_monitor_sop_v7.md` | `4827185235187F4D73F85ECBA07F4C6A` | 20,726 | T3.4 | ✅ |
 | 11 | `v86_rc1_cross_agent_asset_check_v7.md` | `674B624899FF6CF018D9E28A57EB258A` | 17,400 | T3.5 | ✅ |
 | 12 | `v86_rc1_release_monitor_dashboard_template_v7.md` | `C8E4496E652CDCFCBD9CCFC98DBD2467` | 96,409 | T3.3 | ✅ |
+| 13 | `v86_rc1_release_emergency_response_plan_v7.md` | `E8D46212C74215821E29BF859AD8E4A5` | 75,396 | T3.4 | ✅ |
 
-**总计**: 12 文件, 290,333 字节
+**总计**: 13 文件, 365,729 字节
 
 ---
 
