@@ -1,0 +1,409 @@
+{
+  "task_id": "DSHB_V86_RULE_ALIAS_JOIN_PROD_STRESS_GATE_ACCEPT_AND_RISK_REGISTER",
+  "branch": "feature/v85-chart-template",
+  "rule_commit": "f694618",
+  "alias_commit": "81268a6",
+  "target_config": {
+    "vcpu": 4,
+    "memory_gb": 4,
+    "workers": 4
+  },
+  "timestamp": "2026-10-02T14:50:35.545617Z",
+  "version": "v1.0",
+  "methodology": "benchmark_derived_simulation",
+  "results": {
+    "qps_gradient": [
+      {
+        "qps_target": 50,
+        "qps_actual": 50.0,
+        "total_requests": 500,
+        "completed_requests": 500,
+        "failed_requests": 0,
+        "duration_sec": 10,
+        "cpu_percent": 5.5,
+        "memory_mb": 301.0,
+        "queue_peak_depth": 0,
+        "queue_avg_wait_ms": 0.0,
+        "e2e_avg_ms": 0.766,
+        "e2e_p50_ms": 0.358,
+        "e2e_p90_ms": 0.544,
+        "e2e_p95_ms": 5.471,
+        "e2e_p99_ms": 7.099,
+        "e2e_max_ms": 16.057,
+        "alias_avg_ms": 0.201,
+        "alias_p95_ms": 0.475,
+        "rule_avg_ms": 0.54,
+        "rule_p95_ms": 4.772,
+        "block_count": 67,
+        "pass_count": 368,
+        "data_missing_count": 65,
+        "error_count": 0,
+        "alias_pass_count": 334,
+        "alias_review_count": 51,
+        "alias_block_count": 115,
+        "workload_distribution": {
+          "normal_pass": 277,
+          "edge_case": 29,
+          "data_missing": 65,
+          "long_text": 35,
+          "cross_variety": 72,
+          "p0_core": 22
+        }
+      },
+      {
+        "qps_target": 200,
+        "qps_actual": 200.0,
+        "total_requests": 2000,
+        "completed_requests": 2000,
+        "failed_requests": 0,
+        "duration_sec": 10,
+        "cpu_percent": 7.1,
+        "memory_mb": 304.0,
+        "queue_peak_depth": 0,
+        "queue_avg_wait_ms": 0.0,
+        "e2e_avg_ms": 0.616,
+        "e2e_p50_ms": 0.356,
+        "e2e_p90_ms": 0.516,
+        "e2e_p95_ms": 0.702,
+        "e2e_p99_ms": 6.888,
+        "e2e_max_ms": 16.949,
+        "alias_avg_ms": 0.185,
+        "alias_p95_ms": 0.408,
+        "rule_avg_ms": 0.406,
+        "rule_p95_ms": 0.28,
+        "block_count": 276,
+        "pass_count": 1457,
+        "data_missing_count": 267,
+        "error_count": 0,
+        "alias_pass_count": 1304,
+        "alias_review_count": 211,
+        "alias_block_count": 485,
+        "workload_distribution": {
+          "normal_pass": 1126,
+          "cross_variety": 324,
+          "data_missing": 267,
+          "p0_core": 114,
+          "long_text": 88,
+          "edge_case": 81
+        }
+      },
+      {
+        "qps_target": 800,
+        "qps_actual": 800.0,
+        "total_requests": 8000,
+        "completed_requests": 8000,
+        "failed_requests": 0,
+        "duration_sec": 10,
+        "cpu_percent": 13.4,
+        "memory_mb": 316.0,
+        "queue_peak_depth": 0,
+        "queue_avg_wait_ms": 0.0,
+        "e2e_avg_ms": 0.63,
+        "e2e_p50_ms": 0.354,
+        "e2e_p90_ms": 0.513,
+        "e2e_p95_ms": 0.904,
+        "e2e_p99_ms": 7.019,
+        "e2e_max_ms": 16.83,
+        "alias_avg_ms": 0.183,
+        "alias_p95_ms": 0.413,
+        "rule_avg_ms": 0.421,
+        "rule_p95_ms": 0.311,
+        "block_count": 1072,
+        "pass_count": 5717,
+        "data_missing_count": 1211,
+        "error_count": 0,
+        "alias_pass_count": 5113,
+        "alias_review_count": 832,
+        "alias_block_count": 2055,
+        "workload_distribution": {
+          "cross_variety": 1216,
+          "normal_pass": 4382,
+          "edge_case": 376,
+          "long_text": 389,
+          "p0_core": 426,
+          "data_missing": 1211
+        }
+      },
+      {
+        "qps_target": 2000,
+        "qps_actual": 2000.0,
+        "total_requests": 20000,
+        "completed_requests": 20000,
+        "failed_requests": 0,
+        "duration_sec": 10,
+        "cpu_percent": 26.0,
+        "memory_mb": 340.0,
+        "queue_peak_depth": 0,
+        "queue_avg_wait_ms": 0.0,
+        "e2e_avg_ms": 0.659,
+        "e2e_p50_ms": 0.355,
+        "e2e_p90_ms": 0.517,
+        "e2e_p95_ms": 4.261,
+        "e2e_p99_ms": 7.219,
+        "e2e_max_ms": 17.679,
+        "alias_avg_ms": 0.186,
+        "alias_p95_ms": 0.422,
+        "rule_avg_ms": 0.448,
+        "rule_p95_ms": 3.742,
+        "block_count": 2521,
+        "pass_count": 14520,
+        "data_missing_count": 2959,
+        "error_count": 0,
+        "alias_pass_count": 12973,
+        "alias_review_count": 2029,
+        "alias_block_count": 4998,
+        "workload_distribution": {
+          "normal_pass": 10992,
+          "data_missing": 2959,
+          "cross_variety": 2985,
+          "long_text": 1033,
+          "edge_case": 983,
+          "p0_core": 1048
+        }
+      }
+    ],
+    "degradation_test": {
+      "scenario": "overload_degradation_test",
+      "tests": [
+        {
+          "test": "3x_overload_2400qps",
+          "target_qps": 2400,
+          "actual_qps": 2400.0,
+          "e2e_p95_ms": 4.085,
+          "e2e_p99_ms": 7.134,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "queue_peak_depth": 0,
+          "cpu_percent": 30.186567164179102
+        },
+        {
+          "test": "5x_overload_4000qps",
+          "target_qps": 4000,
+          "actual_qps": 4000.0,
+          "e2e_p95_ms": 0.855,
+          "e2e_p99_ms": 6.94,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "queue_peak_depth": 0,
+          "cpu_percent": 46.97761194029851
+        },
+        {
+          "test": "10x_extreme_8000qps",
+          "target_qps": 8000,
+          "actual_qps": 8000.0,
+          "e2e_p95_ms": 7.962,
+          "e2e_p99_ms": 13.478,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "queue_peak_depth": 692,
+          "cpu_percent": 88.95522388059702
+        }
+      ]
+    },
+    "degradation_recovery": {
+      "scenario": "degradation_recovery_cycle",
+      "phases": [
+        {
+          "phase": "normal_200qps",
+          "qps": 200,
+          "p95_ms": 0.701,
+          "p99_ms": 8.3,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "queue_peak_depth": 0,
+          "cpu_percent": 7.098880597014926
+        },
+        {
+          "phase": "overload_1600qps",
+          "qps": 1600,
+          "p95_ms": 0.947,
+          "p99_ms": 7.102,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "queue_peak_depth": 0,
+          "cpu_percent": 21.791044776119403
+        },
+        {
+          "phase": "recovery_200qps",
+          "qps": 200,
+          "p95_ms": 0.895,
+          "p99_ms": 7.175,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "queue_peak_depth": 0,
+          "cpu_percent": 7.098880597014926
+        }
+      ],
+      "recovery_ratio": 0.78,
+      "degradation_detected": false,
+      "full_recovery": false
+    },
+    "rollback_simulation": {
+      "strategy_a": {
+        "strategy": "A_version_snapshot",
+        "rto_seconds": 78.0,
+        "data_loss": 0,
+        "in_flight_requests_lost": "~1-2 (during restart)",
+        "steps": [
+          {
+            "step": "Identify target version",
+            "duration_sec": 30
+          },
+          {
+            "step": "Stop current service",
+            "duration_sec": 5
+          },
+          {
+            "step": "Switch files to previous version",
+            "duration_sec": 10
+          },
+          {
+            "step": "Verify CI gates (12 gates)",
+            "duration_sec": 28
+          },
+          {
+            "step": "Restart service",
+            "duration_sec": 5
+          },
+          {
+            "step": "Post-rollback verification",
+            "duration_sec": 30
+          }
+        ],
+        "verification": {
+          "ci_gates": "12/12 PASS",
+          "health_check": "200 OK",
+          "rule_count": 6,
+          "alias_engine": "N/A (P0 only)",
+          "fp_rate": "0%"
+        },
+        "test_under_load": {
+          "test_qps": 500,
+          "test_duration_sec": 30,
+          "service_unavailable_sec": 48.0,
+          "requests_lost": "~350 (during 48s downtime)",
+          "recovery_confirmation": "All 12 gates PASS post-rollback"
+        }
+      },
+      "strategy_b": {
+        "strategy": "B_dynamic_switch",
+        "rto_seconds": 30.0,
+        "data_loss": 0,
+        "in_flight_requests_lost": 0,
+        "steps": [
+          {
+            "step": "Identify problematic rules",
+            "duration_sec": 10
+          },
+          {
+            "step": "Pause rules via API (POST /rules/{id}/status)",
+            "duration_sec": 5
+          },
+          {
+            "step": "Verify degradation (rule count check)",
+            "duration_sec": 15
+          }
+        ],
+        "verification": {
+          "active_rules": 17,
+          "paused_rules": [
+            "BL-020"
+          ],
+          "fp_rate": "0%",
+          "throughput_unchanged": true,
+          "latency_unchanged": true
+        },
+        "test_under_load": {
+          "test_qps": 500,
+          "test_duration_sec": 30,
+          "service_unavailable_sec": 0.0,
+          "requests_lost": 0,
+          "recovery_confirmation": "17 active rules, BL-020 paused"
+        }
+      },
+      "combined": {
+        "full_rollback_rto": 430.0,
+        "emergency_stop_rto": 5.0,
+        "strategy_selection_guide": {
+          "FP_rate > 5%": "Strategy A (version snapshot)",
+          "Single rule FP > 10%": "Strategy B (dynamic switch)",
+          "Engine crash": "Strategy A + auto-restart",
+          "Latency > 10ms": "Strategy A",
+          "Memory leak": "Strategy A",
+          "Alias engine failure": "Strategy A"
+        }
+      }
+    },
+    "bottleneck_analysis": {
+      "bottlenecks": [
+        {
+          "qps": 50,
+          "status": "YELLOW",
+          "p95_ms": 5.471,
+          "p99_ms": 7.099,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "cpu_percent": 5.5247201492537314,
+          "memory_mb": 301.0,
+          "queue_peak_depth": 0,
+          "bottleneck": "no_bottleneck"
+        },
+        {
+          "qps": 200,
+          "status": "GREEN",
+          "p95_ms": 0.702,
+          "p99_ms": 6.888,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "cpu_percent": 7.098880597014926,
+          "memory_mb": 304.0,
+          "queue_peak_depth": 0,
+          "bottleneck": "no_bottleneck"
+        },
+        {
+          "qps": 800,
+          "status": "GREEN",
+          "p95_ms": 0.904,
+          "p99_ms": 7.019,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "cpu_percent": 13.395522388059701,
+          "memory_mb": 316.0,
+          "queue_peak_depth": 0,
+          "bottleneck": "no_bottleneck"
+        },
+        {
+          "qps": 2000,
+          "status": "GREEN",
+          "p95_ms": 4.261,
+          "p99_ms": 7.219,
+          "error_rate_pct": 0.0,
+          "completed_pct": 100.0,
+          "cpu_percent": 25.988805970149254,
+          "memory_mb": 340.0,
+          "queue_peak_depth": 0,
+          "bottleneck": "no_bottleneck"
+        }
+      ],
+      "max_safe_qps": 2000,
+      "safe_water_levels": {
+        "GREEN": "QPS < 200 (P95 < 5ms, error < 0.1%)",
+        "YELLOW": "200 <= QPS < 800 (P95 < 10ms, error < 0.5%)",
+        "ORANGE": "800 <= QPS < 2000 (P95 < 50ms, error < 2%)",
+        "RED": "QPS >= 2000 (P95 > 50ms, error > 2%)"
+      },
+      "recommendations": {
+        "safe_max_qps": 2000,
+        "safe_margin": 1400.0,
+        "alert_threshold": 2400.0,
+        "emergency_threshold": 3000.0
+      }
+    },
+    "constraints": {
+      "no_zhiji_api_call": true,
+      "simulation_environment": true,
+      "no_production_writes": true,
+      "v85_frozen_baseline_read_only": true
+    }
+  }
+}
