@@ -73,6 +73,15 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHB — V86 指标盘点·去重·匹配·Tree 同步 V4 (DSHB_V86_METRIC_INVENTORY_DEDUP_MATCH_AND_TREE_SYNC_V4)
+- **T3.1 指标盘点**: `v86_metric_inventory_dedup_match_report_v4.md` — 全量 152 指标→去重 93 项 (39% 减少), 92.5% 匹配率, 7 项待补缺失指标, zhiji 外部查询节省 95% (107→5 次), 指标复用率 42%, 口径一致性 0 冲突
+- **T3.2 绘图定义**: `v86_pdf_chart_dataset_definition_v4.md` — 5 组 32 图 (Gate 大盘/风险监控/DEPENDENCY_GAP/巡检时序/P0 专项), 19 数据集, PDF 布局对齐 (8 规范项全部对齐), ECharts Dark 模板复用
+- **T3.3 Tree 评估**: `v86_framework_tree_progress_assessment_v4.md` — 仓库 2,966 文件/660 HTML 页面/78.5% 同步进度, 8 品种扫描 (PB/ZN/NI/SN/LI 100%, AL 82%, CU 69%, AO 32%), 18 项待办 (P1=6/P2=10/P3=2, 总 23h)
+- **T3.4 MD5 固化**: `MD5_MANIFEST_v4.md` (3 文件 97,147B) + `JOB_READY.flag` (JOB_READY=TRUE)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (3 新增文件 + 1 MD5 清单 + 1 flag)
+- **T4 约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED 全部合规
+- **Gate 结论**: FULL_PASS ✅ 维持 (5/5 PASS, 0 OPEN, 157 项 V4 前置清单)
+
 ### 2026-10-02 HERMES — V86 门户缺陷修复 + 全链路 E2E 测试 + 口径优化 + 验收演示 (HERMES_V86_PORTAL_DEFECT_FIX_AND_FULL_E2E_INTEGRATION_TEST)
 - **SMK-01 修复**: `v85_artifact_api.py` repo_root 硬编码 `D:/DSH_WORK/framework-tree` → 新增 `_resolve_default_repo_root()` 三级解析（环境变量 `FRAMEWORK_TREE` → `Path(__file__).parents[4]` 推导）；`__init__` 签名 + argparse + `_smoke` 调用 3 处修复；无参 `--smoke` 在 Linux 直接 PASS
 - **SMK-04 修复**: 4 项制品 relpath 过期 → `ambiguous_indicator_list` 改 `alias_lib_full_audit/`，`template_manifest`/`list`/`summary` 改 `v85_final_integrate/`；31/31 制品 `exists=true` + `verify_match=true`
