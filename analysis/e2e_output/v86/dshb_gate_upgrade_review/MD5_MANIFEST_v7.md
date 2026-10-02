@@ -19,8 +19,13 @@
 | 4 | `v86_rollback_plan_v7.md` | `5F8128662DE72A5FBEFA7F36CBDB0A02` | 17,822 | T3.3 | ✅ |
 | 5 | `v86_launch_file_manifest_v7.md` | `C1BBFF478AF573840893D3F01FCA11D5` | 14,451 | T3.4 | ✅ |
 | 6 | `v86_pre_launch_final_checklist_v7.md` | `67A87FF1468829D5C2DCA26D01FAF4DF` | 14,229 | T3.5 | ✅ |
+| 7 | `v86_rc1_joint_acceptance_report_v7.md` | `C2B1A5B0F0BC8D9C314194546C5218A3` | 17,895 | T3.1 | ✅ |
+| 8 | `v86_rc1_release_window_drill_v7.md` | `D3CD23FBD983D07F9AAD3575A399C84B` | 19,475 | T3.2 | ✅ |
+| 9 | `v86_rc1_rollback_simulation_v7.md` | `D1619B8F2CDB581B8613007A5CFC6A35` | 22,804 | T3.3 | ✅ |
+| 10 | `v86_rc1_p1_longterm_monitor_sop_v7.md` | `4827185235187F4D73F85ECBA07F4C6A` | 20,726 | T3.4 | ✅ |
+| 11 | `v86_rc1_cross_agent_asset_check_v7.md` | `674B624899FF6CF018D9E28A57EB258A` | 17,400 | T3.5 | ✅ |
 
-**总计**: 6 文件, 95,744 字节
+**总计**: 11 文件, 193,924 字节
 
 ---
 

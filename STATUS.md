@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHB — V86-RC1 联合验收·发布演练·回滚仿真·P1长期观测·跨Agent校验 V7 (DSHB_V86_RC1_JOINT_ACCEPTANCE_V7)
+- **T3.1 联合验收**: `v86_rc1_joint_acceptance_report_v7.md` — DSHE V7(7文件)+DSHB V7(6文件)联合验收, 165文件100%一致, MD5全部通过, P1闭环质量3/3合格, Gate FULL_PASS维持
+- **T3.2 发布演练**: `v86_rc1_release_window_drill_v7.md` — 全流程30步仿真演练(前置检查10项+资产同步4项+版本切换3项+面板加载3项+冒烟验证5项), 全部通过, 预估耗时~47min
+- **T3.3 回滚仿真**: `v86_rc1_rollback_simulation_v7.md` — Strategy A(16min, 6步全部通过)+Strategy B(30min, 7步全部通过), V85基线f313570锁定, 恢复完整性100%
+- **T3.4 P1长期观测SOP**: `v86_rc1_p1_longterm_monitor_sop_v7.md` — 3项P1共19个巡检指标+16条告警规则+10项升级触发条件+3条归档规则, 观测周期T+0→T+30d
+- **T3.5 跨Agent校验**: `v86_rc1_cross_agent_asset_check_v7.md` — DSHB(172文件) vs DSHE(165文件)比对, 131共享文件MD5全部一致, 4项非阻塞差异(全部预期差异), 0阻塞项
+- **T3.6 MD5固化**: `MD5_MANIFEST_v7.md` (11文件193,924B) + `JOB_READY.flag` (JOB_READY=TRUE, V7联合验收固化)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (5新增V7文件 + MD5清单更新 + flag更新)
+- **T4约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PRODUCTION_DEPLOY 全部合规
+- **联合验收结论**: ✅ V86-RC1 READY FOR RELEASE WINDOW (Gate FULL_PASS, P0=0, 回滚A/B全部通过, 跨Agent无阻塞差异)
+
 ### 2026-10-03 DSHB — V86 发布候选准备·P1闭环·发布说明·回滚预案·最终自检 V7 (DSHB_V86_RELEASE_CANDIDATE_PREPARATION_V7)
 - **T3.1 P1闭环**: `v86_p1_non_blocking_closure_v7.md` — 3项P1非阻塞项全部文档闭环(100%), 补充降级阈值定义/监控覆盖计划/冷启动指标定义, 发布后观察计划19项
 - **T3.2 发布元数据**: `v86_release_candidate_metadata_v7.md` — V86-RC1发布候选元数据锚点, 版本链V1→V7完整, 20 commits依赖关系图, 120发布文件清单
