@@ -3,7 +3,7 @@
 # Task: DSHB_V86_GATE_UPGRADE_REVIEW
 # Branch: feature/v85-chart-template
 # V1 Commit: feeeb1f (CONDITIONAL_PASS)
-# V2 Commit: [TBD]
+# V2 Commit: 311f82c
 # Generated: 2026-10-03
 #
 # Files: 5 deliverables + 2 metadata files (MD5_MANIFEST_v2.md, JOB_READY.flag)
