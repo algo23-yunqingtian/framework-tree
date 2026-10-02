@@ -1,0 +1,951 @@
+{
+  "simulation_name": "V86 Alias Engine Gray Release Full Simulation",
+  "timestamp": "2026-10-02T06:30:57.987866Z",
+  "total_phases": 8,
+  "all_pass": true,
+  "phases": [
+    {
+      "phase": "Phase 0",
+      "name": "冷启动 + 预热验证",
+      "traffic_percent": 0,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "p0_failed": 0,
+        "p1_failed": 0,
+        "p2_failed": 0,
+        "all_pass": true,
+        "any_p0_fail": false
+      }
+    },
+    {
+      "phase": "Phase 1",
+      "name": "10% 灰度放量",
+      "traffic_percent": 10,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 36,
+        "passed": 36,
+        "failed": 0,
+        "p0_failed": 0,
+        "normal_windows": 3,
+        "fault_windows": 0,
+        "all_pass": true
+      }
+    },
+    {
+      "phase": "Phase 1",
+      "name": "10% 灰度放量",
+      "traffic_percent": 10,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 24,
+        "passed": 24,
+        "failed": 0,
+        "p0_failed": 0,
+        "normal_windows": 2,
+        "fault_windows": 1,
+        "all_pass": true
+      }
+    },
+    {
+      "phase": "Phase 1",
+      "name": "10% 灰度放量",
+      "traffic_percent": 10,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 24,
+        "passed": 24,
+        "failed": 0,
+        "p0_failed": 0,
+        "normal_windows": 2,
+        "fault_windows": 1,
+        "all_pass": true
+      }
+    },
+    {
+      "phase": "Phase 1",
+      "name": "10% 灰度放量",
+      "traffic_percent": 10,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 24,
+        "passed": 24,
+        "failed": 0,
+        "p0_failed": 0,
+        "normal_windows": 2,
+        "fault_windows": 1,
+        "all_pass": true
+      }
+    },
+    {
+      "phase": "Phase 2",
+      "name": "30% 灰度放量",
+      "traffic_percent": 30,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 36,
+        "passed": 36,
+        "failed": 0,
+        "p0_failed": 0,
+        "normal_windows": 3,
+        "fault_windows": 0,
+        "all_pass": true
+      }
+    },
+    {
+      "phase": "Phase 2",
+      "name": "30% 灰度放量",
+      "traffic_percent": 30,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 24,
+        "passed": 24,
+        "failed": 0,
+        "p0_failed": 0,
+        "normal_windows": 2,
+        "fault_windows": 1,
+        "all_pass": true
+      }
+    },
+    {
+      "phase": "Phase 3",
+      "name": "100% 灰度放量",
+      "traffic_percent": 100,
+      "status": "PASS",
+      "gate_summary": {
+        "total": 24,
+        "passed": 24,
+        "failed": 0,
+        "p0_failed": 0,
+        "normal_windows": 2,
+        "fault_windows": 0,
+        "all_pass": true
+      }
+    }
+  ],
+  "degrade_drills": [
+    {
+      "drill_type": "L1",
+      "reason": "error_rate > 0.1% 持续 2 分钟",
+      "degrade_action": {
+        "timestamp": "2026-10-02T06:30:57.987866Z",
+        "old_level": 0,
+        "new_level": 1,
+        "old_mode": "f3+f4",
+        "new_mode": "f3",
+        "reason": "error_rate > 0.1% 持续 2 分钟",
+        "action": "degrade"
+      },
+      "post_degrade_metrics": {
+        "pass_rate": 0.953,
+        "review_rate": 0.0355,
+        "block_rate": 0.0004,
+        "ambiguity_rate": 0.0355,
+        "error_rate": 0.0,
+        "avg_latency_ms": 0.143835,
+        "p99_latency_ms": 0.8,
+        "cache_hit_rate": 0.998443,
+        "throughput_req_s": 2125.284068,
+        "memory_mb": 128,
+        "f4_suppress_rate": 0.0,
+        "gray_vs_base_pass_diff": 0.0274
+      },
+      "post_degrade_gates": [
+        {
+          "gate_id": "G-GR-01",
+          "metric": "error_rate",
+          "value": 0.0,
+          "threshold": 0.001,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-02",
+          "metric": "avg_latency_ms",
+          "value": 0.143835,
+          "threshold": 5.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-03",
+          "metric": "p99_latency_ms",
+          "value": 0.8,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-04",
+          "metric": "ambiguity_rate",
+          "value": 0.0355,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L2",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-05",
+          "metric": "pass_rate",
+          "value": 0.953,
+          "threshold": 0.95,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-06",
+          "metric": "f4_suppress_rate",
+          "value": 0.0,
+          "threshold": 0.1,
+          "op": "<=",
+          "severity": "P2",
+          "action": "monitor",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-07",
+          "metric": "cache_hit_rate",
+          "value": 0.998443,
+          "threshold": 0.85,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-08",
+          "metric": "init_time_s",
+          "value": 0,
+          "threshold": 30.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-09",
+          "metric": "first_request_ms",
+          "value": 0,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-10",
+          "metric": "gray_vs_base_pass_diff",
+          "value": 0.0274,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-11",
+          "metric": "new_tail_ambiguous",
+          "value": 0,
+          "threshold": 0,
+          "op": "<=",
+          "severity": "P2",
+          "action": "manual_review",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-12",
+          "metric": "memory_mb",
+          "value": 128,
+          "threshold": 512,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        }
+      ],
+      "post_degrade_summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "p0_failed": 0,
+        "p1_failed": 0,
+        "p2_failed": 0,
+        "all_pass": true,
+        "any_p0_fail": false
+      },
+      "degrade_time_s": 3.0,
+      "traffic_lost": 0
+    },
+    {
+      "drill_type": "L2",
+      "reason": "ambiguity_rate > 5% 持续 5 分钟",
+      "degrade_action": {
+        "timestamp": "2026-10-02T06:30:57.987866Z",
+        "old_level": 0,
+        "new_level": 2,
+        "old_mode": "f3+f4",
+        "new_mode": "base",
+        "reason": "ambiguity_rate > 5% 持续 5 分钟",
+        "action": "degrade"
+      },
+      "post_degrade_metrics": {
+        "pass_rate": 0.9914,
+        "review_rate": 0.0355,
+        "block_rate": 0.0004,
+        "ambiguity_rate": 0.0,
+        "error_rate": 0.0,
+        "avg_latency_ms": 0.141603,
+        "p99_latency_ms": 0.8,
+        "cache_hit_rate": 1.004414,
+        "throughput_req_s": 2151.791741,
+        "memory_mb": 128,
+        "f4_suppress_rate": 0.010984,
+        "gray_vs_base_pass_diff": 0.0274
+      },
+      "post_degrade_gates": [
+        {
+          "gate_id": "G-GR-01",
+          "metric": "error_rate",
+          "value": 0.0,
+          "threshold": 0.001,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-02",
+          "metric": "avg_latency_ms",
+          "value": 0.141603,
+          "threshold": 5.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-03",
+          "metric": "p99_latency_ms",
+          "value": 0.8,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-04",
+          "metric": "ambiguity_rate",
+          "value": 0.0,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L2",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-05",
+          "metric": "pass_rate",
+          "value": 0.9914,
+          "threshold": 0.95,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-06",
+          "metric": "f4_suppress_rate",
+          "value": 0.010984,
+          "threshold": 0.1,
+          "op": "<=",
+          "severity": "P2",
+          "action": "monitor",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-07",
+          "metric": "cache_hit_rate",
+          "value": 1.004414,
+          "threshold": 0.85,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-08",
+          "metric": "init_time_s",
+          "value": 0,
+          "threshold": 30.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-09",
+          "metric": "first_request_ms",
+          "value": 0,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-10",
+          "metric": "gray_vs_base_pass_diff",
+          "value": 0.0274,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-11",
+          "metric": "new_tail_ambiguous",
+          "value": 0,
+          "threshold": 0,
+          "op": "<=",
+          "severity": "P2",
+          "action": "manual_review",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-12",
+          "metric": "memory_mb",
+          "value": 128,
+          "threshold": 512,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        }
+      ],
+      "post_degrade_summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "p0_failed": 0,
+        "p1_failed": 0,
+        "p2_failed": 0,
+        "all_pass": true,
+        "any_p0_fail": false
+      },
+      "degrade_time_s": 3.0,
+      "traffic_lost": 0
+    },
+    {
+      "drill_type": "L3",
+      "reason": "L2 后仍不达标",
+      "degrade_action": {
+        "timestamp": "2026-10-02T06:30:57.987866Z",
+        "old_level": 1,
+        "new_level": 3,
+        "old_mode": "f3",
+        "new_mode": "v85_fallback",
+        "reason": "L2 后仍不达标",
+        "action": "degrade"
+      },
+      "post_degrade_metrics": {
+        "pass_rate": 0.9914,
+        "review_rate": 0.0355,
+        "block_rate": 0.0004,
+        "ambiguity_rate": 0.0,
+        "error_rate": 0.0,
+        "avg_latency_ms": 0.142868,
+        "p99_latency_ms": 0.8,
+        "cache_hit_rate": 1.009076,
+        "throughput_req_s": 2500,
+        "memory_mb": 128,
+        "f4_suppress_rate": 0.010984,
+        "gray_vs_base_pass_diff": 0.0274
+      },
+      "post_degrade_gates": [
+        {
+          "gate_id": "G-GR-01",
+          "metric": "error_rate",
+          "value": 0.0,
+          "threshold": 0.001,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-02",
+          "metric": "avg_latency_ms",
+          "value": 0.142868,
+          "threshold": 5.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-03",
+          "metric": "p99_latency_ms",
+          "value": 0.8,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-04",
+          "metric": "ambiguity_rate",
+          "value": 0.0,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L2",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-05",
+          "metric": "pass_rate",
+          "value": 0.9914,
+          "threshold": 0.95,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-06",
+          "metric": "f4_suppress_rate",
+          "value": 0.010984,
+          "threshold": 0.1,
+          "op": "<=",
+          "severity": "P2",
+          "action": "monitor",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-07",
+          "metric": "cache_hit_rate",
+          "value": 1.009076,
+          "threshold": 0.85,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-08",
+          "metric": "init_time_s",
+          "value": 0,
+          "threshold": 30.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-09",
+          "metric": "first_request_ms",
+          "value": 0,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-10",
+          "metric": "gray_vs_base_pass_diff",
+          "value": 0.0274,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-11",
+          "metric": "new_tail_ambiguous",
+          "value": 0,
+          "threshold": 0,
+          "op": "<=",
+          "severity": "P2",
+          "action": "manual_review",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-12",
+          "metric": "memory_mb",
+          "value": 128,
+          "threshold": 512,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        }
+      ],
+      "post_degrade_summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "p0_failed": 0,
+        "p1_failed": 0,
+        "p2_failed": 0,
+        "all_pass": true,
+        "any_p0_fail": false
+      },
+      "degrade_time_s": 3.0,
+      "traffic_lost": 0
+    }
+  ],
+  "recovery_drills": [
+    {
+      "drill_type": "L1_recovery",
+      "reason": "错误率 ≤ 0.05% 持续 10 分钟",
+      "recovery_action": {
+        "timestamp": "2026-10-02T06:30:57.987866Z",
+        "old_level": 1,
+        "new_level": 0,
+        "old_mode": "f3",
+        "new_mode": "f3+f4",
+        "reason": "recovery conditions met",
+        "action": "recover"
+      },
+      "post_recovery_metrics": {
+        "pass_rate": 0.961718,
+        "review_rate": 0.0355,
+        "block_rate": 0.0004,
+        "ambiguity_rate": 0.0355,
+        "error_rate": 0.0,
+        "avg_latency_ms": 0.144419,
+        "p99_latency_ms": 0.8,
+        "cache_hit_rate": 1.000582,
+        "throughput_req_s": 2164.199841,
+        "memory_mb": 128,
+        "f4_suppress_rate": 0.010984,
+        "gray_vs_base_pass_diff": 0.0274
+      },
+      "post_recovery_gates": [
+        {
+          "gate_id": "G-GR-01",
+          "metric": "error_rate",
+          "value": 0.0,
+          "threshold": 0.001,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-02",
+          "metric": "avg_latency_ms",
+          "value": 0.144419,
+          "threshold": 5.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-03",
+          "metric": "p99_latency_ms",
+          "value": 0.8,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-04",
+          "metric": "ambiguity_rate",
+          "value": 0.0355,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L2",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-05",
+          "metric": "pass_rate",
+          "value": 0.961718,
+          "threshold": 0.95,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-06",
+          "metric": "f4_suppress_rate",
+          "value": 0.010984,
+          "threshold": 0.1,
+          "op": "<=",
+          "severity": "P2",
+          "action": "monitor",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-07",
+          "metric": "cache_hit_rate",
+          "value": 1.000582,
+          "threshold": 0.85,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-08",
+          "metric": "init_time_s",
+          "value": 0,
+          "threshold": 30.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-09",
+          "metric": "first_request_ms",
+          "value": 0,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-10",
+          "metric": "gray_vs_base_pass_diff",
+          "value": 0.0274,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-11",
+          "metric": "new_tail_ambiguous",
+          "value": 0,
+          "threshold": 0,
+          "op": "<=",
+          "severity": "P2",
+          "action": "manual_review",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-12",
+          "metric": "memory_mb",
+          "value": 128,
+          "threshold": 512,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        }
+      ],
+      "post_recovery_summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "p0_failed": 0,
+        "p1_failed": 0,
+        "p2_failed": 0,
+        "all_pass": true,
+        "any_p0_fail": false
+      },
+      "recovery_time_s": 2.0,
+      "traffic_lost": 0
+    },
+    {
+      "drill_type": "L2_recovery",
+      "reason": "歧义率 ≤ 3% 持续 30 分钟",
+      "recovery_action": {
+        "timestamp": "2026-10-02T06:30:57.987866Z",
+        "old_level": 2,
+        "new_level": 1,
+        "old_mode": "base",
+        "new_mode": "f3",
+        "reason": "recovery conditions met",
+        "action": "recover"
+      },
+      "post_recovery_metrics": {
+        "pass_rate": 0.964713,
+        "review_rate": 0.0355,
+        "block_rate": 0.0004,
+        "ambiguity_rate": 0.0355,
+        "error_rate": 0.0,
+        "avg_latency_ms": 0.142333,
+        "p99_latency_ms": 0.8,
+        "cache_hit_rate": 1.002819,
+        "throughput_req_s": 2127.343357,
+        "memory_mb": 128,
+        "f4_suppress_rate": 0.010984,
+        "gray_vs_base_pass_diff": 0.0274
+      },
+      "post_recovery_gates": [
+        {
+          "gate_id": "G-GR-01",
+          "metric": "error_rate",
+          "value": 0.0,
+          "threshold": 0.001,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-02",
+          "metric": "avg_latency_ms",
+          "value": 0.142333,
+          "threshold": 5.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L1",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-03",
+          "metric": "p99_latency_ms",
+          "value": 0.8,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-04",
+          "metric": "ambiguity_rate",
+          "value": 0.0355,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P0",
+          "action": "auto_degrade_L2",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-05",
+          "metric": "pass_rate",
+          "value": 0.964713,
+          "threshold": 0.95,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-06",
+          "metric": "f4_suppress_rate",
+          "value": 0.010984,
+          "threshold": 0.1,
+          "op": "<=",
+          "severity": "P2",
+          "action": "monitor",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-07",
+          "metric": "cache_hit_rate",
+          "value": 1.002819,
+          "threshold": 0.85,
+          "op": ">=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-08",
+          "metric": "init_time_s",
+          "value": 0,
+          "threshold": 30.0,
+          "op": "<=",
+          "severity": "P1",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-09",
+          "metric": "first_request_ms",
+          "value": 0,
+          "threshold": 50.0,
+          "op": "<=",
+          "severity": "P0",
+          "action": "block_deploy",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-10",
+          "metric": "gray_vs_base_pass_diff",
+          "value": 0.0274,
+          "threshold": 0.05,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-11",
+          "metric": "new_tail_ambiguous",
+          "value": 0,
+          "threshold": 0,
+          "op": "<=",
+          "severity": "P2",
+          "action": "manual_review",
+          "passed": true
+        },
+        {
+          "gate_id": "G-GR-12",
+          "metric": "memory_mb",
+          "value": 128,
+          "threshold": 512,
+          "op": "<=",
+          "severity": "P1",
+          "action": "alert",
+          "passed": true
+        }
+      ],
+      "post_recovery_summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "p0_failed": 0,
+        "p1_failed": 0,
+        "p2_failed": 0,
+        "all_pass": true,
+        "any_p0_fail": false
+      },
+      "recovery_time_s": 2.0,
+      "traffic_lost": 0
+    }
+  ],
+  "crash_drill": {
+    "drill_type": "engine_crash_recovery",
+    "crash_time": "2026-10-02T06:30:57.987866Z",
+    "detection_time_s": 5,
+    "envoy_switch_time_s": 3,
+    "pod_restart_time_s": 27,
+    "total_recovery_time_s": 35,
+    "traffic_lost_requests": 0,
+    "traffic_lost_percent": 0.0,
+    "post_recovery_pass_rate": 0.964,
+    "status": "PASS"
+  },
+  "total_logs": 65
+}
