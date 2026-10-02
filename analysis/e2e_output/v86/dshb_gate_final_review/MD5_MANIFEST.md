@@ -2,7 +2,7 @@
 
 # Task: DSHB_V86_RULE_ALIAS_FINAL_GATE_REVIEW_CLOSURE
 # Branch: feature/v85-chart-template
-# Commit: (pending)
+# Commit: 016fd36
 # Generated: 2026-10-02
 #
 # Files: 7 deliverables + 2 metadata files (MD5_MANIFEST.md, JOB_READY.flag)
