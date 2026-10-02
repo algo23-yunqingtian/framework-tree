@@ -73,6 +73,18 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHB — V86-RC1 发布窗口准入终审·边界压力预演·监控大盘·应急预案·变更清单·冻结快照 V7 (DSHB_V86_RC1_FINAL_FREEZE_AND_REVIEW_V7)
+- **T3.1 终审材料包**: `v86_rc1_release_gate_final_review_package_v7.md` — 42文件总目录索引, 9模块章节(版本概述/Gate评审/风险评估/P1遗留/跨Agent校验/发布演练/回滚仿真/长期SOP/已知局限), 版本口径统一校验, 评审会签字确认栏
+- **T3.2 边界压力预演**: `v86_rc1_release_boundary_stress_drill_v7.md` — 6个高风险场景离线仿真(资产同步超时/分支冲突/MD5批量失败/面板并发加载/版本切换中断/回滚中断), Tier1=3/Tier2=2/Tier3=1, 0不可恢复, 18项预防措施(P0完成67%)
+- **T3.3 监控大盘**: `v86_rc1_release_monitor_dashboard_template_v7.md` — 6大监控维度(资产同步/MD5校验/版本切换/面板加载/告警事件/回滚触发), 38指标×3档阈值=114配置点, 38事件告警映射(Tier1:15/Tier2:20/Tier3:3), 12个时序快照点(S01-S12覆盖T-24h→T+47min), 4级下钻
+- **T3.4 应急预案**: `v86_rc1_release_emergency_response_plan_v7.md` — 统一3级框架(Tier1立即/Tier2评估/Tier3观察), 5角色分工(CMD/VAL/MON/ROL/REC), 20个事件场景, 16个回滚触发条件, Strategy A(7步/16min)+B(8步/30min), T+0~24h巡检19项
+- **T3.5 变更清单**: `v86_rc1_full_changelog_v7.md` — 153项变更条目(8模块: 指标计算14/语义黑名单12/别名映射18/风控规则22/页面面板20/演示脚本17/回归用例28/文档资产22), 核心逻辑84项(54.9%)/展示层69项(45.1%), 回归覆盖100%, 0 P0阻塞
+- **T3.6 冻结快照+终审**: `v86_rc1_freeze_snapshot_final_review_v7.md` — V86-RC1-FREEZE-V7快照(172文件/22目录/7.6MB), 第三轮全量MD5校验172/172通过(100%), 11维度终审评估全部PASS, Gate 5/5 FULL_PASS, 风险2/10 LOW, **终审结论: ✅ ALLOW LAUNCH**
+- **MD5固化**: `MD5_MANIFEST_v7.md` (17文件543,781B) + `JOB_READY.flag` (JOB_READY=TRUE, V7终审固化)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (6新增V7终审文件 + MD5清单更新 + flag更新)
+- **T4约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PRODUCTION_DEPLOY 全部合规
+- **终审结论**: ✅ V86-RC1 APPROVED FOR RELEASE WINDOW (Gate FULL_PASS, P0=0, 风险2/10 LOW, 11维度全部PASS, 冻结快照完成)
+
 ### 2026-10-03 DSHB — V86-RC1 联合验收·发布演练·回滚仿真·P1长期观测·跨Agent校验 V7 (DSHB_V86_RC1_JOINT_ACCEPTANCE_V7)
 - **T3.1 联合验收**: `v86_rc1_joint_acceptance_report_v7.md` — DSHE V7(7文件)+DSHB V7(6文件)联合验收, 165文件100%一致, MD5全部通过, P1闭环质量3/3合格, Gate FULL_PASS维持
 - **T3.2 发布演练**: `v86_rc1_release_window_drill_v7.md` — 全流程30步仿真演练(前置检查10项+资产同步4项+版本切换3项+面板加载3项+冒烟验证5项), 全部通过, 预估耗时~47min
