@@ -73,6 +73,18 @@
 
 ## 近期变更记录
 
+### 2026-10-10 DSHB — V86-RC2 投产阶段Stage2: 底层收口·B-02跟进·前置自检·Gate证据包·风险二次评估·切换准备 (DSHB_V86_RC2_PROD_PHASE_STAGE2)
+- **T3.1 B-02 API文档风险预案**: `v86_rc2_prod_b02_api_doc_risk_plan.md` (32KB) — B-02 zhiji API文档外部依赖跟进, 24端点覆盖分析(20/24 DSHE已确认/4待确认), 3层降级预案(L1已启用/L2/L3), 3级应急预案(E-01按时交付/E-02再次延误/E-03质量不合格), 影子测试影响评估(83.3%覆盖率可先行), 运维手册更新(4端点替代操作), 故障排查SOP降级步骤, 11条跨团队同步日志, DSHE/HERMES全部确认
+- **T3.2 ENG+MON前置自检**: `v86_rc2_prod_eng_mon_preflight_check.md` (30KB) — 8模块(ENG-01~04+MON-01~04)前置自检, 36图表×15字段交叉比对(540/540一致), MC-01~10口径比对(0歧义), 14种异常分支(14/14正确处理), 14种降级场景(14/14可执行可恢复), 219项映射一致性(100%一致), 32个集成边界(32/32完整), 892/892检查项全部PASS
+- **T3.3 zhiji ID二次复核**: `v86_rc2_prod_zhiji_id_recheck_report.md` (23KB) — 190项zhiji_id全量复核(190/190 PASS), 短ID(j25_tc/i1/i2)实测验证(60次/0 HTTP500/0空响应), permission_state=-4问题已修复, 240次解析逻辑核验(100%正确), 437项DSHE绑定一致性验证(100%一致), 806次API调用(100%成功率), 边界条件20项全部通过, 7条跨团队同步日志
+- **T3.4 Gate证据包**: `v86_rc2_prod_gate_evidence_package.md` (18KB) — 18份证据文档整合(ENG/MON/zhiji/对齐/阻塞/风险/自检/口径), Gate准入基线C1-C5全部PASS(5/5), 测试汇总345/345 PASS(100%), 口径一致性0歧义, 约束合规4/4, 4条同步日志
+- **T3.4 风险台账二次评估**: `v86_rc2_prod_risk_review_stage2.md` (26KB) — 17项风险全部评估(0高/9中/8低), 3项改善(R-001/002/004), 1项关闭(R-004), 3项新增(R-015 B-02延误/R-016误报率波动/R-017短ID回归), 14项投产回滚阈值(RT-01~14全部定义), 17项风险触发判定标准全部定义, 12项缓解措施验证全部有效
+- **T3.5 切换检查清单**: `v86_rc2_prod_backend_switch_checklist.md` (27KB) — 75项检查清单(20前置条件+7步切换+14切换后验证+14回滚触发+4级止损+12故障止损+10演练配合), 4级止损流程(L0紧急30min/L1立即1h/L2模块级2h/L3全局6~12h), 7步切换(OBS-1~7, T-24h~T+7d), 全链路演练配合矩阵(DSHB+DSHE+HERMES三方7步联合)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_stage2/` (6新增)
+- **新增文件**: 6文件 ~156KB (B-02 32KB + 自检 30KB + zhiji复核 23KB + 证据包 18KB + 风险 26KB + 切换 27KB)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
+- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE2_DONE=TRUE — B-02预案就绪✅, ENG/MON前置自检892/892 PASS✅, zhiji_id 190/190复核+短ID修复✅, Gate证据包C1-C5 5/5 PASS✅, 风险17项二次评估+14回滚阈值✅, 切换检查清单75项✅, 底层证据支撑灰度上线Gate评审
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage1: 展示层适配 & 影子验证准备 (DSHE_V86_RC2_PROD_PHASE_STAGE1)
 - **T3.1 双口径适配**: `v86_rc2_prod_dashboard_adapt_report.md` (60KB) — C1双口径(Gate DSHE 29+7 / 线上 DSHB 32/36), C2双阈值(Gate DSHE P1=0 / 线上 DSHB P1≤3), MC-01_CHECK BLOCK面板, MC-02_CHECK WARNING面板, 7降级图表(L2×3+L3×4)真实数据渲染验证, 11面板/80子面板, 36×178双口径矩阵, 6新增风险(R-015~R-020), 12项验收标准, 8步切换, 4级回滚
 - **T3.2 zhiji_id映射同步**: `v86_rc2_prod_dshe_zhiji_mapping_sync.md` (53KB) — 190项zhiji_id 3批次同步(PB32+CU27/AL25+ZN24/NI18+SN14+SI16+LI15+F01-F19), 36图表×178指标绑定矩阵, F01-F19回填字段展示验证, DSHE 197 vs DSHB 204差异比对, DSHB交叉验证清单, HERMES审计同步协议, zhiji API 380次调用计划
