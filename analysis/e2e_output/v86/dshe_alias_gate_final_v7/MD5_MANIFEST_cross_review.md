@@ -141,6 +141,23 @@
 | **RC2_PREP** | **118** | **191** | **14** |
 | **RC2_PREP_ALIGNED** | **118** | **191** | **15** |
 | **RC2_PREP_ALIGNED (DUAL)** | **122** | **195** | **16** |
+| **RC2_FINAL_PREP_CLOSED** | **125** | **198** | **17** |
+
+---
+
+## RC2_FINAL_PREP_CLOSED New Files (3 files)
+
+> **Task:** DSHE_V86_RC2_FINAL_PREP_CLOSEOUT
+> **Sub-tasks:** T3.1 Chart Schema | T3.2 zhiji Mapping | T3.3 HERMES Check Spec
+> **Updated:** 2026-10-03
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 19 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | 48,533 B |
+| 20 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | 51,858 B |
+| 21 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | 42,048 B |
+
+**Total delta:** +142,439 B (48,533 + 51,858 + 42,048 new files)
 
 ---
 
@@ -166,6 +183,9 @@
 | 16 | v86_rc2_cross_team_contract_v7.md | `7609F648C93CC2D3C38474AC409C94EE` | 跨团队依赖契约 (#9/#10/#11, 7依赖点, 19回填字段, 23用例评审) |
 | 17 | v86_rc2_gate_unified_case_set_v7.md | `FEC14C7436F5FAFBF9890D221AC7C279` | RC2统一Gate验收用例全集 (89用例, 去重合并, P0/P1标记) |
 | 18 | v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback) | `DF0320673819041CB2754FFC4427EB15` | RC2 UI change spec with L3 rollback joint review (8项时序风险, 6项断点修复, 13项联合验证) |
+| 19 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | 全量36图表PDF绘图Schema固化 (36/36图表, 8模块, 7降级兜底, 19回填字段映射) |
+| 20 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | zhiji数据库预映射规则 (197项映射, 178指标+19回填字段, 100%覆盖) |
+| 21 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | HERMES校验规范 (85项校验, C1-C5映射, 88.2%全自动, 高风险15项) |
 
 ---
 
@@ -187,4 +207,4 @@
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED DUAL | ✅ RC2_FINAL_PREP_CLOSED*

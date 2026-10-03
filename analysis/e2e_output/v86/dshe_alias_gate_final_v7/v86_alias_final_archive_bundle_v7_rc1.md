@@ -6,7 +6,7 @@
 > **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW → RC2_PREP → RC2_PREP_ALIGNED → RC2_PREP_ALIGNED_DUAL (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划 + RC2任务拆解 + UI变更规格 + Gate验收用例 + DSHB Gate准入基线对齐C1-C5 + 双端用例差异评审 + 跨团队契约 + L3回滚联合评审 + 统一用例全集)
 > **约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION
 > **生成日期**: 2026-10-03
-> **状态**: ✅ **RC2 PREP DUAL-END ALIGNED — CASE DIFF REVIEW + CROSS-TEAM CONTRACT + L3 ROLLBACK JOINT REVIEW + UNIFIED CASE SET COMPLETE (89 CASES, 89 = 68 DSHE + 4 COORD + 36 DSHB - 19 dedup)**
+> **状态**: ✅ **RC2 FINAL PREP CLOSED — CHART SCHEMA + ZHIJI MAPPING + HERMES CHECK SPEC COMPLETE (36 CHARTS, 197 MAPPINGS, 85 CHECKS)**
 > **DSHB 交叉核验**: ✅ 完成 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7, CR-1~CR-4 全部通过, FULL_LIFECYCLE_CLOSED)
 > **DSHB RC2准备**: ✅ 完成 (DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE, 引擎4项+监控4项任务拆解, Gate准入基线+36冒烟用例, RC2_PREP_READY=TRUE)
 
@@ -30,11 +30,11 @@
 
 ### 1.1 归档统计
 
-| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | 变化 |
-|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|------|
-| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | +37 |
-| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | **14 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep)** | **15 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned)** | **16 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual)** | +9 |
-| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | +8.5 MB |
+| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | RC2_FINAL_PREP_CLOSED | 变化 |
+|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|---------------------|------|
+| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | **125** | +40 |
+| 归档阶段 | 7 (v1→v7) | **8** | **10** | **11** | **12** | **13** | **14** | **15** | **16** | **17** | +10 |
+| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | **~12.0 MB** | +8.9 MB |
 | 渲染缺陷闭环 | ❌ | ✅ 2/2 闭环 | 继承 | — |
 | DSHB 元数据对齐 | ❌ | ✅ 55 字段 | 继承 | — |
 | 跨版本联动校验 | ❌ | ✅ 60 页面 | 继承 | — |
@@ -648,6 +648,34 @@ V1 (commit 61b8ca5)
 
 ---
 
+## 7.5 RC2_FINAL_PREP_CLOSED 新增资产 (3 files)
+
+> **Task:** DSHE_V86_RC2_FINAL_PREP_CLOSEOUT
+> **Sub-tasks:** T3.1 Chart Schema | T3.2 zhiji Mapping | T3.3 HERMES Check Spec
+> **Updated:** 2026-10-03
+
+| # | 文件 | 大小 | MD5 | 说明 |
+|---|------|------|-----|------|
+| 1 | v86_rc2_dshe_chart_schema_full_v7.md | 48,533 B | `D34210ADFE1D69D8A8460A0036A7C95B` | 全量36图表PDF绘图Schema固化 |
+| 2 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | 51,858 B | `3926DCA7DB33EEB60EF9592BED108459` | zhiji数据库预映射规则(197项) |
+| 3 | v86_rc2_dshe_hermes_check_spec_v7.md | 42,048 B | `D7E9DB5541FE3814D3444E91B7428971` | HERMES校验规范(85项) |
+
+**RC2_FINAL_PREP_CLOSED 合计**: 3新增, +142,439 B (48,533 + 51,858 + 42,048)
+
+### 7.5.1 RC2_FINAL_PREP_CLOSED 内容
+
+| 维度 | 值 | 说明 |
+|------|-----|------|
+| 图表Schema覆盖 | 36/36 | 8模块全覆盖 |
+| zhiji映射覆盖 | 197/197 | 178指标+19回填字段 |
+| HERMES校验项 | 85 | 88.2%全自动 |
+| C1-C5映射 | 5/5 | 全部自动化校验 |
+| 高风险标记 | 15 | 7降级图表+10高风险指标 |
+| 性能目标 | 8项 | P99/首屏/CDN/子面板/分批/数据获取/降级/别名 |
+| 约束合规 | 6/6 | 全部满足 |
+
+---
+
 ## 8. 约束合规验证
 
 | Constraint | Status |
@@ -675,10 +703,10 @@ V1 (commit 61b8ca5)
 
 ---
 
-*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL*
+*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL-RC2_FINAL_PREP_CLOSED*
 *生成日期: 2026-10-03*
 *工单: DSHE_V86_ALIAS_V7_RC1_ITERATION · T3.6*
 *分支: feature/v85-chart-template*
 *基线: V7 Archive (commit 679948a)*
 *DSHB 基线: V86-RC1 (commit 0948e1d)*
-*状态: ✅ CROSS_REVIEW COMPLETE — FULL LIFECYCLE CLOSED*
+*状态: ✅ RC2_FINAL_PREP_CLOSED — DSHE PREP阶段全链路彻底封板*

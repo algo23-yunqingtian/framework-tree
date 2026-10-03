@@ -118,6 +118,17 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
 - **终版结论**: ✅ V86-RC2 DUAL-END BASELINE ALIGNMENT COMPLETE (双端用例差异评审✅14项差异/7项去重/101项统一, 跨团队契约✅3项依赖/7依赖点/19回填字段/23用例评审, L3回滚联合评审✅8项风险/6项断点修复/13项联合验证, 统一用例全集✅89用例/去重合并/P0-P1标记, 归档✅122文件/16阶段/MD5 100%, 双端对齐完成, 具备进入UT开发阶段条件)
 
+### 2026-10-03 DSHE — V86-RC2 展示层绘图Schema固化·zhiji预映射·HERMES校验规范·最终封板 (DSHE_V86_RC2_FINAL_PREP_CLOSEOUT)
+- **T3.1 图表Schema固化**: `v86_rc2_dshe_chart_schema_full_v7.md` (48KB) — **全量36图表PDF绘图Schema固化**, 8模块全覆盖(PB8/CU5/AL5/ZN4/NI3/SN3/SI4/LI4), 29全匹配+7降级兜底, 36图表×19回填字段映射, 5性能目标, 关联89条Gate用例
+- **T3.2 zhiji预映射**: `v86_rc2_dshe_zhiji_mapping_predefine_v7.md` (52KB) — **197项映射100%覆盖** (178指标+19回填字段), 6类空值兜底策略, 8类异常过滤规则, 4级更新频率, 10项高风险指标标记, zhiji_id预定义+投产前确认
+- **T3.3 HERMES校验规范**: `v86_rc2_dshe_hermes_check_spec_v7.md` (42KB) — **85项校验项定义** (HER-001~085), 88.2%全自动+11.8%半自动, C1-C5全部自动化映射, 渲染/阈值/一致性/异常/格式5类校验, 15项高风险标记, 单位/口径/时间粒度统一标准
+- **T3.4 归档与状态更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段17 RC2_FINAL_PREP_CLOSED(3文件), 总文件数125, 总阶段17, 总大小~12.0MB; `MD5_MANIFEST_cross_review.md` (更新) — 3文件MD5新增(21/21全部PASS); `JOB_READY.flag` (更新) — RC2_FINAL_PREP_CLOSED=TRUE, DSHE_FINAL_PREP_CLOSED=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增 + 3更新)
+- **新增文件**: 3文件 ~142KB (48KB + 52KB + 42KB)
+- **更新文件**: 3文件 (归档+MD5+JOB_READY)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ✅ V86-RC2 DSHE FINAL PREP CLOSED — PREP阶段DSHE侧全链路彻底封板无遗漏 (图表Schema✅36/36覆盖, zhiji映射✅197/197覆盖, HERMES校验✅85项/88.2%全自动, C1-C5✅5/5映射, 归档✅125文件/17阶段/MD5 100%, DSHE_FINAL_PREP_CLOSED=TRUE, 等待DSHB收口+HERMES统一校验)
+
 ### 2026-10-03 DSHB — V86-RC1 跨Agent交叉核验·DSHE复盘评审·全链路总验收汇总 V7 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7)
 - **T3.1 交叉核验结果**: `v86_rc1_cross_validation_result_report_v7.md` — 回填19个DSHB字段, 核验36张图表(32匹配+7降级), 5项P2全部确认纯前端, 7项已知限制全部确认, CR-1~CR-4全部通过, 最终裁定✅ALL CRITERIA PASSED
 - **T3.2 DSHE评审意见+复盘修订**: `v86_rc1_dshe_retrospect_review_comments_v7.md` — 10项评审意见(DSHE-01~10), 含时序对齐/P2告警关联/跨Agent MD5同步/联合演练/评分矩阵/误报率/优化项/风险评估/文档缺口/终裁, APPROVED WITH SUGGESTIONS; `v86_rc1_release_window_retrospect_v7.md` (V7-R1修订版, 796行/45KB, 24处[DSHE-V7-R1]标记, 新增A-04/B-09/B-10/C-07/C-08优化项, D-11~D-13文档缺口, R-07风险项)
