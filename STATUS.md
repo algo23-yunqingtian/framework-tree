@@ -82,7 +82,7 @@
 - **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_stage3/` (4新增)
 - **新增文件**: 4文件 ~92KB (ID桥接 46KB + MD5校验 8KB + 短ID复测 16KB + 风险处置 22KB)
 - **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
-- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE3_DONE=TRUE — ID桥接映射表197项全量✅, Stage2 MD5校验6/6 PASS✅, 短ID 60次复测PASS✅, P0/P1风险专项处置5项✅, R-S01 P0风险闭环✅, 跨团队同步59条✅, 底层证据支撑影子测试启动, 跨团队基线一致性恢复
+- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE3_DONE=TRUE — ID桥接映射表197项全量✅, Stage2 MD5校验6/6 PASS✅, 短ID 60次复测PASS✅, P0/P1风险专项处置5项✅, R-S01 P0风险闭环✅, 跨团队同步59条✅, 底层证据支撑影子测试启动, 跨团队基线一致性恢复 (commit `97f279c`)
 
 ### 2026-10-10 DSHB — V86-RC2 投产阶段Stage2: 底层收口·B-02跟进·前置自检·Gate证据包·风险二次评估·切换准备 (DSHB_V86_RC2_PROD_PHASE_STAGE2)
 - **T3.1 B-02 API文档风险预案**: `v86_rc2_prod_b02_api_doc_risk_plan.md` (32KB) — B-02 zhiji API文档外部依赖跟进, 24端点覆盖分析(20/24 DSHE已确认/4待确认), 3层降级预案(L1已启用/L2/L3), 3级应急预案(E-01按时交付/E-02再次延误/E-03质量不合格), 影子测试影响评估(83.3%覆盖率可先行), 运维手册更新(4端点替代操作), 故障排查SOP降级步骤, 11条跨团队同步日志, DSHE/HERMES全部确认
