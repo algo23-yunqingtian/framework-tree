@@ -6,7 +6,7 @@
 > **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW → RC2_PREP → RC2_PREP_ALIGNED → RC2_PREP_ALIGNED_DUAL → RC2_UT → DSHB_FINAL_PREP → **DSHB_BASELINE_LOCK** (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划 + RC2任务拆解 + UI变更规格 + Gate验收用例 + DSHB Gate准入基线对齐C1-C5 + 双端用例差异评审 + 跨团队契约 + L3回滚联合评审 + 统一用例全集 + RC2 UT自测执行 + 开发缺陷记录 + COORD协同用例准备 + DSHB底层图表Schema固化 + zhiji预映射规则 + 回填字段契约最终固化 + **DSHB口径差异归档 + 底层开发任务排期锁定 + DSHE依赖用例切换检查清单**)
 > **约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION
 > **生成日期**: 2026-10-03
-> **状态**: ✅ **RC2 UT SELFTEST COMPLETE + DSHB FINAL PREP COMPLETE + DSHB BASELINE LOCK COMPLETE + DSHB PREP APPROVED COMPLETE — 68/68 UT PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY, DSHB_FINAL_PREP_CLOSED=TRUE, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE, DSHB_PREP_APPROVED=TRUE, 135 FILES / 20 STAGES / MD5 31/31 100%**
+> **状态**: ✅ **RC2 UT SELFTEST COMPLETE + DSHB FINAL PREP COMPLETE + DSHB BASELINE LOCK COMPLETE + DSHB PREP APPROVED COMPLETE + DSHE PREP APPROVED COMPLETE — 68/68 UT PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY, DSHB_FINAL_PREP_CLOSED=TRUE, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE, DSHB_PREP_APPROVED=TRUE, DSHE_PREP_APPROVED=TRUE, 139 FILES / 21 STAGES / MD5 35/35 100%**
 > **DSHB 交叉核验**: ✅ 完成 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7, CR-1~CR-4 全部通过, FULL_LIFECYCLE_CLOSED)
 > **DSHB RC2准备**: ✅ 完成 (DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE, 引擎4项+监控4项任务拆解, Gate准入基线+36冒烟用例, RC2_PREP_READY=TRUE)
 
@@ -30,11 +30,11 @@
 
 ### 1.1 归档统计
 
-| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | RC2_UT | DSHB_FINAL_PREP | DSHB_BASELINE_LOCK | 变化 |
-|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|--------|----------------|------|
-| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | **125** | **128** | **131** | **135** | +50 |
-| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | **14 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep)** | **15 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned)** | **16 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual)** | **17 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual→rc2-ut)** | **18 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual→rc2-ut→dshb-final-prep)** | **19 (v1→...→dshb-final-prep→dshb-baseline-lock)** | **20 (v1→...→dshb-baseline-lock→dshb-prep-approved)** | +13 |
-| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | **~11.7 MB** | **~11.9 MB** | **~12.0 MB** | **~12.1 MB** | +9.0 MB |
+| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | RC2_UT | DSHB_FINAL_PREP | DSHB_BASELINE_LOCK | DSHB_PREP_APPROVED | DSHE_PREP_APPROVED | 变化 |
+|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|--------|----------------|------|-----------------|-----------------|------|
+| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | **125** | **128** | **131** | **135** | **139** | +54 |
+| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | **14 (v1→...→rc2-prep)** | **15 (v1→...→rc2-prep-aligned)** | **16 (v1→...→rc2-prep-aligned-dual)** | **17 (v1→...→rc2-ut)** | **18 (v1→...→dshb-final-prep)** | **19 (v1→...→dshb-baseline-lock)** | **20 (v1→...→dshb-prep-approved)** | **21 (v1→...→dshe-prep-approved)** | +14 |
+| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | **~11.7 MB** | **~11.9 MB** | **~12.0 MB** | **~12.1 MB** | **~12.2 MB** | +9.1 MB |
 | 渲染缺陷闭环 | ❌ | ✅ 2/2 闭环 | 继承 | — |
 | DSHB 元数据对齐 | ❌ | ✅ 55 字段 | 继承 | — |
 | 跨版本联动校验 | ❌ | ✅ 60 页面 | 继承 | — |
@@ -563,6 +563,27 @@ V1 (commit 61b8ca5)
 
 **DSHB_PREP_APPROVED 合计**: 4文件新增, +79,143 B
 
+### 5.10 DSHE_PREP_APPROVED 新增文件 (P1风险展示层评审 + C1/C2口径确认 + zhiji_id展示层复核 + 投产依赖复核)
+
+> **任务**: DSHE_V86_RC2_PREP_APPROVED_CALIBER_ACK_AND_PROD_REVIEW_FINAL
+> **阶段**: Stage 21 — DSHE_PREP_APPROVED
+> **P1风险展示层评审**: 3/3 P1从展示层视角评审, 全部不阻塞PREP封板, 23项展示层观测指标
+> **C1/C2口径确认**: DSHE确认双口径并行(Gate用DSHE/告警用DSHB), 7降级图表逻辑一致, T+14d收敛认可
+> **zhiji_id展示层复核**: 190/190复核, 36图表关联标记, 178指标业务含义补充, 优先级对齐DSHB
+> **投产依赖复核**: 19/19任务复核, 11依赖点, 8观测节点, 12异常判定, 6风险, 12验收标准
+> **DSHE_PREP_APPROVED=TRUE** — READY FOR DSHB DEV EXECUTION + DSHE REAL DATA RETEST
+
+#### 新增文件 (4 files)
+
+| # | 文件 | 大小 | MD5 | 说明 |
+|---|------|------|-----|------|
+| 18 | v86_rc2_dshe_hermes_p1_risk_review.md | 24,359 B | `697FEB41A29496699C9BBA010DC6A66B` | T3.1 P1风险展示层评审 (3/3不阻塞/23观测指标) |
+| 19 | v86_rc2_dshe_c1_c2_caliber_ack.md | 18,981 B | `300293503E6C73F0C7A813636035925A` | T3.2 C1/C2口径确认 (双口径并行/降级逻辑一致) |
+| 20 | v86_rc2_dshe_zhiji_id_backlog_review.md | 24,098 B | `4398933A1554DB9983155AB255045B83` | T3.3 zhiji_id展示层复核 (190/190/36图表/178指标) |
+| 21 | v86_rc2_dshe_prod_dependency_review.md | 20,528 B | `A876534C751CCDBFA784244760695094` | T3.4 投产依赖复核 (19/19/11依赖/8观测/12异常) |
+
+**DSHE_PREP_APPROVED 合计**: 4文件新增, +87,966 B
+
 ### 5.3 RC1 资产约束
 
 | 约束 | 值 | 说明 |
@@ -766,7 +787,7 @@ V1 (commit 61b8ca5)
 
 ---
 
-*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL-RC2_UT-DSHB_FINAL_PREP-DSHB_BASELINE_LOCK-DSHB_PREP_APPROVED*
+*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL-RC2_UT-DSHB_FINAL_PREP-DSHB_BASELINE_LOCK-DSHB_PREP_APPROVED-DSHE_PREP_APPROVED*
 *生成日期: 2026-10-04*
 *工单: DSHE_V86_ALIAS_V7_RC1_ITERATION · T3.6*
 *分支: feature/v85-chart-template*
