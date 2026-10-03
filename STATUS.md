@@ -94,6 +94,17 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / READONLY_VALIDATE 全部合规
 - **终版结论**: ✅ V86_RC2_PREP_CLOSED=TRUE (commit `7fe50b8`) — PREP阶段正式封板完成 (三方全部批准✅, 17/17条件通过✅, 0 P0阻断✅, C1-C5 A+ 50/50✅, 89/89 Gate PASS✅, 140文件/22阶段/~14.0MB/MD5 42/42 PASS✅, 19项投产任务索引✅, 投产基线确立✅)
 
+### 2026-10-04 DSHB — V86-RC2 投产阶段ENG/MON开发执行 & zhiji_id确认 & P1/P2对齐·PRODUCTION_STAGE1 (DSHB_V86_RC2_PROD_PHASE_STAGE1)
+- **T3.1 ENG引擎优化**: `v86_rc2_prod_eng_dev_report.md` (72KB) — 4项ENG任务全部完成, 56.5h实际/56.5h预估, 89/89 UT PASS, ENG-01误报率60.7%→26.3%, ENG-02比对脚本4h→2.8min, MC-01~10全量10/10比对PASS, 4份API文档交付, 8次跨团队同步(DSHE4+HERMES4), 约束合规4/4
+- **T3.2 MON监控优化**: `v86_rc2_prod_mon_dev_report.md` (60KB) — 4项MON任务全部完成, 覆盖率73%→100%, 关联准确率93.2%(≥90%达标), 233单测+17集测+6E2E全部PASS, MON-01新增11规则, MON-02 7场景SOP/3级升级矩阵, MON-03 MC自动化30min周期, MON-04 6条关联规则/65关联组, 关键路径ENG-01→MON-01→MON-03→MON-04全通
+- **T3.3 zhiji_id确认**: `v86_rc2_prod_zhiji_id_confirm_progress.md` (63KB) — 190/190项全量确认(100%), P0高优48项T+1d完成, P1中优52项T+2d完成, P2低优90项T+3~5d完成, 197项总映射(178指标+19回填)全部确认, 7张降级图表恢复计划(3×L2+4×L3), 3批次Mock→Real切换(T+1d~T+5d), 43条跨团队同步日志, 8项风险全部缓解, 约束合规4/4
+- **T3.4 P1+P2对齐**: `v86_rc2_prod_alignment_summary.md` (25KB) — 11项对齐任务全部落地(3 P1+8 P2), P1-A/B/C三项全签核, P2-1~8八项T0落地, MC-01~10归档0歧义, 双团队签核矩阵11/11, 2项遗留进T+14d收敛(P1-A/P1-B), 跨团队变更通知7项全部确认
+- **T3.5 阻塞跟踪**: `v86_rc2_prod_blocker_tracking.md` (35KB) — B-01/B-02两项阻塞全部跟踪(B-01已解除/B-02在途), 14项风险台账全部更新(0高/7中/7低), 关键路径ENG-01→MON-01→MON-03→MON-04(60h+12h缓冲)全部完成, 8类异常检测规则定义, 7步观测节点(T-24h~T+7d)全部对齐, 8次同步日志全部确认, 周度同步节奏定义完成
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_stage1/` (5新增)
+- **新增文件**: 5文件 ~256KB (ENG 72KB + MON 60KB + zhiji 63KB + alignment 25KB + blocker 35KB)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE(已解除) / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
+- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE1_DONE=TRUE — ENG/MON 8/8任务全部完成/UT 322/322全PASS/zhiji_id 190/190全量确认/P1+P2 11/11对齐落地/阻塞项全部跟踪/关键路径全通, 三方信息一致✅DSHB+DSHE+HERMES全部同步, 支撑灰度上线Gate评审底层证据
+
 ### 2026-10-04 DSHE — V86-RC2 PREP封板终审确认·跨团队口径对齐复核·DSHE_PREP_APPROVED (DSHE_V86_RC2_PREP_SEAL_APPROVAL)
 - **T3.1 HERMES P1风险评审**: `v86_rc2_dshe_hermes_p1_risk_review.md` (33KB) — 3项P1风险展示层专项评审(P1-1 C2阈值/P1-2 C1匹配数/P1-3 190 zhiji_id), 0阻断PREP封板, 展示层影响2低1中全部可控, 18项观测指标已定义, 投产处置15项任务, MC-01_CHECK+MC-02_CHECK规则已映射, 约束合规4/4
 - **T3.2 C1/C2口径确认**: `v86_rc2_dshe_c1_c2_caliber_ack.md` (28KB) — MC-01图表匹配数统一为29+7(DSHE口径)/DSHB更新, MC-02 P1阈值保留差异(DSHE P1=0/DSHB P1≤3), Gate评审用DSHE口径/线上告警用DSHB口径, 7张降级图表双口径展示逻辑7/7一致, 回填字段19/19对齐, 并行使用边界8/8无冲突, 约束合规4/4
