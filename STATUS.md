@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-11 DSHB — V86-RC2 投产阶段Stage4: 影子测试配套底层支撑·灰度前置准备 (DSHB_V86_RC2_PROD_PHASE_STAGE4)
+- **T3.1 影子测试底层环境与脚本准备**: `v86_rc2_prod_dshb_shadow_env_prep_stage4.md` (12KB) — 89Gate影子用例底层脚本全部就绪, 197项指标计算脚本绑定ID桥接映射, 3级指数退避重试配置(500→1000→2000ms), L1/L2/L3三层降级熔断逻辑对齐B-02预案, 6类日志采集规则(5级), 5条DSHE+HERMES同步日志全部确认
+- **T3.2 底层指标口径二次交叉核验**: `v86_rc2_prod_dshb_metric_cross_verify_stage4.md` (9KB) — 197项指标底层公式/统计口径/单位/告警阈值全部核对(197/197 PASS), DSHE展示层抽样比对48/48 PASS(24.4%覆盖率), MC-01~10口径二次验证10/10一致0歧义, 2项差异项全部闭环(0阻断), 12条DSHE+HERMES同步日志全部确认
+- **T3.3 灰度投产底层侧能力构建**: `v86_rc2_prod_dshb_gray_deploy_playbook_stage4.md` (13KB) — 5阶段灰度流量切分(1%→5%→20%→50%→100%), 13步底层快速回滚脚本(~3min), 13项回滚触发条件, 6类数据一致性校验, 3套ID日志埋点增强(zhiji短/长+语义ID), 20项灰度部署检查清单, 8条DSHE+HERMES同步日志全部确认
+- **T3.4 P0/P1风险处置SOP更新**: `v86_rc2_prod_dshb_risk_sop_update_stage4.md` (12KB) — R-P01/R-P02/R-P03/R-DSHE-ID 4项风险SOP更新, 新增3项风险(R-GRAY-01/02+R-SHADOW-01), 32项影子测试观测指标定义, 风险台账更新22项(0高/12中/10低), 13项回滚触发条件, 9条DSHE+HERMES日志全部确认
+- **T3.5 跨团队预联调**: ID双向透传验证通过(197/197), 指标数据透传验证通过, 32条DSHE+HERMES同步日志全部确认, 等待HERMES就绪后直接启动影子测试
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_stage4/` (4新增)
+- **新增文件**: 4文件 ~46KB (环境准备12KB + 口径核验9KB + 灰度手册13KB + 风险SOP 12KB)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
+- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE4_DONE=TRUE — 影子底层环境100%就绪✅, 197项口径核验197/197 PASS✅, 灰度手册+回滚脚本就绪✅, 风险SOP 22项更新✅, 跨团队同步32条✅, 底层侧影子测试配套与灰度前置准备全部完成, 等待HERMES就绪启动影子测试 (commit pending)
+
 ### 2026-10-11 DSHB — V86-RC2 投产阶段Stage3: ID桥接构建·底层交付入库·P0风险闭环 (DSHB_V86_RC2_PROD_PHASE_STAGE3)
 - **T3.1 ID桥接映射表**: `v86_rc2_prod_id_bridge_mapping_full.md` (46KB) — 197项全量双向ID桥接映射(PB37+CU28+AL25+ZN25+NI18+SN14+SI16+LI15+回填19), 7项已知短ID(i1/i2/j25_tc等)全部映射, 7项长ID(ID02226332~ID02226339)全部映射, 197项DSHE语义ID全部关联, 197项交叉引用全部建立, 0冲突/0缺失/0歧义, R-S01 P0风险闭环支撑完成, 15条DSHE+HERMES同步日志全部确认
 - **T3.2 Stage2产物MD5校验**: `MD5_CHECKSUM_LIST_prod_stage2.md` (8KB) — 6文件MD5校验全部PASS(6/6), 本地-远端完全一致(6/6), MD5_MANIFEST一致(6/6), 总大小155,968B, Commit c08f3b2已推送, 约束合规4/4
