@@ -130,6 +130,19 @@
 - **跨团队同步**: DSHB+HERMES+知几+测试+运维 5团队全部确认✅
 - **终版结论**: ✅ DSHE_PROD_PHASE_STAGE4_DONE=TRUE — 投产阶段Stage4完成 (影子观测面板✅197指标+双ID展示, 图表稳定性✅43图表+8轮轮询, 灰度大盘✅12指标+20告警+G1-G4, 风险台账✅22项+应急手册, 跨团队预联调✅10项, 157文件/25阶段/MD5 67/67 PASS✅)
 
+### 2026-10-11 DSHE — V86-RC2 跨层ID对齐与面板校验专项 (DSHE_V86_RC2_PROD_PHASE_ID_ALIGN_FIX)
+- **触发原因**: HERMES Stage3审计发现P0阻断 — DSHE文档未引用DSHB ID桥接表, `lead_social_inv`与`gmv_daily_avg`指标语义冲突, 桥接映射仅名义生效未真正落地, R-S01 P0风险无法闭环, DSHB正在执行V2桥接表重构
+- **T3.1 指标语义定义对齐**: `v86_rc2_prod_dshe_metric_def_unify_record.md` (30KB) — 3类冲突根因分析(命名规范/覆盖范围/桥接名义生效), V2统一命名规范定义(com_/biz_/field_前缀隔离), 229项指标统一命名(197商品+32业务+0回填), 15告警规则指标名称统一, 32面板指标名称统一, 6文档引用更新, 5项冲突全部闭环(CRIT-01~05), 语义歧义0残留, DSHB V2对接准备7/7完成
+- **T3.2 DSHB V2桥接表接入**: `v86_rc2_prod_dshe_id_bridge_reference_adapt.md` (30KB) — 229项V2桥接表引用链接, 三ID双向检索架构(短ID↔语义ID↔长ID), j25_tc/ID022*修复(8项已知ID), DSHE文档交叉引用改造(6文档), 面板元数据引用(6面板), 告警规则引用(15条), 日志视图引用(6类), 306/306交叉引用全量通过, 三ID检索100%覆盖
+- **T3.3 三ID映射抽样校验**: `v86_rc2_prod_dshe_triple_id_verify_report.md` (34KB) — 60项/30.5%分层抽样, 8品种全覆盖, 7指标类型全覆盖, 8已知短ID+8已知长ID全覆盖, 7高风险指标全覆盖, Grafana面板三ID一致60/60, 告警事件三ID一致60/60, 日志视图三ID一致60/60, ID丢失0, ID错配0, 标签不匹配0, 1236/1236综合校验PASS
+- **T3.4 风险台账与应急手册更新**: `v86_rc2_prod_dshe_risk_ops_manual_update.md` (29KB) — R-DSHE-ID风险升级P1→P0, 20条观测规则(10原有+10新增底层ID映射变更), 20条预警条件, 12条缓解策略, 6条面板异常观测规则, EM-05 ID映射失效应急手册新增(L1缓存降级+L2 V85回退+L3全量回滚), 3级告警隔离, 6/6应急操作验证PASS
+- **T3.5 跨团队联合验证**: DSHE+DSHB+HERMES+知几 四方联合抽样验证, 229项指标双向核对, 三ID映射全量贯通, HERMES二次审计准备就绪
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (4新增)
+- **新增文件**: 4文件 ~123KB (30+30+34+29KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
+- **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_ID_ALIGN_FIX_DONE=TRUE — 跨层ID对齐专项完成 (指标语义统一✅229项, 桥接表接入✅306交叉引用, 三ID校验✅1236/1236 PASS, 风险台账更新✅R-DSHE-ID升级P0, 应急手册✅EM-05新增, 164文件/27阶段/MD5 68/68 PASS✅)
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
 - **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
 - **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅
