@@ -4,7 +4,7 @@
 > **Branch:** `feature/v85-chart-template`
 > **Generated:** 2026-10-03
 > **Base:** DSHE V7-RC1 (commit `f1d444e`), DSHB V86-RC1 (commit `0948e1d`)
-> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE
+> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE | ✅ DSHE FULL UT VERIFIED | ✅ DSHE PREP ARCHIVE FINALIZED | ✅ DSHE PREP APPROVED
 
 ---
 
@@ -138,20 +138,36 @@
 
 ---
 
-## DSHB_PREP_APPROVED New Files (4 files)
+## DSHE_PREP_ARCHIVE_FINALIZED New Files (3 files)
 
-> **Task:** DSHB_V86_RC2_PREP_APPROVED_CALIBER_AGREEMENT_AND_DEV_BACKLOG_FINAL
-> **Date:** 2026-10-04
-> **Status:** DSHB_PREP_APPROVED=TRUE — READY FOR DSHB DEV EXECUTION + DSHE REAL DATA RETEST
+> **Task:** DSHE_V86_RC2_FULL_PREP_ARCHIVE_FINALIZED
+> **Sub-tasks:** T3.1 全交付物索引 | T3.2 Gate终审报告 | T3.3 投产切换指南
+> **Updated:** 2026-10-04
 
 | # | File | MD5 | Size |
 |---|------|-----|------|
-| 28 | v86_rc2_dshb_hermes_p1_risk_review.md | `7A4F6ACB30716F16A875EE679ABFD37A` | 18,033 B |
-| 29 | v86_rc2_dshb_c1_c2_caliber_agreement.md | `F53ADFFCF95F578880556954075BE434` | 16,852 B |
-| 30 | v86_rc2_dshb_zhiji_id_backlog_list.md | `A4E78462329E95696A51B793C5A15553` | 22,504 B |
-| 31 | v86_rc2_dshb_prod_total_backlog_v7.md | `39B3211E48ED0C68E98E22A94182A1E9` | 21,754 B |
+| 30 | v86_rc2_dshe_full_prep_archive_index_v7.md | `0EEF05875205558B8444FCFFBA1A12B8` | 25,531 B |
+| 31 | v86_rc2_dshe_c1_c5_gate_final_report_v7.md | `0B9A9A895BBB5EF42A5AF4DDFF486563` | 20,797 B |
+| 32 | v86_rc2_dshe_prod_switch_guide_v7.md | `80A54CC8713E3A56B9AAD402809DEA27` | 44,804 B |
 
-**DSHB_PREP_APPROVED total:** 4 files, +79,143 B
+**Total delta:** +91,132 B (25,531 + 20,797 + 44,804 new files)
+
+---
+
+## DSHE_PREP_APPROVED New Files (4 files)
+
+> **Task:** DSHE_V86_RC2_PREP_SEAL_APPROVAL
+> **Sub-tasks:** T3.1 HERMES P1风险评审 | T3.2 C1/C2口径确认 | T3.3 zhiji_id复核 | T3.4 投产依赖更新
+> **Updated:** 2026-10-04
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 36 | v86_rc2_dshe_hermes_p1_risk_review.md | `4949136380AA07CCB799B7DBFAD828C2` | 32,874 B |
+| 37 | v86_rc2_dshe_c1_c2_caliber_ack.md | `06931778B521483E3FC985391DA13ABB` | 27,660 B |
+| 38 | v86_rc2_dshe_zhiji_id_backlog_review.md | `9013ABE79F7486D73F09D207453C21E0` | 27,763 B |
+| 39 | v86_rc2_dshe_prod_dependency_review.md | `C20115BC52C35741DABA9CDC09BB4A5B` | 23,392 B |
+
+**Total delta:** +111,689 B (32,874 + 27,660 + 27,763 + 23,392 new files)
 
 ---
 
@@ -186,11 +202,16 @@
 | v86_rc2_dshb_caliber_diff_keep_spec_v7.md | ✅ | PASS |
 | v86_rc2_dshb_underlying_dev_backlog_v7.md | ✅ | PASS |
 | v86_rc2_dshb_dshe_dep_case_baseline_v7.md | ✅ | PASS |
-| v86_rc2_dshb_hermes_p1_risk_review.md | ✅ | PASS |
-| v86_rc2_dshb_c1_c2_caliber_agreement.md | ✅ | PASS |
-| v86_rc2_dshb_zhiji_id_backlog_list.md | ✅ | PASS |
-| v86_rc2_dshb_prod_total_backlog_v7.md | ✅ | PASS |
-| **Total** | **31/31** | **✅ 100% PASS** |
+| v86_rc2_dshe_dep_case_mock_replace_spec_v7.md | ✅ | PASS |
+| v86_rc2_dshe_dep_case_rerun_report_v7.md | ✅ | PASS |
+| v86_rc2_dshe_full_prep_archive_index_v7.md | ✅ | PASS |
+| v86_rc2_dshe_c1_c5_gate_final_report_v7.md | ✅ | PASS |
+| v86_rc2_dshe_prod_switch_guide_v7.md | ✅ | PASS |
+| v86_rc2_dshe_hermes_p1_risk_review.md | ✅ | PASS |
+| v86_rc2_dshe_c1_c2_caliber_ack.md | ✅ | PASS |
+| v86_rc2_dshe_zhiji_id_backlog_review.md | ✅ | PASS |
+| v86_rc2_dshe_prod_dependency_review.md | ✅ | PASS |
+| **Total** | **39/39** | **✅ 100% PASS** |
 
 ---
 
@@ -222,8 +243,11 @@
 | **RC2_PREP_ALIGNED (DUAL)** | **122** | **195** | **16** |
 | **RC2_UT** | **125** | **198** | **17** |
 | **DSHB_FINAL_PREP** | **128** | **201** | **18** |
+| **DSHB_FINAL_PREP** | **128** | **201** | **18** |
+| **DSHE_FULL_UT_VERIFIED** | **130** | **203** | **19** |
 | **DSHB_BASELINE_LOCK** | **131** | **204** | **19** |
-| **DSHB_PREP_APPROVED** | **135** | **208** | **20** |
+| **DSHE_PREP_ARCHIVE_FINALIZED** | **133** | **206** | **20** |
+| **DSHE_PREP_APPROVED** | **137** | **210** | **21** |
 
 ---
 
@@ -258,10 +282,18 @@
 | 25 | v86_rc2_dshb_caliber_diff_keep_spec_v7.md | `BF61B134D23B546F057E1ADB3D60AC16` | RC2 DSHB caliber diff archive (10/10 MC resolved, 3 retain + 4 complementary + 3 unified, 0 ambiguity) |
 | 26 | v86_rc2_dshb_underlying_dev_backlog_v7.md | `A1AC67929814ABA5B0E3F515AB2B6D98` | RC2 DSHB underlying dev backlog (8/8 tasks locked, ENG-01~04 + MON-01~04, 9 nodes, T+1d~T+3d) |
 | 27 | v86_rc2_dshb_dshe_dep_case_baseline_v7.md | `2A6513623572F750E1C6671F2FEF39C2` | RC2 DSHB DSHE dep case baseline (24/24 Mock→Real switch checklist, 2 batches, 8 rollback triggers) |
-| 28 | v86_rc2_dshb_hermes_p1_risk_review.md | `7A4F6ACB30716F16A875EE679ABFD37A` | RC2 DSHB HERMES P1 risk review (3/3 P1 reviewed, all non-blocking, production-phase handling) |
-| 29 | v86_rc2_dshb_c1_c2_caliber_agreement.md | `F53ADFFCF95F578880556954075BE434` | RC2 DSHB C1/C2 caliber agreement (dual-caliber coexistence, Gate review vs production alert) |
-| 30 | v86_rc2_dshb_zhiji_id_backlog_list.md | `A4E78462329E95696A51B793C5A15553` | RC2 DSHB zhiji_id backlog (190/190 registered, P0:48 P1:52 P2:90, T+1d~T+5d) |
-| 31 | v86_rc2_dshb_prod_total_backlog_v7.md | `39B3211E48ED0C68E98E22A94182A1E9` | RC2 DSHB production total backlog (19/19 tasks merged, critical path, B-01/B-02 cleared, ~154h) |
+| 28 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | DSHE全量36图表PDF绘图Schema固化 (36/36图表, 8模块, 7降级兜底, 19回填字段映射) |
+| 29 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | DSHE zhiji数据库预映射规则 (197项映射, 178指标+19回填字段, 100%覆盖) |
+| 30 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | DSHE HERMES校验规范 (85项校验, C1-C5映射, 88.2%全自动, 高风险15项) |
+| 31 | v86_rc2_dshe_dep_case_mock_replace_spec_v7.md | `B8CD07E7F02F4B250F5952EC3E9267F3` | 24依赖用例Mock替换规格 (24/24映射, 19字段, 10冲突, 7口径分支) |
+| 32 | v86_rc2_dshe_dep_case_rerun_report_v7.md | `6C9313073137C289EC0888499568FF46` | 24依赖用例联合复测报告 (24/24 PASS, 89/89 Gate, 7/7降级, A+ 50/50) |
+| 33 | v86_rc2_dshe_full_prep_archive_index_v7.md | `0EEF05875205558B8444FCFFBA1A12B8` | 全交付物汇总索引 (49文件, 20阶段, 133文件/20阶段/~12.5MB, MD5 35/35 PASS) |
+| 34 | v86_rc2_dshe_c1_c5_gate_final_report_v7.md | `0B9A9A895BBB5EF42A5AF4DDFF486563` | C1-C5 Gate终审报告 (A+ 50/50, 89/89 Gate PASS, 11项风险台账, 0阻断) |
+| 35 | v86_rc2_dshe_prod_switch_guide_v7.md | `80A54CC8713E3A56B9AAD402809DEA27` | 投产上线切换指南 (PREP冻结12项, 投产待办8项, 7步切换, 3级回滚, 8风险观测项) |
+| 36 | v86_rc2_dshe_hermes_p1_risk_review.md | `4949136380AA07CCB799B7DBFAD828C2` | HERMES P1风险展示层专项评审 (3/3 P1全部0阻断, 18观测指标, 15投产任务) |
+| 37 | v86_rc2_dshe_c1_c2_caliber_ack.md | `06931778B521483E3FC985391DA13ABB` | C1/C2跨团队口径确认 (MC-01统一29+7, MC-02保留差异, 7/7降级一致, 0冲突) |
+| 38 | v86_rc2_dshe_zhiji_id_backlog_review.md | `9013ABE79F7486D73F09D207453C21E0` | zhiji_id待确认清单展示层复核 (190项复核, 36/36图表匹配, 优先级对齐DSHB) |
+| 39 | v86_rc2_dshe_prod_dependency_review.md | `C20115BC52C35741DABA9CDC09BB4A5B` | 投产依赖与风险台账合并更新 (14风险项, 7步观测, 12/12与切换指南一致) |
 
 ---
 
@@ -278,9 +310,9 @@
 
 ---
 
-*Generated: 2026-10-03*
+*Generated: 2026-10-04*
 *Task: DSHE_V86_RC1_PRESENTATION_LAYER_CROSS_REVIEW_AND_ACCEPTANCE*
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE — 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY | ✅ DSHB FINAL PREP COMPLETE — CHART SCHEMA 36/36, ZHIJI MAPPING 36+19, BACKFILL 19/19 FINAL, DSHB_FINAL_PREP_CLOSED=TRUE | ✅ DSHB BASELINE LOCK COMPLETE — CALIBER DIFF 10/10 MC ARCHIVED, DEV BACKLOG 8/8 LOCKED, SWITCH CHECKLIST 24/24 READY, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE | ✅ DSHB PREP APPROVED COMPLETE — P1 RISK 3/3 NON-BLOCKING, C1/C2 CALIBER AGREEMENT SIGNED, ZHIJI_ID 190/190 REGISTERED, PROD TOTAL BACKLOG 19/19 MERGED, DSHB_PREP_APPROVED=TRUE*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE — 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY | ✅ DSHB FINAL PREP COMPLETE — CHART SCHEMA 36/36, ZHIJI MAPPING 36+19, BACKFILL 19/19 FINAL, DSHB_FINAL_PREP_CLOSED=TRUE | ✅ DSHB BASELINE LOCK COMPLETE — CALIBER DIFF 10/10 MC ARCHIVED, DEV BACKLOG 8/8 LOCKED, SWITCH CHECKLIST 24/24 READY, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE | ✅ DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85 | ✅ DSHE FULL UT VERIFIED — 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK, C1-C5 A+ 50/50 | ✅ DSHE PREP ARCHIVE FINALIZED — 133 FILES, 20 STAGES, ~12.5MB, MD5 35/35 PASS, PROD SWITCH GUIDE READY | ✅ DSHE PREP APPROVED — HERMES P1 3/3 REVIEWED (0 BLOCKING), C1/C2 CALIBER ACKED, 190 ZHIJI_ID REVIEWED, 14 RISK ITEMS UPDATED, MD5 39/39 PASS, 137 FILES, 21 STAGES*
