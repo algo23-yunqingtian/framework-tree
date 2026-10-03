@@ -876,3 +876,12 @@
 - 验收清单+演示脚本: 适配真实回放数据
 - enhanced_archive_builder.py更新: 新增dshb_review_simulation目录
 - 产物目录: analysis/e2e_output/v85/hermes_refresh_real_data/
+
+### 2026-10-04 HERMES_V86_RC2_GLOBAL_VALIDATION
+- V86-RC2 全局指标&绘图Schema&zhiji映射全量校验归一化完成
+- 校验范围: DSHB 6份文档(36图表Schema+204zhiji映射+19回填字段+24依赖用例+8底层任务) + DSHE 3份文档(36图表Schema+197zhiji映射+85校验项) + 跨团队3份(契约+Gate全集+case_diff_review)
+- 输入文件: 12个v7文档, ~840KB, 全部MD5已记录
+- 校验结果: P0阻断=0, P1高风险=3(投产阶段), P2低风险=8(备注保留)
+- PREP封板判定: 🟢 可封板 (0阻断项, 24依赖用例24/24 PASS, 89 Gate 89/89 PASS)
+- 报告: analysis/e2e_output/v86/hermes_e2e_test/v86_rc2_hermes_global_validation_report.md (MD5: c5f39a1c)
+- MD5清单: analysis/e2e_output/v86/hermes_e2e_test/MD5_CHECKSUM_LIST_rc2.md
