@@ -82,7 +82,7 @@
 - **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (4新增)
 - **新增文件**: 4文件 ~112KB (T3.1 33KB + T3.2 28KB + T3.3 28KB + T3.4 23KB)
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED 全部合规
-- **终版结论**: ✅ DSHE_PREP_APPROVED=TRUE (commit `2152362`) — HERMES P1风险评审✅3/3全部0阻断, C1/C2口径确认✅MC-01统一+MC-02保留差异, zhiji_id复核✅190项全部匹配36/36图表, 投产依赖更新✅14项风险台账7步观测, 三方材料闭环✅DSHE+DSHB+HERMES全部对齐, 支撑V86-RC2 PREP正式封板
+- **终版结论**: ✅ DSHE_PREP_APPROVED=TRUE (commit `ef16efd`) — HERMES P1风险评审✅3/3全部0阻断, C1/C2口径确认✅MC-01统一+MC-02保留差异, zhiji_id复核✅190项全部匹配36/36图表, 投产依赖更新✅14项风险台账7步观测, 三方材料闭环✅DSHE+DSHB+HERMES全部对齐, 支撑V86-RC2 PREP正式封板
 
 ### 2026-10-04 DSHE — V86-RC2 全交付物汇总索引·Gate终审报告·投产切换指南·PREP归档终版固化 (DSHE_V86_RC2_FULL_PREP_ARCHIVE_FINALIZED)
 - **T3.1 全交付物索引**: `v86_rc2_dshe_full_prep_archive_index_v7.md` (25KB) — 49份DSHE交付文件全量索引, 20阶段版本链, 依赖图+commit链, MD5 35/35 PASS
