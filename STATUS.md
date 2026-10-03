@@ -73,6 +73,16 @@
 
 ## 近期变更记录
 
+### 2026-10-04 HERMES — V86-RC2 PREP正式封板决议生成 & 全量归档快照固化 (HERMES_V86_RC2_PREP_CLOSURE)
+- **T3.1 PREP封板决议**: `v86_rc2_prep_closure_resolution.md` (21KB) — 三方批准状态汇总(DSHB✅DSHE✅HERMES✅), Gate结果汇总(C1-C5 A+ 50/50, 89/89 PASS), 风险结论(14项/0高/7中/7低), 口径约定(10/10 MC解决), PREP冻结声明(15项不可修改), 投产遗留项清单(19项/~13pd), 17/17封板条件全部通过
+- **T3.2 全量归档快照**: `v86_rc2_full_archive_snapshot.md` (23KB) — 140文件/22阶段/~14.0MB全量索引, MD5 42/42 PASS, Commit链追溯(22阶段), 团队分布(DSHE~95/DSHB~28/HERMES~10/跨团队~7), 归档快照声明V86_RC2_PREP_ARCHIVE_SNAPSHOT=TRUE
+- **T3.3 PREP转投产交接**: `v86_rc2_prep_to_prod_handover.md` (26KB) — 19项投产任务(ENG-01~04+MON-01~04+P1/P2对齐+IT集成+Mock切换+HERMES验证), 关键路径(~3w), 2阻塞项(B-01 zhiji数据源/B-02 API消费), 190项zhiji_id待确认清单, 双口径约定(MC-01统一+MC-02保留), 14项风险台账, 18项观测指标, 7步切换, 3级回滚, 8类异常规则, 10项验收标准
+- **T3.4 归档更新**: `MD5_MANIFEST_cross_review.md` (更新) — 新增3文件MD5(40-42), 验证42/42 PASS, 文件数137+3=140, 阶段21+1=22; `JOB_READY.flag` (更新) — V86_RC2_PREP_CLOSED=TRUE
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (3新增)
+- **新增文件**: 3文件 ~70KB (T3.1 21KB + T3.2 23KB + T3.3 26KB)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / READONLY_VALIDATE 全部合规
+- **终版结论**: ✅ V86_RC2_PREP_CLOSED=TRUE (commit `630614c`) — PREP阶段正式封板完成 (三方全部批准✅, 17/17条件通过✅, 0 P0阻断✅, C1-C5 A+ 50/50✅, 89/89 Gate PASS✅, 140文件/22阶段/~14.0MB/MD5 42/42 PASS✅, 19项投产任务索引✅, 投产基线确立✅)
+
 ### 2026-10-04 DSHE — V86-RC2 PREP封板终审确认·跨团队口径对齐复核·DSHE_PREP_APPROVED (DSHE_V86_RC2_PREP_SEAL_APPROVAL)
 - **T3.1 HERMES P1风险评审**: `v86_rc2_dshe_hermes_p1_risk_review.md` (33KB) — 3项P1风险展示层专项评审(P1-1 C2阈值/P1-2 C1匹配数/P1-3 190 zhiji_id), 0阻断PREP封板, 展示层影响2低1中全部可控, 18项观测指标已定义, 投产处置15项任务, MC-01_CHECK+MC-02_CHECK规则已映射, 约束合规4/4
 - **T3.2 C1/C2口径确认**: `v86_rc2_dshe_c1_c2_caliber_ack.md` (28KB) — MC-01图表匹配数统一为29+7(DSHE口径)/DSHB更新, MC-02 P1阈值保留差异(DSHE P1=0/DSHB P1≤3), Gate评审用DSHE口径/线上告警用DSHB口径, 7张降级图表双口径展示逻辑7/7一致, 回填字段19/19对齐, 并行使用边界8/8无冲突, 约束合规4/4

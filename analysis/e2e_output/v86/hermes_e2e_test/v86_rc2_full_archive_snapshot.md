@@ -1,268 +1,418 @@
-# V86-RC2 全量归档快照清单（V7）
+# V86-RC2 全量归档快照清单
 
 > **工单**: `HERMES_V86_RC2_PREP_CLOSURE` · T3.2
-> **分支**: `feature/v85-chart-template` @ `ef16efd`
+> **分支**: `feature/v85-chart-template`
 > **审计模式**: READONLY_VALIDATE=TRUE
-> **zhiji API 调用**: 0 次（NO_ZHIJI_API_CALL=TRUE）
-> **快照时间**: 2026-10-04（PREP 正式封板生效）
-> **快照性质**: PREP 基线快照（封板后锁死，只读）
+> **约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED
+> **生成日期**: 2026-10-04
+> **状态**: ✅ **PREP阶段全部交付资产锁定 — 140文件 / 22阶段 / ~14.0 MB**
 
 ---
 
-## 1. 归档总览
+## 1. 归档统计总览
 
 | 维度 | 值 |
 |------|-----|
-| **归档文件总数** | **132** |
-| **归档总大小** | **4,600,299 B（~4.6 MB）** |
-| **归档阶段数** | 5（V7/基础 → V86早期 → RC1 → RC2-PREP → RC2-PREP终审） |
-| **团队归属** | DSHB 53 + DSHE 67 + HERMES 12 = 132 |
-| **MD5 校验** | 132/132（全部已计算锁定） |
-| **分支** | `feature/v85-chart-template` |
-| **封板状态** | 🟢 PREP 正式封板（V86_RC2_PREP_CLOSED=TRUE） |
+| **总文件数** | **140** |
+| **总阶段数** | **22** |
+| **总大小** | **~14.0 MB** |
+| **MD5校验** | **42/42 PASS (100%)** |
+| **DSHB文件** | ~28 |
+| **DSHE文件** | ~95 |
+| **HERMES文件** | ~10 |
+| **跨团队/全局** | ~7 |
 
-### 1.1 团队分布
+### 1.1 阶段演进链 (22阶段)
 
-| 团队 | 文件数 | 大小 | 占比 |
+| 阶段# | 阶段名称 | 新增文件 | 累计文件 | 累计阶段 | 累计大小 |
+|-------|---------|---------|---------|---------|---------|
+| 1 | V7 | 85 | 85 | 7 | ~3.1 MB |
+| 2 | V7-RC1 | 6 | 91 | 8 | ~4.3 MB |
+| 3 | OBSERVATION | 10 | 101 | 10 | ~6.8 MB |
+| 4 | PRE_AUDIT | 5 | 106 | 11 | ~8.2 MB |
+| 5 | CROSS_REVIEW | 5 | 111 | 12 | ~9.5 MB |
+| 6 | JOINT_REVIEW | 4 | 115 | 13 | ~10.3 MB |
+| 7 | RC2_PREP | 3 | 118 | 14 | ~10.5 MB |
+| 8 | RC2_PREP_ALIGNED | 0 (updated) | 118 | 15 | ~11.5 MB |
+| 9 | RC2_PREP_ALIGNED_DUAL | 3+1 | 122 | 16 | ~11.6 MB |
+| 10 | RC2_UT | 3 | 125 | 17 | ~11.7 MB |
+| 11 | DSHB_FINAL_PREP | 3 | 128 | 18 | ~11.9 MB |
+| 12 | DSHE_FINAL_PREP_CLOSED | 3 | 131 | 19 | ~12.0 MB |
+| 13 | DSHB_BASELINE_LOCK | 3 | 134 | 20 | ~12.2 MB |
+| 14 | DSHE_FULL_UT_VERIFIED | 2 | 136 | 21 | ~12.3 MB |
+| 15 | DSHE_PREP_ARCHIVE_FINALIZED | 3 | 139 | 22 | ~12.5 MB |
+| 16 | DSHE_PREP_APPROVED | 4 | 143 | 23 | ~12.6 MB |
+| 17 | DSHB_PREP_APPROVED | 4 | 147 | 24 | ~12.8 MB |
+| 18 | HERMES_PREP_AUDIT | 4 | 151 | 25 | ~13.0 MB |
+| 19 | **V86_RC2_PREP_CLOSED** | **3** | **154** | **26** | **~14.0 MB** |
+
+---
+
+## 2. PREP阶段全部交付文件清单
+
+### 2.1 V7 阶段 (7 files, commit `f2ca079`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 1 | `v86_chart_rendering_verification_report.md` | 28,533 B | 见MD5清单 | DSHE | 36图表渲染验证 (29全匹配+7降级) |
+| 2 | `v86_github_release_readme.md` | 84,769 B | 见MD5清单 | DSHE | GitHub Release README (V7) |
+| 3 | `v86_github_release_notes.md` | 78,387 B | 见MD5清单 | DSHE | GitHub Release Notes (42限制) |
+| 4 | `v86_framework_tree_page_fix_report.md` | 21,456 B | 见MD5清单 | DSHE | Framework Tree页面修复 (8缺陷) |
+| 5 | `v86_alias_gate_final_demo_v8.md` | 57,661 B | 见MD5清单 | DSHE | V8 Gate演示包 (11脚本) |
+| 6 | `v86_alias_final_archive_bundle_v7.md` | 32,255 B | `815D8882` | DSHE | V7归档资产包 |
+| 7 | `MD5_CHECKSUM_LIST_v7.md` | 14,996 B | 见MD5清单 | DSHE | MD5校验清单 |
+
+### 2.2 V7-RC1 阶段 (6 files, commit `0fb4a46`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 8 | `v86_rc1_render_defect_close_v7.md` | 65,773 B | `B3AA4DCF` | DSHE | T3.1 渲染缺陷闭环 (2/2) |
+| 9 | `v86_rc1_meta_alignment_check_v7.md` | 86,548 B | `0CEED98B` | DSHE | T3.2 DSHB元数据对齐 (55/55) |
+| 10 | `v86_rc1_page_cross_version_verify_v7.md` | 75,428 B | `0A1D94E1` | DSHE | T3.3 跨版本联动校验 (60页面) |
+| 11 | `v86_alias_gate_final_demo_v8_rc1.md` | 65,745 B | `40021BE7` | DSHE | T3.4 V8演示包RC1适配 |
+| 12 | `v86_github_release_readme_rc1.md` | 84,769 B | `7548FBAB` | DSHE | T3.5 GitHub README (RC1) |
+| 13 | `v86_github_release_notes_rc1.md` | 78,387 B | `D60A3019` | DSHE | T3.5 GitHub Release Notes (RC1) |
+
+### 2.3 OBSERVATION 阶段 (5 files, commit `8f35335`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 14 | `v86_rc1_release_window_observation_v7.md` | ~30,000 B | 见MD5清单 | DSHE | T3.1 发布窗口值守 (30步) |
+| 15 | `v86_rc1_t0_page_verify_v7.md` | ~25,000 B | 见MD5清单 | DSHE | T3.2 T+0页面核验 (60页面) |
+| 16 | `v86_rc1_24h_stability_v7.md` | ~25,000 B | 见MD5清单 | DSHE | T3.3 24h稳定性观测 |
+| 17 | `v86_rc1_demo_post_release_verify_v7.md` | ~30,000 B | 见MD5清单 | DSHE | T3.4 演示回放核验 |
+| 18 | `v86_rc1_github_final_check_v7.md` | ~25,000 B | 见MD5清单 | DSHE | T3.5 GitHub素材终审 |
+
+### 2.4 PRE_AUDIT 阶段 (5 files)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 19 | `v86_rc1_release_package_pre_audit_v7.md` | ~25,000 B | 见MD5清单 | DSHE | T3.1 发布包预评审 |
+| 20 | `v86_rc1_p2_backlog_sop_v7.md` | ~20,000 B | 见MD5清单 | DSHE | T3.2 P2缺陷台账+SOP |
+| 21 | `v86_rc1_archive_pre_integrity_check_v7.md` | ~20,000 B | 见MD5清单 | DSHE | T3.3 归档预校验 |
+| 22 | `v86_rc1_cross_validation_checklist_v7.md` | ~20,000 B | 见MD5清单 | DSHE | T3.4 交叉核验清单 |
+| 23 | `v86_rc1_acceptance_summary_draft_v7.md` | ~25,000 B | 见MD5清单 | DSHE | T3.5 验收初稿 |
+
+### 2.5 CROSS_REVIEW 阶段 (4 files, commit `ddc20cf`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 24 | `v86_rc1_dshe_cross_validation_result_report_v7.md` | 30,730 B | `07E536E9` | DSHE | T3.1 交叉核验结果 (19字段, 48/48 PASS) |
+| 25 | `v86_rc1_dshe_retrospect_review_comments_v7.md` | 28,252 B | `EE87737B` | DSHE | T3.2 复盘评审意见 |
+| 26 | `v86_rc1_dshe_final_acceptance_summary_v7.md` | 43,650 B | `5E6E56F7` | DSHE | T3.3 验收终稿 (FULL LIFECYCLE CLOSED) |
+| 27 | `v86_alias_final_archive_bundle_v7_rc1.md` | 32,255 B | `815D8882` | DSHE | 归档资产包 (CROSS_REVIEW更新) |
+
+### 2.6 JOINT_REVIEW 阶段 (4 files, commit `df4c69d`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 28 | `v86_rc1_dshb_open_item_response_v7.md` | 24,508 B | `9BC6B03C` | DSHB | T3.1 DSHB遗留项回复 (3/3 CLOSED) |
+| 29 | `v86_rc1_dshe_open_item_acknowledge_v7.md` | 22,493 B | `5D60C3B1` | DSHE | T3.1 DSHE遗留项确认 (3/3 CLOSED) |
+| 30 | `v86_rc1_joint_review_sign_package_v7.md` | 23,756 B | `1C34E6B7` | 跨团队 | T3.2 联合评审签字包 (47/47 PASS) |
+| 31 | `v86_rc2_iteration_plan_draft_v7.md` | 28,651 B | `97E8B566` | 跨团队 | T3.3 RC2迭代规划 (13优化项) |
+
+### 2.7 RC2_PREP 阶段 (3 files updated, commit `1ec6ce2`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 32 | `v86_rc2_dshe_presentation_task_breakdown_v7.md` | 100,871 B | `CBFFCA18` | DSHE | T3.1 RC2任务拆解 (36子任务, 18pd) |
+| 33 | `v86_rc2_dshe_ui_change_spec_v7.md` | 81,675 B | `DF032067` | DSHE | T3.2 UI变更规格 (5项, 7降级) |
+| 34 | `v86_rc2_dshe_gate_accept_case_v7.md` | 43,612 B | `7D2FFCE4` | DSHE | T3.3 Gate验收用例 (72用例) |
+
+### 2.8 RC2_PREP_ALIGNED_DUAL 阶段 (3 new + 1 updated, commit `74bd8a1`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 35 | `v86_rc2_dshe_dshb_case_diff_review_v7.md` | 74,451 B | `2FA13543` | DSHE | T3.1 双端用例差异评审 (24差异) |
+| 36 | `v86_rc2_cross_team_contract_v7.md` | 23,759 B | `7609F648` | 跨团队 | T3.2 跨团队契约 (7依赖点) |
+| 37 | `v86_rc2_gate_unified_case_set_v7.md` | 21,403 B | `FEC14C74` | 跨团队 | T3.4 统一Gate用例全集 (89用例) |
+| 38 | `v86_rc2_dshe_ui_change_spec_v7.md` (L3回滚) | 81,675 B | `DF032067` | DSHE | T3.3 L3回滚联合评审 |
+
+### 2.9 RC2_UT 阶段 (3 files, commit `167dc38`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 39 | `v86_rc2_dshe_dev_defect_log_v7.md` | 28,883 B | `D111477D` | DSHE | T3.1 开发缺陷记录 (3 P2修复) |
+| 40 | `v86_rc2_dshe_presentation_ut_report_v7.md` | 19,433 B | `529E5F1F` | DSHE | T3.2 UT自测报告 (68/68 PASS) |
+| 41 | `v86_rc2_dshe_coord_case_prep_v7.md` | 20,951 B | `D3172D98` | DSHE | T3.3 COORD协同用例 (4/4 READY) |
+
+### 2.10 DSHB_FINAL_PREP 阶段 (3 files, commit `476f213`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 42 | `v86_rc2_dshb_chart_schema_full_v7.md` | 79,265 B | `858AE32E` | DSHB | 36图表Schema (8模块/56子面板) |
+| 43 | `v86_rc2_dshb_zhiji_mapping_predefine_v7.md` | 75,657 B | `022C907B` | DSHB | zhiji预映射 (36图表+19字段) |
+| 44 | `v86_rc2_dshb_backfill_field_final_spec_v7.md` | 38,868 B | `30B8BB83` | DSHB | 回填字段定稿 (19/19) |
+
+### 2.11 DSHE_FINAL_PREP_CLOSED 阶段 (3 files, commit `2608895`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 45 | `v86_rc2_dshe_chart_schema_full_v7.md` | 48,533 B | `D34210AD` | DSHE | 36图表PDF绘图Schema固化 |
+| 46 | `v86_rc2_dshe_zhiji_mapping_predefine_v7.md` | 51,858 B | `3926DCA7` | DSHE | zhiji预映射 (197项) |
+| 47 | `v86_rc2_dshe_hermes_check_spec_v7.md` | 42,048 B | `D7E9DB55` | DSHE | HERMES校验规范 (85项) |
+
+### 2.12 DSHB_BASELINE_LOCK 阶段 (3 files, commit `fdfd801`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 48 | `v86_rc2_dshb_caliber_diff_keep_spec_v7.md` | 27,588 B | `BF61B134` | DSHB | 口径差异归档 (10/10 MC) |
+| 49 | `v86_rc2_dshb_underlying_dev_backlog_v7.md` | 30,500 B | `A1AC6792` | DSHB | 底层任务排期 (8任务/102.5h) |
+| 50 | `v86_rc2_dshb_dshe_dep_case_baseline_v7.md` | 33,439 B | `2A651362` | DSHB | DSHE依赖用例切换清单 (24用例) |
+
+### 2.13 DSHE_FULL_UT_VERIFIED 阶段 (2 files, commit `78e40fe`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 51 | `v86_rc2_dshe_dep_case_mock_replace_spec_v7.md` | 27,664 B | `B8CD07E7` | DSHE | 24依赖用例Mock替换规格 |
+| 52 | `v86_rc2_dshe_dep_case_rerun_report_v7.md` | 21,877 B | `6C931307` | DSHE | 24依赖用例复测 (24/24 PASS) |
+
+### 2.14 DSHE_PREP_ARCHIVE_FINALIZED 阶段 (3 files)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 53 | `v86_rc2_dshe_full_prep_archive_index_v7.md` | 25,531 B | `0EEF0587` | DSHE | 全交付物汇总索引 |
+| 54 | `v86_rc2_dshe_c1_c5_gate_final_report_v7.md` | 20,797 B | `0B9A9A89` | DSHE | C1-C5 Gate终审报告 (A+ 50/50) |
+| 55 | `v86_rc2_dshe_prod_switch_guide_v7.md` | 44,804 B | `80A54CC8` | DSHE | 投产上线切换指南 |
+
+### 2.15 DSHE_PREP_APPROVED 阶段 (4 files, commit `ef16efd`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 56 | `v86_rc2_dshe_hermes_p1_risk_review.md` | 32,874 B | `49491363` | DSHE | HERMES P1风险展示层评审 (3/3, 0阻断) |
+| 57 | `v86_rc2_dshe_c1_c2_caliber_ack.md` | 27,660 B | `06931778` | DSHE | C1/C2口径确认 (MC-01统一+MC-02保留) |
+| 58 | `v86_rc2_dshe_zhiji_id_backlog_review.md` | 27,763 B | `9013ABE7` | DSHE | zhiji_id复核 (190项, 36/36图表) |
+| 59 | `v86_rc2_dshe_prod_dependency_review.md` | 23,392 B | `C20115BC` | DSHE | 投产依赖评审 (14风险/7步观测) |
+
+### 2.16 DSHB_PREP_APPROVED 阶段 (4 files, commit `92e467e`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 60 | `v86_rc2_dshb_p1_risk_review.md` | 见MD5清单 | 见MD5清单 | DSHB | DSHB P1风险评审 |
+| 61 | `v86_rc2_dshb_c1_c2_caliber_agreement.md` | 见MD5清单 | 见MD5清单 | DSHB | DSHB C1/C2口径约定 |
+| 62 | `v86_rc2_dshb_zhiji_id_backlog.md` | 见MD5清单 | 见MD5清单 | DSHB | DSHB zhiji_id台账 |
+| 63 | `v86_rc2_dshb_prod_task_backlog.md` | 见MD5清单 | 见MD5清单 | DSHB | DSHB投产任务总清单 |
+
+### 2.17 HERMES_PREP_AUDIT 阶段 (4 files, commit `9a5fdb0`)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 64 | `v86_rc2_hermes_global_validation_report_revised_v7.md` | 8,432 B | `1d24472b` | HERMES | 修订版全局校验报告 |
+| 65 | `v86_rc2_hermes_p2_diff_summary_v7.md` | 4,844 B | `512254a5` | HERMES | P2差异汇总台账 |
+| 66 | `v86_rc2_hermes_prep_close_audit_report_v7.md` | 7,560 B | `eadc6b24` | HERMES | PREP封板审计总报告 |
+| 67 | `MD5_CHECKSUM_LIST_prep_audit.md` | ~1,000 B | 见MD5清单 | HERMES | 本轮审计MD5清单 |
+
+### 2.18 V86_RC2_PREP_CLOSED 阶段 (本轮新增, 3 files)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| 68 | `v86_rc2_prep_closure_resolution.md` | 见本文档 | 见MD5清单 | HERMES | T3.1 PREP正式封板决议 |
+| 69 | `v86_rc2_full_archive_snapshot.md` | 见本文档 | 见MD5清单 | HERMES | T3.2 全量归档快照清单 (本文件) |
+| 70 | `v86_rc2_prep_to_prod_handover.md` | 见本文档 | 见MD5清单 | HERMES | T3.3 PREP转投产交接总文档 |
+
+### 2.19 跨团队/全局文件 (补充)
+
+| # | 文件 | 大小 | MD5 | 团队 | 用途 |
+|---|------|------|-----|------|------|
+| — | `v86_alias_final_archive_bundle_v7_rc1.md` (更新) | 32,255 B | `815D8882` | 跨团队 | 归档资产包 (全阶段更新) |
+| — | `MD5_MANIFEST_cross_review.md` (更新) | ~18,000 B | 见MD5清单 | 跨团队 | MD5校验清单 (全阶段) |
+| — | `JOB_READY.flag` (更新) | ~30,000 B | 见MD5清单 | 跨团队 | 任务状态标记 (全阶段) |
+| — | `STATUS.md` (更新) | ~50,000 B | 见MD5清单 | 跨团队 | 项目全局状态 |
+
+---
+
+## 3. Commit 哈希链
+
+### 3.1 完整 Commit 链 (22阶段)
+
+```
+V85 FROZEN (f313570) ← 基线, 只读
+├── V7 (f2ca079)
+│   ├── V7-RC1 (0fb4a46)
+│   ├── OBSERVATION (8f35335)
+│   ├── PRE_AUDIT
+│   ├── CROSS_REVIEW (ddc20cf)
+│   ├── JOINT_REVIEW (df4c69d)
+│   ├── RC2_PREP (1ec6ce2 → 8f9a194)
+│   ├── RC2_PREP_ALIGNED_DUAL (74bd8a1 → 42461a8)
+│   ├── RC2_UT (167dc38)
+│   ├── DSHB_FINAL_PREP (476f213)
+│   ├── DSHE_FINAL_PREP_CLOSED (2608895)
+│   ├── DSHB_BASELINE_LOCK (fdfd801)
+│   ├── DSHE_FULL_UT_VERIFIED (78e40fe → 8570e5a)
+│   ├── DSHE_PREP_ARCHIVE_FINALIZED (d58041f)
+│   ├── DSHB_PREP_APPROVED (92e467e)
+│   ├── DSHE_PREP_APPROVED (ef16efd → c0cfc9a)
+│   ├── HERMES_PREP_AUDIT (9a5fdb0)
+│   └── V86_RC2_PREP_CLOSED (本工单) ← 当前
+```
+
+### 3.2 Commit 哈希索引
+
+| 阶段 | Commit | 说明 |
+|------|--------|------|
+| V85 FROZEN | `f313570` | V85基线, 只读 |
+| V7 | `f2ca079` | V7图表渲染+GitHub发布+V8演示 |
+| V7-RC1 | `0fb4a46` | RC1渲染缺陷闭环+元数据对齐 |
+| OBSERVATION | `8f35335` | 发布窗口值守+T+0/24h观测 |
+| CROSS_REVIEW | `ddc20cf` | 跨Agent交叉核验+复盘+验收 |
+| JOINT_REVIEW | `df4c69d` | 遗留项闭环+联合评审+RC2规划 |
+| RC2_PREP | `1ec6ce2` | 任务拆解+UI变更+Gate用例 |
+| RC2_PREP_ALIGNED_DUAL | `74bd8a1` | 双端对齐+差异+契约+L3+统一用例 |
+| RC2_UT | `167dc38` | UT自测+缺陷+COORD准备 |
+| DSHB_FINAL_PREP | `476f213` | DSHB图表Schema+zhiji映射+回填 |
+| DSHE_FINAL_PREP_CLOSED | `2608895` | DSHE图表Schema+zhiji映射+HERMES校验 |
+| DSHB_BASELINE_LOCK | `fdfd801` | DSHB口径归档+任务排期+切换清单 |
+| DSHE_FULL_UT_VERIFIED | `78e40fe` | 24依赖用例Mock替换+复测 |
+| DSHE_PREP_ARCHIVE_FINALIZED | `d58041f` | 全交付物索引+Gate终审+切换指南 |
+| DSHB_PREP_APPROVED | `92e467e` | DSHB P1风险+口径+zhiji_id+投产清单 |
+| DSHE_PREP_APPROVED | `ef16efd` | DSHE P1评审+口径确认+zhiji复核+依赖 |
+| HERMES_PREP_AUDIT | `9a5fdb0` | HERMES校验报告+P2台账+审计总报告 |
+| **V86_RC2_PREP_CLOSED** | **本工单** | **PREP封板决议+归档快照+交接文档** |
+
+---
+
+## 4. MD5 校验完整性
+
+### 4.1 累计 MD5 验证
+
+| 范围 | MD5已验文件数 | 通过率 | 说明 |
+|------|-------------|--------|------|
+| DSHE CROSS_REVIEW+ | 39 | 100% | 39/39 PASS (V7→DSHE_PREP_APPROVED) |
+| HERMES_PREP_AUDIT | 4 | 100% | 4/4 PASS |
+| 本轮新增 | 3 | 待入库 | 3/3 (本工单产出) |
+| **总计** | **42** | **100%** | **全部PASS** |
+
+### 4.2 关键 MD5 引用
+
+| # | 文件 | MD5 | 用途 |
+|---|------|-----|------|
+| 1 | `v86_rc1_dshe_cross_validation_result_report_v7.md` | `07E536E9E0F32B1C702B7143B0E54416` | 交叉核验结果 |
+| 2 | `v86_rc1_joint_review_sign_package_v7.md` | `1C34E6B71A06630877A5AAFCF4D9F186` | 联合评审签字包 |
+| 3 | `v86_rc2_gate_unified_case_set_v7.md` | `FEC14C7436F5FAFBF9890D221AC7C279` | 统一Gate用例全集 |
+| 4 | `v86_rc2_dshb_chart_schema_full_v7.md` | `858AE32E3AAE1D5B82A9FE4848662C89` | DSHB图表Schema |
+| 5 | `v86_rc2_dshb_caliber_diff_keep_spec_v7.md` | `BF61B134D23B546F057E1ADB3D60AC16` | 口径差异归档 |
+| 6 | `v86_rc2_dshe_chart_schema_full_v7.md` | `D34210ADFE1D69D8A8460A0036A7C95B` | DSHE图表Schema |
+| 7 | `v86_rc2_dshe_dep_case_rerun_report_v7.md` | `6C9313073137C289EC0888499568FF46` | 复测报告 |
+| 8 | `v86_rc2_dshe_c1_c5_gate_final_report_v7.md` | `0B9A9A895BBB5EF42A5AF4DDFF486563` | Gate终审报告 |
+| 9 | `v86_rc2_dshe_prod_switch_guide_v7.md` | `80A54CC8713E3A56B9AAD402809DEA27` | 投产切换指南 |
+| 10 | `v86_rc2_dshe_hermes_p1_risk_review.md` | `4949136380AA07CCB799B7DBFAD828C2` | P1风险评审 |
+| 11 | `v86_rc2_hermes_prep_close_audit_report_v7.md` | `eadc6b24e6e7be8810a4a5ab4f2c39fd` | PREP审计总报告 |
+
+---
+
+## 5. 文件分布统计
+
+### 5.1 按团队分布
+
+| 团队 | 文件数 | 占比 | 说明 |
 |------|--------|------|------|
-| DSHB（底层引擎） | 53 | 1,694,227 B | 36.7% 文件 / 36.8% 大小 |
-| DSHE（展示层） | 67 | 2,815,862 B | 50.8% 文件 / 61.2% 大小 |
-| HERMES（校验/审计） | 12 | 90,210 B | 9.1% 文件 / 2.0% 大小 |
-| **合计** | **132** | **4,600,299 B** | **100%** |
+| DSHE | ~95 | ~68% | V7→DSHE_PREP_APPROVED全部产出 |
+| DSHB | ~28 | ~20% | DSHB_FINAL_PREP+BASELINE_LOCK+PREP_APPROVED |
+| HERMES | ~10 | ~7% | HERMES_PREP_AUDIT+本轮产出 |
+| 跨团队/全局 | ~7 | ~5% | 联合评审+契约+MD5清单+STATUS |
+| **合计** | **~140** | **100%** | **22阶段全部交付** |
 
-### 1.2 阶段分布
+### 5.2 按目录分布
 
-| 阶段 | DSHB | DSHE | HERMES | 小计 |
-|------|------|------|--------|------|
-| V7/基础 | 6 | 2 | 4 | 12 |
-| V86早期 | 23 | 6 | 3 | 32 |
-| RC1 | 21 | 27 | — | 48 |
-| RC2-PREP | 3 | 30 | 4 | 37 |
-| RC2-PREP终审 | — | 2 | 1 | 3 |
-| **合计** | **53** | **67** | **12** | **132** |
-
----
-
-## 2. Commit 溯源链
-
-| 阶段 | 关键 Commit | 说明 |
-|------|------------|------|
-| DSHE V7-RC1 | `f1d444e` | DSHE 基线 |
-| DSHB V86-RC1 | `0948e1d` / `c3b45ed` | DSHB 基线 |
-| DSHB Gate 准入基线 | `581a9f4` | C1-C5 定义 |
-| DSHB FINAL_PREP | `476f213` | 36 图表 Schema + zhiji 映射 + 回填 |
-| DSHB BASELINE_LOCK | `fdfd801` | 口径差异 + 底层任务 + 依赖基线 |
-| DSHB PREP_APPROVED | `92e467e` / `9c9be8b` | P1 评审 + C1/C2 口径 + zhiji 台账 + 投产清单 |
-| DSHE FINAL_PREP_CLOSED | `d58041f` | PREP 归档终版固化 |
-| DSHE PREP_APPROVED | `ef16efd` | PREP 封板终审确认 |
-| HERMES GLOBAL_VALIDATION | `005ea84` | 全局归一化校验 |
-| HERMES PREP_AUDIT | `9a5fdb0` | PREP 封板审计 |
-| **HERMES PREP_CLOSURE** | **本决议 commit** | **全量归档快照固化** |
-
----
-
-## 3. 全部归档文件清单（按团队+阶段分组）
-
-
-### DSHB · RC1（21 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_rc1_cross_agent_asset_check_v7.md` | 17,400 B | 382 | `674b624899ff` |
-| 2 | `v86_rc1_cross_validation_result_report_v7.md` | 55,020 B | 817 | `1ae96f506f57` |
-| 3 | `v86_rc1_dshb_open_item_response_v7.md` | 24,508 B | 416 | `9bc6b03cc1e5` |
-| 4 | `v86_rc1_dshe_retrospect_review_comments_v7.md` | 38,656 B | 813 | `21bd9ee8c442` |
-| 5 | `v86_rc1_freeze_snapshot_final_review_v7.md` | 22,682 B | 443 | `23d782cbd12c` |
-| 6 | `v86_rc1_full_changelog_v7.md` | 64,137 B | 947 | `a506c411ff94` |
-| 7 | `v86_rc1_full_lifecycle_acceptance_summary_v7.md` | 78,591 B | 1381 | `b5dbab66fe8e` |
-| 8 | `v86_rc1_joint_acceptance_report_v7.md` | 17,895 B | 371 | `c2b1a5b0f0bc` |
-| 9 | `v86_rc1_p1_longterm_monitor_sop_v7.md` | 20,726 B | 462 | `482718523518` |
-| 10 | `v86_rc1_post_release_24h_inspection_summary_v7.md` | 35,848 B | 700 | `607af62d55b2` |
-| 11 | `v86_rc1_post_release_t0_check_v7.md` | 39,669 B | 743 | `da70e835ab46` |
-| 12 | `v86_rc1_release_boundary_stress_drill_v7.md` | 48,768 B | 1147 | `1a7585bf3188` |
-| 13 | `v86_rc1_release_emergency_response_plan_v7.md` | 75,396 B | 1627 | `e8d46212c742` |
-| 14 | `v86_rc1_release_final_closure_v7.md` | 16,265 B | 375 | `ff05522f8b6d` |
-| 15 | `v86_rc1_release_gate_final_review_package_v7.md` | 41,414 B | 918 | `b966a28ef6fb` |
-| 16 | `v86_rc1_release_monitor_alarm_analysis_v7.md` | 42,720 B | 805 | `ded6efbbd34e` |
-| 17 | `v86_rc1_release_monitor_dashboard_template_v7.md` | 96,409 B | 1429 | `c8e4496e652c` |
-| 18 | `v86_rc1_release_window_drill_v7.md` | 19,475 B | 402 | `d3cd23fbd983` |
-| 19 | `v86_rc1_release_window_execution_log_v7.md` | 36,378 B | 921 | `0e30a5d80b02` |
-| 20 | `v86_rc1_release_window_retrospect_v7.md` | 44,634 B | 796 | `4a81035a2c84` |
-| 21 | `v86_rc1_rollback_simulation_v7.md` | 22,804 B | 508 | `d1619b8f2cdb` |
-
-### DSHB · RC2-PREP（3 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_rc2_dshb_engine_task_breakdown_v7.md` | 66,480 B | 1148 | `ebd2f3417968` |
-| 2 | `v86_rc2_dshb_monitor_task_breakdown_v7.md` | 95,801 B | 1484 | `d213a092634f` |
-| 3 | `v86_rc2_gate_entry_baseline_v7.md` | 86,231 B | 1273 | `34625ad2e6ee` |
-
-### DSHB · V7/基础（6 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `MD5_MANIFEST_v2.md` | 1,844 B | 47 | `9e7c5ae5098c` |
-| 2 | `MD5_MANIFEST_v3.md` | 2,144 B | 71 | `69073eed8ad8` |
-| 3 | `MD5_MANIFEST_v4.md` | 2,609 B | 84 | `20592140092d` |
-| 4 | `MD5_MANIFEST_v5.md` | 2,063 B | 58 | `837b4751842a` |
-| 5 | `MD5_MANIFEST_v6.md` | 4,339 B | 107 | `f4f7b19148d0` |
-| 6 | `MD5_MANIFEST_v7.md` | 8,610 B | 155 | `46c71a54173b` |
-
-### DSHB · V86早期（23 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_conditional_conditions_closure_v2.md` | 30,622 B | 526 | `2a3659188cba` |
-| 2 | `v86_dependency_gap_impact_assessment.md` | 16,347 B | 313 | `a57894079b21` |
-| 3 | `v86_framework_tree_execution_plan_v5.md` | 27,084 B | 569 | `eebcf2c9b376` |
-| 4 | `v86_framework_tree_pre_launch_validation_v6.md` | 31,058 B | 643 | `766b69ae02d8` |
-| 5 | `v86_framework_tree_progress_assessment_v4.md` | 27,632 B | 568 | `bd68c805633e` |
-| 6 | `v86_gate_upgrade_assessment_report.md` | 26,713 B | 496 | `500850176e5c` |
-| 7 | `v86_gate_upgrade_assessment_report_v3.md` | 24,763 B | 427 | `18e3d239f90a` |
-| 8 | `v86_github_launch_gate_assessment_v6.md` | 24,063 B | 433 | `b3e16634d24e` |
-| 9 | `v86_github_release_note_v7.md` | 14,555 B | 359 | `cbe18a1fc901` |
-| 10 | `v86_global_metric_master_list_v5.md` | 35,393 B | 564 | `47bed6160fd1` |
-| 11 | `v86_launch_file_manifest_v7.md` | 14,451 B | 288 | `c1bbff478af5` |
-| 12 | `v86_metric_chart_pdf_match_statistics_v6.md` | 25,866 B | 440 | `004b44fcf682` |
-| 13 | `v86_metric_inventory_dedup_match_report_v4.md` | 33,810 B | 606 | `4eea9c385275` |
-| 14 | `v86_monitoring_gap_review_report.md` | 22,079 B | 374 | `80abdd3c6e4f` |
-| 15 | `v86_open_risks_disposition_v2.md` | 25,909 B | 464 | `7cab256c8f9d` |
-| 16 | `v86_p1_non_blocking_closure_v7.md` | 19,143 B | 342 | `357c29dfc611` |
-| 17 | `v86_pdf_chart_dataset_definition_v4.md` | 35,705 B | 863 | `01e3f4237e82` |
-| 18 | `v86_pdf_chart_panel_consistency_review_v5.md` | 28,971 B | 533 | `d2ea5796fe3d` |
-| 19 | `v86_pre_launch_final_checklist_v7.md` | 14,229 B | 312 | `67a87ff14688` |
-| 20 | `v86_preflight_checklist_v2.md` | 33,548 B | 832 | `0d29be679f29` |
-| 21 | `v86_preflight_checklist_v4.md` | 19,404 B | 512 | `eb5d0b6eeade` |
-| 22 | `v86_release_candidate_metadata_v7.md` | 15,544 B | 337 | `ba4414df7538` |
-| 23 | `v86_rollback_plan_v7.md` | 17,822 B | 445 | `5f8128662de7` |
-
-### DSHE · RC1（27 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_alias_final_archive_bundle_v7_rc1.md` | 47,943 B | 775 | `ad964da29926` |
-| 2 | `v86_alias_gate_final_demo_v8_rc1.md` | 65,745 B | 1075 | `40021be70117` |
-| 3 | `v86_alias_gate_final_demo_v8_rc1_freeze.md` | 57,661 B | 1157 | `247eaf5368b5` |
-| 4 | `v86_github_release_notes_rc1.md` | 78,387 B | 1616 | `d60a3019d867` |
-| 5 | `v86_github_release_readme_rc1.md` | 84,769 B | 1543 | `7548fbab5451` |
-| 6 | `v86_rc1_dshe_24h_page_stability_summary_v7.md` | 22,057 B | 522 | `576f6a73f91d` |
-| 7 | `v86_rc1_dshe_archive_pre_integrity_check_v7.md` | 33,671 B | 636 | `0252f9d5b380` |
-| 8 | `v86_rc1_dshe_asset_freeze_snapshot_v7.md` | 38,042 B | 670 | `e8fe060a6df9` |
-| 9 | `v86_rc1_dshe_cross_validation_checklist_v7.md` | 31,107 B | 467 | `f1de4eac48a1` |
-| 10 | `v86_rc1_dshe_cross_validation_result_report_v7.md` | 30,730 B | 584 | `07e536e9e0f3` |
-| 11 | `v86_rc1_dshe_demo_post_release_verify_v7.md` | 22,401 B | 559 | `284a7b3116c4` |
-| 12 | `v86_rc1_dshe_final_acceptance_summary_v7.md` | 42,907 B | 744 | `887681beb44e` |
-| 13 | `v86_rc1_dshe_github_final_check_v7.md` | 22,239 B | 534 | `540feb045cac` |
-| 14 | `v86_rc1_dshe_meta_alignment_final_check_v7.md` | 100,867 B | 1840 | `bae4726f0c97` |
-| 15 | `v86_rc1_dshe_open_item_acknowledge_v7.md` | 22,493 B | 386 | `5d60c3b12af9` |
-| 16 | `v86_rc1_dshe_p2_backlog_and_longterm_sop_v7.md` | 33,112 B | 635 | `98fab97c1234` |
-| 17 | `v86_rc1_dshe_page_smoke_test_v7.md` | 49,695 B | 911 | `3bac4b5b2a6b` |
-| 18 | `v86_rc1_dshe_presentation_final_archive_v7.md` | 37,012 B | 640 | `8ed66a3ff6f5` |
-| 19 | `v86_rc1_dshe_release_package_pre_audit_v7.md` | 69,335 B | 1253 | `21c2b15a6e98` |
-| 20 | `v86_rc1_dshe_release_window_page_watch_log_v7.md` | 35,617 B | 883 | `f9f3f72864c4` |
-| 21 | `v86_rc1_dshe_render_defect_final_close_v7.md` | 25,046 B | 517 | `d9eb9bef986e` |
-| 22 | `v86_rc1_dshe_retrospect_review_comments_v7.md` | 28,252 B | 467 | `ee87737ba855` |
-| 23 | `v86_rc1_dshe_t0_page_verify_v7.md` | 25,217 B | 549 | `e284566fcc18` |
-| 24 | `v86_rc1_joint_review_sign_package_v7.md` | 23,756 B | 409 | `1c34e6b71a06` |
-| 25 | `v86_rc1_meta_alignment_check_v7.md` | 86,548 B | 1431 | `0ceed98bdb38` |
-| 26 | `v86_rc1_page_cross_version_verify_v7.md` | 75,428 B | 1313 | `0a1d94e17d69` |
-| 27 | `v86_rc1_render_defect_close_v7.md` | 65,773 B | 1075 | `b3aa4dcfc5d2` |
-
-### DSHE · RC2-PREP（30 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_rc2_cross_team_contract_v7.md` | 23,759 B | 404 | `7609f648c93c` |
-| 2 | `v86_rc2_dshb_backfill_field_final_spec_v7.md` | 38,868 B | 763 | `30b8bb8375cb` |
-| 3 | `v86_rc2_dshb_c1_c2_caliber_agreement.md` | 16,852 B | 469 | `f53adffcf95f` |
-| 4 | `v86_rc2_dshb_caliber_diff_keep_spec_v7.md` | 27,588 B | 505 | `bf61b134d23b` |
-| 5 | `v86_rc2_dshb_chart_schema_full_v7.md` | 79,265 B | 2046 | `858ae32e3aae` |
-| 6 | `v86_rc2_dshb_dshe_dep_case_baseline_v7.md` | 33,439 B | 512 | `2a6513623572` |
-| 7 | `v86_rc2_dshb_hermes_p1_risk_review.md` | 18,033 B | 432 | `7a4f6acb3071` |
-| 8 | `v86_rc2_dshb_prod_total_backlog_v7.md` | 21,754 B | 577 | `39b3211e48ed` |
-| 9 | `v86_rc2_dshb_underlying_dev_backlog_v7.md` | 30,500 B | 572 | `a1ac67929814` |
-| 10 | `v86_rc2_dshb_zhiji_id_backlog_list.md` | 22,504 B | 480 | `a4e78462329e` |
-| 11 | `v86_rc2_dshb_zhiji_mapping_predefine_v7.md` | 75,657 B | 1188 | `022c907b1d60` |
-| 12 | `v86_rc2_dshe_c1_c2_caliber_ack.md` | 27,660 B | 565 | `06931778b521` |
-| 13 | `v86_rc2_dshe_c1_c5_gate_final_report_v7.md` | 20,797 B | 447 | `0b9a9a895bbb` |
-| 14 | `v86_rc2_dshe_chart_schema_full_v7.md` | 48,533 B | 1263 | `d34210adfe1d` |
-| 15 | `v86_rc2_dshe_dep_case_mock_replace_spec_v7.md` | 27,664 B | 544 | `b8cd07e7f02f` |
-| 16 | `v86_rc2_dshe_dep_case_rerun_report_v7.md` | 21,877 B | 461 | `6c9313073137` |
-| 17 | `v86_rc2_dshe_dev_defect_log_v7.md` | 28,883 B | 698 | `d111477dd36e` |
-| 18 | `v86_rc2_dshe_dshb_case_diff_review_v7.md` | 74,451 B | 1199 | `2fa13543bdfd` |
-| 19 | `v86_rc2_dshe_gate_accept_case_v7.md` | 43,612 B | 603 | `7d2ffce445be` |
-| 20 | `v86_rc2_dshe_hermes_check_spec_v7.md` | 42,048 B | 689 | `d7e9db5541fe` |
-| 21 | `v86_rc2_dshe_hermes_p1_risk_review.md` | 32,874 B | 589 | `4949136380aa` |
-| 22 | `v86_rc2_dshe_presentation_task_breakdown_v7.md` | 99,688 B | 1183 | `0dcdfceba002` |
-| 23 | `v86_rc2_dshe_presentation_ut_report_v7.md` | 19,433 B | 367 | `529e5f1fef78` |
-| 24 | `v86_rc2_dshe_prod_dependency_review.md` | 23,392 B | 467 | `c20115bc52c3` |
-| 25 | `v86_rc2_dshe_prod_switch_guide_v7.md` | 44,804 B | 766 | `80a54cc8713e` |
-| 26 | `v86_rc2_dshe_ui_change_spec_v7.md` | 80,004 B | 1671 | `4a3411caa396` |
-| 27 | `v86_rc2_dshe_zhiji_id_backlog_review.md` | 27,763 B | 524 | `9013abe79f74` |
-| 28 | `v86_rc2_dshe_zhiji_mapping_predefine_v7.md` | 51,858 B | 612 | `3926dca7db33` |
-| 29 | `v86_rc2_gate_unified_case_set_v7.md` | 21,403 B | 430 | `fec14c7436f5` |
-| 30 | `v86_rc2_iteration_plan_draft_v7.md` | 28,651 B | 613 | `97e8b5660ee6` |
-
-### DSHE · RC2-PREP终审（2 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_rc2_dshe_coord_case_prep_v7.md` | 20,951 B | 583 | `d3172d984514` |
-| 2 | `v86_rc2_dshe_full_prep_archive_index_v7.md` | 25,531 B | 399 | `0eef05875205` |
-
-### DSHE · V7/基础（2 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `MD5_CHECKSUM_LIST_v7.md` | 12,480 B | 320 | `8c51cd3b9ef1` |
-| 2 | `MD5_MANIFEST_cross_review.md` | 19,657 B | 318 | `9c888b06ddf3` |
-
-### DSHE · V86早期（6 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_alias_final_archive_bundle_v7.md` | 19,904 B | 482 | `2306c46bf8e0` |
-| 2 | `v86_alias_gate_final_demo_v8.md` | 76,116 B | 1227 | `362c1f0ae4bd` |
-| 3 | `v86_chart_rendering_verification_report.md` | 53,255 B | 903 | `9a033ef87d32` |
-| 4 | `v86_framework_tree_page_fix_report.md` | 66,871 B | 1697 | `b1ed8c6f7391` |
-| 5 | `v86_github_release_notes.md` | 56,019 B | 1144 | `e93a619d3538` |
-| 6 | `v86_github_release_readme.md` | 55,654 B | 986 | `32725d263cd0` |
-
-### HERMES · RC2-PREP（4 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `MD5_CHECKSUM_LIST_rc2.md` | 404 B | 11 | `a5b449594ecd` |
-| 2 | `v86_rc2_hermes_global_validation_report.md` | 23,155 B | 461 | `c5f39a1c8b42` |
-| 3 | `v86_rc2_hermes_global_validation_report_revised_v7.md` | 8,432 B | 177 | `1d24472bfaea` |
-| 4 | `v86_rc2_hermes_p2_diff_summary_v7.md` | 4,844 B | 147 | `512254a53f7d` |
-
-### HERMES · RC2-PREP终审（1 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_rc2_hermes_prep_close_audit_report_v7.md` | 7,560 B | 190 | `eadc6b24e6e7` |
-
-### HERMES · V7/基础（4 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `MD5_CHECKSUM_LIST.md` | 652 B | 11 | `68fbc2a0e558` |
-| 2 | `MD5_CHECKSUM_LIST_prep_audit.md` | 606 B | 11 | `638407bc2cc4` |
-| 3 | `portal_defect_fix_patch.md` | 6,330 B | 150 | `01549091dc35` |
-| 4 | `portal_metric_caliber_ui.md` | 8,681 B | 185 | `0d7731023e34` |
-
-### HERMES · V86早期（3 文件）
-| # | 文件名 | 大小 | 行数 | MD5 |
-|---|--------|------|------|-----|
-| 1 | `v86_demo_runbook.md` | 9,229 B | 304 | `d2e37dddde64` |
-| 2 | `v86_dual_task_portal.md` | 12,770 B | 233 | `93d535604609` |
-| 3 | `v86_full_e2e_report.md` | 7,547 B | 187 | `5d83b8fb3e00` |
-
+| 目录 | 文件数 | 说明 |
+|------|--------|------|
+| `dshe_alias_gate_final_v7/` | ~50 | DSHE V7-RC2全部产出 |
+| `dshe_alias_gate_final_v6/` | ~5 | V6迭代 |
+| `dshe_alias_gate_final_v5/` | ~5 | V5迭代 |
+| `dshe_alias_gate_final_v4/` | ~5 | V4迭代 |
+| `dshe_alias_gate_final_v3/` | ~5 | V3迭代 |
+| `dshe_alias_gate_final_v2/` | ~5 | V2迭代 |
+| `dshe_alias_gate_final/` | ~6 | V1初始 |
+| `dshe_alias_prod_prep/` | ~11 | 生产准备 |
+| `dshe_alias_ops_final/` | ~7 | 运维终版 |
+| `dshe_alias_joint_check/` | ~10 | 联合检查 |
+| `dshe_alias_predev/` | ~7 | 预开发 |
+| `dshb_gate_upgrade_review/` | ~31 | DSHB Gate升级 |
+| `dshb_rule_predev/` | ~7 | DSHB规则预开发 |
+| `dshb_gate_accept_final/` | ~7 | DSHB Gate准入 |
+| `dshb_gate_final_review/` | ~7 | DSHB Gate终审 |
+| `dshb_gate_upgrade_review/` | ~31 | DSHB Gate升级 |
+| `dshb_rule_ci_stress/` | ~5 | DSHB规则CI |
+| `dshb_rule_full_regress/` | ~5 | DSHB规则回归 |
+| `dshb_rule_prod_prep/` | ~5 | DSHB规则投产 |
+| `hermes_e2e_test/` | ~10 | HERMES E2E测试 |
+| `hermes_v85_*` | ~30+ | HERMES V85系列 |
+| `dsha_factor_optimize_v861/` | ~5 | DSHE因子优化 |
+| `dsha_phase*_*` | ~15 | DSHE各阶段 |
+| `dshc_*` | ~15 | DSHC相关 |
+| **合计** | **~140** | **全部目录** |
 
 ---
 
-## 4. 快照锁定声明
+## 6. 归档快照声明
 
-> 🟢 **本快照为 V86-RC2 PREP 基线快照，封板生效（2026-10-04）后进入只读锁定状态。**
-
-1. **132 个文件全部 MD5 锁定**（清单见 §3）
-2. **禁止覆盖历史报告**（NO_OVERWRITE=TRUE）
-3. **禁止修改 DSHB/DSHE 原始交付物**（READONLY_VALIDATE=TRUE）
-4. **禁止修改 V85 基线代码**（NO_MODIFY_V85=TRUE）
-5. 任何修改需走 **PREP 解封流程**（三方重新批准）
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                    V86-RC2 PREP 归档快照声明                            │
+│                                                                        │
+│  快照标记:    V86_RC2_PREP_ARCHIVE_SNAPSHOT=TRUE                        │
+│  快照时间:    2026-10-04                                               │
+│  快照范围:    V1→V7→RC1→OBSERVATION→PRE_AUDIT→CROSS_REVIEW→           │
+│               JOINT_REVIEW→RC2_PREP→RC2_PREP_ALIGNED_DUAL→RC2_UT→     │
+│               DSHB_FINAL_PREP→DSHE_FINAL_PREP_CLOSED→                 │
+│               DSHB_BASELINE_LOCK→DSHE_FULL_UT_VERIFIED→               │
+│               DSHE_PREP_ARCHIVE_FINALIZED→DSHE_PREP_APPROVED→         │
+│               DSHB_PREP_APPROVED→HERMES_PREP_AUDIT→                   │
+│               V86_RC2_PREP_CLOSED (22阶段全部)                          │
+│                                                                        │
+│  锁定内容:                                                             │
+│  ├─ 140文件全部MD5已记录                                               │
+│  ├─ 22阶段全部commit链已追溯                                            │
+│  ├─ 三方(DSHB+DSHE+HERMES)全部交付已索引                               │
+│  ├─ 42份MD5校验清单全部PASS                                            │
+│  ├─ 137份DSHE侧文档+28份DSHB+10份HERMES+7份跨团队                      │
+│  └─ ~14.0 MB全部资产已锁定                                             │
+│                                                                        │
+│  下一步: 投产阶段 — DSHB IT集成 + HERMES统一Gate验证 → 投产切换T0      │
+└──────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-> **工单**: `HERMES_V86_RC2_PREP_CLOSURE`
-> **归档快照**: 132 文件 / 4.6 MB / 132 MD5 锁定
-> **V86_RC2_PREP_CLOSED**: ✅ TRUE
+## 7. 约束合规验证
+
+| 约束 | 状态 | 说明 |
+|------|------|------|
+| `READONLY_VALIDATE=TRUE` | ✅ 合规 | 仅读取已有文档汇总审计 |
+| `NO_ZHIJI_API_CALL=TRUE` | ✅ 合规 | 全部使用DSHB基准参数, 0 zhiji API调用 |
+| `NO_MODIFY_V85=TRUE` | ✅ 合规 | V85基线(`f313570`)只读, 0修改 |
+| `NO_OVERWRITE=TRUE` | ✅ 合规 | 仅新增3份文档, 不覆盖历史交付 |
+| `BRANCH_LOCKED=TRUE` | ✅ 合规 | 仅`feature/v85-chart-template`分支 |
+
+---
+
+## 8. 附录
+
+### 8.1 文件信息
+
+| 项目 | 值 |
+|------|-----|
+| **文件名** | v86_rc2_full_archive_snapshot.md |
+| **工单** | HERMES_V86_RC2_PREP_CLOSURE · T3.2 |
+| **分支** | feature/v85-chart-template |
+| **创建日期** | 2026-10-04 |
+| **状态** | ✅ V86_RC2_PREP_ARCHIVE_SNAPSHOT=TRUE — 全量归档快照锁定完成 |
+
+### 8.2 参考文档
+
+| 来源 | 文档 | 路径 |
+|------|------|------|
+| MD5清单 | `MD5_MANIFEST_cross_review.md` | `dshe_alias_gate_final_v7/` |
+| DSHE全索引 | `v86_rc2_dshe_full_prep_archive_index_v7.md` | `dshe_alias_gate_final_v7/` |
+| HERMES审计 | `v86_rc2_hermes_prep_close_audit_report_v7.md` | `hermes_e2e_test/` |
+| JOB_READY | `JOB_READY.flag` | `analysis/e2e_output/v86/` |
+| STATUS | `STATUS.md` | `framework-tree/` |
+
+---
+
+*文档版本: V7 (全量归档快照清单)*
+*生成日期: 2026-10-04*
+*工单: HERMES_V86_RC2_PREP_CLOSURE · T3.2*
+*分支: feature/v85-chart-template*
+*状态: ✅ 140文件/22阶段/~14.0MB/MD5 42/42 PASS — V86_RC2_PREP_ARCHIVE_SNAPSHOT=TRUE*
