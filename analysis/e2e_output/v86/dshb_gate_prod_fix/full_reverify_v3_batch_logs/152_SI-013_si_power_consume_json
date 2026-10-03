@@ -1,0 +1,48 @@
+{
+  "index": 152,
+  "indicator_id": "SI-013",
+  "semantic_id": "si_power_consume",
+  "name_cn": "工业硅电力消费",
+  "unit": "kWh/ton",
+  "type": "FLOAT",
+  "batch": 8,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "工业硅 电力消耗",
+  "zhiji_short_id": "s_si_power_consume",
+  "zhiji_long_id": "ID_SI_POWER_CONSUME",
+  "api_series_id_from_search": "ID02313973",
+  "mapped_name": "工业硅：421#：生产成本：电力：四川（周）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_si_power_consume",
+  "test_result": [
+    {
+      "indicator_id": "SI-013",
+      "semantic_id": "si_power_consume",
+      "name_cn": "工业硅电力消费",
+      "batch": 8,
+      "method": "api_search",
+      "requested_short_id": "s_si_power_consume",
+      "api_series_id_from_search": "ID02313973",
+      "cycle": 1,
+      "ts": "2026-10-04T01:10:50.765399",
+      "http_status": 500,
+      "api_ms": 797.6,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_si_power_consume",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_si_power_consume",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_si_power_consume\n"
+      }
+    }
+  ]
+}

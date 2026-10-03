@@ -1,0 +1,48 @@
+{
+  "index": 107,
+  "indicator_id": "AL-025",
+  "semantic_id": "al_util_rate",
+  "name_cn": "电解铝开工率",
+  "unit": "%",
+  "type": "FLOAT",
+  "batch": 5,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "电解铝 开工率",
+  "zhiji_short_id": "s_al_util_rate",
+  "zhiji_long_id": "ID_AL_UTIL_RATE",
+  "api_series_id_from_search": "ID01504223",
+  "mapped_name": "铝杆：开工率：安徽（月）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_al_util_rate",
+  "test_result": [
+    {
+      "indicator_id": "AL-025",
+      "semantic_id": "al_util_rate",
+      "name_cn": "电解铝开工率",
+      "batch": 5,
+      "method": "api_search",
+      "requested_short_id": "s_al_util_rate",
+      "api_series_id_from_search": "ID01504223",
+      "cycle": 1,
+      "ts": "2026-10-04T01:10:11.212674",
+      "http_status": 500,
+      "api_ms": 924.5,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_al_util_rate",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_al_util_rate",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_al_util_rate\n"
+      }
+    }
+  ]
+}

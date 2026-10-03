@@ -1,0 +1,101 @@
+{
+  "title": "DSHB V86-RC2 全量178条指标双维度复测汇总",
+  "report_id": "DSHB_V86_RC2_RETEST_T3.2",
+  "test_time": "2026-10-04T01:11:06.384732",
+  "test_date": "2026-10-04",
+  "script_version": "full_reverify_v3_batch.py v1.0 (based on short_id_reverify_v3.py)",
+  "total_entries": 170,
+  "dual_dimension_stats": {
+    "metadata_completion": {
+      "total": 170,
+      "complete": 123,
+      "rate": "72.4%"
+    },
+    "data_fetchable": {
+      "total": 170,
+      "fetchable": 0,
+      "rate": "0.0%"
+    },
+    "dependency_block": {
+      "total": 170,
+      "blocked": 170,
+      "rate": "100.0%"
+    }
+  },
+  "category_stats": {
+    "real_short_id": {
+      "total": 0,
+      "metadata_complete": 0,
+      "data_fetchable": 0,
+      "dependency_block": 0
+    },
+    "fabricated_short_id": {
+      "total": 123,
+      "metadata_complete": 123,
+      "data_fetchable": 0,
+      "dependency_block": 123
+    },
+    "derived": {
+      "total": 47,
+      "metadata_complete": 0,
+      "data_fetchable": 0,
+      "dependency_block": 47
+    },
+    "unknown": {
+      "total": 0,
+      "metadata_complete": 0,
+      "data_fetchable": 0,
+      "dependency_block": 0
+    }
+  },
+  "variety_stats": {
+    "PB": {
+      "total": 31,
+      "data_fetchable": 0,
+      "dependency_block": 31
+    },
+    "CU": {
+      "total": 27,
+      "data_fetchable": 0,
+      "dependency_block": 27
+    },
+    "ZN": {
+      "total": 24,
+      "data_fetchable": 0,
+      "dependency_block": 24
+    },
+    "AL": {
+      "total": 25,
+      "data_fetchable": 0,
+      "dependency_block": 25
+    },
+    "NI": {
+      "total": 18,
+      "data_fetchable": 0,
+      "dependency_block": 18
+    },
+    "SN": {
+      "total": 14,
+      "data_fetchable": 0,
+      "dependency_block": 14
+    },
+    "SI": {
+      "total": 16,
+      "data_fetchable": 0,
+      "dependency_block": 16
+    },
+    "LI": {
+      "total": 15,
+      "data_fetchable": 0,
+      "dependency_block": 15
+    }
+  },
+  "conclusion": {
+    "metadata_completion_rate": "72.4%",
+    "data_fetchable_rate": "0.0%",
+    "overall": "ALL_BLOCKED_EXTERNAL_DEPENDENCY",
+    "root_cause": "zhiji API server-side lacks short-ID prefix resolution",
+    "dependency_block_count": 170,
+    "external_dependency_required": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "index": 126,
+  "indicator_id": "SN-001",
+  "semantic_id": "sn_close",
+  "name_cn": "沪锡期货收盘价",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 7,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "沪锡 收盘价",
+  "zhiji_short_id": "s_sn_close",
+  "zhiji_long_id": "ID_SN_CLOSE",
+  "api_series_id_from_search": "CM0000662661",
+  "mapped_name": "沪指：收盘价（日）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_sn_close",
+  "test_result": [
+    {
+      "indicator_id": "SN-001",
+      "semantic_id": "sn_close",
+      "name_cn": "沪锡期货收盘价",
+      "batch": 7,
+      "method": "api_search",
+      "requested_short_id": "s_sn_close",
+      "api_series_id_from_search": "CM0000662661",
+      "cycle": 1,
+      "ts": "2026-10-04T01:10:27.911500",
+      "http_status": 500,
+      "api_ms": 789.3,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_sn_close",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_sn_close",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_sn_close\n"
+      }
+    }
+  ]
+}

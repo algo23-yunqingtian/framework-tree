@@ -1,0 +1,48 @@
+{
+  "index": 158,
+  "indicator_id": "LI-003",
+  "semantic_id": "li_volume",
+  "name_cn": "碳酸锂期货成交量",
+  "unit": "lot",
+  "type": "INTEGER",
+  "batch": 9,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "碳酸锂 成交量",
+  "zhiji_short_id": "s_li_volume",
+  "zhiji_long_id": "ID_LI_VOLUME",
+  "api_series_id_from_search": "FU00088311",
+  "mapped_name": "GFEX：碳酸锂：单边交易：成交量（日）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_li_volume",
+  "test_result": [
+    {
+      "indicator_id": "LI-003",
+      "semantic_id": "li_volume",
+      "name_cn": "碳酸锂期货成交量",
+      "batch": 9,
+      "method": "api_search",
+      "requested_short_id": "s_li_volume",
+      "api_series_id_from_search": "FU00088311",
+      "cycle": 1,
+      "ts": "2026-10-04T01:10:56.809519",
+      "http_status": 500,
+      "api_ms": 830.2,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_li_volume",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_li_volume",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_li_volume\n"
+      }
+    }
+  ]
+}

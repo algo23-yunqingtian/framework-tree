@@ -1,0 +1,48 @@
+{
+  "index": 74,
+  "indicator_id": "ZN-017",
+  "semantic_id": "zn_smelt_cost",
+  "name_cn": "电解锌冶炼成本",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "电解锌 冶炼成本",
+  "zhiji_short_id": "s_zn_smelt_cost",
+  "zhiji_long_id": "ID_ZN_SMELT_COST",
+  "api_series_id_from_search": "LC00167777",
+  "mapped_name": "株洲冶炼集团：分产品：锌：成本比例（半年）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_zn_smelt_cost",
+  "test_result": [
+    {
+      "indicator_id": "ZN-017",
+      "semantic_id": "zn_smelt_cost",
+      "name_cn": "电解锌冶炼成本",
+      "batch": 4,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_zn_smelt_cost",
+      "api_series_id_from_search": "LC00167777",
+      "cycle": 1,
+      "ts": "2026-10-04T01:09:43.562394",
+      "http_status": 500,
+      "api_ms": 925.2,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_zn_smelt_cost",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_zn_smelt_cost",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_zn_smelt_cost\n"
+      }
+    }
+  ]
+}

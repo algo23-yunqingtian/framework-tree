@@ -1,0 +1,48 @@
+{
+  "index": 111,
+  "indicator_id": "NI-004",
+  "semantic_id": "ni_social_inv",
+  "name_cn": "镍社会库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 6,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "镍 社会库存",
+  "zhiji_short_id": "s_ni_social_inv",
+  "zhiji_long_id": "ID_NI_SOCIAL_INV",
+  "api_series_id_from_search": "ID02226167",
+  "mapped_name": "LME：镍：原产国库存：埃及（月）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_ni_social_inv",
+  "test_result": [
+    {
+      "indicator_id": "NI-004",
+      "semantic_id": "ni_social_inv",
+      "name_cn": "镍社会库存",
+      "batch": 6,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_ni_social_inv",
+      "api_series_id_from_search": "ID02226167",
+      "cycle": 1,
+      "ts": "2026-10-04T01:10:15.894646",
+      "http_status": 500,
+      "api_ms": 798.6,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_ni_social_inv",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_ni_social_inv",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_ni_social_inv\n"
+      }
+    }
+  ]
+}

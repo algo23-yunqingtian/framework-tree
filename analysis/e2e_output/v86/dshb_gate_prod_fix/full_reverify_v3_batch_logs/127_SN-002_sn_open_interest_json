@@ -1,0 +1,48 @@
+{
+  "index": 127,
+  "indicator_id": "SN-002",
+  "semantic_id": "sn_open_interest",
+  "name_cn": "沪锡期货持仓量",
+  "unit": "lot",
+  "type": "INTEGER",
+  "batch": 7,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "沪锡 持仓量",
+  "zhiji_short_id": "s_sn_open_interest",
+  "zhiji_long_id": "ID_SN_OPEN_INTEREST",
+  "api_series_id_from_search": "FU00033043",
+  "mapped_name": "LME：锡：持仓量（日）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_sn_open_interest",
+  "test_result": [
+    {
+      "indicator_id": "SN-002",
+      "semantic_id": "sn_open_interest",
+      "name_cn": "沪锡期货持仓量",
+      "batch": 7,
+      "method": "api_search",
+      "requested_short_id": "s_sn_open_interest",
+      "api_series_id_from_search": "FU00033043",
+      "cycle": 1,
+      "ts": "2026-10-04T01:10:29.105014",
+      "http_status": 500,
+      "api_ms": 779.9,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_sn_open_interest",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_sn_open_interest",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_sn_open_interest\n"
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "index": 87,
+  "indicator_id": "AL-005",
+  "semantic_id": "al_exchange_inv",
+  "name_cn": "电解铝交易所库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 5,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "电解铝 交易所库存",
+  "zhiji_short_id": "s_al_exchange_inv",
+  "zhiji_long_id": "ID_AL_EXCHANGE_INV",
+  "api_series_id_from_search": "ID00302783",
+  "mapped_name": "电解铝：现货库存：湖州（日）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_al_exchange_inv",
+  "test_result": [
+    {
+      "indicator_id": "AL-005",
+      "semantic_id": "al_exchange_inv",
+      "name_cn": "电解铝交易所库存",
+      "batch": 5,
+      "method": "api_search",
+      "requested_short_id": "s_al_exchange_inv",
+      "api_series_id_from_search": "ID00302783",
+      "cycle": 1,
+      "ts": "2026-10-04T01:09:54.247650",
+      "http_status": 500,
+      "api_ms": 790.7,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_al_exchange_inv",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_al_exchange_inv",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_al_exchange_inv\n"
+      }
+    }
+  ]
+}

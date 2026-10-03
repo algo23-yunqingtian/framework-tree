@@ -1,0 +1,48 @@
+{
+  "index": 167,
+  "indicator_id": "LI-012",
+  "semantic_id": "li_ore_price",
+  "name_cn": "锂矿石价格",
+  "unit": "USD/ton",
+  "type": "FLOAT",
+  "batch": 9,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "锂矿 价格",
+  "zhiji_short_id": "s_li_ore_price",
+  "zhiji_long_id": "ID_LI_ORE_PRICE",
+  "api_series_id_from_search": "ID01922210",
+  "mapped_name": "碳酸锂：电池级：Li2CO3≥99.6%：升贴水：中国：中矿资源：春鹏（日）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_li_ore_price",
+  "test_result": [
+    {
+      "indicator_id": "LI-012",
+      "semantic_id": "li_ore_price",
+      "name_cn": "锂矿石价格",
+      "batch": 9,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_li_ore_price",
+      "api_series_id_from_search": "ID01922210",
+      "cycle": 1,
+      "ts": "2026-10-04T01:11:04.005539",
+      "http_status": 500,
+      "api_ms": 812.0,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_li_ore_price",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_li_ore_price",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_li_ore_price\n"
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "index": 104,
+  "indicator_id": "AL-022",
+  "semantic_id": "al_ore_grade",
+  "name_cn": "铝土矿品位",
+  "unit": "%",
+  "type": "FLOAT",
+  "batch": 5,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铝土矿 品位",
+  "zhiji_short_id": "s_al_ore_grade",
+  "zhiji_long_id": "ID_AL_ORE_GRADE",
+  "api_series_id_from_search": "ID01724182",
+  "mapped_name": "铝土矿：产量：广西（月）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_al_ore_grade",
+  "test_result": [
+    {
+      "indicator_id": "AL-022",
+      "semantic_id": "al_ore_grade",
+      "name_cn": "铝土矿品位",
+      "batch": 5,
+      "method": "api_search",
+      "requested_short_id": "s_al_ore_grade",
+      "api_series_id_from_search": "ID01724182",
+      "cycle": 1,
+      "ts": "2026-10-04T01:10:07.608284",
+      "http_status": 500,
+      "api_ms": 926.9,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_al_ore_grade",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_al_ore_grade",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_al_ore_grade\n"
+      }
+    }
+  ]
+}

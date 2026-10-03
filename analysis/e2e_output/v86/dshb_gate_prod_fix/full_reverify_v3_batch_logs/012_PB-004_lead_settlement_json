@@ -1,0 +1,48 @@
+{
+  "index": 12,
+  "indicator_id": "PB-004",
+  "semantic_id": "lead_settlement",
+  "name_cn": "沪铅期货结算价",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 2,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "沪铅 结算价",
+  "zhiji_short_id": "s_lead_settlement",
+  "zhiji_long_id": "ID_LEAD_SETTLEMENT",
+  "api_series_id_from_search": "FU00017237",
+  "mapped_name": "SHFE：铅：结算价（日）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_lead_settlement",
+  "test_result": [
+    {
+      "indicator_id": "PB-004",
+      "semantic_id": "lead_settlement",
+      "name_cn": "沪铅期货结算价",
+      "batch": 2,
+      "method": "api_search",
+      "requested_short_id": "s_lead_settlement",
+      "api_series_id_from_search": "FU00017237",
+      "cycle": 1,
+      "ts": "2026-10-04T01:08:52.048147",
+      "http_status": 500,
+      "api_ms": 1109.3,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_lead_settlement",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_lead_settlement",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_lead_settlement\n"
+      }
+    }
+  ]
+}

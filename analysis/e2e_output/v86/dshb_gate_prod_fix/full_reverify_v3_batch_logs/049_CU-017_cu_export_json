@@ -1,0 +1,48 @@
+{
+  "index": 49,
+  "indicator_id": "CU-017",
+  "semantic_id": "cu_export",
+  "name_cn": "铜出口量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 3,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "铜 出口量",
+  "zhiji_short_id": "s_cu_export",
+  "zhiji_long_id": "ID_CU_EXPORT",
+  "api_series_id_from_search": "ID01655470",
+  "mapped_name": "铜：出口金额：澳大利亚（季）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_cu_export",
+  "test_result": [
+    {
+      "indicator_id": "CU-017",
+      "semantic_id": "cu_export",
+      "name_cn": "铜出口量",
+      "batch": 3,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_cu_export",
+      "api_series_id_from_search": "ID01655470",
+      "cycle": 1,
+      "ts": "2026-10-04T01:09:25.523446",
+      "http_status": 500,
+      "api_ms": 920.9,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_cu_export",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_cu_export",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_cu_export\n"
+      }
+    }
+  ]
+}

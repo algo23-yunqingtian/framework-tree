@@ -1,0 +1,48 @@
+{
+  "index": 62,
+  "indicator_id": "ZN-005",
+  "semantic_id": "zn_volume",
+  "name_cn": "沪锌期货成交量",
+  "unit": "lot",
+  "type": "INTEGER",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "沪锌 成交量",
+  "zhiji_short_id": "s_zn_volume",
+  "zhiji_long_id": "ID_ZN_VOLUME",
+  "api_series_id_from_search": "CM0000867015",
+  "mapped_name": "沪指：成交量（日）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_zn_volume",
+  "test_result": [
+    {
+      "indicator_id": "ZN-005",
+      "semantic_id": "zn_volume",
+      "name_cn": "沪锌期货成交量",
+      "batch": 4,
+      "method": "api_search",
+      "requested_short_id": "s_zn_volume",
+      "api_series_id_from_search": "CM0000867015",
+      "cycle": 1,
+      "ts": "2026-10-04T01:09:32.621321",
+      "http_status": 500,
+      "api_ms": 804.2,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_zn_volume",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_zn_volume",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_zn_volume\n"
+      }
+    }
+  ]
+}

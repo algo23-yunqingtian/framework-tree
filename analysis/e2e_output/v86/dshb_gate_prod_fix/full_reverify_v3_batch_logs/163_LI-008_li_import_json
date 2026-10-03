@@ -1,0 +1,48 @@
+{
+  "index": 163,
+  "indicator_id": "LI-008",
+  "semantic_id": "li_import",
+  "name_cn": "碳酸锂进口量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 9,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "碳酸锂 进口量",
+  "zhiji_short_id": "s_li_import",
+  "zhiji_long_id": "ID_LI_IMPORT",
+  "api_series_id_from_search": "ID01666088",
+  "mapped_name": "产业在线：碳酸锂：进口数量：中国（季）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_li_import",
+  "test_result": [
+    {
+      "indicator_id": "LI-008",
+      "semantic_id": "li_import",
+      "name_cn": "碳酸锂进口量",
+      "batch": 9,
+      "method": "api_search",
+      "requested_short_id": "s_li_import",
+      "api_series_id_from_search": "ID01666088",
+      "cycle": 1,
+      "ts": "2026-10-04T01:11:02.910457",
+      "http_status": 500,
+      "api_ms": 919.1,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_li_import",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_li_import",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_li_import\n"
+      }
+    }
+  ]
+}

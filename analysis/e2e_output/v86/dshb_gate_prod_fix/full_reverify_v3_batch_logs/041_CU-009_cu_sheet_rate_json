@@ -1,0 +1,48 @@
+{
+  "index": 41,
+  "indicator_id": "CU-009",
+  "semantic_id": "cu_sheet_rate",
+  "name_cn": "铜板开工率",
+  "unit": "%",
+  "type": "FLOAT",
+  "batch": 3,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铜板 开工率",
+  "zhiji_short_id": "s_cu_sheet_rate",
+  "zhiji_long_id": "ID_CU_SHEET_RATE",
+  "api_series_id_from_search": "ID01504223",
+  "mapped_name": "铝杆：开工率：安徽（月）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_cu_sheet_rate",
+  "test_result": [
+    {
+      "indicator_id": "CU-009",
+      "semantic_id": "cu_sheet_rate",
+      "name_cn": "铜板开工率",
+      "batch": 3,
+      "method": "api_search",
+      "requested_short_id": "s_cu_sheet_rate",
+      "api_series_id_from_search": "ID01504223",
+      "cycle": 1,
+      "ts": "2026-10-04T01:09:16.972860",
+      "http_status": 500,
+      "api_ms": 785.7,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_cu_sheet_rate",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_cu_sheet_rate",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_cu_sheet_rate\n"
+      }
+    }
+  ]
+}

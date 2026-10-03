@@ -1,0 +1,48 @@
+{
+  "index": 43,
+  "indicator_id": "CU-011",
+  "semantic_id": "cu_wire_profit",
+  "name_cn": "铜线利润",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 3,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铜线 利润 加工费",
+  "zhiji_short_id": "s_cu_wire_profit",
+  "zhiji_long_id": "ID_CU_WIRE_PROFIT",
+  "api_series_id_from_search": "ID01150770",
+  "mapped_name": "粗铜：进口：长单加工费（周）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_cu_wire_profit",
+  "test_result": [
+    {
+      "indicator_id": "CU-011",
+      "semantic_id": "cu_wire_profit",
+      "name_cn": "铜线利润",
+      "batch": 3,
+      "method": "api_search",
+      "requested_short_id": "s_cu_wire_profit",
+      "api_series_id_from_search": "ID01150770",
+      "cycle": 1,
+      "ts": "2026-10-04T01:09:19.522095",
+      "http_status": 500,
+      "api_ms": 930.3,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_cu_wire_profit",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_cu_wire_profit",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_cu_wire_profit\n"
+      }
+    }
+  ]
+}

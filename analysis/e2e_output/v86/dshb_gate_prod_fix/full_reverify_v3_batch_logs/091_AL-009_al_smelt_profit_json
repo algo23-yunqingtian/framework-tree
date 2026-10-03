@@ -1,0 +1,22 @@
+{
+  "index": 91,
+  "indicator_id": "AL-009",
+  "semantic_id": "al_smelt_profit",
+  "name_cn": "电解铝冶炼利润",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 5,
+  "priority": "P1",
+  "category": "derived",
+  "method": "derived",
+  "search_query": "电解铝 冶炼利润",
+  "zhiji_short_id": "DERIVED",
+  "zhiji_long_id": "DERIVED",
+  "api_series_id_from_search": "DERIVED",
+  "mapped_name": "",
+  "metadata_complete": false,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "计算推导无API调用, 依赖下游指标可取数",
+  "test_result": null
+}

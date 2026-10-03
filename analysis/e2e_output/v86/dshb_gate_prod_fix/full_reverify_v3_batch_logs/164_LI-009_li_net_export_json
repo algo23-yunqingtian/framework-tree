@@ -1,0 +1,22 @@
+{
+  "index": 164,
+  "indicator_id": "LI-009",
+  "semantic_id": "li_net_export",
+  "name_cn": "碳酸锂净出口",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 9,
+  "priority": "P2",
+  "category": "derived",
+  "method": "derived",
+  "search_query": "碳酸锂 净出口",
+  "zhiji_short_id": "DERIVED",
+  "zhiji_long_id": "DERIVED",
+  "api_series_id_from_search": "DERIVED",
+  "mapped_name": "",
+  "metadata_complete": false,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "计算推导无API调用, 依赖下游指标可取数",
+  "test_result": null
+}

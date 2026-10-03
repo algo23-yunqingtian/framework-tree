@@ -1,0 +1,48 @@
+{
+  "index": 81,
+  "indicator_id": "ZN-024",
+  "semantic_id": "zn_lme_inv",
+  "name_cn": "锌锭LME库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "LME 锌 库存",
+  "zhiji_short_id": "s_zn_lme_inv",
+  "zhiji_long_id": "ID_ZN_LME_INV",
+  "api_series_id_from_search": "ID02226129",
+  "mapped_name": "LME：锌：特高级：原产国库存：巴林（月）",
+  "metadata_complete": true,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "short_id不可解析: 无法识别指标来源(id前缀): s_zn_lme_inv",
+  "test_result": [
+    {
+      "indicator_id": "ZN-024",
+      "semantic_id": "zn_lme_inv",
+      "name_cn": "锌锭LME库存",
+      "batch": 4,
+      "method": "api_search",
+      "requested_short_id": "s_zn_lme_inv",
+      "api_series_id_from_search": "ID02226129",
+      "cycle": 1,
+      "ts": "2026-10-04T01:09:47.153762",
+      "http_status": 500,
+      "api_ms": 911.0,
+      "api_error": "HTTP 500",
+      "data_fetchable": false,
+      "data_count": 0,
+      "non_zero_count": 0,
+      "perm_state": null,
+      "resolved_series_id": null,
+      "error_detail": "无法识别指标来源(id前缀): s_zn_lme_inv",
+      "points_sample": null,
+      "raw_payload": {
+        "error": "无法识别指标来源(id前缀): s_zn_lme_inv",
+        "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): s_zn_lme_inv\n"
+      }
+    }
+  ]
+}

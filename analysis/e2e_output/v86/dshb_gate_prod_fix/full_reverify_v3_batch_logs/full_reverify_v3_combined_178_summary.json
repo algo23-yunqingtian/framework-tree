@@ -1,0 +1,136 @@
+{
+  "title": "DSHB V86-RC2 全量178条指标双维度复测 — 合并汇总",
+  "report_id": "DSHB_V86_RC2_RETEST_T3.2_COMBINED",
+  "test_time": "2026-10-15T01:11:06Z",
+  "script_version": "full_reverify_v3_batch.py v1.0 + short_id_reverify_v3.py v3.0",
+  "total_entries": 178,
+
+  "data_sources": {
+    "batch_logs_170": {
+      "script": "full_reverify_v3_batch.py",
+      "entries": 170,
+      "log_dir": "full_reverify_v3_batch_logs/",
+      "test_date": "2026-10-15",
+      "api_calls_made": 123,
+      "api_calls_skipped": 47
+    },
+    "v3_original_8": {
+      "script": "short_id_reverify_v3.py",
+      "entries": 8,
+      "log_dir": "reverify_v3_logs/",
+      "test_date": "2026-10-14",
+      "api_calls_made": 8,
+      "control_calls_made": 3
+    }
+  },
+
+  "dual_dimension_stats": {
+    "metadata_completion": {
+      "total": 178,
+      "complete": 131,
+      "rate": "73.6%",
+      "breakdown": {
+        "original_8_with_ids": 8,
+        "batch_123_fabricated_with_ids": 123,
+        "batch_47_derived_no_ids": 47
+      }
+    },
+    "data_fetchable": {
+      "total": 178,
+      "fetchable": 0,
+      "rate": "0.0%",
+      "breakdown": {
+        "original_8_short_id_pass": 0,
+        "batch_123_fabricated_pass": 0,
+        "batch_47_derived_pass": 0
+      }
+    },
+    "dependency_block": {
+      "total": 178,
+      "blocked": 178,
+      "rate": "100.0%",
+      "block_reasons": {
+        "short_id_not_resolvable_HTTP500": 124,
+        "permission_state_minus4": 7,
+        "derived_downstream_dependency": 47
+      }
+    }
+  },
+
+  "original_8_entries": {
+    "total": 8,
+    "metadata_complete": 8,
+    "data_fetchable": 0,
+    "dependency_block": 8,
+    "short_id_results": {
+      "j25_tc": {"verdict": "FAIL", "error": "HTTP 500 — 无法识别指标来源(id前缀)", "perm_state": null},
+      "i1": {"verdict": "FAIL", "error": "perm_state=-4, 0数据点", "perm_state": -4},
+      "i2": {"verdict": "FAIL", "error": "perm_state=-4, 0数据点", "perm_state": -4},
+      "i3": {"verdict": "FAIL", "error": "perm_state=-4, 0数据点", "perm_state": -4},
+      "i4": {"verdict": "FAIL", "error": "perm_state=-4, 0数据点", "perm_state": -4},
+      "i5": {"verdict": "FAIL", "error": "perm_state=-4, 0数据点", "perm_state": -4},
+      "i6": {"verdict": "FAIL", "error": "perm_state=-4, 0数据点", "perm_state": -4},
+      "i7": {"verdict": "FAIL", "error": "perm_state=-4, 0数据点", "perm_state": -4}
+    },
+    "long_id_control_results": {
+      "ID02226332": {"verdict": "PASS", "data_points": 44, "non_zero": 36, "actual_indicator": "LME锌特高级库存", "expected": "沪铅期货收盘价", "match": false},
+      "ID02226334": {"verdict": "PASS", "data_points": 31, "non_zero": 25, "actual_indicator": "LME钴库存", "expected": "铅锭社会库存", "match": false},
+      "ID02226336": {"verdict": "PASS", "data_points": 32, "non_zero": 1, "actual_indicator": "碳酸锂回收料库存", "expected": "铅精矿TC加工费", "match": false}
+    }
+  },
+
+  "batch_170_entries": {
+    "total": 170,
+    "fabricated_short_id": 123,
+    "derived": 47,
+    "api_calls_made": 123,
+    "api_results": {
+      "HTTP_500_total": 123,
+      "HTTP_500_pct": "100.0%",
+      "error_message": "无法识别指标来源(id前缀)",
+      "data_fetchable": 0
+    },
+    "variety_breakdown": {
+      "PB": {"total": 31, "fabricated": 25, "derived": 6, "data_fetchable": 0},
+      "CU": {"total": 27, "fabricated": 18, "derived": 9, "data_fetchable": 0},
+      "ZN": {"total": 24, "fabricated": 17, "derived": 7, "data_fetchable": 0},
+      "AL": {"total": 25, "fabricated": 18, "derived": 7, "data_fetchable": 0},
+      "NI": {"total": 18, "fabricated": 12, "derived": 6, "data_fetchable": 0},
+      "SN": {"total": 14, "fabricated": 10, "derived": 4, "data_fetchable": 0},
+      "SI": {"total": 16, "fabricated": 11, "derived": 5, "data_fetchable": 0},
+      "LI": {"total": 15, "fabricated": 10, "derived": 5, "data_fetchable": 0}
+    }
+  },
+
+  "combined_conclusion": {
+    "metadata_completion_rate": "73.6% (131/178)",
+    "data_fetchable_rate": "0.0% (0/178)",
+    "dependency_block_rate": "100.0% (178/178)",
+    "overall_verdict": "ALL_BLOCKED_EXTERNAL_DEPENDENCY",
+    "root_cause": "zhiji API server-side lacks short-ID prefix resolution (124 entries) + permission_state=-4 (7 entries) + DERIVED downstream dependency (47 entries)",
+    "gate_readiness": "NOT_READY — 0% data fetchable, external dependency required",
+    "hermes_alignment": "COMPLETED标准: 元数据映射完成 + API真实取数校验通过 → 0/178 PASS"
+  },
+
+  "external_dependencies": {
+    "DEP-01_short_id_resolution": {
+      "status": "BLOCKED",
+      "affected_entries": 124,
+      "description": "zhiji API server不支持short_id前缀解析",
+      "ticket": "DSHB-DP-REQ-20261015-001",
+      "priority": "P0"
+    },
+    "DEP-02_long_id_mapping": {
+      "status": "BLOCKED",
+      "affected_entries": 8,
+      "description": "long_id与指标映射关系完全错配",
+      "priority": "P0"
+    },
+    "DEP-03_permission_state": {
+      "status": "BLOCKED",
+      "affected_entries": 7,
+      "description": "i1-i7返回permission_state=-4",
+      "priority": "P1"
+    }
+  }
+}
