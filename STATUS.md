@@ -84,16 +84,15 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
 - **终版结论**: ✅ DSHE V86-RC1 PRESENTATION LAYER FULL LIFECYCLE CLOSED (交叉核验✅48/48, 复盘评审✅8项+5建议, 验收终稿✅FINAL, 0阻塞缺陷, 5项P2全部前端渲染类, 风险2/10 LOW)
 
-### 2026-10-03 DSHE+DSHB — V86-RC1 跨评审遗留项闭环·联合评审签字·RC2规划 (DSHE_V86_RC1_JOINT_REVIEW_AND_RC2_PLANNING)
-- **T3.1 遗留项闭环**: `v86_rc1_dshb_open_item_response_v7.md` (新增, ~24KB) + `v86_rc1_dshe_open_item_acknowledge_v7.md` (新增, ~22KB) — DSHB答复3项标记(F-01 P2数量口径/F-02数据一致性/F-03 P2归因分类), DSHE逐项复核确认, 3/3全部闭环, 跨团队口径一致
-- **T3.2 联合评审签字**: `v86_rc1_joint_review_sign_package_v7.md` (新增, ~24KB) — 28份文档汇总, 47/47检查全PASS, 版本/约束/风险/遗留/交叉核验/优化/归档7大维度校验, DSHE+DSHB双端签字确认, 版本基线锁定V86-RC1
-- **T3.3 RC2规划**: `v86_rc2_iteration_plan_draft_v7.md` (新增, ~29KB) — 13项优化清单(8 DSHB+5 DSHE), 3类别(展示层5/底层引擎4/监控4), 优先级(P1=2/P2=7/P3=4), 工作量68人天, 5跨团队协同项, Gate准入标准7项
-- **T3.4 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段13 JOINT_REVIEW(4文件), 总文件数115, 总阶段13, 总大小~10.3MB, MD5全部校验通过; `MD5_MANIFEST_cross_review.md` (更新) — 新增4文件MD5, 8/8全部PASS
-- **T3.5 任务固化**: `JOB_READY.flag` (更新) — JOINT_REVIEW_READY=TRUE, JOB_READY=TRUE
-- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增+1更新DSHB目录1新增)
-- **新增文件**: 3新增~76KB (DSHE目录) + 1新增~24KB (DSHB目录)
-- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
-- **终版结论**: ✅ V86-RC1 JOINT REVIEW COMPLETE (遗留项✅3/3闭环, 联合评审✅47/47检查PASS, 双端签字✅, RC2规划✅13项优化, 版本基线锁定✅V86-RC1, 归档✅115文件/13阶段/MD5 100%)
+### 2026-10-03 DSHB — V86-RC1 跨Agent交叉核验·DSHE复盘评审·全链路总验收汇总 V7 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7)
+- **T3.1 交叉核验结果**: `v86_rc1_cross_validation_result_report_v7.md` — 回填19个DSHB字段, 核验36张图表(32匹配+7降级), 5项P2全部确认纯前端, 7项已知限制全部确认, CR-1~CR-4全部通过, 最终裁定✅ALL CRITERIA PASSED
+- **T3.2 DSHE评审意见+复盘修订**: `v86_rc1_dshe_retrospect_review_comments_v7.md` — 10项评审意见(DSHE-01~10), 含时序对齐/P2告警关联/跨Agent MD5同步/联合演练/评分矩阵/误报率/优化项/风险评估/文档缺口/终裁, APPROVED WITH SUGGESTIONS; `v86_rc1_release_window_retrospect_v7.md` (V7-R1修订版, 796行/45KB, 24处[DSHE-V7-R1]标记, 新增A-04/B-09/B-10/C-07/C-08优化项, D-11~D-13文档缺口, R-07风险项)
+- **T3.3 全链路总验收**: `v86_rc1_full_lifecycle_acceptance_summary_v7.md` — DSHB底层+DSHE展示层+交叉核验三合一, 60项关键指标汇总, P0=0/P1=3(全关闭)/P2=9(全非阻塞)/P3=2/已知限制=7, 风险2/10 LOW, 综合裁定✅V86-RC1 FULL LIFECYCLE CLOSED
+- **T3.4 归档资产更新**: `MD5_MANIFEST_v7.md` (26文件932,358B) + `v86_alias_final_archive_bundle_v7_rc1.md` + `STATUS.md` + `JOB_READY.flag` (FULL_LIFECYCLE_ACCEPT_READY=TRUE)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (3新增文件 + 1修订 + MD5/STATUS/FLAG更新)
+- **新增文件**: 4文件 ~218KB (3新增+1修订)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PRODUCTION_DEPLOY 全部合规
+- **终版结论**: ✅ V86-RC1 FULL LIFECYCLE CLOSED (交叉核验CR-1~CR-4全部通过, DSHE评审APPROVED WITH SUGGESTIONS, 全链路总验收全通过, 风险2/10 LOW, P0=0)
 
 ### 2026-10-03 DSHE — V86-RC1 展示层交付包预评审·P2缺陷台账·归档预校验·交叉核验清单·验收初稿 (DSHE_V86_RC1_PRESENTATION_LAYER_PRE_AUDIT)
 - **T3.1 预评审**: `v86_rc1_dshe_release_package_pre_audit_v7.md` — 全量扫描5交付文档+101归档资产, 版本信息100%统一, 821链接0死链, 36图表全部渲染正确, 11脚本/18场景/90Q&A全部回放通过, 0渲染缺陷, 预评审裁定✅READY
