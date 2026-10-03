@@ -3,10 +3,10 @@
 > **任务**: `DSHE_V86_ALIAS_V7_RC1_ITERATION` · T3.6
 > **分支**: `feature/v85-chart-template`
 > **基线**: DSHE V7 (commit 679948a), DSHB V86-RC1 (commit 0948e1d)
-> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划)
+> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW → RC2_PREP → RC2_PREP_ALIGNED (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划 + RC2任务拆解 + UI变更规格 + Gate验收用例 + DSHB Gate准入基线对齐C1-C5)
 > **约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION
 > **生成日期**: 2026-10-03
-> **状态**: ✅ **RC2 PREP COMPLETE — TASK BREAKDOWN + UI CHANGE SPEC + GATE ACCEPT CASE READY**
+> **状态**: ✅ **RC2 PREP DSHB GATE BASELINE ALIGNED — TASK BREAKDOWN + UI CHANGE SPEC + GATE ACCEPT CASE READY, C1-C5 ALIGNED, 72 CASES (68+4 COORD)**
 > **DSHB 交叉核验**: ✅ 完成 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7, CR-1~CR-4 全部通过, FULL_LIFECYCLE_CLOSED)
 > **DSHB RC2准备**: ✅ 完成 (DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE, 引擎4项+监控4项任务拆解, Gate准入基线+36冒烟用例, RC2_PREP_READY=TRUE)
 
@@ -30,11 +30,11 @@
 
 ### 1.1 归档统计
 
-| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | 变化 |
-|------|-----|--------|----------------|-----------|-------------|-------------|----------|------|
-| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | +33 |
-| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | **14 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep)** | +7 |
-| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | +7.4 MB |
+| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | 变化 |
+|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|------|
+| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | +33 |
+| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | **14 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep)** | **15 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned)** | +8 |
+| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | +8.4 MB |
 | 渲染缺陷闭环 | ❌ | ✅ 2/2 闭环 | 继承 | — |
 | DSHB 元数据对齐 | ❌ | ✅ 55 字段 | 继承 | — |
 | 跨版本联动校验 | ❌ | ✅ 60 页面 | 继承 | — |
@@ -72,7 +72,10 @@
 | RC2迭代规划 | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ 13项优化 | **继承** |
 | RC2任务拆解 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 5项拆解** |
 | RC2变更规格 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 方案定稿** |
-| RC2Gate验收用例 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 68用例** |
+| RC2Gate验收用例 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 68用例** | **✅ 72用例(68+4)** |
+| RC2 DSHB Gate对齐 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ C1-C5对齐** |
+| RC2 DSHB冒烟用例去重 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 36用例映射** |
+| RC2 DSHB协同用例 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 4 COORD用例** |
 
 ### 1.2 V7-RC1 新增文件
 
@@ -357,7 +360,13 @@ V1 (commit 61b8ca5)
 | V5 | 面板指标对齐 + PDF 图表适配 + Framework Tree 索引, 演示包 V6 | 57a86ff |
 | V6 | 全局指标主清单集成 + 冗余清理 + 缺失降级 + 分模块索引, 演示包 V7 | 05352a5 |
 | V7 | GitHub 上线发布 + 图表渲染核验 + 降级提示系统 + V8 演示包 + V7 归档 | 679948a |
-| **V7-RC1** | **渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 + GitHub 素材 RC1 + 归档固化** | **本次** |
+| **V7-RC1** | **渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 + GitHub 素材 RC1 + 归档固化** | **f1d444e** |
+| V7-OBSERVATION | 发布窗口值守 + T+0/24h观测 + 演示回放 + GitHub终审 | 8f35335 |
+| PRE_AUDIT | 展示层预评审 + P2缺陷台账 + 归档预校验 + 交叉核验清单 + 验收初稿 | 39f7d3d |
+| CROSS_REVIEW | 跨Agent交叉核验 + DSHE复盘评审 + 验收终稿 | ddc20cf |
+| JOINT_REVIEW | 遗留项闭环 + 联合评审签字 + RC2迭代规划 | df4c69d |
+| RC2_PREP | RC2任务拆解 + UI变更规格 + Gate验收用例 | 1ec6ce2 |
+| **RC2_PREP_ALIGNED** | **DSHB Gate准入基线对齐C1-C5 + 36冒烟用例去重 + 4 DSHE协同用例 + 72用例对齐** | **本次** |
 
 ### 4.3 版本链路完整性
 
@@ -426,6 +435,19 @@ V1 (commit 61b8ca5)
 | 1 | v86_rc2_dshe_presentation_task_breakdown_v7.md | 82,015 B | `55F0BD8C78A12DC41D44ACC4BF4919B6` | RC2 展示层5项优化精细化拆解 |
 | 2 | v86_rc2_dshe_ui_change_spec_v7.md | 28,501 B | `3F49C8DEEC6EE565021DE8B9527880C3` | RC2 展示层变更规格方案 |
 | 3 | v86_rc2_dshe_gate_accept_case_v7.md | 30,615 B | `675074BBE76DD15F52D1AAA4AC17325C` | RC2 展示层Gate验收用例 (68用例) |
+
+### 5.4 RC2_PREP_ALIGNED 更新文件 (DSHB Gate准入基线对齐)
+
+> **对齐基线**: DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE (commit `581a9f4`)
+> **对齐内容**: C1-C5 Gate准入条件 + 36冒烟用例去重 + 4 DSHE协同用例
+
+| # | 文件 | 旧大小 | 新大小 | 旧MD5 | 新MD5 | Δ大小 | 说明 |
+|---|------|--------|--------|-------|-------|-------|------|
+| 4 | v86_rc2_dshe_presentation_task_breakdown_v7.md | 82,015 B | **100,871 B** | `55F0BD8C78A12DC41D44ACC4BF4919B6` | `CBFFCA189868978BFBCD441D3952CA1C` | +18,856 B | C1-C5对齐 + ENG-01/03映射 + 4阶段流程 + 8交付节点 |
+| 5 | v86_rc2_dshe_ui_change_spec_v7.md | 28,501 B | **73,990 B** | `3F49C8DEEC6EE565021DE8B9527880C3` | `F5956B722BDC8B057E5870E562FD13C9` | +45,489 B | ENG-01/03/04联动 + MON-01/02/04监控 + C1映射 + 回滚协同 |
+| 6 | v86_rc2_dshe_gate_accept_case_v7.md | 30,615 B | **43,612 B** | `675074BBE76DD15F52D1AAA4AC17325C` | `7D2FFCE445BEEEFBB5CBC552953140C9` | +12,997 B | C1-C5替换G-01~G-07 + 4 COORD用例 + 36冒烟去重 + 4阶段对齐 |
+
+**RC2_PREP_ALIGNED 合计**: 3文件更新, +77,342 B (141,131 B → 218,473 B, +54.8%)
 
 ### 5.3 RC1 资产约束
 
@@ -630,7 +652,7 @@ V1 (commit 61b8ca5)
 
 ---
 
-*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP*
+*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED*
 *生成日期: 2026-10-03*
 *工单: DSHE_V86_ALIAS_V7_RC1_ITERATION · T3.6*
 *分支: feature/v85-chart-template*

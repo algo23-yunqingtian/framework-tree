@@ -96,15 +96,15 @@
 - **终版结论**: ✅ V86-RC1 JOINT REVIEW COMPLETE (遗留项✅3/3闭环, 联合评审✅47/47检查PASS, 双端签字✅, RC2规划✅13项优化, 版本基线锁定✅V86-RC1, 归档✅115文件/13阶段/MD5 100%)
 
 ### 2026-10-03 DSHE — V86-RC2 展示层优化任务拆解·UI变更规格方案·Gate验收用例准备 (DSHE_V86_RC2_PRESENTATION_LAYER_TASK_BREAKDOWN_AND_UI_CHANGE_SPEC_AND_GATE_ACCEPT_CASE)
-- **T3.1 任务拆解**: `v86_rc2_dshe_presentation_task_breakdown_v7.md` — 5项展示层优化项(#3/#4/#9/#10/#11含#12)精细化拆解, 32个子任务, 18人天, 3项跨团队依赖, 变更影响范围评估
-- **T3.2 变更规格**: `v86_rc2_dshe_ui_change_spec_v7.md` — 逐项变更前后对比, 36张图表配置更新清单, 演示脚本更新(11脚本/18场景/90Q&A), GitHub Release文档更新(README 15章/Notes 12章), 3级回滚预案(L1/L2/L3)
-- **T3.3 Gate验收**: `v86_rc2_dshe_gate_accept_case_v7.md` — 68个Gate验收用例(GATE-DSHE-001~068), 5大维度(页面加载12/图表渲染15/别名展示10/降级能力15/演示回放16), 25个DSHB依赖用例, 19个底层数据回填字段预留, 10项验收判定标准
-- **T3.4 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段14 RC2_PREP(3文件), 总文件数118, 总阶段14, 总大小~10.5MB; `MD5_MANIFEST_cross_review.md` (更新) — 新增3文件MD5, 11/11全部PASS
-- **T3.5 任务固化**: `JOB_READY.flag` (更新) — RC2_PREP_READY=TRUE, JOB_READY=TRUE
-- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增)
-- **新增文件**: 3文件 ~141KB (T3.1~T3.3)
+- **T3.1 任务拆解**: `v86_rc2_dshe_presentation_task_breakdown_v7.md` (101KB, 1183行) — 5项展示层优化项(#3/#4/#9/#10/#11含#12)精细化拆解, 36个子任务(32 DSHE+4 COORD), 18人天+2.5h协同, 3项跨团队依赖, **DSHB Gate准入基线C1-C5对齐**(C1指标基线/C2错误率/C3稳定性SLA/C4约束合规/C5监控覆盖率), **DSHB底层任务映射**(ENG-01误报率→DSHE#3, ENG-03口径脚本→DSHE#3, MON-01覆盖率→DSHE#4, MON-04跨Agent关联→DSHE#4), **DSHB Gate 4阶段流程对齐**(UT Day1-2/IT Day3-4/SR Day5-6/GA Day7), **4项DSHE协同用例**(IT-003别名→面板/IT-004面板→图表/IT-008数据流/IT-009别名解析), 8项交付节点对齐, 6项跨团队交接清单
+- **T3.2 变更规格**: `v86_rc2_dshe_ui_change_spec_v7.md` (74KB) — 逐项变更前后对比, 36张图表配置更新清单, 演示脚本更新(11脚本/18场景/90Q&A), GitHub Release文档更新(README 15章/Notes 12章), 3级回滚预案(L1/L2/L3), **DSHB引擎/监控优化对齐**(ENG-01/ENG-03/ENG-04→DSHE#3性能, MON-01/MON-02→DSHE#4降级, MON-04→DSHE告警关联), 36图表→C1指标基线映射, 回滚预案→DSHB协调需求
+- **T3.3 Gate验收**: `v86_rc2_dshe_gate_accept_case_v7.md` (44KB) — **72个Gate验收用例**(68 DSHE GATE-DSHE-001~068 + 4 COORD-001~004), 5大维度(页面加载12/图表渲染15/别名展示10/降级能力15/演示回放16+协同4), **DSHB C1-C5 Gate准入条件对齐**(替换旧G-01~G-07), **DSHB 36冒烟用例对齐与去重映射**(UT→间接/IT→直接+间接/SR→间接/GA→对应), **DSHB 4阶段流程对齐**(Stage1~4用例分布), **DSHB 4协同用例**(IT-003/004/008/009→COORD-001~004, 2.5h, 3阻塞+1条件), 29个DSHB依赖用例, 19个底层数据回填字段预留, 10项验收判定标准
+- **T3.4 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增DSHB Gate基线对齐阶段15(3文件更新), 总文件数118, 总阶段15, 总大小~11.5MB; `MD5_MANIFEST_cross_review.md` (更新) — 3文件MD5更新, 11/11全部PASS
+- **T3.5 任务固化**: `JOB_READY.flag` (更新) — RC2_PREP_READY=TRUE, JOB_READY=TRUE, DSHB_GATE_BASELINE_ALIGNED=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3文件更新)
+- **更新文件**: 3文件 ~218KB (T3.1 101KB + T3.2 74KB + T3.3 44KB)
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
-- **终版结论**: ✅ V86-RC2 PRESENTATION LAYER PREPARATION COMPLETE (任务拆解✅32子任务/18人天, 变更规格✅5项方案+回滚预案, Gate验收✅68用例/10标准, 跨团队依赖✅25用例标记, 归档✅118文件/14阶段/MD5 100%)
+- **终版结论**: ✅ V86-RC2 PRESENTATION LAYER PREPARATION COMPLETE + DSHB GATE BASELINE ALIGNED (任务拆解✅36子任务/18人天+2.5h协同, 变更规格✅5项方案+DSHB联动+回滚预案, Gate验收✅72用例(68+4)/C1-C5对齐/DSHB去重, 跨团队依赖✅29用例标记+4协同, 归档✅118文件/15阶段/MD5 100%)
 
 ### 2026-10-03 DSHB — V86-RC1 跨Agent交叉核验·DSHE复盘评审·全链路总验收汇总 V7 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7)
 - **T3.1 交叉核验结果**: `v86_rc1_cross_validation_result_report_v7.md` — 回填19个DSHB字段, 核验36张图表(32匹配+7降级), 5项P2全部确认纯前端, 7项已知限制全部确认, CR-1~CR-4全部通过, 最终裁定✅ALL CRITERIA PASSED
