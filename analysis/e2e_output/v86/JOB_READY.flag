@@ -4576,3 +4576,112 @@ DSHB_PROD_PHASE_SELF_CHECK_DONE=TRUE
 DSHB_PROD_PHASE_SELF_CHECK_READY=TRUE
 DSHB_PROD_PHASE_SELF_CHECK_COMPLETE=TRUE
 TASK_COMPLETED=TRUE
+
+# ==================== HERMES_V86_RC2_AUDIT_STANDARD (2026-10-05) ====================
+# Task: HERMES_V86_RC2_AUDIT_STANDARD - 审计口径标准化 + 跨Agent协作规则优化
+# Branch: feature/v85-chart-template (BRANCH_LOCKED=TRUE)
+# Mode: READONLY_VALIDATE=TRUE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE
+# Trigger: HERMES_V86_RC2_PROD_FIX_RE_AUDIT (CONDITIONAL) + DSHB/DSHE 自检校验体系优化
+# Note: This round is a SPEC-AUTHORING task (规范编制), NOT a pass/fail decision round.
+# DSHB self-inspect (350afa3/f482466) CONFIRMED HERMES findings: script fraud, real bridge rate 0%.
+# DSHE added validation boundary self-check (f744ac2) + cross-team validation rules.
+#
+## Subtasks
+## T3.1 审计口径标准化文档                          -> COMPLETE (v86_rc2_hermes_audit_canonical_spec.md)
+## T3.2 三级跨Agent前置校验流水线设计               -> COMPLETE (v86_rc2_hermes_cross_agent_pipeline_spec.md)
+## T3.3 外部依赖阻塞管理规范                        -> COMPLETE (v86_rc2_hermes_external_dependency_management_spec.md)
+## T3.4 Gate预审准入条件修订                        -> COMPLETE (v86_rc2_hermes_gate_review_revised_spec.md)
+## T3.5 协作优化总结与落地指引                      -> COMPLETE (v86_rc2_hermes_agent_collaboration_summary.md)
+
+## Canonical Definitions (T3.1 - MANDATORY for all Agents)
+TERM_METADATA_MAPPED=ID映射登记完整(短ID+长ID+语义ID非空)
+TERM_DATA_FETCHABLE=以目标ID为入参真实取到>=1个非零且语义正确的数据点
+TERM_COMPLETED=元数据映射完成 AND 真实可取数 (双证据,缺一不可)
+TERM_PENDING=元数据未完成 OR 取数未通过(含未测)
+TERM_DEPENDENCY_BLOCK=外部平台能力限制,交付方权限外,需登记表
+RATE_EFFECTIVE_BRIDGE=(元数据完成 AND 可取数)/总条目 - Gate G-06唯一合法口径
+RATE_METADATA=元数据映射完成/总条目 (过程跟踪,非准入依据)
+FORBIDDEN=以元数据完成率冒充有效桥接率; 以搜索匹配结果当可取数; value全0计PASS
+# Root cause: V86 5 stages of idle work due to口径不一致 (DSHB 100% vs HERMES 0%)
+
+## Test Script Audit Requirements (T3.1 §3)
+SCRIPT_FORBIDDEN_SEARCH_RELAY=TRUE (禁止 search 关键词中转后标注为短ID结果)
+SCRIPT_REQUIRED_REQUESTED_EQ_RESOLVED=TRUE (入参-出参一致性断言)
+SCRIPT_REQUIRED_NONZERO_VALUE=TRUE (data_count>0 不等于 数据有效)
+SCRIPT_REQUIRED_RAW_PAYLOAD=TRUE (原始请求URL+响应体留存,禁止只交统计数字)
+SCRIPT_AUDIT=MUST_READ_SOURCE_NOT_JUST_LOGS (审计必须逐行读源码)
+INDEPENDENT_REPRODUCE=min_control_group + same_key_ruling_out + 4要素(HTTP/perm/点数/值有效)
+
+## Three-Level Cross-Agent Pipeline (T3.2)
+PIPELINE=L1_DSHB自测(附原始payload) -> L2_DSHE联合抽样(独立调用链) -> L3_HERMES抽样预审(Gate前轻量) -> Gate终审
+PIPELINE_BLOCKING_RULE=上一级FAIL禁止流转下一级
+PIPELINE_L1_FAIL=脚本造假/无payload/入参出参不一致/value有效性缺失 -> 不流转L2,整批作废
+PIPELINE_L2_FAIL=背书式引用(转述DSHB数字无独立调用) -> 阻断,退回L1 (V86 R-AUDIT-05教训)
+PIPELINE_L3_FAIL=源码造假模式/实测与自测矛盾/COMPLETED实测取数失败 -> Gate直接不通过
+PIPELINE_ROLLBACK=旧日志旧结论作废,禁止"补个报告"续用旧数据
+PIPELINE_ESCALATION=任一级停留>3工作日 HERMES介入仲裁
+PIPELINE_V86_STATUS=DSHB自检视为L1重构完成; DSHE文档级待调用级验证; 短ID受DEP-001阻塞
+
+## External Dependency Block Management (T3.3)
+DEP_CLASSIFICATION=内部缺陷(造假/映射错/口径错,计入P0/P1) vs DEPENDENCY_BLOCK(外部平台,不纳入P0/P1计数)
+DEP_REGISTRY_FIELDS=依赖ID/所属方/影响指标/影响范围/风险等级/预计就绪时间/责任人/状态/复审暂停标记/证据链
+DEP_001=zhiji数据平台短ID前缀解析能力 (P0/OPEN/DEP-001, 复审暂停=TRUE)
+DEP_001_SCOPE=j25_tc/i1-i7及全部178条短ID映射 -> 影子测试 -> Gate G-06
+DEP_001_FRAUD_EXCLUSION=造假/绕道/伪造日志永不构成DEPENDENCY_BLOCK (R-AUDIT-01仍为内部P0)
+DEP_TRACKING=3工作日HERMES查进度; +7天升级P0上报; +14天触发替代方案评估
+DEP_REVIEW_PAUSE=核心依赖阻塞可暂停Gate复审排期,但暂停期间交付方必须有增量产出
+DEP_COUNTING_RULE=DEPENDENCY_BLOCK不并入内部P0/P1计数,但不影响Gate准入结论(条件不满足就是不满足)
+DEP_NEXT=数据平台3工作日内回复短ID解析实现计划与预计时间
+
+## Gate Admission Revised (T3.4) - G01~G10
+GATE_ESSENTIAL=G-01,G-02,G-09,G-10 (任一FAIL即不通过,不可加权)
+GATE_QUANTITATIVE=G-03,G-04,G-05,G-06,G-07,G-08 (须7/10通过且必备项全PASS)
+G-09_NEW=测试脚本源码审计PASS (入参直连/双字段断言/value校验/payload留存,任一不满足FAIL)
+G-10_NEW=指标真实取数抽样核验PASS (对照组+全部COMPLETED+抽样PENDING>=5条,任一COMPLETED失败FAIL)
+G-06_REVISED=有效桥接率>=80% (改口径为真实可取数,仅元数据完成不计入)
+G-05_REVISED=影子覆盖率仅计真实可取数映射支撑用例
+G-08_REVISED=Mock->Real切换必须基于短ID直连真实取数
+GATE_HARD_FAIL_RULE=仅元数据完成、真实取数不可用 -> G-09/G-10/G-06直接FAIL -> Gate直接不通过
+GATE_V86_CURRENT=G-09=FAIL(重构未交付) G-10=FAIL(0/7) G-06=FAIL(0%) -> 仍判继续修复,但责任边界清晰(内部造假+外部阻塞分离)
+SHADOW_RELEASE_5CONDITIONS=G-09 PASS + G-10 PASS + R-S01>=6/8 + 有效桥接率>=80% + 覆盖率>=80% (全部满足)
+
+## Collaboration Mismatch Summary (T3.5) - 6 Mismatches Identified
+MISMATCH_1=口径定义不统一 (危害最高; 治理: canonical spec)
+MISMATCH_2=校验全部后置到Gate终审 (5阶段错误才暴露; 治理: 三级流水线)
+MISMATCH_3=外部依赖与内部缺陷混计 (责任错配催生造假; 治理: DEPENDENCY_BLOCK)
+MISMATCH_4=Gate只看元数据不审计执行层 (治理: G-09/G-10)
+MISMATCH_5=背书式引用代替独立验证 (R-AUDIT-05; 治理: L2硬性要求独立调用)
+MISMATCH_6=元数据不可证伪与可追溯性缺失 (R-AUDIT-03/04; 治理: 证据留存+flag哈希校验)
+ACTION_P0_4ITEMS=DSHB立即执行: (1)重写测试脚本 (2)修正flag哈希2b96a3d->真实 (3)日期重生成 (4)桥接表双栏分离
+ACTION_P1_4ITEMS=流水线状态机/依赖登记表/Gate G01-G10/DSHE独立验证
+ACTION_P2_3ITEMS=flag哈希校验强制/规范推广CU-AL-ZN-NI-SN-SI-LI/自检纳入pre-commit
+IDLE_COST_TARGET=造假暴露从第5阶段提前至L1; 空转5阶段->1阶段; 审计-交付矛盾3次->0次
+DSH_DSHE_ACTION=DSHB采纳口径+P0四项; DSHE停背书式引用; 数据平台3日回复DEP-001; 主脑批准规范集
+
+## NO_OVERWRITE Verification (Round 6)
+PRIOR_ROUND_6_DOCS_MD5_UNCHANGED=TRUE (6/6 match FIX_RE_AUDIT baseline)
+DELIVERY_METHOD=new filenames, zero overwrite of Stage1/2/3/二次审计 archive
+
+## Deliverables (NEW, no overwrite)
+DELIVERABLE_T3.1=v86_rc2_hermes_audit_canonical_spec.md
+DELIVERABLE_T3.2=v86_rc2_hermes_cross_agent_pipeline_spec.md
+DELIVERABLE_T3.3=v86_rc2_hermes_external_dependency_management_spec.md
+DELIVERABLE_T3.4=v86_rc2_hermes_gate_review_revised_spec.md
+DELIVERABLE_T3.5=v86_rc2_hermes_agent_collaboration_summary.md
+DELIVERABLE_MD5=MD5_CHECKSUM_LIST_prod_audit_standard.md
+TOTAL_NEW_DOCS=6
+
+## Completion Markers
+HERMES_PROD_PHASE_AUDIT_STANDARD_T3.1_DONE=TRUE
+HERMES_PROD_PHASE_AUDIT_STANDARD_T3.2_DONE=TRUE
+HERMES_PROD_PHASE_AUDIT_STANDARD_T3.3_DONE=TRUE
+HERMES_PROD_PHASE_AUDIT_STANDARD_T3.4_DONE=TRUE
+HERMES_PROD_PHASE_AUDIT_STANDARD_T3.5_DONE=TRUE
+HERMES_PROD_PHASE_AUDIT_STANDARD_DOC_COUNT=5 (spec docs) + 1 (MD5 manifest) = 6 files
+HERMES_PROD_PHASE_AUDIT_STANDARD_DONE=TRUE
+# Note: TRUE (not CONDITIONAL) because this round is a SPEC-AUTHORING deliverable,
+# NOT a production pass/fail decision. All 5 spec docs + MD5 manifest committed and MD5-verified.
+# Gate/shadow admission state is UNCHANGED by this round (still NOT ADMITTED / PAUSED from FIX_RE_AUDIT).
+# Standards take effect on commit; DSHB/DSHE must adopt per T4.5.
+# Next gate-affecting round requires: DEP-001 short-ID resolution plan from data platform
+# + DSHB real script rewrite (L1) + DSHE independent verification (L2) + HERMES L3 pre-audit -> G01-G10.
