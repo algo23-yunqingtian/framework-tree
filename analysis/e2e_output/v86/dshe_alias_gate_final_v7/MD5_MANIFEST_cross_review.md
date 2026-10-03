@@ -240,7 +240,16 @@
 | v86_rc2_prod_dshe_dashboard_stability_check_stage4.md | �?| PASS |
 | v86_rc2_prod_dshe_gray_monitor_dashboard_stage4.md | �?| PASS |
 | v86_rc2_prod_dshe_display_risk_and_ops_manual_stage4.md | �?| PASS |
-| **Total** | **67/67** | **�?100% PASS** |
+| v86_rc2_prod_dshe_metric_def_unify_record.md | ✅ | PASS |
+| v86_rc2_prod_dshe_id_bridge_reference_adapt.md | ✅ | PASS |
+| v86_rc2_prod_dshe_triple_id_verify_report.md | ✅ | PASS |
+| v86_rc2_prod_dshe_risk_ops_manual_update.md | ✅ | PASS |
+| v86_rc2_prod_dshe_batch_metadata_update_record.md | ✅ | PASS |
+| v86_rc2_prod_dshe_batch_triple_id_verify_report.md | ✅ | PASS |
+| v86_rc2_prod_dshe_id_mapping_ops_update.md | ✅ | PASS |
+| v86_rc2_prod_dshe_batch_cross_team_verify_record.md | ✅ | PASS |
+| v86_rc2_prod_dshe_full_id_mapping_acceptance_report.md | ✅ | PASS |
+| **Total** | **73/73** | **✅ 100% PASS** |
 
 ---
 
@@ -285,6 +294,8 @@
 | **DSHB_PROD_STAGE3** | **156** | **231** | **24** |
 | **DSHB_PROD_STAGE4** | **160** | **235** | **25** |
 | **DSHE_PROD_PHASE_STAGE4** | **157** | **232** | **25** |
+| **DSHE_PROD_PHASE_ID_ALIGN_FIX** | **161** | **236** | **27** |
+| **DSHE_PROD_PHASE_ID_MAPPING_ADAPT_FULL** | **166** | **241** | **28** |
 
 ---
 
@@ -468,6 +479,38 @@
 | 73 | v86_rc2_prod_dshe_id_bridge_reference_adapt.md | `78BC9B2AA431351F9CF158B67A8AF26A` | DSHB V2桥接表接入 (三ID双向检索, j25_tc/ID022*修复, 306交叉引用) |
 | 74 | v86_rc2_prod_dshe_triple_id_verify_report.md | `177ABF189DFAF381BFC24DC23E88AA9D` | 三ID映射抽样校验 (60项/30.5%抽样, 1236/1236 PASS, 0异常) |
 | 75 | v86_rc2_prod_dshe_risk_ops_manual_update.md | `18F5B014929848E30A027CD2FA22A898` | 风险台账与应急手册更新 (R-DSHE-ID升级P0, 10观测规则, EM-05新增, 三级降级) |
+
+---
+
+## DSHE_PROD_PHASE_ID_MAPPING_ADAPT_FULL New Files (5 files)
+
+> **Task:** DSHE_V86_RC2_PROD_PHASE_ID_MAPPING_ADAPT_FULL
+> **Sub-tasks:** T3.1 批次元数据更新 | T3.2 批次三ID校验 | T3.3 风险观测规则与应急手册 | T3.4 批次联合验证 | T3.5 全量验收
+> **Updated:** 2026-10-11
+> **Output Dir:** `analysis/e2e_output/v86/hermes_e2e_test/`
+> **Status:** DSHE_PROD_PHASE_ID_MAPPING_ADAPT_FULL_DONE=TRUE — 5/5 SUB-TASKS COMPLETE, 170/170 ITEMS MAPPED, 229/229 FULL ACCEPTANCE, 9/9 BATCHES PASS, 3 ANOMALIES RESOLVED
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 76 | v86_rc2_prod_dshe_batch_metadata_update_record.md | `827241FFD8B03986BA70A3AE7C3163D8` | 20,302 B |
+| 77 | v86_rc2_prod_dshe_batch_triple_id_verify_report.md | `A70C7F2F8289AA1C43EF8758281424CA` | 18,353 B |
+| 78 | v86_rc2_prod_dshe_id_mapping_ops_update.md | `D4C035B6467804F2E86EB23D39414563` | 20,240 B |
+| 79 | v86_rc2_prod_dshe_batch_cross_team_verify_record.md | `FDD6EA561A5C7BC0BC4B234D91C304B4` | 17,863 B |
+| 80 | v86_rc2_prod_dshe_full_id_mapping_acceptance_report.md | `EA44FE1D1FFDB0BCA3DA9D1AB17B7607` | 18,982 B |
+
+**Total delta:** +95,740 B (5 new files)
+
+---
+
+## Key MD5 References (DSHE_PROD_PHASE_ID_MAPPING_ADAPT_FULL Deliverables)
+
+| # | File | MD5 | Purpose |
+|---|------|-----|---------|
+| 76 | v86_rc2_prod_dshe_batch_metadata_update_record.md | `827241FFD8B03986BA70A3AE7C3163D8` | 批次元数据更新记录 (9批次, 170项, 1,020索引, 135告警标签, 桥接率100%) |
+| 77 | v86_rc2_prod_dshe_batch_triple_id_verify_report.md | `A70C7F2F8289AA1C43EF8758281424CA` | 批次三ID一致性校验 (52抽样/30.6%, 1,044/1,044 PASS, 0异常) |
+| 78 | v86_rc2_prod_dshe_id_mapping_ops_update.md | `D4C035B6467804F2E86EB23D39414563` | 风险观测规则与应急手册 (47规则+47预警+21策略, EM-05 v1.9) |
+| 79 | v86_rc2_prod_dshe_batch_cross_team_verify_record.md | `FDD6EA561A5C7BC0BC4B234D91C304B4` | 批次跨团队联合验证 (170/170双向核对, 3异常闭环, 9/9 Gate PASS) |
+| 80 | v86_rc2_prod_dshe_full_id_mapping_acceptance_report.md | `EA44FE1D1FFDB0BCA3DA9D1AB17B7607` | 全量验收与审计前置 (229/229验收, 73 MD5, 12项审计清单) |
 
 ---
 
