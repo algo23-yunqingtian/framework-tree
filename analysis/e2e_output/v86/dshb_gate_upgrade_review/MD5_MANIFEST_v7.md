@@ -30,8 +30,14 @@
 | 15 | `v86_rc1_release_boundary_stress_drill_v7.md` | `2C46BE53D35F0EEDE539036C95061C3B` | 49,915 | T3.2 | ✅ |
 | 16 | `v86_rc1_full_changelog_v7.md` | `A506C411FF94F51A48ACC1428C1A858A` | 64,137 | T3.5 | ✅ |
 | 17 | `v86_rc1_freeze_snapshot_final_review_v7.md` | `7C113D313BA8ECA36BA22BB3353EB2E6` | 22,586 | T3.6 | ✅ |
+| 18 | `v86_rc1_release_window_execution_log_v7.md` | `0E30A5D80B028164A12D786F09FDA91F` | 36,378 | T3.1 | ✅ |
+| 19 | `v86_rc1_release_monitor_alarm_analysis_v7.md` | `DED6EFBBD34E7AA6BAD5D20F54DBC941` | 42,720 | T3.2 | ✅ |
+| 20 | `v86_rc1_post_release_t0_check_v7.md` | `DA70E835AB46A4982F0CABC311D6BFAC` | 39,669 | T3.3 | ✅ |
+| 21 | `v86_rc1_post_release_24h_inspection_summary_v7.md` | `44DE5CFB5A5508B4E4BB9924AABDA7F7` | 36,138 | T3.4 | ✅ |
+| 22 | `v86_rc1_release_window_retrospect_v7.md` | `7F8BEAEA35F4C0B6B15555D078B23497` | 44,530 | T3.5 | ✅ |
+| 23 | `v86_rc1_release_final_closure_v7.md` | `FF05522F8B6DF72E5A108F8C9A7C7007` | 16,265 | T3.6 | ✅ |
 
-**总计**: 17 文件, 543,781 字节
+**总计**: 23 文件, 759,481 字节
 
 ---
 
@@ -113,8 +119,9 @@
 | V6 | 4 | 86,949 B | c4ccfd5 | 上线准入+Gate判定+预校验 |
 | V7 RC | 6 | 95,744 B | 2057d35 | 发布候选准备 (P1闭环+元数据+发布说明+回滚+清单+自检) |
 | V7 联合 | 5 | 98,300 B | 3f363b0 | 联合验收+发布演练+回滚仿真+P1 SOP+跨Agent校验 |
-| V7 终审 | 6 | 350,057 B | 本次 | 终审材料+边界预演+监控大盘+应急预案+变更清单+冻结快照 |
-| **总计** | **39** | **1,029,711 B** | | |
+| V7 终审 | 6 | 350,057 B | 79e34a1 | 终审材料+边界预演+监控大盘+应急预案+变更清单+冻结快照 |
+| V7 执行 | 6 | 215,700 B | 本次 | 执行日志+告警研判+T0校验+24h巡检+复盘+闭环报告 |
+| **总计** | **45** | **1,226,165 B** | | |
 
 ---
 
