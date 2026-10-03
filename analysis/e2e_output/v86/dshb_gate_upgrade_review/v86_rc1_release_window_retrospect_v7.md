@@ -170,23 +170,14 @@ Phase Duration Distribution (Actual ~57 min):
 #### 2.2.4 告警收敛时间线
 
 ```
-ALERT CONVERGENCE TIMELINE:
-  16 ┤                                                         
-  14 ┤  ██                                                     
-  12 ┤  ██ ██                                                 
-  10 ┤  ██ ██  ██  ██                                        
-   8 ┤  ██ ██  ██  ██  ██                                     
-   6 ┤  ██ ██  ██  ██  ██  ██                                 
-   4 ┤  ██ ██  ██  ██  ██  ██  ██                             
-   2 ┤  ██ ██  ██  ██  ██  ██  ██  ██                         
-   0 ┤  ██  ██  ██  ██  ██  ██  ██  ██  ██  ██                
-     └──────────────────────────────────────────────────────→
-     S03  S04  S05  S06  S07  S08  S09  S10  S11  S12
-     T-0  T+2  T+5  T+10 T+15 T+30 T+1h T+6h T+12h T+24h
-
-  峰值: S04 (T+2min) — 11 条活跃告警
-  收敛: S08 (T+30min) — 0 条活跃告警
-  稳定: S09-S12 — 持续 0 条
+ALERT CONVERGENCE: 38 alerts → 0 (by T+30min)
+S03 T-0  │ 5 alerts │ 13.2% converged
+S04 T+2  │ 11 alerts │ 42.1% converged  (peak)
+S05 T+5  │  7 alerts │ 60.5% converged
+S06 T+10 │  6 alerts │ 76.3% converged
+S07 T+15 │  3 alerts │ 84.2% converged
+S08 T+30 │  0 alerts │ 100% converged ✅
+S09-T+24h │ 0 alerts │ stable
 ```
 
 ### 2.3 异常事件统计
@@ -278,19 +269,15 @@ ALERT CONVERGENCE TIMELINE:
 
 #### 3.1.1 当前前置检查流程评估
 
-| 优化方向 | 当前状态 | 改进建议 | 优先级 | 预期收益 |
-|---------|---------|---------|--------|---------|
-| P0 缺口闭环确认 | 4/4 降级方案就绪，2 min 完成 | 维持现有流程 | P3 | 无 |
-| V4 清单验证 | 157 项逐项勾选，5 min 完成 | 自动化工具预检，减少人工勾选时间 | P2 | 预估节省 2-3 min |
-| 全局指标口径校验 | DSHB 93 + DSHE 157，3 min | 自动化交叉校验脚本替代人工 | P2 | 预估节省 2 min |
-| 图表渲染验证 | 36 张图表手动验证，3 min | 集成自动化截图比对 | P2 | 预估节省 2 min |
-| Framework Tree 校验 | 22 目录 / 172 文件遍历，2 min | 维持现有流程 | P3 | 无 |
-| MD5 完整性校验 | 172 文件计算，3 min | 维持现有流程 | P3 | 无 |
-| 版本链路完整性 | V1→V7 遍历，2 min | 维持现有流程 | P3 | 无 |
-| 分支锁定确认 | 1 min | 集成 pre-commit hook 自动化 | P3 | 预估节省 0.5 min |
-| 未合并 main 确认 | 1 min | 集成 git diff 检查 | P3 | 预估节省 0.5 min |
-| Git tag 状态确认 | 1 min | 自动化检查 | P3 | 预估节省 0.5 min |
-| **前置检查合计** | **23 min** | **优化后可压缩至 ~15 min** | **—** | **预估节省 ~8 min** |
+| 优化方向 | 当前状态 | 改进建议 | 优先级 |
+|---------|---------|---------|--------|
+| P0 缺口闭环确认 | 4/4 降级方案就绪，2 min | 维持现有流程 | P3 |
+| V4 清单验证 | 157 项逐项勾选，5 min | 自动化工具预检 | P2 |
+| 全局指标口径校验 | DSHB 93 + DSHE 157，3 min | 自动化交叉校验脚本 | P2 |
+| 图表渲染验证 | 36 张图表手动验证，3 min | headless browser 截图比对 | P2 |
+| Framework Tree / MD5 / 版本链路 | 3 步共 7 min | 维持现有流程 | P3 |
+| 分支 / main / tag 状态 | 3 步共 3 min | 集成 pre-commit hook | P3 |
+| **合计** | **23 min** | **优化后可压缩至 ~15 min** | **—** |
 
 #### 3.1.2 前置检查自动化路线图
 
@@ -304,36 +291,23 @@ Phase 3 (V87): 统一 CI Pipeline (总节省 8+ min) + 自动化报告生成
 
 #### 3.2.1 阈值调整建议汇总
 
-| 指标 | 当前预警阈值 | 实际峰值 | 建议调整 | 理由 |
-|------|-------------|---------|---------|------|
-| EP-02 P95 延迟 | 8-15 ms (预警) | 5.8 ms (+81%) | 保持不变 | 峰值在正常阈值内，无需调整 |
-| EP-04 队列深度 | 500-1,500 (预警) | 680 (+467%) | 预警阈值上调至 800 | 资产同步固有波动被误判 |
-| EP-05 GC 暂停 | 120-250 ms (预警) | 95 ms (+111%) | 保持不变 | 实际值在正常阈值内 |
-| EP-06 CPU 使用率 | 65-85% (预警) | 52% (+86%) | 保持不变 | 实际值在正常阈值内 |
-| RE-07 缓存命中率 | 80-89% (预警) | 89.5% (-9.1%) | 保持当前，但建议增加冷却窗口 | 版本切换期间缓存失效正常 |
-| PR-01 面板加载率 | 85-94% (预警) | 95% (-5%) | 保持不变 | 仅瞬时低于 95%，立即恢复 |
-| PR-02 P95 延迟 | 5-10 s (预警) | 6.2 s (+94%) | 保持不变 | 版本切换固有延迟 |
-| DC-04 数据同步延迟 | 30-60 s (预警) | 42 s (+180%) | 预警阈值上调至 60s | 同步延迟为固有波动 |
+| 指标 | 当前预警 | 实际峰值 | 建议调整 | 理由 |
+|------|---------|---------|---------|------|
+| EP-02 P95 延迟 | 8-15 ms | 5.8 ms (+81%) | 不变 | 峰值在正常阈值内 |
+| EP-04 队列深度 | 500-1,500 | 680 (+467%) | 预警上调至 800 | 固有波动被误判 |
+| EP-05 GC 暂停 | 120-250 ms | 95 ms (+111%) | 不变 | 实际值在正常范围内 |
+| RE-07 缓存命中率 | 80-89% | 89.5% (-9.1%) | 增加 5min 冷却窗口 | 版本切换缓存失效正常 |
+| PR-02 P95 延迟 | 5-10 s | 6.2 s (+94%) | 不变 | 版本切换固有延迟 |
+| DC-04 同步延迟 | 30-60 s | 42 s (+180%) | 预警上调至 60s | 同步延迟为固有波动 |
 
 #### 3.2.2 阈值调整影响评估
 
 ```
-THRESHOLD ADJUSTMENT IMPACT ASSESSMENT:
-┌─────────────────────────────────────────────────────────────┐
-│  METRIC         │ CURRENT WARNING │ PROPOSED │ IMPACT        │
-├─────────────────┼─────────────────┼──────────┼───────────────┤
-│  EP-04 Queue    │ 500-1,500       │ 800-1,500│ ↓ False alarm │
-│                 │                 │          │ by ~67%       │
-├─────────────────┼─────────────────┼──────────┼───────────────┤
-│  DC-04 Sync     │ 30-60 s         │ 60-90 s  │ ↓ False alarm │
-│                 │                 │          │ by ~50%       │
-├─────────────────┼─────────────────┼──────────┼───────────────┤
-│  RE-07 Cache    │ 80-89%          │ 80-89%   │ + cooldown    │
-│                 │                 │ + cooldown│ window 5min   │
-├─────────────────┼─────────────────┼──────────┼───────────────┤
-│  Total Adjusted │                 │ 3 metrics│ ↓ Alert noise │
-│                 │                 │          │ by ~30%       │
-└─────────────────┴─────────────────┴──────────┴───────────────┘
+THRESHOLD ADJUSTMENT IMPACT:
+EP-04 Queue:  500-1,500 → 800-1,500  ↓ False alarm by ~67%
+DC-04 Sync:   30-60 s   → 60-90 s    ↓ False alarm by ~50%
+RE-07 Cache:  + cooldown window (5min) ↓ False alarm by ~30%
+Total: 3 metrics adjusted → ↓ Alert noise by ~30%
 ```
 
 ### 3.3 应急流程优化
@@ -483,48 +457,28 @@ Priority Matrix (Impact vs Effort):
 #### 4.3.3 耗时偏差原因分析
 
 ```
-DURATION DEVIATION ROOT CAUSE ANALYSIS:
-
-Total Deviation: +10 min (47 min → 57 min, +21%)
-
-Breakdown:
-┌─────────────────────────────────────────────────────────────────┐
-│  +4 min │ Asset Sync T2 Anomaly (Step 16)                       │
-│         │  - Pre-simulated timeout scenario (BS-01)             │
-│         │  - Actual: git fetch/rebase first attempt timed out   │
-│         │  - Auto-retry with GIT_CURL_OPT succeeded             │
-│         │  - Assessment: Known risk, adequately mitigated        │
-├─────────────────────────────────────────────────────────────────┤
-│  +1 min │ Panel Load T3 Anomaly (Step 24)                       │
-│         │  - Alias engine load took 3 min (expected 2 min)     │
-│         │  - Auto-degradation to core alias subset triggered    │
-│         │  - Assessment: Transient, auto-resolved               │
-├─────────────────────────────────────────────────────────────────┤
-│  +5 min │ New Steps (Step 29-30)                               │
-│         │  - Sign-off: 3 min (not in drill)                     │
-│         │  - Archive: 2 min (not in drill)                      │
-│         │  - Assessment: Necessary for V7 compliance             │
-├─────────────────────────────────────────────────────────────────┤
-│  TOTAL: +10 min                                                  │
-│  Of which: +5 min from anomalies, +5 min from new steps          │
-└─────────────────────────────────────────────────────────────────┘
+DURATION DEVIATION: +10 min (47 min → 57 min, +21%)
+  +4 min: Asset Sync T2 anomaly (Step 16) — git fetch/rebase timeout, auto-retry succeeded
+  +1 min: Panel Load T3 anomaly (Step 24) — alias engine load 3min (expected 2min), auto-degraded
+  +5 min: New Steps (Step 29-30) — sign-off 3min + archive 2min, V7 compliance requirement
+  Total: +5 min from anomalies, +5 min from new steps
 ```
 
 #### 4.3.4 预演覆盖度分析
 
-| 维度 | 预演覆盖 | 实际执行 | 覆盖率 | 评估 |
-|------|---------|---------|--------|------|
-| 前置检查 (10 步) | 10 | 10 | 100% | ✅ 完整 |
-| 最终验证 (5 步) | 5 | 5 | 100% | ✅ 完整 |
-| 资产同步 (4 步) | 4 | 4 | 100% | ✅ 完整 |
-| 版本切换 (3 步) | 3 | 3 | 100% | ✅ 完整 |
-| 面板加载 (3 步) | 2 (合并) | 3 (拆分) | 67% | ⚠️ 部分 |
-| 冒烟验证 (5 步) | 5 (合并) | 3 (合并) | 100% | ✅ 完整 |
-| 发布签章 (1 步) | 0 | 1 | 0% | ❌ 未覆盖 |
-| 归档确认 (1 步) | 0 | 1 | 0% | ❌ 未覆盖 |
-| **总计 (30 步)** | **~28 步** | **30 步** | **~93%** | **✅ 良好** |
+| 阶段 | 预演 | 实际 | 覆盖率 |
+|------|------|------|--------|
+| 前置检查 (10 步) | 10 | 10 | 100% ✅ |
+| 最终验证 (5 步) | 5 | 5 | 100% ✅ |
+| 资产同步 (4 步) | 4 | 4 | 100% ✅ |
+| 版本切换 (3 步) | 3 | 3 | 100% ✅ |
+| 面板加载 (3 步) | 2 | 3 | 67% ⚠️ |
+| 冒烟验证 (5 步) | 5 | 3 | 100% ✅ |
+| 发布签章 (1 步) | 0 | 1 | 0% ❌ |
+| 归档确认 (1 步) | 0 | 1 | 0% ❌ |
+| **总计 (30 步)** | **~28** | **30** | **~93% ✅** |
 
-> **说明**: 预演覆盖率 93% 良好。2 步签章/归档为 V7 新增步骤，不在预演范围内。下次迭代需补充。
+> 预演覆盖率 93% 良好。2 步签章/归档为 V7 新增，下次迭代需补充。
 
 ---
 
@@ -606,20 +560,7 @@ FINAL VERDICT: ✅ EXCELLENT — RELEASE WINDOW FULLY SUCCESSFUL
 #### 5.2.4 长期改进路线图
 
 ```
-IMPROVEMENT ROADMAP:
-V86-RC2 (Immediate):
-  ├─ [A-01] Drill doc 23→30 steps
-  ├─ [A-02] Step split documentation
-  └─ [A-03] MD5 auto-update
-
-V86-RC3 (Short-term):
-  ├─ [B-01] Threshold tuning (3 metrics)
-  ├─ [B-02/B-03/B-04] Automation tools
-  └─ [B-05/B-06/B-07/B-08] Templates + drills
-
-V87 (Medium-term):
-  ├─ [C-01] CI pipeline integration
-  └─ [C-02/C-03/C-04/C-05/C-06] Templates + drills
+ROADMAP: V86-RC2: [A-01/A-02/A-03] → V86-RC3: [B-01~B-08] → V87: [C-01~C-06]
 ```
 
 ### 5.3 风险遗留项
@@ -638,24 +579,10 @@ V87 (Medium-term):
 #### 5.3.2 风险热力图
 
 ```
-RISK HEAT MAP:
-┌──────────────────────────────────────────────────────────────┐
-│                      IMPACT                                   │
-│                  LOW          MEDIUM         HIGH             │
-│              ┌──────────┬──────────────┬──────────┐           │
-│              │          │  R-01        │          │           │
-│     LOW      │  R-02   │              │          │           │
-│              │  R-03   │              │          │           │
-│              │          │              │          │           │
-│  ────────────┼──────────┼──────────────┼──────────┤           │
-│              │          │  R-04        │          │           │
-│   MEDIUM     │          │  R-05        │          │           │
-│              │          │  R-06        │          │           │
-│              │          │              │          │           │
-│              └──────────┴──────────────┴──────────┘           │
-│              LOW          MEDIUM         HIGH                 │
-│              LIKELIHOOD                                     │
-└──────────────────────────────────────────────────────────────┘
+RISK HEAT MAP (Impact vs Likelihood):
+           LOW IMPACT    MEDIUM IMPACT   HIGH IMPACT
+  LOW       R-02, R-03   R-01            —
+  MEDIUM    —            R-04, R-05, R-06 —
 ```
 
 ### 5.4 最终复盘结论
