@@ -3648,8 +3648,13 @@ DSHB_PROD_PHASE_FIX_FOR_HERMES_SECOND_AUDIT=TRUE
 HERMES_SECOND_AUDIT_READY=TRUE
 TASK_COMPLETED=TRUE
 
-=======
-# ==================== HERMES_V86_RC2_PROD_STAGE2 (2026-10-05, T+1d) ====================
+
+
+# 
+
+====== HERMES_V86_RC2_PROD_STAGE2 (2026-10-05, T+1d) 
+
+======
 # Task: HERMES_V86_RC2_PROD_STAGE2 - Cross-Team Baseline Consistency Audit + Shadow Re-Test
 # Branch: feature/v85-chart-template @ f165034
 # Mode: READONLY_VALIDATE=TRUE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE
@@ -3727,4 +3732,107 @@ HERMES_PROD_PHASE_STAGE2_DONE=CONDITIONAL
 # Note: Stage2 audit deliverables all complete, but shadow test PAUSED due to T4.6
 # cross-team baseline inconsistency (DSHB+DSHE deliverables missing).
 # Gray Gate 10-07 admission NOT met; review recommended to defer to T+5d~T+7d.
+<<<<<<< HEAD
 >>>>>>> 40955a9 ([A] V86-RC2 投产Stage2: 跨团队基线一致性审计+影子暂停+进度风险跟踪+灰度Gate预复审 (HERMES_V86_RC2_PROD_STAGE2))
+
+
+
+# 
+
+====== HERMES_V86_RC2_PROD_STAGE2_RECHECK (2026-10-05, T+3d) 
+
+======
+# Task: HERMES_V86_RC2_PROD_STAGE2_RECHECK - Baseline Recheck + Shadow Re-Test
+# Branch: feature/v85-chart-template @ af1e5fb
+# Mode: READONLY_VALIDATE=TRUE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE
+# zhiji API calls: 4 (short-ID failure re-verification)
+#
+# T3.1 Continuous Audit + Baseline Recheck              -> COMPLETE
+# T3.2 Shadow Parallel Compare (Recheck)                -> PAUSED (R-S01 not closed)
+# T3.3 Progress and Risk Tracking (Recheck)             -> COMPLETE
+# T3.4 Gray Gate Final Review                           -> COMPLETE
+
+## Constraint Compliance
+READONLY_VALIDATE=TRUE_PASS
+NO_MODIFY_V85=TRUE_PASS
+NO_OVERWRITE=TRUE_PASS
+BRANCH_LOCKED=TRUE_PASS
+NO_ZHIJI_API_CALL=FALSE_ALLOWED
+
+## PREP Baseline Freeze
+PREP_FREEZE_8_ITEMS_PASS=TRUE
+STAGE1_ARTIFACTS_MD5_MATCH=5/5
+STAGE2_PREV_ARTIFACTS_MD5_MATCH=5/5
+
+## Remote Commits Integrated (rebase)
+REBASE_SOURCE=FETCH_HEAD_28b4747
+NEW_COMMITS=3
+DSHE_STAGE1_COMMIT=649f1f4
+DSHE_STAGE1_T35_COMMIT=027f2d1
+DSHB_NEW_COMMITS=0
+
+## Cross-Team Baseline Consistency (T4.6, HIGHEST PRIORITY)
+DSHE_STAGE1_DELIVERABLES=SUBMITTED (5 docs, 4649 lines)
+DSHB_STAGE2_DELIVERABLES=MISSING (0 commits)
+CROSS_TEAM_BASELINE_CONSISTENCY=UNCONFIRMED
+ID_SYSTEM_MISMATCH=TRUE (DSHE: semantic IDs vs DSHB: zhiji short/long IDs)
+R_S01_CLOSURE=NOT_CLOSED (0/8 conditions met)
+T46_CONSTRAINT_TRIGGERED=TRUE
+
+## Short-ID Mapping Verification
+SHORT_ID_MAPPING_FIX=NOT_FIXED
+J25_TC_API=HTTP_500
+I1_API=permission_state=-4
+I2_API=permission_state=-4
+I11_API=permission_state=-4
+ID02226332_CONTROL=PASS (8 data points, LME nickel inventory)
+
+## Shadow Parallel Test (T3.2)
+SHADOW_TEST_STATUS=PAUSED
+SHADOW_89GATE_CASE_VERSION=PREP_ONLY
+BLOCKED_CASES_RELEASED=0/36
+SHADOW_COVERAGE=46.1_PCT
+DIFF_LEADGER=9_ITEMS
+
+## Progress Tracking (T3.3)
+TASK_PROGRESS_WEIGHTED=34.0_PCT (DSHE Stage1 contribution)
+CRITICAL_PATH_PROGRESS=0_PCT
+DELIVERY_WINDOW_USAGE=100_PCT (T+3d deadline passed)
+OVERDUE_TASKS=4
+RISK_P0=1
+RISK_P1=8
+RISK_P2=10
+
+## Gray Gate Final Review (T3.4)
+GRAY_GATE_FINAL_REVIEW=FAIL
+GRAY_GATE_MET=2/8
+GRAY_GATE_FAILED=6/8
+G03_P0_CLEARED=FAIL
+G06_ZHIJI_MAPPING=FAIL (3.7% DSHE / 0.5% DSHB)
+G07_CRITICAL_PATH=FAIL (0%)
+G08_MOCK_TO_REAL=FAIL (0/24)
+GRAY_GATE_ADMISSION=NOT_MET
+RECOMMENDED_REVIEW_DATE=T+9d_to_T+10d (10-13_to_10-14)
+UNRECOVERABLE_GAPS=6
+MATERIALS_READY_HERMES=5/5
+MATERIALS_READY_DSHB_DSHE=2/12
+
+## Deliverables (NEW, no overwrite)
+DELIVERABLE_T3_1=v86_rc2_prod_continuous_audit_report_stage2_recheck.md (MD5 e2ebe7fb55d0a46e2fb74bf74b1c03a5)
+DELIVERABLE_T3_2=v86_rc2_prod_shadow_compare_report_stage2_recheck.md (MD5 f555feffb9249a297fa3cc9d9b306f57)
+DELIVERABLE_T3_3=v86_rc2_prod_progress_risk_tracking_stage2_recheck.md (MD5 6d49e2ba1eda175a27b871861aed5cd6)
+DELIVERABLE_T3_4=v86_rc2_gray_gate_final_review_package.md (MD5 32242f8c785451d178d625f438bbe60a)
+DELIVERABLE_MD5_LIST=MD5_CHECKSUM_LIST_prod_stage2_recheck.md
+
+## Completion Markers
+HERMES_PROD_PHASE_STAGE2_RECHECK_AUDIT_DONE=TRUE
+HERMES_PROD_PHASE_STAGE2_RECHECK_SHADOW_PAUSED=TRUE
+HERMES_PROD_PHASE_STAGE2_RECHECK_TRACKING_DONE=TRUE
+HERMES_PROD_PHASE_STAGE2_RECHECK_GATE_REVIEW_DONE=TRUE
+HERMES_PROD_PHASE_STAGE2_RECHECK_DONE=CONDITIONAL
+# Note: Stage2 recheck audit deliverables all complete, but shadow test PAUSED (R-S01 not closed).
+# DSHB has 0 new commits; DSHE submitted PROD_PHASE_STAGE1 (not Stage2 deliverables).
+# DSHE uses semantic IDs (pb_inventory_society) with ZERO cross-reference to DSHB zhiji IDs.
+# Short-ID failure persists: j25_tc HTTP 500, i1/i2/i11 permission=-4.
+# Gray Gate: 2/8 met, admission NOT granted. Recommended review: T+9d~T+10d (10-13~14).
+>>>>>>> 09c3a14 ([A] V86-RC2 投产Stage2复核: 基线一致性再审+影子持续暂停+进度34%+灰度Gate正式复审不通过 (HERMES_V86_RC2_PROD_STAGE2_RECHECK))
