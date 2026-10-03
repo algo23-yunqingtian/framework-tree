@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-04 DSHE — V86-RC2 投产阶段Stage1: 展示层适配 & 影子验证准备 (DSHE_V86_RC2_PROD_PHASE_STAGE1)
+- **T3.1 双口径适配**: `v86_rc2_prod_dashboard_adapt_report.md` (60KB) — C1双口径(Gate DSHE 29+7 / 线上 DSHB 32/36), C2双阈值(Gate DSHE P1=0 / 线上 DSHB P1≤3), MC-01_CHECK BLOCK面板, MC-02_CHECK WARNING面板, 7降级图表(L2×3+L3×4)真实数据渲染验证, 11面板/80子面板, 36×178双口径矩阵, 6新增风险(R-015~R-020), 12项验收标准, 8步切换, 4级回滚
+- **T3.2 zhiji_id映射同步**: `v86_rc2_prod_dshe_zhiji_mapping_sync.md` (53KB) — 190项zhiji_id 3批次同步(PB32+CU27/AL25+ZN24/NI18+SN14+SI16+LI15+F01-F19), 36图表×178指标绑定矩阵, F01-F19回填字段展示验证, DSHE 197 vs DSHB 204差异比对, DSHB交叉验证清单, HERMES审计同步协议, zhiji API 380次调用计划
+- **T3.3 影子仿真环境**: `v86_rc2_prod_shadow_sim_prep.md` (55KB) — Mock/Real双数据源架构, 一键切换脚本, 24用例对比矩阵, 14影子对比指标, 批次1(11用例T+1d)+批次2(13用例T+3d), 14回滚演练(L1×6+L2×6+L3×2), HERMES交付清单, 34项验收标准
+- **T3.4 观测大盘告警**: `v86_rc2_prod_observation_panel_report.md` (58KB) — 18观测指标Grafana告警规则, GATE-DSHE-010时延监控(0.8-0.85s/P99 2.7s), 6面板/56子面板布局, 18告警规则Prometheus YAML, P0/P1/P2严重度矩阵, DSHB+HERMES评审清单
+- **T3.5 切换回滚复核**: `v86_rc2_prod_switch_review.md` (50KB) — 7步切换演练脚本(72子步骤), L1/L2/L3三级回滚演练(29步骤), 5新增风险(R-015~R-019), 19项更新风险台账(0高/9中/10低), 10项dry-run, E-1~E-8异常决策树, 14项切换验收+3项回滚验收+8项完成标准
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (5新增)
+- **新增文件**: 5文件 ~277KB (60+53+55+58+50KB)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION 全部合规
+- **终版结论**: ✅ DSHE_PROD_PHASE_STAGE1_DONE=TRUE (commit `0e8cfdd`) — 投产阶段Stage1完成 (双口径适配✅, zhiji映射同步✅, 影子仿真✅, 观测大盘✅, 切换回滚复核✅, 140+5=145文件, 23阶段, MD5 47/47 PASS✅, 20项风险台账✅, 3级回滚✅, 7步切换✅, 18观测指标✅)
+
 ### 2026-10-04 HERMES — V86-RC2 PREP正式封板决议生成 & 全量归档快照固化 (HERMES_V86_RC2_PREP_CLOSURE)
 - **T3.1 PREP封板决议**: `v86_rc2_prep_closure_resolution.md` (21KB) — 三方批准状态汇总(DSHB✅DSHE✅HERMES✅), Gate结果汇总(C1-C5 A+ 50/50, 89/89 PASS), 风险结论(14项/0高/7中/7低), 口径约定(10/10 MC解决), PREP冻结声明(15项不可修改), 投产遗留项清单(19项/~13pd), 17/17封板条件全部通过
 - **T3.2 全量归档快照**: `v86_rc2_full_archive_snapshot.md` (23KB) — 140文件/22阶段/~14.0MB全量索引, MD5 42/42 PASS, Commit链追溯(22阶段), 团队分布(DSHE~95/DSHB~28/HERMES~10/跨团队~7), 归档快照声明V86_RC2_PREP_ARCHIVE_SNAPSHOT=TRUE

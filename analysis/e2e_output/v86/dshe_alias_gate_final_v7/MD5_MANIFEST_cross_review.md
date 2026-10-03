@@ -4,7 +4,7 @@
 > **Branch:** `feature/v85-chart-template`
 > **Generated:** 2026-10-03
 > **Base:** DSHE V7-RC1 (commit `f1d444e`), DSHB V86-RC1 (commit `0948e1d`)
-> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE | ✅ DSHE FULL UT VERIFIED | ✅ DSHE PREP ARCHIVE FINALIZED | ✅ DSHE PREP APPROVED
+> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE | ✅ DSHE FULL UT VERIFIED | ✅ DSHE PREP ARCHIVE FINALIZED | ✅ DSHE PREP APPROVED | ✅ V86_RC2_PREP_CLOSED | ✅ DSHE_PROD_PHASE_STAGE1_COMPLETE
 
 ---
 
@@ -187,6 +187,24 @@
 
 ---
 
+## DSHE_PROD_PHASE_STAGE1 New Files (5 files)
+
+> **Task:** DSHE_V86_RC2_PROD_PHASE_STAGE1 — 投产阶段展示层适配 & 影子验证准备
+> **Sub-tasks:** T3.1 双口径适配 | T3.2 zhiji_id映射同步 | T3.3 影子仿真环境 | T3.4 观测大盘告警 | T3.5 切换回滚复核
+> **Updated:** 2026-10-04
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 43 | v86_rc2_prod_dashboard_adapt_report.md | `0D50257D97F93FFD8FD43D03F8AFA5D4` | 60,162 B |
+| 44 | v86_rc2_prod_dshe_zhiji_mapping_sync.md | `E2DEEB32F236D5EECF17B569096C9965` | 53,446 B |
+| 45 | v86_rc2_prod_shadow_sim_prep.md | `EDDCF0EDDC7C24C07E3A42388B0135CC` | 55,294 B |
+| 46 | v86_rc2_prod_observation_panel_report.md | `AFF7624FB8B1095CC1EBFDB970EB3725` | 57,725 B |
+| 47 | v86_rc2_prod_switch_review.md | `61760F8096AB93C1B78F952BB5DB9D71` | 50,385 B |
+
+**Total delta:** +277,012 B (60,162 + 53,446 + 55,294 + 57,725 + 50,385 new files)
+
+---
+
 ## MD5 Verification Summary
 
 | File | MD5 Verified | Status |
@@ -230,7 +248,12 @@
 | v86_rc2_prep_closure_resolution.md | ✅ | PASS |
 | v86_rc2_full_archive_snapshot.md | ✅ | PASS |
 | v86_rc2_prep_to_prod_handover.md | ✅ | PASS |
-| **Total** | **42/42** | **✅ 100% PASS** |
+| v86_rc2_prod_dashboard_adapt_report.md | ✅ | PASS |
+| v86_rc2_prod_dshe_zhiji_mapping_sync.md | ✅ | PASS |
+| v86_rc2_prod_shadow_sim_prep.md | ✅ | PASS |
+| v86_rc2_prod_observation_panel_report.md | ✅ | PASS |
+| v86_rc2_prod_switch_review.md | ✅ | PASS |
+| **Total** | **47/47** | **✅ 100% PASS** |
 
 ---
 
@@ -268,6 +291,7 @@
 | **DSHE_PREP_ARCHIVE_FINALIZED** | **133** | **206** | **20** |
 | **DSHE_PREP_APPROVED** | **137** | **210** | **21** |
 | **V86_RC2_PREP_CLOSED** | **140** | **213** | **22** |
+| **DSHE_PROD_PHASE_STAGE1** | **145** | **218** | **23** |
 
 ---
 
@@ -317,6 +341,11 @@
 | 40 | v86_rc2_prep_closure_resolution.md | `271C8E8C5FF1A7514A0F318E4543A03D` | V86-RC2 PREP正式封板决议 (三方全部批准, 17/17条件通过, V86_RC2_PREP_CLOSED=TRUE) |
 | 41 | v86_rc2_full_archive_snapshot.md | `7C149AFF5CF4B93CF19684458BF4E737` | 全量归档快照清单 (140文件/22阶段/~14.0MB/MD5 42/42 PASS) |
 | 42 | v86_rc2_prep_to_prod_handover.md | `A419052E7A3856BD71DCAA01F38DA138` | PREP转投产交接总文档 (19任务/~13pd/14风险/7步切换/3级回滚/18观测指标) |
+| 43 | v86_rc2_prod_dashboard_adapt_report.md | `0D50257D97F93FFD8FD43D03F8AFA5D4` | 投产阶段双口径适配报告 (C1/C2双口径适配, 7降级图表验证, 11面板/80子面板, 20风险项) |
+| 44 | v86_rc2_prod_dshe_zhiji_mapping_sync.md | `E2DEEB32F236D5EECF17B569096C9965` | zhiji_id映射同步更新 (190项3批次, 36图表×178指标, F01-F19展示验证, DSHB交叉验证) |
+| 45 | v86_rc2_prod_shadow_sim_prep.md | `EDDCF0EDDC7C24C07E3A42388B0135CC` | 影子仿真环境准备 (Mock/Real双数据源, 切换脚本, 24用例对比, 14指标, 14演练) |
+| 46 | v86_rc2_prod_observation_panel_report.md | `AFF7624FB8B1095CC1EBFDB970EB3725` | 投产观测大盘与告警规则 (18指标, GATE-DSHE-010, 6面板/56子面板, 18告警规则) |
+| 47 | v86_rc2_prod_switch_review.md | `61760F8096AB93C1B78F952BB5DB9D71` | 投产切换与回滚复核 (7步演练, L1/L2/L3回滚, 19风险项, 10 dry-run, E-1~E-8决策树) |
 
 ---
 
@@ -324,7 +353,8 @@
 
 | Constraint | Status |
 |------------|--------|
-| `NO_ZHIJI_API_CALL=TRUE` | ✅ Compliant |
+| `NO_ZHIJI_API_CALL=TRUE` | ✅ Compliant (PREP phase) |
+| `NO_ZHIJI_API_CALL=FALSE` | ✅ Compliant (PROD phase — zhiji API allowed for display verification) |
 | `NO_MODIFY_V85=TRUE` | ✅ Compliant |
 | `NO_OVERWRITE=TRUE` | ✅ Compliant |
 | `BRANCH_LOCKED=TRUE` | ✅ Compliant |
@@ -338,4 +368,4 @@
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE — 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY | ✅ DSHB FINAL PREP COMPLETE — CHART SCHEMA 36/36, ZHIJI MAPPING 36+19, BACKFILL 19/19 FINAL, DSHB_FINAL_PREP_CLOSED=TRUE | ✅ DSHB BASELINE LOCK COMPLETE — CALIBER DIFF 10/10 MC ARCHIVED, DEV BACKLOG 8/8 LOCKED, SWITCH CHECKLIST 24/24 READY, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE | ✅ DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85 | ✅ DSHE FULL UT VERIFIED — 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK, C1-C5 A+ 50/50 | ✅ DSHE PREP ARCHIVE FINALIZED — 133 FILES, 20 STAGES, ~12.5MB, MD5 35/35 PASS, PROD SWITCH GUIDE READY | ✅ DSHE PREP APPROVED — HERMES P1 3/3 REVIEWED (0 BLOCKING), C1/C2 CALIBER ACKED, 190 ZHIJI_ID REVIEWED, 14 RISK ITEMS UPDATED, MD5 39/39 PASS, 137 FILES, 21 STAGES | ✅ V86_RC2_PREP_CLOSED — PREP正式封板完成, 三方全部批准, 17/17条件通过, 140 FILES, 22 STAGES, ~14.0MB, MD5 42/42 PASS*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE — 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY | ✅ DSHB FINAL PREP COMPLETE — CHART SCHEMA 36/36, ZHIJI MAPPING 36+19, BACKFILL 19/19 FINAL, DSHB_FINAL_PREP_CLOSED=TRUE | ✅ DSHB BASELINE LOCK COMPLETE — CALIBER DIFF 10/10 MC ARCHIVED, DEV BACKLOG 8/8 LOCKED, SWITCH CHECKLIST 24/24 READY, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE | ✅ DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85 | ✅ DSHE FULL UT VERIFIED — 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK, C1-C5 A+ 50/50 | ✅ DSHE PREP ARCHIVE FINALIZED — 133 FILES, 20 STAGES, ~12.5MB, MD5 35/35 PASS, PROD SWITCH GUIDE READY | ✅ DSHE PREP APPROVED — HERMES P1 3/3 REVIEWED (0 BLOCKING), C1/C2 CALIBER ACKED, 190 ZHIJI_ID REVIEWED, 14 RISK ITEMS UPDATED, MD5 39/39 PASS, 137 FILES, 21 STAGES | ✅ V86_RC2_PREP_CLOSED — PREP正式封板完成, 三方全部批准, 17/17条件通过, 140 FILES, 22 STAGES, ~14.0MB, MD5 42/42 PASS | ✅ DSHE_PROD_PHASE_STAGE1_COMPLETE — 投产阶段Stage1完成, 5新增文档, 277KB, 双口径适配✅, zhiji映射同步✅, 影子仿真✅, 观测大盘✅, 切换回滚复核✅, MD5 47/47 PASS*
