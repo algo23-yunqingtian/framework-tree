@@ -73,6 +73,18 @@
 
 ## 近期变更记录
 
+### 2026-10-04 DSHB — V86-RC2 底层图表Schema固化·zhiji预映射规则·回填字段契约最终固化·FINAL_PREP (DSHB_V86_RC2_FINAL_PREP_CHART_SCHEMA_ZHIJI_MAPPING_AND_BACKFILL_FINAL)
+- **T3.1 现状问询**: DSHB底层当前完成状态全量问询反馈 — 已完成: V86-RC1 FULL_LIFECYCLE_CLOSED (commit 0948e1d), RC2 PREP_TASK_BREAKDOWN + GATE_BASELINE (commit 581a9f4), 引擎4项+监控4项任务拆解, C1-C5 Gate准入基线+36冒烟用例; 未完成: 8项底层任务(ENG-01~04/MON-01~04)待开发; 19项回填字段全部已定义待DSHB交付; 24个DSHE依赖用例Mock执行待DSHB复核; P0=0/P1=0/P2=3(全部已修复)
+- **T3.2 图表Schema固化**: `v86_rc2_dshb_chart_schema_full_v7.md` (79KB, 2010行) — 36图表全量绘图Schema定义(8模块/56子面板/7降级), 12章节全覆盖, 15标准字段, PDF周报12章节对齐, 36图表×15Gate用例交叉矩阵, 19回填字段交叉引用, 12性能目标全部达标, DSHB ENG-01~04/MON-01~04任务对齐, 7/7约束合规
+- **T3.3 zhiji预映射**: `v86_rc2_dshb_zhiji_mapping_predefine_v7.md` (76KB, 980行) — 36图表+19回填字段全量zhiji数据库预映射规则, 6表22字段, 15章节全覆盖, 204映射规则, 19/19字段/5/5Gate/10/10冲突/0API调用, 数据质量(13验证/10过滤/6去重/10异常), 5层刷新管线, 4级兜底策略
+- **T3.4 回填字段契约**: `v86_rc2_dshb_backfill_field_final_spec_v7.md` (39KB) — 19项回填字段(F-01~F-19)全部底层定义最终固化, 24个DSHE依赖用例底层指标来源映射, 10项口径冲突全部解决(MC-01~10: 3统一/3保留差异/4互补), Mock数据规格(19/19)+真实数据规格(19/19)+Mock移除计划(24/24), 6份DSHB交付物/9节点/T+1d~T+3d, 5项风险(0高/2中/3低)
+- **T3.5 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段18 DSHB_FINAL_PREP(3文件新增), 总文件数128, 总阶段18; `MD5_MANIFEST_cross_review.md` (更新) — 新增3文件MD5, 24/24全部PASS
+- **T3.6 任务固化**: `JOB_READY.flag` (更新) — DSHB_FINAL_PREP_READY=TRUE, DSHB_FINAL_PREP_COMPLETE=TRUE, DSHB_FINAL_PREP_CLOSED=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增)
+- **新增文件**: 3文件 ~194KB (T3.2 79KB + T3.3 76KB + T3.4 39KB)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED 全部合规
+- **终版结论**: ✅ V86-RC2 DSHB FINAL PREP COMPLETE — 图表Schema固化✅36图表/56子面板/7降级, zhiji预映射✅36图表+19字段/0API调用, 回填字段契约✅19/19定稿/24用例映射/10冲突解决, DSHB_FINAL_PREP_CLOSED=TRUE, 裁定✅READY FOR HERMES GLOBAL VERIFICATION
+
 ### 2026-10-04 DSHE — V86-RC2 展示层UT自测执行·开发缺陷记录·COORD协同用例准备 (DSHE_V86_RC2_PRESENTATION_LAYER_UT_SELFTEST_AND_COORD_PREP)
 - **T3.1 开发缺陷**: `v86_rc2_dshe_dev_defect_log_v7.md` (29KB, 698行) — 5项优化项开发缺陷全量记录, 3缺陷全部P2全部已修复(100%), 32+4=36子任务覆盖5优化项(#3/#4+#12/#9/#10/#11)+COORD, 缺陷率9.4%(3/32), 0 P0/P1/P3, 0约束违规, UT回归68/68 PASS
 - **T3.2 UT自测**: `v86_rc2_dshe_presentation_ut_report_v7.md` (19KB) — **68个UT用例全部PASS**(100%), 5大维度(页面加载12/图表渲染15/别名展示10/降级能力15/演示回放16), 24个DSHB依赖用例使用Mock执行待DSHB复核, 性能达标(P99 2.7s<3.0s, 首屏1.8s<2.0s, CDN 2.0s<2.2s, 降级恢复28s<30s), **C1-C5 Gate准入全部通过**(评分A+ 10/10), 3 P2缺陷全部修复, 裁定✅UT PASS READY FOR IT INTEGRATION

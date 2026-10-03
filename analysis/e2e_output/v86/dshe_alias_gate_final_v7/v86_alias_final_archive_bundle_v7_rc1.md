@@ -3,10 +3,10 @@
 > **任务**: `DSHE_V86_ALIAS_V7_RC1_ITERATION` · T3.6
 > **分支**: `feature/v85-chart-template`
 > **基线**: DSHE V7 (commit 679948a), DSHB V86-RC1 (commit 0948e1d)
-> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW → RC2_PREP → RC2_PREP_ALIGNED → RC2_PREP_ALIGNED_DUAL → RC2_UT (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划 + RC2任务拆解 + UI变更规格 + Gate验收用例 + DSHB Gate准入基线对齐C1-C5 + 双端用例差异评审 + 跨团队契约 + L3回滚联合评审 + 统一用例全集 + **RC2 UT自测执行 + 开发缺陷记录 + COORD协同用例准备**)
+> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW → RC2_PREP → RC2_PREP_ALIGNED → RC2_PREP_ALIGNED_DUAL → RC2_UT → **DSHB_FINAL_PREP** (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划 + RC2任务拆解 + UI变更规格 + Gate验收用例 + DSHB Gate准入基线对齐C1-C5 + 双端用例差异评审 + 跨团队契约 + L3回滚联合评审 + 统一用例全集 + RC2 UT自测执行 + 开发缺陷记录 + COORD协同用例准备 + **DSHB底层图表Schema固化 + zhiji预映射规则 + 回填字段契约最终固化**)
 > **约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION
 > **生成日期**: 2026-10-03
-> **状态**: ✅ **RC2 PREP DUAL-END ALIGNED + UT SELFTEST COMPLETE — 68/68 UT PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY, 125 FILES / 17 STAGES / MD5 21/21 100%**
+> **状态**: ✅ **RC2 UT SELFTEST COMPLETE + DSHB FINAL PREP COMPLETE — 68/68 UT PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY, DSHB_FINAL_PREP_CLOSED=TRUE, 128 FILES / 18 STAGES / MD5 24/24 100%**
 > **DSHB 交叉核验**: ✅ 完成 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7, CR-1~CR-4 全部通过, FULL_LIFECYCLE_CLOSED)
 > **DSHB RC2准备**: ✅ 完成 (DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE, 引擎4项+监控4项任务拆解, Gate准入基线+36冒烟用例, RC2_PREP_READY=TRUE)
 
@@ -30,11 +30,11 @@
 
 ### 1.1 归档统计
 
-| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | RC2_UT | 变化 |
-|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|--------|------|
-| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | **125** | +40 |
-| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | **14 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep)** | **15 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned)** | **16 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual)** | **17 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual→rc2-ut)** | +10 |
-| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | **~11.7 MB** | +8.6 MB |
+| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | RC2_UT | DSHB_FINAL_PREP | 变化 |
+|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|--------|----------------|------|
+| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | **125** | **128** | +43 |
+| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | **14 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep)** | **15 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned)** | **16 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual)** | **17 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual→rc2-ut)** | **18 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review→rc2-prep→rc2-prep-aligned→rc2-prep-aligned-dual→rc2-ut→dshb-final-prep)** | +11 |
+| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | **~11.7 MB** | **~11.9 MB** | +8.8 MB |
 | 渲染缺陷闭环 | ❌ | ✅ 2/2 闭环 | 继承 | — |
 | DSHB 元数据对齐 | ❌ | ✅ 55 字段 | 继承 | — |
 | 跨版本联动校验 | ❌ | ✅ 60 页面 | 继承 | — |
@@ -80,6 +80,10 @@
 | RC2 开发缺陷记录 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 3/3修复** |
 | RC2 COORD准备 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 4/4 READY** |
 | RC2 性能达标 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ P99 2.7s** |
+| DSHB 图表Schema固化 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 36图表/56子面板** |
+| DSHB zhiji预映射 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 36图表+19字段/0API** |
+| DSHB 回填字段契约 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 19/19定稿/24用例/10冲突** |
+| DSHB FINAL_PREP CLOSED | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ DSHB_FINAL_PREP_CLOSED=TRUE** |
 
 ### 1.2 V7-RC1 新增文件
 
@@ -373,6 +377,7 @@ V1 (commit 61b8ca5)
 | **RC2_PREP_ALIGNED** | **DSHB Gate准入基线对齐C1-C5 + 36冒烟用例去重 + 4 DSHE协同用例 + 72用例对齐** | **本次** |
 | **RC2_PREP_ALIGNED_DUAL** | **双端用例差异评审 + 跨团队契约 + L3回滚联合评审 + 统一用例全集 (89用例, 14项差异, 7项去重)** | **本次** |
 | **RC2_UT** | **UT自测执行68/68 PASS + 开发缺陷记录3/3修复 + COORD展示侧准备4/4 READY + C1-C5 A+ 10/10** | **本次** |
+| **DSHB_FINAL_PREP** | **底层图表Schema固化36/36 + zhiji预映射36图表+19字段/0API + 回填字段契约19/19定稿/24用例/10冲突解决 + DSHB_FINAL_PREP_CLOSED=TRUE** | **本次** |
 
 ### 4.3 版本链路完整性
 
@@ -493,6 +498,25 @@ V1 (commit 61b8ca5)
 | 7 | v86_rc2_dshe_coord_case_prep_v7.md | 20,951 B | `D3172D984514CD5BAF90752ADE43E77B` | T3.3 COORD协同用例准备 (4/4 READY) |
 
 **RC2_UT 合计**: 3文件新增, +69,267 B
+
+### 5.7 DSHB_FINAL_PREP 新增文件 (底层图表Schema + zhiji预映射 + 回填字段契约)
+
+> **任务**: DSHB_V86_RC2_FINAL_PREP_CHART_SCHEMA_ZHIJI_MAPPING_AND_BACKFILL_FINAL
+> **阶段**: Stage 18 — DSHB_FINAL_PREP
+> **图表Schema**: 36图表全量绘图Schema定义, 8模块, 56子面板, 7张降级图表
+> **zhiji预映射**: 36图表+19回填字段全量zhiji数据库预映射规则, 0 API调用
+> **回填字段契约**: 19/19字段定稿, 24/24用例映射, 10/10口径冲突解决
+> **DSHB_FINAL_PREP_CLOSED=TRUE** — READY FOR HERMES GLOBAL VERIFICATION
+
+#### 新增文件 (3 files)
+
+| # | 文件 | 大小 | MD5 | 说明 |
+|---|------|------|-----|------|
+| 8 | v86_rc2_dshb_chart_schema_full_v7.md | 79,265 B | `858AE32E3AAE1D5B82A9FE4848662C89` | T3.2 底层图表Schema固化 (36图表/8模块/56子面板/7降级) |
+| 9 | v86_rc2_dshb_zhiji_mapping_predefine_v7.md | 75,657 B | `022C907B1D607651E13731461DC23F7A` | T3.3 zhiji预映射规则 (36图表+19字段/0API调用) |
+| 10 | v86_rc2_dshb_backfill_field_final_spec_v7.md | 38,868 B | `30B8BB8375CB95CDCBFB89BE24CDC12C` | T3.4 回填字段契约最终固化 (19/19定稿/24用例/10冲突) |
+
+**DSHB_FINAL_PREP 合计**: 3文件新增, +193,790 B
 
 ### 5.3 RC1 资产约束
 
@@ -697,10 +721,10 @@ V1 (commit 61b8ca5)
 
 ---
 
-*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL-RC2_UT*
+*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL-RC2_UT-DSHB_FINAL_PREP*
 *生成日期: 2026-10-04*
 *工单: DSHE_V86_ALIAS_V7_RC1_ITERATION · T3.6*
 *分支: feature/v85-chart-template*
 *基线: V7 Archive (commit 679948a)*
 *DSHB 基线: V86-RC1 (commit 0948e1d)*
-*状态: ✅ RC2 UT SELFTEST COMPLETE — 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY — READY FOR DSHB IT INTEGRATION*
+*状态: ✅ RC2 UT SELFTEST COMPLETE + DSHB FINAL PREP COMPLETE — 68/68 UT PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY, DSHB_FINAL_PREP_CLOSED=TRUE — READY FOR DSHB IT INTEGRATION + HERMES GLOBAL VERIFICATION*
