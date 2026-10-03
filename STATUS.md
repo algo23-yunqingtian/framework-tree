@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-11 DSHB — V86-RC2 投产阶段Stage3: ID桥接构建·底层交付入库·P0风险闭环 (DSHB_V86_RC2_PROD_PHASE_STAGE3)
+- **T3.1 ID桥接映射表**: `v86_rc2_prod_id_bridge_mapping_full.md` (46KB) — 197项全量双向ID桥接映射(PB37+CU28+AL25+ZN25+NI18+SN14+SI16+LI15+回填19), 7项已知短ID(i1/i2/j25_tc等)全部映射, 7项长ID(ID02226332~ID02226339)全部映射, 197项DSHE语义ID全部关联, 197项交叉引用全部建立, 0冲突/0缺失/0歧义, R-S01 P0风险闭环支撑完成, 15条DSHE+HERMES同步日志全部确认
+- **T3.2 Stage2产物MD5校验**: `MD5_CHECKSUM_LIST_prod_stage2.md` (8KB) — 6文件MD5校验全部PASS(6/6), 本地-远端完全一致(6/6), MD5_MANIFEST一致(6/6), 总大小155,968B, Commit c08f3b2已推送, 约束合规4/4
+- **T3.3 短ID接口复测**: `v86_rc2_prod_short_id_reverify_shturl.md` (16KB) — j25_tc/i1/i2 3短ID×20次循环验证(60次), 60/60 HTTP 200 PASS(100%), 0 HTTP500(修复前3次), 0空响应(修复前2次), 0 permission_state=-4(修复前2次), 数据非空率100%, 平均响应时间834ms, P99 945ms, 9条DSHE+HERMES同步日志
+- **T3.4 P0/P1风险处置**: `v86_rc2_prod_risk_p0p1_disposition.md` (22KB) — 5项P0/P1风险专项处置(R-S01闭环+R-P01/R-P02/R-P03/R-DSHE-ID缓解), R-S01 P0风险已闭环(197项桥接表+0冲突+0缺失), R-P01 B-02 API文档L1降级预案就绪, R-P02误报率26.3%达标, R-P03短ID 60次复测PASS, R-DSHE-ID桥接表交付DSHE, 风险台账更新19项(0高/9中/10低), 13项回滚触发条件全部定义, 13条DSHE+HERMES同步日志
+- **T3.5 跨团队同步**: 跨团队同步日志全部归档于各交付文档中(37+9+13=59条DSHE+HERMES同步日志全部确认), ID桥接表交付DSHE展示层ID关联改造, 桥接表交付HERMES基线审计
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_stage3/` (4新增)
+- **新增文件**: 4文件 ~92KB (ID桥接 46KB + MD5校验 8KB + 短ID复测 16KB + 风险处置 22KB)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
+- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE3_DONE=TRUE — ID桥接映射表197项全量✅, Stage2 MD5校验6/6 PASS✅, 短ID 60次复测PASS✅, P0/P1风险专项处置5项✅, R-S01 P0风险闭环✅, 跨团队同步59条✅, 底层证据支撑影子测试启动, 跨团队基线一致性恢复
+
 ### 2026-10-10 DSHB — V86-RC2 投产阶段Stage2: 底层收口·B-02跟进·前置自检·Gate证据包·风险二次评估·切换准备 (DSHB_V86_RC2_PROD_PHASE_STAGE2)
 - **T3.1 B-02 API文档风险预案**: `v86_rc2_prod_b02_api_doc_risk_plan.md` (32KB) — B-02 zhiji API文档外部依赖跟进, 24端点覆盖分析(20/24 DSHE已确认/4待确认), 3层降级预案(L1已启用/L2/L3), 3级应急预案(E-01按时交付/E-02再次延误/E-03质量不合格), 影子测试影响评估(83.3%覆盖率可先行), 运维手册更新(4端点替代操作), 故障排查SOP降级步骤, 11条跨团队同步日志, DSHE/HERMES全部确认
 - **T3.2 ENG+MON前置自检**: `v86_rc2_prod_eng_mon_preflight_check.md` (30KB) — 8模块(ENG-01~04+MON-01~04)前置自检, 36图表×15字段交叉比对(540/540一致), MC-01~10口径比对(0歧义), 14种异常分支(14/14正确处理), 14种降级场景(14/14可执行可恢复), 219项映射一致性(100%一致), 32个集成边界(32/32完整), 892/892检查项全部PASS
