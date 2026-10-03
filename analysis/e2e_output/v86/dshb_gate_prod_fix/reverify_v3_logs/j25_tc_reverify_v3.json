@@ -1,0 +1,59 @@
+[
+  {
+    "requested_short_id": "j25_tc",
+    "cycle": 1,
+    "ts": "2026-10-04T00:23:19.897529",
+    "http_status": 500,
+    "api_ms": 1338.3,
+    "api_error": "HTTP 500",
+    "data_fetchable": false,
+    "data_count": 0,
+    "non_zero_count": 0,
+    "perm_state": null,
+    "resolved_series_id": null,
+    "error_detail": "无法识别指标来源(id前缀): j25_tc",
+    "points_sample": null,
+    "raw_payload": {
+      "error": "无法识别指标来源(id前缀): j25_tc",
+      "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): j25_tc\n"
+    }
+  },
+  {
+    "requested_short_id": "j25_tc",
+    "cycle": 2,
+    "ts": "2026-10-04T00:23:20.979529",
+    "http_status": 500,
+    "api_ms": 1080.0,
+    "api_error": "HTTP 500",
+    "data_fetchable": false,
+    "data_count": 0,
+    "non_zero_count": 0,
+    "perm_state": null,
+    "resolved_series_id": null,
+    "error_detail": "无法识别指标来源(id前缀): j25_tc",
+    "points_sample": null,
+    "raw_payload": {
+      "error": "无法识别指标来源(id前缀): j25_tc",
+      "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): j25_tc\n"
+    }
+  },
+  {
+    "requested_short_id": "j25_tc",
+    "cycle": 3,
+    "ts": "2026-10-04T00:23:22.023449",
+    "http_status": 500,
+    "api_ms": 919.9,
+    "api_error": "HTTP 500",
+    "data_fetchable": false,
+    "data_count": 0,
+    "non_zero_count": 0,
+    "perm_state": null,
+    "resolved_series_id": null,
+    "error_detail": "无法识别指标来源(id前缀): j25_tc",
+    "points_sample": null,
+    "raw_payload": {
+      "error": "无法识别指标来源(id前缀): j25_tc",
+      "trace": "Traceback (most recent call last):\n  File \"/root/zhiji-commodity/commodity_api.py\", line 600, in do_GET\n    return self._send(200, get_series(code, start, end))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/zhiji-commodity/commodity_api.py\", line 443, in get_series\n    raise ValueError(\"无法识别指标来源(id前缀): %s\" % code)\nValueError: 无法识别指标来源(id前缀): j25_tc\n"
+    }
+  }
+]

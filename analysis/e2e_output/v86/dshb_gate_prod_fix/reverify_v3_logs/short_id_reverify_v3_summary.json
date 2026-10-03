@@ -1,0 +1,136 @@
+{
+  "title": "DSHB V86-RC2 短ID复测 v3.0 汇总",
+  "report_id": "DSHB_V86_RC2_SELF_CHECK_T3.1",
+  "test_time": "2026-10-04T00:23:55.643222",
+  "test_date": "2026-10-04",
+  "script_version": "v3.0 (short_id forced as series parameter)",
+  "rounds_per_id": 3,
+  "short_id_results": {
+    "total": 8,
+    "pass": 0,
+    "fail": 8,
+    "pass_rate": "0.0%",
+    "details": {
+      "j25_tc": {
+        "short_id": "j25_tc",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 1112.7,
+        "last_verdict": "FAIL",
+        "last_error": "无法识别指标来源(id前缀): j25_tc"
+      },
+      "i1": {
+        "short_id": "i1",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 1272.8,
+        "last_verdict": "FAIL",
+        "last_error": "perm_state=-4"
+      },
+      "i2": {
+        "short_id": "i2",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 1321.1,
+        "last_verdict": "FAIL",
+        "last_error": "perm_state=-4"
+      },
+      "i3": {
+        "short_id": "i3",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 1133.5,
+        "last_verdict": "FAIL",
+        "last_error": "perm_state=-4"
+      },
+      "i4": {
+        "short_id": "i4",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 987.2,
+        "last_verdict": "FAIL",
+        "last_error": "perm_state=-4"
+      },
+      "i5": {
+        "short_id": "i5",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 1000.0,
+        "last_verdict": "FAIL",
+        "last_error": "perm_state=-4"
+      },
+      "i6": {
+        "short_id": "i6",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 1133.6,
+        "last_verdict": "FAIL",
+        "last_error": "perm_state=-4"
+      },
+      "i7": {
+        "short_id": "i7",
+        "total_cycles": 3,
+        "pass_cycles": 0,
+        "fail_cycles": 3,
+        "pass_rate": "0.0%",
+        "avg_ms": 1029.2,
+        "last_verdict": "FAIL",
+        "last_error": "perm_state=-4"
+      }
+    }
+  },
+  "long_id_control_results": {
+    "total": 3,
+    "pass": 3,
+    "fail": 0,
+    "pass_rate": "100.0%",
+    "details": {
+      "ID02226332": {
+        "long_id": "ID02226332",
+        "total_cycles": 2,
+        "pass_cycles": 2,
+        "pass_rate": "100.0%",
+        "avg_ms": 1187.0,
+        "last_verdict": "PASS"
+      },
+      "ID02226334": {
+        "long_id": "ID02226334",
+        "total_cycles": 2,
+        "pass_cycles": 2,
+        "pass_rate": "100.0%",
+        "avg_ms": 1169.7,
+        "last_verdict": "PASS"
+      },
+      "ID02226336": {
+        "long_id": "ID02226336",
+        "total_cycles": 2,
+        "pass_cycles": 2,
+        "pass_rate": "100.0%",
+        "avg_ms": 1077.7,
+        "last_verdict": "PASS"
+      }
+    }
+  },
+  "conclusion": {
+    "short_id_resolvable": false,
+    "long_id_working": true,
+    "overall": "SHORT_ID_NOT_RESOLVABLE_BY_SERVER",
+    "root_cause": "server-side zhiji API lacks short-ID prefix resolution",
+    "dependency_block": true,
+    "action_required": "Request data platform to enable short-ID prefix resolution"
+  }
+}

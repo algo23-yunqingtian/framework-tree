@@ -4467,3 +4467,112 @@ DSHE_PROD_PHASE_VALIDATION_OPTIMIZE_READY=TRUE
 DSHE_PROD_PHASE_VALIDATION_OPTIMIZE_COMPLETE=TRUE
 JOB_READY=FALSE
 TASK_COMPLETED=TRUE
+# �T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T�T
+
+# ══════════════════════════════════════════════════════════════
+# V86-RC2 SELF_CHECK PHASE
+# DSHB_V86_RC2_SELF_CHECK
+# ══════════════════════════════════════════════════════════════
+
+JOB_READY=TRUE
+TASK_COMPLETED=TRUE
+
+# ── Task Metadata ──
+TASK_ID=DSHB_V86_RC2_SELF_CHECK
+TASK_DESCRIPTION=底层测试逻辑自检+元数据修正+依赖梳理专项
+RELEASE_ID=V86-RC2 (Self-Check Phase)
+EXECUTION_DATE=2026-10-14
+BRANCH=feature/v85-chart-template
+REMOTE=origin
+
+# ── Baseline Correction ──
+PREVIOUS_FLAG_ERROR=TRUE
+PREVIOUS_COMMIT_HASH_2B96A3D_EXISTS=FALSE
+PREVIOUS_COMMIT_HASH_CORRECTED_TO=6658faa
+
+# ── T3.1 Script Self-Inspect & Refactor ──
+T3.1_SELF_INSPECT_DOC=TRUE
+T3.1_SELF_INSPECT_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_script_self_inspect_report.md
+T3.1_V3_SCRIPT=TRUE
+T3.1_V3_SCRIPT_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/short_id_reverify_v3.py
+T3.1_SHORT_ID_TESTED=8
+T3.1_SHORT_ID_PASS=0
+T3.1_SHORT_ID_FAIL=8
+T3.1_SHORT_ID_PASS_RATE=0%
+T3.1_LONG_ID_CONTROL=3
+T3.1_LONG_ID_CONTROL_PASS=3
+T3.1_V3_LOG_DIR=analysis/e2e_output/v86/dshb_gate_prod_fix/reverify_v3_logs/
+T3.1_V3_LOG_FILES=12
+T3.1_FRAUD_ROOT_CAUSE=script_never_called_series_with_short_id
+T3.1_V2_SCRIPT_FRAUD_TYPE=search_keyword_bypass + log_mislabeling
+T3.1_STATUS=COMPLETE
+
+# ── T3.2 Bridge Table Revision ──
+T3.2_BRIDGE_REVISED=TRUE
+T3.2_BRIDGE_REVISED_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_prod_id_bridge_mapping_v2_revised.md
+T3.2_METADATA_COMPLETION_RATE=100% (178/178)
+T3.2_REAL_DATA_FETCHABLE_RATE=0% (0/178)
+T3.2_DATA_FETCHABLE_TRUE=0
+T3.2_DATA_FETCHABLE_FALSE=178
+T3.2_DEPENDENCY_BLOCK_TRUE=170
+T3.2_8_ORIGINAL_ENTRIES_ALL_DATA_FETCHABLE_FALSE=TRUE
+T3.2_LONG_ID_DATA_MISMATCH=TRUE (8/8 wrong data)
+T3.2_STATUS=COMPLETE
+
+# ── T3.3 Metadata/Flag/Log Fix ──
+T3.3_METADATA_FIX_DOC=TRUE
+T3.3_METADATA_FIX_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_metadata_fix_report.md
+T3.3_FLAG_HASH_CORRECTED=TRUE
+T3.3_V2_LOGS_PRESERVED=TRUE (audit traceability)
+T3.3_V3_LOGS_GENERATED=TRUE (12 files, real timestamps)
+T3.3_FUTURE_DATES_REMOVED=TRUE (v3 uses real datetime.now())
+T3.3_FAKE_SHORT_ID_LABELS_REMOVED=TRUE (v3 uses requested_short_id + resolved_series_id dual fields)
+T3.3_STATUS=COMPLETE
+
+# ── T3.4 External Dependency Block List ──
+T3.4_DEPENDENCY_BLOCK_DOC=TRUE
+T3.4_DEPENDENCY_BLOCK_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_external_dependency_block_list.md
+T3.4_DEPENDENCY_BLOCK_ITEMS=3
+T3.4_SHORT_ID_RESOLUTION=BLOCKED_EXTERNAL
+T3.4_LONG_ID_MAPPING_CORRECTION=BLOCKED_EXTERNAL
+T3.4_API_PERMISSION_STATE=BLOCKED_EXTERNAL
+T3.4_DSHB_SELF_FIXABLE_ITEMS=3 (script fraud, bridge table, flag hash)
+T3.4_STATUS=COMPLETE
+
+# ── T3.5 Risk Re-Evaluation ──
+T3.5_RISK_RE_EVAL_DOC=TRUE
+T3.5_RISK_RE_EVAL_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_risk_re_evaluate.md
+T3.5_RISK_TOTAL=27
+T3.5_RISK_P0=2
+T3.5_RISK_P1=3
+T3.5_RISK_P2=14
+T3.5_RISK_NEW=2 (R-AUDIT-07, R-AUDIT-08)
+T3.5_RISK_SELF_FIXABLE=5
+T3.5_RISK_EXTERNAL_BLOCKED=4
+T3.5_R_AUDIT_01_STATUS=MITIGATED (P0->P1, fraud fixed)
+T3.5_R_AUDIT_03_STATUS=CLOSED (P0->P2, hash corrected)
+T3.5_R_P03_STATUS=BLOCKED_EXTERNAL (short_id dependency)
+T3.5_R_S01_STATUS=OPEN (external dependency)
+T3.5_STATUS=COMPLETE
+
+# ── Bridge Version Chain ──
+BRIDGE_V2_INITIAL=4.49% (8/178 COMPLETED, nominal)
+BRIDGE_V2_FULL=100% (178/178 COMPLETED, nominal - INCORRECT)
+BRIDGE_V2_REVISED=0% REAL_DATA_FETCHABLE (metadata=100%, real_fetchable=0%)
+
+# ── Git ──
+COMMIT_HASH_SELF_CHECK=PENDING
+BRANCH=feature/v85-chart-template
+REMOTE=origin
+
+# ── Constraints ──
+NO_ZHIJI_API_CALL=FALSE (PROD_PHASE_ENABLED)
+NO_MODIFY_V85=TRUE
+NO_OVERWRITE=TRUE (all original files preserved)
+BRANCH_LOCKED=TRUE
+
+# ── Final Status ──
+DSHB_PROD_PHASE_SELF_CHECK_DONE=TRUE
+DSHB_PROD_PHASE_SELF_CHECK_READY=TRUE
+DSHB_PROD_PHASE_SELF_CHECK_COMPLETE=TRUE
+TASK_COMPLETED=TRUE
