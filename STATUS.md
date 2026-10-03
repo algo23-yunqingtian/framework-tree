@@ -179,6 +179,19 @@
 - **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
 - **终版结论**: ✅ DSHE_PROD_PHASE_ID_MAPPING_ADAPT_FULL_DONE=TRUE — ID映射全量落地展示层适配专项完成 (9批次全部适配✅, 170项PENDING→COMPLETED✅, 229项全量验收✅, 桥接率100%✅, 47观测+47预警+21策略✅, EM-05 v1.9✅, 3异常闭环✅, 9/9 Gate PASS✅, 169文件/28阶段/MD5 73/73 PASS✅)
 
+### 2026-10-13 DSHE — V86-RC2 展示层校验边界自检 + 上下游校验机制优化专项工单 (DSHE_V86_RC2_PROD_PHASE_VALIDATION_OPTIMIZE)
+- **触发原因**: HERMES二次审计发现DSHB底层桥接条目仅元数据登记无法真实取数, DSHE当前校验仅验证UI渲染和ID文本检索无法校验底层API指标可用性, 存在上下游校验错配; 底层短ID解析为数据平台外部依赖DSHE无法修复底层API能力
+- **T3.1 DSHE校验能力边界自检**: `v86_rc2_dshe_validation_boundary_selfcheck.md` (22KB) — 历史9批次170项+ID_ALIGN_FIX 60项+Stage4全部校验100%为UI层面底层取数校验为0, DSHE可校验18项展示层/元数据项无法校验7项底层取数项, 16项能力边界缺陷识别(3 P0/6 P1/6 P2/1 P3), 双维度校验模型定义(展示层+底层取数), 校验能力成熟度从L3提升至L4, 4阶段改进路线
+- **T3.2 面板底层取数状态可视化增强**: `v86_rc2_dshe_panel_fetch_status_enhance.md` (26KB) — data_fetchable字段接入3视图(Grafana面板/告警详情/日志视图), 2类状态标记(FULLY_AVAILABLE全链路可用/DEPENDENCY_BLOCKED依赖阻塞), 6面板+15告警+6日志全覆盖, 3级降级策略(缓存/静态/隔离), 跨视图状态同步机制, 面板状态增强配置方案
+- **T3.3 跨团队联合校验规则迭代**: `v86_rc2_dshe_cross_team_validation_rule_update.md` (33KB) — 校验脚本增加data_fetchable前置判断, DEPENDENCY_BLOCK标记机制建立(取数不可用不纳入PASS统计), PASS统计规则从单维度升级为双维度, 6项SOP全部更新(前置依赖/双维度校验/PASS定义/DEPENDENCY_BLOCK/Gate控制/异常记录), 26条校验规则定义, 7步联合校验流程, 10步跨团队数据流
+- **T3.4 风险观测规则与应急手册增强**: `v86_rc2_dshe_risk_obs_enhance.md` (23KB) — R-DSHE-ID从47条扩展至53条观测规则+53条预警条件(+6), 21条扩展至27条缓解策略(+6), 新增R-DSHE-FETCH P0级风险条目(底层取数不可用), 告警分类从2大类重构为4大类(新增上游依赖阻塞), EM-05 v1.9→v2.0新增E-FETCH上游依赖阻塞应急流程(检测→确认→降级→修复→恢复→复盘), 53/53全量规则审查PASS
+- **T3.5 协作流程文档归档**: `v86_rc2_dshe_collaboration_optimization_summary.md` (29KB) — 联合测试准入条件从4项升级为8项(新增data_fetchable/DEPENDENCY_BLOCK/Gate双维度/DSHB同步确认), 强制规则FR-01建立(后续所有批次必须双维度校验), 跨团队协作SOP固化6项, 联合测试流程从3步扩展为7步, 历史校验全部重新标记为⚠️部分有效需重新校验, 后续批次准入检查清单15项
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (5新增)
+- **新增文件**: 5文件 ~133KB (22+26+33+23+29KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE / NO_PANEL_JSON_MODIFICATION=TRUE / NO_ENGINE_LOGIC_MODIFICATION=TRUE 全部合规
+- **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_VALIDATION_OPTIMIZE_DONE=TRUE — 展示层校验边界自检+上下游校验机制优化专项完成 (校验边界明确✅18可校验/7不可校验, 面板状态增强✅3视图data_fetchable可视化, 校验规则迭代✅双维度+DEPENDENCY_BLOCK, 风险观测增强✅53条规则+R-DSHE-FETCH+EM-05 v2.0, 协作流程归档✅8项准入+FR-01强制规则, 174文件/29阶段/MD5 78/78 PASS✅)
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
 - **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
 - **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅
