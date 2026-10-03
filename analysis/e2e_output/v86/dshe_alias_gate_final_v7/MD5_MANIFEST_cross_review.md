@@ -122,18 +122,19 @@
 
 ---
 
-## DSHE_FULL_UT_VERIFIED New Files (2 files)
+## DSHB_BASELINE_LOCK New Files (3 files)
 
-> **Task:** DSHE_V86_RC2_DEP_CASE_MOCK_REPLACE_AND_RERUN
-> **Sub-tasks:** T3.1 Mock替换规格 | T3.2 复测报告
-> **Updated:** 2026-10-04
+> **Task:** DSHB_V86_RC2_BASELINE_LOCK_CALIBER_DIFF_AND_DEV_BACKLOG_FINAL
+> **Date:** 2026-10-04
+> **Status:** DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE — READY FOR DSHB DEV EXECUTION + DSHE REAL DATA RETEST
 
 | # | File | MD5 | Size |
 |---|------|-----|------|
-| 28 | v86_rc2_dshe_dep_case_mock_replace_spec_v7.md | `B8CD07E7F02F4B250F5952EC3E9267F3` | 27,664 B |
-| 29 | v86_rc2_dshe_dep_case_rerun_report_v7.md | `6C9313073137C289EC0888499568FF46` | 21,877 B |
+| 25 | v86_rc2_dshb_caliber_diff_keep_spec_v7.md | `BF61B134D23B546F057E1ADB3D60AC16` | 27,588 B |
+| 26 | v86_rc2_dshb_underlying_dev_backlog_v7.md | `A1AC67929814ABA5B0E3F515AB2B6D98` | 30,500 B |
+| 27 | v86_rc2_dshb_dshe_dep_case_baseline_v7.md | `2A6513623572F750E1C6671F2FEF39C2` | 33,439 B |
 
-**Total delta:** +49,541 B (27,664 + 21,877 new files)
+**DSHB_BASELINE_LOCK total:** 3 files, +91,527 B
 
 ---
 
@@ -165,9 +166,10 @@
 | v86_rc2_dshb_chart_schema_full_v7.md | ✅ | PASS |
 | v86_rc2_dshb_zhiji_mapping_predefine_v7.md | ✅ | PASS |
 | v86_rc2_dshb_backfill_field_final_spec_v7.md | ✅ | PASS |
-| v86_rc2_dshe_dep_case_mock_replace_spec_v7.md | ✅ | PASS |
-| v86_rc2_dshe_dep_case_rerun_report_v7.md | ✅ | PASS |
-| **Total** | **29/29** | **✅ 100% PASS** |
+| v86_rc2_dshb_caliber_diff_keep_spec_v7.md | ✅ | PASS |
+| v86_rc2_dshb_underlying_dev_backlog_v7.md | ✅ | PASS |
+| v86_rc2_dshb_dshe_dep_case_baseline_v7.md | ✅ | PASS |
+| **Total** | **27/27** | **✅ 100% PASS** |
 
 ---
 
@@ -199,24 +201,7 @@
 | **RC2_PREP_ALIGNED (DUAL)** | **122** | **195** | **16** |
 | **RC2_UT** | **125** | **198** | **17** |
 | **DSHB_FINAL_PREP** | **128** | **201** | **18** |
-| **RC2_FINAL_PREP_CLOSED** | **128** | **201** | **18** |
-| **DSHE_FULL_UT_VERIFIED** | **130** | **203** | **19** |
-
----
-
-## RC2_FINAL_PREP_CLOSED New Files (3 files)
-
-> **Task:** DSHE_V86_RC2_FINAL_PREP_CLOSEOUT
-> **Sub-tasks:** T3.1 Chart Schema | T3.2 zhiji Mapping | T3.3 HERMES Check Spec
-> **Updated:** 2026-10-03
-
-| # | File | MD5 | Size |
-|---|------|-----|------|
-| 25 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | 48,533 B |
-| 26 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | 51,858 B |
-| 27 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | 42,048 B |
-
-**Total delta:** +142,439 B (48,533 + 51,858 + 42,048 new files)
+| **DSHB_BASELINE_LOCK** | **131** | **204** | **19** |
 
 ---
 
@@ -248,9 +233,9 @@
 | 22 | v86_rc2_dshb_chart_schema_full_v7.md | `858AE32E3AAE1D5B82A9FE4848662C89` | RC2 DSHB chart schema full (36 charts, 8 modules, 56 subpanels, 7 degraded) |
 | 23 | v86_rc2_dshb_zhiji_mapping_predefine_v7.md | `022C907B1D607651E13731461DC23F7A` | RC2 DSHB zhiji mapping predefine (36 charts + 19 fields, 0 API calls) |
 | 24 | v86_rc2_dshb_backfill_field_final_spec_v7.md | `30B8BB8375CB95CDCBFB89BE24CDC12C` | RC2 DSHB backfill field final spec (19/19 finalized, 24/24 cases mapped, 10/10 conflicts resolved) |
-| 25 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | DSHE全量36图表PDF绘图Schema固化 (36/36图表, 8模块, 7降级兜底, 19回填字段映射) |
-| 26 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | DSHE zhiji数据库预映射规则 (197项映射, 178指标+19回填字段, 100%覆盖) |
-| 27 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | DSHE HERMES校验规范 (85项校验, C1-C5映射, 88.2%全自动, 高风险15项) |
+| 25 | v86_rc2_dshb_caliber_diff_keep_spec_v7.md | `BF61B134D23B546F057E1ADB3D60AC16` | RC2 DSHB caliber diff archive (10/10 MC resolved, 3 retain + 4 complementary + 3 unified, 0 ambiguity) |
+| 26 | v86_rc2_dshb_underlying_dev_backlog_v7.md | `A1AC67929814ABA5B0E3F515AB2B6D98` | RC2 DSHB underlying dev backlog (8/8 tasks locked, ENG-01~04 + MON-01~04, 9 nodes, T+1d~T+3d) |
+| 27 | v86_rc2_dshb_dshe_dep_case_baseline_v7.md | `2A6513623572F750E1C6671F2FEF39C2` | RC2 DSHB DSHE dep case baseline (24/24 Mock→Real switch checklist, 2 batches, 8 rollback triggers) |
 
 ---
 
@@ -272,4 +257,4 @@
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE | ✅ DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85 | ✅ DSHE FULL UT VERIFIED — 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK, C1-C5 A+ 50/50*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE — 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY | ✅ DSHB FINAL PREP COMPLETE — CHART SCHEMA 36/36, ZHIJI MAPPING 36+19, BACKFILL 19/19 FINAL, DSHB_FINAL_PREP_CLOSED=TRUE | ✅ DSHB BASELINE LOCK COMPLETE — CALIBER DIFF 10/10 MC ARCHIVED, DEV BACKLOG 8/8 LOCKED, SWITCH CHECKLIST 24/24 READY, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE*

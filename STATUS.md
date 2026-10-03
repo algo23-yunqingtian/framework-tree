@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-04 DSHB — V86-RC2 底层开发任务排期锁定·口径差异归档固化·DSHE依赖用例切换清单·BASELINE_LOCK (DSHB_V86_RC2_BASELINE_LOCK_CALIBER_DIFF_AND_DEV_BACKLOG_FINAL)
+- **T3.1 口径差异归档**: `v86_rc2_dshb_caliber_diff_keep_spec_v7.md` (28KB, ~660行) — 10项MC口径冲突(MC-01~MC-10)全部正式归档, 3项保留差异(MC-02 P1阈值/MC-05可用性/MC-06约束数量)+4项互补口径(MC-03延迟/MC-04冷启动/MC-07 C5范围/MC-09监控粒度)+3项统一/DSHB独有(MC-01图表匹配数/MC-08误报率/MC-10别名映射), HERMES校验规则10条(2BLOCK+2WARNING+6INFO), 风险4项(0P0/0P1/2P2), 投产特殊处理规则10/10, 约束合规4/4
+- **T3.2 底层任务排期**: `v86_rc2_dshb_underlying_dev_backlog_v7.md` (31KB, ~580行) — 8项底层开发任务(ENG-01~04/MON-01~04)完整规格, 每项含业务目标/输入输出/验收标准/预估工时/前置依赖/风险点/交付节点/投产前置条件, 预估总工时12pd, 9个交付节点(T+1d~T+3d), 任务依赖图+关键路径, 验收标准32项(8×4), 风险8项(0P0/0P1/3P2/5P3), 投产前置条件9项(P-01~P-09), 约束合规4/4
+- **T3.3 切换检查清单**: `v86_rc2_dshb_dshe_dep_case_baseline_v7.md` (33KB, ~650行) — 24个DSHE依赖用例Mock→Real切换检查清单, 通用前置条件8项+专项前置条件9项, 验证步骤5步标准流程(格式/完整性/业务逻辑/一致性/回归), 异常判定5级(CRITICAL/HIGH/MEDIUM/LOW/INFO), 回滚触发条件8项+回滚策略4种, 2批次切换(T+1d: 11用例/T+3d: 13用例), 风险8项(0P0/0P1/4P2/4P3), 约束合规4/4
+- **T3.4 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段19 BASELINE_LOCK(3文件新增), 总文件数131, 总阶段19; `MD5_MANIFEST_cross_review.md` (更新) — 新增3文件MD5, 27/27全部PASS
+- **T3.5 任务固化**: `JOB_READY.flag` (更新) — DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增)
+- **新增文件**: 3文件 ~92KB (T3.1 28KB + T3.2 31KB + T3.3 33KB)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED 全部合规
+- **终版结论**: ✅ V86-RC2 DSHB BASELINE LOCK COMPLETE — 口径差异归档✅10/10 MC解决/0歧义, 底层任务排期✅8/8任务锁定/9节点/T+1d~T+3d, 切换清单✅24/24用例准入+回滚策略, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE, 裁定✅READY FOR DSHB DEV EXECUTION + DSHE REAL DATA RETEST
+
 ### 2026-10-04 DSHB — V86-RC2 底层图表Schema固化·zhiji预映射规则·回填字段契约最终固化·FINAL_PREP (DSHB_V86_RC2_FINAL_PREP_CHART_SCHEMA_ZHIJI_MAPPING_AND_BACKFILL_FINAL)
 - **T3.1 现状问询**: DSHB底层当前完成状态全量问询反馈 — 已完成: V86-RC1 FULL_LIFECYCLE_CLOSED (commit 0948e1d), RC2 PREP_TASK_BREAKDOWN + GATE_BASELINE (commit 581a9f4), 引擎4项+监控4项任务拆解, C1-C5 Gate准入基线+36冒烟用例; 未完成: 8项底层任务(ENG-01~04/MON-01~04)待开发; 19项回填字段全部已定义待DSHB交付; 24个DSHE依赖用例Mock执行待DSHB复核; P0=0/P1=0/P2=3(全部已修复)
 - **T3.2 图表Schema固化**: `v86_rc2_dshb_chart_schema_full_v7.md` (79KB, 2010行) — 36图表全量绘图Schema定义(8模块/56子面板/7降级), 12章节全覆盖, 15标准字段, PDF周报12章节对齐, 36图表×15Gate用例交叉矩阵, 19回填字段交叉引用, 12性能目标全部达标, DSHB ENG-01~04/MON-01~04任务对齐, 7/7约束合规
