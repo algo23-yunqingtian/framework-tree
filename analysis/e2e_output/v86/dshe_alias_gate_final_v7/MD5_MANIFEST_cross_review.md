@@ -75,7 +75,7 @@
 
 | # | File | MD5 | Size |
 |---|------|-----|------|
-| 15 | v86_rc2_dshe_dshb_case_diff_review_v7.md | `51FD530A6FD9D1DC99C636B601783FC6` | 26,968 B |
+| 15 | v86_rc2_dshe_dshb_case_diff_review_v7.md | `2FA13543BDFD408BDE61CCDBE2B47CB3` | 74,451 B |
 | 16 | v86_rc2_cross_team_contract_v7.md | `7609F648C93CC2D3C38474AC409C94EE` | 23,759 B |
 | 17 | v86_rc2_gate_unified_case_set_v7.md | `FEC14C7436F5FAFBF9890D221AC7C279` | 21,403 B |
 
@@ -85,7 +85,7 @@
 |---|------|---------|---------|----------|----------|--------|
 | 18 | v86_rc2_dshe_ui_change_spec_v7.md | `F5956B722BDC8B057E5870E562FD13C9` | `DF0320673819041CB2754FFC4427EB15` | 73,990 B | 81,675 B | +7,685 B |
 
-**Total delta:** +79,815 B (73,990 B → 81,675 B, +10.4%) + 72,130 B (3 new files)
+**Total delta:** +127,298 B (74,451 + 23,759 + 21,403 new files + 7,685 updated)
 
 ---
 
@@ -162,7 +162,7 @@
 | 12 | v86_rc2_dshe_presentation_task_breakdown_v7.md (aligned) | `CBFFCA189868978BFBCD441D3952CA1C` | RC2 task breakdown aligned with DSHB Gate C1-C5 (36 subtasks, 18 person-days + 2.5h coordination) |
 | 13 | v86_rc2_dshe_ui_change_spec_v7.md (aligned) | `F5956B722BDC8B057E5870E562FD13C9` | RC2 UI change spec aligned with DSHB ENG-01/03/04, MON-01/02/04 (5 items, C1-C5 mapping) |
 | 14 | v86_rc2_dshe_gate_accept_case_v7.md (aligned) | `7D2FFCE445BEEEFBB5CBC552953140C9` | RC2 Gate accept cases aligned with DSHB C1-C5 + 4 COORD cases (72 cases total, 36 smoke dedup) |
-| 15 | v86_rc2_dshe_dshb_case_diff_review_v7.md | `51FD530A6FD9D1DC99C636B601783FC6` | DSHB双端用例差异评审 (12项差异, 7项去重, 5项口径冲突已修正) |
+| 15 | v86_rc2_dshe_dshb_case_diff_review_v7.md | `2FA13543BDFD408BDE61CCDBE2B47CB3` | DSHB双端用例差异评审 (24项差异台账, 10项口径冲突, 19项字段缺口, 5项去重建议, 12项行动项) |
 | 16 | v86_rc2_cross_team_contract_v7.md | `7609F648C93CC2D3C38474AC409C94EE` | 跨团队依赖契约 (#9/#10/#11, 7依赖点, 19回填字段, 23用例评审) |
 | 17 | v86_rc2_gate_unified_case_set_v7.md | `FEC14C7436F5FAFBF9890D221AC7C279` | RC2统一Gate验收用例全集 (89用例, 去重合并, P0/P1标记) |
 | 18 | v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback) | `DF0320673819041CB2754FFC4427EB15` | RC2 UI change spec with L3 rollback joint review (8项时序风险, 6项断点修复, 13项联合验证) |
