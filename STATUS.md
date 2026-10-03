@@ -84,6 +84,17 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
 - **终版结论**: ✅ DSHE V86-RC1 PRESENTATION LAYER FULL LIFECYCLE CLOSED (交叉核验✅48/48, 复盘评审✅8项+5建议, 验收终稿✅FINAL, 0阻塞缺陷, 5项P2全部前端渲染类, 风险2/10 LOW)
 
+### 2026-10-03 DSHE+DSHB — V86-RC1 跨评审遗留项闭环·联合评审签字·RC2规划 (DSHE_V86_RC1_JOINT_REVIEW_AND_RC2_PLANNING)
+- **T3.1 遗留项闭环**: `v86_rc1_dshb_open_item_response_v7.md` (新增, ~24KB) + `v86_rc1_dshe_open_item_acknowledge_v7.md` (新增, ~22KB) — DSHB答复3项标记(F-01 P2数量口径/F-02数据一致性/F-03 P2归因分类), DSHE逐项复核确认, 3/3全部闭环, 跨团队口径一致
+- **T3.2 联合评审签字**: `v86_rc1_joint_review_sign_package_v7.md` (新增, ~24KB) — 28份文档汇总, 47/47检查全PASS, 版本/约束/风险/遗留/交叉核验/优化/归档7大维度校验, DSHE+DSHB双端签字确认, 版本基线锁定V86-RC1
+- **T3.3 RC2规划**: `v86_rc2_iteration_plan_draft_v7.md` (新增, ~29KB) — 13项优化清单(8 DSHB+5 DSHE), 3类别(展示层5/底层引擎4/监控4), 优先级(P1=2/P2=7/P3=4), 工作量68人天, 5跨团队协同项, Gate准入标准7项
+- **T3.4 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段13 JOINT_REVIEW(4文件), 总文件数115, 总阶段13, 总大小~10.3MB, MD5全部校验通过; `MD5_MANIFEST_cross_review.md` (更新) — 新增4文件MD5, 8/8全部PASS
+- **T3.5 任务固化**: `JOB_READY.flag` (更新) — JOINT_REVIEW_READY=TRUE, JOB_READY=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增+1更新DSHB目录1新增)
+- **新增文件**: 3新增~76KB (DSHE目录) + 1新增~24KB (DSHB目录)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ✅ V86-RC1 JOINT REVIEW COMPLETE (遗留项✅3/3闭环, 联合评审✅47/47检查PASS, 双端签字✅, RC2规划✅13项优化, 版本基线锁定✅V86-RC1, 归档✅115文件/13阶段/MD5 100%)
+
 ### 2026-10-03 DSHE — V86-RC1 展示层交付包预评审·P2缺陷台账·归档预校验·交叉核验清单·验收初稿 (DSHE_V86_RC1_PRESENTATION_LAYER_PRE_AUDIT)
 - **T3.1 预评审**: `v86_rc1_dshe_release_package_pre_audit_v7.md` — 全量扫描5交付文档+101归档资产, 版本信息100%统一, 821链接0死链, 36图表全部渲染正确, 11脚本/18场景/90Q&A全部回放通过, 0渲染缺陷, 预评审裁定✅READY
 - **T3.2 P2台账**: `v86_rc1_dshe_p2_backlog_and_longterm_sop_v7.md` — 5项P2缺陷完整台账(P2-001~005), 全部为纯前端渲染类, 无底层引擎问题, 7项已知限制补充24h观测记录, 三阶段长期观测SOP(T+0~T+30d), 5项P2全部非阻塞

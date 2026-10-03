@@ -3,10 +3,10 @@
 > **任务**: `DSHE_V86_ALIAS_V7_RC1_ITERATION` · T3.6
 > **分支**: `feature/v85-chart-template`
 > **基线**: DSHE V7 (commit 679948a), DSHB V86-RC1 (commit 0948e1d)
-> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿)
+> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划)
 > **约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION
 > **生成日期**: 2026-10-03
-> **状态**: ✅ **CROSS_REVIEW COMPLETE — FULL LIFECYCLE CLOSED**
+> **状态**: ✅ **JOINT_REVIEW COMPLETE — VERSION BASELINE LOCKED**
 
 ---
 
@@ -28,11 +28,11 @@
 
 ### 1.1 归档统计
 
-| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | 变化 |
-|------|-----|--------|----------------|-----------|-------------|------|
-| 归档文件数 | 85 | **91** | **101** | **106** | **111** | +26 |
-| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | +5 |
-| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | +6.4 MB |
+| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | 变化 |
+|------|-----|--------|----------------|-----------|-------------|-------------|------|
+| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | +30 |
+| 归档阶段 | 7 (v1→v7) | **8 (v1→v7-rc1)** | **10 (v1→v7-rc1→observation)** | **11 (v1→v7-rc1→observation→pre-audit)** | **12 (v1→v7-rc1→observation→pre-audit→cross-review)** | **13 (v1→v7-rc1→observation→pre-audit→cross-review→joint-review)** | +6 |
+| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | +7.2 MB |
 | 渲染缺陷闭环 | ❌ | ✅ 2/2 闭环 | 继承 | — |
 | DSHB 元数据对齐 | ❌ | ✅ 55 字段 | 继承 | — |
 | 跨版本联动校验 | ❌ | ✅ 60 页面 | 继承 | — |
@@ -61,7 +61,10 @@
 | 验收初稿 | ❌ | ❌ | ❌ | ⏳ 初稿完成(待DSHB回填) | **✅ 终稿完成** |
 | 跨Agent交叉核验 | ❌ | ❌ | ❌ | ❌ | ✅ 19字段+4标准全PASS | **新增** |
 | 复盘评审意见 | ❌ | ❌ | ❌ | ❌ | ✅ 8优化项+5补充+3待确认 | **新增** |
-| 验收终稿 | ❌ | ❌ | ❌ | ❌ | ✅ FULL LIFECYCLE CLOSED | **新增** |
+| 验收终稿 | ❌ | ❌ | ❌ | ❌ | ✅ FULL LIFECYCLE CLOSED | 继承 |
+| 遗留项闭环 | ❌ | ❌ | ❌ | ❌ | ⏳ 3项待确认 | **✅ 3/3 CLOSED** | **新增** |
+| 联合评审签字 | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ JOINT REVIEW COMPLETE** | **新增** |
+| RC2 迭代规划 | ❌ | ❌ | ❌ | ❌ | ❌ | **✅ 13项优化清单** | **新增** |
 
 ### 1.2 V7-RC1 新增文件
 
@@ -399,7 +402,16 @@ V1 (commit 61b8ca5)
 | **复盘评审意见** | **v86_rc1_dshe_retrospect_review_comments_v7.md** | **~20,000 B** | **8优化项 + 5补充 + 3待确认** |
 | **验收终稿** | **v86_rc1_dshe_final_acceptance_summary_v7.md** | **~35,000 B** | **FULL LIFECYCLE CLOSED** |
 
-### 5.2 RC1 资产约束
+### 5.2 JOINT_REVIEW 新增文件
+
+| # | 文件 | 大小 | MD5 | 说明 |
+|---|------|------|-----|------|
+| 1 | v86_rc1_dshb_open_item_response_v7.md | 24,508 B | `9BC6B03CC1E525F0156A369CADADF7F5` | DSHB 遗留项答复 (3/3 CLOSED) |
+| 2 | v86_rc1_dshe_open_item_acknowledge_v7.md | 22,493 B | `5D60C3B12AF9FEE6AF951058B01A31F4` | DSHE 遗留项复核确认 (3/3 CLOSED) |
+| 3 | v86_rc1_joint_review_sign_package_v7.md | 23,756 B | `1C34E6B71A06630877A5AAFCF4D9F186` | 联合评审签字材料包 (47/47 PASS) |
+| 4 | v86_rc2_iteration_plan_draft_v7.md | 28,651 B | `97E8B5660EE6563C424D5BF244138193` | RC2 迭代规划初稿 (13 优化项) |
+
+### 5.3 RC1 资产约束
 
 | 约束 | 值 | 说明 |
 |------|-----|------|
@@ -509,6 +521,9 @@ V1 (commit 61b8ca5)
 | **跨Agent交叉核验** | **✅ COMPLETE** | **19字段回填, 48项比对全部PASS** |
 | **复盘评审** | **✅ COMPLETE** | **8优化项评审, 5补充建议, 3待DSHB确认(非阻塞)** |
 | **验收终稿** | **✅ COMPLETE** | **FULL LIFECYCLE CLOSED, 0阻塞, 5P2前端渲染类** |
+| **遗留项闭环** | **✅ COMPLETE** | **3/3 全部闭环 (F-01/F-02/F-03)** |
+| **联合评审签字** | **✅ COMPLETE** | **47/47 检查通过, 双端签字确认** |
+| **RC2 迭代规划** | **✅ DRAFT** | **13 优化项清单固化, 待联合评审确认** |
 
 ### 7.2 RC1 发布状态
 
@@ -558,6 +573,15 @@ V1 (commit 61b8ca5)
 ║  FINAL VERDICT: ✅ FULL LIFECYCLE CLOSED                     ║
 ║  ═══════════════════════════════════════                      ║
 ║                                                              ║
+║  JOINT-REVIEW:                                               ║
+║  OPEN-ITEMS:   ✅ 3/3 CLOSED (F-01/F-02/F-03)                ║
+║  SIGN-OFF:     ✅ 47/47 checks PASS                           ║
+║  RC2 PLAN:     ✅ 13 optimization items                       ║
+║  ═══════════════════════════════════════                      ║
+║  FINAL VERDICT: ✅ JOINT REVIEW COMPLETE                     ║
+║  VERSION BASELINE: ✅ V86-RC1 LOCKED                          ║
+║  ═══════════════════════════════════════                      ║
+║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -590,7 +614,7 @@ V1 (commit 61b8ca5)
 
 ---
 
-*文档版本: V7-RC1-CROSS_REVIEW*
+*文档版本: V7-RC1-JOINT_REVIEW*
 *生成日期: 2026-10-03*
 *工单: DSHE_V86_ALIAS_V7_RC1_ITERATION · T3.6*
 *分支: feature/v85-chart-template*
