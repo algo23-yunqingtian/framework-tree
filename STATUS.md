@@ -968,3 +968,10 @@
 - 灰度Gate判定: 暂不通过(3/8满足+1/8有条件+4/8未满足), 待Stage 2复审(预计T+3d 10-07)
 - 预计灰度上线: 2026-10-08 ~ 2026-10-11
 - 状态标记: HERMES_PROD_PHASE_STAGE1_DONE=TRUE
+
+### 2026-10-04 HERMES_V86_RC2_PROD_STAGE1 (rebase后补充修订)
+- 分支rebase至f1b24bc后二次全量MD5复核: 129/132匹配, 3项差异
+- 差异溯源: d5e5dee/ef16efd(DSHE归档更新时序差) + 120f576(HERMES自身MD5清单)
+- 结论: 3项均为快照生成时序差, 非封板后违规改动; 8项不可修改冻结条目全部零违规
+- 审计报告§2.1.1补充快照基线修订记录 (MD5: d83f3a7a)
+- JOB_READY.flag冲突已解决: 保留V86_RC2_PREP_CLOSED=TRUE(远端) + 追加HERMES_PROD_PHASE_STAGE1_DONE=TRUE
