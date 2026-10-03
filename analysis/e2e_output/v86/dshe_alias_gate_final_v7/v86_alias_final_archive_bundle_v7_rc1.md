@@ -3,10 +3,10 @@
 > **任务**: `DSHE_V86_ALIAS_V7_RC1_ITERATION` · T3.6
 > **分支**: `feature/v85-chart-template`
 > **基线**: DSHE V7 (commit 679948a), DSHB V86-RC1 (commit 0948e1d)
-> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW → RC2_PREP → RC2_PREP_ALIGNED → RC2_PREP_ALIGNED_DUAL → RC2_UT → **DSHB_FINAL_PREP** (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划 + RC2任务拆解 + UI变更规格 + Gate验收用例 + DSHB Gate准入基线对齐C1-C5 + 双端用例差异评审 + 跨团队契约 + L3回滚联合评审 + 统一用例全集 + RC2 UT自测执行 + 开发缺陷记录 + COORD协同用例准备 + **DSHB底层图表Schema固化 + zhiji预映射规则 + 回填字段契约最终固化**)
+> **迭代**: V7 → V7-RC1 → V7-OBSERVATION → PRE_AUDIT → CROSS_REVIEW → JOINT_REVIEW → RC2_PREP → RC2_PREP_ALIGNED → RC2_PREP_ALIGNED_DUAL → RC2_UT → DSHB_FINAL_PREP → **DSHE_FINAL_PREP_CLOSED** → **DSHE_FULL_UT_VERIFIED** (渲染缺陷闭环 + DSHB 元数据对齐 + 跨版本联动校验 + V8 演示包 RC1 适配 + GitHub 发布素材终版 + 归档固化 + 发布窗口值守 + T+0/24h观测 + 演示回放 + 预评审 + P2台账 + 交叉核验 + 复盘评审 + 验收终稿 + 遗留项闭环 + 联合评审签字 + RC2规划 + RC2任务拆解 + UI变更规格 + Gate验收用例 + DSHB Gate准入基线对齐C1-C5 + 双端用例差异评审 + 跨团队契约 + L3回滚联合评审 + 统一用例全集 + RC2 UT自测执行 + 开发缺陷记录 + COORD协同用例准备 + DSHB底层图表Schema固化 + zhiji预映射规则 + 回填字段契约最终固化 + DSHE图表Schema + zhiji映射 + HERMES校验 + **24依赖用例Mock替换 + 联合复测 + 89 Gate验证闭环**)
 > **约束**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION
 > **生成日期**: 2026-10-03
-> **状态**: ✅ **DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36 + ZHIJI MAPPING 197/197 + HERMES CHECK 85/85 COMPLETE, DSHB_FINAL_PREP_CLOSED=TRUE, 128 FILES / 18 STAGES / MD5 27/27 100%**
+> **状态**: ✅ **DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36 + ZHIJI MAPPING 197/197 + HERMES CHECK 85/85 COMPLETE, DSHB_FINAL_PREP_CLOSED=TRUE, DSHE_FULL_UT_VERIFIED=TRUE, 130 FILES / 19 STAGES / MD5 29/29 100% — 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK**
 > **DSHB 交叉核验**: ✅ 完成 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7, CR-1~CR-4 全部通过, FULL_LIFECYCLE_CLOSED)
 > **DSHB RC2准备**: ✅ 完成 (DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE, 引擎4项+监控4项任务拆解, Gate准入基线+36冒烟用例, RC2_PREP_READY=TRUE)
 
@@ -30,11 +30,11 @@
 
 ### 1.1 归档统计
 
-| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | RC2_UT | DSHB_FINAL_PREP | DSHE_FINAL_PREP_CLOSED | 变化 |
-|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|--------|----------------|---------------------|------|
-| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | **125** | **128** | **128** | +43 |
-| 归档阶段 | 7 | **8** | **10** | **11** | **12** | **13** | **14** | **15** | **16** | **17** | **18** | **18** | +11 |
-| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | **~11.7 MB** | **~11.9 MB** | **~12.0 MB** | +8.9 MB |
+| 维度 | V7 | V7-RC1 | V7-OBSERVATION | PRE_AUDIT | CROSS_REVIEW | JOINT_REVIEW | RC2_PREP | RC2_PREP_ALIGNED | RC2_PREP_ALIGNED_DUAL | RC2_UT | DSHB_FINAL_PREP | DSHE_FINAL_PREP_CLOSED | DSHE_FULL_UT_VERIFIED | 变化 |
+|------|-----|--------|----------------|-----------|-------------|-------------|----------|-----------------|---------------------|--------|----------------|---------------------|---------------------|------|
+| 归档文件数 | 85 | **91** | **101** | **106** | **111** | **115** | **118** | **118** | **122** | **125** | **128** | **128** | **130** | +45 |
+| 归档阶段 | 7 | **8** | **10** | **11** | **12** | **13** | **14** | **15** | **16** | **17** | **18** | **18** | **19** | +12 |
+| 总大小 | ~3.1 MB | **~4.3 MB** | **~6.8 MB** | **~8.2 MB** | **~9.5 MB** | **~10.3 MB** | **~10.5 MB** | **~11.5 MB** | **~11.6 MB** | **~11.7 MB** | **~11.9 MB** | **~12.0 MB** | **~12.1 MB** | +9.0 MB |
 | 渲染缺陷闭环 | ❌ | ✅ 2/2 闭环 | 继承 | — |
 | DSHB 元数据对齐 | ❌ | ✅ 55 字段 | 继承 | — |
 | 跨版本联动校验 | ❌ | ✅ 60 页面 | 继承 | — |
@@ -721,7 +721,33 @@ V1 (commit 61b8ca5)
 
 ---
 
-## 8. 约束合规验证
+## 7.6 DSHE_FULL_UT_VERIFIED 新增资产 (2 files)
+
+> **Task:** DSHE_V86_RC2_DEP_CASE_MOCK_REPLACE_AND_RERUN
+> **Sub-tasks:** T3.1 Mock替换规格 | T3.2 复测报告
+> **Updated:** 2026-10-04
+
+| # | 文件 | 大小 | MD5 | 说明 |
+|---|------|------|-----|------|
+| 1 | v86_rc2_dshe_dep_case_mock_replace_spec_v7.md | 27,664 B | `B8CD07E7F02F4B250F5952EC3E9267F3` | 24依赖用例Mock替换规格(DSHB基准接入) |
+| 2 | v86_rc2_dshe_dep_case_rerun_report_v7.md | 21,877 B | `6C9313073137C289EC0888499568FF46` | 24依赖用例联合复测报告(89 Gate PASS) |
+
+**DSHE_FULL_UT_VERIFIED 合计**: 2新增, +49,541 B
+
+### 7.6.1 DSHE_FULL_UT_VERIFIED 内容
+
+| 维度 | 值 | 说明 |
+|------|-----|------|
+| Mock替换执行 | 24/24 | 全部替换为DSHB真实基准 |
+| 复测通过 | 24/24 (100%) | 全部PASS |
+| Mock→Real差异 | 1处轻微波动 | 阈值内, 预期内 |
+| P0/P1缺陷 | 0 | 零缺陷 |
+| 降级图表验证 | 7/7 (100%) | 全部兜底逻辑生效 |
+| C1-C5 Gate | 5/5 (100%) | A+ 50/50 |
+| 89 Gate总计 | 89/89 (100%) | 全部验证通过 |
+| 约束合规 | 6/6 | 全部满足 |
+
+---
 
 | Constraint | Status |
 |------------|--------|
@@ -748,10 +774,10 @@ V1 (commit 61b8ca5)
 
 ---
 
-*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL-RC2_UT-DSHB_FINAL_PREP-DSHE_FINAL_PREP_CLOSED*
+*文档版本: V7-RC1-JOINT_REVIEW-RC2_PREP-RC2_PREP_ALIGNED-RC2_PREP_ALIGNED_DUAL-RC2_UT-DSHB_FINAL_PREP-DSHE_FINAL_PREP_CLOSED-DSHE_FULL_UT_VERIFIED*
 *生成日期: 2026-10-04*
 *工单: DSHE_V86_ALIAS_V7_RC1_ITERATION · T3.6*
 *分支: feature/v85-chart-template*
 *基线: V7 Archive (commit 679948a)*
 *DSHB 基线: V86-RC1 (commit 0948e1d)*
-*状态: ✅ RC2 UT SELFTEST COMPLETE + DSHB FINAL PREP COMPLETE — 68/68 UT PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY, DSHB_FINAL_PREP_CLOSED=TRUE — READY FOR DSHB IT INTEGRATION + HERMES GLOBAL VERIFICATION*
+*状态: ✅ RC2 UT SELFTEST COMPLETE + DSHB FINAL PREP COMPLETE + DSHE FINAL PREP CLOSED + DSHE FULL UT VERIFIED — 68/68 UT PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY, DSHB_FINAL_PREP_CLOSED=TRUE, DSHE_FINAL_PREP_CLOSED=TRUE, DSHE_FULL_UT_VERIFIED=TRUE — 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK — PREP 阶段 DSHE 侧验证闭环完成*

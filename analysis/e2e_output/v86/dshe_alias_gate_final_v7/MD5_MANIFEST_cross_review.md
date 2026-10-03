@@ -122,6 +122,21 @@
 
 ---
 
+## DSHE_FULL_UT_VERIFIED New Files (2 files)
+
+> **Task:** DSHE_V86_RC2_DEP_CASE_MOCK_REPLACE_AND_RERUN
+> **Sub-tasks:** T3.1 Mock替换规格 | T3.2 复测报告
+> **Updated:** 2026-10-04
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 28 | v86_rc2_dshe_dep_case_mock_replace_spec_v7.md | `B8CD07E7F02F4B250F5952EC3E9267F3` | 27,664 B |
+| 29 | v86_rc2_dshe_dep_case_rerun_report_v7.md | `6C9313073137C289EC0888499568FF46` | 21,877 B |
+
+**Total delta:** +49,541 B (27,664 + 21,877 new files)
+
+---
+
 ## MD5 Verification Summary
 
 | File | MD5 Verified | Status |
@@ -150,7 +165,9 @@
 | v86_rc2_dshb_chart_schema_full_v7.md | ✅ | PASS |
 | v86_rc2_dshb_zhiji_mapping_predefine_v7.md | ✅ | PASS |
 | v86_rc2_dshb_backfill_field_final_spec_v7.md | ✅ | PASS |
-| **Total** | **24/24** | **✅ 100% PASS** |
+| v86_rc2_dshe_dep_case_mock_replace_spec_v7.md | ✅ | PASS |
+| v86_rc2_dshe_dep_case_rerun_report_v7.md | ✅ | PASS |
+| **Total** | **29/29** | **✅ 100% PASS** |
 
 ---
 
@@ -183,6 +200,7 @@
 | **RC2_UT** | **125** | **198** | **17** |
 | **DSHB_FINAL_PREP** | **128** | **201** | **18** |
 | **RC2_FINAL_PREP_CLOSED** | **128** | **201** | **18** |
+| **DSHE_FULL_UT_VERIFIED** | **130** | **203** | **19** |
 
 ---
 
@@ -254,4 +272,4 @@
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE | ✅ DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE | ✅ DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85 | ✅ DSHE FULL UT VERIFIED — 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK, C1-C5 A+ 50/50*
