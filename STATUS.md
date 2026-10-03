@@ -217,6 +217,19 @@
 - **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
 - **终版结论**: ✅ DSHE_PROD_PHASE_VALIDATION_OPTIMIZE_DONE=TRUE — 展示层校验边界自检+上下游校验机制优化专项完成 (校验边界明确✅18可校验/7不可校验, 面板状态增强✅3视图data_fetchable可视化, 校验规则迭代✅双维度+DEPENDENCY_BLOCK, 风险观测增强✅53条规则+R-DSHE-FETCH+EM-05 v2.0, 协作流程归档✅8项准入+FR-01强制规则, 174文件/29阶段/MD5 78/78 PASS✅)
 
+### 2026-10-13 DSHE — V86-RC2 双维度联合抽样校验 + 端到端链路验证 + 阻塞状态展示验证工单 (DSHE_V86_RC2_PROD_PHASE_JOINT_VERIFY)
+- **触发原因**: DSHE校验优化工单完成双维度校验规则上线、DEPENDENCY_BLOCK机制建立、面板/告警/日志data_fetchable可视化增强后, 需执行端到端联合抽样校验验证新校验规则有效性; DSHB输出最新带data_fetchable标记的桥接快照(178条目全部data_fetchable=FALSE, zhiji API外部依赖阻塞), 是验证DEPENDENCY_BLOCK机制的最佳场景
+- **T3.1 抽样数据集准备**: `v86_rc2_dshe_sample_list.md` (18KB) + `v86_rc2_dshb_bridge_snapshot_for_dshe.json` (51KB) — DSHB桥接快照拉取(178条目/全部data_fetchable=FALSE), 60项抽样清单(P0高风险12项/P1中风险18项/P2低风险30项), 8品种全覆盖(≥30%抽样率33.7%), P0全覆盖已知短ID, 60/60样本data_fetchable=FALSE确认
+- **T3.2 双维度联合抽样校验**: `v86_rc2_dshe_joint_sample_verify_report.md` (35KB) — 维度1 UI渲染校验60/60 PASS(100%), 维度2 data_fetchable状态读取60/60全部FALSE, DEPENDENCY_BLOCK触发60/60, 纳入PASS统计0/60(正确排除), 渲染异常0, 状态误判0, 字段丢失0, 误判率0%, 双维度校验规则端到端有效
+- **T3.3 阻塞状态可视化验证**: `v86_rc2_dshe_block_state_verify_report.md` (17KB) — 🟡DEPENDENCY_BLOCKED徽章6/6面板验证通过, 横幅15/15告警规则验证通过, 状态标签6/6日志类型验证通过, EM-05 v2.0三级降级策略(L1缓存/L2静态/L3隔离)全部正常执行, V-FETCH 6条告警规则全部正确(0误报/0漏报), 跨视图一致性3/3视图联动
+- **T3.4 跨Agent全链路数据流验证**: `v86_rc2_dshe_data_flow_validate.md` (20KB) — zhiji→DSHB字段传递178/178完整, DSHB→DSHE字段传递60/60一致, 字段完整性0丢失, 字段准确性0错读, 5min TTL刷新机制生效(5/5轮次数据一致), 跨Agent一致性3/3一致, 端到端最大延迟≤5min, 0异常
+- **T3.5 外部依赖阻塞运维预案**: `v86_rc2_dshe_dependency_block_operation_guide.md` (28KB) — 系统Bug vs 外部阻塞区分指南(3步判断法), 告警处理SOP(5步骤), EM-05 v2.0三级降级策略执行指南, Gate评审指南(8项准入/条件性通过), 故障排查决策树, FAQ 7问答, 灰度上线预案(时间线+监控重点), 上游恢复后操作指南(4步骤), 运维值班手册(检查清单+沟通模板)
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (6新增: 5报告+1桥接快照JSON)
+- **新增文件**: 6文件 ~189KB (51+18+35+17+20+28KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE / NO_PANEL_JSON_MODIFICATION=TRUE / NO_ENGINE_LOGIC_MODIFICATION=TRUE 全部合规
+- **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_JOINT_VERIFY_DONE=TRUE — 双维度联合抽样校验+端到端链路验证+阻塞状态展示验证专项完成 (抽样60项/8品种/33.7%✅, 双维度校验60/60 UI PASS+0误判✅, DEPENDENCY_BLOCKED状态可视化74/74验证通过✅, 全链路数据流0丢失/0错读/0延迟✅, 运维预案Gate评审就绪✅, 180文件/30阶段/MD5 84/84 PASS✅)
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
 - **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
 - **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅

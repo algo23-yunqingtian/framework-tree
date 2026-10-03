@@ -597,3 +597,36 @@
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
 *Status: FULL LIFECYCLE CLOSED | JOINT_REVIEW COMPLETE | RC2_PREP COMPLETE | RC2 PREP DSHB GATE BASELINE ALIGNED | RC2 DUAL-END ALIGNMENT COMPLETE | RC2 UT SELFTEST COMPLETE - 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY | DSHB FINAL PREP COMPLETE - CHART SCHEMA 36/36, ZHIJI MAPPING 36+19, BACKFILL 19/19 FINAL, DSHB_FINAL_PREP_CLOSED=TRUE | DSHB BASELINE LOCK COMPLETE - CALIBER DIFF 10/10 MC ARCHIVED, DEV BACKLOG 8/8 LOCKED, SWITCH CHECKLIST 24/24 READY, DSHB_BASELINE_READY_FOR_DSHE_RETEST=TRUE | DSHE FINAL PREP CLOSED - CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85 | DSHE FULL UT VERIFIED - 24/24 RERUN PASS, 89/89 GATE PASS, 7/7 DEGRADED FALLBACK, C1-C5 A+ 50/50 | DSHE PREP ARCHIVE FINALIZED - 133 FILES, 20 STAGES, ~12.5MB, MD5 35/35 PASS, PROD SWITCH GUIDE READY | DSHE PREP APPROVED - HERMES P1 3/3 REVIEWED (0 BLOCKING), C1/C2 CALIBER ACKED, 190 ZHIJI_ID REVIEWED, 14 RISK ITEMS UPDATED, MD5 39/39 PASS, 137 FILES, 21 STAGES | V86_RC2_PREP_CLOSED - PREP formal seal, 17/17 conditions, 140 FILES, 22 STAGES, ~14.0MB, MD5 42/42 PASS | DSHB PROD STAGE1 COMPLETE - ENG/MON 8/8 TASKS, 322/322 UT, 190/190 ZHIJI, 11/11 ALIGNMENT, MD5 44/44 PASS, 142 FILES, 22 STAGES | DSHB PROD STAGE2 COMPLETE - B-02 PLAN, PREFLIGHT 892/892, ZHIJI 190/190, GATE 5/5, RISK 17+14, SWITCH 75, MD5 50/50 PASS, 148 FILES, 23 STAGES | DSHE_PROD_PHASE_STAGE1_COMPLETE - 5 new docs, 277KB, dual-caliber+zhiji+shadow+obs+switch, MD5 47/47 PASS | DSHE_PROD_PHASE_STAGE2_EMERGENCY_COMPLETE - 5 new docs, ~289KB, zhiji mapping+dual-caliber+shadow+obs+switch, P0 R-S01 fixed, MD5 52/52 PASS | DSHB_PROD_PHASE_STAGE3_COMPLETE - ID bridge 197/197, R-S01 CLOSED, short ID 60/60 PASS, P0/P1 5/5, MD5 56/56 PASS, 152 FILES, 24 STAGES | DSHB_PROD_PHASE_STAGE4_COMPLETE - shadow env 100%, metric 197/197, gray playbook, risk SOP 22, MD5 60/60 PASS, 156 FILES, 25 STAGES | DSHE_PROD_PHASE_STAGE4_COMPLETE - 4 new docs, ~240KB, shadow obs panel 197 indicators, chart stability 43 charts, gray dashboard 12+20 alerts, risk ledger 22+ops manual, cross-team preflight 10, 160 FILES, 26 STAGES, MD5 64/64 PASS | DSHE_PROD_PHASE_ID_ALIGN_FIX_DONE - 4 new docs, ~123KB, metric unify 229/229, bridge ref 306/306, triple-ID verify 1236/1236 PASS, 0 anomalies, R-DSHE-ID upgraded P0, EM-05 ID failure manual, MD5 68/68 PASS, 164 FILES, 27 STAGES* | DSHE_PROD_PHASE_ID_MAPPING_ADAPT_FULL_DONE - 5 new docs, ~96KB, batch metadata 9b/170i, triple-ID verify 1044/1044, risk obs 47+47+21 EM-05 v1.9, cross-team 170/170 3 anomalies closed 9/9 Gate PASS, MD5 73/73 PASS, 169 FILES, 28 STAGES | DSHE_PROD_PHASE_VALIDATION_OPTIMIZE_DONE - 5 new docs, ~133KB, validation boundary self-check 18c/7i/16d, panel fetch status enhance 3v/2m/6p, cross-team rule update 26r/6sop/7s, risk obs enhance 53r/27m/R-DSHE-FETCH/EM-05 v2.0/4c, collab optimize 8ad/15ck/7s/FR-01, MD5 78/78 PASS, 174 FILES, 29 STAGES*
+---
+
+## DSHE_PROD_PHASE_JOINT_VERIFY New Files (6 files)
+
+> **Task:** DSHE_V86_RC2_PROD_PHASE_JOINT_VERIFY
+> **Sub-tasks:** T3.1 抽样数据集准备 | T3.2 双维度联合抽样校验 | T3.3 阻塞状态可视化验证 | T3.4 跨Agent全链路数据流验证 | T3.5 外部依赖阻塞运维预案
+> **Updated:** 2026-10-13
+> **Output Dir:** nalysis/e2e_output/v86/hermes_e2e_test/
+> **Status:** DSHE_PROD_PHASE_JOINT_VERIFY_DONE=TRUE — 5/5 SUB-TASKS COMPLETE, DUAL-DIMENSION JOINT SAMPLE VALIDATION PASS (60/60 UI PASS, 0 MISJUDGE), DEPENDENCY_BLOCKED VISUALIZATION VERIFIED (74/74), DATA FLOW VALIDATED (0 LOSS/0 MISREAD/0 DELAY), OPS GUIDE GATE-READY, MD5 84/84 PASS, 180 FILES, 30 STAGES
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 86 | v86_rc2_dshb_bridge_snapshot_for_dshe.json | 41856E22398A8DE70F561F62A33D3DA4 | 50,785 B |
+| 87 | v86_rc2_dshe_sample_list.md | DEF9204E82F045A75DC1C561EA5E8B3D | 17,958 B |
+| 88 | v86_rc2_dshe_joint_sample_verify_report.md | 9E35E6EC2A56C9C5020BA08DCDBD8B41 | 35,315 B |
+| 89 | v86_rc2_dshe_block_state_verify_report.md | 9D292F15EEC03426BF9EDE582F59FDA1 | 17,240 B |
+| 90 | v86_rc2_dshe_data_flow_validate.md | 820167EDE2969045C1B9AD85DC0EB6E1 | 19,862 B |
+| 91 | v86_rc2_dshe_dependency_block_operation_guide.md | 24FDCB86C10D0213649E4BB5A656A828 | 27,761 B |
+
+**Total delta:** +168,921 B (6 new files)
+
+---
+
+## Key MD5 References (DSHE_PROD_PHASE_JOINT_VERIFY Deliverables)
+
+| # | File | MD5 | Purpose |
+|---|------|-----|---------|
+| 86 | v86_rc2_dshb_bridge_snapshot_for_dshe.json | 41856E22398A8DE70F561F62A33D3DA4 | DSHB桥接快照 (178条目, 全部data_fetchable=FALSE, zhiji API外部依赖阻塞) |
+| 87 | v86_rc2_dshe_sample_list.md | DEF9204E82F045A75DC1C561EA5E8B3D | 抽样清单 (60项/8品种/33.7%抽样率/P0P1P2分层) |
+| 88 | v86_rc2_dshe_joint_sample_verify_report.md | 9E35E6EC2A56C9C5020BA08DCDBD8B41 | 双维度联合抽样校验报告 (60/60 UI PASS, 0误判, 0渲染异常, DEPENDENCY_BLOCK端到端有效) |
+| 89 | v86_rc2_dshe_block_state_verify_report.md | 9D292F15EEC03426BF9EDE582F59FDA1 | 阻塞状态可视化验证报告 (74/74验证通过, EM-05 v2.0 3级降级, V-FETCH 0误报) |
+| 90 | v86_rc2_dshe_data_flow_validate.md | 820167EDE2969045C1B9AD85DC0EB6E1 | 跨Agent全链路数据流验证 (0丢失/0错读/0延迟, 5min TTL刷新, 跨Agent一致性) |
+| 91 | v86_rc2_dshe_dependency_block_operation_guide.md | 24FDCB86C10D0213649E4BB5A656A828 | 外部依赖阻塞运维操作指南 (Gate评审/运维/业务侧, 系统Bug vs外部阻塞区分, FAQ, 灰度预案) |
