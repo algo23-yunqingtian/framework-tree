@@ -1,6 +1,7 @@
 # V86 DSHB V7 MD5 校验清单
 
-> **Task**: DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7 · T3.4 (Cross-Agent Verification + Full Lifecycle Acceptance)
+> **Task**: DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE · T3.1-T3.5 (RC2 Engine/Monitor Task Breakdown + Gate Entry Baseline)
+> **Previous Task**: DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7 · T3.4 (Cross-Agent Verification + Full Lifecycle Acceptance)
 > **Branch**: `feature/v85-chart-template`
 > **DSHB V6 Base**: `c4ccfd5` (V6 上线准入评估 + Gate 判定)
 > **DSHE V6 Base**: `05352a5` (DSHE_V86_ALIAS_V6_ITERATION)
@@ -39,8 +40,11 @@
 | 24 | `v86_rc1_cross_validation_result_report_v7.md` | `1AE96F506F57AD66700129A8A249909D` | 55,020 | T3.1 | ✅ |
 | 25 | `v86_rc1_dshe_retrospect_review_comments_v7.md` | `21BD9EE8C442369AA9D2D952832CCD5F` | 38,656 | T3.2 | ✅ |
 | 26 | `v86_rc1_full_lifecycle_acceptance_summary_v7.md` | `B5DBAB66FE8E38412D28C8EB2F6BF6C3` | 78,591 | T3.3 | ✅ |
+| 27 | `v86_rc2_dshb_engine_task_breakdown_v7.md` | `EBD2F34179680B7730D9960D34B04CE7` | 66,480 | T3.1 | ✅ RC2 |
+| 28 | `v86_rc2_dshb_monitor_task_breakdown_v7.md` | `D213A092634F3786A9C7F3CE5066C06C` | 95,801 | T3.2 | ✅ RC2 |
+| 29 | `v86_rc2_gate_entry_baseline_v7.md` | `34625AD2E6EE2A9CBA41333C9E40FCDE` | 86,231 | T3.3 | ✅ RC2 |
 
-**总计**: 26 文件, 932,358 字节
+**总计**: 29 文件, 1,180,870 字节
 
 ---
 

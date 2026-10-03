@@ -116,6 +116,16 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PRODUCTION_DEPLOY 全部合规
 - **终版结论**: ✅ V86-RC1 FULL LIFECYCLE CLOSED (交叉核验CR-1~CR-4全部通过, DSHE评审APPROVED WITH SUGGESTIONS, 全链路总验收全通过, 风险2/10 LOW, P0=0)
 
+### 2026-10-03 DSHB — V86-RC2 底层引擎&监控优化任务拆解·Gate准入基线·开发前置准备 (DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE)
+- **T3.1 引擎任务拆解**: `v86_rc2_dshb_engine_task_breakdown_v7.md` (66KB, 702行) — 4项引擎优化(ENG-01 P1: 误报率阈值200→500+冷却窗口, 22h; ENG-02 P2: MD5_MANIFEST自动化, 10h; ENG-03 P2: 指标口径交叉比对脚本, 14h; ENG-04 P3: 规则引擎预编译优化3.5s→<2s, 10.5h), 12子任务, 56.5h总工时, 3项跨团队协同(VAL/DSHE/Platform), 10项风险(0高/4中/6低), 2.5周并行计划
+- **T3.2 监控任务拆解**: `v86_rc2_dshb_monitor_task_breakdown_v7.md` (96KB, 847行) — 4项监控优化(MON-01 P1: 27%监控覆盖率缺口补全73%→100%, 9项指标部署; MON-02 P3: 告警规则调优+Tier1演练频率增加; MON-03 P3: 监控变更验证自动化; MON-04 P3: 跨Agent告警关联分析), 44子任务, 46h总工时, 5项DSHE协同, 17项风险(3高/9中/5低), 14天时间线
+- **T3.3 Gate准入基线+冒烟用例**: `v86_rc2_gate_entry_baseline_v7.md` (84KB, 771行) — 5项Gate准入条件(C1指标基线/C2错误率/C3稳定性SLA/C4约束合规/C5监控覆盖率≥95%), 36个冒烟用例(10单测+12集成+8影子回放+6 Gate验收), 4阶段Gate流程(7天), 3项DSHE协同用例(IT-003/004/008/009), 10项风险(2高/5中/3低), Go/No-Go决策框架
+- **T3.4 归档资产更新**: `MD5_MANIFEST_v7.md` (29文件1,180,870B) + `v86_alias_final_archive_bundle_v7_rc1.md` + `STATUS.md` + `JOB_READY.flag` (RC2_PREP_READY=TRUE)
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_upgrade_review/` (3新增文件 + 4更新文件)
+- **新增文件**: 3文件 ~249KB (引擎拆解66KB + 监控拆解96KB + Gate基线84KB)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PRODUCTION_DEPLOY 全部合规
+- **终版结论**: ✅ V86-RC2 PREP COMPLETE — RC2底层引擎4项+监控观测4项任务拆解完成, Gate准入基线+36冒烟用例定义完成, 依赖关系清晰, 跨团队协同标记完整, RC2底层开发前置准备就绪
+
 ### 2026-10-03 DSHE — V86-RC1 展示层交付包预评审·P2缺陷台账·归档预校验·交叉核验清单·验收初稿 (DSHE_V86_RC1_PRESENTATION_LAYER_PRE_AUDIT)
 - **T3.1 预评审**: `v86_rc1_dshe_release_package_pre_audit_v7.md` — 全量扫描5交付文档+101归档资产, 版本信息100%统一, 821链接0死链, 36图表全部渲染正确, 11脚本/18场景/90Q&A全部回放通过, 0渲染缺陷, 预评审裁定✅READY
 - **T3.2 P2台账**: `v86_rc1_dshe_p2_backlog_and_longterm_sop_v7.md` — 5项P2缺陷完整台账(P2-001~005), 全部为纯前端渲染类, 无底层引擎问题, 7项已知限制补充24h观测记录, 三阶段长期观测SOP(T+0~T+30d), 5项P2全部非阻塞

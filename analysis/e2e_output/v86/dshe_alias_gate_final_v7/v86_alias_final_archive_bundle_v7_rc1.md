@@ -8,6 +8,7 @@
 > **生成日期**: 2026-10-03
 > **状态**: ✅ **RC2 PREP COMPLETE — TASK BREAKDOWN + UI CHANGE SPEC + GATE ACCEPT CASE READY**
 > **DSHB 交叉核验**: ✅ 完成 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7, CR-1~CR-4 全部通过, FULL_LIFECYCLE_CLOSED)
+> **DSHB RC2准备**: ✅ 完成 (DSHB_V86_RC2_PREP_TASK_BREAKDOWN_AND_GATE_BASELINE, 引擎4项+监控4项任务拆解, Gate准入基线+36冒烟用例, RC2_PREP_READY=TRUE)
 
 ---
 
@@ -55,8 +56,6 @@
 | 24h稳定性观测 | ❌ | ❌ | ✅ 4周期观测 | **新增** |
 | 演示包回放核验 | ❌ | ❌ | ✅ 11脚本/90Q&A | **新增** |
 | GitHub素材终审 | ❌ | ❌ | ✅ README+Notes | 继承 | 继承 |
-<<<<<<< HEAD
-| 展示层预评审 | ❌ | ❌ | ❌ | ✅ 版本/链接/图表/演示/GitHub | 继承 |
 | 展示层预评审 | ❌ | ❌ | ❌ | ✅ 版本/链接/图表/演示/GitHub | 继承 |
 | P2缺陷台账 | ❌ | ❌ | ❌ | ✅ 5项P2+长期SOP | 继承 |
 | 归档资产预校验 | ❌ | ❌ | ❌ | ✅ 101文件0异常 | 继承 |
