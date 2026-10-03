@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-04 DSHB — V86-RC2 PREP封板确认·P1风险评审·C1/C2口径约定·zhiji_id台账·投产总清单合并·PREP_APPROVED (DSHB_V86_RC2_PREP_APPROVED_CALIBER_AGREEMENT_AND_DEV_BACKLOG_FINAL)
+- **T3.1 P1风险评审**: `v86_rc2_dshb_hermes_p1_risk_review.md` (18KB, ~500行) — HERMES报告3项P1风险逐条评审(C2阈值口径冲突/C1数量口径差异/190项zhiji_id待确认), 全部确认不阻断PREP封板, 每项含影响范围分析/风险缓解方案/投产验收标准, 3项P1+8项P2全部归入投产阶段, 验收判定规则定义完成, 约束合规4/4
+- **T3.2 C1/C2口径约定**: `v86_rc2_dshb_c1_c2_caliber_agreement.md` (17KB, ~500行) — C1图表匹配数双口径固化(Gate评审29+7降级/底层资产盘点32/36), C2错误率双阈值固化(Gate验收P1=0/投产告警P1≤3), 两套口径场景映射表定义, Gate评审判定伪代码+投产告警判定伪代码, 口径变更管理流程, DSHB+DSHE双方签字确认
+- **T3.3 zhiji_id台账**: `v86_rc2_dshb_zhiji_id_backlog_list.md` (23KB, ~600行) — 190/190待确认zhiji_id全部登记, 按品种(PB/CU/AL/ZN/NI/SN/SI/LI/回填)分类, 按优先级划分(P0高优48项/T+1d, P1中优52项/T+2d, P2低优90项/T+3d~T+5d), 回填字段19项(F-01~F-19)全部定义, 信息获取来源5种+确认方法5种, 跟进台账+4检查点, 风险4项(0P0/0P1/2P2/2P3)
+- **T3.4 投产总清单**: `v86_rc2_dshb_prod_total_backlog_v7.md` (22KB, ~580行) — 19/19投产任务合并(8底层ENG-01~04+MON-01~04/3 P1口径对齐/8 P2低风险对齐), 关键路径ENG-01→MON-01→MON-03→MON-04(60h), 11交付节点(T+0d~T+5d), 阻塞项2/2已解除, 总工时~154h(19.3人天), 51验收标准(32底层+11 P1+8 P2), 风险8项(0P0/0P1/6P2/2P3), 对齐HERMES报告19/19
+- **T3.5 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段20 DSHB_PREP_APPROVED(4文件新增), 总文件数135, 总阶段20; `MD5_MANIFEST_cross_review.md` (更新) — 新增4文件MD5, 31/31全部PASS; `JOB_READY.flag` (更新) — DSHB_PREP_APPROVED=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (4新增)
+- **新增文件**: 4文件 ~79KB (T3.1 18KB + T3.2 17KB + T3.3 23KB + T3.4 22KB)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED 全部合规
+- **终版结论**: ✅ V86-RC2 DSHB PREP APPROVED COMPLETE — P1风险评审✅3/3不阻断/3项投产处置, C1/C2口径约定✅双口径固化/双方签字, zhiji_id台账✅190/190登记/P0高优48项/T+1d, 投产总清单✅19/19合并/关键路径更新/阻塞项解除, DSHB_PREP_APPROVED=TRUE, 裁定✅READY FOR DSHB DEV EXECUTION + DSHE REAL DATA RETEST
+
 ### 2026-10-04 DSHB — V86-RC2 底层开发任务排期锁定·口径差异归档固化·DSHE依赖用例切换清单·BASELINE_LOCK (DSHB_V86_RC2_BASELINE_LOCK_CALIBER_DIFF_AND_DEV_BACKLOG_FINAL)
 - **T3.1 口径差异归档**: `v86_rc2_dshb_caliber_diff_keep_spec_v7.md` (28KB, ~660行) — 10项MC口径冲突(MC-01~MC-10)全部正式归档, 3项保留差异(MC-02 P1阈值/MC-05可用性/MC-06约束数量)+4项互补口径(MC-03延迟/MC-04冷启动/MC-07 C5范围/MC-09监控粒度)+3项统一/DSHB独有(MC-01图表匹配数/MC-08误报率/MC-10别名映射), HERMES校验规则10条(2BLOCK+2WARNING+6INFO), 风险4项(0P0/0P1/2P2), 投产特殊处理规则10/10, 约束合规4/4
 - **T3.2 底层任务排期**: `v86_rc2_dshb_underlying_dev_backlog_v7.md` (31KB, ~580行) — 8项底层开发任务(ENG-01~04/MON-01~04)完整规格, 每项含业务目标/输入输出/验收标准/预估工时/前置依赖/风险点/交付节点/投产前置条件, 预估总工时12pd, 9个交付节点(T+1d~T+3d), 任务依赖图+关键路径, 验收标准32项(8×4), 风险8项(0P0/0P1/3P2/5P3), 投产前置条件9项(P-01~P-09), 约束合规4/4
