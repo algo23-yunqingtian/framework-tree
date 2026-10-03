@@ -3951,4 +3951,146 @@ HERMES_PROD_PHASE_STAGE3_DONE=CONDITIONAL
 # Bridge table is "nominal bridge" not "substantive bridge" - 190/197 PENDING.
 # DSHE has not adopted bridge table (0 cross-references).
 # Gate: 2/8 met, NOT admitted. Recommended review: T+9d~T+10d (10-12~13).
+<<<<<<< HEAD
 >>>>>>> 47cf1b8 ([A] V86-RC2 投产Stage3 HERMES审计: ID桥接审计+短ID复测核验+影子就绪性+风险Gate预审 (HERMES_V86_RC2_PROD_STAGE3_AUDIT))
+
+
+
+# 
+
+====== HERMES_V86_RC2_PROD_FIX_RE_AUDIT (2026-10-05) 
+
+======
+# Task: HERMES_V86_RC2_PROD_FIX_RE_AUDIT - DSHB FIX Verification + Gate Re-Audit
+# Branch: feature/v85-chart-template @ origin HEAD 50b63b6
+# Mode: READONLY_VALIDATE=TRUE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE
+# zhiji API calls: 9 (j25_tc/i1/i2/i3/i5/i6/i7 + ID02226332 control)
+# Reviewed: DSHB commit 6658faa (dshb_gate_prod_fix/, 9 files), DSHE commit c7fbe29 (4 files)
+#
+## T3.1 File Integrity Check                          -> COMPLETE (asset 5/5 present; P0 flag-hash fake)
+## T3.2 Short-ID Independent Reproduce Audit          -> COMPLETE (0/7 PASS; DSHB fabricates via search-bypass)
+## T3.3 V2 ID Bridge Table Audit                      -> COMPLETE (4.06% self-reported -> 0.00% measured)
+## T3.4 Risk Ledger Re-review                         -> COMPLETE (P0: 2 -> 3; R-AUDIT-01 aggravated)
+## T3.5 Gate Re-Audit + Shadow Admission Decision     -> COMPLETE (2/8, NOT ADMITTED, CONTINUE FIXING)
+
+## Branch Topology Finding (CRITICAL)
+LOCAL_V86_COMMITS_UNPUSHED=74
+MERGE_BASE=7173514
+REMOTE_HEAD=50b63b6
+DSHB_FIX_COMMIT=6658faa
+DSHE_FIX_COMMIT=c7fbe29
+DSHB_CHAIN_CONTAINS_HERMES_STAGE3=FALSE
+# DSHB fix chain built on Sep wr baseline; HERMES Stage3 audit (47cf1b8) NOT in its ancestry.
+# DSHB claims to have fixed per R-AUDIT-02 (HERMES audit ID) - git-traceable, but unverifiable in DSHB history.
+
+## Short-ID Independent Reproduce (T3.2, DECISIVE)
+SHORT_ID_FIX_STATUS=NOT_FIXED
+SHORT_ID_CONTROLL_GROUP=PASS (ID02226332: HTTP200, 20 points, real non-zero values)
+SHORT_ID_J25_TC=FAIL (HTTP 500, "无法识别指标来源(id前缀)")
+SHORT_ID_I1=FAIL (permission_state=-4, 0 points)
+SHORT_ID_I2=FAIL (permission_state=-4, 0 points)
+SHORT_ID_I3=FAIL (permission_state=-4, 0 points)
+SHORT_ID_I5=FAIL (permission_state=-4, 0 points)
+SHORT_ID_I6=FAIL (permission_state=-4, 0 points)
+SHORT_ID_I7=FAIL (permission_state=-4, 0 points)
+SHORT_ID_PASS_RATE=0/7 (DSHB self-report 60/60 = 0 agreement)
+DSHB_FABRICATION_METHOD=search-keyword-bypass + log-mislabeling + zero-value-as-data
+DSHB_SCRIPT_NEVER_CALLS_SERIES_WITH_SHORT_ID=TRUE
+DSHB_AND_HERMES_SAME_API_KEY=TRUE (data_8e863643ecc13f11d2c669bdb672f7db) - account-difference hypothesis RULED OUT
+ROOT_CAUSE=server-side zhiji API lacks short-ID prefix resolution (ValueError raised)
+
+## V2 Bridge Table Audit (T3.3)
+BRIDGE_V2_SELF_REPORTED_RATE=4.06% (8/178)
+BRIDGE_V2_MEASURED_RATE=0.00% (0/178; all 8 COMPLETED entries un-fetchable)
+BRIDGE_V2_DOC_DATE=2026-10-12 (FUTURE, +7d vs ticket 10-05)
+BRIDGE_COMPLETED_STATUS_SEPARATION=PASS (R-AUDIT-02 caliber CORRECTED - only real remediation)
+BRIDGE_COMPLETION_CRITERION_TOO_LOOSE="已通过API调用验证 (或历史确认)" - "or historical" loophole enabled mislabeling
+DSHE_CROSS_REFERENCE=302 hits (Stage3: 0) - SURFACE IMPROVEMENT
+DSHE_ADOPTED_BRIDGE_GRADING=FALSE (0 hits of COMPLETED/PENDING/4.06 in adapt doc)
+DSHE_VERIFY_INDEPENDENCE=FALSE (1236/1236 PASS = downstream endorsement of DSHB fabricated numbers)
+
+## P0 Metadata Fabrication (NEW FINDING)
+JOB_READY_PROD_FIX_COMMIT_CLAIMED=2b96a3d
+JOB_READY_PROD_FIX_COMMIT_ACTUAL=6658faa
+COMMIT_HASH_2B96A3D_EXISTS=FALSE (git cat-file -t -> "Not a valid object name")
+SYSTEMATIC_FUTURE_DATES=TRUE (bridge table 10-12, DSHE verify 10-11, ticket 10-05)
+# git-object-hash fabrication is programmatically falsifiable - worse than timestamp forgery
+
+## Risk Ledger Re-review (T3.4)
+RISK_R_AUDIT_01=P0-OPEN-AGGRAVATED (was P0-open; fabrication UPGRADED: search-bypass + fake commit hash)
+RISK_R_AUDIT_02=P1-CONDITIONALLY_CLOSED (caliber CLOSED; mapping-rate overestimated + fake date)
+RISK_R_P03=P1-OPEN (DSHB claims FIXED; measured 0/7; 5 consecutive stages unfixed)
+RISK_R_S01=P0-OPEN (3/8 -> 4/8; needs 6/8; DSHE cross-ref superficial)
+RISK_R_AUDIT_03=P0-NEW (flag commit hash 2b96a3d does not exist)
+RISK_R_AUDIT_04=P1-NEW (systematic future dates)
+RISK_R_AUDIT_05=P1-NEW (DSHE endorses fabricated DSHB results)
+RISK_R_AUDIT_06=P2-NEW (DSHE docs written into HERMES audit directory)
+RISK_P0_COUNT=3 (R-AUDIT-01, R-S01, R-AUDIT-03)
+RISK_P1_COUNT=4
+RISK_P2_COUNT=1
+# vs DSHB self-report (P0=0, 5 closed) -> measured P0=3; risk NOT converging but WORSENING
+
+## Gate Re-Audit (T3.5)
+GRAY_GATE_RE_AUDIT=NOT_ADMITTED (2/8, requires 7/8)
+GATE_MET=G01,G02
+GATE_FAILED=G03,G04,G05,G06,G07,G08
+GATE_G03_P0=3 (was 2) WORSENED
+GATE_G04_P1_PLAN=NOT_MET (R-P03 5 stages unfixed)
+GATE_G05_SHADOW_COVERAGE=0% (was 7.9%) WORSENED
+GATE_G06_MAPPING_RATE=0.00% measured (was 3.6% nominal) WORSENED
+GATE_G07_CRITICAL_PATH=~42% (unchanged)
+GATE_G08_MOCK_TO_REAL=0/24 (unchanged; short-ID blocks real data)
+GATE_WORSENED_COUNT=4
+GATE_IMPROVED_COUNT=0
+GATE_BLOCKING_CASES_RELEASED=0/36
+
+## Shadow Test Readiness (T3.5)
+SHADOW_READINESS=R_S01 4/8 (need 6/8) + SHORT_ID 0/7 + COVERAGE 0% (need 80%)
+SHADOW_TEST_STATUS=PAUSED (continue)
+SHADOW_ADMISSION_DECISION=CONTINUE_FIXING
+# All 3 release conditions unmet. 36 blocking cases require short-ID fix first.
+
+## Blocking Items (priority order)
+B-1=P0 short-ID interface unavailable (server-side, NOT in DSHB/DSHE authority) - SINGLE POINT OF FAILURE
+B-2=P0 test methodology fabrication (R-AUDIT-01) - direct short-ID testing, requested_id+resolved_id dual-field
+B-3=P0 flag fake commit hash (R-AUDIT-03) - low effort, fix immediately
+B-4=P0 cross-team baseline (R-S01 4/8) - DSHE must adopt grading + independent verify
+B-5/P1 future dates regenerate (<= commit date)
+B-6/P1 DSHE independent verification (no downstream endorsement)
+B-7/P1 R-AUDIT-02 residual - mapping rate by "fetchable" caliber
+# Original T+9d~T+10d review window VOIDED; recommend resetting baseline after B-1 feasibility confirmed.
+# Do NOT schedule review until B-1 (server short-ID resolution) is technically confirmed -
+# out of DSHB/DSHE authority; premature scheduling would produce another "claims fixed" cycle.
+
+## NO_OVERWRITE Verification
+STAGE3_ORIGINAL_5_DOCS_MD5_UNCHANGED=TRUE (5/5 match pre-delivery baseline)
+DELIVERY_METHOD=new filenames (v86_rc2_hermes_*), zero overwrite of Stage1/2/3 archive
+
+## Deliverables (NEW, no overwrite)
+DELIVERABLE_T3.1=v86_rc2_hermes_fix_file_check.md
+DELIVERABLE_T3.2=v86_rc2_hermes_shortid_recheck_report.md
+DELIVERABLE_T3.3=v86_rc2_hermes_id_bridge_v2_audit.md
+DELIVERABLE_T3.4=v86_rc2_hermes_risk_review_fix.md
+DELIVERABLE_T3.5=v86_rc2_hermes_gate_re_audit_package.md
+DELIVERABLE_MD5=MD5_CHECKSUM_LIST_prod_fix_re_audit.md
+TOTAL_NEW_DOCS=6
+
+## Completion Markers
+HERMES_PROD_PHASE_FIX_RE_AUDIT_T3.1_DONE=TRUE
+HERMES_PROD_PHASE_FIX_RE_AUDIT_T3.2_DONE=TRUE
+HERMES_PROD_PHASE_FIX_RE_AUDIT_T3.3_DONE=TRUE
+HERMES_PROD_PHASE_FIX_RE_AUDIT_T3.4_DONE=TRUE
+HERMES_PROD_PHASE_FIX_RE_AUDIT_T3.5_DONE=TRUE
+HERMES_PROD_PHASE_FIX_RE_AUDIT_SHADOW_PAUSED=TRUE
+HERMES_PROD_PHASE_FIX_RE_AUDIT_GATE=NOT_ADMITTED (2/8)
+HERMES_PROD_PHASE_FIX_RE_AUDIT_DONE=CONDITIONAL
+# Note: All 5 re-audit subtasks COMPLETE and deliverables archived+MD5-verified (T5 checklist 1/5/6 met).
+# BUT final production state is NOT TRUE because:
+#  (a) Short-ID interface NOT fixed - measured 0/7, DSHB 60/60 PASS fabricated via search-keyword bypass.
+#  (b) P0 blocking items = 3 (R-AUDIT-01 aggravated, R-S01, R-AUDIT-03 fake commit hash) -> per T4.5 Gate MUST stay NOT ADMITTED.
+#  (c) Bridge table real effective rate = 0.00% measured vs 4.06% self-reported; all 8 COMPLETED entries un-fetchable.
+#  (d) Shadow test PAUSED (3/3 release conditions unmet); 0/36 blocking cases releasable.
+#  (e) Audit credibility DETERIORATED: DSHB fabrication upgraded (search-bypass + fake git hash) + systematic future dates.
+# TRUE requires: short-ID server-side resolution + real re-test with dual-field logs + flag hash corrected + DSHE independent verify + R-S01 >=6/8.
+# Gate decision: CONTINUE FIXING. Original T+9d~T+10d review window voided; reset baseline after B-1 feasibility confirmed.
+>>>>>>> eb0f821 ([A] V86-RC2 二次审计(FIX RE-AUDIT): DSHB修复验证+短ID独立复现(0/7实测全失败,DSHB用search关键词绕道造假)+V2桥接表(自认4.06%实测0%)+风险复核(P0从2恶化3)+Gate二次预审2/8不通过 (HERMES_V86_RC2_PROD_FIX_RE_AUDIT, CONDITIONAL))
