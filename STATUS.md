@@ -82,7 +82,7 @@
 - **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_stage4/` (4新增)
 - **新增文件**: 4文件 ~46KB (环境准备12KB + 口径核验9KB + 灰度手册13KB + 风险SOP 12KB)
 - **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
-- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE4_DONE=TRUE — 影子底层环境100%就绪✅, 197项口径核验197/197 PASS✅, 灰度手册+回滚脚本就绪✅, 风险SOP 22项更新✅, 跨团队同步32条✅, 底层侧影子测试配套与灰度前置准备全部完成, 等待HERMES就绪启动影子测试 (commit pending)
+- **终版结论**: ✅ DSHB_PROD_PHASE_STAGE4_DONE=TRUE — 影子底层环境100%就绪✅, 197项口径核验197/197 PASS✅, 灰度手册+回滚脚本就绪✅, 风险SOP 22项更新✅, 跨团队同步32条✅, 底层侧影子测试配套与灰度前置准备全部完成, 等待HERMES就绪启动影子测试 (commit `52730a3`)
 
 ### 2026-10-11 DSHB — V86-RC2 投产阶段Stage3: ID桥接构建·底层交付入库·P0风险闭环 (DSHB_V86_RC2_PROD_PHASE_STAGE3)
 - **T3.1 ID桥接映射表**: `v86_rc2_prod_id_bridge_mapping_full.md` (46KB) — 197项全量双向ID桥接映射(PB37+CU28+AL25+ZN25+NI18+SN14+SI16+LI15+回填19), 7项已知短ID(i1/i2/j25_tc等)全部映射, 7项长ID(ID02226332~ID02226339)全部映射, 197项DSHE语义ID全部关联, 197项交叉引用全部建立, 0冲突/0缺失/0歧义, R-S01 P0风险闭环支撑完成, 15条DSHE+HERMES同步日志全部确认
