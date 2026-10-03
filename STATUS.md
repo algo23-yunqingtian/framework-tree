@@ -96,6 +96,20 @@
 - **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION 全部合规
 - **终版结论**: ✅ DSHE_PROD_PHASE_STAGE1_DONE=TRUE (commit `649f1f4`) — 投产阶段Stage1完成 (双口径适配✅, zhiji映射同步✅, 影子仿真✅, 观测大盘✅, 切换回滚复核✅, 140+5=145文件, 23阶段, MD5 47/47 PASS✅, 20项风险台账✅, 3级回滚✅, 7步切换✅, 18观测指标✅)
 
+### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
+- **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
+- **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅
+- **T3.2 双口径重新验证**: `v86_rc2_prod_dashboard_adapt_stage2.md` (36KB) — C1/C2双口径重新验证(188项共享+16项专属), MC-01 BLOCK原因全部修复(BLOCK→READY), MC-02 WARNING保留(差异率<0.01%), 7张降级图表重新验证(7/7修复), 11面板/80子面板全部更新, 36×178×双口径矩阵99.83%通过, DSHB验证15/15, HERMES审计12/12
+- **T3.3 Shadow测试更新**: `v86_rc2_prod_shadow_sim_prep_stage2.md` (30KB) — 89 Gate统一用例全部更新(v86格式), 36阻塞用例100%解除(DSHB交付物12+知几ID映射14+跨团队基线10), Mock/Real切换脚本更新2/2, 24用例对比矩阵更新(Batch1: 11+Batch2: 13), 14对比指标更新, Shadow环境就绪10/10, 6仿真脚本更新, DSHB验证15/15, HERMES审计12/12
+- **T3.4a 观测面板更新**: `v86_rc2_prod_observation_panel_report_stage2.md` (92KB) — 18项观测指标全部重新验证(zhiji_id更新至v86), GATE-DSHE-010延迟监控更新(0.8-0.85s/P99 2.7s), 6面板/56子面板布局更新, 18条Prometheus YAML告警规则更新, P0/P1/P2严重度矩阵, DSHB评审清单12项, HERMES审计清单10项, Stage2新增风险R-S01~S03, 灰度延迟影响评估+缓解策略
+- **T3.4b 切换回滚更新**: `v86_rc2_prod_switch_review_stage2.md` (83KB) — 7步切换72子步骤更新(zhiji_id引用更新), 3级回滚29步更新, 风险台账更新22项(PREP 14+Stage1 5+Stage2 3=22项, 1高/10中/11低), 灰度延迟影响评估(时间线延长3-5天+12缓解策略M-1~M-12), HERMES全局风险台账同步, 10项dry-run, E-1~E-8异常决策树, 25项验收标准
+- **T3.5 归档与状态更新**: `MD5_MANIFEST_cross_review.md` (更新) — 新增5文件MD5(48-52), 验证52/52 PASS, 文件数145+5=150, 阶段23+1=24; `JOB_READY.flag` (更新) — DSHE_PROD_PHASE_STAGE2_EMERGENCY_DONE=TRUE
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (5新增)
+- **新增文件**: 5文件 ~293KB (52+36+30+92+83KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION 全部合规
+- **跨团队同步**: DSHB+HERMES+知几+测试+运维 5团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_STAGE2_EMERGENCY_DONE=TRUE — 投产阶段Stage2紧急完成 (zhiji映射落地✅190项v86+7差异闭环, 双口径重新验证✅99.83%+MC-01修复, Shadow测试更新✅89用例+36阻塞解除, 观测面板更新✅18指标+18告警, 切换回滚更新✅22风险+12缓解, P0风险R-S01修复✅, 150文件/24阶段/MD5 52/52 PASS✅)
+
 ### 2026-10-04 HERMES — V86-RC2 PREP正式封板决议生成 & 全量归档快照固化 (HERMES_V86_RC2_PREP_CLOSURE)
 - **T3.1 PREP封板决议**: `v86_rc2_prep_closure_resolution.md` (21KB) — 三方批准状态汇总(DSHB✅DSHE✅HERMES✅), Gate结果汇总(C1-C5 A+ 50/50, 89/89 PASS), 风险结论(14项/0高/7中/7低), 口径约定(10/10 MC解决), PREP冻结声明(15项不可修改), 投产遗留项清单(19项/~13pd), 17/17封板条件全部通过
 - **T3.2 全量归档快照**: `v86_rc2_full_archive_snapshot.md` (23KB) — 140文件/22阶段/~14.0MB全量索引, MD5 42/42 PASS, Commit链追溯(22阶段), 团队分布(DSHE~95/DSHB~28/HERMES~10/跨团队~7), 归档快照声明V86_RC2_PREP_ARCHIVE_SNAPSHOT=TRUE
