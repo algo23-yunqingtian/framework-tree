@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHE — V86-RC1 展示层交付包预评审·P2缺陷台账·归档预校验·交叉核验清单·验收初稿 (DSHE_V86_RC1_PRESENTATION_LAYER_PRE_AUDIT)
+- **T3.1 预评审**: `v86_rc1_dshe_release_package_pre_audit_v7.md` — 全量扫描5交付文档+101归档资产, 版本信息100%统一, 821链接0死链, 36图表全部渲染正确, 11脚本/18场景/90Q&A全部回放通过, 0渲染缺陷, 预评审裁定✅READY
+- **T3.2 P2台账**: `v86_rc1_dshe_p2_backlog_and_longterm_sop_v7.md` — 5项P2缺陷完整台账(P2-001~005), 全部为纯前端渲染类, 无底层引擎问题, 7项已知限制补充24h观测记录, 三阶段长期观测SOP(T+0~T+30d), 5项P2全部非阻塞
+- **T3.3 归档预校验**: `v86_rc1_dshe_archive_pre_integrity_check_v7.md` — 101文件/10阶段逐项校验, MD5 100%通过, 0重复/0无效/0缺失, STATUS.md 100%准确, 版本追溯链V1→V7-RC1→V7-OBSERVATION完整
+- **T3.4 交叉核验清单**: `v86_rc1_dshe_cross_validation_checklist_v7.md` — 36图表前端展示指标清单, 5 P2底层核对项(2类), 7已知限制底层比对清单, 20项交叉核验核对表, 19个DSHB回填字段预留, 4项通过标准定义, ⏳待DSHB回填
+- **T3.5 验收初稿**: `v86_rc1_dshe_final_acceptance_summary_v7.md` — 展示层全流程结论汇总(发布窗口/页面稳定性/演示包/GitHub素材/P2台账/已知限制/归档完整性), 交叉核验待回填区域20项, 全链路复盘待回填区域, 综合裁定⏳初稿完成待DSHB回填后终稿
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (5新增预评审文档)
+- **新增文件**: 5文件 ~136KB (T3.1-T3.5)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ⏳ DSHE V86-RC1 PRESENTATION LAYER READY FOR CROSS-TEAM REVIEW (预评审✅, P2台账✅, 归档预校验✅, 交叉核验准备✅, 验收初稿⏳待DSHB回填)
+
 ### 2026-10-03 DSHE — V86-RC1 发布窗口页面值守·T0核验·24h稳定性·演示回放·GitHub终审 (DSHE_V86_RC1_PRESENTATION_LAYER_RELEASE_OBSERVATION)
 - **T3.1 发布窗口值守**: `v86_rc1_dshe_release_window_page_watch_log_v7.md` — 跟随DSHB30步时序1:1同步观测, 60页面×3轮=180次访问, 3次版本切换全部成功, 0 P0, 0 P1, 3 P2(非阻塞), 别名联动0异常, 降级提示0误触发
 - **T3.2 T+0即时核验**: `v86_rc1_dshe_t0_page_verify_v7.md` — 60/60页面全量遍历, 36/36图表渲染, 821/821链接有效, 4层降级体系验证通过, 0新增异常, 全部V86.0-RC1-stable标识正确
