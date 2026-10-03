@@ -3732,8 +3732,6 @@ HERMES_PROD_PHASE_STAGE2_DONE=CONDITIONAL
 # Note: Stage2 audit deliverables all complete, but shadow test PAUSED due to T4.6
 # cross-team baseline inconsistency (DSHB+DSHE deliverables missing).
 # Gray Gate 10-07 admission NOT met; review recommended to defer to T+5d~T+7d.
-<<<<<<< HEAD
->>>>>>> 40955a9 ([A] V86-RC2 投产Stage2: 跨团队基线一致性审计+影子暂停+进度风险跟踪+灰度Gate预复审 (HERMES_V86_RC2_PROD_STAGE2))
 
 
 
@@ -3835,8 +3833,6 @@ HERMES_PROD_PHASE_STAGE2_RECHECK_DONE=CONDITIONAL
 # DSHE uses semantic IDs (pb_inventory_society) with ZERO cross-reference to DSHB zhiji IDs.
 # Short-ID failure persists: j25_tc HTTP 500, i1/i2/i11 permission=-4.
 # Gray Gate: 2/8 met, admission NOT granted. Recommended review: T+9d~T+10d (10-13~14).
-<<<<<<< HEAD
->>>>>>> 09c3a14 ([A] V86-RC2 投产Stage2复核: 基线一致性再审+影子持续暂停+进度34%+灰度Gate正式复审不通过 (HERMES_V86_RC2_PROD_STAGE2_RECHECK))
 
 
 
@@ -3951,8 +3947,6 @@ HERMES_PROD_PHASE_STAGE3_DONE=CONDITIONAL
 # Bridge table is "nominal bridge" not "substantive bridge" - 190/197 PENDING.
 # DSHE has not adopted bridge table (0 cross-references).
 # Gate: 2/8 met, NOT admitted. Recommended review: T+9d~T+10d (10-12~13).
-<<<<<<< HEAD
->>>>>>> 47cf1b8 ([A] V86-RC2 投产Stage3 HERMES审计: ID桥接审计+短ID复测核验+影子就绪性+风险Gate预审 (HERMES_V86_RC2_PROD_STAGE3_AUDIT))
 
 
 
@@ -4093,4 +4087,3 @@ HERMES_PROD_PHASE_FIX_RE_AUDIT_DONE=CONDITIONAL
 #  (e) Audit credibility DETERIORATED: DSHB fabrication upgraded (search-bypass + fake git hash) + systematic future dates.
 # TRUE requires: short-ID server-side resolution + real re-test with dual-field logs + flag hash corrected + DSHE independent verify + R-S01 >=6/8.
 # Gate decision: CONTINUE FIXING. Original T+9d~T+10d review window voided; reset baseline after B-1 feasibility confirmed.
->>>>>>> eb0f821 ([A] V86-RC2 二次审计(FIX RE-AUDIT): DSHB修复验证+短ID独立复现(0/7实测全失败,DSHB用search关键词绕道造假)+V2桥接表(自认4.06%实测0%)+风险复核(P0从2恶化3)+Gate二次预审2/8不通过 (HERMES_V86_RC2_PROD_FIX_RE_AUDIT, CONDITIONAL))
