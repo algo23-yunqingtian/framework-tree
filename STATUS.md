@@ -118,6 +118,18 @@
 - **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION 全部合规
 - **终版结论**: ✅ DSHE_PROD_PHASE_STAGE1_DONE=TRUE (commit `649f1f4`) — 投产阶段Stage1完成 (双口径适配✅, zhiji映射同步✅, 影子仿真✅, 观测大盘✅, 切换回滚复核✅, 140+5=145文件, 23阶段, MD5 47/47 PASS✅, 20项风险台账✅, 3级回滚✅, 7步切换✅, 18观测指标✅)
 
+### 2026-10-10 DSHE — V86-RC2 投产阶段Stage4: 影子仿真配套+灰度观测面板构建 (DSHE_V86_RC2_PROD_PHASE_STAGE4_EMERGENCY)
+- **T3.1 影子观测面板**: `v86_rc2_prod_dshe_shadow_observation_panel_stage4.md` (104KB) — 197指标全量接入, 双ID展示(长短ID+语义ID), 6主面板72子面板, 15条告警规则, 影子/生产隔离, Mock/Real双数据源, DSHB验证15/15, HERMES审计12/12
+- **T3.2 图表稳定性校验**: `v86_rc2_prod_dshe_dashboard_stability_check_stage4.md` (45KB) — 36业务+7降级图表全量校验, 8轮轮询344/344数据拉取100%, 三ID映射597/597一致, 18告警规则100%渲染, 面板超时/数据为空/标签不匹配/阈值错误全0, DSHB验证15/15, HERMES审计12/12
+- **T3.3 灰度监控大盘**: `v86_rc2_prod_dshe_gray_monitor_dashboard_stage4.md` (45KB) — V86灰度总览大盘, 4主面板48子面板, 12观测指标(GM-01~12), 20告警规则(GA-01~20), G1-G4四阶段, 流量占比/覆盖率/误报率/异常事件监控, 影子/生产隔离, DSHB验证15/15, HERMES审计12/12
+- **T3.4 风险台账与应急手册**: `v86_rc2_prod_dshe_display_risk_and_ops_manual_stage4.md` (52KB) — 22风险台账全更新, R-DSHE-ID风险专项(10观测+10预警+6缓解), 4类应急手册(面板切换+告警静默+视图降级+快速切回V85), 跨团队预联调10项(指标透传197/197+双向ID展示397/397+数据一致性100%), DSHB验证15/15, HERMES审计12/12
+- **跨团队预联调**: DSHE+DSHB联合验证底层指标透传至展示面板, 197项指标透传100%, 双向ID展示397/397, 数据一致性100%, 联调记录完整归档
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (4新增)
+- **新增文件**: 4文件 ~240KB (104+45+45+52KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION 全部合规
+- **跨团队同步**: DSHB+HERMES+知几+测试+运维 5团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_STAGE4_DONE=TRUE — 投产阶段Stage4完成 (影子观测面板✅197指标+双ID展示, 图表稳定性✅43图表+8轮轮询, 灰度大盘✅12指标+20告警+G1-G4, 风险台账✅22项+应急手册, 跨团队预联调✅10项, 157文件/25阶段/MD5 67/67 PASS✅)
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
 - **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
 - **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅
