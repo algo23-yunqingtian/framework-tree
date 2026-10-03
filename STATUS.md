@@ -82,7 +82,7 @@
 - **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (5新增)
 - **新增文件**: 5文件 ~277KB (60+53+55+58+50KB)
 - **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON_MODIFICATION / NO_ENGINE_LOGIC_MODIFICATION 全部合规
-- **终版结论**: ✅ DSHE_PROD_PHASE_STAGE1_DONE=TRUE (commit `0e8cfdd`) — 投产阶段Stage1完成 (双口径适配✅, zhiji映射同步✅, 影子仿真✅, 观测大盘✅, 切换回滚复核✅, 140+5=145文件, 23阶段, MD5 47/47 PASS✅, 20项风险台账✅, 3级回滚✅, 7步切换✅, 18观测指标✅)
+- **终版结论**: ✅ DSHE_PROD_PHASE_STAGE1_DONE=TRUE (commit `649f1f4`) — 投产阶段Stage1完成 (双口径适配✅, zhiji映射同步✅, 影子仿真✅, 观测大盘✅, 切换回滚复核✅, 140+5=145文件, 23阶段, MD5 47/47 PASS✅, 20项风险台账✅, 3级回滚✅, 7步切换✅, 18观测指标✅)
 
 ### 2026-10-04 HERMES — V86-RC2 PREP正式封板决议生成 & 全量归档快照固化 (HERMES_V86_RC2_PREP_CLOSURE)
 - **T3.1 PREP封板决议**: `v86_rc2_prep_closure_resolution.md` (21KB) — 三方批准状态汇总(DSHB✅DSHE✅HERMES✅), Gate结果汇总(C1-C5 A+ 50/50, 89/89 PASS), 风险结论(14项/0高/7中/7低), 口径约定(10/10 MC解决), PREP冻结声明(15项不可修改), 投产遗留项清单(19项/~13pd), 17/17封板条件全部通过
