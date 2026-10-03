@@ -173,6 +173,17 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
 - **终版结论**: ✅ V86-RC2 DSHE FULL UT VERIFIED — PREP阶段DSHE侧验证闭环完成 (24/24 Mock替换✅, 24/24复测PASS✅, 0缺陷✅, 7/7降级兜底✅, C1-C5 A+ 50/50✅, 89/89 Gate PASS✅, DSHE_FULL_UT_VERIFIED=TRUE, 等待DSHB IT集成+HERMES统一校验)
 
+### 2026-10-04 DSHE — V86-RC2 全量Gate验收材料汇总与PREP归档终版固化 (DSHE_V86_RC2_FULL_PREP_ARCHIVE_FINALIZED)
+- **T3.1 全交付物索引**: `v86_rc2_dshe_full_prep_archive_index_v7.md` (25.5KB) — 49份DSHE交付文档全量索引(路径/commit/MD5/依赖关系), 20阶段133文件~12.5MB, 完整commit哈希链(16阶段), 文档依赖关系图, MD5 32/32 PASS
+- **T3.2 Gate终审报告**: `v86_rc2_dshe_c1_c5_gate_final_report_v7.md` (20.8KB) — C1-C5 Gate终审(A+ 50/50), 89/89 Gate PASS(100%), UT 68/68 PASS, 复测24/24 PASS, 7/7降级图表验证, 10/10口径冲突解决, 11项风险台账(0高/4中/7低), RC1→RC2性能改善平均-49.7%
+- **T3.3 投产切换指南**: `v86_rc2_dshe_prod_switch_guide_v7.md` (44.8KB) — PREP冻结项12项(全部冻结), 投产待办DSHB 8项(ENG-01~04/MON-01~04 102.5h), GATE-DSHE-010性能波动观测策略(T0~T+7d), 7降级图表上线兜底策略(L2静态快照3+L3占位图4), 3保留差异+4互补口径投产处理规则, 7步切换步骤(T-24h~T+7d), 3级回滚(L1/L2/L3), 8项风险与观测项汇总
+- **T3.4 归档与状态更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段20 DSHE_PREP_ARCHIVE_FINALIZED(3文件), 总文件数133, 总阶段20, 总大小~12.5MB; `MD5_MANIFEST_cross_review.md` (更新) — 3文件MD5新增(32/32全部PASS); `JOB_READY.flag` (更新) — DSHE_PREP_ARCHIVE_FINALIZED=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增 + 3更新)
+- **新增文件**: 3文件 ~91.1KB (25.5KB + 20.8KB + 44.8KB)
+- **更新文件**: 3文件 (归档+MD5+JOB_READY)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ✅ V86-RC2 DSHE PREP ARCHIVE FINALIZED — PREP阶段DSHE侧归档终版固化完成 (133文件/20阶段/~12.5MB, MD5 32/32 PASS, C1-C5 A+ 50/50, 89/89 Gate PASS, 投产切换指南就绪, DSHE_PREP_ARCHIVE_FINALIZED=TRUE, 等待HERMES全局校验报告输出后支持RC2 PREP整体封板)
+
 ### 2026-10-03 DSHB — V86-RC1 跨Agent交叉核验·DSHE复盘评审·全链路总验收汇总 V7 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7)
 - **T3.1 交叉核验结果**: `v86_rc1_cross_validation_result_report_v7.md` — 回填19个DSHB字段, 核验36张图表(32匹配+7降级), 5项P2全部确认纯前端, 7项已知限制全部确认, CR-1~CR-4全部通过, 最终裁定✅ALL CRITERIA PASSED
 - **T3.2 DSHE评审意见+复盘修订**: `v86_rc1_dshe_retrospect_review_comments_v7.md` — 10项评审意见(DSHE-01~10), 含时序对齐/P2告警关联/跨Agent MD5同步/联合演练/评分矩阵/误报率/优化项/风险评估/文档缺口/终裁, APPROVED WITH SUGGESTIONS; `v86_rc1_release_window_retrospect_v7.md` (V7-R1修订版, 796行/45KB, 24处[DSHE-V7-R1]标记, 新增A-04/B-09/B-10/C-07/C-08优化项, D-11~D-13文档缺口, R-07风险项)
