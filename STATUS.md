@@ -95,6 +95,17 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
 - **终版结论**: ✅ V86-RC1 JOINT REVIEW COMPLETE (遗留项✅3/3闭环, 联合评审✅47/47检查PASS, 双端签字✅, RC2规划✅13项优化, 版本基线锁定✅V86-RC1, 归档✅115文件/13阶段/MD5 100%)
 
+### 2026-10-03 DSHE — V86-RC2 展示层优化任务拆解·UI变更规格方案·Gate验收用例准备 (DSHE_V86_RC2_PRESENTATION_LAYER_TASK_BREAKDOWN_AND_UI_CHANGE_SPEC_AND_GATE_ACCEPT_CASE)
+- **T3.1 任务拆解**: `v86_rc2_dshe_presentation_task_breakdown_v7.md` — 5项展示层优化项(#3/#4/#9/#10/#11含#12)精细化拆解, 32个子任务, 18人天, 3项跨团队依赖, 变更影响范围评估
+- **T3.2 变更规格**: `v86_rc2_dshe_ui_change_spec_v7.md` — 逐项变更前后对比, 36张图表配置更新清单, 演示脚本更新(11脚本/18场景/90Q&A), GitHub Release文档更新(README 15章/Notes 12章), 3级回滚预案(L1/L2/L3)
+- **T3.3 Gate验收**: `v86_rc2_dshe_gate_accept_case_v7.md` — 68个Gate验收用例(GATE-DSHE-001~068), 5大维度(页面加载12/图表渲染15/别名展示10/降级能力15/演示回放16), 25个DSHB依赖用例, 19个底层数据回填字段预留, 10项验收判定标准
+- **T3.4 归档更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段14 RC2_PREP(3文件), 总文件数118, 总阶段14, 总大小~10.5MB; `MD5_MANIFEST_cross_review.md` (更新) — 新增3文件MD5, 11/11全部PASS
+- **T3.5 任务固化**: `JOB_READY.flag` (更新) — RC2_PREP_READY=TRUE, JOB_READY=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增)
+- **新增文件**: 3文件 ~141KB (T3.1~T3.3)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ✅ V86-RC2 PRESENTATION LAYER PREPARATION COMPLETE (任务拆解✅32子任务/18人天, 变更规格✅5项方案+回滚预案, Gate验收✅68用例/10标准, 跨团队依赖✅25用例标记, 归档✅118文件/14阶段/MD5 100%)
+
 ### 2026-10-03 DSHB — V86-RC1 跨Agent交叉核验·DSHE复盘评审·全链路总验收汇总 V7 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7)
 - **T3.1 交叉核验结果**: `v86_rc1_cross_validation_result_report_v7.md` — 回填19个DSHB字段, 核验36张图表(32匹配+7降级), 5项P2全部确认纯前端, 7项已知限制全部确认, CR-1~CR-4全部通过, 最终裁定✅ALL CRITERIA PASSED
 - **T3.2 DSHE评审意见+复盘修订**: `v86_rc1_dshe_retrospect_review_comments_v7.md` — 10项评审意见(DSHE-01~10), 含时序对齐/P2告警关联/跨Agent MD5同步/联合演练/评分矩阵/误报率/优化项/风险评估/文档缺口/终裁, APPROVED WITH SUGGESTIONS; `v86_rc1_release_window_retrospect_v7.md` (V7-R1修订版, 796行/45KB, 24处[DSHE-V7-R1]标记, 新增A-04/B-09/B-10/C-07/C-08优化项, D-11~D-13文档缺口, R-07风险项)

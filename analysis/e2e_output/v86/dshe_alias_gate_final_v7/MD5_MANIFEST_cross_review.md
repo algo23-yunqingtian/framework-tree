@@ -4,7 +4,7 @@
 > **Branch:** `feature/v85-chart-template`
 > **Generated:** 2026-10-03
 > **Base:** DSHE V7-RC1 (commit `f1d444e`), DSHB V86-RC1 (commit `0948e1d`)
-> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE
+> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE
 
 ---
 
@@ -37,6 +37,16 @@
 
 ---
 
+## RC2_PREP New Files (3 files)
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 9 | v86_rc2_dshe_presentation_task_breakdown_v7.md | `55F0BD8C78A12DC41D44ACC4BF4919B6` | 82,015 B |
+| 10 | v86_rc2_dshe_ui_change_spec_v7.md | `3F49C8DEEC6EE565021DE8B9527880C3` | 28,501 B |
+| 11 | v86_rc2_dshe_gate_accept_case_v7.md | `675074BBE76DD15F52D1AAA4AC17325C` | 30,615 B |
+
+---
+
 ## MD5 Verification Summary
 
 | File | MD5 Verified | Status |
@@ -49,7 +59,10 @@
 | v86_rc1_dshe_open_item_acknowledge_v7.md | ✅ | PASS |
 | v86_rc1_joint_review_sign_package_v7.md | ✅ | PASS |
 | v86_rc2_iteration_plan_draft_v7.md | ✅ | PASS |
-| **Total** | **8/8** | **✅ 100% PASS** |
+| v86_rc2_dshe_presentation_task_breakdown_v7.md | ✅ | PASS |
+| v86_rc2_dshe_ui_change_spec_v7.md | ✅ | PASS |
+| v86_rc2_dshe_gate_accept_case_v7.md | ✅ | PASS |
+| **Total** | **11/11** | **✅ 100% PASS** |
 
 ---
 
@@ -76,6 +89,7 @@
 | PRE_AUDIT | 106 | 181 | 11 |
 | **CROSS_REVIEW** | **111** | **184** | **12** |
 | **JOINT_REVIEW** | **115** | **188** | **13** |
+| **RC2_PREP** | **118** | **191** | **14** |
 
 ---
 
@@ -91,6 +105,9 @@
 | 6 | v86_rc1_dshe_open_item_acknowledge_v7.md | `5D60C3B12AF9FEE6AF951058B01A31F4` | DSHE open item acknowledge (3/3 CLOSED) |
 | 7 | v86_rc1_joint_review_sign_package_v7.md | `1C34E6B71A06630877A5AAFCF4D9F186` | Joint review sign package (47/47 checks PASS) |
 | 8 | v86_rc2_iteration_plan_draft_v7.md | `97E8B5660EE6563C424D5BF244138193` | RC2 iteration plan (13 optimization items) |
+| 9 | v86_rc2_dshe_presentation_task_breakdown_v7.md | `55F0BD8C78A12DC41D44ACC4BF4919B6` | RC2 task breakdown (32 subtasks, 18 person-days) |
+| 10 | v86_rc2_dshe_ui_change_spec_v7.md | `3F49C8DEEC6EE565021DE8B9527880C3` | RC2 UI change spec (5 items, rollback plan) |
+| 11 | v86_rc2_dshe_gate_accept_case_v7.md | `675074BBE76DD15F52D1AAA4AC17325C` | RC2 Gate accept cases (68 cases, 10 thresholds) |
 
 ---
 
@@ -112,4 +129,4 @@
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE*
