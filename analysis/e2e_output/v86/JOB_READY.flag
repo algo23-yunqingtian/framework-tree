@@ -1847,6 +1847,87 @@ TOTAL_SIZE_RC2_PREP=218473
 # ── Git ──
 COMMIT_HASH_RC2_PREP=1ec6ce2
 COMMIT_HASH_RC2_PREP_ALIGNED=8f9a194
+
+# ═══════════════════════════════════════════════════════════════
+# Task: DSHE_V86_RC2_DUAL_END_BASELINE_ALIGNMENT_AND_GATE_CASE_REVIEW
+# Sub-task: T3.1~T3.5 Dual-End Baseline Alignment
+# ═══════════════════════════════════════════════════════════════
+
+TASK_ID=DSHE_V86_RC2_DUAL_END_BASELINE_ALIGNMENT_AND_GATE_CASE_REVIEW
+TASK_TYPE=DSHE_V86_RC2_DUAL_END_ALIGNMENT
+DATE=2026-10-03
+BRANCH=feature/v85-chart-template
+BASELINE=DSHE_V7_RC1_F1D444E_DSHB_V86_RC1_0948E1D_DSHB_GATE_BASELINE_581A9F4
+
+# ── DSHB Deliverables Received ──
+DSHB_ENGINE_TASK_BREAKDOWN=TRUE
+DSHB_ENGINE_TASKS=4 (ENG-01~04, 12 subtasks, 56.5h)
+DSHB_MONITOR_TASK_BREAKDOWN=TRUE
+DSHB_MONITOR_TASKS=4 (MON-01~04, 44 subtasks, 46h)
+DSHB_GATE_ENTRY_BASELINE=TRUE
+DSHB_GATE_BASELINE=C1-C5, 36 smoke cases, 4-stage 7-day flow
+DSHB_TOTAL_TASKS=8 (4 engine + 4 monitor)
+DSHB_TOTAL_HOURS=102.5
+
+# ── T3.1 Case Diff Review ──
+T3.1_CASE_DIFF_REVIEW=TRUE
+T3.1_OUTPUT=v86_rc2_dshe_dshb_case_diff_review_v7.md
+T3.1_DIFFS_IDENTIFIED=14 (4 duplicate + 5 caliber + 2 threshold + 2 timing + 1 scope)
+T3.1_DEDUPLICATION=7 (RG-01~07)
+T3.1_BACKFILL_FIELDS=19 (F-01~F-19)
+T3.1_UNIFIED_CASES=101
+T3.1_TIMING_MISMATCHES=2 (#9 API Schema T+7d vs T+3d, #11 CDN T+5d vs T+3d)
+T3.1_STATUS=COMPLETE
+
+# ── T3.2 Cross-Team Contract ──
+T3.2_CROSS_TEAM_CONTRACT=TRUE
+T3.2_OUTPUT=v86_rc2_cross_team_contract_v7.md
+T3.2_DEPENDENCIES=3 (#9, #10, #11)
+T3.2_DEPENDENCY_POINTS=7
+T3.2_DELIVERABLES=6 (API confirm/interface/perf/release/permission/demo data)
+T3.2_DELIVERY_NODES=9 (T+1d~T+14d)
+T3.2_RISKS=7 (4 medium + 3 low, all mitigated)
+T3.2_DEPENDENCY_CASES=23 (all reviewed)
+T3.2_BACKFILL_FIELDS=19 (F-01~F-19, all updated)
+T3.2_STATUS=COMPLETE
+
+# ── T3.3 L3 Rollback Joint Review ──
+T3.3_L3_ROLLBACK_REVIEW=TRUE
+T3.3_OUTPUT=v86_rc2_dshe_ui_change_spec_v7.md (updated, +8KB)
+T3.3_TIMING_RISKS=8 (4 medium + 4 low)
+T3.3_BREAKPOINTS_FIXED=6 (BP-01~06)
+T3.3_JOINT_VERIFICATION=13 (9 original + 4 new)
+T3.3_STATUS=COMPLETE
+
+# ── T3.4 Unified Gate Case Set ──
+T3.4_UNIFIED_CASE_SET=TRUE
+T3.4_OUTPUT=v86_rc2_gate_unified_case_set_v7.md
+T3.4_TOTAL_CASES=89 (DSHE 72 + DSHB 36 - 7 dedup - 12 merge)
+T3.4_DSHB_BACKEND=32 cases (UT+IT+SR+GA deduped)
+T3.4_DSHB_FRONTEND=61 cases (DSHE display layer)
+T3.4_COORDINATION=4 cases (COORD-001~004)
+T3.4_P0_BLOCKING=6 (GA-001~006)
+T3.4_P1_IMPORTANT=83
+T3.4_STATUS=COMPLETE
+
+# ── T3.5 Archive & Status Update ──
+T3.5_ARCHIVE_UPDATE=TRUE
+T3.5_ARCHIVE_VERSION_CHAIN=V1_V7_RC1_OBSERVATION_PRE_AUDIT_CROSS_REVIEW_JOINT_REVIEW_RC2_PREP_RC2_PREP_ALIGNED_RC2_PREP_ALIGNED_DUAL
+T3.5_ARCHIVE_FILES=122
+T3.5_ARCHIVE_STAGES=16
+T3.5_ARCHIVE_SIZE=~11.6MB
+T3.5_MD5_FILES=18 (18/18 PASS)
+T3.5_STATUS=COMPLETE
+
+# ── Output Directory ──
+RC2_PREP_ALIGNED_DUAL_OUTPUT_DIR=analysis/e2e_output/v86/dshe_alias_gate_final_v7/
+TOTAL_FILES_RC2_PREP_ALIGNED_DUAL=4 (3 new + 1 updated)
+TOTAL_SIZE_RC2_PREP_ALIGNED_DUAL=79815 (72130 new + 7685 updated)
+NEW_FILES_RC2_PREP_ALIGNED_DUAL=v86_rc2_dshe_dshb_case_diff_review_v7.md|v86_rc2_cross_team_contract_v7.md|v86_rc2_gate_unified_case_set_v7.md
+UPDATED_FILES_RC2_PREP_ALIGNED_DUAL=v86_rc2_dshe_ui_change_spec_v7.md|v86_alias_final_archive_bundle_v7_rc1.md|MD5_MANIFEST_cross_review.md|JOB_READY.flag
+
+# ── Git ──
+COMMIT_HASH_RC2_PREP_ALIGNED_DUAL=PENDING
 BRANCH=feature/v85-chart-template
 REMOTE=origin
 
@@ -1861,4 +1942,5 @@ NO_ENGINE_LOGIC_MODIFICATION=TRUE
 # ── Final Status ──
 RC2_PREP_READY=TRUE
 RC2_PREP_DSHB_GATE_ALIGNED=TRUE
+RC2_PREP_ALIGNED=TRUE
 TASK_COMPLETED=TRUE

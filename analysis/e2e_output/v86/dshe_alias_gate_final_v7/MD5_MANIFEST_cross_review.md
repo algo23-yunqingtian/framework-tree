@@ -4,7 +4,7 @@
 > **Branch:** `feature/v85-chart-template`
 > **Generated:** 2026-10-03
 > **Base:** DSHE V7-RC1 (commit `f1d444e`), DSHB V86-RC1 (commit `0948e1d`)
-> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED
+> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED COMPLETE
 
 ---
 
@@ -64,6 +64,31 @@
 
 ---
 
+## RC2_PREP_ALIGNED New Files (3 new + 1 updated)
+
+> **Task:** DSHE_V86_RC2_DUAL_END_BASELINE_ALIGNMENT_AND_GATE_CASE_REVIEW
+> **Sub-tasks:** T3.1 双端用例差异评审 | T3.2 跨团队契约 | T3.3 L3回滚联合评审 | T3.4 统一用例全集
+> **DSHB Deliverables Received:** Engine/Monitor Task Breakdown (8 items, 102.5h), Gate Entry Baseline (C1-C5, 36 smoke cases)
+> **Updated:** 2026-10-03
+
+### New Files
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 15 | v86_rc2_dshe_dshb_case_diff_review_v7.md | `51FD530A6FD9D1DC99C636B601783FC6` | 26,968 B |
+| 16 | v86_rc2_cross_team_contract_v7.md | `7609F648C93CC2D3C38474AC409C94EE` | 23,759 B |
+| 17 | v86_rc2_gate_unified_case_set_v7.md | `FEC14C7436F5FAFBF9890D221AC7C279` | 21,403 B |
+
+### Updated File
+
+| # | File | Old MD5 | New MD5 | Old Size | New Size | Δ Size |
+|---|------|---------|---------|----------|----------|--------|
+| 18 | v86_rc2_dshe_ui_change_spec_v7.md | `F5956B722BDC8B057E5870E562FD13C9` | `DF0320673819041CB2754FFC4427EB15` | 73,990 B | 81,675 B | +7,685 B |
+
+**Total delta:** +79,815 B (73,990 B → 81,675 B, +10.4%) + 72,130 B (3 new files)
+
+---
+
 ## MD5 Verification Summary
 
 | File | MD5 Verified | Status |
@@ -82,7 +107,11 @@
 | v86_rc2_dshe_presentation_task_breakdown_v7.md (aligned) | ✅ | PASS |
 | v86_rc2_dshe_ui_change_spec_v7.md (aligned) | ✅ | PASS |
 | v86_rc2_dshe_gate_accept_case_v7.md (aligned) | ✅ | PASS |
-| **Total** | **14/14** | **✅ 100% PASS** |
+| v86_rc2_dshe_dshb_case_diff_review_v7.md | ✅ | PASS |
+| v86_rc2_cross_team_contract_v7.md | ✅ | PASS |
+| v86_rc2_gate_unified_case_set_v7.md | ✅ | PASS |
+| v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback review) | ✅ | PASS |
+| **Total** | **18/18** | **✅ 100% PASS** |
 
 ---
 
@@ -111,6 +140,7 @@
 | **JOINT_REVIEW** | **115** | **188** | **13** |
 | **RC2_PREP** | **118** | **191** | **14** |
 | **RC2_PREP_ALIGNED** | **118** | **191** | **15** |
+| **RC2_PREP_ALIGNED (DUAL)** | **122** | **195** | **16** |
 
 ---
 
@@ -132,6 +162,10 @@
 | 12 | v86_rc2_dshe_presentation_task_breakdown_v7.md (aligned) | `CBFFCA189868978BFBCD441D3952CA1C` | RC2 task breakdown aligned with DSHB Gate C1-C5 (36 subtasks, 18 person-days + 2.5h coordination) |
 | 13 | v86_rc2_dshe_ui_change_spec_v7.md (aligned) | `F5956B722BDC8B057E5870E562FD13C9` | RC2 UI change spec aligned with DSHB ENG-01/03/04, MON-01/02/04 (5 items, C1-C5 mapping) |
 | 14 | v86_rc2_dshe_gate_accept_case_v7.md (aligned) | `7D2FFCE445BEEEFBB5CBC552953140C9` | RC2 Gate accept cases aligned with DSHB C1-C5 + 4 COORD cases (72 cases total, 36 smoke dedup) |
+| 15 | v86_rc2_dshe_dshb_case_diff_review_v7.md | `51FD530A6FD9D1DC99C636B601783FC6` | DSHB双端用例差异评审 (12项差异, 7项去重, 5项口径冲突已修正) |
+| 16 | v86_rc2_cross_team_contract_v7.md | `7609F648C93CC2D3C38474AC409C94EE` | 跨团队依赖契约 (#9/#10/#11, 7依赖点, 19回填字段, 23用例评审) |
+| 17 | v86_rc2_gate_unified_case_set_v7.md | `FEC14C7436F5FAFBF9890D221AC7C279` | RC2统一Gate验收用例全集 (89用例, 去重合并, P0/P1标记) |
+| 18 | v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback) | `DF0320673819041CB2754FFC4427EB15` | RC2 UI change spec with L3 rollback joint review (8项时序风险, 6项断点修复, 13项联合验证) |
 
 ---
 

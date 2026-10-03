@@ -106,6 +106,18 @@
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
 - **终版结论**: ✅ V86-RC2 PRESENTATION LAYER PREPARATION COMPLETE + DSHB GATE BASELINE ALIGNED (任务拆解✅36子任务/18人天+2.5h协同, 变更规格✅5项方案+DSHB联动+回滚预案, Gate验收✅72用例(68+4)/C1-C5对齐/DSHB去重, 跨团队依赖✅29用例标记+4协同, 归档✅118文件/15阶段/MD5 100%)
 
+### 2026-10-03 DSHE — V86-RC2 双端基线对齐·用例差异评审·跨团队契约·L3回滚联合评审·统一用例全集 (DSHE_V86_RC2_DUAL_END_BASELINE_ALIGNMENT_AND_GATE_CASE_REVIEW)
+- **T3.1 双端用例差异评审**: `v86_rc2_dshe_dshb_case_diff_review_v7.md` (27KB) — DSHE 72用例 vs DSHB 36冒烟用例逐条比对, **14项差异识别**(4重复/5口径冲突/2阈值/2时序/1范围), **7项去重完成**(RG-01~07), **19项回填字段**全部更新判定逻辑, **2项时序待协调**(#9 API Schema T+7d vs 需求T+3d, #11 CDN步骤T+5d vs 需求T+3d), **101项统一用例**形成
+- **T3.2 跨团队契约**: `v86_rc2_cross_team_contract_v7.md` (24KB) — #9/#10/#11 3项强依赖数据契约定稿, **7个依赖点**(指标名称/数据类型/精度/输出频率/延迟上限/异常兜底), **6份DSHB交付物**(API确认/接口/性能/发布确认/权限/演示数据), **9个交付节点**(T+1d~T+14d), **7项延期风险**全部有缓解措施, **23项DSHB依赖用例**评审完成
+- **T3.3 L3回滚联合评审**: `v86_rc2_dshe_ui_change_spec_v7.md` (更新 +8KB) — DSHE L3全量回滚 vs DSHB底层回滚步骤联合评审, **8项时序风险点**(4中4低), **6项流程断点**全部修复, **13项联合验证清单**(原9项+新增4项), L3回滚预案定稿, 双端对齐完成
+- **T3.4 统一用例全集**: `v86_rc2_gate_unified_case_set_v7.md` (21KB) — DSHE 72 + DSHB 36 = 108 → 去重-7 → 合并-12 = **89项统一用例**, 按层级分类(DSHB底层32/DSHE展示61/协同4), 按阶段分类(Stage1~4), 按优先级标记(P0:6/P1:83), **Gate决策框架**(GO/GO⚠️/NO-GO), C1-C5统一判定标准
+- **T3.5 归档与状态更新**: `v86_alias_final_archive_bundle_v7_rc1.md` (更新) — 新增阶段16 RC2_PREP_ALIGNED_DUAL(3新增+1更新), 总文件数122, 总阶段16, 总大小~11.6MB; `MD5_MANIFEST_cross_review.md` (更新) — 4文件MD5(3新增+1更新), 18/18全部PASS; `JOB_READY.flag` (更新) — RC2_PREP_ALIGNED=TRUE, JOB_READY=TRUE
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (3新增 + 1更新 + 3更新)
+- **新增文件**: 3文件 ~72KB (27KB + 24KB + 21KB)
+- **更新文件**: 4文件 +79KB (UI spec +8KB + archive +1KB + MD5 +1KB + JOB_READY +0.1KB)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ✅ V86-RC2 DUAL-END BASELINE ALIGNMENT COMPLETE (双端用例差异评审✅14项差异/7项去重/101项统一, 跨团队契约✅3项依赖/7依赖点/19回填字段/23用例评审, L3回滚联合评审✅8项风险/6项断点修复/13项联合验证, 统一用例全集✅89用例/去重合并/P0-P1标记, 归档✅122文件/16阶段/MD5 100%, 双端对齐完成, 具备进入UT开发阶段条件)
+
 ### 2026-10-03 DSHB — V86-RC1 跨Agent交叉核验·DSHE复盘评审·全链路总验收汇总 V7 (DSHB_V86_RC1_FULL_LIFECYCLE_ACCEPTANCE_V7)
 - **T3.1 交叉核验结果**: `v86_rc1_cross_validation_result_report_v7.md` — 回填19个DSHB字段, 核验36张图表(32匹配+7降级), 5项P2全部确认纯前端, 7项已知限制全部确认, CR-1~CR-4全部通过, 最终裁定✅ALL CRITERIA PASSED
 - **T3.2 DSHE评审意见+复盘修订**: `v86_rc1_dshe_retrospect_review_comments_v7.md` — 10项评审意见(DSHE-01~10), 含时序对齐/P2告警关联/跨Agent MD5同步/联合演练/评分矩阵/误报率/优化项/风险评估/文档缺口/终裁, APPROVED WITH SUGGESTIONS; `v86_rc1_release_window_retrospect_v7.md` (V7-R1修订版, 796行/45KB, 24处[DSHE-V7-R1]标记, 新增A-04/B-09/B-10/C-07/C-08优化项, D-11~D-13文档缺口, R-07风险项)
