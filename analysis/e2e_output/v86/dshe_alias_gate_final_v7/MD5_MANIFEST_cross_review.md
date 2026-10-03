@@ -4,7 +4,7 @@
 > **Branch:** `feature/v85-chart-template`
 > **Generated:** 2026-10-03
 > **Base:** DSHE V7-RC1 (commit `f1d444e`), DSHB V86-RC1 (commit `0948e1d`)
-> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED COMPLETE
+> **Status:** ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE
 
 ---
 
@@ -89,6 +89,39 @@
 
 ---
 
+## RC2_UT New Files (3 files)
+
+> **Task:** DSHE_V86_RC2_PRESENTATION_LAYER_UT_SELFTEST_AND_COORD_PREP
+> **Date:** 2026-10-04
+> **UT Results:** 68/68 PASS (100%), 3 P2 defects all resolved, C1-C5 Gate A+ 10/10
+> **COORD:** 4/4 display-side READY, waiting for DSHB IT integration
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 19 | v86_rc2_dshe_dev_defect_log_v7.md | `D111477DD36E98C46EEA1A79F80FF2AF` | 28,883 B |
+| 20 | v86_rc2_dshe_presentation_ut_report_v7.md | `529E5F1FEF78739E6678F37EE6885E31` | 19,433 B |
+| 21 | v86_rc2_dshe_coord_case_prep_v7.md | `D3172D984514CD5BAF90752ADE43E77B` | 20,951 B |
+
+**RC2_UT total:** 3 files, +69,267 B
+
+---
+
+## DSHB_FINAL_PREP New Files (3 files)
+
+> **Task:** DSHB_V86_RC2_FINAL_PREP_CHART_SCHEMA_ZHIJI_MAPPING_AND_BACKFILL_FINAL
+> **Date:** 2026-10-04
+> **Status:** DSHB_FINAL_PREP_CLOSED=TRUE — READY FOR HERMES GLOBAL VERIFICATION
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 22 | v86_rc2_dshb_chart_schema_full_v7.md | `858AE32E3AAE1D5B82A9FE4848662C89` | 79,265 B |
+| 23 | v86_rc2_dshb_zhiji_mapping_predefine_v7.md | `022C907B1D607651E13731461DC23F7A` | 75,657 B |
+| 24 | v86_rc2_dshb_backfill_field_final_spec_v7.md | `30B8BB8375CB95CDCBFB89BE24CDC12C` | 38,868 B |
+
+**DSHB_FINAL_PREP total:** 3 files, +193,790 B
+
+---
+
 ## MD5 Verification Summary
 
 | File | MD5 Verified | Status |
@@ -111,7 +144,13 @@
 | v86_rc2_cross_team_contract_v7.md | ✅ | PASS |
 | v86_rc2_gate_unified_case_set_v7.md | ✅ | PASS |
 | v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback review) | ✅ | PASS |
-| **Total** | **18/18** | **✅ 100% PASS** |
+| v86_rc2_dshe_dev_defect_log_v7.md | ✅ | PASS |
+| v86_rc2_dshe_presentation_ut_report_v7.md | ✅ | PASS |
+| v86_rc2_dshe_coord_case_prep_v7.md | ✅ | PASS |
+| v86_rc2_dshb_chart_schema_full_v7.md | ✅ | PASS |
+| v86_rc2_dshb_zhiji_mapping_predefine_v7.md | ✅ | PASS |
+| v86_rc2_dshb_backfill_field_final_spec_v7.md | ✅ | PASS |
+| **Total** | **24/24** | **✅ 100% PASS** |
 
 ---
 
@@ -141,7 +180,9 @@
 | **RC2_PREP** | **118** | **191** | **14** |
 | **RC2_PREP_ALIGNED** | **118** | **191** | **15** |
 | **RC2_PREP_ALIGNED (DUAL)** | **122** | **195** | **16** |
-| **RC2_FINAL_PREP_CLOSED** | **125** | **198** | **17** |
+| **RC2_UT** | **125** | **198** | **17** |
+| **DSHB_FINAL_PREP** | **128** | **201** | **18** |
+| **RC2_FINAL_PREP_CLOSED** | **128** | **201** | **18** |
 
 ---
 
@@ -153,9 +194,9 @@
 
 | # | File | MD5 | Size |
 |---|------|-----|------|
-| 19 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | 48,533 B |
-| 20 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | 51,858 B |
-| 21 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | 42,048 B |
+| 25 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | 48,533 B |
+| 26 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | 51,858 B |
+| 27 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | 42,048 B |
 
 **Total delta:** +142,439 B (48,533 + 51,858 + 42,048 new files)
 
@@ -183,9 +224,15 @@
 | 16 | v86_rc2_cross_team_contract_v7.md | `7609F648C93CC2D3C38474AC409C94EE` | 跨团队依赖契约 (#9/#10/#11, 7依赖点, 19回填字段, 23用例评审) |
 | 17 | v86_rc2_gate_unified_case_set_v7.md | `FEC14C7436F5FAFBF9890D221AC7C279` | RC2统一Gate验收用例全集 (89用例, 去重合并, P0/P1标记) |
 | 18 | v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback) | `DF0320673819041CB2754FFC4427EB15` | RC2 UI change spec with L3 rollback joint review (8项时序风险, 6项断点修复, 13项联合验证) |
-| 19 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | 全量36图表PDF绘图Schema固化 (36/36图表, 8模块, 7降级兜底, 19回填字段映射) |
-| 20 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | zhiji数据库预映射规则 (197项映射, 178指标+19回填字段, 100%覆盖) |
-| 21 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | HERMES校验规范 (85项校验, C1-C5映射, 88.2%全自动, 高风险15项) |
+| 19 | v86_rc2_dshe_dev_defect_log_v7.md | `D111477DD36E98C46EEA1A79F80FF2AF` | RC2 development defect log (3 P2 defects, all resolved, 9.4% defect rate) |
+| 20 | v86_rc2_dshe_presentation_ut_report_v7.md | `529E5F1FEF78739E6678F37EE6885E31` | RC2 UT self-test report (68/68 PASS, C1-C5 A+ 10/10, P99 2.7s) |
+| 21 | v86_rc2_dshe_coord_case_prep_v7.md | `D3172D984514CD5BAF90752ADE43E77B` | RC2 COORD case prep (4/4 display-side READY, 2.5h, 19 backfill fields) |
+| 22 | v86_rc2_dshb_chart_schema_full_v7.md | `858AE32E3AAE1D5B82A9FE4848662C89` | RC2 DSHB chart schema full (36 charts, 8 modules, 56 subpanels, 7 degraded) |
+| 23 | v86_rc2_dshb_zhiji_mapping_predefine_v7.md | `022C907B1D607651E13731461DC23F7A` | RC2 DSHB zhiji mapping predefine (36 charts + 19 fields, 0 API calls) |
+| 24 | v86_rc2_dshb_backfill_field_final_spec_v7.md | `30B8BB8375CB95CDCBFB89BE24CDC12C` | RC2 DSHB backfill field final spec (19/19 finalized, 24/24 cases mapped, 10/10 conflicts resolved) |
+| 25 | v86_rc2_dshe_chart_schema_full_v7.md | `D34210ADFE1D69D8A8460A0036A7C95B` | DSHE全量36图表PDF绘图Schema固化 (36/36图表, 8模块, 7降级兜底, 19回填字段映射) |
+| 26 | v86_rc2_dshe_zhiji_mapping_predefine_v7.md | `3926DCA7DB33EEB60EF9592BED108459` | DSHE zhiji数据库预映射规则 (197项映射, 178指标+19回填字段, 100%覆盖) |
+| 27 | v86_rc2_dshe_hermes_check_spec_v7.md | `D7E9DB5541FE3814D3444E91B7428971` | DSHE HERMES校验规范 (85项校验, C1-C5映射, 88.2%全自动, 高风险15项) |
 
 ---
 
@@ -207,4 +254,4 @@
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2_PREP_ALIGNED DUAL | ✅ RC2_FINAL_PREP_CLOSED*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE | ✅ DSHB FINAL PREP COMPLETE | ✅ DSHE FINAL PREP CLOSED — CHART SCHEMA 36/36, ZHIJI MAPPING 197/197, HERMES CHECK 85/85*
