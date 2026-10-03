@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-03 DSHE — V86-RC1 发布窗口页面值守·T0核验·24h稳定性·演示回放·GitHub终审 (DSHE_V86_RC1_PRESENTATION_LAYER_RELEASE_OBSERVATION)
+- **T3.1 发布窗口值守**: `v86_rc1_dshe_release_window_page_watch_log_v7.md` — 跟随DSHB30步时序1:1同步观测, 60页面×3轮=180次访问, 3次版本切换全部成功, 0 P0, 0 P1, 3 P2(非阻塞), 别名联动0异常, 降级提示0误触发
+- **T3.2 T+0即时核验**: `v86_rc1_dshe_t0_page_verify_v7.md` — 60/60页面全量遍历, 36/36图表渲染, 821/821链接有效, 4层降级体系验证通过, 0新增异常, 全部V86.0-RC1-stable标识正确
+- **T3.3 24h稳定性观测**: `v86_rc1_dshe_24h_page_stability_summary_v7.md` — T+1h/T+6h/T+12h/T+24h四周期, 240页面访问100%成功, 144图表渲染0失败, 3284链接扫描0失效, 50并发0泄漏, 2 P2(非阻塞), 7项已知限制全部如预期
+- **T3.4 演示包回放核验**: `v86_rc1_dshe_demo_post_release_verify_v7.md` — 11脚本/18场景/90 Q&A全部回放通过, 1333次导航100%成功, 104图表渲染0异常, 351别名查询100%解析, 630文案核验100%一致, 0卡顿/0渲染异常
+- **T3.5 GitHub素材终审**: `v86_rc1_dshe_github_final_check_v7.md` — README 15章+Notes 12章全部校验, 版本号/Commit/风险/回滚/已知限制/图片/链接/表格全部正确, DSHB口径统一, 0问题
+- **产物目录**: `analysis/e2e_output/v86/dshe_alias_gate_final_v7/` (5新增观测文档)
+- **新增文件**: 5文件 ~250KB (T3.1-T3.5)
+- **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / NO_PANEL_JSON / NO_ENGINE_LOGIC 全部合规
+- **终版结论**: ✅ DSHE V86-RC1 RELEASE WINDOW OBSERVATION COMPLETE (值守0P0/0P1, T+0全量通过, 24h稳定性100%, 演示回放全部通过, GitHub素材终审无误)
+
 ### 2026-10-03 DSHB — V86-RC1 发布窗口准入终审·边界压力预演·监控大盘·应急预案·变更清单·冻结快照 V7 (DSHB_V86_RC1_FINAL_FREEZE_AND_REVIEW_V7)
 - **T3.1 终审材料包**: `v86_rc1_release_gate_final_review_package_v7.md` — 42文件总目录索引, 9模块章节(版本概述/Gate评审/风险评估/P1遗留/跨Agent校验/发布演练/回滚仿真/长期SOP/已知局限), 版本口径统一校验, 评审会签字确认栏
 - **T3.2 边界压力预演**: `v86_rc1_release_boundary_stress_drill_v7.md` — 6个高风险场景离线仿真(资产同步超时/分支冲突/MD5批量失败/面板并发加载/版本切换中断/回滚中断), Tier1=3/Tier2=2/Tier3=1, 0不可恢复, 18项预防措施(P0完成67%)
@@ -661,6 +672,8 @@
 | 2026-08-31 | **[DOC-协作机制加固] pre-commit 强制回传 + AGENTS.md §8 快照更新 + hooks 落盘**（主脑） | 主脑 | 背景：最近 10 提交仅 3 个带 STATUS.md 变更（并行 agent 反复漏写「完成一项必须写变更记录」回传协议，导致主脑回收/交接文档失真）。**新增 `scripts/hooks/pre-commit`**：改产物文件（`*.html/*.py/*.js`/`data/*.json`）但未同步 STATUS.md 时拦截提交（提示先写变更记录），`git commit --no-verify` 逃生通道保留（会警告）；已实测：拦截生效 + 逃生通道正常 + 提交回滚干净。本机已 `git config core.hooksPath scripts/hooks` 启用，新 clone 需手动执行一次（AGENTS.md §4 已写安装说明）。**AGENTS.md §8 快照更新至 2026-08-31**：全库 94 页（pb37/cu25/al31）· 指标 196 v3.42 · 门禁 75/75 · 死链 0，品种板块表格化 + 知几配额耗尽警示 + 三表灌库/五金属待办。**不依赖知几的工作盘点结论**：三表灌库（spec 已定但 ID 体系 CUS 前缀 vs IND 三段式冲突，且依赖五金属注册后一次性灌）→ 现在做会返工，标记待办；其余待办均需知几数据。 | 主脑 |
 | 2026-08-31 | **[B-5M-REG] 五金属(ZN/NI/SN/SI/LI) Step3 TierA 指标注册 590 条上线（主脑）** | 主脑 | zhiji 配额恢复后解锁交接待办 #2（原锁定等 T14-cu_al-merge，已合并）。**新增 `scripts/step3_register_5m.py`**：复用 step3_register.py 的 slugify/infer_freq/is_good_match，三处适配——输入=step3_5metals_final.json(TierA真源)、节点映射从 step3_5metals_candidates.json 反查注入(final 的 _nodes 为空[])、品种前缀 zn/ni/sn/si/li。**结果**：196→**786** 指标（+590，v3.42→**3.43**，_meta.version 同步），去重跳过 31 条已注册 id（同一 zhiji_id 跨节点复用，如 FU00014816 镍持仓挂多节点），误配过滤 0。分布 ZN 113 / NI 156 / SN 117 / SI 125 / LI 79。**两个 bug 修复**：①CAND 是文件路径字符串误调 .get()（AttributeError）→加 json.load；②**slug 冲突覆盖**——`while key in ind` 只查原文件不查 new_entries，621 生成 key 仅 357 唯一（125 组冲突，如 zn_22_premium×6）导致后写覆盖前写、per_code 报 590 实际仅 339 → 改 `while key in ind or key in new_entries`，回滚备份重跑后 590 全保。**安全性**：append-only 零覆盖（原 196 条丢失 0），写前备份至 analysis/backups/，_tier 全为 A，_nodes 无空值。Step3 search/judge/finalize 上轮已完成（621 matched），本轮完成注册闭环，解锁 Step4 建页 + 三表灌库 | 主脑 |
 | 2026-08-31 | **[RECOVER-786] 抢救五金属 590 条注册（被并行 agent 覆盖丢失，786→362→786）（主脑）** | 主脑 | ⚠️ **事故**：主脑推 `adc3c41`(786) 后，另一并行 agent 基于旧基线 196 重跑注册，连推 `56a3a69`→`9801dee`，**覆盖丢弃 590 条**（9801dee 声称「196→362, 166 指标入库」）。这正是 MEMORY 记录的教训（多 agent 共用同一 git checkout 互相抹改动），**未走 worktree 隔离**。**抢救**：`git show adc3c41:data/indicators_v1.json` 完整恢复 786 版（备份均为止于注册前 196，git 历史是唯一可靠源）。**关键核验**：对方 166 条的 zhiji_id **100% 重叠**于我 590 条（`any(x in my_ids)` 命中 166/166）——即对方是**真子集**、仅完成 29%，恢复无信息损失；共有 196 键 ids 零不一致。对方 `9801dee` 声称的「253 拉数成功」**未落地**（api_cache.db 仍 172 行，ZN/NI/SN/SI/LI 全 0），故本次恢复无需 merge 对方数据。无进行中进程/无活跃锁，恢复安全。**教训强化**：并行注册必须走 `docs/AGENT_PARALLEL_PROTOCOL.md` 的 git worktree 隔离（framework-tree-cu/-5m/-pb），且开工前必跑 `bash scripts/bootstrap_agent.sh` 校验基线指标数（本次对方基线停在 196，若自检会报红色阻断）。**下一步**：三表灌库（indicator_meta/indicator_series，ID 体系已拍板=indicators_v1.json 的 key，不造 IND 三段式避免返工）+ 五金属拉数入库（api_cache.db 目前五金属 0 条） | 主脑 |
+
+| 2026-09-13 | **[PB-DIVERGENCE-V4] PB 27份发散文件 Step2-4 全流程执行 + 72新指标注册 + v3.83（Dsharnes-B任务）** | Dsharnes-B | **任务**：接手PB发散执行（爱马仕派发）。**Step2改写**：清洗8处图表命名混入（完全归属标签+SHFE数据源混入）+ 过滤16条真实派生形态（环比/同比/增速/去化/分位等），共24条过滤。**Step3知几库分层匹配**：27份divergence文件提取345条指标 → A级命中254条/25节点覆盖（score>=4阈值），C级91条。**Step4三类差异比对**：以PB=70条（_nodes全部不为空）为新基准，废弃旧文档99条口径。新增A级唯一zhiji_id 93条（已注册70条中10条重叠），实际注册72条新指标（跳过159条已存在zhji_id）。**结果**：指标1584→**1656**（+72），PB指标70→**142**（+72），节点覆盖20→**29**（+9新节点：3.1.1/3.1.2/3.1.4/3.1.5/3.2.2/6.1/6.4/8.1/8.2），v3.82→**v3.83**。**门禁**：check_html **266/266** ✅ + verify_render **242/242** ALL PASS ✅ + reclaim 12/0 ✅。**分支**：indicator-correction-win（v3.50目标版本）。**备份**：data/indicators_v1.json.bak_before_pb_divergence。**待办**：新指标需知几API拉数入缓存后方可建页（当前72条为注册态，数据待拉）。 | Dsharnes-B |
 
 ---
 
