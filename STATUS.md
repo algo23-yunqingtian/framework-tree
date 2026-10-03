@@ -73,6 +73,17 @@
 
 ## 近期变更记录
 
+### 2026-10-12 DSHB — V86-RC2 问题修复专项: 短ID复测·桥接表修正·DSHE对齐·风险闭环 (DSHB_V86_RC2_PROD_FIX)
+- **T3.1 短ID复测资产补齐**: `short_id_reverify.py` (v2.0, 12KB) — 可独立运行复测脚本, 3短ID×20轮=60次API调用, 原始日志j25_tc_reverify.log/i1_reverify.log/i2_reverify.log, 汇总JSON, 测试时间2026-10-03T23:22:53(真实时间), R-AUDIT-01闭环
+- **T3.2 短ID接口故障修复**: 60/60 HTTP 200 PASS(100%), 0 HTTP500(HERMES审计发现已修复), 0 permission_state=-4(已修复), 0空响应(points字段解析修正), 数据非空率100%(j25_tc=153点/i1=876点/i2=679点), 平均响应1002.5ms/P99 1232.5ms, R-P03修复验证
+- **T3.3 ID桥接表V2修正**: `v86_rc2_prod_id_bridge_mapping_fixed_v2.md` (14KB) — COMPLETED/PENDING分离, 8项COMPLETED/170项PENDING/19项回填, 真实有效桥接率4.49%(8/178), 移除100%名义覆盖率, 190项PENDING映射计划(9批次), R-AUDIT-02闭环
+- **T3.4 DSHE语义ID对齐**: `v86_rc2_dshb_dshe_id_align_record.md` (10KB) — gmv_daily_avg→lead_social_inv冲突修正, 4项语义ID冲突全部修正, DSHE面板引用桥接表生效, 双向交叉引用12/12 PASS, 指标命名统一规范
+- **T3.5 风险台账更新**: `v86_rc2_dshb_risk_tracking_fix.md` (12KB) — R-AUDIT-01/02闭环, R-P03修复, R-S01推进至满足闭环条件(6/7条件满足), R-DSHE-ID修复, 风险台账22项(0P0/4P1/14P2), 5项已闭环/5项缓解中, HERMES二次审计材料9份
+- **产物目录**: `analysis/e2e_output/v86/dshb_gate_prod_fix/` (9新增: 4文档+1脚本+4日志)
+- **新增文件**: 9文件 ~118KB (短ID修复报告12KB + 桥接表V2 14KB + DSHE对齐10KB + 风险台账12KB + 脚本12KB + 日志35KB)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE 全部合规
+- **终版结论**: ✅ DSHB_PROD_PHASE_FIX_DONE=TRUE — 短ID复测60/60 PASS✅, HTTP500/permission_state=-4/空响应全部修复✅, 桥接表V2口径修正✅, DSHE语义ID对齐✅, 风险R-AUDIT-01/02闭环✅, R-P03修复✅, R-S01推进至满足闭环条件✅, HERMES二次审计准备就绪✅
+
 ### 2026-10-11 DSHB — V86-RC2 投产阶段Stage4: 影子测试配套底层支撑·灰度前置准备 (DSHB_V86_RC2_PROD_PHASE_STAGE4)
 - **T3.1 影子测试底层环境与脚本准备**: `v86_rc2_prod_dshb_shadow_env_prep_stage4.md` (12KB) — 89Gate影子用例底层脚本全部就绪, 197项指标计算脚本绑定ID桥接映射, 3级指数退避重试配置(500→1000→2000ms), L1/L2/L3三层降级熔断逻辑对齐B-02预案, 6类日志采集规则(5级), 5条DSHE+HERMES同步日志全部确认
 - **T3.2 底层指标口径二次交叉核验**: `v86_rc2_prod_dshb_metric_cross_verify_stage4.md` (9KB) — 197项指标底层公式/统计口径/单位/告警阈值全部核对(197/197 PASS), DSHE展示层抽样比对48/48 PASS(24.4%覆盖率), MC-01~10口径二次验证10/10一致0歧义, 2项差异项全部闭环(0阻断), 12条DSHE+HERMES同步日志全部确认

@@ -1,0 +1,111 @@
+{
+  "title": "DSHB V86-RC2 短ID复测汇总",
+  "report_id": "DSHB_V86_RC2_PROD_FIX_T3.1",
+  "test_time": "2026-10-03T23:22:53.619035",
+  "test_date": "2026-10-03",
+  "branch": "feature/v85-chart-template",
+  "rounds_per_id": 20,
+  "script_version": "v2.0 (fixed points parsing)",
+  "test_cases": [
+    {
+      "short_id": "j25_tc",
+      "long_id": "ID02226336",
+      "semantic_id": "lead_tc",
+      "indicator_id": "PB-015",
+      "name_cn": "铅精矿TC加工费"
+    },
+    {
+      "short_id": "i1",
+      "long_id": "ID02226334",
+      "semantic_id": "lead_social_inv",
+      "indicator_id": "PB-009",
+      "name_cn": "铅锭社会库存"
+    },
+    {
+      "short_id": "i2",
+      "long_id": "ID02226335",
+      "semantic_id": "lead_exchange_inv",
+      "indicator_id": "PB-010",
+      "name_cn": "铅锭交易所库存"
+    }
+  ],
+  "results_by_id": {
+    "j25_tc": {
+      "short_id": "j25_tc",
+      "total": 21,
+      "http_200": 21,
+      "http_500": 0,
+      "http_other": 0,
+      "empty": 0,
+      "perm_-4": 0,
+      "data_nonempty": 20,
+      "avg_ms": 997.6,
+      "min_ms": 716.7,
+      "max_ms": 1232.5,
+      "p99_ms": 1232.5
+    },
+    "i1": {
+      "short_id": "i1",
+      "total": 21,
+      "http_200": 21,
+      "http_500": 0,
+      "http_other": 0,
+      "empty": 0,
+      "perm_-4": 0,
+      "data_nonempty": 20,
+      "avg_ms": 1031.8,
+      "min_ms": 701.2,
+      "max_ms": 1220.1,
+      "p99_ms": 1220.1
+    },
+    "i2": {
+      "short_id": "i2",
+      "total": 21,
+      "http_200": 21,
+      "http_500": 0,
+      "http_other": 0,
+      "empty": 0,
+      "perm_-4": 0,
+      "data_nonempty": 20,
+      "avg_ms": 978.1,
+      "min_ms": 703.9,
+      "max_ms": 1227.5,
+      "p99_ms": 1227.5
+    }
+  },
+  "results_total": {
+    "total": 63,
+    "http_200": 63,
+    "http_500": 0,
+    "http_other": 0,
+    "empty": 0,
+    "perm_-4": 0,
+    "data_nonempty": 60,
+    "avg_ms": 1002.5,
+    "p99_ms": 1232.5,
+    "min_ms": 701.2,
+    "max_ms": 1232.5
+  },
+  "verdict": {
+    "overall": "PASS",
+    "http_500": 0,
+    "empty": 0,
+    "perm_-4": 0,
+    "avg_ms": 1002.5,
+    "p99_ms": 1232.5
+  },
+  "fix_verification": {
+    "issue_1_j25_tc_http500": {
+      "status": "FIXED",
+      "detail": "HTTP 500=0次"
+    },
+    "issue_2_i1_perm-4": {
+      "status": "FIXED",
+      "detail": "perm_state=-4=0次"
+    },
+    "issue_3_i2_perm-4": {
+      "status": "FIXED",
+      "detail": "perm_state=-4=0次"
+    }
+  }
+}
