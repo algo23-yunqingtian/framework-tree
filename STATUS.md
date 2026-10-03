@@ -950,3 +950,21 @@
 - 全归档快照: 132文件/4.6MB, DSHB 53 + DSHE 67 + HERMES 12, 132 MD5全部锁定
 - 封板决议: PREP冻结2026-10-04生效, 8项不可修改条目, 19项投产遗留(~154h)
 - 状态标记: V86_RC2_PREP_CLOSED=TRUE
+
+### 2026-10-04 HERMES_V86_RC2_PROD_STAGE1
+- V86-RC2 投产阶段持续审计 & 影子验证监控 Stage 1 完成
+- 4份新增审计文档 + MD5清单:
+  - v86_rc2_prod_continuous_audit_report.md (MD5: 18b0dda4) - 投产持续审计(基线冻结132/132零违规+ENG/MON产出扫描+zhiji审计)
+  - v86_rc2_prod_shadow_compare_report.md (MD5: e00e564b) - 影子并行对比(89用例Mock/Real双源框架+Phase A实测)
+  - v86_rc2_prod_progress_risk_tracking.md (MD5: 505630f4) - 投产进度风险跟踪(19任务/关键路径/风险台账)
+  - v86_rc2_gray_gate_audit_package.md (MD5: e7fdc18d) - 灰度Gate审计包(8项准入条件/证据索引/判定流程)
+  - MD5_CHECKSUM_LIST_prod_stage1.md (MD5: 7748536c)
+- 本轮zhiji API实测7次(本工单NO_ZHIJI_API_CALL=FALSE): 2项真实ID数据流验证通过(各20数据点), 5项框架短ID返回HTTP 500
+- 关键发现: V86框架内部短ID(j25_tc/i1)≠知几真实ID(ID02226332/a10018143), 为190项TO_BE_CONFIRMED根因
+- 基线冻结审计: 132/132 MD5零违规, 8项不可修改条目全部通过
+- 影子验证: 89用例框架就绪, 41用例(46.1%)可立即执行, 36用例阻塞于zhiji_id映射
+- 投产进度: 总体0%(加权)/15.8%(计数), 关键路径ENG-01->MON-01->MON-03->MON-04待启动
+- 风险台账更新: P0=0 / P1=6(新增R-P01关键路径延迟/R-P02 zhiji映射阻塞/R-P03外部依赖) / P2=9(新增R-P04)
+- 灰度Gate判定: 暂不通过(3/8满足+1/8有条件+4/8未满足), 待Stage 2复审(预计T+3d 10-07)
+- 预计灰度上线: 2026-10-08 ~ 2026-10-11
+- 状态标记: HERMES_PROD_PHASE_STAGE1_DONE=TRUE
