@@ -89,6 +89,23 @@
 
 ---
 
+## RC2_UT New Files (3 files)
+
+> **Task:** DSHE_V86_RC2_PRESENTATION_LAYER_UT_SELFTEST_AND_COORD_PREP
+> **Date:** 2026-10-04
+> **UT Results:** 68/68 PASS (100%), 3 P2 defects all resolved, C1-C5 Gate A+ 10/10
+> **COORD:** 4/4 display-side READY, waiting for DSHB IT integration
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 19 | v86_rc2_dshe_dev_defect_log_v7.md | `D111477DD36E98C46EEA1A79F80FF2AF` | 28,883 B |
+| 20 | v86_rc2_dshe_presentation_ut_report_v7.md | `529E5F1FEF78739E6678F37EE6885E31` | 19,433 B |
+| 21 | v86_rc2_dshe_coord_case_prep_v7.md | `D3172D984514CD5BAF90752ADE43E77B` | 20,951 B |
+
+**RC2_UT total:** 3 files, +69,267 B
+
+---
+
 ## MD5 Verification Summary
 
 | File | MD5 Verified | Status |
@@ -111,7 +128,10 @@
 | v86_rc2_cross_team_contract_v7.md | ✅ | PASS |
 | v86_rc2_gate_unified_case_set_v7.md | ✅ | PASS |
 | v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback review) | ✅ | PASS |
-| **Total** | **18/18** | **✅ 100% PASS** |
+| v86_rc2_dshe_dev_defect_log_v7.md | ✅ | PASS |
+| v86_rc2_dshe_presentation_ut_report_v7.md | ✅ | PASS |
+| v86_rc2_dshe_coord_case_prep_v7.md | ✅ | PASS |
+| **Total** | **21/21** | **✅ 100% PASS** |
 
 ---
 
@@ -141,6 +161,7 @@
 | **RC2_PREP** | **118** | **191** | **14** |
 | **RC2_PREP_ALIGNED** | **118** | **191** | **15** |
 | **RC2_PREP_ALIGNED (DUAL)** | **122** | **195** | **16** |
+| **RC2_UT** | **125** | **198** | **17** |
 
 ---
 
@@ -166,6 +187,9 @@
 | 16 | v86_rc2_cross_team_contract_v7.md | `7609F648C93CC2D3C38474AC409C94EE` | 跨团队依赖契约 (#9/#10/#11, 7依赖点, 19回填字段, 23用例评审) |
 | 17 | v86_rc2_gate_unified_case_set_v7.md | `FEC14C7436F5FAFBF9890D221AC7C279` | RC2统一Gate验收用例全集 (89用例, 去重合并, P0/P1标记) |
 | 18 | v86_rc2_dshe_ui_change_spec_v7.md (aligned, L3 rollback) | `DF0320673819041CB2754FFC4427EB15` | RC2 UI change spec with L3 rollback joint review (8项时序风险, 6项断点修复, 13项联合验证) |
+| 19 | v86_rc2_dshe_dev_defect_log_v7.md | `D111477DD36E98C46EEA1A79F80FF2AF` | RC2 development defect log (3 P2 defects, all resolved, 9.4% defect rate) |
+| 20 | v86_rc2_dshe_presentation_ut_report_v7.md | `529E5F1FEF78739E6678F37EE6885E31` | RC2 UT self-test report (68/68 PASS, C1-C5 A+ 10/10, P99 2.7s) |
+| 21 | v86_rc2_dshe_coord_case_prep_v7.md | `D3172D984514CD5BAF90752ADE43E77B` | RC2 COORD case prep (4/4 display-side READY, 2.5h, 19 backfill fields) |
 
 ---
 
@@ -187,4 +211,4 @@
 *Branch: feature/v85-chart-template*
 *DSHE Base: commit f1d444e*
 *DSHB Base: commit 0948e1d*
-*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED*
+*Status: ✅ FULL LIFECYCLE CLOSED | ✅ JOINT_REVIEW COMPLETE | ✅ RC2_PREP COMPLETE | ✅ RC2 PREP DSHB GATE BASELINE ALIGNED | ✅ RC2 DUAL-END ALIGNMENT COMPLETE | ✅ RC2 UT SELFTEST COMPLETE — 68/68 PASS, 3/3 DEFECTS RESOLVED, C1-C5 A+ 10/10, 4 COORD READY*
