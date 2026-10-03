@@ -81,7 +81,7 @@
 - **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (3新增)
 - **新增文件**: 3文件 ~70KB (T3.1 21KB + T3.2 23KB + T3.3 26KB)
 - **约束合规**: NO_ZHIJI_API_CALL / NO_MODIFY_V85 / NO_OVERWRITE / BRANCH_LOCKED / READONLY_VALIDATE 全部合规
-- **终版结论**: ✅ V86_RC2_PREP_CLOSED=TRUE (commit `a445bab`) — PREP阶段正式封板完成 (三方全部批准✅, 17/17条件通过✅, 0 P0阻断✅, C1-C5 A+ 50/50✅, 89/89 Gate PASS✅, 140文件/22阶段/~14.0MB/MD5 42/42 PASS✅, 19项投产任务索引✅, 投产基线确立✅)
+- **终版结论**: ✅ V86_RC2_PREP_CLOSED=TRUE (commit `7fe50b8`) — PREP阶段正式封板完成 (三方全部批准✅, 17/17条件通过✅, 0 P0阻断✅, C1-C5 A+ 50/50✅, 89/89 Gate PASS✅, 140文件/22阶段/~14.0MB/MD5 42/42 PASS✅, 19项投产任务索引✅, 投产基线确立✅)
 
 ### 2026-10-04 DSHE — V86-RC2 PREP封板终审确认·跨团队口径对齐复核·DSHE_PREP_APPROVED (DSHE_V86_RC2_PREP_SEAL_APPROVAL)
 - **T3.1 HERMES P1风险评审**: `v86_rc2_dshe_hermes_p1_risk_review.md` (33KB) — 3项P1风险展示层专项评审(P1-1 C2阈值/P1-2 C1匹配数/P1-3 190 zhiji_id), 0阻断PREP封板, 展示层影响2低1中全部可控, 18项观测指标已定义, 投产处置15项任务, MC-01_CHECK+MC-02_CHECK规则已映射, 约束合规4/4
