@@ -1170,3 +1170,18 @@
 - 结论: 3项均为快照生成时序差, 非封板后违规改动; 8项不可修改冻结条目全部零违规
 - 审计报告§2.1.1补充快照基线修订记录 (MD5: d83f3a7a)
 - JOB_READY.flag冲突已解决: 保留V86_RC2_PREP_CLOSED=TRUE(远端) + 追加HERMES_PROD_PHASE_STAGE1_DONE=TRUE
+
+### 2026-10-15 DSHB_V86_RC2_DEP_MONITOR_AND_AUTO_TRIGGER
+- 外部依赖周期巡检+自动复测触发器+风险持续维护 (6 deliverables, MD5 all verified)
+  - v86_rc2_dshb_dp_ticket_weekly_log.md (MD5: 2A63EB6F) - 周巡检日志(第1轮已记录,3项DEP状态BLOCKED)
+  - dep_ready_trigger.py (MD5: B9139488) - DEP就绪自动复测触发器(探测j25_tc/i1/i3,6h轮询,自动触发全量复测)
+  - trigger_config.yaml (MD5: F01C404E) - 触发器配置(探测参数/轮询间隔/后处理操作/告警)
+  - v86_rc2_dshb_risk_re_evaluate_v3.md (MD5: 3AD712C7) - 风险台账V3持续维护版(29项,状态机,变更日志)
+  - full_reverify_v3_batch_v2.py (MD5: FA4812FB) - 复测脚本V2(内置DSHE快照自动导出+MD5自动计算)
+  - v86_rc2_gate_pre_submit_package_v2.md (MD5: 8666934D) - 动态Gate预审包V2(8/8 PASS,6/8准入,自动切换逻辑)
+- DEP状态: DEP-01/02/03全部BLOCKED(等待数据平台评估),巡检日志已建立,触发器已部署
+- Gate状态: NOT_READY(data_fetchable=0%<80%),触发器DEP就绪后自动评估→自动切换READY
+- 风险台账V3: 持续维护机制建立(DEP状态机+自动升级+变更日志+跨团队同步)
+- 约束合规: NO_OVERWRITE=TRUE(V1/V2全部保留), BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- DSHB_PROD_PHASE_DEP_MONITOR_DONE=TRUE
+- 状态标记: DSHB_PROD_PHASE_DEP_MONITOR_DONE=TRUE

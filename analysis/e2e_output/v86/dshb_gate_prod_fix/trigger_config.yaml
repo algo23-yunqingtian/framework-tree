@@ -1,0 +1,124 @@
+# DSHB V86-RC2 DEP就绪自动复测触发器配置文件
+# 工单: DSHB_V86_RC2_DEP_MONITOR_T3.2
+# 分支: feature/v85-chart-template
+# 约束: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE
+
+# ═══════════════════════════════════════════════════════════
+# API 配置
+# ═══════════════════════════════════════════════════════════
+api:
+  base_url: "https://zhiji-ai.xyz/commodity/api"
+  data_key: "data_8e863643ecc13f11d2c669bdb672f7db"
+  timeout_seconds: 20
+  rate_limit_seconds: 1.2
+  user_agent: "Mozilla/5.0 DSHB_DepReady_Trigger/1.0"
+
+# ═══════════════════════════════════════════════════════════
+# 探测配置
+# ═══════════════════════════════════════════════════════════
+probe:
+  # 探测用短ID (使用已知短ID测试服务端解析能力)
+  probe_short_ids:
+    - "j25_tc"    # 铅精矿TC加工费
+    - "i1"        # 铅锭社会库存
+    - "i3"        # 沪铅期货收盘价
+
+  # 探测成功判定条件 (任一满足即认为DEP就绪)
+  success_criteria:
+    http_status: 200            # HTTP 200
+    has_data_points: true       # 返回非空数据点
+    non_zero_values: true       # 数据值非全零
+    # 不再检查 permission_state (perm=-4 表示已识别但未授权)
+
+  # 探测轮数 (每轮间隔)
+  probe_rounds: 3
+  probe_interval_seconds: 2.0
+
+# ═══════════════════════════════════════════════════════════
+# 轮询配置
+# ═══════════════════════════════════════════════════════════
+polling:
+  # 轮询间隔 (秒) — 默认6小时一次
+  interval_seconds: 21600       # 6 hours
+
+  # 单次运行最大探测次数 (防止无限循环)
+  max_probes_per_run: 500
+
+  # 运行模式
+  # "daemon"  : 持续后台运行 (生产环境)
+  # "once"    : 单次运行 (CI/CD触发)
+  # "test"    : 测试模式 (快速验证)
+  mode: "once"
+
+  # 日志级别
+  log_level: "INFO"             # DEBUG / INFO / WARNING / ERROR
+
+# ═══════════════════════════════════════════════════════════
+# 触发器配置
+# ═══════════════════════════════════════════════════════════
+trigger:
+  # 触发后执行的脚本
+  retest_script: "full_reverify_v3_batch_v2.py"
+
+  # 触发后自动执行的操作
+  post_trigger_actions:
+    - "update_bridge_table"         # 更新桥接表data_fetchable
+    - "generate_summary_json"       # 生成汇总JSON
+    - "generate_bridge_snapshot"    # 生成DSHE桥接快照
+    - "compute_md5"                 # 计算MD5校验
+    - "notify_dshe"                 # 通知DSHE
+    - "notify_hermes"               # 通知HERMES
+    - "update_risk_register"        # 更新风险台账
+    - "update_gate_package"         # 更新Gate预审包
+
+  # 告警配置
+  alert:
+    enabled: true
+    channels:
+      - "log"           # 写入日志文件
+      - "stdout"        # 输出到控制台
+      - "file"          # 写入告警事件文件
+    # 事件通知文件路径 (DSHE/HERMES可消费)
+    alert_event_file: "dep_ready_trigger_events.json"
+
+# ═══════════════════════════════════════════════════════════
+# 路径配置
+# ═══════════════════════════════════════════════════════════
+paths:
+  # 工作目录 (脚本所在目录)
+  work_dir: "."
+
+  # 输出目录 (复测日志)
+  output_dir: "full_reverify_v3_batch_logs"
+
+  # 桥接表文件
+  bridge_table_file: "v86_rc2_prod_id_bridge_mapping_v3_retest.md"
+
+  # DSHE快照文件
+  dshe_snapshot_file: "v86_rc2_dshb_bridge_snapshot_for_dshe.json"
+
+  # 风险台账文件
+  risk_register_file: "v86_rc2_dshb_risk_re_evaluate_v3.md"
+
+  # Gate预审包文件
+  gate_package_file: "v86_rc2_gate_pre_submit_package_v2.md"
+
+  # 巡检日志文件
+  inspection_log_file: "v86_rc2_dshb_dp_ticket_weekly_log.md"
+
+  # 汇总JSON文件
+  summary_json_file: "full_reverify_v3_combined_178_summary.json"
+
+  # MD5校验清单文件
+  md5_manifest_file: "MD5_CHECKSUM_LIST_dep_trigger.md"
+
+# ═══════════════════════════════════════════════════════════
+# 版本与元数据
+# ═══════════════════════════════════════════════════════════
+meta:
+  version: "1.0"
+  task_id: "DSHB_V86_RC2_DEP_MONITOR_T3.2"
+  release_id: "V86-RC2 (DEP Monitor Phase)"
+  ticket_id: "DSHB-DP-REQ-20261015-001"
+  created_date: "2026-10-15"
+  branch: "feature/v85-chart-template"
