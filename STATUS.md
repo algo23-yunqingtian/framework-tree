@@ -1359,3 +1359,19 @@
 - 跨团队同步: 7/7状态实时同步,<1ms延迟,0秒时间戳偏差,90/90字段匹配,14/14告警同步
 - 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE
 - 状态标记: DSHE_PROD_PHASE_L2_STRESS_PERF_VERIFY_DONE=TRUE
+
+### 2026-10-15 DSHE_V86_RC2_L2_RULE_ALIGN_V3
+- L2侧DEP抖动审计规则对齐+告警路由V3适配+大证据包分片校验边界测试 (5 deliverables, MD5 all verified)
+  - v86_rc2_dshe_dep_flap_rule_align_report.md (MD5: C35FD323) - DEP抖动规则对齐HERMES DS-06(7交叉比对用例,5假阳性消除,100%DS-06一致,0回归)
+  - v86_rc2_dshe_alert_adapter_v2.py (MD5: DFBB32A5) - 告警适配器V2(令牌桶限流100/s,指数退避重试,4级过载降级L0-L3,事件优先级丢弃,磁盘checkpoint持久化)
+  - v86_rc2_dshe_alert_v3_adapt_report.md (MD5: 16AA6643) - V3路由适配报告(5场景负载测试全PASS,S1正常/S2突发/S3高载L1/S4过载L2/S5恢复,CRITICAL零丢弃)
+  - v86_rc2_dshe_l2_evidence_shard_boundary_test.md (MD5: 45826551) - L2分片边界测试(36测试7场景,94.4%通过率,1P0+2P1+3P2缺陷,B+评级)
+  - v86_rc2_dep_flap_tripartite_cross_verify_v2.md (MD5: F83CB803) - 三方DEP抖动交叉验证v2(12用例6旧+6新,DS-06对齐,告警级别100%同步,5渠道,0秒偏差)
+  - l2_evidence_package_check_v3.py (MD5: A2FA21B2) - PERF-GUARD性能守卫接入(1.0s/256calls/52MB阈值,STRICT阻断模式)
+- DEP抖动对齐: DS-06规则(RECOVERED后BLOCKED≥2次=抖动),6旧用例全部重新分类为"恢复验证失败"(0/6),5假阳性消除
+- 告警适配器V2: 令牌桶限流(100/s,200突发),指数退避(min(0.1×2^n,5.0),5重试),4级降级(L0→L1→L2→L3),优先级丢弃(LOW→MED→HIGH),CRITICAL永不丢弃,5场景全PASS
+- 分片边界测试: 36测试7场景(5MB超大/畸形JSON/嵌套超限/分片截断/并行错误/文件系统/分片边界),0崩溃,1个P0缺陷(边界off-by-one)
+- PERF-GUARD: 打包时间>1.0s阻断,调用数>256阻断,内存>52MB预警,文件大小>10MB提醒,STRICT/WARN模式
+- 三方交叉验证v2: 12用例(6旧重评+6新DS-06场景),DS-06检测2/12,告警级别100%同步,90/90字段,5/5渠道,0秒偏差
+- 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE, EVIDENCE_CONTRACT_V1_SOLIDIFIED=TRUE
+- 状态标记: DSHE_PROD_PHASE_L2_RULE_ALIGN_V3_DONE=TRUE

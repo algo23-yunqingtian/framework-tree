@@ -95,6 +95,20 @@ DEFAULT_SHARD_SIZE = 4 * 1024 * 1024  # 4MB
 # V3 NEW: Default thread count for parallel pre-audit
 DEFAULT_THREAD_COUNT = 4
 
+# ─────────────────────────────────────────────────────────────────────
+# V3.1 NEW: PERF-GUARD Performance Guardrails (T3.4)
+# ─────────────────────────────────────────────────────────────────────
+# PERF-GUARD: Prevents oversized evidence packages from degrading pipeline.
+# Aligned with HERMES audit performance budget.
+#
+# Thresholds:
+PERF_GUARD_PACKAGING_TIME_LIMIT_SEC   = 1.0      # >1.0s → CRITICAL, block packaging
+PERF_GUARD_CALL_COUNT_LIMIT           = 256       # >256 calls → CRITICAL, block packaging
+PERF_GUARD_MEMORY_PEAK_LIMIT_MB       = 52        # >52MB → HIGH, warn + early termination
+PERF_GUARD_FILE_SIZE_LIMIT_MB         = 10        # >10MB → MEDIUM, warn (soft limit)
+PERF_GUARD_ENABLED                    = True      # Master switch
+PERF_GUARD_MODE                       = "STRICT"  # STRICT=block on limit, WARN=alert only
+
 # Required top-level fields (EVIDENCE_CONTRACT_V1)
 REQUIRED_TOP_FIELDS = {
     "fingerprint": str,
@@ -142,6 +156,229 @@ SCRIPT_AUDIT_REQUIRED = {
     "zero_value_counts_as_pass": bool,
     "retains_raw_payload": bool,
 }
+
+
+# ─────────────────────────────────────────────────────────────────────
+# V3.1 NEW: PERF-GUARD Class (T3.4)
+# ─────────────────────────────────────────────────────────────────────
+class PerfGuard:
+    """
+    V3.1 NEW: PERF-GUARD Performance Guardrails (T3.4).
+
+    Aligned with HERMES audit performance budget:
+      - Packaging time limit: 1.0s (CRITICAL if exceeded)
+      - Call count limit: 256 (CRITICAL if exceeded)
+      - Memory peak limit: 52MB (HIGH if exceeded)
+      - File size soft limit: 10MB (MEDIUM if exceeded)
+
+    Modes:
+      STRICT: Block packaging on CRITICAL threshold violation
+      WARN:   Alert only, do not block
+
+    Usage:
+      guard = PerfGuard()
+      result = guard.check_packaging_time(elapsed_sec)
+      result = guard.check_call_count(total_calls)
+      result = guard.check_memory_peak(peak_mb)
+      result = guard.check_file_size(size_bytes)
+      blocked = guard.any_critical()
+    """
+
+    CRITICAL = CRITICAL
+    HIGH = HIGH
+    MEDIUM = MEDIUM
+    LOW = LOW
+    WARN = MEDIUM
+    OK = "OK"
+
+    def __init__(self, mode=PERF_GUARD_MODE, enabled=PERF_GUARD_ENABLED):
+        self.mode = mode
+        self.enabled = enabled
+        self.findings = []
+        self._start_time = time.time()
+        self._memory_start = 0
+
+    def begin(self):
+        """Start PERF-GUARD monitoring."""
+        self._start_time = time.time()
+        self._memory_start = _get_memory_usage()
+        self.findings = []
+        logger.info("[PERF-GUARD] Monitoring started (mode=%s, limits: "
+                     "time=%.1fs, calls=%d, mem=%.0fMB, file=%.0fMB)",
+                     self.mode, PERF_GUARD_PACKAGING_TIME_LIMIT_SEC,
+                     PERF_GUARD_CALL_COUNT_LIMIT,
+                     PERF_GUARD_MEMORY_PEAK_LIMIT_MB,
+                     PERF_GUARD_FILE_SIZE_LIMIT_MB)
+
+    def _elapsed_sec(self):
+        return time.time() - self._start_time
+
+    def _current_memory_mb(self):
+        current = _get_memory_usage()
+        return (current - self._memory_start) / 1024 / 1024
+
+    def _emit(self, level, check_id, message, detail=None, value=None, limit=None):
+        """Record a PERF-GUARD finding."""
+        f = {
+            "level": level,
+            "check_id": check_id,
+            "message": message,
+            "detail": detail,
+            "value": value,
+            "limit": limit,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
+        self.findings.append(f)
+        action = "BLOCK" if (self.mode == "STRICT" and level == CRITICAL) else "WARN"
+        logger.warning("[PERF-GUARD] [%s] %s: %s (value=%s, limit=%s) → %s",
+                       level, check_id, message,
+                       self._format_value(value), self._format_limit(limit), action)
+        return f
+
+    def _format_value(self, v):
+        if isinstance(v, float):
+            return "%.2f" % v
+        if isinstance(v, int):
+            return str(v)
+        return str(v)
+
+    def _format_limit(self, l):
+        if isinstance(l, float):
+            return "%.1f" % l
+        if isinstance(l, int):
+            return str(l)
+        return str(l)
+
+    def check_packaging_time(self, elapsed_sec=None, label="packaging"):
+        """Check if packaging time exceeds threshold. BLOCK if STRICT."""
+        if not self.enabled:
+            return None
+        if elapsed_sec is None:
+            elapsed_sec = self._elapsed_sec()
+        if elapsed_sec > PERF_GUARD_PACKAGING_TIME_LIMIT_SEC:
+            return self._emit(
+                CRITICAL, "PG-TIME",
+                "%s time %.2fs exceeds limit %.1fs" % (label, elapsed_sec,
+                PERF_GUARD_PACKAGING_TIME_LIMIT_SEC),
+                value=round(elapsed_sec, 3),
+                limit=PERF_GUARD_PACKAGING_TIME_LIMIT_SEC,
+            )
+        logger.debug("[PERF-GUARD] %s time OK: %.2fs / %.1fs", label, elapsed_sec,
+                      PERF_GUARD_PACKAGING_TIME_LIMIT_SEC)
+        return None
+
+    def check_call_count(self, total_calls):
+        """Check if call count exceeds threshold. BLOCK if STRICT."""
+        if not self.enabled:
+            return None
+        if total_calls > PERF_GUARD_CALL_COUNT_LIMIT:
+            return self._emit(
+                CRITICAL, "PG-CALLS",
+                "Call count %d exceeds limit %d — oversized package" % (
+                    total_calls, PERF_GUARD_CALL_COUNT_LIMIT),
+                value=total_calls,
+                limit=PERF_GUARD_CALL_COUNT_LIMIT,
+            )
+        logger.debug("[PERF-GUARD] Call count OK: %d / %d",
+                      total_calls, PERF_GUARD_CALL_COUNT_LIMIT)
+        return None
+
+    def check_memory_peak(self, peak_mb=None):
+        """Check if memory peak exceeds threshold. WARN + early termination hint."""
+        if not self.enabled:
+            return None
+        if peak_mb is None:
+            peak_mb = self._current_memory_mb()
+        if peak_mb > PERF_GUARD_MEMORY_PEAK_LIMIT_MB:
+            return self._emit(
+                HIGH, "PG-MEM",
+                "Memory peak %.1fMB exceeds limit %.0fMB — consider early termination" % (
+                    peak_mb, PERF_GUARD_MEMORY_PEAK_LIMIT_MB),
+                value=round(peak_mb, 1),
+                limit=PERF_GUARD_MEMORY_PEAK_LIMIT_MB,
+            )
+        logger.debug("[PERF-GUARD] Memory OK: %.1fMB / %.0fMB",
+                      peak_mb, PERF_GUARD_MEMORY_PEAK_LIMIT_MB)
+        return None
+
+    def check_file_size(self, size_bytes):
+        """Check if file size exceeds soft limit. MEDIUM warning."""
+        if not self.enabled:
+            return None
+        size_mb = size_bytes / (1024 * 1024)
+        if size_mb > PERF_GUARD_FILE_SIZE_LIMIT_MB:
+            return self._emit(
+                MEDIUM, "PG-FILE",
+                "File size %.1fMB exceeds soft limit %.0fMB" % (
+                    size_mb, PERF_GUARD_FILE_SIZE_LIMIT_MB),
+                value=round(size_mb, 1),
+                limit=PERF_GUARD_FILE_SIZE_LIMIT_MB,
+            )
+        logger.debug("[PERF-GUARD] File size OK: %.1fMB / %.0fMB",
+                      size_mb, PERF_GUARD_FILE_SIZE_LIMIT_MB)
+        return None
+
+    def check_all(self, elapsed_sec=None, total_calls=0, peak_mb=None,
+                  file_size_bytes=0, label="packaging"):
+        """Run all PERF-GUARD checks and return summary."""
+        self.check_packaging_time(elapsed_sec, label)
+        self.check_call_count(total_calls)
+        self.check_memory_peak(peak_mb)
+        self.check_file_size(file_size_bytes)
+        return self.get_summary()
+
+    def any_critical(self):
+        """Return True if any CRITICAL finding exists (blocks packaging in STRICT)."""
+        return any(f["level"] == CRITICAL for f in self.findings)
+
+    def any_high(self):
+        """Return True if any HIGH or CRITICAL finding exists."""
+        return any(f["level"] in (CRITICAL, HIGH) for f in self.findings)
+
+    def get_summary(self):
+        """Get PERF-GUARD summary."""
+        counts = defaultdict(int)
+        for f in self.findings:
+            counts[f["level"]] += 1
+        total = sum(counts.values())
+        if any(f["level"] == CRITICAL for f in self.findings):
+            verdict = "BLOCK"
+        elif any(f["level"] == HIGH for f in self.findings):
+            verdict = "WARN"
+        elif any(f["level"] == MEDIUM for f in self.findings):
+            verdict = "NOTICE"
+        else:
+            verdict = "PASS"
+        return {
+            "verdict": verdict,
+            "mode": self.mode,
+            "enabled": self.enabled,
+            "total_findings": total,
+            "CRITICAL": counts.get(CRITICAL, 0),
+            "HIGH": counts.get(HIGH, 0),
+            "MEDIUM": counts.get(MEDIUM, 0),
+            "findings": self.findings,
+            "limits": {
+                "packaging_time_sec": PERF_GUARD_PACKAGING_TIME_LIMIT_SEC,
+                "call_count": PERF_GUARD_CALL_COUNT_LIMIT,
+                "memory_peak_mb": PERF_GUARD_MEMORY_PEAK_LIMIT_MB,
+                "file_size_mb": PERF_GUARD_FILE_SIZE_LIMIT_MB,
+            },
+        }
+
+    def to_result(self):
+        """Convert PERF-GUARD summary to standard result dict for merging."""
+        summary = self.get_summary()
+        return {
+            "perf_guard_verdict": summary["verdict"],
+            "perf_guard_findings": summary["total_findings"],
+            "perf_guard_critical": summary["CRITICAL"],
+            "perf_guard_high": summary["HIGH"],
+            "perf_guard_medium": summary["MEDIUM"],
+            "perf_guard_mode": summary["mode"],
+            "perf_guard_block": self.any_critical(),
+            "perf_guard_findings_detail": summary["findings"],
+        }
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -248,30 +485,47 @@ class MemoryEfficientEvidenceLoader:
         self.reader = ShardedJSONReader(filepath, shard_size)
         self.info = self.reader.get_info()
 
-    def load(self):
-        """Load evidence package with memory optimization."""
+    def load(self, perf_guard=None):
+        """Load evidence package with memory optimization and PERF-GUARD (V3.1)."""
         start_mem = _get_memory_usage()
         start_time = time.time()
+
+        # V3.1: PERF-GUARD start
+        if perf_guard is None:
+            perf_guard = PerfGuard()
+        perf_guard.begin()
 
         evidence = self.reader.read()
 
         elapsed = time.time() - start_time
         end_mem = _get_memory_usage()
+        total_calls = len(evidence.get("calls", []))
 
         self.info.update({
             "load_time_ms": round(elapsed * 1000, 1),
             "memory_start_mb": round(start_mem / 1024 / 1024, 1),
             "memory_end_mb": round(end_mem / 1024 / 1024, 1),
             "memory_delta_mb": round((end_mem - start_mem) / 1024 / 1024, 1),
-            "total_calls": len(evidence.get("calls", [])),
+            "total_calls": total_calls,
         })
 
-        logger.info("[LOAD] %s: %d bytes, %d calls, %.1fms, +%.1fMB",
+        # V3.1: PERF-GUARD checks
+        pg_result = perf_guard.check_all(
+            elapsed_sec=elapsed,
+            total_calls=total_calls,
+            peak_mb=self.info["memory_delta_mb"],
+            file_size_bytes=self.info["file_size"],
+            label="load",
+        )
+        self.info["perf_guard"] = pg_result
+
+        logger.info("[LOAD] %s: %d bytes, %d calls, %.1fms, +%.1fMB %s",
                       Path(self.info["filepath"]).name,
                       self.info["file_size"],
                       self.info["total_calls"],
                       self.info["load_time_ms"],
-                      self.info["memory_delta_mb"])
+                      self.info["memory_delta_mb"],
+                      "[PERF-GUARD: %s]" % pg_result["verdict"])
 
         return evidence
 
@@ -570,7 +824,7 @@ class IntegrityChecker:
                       "script_audit.retains_raw_payload=false -> G-09 FAIL")
         return True
 
-    def run_all(self, evidence_dir=None, md5_list=None):
+    def run_all(self, evidence_dir=None, md5_list=None, perf_guard_result=None):
         self.check_top_fields()
         self.check_calls()
         self.check_payload_persistence(evidence_dir)
@@ -581,7 +835,30 @@ class IntegrityChecker:
         self.check_dep_state_machine()
         self.check_response_payload_structure()
         self.check_script_audit()
+        # V3.1 NEW: Include PERF-GUARD findings
+        if perf_guard_result:
+            self._merge_perf_guard(perf_guard_result)
         return self.summarize()
+
+    def _merge_perf_guard(self, pg_result):
+        """V3.1 NEW: Merge PERF-GUARD findings into checker results."""
+        pg_findings = pg_result.get("perf_guard_findings_detail", [])
+        pg_verdict = pg_result.get("perf_guard_verdict", "PASS")
+        pg_block = pg_result.get("perf_guard_block", False)
+        for f in pg_findings:
+            self.findings.append({
+                "level": f["level"],
+                "check_id": "PG-" + f["check_id"].replace("PG-", ""),
+                "message": f["message"],
+                "detail": f.get("detail"),
+                "timestamp": f["timestamp"],
+                "perf_guard": True,
+                "value": f.get("value"),
+                "limit": f.get("limit"),
+            })
+        # Store PERF-GUARD metadata in findings for traceability
+        self._perf_guard_verdict = pg_verdict
+        self._perf_guard_block = pg_block
 
     def summarize(self):
         counts = defaultdict(int)
@@ -610,6 +887,13 @@ class IntegrityChecker:
         # V3 NEW: Include load info
         if self.load_info:
             result["load_info"] = self.load_info
+            # V3.1: Include PERF-GUARD info from load_info
+            if "perf_guard" in self.load_info:
+                result["perf_guard"] = self.load_info["perf_guard"]
+        # V3.1: Include PERF-GUARD verdict if merged
+        if hasattr(self, '_perf_guard_verdict'):
+            result["perf_guard_verdict"] = self._perf_guard_verdict
+            result["perf_guard_block"] = self._perf_guard_block
         return result
 
 
@@ -828,15 +1112,24 @@ class ParallelPreAuditExecutor:
         return files
 
     def _audit_single(self, filepath):
-        """Audit a single evidence file (thread-safe)."""
+        """Audit a single evidence file (thread-safe) with PERF-GUARD (V3.1)."""
         filename = Path(filepath).name
         try:
             loader = MemoryEfficientEvidenceLoader(filepath, self.shard_size)
-            evidence = loader.load()
+            # V3.1: PERF-GUARD integrated via loader
+            perf_guard = PerfGuard()
+            evidence = loader.load(perf_guard=perf_guard)
             load_info = loader.get_info()
 
             auditor = PreAuditor(evidence, load_info)
             result = auditor.pre_audit()
+
+            # V3.1: PERF-GUARD block check
+            if perf_guard.any_critical():
+                result["perf_guard_blocked"] = True
+                result["verdict"] = "BLOCK_PERF_GUARD"
+                logger.warning("[PARALLEL] %s: PERF-GUARD BLOCK - %d findings",
+                               filename, perf_guard.get_summary()["total_findings"])
 
             with self.lock:
                 self.completion_count += 1
@@ -847,14 +1140,17 @@ class ParallelPreAuditExecutor:
                     "MEDIUM": result["MEDIUM"],
                     "total_events": result["total_events"],
                     "load_info": load_info,
+                    "perf_guard": perf_guard.get_summary(),
+                    "perf_guard_blocked": perf_guard.any_critical(),
                 }
                 pct = self.completion_count / self.total_count * 100
-                logger.info("[PARALLEL %d/%d %.0f%%] %s: %s (CRIT=%d, HIGH=%d) [%.1fms, +%.1fMB]",
+                logger.info("[PARALLEL %d/%d %.0f%%] %s: %s (CRIT=%d, HIGH=%d) [%.1fms, +%.1fMB] PG:%s",
                             self.completion_count, self.total_count, pct,
                             filename, result["verdict"],
                             result["CRITICAL"], result["HIGH"],
                             load_info.get("load_time_ms", 0),
-                            load_info.get("memory_delta_mb", 0))
+                            load_info.get("memory_delta_mb", 0),
+                            "BLOCK" if perf_guard.any_critical() else "OK")
 
             # V3 NEW: Garbage collection after processing
             del evidence
@@ -942,15 +1238,25 @@ def generate_evidence_index(evidence_dir, evidence_file=None):
     return index
 
 
-def check_evidence_package(filepath, evidence_dir=None, shard_size=DEFAULT_SHARD_SIZE):
+def check_evidence_package(filepath, evidence_dir=None, shard_size=DEFAULT_SHARD_SIZE,
+                           perf_guard_mode=PERF_GUARD_MODE, perf_guard_enabled=PERF_GUARD_ENABLED):
     filepath = Path(filepath)
     if not filepath.exists():
         logger.error("File not found: %s" % filepath)
         return {"verdict": "ERROR", "error": "file_not_found"}
     try:
         loader = MemoryEfficientEvidenceLoader(filepath, shard_size)
-        ev = loader.load()
+        # V3.1: PERF-GUARD
+        pg = PerfGuard(mode=perf_guard_mode, enabled=perf_guard_enabled)
+        ev = loader.load(perf_guard=pg)
         load_info = loader.get_info()
+        # V3.1: Check PERF-GUARD block
+        if pg.any_critical():
+            pg_result = pg.to_result()
+            return {"verdict": "BLOCK_PERF_GUARD", **pg_result,
+                    "error": "perf_guard_critical",
+                    "detail": "Packaging blocked by PERF-GUARD: %s" %
+                              "; ".join(f["message"] for f in pg.findings if f["level"] == CRITICAL)}
     except json.JSONDecodeError as e:
         logger.error("JSON parse error: %s" % e)
         return {"verdict": "BLOCK", "error": "json_parse_error", "detail": str(e)}
@@ -960,19 +1266,31 @@ def check_evidence_package(filepath, evidence_dir=None, shard_size=DEFAULT_SHARD
     if not evidence_dir:
         evidence_dir = filepath.parent
     checker = IntegrityChecker(ev, load_info)
-    result = checker.run_all(str(evidence_dir))
+    # V3.1: Pass PERF-GUARD result to checker
+    pg_result_dict = pg.to_result()
+    result = checker.run_all(str(evidence_dir), perf_guard_result=pg_result_dict)
+    # V3.1: If PERF-GUARD flagged anything, ensure verdict reflects it
+    if pg.any_high() and result["verdict"] == "PASS":
+        result["verdict"] = "WARNING"
     return result
 
 
-def pre_audit_evidence(filepath, shard_size=DEFAULT_SHARD_SIZE):
+def pre_audit_evidence(filepath, shard_size=DEFAULT_SHARD_SIZE,
+                      perf_guard_mode=PERF_GUARD_MODE, perf_guard_enabled=PERF_GUARD_ENABLED):
     filepath = Path(filepath)
     if not filepath.exists():
         logger.error("File not found: %s" % filepath)
         return {"verdict": "ERROR", "error": "file_not_found"}
     try:
         loader = MemoryEfficientEvidenceLoader(filepath, shard_size)
-        ev = loader.load()
+        # V3.1: PERF-GUARD
+        pg = PerfGuard(mode=perf_guard_mode, enabled=perf_guard_enabled)
+        ev = loader.load(perf_guard=pg)
         load_info = loader.get_info()
+        # V3.1: Check PERF-GUARD block
+        if pg.any_critical():
+            return {"verdict": "BLOCK_PERF_GUARD", "perf_guard": pg.to_result(),
+                    "error": "perf_guard_critical"}
     except json.JSONDecodeError as e:
         logger.error("JSON parse error: %s" % e)
         return {"verdict": "ERROR", "error": "json_parse_error"}
@@ -981,6 +1299,10 @@ def pre_audit_evidence(filepath, shard_size=DEFAULT_SHARD_SIZE):
         return {"verdict": "ERROR", "error": str(e)}
     auditor = PreAuditor(ev, load_info)
     result = auditor.pre_audit()
+    # V3.1: Include PERF-GUARD info
+    result["perf_guard"] = pg.to_result()
+    if pg.any_critical():
+        result["verdict"] = "BLOCK_PERF_GUARD"
     return result
 
 
@@ -1004,6 +1326,14 @@ def main(argv=None):
                     help="Thread count for parallel pre-audit (V3)")
     ap.add_argument("--shard-size", type=int, default=DEFAULT_SHARD_SIZE,
                     help="Shard size for large file reading in bytes (V3)")
+    # V3.1 NEW: PERF-GUARD options
+    ap.add_argument("--perf-guard-mode", choices=["STRICT", "WARN"],
+                    default=PERF_GUARD_MODE,
+                    help="PERF-GUARD mode: STRICT=block on limit, WARN=alert only (V3.1)")
+    ap.add_argument("--no-perf-guard", action="store_true",
+                    help="Disable PERF-GUARD checks (V3.1)")
+    ap.add_argument("--perf-guard-only", action="store_true",
+                    help="Only run PERF-GUARD checks, skip integrity checks (V3.1)")
     args = ap.parse_args(argv)
 
     if args.dry_run:
@@ -1016,6 +1346,13 @@ def main(argv=None):
         logger.info("  Default Threads: %d" % args.threads)
         logger.info("  V3 Features: Sharded reading, Parallel pre-audit, "
                     "Streaming MD5, Memory-optimized loading")
+        # V3.1: PERF-GUARD info
+        pg_enabled = not args.no_perf_guard
+        logger.info("  V3.1 PERF-GUARD: %s (mode=%s)" % (
+            "ENABLED" if pg_enabled else "DISABLED", args.perf_guard_mode))
+        logger.info("  PERF-GUARD Limits: time=%.1fs, calls=%d, mem=%.0fMB, file=%.0fMB" % (
+            PERF_GUARD_PACKAGING_TIME_LIMIT_SEC, PERF_GUARD_CALL_COUNT_LIMIT,
+            PERF_GUARD_MEMORY_PEAK_LIMIT_MB, PERF_GUARD_FILE_SIZE_LIMIT_MB))
         logger.info("  Modes: --check, --check-dir, --verify-md5, --all, "
                     "--pre-audit, --pre-audit-dir, --generate-md5, --generate-index")
         return 0
@@ -1091,9 +1428,16 @@ def main(argv=None):
             return 3
 
         # V3 NEW: Parallel pre-audit
+        pg_enabled = not args.no_perf_guard
         executor = ParallelPreAuditExecutor(
             dirpath, args.threads, args.shard_size)
         all_results = executor.execute()
+
+        # V3.1: PERF-GUARD summary
+        pg_blocked = sum(1 for r in all_results.values()
+                         if r.get("perf_guard_blocked"))
+        pg_warnings = sum(1 for r in all_results.values()
+                          if r.get("perf_guard") and r["perf_guard"]["verdict"] in ("WARN", "NOTICE"))
 
         if args.json:
             print(json.dumps(all_results, ensure_ascii=False, indent=2))
@@ -1118,6 +1462,14 @@ def main(argv=None):
                            if r.get("load_info"))
             avg_mem = total_mem / max(1, total_files)
             logger.info("  Memory: total=%.1fMB, avg=%.1fMB/file", total_mem, avg_mem)
+            # V3.1: PERF-GUARD summary
+            if pg_blocked > 0:
+                logger.warning("  PERF-GUARD: %d files BLOCKED by performance limits", pg_blocked)
+            if pg_warnings > 0:
+                logger.info("  PERF-GUARD: %d files with WARN/NOTICE findings", pg_warnings)
+            logger.info("  PERF-GUARD: mode=%s, limits: time=%.1fs, calls=%d, mem=%.0fMB",
+                         args.perf_guard_mode, PERF_GUARD_PACKAGING_TIME_LIMIT_SEC,
+                         PERF_GUARD_CALL_COUNT_LIMIT, PERF_GUARD_MEMORY_PEAK_LIMIT_MB)
         return 0 if all_pass else 1
 
     if args.check:
