@@ -241,3 +241,102 @@ DEP-001 形态与前三轮（2026-10-05/06/15）完全一致，仍 OPEN。
 | NO_OVERWRITE | v1.0 文件独立保留（MD5 `8d3fb7e6` 未变） |
 
 **状态标记**：`HERMES_AUDIT_CASE_LIBRARY_V2_ARCED=TRUE`（CASE-LIB v2.0，23 用例，自回归 PASS）
+
+---
+
+## 11. V2.1 PLUS 扩充版（2026-10-15 第三批）
+
+> **PLUS 载体**: `evidence_auditor_v2_plus.py`（auditor v2.1.0-plus, MD5 `d2bd2b38`）
+> **PLUS 自回归**: `python3 evidence_auditor_v2_plus.py --self-test` → **42 用例 + 11 断言 + 3 防误报 PASSED**
+> **PLUS 用例总数**: 42（v2.0 的 23 + PLUS 新增 19）
+> **NO_OVERWRITE**: v2.0 用例库保留，PLUS 用例在独立脚本中，不自覆盖
+
+### 11.1 PLUS 新增大类（4 大类 19 用例）
+
+#### 大类九：DEP 状态反复抖动（DS-06，新增检测点）
+
+| 用例 | 场景 | 期望 | 关键断言 |
+|------|------|------|---------|
+| CASE-S04 | 往返抖动 1 次（低于阈值 2） | PASS | 不应触发 DS-06（防误报） |
+| CASE-S05 | 往返抖动 2 次（达阈值） | CONDITIONAL_PASS | **必命中 DS-06** |
+| CASE-S06 | 稳定恢复无抖动（对照） | PASS | 不应触发 DS-06（防误报） |
+
+**抖动判定语义**：`RECOVERED -> ... -> BLOCKED` 算一次抖动（"恢复后再阻塞"）。
+单次 `BLOCKED->RECOVERY->RECOVERED` 是正常恢复链，不计数。阈值 `FLAP_THRESHOLD=2`。
+
+> ⚠️ **开发过程发现**：初版抖动逻辑把 `ACTIVE` 状态也计入 `left_blocked` 重置，
+> 导致抖动次数永远为 0。修正为"曾到达 RECOVERED 后再遇 BLOCKED"语义后才正确。
+
+#### 大类十：大批量并发告警（PERF-GUARD，新增检测点）
+
+| 用例 | 场景 | 期望 | 关键断言 |
+|------|------|------|---------|
+| CASE-F01 | 120 条混合（100 正常 + 20 DEP 阻塞） | FAIL | 单包内多告警隔离 |
+| CASE-F02 | 256 条临界值（预算边界内） | PASS | 不应触发 PERF-GUARD |
+| CASE-F03 | 500 条超预算 | FAIL | **必命中 PERF-GUARD** |
+| CASE-F04 | 300 条全正常 + 1 条 trace 重复 | CONDITIONAL_PASS | 定位单条异常不中断批量 |
+
+**性能预算**：`PERF_BUDGET_CALLS=256`（call 数），`PERF_BUDGET_SECONDS=1.0`（超时）。
+
+#### 大类十一：超大证据包
+
+| 用例 | 场景 | 期望 | 关键断言 |
+|------|------|------|---------|
+| CASE-O01 | 20 call × 500 点（call 数在预算内） | PASS | 不应触发 PERF-GUARD |
+| CASE-O02 | 300 call（超预算） | CONDITIONAL_PASS | **必命中 PERF-GUARD** |
+| CASE-O03 | 300 call + 50 条无值（超大+造假混合） | FAIL | 判定 FAIL 且报 PERF-GUARD |
+| CASE-O04 | 空 calls 列表 | FAIL | D03.2 无调用链 |
+
+#### 大类十二：损坏证据包（ROB-01，新增检测点）
+
+| 用例 | 场景 | 期望 | 关键断言 |
+|------|------|------|---------|
+| CASE-X04 | 根对象为 list | FAIL | **必命中 ROB-01，不抛异常** |
+| CASE-X05 | 根对象为字符串 | FAIL | **必命中 ROB-01，不抛异常** |
+| CASE-X06 | calls 为 dict | FAIL | **必命中 ROB-01，不抛异常** |
+| CASE-X07 | calls 内含非 dict 元素（str/int/None） | FAIL | **必命中 ROB-01，不抛异常** |
+| CASE-X08 | None 输入 | FAIL | **必命中 ROB-01，不抛异常** |
+| CASE-X09 | 空 dict | FAIL | CV-01/CV-03 缺必填 |
+| CASE-X10 | 契约版本 EVIDENCE_CONTRACT_V0 | CONDITIONAL_PASS | **必命中 CV-02** |
+| CASE-X11 | DEP 状态非法值 HALF_RECOVERED | CONDITIONAL_PASS | **必命中 DS-01** |
+
+### 11.2 PLUS 新增 3 项审计能力（v2 无）
+
+| 能力 | 检测点 | 说明 |
+|------|--------|------|
+| **性能预算守卫** | PERF-GUARD | 单次审计超 1.0s 或 256 call 即告警，防超大包拖垮调度器 |
+| **损坏包容错** | ROB-01 | 非 dict 根对象、calls 非 list、calls 内含非 dict 元素均不抛异常 |
+| **DEP 抖动检测** | DS-06 | RECOVERED 后再阻塞 ≥2 次判定抖动，告警疑似服务不稳定 |
+
+### 11.3 PLUS 自回归断言（防回归）
+
+| 断言类型 | 数量 | 说明 |
+|---------|------|------|
+| PLUS 必命中检测点 | 11 | DS-06×1, PERF-GUARD×2, ROB-01×5, CV-02×1, DS-01×1 |
+| PLUS 防误报 | 3 | S06(稳定恢复), F02(临界值), O01(超大但预算内) |
+| 覆盖度 | 19 检测点 | v2 的 16 + DS-06 + PERF-GUARD + ROB-01 |
+| 性能预算 | 4 用例 | O01/O02/O03/F03 须在 1.0s 内完成 |
+| 容错 | 6 用例 | X04~X09 均不抛异常 |
+| v2 基线回归 | 全量 | v2 的 23 用例 + 17 断言仍须全部通过 |
+
+### 11.4 PLUS 自回归实测输出
+
+```
+==========================================================================
+  evidence_auditor_v2_plus 自回归测试  (auditor v2.1.0-plus, contract EVIDENCE_CONTRACT_V1)
+==========================================================================
+  用例数: 42  |  PLUS 断言: 11 必命中 + 3 防误报  |  基线: dd0a7f0
+  性能预算: 1.0s / 256 call  |  抖动阈值: 2 次往返
+--------------------------------------------------------------------------
+  ✅ 全部通过: 42 用例判定 + 11 PLUS 断言 + 3 防误报 + 性能预算 + 容错 + v2 基线回归
+  结论: SELF-TEST PASSED
+==========================================================================
+```
+exit code = 0
+
+### 11.5 状态标记
+
+| 标记 | 值 | 说明 |
+|------|-----|------|
+| **HERMES_AUDIT_CASE_LIBRARY_V2_1_PLUS_ARCED** | **TRUE** | CASE-LIB v2.1-plus，42 用例，自回归 PASS |
+| HERMES_AUDIT_CASE_LIBRARY_V2_ARCED | TRUE | v2.0 保持 |

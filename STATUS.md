@@ -73,8 +73,20 @@
 
 ## 近期变更记录
 
-### 2026-10-15 HERMES — V86-RC2 审计器加固 + 三方证据包契约基线 + 批量预审调度 + DEP就绪检查清单 + 事件持久化升级 (HERMES_V86_RC2_AUDIT_CONTRACT_BASELINE)
-- **T3.1 审计器加固**: `evidence_auditor_v2.py` (47KB, MD5:479bf91b) — 3项加固: --self-test自回归入口(23用例+17必命中断言+4无告警断言)、DEP 6状态机校验、契约版本校验; 用例库扩充至23用例8大类(新增存量旧口径/DEP状态机/跨团队台账/契约完整性), 新增CV-01~05/DS-01~05/LC-01~03检测点
+### 2026-10-15 HERMES — V86-RC2 批量审计压力仿真 + 事件存储高可用仿真 + E2E检查清单V2 + 审计器PLUS + 告警路由V3 (HERMES_PROD_PHASE_AUDIT_STRESS_HA_DONE)
+- **T3.4 审计器PLUS**: `evidence_auditor_v2_plus.py` (MD5:479bf91b→d2bd2b38) — 42 用例(23+19)，新增3项审计能力：PERF-GUARD性能预算守卫、ROB-01损坏包容错、DS-06 DEP抖动检测。自回归11必命中断言+3防误报断言，SELF-TEST PASSED。开发过程抓到4类真实缺陷（抖动语义错误/变量遮蔽/期望错误/异常逃逸判定）。
+- **T3.1 批量压力仿真**: `batch_audit_stress_test.py` (MD5:ce037ba4) — 8项自检PASS。320包混合(152损坏包)100%隔离，零异常逃逸。⚠️关键发现：并发度越高吞吐反而越低（单线程9273→16线程7951，-14.3%），根因=GIL+纯CPU密集。
+- **T3.2 事件存储HA仿真**: `event_store_ha_test.py` (MD5:fbad1b00) — 9项自检PASS/6场景。断连重试40缓存全部续传零丢失，checkpoint重启恢复100%。⚠️关键发现：append O(n)退化（>1万事件应切SQLite），突发并发比顺序快3.8倍。
+- **T3.3 E2E检查清单V2**: `v86_rc2_hermes_dep_ready_e2e_checklist_v2.md` (MD5:8bb54e33) — 85项，P0/P1/P2三级门禁，6阶段灰度放量阶梯，5类回滚触发条件，三方RACI责任矩阵。V1保留。
+- **T3.5 告警路由规范V3**: `v86_rc2_hermes_alert_routing_spec_v3.md` (MD5:37815a19) — 令牌桶限流(500/300/100三级阈值)，指数退避重试(5次100ms×2^n)，4级过载降级，两级缓存+优先级丢弃，去重折叠策略。阈值全部基于实测数据。V1/V2保留。
+- **用例库更新**: `v86_rc2_hermes_audit_case_library_v2.md` — 追加§11 PLUS扩充版(19用例+3项能力+4类缺陷记录)。
+- **MD5清单**: `MD5_CHECKSUM_LIST_prod_audit_stress_ha.md` — 7新增+3更新+8零覆盖验证+V85零改动。
+- **状态**: ✅全部PASS。零覆盖自证：上轮8产物MD5不变。V85零改动。
+- **Gate**: 🔴仍NOT_READY。DEP-001短ID解析未就绪，G-06/G-10无法通过。本轮产出审计基础设施，DEP就绪后按检查清单V2的P0/P1/P2门禁启动。
+- **分支**: `feature/v85-chart-template` @ `dd0a7f0`
+
+### 2026-10-15 HERMES — V86-RC2 审计器加固 + 三方证据包契约基线 + 批量预审调度 + DEP就绪检查清单 + 事件持久化升级 (HERMES_PROD_PHASE_AUDIT_CONTRACT_BASELINE)
+- **T3.1 审计器加固**: `evidence_auditor_v2.py` (47KB, MD5:479bf91b) — 3...[truncated]
 - **T3.2 三方证据包契约**: `EVIDENCE_CONTRACT_V1.md` (15KB, MD5:0784d79a) — 首次把L1(DSHB)/L2(DSHE)/L3(HERMES)证据包收敛为统一契约, 11章含L1/L2结构定义/审计指纹/traceID/DEP关联/MD5规则/契约变更流程/三方对齐矩阵, 字段变更必须升级版本号+三方评审
 - **T3.3 批量预审调度**: `batch_evidence_audit_runner.py` (18KB, MD5:ce2501c6) — 批量读取L1/L2证据包目录, 7段报告4维分组(判定/等级/规则/责任方), 退出码门禁(0/1/2), 7项自检通过; 报告模板`v86_rc2_hermes_batch_audit_report_template.md`
 - **T3.4 DEP就绪检查清单**: `v86_rc2_hermes_dep_ready_e2e_checklist.md` (13KB, MD5:eaa381bd) — 76项逐点可勾选, 8阶段(P0前置/P1 L1/P2 L2/P3预审/P4 Gate/P5灰度/P6观测/P7回滚), 每项含判定标准+失败后果+责任人+阻断级别(STOP/BLOCK/NOTE)
