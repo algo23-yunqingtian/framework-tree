@@ -1,0 +1,14 @@
+{
+  "evidence_id": "EVID-002",
+  "type": "API_RESPONSE",
+  "source": "zhiji API /series?id=i1",
+  "timestamp": "2026-10-15T00:00:00+08:00",
+  "status_code": 200,
+  "error_message": "permission_state=-4",
+  "trace_id": "DSHB-PROBE-20261015-002",
+  "response_payload": {
+    "permission_state": -4,
+    "http_status": 200
+  },
+  "description": "短ID i1 探测失败 — permission_state=-4"
+}

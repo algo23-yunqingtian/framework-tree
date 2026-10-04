@@ -4,7 +4,7 @@
 > **分支**: `feature/v85-chart-template` (BRANCH_LOCKED=TRUE)
 > **执行日期**: 2026-10-15
 > **触发事件**: HERMES审计规范发布 — COMPLETED必须双证据（元数据映射完成 AND 真实可取数）
-> **审计发现**: 历史提交commit `86c1f6e`写100%桥接率，但文档承认真实可取0%，属于旧口径残留
+> **审计发现**: 历史提交commit `86c1f6e`写100%桥接率，但文档承认真实可取0%，属于旧口径残留 [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 > **约束**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE
 > **文档状态**: 🟢 **FINAL — 口径对齐完成，全部DSHB文档已统一为HERMES双证据新口径**
 

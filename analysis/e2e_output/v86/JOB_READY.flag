@@ -5440,3 +5440,94 @@ SYNC_LOG_TOTAL=9
 ## Final Status
 DSHE_PROD_PHASE_L2_HERMES_JOINT_READY=TRUE
 DSHE_PROD_PHASE_L2_HERMES_JOINT_COMPLETE=TRUE
+
+# ============================================================================
+# DSHB_V86_RC2_DEP_REGISTRY_FULL — DEP台账补齐 + Gate审计集成验收 + 全量口径巡检
+# Branch: feature/v85-chart-template (BRANCH_LOCKED=TRUE)
+# Date: 2026-10-16
+# ============================================================================
+
+# --- Subtask Summary ---
+T3.1_DEP_REGISTRY=CLOSED (DEP-REG-001创建, 4项P1 GAP闭环, 2项P2 GAP确认)
+T3.2_GATE_AUDIT_INTEGRATION=COMPLETE (gate_pre_check_auto_v2.py, --audit-validate, G06A新增, 5场景验证)
+T3.3_FULL_DOC_CALIBER_AUDIT=COMPLETE (STATUS.md 10处旧口径全部标注OLD_CALIBER, 全量扫描报告)
+T3.4_DRYRUN_V3=COMPLETE (dryrun_e2e_test_v3.py, 19项测试, 19/19 PASS, 审计器联动3场景)
+T3.5_RISK_V4_ITERATION=COMPLETE (风险台账V4第11章新增, 6项DEP GAP状态更新)
+
+# --- DEP Registry (T3.1) ---
+DEP_REGISTRY_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/dshb_dep_registry_dep-reg-001.json
+DEP_REGISTRY_ID=DEP-REG-001
+DEP_REGISTRY_SPEC=v86_rc2_dep_registry_common_spec.md (三方共用规范V2)
+DEP_REGISTRY_CHANGE_LOG_FIELDS=15
+DEP_REGISTRY_CHANGE_LOG_ENTRIES=3
+DEP_REGISTRY_STATUS_MACHINE=ACTIVE→BLOCKED→IN_PROGRESS→PARTIAL→RESOLVED→CLOSED
+DEP_REGISTRY_MAX_PAUSE_DAYS=30
+DEP_REGISTRY_ROLLBACK_WINDOW_MINUTES=15
+DEP_REGISTRY_EVIDENCE_DIR=.evidence/
+DEP_REGISTRY_EVIDENCE_COUNT=4
+DEP_GAP_001_STATUS=CLOSED (DEP-REG-001创建)
+DEP_GAP_002_STATUS=CLOSED (ISO8601时间戳记录)
+DEP_GAP_003_STATUS=CLOSED (15字段结构化变更日志)
+DEP_GAP_004_STATUS=CONFIRMED (30天暂停时长)
+DEP_GAP_005_STATUS=CLOSED (证据存储目录+索引)
+DEP_GAP_006_STATUS=CONFIRMED (15min回滚窗口)
+DEP_GAP_TOTAL_CLOSURE=6/6 (100%)
+P1_GAP_CLOSURE=3/3 (100%)
+P2_GAP_CONFIRMATION=2/2 (100%)
+
+# --- Gate Audit Integration (T3.2) ---
+GATE_PRE_CHECK_V2=TRUE
+GATE_PRE_CHECK_V2_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/gate_pre_check_auto_v2.py
+GATE_PRE_CHECK_V2_FEATURES=--audit-validate + G06A + AuditValidator + L1 evidence builder
+GATE_AUDIT_INTEGRATION_REPORT=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_gate_audit_integration_report.md
+GATE_AUDIT_SCENARIOS_TESTED=5 (normal/dep_block/forged_caliber/partial_recovery/auditor_unavailable)
+GATE_AUDIT_FAIL_BLOCKS_GATE=TRUE
+GATE_AUDIT_GATE_RESULT=NOT_READY (data_fetchable=0% < 80% threshold)
+
+# --- Full Doc Caliber Audit (T3.3) ---
+DOC_CALIBER_SCANNER_V2=TRUE
+DOC_CALIBER_SCANNER_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/doc_caliber_scanner.py
+DOC_CALIBER_AUDIT_REPORT=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_full_doc_caliber_audit_report.md
+STATUS_MD_OLD_CALIBER_MARKED=10
+STATUS_MD_VIOLATION_LINES=91,96,97,101,211,220 (marked OLD_CALIBER)
+FULL_REPO_SCAN_FILES=2512
+FULL_REPO_SCAN_MATCHES=1027
+FULL_REPO_MARKED=82
+FULL_REPO_UNMARKED=945
+
+# --- Dryrun E2E V3 (T3.4) ---
+DRYRUN_V3_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/dryrun_e2e_test_v3.py
+DRYRUN_V3_TOTAL_TESTS=19
+DRYRUN_V3_PASS=19
+DRYRUN_V3_FAIL=0
+DRYRUN_V3_PASS_RATE=100%
+DRYRUN_V3_AUDIT_TESTS=3 (L17 normal PASS, L18 DEP block FAIL, L19 forged caliber FAIL)
+DRYRUN_V3_AUDIT_ALL_PASS=TRUE
+DRYRUN_V3_REAL_API_CALLS=0
+DRYRUN_V3_REAL_SUBPROCESS_CALLS=0
+
+# --- Risk Register V4 Iteration (T3.5) ---
+RISK_V4_ITERATION=TRUE
+RISK_V4_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_risk_re_evaluate_v4.md
+RISK_V4_NEW_SECTION=11 (DEP台账补齐与GAP状态同步)
+RISK_V4_DEP_GAP_CLOSURE=6/6 (4 CLOSED + 2 CONFIRMED)
+RISK_V4_R_DEP_UPDATED=6 (R-DEP-01~06)
+RISK_V4_GATE_STATUS=NOT_READY (unchanged, data_fetchable=0%)
+
+# --- Total Files New ---
+TOTAL_FILES_NEW=11 (dep_registry+4_evidence+gate_v2+audit_report+doc_audit_report+dryrun_v3+dep_gap_log_v2+risk_v4_update+status_update)
+
+# --- Git ---
+COMMIT_HASH_DEP_REGISTRY_FULL=547e326
+BRANCH=feature/v85-chart-template
+REMOTE=origin
+
+# --- Constraints ---
+NO_ZHIJI_API_CALL=FALSE (PROD_PHASE_ENABLED)
+NO_MODIFY_V85=TRUE
+NO_OVERWRITE=TRUE (V4原文保留仅追加第11章+STATUS.md仅追加标记不删除)
+BRANCH_LOCKED=TRUE
+
+# --- Final Status ---
+DSHB_PROD_PHASE_DEP_REGISTRY_FULL_DONE=TRUE
+TASK_COMPLETED=TRUE ([DOC] DSHB V86-RC2 DEP Registry Full: DEP-REG-001 + Gate Audit Integration + Full Caliber Audit + Dryrun V3 + Risk V4: 11 new deliverables, 19/19 dryrun PASS, 6/6 GAP closed, DSHB_PROD_PHASE_DEP_REGISTRY_FULL_DONE=TRUE)

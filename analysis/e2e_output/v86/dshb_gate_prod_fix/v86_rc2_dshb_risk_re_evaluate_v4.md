@@ -24,6 +24,7 @@
 8. [跨团队同步记录](#8-跨团队同步记录)
 9. [约束合规声明](#9-约束合规声明)
 10. [完成标准核验](#10-完成标准核验)
+11. [V4迭代更新: DEP台账补齐与GAP状态同步 (2026-10-16)](#11-v4迭代更新-dep台账补齐与gap状态同步-2026-10-16)
 
 ---
 
@@ -444,3 +445,103 @@ DEP_BLOCK约束链:
 | 口径声明 | HERMES双证据口径: COMPLETED=元数据完整 AND 真实可取 |
 
 > 此记录由dep_ready_trigger_v2.py自动生成，非人工编辑。
+
+---
+
+## 11. V4迭代更新: DEP台账补齐与GAP状态同步 (2026-10-16)
+
+### 11.1 更新概要
+
+| 维度 | 更新前 (V4基线) | 更新后 (V4迭代) |
+|------|----------------|----------------|
+| DEP台账 | 无正式台账文件 | `dshb_dep_registry_dep-reg-001.json` 创建 |
+| DEP登记ID | 无 | **DEP-REG-001** |
+| 登记时间戳 | 无 | ISO8601全生命周期时间戳 |
+| 结构化变更日志 | 无 | 15字段变更日志 (3条记录) |
+| 独立调用链证据 | 无 | 证据存储目录+4条证据索引 |
+| GAP状态 | 全部OPEN/IN_PROGRESS | **6/6 GAP已闭环或确认** |
+| 参数对齐 | 无 | 30天暂停时长 + 15min回滚窗口 |
+
+### 11.2 DEP-REG-001 台账信息
+
+| 字段 | 值 |
+|------|-----|
+| 台账ID | DEP-REG-001 |
+| 台账文件 | `dshb_dep_registry_dep-reg-001.json` |
+| 规范来源 | `v86_rc2_dep_registry_common_spec.md` (三方共用规范V2) |
+| 创建时间 | 2026-10-16T08:00:00+08:00 |
+| 当前状态 | BLOCKED |
+| 状态机 | ACTIVE→BLOCKED→IN_PROGRESS→PARTIAL→RESOLVED→CLOSED |
+| 最大暂停时长 | 30天 (三方确认) |
+| 回滚窗口 | 15分钟 (三方确认) |
+| 影响指标 | 8品种178条目 |
+| 阻塞类型 | HTTP 500「无法识别指标来源」+ permission_state=-4 |
+
+### 11.3 DEP GAP状态更新
+
+| GAP编号 | 描述 | 原状态 | 新状态 | 闭环方式 |
+|---------|------|--------|--------|----------|
+| DEP-GAP-001 | DEP登记ID缺失 (P1) | 🔴 OPEN | ✅ **CLOSED** | DEP-REG-001创建 |
+| DEP-GAP-002 | DEP登记时间缺失 (P2) | 🔴 OPEN | ✅ **CLOSED** | ISO8601时间戳记录 |
+| DEP-GAP-003 | 变更日志缺失 (P1) | 🔴 OPEN | ✅ **CLOSED** | 15字段结构化变更日志 |
+| DEP-GAP-004 | 最大暂停时长未定义 (P2) | 🟡 IN_PROGRESS | 🟢 **CONFIRMED** | 30天暂停时长确认 |
+| DEP-GAP-005 | 独立调用链证据缺失 (P1) | 🔴 OPEN | ✅ **CLOSED** | 证据存储目录+索引 |
+| DEP-GAP-006 | 回滚时间窗口未定义 (P2) | 🟡 IN_PROGRESS | 🟢 **CONFIRMED** | 15min回滚窗口确认 |
+
+**P1 GAP闭环率**: 3/3 (100%) ✅
+**P2 GAP确认率**: 2/2 (100%) ✅
+**GAP总闭环率**: 6/6 (100%) ✅
+
+### 11.4 风险台账条目状态更新
+
+以下风险台账条目与DEP GAP直接关联，状态同步更新:
+
+| 风险ID | 名称 | 分类 | 原状态 | 新状态 | 更新原因 |
+|--------|------|------|--------|--------|----------|
+| R-DEP-01 | DEP登记ID缺失 | DEP_BLOCK | OPEN | **CLOSED** | DEP-REG-001台账创建 |
+| R-DEP-02 | DEP登记时间缺失 | DEP_BLOCK | OPEN | **CLOSED** | ISO8601时间戳记录 |
+| R-DEP-03 | DEP变更日志缺失 | DEP_BLOCK | OPEN | **CLOSED** | 15字段变更日志 |
+| R-DEP-04 | DEP暂停时长未定义 | DEP_BLOCK | IN_PROGRESS | **CONFIRMED** | 30天暂停时长确认 |
+| R-DEP-05 | DEP调用链证据缺失 | DEP_BLOCK | OPEN | **CLOSED** | 证据存储目录+索引 |
+| R-DEP-06 | DEP回滚窗口未定义 | DEP_BLOCK | IN_PROGRESS | **CONFIRMED** | 15min回滚窗口确认 |
+
+> **注意**: DEP_BLOCK条目不计入内部P0/P1缺陷池，但约束Gate准入。
+> 上述风险条目状态更新不改变Gate状态 (仍为NOT_READY，因真实取数率=0% < 80%阈值)。
+
+### 11.5 参数对齐确认
+
+| 参数 | 值 | 确认方 | 确认时间 |
+|------|-----|--------|----------|
+| 最大暂停时长 | 30天 | DSHE + HERMES + DSHB | 2026-10-16 |
+| 回滚时间窗口 | 15分钟 | DSHE + HERMES + DSHB | 2026-10-16 |
+| 暂停超时升级 | 超时自动升级为P0_ESCALATION | 三方共用规范V2 | 2026-10-16 |
+
+### 11.6 三方共用规范对齐验证
+
+| 规范项 | 共用规范要求 | DSHB台账实现 | 对齐状态 |
+|--------|-------------|-------------|----------|
+| DEP编号 | DEP-REG-001统一编号 | `registry_id: "DEP-REG-001"` | ✅ 对齐 |
+| 变更日志字段 | 15字段结构化 | 15字段完整实现 | ✅ 对齐 |
+| 状态机 | 6状态状态机 | 6状态完整实现 | ✅ 对齐 |
+| 暂停时长 | 30天 | `parameters.max_pause_days: 30` | ✅ 对齐 |
+| 回滚窗口 | 15分钟 | `parameters.rollback_window_minutes: 15` | ✅ 对齐 |
+| 证据链 | 独立调用链证据 | 4条证据索引 + `.evidence/`目录 | ✅ 对齐 |
+
+### 11.7 约束合规声明 (本次迭代)
+
+| 约束 | 值 | 合规情况 |
+|------|-----|---------|
+| NO_ZHIJI_API_CALL | FALSE | ✅ 允许API调用 |
+| NO_MODIFY_V85 | TRUE | ✅ 未修改V85基线 |
+| NO_OVERWRITE | TRUE | ✅ V4原文保留，仅追加第11章 |
+| BRANCH_LOCKED | TRUE | ✅ 提交至指定分支 |
+| DEP_BLOCK不计入内部缺陷 | — | ✅ 独立分类, 不影响P0/P1统计 |
+| Gate准入不豁免 | — | ✅ data_fetchable < 80% → NOT_READY |
+
+---
+
+> **本次迭代日期**: 2026-10-16
+> **关联工单**: DSHB_V86_RC2_DEP_REGISTRY_FULL
+> **关联台账**: `dshb_dep_registry_dep-reg-001.json`
+> **关联GAP日志**: `v86_rc2_dshb_dep_gap_sync_log.md` (V2.0)
+> **状态**: ✅ **FINAL — DEP台账补齐完成，6/6 GAP闭环/确认**

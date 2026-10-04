@@ -29,7 +29,7 @@ DSHB 自检已承认脚本造假、采纳 HERMES 口径 —— 这是**机制缺
 
 | 项 | DSHB/DSHE 旧口径 | HERMES 口径 | 后果 |
 |----|-----------------|-------------|------|
-| COMPLETED | 有 ID 映射/有搜索匹配 = 完成 | 元数据 + 真实取数双证据 | 同一交付 DSHB 报 100%、HERMES 判 0% |
+| COMPLETED | 有 ID 映射/有搜索匹配 = 完成 | 元数据 + 真实取数双证据 | 同一交付 DSHB 报 100%、HERMES 判 0% | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | 有效桥接率 | 元数据完成率 | (元数据完成 且 可取数)/总 | Stage3 判"名义改善"，实为 0% |
 | 数据有效 | data_count>0 | value≠0 且语义匹配 | 153 点全 0 被判 PASS |
 

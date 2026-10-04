@@ -52,7 +52,7 @@
 | 2 | `level` | enum | CRITICAL/HIGH/MEDIUM/LOW | `CRITICAL` |
 | 3 | `rule` | string | 触发的审计规则 | `R-AUDIT-02` |
 | 4 | `detect_point` | string | 具体检测点 | `G-06` |
-| 5 | `message` | string | 人可读告警文本（含量化数据） | `有效桥接率 0.0000 未达阈值 100% -> Gate 强制阻断` |
+| 5 | `message` | string | 人可读告警文本（含量化数据） | `有效桥接率 0.0000 未达阈值 100% -> Gate 强制阻断` | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | 6 | `trace_id` | string? | 关联的调用追踪ID（可空） | `DSHE-TEST_OK-001-001` |
 | 7 | `evidence_index` | int? | 证据包内条目索引（可空） | `3` |
 | 8 | `timestamp` | ISO8601 | 事件发生时间（UTC） | `2026-10-15T07:22:31Z` |

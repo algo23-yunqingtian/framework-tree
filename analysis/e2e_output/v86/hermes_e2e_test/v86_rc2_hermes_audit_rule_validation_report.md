@@ -78,7 +78,7 @@
 
 ### 2.1 提交包构造（模拟 DSHB 旧口径提交）
 
-基于 git 历史中 DSHB 的真实提交 `86c1f6e`「170/170 COMPLETED, 100% bridge rate」
+基于 git 历史中 DSHB 的真实提交 `86c1f6e`「170/170 COMPLETED, 100% bridge rate」 [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 构造的矛盾提交包：
 
 | 字段 | 值 | 矛盾点 |

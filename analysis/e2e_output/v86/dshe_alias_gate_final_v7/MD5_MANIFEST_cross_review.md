@@ -517,7 +517,7 @@
 
 | # | File | MD5 | Purpose |
 |---|------|-----|---------|
-| 76 | v86_rc2_prod_dshe_batch_metadata_update_record.md | `827241FFD8B03986BA70A3AE7C3163D8` | 批次元数据更新记录 (9批次, 170项, 1,020索引, 135告警标签, 桥接率100%) |
+| 76 | v86_rc2_prod_dshe_batch_metadata_update_record.md | `827241FFD8B03986BA70A3AE7C3163D8` | 批次元数据更新记录 (9批次, 170项, 1,020索引, 135告警标签, 桥接率100%) | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | 77 | v86_rc2_prod_dshe_batch_triple_id_verify_report.md | `A70C7F2F8289AA1C43EF8758281424CA` | 批次三ID一致性校验 (52抽样/30.6%, 1,044/1,044 PASS, 0异常) |
 | 78 | v86_rc2_prod_dshe_id_mapping_ops_update.md | `D4C035B6467804F2E86EB23D39414563` | 风险观测规则与应急手册 (47规则+47预警+21策略, EM-05 v1.9) |
 | 79 | v86_rc2_prod_dshe_batch_cross_team_verify_record.md | `FDD6EA561A5C7BC0BC4B234D91C304B4` | 批次跨团队联合验证 (170/170双向核对, 3异常闭环, 9/9 Gate PASS) |

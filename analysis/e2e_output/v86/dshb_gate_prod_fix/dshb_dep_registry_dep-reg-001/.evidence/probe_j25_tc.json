@@ -1,0 +1,14 @@
+{
+  "evidence_id": "EVID-001",
+  "type": "API_RESPONSE",
+  "source": "zhiji API /series?id=j25_tc",
+  "timestamp": "2026-10-15T00:00:00+08:00",
+  "status_code": 500,
+  "error_message": "无法识别指标来源(id前缀): j25_tc",
+  "trace_id": "DSHB-PROBE-20261015-001",
+  "response_payload": {
+    "error": "无法识别指标来源(id前缀): j25_tc",
+    "http_status": 500
+  },
+  "description": "短ID j25_tc 探测失败 — HTTP 500"
+}

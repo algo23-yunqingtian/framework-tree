@@ -146,7 +146,7 @@ R-AUDIT-01: 测试资产缺失
 | 风险名称 | 桥接表统计口径误导 |
 | 严重度 | 🔴 P0 |
 | 发现来源 | HERMES Stage3审计 |
-| 审计发现 | 将PENDING待映射条目计入100%覆盖率, 实际有效桥接仅3.6% |
+| 审计发现 | 将PENDING待映射条目计入100%覆盖率, 实际有效桥接仅3.6% | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 
 ### 4.2 修正措施
 

@@ -489,7 +489,7 @@
 |---|------|------|------|------|
 | 19 | DSHE→HERMES | T+9d | 9批次全部完成通知 | ✅ |
 | 20 | DSHE→HERMES | T+9d | 3项异常全部闭环确认 | ✅ |
-| 21 | DSHE→HERMES | T+9d | 桥接率100%+170/170核对PASS | ✅ |
+| 21 | DSHE→HERMES | T+9d | 桥接率100%+170/170核对PASS | ✅ | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 
 ---
 

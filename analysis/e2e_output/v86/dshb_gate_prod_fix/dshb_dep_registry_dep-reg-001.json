@@ -1,0 +1,296 @@
+{
+  "registry_schema_version": "1.0",
+  "spec_reference": "v86_rc2_dep_registry_common_spec.md",
+  "registry_id": "DEP-REG-001",
+  "registry_name": "DSHB V86-RC2 DEP 主台账 — 短ID解析能力阻塞登记",
+  "created_at": "2026-10-15T08:00:00+08:00",
+  "updated_at": "2026-10-16T08:00:00+08:00",
+  "created_by": "DSHB",
+  "last_updated_by": "DSHB",
+  "branch": "feature/v85-chart-template",
+  "work_order": "DSHB_V86_RC2_DEP_REGISTRY_FULL",
+
+  "dependency": {
+    "dep_id": "DEP-001",
+    "dep_name": "zhiji 数据平台短ID前缀解析能力",
+    "dep_owner": "zhiji 数据平台 (commodity_api)",
+    "dep_type": "REST API (search/series)",
+    "dep_risk_level": "P0",
+    "dep_risk_rationale": "核心单点阻塞，影响8品种178条目全量取数",
+    "dep_impacted_indicators": [
+      "j25_tc", "s_001", "i1", "i2", "i3", "i4", "i5", "i6", "i7",
+      "全部178条短ID映射条目"
+    ],
+    "dep_impacted_scope": "短ID取数 → 影子测试 → Gate G-06/G-09/G-10",
+    "dep_current_status": "OPEN",
+    "dep_status_detail": "zhiji API 短ID前缀解析返回 HTTP 500「无法识别指标来源」; i1-i7 返回 permission_state=-4",
+    "dep_expected_resolution": "待数据平台确认 (B-1)",
+    "dep_responsibility_person": "数据平台负责人（未指定）",
+    "dep_review_pause_enabled": true,
+    "dep_max_pause_days": 30,
+    "dep_rollback_window_minutes": 15,
+    "dep_evidence_chain": [
+      "v86_rc2_hermes_shortid_recheck_report.md",
+      "v86_rc2_dshb_script_self_inspect_report.md",
+      "v86_rc2_dshb_bridge_snapshot_for_dshe.json"
+    ]
+  },
+
+  "registration": {
+    "registration_id": "DEP-REG-001",
+    "registration_timestamp": "2026-10-15T08:00:00+08:00",
+    "registration_lifecycle": {
+      "created_at": "2026-10-15T08:00:00+08:00",
+      "initial_registration_date": "2026-10-01",
+      "first_detected_at": "2026-10-08T10:00:00+08:00",
+      "status_history": [
+        {
+          "timestamp": "2026-10-01T00:00:00+08:00",
+          "from_status": null,
+          "to_status": "ACTIVE",
+          "event": "DEP初始登记",
+          "operator": "DSHE",
+          "notes": "初始登记，DEP-001短ID解析能力缺失"
+        },
+        {
+          "timestamp": "2026-10-08T10:00:00+08:00",
+          "from_status": "ACTIVE",
+          "to_status": "BLOCKED",
+          "event": "DEP阻塞确认",
+          "operator": "zhiji API",
+          "notes": "外部API异常，HTTP 500/permission_state=-4"
+        },
+        {
+          "timestamp": "2026-10-15T08:00:00+08:00",
+          "from_status": "BLOCKED",
+          "to_status": "BLOCKED",
+          "event": "DEP台账正式创建",
+          "operator": "DSHB",
+          "notes": "DEP-REG-001台账创建，对齐三方共用规范"
+        }
+      ]
+    },
+    "status_machine": {
+      "valid_transitions": [
+        "ACTIVE→BLOCKED", "BLOCKED→IN_PROGRESS", "IN_PROGRESS→PARTIAL",
+        "PARTIAL→RESOLVED", "RESOLVED→VERIFIED", "VERIFIED→CLOSED",
+        "BLOCKED→ASSIGNED", "ASSIGNED→IN_PROGRESS"
+      ],
+      "current_state": "BLOCKED",
+      "allowed_transitions_from_current": ["BLOCKED→ASSIGNED", "BLOCKED→IN_PROGRESS"]
+    }
+  },
+
+  "change_log": [
+    {
+      "seq": 1,
+      "timestamp": "2026-10-01T00:00:00+08:00",
+      "event_type": "CREATION",
+      "event": "DEP登记",
+      "operator": "DSHE",
+      "status_before": null,
+      "status_after": "ACTIVE",
+      "field_changes": {
+        "dep_id": {"from": null, "to": "DEP-001"},
+        "dep_name": {"from": null, "to": "zhiji数据平台短ID前缀解析能力"},
+        "dep_owner": {"from": null, "to": "zhiji数据平台(commodity_api)"},
+        "risk_level": {"from": null, "to": "P0"},
+        "status": {"from": null, "to": "ACTIVE"}
+      },
+      "notes": "初始登记",
+      "related_tickets": [],
+      "evidence_files": []
+    },
+    {
+      "seq": 2,
+      "timestamp": "2026-10-08T10:00:00+08:00",
+      "event_type": "STATUS_CHANGE",
+      "event": "DEP阻塞确认",
+      "operator": "zhiji API",
+      "status_before": "ACTIVE",
+      "status_after": "BLOCKED",
+      "field_changes": {
+        "status": {"from": "ACTIVE", "to": "BLOCKED"},
+        "error_detail": {"from": null, "to": "HTTP 500/permission_state=-4"}
+      },
+      "notes": "外部API异常，短ID解析能力缺失",
+      "related_tickets": [],
+      "evidence_files": [
+        "v86_rc2_hermes_shortid_recheck_report.md",
+        "v86_rc2_dshb_script_self_inspect_report.md"
+      ]
+    },
+    {
+      "seq": 3,
+      "timestamp": "2026-10-15T08:00:00+08:00",
+      "event_type": "REGISTRY_CREATION",
+      "event": "DEP台账正式创建 (DEP-REG-001)",
+      "operator": "DSHB",
+      "status_before": "BLOCKED",
+      "status_after": "BLOCKED",
+      "field_changes": {
+        "registration_id": {"from": null, "to": "DEP-REG-001"},
+        "change_log_format": {"from": null, "to": "structured_15_field"},
+        "evidence_index": {"from": null, "to": "enabled"}
+      },
+      "notes": "对齐三方DEP共用规范，补齐GAP-001/002/003/005",
+      "related_tickets": ["DSHB-DP-REQ-20261015-001"],
+      "evidence_files": [
+        "dshb_dep_registry_dep-reg-001.json",
+        "v86_rc2_dshb_dep_gap_sync_log.md"
+      ]
+    }
+  ],
+
+  "change_log_schema": {
+    "field_count": 15,
+    "fields": [
+      "seq", "timestamp", "event_type", "event", "operator",
+      "status_before", "status_after", "field_changes.dep_id",
+      "field_changes.dep_name", "field_changes.dep_owner",
+      "field_changes.risk_level", "field_changes.status",
+      "notes", "related_tickets", "evidence_files"
+    ]
+  },
+
+  "independent_call_chain_evidence": {
+    "evidence_directory": "dshb_dep_registry_dep-reg-001/.evidence/",
+    "evidence_index": {
+      "enabled": true,
+      "evidence_items": [
+        {
+          "evidence_id": "EVID-001",
+          "type": "API_RESPONSE",
+          "source": "zhiji API /series?id=j25_tc",
+          "timestamp": "2026-10-15T00:00:00+08:00",
+          "status_code": 500,
+          "error_message": "无法识别指标来源(id前缀): j25_tc",
+          "trace_id": "DSHB-PROBE-20261015-001",
+          "file_path": ".evidence/probe_j25_tc.json",
+          "description": "短ID j25_tc 探测失败 — HTTP 500"
+        },
+        {
+          "evidence_id": "EVID-002",
+          "type": "API_RESPONSE",
+          "source": "zhiji API /series?id=i1",
+          "timestamp": "2026-10-15T00:00:00+08:00",
+          "status_code": 200,
+          "error_message": "permission_state=-4",
+          "trace_id": "DSHB-PROBE-20261015-002",
+          "file_path": ".evidence/probe_i1.json",
+          "description": "短ID i1 探测失败 — permission_state=-4"
+        },
+        {
+          "evidence_id": "EVID-003",
+          "type": "API_RESPONSE",
+          "source": "zhiji API /series?id=i3",
+          "timestamp": "2026-10-15T00:00:00+08:00",
+          "status_code": 200,
+          "error_message": "permission_state=-4",
+          "trace_id": "DSHB-PROBE-20261015-003",
+          "file_path": ".evidence/probe_i3.json",
+          "description": "短ID i3 探测失败 — permission_state=-4"
+        },
+        {
+          "evidence_id": "EVID-004",
+          "type": "CONTROL_RESPONSE",
+          "source": "zhiji API /series?id=ID02226332",
+          "timestamp": "2026-10-15T00:00:00+08:00",
+          "status_code": 200,
+          "error_message": null,
+          "has_nonzero_value": true,
+          "trace_id": "DSHB-PROBE-20261015-004",
+          "file_path": ".evidence/probe_ID02226332.json",
+          "description": "对照组长ID探测成功 — HTTP 200, 数据非空"
+        }
+      ]
+    },
+    "evidence_contract": {
+      "format": "JSON",
+      "encoding": "UTF-8",
+      "required_fields": ["evidence_id", "type", "source", "timestamp", "status_code", "trace_id", "file_path"],
+      "retention_policy": "永久保留，不可删除",
+      "integrity": "MD5 checksum per file"
+    }
+  },
+
+  "parameters": {
+    "max_pause_days": 30,
+    "max_pause_days_source": "三方共用规范 V2 对齐确认",
+    "max_pause_days_rationale": "超过30天未就绪自动升级为P0_ESCALATION，触发替代方案评估",
+    "rollback_window_minutes": 15,
+    "rollback_window_minutes_source": "三方共用规范 V2 对齐确认",
+    "rollback_window_minutes_rationale": "15分钟内完成回滚决策，超时自动降级",
+    "max_pause_days_confirmed_at": "2026-10-16T08:00:00+08:00",
+    "rollback_window_confirmed_at": "2026-10-16T08:00:00+08:00"
+  },
+
+  "gap_closure": {
+    "DEP-GAP-001": {
+      "status": "CLOSED",
+      "closed_at": "2026-10-16T08:00:00+08:00",
+      "closure_detail": "DEP-REG-001登记ID已创建，唯一标识建立",
+      "evidence": "dshb_dep_registry_dep-reg-001.json"
+    },
+    "DEP-GAP-002": {
+      "status": "CLOSED",
+      "closed_at": "2026-10-16T08:00:00+08:00",
+      "closure_detail": "全生命周期ISO8601登记时间戳已记录，含初始登记/阻塞/台账创建3个节点",
+      "evidence": "dshb_dep_registry_dep-reg-001.json → registration_lifecycle"
+    },
+    "DEP-GAP-003": {
+      "status": "CLOSED",
+      "closed_at": "2026-10-16T08:00:00+08:00",
+      "closure_detail": "15字段结构化变更日志已建立，3条变更记录已写入",
+      "evidence": "dshb_dep_registry_dep-reg-001.json → change_log"
+    },
+    "DEP-GAP-004": {
+      "status": "CONFIRMED",
+      "confirmed_at": "2026-10-16T08:00:00+08:00",
+      "confirmation_detail": "最大暂停时长30天已确认，写入parameters字段",
+      "evidence": "dshb_dep_registry_dep-reg-001.json → parameters.max_pause_days"
+    },
+    "DEP-GAP-005": {
+      "status": "CLOSED",
+      "closed_at": "2026-10-16T08:00:00+08:00",
+      "closure_detail": "独立调用链证据存储目录已预留，4条证据索引已建立",
+      "evidence": "dshb_dep_registry_dep-reg-001.json → independent_call_chain_evidence"
+    },
+    "DEP-GAP-006": {
+      "status": "CONFIRMED",
+      "confirmed_at": "2026-10-16T08:00:00+08:00",
+      "confirmation_detail": "回滚时间窗口15分钟已确认，写入parameters字段",
+      "evidence": "dshb_dep_registry_dep-reg-001.json → parameters.rollback_window_minutes"
+    }
+  },
+
+  "cross_team_alignment": {
+    "aligned_with": {
+      "DSHE": "v86_rc2_dep_registry_common_spec.md (三方共用规范)",
+      "HERMES": "v86_rc2_hermes_external_dependency_management_spec.md (外部依赖管理规范)",
+      "DSHB": "v86_rc2_dshb_dep_gap_sync_log.md (DSHB侧GAP同步日志)"
+    },
+    "field_mapping": {
+      "registry_id": "与DSHE共用规范 DEP-REG-001 编号对齐",
+      "15_field_change_log": "与DSHE共用规范 15字段变更日志模板对齐",
+      "status_machine_6_states": "与DSHE共用规范 6状态状态机对齐 (ACTIVE/BLOCKED/IN_PROGRESS/PARTIAL/RESOLVED/CLOSED)",
+      "max_pause_days": "与DSHE共用规范 30天暂停时长对齐",
+      "rollback_window_minutes": "与DSHE共用规范 15min回滚窗口对齐",
+      "independent_call_chain_evidence": "与HERMES外部依赖管理规范 §3 证据链要求对齐"
+    }
+  },
+
+  "integrity": {
+    "schema_version": "1.0",
+    "spec_version": "三方共用规范V2",
+    "generated_by": "DSHB",
+    "generated_at": "2026-10-16T08:00:00+08:00",
+    "md5": "TO_BE_COMPUTED",
+    "constraints": {
+      "NO_ZHIJI_API_CALL": false,
+      "NO_MODIFY_V85": true,
+      "NO_OVERWRITE": true,
+      "BRANCH_LOCKED": true
+    }
+  }
+}

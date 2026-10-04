@@ -54,7 +54,7 @@ DSHE校验优化工单完成后，DSHE具备双维度校验能力（展示层+�
 | 生成时间 | 2026-10-13T16:00:00+08:00 |
 | 源表版本 | V2-FULL (commit `f744ac2`) |
 | 总条目数 | 178 |
-| COMPLETED | 178 (100%) |
+| COMPLETED | 178 (100%) | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | PENDING | 0 |
 | 回填字段 | 19 (不计入178) |
 | 数据文件 | `v86_rc2_dshb_bridge_snapshot_for_dshe.json` |

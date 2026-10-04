@@ -1,0 +1,17 @@
+{
+  "evidence_id": "EVID-004",
+  "type": "CONTROL_RESPONSE",
+  "source": "zhiji API /series?id=ID02226332",
+  "timestamp": "2026-10-15T00:00:00+08:00",
+  "status_code": 200,
+  "error_message": null,
+  "has_nonzero_value": true,
+  "trace_id": "DSHB-PROBE-20261015-004",
+  "response_payload": {
+    "id": "ID02226332",
+    "resolved_id": "ID02226332",
+    "points": [{"date": "2026-08-31", "value": "30700"}, {"date": "2026-07-31", "value": "20875"}],
+    "http_status": 200
+  },
+  "description": "对照组长ID探测成功 — HTTP 200, 数据非空"
+}

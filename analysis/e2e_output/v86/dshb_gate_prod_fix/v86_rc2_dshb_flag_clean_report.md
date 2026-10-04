@@ -71,7 +71,7 @@ FLAG文件编码: UTF-8 (无BOM)
 
 | 变量 | 行号 | 值 | 问题 |
 |------|------|-----|------|
-| `T3.2_EFFECTIVE_BRIDGE_RATE` | 4143 | `100.0%` | ❌ 旧口径，未标注 |
+| `T3.2_EFFECTIVE_BRIDGE_RATE` | 4143 | `100.0%` | ❌ 旧口径，未标注 | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | `T3.5_EFFECTIVE_BRIDGE_RATE` | 4200 | `100.0% (178/178)` | ❌ 旧口径，未标注 |
 | `T3_BRIDGE_V2_FULL_RATE` | 4217 | `100%` | ❌ 旧口径，未标注 |
 | `DSHB_PROD_PHASE_ID_MAPPING_FULL_RATE` | 4247 | `100.0%` | ❌ 旧口径，未标注 |

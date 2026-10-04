@@ -295,7 +295,7 @@ FAIL项: 0
 | 2 | 日志伪造 | short_id标签+long_id查询 | 日志格式重构 | v3.0 | ✅ CLOSED |
 | 3 | 桥接表口径错误 | PENDING计入100% | COMPLETED/PENDING分离 | V2 | ✅ CLOSED |
 | 4 | ID伪造 | 伪造short_id/long_id | 双字段记录 | V2修正 | ✅ CLOSED |
-| 5 | 100%桥接率声明 | 元数据冒充有效桥接率 | 双维度独立统计 | V3复测 | ✅ CLOSED |
+| 5 | 100%桥接率声明 | 元数据冒充有效桥接率 | 双维度独立统计 | V3复测 | ✅ CLOSED | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | 6 | FLAG旧口径残留 | BRIDGE_RATE=100% | 标记INCORRECT+新口径 | T3.1本次 | ✅ CLOSED |
 
 ### 5.3 当前活跃风险项

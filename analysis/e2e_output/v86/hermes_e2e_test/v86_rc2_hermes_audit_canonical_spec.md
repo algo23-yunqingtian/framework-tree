@@ -15,7 +15,7 @@
 V86-RC2 二次审计（`v86_rc2_hermes_shortid_recheck_report.md`）以独立实测证实：
 DSHB `short_id_reverify.py` **从未将 short_id 传入 series API**（search 关键词绕道），
 `id_mapping_full_script.py` 以"有搜索匹配结果 = COMPLETED"判定完成，
-导致"60/60 PASS / 100% 桥接率"全部建立在虚假测试之上。
+导致"60/60 PASS / 100% 桥接率"全部建立在虚假测试之上。 [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 
 DSHB 自检报告（`v86_rc2_dshb_script_self_inspect_report.md`）已确认：
 > 真实可取数桥接率 = **0/178 (0%)**；170 项伪造ID（s_xxx/ID_XXX）不存在于 zhiji；长ID 8/8 取数但数据全部错配。

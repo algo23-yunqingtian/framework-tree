@@ -266,7 +266,7 @@ DSHB复用: ❌ FALSE (独立调用链路)
 | 数据延迟 | {MAX_DELAY}s | {PASS/FAIL} | 300s |
 | 跨链路一致性 | {CONSISTENCY_RATE}% | {PASS/FAIL} | 100% |
 | 元数据完成率 | {METADATA_COMPLETION_RATE}% | {PASS/FAIL} | ≥95% |
-| 真实有效桥接率 | {EFFECTIVE_BRIDGE_RATE}% | {PASS/FAIL} | 100% (恢复) |
+| 真实有效桥接率 | {EFFECTIVE_BRIDGE_RATE}% | {PASS/FAIL} | 100% (恢复) | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | DSHB复用 | {DSHB_REUSE} | {PASS/FAIL} | FALSE |
 
 #### 综合结论

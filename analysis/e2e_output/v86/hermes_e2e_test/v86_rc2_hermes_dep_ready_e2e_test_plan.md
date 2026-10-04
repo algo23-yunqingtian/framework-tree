@@ -58,7 +58,7 @@
 |------|------|---------|
 | S1→S2 | 冒烟 10 条全 HTTP 200 且 value≠0 | 停止，回滚至 DEP 未就绪态，通知数据平台 |
 | S2→S3 | `evidence_auditor.py --file l2_package.json` 输出 `verdict=PASS` | 停止，退回 DSHE 重做独立调用 |
-| S3→Gate | G01~G10 全 PASS 且有效桥接率 = 100% | 停止，Gate 维持 NOT_READY |
+| S3→Gate | G01~G10 全 PASS 且有效桥接率 = 100% | 停止，Gate 维持 NOT_READY | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 
 ---
 

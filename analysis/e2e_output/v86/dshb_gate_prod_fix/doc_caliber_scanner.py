@@ -17,6 +17,7 @@ DSHB V86-RC2 文档口径常态化巡检脚本
 import os, sys, re, json
 from pathlib import Path
 from datetime import datetime
+from copy import deepcopy
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 sys.stderr.reconfigure(encoding='utf-8', errors='replace')

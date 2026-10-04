@@ -116,7 +116,7 @@ if series_id and (match_score >= 6 or name_matches_query(...)):
 | 数据点>0 = PASS | 数据点>0 + **查询ID为真实可用ID** = PASS |
 | computed方法 = COMPLETED (无验证) | computed方法 = **需下游指标均COMPLETED** |
 
-### 3.5 100%桥接率的真实性
+### 3.5 100%桥接率的真实性 [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 
 | 指标 | 自报值 | 真实值 |
 |------|-------|-------|

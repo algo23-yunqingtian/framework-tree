@@ -123,7 +123,7 @@
 | 字段 | 内容 |
 |------|------|
 | **用例ID** | CASE-N01 |
-| **场景描述** | 复刻 git 提交 `86c1f6e` 形态：170 条桥接表填 ID 即标 COMPLETED，桥接率表述为"100%" |
+| **场景描述** | 复刻 git 提交 `86c1f6e` 形态：170 条桥接表填 ID 即标 COMPLETED，桥接率表述为"100%" | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | **input_payload** | `completed=170/170`，`bridge_rate="100%"`，`metadata_rate=1.0`，`real_fetchable_rate=0.0`，无原始 payload，脚本入参为 `search关键词→取长ID→查长ID` |
 | **expected_result** | **L1 即被阻断**，不进入 L2；Gate NOT_READY |
 | **audit_intercept_point** | D01.2（缺取数证据）→ R-AUDIT-01；D01.3（填ID即COMPLETED）→ 阻断；D02.1（元数据率冒充）→ R-AUDIT-02；D02.3（分子虚增）→ 阻断；D04.1（search 中转）→ G-09 FAIL；D04.2（无一致性断言）→ G-09 FAIL；D04.4（无 payload）→ G-09 FAIL |

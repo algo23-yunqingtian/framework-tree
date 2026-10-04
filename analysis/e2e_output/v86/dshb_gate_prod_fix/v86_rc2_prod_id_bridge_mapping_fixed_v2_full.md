@@ -4,7 +4,7 @@
 > **分支**: `feature/v85-chart-template` (BRANCH_LOCKED=TRUE)
 > **执行日期**: 2026-10-13
 > **基线**: V2初版 (COMPLETED=8, PENDING=170, 有效桥接率=4.49%)
-> **本次更新**: 9批次全量映射完成, COMPLETED=178, PENDING=0, 有效桥接率=100%
+> **本次更新**: 9批次全量映射完成, COMPLETED=178, PENDING=0, 有效桥接率=100% [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 > **约束**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE
 > **版本迭代**: V1(Stage3) → V2初版 → V2全量版 (本版)
 > **文档状态**: FINAL — 全量映射完成, 178/178 COMPLETED, 有效桥接率=100%

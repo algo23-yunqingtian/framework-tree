@@ -49,7 +49,7 @@ L1 DSHB自测(原始payload) → L2 DSHE独立抽样 → L3 HERMES预审 → Gat
 | 级 | 阻断情形 |
 |----|---------|
 | L1 | 脚本含 search 中转/自动替换 ID；无原始 payload；requested_id≠resolved_id 未处理；全 0 计 PASS；短ID 直连取数 < 通过率要求 |
-| L2 | L1 未过→拒绝接单；COMPLETED 条目抽样通过率 <100%；**背书式引用（转述 DSHB 自报数字、无独立调用）**；未按 COMPLETED/PENDING 分级 |
+| L2 | L1 未过→拒绝接单；COMPLETED 条目抽样通过率 <100%；**背书式引用（转述 DSHB 自报数字、无独立调用）**；未按 COMPLETED/PENDING 分级 | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | L3 | 脚本源码存在造假模式；实测与自测矛盾（如自测 100% vs 实测 0%）；COMPLETED 条目实测取数失败；L2 背书式引用 |
 | Gate | 必备项 G-01/G-02/G-09/G-10 任一 FAIL → 不通过（不可加权） |
 

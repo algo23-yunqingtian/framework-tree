@@ -144,7 +144,7 @@ DSHE `metric_def_unify_record.md` 自认三类冲突已闭环（CRIT-01 命名�
 
 | 核验项 | 结果 | 依据 |
 |--------|:---:|------|
-| COMPLETED/PENDING 状态分离 | ✅ PASS | 口径从 100% 诚实修正至 4.06%，PENDING 不再计入 |
+| COMPLETED/PENDING 状态分离 | ✅ PASS | 口径从 100% 诚实修正至 4.06%，PENDING 不再计入 | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | 回填字段独立统计 | ✅ PASS | 不占指标映射率 |
 | **文档日期真实性** | ❌ **FAIL (P0)** | 执行日期 2026-10-12 晚于提交/工单 7 天 |
 | **真实有效映射率** | ❌ **FAIL** | 自报 4.06%，实测 **0/178 = 0%**（8 条 COMPLETED 全部不可取数） |

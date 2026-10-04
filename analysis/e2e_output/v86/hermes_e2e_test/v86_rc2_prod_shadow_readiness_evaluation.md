@@ -190,6 +190,6 @@ DSHE Stage2 紧急交付声明：
 
 | 步骤 | 动作 | 负责 | 预期效果 |
 |------|------|------|---------|
-| 8 | DSHB填充190项全部PENDING | DSHB | 桥接率→100% |
+| 8 | DSHB填充190项全部PENDING | DSHB | 桥接率→100% | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | 9 | 影子测试启动 | 联合 | 覆盖率→≥80% |
 | 10 | 灰度Gate复审 | HERMES | 准入评估 |

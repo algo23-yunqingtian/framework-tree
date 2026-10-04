@@ -170,7 +170,7 @@ python3 evidence_auditor.py --run-case-library --persist out.json  # 事件持�
 
 | 缺陷 | 现象 | 根因 | 修复 |
 |------|------|------|------|
-| G-06 阈值不阻断 | DEP 阻塞场景判成 CONDITIONAL/PASS | G-06 桥接率 < 100% 只记录未产生 CRITICAL | 阈值未达 → emit CRITICAL，强制 FAIL |
+| G-06 阈值不阻断 | DEP 阻塞场景判成 CONDITIONAL/PASS | G-06 桥接率 < 100% 只记录未产生 CRITICAL | 阈值未达 → emit CRITICAL，强制 FAIL | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | gate_result 弱绑定 | PASS 但桥接率不足也判 READY | `gate_g06` 与 `verdict` 独立判定 | 统一为 `verdict==PASS` 才 READY |
 | DEP 状态机用例预期错 | CASE-P03 判 PASS 但预期 CONDITIONAL | 用例把流程元数据当审计维度 | 修正预期为 FAIL（DEP 状态不改变证据判定，但 Gate 不豁免） |
 

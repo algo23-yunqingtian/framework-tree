@@ -208,7 +208,7 @@
 |---|----------|-------------|-----------------|-------------|----------|
 | 1 | 工业硅静态数据 | L2降级持续, 3.28s首慢 | 底层为静态缓存, 无动态数据 | DSHB_SI_DATA_TYPE=STATIC | DSHB_SI_DATA_TYPE=STATIC 且 DSHB_SI_DEGRADE=L2 |
 | 2 | 7张降级图表 | 全部正确标记降级 | 底层降级策略执行正确 | DSHB_DEGRADE_COUNT=7 | DSHB_DEGRADE_COUNT=7 且 DSHB_DEGRADE_LAYERS正确 |
-| 3 | 冷启动22.74s | 一次性, 已预热 | 底层别名引擎预热完成 | DSHB_WARMUP_COMPLETED=TRUE | DSHB_WARMUP_COMPLETED=TRUE 且 DSHB_CACHE_HIT=100% |
+| 3 | 冷启动22.74s | 一次性, 已预热 | 底层别名引擎预热完成 | DSHB_WARMUP_COMPLETED=TRUE | DSHB_WARMUP_COMPLETED=TRUE 且 DSHB_CACHE_HIT=100% | [OLD_CALIBER - METADATA_ONLY, HERMES_INVALID]
 | 4 | 27%监控缺口 | 13项未接入, 持续存在 | 底层监控覆盖73% | DSHB_MONITORING_COVERAGE=73% | DSHB_MONITORING_COVERAGE=73% 且 DSHB_MONITORING_GAPS=13 |
 | 5 | 10缺失指标 | 全部标注降级 | 底层10项指标无数据源 | DSHB_MISSING_METRICS=10 | DSHB_MISSING_METRICS=10 且 DSHB_DEGRADE_ACTIVE=TRUE |
 | 6 | 34条tail_ambig | 全部降级提示 | 底层F2层歧义自动降级 | DSHB_AMBIG_COUNT=34 | DSHB_AMBIG_COUNT=34 且 DSHB_AMBIG_DEGRADE=TRUE |
