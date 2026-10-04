@@ -1315,3 +1315,20 @@
 - 约束合规: NO_OVERWRITE=TRUE(V4原文保留仅追加), BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
 - DSHB_PROD_PHASE_DEP_REGISTRY_FULL_DONE=TRUE
 - 状态标记: DSHB_PROD_PHASE_DEP_REGISTRY_FULL_DONE=TRUE
+
+### 2026-10-16 DSHB_V86_RC2_GATE_FUSE_VERIFY
+- Gate准入全场景回归+DEP异常熔断演练+V4风险台账二次复核+L1证据包优化+Dryrun V4 (6 deliverables, MD5 all verified)
+  - v86_rc2_dshb_gate_full_regression_report.md — Gate准入全场景回归报告(8大类场景, dryrun模拟执行8/8 PASS, 审计器7类规则100%覆盖)
+  - v86_rc2_dshb_dep_fuse_dryrun_report.md — DEP异常熔断dryrun演练报告(3故障场景, 44/44验证项PASS, 熔断恢复逻辑验证通过)
+  - v86_rc2_dshb_risk_re_evaluate_v4_review.md — V4风险台账二次复核报告(36项复核, 23 DRYRUN_VERIFIED + 13 WAIT_REAL_ENV_VERIFY, 新增R-DEP-07 P0前置阻塞)
+  - l1_evidence_pre_check.py — L1证据包前置自检脚本(对齐EVIDENCE_CONTRACT_V1, 12项契约校验, MD5完整性检查)
+  - gate_pre_check_auto_v3.py — Gate预检查V3(L1证据包升级为EVIDENCE_CONTRACT_V1, short_id字段命名统一, dep_registry_id映射DEP-REG-001)
+  - dryrun_e2e_test_v4.py — E2E测试V4(30项测试L1~L30, 用例隔离机制, 审计日志输出, 19V2+8Gate回归+3DEP熔断=30项)
+- Gate回归: 8大类场景验证(正常/DEP阻塞/部分恢复/旧口径造假/跨团队DEP不一致/审计器异常/DEP伪造/退回作废), 判定逻辑无回归
+- DEP熔断: 3故障场景(一次性中断/间断抖动/部分恢复后再次阻塞), 44/44验证项PASS, 熔断-告警-快照-恢复全链路验证通过
+- 风险台账: 36项复核完成, 23项DRYRUN_VERIFIED + 13项WAIT_REAL_ENV_VERIFY, 新增R-DEP-07(P0/DEP_BLOCK/BLOCKED)
+- L1证据包: 对齐EVIDENCE_CONTRACT_V1全部字段规范, short_id字段命名统一, l1_evidence_pre_check.py前置自检落地
+- dry-run V4: 30/30 PASS (V2回归16 + V3审计3 + V4 Gate回归8 + V4 DEP熔断3), 用例隔离机制确保单例失败不中断
+- 约束合规: NO_OVERWRITE=TRUE(所有历史文件保留仅新增), BRANCH_LOCKED=TRUE, NO_MODIFY_V85=TRUE, NO_ZHIJI_API_CALL=FALSE
+- DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE
+- 状态标记: DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE

@@ -5549,3 +5549,90 @@ BRANCH_LOCKED=TRUE
 # --- Final Status ---
 DSHB_PROD_PHASE_DEP_REGISTRY_FULL_DONE=TRUE
 TASK_COMPLETED=TRUE ([DOC] DSHB V86-RC2 DEP Registry Full: DEP-REG-001 + Gate Audit Integration + Full Caliber Audit + Dryrun V3 + Risk V4: 11 new deliverables, 19/19 dryrun PASS, 6/6 GAP closed, DSHB_PROD_PHASE_DEP_REGISTRY_FULL_DONE=TRUE)
+
+# ============================================================================
+# DSHB_V86_RC2_GATE_FUSE_VERIFY - Gate准入全场景回归 + DEP异常熔断演练 + V4风险台账二次复核 + L1证据包优化 + Dryrun V4
+# Branch: feature/v85-chart-template (BRANCH_LOCKED=TRUE)
+# Date: 2026-10-16
+# ============================================================================
+
+# --- Subtask Summary ---
+T3.1_GATE_FULL_REGRESSION=COMPLETE (8 scenarios, dryrun 8/8 PASS, 7 audit rule categories 100% coverage)
+T3.2_DEP_FUSE_DRYRUN=COMPLETE (3 fault scenarios, 44/44 verification items PASS, fuse-recovery chain verified)
+T3.3_RISK_V4_REVIEW=COMPLETE (36 items reviewed, 23 DRYRUN_VERIFIED + 13 WAIT_REAL_ENV_VERIFY, R-DEP-07 added)
+T3.4_L1_EVIDENCE_PRECHECK=COMPLETE (l1_evidence_pre_check.py, EVIDENCE_CONTRACT_V1 aligned, gate_pre_check_auto_v3.py)
+T3.5_DRYRUN_V4=COMPLETE (30 tests L1-L30, case isolation, audit log, 30/30 PASS)
+
+# --- Gate Full Regression (T3.1) ---
+GATE_REGRESSION_REPORT=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_gate_full_regression_report.md
+GATE_REGRESSION_REPORT_MD5=B10D734429589B1B4D18913EA7253137
+GATE_REGRESSION_REPORT_SIZE=52055
+GATE_REGRESSION_SCENARIOS=8 (REG-01 normal, REG-02 DEP block, REG-03 partial recovery, REG-04 forged caliber, REG-05 cross-team mismatch, REG-06 auditor unavailable, REG-07 DEP forgery, REG-08 retired evidence)
+GATE_REGRESSION_PASS=8/8 (100%)
+GATE_REGRESSION_AUDIT_RULES=7 (dual_evidence, trace_fingerprint, bridge_rate, script_audit, data_fetch, dep_classification, retire_flag)
+GATE_REGRESSION_RULE_COVERAGE=100%
+GATE_REGRESSION_REG06_DESIGN_GAP=auditor_unavailable_G06A_ERROR_no_gate_block
+
+# --- DEP Fuse Dryrun (T3.2) ---
+DEP_FUSE_REPORT=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_dep_fuse_dryrun_report.md
+DEP_FUSE_REPORT_MD5=F0F155DCFDA579E7D87F7F4279386BE8
+DEP_FUSE_REPORT_SIZE=54336
+DEP_FUSE_SCENARIOS=3 (Scenario A one-time outage, Scenario B intermittent jitter, Scenario C partial recovery then re-block)
+DEP_FUSE_VERIFICATION_ITEMS=44
+DEP_FUSE_VERIFICATION_PASS=44/44 (100%)
+DEP_FUSE_RECOVERY_CHAIN=DEP recovery -> probe READY -> auto retest -> data_fetchable>=80% -> Gate READY -> CRITICAL clear
+
+# --- Risk V4 Review (T3.3) ---
+RISK_V4_REVIEW_REPORT=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_risk_re_evaluate_v4_review.md
+RISK_V4_REVIEW_REPORT_MD5=1C989686557E4AB34667657C57486061
+RISK_V4_REVIEW_REPORT_SIZE=26239
+RISK_V4_REVIEW_TOTAL_ITEMS=36 (29 V4 main + 6 section 11 GAP + 1 new R-DEP-07)
+RISK_V4_REVIEW_DRYRUN_VERIFIED=23
+RISK_V4_REVIEW_WAIT_REAL_ENV=13
+RISK_V4_NEW_ITEM=R-DEP-07 (P0/DEP_BLOCK/BLOCKED, DEP-001 HTTP 500 root cause)
+RISK_V4_GATE_STATUS=NOT_READY (unchanged, data_fetchable=0%, R-DEP-07 is sole P0 prerequisite blocker)
+
+# --- L1 Evidence Pre-check (T3.4) ---
+L1_EVIDENCE_PRECHECK=TRUE
+L1_EVIDENCE_PRECHECK_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/l1_evidence_pre_check.py
+L1_EVIDENCE_PRECHECK_MD5=2783A77C5DE08B99CAB2DE23D945B13B
+L1_EVIDENCE_PRECHECK_SIZE=36598
+L1_EVIDENCE_PRECHECK_CONTRACT=EVIDENCE_CONTRACT_V1
+L1_EVIDENCE_PRECHECK_CHECKS=12 (contract version, DEP registry ID, audit fingerprint, MD5 integrity, field validation, short_id naming, call_type, dshb_reuse, trace_id uniqueness, response_payload structure)
+GATE_PRE_CHECK_V3=TRUE
+GATE_PRE_CHECK_V3_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/gate_pre_check_auto_v3.py
+GATE_PRE_CHECK_V3_MD5=25EF7102489A3A903DCD5E36A2D5D47B
+GATE_PRE_CHECK_V3_SIZE=51396
+GATE_PRE_CHECK_V3_CHANGES=EVIDENCE_CONTRACT_V1 aligned, short_id field naming unified, dep_registry_id mapped to DEP-REG-001, contract_version field added
+
+# --- Dryrun E2E V4 (T3.5) ---
+DRYRUN_V4_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/dryrun_e2e_test_v4.py
+DRYRUN_V4_MD5=74052EB510410D8B9C0985FC0E8642D9
+DRYRUN_V4_SIZE=54664
+DRYRUN_V4_TOTAL_TESTS=30 (L1-L16 V2 regression + L17-L19 V3 audit + L20-L27 Gate regression + L28-L30 DEP fuse)
+DRYRUN_V4_PASS=30
+DRYRUN_V4_FAIL=0
+DRYRUN_V4_PASS_RATE=100%
+DRYRUN_V4_CASE_ISOLATION=TRUE (single failure never kills suite)
+DRYRUN_V4_AUDIT_LOG=_dryrun_sandbox/dryrun_v4_audit_log.json
+DRYRUN_V4_GATE_REGRESSION_TESTS=8 (L20-L27)
+DRYRUN_V4_DEP_FUSE_TESTS=3 (L28-L30)
+DRYRUN_V4_REAL_API_CALLS=0
+
+# --- Total Files New ---
+TOTAL_FILES_NEW=6 (gate_regression_report + dep_fuse_report + risk_v4_review + l1_precheck + gate_v3 + dryrun_v4)
+
+# --- Git ---
+COMMIT_HASH_GATE_FUSE_VERIFY=PENDING
+BRANCH=feature/v85-chart-template
+REMOTE=origin
+
+# --- Constraints ---
+NO_ZHIJI_API_CALL=FALSE (PROD_PHASE_ENABLED)
+NO_MODIFY_V85=TRUE
+NO_OVERWRITE=TRUE (all historical files preserved, new versions created)
+BRANCH_LOCKED=TRUE
+
+# --- Final Status ---
+DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE
+TASK_COMPLETED=TRUE ([DOC] DSHB V86-RC2 Gate Fuse Verify: 8-scenario Gate regression + DEP fuse dryrun + V4 risk review + L1 evidence pre-check + Dryrun V4: 6 deliverables, 30/30 dryrun PASS, DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE)
