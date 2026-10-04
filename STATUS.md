@@ -1332,3 +1332,22 @@
 - 约束合规: NO_OVERWRITE=TRUE(所有历史文件保留仅新增), BRANCH_LOCKED=TRUE, NO_MODIFY_V85=TRUE, NO_ZHIJI_API_CALL=FALSE
 - DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE
 - 状态标记: DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE
+
+### 2026-10-17 DSHB_V86_RC2_GATE_REG06_FIX_E2E
+- REG-06审计器安全缺口修复+Gate V4升级(v2_plus集成)+三方联合E2E仿真+R-DEP闭环评审+L1预检V2 (7 deliverables, MD5 all verified)
+  - gate_pre_check_auto_v4.py (MD5: 868480CF10545BB8580148E2EA76851E) — Gate预检查V4(REG-06修复:ERROR→FAIL→NOT_READY, 紧急旁路开关, PERF-GUARD/ROB-01/DS-06集成)
+  - v86_rc2_dshb_gate_audit_v2plus_integrate.md (MD5: 5B3F8E57B2A11EC5020CFE4D3F1E159A) — Gate接入v2_plus审计规则集成报告(PERF-GUARD/ROB-01/DS-06检测逻辑+判定矩阵+兼容性分析)
+  - v86_rc2_dshb_reg06_gap_fix_report.md (MD5: F6602828E77327218C690367A3515425) — REG-06缺口修复报告(根因分析+Before/After对比+旁路开关设计+REG-06.1/06.2子用例验证)
+  - dryrun_e2e_test_v5.py (MD5: EC9FADFC97AD1EA3E2C9AFE05CC2CBC9) — E2E测试V5(40项测试L1~L40, REG-06修复L31-L32, HERMES v2_plus L33-L35, 三方链E2E L36-L40)
+  - v86_rc2_dshb_tripartite_dryrun_e2e_report.md (MD5: 2A86641192700DA716646164701EFF47) — 三方联合E2E dryrun仿真报告(L1→Gate→HERMES→DSHE全链路, 20章节, 40用例全部PASS)
+  - v86_rc2_dshb_risk_re_evaluate_v4_review_v2.md (MD5: F2DC1C2CDC0E3E5E91377A1216497132) — R-DEP风险台账闭环评审V2(REG-06标记CLOSED, R-DEP-07保留P0阻塞, 37项复核)
+  - l1_evidence_pre_check_v2.py (MD5: 37FF13C694D2435D7558CD35C74E3ABD) — L1前置校验V2(27项校验+7新增自检用例, PERF-GUARD/ROB-01/DS-06对齐v2_plus)
+- REG-06修复: 审计器ERROR→FAIL→NOT_READY(P0阻断), 紧急旁路开关(双人审批指纹+变更日志), REG-06.1/06.2子用例全部PASS
+- Gate V4: 集成v2_plus审计规则(PERF-GUARD性能守卫/ROB-01损坏包容错/DS-06 DEP抖动检测), 存量8个Gate场景回归无退化
+- dryrun V5: 40/40 PASS (V2回归16 + V3审计3 + V4 Gate回归8 + V4 DEP熔断3 + REG-06修复2 + HERMES v2_plus 3 + 三方链E2E 5)
+- 三方链E2E: L1→Gate→HERMES→DSHE完整dryrun链路, 链路断点行为验证通过, 联动符合E2E清单V2门禁规则
+- 风险台账: REG-06漏洞标记CLOSED, R-DEP-07(P0/DEP_BLOCK/BLOCKED)保留为WAIT_REAL_ENV_VERIFY, 37项复核(24 DRYRUN_VERIFIED + 13 WAIT_REAL_ENV_VERIFY)
+- L1预检V2: 27项契约校验(22 V1 + 5 V2), 24/24自检用例PASS, v2_plus兼容对齐
+- 约束合规: NO_OVERWRITE=TRUE(所有历史文件保留仅新增), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- DSHB_PROD_PHASE_GATE_REG06_FIX_E2E_DONE=TRUE
+- 状态标记: DSHB_PROD_PHASE_GATE_REG06_FIX_E2E_DONE=TRUE

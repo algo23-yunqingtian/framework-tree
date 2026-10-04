@@ -5636,3 +5636,62 @@ BRANCH_LOCKED=TRUE
 # --- Final Status ---
 DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE
 TASK_COMPLETED=TRUE ([DOC] DSHB V86-RC2 Gate Fuse Verify: 8-scenario Gate regression + DEP fuse dryrun + V4 risk review + L1 evidence pre-check + Dryrun V4: 6 deliverables, 30/30 dryrun PASS, DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE)
+# --- V86 RC2 Gate REG-06 Fix E2E (2026-10-17) ---
+TASK_ID=DSHB_V86_RC2_GATE_REG06_FIX_E2E
+TASK_STATUS=COMPLETED
+COMMIT_HASH_GATE_REG06_FIX_E2E=PENDING_UPDATE
+
+# --- Deliverables (7 new files) ---
+GATE_V4_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/gate_pre_check_auto_v4.py
+GATE_V4_MD5=868480CF10545BB8580148E2EA76851E
+GATE_V4_SIZE=85594
+GATE_V4_REG06_FIX=TRUE (ERROR->FAIL->NOT_READY, P0 block)
+GATE_V4_EMERGENCY_BYPASS=TRUE (--audit-bypass flag, dual-approval fingerprint)
+GATE_V4_V2PLUS_INTEGRATION=TRUE (PERF-GUARD, ROB-01, DS-06)
+
+GATE_V2PLUS_INTEGRATE_REPORT_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_gate_audit_v2plus_integrate.md
+GATE_V2PLUS_INTEGRATE_REPORT_MD5=5B3F8E57B2A11EC5020CFE4D3F1E159A
+
+REG06_FIX_REPORT_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_reg06_gap_fix_report.md
+REG06_FIX_REPORT_MD5=F6602828E77327218C690367A3515425
+
+DRYRUN_V5_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/dryrun_e2e_test_v5.py
+DRYRUN_V5_MD5=999F86CE375323BB0E79823D5C4C4EEA
+DRYRUN_V5_SIZE=85953
+DRYRUN_V5_TOTAL_TESTS=40 (L1-L16 V2 + L17-L19 V3 + L20-L27 Gate + L28-L30 DEP fuse + L31-L32 REG-06 + L33-L35 HERMES v2plus + L36-L40 Tripartite E2E)
+DRYRUN_V5_PASS=40
+DRYRUN_V5_FAIL=0
+DRYRUN_V5_PASS_RATE=100%
+DRYRUN_V5_CASE_ISOLATION=TRUE
+
+TRIPARTITE_E2E_REPORT_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_tripartite_dryrun_e2e_report.md
+TRIPARTITE_E2E_REPORT_MD5=2A86641192700DA716646164701EFF47
+
+RISK_REVIEW_V2_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_risk_re_evaluate_v4_review_v2.md
+RISK_REVIEW_V2_MD5=F2DC1C2CDC0E3E5E91377A1216497132
+RISK_REVIEW_V2_TOTAL_ITEMS=37
+RISK_REVIEW_V2_DRYRUN_VERIFIED=24
+RISK_REVIEW_V2_WAIT_REAL_ENV_VERIFY=13
+RISK_REVIEW_V2_REG06_CLOSURE=TRUE (REG-06 marked CLOSED)
+RISK_REVIEW_V2_RDEP07_BLOCKER=TRUE (P0 blocker remains)
+
+L1_PRECHECK_V2_PATH=analysis/e2e_output/v86/dshb_gate_prod_fix/l1_evidence_pre_check_v2.py
+L1_PRECHECK_V2_MD5=37FF13C694D2435D7558CD35C74E3ABD
+L1_PRECHECK_V2_TOTAL_CHECKS=27 (22 V1 + 5 V2)
+L1_PRECHECK_V2_SELFTEST=24/24 PASS
+L1_PRECHECK_V2_V2PLUS_ALIGNMENT=TRUE
+
+STATUS_MD5=74D25DF2BEECE5D40800FFC237E1294C
+
+# --- Total Files New ---
+TOTAL_FILES_NEW=7 (gate_v4 + v2plus_report + reg06_report + dryrun_v5 + tripartite_report + risk_review_v2 + l1_precheck_v2)
+
+# --- Constraints ---
+NO_ZHIJI_API_CALL=FALSE (PROD_PHASE_ENABLED, all dryrun mocked)
+NO_MODIFY_V85=TRUE
+NO_OVERWRITE=TRUE (all historical files preserved, new versions created)
+BRANCH_LOCKED=TRUE
+
+# --- Final Status ---
+DSHB_PROD_PHASE_GATE_REG06_FIX_E2E_DONE=TRUE
+TASK_COMPLETED=TRUE ([DOC] DSHB V86-RC2 Gate REG-06 Fix E2E: REG-06 gap fix + Gate V4 + v2_plus integration + dryrun V5 + tripartite E2E + risk review V2 + L1 precheck V2: 7 deliverables, 40/40 dryrun PASS, DSHB_PROD_PHASE_GATE_REG06_FIX_E2E_DONE=TRUE)
