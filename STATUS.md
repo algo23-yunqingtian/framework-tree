@@ -73,6 +73,26 @@
 
 ## 近期变更记录
 
+### 2026-10-15 HERMES — V86-RC2 审计器加固 + 三方证据包契约基线 + 批量预审调度 + DEP就绪检查清单 + 事件持久化升级 (HERMES_V86_RC2_AUDIT_CONTRACT_BASELINE)
+- **T3.1 审计器加固**: `evidence_auditor_v2.py` (47KB, MD5:479bf91b) — 3项加固: --self-test自回归入口(23用例+17必命中断言+4无告警断言)、DEP 6状态机校验、契约版本校验; 用例库扩充至23用例8大类(新增存量旧口径/DEP状态机/跨团队台账/契约完整性), 新增CV-01~05/DS-01~05/LC-01~03检测点
+- **T3.2 三方证据包契约**: `EVIDENCE_CONTRACT_V1.md` (15KB, MD5:0784d79a) — 首次把L1(DSHB)/L2(DSHE)/L3(HERMES)证据包收敛为统一契约, 11章含L1/L2结构定义/审计指纹/traceID/DEP关联/MD5规则/契约变更流程/三方对齐矩阵, 字段变更必须升级版本号+三方评审
+- **T3.3 批量预审调度**: `batch_evidence_audit_runner.py` (18KB, MD5:ce2501c6) — 批量读取L1/L2证据包目录, 7段报告4维分组(判定/等级/规则/责任方), 退出码门禁(0/1/2), 7项自检通过; 报告模板`v86_rc2_hermes_batch_audit_report_template.md`
+- **T3.4 DEP就绪检查清单**: `v86_rc2_hermes_dep_ready_e2e_checklist.md` (13KB, MD5:eaa381bd) — 76项逐点可勾选, 8阶段(P0前置/P1 L1/P2 L2/P3预审/P4 Gate/P5灰度/P6观测/P7回滚), 每项含判定标准+失败后果+责任人+阻断级别(STOP/BLOCK/NOTE)
+- **T3.5 事件持久化升级**: `audit_event_store.py` (23KB, MD5:6d04654a) — 三方上报接入/6维检索(team/rule/dep/level/trace/fingerprint)/4维统计/event_id幂等去重/JSONL追加不覆盖/DEP登记ID强关联, 11类自检通过; 规范`v86_rc2_hermes_alert_routing_spec_v2.md`
+- **用例库v2**: `v86_rc2_hermes_audit_case_library_v2.md` (11KB, MD5:e1c8d9e0) — CASE-LIB v2.0, v1.0(11用例)独立保留
+- **MD5清单**: `MD5_CHECKSUM_LIST_prod_audit_contract_baseline.md` — 9产物MD5+14份旧产物零覆盖自证+三脚本自检输出+状态标记
+- **事件存储样本**: `audit_event_store_sample.jsonl` (MD5:cdcf307b) — 41唯一事件/49含去重/DEP-REG-001最差CRITICAL
+- **⚠️ 关键发现1**: 自回归机制首次执行即失败, 反查出3类5项审计器自身缺陷, 全部修复后重跑通过: (1)跨团队台账不一致未阻断(DS-05仅记HIGH→升级CRITICAL) (2)覆盖度不足4检测点无用例 (3)**D02.1/D02.3分支短路** — D02.1命中后return提前退出遮蔽D02.3, 导致"冒充+虚增"复合造假仅报一条
+- **⚠️ 关键发现2**: 只有"必命中检测点断言"能抓住分支短路 — 用例判FAIL通过了但没用D02.3阻断。自回归不能只做判定比对, 必须做检测点级断言
+- **⚠️ 关键发现3**: 事件存储source_team精确匹配会误拒三方上报(caller带版本后缀如DSHE_V86_RC2_L2_AUDIT), 已改前缀归一
+- **zhiji实测取证**(2026-10-15): 对照组ID02226332 HTTP200/8点/value非零=环境健康; j25_tc/s_001 HTTP500「无法识别指标来源」; i1 permission_state=-4 — DEP-001形态与前四轮完全一致, 仍OPEN
+- **三脚本自检实测全绿**: evidence_auditor_v2 23用例PASSED / batch_runner 7项PASSED / event_store 11类PASSED; v1兼容回归仍11/11(NO_OVERWRITE验证)
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (10新增+2更新: 3脚本+6文档+1样本+1MD5清单, 交接文档+STATUS更新)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE(14份旧产物MD5零覆盖, v1脚本未破坏) / BRANCH_LOCKED=TRUE 全部合规
+- **⚠️ 过程违规记录**: 开发中曾误覆盖v1用例库文件, 已git checkout HEAD恢复至原MD5 8d3fb7e6, v2改用新文件名_v2.md
+- **终版结论**: ✅ HERMES_PROD_PHASE_AUDIT_CONTRACT_BASELINE_DONE=TRUE — 审计器v2自回归✅, 契约V1基线✅, 批量调度器✅, 76项检查清单✅, 事件持久化v2✅, MD5校验PASS✅
+  - 🔴 **Gate仍NOT_READY**: DEP-001(短ID解析)未就绪, G-09/G-10无法通过; 正向完整链路(CASE-A01)仍为唯一未实测场景
+
 ### 2026-10-15 HERMES — V86-RC2 审计规则用例固化 + L1/L2证据包校验器 + DEP就绪实测预案 + 告警路由 (HERMES_V86_RC2_AUDIT_TOOLING)
 - **T3.1 审计测试用例库**: `v86_rc2_hermes_audit_case_library.md` (16KB, MD5:8d3fb7e6) — CASE-LIB v1.0, 11用例4大类(正向成功2/旧口径造假4/DEP全阻塞2/部分恢复3), 五元组固化(输入载荷/预期结果/审计拦截点/告警输出/流水线流转路径), 16个检测点全覆盖, 本轮新增"部分DEP恢复"类(前两轮未固化)
 - **T3.2 证据包校验器**: `evidence_auditor.py` (28KB, MD5:c173c0e9) — 首个可执行审计判定工具, 校验双证据完整性/traceID审计指纹/双桥接率口径/DEP分类/退回复用标记/MD5完整性共6项16检测点, 输出PASS/CONDITIONAL_PASS/FAIL + G-06/G-09/G-10独立判定, 3种入口模式(--run-case-library/--file/--check-md5), **11/11用例回放实测通过**

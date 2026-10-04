@@ -1,8 +1,126 @@
-# HERMES 会话交接文档（最新）— V86-RC2 审计口径标准化 + 三级流水线仿真验证 + 审计工具链固化
+# HERMES 会话交接文档（最新）— V86-RC2 审计口径标准化 + 三级流水线仿真验证 + 审计工具链固化 + 审计器加固与契约基线
 
-> 生成时间: 2026-10-05（迭代: 2026-10-06 流水线仿真 → **2026-10-15 审计工具链固化，见 §16**）
-> 分支: `feature/v85-chart-template` @ commit `caa2410`（本轮 rebase 后基线；流水线仿真 commit `fa4974f`；审计标准化 commit `fd429f4`）
+> 生成时间: 2026-10-05（迭代: 2026-10-06 流水线仿真 → 2026-10-15 审计工具链固化 → **2026-10-15 审计器加固+契约基线，见 §22**）
+> 分支: `feature/v85-chart-template` @ commit `dcf7194`（本轮 rebase 后基线；审计工具链 commit `59242d0`；流水线仿真 `fa4974f`；审计标准化 `fd429f4`）
 > 用途: 新会话继承记忆/上下文的唯一入口文档。读完本文件 + JOB_READY.flag 即可继续工作。
+
+---
+
+## 22. 本轮迭代摘要（2026-10-15 第二批，审计器加固 + 三方契约基线 + 批量调度 + 事件持久化升级）
+
+| 维度 | 状态 |
+|------|------|
+| 本轮 8 份文档 + 3 个脚本 + 1 份 MD5 清单 + 1 份事件存储样本 | ✅ 全部 COMPLETE 并入库 |
+| HERMES_PROD_PHASE_AUDIT_CONTRACT_BASELINE_DONE | **TRUE**（T5 六项完成标准全部满足） |
+| 上轮 HERMES_PROD_PHASE_AUDIT_TOOLING_DONE | 保持 **TRUE** |
+| Gate 状态 | 🔴 不变：NOT_READY（DEP-001 仍 OPEN，G-09/G-10 未就绪） |
+| DEP-001 | ⏳ OPEN / 本轮实测仍 HTTP 500（对照组 ID02226332 正常） |
+
+**本轮最核心的产出是 `EVIDENCE_CONTRACT_V1.md`**——首次把 L1(DSHB)/L2(DSHE)/L3(HERMES) 三方证据包收敛为一份可机读、可校验、可版本化的统一契约。此前的三级流水线缺少统一格式（L1 用 `short_id`、L2 用 `zhiji_short_id`），审计器无法用同一套逻辑处理两类包。现在契约固化后，任何字段变更必须升级版本号并三方评审。
+
+**三脚本全部自带自检，实测全绿**：
+- `evidence_auditor_v2.py --self-test` → PASSED（23 用例 + 17 必命中断言 + 4 无告警断言）
+- `batch_evidence_audit_runner.py --self-test` → 7 项通过
+- `audit_event_store.py --self-test` → 11 类通过
+
+**旧产物零覆盖自证**：14 份旧产物 MD5 全部一致，v1 脚本兼容回归仍 11/11，NO_OVERWRITE 满足。
+
+## 23. 本轮产出（8 文档 + 3 脚本 + 1 样本 + 1 MD5 清单）
+
+| 文件 | 核心内容 | MD5 |
+|------|---------|-----|
+| `evidence_auditor_v2.py` | 审计器 v2，3 项加固（自回归/DEP状态机/契约校验），23 用例 8 大类 | `479bf91b` |
+| `batch_evidence_audit_runner.py` | 批量预审调度，7 段报告 4 维分组，退出码门禁 | `ce2501c6` |
+| `audit_event_store.py` | 事件持久化 v2，三方上报 + 6 维检索 + 4 维统计 + DEP 关联 | `6d04654a` |
+| **`EVIDENCE_CONTRACT_V1.md`** | **三方证据包契约基线**（L1/L2 结构/指纹/DEP关联/MD5/变更流程） | `0784d79a` |
+| `v86_rc2_hermes_audit_case_library_v2.md` | 用例库 v2.0（23 用例 8 大类，v1 保留） | `e1c8d9e0` |
+| `v86_rc2_hermes_dep_ready_e2e_checklist.md` | 76 项逐点勾选清单，8 阶段 | `eaa381bd` |
+| `v86_rc2_hermes_alert_routing_spec_v2.md` | 告警路由 v2（事件持久化升级版，v1 保留） | `bf3a091e` |
+| `v86_rc2_hermes_batch_audit_report_template.md` | 批量报告模板 + 实测样例 | `341a336d` |
+| `MD5_CHECKSUM_LIST_prod_audit_contract_baseline.md` | MD5 + 零覆盖自证 + 状态标记 | — |
+| `audit_event_store_sample.jsonl` | 事件存储样本（41 唯一事件） | `cdcf307b` |
+
+## 24. 本轮核心结论（新会话务必记住）
+
+### 24.1 三脚本自检入口（改完代码必须跑）
+
+```bash
+cd analysis/e2e_output/v86/hermes_e2e_test
+python3 evidence_auditor_v2.py --self-test        # 23 用例 + 17 断言 + 4 防误报
+python3 batch_evidence_audit_runner.py --self-test  # 7 项
+python3 audit_event_store.py --self-test            # 11 类
+```
+
+退出码：0=通过，1=失败（可直接接 CI 门禁）。
+
+### 24.2 批量审计 + 事件持久化完整链路
+
+```bash
+# 1. 批量审计 (L1+L2 证据包目录)
+python3 batch_evidence_audit_runner.py --l1 <L1目录> --l2 <L2目录> \
+  --md batch_report.md --json batch_report.json
+# 2. 导入事件存储 (41 事件)
+python3 audit_event_store.py --store store.jsonl --audit-report batch_report.json
+# 3. 三方主动上报
+python3 audit_event_store.py --store store.jsonl --event '{...}'
+# 4. 跨团队检索
+python3 audit_event_store.py --store store.jsonl --query --dep DEP-REG-001
+python3 audit_event_store.py --store store.jsonl --query --team DSHB
+# 5. 统计日报
+python3 audit_event_store.py --store store.jsonl --stats
+```
+
+### 24.3 自回归机制反查出的 3 类新缺陷（v2 加固实效）
+
+本轮 `evidence_auditor_v2.py` 首次跑 `--self-test` **即失败**，反查出 3 类 5 项缺陷，全部修复后重跑通过：
+
+| 缺陷 | 现象 | 根因 | 修复 |
+|------|------|------|------|
+| 跨团队台账不一致未阻断 | CASE-X02/X03 判 PASS | DS-05 仅记 HIGH，未纳入 CRITICAL 阻断 | DS-05 升级为 CRITICAL |
+| 覆盖度不足 | 4 个检测点无人覆盖 | CV-05/D02.3/D03.1/L2-R08 无用例 | 新增大类八（4 用例） |
+| **D02.1/D02.3 分支短路** | CASE-C02 未触发 D02.3 | D02.1 命中后 `return` 提前退出 | 移除短路，两检测点独立判定 |
+
+> **关键教训**：分支短路最隐蔽——它不会让任何用例"判错"，只是**漏报**复合造假的一个维度。
+> 只有"必命中检测点断言"能抓住它（用例判 FAIL 通过了，但没用 D02.3 阻断）。
+> **自回归不能只做判定比对，必须做检测点级断言。**
+
+### 24.4 事件存储实测（三方上报全链路）
+
+```
+上报完成: 新增 39 (审计报告) + 1 (DSHB) + 1 (DSHE) | 去重折叠 8
+唯一事件: 41 | 含去重总接收: 49
+按 DEP: DEP-REG-001 → 10 条 (最差: CRITICAL)
+```
+
+按 DEP 追溯的价值：`DEP-REG-001` 是三方共用的短ID 解析依赖，一次检索拿到
+DSHB 阻塞上报 + DSHE 台账不一致 + HERMES G-06 阻断，串成完整时间线。
+
+### 24.5 source_team 前缀识别（实测踩坑）
+
+实测发现三方 `caller` 常带版本后缀（`DSHE_V86_RC2_L2_AUDIT`），若精确匹配
+会**全部误拒** DSHE 上报。已改为前缀归一（`DSHE_V86_RC2_L2_AUDIT` → `DSHE`），
+同时仍拒绝真正未知的来源。
+
+## 25. 本轮新增的流水线失败处置（补充 §19 手册）
+
+| 场景 | 检测点 | 校验器判定 | 处置 |
+|------|-------|-----------|------|
+| 契约版本缺失/不匹配 | CV-01/CV-02 | HIGH → CONDITIONAL | 提交方按契约补齐，升级版本 |
+| 顶层/调用必填字段缺失 | CV-03/CV-04 | HIGH | 拒收 |
+| 缺 md5_manifest | CV-05 | MEDIUM → CONDITIONAL | 补清单 |
+| DEP 非法状态迁移 | DS-02 | **CRITICAL 阻断** | 修正迁移链 |
+| DEP 迁移声明错误 | DS-03 | **CRITICAL 阻断** | 修正 status_after |
+| 跨团队台账不一致 | DS-05 | **CRITICAL 阻断** | 三方对齐台账 |
+| 存量旧口径残留 | LC-01/LC-02 | **CRITICAL 阻断** | 清除旧表述 |
+| 桥接率分子虚增 | D02.3 | **CRITICAL 阻断** | 重算双栏口径 |
+
+## 26. 本轮 rebase 与 FLAG 清理要点
+
+- **rebase 同步**：开工前发现远端领先 3 个提交（DSHB 触发器修复 + Gate 预检查 V3、DSHE L2 证据自动化 + DEP SOP 补齐），先 `git pull --rebase` 到 `dcf7194` 再开工；
+- **三方 DEP 规范成为 DEP 校验基准**：本轮新增的 `v86_rc2_dep_registry_common_spec.md` 定义了 DEP-REG-001 统一编号、6 状态状态机、15 种事件类型、9 字段交叉比对——`evidence_auditor_v2.py` 的 `DEP_STATES`/`DEP_TRANSITIONS`/`DSHB_STATE_MAP`/`XREG_FIELDS` 全部按此规范硬编码；
+- **NO_OVERWRITE 违规与纠正**：开发中曾误覆盖 v1 用例库文件，已 `git checkout HEAD --` 恢复至原 MD5 `8d3fb7e6`，v2 改用新文件名 `_v2.md`。教训：**新增版本一律用新文件名，禁止覆盖 v1 文件**；
+- **校验器 MD5 锁定**：`evidence_auditor_v2.py` MD5 = `479bf91bbf24200fe9528856ead7ec8a`，DEP 就绪检查清单 P0-7 项要求校验此值防篡改；
+- **FLAG 更新**：`HERMES_PROD_PHASE_AUDIT_CONTRACT_BASELINE_DONE=TRUE`，JOB_READY.flag 保持 `JOB_READY=FALSE`（DEP-001 未就绪）。
 
 ---
 
