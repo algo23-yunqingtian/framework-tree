@@ -1,8 +1,118 @@
-# HERMES 会话交接文档（最新）— V86-RC2 审计口径标准化 + 跨Agent协作规则优化
+# HERMES 会话交接文档（最新）— V86-RC2 审计口径标准化 + 三级流水线仿真验证
 
-> 生成时间: 2026-10-05
-> 分支: `feature/v85-chart-template` @ commit `ac87028`（本轮提交后 SHA 见 git log）
+> 生成时间: 2026-10-05（本轮 2026-10-06 迭代更新，见 §10）
+> 分支: `feature/v85-chart-template` @ commit `3fad6d4`（本轮 rebase 后基线；上一轮审计标准化 commit `fd429f4`）
 > 用途: 新会话继承记忆/上下文的唯一入口文档。读完本文件 + JOB_READY.flag 即可继续工作。
+
+---
+
+## 9.5 本轮迭代摘要（2026-10-06，V86-RC2 三级流水线仿真验证）
+
+| 维度 | 状态 |
+|------|------|
+| 本轮 4 份仿真报告 + 1 份 MD5 清单 | ✅ 全部 COMPLETE 并入库 |
+| HERMES_PROD_PHASE_PIPELINE_SIM_DONE | **TRUE**（T5 六项完成标准全部满足） |
+| 上一轮 HERMES_PROD_PHASE_AUDIT_STANDARD_DONE | 保持 **TRUE**（本轮未改动 5 份规范，MD5 零覆盖已自证） |
+| Gate 状态 | 🔴 不变：NOT ADMITTED / NOT_READY（G-09/G-10 双 FAIL 拦截） |
+| 影子测试 | 🔴 不变：PAUSED（5 项放行条件 3 项明确不满足） |
+| DEP-001（短ID 服务器解析） | ⏳ OPEN / P0 外部依赖 / 待数据平台回复（本轮实测仍 HTTP 500） |
+
+**本轮新增 commit**：见 git log（本轮提交后 SHA）。**本轮新增产物 MD5 清单**：`MD5_CHECKSUM_LIST_prod_pipeline_sim.md`（MD5 `16520a0f73c031a6c1b0e01c19715378`）。
+
+**旧产物零覆盖自证**：上轮 5 份规范 MD5 本轮交付前后逐条比对全部一致（见 MD5 清单 §2），
+NO_OVERWRITE 满足。V85 业务文件（`scripts/`、`data/`、`*.html`）零改动，NO_MODIFY_V85 满足。
+
+## 10. 本轮产出（4 份报告 + 1 份 MD5 清单）
+
+| 文档 | 核心内容 | MD5 |
+|------|---------|-----|
+| `v86_rc2_hermes_pipeline_e2e_simulation_report.md` | 三级流水线 4 场景 E2E 仿真（正常/旧口径/DEP阻塞/L2失败）+ 拦截矩阵 | `67b386cc4649f765ecc97c341722bb06` |
+| `v86_rc2_hermes_gate_simulation_report.md` | G01~G10 逐条仿真，G-09/G-10 强制拦截专项验证 | `17056c46b05c2d6fb0a6df4bd6144b4e` |
+| `v86_rc2_hermes_audit_rule_validation_report.md` | 四条审计规则（R-AUDIT-01~04）拦截能力验证 + 告警输出 | `fc06c13696e66261ea3332e382bc10b2` |
+| `v86_rc2_hermes_dep_gate_logic_verify.md` | DEP 分类 + Gate 判定双命题验证（分类正确 + Gate 不豁免） | `e9bf5269a7bacb3af08325f5a6a74399` |
+| `MD5_CHECKSUM_LIST_prod_pipeline_sim.md` | MD5 清单 + 零覆盖自证 + 状态标记 | `16520a0f73c031a6c1b0e01c19715378` |
+
+## 11. 本轮核心结论（新会话务必记住）
+
+1. **三级流水线无穿透路径**：4 类场景仿真验证 L1→L2→L3→Gate 四级阻断，
+   任何单一错误至少被 1 层拦截，造假/伪造ID 类被 2-3 层冗余拦截。
+   **拦截矩阵**：造假脚本(G-09)、无payload(L1+G-09)、全0计PASS(L1+G-09)、
+   背书式引用(L2+R-03)、实测矛盾(L3+G-10)、伪造ID(L1+Gate)。
+2. **单靠元数据无法通过 Gate**：元数据 100% + 真实可取数 0% 场景下，
+   G-06（有效桥接率分子 0）+ G-09（脚本 4 项全不满足）+ G-10（COMPLETED 0 条可取数）
+   **三层独立拦截**，任一即可阻断 Gate，无需等量化评估。
+3. **审计规则可拦截旧口径混淆**：R-AUDIT-02 精准识别"元数据完成率冒充有效桥接率"，
+   驳回虚假 100% 为真实 0%，要求双栏拆分；R-AUDIT-01 将 170 条虚假 COMPLETED 全部降级 PENDING。
+4. **DEP 双命题同时成立**：DEP-001 归类 DEPENDENCY_BLOCK（三前提核验通过，不计内部 P0/P1），
+   但 Gate 准入判定不受豁免（阈值 80% 不变 + 分子 0 → NOT_READY）。
+   **DSHB 自判与 HERMES 复核一致（均 NOT_READY）**，无豁免漏洞。
+5. **本轮 zhiji 实测证据链（可回放）**：对照组 `ID02226332` 200/20点非零（环境健康）；
+   `j25_tc`/`s_001`/`ID_FAKE001` 均 HTTP 500「无法识别指标来源」；`i1` permission_state=-4/0点。
+   **对照组是结论成立的前提** —— 无对照组则"未修复"结论不成立。
+6. **仿真方法诚实声明**：本轮是流水线状态机**逻辑仿真**（构造载荷 + 套用规范规则推演），
+   **未伪造 DSHB/DSHE 真实运行日志**。凡依赖外部系统（DEP-001）的部分一律标"未就绪"，
+   不编造其就绪结果。场景 1（正常链路）因 DEP-001 OPEN 只能做逻辑推演，不能实测跑通。
+
+## 12. 故障场景处理手册（流水线失败场景 → 处置动作）
+
+| 故障场景 | 识别信号 | 处置动作 | 依据 |
+|---------|---------|---------|------|
+| 交付方声称"已修复"但实测失败 | 实验组 HTTP 500 / 0 点，对照组健康 | 判"修复未落地"，退回 L1，旧日志作废；**必须配对对照组** | §11.5 对照组铁律 |
+| 元数据 100% + 真实 0% 并存 | 桥接表满 + 有效桥接率 0% | G-06/G-09/G-10 三层拦截 → NOT_READY；要求双栏拆分 | §11.2 |
+| 旧口径表述残留（如"100% bridge rate"） | 提交包出现未标口径的单一桥接率数字 | R-AUDIT-02 告警 → 阻断 L3；要求标注口径类型（metadata/fetchable） | T3.3 §3.2 |
+| L2 背书式引用 | DSHE 记录转述 DSHB 自报数字，无独立调用 URL | L2 结论作废，退回 DSHE 用自己的调用链重做 | R-AUDIT-03 |
+| L2 抽样不过 | COMPLETED 条目取数失败（全 0 / permission_state=-4） | 退回 L1，DSHB 重写脚本 + 重测，旧自测日志作废 | 流水线规范 §6 |
+| 交付方用 DEP 掩盖自身缺陷 | 声称"平台不支持"但对照组健康 | 判"伪 DEP"，归内部 P0（造假永不豁免）；对照组区分真/伪阻塞 | T3.4 §4.1 |
+| DEP 阻塞期间零产出 | DEP OPEN 但交付方无增量产出 | 降级为内部风险（非 DEP 豁免）；要求增量产出 | DEP 规范 §5.2 |
+| 退回后尝试复用旧报告 | "补个报告"续用旧日志 | 禁止（跨团队约束）；旧报告须从头产出独立调用链证据 | 流水线规范 §6 |
+| DEP-001 推进卡住 | 预计就绪时间/责任人未确认 | 每 3 工作日向数据平台查询，flag 留痕；+7 天升级，+14 天评估替代方案 | DEP 规范 §4 |
+
+## 13. 审计拦截案例（本轮沉淀，可引用）
+
+| 案例 | 输入 | 拦截规则 | 结果 |
+|------|------|---------|------|
+| 虚假 COMPLETED | 170 条标 COMPLETED（仅元数据） | R-AUDIT-01 D01.2/D01.3 | 170 条全降级 PENDING，阻断 L2 |
+| 口径混淆 | "100% bridge rate"（未区分口径） | R-AUDIT-02 D02.1/D02.2/D02.3 | 驳回为真实 0%，要求双栏拆分 |
+| 背书式引用 | "DSHB 报 60/60 故 PASS" | R-AUDIT-03 D03.1/D03.2 | L2 结论作废，退回重做 |
+| 脚本造假 | search 绕道 + 无 payload + 全 0 计 PASS | R-AUDIT-04 D04.1~D04.4 | G-09 FAIL（4 项全不满足） |
+| 真实取数失败 | 对照组健康 + 短ID 全 HTTP 500 | R-AUDIT-04 D04.5 | G-10 FAIL → Gate 不通过 |
+| 伪 DEP 阻塞 | 声称平台不支持，实为脚本缺陷 | T3.4 §4.1 对照组检测 | 判内部 P0，不豁免 |
+
+## 14. rebase 与 FLAG 清理要点（本轮实操沉淀）
+
+1. **开工前必须 rebase 同步远端**：本轮发现 `origin/feature/v85-chart-template` 领先 5 个提交
+   （DSHB/DSHE 的 DEP Monitor + DEP Watcher + Joint Verify 产物），未 rebase 会基于旧基线漏产物。
+   命令：`git fetch origin -q && git rev-list --count HEAD..origin/feature/v85-chart-template`（>0 即需 rebase）
+   → `git pull --rebase origin feature/v85-chart-template`。
+2. **rebase 前必查 MERGE_HEAD**：`ls .git/MERGE_HEAD 2>/dev/null || echo clean`，
+   存在 = 另一 agent 未完成 merge，**禁止擅自 abort**（会毁掉对方 staged 文件），报告用户拍板。
+3. **FLAG 尾部追加必然冲突**：保留双方区块并清理 `<<<<<<<`/`=======`/`>>>>>>>` 标记，
+   **清理要全**（残留标记会污染 flag）。本轮 FLAG 已含乱码区块（UTF-8 被按 GBK 解码的痕迹），
+   不影响 ASCII 区块读取，但引用中文值时须注意编码。
+4. **任务卡引用的 commit hash 须核实存在**：`git cat-file -t <hash>` 逐个核实，
+   不存在 = 任务卡基线已被 rebase/force-push 重写，需向用户确认基线。
+   本轮核实：T1 提到的 `fd429f4` 存在且为上一轮 HEAD，rebase 后变为 3fad6d4 的父提交。
+5. **git add 与 commit 竞态**：`git add A B C` 与 `git commit` 之间若另一 agent 抢先 commit，
+   你的 commit 会静默只含剩下的 untracked 文件。**提交后必须 `git log --stat -1` 核对实际内容**。
+
+## 15. 本轮新发现（待后续推进）
+
+1. **场景 1 目前不可实测**：DEP-001 OPEN 导致正常链路只能逻辑推演，
+   建议 DEP-001 就绪后优先用真实数据重跑，验证正向路径无死锁。
+2. **R-AUDIT-02 口径检测误报风险**：当前靠关键词扫描"100%"识别混淆，
+   "100% 元数据完成率"是合法表述会误报。建议改为检测"桥接率"字段是否标注口径类型（metadata/fetchable），
+   未标注即告警 —— 比关键词匹配更精准。
+3. **DEP-001 登记表 #6/#7 空窗**：预计就绪时间与责任人未确认，是推进硬卡点。
+   建议 HERMES 每 3 工作日向数据平台查询并在 flag 留痕。
+4. **告警编号需纳入 FLAG**：本轮审计告警（ALERT-R01-01 等）输出在报告中，
+   建议在 JOB_READY.flag 留痕，便于跨轮次追溯与复审。
+5. **DSHB 新提交"170/170 COMPLETED 100% bridge rate"仍并存真实 0%**：
+   后续审计须按双栏口径区分，**不要被 100% 误导**。本轮已验证新审计规则可拦截此形态。
+
+---
+
+*本交接文档由 HERMES 于 V86-RC2 审计口径标准化完成后生成，并于 2026-10-06 三级流水线仿真验证后迭代更新。
+新会话先读本文件（重点 §9.5/§10/§11/§12/§14），再决定是否继续推进。*
 
 ---
 
