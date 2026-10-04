@@ -1229,3 +1229,20 @@
 - 约束合规: NO_OVERWRITE=TRUE(V1/V2/V3全部保留), BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
 - DSHB_PROD_PHASE_AUDIT_ALIGN_DONE=TRUE
 - 状态标记: DSHB_PROD_PHASE_AUDIT_ALIGN_DONE=TRUE
+
+### 2026-10-15 DSHB_V86_RC2_TRIGGER_DEFECT_FIX
+- 触发器缺陷闭环修复+Gate预检查常态化+DEP GAP同步+沙箱扩充+口径扫描 (6 deliverables, MD5 all verified)
+  - dep_ready_trigger_v2.py (MD5: DB119701) - 触发器V2缺陷修复版(8/8缺陷CLOSED: DEF-001~008, RetestExecutor ABC, 持久化写入, 原子写入, 可注入sleep)
+  - v86_rc2_dshb_trigger_defect_close_report.md (MD5: 07B3498F) - 缺陷闭环报告(8项全部闭环, MEDIUM优先修复, 兼容性验证)
+  - gate_pre_check_auto.py (MD5: F8DEC691) - Gate常态化预检查脚本(G01~G10全项自动自检, 与触发器联动)
+  - v86_rc2_dshb_dep_gap_sync_log.md (MD5: 63ADA22A) - DEP跨团队GAP同步日志(6项GAP跟踪, DSHE协同, 风险台账同步)
+  - dryrun_e2e_test_v2.py (MD5: ADBC3799) - 扩充dry-run测试脚本(16项测试, 混合恢复场景, 负向口径拦截, 16/16 PASS)
+  - doc_caliber_scanner.py (MD5: 8C1B667E) - 文档口径扫描脚本(自动检测旧口径100%违规, 7种违规模式, 支持自动修复)
+- 触发器缺陷: 8/8全部闭环(MEDIUM: DEF-003 subprocess.run→RetestExecutor ABC, DEF-004 no-op→持久化写入; LOW: DEF-001/002/005/006/007/008)
+- Gate预检查: gate_pre_check_auto.py自动化G01~G10自检, 与触发器联动(run_gate_pre_check action)
+- DEP GAP: 6项DEP SOP GAP识别(DI登记ID/登记时间/变更日志/暂停时长/独立调用链/回滚窗口), 跨团队协同跟踪
+- 沙箱扩充: 混合恢复场景(j25_tc=READY, i1/i3=BLOCKED), 负向口径拦截测试, 16/16 PASS
+- 口径扫描: doc_caliber_scanner.py自动扫描旧口径违规, 支持--fix自动修复, 7种违规模式
+- 约束合规: NO_OVERWRITE=TRUE(V1/V2全部保留), BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- DSHB_PROD_PHASE_TRIGGER_DEFECT_FIX_DONE=TRUE
+- 状态标记: DSHB_PROD_PHASE_TRIGGER_DEFECT_FIX_DONE=TRUE

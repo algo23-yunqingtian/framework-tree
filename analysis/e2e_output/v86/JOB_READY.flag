@@ -5199,3 +5199,47 @@ BRANCH_LOCKED=TRUE
 # --- Final Status ---
 DSHB_PROD_PHASE_AUDIT_ALIGN_DONE=TRUE
 TASK_COMPLETED=TRUE ([DOC] DSHB V86-RC2 Statement Alignment + Trigger E2E Dry-Run + Gate Pre-Self-Check V3 + FLAG Cleanup + Risk V4: 5 new deliverables, FLAG updated, DSHB_PROD_PHASE_AUDIT_ALIGN_DONE=TRUE)
+
+# ============================================================================
+# DSHB_V86_RC2_TRIGGER_DEFECT_FIX — 触发器缺陷闭环修复 + Gate预检查常态化 + DEP GAP同步 + 沙箱扩充 + 口径扫描
+# ============================================================================
+
+# --- Subtask Summary ---
+T3.1_TRIGGER_DEFECT_FIX=CLOSED (8/8 defects: DEF-001~008, 2 MEDIUM + 6 LOW)
+T3.2_GATE_PRE_CHECK_AUTO=COMPLETE (gate_pre_check_auto.py, G01~G10全项自检)
+T3.3_DEP_GAP_SYNC=ACTIVE (6项DEP SOP GAP, 跨团队协同跟踪)
+T3.4_DRYRUN_SANDBOX_V2=COMPLETE (dryrun_e2e_test_v2.py, 16项测试, 16/16 PASS)
+T3.5_DOC_CALIBER_SCANNER=COMPLETE (doc_caliber_scanner.py, 旧口径自动拦截)
+
+# --- Trigger Defect Close Summary ---
+DEFECTS_TOTAL=8
+DEFECTS_CLOSED=8
+DEFECTS_MEDIUM_CLOSED=2 (DEF-003: RetestExecutor ABC, DEF-004: 持久化写入)
+DEFECTS_LOW_CLOSED=6 (DEF-001/002/005/006/007/008)
+REGRESSION_TEST=16/16 PASS
+
+# --- Deliverable MD5s ---
+T3.1_TRIGGER_V2_MD5=DB119701E7448222A3E436D1B510E3E6
+T3.1_DEFECT_CLOSE_MD5=07B3498F3A582B5B4707BF9C7C204279
+T3.2_GATE_PRE_CHECK_MD5=F8DEC691BB2AAA02F03BF0236ADA7FF6
+T3.3_DEP_GAP_SYNC_MD5=63ADA22A2B3268FBAEB38C3D6627B527
+T3.4_DRYRUN_V2_MD5=ADBC3799EA6558C13E49B86383938CE6
+T3.5_DOC_SCANNER_MD5=8C1B667EEAC9E2A1260624484C305CC6
+
+# --- Total Files New ---
+TOTAL_FILES_NEW=6 (trigger_v2+defect_report+gate_pre_check+dep_gap_sync+dryrun_v2+doc_scanner)
+
+# --- Git ---
+COMMIT_HASH_TRIGGER_DEFECT_FIX=PENDING (will be updated after push)
+BRANCH=feature/v85-chart-template
+REMOTE=origin
+
+# --- Constraints ---
+NO_ZHIJI_API_CALL=FALSE (PROD_PHASE_ENABLED)
+NO_MODIFY_V85=TRUE
+NO_OVERWRITE=TRUE (all_V1_preserved+all_V2_new)
+BRANCH_LOCKED=TRUE
+
+# --- Final Status ---
+DSHB_PROD_PHASE_TRIGGER_DEFECT_FIX_DONE=TRUE
+TASK_COMPLETED=TRUE ([DOC] DSHB V86-RC2 Trigger Defect Fix + Gate Pre-Check Auto + DEP GAP Sync + Dryrun V2 + Doc Scanner: 6 new deliverables, 16/16 regression PASS, DSHB_PROD_PHASE_TRIGGER_DEFECT_FIX_DONE=TRUE)
