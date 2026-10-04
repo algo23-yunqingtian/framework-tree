@@ -1,8 +1,121 @@
-# HERMES 会话交接文档（最新）— V86-RC2 审计口径标准化 + 三级流水线仿真验证
+# HERMES 会话交接文档（最新）— V86-RC2 审计口径标准化 + 三级流水线仿真验证 + 审计工具链固化
 
-> 生成时间: 2026-10-05（本轮 2026-10-06 迭代更新，见 §10）
-> 分支: `feature/v85-chart-template` @ commit `3fad6d4`（本轮 rebase 后基线；上一轮审计标准化 commit `fd429f4`）
+> 生成时间: 2026-10-05（迭代: 2026-10-06 流水线仿真 → **2026-10-15 审计工具链固化，见 §16**）
+> 分支: `feature/v85-chart-template` @ commit `caa2410`（本轮 rebase 后基线；流水线仿真 commit `fa4974f`；审计标准化 commit `fd429f4`）
 > 用途: 新会话继承记忆/上下文的唯一入口文档。读完本文件 + JOB_READY.flag 即可继续工作。
+
+---
+
+## 16. 本轮迭代摘要（2026-10-15，V86-RC2 审计规则用例固化 + 证据包校验器 + DEP就绪预案）
+
+| 维度 | 状态 |
+|------|------|
+| 本轮 4 份文档 + 1 个脚本 + 1 份 MD5 清单 | ✅ 全部 COMPLETE 并入库 |
+| HERMES_PROD_PHASE_AUDIT_TOOLING_DONE | **TRUE**（T5 六项完成标准全部满足） |
+| 上一轮 HERMES_PROD_PHASE_PIPELINE_SIM_DONE | 保持 **TRUE** |
+| HERMES_PROD_PHASE_AUDIT_STANDARD_DONE | 保持 **TRUE**（5 份规范 MD5 零覆盖，见 MD5 清单） |
+| Gate 状态 | 🔴 不变：NOT_READY（DEP-001 仍 OPEN，G-09/G-10 未就绪） |
+| DEP-001（短ID 服务器解析） | ⏳ OPEN / P0 外部依赖 / 本轮实测仍 HTTP 500，预案已就绪待启动 |
+
+**本轮最核心产出是 `evidence_auditor.py`——首个可执行的审计判定工具**，把前两轮"仿真推演"升级为"可编程校验"。它实测回放 11 个用例全部判定符合预期（11/11 OK），并**在开发过程中反查出校验器自身的 3 处判定缺陷**（G-06 阈值未强制阻断），修复后重新验证通过——校验器不是摆设，它真的会抓到自己逻辑里的漏洞。
+
+**旧产物零覆盖自证**：5 份规范 + 4 份仿真报告 MD5 本轮交付前后逐条比对全部一致（见 MD5 清单），NO_OVERWRITE 满足。V85 业务文件零改动，NO_MODIFY_V85 满足。
+
+## 17. 本轮产出（4 份文档 + 1 个脚本 + 1 份 MD5 清单）
+
+| 文档/脚本 | 核心内容 | 状态 |
+|----------|---------|------|
+| `v86_rc2_hermes_audit_case_library.md` | 审计测试用例库 CASE-LIB v1.0，11 用例 4 大类（正向/造假/DEP阻塞/部分恢复），五元组固化 | ✅ |
+| `evidence_auditor.py` | L1/L2 证据包独立校验器，校验双证据/traceID/双桥接率/DEP分类/退回复用/MD5，输出 PASS/CONDITIONAL_PASS/FAIL | ✅ 11/11 实测通过 |
+| `v86_rc2_hermes_dep_ready_e2e_test_plan.md` | DEP-001 就绪后三阶段实测预案（冒烟→抽样→全量），含失败分级/回滚方案/一键启动脚本 | ✅ |
+| `v86_rc2_hermes_alert_routing_spec.md` | 审计告警路由规范，4 级分级 + 8 类路由矩阵 + 事件持久化契约 | ✅ |
+| `MD5_CHECKSUM_LIST_prod_audit_tooling.md` | MD5 清单 + 零覆盖自证 + 状态标记 | ✅ |
+
+## 18. 本轮核心结论（新会话务必记住）
+
+### 18.1 evidence_auditor.py 使用方式
+
+```bash
+cd analysis/e2e_output/v86/hermes_e2e_test
+python3 evidence_auditor.py --run-case-library        # 回放 11 用例 (回归测试)
+python3 evidence_auditor.py --file <证据包.json>       # 校验 DSHB L1 / DSHE L2 证据包
+python3 evidence_auditor.py --check-md5 <文件> --expect <md5>   # MD5 完整性
+python3 evidence_auditor.py --run-case-library --persist out.json  # 事件持久化
+```
+
+三种结论：`PASS`（可放行）/ `CONDITIONAL_PASS`（标条件流转，需人工裁决）/ `FAIL`（阻断，证据包作废）。
+三个 Gate 强制项独立输出：`gate_g06_real_fetchable_rate` / `gate_g09_script_audit` / `gate_g10_data_fetch`。
+
+### 18.2 校验器开发中反查出的 3 处自身缺陷（重要教训）
+
+首轮回放 8/11 通过，3 处 MISMATCH 全部是**校验器判定逻辑漏洞**，不是用例预期错：
+
+| 缺陷 | 现象 | 根因 | 修复 |
+|------|------|------|------|
+| G-06 阈值不阻断 | DEP 阻塞场景判成 CONDITIONAL/PASS | G-06 桥接率 < 100% 只记录未产生 CRITICAL | 阈值未达 → emit CRITICAL，强制 FAIL |
+| gate_result 弱绑定 | PASS 但桥接率不足也判 READY | `gate_g06` 与 `verdict` 独立判定 | 统一为 `verdict==PASS` 才 READY |
+| DEP 状态机用例预期错 | CASE-P03 判 PASS 但预期 CONDITIONAL | 用例把流程元数据当审计维度 | 修正预期为 FAIL（DEP 状态不改变证据判定，但 Gate 不豁免） |
+
+> **教训**：审计工具的判定逻辑本身必须被用例库回归验证。本次校验器上线即抓到自己 3 处缺陷，说明"用例库驱动开发"的必要性——用例库不只是文档，是校验器的黑盒测试集。
+
+### 18.3 用例库 11 用例判定分布（校验器实测）
+
+| 大类 | 用例 | 判定 | CRITICAL |
+|------|------|------|---------|
+| 正向 | A01/A02 | PASS | 0 |
+| 造假 | N01 | FAIL | 7 |
+| 造假 | N02 | CONDITIONAL_PASS | 0（HIGH 1） |
+| 造假 | N03 | FAIL | 3 |
+| 造假 | N04 | FAIL | 1 |
+| DEP阻塞 | D01 | FAIL | 1（HIGH 1） |
+| DEP阻塞 | D02 | FAIL | 3 |
+| 部分恢复 | P01 | FAIL | 1 |
+| 部分恢复 | P02 | FAIL | 2 |
+| 部分恢复 | P03 | FAIL | 2 |
+
+造假类 CRITICAL 密集（N01=7），DEP 类 CRITICAL 少但 HIGH 多——分级有效区分了"造假"与"合规阻塞"两种性质。
+
+### 18.4 DEP-001 恢复后的启动路径（唯一未实测场景）
+
+前两轮全部完成的是**负向/合规阻塞路径**，唯一未实测跑通的是**正向完整链路**（CASE-A01），因 DEP-001 仍 OPEN。启动路径已固化为三步：
+
+```
+1. python3 dep_recovery_auto_verify.py            # 验证 P2 (短ID 全 HTTP 200)
+2. python3 evidence_auditor.py --run-case-library  # 防校验器退化 (11/11)
+3. 按 v86_rc2_hermes_dep_ready_e2e_test_plan.md 三阶段执行
+```
+
+## 19. 本轮新增的流水线失败处置（补充 §12 手册）
+
+| 场景 | 检测点 | 校验器判定 | 处置 |
+|------|-------|-----------|------|
+| G-06 桥接率未达阈值 | `G-06` | FAIL（CRITICAL） | 退回按缺失条目归属方补齐取数 |
+| 退回复用旧 run_id | `L2-R08` | FAIL/CONDITIONAL | 证据包作废，退回 DSHE 重做 |
+| 声称 DEP 但无外部证据 | `DEP-CLASS` | CONDITIONAL | 降级为内部缺陷，退回 DSHB |
+| 部分恢复未达阈值 | `G-06` | FAIL | 登记部分恢复（CASE-P01），等待补齐 |
+| 证据包已标记 retired | `L2-R08` | CONDITIONAL | 禁止复用，要求新 run_id |
+
+## 20. 审计告警路由速查（详见 T3.4 规范）
+
+| 规则 | 责任方 | 级别 |
+|------|--------|------|
+| R-AUDIT-01 双证据 | **DSHB** | CRITICAL |
+| R-AUDIT-02 桥接率口径 | **DSHB** | CRITICAL |
+| R-AUDIT-03 L2 独立链 | **DSHE** | CRITICAL |
+| R-AUDIT-04 Gate 强制项 | **DSHB** | CRITICAL |
+| DEP-CLASS 归类错误 | **DSHB** | HIGH |
+| L2-R08 退回复用 | **DSHE** | HIGH |
+| G-06 阈值未达 | 按条目归属 | CRITICAL |
+| DEP-GATE 不豁免 | HERMES 记录 | HIGH |
+
+**分级铁律**：造假类（D01.3/D03.2/DEP-CLASS 无证据）一律 CRITICAL 强制阻断；MEDIUM 永不阻断（仅 CONDITIONAL）。
+
+## 21. 本轮 rebase 与 FLAG 清理要点
+
+- **rebase 同步**：开工前发现远端领先 4 个提交（DSHB 触发器联调 + FLAG 清理 + DSHE L2 交付规范），先 `git pull --rebase` 到 `caa2410` 再开工；
+- **DSHE L2 规范成为校验器契约**：本轮新增的 `v86_rc2_dshe_l2_deliverable_spec.md` 给出了 `evidence_package_*.json` 真实字段结构，`evidence_auditor.py` 严格按此契约解析（`fingerprint`/`run_id`/`dshb_reuse`/`calls[].trace_id`/`call_type=DSHE_INDEPENDENT_ZHIJI`）；
+- **校验器 MD5 需锁定**：`evidence_auditor.py` MD5 = `c173c0e964e864c35ec2c44350c236cd`，DEP 就绪启动脚本会校验此值防篡改；
+- **FLAG 更新**：`HERMES_PROD_PHASE_AUDIT_TOOLING_DONE=TRUE`，JOB_READY.flag 保持 `JOB_READY=FALSE`（DEP-001 未就绪，Gate 仍 NOT_READY）。
 
 ---
 

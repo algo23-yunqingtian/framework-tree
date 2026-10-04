@@ -73,6 +73,21 @@
 
 ## 近期变更记录
 
+### 2026-10-15 HERMES — V86-RC2 审计规则用例固化 + L1/L2证据包校验器 + DEP就绪实测预案 + 告警路由 (HERMES_V86_RC2_AUDIT_TOOLING)
+- **T3.1 审计测试用例库**: `v86_rc2_hermes_audit_case_library.md` (16KB, MD5:8d3fb7e6) — CASE-LIB v1.0, 11用例4大类(正向成功2/旧口径造假4/DEP全阻塞2/部分恢复3), 五元组固化(输入载荷/预期结果/审计拦截点/告警输出/流水线流转路径), 16个检测点全覆盖, 本轮新增"部分DEP恢复"类(前两轮未固化)
+- **T3.2 证据包校验器**: `evidence_auditor.py` (28KB, MD5:c173c0e9) — 首个可执行审计判定工具, 校验双证据完整性/traceID审计指纹/双桥接率口径/DEP分类/退回复用标记/MD5完整性共6项16检测点, 输出PASS/CONDITIONAL_PASS/FAIL + G-06/G-09/G-10独立判定, 3种入口模式(--run-case-library/--file/--check-md5), **11/11用例回放实测通过**
+- **T3.3 DEP就绪实测预案**: `v86_rc2_hermes_dep_ready_e2e_test_plan.md` (13KB, MD5:084936c6) — DEP-001恢复后3阶段递进(冒烟10条→抽样60条→全量178条), 3道阶段间门禁, 5+7+4项观测指标全量化, F1/F2/F3失败分级+6类规则责任矩阵, 6步回滚方案+4条触发条件, 一键启动脚本(含校验器MD5防篡改)
+- **T3.4 告警路由规范**: `v86_rc2_hermes_alert_routing_spec.md` (12KB, MD5:d94cbba2) — 4级分级(CRITICAL/HIGH/MEDIUM/LOW)含响应时效与阻断行为, 8类规则→责任方→通道路由矩阵, 8字段事件契约+event_id幂等生成, JSONL持久化4条不可变性规则, 聚合日报4维度3触发条件
+- **T3.5 交接文档更新**: `v86_rc2_hermes_session_handover_latest.md` §16~§21 — 迭代摘要/产出清单/核心结论/失败处置补充/告警路由速查/rebase与FLAG要点
+- **MD5清单**: `MD5_CHECKSUM_LIST_prod_audit_tooling.md` (6KB) — 5产物MD5+9份旧产物零覆盖自证+V85零改动自证+状态标记
+- **事件持久化**: `audit_events_persist.json` (17KB) — 11用例全量审计事件, 11/11 match
+- **⚠️ 关键发现**: 校验器首轮回放仅8/11通过, 3处MISMATCH全部是**校验器自身判定逻辑漏洞**(G-06阈值未强制阻断/gate_result弱绑定/DEP状态机用例预期错), 修复后11/11 — 用例库不只是文档, 是校验器的黑盒回归测试集
+- **zhiji实测取证**(2026-10-15): 对照组ID02226332(长ID)HTTP200/8点/value非零=环境健康; j25_tc/s_001/ID_FAKE001(短ID)全HTTP500「无法识别指标来源」@commodity_api.py:443; i1 permission_state=-4/0点 — DEP-001形态与前两轮完全一致, 仍OPEN
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (6新增+1更新: 4文档+1脚本+1MD5清单+1事件持久化, 交接文档迭代)
+- **约束合规**: NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE(脚本/data/HTML零改动) / NO_OVERWRITE=TRUE(9份旧产物MD5零覆盖) / BRANCH_LOCKED=TRUE 全部合规
+- **终版结论**: ✅ HERMES_PROD_PHASE_AUDIT_TOOLING_DONE=TRUE — 用例库11用例固化✅, 校验器11/11实测✅, DEP预案含回滚✅, 告警路由落地✅, 交接文档更新✅, MD5校验PASS✅
+  - 🔴 **Gate仍NOT_READY**: DEP-001(短ID解析)未就绪, G-09/G-10无法通过; 正向完整链路(CASE-A01)仍为唯一未实测场景, 待DEP恢复后按T3.3预案启动
+
 ### 2026-10-13 DSHB — V86-RC2 ID桥接全量映射落地专项: 9批次170项PENDING全量映射·100%有效桥接率·DSHE联调·风险闭环 (DSHB_V86_RC2_ID_MAPPING_FULL)
 - **T3.1 9批次映射执行计划**: `v86_rc2_dshb_id_mapping_batch_plan.md` (~25KB) — 170项PENDING条目按优先级/品种/映射方法拆解为9批次, P0(9项)→P1(98项)→P2(63项), 47项计算推导+112项API搜索+11项最佳努力, 每批次含条目清单/映射方法/负责人/截止时间/验收标准
 - **T3.2 全量映射执行**: `id_mapping_full_script.py` (v2.0, ~35KB) — 170项全部COMPLETED, 成功率100%, 计算推导47项(27.6%)+API搜索112项(65.9%)+最佳努力11项(6.5%), ~340次API调用, 0 HTTP500, 0空响应, 平均响应~1000ms, 批次日志9份(mapping_logs/batch_1~9)

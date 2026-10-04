@@ -1,0 +1,577 @@
+[
+  {
+    "case_id": "CASE-A01",
+    "desc": "DEP就绪+双指标达标完整链路",
+    "expect": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "PASS",
+      "gate_result": "READY",
+      "gate_g06_real_fetchable_rate": 1.0,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "PASS",
+      "events_summary": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 0
+      },
+      "events": []
+    }
+  },
+  {
+    "case_id": "CASE-A02",
+    "desc": "对照组驱动的最小可放行单元",
+    "expect": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "PASS",
+      "gate_result": "READY",
+      "gate_g06_real_fetchable_rate": 1.0,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "PASS",
+      "events_summary": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 0
+      },
+      "events": []
+    }
+  },
+  {
+    "case_id": "CASE-D01",
+    "desc": "短ID解析全阻塞 (合规阻塞, Gate不豁免)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 0.0,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "FAIL",
+      "events_summary": {
+        "CRITICAL": 1,
+        "HIGH": 1,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 2
+      },
+      "events": [
+        {
+          "event_id": "AE-74209cc16ea3",
+          "level": "HIGH",
+          "rule": "R-AUDIT-04",
+          "detect_point": "DEP-GATE",
+          "message": "全部条目 DEP 阻塞, 不计入内部 P0/P1, 但 Gate 维持 NOT_READY",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-aa56bd7d4624",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "G-06",
+          "message": "有效桥接率 0.0000 未达阈值 100% -> Gate 强制阻断",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-D02",
+    "desc": "借外部阻塞之名伪造日志 (内部P0)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 0.0,
+      "gate_g09_script_audit": "FAIL",
+      "gate_g10_data_fetch": "FAIL",
+      "events_summary": {
+        "CRITICAL": 5,
+        "HIGH": 1,
+        "MEDIUM": 1,
+        "LOW": 0,
+        "total": 7
+      },
+      "events": [
+        {
+          "event_id": "AE-be429644d034",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.2",
+          "message": "缺 requested_id==resolved_id 断言 -> G-09 FAIL",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-e8ddfcc2dab1",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-01",
+          "detect_point": "D01.2",
+          "message": "COMPLETED 条目缺真实取数证据 (无原始 payload 或全 0): DSHE-TEST_OK-001-001",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-17dc982a4970",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.2",
+          "message": "requested_id(j25_tc) != resolved_id(s_001): DSHE-TEST_OK-001-001",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-bb6d82659607",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.5",
+          "message": "标记成功但实测报错: j25_tc / HTTP 500 (伪造日志, 无请求URL/时间戳)",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-1d93f556d16b",
+          "level": "HIGH",
+          "rule": "R-AUDIT-04",
+          "detect_point": "DEP-CLASS",
+          "message": "声称 DEPENDENCY_BLOCK 但无外部阻塞证据, 降级为内部缺陷: j25_tc",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-ebf2898d7925",
+          "level": "MEDIUM",
+          "rule": "R-AUDIT-04",
+          "detect_point": "DEP-CLASS",
+          "message": "DEPENDENCY_BLOCK 未登记依赖登记表: j25_tc",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-aa56bd7d4624",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "G-06",
+          "message": "有效桥接率 0.0000 未达阈值 100% -> Gate 强制阻断",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-N01",
+    "desc": "元数据完成+真实取数0% (虚假桥接率)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 0.0,
+      "gate_g09_script_audit": "FAIL",
+      "gate_g10_data_fetch": "FAIL",
+      "events_summary": {
+        "CRITICAL": 7,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 7
+      },
+      "events": [
+        {
+          "event_id": "AE-3495fea8b25c",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.1",
+          "message": "脚本入参 search 中转/自动替换 ID -> G-09 FAIL",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-be429644d034",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.2",
+          "message": "缺 requested_id==resolved_id 断言 -> G-09 FAIL",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-78acd2b38fbf",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.3",
+          "message": "全 0 计 PASS -> G-09 FAIL",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-633e1ae1e2cd",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.4",
+          "message": "未留存原始 payload -> G-09 FAIL",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-e8ddfcc2dab1",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-01",
+          "detect_point": "D01.2",
+          "message": "COMPLETED 条目缺真实取数证据 (无原始 payload 或全 0): DSHE-TEST_OK-001-001",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-82ea4ff8e25a",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "D02.1",
+          "message": "元数据完成率(1.0)冒充有效桥接率, 实际可取数率=0.0",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-aa56bd7d4624",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "G-06",
+          "message": "有效桥接率 0.0000 未达阈值 100% -> Gate 强制阻断",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-N02",
+    "desc": "桥接率单一数字不拆分",
+    "expect": "CONDITIONAL_PASS",
+    "actual": "CONDITIONAL_PASS",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "CONDITIONAL_PASS",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 1.0,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "PASS",
+      "events_summary": {
+        "CRITICAL": 0,
+        "HIGH": 1,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 1
+      },
+      "events": [
+        {
+          "event_id": "AE-3242f18a2139",
+          "level": "HIGH",
+          "rule": "R-AUDIT-02",
+          "detect_point": "D02.2",
+          "message": "桥接率未拆分口径 (只有单值 0.85), 须提供双栏",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-N03",
+    "desc": "L2背书式引用 (零价值)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": null,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "INDETERMINATE",
+      "events_summary": {
+        "CRITICAL": 2,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 2
+      },
+      "events": [
+        {
+          "event_id": "AE-9711bbe92793",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-03",
+          "detect_point": "D03.2",
+          "message": "dshb_reuse=true 违反 L2-R01 (背书式引用)",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-e3cd73ba1e8e",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-03",
+          "detect_point": "D03.2",
+          "message": "calls 为空 (无独立调用链), 结论零价值",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-N04",
+    "desc": "伪造ID提交 (不存在于zhiji, 内部缺陷)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 0.0,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "FAIL",
+      "events_summary": {
+        "CRITICAL": 3,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 3
+      },
+      "events": [
+        {
+          "event_id": "AE-e8ddfcc2dab1",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-01",
+          "detect_point": "D01.2",
+          "message": "COMPLETED 条目缺真实取数证据 (无原始 payload 或全 0): DSHE-TEST_OK-001-001",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-3d621d808842",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.5",
+          "message": "标记成功但实测报错: s_001 / 无法识别指标来源(id前缀): s_001",
+          "trace_id": "DSHE-TEST_OK-001-001",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-aa56bd7d4624",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "G-06",
+          "message": "有效桥接率 0.0000 未达阈值 100% -> Gate 强制阻断",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-P01",
+    "desc": "部分短ID就绪 (混合状态, Gate未达阈值)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 0.5,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "FAIL",
+      "events_summary": {
+        "CRITICAL": 1,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 1
+      },
+      "events": [
+        {
+          "event_id": "AE-3ffa4b194cc9",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "G-06",
+          "message": "有效桥接率 0.5000 未达阈值 100% -> Gate 强制阻断",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-P02",
+    "desc": "恢复后残留旧口径 (增量污染)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 0.5,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "FAIL",
+      "events_summary": {
+        "CRITICAL": 4,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 4
+      },
+      "events": [
+        {
+          "event_id": "AE-83a8b766a745",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-01",
+          "detect_point": "D01.2",
+          "message": "COMPLETED 条目缺真实取数证据 (无原始 payload 或全 0): DSHE-TEST_OK-001-002",
+          "trace_id": "DSHE-TEST_OK-001-002",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-1695c7851a92",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "D02.1",
+          "message": "元数据完成率(1.0)冒充有效桥接率, 实际可取数率=0.5",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-3d621d808842",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-04",
+          "detect_point": "D04.5",
+          "message": "标记成功但实测报错: s_001 / 无法识别指标来源(id前缀): s_001",
+          "trace_id": "DSHE-TEST_OK-001-002",
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        },
+        {
+          "event_id": "AE-3ffa4b194cc9",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "G-06",
+          "message": "有效桥接率 0.5000 未达阈值 100% -> Gate 强制阻断",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-P03",
+    "desc": "DEP-001状态机迁移 (IN_PROGRESS, Gate不豁免)",
+    "expect": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "report": {
+      "auditor_version": "1.0.0",
+      "baseline": "caa2410",
+      "fingerprint": "DSHE-TEST_OK-001",
+      "run_id": "20260101_000001",
+      "verdict": "FAIL",
+      "gate_result": "NOT_READY",
+      "gate_g06_real_fetchable_rate": 0.5,
+      "gate_g09_script_audit": "PASS",
+      "gate_g10_data_fetch": "FAIL",
+      "events_summary": {
+        "CRITICAL": 1,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "total": 1
+      },
+      "events": [
+        {
+          "event_id": "AE-3ffa4b194cc9",
+          "level": "CRITICAL",
+          "rule": "R-AUDIT-02",
+          "detect_point": "G-06",
+          "message": "有效桥接率 0.5000 未达阈值 100% -> Gate 强制阻断",
+          "trace_id": null,
+          "evidence_index": null,
+          "timestamp": "2026-10-04T08:05:41Z"
+        }
+      ]
+    }
+  }
+]
