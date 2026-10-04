@@ -1,0 +1,63 @@
+{
+  "index": 98,
+  "indicator_id": "AL-016",
+  "semantic_id": "al_lme_inv",
+  "name_cn": "铝LME库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 5,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "LME 铝 库存",
+  "zhiji_short_id": "s_al_lme_inv",
+  "zhiji_long_id": "ID_AL_LME_INV",
+  "api_series_id_from_search": "ID02226113",
+  "mapped_name": "LME：原铝：原产国库存：巴林（月）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "AL-016",
+      "semantic_id": "al_lme_inv",
+      "name_cn": "铝LME库存",
+      "batch": 5,
+      "method": "api_search",
+      "requested_short_id": "s_al_lme_inv",
+      "api_series_id_from_search": "ID02226113",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.424836",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_al_lme_inv",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1256}, {\"date\": \"2026-10-02\", \"value\": 1306}, {\"date\": \"2026-10-03\", \"value\": 1276}]",
+      "raw_payload": {
+        "id": "s_al_lme_inv",
+        "name": "Mock s_al_lme_inv",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1256
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1306
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1276
+          }
+        ]
+      }
+    }
+  ]
+}

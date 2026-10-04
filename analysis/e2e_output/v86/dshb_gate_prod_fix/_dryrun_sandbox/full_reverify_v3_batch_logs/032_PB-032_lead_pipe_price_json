@@ -1,0 +1,63 @@
+{
+  "index": 32,
+  "indicator_id": "PB-032",
+  "semantic_id": "lead_pipe_price",
+  "name_cn": "铅管价格",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 2,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铅管 价格",
+  "zhiji_short_id": "s_lead_pipe_price",
+  "zhiji_long_id": "ID_LEAD_PIPE_PRICE",
+  "api_series_id_from_search": "ID00347802",
+  "mapped_name": "废钢：出口价格：日本（周）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "PB-032",
+      "semantic_id": "lead_pipe_price",
+      "name_cn": "铅管价格",
+      "batch": 2,
+      "method": "api_search",
+      "requested_short_id": "s_lead_pipe_price",
+      "api_series_id_from_search": "ID00347802",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.227839",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_lead_pipe_price",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1331}, {\"date\": \"2026-10-02\", \"value\": 1381}, {\"date\": \"2026-10-03\", \"value\": 1351}]",
+      "raw_payload": {
+        "id": "s_lead_pipe_price",
+        "name": "Mock s_lead_pipe_price",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1331
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1381
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1351
+          }
+        ]
+      }
+    }
+  ]
+}

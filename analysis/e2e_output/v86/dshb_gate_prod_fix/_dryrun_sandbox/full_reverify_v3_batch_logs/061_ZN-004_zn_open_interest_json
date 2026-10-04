@@ -1,0 +1,63 @@
+{
+  "index": 61,
+  "indicator_id": "ZN-004",
+  "semantic_id": "zn_open_interest",
+  "name_cn": "沪锌期货持仓量",
+  "unit": "lot",
+  "type": "INTEGER",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "沪锌 持仓量",
+  "zhiji_short_id": "s_zn_open_interest",
+  "zhiji_long_id": "ID_ZN_OPEN_INTEREST",
+  "api_series_id_from_search": "FU00033029",
+  "mapped_name": "LME：锌：持仓量（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "ZN-004",
+      "semantic_id": "zn_open_interest",
+      "name_cn": "沪锌期货持仓量",
+      "batch": 4,
+      "method": "api_search",
+      "requested_short_id": "s_zn_open_interest",
+      "api_series_id_from_search": "FU00033029",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.314836",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_zn_open_interest",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1265}, {\"date\": \"2026-10-02\", \"value\": 1315}, {\"date\": \"2026-10-03\", \"value\": 1285}]",
+      "raw_payload": {
+        "id": "s_zn_open_interest",
+        "name": "Mock s_zn_open_interest",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1265
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1315
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1285
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "index": 153,
+  "indicator_id": "SI-014",
+  "semantic_id": "si_monthly_spread",
+  "name_cn": "工业硅月差",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 8,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "工业硅 月差",
+  "zhiji_short_id": "s_si_monthly_spread",
+  "zhiji_long_id": "ID_SI_MONTHLY_SPREAD",
+  "api_series_id_from_search": "ID01448337",
+  "mapped_name": "工业硅：产量：中国（月）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "SI-014",
+      "semantic_id": "si_monthly_spread",
+      "name_cn": "工业硅月差",
+      "batch": 8,
+      "method": "api_search",
+      "requested_short_id": "s_si_monthly_spread",
+      "api_series_id_from_search": "ID01448337",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.601841",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_si_monthly_spread",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1121}, {\"date\": \"2026-10-02\", \"value\": 1171}, {\"date\": \"2026-10-03\", \"value\": 1141}]",
+      "raw_payload": {
+        "id": "s_si_monthly_spread",
+        "name": "Mock s_si_monthly_spread",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1121
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1171
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1141
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "index": 92,
+  "indicator_id": "AL-010",
+  "semantic_id": "al_consume",
+  "name_cn": "铝消费量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 5,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铝 消费量",
+  "zhiji_short_id": "s_al_consume",
+  "zhiji_long_id": "ID_AL_CONSUME",
+  "api_series_id_from_search": "ID01601663",
+  "mapped_name": "原铝：消费量预测值：全球（年）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "AL-010",
+      "semantic_id": "al_consume",
+      "name_cn": "铝消费量",
+      "batch": 5,
+      "method": "api_search",
+      "requested_short_id": "s_al_consume",
+      "api_series_id_from_search": "ID01601663",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.410839",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_al_consume",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1138}, {\"date\": \"2026-10-02\", \"value\": 1188}, {\"date\": \"2026-10-03\", \"value\": 1158}]",
+      "raw_payload": {
+        "id": "s_al_consume",
+        "name": "Mock s_al_consume",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1138
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1188
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1158
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,5733 @@
+{
+  "snapshot_metadata": {
+    "title": "DSHB V86-RC2 DSHE桥接快照 — 双维度校验数据包",
+    "snapshot_version": "2.0",
+    "generated_by": "full_reverify_v3_batch_v2.py",
+    "generated_at": "2026-10-04T15:48:43.657835",
+    "generated_date": "2026-10-04",
+    "source_script": "full_reverify_v3_batch_v2.py v2.0",
+    "task_id": "DSHB_V86_RC2_DEP_MONITOR_T3.4",
+    "test_report_id": "DSHB_V86_RC2_RETEST_T3.2_V2"
+  },
+  "dual_dimension_summary": {
+    "total_entries": 170,
+    "metadata_completion": {
+      "complete": 123,
+      "rate": "72.4%"
+    },
+    "data_fetchable": {
+      "fetchable": 123,
+      "rate": "72.4%"
+    },
+    "dependency_block": {
+      "blocked": 47,
+      "rate": "27.6%"
+    },
+    "gate_assessment": {
+      "data_fetchable_rate": 72.4,
+      "gate_threshold": 80.0,
+      "gate_ready": false,
+      "gate_status": "NOT_READY"
+    }
+  },
+  "entries": [
+    {
+      "indicator_id": "PB-011",
+      "semantic_id": "lead_total_inv",
+      "name_cn": "铅锭总库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 1,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-012",
+      "semantic_id": "lead_lme_inv",
+      "name_cn": "铅锭LME库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_lme_inv",
+      "zhiji_long_id": "ID_LEAD_LME_INV",
+      "api_series_id": "ID02226165",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_lme_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-013",
+      "semantic_id": "lead_shfe_inv",
+      "name_cn": "铅锭上期所库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_shfe_inv",
+      "zhiji_long_id": "ID_LEAD_SHFE_INV",
+      "api_series_id": "FU00022982",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_shfe_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-004",
+      "semantic_id": "cu_tc",
+      "name_cn": "铜精矿TC加工费",
+      "unit": "USD/dmt",
+      "type": "FLOAT",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_tc",
+      "zhiji_long_id": "ID_CU_TC",
+      "api_series_id": "ID01307265",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_tc",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-005",
+      "semantic_id": "cu_social_inv",
+      "name_cn": "电解铜社会库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_social_inv",
+      "zhiji_long_id": "ID_CU_SOCIAL_INV",
+      "api_series_id": "ID02014251",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_social_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-006",
+      "semantic_id": "cu_exchange_inv",
+      "name_cn": "电解铜交易所库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_exchange_inv",
+      "zhiji_long_id": "ID_CU_EXCHANGE_INV",
+      "api_series_id": "FU00112656",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_exchange_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-007",
+      "semantic_id": "cu_rod_rate",
+      "name_cn": "铜杆开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_rod_rate",
+      "zhiji_long_id": "ID_CU_ROD_RATE",
+      "api_series_id": "ID01504223",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_rod_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-002",
+      "semantic_id": "zn_social_inv",
+      "name_cn": "锌锭社会库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_social_inv",
+      "zhiji_long_id": "ID_ZN_SOCIAL_INV",
+      "api_series_id": "ID00188329",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_social_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-003",
+      "semantic_id": "zn_tc",
+      "name_cn": "锌精矿TC加工费",
+      "unit": "USD/dmt",
+      "type": "FLOAT",
+      "batch": 1,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_tc",
+      "zhiji_long_id": "ID_ZN_TC",
+      "api_series_id": "ID01510737",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_tc",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-002",
+      "semantic_id": "lead_open_interest",
+      "name_cn": "沪铅期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_open_interest",
+      "zhiji_long_id": "ID_LEAD_OPEN_INTEREST",
+      "api_series_id": "FU00033032",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-003",
+      "semantic_id": "lead_volume",
+      "name_cn": "沪铅期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_volume",
+      "zhiji_long_id": "ID_LEAD_VOLUME",
+      "api_series_id": "CM0000867015",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-004",
+      "semantic_id": "lead_settlement",
+      "name_cn": "沪铅期货结算价",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_settlement",
+      "zhiji_long_id": "ID_LEAD_SETTLEMENT",
+      "api_series_id": "FU00017237",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_settlement",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-005",
+      "semantic_id": "lead_bid_ask_spread",
+      "name_cn": "沪铅买卖价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_bid_ask_spread",
+      "zhiji_long_id": "ID_LEAD_BID_ASK_SPREAD",
+      "api_series_id": "ID01501478",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_bid_ask_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-006",
+      "semantic_id": "lead_monthly_spread",
+      "name_cn": "沪铅月价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_monthly_spread",
+      "zhiji_long_id": "ID_LEAD_MONTHLY_SPREAD",
+      "api_series_id": "ID01501478",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_monthly_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-007",
+      "semantic_id": "lead_basis",
+      "name_cn": "沪铅期现价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_basis",
+      "zhiji_long_id": "ID_LEAD_BASIS",
+      "api_series_id": "FU00024324",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_basis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-014",
+      "semantic_id": "lead_inv_change",
+      "name_cn": "铅锭库存变动",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-016",
+      "semantic_id": "lead_consume",
+      "name_cn": "铅锭消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_consume",
+      "zhiji_long_id": "ID_LEAD_CONSUME",
+      "api_series_id": "ID01001569",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-018",
+      "semantic_id": "lead_export",
+      "name_cn": "铅锭出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_export",
+      "zhiji_long_id": "ID_LEAD_EXPORT",
+      "api_series_id": "ID01029980",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-019",
+      "semantic_id": "lead_import",
+      "name_cn": "铅锭进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_import",
+      "zhiji_long_id": "ID_LEAD_IMPORT",
+      "api_series_id": "ID01552167",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-020",
+      "semantic_id": "lead_net_export",
+      "name_cn": "铅锭净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-021",
+      "semantic_id": "lead_stock_cover_days",
+      "name_cn": "铅锭库存覆盖天数",
+      "unit": "day",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-022",
+      "semantic_id": "lead_ore_price",
+      "name_cn": "铅精矿价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_ore_price",
+      "zhiji_long_id": "ID_LEAD_ORE_PRICE",
+      "api_series_id": "ID00259814",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_ore_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-023",
+      "semantic_id": "lead_conc_price_silver",
+      "name_cn": "铅精矿价格(含银)",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_conc_price_silver",
+      "zhiji_long_id": "ID_LEAD_CONC_PRICE_SILVER",
+      "api_series_id": "ID00259814",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_conc_price_silver",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-024",
+      "semantic_id": "lead_smelt_cost",
+      "name_cn": "电解铅冶炼成本",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_smelt_cost",
+      "zhiji_long_id": "ID_LEAD_SMELT_COST",
+      "api_series_id": "LC00167791",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_smelt_cost",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-025",
+      "semantic_id": "lead_metal_cost",
+      "name_cn": "铅金属成本",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-026",
+      "semantic_id": "lead_battery_cost",
+      "name_cn": "铅酸电池成本",
+      "unit": "CNY/kWh",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_battery_cost",
+      "zhiji_long_id": "ID_LEAD_BATTERY_COST",
+      "api_series_id": "ID01463146",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_battery_cost",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-027",
+      "semantic_id": "lead_battery_price",
+      "name_cn": "铅酸电池价格",
+      "unit": "CNY/kWh",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_battery_price",
+      "zhiji_long_id": "ID_LEAD_BATTERY_PRICE",
+      "api_series_id": "ID01245272",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_battery_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-028",
+      "semantic_id": "lead_battery_profit",
+      "name_cn": "铅酸电池利润",
+      "unit": "CNY/kWh",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-029",
+      "semantic_id": "lead_battery_util",
+      "name_cn": "铅酸电池开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_battery_util",
+      "zhiji_long_id": "ID_LEAD_BATTERY_UTIL",
+      "api_series_id": "ID01030005",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_battery_util",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-030",
+      "semantic_id": "lead_battery_output",
+      "name_cn": "铅酸电池产量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_battery_output",
+      "zhiji_long_id": "ID_LEAD_BATTERY_OUTPUT",
+      "api_series_id": "ID01245833",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_battery_output",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-031",
+      "semantic_id": "lead_plate_price",
+      "name_cn": "铅板价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_plate_price",
+      "zhiji_long_id": "ID_LEAD_PLATE_PRICE",
+      "api_series_id": "ID00347802",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_plate_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-032",
+      "semantic_id": "lead_pipe_price",
+      "name_cn": "铅管价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_pipe_price",
+      "zhiji_long_id": "ID_LEAD_PIPE_PRICE",
+      "api_series_id": "ID00347802",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_pipe_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-033",
+      "semantic_id": "lead_sheet_price",
+      "name_cn": "铅板卷价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_sheet_price",
+      "zhiji_long_id": "ID_LEAD_SHEET_PRICE",
+      "api_series_id": "ID00002631",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_sheet_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-034",
+      "semantic_id": "lead_cable_price",
+      "name_cn": "铅电缆价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 2,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_lead_cable_price",
+      "zhiji_long_id": "ID_LEAD_CABLE_PRICE",
+      "api_series_id": "ID02038076",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_lead_cable_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "PB-035",
+      "semantic_id": "lead_balance",
+      "name_cn": "铅供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-036",
+      "semantic_id": "lead_apparent_consume",
+      "name_cn": "铅表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "PB-037",
+      "semantic_id": "lead_balance_table",
+      "name_cn": "铅供需平衡表",
+      "unit": "ton",
+      "type": "JSON",
+      "batch": 2,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-002",
+      "semantic_id": "cu_open_interest",
+      "name_cn": "沪铜期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_open_interest",
+      "zhiji_long_id": "ID_CU_OPEN_INTEREST",
+      "api_series_id": "FU00033036",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-003",
+      "semantic_id": "cu_volume",
+      "name_cn": "沪铜期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_volume",
+      "zhiji_long_id": "ID_CU_VOLUME",
+      "api_series_id": "CM0000867015",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-008",
+      "semantic_id": "cu_wire_rate",
+      "name_cn": "铜线开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_wire_rate",
+      "zhiji_long_id": "ID_CU_WIRE_RATE",
+      "api_series_id": "ID01504223",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_wire_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-009",
+      "semantic_id": "cu_sheet_rate",
+      "name_cn": "铜板开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_sheet_rate",
+      "zhiji_long_id": "ID_CU_SHEET_RATE",
+      "api_series_id": "ID01504223",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_sheet_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-010",
+      "semantic_id": "cu_pipe_rate",
+      "name_cn": "铜管开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_pipe_rate",
+      "zhiji_long_id": "ID_CU_PIPE_RATE",
+      "api_series_id": "ID01504223",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_pipe_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-011",
+      "semantic_id": "cu_wire_profit",
+      "name_cn": "铜线利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_wire_profit",
+      "zhiji_long_id": "ID_CU_WIRE_PROFIT",
+      "api_series_id": "ID01150770",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_wire_profit",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-012",
+      "semantic_id": "cu_sheet_profit",
+      "name_cn": "铜板利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_sheet_profit",
+      "zhiji_long_id": "ID_CU_SHEET_PROFIT",
+      "api_series_id": "ID01138676",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_sheet_profit",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-013",
+      "semantic_id": "cu_pipe_profit",
+      "name_cn": "铜管利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_pipe_profit",
+      "zhiji_long_id": "ID_CU_PIPE_PROFIT",
+      "api_series_id": "ID00275412",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_pipe_profit",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-014",
+      "semantic_id": "cu_ore_price",
+      "name_cn": "铜精矿价格",
+      "unit": "USD/lb",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_ore_price",
+      "zhiji_long_id": "ID_CU_ORE_PRICE",
+      "api_series_id": "ID01307264",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_ore_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-015",
+      "semantic_id": "cu_import_cost",
+      "name_cn": "铜进口成本",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-016",
+      "semantic_id": "cu_consume",
+      "name_cn": "铜消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_consume",
+      "zhiji_long_id": "ID_CU_CONSUME",
+      "api_series_id": "ID01167298",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-017",
+      "semantic_id": "cu_export",
+      "name_cn": "铜出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_export",
+      "zhiji_long_id": "ID_CU_EXPORT",
+      "api_series_id": "ID01655470",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-018",
+      "semantic_id": "cu_import",
+      "name_cn": "铜进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_import",
+      "zhiji_long_id": "ID_CU_IMPORT",
+      "api_series_id": "ID01030232",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-019",
+      "semantic_id": "cu_net_export",
+      "name_cn": "铜净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-020",
+      "semantic_id": "cu_balance",
+      "name_cn": "铜供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-021",
+      "semantic_id": "cu_apparent_consume",
+      "name_cn": "铜表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-022",
+      "semantic_id": "cu_tc_change",
+      "name_cn": "铜TC变动",
+      "unit": "USD/dmt",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-023",
+      "semantic_id": "cu_inventory_ratio",
+      "name_cn": "铜库存比率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-024",
+      "semantic_id": "cu_monthly_spread",
+      "name_cn": "沪铜月差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_monthly_spread",
+      "zhiji_long_id": "ID_CU_MONTHLY_SPREAD",
+      "api_series_id": "FU00015882",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_monthly_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-025",
+      "semantic_id": "cu_basis",
+      "name_cn": "沪铜期现价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_basis",
+      "zhiji_long_id": "ID_CU_BASIS",
+      "api_series_id": "FU00024319",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_basis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "CU-026",
+      "semantic_id": "cu_smelt_profit",
+      "name_cn": "电解铜冶炼利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-027",
+      "semantic_id": "cu_balance_table",
+      "name_cn": "铜供需平衡表",
+      "unit": "ton",
+      "type": "JSON",
+      "batch": 3,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "CU-028",
+      "semantic_id": "cu_price_spread_lme_shfe",
+      "name_cn": "铜LME-SHFE价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 3,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_cu_price_spread_lme_shfe",
+      "zhiji_long_id": "ID_CU_PRICE_SPREAD_LME_SHFE",
+      "api_series_id": "FU00033060",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_cu_price_spread_lme_shfe",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-004",
+      "semantic_id": "zn_open_interest",
+      "name_cn": "沪锌期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_open_interest",
+      "zhiji_long_id": "ID_ZN_OPEN_INTEREST",
+      "api_series_id": "FU00033029",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-005",
+      "semantic_id": "zn_volume",
+      "name_cn": "沪锌期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_volume",
+      "zhiji_long_id": "ID_ZN_VOLUME",
+      "api_series_id": "CM0000867015",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-006",
+      "semantic_id": "zn_wire_rate",
+      "name_cn": "锌线开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_wire_rate",
+      "zhiji_long_id": "ID_ZN_WIRE_RATE",
+      "api_series_id": "ID02039060",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_wire_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-007",
+      "semantic_id": "zn_plate_rate",
+      "name_cn": "锌板开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_plate_rate",
+      "zhiji_long_id": "ID_ZN_PLATE_RATE",
+      "api_series_id": "ID00366835",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_plate_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-008",
+      "semantic_id": "zn_pipe_rate",
+      "name_cn": "锌管开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_pipe_rate",
+      "zhiji_long_id": "ID_ZN_PIPE_RATE",
+      "api_series_id": "ID01002076",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_pipe_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-009",
+      "semantic_id": "zn_export",
+      "name_cn": "锌出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_export",
+      "zhiji_long_id": "ID_ZN_EXPORT",
+      "api_series_id": "ID00360140",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-010",
+      "semantic_id": "zn_import",
+      "name_cn": "锌进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_import",
+      "zhiji_long_id": "ID_ZN_IMPORT",
+      "api_series_id": "ID01552272",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-011",
+      "semantic_id": "zn_net_export",
+      "name_cn": "锌净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "ZN-012",
+      "semantic_id": "zn_consume",
+      "name_cn": "锌消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_consume",
+      "zhiji_long_id": "ID_ZN_CONSUME",
+      "api_series_id": "ID01210994",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-013",
+      "semantic_id": "zn_balance",
+      "name_cn": "锌供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "ZN-014",
+      "semantic_id": "zn_apparent_consume",
+      "name_cn": "锌表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "ZN-015",
+      "semantic_id": "zn_exchange_inv",
+      "name_cn": "锌锭交易所库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_exchange_inv",
+      "zhiji_long_id": "ID_ZN_EXCHANGE_INV",
+      "api_series_id": "ID01990766",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_exchange_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-016",
+      "semantic_id": "zn_ore_price",
+      "name_cn": "锌精矿价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_ore_price",
+      "zhiji_long_id": "ID_ZN_ORE_PRICE",
+      "api_series_id": "ID00259821",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_ore_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-017",
+      "semantic_id": "zn_smelt_cost",
+      "name_cn": "电解锌冶炼成本",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_smelt_cost",
+      "zhiji_long_id": "ID_ZN_SMELT_COST",
+      "api_series_id": "LC00167777",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_smelt_cost",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-018",
+      "semantic_id": "zn_smelt_profit",
+      "name_cn": "电解锌冶炼利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "ZN-019",
+      "semantic_id": "zn_tc_change",
+      "name_cn": "锌TC变动",
+      "unit": "USD/dmt",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "ZN-020",
+      "semantic_id": "zn_inventory_ratio",
+      "name_cn": "锌库存比率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "ZN-021",
+      "semantic_id": "zn_monthly_spread",
+      "name_cn": "沪锌月差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_monthly_spread",
+      "zhiji_long_id": "ID_ZN_MONTHLY_SPREAD",
+      "api_series_id": "FU00016498",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_monthly_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-022",
+      "semantic_id": "zn_basis",
+      "name_cn": "沪锌期现价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_basis",
+      "zhiji_long_id": "ID_ZN_BASIS",
+      "api_series_id": "FU00024317",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_basis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-023",
+      "semantic_id": "zn_balance_table",
+      "name_cn": "锌供需平衡表",
+      "unit": "ton",
+      "type": "JSON",
+      "batch": 4,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "ZN-024",
+      "semantic_id": "zn_lme_inv",
+      "name_cn": "锌锭LME库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_lme_inv",
+      "zhiji_long_id": "ID_ZN_LME_INV",
+      "api_series_id": "ID02226129",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_lme_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "ZN-025",
+      "semantic_id": "zn_warehouse_inv",
+      "name_cn": "锌锭仓单库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 4,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_zn_warehouse_inv",
+      "zhiji_long_id": "ID_ZN_WAREHOUSE_INV",
+      "api_series_id": "FU00016165",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_zn_warehouse_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-001",
+      "semantic_id": "al_close",
+      "name_cn": "沪铝期货收盘价",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_close",
+      "zhiji_long_id": "ID_AL_CLOSE",
+      "api_series_id": "CM0000662661",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_close",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-002",
+      "semantic_id": "al_open_interest",
+      "name_cn": "沪铝期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_open_interest",
+      "zhiji_long_id": "ID_AL_OPEN_INTEREST",
+      "api_series_id": "FU00033031",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-003",
+      "semantic_id": "al_volume",
+      "name_cn": "沪铝期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_volume",
+      "zhiji_long_id": "ID_AL_VOLUME",
+      "api_series_id": "CM0000867015",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-004",
+      "semantic_id": "al_social_inv",
+      "name_cn": "电解铝社会库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_social_inv",
+      "zhiji_long_id": "ID_AL_SOCIAL_INV",
+      "api_series_id": "ID00302783",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_social_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-005",
+      "semantic_id": "al_exchange_inv",
+      "name_cn": "电解铝交易所库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_exchange_inv",
+      "zhiji_long_id": "ID_AL_EXCHANGE_INV",
+      "api_series_id": "ID00302783",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_exchange_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-006",
+      "semantic_id": "al_electrolysis",
+      "name_cn": "电解铝产量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_electrolysis",
+      "zhiji_long_id": "ID_AL_ELECTROLYSIS",
+      "api_series_id": "ID01445793",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_electrolysis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-007",
+      "semantic_id": "al_ore_price",
+      "name_cn": "铝土矿价格",
+      "unit": "USD/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_ore_price",
+      "zhiji_long_id": "ID_AL_ORE_PRICE",
+      "api_series_id": "ID00302661",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_ore_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-008",
+      "semantic_id": "al_smelt_cost",
+      "name_cn": "电解铝冶炼成本",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_smelt_cost",
+      "zhiji_long_id": "ID_AL_SMELT_COST",
+      "api_series_id": "ID01001761",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_smelt_cost",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-009",
+      "semantic_id": "al_smelt_profit",
+      "name_cn": "电解铝冶炼利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "AL-010",
+      "semantic_id": "al_consume",
+      "name_cn": "铝消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_consume",
+      "zhiji_long_id": "ID_AL_CONSUME",
+      "api_series_id": "ID01601663",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-011",
+      "semantic_id": "al_export",
+      "name_cn": "铝出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_export",
+      "zhiji_long_id": "ID_AL_EXPORT",
+      "api_series_id": "ID01552247",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-012",
+      "semantic_id": "al_import",
+      "name_cn": "铝进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_import",
+      "zhiji_long_id": "ID_AL_IMPORT",
+      "api_series_id": "ID01552244",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-013",
+      "semantic_id": "al_net_export",
+      "name_cn": "铝净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "AL-014",
+      "semantic_id": "al_balance",
+      "name_cn": "铝供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "AL-015",
+      "semantic_id": "al_apparent_consume",
+      "name_cn": "铝表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "AL-016",
+      "semantic_id": "al_lme_inv",
+      "name_cn": "铝LME库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_lme_inv",
+      "zhiji_long_id": "ID_AL_LME_INV",
+      "api_series_id": "ID02226113",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_lme_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-017",
+      "semantic_id": "al_monthly_spread",
+      "name_cn": "沪铝月差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_monthly_spread",
+      "zhiji_long_id": "ID_AL_MONTHLY_SPREAD",
+      "api_series_id": "FU00014772",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_monthly_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-018",
+      "semantic_id": "al_basis",
+      "name_cn": "沪铝期现价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_basis",
+      "zhiji_long_id": "ID_AL_BASIS",
+      "api_series_id": "FU00024308",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_basis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-019",
+      "semantic_id": "al_inventory_ratio",
+      "name_cn": "铝库存比率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "AL-020",
+      "semantic_id": "al_balance_table",
+      "name_cn": "铝供需平衡表",
+      "unit": "ton",
+      "type": "JSON",
+      "batch": 5,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "AL-021",
+      "semantic_id": "al_power_consume",
+      "name_cn": "铝电力消费",
+      "unit": "kWh/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_power_consume",
+      "zhiji_long_id": "ID_AL_POWER_CONSUME",
+      "api_series_id": "ID01732414",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_power_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-022",
+      "semantic_id": "al_ore_grade",
+      "name_cn": "铝土矿品位",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_ore_grade",
+      "zhiji_long_id": "ID_AL_ORE_GRADE",
+      "api_series_id": "ID01724182",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_ore_grade",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-023",
+      "semantic_id": "al_ingot_price",
+      "name_cn": "铝锭价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_ingot_price",
+      "zhiji_long_id": "ID_AL_INGOT_PRICE",
+      "api_series_id": "ID01210428",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_ingot_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-024",
+      "semantic_id": "al_profile_price",
+      "name_cn": "铝型材价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_profile_price",
+      "zhiji_long_id": "ID_AL_PROFILE_PRICE",
+      "api_series_id": "ID01294956",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_profile_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "AL-025",
+      "semantic_id": "al_util_rate",
+      "name_cn": "电解铝开工率",
+      "unit": "%",
+      "type": "FLOAT",
+      "batch": 5,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_al_util_rate",
+      "zhiji_long_id": "ID_AL_UTIL_RATE",
+      "api_series_id": "ID01504223",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_al_util_rate",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-001",
+      "semantic_id": "ni_close",
+      "name_cn": "沪镍期货收盘价",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_close",
+      "zhiji_long_id": "ID_NI_CLOSE",
+      "api_series_id": "FU00014984",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_close",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-002",
+      "semantic_id": "ni_open_interest",
+      "name_cn": "沪镍期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_open_interest",
+      "zhiji_long_id": "ID_NI_OPEN_INTEREST",
+      "api_series_id": "FU00014981",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-003",
+      "semantic_id": "ni_volume",
+      "name_cn": "沪镍期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_volume",
+      "zhiji_long_id": "ID_NI_VOLUME",
+      "api_series_id": "FU00014980",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-004",
+      "semantic_id": "ni_social_inv",
+      "name_cn": "镍社会库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_social_inv",
+      "zhiji_long_id": "ID_NI_SOCIAL_INV",
+      "api_series_id": "ID02226167",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_social_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-005",
+      "semantic_id": "ni_exchange_inv",
+      "name_cn": "镍交易所库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_exchange_inv",
+      "zhiji_long_id": "ID_NI_EXCHANGE_INV",
+      "api_series_id": "FU00022954",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_exchange_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-006",
+      "semantic_id": "ni_production",
+      "name_cn": "镍产量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_production",
+      "zhiji_long_id": "ID_NI_PRODUCTION",
+      "api_series_id": "ID00300535",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_production",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-007",
+      "semantic_id": "ni_consume",
+      "name_cn": "镍消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_consume",
+      "zhiji_long_id": "ID_NI_CONSUME",
+      "api_series_id": "ID01001570",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-008",
+      "semantic_id": "ni_export",
+      "name_cn": "镍出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_export",
+      "zhiji_long_id": "ID_NI_EXPORT",
+      "api_series_id": "GM00194554",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-009",
+      "semantic_id": "ni_import",
+      "name_cn": "镍进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_import",
+      "zhiji_long_id": "ID_NI_IMPORT",
+      "api_series_id": "ID00408378",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-010",
+      "semantic_id": "ni_net_export",
+      "name_cn": "镍净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "NI-011",
+      "semantic_id": "ni_balance",
+      "name_cn": "镍供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "NI-012",
+      "semantic_id": "ni_apparent_consume",
+      "name_cn": "镍表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "NI-013",
+      "semantic_id": "ni_lme_inv",
+      "name_cn": "镍LME库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_lme_inv",
+      "zhiji_long_id": "ID_NI_LME_INV",
+      "api_series_id": "ID00302693",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_lme_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-014",
+      "semantic_id": "ni_smelt_cost",
+      "name_cn": "镍冶炼成本",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_smelt_cost",
+      "zhiji_long_id": "ID_NI_SMELT_COST",
+      "api_series_id": "ID01360199",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_smelt_cost",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-015",
+      "semantic_id": "ni_smelt_profit",
+      "name_cn": "镍冶炼利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 6,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "NI-016",
+      "semantic_id": "ni_monthly_spread",
+      "name_cn": "沪镍月差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_monthly_spread",
+      "zhiji_long_id": "ID_NI_MONTHLY_SPREAD",
+      "api_series_id": "ID01244860",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_monthly_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-017",
+      "semantic_id": "ni_basis",
+      "name_cn": "沪镍期现价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 6,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_ni_basis",
+      "zhiji_long_id": "ID_NI_BASIS",
+      "api_series_id": "FU00024318",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_ni_basis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "NI-018",
+      "semantic_id": "ni_balance_table",
+      "name_cn": "镍供需平衡表",
+      "unit": "ton",
+      "type": "JSON",
+      "batch": 6,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SN-001",
+      "semantic_id": "sn_close",
+      "name_cn": "沪锡期货收盘价",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_close",
+      "zhiji_long_id": "ID_SN_CLOSE",
+      "api_series_id": "CM0000662661",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_close",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-002",
+      "semantic_id": "sn_open_interest",
+      "name_cn": "沪锡期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_open_interest",
+      "zhiji_long_id": "ID_SN_OPEN_INTEREST",
+      "api_series_id": "FU00033043",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-003",
+      "semantic_id": "sn_volume",
+      "name_cn": "沪锡期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_volume",
+      "zhiji_long_id": "ID_SN_VOLUME",
+      "api_series_id": "CM0000867015",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-004",
+      "semantic_id": "sn_social_inv",
+      "name_cn": "锡社会库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_social_inv",
+      "zhiji_long_id": "ID_SN_SOCIAL_INV",
+      "api_series_id": "ID01517441",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_social_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-005",
+      "semantic_id": "sn_production",
+      "name_cn": "锡产量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_production",
+      "zhiji_long_id": "ID_SN_PRODUCTION",
+      "api_series_id": "ID01590150",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_production",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-006",
+      "semantic_id": "sn_consume",
+      "name_cn": "锡消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_consume",
+      "zhiji_long_id": "ID_SN_CONSUME",
+      "api_series_id": "ID00303746",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-007",
+      "semantic_id": "sn_export",
+      "name_cn": "锡出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_export",
+      "zhiji_long_id": "ID_SN_EXPORT",
+      "api_series_id": "ID01593795",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-008",
+      "semantic_id": "sn_import",
+      "name_cn": "锡进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_import",
+      "zhiji_long_id": "ID_SN_IMPORT",
+      "api_series_id": "GM00229591",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-009",
+      "semantic_id": "sn_net_export",
+      "name_cn": "锡净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SN-010",
+      "semantic_id": "sn_balance",
+      "name_cn": "锡供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SN-011",
+      "semantic_id": "sn_apparent_consume",
+      "name_cn": "锡表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SN-012",
+      "semantic_id": "sn_lme_inv",
+      "name_cn": "锡LME库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_lme_inv",
+      "zhiji_long_id": "ID_SN_LME_INV",
+      "api_series_id": "ID02226171",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_lme_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-013",
+      "semantic_id": "sn_smelt_cost",
+      "name_cn": "锡冶炼成本",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 7,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_sn_smelt_cost",
+      "zhiji_long_id": "ID_SN_SMELT_COST",
+      "api_series_id": "ID02105841",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_sn_smelt_cost",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SN-014",
+      "semantic_id": "sn_smelt_profit",
+      "name_cn": "锡冶炼利润",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 7,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SI-001",
+      "semantic_id": "si_close",
+      "name_cn": "工业硅期货收盘价",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_close",
+      "zhiji_long_id": "ID_SI_CLOSE",
+      "api_series_id": "FU00104825",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_close",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-002",
+      "semantic_id": "si_open_interest",
+      "name_cn": "工业硅期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_open_interest",
+      "zhiji_long_id": "ID_SI_OPEN_INTEREST",
+      "api_series_id": "FU00088310",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-003",
+      "semantic_id": "si_volume",
+      "name_cn": "工业硅期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_volume",
+      "zhiji_long_id": "ID_SI_VOLUME",
+      "api_series_id": "FU00088312",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-004",
+      "semantic_id": "si_inventory",
+      "name_cn": "工业硅库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_inventory",
+      "zhiji_long_id": "ID_SI_INVENTORY",
+      "api_series_id": "FU00050831",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_inventory",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-005",
+      "semantic_id": "si_production",
+      "name_cn": "工业硅产量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_production",
+      "zhiji_long_id": "ID_SI_PRODUCTION",
+      "api_series_id": "ID01448337",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_production",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-006",
+      "semantic_id": "si_consume",
+      "name_cn": "工业硅消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_consume",
+      "zhiji_long_id": "ID_SI_CONSUME",
+      "api_series_id": "CM01126030",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-007",
+      "semantic_id": "si_export",
+      "name_cn": "工业硅出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_export",
+      "zhiji_long_id": "ID_SI_EXPORT",
+      "api_series_id": "ID00366880",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-008",
+      "semantic_id": "si_import",
+      "name_cn": "工业硅进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_import",
+      "zhiji_long_id": "ID_SI_IMPORT",
+      "api_series_id": "CM0000058339",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-009",
+      "semantic_id": "si_net_export",
+      "name_cn": "工业硅净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SI-010",
+      "semantic_id": "si_balance",
+      "name_cn": "工业硅供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SI-011",
+      "semantic_id": "si_apparent_consume",
+      "name_cn": "工业硅表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 8,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "SI-012",
+      "semantic_id": "si_ore_price",
+      "name_cn": "硅石价格",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_ore_price",
+      "zhiji_long_id": "ID_SI_ORE_PRICE",
+      "api_series_id": "ID01862960",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_ore_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-013",
+      "semantic_id": "si_power_consume",
+      "name_cn": "工业硅电力消费",
+      "unit": "kWh/ton",
+      "type": "FLOAT",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_power_consume",
+      "zhiji_long_id": "ID_SI_POWER_CONSUME",
+      "api_series_id": "ID02313973",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_power_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-014",
+      "semantic_id": "si_monthly_spread",
+      "name_cn": "工业硅月差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_monthly_spread",
+      "zhiji_long_id": "ID_SI_MONTHLY_SPREAD",
+      "api_series_id": "ID01448337",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_monthly_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-015",
+      "semantic_id": "si_basis",
+      "name_cn": "工业硅期现价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 8,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_si_basis",
+      "zhiji_long_id": "ID_SI_BASIS",
+      "api_series_id": "FU00051051",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_si_basis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "SI-016",
+      "semantic_id": "si_balance_table",
+      "name_cn": "工业硅供需平衡表",
+      "unit": "ton",
+      "type": "JSON",
+      "batch": 8,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "LI-001",
+      "semantic_id": "li_close",
+      "name_cn": "碳酸锂期货收盘价",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_close",
+      "zhiji_long_id": "ID_LI_CLOSE",
+      "api_series_id": "FU00104839",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_close",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-002",
+      "semantic_id": "li_open_interest",
+      "name_cn": "碳酸锂期货持仓量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_open_interest",
+      "zhiji_long_id": "ID_LI_OPEN_INTEREST",
+      "api_series_id": "FU00088313",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 1.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_open_interest",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-003",
+      "semantic_id": "li_volume",
+      "name_cn": "碳酸锂期货成交量",
+      "unit": "lot",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_volume",
+      "zhiji_long_id": "ID_LI_VOLUME",
+      "api_series_id": "FU00088311",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_volume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-004",
+      "semantic_id": "li_social_inv",
+      "name_cn": "碳酸锂社会库存",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_social_inv",
+      "zhiji_long_id": "ID_LI_SOCIAL_INV",
+      "api_series_id": "ID01865189",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_social_inv",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-005",
+      "semantic_id": "li_production",
+      "name_cn": "碳酸锂产量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_production",
+      "zhiji_long_id": "ID_LI_PRODUCTION",
+      "api_series_id": "ID02226352",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_production",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-006",
+      "semantic_id": "li_consume",
+      "name_cn": "碳酸锂消费量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_consume",
+      "zhiji_long_id": "ID_LI_CONSUME",
+      "api_series_id": "ID01245889",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_consume",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-007",
+      "semantic_id": "li_export",
+      "name_cn": "碳酸锂出口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_export",
+      "zhiji_long_id": "ID_LI_EXPORT",
+      "api_series_id": "ID01742023",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_export",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-008",
+      "semantic_id": "li_import",
+      "name_cn": "碳酸锂进口量",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_import",
+      "zhiji_long_id": "ID_LI_IMPORT",
+      "api_series_id": "ID01666088",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_import",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-009",
+      "semantic_id": "li_net_export",
+      "name_cn": "碳酸锂净出口",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "LI-010",
+      "semantic_id": "li_balance",
+      "name_cn": "碳酸锂供需平衡",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "LI-011",
+      "semantic_id": "li_apparent_consume",
+      "name_cn": "碳酸锂表观消费",
+      "unit": "ton",
+      "type": "INTEGER",
+      "batch": 9,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    },
+    {
+      "indicator_id": "LI-012",
+      "semantic_id": "li_ore_price",
+      "name_cn": "锂矿石价格",
+      "unit": "USD/ton",
+      "type": "FLOAT",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search_best_effort",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_ore_price",
+      "zhiji_long_id": "ID_LI_ORE_PRICE",
+      "api_series_id": "ID01922210",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_ore_price",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-013",
+      "semantic_id": "li_monthly_spread",
+      "name_cn": "碳酸锂月差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_monthly_spread",
+      "zhiji_long_id": "ID_LI_MONTHLY_SPREAD",
+      "api_series_id": "ID01865204",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_monthly_spread",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-014",
+      "semantic_id": "li_basis",
+      "name_cn": "碳酸锂期现价差",
+      "unit": "CNY/ton",
+      "type": "FLOAT",
+      "batch": 9,
+      "category": "fabricated_short_id",
+      "method": "api_search",
+      "metadata_completion": {
+        "complete": true,
+        "has_short_id": true,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": true,
+        "data_count": 0,
+        "http_status": 200,
+        "error_msg": null
+      },
+      "dependency_block": false,
+      "zhiji_short_id": "s_li_basis",
+      "zhiji_long_id": "ID_LI_BASIS",
+      "api_series_id": "FU00051053",
+      "block_reason": null,
+      "last_test": {
+        "http_status": 200,
+        "api_ms": 0.0,
+        "data_count": 3,
+        "non_zero_count": 3,
+        "perm_state": -4,
+        "resolved_series_id": "s_li_basis",
+        "error_detail": null
+      }
+    },
+    {
+      "indicator_id": "LI-015",
+      "semantic_id": "li_balance_table",
+      "name_cn": "碳酸锂供需平衡表",
+      "unit": "ton",
+      "type": "JSON",
+      "batch": 9,
+      "category": "derived",
+      "method": "derived",
+      "metadata_completion": {
+        "complete": false,
+        "has_short_id": false,
+        "has_long_id": true,
+        "has_api_series_id": true
+      },
+      "data_fetchable": {
+        "fetchable": false,
+        "data_count": 0,
+        "http_status": null,
+        "error_msg": "计算推导无API调用, 依赖下游指标可取数"
+      },
+      "dependency_block": true,
+      "zhiji_short_id": "DERIVED",
+      "zhiji_long_id": "DERIVED",
+      "api_series_id": "DERIVED",
+      "block_reason": "计算推导无API调用, 依赖下游指标可取数"
+    }
+  ],
+  "entry_count": 170
+}

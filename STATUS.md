@@ -1198,3 +1198,19 @@
 - 约束合规: NO_OVERWRITE=TRUE(V1/V2全部保留), BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
 - DSHB_PROD_PHASE_DEP_MONITOR_DONE=TRUE
 - 状态标记: DSHB_PROD_PHASE_DEP_MONITOR_DONE=TRUE
+
+### 2026-10-15 DSHB_V86_RC2_AUDIT_ALIGN_AND_SELF_CHECK
+- 表述口径对齐+触发器全链路联调+Gate前置自检+FLAG清理+风险V4 (5 deliverables, MD5 all verified)
+  - v86_rc2_dshb_statement_alignment_report.md (MD5: A907480D) - 口径对齐整改报告(320+扫描,5违规已修复,HERMES双证据规则)
+  - v86_rc2_dshb_trigger_e2e_dryrun_log.md (MD5: E8E9E430) - 触发器E2E dry-run日志(7/7链路PASS,8缺陷发现,0真实API调用)
+  - v86_rc2_dshb_gate_pre_self_check_v3.md (MD5: 14B096B8) - Gate G01~G10前置自检(10/10 PASS,G09脚本审计PASS,G10真实取数校验PASS)
+  - v86_rc2_dshb_flag_clean_report.md (MD5: F0F71FAF) - FLAG清理报告(0冲突,1重复清理,6旧口径标记,HERMES声明已添加)
+  - v86_rc2_dshb_risk_re_evaluate_v4.md (MD5: 2AC0AE4E) - 风险台账V4 HERMES五类分类(29项,11项DEP_BLOCK独立,内部P0=0)
+- 口径整改: 27文件320+匹配扫描,5违规全部修复,FLAG新增HERMES双证据声明
+- E2E dry-run: 7/7链路PASS(探测→复测→快照→MD5→风险→Gate→通知),8缺陷(2 MEDIUM,6 LOW)
+- Gate自检: G01~G10全部PASS,G09脚本审计PASS,G10真实取数校验PASS(0%外部依赖)
+- FLAG清理: 0冲突标记,1重复清理(STAGE1_DONE),6旧口径标记OLD_CALIBER,BRIDGE_RATE更正
+- 风险V4: HERMES五类分类(INTERNAL/DEP_BLOCK/MIXED/CLOSED/MITIGATED),DEP_BLOCK独立11项
+- 约束合规: NO_OVERWRITE=TRUE(V1/V2/V3全部保留), BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- DSHB_PROD_PHASE_AUDIT_ALIGN_DONE=TRUE
+- 状态标记: DSHB_PROD_PHASE_AUDIT_ALIGN_DONE=TRUE

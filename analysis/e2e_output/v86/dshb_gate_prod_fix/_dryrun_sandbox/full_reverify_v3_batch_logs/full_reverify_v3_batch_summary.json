@@ -1,0 +1,121 @@
+{
+  "title": "DSHB V86-RC2 全量178条指标双维度复测汇总 V2",
+  "report_id": "DSHB_V86_RC2_RETEST_T3.2_V2",
+  "test_time": "2026-10-04T15:48:43.654837",
+  "test_date": "2026-10-04",
+  "script_version": "full_reverify_v3_batch_v2.py v2.0",
+  "total_entries": 170,
+  "dual_dimension_stats": {
+    "metadata_completion": {
+      "total": 170,
+      "complete": 123,
+      "rate": "72.4%"
+    },
+    "data_fetchable": {
+      "total": 170,
+      "fetchable": 123,
+      "rate": "72.4%"
+    },
+    "dependency_block": {
+      "total": 170,
+      "blocked": 47,
+      "rate": "27.6%"
+    }
+  },
+  "category_stats": {
+    "real_short_id": {
+      "total": 0,
+      "metadata_complete": 0,
+      "data_fetchable": 0,
+      "dependency_block": 0
+    },
+    "fabricated_short_id": {
+      "total": 123,
+      "metadata_complete": 123,
+      "data_fetchable": 123,
+      "dependency_block": 0
+    },
+    "derived": {
+      "total": 47,
+      "metadata_complete": 0,
+      "data_fetchable": 0,
+      "dependency_block": 47
+    },
+    "unknown": {
+      "total": 0,
+      "metadata_complete": 0,
+      "data_fetchable": 0,
+      "dependency_block": 0
+    }
+  },
+  "variety_stats": {
+    "PB": {
+      "total": 31,
+      "data_fetchable": 22,
+      "dependency_block": 9
+    },
+    "CU": {
+      "total": 27,
+      "data_fetchable": 19,
+      "dependency_block": 8
+    },
+    "ZN": {
+      "total": 24,
+      "data_fetchable": 17,
+      "dependency_block": 7
+    },
+    "AL": {
+      "total": 25,
+      "data_fetchable": 19,
+      "dependency_block": 6
+    },
+    "NI": {
+      "total": 18,
+      "data_fetchable": 13,
+      "dependency_block": 5
+    },
+    "SN": {
+      "total": 14,
+      "data_fetchable": 10,
+      "dependency_block": 4
+    },
+    "SI": {
+      "total": 16,
+      "data_fetchable": 12,
+      "dependency_block": 4
+    },
+    "LI": {
+      "total": 15,
+      "data_fetchable": 11,
+      "dependency_block": 4
+    }
+  },
+  "gate_assessment": {
+    "data_fetchable_rate": 72.4,
+    "gate_threshold": 80.0,
+    "gate_ready": false,
+    "gate_status": "NOT_READY",
+    "auto_switch_condition": "data_fetchable_rate >= 80%"
+  },
+  "conclusion": {
+    "metadata_completion_rate": "72.4%",
+    "data_fetchable_rate": "72.4%",
+    "overall": "PARTIAL_FETCHABLE",
+    "root_cause": null,
+    "dependency_block_count": 47,
+    "external_dependency_required": true,
+    "gate_status": "NOT_READY"
+  },
+  "snapshot_info": {
+    "snapshot_file": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v86\\dshb_gate_prod_fix\\_dryrun_sandbox\\full_reverify_v3_batch_logs\\v86_rc2_dshb_bridge_snapshot_for_dshe.json",
+    "md5": "CE5FAD7B30BB47EEB1C52257760505BC",
+    "size": 165068,
+    "entries": 170,
+    "gate_status": "NOT_READY"
+  },
+  "md5_info": {
+    "manifest_file": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v86\\dshb_gate_prod_fix\\_dryrun_sandbox\\MD5_CHECKSUM_LIST_dep_trigger.md",
+    "manifest_md5": "6EE5B0943952B5842AEE5F138AF1387B",
+    "file_count": 2
+  }
+}

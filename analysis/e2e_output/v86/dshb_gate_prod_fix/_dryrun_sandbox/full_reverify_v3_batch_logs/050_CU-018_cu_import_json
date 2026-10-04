@@ -1,0 +1,63 @@
+{
+  "index": 50,
+  "indicator_id": "CU-018",
+  "semantic_id": "cu_import",
+  "name_cn": "铜进口量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 3,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "铜 进口量",
+  "zhiji_short_id": "s_cu_import",
+  "zhiji_long_id": "ID_CU_IMPORT",
+  "api_series_id_from_search": "ID01030232",
+  "mapped_name": "铜：进口盈亏（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "CU-018",
+      "semantic_id": "cu_import",
+      "name_cn": "铜进口量",
+      "batch": 3,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_cu_import",
+      "api_series_id_from_search": "ID01030232",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.290840",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_cu_import",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1245}, {\"date\": \"2026-10-02\", \"value\": 1295}, {\"date\": \"2026-10-03\", \"value\": 1265}]",
+      "raw_payload": {
+        "id": "s_cu_import",
+        "name": "Mock s_cu_import",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1245
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1295
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1265
+          }
+        ]
+      }
+    }
+  ]
+}

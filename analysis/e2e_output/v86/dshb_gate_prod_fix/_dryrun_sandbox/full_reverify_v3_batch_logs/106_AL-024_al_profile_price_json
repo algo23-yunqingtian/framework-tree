@@ -1,0 +1,63 @@
+{
+  "index": 106,
+  "indicator_id": "AL-024",
+  "semantic_id": "al_profile_price",
+  "name_cn": "铝型材价格",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 5,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铝型材 价格",
+  "zhiji_short_id": "s_al_profile_price",
+  "zhiji_long_id": "ID_AL_PROFILE_PRICE",
+  "api_series_id_from_search": "ID01294956",
+  "mapped_name": "铝型材：普通粉末喷涂料：汇总价格：杭州：海螺铝型材（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "AL-024",
+      "semantic_id": "al_profile_price",
+      "name_cn": "铝型材价格",
+      "batch": 5,
+      "method": "api_search",
+      "requested_short_id": "s_al_profile_price",
+      "api_series_id_from_search": "ID01294956",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.450841",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_al_profile_price",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1080}, {\"date\": \"2026-10-02\", \"value\": 1130}, {\"date\": \"2026-10-03\", \"value\": 1100}]",
+      "raw_payload": {
+        "id": "s_al_profile_price",
+        "name": "Mock s_al_profile_price",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1080
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1130
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1100
+          }
+        ]
+      }
+    }
+  ]
+}

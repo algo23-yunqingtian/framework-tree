@@ -1,0 +1,22 @@
+{
+  "index": 58,
+  "indicator_id": "CU-026",
+  "semantic_id": "cu_smelt_profit",
+  "name_cn": "电解铜冶炼利润",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 3,
+  "priority": "P1",
+  "category": "derived",
+  "method": "derived",
+  "search_query": "电解铜 冶炼利润",
+  "zhiji_short_id": "DERIVED",
+  "zhiji_long_id": "DERIVED",
+  "api_series_id_from_search": "DERIVED",
+  "mapped_name": "",
+  "metadata_complete": false,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "计算推导无API调用, 依赖下游指标可取数",
+  "test_result": null
+}

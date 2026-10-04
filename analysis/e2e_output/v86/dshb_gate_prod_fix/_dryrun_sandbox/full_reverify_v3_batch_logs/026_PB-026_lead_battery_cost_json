@@ -1,0 +1,63 @@
+{
+  "index": 26,
+  "indicator_id": "PB-026",
+  "semantic_id": "lead_battery_cost",
+  "name_cn": "铅酸电池成本",
+  "unit": "CNY/kWh",
+  "type": "FLOAT",
+  "batch": 2,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铅酸电池 成本",
+  "zhiji_short_id": "s_lead_battery_cost",
+  "zhiji_long_id": "ID_LEAD_BATTERY_COST",
+  "api_series_id_from_search": "ID01463146",
+  "mapped_name": "锂电池：回收拆解成本：中国（周）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "PB-026",
+      "semantic_id": "lead_battery_cost",
+      "name_cn": "铅酸电池成本",
+      "batch": 2,
+      "method": "api_search",
+      "requested_short_id": "s_lead_battery_cost",
+      "api_series_id_from_search": "ID01463146",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.207838",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_lead_battery_cost",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1423}, {\"date\": \"2026-10-02\", \"value\": 1473}, {\"date\": \"2026-10-03\", \"value\": 1443}]",
+      "raw_payload": {
+        "id": "s_lead_battery_cost",
+        "name": "Mock s_lead_battery_cost",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1423
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1473
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1443
+          }
+        ]
+      }
+    }
+  ]
+}

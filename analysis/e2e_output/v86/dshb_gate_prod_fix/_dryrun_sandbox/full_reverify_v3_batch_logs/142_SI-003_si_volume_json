@@ -1,0 +1,63 @@
+{
+  "index": 142,
+  "indicator_id": "SI-003",
+  "semantic_id": "si_volume",
+  "name_cn": "工业硅期货成交量",
+  "unit": "lot",
+  "type": "INTEGER",
+  "batch": 8,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "工业硅 成交量",
+  "zhiji_short_id": "s_si_volume",
+  "zhiji_long_id": "ID_SI_VOLUME",
+  "api_series_id_from_search": "FU00088312",
+  "mapped_name": "GFEX：工业硅：单边交易：成交量（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "SI-003",
+      "semantic_id": "si_volume",
+      "name_cn": "工业硅期货成交量",
+      "batch": 8,
+      "method": "api_search",
+      "requested_short_id": "s_si_volume",
+      "api_series_id_from_search": "FU00088312",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.567837",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_si_volume",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1113}, {\"date\": \"2026-10-02\", \"value\": 1163}, {\"date\": \"2026-10-03\", \"value\": 1133}]",
+      "raw_payload": {
+        "id": "s_si_volume",
+        "name": "Mock s_si_volume",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1113
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1163
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1133
+          }
+        ]
+      }
+    }
+  ]
+}

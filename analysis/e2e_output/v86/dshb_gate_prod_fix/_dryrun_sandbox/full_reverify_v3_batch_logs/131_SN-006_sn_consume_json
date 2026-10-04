@@ -1,0 +1,63 @@
+{
+  "index": 131,
+  "indicator_id": "SN-006",
+  "semantic_id": "sn_consume",
+  "name_cn": "锡消费量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 7,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "锡 消费量",
+  "zhiji_short_id": "s_sn_consume",
+  "zhiji_long_id": "ID_SN_CONSUME",
+  "api_series_id_from_search": "ID00303746",
+  "mapped_name": "中国有色金属工业年鉴：电解锡：消费量：巴西（年）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "SN-006",
+      "semantic_id": "sn_consume",
+      "name_cn": "锡消费量",
+      "batch": 7,
+      "method": "api_search",
+      "requested_short_id": "s_sn_consume",
+      "api_series_id_from_search": "ID00303746",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.536839",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_sn_consume",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1453}, {\"date\": \"2026-10-02\", \"value\": 1503}, {\"date\": \"2026-10-03\", \"value\": 1473}]",
+      "raw_payload": {
+        "id": "s_sn_consume",
+        "name": "Mock s_sn_consume",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1453
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1503
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1473
+          }
+        ]
+      }
+    }
+  ]
+}

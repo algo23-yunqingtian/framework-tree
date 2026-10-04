@@ -1,0 +1,63 @@
+{
+  "index": 81,
+  "indicator_id": "ZN-024",
+  "semantic_id": "zn_lme_inv",
+  "name_cn": "锌锭LME库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "LME 锌 库存",
+  "zhiji_short_id": "s_zn_lme_inv",
+  "zhiji_long_id": "ID_ZN_LME_INV",
+  "api_series_id_from_search": "ID02226129",
+  "mapped_name": "LME：锌：特高级：原产国库存：巴林（月）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "ZN-024",
+      "semantic_id": "zn_lme_inv",
+      "name_cn": "锌锭LME库存",
+      "batch": 4,
+      "method": "api_search",
+      "requested_short_id": "s_zn_lme_inv",
+      "api_series_id_from_search": "ID02226129",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.371838",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_zn_lme_inv",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1039}, {\"date\": \"2026-10-02\", \"value\": 1089}, {\"date\": \"2026-10-03\", \"value\": 1059}]",
+      "raw_payload": {
+        "id": "s_zn_lme_inv",
+        "name": "Mock s_zn_lme_inv",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1039
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1089
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1059
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "index": 1,
+  "indicator_id": "PB-011",
+  "semantic_id": "lead_total_inv",
+  "name_cn": "铅锭总库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 1,
+  "priority": "P0",
+  "category": "derived",
+  "method": "derived",
+  "search_query": "铅锭 总库存",
+  "zhiji_short_id": "DERIVED",
+  "zhiji_long_id": "DERIVED",
+  "api_series_id_from_search": "DERIVED",
+  "mapped_name": "",
+  "metadata_complete": false,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "计算推导无API调用, 依赖下游指标可取数",
+  "test_result": null
+}

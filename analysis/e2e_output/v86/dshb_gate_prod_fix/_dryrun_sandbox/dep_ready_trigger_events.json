@@ -1,0 +1,139 @@
+[
+  {
+    "event_type": "DEP_READY_DETECTED",
+    "timestamp": "2026-10-04T15:48:43.091838",
+    "details": {
+      "probe_results": [
+        {
+          "short_id": "j25_tc",
+          "url": "https://zhiji-ai.xyz/commodity/api/series?id=j25_tc",
+          "http_status": 200,
+          "api_ms": 0.0,
+          "error": null,
+          "data_count": 9,
+          "non_zero_values": true,
+          "perm_state": null,
+          "probe_ready": true,
+          "points_sample": "[{\"date\": \"2026-09-25\", \"value\": 8.5}, {\"date\": \"2026-09-26\", \"value\": 8.7}]",
+          "timestamp": "2026-10-04T15:48:43.090836"
+        },
+        {
+          "short_id": "i1",
+          "url": "https://zhiji-ai.xyz/commodity/api/series?id=i1",
+          "http_status": 200,
+          "api_ms": 0.0,
+          "error": null,
+          "data_count": 6,
+          "non_zero_values": true,
+          "perm_state": null,
+          "probe_ready": true,
+          "points_sample": "[{\"date\": \"2026-09-28\", \"value\": 150000}, {\"date\": \"2026-09-29\", \"value\": 148000}]",
+          "timestamp": "2026-10-04T15:48:43.090836"
+        },
+        {
+          "short_id": "i3",
+          "url": "https://zhiji-ai.xyz/commodity/api/series?id=i3",
+          "http_status": 200,
+          "api_ms": 0.0,
+          "error": null,
+          "data_count": 6,
+          "non_zero_values": true,
+          "perm_state": null,
+          "probe_ready": true,
+          "points_sample": "[{\"date\": \"2026-09-28\", \"value\": 15500.0}, {\"date\": \"2026-09-29\", \"value\": 15480.0}]",
+          "timestamp": "2026-10-04T15:48:43.090836"
+        }
+      ],
+      "ready_count": 3,
+      "total_probed": 3
+    },
+    "task_id": "DSHB_V86_RC2_DEP_MONITOR_T3.2",
+    "ticket_id": "DSHB-DP-REQ-20261015-001"
+  },
+  {
+    "event_type": "DSHE_NOTIFICATION",
+    "timestamp": "2026-10-04T15:48:43.843853",
+    "details": {
+      "dep_status": "READY",
+      "probe_results": [],
+      "action_taken": "retest_triggered",
+      "snapshot_updated": "v86_rc2_dshb_bridge_snapshot_for_dshe.json"
+    },
+    "task_id": "DSHB_V86_RC2_DEP_MONITOR_T3.2",
+    "ticket_id": "DSHB-DP-REQ-20261015-001"
+  },
+  {
+    "event_type": "HERMES_NOTIFICATION",
+    "timestamp": "2026-10-04T15:48:43.845852",
+    "details": {
+      "dep_status": "READY",
+      "probe_results": [],
+      "action_taken": "retest_triggered",
+      "risk_register": "v86_rc2_dshb_risk_re_evaluate_v3.md"
+    },
+    "task_id": "DSHB_V86_RC2_DEP_MONITOR_T3.2",
+    "ticket_id": "DSHB-DP-REQ-20261015-001"
+  },
+  {
+    "event_type": "DSHE_NOTIFICATION",
+    "timestamp": "2026-10-04T15:48:43.849852",
+    "details": {
+      "dep_status": "READY",
+      "probe_results": [
+        {
+          "short_id": "j25_tc",
+          "probe_ready": true,
+          "http_status": 200,
+          "data_count": 5
+        },
+        {
+          "short_id": "i1",
+          "probe_ready": true,
+          "http_status": 200,
+          "data_count": 5
+        },
+        {
+          "short_id": "i3",
+          "probe_ready": true,
+          "http_status": 200,
+          "data_count": 5
+        }
+      ],
+      "action_taken": "retest_triggered",
+      "snapshot_updated": "v86_rc2_dshb_bridge_snapshot_for_dshe.json"
+    },
+    "task_id": "DSHB_V86_RC2_DEP_MONITOR_T3.2",
+    "ticket_id": "DSHB-DP-REQ-20261015-001"
+  },
+  {
+    "event_type": "HERMES_NOTIFICATION",
+    "timestamp": "2026-10-04T15:48:43.852851",
+    "details": {
+      "dep_status": "READY",
+      "probe_results": [
+        {
+          "short_id": "j25_tc",
+          "probe_ready": true,
+          "http_status": 200,
+          "data_count": 5
+        },
+        {
+          "short_id": "i1",
+          "probe_ready": true,
+          "http_status": 200,
+          "data_count": 5
+        },
+        {
+          "short_id": "i3",
+          "probe_ready": true,
+          "http_status": 200,
+          "data_count": 5
+        }
+      ],
+      "action_taken": "retest_triggered",
+      "risk_register": "v86_rc2_dshb_risk_re_evaluate_v3.md"
+    },
+    "task_id": "DSHB_V86_RC2_DEP_MONITOR_T3.2",
+    "ticket_id": "DSHB-DP-REQ-20261015-001"
+  }
+]

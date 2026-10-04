@@ -1,0 +1,63 @@
+{
+  "index": 124,
+  "indicator_id": "NI-017",
+  "semantic_id": "ni_basis",
+  "name_cn": "沪镍期现价差",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 6,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "沪镍 期现 基差",
+  "zhiji_short_id": "s_ni_basis",
+  "zhiji_long_id": "ID_NI_BASIS",
+  "api_series_id_from_search": "FU00024318",
+  "mapped_name": "SHFE：镍：基差（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "NI-017",
+      "semantic_id": "ni_basis",
+      "name_cn": "沪镍期现价差",
+      "batch": 6,
+      "method": "api_search",
+      "requested_short_id": "s_ni_basis",
+      "api_series_id_from_search": "FU00024318",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.513837",
+      "http_status": 200,
+      "api_ms": 1.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_ni_basis",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1253}, {\"date\": \"2026-10-02\", \"value\": 1303}, {\"date\": \"2026-10-03\", \"value\": 1273}]",
+      "raw_payload": {
+        "id": "s_ni_basis",
+        "name": "Mock s_ni_basis",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1253
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1303
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1273
+          }
+        ]
+      }
+    }
+  ]
+}

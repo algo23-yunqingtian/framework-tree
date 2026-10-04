@@ -1,0 +1,63 @@
+{
+  "index": 18,
+  "indicator_id": "PB-018",
+  "semantic_id": "lead_export",
+  "name_cn": "铅锭出口量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 2,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "铅 出口量",
+  "zhiji_short_id": "s_lead_export",
+  "zhiji_long_id": "ID_LEAD_EXPORT",
+  "api_series_id_from_search": "ID01029980",
+  "mapped_name": "铅：出口数量：中国（年）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "PB-018",
+      "semantic_id": "lead_export",
+      "name_cn": "铅锭出口量",
+      "batch": 2,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_lead_export",
+      "api_series_id_from_search": "ID01029980",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.180840",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_lead_export",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1271}, {\"date\": \"2026-10-02\", \"value\": 1321}, {\"date\": \"2026-10-03\", \"value\": 1291}]",
+      "raw_payload": {
+        "id": "s_lead_export",
+        "name": "Mock s_lead_export",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1271
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1321
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1291
+          }
+        ]
+      }
+    }
+  ]
+}

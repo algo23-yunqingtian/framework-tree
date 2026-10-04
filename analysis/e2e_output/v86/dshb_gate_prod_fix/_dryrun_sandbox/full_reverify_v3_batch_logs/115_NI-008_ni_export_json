@@ -1,0 +1,63 @@
+{
+  "index": 115,
+  "indicator_id": "NI-008",
+  "semantic_id": "ni_export",
+  "name_cn": "镍出口量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 6,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "镍 出口量",
+  "zhiji_short_id": "s_ni_export",
+  "zhiji_long_id": "ID_NI_EXPORT",
+  "api_series_id_from_search": "GM00194554",
+  "mapped_name": "镍矿石：出口数量：菲律宾→印尼（月）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "NI-008",
+      "semantic_id": "ni_export",
+      "name_cn": "镍出口量",
+      "batch": 6,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_ni_export",
+      "api_series_id_from_search": "GM00194554",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.485837",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_ni_export",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1334}, {\"date\": \"2026-10-02\", \"value\": 1384}, {\"date\": \"2026-10-03\", \"value\": 1354}]",
+      "raw_payload": {
+        "id": "s_ni_export",
+        "name": "Mock s_ni_export",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1334
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1384
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1354
+          }
+        ]
+      }
+    }
+  ]
+}

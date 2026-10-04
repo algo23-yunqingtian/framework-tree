@@ -1,0 +1,63 @@
+{
+  "index": 157,
+  "indicator_id": "LI-002",
+  "semantic_id": "li_open_interest",
+  "name_cn": "碳酸锂期货持仓量",
+  "unit": "lot",
+  "type": "INTEGER",
+  "batch": 9,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "碳酸锂 持仓量",
+  "zhiji_short_id": "s_li_open_interest",
+  "zhiji_long_id": "ID_LI_OPEN_INTEREST",
+  "api_series_id_from_search": "FU00088313",
+  "mapped_name": "GFEX：碳酸锂：单边交易：持仓量（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "LI-002",
+      "semantic_id": "li_open_interest",
+      "name_cn": "碳酸锂期货持仓量",
+      "batch": 9,
+      "method": "api_search",
+      "requested_short_id": "s_li_open_interest",
+      "api_series_id_from_search": "FU00088313",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.614842",
+      "http_status": 200,
+      "api_ms": 1.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_li_open_interest",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1359}, {\"date\": \"2026-10-02\", \"value\": 1409}, {\"date\": \"2026-10-03\", \"value\": 1379}]",
+      "raw_payload": {
+        "id": "s_li_open_interest",
+        "name": "Mock s_li_open_interest",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1359
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1409
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1379
+          }
+        ]
+      }
+    }
+  ]
+}

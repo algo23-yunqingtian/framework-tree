@@ -1,0 +1,63 @@
+{
+  "index": 67,
+  "indicator_id": "ZN-010",
+  "semantic_id": "zn_import",
+  "name_cn": "锌进口量",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "锌 进口量",
+  "zhiji_short_id": "s_zn_import",
+  "zhiji_long_id": "ID_ZN_IMPORT",
+  "api_series_id_from_search": "ID01552272",
+  "mapped_name": "USGS：精炼锌：消费进口量：美国（年）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "ZN-010",
+      "semantic_id": "zn_import",
+      "name_cn": "锌进口量",
+      "batch": 4,
+      "method": "api_search",
+      "requested_short_id": "s_zn_import",
+      "api_series_id_from_search": "ID01552272",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.336838",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_zn_import",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1445}, {\"date\": \"2026-10-02\", \"value\": 1495}, {\"date\": \"2026-10-03\", \"value\": 1465}]",
+      "raw_payload": {
+        "id": "s_zn_import",
+        "name": "Mock s_zn_import",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1445
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1495
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1465
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "index": 129,
+  "indicator_id": "SN-004",
+  "semantic_id": "sn_social_inv",
+  "name_cn": "锡社会库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 7,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "锡 社会库存",
+  "zhiji_short_id": "s_sn_social_inv",
+  "zhiji_long_id": "ID_SN_SOCIAL_INV",
+  "api_series_id_from_search": "ID01517441",
+  "mapped_name": "锡锭：库存：中国（周）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "SN-004",
+      "semantic_id": "sn_social_inv",
+      "name_cn": "锡社会库存",
+      "batch": 7,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_sn_social_inv",
+      "api_series_id_from_search": "ID01517441",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.528837",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_sn_social_inv",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1306}, {\"date\": \"2026-10-02\", \"value\": 1356}, {\"date\": \"2026-10-03\", \"value\": 1326}]",
+      "raw_payload": {
+        "id": "s_sn_social_inv",
+        "name": "Mock s_sn_social_inv",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1306
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1356
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1326
+          }
+        ]
+      }
+    }
+  ]
+}

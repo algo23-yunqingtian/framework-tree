@@ -1,0 +1,63 @@
+{
+  "index": 82,
+  "indicator_id": "ZN-025",
+  "semantic_id": "zn_warehouse_inv",
+  "name_cn": "锌锭仓单库存",
+  "unit": "ton",
+  "type": "INTEGER",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "锌 仓单 库存",
+  "zhiji_short_id": "s_zn_warehouse_inv",
+  "zhiji_long_id": "ID_ZN_WAREHOUSE_INV",
+  "api_series_id_from_search": "FU00016165",
+  "mapped_name": "LME：锌：注册仓单（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "ZN-025",
+      "semantic_id": "zn_warehouse_inv",
+      "name_cn": "锌锭仓单库存",
+      "batch": 4,
+      "method": "api_search",
+      "requested_short_id": "s_zn_warehouse_inv",
+      "api_series_id_from_search": "FU00016165",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.374837",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_zn_warehouse_inv",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1148}, {\"date\": \"2026-10-02\", \"value\": 1198}, {\"date\": \"2026-10-03\", \"value\": 1168}]",
+      "raw_payload": {
+        "id": "s_zn_warehouse_inv",
+        "name": "Mock s_zn_warehouse_inv",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1148
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1198
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1168
+          }
+        ]
+      }
+    }
+  ]
+}

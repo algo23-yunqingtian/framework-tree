@@ -1,0 +1,63 @@
+{
+  "index": 40,
+  "indicator_id": "CU-008",
+  "semantic_id": "cu_wire_rate",
+  "name_cn": "铜线开工率",
+  "unit": "%",
+  "type": "FLOAT",
+  "batch": 3,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铜线 开工率",
+  "zhiji_short_id": "s_cu_wire_rate",
+  "zhiji_long_id": "ID_CU_WIRE_RATE",
+  "api_series_id_from_search": "ID01504223",
+  "mapped_name": "铝杆：开工率：安徽（月）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "CU-008",
+      "semantic_id": "cu_wire_rate",
+      "name_cn": "铜线开工率",
+      "batch": 3,
+      "method": "api_search",
+      "requested_short_id": "s_cu_wire_rate",
+      "api_series_id_from_search": "ID01504223",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.251835",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_cu_wire_rate",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1269}, {\"date\": \"2026-10-02\", \"value\": 1319}, {\"date\": \"2026-10-03\", \"value\": 1289}]",
+      "raw_payload": {
+        "id": "s_cu_wire_rate",
+        "name": "Mock s_cu_wire_rate",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1269
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1319
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1289
+          }
+        ]
+      }
+    }
+  ]
+}

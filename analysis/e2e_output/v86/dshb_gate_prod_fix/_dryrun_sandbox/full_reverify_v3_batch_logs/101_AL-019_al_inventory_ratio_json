@@ -1,0 +1,22 @@
+{
+  "index": 101,
+  "indicator_id": "AL-019",
+  "semantic_id": "al_inventory_ratio",
+  "name_cn": "铝库存比率",
+  "unit": "%",
+  "type": "FLOAT",
+  "batch": 5,
+  "priority": "P1",
+  "category": "derived",
+  "method": "derived",
+  "search_query": "铝 库存比率",
+  "zhiji_short_id": "DERIVED",
+  "zhiji_long_id": "DERIVED",
+  "api_series_id_from_search": "DERIVED",
+  "mapped_name": "",
+  "metadata_complete": false,
+  "data_fetchable": false,
+  "dependency_block": true,
+  "fetch_error_msg": "计算推导无API调用, 依赖下游指标可取数",
+  "test_result": null
+}

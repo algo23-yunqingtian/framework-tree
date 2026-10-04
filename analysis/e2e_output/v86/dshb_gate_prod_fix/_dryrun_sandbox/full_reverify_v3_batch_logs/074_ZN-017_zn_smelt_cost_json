@@ -1,0 +1,63 @@
+{
+  "index": 74,
+  "indicator_id": "ZN-017",
+  "semantic_id": "zn_smelt_cost",
+  "name_cn": "电解锌冶炼成本",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 4,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search_best_effort",
+  "search_query": "电解锌 冶炼成本",
+  "zhiji_short_id": "s_zn_smelt_cost",
+  "zhiji_long_id": "ID_ZN_SMELT_COST",
+  "api_series_id_from_search": "LC00167777",
+  "mapped_name": "株洲冶炼集团：分产品：锌：成本比例（半年）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "ZN-017",
+      "semantic_id": "zn_smelt_cost",
+      "name_cn": "电解锌冶炼成本",
+      "batch": 4,
+      "method": "api_search_best_effort",
+      "requested_short_id": "s_zn_smelt_cost",
+      "api_series_id_from_search": "LC00167777",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.355838",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_zn_smelt_cost",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1157}, {\"date\": \"2026-10-02\", \"value\": 1207}, {\"date\": \"2026-10-03\", \"value\": 1177}]",
+      "raw_payload": {
+        "id": "s_zn_smelt_cost",
+        "name": "Mock s_zn_smelt_cost",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1157
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1207
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1177
+          }
+        ]
+      }
+    }
+  ]
+}

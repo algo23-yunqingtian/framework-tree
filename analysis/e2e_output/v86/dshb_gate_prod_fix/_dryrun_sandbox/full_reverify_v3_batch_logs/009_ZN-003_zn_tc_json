@@ -1,0 +1,63 @@
+{
+  "index": 9,
+  "indicator_id": "ZN-003",
+  "semantic_id": "zn_tc",
+  "name_cn": "锌精矿TC加工费",
+  "unit": "USD/dmt",
+  "type": "FLOAT",
+  "batch": 1,
+  "priority": "P0",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "锌精矿 TC 加工费",
+  "zhiji_short_id": "s_zn_tc",
+  "zhiji_long_id": "ID_ZN_TC",
+  "api_series_id_from_search": "ID01510737",
+  "mapped_name": "锌精矿：50%Zn：加工费：白银（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "ZN-003",
+      "semantic_id": "zn_tc",
+      "name_cn": "锌精矿TC加工费",
+      "batch": 1,
+      "method": "api_search",
+      "requested_short_id": "s_zn_tc",
+      "api_series_id_from_search": "ID01510737",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.147836",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_zn_tc",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1003}, {\"date\": \"2026-10-02\", \"value\": 1053}, {\"date\": \"2026-10-03\", \"value\": 1023}]",
+      "raw_payload": {
+        "id": "s_zn_tc",
+        "name": "Mock s_zn_tc",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1003
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1053
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1023
+          }
+        ]
+      }
+    }
+  ]
+}

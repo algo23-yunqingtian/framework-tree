@@ -1,0 +1,63 @@
+{
+  "index": 156,
+  "indicator_id": "LI-001",
+  "semantic_id": "li_close",
+  "name_cn": "碳酸锂期货收盘价",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 9,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "碳酸锂 收盘价",
+  "zhiji_short_id": "s_li_close",
+  "zhiji_long_id": "ID_LI_CLOSE",
+  "api_series_id_from_search": "FU00104839",
+  "mapped_name": "GFEX：碳酸锂：指数合约：收盘价（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "LI-001",
+      "semantic_id": "li_close",
+      "name_cn": "碳酸锂期货收盘价",
+      "batch": 9,
+      "method": "api_search",
+      "requested_short_id": "s_li_close",
+      "api_series_id_from_search": "FU00104839",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.610841",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_li_close",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1367}, {\"date\": \"2026-10-02\", \"value\": 1417}, {\"date\": \"2026-10-03\", \"value\": 1387}]",
+      "raw_payload": {
+        "id": "s_li_close",
+        "name": "Mock s_li_close",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1367
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1417
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1387
+          }
+        ]
+      }
+    }
+  ]
+}

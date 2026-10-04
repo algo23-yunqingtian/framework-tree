@@ -1,0 +1,63 @@
+{
+  "index": 23,
+  "indicator_id": "PB-023",
+  "semantic_id": "lead_conc_price_silver",
+  "name_cn": "铅精矿价格(含银)",
+  "unit": "CNY/ton",
+  "type": "FLOAT",
+  "batch": 2,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铅精矿 含银 价格",
+  "zhiji_short_id": "s_lead_conc_price_silver",
+  "zhiji_long_id": "ID_LEAD_CONC_PRICE_SILVER",
+  "api_series_id_from_search": "ID00259814",
+  "mapped_name": "铅精矿：Pb≥50%：汇总价格：宝鸡（日）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "PB-023",
+      "semantic_id": "lead_conc_price_silver",
+      "name_cn": "铅精矿价格(含银)",
+      "batch": 2,
+      "method": "api_search",
+      "requested_short_id": "s_lead_conc_price_silver",
+      "api_series_id_from_search": "ID00259814",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.199839",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_lead_conc_price_silver",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1472}, {\"date\": \"2026-10-02\", \"value\": 1522}, {\"date\": \"2026-10-03\", \"value\": 1492}]",
+      "raw_payload": {
+        "id": "s_lead_conc_price_silver",
+        "name": "Mock s_lead_conc_price_silver",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1472
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1522
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1492
+          }
+        ]
+      }
+    }
+  ]
+}

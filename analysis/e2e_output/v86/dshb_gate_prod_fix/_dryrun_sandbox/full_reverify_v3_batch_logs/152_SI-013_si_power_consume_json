@@ -1,0 +1,63 @@
+{
+  "index": 152,
+  "indicator_id": "SI-013",
+  "semantic_id": "si_power_consume",
+  "name_cn": "工业硅电力消费",
+  "unit": "kWh/ton",
+  "type": "FLOAT",
+  "batch": 8,
+  "priority": "P2",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "工业硅 电力消耗",
+  "zhiji_short_id": "s_si_power_consume",
+  "zhiji_long_id": "ID_SI_POWER_CONSUME",
+  "api_series_id_from_search": "ID02313973",
+  "mapped_name": "工业硅：421#：生产成本：电力：四川（周）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "SI-013",
+      "semantic_id": "si_power_consume",
+      "name_cn": "工业硅电力消费",
+      "batch": 8,
+      "method": "api_search",
+      "requested_short_id": "s_si_power_consume",
+      "api_series_id_from_search": "ID02313973",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.597839",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_si_power_consume",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1042}, {\"date\": \"2026-10-02\", \"value\": 1092}, {\"date\": \"2026-10-03\", \"value\": 1062}]",
+      "raw_payload": {
+        "id": "s_si_power_consume",
+        "name": "Mock s_si_power_consume",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1042
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1092
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1062
+          }
+        ]
+      }
+    }
+  ]
+}

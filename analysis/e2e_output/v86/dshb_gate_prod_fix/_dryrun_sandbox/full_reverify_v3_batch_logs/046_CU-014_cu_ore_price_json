@@ -1,0 +1,63 @@
+{
+  "index": 46,
+  "indicator_id": "CU-014",
+  "semantic_id": "cu_ore_price",
+  "name_cn": "铜精矿价格",
+  "unit": "USD/lb",
+  "type": "FLOAT",
+  "batch": 3,
+  "priority": "P1",
+  "category": "fabricated_short_id",
+  "method": "api_search",
+  "search_query": "铜精矿 价格",
+  "zhiji_short_id": "s_cu_ore_price",
+  "zhiji_long_id": "ID_CU_ORE_PRICE",
+  "api_series_id_from_search": "ID01307264",
+  "mapped_name": "铜精矿：长单RC价（年）",
+  "metadata_complete": true,
+  "data_fetchable": true,
+  "dependency_block": false,
+  "fetch_error_msg": null,
+  "test_result": [
+    {
+      "indicator_id": "CU-014",
+      "semantic_id": "cu_ore_price",
+      "name_cn": "铜精矿价格",
+      "batch": 3,
+      "method": "api_search",
+      "requested_short_id": "s_cu_ore_price",
+      "api_series_id_from_search": "ID01307264",
+      "cycle": 1,
+      "ts": "2026-10-04T15:48:43.274840",
+      "http_status": 200,
+      "api_ms": 0.0,
+      "api_error": null,
+      "data_fetchable": true,
+      "data_count": 3,
+      "non_zero_count": 3,
+      "perm_state": -4,
+      "resolved_series_id": "s_cu_ore_price",
+      "error_detail": null,
+      "points_sample": "[{\"date\": \"2026-10-01\", \"value\": 1154}, {\"date\": \"2026-10-02\", \"value\": 1204}, {\"date\": \"2026-10-03\", \"value\": 1174}]",
+      "raw_payload": {
+        "id": "s_cu_ore_price",
+        "name": "Mock s_cu_ore_price",
+        "permission_state": -4,
+        "points": [
+          {
+            "date": "2026-10-01",
+            "value": 1154
+          },
+          {
+            "date": "2026-10-02",
+            "value": 1204
+          },
+          {
+            "date": "2026-10-03",
+            "value": 1174
+          }
+        ]
+      }
+    }
+  ]
+}
