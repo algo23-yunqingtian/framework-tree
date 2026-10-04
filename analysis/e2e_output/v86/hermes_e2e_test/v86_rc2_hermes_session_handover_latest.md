@@ -438,4 +438,137 @@ Framework-tree V86-RC2 项目连续 5 个阶段空转（Stage1→Stage2→Stage2
 - **打 TRUE 还是 CONDITIONAL 要看交付性质**：本轮是规范编制（T5 的 6 项完成标准全部满足 → TRUE）；上轮是生产放行判定（P0=3 → CONDITIONAL）。不要把两种性质混同。
 
 ---
-*本交接文档由 HERMES 生成于 V86-RC2 审计口径标准化完成后。新会话先读本文件，再决定是否继续推进。*
+
+## 10. 本轮交付：V86-RC2 批量审计压力仿真 + 事件存储高可用仿真 + E2E检查清单V2 + 审计器PLUS + 告警路由V3
+
+> 迭代时间: 2026-10-15（第三批）
+> 基线: commit `dd0a7f0`（rebase 后，含 DSHB Gate 审计集成 V2 + DEP Registry Full）
+> 状态标记: **`HERMES_PROD_PHASE_AUDIT_STRESS_HA_DONE=TRUE`**
+
+### 10.1 本轮新增产物（7 份）
+
+| 产物 | MD5 | 说明 |
+|------|-----|------|
+| `evidence_auditor_v2_plus.py` | `d2bd2b38` | 审计器 v2.1.0-plus，42 用例 + 3 项新审计能力 |
+| `batch_audit_stress_test.py` | `ce037ba4` | 批量审计压力仿真器，8 项自检 PASS |
+| `event_store_ha_test.py` | `fbad1b00` | 事件存储 HA 仿真器，9 项自检 PASS |
+| `v86_rc2_hermes_batch_audit_stress_report.md` | `f56cc7c9` | 压力仿真报告（含关键发现） |
+| `v86_rc2_hermes_event_store_ha_simulation.md` | `3db2e547` | HA 仿真报告（含关键发现） |
+| `v86_rc2_hermes_dep_ready_e2e_checklist_v2.md` | `8bb54e33` | E2E 检查清单 V2（85 项 P0/P1/P2） |
+| `v86_rc2_hermes_alert_routing_spec_v3.md` | `37815a19` | 告警路由规范 V3（限流/重试/降级） |
+
+### 10.2 本轮更新产物（3 份）
+
+| 产物 | 说明 |
+|------|------|
+| `v86_rc2_hermes_audit_case_library_v2.md` | 追加 §11 PLUS 扩充版（19 用例） |
+| `v86_rc2_hermes_session_handover_latest.md` | 本文件，追加 §10~§14 |
+| `STATUS.md` | 追加本轮变更记录 |
+
+### 10.3 零覆盖验证
+
+上轮 8 份核心产物 MD5 全部不变（`479bf91b` / `ce2501c6` / `6d04654a` / `0784d79a` / `eaa381bd` / `bf3a091e` / `8d3fb7e6` / `341a336d`），NO_OVERWRITE 自证通过。V85 业务代码零改动。
+
+---
+
+## 11. T3.1 批量审计压力仿真：关键发现
+
+### 11.1 核心数据
+
+320 包混合证据包（10 类，含 152 个损坏包），单线程吞吐 **9273 包/秒**，p95 延迟 0.336ms，损坏包 **100% 隔离**，**零异常逃逸**。
+
+### 11.2 ⚠️ 关键发现：并发度越高吞吐反而越低
+
+| 并发度 | 吞吐 | 相对 1 线程 |
+|--------|------|-------------|
+| **1** | **9273** | 基准 |
+| 4 | 8412 | -9.3% |
+| 8 | 8448 | -8.9% |
+| 16 | 7951 | **-14.3%** |
+
+**根因**：审计是纯 CPU 密集型（字典遍历/正则/状态机比对），无 I/O 等待。Python GIL 导致多线程无并行收益，反而因调度开销/锁竞争/缓存失效变慢。
+
+**生产建议**：纯 CPU 审计用单线程；审计+网络 I/O 用 multiprocessing 或 asyncio；超大批量拆多进程。**瓶颈不在并发能力，而在单包审计成本。**
+
+### 11.3 错误隔离机制
+
+6 类损坏包（损坏 JSON/根非 dict/calls 非 list/calls 内 junk/字段缺失/超大包）全部被容错守卫捕获并结构化记录，不抛异常、不中断整体任务。
+
+---
+
+## 12. T3.2 事件存储高可用仿真：关键发现
+
+### 12.1 核心数据
+
+6 场景全部 PASS：并发写入 198 包零丢失、去重 200→50 唯一 100% 准确、断连重试 40 缓存全部续传零丢失、checkpoint 重启恢复 100%、7 维检索全部命中、突发吞吐 734.6 包/秒。
+
+### 12.2 ⚠️ 关键发现 1：append_events 的 O(n) 退化
+
+| store 已有事件数 | 单次 append 延迟 |
+|-----------------|-----------------|
+| 0 | ~0.5ms |
+| 100 | ~1.5ms |
+| 500 | ~2.5ms |
+
+**根因**：`append_events` 每次全量读入→修改→全量重写。**>1 万事件应切换 SQLite WAL 模式**。此阈值已写入告警路由规范 V3 的存储模式切换策略。
+
+### 12.3 ⚠️ 关键发现 2：突发并发比顺序快 3.8 倍
+
+突发（100 条并发 8）= 734.6 包/秒，常规顺序 = 194.5 包/秒。原因：顺序上报每次全量读写，并发模式下锁串行化但减少了中间 load 开销。
+
+**生产建议**：批量上报应攒批+并发提交。限流阈值 500 包/秒（留 30% 余量）已写入规范 V3。
+
+### 12.4 ⚠️ 关键发现 3：幂等去重的语义边界
+
+`event_id` = 8 字段 MD5。只有全部 8 字段相同才去重。message 略不同或 level 不同均视为新事件。**设计取舍：宁可漏去重（多存一条），不可误去重（丢失独立事件）**。
+
+---
+
+## 13. T3.4 审计器 PLUS：3 项新审计能力
+
+`evidence_auditor_v2_plus.py` 在 v2 的 23 用例基础上新增 19 用例（共 42），并新增 3 项 v2 没有的审计能力：
+
+| 能力 | 检测点 | 用途 |
+|------|--------|------|
+| **性能预算守卫** | PERF-GUARD | 单次审计超 1.0s 或 256 call 即告警，防超大包拖垮调度器 |
+| **损坏包容错** | ROB-01 | 非 dict 根对象/calls 非 list/calls 内非 dict 元素均不抛异常 |
+| **DEP 抖动检测** | DS-06 | RECOVERED 后再阻塞 ≥2 次判定抖动，疑似服务不稳定 |
+
+### 13.1 开发过程发现的真实缺陷（自回归机制价值验证）
+
+1. **抖动检测语义错误**：初版把 `ACTIVE` 状态计入 `left_blocked` 重置，导致抖动次数永远为 0。`CASE-S04/S05/S06` 全部误判 PASS，`DS-06` 断言失败才暴露。修正为"曾到达 RECOVERED 后再遇 BLOCKED"语义。
+
+2. **变量名遮蔽**：`_oversized_pkg` 内 `calls = []` 遮蔽了参数 `calls`，导致 `range(calls)` 报 "TypeError: 'list' object cannot be interpreted as an integer"。
+
+3. **超大包期望错误**：夹具把超大包期望写成 FAIL，但超大包（数据正常、只是大）实际应 PASS。这是夹具期望错误，非审计器缺陷。
+
+4. **异常逃逸判定逻辑**：`no_exception_escaped` 初版用 `all(r["error"] is None for r in matched)`，但损坏 JSON 包的 JSONDecodeError 属预期容错路径，被误判为"异常逃逸"。修正为 `r["error"] is None or r["is_corrupt"]`。
+
+> **教训**：自回归机制在开发过程中抓到 4 类真实问题。与上一轮 v2 的 5 项缺陷类似——**自回归机制上线即反查自身缺陷，这是它的核心价值**。
+
+---
+
+## 14. 本轮状态标记汇总
+
+| 标记 | 值 |
+|------|-----|
+| **HERMES_PROD_PHASE_AUDIT_STRESS_HA_DONE** | **TRUE** |
+| HERMES_BATCH_AUDIT_STRESS_TEST_PASS | TRUE |
+| HERMES_EVENT_STORE_HA_TEST_PASS | TRUE |
+| HERMES_DEP_READY_E2E_CHECKLIST_V2_READY | TRUE |
+| HERMES_ALERT_ROUTING_SPEC_V3_READY | TRUE |
+| HERMES_AUDIT_CASE_LIBRARY_V2_1_PLUS_ARCED | TRUE |
+| HERMES_PROD_PHASE_AUDIT_CONTRACT_BASELINE_DONE | TRUE |
+| HERMES_PROD_PHASE_AUDIT_TOOLING_DONE | TRUE |
+| HERMES_PROD_PHASE_PIPELINE_SIM_DONE | TRUE |
+| HERMES_PROD_PHASE_AUDIT_STANDARD_DONE | TRUE |
+| JOB_READY | **FALSE** |
+| GATE_DECISION | **NOT_READY** |
+
+> **Gate 仍 NOT_READY**：DEP-001 短ID 解析服务仍未就绪，G-06/G-10 无法通过。
+> 本轮产出的是**审计基础设施**（压力仿真+HA+PLUS 审计器+检查清单 V2+路由 V3），
+> DEP 就绪后按 `v86_rc2_hermes_dep_ready_e2e_checklist_v2.md` 的 P0/P1/P2 门禁启动。
+
+---
+
+*本交接文档由 HERMES 生成于 V86-RC2 压力+HA 仿真批次完成后。新会话先读本文件，再决定是否继续推进。*

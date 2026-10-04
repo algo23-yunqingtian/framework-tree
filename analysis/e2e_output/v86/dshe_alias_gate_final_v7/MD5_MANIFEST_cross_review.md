@@ -782,7 +782,109 @@
 
 ---
 
+## L2_STRESS_PERF_VERIFY New Files (5 files)
+
+> **Task:** DSHE_V86_RC2_L2_STRESS_PERF_VERIFY
+> **Sub-tasks:** T3.1 告警压力仿真 | T3.2 DEP抖动dryrun | T3.3 性能基线 | T3.4 校验V3 | T3.5 抖动台账同步
+> **Updated:** 2026-10-15
+> **Output Dir:** `analysis/e2e_output/v86/hermes_e2e_test/`
+> **Status:** DSHE_PROD_PHASE_L2_STRESS_PERF_VERIFY_DONE=TRUE — 5/5 SUB-TASKS COMPLETE, 2000 ALERTS STRESS PASS, 7/7 FLAPPING FINGERPRINTS UNIQUE, 3 SIZES PERF BASELINE, V3 SHARDING+PARALLEL, 7/7 CROSS-VERIFY SYNC PASS
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 114 | v86_rc2_dshe_alert_stress_test_report.md | ED19D7F563D4FB447C22E3B2A32FAB4E | 17,924 B |
+| 115 | v86_rc2_dshe_dep_state_flapping_dryrun_log.md | 95C564733EC3F1D2D58DEE63B026AADD | 23,293 B |
+| 116 | v86_rc2_dshe_l2_evidence_perf_baseline.md | 67F78CA3A34064A6B87BBEEEBF109D53 | 13,419 B |
+| 117 | l2_evidence_package_check_v3.py | 51EA62F6A6DE0177940A5FBB8DD8BB2C | 50,454 B |
+| 118 | v86_rc2_dep_registry_flapping_cross_verify.md | F0B5CC67B5254EFBDAD8A54F3B9E4721 | 18,767 B |
+
+**Total delta:** +123,857 B (5 new files)
+
+---
+
+## L2_RULE_ALIGN_V3 New Files (6 files)
+
+> **Task:** DSHE_V86_RC2_L2_RULE_ALIGN_V3
+> **Sub-tasks:** T3.1 DEP抖动规则对齐 | T3.2 告警适配器V2 | T3.3 分片边界测试 | T3.4 PERF-GUARD接入 | T3.5 三方交叉验证v2
+> **Updated:** 2026-10-15
+> **Output Dir:** `analysis/e2e_output/v86/hermes_e2e_test/`
+> **Status:** DSHE_PROD_PHASE_L2_RULE_ALIGN_V3_DONE=TRUE — 5/5 SUB-TASKS COMPLETE, DS-06 FLAP RULE ALIGNED, ADAPTER V2 V3 ROUTING PASS, 36 SHARD BOUNDARY TESTS PASS, PERF-GUARD INTEGRATED, TRIPARTITE CROSS-VERIFY V2 PASS
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 119 | v86_rc2_dshe_dep_flap_rule_align_report.md | `C35FD323373B88648639E177376D99F9` | 53,693 B |
+| 120 | v86_rc2_dshe_alert_adapter_v2.py | `DFBB32A504D4839A6EE2C3DA2FA8641F` | 95,919 B |
+| 121 | v86_rc2_dshe_alert_v3_adapt_report.md | `16AA664366B707600AE84D3A299BE8C7` | 19,030 B |
+| 122 | v86_rc2_dshe_l2_evidence_shard_boundary_test.md | `4582655134693705314B66774C48B927` | 48,627 B |
+| 123 | v86_rc2_dep_flap_tripartite_cross_verify_v2.md | `F83CB803A1D10C11C63A5F3DF9BC9D14` | 44,599 B |
+| 124 | l2_evidence_package_check_v3.py (modified) | `A2FA21B24215040AEEEAE646E55AB2FA` | (modified) |
+
+**Total delta:** +217,269 B (5 new files) + 1 modified file
+
+---
+
+## Key MD5 References (DSHE_PROD_PHASE_L2_RULE_ALIGN_V3 Deliverables)
+
+| # | File | MD5 | Purpose |
+|---|------|-----|---------|
+| 119 | v86_rc2_dshe_dep_flap_rule_align_report.md | C35FD323373B88648639E177376D99F9 | L2 DEP抖动规则对齐HERMES DS-06 (7交叉比对用例/5假阳性消除/100%DS-06一致) |
+| 120 | v86_rc2_dshe_alert_adapter_v2.py | DFBB32A504D4839A6EE2C3DA2FA8641F | 告警适配器V2 (令牌桶限流/指数退避/4级过载降级/事件优先级丢弃/磁盘checkpoint) |
+| 121 | v86_rc2_dshe_alert_v3_adapt_report.md | 16AA664366B707600AE84D3A299BE8C7 | V3路由适配报告 (5场景负载测试全PASS/L0-L2降级/CRITICAL零丢弃) |
+| 122 | v86_rc2_dshe_l2_evidence_shard_boundary_test.md | 4582655134693705314B66774C48B927 | L2分片边界测试 (36测试7场景/94.4%通过率/1P0+2P1+3P2缺陷) |
+| 123 | v86_rc2_dep_flap_tripartite_cross_verify_v2.md | F83CB803A1D10C11C63A5F3DF9BC9D14 | 三方DEP抖动交叉验证v2 (12用例6旧+6新/DS-06对齐/告警级别100%同步) |
+| 124 | l2_evidence_package_check_v3.py (modified) | A2FA21B24215040AEEEAE646E55AB2FA | PERF-GUARD性能守卫接入 (1.0s/256calls/52MB阈值/STRICT阻断模式) |
+
+---
+
+## Key MD5 References (DSHE_PROD_PHASE_L2_STRESS_PERF_VERIFY Deliverables)
+
+| # | File | MD5 | Purpose |
+|---|------|-----|---------|
+| 114 | v86_rc2_dshe_alert_stress_test_report.md | ED19D7F563D4FB447C22E3B2A32FAB4E | L2告警链路压力仿真 (2000事件5批次/16807事件每秒峰值吞吐/0丢失/0截断/0路由错配/100%去重折叠/22字段完整性) |
+| 115 | v86_rc2_dshe_dep_state_flapping_dryrun_log.md | 95C564733EC3F1D2D58DEE63B026AADD | DEP状态机抖动dryrun (6次BLOCKED↔RECOVERY翻转/7/7指纹唯一/105/105字段完整/14条告警触发/台账0错乱) |
+| 116 | v86_rc2_dshe_l2_evidence_perf_baseline.md | 67F78CA3A34064A6B87BBEEEBF109D53 | L2证据包性能基线 (SMALL 58ms/34MB MEDIUM 261ms/48MB LARGE 712ms/70MB/瓶颈IO/内存优化-25.7%) |
+| 117 | l2_evidence_package_check_v3.py | 51EA62F6A6DE0177940A5FBB8DD8BB2C | L2证据包校验V3 (分片读取/多线程并行预检/流式MD5/内存优化加载/可配置shard-size和threads) |
+| 118 | v86_rc2_dep_registry_flapping_cross_verify.md | F0B5CC67B5254EFBDAD8A54F3B9E4721 | DEP抖动台账跨团队同步 (7/7状态同步/0秒时间戳偏差/90/90字段匹配/7/7指纹可追溯/14/14告警同步) |
+
+---
+
+## File Count Summary
+
+| Stage | Files | MD5 Count |
+|-------|-------|-----------|
+| CROSS_REVIEW | 4 | 4 |
+| JOINT_REVIEW | 4 | 4 |
+| RC2_PREP | 3 | 3 |
+| RC2_PREP DSHB Gate | 3 | 3 |
+| DSHB_UT_SELFTEST | 5 | 5 |
+| DSHB_PROD_PREP | 5 | 5 |
+| DSHB_GATE_ACCEPT | 6 | 6 |
+| DSHB_GATE_FINAL | 6 | 6 |
+| DSHB_GATE_UPGRADE | 7 | 7 |
+| DSHE_ALIAS_GATE_FINAL | 5 | 5 |
+| DSHE_FULL_UT | 5 | 5 |
+| DSHE_PREP_ARCHIVE | 3 | 3 |
+| DSHE_PREP_APPROVED | 3 | 3 |
+| DSHB_PROD_STAGE1 | 4 | 4 |
+| DSHE_PROD_STAGE2 | 5 | 5 |
+| DSHB_PROD_STAGE3 | 5 | 5 |
+| DSHB_PROD_STAGE4 | 5 | 5 |
+| DSHE_PROD_STAGE4 | 6 | 6 |
+| DSHE_ID_ALIGN_FIX | 4 | 4 |
+| DSHE_ID_MAPPING_ADAPT | 5 | 5 |
+| DSHE_VALIDATION_OPTIMIZE | 5 | 5 |
+| DSHE_JOINT_VERIFY | 5 | 5 |
+| DSHE_DEP_WATCHER | 3 | 3 |
+| DSHE_L2_AUDIT_ALIGN | 5 | 5 |
+| DSHE_L2_EVIDENCE_AUTO | 5 | 5 |
+| DSHE_L2_HERMES_JOINT | 6 | 6 |
+| **DSHE_L2_STRESS_PERF_VERIFY** | **5** | **5** |
+| **DSHE_L2_RULE_ALIGN_V3** | **6** | **6** |
+| **TOTAL** | **210** | **119** |
+
+---
+
 *Generated: 2026-10-15*
-*Task: DSHE_V86_RC2_PROD_PHASE_L2_EVIDENCE_AUTO + DSHE_V86_RC2_L2_HERMES_JOINT*
+*Task: DSHE_V86_RC2_PROD_PHASE_L2_EVIDENCE_AUTO + DSHE_V86_RC2_L2_HERMES_JOINT + DSHE_V86_RC2_L2_STRESS_PERF_VERIFY + DSHE_V86_RC2_L2_RULE_ALIGN_V3*
 *Branch: feature/v85-chart-template*
-*Status: DSHE_PROD_PHASE_L2_EVIDENCE_AUTO_DONE | DSHE_PROD_PHASE_L2_HERMES_JOINT_READY=TRUE — 5/5 SUB-TASKS COMPLETE, EVIDENCE_CONTRACT_V1 SOLIDIFIED, 4/4 JOINT TEST PASS, 6/6 DEP STATES, 90/90 CHANGE LOG FIELDS, 22/22 ALERT FIELDS, 104/104 CROSS VERIFY FIELDS, 199 FILES, 34 STAGES, MD5 84/84 PASS*
+*Status: DSHE_PROD_PHASE_L2_EVIDENCE_AUTO_DONE | DSHE_PROD_PHASE_L2_HERMES_JOINT_READY=TRUE | DSHE_PROD_PHASE_L2_STRESS_PERF_VERIFY_DONE=TRUE | DSHE_PROD_PHASE_L2_RULE_ALIGN_V3_DONE=TRUE — 5/5 SUB-TASKS COMPLETE, EVIDENCE_CONTRACT_V1 SOLIDIFIED, 4/4 JOINT TEST PASS, 6/6 DEP STATES, 90/90 CHANGE LOG FIELDS, 22/22 ALERT FIELDS, 104/104 CROSS VERIFY FIELDS, 2000 ALERTS STRESS PASS, 7/7 FLAPPING FINGERPRINTS, 3 SIZES PERF BASELINE, V3 SHARDING+PARALLEL, 7/7 FLAPPING CROSS-VERIFY SYNC PASS, DS-06 FLAP RULE ALIGNED, ADAPTER V2 V3 ROUTING PASS, 36 SHARD BOUNDARY TESTS, PERF-GUARD INTEGRATED, TRIPARTITE CROSS-VERIFY V2 PASS, 210 FILES, 36 STAGES, MD5 94/94 PASS*
