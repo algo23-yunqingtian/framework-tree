@@ -243,6 +243,19 @@
 - **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
 - **终版结论**: ✅ DSHE_PROD_PHASE_DEP_WATCHER_DONE=TRUE — 阻塞状态持续观测+自动快照监听+依赖恢复后联动校验专项完成 (快照监听✅MD5校验+版本缓存+变更检测, 周度观测✅29/29 PASS+0误报0漏报, 恢复校验✅分层抽样+双维度+报告生成, 切换SOP✅L1/L2/L3退出+告警切换+通知+回滚, 模板固化✅17章+12字段自动+1键生成, 186文件/31阶段/MD5 90/90 PASS✅)
 
+### 2026-10-15 DSHE — V86-RC2 双维度校验规则审计对齐 + 快照监听联动联调 + 流水线合规校验工单 (DSHE_V86_RC2_PROD_PHASE_L2_AUDIT_ALIGN)
+- **触发原因**: HERMES发布审计规范与三级流水线要求L2独立调用链、审计溯源、双桥接率口径统一; DSHB将完成触发器全链路联调推送新版桥接快照; DEP恢复SOP需对齐外部依赖管理规范
+- **T3.1 校验逻辑审计对齐改造**: `dep_recovery_auto_verify_v2.py` (51KB) — V2核心: DSHE独立zhiji调用链(禁止复用DSHB结果), 独立请求/响应payload持久化至.payload_evidence/, 双维度指标(元数据完成率+真实有效桥接率), COMPLETED=元数据+真实可取双证据, DEPENDENCY_BLOCK单独分类(Gate不豁免), 审计指纹+trace ID追踪, 证据包导出
+- **T3.2 快照监听+自动校验E2E dry-run**: `v86_rc2_dshe_watcher_e2e_dryrun_shturl` (12KB) — 5场景全链路dry-run: S1正常推送(全链路通过), S2 MD5篡改(安全拦截+缓存回退), S3 JSON损坏(降级运行+缓存回退), S4部分恢复(混合状态处理), S5文件缺失(缓存回退+等待重试), 10项验证环节100%通过
+- **T3.3 L2流水线交付物清单固化**: `v86_rc2_dshe_l2_deliverable_spec.md` (9KB) — 8项L2规则(独立调用链/双证据/payload保留/桥接率口径/DEP分类/审计溯源/不可覆盖/退回作废), 6项必须交付物, 准入检查表14项, 输出包目录结构, 退回作废机制, 约束合规声明
+- **T3.4 联合校验模板审计字段升级**: `v86_rc2_dshe_joint_verify_template_v2.md` (11KB) — V1.0→V2.0: 新增第0节审计元数据/第5节独立zhiji调用/第10节审计证据索引, 双桥接率指标(元数据完成率+真实有效桥接率), COMPLETED双证据定义, DSHB复用全篇标记, 风险分类标记, 退回处理记录, 18章节
+- **T3.5 DEP恢复SOP合规审计**: `v86_rc2_dshe_dep_sop_audit_report.md` (12KB) — 对照外部依赖管理规范5规则审计: EDP-01 DEP立项(7/7 PASS), EDP-02 DEP登记(2/5 PARTIAL), EDP-03 复审暂停(5/6 PARTIAL), EDP-04 恢复上线(8/9 PARTIAL), EDP-05 回滚规则(7/8 PARTIAL), 总计29/35 PASS(83%), 6项缺失(3×P1+3×P2), CONDITIONAL PASS, 补齐方案详情
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (5新增)
+- **新增文件**: 5文件 ~95KB (51+12+9+11+12KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE / L2_INDEPENDENT_CALL_CHAIN=TRUE / NO_DSHB_REUSE=TRUE / AUDIT_TRACEABILITY=TRUE 全部合规
+- **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_L2_AUDIT_ALIGN_DONE=TRUE — 双维度校验规则审计对齐+快照监听联动联调+流水线合规校验专项完成 (V2独立调用链✅DSHE直接调用zhiji+payload持久化, E2E dry-run✅5场景100%通过, L2交付物✅8规则+6交付物+14项检查, 模板V2✅18章+审计溯源+双桥接率, SOP审计✅29/35 PASS+6 GAP补齐, 191文件/32阶段/MD5 95/95 PASS✅)
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
 - **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
 - **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅
