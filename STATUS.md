@@ -230,6 +230,19 @@
 - **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
 - **终版结论**: ✅ DSHE_PROD_PHASE_JOINT_VERIFY_DONE=TRUE — 双维度联合抽样校验+端到端链路验证+阻塞状态展示验证专项完成 (抽样60项/8品种/33.7%✅, 双维度校验60/60 UI PASS+0误判✅, DEPENDENCY_BLOCKED状态可视化74/74验证通过✅, 全链路数据流0丢失/0错读/0延迟✅, 运维预案Gate评审就绪✅, 180文件/30阶段/MD5 84/84 PASS✅)
 
+### 2026-10-15 DSHE — V86-RC2 阻塞状态持续观测 + 自动快照监听 + 依赖恢复后联动校验工单 (DSHE_V86_RC2_PROD_PHASE_DEP_WATCHER)
+- **触发原因**: DSHB将部署DEP就绪触发器，自动生成新版桥接快照，DSHE需搭建桥接快照文件监听机制自动检测更新，持续观测DEPENDENCY_BLOCK状态，开发依赖恢复后自动联动校验脚本，完善DEP恢复后运维切换SOP，固化联合校验报告模板
+- **T3.1 桥接快照自动监听与完整性校验**: `snapshot_watcher.py` (28KB) + `watcher_config.yaml` (10KB) — 快照监听脚本，轮询远端仓库桥接快照文件，自动校验MD5完整性，本地版本缓存(50版本)，自动检测data_fetchable=TRUE条目并触发dep_recovery_auto_verify.py，支持--once/--check/--verbose模式，watcher_config.yaml含完整配置(路径/轮询间隔/告警通道/跨团队通知/约束合规)
+- **T3.2 阻塞状态持续观测与告警稳定性巡检**: `v86_rc2_dshe_dep_weekly_observation_log.md` (9KB) — 周度DEP状态观测机制，首轮全量观测29/29 PASS(100%): 面板DEP徽章6/6+V-FETCH告警6/6+日志状态6/6+TTL刷新5/5+EM-05降级3/3+跨视图一致性3/3，告警0误报0漏报，TTL平均延迟0.28s/最大0.4s，L1缓存降级正常执行，异常记录模板+轮次追踪表
+- **T3.3 依赖恢复自动联动校验脚本开发**: `dep_recovery_auto_verify.py` (32KB) — 自动扫描快照data_fetchable=TRUE条目，分层抽样(P0≥40%/P1~50%/P2~27%，8品种全覆盖)，双维度校验(UI渲染+data_fetchable状态)，自动输出联合抽样校验报告，区分FULLY_AVAILABLE/DEPENDENCY_BLOCK条目，支持--auto/--manual/--dry-run模式
+- **T3.4 DEP恢复后运维切换SOP完善**: `v86_rc2_dshe_dep_recovery_switch_sop.md` (10KB) — EM-05 v2.0三级降级退出(L3→L2→L1强制顺序)，面板状态切换(🟡DEPENDENCY_BLOCK→🟢FULLY_AVAILABLE)，V-FETCH告警规则切换(01~04静默+05~06启用)，正常指标监控6条启用，业务侧通知模板(2种)，回滚触发条件5项+SOP，检查清单21项
+- **T3.5 联合校验报告模板固化**: `v86_rc2_dshe_joint_verify_template.md` (7KB) — 模板ID: DSHE-JOINT-VERIFY-TEMPLATE-V1.0，17章节完整模板，12个字段自动填充(快照ID/MD5/抽样清单/UI/data_fetchable/联合结果/误判率/MD5/跨链路)，5个字段手动填充(HERMES/Gate/跨团队/签字/日期)，DEP恢复后一键生成可直接提交HERMES预审
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (6新增: 2脚本+1配置+3文档)
+- **新增文件**: 6文件 ~96KB (28+10+32+9+10+7KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE / NO_PANEL_JSON_MODIFICATION=TRUE / NO_ENGINE_LOGIC_MODIFICATION=TRUE 全部合规
+- **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_DEP_WATCHER_DONE=TRUE — 阻塞状态持续观测+自动快照监听+依赖恢复后联动校验专项完成 (快照监听✅MD5校验+版本缓存+变更检测, 周度观测✅29/29 PASS+0误报0漏报, 恢复校验✅分层抽样+双维度+报告生成, 切换SOP✅L1/L2/L3退出+告警切换+通知+回滚, 模板固化✅17章+12字段自动+1键生成, 186文件/31阶段/MD5 90/90 PASS✅)
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
 - **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
 - **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅

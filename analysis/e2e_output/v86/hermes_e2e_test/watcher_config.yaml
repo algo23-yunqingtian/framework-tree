@@ -1,0 +1,182 @@
+# DSHE V86-RC2 Snapshot Watcher Configuration
+# Task: DSHE_V86_RC2_PROD_PHASE_DEP_WATCHER / T3.1
+# Generated: 2026-10-15
+# Branch: feature/v85-chart-template
+#
+# Configuration for bridge snapshot auto-monitoring.
+# Snapshot watcher polls DSHB bridge snapshot file changes,
+# verifies MD5 integrity, and auto-triggers recovery verification
+# when data_fetchable=TRUE entries are detected.
+
+# ─────────────────────────────────────────────────────────────────────
+# Repository Settings
+# ─────────────────────────────────────────────────────────────────────
+
+# Repository root path (absolute)
+repo_root: "D:/DSH_WORK/framework-tree"
+
+# Git remote for fetching latest snapshot updates
+git_remote: "origin"
+
+# Branch to track (locked per BRANCH_LOCKED=TRUE constraint)
+git_branch: "feature/v85-chart-template"
+
+# Whether to auto-fetch/pull from remote before each poll cycle
+auto_fetch_remote: true
+
+# ─────────────────────────────────────────────────────────────────────
+# Snapshot File Paths
+# ─────────────────────────────────────────────────────────────────────
+
+# List of snapshot file paths (repo-relative), checked in order.
+# Most recent modification wins.
+snapshot_paths:
+  - "analysis/e2e_output/v86/hermes_e2e_test/v86_rc2_dshb_bridge_snapshot_for_dshe.json"
+  - "analysis/e2e_output/v86/dshb_gate_prod_fix/v86_rc2_dshb_bridge_snapshot_for_dshe.json"
+
+# ─────────────────────────────────────────────────────────────────────
+# Polling Settings
+# ─────────────────────────────────────────────────────────────────────
+
+# Poll interval in seconds (5 minutes = 300s)
+# Aligned with DSHE TTL 5min refresh cycle
+poll_interval_seconds: 300
+
+# ─────────────────────────────────────────────────────────────────────
+# MD5 Integrity Settings
+# ─────────────────────────────────────────────────────────────────────
+
+# Baseline MD5 of the initial known-good snapshot
+# (DSHB V86-RC2-BRIDGE-SNAPSHOT-001)
+initial_md5: "41856E22398A8DE70F561F62A33D3DA4"
+
+# Whether to send alert when MD5 changes from baseline
+md5_mismatch_alert: true
+
+# ─────────────────────────────────────────────────────────────────────
+# Dependency Recovery Detection
+# ─────────────────────────────────────────────────────────────────────
+
+# Whether to auto-trigger recovery verification when
+# data_fetchable=TRUE entries are detected in snapshot
+enable_recovery_verify: true
+
+# Path to the recovery auto-verify script
+recovery_verify_script: "dep_recovery_auto_verify.py"
+
+# ─────────────────────────────────────────────────────────────────────
+# Alert Notification
+# ─────────────────────────────────────────────────────────────────────
+
+# Alert notification channels
+# Options: console, log, (future: email, webhook, slack)
+notify_channels:
+  - console
+  - log
+
+# ─────────────────────────────────────────────────────────────────────
+# Local Cache Settings
+# ─────────────────────────────────────────────────────────────────────
+
+# Maximum number of cached snapshot versions to keep
+# Older versions are pruned when exceeding this limit
+max_cache_versions: 50
+
+# Cache directory (relative to script directory)
+# Cached files are stored as snapshot_YYYYMMDD_HHMMSS.json
+cache_dir: ".snapshot_cache"
+
+# ─────────────────────────────────────────────────────────────────────
+# Logging Settings
+# ─────────────────────────────────────────────────────────────────────
+
+# Log directory (relative to script directory)
+log_dir: ".logs"
+
+# Log file name
+log_file: "snapshot_watcher.log"
+
+# Alert log file name
+alert_log_file: "alerts.log"
+
+# ─────────────────────────────────────────────────────────────────────
+# Advanced Settings
+# ─────────────────────────────────────────────────────────────────────
+
+# Whether to run in daemon mode (vs single cycle)
+# true = continuous polling loop, false = single cycle then exit
+daemon_mode: true
+
+# Graceful shutdown timeout in seconds
+shutdown_timeout_seconds: 30
+
+# Retry configuration for git operations
+git_retry_attempts: 3
+git_retry_delay_seconds: 10
+
+# ─────────────────────────────────────────────────────────────────────
+# Constraints Compliance
+# ─────────────────────────────────────────────────────────────────────
+
+# Constraint values for this work order
+constraints:
+  JOB_READY: false
+  NO_ZHIJI_API_CALL: false    # zhiji API calls allowed for verification
+  NO_MODIFY_V85: true
+  NO_OVERWRITE: true
+  BRANCH_LOCKED: true
+
+# ─────────────────────────────────────────────────────────────────────
+# Cross-Team Settings
+# ─────────────────────────────────────────────────────────────────────
+
+# Cross-team sync targets (automated notifications)
+cross_team_targets:
+  dshb:
+    team: "DSHB Bridge Layer"
+    notify_on_recovery: true
+    notify_on_integrity_failure: true
+  hermes:
+    team: "HERMES Audit"
+    notify_on_recovery: true
+    notify_on_integrity_failure: false
+  zhiji:
+    team: "zhiji Data Platform"
+    notify_on_recovery: false
+    notify_on_integrity_failure: false
+
+# ─────────────────────────────────────────────────────────────────────
+# Task Metadata
+# ─────────────────────────────────────────────────────────────────────
+
+task:
+  id: "DSHE_V86_RC2_PROD_PHASE_DEP_WATCHER"
+  sub_task: "T3.1"
+  description: "Bridge snapshot auto-monitoring and MD5 verification"
+  phase: "dep-watcher"
+  version: "1.0.0"
+
+# ─────────────────────────────────────────────────────────────────────
+# Usage Examples
+# ─────────────────────────────────────────────────────────────────────
+#
+# Start watcher (continuous mode):
+#   python3 snapshot_watcher.py
+#
+# Start with custom config:
+#   python3 snapshot_watcher.py --config watcher_config.yaml
+#
+# Single poll cycle:
+#   python3 snapshot_watcher.py --once
+#
+# Health check:
+#   python3 snapshot_watcher.py --check
+#
+# Verbose mode:
+#   python3 snapshot_watcher.py --verbose
+#
+# As background service (Linux):
+#   nohup python3 snapshot_watcher.py --config watcher_config.yaml &
+#
+# As Windows scheduled task:
+#   schtasks /create /tn "DSHE_Snapshot_Watcher" /tr "python snapshot_watcher.py" /sc minute /mo 5
