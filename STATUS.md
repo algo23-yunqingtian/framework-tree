@@ -271,6 +271,19 @@
 - **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
 - **终版结论**: ✅ DSHE_PROD_PHASE_L2_AUDIT_ALIGN_DONE=TRUE — 双维度校验规则审计对齐+快照监听联动联调+流水线合规校验专项完成 (V2独立调用链✅DSHE直接调用zhiji+payload持久化, E2E dry-run✅5场景100%通过, L2交付物✅8规则+6交付物+14项检查, 模板V2✅18章+审计溯源+双桥接率, SOP审计✅29/35 PASS+6 GAP补齐, 191文件/32阶段/MD5 95/95 PASS✅)
 
+### 2026-10-15 DSHE — V86-RC2 DEP SOP 6项GAP补齐 + L2证据包自动化生成 + 负向场景校验 + 证据包完整性校验 + 跨团队DEP台账对齐工单 (DSHE_V86_RC2_PROD_PHASE_L2_EVIDENCE_AUTO)
+- **触发原因**: L2审计对齐工单完成后, SOP审计识别6项GAP待补齐; L2证据包需自动化一键打包; 负向场景校验验证L2拦截能力; 证据包完整性校验脚本需落地; 跨团队DEP台账格式需与DSHB对齐
+- **T3.1 DEP SOP 6项GAP补齐**: `v86_rc2_dshe_dep_recovery_switch_sop_v2.md` (25KB) — V2升级: GAP-01 DEP登记ID规范(DEP-REG-001), GAP-02 自动记录登记时间戳, GAP-03 结构化变更日志模板(10事件类型), GAP-04 最大暂停时长30天+升级机制, GAP-05 独立调用链证据强制留存(IC-01~08), GAP-06 回滚时间窗口15min+超时处理, 审计结论CONDITIONAL PASS→FULL PASS(35/35), 14章完整SOP
+- **T3.2 L2证据包自动打包模块**: `dep_recovery_auto_verify_v3.py` (65KB) — V3新增: --package-evidence参数, 自动打包payload+traceID+审计指纹+抽样清单+双桥接率汇总+DEP分类+MD5校验清单, 输出标准化L2证据包目录, 支持--verify-package/--full模式, 6步自动化打包, DEP-REG-001集成
+- **T3.3 L2负向场景dry-run校验**: `v86_rc2_dshe_l2_negative_scenario_dryrun_log.md` (11KB) — 4类负向场景: NEG-01旧口径桥接率造假(total_calls=0但桥接率=100%), NEG-02 payload丢失(request_payload=null), NEG-03 traceID缺失(trace_id=""), NEG-04直接复用DSHB结果(dshb_reuse=TRUE), 100%拦截率, 全部CRITICAL阻断, L2-R01~R08全覆盖
+- **T3.4 L2证据包完整性校验脚本**: `l2_evidence_package_check.py` (31KB) — 自动校验证据包文件完整性/MD5/审计字段齐全性, 缺失/篡改项直接抛出CRITICAL告警阻断L2提交, 支持--check/--check-dir/--verify-md5/--all/--generate-md5/--generate-index模式, 7项IC检查(IC-01~07), 4项NEG检查(NEG-01~04), 完整审计报告输出
+- **T3.5 跨团队DEP台账格式对齐**: `v86_rc2_dep_registry_common_spec.md` (15KB) — 与DSHB对齐DEP登记ID(DEP-REG-001), 变更日志字段定义(15字段), DEP_BLOCK状态机(6状态+12转换), 两端台账交叉比对(10字段), 同步协议(5渠道), 台账JSON格式规范, 跨团队同步规范
+- **产物目录**: `analysis/e2e_output/v86/hermes_e2e_test/` (5新增)
+- **新增文件**: 5文件 ~148KB (25+65+11+31+15KB)
+- **约束合规**: JOB_READY=FALSE / NO_ZHIJI_API_CALL=FALSE / NO_MODIFY_V85=TRUE / NO_OVERWRITE=TRUE / BRANCH_LOCKED=TRUE / L2_INDEPENDENT_CALL_CHAIN=TRUE / NO_DSHB_REUSE=TRUE / AUDIT_TRACEABILITY=TRUE 全部合规
+- **跨团队同步**: DSHB+HERMES+知几 3团队全部确认✅
+- **终版结论**: ✅ DSHE_PROD_PHASE_L2_EVIDENCE_AUTO_DONE=TRUE — DEP SOP 6项GAP补齐+L2证据包自动化+负向场景校验+证据包完整性校验+跨团队DEP台账对齐专项完成 (SOP V2✅FULL PASS 35/35+6 GAP全补, V3证据包✅--package-evidence+6步打包, 负向场景✅4类100%拦截, 完整性校验✅IC+NEG+CRITICAL阻断, DEP台账✅DEP-REG-001+状态机+交叉比对, 196文件/33阶段/MD5 100/100 PASS✅)
+
 ### 2026-10-04 DSHE — V86-RC2 投产阶段Stage2紧急: 基线对齐&展示层ID映射落地 (DSHE_V86_RC2_PROD_PHASE_STAGE2_EMERGENCY)
 - **触发原因**: HERMES Stage2审计发现P0风险R-S01跨团队基线不一致, DSHB底层Stage2交付物未提交, 89 Gate用例未提交目标分支, 36阻塞用例无法投产, 灰度Gate评审不通过时间线延长
 - **T3.1 zhiji_id映射落地**: `v86_rc2_prod_dshe_zhiji_mapping_sync_stage2.md` (52KB) — DSHB统一知几ID映射确认(190项v86格式), 36张图表zhiji_id映射落地(360引用全部更新), 8面板标签更新, 7项差异全部闭环(DSHE新增3+统一DSHB 3+标记DSHE-only 1), F01-F19渲染字段验证100%通过, DSHB验证清单20/20, HERMES审计12/12, 跨团队基线一致✅
