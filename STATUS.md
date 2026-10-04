@@ -1259,3 +1259,19 @@
 - 约束合规: NO_OVERWRITE=TRUE(V1/V2全部保留), BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
 - DSHB_PROD_PHASE_TRIGGER_DEFECT_FIX_DONE=TRUE
 - 状态标记: DSHB_PROD_PHASE_TRIGGER_DEFECT_FIX_DONE=TRUE
+
+### 2026-10-15 DSHE_V86_RC2_L2_HERMES_JOINT_AND_DEP_STATE_MACHINE
+- L2证据包与HERMES校验器联调+DEP状态机全场景dryrun+告警链路验证+前置校验增强+跨团队交叉比对 (6 deliverables, MD5 all verified)
+  - v86_rc2_dshe_l2_hermes_auditor_joint_test_report.md (MD5: 19CD8C55) - L2与HERMES审计器联调报告(EVIDENCE_CONTRACT_V1固化,4样本4/4 PASS,33/33字段对齐,审计器11/11用例回放通过)
+  - v86_rc2_dshe_dep_state_machine_full_dryrun.md (MD5: 7A43CDFB) - DEP全状态机生命周期dryrun(6/6状态覆盖,90/90字段完整,6/6指纹唯一,5/5暂停预警,5/5回滚窗口)
+  - v86_rc2_dshe_alert_adapter.py (MD5: 39B50BCC) - L2告警适配器(22字段载荷,CRITICAL/HIGH/MEDIUM/LOW四级路由,DSHB/DSHE/HERMES责任方分配,100%路由矩阵匹配)
+  - v86_rc2_dshe_alert_verification.md (MD5: BA05B84E) - 告警链路验证报告(9告警全部路由正确,字段完整性22/22,分级阻断规则验证通过)
+  - l2_evidence_package_check_v2.py (MD5: 647724B0) - L2证据包前置校验V2(--pre-audit模式,12项IC检查+4项NEG检查+契约版本校验+DEP状态机字段校验)
+  - v86_rc2_dep_registry_cross_verify.md (MD5: 6D745430) - DSHB↔DSHE DEP台账跨团队交叉比对(12/12项通过,104/104字段匹配,6/6指纹可追溯,0秒时间戳偏差)
+- 契约固化: EVIDENCE_CONTRACT_V1 (33/33字段对齐,4样本全部可解析,审计器11用例回放通过)
+- 状态机: DEP 6状态全生命周期(ACTIVE→BLOCKED→RECOVERY→RECOVERED→ROLLED_BACK→CLOSED),12次转换,15字段变更日志
+- 告警链路: 告警适配器22字段载荷,CRITICAL阻断流水线,HERMES路由规范对齐
+- 前置校验: V2新增--pre-audit模式,12项IC检查+4项NEG检查+契约版本+DEP状态机+Response Payload+Script Audit
+- 跨团队: DSHB↔DSHE DEP台账双向交叉比对100%一致,5渠道同步
+- 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE
+- 状态标记: DSHE_PROD_PHASE_L2_HERMES_JOINT_READY=TRUE
