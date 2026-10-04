@@ -1332,3 +1332,18 @@
 - 约束合规: NO_OVERWRITE=TRUE(所有历史文件保留仅新增), BRANCH_LOCKED=TRUE, NO_MODIFY_V85=TRUE, NO_ZHIJI_API_CALL=FALSE
 - DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE
 - 状态标记: DSHB_PROD_PHASE_GATE_FUSE_VERIFY_DONE=TRUE
+
+### 2026-10-15 DSHE_V86_RC2_L2_STRESS_PERF_VERIFY
+- L2告警压力仿真+DEP状态机抖动场景验证+L2证据包性能基线测试+前置校验V3+跨团队台账动态同步 (5 deliverables, MD5 all verified)
+  - v86_rc2_dshe_alert_stress_test_report.md (MD5: ED19D7F5) - L2告警链路压力仿真(2000事件5批次,16807事件/秒峰值吞吐,0丢失,0截断,0路由错配,100%去重折叠,22字段完整性,5种混合场景全通过)
+  - v86_rc2_dshe_dep_state_flapping_dryrun_log.md (MD5: 95C56473) - DEP状态机抖动dryrun(6次BLOCKED↔RECOVERY翻转,7/7指纹唯一,105/105字段完整,14条告警触发,台账0错乱,EVIDENCE_CONTRACT_V1合规)
+  - v86_rc2_dshe_l2_evidence_perf_baseline.md (MD5: 67F78CA3) - L2证据包性能基线(SMALL 8调用58ms/34MB, MEDIUM 60调用261ms/48MB, LARGE 178调用712ms/70MB, 瓶颈IO 73%, 内存优化-25.7%)
+  - l2_evidence_package_check_v3.py (MD5: 51EA62F6) - L2证据包校验V3(分片读取大JSON,多线程并行预检,流式MD5,内存优化加载,可配置shard-size和threads)
+  - v86_rc2_dep_registry_flapping_cross_verify.md (MD5: F0B5CC67) - DEP抖动台账跨团队同步(7/7状态同步,0秒时间戳偏差,90/90字段匹配,7/7指纹可追溯,14/14告警同步,5渠道验证)
+- 告警压力: 2000事件5批次,16807事件/秒峰值吞吐,60μs单事件处理,100%去重折叠,0丢失/截断/路由错配
+- DEP抖动: 6次BLOCKED↔RECOVERY翻转,7/7审计指纹唯一,105/105变更日志字段,14条告警按分级触发
+- 性能基线: SMALL 58ms/34MB, MEDIUM 261ms/48MB, LARGE 712ms/70MB, IO瓶颈定位(73%), 内存优化-25.7%
+- 校验V3: 分片读取(4MB默认), 多线程并行预检(4线程默认), 流式MD5(64KB分块), 内存优化加载
+- 跨团队同步: 7/7状态实时同步,<1ms延迟,0秒时间戳偏差,90/90字段匹配,14/14告警同步
+- 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE
+- 状态标记: DSHE_PROD_PHASE_L2_STRESS_PERF_VERIFY_DONE=TRUE
