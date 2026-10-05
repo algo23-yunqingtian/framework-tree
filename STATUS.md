@@ -1,3 +1,18 @@
+### 2026-10-15 DSHE_V86_RC2_L2_FAULT_REGRESSION
+- L2面板DEP故障场景专项回归+回滚脚本二次演练+告警载荷跨版本兼容性校验+时延基线故障子集补充+灰度降级策略更新 (5 deliverables, MD5 all verified)
+  - v86_rc2_e_l2_panel_dep_fault_regression_report.md (MD5: 733FDAE4) - DEP故障场景回归(3场景45用例,30触发15抑制,DS-06抖动T+330s命中,5分钟去重87.5%抑制率,P0强制采集100%,快照兜底100%,5态徽章,4类告警分类)
+  - v86_rc2_e_l2_panel_rollback_2nd_drill_report.md (MD5: 980A298C) - 回滚二次演练(2轮完整演练,Round1 3s/4动作/12检查表PASS,Round2连续3次回滚幂等0s,0状态污染/0残留/0脏数据,0数据丢失)
+  - v86_rc2_e_alert_payload_compatibility_verify.md (MD5: E13CC371) - 告警载荷兼容性校验(4样本92字段检查,Gate V5 92/92 PASS,HERMES 92/92 PASS,23/23跨版本字段对齐,3/3枚举兼容,4/4严重级别映射,0阻塞不兼容)
+  - v86_rc2_e_alert_e2e_latency_baseline_add_fault_case.md (MD5: EA5A66F0) - 时延基线DEP故障子集(SC-4 DEP服务不可用,P99=843ms阈值≤1000ms PASS,膨胀1.71x vs SC-1,SC-4 vs SC-2=0.54x,四场景对比,CASE-A01 11PASS/3FAIL预期)
+  - v86_rc2_e_l2_panel_gray_degrade_spec_update.md (MD5: F0822DF5) - 灰度降级策略更新(DEP长期不可用规则/gray_gate_decider 5决策对齐/24组合矩阵/DS-06灰度集成/DEP_LONG_BLOCKED 24h阈值/72h强制回退/19项约束合规)
+- DEP故障回归: 3场景(持续500/间歇抖动/服务不可用),45用例(15规则×3场景),30触发15抑制,0误报0漏报,DS-06抖动检测T+330s,5分钟去重抑制87.5%,P0强制采集51/51,P1/P2分阶降级,快照兜底grace=300s/snapshot_max_age=24h,5态徽章(ACTIVE→BLOCKED→FALLBACK→RECOVERY→RECOVERED)
+- 回滚二次演练: 2轮完整演练(正常→故障→一键回滚→恢复→切回生产),Round1标准3s/4动作/12检查表,Round2压力连续3次回滚(1s完整变更+0s幂等跳过),0状态污染,0残留任务,0脏数据,197指标零丢失,审计事件仅增不减
+- 载荷兼容性: 4样本(正常/阈值越界/DEP故障/抖动)×23字段=92检查,Gate V5解析92/92 PASS,HERMES审计器解析92/92 PASS,跨版本字段23/23对齐,枚举3/3兼容,严重级别4/4映射,P0→CRITICAL/P1→HIGH/P2→MEDIUM,ISO8601时间戳100%合规,0阻塞不兼容
+- 时延基线补充: SC-4 DEP服务不可用(P50=288ms/P95=513ms/P99=843ms,阈值≤1000ms),HTTP 500 fast-fail时延代价最低但服务降级最严重,S2是首要瓶颈(53.8% P50),S3短路有效抑制,CASE-A01 O1~O16全量对齐
+- 灰度降级更新: DEP_LONG_BLOCKED 24h阈值/72h强制回退,6阶段×4状态=24组合矩阵,gray_gate_decider 5决策(ADVANCE/HOLD/OBSERVE/ROLLBACK/COMPLETE)与L2面板4动作映射,DS-06阈值=2(CRITICAL+HOLD),F5阈值=3(ROLLBACK)解耦,13种触发条件(原10+新3)
+- 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, DEP_001_STATUS=BLOCKED
+- 状态标记: E_PROD_PHASE_L2_FAULT_REGRESSION_DONE=TRUE
+
 ### 2026-10-15 DSHE_V86_RC2_L2_PANEL_REAL_DEP_GRAY_READY
 - L2面板全链路真实DEP-001数据源接入+告警端到端时延基线标定+灰度阶段面板降级策略与回滚预案+告警规则真实数据复测 (6 deliverables, MD5 all verified)
   - v86_rc2_e_l2_panel_real_dep_connect_report.md (MD5: 4DEF1A50) - 真实DEP-001接入报告(197指标全量接入,6面板72子面板不变,双ID展示197/197,DSHB零偏移,三级降级L1/L2/L3,适配器V3集成,16章节)
