@@ -794,6 +794,77 @@ Framework-tree V86-RC2 项目连续 5 个阶段空转（Stage1→Stage2→Stage2
 
 ---
 
-*本交接文档由 HERMES 生成于 V86-RC2 灰度判定分支验证+CASE-A01归档+V4扫描器+载荷容错批次完成后。新会话先读本文件，再决定是否继续推进。*
+
+## 18. V86-RC2 G0影子压测 + 事件持久化 + 审计追溯 + 联调 + 运维手册批次
+
+> **批次日期**: 2026-10-15
+> **分支**: `feature/v85-chart-template` @ `5ade5a2`
+> **状态标记**: `HERMES_PROD_PHASE_G0_AUDIT_EVENT_PERSIST_DONE=TRUE`
+
+### 18.1 本轮新增产物（6 份文档 + 1 脚本 + 1 MD5清单）
+
+| # | 文件 | 字节 | 核心内容 |
+|---|------|------|----------|
+| 1 | `v86_rc2_hermes_g0_audit_pressure_test_report.md` | 2,444 | G0影子压测：审计105 ev/s，WAL写入78K ev/s，丢包0% |
+| 2 | `gray_gate_event_persist.py` | 15,593 | 事件持久化模块：10/10自检PASS，5类决策+HEALTH+ALERT |
+| 3 | `v86_rc2_hermes_gray_event_schema.md` | 4,512 | 事件Schema规范v1.0：22字段，DSHE消费契约 |
+| 4 | `v86_rc2_hermes_prod_audit_trace_spec.md` | 4,583 | 审计追溯规范：6维追溯查询，故障回溯步骤 |
+| 5 | `v86_rc2_hermes_gray_event_consumer_verify_report.md` | 3,193 | 大盘联调验证：5类决策事件全PASS，字段22/22对齐 |
+| 6 | `v86_rc2_hermes_audit_ops_manual_g0_update.md` | 5,425 | 运维手册G0章节：压测阈值+持久化规范+追溯指南+自检 |
+
+### 18.2 G0影子压测结果
+
+| 指标 | 实测 | 阈值 | 评价 |
+|------|------|------|------|
+| 审计吞吐 | 105.1 ev/s | ≥50 ev/s | ✅ 2.1x |
+| 审计P99 | 25.4ms | ≤50ms | ✅ |
+| WAL写入 | 78K ev/s | ≥50K ev/s | ✅ 1.56x |
+| 丢包率 | 0% | 0% | ✅ |
+| 去重 | 生效 | 生效 | ✅ |
+| 存储 | 3.99MB | ≤60MB | ✅ |
+
+### 18.3 事件持久化模块
+
+- `gray_gate_event_persist.py`: 10/10自检PASS
+- 4类决策事件(ADVANCE/ROLLBACK/OBSERVE/HOLD) + HEALTHCHECK + ALERT
+- Schema v1.0: 22字段，5索引，WAL存储
+- DSHE消费契约对齐
+
+### 18.4 审计追溯规范
+
+- 6维追溯：时间/决策类型/风险等级/阶段/批次/事件类型
+- 故障回溯：DEP状态→Gate→决策→告警完整链路
+- 运维操作：导出/清理/完整性检查/checkpoint
+
+### 18.5 大盘联调验证
+
+- 5类决策事件全部写入+读取成功
+- 字段22/22全部对齐DSHE消费契约
+- 时序严格递增，无乱序
+- 去重生效(同秒同决策合并)
+- DSHE聚合大盘可直接消费
+
+### 18.6 当前状态总览
+
+| 标记 | 值 |
+|------|-----|
+| **HERMES_PROD_PHASE_G0_AUDIT_EVENT_PERSIST_DONE** | **TRUE** |
+| HERMES_PROD_PHASE_GRAY_DECIDER_BRANCH_VERIFY_DONE | TRUE |
+| HERMES_PROD_PHASE_CASEA01_REAL_RUN_GRAY_DECISION_DONE | TRUE |
+| HERMES_PROD_PHASE_CASEA01_WAL_OPS_PROD_CHECKLIST_DONE | TRUE |
+| HERMES_PROD_PHASE_AUDITOR_PERF_WAL_GRAY_DONE | TRUE |
+| HERMES_PROD_PHASE_PIPELINE_SIM_DONE | TRUE |
+| JOB_READY | **FALSE** |
+| GATE_DECISION | **NOT_READY** |
+| DEP_001_STATUS | **BLOCKED** |
+
+> **Gate 仍 NOT_READY**：DEP-001短ID解析服务仍未就绪。
+> 本轮完成了G0影子审计链路压测（审计105 ev/s/78K WAL/0丢包）+ 事件持久化模块（10/10自检）+ 审计追溯规范（6维追溯）+ 大盘联调验证（22字段对齐）+ 运维手册G0章节。
+> **HERMES侧全部能力已就绪，DEP恢复后可立即进入G0影子投产。**
+
+---
+
+*本交接文档由 HERMES 生成于 V86-RC2 G0影子压测+事件持久化+审计追溯+联调+运维手册批次完成后。新会话先读本文件，再决定是否继续推进。*
+
 
 
