@@ -22,8 +22,6 @@
 
 ## 2. 一键回滚脚本说明
 
-**文件:** `rollback_l2_panel.sh` (Bash ~330行) | **权限:** `chmod +x`
-
 ### 2.1 四个回滚动作
 
 | # | 动作 | 配置变更 | 目的 |
@@ -94,11 +92,11 @@ jq '.alert_silence_enabled=true' alert_silence_config.json > /tmp/s && mv /tmp/s
 | # | 准备项 | 负责人 | 验证 |
 |---|--------|--------|------|
 | D-01 | 预生产部署commit`1d5990b` | DSHE | `git rev-parse HEAD` |
-| D-02 | 回滚脚本可执行 | DSHE | `./rollback_l2_panel.sh --dry-run`正常 |
-| D-03 | 状态/日志路径可写 | DSHE | `touch /tmp/t && rm /tmp/t` |
+| D-02 | 回滚脚本可执行 | DSHE | `./rollback_l2_panel.sh --dry-run` |
+| D-03 | 状态/日志路径可写 | DSHE | `touch /tmp/t && rm` |
 | D-04 | DEP-001探针配置 | HERMES | `snapshot_watcher.py --once` |
 | D-05 | Alert Adapter V3运行 | DSHE | `systemctl status v86-alert-adapter` |
-| D-06 | 基线快照 | DSHE | `jq '.metrics' panel_config.json > /tmp/baseline.json` |
+| D-06 | 基线快照 | DSHE | `jq '.metrics' panel_config.json>/tmp/baseline.json` |
 | D-07 | 验证检查表打印 | DSHE | 第6节 |
 
 ### 4.2 执行
@@ -107,15 +105,14 @@ jq '.alert_silence_enabled=true' alert_silence_config.json > /tmp/s && mv /tmp/s
 
 **T+1 模拟:** `export DEPENDENCY_BLOCKED=TRUE` → `./rollback_l2_panel.sh --dry-run --rollback-scope full` → `./rollback_l2_panel.sh --rollback-scope full --force`
 
-**T+2 验证:** `./rollback_l2_panel.sh --verify-only`→全PASS。`diff <(jq -S '.metrics' panel_config.json) <(jq -S '.metrics' /tmp/baseline.json)`→仅datasource_mode不同。`jq '.audit_events|length' audit_events_persist.json`→未减少。`ls -la evidence_package_*.json`→完整。
+**T+2 验证:** `./rollback_l2_panel.sh --verify-only`→全PASS。`diff <(jq -S '.metrics' panel_config.json) <(jq -S '.metrics' /tmp/baseline.json)`→仅datasource_mode不同。`jq '.audit_events|length' audit_events_persist.json`→未减少。`ls evidence_package_*.json`→完整。
 
-**T+5 稳定:** 观察5min无异常 → 模拟DEP恢复 → 验证恢复。
+**T+5 稳定:** 观察5min无异常→模拟DEP恢复→验证恢复。
 
 ### 4.3 时间轴
 
 ```
-T+0 基线确认 → T+1 注入异常 → T+1m10s Dry-Run → T+1m30s 执行回滚
-→ T+2m 完成(<30s) → T+2m5s 验证检查表 → T+5m 稳定观察 → T+5m10s DEP恢复 → T+7m 结束
+T+0基线→T+1注入异常→T+1m10s Dry-Run→T+1m30s回滚→T+2m完成(<30s)→T+2m5s验证→T+5m稳定→T+5m10s DEP恢复→T+7m结束
 ```
 
 ### 4.4 成功判定
@@ -173,13 +170,12 @@ T+0 基线确认 → T+1 注入异常 → T+1m10s Dry-Run → T+1m30s 执行回�
 ### 5.4 恢复路径
 
 ```
-回滚稳定≥5min → DEP恢复确认(数据平台书面)
-→ 反向恢复(非一键):
-  1. alert_silence_enabled=false
-  2. metric_collector_enabled=true
-  3. datasource_mode=real
-  4. --deploy-env prod
-→ 完整L2校验+HERMES审计
+回滚稳定≥5min→DEP恢复确认→反向恢复(非一键):
+1. alert_silence_enabled=false
+2. metric_collector_enabled=true
+3. datasource_mode=real
+4. --deploy-env prod
+→完整L2校验+HERMES审计
 ```
 
 ---
@@ -232,7 +228,7 @@ T+0 基线确认 → T+1 注入异常 → T+1m10s Dry-Run → T+1m30s 执行回�
 | 稳定性(5min) | 无异常 | 无异常 | ✅ |
 | 检查表 | 12/12 | 12/12 | ✅ |
 
-### 7.3 发现
+### 7.3 发现与结论
 
 | # | 发现 | 改进 | 优先级 |
 |---|------|------|--------|
@@ -241,30 +237,22 @@ T+0 基线确认 → T+1 注入异常 → T+1m10s Dry-Run → T+1m30s 执行回�
 | F-03 | DEP异常注入需环境标记 | 增加模拟工具 | P3 |
 | F-04 | 静默时间无上限 | 增加定时自动解除(1h) | P2 |
 
-### 7.4 结论
-
-> 一键回滚预案预生产验证通过。回滚15秒(<60s)，数据丢失0，审计丢失0，evidence完整性100%，检查表12/12 PASS。灰度回滚可投入生产。
+> **结论:** 一键回滚预案预生产验证通过。回滚15秒(<60s)，数据丢失0，审计丢失0，evidence完整性100%，检查表12/12 PASS。灰度回滚可投入生产。
 
 ---
 
 ## 8. 跨团队同步
 
-| 团队 | 通知时机 | 方式 | 内容 |
-|------|----------|------|------|
+| 团队 | 时机 | 方式 | 内容 |
+|------|------|------|------|
 | DSHB | 回滚前/后 | Slack #dshb-alerts | L2已回滚mock,DSHB无影响 |
 | HERMES | 回滚后5min内 | Slack+邮件 | 审计完整性确认 |
 | B团队 | 回滚后30min内 | 周报+Slack | 灰度回滚记录,L2准入暂冻 |
 | 数据平台 | DEP异常时 | 电话+Slack | DEP-001异常,请排查 |
 
-**模板:**
+**模板:** DSHB:🔔L2回滚|触发:DEP-001|4/4动作|<X>s|丢失:0|DSHB无影响 | HERMES:🔔审计确认|丢失:0|完整性:100%|12/12✅ | B团队:📋灰度回滚|准入暂冻|预计恢复~2h
 
-```
-DSHB: 🔔 L2回滚通知 | 时间:$(date -Iseconds) | 触发:DEP-001 BLOCKED>5min | 动作:4/4 | 耗时:<X>s | 数据丢失:0 | DSHB无影响,无需操作
-HERMES: 🔔 审计确认 | 回滚完成 | 审计丢失:0 ✅ evidence:100% ✅ WAL:✅ | 检查表:12/12 ✅ | 请确认
-B团队: 📋 灰度回滚记录 | 日期:$(date) | L2回滚 | L2准入暂冻,已准入产品不受影响 | 预计恢复:~2h
-```
-
-**流程:** 回滚→自动通知DSHB/HERMES/B团队→DSHB确认<5min→HERMES确认<30min→B团队周报<1h→全团队确认→归档
+**流程:** 回滚→自动通知DSHB/HERMES/B→DSHB<5min→HERMES<30min→B周报<1h→归档
 
 ---
 
@@ -281,6 +269,6 @@ B团队: 📋 灰度回滚记录 | 日期:$(date) | L2回滚 | L2准入暂冻,�
 | NO_DSHB_REUSE | TRUE | ✅不引用DSHB | 操作完全在DSHE侧 |
 | AUDIT_TRACEABILITY | TRUE | ✅完整追踪 | rollback_state.json记录 |
 
-**数据安全:** 回滚**不修改** evidence_package_*.json/audit_events_persist.json/event_store_wal_v2.log/MD5_CHECKSUM_LIST_*.md/v86_rc2_hermes_*/v86_rc2_dshe_*。**仅修改** alert_adapter_config.json/panel_config.json/metric_collector_config.json/alert_silence_config.json。**新增** rollback_state.json/rollback.log。
+**数据安全:** 回滚**不修改**evidence_package_*/audit_events_persist/event_store_wal_v2/MD5_CHECKSUM_LIST_*/v86_rc2_hermes_*/v86_rc2_dshe_*。**仅修改**alert_adapter_config/panel_config/metric_collector_config/alert_silence_config。**新增**rollback_state.json/rollback.log。
 
 > **声明:** 本预案及配套脚本完全符合V86-RC2工单E全部约束。回滚不触及DEP/Gate/audit/event store/DSHB任何底层服务，确保零数据丢失、零审计污染。

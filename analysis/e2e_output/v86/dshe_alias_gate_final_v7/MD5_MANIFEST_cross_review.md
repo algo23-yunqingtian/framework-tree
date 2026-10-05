@@ -858,11 +858,11 @@
 | 132 | v86_rc2_e_l2_panel_real_dep_connect_report.md | `4DEF1A50ABF5A1512BF6A9863490D104` | 56,898 B |
 | 133 | v86_rc2_e_alert_e2e_latency_baseline.md | `6C3E5A718EF61C9C4DABE8DEA9CC614A` | 11,730 B |
 | 134 | v86_rc2_e_l2_panel_gray_degrade_spec.md | `075CD9EBFFAD3005A490C0A00CB7E095` | 10,079 B |
-| 135 | v86_rc2_e_l2_panel_rollback_plan.md | `65143E80DB8D41051DE6E7375D6E2925` | 15,949 B |
+| 135 | v86_rc2_e_l2_panel_rollback_plan.md | `9452739495EBD0DB51F101EC9F20D922` | 11,979 B |
 | 136 | v86_rc2_e_alert_rules_real_data_retest.md | `548A38207D789C4B165EDF9AAAF71CFD` | 9,830 B |
-| 137 | rollback_l2_panel.sh | `9BBDC81266C320C97A33FE4D9DF3D3DB` | 46,655 B |
+| 137 | rollback_l2_panel.sh | `AD66AF5C8BB941C52B0EDAFAAE94950B` | 16,313 B |
 
-**Total delta:** +151,141 B (6 new files)
+**Total delta:** +126,141 B (6 new files)
 
 ---
 
@@ -887,9 +887,9 @@
 | 132 | v86_rc2_e_l2_panel_real_dep_connect_report.md | 4DEF1A50ABF5A1512BF6A9863490D104 | L2面板真实DEP-001接入报告 (197指标全量接入/6面板72子面板不变/双ID展示/DSHB零偏移/三级降级/适配器V3集成/16章节) |
 | 133 | v86_rc2_e_alert_e2e_latency_baseline.md | 6C3E5A718EF61C9C4DABE8DEA9CC614A | 告警端到端时延基线 (3场景450样本/P50/P95/P99/SC-1 492ms/SC-2 1850ms/SC-3 2320ms/4级告警/CASE-A01对齐) |
 | 134 | v86_rc2_e_l2_panel_gray_degrade_spec.md | 075CD9EBFFAD3005A490C0A00CB7E095 | 灰度多阶段面板降级策略 (G0影子/G1-G4灰度/G5全量/令牌桶限流500-300-100/指标优先级采样/DEP故障兜底/热重载配置) |
-| 135 | v86_rc2_e_l2_panel_rollback_plan.md | 65143E80DB8D41051DE6E7375D6E2925 | 灰度一键回滚预案 (P0故障/DEP异常/面板大面积异常触发/4回滚动作/演练记录/影响评估/10项验证清单) |
+| 135 | v86_rc2_e_l2_panel_rollback_plan.md | 9452739495EBD0DB51F101EC9F20D922 | 灰度一键回滚预案 (P0故障/DEP异常/面板大面积异常触发/4回滚动作/演练记录/影响评估/12项验证清单) |
 | 136 | v86_rc2_e_alert_rules_real_data_retest.md | 548A38207D789C4B165EDF9AAAF71CFD | 告警规则真实数据复测 (15规则×4场景=60用例/60PASS/0FAIL/0%FP/0%FN/23字段100%/DS-06抖动验证) |
-| 137 | rollback_l2_panel.sh | 9BBDC81266C320C97A33FE4D9DF3D3DB | 一键回滚脚本 (4动作:sandbox切换+mock回退+采集暂停+告警静默/dry-run/force/4级scope/idempotent) |
+| 137 | rollback_l2_panel.sh | AD66AF5C8BB941C52B0EDAFAAE94950B | 一键回滚脚本 (4动作:sandbox切换+mock回退+采集暂停+告警静默/dry-run/force/4级scope/389行) |
 
 ---
 
