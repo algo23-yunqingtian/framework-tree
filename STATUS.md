@@ -1,3 +1,21 @@
+### 2026-10-17 DSHB_V86_RC2_RDEP07_GATE_PROD_PREP
+- R-DEP-07阻塞前置验证+Gate V5生产环境适配+DEP-001联调准备+Dryrun V6升级+风险台账V3 (7 deliverables, MD5 all verified)
+  - gate_pre_check_auto_v5.py (MD5: 6DDE11197D0D0CB99A1AE6A7D53F22CE) — Gate预检查V5(--env=prod/sandbox双环境隔离, 生产服务发现, Token鉴权, 30s超时, 重试策略, 独立审计日志, 24/24自检PASS)
+  - v86_rc2_dshb_gate_prod_adapt_spec.md (MD5: C526556D471071739B66B9A6E2D98149) — Gate V5生产适配规范文档(环境分支设计, 配置隔离, 服务发现, Token鉴权, 超时重试, 兼容性分析, 迁移指南, 15章节)
+  - dryrun_e2e_test_v6.py (MD5: DAD79EE7F51174771DAB3AD5AC0A2CB3) — E2E测试V6(45项测试L1~L45, 新增L41~L45 R-DEP-07专项: 持续500/间歇抖动/恢复/并发压力/灰度阻断, 45/45 PASS)
+  - v86_rc2_dshb_rdep07_sandbox_reproduce_report.md (MD5: 4864A520EB4D87ADBA051432A8A9D23F) — R-DEP-07沙箱复现报告(S1持续500→NOT_READY, S2间歇抖动→DS-06 FAIL, S3恢复→READY, Gate阻断/PERF-GUARD/DS-06/ROB-01/告警联动, 13章节)
+  - v86_rc2_dshb_dep001_integration_prep_checklist.md (MD5: AE50D4BF66A0DBB6EB2E7BE4CF569AB0) — DEP-001联调前置检查清单(网络白名单/账号权限/TLS证书/端口超时/服务发现/审计日志/8联调用例/三方对齐/风险缓解/5Phase行动计划, 15章节+3附录)
+  - v86_rc2_dshb_risk_re_evaluate_v4_review_v3.md (MD5: C539DE7FB7889426C7FEDB7B0236D75A) — R-DEP风险台账V3(R-DEP-07沙箱证据S1/S2/S3, Gate V5生产适配风险5项, DEP-001联调前置风险5项, 37项复核, 8/8完成标准, 15章节)
+  - v86_rc2_dshb_gate_auto_check_report_v5.md (MD5: 1E365557134A814F28E2010C87A1529D) — Gate V5预检查报告(sandbox/prod双模式验证)
+- R-DEP-07: 沙箱复现3场景(持续500→NOT_READY, 间歇抖动→DS-06 FAIL, 恢复→READY), 标记【沙箱验证完成】【待真实环境验证】, 真实环境DEP-001服务上线后才可闭环
+- Gate V5: --env=prod/sandbox双环境隔离, 生产超时30s, 重试3次, Token鉴权, 服务发现, 独立审计日志, 24/24自检PASS, 零回归
+- DEP-001: 联调前置清单15章节(网络白名单/权限/TLS/端口/服务发现/审计日志/8联调用例/三方对齐), 支撑真实环境联调
+- Dryrun V6: 45/45 PASS (V5 40项回归 + L41~L45 R-DEP-07专项5项), 零回归
+- 风险台账V3: 37项复核, R-DEP-07标记【沙箱验证完成】, Gate V5生产适配风险5项, DEP-001联调前置风险5项
+- 约束合规: NO_OVERWRITE=TRUE, NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- DSHB_PROD_PHASE_RDEP07_GATE_PROD_PREP_DONE=TRUE
+- 状态标记: DSHB_PROD_PHASE_RDEP07_GATE_PROD_PREP_DONE=TRUE
+
 ### 2026-10-17 DSHB_V86_RC2_GATE_REG06_FIX_E2E
 - REG-06审计器安全缺口修复+Gate V4升级(v2_plus集成)+三方联合E2E仿真+R-DEP闭环评审+L1预检V2 (7 deliverables, MD5 all verified)
   - gate_pre_check_auto_v4.py (MD5: 868480CF10545BB8580148E2EA76851E) — Gate预检查V4(REG-06修复:ERROR→FAIL→NOT_READY, 紧急旁路开关, PERF-GUARD/ROB-01/DS-06集成)
