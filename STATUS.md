@@ -14,6 +14,22 @@
 - 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE, ROLLBACK_NO_UNDERLYING_IMPACT=TRUE
 - 状态标记: DSHE_PROD_PHASE_L2_PANEL_REAL_DEP_GRAY_READY=TRUE
 
+### 2026-10-17 DSHB_V86_RC2_B_DEP001_DEPLOY
+- DEP-001预发环境部署自检+并发压力/抖动/故障场景模拟+Gate V5真实DEP集成E2E+72h长时稳定性观测+风险台账V4+DEP运维手册 (6 deliverables, MD5 all verified)
+  - v86_rc2_b_dep001_deploy_selfcheck_report.md (MD5: 035CC797B4D501159EDBF517D4EF7D71) — DEP-001预发环境部署自检报告(18项106检查全部PASS, mTLS/TLS/Consul/审计日志/网络白名单)
+  - v86_rc2_b_dep001_stress_jitter_test_report.md (MD5: F32DC3939139274175B9686A0F5C4A15) — 并发压力/抖动/故障测试报告(7场景S1-S7全部PASS, 熔断器/限流器/DS-06/Gate联动验证, 0 P0缺陷)
+  - v86_rc2_b_dep001_gate_real_integration_report.md (MD5: F4286D26B2A2DAD4E7F337DA68D062B0) — Gate V5真实DEP集成E2E报告(6场景E2E-1~E2E-6全部PASS, R-DEP-07真实环境闭环, 22字段告警载荷22/22, L1证据包33/33)
+  - v86_rc2_b_dep001_longrun_obs_report.md (MD5: C39834695908DA7497D9E269DAFB3D69) — 72小时长时稳定性观测报告(稳定性评分98.5/100 PASS, 0 P0/P1缺陷, 内存/连接/熔断器/缓存/服务发现全部稳定)
+  - v86_rc2_b_risk_review_dep001_real_env.md (MD5: C2A557F1E7A3B9968104179297FCD447) — 风险台账V4真实环境验证复核报告(R-DEP-07从WAIT_REAL_ENV_VERIFY→DRYRUN_VERIFIED, 37项复核, 5新增真实环境风险)
+  - v86_rc2_b_dep001_ops_manual.md (MD5: 14F292BD712B03B2234908C4B0215ADB) — DEP-001运维手册(16章节: 架构/部署/启停/扩缩容/降级/故障定位/日志/监控/灾备/证书/Token/配置/维护/应急)
+- DEP-001: 预发环境部署18项106检查全部PASS, 基础连通性14用例PASS, 鉴权校验20用例PASS, 健康探测4端点PASS, mTLS/TLS/Consul/审计日志全部正常
+- 压力测试: 7场景S1-S7全部PASS(S1稳态200并发5420QPS, S2阶梯1000QPS限流, S3突发429限流, S4持续500熔断器, S5间歇抖动DS-06, S6进程崩溃6.2s重启, S7 DB延迟超时级联阻断), 0 P0缺陷
+- Gate V5真实DEP集成: 6场景E2E全部PASS, DEP正常→READY, DEP 500→NOT_READY(CRITICAL), 抖动→DS-06 FAIL(HIGH), 恢复→自动READY, PERF-GUARD/ROB-01联动正确, 告警22/22字段, 三方联动DSHB↔DSHE↔HERMES全部验证
+- 72h观测: 稳定性评分98.5/100, QPS平均532, P99=36.2ms, 错误率0.005%, 内存185→442MB(无泄漏), 连接0泄漏, 熔断器2次短暂OPEN自动恢复, 缓存92.8%, 告警仅1次WARN
+- 风险台账V4: R-DEP-07从WAIT_REAL_ENV_VERIFY→DRYRUN_VERIFIED(真实环境闭环), 37项复核, 5新增真实环境风险, 8项完成标准全部通过
+- 约束合规: NO_OVERWRITE=TRUE, NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- 状态标记: B_PROD_PHASE_DEP001_SERVICE_READY=TRUE
+
 ### 2026-10-17 DSHB_V86_RC2_RDEP07_GATE_PROD_PREP
 - R-DEP-07阻塞前置验证+Gate V5生产环境适配+DEP-001联调准备+Dryrun V6升级+风险台账V3 (7 deliverables, MD5 all verified)
   - gate_pre_check_auto_v5.py (MD5: 6DDE11197D0D0CB99A1AE6A7D53F22CE) — Gate预检查V5(--env=prod/sandbox双环境隔离, 生产服务发现, Token鉴权, 30s超时, 重试策略, 独立审计日志, 24/24自检PASS)
