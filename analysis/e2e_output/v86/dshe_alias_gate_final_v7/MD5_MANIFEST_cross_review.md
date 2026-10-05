@@ -845,6 +845,27 @@
 
 ---
 
+## L2_PANEL_REAL_DEP_GRAY_READY New Files (6 files)
+
+> **Task:** DSHE_V86_RC2_L2_PANEL_REAL_DEP_GRAY_READY
+> **Sub-tasks:** T3.1 真实DEP-001数据源接入 | T3.2 告警端到端时延基线 | T3.3 灰度多阶段面板降级策略 | T3.4 一键回滚预案+脚本 | T3.5 告警规则真实数据复测
+> **Updated:** 2026-10-15
+> **Output Dir:** `analysis/e2e_output/v86/hermes_e2e_test/`
+> **Status:** DSHE_PROD_PHASE_L2_PANEL_REAL_DEP_GRAY_READY=TRUE — 5/5 SUB-TASKS COMPLETE, 197 METRICS FULL REAL DEP-001, E2E LATENCY BASELINE CALIBRATED, 3-PHASE GRAY DEGRADE SPEC, ROLLBACK SCRIPT VERIFIED, 15 ALERT RULES 60/60 PASS
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 132 | v86_rc2_e_l2_panel_real_dep_connect_report.md | `4DEF1A50ABF5A1512BF6A9863490D104` | 56,898 B |
+| 133 | v86_rc2_e_alert_e2e_latency_baseline.md | `6C3E5A718EF61C9C4DABE8DEA9CC614A` | 11,730 B |
+| 134 | v86_rc2_e_l2_panel_gray_degrade_spec.md | `075CD9EBFFAD3005A490C0A00CB7E095` | 10,079 B |
+| 135 | v86_rc2_e_l2_panel_rollback_plan.md | `65143E80DB8D41051DE6E7375D6E2925` | 15,949 B |
+| 136 | v86_rc2_e_alert_rules_real_data_retest.md | `548A38207D789C4B165EDF9AAAF71CFD` | 9,830 B |
+| 137 | rollback_l2_panel.sh | `9BBDC81266C320C97A33FE4D9DF3D3DB` | 46,655 B |
+
+**Total delta:** +151,141 B (6 new files)
+
+---
+
 ## Key MD5 References (DSHE_PROD_PHASE_L2_SHARD_BUGFIX_PROD_ADAPT Deliverables)
 
 | # | File | MD5 | Purpose |
@@ -856,6 +877,19 @@
 | 129 | v86_rc2_dshe_l2_shard_boundary_retest_report.md | B9953DCCF980B8EB5DF4EA4507964040 | 边界复测报告 (36用例V4重测/7场景966行/6缺陷修复验证/34→36 PASS/0剩余缺陷) |
 | 130 | v86_rc2_dshe_alert_adapter_v3.py | 8B5D6194EA8CFE79295E7563FD15AD6B | 告警适配器V3 (环境隔离/生产鉴权/独立日志/独立checkpoint/EnvironmentGuard/23字段/2587行) |
 | 131 | v86_rc2_dshe_alert_adapter_prod_isolation_report.md | 0402C598B61A6031C14B37AE937D48E7 | 生产隔离报告 (沙箱/生产架构/HMAC-SHA256鉴权/EnvironmentGuard/迁移指南/安全考虑) |
+
+---
+
+## Key MD5 References (DSHE_PROD_PHASE_L2_PANEL_REAL_DEP_GRAY_READY Deliverables)
+
+| # | File | MD5 | Purpose |
+|---|------|-----|---------|
+| 132 | v86_rc2_e_l2_panel_real_dep_connect_report.md | 4DEF1A50ABF5A1512BF6A9863490D104 | L2面板真实DEP-001接入报告 (197指标全量接入/6面板72子面板不变/双ID展示/DSHB零偏移/三级降级/适配器V3集成/16章节) |
+| 133 | v86_rc2_e_alert_e2e_latency_baseline.md | 6C3E5A718EF61C9C4DABE8DEA9CC614A | 告警端到端时延基线 (3场景450样本/P50/P95/P99/SC-1 492ms/SC-2 1850ms/SC-3 2320ms/4级告警/CASE-A01对齐) |
+| 134 | v86_rc2_e_l2_panel_gray_degrade_spec.md | 075CD9EBFFAD3005A490C0A00CB7E095 | 灰度多阶段面板降级策略 (G0影子/G1-G4灰度/G5全量/令牌桶限流500-300-100/指标优先级采样/DEP故障兜底/热重载配置) |
+| 135 | v86_rc2_e_l2_panel_rollback_plan.md | 65143E80DB8D41051DE6E7375D6E2925 | 灰度一键回滚预案 (P0故障/DEP异常/面板大面积异常触发/4回滚动作/演练记录/影响评估/10项验证清单) |
+| 136 | v86_rc2_e_alert_rules_real_data_retest.md | 548A38207D789C4B165EDF9AAAF71CFD | 告警规则真实数据复测 (15规则×4场景=60用例/60PASS/0FAIL/0%FP/0%FN/23字段100%/DS-06抖动验证) |
+| 137 | rollback_l2_panel.sh | 9BBDC81266C320C97A33FE4D9DF3D3DB | 一键回滚脚本 (4动作:sandbox切换+mock回退+采集暂停+告警静默/dry-run/force/4级scope/idempotent) |
 
 ---
 
@@ -917,11 +951,12 @@
 | **DSHE_L2_STRESS_PERF_VERIFY** | **5** | **5** |
 | **DSHE_L2_RULE_ALIGN_V3** | **6** | **6** |
 | **DSHE_L2_SHARD_BUGFIX_PROD_ADAPT** | **7** | **7** |
-| **TOTAL** | **217** | **126** |
+| **DSHE_L2_PANEL_REAL_DEP_GRAY_READY** | **6** | **6** |
+| **TOTAL** | **223** | **132** |
 
 ---
 
 *Generated: 2026-10-15*
-*Task: DSHE_V86_RC2_PROD_PHASE_L2_EVIDENCE_AUTO + DSHE_V86_RC2_L2_HERMES_JOINT + DSHE_V86_RC2_L2_STRESS_PERF_VERIFY + DSHE_V86_RC2_L2_RULE_ALIGN_V3 + DSHE_V86_RC2_L2_SHARD_BUGFIX_PROD_ADAPT*
+*Task: DSHE_V86_RC2_PROD_PHASE_L2_EVIDENCE_AUTO + DSHE_V86_RC2_L2_HERMES_JOINT + DSHE_V86_RC2_L2_STRESS_PERF_VERIFY + DSHE_V86_RC2_L2_RULE_ALIGN_V3 + DSHE_V86_RC2_L2_SHARD_BUGFIX_PROD_ADAPT + DSHE_V86_RC2_L2_PANEL_REAL_DEP_GRAY_READY*
 *Branch: feature/v85-chart-template*
-*Status: DSHE_PROD_PHASE_L2_EVIDENCE_AUTO_DONE | DSHE_PROD_PHASE_L2_HERMES_JOINT_READY=TRUE | DSHE_PROD_PHASE_L2_STRESS_PERF_VERIFY_DONE=TRUE | DSHE_PROD_PHASE_L2_RULE_ALIGN_V3_DONE=TRUE | DSHE_PROD_PHASE_L2_SHARD_BUGFIX_PROD_ADAPT_DONE=TRUE — 5/5 SUB-TASKS COMPLETE, P0 OFF-BY-ONE FIXED, 36/36 RETEST PASS, 6 DEFECTS RESOLVED, V3 ADAPTER ENV ISOLATION, HMAC AUTH, ALL LOAD TESTS PASS, 217 FILES, 37 STAGES, MD5 101/101 PASS*
+*Status: DSHE_PROD_PHASE_L2_EVIDENCE_AUTO_DONE | DSHE_PROD_PHASE_L2_HERMES_JOINT_READY=TRUE | DSHE_PROD_PHASE_L2_STRESS_PERF_VERIFY_DONE=TRUE | DSHE_PROD_PHASE_L2_RULE_ALIGN_V3_DONE=TRUE | DSHE_PROD_PHASE_L2_SHARD_BUGFIX_PROD_ADAPT_DONE=TRUE | DSHE_PROD_PHASE_L2_PANEL_REAL_DEP_GRAY_READY=TRUE — 5/5 SUB-TASKS COMPLETE, 197 METRICS FULL REAL DEP-001, E2E LATENCY BASELINE CALIBRATED, 3-PHASE GRAY DEGRADE SPEC, ROLLBACK SCRIPT VERIFIED, 15 ALERT RULES 60/60 PASS, 223 FILES, 38 STAGES, MD5 107/107 PASS*

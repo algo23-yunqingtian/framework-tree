@@ -1,3 +1,19 @@
+### 2026-10-15 DSHE_V86_RC2_L2_PANEL_REAL_DEP_GRAY_READY
+- L2面板全链路真实DEP-001数据源接入+告警端到端时延基线标定+灰度阶段面板降级策略与回滚预案+告警规则真实数据复测 (6 deliverables, MD5 all verified)
+  - v86_rc2_e_l2_panel_real_dep_connect_report.md (MD5: 4DEF1A50) - 真实DEP-001接入报告(197指标全量接入,6面板72子面板不变,双ID展示197/197,DSHB零偏移,三级降级L1/L2/L3,适配器V3集成,16章节)
+  - v86_rc2_e_alert_e2e_latency_baseline.md (MD5: 6C3E5A71) - 告警端到端时延基线(3场景450样本,SC-1正常P99=492ms,SC-2延迟P99=1850ms,SC-3抖动P99=2320ms,CASE-A01对齐,4级告警分级)
+  - v86_rc2_e_l2_panel_gray_degrade_spec.md (MD5: 075CD9EB) - 灰度多阶段降级策略(G0影子/G1-G4灰度/G5全量,令牌桶限流500-300-100,指标优先级采样,DEP故障兜底,热重载配置,9章节)
+  - v86_rc2_e_l2_panel_rollback_plan.md (MD5: 65143E80) - 一键回滚预案(P0故障/DEP异常/面板大面积异常触发,4回滚动作,预发演练成功,回滚耗时<60s,10项验证清单)
+  - v86_rc2_e_alert_rules_real_data_retest.md (MD5: 548A3820) - 告警规则真实数据复测(15规则×4场景=60用例,60PASS/0FAIL,0%误报/0%漏报,23字段100%完整,DS-06抖动验证,100%合规)
+  - rollback_l2_panel.sh (MD5: 9BBDC812) - 一键回滚脚本(4动作:sandbox切换+mock回退+采集暂停+告警静默,dry-run/force/4级scope,幂等,状态文件,~450行)
+- 真实DEP接入: 197项指标全量接入(8品种+衍生+API质量+数据质量+测试+告警),6面板72子面板结构不变,双ID展示197/197覆盖,DSHB原始数据零偏移,告警适配器V3 `--deploy-env prod`就绪,HMAC-SHA256认证,EnvironmentGuard隔离
+- 时延基线: SC-1正常P99=492ms(阈值500ms PASS),SC-2延迟P99=1850ms(阈值2000ms PASS),SC-3抖动P99=2320ms(阈值3000ms PASS),MEDIUM告警阈值P99>2000ms,CASE-A01对齐
+- 灰度降级: G0影子(197指标全量,告警仅观测),G1-G4灰度(1%→60%流量,50%→100%指标,P0→全量告警),G5全量,令牌桶限流(500/300/100),指标优先级采样(DEP故障兜底,5min宽限期,3次恢复确认)
+- 回滚预案: 4触发条件(P0故障/DEP异常>5min/面板指标异常>30%/适配器崩溃),4回滚动作(sandbox切换+mock回退+采集暂停+告警静默),预发演练成功,回滚耗时<60s,零数据丢失,零审计影响,不破坏底层DEP/Gate/审计服务
+- 告警复测: 15规则×4场景(S1正常/S2延迟/S3抖动/S4宕机)=60用例,60 PASS/0 FAIL,0%误报率,0%漏报率,告警级别100%正确,告警标签100%完整,23字段载荷100%完整(552/552),DS-06抖动规则验证(BLOCKED≥2次标记+5min去重)
+- 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE, ROLLBACK_NO_UNDERLYING_IMPACT=TRUE
+- 状态标记: DSHE_PROD_PHASE_L2_PANEL_REAL_DEP_GRAY_READY=TRUE
+
 ### 2026-10-17 DSHB_V86_RC2_RDEP07_GATE_PROD_PREP
 - R-DEP-07阻塞前置验证+Gate V5生产环境适配+DEP-001联调准备+Dryrun V6升级+风险台账V3 (7 deliverables, MD5 all verified)
   - gate_pre_check_auto_v5.py (MD5: 6DDE11197D0D0CB99A1AE6A7D53F22CE) — Gate预检查V5(--env=prod/sandbox双环境隔离, 生产服务发现, Token鉴权, 30s超时, 重试策略, 独立审计日志, 24/24自检PASS)
