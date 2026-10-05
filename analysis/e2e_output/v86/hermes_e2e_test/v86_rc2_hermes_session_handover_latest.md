@@ -720,5 +720,80 @@ Framework-tree V86-RC2 项目连续 5 个阶段空转（Stage1→Stage2→Stage2
 
 ---
 
-*本交接文档由 HERMES 生成于 V86-RC2 CASE-A01真实执行+WAL压测+清单V4+灰度判定批次完成后。新会话先读本文件，再决定是否继续推进。*
+
+## 17. V86-RC2 灰度判定分支验证 + CASE-A01归档 + V4扫描器 + 载荷容错批次
+
+> **批次日期**: 2026-10-15
+> **分支**: `feature/v85-chart-template` @ `629ccb7`
+> **状态标记**: `HERMES_PROD_PHASE_GRAY_DECIDER_BRANCH_VERIFY_DONE=TRUE`
+
+### 17.1 本轮新增产物（6 份文档 + 1 脚本 + 1 MD5清单）
+
+| # | 文件 | 字节 | 核心内容 |
+|---|------|------|----------|
+| 1 | `v86_rc2_hermes_gray_decider_branch_verify_report.md` | 2,853 | 灰度判定10场景验证：10/10 PASS，F1-F5矩阵匹配 |
+| 2 | `v86_rc2_hermes_case_a01_failure_case_archive.md` | 5,235 | CASE-A01 3项FAIL根因归档+DEP恢复回归步骤 |
+| 3 | `prod_checklist_v4_scanner.py` | 24,769 | V4清单113项自动扫描器：7/7自检PASS，66P0=61PASS/5FAIL |
+| 4 | `v86_rc2_hermes_v4_checklist_auto_scan_spec.md` | 3,458 | 扫描器规范：用法+CI集成+检查项分布 |
+| 5 | `v86_rc2_hermes_alert_payload_fault_tolerance_report.md` | 4,519 | 告警载荷6类异常容错验证：6/6 PASS |
+| 6 | `MD5_CHECKSUM_LIST_gray_decider_verify_scanner.md` | — | 本轮MD5清单 |
+| 7 | `v86_rc2_hermes_v4_checklist_auto_scan_report.md` | — | 扫描器首次扫描报告 |
+
+### 17.2 灰度判定分支验证
+
+| 场景 | 故障 | 决策 | 结果 |
+|------|------|------|------|
+| S01 DEP健康 | — | ADVANCE | PASS |
+| S02 DEP持续500 | F1 | ROLLBACK | PASS |
+| S03 DEP间歇抖动 | F5 | ROLLBACK | PASS |
+| S04 DEP恢复 | — | ADVANCE | PASS |
+| S05 审计性能超限 | F4 | ROLLBACK | PASS |
+| S06 CRITICAL爆发 | F2 | ROLLBACK | PASS |
+| S07 多故障并发 | F2(最严重) | ROLLBACK | PASS |
+| S08 G0影子期500 | F1 | ROLLBACK | PASS |
+| S09 Gate未通过 | F3 | ROLLBACK | PASS |
+| S10 观测期未满 | — | OBSERVE | PASS |
+
+**10/10 PASS**，F1-F5回滚矩阵完全匹配，多故障优先级正确，G0不豁免F1。
+
+### 17.3 CASE-A01失败用例归档
+
+- 3项FAIL(A8/A9/A10)均为DEP-001阻塞的预期行为
+- 根因链：DEP BLOCKED→CRITICAL→短路→FAIL
+- 归档了根因说明、证据链路、判定标准、DEP恢复后回归步骤
+
+### 17.4 V4扫描器
+
+- `prod_checklist_v4_scanner.py`: 113项自动扫描，7/7自检PASS
+- 首次扫描：66P0=61PASS/5FAIL（全部DEP阻塞预期项）
+- Gate判定：NOT_READY（DEP阻塞）
+- 可共享给DSHB/E团队，支持CI集成
+
+### 17.5 载荷容错
+
+- 6类异常载荷（缺失/类型异常/多余/嵌套/编码/超大）
+- 审计器v3 run_robustness + normalize_event + gray_gate_decider get默认值三重守卫
+- 6/6 PASS：不崩溃、不误判
+
+### 17.6 当前状态总览
+
+| 标记 | 值 |
+|------|-----|
+| **HERMES_PROD_PHASE_GRAY_DECIDER_BRANCH_VERIFY_DONE** | **TRUE** |
+| HERMES_PROD_PHASE_CASEA01_REAL_RUN_GRAY_DECISION_DONE | TRUE |
+| HERMES_PROD_PHASE_CASEA01_WAL_OPS_PROD_CHECKLIST_DONE | TRUE |
+| HERMES_PROD_PHASE_AUDITOR_PERF_WAL_GRAY_DONE | TRUE |
+| HERMES_PROD_PHASE_PIPELINE_SIM_DONE | TRUE |
+| JOB_READY | **FALSE** |
+| GATE_DECISION | **NOT_READY** |
+| DEP_001_STATUS | **BLOCKED** |
+
+> **Gate 仍 NOT_READY**：DEP-001短ID解析服务仍未就绪。
+> 本轮完成了灰度判定全分支验证（10/10 PASS）+ CASE-A01失败归档 + V4扫描器（7/7自检，61/66 P0通过）+ 载荷容错（6/6 PASS）。
+> 全部HERMES侧能力已就绪。DEP恢复后可用扫描器一键核验启动投产。
+
+---
+
+*本交接文档由 HERMES 生成于 V86-RC2 灰度判定分支验证+CASE-A01归档+V4扫描器+载荷容错批次完成后。新会话先读本文件，再决定是否继续推进。*
+
 
