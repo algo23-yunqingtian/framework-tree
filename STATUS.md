@@ -13,6 +13,24 @@
 - 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, DEP_001_STATUS=BLOCKED
 - 状态标记: E_PROD_PHASE_L2_G0_SHADOW_READY=TRUE
 
+### 2026-10-17 DSHB_V86_RC2_G0_SHADOW_TRAFFIC_ISOLATION
+- G0影子投产底层流量路由切分+DEP-001流量镜像配置+Gate动态状态回调闭环+影子环境资源隔离加固+底层G0影子全链路验证+运维文档更新 (7 deliverables, MD5 all verified)
+  - v86_rc2_dshb_g0_shadow_route_config_spec.md (MD5: 3F5DEA319882CB84D78CE6D72FAED627) — G0影子流量路由切分配置规范(Envoy FilterChain+NetworkPolicy+ConfigMap, 10%采样率, 6档采样率G0-G5, 8隔离验证, 13章节)
+  - v86_rc2_dshb_dep001_traffic_mirror_verify_report.md (MD5: E4ABE1D6C0CAC7F2D1E8FE328B16B0C0) — DEP-001流量镜像采集验证报告(6埋点100%采集, 8品种分布偏差<0.1%, 178/178双ID映射, P50/P95/P99全量, 8类错误码, 23字段HERMES对齐, 12指标DSHE消费, 8场景全部PASS)
+  - gate_v5_gray_callback.py (MD5: 98A3C5DC0AC96E01581F86F23718B0FF) — Gate V5灰度决策回调脚本(5决策联动, 45项自检, 事件去重60s窗口, 幂等处理, 审计持久化, K8s探针, 状态机)
+  - v86_rc2_dshb_gate_callback_interface_spec.md (MD5: DD4B969483356C044532C07D5C842BBF) — Gate回调接口规范(4端点, 23字段事件结构, 决策-动作联动矩阵, 状态机, 错误处理3次重试, 幂等去重, 16章节)
+  - v86_rc2_dshb_shadow_env_isolation_audit.md (MD5: C1F7E378214D9B70BBA48B6057226B44) — 影子环境资源隔离审计报告(cgroup CPU 4vCPU/内存8GB, 65项检查全部PASS, 8跨环境污染场景V85零影响, 4级过载保护, 4次熔断验证)
+  - v86_rc2_dshb_g0_shadow_underlayer_acceptance_report.md (MD5: 3F1738464447FF0722F2E08845CC47DC) — G0影子底层全链路验收报告(8场景S1-S8, 78检查项全部PASS, 采样率100%准确, V85 QPS偏差0.02%, 恢复时间68s, 100%通过)
+  - v86_rc2_dshb_g0_shadow_ops_doc_update.md (MD5: 149AE529B4A2C5CEF9F830482EE03AD6) — G0影子运维文档更新(DEP-001手册§17-§20, Gate适配§10-§13, 新增5章节, 12指标6告警, 4应急预案, V2.1)
+- 路由切分: Envoy FilterChain镜像规则, 10%默认采样率, G0-G5 6档采样率映射, 4项NetworkPolicy隔离, 3节点独立节点池, mTLS证书隔离, 8项隔离验证全部通过
+- 流量镜像: 6项埋点(request_id/source/body/latency/code/id_mapping)100%采集, 8品种分布偏差<0.1%, 178/178双ID映射完整, P50=18.2ms/P95=45.6ms/P99=89.3ms, 8类错误码全部分类, 23字段HERMES对齐, 12指标DSHE消费
+- Gate回调: gate_v5_gray_callback.py V1.0, 5决策(ADVANCE/HOLD/OBSERVE/ROLLBACK/COMPLETE)联动矩阵, 45项自检全部PASS, 事件去重60s窗口MD5, 幂等处理, 审计JSONL持久化, K8s livenessProbe+readinessProbe
+- 资源隔离: cgroup CPU 4vCPU/内存8GB限额, 6项进程隔离(PID/IPC/UTS/Mount/cgroup/Network), 4项NetworkPolicy(12连通性测试), 日志独立PVC 10GB, 磁盘水位42%阈值80%, 4级过载保护(L1-L4), 8次熔断验证全部正确
+- 全链路验收: 8场景78检查项全部PASS, S1正常镜像/S2流量突增/S3 DEP故障/S4 ROLLBACK/S5过载熔断/S6 Gate状态变更/S7资源隔离/S8全链路恢复, V85 QPS偏差0.02%/P99偏差0.3ms/错误率偏差0.000%, 恢复时间68s
+- 运维更新: DEP-001手册新增§17-§20(影子镜像/运维命令/启停操作), Gate适配新增§10-§13(影子阶段行为/回调运维/告警规则/部署更新), 12指标6告警4应急预案
+- 约束合规: NO_OVERWRITE=TRUE, NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- 状态标记: DSHB_PROD_PHASE_G0_SHADOW_TRAFFIC_ISOLATION_DONE=TRUE
+
 ### 2026-10-15 DSHE_V86_RC2_L2_FAULT_REGRESSION
 - L2面板DEP故障场景专项回归+回滚脚本二次演练+告警载荷跨版本兼容性校验+时延基线故障子集补充+灰度降级策略更新 (5 deliverables, MD5 all verified)
   - v86_rc2_e_l2_panel_dep_fault_regression_report.md (MD5: 733FDAE4) - DEP故障场景回归(3场景45用例,30触发15抑制,DS-06抖动T+330s命中,5分钟去重87.5%抑制率,P0强制采集100%,快照兜底100%,5态徽章,4类告警分类)
