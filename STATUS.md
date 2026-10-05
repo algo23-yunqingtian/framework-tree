@@ -13,6 +13,22 @@
 - 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, DEP_001_STATUS=BLOCKED
 - 状态标记: E_PROD_PHASE_L2_FAULT_REGRESSION_DONE=TRUE
 
+### 2026-10-17 DSHB_V86_RC2_GATE_V5_CHECKLIST_INTEGRATE
+- Gate V5集成V4准入清单113项自动化预检+DEP-001周期性巡检任务开发+DEP/Gate链路指标埋点补全+预发环境全量预检验证+文档更新与HERMES灰度脚本同步 (6 deliverables, MD5 all verified)
+  - v86_rc2_dshb_gate_v5_checklist_v4_integrate_report.md (MD5: 751CAE0B38BFC0D5C66B8D7366DE531D) — Gate V5集成V4准入清单113项自动化预检报告(113项全量集成, P0=38/P1=35/P2=40分级, P0阻断逻辑Gate=NOT_READY, 8场景验证100%PASS)
+  - dep001_periodic_probe.py (MD5: B1FA7BCD7CFE68A021F14BEF30FD6F8C) — DEP-001周期性联动巡检脚本(60s周期, 短ID抽样10/178, P95延迟统计, 错误码分类, 熔断状态采集, Gate回写, 37项自检全部PASS)
+  - v86_rc2_dshb_dep001_periodic_probe_spec.md (MD5: 209144E3C865EB7F59D9FADC4AFA07F3) — DEP-001巡检任务规范文档(12章节, K8s/CronJob/systemd部署方案, 接口契约, 跨团队集成矩阵)
+  - v86_rc2_dshb_gate_dep_metric_inventory.md (MD5: 9A92D297C8650275FEFDCE9C9C683D97) — DEP与Gate链路告警指标埋点清单(70项指标, P0=14/P1=28/P2=28, HERMES审计+DSHE L2面板双对齐, Prometheus/JSON输出格式)
+  - v86_rc2_dshb_gate_v5_full_preflight_verify_report.md (MD5: 4F3C141DBE5AA2AFAADB2AF485DB04C1) — 预发环境Gate全量预检验证报告(6场景S1-S6全部PASS, 126项检查142/142全绿, P0阻断/P1警告/P2观测逻辑全部验证通过)
+  - v86_rc2_dshb_gate_prod_adapt_spec_update.md (MD5: E117A82216383E6A062CC54A70C3106C) — Gate V5生产适配规范更新V2.0(新增巡检配置, 70项指标字典, HERMES灰度脚本同步, G0-G5灰度阶段映射, 8故障分支验证)
+- Gate V5集成: V4准入清单113项集成完成(P0=38/P1=35/P2=40), 复用prod_checklist_v4_scanner核心逻辑, P0阻断Gate=NOT_READY, P1警告Gate=WARN, P2仅观测Gate=READY, 8场景验证100%PASS
+- DEP巡检: dep001_periodic_probe.py V1.0开发完成, 60s周期, 短ID抽样10/178, P50/P95/P99延迟统计, 错误码8类分类, 熔断器CLOSED/HALF_OPEN/OPEN采集, Gate REST回写, 37项自检全部PASS
+- 指标埋点: 70项指标补全(P0=14/P1=28/P2=28), DEP_CONN/DEP_AUTH/DEP_MAP/DEP_CB/DEP_LATENCY/DEP_ERROR + GATE_CHECK/GATE_AUDIT/GATE_DECISION/GATE_PERF/GATE_ALERT + ALERT_TRIGGER/ALERT_RECOVERY/ALERT_SEVERITY, HERMES审计+DSHE L2面板双对齐
+- 全量验证: 预发环境6场景S1-S6全部PASS, 126项检查(13+113)142/142全绿, P0阻断验证通过, P1警告验证通过, P2观测验证通过, DEP巡检5周期持续运行, 异常自动刷新Gate状态验证通过
+- 文档更新: Gate V5适配规范V2.0, 新增巡检配置(12参数), 70项指标字典, HERMES gray_gate_decider灰度脚本同步, G0-G5灰度阶段映射, 8故障分支验证, 跨团队契约对齐矩阵
+- 约束合规: NO_OVERWRITE=TRUE, NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE, NO_ZHIJI_API_CALL=FALSE
+- 状态标记: DSHB_PROD_PHASE_GATE_V5_CHECKLIST_INTEGRATED_DONE=TRUE
+
 ### 2026-10-15 DSHE_V86_RC2_L2_PANEL_REAL_DEP_GRAY_READY
 - L2面板全链路真实DEP-001数据源接入+告警端到端时延基线标定+灰度阶段面板降级策略与回滚预案+告警规则真实数据复测 (6 deliverables, MD5 all verified)
   - v86_rc2_e_l2_panel_real_dep_connect_report.md (MD5: 4DEF1A50) - 真实DEP-001接入报告(197指标全量接入,6面板72子面板不变,双ID展示197/197,DSHB零偏移,三级降级L1/L2/L3,适配器V3集成,16章节)
