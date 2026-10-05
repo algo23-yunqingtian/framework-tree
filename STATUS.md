@@ -65,3 +65,20 @@
 - 三方交叉验证v2: 12用例(6旧重评+6新DS-06场景),DS-06检测2/12,告警级别100%同步,90/90字段,5/5渠道,0秒偏差
 - 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE, EVIDENCE_CONTRACT_V1_SOLIDIFIED=TRUE
 - 状态标记: DSHE_PROD_PHASE_L2_RULE_ALIGN_V3_DONE=TRUE
+
+### 2026-10-15 DSHE_V86_RC2_L2_SHARD_BUGFIX_PROD_ADAPT
+- L2分片边界P0缺陷修复+异常捕获补齐+告警适配器V3环境隔离+边界复测+分片规范V2 (7 deliverables, MD5 all verified)
+  - l2_evidence_package_check_v4.py (MD5: 0FC47201) - 校验器V4(P0 off-by-one修复,向上取整分片计算,39/39异常处理测试全PASS)
+  - v86_rc2_dshe_shard_offbyone_fix_report.md (MD5: 5BCAB3D4) - 分片off-by-one修复报告(根因分析,新旧公式对比,7边界用例验证,2371行V4代码)
+  - v86_rc2_dshe_l2_exception_handling_spec.md (MD5: 7D906250) - 异常处理规范(UnicodeDecodeError→WARN+latin-1回退, MAX_PATH→260字符预检, JSON重复键→MEDIUM警告, ExceptionClassifier完整分类矩阵)
+  - v86_rc2_dshe_l2_evidence_shard_spec_v2.md (MD5: E0406EC2) - 分片规范V2(修正分片算法,异常分类矩阵,路径长度限制,JSON重复键处理,Unicode策略,文件大小限制)
+  - v86_rc2_dshe_l2_shard_boundary_retest_report.md (MD5: B9953DCC) - 边界复测报告(36用例V4重测,7场景966行,6缺陷全部修复,0剩余缺陷,34→36 PASS)
+  - v86_rc2_dshe_alert_adapter_v3.py (MD5: 8B5D6194) - 告警适配器V3(环境隔离,生产鉴权,独立日志,独立checkpoint,23字段载荷,2587行)
+  - v86_rc2_dshe_alert_adapter_prod_isolation_report.md (MD5: 0402C598) - 生产隔离报告(沙箱/生产架构对比,HMAC-SHA256鉴权,EnvironmentGuard,迁移指南,安全考虑,422行)
+- P0修复: shard_count off-by-one(file_size==shard_size时返回2→1),向上取整公式-(-file_size//shard_size),7边界用例全部验证通过
+- 异常补齐: UnicodeDecodeError→WARN+latin-1回退, MAX_PATH→260字符预检+MaxPathExceededError, JSON重复键→DuplicateKeyJSONDecoder+MEDIUM警告, ExceptionClassifier(ERROR/WARN/BLOCK/CRITICAL完整分类矩阵)
+- 适配器V3: --deploy-env sandbox/prod, HMAC-SHA256生产鉴权, EnvironmentGuard防跨环境写入, 5场景负载测试全PASS(沙箱+生产双环境), CRITICAL零丢弃, 23字段载荷(deploy_env新增)
+- 边界复测: 36用例V4重测, 34→36 PASS(94.4%→100%), 6→0缺陷(1P0+2P1+3P2全部修复), 5WARN→0WARN, B+→A+评级
+- 分片规范V2: 修正分片算法(向上取整), 异常分类矩阵(5级别), 路径长度限制(260字符), JSON重复键处理(MEDIUM), Unicode策略(latin-1回退), 文件大小限制
+- 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE, EVIDENCE_CONTRACT_V1_SOLIDIFIED=TRUE
+- 状态标记: DSHE_PROD_PHASE_L2_SHARD_BUGFIX_PROD_ADAPT_DONE=TRUE
