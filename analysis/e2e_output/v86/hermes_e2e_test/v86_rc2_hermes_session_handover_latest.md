@@ -652,4 +652,73 @@ Framework-tree V86-RC2 项目连续 5 个阶段空转（Stage1→Stage2→Stage2
 
 ---
 
-*本交接文档由 HERMES 生成于 V86-RC2 CASE-A01+WAL运维+审计器v3剖面+生产清单V3 批次完成后。新会话先读本文件，再决定是否继续推进。*
+
+## 16. V86-RC2 CASE-A01真实执行 + WAL压测 + 清单V4 + 灰度判定批次
+
+> **批次日期**: 2026-10-15
+> **分支**: `feature/v85-chart-template` @ `1d5990b`
+> **状态标记**: `HERMES_PROD_PHASE_CASEA01_REAL_RUN_GRAY_DECISION_DONE=TRUE`
+
+### 16.1 本轮新增产物（5 份文档 + 1 脚本 + 1 MD5清单）
+
+| # | 文件 | 字节 | 核心内容 |
+|---|------|------|----------|
+| 1 | `v86_rc2_hermes_case_a01_real_run_report.md` | 4,892 | CASE-A01真实预发执行：5PASS/3FAIL（DEP阻塞预期） |
+| 2 | `v86_rc2_hermes_wal_real_load_test_report.md` | 4,217 | WAL压测：6项全PASS，吞吐199K ev/s，崩溃恢复0丢失 |
+| 3 | `v86_rc2_hermes_prod_gate_checklist_v4.md` | 8,043 | 准入清单V4定稿：113项（64P0/36P1/13P2），三方评审闭环 |
+| 4 | `v86_rc2_hermes_checklist_review_log.md` | 4,144 | 评审日志：18条意见100%闭环（14采纳/4拒绝附理由） |
+| 5 | `gray_gate_decider.py` | 14,358 | 灰度门禁自动判定脚本：12/12自检PASS，F1~F5回滚矩阵 |
+| 6 | `MD5_CHECKSUM_LIST_prod_case_a01_real_run.md` | — | 本轮MD5清单 |
+
+### 16.2 CASE-A01真实执行结果
+
+- **断言**: 5 PASS / 0 WARN / 3 FAIL
+- **FAIL原因**: DEP-001 BLOCKED→审计器产出CRITICAL→触发短路→verdict=FAIL
+- **关键验证**: 审计器短路逻辑正确（P1 CRITICAL跳过10批），WAL写入0.138ms，面板端口连通
+- **DEP-001 RECOVERED后预期**: 全部8项断言PASS
+
+### 16.3 WAL压测结果
+
+| 测试 | 结果 | 关键指标 |
+|------|------|----------|
+| 持续写入5000 | ✅ | 168K ev/s |
+| 批量写入10×1000 | ✅ | 批均15.25ms |
+| WAL自动切换 | ✅ | checkpoint后WAL=0 |
+| 崩溃恢复 | ✅ | **0数据丢失** |
+| 去重验证 | ✅ | INSERT OR IGNORE原子生效 |
+| 大容量20000 | ✅ | 199K ev/s |
+
+### 16.4 准入清单V4变更
+
+- **V3(109项) → V4(113项)**: +4项评审补充
+- **新增**: N1(DEP-001就绪3项子检查) / N2(L2分片边界) / N3(告警适配器隔离) / N4(季度恢复演练)
+- **阈值调整**: B-06桥接率分阶段(80%→90%) / C-01小包基线(15ms→5ms) / L-01磁盘(500MB→1GB)
+- **评审**: DSHB 7条 / DSHE 6条 / B 5条 → 18条100%闭环
+
+### 16.5 灰度门禁自动判定
+
+- **载体**: `gray_gate_decider.py`（12/12自检PASS）
+- **决策类型**: ADVANCE / HOLD / OBSERVE / ROLLBACK / COMPLETE
+- **F1~F5回滚矩阵**: F1自动0秒 / F2自动30分钟确认 / F3~F5人工确认
+- **灰度阶梯**: G0影子→G1单品种→G2~G4灰度→G5全量
+
+### 16.6 当前状态总览
+
+| 标记 | 值 |
+|------|-----|
+| **HERMES_PROD_PHASE_CASEA01_REAL_RUN_GRAY_DECISION_DONE** | **TRUE** |
+| HERMES_PROD_PHASE_CASEA01_WAL_OPS_PROD_CHECKLIST_DONE | TRUE |
+| HERMES_PROD_PHASE_AUDITOR_PERF_WAL_GRAY_DONE | TRUE |
+| HERMES_PROD_PHASE_PIPELINE_SIM_DONE | TRUE |
+| JOB_READY | **FALSE** |
+| GATE_DECISION | **NOT_READY** |
+| DEP_001_STATUS | **BLOCKED** |
+
+> **Gate 仍 NOT_READY**：DEP-001短ID解析服务仍未就绪。
+> 本轮完成了**真实环境验证**（CASE-A01 + WAL压测）+ **三方评审闭环**（清单V4）+ **灰度判定逻辑落地**（gray_gate_decider.py）。
+> DEP就绪后按清单V4的113项核验启动投产，灰度判定脚本自动执行G0~G5阶梯。
+
+---
+
+*本交接文档由 HERMES 生成于 V86-RC2 CASE-A01真实执行+WAL压测+清单V4+灰度判定批次完成后。新会话先读本文件，再决定是否继续推进。*
+
