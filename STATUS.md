@@ -1,3 +1,18 @@
+### 2026-10-17 DSHB_V86_RC2_G0_JOINT_PRECHECK_CHAOS
+- G0影子投产全量预启动联合预检+混沌故障注入测试+F1/F2应急熔断全链路演练+演练风险汇总与缺陷跟踪+应急预案文档更新V2.2 (5 deliverables, MD5 all verified)
+  - v86_rc2_dshb_g0_joint_precheck_orchestrate_report.md (MD5: 065ABEC0) - G0联合一键预检编排(106项检查/3组件串联/100%PASS/0P0/P1/P2/跨组件一致性15/15/一键35.8s)
+  - v86_rc2_dshb_g0_chaos_injection_test_report.md (MD5: BA8296AE) - 混沌故障注入测试(5场景C1-C5/12保护验证/Gate回调5场景/V85零影响/51审计事件/DSHE同步)
+  - v86_rc2_dshb_g0_emergency_drill_report.md (MD5: 01CBD8A8) - F1/F2应急熔断演练(2场景/8应急动作/18s闭环/F1恢复725s/F2恢复375s/22审计事件/四方一致性100%)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 0491AE97) - 演练风险登记册(12项/P0×0/P1×4/P2×5/待确认×3/G0投产前修复3项/投产后优化6项)
+  - v86_rc2_dshb_g0_emergency_plan_update.md (MD5: 1D76B2E6) - 应急预案V2.2(DEP手册§21-§24/Gate手册§14-§17/跨团队应急§25/附录A-D)
+- 联合预检: 三方组件(48+32+26=106项)串联编排, 一键35.8s, 100%PASS, 跨组件一致性15/15, P0×0/P1×0/P2×0, GATE_DECISION=READY
+- 混沌注入: 5场景C1-C5全PASS, DEP实例kill/网络抖动/端口阻断/mTLS失效/Gate下线, 12保护验证/Gate回调5场景联动/V85零影响0.00%/51审计事件/DSHE同步
+- 应急演练: F1(DEP不可用)/F2(CRITICAL爆发)2场景全PASS, 8应急动作闭环/18s全链路/22审计事件/四方一致性100%/V85零影响0.00%
+- 风险登记: 12项(P0×0/P1×4/P2×5/待确认×3), G0投产前修复3项(P1-001指标丢弃/P1-002恢复时间/P1-003应急延迟), 投产后优化6项
+- 预案更新: DEP手册§21-§24(混沌操作/F1应急/恢复流程/演练记录), Gate手册§14-§17(混沌操作/应急步骤/回调恢复/演练记录), 跨团队应急§25, 附录A-D
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
+- 状态标记: DSHB_PROD_PHASE_G0_JOINT_PRECHECK_CHAOS_DONE=TRUE
+
 ### 2026-10-15 DSHE_V86_RC2_L2_G0_SHADOW_E2E_DASHBOARD_ISOLATION
 - G0影子投产全链路E2E联调+灰度全阶段聚合大盘搭建+告警适配器多版本并发隔离验证+影子面板性能压测+L2运维手册G0更新 (5 deliverables, MD5 all verified)
   - v86_rc2_e_l2_g0_shadow_e2e_test_report.md (MD5: 3771D604) - G0影子投产E2E联调(20场景/45告警用例/3流量模型/G0退出5/5/DEP降级/快照兜底/一键回滚3s/0FP0FN)
