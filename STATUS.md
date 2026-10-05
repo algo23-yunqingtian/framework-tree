@@ -1,3 +1,18 @@
+### 2026-10-15 DSHE_V86_RC2_L2_G0_SHADOW_E2E_DASHBOARD_ISOLATION
+- G0影子投产全链路E2E联调+灰度全阶段聚合大盘搭建+告警适配器多版本并发隔离验证+影子面板性能压测+L2运维手册G0更新 (5 deliverables, MD5 all verified)
+  - v86_rc2_e_l2_g0_shadow_e2e_test_report.md (MD5: 3771D604) - G0影子投产E2E联调(20场景/45告警用例/3流量模型/G0退出5/5/DEP降级/快照兜底/一键回滚3s/0FP0FN)
+  - v86_rc2_e_l2_gray_phase_dashboard_spec.md (MD5: 763513FF) - 灰度全阶段聚合大盘(10数据源/G0-G5状态/Gate+DEP面板/12一致性校验/RBAC/刷新策略/gray_gate_decider对齐)
+  - v86_rc2_e_alert_adapter_multi_version_isolation_report.md (MD5: ACAF3771) - 告警适配器多版本隔离(20场景/V2+V3并发/数据隔离/版本切换/0丢失0重复/性能隔离)
+  - v86_rc2_e_l2_shadow_panel_perf_report.md (MD5: DEF503AC) - 影子面板性能压测(200并发P99=218ms/60min内存0泄漏/72子面板/8保护阈值/6瓶颈识别)
+  - v86_rc2_e_l2_ops_manual_g0_update.md (MD5: 42584C9C) - L2运维手册G0更新(G0操作流程/大盘使用/版本切换/gray_gate_decider对齐/F1-F5应急/跨团队)
+- G0影子E2E: 20场景全PASS, 45告警用例(15规则×3流量模型), 0FP/0FN, G0退出5/5条件满足, 一键回滚3s, DEP降级T+300s快照兜底, 面板P99=145ms
+- 灰度大盘: 10类数据源(DEP/Gate/审计/面板/告警/WAL等), G0-G5全阶段状态, 12项一致性校验PASS, RBAC 4角色, 4级刷新策略, gray_gate_decider 5决策完全对齐
+- 适配器隔离: V2+V3并发运行, 4维度数据隔离(日志/检查点/指标/认证), 6次版本切换0丢失0重复0抖动, 200告警/s无串扰
+- 面板性能: 基线P50=32ms/P99=145ms, 200并发P99=218ms, 60min内存0泄漏, 72/72子面板100%渲染, 8项保护阈值配置, 6项瓶颈识别
+- 运维手册: G0影子操作流程(部署前→启动→监控→退出→回滚), 聚合大盘使用指南, 版本切换操作(V2→V3/V3→V2), gray_gate_decider对齐矩阵, F1-F5故障应急, 跨团队三方对齐
+- 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, DEP_001_STATUS=BLOCKED
+- 状态标记: E_PROD_PHASE_L2_G0_SHADOW_READY=TRUE
+
 ### 2026-10-15 DSHE_V86_RC2_L2_FAULT_REGRESSION
 - L2面板DEP故障场景专项回归+回滚脚本二次演练+告警载荷跨版本兼容性校验+时延基线故障子集补充+灰度降级策略更新 (5 deliverables, MD5 all verified)
   - v86_rc2_e_l2_panel_dep_fault_regression_report.md (MD5: 733FDAE4) - DEP故障场景回归(3场景45用例,30触发15抑制,DS-06抖动T+330s命中,5分钟去重87.5%抑制率,P0强制采集100%,快照兜底100%,5态徽章,4类告警分类)
