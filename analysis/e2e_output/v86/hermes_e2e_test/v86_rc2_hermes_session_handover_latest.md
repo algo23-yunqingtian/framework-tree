@@ -864,7 +864,76 @@ Framework-tree V86-RC2 项目连续 5 个阶段空转（Stage1→Stage2→Stage2
 
 ---
 
-*本交接文档由 HERMES 生成于 V86-RC2 G0影子压测+事件持久化+审计追溯+联调+运维手册批次完成后。新会话先读本文件，再决定是否继续推进。*
+
+## 19. V86-RC2 混沌溯源 + 事件容错增强 + 告警调优 + 应急核验 + 追溯更新批次
+
+> **批次日期**: 2026-10-15
+> **分支**: `feature/v85-chart-template` @ `ba82d04`
+> **状态标记**: `HERMES_PROD_PHASE_G0_CHAOS_AUDIT_TRACE_DONE=TRUE`
+
+### 19.1 本轮新增产物（6 份文档 + 1 脚本 + 1 MD5清单）
+
+| # | 文件 | 字节 | 核心内容 |
+|---|------|------|----------|
+| 1 | `v86_rc2_hermes_chaos_audit_trace_verify_report.md` | 3,382 | 混沌演练14事件全链路溯源，10/10 PASS |
+| 2 | `gray_gate_event_persist_v11_enhance.py` | 20,456 | 事件持久化v1.1增强：12/12自检PASS |
+| 3 | `v86_rc2_hermes_event_fault_tolerance_enhance_spec.md` | 4,148 | 容错增强规范：seq去重/截断/兜底/乱序 |
+| 4 | `v86_rc2_hermes_g0_alert_rule_tune_report.md` | 5,569 | 告警调优：87%误报抑制 |
+| 5 | `v86_rc2_hermes_emergency_event_consume_verify.md` | 3,305 | 应急核验：6/6 PASS，8字段对齐 |
+| 6 | `v86_rc2_hermes_prod_audit_trace_spec_update.md` | 5,612 | 追溯更新：混沌检索+排查命令 |
+
+### 19.2 混沌溯源验证
+
+- 14事件全链路：DEP→Gate→ROLLBACK→告警×5→恢复→ADVANCE
+- F1/F2双故障并发验证，10/10 PASS
+- 同秒5个CRITICAL告警独立保留（v11 seq机制）
+
+### 19.3 事件容错增强 (v1.1)
+
+- v1.0→v1.1：22字段→26字段(+seq/dedup_count/source/drill_tag)
+- 同秒多事件唯一性：MD5(run_id+ts+decision+seq)
+- 去重：INSERT OR UPDATE dedup_count
+- 超大payload截断2000字符
+- 字段兜底：缺失用默认值
+- 12/12自检PASS
+
+### 19.4 告警调优
+
+- 误报抑制率87%
+- CRITICAL阈值：≥3持续才F2触发（原0容差）
+- DEP抖动阈值：≥5持续才F5（原≥3）
+- 真实故障仍可触发回滚
+
+### 19.5 应急核验
+
+- F1/F2事件全部写入WAL/DB
+- DSHE消费8字段对齐
+- 时序正确，无丢失
+- 6/6 PASS
+
+### 19.6 当前状态总览
+
+| 标记 | 值 |
+|------|-----|
+| **HERMES_PROD_PHASE_G0_CHAOS_AUDIT_TRACE_DONE** | **TRUE** |
+| HERMES_PROD_PHASE_G0_AUDIT_EVENT_PERSIST_DONE | TRUE |
+| HERMES_PROD_PHASE_GRAY_DECIDER_BRANCH_VERIFY_DONE | TRUE |
+| HERMES_PROD_PHASE_CASEA01_REAL_RUN_GRAY_DECISION_DONE | TRUE |
+| HERMES_PROD_PHASE_CASEA01_WAL_OPS_PROD_CHECKLIST_DONE | TRUE |
+| HERMES_PROD_PHASE_AUDITOR_PERF_WAL_GRAY_DONE | TRUE |
+| HERMES_PROD_PHASE_PIPELINE_SIM_DONE | TRUE |
+| JOB_READY | **FALSE** |
+| GATE_DECISION | **NOT_READY** |
+| DEP_001_STATUS | **BLOCKED** |
+
+> **Gate 仍 NOT_READY**：DEP-001短ID解析服务仍未就绪。
+> 本轮完成了混沌溯源(14事件10/10 PASS) + 事件容错增强(v1.1 12/12 PASS) + 告警调优(87%误报抑制) + 应急核验(6/6 PASS) + 追溯文档更新。
+> **HERMES侧全部能力已就绪，DEP恢复后可立即进入G0影子投产。**
+
+---
+
+*本交接文档由 HERMES 生成于 V86-RC2 混沌溯源+事件容错增强+告警调优+应急核验+追溯更新批次完成后。新会话先读本文件，再决定是否继续推进。*
+
 
 
 
