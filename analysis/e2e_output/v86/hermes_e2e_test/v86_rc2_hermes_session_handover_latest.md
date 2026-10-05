@@ -571,4 +571,85 @@ Framework-tree V86-RC2 项目连续 5 个阶段空转（Stage1→Stage2→Stage2
 
 ---
 
-*本交接文档由 HERMES 生成于 V86-RC2 压力+HA 仿真批次完成后。新会话先读本文件，再决定是否继续推进。*
+## 15. V86-RC2 CASE-A01 E2E真实环境用例 + WAL运维手册 + 审计器v3剖面 + 生产清单V3 批次
+
+> **批次日期**: 2026-10-15
+> **分支**: `feature/v85-chart-template` @ `1b3c6f2`
+> **状态标记**: `HERMES_PROD_PHASE_CASEA01_WAL_OPS_PROD_CHECKLIST_DONE=TRUE`
+
+### 15.1 本轮新增产物（4 份文档 + 1 份 MD5 清单）
+
+| # | 文件 | 字节 | 核心内容 |
+|---|------|------|----------|
+| 1 | `v86_rc2_hermes_case_a01_e2e_real_env_spec.md` | 15,045 | CASE-A01 全链路 E2E 用例：5 Step / 17 断言 / 16 观测点 / 指标基线 / 回滚流程 |
+| 2 | `v86_rc2_hermes_wal_ops_manual.md` | 15,777 | SQLite WAL 运维手册：PRAGMA 配置 / 崩溃恢复 / 断电处置 / Checkpoint / 监控告警 / 容量规划 |
+| 3 | `v86_rc2_hermes_auditor_v3_prod_profile.md` | 16,526 | 审计器 v3 三阶段剖面：G0影子 / G1~G4灰度 / G5全量 / 小包跳过短路策略 / 增量缓存 / 超时降级 |
+| 4 | `v86_rc2_hermes_prod_gate_checklist_v3.md` | 17,382 | 生产准入清单 V3：109 项 (61 P0 / 35 P1 / 13 P2)，新增 I~M 五类 24 项生产准入项 |
+| 5 | `MD5_CHECKSUM_LIST_prod_case_a01_wal_profile.md` | — | 本轮 + 上一轮 13 份产物 MD5 清单 |
+
+### 15.2 上一轮待提交产物（9 份，本轮一并提交）
+
+上一轮 `AUDITOR_PERF_WAL_GRAY_DONE` 批次产出的 9 份产物（3 脚本 + 5 报告 + 1 基准脚本）此前为 untracked 状态，本轮随 commit 一并提交。
+
+### 15.3 CASE-A01 关键设计
+
+- **全链路**: L1 证据包 → Gate → HERMES 审计 → 事件存储 → DSHE 告警面板
+- **17 项断言**: A1~A17，覆盖证据包完整性 / Gate 判定 / 审计 verdict / WAL 写入 / 面板渲染
+- **指标基线**: 审计耗时 ≤ 15ms / 事件写入 ≤ 1000ms/千条 / 端到端 ≤ 30s
+- **17 项前置条件**: P1~P8，其中 DEP-001 BLOCKED 是唯一硬性阻塞
+- **当前状态**: 用例设计完成，待 DEP-001 RECOVERED 后执行
+
+### 15.4 WAL 运维手册关键阈值
+
+| 参数 | 值 | 说明 |
+|------|-----|------|
+| WAL_SWITCH_THRESHOLD | 10000 | 基于实测 O(n) 拐点 |
+| synchronous | NORMAL | 崩溃安全，非 FULL（性能减半） |
+| wal_autocheckpoint | 100 | 每 100 页自动 checkpoint |
+| busy_timeout | 5000ms | 锁等待 |
+| 崩溃恢复 | ✅ WAL 自动重放 | synchronous=NORMAL 保证已 commit 不丢失 |
+| 监控告警 | CRITICAL/HIGH/WARNING/INFO 4 级 | 磁盘 >95% CRITICAL / WAL >50MB WARNING |
+
+### 15.5 审计器 v3 三阶段配置剖面
+
+| 参数 | G0 影子 | G1~G4 灰度 | G5 全量 |
+|------|---------|-----------|---------|
+| `perf_budget_seconds` | 2.0 | 1.0→0.8 | 0.8 |
+| `cache_size` | 5000 | 2000 | 5000 |
+| `cache_ttl` | 86400s | 1800s | 900s |
+| `sample_rate` | 0.10 | 0.05→0.03 | 0.02 |
+| `real_fetchable_threshold` | 0.80 | 0.90→0.99 | 0.99 |
+| `small_pkg_skip_circuit` | ✅ (<50call) | ✅ | ✅ |
+
+**小包跳过短路策略**: <50call 用 v2_plus 全量（短路固定开销超过收益），≥50call 用 v3 短路（2x 加速）。预判成本 <1μs。
+
+### 15.6 生产准入清单 V3 变更
+
+- **V2 (85 项) → V3 (109 项)**: 新增 I~M 五类 24 项生产准入项
+- **I. 网络连通** (6 项): HERMES↔数据平台/面板/zhiji 双向连通
+- **J. 权限/证书** (5 项): API Key / 读写权限 / 只读面板
+- **K. 日志落盘** (4 项): 审计/Gate/事件日志落盘 + 轮转
+- **L. 存储容量** (5 项): WAL/日志/备份/磁盘空间
+- **M. 备份策略** (4 项): 每日备份 / 完整性验证 / 7 天保留 / 季度恢复演练
+- **总计**: 61 P0 / 35 P1 / 13 P2
+- **待三方评审**: DSHB + DSHE 确认生产项可验证性
+
+### 15.7 本轮状态标记汇总
+
+| 标记 | 值 |
+|------|-----|
+| **HERMES_PROD_PHASE_CASEA01_WAL_OPS_PROD_CHECKLIST_DONE** | **TRUE** |
+| HERMES_PROD_PHASE_AUDITOR_PERF_WAL_GRAY_DONE | TRUE |
+| HERMES_PROD_PHASE_PIPELINE_SIM_DONE | TRUE |
+| HERMES_PROD_PHASE_AUDIT_STANDARD_DONE | TRUE |
+| JOB_READY | **FALSE** |
+| GATE_DECISION | **NOT_READY** |
+| DEP_001_STATUS | **BLOCKED** |
+
+> **Gate 仍 NOT_READY**：DEP-001 短ID 解析服务仍未就绪。
+> 本轮产出的是**生产就绪文档**（CASE-A01 用例 + WAL 运维 + v3 剖面 + 清单 V3），
+> DEP 就绪后按 `v86_rc2_hermes_prod_gate_checklist_v3.md` 的 109 项核验启动投产。
+
+---
+
+*本交接文档由 HERMES 生成于 V86-RC2 CASE-A01+WAL运维+审计器v3剖面+生产清单V3 批次完成后。新会话先读本文件，再决定是否继续推进。*
