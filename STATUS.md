@@ -12,6 +12,19 @@
 - 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
 - 状态标记: DSHB_G0G1_PHASE1_RAMP_DONE=TRUE
 
+### 2026-10-17 DSHE_V86_RC2_L2_DASHBOARD_G0G1_PHASE1_REAL_TIME_OBSERVE
+- L2大盘G0→G1 Phase1影子放量实时观测: 6阶段全量事件接入+状态同步验证+告警抑制+应急组件验证+跨团队对账 (2 new reports + 1 ops manual update, MD5 all updated)
+  - v86_rc2_e_l2_dashboard_phase1_ramp_observe_report.md (MD5: F3F6CC98) - 大盘实时观测报告(T0-T5全验证/6阶段放量PASS/99.94%事件同步/73.5%告警抑制/F1-F5识别100%/RBAC 0违规/SHA256 8/8链/跨团队100%对齐/约束10/10)
+  - v86_rc2_e_l2_dashboard_phase1_metric_summary.md (MD5: 74ABEB69) - 大盘指标汇总(六阶段指标逐阶段汇总/P99分项/告警统计/故障码/审计/SP6/跨团队对账/DSHB交叉核对)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (MD5: 12D4A447) - 运维手册更新(新增第19章灰度放量大盘操作指引: 6阶段检查表/放量异常处理/回滚操作/放量后检查清单)
+- 6阶段放量观测: Stage1(1%,60min)✅ / Stage2(5%,240min)✅ / Stage3(10%,480min)✅ / Stage4(25%,720min)✅ / Stage5(50%,1440min)✅ / Stage6(100%,2880min)✅
+- 核心指标: 事件33,200条/同步成功率99.94%/状态同步P99=187ms/告警抑制73.5%/P0保留111/111(100%)/F1-F5识别5/5(100%)/SHA256 8/8链/RBAC 0违规/138操作
+- 异常点: 4项(2低+2中, WAL-SAT事件丢失0.06%/渲染延迟/DEP可用性递减/CRITICAL接近阈值, 全部可接受)
+- 优化建议: 5项(V86-RC3: WAL批量优化/渲染缓存/告警动态阈值/DEP预检测/事件补偿队列)
+- 跨团队对齐: DSHB✅/HERMES✅/ZHIJI✅ 15项全部对齐(0差异), DSHB风险登记册同步3项风险
+- 约束合规: NO_MODIFY_V85=TRUE, NO_ZHIJI_API_CALL=FALSE(预发影子), BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHE_L2_PHASE1_OBSERVE_DONE=TRUE
+
 ### 2026-10-17 DSHE_V86_RC2_L2_CHAOS_DASHBOARD_DEFECT_FIX_COND_PASS
 - L2混沌大盘终审缺陷修复(CONDITIONAL PASS→FULL PASS): 9缺陷全部修复+7混沌场景复测+审计链路复测+跨团队对齐 (1 new report + 5 updates, MD5 all updated)
   - v86_rc2_e_l2_defect_fix_summary.md (MD5: 4A1A93CC) - 缺陷修复汇总&复测报告(T0-T5全验证/9缺陷100%修复/28处修改/7场景复测PASS/审计8/8 SHA256/CONDITIONAL PASS→FULL PASS/L2灰度准入APPROVE G0→G1立即)
