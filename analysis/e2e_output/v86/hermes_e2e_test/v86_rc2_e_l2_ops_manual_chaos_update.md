@@ -266,10 +266,10 @@ L2面板运维手册 (V86-RC2) — 混沌场景更新版
 | 面板 | 监控项 | 正常值 | 异常值 | 行动 |
 |------|--------|--------|--------|------|
 | SP1 | DEP状态 | ACTIVE | BLOCKED/RECOVERY | 观察/回滚 |
-| SP1 | 熔断器 | CLOSED | OPEN/HALF_OPEN | 观察/回滚 |
+| SP1 | 熔断器 | BLOCKED/RECOVERY | RECOVERED | 观察/回滚 |
 | SP2 | Gate状态 | READY | NOT_READY/WARN | 观察/回滚 |
 | SP2 | P0检查 | 38/38 | <38/38 | 观察/回滚 |
-| SP3 | 决策 | ADVANCE | ROLLBACK/HOLD | 观察/回滚 |
+| SP3 | 决策 | ADVANCE/COMPLETE | HOLD/OBSERVE/ROLLBACK | 观察/回滚/确认完成 |
 | SP4 | CRITICAL告警 | 0 | >0 | 立即回滚 |
 | SP4 | 告警风暴 | <50/30s | >50/30s | 检查抑制 |
 | SP5 | 渲染P99 | <100ms | >100ms | 观察/回滚 |
@@ -455,6 +455,39 @@ SP6是灰度全阶段聚合大盘的第6个主面板, 提供应急操作入口�
 | Viewer | VIEW | 仅查看 |
 | Auditor | VIEW+AUDIT | 查看+审计 |
 
+### 6.5 禁止操作清单（8项）
+
+> 以下操作在混沌演练期间**严格禁止**执行，违反将触发审计告警并立即中止演练。
+
+| 编号 | 禁止操作 | 原因 | 保护措施 |
+|------|----------|------|----------|
+| P-01 | 禁止直接修改生产DEP-001配置 | 防止影响生产流量 | 仅允许预发影子环境 |
+| P-02 | 禁止绕过Gate V5准入检查 | 防止跳过关键校验 | Gate V5硬拦截 |
+| P-03 | 禁止删除审计事件或篡改SHA256指纹 | 违反审计不可篡改原则 | 审计链断裂检测 |
+| P-04 | 禁止在混沌注入期间关闭告警系统 | 导致告警丢失 | 告警系统独立于混沌控制器 |
+| P-05 | 禁止手动修改WAL存储快照 | 破坏快照一致性 | WAL自动管理 |
+| P-06 | 禁止同时执行多次一键回滚 | 操作冲突导致状态不一致 | 互斥锁+确认码 |
+| P-07 | 禁止在生产环境执行故障注入 | 影响生产SLA | 环境隔离+审批流程 |
+| P-08 | 禁止删除或修改回滚脚本rollback_l2_panel.sh | 回滚不可用 | 脚本只读+版本管理 |
+
+### 6.6 误操作恢复步骤（M-1~M-6）
+
+> 当操作人员执行了错误操作时，按以下步骤恢复。所有误操作必须记录审计事件。
+
+| 编号 | 误操作类型 | 恢复步骤 | 预计恢复时间 | 责任人 |
+|------|-----------|----------|-------------|--------|
+| M-1 | 误关闭影子镜像 | 1.执行"镜像开启"操作 2.确认DEP-001状态 3.验证数据同步 | ≤5min | Operator/Admin |
+| M-2 | 误执行一键回滚 | 1.检查回滚状态(PARTIAL/FAILED) 2.手动恢复各子动作 3.验证大盘状态 | ≤30min | Admin |
+| M-3 | 误修改Gate配置 | 1.从备份恢复Gate配置 2.重新运行Gate V5检查 3.确认状态一致 | ≤15min | Admin |
+| M-4 | 误删除审计事件 | 1.从WAL备份恢复审计事件 2.重建审计链SHA256指纹 3.通知DSHB/HERMES | ≤60min | Admin |
+| M-5 | 误触发告警风暴 | 1.执行静默抑制 2.恢复告警规则 3.验证告警正常 | ≤10min | Operator |
+| M-6 | 误切换生产环境 | 1.立即切回预发影子环境 2.通知值班管理员 3.记录审计事件 | ≤5min | Admin |
+
+**恢复验证要求:**
+- 每次误操作恢复后必须验证: 大盘状态同步(284/284)、审计链路完整、告警系统正常
+- 恢复完成后填写《误操作恢复报告》并归档至审计追溯系统
+- 累计误操作≥3次/月需提交至DSHB审查
+
 ---
 
 ## 7. 混沌场景大盘排查指引
@@ -464,7 +497,7 @@ SP6是灰度全阶段聚合大盘的第6个主面板, 提供应急操作入口�
 | 检查项 | 正常值 | 异常值 | 排查步骤 |
 |--------|--------|--------|----------|
 | DEP状态 | ACTIVE | BLOCKED/RECOVERY | 1.查看熔断器状态 2.查看巡检日志 3.查看DEP API日志 |
-| 熔断器 | CLOSED | OPEN/HALF_OPEN | 1.查看熔断阈值 2.查看错误率 3.查看恢复策略 |
+| 熔断器 | BLOCKED | RECOVERY/HALF_OPEN | 1.查看熔断阈值 2.查看错误率 3.查看恢复策略 |
 | 连续成功 | ≥3次 | <3次 | 1.查看恢复次数 2.查看巡检间隔 3.查看DEP健康 |
 | grace期 | 300s | 已超时 | 1.查看快照兜底 2.查看降级策略 3.考虑回滚 |
 
@@ -498,7 +531,7 @@ tail -100 /var/log/gate/precheck.log
 
 | 检查项 | 正常值 | 异常值 | 排查步骤 |
 |--------|--------|--------|----------|
-| 决策 | ADVANCE | ROLLBACK/HOLD | 1.查看故障类型 2.查看阈值 3.查看决策日志 |
+| 决策 | ADVANCE/COMPLETE | HOLD/OBSERVE/ROLLBACK | 1.查看故障类型 2.查看阈值 3.查看决策日志 |
 | 故障类型 | — | F1~F5 | 1.查看触发条件 2.查看严重级别 3.确认是否回滚 |
 
 **排查命令:**
@@ -682,7 +715,7 @@ ACTIVE ───[DEP故障]───→ BLOCKED ───[DEP恢复]───→
 | 步骤 | 操作 | 检查项 | 说明 |
 |------|------|--------|------|
 | 1 | 确认DEP恢复 | DEP HTTP200 | 3次连续成功 |
-| 2 | 确认熔断器恢复 | CLOSED | 熔断器关闭 |
+| 2 | 确认熔断器恢复 | RECOVERED | 熔断器关闭 |
 | 3 | 确认Gate恢复 | READY | P0全部PASS |
 | 4 | 确认决策恢复 | ADVANCE | 灰度推进 |
 | 5 | 确认告警恢复 | CRITICAL=0 | 告警恢复 |
@@ -917,28 +950,28 @@ python reload_chaos_config.py --config chaos_scenarios.json
 
 ## 14. 故障代码速查表
 
-| 故障码 | 含义 | 影响面板 | 处理方式 |
-|--------|------|----------|----------|
-| DEP-500 | DEP HTTP500 | SP1/SP2/SP3 | 立即回滚 |
-| DEP-TIMEOUT | DEP超时 | SP1 | 观察/回滚 |
-| DEP-FLAP | DEP抖动 | SP1 | 观察DS-06 |
-| DEP-DISCONNECT | DEP断连 | SP1 | 观察/回滚 |
-| GATE-BLOCK | Gate阻断 | SP2/SP3 | 修复G-06 |
-| GATE-P0-FAIL | P0检查失败 | SP2 | 修复失败项 |
-| PERF-DEGRADE | 性能退化 | SP5 | 优化/扩容 |
-| PERF-LATENCY | 延迟超限 | SP5 | 优化/扩容 |
-| PERF-THROUGHPUT | 吞吐降低 | SP5 | 优化/扩容 |
-| ALERT-STORM | 告警风暴 | SP4 | 调整抑制 |
-| ALERT-FP | 告警误报 | SP4 | 配置抑制 |
-| ALERT-FN | 告警漏报 | SP4 | 检查规则 |
-| AUDIT-FAIL | 审计写入失败 | SP6 | 重试/兜底 |
-| AUDIT-DUP | 审计去重 | SP6 | 忽略 |
-| EMERGENCY-FAIL | 应急操作失败 | SP6 | 重试 |
-| EMERGENCY-TIMEOUT | 应急超时 | SP6 | 自动重试 |
-| EMERGENCY-CONFLICT | 操作冲突 | SP6 | 等待重试 |
-| PERMISSION-DENY | 权限拒绝 | SP6 | 联系管理员 |
-| ROLLBACK-PARTIAL | 部分回滚 | SP6 | 重试失败动作 |
-| ROLLBACK-FAIL | 回滚失败 | SP6 | 手动恢复 |
+| 故障码 | 含义 | 严重级别 | 影响面板 | 处理方式 |
+|--------|------|----------|----------|----------|
+| F1-TRIGGER | DEP链路级故障(HTTP500) | P0 | SP1/SP2/SP3 | 立即回滚 |
+| F2-TRIGGER | CRITICAL告警爆发 | P0 | SP4/SP3 | 观察30min→自动回滚 |
+| F3-TRIGGER | Gate阻断 | P1 | SP2/SP3 | 修复G-06→手动确认(8h) |
+| F4-TRIGGER | 性能超限(p95>200ms) | P1 | SP5/SP3 | 观察30min→自动回滚 |
+| F5-TRIGGER | DEP抖动(≥3次) | P1 | SP1/SP3 | 观察1h→手动回滚 |
+| SNAP-EXPIRE | 快照过期兜底超时 | P2 | SP1 | 快照刷新/回滚 |
+| WAL-SAT | WAL写入饱和 | P2 | SP6 | 降级/扩容 |
+| DEP-DISCONNECT | DEP断连 | P1 | SP1 | 观察/回滚 |
+| PERF-THROUGHPUT | 吞吐降低 | P2 | SP5 | 优化/扩容 |
+| ALERT-STORM | 告警风暴(>50/30s) | P1 | SP4 | 调整抑制 |
+| ALERT-FP | 告警误报 | P2 | SP4 | 配置抑制 |
+| ALERT-FN | 告警漏报 | P2 | SP4 | 检查规则 |
+| AUDIT-FAIL | 审计写入失败 | P1 | SP6 | 重试/兜底 |
+| AUDIT-DUP | 审计去重 | P2 | SP6 | 忽略 |
+| EMERGENCY-FAIL | 应急操作失败 | P1 | SP6 | 重试 |
+| EMERGENCY-TIMEOUT | 应急超时 | P2 | SP6 | 自动重试 |
+| EMERGENCY-CONFLICT | 操作冲突 | P2 | SP6 | 等待重试 |
+| PERMISSION-DENY | 权限拒绝 | P2 | SP6 | 联系管理员 |
+| ROLLBACK-PARTIAL | 部分回滚 | P1 | SP6 | 重试失败动作 |
+| ROLLBACK-FAIL | 回滚失败 | P0 | SP6 | 手动恢复 |
 
 ---
 
