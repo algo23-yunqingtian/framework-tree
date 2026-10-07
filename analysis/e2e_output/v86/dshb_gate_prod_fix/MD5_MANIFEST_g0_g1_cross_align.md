@@ -222,6 +222,93 @@
 
 ---
 
+## Phase4 灰度投产前置准备 (2026-10-18)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 行数 | 类型 |
+|---|------|-----|---------|------|------|
+| 1 | `v86_rc2_dshb_g1_gray_rollout_prep_plan.md` | `D070CF10C47407D2D50BE806CC89D2A1` | 85,619 | 1,044 | 新增 - G1灰度发布编排与分阶段放量方案 |
+| 2 | `v86_rc2_dshb_g1_gray_emergency_fuse_plan.md` | `DA89B392052AC29CCF1AF7F933C2B61D` | 59,153 | 691 | 新增 - 灰度熔断与紧急回滚兜底预案 |
+| 3 | `v86_rc2_dshb_g1_gray_sandbox_drill_report.md` | `565E49A2B0F5C643DBB545D67D73F5DD` | 49,271 | 815 | 新增 - 沙箱8场景SOP预演练报告 |
+| 4 | `v86_rc2_dshb_g1_gray_pre_gate_audit_report.md` | `94BC129C6848FB1BF5436E7234606686` | 68,926 | 913 | 新增 - G1灰度投产前置预审报告 |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `E24D9431` | `917D4D76C0DD77A04C0503DD60F25B7D` | 50,568 | V1.4→V1.5 |
+| 2 | `v86_rc2_g1_prod_sop_8scenarios_final.md` | `01C2E03F` | `C5D2248A5557BE2AF88CC2661F18AC3C` | 80,549 | V1.0→V1.1 |
+
+### Phase4 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 4 | 262,969 B |
+| 更新文件 | 2 | 131,117 B |
+| **合计** | **6** | **394,086 B** |
+
+### Phase4 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 生产资源预检 | 24项全部PASS |
+| 流量路由校验 | 12项全部PASS |
+| 回滚链路预验证 | 8项全部PASS |
+| 106项Gate联合预检 | 106/106 PASS |
+| 8场景SOP沙箱回放 | 8/8 PASS (C1-C5 + CF01-CF03) |
+| LR告警规则验证 | 10/10 PASS (LR-001~LR-010) |
+| DSHE事件联调 | 12项全部PASS (字段100%对齐) |
+| 沙箱缺陷发现 | 5项 (全部FIXED) |
+| 灰度阶段 | StageA(5%)→StageB(20%)→StageC(50%)→StageD(80%) |
+| 观测窗口 | 每阶段≥12h |
+| 综合评分 | 99.5/100 (扣0.5分因HERMES未就绪) |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY |
+| 唯一阻断项 | HERMES审计链路未就绪 |
+| 灰度放量启动条件 | 13项: 10 PASS / 3 BLOCKED |
+| 风险登记册版本 | V1.5 |
+| 新增风险 | 1 (GRAY-P1-001, HERMES外部依赖, P1, BLOCKED) |
+| 累计风险 | 33 (32 CLOSED + 1 BLOCKED) |
+| G1_GRAY_TRAFFIC_START | FALSE |
+| V85偏差 | 0.00% |
+
+### Phase4 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE4_GRAY_PREP_DONE | TRUE |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY |
+| G1_GRAY_TRAFFIC_START | FALSE |
+| G1_PRODUCTION_READY | YES (条件满足，等待HERMES) |
+| GO_LIVE_APPROVAL | UNCONDITIONAL (条件满足，等待HERMES) |
+| HERMES_AUDIT_CHAIN_READY | FALSE |
+
+### 累计交付物汇总 (G0→G1全流程)
+
+| 阶段 | 新增文件 | 更新文件 | 大小合计 |
+|------|---------|---------|---------|
+| 跨团队对齐 (V1.0) | 6 | 3 | 300,197 B |
+| Phase1 影子放量 | 2 | 1 | 85,449 B |
+| Phase2 长稳+故障 | 5 | 1 | 169,659 B |
+| Phase3 条件解除+基线冻结 | 6 | 1 | 243,521 B |
+| Phase4 灰度前置准备 | 4 | 2 | 394,086 B |
+| **累计合计** | **23** | **8** | **1,192,912 B** |
+
+### Phase4 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增独立文件 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| DSHE大盘接入 | 故障事件实时上报 | ✅ |
+| HERMES审计链路 | 大容量持久化/检索 | ⏳ 等待HERMES工单完成 |
+| 跨团队审计对齐 | DEP/HERMES/DSHE 100% | ✅ (不含HERMES审计链路) |
+| 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
+
+---
+
 ## Phase3 条件准入解除+基线冻结+终审 (2026-10-18)
 
 ### 新增

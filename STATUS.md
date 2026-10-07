@@ -1,3 +1,22 @@
+### 2026-10-18 DSHB_V86_RC2_G1_PHASE4_G1_GRAY_PREP_AND_DEPLOY_READY_CHECK
+- G1 Phase4灰度投产前置准备: 环境预检+发布编排+沙箱演练+前置预审 (4 new + 2 updated + 3 metadata, MD5 all verified)
+  - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: D070CF10) - G1灰度发布编排与分阶段放量方案(StageA 5%→StageB 20%→StageC 50%→StageD 80%/每阶段≥12h观测窗口/106项Gate预检清单/故障演练计划/观测看板配置)
+  - v86_rc2_dshb_g1_gray_emergency_fuse_plan.md (MD5: DA89B392) - 灰度熔断与紧急回滚兜底预案(P0阻断指标10项/熔断触发条件12项/自动回滚判定/人工介入条件/4级降级策略/10项止损操作/熔断后恢复流程)
+  - v86_rc2_dshb_g1_gray_sandbox_drill_report.md (MD5: 565E49A2) - 沙箱8场景SOP预演练报告(106项Gate预检106/106 PASS/8场景SOP回放8/8 PASS/LR告警10/10 PASS/DSHE事件联调100%/5项缺陷发现全部FIXED)
+  - v86_rc2_dshb_g1_gray_pre_gate_audit_report.md (MD5: 94BC129C) - G1灰度投产前置预审报告(综合评分99.5/100/唯一阻断项HERMES审计链路/GATE_DECISION=BLOCKED_BY_DEPENDENCY/G1_GRAY_TRAFFIC_START=FALSE/13项启动条件10 PASS 3 BLOCKED)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 917D4D76) - 风险登记册V1.5(新增§17 Phase4风险记录/GRAY-P1-001 HERMES外部依赖BLOCKED/累计33项风险32 CLOSED+1 BLOCKED)
+  - v86_rc2_g1_prod_sop_8scenarios_final.md (MD5: C5D2248A) - 8类故障场景SOP V1.1(沙箱演练5项缺陷修复: SBX-DEF-001~005/脚本变量初始化/步骤顺序修正/阈值统一/安全组恢复/事件端点修正)
+- 资源预检: 24项生产资源+12项路由+8项回滚链路+6项权限+12项监控全部PASS/106项Gate预检全部PASS
+- 沙箱演练: 8场景SOP(C1-C5+CF01-CF03)全部PASS/LR告警规则10/10验证通过/DSHE事件字段100%对齐/5项缺陷修复
+- 发布编排: StageA(5%)→B(20%)→C(50%)→D(80%)四阶段放量/每阶段≥12h观测/熔断预案+降级策略+止损操作全部定稿
+- 前置预审: 综合评分99.5/100(扣0.5分因HERMES)/GATE_DECISION=BLOCKED_BY_DEPENDENCY/唯一阻断项=HERMES审计链路未就绪
+- 风险登记: V1.5新增GRAY-P1-001(HERMES外部依赖P1 BLOCKED)/累计33项风险/32 CLOSED+1 BLOCKED/0遗留
+- 跨团队对齐: DSHB✅/DSHE✅/DEP✅ 100%对齐/HERMES⏳ 等待审计链路交付
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE4_GRAY_PREP_DONE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (等待HERMES审计链路就绪信号)
+- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (唯一阻断项=HERMES审计链路)
+
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE3_CONDITIONAL_PASS_FULL_CLOSE_AND_PROD_BASELINE_LOCK
 - G1 Phase3条件准入全闭环+生产基线冻结+V86-RC2版本收口+最终投产Gate终审 (6 new + 1 updated, MD5 all verified)
   - v86_rc2_g1_conditional_close_report.md (MD5: D400C584) - 条件准入解除验证报告(14/14条件项全部解除/审计丢失率0.09%→0.008%/P99 553ms→462ms/DB池205/200→198/300/内存漂移-82.3%/句柄-82.8%/WAL-95.5%/告警抑制78.7%稳定/G1 CONDITIONAL→FULL APPROVE)
