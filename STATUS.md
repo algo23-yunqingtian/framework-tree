@@ -19,6 +19,30 @@
 - 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (唯一阻断项=HERMES审计链路)
 - 状态标记: P0_BLOCKER_METRIC_INCONSISTENCY=CLOSED
 
+### 2026-10-18 DSHE_V86_RC2_L2_PHASE5_METRIC_ADAPT_DASHBOARD_REFACTOR
+- L2大盘Phase5指标口径适配改造: 指标规范映射+口径改造沙箱验证+缺陷V3.1+运维手册§24 (2 new + 3 updated, 185 files, 48 stages)
+  - v86_rc2_e_l2_dashboard_phase5_metric_spec_mapping.md (MD5: 47BB67D5) - 大盘指标与三方规范映射文档(16项指标全量映射/三类时延独立/吞吐三链路标注/丢失率统一≤0.01%/审计事件8/184/对账基数统一/告警抑制率≥500样本CI/HERMES 5项风险同步)
+  - v86_rc2_e_l2_dashboard_phase5_metric_refactor_verify_report.md (MD5: 8734FD34) - 口径改造沙箱验证报告(1,167,144事件回放/16/16指标对齐/F1-F5+CF01-03 8/8 PASS/状态机4/4不受影响/告警内核100%不受影响/P0保留180/180/500万行性能测试/检索P99监控/新增0 P0/1 P1)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (MD5: A92C4AAB→V3.1) - 缺陷清单V3.1(12 CLOSED+4跟踪+3外部阻塞/新增P5-P1-001检索退化+P5-P2-001置信区间/DSHB风险V1.5→V1.6)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (MD5: 5C258D95→v4.0.2) - 运维手册v4.0.2(新增§24 Phase5指标口径适配运维指引/15项检查表)
+  - MD5_MANIFEST_cross_review.md (MD5: 更新) - 266 files/175 MD5
+  - JOB_READY.flag (MD5: ECCE3A57) - Phase5 section added
+- 指标改造: 16/16指标适配V1.0三方口径规范, 三类时延独立面板(SP-LAT-01/02/03), 吞吐三链路标注, 丢失率统一≤0.01%, 审计事件8/184, 对账基数全量72h, 告警抑制率≥500样本+Wilson CI, 信息密度统一3.3x
+- 沙箱回放: 1,167,144事件回放, 16/16指标与统一口径对齐, F1-F5 5/5 PASS, CF01-03 3/3 PASS, 状态机4/4不受影响, 告警内核100%不受影响, P0告警100%(180/180), SHA256 8/8链, SP6 100%(485/485), RBAC 0/256
+- 500万行性能测试: 无索引P99=685ms(超阈值3.4倍), 有索引P99=12ms(提升57倍), 线性扫描退化确认, 4.3h退化临界, P1风险已录入
+- 新增缺陷: 0 P0 / 1 P1(P5-P1-001检索线性扫描退化,外部依赖索引上线) / 1 P2(P5-P2-001告警抑制率CI偏宽,跟踪)
+- 外部阻塞: 3项HERMES阻塞不变(WAL链路/三方对账/字段规范), 不接入生产真实流量
+- 风险同步: DSHB风险登记册V1.5→V1.6(7项新增: 2 Phase5新增+5 Phase4遗留)
+- 约束合规: BRANCH_LOCKED=TRUE, NO_MODIFY_V85=TRUE, NO_ZHIJI_API_CALL=TRUE, NO_OVERWRITE=TRUE, JOB_READY=FALSE, DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE, 全部✅
+- 状态标记: DSHE_L2_PHASE5_METRIC_SPEC_MAPPING_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE5_METRIC_REFACTOR_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE5_SANDBOX_VERIFY_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE5_DEFECT_V3_1_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE5_OPS_MANUAL_V4_0_2_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE5_RETRIEVAL_MONITOR_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE5_P1_RETRIEVAL_RISK_TRACKED=TRUE
+- 状态标记: DSHE_L2_PHASE5_METRIC_REFORCTOR_DONE=TRUE
+
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE4_G1_GRAY_PREP_AND_DEPLOY_READY_CHECK
 - G1 Phase4灰度投产前置准备: 环境预检+发布编排+沙箱演练+前置预审 (4 new + 2 updated + 3 metadata, MD5 all verified)
   - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: D070CF10) - G1灰度发布编排与分阶段放量方案(StageA 5%→StageB 20%→StageC 50%→StageD 80%/每阶段≥12h观测窗口/106项Gate预检清单/故障演练计划/观测看板配置)
