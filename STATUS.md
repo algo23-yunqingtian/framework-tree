@@ -1,3 +1,35 @@
+### 2026-10-20 DSHE_V86_RC2_L2_PHASE8_DASHBOARD_ONLINE_INDEX_OBSERVE
+- L2大盘Phase8 线上索引变更窗口大盘观测: 生产索引变更窗口全程观测+72h线上持续流量观测+缺陷V3.4+运维手册v4.0.5 (1 new + 5 updated)
+  - v86_rc2_e_l2_dashboard_phase8_online_index_observe_report.md (NEW) - 线上索引变更大盘观测验收报告(变更窗口02:00-04:00 UTC全程值守/前置检查16/16 PASS/3核心索引创建14.2min/事件完整性100%/状态机4/4稳定/告警验证5活跃+2预留零误报/72h线上119万事件36检查点CV=0.0035/查询P99 idx_trace 3.4ms idx_fault 2.2ms idx_sev_ts 3.9ms/索引膨胀46.9%→41.3%微降/告警抑制1287样本CI[74.8%77.6%]/16指标158400点0缺失/INDEX-HIT准确率99.98%/DSHB HERMES对账12/12三天/新增0缺陷)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (MD5: 更新) - 缺陷清单V3.3→V3.4(P5-P1-001→【线上验证通过】/Phase8新增0项/DSHB风险V1.8)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (MD5: 更新) - 运维手册v4.0.4→v4.0.5(§26新增线上索引变更窗口观测/26项检查表/变更前置+创建观测+恢复确认+基线采集+告警验证+72h观测+INDEX-HIT标记+异常应急+对账)
+  - MD5_MANIFEST_cross_review.md (MD5: 更新) - Phase8 entries added
+  - JOB_READY.flag (MD5: 更新) - Phase8 section added
+- 变更窗口观测: 02:00-04:00 UTC全程值守/前置检查16/16 PASS/索引创建14.2min/事件0丢失/状态机58次转换0异常/AL-001触发1次(预期)/预留告警0误报
+- 72h线上观测: 1,194,312事件/36检查点/CV=0.0035/查询P99 3.4ms稳定(CV<0.04)/索引膨胀46.9%→41.3%微降/WAL写入P99 3.1ms/告警抑制1287样本(76.2% CI[74.8%,77.6%])/16指标158400点0缺失/INDEX-HIT准确率99.98%
+- 跨团队对账: DSHB/HERMES/DSHE三方12/12对齐(Day1+Day2+Day3)100%
+- 缺陷: P5-P1-001→【线上验证通过】(P99 3.4ms<200ms), Phase8新增0项, DSHB风险V1.8
+- 约束合规: BRANCH_LOCKED=TRUE ✅, NO_MODIFY_V85=TRUE ✅, NO_ZHIJI_API_CALL=TRUE ✅, 状态机零改动 ✅, 告警内核零改动 ✅, 仅大盘观测 ✅
+- 状态标记: DSHE_L2_PHASE8_ONLINE_INDEX_OBSERVE_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_CHANGE_WINDOW_OBSERVE_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_INDEX_CREATION_OBSERVED=TRUE
+- 状态标记: DSHE_L2_PHASE8_EVENT_INTEGRITY_VERIFIED=TRUE
+- 状态标记: DSHE_L2_PHASE8_STATE_MACHINE_STABLE=TRUE
+- 状态标记: DSHE_L2_PHASE8_ALERT_VERIFY_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_RESERVED_ALERT_NO_FALSE_POSITIVE=TRUE
+- 状态标记: DSHE_L2_PHASE8_72H_ONLINE_OBSERVE_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_QUERY_P99_STABLE=TRUE
+- 状态标记: DSHE_L2_PHASE8_INDEX_BLOAT_TREND_VERIFIED=TRUE
+- 状态标记: DSHE_L2_PHASE8_ALERT_SUPPRESSION_1200_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_METRICS_16_CONTINUOUS_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_INDEX_HIT_MARKER_VERIFIED=TRUE
+- 状态标记: DSHE_L2_PHASE8_DSHB_HERMES_RECONCILE_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_DEFECT_V3_4_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE8_OPS_MANUAL_V4_0_5_DONE=TRUE
+- 状态标记: DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE
+- 状态标记: HERMES_AUDIT_READY_WAITING=TRUE
+- 状态标记: JOB_READY=FALSE
+
 ### 2026-10-19 DSHB_V86_RC2_G1_PHASE7_INDEX_SCOPE_DECISION_AND_INDEX_DEPLOY_PLAN_REVISION
 - G1 Phase7索引范围决策与投产预案修订: 三方评审5索引→3核心索引+生产预案修订V1.2+熔断阈值适配+Gate条件更新 (3 new + 3 updated + 3 metadata, MD5 all verified)
   - v86_rc2_dshb_g1_index_scope_review_minutes.md (MD5: 8277DACB) - 三方索引范围评审纪要(HERMES发现5索引76.26%膨胀/三方评审决策3核心索引/DEC-001保留idx_trace/idx_fault/idx_sev_ts/DEC-002延后idx_decision/idx_drill/DEC-003 M-P99-WAL-WRITE采集/3索引性能复测/沙箱500万行/12章1436行)
