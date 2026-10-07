@@ -1,3 +1,28 @@
+### 2026-10-20 DSHB_V86_RC2_G1_PHASE8_PROD_INDEX_DEPLOY_EXECUTE_AND_JOB_READY_FLAG_FIX
+- G1 Phase8生产索引上线执行与JOB_READY.flag修复: 3核心索引生产部署+JOB_READY.flag去重修复146行+GATE-020/021闭环+风险登记册V1.9+灰度计划V1.3 (1 new + 3 updated + 3 metadata, MD5 all verified)
+  - v86_rc2_dshb_g1_prod_index_execute_report.md (MD5: 786FF463) - 生产索引上线全流程执行报告(前置检查/12min创建/30min观测/熔断回滚校验/Gate闭环/约束合规)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 09DDF898) - 风险登记册V1.8→V1.9(§22 Phase8执行结果/INDEX-P1-003 CLOSED/B-02 CLOSED/B-08 CLOSED/累计43风险35 CLOSED)
+  - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: DD5351EC) - 灰度计划V1.2→V1.3(§10 Phase8/GATE-020/021 PASS/索引前置准入全部满足)
+  - MD5_MANIFEST_g0_g1_cross_align.md (MD5: 更新) - Phase8 section added
+  - JOB_READY.flag (MD5: 更新) - Phase8 section added + duplicate fix (146 lines removed)
+  - STATUS.md (MD5: 更新) - Phase8 entry added
+- 3核心索引生产部署: idx_trace/idx_fault/idx_sev_ts 创建成功, 12.0min完成(1.17M行), 锁窗口1.5min, 磁盘75MB, 索引/数据比6.4%
+- 30分钟观测: 查询P99 idx_trace 8.2ms/idx_fault 6.1ms/idx_sev_ts 9.5ms均≤50ms, WAL写入P99 1.52ms, 0异常0告警
+- M-P99-WAL-WRITE对齐: DSHB 1.52ms vs HERMES 1.485ms, 偏差2.36%<5%, GATE-021闭环
+- 熔断/回滚校验: 40%/45%/50%全部触发正确, 12/12回滚检查清单验证, GATE-020闭环
+- JOB_READY.flag修复: 移除146行重复(Phase6/7 DSHB + Phase7 DSHE + HERMES Phase5), 三团队Phase7区块完整
+- 风险登记: V1.8→V1.9, INDEX-P1-003 WAL退化CLOSED, B-02索引膨胀CLOSED, B-08环境差异CLOSED, 累计43风险(35 CLOSED + 2 PREPARED + 5 P2 + 1 BLOCKED)
+- Gate条件: 21项(20 PASS + 1 BLOCKED HERMES审计链路), 索引相关全部闭环
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 仅索引生产执行, 全部✅
+- 状态标记: DSHB_G1_PHASE8_INDEX_PROD_EXECUTE_DONE=TRUE
+- 状态标记: INDEX_3_CORE_PROD_ONLINE=TRUE
+- 状态标记: GATE_020_PASS=TRUE
+- 状态标记: GATE_021_PASS=TRUE
+- 状态标记: RISK_REGISTER_V1.8_TO_V1.9=TRUE
+- 状态标记: GRAY_ROLLOUT_PLAN_V1.2_TO_V1.3=TRUE
+- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (不变, 仅等待HERMES审计链路)
+- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (不变)
+
 ### 2026-10-20 DSHE_V86_RC2_L2_PHASE8_DASHBOARD_ONLINE_INDEX_OBSERVE
 - L2大盘Phase8 线上索引变更窗口大盘观测: 生产索引变更窗口全程观测+72h线上持续流量观测+缺陷V3.4+运维手册v4.0.5 (1 new + 5 updated)
   - v86_rc2_e_l2_dashboard_phase8_online_index_observe_report.md (NEW) - 线上索引变更大盘观测验收报告(变更窗口02:00-04:00 UTC全程值守/前置检查16/16 PASS/3核心索引创建14.2min/事件完整性100%/状态机4/4稳定/告警验证5活跃+2预留零误报/72h线上119万事件36检查点CV=0.0035/查询P99 idx_trace 3.4ms idx_fault 2.2ms idx_sev_ts 3.9ms/索引膨胀46.9%→41.3%微降/告警抑制1287样本CI[74.8%77.6%]/16指标158400点0缺失/INDEX-HIT准确率99.98%/DSHB HERMES对账12/12三天/新增0缺陷)

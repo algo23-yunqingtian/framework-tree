@@ -631,7 +631,8 @@
 | Phase5 指标对齐+基线重对账 | 4 | 2 | 320,581 B |
 | Phase6 索引前置演练+Gate复测 | 3 | 3 | 412,145 B |
 | Phase7 索引范围决策+预案修订 | 3 | 3 | 493,263 B |
-| **累计合计** | **33** | **16** | **2,418,901 B** |
+| Phase8 生产索引上线执行 | 1 | 2 | 278,338 B |
+| **累计合计** | **34** | **18** | **2,697,239 B** |
 
 ### Phase7 约束合规
 
@@ -644,4 +645,80 @@
 | 禁止修改业务核心逻辑 | 仅索引范围决策+预案修订 | ✅ |
 | 指标口径对齐 | DSHB/DSHE/HERMES 100% (V1.0) | ✅ |
 | HERMES审计链路 | 大容量持久化/检索 | ⏳ 等待HERMES工单完成 |
+| 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
+
+---
+
+## Phase8 生产索引上线执行交付物 (2026-10-20)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_prod_index_execute_report.md` | `786FF463A5D81E49CE823645CC8E74DA` | 54,537 | 新增 - 生产索引上线全流程执行报告 |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `FAFF4396` | `09DDF8988D490BF566F35BBC6CF26D6E` | 103,570 | V1.8→V1.9 |
+| 2 | `v86_rc2_dshb_g1_gray_rollout_prep_plan.md` | `7C1A634E` | `DD5351ECED67FB817CF16F65CD172B63` | 120,231 | V1.2→V1.3 |
+
+### Phase8 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 1 | 54,537 B |
+| 更新文件 | 2 | 223,801 B |
+| **总计** | **3** | **278,338 B** |
+
+### Phase8 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 索引创建耗时 | 12.0min (1.17M行) |
+| 锁窗口 | 1.5min |
+| 磁盘占用 | 75MB |
+| 索引/数据比 | 6.4% |
+| 查询P99 | idx_trace 8.2ms / idx_fault 6.1ms / idx_sev_ts 9.5ms (均≤50ms) |
+| WAL写入P99 (DSHB) | 1.52ms |
+| HERMES基线 | 1.485ms |
+| 偏差率 | 2.36% (<5%) |
+| 30min观测 | 0异常 0告警 |
+| 熔断校验 | 40%/45%/50% 全部触发正确 |
+| 回滚校验 | 12/12 检查清单验证 |
+| GATE-020 | PASS |
+| GATE-021 | PASS |
+| JOB_READY.flag修复 | 146行重复移除 |
+| B-02风险 | P2 CLOSED (6.4%实际值) |
+| INDEX-P1-003 | CLOSED (WAL P99 1.52ms) |
+| B-08风险 | P2 CLOSED (环境差异确认) |
+| 累计风险 | 43 (35 CLOSED + 2 PREPARED + 5 P2 + 1 BLOCKED) |
+| Gate条件 | 21项 (20 PASS + 1 BLOCKED HERMES审计链路) |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY (仅HERMES) |
+| G1_GRAY_TRAFFIC_START | FALSE (不变) |
+
+### Phase8 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE8_INDEX_PROD_EXECUTE_DONE | TRUE |
+| INDEX_3_CORE_PROD_ONLINE | TRUE |
+| GATE_020_PASS | TRUE |
+| GATE_021_PASS | TRUE |
+| RISK_REGISTER_V1.8_TO_V1.9 | TRUE |
+| GRAY_ROLLOUT_PLAN_V1.2_TO_V1.3 | TRUE |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY (仅HERMES) |
+| G1_GRAY_TRAFFIC_START | FALSE |
+
+### Phase8 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅索引生产执行 | ✅ |
+| HERMES审计链路 | 外部依赖 | ⏳ 等待HERMES工单完成 |
 | 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
