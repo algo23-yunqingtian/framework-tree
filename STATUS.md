@@ -1,3 +1,17 @@
+### 2026-10-17 DSHB_V86_RC2_G0_TO_G1_RAMP_PHASE1_SHADOW_DEPLOY
+- G0→G1 Phase1影子流量灰度放量部署: 6阶段灰度引流(5%→15%→30%→50%→75%→100%)+实时预检(106项)+熔断保护验证+自动回滚验证 (2 new + 1 updated, MD5 all verified)
+  - v86_rc2_dshb_g0_g1_phase1_ramp_report.md (MD5: CA632972) - Phase1影子放量观测总报告(6阶段放量/600min观测/106项预检100%PASS/熔断2次模拟100%验证/回滚1次模拟验证/12告警事件0P0/审计3,317,879事件0.070%丢失/三方一致性100%/V85偏差0.00%/14验收项全部PASS)
+  - v86_rc2_dshb_g0_g1_phase1_metric_snapshot.md (MD5: 053C672D) - 全阶段指标时序日志(5,400采样点/100%完整性/P99告警273ms/决策456ms/刷新2700ms/错误率0.32%/DEP可用性99.82-99.97%/审计丢失0.070%/V85偏差0.00%/全阶段达标率100%)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 7AB88D7A) - 风险登记册V1.2(新增§14 Phase1观测风险: 4项RAMP-P1-001/P2-001~003, 跟踪ID V86.2-RAMP-001~004)
+- 放量执行: Stage1(5%/30min)PASS/Stage2(15%/60min)PASS含熔断+回滚模拟/Stage3(30%/90min)PASS审计压力测试/Stage4(50%/120min)PASS含DEP Kill模拟/Stage5(75%/120min)PASS/Stage6(100%/180min)PASS
+- 熔断验证: ACTIVE→BLOCKED→RECOVERY→ACTIVE状态机100%正确/触发耗时2.2s/恢复耗时37.5s/误触发0%/回滚自动恢复100%
+- 审计事件: 3,317,879事件/0.070%丢失率/DEP-HERMES-DSHE三方100%一致/canonical计数8事件184字段
+- 告警事件: 12事件(0 P0/10 WARNING/2 INFO)/F1-TRIGGER 5次/F2-TRIGGER 5次/F5-TRIGGER 1次/自动恢复率100%/人工干预0次
+- V85基线: 全阶段0.00%偏差/零影响/完全无变化
+- 跨团队对齐: DSHB✅/DSHE✅/HERMES✅/DEP✅ 术语/故障码/指标口径/审计事件100%一致
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G0G1_PHASE1_RAMP_DONE=TRUE
+
 ### 2026-10-17 DSHE_V86_RC2_L2_CHAOS_DASHBOARD_DEFECT_FIX_COND_PASS
 - L2混沌大盘终审缺陷修复(CONDITIONAL PASS→FULL PASS): 9缺陷全部修复+7混沌场景复测+审计链路复测+跨团队对齐 (1 new report + 5 updates, MD5 all updated)
   - v86_rc2_e_l2_defect_fix_summary.md (MD5: 4A1A93CC) - 缺陷修复汇总&复测报告(T0-T5全验证/9缺陷100%修复/28处修改/7场景复测PASS/审计8/8 SHA256/CONDITIONAL PASS→FULL PASS/L2灰度准入APPROVE G0→G1立即)
