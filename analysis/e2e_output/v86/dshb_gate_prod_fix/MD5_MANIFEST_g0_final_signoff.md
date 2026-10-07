@@ -103,4 +103,4 @@
 |------|-------|
 | BRANCH | feature/v85-chart-template |
 | REMOTE | origin |
-| COMMIT | [待提交] |
+| COMMIT | 3ac8c2c |
