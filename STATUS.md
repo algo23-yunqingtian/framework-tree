@@ -1,3 +1,23 @@
+### 2026-10-19 DSHB_V86_RC2_G1_PHASE6_INDEX_PRE_DEPLOY_AND_GATE_PRE_CHECK_REHEARSAL
+- G1 Phase6复合索引上线前置演练&Gate预检V1.0复测: 索引沙箱演练+生产窗口评估+Gate预检V1.0全量重跑 (3 new + 3 updated + 3 metadata, MD5 all verified)
+  - v86_rc2_dshb_g1_index_deploy_sandbox_drill_report.md (MD5: 96811BFE) - 复合索引变更全流程沙箱演练报告(500万行基准数据/索引创建45min/创建后P99≤12ms 57x提升/回滚DROP INDEX 30min/长期观测B-02/B-03/8/8演练项PASS)
+  - v86_rc2_dshb_g1_index_prod_window_assessment.md (MD5: 4A7C4F07) - 生产环境索引变更窗口评估与执行预案(02:00-04:00 UTC低峰窗口/创建~27min/前置检查16项/执行监控12项/熔断条件10项/回滚预案8项/验证10项)
+  - v86_rc2_dshb_g1_gate_precheck_v10_rerun_report.md (MD5: C59F6256) - V1.0指标口径Gate预检复测报告(106项全量重跑106/106 PASS/8场景SOP 8/8 PASS/LR-001~010 10/10 PASS/告警抑制率Wilson CI验证/4项核心指标兼容性确认)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 1E44BB29) - 风险登记册V1.7(INDEX-P1-001 OPEN→PREPARED/INDEX-P2-001/002阈值定稿/新增INDEX-P1-002缓存溢出+INDEX-P2-003副本延迟/新增GATE-017~020/累计40项风险)
+  - v86_rc2_g1_prod_sop_8scenarios_final.md (MD5: 9C8E7E3B) - 8类故障场景SOP V1.3(附录F: 索引异常应急/3类创建期间异常+3类创建后异常/8项监控告警/LR-006~008索引监控联动)
+  - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: 67646206) - 灰度发布编排V1.1(StageA准入增加索引创建完成+性能验证+Gate预检V1.0复测/GATE-017~020新增/时间线更新)
+- 索引沙箱演练: 500万行数据构造/索引创建45min/P99 685ms→12ms(57x提升)/回滚验证通过/长期观测索引/WAL=12.3%/8/8 PASS
+- 生产窗口评估: 02:00-04:00 UTC低峰窗口/创建~27min/前置检查16项/监控12项/熔断10项/回滚预案8项/验证10项
+- Gate预检V1.0复测: 106/106 PASS(V1.0口径)/8场景SOP 8/8 PASS/LR-001~010 10/10 PASS/告警抑制率≥1200样本Wilson CI≤5pp/4项核心指标兼容
+- 风险更新: INDEX-P1-001转PREPARED(准备就绪待生产执行)/INDEX-P2-001/002阈值20%警告/25%严重/30%熔断定稿/新增INDEX-P1-002+INDEX-P2-003/累计40项风险
+- 新增GATE条件: GATE-017索引演练PASS/GATE-018窗口方案就绪/GATE-019 Gate预检V1.0复测PASS/GATE-020索引生产执行PENDING
+- 存量文档修正: SOP V1.2→V1.3(附录F索引异常应急)/灰度计划V1.0→V1.1(StageA准入增加索引卡点)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 禁止修改业务核心逻辑=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE6_INDEX_GATE_REHEARSAL_DONE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (仍等待HERMES审计链路+索引生产执行)
+- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (阻断项: HERMES审计链路+索引生产执行)
+- 状态标记: INDEX_P1_001_STATUS=PREPARED (准备就绪待生产执行)
+
 ### 2026-10-19 DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY
 - L2大盘Phase6索引监控部署与长周期流量回放验证: 索引监控面板+告警规则+72h长周期回放+缺陷V3.2+运维手册v4.0.3 (2 new + 4 updated, 266 files, 175 MD5)
   - v86_rc2_e_l2_dashboard_phase6_index_monitor_verify_report.md (NEW) - 索引监控大盘验收报告(6项索引监控面板/5项告警规则/大盘索引状态标签/检索页面索引命中标记/索引创建前后性能对比/沙箱告警触发验证/DSHB长期监控指标对齐/10项验收全PASS)

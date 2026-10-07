@@ -464,3 +464,93 @@
 | 指标口径对齐 | DSHB/DSHE/HERMES 100% | ✅ |
 | HERMES审计链路 | 大容量持久化/检索 | ⏳ 等待HERMES工单完成 |
 | 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
+
+---
+
+## Phase6 复合索引上线前置演练 & Gate预检复测交付物 (2026-10-19)
+
+### Phase6 新增交付物
+
+| # | 文件 | MD5 | 大小(B) | 行数 | 类型 |
+|---|------|-----|---------|------|------|
+| 1 | `v86_rc2_dshb_g1_index_deploy_sandbox_drill_report.md` | `96811BFEAC7EB940EFF18FE3886A8934` | 55,949 | 934 | 新增 - 索引沙箱演练&性能验证报告 |
+| 2 | `v86_rc2_dshb_g1_index_prod_window_assessment.md` | `4A7C4F07120CB0F4C7D4D087FA97E30B` | 47,853 | 667 | 新增 - 生产窗口评估+变更执行预案 |
+| 3 | `v86_rc2_dshb_g1_gate_precheck_v10_rerun_report.md` | `C59F62565398C1C1FF546C8B96C30C05` | 53,869 | 709 | 新增 - V1.0口径Gate预检复测报告 |
+
+### Phase6 更新交付物
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 行数 | 版本 |
+|---|------|-------|-------|---------|------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `9FA809A117A1499EFB340213E7CCEA05` | `1E44BB296C6C024F756ACBBA72EA81A6` | 72,880 | 961 | V1.6→V1.7 |
+| 2 | `v86_rc2_g1_prod_sop_8scenarios_final.md` | `58E8E29ABBC41F41C166A83544C62921` | `9C8E7E3B0BC3F3D0A71A5FAEEC600C25` | 91,087 | 1,704 | V1.2→V1.3 |
+| 3 | `v86_rc2_dshb_g1_gray_rollout_prep_plan.md` | — | `676462062E5BB7EEB8C8C3D3FDB05EBC` | 90,507 | 1,090 | V1.0→V1.1 |
+
+### Phase6 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 3 | 157,671 B |
+| 更新文件 | 3 | 254,474 B |
+| **合计** | **6** | **412,145 B** |
+
+### Phase6 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 索引沙箱演练 | 500万行, 8/8演练项全部PASS |
+| 索引创建耗时 | ~45min (500万行), ~27min (117万行) |
+| 索引性能提升 | P99: 685ms→12ms (57x提升) |
+| 索引删除回滚 | DROP INDEX ~30min, 回滚后验证通过 |
+| 生产窗口 | 02:00-04:00 UTC, 低峰~50ev/s |
+| 索引/WAL比值 | 12.3%, 阈值20%警告/25%严重/30%熔断 |
+| Gate预检V1.0复测 | 106/106 PASS (V1.0口径) |
+| 8场景SOP V1.0回放 | 8/8 PASS |
+| LR-001~LR-010 V1.0验证 | 10/10 PASS |
+| 告警抑制率统计模块 | ≥1200样本, Wilson 95% CI≤5pp |
+| INDEX-P1-001状态 | OPEN→PREPARED (准备就绪待执行) |
+| INDEX-P2-001/002阈值 | 已定稿 (20%/25%/30%) |
+| 新增风险 | INDEX-P1-002(缓存溢出)+INDEX-P2-003(副本延迟) |
+| 新增GATE条件 | GATE-017~020 (索引前置准入4项) |
+| 累计风险总数 | 40 (33 CLOSED + 1 PREPARED + 4 P2 + 1 BLOCKED + 1 PENDING) |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY (不变, 仍等待HERMES+索引执行) |
+| G1_GRAY_TRAFFIC_START | FALSE (不变, 仍等待HERMES+索引) |
+
+### Phase6 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE6_INDEX_GATE_REHEARSAL_DONE | TRUE |
+| INDEX_DEPLOY_SANDBOX_DRILL_DONE | TRUE |
+| INDEX_PROD_WINDOW_ASSESSMENT_DONE | TRUE |
+| GATE_PRECHECK_V1.0_RERUN_DONE | TRUE |
+| INDEX_P1_001_STATUS | PREPARED |
+| GATE_017_INDEX_DRILL_PASS | TRUE |
+| GATE_018_WINDOW_PLAN_READY | TRUE |
+| GATE_019_GATE_V1.0_RERUN_PASS | TRUE |
+| GATE_020_INDEX_PROD_EXECUTION | PENDING |
+
+### 累计交付物汇总 (G0→G1全流程)
+
+| 阶段 | 新增文件 | 更新文件 | 大小合计 |
+|------|---------|---------|---------|
+| 跨团队对齐 (V1.0) | 6 | 3 | 300,197 B |
+| Phase1 影子放量 | 2 | 1 | 85,449 B |
+| Phase2 长稳+故障 | 5 | 1 | 169,659 B |
+| Phase3 条件解除+基线冻结 | 6 | 1 | 243,521 B |
+| Phase4 灰度前置准备 | 4 | 2 | 394,086 B |
+| Phase5 指标对齐+基线重对账 | 4 | 2 | 320,581 B |
+| Phase6 索引前置演练+Gate复测 | 3 | 3 | 412,145 B |
+| **累计合计** | **30** | **13** | **1,925,638 B** |
+
+### Phase6 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增独立文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅索引DDL+监控配置 | ✅ |
+| 指标口径对齐 | DSHB/DSHE/HERMES 100% (V1.0) | ✅ |
+| HERMES审计链路 | 大容量持久化/检索 | ⏳ 等待HERMES工单完成 |
+| 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
