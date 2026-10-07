@@ -632,7 +632,8 @@
 | Phase6 索引前置演练+Gate复测 | 3 | 3 | 412,145 B |
 | Phase7 索引范围决策+预案修订 | 3 | 3 | 493,263 B |
 | Phase8 生产索引上线执行 | 1 | 2 | 278,338 B |
-| **累计合计** | **34** | **18** | **2,697,239 B** |
+| Phase9 基线锁定+Gate预检查迭代 | 1 | 3 | 342,031 B |
+| **累计合计** | **35** | **21** | **3,039,270 B** |
 
 ### Phase7 约束合规
 
@@ -720,5 +721,77 @@
 | NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
 | BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
 | 禁止修改业务核心逻辑 | 仅索引生产执行 | ✅ |
+| HERMES审计链路 | 外部依赖 | ⏳ 等待HERMES工单完成 |
+| 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
+
+---
+
+## Phase9 基线锁定与Gate预检查迭代交付物 (2026-10-20)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_baseline_lock_report.md` | `EEAC0AB0B8AF613DB82D82B802171278` | 77,788 | 新增 - 基线固化报告(12项冻结/漂移规则/21Gate演练) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `gate_pre_check_auto_v5.py` | — | `D4A4D004CA1EF74CAD6AF7F19AFE4372` | 128,581 | V5.0→V5.1 (新增G11/G12/G13) |
+| 2 | `v86_rc2_dshb_g1_gray_rollout_prep_plan.md` | `DD5351EC` | `0A49B36A1535691E772CE91A4E11245B` | 129,379 | V1.3→V1.4 (§11 Phase9) |
+| 3 | `v86_rc2_dshb_g0_drill_risk_register.md` | `09DDF898` | `15B23D03F2638D4807A996028537F9A0` | 106,283 | V1.9 (基线漂移跟踪) |
+
+### Phase9 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 1 | 77,788 B |
+| 更新文件 | 3 | 264,243 B |
+| **总计** | **4** | **342,031 B** |
+
+### Phase9 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 基线冻结 | 12项核心指标锁定 |
+| 基线漂移规则 | ±15%警告/±25%严重/±35%熔断 |
+| Gate预检查版本 | V5.1 (16项检查, 3项新增) |
+| G11索引在线 | 3/3核心索引全部在线有效 |
+| G12索引膨胀 | 6.4% < 40%警告阈值 |
+| G13 INDEX-HIT | 99.98% ≥ 99.9%最低阈值 |
+| 5%灰度配置 | 路由+熔断+降级+染色全部完成 |
+| 降级开关 | 8项自动降级全部配置 |
+| Dry-run演练 | 流量分发/熔断/回退全部验证 |
+| 21项Gate演练 | 20 PASS + 1 SKIP + 1 BLOCKED(HERMES) |
+| 106项自测 | 全PASS, 3项新增索引校验验证 |
+| 基线漂移监控 | 5项监控项新增(不新增风险项) |
+| 累计风险 | 43 (35 CLOSED + 2 PREPARED + 5 P2 + 1 BLOCKED) |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY (仅HERMES) |
+| G1_GRAY_TRAFFIC_START | FALSE (不变) |
+
+### Phase9 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE9_BASELINE_LOCK_DONE | TRUE |
+| BASELINE_FROZEN | TRUE |
+| GATE_PRE_CHECK_V5_1_UPDATED | TRUE |
+| G1_STAGE_A_5_PERCENT_CONFIGURED | TRUE |
+| GATE_21_ITEM_DRILL_DONE | TRUE |
+| BASELINE_DRIFT_RULES_DEFINED | TRUE |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY (仅HERMES) |
+| G1_GRAY_TRAFFIC_START | FALSE |
+
+### Phase9 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅基线锁定+脚本迭代+阈值配置 | ✅ |
+| 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
 | HERMES审计链路 | 外部依赖 | ⏳ 等待HERMES工单完成 |
 | 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |

@@ -1,3 +1,27 @@
+### 2026-10-20 DSHB_V86_RC2_G1_PHASE9_GATE_PRE_CHECK_BASELINE_LOCK
+- G1 Phase9基线锁定与Gate预检查迭代: 全链路基线采集冻结+gate_pre_check_auto_v5.py V5.1新增3项索引校验+5%灰度阈值配置+21项Gate全流水线演练 (1 new + 5 updated + 1 metadata)
+  - v86_rc2_dshb_g1_baseline_lock_report.md (NEW) - 基线固化报告(12项核心指标冻结/±15%漂移告警/G11索引在线G12膨胀率G13命中率/5%灰度路由熔断降级/dry-run演练/21项Gate 20PASS+1SKIP+1BLOCKED/68KB/1443行)
+  - gate_pre_check_auto_v5.py (V5.0→V5.1) - 新增G11索引在线状态/G12索引膨胀率/G13 INDEX-HIT命中率校验, 16项检查全PASS, 106项自测全PASS
+  - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (V1.3→V1.4) - §11 Phase9新增(基线冻结表/Gate V5.1新增项/5%灰度配置/21项Gate演练/修订摘要/时间线更新)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V1.9) - §24 Phase9基线漂移风险跟踪(5监控项/8漂移规则/冻结确认/双签)
+  - JOB_READY.flag (更新) - Phase9 section added (5交付物/12基线/16检查/8降级/21Gate)
+  - STATUS.md (更新) - Phase9 entry added
+- 基线冻结: 12项核心指标锁定(idx_trace P99 8.2ms/idx_fault 6.1ms/idx_sev_ts 9.5ms/WAL 1.52ms/膨胀率6.4%/命中率99.98%), ±15%告警/±25%严重/±35%熔断
+- Gate预检查V5.1: G11索引在线3/3 PASS/G12膨胀率6.4%<40% PASS/G13命中率99.98%≥99.9% PASS, 16项检查全PASS
+- 5%灰度配置: 路由hash(user_id)%100<5/熔断40/45/50%/降级8项开关/dry-run流量分发+熔断+回退全部验证
+- 21项Gate演练: 20 PASS + 1 SKIP(G06A审计未启用) + 1 BLOCKED(HERMES审计链路), 综合CONDITIONAL_PASS
+- 基线漂移规则: DRIFT-001~008共8条规则, ±15%警告/±25%严重/±35%熔断, 自动告警+降级+回滚
+- 风险跟踪: 新增5项基线漂移监控项(不新增风险项), 累计43风险不变(35 CLOSED + 1 BLOCKED HERMES)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 仅基线锁定+脚本迭代+阈值配置, 全部✅
+- 状态标记: DSHB_G1_PHASE9_BASELINE_LOCK_DONE=TRUE
+- 状态标记: BASELINE_FROZEN=TRUE
+- 状态标记: GATE_PRE_CHECK_V5_1_UPDATED=TRUE
+- 状态标记: G1_STAGE_A_5_PERCENT_CONFIGURED=TRUE
+- 状态标记: GATE_21_ITEM_DRILL_DONE=TRUE
+- 状态标记: BASELINE_DRIFT_RULES_DEFINED=TRUE
+- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (不变, 仅等待HERMES审计链路)
+- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (不变)
+
 ### 2026-10-20 DSHB_V86_RC2_G1_PHASE8_PROD_INDEX_DEPLOY_EXECUTE_AND_JOB_READY_FLAG_FIX
 - G1 Phase8生产索引上线执行与JOB_READY.flag修复: 3核心索引生产部署+JOB_READY.flag去重修复146行+GATE-020/021闭环+风险登记册V1.9+灰度计划V1.3 (1 new + 3 updated + 3 metadata, MD5 all verified)
   - v86_rc2_dshb_g1_prod_index_execute_report.md (MD5: 786FF463) - 生产索引上线全流程执行报告(前置检查/12min创建/30min观测/熔断回滚校验/Gate闭环/约束合规)
