@@ -24,18 +24,34 @@ import time
 DEFAULT_DB = "/var/lib/hermes/gray_gate_events.db"
 
 # 5 个复合索引：覆盖审计追溯的全部主要查询模式
-INDEXES = {
+# Phase7 分层：3 核心（首次上线必建）+ 2 扩展（延后启用，控制 B-02 膨胀风险）
+# Phase8 补充：--indexes 参数与 DSHB《G1 索引生产执行预案 V1.2》§5.2 命令接口兼容
+CORE_INDEXES = {
     # 主追溯：按 run_id + 时间窗 + 序列（Phase4 故障溯源最高频）
     "idx_trace": "CREATE INDEX IF NOT EXISTS idx_trace ON gray_gate_events(run_id, ts, seq)",
     # 故障码检索：C1/C2/CF01 等（当前无索引时是线性扫描退化点）
     "idx_fault": "CREATE INDEX IF NOT EXISTS idx_fault ON gray_gate_events(fault_code, ts)",
     # 严重度检索：CRITICAL 告警筛选
     "idx_sev_ts": "CREATE INDEX IF NOT EXISTS idx_sev_ts ON gray_gate_events(severity, ts)",
-    # 决策类型：ROLLBACK/FUSE 决策追溯
+}
+
+# 扩展索引（Phase7 延后启用）：查询退化风险高，且 5 索引整体膨胀逼近 50% 熔断线
+EXTRA_INDEXES = {
+    # 决策类型：ROLLBACK/FUSE 决策追溯（选择性通常 >15%，低收益高成本）
     "idx_decision": "CREATE INDEX IF NOT EXISTS idx_decision ON gray_gate_events(decision, ts)",
-    # 演练标记：gray/chaos/emergency/normal 分流
+    # 演练标记：gray/chaos/emergency/normal 分流（选择性通常 >25%，基本无效）
     "idx_drill": "CREATE INDEX IF NOT EXISTS idx_drill ON gray_gate_events(drill_tag, ts)",
 }
+
+
+def active_indexes(enable_extra=False):
+    """按分层返回生效索引字典。默认仅 3 核心；enable_extra=True 返回全部 5 个。"""
+    return dict(CORE_INDEXES) if not enable_extra else dict(CORE_INDEXES, **EXTRA_INDEXES)
+
+
+def scope_label(enable_extra=False):
+    """分层范围的可读标签，用于所有模式的输出前缀。"""
+    return "3核心+2扩展" if enable_extra else "3核心"
 
 # 索引创建超时（秒）。超过则中断并提示改用低峰窗口或分批
 TIMEOUT_SECONDS = 120
@@ -71,8 +87,9 @@ def table_row_count(conn):
     return conn.execute(f"SELECT COUNT(*) FROM {TABLE}").fetchone()[0]
 
 
-def do_check(db):
+def do_check(db, idx=None):
     """预检查（只读）"""
+    idx = idx or active_indexes()
     print("=" * 68)
     print("Phase5 T2 索引上线预检查")
     print("=" * 68)
@@ -119,7 +136,7 @@ def do_check(db):
     # 6. 已有索引
     have = existing_indexes(conn)
     print(f"  已有索引        : {sorted(have) if have else '(无)'}")
-    todo = [k for k in INDEXES if k not in have]
+    todo = [k for k in idx if k not in have]
     print(f"  待创建          : {todo if todo else '(全部已存在)'}")
 
     # 7. 锁占用检测
@@ -155,8 +172,9 @@ def _has_wal(conn):
     return conn.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
 
 
-def do_create(db):
+def do_create(db, idx=None):
     """创建索引（含超时保护）"""
+    idx = idx or active_indexes()
     print("=" * 68)
     print("Phase5 T2 复合索引创建")
     print("=" * 68)
@@ -179,7 +197,7 @@ def do_create(db):
     print(f"  回滚点已记录: {rollback_file}")
 
     ok = fail = 0
-    for name, sql in INDEXES.items():
+    for name, sql in idx.items():
         t0 = time.perf_counter()
         try:
             conn.execute(sql)
@@ -211,8 +229,9 @@ def do_create(db):
     return 0 if fail == 0 else 1
 
 
-def do_verify(db):
+def do_verify(db, idx=None):
     """验证索引生效"""
+    idx = idx or active_indexes()
     print("=" * 68)
     print("Phase5 T2 索引生效验证 (EXPLAIN QUERY PLAN)")
     print("=" * 68)
@@ -223,7 +242,12 @@ def do_verify(db):
     n = table_row_count(conn)
     print(f"  当前行数: {n:,}")
     all_ok = True
-    for name, (sql, expect) in VERIFY_QUERIES.items():
+    # 仅验证生效范围内的索引（Phase7 分层：3 核心范围下不验证 idx_decision/idx_drill）
+    scope_queries = {k: v for k, v in VERIFY_QUERIES.items() if k in idx}
+    skipped = sorted(set(VERIFY_QUERIES) - set(idx))
+    if skipped:
+        print(f"  ℹ️ 跳过范围外索引: {skipped}")
+    for name, (sql, expect) in scope_queries.items():
         plan = conn.execute("EXPLAIN QUERY PLAN " + sql).fetchall()
         detail = " ".join(str(row[3]) for row in plan)
         hit = expect in detail
@@ -239,8 +263,9 @@ def do_verify(db):
     return 0 if all_ok else 1
 
 
-def do_rollback(db):
-    """回滚：DROP 全部 idx_* 索引"""
+def do_rollback(db, idx=None):
+    """回滚：DROP 范围内全部 idx_* 索引"""
+    idx = idx or active_indexes()
     print("=" * 68)
     print("Phase5 T2 索引回滚")
     print("=" * 68)
@@ -272,7 +297,7 @@ def _page_count(conn):
     return r[0] if r else 0
 
 
-def do_size(db):
+def do_size(db, idx=None):
     """输出索引空间占用（B-02 膨胀监控）。
 
     测量方法（隔离副本法）:
@@ -282,6 +307,7 @@ def do_size(db):
       分别在副本上「无索引 / 逐个加索引」测量 page_count 差值，
       得到每个索引的精确静态空间占用，再按目标行数线性外推。
     """
+    idx = idx or active_indexes()
     print("=" * 68)
     print("Phase5 T2 索引空间占用（B-02 膨胀监控，隔离副本法）")
     print("=" * 68)
@@ -316,7 +342,7 @@ def do_size(db):
         result = {"target_rows": n, "page_size": page_size,
                   "baseline_pages": base_pages, "indexes": {}, "index_total_pages": 0}
         prev_pages = base_pages
-        for name, sql in INDEXES.items():
+        for name, sql in idx.items():
             c2.execute(sql)
             c2.commit()
             now_pages = _page_count(c2)
@@ -366,8 +392,15 @@ def do_size(db):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Phase5 复合索引上线脚本")
+    ap = argparse.ArgumentParser(description="Phase5 复合索引上线脚本（Phase7 分层：3 核心 + 2 扩展）")
     ap.add_argument("--db", default=DEFAULT_DB, help="SQLite DB 路径")
+    ap.add_argument("--enable-extra-index", action="store_true",
+                    help="额外创建/验证/回滚 2 个扩展索引（idx_decision / idx_drill）；"
+                         "默认关闭以控制 B-02 膨胀风险")
+    ap.add_argument("--indexes", default=None,
+                    help="显式指定索引范围（Phase8 与 DSHB 生产执行预案 V1.2 命令接口兼容）。"
+                         "示例：--indexes idx_trace,idx_fault,idx_sev_ts。"
+                         "省略=默认仅 3 核心；含 idx_decision 或 idx_drill=等价于 --enable-extra-index")
     m = ap.add_mutually_exclusive_group(required=True)
     m.add_argument("--check", action="store_true")
     m.add_argument("--create", action="store_true")
@@ -375,11 +408,37 @@ def main():
     m.add_argument("--rollback", action="store_true")
     m.add_argument("--size", action="store_true")
     a = ap.parse_args()
+
+    # ---- Phase8 接口对齐：--indexes 显式范围 → 归一化为 enable_extra_index 开关 ----
+    # 背景：DSHB《G1 索引生产执行预案 V1.2》§5.2 使用
+    #       `--create --indexes idx_trace,idx_fault,idx_sev_ts` 命令形式；
+    #       Phase7 改造后默认即为 3 核心，故 3 核心形式为 no-op（兼容不报错）。
+    # 注意：必须写 a.enable_extra_index（argparse 自动生成的属性名，连字符转下划线），
+    #       误写成 a.extra 会导致「参数被接受但语义静默失效」——比直接报错更危险，
+    #       生产窗口内不会产生任何告警（Phase8 实测踩坑，已修复）。
+    if a.indexes:
+        wanted = [x.strip() for x in a.indexes.split(",") if x.strip()]
+        unknown = [x for x in wanted if x not in CORE_INDEXES and x not in EXTRA_INDEXES]
+        if unknown:
+            print(f"  ❌ --indexes 含未知索引: {unknown}")
+            print(f"     合法索引: {sorted(CORE_INDEXES) + sorted(EXTRA_INDEXES)}")
+            print(f"     中止：索引范围无效，避免生产窗口内静默执行错误范围")
+            sys.exit(2)
+        hit_extra = [x for x in wanted if x in EXTRA_INDEXES]
+        if hit_extra:
+            a.enable_extra_index = True
+            print(f"  ℹ️ --indexes 含扩展索引 {hit_extra}，等价于 --enable-extra-index（范围扩展为 5 索引）")
+        else:
+            print(f"  ℹ️ --indexes={','.join(wanted)} 与默认 3 核心范围一致（no-op，未启用扩展索引）")
+
     fn = {"check": do_check, "create": do_create, "verify": do_verify,
           "rollback": do_rollback, "size": do_size}
     key = [k for k, v in {"check": a.check, "create": a.create, "verify": a.verify,
                           "rollback": a.rollback, "size": a.size}.items() if v][0]
-    sys.exit(fn[key](a.db))
+    idx = active_indexes(a.enable_extra_index)
+    print(f"  ℹ️ 生效范围: {scope_label(a.enable_extra_index)} "
+          f"({', '.join(sorted(idx))})")
+    sys.exit(fn[key](a.db, idx))
 
 
 if __name__ == "__main__":

@@ -317,7 +317,51 @@ python3 ~/.hermes/scripts/phase_snapshot.py --stage "StageX" --output phase_snap
 
 ---
 
-## 8. 复合索引运维（Phase5 新增）
+## 8. 复合索引运维（Phase5 新增 / Phase7 分层更新）
+### 8.0 索引分层（Phase7 新增 / Phase8 生产校准）
+
+灰度环境索引分为**两层**，由 `phase5_index_deploy.py` 统一管理：
+
+| 层 | 索引 | 首次上线 | 查询用途 |
+|----|------|---------|---------|
+| **基础（3 核心）** | `idx_trace` / `idx_fault` / `idx_sev_ts` | ✅ 必须 | 审计追溯 / 故障回放 / 链路追踪 |
+| **扩展（2 个）** | `idx_decision` / `idx_drill` | ⏸️ 延后 | 决策筛选 / 演练复盘 |
+
+```bash
+python3 phase5_index_deploy.py --db <DB> --create                      # 仅 3 核心（默认）
+python3 phase5_index_deploy.py --db <DB> --create --enable-extra-index # 5 索引
+python3 phase5_index_deploy.py --db <DB> --create --indexes idx_trace,idx_fault,idx_sev_ts  # Phase8 兼容形式
+```
+
+#### 8.0.1 膨胀数据（三源实测，Phase8 校准）
+
+| 来源 | 样本 | 3 核心 | 5 索引 | 3 核心比值 |
+|------|------|--------|--------|-----------|
+| Phase7 沙箱（10 万行） | 100,000 | 9.671 MB | 16.22 MB | **62.46%**（小样本假象） |
+| Phase7 外推 | 500 万行 | 483.53 MB | — | 62.46%（❌ 错误外推） |
+| **HERMES 沙箱（500 万行）** | 5,000,000 | **360.464 MB** | **591.188 MB** | **38.63%** |
+| **DSHE 生产实测** | 1,171,856 | **89.7 MB** | — | **46.9%**（72h 微降至 41.3%） |
+
+> **🔴 Phase8 更正**: Phase7 的 62.46% 与 483.53MB 为**小样本假象**。
+> 三源实测比值在 **38.63%~46.9%** 区间，均低于 **50% 熔断线**，3 核心方案安全。
+> **索引膨胀比值不可跨样本规模与数据分布外推**（见追溯规范 §7.9.1）。
+> 生产 46.9% 距 40% 警告线之上、50% 熔断线之下，**B-02 为 MITIGATED（受控缓解）而非 CLOSED**，
+> 须按 §9.2 持续监控。
+
+#### 8.0.2 膨胀监控阈值（四档，Phase8 生产校准后调整）
+
+| 区间 | 状态 | 动作 | 频率 |
+|------|------|------|------|
+| < 15% | 🟢 正常 | 常规巡检 | 每周 |
+| 15% ~ 30% | 🟡 可接受 | 记录趋势 | 每两周 |
+| 30% ~ 45% | 🟠 警告 | 每 6 小时巡检，准备精简方案 | 每 6 小时 |
+| **45% ~ 50%** | 🔴 **严重（生产首即落此区间）** | **立即评估索引范围，准备回滚** | **每日 + 实时** |
+| **> 50%** | ⛔ **熔断** | **立即回滚**（约 15 min） | — |
+
+> **⚠️ B-16 阈值建议**: DSHB 预案 V1.2 设严重线 45%，生产实测首即 46.9%。
+> 建议严重线调整为 **48%**，与实测基线 + 微降趋势对齐。
+
+### 8.1 创建复合索引
 
 > **对应风险**: B-01 检索线性扫描退化（P1）、B-02 索引空间膨胀（P2→P1）
 > **配套脚本**: `phase5_index_deploy.py`、`phase5_index_baseline_validator.py`
@@ -417,7 +461,137 @@ sqlite3 $DB "PRAGMA wal_checkpoint(PASSIVE); PRAGMA wal_pages; PRAGMA page_count
 
 ---
 
-## 附录 A：灰度环境必备索引
+## 9. 生产索引上线观测与审计检索异常排查（Phase8 新增）
+
+> **对应工单**: `HERMES_V86_RC2_HERMES_PHASE8_ONLINE_INDEX_TRACE_AUDIT_VERIFY`
+> **上游预案**: DSHB《G1 索引生产执行预案 V1.2》（02:00–04:00 UTC 窗口）
+> **生产实测**: DSHE Phase8《L2 大盘线上索引变更观测》commit `1ed048a`
+> **配套报告**: `v86_rc2_hermes_phase8_online_audit_index_verify_report.md`
+> **对应风险**: B-02 索引膨胀（生产实测 46.9%，处严重区间）、B-16 熔断阈值偏紧
+
+### 9.1 生产变更窗口执行清单（02:00–04:00 UTC）
+
+> **命令接口规范（Phase8 更新）**: 生产命令统一使用 `--indexes` 参数（与 DSHB 预案 V1.2 对齐）。
+> Phase8 已新增该参数的兼容实现，省略时等价于默认 3 核心。
+> **DSHE 生产实测已验证该命令可正常执行**（创建 3 核心耗时 16.0 min，含 ANALYZE + checkpoint）。
+
+```bash
+SCRIPT=/var/lib/hermes/scripts/phase5_index_deploy.py
+DB=/var/lib/hermes/gray_gate_events.db
+IDX='idx_trace,idx_fault,idx_sev_ts'    # 仅 3 核心，不含 idx_decision/idx_drill
+
+# ---- 窗口 T-10min：前置检查 ----
+python3 $SCRIPT --db $DB --check                          # 期望 exit 0
+python3 $SCRIPT --db $DB --size                           # 记录基线比值
+sqlite3 $DB "PRAGMA integrity_check; SELECT COUNT(*) FROM gray_gate_events;"
+
+# ---- 窗口 T+0min：创建 3 核心索引 ----
+python3 $SCRIPT --db $DB --create --indexes $IDX          # 期望 exit 0
+# 输出 "ℹ️ --indexes=... 与默认 3 核心范围一致（no-op）" 为预期行为，无需干预
+# 生产实测: idx_trace 6min → idx_fault 3min → idx_sev_ts 5min + ANALYZE/checkpoint 1min = 16.0min
+
+# ---- 窗口 T+15min：命中验证 + 存储复核 ----
+python3 $SCRIPT --db $DB --verify --indexes $IDX          # 期望 3/3 命中
+python3 $SCRIPT --db $DB --size --indexes $IDX            # 生产实测 ~46.9%
+
+# ---- 窗口 T+20min：审计追溯链路回归（3 条核心查询，均带时间窗）----
+sqlite3 $DB "SELECT COUNT(*) FROM gray_gate_events WHERE run_id='<当前run>' AND ts > '<窗口起点>' ORDER BY seq;"
+sqlite3 $DB "SELECT event_id, ts FROM gray_gate_events WHERE fault_code='C1' AND ts > '<窗口起点>' LIMIT 100;"
+sqlite3 $DB "SELECT event_id, ts FROM gray_gate_events WHERE severity='CRITICAL' AND ts > '<窗口起点>' LIMIT 100;"
+
+# ---- 窗口 T+25min：回滚可逆性演练 ----
+python3 $SCRIPT --db $DB --rollback --indexes $IDX        # 期望 exit 0 + integrity=ok + 行数不变
+python3 $SCRIPT --db $DB --create --indexes $IDX          # 重建
+python3 $SCRIPT --db $DB --verify --indexes $IDX          # 确认恢复 3/3
+```
+
+### 9.2 观测指标与判定阈值
+
+| 指标 | 观测方式 | 阈值 | 生产实测（DSHE Phase8） | 触发动作 |
+|------|---------|------|----------------------|---------|
+| 索引/数据比值 | `--size` | <15% 正常 / 15~30% 可接受 / 30~40% 警告 / **40~45% 观察 / 45~50% 严重** / **>50% 熔断** | **46.9%**（72h 微降至 41.3%） | 超 45% 评估；>50% 回滚 |
+| WAL 写入 P99 | `M-P99-WAL-WRITE` | **≤10ms 警告 / ≤20ms 严重 / ≤50ms 熔断** | **3.1ms**（上线前 1.485ms，+1.615ms） | 超 10ms 检查 fsync 抖动 |
+| 查询 P99 | 各索引查询 | ≤50ms（DSHB 目标） | idx_trace **3.4ms** / idx_fault **2.2ms** / idx_sev_ts **3.9ms** | 超 100ms 触发 AL-002 |
+| 索引创建耗时 | `--create` 输出 | ~12 min（DSHB 预估 117 万行） | **16.0 min（+33.3%）** | 超 120s/索引告警不中断 |
+| 回滚耗时 | `--rollback` 输出 | ~15 min | — | 超时立即上报 |
+| 审计事件丢失 | `integrity_check` + 行数校验 | 0 丢失 | **100% 完整** | 任何丢失立即中止窗口 |
+
+> **⚠️ 阈值调整建议（B-16）**: DSHB 预案 V1.2 原设「40 警告 / 45 严重 / 50 熔断」。
+> 生产实测首即 46.9%，**已落严重区间**。建议将严重线从 45% 调整为 **48%**，
+> 与 117 万行实测基线 + 72h 微降趋势（46.9%→41.3%）对齐，避免误熔断。
+> **B-02 不关闭**，须持续监控。
+
+### 9.3 审计检索异常排查四步法
+
+**症状**: 索引上线后审计追溯查询变慢或返回异常。
+
+```bash
+# 步骤1：确认索引是否命中（区分「索引失效」与「索引命中但慢」）
+python3 $SCRIPT --db $DB --verify --indexes $IDX
+#   输出「USING INDEX/COVERING INDEX」= 已命中
+#   输出「SCAN gray_gate_events」      = 索引失效，转步骤2
+
+# 步骤2：索引失效排查
+sqlite3 $DB "ANALYZE; EXPLAIN QUERY PLAN SELECT * FROM gray_gate_events WHERE run_id='x';"
+sqlite3 $DB "SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'idx_%';"
+
+# 步骤3：索引命中但慢 → 先查查询形态，再查选择性（顺序不可颠倒）
+#   判定A — 查询是否带时间窗切片？
+#     带时间窗 → 正常，生产实测 248~383× 收益，应 <5ms
+#     不带时间窗 → 转判定B
+#   判定B — 选择性（按追溯规范 §7.9.2 决策矩阵，仅适用全量物化）：
+#     <1%    → 索引应生效，收紧 ts 时间窗 ≤1 小时
+#     1~15%  → 索引收益有限，属正常
+#     >15%   → **索引净负收益，属预期行为，非故障** → 改用时间窗切片或离线归档
+
+# 步骤4：确认审计链路完整性（索引变更不应影响）
+sqlite3 $DB "PRAGMA integrity_check; SELECT COUNT(*) FROM gray_gate_events;
+             PRAGMA table_info(gray_gate_events);"
+#   三项校验：integrity=ok / 行数与回滚前一致 / 22 列结构未变
+```
+
+> **Phase8 关键教训（两步排查顺序不可颠倒）**:
+> 1. **先查查询形态（是否带时间窗），再查选择性** —— DSHE 生产实测显示带时间窗查询
+>    `idx_fault` 383.2×、`idx_sev_ts` 248.0× 收益，而 HERMES 沙箱的全量物化查询测出「净负收益」。
+>    **同一索引、同一表，因查询形态不同结论完全相反**。
+> 2. **「索引命中 ≠ 查询更快」仅适用于全量物化查询**。
+>    遇到「有索引却更慢」时，**不要先怀疑索引失效**，先确认查询是否带时间窗切片。
+
+### 9.4 生产上线后持续监控（DSHE 72h 实测基线）
+
+| # | 事项 | 生产实测基线 |
+|---|------|-------------|
+| 1 | 72h 线上事件量 | 1,194,312 事件 / 36 检查点 |
+| 2 | 指标稳定性 | CV = 0.0035（极低方差） |
+| 3 | 索引膨胀趋势 | **46.9% → 41.3%（微降）** |
+| 4 | 告警抑制率 | 1,287 样本 / 76.2% / Wilson CI [74.8%, 77.6%] |
+| 5 | INDEX-HIT 准确率 | 99.98% |
+| 6 | 16 指标连续性 | 158,400 点 / 0 缺失 |
+| 7 | DSHB/HERMES 跨团队对账 | **12/12 对齐（100%）** |
+| 8 | 新增缺陷 | **0** |
+| 9 | 状态机 | 4/4 稳定 |
+| 10 | 告警验证 | 5 活跃（3 核心）+ 2 预留零误报 |
+
+### 9.5 延后索引迭代决策（G1 灰度 StageB 20% 后）
+
+| 项 | 决策依据 |
+|----|---------|
+| **禁止依据** | ❌ Phase7 的「149× 退化」结论（沙箱分布特有，不可外推） |
+| **禁止依据** | ❌ HERMES 沙箱的「低选择性净负收益」结论（仅适用全量物化查询） |
+| **正确依据** | ✅ 生产真实查询模式统计（混合查询占 85%，均带时间窗） |
+| **正确依据** | ✅ 生产真实字段匹配占比 |
+| **正确依据** | ✅ 启用后对索引/数据比值的影响（当前 41.3%，启用 2 索引将升至 ~63%，逼近 50% 熔断线） |
+| **建议时点** | 待比值降至 40% 以下再评估，或先统一表结构定义（HERMES 多独立索引 vs DSHB 单复合索引） |
+
+### 9.6 与 §8 的关系
+
+- **§8** 定义索引分层（3 核心 + 2 扩展）与分层运维流程，适用于**灰度/沙箱环境**
+- **§9** 定义**生产变更窗口**内的观测、验证与异常排查，是 §8 在生产环境的执行补充
+- 两者共用 `phase5_index_deploy.py` 的 5 个模式，§9 统一使用 `--indexes` 参数形式
+
+---
+
+## 附录 A：灰度环境索引（Phase7 分层：3 核心 + 2 扩展）
 
 ```sql
 -- A1: 主追溯索引（run_id + 时间 + 序列）
@@ -455,4 +629,16 @@ sqlite3 gray_gate_events.db ".restore 'gray_gate_events.db.bak.阶段开始前'"
 
 ---
 
-*本 SOP 由 HERMES 生成于 V86-RC2 Phase4 灰度审计批次，基于实际灰度验证数据编制。*
+**版本记录**:
+- **v1.0**（Phase4）: 灰度审计 SOP 首版，含 WAL 审计 + 异常排查三步法
+- **v1.1**（Phase5）: 新增 §8 复合索引运维、异常排查第四步「索引退化」
+- **v1.2**（Phase7）: §8 索引分层（3 核心 + 2 扩展）、`--enable-extra-index` 开关、延后索引退化风险、四档膨胀阈值、Phase5 膨胀数据更正（76.26% → 104.76%）
+- **v1.3**（Phase8）: 新增 §9 生产索引上线观测（02:00–04:00 UTC 窗口清单、`--indexes` 命令规范、观测阈值 + DSHE 生产实测基线、检索异常排查四步法、持续监控 10 项、延后索引迭代决策依据）、§8.0 三源实测膨胀校准、四档阈值新增「45~50% 严重」区间、B-16 阈值调整建议
+
+---
+
+*本 SOP 由 HERMES 生成于 V86-RC2 Phase4 灰度审计批次，基于实际灰度验证数据编制。
+v1.3（Phase8）关键教训：① 膨胀比值不可跨样本规模与数据分布外推；
+② 同一索引因查询形态不同结论完全相反（沙箱全量物化净负收益 vs 生产带时间窗 248~383× 收益）；
+③ 排查顺序不可颠倒——先查查询形态再查选择性；
+④ 「参数被接受但语义静默失效」比直接报错更危险。*
