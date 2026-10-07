@@ -554,3 +554,94 @@
 | 指标口径对齐 | DSHB/DSHE/HERMES 100% (V1.0) | ✅ |
 | HERMES审计链路 | 大容量持久化/检索 | ⏳ 等待HERMES工单完成 |
 | 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
+
+---
+
+## Phase7 索引范围决策 & 生产预案修订交付物 (2026-10-19)
+
+### Phase7 新增交付物
+
+| # | 文件 | MD5 | 大小(B) | 行数 | 类型 |
+|---|------|-----|---------|------|------|
+| 1 | `v86_rc2_dshb_g1_index_scope_review_minutes.md` | `8277DACB3EA43B103E77071B97436E78` | 60,593 | 1,436 | 新增 - 三方索引范围评审纪要 |
+| 2 | `v86_rc2_dshb_g1_3index_vs_5index_perf_compare_report.md` | `FC7301D951B58E66D876D5305C415F73` | 53,451 | 1,239 | 新增 - 3索引/5索引性能对比报告 |
+| 3 | `v86_rc2_dshb_g1_index_prod_plan_revised_v1.2.md` | `E35D180CC9BF44E6DD8DBAA8CD0E8A9B` | 69,146 | 1,337 | 新增 - 修订后的3索引生产执行预案V1.2 |
+
+### Phase7 更新交付物
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 行数 | 版本 |
+|---|------|-------|-------|---------|------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `1E44BB296C6C024F756ACBBA72EA81A6` | `FAFF43967F17B1B5A2D247616DD53F66` | 93,446 | 1,521 | V1.7→V1.8 |
+| 2 | `v86_rc2_g1_prod_sop_8scenarios_final.md` | `9C8E7E3B0BC3F3D0A71A5FAEEC600C25` | `0A1AAFF981D6DD371DFE9D50CA20390A` | 109,211 | 2,576 | V1.3→V1.4 |
+| 3 | `v86_rc2_dshb_g1_gray_rollout_prep_plan.md` | `676462062E5BB7EEB8C8C3D3FDB05EBC` | `7C1A634E41F7225E8021CDEDE48DB464` | 107,316 | 1,650 | V1.1→V1.2 |
+
+### Phase7 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 3 | 183,190 B |
+| 更新文件 | 3 | 310,073 B |
+| **合计** | **6** | **493,263 B** |
+
+### Phase7 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 索引范围决策 | 5索引→3核心索引 (idx_trace/idx_fault/idx_sev_ts) |
+| 延后索引 | 2个 (idx_decision/idx_drill, StageB后迭代) |
+| 索引/数据比 | 38.2% (vs 5索引76.26%, 降至可接受范围) |
+| 创建耗时 | ~18min/500万行 (vs 45min, 缩减60%) |
+| 锁窗口 | ~2min (vs 4-7min, 缩减67%) |
+| 磁盘占用 | ~326MB/500万行 (vs 652.7MB, 节省50%) |
+| 查询P99 | idx_trace 8ms / idx_fault 6ms / idx_sev_ts 10ms (均≤50ms) |
+| 写放大 | 3x (vs 5x) |
+| WAL写入P99 | 3.2ms (≤50ms阈值) |
+| 回滚耗时 | ~15min (vs 30min, 缩减50%) |
+| 熔断阈值 | 膨胀40%警告/45%严重/50%熔断 (vs 20%/25%/30%) |
+| M-P99-WAL-WRITE | DSHB侧采集完成, 与HERMES偏差<5% |
+| B-02风险 | P1→P2 (38.2%在可接受范围, 保留监控) |
+| 新增B-08 | 延后索引迭代计划跟踪 (P2) |
+| 新增INDEX-P1-003 | WAL写入P99退化 (P1 PREPARED) |
+| 新增INDEX-P2-004 | 延后索引迭代上线 (P2 OPEN) |
+| Gate条件 | 21项 (18 PASS + 2 BLOCKED + 1 PENDING + 1 NEW GATE-021) |
+| 累计风险总数 | 43 (33 CLOSED + 3 PREPARED + 6 P2 + 1 BLOCKED) |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY (不变, HERMES + 索引执行) |
+| G1_GRAY_TRAFFIC_START | FALSE (不变) |
+
+### Phase7 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE7_INDEX_SCOPE_DECISION_DONE | TRUE |
+| INDEX_SCOPE_REVIEW_APPROVED | TRUE |
+| INDEX_3_CORE_ONLINE | TRUE |
+| INDEX_2_DEFERRED | TRUE |
+| INDEX_PROD_PLAN_V1.2 | TRUE |
+| GATE_021_WAL_WRITE_METRIC | PENDING |
+
+### 累计交付物汇总 (G0→G1全流程)
+
+| 阶段 | 新增文件 | 更新文件 | 大小合计 |
+|------|---------|---------|---------|
+| 跨团队对齐 (V1.0) | 6 | 3 | 300,197 B |
+| Phase1 影子放量 | 2 | 1 | 85,449 B |
+| Phase2 长稳+故障 | 5 | 1 | 169,659 B |
+| Phase3 条件解除+基线冻结 | 6 | 1 | 243,521 B |
+| Phase4 灰度前置准备 | 4 | 2 | 394,086 B |
+| Phase5 指标对齐+基线重对账 | 4 | 2 | 320,581 B |
+| Phase6 索引前置演练+Gate复测 | 3 | 3 | 412,145 B |
+| Phase7 索引范围决策+预案修订 | 3 | 3 | 493,263 B |
+| **累计合计** | **33** | **16** | **2,418,901 B** |
+
+### Phase7 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增独立文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅索引范围决策+预案修订 | ✅ |
+| 指标口径对齐 | DSHB/DSHE/HERMES 100% (V1.0) | ✅ |
+| HERMES审计链路 | 大容量持久化/检索 | ⏳ 等待HERMES工单完成 |
+| 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |

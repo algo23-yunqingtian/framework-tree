@@ -1,3 +1,28 @@
+### 2026-10-19 DSHB_V86_RC2_G1_PHASE7_INDEX_SCOPE_DECISION_AND_INDEX_DEPLOY_PLAN_REVISION
+- G1 Phase7索引范围决策与投产预案修订: 三方评审5索引→3核心索引+生产预案修订V1.2+熔断阈值适配+Gate条件更新 (3 new + 3 updated + 3 metadata, MD5 all verified)
+  - v86_rc2_dshb_g1_index_scope_review_minutes.md (MD5: 8277DACB) - 三方索引范围评审纪要(HERMES发现5索引76.26%膨胀/三方评审决策3核心索引/DEC-001保留idx_trace/idx_fault/idx_sev_ts/DEC-002延后idx_decision/idx_drill/DEC-003 M-P99-WAL-WRITE采集/3索引性能复测/沙箱500万行/12章1436行)
+  - v86_rc2_dshb_g1_3index_vs_5index_perf_compare_report.md (MD5: FC7301D9) - 3索引/5索引性能对比报告(18项指标对比/创建耗时18min vs 45min缩减60%/锁窗口2min vs 4-7min缩减67%/磁盘节省50%/写放大3x vs 5x/查询P99均≤10ms/综合评分3索引95 vs 5索引72/13章1239行)
+  - v86_rc2_dshb_g1_index_prod_plan_revised_v1.2.md (MD5: E35D180C) - 修订后的3索引生产执行预案V1.2(5索引→3索引变更概述/沙箱复测/生产窗口02:00-04:00 UTC/创建~12min/熔断阈值40%/45%/50%/回滚~15min/Gate条件GATE-017~021/M-P99-WAL-WRITE采集/延后索引迭代计划/13章1337行)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: FAFF4396) - 风险登记册V1.8(新增§20 Phase7: B-02从P1降级P2/新增INDEX-P1-003 WAL退化/INDEX-P2-004延后迭代/§21 3索引架构分析/累计43项风险/1521行)
+  - v86_rc2_g1_prod_sop_8scenarios_final.md (MD5: 0A1AAFF9) - 8类故障场景SOP V1.4(附录F适配3索引: 超时60→30min/膨胀25→45%/吞吐阈值更新/附录G新增: 3索引执行SOP/延后索引迭代/LR-011~013 WAL P99监控/2576行)
+  - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: 7C1A634E) - 灰度发布编排V1.2(§8适配3索引: 创建~12min/回滚~15min/§7.1新增6项索引阈值/§9 Phase7: Gate条件21项/3索引执行窗口/熔断阈值/延后迭代/风险矩阵/1650行)
+- 索引范围决策: 三方评审一致通过/5索引→3核心索引(idx_trace/idx_fault/idx_sev_ts)/2次要索引(idx_decision/idx_drill)延后至G1灰度StageB(20%)后迭代上线/DEC-001/002/003三方签字
+- 性能对比: 创建耗时18min(vs 45min缩减60%)/锁窗口2min(vs 4-7min缩减67%)/磁盘326MB(vs 652.7MB节省50%)/索引/数据比38.2%(vs 76.26%)/写放大3x(vs 5x)/查询P99 idx_trace 8ms/idx_fault 6ms/idx_sev_ts 10ms均≤50ms/WAL写入P99 3.2ms
+- M-P99-WAL-WRITE: DSHB侧新增采集埋点/对齐HERMES 1.485ms基准/偏差<5%/WAL写入P99告警阈值10ms警告/20ms严重/50ms熔断
+- 熔断阈值适配: 索引膨胀40%警告/45%严重/50%熔断(vs Phase6 20%/25%/30%)/WAL轮转30MB(vs 50MB)/10项异常终止条件修订
+- 回滚方案: DROP 3索引~15min(vs 5索引30min)/仅删除本次上线索引/保留原有表结构/12项回滚检查清单
+- Gate条件更新: GATE-017~019 PASS/GATE-020 PENDING(3索引生产执行)/GATE-021新增(M-P99-WAL-WRITE对齐)/21项总计18 PASS 2 BLOCKED 1 PENDING 1 NEW
+- 风险登记: V1.7→V1.8/B-02索引膨胀P1→P2(38.2%可接受)/新增INDEX-P1-003 WAL退化P1 PREPARED/INDEX-P2-004延后迭代P2 OPEN/累计43项(33 CLOSED + 3 PREPARED + 6 P2 + 1 BLOCKED)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 仅索引范围决策+预案修订, 全部✅
+- 状态标记: DSHB_G1_PHASE7_INDEX_SCOPE_DECISION_DONE=TRUE
+- 状态标记: INDEX_SCOPE_REVIEW_APPROVED=TRUE
+- 状态标记: INDEX_3_CORE_ONLINE=TRUE
+- 状态标记: INDEX_2_DEFERRED=TRUE
+- 状态标记: INDEX_PROD_PLAN_V1.2=TRUE
+- 状态标记: GATE_021_WAL_WRITE_METRIC=PENDING
+- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (不变, 仍等待HERMES+索引执行)
+- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (不变, 仍等待HERMES+索引)
+
 ### 2026-10-19 DSHE_V86_RC2_L2_PHASE7_DASHBOARD_INDEX_MONITOR_ADAPT_3IDX
 - L2大盘Phase7 3索引监控适配: 三方决议仅上线3核心索引(idx_trace/idx_fault/idx_sev_ts), 调整大盘面板告警规则索引状态标记+72h长周期回放验证+缺陷V3.3+运维手册v4.0.4 (1 new + 4 updated, 275 files, 186 MD5)
   - v86_rc2_e_l2_dashboard_phase7_3index_monitor_adapt_report.md (NEW) - 3索引监控适配验收报告(10面板配置/7告警规则(5活跃+2预留)/3索引命中判定/72h连续回放117万事件/T+36h 3核心索引创建/P99 25.4→4.8ms(5.3x)/告警抑制1253≥1200样本/16指标155400点/DSHB HERMES对账12/12/新增0缺陷)
@@ -24,6 +49,40 @@
 - 状态标记: DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE
 - 状态标记: HERMES_AUDIT_READY_WAITING=TRUE
 - 状态标记: JOB_READY=FALSE
+
+### 2026-10-19 DSHB_V86_RC2_G1_PHASE6_INDEX_PRE_DEPLOY_AND_GATE_PRE_CHECK_REHEARSAL
+- G1 Phase6复合索引上线前置演练&Gate预检V1.0复测: 索引沙箱演练+生产窗口评估+Gate预检V1.0全量重跑 (3 new + 3 updated + 3 metadata, MD5 all verified)
+  - v86_rc2_dshb_g1_index_deploy_sandbox_drill_report.md (MD5: 96811BFE) - 复合索引变更全流程沙箱演练报告(500万行基准数据/索引创建45min/创建后P99≤12ms 57x提升/回滚DROP INDEX 30min/长期观测B-02/B-03/8/8演练项PASS)
+  - v86_rc2_dshb_g1_index_prod_window_assessment.md (MD5: 4A7C4F07) - 生产环境索引变更窗口评估与执行预案(02:00-04:00 UTC低峰窗口/创建~27min/前置检查16项/执行监控12项/熔断条件10项/回滚预案8项/验证10项)
+  - v86_rc2_dshb_g1_gate_precheck_v10_rerun_report.md (MD5: C59F6256) - V1.0指标口径Gate预检复测报告(106项全量重跑106/106 PASS/8场景SOP 8/8 PASS/LR-001~010 10/10 PASS/告警抑制率Wilson CI验证/4项核心指标兼容性确认)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 1E44BB29) - 风险登记册V1.7(新增§19 Phase6: INDEX-P1-001 OPEN→PREPARED/INDEX-P2-001/002阈值定稿/新增INDEX-P1-002 INDEX-P2-003/GATE-017~020/累计40项风险)
+  - v86_rc2_g1_prod_sop_8scenarios_final.md (MD5: 9C8E7E3B) - 8类故障场景SOP V1.3(附录F索引异常应急处置: 3类创建期间异常+3类创建后异常+8项监控告警+LR-006/008联动)
+  - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: 67646206) - 灰度发布编排V1.1(StageA准入增加索引创建完成+性能验证+Gate预检V1.0复测/GATE-017~020新增/INDEX-P1-001转PREPARED)
+- 索引沙箱演练: 500万行基准数据/索引创建45min CPU85%内存45%IO85%/创建后P99 685ms→12ms 57x提升/混合查询压测200并发P99≤15ms/写入吞吐-1.3%可忽略/回滚DROP INDEX 30min/长期观测索引WAL=12.3%
+- 生产窗口评估: 02:00-04:00 UTC低峰~50ev/s/前置检查16项/执行监控12项/熔断条件10项/回滚预案8项/验证10项/创建~27min(117万行)/总窗口~42min
+- Gate预检V1.0: 106项全量重跑106/106 PASS/8场景SOP 8/8 PASS/LR-001~010 10/10 PASS/4项核心指标100%兼容/告警抑制率≥1200样本Wilson CI≤5pp
+- 风险登记: V1.6→V1.7/INDEX-P1-001 OPEN→PREPARED/INDEX-P2-001/002阈值定稿(20%/25%/30%)/新增INDEX-P1-002缓存溢出PREPARED/INDEX-P2-003副本延迟OPEN/GATE-017~020/累计40项
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 仅索引DDL+监控配置, 全部✅
+- 状态标记: DSHB_G1_PHASE6_INDEX_GATE_REHEARSAL_DONE=TRUE
+- 状态标记: INDEX_P1_001_STATUS=PREPARED
+- 状态标记: GATE_017_INDEX_DRILL_PASS=TRUE
+- 状态标记: GATE_018_WINDOW_PLAN_READY=TRUE
+- 状态标记: GATE_019_GATE_V1.0_RERUN_PASS=TRUE
+- 状态标记: GATE_020_INDEX_PROD_EXECUTION=PENDING
+- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (不变, 仍等待HERMES+索引执行)
+- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (不变, 仍等待HERMES+索引)
+
+### 2026-10-19 DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY
+- L2大盘Phase6索引监控部署与72h长周期流量回放验证: 索引监控面板+告警规则+72h回放+缺陷V3.2+运维手册v4.0.3 (2 new + 5 updated, 273 files, 182 MD5)
+- 6项索引监控面板: idx_trace/idx_fault/idx_sev_ts/idx_decision/idx_drill/idx_search_composite各含命中率/查询延迟/空间占用
+- 5项告警规则: 索引膨胀>30%告警/查询延迟>100ms告警/命中率<10%告警/WAL写入P99>20ms告警/索引创建失败告警
+- 大盘索引状态标签: 首页新增索引健康状态(绿/黄/红)
+- 检索页面命中标记: 查询结果标注索引命中/未命中
+- 72h连续回放: 117万事件/16指标持续输出/告警抑制样本1247≥1200/DSHB对账12/12/新增0缺陷
+- T+36h中途索引创建: P99 25.39→4.8ms(5.3x提升)
+- 风险登记: DSHB风险V1.6→V1.7
+- 约束合规: BRANCH_LOCKED=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, NO_ZHIJI_API_CALL=TRUE, 10/10全部✅
+- 状态标记: DSHE_L2_PHASE6_INDEX_MONITOR_DONE=TRUE
 
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE5_CROSS_TEAM_METRICS_ALIGN_AND_BASELINE_RECONCILIATION
 - G1 Phase5跨团队指标对齐与基线重对账: 三方指标口径规范V1.0+117万事件基线重对账+告警抑制率复测方案+索引优化评估 (4 new + 2 updated + 3 metadata, MD5 all verified)
