@@ -1968,59 +1968,88 @@ L2大盘Phase5完成了基于DSHB《V86-RC2 G0→G1跨团队术语&指标对齐�
 
 ---
 
-## 25. Phase6索引监控大盘观测与应急操作指引
+## 25. Phase6索引监控大盘观测与应急操作指引 (Phase7 3索引适配)
 
 ### 25.1 索引监控面板配置
 
-| 面板ID | 面板名称 | 数据源 | 采集频率 | 刷新间隔 | 告警阈值 |
-|--------|----------|--------|----------|----------|----------|
-| IDX-STOR-01 | 索引存储占用 | wal_index_size_bytes | 1min | 1min | >5MB (P1) |
-| IDX-BLOAT-01 | 索引膨胀率 | wal_index_size_bytes / wal_size_bytes | 1min | 1min | >15% (P2) |
-| IDX-ROW-01 | 表行数 | wal_event_count | 1min | 1min | >10M (P1) |
-| IDX-P99-01 | 查询P99时延 | wal_search_latency_p99 | 10s | 10s | >100ms (P1) |
-| IDX-P50-01 | 查询P50时延 | wal_search_latency_p50 | 10s | 10s | >50ms (P2) |
-| IDX-SLOW-01 | 慢查询计数 | slow_query_count | 1min | 1min | >10/min (P2) |
-| IDX-HIT-01 | 索引命中率 | index_hit_ratio | 1min | 1min | <90% (P2) |
+#### 25.1.1 3核心索引监控面板（默认展示）
+
+| 面板ID | 面板名称 | 索引 | 数据源 | 采集频率 | 刷新间隔 | 告警阈值 |
+|--------|----------|------|--------|----------|----------|----------|
+| IDX-STOR-01 | 3核心索引存储占用 | idx_trace+idx_fault+idx_sev_ts | wal_index_size_bytes | 1min | 1min | >3MB (P1) |
+| IDX-BLOAT-01 | 3核心索引膨胀率 | 3核心索引 | wal_index_size_bytes / wal_size_bytes | 1min | 1min | >15% (P2) |
+| IDX-ROW-01 | 表行数 | — | wal_event_count | 1min | 1min | >10M (P1) |
+| IDX-P99-01 | 查询P99时延 | — | wal_search_latency_p99 | 10s | 10s | >100ms (P1) |
+| IDX-P50-01 | 查询P50时延 | — | wal_search_latency_p50 | 10s | 10s | >50ms (P2) |
+| IDX-SLOW-01 | 慢查询计数 | — | slow_query_count | 1min | 1min | >10/min (P2) |
+| IDX-HIT-01 | 3核心索引命中率 | 3核心索引 | index_hit_ratio | 1min | 1min | <90% (P2) |
+| IDX-TRACE-01 | idx_trace 索引详情 | idx_trace | wal_index_size_bytes | 1min | 1min | — |
+| IDX-FAULT-01 | idx_fault 索引详情 | idx_fault | wal_index_size_bytes | 1min | 1min | — |
+| IDX-SEVTS-01 | idx_sev_ts 索引详情 | idx_sev_ts | wal_index_size_bytes | 1min | 1min | — |
+
+#### 25.1.2 2预留索引监控面板（默认隐藏）
+
+| 面板ID | 面板名称 | 索引 | 数据源 | 状态 |
+|--------|----------|------|--------|------|
+| IDX-RESERVED-01 | 预留索引监控 | idx_decision+idx_drill | wal_index_size_bytes | 📋 默认隐藏，告警已禁用 |
 
 ### 25.2 索引告警规则
 
-| 告警ID | 名称 | 条件 | 持续 | 严重级别 | 通知 |
-|--------|------|------|------|----------|------|
-| INDEX-BLOAT-ALERT | 索引膨胀超阈值 | wal_index_size_bytes > 5MB | 1h | P1 | DSHE-Ops, HERMES-Ops |
-| INDEX-LATENCY-ALERT | 查询时延突增 | wal_search_latency_p99 > 100ms | 3min | P1 | DSHE-Ops, DSHE-Tech-Lead |
-| INDEX-DISABLE-ALERT | 索引失效 | index_count < 预期数 或 index_size突降 | 立即 | P0 | DSHE-Ops, HERMES-Ops, PagerDuty |
-| INDEX-SLOW-ALERT | 慢查询过多 | slow_query_count > 10/min | 5min | P2 | DSHE-Ops |
-| INDEX-ROW-ALERT | 表行数临界 | wal_event_count > 10,000,000 | 立即 | P1 | DSHE-Ops, HERMES-Ops |
+#### 25.2.1 3核心索引告警规则（活跃）
+
+| 告警ID | 名称 | 条件 | 持续 | 严重级别 | 通知 | 状态 |
+|--------|------|------|------|----------|------|------|
+| INDEX-BLOAT-ALERT | 3核心索引膨胀 | wal_index_size_bytes > 3MB (3核心合计) | 1h | P1 | DSHE-Ops, HERMES-Ops | ✅ 活跃 |
+| INDEX-LATENCY-ALERT | 查询时延突增 | wal_search_latency_p99 > 100ms | 3min | P1 | DSHE-Ops, DSHE-Tech-Lead | ✅ 活跃 |
+| INDEX-DISABLE-ALERT | 核心索引失效 | index_count < 3 或 core_index_size突降>50% | 立即 | P0 | DSHE-Ops, HERMES-Ops, PagerDuty | ✅ 活跃 |
+| INDEX-SLOW-ALERT | 慢查询过多 | slow_query_count > 10/min | 5min | P2 | DSHE-Ops | ✅ 活跃 |
+| INDEX-ROW-ALERT | 表行数临界 | wal_event_count > 10,000,000 | 立即 | P1 | DSHE-Ops, HERMES-Ops | ✅ 活跃 |
+
+#### 25.2.2 2预留索引告警规则（默认禁用）
+
+| 告警ID | 名称 | 条件 | 持续 | 严重级别 | 通知 | 状态 |
+|--------|------|------|------|----------|------|------|
+| INDEX-DECISION-ALERT | idx_decision告警 | wal_index_size_bytes{idx_decision} > 500KB | 1h | P1 | DSHE-Ops | 📋 预留禁用 |
+| INDEX-DRILL-ALERT | idx_drill告警 | wal_index_size_bytes{idx_drill} > 500KB | 1h | P1 | DSHE-Ops | 📋 预留禁用 |
+
+> **预留索引告警启用条件**: 查询命中率数据积累≥4周后评估, 确认需要加建索引后, 手动启用对应告警规则。
 
 ### 25.3 索引状态标签与事件检索页面标记
 
 #### 25.3.1 大盘头部索引状态标签
 
 ```
-[INDEX: ACTIVE]  🟢 正常 — 复合索引活跃, P99 < 50ms
+[INDEX: ACTIVE]  🟢 正常 — 3核心索引活跃, P99 < 50ms
 [INDEX: DEGRADED] 🟡 降级 — P99 > 100ms 或 慢查询 > 10/min
-[INDEX: DISABLED] 🔴 失效 — 索引计数异常或大小突降
+[INDEX: DISABLED] 🔴 失效 — 核心索引计数异常(<3)或核心索引大小突降
 ```
 
 #### 25.3.2 事件检索页面索引命中标记
 
 每条查询结果显示:
-- `INDEX-HIT` 🟢 — 查询使用复合索引, 延迟正常
-- `FULL-SCAN` 🔴 — 查询退化至全表扫描, 延迟异常
+- `INDEX-HIT` 🟢 — 查询使用3核心索引命中, 延迟正常
+  - 子标签: `idx_trace` / `idx_fault` / `idx_sev_ts` (标注具体命中索引)
+- `FULL-SCAN` 🟡 — 查询退化至全表扫描, 延迟异常
+- `INDEX-MISS` 🔴 — 索引存在但优化器未使用
 - `INDEX-BUILDING` 🟡 — 索引构建中, 查询暂时无索引可用
+
+> **Phase7变更**: INDEX-HIT标记现基于3核心索引命中判定, 标注具体命中的核心索引名称。预留索引(idx_decision/idx_drill)未上线, 不参与命中判定。
 
 ### 25.4 索引异常排查SOP
 
-#### 25.4.1 索引膨胀排查
+#### 25.4.1 3核心索引膨胀排查
 
-**症状**: wal_index_size_bytes > 5MB 或 膨胀率 > 15%
+**症状**: 3核心索引合计 > 3MB 或 膨胀率 > 15%
 
 **排查步骤**:
 1. 检查 wal_event_count 确认事件量增长趋势
-2. 检查 wal_index_size_bytes / wal_size_bytes 比值是否异常
-3. 检查是否有索引碎片化: `ANALYZE INDEX idx_search_composite`
-4. 如碎片化严重, 执行索引重建: `REBUILD INDEX idx_search_composite`
-5. 检查WAL轮转阈值是否已下调至20MB
+2. 检查3核心索引各索引大小: idx_trace / idx_fault / idx_sev_ts
+3. 检查 wal_index_size_bytes / wal_size_bytes 比值是否异常
+4. 检查是否有索引碎片化: `ANALYZE INDEX idx_trace` / `idx_fault` / `idx_sev_ts`
+5. 如碎片化严重, 执行索引重建: `REBUILD INDEX idx_trace` (逐个重建)
+6. 检查WAL轮转阈值是否已下调至20MB
+
+**参考**: 5索引合计阈值5MB(仅参考, 3索引方案下不触发)
 
 **回滚命令**: `wal rotation threshold set --from 20MB --to 50MB`
 
@@ -2031,69 +2060,105 @@ L2大盘Phase5完成了基于DSHB《V86-RC2 G0→G1跨团队术语&指标对齐�
 **排查步骤**:
 1. 检查慢查询日志: `SELECT * FROM query_log WHERE latency_p99 > 100 ORDER BY ts DESC`
 2. 检查查询模式是否包含索引未覆盖的字段 (如纯timestamp范围查询)
-3. 检查索引是否被数据库优化器使用: `EXPLAIN ANALYZE <query>`
+3. 检查3核心索引是否被数据库优化器使用: `EXPLAIN ANALYZE <query>`
 4. 检查是否有大查询或批量导出操作
-5. 如确认索引未命中, 调整查询条件或使用强制索引: `FORCE INDEX (idx_search_composite)`
+5. 如确认索引未命中, 调整查询条件或使用强制索引: `FORCE INDEX (idx_trace)`
 
-#### 25.4.3 索引失效排查
+#### 25.4.3 核心索引失效排查
 
-**症状**: index_count 减少 或 index_size 突降
+**症状**: 核心索引计数<3 或 核心索引大小突降>50%
 
 **排查步骤**:
-1. 检查索引状态: `SHOW INDEX FROM wal_events`
+1. 检查3核心索引状态: `SHOW INDEX FROM wal_events WHERE Index_name IN ('idx_trace','idx_fault','idx_sev_ts')`
 2. 检查是否有误操作的 DROP INDEX 命令
 3. 检查存储层是否有异常日志
-4. 如索引已丢失, 立即重新创建: `CREATE INDEX idx_search_composite ON wal_events(event_type, timestamp DESC, source_team)`
-5. 重新创建后立即执行验证脚本
+4. 如索引已丢失, 立即重新创建:
+   - `CREATE INDEX idx_trace ON wal_events(run_id, ts, seq)`
+   - `CREATE INDEX idx_fault ON wal_events(fault_code, ts)`
+   - `CREATE INDEX idx_sev_ts ON wal_events(severity, ts)`
+5. 重新创建后立即执行验证脚本: `python3 phase5_index_deploy.py --db <db> --verify`
+
+> **预留索引(idx_decision/idx_drill)不受此排查流程影响**, 告警已禁用。
 
 ### 25.5 索引切换应急操作
 
-#### 25.5.1 索引创建失败回滚
+#### 25.5.1 3核心索引创建失败回滚
 
 ```
-场景: 索引创建过程中失败 (如空间不足、超时)
+场景: 3核心索引创建过程中失败 (如空间不足、超时)
 步骤:
-1. 取消索引创建: DROP INDEX idx_search_composite (如已部分创建)
-2. 检查磁盘空间: df -h /wal_storage
-3. 检查临时空间是否足够
-4. 如空间不足, 清理历史WAL文件
-5. 重新创建索引 (建议选择低流量时段)
-6. 创建后执行验证: CHECK INDEX INTEGRITY
+1. 使用自动化脚本回滚: python3 phase5_index_deploy.py --db <db> --rollback
+2. 脚本自动执行: DROP 5索引 + ANALYZE + TRUNCATE checkpoint
+3. 检查磁盘空间: df -h /wal_storage
+4. 检查临时空间是否足够
+5. 如空间不足, 清理历史WAL文件
+6. 重新创建3核心索引 (建议选择低流量时段):
+   python3 phase5_index_deploy.py --db <db> --create
+7. 创建后执行验证:
+   python3 phase5_index_deploy.py --db <db> --verify
 ```
 
-#### 25.5.2 索引切换后查询异常
+> **注**: --rollback 会删除所有5个索引(含预留), 恢复干净状态。
+
+#### 25.5.2 3核心索引切换后查询异常
 
 ```
-场景: 索引创建完成后, 查询结果异常
+场景: 3核心索引创建完成后, 查询结果异常
 步骤:
 1. 执行索引一致性检查:
-   - 对比索引查询结果 vs 全表扫描结果
-   - 确认行数一致: count_all_events() == count_indexed_events()
-2. 如结果不一致, 标记数据异常, 暂停自动查询
-3. 重建索引: DROP INDEX + CREATE INDEX
-4. 重新验证一致性
-5. 如仍异常, 联系存储团队排查B-tree结构
+   python3 phase5_index_deploy.py --db <db> --verify
+   (EXPLAIN QUERY PLAN 逐条命中验证)
+2. 对比3核心索引各索引查询结果 vs 全表扫描结果
+3. 确认行数一致: count_all_events() == count_indexed_events()
+4. 如结果不一致, 标记数据异常, 暂停自动查询
+5. 重建索引: DROP INDEX + CREATE INDEX (逐个重建)
+6. 重新验证一致性
+7. 如仍异常, 联系存储团队排查B-tree结构
+```
+
+#### 25.5.3 预留索引(idx_decision/idx_drill)启用流程
+
+```
+场景: 需要将预留索引从隐藏状态升级为上线状态
+步骤:
+1. 检查查询命中率数据积累是否≥4周
+2. 确认 idx_decision / idx_drill 有明确查询需求
+3. 创建预留索引:
+   CREATE INDEX idx_decision ON wal_events(decision, ts)
+   CREATE INDEX idx_drill ON wal_events(drill_tag, ts)
+4. 启用预留告警:
+   - INDEX-DECISION-ALERT: enabled = true
+   - INDEX-DRILL-ALERT: enabled = true
+5. 更新面板配置: 将 IDX-RESERVED-01 从隐藏改为可见
+6. 通知跨团队(DSHB/HERMES)
 ```
 
 ### 25.6 索引监控检查表
 
 | # | 检查项 | 预期 | 操作 |
 |---|--------|------|------|
-| 1 | 索引存储占用面板 | 已配置 | IDX-STOR-01 |
-| 2 | 索引膨胀率面板 | 已配置 | IDX-BLOAT-01 |
+| 1 | 3核心索引存储占用面板 | 已配置 | IDX-STOR-01 |
+| 2 | 3核心索引膨胀率面板 | 已配置 | IDX-BLOAT-01 |
 | 3 | 表行数面板 | 已配置 | IDX-ROW-01 |
 | 4 | 查询P99面板 | 已配置 | IDX-P99-01 |
 | 5 | 查询P50面板 | 已配置 | IDX-P50-01 |
 | 6 | 慢查询面板 | 已配置 | IDX-SLOW-01 |
-| 7 | 索引命中率面板 | 已配置 | IDX-HIT-01 |
-| 8 | 索引膨胀告警 | >5MB P1 | INDEX-BLOAT-ALERT |
-| 9 | 查询时延告警 | >100ms P1 | INDEX-LATENCY-ALERT |
-| 10 | 索引失效告警 | 立即 P0 | INDEX-DISABLE-ALERT |
-| 11 | 慢查询告警 | >10/min P2 | INDEX-SLOW-ALERT |
-| 12 | 表行数告警 | >10M P1 | INDEX-ROW-ALERT |
-| 13 | 索引状态标签 | ACTIVE/DEGRADED/DISABLED | 大盘头部 |
-| 14 | 检索页面命中标记 | INDEX-HIT/FULL-SCAN | 检索页面 |
-| 15 | 索引切换应急SOP | 已配置 | 本章节 |
+| 7 | 3核心索引命中率面板 | 已配置 | IDX-HIT-01 |
+| 8 | idx_trace 详情面板 | 已配置 | IDX-TRACE-01 |
+| 9 | idx_fault 详情面板 | 已配置 | IDX-FAULT-01 |
+| 10 | idx_sev_ts 详情面板 | 已配置 | IDX-SEVTS-01 |
+| 11 | 预留索引面板 | 默认隐藏 | IDX-RESERVED-01 |
+| 12 | 3核心索引膨胀告警 | >3MB P1 | INDEX-BLOAT-ALERT |
+| 13 | 查询时延告警 | >100ms P1 | INDEX-LATENCY-ALERT |
+| 14 | 核心索引失效告警 | 索引数<3 P0 | INDEX-DISABLE-ALERT |
+| 15 | 慢查询告警 | >10/min P2 | INDEX-SLOW-ALERT |
+| 16 | 表行数告警 | >10M P1 | INDEX-ROW-ALERT |
+| 17 | idx_decision 告警 | 预留禁用 | INDEX-DECISION-ALERT |
+| 18 | idx_drill 告警 | 预留禁用 | INDEX-DRILL-ALERT |
+| 19 | 索引状态标签 | ACTIVE/DEGRADED/DISABLED | 大盘头部 |
+| 20 | 检索页面命中标记 | INDEX-HIT(3核心)/FULL-SCAN/INDEX-MISS | 检索页面 |
+| 21 | 索引切换应急SOP | 已配置 | 本章节 |
+| 22 | 预留索引启用流程 | 已配置 | §25.5.3 |
 
 ---
 
@@ -2138,10 +2203,10 @@ DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE
 
 ---
 
-*文档版本: v4.0.3-INDEX-MONITOR (Phase6索引监控版本)*
+*文档版本: v4.0.4-3INDEX-ADAPT (Phase7 3索引适配版本)*
 *生成时间: 2026-10-19*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY + 前置工单*
+*工单: DSHE_V86_RC2_L2_PHASE7_DASHBOARD_INDEX_MONITOR_ADAPT_3IDX + 前置工单*
 *分支: feature/v85-chart-template*
-*更新说明: v4.0.2→v4.0.3, 新增Phase6索引监控大盘观测与应急操作指引(第25章)*
-*状态: v4.0.2-METRIC-REFORM → v4.0.3-INDEX-MONITOR (Phase6索引监控版本, 不接入真实流量)*
+*更新说明: v4.0.3→v4.0.4, §25增加3索引适配说明(3核心索引面板+2预留索引+3索引告警规则+3索引命中判定+3索引运维SOP+预留索引启用流程)*
+*状态: v4.0.3-INDEX-MONITOR → v4.0.4-3INDEX-ADAPT (Phase7 3索引适配版本, 不接入真实流量)*
