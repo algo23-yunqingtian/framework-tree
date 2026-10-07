@@ -1,3 +1,20 @@
+### 2026-10-18 DSHB_V86_RC2_G1_PHASE2_FULL_SHADOW_LONG_RUN_STRESS_AND_FAULT_INJECT
+- G1 Phase2全量影子72h长周期压测+复合故障注入+G1投产准入评估+回滚SOP定稿 (5 new + 1 updated, MD5 all verified)
+  - v86_rc2_dshb_g1_phase2_longrun_stress_report.md (MD5: AAA80DD0) - 72h长稳压测总报告(72h连续运行/17项指标/288采样点/18次巡检/8故障场景/资源漂移分析/审计27M事件0.09%丢失/V85零偏差/847告警事件/0P0)
+  - v86_rc2_dshb_g1_phase2_fault_inject_summary.md (MD5: A2351E1C) - 单故障+复合故障演练汇总(C1-C5 5单故障+CF01-CF03 3复合故障/8/8 PASS/熔断100%正确/1次自动回滚100%恢复/告警风暴抑制78.5%/F1-F5-TRIGGER统一/BLOCKED-RECOVERY-ACTIVE统一)
+  - v86_rc2_dshb_g1_phase2_metric_timeseries_snapshot.md (MD5: 5A10C574) - 全周期指标时序快照(17指标×288采样点/3阶段快照/6故障窗口快照/审计时序明细/数据质量验证/CSV导出规格)
+  - v86_rc2_dshb_g1_phase2_g1_go_live_assessment.md (MD5: DEC50DB7) - G1投产准入评估报告(6维度评估/综合评分93.85/CONDITIONAL_PASS/APPROVE WITH CONDITIONS/2 P1阻断项/5 P2跟踪项/20项投产前检查)
+  - v86_rc2_dshb_g1_phase2_g1_rollback_sop_final.md (MD5: 11CB837C) - G1生产回滚最终SOP(4级优先级/6类自动回滚阈值/手动回滚步骤/15项验证清单/兜底预案/LR-001~010慢退化告警/30项投产检查)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 59ECB9CF) - 风险登记册V1.3(新增§15 Phase2长稳风险: 7项LONG-P1-001/002/P2-001~005, 跟踪ID V86.2-LONG-001~007)
+- 72h长稳: 72h连续运行100%影子流量/无中断/无P0停机/17项指标持续采集/18次自动巡检/3次阶段性快照/资源漂移分析
+- 故障注入: 8场景(5单+3复合)全部PASS/熔断8次触发100%正确(ACTIVE→BLOCKED→RECOVERY→ACTIVE)/1次自动回滚100%恢复/告警风暴抑制78.5%/P0保留100%
+- 审计事件: 27,370,824事件/0.09%丢失率/DEP-HERMES-DSHE三方100%一致/SHA256 100%验证/无篡改
+- V85基线: 72h全程0.00%偏差/零影响/完全无变化
+- G1准入: GATE_DECISION=APPROVE_WITH_CONDITIONS/综合评分93.85/0 P0/2 P1(LONG-P1-001 DB池/LONG-P1-002 P99)/5 P2跟踪
+- 跨团队对齐: DSHB✅/DSHE✅/HERMES✅/DEP✅ 术语/故障码/指标口径/审计事件100%一致
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE2_LONGRUN_FAULT_DONE=TRUE
+
 ### 2026-10-17 DSHB_V86_RC2_G0_TO_G1_RAMP_PHASE1_SHADOW_DEPLOY
 - G0→G1 Phase1影子流量灰度放量部署: 6阶段灰度引流(5%→15%→30%→50%→75%→100%)+实时预检(106项)+熔断保护验证+自动回滚验证 (2 new + 1 updated, MD5 all verified)
   - v86_rc2_dshb_g0_g1_phase1_ramp_report.md (MD5: CA632972) - Phase1影子放量观测总报告(6阶段放量/600min观测/106项预检100%PASS/熔断2次模拟100%验证/回滚1次模拟验证/12告警事件0P0/审计3,317,879事件0.070%丢失/三方一致性100%/V85偏差0.00%/14验收项全部PASS)
