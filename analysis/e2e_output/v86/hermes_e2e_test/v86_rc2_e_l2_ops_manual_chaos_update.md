@@ -1968,6 +1968,135 @@ L2大盘Phase5完成了基于DSHB《V86-RC2 G0→G1跨团队术语&指标对齐�
 
 ---
 
+## 25. Phase6索引监控大盘观测与应急操作指引
+
+### 25.1 索引监控面板配置
+
+| 面板ID | 面板名称 | 数据源 | 采集频率 | 刷新间隔 | 告警阈值 |
+|--------|----------|--------|----------|----------|----------|
+| IDX-STOR-01 | 索引存储占用 | wal_index_size_bytes | 1min | 1min | >5MB (P1) |
+| IDX-BLOAT-01 | 索引膨胀率 | wal_index_size_bytes / wal_size_bytes | 1min | 1min | >15% (P2) |
+| IDX-ROW-01 | 表行数 | wal_event_count | 1min | 1min | >10M (P1) |
+| IDX-P99-01 | 查询P99时延 | wal_search_latency_p99 | 10s | 10s | >100ms (P1) |
+| IDX-P50-01 | 查询P50时延 | wal_search_latency_p50 | 10s | 10s | >50ms (P2) |
+| IDX-SLOW-01 | 慢查询计数 | slow_query_count | 1min | 1min | >10/min (P2) |
+| IDX-HIT-01 | 索引命中率 | index_hit_ratio | 1min | 1min | <90% (P2) |
+
+### 25.2 索引告警规则
+
+| 告警ID | 名称 | 条件 | 持续 | 严重级别 | 通知 |
+|--------|------|------|------|----------|------|
+| INDEX-BLOAT-ALERT | 索引膨胀超阈值 | wal_index_size_bytes > 5MB | 1h | P1 | DSHE-Ops, HERMES-Ops |
+| INDEX-LATENCY-ALERT | 查询时延突增 | wal_search_latency_p99 > 100ms | 3min | P1 | DSHE-Ops, DSHE-Tech-Lead |
+| INDEX-DISABLE-ALERT | 索引失效 | index_count < 预期数 或 index_size突降 | 立即 | P0 | DSHE-Ops, HERMES-Ops, PagerDuty |
+| INDEX-SLOW-ALERT | 慢查询过多 | slow_query_count > 10/min | 5min | P2 | DSHE-Ops |
+| INDEX-ROW-ALERT | 表行数临界 | wal_event_count > 10,000,000 | 立即 | P1 | DSHE-Ops, HERMES-Ops |
+
+### 25.3 索引状态标签与事件检索页面标记
+
+#### 25.3.1 大盘头部索引状态标签
+
+```
+[INDEX: ACTIVE]  🟢 正常 — 复合索引活跃, P99 < 50ms
+[INDEX: DEGRADED] 🟡 降级 — P99 > 100ms 或 慢查询 > 10/min
+[INDEX: DISABLED] 🔴 失效 — 索引计数异常或大小突降
+```
+
+#### 25.3.2 事件检索页面索引命中标记
+
+每条查询结果显示:
+- `INDEX-HIT` 🟢 — 查询使用复合索引, 延迟正常
+- `FULL-SCAN` 🔴 — 查询退化至全表扫描, 延迟异常
+- `INDEX-BUILDING` 🟡 — 索引构建中, 查询暂时无索引可用
+
+### 25.4 索引异常排查SOP
+
+#### 25.4.1 索引膨胀排查
+
+**症状**: wal_index_size_bytes > 5MB 或 膨胀率 > 15%
+
+**排查步骤**:
+1. 检查 wal_event_count 确认事件量增长趋势
+2. 检查 wal_index_size_bytes / wal_size_bytes 比值是否异常
+3. 检查是否有索引碎片化: `ANALYZE INDEX idx_search_composite`
+4. 如碎片化严重, 执行索引重建: `REBUILD INDEX idx_search_composite`
+5. 检查WAL轮转阈值是否已下调至20MB
+
+**回滚命令**: `wal rotation threshold set --from 20MB --to 50MB`
+
+#### 25.4.2 查询时延突增排查
+
+**症状**: wal_search_latency_p99 > 100ms
+
+**排查步骤**:
+1. 检查慢查询日志: `SELECT * FROM query_log WHERE latency_p99 > 100 ORDER BY ts DESC`
+2. 检查查询模式是否包含索引未覆盖的字段 (如纯timestamp范围查询)
+3. 检查索引是否被数据库优化器使用: `EXPLAIN ANALYZE <query>`
+4. 检查是否有大查询或批量导出操作
+5. 如确认索引未命中, 调整查询条件或使用强制索引: `FORCE INDEX (idx_search_composite)`
+
+#### 25.4.3 索引失效排查
+
+**症状**: index_count 减少 或 index_size 突降
+
+**排查步骤**:
+1. 检查索引状态: `SHOW INDEX FROM wal_events`
+2. 检查是否有误操作的 DROP INDEX 命令
+3. 检查存储层是否有异常日志
+4. 如索引已丢失, 立即重新创建: `CREATE INDEX idx_search_composite ON wal_events(event_type, timestamp DESC, source_team)`
+5. 重新创建后立即执行验证脚本
+
+### 25.5 索引切换应急操作
+
+#### 25.5.1 索引创建失败回滚
+
+```
+场景: 索引创建过程中失败 (如空间不足、超时)
+步骤:
+1. 取消索引创建: DROP INDEX idx_search_composite (如已部分创建)
+2. 检查磁盘空间: df -h /wal_storage
+3. 检查临时空间是否足够
+4. 如空间不足, 清理历史WAL文件
+5. 重新创建索引 (建议选择低流量时段)
+6. 创建后执行验证: CHECK INDEX INTEGRITY
+```
+
+#### 25.5.2 索引切换后查询异常
+
+```
+场景: 索引创建完成后, 查询结果异常
+步骤:
+1. 执行索引一致性检查:
+   - 对比索引查询结果 vs 全表扫描结果
+   - 确认行数一致: count_all_events() == count_indexed_events()
+2. 如结果不一致, 标记数据异常, 暂停自动查询
+3. 重建索引: DROP INDEX + CREATE INDEX
+4. 重新验证一致性
+5. 如仍异常, 联系存储团队排查B-tree结构
+```
+
+### 25.6 索引监控检查表
+
+| # | 检查项 | 预期 | 操作 |
+|---|--------|------|------|
+| 1 | 索引存储占用面板 | 已配置 | IDX-STOR-01 |
+| 2 | 索引膨胀率面板 | 已配置 | IDX-BLOAT-01 |
+| 3 | 表行数面板 | 已配置 | IDX-ROW-01 |
+| 4 | 查询P99面板 | 已配置 | IDX-P99-01 |
+| 5 | 查询P50面板 | 已配置 | IDX-P50-01 |
+| 6 | 慢查询面板 | 已配置 | IDX-SLOW-01 |
+| 7 | 索引命中率面板 | 已配置 | IDX-HIT-01 |
+| 8 | 索引膨胀告警 | >5MB P1 | INDEX-BLOAT-ALERT |
+| 9 | 查询时延告警 | >100ms P1 | INDEX-LATENCY-ALERT |
+| 10 | 索引失效告警 | 立即 P0 | INDEX-DISABLE-ALERT |
+| 11 | 慢查询告警 | >10/min P2 | INDEX-SLOW-ALERT |
+| 12 | 表行数告警 | >10M P1 | INDEX-ROW-ALERT |
+| 13 | 索引状态标签 | ACTIVE/DEGRADED/DISABLED | 大盘头部 |
+| 14 | 检索页面命中标记 | INDEX-HIT/FULL-SCAN | 检索页面 |
+| 15 | 索引切换应急SOP | 已配置 | 本章节 |
+
+---
+
 ## 23. 状态标记
 
 ### 23.1 本工单完成状态
@@ -2009,10 +2138,10 @@ DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE
 
 ---
 
-*文档版本: v4.0.2-METRIC-REFORM (Phase5口径改造版本)*
-*生成时间: 2026-10-18*
+*文档版本: v4.0.3-INDEX-MONITOR (Phase6索引监控版本)*
+*生成时间: 2026-10-19*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V86_RC2_L2_CHAOS_DASHBOARD_EMERGENCY / T3.5 + DSHE_V86_RC2_L2_DASHBOARD_G0G1_PHASE1_REAL_TIME_OBSERVE + DSHE_V86_RC2_L2_DASHBOARD_G1_PHASE2_LONG_RUN_MONITOR_COMPOUND_FAULT_VISUAL_VERIFY + DSHE_V86_RC2_L2_PHASE3_FULL_DEFECT_CLOSE_PROD_DASHBOARD_FINALIZE + DSHE_V86_RC2_L2_PHASE4_G1_GRAY_PREP_DASHBOARD_READY_VALIDATION + DSHE_V86_RC2_L2_PHASE5_METRIC_ADAPT_DASHBOARD_REFACTOR*
+*工单: DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY + 前置工单*
 *分支: feature/v85-chart-template*
-*更新说明: v4.0.1→v4.0.2, 新增Phase5指标口径适配运维指引(第24章), 缺陷清单V3.0→V3.1*
-*状态: v4.0.1-GRAY-PREP (灰度投产准备版本, Phase4灰度投产章节新增, HERMES外部阻塞标记, 不接入真实流量)*
+*更新说明: v4.0.2→v4.0.3, 新增Phase6索引监控大盘观测与应急操作指引(第25章)*
+*状态: v4.0.2-METRIC-REFORM → v4.0.3-INDEX-MONITOR (Phase6索引监控版本, 不接入真实流量)*

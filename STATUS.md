@@ -1,3 +1,29 @@
+### 2026-10-19 DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY
+- L2大盘Phase6索引监控部署与长周期流量回放验证: 索引监控面板+告警规则+72h长周期回放+缺陷V3.2+运维手册v4.0.3 (2 new + 4 updated, 266 files, 175 MD5)
+  - v86_rc2_e_l2_dashboard_phase6_index_monitor_verify_report.md (NEW) - 索引监控大盘验收报告(6项索引监控面板/5项告警规则/大盘索引状态标签/检索页面索引命中标记/索引创建前后性能对比/沙箱告警触发验证/DSHB长期监控指标对齐/10项验收全PASS)
+  - v86_rc2_e_l2_dashboard_phase6_long_run_traffic_verify_report.md (NEW) - 72h长周期流量回放验证报告(1,167,144事件连续72h回放/中途T+36h索引创建/大盘无崩溃无事件丢失/状态机4/4稳定/告警抑制样本≥1200/16项指标持续输出/DSHB对账/新增0 P0)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (MD5: →V3.2) - 缺陷清单V3.2(P5-P1-001更新为【待索引上线验证】/P5-P2-001归档CLOSED/Phase6新增0项/DSHB风险V1.6→V1.7)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (MD5: →v4.0.3) - 运维手册v4.0.3(新增§25索引监控大盘观测与应急操作指引/15项检查表)
+  - MD5_MANIFEST_cross_review.md (MD5: 更新) - Phase6 entries added
+  - JOB_READY.flag (MD5: 更新) - Phase6 section added
+- 索引监控: 6项面板(存储占用/膨胀率/表行数/P50/P99/慢查询/命中率), 5项告警规则(膨胀>5MB/时延>100ms/索引失效P0/慢查询>10/min/行数>10M), 大盘状态标签(ACTIVE/DEGRADED/DISABLED), 检索页面命中标记(INDEX-HIT/FULL-SCAN)
+- 72h长周期: 1,167,144事件连续回放, T+36h中途索引创建, 查询P99 25.39ms→4.8ms(5.3x提升), 大盘无崩溃无丢失, 状态机4/4稳定, 告警抑制样本1,247≥1200, Wilson CI 95% [73.1%,75.9%], 16/16指标持续输出, DSHB对账完成
+- 缺陷: 0新增P0, P5-P1-001→【待索引上线验证】, P5-P2-001→CLOSED(V86-RC3归档), DSHB风险V1.6→V1.7
+- 约束合规: BRANCH_LOCKED=TRUE ✅, NO_MODIFY_V85=TRUE ✅, NO_ZHIJI_API_CALL=TRUE ✅, 状态机零改动 ✅, 告警内核零改动 ✅
+- 状态标记: DSHE_L2_PHASE6_INDEX_MONITOR_PANEL_CONFIGURED=TRUE
+- 状态标记: DSHE_L2_PHASE6_INDEX_ALERT_RULES_CONFIGURED=TRUE
+- 状态标记: DSHE_L2_PHASE6_LONG_RUN_TRAFFIC_VERIFY_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE6_72H_CONTINUOUS_REPLAY_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE6_INDEX_MID_REPLAY_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE6_ALERT_SUPPRESSION_1200_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE6_METRICS_16_CONTINUOUS_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE6_INDEX_MONITOR_VERIFY_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE6_DEFECT_V3_2_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE6_OPS_MANUAL_V4_0_3_DONE=TRUE
+- 状态标记: DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE
+- 状态标记: HERMES_AUDIT_READY_WAITING=TRUE
+- 状态标记: JOB_READY=FALSE
+
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE5_CROSS_TEAM_METRICS_ALIGN_AND_BASELINE_RECONCILIATION
 - G1 Phase5跨团队指标对齐与基线重对账: 三方指标口径规范V1.0+117万事件基线重对账+告警抑制率复测方案+索引优化评估 (4 new + 2 updated + 3 metadata, MD5 all verified)
   - v86_rc2_dshb_g1_tripartite_metric_spec_v1.0.md (MD5: E6311DE1) - 三方指标统计口径规范V1.0(4项核心指标统一定义: 吞吐4层分层/丢失率全链路统一/P99时延3类独立/72h总量窗口对齐/口径差异对照表/三方签字确认/约束合规)

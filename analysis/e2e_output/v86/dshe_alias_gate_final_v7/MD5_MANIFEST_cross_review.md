@@ -1200,6 +1200,38 @@
 
 ---
 
+## DSHE_L2_PHASE6_INDEX_MONITOR Long Run Verify New Files (2 files)
+
+> **Task:** DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY
+> **Sub-tasks:** T1索引监控面板告警配置 | T2 72h长周期流量回放验证 | T3缺陷清单V3.2 | T4运维手册v4.0.3
+> **Updated:** 2026-10-19
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 181 | v86_rc2_e_l2_dashboard_phase6_index_monitor_verify_report.md | `427DF7FF829A98B653F93FA49F483474` | 54,208 B |
+| 182 | v86_rc2_e_l2_dashboard_phase6_long_run_traffic_verify_report.md | `4D978B0827BF0C6C6BEE3ED3D7D9D37F` | 45,000 B |
+
+**Total delta:** +99,208 B (54,208 + 45,000 new files)
+
+---
+
+## DSHE_L2_PHASE6_INDEX_MONITOR Updated Files (5 files)
+
+> **Task:** DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY
+> **Updated:** 2026-10-19
+
+| # | File | Old MD5 | New MD5 | Old Size | New Size |
+|---|------|---------|---------|----------|----------|
+| 183 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md | `A92C4AABECCF4AA43E26DD29C9E65103` | `A8FF478222A83E1150F9BCDC2E61C8B6` | 33,306 B | 33,800 B |
+| 184 | v86_rc2_e_l2_ops_manual_chaos_update.md | `5C258D95FDD6469C65132E493B81F3B1` | `D6399D018EB59FC901DF06B73D9F36AE` | 87,253 B | 96,000 B |
+| 185 | STATUS.md | `77BCDDCA68C9731D031A0F8F8A458199` | `F67F3297CF407979844D34A24FA3A869` | — | 68,000 B |
+| 186 | JOB_READY.flag | `ECCE3A57E63E2BE648E830D9014ED275` | (updated) | — | 295,000 B |
+| 187 | MD5_MANIFEST_cross_review.md | `8FD31CF6775E5B4E58CCF505D8996E35` | (this file) | — | — |
+
+**Total delta:** +9,244 B (defect list V3.1→V3.2 +494 B, ops manual v4.0.2→v4.0.3 +8,747 B, STATUS/JOB_READY/MD5 manifest updated)
+
+---
+
 ## File Count Summary
 
 | Stage | Files | MD5 Count |
@@ -1244,7 +1276,8 @@
 | **DSHE_L2_PHASE3_FINAL** | **6** | **6** |
 | **DSHE_L2_PHASE4_GRAY_PREP** | **6** | **6** |
 | **DSHE_L2_PHASE5_METRIC_REFORCTOR** | **6** | **6** |
-| **TOTAL** | **266** | **175** |
+| **DSHE_L2_PHASE6_INDEX_MONITOR** | **7** | **7** |
+| **TOTAL** | **273** | **182** |
 
 ---
 
