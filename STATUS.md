@@ -1,3 +1,17 @@
+### 2026-10-17 DSHB_V86_RC2_G0_G1_PREPARE_CROSS_CONSISTENCY_SYNC
+- G0→G1跨团队术语&指标对齐+DSHE缺陷协同+G0基线固化+G1预检准备 (6 deliverables, MD5 all verified)
+  - v86_rc2_dshb_g0_g1_cross_align_spec.md (MD5: 1DE536CC) - 跨团队术语&指标对齐规范(D-06故障码F1-TRIGGER~F5-TRIGGER/D-07熔断BLOCKED-RECOVERY-ACTIVE/D-01 P99分项阈值/D-02信息密度3.3x/D-04审计口径/G0基线/G1预检/DSHE 9项缺陷跟踪)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: E0D5197F) - 风险登记册V1.1(新增§13 DSHE缺陷跟踪V86.2-XTEAM-001~009/故障码C1-C5→F1-F5-TRIGGER/熔断术语统一/P99阈值更新)
+  - v86_rc2_dshb_g0_emergency_plan_update.md (MD5: 8150162C) - 应急预案V2.3(故障码全部替换为F1-TRIGGER~F5-TRIGGER/熔断术语CLOSED→ACTIVE OPEN→BLOCKED HALF_OPEN→RECOVERY/P99分项阈值/审计事件ID更新)
+  - v86_rc2_dshb_dep_gate_audit_event_def.md (MD5: 7226C896) - 审计事件口径定义(14种事件类型/8核心事件184字段/D-04修复: 16/368双重计数→8/184/DEP+Gate+HERMES三层对账)
+  - v86_rc2_dshb_g0_baseline_snapshot.md (MD5: AD78A6F5) - G0基线版本快照(8个交付物锁定/5项锁定标准/变更管理流程)
+  - v86_rc2_dshb_g0_to_g1_precheck.md (MD5: 311EA77E) - G0→G1预检清单(6阶段放量0-100%/切换开关校验/6类回滚触发条件/18项预检/跨团队签审)
+- DSHE缺陷协同: 5项DSHB协同项全部处理(D-01 P99/D-02密度/D-04审计/D-06故障码/D-07熔断), 9项跨团队跟踪V86.2-XTEAM-001~009
+- G0基线: 8个交付物版本锁定, P0=0, P1全部CLOSED, 基线变更管理流程就绪
+- G0→G1预检: 6阶段放量阈值(0%→1%→5%→10%→25%→50%→100%), 6类回滚触发条件, 跨团队签审矩阵
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
+- 状态标记: DSHB_G0_G1_CROSS_ALIGN_DONE=TRUE
+
 ### 2026-10-17 DSHB_V86_RC2_G0_JOINT_PRECHECK_CHAOS_FINAL_SIGN_OFF
 - G0混沌&应急演练投产准入终审+风险闭环复核+演练交叉核验+预案终稿打包 (2 files, MD5 all verified)
   - v86_rc2_dshb_g0_final_signoff_summary.md (MD5: 535D1D92) - G0投产准入终审文档(T0前置校验/T1风险闭环/T2交叉核验94项/T3预案终稿/投产准入决策READY/四方一致性100%/V85零影响0.00%)

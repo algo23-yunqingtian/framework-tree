@@ -4,10 +4,10 @@
 |------|-----|
 | 工单 | DSHB_V86_RC2_G0_JOINT_PRECHECK_CHAOS |
 | 子任务 | T3.4 演练风险汇总与缺陷跟踪 |
-| 版本 | V1.0 |
+| 版本 | V1.1 (基于 V1.0 更新 — 跨团队术语&指标对齐 + DSHE缺陷跟踪) |
 | 日期 | 2026-10-17 |
 | 环境 | 预发影子集群（pre-prod-shadow-cluster） |
-| 数据来源 | T3.1 预检 (106项) + T3.2 混沌 (5场景) + T3.3 演练 (2场景) |
+| 数据来源 | T3.1 预检 (106项) + T3.2 混沌 (5场景F1-TRIGGER~F5-TRIGGER) + T3.3 演练 (2场景) + DSHE终审缺陷 (D-01~D-09) |
 | 约束 | NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE |
 
 ---
@@ -612,3 +612,47 @@ T3.1 G0 联合预检 (106/106 PASS, 0 P0)、T3.2 混沌注入测试 (5/5 PASS)�
 | NO_MODIFY_V85=TRUE | V85 只读 | ✅ |
 | NO_OVERWRITE=TRUE | 风险清单独立提交 | ✅ |
 | BRANCH_LOCKED=TRUE | 提交至 origin/feature/v85-chart-template | ✅ |
+
+---
+
+## 13. DSHE 缺陷跟踪条目 (跨团队协同)
+
+### 13.1 来源
+
+DSHE 工单 `DSHE_V86_RC2_L2_CHAOS_DASHBOARD_EMERGENCY_FINAL_SIGN_OFF` (commit `08c7bce`) 终审发现 9 项问题 (D-01~D-09)，其中 5 项需要 DSHB 侧协同修改。
+
+### 13.2 DSHE 缺陷协同处理矩阵
+
+| ID | 严重级别 | 问题描述 | DSHB处理 | DSHE处理 | 跟踪ID | 责任人 | 预期版本 |
+|----|---------|----------|---------|---------|--------|--------|----------|
+| D-01 | 🟡 中 | P99≤200ms标题声明与详细数据不一致 | ✅ 更新DSHB文档为分项阈值(告警500ms/决策1s/刷新5s) | ✅ 更新DSHE报告 | V86.2-XTEAM-001 | DSHB/DSHE | V86.2-RC3 |
+| D-02 | 🟢 低 | 信息密度3.2x vs 3.3x不一致 | ✅ 统一为3.3x | ✅ 统一为3.3x | V86.2-XTEAM-002 | DSHB/DSHE | V86.2-RC3 |
+| D-03 | 🟡 中 | CA-03/CA-04决策表缺元数据 | — (DSHE侧修复) | ✅ DSHE侧修复 | V86.2-XTEAM-003 | DSHE | V86.2-RC3 |
+| D-04 | 🔴 高 | 审计事件计数不一致: 摘要16 vs 详细8 | ✅ 新增`v86_rc2_dshb_dep_gate_audit_event_def.md` | ✅ 修正摘要为8事件/184字段 | V86.2-XTEAM-004 | DSHB/DSHE | V86.2-RC3 |
+| D-05 | 🟡 中 | 故障代码缺严重级别列 | — (DSHE侧修复) | ✅ DSHE侧修复 | V86.2-XTEAM-005 | DSHE | V86.2-RC3 |
+| D-06 | 🔴 高 | 故障码命名空间未统一 | ✅ 统一为F1-TRIGGER~F5-TRIGGER | ✅ 统一命名 | V86.2-XTEAM-006 | DSHB/DSHE | V86.2-RC3 |
+| D-07 | 🟡 中 | 熔断术语不一致(CLOSED/OPEN vs BLOCKED/RECOVERY) | ✅ 统一为BLOCKED/RECOVERY/ACTIVE | ✅ 统一术语 | V86.2-XTEAM-007 | DSHB/DSHE | V86.2-RC3 |
+| D-08 | 🟡 中 | 混沌手册缺COMPLETE决策类型 | — (DSHE侧修复) | ✅ DSHE侧修复 | V86.2-XTEAM-008 | DSHE | V86.2-RC3 |
+| D-09 | 🟡 中 | 缺禁止操作列表和误操作恢复步骤 | — (DSHE侧修复) | ✅ DSHE侧修复 | V86.2-XTEAM-009 | DSHE | V86.2-RC3 |
+
+### 13.3 DSHB 协同处理详情
+
+| DSHE缺陷 | DSHB修改文档 | 修改内容 | 状态 |
+|----------|-------------|----------|------|
+| D-01 | `v86_rc2_dshb_g0_emergency_plan_update.md` | P99阈值: 笼统200ms→分项(告警500ms/决策1s/刷新5s) | ✅ 已修改 |
+| D-02 | `v86_rc2_dshb_g0_emergency_plan_update.md` | 信息密度: 统一3.3x | ✅ 已确认 |
+| D-04 | `v86_rc2_dshb_dep_gate_audit_event_def.md` | **新增** 审计事件口径定义文档 | ✅ 已新增 |
+| D-06 | `v86_rc2_dshb_g0_emergency_plan_update.md` | 故障码: C1-C5→F1-TRIGGER~F5-TRIGGER | ✅ 已修改 |
+| D-07 | `v86_rc2_dshb_g0_emergency_plan_update.md` | 熔断术语: CLOSED→ACTIVE, OPEN→BLOCKED, HALF_OPEN→RECOVERY | ✅ 已修改 |
+
+### 13.4 DSHE 缺陷闭环状态
+
+| 指标 | 值 | 判定 |
+|------|-----|------|
+| DSHE 缺陷总数 | 9 | — |
+| DSHB 需协同 | 5 (D-01/D-02/D-04/D-06/D-07) | — |
+| DSHB 已处理 | 5 (100%) | ✅ 全部完成 |
+| DSHE 侧自主修复 | 4 (D-03/D-05/D-08/D-09) | 待DSHE修复 |
+| 跨团队跟踪ID | V86.2-XTEAM-001~009 | ✅ 已分配 |
+| P0 阻断项 | 0 | ✅ 无阻断 |
+| **整体判定** | **✅ DSHE缺陷协同完成，跨团队对齐就绪** | **通过** |

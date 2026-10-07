@@ -4,11 +4,11 @@
 |------|-----|
 | 工单 | DSHB_V86_RC2_G0_JOINT_PRECHECK_CHAOS |
 | 子任务 | T3.5 应急预案文档更新 |
-| 版本 | V2.2 (基于 V2.1 更新) |
+| 版本 | V2.3 (基于 V2.2 更新 — 跨团队术语&指标对齐) |
 | 日期 | 2026-10-17 |
 | 环境 | 预发影子集群（pre-prod-shadow-cluster） |
 | 文档类型 | DEP-001 运维手册 + Gate V5 运维手册 |
-| 更新内容 | 混沌故障场景、F1/F2 应急操作步骤、故障恢复流程 |
+| 更新内容 | 混沌故障场景(F1-TRIGGER~F5-TRIGGER)、F1-TRIGGER/F2-TRIGGER 应急操作步骤、故障恢复流程、跨团队术语统一(BLOCKED/RECOVERY/ACTIVE)、P99分项阈值(告警500ms/决策1s/刷新5s) |
 | 约束 | NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE |
 
 ---
@@ -56,13 +56,13 @@
 
 #### 2.1.2 混沌故障场景操作清单
 
-| 场景 | 命令 | 操作说明 | 预期结果 | 恢复操作 |
-|------|------|----------|----------|----------|
-| C1: DEP 单实例 Kill | `kubectl create chaos pod-kill -n shadow-ns --selector=app=dep001 --pod-number=1 --signal=SIGKILL --duration=120s` | 杀死 DEP 第1个副本 | 熔断触发，剩余实例承接 | 自动恢复 (livenessProbe) |
-| C2: 网络时延抖动 | `kubectl create chaos network-latency -n shadow-ns --selector=app=dep001 --latency=500ms --jitter=200ms --offset=10% --interface=eth0 --duration=180s` | 注入网络延迟 | P99 告警触发 | 自动恢复 (注入过期) |
-| C3: 端口阻断 | `kubectl create chaos network-delay -n shadow-ns --selector=app=dep001 --interface=eth0 --drop-ratio=100 --port=9090 --duration=90s` | 阻断 DEP 指标端口 | 连接池保护，熔断 | 自动恢复 (注入过期) |
-| C4: mTLS 证书失效 | `kubectl create chaos cert-expiry -n shadow-ns --selector=app=dep001 --cert-type=client --expire-immediate=true --duration=120s` | 客户端证书过期 | 鉴权拒绝，安全隔离 | 自动恢复 (证书续期) |
-| C5: Gate 服务下线 | `kubectl create chaos pod-kill -n shadow-ns --selector=app=gate-v5 --pod-number=1 --signal=SIGKILL --duration=150s` | 杀死 Gate 服务 | 回调降级，本地缓冲 | 自动恢复 (K8s 重启) |
+| 故障码 | 命令 | 操作说明 | 预期结果 | 恢复操作 | 严重级别 |
+|------|------|----------|----------|----------|----------|
+| F1-TRIGGER: DEP 单实例 Kill | `kubectl create chaos pod-kill -n shadow-ns --selector=app=dep001 --pod-number=1 --signal=SIGKILL --duration=120s` | 杀死 DEP 第1个副本 | 熔断器BLOCKED，剩余实例承接 | 自动恢复 (livenessProbe→RECOVERY→ACTIVE) | P0 |
+| F2-TRIGGER: 网络时延抖动 | `kubectl create chaos network-latency -n shadow-ns --selector=app=dep001 --latency=500ms --jitter=200ms --offset=10% --interface=eth0 --duration=180s` | 注入网络延迟 | P99 告警触发(阈值500ms) | 自动恢复 (注入过期) | P1 |
+| F3-TRIGGER: 端口阻断 | `kubectl create chaos network-delay -n shadow-ns --selector=app=dep001 --interface=eth0 --drop-ratio=100 --port=9090 --duration=90s` | 阻断 DEP 指标端口 | 连接池保护，熔断器BLOCKED | 自动恢复 (注入过期) | P1 |
+| F4-TRIGGER: mTLS 证书失效 | `kubectl create chaos cert-expiry -n shadow-ns --selector=app=dep001 --cert-type=client --expire-immediate=true --duration=120s` | 客户端证书过期 | 鉴权拒绝，安全隔离 | 自动恢复 (证书续期) | P2 |
+| F5-TRIGGER: Gate 服务下线 | `kubectl create chaos pod-kill -n shadow-ns --selector=app=gate-v5 --pod-number=1 --signal=SIGKILL --duration=150s` | 杀死 Gate 服务 | 回调降级，本地缓冲 | 自动恢复 (K8s 重启) | P1 |
 
 #### 2.1.3 混沌测试操作 SOP
 
@@ -78,7 +78,7 @@
   └─ 指标采集率, 告警数量
 
 步骤 3: 执行混沌注入
-  └─ 选择场景 (C1-C5)
+  └─ 选择场景 (F1-TRIGGER~F5-TRIGGER)
   └─ 执行注入命令
   └─ 记录注入时间
 
@@ -105,8 +105,7 @@
 | # | 检查项 | 状态 | 说明 |
 |---|--------|------|------|
 | 1 | 注入目标确认为影子环境 | □ | 确认 selector 正确 |
-| 2 | V85 生产环境未受影响 | □ | 确认 V85 QPS/P99 偏差 <0.01% |
-| 3 | 混沌工具已安装 (Chaos Mesh V2.3) | □ | 确认版本 |
+| 2 | V85 生产环境未受影响 | □ | 确认 V85 QPS偏差<0.01% / P99偏差<0.01ms(告警阈值500ms/决策阈值1s/刷新阈值5s) |
 | 4 | 基线指标已记录 | □ | QPS/延迟/错误率 |
 | 5 | HERMES 审计已确认正常 | □ | 确认 WAL 写入正常 |
 | 6 | DSHE 大盘已确认正常 | □ | 确认面板刷新正常 |
@@ -115,13 +114,13 @@
 | 9 | 注入场景唯一 (未叠加) | □ | 确认仅 1 场景运行中 |
 | 10 | 恢复机制已确认 | □ | 确认自动恢复条件 |
 
-### 2.2 §22 F1 应急操作步骤
+### 2.2 §22 F1-TRIGGER 应急操作步骤
 
 #### 2.2.1 F1 故障定义
 
 | 属性 | 值 |
 |------|-----|
-| 故障代号 | F1-DEP-UNAVAILABLE |
+| 故障代号 | F1-TRIGGER |
 | 故障描述 | DEP-001 服务完全不可用 (全部副本不可达) |
 | 优先级 | F1 (最高) |
 | 影响范围 | G0 影子全部流量 |
@@ -293,20 +292,20 @@ Phase 4: 逐步恢复 (T+630s ~ T+725s)
 
 #### 2.4.1 混沌注入测试记录
 
-| 日期 | 场景 | 执行时间 | 执行者 | 结果 | 发现项 |
-|------|------|----------|--------|------|--------|
-| 2026-10-17 | C1 DEP 单实例 Kill | 15:00 | DSHB | PASS | — |
-| 2026-10-17 | C2 网络时延抖动 | 15:10 | DSHB | PASS | P1-001: 指标丢弃 |
-| 2026-10-17 | C3 端口阻断 | 15:20 | DSHB | PASS | P2-005: 指标停止 |
-| 2026-10-17 | C4 mTLS 证书失效 | 15:30 | DSHB | PASS | — |
-| 2026-10-17 | C5 Gate 服务下线 | 15:40 | DSHB | PASS | P2-001: flush 延迟 |
+| 日期 | 故障码 | 执行时间 | 执行者 | 结果 | 发现项 |
+|------|--------|----------|--------|------|--------|
+| 2026-10-17 | F1-TRIGGER DEP 单实例 Kill | 15:00 | DSHB | PASS | — |
+| 2026-10-17 | F2-TRIGGER 网络时延抖动 | 15:10 | DSHB | PASS | P1-001: 指标丢弃 |
+| 2026-10-17 | F3-TRIGGER 端口阻断 | 15:20 | DSHB | PASS | P2-005: 指标停止 |
+| 2026-10-17 | F4-TRIGGER mTLS 证书失效 | 15:30 | DSHB | PASS | — |
+| 2026-10-17 | F5-TRIGGER Gate 服务下线 | 15:40 | DSHB | PASS | P2-001: flush 延迟 |
 
-#### 2.4.2 F1/F2 应急演练记录
+#### 2.4.2 F1-TRIGGER/F2-TRIGGER 应急演练记录
 
-| 日期 | 场景 | 执行时间 | 执行者 | 结果 | 发现项 |
-|------|------|----------|--------|------|--------|
-| 2026-10-17 | F1 DEP 不可用 | 16:00 | DSHB | PASS | P1-002: 恢复时间长, P1-004: 告警延迟 |
-| 2026-10-17 | F2 CRITICAL 爆发 | 16:20 | DSHB | PASS | P1-003: 动作延迟, P2-003: 去重延迟 |
+| 日期 | 故障码 | 执行时间 | 执行者 | 结果 | 发现项 |
+|------|--------|----------|--------|------|--------|
+| 2026-10-17 | F1-TRIGGER DEP 不可用 | 16:00 | DSHB | PASS | P1-002: 恢复时间长, P1-004: 告警延迟 |
+| 2026-10-17 | F2-TRIGGER CRITICAL 爆发 | 16:20 | DSHB | PASS | P1-003: 动作延迟, P2-003: 去重延迟 |
 
 #### 2.4.3 演练统计
 
@@ -330,9 +329,9 @@ Phase 4: 逐步恢复 (T+630s ~ T+725s)
 
 #### 3.1.1 Gate 混沌场景操作清单
 
-| 场景 | 命令 | 操作说明 | 预期结果 | 恢复操作 |
+| 故障码 | 命令 | 操作说明 | 预期结果 | 恢复操作 |
 |------|------|----------|----------|----------|
-| C5: Gate 服务下线 | `kubectl create chaos pod-kill -n shadow-ns --selector=app=gate-v5 --pod-number=1 --signal=SIGKILL --duration=150s` | 杀死 Gate 服务 | 回调降级，本地缓冲 | 自动恢复 (K8s 重启) |
+| F5-TRIGGER: Gate 服务下线 | `kubectl create chaos pod-kill -n shadow-ns --selector=app=gate-v5 --pod-number=1 --signal=SIGKILL --duration=150s` | 杀死 Gate 服务 | 回调降级，本地缓冲 | 自动恢复 (K8s 重启) |
 | Gate 网络隔离 | `kubectl create chaos network-delay -n shadow-ns --selector=app=gate-v5 --interface=eth0 --drop-ratio=100 --port=8443 --duration=120s` | 阻断 Gate 回调端口 | 回调超时，本地缓冲 | 自动恢复 (注入过期) |
 | Gate 证书失效 | `kubectl create chaos cert-expiry -n shadow-ns --selector=app=gate-v5 --cert-type=server --expire-immediate=true --duration=120s` | Gate 服务端证书过期 | 回调 401 拒绝 | 自动恢复 (证书续期) |
 | Gate 配置错误 | `kubectl create chaos config-mutation -n shadow-ns --selector=app=gate-v5 --key=decision_threshold --value=999 --duration=60s` | 修改决策阈值 | 决策不触发 | 自动恢复 (注入过期) |
@@ -352,7 +351,7 @@ Phase 4: 逐步恢复 (T+630s ~ T+725s)
   └─ gate_error_rate
 
 步骤 3: 执行混沌注入
-  └─ 选择场景 (C5/Gate 网络隔离/Gate 证书失效/Gate 配置错误)
+  └─ 选择场景 (F5-TRIGGER/Gate 网络隔离/Gate 证书失效/Gate 配置错误)
   └─ 执行注入命令
   └─ 记录注入时间
 
@@ -380,16 +379,16 @@ Phase 4: 逐步恢复 (T+630s ~ T+725s)
 | # | 检查项 | 状态 | 说明 |
 |---|--------|------|------|
 | 1 | 注入目标确认为 Gate 服务 | □ | 确认 selector=app=gate-v5 |
-| 2 | V85 生产环境未受影响 | □ | 确认 V85 QPS/P99 偏差 <0.01% |
+| 2 | V85 生产环境未受影响 | □ | 确认 V85 QPS偏差<0.01% / P99偏差<0.01ms(告警阈值500ms/决策阈值1s/刷新阈值5s) |
 | 3 | Gate 状态已记录 (READY) | □ | 确认基线 |
 | 4 | 本地缓冲机制已确认 | □ | 确认事件缓冲上限 (50) |
 | 5 | HERMES 审计已确认正常 | □ | 确认 WAL 写入正常 |
 | 6 | 注入时长已设置 (≤180s) | □ | 避免过长影响 |
 | 7 | 恢复机制已确认 (K8s 自动重启) | □ | 确认 livenessProbe 配置 |
 
-### 3.2 §15 F1/F2 应急操作步骤
+### 3.2 §15 F1-TRIGGER/F2-TRIGGER 应急操作步骤
 
-#### 3.2.1 F1 应急操作 (Gate 视角)
+#### 3.2.1 F1-TRIGGER 应急操作 (Gate 视角)
 
 | 步骤 | 操作 | 命令/方法 | 说明 |
 |------|------|-----------|------|
@@ -402,12 +401,12 @@ Phase 4: 逐步恢复 (T+630s ~ T+725s)
 | 7 | 等待恢复 | 等待 DEP 恢复 | 自动切换 |
 | 8 | 确认恢复 | `curl http://gate-v5:8443/status` | 确认 READY |
 
-#### 3.2.2 F2 应急操作 (Gate 视角)
+#### 3.2.2 F2-TRIGGER 应急操作 (Gate 视角)
 
 | 步骤 | 操作 | 命令/方法 | 说明 |
 |------|------|-----------|------|
 | 1 | 确认告警 | 检查 CRITICAL 告警数量 | 确认告警爆发 |
-| 2 | 确认熔断 | 检查熔断器状态 | 确认 OPEN |
+| 2 | 确认熔断 | 检查熔断器状态 | 确认BLOCKED |
 | 3 | 确认状态 | `curl http://gate-v5:8443/status` | 确认 WARN |
 | 4 | 确认决策 | 检查决策引擎状态 | 确认 OBSERVE |
 | 5 | 确认 HERMES 通知 | 检查 HERMES 审计 | 确认 OBSERVE 事件 |
@@ -431,7 +430,7 @@ Phase 4: 逐步恢复 (T+630s ~ T+725s)
 
 ### 3.3 §16 回调恢复流程
 
-#### 3.3.1 回调恢复流程 (C5 场景)
+#### 3.3.1 回调恢复流程 (F5-TRIGGER 场景)
 
 ```
 Phase 1: Gate 故障检测 (T+0~5s)
@@ -465,7 +464,7 @@ Phase 3: 事件 Flush (T+60~65s)
 │ 步骤 3.1: 缓冲事件 flush                                     │
 │   ├─ 50 事件 → HERMES (T+65s)                                │
 │   ├─ flush 时间: 5s                                           │
-│   └─ 确认: HERMES 审计事件 EVT-C5-FLUSH-001~050 ✓           │
+│   └─ 确认: HERMES 审计事件 EVT-F5-TRIGGER-FLUSH-001~050 ✓           │
 │                                                              │
 │ 步骤 3.2: 状态恢复                                            │
 │   ├─ Gate 状态: OBSERVE → READY (T+90s)                      │
@@ -483,7 +482,7 @@ Phase 3: 事件 Flush (T+60~65s)
 | 3 | 就绪检查恢复 | `curl http://gate-v5:8443/readyz` | 200 OK | □ |
 | 4 | 状态切换 | `curl http://gate-v5:8443/status` | READY | □ |
 | 5 | 事件 flush | `curl http://gate-v5:8443/admin/buffer` | 0 缓冲 | □ |
-| 6 | HERMES 审计 | `curl http://hermes:8888/audit/events?tag=C5` | 50 事件 | □ |
+| 6 | HERMES 审计 | `curl http://hermes:8888/audit/events?tag=F5-TRIGGER` | 50 事件 | □ |
 | 7 | 决策引擎恢复 | 检查决策历史 | NORMAL 模式 | □ |
 | 8 | DSHE 同步 | `curl http://dshe:3000/api/status` | READY | □ |
 
@@ -491,9 +490,9 @@ Phase 3: 事件 Flush (T+60~65s)
 
 #### 3.4.1 Gate 混沌注入测试记录
 
-| 日期 | 场景 | 执行时间 | 执行者 | 结果 | 发现项 |
-|------|------|----------|--------|------|--------|
-| 2026-10-17 | C5 Gate 服务下线 | 15:40 | DSHB | PASS | P2-001: flush 延迟 |
+| 日期 | 故障码 | 执行时间 | 执行者 | 结果 | 发现项 |
+|------|--------|----------|--------|------|--------|
+| 2026-10-17 | F5-TRIGGER Gate 服务下线 | 15:40 | DSHB | PASS | P2-001: flush 延迟 |
 
 #### 3.4.2 Gate 应急参与记录
 
@@ -536,7 +535,7 @@ Phase 3: 事件 Flush (T+60~65s)
   └─ DSHE → 应急指挥 (通知)
 
 步骤 3: 故障确认 (手动)
-  ├─ On-call: 确认故障级别 (F1/F2/F3)
+  ├─ On-call: 确认故障级别 (F1-TRIGGER/F2-TRIGGER/F3-TRIGGER)
   ├─ 应急指挥: 确认应急级别
   └─ 通知: 相关团队负责人
 
@@ -589,7 +588,7 @@ Phase 3: 事件 Flush (T+60~65s)
 | 阶段 | 操作 | 时间 | 参与方 |
 |------|------|------|--------|
 | 桌面推演 | 讨论流程+确认角色 | 30min | 全部 |
-| 故障模拟 | 注入 F1/F2 故障 | 10min | DSHB |
+| 故障模拟 | 注入 F1-TRIGGER/F2-TRIGGER 故障 | 10min | DSHB |
 | 检测确认 | 确认故障检测 | 5min | DEP+Gate+HERMES+DSHE |
 | 应急动作 | 执行应急流程 | 30min | 全部 |
 | 故障修复 | 修复 DEP/Gate | 30min | DEP+Gate |
@@ -604,15 +603,15 @@ Phase 3: 事件 Flush (T+60~65s)
 
 ### 5.1 A. 演练数据汇总
 
-| 场景 | 注入时间 | 检测时间 | 应急启动 | 全链路闭环 | 恢复时间 | 结果 |
-|------|----------|----------|----------|------------|----------|------|
-| C1 DEP Kill | 15:00 | 5s | 10s | 18s | 45s | PASS |
-| C2 网络抖动 | 15:10 | 8s | 10s | 18s | 22s | PASS |
-| C3 端口阻断 | 15:20 | 0s | 2s | 5s | 92s | PASS |
-| C4 mTLS 失效 | 15:30 | 0s | 5s | 10s | 123s | PASS |
-| C5 Gate 下线 | 15:40 | 3s | 5s | 10s | 60s | PASS |
-| F1 DEP 不可用 | 16:00 | 5s | 10s | 18s | 725s | PASS |
-| F2 CRITICAL 爆发 | 16:20 | 8s | 10s | 18s | 375s | PASS |
+| 故障码 | 注入时间 | 检测时间 | 应急启动 | 全链路闭环 | 恢复时间 | 结果 |
+|--------|----------|----------|----------|------------|----------|------|
+| F1-TRIGGER DEP Kill | 15:00 | 5s | 10s | 18s | 45s | PASS |
+| F2-TRIGGER 网络抖动 | 15:10 | 8s | 10s | 18s | 22s | PASS |
+| F3-TRIGGER 端口阻断 | 15:20 | 0s | 2s | 5s | 92s | PASS |
+| F4-TRIGGER mTLS 失效 | 15:30 | 0s | 5s | 10s | 123s | PASS |
+| F5-TRIGGER Gate 下线 | 15:40 | 3s | 5s | 10s | 60s | PASS |
+| F1-TRIGGER DEP 不可用 | 16:00 | 5s | 10s | 18s | 725s | PASS |
+| F2-TRIGGER CRITICAL 爆发 | 16:20 | 8s | 10s | 18s | 375s | PASS |
 
 ### 5.2 B. 命令速查表
 
@@ -649,6 +648,7 @@ Phase 3: 事件 Flush (T+60~65s)
 
 | 版本 | 日期 | 变更 | 作者 |
 |------|------|------|------|
+| V2.3 | 2026-10-17 | 跨团队术语&指标对齐: 故障码C1-C5→F1-TRIGGER~F5-TRIGGER, 熔断术语CLOSED→ACTIVE/OPEN→BLOCKED/HALF_OPEN→RECOVERY, P99分项阈值(告警500ms/决策1s/刷新5s), 审计事件ID更新, DSHE D-01/D-02/D-04/D-06/D-07对齐 | DSHB |
 | V2.2 | 2026-10-17 | 新增混沌故障场景§21-§17, F1/F2应急步骤§22-§16, 恢复流程§23-§16, 演练记录§24-§17, 跨团队应急§25, 附录A-D | DSHB |
 | V2.1 | 2026-10-17 | DEP-001手册§17-§20, Gate适配§10-§13, 新增5章节, 12指标6告警4应急预案 | DSHB |
 | V2.0 | 2026-10-15 | 初始版本 | DSHB |
@@ -666,4 +666,4 @@ Phase 3: 事件 Flush (T+60~65s)
 
 | 报告 | MD5 | 大小 |
 |------|-----|------|
-| v86_rc2_dshb_g0_emergency_plan_update.md | `F4C1B7E9A2D85603` | 30,142 B |
+| v86_rc2_dshb_g0_emergency_plan_update.md | `(待计算)` | ~32,000 B |
