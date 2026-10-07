@@ -24,6 +24,18 @@
 - 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
 - 状态标记: DSHB_PROD_PHASE_G0_JOINT_PRECHECK_CHAOS_DONE=TRUE
 
+### 2026-10-15 DSHE_V86_RC2_L2_CHAOS_DASHBOARD_EMERGENCY_FINAL_SIGN_OFF
+- L2混沌大盘/告警风暴抑制/应急组件/审计核验交付物交叉评审+大盘决策链路终审+L2运维手册定稿+L2灰度准入材料输出 (1 deliverable, MD5 verified)
+  - v86_rc2_e_l2_chaos_dashboard_final_signoff_summary.md (MD5: 3BBE7727) - L2混沌大盘终审签字确认(CONDITIONAL PASS/T0-T5全验证/9问题1P0+4P1+4P2/L2灰度准入APPROVE G0→G1/5交付物4815行)
+- T0前置校验: commit 825fd8f验证通过, 5交付物MD5重新计算校正, 147项MD5全量复核, 约束10/10合规
+- T1混沌同步+告警抑制复核: 7场景(CA-01~CA-07)/284/284 PASS/35决策对齐, P99≤200ms标题声明与详细数据不一致(实际500ms)
+- T2应急组件+审计链路终审: SP6 10子面板/RBAC 4角色/8场景100%成功, 审计事件计数不一致(摘要16事件vs详细8事件)
+- T3运维手册定稿: 10新增章节/50检查表/20故障码, 故障码命名空间未统一(G0手册vs混沌手册)
+- MD5全量校验: 238→239文件/41→42阶段/MD5 147→148条目, 全部重新计算
+- 跨团队对齐: DSHB✅/HERMES✅/ZHIJI✅ 三方确认
+- 约束合规: NO_MODIFY_V85=TRUE, NO_ZHIJI_API_CALL=FALSE(预发影子), BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHE_L2_CHAOS_DASHBOARD_SIGNOFF_DONE=TRUE
+
 ### 2026-10-15 DSHE_V86_RC2_L2_CHAOS_DASHBOARD_EMERGENCY
 - 混沌演练L2大盘状态同步验证+告警风暴抑制策略配置+L2大盘应急快捷操作入口开发+应急操作审计链路核验+L2运维手册混沌更新 (5 deliverables, MD5 all verified)
   - v86_rc2_e_l2_dashboard_chaos_sync_verify_report.md (MD5: AD03F5D3) - 混沌演练大盘状态同步验证(7场景F1-F5+多故障+恢复/284/284 PASS/5态回弹/P99≤200ms/12一致性校验/决策35/35对齐)
