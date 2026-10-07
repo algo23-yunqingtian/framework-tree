@@ -386,3 +386,81 @@
 | DSHE大盘接入 | 故障事件实时上报 | ✅ |
 | HERMES审计链路 | 大容量持久化/检索 | ✅ |
 | 跨团队审计对齐 | DEP/HERMES/DSHE 100% | ✅ |
+
+---
+
+## Phase5 三方指标口径对齐+基线重对账 (2026-10-18)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 行数 | 类型 |
+|---|------|-----|---------|------|------|
+| 1 | `v86_rc2_dshb_g1_tripartite_metric_spec_v1.0.md` | `E6311DE1E3F8EA4292DA8FE3FAD19670` | 63,247 | 980 | 新增 - 三方指标统计口径规范V1.0 |
+| 2 | `v86_rc2_dshb_g1_unified_baseline_reconciliation_report.md` | `291FFC03A752161A91AD2560E6721DE8` | 29,136 | 352 | 新增 - 统一样本集基线重对账报告 |
+| 3 | `v86_rc2_dshb_g1_alert_suppression_rerun_plan.md` | `133364977FA267D5EA2FC56825E01AF9` | 46,946 | 765 | 新增 - 告警抑制率大样本复测方案 |
+| 4 | `v86_rc2_dshb_g1_index_optimization_assessment.md` | `C55AFF8F2725FD4292ACE7CE9B64ADA2` | 34,730 | 505 | 新增 - 检索索引优化评估报告 |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `917D4D76` | `9FA809A117A1499EFB340213E7CCEA05` | 62,246 | V1.5→V1.6 |
+| 2 | `v86_rc2_g1_prod_sop_8scenarios_final.md` | `C5D2248A` | `58E8E29ABBC41F41C166A83544C62921` | 84,276 | V1.1→V1.2 |
+
+### Phase5 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 4 | 174,059 B |
+| 更新文件 | 2 | 146,522 B |
+| **合计** | **6** | **320,581 B** |
+
+### Phase5 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| P0阻断项闭环 | METRIC-P0-001 三方口径不一致 → CLOSED |
+| 统一口径指标数 | 4 (吞吐/丢失率/P99时延/72h总量) |
+| P99时延独立定义 | 3类 (业务端到端/审计入库/WAL写入) |
+| 基线重对账样本 | HERMES 117万事件数据集 |
+| 基线重对账偏差消除率 | 99.998% |
+| 新增P1风险 | 1 (INDEX-P1-001 检索线性扫描退化) |
+| 新增P2风险 | 3 (INDEX-P2-001/002 + METRIC-P2-001) |
+| 累计风险总数 | 38 (33 CLOSED + 1 BLOCKED + 1 OPEN P1 + 3 OPEN P2) |
+| 存量文档修正 | SOP V1.1→V1.2 + 5份Phase4文档指标描述同步 |
+| GATE_DECISION | BLOCKED_BY_DEPENDENCY (不变, 仍等待HERMES审计链路) |
+| G1_GRAY_TRAFFIC_START | FALSE (不变, 仍等待HERMES) |
+
+### Phase5 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE5_METRIC_ALIGN_DONE | TRUE |
+| METRIC_SPEC_V1.0_FINALIZED | TRUE |
+| BASELINE_RECONCILIATION_DONE | TRUE |
+| P0_BLOCKER_METRIC_INCONSISTENCY | CLOSED |
+
+### 累计交付物汇总 (G0→G1全流程)
+
+| 阶段 | 新增文件 | 更新文件 | 大小合计 |
+|------|---------|---------|---------|
+| 跨团队对齐 (V1.0) | 6 | 3 | 300,197 B |
+| Phase1 影子放量 | 2 | 1 | 85,449 B |
+| Phase2 长稳+故障 | 5 | 1 | 169,659 B |
+| Phase3 条件解除+基线冻结 | 6 | 1 | 243,521 B |
+| Phase4 灰度前置准备 | 4 | 2 | 394,086 B |
+| Phase5 指标对齐+基线重对账 | 4 | 2 | 320,581 B |
+| **累计合计** | **27** | **10** | **1,513,493 B** |
+
+### Phase5 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增独立文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅做口径/统计窗口/指标定义对齐 | ✅ |
+| 指标口径对齐 | DSHB/DSHE/HERMES 100% | ✅ |
+| HERMES审计链路 | 大容量持久化/检索 | ⏳ 等待HERMES工单完成 |
+| 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |

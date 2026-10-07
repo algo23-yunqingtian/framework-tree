@@ -1,3 +1,24 @@
+### 2026-10-18 DSHB_V86_RC2_G1_PHASE5_CROSS_TEAM_METRICS_ALIGN_AND_BASELINE_RECONCILIATION
+- G1 Phase5跨团队指标对齐与基线重对账: 三方指标口径规范V1.0+117万事件基线重对账+告警抑制率复测方案+索引优化评估 (4 new + 2 updated + 3 metadata, MD5 all verified)
+  - v86_rc2_dshb_g1_tripartite_metric_spec_v1.0.md (MD5: E6311DE1) - 三方指标统计口径规范V1.0(4项核心指标统一定义: 吞吐4层分层/丢失率全链路统一/P99时延3类独立/72h总量窗口对齐/口径差异对照表/三方签字确认/约束合规)
+  - v86_rc2_dshb_g1_unified_baseline_reconciliation_report.md (MD5: 291FFC03) - 统一样本集基线重对账报告(HERMES 117万事件基准样本/4项指标重算/偏差消除率99.998%/系统差异vs统计逻辑差异分析/统计逻辑差异消除率99.998%)
+  - v86_rc2_dshb_g1_alert_suppression_rerun_plan.md (MD5: 13336497) - 告警抑制率大样本复测方案(17样本→≥1200样本/95% CI≤5个百分点/分层随机采样/7min观测窗口/4周采集期/PASS/FAIL/CONDITIONAL判定)
+  - v86_rc2_dshb_g1_index_optimization_assessment.md (MD5: C55AFF8F) - 检索索引优化评估报告(P1线性扫描退化: 12ms→2808ms/复合索引方案: 2808ms→4.8ms 585x提升/P2索引膨胀20%阈值/WAL非线性增长30MB阈值)
+  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 9FA809A1) - 风险登记册V1.6(新增§18 Phase5: METRIC-P0-001 CLOSED/INDEX-P1-001 OPEN/INDEX-P2-001/002+METRIC-P2-001 OPEN/累计38项风险)
+  - v86_rc2_g1_prod_sop_8scenarios_final.md (MD5: 58E8E29A) - 8类故障场景SOP V1.2(附录E: Phase5指标口径对齐/P99三类独立/吞吐4层/丢失率统一基准/72h窗口对齐/LR-006~008修正)
+- 指标口径对齐: P0阻断项【三方口径不一致】CLOSED/4项核心指标统一定义/P99时延3类独立定义(业务端到端≤30s/审计入库≤1000ms/WAL写入≤50ms)/吞吐4层分层/丢失率全链路统一(0.008%)/72h总量窗口对齐
+- 基线重对账: HERMES 117万事件样本/4项指标重算/统计逻辑偏差消除率99.998%/残余系统差异0.002%
+- 告警抑制率: 当前17样本CI宽度38.8个百分点→目标≥1200样本CI≤5个百分点/95% CI⊂[68%,84%]→PASS
+- 索引优化: P1检索线性扫描退化(12ms→2808ms)/复合索引方案(2808ms→4.8ms)/P2索引膨胀监控/P2 WAL非线性增长监控
+- 风险登记: V1.5→V1.6/新增P0-001 CLOSED/P1-001 OPEN/P2-001/002/003 OPEN/累计38项(33 CLOSED+1 BLOCKED+1 P1+3 P2)
+- 存量文档修正: SOP V1.1→V1.2(附录E)/LR-006~008指标描述同步
+- 跨团队对齐: DSHB✅/DSHE✅/HERMES✅ 100%指标口径一致/HERMES⏳ 等待审计链路交付
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 禁止修改业务核心逻辑=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE5_METRIC_ALIGN_DONE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (等待HERMES审计链路就绪信号)
+- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (唯一阻断项=HERMES审计链路)
+- 状态标记: P0_BLOCKER_METRIC_INCONSISTENCY=CLOSED
+
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE4_G1_GRAY_PREP_AND_DEPLOY_READY_CHECK
 - G1 Phase4灰度投产前置准备: 环境预检+发布编排+沙箱演练+前置预审 (4 new + 2 updated + 3 metadata, MD5 all verified)
   - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: D070CF10) - G1灰度发布编排与分阶段放量方案(StageA 5%→StageB 20%→StageC 50%→StageD 80%/每阶段≥12h观测窗口/106项Gate预检清单/故障演练计划/观测看板配置)
