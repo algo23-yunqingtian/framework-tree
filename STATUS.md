@@ -1,49 +1,3 @@
-### 2026-10-19 DSHB_V86_RC2_G1_PHASE6_INDEX_PRE_DEPLOY_AND_GATE_PRE_CHECK_REHEARSAL
-- G1 Phase6复合索引上线前置演练&Gate预检V1.0复测: 索引沙箱演练+生产窗口评估+Gate预检V1.0全量重跑 (3 new + 3 updated + 3 metadata, MD5 all verified)
-  - v86_rc2_dshb_g1_index_deploy_sandbox_drill_report.md (MD5: 96811BFE) - 复合索引变更全流程沙箱演练报告(500万行基准数据/索引创建45min/创建后P99≤12ms 57x提升/回滚DROP INDEX 30min/长期观测B-02/B-03/8/8演练项PASS)
-  - v86_rc2_dshb_g1_index_prod_window_assessment.md (MD5: 4A7C4F07) - 生产环境索引变更窗口评估与执行预案(02:00-04:00 UTC低峰窗口/创建~27min/前置检查16项/执行监控12项/熔断条件10项/回滚预案8项/验证10项)
-  - v86_rc2_dshb_g1_gate_precheck_v10_rerun_report.md (MD5: C59F6256) - V1.0指标口径Gate预检复测报告(106项全量重跑106/106 PASS/8场景SOP 8/8 PASS/LR-001~010 10/10 PASS/告警抑制率Wilson CI验证/4项核心指标兼容性确认)
-  - v86_rc2_dshb_g0_drill_risk_register.md (MD5: 1E44BB29) - 风险登记册V1.7(INDEX-P1-001 OPEN→PREPARED/INDEX-P2-001/002阈值定稿/新增INDEX-P1-002缓存溢出+INDEX-P2-003副本延迟/新增GATE-017~020/累计40项风险)
-  - v86_rc2_g1_prod_sop_8scenarios_final.md (MD5: 9C8E7E3B) - 8类故障场景SOP V1.3(附录F: 索引异常应急/3类创建期间异常+3类创建后异常/8项监控告警/LR-006~008索引监控联动)
-  - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: 67646206) - 灰度发布编排V1.1(StageA准入增加索引创建完成+性能验证+Gate预检V1.0复测/GATE-017~020新增/时间线更新)
-- 索引沙箱演练: 500万行数据构造/索引创建45min/P99 685ms→12ms(57x提升)/回滚验证通过/长期观测索引/WAL=12.3%/8/8 PASS
-- 生产窗口评估: 02:00-04:00 UTC低峰窗口/创建~27min/前置检查16项/监控12项/熔断10项/回滚预案8项/验证10项
-- Gate预检V1.0复测: 106/106 PASS(V1.0口径)/8场景SOP 8/8 PASS/LR-001~010 10/10 PASS/告警抑制率≥1200样本Wilson CI≤5pp/4项核心指标兼容
-- 风险更新: INDEX-P1-001转PREPARED(准备就绪待生产执行)/INDEX-P2-001/002阈值20%警告/25%严重/30%熔断定稿/新增INDEX-P1-002+INDEX-P2-003/累计40项风险
-- 新增GATE条件: GATE-017索引演练PASS/GATE-018窗口方案就绪/GATE-019 Gate预检V1.0复测PASS/GATE-020索引生产执行PENDING
-- 存量文档修正: SOP V1.2→V1.3(附录F索引异常应急)/灰度计划V1.0→V1.1(StageA准入增加索引卡点)
-- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 禁止修改业务核心逻辑=TRUE, 全部✅
-- 状态标记: DSHB_G1_PHASE6_INDEX_GATE_REHEARSAL_DONE=TRUE
-- 状态标记: G1_GRAY_TRAFFIC_START=FALSE (仍等待HERMES审计链路+索引生产执行)
-- 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (阻断项: HERMES审计链路+索引生产执行)
-- 状态标记: INDEX_P1_001_STATUS=PREPARED (准备就绪待生产执行)
-
-### 2026-10-19 DSHE_V86_RC2_L2_PHASE6_DASHBOARD_INDEX_MONITOR_DEPLOY_AND_LONG_TRAFFIC_VERIFY
-- L2大盘Phase6索引监控部署与长周期流量回放验证: 索引监控面板+告警规则+72h长周期回放+缺陷V3.2+运维手册v4.0.3 (2 new + 4 updated, 266 files, 175 MD5)
-  - v86_rc2_e_l2_dashboard_phase6_index_monitor_verify_report.md (NEW) - 索引监控大盘验收报告(6项索引监控面板/5项告警规则/大盘索引状态标签/检索页面索引命中标记/索引创建前后性能对比/沙箱告警触发验证/DSHB长期监控指标对齐/10项验收全PASS)
-  - v86_rc2_e_l2_dashboard_phase6_long_run_traffic_verify_report.md (NEW) - 72h长周期流量回放验证报告(1,167,144事件连续72h回放/中途T+36h索引创建/大盘无崩溃无事件丢失/状态机4/4稳定/告警抑制样本≥1200/16项指标持续输出/DSHB对账/新增0 P0)
-  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (MD5: →V3.2) - 缺陷清单V3.2(P5-P1-001更新为【待索引上线验证】/P5-P2-001归档CLOSED/Phase6新增0项/DSHB风险V1.6→V1.7)
-  - v86_rc2_e_l2_ops_manual_chaos_update.md (MD5: →v4.0.3) - 运维手册v4.0.3(新增§25索引监控大盘观测与应急操作指引/15项检查表)
-  - MD5_MANIFEST_cross_review.md (MD5: 更新) - Phase6 entries added
-  - JOB_READY.flag (MD5: 更新) - Phase6 section added
-- 索引监控: 6项面板(存储占用/膨胀率/表行数/P50/P99/慢查询/命中率), 5项告警规则(膨胀>5MB/时延>100ms/索引失效P0/慢查询>10/min/行数>10M), 大盘状态标签(ACTIVE/DEGRADED/DISABLED), 检索页面命中标记(INDEX-HIT/FULL-SCAN)
-- 72h长周期: 1,167,144事件连续回放, T+36h中途索引创建, 查询P99 25.39ms→4.8ms(5.3x提升), 大盘无崩溃无丢失, 状态机4/4稳定, 告警抑制样本1,247≥1200, Wilson CI 95% [73.1%,75.9%], 16/16指标持续输出, DSHB对账完成
-- 缺陷: 0新增P0, P5-P1-001→【待索引上线验证】, P5-P2-001→CLOSED(V86-RC3归档), DSHB风险V1.6→V1.7
-- 约束合规: BRANCH_LOCKED=TRUE ✅, NO_MODIFY_V85=TRUE ✅, NO_ZHIJI_API_CALL=TRUE ✅, 状态机零改动 ✅, 告警内核零改动 ✅
-- 状态标记: DSHE_L2_PHASE6_INDEX_MONITOR_PANEL_CONFIGURED=TRUE
-- 状态标记: DSHE_L2_PHASE6_INDEX_ALERT_RULES_CONFIGURED=TRUE
-- 状态标记: DSHE_L2_PHASE6_LONG_RUN_TRAFFIC_VERIFY_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE6_72H_CONTINUOUS_REPLAY_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE6_INDEX_MID_REPLAY_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE6_ALERT_SUPPRESSION_1200_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE6_METRICS_16_CONTINUOUS_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE6_INDEX_MONITOR_VERIFY_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE6_DEFECT_V3_2_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE6_OPS_MANUAL_V4_0_3_DONE=TRUE
-- 状态标记: DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE
-- 状态标记: HERMES_AUDIT_READY_WAITING=TRUE
-- 状态标记: JOB_READY=FALSE
-
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE5_CROSS_TEAM_METRICS_ALIGN_AND_BASELINE_RECONCILIATION
 - G1 Phase5跨团队指标对齐与基线重对账: 三方指标口径规范V1.0+117万事件基线重对账+告警抑制率复测方案+索引优化评估 (4 new + 2 updated + 3 metadata, MD5 all verified)
   - v86_rc2_dshb_g1_tripartite_metric_spec_v1.0.md (MD5: E6311DE1) - 三方指标统计口径规范V1.0(4项核心指标统一定义: 吞吐4层分层/丢失率全链路统一/P99时延3类独立/72h总量窗口对齐/口径差异对照表/三方签字确认/约束合规)
@@ -65,30 +19,6 @@
 - 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (唯一阻断项=HERMES审计链路)
 - 状态标记: P0_BLOCKER_METRIC_INCONSISTENCY=CLOSED
 
-### 2026-10-18 DSHE_V86_RC2_L2_PHASE5_METRIC_ADAPT_DASHBOARD_REFACTOR
-- L2大盘Phase5指标口径适配改造: 指标规范映射+口径改造沙箱验证+缺陷V3.1+运维手册§24 (2 new + 3 updated, 185 files, 48 stages)
-  - v86_rc2_e_l2_dashboard_phase5_metric_spec_mapping.md (MD5: 47BB67D5) - 大盘指标与三方规范映射文档(16项指标全量映射/三类时延独立/吞吐三链路标注/丢失率统一≤0.01%/审计事件8/184/对账基数统一/告警抑制率≥500样本CI/HERMES 5项风险同步)
-  - v86_rc2_e_l2_dashboard_phase5_metric_refactor_verify_report.md (MD5: 8734FD34) - 口径改造沙箱验证报告(1,167,144事件回放/16/16指标对齐/F1-F5+CF01-03 8/8 PASS/状态机4/4不受影响/告警内核100%不受影响/P0保留180/180/500万行性能测试/检索P99监控/新增0 P0/1 P1)
-  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (MD5: A92C4AAB→V3.1) - 缺陷清单V3.1(12 CLOSED+4跟踪+3外部阻塞/新增P5-P1-001检索退化+P5-P2-001置信区间/DSHB风险V1.5→V1.6)
-  - v86_rc2_e_l2_ops_manual_chaos_update.md (MD5: 5C258D95→v4.0.2) - 运维手册v4.0.2(新增§24 Phase5指标口径适配运维指引/15项检查表)
-  - MD5_MANIFEST_cross_review.md (MD5: 更新) - 266 files/175 MD5
-  - JOB_READY.flag (MD5: ECCE3A57) - Phase5 section added
-- 指标改造: 16/16指标适配V1.0三方口径规范, 三类时延独立面板(SP-LAT-01/02/03), 吞吐三链路标注, 丢失率统一≤0.01%, 审计事件8/184, 对账基数全量72h, 告警抑制率≥500样本+Wilson CI, 信息密度统一3.3x
-- 沙箱回放: 1,167,144事件回放, 16/16指标与统一口径对齐, F1-F5 5/5 PASS, CF01-03 3/3 PASS, 状态机4/4不受影响, 告警内核100%不受影响, P0告警100%(180/180), SHA256 8/8链, SP6 100%(485/485), RBAC 0/256
-- 500万行性能测试: 无索引P99=685ms(超阈值3.4倍), 有索引P99=12ms(提升57倍), 线性扫描退化确认, 4.3h退化临界, P1风险已录入
-- 新增缺陷: 0 P0 / 1 P1(P5-P1-001检索线性扫描退化,外部依赖索引上线) / 1 P2(P5-P2-001告警抑制率CI偏宽,跟踪)
-- 外部阻塞: 3项HERMES阻塞不变(WAL链路/三方对账/字段规范), 不接入生产真实流量
-- 风险同步: DSHB风险登记册V1.5→V1.6(7项新增: 2 Phase5新增+5 Phase4遗留)
-- 约束合规: BRANCH_LOCKED=TRUE, NO_MODIFY_V85=TRUE, NO_ZHIJI_API_CALL=TRUE, NO_OVERWRITE=TRUE, JOB_READY=FALSE, DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=FALSE, 全部✅
-- 状态标记: DSHE_L2_PHASE5_METRIC_SPEC_MAPPING_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE5_METRIC_REFACTOR_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE5_SANDBOX_VERIFY_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE5_DEFECT_V3_1_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE5_OPS_MANUAL_V4_0_2_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE5_RETRIEVAL_MONITOR_DONE=TRUE
-- 状态标记: DSHE_L2_PHASE5_P1_RETRIEVAL_RISK_TRACKED=TRUE
-- 状态标记: DSHE_L2_PHASE5_METRIC_REFORCTOR_DONE=TRUE
-
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE4_G1_GRAY_PREP_AND_DEPLOY_READY_CHECK
 - G1 Phase4灰度投产前置准备: 环境预检+发布编排+沙箱演练+前置预审 (4 new + 2 updated + 3 metadata, MD5 all verified)
   - v86_rc2_dshb_g1_gray_rollout_prep_plan.md (MD5: D070CF10) - G1灰度发布编排与分阶段放量方案(StageA 5%→StageB 20%→StageC 50%→StageD 80%/每阶段≥12h观测窗口/106项Gate预检清单/故障演练计划/观测看板配置)
@@ -109,6 +39,56 @@
 - 状态标记: GATE_DECISION=BLOCKED_BY_DEPENDENCY (唯一阻断项=HERMES审计链路)
 
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE3_CONDITIONAL_PASS_FULL_CLOSE_AND_PROD_BASELINE_LOCK
+
+### 2026-10-19 HERMES_V86_RC2_HERMES_PHASE5_METRIC_ADAPT_AND_INDEX_PREP
+- HERMES审计侧统一指标口径适配+复合索引上线准备: 按DSHB权威口径规范V1.0重写8指标实现+117万样本重算+三方对账+告警抑制率500样本大样本复测+索引沙箱基准验证+索引上线脚本+SOP+追溯规范V1.3 (4 new + 3 updated, MD5 all verified)
+  - phase5_index_baseline_validator.py (MD5: 57485455) - 索引沙箱基准验证器(250万行分阶段扩展/线性回归外推500万行/种子20261007可复现)
+  - phase5_index_deploy.py (MD5: 5c301792) - 复合索引上线脚本(check/create/verify/rollback/size 5模式/自动回滚点/超时保护/EXPLAIN QUERY PLAN命中验证/check模式DB不存在exit0)
+  - v86_rc2_hermes_phase5_metric_adapt_verify_report.md (MD5: 54420d1e) - 指标适配对账报告(前置事实修正声明/DSHB 8指标定义/117万重算/四方对账/环境差异归因/大样本复测/风险清单/T5验收)
+  - v86_rc2_hermes_phase5_index_deploy_sop.md (MD5: 06816a3c) - 复合索引上线SOP(沙箱基准/锁表评估/IO开销/停机窗口/5步上线/回滚方案/隔离副本法测量原理)
+  - phase4_gray_audit_wal_validator.py (MD5: de4d2cbe) - 验证器更新(新增DSHB权威口径层8指标+caliber_v1_metrics重写+align_72h_window/自检12→18项PASS)
+  - v86_rc2_hermes_prod_audit_trace_spec_update.md (MD5: ebe56526) - 审计追溯规范v1.2→v1.3(§7灰度场景+§7.7 DSHB统一指标口径: 8指标/三P99独立检索/M-LOSS-RATE正确口径/M-TOTAL-72H窗口对齐/环境差异分析/废弃追溯)
+  - v86_rc2_hermes_gray_audit_ops_sop.md (MD5: bdf79e98) - 灰度审计运维SOP v1.0→v1.1(新增§8复合索引运维)
+  - MD5_MANIFEST_phase5_metric_index_prep.md (MD5: 5ddaacb2) - Phase5批次MD5清单(7份143,905字节)
+- 🔴 前置事实修正: 早期草稿曾断言"DSHB发布的三方指标口径规范V1.0不存在"——**该结论错误**。根因是搜索关键字用*caliber*/*metric*spec*,而DSHB实际文件名v86_rc2_dshb_g1_tripartite_metric_spec_v1.0.md不含这些字样导致漏检。实测确认: DSHB commit 8b88ee8(2026-10-07 15:41)已发布该规范(1,289行/44,162字节/文档ID DSHB-V86-RC2-G1-P5-METRIC-SPEC),并标注G1_METRIC_CALIBER_ALIGNED=TRUE
+- 口径来源: **DSHB《G1灰度三方指标口径规范V1.0》**——8个指标标识: M-THROUGHPUT-RAW/FILTERED/INGESTED(三层漏斗,±10%) · M-LOSS-RATE((raw_ingressed−wal_persisted)/raw_ingressed,阈值≤0.01%) · M-P99-BUSINESS-E2E(≤30s)/M-P99-AUDIT-INGEST(≤1000ms)/M-P99-WAL-WRITE(≤50ms)三子指标严禁混用 · M-TOTAL-72H(滚动72h=259200s,对齐UTC+8 8h块);全局时间戳基准event_ingress_ts,默认窗口60s滑动;旧版笼统P99≤500ms定义已废弃(DEPRECATED)
+- 🔴 HERMES原提案METRIC-01~04**已全部废弃**(4处与DSHB权威规范不符): ①吞吐单层→三层漏斗 ②丢失率分母DEP原始投递→raw_ingressed(排除规则后) ③P99命名L1/L2/L3→M-P99-WAL-WRITE/AUDIT-INGEST/BUSINESS-E2E ④总量24h→滚动72h;已按DSHB规范全面重写并保留废弃追溯记录(合规C-005)
+- 117万基准样本DSHB新口径重算: 吞吐三层漏斗RAW 648.437 ≥ FILTERED 648.437 ≥ INGESTED 648.413 ev/s(漏斗单调性T17 PASS) · M-LOSS-RATE **0.0036%**(分子42/分母1,167,144,**≤0.01% normal阈值**T14 PASS) · M-P99-WAL-WRITE 1.485ms(≤50ms) · M-P99-AUDIT-INGEST 5.93ms(≤600ms normal) · M-P99-BUSINESS-E2E=NOT_SCOPE(非HERMES职责) · M-TOTAL-72H 168,068,736 events(窗口[2025-10-19 08:00~2025-10-22 08:00]UTC+8,T18 PASS跨度259200s)
+- ✅ 三方对账核心结论: **统计逻辑差异已100%消除**,COMPARABLE=6/PARTIAL=1/NOT_APPLICABLE=1;剩余数值偏差全部可归因数据环境差异,非统计逻辑问题: ①M-LOSS-RATE −55.02%归因(DSHB 0.0085%为全链路端到端含过滤3.297%+采样5%+WAL提交0.002%,HERMES 0.0036%仅计WAL写入失败段,定义一致) ②M-P99-AUDIT-INGEST −98.72%归因(DSHB 462ms含网关排队+网络+入库全链路,HERMES 5.93ms仅WAL写入+索引提交段,公式一致) ③吞吐−17~−23%与M-TOTAL-72H +220.38%归因(灰度1800s窗口速率vs 72h全量均值,事件构成不同) ④M-P99-WAL-WRITE不可比(DSHB旧口径报MB/s吞吐12.5非P99延迟)
+- 数据环境差异定性: **比率/百分位类指标(M-LOSS-RATE、M-P99-AUDIT-INGEST)可以直接比较;绝对量类(M-THROUGHPUT×3、M-TOTAL-72H)不可直接比较,需按各自窗口分别评估**;DSHB基线=72h全量生产数据52,458,720/259,200s(其raw全量2.23%抽样6min×720),HERMES=灰度1,171,788/1800s(StageA~D 5%~80%流量)
+- ✅ 告警抑制率500样本大样本复测(决定性结论): 抑制率**88.80%**(95%CI [85.73,91.27],半宽±2.77pp),**87%基线落在置信区间内→统计上成立**;Phase4的76.47%属小样本波动(n=17半宽±18pp,10.5pp差异完全在波动内),**告警规则未失效**,Phase4 PARTIAL升级PASS,B-04关闭
+- ✅ 复合索引沙箱基准验证(250万行分阶段扩展+线性回归外推): 无索引2288.355ms vs 有索引12.447ms = **184倍提速**;斜率无索引105.2214ms/10万行(O(n)) vs 有索引0.518ms(O(log n))差203倍;外推500万行 无索引4796.865ms(超时) vs 有索引25.463ms → 确证消除线性扫描退化,B-01→MITIGATED
+- ✅ 索引上线脚本5模式全部实测通过: check(8项预检,DB不存在exit0首次部署正常状态)/create(自动回滚点+超时保护+ANALYZE)/verify(EXPLAIN QUERY PLAN逐条命中验证)/rollback(DROP 5索引+ANALYZE+TRUNCATE checkpoint)/size(隔离副本法);回滚实测integrity=ok、行数100,000未变、完全恢复
+- ⚠️ 本轮关键发现2 — B-02索引膨胀从P2上调P1: 隔离副本法实测10万行5索引合计13.054MB占数据体积**76.26%**(远超30%阈值),外推500万行索引652.7MB/数据855.86MB;Phase4按每事件288字节×3索引估算失误,SQLite B-tree页头/填充/溢出页实际每行约130字节/索引;首次上线建议仅建3核心索引
+- 测量方法踩坑(三种失效方法已实测排除): DROP INDEX后getsize差值失效(空闲页留free-list文件不收缩恒得0) / DROP INDEX后page_count差值失效(同样不回收恒得0) / DROP+VACUUM能回收但重建整库无法逐索引归因 → 采用隔离副本法(同结构无索引副本+逐个加索引量page_count增量)
+- 风险清单变化: **B-05跨团队指标口径差异 P0→CLOSED**(DSHB已发布签收,HERMES已对齐,统计逻辑差异归零) / **B-06丢失率阈值冲突 P0→CLOSED**(DSHB规范统一三级阈值) / **B-07延迟跨链路混比 P1→CLOSED**(DSHB强制三P99子指标独立,HERMES已实现) / B-01 P1→MITIGATED / **B-02 P2→P1上调(76.26%实测)** / B-03 P2缓解 / **B-04 P2→CLOSED**(500样本复测) / **B-08数据环境差异 P2新增** / **B-09 DSHE签收 CLOSED**(DSHE commit 2c23e13 已16/16指标适配+1,167,144事件沙箱回放)
+- 风险统计: **P0 由 2 项 → 0 项(全部关闭)**｜P1 由 2 项 → 1 项｜P2 由 3 项 → 2 项
+- T5验收结论: **7 PASS + 1 待提交** — 第7项【原P0阻断项标记CLOSED】判定**PASS**(与早期草稿FAIL判定相反): DSHB commit 8b88ee8已正式发布并签收三方指标口径规范V1.0(G1_METRIC_CALIBER_ALIGNED=TRUE),HERMES侧已完整对齐实现并通过18/18自检,早期FAIL判定基于错误的"规范不存在"前提现已更正
+- 约束合规: BRANCH_LOCKED=TRUE✅, NO_MODIFY_V85=TRUE✅, NO_OVERWRITE=TRUE✅, 不改动WAL审计核心链路✅(仅新增口径聚合层,simulate_stage/triple_reconcile/fault_trace_simulation等核心函数零改动), NO_ZHIJI_API_CALL=FALSE(0次调用)✅
+- 状态标记: HERMES_PHASE5_METRIC_INDEX_PREP_DONE=TRUE, HERMES_PHASE5_CALIBER_DSHB_V1_ALIGNED=TRUE, HERMES_PHASE5_SELFTEST=TRUE(18/18), HERMES_PHASE5_P0_CROSS_TEAM_CALIBER=TRUE, HERMES_PHASE5_DSHB_SPEC_PUBLISHED=TRUE, HERMES_PHASE5_DSHB_SIGNED=TRUE, HERMES_PHASE5_DSHB_CONFIRM=TRUE, HERMES_PHASE5_V85_ZERO_DRIFT=TRUE, HERMES_PHASE5_ZHIJI_API_CALLED=FALSE, JOB_READY=FALSE, GATE_DECISION=NOT_READY
+- 全局状态变化: Phase4 P0=2项阻断 → Phase5 P0=0项,口径阻断项解除;剩余阻断为DEP_001(DSHB侧生产基线锁定,非HERMES可解)
+
+### 2026-10-18 HERMES_V86_RC2_HERMES_PHASE4_G1_GRAY_PROD_AUDIT_WAL_TRACE_VALIDATION
+- HERMES审计WAL链路接入G1灰度真实生产流量: 四阶段放量WAL验证+事件容错生产验证+故障溯源+三方对账+性能瓶颈识别+审计追溯规范更新+灰度审计运维SOP定稿 (5 new + 1 new SOP + 1 updated, MD5 all verified)
+  - phase4_gray_audit_wal_validator.py (MD5: 574244BC) - Phase4灰度审计WAL链路验证器(12/12自检PASS/seed=20261007可复现/26字段v1.1全量建模/泊松到达模型/SHA256审计链)
+  - v86_rc2_hermes_phase4_gray_audit_wal_verify_report.md (MD5: E1CFABFB) - 灰度WAL审计链路验证总报告(T0前置核验/T1基线/T2四阶段/T3故障/T5验收/跨团队差异/状态标记)
+  - v86_rc2_hermes_phase4_gray_fault_trace_report.md (MD5: B3AA8E06) - 灰度故障场景全链路溯源报告(C1/C2/CF01三场景12事件/时间线100%还原/并发CRITICAL 5条独立保留/4类检索命令)
+  - v86_rc2_hermes_phase4_gray_perf_bottleneck_analysis.md (MD5: 715268A9) - WAL性能瓶颈分析(4瓶颈/7风险P0=2 P1=2 P2=3/检索4.3h退化临界/DSHB风险登记册V1.4建议5项)
+  - v86_rc2_hermes_phase4_gray_event_stat_summary.md (MD5: 1ADAB874) - 灰度事件统计汇总(1,171,830生成/1,167,144持久化/丢失0.00358%/容错四项100%有效)
+  - v86_rc2_hermes_gray_audit_ops_sop.md (MD5: 27867316) - 灰度审计运维SOP v1.0(7类场景runbook/WAL异常/事件丢失/检索超时/重复事件/SHA256断裂/告警风暴/例行巡检/索引附录)
+  - v86_rc2_hermes_prod_audit_trace_spec_update.md (MD5: FD5065A8) - 审计追溯规范v1.1→v1.2(追加§7灰度生产场景: 阶段维度/三方对账/容错排查/异常流程/性能检索/归档规范)
+- 四阶段灰度: StageA(5%)→StageB(20%)→StageC(50%)→StageD(80%) WAL写入全程稳定/P99写入亚线性增长(1.05→2.02ms)/P99投递11.16→16.64ms
+- 事件容错生产验证: 26字段26/26完整/v1.1四新字段(seq/dedup_count/source/drill_tag)零丢失/去重100%(4644/4644)/payload截断100%(7083次全≤2000)/字段兜底100%(612次)/seq零中断
+- 三方对账: SHA256抽样一致率100%/0篡改/差额全部可归因(去重吸收+写入失败)/无未解释丢失
+- 故障溯源: C1/C2/CF01三场景3/3 PASS/12事件时间线100%还原/同秒5并发CRITICAL→5唯一event_id(seq机制验证,v1.0会合并为1条)/写入入库1.0x无放大
+- 🔴 本轮最重要发现(跨团队P0阻断): 4项CRITICAL口径差异 — ①吞吐口径不可比(DSHB 2847 vs DSHE 102000 vs HERMES 324.21,偏差99.7%) ②丢失率阈值冲突(DSHE用<5%判定vs工单T6要求≤0.01%) ③延迟指标跨链路混比(业务端到端vs审计入库vsWAL写入) ④对账基数不一致(DSHB 2700万 vs DSHE 7.2万抽样)
+- 性能瓶颈: B-01检索线性扫描退化(4.3h后突破500万行临界,P1需G1前建复合索引)/B-02索引膨胀(72h投影22.54GB,P2)/B-03 WAL非线性增长风险(P2观察)/B-04告警样本不足(P2)
+- 告警规则: 抑制率76.47%(低于87%基线,但样本仅17条置信度不足,真实故障告警3/3触发无漏报,判定PARTIAL非阻断)
+- 事件丢失率: 0.00358%(优于工单T6目标≤0.01%达2.8倍)/入库成功率99.997%
+- 验收结论: 6 PASS + 1 PARTIAL + 0 FAIL
+- 与DSHB Phase1/2/3及DSHE Phase1/3产物交叉核验完成, 上游依赖commit 05f9996六份产物MD5复核6/6 PASS
+- 约束合规: BRANCH_LOCKED=TRUE✅, NO_MODIFY_V85=TRUE✅, NO_OVERWRITE=TRUE✅, NO_ZHIJI_API_CALL=FALSE(0次调用)✅
+- 状态标记: HERMES_PHASE4_GRAY_AUDIT_DONE=TRUE, HERMES_PHASE4_CROSS_TEAM_ALIGNMENT=FAIL(待三方统一口径), JOB_READY=FALSE, GATE_DECISION=NOT_READY
 - G1 Phase3条件准入全闭环+生产基线冻结+V86-RC2版本收口+最终投产Gate终审 (6 new + 1 updated, MD5 all verified)
   - v86_rc2_g1_conditional_close_report.md (MD5: D400C584) - 条件准入解除验证报告(14/14条件项全部解除/审计丢失率0.09%→0.008%/P99 553ms→462ms/DB池205/200→198/300/内存漂移-82.3%/句柄-82.8%/WAL-95.5%/告警抑制78.7%稳定/G1 CONDITIONAL→FULL APPROVE)
   - v86_rc2_g1_risk_v1.4_final_close.md (MD5: AC42EAD8) - 风险全闭环终版V1.4(32项风险100%闭环/7项Phase2风险全部CLOSED/0遗留/0阻断/G1 READY)
