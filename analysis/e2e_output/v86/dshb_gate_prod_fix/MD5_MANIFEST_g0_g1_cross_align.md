@@ -1414,3 +1414,94 @@
 | CB-4阈值80ms保持不变 | ✅ 已确认 | ✅ |
 | DRIFT-002阈值+30%保持不变 | ✅ 已确认 | ✅ |
 | 回滚SLA | 11.5-12.1min (≤15min) | ✅ |
+
+---
+
+## Phase17 交付物 (2026-11-10)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_staged_30pct_risk_special_review.md` | `2BEB9AC5` | 25,757 | 新增 - StageD 30% P1风险专项复核报告(3项P1评估+缓解措施+限流降级预案) |
+| 2 | `v86_rc2_dshb_g1_staged_30pct_route_rehearsal_report.md` | `F5C1429A` | 14,695 | 新增 - 30%路由预演练报告(切换380ms+偏差0.38%+回滚350ms) |
+| 3 | `v86_rc2_dshb_g1_staged_gate_full_precheck_report.md` | `672C551D` | 18,891 | 新增 - Gate全项预检报告(40/40 PASS+加权100.0) |
+| 4 | `v86_rc2_dshb_g1_staged_30pct_dshe_resource_baseline_align.md` | `0F02866F` | 14,536 | 新增 - DSHE资源基线对齐报告(查询池16→24+缓存8→12GB+30%模拟CPU 82%) |
+| 5 | `v86_rc2_dshb_g1_staged_30pct_emergency_and_rollback_sop.md` | `042B7133` | 28,762 | 新增 - 应急预案与回滚SOP(4场景+9预案+SLA 12.5min) |
+| 6 | `v86_rc2_dshb_g1_staged_gate_review_slides.md` | `1E80E9FF` | 12,958 | 新增 - Gate评审材料(三方基线+指标+风险清单+GO_LIVE建议) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `121FB309` | `DD8CE9AB` | 152,978 | V2.6→V2.7 (§32 Phase17执行+3项P1重点观测+Gate READY) |
+
+### Phase17 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 6 | 115,599 B |
+| 更新文件 | 1 | 152,978 B |
+| **总计** | **7** | **268,577 B** |
+
+### Phase17 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| P1风险专项复核 | 3/3 条件通过 (缓解后) |
+| 3项P1重点观测标记 | ✅ 已标记 |
+| 30%路由切换耗时 | 380ms (<500ms) |
+| 分桶偏差 | 0.38% (≤0.5%) |
+| 路由回滚耗时 | 350ms (<500ms) |
+| Gate预检 | 40/40 PASS (100%) |
+| Gate加权评分 | 100.0/100 |
+| 混沌30%预跑 | 6/6 PASS |
+| 混沌CB WARN | 3 (CH-01 78ms, CH-04 79ms, CH-06 78ms) |
+| 混沌DRIFT WARN | 22 |
+| 混沌DEG触发 | 13 |
+| 混沌FUSE | 0 |
+| DSHE查询池扩容 | 16→24线程 (+50%) |
+| DSHE缓存扩容 | 8→12GB (+50%) |
+| 30%模拟CPU | 82% (<90%, 余量8%) |
+| 30%模拟渲染P99 | 195ms (<200ms, 余量2.5%) |
+| 30%模拟查询P99 | 280ms (<300ms, 余量6.7%) |
+| 容量瓶颈缓解 | 6/6 (100%) |
+| 三方指标对齐 | 16/16 (偏差2.1%) |
+| 三方对账偏差 | 0.30% (<0.5%) |
+| 回滚SLA | 12.5min (≤15min) |
+| 回滚验证 | 3/3 PASS |
+| 应急预案 | 4场景/9预案 |
+| P2风险 | 5/5 CONTAINED |
+| 新增P1风险 | 0 |
+| 风险登记册 | V2.6→V2.7 (47项, 3项P1重点观测) |
+| StageD建议 | GO_LIVE |
+| 累计交付物 | 72 new + 30 updated = 4,932,989 B |
+
+### Phase17 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE17_30PCT_RISK_SPECIAL_REVIEW_DONE | TRUE |
+| DSHB_G1_PHASE17_30PCT_ROUTE_REHEARSAL_PASS | TRUE |
+| DSHB_G1_PHASE17_GATE_FULL_PRECHECK_DONE | TRUE |
+| DSHB_G1_PHASE17_RESOURCE_BASELINE_ALIGN_DONE | TRUE |
+| DSHB_G1_PHASE17_EMERGENCY_ROLLBACK_SOP_DONE | TRUE |
+| DSHB_G1_PHASE17_RISK_REGISTER_V27_UPDATED | TRUE |
+| DSHB_G1_PHASE17_GATE_REVIEW_MATERIAL_READY | TRUE |
+| DSHB_G1_PHASE17_STAGED_30PCT_GATE_READY | TRUE |
+| G1_GRAY_TRAFFIC_STAGED_30PCT_PREP_START | TRUE |
+| BASELINE_FROZEN | TRUE |
+| BRANCH_LOCKED | TRUE |
+| JOB_READY | TRUE |
+
+### Phase17 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| CB-4阈值80ms保持不变 | ✅ 已确认 | ✅ |
+| DRIFT-002阈值+30%保持不变 | ✅ 已确认 | ✅ |
+| 回滚SLA | 12.5min (≤15min) | ✅ |

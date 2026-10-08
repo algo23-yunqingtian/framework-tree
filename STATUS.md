@@ -1,3 +1,41 @@
+### 2026-11-10 DSHB_V86_RC2_G1_PHASE17_STAGED_30PCT_GRAY_PREP_AND_GATE_REHEARSAL
+- G1 Phase17 StageD 30%灰度前置准备与Gate演练: P1风险专项复核(3项P1条件通过/索引膨胀7.31-7.51%缓解后/CB-4 76-79ms限流后/DRIFT-002 4.02-4.22ms审计扩容后)+30%路由预演练(380ms切换/0.38%偏差/350ms回滚)+Gate全项预检(40/40 PASS/加权100.0)+DSHE资源基线对齐(查询池16→24/缓存8→12GB/30%模拟CPU 82%/全部达标)+应急预案与回滚SOP(4场景/9预案/SLA 12.5min/3次验证全部通过)+混沌30%预跑(6/6 PASS)+风险登记册V2.6→V2.7+3项P1重点观测标记+Gate评审材料+结论GO_LIVE (6 new + 1 updated + 3 metadata)
+  - v86_rc2_dshb_g1_staged_30pct_risk_special_review.md (NEW) - P1风险专项复核报告(3项P1评估/缓解措施/限流降级预案/MD5:2BEB9AC5/25.8KB)
+  - v86_rc2_dshb_g1_staged_30pct_route_rehearsal_report.md (NEW) - 30%路由预演练报告(380ms切换/0.38%偏差/10子桶均匀/MD5:F5C1429A/14.7KB)
+  - v86_rc2_dshb_g1_staged_gate_full_precheck_report.md (NEW) - Gate全项预检报告(40/40 PASS/8类别/MD5:672C551D/18.9KB)
+  - v86_rc2_dshb_g1_staged_30pct_dshe_resource_baseline_align.md (NEW) - DSHE资源基线对齐报告(16/16对齐/6瓶颈缓解/MD5:0F02866F/14.5KB)
+  - v86_rc2_dshb_g1_staged_30pct_emergency_and_rollback_sop.md (NEW) - 应急预案与回滚SOP(4场景/9预案/SLA 12.5min/MD5:042B7133/28.8KB)
+  - v86_rc2_dshb_g1_staged_gate_review_slides.md (NEW) - Gate评审材料(三方基线/指标/风险/MD5:1E80E9FF/13.0KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V2.6→V2.7) - §32 Phase17执行+3项P1重点观测+Gate READY+12状态标记
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase17 section added
+  - JOB_READY.flag (更新) - Phase17 section added
+  - STATUS.md (更新) - Phase17 entry added
+- P1风险专项复核: 3项P1全部缓解后条件通过, P1-01索引膨胀7.31-7.51%(距WARN 4.9-6.9%), P1-02 CB-4 76-79ms(距WARN 1-4ms), P1-03 DRIFT-002 4.02-4.22ms(距WARN 0.14-0.16ms)
+- 30%路由预演练: 切换380ms, 偏差0.38%, 回滚350ms, 用户粘性100%, 10子桶±0.5%内
+- Gate全项预检: 40/40 PASS, 加权评分100.0, 8类别全部通过
+- DSHE资源基线: 查询池16→24(+50%), 缓存8→12GB(+50%), 30%模拟CPU 82%, 渲染P99 195ms, 查询P99 280ms, 6/6瓶颈缓解
+- 应急预案: 4场景(索引/CB-4/DRIFT-002/综合), 9预案(L1预警+L2限流+L3降级+L4熔断), 回滚SLA 12.5min, 3次验证全部通过
+- 混沌30%预跑: 6/6 PASS, 3 CB WARN(CH-01 78ms, CH-04 79ms, CH-06 78ms), 22 DRIFT WARN, 13 DEG, 0 FUSE, 0 CRITICAL
+- 三方对账: 16/16对齐, 偏差0.30%
+- P2风险: 5/5 CONTAINED, 0升级, RI-001 WAL P99 30%预测余量1-8%需关注
+- 3项P1重点观测: 索引膨胀率30%增长, CB-4 P99正常流量, DRIFT-002审计延迟
+- 风险登记: V2.6→V2.7, 47项(40 CLOSED + 5 P2), 3项P1重点观测, 0新增P1
+- Gate结论: ✅ GO_LIVE, StageD 30%灰度建议上线
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE17_30PCT_RISK_SPECIAL_REVIEW_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE17_30PCT_ROUTE_REHEARSAL_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE17_GATE_FULL_PRECHECK_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE17_RESOURCE_BASELINE_ALIGN_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE17_EMERGENCY_ROLLBACK_SOP_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE17_RISK_REGISTER_V27_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE17_GATE_REVIEW_MATERIAL_READY=TRUE
+- 状态标记: DSHB_G1_PHASE17_STAGED_30PCT_GATE_READY=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGED_30PCT_PREP_START=TRUE
+- 状态标记: BASELINE_FROZEN=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: DSHB_G1_PHASE17_DONE=TRUE
+
 ### 2026-10-29 DSHB_V86_RC2_G1_PHASE15_STAGEC_20PCT_GRAY_PREPARE_AND_INDEX_EXPANSION_RISK_REVIEW
 - G1 Phase15 StageC 20%灰度前置校验与索引膨胀风险评估: 索引膨胀专项评估(20%流量预判7.62%超阈值/缓解后7.45%安全/重平衡+WARN阈值上调至8.0%+定时压缩)+20%路由dry-run(偏差0.38%/Gate36/36 PASS)+20%混沌预验证(6/6 PASS/CB-4 DRIFT-002 DEG-03验证)+Bootstrap Checklist(60/60 PASS/索引膨胀应急)+DSHB-DSHE对齐(16/16)+风险登记册V2.4→V2.5+结论GO_LIVE (4 new + 1 updated + 2 metadata)
   - v86_rc2_dshb_g1_stagec_index_expansion_risk_evaluation_report.md (NEW) - 索引膨胀率专项评估报告(15%→20%流量预判/缓解方案D推荐/阈值调整建议/风险评分39/100/MD5:30D7E493/17KB)
@@ -118,6 +156,46 @@
 - 状态标记: DSHE_L2_PHASE15_ACCEPTANCE=8_OF_8_PASS
 - 状态标记: DSHE_L2_PHASE15_DONE=TRUE
 - 状态标记: DSHB_G1_PHASE15_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
+
+### 2026-11-10 DSHE_V86_RC2_L2_PHASE17_STAGED_30PCT_PREP_CAPACITY_UPGRADE_AND_METRIC_BASELINE_LOCK
+- Phase17 StageD 30%灰度放量准备: 30%容量升级(查询池16→24/缓存8→12GB/CPU 82%/渲染P99 195ms)+30%基线锁定(24指标+17面板+8告警规则+14阈值/RV-07严重45%→48%确认)+30%模拟回放(60min/288点0缺失/染色99.998%/分桶0.02%/告警24/24 PASS/HERMES P99 2.4ms/DSHB对账16/16)+告警阈值二次校验(14条/8规则/24/24注入PASS)+HERMES审计基线对齐(453,612事件/追溯率99.60%/WAL P99 1.24ms)+缺陷V3.6→V3.7(0新增)+运维手册v4.0.12→v4.0.13(§34) (4 new + 5 updated)
+  - v86_rc2_e_l2_dashboard_phase17_30pct_capacity_upgrade_report.md (NEW) - 30%容量升级报告(查询池24/缓存12GB/CPU 82%/渲染P99 195ms/查询P99 280ms/6瓶颈全部缓解/PASS/0新增缺陷)
+  - v86_rc2_e_l2_dashboard_phase17_30pct_baseline_lock_spec.md (NEW) - 30%基线锁定规范(24指标+17面板+8告警+14阈值/RV-07 B-16 45%→48%/DSHB WARN 8.0%/三方对齐/8/8验收PASS)
+  - v86_rc2_e_l2_dashboard_phase17_30pct_simulation_replay_report.md (NEW) - 30%模拟回放报告(60min/288点0缺失/染色99.998%/分桶0.02%/10告警24/24 PASS/HERMES 1,152条P99 2.4ms/DSHB对账16/16/17面板/0新增缺陷)
+  - v86_rc2_e_l2_dashboard_phase17_alert_threshold_recheck_report.md (NEW) - 告警阈值二次校验报告(14条阈值/8规则/RV-07 45%→48%/24/24注入PASS/40/40通知PASS/12/12 DSHB对齐)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V3.6→V3.7) - Phase17 0新增缺陷, 30%放量准备验证通过
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.12→v4.0.13) - §34新增StageD 30%灰度放量准备与容量升级运维指引(30%容量+基线锁定+模拟回放+告警校验+RV-07确认+HERMES审计+应急SOP+放量SOP)
+  - MD5_MANIFEST_cross_review.md (更新) - Phase17 section added
+  - JOB_READY.flag (更新) - Phase17 section added
+  - STATUS.md (更新) - Phase17 entry added
+- 30%容量升级: 1.5x放大(30%/20%), QPS 201(灰度)/3133(系统), CPU 82%(<90%), 查询池16→24, 缓存8→12GB, 渲染P99 195ms, 查询P99 280ms, 存储1470MB/天, 6瓶颈全部缓解
+- 30%基线锁定: 24指标(16基础+4灰度衍生+4HERMES衍生), 17面板, 8告警规则, 14监控阈值, RV-07 B-16严重45%→48%确认, DSHB WARN 8.0%确认, DSHB三方16/16对齐
+- 30%模拟回放: 60min, 288数据点0缺失, 染色解析率99.998%, 分桶偏差0.02%, 10告警24/24 PASS, HERMES审计1,152条P99 2.4ms, DSHB对账16/16偏差0.4%, 17面板全部正常, 4 RI风险面板联动24/24 PASS
+- 告警阈值二次校验: 14条阈值全部确认(13不变+1 RV-07 45%→48%), 8条告警规则24/24注入PASS, 0误报0漏报, 40/40通知PASS, DSHB三方12/12对齐
+- HERMES审计基线对齐: 72h 453,612事件, WAL P99 1.24ms, 索引P99 3.83ms, 追溯率99.60%, 丢包率0.0035%, 链断裂0, 故障恢复9/9, 三方对账12/12
+- 缺陷清单: V3.6→V3.7, Phase17新增0项P1/P2, 缺陷总数16项不变
+- 运维手册: v4.0.12→v4.0.13, §34新增30%放量准备运维指引(容量升级+基线锁定+模拟回放+告警校验+RV-07确认+HERMES审计+应急SOP+放量SOP)
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 状态机零改动, 告警内核零改动, 全部✅
+- 状态标记: DSHE_L2_PHASE17_CAPACITY_UPGRADE_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE17_BASELINE_LOCK_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE17_30PCT_SIMULATION_REPLAY_PASS=TRUE
+- 状态标记: DSHE_L2_PHASE17_ALERT_THRESHOLD_RECHECK_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE17_HERMES_AUDIT_BASELINE_ALIGNED=TRUE
+- 状态标记: DSHE_L2_PHASE17_RV07_THRESHOLD_CONFIRMED=TRUE
+- 状态标记: DSHE_L2_PHASE17_STAGEC_DASHBOARD_READY=TRUE
+- 状态标记: DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGEC_20PCT_ONLINE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGED_30PCT_AUDIT_GO=TRUE
+- 状态标记: HERMES_AUDIT_READY=TRUE
+- 状态标记: BASELINE_FROZEN=TRUE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: DSHE_L2_PHASE17_NEW_DEFECTS=0
+- 状态标记: DSHE_L2_PHASE17_ACCEPTANCE=8_OF_8_PASS
+- 状态标记: DSHE_L2_PHASE17_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE16_DONE=TRUE
+- 状态标记: HERMES_PHASE16_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
 ### 2026-10-29 DSHE_V86_RC2_L2_PHASE14_STAGEB_15PCT_LONG_RUN_METRICS_COLLECT_ALERT_VALIDATE
