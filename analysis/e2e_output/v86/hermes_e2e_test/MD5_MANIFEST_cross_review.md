@@ -110,3 +110,27 @@
 | 4 | v86_rc2_hermes_phase19_50pct_highload_simulation_audit.md | 2335 | `34d02b41b4a6a7fccab306415db83a3a` |
 | 5 | v86_rc2_hermes_phase19_three_way_reconcile_upgrade.md | 1397 | `0d6941040b8bcbbe3aa214ab0c24576c` |
 | 6 | v86_rc2_hermes_phase19_stagee_gate_audit_final_report.md | 1912 | `8e46e4aae2e39f681030fcf38a08b995` |
+---
+
+## DSHE Phase19
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase19_50pct_capacity_upgrade_report.md | 19862 | `77987026c0df50aafcf27fb8aaf4721a` |
+| 2 | v86_rc2_e_l2_dashboard_phase19_50pct_panel_adapt_report.md | 17368 | `42d6b383e5fe13837e16f11a58c18f48` |
+| 3 | v86_rc2_e_l2_dashboard_phase19_50pct_simulation_verify_report.md | 18603 | `98c1623c5eba6302b24457512725d6db` |
+| 4 | v86_rc2_e_l2_dashboard_phase19_risk_remedy_monitor_report.md | 14925 | `90120a9b2c2bbf47d806277bd5648bee` |
+| 5 | v86_rc2_e_l2_dashboard_phase19_50pct_baseline_lock.md | 18050 | `b0da213ca0b62cd822a659b97b02f9f6` |
+---
+
+## DSHE Phase19 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V3.8→V3.9) | 46184 | `0d236ede32e78a4851cce38a8aec1a12` |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.14→v4.0.15) | 175710 | `b21aa9df3802711f241febe600067b04` |
+---
+
+**NO_OVERWRITE 自证**: Phase19 产物 MD5 零变化（本次新增 5 份 DSHE Phase19 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
