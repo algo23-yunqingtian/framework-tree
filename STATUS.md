@@ -37,6 +37,43 @@
 - 状态标记: DSHB_G1_PHASE15_P2_RISKS_CONTAINED=TRUE
 - 状态标记: DSHB_G1_PHASE15_STAGEC_20PCT_GO_LIVE_READY=TRUE
 - 状态标记: RISK_REGISTER_V2.5_UPDATED=TRUE
+
+### 2026-10-29 DSHE_V86_RC2_L2_PHASE15_STAGEC_20PCT_DASHBOARD_PREP_INDEX_METRIC_ADJUST
+- Phase15 StageC 20%灰度放量准备: 20%容量评估(有条件PASS/查询线程池16→24/缓存8→12GB/渲染P99优化172ms)+索引膨胀面板(IE-AL-001 WARN 8.0%/IE-AL-002 CRITICAL 10.0%/应急SOP)+告警阈值同步更新(14条阈值线+8条告警规则/12/12对齐)+phase5_index_deploy.py版本冲突根因定位(a.extra→a.enable_extra_index修复验证)+20%模拟回放(60min/288点0缺失/染色99.998%/分桶0.02%/告警24/24 PASS/HERMES P99 2.2ms/DSHB对账16/16)+追溯规范V1.5确认+缺陷V3.5→V3.6(0新增)+运维手册v4.0.11→v4.0.12(§33) (5 new + 5 updated)
+  - v86_rc2_e_l2_dashboard_phase15_20pct_capacity_evaluate_report.md (NEW) - 20%容量评估报告(1.333x放大/CPU 98%临界/查询池16→24/缓存8→12GB/渲染P99 172ms/6瓶颈全部缓解/PASS有条件/0新增缺陷)
+  - v86_rc2_e_l2_dashboard_phase15_index_expansion_panel_verify.md (NEW) - 索引膨胀面板验证报告(IE-AL-001 WARN 8.0%/IE-AL-002 CRITICAL 10.0%/4/4 DSHB对齐/12/12注入PASS/应急SOP)
+  - v86_rc2_e_l2_dashboard_phase15_alert_threshold_adjust_report.md (NEW) - 告警阈值调整报告(14条阈值线更新/8条告警规则/G-AL-004 60→80/IE-AL新增/12/12对齐/24/24注入PASS)
+  - v86_rc2_e_l2_dashboard_phase15_phase5_index_script_bug_fix_report.md (NEW) - Phase5脚本修复报告(1ed048a版本冲突根因/a.extra→a.enable_extra_index/参数语义静默失效分析/5模式回归PASS/0新增缺陷)
+  - v86_rc2_e_l2_dashboard_phase15_20pct_simulation_replay_report.md (NEW) - 20%模拟回放报告(60min/288点0缺失/染色99.998%/分桶0.02%/8告警24/24 PASS/HERMES 768条P99 2.2ms/DSHB对账16/16/17面板/0新增缺陷)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V3.5→V3.6) - Phase15 0新增缺陷, 20%放量准备验证通过
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.11→v4.0.12) - §33新增StageC 20%灰度放量准备运维指引(20%容量+索引膨胀面板+告警阈值+脚本修复+模拟回放+HERMES审计V1.5+应急SOP+放量SOP)
+  - MD5_MANIFEST_cross_review.md (更新) - Phase15 section added
+  - JOB_READY.flag (更新) - Phase15 section added
+  - STATUS.md (更新) - Phase15 entry added
+- 20%容量评估: 1.333x放大, QPS 134(灰度)/3133(系统), CPU 98%(临界), 查询池16→24, 缓存8→12GB, 渲染P99优化后172ms, 存储980MB/天, 6瓶颈全部缓解
+- 索引膨胀面板: WARN 7.36%→8.0%(DSHB建议), CRITICAL 10.0%(新增), IE-AL-001/002告警联动, 4/4 DSHB基线对齐, 12/12注入PASS, 应急SOP 5步流程
+- 告警阈值: 14条阈值线更新, 8条告警规则(6灰度+2索引膨胀), G-AL-004队列60→80, 12/12三方对齐, 24/24注入PASS, 0误报0漏报
+- Phase5脚本修复: commit 1ed048a版本冲突根因定位, --indexes参数缺失, a.extra→a.enable_extra_index修复, 参数语义静默失效深度分析, 5模式回归PASS
+- 20%模拟回放: 60min, 288数据点0缺失, 染色解析率99.998%, 分桶偏差0.02%, 8告警24/24 PASS, HERMES审计768条P99 2.2ms, DSHB对账16/16偏差0.4%, 17面板全部正常
+- 追溯规范V1.5: HERMES审计链路确认, 16字段/UTC时间戳/HMAC-SHA256/3-exp-backoff, 版本记录行已写入
+- 缺陷清单: V3.5→V3.6, Phase15新增0项P1/P2, 缺陷总数16项不变
+- 运维手册: v4.0.11→v4.0.12, §33新增20%放量准备运维指引(索引膨胀监控+告警阈值+脚本修复+模拟回放+应急SOP+放量SOP)
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 状态机零改动, 告警内核零改动, 全部✅
+- 状态标记: DSHE_L2_PHASE15_20PCT_CAPACITY_EVAL_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE15_INDEX_EXPANSION_PANEL_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE15_ALERT_THRESHOLD_ADJUST_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE15_INDEX_SCRIPT_BUGFIX_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE15_20PCT_SIMULATION_REPLAY_PASS=TRUE
+- 状态标记: DSHE_L2_PHASE15_HERMES_AUDIT_20PCT_LOAD_OK=TRUE
+- 状态标记: DSHE_L2_PHASE15_STAGEC_DASHBOARD_READY=TRUE
+- 状态标记: DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGEC_START=FALSE
+- 状态标记: HERMES_AUDIT_READY=FALSE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: DSHE_L2_PHASE15_NEW_DEFECTS=0
+- 状态标记: DSHE_L2_PHASE15_ACCEPTANCE=8_OF_8_PASS
+- 状态标记: DSHE_L2_PHASE15_DONE=TRUE
 - 状态标记: DSHB_G1_PHASE15_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
