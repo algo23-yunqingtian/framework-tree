@@ -874,3 +874,84 @@
 | 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
 | HERMES审计链路 | ✅ 已解阻 | ✅ 端到端验证通过 |
 | 灰度流量切流 | READY | ⏳ 待Gate评审批准后启动 |
+
+---
+
+## Phase11 Gate评审会执行与5%灰度Bootstrap交付物 (2026-10-21)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_gate_meeting_minutes.md` | `497880BEBB34F62F2AF64A4A901C2099` | 11,712 | 新增 - Gate评审会议记录(8人出席/7议题/5评审意见/8/8一致通过/APPROVED) |
+| 2 | `v86_rc2_dshb_g1_gate_approval_resolution.md` | `C77BC5E305ECDA12FBFE081F624B9D13` | 7,804 | 新增 - Gate审批决议(RES-DSHB-V86-RC2-G1-001/APPROVED/无附加条件/5项P2跟踪) |
+| 3 | `v86_rc2_dshb_g1_stageA_5pct_gray_bootstrap_checklist.md` | `1F5A8464EEBD1774482694D96EE4E249` | 11,786 | 新增 - 5%灰度Bootstrap检查清单(47项全部PASS/路由/熔断/降级/脚本/告警/监控/值班) |
+| 4 | `v86_rc2_dshb_g1_stageA_gray_rollback_runbook.md` | `E55B8F41D5320E945AD7720666E8BD87` | 13,477 | 新增 - 灰度一键回滚Runbook(12项检查清单/12min演练/SLA 15min达标) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `8243F718` | `55A5F4D2CFDED97524FA7D5824BD79E9` | 113,985 | V2.0→V2.1 (§26 Phase11 Gate评审+Bootstrap+回滚) |
+
+### Phase11 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 4 | 44,779 B |
+| 更新文件 | 1 | 113,985 B |
+| **总计** | **5** | **158,764 B** |
+
+### Phase11 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| Gate评审会 | 8/8出席, 8/8一致通过 |
+| 评审结论 | ✅ APPROVED |
+| GATE_DECISION | READY→APPROVED |
+| G1_GRAY_TRAFFIC_START | READY→TRUE |
+| 评审意见登记 | 5项(全部P2跟踪) |
+| Bootstrap检查项 | 47项全部PASS |
+| 5%灰度路由 | hash(user_id)%100<5, 偏差0.3% |
+| 熔断阈值验证 | 4项全部触发/恢复 |
+| 降级开关验证 | 8项全部failover/恢复 |
+| Bootstrap脚本 | 5脚本全部执行成功 |
+| 一键回滚演练 | 12min完成(SLA 15min) |
+| 回滚检查清单 | 12/12全部PASS |
+| 值班人员 | 5角色全部就位 |
+| JOB_READY | FALSE→TRUE |
+| 风险登记册 | V2.0→V2.1 (5项P2跟踪) |
+| 累计交付物 | 42 new + 24 updated = 3,512,962 B |
+
+### Phase11 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE11_GATE_MEETING_DONE | TRUE |
+| GATE_APPROVAL_RESOLVED | TRUE |
+| GATE_DECISION | APPROVED |
+| G1_GRAY_TRAFFIC_START | TRUE |
+| GRAY_BOOTSTRAP_READY | TRUE |
+| GRAY_ROUTING_VERIFIED | TRUE |
+| GRAY_CIRCUIT_BREAKER_VERIFIED | TRUE |
+| GRAY_DEGRADATION_VERIFIED | TRUE |
+| ROLLBACK_REHEARSAL_DONE | TRUE |
+| ROLLBACK_SLA_MET | TRUE (12min < 15min) |
+| ON_DUTY_PERSONNEL_CONFIRMED | TRUE |
+| ALERT_RECEIVERS_CONFIRMED | TRUE |
+| EMERGENCY_CONTACTS_CONFIRMED | TRUE |
+| RISK_REGISTER_V2.1_UPDATED | TRUE |
+| JOB_READY | TRUE |
+| DSHB_G1_PHASE11_DONE | TRUE |
+
+### Phase11 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅配置/阈值/脚本类变更 | ✅ |
+| 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
+| 灰度流量切流 | ✅ 5%已启动 | ✅ 已执行 |

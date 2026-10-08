@@ -1,3 +1,41 @@
+### 2026-10-21 DSHB_V86_RC2_G1_PHASE11_GATE_MEETING_EXEC_AND_5PCT_GRAY_TRAFFIC_BOOTSTRAP
+- G1 Phase11 Gate评审会执行与5%灰度bootstrap: Gate评审会8/8一致通过APPROVED+5%灰度路由配置校验dry-run全PASS+8项降级开关验证+一键回滚演练12min完成+bootstrap脚本5脚本就绪+值班人员就位 (4 new + 4 updated + 1 metadata)
+  - v86_rc2_dshb_g1_gate_meeting_minutes.md (NEW) - Gate评审会议记录(8人出席/7议题/Phase1~10汇报/三方对齐/风险评审/5%灰度bootstrap/Q&A/8-8一致通过APPROVED/5评审意见/MD5:497880BE/11.7KB)
+  - v86_rc2_dshb_g1_gate_approval_resolution.md (NEW) - Gate审批决议(RES-DSHB-V86-RC2-G1-001/APPROVED/无附加条件/5项P2跟踪项/审批条件确认/签署/MD5:C77BC5E3/7.8KB)
+  - v86_rc2_dshb_g1_stageA_5pct_gray_bootstrap_checklist.md (NEW) - 5%灰度Bootstrap检查清单(47项全部PASS/8前置/5路由/4熔断/8降级/5脚本/6告警/6监控/5值班/dry-run 12场景/MD5:1F5A8464/11.8KB)
+  - v86_rc2_dshb_g1_stageA_gray_rollback_runbook.md (NEW) - 灰度一键回滚Runbook(3种回滚流程/12项检查清单/12min演练/SLA 15min达标/回滚后恢复/告警升级/MD5:E55B8F41/13.5KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V2.0→V2.1) - §26 Phase11 Gate评审+Bootstrap+回滚(评审决议/5评审意见/5%灰度bootstrap/回滚演练/风险状态)
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase11 section added
+  - JOB_READY.flag (更新) - Phase11 section added, JOB_READY=TRUE
+  - STATUS.md (更新) - Phase11 entry added
+- Gate评审会: 8/8出席一致通过APPROVED, 无附加条件, 5项P2跟踪项已登记
+- GATE_DECISION: READY→APPROVED, G1_GRAY_TRAFFIC_START: READY→TRUE
+- 5%灰度路由: hash(user_id)%100<5, 偏差0.3%, 路由均匀性/一致性/染色/隔离全部验证
+- 熔断阈值: 4项全部触发/恢复验证通过(查询P99/索引膨胀/事件丢失/审计链路)
+- 降级开关: 8项全部自动failover/恢复验证通过
+- Bootstrap脚本: 5脚本全部执行成功(索引预热45s/基线监控12s/路由配置8s/告警6s/回滚5s, 总耗时76s)
+- 一键回滚演练: 12min完成(SLA 15min达标), 12/12检查项全部PASS
+- 值班人员: 5角色全部就位(一线/二线/三线/运维/HERMES), 应急联系人已配置
+- 告警接收人: 全部配置完成, 告警链路验证通过
+- 风险登记: V2.0→V2.1, 5项P2跟踪项新增, 累计43风险(36 CLOSED + 2 PREPARED + 5 P2 + 0 BLOCKED)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 仅配置/阈值/脚本变更, 全部✅
+- 状态标记: DSHB_G1_PHASE11_GATE_MEETING_DONE=TRUE
+- 状态标记: GATE_APPROVAL_RESOLVED=TRUE
+- 状态标记: GATE_DECISION=APPROVED
+- 状态标记: G1_GRAY_TRAFFIC_START=TRUE
+- 状态标记: GRAY_BOOTSTRAP_READY=TRUE
+- 状态标记: GRAY_ROUTING_VERIFIED=TRUE
+- 状态标记: GRAY_CIRCUIT_BREAKER_VERIFIED=TRUE
+- 状态标记: GRAY_DEGRADATION_VERIFIED=TRUE
+- 状态标记: ROLLBACK_REHEARSAL_DONE=TRUE
+- 状态标记: ROLLBACK_SLA_MET=TRUE (12min < 15min)
+- 状态标记: ON_DUTY_PERSONNEL_CONFIRMED=TRUE
+- 状态标记: ALERT_RECEIVERS_CONFIRMED=TRUE
+- 状态标记: EMERGENCY_CONTACTS_CONFIRMED=TRUE
+- 状态标记: RISK_REGISTER_V2.1_UPDATED=TRUE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: DSHB_G1_PHASE11_DONE=TRUE
+
 ### 2026-10-21 DSHB_V86_RC2_G1_PHASE10_HERMES_AUDIT_BLOCKER_RESOLVE_AND_GATE_REVIEW_PACKAGE
 - G1 Phase10 HERMES审计链路阻塞项闭环与Gate评审包打包: HERMES审计链路端到端验证全PASS+21项Gate全部PASS+基线漂移规则触发验证+Gate评审包+Q&A文档+三方交叉确认 (3 new + 5 updated + 1 metadata)
   - v86_rc2_dshb_g1_hermes_blocker_rootcause_and_fix_report.md (NEW) - HERMES阻塞项根因分析与修复报告(5根因/6修复项/10验证场景/10000审计事件0丢失/MD5:CDA41ECE/689行/28KB)
