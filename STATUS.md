@@ -70,6 +70,47 @@
 - 状态标记: DSHE_L2_PHASE12_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
+### 2026-10-26 DSHB_V86_RC2_G1_PHASE13_STAGEB_15PCT_GRAY_PREPARE_AND_RISK_MITIGATE_FOR_RI006~RI009
+- G1 Phase13 StageB 15%灰度风险治理与前置校验: RI-006~RI-009专项治理(4/4 CLOSED)+CB-4/DRIFT-002优化验证+15%灰度前置校验(21项Gate PASS)+混沌预验证(6/6 PASS)+Bootstrap检查(71/71 PASS)+风险登记册V2.3 (5 new + 1 updated + 2 metadata)
+  - v86_rc2_dshb_g1_stageb_risk_mitigate_ri006_ri009_report.md (NEW) - RI-006~RI-009风险专项治理报告(4项风险全部CLOSED/根因分析/缓解方案/复现验证/MD5:E187DF09/14.4KB)
+  - v86_rc2_dshb_g1_stageb_15pct_precheck_and_routing_verify_report.md (NEW) - 15%灰度前置校验与路由验证(21项Gate PASS/分桶偏差0.5%/容量评估/DSHB-DSHE对齐/MD5:1A422C26/12.6KB)
+  - v86_rc2_dshb_g1_stageb_cb4_drift002_optimize_verify.md (NEW) - CB-4/DRIFT-002优化验证(余量12.9%→20.6%/CH-06 FUSE→WARN/阈值+25%→+30%/MD5:6A53BBC3/11.4KB)
+  - v86_rc2_dshb_g1_stageb_15pct_chaos_pre_validation_report.md (NEW) - 15%混沌预验证(6/6 PASS/21 DRIFT/13降级/CB-4 FUSE降级阻止/MD5:1AB87FEB/18.5KB)
+  - v86_rc2_dshb_g1_stageb_15pct_bootstrap_checklist.md (NEW) - 15%灰度Bootstrap检查清单(71/71 PASS/13类检查/路由/熔断/降级/DRIFT/监控/告警/脚本/回滚/值班/混沌/DSHB-DSHE/MD5:7E42DC67/10.3KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V2.2→V2.3) - §28 Phase13 RI-006~009治理(4/4 CLOSED)+CB-4/DRIFT-002优化+15%校验+混沌验证+风险状态
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase13 section added
+  - JOB_READY.flag (更新) - Phase13 section added
+  - STATUS.md (更新) - Phase13 entry added
+- RI-006(P1): Event Loss波动→缓冲区×2+预热+30s监控→CLOSED(复现验证PASS)
+- RI-007(P2): CB-4余量12.9%→管线优化+阈值60.75→80ms→余量20.6%→CLOSED
+- RI-008(P2): CH-06 FUSE→管线优化+阈值调整→FUSE→WARN(72.5ms<80ms)→CLOSED
+- RI-009(P2): DRIFT-002频繁触发→阈值+25%→+30%+冷却30s+连续3点→15%灰度0次触发→CLOSED
+- CB-4优化: 余量12.9%→20.6%, 审计吞吐48→72ev/s(+50%), CH-06 FUSE→WARN
+- DRIFT-002优化: CRITICAL阈值+25%→+30%, 冷却时间30s, 连续窗口3点
+- 15%路由: hash(user_id)%100<15, 分桶偏差0.5%(≤0.5%), 均匀性标准差0.4%
+- Gate 21项: 21/21 PASS, 含路由/熔断/降级/DRIFT/告警/监控/对账/混沌等
+- 混沌预验证: 6场景(CPU高负载/连接抖动/存储慢IO/网络延迟/事件积压/审计积压)6/6 PASS
+- DRIFT触发: 21次WARN, CB-4 FUSE被DEG-03降级阻止(85ms→75ms<80ms)
+- Bootstrap: 71/71 PASS(13类检查全部通过)
+- 风险登记: V2.2→V2.3, 47项(40 CLOSED + 5 P2 + 0 P1 + 0 BLOCKED), RI-006~009全部CLOSED
+- StageB建议: ✅ READY, 5项建议(持续监控Event Loss/CB-4/DRIFT-002/索引膨胀/StageC评估)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE13_RISK_MITIGATE_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE13_RI006_P1_CLOSED=TRUE
+- 状态标记: DSHB_G1_PHASE13_RI007_CLOSED=TRUE
+- 状态标记: DSHB_G1_PHASE13_RI008_CLOSED=TRUE
+- 状态标记: DSHB_G1_PHASE13_RI009_CLOSED=TRUE
+- 状态标记: DSHB_G1_PHASE13_CB4_DRIFT002_OPTIMIZE_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE13_15PCT_ROUTING_DRYRUN_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE13_GATE_PRECHECK_21_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE13_15PCT_BOOTSTRAP_71_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE13_15PCT_CHAOS_PREVALIDATE_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE13_STAGEB_READY=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGEB_START=READY
+- 状态标记: RISK_REGISTER_V2.3_UPDATED=TRUE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: DSHB_G1_PHASE13_DONE=TRUE
+
 ### 2026-10-25 DSHB_V86_RC2_G1_PHASE12_STAGEA_5PCT_LONGRUN_OBSERVE_AND_BASELINE_DRIFT_MONITOR
 - G1 Phase12 StageA 5%灰度72h长跑观测与基线漂移监控: 72h连续观测12项基线指标+DRIFT-001~008规则验证+6场景轻量混沌注入+熔断/降级/回滚链路验证+DSHB-DSHE指标对账+3新报告+风险登记册V2.2 (3 new + 1 updated + 2 metadata)
   - v86_rc2_dshb_g1_stagea_5pct_longrun_observation_report.md (NEW) - 72h长跑观测报告(Day1~3/12项基线指标/告警事件12条/灰度路由验证/流量分布/MD5:E3C5F649/19.3KB)

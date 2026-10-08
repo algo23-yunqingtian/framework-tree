@@ -1039,3 +1039,89 @@
 | 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
 | 灰度流量切流 | ✅ 5%持续运行 | ✅ 已执行 |
 | 混沌注入隔离 | ✅ 仅影响灰度流量 | ✅ 已验证 |
+
+---
+
+## Phase13 StageB 15%灰度风险治理与前置校验交付物 (2026-10-26)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_stageb_risk_mitigate_ri006_ri009_report.md` | `E187DF09DF53E1910796C3F84365AD57` | 14,379 | 新增 - RI-006~RI-009风险专项治理报告(4项风险全部CLOSED/根因分析/缓解方案/验证) |
+| 2 | `v86_rc2_dshb_g1_stageb_15pct_precheck_and_routing_verify_report.md` | `1A422C262705B629C61EE4E00D8D1A91` | 12,607 | 新增 - 15%灰度前置校验与路由验证(21项Gate PASS/分桶偏差0.5%/容量评估) |
+| 3 | `v86_rc2_dshb_g1_stageb_cb4_drift002_optimize_verify.md` | `6A53BBC353AFE509A9085F686727DFB1` | 11,384 | 新增 - CB-4/DRIFT-002优化验证(余量20.6%/CH-06 FUSE→WARN/阈值调整) |
+| 4 | `v86_rc2_dshb_g1_stageb_15pct_chaos_pre_validation_report.md` | `1AB87FEB70C772F6D7F0573567436891` | 18,531 | 新增 - 15%混沌预验证(6/6 PASS/21 DRIFT/13降级/CB-4降级阻止) |
+| 5 | `v86_rc2_dshb_g1_stageb_15pct_bootstrap_checklist.md` | `7E42DC679C5D1B912B60F3F85751F560` | 10,328 | 新增 - 15%灰度Bootstrap检查清单(71/71 PASS/13类检查) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `4A9C06D8` | `388CEAF7C74CA1DC16EC774D83047BC9` | 124,002 | V2.2→V2.3 (§28 Phase13 RI-006~009治理+15%校验+混沌验证) |
+
+### Phase13 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 5 | 67,229 B |
+| 更新文件 | 1 | 124,002 B |
+| **总计** | **6** | **191,231 B** |
+
+### Phase13 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| RI-006~009风险处置 | 4/4 CLOSED |
+| CB-4阈值调整 | 60.75ms→80ms (+31.8%) |
+| CB-4余量 | 12.9%→20.6% (+7.7pp) |
+| 审计吞吐 | 48ev/s→72ev/s (+50%) |
+| CH-06 FUSE→WARN | 95.2ms→72.5ms (-23.8%) |
+| DRIFT-002 CRITICAL阈值 | +25%→+30% (+4.0%) |
+| 15%灰度DRIFT-002触发 | 0次 (正常流量不触发) |
+| 15%路由配置 | hash(user_id)%100<15 |
+| 分桶偏差 | 0.5% (≤0.5%) |
+| Gate 21项预检查 | 21/21 PASS |
+| DSHB-DSHE口径 | 12项100%一致 |
+| Bootstrap检查 | 71/71 PASS |
+| 混沌预验证 | 6/6 PASS |
+| DRIFT触发 | 21次 (全部WARN/CRITICAL) |
+| 熔断触发 | 1次 (FUSE降级阻止) |
+| 降级触发 | 13次 |
+| V85影响 | 0.00% (零影响) |
+| 风险登记册 | V2.2→V2.3 (47项, +4 CLOSED) |
+| StageB建议 | ✅ READY |
+| 累计交付物 | 50 new + 26 updated = 3,886,461 B |
+
+### Phase13 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE13_RISK_MITIGATE_DONE | TRUE |
+| DSHB_G1_PHASE13_RI006_P1_CLOSED | TRUE |
+| DSHB_G1_PHASE13_RI007_CLOSED | TRUE |
+| DSHB_G1_PHASE13_RI008_CLOSED | TRUE |
+| DSHB_G1_PHASE13_RI009_CLOSED | TRUE |
+| DSHB_G1_PHASE13_CB4_DRIFT002_OPTIMIZE_DONE | TRUE |
+| DSHB_G1_PHASE13_15PCT_ROUTING_DRYRUN_PASS | TRUE |
+| DSHB_G1_PHASE13_GATE_PRECHECK_21_PASS | TRUE |
+| DSHB_G1_PHASE13_15PCT_BOOTSTRAP_71_PASS | TRUE |
+| DSHB_G1_PHASE13_15PCT_CHAOS_PREVALIDATE_PASS | TRUE |
+| DSHB_G1_PHASE13_STAGEB_READY | TRUE |
+| G1_GRAY_TRAFFIC_STAGEB_START | READY |
+| RISK_REGISTER_V2.3_UPDATED | TRUE |
+| JOB_READY | TRUE |
+| DSHB_G1_PHASE13_DONE | TRUE |
+
+### Phase13 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅配置/阈值/脚本类变更 | ✅ |
+| 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
+| 灰度流量切流 | ✅ 5%持续运行 | ✅ 已执行 |
+| 混沌注入隔离 | ✅ 仅影响灰度流量 | ✅ 已验证 |
