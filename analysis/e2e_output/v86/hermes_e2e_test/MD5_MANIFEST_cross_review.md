@@ -49,3 +49,15 @@
 | 2 | v86_rc2_hermes_phase17_drift_cb4_event_trace_validation.md | 2920 | `9a1f82ff73c07932c5b694ee973d0fea` |
 | 3 | v86_rc2_hermes_phase17_gate_rv07_final_recheck.md | 2672 | `e7e6f10c85c271e3ddb6032265016ed7` |
 | 4 | v86_rc2_hermes_phase17_gate_audit_gonogo_opinion.md | 3559 | `26bf5f07cc48476cddba80cb731fa83e` |
+---
+
+## HERMES Phase18
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_hermes_phase18_30pct_bootstrap_audit_report.md | 2270 | `8fb45c2f74a0a91361372d34919f5255` |
+| 2 | v86_rc2_hermes_phase18_30pct_day1_audit_report.md | 1524 | `5947ed6317fea8be33616934b8224c43` |
+| 3 | v86_rc2_hermes_phase18_30pct_day2_audit_report.md | 1082 | `bda16a2e2133b0d8ee2d76e93a5cf021` |
+| 4 | v86_rc2_hermes_phase18_30pct_day3_audit_report.md | 1369 | `224ad3779ec2f37ff83ea161019a949c` |
+| 5 | v86_rc2_hermes_phase18_30pct_72h_audit_summary.md | 3202 | `1bed04ef696a04e382bbab0362e9a525` |
+| 6 | v86_rc2_hermes_phase18_30pct_index_benefit_audit.md | 2035 | `e4c29b5eccc3a7f093914488cc5f4066` |

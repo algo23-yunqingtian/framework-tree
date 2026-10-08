@@ -1427,3 +1427,17 @@
 - DSHB P1对齐: S1索引膨胀7.55%(P1→审计P3)/S2 DRIFT-002两次WARN(P1→审计P3)/S3 CB-4余量2.5%(P1→审计P3)
 - 审计侧建议: 首24h重点监控膨胀率/CB-4延迟, 每日5次对账, DSHB预案V1.2→V1.3采纳阈值调整
 - 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
+
+### 2026-10-14 HERMES_V86_RC2_PHASE18_STAGED_30PCT_LONG_RUN_AUDIT_AND_EVENT_TRACE_MONITOR
+- StageD 30%灰度72h长周期审计+StageE 50% GO/NO-GO (6 new, MD5 all verified)
+  - v86_rc2_hermes_phase18_30pct_bootstrap_audit_report.md (MD5: 8FB45C2F74A0) - T1: Bootstrap切换审计, WAL P99=1.37ms, 丢包0.0031%, chain 0, DSHB P1 3/3可控
+  - v86_rc2_hermes_phase18_30pct_day1_audit_report.md (MD5: 5947ED6317FE) - Day1: 226K事件, WAL P99=1.37ms, DRIFT-002/CB-4未触发, 三方对账全对齐
+  - v86_rc2_hermes_phase18_30pct_day2_audit_report.md (MD5: BDA16A2E2133) - Day2: 226K事件, 丢包0.0044%, 0告警触发, 8噪声抑制
+  - v86_rc2_hermes_phase18_30pct_day3_audit_report.md (MD5: 224AD3779EC2) - Day3: 226K事件, 丢包0.0027%(72h最低), 全程零告警, 系统趋稳态
+  - v86_rc2_hermes_phase18_30pct_72h_audit_summary.md (MD5: 1BED04EF696A) - T7: 679K事件, WAL P99=1.37ms, 丢包0.0034%, chain 0, 去重2720全捕获, 告警全程0触发, StageE GO
+  - v86_rc2_hermes_phase18_30pct_index_benefit_audit.md (MD5: E4C29B5ECCC3) - T4: 索引P99=4.16ms 72h全命中, 膨胀7.31~7.51%<WARN 8.0%, 三方零偏差
+- 72h关键数据: events=679418, trace=99.60%, WAL P99=1.37ms, loss=0.0034%, chain=0, dup=2720/2720(100%), throughput=251.6ev/s, alerts=0(全程)
+- 20%vs30%: 事件+49.8%, WAL P99+10.5%, idx P99+8.6%, 丢包-3%, 去重+50.5%, 告警收敛(4→0)
+- DSHB P1监控: S1膨胀7.31~7.51%(余量0.49~0.69pp)/S2 DRIFT-002未触发/S3 CB-4 76~77ms(<80ms)
+- StageE 50% GO: 9项准入全PASS, 50%膨胀预测~7.8~8.0%需DSHB二次重平衡预案
+- 约束合规: JOB_READY=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
