@@ -1,3 +1,35 @@
+### 2026-10-26 DSHE_V86_RC2_L2_PHASE13_STAGEB_15PCT_DASHBOARD_SCALE_UP_PREP_AND_ALERT_THRESHOLD_ADJUST
+- Phase13 15%灰度放量准备与告警阈值调整: 15%容量评估容量充足+告警阈值14条更新+RI-006~RI-009风险面板4/4+15%模拟回放24项0缺失+告警注入12/12+HERMES审计P99 1.8ms+DSHB三方16/16+0新增缺陷 (4 new + 5 updated)
+  - v86_rc2_e_l2_dashboard_phase13_15pct_capacity_evaluate_report.md (NEW) - 15%容量评估报告(容量充足/查询线程池16→24建议/缓存8GB→12GB建议/渲染优化后P99 195ms/存储利用率23%/MD5:F1A9B5CE/19KB)
+  - v86_rc2_e_l2_dashboard_phase13_alert_threshold_adjust_report.md (NEW) - 告警阈值调整报告(14条阈值线更新/3条告警规则更新/12/12注入PASS/回退方案就绪/三方12/12对齐/MD5:CD9FE315/14KB)
+  - v86_rc2_e_l2_dashboard_phase13_risk_ri006_ri009_panel_verify.md (NEW) - RI-006~RI-009风险面板验证(4面板4/4正常/DSHB基线100%对齐/告警联动8/8/12项检查/MD5:94DBD818/12KB)
+  - v86_rc2_e_l2_dashboard_phase13_15pct_simulation_replay_report.md (NEW) - 15%模拟回放报告(60min/染色99.999%/分桶15.01%±0.02%/告警12/12/HERMES P99 1.8ms/DSHB 16/16/0缺陷/MD5:EF665D47/19KB)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V3.3→V3.4) - Phase13 0新增缺陷, 15%放量准备完成
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.9→v4.0.10) - §31新增15%放量准备与告警阈值调整运维指引
+  - MD5_MANIFEST_cross_review.md (更新) - Phase13 section added, 4 new + 5 updated files
+  - JOB_READY.flag (更新) - Phase13 section added
+  - STATUS.md (更新) - Phase13 entry added
+- 15%容量评估: 采集Worker CPU 45%→85%无需扩容, 查询线程池16→24建议, 缓存8GB→12GB建议, 渲染优化后P99 195ms<200ms, 存储利用率23%
+- 告警阈值更新: 14条阈值线更新, 3条告警规则更新(G-AL-001 200ms→250ms, G-AL-004 40→60), 12/12注入PASS, 回退方案就绪, DSHB三方12/12对齐
+- RI-006~RI-009风险面板: 4面板全部正常, DSHB风险指标100%对齐, 告警联动8/8, 12项检查全部通过
+- 15%模拟回放: 60min回放, 灰度15.01%, QPS 100.5, 24项288点0缺失, 染色99.999%, 分桶15.01%±0.02%, 告警12/12, HERMES P99 1.8ms, DSHB 16/16, 0新增缺陷
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 状态机零改动, 告警内核零改动, 全部✅
+- 状态标记: DSHE_L2_PHASE13_15PCT_CAPACITY_EVAL_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE13_ALERT_THRESHOLD_ADJUST_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE13_RISK_PANEL_DEPLOY_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE13_15PCT_SIMULATION_REPLAY_PASS=TRUE
+- 状态标记: DSHE_L2_PHASE13_HERMES_AUDIT_UNDER_HIGH_LOAD_OK=TRUE
+- 状态标记: DSHE_L2_PHASE13_STAGEB_DASHBOARD_READY=TRUE
+- 状态标记: DASHBOARD_GRAY_REAL_TRAFFIC_ENABLE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGEB_START=FALSE
+- 状态标记: HERMES_AUDIT_READY=FALSE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: DSHE_L2_PHASE13_DEFECT_V3_4_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE13_OPS_MANUAL_V4_0_10_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE13_NEW_DEFECTS=0
+- 状态标记: DSHE_L2_PHASE13_DONE=TRUE
+
 ### 2026-10-25 DSHE_V86_RC2_L2_PHASE12_STAGEA_5PCT_LONG_RUN_METRICS_CONTINUOUS_COLLECT_AND_ALERT_VERIFY
 - Phase12 72h 5%灰度全指标持续采集与告警验证: 72h 24项指标连续采集0缺失+大盘渲染稳定P99 166ms+染色标签解析率99.999%+分桶流量5.02%±0.02%+6条告警36/36注入PASS 0误报0漏报+HERMES审计4插槽持续写入追溯率99.999% P99 1.5ms+DSHB三方对账15次16/16对齐+数据质量99.6/100 (4 new + 5 updated)
   - v86_rc2_e_l2_dashboard_phase12_day1_monitor_report.md (NEW) - Day1持续监控报告(2026-10-23/24项指标6,912点0缺失/大盘渲染P99 166ms/染色标签99.999%/分桶5.02%/告警12/12注入PASS/HERMES审计追溯率99.998% P99 1.6ms/DSHB对账16/16/0新增缺陷/MD5:3171F16E/26KB)
