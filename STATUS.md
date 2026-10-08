@@ -2,7 +2,7 @@
 - G1 Phase18 StageD 30%灰度Bootstrap执行与72h长程观测: Bootstrap执行(9/9预检+44/44 Checklist/流量20%→30%/420ms切换/0.38%偏差)+72h长程观测(24,192点0缺失/数据质量99.7%)+混沌注入6/6 PASS(9次执行/45次限流降级/0 FUSE)+索引膨胀受控(7.52-7.68%/WARN 8.0%)+CB-4 DRIFT-002验证+DSHB-DSHE对账18次16/16+RI-001 CONTAINED+回滚SLA 12.0-12.5min+风险登记册V2.7→V2.8+StageE 50% CONDITIONAL GO (6 new + 1 updated + 3 metadata)
   - v86_rc2_dshb_g1_30pct_bootstrap_execute_report.md (NEW) - 30%灰度Bootstrap执行报告(9/9预检+44/44 Checklist+流量切换/MD5:C3EBE8B4/21.6KB)
   - v86_rc2_dshb_g1_30pct_day1_observation_report.md (NEW) - Day1观测报告(12项指标/混沌3场景/CB-4 77-79ms/DRIFT-002 4.05-4.12ms/对账6次/回滚12.3min/MD5:FA2D01B5/6.8KB)
-  - v86_rc2_dshb_g1_30pct_day2_observation_report.md (NEW) - Day2观测报告(12项指标/混沌3场景/CB-4 L2触发1次/DRIFT-002近WARN/对账6次/回滚12.5min/MD5:305A435C/58.3KB)
+  - v86_rc2_dshb_g1_30pct_day2_observation_report.md (NEW) - Day2观测报告(12项指标/混沌3场景/CB-4 L2触发1次/DRIFT-002近WARN/对账6次/回滚12.5min/MD5:DFA6B765/45.1KB)
   - v86_rc2_dshb_g1_30pct_day3_observation_report.md (NEW) - Day3观测报告(12项指标/混沌3场景/系统趋稳态/CB-4 L2+L3事件/对账6次/回滚12.0min/MD5:BACEF061/43.7KB)
   - v86_rc2_dshb_g1_30pct_72h_longrun_summary.md (NEW) - 72h长程观测汇总(24,192点/12项指标/6场景混沌/StageE CONDITIONAL GO/MD5:0FD9229A/25.5KB)
   - v86_rc2_dshb_g1_30pct_chaos_inject_verify_report.md (NEW) - 30%混沌注入验证报告(6场景/45次限流降级/0 FUSE/MD5:867BAAA0/20.7KB)

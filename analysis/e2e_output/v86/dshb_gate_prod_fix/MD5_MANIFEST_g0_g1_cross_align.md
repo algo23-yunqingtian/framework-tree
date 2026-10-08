@@ -1516,7 +1516,7 @@
 |---|------|-----|---------|------|
 | 1 | `v86_rc2_dshb_g1_30pct_bootstrap_execute_report.md` | `C3EBE8B4` | 21,646 | 新增 - 30%灰度Bootstrap执行报告(前置预检9/9+流量切换420ms+44/44 Checklist) |
 | 2 | `v86_rc2_dshb_g1_30pct_day1_observation_report.md` | `FA2D01B5` | 6,795 | 新增 - Day1观测报告(12项指标/混沌3场景/对账6次/回滚12.3min) |
-| 3 | `v86_rc2_dshb_g1_30pct_day2_observation_report.md` | `305A435C` | 58,257 | 新增 - Day2观测报告(CB-4 L2触发/DRIFT-002近WARN/混沌3场景/对账6次) |
+| 3 | `v86_rc2_dshb_g1_30pct_day2_observation_report.md` | `DFA6B765` | 45,078 | 新增 - Day2观测报告(CB-4 L2触发/DRIFT-002近WARN/混沌3场景/对账6次) |
 | 4 | `v86_rc2_dshb_g1_30pct_day3_observation_report.md` | `BACEF061` | 43,708 | 新增 - Day3观测报告(系统趋稳态/CB-4 L2+L3事件/混沌3场景/对账6次) |
 | 5 | `v86_rc2_dshb_g1_30pct_72h_longrun_summary.md` | `0FD9229A` | 25,509 | 新增 - 72h长程观测汇总(24,192点0缺失/StageE CONDITIONAL GO) |
 | 6 | `v86_rc2_dshb_g1_30pct_chaos_inject_verify_report.md` | `867BAAA0` | 20,731 | 新增 - 30%混沌注入验证报告(6场景/45次限流降级/0 FUSE) |
@@ -1531,9 +1531,9 @@
 
 | 类别 | 数量 | 大小合计 |
 |------|------|----------|
-| 新增文件 | 6 | 176,646 B |
+| 新增文件 | 6 | 163,467 B |
 | 更新文件 | 1 | 162,135 B |
-| **总计** | **7** | **338,781 B** |
+| **总计** | **7** | **325,602 B** |
 
 ### Phase18 关键指标
 
@@ -1572,7 +1572,7 @@
 | StageD 30%结论 | ✅ STABLE |
 | StageE 50%结论 | ⚠️ CONDITIONAL GO |
 | 风险登记册 | V2.7→V2.8 (47项, 0新增P1) |
-| 累计交付物 | 78 new + 31 updated = 5,271,770 B |
+| 累计交付物 | 78 new + 31 updated = 5,258,591 B |
 
 ### Phase18 状态标记
 
