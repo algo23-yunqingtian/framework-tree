@@ -39,3 +39,13 @@
 | 3 | v86_rc2_hermes_phase17_rv07_threshold_final_audit.md | 2724 | `81d4f1cc0dca7c21c6be580107d07170` |
 | 4 | v86_rc2_hermes_phase17_30pct_audit_simulation_report.md | 2919 | `257725466f007cb2b418c5c9ac1ce79b` |
 | 5 | v86_rc2_hermes_phase17_staged_30pct_audit_gonogo_report.md | 4614 | `e321aea7c3264cd0b1dc0f449bd0f1f7` |
+---
+
+## HERMES Phase17 Gate Audit Rehearsal
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_hermes_phase17_gate_audit_rehearsal_report.md | 2615 | `f7470ea6e100a98fa71485b7a2a82558` |
+| 2 | v86_rc2_hermes_phase17_drift_cb4_event_trace_validation.md | 2920 | `9a1f82ff73c07932c5b694ee973d0fea` |
+| 3 | v86_rc2_hermes_phase17_gate_rv07_final_recheck.md | 2672 | `e7e6f10c85c271e3ddb6032265016ed7` |
+| 4 | v86_rc2_hermes_phase17_gate_audit_gonogo_opinion.md | 3559 | `26bf5f07cc48476cddba80cb731fa83e` |

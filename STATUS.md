@@ -1338,3 +1338,14 @@
 - 风险清单: 5项(P3: 索引膨胀逼近WARN/追溯率噪声/DSHB Phase16未闭环; P4: WAL P99微增/索引P99微增), 0 P0/P1
 - 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(5新增+1脚本零覆盖), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
 - 状态标记: HERMES_PHASE17_STAGED_30PCT_AUDIT_GONOGO=GO
+
+### 2026-10-11 HERMES_V86_RC2_PHASE17_STAGED_30PCT_GATE_AUDIT_REHEARSAL_AND_EVENT_TRACE_PRE_VALID
+- Gate审计预检演练+DRIFT-002/CB-4事件链路预校验+RV-07终审+审计GO/NO-GO正式意见 (4 new, MD5 all verified)
+  - v86_rc2_hermes_phase17_gate_audit_rehearsal_report.md (MD5: F7470EA6E100) - T1/T4: 30% WAL P99=1.37ms/丢包0.004%/chain 0/去重2696全捕获/线性扩展+50%事件+10%延迟
+  - v86_rc2_hermes_phase17_drift_cb4_event_trace_validation.md (MD5: 9A1F82FF73C0) - T2: DRIFT-002未触发CRITICAL/0丢失0重复/CB-4未触发80ms阈值/DSHB S2/S3 P1已对齐
+  - v86_rc2_hermes_phase17_gate_rv07_final_recheck.md (MD5: E7E6F10C85C2) - T3: B-16 48%固化(5~6pp余量)/DSHB WARN 8.0%固化(7.55%<8.0%)/三方偏差≤0.03pp
+  - v86_rc2_hermes_phase17_gate_audit_gonogo_opinion.md (MD5: 26BF5F07CC48) - T5/T6: GO正式意见/DSHB S1-S3 P1→审计P3可控/0 P0P1/4 P3 1 P4
+- Gate结论: GO — 7项验收全PASS, StageD 30%可提交Gate评审
+- DSHB P1对齐: S1索引膨胀7.55%(P1→审计P3)/S2 DRIFT-002两次WARN(P1→审计P3)/S3 CB-4余量2.5%(P1→审计P3)
+- 审计侧建议: 首24h重点监控膨胀率/CB-4延迟, 每日5次对账, DSHB预案V1.2→V1.3采纳阈值调整
+- 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
