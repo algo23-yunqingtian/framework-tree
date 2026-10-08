@@ -61,3 +61,40 @@
 | 4 | v86_rc2_hermes_phase18_30pct_day3_audit_report.md | 1369 | `224ad3779ec2f37ff83ea161019a949c` |
 | 5 | v86_rc2_hermes_phase18_30pct_72h_audit_summary.md | 3202 | `1bed04ef696a04e382bbab0362e9a525` |
 | 6 | v86_rc2_hermes_phase18_30pct_index_benefit_audit.md | 2035 | `e4c29b5eccc3a7f093914488cc5f4066` |
+---
+
+## DSHE Phase17
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase17_30pct_capacity_upgrade_report.md | 26843 | `b535fdfaf6e998de234241413bb2cbe9` |
+| 2 | v86_rc2_e_l2_dashboard_phase17_30pct_baseline_lock_spec.md | 33951 | `2be9308173a9730a2da0fad439dfa930` |
+| 3 | v86_rc2_e_l2_dashboard_phase17_30pct_simulation_replay_report.md | 30917 | `e66f6f855d85ff4d0b7aabf8dc87ac5d` |
+| 4 | v86_rc2_e_l2_dashboard_phase17_alert_threshold_recheck_report.md | 35546 | `3faf6323e2240a981f02061b78a72384` |
+---
+
+## DSHE Phase18
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase18_30pct_bootstrap_monitor_report.md | 15083 | `3d9e37ae54659a14024a40121de6840f` |
+| 2 | v86_rc2_e_l2_dashboard_phase18_30pct_day1_metric_snapshot.md | 12317 | `a235ee2e76458803c7c9fc06fa35a570` |
+| 3 | v86_rc2_e_l2_dashboard_phase18_30pct_day2_metric_snapshot.md | 11948 | `30059360b6cf995a07f595e9e57610c4` |
+| 4 | v86_rc2_e_l2_dashboard_phase18_30pct_day3_metric_snapshot.md | 12106 | `85826d27b79ea1b470400a82ba27ca3a` |
+| 5 | v86_rc2_e_l2_dashboard_phase18_30pct_72h_monitor_summary.md | 20596 | `ed0d59e966c27d171dbc422e5d2e491a` |
+| 6 | v86_rc2_e_l2_dashboard_phase18_alert_fp_fn_analysis.md | 15859 | `589b64667f79ffada5ba9f1b25fb18c4` |
+| 7 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md | 45048 | `ce81b264de24bfdbac20049265474cda` |
+| 8 | v86_rc2_e_l2_ops_manual_chaos_update.md | 169032 | `16ee48c54c380da6704c452a3f8ede51` |
+---
+
+## DSHE Phase18 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V3.7→V3.8) | 45048 | `ce81b264de24bfdbac20049265474cda` |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.13→v4.0.14) | 169032 | `16ee48c54c380da6704c452a3f8ede51` |
+---
+
+**NO_OVERWRITE 自证**: Phase18 产物 MD5 零变化（本次新增 6 份 DSHE Phase18 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
