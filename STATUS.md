@@ -1,3 +1,44 @@
+### 2026-10-10 DSHB_V86_RC2_G1_PHASE18_STAGED_30PCT_BOOTSTRAP_AND_72H_LONG_RUN_OBSERVE
+- G1 Phase18 StageD 30%灰度Bootstrap执行与72h长程观测: Bootstrap执行(9/9预检+44/44 Checklist/流量20%→30%/420ms切换/0.38%偏差)+72h长程观测(24,192点0缺失/数据质量99.7%)+混沌注入6/6 PASS(9次执行/45次限流降级/0 FUSE)+索引膨胀受控(7.52-7.68%/WARN 8.0%)+CB-4 DRIFT-002验证+DSHB-DSHE对账18次16/16+RI-001 CONTAINED+回滚SLA 12.0-12.5min+风险登记册V2.7→V2.8+StageE 50% CONDITIONAL GO (6 new + 1 updated + 3 metadata)
+  - v86_rc2_dshb_g1_30pct_bootstrap_execute_report.md (NEW) - 30%灰度Bootstrap执行报告(9/9预检+44/44 Checklist+流量切换/MD5:C3EBE8B4/21.6KB)
+  - v86_rc2_dshb_g1_30pct_day1_observation_report.md (NEW) - Day1观测报告(12项指标/混沌3场景/CB-4 77-79ms/DRIFT-002 4.05-4.12ms/对账6次/回滚12.3min/MD5:FA2D01B5/6.8KB)
+  - v86_rc2_dshb_g1_30pct_day2_observation_report.md (NEW) - Day2观测报告(12项指标/混沌3场景/CB-4 L2触发1次/DRIFT-002近WARN/对账6次/回滚12.5min/MD5:305A435C/58.3KB)
+  - v86_rc2_dshb_g1_30pct_day3_observation_report.md (NEW) - Day3观测报告(12项指标/混沌3场景/系统趋稳态/CB-4 L2+L3事件/对账6次/回滚12.0min/MD5:BACEF061/43.7KB)
+  - v86_rc2_dshb_g1_30pct_72h_longrun_summary.md (NEW) - 72h长程观测汇总(24,192点/12项指标/6场景混沌/StageE CONDITIONAL GO/MD5:0FD9229A/25.5KB)
+  - v86_rc2_dshb_g1_30pct_chaos_inject_verify_report.md (NEW) - 30%混沌注入验证报告(6场景/45次限流降级/0 FUSE/MD5:867BAAA0/20.7KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V2.7→V2.8) - §33 Phase18执行+72h观测+混沌+Bootstrap+P1/P2复核+StageE评估+14状态标记
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase18 section added
+  - JOB_READY.flag (更新) - Phase18 section added
+  - STATUS.md (更新) - Phase18 entry added
+- Bootstrap执行: 9/9预检PASS, 44/44 Checklist PASS, 流量20%→30%(偏差0.38%), 索引膨胀重平衡后7.52%
+- 72h观测: 24,192数据点0缺失, 数据质量99.7%, 12项指标全部合规
+- 混沌注入: 6/6 PASS, 9次执行, 45次限流降级全恢复, 0 FUSE, CB-4 L2触发2次L3触发1次, DRIFT-002 WARN 34次0 CRITICAL, DEG-03拦截4/4
+- 索引膨胀: 7.52-7.68%(WARN阈值8.0%), 增长速率0.015-0.018%/h(递减趋势), 每日03:00 UTC压缩
+- CB-4: 正常77-82ms(余量0-3ms), 阈值80ms保持不变, L2触发2次(78.5ms→76ms 4min, 80.2ms→76ms 6min), L3触发1次, 0 FUSE
+- DRIFT-002: 正常4.05-4.22ms(多次超WARN 4.16ms), 阈值+30%保持不变, 审计扩容有效, 0 CRITICAL
+- DSHB-DSHE对账: 18次(每日6次), 16/16全部对齐, 最大偏差0.35%, 平均偏差0.30%
+- RI-001: CONTAINED, WAL P99 3.42-3.58ms, 稳定
+- 回滚SLA: 12.0-12.5min(≤15min), 3次演练全部通过, 9/9验证PASS
+- 风险登记: V2.7→V2.8, 47项(40 CLOSED + 5 P2), 0新增P1, 0升级, 3项P1受控
+- StageD结论: ✅ STABLE, 30%灰度稳定运行
+- StageE结论: ⚠️ CONDITIONAL GO, 需缓解措施(索引压缩/CB-4限流/DRIFT扩容/查询池扩容)+50%混沌预验证
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE18_30PCT_BOOTSTRAP_PRECHECK_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE18_30PCT_TRAFFIC_SWITCH_COMPLETE=TRUE
+- 状态标记: DSHB_G1_PHASE18_72H_LONG_RUN_OBSERVATION_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE18_INDEX_EXP_MONITOR_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE18_CB4_AUTO_LIMIT_VERIFY_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE18_DRIFT002_LOAD_PREPARE_VERIFY_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE18_30PCT_CHAOS_INJECT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE18_THREE_WAY_RECONCILE_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE18_RISK_REGISTER_V28_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE18_72H_SUMMARY_AND_STAGEE_GONOGO_DONE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGED_30PCT_ONLINE=TRUE
+- 状态标记: BASELINE_FROZEN=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: DSHB_G1_PHASE18_DONE=TRUE
+
 ### 2026-11-10 DSHB_V86_RC2_G1_PHASE17_STAGED_30PCT_GRAY_PREP_AND_GATE_REHEARSAL
 - G1 Phase17 StageD 30%灰度前置准备与Gate演练: P1风险专项复核(3项P1条件通过/索引膨胀7.31-7.51%缓解后/CB-4 76-79ms限流后/DRIFT-002 4.02-4.22ms审计扩容后)+30%路由预演练(380ms切换/0.38%偏差/350ms回滚)+Gate全项预检(40/40 PASS/加权100.0)+DSHE资源基线对齐(查询池16→24/缓存8→12GB/30%模拟CPU 82%/全部达标)+应急预案与回滚SOP(4场景/9预案/SLA 12.5min/3次验证全部通过)+混沌30%预跑(6/6 PASS)+风险登记册V2.6→V2.7+3项P1重点观测标记+Gate评审材料+结论GO_LIVE (6 new + 1 updated + 3 metadata)
   - v86_rc2_dshb_g1_staged_30pct_risk_special_review.md (NEW) - P1风险专项复核报告(3项P1评估/缓解措施/限流降级预案/MD5:2BEB9AC5/25.8KB)

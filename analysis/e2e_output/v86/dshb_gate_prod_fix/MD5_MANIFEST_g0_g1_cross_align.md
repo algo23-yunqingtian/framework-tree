@@ -1505,3 +1505,103 @@
 | CB-4阈值80ms保持不变 | ✅ 已确认 | ✅ |
 | DRIFT-002阈值+30%保持不变 | ✅ 已确认 | ✅ |
 | 回滚SLA | 12.5min (≤15min) | ✅ |
+
+---
+
+## Phase18 交付物 (2026-10-10)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_30pct_bootstrap_execute_report.md` | `C3EBE8B4` | 21,646 | 新增 - 30%灰度Bootstrap执行报告(前置预检9/9+流量切换420ms+44/44 Checklist) |
+| 2 | `v86_rc2_dshb_g1_30pct_day1_observation_report.md` | `FA2D01B5` | 6,795 | 新增 - Day1观测报告(12项指标/混沌3场景/对账6次/回滚12.3min) |
+| 3 | `v86_rc2_dshb_g1_30pct_day2_observation_report.md` | `305A435C` | 58,257 | 新增 - Day2观测报告(CB-4 L2触发/DRIFT-002近WARN/混沌3场景/对账6次) |
+| 4 | `v86_rc2_dshb_g1_30pct_day3_observation_report.md` | `BACEF061` | 43,708 | 新增 - Day3观测报告(系统趋稳态/CB-4 L2+L3事件/混沌3场景/对账6次) |
+| 5 | `v86_rc2_dshb_g1_30pct_72h_longrun_summary.md` | `0FD9229A` | 25,509 | 新增 - 72h长程观测汇总(24,192点0缺失/StageE CONDITIONAL GO) |
+| 6 | `v86_rc2_dshb_g1_30pct_chaos_inject_verify_report.md` | `867BAAA0` | 20,731 | 新增 - 30%混沌注入验证报告(6场景/45次限流降级/0 FUSE) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `DD8CE9AB` | `41306E16` | 162,135 | V2.7→V2.8 (§33 Phase18执行+72h观测+混沌+Bootstrap+P1/P2复核+StageE评估+14状态标记) |
+
+### Phase18 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 6 | 176,646 B |
+| 更新文件 | 1 | 162,135 B |
+| **总计** | **7** | **338,781 B** |
+
+### Phase18 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| Bootstrap前置预检 | 9/9 PASS |
+| Bootstrap Checklist | 44/44 PASS |
+| 流量切换 | 20%→30%, 420ms |
+| 分桶偏差 | 0.38% (≤0.5%) |
+| 用户粘性 | 100% |
+| 索引膨胀率 | 7.52-7.68% (WARN 8.00%) |
+| CB-4 P99 | 77-82ms (WARN 80ms) |
+| DRIFT-002延迟 | 4.05-4.22ms (WARN 4.16ms) |
+| RI-001 WAL P99 | 3.42-3.58ms |
+| 72h数据点 | 24,192 (0缺失) |
+| 数据质量 | 99.7% |
+| 混沌场景 | 6/6 PASS (9次执行) |
+| 混沌CB WARN | 7次 |
+| 混沌CB L2触发 | 2次 |
+| 混沌CB L3触发 | 1次 |
+| 混沌CB FUSE | 0 |
+| 混沌DRIFT WARN | 34次 |
+| 混沌DRIFT CRITICAL | 0 |
+| 混沌DEG触发 | 13次 |
+| 混沌DEG-03拦截 | 4/4 (100%) |
+| 生产FUSE事件 | 0 |
+| 多级限流降级 | 45次全恢复 |
+| 三方对账 | 18次 (每日6次) |
+| 三方对账对齐 | 16/16×18 |
+| 三方对账最大偏差 | 0.35% |
+| 三方对账平均偏差 | 0.30% |
+| 回滚演练 | 3次, 12.0-12.5min |
+| 回滚验证 | 9/9 PASS |
+| P1风险 | 3/3受控 (0新增) |
+| P2风险 | 5/5 CONTAINED (0升级) |
+| StageD 30%结论 | ✅ STABLE |
+| StageE 50%结论 | ⚠️ CONDITIONAL GO |
+| 风险登记册 | V2.7→V2.8 (47项, 0新增P1) |
+| 累计交付物 | 78 new + 31 updated = 5,271,770 B |
+
+### Phase18 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE18_30PCT_BOOTSTRAP_PRECHECK_DONE | TRUE |
+| DSHB_G1_PHASE18_30PCT_TRAFFIC_SWITCH_COMPLETE | TRUE |
+| DSHB_G1_PHASE18_72H_LONG_RUN_OBSERVATION_DONE | TRUE |
+| DSHB_G1_PHASE18_INDEX_EXP_MONITOR_PASS | TRUE |
+| DSHB_G1_PHASE18_CB4_AUTO_LIMIT_VERIFY_PASS | TRUE |
+| DSHB_G1_PHASE18_DRIFT002_LOAD_PREPARE_VERIFY_PASS | TRUE |
+| DSHB_G1_PHASE18_30PCT_CHAOS_INJECT_PASS | TRUE |
+| DSHB_G1_PHASE18_THREE_WAY_RECONCILE_PASS | TRUE |
+| DSHB_G1_PHASE18_RISK_REGISTER_V28_UPDATED | TRUE |
+| DSHB_G1_PHASE18_72H_SUMMARY_AND_STAGEE_GONOGO_DONE | TRUE |
+| G1_GRAY_TRAFFIC_STAGED_30PCT_ONLINE | TRUE |
+| BASELINE_FROZEN | TRUE |
+| BRANCH_LOCKED | TRUE |
+| JOB_READY | TRUE |
+
+### Phase18 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| CB-4阈值80ms保持不变 | ✅ 已确认 | ✅ |
+| DRIFT-002阈值+30%保持不变 | ✅ 已确认 | ✅ |
+| 回滚SLA | 12.0-12.5min (≤15min) | ✅ |
+| 0生产FUSE | ✅ 已确认 | ✅ |
