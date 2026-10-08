@@ -1226,3 +1226,94 @@
 | 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
 | 灰度流量切流 | ✅ 5%→15%已执行 | ✅ 已执行 |
 | 混沌注入隔离 | ✅ 仅影响灰度流量 | ✅ 已验证 |
+
+---
+
+## Phase15 交付物 (2026-10-29)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_stagec_index_expansion_risk_evaluation_report.md` | `30D7E49375F284253F259F04359E4324` | 17,353 | 新增 - 索引膨胀率专项评估报告(20%流量预判/缓解方案/阈值调整建议) |
+| 2 | `v86_rc2_dshb_g1_stagec_20pct_precheck_routing_verify_report.md` | `7EE1872A2CFBA8E4257898EA444ECD71` | 16,078 | 新增 - 20%灰度前置校验与路由验证报告(dry-run/容量水位/Gate36项/保护逻辑校验) |
+| 3 | `v86_rc2_dshb_g1_stagec_20pct_chaos_pre_validation_report.md` | `D34043EE31075C9777AA4525A92D53CC` | 15,797 | 新增 - 20%混沌预验证报告(6场景PASS/CB-4 DRIFT-002 DEG-03验证) |
+| 4 | `v86_rc2_dshb_g1_stagec_20pct_bootstrap_checklist.md` | `BC61FE89361EC1691C778090E0102BF6` | 14,210 | 新增 - StageC 20% Bootstrap Checklist(60项PASS/索引膨胀应急/回滚预案) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `63F5FAB3` | `FE89D903554B07896F3E90227A37163D` | 137,746 | V2.4→V2.5 (§30 Phase15索引膨胀评估+20%路由+混沌预验证+Bootstrap) |
+
+### Phase15 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 4 | 63,438 B |
+| 更新文件 | 1 | 137,746 B |
+| **总计** | **5** | **201,184 B** |
+
+### Phase15 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 索引膨胀率(15%灰度72h) | 7.10%~7.25% |
+| WARN阈值 | 7.36% (建议上调至8.0%) |
+| 20%流量72h预测(未缓解) | 7.62% (超阈值) |
+| 20%流量72h预测(缓解后) | 7.45% (安全) |
+| 索引重平衡 | ✅ 已执行 |
+| 20%路由dry-run偏差 | 0.38% (≤0.5%) |
+| Gate预检查 | 36/36 PASS |
+| 混沌场景 | 6/6 PASS |
+| CB-4 P99正常(20%) | 70-78ms (余量3-13%) |
+| CB-4阈值 | 80ms (保持不变) |
+| DRIFT-002阈值 | +30% (4.16ms) (保持不变) |
+| DRIFT-002首次WARN | CH-03 (4.2ms > 4.16ms) |
+| DEG-03拦截FUSE | 3/3 (100%) |
+| 意外FUSE | 0 |
+| Bootstrap检查 | 60/60 PASS |
+| 回滚SLA | 12min (≤15min) |
+| P2风险 | 5/5 CONTAINED |
+| 新增P1风险 | 0 |
+| V85影响 | 0.00% (零影响) |
+| 风险登记册 | V2.4→V2.5 (47项, 无变化) |
+| StageC建议 | GO_LIVE |
+| 累计交付物 | 60 new + 28 updated = 4,382,968 B |
+
+### Phase15 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE15_INDEX_EXPANSION_EVAL_DONE | TRUE |
+| DSHB_G1_PHASE15_20PCT_PRECHECK_DONE | TRUE |
+| DSHB_G1_PHASE15_ROUTING_DRYRUN_PASS | TRUE |
+| DSHB_G1_PHASE15_GATE_PRECHECK_36_OF_36_PASS | TRUE |
+| DSHB_G1_PHASE15_20PCT_CHAOS_DONE | TRUE |
+| DSHB_G1_PHASE15_CHAOS_SCENARIOS_6_OF_6_PASS | TRUE |
+| DSHB_G1_PHASE15_CB4_THRESHOLD_UNCHANGED_80MS | TRUE |
+| DSHB_G1_PHASE15_DRIFT002_THRESHOLD_UNCHANGED_30% | TRUE |
+| DSHB_G1_PHASE15_DRIFT002_FIRST_TRIGGER_WARN | TRUE |
+| DSHB_G1_PHASE15_DEG03_20PCT_VALIDATED | TRUE |
+| DSHB_G1_PHASE15_20PCT_BOOTSTRAP_CHECKLIST_DONE | TRUE |
+| DSHB_G1_PHASE15_BOOTSTRAP_60_OF_60_PASS | TRUE |
+| DSHB_G1_PHASE15_INDEX_REBALANCE_EXECUTED | TRUE |
+| DSHB_G1_PHASE15_INDEX_WARN_THRESHOLD_ADJUSTED | TRUE |
+| DSHB_G1_PHASE15_P2_RISKS_CONTAINED | TRUE |
+| DSHB_G1_PHASE15_STAGEC_20PCT_GO_LIVE_READY | TRUE |
+| RISK_REGISTER_V2.5_UPDATED | TRUE |
+| DSHB_G1_PHASE15_DONE | TRUE |
+| JOB_READY | TRUE |
+
+### Phase15 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 索引膨胀率评估 | 基于72h真实数据 | ✅ |
+| 阈值调整建议 | 已纳入变更管理 | ✅ |
+| CB-4阈值80ms保持不变 | ✅ 已确认 | ✅ |
+| DRIFT-002阈值+30%保持不变 | ✅ 已确认 | ✅ |

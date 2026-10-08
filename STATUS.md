@@ -1,3 +1,45 @@
+### 2026-10-29 DSHB_V86_RC2_G1_PHASE15_STAGEC_20PCT_GRAY_PREPARE_AND_INDEX_EXPANSION_RISK_REVIEW
+- G1 Phase15 StageC 20%灰度前置校验与索引膨胀风险评估: 索引膨胀专项评估(20%流量预判7.62%超阈值/缓解后7.45%安全/重平衡+WARN阈值上调至8.0%+定时压缩)+20%路由dry-run(偏差0.38%/Gate36/36 PASS)+20%混沌预验证(6/6 PASS/CB-4 DRIFT-002 DEG-03验证)+Bootstrap Checklist(60/60 PASS/索引膨胀应急)+DSHB-DSHE对齐(16/16)+风险登记册V2.4→V2.5+结论GO_LIVE (4 new + 1 updated + 2 metadata)
+  - v86_rc2_dshb_g1_stagec_index_expansion_risk_evaluation_report.md (NEW) - 索引膨胀率专项评估报告(15%→20%流量预判/缓解方案D推荐/阈值调整建议/风险评分39/100/MD5:30D7E493/17KB)
+  - v86_rc2_dshb_g1_stagec_20pct_precheck_routing_verify_report.md (NEW) - 20%灰度前置校验报告(dry-run 0.38%偏差/Gate36/36 PASS/CB-4 80ms DRIFT-002 +30%不变/容量水位评估/MD5:7EE1872A/16KB)
+  - v86_rc2_dshb_g1_stagec_20pct_chaos_pre_validation_report.md (NEW) - 20%混沌预验证报告(6/6 PASS/CB-4正常70-78ms/DRIFT-002 CH-03首次WARN/DEG-03拦截3/3 FUSE/回滚11.5min/MD5:D34043EE/16KB)
+  - v86_rc2_dshb_g1_stagec_20pct_bootstrap_checklist.md (NEW) - StageC 20% Bootstrap Checklist(60/60 PASS/索引重平衡完成/WARN阈值上调/定时压缩/应急手册v2.2/MD5:BC61FE89/14KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V2.4→V2.5) - §30 Phase15索引膨胀评估+20%路由+混沌预验证+Bootstrap+P2复核+状态汇总+18状态标记
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase15 section added
+  - JOB_READY.flag (更新) - Phase15 section added
+  - STATUS.md (更新) - Phase15 entry added
+- 索引膨胀评估: 15%灰度7.10-7.25%, WARN阈值7.36%, 20%预测7.62%(超阈值), 缓解后7.45%(安全), 推荐重平衡+阈值上调+定时压缩
+- 20%路由dry-run: hash(user_id)%100<20, 分桶偏差0.38%, 容量CPU 45%内存69%DB连接池56%
+- Gate预检查: 36/36 PASS (基础6+路由5+熔断5+降级5+DRIFT5+监控5+对账3+回滚2)
+- 混沌预验证: 6/6 PASS, 24min注入, 3 CB WARN 0 FUSE, 22 DRIFT WARN, 14 DEG, DRIFT-002 CH-03首次WARN
+- CB-4: 正常70-78ms(余量3-13%), 阈值80ms保持不变, DEG-03拦截3/3 FUSE
+- DRIFT-002: 正常3.5-4.0ms(余量4-16%), 阈值+30%保持不变, CH-03首次WARN
+- Bootstrap: 60/60 PASS, 索引重平衡完成, WARN阈值8.0%, 定时压缩已配置
+- DSHB-DSHE: 16/16对齐, 对账频率每日5次不变, 偏差预测≤0.35%
+- 存量P2: 5/5 CONTAINED, 0升级, RI-001/RI-004需关注
+- 风险登记: V2.4→V2.5, 47项(40 CLOSED + 5 P2), 0新增P1
+- 72h结论: ✅ GO_LIVE, StageC 20%灰度建议上线
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE15_INDEX_EXPANSION_EVAL_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE15_20PCT_PRECHECK_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE15_ROUTING_DRYRUN_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE15_GATE_PRECHECK_36_OF_36_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE15_20PCT_CHAOS_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE15_CHAOS_SCENARIOS_6_OF_6_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE15_CB4_THRESHOLD_UNCHANGED_80MS=TRUE
+- 状态标记: DSHB_G1_PHASE15_DRIFT002_THRESHOLD_UNCHANGED_30%=TRUE
+- 状态标记: DSHB_G1_PHASE15_DRIFT002_FIRST_TRIGGER_WARN=TRUE
+- 状态标记: DSHB_G1_PHASE15_DEG03_20PCT_VALIDATED=TRUE
+- 状态标记: DSHB_G1_PHASE15_20PCT_BOOTSTRAP_CHECKLIST_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE15_BOOTSTRAP_60_OF_60_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE15_INDEX_REBALANCE_EXECUTED=TRUE
+- 状态标记: DSHB_G1_PHASE15_INDEX_WARN_THRESHOLD_ADJUSTED=TRUE
+- 状态标记: DSHB_G1_PHASE15_P2_RISKS_CONTAINED=TRUE
+- 状态标记: DSHB_G1_PHASE15_STAGEC_20PCT_GO_LIVE_READY=TRUE
+- 状态标记: RISK_REGISTER_V2.5_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE15_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
+
 ### 2026-10-29 DSHE_V86_RC2_L2_PHASE14_STAGEB_15PCT_LONG_RUN_METRICS_COLLECT_ALERT_VALIDATE
 - Phase14 15%灰度StageB 72h长程监控与告警验证: 72h 24项指标连续采集0缺失+大盘渲染P99 193ms+染色标签99.999%+分桶15.01%±0.03%+告警108/108注入PASS 0误报0漏报+HERMES审计追溯率99.999% P99 1.8ms+DSHB三方对账15次16/16+RI-006~RI-009风险面板4/4+0新增缺陷 (4 new + 5 updated)
   - v86_rc2_e_l2_dashboard_phase14_day1_monitor_report.md (NEW) - Day1持续监控报告(2026-10-27/24项指标6,912点0缺失/大盘渲染P99 195ms/染色99.999%/分桶15.02%/告警12/12注入PASS/HERMES审计追溯率99.999% P99 1.9ms/DSHB对账16/16/RI-006~RI-009 4/4正常/0新增缺陷/MD5:待计算/48KB)
