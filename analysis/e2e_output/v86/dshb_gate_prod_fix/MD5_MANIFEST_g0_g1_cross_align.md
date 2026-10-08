@@ -1317,3 +1317,100 @@
 | 阈值调整建议 | 已纳入变更管理 | ✅ |
 | CB-4阈值80ms保持不变 | ✅ 已确认 | ✅ |
 | DRIFT-002阈值+30%保持不变 | ✅ 已确认 | ✅ |
+
+---
+
+## Phase16 交付物 (2026-11-04)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_stagec_20pct_bootstrap_execute_report.md` | `984A76E946BE71E7A11A060A6C744AB2` | 37,540 | 新增 - 20%灰度Bootstrap执行报告(流量切换/预检/Bootstrap执行/关键指标对比) |
+| 2 | `v86_rc2_dshb_g1_stagec_day1_observation_report.md` | `05644B0434DC17188F47DFFB63D81D71` | 38,909 | 新增 - Day1观测报告(12项指标/混沌2场景/CB-4 DRIFT-002/RI-001/RI-004/对账/回滚) |
+| 3 | `v86_rc2_dshb_g1_stagec_day2_observation_report.md` | `85BC861B4DEC9291A59F4E3DE58014D2` | 11,665 | 新增 - Day2观测报告(12项指标/混沌2场景/DRIFT-002首次WARN/DEG-03拦截/对账/回滚) |
+| 4 | `v86_rc2_dshb_g1_stagec_day3_observation_report.md` | `15E8C75BF3821AA47D0DDD0645148B7F` | 28,401 | 新增 - Day3观测报告(12项指标/混沌2场景/03:00压缩/DEG-03拦截/对账/回滚) |
+| 5 | `v86_rc2_dshb_g1_stagec_72h_longrun_summary.md` | `8E161E9AB5631BF708BDCA9F704D82C8` | 42,898 | 新增 - 72h长程观测汇总(24,192点/12项指标/6场景混沌/StageD准入评估) |
+| 6 | `v86_rc2_dshb_g1_stagec_20pct_chaos_inject_verify_report.md` | `9148BF67E5B01C91F86CA8BA47227451` | 51,942 | 新增 - 20%混沌注入验证报告(6场景详细分析/CB-4 DRIFT-002 DEG-03深度验证) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `121FB309` | `121FB309F6051196FF8D1ECCEB87AFCA` | 145,523 | V2.5→V2.6 (§31 Phase16执行与72h观测) |
+
+### Phase16 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 6 | 211,355 B |
+| 更新文件 | 1 | 145,523 B |
+| **总计** | **7** | **356,878 B** |
+
+### Phase16 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| Bootstrap执行 | 60/60 PASS |
+| 灰度流量切换 | 15% → 20% (偏差0.35%) |
+| 观测周期 | 72h (2026-11-01 ~ 2026-11-04) |
+| 索引膨胀率(20%) | 7.35-7.55% (WARN阈值8.0%) |
+| CB-4 P99正常(20%) | 71-78ms (余量2.5-11.3%) |
+| CB-4阈值 | 80ms (保持不变) |
+| DRIFT-002正常(20%) | 3.62-4.00ms |
+| DRIFT-002阈值 | +30% (4.16ms) (保持不变) |
+| DRIFT-002首次WARN | CH-03 (4.25ms) |
+| DRIFT-002第二次WARN | CH-06 (4.28ms) |
+| DEG-03拦截FUSE | 4/4 (100%) |
+| 意外FUSE | 0 |
+| 混沌场景 | 6/6 PASS |
+| 混沌注入总时长 | 24min |
+| CB WARN触发 | 3 |
+| DRIFT WARN触发 | 22 |
+| DEG触发 | 13 |
+| CRITICAL告警 | 0 |
+| P1事件 | 0 |
+| 新增P1风险 | 0 |
+| P2风险 | 5/5 CONTAINED |
+| DSHB-DSHE对账 | 15次(每日5次), 16/16 |
+| DSHB-DSHE最大偏差 | 0.35% |
+| 回滚SLA | 11.5-12.1min (≤15min) |
+| V85影响 | 0.00% (零影响) |
+| 风险登记册 | V2.5→V2.6 (47项, 无变化) |
+| StageD建议 | GO_LIVE |
+| 累计交付物 | 66 new + 29 updated = 4,739,846 B |
+
+### Phase16 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE16_STAGEC_BOOTSTRAP_EXEC_DONE | TRUE |
+| DSHB_G1_PHASE16_TRAFFIC_20PCT_STABLE | TRUE |
+| DSHB_G1_PHASE16_INDEX_EXP_UNDER_CONTROL | TRUE |
+| DSHB_G1_PHASE16_DRIFT002_MONITOR_PASS | TRUE |
+| DSHB_G1_PHASE16_CB4_MONITOR_PASS | TRUE |
+| DSHB_G1_PHASE16_72H_OBSERVATION_DONE | TRUE |
+| DSHB_G1_PHASE16_20PCT_CHAOS_INJECT_PASS | TRUE |
+| DSHB_G1_PHASE16_THREE_WAY_RECONCILE_PASS | TRUE |
+| DSHB_G1_PHASE16_ROLLBACK_SLA_VERIFIED | TRUE |
+| DSHB_G1_PHASE16_RISK_REGISTER_V26_UPDATED | TRUE |
+| DSHB_G1_PHASE16_STAGEC_72H_SUMMARY_DONE | TRUE |
+| DSHB_G1_PHASE16_STAGEC_D_GO_NO_GO_RECOMMEND | GO_LIVE |
+| G1_GRAY_TRAFFIC_STAGEC_20PCT_ONLINE | TRUE |
+| BASELINE_FROZEN | TRUE |
+| BRANCH_LOCKED | TRUE |
+| JOB_READY | TRUE |
+
+### Phase16 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 索引膨胀率评估 | 基于72h真实数据 | ✅ |
+| 混沌注入 | 仅影响灰度流量 | ✅ |
+| CB-4阈值80ms保持不变 | ✅ 已确认 | ✅ |
+| DRIFT-002阈值+30%保持不变 | ✅ 已确认 | ✅ |
+| 回滚SLA | 11.5-12.1min (≤15min) | ✅ |

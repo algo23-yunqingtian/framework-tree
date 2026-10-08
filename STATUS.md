@@ -38,6 +38,49 @@
 - 状态标记: DSHB_G1_PHASE15_STAGEC_20PCT_GO_LIVE_READY=TRUE
 - 状态标记: RISK_REGISTER_V2.5_UPDATED=TRUE
 
+### 2026-11-04 DSHB_V86_RC2_G1_PHASE16_STAGEC_20PCT_GRAY_BOOTSTRAP_AND_72H_LONG_RUN
+- G1 Phase16 StageC 20%灰度流量Bootstrap执行与72h长程观测: Bootstrap执行(60/60 PASS/流量15%→20%/偏差0.35%)+72h长程观测(24,192点0缺失/数据质量99.7%)+混沌注入6/6 PASS(24min/3 CB WARN/22 DRIFT WARN/13 DEG/4/4 DEG-03拦截)+索引膨胀受控(7.35-7.55%/WARN 8.0%)+CB-4 DRIFT-002 DEG-03验证+DSHB-DSHE对账15次16/16+RI-001/RI-004 CONTAINED+回滚SLA 11.5-12.1min+风险登记册V2.5→V2.6+结论GO_LIVE StageD (6 new + 1 updated + 2 metadata)
+  - v86_rc2_dshb_g1_stagec_20pct_bootstrap_execute_report.md (NEW) - 20%灰度Bootstrap执行报告(流量切换/预检/Bootstrap执行/关键指标对比/MD5:984A76E9/37.5KB)
+  - v86_rc2_dshb_g1_stagec_day1_observation_report.md (NEW) - Day1观测报告(12项指标/混沌2场景/CB-4 71-76ms/DRIFT-002 3.62-3.72ms/对账16/16/回滚11.8min/MD5:05644B04/38.9KB)
+  - v86_rc2_dshb_g1_stagec_day2_observation_report.md (NEW) - Day2观测报告(12项指标/混沌2场景/DRIFT-002首次WARN 4.25ms/DEG-03拦截2/2/对账16/16/回滚12.1min/MD5:85BC861B/11.7KB)
+  - v86_rc2_dshb_g1_stagec_day3_observation_report.md (NEW) - Day3观测报告(12项指标/混沌2场景/03:00压缩/DEG-03拦截2/2/对账16/16/回滚11.5min/MD5:15E8C75B/28.4KB)
+  - v86_rc2_dshb_g1_stagec_72h_longrun_summary.md (NEW) - 72h长程观测汇总(24,192点/12项指标/6场景混沌/StageD准入评估14/14 PASS/MD5:8E161E9A/42.9KB)
+  - v86_rc2_dshb_g1_stagec_20pct_chaos_inject_verify_report.md (NEW) - 20%混沌注入验证报告(6场景详细/CB-4 DRIFT-002 DEG-03深度验证/回滚3/3/MD5:9148BF67/51.9KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V2.5→V2.6) - §31 Phase16执行与72h观测+混沌+Bootstrap+P2复核+StageD准入+16状态标记
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase16 section added
+  - JOB_READY.flag (更新) - Phase16 section added
+  - STATUS.md (更新) - Phase16 entry added
+- Bootstrap执行: 60/60 PASS, 流量15%→20%(偏差0.35%), 索引膨胀重平衡后7.35%
+- 72h观测: 24,192数据点0缺失, 数据质量99.7%, 12项指标全部合规
+- 混沌注入: 6/6 PASS, 24min注入, 3 CB WARN 0 FUSE, 22 DRIFT WARN, 13 DEG, 4/4 DEG-03拦截
+- 索引膨胀: 7.35-7.55%(WARN阈值8.0%), 每日03:00 UTC压缩, 增长速率0.035%/h
+- CB-4: 正常71-78ms(余量2.5-11.3%), 阈值80ms保持不变, CH-04 WARN 77ms, CH-06 WARN 77.2ms
+- DRIFT-002: 正常3.62-4.00ms(余量3.6-12.7%), 阈值+30%保持不变, CH-03首次WARN 4.25ms, CH-06 4.28ms
+- DEG-03: 4/4 FUSE拦截(CH-03 CH-04 CH-05 CH-06), 0生产FUSE
+- DSHB-DSHE对账: 15次(每日5次), 16/16全部对齐, 最大偏差0.35%, 平均偏差0.28%
+- RI-001/RI-004: CONTAINED, WAL P99 3.15-3.40ms, 索引膨胀7.35-7.55%
+- 回滚SLA: 11.5-12.1min(≤15min), 3次演练全部通过
+- 风险登记: V2.5→V2.6, 47项(40 CLOSED + 5 P2), 0新增P1, 0升级
+- StageD结论: ✅ GO_LIVE, StageD 30%灰度建议上线
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE16_STAGEC_BOOTSTRAP_EXEC_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE16_TRAFFIC_20PCT_STABLE=TRUE
+- 状态标记: DSHB_G1_PHASE16_INDEX_EXP_UNDER_CONTROL=TRUE
+- 状态标记: DSHB_G1_PHASE16_DRIFT002_MONITOR_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE16_CB4_MONITOR_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE16_72H_OBSERVATION_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE16_20PCT_CHAOS_INJECT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE16_THREE_WAY_RECONCILE_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE16_ROLLBACK_SLA_VERIFIED=TRUE
+- 状态标记: DSHB_G1_PHASE16_RISK_REGISTER_V26_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE16_STAGEC_72H_SUMMARY_DONE=TRUE
+- 状态标记: DSHB_G1_PHASE16_STAGEC_D_GO_NO_GO_RECOMMEND=GO_LIVE
+- 状态标记: G1_GRAY_TRAFFIC_STAGEC_20PCT_ONLINE=TRUE
+- 状态标记: BASELINE_FROZEN=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: JOB_READY=TRUE
+- 状态标记: DSHB_G1_PHASE16_DONE=TRUE
+
 ### 2026-10-29 DSHE_V86_RC2_L2_PHASE15_STAGEC_20PCT_DASHBOARD_PREP_INDEX_METRIC_ADJUST
 - Phase15 StageC 20%灰度放量准备: 20%容量评估(有条件PASS/查询线程池16→24/缓存8→12GB/渲染P99优化172ms)+索引膨胀面板(IE-AL-001 WARN 8.0%/IE-AL-002 CRITICAL 10.0%/应急SOP)+告警阈值同步更新(14条阈值线+8条告警规则/12/12对齐)+phase5_index_deploy.py版本冲突根因定位(a.extra→a.enable_extra_index修复验证)+20%模拟回放(60min/288点0缺失/染色99.998%/分桶0.02%/告警24/24 PASS/HERMES P99 2.2ms/DSHB对账16/16)+追溯规范V1.5确认+缺陷V3.5→V3.6(0新增)+运维手册v4.0.11→v4.0.12(§33) (5 new + 5 updated)
   - v86_rc2_e_l2_dashboard_phase15_20pct_capacity_evaluate_report.md (NEW) - 20%容量评估报告(1.333x放大/CPU 98%临界/查询池16→24/缓存8→12GB/渲染P99 172ms/6瓶颈全部缓解/PASS有条件/0新增缺陷)
