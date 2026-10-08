@@ -1213,3 +1213,18 @@
 - 分片规范V2: 修正分片算法(向上取整), 异常分类矩阵(5级别), 路径长度限制(260字符), JSON重复键处理(MEDIUM), Unicode策略(latin-1回退), 文件大小限制
 - 约束合规: JOB_READY=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, L2_INDEPENDENT_CALL_CHAIN=TRUE, NO_DSHB_REUSE=TRUE, EVIDENCE_CONTRACT_V1_SOLIDIFIED=TRUE
 - 状态标记: DSHE_PROD_PHASE_L2_SHARD_BUGFIX_PROD_ADAPT_DONE=TRUE
+
+### 2026-10-08 HERMES_V86_RC2_PHASE15_STAGEC_20PCT_AUDIT_PREP_AND_INDEX_SCRIPT_FIX
+- Phase8遗留阻断问题闭环 + StageC 20%灰度审计前置准备 + RV-07阈值评估 + 20%全链路压测 (6 new, MD5 all verified)
+  - v86_rc2_hermes_phase15_index_script_conflict_root_report.md (MD5: 2EFEF483D433) - T1根因报告: phase5_index_deploy.py实测19446字节/445行, --indexes参数完整, 5路径全PASS(exit 0/0/0/2/0), Phase8 commit 1cd3815已修复, 工单描述的15700字节版本为Phase7旧基线
+  - v86_rc2_hermes_phase15_v15_spec_version_check_report.md (MD5: 5DFB5C18DD8A) - T2版本核验: v1.5版本记录行已写入(表格行536+详述544), v1.3→v1.4→v1.5版本链完整, 静默失效教训已归档
+  - v86_rc2_hermes_phase15_rv07_threshold_audit_report.md (MD5: CD57F4B584B9) - T4阈值评估: RV-07严重线45%→48%建议, 三源实测(沙箱38.63%/生产46.9%/72h微降41.3%), B-16未采纳, 建议DSHB预案V1.2→V1.3
+  - v86_rc2_hermes_phase15_stagec_20pct_audit_prepare_report.md (MD5: 93AD570CD467) - T3/T7/T8: Phase8交付物已push(1cd3815), T5签署落盘, StageC就绪性评估7项全PASS, 沙箱vs生产边界条件5条归档
+  - v86_rc2_hermes_phase15_wal_validator_20pct_adjust.py (MD5: 24EE60039A40) - T5适配脚本: 7项验证(WAL自检18PASS/StageB20%运行/索引check/DSHB命令/故障追踪/三方对账/告警), 10573字节
+  - v86_rc2_hermes_phase15_20pct_audit_simulation_summary.md (MD5: 1A3EC82BCB70) - T6压测摘要: StageB(20%) 151560事件/WAL P99=1.24ms/吞吐168ev/s/丢包0.005%/chain完整/故障3场景全恢复/三方对账4行全对齐
+- T1核验: phase5_index_deploy.py版本冲突=工单描述过期(Phase7旧基线15700字节 vs 当前19446字节), argparse --indexes语义5路径全PASS, 无需重做
+- T4评估: RV-07严重线45%→48%, 生产首即46.9%落严重区间但72h微降至41.3%, 建议DSHB预案V1.2→V1.3采纳, B-02不关闭持续监控
+- T5/T6压测: StageB(20%)全链路7项PASS, WAL P99=1.24ms(≤50ms), 吞吐168ev/s(≥105), 丢包0.005%(≈0), chain_broken=0, 故障追踪3场景全恢复, 三方对账4行全对齐(≥99%)
+- T7归档: 沙箱vs生产边界条件5条(绝对量不可跨规模外推/查询形态第一排查维度/沙箱结论标全量物化适用边界/熔断阈值看趋势再调/排查顺序铁律)
+- 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(6份新增零覆盖), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
+- 状态标记: HERMES_PHASE15_STAGEC_AUDIT_READY=TRUE, HERMES_AUDIT_READY=TRUE
