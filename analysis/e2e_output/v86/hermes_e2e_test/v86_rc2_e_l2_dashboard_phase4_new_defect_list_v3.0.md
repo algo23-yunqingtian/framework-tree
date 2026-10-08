@@ -1,15 +1,15 @@
-# V86-RC2 L2大盘缺陷清单V3.5
+# V86-RC2 L2大盘缺陷清单V3.1
 
-> **工单**: DSHE_V86_RC2_L2_PHASE9_G1_GRAY_DASHBOARD_PREPARE (Phase9更新)
-> **子任务**: T4 — 缺陷清单V3.4→V3.5更新
-> **分支**: `feature/v85-chart-template` @ Phase9 commit (基于`ab1d28c`)
-> **文档版本**: v3.5.0 (Phase9 G1灰度大盘就绪版本)
+> **工单**: DSHE_V86_RC2_L2_PHASE10_GATE_REVIEW_DASHBOARD_FINAL_VALIDATE_AND_HERMES_PANEL_JOINT_TEST (Phase10更新)
+> **子任务**: T5 — 缺陷清单V3.5→V3.1更新
+> **分支**: `feature/v85-chart-template` @ Phase10 commit (基于`ca372e3`)
+> **文档版本**: v3.1.0 (Phase10 HERMES面板联调与Gate评审就绪版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
-> **日期**: 2026-10-21
-> **前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V3.4) / `v86_rc2_e_l2_dashboard_phase9_g1_gray_dashboard_ready_report.md`
+> **日期**: 2026-10-22
+> **前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V3.5) / `v86_rc2_e_l2_dashboard_phase10_hermes_panel_joint_test_report.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
-> **外部依赖**: HERMES审计WAL链路尚未验收 → 不接入生产真实流量
-> **更新说明**: V3.4→V3.5, Phase9新增0项缺陷, 增加灰度大盘验证跟踪项(非缺陷), 缺陷清单V3.4→V3.5
+> **外部依赖**: HERMES审计WAL链路尚未正式交付 → 不接入生产真实流量
+> **更新说明**: V3.5→V3.1, Phase10新增0项缺陷, 增加HERMES审计面板联调跟踪项(非缺陷), 缺陷清单V3.5→V3.1
 
 ---
 
@@ -35,12 +35,12 @@
 
 ### 1.1 缺陷总览
 
-| 级别 | Phase2/3 | Phase4新增 | Phase5新增 | Phase6新增 | Phase7新增 | Phase8新增 | Phase9新增 | 外部阻塞 | 合计 | 状态 |
-|------|----------|-----------|-----------|-----------|-----------|-----------|-----------|----------|------|------|
-| P0 (阻断) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 (HERMES-WAL) | 1 | ⚠️ 外部阻塞 |
-| P1 (重要) | 3 CLOSED | 0 | 1 (线上验证通过) | 0 | 0 | 0 | 0 | 1 (HERMES-AUDIT) | 5 | 3 CLOSED + 1线上验证通过 + 1外部 |
-| P2 (优化) | 9 CLOSED | 2 (跟踪) | 1 (归档) | 0 | 0 | 0 | 0 | 1 (HERMES-FIELD) | 13 | 9 CLOSED + 2跟踪 + 1归档 + 1外部 |
-| **总计** | **12 CLOSED** | **2 (跟踪)** | **1线上验证通过 + 1归档** | **0** | **0** | **0** | **0** | **3 (外部)** | **19** | **12 CLOSED + 3跟踪 + 1线上验证通过 + 1归档 + 3外部** |
+| 级别 | Phase2/3 | Phase4新增 | Phase5新增 | Phase6新增 | Phase7新增 | Phase8新增 | Phase9新增 | Phase10新增 | 外部阻塞 | 合计 | 状态 |
+|------|----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|----------|------|------|
+| P0 (阻断) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 (HERMES-WAL) | 1 | ⚠️ 外部阻塞 |
+| P1 (重要) | 3 CLOSED | 0 | 1 (线上验证通过) | 0 | 0 | 0 | 0 | 0 | 1 (HERMES-AUDIT) | 5 | 3 CLOSED + 1线上验证通过 + 1外部 |
+| P2 (优化) | 9 CLOSED | 2 (跟踪) | 1 (归档) | 0 | 0 | 0 | 0 | 0 | 1 (HERMES-FIELD) | 13 | 9 CLOSED + 2跟踪 + 1归档 + 1外部 |
+| **总计** | **12 CLOSED** | **2 (跟踪)** | **1线上验证通过 + 1归档** | **0** | **0** | **0** | **0** | **0** | **3 (外部)** | **19** | **12 CLOSED + 3跟踪 + 1线上验证通过 + 1归档 + 3外部** |
 
 ### 1.2 关键结论
 
@@ -51,6 +51,7 @@
 - **Phase7新增缺陷**: 0项 (3索引监控适配+72h长周期验证无新增缺陷)
 - **Phase8新增缺陷**: 0项 (线上索引变更观测+72h线上流量观测无新增缺陷)
 - **Phase9新增缺陷**: 0项 (G1灰度大盘就绪+72h灰度回放无新增缺陷)
+- **Phase10新增缺陷**: 0项 (HERMES审计面板联调+Gate评审就绪无新增缺陷)
 - **外部依赖阻塞**: 3项HERMES阻塞项 (不影响大盘自身判定)
 - **P0阻断缺陷**: 0项内部阻断, 1项外部阻塞(HERMES-WAL)
 - **P1重要缺陷**: P5-P1-001更新为【线上验证通过】, 3项已CLOSED
@@ -67,6 +68,7 @@ Phase6: 0 new
 Phase7: 0 new
 Phase8: 0 new
 Phase9: 0 new
+Phase10: 0 new
 ─────────────────────────────────────────────
 Total: 19 items
   - 12 CLOSED (Phase2/3)
@@ -757,7 +759,7 @@ Total: 19 items
 
 ```
 ╔══════════════════════════════════════════════════════════════════╗
-║              L2大盘缺陷清单V3.5 (Phase9 G1灰度大盘就绪版)            ║
+║              L2大盘缺陷清单V3.1 (Phase10 HERMES面板联调与Gate评审就绪版)  ║
 ╠══════════════════════════════════════════════════════════════════╣
 ║ Phase2/3缺陷:  12项 100% CLOSED ✅                                ║
 ║   P0: 0项 ✅                                                     ║
@@ -769,6 +771,7 @@ Total: 19 items
 ║ Phase7新增:    0项 (3索引监控适配无新增缺陷) ✅                      ║
 ║ Phase8新增:    0项 (线上索引变更观测无新增缺陷) ✅                    ║
 ║ Phase9新增:    0项 (G1灰度大盘就绪无新增缺陷) ✅                       ║
+║ Phase10新增:   0项 (HERMES审计面板联调无新增缺陷) ✅                    ║
 ║ 外部阻塞:      3项 HERMES ⚠️ (DEP-HERMES-001/002/003)            ║
 ║ 总计:          19项                                               ║
 ║   - 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过 + 3 外部阻塞      ║
@@ -788,9 +791,9 @@ Total: 19 items
 
 ---
 
-*文档版本: v3.5.0 (Phase9 G1灰度大盘就绪版本)*
-*生成时间: 2026-10-21*
+*文档版本: v3.1.0 (Phase10 HERMES面板联调与Gate评审就绪版本)*
+*生成时间: 2026-10-22*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V86_RC2_L2_PHASE9_G1_GRAY_DASHBOARD_PREPARE (Phase9更新)*
+*工单: DSHE_V86_RC2_L2_PHASE10_GATE_REVIEW_DASHBOARD_FINAL_VALIDATE_AND_HERMES_PANEL_JOINT_TEST (Phase10更新)*
 *分支: feature/v85-chart-template*
 *状态: CONDITIONAL PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过 + 3 外部阻塞*
