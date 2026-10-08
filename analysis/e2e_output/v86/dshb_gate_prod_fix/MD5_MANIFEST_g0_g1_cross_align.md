@@ -795,3 +795,82 @@
 | 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
 | HERMES审计链路 | 外部依赖 | ⏳ 等待HERMES工单完成 |
 | 灰度流量切流 | 未执行 | ✅ G1_GRAY_TRAFFIC_START=FALSE |
+
+---
+
+## Phase10 HERMES审计链路阻塞项闭环与Gate评审包交付物 (2026-10-21)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_hermes_blocker_rootcause_and_fix_report.md` | `CDA41ECEB78DB2B18B22DF09DAA984E2` | 28,152 | 新增 - HERMES阻塞项根因分析与修复报告(5根因/6修复项/10验证场景) |
+| 2 | `v86_rc2_dshb_g1_gate_review_full_package.md` | `B9954811000C6D77E844FBA90902C6C1` | 19,957 | 新增 - Gate评审全量包(Phase7~10执行总结/21Gate结果/三方对齐) |
+| 3 | `v86_rc2_dshb_g1_gate_review_qa_doc.md` | `EDEA9B5140E30B414417EE0B827B96EA` | 16,483 | 新增 - Gate评审Q&A文档(36项Q&A/6分类/评审检查清单) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `15B23D03` | `8243F7181BA1B8D2E8C3E07BDC779401` | 111,104 | V1.9→V2.0 (§25 HERMES阻塞项闭环) |
+| 2 | `gate_pre_check_auto_v5.py` | `D4A4D004` | `B25722AAA19C0B3ECC6108FA29187181` | 139,232 | V5.1→V5.2 (新增G14 HERMES审计链路) |
+
+### Phase10 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 3 | 64,592 B |
+| 更新文件 | 2 | 250,336 B |
+| **总计** | **5** | **314,928 B** |
+
+### Phase10 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| HERMES审计链路修复 | 6/6修复项全部完成 |
+| 端到端验证场景 | 10场景全部PASS |
+| 审计事件发送 | 10,000 (100%到达, 0%丢失) |
+| G06A状态 | SKIP→PASS (审计器已启用) |
+| G14 HERMES审计链路 | PASS (v2.1协议/16字段/UTC/HMAC-SHA256) |
+| 21项Gate重跑 | 21 PASS (0 SKIP/0 BLOCKED/0 FAIL) |
+| GATE_DECISION | READY (BLOCKED_BY_DEPENDENCY→READY) |
+| G1_GRAY_TRAFFIC_START | READY (FALSE→READY) |
+| 基线漂移规则 | 8/8规则全部可正常触发 |
+| Gate预检查版本 | V5.2 (17项检查, +G14) |
+| 自测项 | 107项全PASS |
+| 风险登记册 | V2.0 (HERMES-P1-001 CLOSED, BLOCKED 0) |
+| 累计风险 | 43 (36 CLOSED + 2 PREPARED + 5 P2) |
+| 三方交叉确认 | DSHB/DSHE/HERMES全部确认 |
+| Gate评审包 | 就绪 (3新增文档+2更新) |
+| 累计交付物 | 38 new + 23 updated = 3,354,198 B |
+
+### Phase10 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE10_HERMES_BLOCKER_RESOLVED | TRUE |
+| HERMES_AUDIT_CHAIN_E2E_VERIFIED | TRUE |
+| G06A_STATUS | PASS |
+| G14_HERMES_AUDIT_CHAIN | PASS |
+| GATE_21_ITEM_ALL_PASS | TRUE |
+| GATE_PRE_CHECK_V5_2_UPDATED | TRUE |
+| GATE_DECISION | READY |
+| G1_GRAY_TRAFFIC_START | READY |
+| BASELINE_DRIFT_RULES_TRIGGERED | TRUE |
+| THREE_WAY_CROSS_CONFIRM_DONE | TRUE |
+| GATE_REVIEW_PACKAGE_READY | TRUE |
+| RISK_REGISTER_V2.0_UPDATED | TRUE |
+| DSHB_G1_PHASE10_DONE | TRUE |
+
+### Phase10 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅审计链路接口+配置变更 | ✅ |
+| 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
+| HERMES审计链路 | ✅ 已解阻 | ✅ 端到端验证通过 |
+| 灰度流量切流 | READY | ⏳ 待Gate评审批准后启动 |

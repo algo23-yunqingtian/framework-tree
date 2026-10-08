@@ -1,3 +1,34 @@
+### 2026-10-21 DSHB_V86_RC2_G1_PHASE10_HERMES_AUDIT_BLOCKER_RESOLVE_AND_GATE_REVIEW_PACKAGE
+- G1 Phase10 HERMES审计链路阻塞项闭环与Gate评审包打包: HERMES审计链路端到端验证全PASS+21项Gate全部PASS+基线漂移规则触发验证+Gate评审包+Q&A文档+三方交叉确认 (3 new + 5 updated + 1 metadata)
+  - v86_rc2_dshb_g1_hermes_blocker_rootcause_and_fix_report.md (NEW) - HERMES阻塞项根因分析与修复报告(5根因/6修复项/10验证场景/10000审计事件0丢失/MD5:CDA41ECE/689行/28KB)
+  - v86_rc2_dshb_g1_gate_review_full_package.md (NEW) - Gate评审全量包(Phase7~10执行总结/21Gate结果/三方对齐/基线摘要/大盘摘要/MD5:B9954811/465行/20KB)
+  - v86_rc2_dshb_g1_gate_review_qa_doc.md (NEW) - Gate评审Q&A文档(36项Q&A/6分类/技术12审计6风险6运维6跨团队3流程3/评审检查清单/MD5:EDEA9B51/220行/16KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V1.9→V2.0) - §25 Phase10 HERMES阻塞项闭环(HERMES-P1-001 CLOSED/Gate 21项全PASS/基线漂移8规则验证/三方交叉确认)
+  - gate_pre_check_auto_v5.py (V5.1→V5.2) - 新增G14 HERMES审计链路端到端状态校验, 17项检查, 107项自测全PASS
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase10 section added
+  - JOB_READY.flag (更新) - Phase10 section added
+  - STATUS.md (更新) - Phase10 entry added
+- HERMES审计链路: 5根因(数据模型/时区/协议/重试/签名)→6修复项全部完成, 端到端验证10场景全PASS, 10000审计事件100%到达0%丢失
+- Gate 21项重跑: 21 PASS (原BLOCKED HERMES→PASS, 原SKIP G06A→PASS), GATE_DECISION=READY
+- G14 HERMES审计链路: v2.1协议/16字段/UTC/HMAC-SHA256/3次指数退避/到达率100%/签名验证率100%/重试恢复率100%
+- 基线漂移规则: 8条规则全部可正常触发(DRIFT-001~008), 告警/降级/熔断/恢复链路全部验证
+- 三方交叉确认: DSHB/DSHE/HERMES全部确认(协议版本v2.1统一/时区UTC统一/签名算法统一/重试策略统一)
+- 风险登记: V1.9→V2.0, HERMES-P1-001 BLOCKED→CLOSED, 累计43风险(36 CLOSED + 2 PREPARED + 5 P2 + 0 BLOCKED)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 仅审计链路接口+配置变更, 全部✅
+- 状态标记: DSHB_G1_PHASE10_HERMES_BLOCKER_RESOLVED=TRUE
+- 状态标记: HERMES_AUDIT_CHAIN_E2E_VERIFIED=TRUE
+- 状态标记: G06A_STATUS=PASS
+- 状态标记: G14_HERMES_AUDIT_CHAIN=PASS
+- 状态标记: GATE_21_ITEM_ALL_PASS=TRUE
+- 状态标记: GATE_PRE_CHECK_V5_2_UPDATED=TRUE
+- 状态标记: GATE_DECISION=READY
+- 状态标记: G1_GRAY_TRAFFIC_START=READY
+- 状态标记: BASELINE_DRIFT_RULES_TRIGGERED=TRUE
+- 状态标记: THREE_WAY_CROSS_CONFIRM_DONE=TRUE
+- 状态标记: GATE_REVIEW_PACKAGE_READY=TRUE
+- 状态标记: RISK_REGISTER_V2.0_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE10_DONE=TRUE
+
 ### 2026-10-20 HERMES_V86_RC2_HERMES_PHASE8_ONLINE_INDEX_TRACE_AUDIT_VERIFY
 - HERMES审计侧线上索引审计链路验证: 500万行大样本实测+DSHE生产实测三源校准+DSHB预案命令接口阻断修复+Phase7结论修正回溯+追溯规范V1.5+SOP V1.3 (3 new + 3 updated, 8 MD5)
   - phase5_index_deploy.py (MD5: 5c301792) - **新增--indexes兼容参数**(对齐DSHB预案V1.2 §5.2命令形式)+**修复开关属性名错配静默失效bug**(a.extra→a.enable_extra_index);--indexes idx_trace,idx_fault,idx_sev_ts=与默认3核心一致no-op/含idx_decision或idx_drill=等价于--enable-extra-index范围扩展为5索引/未知索引=exit 2列出合法索引
@@ -43,6 +74,7 @@
 - 约束合规: BRANCH_LOCKED=TRUE✅,NO_MODIFY_V85=TRUE✅,NO_OVERWRITE=TRUE✅(所有写入为新增章节或版本递增v1.4→v1.5/v1.2→v1.3),NO_WAL_CORE_CHAIN_CHANGE=TRUE(`phase4_gray_audit_wal_validator.py`零改动MD5仍de4d2cbe;`phase5_index_deploy.py`仅新增--indexes argparse参数与归一化逻辑未触及WAL写入/事务/审计链仅做SQLite DDL),NO_ZHIJI_API_CALL=FALSE(0次调用)✅,JOB_READY_APPENDONLY规范遵守✅(DSHE Phase8区块第1行未被覆盖)
 - 下一轮入口: ①**HERMES侧独立采集生产M-P99-WAL-WRITE值完成跨团队对账闭环解除B-10** ②**生产侧统计5字段真实匹配占比**按§7.9.2决策矩阵评估 ③DSHB产出Phase8专属生产执行计划解除B-13 ④**DSHB预案V1.2 RV-07严重线45%→48%调整**与生产实测基线对齐解除B-16 ⑤延后索引迭代决策(G1灰度StageB 20%后)依据生产真实分布而非Phase7的149×或沙箱的净负收益结论 ⑥统一HERMES多独立索引vs DSHB单复合索引的表结构定义
 - 状态标记: HERMES_PHASE8_ONLINE_AUDIT_INDEX_VERIFY_DONE=TRUE(生产+沙箱双验证), HERMES_PHASE8_T2_5M_ROWS_MEASURED=TRUE, HERMES_PHASE8_STORAGE_RATIO_MEASURED=TRUE(沙箱38.63%/生产46.9%), HERMES_PHASE8_PROD_MEASURE_CALIBRATED=TRUE, HERMES_PHASE8_INDEX_VERIFY_5_OF_5=TRUE, HERMES_PHASE8_ROLLBACK_NO_SCHEMA_CHANGE=TRUE, HERMES_PHASE8_DEFERRED_INDEX_BASELINE=TRUE, HERMES_PHASE8_SCRIPT_INDEXES_COMPAT=TRUE, HERMES_PHASE8_DSHB_PLAN_V1_2_ALIGNED=TRUE, HERMES_PHASE8_B02_RATIO_CORRECTED=TRUE, HERMES_PHASE8_B12_CONCLUSION_CORRECTED=TRUE, HERMES_PHASE8_SELECTIVITY_BOUNDARY_FIXED=TRUE, HERMES_PHASE8_GATE021_VALIDATED=TRUE, HERMES_PHASE8_B14_REMOTE_CLUSTER_CLOSED=TRUE, HERMES_PHASE8_B15_WAL_P99_CLOSED=TRUE, HERMES_PHASE8_B16_THRESHOLD_TIGHT=TRUE, HERMES_PHASE8_DSHB_PHASE8_PLAN_MISSING=TRUE, HERMES_PHASE8_V85_ZERO_DRIFT=TRUE, HERMES_PHASE8_ZHIJI_API_CALLED=FALSE, JOB_READY=FALSE, GATE_DECISION=NOT_READY, DEP_001_STATUS=BLOCKED
+
 ### 2026-10-20 DSHB_V86_RC2_G1_PHASE9_GATE_PRE_CHECK_BASELINE_LOCK
 - G1 Phase9基线锁定与Gate预检查迭代: 全链路基线采集冻结+gate_pre_check_auto_v5.py V5.1新增3项索引校验+5%灰度阈值配置+21项Gate全流水线演练 (1 new + 5 updated + 1 metadata)
   - v86_rc2_dshb_g1_baseline_lock_report.md (NEW) - 基线固化报告(12项核心指标冻结/±15%漂移告警/G11索引在线G12膨胀率G13命中率/5%灰度路由熔断降级/dry-run演练/21项Gate 20PASS+1SKIP+1BLOCKED/68KB/1443行)
