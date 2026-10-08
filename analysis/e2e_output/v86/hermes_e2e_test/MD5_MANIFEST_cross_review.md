@@ -28,3 +28,14 @@
 | 6 | v86_rc2_hermes_phase16_index_benefit_audit_report.md | 2153 | `29cc43241ad38b7d9739a8807b566d73` |
 | 7 | v86_rc2_hermes_phase16_rv07_threshold_audit_review.md | 2560 | `dfe481285ac85ff195d9754c63db786a` |
 | 8 | v86_rc2_hermes_phase16_72h_audit_sim.py | 8763 | `520e20dbfd1665ced77531b6990715f7` |
+---
+
+## HERMES Phase17
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_hermes_phase17_30pct_audit_baseline_review_report.md | 3028 | `4c3f5070079d4fb7ecd412d9ab887370` |
+| 2 | v86_rc2_hermes_phase17_wal_validator_30pct_refactor.py | 7882 | `195e5abee34fb540568b881591c6c935` |
+| 3 | v86_rc2_hermes_phase17_rv07_threshold_final_audit.md | 2724 | `81d4f1cc0dca7c21c6be580107d07170` |
+| 4 | v86_rc2_hermes_phase17_30pct_audit_simulation_report.md | 2919 | `257725466f007cb2b418c5c9ac1ce79b` |
+| 5 | v86_rc2_hermes_phase17_staged_30pct_audit_gonogo_report.md | 4614 | `e321aea7c3264cd0b1dc0f449bd0f1f7` |

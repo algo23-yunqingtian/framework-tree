@@ -1282,3 +1282,16 @@
 - StageD 30% GO/NO-GO: GO — 8项准入条件全满足, 无P0阻断
 - 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(8份新增零覆盖), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
 - 状态标记: HERMES_PHASE16_STAGEC_D_AUDIT_GONOGO_RECOMMEND=GO
+
+### 2026-10-11 HERMES_V86_RC2_PHASE17_STAGED_30PCT_AUDIT_PREP_AND_BASELINE_RECONCILIATION
+- StageD 30%审计前置准备+基线对账+RV-07终审+30%压测+跨团队对账+GO/NO-GO (5 new + 1 script, MD5 all verified)
+  - v86_rc2_hermes_phase17_30pct_audit_baseline_review_report.md (MD5: 4C3F5070079D) - T1基线复盘: 20%基线固化(453K事件/WAL P99=1.24ms/丢包0.0035%/chain 0断裂), 30%预测(226K事件/天/WAL P99≤1.50ms/丢包≤0.01%)
+  - v86_rc2_hermes_phase17_wal_validator_30pct_refactor.py (MD5: 195E5ABEE34F) - T2适配脚本: 动态加载wal_validator, simulate_stage(pct=30), 3天仿真, 7882字节
+  - v86_rc2_hermes_phase17_rv07_threshold_final_audit.md (MD5: 81D4F1CC0DCA) - T3 RV-07终审: B-16严重线45→48%固化, DSHB WARN 7.36→8.0%固化, 双口径不矛盾, 30%安全余量充足
+  - v86_rc2_hermes_phase17_30pct_audit_simulation_report.md (MD5: 257725466F00) - T4 30%压测: 678903事件/WAL P99=1.37ms/丢包0.004%/chain 0/去重2696全捕获, 20%vs30%:事件+50%延迟+10%
+  - v86_rc2_hermes_phase17_staged_30pct_audit_gonogo_report.md (MD5: E321AEA7C326) - T5/T6 GO/NO-GO: 11项准入全PASS GO, 三方偏差≤0.03pp, 5项P3/P4风险(无P0/P1), 审计知识库+30%应急处置更新
+- 30%关键数据: events=678903(+49.67%), WAL P99=1.37ms(+10.5%), idx P99=4.16ms(+8.6%), loss=0.004%(+14%), throughput=251.4ev/s(+50%), chain=0, dup=2696/2696(100%)
+- 跨团队对账: HERMES/DSHB/DSHE三方口径零偏差(≤0.03pp), DSHE Phase15 8/8 PASS(DONE=TRUE), 渲染P99=193ms, 对账偏差0.4%
+- 风险清单: 5项(P3: 索引膨胀逼近WARN/追溯率噪声/DSHB Phase16未闭环; P4: WAL P99微增/索引P99微增), 0 P0/P1
+- 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(5新增+1脚本零覆盖), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
+- 状态标记: HERMES_PHASE17_STAGED_30PCT_AUDIT_GONOGO=GO
