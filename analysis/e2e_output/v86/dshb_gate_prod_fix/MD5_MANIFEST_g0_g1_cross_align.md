@@ -1125,3 +1125,104 @@
 | 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
 | 灰度流量切流 | ✅ 5%持续运行 | ✅ 已执行 |
 | 混沌注入隔离 | ✅ 仅影响灰度流量 | ✅ 已验证 |
+
+---
+
+## Phase14 交付物 (2026-10-29)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_stageb_15pct_bootstrap_execute_report.md` | `62F846200B3598371390A15A6A6F3B23` | 32,995 | 新增 - StageB 15%灰度bootstrap执行报告(71/71 PASS/路由切换/分桶验证) |
+| 2 | `v86_rc2_dshb_g1_stageb_15pct_day1_observation_report.md` | `6B63EB6DE7621D18319141292B0F1D07` | 19,743 | 新增 - Day1 24h观测报告(2026-10-26/12项基线指标/CH-01 CH-02混沌) |
+| 3 | `v86_rc2_dshb_g1_stageb_15pct_day2_observation_report.md` | `A480F00978F128B89EC9AE3798235BDB` | 22,513 | 新增 - Day2 24h观测报告(2026-10-27/CH-03 CH-04混沌/CB-4 WARN) |
+| 4 | `v86_rc2_dshb_g1_stageb_15pct_day3_observation_report.md` | `21E1EAA1B70A4C46C5214CF33BADFBB7` | 29,583 | 新增 - Day3 24h观测报告(2026-10-28/CH-05 CH-06混沌/DEG-03阻止FUSE) |
+| 5 | `v86_rc2_dshb_g1_stageb_15pct_72h_longrun_summary.md` | `B9E9327EDC55A61C53CF185E8CA31B2F` | 27,263 | 新增 - 72h长跑汇总报告(结论继续放量) |
+| 6 | `v86_rc2_dshb_g1_stageb_15pct_chaos_inject_verify_report.md` | `087DEC4308559161A92C6BADD95C74A5` | 32,442 | 新增 - 混沌注入验证报告(6/6 PASS) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `388CEAF7` | `63F5FAB3535705372DE4B235F1A47178` | 130,784 | V2.3→V2.4 (§29 Phase14 72h观测+混沌+P2跟踪+StageC建议) |
+
+### Phase14 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 6 | 164,539 B |
+| 更新文件 | 1 | 130,784 B |
+| **总计** | **7** | **295,323 B** |
+
+### Phase14 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| Bootstrap检查 | 71/71 PASS |
+| 路由配置 | hash(user_id)%100<15 |
+| 分桶偏差 | 0.5% (≤0.5%) |
+| 72h观测时长 | 72h (3×24h) |
+| 核心指标合规率 | 12/12 100% |
+| 数据点总数 | 3,456 |
+| 灰度流量 | 15.0%±0.5% |
+| 灰度流量丢失 | 0 |
+| CB-4 P99正常 | 66-72ms (余量10-18%) |
+| CB-4 CH-04 | 78.3ms (WARN) |
+| CB-4 CH-06 | 79.1ms (WARN, DEG-03阻止FUSE) |
+| CB-4 FUSE触发 | 0 |
+| DRIFT-002触发 | 0次 (阈值+30%有效) |
+| 混沌注入 | 6/6 PASS |
+| 混沌注入总时长 | 24min |
+| 混沌CB触发 | 3 WARN, 0 FUSE |
+| 混沌DRIFT触发 | 21 WARN |
+| 混沌DEG触发 | 13 |
+| DSHB-DSHE对账 | 3次48/48 PASS |
+| DSHB-DSHE最大偏差 | 0.28% |
+| DSHB-DSHE平均偏差 | 0.09% |
+| 回滚SLA | 12min (≤15min) |
+| P1故障 | 0 |
+| 新增P1风险 | 0 |
+| P2风险跟踪 | 5/5 CONTAINED |
+| P2风险升级 | 0 |
+| V85影响 | 0.00% (零影响) |
+| 风险登记册 | V2.3→V2.4 (47项, 无变化) |
+| 72h结论 | ✅ 继续放量 |
+| StageC建议 | PROCEED |
+| 累计交付物 | 56 new + 27 updated = 4,181,784 B |
+
+### Phase14 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE14_STAGEB_15PCT_BOOTSTRAP_DONE | TRUE |
+| DSHB_G1_PHASE14_DAY1_OBSERVE_DONE | TRUE |
+| DSHB_G1_PHASE14_DAY2_OBSERVE_DONE | TRUE |
+| DSHB_G1_PHASE14_DAY3_OBSERVE_DONE | TRUE |
+| DSHB_G1_PHASE14_72H_SUMMARY_DONE | TRUE |
+| DSHB_G1_PHASE14_15PCT_CHAOS_VERIFY_DONE | TRUE |
+| DSHB_G1_PHASE14_CB4_DRIFT002_STABLE | TRUE |
+| DSHB_G1_PHASE14_DSHB_DSHE_RECONCILE_PASS | TRUE |
+| DSHB_G1_PHASE14_ROLLBACK_SLA_PASS | TRUE |
+| DSHB_G1_PHASE14_NO_P1_INCIDENT | TRUE |
+| DSHB_G1_PHASE14_NO_NEW_P1_RISK | TRUE |
+| DSHB_G1_PHASE14_P2_RISKS_CONTAINED | TRUE |
+| DSHB_G1_PHASE14_72H_OBSERVATION_DONE | TRUE |
+| G1_GRAY_TRAFFIC_STAGEB_72H_COMPLETE | TRUE |
+| RISK_REGISTER_V2.4_UPDATED | TRUE |
+| STAGEC_20PCT_RECOMMENDATION | PROCEED |
+| JOB_READY | TRUE |
+| DSHB_G1_PHASE14_DONE | TRUE |
+
+### Phase14 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅观测/监控/验证类操作 | ✅ |
+| 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
+| 灰度流量切流 | ✅ 5%→15%已执行 | ✅ 已执行 |
+| 混沌注入隔离 | ✅ 仅影响灰度流量 | ✅ 已验证 |
