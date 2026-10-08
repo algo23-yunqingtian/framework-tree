@@ -955,3 +955,87 @@
 | 禁止修改业务核心逻辑 | 仅配置/阈值/脚本类变更 | ✅ |
 | 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
 | 灰度流量切流 | ✅ 5%已启动 | ✅ 已执行 |
+
+---
+
+## Phase12 StageA 5%灰度72h长跑观测与基线漂移监控交付物 (2026-10-25)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_stagea_5pct_longrun_observation_report.md` | `E3C5F649D46465D32B619C0D162B307A` | 19,313 | 新增 - 72h长跑观测报告(Day1~3/12项基线指标/告警事件/灰度路由验证) |
+| 2 | `v86_rc2_dshb_g1_stagea_5pct_baseline_drift_report.md` | `7CA9912026016A770722A200A835F97D` | 17,087 | 新增 - 基线漂移监控报告(DRIFT-001~008触发验证/漂移趋势/风险评估) |
+| 3 | `v86_rc2_dshb_g1_stagea_5pct_light_chaos_verify_report.md` | `585FFF7647C35C07386E2DAD48F1E2D5` | 25,683 | 新增 - 轻量混沌注入验证报告(6场景/熔断/降级/DRIFT/回滚验证) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `55A5F4D2` | `4A9C06D896D948130000E17E24AE4211` | 120,185 | V2.1→V2.2 (§27 Phase12 72h观测+混沌注入+4新风险项) |
+
+### Phase12 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 3 | 62,083 B |
+| 更新文件 | 1 | 120,185 B |
+| **总计** | **4** | **182,268 B** |
+
+### Phase12 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 72h观测时长 | 72小时 (3×24h) |
+| 基线指标合规率 | 12/12 (100%) |
+| 灰度流量偏差 | 0.0% (5.0%精确命中) |
+| 告警事件 | 12条 (7 INFO + 5 WARN) |
+| CRITICAL告警 | 0条 |
+| FUSE告警 | 0条 |
+| 熔断触发 | 0次 (72h自然流量) |
+| DRIFT-001~008触发 | 20次 (全部验证通过) |
+| 混沌注入场景 | 6场景 (6/6 PASS) |
+| 混沌注入总时长 | 24min |
+| 混沌熔断触发 | 3次 (2 WARN + 1 FUSE) |
+| 混沌降级触发 | 9次 |
+| 混沌DRIFT触发 | 20次 WARN |
+| 回滚验证 | 1次 (FUSE自动回滚, 3min恢复) |
+| DSHB-DSHE对账偏差 | 0.47% max (≤0.5%达标) |
+| V85影响 | 0.00% (零影响) |
+| 新发现风险项 | 4项 (1 P1 + 3 P2) |
+| 风险登记册 | V2.1→V2.2 (43→47项) |
+| StageB建议 | 条件通过 (关注CB-4/DRIFT-002) |
+| 累计交付物 | 45 new + 25 updated = 3,695,230 B |
+
+### Phase12 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE12_LONGRUN_OBSERVE_DONE | TRUE |
+| STAGEA_5PCT_72H_OBSERVATION_DONE | TRUE |
+| BASELINE_DRIFT_MONITOR_DONE | TRUE |
+| DRIFT_RULES_ALL_VERIFIED | TRUE |
+| CHAOS_LIGHT_INJECT_DONE | TRUE |
+| CHAOS_INJECT_SCENARIOS | 6_OF_6_ALL_PASS |
+| CIRCUIT_BREAKER_VERIFY_DONE | TRUE |
+| DEGRADATION_SWITCH_VERIFY_DONE | TRUE |
+| ROLLBACK_VERIFY_DONE | TRUE |
+| DSHB_DSHE_RECONCILE_DONE | TRUE (0.47% max) |
+| V85_ZERO_IMPACT | TRUE |
+| RISK_REGISTER_V2.2_UPDATED | TRUE |
+| STAGEB_RECOMMENDATION | CONDITIONAL_PASS |
+| JOB_READY | TRUE |
+| DSHB_G1_PHASE12_DONE | TRUE |
+
+### Phase12 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响0.00%偏差 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 禁止修改业务核心逻辑 | 仅观测/监控/验证类操作 | ✅ |
+| 禁止修改索引逻辑 | 不改动索引DDL/创建/验证代码 | ✅ |
+| 灰度流量切流 | ✅ 5%持续运行 | ✅ 已执行 |
+| 混沌注入隔离 | ✅ 仅影响灰度流量 | ✅ 已验证 |

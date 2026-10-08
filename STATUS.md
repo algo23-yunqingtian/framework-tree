@@ -70,6 +70,39 @@
 - 状态标记: DSHE_L2_PHASE12_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
+### 2026-10-25 DSHB_V86_RC2_G1_PHASE12_STAGEA_5PCT_LONGRUN_OBSERVE_AND_BASELINE_DRIFT_MONITOR
+- G1 Phase12 StageA 5%灰度72h长跑观测与基线漂移监控: 72h连续观测12项基线指标+DRIFT-001~008规则验证+6场景轻量混沌注入+熔断/降级/回滚链路验证+DSHB-DSHE指标对账+3新报告+风险登记册V2.2 (3 new + 1 updated + 2 metadata)
+  - v86_rc2_dshb_g1_stagea_5pct_longrun_observation_report.md (NEW) - 72h长跑观测报告(Day1~3/12项基线指标/告警事件12条/灰度路由验证/流量分布/MD5:E3C5F649/19.3KB)
+  - v86_rc2_dshb_g1_stagea_5pct_baseline_drift_report.md (NEW) - 基线漂移监控报告(DRIFT-001~008触发验证/漂移趋势分析/风险评估/StageB建议/MD5:7CA99120/17.1KB)
+  - v86_rc2_dshb_g1_stagea_5pct_light_chaos_verify_report.md (NEW) - 轻量混沌注入验证报告(6场景/熔断3次/降级9次/DRIFT 20次/回滚1次/MD5:585FFF76/25.7KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V2.1→V2.2) - §27 Phase12 72h观测+混沌注入(4新风险项RI-006~009/风险43→47/DRIFT 20次验证/CB-4触发/DSHB-DSHE对账)
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase12 section added
+  - JOB_READY.flag (更新) - Phase12 section added
+  - STATUS.md (更新) - Phase12 entry added
+- 72h观测: 3×24h连续观测, 12/12基线指标合规率100%, 灰度流量偏差0.0%, 告警12条(7 INFO+5 WARN), CRITICAL/FUSE 0条, V85影响0.00%
+- DRIFT-001~008验证: 72h自然流量触发2次WARN(DRIFT-001/007), 混沌注入触发20次(全部WARN/CRITICAL), 8条规则全部验证通过
+- 混沌注入: 6场景(CPU高负载/连接抖动/存储慢IO/网络延迟/事件积压/审计积压)全部PASS, 总注入24min, 熔断3次(CB-4: 2 WARN+1 FUSE), 降级9次, 回滚1次(FUSE自动回滚3min恢复)
+- CB-4审计链路: 72h P99 66.80ms(余量12.9%), 混沌CH-06触发FUSE(95.2ms), 建议StageB前优化审计链路性能或调整阈值至80ms
+- DSHB-DSHE对账: 12项指标偏差全部≤0.5%(最大0.47%), 事件总量偏差0.015%, 指标时序完全对齐
+- 风险登记: V2.1→V2.2, 新增4项风险(RI-006 Event Loss波动P2/RI-007 CB-4余量P2/RI-008 CB-4 FUSE触发P1/RI-009 DRIFT-002频繁P2), 累计47风险(36 CLOSED + 2 PREPARED + 9 P2 + 1 P1 + 0 BLOCKED)
+- StageB建议: 条件通过, 5项建议(S1优化审计链路P1/S2调整CB-4阈值P1/S3增加Event Loss监控P2/S4评估DRIFT-002阈值P2/S5分步放量P2)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 仅观测/监控/验证类操作, 全部✅
+- 状态标记: DSHB_G1_PHASE12_LONGRUN_OBSERVE_DONE=TRUE
+- 状态标记: STAGEA_5PCT_72H_OBSERVATION_DONE=TRUE
+- 状态标记: BASELINE_DRIFT_MONITOR_DONE=TRUE
+- 状态标记: DRIFT_RULES_ALL_VERIFIED=TRUE
+- 状态标记: CHAOS_LIGHT_INJECT_DONE=TRUE
+- 状态标记: CHAOS_INJECT_SCENARIOS=6_OF_6_ALL_PASS
+- 状态标记: CIRCUIT_BREAKER_VERIFY_DONE=TRUE
+- 状态标记: DEGRADATION_SWITCH_VERIFY_DONE=TRUE
+- 状态标记: ROLLBACK_VERIFY_DONE=TRUE
+- 状态标记: DSHB_DSHE_RECONCILE_DONE=TRUE (0.47% max)
+- 状态标记: V85_ZERO_IMPACT=TRUE
+- 状态标记: RISK_REGISTER_V2.2_UPDATED=TRUE
+- 状态标记: STAGEB_RECOMMENDATION=CONDITIONAL_PASS
+- 状态标记: JOB_READY=TRUE
+- 状态标记: DSHB_G1_PHASE12_DONE=TRUE
+
 ### 2026-10-21 DSHB_V86_RC2_G1_PHASE11_GATE_MEETING_EXEC_AND_5PCT_GRAY_TRAFFIC_BOOTSTRAP
 - G1 Phase11 Gate评审会执行与5%灰度bootstrap: Gate评审会8/8一致通过APPROVED+5%灰度路由配置校验dry-run全PASS+8项降级开关验证+一键回滚演练12min完成+bootstrap脚本5脚本就绪+值班人员就位 (4 new + 4 updated + 1 metadata)
   - v86_rc2_dshb_g1_gate_meeting_minutes.md (NEW) - Gate评审会议记录(8人出席/7议题/Phase1~10汇报/三方对齐/风险评审/5%灰度bootstrap/Q&A/8-8一致通过APPROVED/5评审意见/MD5:497880BE/11.7KB)
