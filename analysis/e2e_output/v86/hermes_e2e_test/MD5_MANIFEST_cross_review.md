@@ -98,3 +98,15 @@
 **NO_OVERWRITE 自证**: Phase18 产物 MD5 零变化（本次新增 6 份 DSHE Phase18 文件, 更新 2 份既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+---
+
+## HERMES Phase19
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_hermes_phase19_50pct_audit_arch_upgrade.md | 1709 | `3345b04faaa6f1a10779934f0ebee0bd` |
+| 2 | v86_rc2_hermes_phase19_p0_remedy_audit_verify.md | 2063 | `0937a5137ee919a9244d9c94013d8bb1` |
+| 3 | v86_rc2_hermes_phase19_50pct_index_risk_review.md | 1715 | `04ce89d64aba30dc2c2e864af5e577bc` |
+| 4 | v86_rc2_hermes_phase19_50pct_highload_simulation_audit.md | 2335 | `34d02b41b4a6a7fccab306415db83a3a` |
+| 5 | v86_rc2_hermes_phase19_three_way_reconcile_upgrade.md | 1397 | `0d6941040b8bcbbe3aa214ab0c24576c` |
+| 6 | v86_rc2_hermes_phase19_stagee_gate_audit_final_report.md | 1912 | `8e46e4aae2e39f681030fcf38a08b995` |
