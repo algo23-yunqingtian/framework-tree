@@ -1228,3 +1228,20 @@
 - T7归档: 沙箱vs生产边界条件5条(绝对量不可跨规模外推/查询形态第一排查维度/沙箱结论标全量物化适用边界/熔断阈值看趋势再调/排查顺序铁律)
 - 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(6份新增零覆盖), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
 - 状态标记: HERMES_PHASE15_STAGEC_AUDIT_READY=TRUE, HERMES_AUDIT_READY=TRUE
+
+### 2026-10-10 HERMES_V86_RC2_PHASE16_STAGEC_20PCT_LONG_RUN_AUDIT_AND_INDEX_BENEFIT_VERIFY
+- StageC 20%灰度72h长周期审计值守+索引收益复核+RV-07阈值复核+StageD 30% GO/NO-GO (7 new + 1 sim script, MD5 all verified)
+  - v86_rc2_hermes_phase16_stagec_bootstrap_audit_report.md (MD5: 28BEBBD69D62) - T1 Bootstrap审计: 60/60预检查PASS, WAL P99=1.24ms, 丢包0.0033%, chain 150647节点0断裂, 3/3故障全恢复, 三方对账4行全对齐
+  - v86_rc2_hermes_phase16_stagec_day1_audit_report.md (MD5: 5C1EDB5340CF) - Day1日报: 150652事件, WAL P99=1.24ms, 索引P99=3.83ms, 丢包0.0033%, 去重609/609, 告警4 fired/11 suppressed
+  - v86_rc2_hermes_phase16_stagec_day2_audit_report.md (MD5: FA8F9E72B2C9) - Day2日报: 151443事件, WAL P99=1.24ms, 丢包0.0053%, 0告警触发, 12噪声抑制, DRIFT-002/CB-4未触发
+  - v86_rc2_hermes_phase16_stagec_day3_audit_report.md (MD5: 301B608AFCD6) - Day3日报: 151517事件, WAL P99=1.24ms, 丢包0.002%(72h最低), 0告警, 系统趋稳态
+  - v86_rc2_hermes_phase16_stagec_72h_audit_summary.md (MD5: 9743C08C4D15) - 72h汇总: 453612事件, 追溯率99.60%, WAL P99 max=1.24ms, 9/9故障全恢复, 12/12三方对账全对齐, StageD GO
+  - v86_rc2_hermes_phase16_index_benefit_audit_report.md (MD5: 29CC43241AD3) - 索引收益: 3核心72h全命中P99=3.83ms, 膨胀7.10~7.25%低于WARN 7.36%, DSHB口径零偏差, 沙箱/生产5边界规则全验证
+  - v86_rc2_hermes_phase16_rv07_threshold_audit_review.md (MD5: DFE481285AC8) - RV-07复核: B-16严重线45→48%维持, DSHB WARN 7.36→8.0%认可, 双口径不矛盾, DSHB索引重平衡已执行
+  - v86_rc2_hermes_phase16_72h_audit_sim.py (MD5: 520E20DBFD16) - 72h仿真脚本: 3天不同种子, StageB=20%采集, 8763字节
+- 72h趋势: 事件量稳定微增(150K→151K), WAL P99持平1.24ms, 丢包波动下降(0.003→0.002%), 告警收敛(Day1:4→Day2-3:0), 故障9/9全恢复
+- 三方对账: 12/12行全对齐(≥99.57%), SHA256一致性≥99.5%, 偏差≤0.43pp(≤0.5%阈值)
+- DRIFT-002/CB-4: 72h全未触发(阈值内), 0丢失0重复, 时序对齐
+- StageD 30% GO/NO-GO: GO — 8项准入条件全满足, 无P0阻断
+- 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(8份新增零覆盖), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
+- 状态标记: HERMES_PHASE16_STAGEC_D_AUDIT_GONOGO_RECOMMEND=GO

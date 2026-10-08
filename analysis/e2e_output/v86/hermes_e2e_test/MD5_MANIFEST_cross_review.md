@@ -14,3 +14,17 @@
 **NO_OVERWRITE 自证**: Phase8 产物 MD5 零变化（本次仅新增 6 份文件，未覆盖任何既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 审计文档。
+---
+
+## HERMES Phase16
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_hermes_phase16_stagec_bootstrap_audit_report.md | 2603 | `28bebbd69d627092173aeb89fb0eb9a4` |
+| 2 | v86_rc2_hermes_phase16_stagec_day1_audit_report.md | 2205 | `5c1edb5340cfd79b48e4f12d7c3b93fd` |
+| 3 | v86_rc2_hermes_phase16_stagec_day2_audit_report.md | 1337 | `fa8f9e72b2c9fca8390dfa349be54f1d` |
+| 4 | v86_rc2_hermes_phase16_stagec_day3_audit_report.md | 1451 | `301b608afcd6a175ef3b251a62a1dbd7` |
+| 5 | v86_rc2_hermes_phase16_stagec_72h_audit_summary.md | 3328 | `9743c08c4d1588241de981670292ac92` |
+| 6 | v86_rc2_hermes_phase16_index_benefit_audit_report.md | 2153 | `29cc43241ad38b7d9739a8807b566d73` |
+| 7 | v86_rc2_hermes_phase16_rv07_threshold_audit_review.md | 2560 | `dfe481285ac85ff195d9754c63db786a` |
+| 8 | v86_rc2_hermes_phase16_72h_audit_sim.py | 8763 | `520e20dbfd1665ced77531b6990715f7` |
