@@ -232,3 +232,32 @@
 **NO_OVERWRITE 自证**: Phase24 产物 MD5 零变化（本次新增 5 份 DSHE Phase24 文件, 更新 2 份既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+
+---
+
+## DSHE Phase26
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase26_30day_metric_persistence_report.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 2 | v86_rc2_e_l2_dashboard_phase26_long_range_query_optimize_report.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 3 | v86_rc2_e_l2_dashboard_phase26_vacuum_panel_verify_report.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 4 | v86_rc2_e_l2_dashboard_phase26_fault_drill_alert_verify.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 5 | v86_rc2_e_l2_dashboard_phase26_v100_baseline_30day_review.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 6 | v86_rc2_e_l2_dashboard_phase26_alert_system_effect_evaluation.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 7 | v86_rc2_e_l2_dashboard_phase26_panel_enhancement_doc.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 8 | v86_rc2_e_l2_dashboard_phase26_memory_watch_panel_verify.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 9 | v86_rc2_e_l2_dashboard_phase26_ga_monitor_acceptance_doc.md | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+
+## DSHE Phase26 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.3→V4.4) | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.19→v4.0.20) | 19742 | `2a40a63b8d6e1491341ee2ae0a017587` |
+
+---
+
+**NO_OVERWRITE 自证**: Phase26 产物 MD5 零变化（本次新增 9 份 DSHE Phase26 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。

@@ -1,12 +1,12 @@
-# V86-RC2 L2大盘缺陷清单V4.3
+# V86-RC2 L2大盘缺陷清单V4.4
 
 > **工单\*\*: DSHE_V86_RC2_L2_PHASE24_FULL_TRAFFIC_DASHBOARD_FINAL_PREP_AND_ALARM_RULE_LOCK \(Phase24更新\)
-> **子任务**: T6 — 缺陷清单V4.2→V4.3更新
-> **分支**: `feature/v85-chart-template` @ Phase22 commit (`6c696f6`)
-> **文档版本\*\*: v4.3.0 (Phase24 100%全量流量最终准备与告警规则冻结版本)
+> **子任务**: T6 — 缺陷清单V4.3→V4.4更新
+> **分支: `feature/v85-chart-template` @ Phase25 commit (`b5d9cc2`)`)
+> **文档版本\*\*: v4.4.0 (Phase26 30天长期运维与GA验收版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
-> **日期**: 2026-11-25
-> **前置报告\*\*: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` \(V4.2\) / `v86_rc2_e_l2_dashboard_phase24_full_traffic_simulation_verify.md`
+> **日期**: 2026-11-27
+> **前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.3) / `v86_rc2_e_l2_dashboard_phase26_ga_monitor_acceptance_doc.md`.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
 > **外部依赖**: HERMES审计链路已交付(DSHB Phase18闭环) → StageE 50%放量监控侧全量升级+基线锁定完成 → StageF 75%五阶梯爬坡+72h实时监控+告警有效性验证完成 → Phase23 DSHB全量Gate准入CONDITIONAL GO → Phase24 DSHE L2大盘100%全量最终准备
 > **更新说明**: V4.2→V4.3, Phase24新增0项缺陷, 100%全量容量扩容6/6完成(查询池+25%/缓存+33.3%/节点+25%/存储+25%/索引+0.20%/吞吐+33.3%), 全量仿真10/10验收PASS(染色99.998%/分桶0.03%/CPU 88%/内存89%/渲染198ms/查询292ms), V100-1.0基线24项冻结(8变更+16不变), 告警规则8条+IE-AL-001三级预警全部冻结, 三方对账96/96(偏差0.05%), 运维手册v4.0.19
@@ -35,7 +35,7 @@
 
 ### 1.1 缺陷总览
 
-| 级别 | Phase2/3 | Phase4新增 | Phase5新增 | Phase6新增 | Phase7新增 | Phase8新增 | Phase9新增 | Phase10新增 | Phase11新增 | Phase12新增 | Phase13新增 | Phase14新增 | Phase15新增 | Phase17新增 | Phase18新增 | Phase19新增 | Phase20新增 | Phase21新增 | Phase22新增 | Phase24新增 | 外部阻塞 | 合计 | 状态 |
+| 级别 | Phase2/3 | Phase4新增 | Phase5新增 | Phase6新增 | Phase7新增 | Phase8新增 | Phase9新增 | Phase10新增 | Phase11新增 | Phase12新增 | Phase13新增 | Phase14新增 | Phase15新增 | Phase17新增 | Phase18新增 | Phase19新增 | Phase20新增 | Phase21新增 | Phase22新增 | Phase24新增 | Phase26新增 | 外部阻塞 | 合计 | 状态 |
 |------|----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|----------|----------|----------|----------|------|------|
 | P0 (阻断) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ 无阻断 |
 | P1 (重要) | 3 CLOSED | 0 | 1 (线上验证通过) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 3 CLOSED + 1线上验证通过 |
@@ -64,6 +64,7 @@
 - **Phase21新增缺陷**: 0项 (75%容量准备+面板适配+基线重校准+告警阈值调整+仿真验证无新增缺陷)
 - **Phase22新增缺陷**: 0项 (75%五阶梯爬坡+72h实时监控+告警有效性验证+基线漂移快照无新增缺陷)
 - **Phase24新增缺陷**: 0项 (100%全量容量扩容+面板最终验证+V100-1.0基线锁定+告警规则冻结+全量仿真验证无新增缺陷)
+- **Phase26新增缺陷**: 0项 (30天指标持久化+查询优化+Vacuum验证+故障演练+基线复核+告警评估+面板增强+内存监控无新增缺陷)
 - **外部依赖阻塞**: 3项HERMES阻塞项已全部CLOSED (DSHB Phase10闭环)
 - **P0阻断缺陷**: 0项内部阻断, 1项外部阻塞(HERMES-WAL)
 - **P1重要缺陷**: P5-P1-001更新为【线上验证通过】, 3项已CLOSED
@@ -91,6 +92,7 @@ Phase20: 0 new
 Phase21: 0 new
 Phase22: 0 new
 Phase24: 0 new
+Phase26: 0 new
 ─────────────────────────────────────────────
 Total: 20 items
   - 12 CLOSED (Phase2/3)
@@ -906,9 +908,9 @@ Total: 20 items
 
 ---
 
-*文档版本: v4.3.0 (Phase24 100%全量流量最终准备与告警规则冻结版本)*
-*生成时间: 2026-11-25*
+*文档版本: v4.4.0 (Phase26 30天长期运维与GA验收版本)*
+*生成时间: 2026-11-27*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V86_RC2_L2_PHASE24_FULL_TRAFFIC_DASHBOARD_FINAL_PREP_AND_ALARM_RULE_LOCK (Phase24更新)*
+*工单: DSHE_V86_RC2_L2_PHASE26_FULL_ONLINE_30DAY_METRICS_PERSISTENCE_DASHBOARD_OPTIMIZE_AND_ALERT_EFFECT_EVAL \(Phase26更新\)*
 *分支: feature/v85-chart-template*
-*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, 100%全量最终准备0新增缺陷, V100-1.0基线冻结, 告警规则全部冻结, 全量仿真10/10 PASS, 大盘全量上线就绪*
+*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, 30天长期运维0新增缺陷, V100-1.0基线维持, 告警体系健康度100/100, GA验收12/12 PASS, L2监控体系GA: GO*
