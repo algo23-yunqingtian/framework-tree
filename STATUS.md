@@ -1728,3 +1728,19 @@
 - 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE(html/scripts/data零改动), NO_OVERWRITE=TRUE(Phase19 6份MD5不变), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
 - 状态标记: HERMES_PHASE20_50PCT_AUDIT_DONE=TRUE, HERMES_PHASE20_72H_FINAL_AUDIT_PASS=TRUE, HERMES_PHASE20_3WAY_RECONCILE_ALL_PASS=TRUE, HERMES_PHASE20_STAGEE_50PCT_WATCHDOG=STABLE
 
+
+### 2026-10-18 HERMES_V86_RC2_PHASE21_STAGEF_75PCT_PRE_AUDIT_AND_3WAY_BASELINE_ALIGN
+- StageF 75%前置审计: 容量仿真+索引膨胀预测+三方基线对齐+理论边界+Gate终审 (6 new + 1 script, MD5 all verified)
+  - v86_rc2_hermes_phase21_75pct_pre_audit_sim.py (MD5: B97110F7D38E) - 75%前置仿真脚本: 3天StageC 75%仿真+模型验证+三方对账+膨胀趋势+理论边界
+  - phase21_75pct_pre_capacity_simulation_audit_report.md (MD5: 25ECF706DF8C) - 容量仿真报告: 1698831事件/WAL P99=1.95ms/丢包0.00455%/chain 0/去重6848(100%)/模型偏差0.186%
+  - phase21_75pct_index_expansion_trend_audit.md (MD5: 1B36B1039A05) - 膨胀趋势: 72h峰值7.949%<8.0%(余量0.051pp)/日均增量0.019pp/限流条件明确
+  - phase21_75pct_three_way_baseline_alignment_report.md (MD5: B92777CCB2A1) - 三方基线v2.0: 4维度全对齐(事件计数/窗口/指标/阈值)/Phase20确认一致
+  - phase21_75pct_consistency_boundary_audit.md (MD5: 8050D768370E) - 理论边界: 丢包CI上界0.00525%<0.01%/chain 0/去重100%/无P0P1
+  - phase21_75pct_stagef_gate_pre_audit_final_report.md (MD5: 7BCDB8A33313) - Gate终审: 6/6 PASS GO
+  - phase21_75pct_risk_watchlist.md (MD5: 19B6BF42C7F3) - 风险清单: 0P0/0P1/1P2(膨胀余量0.051pp)/2P3
+- 75%关键数据: events=1698831(1.5x of 50%), WAL P99=1.95ms(+19.6%), idx P99=5.64ms(+17.0%), loss=0.00455%, chain=0, dup=6848(100%), reconcile 24/24 PASS
+- 模型验证: 事件偏差0.186%≤1%, WAL偏差0.513%≤1% → 模型可信
+- 索引膨胀: Day1=7.910%→Day2=7.929%→Day3=7.949%, 72h增量0.060pp, 余量0.051pp(较紧但可控)
+- 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE(html/scripts/data零改动), NO_OVERWRITE=TRUE(Phase20 7份MD5不变), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
+- 状态标记: HERMES_PHASE21_75PCT_PRE_AUDIT_DONE=TRUE, HERMES_PHASE21_INDEX_TREND_AUDIT_DONE=TRUE, HERMES_PHASE21_3WAY_BASELINE_ALIGNED=TRUE, HERMES_PHASE21_STAGEF_GATE_PRE_AUDIT_GO=TRUE
+
