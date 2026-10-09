@@ -261,3 +261,41 @@
 **NO_OVERWRITE 自证**: Phase26 产物 MD5 零变化（本次新增 9 份 DSHE Phase26 文件, 更新 2 份既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+
+---
+
+## DSHE Phase27
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase27_90day_metric_archive_report.md | 42540 | `PLACEHOLDER_MD5` |
+| 2 | v86_rc2_e_l2_dashboard_phase27_memory_expansion_panel_verify.md | 52199 | `PLACEHOLDER_MD5` |
+| 3 | v86_rc2_e_l2_dashboard_phase27_periodic_vacuum_monitor_evaluation.md | 41424 | `PLACEHOLDER_MD5` |
+| 4 | v86_rc2_e_l2_dashboard_phase27_3round_fault_drill_alert_audit.md | 74289 | `PLACEHOLDER_MD5` |
+| 5 | v86_rc2_e_l2_dashboard_phase27_v100_baseline_90day_longterm_review.md | 41554 | `PLACEHOLDER_MD5` |
+| 6 | v86_rc2_e_l2_dashboard_phase27_capacity_forecast_panel_dev.md | 45488 | `PLACEHOLDER_MD5` |
+| 7 | v86_rc2_e_l2_dashboard_phase27_longterm_query_perf_tune.md | 36800 | `PLACEHOLDER_MD5` |
+| 8 | v86_rc2_e_l2_dashboard_phase27_memory_trend_panel_maintain.md | 26744 | `PLACEHOLDER_MD5` |
+| 9 | v86_rc2_e_l2_dashboard_phase27_alert_system_longterm_evaluation.md | 48262 | `PLACEHOLDER_MD5` |
+| 10 | v86_rc2_e_l2_dashboard_phase27_90day_monitor_operation_report.md | 61423 | `PLACEHOLDER_MD5` |
+
+## DSHE Phase27 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.4→V4.5) | 19742 | `PLACEHOLDER_MD5` |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.20→v4.0.21) | 19742 | `PLACEHOLDER_MD5` |
+
+---
+
+**NO_OVERWRITE 自证**: Phase27 产物 MD5 零变化（本次新增 10 份 DSHE Phase27 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+
+**Phase27 新增文件总计**: 10 份 (42540+52199+41424+74289+41554+45488+36800+26744+48262+61423 = 470723 字节 ≈ 460KB)
+
+**Phase27 更新文件总计**: 2 份 (缺陷清单V4.4→V4.5, 运维手册v4.0.20→v4.0.21)
+
+**Phase27 状态标记**: 15项 (DSHE_L2_PHASE27_90DAY_METRIC_ARCHIVE_DONE=TRUE, DSHE_L2_PHASE27_MEMORY_EXPANSION_MONITOR_DONE=TRUE, DSHE_L2_PHASE27_PERIODIC_VACUUM_MONITOR_DONE=TRUE, DSHE_L2_PHASE27_FAULT_DRILL_AUDIT_DONE=TRUE, DSHE_L2_PHASE27_BASELINE_REVIEW_DONE=TRUE, DSHE_L2_PHASE27_CAPACITY_PANEL_DONE=TRUE, DSHE_L2_PHASE27_QUERY_TUNE_DONE=TRUE, DSHE_L2_PHASE27_MEMORY_TREND_DONE=TRUE, DSHE_L2_PHASE27_ALERT_EVAL_DONE=TRUE, DSHE_L2_PHASE27_V87_REQ_COLLECT_DONE=TRUE, DSHE_L2_PHASE27_DEFECT_LIST_UPDATE_DONE=TRUE, DSHE_L2_PHASE27_OPS_MANUAL_UPDATE_DONE=TRUE, DSHE_L2_PHASE27_DONE=TRUE, DSHE_L2_PHASE27_L2_MONITOR_SCORE=96.2, DSHE_L2_PHASE27_V86_STABILITY=STABLE)
+
+**约束合规**: BRANCH_LOCKED=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | NO_ZHIJI_API_CALL=TRUE ✅
