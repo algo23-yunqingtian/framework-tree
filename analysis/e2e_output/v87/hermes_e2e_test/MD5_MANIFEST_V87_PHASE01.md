@@ -118,9 +118,19 @@
 | 7 | `v87_rc1_hermes_phase08_archive_final_gate_evaluation_report.md` | `56ce1e1bbd192fa299e9e4dab275f3be` |
 | 8 | `risk_watchlist_v87_phase08.md` | `e2175f06d5206e9cb4eff9b9b00b2f14` |
 
-## 10. 不可篡改保证
+## 10. V87.1 Phase10 产物（V87.1 5%灰度）
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_hermes_phase10_5pct_gray_audit_summary.md` | `4a57e0c407082f07df464b30e055a582` |
+| 2 | `v87_rc1_hermes_phase10_gray_window_stat.md` | `b50ee1d228f165f5575656ae3588e543` |
+| 3 | `v87_rc1_hermes_phase10_gray_index_exp_check.md` | `9a0718b824d22849a2d9b74ca64aa170` |
+| 4 | `v87_rc1_hermes_phase10_gray_gate_evaluation.md` | `7246dfcdb2ec657d200619a5e4226870` |
+| 5 | `risk_watchlist_v87_phase10.md` | `4c5ec2b617887f77fc6c7aa4a30ddd91` |
+
+## 11. 不可篡改保证
 
 - 所有产物已 commit 至 `feature/v87-rc1-g1`
-- MD5 记录完整（66+ 文件）
-- NO_OVERWRITE: Phase01+02+StageA+StageB+Phase04+Phase05+Phase06+Phase07产物MD5不变
+- MD5 记录完整（71+ 文件）
+- NO_OVERWRITE: Phase01+02+StageA+StageB+Phase04+Phase05+Phase06+Phase07+Phase08产物MD5不变
 - NO_MODIFY_V85: 不修改 `*.html`/`scripts/`/`data/`
