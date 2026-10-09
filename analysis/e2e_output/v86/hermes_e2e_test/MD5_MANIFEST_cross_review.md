@@ -158,3 +158,27 @@
 **NO_OVERWRITE 自证**: Phase20 产物 MD5 零变化（本次新增 5 份 DSHE Phase20 文件, 更新 2 份既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+---
+
+## DSHE Phase21
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase21_75pct_capacity_prep_report.md | 18331 | `20f287ce32af7aa4d8dcb86816ad287f` |
+| 2 | v86_rc2_e_l2_dashboard_phase21_75pct_panel_adapt_report.md | 16997 | `adb434ccce311ce3cba8f0d09039bf6e` |
+| 3 | v86_rc2_e_l2_dashboard_phase21_75pct_baseline_recalibration.md | 21487 | `565fd3dede27befbad222e9bf76b6abe` |
+| 4 | v86_rc2_e_l2_dashboard_phase21_75pct_alarm_threshold_adjust.md | 20062 | `4b092328489131ff00996e36abbf14ee` |
+| 5 | v86_rc2_e_l2_dashboard_phase21_75pct_simulation_verify.md | 18357 | `ad6322c2c1d48adce4ba32979426bf6f` |
+---
+
+## DSHE Phase21 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.0→V4.1) | 47032 | `9277f3bca5ea4683c24bdbcade041cd6` |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.16→v4.0.17) | 181530 | `aa803fb2b1a9f3afd617690af04be2a4` |
+---
+
+**NO_OVERWRITE 自证**: Phase21 产物 MD5 零变化（本次新增 5 份 DSHE Phase21 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。

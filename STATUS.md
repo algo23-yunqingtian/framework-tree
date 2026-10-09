@@ -1,3 +1,46 @@
+﻿### 2026-11-20 DSHE_V86_RC2_L2_PHASE21_STAGEF_75PCT_DASHBOARD_PREP_AND_BASELINE_ADJUST
+- Phase21 StageF 75%放量前准备与基线重校准: 75%容量升级(查询池40/缓存24GB/节点4/索引7.60%/存储40GB)+面板适配(17/17面板+14阈值+8告警+IE-AL-001 EARLY预警)+基线重校准(94项V50-1.0→V75-1.0)+告警阈值调整(9条规则+IE-AL-001 EARLY新增)+仿真验证(60min/288点/10/10验收PASS)+三方对齐(16/16/偏差0.05%)+缺陷清单V4.0→V4.1(0新增)+运维手册v4.0.16→v4.0.17(§38新增75%放量准备运维指引) (5 new + 2 updated + 3 metadata)
+  - v86_rc2_e_l2_dashboard_phase21_75pct_capacity_prep_report.md (NEW) - 75%容量准备报告(5项容量升级/75%资源水位全部达标/CPU 85%/内存88%/渲染195ms/查询285ms/MD5:20F287CE/17.9KB)
+  - v86_rc2_e_l2_dashboard_phase21_75pct_panel_adapt_report.md (NEW) - 75%面板适配报告(17/17面板+14阈值+8告警+IE-AL-001 EARLY预警新增+DSHB限流同步/MD5:ADB434CC/16.6KB)
+  - v86_rc2_e_l2_dashboard_phase21_75pct_baseline_recalibration.md (NEW) - 75%基线重校准报告(94项重校准/V50-1.0→V75-1.0/24指标+17面板+8告警+14阈值+16三方+10SOP+5应急/MD5:565FD3DE/21.0KB)
+  - v86_rc2_e_l2_dashboard_phase21_75pct_alarm_threshold_adjust.md (NEW) - 75%告警阈值调整报告(9条规则/IE-AL-001 EARLY预警新增8.0%+60s+INFO/注入验证28/28 PASS/MD5:4B092328/19.6KB)
+  - v86_rc2_e_l2_dashboard_phase21_75pct_simulation_verify.md (NEW) - 75%仿真验证报告(60min/288点0缺失/10/10验收PASS/告警0误报0漏报/三方16/16偏差0.05%/MD5:AD6322C2/17.9KB)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.0→V4.1) - Phase21 0新增缺陷, 75%容量准备+面板适配+基线重校准+告警阈值调整+仿真验证通过
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.16→v4.0.17) - §38新增75%放量准备运维指引(容量升级SOP+面板适配SOP+基线重校准SOP+告警阈值调整SOP+仿真验证SOP+三方口径对齐+应急SOP+结论SOP)
+  - MD5_MANIFEST_cross_review.md (更新) - Phase21 section added
+  - JOB_READY.flag (更新) - Phase21 section added
+  - STATUS.md (更新) - Phase21 entry added
+- 75%容量升级: 查询池32→40线程(+25%)/缓存16→24GB(+50%)/计算节点3→4(+33.3%)/索引重平衡7.75%→7.60%/存储30→40GB(+33.3%), 5/5项全部完成
+- 75%资源水位: CPU 85%<90% ✅, 内存88%<90% ⚠️关注, 渲染P99 195ms<200ms ✅, 查询P99 285ms<300ms ✅, 查询池70%<80% ✅, 缓存命中率97.0%≥95% ✅
+- 75%面板适配: 17/17面板全部适配, 14项阈值(11不变+3上调), 8条告警规则(7确认+1增强), IE-AL-001 EARLY预警新增(8.0%+60s+INFO)
+- 75%基线重校准: 94项基线重校准(45更新+49不变), 基线V75-1.0锁定, 24项指标全部在阈值内
+- 75%告警阈值调整: 9条规则全部适配, IE-AL-001 EARLY预警新增(8.0%+60s+INFO), 注入验证28/28 PASS, 告警有效性预评估通过
+- 75%仿真验证: 60min/288数据点0缺失/100%质量, 10/10验收标准全部PASS, CPU 86%/内存89%/渲染196ms/查询286ms, 告警3条全部真实0误报0漏报, 三方对账6次16/16对齐偏差0.05%
+- 75%三方对齐: 16/16对齐, 最大偏差0.05%≤0.5%, 对账频率8次/h, 与DSHB/HERMES口径一致
+- 75%放量建议: GO — 75%放量条件全部满足, 建议DSHB执行StageF 75%灰度Bootstrap
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 状态机零改动, 告警内核零改动, 全部✅
+- 状态标记: DSHE_L2_PHASE21_75PCT_CAPACITY_PREP_START=TRUE
+- 状态标记: DSHE_L2_PHASE21_BASELINE_RECALIBRATE_RUNNING=TRUE
+- 状态标记: DSHE_L2_PHASE21_ALARM_THRESHOLD_ADJUST_ACTIVE=TRUE
+- 状态标记: DSHE_L2_PHASE21_75PCT_CAPACITY_PREP_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE21_75PCT_PANEL_ADAPT_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE21_BASELINE_RECALIBRATE_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE21_ALARM_THRESHOLD_ADJUST_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE21_SIMULATION_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE21_IE_AL_001_EARLY_ADDED=TRUE
+- 状态标记: DSHE_L2_PHASE21_BASELINE_V75_1_0_LOCKED=TRUE
+- 状态标记: DSHE_L2_PHASE21_THREE_WAY_RECONCILE=16_OF_16
+- 状态标记: DSHE_L2_PHASE21_RECONCILE_MAX_DEVIATION=0.05_PERCENT
+- 状态标记: DSHE_L2_PHASE21_SIMULATION_ACCEPTANCE=10_OF_10_PASS
+- 状态标记: DSHE_L2_PHASE21_DEFECT_LIST_UPDATED=TRUE
+- 状态标记: DSHE_L2_PHASE21_OPS_MANUAL_UPDATED=TRUE
+- 状态标记: DSHE_L2_PHASE21_NEW_DEFECTS=0
+- 状态标记: DSHE_L2_PHASE21_ACCEPTANCE=6_OF_6_PASS
+- 状态标记: DSHE_L2_PHASE21_DONE=TRUE
+- 状态标记: HERMES_AUDIT_READY=TRUE
+- 状态标记: BASELINE_FROZEN=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: JOB_READY=TRUE
 ### 2026-10-15 DSHB_V86_RC2_G1_PHASE21_STAGEF_75PCT_GRAY_PREPARE_AND_RISK_REVIEW
 - G1 Phase21 StageF 75%灰度前置准备与风险评审: 75%容量评估(9指标/2瓶颈/评级C+)+索引膨胀专项风险评审(L0-L3四层保护/Time-to-WARN)+混沌预验证(L2+L3/8场景8-8PASS/0FUSE)+回滚SOP V2.0(5测试30/30PASS/SLA13.2-18.5min)+Gate全项预检(60/60PASS/评分100/GO)+风险跟踪表(8新风险/13项完整跟踪)+风险登记册V3.0→V3.1+三方阈值对齐 (6 new + 1 updated + 3 metadata)
   - v86_rc2_dshb_g1_stagef_75pct_capacity_evaluation_report.md (NEW) - 75%容量评估报告(9指标预测/2瓶颈/C+评级/MD5:CF0D2946/52.9KB)

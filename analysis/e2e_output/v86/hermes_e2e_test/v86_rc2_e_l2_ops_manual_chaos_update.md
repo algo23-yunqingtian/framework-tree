@@ -48,6 +48,8 @@
 34. [StageD 30%灰度放量准备与容量升级运维指引（Phase17: 30%放量准备）](#34-staged-30pct灰度放量准备与容量升级运维指引)
 35. [StageD 30%灰度Bootstrap上线与72h监控运维指引（Phase18: 30%Bootstrap监控）](#35-staged-30pct灰度bootstrap上线与72h监控运维指引)
 36. [StageE 50%灰度放量监控侧全量升级与基线锁定运维指引（Phase19: 50%放量升级）](#36-stagee-50pct灰度放量监控侧全量升级与基线锁定运维指引)
+37. [StageE 50%灰度72h实时指标采集与告警有效性验证运维指引（Phase20: 72h监控）](#37-stagee-50pct灰度72h实时指标采集与告警有效性验证运维指引)
+38. [StageF 75%灰度放量准备与基线重校准运维指引（Phase21: 75%准备）](#38-stagf-75pct灰度放量准备与基线重校准运维指引)
 
 ---
 
@@ -4268,10 +4270,10 @@ sqlite3 /var/lib/hermes/gray_gate_events.db "VACUUM;"
 ✅ **PASS** — StageE 50%灰度72h实时指标采集与告警有效性验证完成。数据采集17,280点0缺失(染色99.998%/分桶0.03%), 告警有效性12条全部真实(0误报0漏报/健康度100/100), IE-AL-001降噪连续3天0误报(降噪效果稳定可靠), 基线漂移全部正常(24项23正常+1轻微/无超阈值异常), 三方对账72h 24/24(偏差0.07%), 基线V50-1.0稳定无需更新。运维手册v4.0.16更新完成。
 
 ---
-*文档版本: v4.0.16-PHASE20-STAGEE-50PCT-72H-MONITOR (Phase19 StageE 50%放量监控侧全量升级与基线锁定版本)*
-*生成时间: 2026-11-16*
+*文档版本: v4.0.17-PHASE21-STAGEF-75PCT-PREP (Phase19 StageE 50%放量监控侧全量升级与基线锁定版本)*
+*生成时间: 2026-11-20*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V86_RC2_L2_PHASE20_STAGEE_50PCT_DASHBOARD_REAL_TIME_METRICS_COLLECT_ALERT_VALIDATE + 前置工单*
+*工单: DSHE_V86_RC2_L2_PHASE21_STAGEF_75PCT_DASHBOARD_PREP_AND_BASELINE_ADJUST + 前置工单*
 *分支: feature/v85-chart-template*
 *更新说明: v4.0.15→v4.0.16, §37新增StageE 50%灰度72h实时指标采集与告警有效性验证运维指引(50%灰度72h监控启动SOP+50%灰度实时监控指标SOP+告警有效性验证SOP+基线持续对比SOP+三方对账SOP+72h监控简报输出SOP+应急SOP+72h监控结论SOP)*
-*状态: v4.0.15-PHASE19-STAGEE-50PCT-DASHBOARD-UPGRADE → v4.0.16-PHASE20-STAGEE-50PCT-72H-MONITOR (Phase20 StageE 50%灰度72h实时指标采集与告警有效性验证版本, DSHE_L2_PHASE20_72H_MONITOR_DONE=TRUE, DSHE_L2_PHASE20_ALERT_VALIDATE_DONE=TRUE, DSHE_L2_PHASE20_BASELINE_STABLE=TRUE, DSHE_L2_PHASE20_DONE=TRUE, JOB_READY=TRUE)*
+*状态: v4.0.16-PHASE20-STAGEE-50PCT-72H-MONITOR → v4.0.17-PHASE21-STAGEF-75PCT-PREP (Phase21 StageF 75%放量准备与基线重校准版本, DSHE_L2_PHASE21_75PCT_CAPACITY_PREP_DONE=TRUE, DSHE_L2_PHASE21_BASELINE_RECALIBRATE_DONE=TRUE, DSHE_L2_PHASE21_ALARM_THRESHOLD_ADJUST_DONE=TRUE, DSHE_L2_PHASE21_SIMULATION_DONE=TRUE, DSHE_L2_PHASE21_DONE=TRUE, JOB_READY=TRUE)*
