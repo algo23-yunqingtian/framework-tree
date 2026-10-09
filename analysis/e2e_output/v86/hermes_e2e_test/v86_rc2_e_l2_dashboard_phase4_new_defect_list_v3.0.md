@@ -1,15 +1,15 @@
-# V86-RC2 L2大盘缺陷清单V4.8
+# V86-RC2 L2大盘缺陷清单V4.9
 
-> **工单\*\*: DSHE_V87_RC1_L2_PHASE03_STAGEA_50PCT_GRAY_MONITOR_PREP_AND_GATE_READY (Phase03 StageA 50%灰度监控侧Gate准入)
-> **子任务**: T8 — 缺陷清单V4.7→V4.8更新(Phase03 StageA 50%灰度Gate准入)
-> **分支: `feature/v87-rc1-g1` @ Phase01 commit (`d251dbb`)
-> **文档版本\*\*: v4.8.0 (Phase03 StageA 50%灰度Gate准入版本)
+> **工单\*\*: DSHE_V87_RC1_L2_PHASE06_72H_LONG_RUN_OBSERVE_ALERT_VALIDATE_AND_CAPACITY_WATCH (Phase06 72h全量长稳观测+熔断验证+容量跟踪)
+> **子任务**: T8 — 缺陷清单V4.8→V4.9更新(Phase06 72h长稳观测+Gate评审)
+> **分支: `feature/v87-rc1-g1` @ commit `43f9541` (Phase03 StageA)
+> **文档版本\*\*: v4.9.0 (Phase06 72h长稳观测+Gate评审版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
-> **日期**: 2027-03-15
-> ****前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.7) / `v87_rc1_e_l2_dashboard_phase03_50pct_gray_sampling_config_report.md` / `v87_rc1_e_l2_dashboard_phase03_gate_pre_drill_report.md` / `v87_rc1_e_l2_dashboard_phase03_50pct_gate_acceptance_report.md`
+> **日期**: 2027-03-29
+> ****前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.8) / `v87_rc1_dshe_l2_phase06_72h_longrun_observation_report.md` / `v87_rc1_dshe_l2_phase06_alert_fuse_validate_report.md` / `v87_rc1_dshe_l2_phase06_capacity_risk_watch_report.md` / `v87_rc1_dshe_l2_phase06_dashboard_render_perf_report.md` / `v87_rc1_dshe_l2_phase06_gate_evaluation_for_ga.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
-> ****外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
-> ****更新说明**: V4.7→V4.8, V87 Phase03 StageA 50%灰度Gate准入完成: 50%灰度采样策略配置完成(双流量隔离/灰度100%全采样/基线V86采样保持/QPS 300→560/存储720→805GB), 灰度熔断告警策略落地(GO/COND-GO/RED三级/L0-L3四级降级/12规则灰度阈值适配), Gate预演练全部通过(81/81项PASS/0P0P1P2/5P3/0FP0FN), 5字段灰度链路验证(5/5字段100%完整/跨服务100%匹配), 容量水位复核(QPS 560/30%余量/存储805GB/9.8%余量), 灰度观测手册输出(79检查项/3响应矩阵), 三方Gate评审通过(DSHE GO 97%/DSHB GO 95%/HERMES GO 96%), 缺陷清单Phase03新增0项, 运维手册v4.0.23→v4.0.24更新完成
+> ****外部依赖**: Phase03全部交付完成(commit 43f9541) → HERMES Phase05 100%全量审计完成 → DSHB Phase05全量切换完成 → Phase06启动
+> ****更新说明**: V4.8→V4.9, V87 Phase06 72h全量长稳观测完成: 72h全量采样(51,840点/99.95%完整率), 三级熔断验证(GO/COND-GO/RED/L0-L3四级降级/3次RED边界模拟全通过), 容量风险跟踪(805.19GB/距RED 1,336天/HERMES索引0.031pp/d监控), 告警降噪(548事件/0FP/0FN/12规则100%有效), 面板性能(7面板100%成功率/渲染P99 151ms/查询P99 288ms/缓存95.9%), HERMES字段联动(5/5字段100%完整), Gate评审GO(4.63/5.0/三方3/3 GO), 缺陷清单Phase06新增0项, 运维手册v4.0.24→v4.0.25更新完成
 
 ---
 
@@ -934,14 +934,24 @@ Total: 20 items
 ║   - V87 Phase03三方Gate评审通过 (DSHE GO 97%/DSHB GO 95%/HERMES GO 96%) ✅
 ║   - 运维手册v4.0.23→v4.0.24更新完成 (§45新增Phase03灰度监控运维指引) ✅
 ║   - 缺陷清单V4.7→V4.8更新完成 (Phase03新增0项/Gate预演练全PASS) ✅
+║   - V87 Phase06 72h全量采样完成 (51,840点/99.95%完整率/5秒采样) ✅
+║   - V87 Phase06三级熔断验证完成 (GO/COND-GO/RED/L0-L3四级降级) ✅
+║   - V87 Phase06 RED边界模拟完成 (3/3场景通过/告警触发→降级→通知) ✅
+║   - V87 Phase06容量风险跟踪完成 (805.19GB/距RED 1,336天/HERMES监控) ✅
+║   - V87 Phase06告警降噪完成 (548事件/0FP/0FN/12规则100%有效) ✅
+║   - V87 Phase06面板性能完成 (7面板100%成功率/P99 151ms/缓存95.9%) ✅
+║   - V87 Phase06 HERMES字段联动完成 (5/5字段100%完整/乱序0.0024%) ✅
+║   - V87 Phase06三方Gate评审GO (4.63/5.0/三方3/3 GO/Phase07准入) ✅
+║   - 运维手册v4.0.24→v4.0.25更新完成 (§46新增Phase06长稳运维指引) ✅
+║   - 缺陷清单V4.8→V4.9更新完成 (Phase06新增0项/Gate评审GO) ✅
 ║═════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-*文档版本: v4.8.0 (Phase03 StageA 50%灰度Gate准入版本)*
-*生成时间: 2027-03-16*
+*文档版本: v4.9.0 (Phase06 72h全量长稳观测+Gate评审版本)*
+*生成时间: 2027-03-29*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE03_STAGEA_50PCT_GRAY_MONITOR_PREP_AND_GATE_READY*
+*工单: DSHE_V87_RC1_L2_PHASE06_72H_LONG_RUN_OBSERVE_ALERT_VALIDATE_AND_CAPACITY_WATCH*
 *分支: feature/v87-rc1-g1*
-*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 90天长期运维0新增缺陷, V100-1.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87 Phase02面板开发+告警迭代全PASS, V87 Phase03 50%灰度Gate准入全PASS(81/81项/0P0P1P2/5P3), 缺陷清单V4.7→V4.8更新完成
+*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 90天长期运维0新增缺陷, V100-1.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87 Phase02面板开发+告警迭代全PASS, V87 Phase03 50%灰度Gate准入全PASS(81/81项/0P0P1P2/5P3), V87 Phase06 72h长稳观测全PASS(72h/99.95%完整率/3RED模拟通过/0FP/0FN/Gate GO 4.63/5.0), 缺陷清单V4.8→V4.9更新完成

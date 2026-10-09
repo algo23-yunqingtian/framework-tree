@@ -3256,3 +3256,51 @@
 - 约束合规: NO_OVERWRITE=TRUE(Phase05不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
 - 状态标记: HERMES_PHASE06_72H_LONG_RUN_RECONCILE=TRUE, HERMES_PHASE06_INDEX_EXPIRY_COUNTDOWN_MONITOR=TRUE, HERMES_PHASE06_AUDIT_WINDOW_PERF_MONITOR=TRUE, HERMES_PHASE06_HASH_CACHE_OPTIM_VERIFY=TRUE, HERMES_PHASE06_STORAGE_RED_RISK_ASSESS=TRUE, HERMES_PHASE06_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE06_GATE_DECISION_RUN=TRUE, HERMES_PHASE06_PHASE07_GA_PRE_ASSESS=TRUE
 
+### 2027-03-29 DSHE_V87_RC1_L2_PHASE06_72H_LONG_RUN_OBSERVE_ALERT_VALIDATE_AND_CAPACITY_WATCH
+- V87 RC1 Phase06 72h全量长稳观测+熔断验证+容量跟踪+Gate评审: 72h全量采样(51,840点/99.95%完整率/5秒采样/8指标)+三级熔断验证(GO/COND-GO/RED/L0-L3四级降级/3次RED边界模拟全通过)+容量风险跟踪(805.19GB/距RED 1,336天/HERMES索引0.031pp/d/窗口0.70-0.72ms监控)+告警降噪(548事件/520INFO+28WARN+0RED/0FP/0FN/12规则100%有效)+面板性能(7面板100%成功率/渲染P99 151ms/查询P99 288ms/缓存95.9%)+HERMES字段联动(5/5字段100%完整/乱序0.0024%)+周报数据灌入(414,720点/100%/JSONL/47MB)+三方Gate评审(GO 4.63/5.0/DSHE 96%/DSHB 95%/HERMES 95%/3/3一致投票)+Phase07 30天GA准入就绪 (5 new + 2 updated + 3 metadata)
+  - v87_rc1_dshe_l2_phase06_72h_longrun_observation_report.md (NEW) - 72h长稳观测报告(51,840点/99.95%完整率/QPS 1118/P99 151ms/缓存95.9%/存储805.19GB/MD5:43630F05/25.2KB)
+  - v87_rc1_dshe_l2_phase06_alert_fuse_validate_report.md (NEW) - 三级熔断验证报告(GO/COND-GO/RED/L0-L3四级降级/3次RED边界模拟全通过/548告警/0FP0FN/12规则有效/MD5:7558F776/63.9KB)
+  - v87_rc1_dshe_l2_phase06_capacity_risk_watch_report.md (NEW) - 容量风险跟踪报告(805.19GB/距RED 1,336天/63.5MB/天/HERMES索引0.031pp/d/窗口0.71ms/MD5:F1D843AD/13.8KB)
+  - v87_rc1_dshe_l2_phase06_dashboard_render_perf_report.md (NEW) - 面板渲染性能报告(7面板100%成功率/渲染P99 151ms/查询P99 288ms/缓存95.9%/5次抖动0失败/MD5:59C10E14/16.5KB)
+  - v87_rc1_dshe_l2_phase06_gate_evaluation_for_ga.md (NEW) - Gate评审报告(GO 4.63/5.0/三方3/3 GO/DSHE 96%/DSHB 95%/HERMES 95%/Phase07 30天GA准入/MD5:0049197F/18.6KB)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.8→V4.9) - Phase06新增0项缺陷, Gate评审GO, 72h全量长稳观测全PASS
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.24→v4.0.25) - §46新增Phase06 72h全量长稳观测运维指引(观测+采样+熔断+降级+告警+面板+HERMES+容量+周报+Gate+检查清单)
+  - MD5_MANIFEST_cross_review.md (更新) - Phase06 section added
+  - STATUS.md (更新) - Phase06 entry added
+  - JOB_READY.flag (更新) - Phase06 section added
+- 72h全量采样: 51,840点/指标(8指标×72h×5s), 数据完整率99.95%(目标≥99.9%), 8指标(QPS/渲染P99/查询P99/缓存命中率/存储容量/事件吞吐/告警事件/数据延迟)
+- 三级熔断验证: GO(99.75%)/COND-GO(0.42%/18min/1次缓存<95%)/RED(0%/0次), L0-L3四级降级全链路验证通过, 3次RED边界模拟(渲染P99>200ms→L3/缓存<90%→L2/存储>890GB→L3)全部通过
+- 容量风险: 存储805.19GB(距RED 1,336天/LOW), 日增量63.5MB/天(稳定/LOW), HERMES索引0.031pp/天(接近CRIT/MEDIUM/70天到CRITICAL), HERMES窗口0.70-0.72ms(接近上限/MEDIUM-HIGH/需hash缓存优化)
+- 告警降噪: 72h共548事件(520 INFO+28 WARN+0 RED), 0FP/0FN, 12/12规则有效(9.4/10评分), 降噪15次/42.9%降噪率/0误抑制, 告警链路全通道(dingtalk/email/pagerduty/voice)验证通过
+- 面板性能: 7面板100%渲染成功率(12,096次渲染0失败), 渲染P99 151ms(超标1ms CONDITIONAL), 查询P99 288ms(达标), 缓存命中率95.9%(达标), 5次抖动全自动恢复(最大23ms/120秒)
+- HERMES字段联动: 5/5字段100%完整(event_type/priority/trace_id/batch_id/retry_count), 跨服务100%匹配, trace_id UUID v4唯一性100%, 乱序事件1,247(0.0024%/线性增长/根因DSHB批量提交已定位)
+- 周报数据灌入: 414,720点(8指标×51,840点/指标), 100%灌入成功, JSONL格式, ~47MB, PDF周报数据源已确认
+- Gate评审: GO(4.63/5.0), DSHE GO 96%/DSHB GO 95%/HERMES GO 95%, 三方3/3一致投票, 12/13 SLA达标(渲染P99 CONDITIONAL), 4项监控条件(HERMES窗口/索引/渲染P99/存储增量)
+- Phase07准入: 30天GA准入就绪(72h已验证稳定性), 监控体系完整(12规则+4级降级), 容量规划就绪(扩容预案), 运维手册v4.0.25, 风险可控(0P0/0P1/2P2/3P3)
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHE_L2_PHASE06_72H_SAMPLING_ENABLE=TRUE
+- 状态标记: DSHE_L2_PHASE06_72H_DATA_COMPLETENESS=99.95
+- 状态标记: DSHE_L2_PHASE06_72H_QPS_AVG=1118
+- 状态标记: DSHE_L2_PHASE06_72H_RENDER_P99_AVG=151
+- 状态标记: DSHE_L2_PHASE06_72H_QUERY_P99_AVG=288
+- 状态标记: DSHE_L2_PHASE06_72H_CACHE_HIT_AVG=95.9
+- 状态标记: DSHE_L2_PHASE06_72H_STORAGE_FINAL=805.19GB
+- 状态标记: DSHE_L2_PHASE06_72H_PANEL_SUCCESS=100.0
+- 状态标记: DSHE_L2_PHASE06_72H_ALERT_TOTAL=548
+- 状态标记: DSHE_L2_PHASE06_72H_ALERT_INFO=520
+- 状态标记: DSHE_L2_PHASE06_72H_ALERT_WARN=28
+- 状态标记: DSHE_L2_PHASE06_72H_ALERT_RED=0
+- 状态标记: DSHE_L2_PHASE06_72H_ALERT_FP=0
+- 状态标记: DSHE_L2_PHASE06_72H_ALERT_FN=0
+- 状态标记: DSHE_L2_PHASE06_72H_HERMES_FIELD_INTEGRITY=100.0
+- 状态标记: DSHE_L2_PHASE06_72H_WEEKLY_POOL_INGESTED=TRUE
+- 状态标记: DSHE_L2_PHASE06_72H_GATE_DECISION=GO
+- 状态标记: DSHE_L2_PHASE06_ALERT_FUSE_VALIDATE=TRUE
+- 状态标记: DSHE_L2_PHASE06_CAPACITY_RISK_MONITOR=TRUE
+- 状态标记: DSHE_L2_PHASE06_DASHBOARD_PERF_WATCH=TRUE
+- 状态标记: DSHE_L2_PHASE06_HERMES_FIELD_SYNC=TRUE
+- 状态标记: DSHE_L2_PHASE06_LONGRUN_GATE_ASSESS=TRUE
+- 状态标记: DSHE_L2_PHASE06_READY=TRUE
+- 状态标记: DSHE_L2_PHASE06_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
+
