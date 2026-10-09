@@ -207,3 +207,28 @@
 **NO_OVERWRITE 自证**: Phase22 产物 MD5 零变化（本次新增 6 份 DSHE Phase22 文件, 更新 2 份既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+
+---
+
+## DSHE Phase24
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase24_full_traffic_capacity_prep_report.md | 23613 | `23cd60265d22b70db59132fd788dfba1` |
+| 2 | v86_rc2_e_l2_dashboard_phase24_full_traffic_panel_final_verify.md | 18744 | `ed58a627f07d77dd067f2f7a29f48c85` |
+| 3 | v86_rc2_e_l2_dashboard_phase24_full_traffic_baseline_v100_1_0_lock.md | 17838 | `77a2a2a7b6c005df2ac72df54cc6f6f5` |
+| 4 | v86_rc2_e_l2_dashboard_phase24_full_traffic_alarm_rule_freeze.md | 16424 | `f3822b320b3f8218a1f6bd48f6ce078b` |
+| 5 | v86_rc2_e_l2_dashboard_phase24_full_traffic_simulation_verify.md | 18854 | `ce3f09b5374da2b031db104469a7ac28` |
+
+## DSHE Phase24 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.2→V4.3) | 50137 | `ba983d6d568940e2b619f0e1784cc52a` |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.18→v4.0.19) | 193652 | `1702568c04e53d4535d8043cd6fcf640` |
+
+---
+
+**NO_OVERWRITE 自证**: Phase24 产物 MD5 零变化（本次新增 5 份 DSHE Phase24 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
