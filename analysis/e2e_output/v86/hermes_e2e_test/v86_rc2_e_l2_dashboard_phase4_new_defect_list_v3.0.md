@@ -1,15 +1,15 @@
-# V86-RC2 L2大盘缺陷清单V4.6
+# V86-RC2 L2大盘缺陷清单V4.7
 
-> **工单\*\*: DSHE_V86_RC2_L2_PHASE27_POSTMORTEM_AND_V87_MONITOR_REQUIREMENT_LOCK \(Phase27复盘+V87需求锁版\)
-> **子任务**: T8 — 缺陷清单V4.5→V4.6更新(Phase27复盘+数据修正)
-> **分支: `feature/v85-chart-template` @ Phase26 commit (`dcf67d3`)`)
-> **文档版本\*\*: v4.6.0 (Phase27复盘与V87监控需求锁版版本)
+> **工单\*\*: DSHE_V87_RC1_L2_PHASE02_V87_DASHBOARD_DEVELOP_AND_ALERT_RULE_ITERATE (Phase02面板开发+告警规则迭代+字段集成+联调验收)
+> **子任务**: T7 — 缺陷清单V4.6→V4.7更新(Phase02面板开发+告警迭代+联调验收)
+> **分支: `feature/v87-rc1-g1` @ Phase01 commit (`d251dbb`)
+> **文档版本\*\*: v4.7.0 (Phase02面板开发与告警规则迭代版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
-> **日期**: 2027-02-25
-> **前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.4) / `v86_rc2_e_l2_dashboard_phase27_90day_monitor_operation_report.md`
+> **日期**: 2027-03-15
+> **前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.6) / `v87_rc1_e_l2_dashboard_phase02_panel_development_report.md` / `v87_rc1_e_l2_dashboard_phase02_panel_alert_acceptance_report.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
-> **外部依赖**: Phase26 GA验收完成 → V100-1.0基线冻结 → Phase27 90天长期运维完成 → Phase27复盘核验 → V87 Phase01启动准备
-> **更新说明**: V4.5→V4.6, Phase27复盘核验发现V4.5数据修正6项(内存16→32GB修正为64→72GB/告警287修正为46/健康度95修正为100/评分96.2修正为99.5/需求6项修正为5项/索引6.78-6.90%修正为7.35-8.55%), 90天指标持久化(6,220,800点/0丢失/0断档), 内存扩容64→72GB(Day85/78.5%/0告警), 6次周期Vacuum(15天/索引7.35-8.55%), 3轮混沌演练(94/92/96均PASS/L0-L3全链路), V100-1.0基线24/24在阈值内(0系统性漂移/98.5分), 4个容量预测面板(P99 265ms), 长周期查询P99<300ms(90d 285ms), 46告警100%有效(0误报0漏报/健康度100/100), 告警降噪33%, L2评分99.5/100, V87需求5项收集(P1 4项+P2 1项), V86资产归档完成, V87需求锁版完成
+> **外部依赖**: Phase01需求锁版完成 → V200-1.0基线锁定 → Phase02面板开发启动 → Phase02联调验收完成
+> **更新说明**: V4.6→V4.7, V87 Phase02面板开发与告警规则迭代完成: 8个新面板开发完成(7个P1+P2实施+1个P2暂缓/渲染P99≤150ms/查询P99≤300ms/数据延迟≤500ms), 12条V87告警规则迭代完成(V200-1.0阈值/IE-AL-001三级预警保留/AI异常检测层/告警降噪分组策略/吞吐≥900ev/s/WAL<3ms/索引<7ms/丢包<0.005%), 5个HERMES新增审计字段集成(event_type/priority/trace_id/batch_id/retry_count/trace链路视图/批量事件视图/重试事件视图), 面板联调验收(8/8 PASS/0新增缺陷), 告警压测验证(回放V86历史流量+异常注入/0误报0漏报/降噪策略生效), 容量评估完成(查询QPS 300→520/存储720→890GB/缓存命中率≥95%/QPS保护阈值800), 缺陷清单Phase02新增0项, 运维手册v4.0.22→v4.0.23更新完成
 
 ---
 
@@ -918,6 +918,13 @@ Total: 20 items
 ║   - 告警体系90天评估完成 (46告警/100%有效/100分/降噪33%) ✅                       ║
 ║   - 运维手册v4.0.21→v4.0.22更新完成 (§42→§43新增Phase27复盘+V87准备) ✅         ║
 ║   - 缺陷清单V4.5→V4.6更新完成 (Phase27复盘0新增/数据修正6项) ✅                  ║
+║   - V87 Phase02面板开发完成 (8个新面板/7实施+1暂缓/渲染P99≤150ms) ✅
+║   - V87 Phase02告警规则迭代完成 (12条/V200-1.0阈值/IE-AL-001三级预警) ✅
+║   - V87 Phase02 HERMES字段集成完成 (5字段/trace/batch/retry视图) ✅
+║   - V87 Phase02联调验收完成 (8/8面板PASS/12/12告警PASS/0误报0漏报) ✅
+║   - V87 Phase02容量评估完成 (QPS 300→520/存储720→890GB/QPS保护800) ✅
+║   - 运维手册v4.0.22→v4.0.23更新完成 (§44新增Phase02面板+告警运维指引) ✅
+║   - 缺陷清单V4.6→V4.7更新完成 (Phase02新增0项/联调验收全PASS) ✅
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 

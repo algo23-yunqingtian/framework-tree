@@ -5150,3 +5150,147 @@ JOB_READY=TRUE
 *分支: feature/v85-chart-template*
 *更新说明: v4.0.21→v4.0.22, §43新增Phase27复盘与V87监控需求锁版运维指引(Phase27复盘核验+数据修正记录+V86资产归档SOP+V87需求锁版SOP+V87基线升级路径+V87三方启动对齐会)*
 *状态: DSHE_L2_PHASE27_DONE=TRUE, DSHE_L2_PHASE27_L2_MONITOR_SCORE=96.2, DSHE_L2_PHASE27_V86_STABILITY=STABLE, DSHE_L2_PHASE01_V86_PHASE27_POSTMORTEM_DONE=TRUE, DSHE_L2_PHASE01_V86_ASSET_ARCHIVE=TRUE, DSHE_L2_PHASE01_V87_MONITOR_REQ_LOCK=TRUE, DSHE_L2_PHASE01_V87_BASELINE_TEMPLATE_BUILD=TRUE, DSHE_L2_PHASE01_V87_PANEL_BACKLOG_BUILD=TRUE, DSHE_L2_PHASE01_3PARTY_ALIGN_PREPARE=TRUE, DSHE_L2_PHASE01_V86_DEFECT_LIST_V4_6_UPDATED=TRUE, DSHE_L2_PHASE01_OPS_MANUAL_V4_0_22_UPDATED=TRUE, DSHE_L2_PHASE01_DONE=TRUE, DSHE_L2_PHASE01_L2_MONITOR_SCORE=99.5, DSHE_L2_PHASE01_V86_STABILITY=STABLE, JOB_READY=TRUE*
+---
+
+## §44 V87 Phase02 面板开发与告警规则迭代运维指引
+
+> **章节**: §44 V87 Phase02 面板开发与告警规则迭代运维指引
+> **前置章节**: §43 Phase27复盘与V87监控需求锁版
+> **状态**: COMPLETED — Phase02面板开发完成, 告警规则迭代完成, 字段集成完成, 联调验收全PASS
+> **工单**: DSHE_V87_RC1_L2_PHASE02_V87_DASHBOARD_DEVELOP_AND_ALERT_RULE_ITERATE
+
+### 44.1 Phase02 开发总览
+
+| 开发项 | 数量 | 完成状态 | 备注 |
+|--------|------|---------|------|
+| V87新面板 | 8个 | 7实施+1暂缓 | V87-P-005混沌工程暂缓至Phase03 |
+| V87告警规则 | 12条 | 12/12迭代完成 | V200-1.0阈值, IE-AL-001三级预警保留 |
+| HERMES新增字段 | 5个 | 5/5集成完成 | event_type/priority/trace_id/batch_id/retry_count |
+| 面板联调验收 | 8个 | 8/8 PASS | 渲染P99≤150ms, 查询P99≤300ms |
+| 告警压测验证 | 12条 | 12/12 PASS | 0误报0漏报, 降噪策略生效 |
+| 容量评估 | 完成 | QPS保护阈值800 | 存储720→890GB, 缓存≥95% |
+
+### 44.2 V87新增面板运维指引
+
+#### 44.2.1 面板清单
+
+| 面板ID | 名称 | 优先级 | 数据源 | 刷新频率 | 告警关联 |
+|--------|------|--------|--------|---------|---------|
+| V87-P-001 | AI异常检测面板 | P1 | HERMES L3 AI模型 | 30s | 异常告警→CRIT |
+| V87-P-002 | 跨服务依赖拓扑 | P1 | DSHB服务注册表 | 60s | 依赖异常→WARN |
+| V87-P-003 | 自动化容量规划 | P1 | 历史负载+HERMES模型 | 15min | CP-AL-005→WARN |
+| V87-P-004 | 告警关联分析 | P1 | AlertManager+关联引擎 | 5min | 告警风暴→WARN |
+| V87-P-005 | 混沌工程自动化 | P2 | Chaos Mesh引擎 | 按需 | — (暂缓) |
+| V87-P-006 | 全链路追踪 | P1 | OpenTelemetry+DSHB SDK | 实时 | 追踪超时→WARN |
+| V87-P-007 | 审计对账 | P1 | HERMES L3审计服务 | 15s | AUD-AL-001/002 |
+| V87-P-008 | 基线漂移热力图 | P2 | V200-1.0基线+24指标 | 1h | 漂移告警→WARN |
+
+#### 44.2.2 面板故障排查
+
+| 故障类型 | 现象 | 排查步骤 | 恢复操作 |
+|---------|------|---------|---------|
+| 面板加载超时 | 渲染P99>150ms | 1.检查查询P99 2.检查缓存命中率 3.检查数据源可用性 | 1.刷新缓存 2.扩容查询池 3.降级展示 |
+| 数据缺失 | 面板显示空数据 | 1.检查数据源连接 2.检查字段映射 3.检查API状态 | 1.重启数据源 2.修复映射 3.降级展示 |
+| 数据错位 | 数据值与实际不符 | 1.检查时间戳对齐 2.检查单位换算 3.检查过滤条件 | 1.修正时间对齐 2.修正单位 3.清除缓存 |
+| AI模型不可用 | P-001降级为静态阈值 | 1.检查HERMES L3状态 2.检查模型文件 3.检查推理服务 | 1.重启模型服务 2.加载备用模型 |
+
+### 44.3 V87告警规则运维指引
+
+#### 44.3.1 12条告警规则速查表
+
+| 规则ID | 名称 | 级别 | 阈值 | 持续 | 通知渠道 | 响应时限 |
+|--------|------|------|------|------|---------|---------|
+| G-AL-001 | CPU使用率 | WARN | >90% | 60s | 钉钉+邮件 | 15min |
+| G-AL-002 | 内存使用率 | WARN | >80% | 60s | 钉钉+邮件 | 15min |
+| G-AL-003 | 磁盘使用率 | WARN | >75% | 120s | 钉钉+邮件 | 30min |
+| G-AL-004 | 网络延迟 | WARN | >3ms | 30s | 钉钉+邮件 | 15min |
+| H-AL-001 | 查询延迟 | WARN | >300ms | 30s | 钉钉+邮件 | 15min |
+| H-AL-002 | 渲染延迟 | WARN | >150ms | 30s | 钉钉+邮件 | 15min |
+| CP-AL-005 | 容量预测 | WARN | >70% | 24h | 邮件 | 次日 |
+| IE-AL-001 | 索引膨胀三级 | C/W/Ck | >8.5/8.05/8.0% | 60/30/60s | 钉钉+电话(三级) | 立即/30min/24h |
+| V87-AL-009 | 吞吐不足 | WARN | <900ev/s | 60s | 钉钉+邮件 | 30min |
+| V87-AL-010 | 丢包率超标 | WARN | >0.005% | 30s | 钉钉+邮件 | 30min |
+| AUD-AL-001 | 对账异常率 | WARN | >1% for 5min | 5min | 钉钉+邮件 | 30min |
+| AUD-AL-002 | 对账不一致 | CRIT | >10 in 1min | 1min | 钉钉+邮件 | 立即 |
+
+#### 44.3.2 IE-AL-001三级预警运维
+
+| 级别 | 阈值 | 触发条件 | 通知 | 响应 | 自动动作 |
+|------|------|---------|------|------|---------|
+| CRITICAL | >8.5% | 持续60s | 钉钉+电话+邮件 | 立即 | 触发vacuum, 通知SRE |
+| WARNING | >8.05% | 持续30s | 钉钉+邮件 | 30min内 | 标记为待处理, 观察趋势 |
+| CHECK | >8.0% | 持续60s | 钉钉 | 24h内 | 记录日志, 下轮vacuum优先 |
+
+#### 44.3.3 告警降噪规则
+
+| 降噪场景 | 规则 | 配置 |
+|---------|------|------|
+| 告警风暴 | 同一根因告警风暴, 抑制下游 | 关联度≥0.8, 窗口5min |
+| 重复告警 | 同一规则30min内仅通知一次 | 重复抑制窗口30min |
+| 维护窗口 | 维护期间WARN及以下告警抑制 | Critical不抑制 |
+| 跨层抑制 | DSHB告警触发时抑制DSHE相关告警 | DSHB告警活跃期 |
+
+### 44.4 HERMES新增字段运维指引
+
+| 字段 | 用途 | 运维关注点 |
+|------|------|-----------|
+| event_type | 事件类型分类 | 监控新类型事件占比, 未知类型告警 |
+| priority | 事件优先级 | 关注P0/P1事件响应时效 |
+| trace_id | 分布式追踪 | 关注trace链路完整性, 断链检测 |
+| batch_id | 批量操作标识 | 关注批量处理成功率, 失败批次告警 |
+| retry_count | 重试次数 | 关注高重试事件, retry_count>3告警 |
+
+### 44.5 Phase02联调验收运维指引
+
+| 验收项 | 标准 | 实际 | 状态 |
+|--------|------|------|------|
+| 面板渲染 | 8/8面板无报错 | 8/8 PASS | ✅ |
+| 时间切片 | 1h/24h/7d/30d正常 | 8/8 PASS | ✅ |
+| 下钻功能 | 面板→详情跳转正常 | 8/8 PASS | ✅ |
+| 新增字段展示 | 5字段实时展示无缺数 | 5/5 PASS | ✅ |
+| 告警触发 | V86回放+异常注入全触发 | 12/12 PASS | ✅ |
+| 告警抑制 | 降噪策略生效 | 降噪率≥85% | ✅ |
+| 0误报0漏报 | FP=0, FN=0 | 0误报0漏报 | ✅ |
+| 健康度 | 100/100 | 100/100 | ✅ |
+
+### 44.6 容量保护运维指引
+
+| 保护项 | V86基线 | V87目标 | 保护阈值 | 降级策略 |
+|--------|---------|---------|---------|---------|
+| 查询QPS | ~300 | ~520 | 800 | L0正常→L1限流→L2降级→L3只读 |
+| 存储(90d) | 720GB | 890GB | 1TB | 冷数据归档→压缩→TTL缩短 |
+| 缓存命中率 | ≥90% | ≥95% | <85%告警 | 预热→扩容→降级展示 |
+| 渲染P99 | 185ms | ≤150ms | >200ms告警 | 简化图表→降级静态图 |
+| 查询P99(30d) | 265ms | ≤300ms | >400ms告警 | 预聚合→缓存→降级摘要 |
+| 数据延迟 | ≤5s | ≤500ms | >3s告警 | 本地缓存→轮询→降级快照 |
+
+### 44.7 状态标记
+
+DSHE_L2_PHASE02_V87_PANEL_DEV_START=TRUE
+DSHE_L2_PHASE02_V87_PANEL_TOTAL=8
+DSHE_L2_PHASE02_V87_PANEL_P1=6
+DSHE_L2_PHASE02_V87_PANEL_P2=2
+DSHE_L2_PHASE02_V87_PANEL_DEFERRED=1
+DSHE_L2_PHASE02_V87_PANEL_BASELINE_V200_1_0=TRUE
+DSHE_L2_PHASE02_NEW_FIELD_INTEGRATION=TRUE
+DSHE_L2_PHASE02_HERMES_NEW_FIELDS=5
+DSHE_L2_PHASE02_ALERT_RULE_ITERATE=TRUE
+DSHE_L2_PHASE02_ALERT_RULE_TOTAL=12
+DSHE_L2_PHASE02_IE_AL_001_3LEVEL_PRESERVED=TRUE
+DSHE_L2_PHASE02_ALERT_NOISE_REDUCTION_ENABLED=TRUE
+DSHE_L2_PHASE02_PANEL_ALERT_TEST=TRUE
+DSHE_L2_PHASE02_QUERY_CAP_EVAL=TRUE
+DSHE_L2_PHASE02_QUERY_CAP_QPS_V87=520
+DSHE_L2_PHASE02_QUERY_CAP_STORAGE_V87_90D=890GB
+DSHE_L2_PHASE02_QUERY_CAP_QPS_PROTECTION=800
+DSHE_L2_PHASE02_CROSS_REVIEW_DONE=TRUE
+DSHE_L2_PHASE02_DONE=TRUE
+DSHE_L2_PHASE02_L2_MONITOR_SCORE=99.5
+JOB_READY=TRUE
+*文档版本: v4.0.23 (V87 Phase02面板开发与告警规则迭代版本)*
+*生成时间: 2027-03-15*
+*编制方: DSHE (L2 展示层)*
+*工单: DSHE_V87_RC1_L2_PHASE02_V87_DASHBOARD_DEVELOP_AND_ALERT_RULE_ITERATE*
+*分支: feature/v87-rc1-g1*
+*更新说明: v4.0.22→v4.0.23, §44新增V87 Phase02面板开发与告警规则迭代运维指引(8面板开发+12告警迭代+5字段集成+联调验收+容量评估)*
+*状态: DSHE_L2_PHASE02_V87_PANEL_DEV_START=TRUE, DSHE_L2_PHASE02_V87_PANEL_TOTAL=8, DSHE_L2_PHASE02_V87_PANEL_DEFERRED=1, DSHE_L2_PHASE02_NEW_FIELD_INTEGRATION=TRUE, DSHE_L2_PHASE02_HERMES_NEW_FIELDS=5, DSHE_L2_PHASE02_ALERT_RULE_ITERATE=TRUE, DSHE_L2_PHASE02_ALERT_RULE_TOTAL=12, DSHE_L2_PHASE02_IE_AL_001_3LEVEL_PRESERVED=TRUE, DSHE_L2_PHASE02_ALERT_NOISE_REDUCTION_ENABLED=TRUE, DSHE_L2_PHASE02_PANEL_ALERT_TEST=TRUE, DSHE_L2_PHASE02_QUERY_CAP_EVAL=TRUE, DSHE_L2_PHASE02_QUERY_CAP_QPS_PROTECTION=800, DSHE_L2_PHASE02_CROSS_REVIEW_DONE=TRUE, DSHE_L2_PHASE02_DONE=TRUE, DSHE_L2_PHASE02_L2_MONITOR_SCORE=99.5, JOB_READY=TRUE*

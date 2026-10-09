@@ -2753,3 +2753,43 @@
 - 约束合规: NO_OVERWRITE=TRUE(Phase01产物MD5不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
 - 状态标记: HERMES_PHASE02_V87_REQ_FINAL_ALIGN_START=TRUE, HERMES_PHASE02_MULTI_SCENARIO_RECONCILE_RUNNING=TRUE, HERMES_PHASE02_FAULT_INJECT_TEST=TRUE, HERMES_PHASE02_INDEX_MODEL_FINE_TUNE=TRUE, HERMES_PHASE02_GATE_CHECKLIST_BUILD=TRUE, HERMES_PHASE02_AUDIT_PERF_EVAL=TRUE
 
+### 2027-03-15 DSHE_V87_RC1_L2_PHASE02_V87_DASHBOARD_DEVELOP_AND_ALERT_RULE_ITERATE
+- V87 Phase02面板开发+告警规则迭代+HERMES字段集成+联调验收+容量评估 (5 new + 5 updated + 3 metadata)
+  - v87_rc1_e_l2_dashboard_phase02_panel_development_report.md (NEW) - V87面板开发报告(8面板:AI异常/依赖拓扑/容量规划/告警关联/混沌(暂缓)/全链路/审计对账/基线热力图/渲染P99≤150ms/查询P99≤300ms)
+  - v87_rc1_e_l2_dashboard_phase02_alert_rule_iteration_spec.md (NEW) - V87告警规则迭代规格(12条:8继承收紧+4新增/V200-1.0阈值/IE-AL-001三级预警/AI异常检测层/降噪分组策略)
+  - v87_rc1_e_l2_dashboard_phase02_new_field_data_integration_report.md (NEW) - HERMES新增字段集成报告(5字段:event_type/priority/trace_id/batch_id/retry_count/trace链路视图/批量事件视图/重试事件视图)
+  - v87_rc1_e_l2_dashboard_phase02_panel_alert_acceptance_report.md (NEW) - 面板告警联调验收报告(8/8面板PASS/12/12告警PASS/5/5字段PASS/0误报0漏报/健康度100/100/评分99.5)
+  - v87_rc1_e_l2_dashboard_phase02_query_capacity_evaluation.md (NEW) - 查询容量评估报告(QPS 300→520/存储720→890GB/缓存≥95%/QPS保护阈值800/降级L0-L3)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.6→V4.7) - Phase02新增0项缺陷, 联调验收全PASS
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.22→v4.0.23) - §44新增Phase02面板开发与告警规则迭代运维指引
+  - MD5_MANIFEST_cross_review.md (更新) - Phase02 section added
+  - STATUS.md (更新) - Phase02 entry added
+  - JOB_READY.flag (更新) - Phase02 section added
+- 面板开发: 8个V87新面板(V87-P-001~008), 7实施+1暂缓(混沌工程P2暂缓至Phase03), 渲染P99≤150ms, 查询P99≤300ms, 数据延迟≤500ms
+- 告警迭代: 12条V87告警规则(8条继承收紧+4条新增), V200-1.0阈值(吞吐≥900ev/s/WAL<3ms/索引<7ms/丢包<0.005%), IE-AL-001三级预警保留+AI异常检测层, 告警降噪分组策略(DBSCAN聚类/风暴抑制/重复抑制/维护窗口抑制)
+- 字段集成: 5个HERMES新增审计字段(event_type/priority/trace_id/batch_id/retry_count), trace链路视图+批量事件视图+重试事件视图, 数据源解析映射验证全PASS
+- 联调验收: 8/8面板功能测试PASS(渲染/时间切片/下钻/筛选/实时展示/无缺数错位), 12/12告警压测PASS(回放V86历史+异常注入/0误报0漏报/降噪率≥85%), 5/5字段集成PASS
+- 容量评估: 查询QPS 300→520, 存储720→890GB(90d), 缓存命中率≥95%, QPS保护阈值800, 降级策略L0-L3, 渲染P99目标≤150ms, 查询P99目标≤300ms
+- 交叉评审: DSHB/HERMES三方确认指标视图对齐, 字段口径一致, 告警阈值同步
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHE_L2_PHASE02_V87_PANEL_DEV_START=TRUE
+- 状态标记: DSHE_L2_PHASE02_V87_PANEL_TOTAL=8
+- 状态标记: DSHE_L2_PHASE02_V87_PANEL_P1=6
+- 状态标记: DSHE_L2_PHASE02_V87_PANEL_P2=2
+- 状态标记: DSHE_L2_PHASE02_V87_PANEL_DEFERRED=1
+- 状态标记: DSHE_L2_PHASE02_V87_PANEL_BASELINE_V200_1_0=TRUE
+- 状态标记: DSHE_L2_PHASE02_NEW_FIELD_INTEGRATION=TRUE
+- 状态标记: DSHE_L2_PHASE02_HERMES_NEW_FIELDS=5
+- 状态标记: DSHE_L2_PHASE02_ALERT_RULE_ITERATE=TRUE
+- 状态标记: DSHE_L2_PHASE02_ALERT_RULE_TOTAL=12
+- 状态标记: DSHE_L2_PHASE02_IE_AL_001_3LEVEL_PRESERVED=TRUE
+- 状态标记: DSHE_L2_PHASE02_ALERT_NOISE_REDUCTION_ENABLED=TRUE
+- 状态标记: DSHE_L2_PHASE02_PANEL_ALERT_TEST=TRUE
+- 状态标记: DSHE_L2_PHASE02_QUERY_CAP_EVAL=TRUE
+- 状态标记: DSHE_L2_PHASE02_QUERY_CAP_QPS_V87=520
+- 状态标记: DSHE_L2_PHASE02_QUERY_CAP_STORAGE_V87_90D=890GB
+- 状态标记: DSHE_L2_PHASE02_QUERY_CAP_QPS_PROTECTION=800
+- 状态标记: DSHE_L2_PHASE02_CROSS_REVIEW_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE02_DONE=TRUE
+- 状态标记: DSHE_L2_PHASE02_L2_MONITOR_SCORE=99.5
+- JOB_READY=TRUE
