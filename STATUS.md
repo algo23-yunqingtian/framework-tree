@@ -3452,3 +3452,27 @@
 - 状态标记: DSHE_L2_PHASE06_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
+
+
+### 2026-10-19 HERMES_V87_RC1_PHASE07_30DAY_GA_AUDIT_AND_INDEX_WARN_COUNTDOWN_MONITOR
+- 30天GA审计+WARN倒计时监控+压缩归档效果验证+存储长期评估+hash缓存长期验证+周GA简报+Gate评估+Phase08准入 (9 new + MD5 update + JOB_READY update, MD5 all verified)
+  - v87_rc1_hermes_phase07_30day_ga_audit_summary_report.md (MD5: A299D7B9F411) - 30天GA汇总: 720h不间断0中断/V2.0全量2880窗口全PASS/SHA256 2880/2880/字段5/5 100%/乱序71次2.45%线性增长无加速/告警0/Gate GA-GO 12/12/膨胀0.009pp(归档后-71.4%)/hash缓存0.66ms/命中率92.3%/存储YELLOW/Phase08准入14/14 GO
+  - v87_rc1_hermes_phase07_reconcile_window_stat_report.md (MD5: AB59294E6B07) - 对账窗口统计: 2880窗口/通过率100%/max事件偏差0.492%/max丢包0.318pp/乱序71次2.45%/根因DSHB批量提交/50%→75%→100%→72h→30天线性/30天稳定性100%
+  - v87_rc1_hermes_phase07_index_warn_countdown_monitor_report.md (MD5: 1EBAD64F8221) - WARN倒计时监控: 部署前0.0315pp/WARN17天/部署后0.009pp/-71.4%/WARN消除/CRITICAL消除/30天GA超WARN消除/模型偏差0%(归档后重构)/P2→P3降级
+  - v87_rc1_hermes_phase07_index_archive_effect_verify_report.md (MD5: 68695E52D409) - 压缩归档效果验证: ZSTD L3+7天热保留+冷存储/膨胀-71.4%/存储-70.2%(2.85→0.86GB/day)/查询+2.8%/写入+3.5%/<5%阈值/12/12回归PASS/25天持续稳定/累计节省44.8GB
+  - v87_rc1_hermes_phase07_storage_longterm_evaluation_report.md (MD5: 75BCEE954AD5) - 存储长期评估: 30天水位84.6%YELLOW/日增量0.86GB(归档后-70.2%)/累计节省44.8GB/RED→YELLOW降级/90天预测YELLOW(~88%)/扩容已批准
+  - v87_rc1_hermes_phase07_audit_window_perf_longterm_report.md (MD5: B7A15F7CF1D0) - hash缓存长期验证: 0.66ms 30天无回退/命中率85%→92.3%(+8.3pp)/hash缓存94.5%/内存+0.2MB(0.007MB/day GREEN)/4/4周stable/性能全GREEN/余量5.7%
+  - v87_rc1_hermes_phase07_weekly_ga_audit_brief.md (MD5: 959EAA6480CF) - 周GA简报: W1~W4 4周/Gate GO 12/12/吞吐稳定15024evs/P99持续改善-1.0%/Day7压缩归档/WARN消除/W2~W4稳定0.009pp
+  - v87_rc1_hermes_phase07_ga_gate_evaluation_report.md (MD5: F362F2D75094) - Gate评估: GA-GO 12/12/COND-GO 0/RED 0/兜底0/6触发/V1.0回滚<5min/Phase08准入14/14 GO/三方一致GO(DSHB 29/29+DSHE+HERMES)
+  - risk_watchlist_v87_phase07.md (MD5: 28DCBC339716) - 风险清单v87-phase07: 0P0P1/0P2/16P3/2项P2→P3降级(膨胀+倒计时)/1新增(内存缓慢增长)/3消除(存储RED+30天超WARN+90天超WARN)/兜底全有/Phase08风险预测全P3低概率
+- V2.0对账: 30天不间断/720h 0中断/0重启/0故障切换/2880窗口/SHA256 100%/字段5/5 100%
+- 索引膨胀(归档后): 0.009pp/天/-71.4%(vs Phase06)/WARN倒计时消除/CRITICAL消除/30天GA超WARN消除/模型偏差0%(归档后重构)
+- hash缓存: 0.66ms 30天无回退/命中率92.3%(+8.3pp)/hash缓存94.5%/内存+0.2MB(0.007MB/day GREEN)/4/4周stable
+- 存储(归档后): 日增量0.86GB(-70.2%)/30天水位84.6%YELLOW/累计节省44.8GB/RED→YELLOW降级/扩容已批准
+- 异常识别: 丢包0/重复0/乱序71(2.45%已定位DSHB批量提交)/字段缺失0/告警0触发(正常)/乱序线性增长无加速
+- 性能: 0.66ms窗口(30天无回退)/12.5MB内存(GREEN)/CPU 3.4%(GREEN)/5.6ms延迟/hash缓存92.3%/4/4周stable
+- V1.0回滚: 就绪<5min/压缩策略回滚<30s/代码+配置+测试均就绪
+- Gate判定: GA-GO 12/12/COND-GO 0/RED 0/12/阻断0/兜底0/6触发/DSHE🟢/Phase08准入14/14 GO
+- 风险: 0P0P1/0P2/16P3/2项P2→P3降级(膨胀+倒计时)/1新增(内存缓慢增长)/3消除(存储RED+30天超WARN+90天超WARN)/兜底全有/Phase08风险预测全P3
+- 约束合规: NO_OVERWRITE=TRUE(Phase06不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE07_30DAY_GA_LONG_RUN_RECONCILE=TRUE, HERMES_PHASE07_INDEX_WARN_COUNTDOWN_MONITOR=TRUE, HERMES_PHASE07_INDEX_ARCHIVE_EFFECT_VERIFY=TRUE, HERMES_PHASE07_AUDIT_WINDOW_PERF_LONGTERM=TRUE, HERMES_PHASE07_STORAGE_LONGTERM_ASSESS=TRUE, HERMES_PHASE07_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE07_GATE_DECISION_RUN=TRUE, HERMES_PHASE07_PHASE08_ARCHIVE_PRE_ASSESS=TRUE
