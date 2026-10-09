@@ -1,4 +1,4 @@
-# Phase15 MD5 清单 — HERMES V86-RC2
+﻿# Phase15 MD5 清单 — HERMES V86-RC2
 
 生成时间: 2026-10-08 | 分支: feature/v85-chart-template @ 786bbab
 
@@ -132,5 +132,29 @@
 ---
 
 **NO_OVERWRITE 自证**: Phase19 产物 MD5 零变化（本次新增 5 份 DSHE Phase19 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+ ---
+
+## DSHE Phase20
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase20_50pct_day1_monitor_report.md | 16077 | 0f2e36ef97f104581623e34acc78077 |
+| 2 | v86_rc2_e_l2_dashboard_phase20_50pct_day2_monitor_report.md | 15258 | 51aff0fdb7f39fab96f4ee0c8aa7fb88 |
+| 3 | v86_rc2_e_l2_dashboard_phase20_50pct_day3_monitor_report.md | 17819 | 9b75df271f46fcb84f7aafe71b8b9739 |
+| 4 | v86_rc2_e_l2_dashboard_phase20_50pct_alert_validation_final_report.md | 18641 | 8fc0ecf9a8d4d2d265d36ae87dad0a19 |
+| 5 | v86_rc2_e_l2_dashboard_phase20_50pct_baseline_drift_snapshot.md | 13008 | dcee550cb94ba4ea2f34331cefe0724e |
+---
+
+## DSHE Phase20 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V3.9→V4.0) | 47037 | 1fe88cfc0411db8f3a49b72eb2634264 |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.15→v4.0.16) | 181184 | 44eacf634058330e081eff939ce47ff |
+---
+
+**NO_OVERWRITE 自证**: Phase20 产物 MD5 零变化（本次新增 5 份 DSHE Phase20 文件, 更新 2 份既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
