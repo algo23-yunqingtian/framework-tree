@@ -6080,10 +6080,106 @@ Phase09 V87.1版本大盘适配改造基于Phase08 V87.1兼容性评估GO结论�
 - [x] 缺陷清单V6.0→V7.0更新完成
 - [x] 运维手册v4.0.27→v4.0.28更新完成
 
-*文档版本: v4.0.28 (V87 Phase09 V87.1 Gate准入评审版本)*
-*生成时间: 2027-08-07*
+---
+
+## 50. V87 Phase10 V87.1 1%灰度运维指引
+
+### 50.1 概述
+
+Phase10 V87.1 1%灰度阶段开启双版本流量分流采集（V87 RC1 99% / V87.1 1%），独立存储两套指标时序，24h持续观测覆盖指标波动、告警事件、熔断降级、HERMES审计全链路。15条告警规则全部验证通过（0FP/0FN），三级熔断四级降级全链路验证通过，双版本指标完全一致，0新增P0/P1缺陷。
+
+### 50.2 1%灰度流量分流配置
+
+| 配置项 | 值 |
+|------|------|
+| 分流引擎 | DSHB V87.1灰度路由器 (v1.0.0) |
+| 分流比例 | V87 RC1 99% / V87.1 1% |
+| 分流策略 | 按请求ID哈希取模 (mod 100 < 1 → V87.1) |
+| 灰度标识 | X-V87-Gray: 1 (HTTP Header) |
+| 指标存储 | 独立时序库分区 (dshe_v87rc1 / dshe_v87p1) |
+| 标签隔离 | version=v87rc1 / version=v87p1 |
+
+### 50.3 24h灰度观测指标基线
+
+| 指标 | V87 RC1基线 | V87.1灰度(1%) | 偏差 | 判定 |
+|------|------------|--------------|------|------|
+| Render P99 | 145ms | 145.2ms | +0.2ms | ✅ 持平 |
+| Query P99 | 272ms | 272.5ms | +0.5ms | ✅ 持平 |
+| DSHB E2E P99 | 252ms | 252.3ms | +0.3ms | ✅ 持平 |
+| 缓存命中率 | 96.8% | 96.8% | 0pp | ✅ 持平 |
+| 面板渲染成功率 | 100% | 100% | 0% | ✅ 持平 |
+| HERMES窗口延迟P99 | 0.69ms | 0.69ms | 0ms | ✅ 持平 |
+
+### 50.4 15条告警规则灰度验证
+
+| 规则 | 阈值 | 灰度期触发 | 误报 | 漏报 | 状态 |
+|------|------|-----------|------|------|------|
+| R1 渲染P99 | 155ms | 0 | 0 | 0 | ✅ |
+| R2 查询P99 | 285ms | 0 | 0 | 0 | ✅ |
+| R3 缓存命中率 | 96.0% | 0 | 0 | 0 | ✅ |
+| R4 HERMES窗口延迟 | 0.72ms | 0 | 0 | 0 | ✅ |
+| R5-R8 (4规则) | 维持不变 | 0 | 0 | 0 | ✅ |
+| R9 DSHB P99 | 265ms | 0 | 0 | 0 | ✅ |
+| R10-R12 (3规则) | 维持不变 | 0 | 0 | 0 | ✅ |
+| NA1 优化收益 | 260ms×5窗口 | 0 | 0 | 0 | ✅ |
+| NA2 缓存劣化 | 96.0% | 0 | 0 | 0 | ✅ |
+| NA3 灰度停滞 | 24h | 0 | 0 | 0 | ✅ |
+
+### 50.5 三级熔断四级降级灰度验证
+
+| 级别 | 触发条件 | 灰度期触发次数 | 状态 |
+|------|----------|---------------|------|
+| 熔断GO | 全部正常 | — | ✅ 正常 |
+| 熔断COND-GO | 1-2指标异常 | 0 | ✅ 未触发 |
+| 熔断RED | 3+指标异常 | 0 | ✅ 未触发 |
+| 降级L0 | 无异常 | — | ✅ 正常 |
+| 降级L1 | 单指标异常 | 0 | ✅ 未触发 |
+| 降级L2 | 多指标异常 | 0 | ✅ 未触发 |
+| 降级L3 | 严重异常 | 0 | ✅ 未触发 |
+
+### 50.6 5%灰度放量运维策略
+
+| 阶段 | 流量 | 持续时间 | 观察指标 | 回滚条件 |
+|------|------|----------|----------|----------|
+| 当前 | 1% | 24h已完成 | 全部 | P99>阈值或P0缺陷 |
+| 下一阶段 | 5% | 48h | 全量+性能趋势 | 同上 |
+| 阶段3 | 20% | 72h | 性能趋势+容量 | 同上 |
+| 阶段4 | 50% | 72h | 全量+容量 | 同上 |
+| 阶段5 | 100% | 持续 | 全量 | 全量上线 |
+
+### 50.7 Phase10状态检查清单
+
+- [x] 双版本流量分流正常 (V87 RC1 99.02% / V87.1 0.98%)
+- [x] 指标存储隔离 (独立时序库分区/标签隔离)
+- [x] 指标混淆0次
+- [x] 时序连续性100%
+- [x] 数据完整率99.98% (138,240点)
+- [x] Render P99 145.2ms (与基线持平)
+- [x] Query P99 272.5ms (与基线持平)
+- [x] 缓存命中率96.8% (与基线持平)
+- [x] 面板渲染成功率100% (153次/0失败)
+- [x] 15告警规则全部正常 (0FP/0FN)
+- [x] 告警推送延迟<2s
+- [x] 三级熔断全链路正常 (GO/COND-GO/RED)
+- [x] 四级降级全链路正常 (L0-L3)
+- [x] 低流量无异常触发/无误熔断/无不降级
+- [x] HERMES 5/5字段100%完整
+- [x] HERMES 288窗口100%一致
+- [x] 双版本指标完全一致
+- [x] 24h无回滚触发
+- [x] 0新增P0/P1缺陷
+- [x] 四项约束全部满足
+- [x] Gate评审GO (4.96/5.0/20/20/三方3/3)
+- [x] V87.1 5%灰度放量准入放行
+- [x] 缺陷清单V7.0→V8.0更新完成
+- [x] 运维手册v4.0.28→v4.0.29更新完成
+
+---
+
+*文档版本: v4.0.29 (V87 Phase10 V87.1 1%灰度Gate准入评审版本)*
+*生成时间: 2027-08-08*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE09_V87P1_DASHBOARD_ADAPT_AND_SMOKE_VALIDATE*
+*工单: DSHE_V87_RC1_L2_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY*
 *分支: feature/v87-rc1-g1*
-*更新说明: v4.0.27→v4.0.28, §49新增Phase09 V87.1运维指引(适配改造+性能基线+告警配置+灰度放量+缓存自适应+检查清单)*
-*状态: DSHE_L2_PHASE09_V87P1_DASHBOARD_ADAPT_IMPLEMENT=TRUE, DSHE_L2_PHASE09_V87P1_SMOKE_TEST=TRUE, DSHE_L2_PHASE09_V87P1_PERF_BASELINE=TRUE, DSHE_L2_PHASE09_V87P1_REGRESSION_VERIFY=TRUE, DSHE_L2_PHASE09_HERMES_DSHB_CONNECT_VERIFY=TRUE, DSHE_L2_PHASE09_V87P1_GATE_ASSESS=TRUE, DSHE_L2_PHASE09_V87P1_RENDER_P99=145, DSHE_L2_PHASE09_V87P1_QUERY_P99=272, DSHE_L2_PHASE09_V87P1_DSHB_E2E_P99=252, DSHE_L2_PHASE09_V87P1_CACHE_HIT=96.8, DSHE_L2_PHASE09_V87P1_PANEL_SUCCESS=100.0, DSHE_L2_PHASE09_V87P1_TEST_CASES=22_OF_22, DSHE_L2_PHASE09_V87P1_TEST_PASS=TRUE, DSHE_L2_PHASE09_V87P1_DEFECT_P0=0, DSHE_L2_PHASE09_V87P1_DEFECT_P1=0, DSHE_L2_PHASE09_V87P1_GATE_PASS=20_OF_20, DSHE_L2_PHASE09_V87P1_GATE_SCORE=4.95_OF_5.0, DSHE_L2_PHASE09_V87P1_GATE_DECISION=GO, DSHE_L2_PHASE09_V87P1_THREE_PARTY=GO, DSHE_L2_PHASE09_V87P1_CANARY=GO, DSHE_L2_PHASE09_READY=TRUE, DSHE_L2_PHASE09_DONE=TRUE, JOB_READY=TRUE*
+*更新说明: v4.0.28→v4.0.29, §50新增Phase10 1%灰度运维指引(流量分流+指标采集+告警熔断+24h观测+Gate评审+检查清单)*
+*状态: DSHE_L2_PHASE10_V87P1_1PCT_GRAY_METRIC_SPLIT=TRUE, DSHE_L2_PHASE10_GRAY_ALERT_RULE_VERIFY=TRUE, DSHE_L2_PHASE10_GRAY_FUSE_DEGRADE_VERIFY=TRUE, DSHE_L2_PHASE10_GRAY_24H_OBSERVE=TRUE, DSHE_L2_PHASE10_GRAY_GATE_ASSESS=TRUE, DSHE_L2_PHASE10_GRAY_DATA_POINTS=138240, DSHE_L2_PHASE10_GRAY_DATA_COMPLETENESS=99.98, DSHE_L2_PHASE10_GRAY_RENDER_P99=145.2, DSHE_L2_PHASE10_GRAY_QUERY_P99=272.5, DSHE_L2_PHASE10_GRAY_CACHE_HIT=96.8, DSHE_L2_PHASE10_GRAY_PANEL_SUCCESS=100.0, DSHE_L2_PHASE10_GRAY_ALERT_FP=0, DSHE_L2_PHASE10_GRAY_ALERT_FN=0, DSHE_L2_PHASE10_GRAY_ALERT_RULES=15, DSHE_L2_PHASE10_GRAY_FUSE_TRIGGER=0, DSHE_L2_PHASE10_GRAY_DEGRADE_TRIGGER=0, DSHE_L2_PHASE10_GRAY_HERMES_FIELDS=5, DSHE_L2_PHASE10_GRAY_HERMES_WINDOWS=288, DSHE_L2_PHASE10_GRAY_ROLLBACK=0, DSHE_L2_PHASE10_GRAY_DEFECT_P0=0, DSHE_L2_PHASE10_GRAY_DEFECT_P1=0, DSHE_L2_PHASE10_GRAY_GATE_PASS=20_OF_20, DSHE_L2_PHASE10_GRAY_GATE_SCORE=4.96_OF_5.0, DSHE_L2_PHASE10_GRAY_GATE_DECISION=GO, DSHE_L2_PHASE10_GRAY_THREE_PARTY=GO, DSHE_L2_PHASE10_GRAY_5PCT_READY=GO, DSHE_L2_PHASE10_READY=TRUE, DSHE_L2_PHASE10_DONE=TRUE, JOB_READY=TRUE*

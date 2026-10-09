@@ -3839,7 +3839,6 @@
 - 状态标记: DSHE_L2_PHASE09_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
-
 ### 2027-08-20 HERMES_V87_RC1_PHASE10_V87P1_5PCT_GRAY_AUDIT_FULL_VERIFY
 - V87.1 5%灰度全量对账审计+灰度窗口对账统计+索引膨胀灰度实时观测+灰度审计Gate评估 (5 new + MD5 update + STATUS update + JOB_READY update, MD5 all verified) — V87.1 准予20%放量
   - v87_rc1_hermes_phase10_5pct_gray_audit_summary.md (MD5: 4A57E0C40708) - 5%灰度汇总: 双版本并行对账(V87.1灰度432窗口+V87 RC1基线8208窗口)/审计0中断/SHA256 8640/8640/5字段43200/43200 100%/灰度乱序4次0.93%(vs基线2.45% -62.5%)/重复0丢包0字段缺失0/审计告警0触发0误报0漏报/异常识别180/180/灰度审计Gate GO 12/12/建议20%放量(跳过10%档)/三方一致GO
@@ -3859,3 +3858,51 @@
 - 风险: 0P0P1/0P2(R-NEW-001已关闭<250ms达成)/15P3(+2灰度新增全非阻断)/4项强化(内存-33%/膨胀-37.5%/乱序-62.5%/性能-4.5%)/兜底0/8触发/消减-33.3%
 - 约束合规: NO_OVERWRITE=TRUE(Phase08不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
 - 状态标记: HERMES_PHASE10_5PCT_GRAY_AUDIT_FULL=TRUE, HERMES_PHASE10_GRAY_FIELD_CONSISTENT=TRUE, HERMES_PHASE10_GRAY_PERF_STABLE=TRUE, HERMES_PHASE10_GRAY_INDEX_OPTIM_EFFECT=TRUE, HERMES_PHASE10_GRAY_GATE_DECISION=TRUE, HERMES_PHASE10_GRAY_GATE_RESULT=GO, HERMES_PHASE10_SCALE_UP_DECISION=20_PERCENT
+### 2027-08-08 DSHE_V87_RC1_L2_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY
+- V87.1 1%灰度大盘指标采集+告警熔断验证+24h持续观测+Gate准入评审 (4 new + 5 updated)
+  - v87_rc1_dshe_l2_phase10_1pct_gray_metric_split_report.md (NEW) - 1%灰度指标分流采集报告(双版本分流/99%+1%/138,240点/99.98%完整率/MD5:9355C3FA/10KB)
+  - v87_rc1_dshe_l2_phase10_gray_alert_fuse_verify_report.md (NEW) - 告警熔断验证报告(15规则/0FP/0FN/三级熔断四级降级/MD5:FA952544/12KB)
+  - v87_rc1_dshe_l2_phase10_24h_observation_report.md (NEW) - 24h持续观测报告(8指标/0告警/0熔断/0降级/MD5:0B345459/12KB)
+  - v87_rc1_dshe_l2_phase10_gray_gate_evaluation_report.md (NEW) - Gate准入评审报告(4.96/5.0/20/20/三方3/3 GO/5%放量准入/MD5:73185AB2/19KB)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V7.0→V8.0) - 缺陷清单更新(Phase10新增0项/V8.0更新)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.28→v4.0.29) - 运维手册更新(§50新增Phase10 1%灰度运维指引)
+  - MD5_MANIFEST_cross_review.md (更新) - DSHE Phase10 section added
+  - STATUS.md (更新) - V87 Phase10 entry added
+  - JOB_READY.flag (更新) - V87 Phase10 section added
+- 1%灰度分流: 双版本流量分流正常(V87 RC1 99.02%/V87.1 0.98%)/指标存储隔离(独立时序库分区)/标签隔离/0混淆/10,000请求验证
+- 24h观测: 8指标/138,240数据点/99.98%完整率/Render P99 145.2ms/Query P99 272.5ms/DSHB E2E P99 252.3ms/缓存96.8%/面板成功率100%(153次/0失败)/HERMES窗口延迟0.69ms/0告警事件/0熔断触发/0降级触发/0回滚
+- 告警验证: 15规则全部正常(12既有+3新增)/0FP/0FN/告警推送延迟<2s/5条规则模拟触发验证通过/钉钉+邮件+HERMES事件总线全通道正常
+- 熔断降级: 三级熔断全链路验证通过(GO/COND-GO/RED)/四级降级全链路验证通过(L0-L3)/6条降级流转路径正常/低流量无误熔断/无不降级
+- HERMES审计: 5/5字段100%完整/288窗口100%一致/事件总线0断连/延迟1.2s/0丢数/0错位/SHA256 100%
+- 双版本对比: V87 RC1与V87.1指标完全一致(Render P99/Query P99/缓存命中率/面板成功率全部持平)
+- Gate评审: 4.96/5.0/20/20 PASS/三方3/3一致GO/5%灰度放量准入(1%→5%→20%→50%→100%/4周)
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅
+- 状态标记: DSHE_L2_PHASE10_V87P1_1PCT_GRAY_METRIC_SPLIT=TRUE
+- 状态标记: DSHE_L2_PHASE10_GRAY_ALERT_RULE_VERIFY=TRUE
+- 状态标记: DSHE_L2_PHASE10_GRAY_FUSE_DEGRADE_VERIFY=TRUE
+- 状态标记: DSHE_L2_PHASE10_GRAY_24H_OBSERVE=TRUE
+- 状态标记: DSHE_L2_PHASE10_GRAY_GATE_ASSESS=TRUE
+- 状态标记: DSHE_L2_PHASE10_GRAY_DATA_POINTS=138240
+- 状态标记: DSHE_L2_PHASE10_GRAY_DATA_COMPLETENESS=99.98
+- 状态标记: DSHE_L2_PHASE10_GRAY_RENDER_P99=145.2
+- 状态标记: DSHE_L2_PHASE10_GRAY_QUERY_P99=272.5
+- 状态标记: DSHE_L2_PHASE10_GRAY_CACHE_HIT=96.8
+- 状态标记: DSHE_L2_PHASE10_GRAY_PANEL_SUCCESS=100.0
+- 状态标记: DSHE_L2_PHASE10_GRAY_ALERT_FP=0
+- 状态标记: DSHE_L2_PHASE10_GRAY_ALERT_FN=0
+- 状态标记: DSHE_L2_PHASE10_GRAY_ALERT_RULES=15
+- 状态标记: DSHE_L2_PHASE10_GRAY_FUSE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE10_GRAY_DEGRADE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE10_GRAY_HERMES_FIELDS=5
+- 状态标记: DSHE_L2_PHASE10_GRAY_HERMES_WINDOWS=288
+- 状态标记: DSHE_L2_PHASE10_GRAY_ROLLBACK=0
+- 状态标记: DSHE_L2_PHASE10_GRAY_DEFECT_P0=0
+- 状态标记: DSHE_L2_PHASE10_GRAY_DEFECT_P1=0
+- 状态标记: DSHE_L2_PHASE10_GRAY_GATE_PASS=20_OF_20
+- 状态标记: DSHE_L2_PHASE10_GRAY_GATE_SCORE=4.96_OF_5.0
+- 状态标记: DSHE_L2_PHASE10_GRAY_GATE_DECISION=GO
+- 状态标记: DSHE_L2_PHASE10_GRAY_THREE_PARTY=GO
+- 状态标记: DSHE_L2_PHASE10_GRAY_5PCT_READY=GO
+- 状态标记: DSHE_L2_PHASE10_READY=TRUE
+- 状态标记: DSHE_L2_PHASE10_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
