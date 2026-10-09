@@ -2848,3 +2848,23 @@
 - 状态标记: DSHE_L2_PHASE02_DONE=TRUE
 - 状态标记: DSHE_L2_PHASE02_L2_MONITOR_SCORE=99.5
 - JOB_READY=TRUE
+
+### 2026-10-18 HERMES_V87_RC1_PHASE03_STAGE_A_50PCT_GRAY_AUDIT_GATE_AND_REAL_TIME_RECONCILE
+- 50%灰度Gate准入+实时对账部署+告警配置+模型灰度基线+判定规则+预回放验证 (7 new + MD5 update + JOB_READY update, MD5 all verified)
+  - v87_rc1_hermes_phase03_50pct_gate_self_check_report.md (MD5: CA879C32E340) - Gate自检: 10/10 GO/0阻断项/模型50%=0.0157pp/对账容量充足/告警就绪/GO准入
+  - v87_rc1_hermes_phase03_real_time_reconcile_deploy_spec.md (MD5: 71DBF3368E15) - 实时对账: 双链路隔离(灰度V2.0+基线V1.0)/SHA256+5字段/8窗口/天/数据+故障+告警隔离/15MB/6验证PASS
+  - v87_rc1_hermes_phase03_gray_audit_alert_rule_spec.md (MD5: BC05B06B68C3) - 告警规则: 5条HERMES告警(CRIT×3+WARN×2)/映射DSHE AUD-AL-001/002+IE-AL-001/dingtalk+email+pagerduty+voice/去重5min/7验证PASS
+  - v87_rc1_hermes_phase03_index_model_gray_baseline_config.md (MD5: AAEB469922E9) - 模型灰度基线: 50%缩放0.0157pp/WARN 0.018pp/CRIT 0.020pp/139天到CRITICAL/1h采集/趋势+异常检测/DSHE对接/6验证PASS
+  - v87_rc1_hermes_phase03_gray_gate_decision_rule.md (MD5: 8AB6176CF0B2) - Gate判定: GO 12条件/COND-GO 6条件+约束/RED 12条件/阻断4动作+恢复/三方通知/三色状态/实时+24h窗口/LOCKED
+  - v87_rc1_hermes_phase03_sim_traffic_preverify_report.md (MD5: BA9528E0DDB0) - 预回放: 6场景(正常+丢包+重试+批量+高膨胀+RED)/48窗口/字段5/5/差异识别100%/0误判/性能+0.25ms/阻断验证/全PASS
+  - risk_watchlist_v87_phase03.md (MD5: 849633401523) - 风险清单v87-phase03: 0P0P1/2P2(膨胀+阻断)/9P3/2新增(对账延迟+告警误报)/4灰度中/兜底全有
+- Gate自检: 10/10 GO(对账100%/链断裂0/去重100%/丢包≤0.01%/WAL<2000ms/索引<10ms/字段全PASS/膨胀0.0157pp/降级3/3/误判0)
+- 实时对账: 双链路隔离(灰度V87 V2.0 5字段+基线V86 V1.0 SHA256)/8窗口3h/独立缓存+告警+上报/故障互不影响
+- 告警规则: HERMES-AL-001(窗口FAIL CRIT)/002(事件丢失WARN)/003(重复WARN)/004(膨胀超0.018pp CRIT)/005(链断裂CRIT)/映射DSHE/去重5min抑制
+- 模型灰度: 0.0314pp×50%=0.0157pp/误差[-4.8%,+2.5%]/95%CI[0.0153,0.0161]/139天到CRITICAL/WARN 0.018pp/CRIT 0.020pp
+- Gate判定: GO 12条件/COND-GO 6条件(降速30%+72h重校)/RED 12条件(立即阻断+回滚+冻结+通知)/三色状态DSHE
+- 预回放: 6场景48窗口全PASS/差异识别100%/0误判/性能+0.25ms可接受/RED阻断指令验证
+- 风险: 0P0P1/2P2(膨胀+阻断)/9P3/2新增(对账延迟+告警误报)/4灰度中/兜底全有/可控GO灰度
+- 约束合规: NO_OVERWRITE=TRUE(Phase01+02不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE03_50PCT_GATE_SELF_CHECK=TRUE, HERMES_PHASE03_REAL_TIME_RECONCILE_DEPLOY=TRUE, HERMES_PHASE03_AUDIT_ALERT_CONFIG=TRUE, HERMES_PHASE03_INDEX_MODEL_GRAY_BASELINE=TRUE, HERMES_PHASE03_GATE_DECISION_RULE_LOCK=TRUE, HERMES_PHASE03_SIM_TRAFFIC_PRE_VERIFY=TRUE
+
