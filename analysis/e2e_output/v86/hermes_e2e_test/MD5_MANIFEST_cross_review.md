@@ -1,4 +1,4 @@
-﻿# Phase15 MD5 清单 — HERMES V86-RC2
+# Phase15 MD5 清单 — HERMES V86-RC2
 
 生成时间: 2026-10-08 | 分支: feature/v85-chart-template @ 786bbab
 
@@ -180,5 +180,30 @@
 ---
 
 **NO_OVERWRITE 自证**: Phase21 产物 MD5 零变化（本次新增 5 份 DSHE Phase21 文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
+---
+
+## DSHE Phase22
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase22_75pct_ramp_stepwise_monitor_report.md | 29235 | `9dc8adebd7ae7ba160a522f7c9a95091` |
+| 2 | v86_rc2_e_l2_dashboard_phase22_75pct_day1_monitor_report.md | 28927 | `8e5a7e2ebe3f7ed0edd2e71c43f78371` |
+| 3 | v86_rc2_e_l2_dashboard_phase22_75pct_day2_monitor_report.md | 20480 | `5a010b192a98b6675e61cb950acf6198` |
+| 4 | v86_rc2_e_l2_dashboard_phase22_75pct_day3_monitor_report.md | 20632 | `4df5e1e3b78a8978ddb2b2badc79dfb6` |
+| 5 | v86_rc2_e_l2_dashboard_phase22_75pct_alert_validation_final_report.md | 27141 | `92456f7ead605289136605edabf35c0b` |
+| 6 | v86_rc2_e_l2_dashboard_phase22_75pct_baseline_drift_snapshot.md | 23240 | `d1e79b2f354b832fa0e256b0a526440b` |
+---
+
+## DSHE Phase22 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.1→V4.2) | 48676 | `e20feea730c1534c83c17043f748849b` |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.17→v4.0.18) | 189436 | `37be8ec44f06f3cc74f9f652fa6aca55` |
+---
+
+**NO_OVERWRITE 自证**: Phase22 产物 MD5 零变化（本次新增 6 份 DSHE Phase22 文件, 更新 2 份既有文件）。
 
 **V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86 大盘监控文档。
