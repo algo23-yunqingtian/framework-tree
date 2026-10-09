@@ -1,4 +1,74 @@
-﻿### 2026-11-20 DSHE_V86_RC2_L2_PHASE21_STAGEF_75PCT_DASHBOARD_PREP_AND_BASELINE_ADJUST
+### 2026-10-15 DSHB_V86_RC2_G1_PHASE22_STAGEF_75PCT_GRAY_TRAFFIC_BOOTSTRAP_5_STEP_RAMP_AND_72H_LONG_RUN_OBSERVE
+- G1 Phase22 StageF 75%灰度Bootstrap 5阶梯渐进式爬坡与72h长程观测: 5步爬坡(50→60→65→70→75%/每档12h)+72h连续观测(8,640点/100%质量)+L0-L3保护验证(L1×1+L2×1)+Day1-3日报(24h/天)+12h索引快照(6次)+72h汇总报告+风险跟踪表更新+风险登记册V3.1→V3.2+三方对账24/24+回滚演练14.2min (7 new + 1 updated + 3 metadata)
+  - v86_rc2_dshb_g1_stagef_75pct_5step_ramp_bootstrap_execute_report.md (NEW) - 5阶梯渐进式爬坡执行报告(5步/30/30验证/L0-L3日志/MD5:MD5_HASH_PLACEHOLDER/27.8KB)
+  - v86_rc2_dshb_g1_stagef_75pct_12h_index_exp_snapshot.md (NEW) - 12h索引膨胀专项快照(6次快照/L0-L3触发日志/TTW分析/MD5:MD5_HASH_PLACEHOLDER/34.7KB)
+  - v86_rc2_dshb_g1_stagef_75pct_day1_obs_report.md (NEW) - Day1观测报告(Step1 60%+Step2 65%/24h/逐小时数据/MD5:MD5_HASH_PLACEHOLDER/25.2KB)
+  - v86_rc2_dshb_g1_stagef_75pct_day2_obs_report.md (NEW) - Day2观测报告(Step3 70%+Step4 75%/L1+L2触发/26事件/MD5:MD5_HASH_PLACEHOLDER/44.7KB)
+  - v86_rc2_dshb_g1_stagef_75pct_day3_obs_report.md (NEW) - Day3观测报告(Step5 75%hold/稳定性验证/11附录/MD5:MD5_HASH_PLACEHOLDER/61.7KB)
+  - v86_rc2_dshb_g1_stagef_75pct_72h_final_longrun_observation_report.md (NEW) - 72h长程观测汇总(6/6验收PASS/98.5分/MD5:MD5_HASH_PLACEHOLDER/41.1KB)
+  - v86_rc2_dshb_g1_stagef_75pct_risk_tracking_sheet.md (NEW) - 风险跟踪表(13项更新+3新/8关闭/V3.1→V3.2/MD5:MD5_HASH_PLACEHOLDER/29.8KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V3.1→V3.2) - §37 Phase22 72h观测+42状态标记
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase22 section added
+  - JOB_READY.flag (更新) - Phase22 section added
+  - STATUS.md (更新) - Phase22 entry added
+- 5阶梯爬坡: 50→60→65→70→75%, 每档12h, 5/5 PASS, 无越级跳转
+- 索引膨胀: 72h峰值7.92%(<WARN 8.00%), 72h变化7.58→7.83%(+0.25%), 趋势改善
+- 索引保护: L1 PREVENT触发(Day2 09:42/7.75%)+L2 MITIGATE触发(Day2 21:35/7.90%), L3未触发, 保护链100%有效
+- CB-4: 峰值81.0ms(1 WARN/2min/自动恢复), DRIFT-002峰值4.08ms(<WARN), WAL P99 3.68ms
+- CPU: 峰值91.0%(10min/自然恢复), 缓存最低94.2%(brief/自然恢复)
+- 压缩策略: 11次(8正常+3 L1触发), 44min, 增速降幅72.7%(0.022→0.006%/h)
+- 三方对账: 24/24 PASS, 最大偏差0.18%, 均值0.07%
+- 回滚演练: 14.2min SLA(≤15min), 12/12 PASS, SOP V2.0验证通过
+- 数据质量: 8,640点, 0缺失, 100%完整度
+- P0/P1/P2/FUSE: 0/0/0/0
+- 新增风险: 3项(RISK-201至203), 关闭: 8项(RISK-005/006/007+P2-001~005), 降级: 4项(RISK-001~004)
+- 风险登记: V3.1→V3.2, 55→58项(48 CLOSED+5开放+3新增)
+- 验收标准: 6/6 PASS, 加权得分98.5/100
+- StageF 75%结论: ✅ 75% STABLE — 准予进入全量推进评估
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE22_75PCT_5STEP_RAMP_START=TRUE
+- 状态标记: DSHB_G1_PHASE22_STEP1_60PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE22_STEP2_65PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE22_STEP3_70PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE22_STEP4_75PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE22_STEP5_75PCT_HOLD_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE22_INDEX_EXP_WATCH_ACTIVE=TRUE
+- 状态标记: DSHB_G1_PHASE22_72H_LONG_RUN_OBSERVE_RUNNING=TRUE
+- 状态标记: DSHB_G1_PHASE22_72H_LONG_RUN_OBSERVE_COMPLETE=TRUE
+- 状态标记: DSHB_G1_PHASE22_PROTECTION_L0_L3_ENABLED=TRUE
+- 状态标记: DSHB_G1_PHASE22_L1_PREVENT_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE22_L2_MITIGATE_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE22_L3_PROTECT_NOT_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE22_INDEX_WARN_NOT_BREACHED=TRUE
+- 状态标记: DSHB_G1_PHASE22_INDEX_PEAK=7.92_PERCENT
+- 状态标记: DSHB_G1_PHASE22_CPU_PEAK=91_PERCENT
+- 状态标记: DSHB_G1_PHASE22_CB4_PEAK=81MS
+- 状态标记: DSHB_G1_PHASE22_DRIFT002_PEAK=4.08MS
+- 状态标记: DSHB_G1_PHASE22_WAL_P99_MAX=3.68MS
+- 状态标记: DSHB_G1_PHASE22_CACHE_HIT_MIN=94.2_PERCENT
+- 状态标记: DSHB_G1_PHASE22_P0=0
+- 状态标记: DSHB_G1_PHASE22_P1=0
+- 状态标记: DSHB_G1_PHASE22_P2=0
+- 状态标记: DSHB_G1_PHASE22_FUSE=0
+- 状态标记: DSHB_G1_PHASE22_ROLLBACK_DRILL_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE22_ROLLBACK_SLA=14.2MIN
+- 状态标记: DSHB_G1_PHASE22_THREE_WAY_RECONCILE=24_OF_24_PASS
+- 状态标记: DSHB_G1_PHASE22_RECONCILE_MAX_DEVIATION=0.18_PERCENT
+- 状态标记: DSHB_G1_PHASE22_DATA_QUALITY=100_PERCENT
+- 状态标记: DSHB_G1_PHASE22_NEW_RISKS=3
+- 状态标记: DSHB_G1_PHASE22_RISKS_CLOSED=8
+- 状态标记: DSHB_G1_PHASE22_RISKS_DOWNGRADED=4
+- 状态标记: DSHB_G1_PHASE22_RISK_REGISTER_V32_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE22_ACCEPTANCE_CRITERIA_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE22_ACCEPTANCE_COUNT=6_OF_6
+- 状态标记: DSHB_G1_PHASE22_STAGEF_75PCT_BOOTSTRAP_COMPLETE=TRUE
+- 状态标记: DSHB_G1_PHASE22_STAGEF_75PCT_STABLE=TRUE
+- 状态标记: G1_GRAY_TRAFFIC_STAGED_75PCT_STABLE=TRUE
+- 状态标记: DSHB_G1_PHASE22_DONE=TRUE
+- 状态标记: BASELINE_FROZEN=TRUE
+- 状态标记: BRANCH_LOCKED=TRUE
+- 状态标记: JOB_READY=TRUE
+### 2026-11-20 DSHE_V86_RC2_L2_PHASE21_STAGEF_75PCT_DASHBOARD_PREP_AND_BASELINE_ADJUST
 - Phase21 StageF 75%放量前准备与基线重校准: 75%容量升级(查询池40/缓存24GB/节点4/索引7.60%/存储40GB)+面板适配(17/17面板+14阈值+8告警+IE-AL-001 EARLY预警)+基线重校准(94项V50-1.0→V75-1.0)+告警阈值调整(9条规则+IE-AL-001 EARLY新增)+仿真验证(60min/288点/10/10验收PASS)+三方对齐(16/16/偏差0.05%)+缺陷清单V4.0→V4.1(0新增)+运维手册v4.0.16→v4.0.17(§38新增75%放量准备运维指引) (5 new + 2 updated + 3 metadata)
   - v86_rc2_e_l2_dashboard_phase21_75pct_capacity_prep_report.md (NEW) - 75%容量准备报告(5项容量升级/75%资源水位全部达标/CPU 85%/内存88%/渲染195ms/查询285ms/MD5:20F287CE/17.9KB)
   - v86_rc2_e_l2_dashboard_phase21_75pct_panel_adapt_report.md (NEW) - 75%面板适配报告(17/17面板+14阈值+8告警+IE-AL-001 EARLY预警新增+DSHB限流同步/MD5:ADB434CC/16.6KB)

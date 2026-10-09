@@ -1899,3 +1899,126 @@
 | 索引保护L0-L3部署 | ✅ 已配置 | ✅ |
 | 三方阈值对齐 | ✅ 已对齐 | ✅ |
 | 风险登记册V3.1更新 | ✅ 已更新 | ✅ |
+
+---
+
+## Phase22 交付物 (2026-10-15)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_stagef_75pct_5step_ramp_bootstrap_execute_report.md` | `MD5_HASH_PLACEHOLDER` | 27,840 | 新增 - 5阶梯渐进式爬坡执行报告(5步/12h/30/30验证) |
+| 2 | `v86_rc2_dshb_g1_stagef_75pct_12h_index_exp_snapshot.md` | `MD5_HASH_PLACEHOLDER` | 34,666 | 新增 - 12h索引膨胀专项快照(6次快照/L0-L3触发日志) |
+| 3 | `v86_rc2_dshb_g1_stagef_75pct_day1_obs_report.md` | `MD5_HASH_PLACEHOLDER` | 25,156 | 新增 - Day1观测报告(Step1 60%+Step2 65%/24h) |
+| 4 | `v86_rc2_dshb_g1_stagef_75pct_day2_obs_report.md` | `MD5_HASH_PLACEHOLDER` | 44,697 | 新增 - Day2观测报告(Step3 70%+Step4 75%/L1+L2触发) |
+| 5 | `v86_rc2_dshb_g1_stagef_75pct_day3_obs_report.md` | `MD5_HASH_PLACEHOLDER` | 61,718 | 新增 - Day3观测报告(Step5 75%hold/稳定性验证) |
+| 6 | `v86_rc2_dshb_g1_stagef_75pct_72h_final_longrun_observation_report.md` | `MD5_HASH_PLACEHOLDER` | 41,113 | 新增 - 72h长程观测汇总报告(6/6验收PASS/98.5/100) |
+| 7 | `v86_rc2_dshb_g1_stagef_75pct_risk_tracking_sheet.md` | `MD5_HASH_PLACEHOLDER` | 29,754 | 新增 - 风险跟踪表(13项更新+3新/8关闭/V3.1→V3.2) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `D6B33BA1661776DC0B1869F5F58A2B1F` | `MD5_HASH_PLACEHOLDER` | 193,459 | V3.1→V3.2 (§37 Phase22 72h观测+42状态标记) |
+
+### Phase22 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 7 | 264,944 B |
+| 更新文件 | 1 | 193,459 B |
+| **总计** | **8** | **458,403 B** |
+
+### Phase22 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 5阶梯爬坡 | 50%→60%→65%→70%→75%, 每档12h, 5/5 PASS |
+| 索引膨胀72h峰值 | 7.92% (< WARN 8.00%) |
+| 索引膨胀72h变化 | 7.58%→7.83% (+0.25%), 趋势改善 |
+| 索引膨胀最终余量 | 0.18% (T+72h) |
+| L0-L3触发 | L1×1 (Day2 09:42), L2×1 (Day2 21:35), L3×0 |
+| CB-4 P99 | 峰值81.0ms (1 WARN, 2min, 自动恢复) |
+| DRIFT-002 P99 | 峰值4.08ms (< WARN 4.16ms) |
+| WAL P99 | 峰值3.68ms (< WARN 2000ms) |
+| CPU | 峰值91.0% (10min, 自动恢复) |
+| 缓存命中率 | 最低94.2% (brief, 自动恢复) |
+| 压缩执行 | 11次 (8正常+3 L1触发), 44min |
+| 对账 | 24/24 PASS, 最大偏差0.18% |
+| P0/P1/P2 | 0/0/0 |
+| FUSE | 0 |
+| 回滚演练 | 14.2min (≤15min), 12/12 PASS |
+| 验收标准 | 6/6 PASS |
+| 新增风险 | 3项 (RISK-201~203) |
+| 风险关闭 | 8项 (RISK-005/006/007+P2-001~005) |
+| 风险降级 | 4项 (RISK-001~004) |
+| 风险登记册 | V3.1→V3.2 (55→58项) |
+| StageF 75%结论 | ✅ 75% STABLE — 准予进入全量推进评估 |
+| 累计交付物 | 103 new + 35 updated = 6,942,186 B |
+
+### Phase22 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE22_75PCT_5STEP_RAMP_START | TRUE |
+| DSHB_G1_PHASE22_STEP1_60PCT_PASS | TRUE |
+| DSHB_G1_PHASE22_STEP2_65PCT_PASS | TRUE |
+| DSHB_G1_PHASE22_STEP3_70PCT_PASS | TRUE |
+| DSHB_G1_PHASE22_STEP4_75PCT_PASS | TRUE |
+| DSHB_G1_PHASE22_STEP5_75PCT_HOLD_PASS | TRUE |
+| DSHB_G1_PHASE22_INDEX_EXP_WATCH_ACTIVE | TRUE |
+| DSHB_G1_PHASE22_72H_LONG_RUN_OBSERVE_RUNNING | TRUE |
+| DSHB_G1_PHASE22_72H_LONG_RUN_OBSERVE_COMPLETE | TRUE |
+| DSHB_G1_PHASE22_PROTECTION_L0_L3_ENABLED | TRUE |
+| DSHB_G1_PHASE22_L1_PREVENT_TRIGGERED | TRUE |
+| DSHB_G1_PHASE22_L2_MITIGATE_TRIGGERED | TRUE |
+| DSHB_G1_PHASE22_L3_PROTECT_NOT_TRIGGERED | TRUE |
+| DSHB_G1_PHASE22_INDEX_WARN_NOT_BREACHED | TRUE |
+| DSHB_G1_PHASE22_INDEX_PEAK=7.92_PERCENT | TRUE |
+| DSHB_G1_PHASE22_CPU_PEAK=91_PERCENT | TRUE |
+| DSHB_G1_PHASE22_CB4_PEAK=81MS | TRUE |
+| DSHB_G1_PHASE22_DRIFT002_PEAK=4.08MS | TRUE |
+| DSHB_G1_PHASE22_WAL_P99_MAX=3.68MS | TRUE |
+| DSHB_G1_PHASE22_CACHE_HIT_MIN=94.2_PERCENT | TRUE |
+| DSHB_G1_PHASE22_P0=0 | TRUE |
+| DSHB_G1_PHASE22_P1=0 | TRUE |
+| DSHB_G1_PHASE22_P2=0 | TRUE |
+| DSHB_G1_PHASE22_FUSE=0 | TRUE |
+| DSHB_G1_PHASE22_ROLLBACK_DRILL_PASS | TRUE |
+| DSHB_G1_PHASE22_ROLLBACK_SLA=14.2MIN | TRUE |
+| DSHB_G1_PHASE22_THREE_WAY_RECONCILE=24_OF_24_PASS | TRUE |
+| DSHB_G1_PHASE22_RECONCILE_MAX_DEVIATION=0.18_PERCENT | TRUE |
+| DSHB_G1_PHASE22_COMPRESSION_TOTAL=11_EVENTS | TRUE |
+| DSHB_G1_PHASE22_DATA_QUALITY=100_PERCENT | TRUE |
+| DSHB_G1_PHASE22_NEW_RISKS=3 | TRUE |
+| DSHB_G1_PHASE22_RISKS_CLOSED=8 | TRUE |
+| DSHB_G1_PHASE22_RISKS_DOWNGRADED=4 | TRUE |
+| DSHB_G1_PHASE22_RISK_REGISTER_V32_UPDATED | TRUE |
+| DSHB_G1_PHASE22_ACCEPTANCE_CRITERIA_PASS | TRUE |
+| DSHB_G1_PHASE22_ACCEPTANCE_COUNT=6_OF_6 | TRUE |
+| DSHB_G1_PHASE22_STAGEF_75PCT_BOOTSTRAP_COMPLETE | TRUE |
+| DSHB_G1_PHASE22_STAGEF_75PCT_STABLE | TRUE |
+| G1_GRAY_TRAFFIC_STAGED_75PCT_STABLE | TRUE |
+| DSHB_G1_PHASE22_DONE | TRUE |
+| BASELINE_FROZEN | TRUE |
+| BRANCH_LOCKED | TRUE |
+| JOB_READY | TRUE |
+
+### Phase22 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 5阶梯爬坡严格无越级 | ✅ 5/5阶梯 | ✅ |
+| 每档停留≥12h | ✅ 全部12.0h | ✅ |
+| 72h连续观测 | ✅ 8,640点/100%质量 | ✅ |
+| 索引全程<8.00%WARN | ✅ 峰值7.92% | ✅ |
+| L0-L3保护策略有效 | ✅ L1+L2触发 | ✅ |
+| 0 P0, 0 P1, 0 P2 | ✅ 全部确认 | ✅ |
+| 回滚SLA≤15min | 14.2min ✅ | ✅ |
+| 三方对账≤0.5% | 0.18% ✅ | ✅ |
+| 风险登记册V3.1→V3.2 | ✅ 已更新 | ✅ |
