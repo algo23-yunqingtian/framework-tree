@@ -5671,10 +5671,3 @@ DSHE L2 Dashboard → gRPC Stream (Primary) → 5s Sampler → Time-series DB (V
 ✅ **PASS** — Phase06 72小时全量长稳观测全部完成。72h数据完整率99.95%(目标≥99.9%)，8指标5秒高密度采样51,840点/指标，三级熔断(GO/COND-GO/RED)+四级降级(L0-L3)全链路验证通过，3次RED边界模拟全部通过，告警548事件(520 INFO+28 WARN+0 RED)/0FP/0FN/12规则100%有效，面板7块100%渲染成功率/0渲染失败/5次抖动全自动恢复，HERMES 5字段100%完整性/窗口性能0.70-0.72ms(接近上限需监控)/内存12.6MB/CPU 3.6%，存储805.19GB(距RED 1,336天/LOW风险)，周报数据414,720点100%灌入，三方Gate评审GO(4.63/5.0/3/3一致投票)，Phase07 30天GA准入就绪。缺陷清单Phase06新增0项。运维手册v4.0.24→v4.0.25更新完成。
 
 ---
-*文档版本: v4.0.25 (V87 Phase06 72小时全量长稳观测+Gate评审版本)*
-*生成时间: 2027-03-29*
-*编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE06_72H_LONG_RUN_OBSERVE_ALERT_VALIDATE_AND_CAPACITY_WATCH*
-*分支: feature/v87-rc1-g1*
-*更新说明: v4.0.24→v4.0.25, §46新增Phase06 72h全量长稳观测运维指引(72h观测+高密度采样+三级熔断+四级降级+RED边界模拟+告警降噪+面板性能+HERMES字段+容量风险+周报灌入+三方Gate评审+检查清单)*
-*状态: DSHE_L2_PHASE06_72H_SAMPLING_ENABLE=TRUE, DSHE_L2_PHASE06_ALERT_FUSE_VALIDATE=TRUE, DSHE_L2_PHASE06_CAPACITY_RISK_MONITOR=TRUE, DSHE_L2_PHASE06_DASHBOARD_PERF_WATCH=TRUE, DSHE_L2_PHASE06_HERMES_FIELD_SYNC=TRUE, DSHE_L2_PHASE06_LONGRUN_GATE_ASSESS=TRUE, DSHE_L2_PHASE06_READY=TRUE, DSHE_L2_PHASE06_DONE=TRUE, JOB_READY=TRUE*
