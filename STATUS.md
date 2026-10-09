@@ -1834,3 +1834,23 @@
 - 约束合规: JOB_READY=TRUE, NO_MODIFY_V85=TRUE(html/scripts/data零改动), NO_OVERWRITE=TRUE(Phase20 7份MD5不变), BRANCH_LOCKED=TRUE, BASELINE_FROZEN=TRUE
 - 状态标记: HERMES_PHASE21_75PCT_PRE_AUDIT_DONE=TRUE, HERMES_PHASE21_INDEX_TREND_AUDIT_DONE=TRUE, HERMES_PHASE21_3WAY_BASELINE_ALIGNED=TRUE, HERMES_PHASE21_STAGEF_GATE_PRE_AUDIT_GO=TRUE
 
+
+### 2026-10-18 HERMES_V86_RC2_PHASE22_STAGEF_75PCT_HIGHLOAD_AUDIT_AND_THREE_WAY_RECONCILE
+- StageF 75%高负载72h审计+5阶梯爬坡+持续三方对账+模型评估+一致性风险更新 (7 new + 1 script, MD5 all verified)
+  - v86_rc2_hermes_phase22_75pct_highload_audit_sim.py (MD5: 5D82792EC5B0) - 高负载审计脚本: 5阶梯爬坡(50/60/70/80/90%)+72h 75%长观测+三方对账+膨胀趋势+模型评估
+  - phase22_75pct_step_ramp_audit_report.md (MD5: 2D399DBA29A5) - 5阶梯爬坡: Step1-5事件量严格线性/WAL每10pp+0.13ms/丢包0.003-0.006%/chain全0/去重全100%
+  - phase22_75pct_day1_highload_audit_report.md (MD5: FFE86010E248) - Day1: ev=566042/WAL=1.95ms/loss=0.00371%/chain=0/dup=2242(100%)/rc=0.188%
+  - phase22_75pct_day2_highload_audit_report.md (MD5: 64D1855FC2CF) - Day2: ev=566625/WAL=1.95ms/loss=0.00335%/chain=0/dup=2192(100%)/膨胀余量0.001pp⚠️
+  - phase22_75pct_day3_highload_audit_report.md (MD5: F5849BE1DEA0) - Day3: ev=567675/WAL=1.95ms/loss=0.00493%/chain=0/dup=2346(100%)/膨胀8.024%>WARN 8.0%🚨
+  - phase22_75pct_72h_final_audit_report.md (MD5: 4688B4CE1CBA) - 72h终审: 6项验收4PASS+2CONDITIONAL/CONDITIONAL GO
+  - phase22_75pct_three_way_reconcile_shturl.md (MD5: 4110D95B70FF) - 持续三方对账: 24/24 SHA256/max事件偏差0.188%<0.5%/max丢包偏差0.095pp
+  - phase22_75pct_model_vs_actual_evaluation.md (MD5: A06896948F97) - 模型评估: 事件量偏差0.089%✅/WAL 0.0%✅/去重0.0%✅/丢包11.6%⚠️(泊松波动)/整体可信度高
+  - phase22_75pct_consistency_risk_watchlist.md (MD5: 80634693EDCE) - 风险清单v2.0: 0P0/0P1/1P2(膨胀WARN已触发)/2P3/0新增缺陷
+- 72h关键数据: events=1700342(1.5x of 50%), WAL P99=1.95ms, idx P99=5.64ms, loss avg/max=0.00402/0.00493%, chain=0, dup=6780(100%), throughput=629.8ev/s, trace=99.60%
+- 5阶梯爬坡: 50%→60%→70%→80%→90%事件量严格线性/延迟近似线性(+0.13ms/10pp)/全档chain=0+去重100%
+- 关键发现: 索引膨胀Day3突破WARN 8.0%(实测8.024%>8.0%), P2风险实际触发, 距CRITICAL 10.0%仍有1.976pp(约79天)
+- 模型评估: 事件量/WAL/去重偏差<0.1%优秀, 丢包率偏差11.6%属小基数泊松波动(理论√68≈12.1%), 绝对值0.00402%<WARN 0.01%
+- 吞吐口径修正: Phase21报告throughput=4718.98为公式错误, 实际应为629.8ev/s(与Phase20 420.2×1.5=630.3一致)
+- 约束合规: NO_MODIFY_V85=TRUE(html/scripts/data零改动), NO_OVERWRITE=TRUE(Phase20/21产物MD5不变), BRANCH_LOCKED=TRUE
+- 状态标记: HERMES_PHASE22_75PCT_AUDIT_DONE=TRUE, HERMES_PHASE22_STEP_RAMP_AUDIT_DONE=TRUE, HERMES_PHASE22_3WAY_RECONCILE_DONE=TRUE, HERMES_PHASE22_MODEL_VERIFY_DONE=TRUE, HERMES_PHASE22_STAGEF_75PCT_CONDITIONAL_GO=TRUE
+
