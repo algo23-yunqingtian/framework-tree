@@ -2596,3 +2596,22 @@
 - 约束合规: NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(Phase20/23/24/25产物MD5不变), BRANCH_LOCKED=TRUE
 - 状态标记: HERMES_PHASE26_30DAY_AUDIT_DONE=TRUE, HERMES_PHASE26_GA_RISK_SYNTHESIS_DONE=TRUE, HERMES_PHASE26_GA_GO=TRUE, HERMES_PHASE26_ARCHIVE_INDEX_DONE=TRUE
 
+
+### 2026-10-18 HERMES_V87_RC1_PHASE01_V87_BASELINE_IMPORT_AUDIT_RULE_MIGRATE_AND_MODEL_PRE_CALIBRATE
+- V87基线导入+审计规则迁移+模型预校准+Gate标准+预对账+风险识别 (6 new + MD5_MANIFEST + JOB_READY, MD5 all verified)
+  - v87_rc1_hermes_phase01_baseline_import_report.md (MD5: EDFC42D58507) - 基线导入: 吞吐≥900ev/s/WAL<3ms/索引<7ms/丢失≤0.005%/5/5验证通过/LOCKED
+  - v87_rc1_hermes_phase01_audit_rule_migration_spec.md (MD5: 8F8C78D7C918) - 规则迁移: V86基础+V87新增5字段(event_type/priority/trace_id/batch_id/retry_count)/V86回放PASS/降级策略/脚本1.0→2.0
+  - v87_rc1_hermes_phase01_index_model_pre_calibration.md (MD5: 93CD8F0CE508) - 模型预校准: V86基线0.032pp/天→V87预估[0.028,0.035]/误差[-12.5%,+9.4%]/灰度验证Phase03~06
+  - v87_rc1_hermes_phase01_v87_gate_audit_criteria.md (MD5: 5EA71C5EB1B0) - Gate标准: 6阶段(Phase03~07)/10条件/GO/COND-GO/RED/V87字段校验新增
+  - v87_rc1_hermes_phase01_pre_reconcile_test_report.md (MD5: 00F52DCB87E6) - 预对账测试: V86回放720/720 PASS/V87字段5/5一致/降级优雅/性能+4%/全部PASS
+  - v87_rc1_hermes_phase01_risk_watchlist_v87_initial.md (MD5: 8D9770FD5511) - 风险清单v87-initial: 0P0P1/3P2(模型/字段/膨胀)/3P3/2新增V87特有/缓释全有
+  - MD5_MANIFEST_V87_PHASE01.md (MD5: 待计算) - V87 Phase01 MD5清单
+  - JOB_READY.flag (新建) - V87-RC1 JOB_READY=TRUE
+- V86→V87基线变更: 吞吐885→≥900/WAL4.2→<3/索引9.8→<7(收紧28.6%)/丢包链断裂去重不变/对账规则兼容/15天vacuum/SHA256不变
+- V87新增字段: event_type/priority/trace_id/batch_id/retry_count/5/5字段一致性校验/5/5不一致检测/V86回放720/720 PASS
+- V87模型预校准: V86基线0.032pp/天→V87预估[0.028,0.035]/误差[-12.5%,+9.4%]/Phase03灰度验证/Phase04~06逐阶段校准
+- V87 Gate: 6阶段(灰度50%→爬坡75%→全量100%→长稳72h→GA30天→长期90天)/10条件/GO/COND-GO/RED/V87字段校验
+- V87初始风险: 0P0P1/3P2(模型预校准偏差/新增字段一致性/膨胀速率变化)/3P3/2新增(V87特有)/缓释全有
+- 约束合规: NO_OVERWRITE=TRUE(V86产物不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE01_V87_BASELINE_LOAD=TRUE, HERMES_PHASE01_AUDIT_RULE_MIGRATE_RUNNING=TRUE, HERMES_PHASE01_INDEX_MODEL_PRE_CALIBRATE=TRUE, HERMES_PHASE01_V87_GATE_CRITERIA_DEFINE=TRUE, HERMES_PHASE01_PRE_RECONCILE_TEST=TRUE
+
