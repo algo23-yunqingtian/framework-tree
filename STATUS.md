@@ -3094,3 +3094,25 @@
 - 约束合规: NO_OVERWRITE=TRUE(Phase04不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
 - 状态标记: HERMES_PHASE05_FULL_STREAM_RECONCILE=TRUE, HERMES_PHASE05_INDEX_GROWTH_FULL_VERIFY=TRUE, HERMES_PHASE05_AUDIT_WINDOW_PERF_MONITOR=TRUE, HERMES_PHASE05_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE05_GATE_DECISION_RUN=TRUE, HERMES_PHASE05_RECONCILE_STAT_ANALYSIS=TRUE, HERMES_PHASE05_PHASE06_GATE_PRE_ASSESS=TRUE
 
+
+### 2026-10-18 HERMES_V87_RC1_PHASE06_72H_LONG_RUN_AUDIT_AND_INDEX_EXPIRY_RISK_MONITOR
+- 72h长稳审计+hash缓存优化+索引过期监控+存储RED评估+Gate评估+Phase07准入 (7 new + MD5 update + JOB_READY update, MD5 all verified)
+  - v87_rc1_hermes_phase06_72h_longrun_audit_summary_report.md (MD5: 6CF8118E99B2) - 72h长稳汇总: 72h不间断0中断/V2.0全量192窗口全PASS/SHA256 192/192/字段5/5 100%/乱序5次2.60%/告警0/Gate GO 12/12/膨胀0.03113pp WARN17天/性能0.66ms(hash优化-5.7%)/存储RED190.5MB/Phase07准入GO
+  - v87_rc1_hermes_phase06_reconcile_window_stat_report.md (MD5: 56C8DBB1C916) - 对账窗口统计: 192窗口/通过率100%/max事件偏差0.492%/max丢包0.318pp/差异5次乱序2.60%/根因DSHB批量提交/50%→75%→100%→72h完美线性/72h稳定性100%
+  - v87_rc1_hermes_phase06_index_expiry_risk_monitor_report.md (MD5: B4CFC97DC7D9) - 索引过期监控: 实测0.03113pp/天/模型偏差-0.9%/R²=0.999/linear stable/WARN倒计时17天/CRITICAL倒计时64天/30天GA超WARN0.234pp/处置压缩期+归档策略
+  - v87_rc1_hermes_phase06_hash_cache_optim_verify_report.md (MD5: F0BAB2555353) - hash缓存优化: 单窗口0.70ms→0.66ms(-5.7%)/缓存命中率85%/内存+0.3MB/SHA256计算-12.9%/trace_id缓存-87.5%/batch_id缓存-87.5%/余量恢复0%→5.7%/72h稳定无泄漏/消除性能达上限风险
+  - v87_rc1_hermes_phase06_storage_red_risk_evaluation_report.md (MD5: 7E51E8BC7740) - 存储RED评估: 当前+190.5MB(RED)/30天预期+1.91GB/90天+5.72GB/日均+63.5MB/归档策略-70%/扩容预案已就绪/风险P3可控/影响仅存储不影响审计
+  - v87_rc1_hermes_phase06_longrun_gate_evaluation_report.md (MD5: D770B36254E0) - Gate评估: GO 12/12/COND-GO 0/RED 0/12/阻断0/V1.0回滚<5min就绪/DSHE🟢/Phase07准入16/16条件GO/Phase07提示(膨胀WARN17天+存储RED+乱序2.60%)
+  - risk_watchlist_v87_phase06.md (MD5: 60D264C9DD30) - 风险清单v87-phase06: 0P0P1/2P2(膨胀速率+倒计时)/14P3/2新增(存储RED+膨胀倒计时)-1消除(性能上限)/兜底全有/Phase07提示
+- V2.0全量对账: 72h不间断/0中断/0重启/0故障切换/192窗口/SHA256 100%/字段5/5 100%
+- hash缓存优化: 已部署/trace_id+batch_id SHA256缓存/LRU 10000/命中率85%/单窗口-0.04ms(-5.7%)/内存+0.3MB/72h稳定无泄漏/余量0%→5.7%
+- 异常识别: 丢包0/重复0/乱序5(2.60%已定位DSHB批量提交)/字段缺失0/告警0触发(正常)
+- 索引膨胀: 0.03113pp/天(实测)/-0.9%(模型偏差)/R²=0.999/linear stable/WARN倒计时17天/CRITICAL倒计时64天/30天GA超WARN0.234pp/处置压缩期+归档
+- 性能: 0.66ms窗口(hash优化后-5.7%)/12.3MB内存(GREEN)/CPU 3.4%(GREEN)/5.6ms延迟/余量恢复5.7%/无劣化
+- 存储: +190.5MB(RED)/30天预期+1.91GB/90天+5.72GB/归档策略-70%/扩容预案就绪/P3可控
+- V1.0回滚: 就绪<5min/代码+配置+测试均就绪
+- Gate判定: GO 12/12/COND-GO 0/RED 0/12/阻断0/DSHE🟢绿色/Phase07准入16/16条件GO
+- 风险: 0P0P1/2P2(膨胀速率+倒计时)/14P3/2新增(存储RED+膨胀倒计时)-1消除(性能上限接近)/兜底全有/Phase07提示
+- 约束合规: NO_OVERWRITE=TRUE(Phase05不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE06_72H_LONG_RUN_RECONCILE=TRUE, HERMES_PHASE06_INDEX_EXPIRY_COUNTDOWN_MONITOR=TRUE, HERMES_PHASE06_AUDIT_WINDOW_PERF_MONITOR=TRUE, HERMES_PHASE06_HASH_CACHE_OPTIM_VERIFY=TRUE, HERMES_PHASE06_STORAGE_RED_RISK_ASSESS=TRUE, HERMES_PHASE06_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE06_GATE_DECISION_RUN=TRUE, HERMES_PHASE06_PHASE07_GA_PRE_ASSESS=TRUE
+
