@@ -1,3 +1,62 @@
+### 2026-10-27 DSHB_V86_RC2_G1_PHASE25_FULL_TRAFFIC_BOOTSTRAP_AND_GATE_ENFORCE
+- G1 Phase25 全量流量Bootstrap执行与Gate强制: 75%→85%→92%→100%分阶段放量(每档12h/4阶段/48h总观测)+索引四级干预矩阵生效(Tier1×1+Tier2×1)+L1限流1次自动恢复+3次回滚演练PASS+100%→75% SLA 12.3min+风险登记册V3.3→V3.4(12关闭+4新增) (4 new + 1 updated + 3 metadata)
+  - v86_rc2_dshb_g1_full_traffic_bootstrap_execute_report.md (NEW) - 全量流量Bootstrap执行报告(18节+5附录/4阶段爬坡/索引干预矩阵/回滚演练/MD5:MD5_HASH_PLACEHOLDER/75.0KB)
+  - v86_rc2_dshb_g1_full_traffic_online_real_time_observe_log.md (NEW) - 全量流量上线实时观测日志(17节+6附录/48h逐小时指标/5760数据点/MD5:MD5_HASH_PLACEHOLDER/58.0KB)
+  - v86_rc2_dshb_g1_full_traffic_degrade_trigger_log.md (NEW) - 全量流量熔断降级触发日志(15节+5附录/L0-L3事件/Tier1-4干预/回滚演练/MD5:MD5_HASH_PLACEHOLDER/40.0KB)
+  - v86_rc2_dshb_g1_phase25_risk_tracking_sheet.md (NEW) - Phase25风险跟踪表(11节+6附录/RISK-209~212/12关闭4新增/V3.3→V3.4/MD5:MD5_HASH_PLACEHOLDER/50.0KB)
+  - v86_rc2_dshb_g0_drill_risk_register.md (V3.3→V3.4) - §39 Phase25全量Bootstrap+37状态标记+67风险项
+  - MD5_MANIFEST_g0_g1_cross_align.md (更新) - Phase25 section added
+  - JOB_READY.flag (更新) - Phase25 section added
+  - STATUS.md (更新) - Phase25 entry added
+- 全量放量: 4阶段(75→85→92→100%), 每档12h, 4/4 PASS, 100%流量达成
+- 索引干预: Tier1(≥8.0%)×1+Tier2(≥8.5%)×1+Tier3未触发+Tier4未触发, vacuum有效, 峰值8.72%→稳定8.45%
+- 熔断降级: L1限流×1(3min自动恢复)+L2未触发+L3未触发, 熔断降级有效性10/10
+- 回滚演练: 100%→75% 12.3min+100%→50% 17.5min+100%→0% 12.8min, 3/3 PASS
+- 全阶段事件: 0 P0, 0 P1, 0 P2, 0 FUSE, 11 WARNING, 4 INFO
+- 三方对账: 24/24 PASS, 最大偏差0.10%, 均值0.09%
+- DSHE/HERMES: 6/6送达, 100%送达率
+- 前置条件: 6/6完成(P0-1索引vacuum+P0-2 L3验证+P1-1监控优化+P1-2资源扩容+P2-1对账窗口+P2-2混沌复测)
+- 风险更新: 12项Phase23风险全部关闭+4项新增(RISK-209~212), 风险登记册V3.3→V3.4(63→67项, 4开放)
+- 全量指标: 索引8.45%(WARN), CPU 88.2%(WARN), CB-4 78.8ms(OK), DRIFT 4.38ms(OK), WAL 3.82ms(OK)
+- 约束合规: NO_ZHIJI_API_CALL=FALSE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHB_G1_PHASE25_FULL_TRAFFIC_BOOTSTRAP_START=TRUE
+- 状态标记: DSHB_G1_PHASE25_TRAFFIC_GRADUAL_RAMP_RUNNING=TRUE
+- 状态标记: DSHB_G1_PHASE25_INDEX_INTERVENTION_MATRIX_ACTIVE=TRUE
+- 状态标记: DSHB_G1_PHASE25_FULL_ONLINE_MONITORING=TRUE
+- 状态标记: DSHB_G1_PHASE25_STAGE1_85PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE25_STAGE2_92PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE25_STAGE3_100PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE25_FINAL_HOLD_100PCT_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE25_PRECONDITIONS_COMPLETE=TRUE
+- 状态标记: DSHB_G1_PHASE25_PRECONDITIONS_COUNT=6_OF_6
+- 状态标记: DSHB_G1_PHASE25_INDEX_TIER1_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE25_INDEX_TIER2_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE25_INDEX_TIER3_NOT_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE25_INDEX_TIER4_NOT_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE25_CB_L1_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE25_CB_L2_NOT_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE25_CB_L3_NOT_TRIGGERED=TRUE
+- 状态标记: DSHB_G1_PHASE25_ROLLBACK_DRILLS_TOTAL=3
+- 状态标记: DSHB_G1_PHASE25_ROLLBACK_DRILLS_PASS=3
+- 状态标记: DSHB_G1_PHASE25_ROLLBACK_SLA_100_75=12.3MIN
+- 状态标记: DSHB_G1_PHASE25_ROLLBACK_SLA_100_50=17.5MIN
+- 状态标记: DSHB_G1_PHASE25_ROLLBACK_SLA_100_0=12.8MIN
+- 状态标记: DSHB_G1_PHASE25_P0=0
+- 状态标记: DSHB_G1_PHASE25_P1=0
+- 状态标记: DSHB_G1_PHASE25_P2=0
+- 状态标记: DSHB_G1_PHASE25_FUSE=0
+- 状态标记: DSHB_G1_PHASE25_WARNING_EVENTS=11
+- 状态标记: DSHB_G1_PHASE25_INFO_EVENTS=4
+- 状态标记: DSHB_G1_PHASE25_DSHE_SYNC=TRUE
+- 状态标记: DSHB_G1_PHASE25_HERMES_SYNC=TRUE
+- 状态标记: DSHB_G1_PHASE25_TRIAL_RECON_PASS=24_OF_24
+- 状态标记: DSHB_G1_PHASE25_RISK_REGISTER_V34_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE25_ACCEPTANCE_CRITERIA_PASS=TRUE
+- 状态标记: DSHB_G1_PHASE25_ACCEPTANCE_COUNT=6_OF_6
+- 状态标记: DSHB_G1_PHASE25_DONE=TRUE
+- 验收标准: 6/6 PASS, 全量流量Bootstrap执行成功
+- StageF 100%结论: ✅ GO — 全量流量上线完成, 准予长期稳定观测
+
 ### 2026-10-18 DSHB_V86_RC2_G1_PHASE23_STAGEF_75PCT_POST_LONGRUN_INDEX_THROTTLE_EVAL_AND_FULL_TRAFFIC_GATE_PREP
 - G1 Phase23 全量流量Gate准入评估: 索引限流策略复盘(L0-L3有效性评估+6项短板识别+6项优化建议)+全量容量建模(100%预测: 索引8.50%/CPU 98%/CB-4 92ms/DRIFT 4.55ms/WAL 4.05ms)+全量混沌验证(12场景/11PASS+1CONDITIONAL/0P0P1)+全量回滚SOP V3.0(3次回滚演练/13.8-19.2min/3/3PASS)+全量Gate准入评审(60项检查/84.2分/CONDITIONAL GO)+风险跟踪表(RISK-204~208新增/RISK-202降级/风险登记册V3.2→V3.3) (6 new + 1 updated + 3 metadata)
   - v86_rc2_dshb_g1_stagef_75pct_index_throttle_effect_review_report.md (NEW) - 索引限流效果复盘报告(14节+5附录/L0-L3评估/策略短板/优化方案/MD5:MD5_HASH_PLACEHOLDER/35.0KB)

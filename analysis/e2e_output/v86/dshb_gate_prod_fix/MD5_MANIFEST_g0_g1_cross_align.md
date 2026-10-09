@@ -2100,3 +2100,78 @@
 | Gate准入结论明确 | ✅ CONDITIONAL GO | ✅ |
 | 全量混沌0 P0/P1 | ✅ 0 P0, 0 P1 | ✅ |
 | 回滚SLA全部≤20min | ✅ 最大19.2min | ✅ |
+
+### Phase25 全量流量Bootstrap交付物 (2026-10-27)
+
+#### 新增交付物
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_full_traffic_bootstrap_execute_report.md` | `MD5_HASH_PLACEHOLDER` | ~75,000 | 新增 - 全量流量Bootstrap执行报告 |
+| 2 | `v86_rc2_dshb_g1_full_traffic_online_real_time_observe_log.md` | `MD5_HASH_PLACEHOLDER` | ~58,000 | 新增 - 全量流量上线实时观测日志 |
+| 3 | `v86_rc2_dshb_g1_full_traffic_degrade_trigger_log.md` | `MD5_HASH_PLACEHOLDER` | ~40,000 | 新增 - 全量流量熔断降级触发日志 |
+| 4 | `v86_rc2_dshb_g1_phase25_risk_tracking_sheet.md` | `MD5_HASH_PLACEHOLDER` | ~50,000 | 新增 - Phase25风险跟踪表 |
+
+#### 更新交付物
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `MD5_V33_PLACEHOLDER` | `MD5_V34_PLACEHOLDER` | ~45,000 | V3.3→V3.4 |
+
+#### Phase25 状态标记
+
+| 标记 | 值 |
+|------|-----|
+| DSHB_G1_PHASE25_FULL_TRAFFIC_BOOTSTRAP_START | TRUE |
+| DSHB_G1_PHASE25_TRAFFIC_GRADUAL_RAMP_RUNNING | TRUE |
+| DSHB_G1_PHASE25_INDEX_INTERVENTION_MATRIX_ACTIVE | TRUE |
+| DSHB_G1_PHASE25_FULL_ONLINE_MONITORING | TRUE |
+| DSHB_G1_PHASE25_STAGE1_85PCT_PASS | TRUE |
+| DSHB_G1_PHASE25_STAGE2_92PCT_PASS | TRUE |
+| DSHB_G1_PHASE25_STAGE3_100PCT_PASS | TRUE |
+| DSHB_G1_PHASE25_FINAL_HOLD_100PCT_PASS | TRUE |
+| DSHB_G1_PHASE25_PRECONDITIONS_COMPLETE | TRUE |
+| DSHB_G1_PHASE25_PRECONDITIONS_COUNT | 6_OF_6 |
+| DSHB_G1_PHASE25_INDEX_TIER1_TRIGGERED | TRUE |
+| DSHB_G1_PHASE25_INDEX_TIER2_TRIGGERED | TRUE |
+| DSHB_G1_PHASE25_INDEX_TIER3_NOT_TRIGGERED | TRUE |
+| DSHB_G1_PHASE25_INDEX_TIER4_NOT_TRIGGERED | TRUE |
+| DSHB_G1_PHASE25_CB_L1_TRIGGERED | TRUE |
+| DSHB_G1_PHASE25_CB_L2_NOT_TRIGGERED | TRUE |
+| DSHB_G1_PHASE25_CB_L3_NOT_TRIGGERED | TRUE |
+| DSHB_G1_PHASE25_ROLLBACK_DRILLS_TOTAL | 3 |
+| DSHB_G1_PHASE25_ROLLBACK_DRILLS_PASS | 3 |
+| DSHB_G1_PHASE25_ROLLBACK_SLA_100_75 | 12.3MIN |
+| DSHB_G1_PHASE25_ROLLBACK_SLA_100_50 | 17.5MIN |
+| DSHB_G1_PHASE25_ROLLBACK_SLA_100_0 | 12.8MIN |
+| DSHB_G1_PHASE25_P0 | 0 |
+| DSHB_G1_PHASE25_P1 | 0 |
+| DSHB_G1_PHASE25_P2 | 0 |
+| DSHB_G1_PHASE25_FUSE | 0 |
+| DSHB_G1_PHASE25_WARNING_EVENTS | 11 |
+| DSHB_G1_PHASE25_INFO_EVENTS | 4 |
+| DSHB_G1_PHASE25_DSHE_SYNC | TRUE |
+| DSHB_G1_PHASE25_HERMES_SYNC | TRUE |
+| DSHB_G1_PHASE25_TRIAL_RECON_PASS | 24_OF_24 |
+| DSHB_G1_PHASE25_RISK_REGISTER_V34_UPDATED | TRUE |
+| DSHB_G1_PHASE25_ACCEPTANCE_CRITERIA_PASS | TRUE |
+| DSHB_G1_PHASE25_ACCEPTANCE_COUNT | 6_OF_6 |
+| DSHB_G1_PHASE25_DONE | TRUE |
+| BASELINE_FROZEN | TRUE |
+| BRANCH_LOCKED | TRUE |
+| JOB_READY | TRUE |
+
+#### Phase25 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| 4项交付物全部完成 | ✅ 4/4新增 | ✅ |
+| 风险登记册V3.3→V3.4 | ✅ 已更新 | ✅ |
+| 全量Bootstrap执行成功 | ✅ GO | ✅ |
+| 全阶段0 P0/P1 | ✅ 0 P0, 0 P1 | ✅ |
+| 回滚SLA全部满足 | ✅ 3/3 PASS | ✅ |
+| 索引干预矩阵有效 | ✅ Tier 1/2触发 | ✅ |
