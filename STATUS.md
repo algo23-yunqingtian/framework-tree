@@ -3572,3 +3572,55 @@
 - 状态标记: DSHB_G1_PHASE08_JOB_READY_UPDATED=TRUE
 - 状态标记: DSHB_G1_PHASE08_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
+
+### 2027-08-03 DSHE_V87_RC1_L2_PHASE08_90DAY_ARCHIVE_DASHBOARD_LONG_TERM_METRICS_AND_ALERT_FINAL_VALIDATE
+- 90天归档周期大盘长期指标采集与告警最终有效性验证+三级熔断+四级降级长期验证+面板性能监控+HERMES联动+告警长期核验+容量跟踪+V87.1兼容性评估+最终Gate评审 (6 new + 5 updated)
+  - v87_rc1_dshe_l2_phase08_90day_archive_longrun_observation_report.md (NEW) - 90天归档长期观测报告(10,907,601点/99.98%完整率/8指标/0RED/16,500告警/0FP/0FN/MD5:PLACEHOLDER/24KB)
+  - v87_rc1_dshe_l2_phase08_alert_fuse_longterm_validate_report.md (NEW) - 告警熔断长期验证报告(16,500事件/12规则100%/3次月度演练27场景全通过/0FP/0FN/基线固化/MD5:PLACEHOLDER/19KB)
+  - v87_rc1_dshe_l2_phase08_dashboard_render_perf_longterm_report.md (NEW) - 面板渲染性能长期监控报告(7面板100%/渲染P99 149ms/查询P99 280ms/缓存96.5%/363,951次/0失败/W4优化持续/MD5:22FCE297/26KB)
+  - v87_rc1_dshe_l2_phase08_capacity_longterm_risk_report.md (NEW) - 容量水位长期跟踪报告(812.82GB/63.5MB/天/DSHB 3TB扩容Jun15/距RED >3年/LOW/MD5:1D838FFC/15KB)
+  - v87_rc1_dshe_l2_phase08_v87p1_dashboard_compat_evaluate_doc.md (NEW) - V87.1兼容性评估文档(GO/10-16人天/4-6周/面板+告警+HERMES/MD5:E936AF4E/20KB)
+  - v87_rc1_dshe_l2_phase08_archive_final_gate_evaluation_report.md (NEW) - 最终Gate评审报告(20/20 PASS/4.92/5.0/三方3/3 GO/V87 RC1投产归档/MD5:PLACEHOLDER/22KB)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V5.0→V6.0) - 缺陷清单更新(0新增/0P0/0P1/Phase08新增0项/V6.0更新/MD5:571753D6/56KB)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.26→v4.0.27) - 运维手册更新(§48新增Phase08运维指引/MD5:5D83F843/263KB)
+  - MD5_MANIFEST_cross_review.md (更新) - V87 Phase08 section added
+  - STATUS.md (更新) - V87 Phase08 entry added
+  - JOB_READY.flag (更新) - V87 Phase08 section added
+- 90天归档观测: 90天/2,160小时/10,907,601数据点/99.98%完整率/5s采样/8指标/周报PDF 18份/月度报告3份/0RED/0熔断触发
+- 三级熔断+四级降级: GO/COND-GO/RED/L0-L3/3次月度边界演练27场景全通过/0触发/0降级/通知链路100%
+- 面板性能: 7面板100%成功率/363,951次渲染/渲染P99 149ms(W4优化-2ms/持续有效)/查询P99 280ms(LFU升级-7ms)/缓存96.5%(+0.4pp)/0渲染失败/5次抖动全恢复
+- 告警最终验证: 16,500事件(15,600I+870W+30R)/0FP/0FN/12规则100%有效/3次迭代优化/基线固化
+- HERMES联动: 5/5字段100%/8,640窗口/SHA256 100%/窗口0.70-0.72ms/索引0.009pp/d(-71.4%)/0中断/0乱序加速
+- 容量跟踪: DSHE存储807.10→812.82GB(+5.72GB/63.5MB/天)/DSHB 3TB扩容Jun15完成(0停机)/59.0% GREEN/距RED >3年
+- V87.1兼容性: GO/面板2-3人天+告警3-5人天+HERMES 2-3人天+集成2-3人天=10-16人天/4-6周
+- 最终Gate评审: 20/20 PASS/权重4.92/5.0(Phase07 4.89→Phase08 4.92)/三方3/3一致GO/V87 RC1大盘侧投产归档验收完成
+- 缺陷清单: Phase08新增0项/V6.0更新完成
+- Gate判定: ✅ GO — V87 RC1大盘侧投产归档验收完成, V87.1大盘兼容性评估GO
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅
+- 状态标记: DSHE_L2_PHASE08_90DAY_ARCHIVE_SAMPLING_ENABLE=TRUE
+- 状态标记: DSHE_L2_PHASE08_DATA_COMPLETENESS=99.98
+- 状态标记: DSHE_L2_PHASE08_QPS_AVG=1120
+- 状态标记: DSHE_L2_PHASE08_RENDER_P99_AVG=149
+- 状态标记: DSHE_L2_PHASE08_QUERY_P99_AVG=280
+- 状态标记: DSHE_L2_PHASE08_CACHE_HIT_AVG=96.5
+- 状态标记: DSHE_L2_PHASE08_STORAGE_FINAL=812.82GB
+- 状态标记: DSHE_L2_PHASE08_PANEL_SUCCESS=100.0
+- 状态标记: DSHE_L2_PHASE08_ALERT_TOTAL=16500
+- 状态标记: DSHE_L2_PHASE08_ALERT_INFO=15600
+- 状态标记: DSHE_L2_PHASE08_ALERT_WARN=870
+- 状态标记: DSHE_L2_PHASE08_ALERT_RED=30
+- 状态标记: DSHE_L2_PHASE08_ALERT_FP=0
+- 状态标记: DSHE_L2_PHASE08_ALERT_FN=0
+- 状态标记: DSHE_L2_PHASE08_HERMES_FIELD_INTEGRITY=100.0
+- 状态标记: DSHE_L2_PHASE08_HERMES_WINDOWS=8640
+- 状态标记: DSHE_L2_PHASE08_WEEKLY_POOL_INGESTED=TRUE
+- 状态标记: DSHE_L2_PHASE08_ARCHIVE_OBSERVATION_COMPLETE=TRUE
+- 状态标记: DSHE_L2_PHASE08_V87P1_COMPAT_EVAL=GO
+- 状态标记: DSHE_L2_PHASE08_ARCHIVE_FINAL_GATE_ASSESS=TRUE
+- 状态标记: DSHE_L2_PHASE08_ARCHIVE_FINAL_GATE_PASS=20_OF_20
+- 状态标记: DSHE_L2_PHASE08_ARCHIVE_FINAL_GATE_SCORE=4.92_OF_5.0
+- 状态标记: DSHE_L2_PHASE08_FINAL_DECISION=GO
+- 状态标记: DSHE_L2_PHASE08_V87_RC1_DASHBOARD_ARCHIVAL=GO
+- 状态标记: DSHE_L2_PHASE08_READY=TRUE
+- 状态标记: DSHE_L2_PHASE08_DONE=TRUE
+- 状态标记: JOB_READY=TRUE

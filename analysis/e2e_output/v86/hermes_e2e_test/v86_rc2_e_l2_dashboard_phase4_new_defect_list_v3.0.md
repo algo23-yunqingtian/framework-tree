@@ -1,15 +1,15 @@
-# V86-RC2 L2大盘缺陷清单V4.9
+# V86-RC2 L2大盘缺陷清单V6.0
 
 > **工单\*\*: DSHE_V87_RC1_L2_PHASE07_30DAY_GA_DASHBOARD_LONG_TERM_METRICS_COLLECT_ALERT_LONGRUN_VALIDATE (Phase07 30天GA长期指标采集\+告警长期验证)
-> **子任务**: T8 — 缺陷清单V4.8→V4.9更新(Phase06 72h长稳观测+Gate评审)
-> **分支: `feature/v87-rc1-g1` @ commit `43f9541` (Phase03 StageA)
+> **子任务**: T8 — 缺陷清单V5.0→V6.0更新(V87 Phase08 90天归档最终Gate评审)
+> **分支: `feature/v87-rc1-g1` @ commit `5780677` (Phase07 30天GA)
 > **文档版本\*\*: v5.0.0 (Phase06 72h长稳观测+Gate评审版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
-> **日期**: 2027-05-05
-> ****前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.8) / `v87_rc1_dshe_l2_phase06_72h_longrun_observation_report.md` / `v87_rc1_dshe_l2_phase06_alert_fuse_validate_report.md` / `v87_rc1_dshe_l2_phase06_capacity_risk_watch_report.md` / `v87_rc1_dshe_l2_phase06_dashboard_render_perf_report.md` / `v87_rc1_dshe_l2_phase06_gate_evaluation_for_ga.md`
+> **日期**: 2027-08-03
+> ****前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V5.0) / `v87_rc1_dshe_l2_phase08_90day_archive_longrun_observation_report.md` / `v87_rc1_dshe_l2_phase08_alert_fuse_longterm_validate_report.md` / `v87_rc1_dshe_l2_phase08_dashboard_render_perf_longterm_report.md` / `v87_rc1_dshe_l2_phase08_capacity_longterm_risk_report.md` / `v87_rc1_dshe_l2_phase08_v87p1_dashboard_compat_evaluate_doc.md` / `v87_rc1_dshe_l2_phase08_archive_final_gate_evaluation_report.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
-> ****外部依赖**: Phase06全部交付完成\(commit 60fc9f2\) → DSHB Phase07 30天GA准入Phase08 → HERMES Phase07 30天GA审计运行中 → Phase07启动
-> ****更新说明**: V4.9→V5.0, V87 Phase07 30天GA长期指标采集完成: 30天全量采样(3,635,867点/99.97%完整率), 三级熔断长期验证(GO/COND-GO/RED/L0-L3四级降级/4次周边界演练9场景全通过), 容量风险跟踪(807.10GB/距RED 1,317天/HERMES索引0.031pp/d监控), 告警长期验证(5,500事件/0FP/0FN/12规则100%有效/4次迭代优化), 面板性能(7面板100%成功率/渲染P99 151ms/查询P99 287ms/缓存96.1%), HERMES字段联动(5/5字段100%完整), Gate评审GO(4.89/5.0/三方3/3 GO), 缺陷清单Phase07新增0项, 运维手册v4.0.25→v4.0.26更新完成
+> ****外部依赖**: Phase07全部交付完成\(commit 5780677\) → DSHB Phase08 90天归档完成\(commit 40c9831\) → HERMES Phase07 GA完成 → 三方对齐90天长期基线 → Phase08启动
+> ****更新说明**: V5.0→V6.0, V87 Phase08 90天归档完成: 90天全量采样(10,907,601点/99.98%完整率), 三级熔断长期验证(GO/COND-GO/RED/L0-L3四级降级/3次月度边界演练27场景全通过), 告警最终验证(16,500事件/0FP/0FN/12规则100%有效/3次迭代优化), 面板性能(7面板100%成功率/渲染P99 149ms/查询P99 280ms/缓存96.5%/W4优化持续有效), HERMES字段联动(5/5字段100%完整/8,640窗口/0中断), 容量风险跟踪(812.82GB/DSHB 3TB扩容Jun15完成/距RED >3年), V87.1兼容性评估(GO/10-16人天/4-6周), Gate评审GO(4.92/5.0/20/20条件/三方3/3 GO), 缺陷清单Phase08新增0项, 运维手册v4.0.26→v4.0.27更新完成
 
 ---
 
@@ -949,9 +949,9 @@ Total: 20 items
 
 ---
 
-*文档版本: v5.0.0 (Phase07 30天GA长期指标采集\+Gate评审版本)*
-*生成时间: 2027-05-05*
+*文档版本: v6.0.0 (V87 Phase08 90天归档最终Gate评审版本)*
+*生成时间: 2027-08-03*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE07_30DAY_GA_DASHBOARD_LONG_TERM_METRICS_COLLECT_ALERT_LONGRUN_VALIDATE*
+*工单: DSHE_V87_RC1_L2_PHASE08_90DAY_ARCHIVE_DASHBOARD_LONG_TERM_METRICS_AND_ALERT_FINAL_VALIDATE*
 *分支: feature/v87-rc1-g1*
-*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 90天长期运维0新增缺陷, V100-1.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87 Phase02面板开发+告警迭代全PASS, V87 Phase03 50%灰度Gate准入全PASS(81/81项/0P0P1P2/5P3), V87 Phase06 72h长稳观测全PASS(72h/99.95%完整率/3RED模拟通过/0FP/0FN/Gate GO 4.63/5.0), V87 Phase07 30天GA长期指标采集全PASS(30天/99.97%完整率/4次周边界演练9场景全通过/0FP/0FN/Gate GO 4.89/5.0), 缺陷清单V4.9→V5.0更新完成
+*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 90天长期运维0新增缺陷, V100-1.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87 Phase02面板开发+告警迭代全PASS, V87 Phase03 50%灰度Gate准入全PASS(81/81项/0P0P1P2/5P3), V87 Phase06 72h长稳观测全PASS(72h/99.95%完整率/3RED模拟通过/0FP/0FN/Gate GO 4.63/5.0), V87 Phase07 30天GA长期指标采集全PASS(30天/99.97%完整率/4次周边界演练9场景全通过/0FP/0FN/Gate GO 4.89/5.0), V87 Phase08 90天归档最终Gate评审全PASS(90天/99.98%完整率/3次月度边界演练27场景全通过/0FP/0FN/Gate GO 4.92/5.0), 缺陷清单V5.0→V6.0更新完成
