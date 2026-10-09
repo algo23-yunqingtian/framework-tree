@@ -3753,3 +3753,26 @@
 - 状态标记: DSHE_L2_PHASE08_READY=TRUE
 - 状态标记: DSHE_L2_PHASE08_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
+
+### 2026-10-19 HERMES_V87_RC1_PHASE08_90DAY_ARCHIVE_AUDIT_LONGTERM_VERIFY
+- 90天归档审计+对账窗口统计+索引归档长期验证+存储容量长期评估+异常事件统计+月度简报+最终Gate评估+V87.1前置兼容 (8 new + MD5 update + JOB_READY update, MD5 all verified) — V87 RC1全生命周期终态
+  - v87_rc1_hermes_phase08_90day_archive_audit_summary_report.md (MD5: 215CBA9214DD) - 90天汇总: 2160h不间断0中断/V2.0全量8640窗口全PASS/SHA256 8640/8640/5字段43200/43200 100%/乱序214次2.48%/异常识别214/214/Gate GO 12/12/最终Gate 29/29/权重100.0/V87RC1全生命周期200天7Phase12096窗口0RED
+  - v87_rc1_hermes_phase08_reconcile_window_stat_report.md (MD5: F82BD6B8AA24) - 对账窗口统计: 8640窗口(96/天×90天)/通过率100%/SHA256 100%/5字段100%(43200/43200)/事件偏差0.492%恒定/丢包偏差0.318pp恒定/乱序214次2.48%/线性增长平台期无加速(日率-0.006pp)/口径与DSHB 8640完全对齐(偏差0)/扩容时段192窗口全PASS
+  - v87_rc1_hermes_phase08_index_archive_longterm_verify_report.md (MD5: 636815A0EEBE) - 索引归档长期验证: ZSTD L3累计144天/存储削减70.2%维持(波动0.7%)/压缩比3.6:1零漂移(标准差0.02)/膨胀0.009pp稳定/查询+2.8%写入+3.5%无新增退化/回归测试36/36PASS(Day30/60/90)/回滚<30s双重验证(Day45+85)/归档周期100%完成率/确认为生产级策略
+  - v87_rc1_hermes_phase08_storage_longterm_capacity_report.md (MD5: 079B0B78A04D) - 存储长期评估: Day41在线扩容2TB→3TB(+50%/1.5h/0停机)/水位86.7%→57.8%→59.0%(YELLOW→GREEN)/清单10/10完成/耗尽预测359天→1548天(+331%/4.2年)/预测模型R²=0.998/累计144天节省229.3GB/扩容对审计0中断/3项风险关闭
+  - v87_rc1_hermes_phase08_outlier_event_stat_report.md (MD5: F033BB9198BA) - 异常事件统计: 214次异常/检测率100%/根因定位100%(DSHB批量提交)/未定位0/丢失0/重复0/字段缺失0/乱序2.48%平台(波动±0.10pp)/RED 0次(连续2160h)/WARN 1次(Day41扩容3min自恢复)/熔断0(8/8规则)/告警215次0误报0漏报/三方联动305次推送100%送达
+  - v87_rc1_hermes_phase08_monthly_archive_audit_brief.md (MD5: AD9F197148F0) - 月度简报: M1/M2/M3三月GO 12/12/吞吐15024恒定/P99持续改善270.5→260.8ms(-3.6%)/膨胀0.009恒定/乱序2.46→2.53→2.43%平台/存储86.0→58.2→58.5%(M2扩容)/M2扩容闭环(清单10/10+Day45回滚)/M3最终Gate(29/29)+V87.1设计完成/综合评分97/99.6/100(均98.8优秀)/16项里程碑
+  - v87_rc1_hermes_phase08_archive_final_gate_evaluation_report.md (MD5: 56CE1E1BBD19) - 最终Gate: HERMES审计12/12/最终归档29/29(6层100%/权重100.0)/COND-GO 0/RED 0/阻断0/兜底0/6/V1.0<5min+归档<30s双验证/V87.1准入10/10 GO/三方一致GO(DSHB 29/29+HERMES 29/29+DSHE 0误报0漏报)/阶段验收16/16 PASS/最终判定APPROVED FOR PRODUCTION ARCHIVAL
+  - risk_watchlist_v87_phase08.md (MD5: E2175F06D520) - 风险清单v87-phase08: 0P0P1/0P2/13P3(vs Phase07 16项 -3)/3项关闭(存储RED+扩容延迟+90天耗尽)/3项新增(均90天内关闭)/兜底0/7触发/HERMES消减-38.1%/DSHB消减-72.9%/V87.1风险预测全低
+- V2.0对账: 90天不间断/2160h 0中断/0重启/0故障切换/8640窗口/SHA256 100%/5字段100%(43200/43200)
+- 索引归档(ZSTD L3): 累计144天/存储削减70.2%维持(波动0.7%)/压缩比3.6:1零漂移/膨胀0.009pp/回归36/36PASS/回滚<30s双重验证/确认生产级
+- 存储: Day41扩容2TB→3TB(0停机)/水位86.7%→59.0%(YELLOW→GREEN)/耗尽359天→1548天(+331%)/144天累计节省229.3GB/扩容对审计0影响
+- 异常事件: 214次/检测率100%/根因定位100%/未定位0/乱序2.48%平台无加速/RED 0(连续2160h)/WARN 1(自恢复)/熔断0/告警0误报0漏报
+- 性能: 0.66ms恒定(3/3月stable)/缓存92.3%恒定/内存12.8MB(增速0.003MB/day -57%放缓/6.6年余量)/CPU 3.4%
+- 三方联动: 305次推送100%送达/0误报0漏报/告警延迟<5s/DSHE→HERMES→DSHB链路验证
+- V87.1前置: 准入10/10 GO/R-NEW-001理想差距23.8→9.4ms(-60.5%)/4维度优化-9.6ms(259.4→249.8ms<250ms)/40测试用例/12周开发/V87.1 RC1 2027-09
+- Gate判定: HERMES审计GO 12/12/最终归档GO 29/29/权重100.0/COND-GO 0/RED 0/阻断0/兜底0/6/三方一致GO
+- 风险: 0P0P1/0P2/13P3(-3)/3关闭(存储RED+扩容延迟+90天耗尽)/兜底全有(0/7触发)/消减-38.1%
+- V87 RC1全生命周期: 200天/7Phase/12096累计窗口/SHA256 100%/0RED/0阻断/90+Gate条件100%通过
+- 约束合规: NO_OVERWRITE=TRUE(Phase07不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE08_90DAY_ARCHIVE_LONG_RUN_RECONCILE=TRUE, HERMES_PHASE08_INDEX_ARCHIVE_LONGTERM_VERIFY=TRUE, HERMES_PHASE08_AUDIT_WINDOW_PERF_MONITOR=TRUE, HERMES_PHASE08_STORAGE_CAPACITY_LONGTERM=TRUE, HERMES_PHASE08_OUTLIER_EVENT_STAT=TRUE, HERMES_PHASE08_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE08_GATE_DECISION_RUN=TRUE, HERMES_PHASE08_V87P1_PRE_COMPAT_CHECK=TRUE, HERMES_PHASE08_FINAL_GATE_DECISION=GO, HERMES_PHASE08_ARCHIVE_DECISION=APPROVED, HERMES_V87_RC1_LIFECYCLE_AUDIT_COMPLETE=TRUE

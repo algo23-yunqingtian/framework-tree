@@ -105,9 +105,22 @@
 | 8 | `v87_rc1_hermes_phase07_ga_gate_evaluation_report.md` | `f362f2d75094` |
 | 9 | `risk_watchlist_v87_phase07.md` | `28dcbc339716` |
 
-## 9. 不可篡改保证
+## 9. V87 Phase08 产物（90天归档终态）
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_hermes_phase08_90day_archive_audit_summary_report.md` | `215cba9214dd85c4057e39d230eff543` |
+| 2 | `v87_rc1_hermes_phase08_reconcile_window_stat_report.md` | `f82bd6b8aa2438f791877f329522c991` |
+| 3 | `v87_rc1_hermes_phase08_index_archive_longterm_verify_report.md` | `636815a0eebe639d12b65a214f8b8be0` |
+| 4 | `v87_rc1_hermes_phase08_storage_longterm_capacity_report.md` | `079b0b78a04dfa3f270c0bdd4f660e0d` |
+| 5 | `v87_rc1_hermes_phase08_outlier_event_stat_report.md` | `f033bb9198ba39e2668c94eb5a365b7e` |
+| 6 | `v87_rc1_hermes_phase08_monthly_archive_audit_brief.md` | `ad9f197148f069f8b0f74e1a6b909c4f` |
+| 7 | `v87_rc1_hermes_phase08_archive_final_gate_evaluation_report.md` | `56ce1e1bbd192fa299e9e4dab275f3be` |
+| 8 | `risk_watchlist_v87_phase08.md` | `e2175f06d5206e9cb4eff9b9b00b2f14` |
+
+## 10. 不可篡改保证
 
 - 所有产物已 commit 至 `feature/v87-rc1-g1`
-- MD5 记录完整（58+ 文件）
-- NO_OVERWRITE: Phase01+02+StageA+StageB+Phase04+Phase05+Phase06产物MD5不变
+- MD5 记录完整（66+ 文件）
+- NO_OVERWRITE: Phase01+02+StageA+StageB+Phase04+Phase05+Phase06+Phase07产物MD5不变
 - NO_MODIFY_V85: 不修改 `*.html`/`scripts/`/`data/`
