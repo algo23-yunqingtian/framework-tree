@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 Phase01+Phase02+Phase03
+# MD5_MANIFEST — V87-RC1 Phase01+Phase02+Phase03(StageA+StageB)
 
 | 项目 | 值 |
 |------|---|
 | 分支 | feature/v87-rc1-g1 |
 | 日期 | 2026-10-18 |
 | 版本 | V87-RC1 |
-| Phase | Phase01 + Phase02 + Phase03 |
+| Phase | Phase01 + Phase02 + Phase03 StageA + Phase03 StageB |
 
 ---
 
@@ -32,7 +32,7 @@
 | 6 | `v87_rc1_hermes_phase02_audit_engine_performance_evaluation.md` | `ad286190348b53d0745dfb6d988c9fec` |
 | 7 | `risk_watchlist_v87_phase02.md` | `75be8cad8ed627291790d4d50b618605` |
 
-## 3. V87 Phase03 产物
+## 3. V87 Phase03 StageA 产物
 
 | # | 文件 | MD5 |
 |---|------|-----|
@@ -44,9 +44,20 @@
 | 6 | `v87_rc1_hermes_phase03_sim_traffic_preverify_report.md` | `ba9528e0ddb0d4566f4592750636dabb` |
 | 7 | `risk_watchlist_v87_phase03.md` | `849633401523d7dfbf80c2ca8f97a706` |
 
-## 4. 不可篡改保证
+## 4. V87 Phase03 StageB 产物
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_hermes_phase03_stageb_online_audit_summary_report.md` | `fbfda6c29244aae7271c182897f3ea78` |
+| 2 | `v87_rc1_hermes_phase03_stageb_reconcile_window_stat_report.md` | `d483fdd57aaf3923b84de0a41b334d26` |
+| 3 | `v87_rc1_hermes_phase03_stageb_index_growth_monitor_report.md` | `85ba36044f2af70562927721c667464b` |
+| 4 | `v87_rc1_hermes_phase03_stageb_audit_performance_report.md` | `cbf0642c0f00bc3476b4fb91a342f674` |
+| 5 | `v87_rc1_hermes_phase03_stageb_gate_decision_snapshot.md` | `8aef84eedf62eb8b0cb65005765dac2b` |
+| 6 | `risk_watchlist_v87_phase03_stageb.md` | `9c4951260c4bd0ad457f01752c14a52b` |
+
+## 5. 不可篡改保证
 
 - 所有产物已 commit 至 `feature/v87-rc1-g1`
-- MD5 记录完整
-- NO_OVERWRITE: Phase01+02产物MD5不变
+- MD5 记录完整（30+ 文件）
+- NO_OVERWRITE: Phase01+02+StageA产物MD5不变
 - NO_MODIFY_V85: 不修改 `*.html`/`scripts/`/`data/`

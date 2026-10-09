@@ -2868,3 +2868,21 @@
 - 约束合规: NO_OVERWRITE=TRUE(Phase01+02不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
 - 状态标记: HERMES_PHASE03_50PCT_GATE_SELF_CHECK=TRUE, HERMES_PHASE03_REAL_TIME_RECONCILE_DEPLOY=TRUE, HERMES_PHASE03_AUDIT_ALERT_CONFIG=TRUE, HERMES_PHASE03_INDEX_MODEL_GRAY_BASELINE=TRUE, HERMES_PHASE03_GATE_DECISION_RULE_LOCK=TRUE, HERMES_PHASE03_SIM_TRAFFIC_PRE_VERIFY=TRUE
 
+
+### 2026-10-18 HERMES_V87_RC1_PHASE03_STAGEB_50PCT_GRAY_ONLINE_CONTINUOUS_AUDIT
+- 50%真实灰度在线持续审计+双链路对账+索引增长监控+性能监控+Gate判定快照 (6 new + MD5 update + JOB_READY update, MD5 all verified)
+  - v87_rc1_hermes_phase03_stageb_online_audit_summary_report.md (MD5: FBFDA6C29244) - 在线审计汇总: 72h/192窗口/双链路(灰度V2.0+基线V1.0)/SHA256 192/192/字段5/5 100%/乱序2次/告警0触发/Gate GO/性能无劣化
+  - v87_rc1_hermes_phase03_stageb_reconcile_window_stat_report.md (MD5: D483FDD57AAF) - 对账窗口统计: 192窗口/通过率100%/max事件偏差0.398%/max丢包0.241pp/差异2次乱序1.04%/根因DSHB批量提交/窗口+事件+根因三级定位
+  - v87_rc1_hermes_phase03_stageb_index_growth_monitor_report.md (MD5: 85BA36044F2A) - 索引增长监控: 实测0.01557pp/天/模型偏差-0.8%/低于WARN 15.6%/CRIT 28.8%/R²=0.998/线性stable/134天到CRITICAL/0告警
+  - v87_rc1_hermes_phase03_stageb_audit_performance_report.md (MD5: CBF0642C0F00) - 性能报告: 单窗口0.68ms(-2.9%)/日5.44ms/内存11.8MB(GREEN)/CPU 3.2%(GREEN)/延迟5.4ms/+84B一致/无劣化/长期稳定
+  - v87_rc1_hermes_phase03_stageb_gate_decision_snapshot.md (MD5: 8AEF84EEDF62) - Gate判定快照: GO 12/12/COND-GO 0/RED 0/12/阻断0次/DSHE🟢/Phase04准入GO
+  - risk_watchlist_v87_phase03_stageb.md (MD5: 9C4951260C4B) - 风险清单v87-phase03-stageb: 0P0P1/0P2(2降级P3)/11P3/1新增(批量乱序已定位)/2降级(膨胀+阻断)/兜底全有
+- 双链路对账: 灰度V2.0 SHA256+5字段+基线V1.0 SHA256/192窗口/100%一致/字段5/5 100%/链路隔离无污染
+- 异常识别: 丢包0/重复0/乱序2(已定位DSHB批量提交)/字段缺失0/告警0触发(正常)
+- 索引膨胀: 0.01557pp/天(实测)/-0.8%(模型偏差)/R²=0.998/linear stable/134天到CRITICAL/WARN 0.018pp未触发
+- 性能: 0.68ms窗口(-2.9%)/11.8MB内存(GREEN)/3.2%CPU(GREEN)/5.4ms延迟/+84B一致/无劣化
+- Gate判定: GO 12/12/COND-GO 0/RED 0/12/阻断0/DSHE🟢绿色/Phase04准入GO
+- 风险: 0P0P1/0P2(2降级)/11P3/1新增(批量乱序已定位)/兜底全有/可控GO
+- 约束合规: NO_OVERWRITE=TRUE(StageA不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE03_STAGEB_50PCT_ONLINE_AUDIT_START=TRUE, HERMES_PHASE03_STAGEB_DUAL_STREAM_RECONCILE=TRUE, HERMES_PHASE03_STAGEB_INDEX_GROWTH_MONITOR=TRUE, HERMES_PHASE03_STAGEB_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE03_STAGEB_GATE_DECISION_RUN=TRUE, HERMES_PHASE03_STAGEB_RECONCILE_STAT_COLLECT=TRUE, HERMES_PHASE03_STAGEB_AUDIT_PERF_MONITOR=TRUE
+
