@@ -2041,3 +2041,17 @@
 - 约束合规: NO_MODIFY_V85=TRUE(html/scripts/data零改动), NO_OVERWRITE=TRUE(Phase20/21/22产物MD5不变), BRANCH_LOCKED=TRUE
 - 状态标记: HERMES_PHASE23_FULL_PRE_AUDIT_DONE=TRUE, HERMES_PHASE23_INDEX_MODEL_RECALIBRATE_DONE=TRUE, HERMES_PHASE23_FULL_GATE_AUDIT_DONE=TRUE, HERMES_PHASE23_P2_INDEX_RISK_QUANTIFY_DONE=TRUE, HERMES_PHASE23_FULL_TRAFFIC_CONDITIONAL_GO=TRUE
 
+
+### 2026-10-18 HERMES_V86_RC2_PHASE24_FULL_TRAFFIC_GATE_AUDIT_FINAL_REVIEW_AND_CONSTRAINT_DOC
+- 全量Gate终审复核+索引模型终审+约束文档+长期一致性+对账Runbook+风险清单终版 (6 new, MD5 all verified)
+  - phase24_full_traffic_gate_final_audit_review.md (MD5: FACB40D43B36) - Gate终审复核: 10/10准入全PASS/6约束可落地/7一致性全PASS/CONDITIONAL GO确认
+  - phase24_full_traffic_audit_constraint_spec.md (MD5: 3A0F30CC621E) - 约束文档v1.0: 监控频率(12h膨胀+1h性能)+对账周期(24h/8窗口)+vacuum周期(30天)+干预矩阵(8.0→10.0)+应急处置
+  - phase24_full_traffic_index_model_final_review.md (MD5: 7156E521ABC8) - 模型终审: v2.0两点线性外推/校准偏差0%/外推误差±4.2%/100%到CRITICAL 56天/可靠性中-高
+  - phase24_full_traffic_consistency_longterm_risk_audit.md (MD5: 2F12F644F5E3) - 长期一致性: 8项中7项无退化/唯一退化=索引膨胀/30天vacuum可控制
+  - phase24_full_traffic_threeway_reconcile_runbook.md (MD5: FA329F7B675C) - 对账Runbook: 8窗口/天+SHA256+偏差阈值0.5%+异常处置4流程+90天归档
+  - phase24_risk_watchlist_shturl_final.md (MD5: 952DB014C9BF) - 风险清单v4.0终版: 0P0/0P1/1P2(膨胀8.123%)/3P3/长期跟踪规则固化+缓解路径(路径A推荐: 100%+30天vacuum)
+- 复核核心: 吞吐公式验证841.1=2270995/(3×900)✅/丢包95%CI上界0.00426%<0.01%✅/膨胀校准偏差0%✅/56天到CRITICAL外推一致✅
+- 长期退化项: 仅索引膨胀1项(P2), 其余7项(WAL/索引P99/丢包/链断裂/去重/追溯/对账)均无时间退化
+- 约束合规: NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(Phase20/21/22/23产物MD5不变), BRANCH_LOCKED=TRUE
+- 状态标记: HERMES_PHASE24_FULL_GATE_AUDIT_REVIEW_DONE=TRUE, HERMES_PHASE24_INDEX_MODEL_FINAL_REVIEW_DONE=TRUE, HERMES_PHASE24_AUDIT_CONSTRAINT_DOC_DONE=TRUE, HERMES_PHASE24_LONG_TERM_CONSISTENCY_WATCH=TRUE, HERMES_PHASE24_CONDITIONAL_GO_CONFIRMED=TRUE
+
