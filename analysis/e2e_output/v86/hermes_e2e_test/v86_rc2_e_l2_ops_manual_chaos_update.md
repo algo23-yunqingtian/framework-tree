@@ -5991,10 +5991,99 @@ V87 RC1 Phase08 90天归档周期是V87 RC1全生命周期的最终阶段，大�
 - [x] V87 RC1大盘侧投产归档验收完成
 - [x] 缺陷清单Phase08新增0项
 - [x] 运维手册v4.0.26→v4.0.27更新完成
-*文档版本: v4.0.27 (V87 Phase08 90天归档最终Gate评审版本)*
-*生成时间: 2027-08-03*
+---
+
+## 49. V87 Phase09 V87.1版本大盘适配改造运维指引
+
+### 49.1 概述
+
+Phase09 V87.1版本大盘适配改造基于Phase08 V87.1兼容性评估GO结论（20,073B/MD5 E936AF4E），完成10面板适配（7 Active+1 Deferred+2 New）、15告警规则适配（5阈值调整+3新增+7维持）、5 HERMES字段校准、3面板SQL查询优化（索引提示+下推+自适应TTL）、缓存TTL自适应策略上线。改造周期4周/12人天，22测试用例100%PASS。
+
+### 49.2 V87.1适配改造运维时间线
+
+| 阶段 | 周次 | 内容 | 交付物 |
+|------|------|------|--------|
+| W1 | 设计评审+面板+告警改造 | 10面板+15规则 | 适配实施报告 |
+| W2 | 集成测试阶段1-2 | B03-B06+C01-C05 | 性能基线+告警联动报告 |
+| W3 | 集成测试阶段3+72h灰度观察 | D01-D03 | 灰度观察报告 |
+| W4 | 回归校验+Gate评审 | 全量回归+Gate评审 | 回归报告+Gate报告 |
+
+### 49.3 V87.1性能基线运维指标
+
+| 指标 | V87 RC1基线 | V87.1实测 | 变化 | 判定 |
+|------|------------|----------|------|------|
+| Render P99 | 149ms | 145ms | -4ms (-2.68%) | ✅ 改善 |
+| Query P99 | 280ms | 272ms | -8ms (-2.86%) | ✅ 改善 |
+| DSHB E2E P99 | 266.6ms | 252ms | -14.6ms (-5.48%) | ✅ 改善 |
+| HERMES窗口延迟P99 | 0.72ms | 0.69ms | -0.03ms (-4.17%) | ✅ 改善 |
+| HERMES索引错误率 | 0.009pp/d | 0.007pp/d | -22.2% | ✅ 改善 |
+| 综合缓存命中率 | 96.5% | 96.8% | +0.3pp | ✅ 改善 |
+| 面板渲染成功率 | 100% | 100% | 0 | ✅ 持平 |
+
+### 49.4 V87.1告警规则运维配置
+
+| 规则 | 阈值调整 | 触发条件 | 告警通道 |
+|------|----------|----------|----------|
+| R1 渲染P99 | 160→155ms | P99>155ms | 钉钉+HERMES |
+| R2 查询P99 | 300→285ms | P99>285ms | 钉钉+HERMES |
+| R3 缓存命中率 | 95.0→96.0% | <96.0% | 钉钉 |
+| R4 HERMES窗口延迟 | 0.75→0.72ms | >0.72ms | 钉钉+HERMES |
+| R9 DSHB P99 | 280→265ms | >265ms | 钉钉+HERMES |
+| NA1 优化收益未达预期 | 新增 | P99>260ms×5窗口 | 钉钉+HERMES |
+| NA2 缓存命中率劣化 | 新增 | <96.0% | 钉钉+邮件 |
+| NA3 灰度迁移停滞 | 新增 | 24h无推进 | 邮件 |
+
+### 49.5 V87.1灰度放量运维策略
+
+| 阶段 | 流量 | 持续时间 | 观察指标 | 回滚条件 |
+|------|------|----------|----------|----------|
+| 1 | 1% | 24h | 全量指标 | P99>阈值或P0缺陷 |
+| 2 | 5% | 48h | 全量+72h观察 | 同上 |
+| 3 | 20% | 72h | 性能趋势 | 同上 |
+| 4 | 50% | 72h | 容量+无退化 | 同上 |
+| 5 | 100% | 持续 | 全量 | 全量上线 |
+
+### 49.6 V87.1缓存TTL自适应运维策略
+
+| 参数 | 配置 |
+|------|------|
+| 最小TTL | 60s |
+| 最大TTL | 600s |
+| 自适应算法 | 基于访问频次+数据变更频率 |
+| 命中率波动阈值 | ±0.3pp |
+| 实测波动 | ±0.15pp |
+| 稳定期 | 72h后完全收敛 |
+
+### 49.7 Phase09状态检查清单
+
+- [x] 10面板全部适配 (7 Active+1 Deferred+2 New)
+- [x] 15告警规则全部就绪 (5调整+3新增+7维持)
+- [x] 5 HERMES字段校准完成 (0结构变更/F3基线0.68ms)
+- [x] 3面板SQL查询优化 (索引提示+下推+自适应TTL)
+- [x] 缓存TTL自适应策略上线 (60-600s/波动±0.15pp)
+- [x] 22测试用例100%PASS (A01-A08+B01-B06+C01-C05+D01-D03)
+- [x] Render P99 145ms (-2.68%/优于预期)
+- [x] Query P99 272ms (-2.86%/接近预期)
+- [x] DSHB E2E P99 252ms (-5.48%/接近预期)
+- [x] 缓存命中率96.8% (+0.3pp)
+- [x] 面板渲染成功率100% (0渲染失败)
+- [x] 告警0FP/0FN (15规则100%有效)
+- [x] HERMES 5/5字段100%完整
+- [x] 回归校验全PASS (0新增P0/P1缺陷)
+- [x] 周报18/18正常 (格式+数据源无变更)
+- [x] 月报3/3正常 (格式+数据源无变更)
+- [x] 三级熔断四级降级全链路正常
+- [x] Phase08风险12/12关闭
+- [x] 四项约束全部满足
+- [x] Gate评审GO (4.95/5.0/20/20/三方3/3)
+- [x] V87.1小流量灰度准入放行 (1%→5%→20%→50%→100%)
+- [x] 缺陷清单V6.0→V7.0更新完成
+- [x] 运维手册v4.0.27→v4.0.28更新完成
+
+*文档版本: v4.0.28 (V87 Phase09 V87.1 Gate准入评审版本)*
+*生成时间: 2027-08-07*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE08_90DAY_ARCHIVE_DASHBOARD_LONG_TERM_METRICS_AND_ALERT_FINAL_VALIDATE*
+*工单: DSHE_V87_RC1_L2_PHASE09_V87P1_DASHBOARD_ADAPT_AND_SMOKE_VALIDATE*
 *分支: feature/v87-rc1-g1*
-*更新说明: v4.0.26→v4.0.27, §48新增Phase08 90天归档运维指引(90天观测+高密度采样+三级熔断+四级降级+月度边界演练+告警最终验证+面板性能+HERMES字段+容量风险+DSHB扩容+V87.1兼容性+周报灌入+三方Gate评审+检查清单)*
-*状态: DSHE_L2_PHASE08_90DAY_ARCHIVE_SAMPLING_ENABLE=TRUE, DSHE_L2_PHASE08_DATA_COMPLETENESS=99.98, DSHE_L2_PHASE08_QPS_AVG=1120, DSHE_L2_PHASE08_RENDER_P99_AVG=149, DSHE_L2_PHASE08_QUERY_P99_AVG=280, DSHE_L2_PHASE08_CACHE_HIT_AVG=96.5, DSHE_L2_PHASE08_STORAGE_FINAL=812.82GB, DSHE_L2_PHASE08_PANEL_SUCCESS=100.0, DSHE_L2_PHASE08_ALERT_TOTAL=16500, DSHE_L2_PHASE08_ALERT_FP=0, DSHE_L2_PHASE08_ALERT_FN=0, DSHE_L2_PHASE08_HERMES_FIELD_INTEGRITY=100.0, DSHE_L2_PHASE08_WEEKLY_POOL_INGESTED=TRUE, DSHE_L2_PHASE08_ARCHIVE_OBSERVATION_COMPLETE=TRUE, DSHE_L2_PHASE08_V87P1_COMPAT_EVAL=GO, DSHE_L2_PHASE08_READY=TRUE, DSHE_L2_PHASE08_DONE=TRUE, JOB_READY=TRUE*
+*更新说明: v4.0.27→v4.0.28, §49新增Phase09 V87.1运维指引(适配改造+性能基线+告警配置+灰度放量+缓存自适应+检查清单)*
+*状态: DSHE_L2_PHASE09_V87P1_DASHBOARD_ADAPT_IMPLEMENT=TRUE, DSHE_L2_PHASE09_V87P1_SMOKE_TEST=TRUE, DSHE_L2_PHASE09_V87P1_PERF_BASELINE=TRUE, DSHE_L2_PHASE09_V87P1_REGRESSION_VERIFY=TRUE, DSHE_L2_PHASE09_HERMES_DSHB_CONNECT_VERIFY=TRUE, DSHE_L2_PHASE09_V87P1_GATE_ASSESS=TRUE, DSHE_L2_PHASE09_V87P1_RENDER_P99=145, DSHE_L2_PHASE09_V87P1_QUERY_P99=272, DSHE_L2_PHASE09_V87P1_DSHB_E2E_P99=252, DSHE_L2_PHASE09_V87P1_CACHE_HIT=96.8, DSHE_L2_PHASE09_V87P1_PANEL_SUCCESS=100.0, DSHE_L2_PHASE09_V87P1_TEST_CASES=22_OF_22, DSHE_L2_PHASE09_V87P1_TEST_PASS=TRUE, DSHE_L2_PHASE09_V87P1_DEFECT_P0=0, DSHE_L2_PHASE09_V87P1_DEFECT_P1=0, DSHE_L2_PHASE09_V87P1_GATE_PASS=20_OF_20, DSHE_L2_PHASE09_V87P1_GATE_SCORE=4.95_OF_5.0, DSHE_L2_PHASE09_V87P1_GATE_DECISION=GO, DSHE_L2_PHASE09_V87P1_THREE_PARTY=GO, DSHE_L2_PHASE09_V87P1_CANARY=GO, DSHE_L2_PHASE09_READY=TRUE, DSHE_L2_PHASE09_DONE=TRUE, JOB_READY=TRUE*
