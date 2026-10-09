@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 Phase01+Phase02+Phase03(StageA+StageB)
+# MD5_MANIFEST — V87-RC1 Phase01+Phase02+Phase03+Phase04
 
 | 项目 | 值 |
 |------|---|
 | 分支 | feature/v87-rc1-g1 |
 | 日期 | 2026-10-18 |
 | 版本 | V87-RC1 |
-| Phase | Phase01 + Phase02 + Phase03 StageA + Phase03 StageB |
+| Phase | Phase01 + Phase02 + Phase03(StageA+StageB) + Phase04 |
 
 ---
 
@@ -55,9 +55,20 @@
 | 5 | `v87_rc1_hermes_phase03_stageb_gate_decision_snapshot.md` | `8aef84eedf62eb8b0cb65005765dac2b` |
 | 6 | `risk_watchlist_v87_phase03_stageb.md` | `9c4951260c4bd0ad457f01752c14a52b` |
 
-## 5. 不可篡改保证
+## 5. V87 Phase04 产物
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_hermes_phase04_75pct_online_audit_summary_report.md` | `cb615193d97d4f884bdc70e85a5ae952` |
+| 2 | `v87_rc1_hermes_phase04_reconcile_window_stat_report.md` | `d8cc41e935e1a784877a23e08daf6738` |
+| 3 | `v87_rc1_hermes_phase04_index_growth_verify_report.md` | `27fd0bcf83e2dc79e4a4ebb7883961f6` |
+| 4 | `v87_rc1_hermes_phase04_audit_engine_performance_report.md` | `76eaa50e7eab73b9a4d2319d31ae4fd4` |
+| 5 | `v87_rc1_hermes_phase04_75pct_gate_evaluation_report.md` | `7b31e04f1a4f22e95e411e325023beb7` |
+| 6 | `risk_watchlist_v87_phase04.md` | `4a9cd7bbd66596e968a9d647e239604a` |
+
+## 6. 不可篡改保证
 
 - 所有产物已 commit 至 `feature/v87-rc1-g1`
-- MD5 记录完整（30+ 文件）
-- NO_OVERWRITE: Phase01+02+StageA产物MD5不变
+- MD5 记录完整（36+ 文件）
+- NO_OVERWRITE: Phase01+02+StageA+StageB产物MD5不变
 - NO_MODIFY_V85: 不修改 `*.html`/`scripts/`/`data/`

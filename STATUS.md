@@ -2937,3 +2937,21 @@
 - 约束合规: NO_OVERWRITE=TRUE(StageA不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
 - 状态标记: HERMES_PHASE03_STAGEB_50PCT_ONLINE_AUDIT_START=TRUE, HERMES_PHASE03_STAGEB_DUAL_STREAM_RECONCILE=TRUE, HERMES_PHASE03_STAGEB_INDEX_GROWTH_MONITOR=TRUE, HERMES_PHASE03_STAGEB_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE03_STAGEB_GATE_DECISION_RUN=TRUE, HERMES_PHASE03_STAGEB_RECONCILE_STAT_COLLECT=TRUE, HERMES_PHASE03_STAGEB_AUDIT_PERF_MONITOR=TRUE
 
+
+### 2026-10-18 HERMES_V87_RC1_PHASE04_75PCT_GRAY_ONLINE_AUDIT_AND_INDEX_GROWTH_VERIFY
+- 75%灰度在线审计+索引增长验证+性能评估+Gate评估+Phase05准入 (6 new + MD5 update + JOB_READY update, MD5 all verified)
+  - v87_rc1_hermes_phase04_75pct_online_audit_summary_report.md (MD5: CB615193D97D) - 75%在线审计: 72h/192窗口/双链路(灰度V2.0+基线V1.0)/SHA256 192/192/字段5/5 100%/乱序3次/告警0/Gate GO/膨胀0.0235pp/性能无劣化/Phase05准入GO
+  - v87_rc1_hermes_phase04_reconcile_window_stat_report.md (MD5: D8CC41E935E1) - 对账窗口统计: 192窗口/通过率100%/max事件偏差0.452%/max丢包0.287pp/差异3次乱序1.56%/根因DSHB批量提交/50%→75%对比
+  - v87_rc1_hermes_phase04_index_growth_verify_report.md (MD5: 27FD0BCF83E2) - 索引增长验证: 实测0.02350pp/天/模型偏差-0.2%/低于75%上限19.1%/低于100%上限49%/R²=0.999/linear stable/89天到CRITICAL/50%→75%线性验证
+  - v87_rc1_hermes_phase04_audit_engine_performance_report.md (MD5: 76EAA50E7EAB) - 性能报告: 单窗口0.69ms(+1.5%<0.70ms)/日5.52ms/内存11.9MB(GREEN)/CPU 3.4%(GREEN)/延迟5.5ms/+84B线性/上限校验全部在限/无劣化
+  - v87_rc1_hermes_phase04_75pct_gate_evaluation_report.md (MD5: 7B31E04F1A4F) - Gate评估: GO 12/12/COND-GO 0/RED 0/12/阻断0/DSHE🟢/Phase05准入12/12条件GO/Phase05风险提示(膨胀+性能接近上限)
+  - risk_watchlist_v87_phase04.md (MD5: 4A9CD7BBd665) - 风险清单v87-phase04: 0P0P1/1P2(膨胀)/12P3/1新增(性能上限接近)/兜底全有/Phase05风险提示
+- 双链路对账: 灰度V2.0 SHA256+5字段+基线V1.0 SHA256/192窗口/100%一致/字段5/5 100%/链路隔离无污染
+- 异常识别: 丢包0/重复0/乱序3(1.56%已定位DSHB批量提交)/字段缺失0/告警0触发(正常)
+- 索引膨胀: 0.02350pp/天(实测)/-0.2%(模型偏差)/R²=0.999/linear stable/89天到CRITICAL/低于75%上限19.1%/低于100%上限49%/50%→75%线性验证
+- 性能: 0.69ms窗口(+1.5%<0.70ms上限)/11.9MB内存(GREEN)/CPU 3.4%(GREEN)/5.5ms延迟/+84B线性/上限校验全部在限/无劣化
+- Gate判定: GO 12/12/COND-GO 0/RED 0/12/阻断0/DSHE🟢绿色/Phase05准入12/12条件GO
+- 风险: 0P0P1/1P2(膨胀速率)/12P3/1新增(性能上限接近0.69ms)/兜底全有/Phase05提示(膨胀+性能接近上限需监控)
+- 约束合规: NO_OVERWRITE=TRUE(StageB不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE04_75PCT_DUAL_STREAM_RECONCILE=TRUE, HERMES_PHASE04_INDEX_GROWTH_VERIFY=TRUE, HERMES_PHASE04_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE04_GATE_DECISION_RUN=TRUE, HERMES_PHASE04_RECONCILE_STAT_ANALYSIS=TRUE, HERMES_PHASE04_AUDIT_PERF_EVAL=TRUE, HERMES_PHASE04_PHASE05_GATE_PRE_ASSESS=TRUE
+
