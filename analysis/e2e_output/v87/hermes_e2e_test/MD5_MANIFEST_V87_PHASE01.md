@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 Phase01
+# MD5_MANIFEST — V87-RC1 Phase01+Phase02
 
 | 项目 | 值 |
 |------|---|
 | 分支 | feature/v87-rc1-g1 |
 | 日期 | 2026-10-18 |
 | 版本 | V87-RC1 |
-| Phase | Phase01 |
+| Phase | Phase01 + Phase02 |
 
 ---
 
@@ -20,17 +20,28 @@
 | 5 | `v87_rc1_hermes_phase01_pre_reconcile_test_report.md` | `00f52dcb87e618e40ba6023f338c7cec` |
 | 6 | `v87_rc1_hermes_phase01_risk_watchlist_v87_initial.md` | `8d9770fd5511f61a23c24d61cf827e52` |
 
-## 2. V86 继承产物（只读引用）
+## 2. V87 Phase02 产物
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_hermes_phase02_3party_requirement_final_align_minutes.md` | `ec1cf8ac58e9197b234e92483de64c78` |
+| 2 | `v87_rc1_hermes_phase02_multi_scenario_reconcile_validation_report.md` | `9aaaf0303ca2ee5af6e668a63d775ed0` |
+| 3 | `v87_rc1_hermes_phase02_fault_inject_reconcile_test_report.md` | `962cfc6477f7549008d24dc59e76cf3d` |
+| 4 | `v87_rc1_hermes_phase02_index_model_tune_sensitivity_analysis.md` | `5bfce8e4c341bc756c24adf6e883a911` |
+| 5 | `v87_rc1_hermes_phase02_v87_gate_risk_checklist.md` | `db33046c2610fce761d9d6a86058d3b9` |
+| 6 | `v87_rc1_hermes_phase02_audit_engine_performance_evaluation.md` | `ad286190348b53d0745dfb6d988c9fec` |
+| 7 | `risk_watchlist_v87_phase02.md` | `75be8cad8ed627291790d4d50b618605` |
+
+## 3. V86 继承产物（只读引用）
 
 | 文件 | MD5 | 来源 |
 |------|-----|------|
 | `phase4_gray_audit_wal_validator.py` | `de4d2cbe9a25e754f7b20ad628b6e50f` | V86 基础引擎 |
 | `phase27_v86_full_version_audit_archive_closure.md` | `6311a41007e65407c3e2b56393f6be26` | V86 归档闭环 |
-| `phase27_risk_watchlist_v7_longterm_final.md` | `ab2997c7e0541fffd56dc1aeac223fbf` | V86 风险清单v7.0 |
 
-## 3. 不可篡改保证
+## 4. 不可篡改保证
 
 - 所有产物已 commit 至 `feature/v87-rc1-g1`
 - MD5 记录完整
-- NO_OVERWRITE: V87 不修改 V86 产物
+- NO_OVERWRITE: Phase01产物MD5不变
 - NO_MODIFY_V85: 不修改 `*.html`/`scripts/`/`data/`

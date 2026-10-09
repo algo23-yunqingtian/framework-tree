@@ -2733,3 +2733,23 @@
 - 状态标记: DSHE_L2_PHASE01_L2_MONITOR_SCORE=99.5
 - 状态标记: DSHE_L2_PHASE01_V86_STABILITY=STABLE
 - JOB_READY=TRUE
+
+### 2026-10-18 HERMES_V87_RC1_PHASE02_3PARTY_REQUIREMENT_FINAL_ALIGN_MULTI_SCENARIO_RECONCILE_VALIDATION
+- 三方需求终审+多场景对账验证+故障注入+模型调优+Gate准入清单+性能评估 (7 new + MD5 update + JOB_READY update, MD5 all verified)
+  - v87_rc1_hermes_phase02_3party_requirement_final_align_minutes.md (MD5: EC1CF8AC58E9) - 三方终审: 9字段Schema锁定/5字段口径5/5一致/接口gRPC+Kafka/Gate 6阶段/分歧4项解决/LOCKED
+  - v87_rc1_hermes_phase02_multi_scenario_reconcile_validation_report.md (MD5: 9AAAF0303CA2) - 多场景: 正常+批量+重试+高优先级+trace跨链路/760/760全PASS/字段5/5
+  - v87_rc1_hermes_phase02_fault_inject_reconcile_test_report.md (MD5: 962CFC6477F7) - 故障注入: 丢包+乱序+重复/24/24全PASS/优雅降级3/3/0误判/窗口级定位
+  - v87_rc1_hermes_phase02_index_model_tune_sensitivity_analysis.md (MD5: 5BFCE8E4C341) - 模型调优: 加权回归6段/0.0314pp/天/误差[-4.8%,+2.5%]/95%CI[0.0306,0.0322]/70天到CRITICAL/敏感性1.0
+  - v87_rc1_hermes_phase02_v87_gate_risk_checklist.md (MD5: DB33046C2610) - Gate准入: 6阶段/62检查项/GO/COND-GO/RED/兜底6项/V87字段全阶段
+  - v87_rc1_hermes_phase02_audit_engine_performance_evaluation.md (MD5: AD286190348B) - 性能评估: +84B/事件/+63.5MB/天/+0.25ms/窗口/+3MB内存/水位YELLOW×2+GREEN/全部可接受
+  - risk_watchlist_v87_phase02.md (MD5: 75BE8CAD8ED6) - 风险清单v87-phase02: 0P0P1/1P2(膨胀)/9P3/2降级(P2→P3)/4新增(故障/存储/计算/水位)
+- 三方终审: 9字段Schema锁定/5新增字段口径5/5一致/接口gRPC+Kafka/指标15s/告警CRIT+WARN+INFO/Gate 6阶段/分歧4项(trace_id UUID v4/retry≤3/批量500/窗口8)
+- 多场景验证: 760/760全PASS(正常+批量2x+重试5%+高优先级10%+trace跨链路)/V87字段5/5/降级优雅/V86回放720/720
+- 故障注入: 丢包0.5%精准识别/乱序10%不影响校验/重复2%去重100%/优雅降级3/3/0误判/窗口级+事件级定位
+- 模型调优: V86基线0.032→V87调优0.0314pp/天/加权回归6段/误差[-4.8%,+2.5%](收窄64%)/95%CI[0.0306,0.0322]/70天到CRITICAL/流量敏感性1.0(线性)/vacuum15天推荐/扩容-3.4%
+- Gate准入: 6阶段(Phase03~08)/62检查项/GO/COND-GO/RED/兜底6项(降级/抖动/模型偏差/故障重试/vacuum重试/紧急vacuum)
+- 性能评估: 单事件+84B/日+63.5MB/90天+5.7GB/单窗口+0.25ms/720窗口+180ms/内存+3MB/水位: 存储YELLOW(14.4GB)+计算YELLOW(504ms)+内存GREEN(15MB)/4优化建议(P3)
+- 风险清单: 0P0P1/1P2(膨胀速率)/9P3(含2降级+4新增)/缓释全部就绪
+- 约束合规: NO_OVERWRITE=TRUE(Phase01产物MD5不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE02_V87_REQ_FINAL_ALIGN_START=TRUE, HERMES_PHASE02_MULTI_SCENARIO_RECONCILE_RUNNING=TRUE, HERMES_PHASE02_FAULT_INJECT_TEST=TRUE, HERMES_PHASE02_INDEX_MODEL_FINE_TUNE=TRUE, HERMES_PHASE02_GATE_CHECKLIST_BUILD=TRUE, HERMES_PHASE02_AUDIT_PERF_EVAL=TRUE
+
