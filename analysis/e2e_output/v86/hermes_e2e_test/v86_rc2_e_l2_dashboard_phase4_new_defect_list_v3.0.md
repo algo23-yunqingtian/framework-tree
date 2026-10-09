@@ -1,15 +1,15 @@
-# V86-RC2 L2大盘缺陷清单V4.7
+# V86-RC2 L2大盘缺陷清单V4.8
 
-> **工单\*\*: DSHE_V87_RC1_L2_PHASE02_V87_DASHBOARD_DEVELOP_AND_ALERT_RULE_ITERATE (Phase02面板开发+告警规则迭代+字段集成+联调验收)
-> **子任务**: T7 — 缺陷清单V4.6→V4.7更新(Phase02面板开发+告警迭代+联调验收)
+> **工单\*\*: DSHE_V87_RC1_L2_PHASE03_STAGEA_50PCT_GRAY_MONITOR_PREP_AND_GATE_READY (Phase03 StageA 50%灰度监控侧Gate准入)
+> **子任务**: T8 — 缺陷清单V4.7→V4.8更新(Phase03 StageA 50%灰度Gate准入)
 > **分支: `feature/v87-rc1-g1` @ Phase01 commit (`d251dbb`)
-> **文档版本\*\*: v4.7.0 (Phase02面板开发与告警规则迭代版本)
+> **文档版本\*\*: v4.8.0 (Phase03 StageA 50%灰度Gate准入版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
 > **日期**: 2027-03-15
-> **前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.6) / `v87_rc1_e_l2_dashboard_phase02_panel_development_report.md` / `v87_rc1_e_l2_dashboard_phase02_panel_alert_acceptance_report.md`
+> ****前置报告**: `v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md` (V4.7) / `v87_rc1_e_l2_dashboard_phase03_50pct_gray_sampling_config_report.md` / `v87_rc1_e_l2_dashboard_phase03_gate_pre_drill_report.md` / `v87_rc1_e_l2_dashboard_phase03_50pct_gate_acceptance_report.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
-> **外部依赖**: Phase01需求锁版完成 → V200-1.0基线锁定 → Phase02面板开发启动 → Phase02联调验收完成
-> **更新说明**: V4.6→V4.7, V87 Phase02面板开发与告警规则迭代完成: 8个新面板开发完成(7个P1+P2实施+1个P2暂缓/渲染P99≤150ms/查询P99≤300ms/数据延迟≤500ms), 12条V87告警规则迭代完成(V200-1.0阈值/IE-AL-001三级预警保留/AI异常检测层/告警降噪分组策略/吞吐≥900ev/s/WAL<3ms/索引<7ms/丢包<0.005%), 5个HERMES新增审计字段集成(event_type/priority/trace_id/batch_id/retry_count/trace链路视图/批量事件视图/重试事件视图), 面板联调验收(8/8 PASS/0新增缺陷), 告警压测验证(回放V86历史流量+异常注入/0误报0漏报/降噪策略生效), 容量评估完成(查询QPS 300→520/存储720→890GB/缓存命中率≥95%/QPS保护阈值800), 缺陷清单Phase02新增0项, 运维手册v4.0.22→v4.0.23更新完成
+> ****外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
+> ****更新说明**: V4.7→V4.8, V87 Phase03 StageA 50%灰度Gate准入完成: 50%灰度采样策略配置完成(双流量隔离/灰度100%全采样/基线V86采样保持/QPS 300→560/存储720→805GB), 灰度熔断告警策略落地(GO/COND-GO/RED三级/L0-L3四级降级/12规则灰度阈值适配), Gate预演练全部通过(81/81项PASS/0P0P1P2/5P3/0FP0FN), 5字段灰度链路验证(5/5字段100%完整/跨服务100%匹配), 容量水位复核(QPS 560/30%余量/存储805GB/9.8%余量), 灰度观测手册输出(79检查项/3响应矩阵), 三方Gate评审通过(DSHE GO 97%/DSHB GO 95%/HERMES GO 96%), 缺陷清单Phase03新增0项, 运维手册v4.0.23→v4.0.24更新完成
 
 ---
 
@@ -22,7 +22,7 @@
 5. [P2优化建议](#5-p2优化建议)
 6. [Phase4新增缺陷详情](#6-phase4新增缺陷详情)
 7. [Phase5新增缺陷详情](#7-phase5新增缺陷详情)
-8. [HERMES外部依赖阻塞项](#8-hermes外部依赖阻塞项)
+8. [HERMES**外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 9. [缺陷根因分析](#9-缺陷根因分析)
 10. [缺陷修复建议](#10-缺陷修复建议)
 11. [DSHB风险登记册V1.6同步](#11-dshb风险登记册v16同步)
@@ -68,7 +68,7 @@
 - **Phase27新增缺陷**: 0项 (90天指标归档+内存扩容+周期Vacuum+三轮故障演练+基线复核+面板增强+查询调优+内存趋势+告警评估+90天评估无新增缺陷)
 - **Phase27新增缺陷**: 0项 (90天指标持久化+内存扩容+周期Vacuum+3轮混沌演练+基线复核+容量预测面板+查询调优+内存趋势+告警评估+V87需求收集无新增缺陷)
 - **Phase27复盘**: V4.5数据修正6项, V86资产归档完成, V87需求锁版完成, 5份新报告+5份更新文件交付
-- **外部依赖阻塞**: 3项HERMES阻塞项已全部CLOSED (DSHB Phase10闭环)
+- ****外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 - **P0阻断缺陷**: 0项内部阻断, 1项外部阻塞(HERMES-WAL)
 - **P1重要缺陷**: P5-P1-001更新为【线上验证通过】, 3项已CLOSED
 - **DSHB风险登记册**: V1.4→V1.5→V1.6→V1.7→V1.8→V1.9→V1.10→V1.11, 9+项新增风险同步
@@ -451,7 +451,7 @@ Total: 20 items
 | HERMES关联 | B-01 检索线性扫描退化 |
 | DSHB风险 | V86.2-P1-001 / P5-RISK-006 |
 | 解除条件 | 复合索引上线 + 500万行P99<200ms验证 |
-| 外部依赖 | HERMES索引上线 |
+| **外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 | Phase6更新 | DSHB索引优化评估完成(复合索引方案B), 72h长周期回放验证大盘索引监控就绪 |
 | Phase7更新 | 3核心索引方案(idx_trace/idx_fault/idx_sev_ts)上线验证: P99 25.39ms→4.8ms(5.3x), 72h连续回放验证通过, 性能满足基线(P99<200ms), 缺陷状态从【待索引上线验证】更新为【3核心索引方案满足基线】 |
 | Phase8更新 | 线上索引变更窗口观测验证: 02:00-04:00 UTC窗口内3核心索引创建成功(14.2min), 查询P99 1,187ms→3.4ms(349x), 72h线上持续观测P99稳定3.2-3.9ms(CV<0.04), 性能满足基线(P99<200ms), 缺陷状态从【3核心索引方案满足基线】更新为【线上验证通过】 |
@@ -494,7 +494,7 @@ Total: 20 items
 
 ---
 
-## 8. HERMES外部依赖阻塞项（已全部CLOSED）
+## 8. HERMES**外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 
 ### 8.1 HERMES阻塞项总览
 
@@ -660,7 +660,7 @@ Total: 20 items
 | HERMES-RISK-003 | HERMES事件字段规范待签认 (P2外部) | P2外部 | DSHE Phase4 | 低 | HERMES | ⚠️ 跟踪 |
 | P4-RISK-004 | CF03渲染P99阈值临界 (P2内部) | P2 | DSHE Phase4 | 低 | DSHE | ⚠️ 跟踪 |
 | P4-RISK-005 | CF03队列峰值阈值临界 (P2内部) | P2 | DSHE Phase4 | 低 | DSHE | ⚠️ 跟踪 |
-| P5-RISK-006 | 检索线性扫描退化风险 (P1外部依赖) | P1 | DSHE Phase5 | 中 | DSHE+HERMES | ✅ CLOSED (Phase8线上验证通过) |
+| P5-RISK-006 | 检索线性扫描退化风险 (P1**外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 | P5-RISK-007 | 告警抑制率置信区间偏宽 (P2内部) | P2 | DSHE Phase5 | 低 | DSHE | ⚠️ 跟踪 |
 
 ### 11.3 V1.6风险登记册总览
@@ -680,9 +680,9 @@ Total: 20 items
 
 | 风险 | DSHB确认 | 备注 |
 |------|----------|------|
-| HERMES-RISK-001 | ✅ 已确认 | HERMES WAL链路阻塞, 外部依赖 |
-| HERMES-RISK-002 | ✅ 已确认 | HERMES三方对账阻塞, 外部依赖 |
-| HERMES-RISK-003 | ✅ 已确认 | HERMES字段规范待签认, 外部依赖 |
+| HERMES-RISK-001 | ✅ 已确认 | HERMES WAL链路阻塞, **外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
+| HERMES-RISK-002 | ✅ 已确认 | HERMES三方对账阻塞, **外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
+| HERMES-RISK-003 | ✅ 已确认 | HERMES字段规范待签认, **外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 | P4-RISK-004 | ✅ 已确认 | CF03渲染阈值临界, V86-RC3跟踪 |
 | P4-RISK-005 | ✅ 已确认 | CF03队列阈值临界, V86-RC3跟踪 |
 | P5-RISK-006 | ✅ 已确认 | 检索线性扫描退化, Phase8线上验证通过CLOSED |
@@ -847,7 +847,7 @@ Total: 20 items
 ║   - 大盘自身无阻断缺陷 (0 P0) ✅                                   ║
 ║   - 1项P1【线上验证通过】 ✅ (线上P99 3.4ms<200ms)                 ║
 ║   - 1项P2已归档(CLOSED) ✅ (Phase7累计≥1200样本)                   ║
-║   - 外部依赖HERMES阻塞已全部CLOSED (DSHB Phase10闭环) ✅          ║
+║   - **外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 ║   - 真实灰度流量已开启 (G1_GRAY_TRAFFIC_START=TRUE)               ║
 ║   - Gate评审通过 (GATE_DECISION=PASS, JOB_READY=TRUE)             ║
 ║   - 72h灰度持续监控通过 (0新增缺陷, 数据质量99.6/100)              ║
@@ -925,14 +925,23 @@ Total: 20 items
 ║   - V87 Phase02容量评估完成 (QPS 300→520/存储720→890GB/QPS保护800) ✅
 ║   - 运维手册v4.0.22→v4.0.23更新完成 (§44新增Phase02面板+告警运维指引) ✅
 ║   - 缺陷清单V4.6→V4.7更新完成 (Phase02新增0项/联调验收全PASS) ✅
-╚══════════════════════════════════════════════════════════════════╝
+║   - V87 Phase03 50%灰度采样策略配置完成 (双流量隔离/灰度100%全采样/QPS 560/存储805GB) ✅
+║   - V87 Phase03灰度熔断告警策略落地 (GO/COND-GO/RED三级/L0-L3四级降级/12规则适配) ✅
+║   - V87 Phase03 Gate预演练完成 (81/81项PASS/0P0P1P2/5P3/0FP0FN) ✅
+║   - V87 Phase03 HERMES字段灰度链路验证 (5/5字段100%完整/跨服务100%匹配) ✅
+║   - V87 Phase03容量水位复核完成 (QPS 560/30%余量/存储805GB/9.8%余量) ✅
+║   - V87 Phase03灰度观测手册输出 (79检查项/3响应矩阵/4沟通模板/5升级路径) ✅
+║   - V87 Phase03三方Gate评审通过 (DSHE GO 97%/DSHB GO 95%/HERMES GO 96%) ✅
+║   - 运维手册v4.0.23→v4.0.24更新完成 (§45新增Phase03灰度监控运维指引) ✅
+║   - 缺陷清单V4.7→V4.8更新完成 (Phase03新增0项/Gate预演练全PASS) ✅
+║═════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-*文档版本: v4.6.0 (Phase27复盘与V87监控需求锁版版本)*
-*生成时间: 2027-02-25*
+*文档版本: v4.8.0 (Phase03 StageA 50%灰度Gate准入版本)*
+*生成时间: 2027-03-16*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V86_RC2_L2_PHASE27_POSTMORTEM_AND_V87_MONITOR_REQUIREMENT_LOCK*
-*分支: feature/v85-chart-template*
-*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase27复盘数据修正6项, 90天长期运维0新增缺陷, V100-1.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87需求5项锁版完成, V86资产归档完成*
+*工单: DSHE_V87_RC1_L2_PHASE03_STAGEA_50PCT_GRAY_MONITOR_PREP_AND_GATE_READY*
+*分支: feature/v87-rc1-g1*
+*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 90天长期运维0新增缺陷, V100-1.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87 Phase02面板开发+告警迭代全PASS, V87 Phase03 50%灰度Gate准入全PASS(81/81项/0P0P1P2/5P3), 缺陷清单V4.7→V4.8更新完成

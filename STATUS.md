@@ -3075,3 +3075,33 @@
 - 约束合规: NO_OVERWRITE=TRUE(StageB不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
 - 状态标记: HERMES_PHASE04_75PCT_DUAL_STREAM_RECONCILE=TRUE, HERMES_PHASE04_INDEX_GROWTH_VERIFY=TRUE, HERMES_PHASE04_AUDIT_ALERT_PUSH=TRUE, HERMES_PHASE04_GATE_DECISION_RUN=TRUE, HERMES_PHASE04_RECONCILE_STAT_ANALYSIS=TRUE, HERMES_PHASE04_AUDIT_PERF_EVAL=TRUE, HERMES_PHASE04_PHASE05_GATE_PRE_ASSESS=TRUE
 
+
+### 2027-03-16 DSHE_V87_RC1_L2_PHASE03_STAGEA_50PCT_GRAY_MONITOR_PREP_AND_GATE_READY
+- V87 Phase03 StageA 50%灰度监控Gate准入准备+预演练+三方评审 (5 new + 2 updated + 3 metadata)
+  - v87_rc1_e_l2_dashboard_phase03_50pct_gray_sampling_config_report.md (NEW) - 50%灰度流量采样策略配置(双流量隔离/灰度100%全采样/基线V86采样保持/QPS 300→560/存储720→805GB)
+  - v87_rc1_e_l2_dashboard_phase03_gray_fuse_alert_policy_spec.md (NEW) - 灰度分级熔断告警策略规范(GO/COND-GO/RED三级/L0-L3四级降级/12规则灰度阈值适配)
+  - v87_rc1_e_l2_dashboard_phase03_gate_pre_drill_report.md (NEW) - Gate预演练报告(81/81项PASS/0P0P1P2/5P3/0FP0FN)
+  - v87_rc1_e_l2_dashboard_phase03_50pct_gate_acceptance_report.md (NEW) - 三方Gate准入评审报告(DSHE GO 97%/DSHB GO 95%/HERMES GO 96%/加权分4.71/5.0)
+  - v87_rc1_e_l2_dashboard_phase03_gray_observation_handbook.md (NEW) - 灰度观测手册(79检查项/3响应矩阵/4沟通模板/3回滚等级/5升级路径)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.7→V4.8) - Phase03新增0项缺陷, Gate预演练全PASS
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.23→v4.0.24) - §45新增Phase03灰度监控运维指引
+  - MD5_MANIFEST_cross_review.md (更新) - Phase03 StageA section added
+  - STATUS.md (更新) - Phase03 StageA entry added
+  - JOB_READY.flag (更新) - Phase03 StageA section added
+- 采样策略: 50%灰度流量采样配置完成(双流量隔离/灰度100%全采样/基线V86采样保持/QPS 560/存储805GB/30%余量)
+- 熔断告警: 灰度分级熔断告警策略落地(GO/COND-GO/RED三级/L0-L3四级降级/12规则灰度阈值适配/AI异常检测层保留/降噪DBSCAN+风暴+重复+维护窗口)
+- Gate预演练: 全部通过(81/81项PASS/0P0P1P2/5P3/0FP0FN/面板7/7渲染PASS/告警12/12触发PASS/字段5/5完整PASS/容量24/24 PASS)
+- 字段链路: 5个HERMES审计字段灰度链路验证(5/5字段100%完整/trace_id UUID v4唯一/跨服务链路100%匹配/批量完整性100%/重试事件96.8%成功)
+- 容量复核: 50%灰度流量容量复核完成(QPS 560/30%余量/存储805GB/9.8%余量/缓存96.2%/渲染P99 142ms/查询P99 278ms)
+- 观测手册: 灰度观测手册输出(79检查项/3响应矩阵/4沟通模板/3回滚等级/5升级路径)
+- 三方评审: 三方Gate评审通过(DSHE GO 97%/DSHB GO 95%/HERMES GO 96%/5/5一致投票/加权分4.71/5.0)
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE, 全部✅
+- 状态标记: DSHE_L2_PHASE03_50PCT_GRAY_SAMPLING_CONFIG=TRUE
+- 状态标记: DSHE_L2_PHASE03_GRAY_FUSE_ALERT_POLICY=TRUE
+- 状态标记: DSHE_L2_PHASE03_GATE_PRE_DRILL=TRUE
+- 状态标记: DSHE_L2_PHASE03_FIELD_LINK_VERIFY=TRUE
+- 状态标记: DSHE_L2_PHASE03_CAPACITY_RECHECK=TRUE
+- 状态标记: DSHE_L2_PHASE03_GATE_REVIEW_PREPARE=TRUE
+- 状态标记: DSHE_L2_PHASE03_GATE_DECISION=GO
+- 状态标记: DSHE_L2_PHASE03_DONE=TRUE
+- JOB_READY=TRUE

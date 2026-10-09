@@ -5287,10 +5287,96 @@ DSHE_L2_PHASE02_CROSS_REVIEW_DONE=TRUE
 DSHE_L2_PHASE02_DONE=TRUE
 DSHE_L2_PHASE02_L2_MONITOR_SCORE=99.5
 JOB_READY=TRUE
-*文档版本: v4.0.23 (V87 Phase02面板开发与告警规则迭代版本)*
-*生成时间: 2027-03-15*
+
+---
+
+## 45. V87 Phase03 StageA 50%灰度监控运维指引
+
+### 45.1 灰度阶段总览
+
+Phase03 StageA是V87 RC1的50%灰度放量阶段，是V86全量到V87全量的关键过渡。
+
+| 维度 | V86基线 | V87 Phase03目标 | 变化 |
+|------|---------|-----------------|------|
+| 灰度流量比例 | 0% | 50% | +50% |
+| 总QPS | ~300 | ~560 | +260 (+87%) |
+| 存储(90d) | 720GB | ~805GB | +85GB (+11.8%) |
+| 缓存命中率 | ≥90% | ≥95% | +5pp |
+| 面板数 | 25 | 33 | +8 (+32%) |
+| 告警规则 | 9 | 12 | +3 (+33%) |
+| HERMES字段 | 0新增 | 5新增 | +5 |
+
+### 45.2 灰度观测重点指标
+
+| 观测频率 | 指标 | 阈值 | 告警等级 | 越限动作 |
+|----------|------|------|----------|----------|
+| 1min | QPS | >700(保护) | L3 | L3只读→回滚 |
+| 1min | 渲染P99 | >150ms | L1 | L1限流 |
+| 1min | 查询P99 | >300ms | L1 | L1限流 |
+| 1min | 数据延迟 | >500ms | L1 | L1限流 |
+| 1min | 缓存命中率 | <85% | L2 | L2降级 |
+| 5min | 吞吐 | <900ev/s | L2 | L2降级 |
+| 5min | WAL延迟 | >3ms | L2 | L2降级 |
+| 5min | 索引延迟 | >7ms | L2 | L2降级 |
+| 5min | 丢包率 | >0.005% | L2 | L2降级 |
+| 15min | 告警健康 | >3 FP/10min | L2 | L2降级 |
+| 30min | 存储增长 | >890GB | L2 | L2降级 |
+| 30min | 字段完整性 | <100% | L2 | L2降级 |
+| 30min | 基线漂移 | >2pp/天 | L1 | L1限流 |
+
+### 45.3 告警响应SOP
+
+| 响应等级 | 触发条件 | 响应时间 | 响应步骤 |
+|----------|----------|----------|----------|
+| L1 Warning | 任一指标进入COND-GO范围 | 5min内确认 | 确认→检查面板→持续观测→记录日志 |
+| L2 Critical | 任一指标进入RED范围 | 2min内确认 | 确认→检查根因→L2降级→通知SRE→评估回滚 |
+| L3 RED | 系统级RED(QPS>700或3+CRITICAL) | 1min内确认 | 确认→L3只读→暂停灰度→通知TL→执行回滚→发布通告 |
+
+### 45.4 熔断降级操作
+
+| 降级级别 | 触发条件 | 面板行为 | 查询行为 | 恢复方式 |
+|----------|----------|----------|----------|----------|
+| L0正常 | 全部指标GO | 全部面板正常 | 完整查询管线 | N/A |
+| L1限流 | 任一指标COND-GO | 刷新率减半(30s→60s) | 低优查询走缓存 | 自动恢复(5min) |
+| L2降级 | RED告警 | 重面板禁用(P-001/P-004/P-006/P-007) | 缓存模式 | 手动恢复(10min) |
+| L3只读 | 系统级RED | 全部面板冻结 | 只读缓存 | 手动回滚(30min) |
+
+### 45.5 HERMES字段灰度监控
+
+| 字段 | 完整性要求 | 延迟要求 | 异常告警 |
+|------|-----------|----------|----------|
+| event_type | 100% | ≤500ms | 缺失率>0.1%触发AUD-AL-001 |
+| priority | 100% | ≤500ms | 缺失率>0.1%触发AUD-AL-001 |
+| trace_id | 100%唯一 | ≤500ms | 重复率>0.01%触发AUD-AL-002 |
+| batch_id | 100% | ≤500ms | 缺失率>0.1%触发AUD-AL-001 |
+| retry_count | 100% | ≤500ms | 缺失率>0.1%触发AUD-AL-001 |
+
+### 45.6 灰度回滚流程
+
+| 步骤 | 操作 | 时间 | 负责人 |
+|------|------|------|--------|
+| 1 | 确认RED告警 | T+0 | On-call SRE |
+| 2 | 暂停灰度流量注入 | T+1min | SRE |
+| 3 | 验证基线流量恢复 | T+5min | SRE |
+| 4 | 评估是否需要全量回滚 | T+5min | DSHE TL |
+| 5 | 全量回滚(如需要) | T+15min | SRE+DSHE |
+| 6 | 回滚后验证(8项) | T+20min | QA |
+| 7 | 发布回滚通告 | T+25min | SRE |
+| 8 | 根因分析启动 | T+30min | DSHE TL |
+
+### 45.7 灰度检查清单
+
+**灰度前(24项)**: 三方Gate全部GO/采样策略配置/熔断策略配置/Gate预演练PASS/观测手册发布/团队培训/回滚脚本验证/监控面板就绪/告警规则部署/通知通道验证/容量扩容/缓存预热/日志收集/审计字段验证/灰度标记/流量路由/降级策略测试/回滚流程演练/值班表确认/沟通渠道/问题追踪/变更记录/发布说明/三方对齐
+
+**灰度中每小时(12项)**: QPS水位/渲染P99/查询P99/数据延迟/缓存命中率/告警触发数/字段完整性/存储增长/吞吐/WAL延迟/索引延迟/丢包率
+
+**灰度评估(15项)**: 4小时观测期/全部指标无越限/0误报0漏报/面板渲染正常/告警触发正常/熔断逻辑验证/字段完整性/容量水位/缓存命中率/无跨流量污染/三方对齐/回滚就绪/沟通就绪/问题追踪/下一阶段准备
+
+---
+*文档版本: v4.0.24 (V87 Phase03 StageA 50%灰度Gate准入版本)
+*生成时间: 2027-03-16*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE02_V87_DASHBOARD_DEVELOP_AND_ALERT_RULE_ITERATE*
+*工单: DSHE_V87_RC1_L2_PHASE03_STAGEA_50PCT_GRAY_MONITOR_PREP_AND_GATE_READY*
 *分支: feature/v87-rc1-g1*
-*更新说明: v4.0.22→v4.0.23, §44新增V87 Phase02面板开发与告警规则迭代运维指引(8面板开发+12告警迭代+5字段集成+联调验收+容量评估)*
-*状态: DSHE_L2_PHASE02_V87_PANEL_DEV_START=TRUE, DSHE_L2_PHASE02_V87_PANEL_TOTAL=8, DSHE_L2_PHASE02_V87_PANEL_DEFERRED=1, DSHE_L2_PHASE02_NEW_FIELD_INTEGRATION=TRUE, DSHE_L2_PHASE02_HERMES_NEW_FIELDS=5, DSHE_L2_PHASE02_ALERT_RULE_ITERATE=TRUE, DSHE_L2_PHASE02_ALERT_RULE_TOTAL=12, DSHE_L2_PHASE02_IE_AL_001_3LEVEL_PRESERVED=TRUE, DSHE_L2_PHASE02_ALERT_NOISE_REDUCTION_ENABLED=TRUE, DSHE_L2_PHASE02_PANEL_ALERT_TEST=TRUE, DSHE_L2_PHASE02_QUERY_CAP_EVAL=TRUE, DSHE_L2_PHASE02_QUERY_CAP_QPS_PROTECTION=800, DSHE_L2_PHASE02_CROSS_REVIEW_DONE=TRUE, DSHE_L2_PHASE02_DONE=TRUE, DSHE_L2_PHASE02_L2_MONITOR_SCORE=99.5, JOB_READY=TRUE*
+*更新说明: v4.0.23→v4.0.24, §45新增V87 Phase03 StageA 50%灰度监控运维指引(采样策略+熔断告警+预演练+字段验证+容量复核+观测手册+三方评审)
+*状态: DSHE_L2_PHASE03_50PCT_GRAY_SAMPLING_CONFIG=TRUE, DSHE_L2_PHASE03_GRAY_FUSE_ALERT_POLICY=TRUE, DSHE_L2_PHASE03_GATE_PRE_DRILL=TRUE, DSHE_L2_PHASE03_FIELD_LINK_VERIFY=TRUE, DSHE_L2_PHASE03_CAPACITY_RECHECK=TRUE, DSHE_L2_PHASE03_GATE_REVIEW_PREPARE=TRUE, DSHE_L2_PHASE03_DONE=TRUE, JOB_READY=TRUE*
