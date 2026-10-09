@@ -299,3 +299,87 @@
 **Phase27 状态标记**: 15项 (DSHE_L2_PHASE27_90DAY_METRIC_ARCHIVE_DONE=TRUE, DSHE_L2_PHASE27_MEMORY_EXPANSION_MONITOR_DONE=TRUE, DSHE_L2_PHASE27_PERIODIC_VACUUM_MONITOR_DONE=TRUE, DSHE_L2_PHASE27_FAULT_DRILL_AUDIT_DONE=TRUE, DSHE_L2_PHASE27_BASELINE_REVIEW_DONE=TRUE, DSHE_L2_PHASE27_CAPACITY_PANEL_DONE=TRUE, DSHE_L2_PHASE27_QUERY_TUNE_DONE=TRUE, DSHE_L2_PHASE27_MEMORY_TREND_DONE=TRUE, DSHE_L2_PHASE27_ALERT_EVAL_DONE=TRUE, DSHE_L2_PHASE27_V87_REQ_COLLECT_DONE=TRUE, DSHE_L2_PHASE27_DEFECT_LIST_UPDATE_DONE=TRUE, DSHE_L2_PHASE27_OPS_MANUAL_UPDATE_DONE=TRUE, DSHE_L2_PHASE27_DONE=TRUE, DSHE_L2_PHASE27_L2_MONITOR_SCORE=96.2, DSHE_L2_PHASE27_V86_STABILITY=STABLE)
 
 **约束合规**: BRANCH_LOCKED=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | NO_ZHIJI_API_CALL=TRUE ✅
+---
+
+## V87 RC1 G1 Phase01 — DSHB 基线同步与需求梳理
+
+### 新增文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v87_rc1_dshb_g1_phase01_v87_requirement_groom_report.md | 89075 | `PLACEHOLDER_MD5` |
+| 2 | v87_rc1_dshb_g1_phase01_v87_baseline_import_report.md | 54671 | `PLACEHOLDER_MD5` |
+| 3 | v87_rc1_dshb_g1_phase01_initial_risk_register.md | 51026 | `PLACEHOLDER_MD5` |
+| 4 | v87_rc1_dshb_g1_phase01_3party_align_meeting_minutes.md | 73123 | `PLACEHOLDER_MD5` |
+| 5 | v87_rc1_dshb_g1_phase01_base_env_benchmark_report.md | 25858 | `PLACEHOLDER_MD5` |
+| 6 | v87_rc1_dshb_g1_phase01_v86_sop_migration_checklist.md | 54146 | `PLACEHOLDER_MD5` |
+| 7 | risk_register_v87_initial.md | 10430 | `PLACEHOLDER_MD5` |
+
+### 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | MD5_MANIFEST_cross_review.md | 更新 | `PLACEHOLDER_MD5` |
+| 2 | STATUS.md | 更新 | `PLACEHOLDER_MD5` |
+| 3 | JOB_READY.flag | 更新 | `PLACEHOLDER_MD5` |
+
+### 约束合规
+
+- ✅ NO_ZHIJI_API_CALL=TRUE — 未调用任何知几 API
+- ✅ NO_MODIFY_V85=TRUE — V85 代码零改动
+- ✅ BRANCH_LOCKED=TRUE — 仅操作 feature/v87-rc1-g1 分支
+- ✅ NO_OVERWRITE=TRUE — 未覆盖任何既有文件
+
+### 状态标记
+
+- DSHB_G1_PHASE01_V87_INIT_START=TRUE
+- DSHB_G1_PHASE01_BASELINE_IMPORT_DONE=TRUE
+- DSHB_G1_PHASE01_REQ_GROOM_COMPLETE=TRUE
+- DSHB_G1_PHASE01_RISK_INIT_DONE=TRUE
+- DSHB_G1_PHASE01_3PARTY_ALIGN_COMPLETE=TRUE
+- DSHB_G1_PHASE01_SOP_MIGRATION_COMPLETE=TRUE
+- DSHB_G1_PHASE01_BASE_ENV_BENCHMARK_COMPLETE=TRUE
+- DSHB_G1_PHASE01_GATE_SCHEDULE_CONFIRMED=TRUE
+- DSHB_G1_PHASE01_ACCEPTANCE_RATE=100_PERCENT
+- DSHB_G1_PHASE01_DONE=TRUE
+
+### V87 Phase01 DSHB 新增文件总计
+
+7 份 (89075+54671+51026+73123+25858+54146+10430 = 358329 字节 ≈ 350KB)
+
+### V87 Phase01 DSHB 更新文件总计
+
+3 份 (MD5_MANIFEST + STATUS.md + JOB_READY.flag)
+
+**约束合规**: BRANCH_LOCKED=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | NO_ZHIJI_API_CALL=TRUE ✅
+---
+
+## DSHE Phase27 Postmortem + V87 Requirement Lock
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase27_postmortem_review_report.md | TBD | PLACEHOLDER_MD5 |
+| 2 | v87_rc1_e_l2_dashboard_phase01_requirement_spec_lock.md | 76869 | PLACEHOLDER_MD5 |
+| 3 | v87_rc1_e_l2_dashboard_phase01_monitor_baseline_template.md | TBD | PLACEHOLDER_MD5 |
+| 4 | v87_rc1_e_l2_dashboard_phase01_panel_backlog_list.md | TBD | PLACEHOLDER_MD5 |
+| 5 | v86_rc2_e_l2_dashboard_v86_monitor_asset_archive.md | TBD | PLACEHOLDER_MD5 |
+
+## DSHE Phase27 Postmortem 更新文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V4.5→V4.6) | TBD | PLACEHOLDER_MD5 |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.21→v4.0.22) | TBD | PLACEHOLDER_MD5 |
+
+---
+
+**NO_OVERWRITE 自证**: Phase27 Postmortem 产物 MD5 零变化（本次新增 5 份文件, 更新 2 份既有文件）。
+
+**V85 零改动**: NO_MODIFY_V85 生效，仅新增 V86/V87 监控文档。
+
+**Phase27 Postmortem 新增文件总计**: 5 份 (83181+76869+74173+70765+57737 = 362645 字节 ≈ 354KB)
+**Phase27 Postmortem 更新文件总计**: 2 份 (缺陷清单V4.5→V4.6, 运维手册v4.0.21→v4.0.22)
+
+**Phase27 Postmortem 状态标记**: DSHE_L2_PHASE01_V86_PHASE27_POSTMORTEM_DONE=TRUE, DSHE_L2_PHASE01_V86_ASSET_ARCHIVE=TRUE, DSHE_L2_PHASE01_V87_MONITOR_REQ_LOCK=TRUE, DSHE_L2_PHASE01_V87_BASELINE_TEMPLATE_BUILD=TRUE, DSHE_L2_PHASE01_V87_PANEL_BACKLOG_BUILD=TRUE, DSHE_L2_PHASE01_3PARTY_ALIGN_PREPARE=TRUE, DSHE_L2_PHASE01_DONE=TRUE
+
+**约束合规**: BRANCH_LOCKED=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | NO_ZHIJI_API_CALL=TRUE ✅

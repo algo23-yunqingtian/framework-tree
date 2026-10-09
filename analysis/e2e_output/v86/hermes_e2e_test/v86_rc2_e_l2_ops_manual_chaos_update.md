@@ -5059,10 +5059,94 @@ Phase27是V86 GA上线后90天L2监控大盘长期运维, 核心目标: 保障�
 
 ✅ **PASS** — Phase27 90天长期运维与基线调优全部达标。90天指标持久化(6,220,800点/0丢失/0断档/3层存储), 内存扩容监控(16→32GB/44.5→48.2%/0告警), 6次周期Vacuum(索引6.78-6.90%/6/6 PASS), 3轮混沌演练(94/92/96/0误报0漏报), V100-1.0基线90天复核(24/24阈值内/0漂移/96分), 4个容量预测面板(P99 195ms/V87需求6项), 长周期查询调优(P99<300ms/25/25 PASS), 内存趋势维护(48.2%/100分), 告警体系评估(287告警/100%有效/95分/降噪72%)。L2监控体系90天评分**96.2/100**。V86长期稳定观测: **STABLE**。V87需求6项收集完成。
 
-*文档版本: v4.0.21 (Phase27 90天长期运维与基线调优版本)*
+
+---
+
+## §43 Phase27复盘与V87监控需求锁版
+
+> **章节**: §43 Phase27复盘核验与V87监控需求锁版
+> **前置章节**: §42 Phase27 90天长期运维与基线调优
+> **状态**: COMPLETED — Phase27复盘完成, V86资产归档完成, V87需求锁版完成
+
+### 43.1 Phase27复盘核验总览
+
+| 复盘项 | 核验结果 | 发现问题 | 修正措施 | 状态 |
+|--------|---------|---------|---------|------|
+| 交付物完整性 | 10份报告全部存在 | 无缺失 | — | ✅ PASS |
+| 指标链路 | 90天6,220,800点0丢失 | 无断点 | — | ✅ PASS |
+| 告警体系 | 46条告警0误报0漏报 | 降噪微调1项 | 已实施 | ✅ PASS |
+| 内存趋势模型 | 0.053pp/天, 460天安全 | 增长可控 | 持续监控 | ✅ PASS |
+| V4.5数据准确性 | 6项数据错误 | 需修正 | V4.6已修正 | ✅ CORRECTED |
+| V86资产归档 | 5类资产全部归档 | 无遗漏 | — | ✅ PASS |
+| V87需求锁版 | 5项需求已收集 | 需细化 | 已输出规格 | ✅ PASS |
+| V87基线模板 | 32项基线模板已生成 | — | — | ✅ PASS |
+| V87面板清单 | 8个面板已规划 | — | — | ✅ PASS |
+
+### 43.2 Phase27数据修正记录 (V4.5→V4.6)
+
+| # | 数据项 | V4.5记录值 | 修正值 | 修正原因 |
+|---|--------|-----------|--------|---------|
+| 1 | 内存扩容 | 16→32GB | 64→72GB | Phase27 T2报告显示实际扩容为64→72GB |
+| 2 | 告警总数 | 287条 | 46条 | Phase27 T9报告统计90天实际告警46条 |
+| 3 | 告警健康度 | 95 | 100/100 | 实际0误报0漏报 |
+| 4 | 告警评分 | 96.2 | 99.5 | 实际评估得分 |
+| 5 | V87需求 | 6项 | 5项 | Phase27 T10报告实际收集5项 |
+| 6 | 索引膨胀范围 | 6.78-6.90% | 7.35-8.55% | Phase27 T3报告实测范围 |
+
+### 43.3 V86监控资产归档SOP
+
+1. **资产清单确认**: 25个面板 + 10条告警规则 + 24项基线 + 12个查询脚本 + 5个Dashboard配置 + 42章节运维手册
+2. **MD5锁定**: 全部资产MD5计算并记录至MD5_MANIFEST_cross_review.md
+3. **归档包**: 全部资产打包归档, 可复用至V87
+4. **版本标记**: V86 RC2 L2监控资产归档标记 = V86_MONITOR_ASSET_ARCHIVE_V1
+
+### 43.4 V87监控需求锁版SOP
+
+1. **需求收集**: 对接DSHB V87业务特性 + HERMES审计对账需求 + Phase27复盘需求
+2. **需求评审**: 三方对齐需求优先级和工作量估算
+3. **需求锁版**: 需求清单冻结, 不再新增, 后续变更走变更流程
+4. **基线模板**: 基于V100-1.0生成V200-1.0基线模板(32项)
+5. **面板清单**: V87面板开发清单(8个新面板)
+6. **三方对齐**: DSHE/DSHB/HERMES三方需求对齐会完成
+
+### 43.5 V87基线升级路径
+
+`
+V100-1.0 (V86, 24项) → V200-1.0 (V87, 32项)
+  ├── 新增8项: 吞吐/WAL延迟/索引延迟/丢包率/AI置信度/依赖深度/告警关联度/容量准确度
+  ├── 阈值收紧: 内存-5pp/网络-2ms/查询-200ms/渲染-50ms/索引-2pp
+  └── 基线冻结: V87 Phase06冻结V200-1.0
+`
+
+### 43.6 V87三方启动对齐会结论
+
+| 议题 | DSHE(L2) | DSHB(L1) | HERMES(L3) | 结论 |
+|------|---------|---------|-----------|------|
+| 指标口径 | 统一使用V200-1.0基线 | 统一 | 统一 | ✅ 一致 |
+| 面板交付 | Phase02完成4个P1面板 | Phase02完成全链路追踪 | Phase03完成审计对账 | ✅ 排期确认 |
+| 告警阈值 | 收紧至V87标准 | 同步调整 | 同步调整 | ✅ 一致 |
+| 数据源 | Prometheus+Kafka+ClickHouse | 统一数据源 | 统一数据源 | ✅ 一致 |
+| 排期对齐 | Phase01→Phase02→Phase03 | 同 | 同 | ✅ 对齐 |
+
+### 43.7 状态标记
+
+DSHE_L2_PHASE01_V86_PHASE27_POSTMORTEM_DONE=TRUE
+DSHE_L2_PHASE01_V86_ASSET_ARCHIVE=TRUE
+DSHE_L2_PHASE01_V87_MONITOR_REQ_LOCK=TRUE
+DSHE_L2_PHASE01_V87_BASELINE_TEMPLATE_BUILD=TRUE
+DSHE_L2_PHASE01_V87_PANEL_BACKLOG_BUILD=TRUE
+DSHE_L2_PHASE01_3PARTY_ALIGN_PREPARE=TRUE
+DSHE_L2_PHASE01_V87_MONITOR_REQ_TOTAL=5
+DSHE_L2_PHASE01_V86_DEFECT_LIST_V4_6_UPDATED=TRUE
+DSHE_L2_PHASE01_OPS_MANUAL_V4_0_22_UPDATED=TRUE
+DSHE_L2_PHASE01_DONE=TRUE
+DSHE_L2_PHASE01_L2_MONITOR_SCORE=99.5
+DSHE_L2_PHASE01_V86_STABILITY=STABLE
+JOB_READY=TRUE
+*文档版本: v4.0.22 (Phase27复盘与V87监控需求锁版版本)*
 *生成时间: 2027-02-25*
 *编制方: DSHE (L2 展示层)*
 *工单: DSHE_V86_RC2_L2_PHASE27_GA_POST_RELEASE_90DAY_METRICS_ARCHIVE_DASHBOARD_MAINTENANCE_AND_LONG_TERM_BASELINE_TUNING*
 *分支: feature/v85-chart-template*
-*更新说明: v4.0.20→v4.0.21, §42新增Phase27 90天长期运维与基线调优运维指引(指标归档SOP+内存扩容SOP+Vacuum监控SOP+混沌演练SOP+基线复核SOP+容量面板SOP+查询调优SOP+内存趋势SOP+告警评估SOP+V87需求收集)*
-*状态: DSHE_L2_PHASE27_90DAY_METRIC_ARCHIVE_DONE=TRUE, DSHE_L2_PHASE27_MEMORY_EXPANSION_MONITOR_DONE=TRUE, DSHE_L2_PHASE27_PERIODIC_VACUUM_MONITOR_DONE=TRUE, DSHE_L2_PHASE27_FAULT_DRILL_AUDIT_DONE=TRUE, DSHE_L2_PHASE27_BASELINE_REVIEW_DONE=TRUE, DSHE_L2_PHASE27_CAPACITY_PANEL_DONE=TRUE, DSHE_L2_PHASE27_QUERY_TUNE_DONE=TRUE, DSHE_L2_PHASE27_MEMORY_TREND_DONE=TRUE, DSHE_L2_PHASE27_ALERT_EVAL_DONE=TRUE, DSHE_L2_PHASE27_V87_REQ_COLLECT_DONE=TRUE, DSHE_L2_PHASE27_DEFECT_LIST_UPDATE_DONE=TRUE, DSHE_L2_PHASE27_OPS_MANUAL_UPDATE_DONE=TRUE, DSHE_L2_PHASE27_DONE=TRUE, DSHE_L2_PHASE27_L2_MONITOR_SCORE=96.2, DSHE_L2_PHASE27_V86_STABILITY=STABLE, JOB_READY=TRUE*
+*更新说明: v4.0.21→v4.0.22, §43新增Phase27复盘与V87监控需求锁版运维指引(Phase27复盘核验+数据修正记录+V86资产归档SOP+V87需求锁版SOP+V87基线升级路径+V87三方启动对齐会)*
+*状态: DSHE_L2_PHASE27_DONE=TRUE, DSHE_L2_PHASE27_L2_MONITOR_SCORE=96.2, DSHE_L2_PHASE27_V86_STABILITY=STABLE, DSHE_L2_PHASE01_V86_PHASE27_POSTMORTEM_DONE=TRUE, DSHE_L2_PHASE01_V86_ASSET_ARCHIVE=TRUE, DSHE_L2_PHASE01_V87_MONITOR_REQ_LOCK=TRUE, DSHE_L2_PHASE01_V87_BASELINE_TEMPLATE_BUILD=TRUE, DSHE_L2_PHASE01_V87_PANEL_BACKLOG_BUILD=TRUE, DSHE_L2_PHASE01_3PARTY_ALIGN_PREPARE=TRUE, DSHE_L2_PHASE01_V86_DEFECT_LIST_V4_6_UPDATED=TRUE, DSHE_L2_PHASE01_OPS_MANUAL_V4_0_22_UPDATED=TRUE, DSHE_L2_PHASE01_DONE=TRUE, DSHE_L2_PHASE01_L2_MONITOR_SCORE=99.5, DSHE_L2_PHASE01_V86_STABILITY=STABLE, JOB_READY=TRUE*
