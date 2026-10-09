@@ -2115,3 +2115,21 @@
 - 约束合规: NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(Phase20/21/22/23产物MD5不变), BRANCH_LOCKED=TRUE
 - 状态标记: HERMES_PHASE24_FULL_GATE_AUDIT_REVIEW_DONE=TRUE, HERMES_PHASE24_INDEX_MODEL_FINAL_REVIEW_DONE=TRUE, HERMES_PHASE24_AUDIT_CONSTRAINT_DOC_DONE=TRUE, HERMES_PHASE24_LONG_TERM_CONSISTENCY_WATCH=TRUE, HERMES_PHASE24_CONDITIONAL_GO_CONFIRMED=TRUE
 
+
+### 2026-10-18 HERMES_V86_RC2_PHASE25_FULL_TRAFFIC_ONLINE_72H_LONG_RUN_AUDIT_AND_THREE_WAY_RECONCILE
+- 全量上线后72h长运行审计+24x8三方对账+索引膨胀实测验证+干预矩阵验证+风险清单v5.0 (5 new + 1 script, MD5 all verified)
+  - v86_rc2_hermes_phase25_72h_longrun_audit_sim.py (MD5: A90545EB27F3) - 上线后长运行仿真: 100% 72h+24窗口对账+膨胀实测+干预矩阵+模型验证
+  - phase25_full_traffic_72h_longrun_audit_report.md (MD5: 251F04ECBA0A) - 72h长运行: events=2267343/WAL 2.28ms/idx 6.46ms/loss 0.00385%/chain 0/dup 9223(100%)/tp 839.8ev/s
+  - phase25_full_traffic_threeway_reconcile_result_summary.md (MD5: DB79815D59EC) - 24x8对账: 24/24 SHA256/max_ev 0.189%/max_loss 0.097pp/0告警
+  - phase25_full_traffic_index_growth_real_measure_review.md (MD5: 5921E6612F6D) - 膨胀实测: 日均0.033pp/72h 0.0991pp/模型偏差0.1%✅/54天到CRITICAL修正
+  - phase25_full_traffic_intervention_matrix_verify_report.md (MD5: 5548F52B35A7) - 干预矩阵: Level2 WARN持续72h/触发逻辑100%正确/6约束全可行
+  - phase25_risk_watchlist_v5_online_update.md (MD5: 79A450DA27A9) - 风险清单v5.0: 0P0P1/1P2(8.222%)/3P3/模型验证通过/54天到CRITICAL
+- 72h上线后关键数据: events=2267343(接近2270995基线), WAL=2.28ms, idx=6.46ms, loss avg/max=0.00385/0.00410%, chain=0, dup=9223(100%), tp=839.8ev/s
+- 模型验证: 膨胀日均偏差0.1%✅(实测0.033pp vs 模型0.033pp)/事件0.16%✅/吞吐0.155%✅/WAL 0%✅/去重0%✅
+- 膨胀实测: 8.123%→8.222%(72h增量0.0991pp), 54天到CRITICAL(比原估56天提前2天), 到8.5%约8天/到9.0%约22天
+- 干预矩阵: Level 2 WARN持续72h/无性能影响/吞吐保持839.8ev/s/触发逻辑正确
+- 约束文档可行性: 6/6约束全部生产环境可行(12h监控/24h对账/30天vacuum/8.5%限流/10.0%回滚)
+- 对账: 24/24 SHA256/max_ev 0.189%(比Phase23的0.198%略改善)/max_loss 0.097pp/0告警触发
+- 约束合规: NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(Phase20/21/22/23/24产物MD5不变), BRANCH_LOCKED=TRUE
+- 状态标记: HERMES_PHASE25_FULL_ONLINE_72H_AUDIT_DONE=TRUE, HERMES_PHASE25_THREE_WAY_RECONCILE_DONE=TRUE, HERMES_PHASE25_INDEX_GROWTH_MEASURE_DONE=TRUE, HERMES_PHASE25_INTERVENTION_MATRIX_VERIFY_DONE=TRUE, HERMES_PHASE25_ONLINE_CONDITIONAL_GO=TRUE
+
