@@ -676,6 +676,53 @@
 
 **Phase06 约束合规**: BRANCH_LOCKED=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | NO_ZHIJI_API_CALL=TRUE ✅
 
+
+---
+
+## DSHE V87 RC1 Phase07 — 30天GA长期指标采集与告警长期验证
+
+### 新增文件
+
+| # | 文件 | 字节 | MD5 |
+|---|------|------|-----|
+| 1 | v87_rc1_dshe_l2_phase07_30day_ga_longrun_observation_report.md | 23,576 | CEB24BD27D9076657420AB551C2DD04A |
+| 2 | v87_rc1_dshe_l2_phase07_alert_fuse_longrun_validate_report.md | 17,707 | 2A3A8A5077D42B66114726E12A8D5A6E |
+| 3 | v87_rc1_dshe_l2_phase07_dashboard_render_perf_longterm_report.md | 9,402 | CA81DDB87EDDC0173E9708639F9F6270 |
+| 4 | v87_rc1_dshe_l2_phase07_capacity_longterm_risk_report.md | 8,981 | B8CFB367712C5B3BFF8AB9D800230690 |
+| 5 | v87_rc1_dshe_l2_phase07_ga_gate_evaluation_for_archive.md | 19,005 | BDB4C628715C9595137BFB18A5C33239 |
+
+### 更新文件
+
+| # | 文件 | 版本变更 |
+|---|------|----------|
+| 1 | v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md | V4.9→V5.0 |
+| 2 | v86_rc2_e_l2_ops_manual_chaos_update.md | v4.0.25→v4.0.26 |
+| 3 | MD5_MANIFEST_cross_review.md | +Phase07 section |
+| 4 | STATUS.md | +Phase07 entry |
+| 5 | JOB_READY.flag | +Phase07 section |
+
+### Phase07交付物清单
+
+| # | 文件 | 类型 | 大小 |
+|---|------|------|:----:|
+| 1 | v87_rc1_dshe_l2_phase07_30day_ga_longrun_observation_report.md | NEW | 23.6KB |
+| 2 | v87_rc1_dshe_l2_phase07_alert_fuse_longrun_validate_report.md | NEW | 17.7KB |
+| 3 | v87_rc1_dshe_l2_phase07_dashboard_render_perf_longterm_report.md | NEW | 9.4KB |
+| 4 | v87_rc1_dshe_l2_phase07_capacity_longterm_risk_report.md | NEW | 9.0KB |
+| 5 | v87_rc1_dshe_l2_phase07_ga_gate_evaluation_for_archive.md | NEW | 19.0KB |
+| 6 | defect_list_v3.0.md (V4.9→V5.0) | UPDATE | - |
+| 7 | ops_manual_chaos_update.md (v4.0.25→v4.0.26) | UPDATE | - |
+| 8 | MD5_MANIFEST_cross_review.md | UPDATE | - |
+| 9 | STATUS.md | UPDATE | - |
+| 10 | JOB_READY.flag | UPDATE | - |
+
+**Phase07 新增文件总计**: 5 份 (23576+17707+9402+8981+19005 = 78,671 字节 ≈ 77KB)
+**Phase07 更新文件总计**: 5 份 (缺陷清单V4.9→V5.0, 运维手册v4.0.25→v4.0.26, STATUS.md, JOB_READY.flag, MD5_MANIFEST_cross_review.md)
+
+**Phase07 状态标记**: DSHE_L2_PHASE07_30DAY_GA_SAMPLING_ENABLE=TRUE, DSHE_L2_PHASE07_DATA_COMPLETENESS=99.97, DSHE_L2_PHASE07_QPS_AVG=1120, DSHE_L2_PHASE07_RENDER_P99_AVG=151, DSHE_L2_PHASE07_QUERY_P99_AVG=287, DSHE_L2_PHASE07_CACHE_HIT_AVG=96.1, DSHE_L2_PHASE07_STORAGE_FINAL=807.10GB, DSHE_L2_PHASE07_PANEL_SUCCESS=100.0, DSHE_L2_PHASE07_ALERT_TOTAL=5500, DSHE_L2_PHASE07_ALERT_INFO=5200, DSHE_L2_PHASE07_ALERT_WARN=290, DSHE_L2_PHASE07_ALERT_RED=10, DSHE_L2_PHASE07_ALERT_FP=0, DSHE_L2_PHASE07_ALERT_FN=0, DSHE_L2_PHASE07_HERMES_FIELD_INTEGRITY=100.0, DSHE_L2_PHASE07_WEEKLY_POOL_INGESTED=TRUE, DSHE_L2_PHASE07_GA_OBSERVATION_COMPLETE=TRUE, DSHE_L2_PHASE07_READY=TRUE, DSHE_L2_PHASE07_DONE=TRUE, JOB_READY=TRUE
+
+**Phase07 约束合规**: BRANCH_LOCKED=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | NO_ZHIJI_API_CALL=TRUE ✅
+
 ---
 
 ## DSHB V87 RC1 Phase07 — 30天GA长期稳定运行与索引归档部署
