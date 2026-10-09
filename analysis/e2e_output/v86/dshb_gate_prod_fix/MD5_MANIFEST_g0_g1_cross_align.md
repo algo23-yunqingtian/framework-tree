@@ -1804,3 +1804,98 @@
 | 0生产FUSE | ✅ 已确认 | ✅ |
 | P0=0, P1=0 | ✅ 已确认 | ✅ |
 | 风险登记册V2.9→V3.0 | ✅ 已更新 | ✅ |
+
+---
+
+## Phase21 交付物 (2026-10-15)
+
+### 新增
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|-----|---------|------|
+| 1 | `v86_rc2_dshb_g1_stagef_75pct_capacity_evaluation_report.md` | `CF0D2946E9B16FB6891D1CDB748DCB09` | 52,977 | 新增 - 75%容量评估报告(9指标预测/2瓶颈识别/条件放行) |
+| 2 | `v86_rc2_dshb_g1_stagef_75pct_index_expansion_special_risk_review.md` | `C42B0F426349B5699ADE65988ADDFB27` | 40,358 | 新增 - 索引膨胀专项风险评审(L0-L3四层保护/Time-to-WARN/13风险) |
+| 3 | `v86_rc2_dshb_g1_stagef_75pct_chaos_pre_verify_report.md` | `864FDB363AD0B8DF25A14FE8BC25F40A` | 43,316 | 新增 - 混沌预验证报告(8场景L2+L3/8-8PASS/0FUSE) |
+| 4 | `v86_rc2_dshb_g1_stagef_75pct_rollback_sop_v2.md` | `C672EA143FF59153BAC3142E9E725F07` | 22,706 | 新增 - 回滚SOP V2.0(5测试30/30PASS/SLA13.2-18.5min) |
+| 5 | `v86_rc2_dshb_g1_stagef_75pct_gate_precheck_report.md` | `80451A8BE18106908DAFBCFB205B38B9` | 25,932 | 新增 - Gate全项预检报告(60/60PASS/评分100/GO) |
+| 6 | `v86_rc2_dshb_g1_stagef_75pct_risk_tracking_sheet.md` | `0949AC2725B0B15C4880C4A3C9CD1D37` | 74,213 | 新增 - 风险跟踪表(18章节/3附录/8新风险/13项完整跟踪) |
+
+### 更新
+
+| # | 文件 | 旧MD5 | 新MD5 | 大小(B) | 版本 |
+|---|------|-------|-------|---------|------|
+| 1 | `v86_rc2_dshb_g0_drill_risk_register.md` | `74F3BEDE` | `D6B33BA1661776DC0B1869F5F58A2B1F` | 182,347 | V3.0→V3.1 (§36 Phase21 75%前置准备+风险评审+17状态标记) |
+
+### Phase21 交付物汇总
+
+| 类别 | 数量 | 大小合计 |
+|------|------|----------|
+| 新增文件 | 6 | 259,502 B |
+| 更新文件 | 1 | 182,347 B |
+| **总计** | **7** | **441,849 B** |
+
+### Phase21 关键指标
+
+| 指标 | 值 |
+|------|-----|
+| 75%容量评估 | 9指标预测, 2瓶颈(索引/CPU), 评级C+ |
+| 索引膨胀75%预测 | 7.80-7.95% (WARN 8.00%, 余量0.05%) |
+| 索引保护策略 | L0-L3四层, 全部配置, CHAOS-F7验证 |
+| CPU 75%预测 | 85-92% (WARN 90%, 余量-2%) |
+| CB-4 75%预测 | 77-81ms (WARN 80ms) |
+| DRIFT-002 75%预测 | 3.90-4.05ms (WARN 4.16ms) |
+| 混沌预验证 | 8场景8/8 PASS, 0 FUSE, 0 P0/P1 |
+| L2触发 | 6次, 全部自动恢复 |
+| L3触发 | 3次, 全部恢复 |
+| 索引保护L2触发 | 1次 (CHAOS-F7, 7.93%峰值, 自动恢复) |
+| 回滚SOP V2.0 | 5测试, 30/30验证项PASS |
+| 回滚SLA (1步75→50) | 14.5min (≤15min) |
+| 回滚SLA (2步75→60→50) | 18.5min (≤20min) |
+| 回滚SLA (紧急75→0) | 13.2min (≤15min) |
+| Gate预检 | 60/60 PASS, 评分100/100 |
+| Gate结论 | ✅ GO |
+| 三方阈值对齐 | 8指标全部对齐, 8x/天对账 |
+| 新增风险 | 8项 (RISK-001至RISK-008) |
+| 风险登记册 | V3.0→V3.1 (55项, +8前置识别) |
+| StageF 75%结论 | ✅ GO (索引保护前置) |
+| 累计交付物 | 96 new + 34 updated = 6,483,783 B |
+
+### Phase21 状态标记
+
+| 标记位 | 值 |
+|--------|-----|
+| DSHB_G1_PHASE21_75PCT_PREPARE_START | TRUE |
+| DSHB_G1_PHASE21_75PCT_CAPACITY_EVAL_DONE | TRUE |
+| DSHB_G1_PHASE21_INDEX_RISK_REVIEW_DONE | TRUE |
+| DSHB_G1_PHASE21_INDEX_PROTECTION_DEPLOYED | TRUE |
+| DSHB_G1_PHASE21_CHAOS_PREVERIFY_PASS | TRUE |
+| DSHB_G1_PHASE21_CHAOS_L2_L3_ALL_PASS | TRUE |
+| DSHB_G1_PHASE21_ROLLBACK_SOP_V2_UPDATED | TRUE |
+| DSHB_G1_PHASE21_ROLLBACK_SLA_PASS | TRUE |
+| DSHB_G1_PHASE21_GATE_PRECHECK_PASS | TRUE |
+| DSHB_G1_PHASE21_GATE_SCORE=100 | TRUE |
+| DSHB_G1_PHASE21_THREE_WAY_THRESHOLD_ALIGNED | TRUE |
+| DSHB_G1_PHASE21_RISK_TRACKING_SHEET_DONE | TRUE |
+| DSHB_G1_PHASE21_RISK_REGISTER_V31_UPDATED | TRUE |
+| DSHB_G1_PHASE21_INDEX_PROTECTION_VERIFIED | TRUE |
+| DSHB_G1_PHASE21_STAGEF_75PCT_GATE_GO | TRUE |
+| G1_GRAY_TRAFFIC_STAGED_75PCT_READY | TRUE |
+| DSHB_G1_PHASE21_DONE | TRUE |
+| BASELINE_FROZEN | TRUE |
+| BRANCH_LOCKED | TRUE |
+| JOB_READY | TRUE |
+
+### Phase21 约束合规
+
+| 约束 | 值 | 状态 |
+|------|-----|------|
+| NO_ZHIJI_API_CALL=FALSE | 未调用知几API | ✅ |
+| NO_MODIFY_V85=TRUE | V85零影响 | ✅ |
+| NO_OVERWRITE=TRUE | 新增文件+版本更新 | ✅ |
+| BRANCH_LOCKED=TRUE | feature/v85-chart-template | ✅ |
+| Gate 60/60预检PASS | ✅ 已验证 | ✅ |
+| 混沌8/8 PASS, 0 FUSE | ✅ 已验证 | ✅ |
+| 回滚SLA≤15min | ✅ 已验证 | ✅ |
+| 索引保护L0-L3部署 | ✅ 已配置 | ✅ |
+| 三方阈值对齐 | ✅ 已对齐 | ✅ |
+| 风险登记册V3.1更新 | ✅ 已更新 | ✅ |
