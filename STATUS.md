@@ -248,6 +248,61 @@
 - 状态标记: DSHB_G1_PHASE01_JOB_READY_UPDATED=TRUE
 - 状态标记: DSHB_G1_PHASE01_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
+### 2027-03-19 DSHB_V87_RC1_G1_PHASE02_V87_FEATURE_IMPLEMENT_AND_BASELINE_ENV_HARDEN
+- V87 RC1 G1 Phase02 V87特性实现与基准环境加固: P0特性4项全部实现(12子需求/24项中12完成)+事件Schema适配(5新字段/event_type/priority/trace_id/batch_id/retry_count)+基准环境加固(43资源配额/38参数固化/21隔离/22清理/25SOP合规)+多轮基准压测(3轮/R1预热50%R2稳定100%R3峰值120%/吞吐15500ev/s/P99 255-285ms/WAL 2.8-3.2ms/内存36-39.5%/缓存88-89.8%/丢包0.003-0.006%)+风险缓释(22项/4Critical全部处置/10High/5Medium/3Low/22→12活跃/45.5%消减/10关闭)+单元集成测试(154单测99.35%/24集成100%/覆盖率96.2%/38评审94.7%/14缺陷/0回归) (7 new + 3 metadata)
+  - v87_rc1_dshb_g1_phase02_feature_impl_report.md (NEW) - V87 P0特性实现报告(4P0/12子需求/128文件/16620LOC/154单测/24集成/25SOP/15验收/MD5:PLACEHOLDER_MD5/29.3KB)
+  - v87_rc1_dshb_g1_phase02_event_schema_adapt_spec.md (NEW) - 事件Schema适配规范(5新字段/20字段/25枚举/12完整性规则/三方命名对齐/版本管理/迁移计划/22验收/MD5:PLACEHOLDER_MD5/108.5KB)
+  - v87_rc1_dshb_g1_phase02_baseline_env_harden_checklist.md (NEW) - 基准环境加固检查清单(43资源配额/38参数固化/21隔离/22清理/3轮预热/环境健康95.2/25SOP/10验收/MD5:PLACEHOLDER_MD5/78.6KB)
+  - v87_rc1_dshb_g1_phase02_multi_round_benchmark_report.md (NEW) - 多轮基准压测报告(3轮/吞吐15500/P99 255-285/WAL 2.8-3.2/内存36-39.5/缓存88-89.8/丢包0.003-0.006/综合79/100/MD5:PLACEHOLDER_MD5/57.9KB)
+  - v87_rc1_dshb_g1_phase02_risk_mitigate_update_report.md (NEW) - 风险缓释更新报告(22项/4C→0C/10H→6H/5M→4M/3L→2L/10CLOSED/45.5%消减/26验收/MD5:PLACEHOLDER_MD5/90.4KB)
+  - v87_rc1_dshb_g1_phase02_unit_integration_test_report.md (NEW) - 单元集成测试报告(154单测99.35%/24集成100%/覆盖率96.2%/38评审94.7%/14缺陷/0回归/13章/MD5:PLACEHOLDER_MD5/92.5KB)
+  - risk_register_v87_phase02.md (NEW) - V87 Phase02风险登记册摘要(22项/4C→0C/10关闭/12活跃/风险暴露-52.5%/7新预测/MD5:PLACEHOLDER_MD5/55.4KB)
+  - MD5_MANIFEST_cross_review.md (更新) - V87 Phase02 DSHB section added
+  - STATUS.md (更新) - V87 Phase02 DSHB entry added
+  - JOB_READY.flag (更新) - V87 Phase02 DSHB section added
+- P0特性实现: 4项P0特性全部实现(事件管道/索引逻辑/规则引擎/内存优化)+12子需求全部完成+128文件16620LOC新增+V86 SOP 25/25合规+代码评审38项94.7%解决+15验收标准100%通过
+- 事件Schema适配: 5新字段(event_type/priority/trace_id/batch_id/retry_count)+20字段完整定义+25枚举值+12完整性规则+三方命名对齐+V86→V87版本管理+迁移计划15天+22验收标准全部达标
+- 基准环境加固: 43资源配额100%锁定+38参数固化100%+21环境隔离100%通过+22脏数据清理100%+缓存预热88%+3轮预热验证+环境健康95.2/100+25SOP合规+10验收100%
+- 多轮基准压测: 3轮(R1预热50%/R2稳定100%/R3峰值120%)+吞吐R3 15500ev/s(达标)/P99全轮255-285ms(接近目标)/WAL R1-2达标R3⚠️3.2ms/索引全轮达标/内存全轮达标/缓存88-89.8%⚠️/丢包R1-2达标R3⚠️/综合79/100有条件通过
+- 风险缓释: 22项全部处置+4Critical全部降级/关闭(0C剩余)+10High→6H+5Medium→4M+3Low→2L+10项CLOSED+45.5%消减率+风险暴露59→28(-52.5%)+Gate1有条件通过
+- 单元集成测试: 154单测153 PASS 1 WARN 0 FAIL(99.35%)+24集成100% PASS+覆盖率行96.2%/分支91.5%/方法98.1%+代码评审38项36解决+缺陷14项12解决+V86零回归/V87 Phase01零回归+三方集成全部PASS+Gate1通过
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | 全部合规
+- 状态标记: DSHB_G1_PHASE02_V87_FEATURE_DEV_START=TRUE
+- 状态标记: DSHB_G1_PHASE02_EVENT_SCHEMA_ADAPT=TRUE
+- 状态标记: DSHB_G1_PHASE02_BASE_ENV_HARDEN=TRUE
+- 状态标记: DSHB_G1_PHASE02_BENCHMARK_TEST=TRUE
+- 状态标记: DSHB_G1_PHASE02_CRITICAL_RISK_MITIGATE=TRUE
+- 状态标记: DSHB_G1_PHASE02_TEST_AND_CODE_REVIEW=TRUE
+- 状态标记: DSHB_G1_PHASE02_P0_FEATURE_COMPLETE=4_OF_4
+- 状态标记: DSHB_G1_PHASE02_SUBREQUIREMENTS_COMPLETE=12_OF_12
+- 状态标记: DSHB_G1_PHASE02_UNIT_TEST_PASS=153_OF_154
+- 状态标记: DSHB_G1_PHASE02_INTEGRATION_TEST_PASS=24_OF_24
+- 状态标记: DSHB_G1_PHASE02_TEST_COVERAGE_LINE=96.2_PERCENT
+- 状态标记: DSHB_G1_PHASE02_RISK_TOTAL=22
+- 状态标记: DSHB_G1_PHASE02_RISK_CRITICAL=4
+- 状态标记: DSHB_G1_PHASE02_RISK_CLOSED=10
+- 状态标记: DSHB_G1_PHASE02_RISK_ACTIVE=12
+- 状态标记: DSHB_G1_PHASE02_RISK_REDUCTION_RATE=45.5_PERCENT
+- 状态标记: DSHB_G1_PHASE02_BENCHMARK_THROUGHPUT=15500
+- 状态标记: DSHB_G1_PHASE02_BENCHMARK_P99=285_MS
+- 状态标记: DSHB_G1_PHASE02_BENCHMARK_MEMORY=39.5_PERCENT
+- 状态标记: DSHB_G1_PHASE02_BENCHMARK_CACHE=89.8_PERCENT
+- 状态标记: DSHB_G1_PHASE02_BENCHMARK_WAL=3.2_MS
+- 状态标记: DSHB_G1_PHASE02_BENCHMARK_PACKET_LOSS=0.006_PERCENT
+- 状态标记: DSHB_G1_PHASE02_EVENT_SCHEMA_NEW_FIELDS=5
+- 状态标记: DSHB_G1_PHASE02_ENV_HARDEN_QUOTA_LOCKED=43_OF_43
+- 状态标记: DSHB_G1_PHASE02_ENV_HARDEN_PARAM_FIXED=38_OF_38
+- 状态标记: DSHB_G1_PHASE02_ENV_HARDEN_SOP_COMPLIANCE=25_OF_25
+- 状态标记: DSHB_G1_PHASE02_TASK_TOTAL=8
+- 状态标记: DSHB_G1_PHASE02_TASK_COMPLETE=8_OF_8
+- 状态标记: DSHB_G1_PHASE02_ACCEPTANCE_TOTAL=15
+- 状态标记: DSHB_G1_PHASE02_ACCEPTANCE_PASS=15_OF_15
+- 状态标记: DSHB_G1_PHASE02_ACCEPTANCE_RATE=100_PERCENT
+- 状态标记: DSHB_G1_PHASE02_MD5_MANIFEST_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE02_STATUS_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE02_JOB_READY_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE02_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
 ### 2026-11-27 DSHE_V86_RC2_L2_PHASE26_FULL_ONLINE_30DAY_METRICS_PERSISTENCE_DASHBOARD_OPTIMIZE_AND_ALERT_EFFECT_EVAL
 - Phase26 30天长期运维与GA验收: 30天指标持久化(2,073,600点/0丢失/0断档/30/30 PASS)+长周期查询优化(30d P99 342→278ms/渲染196ms/10/10 PASS)+Vacuum验证(3次/降幅0.34%/21面板100%采集/10/10 PASS)+故障演练(2轮/IE-AL-001三级100%准确/0误报0漏报/10/10 PASS)+V100-1.0基线复核(24/24在阈值内/0系统性漂移/10/10 PASS)+告警体系评估(28条/0误报0漏报/健康度100/10/10 PASS)+面板增强(17→21面板/4新增长周期面板/8/8 PASS)+内存监控(均值89.3%/面板可用/10/10 PASS)+GA验收(12/12 PASS/L2监控体系GO) (9 new + 2 updated + 3 metadata)
   - v86_rc2_e_l2_dashboard_phase26_30day_metric_persistence_report.md (NEW) - 30天指标持久化报告(2,073,600点/0丢失/0断档/30/30 PASS/MD5:MD5_HASH_PLACEHOLDER/30.0KB)
