@@ -128,7 +128,32 @@
 | 4 | `v87_rc1_hermes_phase10_gray_gate_evaluation.md` | `7246dfcdb2ec657d200619a5e4226870` |
 | 5 | `risk_watchlist_v87_phase10.md` | `4c5ec2b617887f77fc6c7aa4a30ddd91` |
 
-## 11. 不可篡改保证
+## 11. DSHE V87.1 Phase10 产物（1%灰度指标采集+告警熔断验证）
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|------|
+| 1 | `v87_rc1_dshe_l2_phase10_1pct_gray_metric_split_report.md` | `39A555608B47701E86DE41D916B95CED` | 10,359 B |
+| 2 | `v87_rc1_dshe_l2_phase10_gray_alert_fuse_verify_report.md` | `37A28DD3750E50DE1D2803179C8ECF68` | 12,136 B |
+| 3 | `v87_rc1_dshe_l2_phase10_24h_observation_report.md` | `826FE525161758FBAA62965E4AFEC1CC` | 12,014 B |
+| 4 | `v87_rc1_dshe_l2_phase10_gray_gate_evaluation_report.md` | `999B666C50FE97D4C0B092CAAF1AEC62` | 19,076 B |
+
+## 12. DSHB V87.1 Phase10 产物（1%灰度指标采集+告警熔断验证）
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|------|
+| 1 | `v87_rc1_dshb_g1_phase10_1pct_gray_metric_split_report.md` | `D67E36EE902C0562A9CAD5580AB08520` | 12,506 B |
+| 2 | `v87_rc1_dshb_g1_phase10_gray_alert_fuse_verify_report.md` | `4189A7127FEB71512B9B5B560375E5FF` | 12,573 B |
+| 3 | `v87_rc1_dshb_g1_phase10_24h_observation_report.md` | `32BAF4598B63B154CAC5DE6BFED58AF1` | 12,546 B |
+| 4 | `v87_rc1_dshb_g1_phase10_gray_gate_evaluation_report.md` | `B29CFFA0710CBC29720C0F22898CB74D` | 13,542 B |
+
+## 13. DSHB Phase10 元数据更新
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|------|
+| 1 | `v86_rc2_b_g1_defect_list_v3.0.md` | `918A6625D16BD5E0659B97BDE0DC0A8D` | 18,202 B |
+| 2 | `v86_rc2_b_g1_ops_manual_chaos_update.md` | `C0E9027FB11C2F866BF4B3E17384C058` | 17,702 B |
+
+## 14. 不可篡改保证
 
 - 所有产物已 commit 至 `feature/v87-rc1-g1`
 - MD5 记录完整（71+ 文件）

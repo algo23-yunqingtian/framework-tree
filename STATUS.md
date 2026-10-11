@@ -3907,6 +3907,67 @@
 - 状态标记: DSHE_L2_PHASE10_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
+### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY
+- V87.1 1%灰度指标采集+告警熔断验证+24h持续观测+Gate准入评审 (4 new + 2 updated + 3 metadata)
+  - v87_rc1_dshb_g1_phase10_1pct_gray_metric_split_report.md (NEW) - 1%灰度指标分流采集报告(双版本分流/99.02%+0.98%/138,240点/99.98%完整率/MD5:D67E36EE/12KB)
+  - v87_rc1_dshb_g1_phase10_gray_alert_fuse_verify_report.md (NEW) - 告警熔断验证报告(15规则/0FP/0FN/三级熔断四级降级/9条流转用例/MD5:4189A712/12KB)
+  - v87_rc1_dshb_g1_phase10_24h_observation_report.md (NEW) - 24h持续观测报告(8指标/0告警/0熔断/0降级/MD5:32BAF459/12KB)
+  - v87_rc1_dshb_g1_phase10_gray_gate_evaluation_report.md (NEW) - Gate准入评审报告(4.96/5.0/20/20/三方3/3 GO/5%放量准入/MD5:B29CFFA0/13KB)
+  - v86_rc2_b_g1_defect_list_v3.0.md (V7.0→V8.0) - 缺陷清单更新(Phase10新增0项/V8.0更新)
+  - v86_rc2_b_g1_ops_manual_chaos_update.md (新增) - DSHB运维手册Phase10更新(灰度监控/告警响应/熔断降级/回滚/HERMES对账/混沌演练SOP)
+  - MD5_MANIFEST_V87_PHASE01.md (更新) - DSHE+DSHB Phase10 section added
+  - STATUS.md (更新) - V87 Phase10 entry added
+  - JOB_READY.flag (更新) - V87 Phase10 section added
+- 1%灰度分流: 双版本流量分流正常(V87 RC1 99.02%/V87.1 0.98%)/独立时序库分区/标签隔离/0混淆/10,000请求验证/路由延迟<1ms
+- 24h观测: 8指标/138,240数据点/99.98%完整率/DSHB E2E P99 249.9ms/吞吐15,670 ev/s/缓存94.5%/GC P99 18.7ms/索引膨胀0.005pp/天/内存42.0%/CPU 36.8%/0告警/0熔断/0降级/0回滚
+- 告警验证: 15规则全部正常(12既有+3新增)/0FP/0FN/告警推送延迟1.1-1.8s(<2s)/5条模拟触发用例全PASS/三级熔断四级降级全链路验证通过/9条流转用例全PASS
+- 四维优化: 索引-37.5%(0.008→0.005pp/d)/查询-4ms(272→268ms)/缓存+2.2pp(92.3%→94.5%)/GC-33.7%(28.2→18.7ms)/四维复现率100%
+- 跨系统: DSHB↔DSHE↔HERMES 100%一致/HERMES 5字段100%完整/288窗口100%一致/0丢数/0错位
+- Gate评审: 4.96/5.0/20/20 PASS/三方3/3一致GO/5%灰度放量准入(1%→5%→20%→50%→100%/4周)
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅
+- 状态标记: DSHB_G1_PHASE10_GRAY_DATA_POINTS=138240
+- 状态标记: DSHB_G1_PHASE10_GRAY_DATA_COMPLETENESS=99.98
+- 状态标记: DSHB_G1_PHASE10_GRAY_E2E_P99=249.9
+- 状态标记: DSHB_G1_PHASE10_GRAY_P95=240.2
+- 状态标记: DSHB_G1_PHASE10_GRAY_THROUGHPUT=15670
+- 状态标记: DSHB_G1_PHASE10_GRAY_CACHE_HIT=94.5
+- 状态标记: DSHB_G1_PHASE10_GRAY_GC_P99=18.7
+- 状态标记: DSHB_G1_PHASE10_GRAY_INDEX_BLOAT=0.005
+- 状态标记: DSHB_G1_PHASE10_GRAY_ALERT_RULES=15
+- 状态标记: DSHB_G1_PHASE10_GRAY_ALERT_FP=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_ALERT_FN=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_SIM_TRIGGER=5_OF_5
+- 状态标记: DSHB_G1_PHASE10_GRAY_FUSE_GO=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_FUSE_COND_GO=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_FUSE_RED=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_FUSE_TRIGGER=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEGRADE_L0=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEGRADE_L1=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEGRADE_L2=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEGRADE_L3=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEGRADE_TRIGGER=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_FLOW_CASES=9_OF_9
+- 状态标记: DSHB_G1_PHASE10_GRAY_ALERT_CROSS_SYSTEM=100_PERCENT
+- 状态标记: DSHB_G1_PHASE10_GRAY_24H_OBSERVE=TRUE
+- 状态标记: DSHB_G1_PHASE10_GRAY_HERMES_FIELDS=5
+- 状态标记: DSHB_G1_PHASE10_GRAY_HERMES_WINDOWS=288
+- 状态标记: DSHB_G1_PHASE10_GRAY_ROLLBACK=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEFECT_P0=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEFECT_P1=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_DEFECT_SCAN=PASS
+- 状态标记: DSHB_G1_PHASE10_GRAY_GATE_ASSESS=TRUE
+- 状态标记: DSHB_G1_PHASE10_GRAY_GATE_PASS=20_OF_20
+- 状态标记: DSHB_G1_PHASE10_GRAY_GATE_SCORE=4.96_OF_5.0
+- 状态标记: DSHB_G1_PHASE10_GRAY_GATE_DECISION=GO
+- 状态标记: DSHB_G1_PHASE10_GRAY_THREE_PARTY=GO
+- 状态标记: DSHB_G1_PHASE10_GRAY_5PCT_READY=GO
+- 状态标记: DSHB_G1_PHASE10_GRAY_RISK_LOW=6
+- 状态标记: DSHB_G1_PHASE10_GRAY_RISK_MEDIUM=0
+- 状态标记: DSHB_G1_PHASE10_GRAY_RISK_HIGH=0
+- 状态标记: DSHB_G1_PHASE10_READY=TRUE
+- 状态标记: DSHB_G1_PHASE10_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
+
 ### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_5PCT_GRAY_RELEASE_24H_STABLE_OBSERVE
 - V87.1 5%灰度发布+24h稳定观测+生产基线对比+灰度Gate评审GO (4 new + 2 updated + 3 metadata)
   - v87_rc1_dshb_g1_phase10_5pct_gray_release_exec_report.md (NEW) - 5%灰度发布执行报告(灰度5%/基线95%/波动±0.3%/6步阶梯/12/12路由/0隔离失败/回滚<5min/MD5:BFE37A40/24KB)
