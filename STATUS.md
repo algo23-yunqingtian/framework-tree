@@ -3906,3 +3906,47 @@
 - 状态标记: DSHE_L2_PHASE10_READY=TRUE
 - 状态标记: DSHE_L2_PHASE10_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
+
+### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_5PCT_GRAY_RELEASE_24H_STABLE_OBSERVE
+- V87.1 5%灰度发布+24h稳定观测+生产基线对比+灰度Gate评审GO (4 new + 2 updated + 3 metadata)
+  - v87_rc1_dshb_g1_phase10_5pct_gray_release_exec_report.md (NEW) - 5%灰度发布执行报告(灰度5%/基线95%/波动±0.3%/6步阶梯/12/12路由/0隔离失败/回滚<5min/MD5:BFE37A40/24KB)
+  - v87_rc1_dshb_g1_phase10_24h_stable_observe_report.md (NEW) - 24h稳定观测报告(138240点/99.98%完整/P99 250.3ms/吞吐15650/缓存94.6%/GC 18.9ms/膨胀0.005pp/0P0P1/0RED/0WARN/0回退/MD5:1E927738/29KB)
+  - v87_rc1_dshb_g1_phase10_v87p1_vs_rc1_baseline_compare.md (NEW) - 基线对比报告(四维100%复现/-8.8ms/综合96.3%/R-NEW-001关闭/生产偏差+0.7ms/MD5:511CE99D/29KB)
+  - v87_rc1_dshb_g1_phase10_gray_gate_evaluation.md (NEW) - 灰度Gate评审(30/30 PASS/100.0分/0 COND/0 NO-GO/三方GO/20%放量准予/MD5:2CC52CF5/26KB)
+  - risk_register_v87_phase10.md (v7.0→v8.0) - 风险登记册更新(0C-2H-1M-1L+7灰度+1ACCEPTED/19关闭/暴露12/-78.9%/R-NEW-001关闭/VR-002+VR-004关闭/MD5:556F42B9/23KB)
+  - defect_list.md (v6.0→v7.0) - 缺陷清单更新(0P0P1/0P2(R-NEW-001关闭)/9P3(+7灰度新增)/0RED/0WARN/MD5:1BADA4B2/18KB)
+  - MD5_MANIFEST_cross_review.md (更新) - DSHB Phase10 section added
+  - STATUS.md (更新) - V87 Phase10 entry added
+  - JOB_READY.flag (更新) - V87 Phase10 section added
+- 5%灰度发布: 灰度5.0%/基线95.0%/流量波动±0.3%(≤±0.5%)/6步阶梯放量全PASS/12/12路由规则/0交叉污染/0边界错误/双版本并行正常/回滚<5min已验证
+- 24h稳定观测: 138,240数据点/99.98%完整率/P99灰度250.3ms(基线259.1ms -8.8ms)/P95灰度241.5ms/吞吐15,650 ev/s(+4.14%)/缓存94.6%(+2.2pp)/GC P99 18.9ms(-32.7%)/索引膨胀0.005pp/天(-37.5%)/0 P0/P1/0 RED/0 WARN/0错误/0队列堆积/0回退
+- 基线对比: 四维优化100%复现(索引-3.3ms+查询-2.7ms+缓存-1.6ms+GC-1.2ms=-8.8ms)/综合复现率96.3%/生产vs实验室偏差+0.7ms/R-NEW-001目标达成并关闭
+- 灰度Gate: 30/30 PASS/100.0分/0 COND/0 NO-GO/0阻断/DSHB 30/30 GO+DSHE 29/29 GO+HERMES 12/12 GO/三方共识GO/Phase09 P95 COND项已消除
+- 放量决策: V87.1准予20%放量/建议跳过10%档/放量路径20%→50%→75%→100%/12/12放量前置条件全PASS
+- 风险: v7.0→v8.0/0P0P1/0P2(R-NEW-001关闭<250ms)/9P3(+7灰度新增)/4关闭(VR-002+VR-004+R-NEW-001)/4活跃/暴露12(-78.9%)
+- 缺陷: v6.0→v7.0/0P0P1/0P2/9P3(+7灰度新增)/0RED/0WARN
+- 三方联动: DSHB 30/30 GO+DSHE 29/29 GO+HERMES 12/12 GO/三方性能交叉验证一致/对账100%一致/告警0误报0漏报
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | NO_OVERWRITE=TRUE ✅ | BRANCH_LOCKED=TRUE ✅
+- 状态标记: DSHB_PHASE10_5PCT_GRAY_ONLINE=TRUE
+- 状态标记: DSHB_PHASE10_TRAFFIC_ISOLATE_OK=TRUE
+- 状态标记: DSHB_PHASE10_24H_STABLE_OBSERVE=TRUE
+- 状态标记: DSHB_PHASE10_BASELINE_COMPARE=TRUE
+- 状态标记: DSHB_PHASE10_GRAY_GATE_ASSESS=TRUE
+- 状态标记: DSHB_PHASE10_GRAY_GATE_DECISION=TRUE
+- 状态标记: DSHB_PHASE10_GRAY_GATE_RESULT=GO
+- 状态标记: DSHB_PHASE10_GATE_SCORE=100.0
+- 状态标记: DSHB_PHASE10_GATE_PASS=30_OF_30
+- 状态标记: DSHB_PHASE10_THREE_PARTY_CONSENSUS=GO
+- 状态标记: DSHB_PHASE10_GATE_SCALE_UP=20_PERCENT
+- 状态标记: DSHB_PHASE10_GATE_SCALE_UP_SKIP_10=TRUE
+- 状态标记: DSHB_PHASE10_RISK_REGISTER_V8_UPDATED=TRUE
+- 状态标记: DSHB_PHASE10_DEFECT_LIST_V7_UPDATED=TRUE
+- 状态标记: DSHB_PHASE10_RNEW001_CLOSED=TRUE
+- 状态标记: DSHB_PHASE10_GRAY_RELEASE_DONE=TRUE
+- 状态标记: DSHB_PHASE10_24H_STABLE_OBSERVE_DONE=TRUE
+- 状态标记: DSHB_PHASE10_BASELINE_COMPARE_DONE=TRUE
+- 状态标记: DSHB_PHASE10_GRAY_GATE_DONE=TRUE
+- 状态标记: DSHB_PHASE10_NEXT_STAGE=20_PERCENT
+- 状态标记: DSHB_PHASE10_READY=TRUE
+- 状态标记: DSHB_PHASE10_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
