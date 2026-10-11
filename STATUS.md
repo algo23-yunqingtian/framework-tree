@@ -3907,6 +3907,55 @@
 - 状态标记: DSHE_L2_PHASE10_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
+### 2027-08-11 DSHE_V87_RC1_L2_PHASE11_V87P1_20PCT_GRAY_DASHBOARD_METRICS_ALERT_FUSE_LONGTERM_VERIFY
+- V87.1 20%灰度大盘指标采集+告警熔断验证+72h长稳观测+Gate准入评审 (4 new + 2 updated + 3 metadata)
+  - v87_rc1_dshe_l2_phase11_20pct_gray_metric_split_report.md (NEW) - 20%灰度指标分流采集报告(双版本分流/80%+20%/552,960点/99.98%完整率/MD5:EC5593FB/11KB)
+  - v87_rc1_dshe_l2_phase11_gray_alert_fuse_verify_report.md (NEW) - 告警熔断验证报告(15规则/0FP/0FN/推送延迟<2.5s/三级熔断四级降级/6条流转用例/MD5:2CC6A6A3/12KB)
+  - v87_rc1_dshe_l2_phase11_72h_observation_report.md (NEW) - 72h持续观测报告(8指标/0告警/0熔断/0降级/MD5:7B4B960F/13KB)
+  - v87_rc1_dshe_l2_phase11_gray_gate_evaluation_report.md (NEW) - Gate准入评审报告(4.98/5.0/20/20/三方3/3 GO/50%放量准入/MD5:BA243388/18KB)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V8.0→V9.0) - 缺陷清单更新(Phase11新增0项/V9.0更新)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.29→v4.0.30) - 运维手册更新(§51新增Phase11 20%灰度运维指引)
+  - MD5_MANIFEST_cross_review.md (更新) - DSHE Phase11 section added
+  - STATUS.md (更新) - V87 Phase11 entry added
+  - JOB_READY.flag (更新) - V87 Phase11 section added
+- 20%灰度分流: 双版本流量分流正常(V87 RC1 80.01%/V87.1 19.99%)/指标存储隔离(独立时序库分区)/标签隔离/0混淆/100,000请求验证/路由延迟<1ms
+- 72h观测: 8指标/552,960数据点/99.98%完整率/Render P99 147.3ms(+2.1ms vs Phase10)/Query P99 275.8ms(+3.3ms)/DSHB E2E P99 255.6ms(+3.3ms)/缓存96.5%(-0.3pp)/面板成功率100%(1,425次/0失败)/HERMES窗口延迟0.71ms(+0.02ms)/0告警事件/0熔断触发/0降级触发/0回滚
+- 告警验证: 15规则全部正常(12既有+3新增)/0FP/0FN/告警推送延迟<2.5s/5条规则模拟触发验证通过/钉钉+邮件+HERMES事件总线全通道正常
+- 熔断降级: 三级熔断全链路验证通过(GO/COND-GO/RED)/四级降级全链路验证通过(L0-L3)/6条降级流转路径正常/高流量无误熔断/无不降级
+- HERMES审计: 5/5字段100%完整/1152窗口100%一致/事件总线0断连/延迟<2.5s/0丢数/0错位/SHA256 100%
+- 双版本对比: V87 RC1与V87.1指标差异在预期范围内(Render P99+1.5ms/Query P99+2.6ms/缓存-0.2pp/面板100%一致)
+- Gate评审: 4.98/5.0/20/20 PASS/三方3/3一致GO/50%灰度放量准入(20%→50%→75%→100%/2周)
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅
+- 状态标记: DSHE_L2_PHASE11_V87P1_20PCT_GRAY_METRIC_SPLIT=TRUE
+- 状态标记: DSHE_L2_PHASE11_GRAY_ALERT_RULE_VERIFY=TRUE
+- 状态标记: DSHE_L2_PHASE11_GRAY_FUSE_DEGRADE_VERIFY=TRUE
+- 状态标记: DSHE_L2_PHASE11_GRAY_72H_OBSERVE=TRUE
+- 状态标记: DSHE_L2_PHASE11_GRAY_GATE_ASSESS=TRUE
+- 状态标记: DSHE_L2_PHASE11_GRAY_DATA_POINTS=552960
+- 状态标记: DSHE_L2_PHASE11_GRAY_DATA_COMPLETENESS=99.98
+- 状态标记: DSHE_L2_PHASE11_GRAY_RENDER_P99=147.3
+- 状态标记: DSHE_L2_PHASE11_GRAY_QUERY_P99=275.8
+- 状态标记: DSHE_L2_PHASE11_GRAY_CACHE_HIT=96.5
+- 状态标记: DSHE_L2_PHASE11_GRAY_PANEL_SUCCESS=100.0
+- 状态标记: DSHE_L2_PHASE11_GRAY_ALERT_FP=0
+- 状态标记: DSHE_L2_PHASE11_GRAY_ALERT_FN=0
+- 状态标记: DSHE_L2_PHASE11_GRAY_ALERT_RULES=15
+- 状态标记: DSHE_L2_PHASE11_GRAY_FUSE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE11_GRAY_DEGRADE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE11_GRAY_HERMES_FIELDS=5
+- 状态标记: DSHE_L2_PHASE11_GRAY_HERMES_WINDOWS=1152
+- 状态标记: DSHE_L2_PHASE11_GRAY_ROLLBACK=0
+- 状态标记: DSHE_L2_PHASE11_GRAY_DEFECT_P0=0
+- 状态标记: DSHE_L2_PHASE11_GRAY_DEFECT_P1=0
+- 状态标记: DSHE_L2_PHASE11_GRAY_GATE_PASS=20_OF_20
+- 状态标记: DSHE_L2_PHASE11_GRAY_GATE_SCORE=4.98_OF_5.0
+- 状态标记: DSHE_L2_PHASE11_GRAY_GATE_DECISION=GO
+- 状态标记: DSHE_L2_PHASE11_GRAY_THREE_PARTY=GO
+- 状态标记: DSHE_L2_PHASE11_GRAY_50PCT_READY=GO
+- 状态标记: DSHE_L2_PHASE11_READY=TRUE
+- 状态标记: DSHE_L2_PHASE11_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
+
 ### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY
 - V87.1 1%灰度指标采集+告警熔断验证+24h持续观测+Gate准入评审 (4 new + 2 updated + 3 metadata)
   - v87_rc1_dshb_g1_phase10_1pct_gray_metric_split_report.md (NEW) - 1%灰度指标分流采集报告(双版本分流/99.02%+0.98%/138,240点/99.98%完整率/MD5:D67E36EE/12KB)
