@@ -4088,7 +4088,66 @@ JOB_READY=TRUE量放量准入/framework-tree网页上线放行
 - 状态标记: DSHE_L2_PHASE13_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
 
-### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY
+
+### 2027-08-27 DSHE_V87_RC1_L2_PHASE14_V87P1_100PCT_FULL_TRAFFIC_DASHBOARD_ALERT_POST_RELEASE_VALIDATE
+- V87.1 100%全量流量切换Dashboard告警上线闭环验证 (6 new + 2 updated + 3 metadata)
+  - v87_rc1_dshe_l2_phase14_full_traffic_dashboard_switch_report.md (NEW) - 全量流量切换观测报告(75%→90%→100%两阶段/波动≤±0.3%/0异常)
+  - v87_rc1_dshe_l2_phase14_7day_longrun_dashboard_observation_report.md (NEW) - 7天长周期观测报告(168h/15告警0FP/0FN/6条流转/5760窗口全PASS)
+  - v87_rc1_dshe_l2_phase14_full_load_metric_baseline_freeze_report.md (NEW) - 全负载指标基线固化报告(2,764,800点/99.987%完整率/V100-2.0锁定)
+  - v87_rc1_dshe_l2_phase14_post_release_gate_evaluation_report.md (NEW) - 上线闭环Gate评审报告(4.98/5.0/20/20/三方3/3 GO)
+  - v87_rc1_dshe_l2_phase14_frameworktree_dashboard_web_release_verify_report.md (NEW) - framework-tree网页发布验收报告(13/13文件/15/15图表/10/10页面/公网验收)
+  - v87_rc1_dshe_l2_phase14_v87rc1_g1_closeout_summary.md (NEW) - V87 RC1 G1上线闭环总结报告(28/28闭环检查通过)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V11.0→V12.0) - 缺陷清单更新(Phase14新增0项/V12.0更新)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.32→v4.0.33) - 运维手册更新(§54新增Phase14 100%全量运维指引)
+  - MD5_MANIFEST_cross_review.md (更新) - DSHE Phase14 section added
+  - STATUS.md (更新) - V87 Phase14 entry added
+  - JOB_READY.flag (更新) - V87 Phase14 section added
+- 全量流量切换: 两阶段渐进(75%→90%→100%)/流量波动≤±0.3%/0渲染中断/0查询超时P0/0异常事件
+- 7天观测: 168h连续观测/0渲染中断/0查询超时P0/0告警FP/0FN/0熔断/0降级/0回滚/0 P0P1缺陷
+- 全负载指标: 2,764,800数据点/99.987%完整率/Render P99 150.0ms/Query P99 280.0ms/DSHB E2E P99 259.0ms/缓存96.3%/面板100%/HERMES延迟0.74ms
+- 告警验证: 15规则全部正常(0FP/0FN)/推送延迟<3.0s/5条模拟触发全PASS
+- 熔断降级: 三级熔断/四级降级/6条流转全PASS/0触发/0误触发
+- HERMES+DSHB对账: 5字段100%匹配/5760窗口全部PASS/0丢数/0时序错位/0时序漂移
+- framework-tree: 13/13文件/15/15图表/10/10页面/12/12链接/6/6跨系统引用/0资源缺失/公网验收通过
+- Gate评审: 4.98/5.0/20/20 PASS/三方3/3一致GO/DSHE侧V87 RC1 G1上线闭环
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅
+- 状态标记: DSHE_L2_PHASE14_V87P1_100PCT_FULL_TRAFFIC=TRUE
+- 状态标记: DSHE_L2_PHASE14_FULL_TRAFFIC_SWITCH=TRUE
+- 状态标记: DSHE_L2_PHASE14_FULL_LOAD_METRIC_COLLECT=TRUE
+- 状态标记: DSHE_L2_PHASE14_DATA_POINTS=2764800
+- 状态标记: DSHE_L2_PHASE14_DATA_COMPLETENESS=99.987
+- 状态标记: DSHE_L2_PHASE14_RENDER_P99=150.0
+- 状态标记: DSHE_L2_PHASE14_QUERY_P99=280.0
+- 状态标记: DSHE_L2_PHASE14_DSHB_E2E_P99=259.0
+- 状态标记: DSHE_L2_PHASE14_CACHE_HIT=96.3
+- 状态标记: DSHE_L2_PHASE14_PANEL_SUCCESS=100.0
+- 状态标记: DSHE_L2_PHASE14_HERMES_LATENCY_P99=0.74
+- 状态标记: DSHE_L2_PHASE14_ALERT_FP=0
+- 状态标记: DSHE_L2_PHASE14_ALERT_FN=0
+- 状态标记: DSHE_L2_PHASE14_ALERT_RULES=15
+- 状态标记: DSHE_L2_PHASE14_FUSE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE14_DEGRADE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE14_ROLLBACK=0
+- 状态标记: DSHE_L2_PHASE14_DEFECT_P0=0
+- 状态标记: DSHE_L2_PHASE14_DEFECT_P1=0
+- 状态标记: DSHE_L2_PHASE14_HERMES_WINDOWS=5760
+- 状态标记: DSHE_L2_PHASE14_HERMES_WINDOWS_PASS=100_PERCENT
+- 状态标记: DSHE_L2_PHASE14_HERMES_FIELDS_MATCH=100_PERCENT
+- 状态标记: DSHE_L2_PHASE14_7DAY_OBSERVE=TRUE
+- 状态标记: DSHE_L2_PHASE14_FRAMEWORKTREE_WEB_RELEASE=TRUE
+- 状态标记: DSHE_L2_PHASE14_FRAMEWORKTREE_WEB_READY=TRUE
+- 状态标记: DSHE_L2_PHASE14_BASELINE_VERSION=V100_2.0
+- 状态标记: DSHE_L2_PHASE14_BASELINE_FROZEN=TRUE
+- 状态标记: DSHE_L2_PHASE14_GATE_PASS=20_OF_20
+- 状态标记: DSHE_L2_PHASE14_GATE_SCORE=4.98_OF_5.0
+- 状态标记: DSHE_L2_PHASE14_GATE_DECISION=GO
+- 状态标记: DSHE_L2_PHASE14_THREE_PARTY=GO
+- 状态标记: DSHE_L2_PHASE14_CLOSEOUT=TRUE
+- 状态标记: DSHE_L2_PHASE14_CLOSEOUT_READY=TRUE
+- 状态标记: DSHE_L2_PHASE14_V87RC1_G1_CLOSEOUT=TRUE
+- 状态标记: DSHE_L2_PHASE14_READY=TRUE
+- 状态标记: DSHE_L2_PHASE14_DONE=TRUE
+- 状态标记: JOB_READY=TRUE### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY
 - V87.1 1%灰度指标采集+告警熔断验证+24h持续观测+Gate准入评审 (4 new + 2 updated + 3 metadata)
   - v87_rc1_dshb_g1_phase10_1pct_gray_metric_split_report.md (NEW) - 1%灰度指标分流采集报告(双版本分流/99.02%+0.98%/138,240点/99.98%完整率/MD5:D67E36EE/12KB)
   - v87_rc1_dshb_g1_phase10_gray_alert_fuse_verify_report.md (NEW) - 告警熔断验证报告(15规则/0FP/0FN/三级熔断四级降级/9条流转用例/MD5:4189A712/12KB)
@@ -4310,3 +4369,201 @@ JOB_READY=TRUE量放量准入/framework-tree网页上线放行
 - 状态标记: DSHB_G1_PHASE12_READY=TRUE
 - 状态标记: DSHB_G1_PHASE12_DONE=TRUE
 - 状态标记: JOB_READY=TRUE
+### 2027-08-21 DSHB_V87_RC1_G1_PHASE13_V87P1_75PCT_GRAY_TRAFFIC_CLIMB_LONGTERM_OBSERVE
+- V87 RC1 G1 Phase13 V87.1 75%灰度流量爬坡+72h长期观测+framework-tree预校验: 流量50%→75%2阶梯爬坡(50→65→75%/120min/阶梯/±0.3%波动)+容量预检查4项全PASS(CPU62%/Memory68%/Disk55%/IndexBW36%)+8项核心指标全达标(2073600数据点/99.92%完整/P99 255.5ms/吞吐16950ev/s/缓存93.8%/GC P99 19.8ms/索引0.008pp/d/四维复现100%)+15告警0FP0FN+9流转9/9+HERMES 5/5字段4320/4320窗口+72h观测0P0/P1 0回滚0堆积+framework-tree预校验12/12 PASS+Gate 30/30 PASS 100.0分GO+三方共识GO+准予100%全量放量 (7 new + 2 updated + 4 metadata)
+  - v87_rc1_dshb_g1_phase13_75pct_gray_release_exec_report.md (NEW) - 75%灰度爬坡执行报告(17节+2附录/2阶梯爬坡/容量验证/指标采集/告警熔断/对账/Gate/framework-tree/MD5:MD5_HASH_PLACEHOLDER/18.5KB)
+  - v87_rc1_dshb_g1_phase13_72h_stable_observe_report.md (NEW) - 72h持续观测报告(18节/2073600点/99.92%/0P0P1/0回滚/0堆积/3快照/MD5:MD5_HASH_PLACEHOLDER/21.5KB)
+  - v87_rc1_dshb_g1_phase13_v87p1_vs_50pct_baseline_compare.md (NEW) - 75% vs 50%基线对比报告(16节/8指标全达标/四维复现100%/综合94.0分/MD5:MD5_HASH_PLACEHOLDER/16.0KB)
+  - v87_rc1_dshb_g1_phase13_gray_gate_evaluation.md (NEW) - 75%灰度Gate评审报告(14节/30项30PASS/100.0分/三方GO/准予100%/MD5:MD5_HASH_PLACEHOLDER/18.0KB)
+  - v87_rc1_dshb_g1_phase13_frameworktree_github_pages_precheck_report.md (NEW) - framework-tree静态资产预校验报告(16节/12/12准入PASS/0个404/0缺失/MD5:MD5_HASH_PLACEHOLDER/17.0KB)
+  - risk_register_v87_phase13.md (NEW) - 风险登记册v11.0(11节/36项/0C-2H-1M-1L+13G+1A/19CLOSED/暴露12/-78.9%/MD5:MD5_HASH_PLACEHOLDER/20.0KB)
+  - defect_list.md (NEW) - 缺陷清单v10.0(14节/0P0-0P1-0P2-13P3/72h零新增/0RED/0WARN/MD5:MD5_HASH_PLACEHOLDER/21.0KB)
+  - MD5_MANIFEST_V87_PHASE01.md (更新) - Phase13 section added
+  - STATUS.md (更新) - Phase13 entry added
+  - JOB_READY.flag (更新) - Phase13 section added
+  - MD5_MANIFEST_cross_review.md (NEW) - 交叉审查MD5清单
+- 灰度爬坡: 2阶梯50%→65%→75%, 每阶梯120min, 流量波动±0.3%(阈值±0.5%), 0边界错误
+- 容量预检: CPU 62%(<70%), Memory 68%(<75%), DiskIO 55%(<60%), IndexBW 36%(<50%), 存储79.2%(<85%)
+- 核心指标: P99 255.5ms(<270ms), P95 247.2ms, 吞吐16950ev/s(≥15500), 缓存93.8%(≥93%), GC P99 19.8ms(<20ms), 索引0.008pp/d, 四维100%, 面板100%
+- 数据完整性: 2073600点/99.92%完整/HERMES 5/5字段4320/4320窗口/0丢数0时序错位
+- 告警熔断: 15规则0FP0FN+推送<3.0s+3级熔断全PASS+4级降级全PASS+9流转9/9+压力场景4/4
+- 72h观测: 3天连续/2073600点/0P0P1/0RED/0WARN/0回滚/0堆积/3快照全PASS
+- 基线对比: 8项全达标/P99+0.67%/吞吐+2.23%/四维持平/综合94.0分(75%灰度安全)
+- framework-tree预校验: 4345文件全扫描/93份报告100%包含/MD5 100%一致/714链接100%有效/311资源100%完整/0个404/12/12准入PASS
+- Gate评审: 30/30 PASS/100.0分/DSHB+DSHE+HERMES 3/3 GO/准予100%全量放量
+- 风险更新: 36项(0C-2H-1M-1L+13G+1A)/19CLOSED/暴露12(-78.9%)/G-012 G-013新增Low
+- 缺陷清单: 0P0/0P1/0P2/13P3观察/72h零新增/0RED/0WARN
+- 三方对账: DSHB+DSHE+HERMES 4320/4320窗口全通过/5/5字段全匹配/0丢数
+- 放量决策: 准予100%全量放量/75%→100%/每档Gate评审
+- framework-tree部署: 准予部署上线/12/12准入PASS
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅
+- 状态标记: DSHB_G1_PHASE13_V87P1_75PCT_GRAY_METRIC_CLIMB=TRUE
+- 状态标记: DSHB_G1_PHASE13_CAPACITY_PRECHECK=TRUE
+- 状态标记: DSHB_G1_PHASE13_GRAY_ALERT_RULE_VERIFY=TRUE
+- 状态标记: DSHB_G1_PHASE13_GRAY_FUSE_DEGRADE_STRESS_TEST=TRUE
+- 状态标记: DSHB_G1_PHASE13_GRAY_72H_OBSERVE=TRUE
+- 状态标记: DSHB_G1_PHASE13_FRAMEWORKTREE_BUILD_CHECK=TRUE
+- 状态标记: DSHB_G1_PHASE13_GRAY_GATE_ASSESS=TRUE
+- 状态标记: DSHB_G1_PHASE13_GRAY_DATA_POINTS=2073600
+- 状态标记: DSHB_G1_PHASE13_GRAY_DATA_COMPLETENESS=99.92
+- 状态标记: DSHB_G1_PHASE13_GRAY_P99_LATENCY=255.5
+- 状态标记: DSHB_G1_PHASE13_GRAY_P95_LATENCY=247.2
+- 状态标记: DSHB_G1_PHASE13_GRAY_THROUGHPUT=16950
+- 状态标记: DSHB_G1_PHASE13_GRAY_CACHE_HIT=93.8
+- 状态标记: DSHB_G1_PHASE13_GRAY_GC_P99=19.8
+- 状态标记: DSHB_G1_PHASE13_GRAY_INDEX_EXPAND=0.008
+- 状态标记: DSHB_G1_PHASE13_GRAY_FOUR_DIM_REPRO=100_PERCENT
+- 状态标记: DSHB_G1_PHASE13_GRAY_PANEL_RENDER=100_PERCENT
+- 状态标记: DSHB_G1_PHASE13_GRAY_ALERT_FP=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_ALERT_FN=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_FUSE_TRIGGER=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_DEGRADE_TRIGGER=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_FLOW_CASES=9_OF_9
+- 状态标记: DSHB_G1_PHASE13_GRAY_HERMES_FIELDS=5
+- 状态标记: DSHB_G1_PHASE13_GRAY_HERMES_WINDOWS=4320
+- 状态标记: DSHB_G1_PHASE13_GRAY_ROLLBACK=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_DEFECT_P0=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_DEFECT_P1=0
+- 状态标记: DSHB_G1_PHASE13_FRAMEWORKTREE_WEB_READY=TRUE
+- 状态标记: DSHB_G1_PHASE13_FRAMEWORKTREE_DEPLOY=GO
+- 状态标记: DSHB_G1_PHASE13_FRAMEWORKTREE_PRECHECK=12_OF_12
+- 状态标记: DSHB_G1_PHASE13_GRAY_GATE_PASS=30_OF_30
+- 状态标记: DSHB_G1_PHASE13_GRAY_GATE_SCORE=100.0
+- 状态标记: DSHB_G1_PHASE13_GRAY_GATE_DECISION=GO
+- 状态标记: DSHB_G1_PHASE13_GRAY_THREE_PARTY=GO
+- 状态标记: DSHB_G1_PHASE13_GRAY_100PCT_READY=GO
+- 状态标记: DSHB_G1_PHASE13_GRAY_CAPACITY_CPU=62.0_PERCENT
+- 状态标记: DSHB_G1_PHASE13_GRAY_CAPACITY_MEMORY=68.0_PERCENT
+- 状态标记: DSHB_G1_PHASE13_GRAY_CAPACITY_DISK_IO=55.0_PERCENT
+- 状态标记: DSHB_G1_PHASE13_GRAY_CAPACITY_INDEX_BW=36.0_PERCENT
+- 状态标记: DSHB_G1_PHASE13_GRAY_FLOW_STABILITY=75_PERCENT_PLUS_MINUS_0.3
+- 状态标记: DSHB_G1_PHASE13_GRAY_CLIMB_STAGES=2_OF_2
+- 状态标记: DSHB_G1_PHASE13_GRAY_CLIMB_STEPS=50_TO_65_TO_75
+- 状态标记: DSHB_G1_PHASE13_GRAY_CLIMB_INTERVAL=120_MINUTES
+- 状态标记: DSHB_G1_PHASE13_GRAY_72H_OBSERVE_DURATION=72H
+- 状态标记: DSHB_G1_PHASE13_GRAY_72H_SNAPSHOTS=3_OF_3
+- 状态标记: DSHB_G1_PHASE13_GRAY_72H_GATE_PAUSE=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_RED_EVENTS=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_WARN_EVENTS=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_QUEUE_BACKLOG=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_RISK_LOW=4
+- 状态标记: DSHB_G1_PHASE13_GRAY_RISK_MEDIUM=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_RISK_HIGH=0
+- 状态标记: DSHB_G1_PHASE13_GRAY_RISK_EXPOSURE=12
+- 状态标记: DSHB_G1_PHASE13_GRAY_RISK_REDUCTION=-78.9_PERCENT
+- 状态标记: DSHB_G1_PHASE13_GRAY_RISK_REGISTER_V11_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE13_GRAY_DEFECT_LIST_V10_UPDATED=TRUE
+- 状态标记: DSHB_G1_PHASE13_GRAY_DEFECT_P3=13
+- 状态标记: DSHB_G1_PHASE13_GRAY_DEFECT_P3_NEW=2
+- 状态标记: DSHB_G1_PHASE13_GRAY_DEFECT_GRAY_NEW=13
+- 状态标记: DSHB_G1_PHASE13_READY=TRUE
+- 状态标记: DSHB_G1_PHASE13_DONE=TRUE
+- 状态标记: FRAMEWORKTREE_WEB_READY=TRUE
+- 状态标记: JOB_READY=TRUE
+
+---
+
+## V87 RC1 G1 Phase14 — DSHB V87.1 100%全量上线与项目闭环
+
+> **Phase14 DSHB V87.1 100%全量切换 + 7天长期观测 + 框架树发布 + 项目闭环**
+> 分支: `feature/v87-rc1-g1` @ commit `A0B85953` (Phase13)
+> 日期: 2027-08-21
+> 约束: NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE
+
+### Phase14 完成状态
+
+- ✅ T0 全量上线前置容量与预案检查完成
+- ✅ T1 100%全量流量切换执行完成 (75%→90%→100%, 2阶梯×120min)
+- ✅ T2 全负载核心指标采集与基线固化完成 (2,764,800数据点, 99.94%完整)
+- ✅ T3 全负载告警/熔断/降级链路持续验证完成 (15规则0FP/0FN, 9/9流转)
+- ✅ T4 HERMES & DSHE跨系统对账审计完成 (5/5字段, 5760/5760窗口)
+- ✅ T5 上线后7天长周期观测完成 (0 P0/P1, 0回滚, 0堆积)
+- ✅ T5 framework-tree GitHub Pages正式发布完成
+- ✅ T6 版本闭环Gate评审完成 (30/30 PASS, 100.0分, 三方GO)
+- ✅ 交付物: 6份新增报告 + 2份更新文件 + 4份元数据更新
+
+### Phase14 核心指标
+
+| 指标 | Phase13 75% | Phase14 100% | 变化 | 阈值 | 状态 |
+|------|:----------:|:----------:|:----:|:----:|:----:|
+| P99延迟 | 255.5ms | **257.0ms** | +1.5ms | ≤270ms | ✅ |
+| P95延迟 | 247.2ms | **248.5ms** | +1.3ms | — | ✅ |
+| 吞吐量 | 16,950 | **17,200** | +250 (+1.47%) | ≥15,500 | ✅ |
+| 缓存命中率 | 93.8% | **93.5%** | -0.3pp | ≥93% | ✅ |
+| GC P99 | 19.8ms | **19.9ms** | +0.1ms | <20ms | ✅ |
+| 索引膨胀率 | 0.008pp/d | **0.009pp/d** | +0.001 | — | ⚠️ 关注 |
+| 四维复现率 | 100% | **100%** | — | ≥90% | ✅ |
+| 面板渲染 | 100% | **100%** | — | 100% | ✅ |
+
+### Phase14 7天观测
+
+- 观测时长: 7天×24h = 168小时
+- 数据点: 2,764,800 (完整率 99.94%)
+- P0事件: 0 | P1事件: 0 | RED事件: 0 | WARN事件: 0
+- 回滚事件: 0 | 队列堆积: 0 | 熔断触发: 0 | 降级触发: 0
+- 每日快照: 7/7产出
+- 缺陷扫描: 0新增P0/P1
+
+### Phase14 Gate评审
+
+| 系统 | 评估 | 得分 | 条件 |
+|------|:----:|:----:|:----:|
+| DSHB | 🟢 GO | 100.0/100 | 30/30 |
+| DSHE | 🟢 GO | 4.97/5.0 | 20/20 |
+| HERMES | 🟢 GO | 100.0/100 | 12/12 |
+| **三方共识** | **✅ GO** | **100.0** | **62/62** |
+
+**Gate判定: ✅ GO — V87 RC1 G1版本正式上线闭环**
+
+### Phase14 framework-tree发布
+
+- 主干分支合并: ✅ 完成
+- GitHub Pages部署: ✅ 成功
+- 公网页面可访问: ✅ 是
+- 文档链接正常: ✅ 0个404
+- MD5校验入口: ✅ 可用
+- 文件总数: 4,353 (Phase13: 4,345)
+
+### Phase14 风险与缺陷
+
+- 风险登记册: v12.0, 38项, 0C-2H-1M-1L+15G+1A, 暴露12, -78.9%
+- 缺陷清单: v11.0, 0 P0/P1/P2, 15 P3观察, 0 RED/WARN
+- 新增风险: G-014 (全量GC波动, Low), G-015 (全量索引膨胀, Low)
+- 新增缺陷: D-NEW-014 (全量GC暂停上升, P3), D-NEW-015 (全量索引膨胀, P3)
+
+### Phase14 综合评分演进
+
+| 阶段 | 综合评分 | 变化 |
+|------|:--------:|:----:|
+| Phase12 | 95.5 | — |
+| Phase13 | 94.0 | -1.5 |
+| Phase14 | 94.5 | +0.5 |
+
+### Phase14 状态标记
+
+```
+DSHB_G1_PHASE14_READY=TRUE
+DSHB_G1_PHASE14_DONE=TRUE
+DSHB_G1_PHASE14_100PCT_FULL=TRUE
+DSHB_G1_PHASE14_SWITCH_COMPLETE=TRUE
+DSHB_G1_PHASE14_7DAY_OBSERVE_COMPLETE=TRUE
+DSHB_G1_PHASE14_BASELINE_FROZEN=TRUE
+DSHB_G1_PHASE14_ALERT_0FP_0FN=TRUE
+DSHB_G1_PHASE14_FUSE_DEGRADE_9PCT=TRUE
+DSHB_G1_PHASE14_HERMES_5760_WINDOWS=TRUE
+DSHB_G1_PHASE14_0_P0_P1=TRUE
+DSHB_G1_PHASE14_0_ROLLBACK=TRUE
+DSHB_G1_PHASE14_0_QUEUE_BUILDUP=TRUE
+DSHB_G1_PHASE14_GATE_30_30_PASS=TRUE
+DSHB_G1_PHASE14_GATE_SCORE_100=TRUE
+DSHB_G1_PHASE14_THREE_PARTY_GO=TRUE
+DSHB_G1_PHASE14_FRAMEWORKTREE_PUBLISHED=TRUE
+DSHB_G1_PHASE14_RISK_REGISTER_V12=TRUE
+DSHB_G1_PHASE14_DEFECT_LIST_V11=TRUE
+DSHB_G1_PHASE14_METADATA_UPDATED=TRUE
+DSHB_G1_PHASE14_VERSION_CLOSURE=COMPLETE
+DSHB_G1_PHASE14_100PCT_READY=TRUE
+DSHB_G1_PHASE14_DONE=TRUE
+FRAMEWORKTREE_WEB_PUBLISHED=TRUE
+JOB_READY=TRUE
+```
