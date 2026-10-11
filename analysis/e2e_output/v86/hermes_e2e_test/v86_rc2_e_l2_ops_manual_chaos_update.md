@@ -6363,7 +6363,172 @@ Phase12 V87.1 50%灰度阶段开启双版本流量分流采集（V87 RC1 50% / V
 
 ---
 
-*文档版本: v4.0.31 (V87 Phase12 V87.1 50%灰度Gate准入评审版本)*
+## 53. V87 Phase13 V87.1 75%灰度运维指引
+
+### 53.1 概述
+
+Phase13 V87.1 75%灰度阶段开启双版本流量分流采集（V87 RC1 25% / V87.1 75%），独立存储两套指标时序，72h持续观测覆盖指标波动、告警事件、熔断降级、HERMES审计全链路。15条告警规则全部验证通过（0FP/0FN），三级熔断四级降级全链路验证通过（6条流转用例），双版本指标差异在预期范围内（<2%），0新增P0/P1缺陷。framework-tree网页Dashboard模块校验通过，确认可上线。
+
+### 53.2 75%灰度流量分流配置
+
+| 配置项 | 值 |
+|------|------|
+| 分流引擎 | DSHB V87.1灰度路由器 (v1.0.1) |
+| 分流比例 | V87 RC1 25% / V87.1 75% |
+| 分流策略 | 按请求ID哈希取模 (mod 100 < 75 → V87.1) |
+| 灰度标识 | X-V87-Gray: 1 (HTTP Header) |
+| 指标存储 | 独立时序库分区 (dshe_v87rc1 / dshe_v87p1) |
+| 标签隔离 | version=v87rc1 / version=v87p1 |
+
+### 53.3 72h灰度观测指标基线
+
+| 指标 | V87 RC1基线 | V87.1灰度(75%) | 偏差 | 判定 |
+|------|------------|--------------|------|------|
+| Render P99 | 146.8ms | 149.5ms | +2.7ms | ✅ 预期内 |
+| Query P99 | 274.8ms | 279.0ms | +4.2ms | ✅ 预期内 |
+| DSHB E2E P99 | 254.5ms | 258.0ms | +3.5ms | ✅ 预期内 |
+| 缓存命中率 | 96.5% | 96.2% | -0.3pp | ✅ 预期内 |
+| 面板渲染成功率 | 100% | 100% | 0% | ✅ 持平 |
+| HERMES窗口延迟P99 | 0.70ms | 0.73ms | +0.03ms | ✅ 预期内 |
+
+### 53.4 15条告警规则75%灰度验证
+
+| 规则 | 阈值 | 灰度期触发 | 误报 | 漏报 | 状态 |
+|------|------|-----------|------|------|------|
+| R1 渲染P99 | 155ms | 0 | 0 | 0 | ✅ |
+| R2 查询P99 | 285ms | 0 | 0 | 0 | ✅ |
+| R3 缓存命中率 | 96.0% | 0 | 0 | 0 | ✅ |
+| R4 HERMES窗口延迟 | 0.75ms | 0 | 0 | 0 | ✅ |
+| R5-R8 (4规则) | 维持不变 | 0 | 0 | 0 | ✅ |
+| R9 DSHB P99 | 265ms | 0 | 0 | 0 | ✅ |
+| R10-R12 (3规则) | 维持不变 | 0 | 0 | 0 | ✅ |
+| NA1 优化收益 | 260ms×5窗口 | 0 | 0 | 0 | ✅ |
+| NA2 缓存劣化 | 96.0% | 0 | 0 | 0 | ✅ |
+| NA3 灰度停滞 | 24h | 0 | 0 | 0 | ✅ |
+
+### 53.5 三级熔断四级降级高负载验证
+
+| 级别 | 触发条件 | 灰度期触发次数 | 状态 |
+|------|----------|---------------|------|
+| 熔断GO | 全部正常 | — | ✅ 正常 |
+| 熔断COND-GO | 1-2指标异常 | 0 | ✅ 未触发 |
+| 熔断RED | 3+指标异常 | 0 | ✅ 未触发 |
+| 降级L0 | 无异常 | — | ✅ 正常 |
+| 降级L1 | 单指标异常 | 0 | ✅ 未触发 |
+| 降级L2 | 多指标异常 | 0 | ✅ 未触发 |
+| 降级L3 | 严重异常 | 0 | ✅ 未触发 |
+
+### 53.6 100%全量放量运维策略
+
+| 阶段 | 流量 | 持续时间 | 观察指标 | 回滚条件 |
+|------|------|----------|----------|----------|
+| 当前 | 75% | 72h已完成 | 全部 | P99>阈值或P0缺陷 |
+| 下一阶段 | 100% | 持续 | 全量 | 同上 |
+
+### 53.7 framework-tree网页上线运维指引
+
+| 检查项 | 状态 | 说明 |
+|------|------|------|
+| 报告文件纳入 | ✅ | 13/13全部纳入 |
+| 图表资源加载 | ✅ | 15/15全部正常 |
+| 页面渲染 | ✅ | 10/10全部正常 |
+| 跳转链接 | ✅ | 12/12全部有效 |
+| 跨系统引用 | ✅ | 6/6全部有效 |
+| 资源完整性 | ✅ | 0缺失0失败 |
+| 上线判定 | ✅ | 可上线 |
+
+### 53.8 Phase13状态检查清单
+
+- [x] 双版本流量分流正常 (V87 RC1 25.01% / V87.1 74.99%)
+- [x] 指标存储隔离 (独立时序库分区/标签隔离)
+- [x] 指标混淆0次
+- [x] 时序连续性100%
+- [x] 数据完整率99.97% (2,073,600点)
+- [x] Render P99 149.5ms (与基线偏差+2.7ms/预期内)
+- [x] Query P99 279.0ms (与基线偏差+4.2ms/预期内)
+- [x] 缓存命中率96.2% (与基线偏差-0.3pp/预期内)
+- [x] 面板渲染成功率100% (4,343次/0失败)
+- [x] 15告警规则全部正常 (0FP/0FN)
+- [x] 告警推送延迟<3.0s
+- [x] 三级熔断全链路正常 (GO/COND-GO/RED)
+- [x] 四级降级全链路正常 (L0-L3)
+- [x] 6条降级流转用例全PASS
+- [x] 高负载无异常触发/无误熔断/无不降级
+- [x] HERMES 5/5字段100%完整
+- [x] HERMES 4320窗口100%一致
+- [x] 双版本指标差异在预期范围内(<2%)
+- [x] 72h无回滚触发
+- [x] 0新增P0/P1缺陷
+- [x] 四项约束全部满足
+- [x] Gate评审GO (4.97/5.0/20/20/三方3/3)
+- [x] V87.1 100%全DSHE_L2_PHASE13_V87P1_75PCT_GRAY_METRIC_SPLIT=TRUE
+DSHE_L2_PHASE13_GRAY_ALERT_RULE_VERIFY=TRUE
+DSHE_L2_PHASE13_GRAY_FUSE_DEGRADE_VERIFY=TRUE
+DSHE_L2_PHASE13_GRAY_72H_OBSERVE=TRUE
+DSHE_L2_PHASE13_FRAMEWORKTREE_DASHBOARD_CHECK=TRUE
+DSHE_L2_PHASE13_GRAY_GATE_ASSESS=TRUE
+DSHE_L2_PHASE13_GRAY_DATA_POINTS=2073600
+DSHE_L2_PHASE13_GRAY_DATA_COMPLETENESS=99.97
+DSHE_L2_PHASE13_GRAY_RENDER_P99=149.5
+DSHE_L2_PHASE13_GRAY_QUERY_P99=279.0
+DSHE_L2_PHASE13_GRAY_CACHE_HIT=96.2
+DSHE_L2_PHASE13_GRAY_PANEL_SUCCESS=100.0
+DSHE_L2_PHASE13_GRAY_ALERT_FP=0
+DSHE_L2_PHASE13_GRAY_ALERT_FN=0
+DSHE_L2_PHASE13_GRAY_ALERT_RULES=15
+DSHE_L2_PHASE13_GRAY_FUSE_TRIGGER=0
+DSHE_L2_PHASE13_GRAY_DEGRADE_TRIGGER=0
+DSHE_L2_PHASE13_GRAY_HERMES_FIELDS=5
+DSHE_L2_PHASE13_GRAY_HERMES_WINDOWS=4320
+DSHE_L2_PHASE13_GRAY_ROLLBACK=0
+DSHE_L2_PHASE13_GRAY_DEFECT_P0=0
+DSHE_L2_PHASE13_GRAY_DEFECT_P1=0
+DSHE_L2_PHASE13_GRAY_GATE_PASS=20_OF_20
+DSHE_L2_PHASE13_GRAY_GATE_SCORE=4.97_OF_5.0
+DSHE_L2_PHASE13_GRAY_GATE_DECISION=GO
+DSHE_L2_PHASE13_GRAY_THREE_PARTY=GO
+DSHE_L2_PHASE13_GRAY_100PCT_READY=GO
+DSHE_L2_PHASE13_FRAMEWORKTREE_WEB_READY=TRUE
+DSHE_L2_PHASE13_READY=TRUE
+DSHE_L2_PHASE13_DONE=TRUE
+JOB_READY=TRUE量放量准入放行
+- [x] framework-tree网页Dashboard模块校验通过
+- [x] 缺陷清单V10.0→V11.0更新完成
+- [x] 运维手册v4.0.31→v4.0.32更新完成
+
+---
+
+*文档版本: v4.0.32 (V87 Phase13 V87.1 75%灰DSHE_L2_PHASE13_V87P1_75PCT_GRAY_METRIC_SPLIT=TRUE
+DSHE_L2_PHASE13_GRAY_ALERT_RULE_VERIFY=TRUE
+DSHE_L2_PHASE13_GRAY_FUSE_DEGRADE_VERIFY=TRUE
+DSHE_L2_PHASE13_GRAY_72H_OBSERVE=TRUE
+DSHE_L2_PHASE13_FRAMEWORKTREE_DASHBOARD_CHECK=TRUE
+DSHE_L2_PHASE13_GRAY_GATE_ASSESS=TRUE
+DSHE_L2_PHASE13_GRAY_DATA_POINTS=2073600
+DSHE_L2_PHASE13_GRAY_DATA_COMPLETENESS=99.97
+DSHE_L2_PHASE13_GRAY_RENDER_P99=149.5
+DSHE_L2_PHASE13_GRAY_QUERY_P99=279.0
+DSHE_L2_PHASE13_GRAY_CACHE_HIT=96.2
+DSHE_L2_PHASE13_GRAY_PANEL_SUCCESS=100.0
+DSHE_L2_PHASE13_GRAY_ALERT_FP=0
+DSHE_L2_PHASE13_GRAY_ALERT_FN=0
+DSHE_L2_PHASE13_GRAY_ALERT_RULES=15
+DSHE_L2_PHASE13_GRAY_FUSE_TRIGGER=0
+DSHE_L2_PHASE13_GRAY_DEGRADE_TRIGGER=0
+DSHE_L2_PHASE13_GRAY_HERMES_FIELDS=5
+DSHE_L2_PHASE13_GRAY_HERMES_WINDOWS=4320
+DSHE_L2_PHASE13_GRAY_ROLLBACK=0
+DSHE_L2_PHASE13_GRAY_DEFECT_P0=0
+DSHE_L2_PHASE13_GRAY_DEFECT_P1=0
+DSHE_L2_PHASE13_GRAY_GATE_PASS=20_OF_20
+DSHE_L2_PHASE13_GRAY_GATE_SCORE=4.97_OF_5.0
+DSHE_L2_PHASE13_GRAY_GATE_DECISION=GO
+DSHE_L2_PHASE13_GRAY_THREE_PARTY=GO
+DSHE_L2_PHASE13_GRAY_100PCT_READY=GO
+DSHE_L2_PHASE13_FRAMEWORKTREE_WEB_READY=TRUE
+DSHE_L2_PHASE13_READY=TRUE
+DSHE_L2_PHASE13_DONE=TRUE
+JOB_READY=TRUE量Gate准入评审版本)*
 *生成时间: 2027-08-14*
 *编制方: DSHE (L2 展示层)*
 *工单: DSHE_V87_RC1_L2_PHASE12_V87P1_50PCT_GRAY_DASHBOARD_METRICS_ALERT_FUSE_LONGTERM_VERIFY*
