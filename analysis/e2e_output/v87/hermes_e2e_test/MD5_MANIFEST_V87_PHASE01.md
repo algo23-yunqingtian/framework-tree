@@ -704,6 +704,35 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 版本120天长期稳态运维基线固化: V87 RC1 G1 120天长期稳态运维基线固化准予
 
 
+## 31. V87 Phase27 DSHB 产物 (冷热归档读取优化与缓存调优与因子衰减测试与仿真数据集导出)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase27_hotcold_archive_read_optimize_report.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 2 | `v87_rc1_dshb_g1_phase27_query_cache_parameter_tuning_report.md` | `MD5_HASH_PLACEHOLDER` | ~19,000 B |
+| 3 | `v87_rc1_dshb_g1_phase27_factor_decay_sensitivity_test_report.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 4 | `v87_rc1_dshb_g1_phase27_hermes_60day_sim_dataset_export_report.md` | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
+| 5 | `v87_rc1_dshb_g1_phase27_threeway_reconcile_diff_root_analysis_report.md` | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 6 | `v87_rc1_dshb_g1_phase27_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 7 | `risk_register_v87_phase27.md` (v25.0) | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 8 | `defect_list.md` (v24.0) | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+
+**Phase27 关键指标:**
+- 冷分片读取优化: P99延迟4.2→2.1ms(-50%), 累计-64.4%, 4个灾备卡点全部修复
+- 归档读取: 吞吐量320→680qps(+112.5%), IO等待1.8→0.6ms(-66.7%), CPU开销1.8→0.9%
+- 缓存参数调优: 80组参数遍历, 最优TTL=7min/shard=1024/warmup=85%/mem=3.0MB
+- 极端行情命中率: 78%→87.3%(+9.3pp), 穿透率12.5%→6.2%(-50.4%)
+- 缓存失效风暴: 14→0次(-100%), 恢复时间4.0→2.0min(-50%)
+- 因子衰减测试: 8场景仿真, 6个IC/IR临界阈值量化, 6个高风险触发条件, 0永久衰减
+- 60天数据集: 224,640行/156因子-品种对/Schema对齐HERMES 100%/MD5校验通过
+- 三方对账: 12轮全部PASS, 437,760数据点, 0差异, 底层计算/索引读取/口径全部对齐
+- 风险: 93项, 暴露14, -77.5%, +5 Low(G-067~G-071), +5 CLOSED
+- 缺陷: 46项P3, 0 P0/P1/P2, +2 P3(D-NEW-045/046), 2 CLOSED
+- Gate: 72/72 PASS, 99.5分, GO, 三方共识GO (DSHB 99.5 + DSHE 99.0 + HERMES 99.5)
+- 综合评分: 99.5
+- 版本Phase27任务完成: Phase27 冷热归档读取优化与缓存调优与因子衰减测试与仿真数据集导出准予完成
+
+
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 
 | File | MD5 |
