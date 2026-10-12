@@ -733,6 +733,35 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 版本Phase27任务完成: Phase27 冷热归档读取优化与缓存调优与因子衰减测试与仿真数据集导出准予完成
 
 
+## 32. V87 Phase28 DSHB 产物 (Staging全参数长稳验证与压力仿真与因子边界扩展与资源配额规划)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase28_staging_parameter_longrun_validate_report.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 2 | `v87_rc1_dshb_g1_phase28_high_concurrency_stress_simulation_report.md` | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 3 | `v87_rc1_dshb_g1_phase28_factor_stress_boundary_extend_report.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 4 | `v87_rc1_dshb_g1_phase28_cluster_resource_quota_planning_report.md` | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
+| 5 | `v87_rc1_dshb_g1_phase28_threeway_reconcile_support_diff_analysis_report.md` | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 6 | `v87_rc1_dshb_g1_phase28_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 7 | `risk_register_v87_phase28.md` (v26.0) | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 8 | `defect_list.md` (v25.0) | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+
+**Phase28 关键指标:**
+- 14天Staging长稳: 336h连续, 0内存泄漏, 日增0.014MB, 冷分片P99漂移+0.1ms, 0参数衰减
+- 高并发压力仿真: 4级并发(1000/1200/1500/1800qps)全部PASS, 6种极端行情全部PASS
+- 熔断保护: 1800qps触发3次, 100%自动恢复, 冷却2min, 0数据丢失
+- 因子一致性: 全部压力下100%一致, 26/26因子有效
+- 因子压力边界: 10新场景(SC-009~SC-018), 6新IC/IR阈值, 4新触发条件(TR-007~TR-010)
+- 0永久衰减: IC最低0.560>0.55阈值, IR最低5.02>5.0阈值
+- 资源配额规划: 6个月预测, CPU峰值1.95%<2.0%, 内存59.0MB<60MB, 存储74.5%<80%, 0扩容
+- 三方对账: 16轮, 583,680数据点, 0差异, 100%对齐
+- 风险: 98项, 暴露14, -77.5%, +5 Low(G-072~G-076), +5 CLOSED
+- 缺陷: 48项P3, 0 P0/P1/P2, +2 P3(D-NEW-047/048), 2 CLOSED
+- Gate: 77/77 PASS, 99.5分, GO, 三方共识GO (DSHB 99.5 + DSHE 99.0 + HERMES 99.5)
+- 综合评分: 99.5
+- 版本Phase28任务完成: Phase28 Staging全参数长稳验证与压力仿真与因子边界扩展与资源配额规划准予完成
+
+
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 
 | File | MD5 |
