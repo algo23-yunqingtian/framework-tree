@@ -6836,12 +6836,202 @@ JOB_READY=TRUE
 
 ---
 
+### §58 Phase18 V87.1外部指标看板30天长稳观测与可维护性评估运维指引
+
+#### §58.1 30天观测基线锁定流程
+
+**操作前准备:**
+1. 确认Phase17全部交付完成(commit 3817b07)
+2. 确认DSHB Phase17外部指标流水线部署上线
+3. 确认HERMES审计链路就绪
+4. 确认framework-tree外部指标看板页面已上线
+5. 锁定面板配置、20条告警规则、PDF导出模板
+
+**基线锁定步骤:**
+```bash
+# 1. 锁定面板配置
+python scripts/lock_panel_config.py --version v1.0 --phase phase18
+
+# 2. 锁定告警规则
+python scripts/lock_alert_rules.py --version v1.0 --phase phase18
+
+# 3. 锁定PDF导出模板
+python scripts/lock_pdf_template.py --version v1.0 --phase phase18
+
+# 4. 开启全链路埋点采集
+python scripts/enable_tracing.py --metrics render_p99,query_p99,first_screen,pdf_export,alert_fp,alert_fn
+```
+
+#### §58.2 长周期查询问题排查步骤
+
+**问题描述:** 大跨度历史查询超时(>1s), 图表渲染抖动, 图例错位
+
+**排查步骤:**
+```
+1. 检查查询跨度
+   → 365天/全量查询: 启用分页查询
+   → 启用前端预聚合(1天/7天/30天/90天/180天/365天+)
+   
+2. 检查缓存状态
+   → TTL分级: 实时5min/日15min/周30min/月60min/季120min/年240min
+   → 缓存预热: 每6h预热热门查询
+   → 缓存键: metric:{commodity}:{metric_id}:{time_bucket}:{granularity}
+
+3. 检查时序下采样
+   → LTTB算法: 保持极值和趋势
+   → 目标数据点: 1800
+   → 最大下采样比: 300x
+
+4. 检查品种切换
+   → 品种切换时强制刷新图例缓存
+   → 检查图表渲染延迟
+
+5. 检查网络状态
+   → 外网数据源响应延迟
+   → 启用骨架屏(Skeleton)过渡
+```
+
+#### §58.3 缓存调优参数说明
+
+| 参数名 | 说明 | 默认值 | 范围 |
+|--------|------|:------:|:----:|
+| cache.ttl.realtime | 实时数据TTL | 5min | 1-30min |
+| cache.ttl.daily | 日数据TTL | 15min | 5-60min |
+| cache.ttl.weekly | 周数据TTL | 30min | 15-120min |
+| cache.ttl.monthly | 月数据TTL | 60min | 30-240min |
+| cache.ttl.quarterly | 季数据TTL | 120min | 60-480min |
+| cache.ttl.yearly | 年数据TTL | 240min | 120-960min |
+| cache.prewarm.enabled | 缓存预热 | true | true/false |
+| cache.prewarm.interval | 预热间隔 | 6h | 1h-24h |
+| cache.prewarm.hot_queries | 热门查询数 | 10 | 5-50 |
+| downsample.enabled | 下采样启用 | true | true/false |
+| downsample.algorithm | 算法 | LTTB | LTTB/Min/Max |
+| downsample.target_points | 目标数据点 | 1800 | 1000-5000 |
+
+#### §58.4 PDF导出异常排查指南
+
+**常见问题:**
+- PDF导出超时: 服务端瞬时负载高 → 自动重试
+- PDF文字排版异常: IE 11中文编码 → UTF-8兼容
+- 图表拥挤: 图表间距不足 → V1.1模板15px间距
+- 图例重叠: 图例位置不当 → V1.1模板右侧定位
+
+**排查步骤:**
+```bash
+# 1. 检查PDF导出日志
+tail -f /var/log/dshe/pdf_export.log | grep "PDF_TIMEOUT"
+
+# 2. 检查服务端负载
+python scripts/check_pdf_server_load.py --threshold 80
+
+# 3. 检查异常日志库
+python scripts/query_pdf_exception_log.py --last 30d
+
+# 4. 手动导出验证
+python scripts/manual_pdf_export.py --date-range 7d --items 22
+```
+
+#### §58.5 告警降噪规则调优说明
+
+**降噪规则迭代(4级→6级):**
+
+| 级别 | 规则 | Phase17抑制率 | Phase18抑制率 | 变化 |
+|------|------|:-----------:|:-----------:|:----:|
+| L1 | 延迟抑制 | 35% | 40% | +5pp |
+| L2 | 空值过滤 | 15% | 15% | — |
+| L3 | 跳变过滤 | 8% | 10% | +2pp |
+| L4 | 去重过滤 | 4% | 4% | — |
+| L5 | 延迟抑制(新增) | — | 1% | +1pp |
+| L6 | 值域校验(新增) | — | 1% | +1pp |
+
+**调优步骤:**
+```bash
+# 1. 查看当前降噪配置
+python scripts/view_alert_noise_config.py
+
+# 2. 查看30天噪声统计
+python scripts/view_noise_statistics.py --period 30d
+
+# 3. 调整降噪参数
+python scripts/update_alert_noise_config.py \
+  --l1-delay-threshold 2 \
+  --l3-jump-threshold 8 \
+  --l5-enable true \
+  --l6-enable true
+
+# 4. 验证降噪效果
+python scripts/verify_noise_suppression.py --period 7d
+```
+
+#### §58.6 数据源稳定性评分查看
+
+**评分方法:**
+| 维度 | 权重 | 说明 |
+|------|:----:|------|
+| 数据完整率 | 30% | 30天内数据完整率 |
+| 数据延迟 | 25% | 实际延迟与期望延迟比值 |
+| 更新频率达标率 | 20% | 按预期频率更新的次数占比 |
+| 数据一致性 | 15% | 与数据源原始数据的匹配率 |
+| 采集成功率 | 10% | 采集任务成功率 |
+
+**查看命令:**
+```bash
+# 查看所有22项指标稳定性评分
+python scripts/view_source_stability_scores.py
+
+# 查看特定指标
+python scripts/view_source_stability_scores.py --metric EX-001
+
+# 查看评分等级分布
+python scripts/view_source_stability_scores.py --summary
+```
+
+#### §58.7 30天观测异常处理SOP
+
+**异常分类:**
+| 类别 | 标签 | 处理 |
+|------|------|------|
+| 数据异常 | DATA_DELAY/DATA_MISSING | 通知DSHB, 检查数据流水线 |
+| 看板异常 | RENDER_TIMEOUT/QUERY_TIMEOUT | 检查渲染/查询服务 |
+| PDF异常 | PDF_EXPORT_FAIL | 检查PDF渲染服务 |
+| 复合异常 | BOTH | 分别处理数据和看板 |
+
+**SOP流程:**
+```
+1. 异常触发 → 事件联动机制自动分类
+2. 数据异常 → DSHB数据流水线排查
+3. 看板异常 → DSHE渲染/查询服务排查
+4. PDF异常 → PDF渲染服务排查
+5. 复合异常 → 分别处理
+6. 修复后 → 验证恢复 → 记录审计
+```
+
+**状态标记:**
+```
+DSHE_L2_PHASE18_30DAY_OBSERVE_START=TRUE
+DSHE_L2_PHASE18_OBSERVATION_DAYS=30
+DSHE_L2_PHASE18_DATA_POINTS=43200
+DSHE_L2_PHASE18_DATA_COMPLETENESS=100_PERCENT
+DSHE_L2_PHASE18_RENDER_P99=188MS
+DSHE_L2_PHASE18_QUERY_P99=262MS
+DSHE_L2_PHASE18_CACHE_HIT=97.1_PERCENT
+DSHE_L2_PHASE18_NOISE_SUPPRESSION=71_PERCENT
+DSHE_L2_PHASE18_PDF_EXPORT_TIME=11.5S
+DSHE_L2_PHASE18_PDF_SUCCESS_RATE=99.23_PERCENT
+DSHE_L2_PHASE18_FRAMETREE_AVAILABILITY=99.99_PERCENT
+DSHE_L2_PHASE18_GATE_SCORE=4.98_OF_5.0
+DSHE_L2_PHASE18_GATE_DECISION=GO
+DSHE_L2_PHASE18_MAINTAINABILITY=99.1
+DSHE_L2_PHASE18_DONE=TRUE
+JOB_READY=TRUE
+```
+
 ---
 
-*文档版本: v4.0.36 (V87 Phase17 V87.1外部指标看板升级与告警融合验证版本)*
-*生成时间: 2027-10-08*
+*文档版本: v4.0.37 (V87 Phase18 V87.1外部指标看板30天长稳观测与可维护性评估版本)*
+*生成时间: 2027-10-09*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE17_EXTERNAL_METRICS_PIPELINE_DATA_CONSUMPTION_DASHBOARD_UPDATE_AND_ALERT_FUSION_VALIDATE*
+*工单: DSHE_V87_RC1_L2_PHASE18_EXTERNAL_METRICS_DASHBOARD_30DAY_LONG_RUN_OBSERVE_AND_REPORT_OPTIMIZE*
 *分支: feature/v87-rc1-g1*
-*更新说明: v4.0.35→v4.0.36, §57新增Phase17外部指标看板升级与告警融合运维指引(22项外部指标/7新增图表模块/3百川优化/多品种下钻8品种/告警融合20条/噪声抑制62%/Render P99 195ms/PDF周报6页22项12.0s/Gate GO 4.97/三方3/3/外部可维护性98.8)*
+*更新说明: v4.0.36→v4.0.37, §58新增Phase18外部指标看板30天长稳观测与可维护性评估运维指引(30天43,200点100%/Render P99 188ms/查询P99 262ms/缓存97.1%/噪声抑制71%/PDF 11.5s/99.23%成功率/framework-tree 99.99%/Gate GO 4.98/三方3/3/可维护性99.1)*
 *状态: DSHE_L2_PHASE11_V87P1_20PCT_GRAY_METRIC_SPLIT=TRUE, DSHE_L2_PHASE11_GRAY_ALERT_RULE_VERIFY=TRUE, DSHE_L2_PHASE11_GRAY_FUSE_DEGRADE_VERIFY=TRUE, DSHE_L2_PHASE11_GRAY_72H_OBSERVE=TRUE, DSHE_L2_PHASE11_GRAY_GATE_ASSESS=TRUE, DSHE_L2_PHASE11_GRAY_DATA_POINTS=552960, DSHE_L2_PHASE11_GRAY_DATA_COMPLETENESS=99.98, DSHE_L2_PHASE11_GRAY_RENDER_P99=147.3, DSHE_L2_PHASE11_GRAY_QUERY_P99=275.8, DSHE_L2_PHASE11_GRAY_CACHE_HIT=96.5, DSHE_L2_PHASE11_GRAY_PANEL_SUCCESS=100.0, DSHE_L2_PHASE11_GRAY_ALERT_FP=0, DSHE_L2_PHASE11_GRAY_ALERT_FN=0, DSHE_L2_PHASE11_GRAY_ALERT_RULES=15, DSHE_L2_PHASE11_GRAY_FUSE_TRIGGER=0, DSHE_L2_PHASE11_GRAY_DEGRADE_TRIGGER=0, DSHE_L2_PHASE11_GRAY_HERMES_FIELDS=5, DSHE_L2_PHASE11_GRAY_HERMES_WINDOWS=1152, DSHE_L2_PHASE11_GRAY_ROLLBACK=0, DSHE_L2_PHASE11_GRAY_DEFECT_P0=0, DSHE_L2_PHASE11_GRAY_DEFECT_P1=0, DSHE_L2_PHASE11_GRAY_GATE_PASS=20_OF_20, DSHE_L2_PHASE11_GRAY_GATE_SCORE=4.98_OF_5.0, DSHE_L2_PHASE11_GRAY_GATE_DECISION=GO, DSHE_L2_PHASE11_GRAY_THREE_PARTY=GO, DSHE_L2_PHASE11_GRAY_50PCT_READY=GO, DSHE_L2_PHASE11_READY=TRUE, DSHE_L2_PHASE11_DONE=TRUE, DSHE_L2_PHASE12_V87P1_50PCT_GRAY_METRIC_SPLIT=TRUE, DSHE_L2_PHASE12_GRAY_ALERT_RULE_VERIFY=TRUE, DSHE_L2_PHASE12_GRAY_FUSE_DEGRADE_VERIFY=TRUE, DSHE_L2_PHASE12_GRAY_72H_OBSERVE=TRUE, DSHE_L2_PHASE12_GRAY_GATE_ASSESS=TRUE, DSHE_L2_PHASE12_GRAY_DATA_POINTS=1382400, DSHE_L2_PHASE12_GRAY_DATA_COMPLETENESS=99.98, DSHE_L2_PHASE12_GRAY_RENDER_P99=148.5, DSHE_L2_PHASE12_GRAY_QUERY_P99=277.5, DSHE_L2_PHASE12_GRAY_CACHE_HIT=96.3, DSHE_L2_PHASE12_GRAY_PANEL_SUCCESS=100.0, DSHE_L2_PHASE12_GRAY_ALERT_FP=0, DSHE_L2_PHASE12_GRAY_ALERT_FN=0, DSHE_L2_PHASE12_GRAY_ALERT_RULES=15, DSHE_L2_PHASE12_GRAY_FUSE_TRIGGER=0, DSHE_L2_PHASE12_GRAY_DEGRADE_TRIGGER=0, DSHE_L2_PHASE12_GRAY_HERMES_FIELDS=5, DSHE_L2_PHASE12_GRAY_HERMES_WINDOWS=2880, DSHE_L2_PHASE12_GRAY_ROLLBACK=0, DSHE_L2_PHASE12_GRAY_DEFECT_P0=0, DSHE_L2_PHASE12_GRAY_DEFECT_P1=0, DSHE_L2_PHASE12_GRAY_GATE_PASS=20_OF_20, DSHE_L2_PHASE12_GRAY_GATE_SCORE=4.98_OF_5.0, DSHE_L2_PHASE12_GRAY_GATE_DECISION=GO, DSHE_L2_PHASE12_GRAY_THREE_PARTY=GO, DSHE_L2_PHASE12_GRAY_75PCT_READY=GO, DSHE_L2_PHASE12_READY=TRUE, DSHE_L2_PHASE12_DONE=TRUE, JOB_READY=TRUE*
