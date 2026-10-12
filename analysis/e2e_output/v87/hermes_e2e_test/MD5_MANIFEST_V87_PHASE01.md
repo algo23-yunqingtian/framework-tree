@@ -485,6 +485,17 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 综合评分: 99.0
 - 版本50%灰度因子投产完成确认: V87 RC1 G1 因子50%灰度投产GO, 放行75%灰度
 
+## HERMES Phase13 - V87.1 75% Gray Audit + Factor Consistency + Peak Resource
+
+| File | MD5 |
+|------|-----|
+| `v87_rc1_hermes_phase13_75pct_gray_audit_summary.md` | `A9AA4FDD170EA5640412D74121BFF538` |
+| `v87_rc1_hermes_phase13_gray_window_stat.md` | `70A1E0DE3F5859567F56D9F74722957C` |
+| `v87_rc1_hermes_phase13_gray_index_exp_check.md` | `7011BC4A2644B1941F62E51E9AAFD918` |
+| `v87_rc1_hermes_phase13_factor_consistency_verify_report.md` | `19E51DBBDC40424EAD247438301572DA` |
+| `v87_rc1_hermes_phase13_gray_gate_evaluation.md` | `3035E1575B67F33B6B0246E263B19824` |
+| `risk_watchlist_v87_phase13.md` | `C5C2C262D941D40C44CB043F0ECBC8AC` |
+
 ---
 
 ## 25. V87 Phase21 DSHB 产物 (因子生产流水线75%灰度上线与边界指标监控)
