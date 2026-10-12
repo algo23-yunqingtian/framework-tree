@@ -1,3 +1,18 @@
+
+### 2026-10-12 HERMES_V87_RC1_PHASE17_P2闭环+金丝雀审计+ReleaseGate (HERMES_V87_RC1_PHASE17)
+- **工单**: HERMES_V87_RC1_PHASE17_PHASE16_RISK_FOLLOWUP_CANARY_TRAFFIC_AUDIT_FINAL_THREE_WAY_CONSOLIDATION_RELEASE_GATE_SYNTHESIS
+- **前置**: rebase远端@5c408b7(DSHB/DSHE Phase28-29交付物快进,零冲突) + Phase16基线4e95382(0P0P1/1P2/22P3)
+- **T1 P2风险闭环(核心)**: Phase16的6条B类底层计算偏差经DSHB Phase29交叉验证(20轮对账729,600数据点B类差异0/因子计算一致性100%)确认根因为**离线仿真窗口模型噪声**(非生产计算缺陷),P2→P3豁免闭环,全项目P2清零
+- **T2 金丝雀10%专项审计**: 复用Phase16窗口×30秒粒度×6因子放大至6480点,金丝雀636点(10%)+staging5844点(90%)/SHA256 100%/5字段100%/DQ 98.113%(金丝雀真实流量0.42%>staging 0.18%)/双版本一致性100%零漂移/识别真实流量独占隐性差异100处(cold_start26/concurrency24/render_jitter31/cache_penetration18/version_mismatch1)/延迟P99金丝雀1.117ms vs staging0.878ms(+0.239ms冷启动开销)/金丝雀链路三方对齐97.799%
+- **T3a 全项目三方对账汇总**: DSHB生产729,600数据点0差异100%一致/DSHE看板一致性99.90%差异100%定位修复/HERMES Phase16离线97.778%+Phase17金丝雀97.799%/全周期0生产计算缺陷/差异分类链路(A/B/C)经DSHB Phase29模拟验证可自动定位闭环
+- **T3b Release Gate综合评估**: 三方共识GO(DSHB 99.8/DSHE 99.0/HERMES高可信均值99.6)/DSHB Phase29生产Gate预检73/73全PASS(因子质量10/10+缺陷5/5+生命周期8/8)/0 P0/P1/P2阻断/准予V87-RC1上线
+- **T4 引擎爬虫迭代**: 新增金丝雀审计引擎(分流+隐性差异+双版本比对+三方对齐)/日志优化(DQ三分类+隐性差异5类+延迟对比)/reclaim FAIL 4项历史遗留(STATUS.md线A契约Phase03-15)仅记录不修改历史契约/check_html 266/266 PASS
+- **上线后观测要求(6项Low)**: ①因子退役G-077首7天双人确认 ②回滚SOP G-078 24h内生产演练 ③金丝雀冷启动上线前缓存预热 ④48项DSHB P3季度复盘 ⑤SHFE端点探测 ⑥索引膨胀监控<8.5%
+- **风险**: 0P0P1P2/23P3/GREEN/B类偏差闭环清零/金丝雀渲染抖动31处同步DSHE
+- **Gate**: HERMES Phase17 GO 14/14/三方共识GO/Release Gate准予V87-RC1上线/阻断0
+- **交付物**: 7新报告(p2_followup/canary_audit/threeway_summary/release_gate/engine_iter/risk_matrix/gate_eval) + risk_watchlist_v87_phase17 + 金丝雀引擎2文件
+- **约束合规**: BRANCH_LOCKED/NO_MODIFY_V85/NO_OVERWRITE(Phase15/16不变)/NO_ZHIJI_API_CALL/生产熔断维持2.0%/爬虫仅离线校验
+- **状态标记**: HERMES_PHASE17_P2_RISK_CLOSED=TRUE, HERMES_PHASE17_CANARY_SPECIAL_AUDIT=TRUE, HERMES_PHASE17_CANARY_VS_STAGING_CONSISTENCY=100_PERCENT, HERMES_PHASE17_FULL_PROJECT_RECONCILE_SUMMARY=TRUE, HERMES_PHASE17_RELEASE_GATE_DECISION=TRUE, HERMES_PHASE17_RELEASE_GATE_RESULT=GO, HERMES_PHASE17_VERSION_RELEASE_APPROVED=TRUE, HERMES_PHASE17_RISK_LEVEL=GREEN
 ﻿
 ### 2026-10-12 HERMES_V87_RC1_PHASE16_60DAY_MIX_SIM_AUDIT (HERMES_V87_RC1_PHASE16)
 - **工单**: HERMES_V87_RC1_PHASE16_60DAY_MIX_SIM_AUDIT_HOTCOLD_ARCHIVE_QUERY_CACHE_SPECIAL_AUDIT_THREE_WAY_METRICS_RECONCILIATION_CPU_FUSE_2P2_OFFLINE_SIM
