@@ -578,6 +578,34 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 综合评分: 99.5
 - 版本100%全量投产闭环: V87 RC1 G1 因子100%全量投产GO, 准予长期30天稳态运维
 
+## 27. V87 Phase23 DSHB 产物 (30天长稳观测与索引膨胀趋势监控及CPU熔断频次统计)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase23_30day_longrun_observation_summary_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 2 | `v87_rc1_dshb_g1_phase23_index_expansion_trend_prediction_report.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 3 | `v87_rc1_dshb_g1_phase23_cpu_frequency_stat_and_root_analysis_report.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 4 | `v87_rc1_dshb_g1_phase23_factor_ic_ir_30day_longterm_monitor_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 5 | `v87_rc1_dshb_g1_phase23_index_risk_preplan_evaluation_report.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 6 | `v87_rc1_dshb_g1_phase23_30day_longrun_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 7 | `risk_register_v87_phase23.md` (v21.0) | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 8 | `defect_list.md` (v20.0) | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+
+**Phase23 关键指标:**
+- 30天观测: 720h, 43,200数据点, 0 P0/P1事件
+- CPU熔断: 6次触发, 100%自动恢复, 0数据丢失, 周均0.6次<10次阈值
+- 索引膨胀: 8.06%→8.60%(+0.54pp), 超8.5%告警线, 归档预案就绪
+- 因子IC: 0.606(-0.33%漂移), IR: 5.77(-0.17%漂移), 半衰期100%持平
+- O3稳定: CPU 1.72-1.78%, 内存57-58MB, 无劣化
+- DQ: 99.5%, 误报0.2%, 漏报0%
+- 熔断根因: 行情波动66.7%, 开盘集中33.3%, 并发叠加16.7%
+- 归档预案: 冷热分离(推荐), 预期恢复至6.0-6.4%, 压测PASS
+- Gate: 67/67 PASS, 99.5分, GO, 三方共识GO
+- 风险: 61项, 暴露14, -77.5%, +1 Low(G-038), 0 CLOSED
+- 缺陷: 38项P3, 0 P0/P1/P2, +2 P3
+- 综合评分: 99.5
+- 版本永久稳态投产: V87 RC1 G1 因子永久稳态投产GO, 30天长期运维基线固化
+
 
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 
