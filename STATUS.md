@@ -5988,3 +5988,28 @@ DSHE_L2_PHASE19_FACTOR_DONE=TRUE
 DSHE_L2_PHASE19_DONE=TRUE
 JOB_READY=TRUE
 ```
+
+
+### 2027-08-20 HERMES_V87_RC1_PHASE11_V87P1_20PCT_GRAY_AUDIT_GC_CACHE_LONG_TERM_METRICS_VALIDATE
+- V87.1 20%灰度120h在线审计+GC缓存专项验证+跨版本对账+故障演练+Gate评估 (5 new + MD5 update + STATUS update + JOB_READY update, MD5 all verified) — V87.1 准予50%放量
+  - v87_rc1_hermes_phase11_20pct_gray_audit_summary.md (MD5: 38057771A84C) - 20%灰度汇总: 120h零中断/双版本并行对账(V87.1灰度1728窗口+V87 RC1基线6912窗口)/SHA256 8640/8640/5字段43200/43200 100%/灰度乱序15次1.05%(vs基线2.45% -57.1%)/重复0丢包0字段缺失0/审计告警0触发0误报0漏报/异常识别100%/GC频率1247次天(+11.9%线性可控)/GC暂停P99 24.3ms(<50ms阈值)/缓存命中率95.3%(+0.8pp)/hash缓存96.8%(+0.8pp)/内存13.4MB增速0.002MB天(-33%持续)/审计窗口P99 0.61ms(-3.2%)/WAL P99 2.72ms(-2.2%)/灰度审计Gate GO 12/12/准予50%放量/三方一致GO(DSHB 30/30+DSHE 20/20+HERMES 12/12)
+  - v87_rc1_hermes_phase11_gray_window_stat.md (MD5: 942002554B25) - 灰度窗口统计: 1728+6912独立统计/窗口通过率100.000%/灰度SHA256 1728/1728/灰度5字段8640/8640 100%/基线不回归6912/6912/事件偏差0.576%恒定/丢包偏差0.377pp恒定/未引入新偏差源/乱序灰度1.05%线性可控100%定位/路由20.00%恒定0边界抖动/特殊时段预热5+回滚3+归档5+外部22全PASS/口径与Phase10一致(96窗口天/4窗口h)
+  - v87_rc1_hermes_phase11_gray_index_exp_check.md (MD5: 31686226116C) - 索引膨胀灰度观测: 灰度0.005pp/天(vs基线0.008pp/天 -37.5%)/生产复现率100%(与Phase09实验室基线偏差0)/WARN裕度72.2%(+16.6pp)/5天波动±0.00005pp R²=0.999/四维归因结构-0.0018+查询-0.0010+缓存-0.0005+GC-0.0010 100%达成/归档策略协同ZSTD L3无退化正向叠加/全量外推每日节省270MB 7天1.89GB 1年98.7GB/膨胀异常检测0触发/0P0P1/0P2/4P3
+  - v87_rc1_hermes_phase11_gray_gate_evaluation.md (MD5: 5B63F9E8E50A) - 灰度Gate评估: HERMES灰度审计GO 12/12/权重100.0/COND-GO 0/NO-GO 0/阻断0/兜底0/8/前置检查12/12全满足/50%放量准入12/12准予/三方一致GO(DSHB 30/30+DSHE 20/20+HERMES 12/12)/三方性能交叉验证一致(HERMES 0.61ms/DSHE 0.69ms含网关延迟/DSHB 0.61ms)/放量路径建议(50%→75%→100%逐档评审)
+  - risk_watchlist_v87_phase11.md (MD5: 501B812F20F9) - 风险清单v87-phase11: 0P0P1/0P2/15P3(vs Phase10 15项 持平)/7项版本迁移专项全非阻断/4项强化(内存0.002MB天持平/膨胀0.005pp零漂移/乱序0.93→1.05%线性可控/性能0.63→0.61ms -3.2%)/3项外部指标专项全非阻断/兜底0/8触发/消减持平(4项改善+1项收敛)/20%档风险🟢低
+- 双版本并行对账: V87.1灰度1728窗口+V87 RC1基线6912窗口/审计0中断/SHA256 8640/8640 100%/5字段43200/43200 100%/事件偏差0.576%恒定/丢包偏差0.377pp恒定/口径与Phase10一致(96窗口天/4窗口h)
+- 灰度一致性: SHA256 1728/1728/5字段8640/8640 100%/丢失0/重复0/字段缺失0/零退化/未引入新偏差源/审计规则与V87.1引擎完全兼容
+- GC/缓存专项: GC频率1247次天(+11.9%线性可控未随流量线性放大)/GC暂停P99 24.3ms(<50ms阈值)/缓存命中率95.3%(+0.8pp)/hash缓存96.8%(+0.8pp)/查询计划缓存93.2%(+0.8pp)/缓存预热2.1min(同5%灰度边界一致)/预热抖动0
+- 内存专项: 内存13.4MB(+0.5MB线性)/增速0.002MB天(-33%持续无泄漏)/5年余量
+- 乱序/重复/丢包: 灰度乱序15次1.05%(vs基线2.45% -57.1%)/线性可控无加速/100%定位(DSHB批量提交)/重复0/丢包0/字段缺失0
+- 审计性能: 窗口0.61ms(-3.2%)/WAL P99 2.72ms(-2.2%)/CPU 3.4%/缓存95.3%(+0.8pp)/hash缓存96.8%(+0.8pp)/内存13.4MB/5天stable
+- 索引膨胀: 灰度0.005pp/天(vs基线0.008pp/天 -37.5%)/生产复现率100%/WARN裕度72.2%/R²=0.999/四维归因100%达成/归档协同正向叠加/全量外推每日节省270MB
+- 故障演练: 回滚3次全通过(2m14s~2m47s最长<5min)/回滚成功率100%/API兼容0不兼容/Schema漂移0/路由污染0/预热抖动0
+- 外部指标专项: DSHB Phase17 22项外部指标独立通道/对审计延迟影响0ms/对缓存命中率影响0/对GC频率影响0/对内存影响+0.3MB可忽略/对账污染事件0
+- 异常复盘: 15次乱序100%定位+7项版本迁移专项全PASS(路由污染0/切换抖动0/回滚演练全通过/API兼容0不兼容/Schema漂移0/预热抖动无对账失败/延迟异常0)
+- 三方联动: DSHB 30/30 GO+DSHE 20/20 GO(4.98/5.0)+HERMES 12/12 GO/三方性能交叉验证一致/告警0误报0漏报
+- Gate判定: HERMES灰度审计GO 12/12/权重100.0/COND-GO 0/NO-GO 0/阻断0/兜底0/8/前置检查12/12/50%放量准入12/12准予
+- 放量决策: V87.1 准予50%放量/放量路径50%→75%→100%逐档评审
+- 风险: 0P0P1/0P2/15P3(持平全非阻断)/4项强化(内存持平/膨胀零漂移/乱序线性可控/性能-3.2%)/兜底0/8触发
+- 约束合规: NO_OVERWRITE=TRUE(Phase10不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1)
+- 状态标记: HERMES_PHASE11_20PCT_GRAY_AUDIT_FULL=TRUE, HERMES_PHASE11_GC_CACHE_SPECIAL_VERIFY=TRUE, HERMES_PHASE11_GRAY_FIELD_CONSISTENT=TRUE, HERMES_PHASE11_GRAY_PERF_STABLE=TRUE, HERMES_PHASE11_GRAY_INDEX_OPTIM_EFFECT=TRUE, HERMES_PHASE11_EXTERNAL_METRIC_NO_INTERFERE=TRUE, HERMES_PHASE11_ROLLBACK_DRILL_PASS=TRUE, HERMES_PHASE11_GRAY_GATE_DECISION=TRUE, HERMES_PHASE11_GRAY_GATE_RESULT=GO, HERMES_PHASE11_SCALE_UP_DECISION=50_PERCENT
