@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase18)
+# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase19)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `3817b07` (Phase18 DSHE)
+> 基准commit: `a01837b` (Phase19 DSHE)
 > 日期: 2027-10-09
 > 版本: V87-RC1
-> 状态: 🟢 Phase18终态 (DSHE)
+> 状态: 🟢 Phase19终态 (DSHE)
 
 ---
 
@@ -44,7 +44,8 @@
 | Phase16 | 6 | 5 | 0 | 4 | 15 |
 | Phase17 | 6 | 5 | 0 | 2 | 13 |
 | Phase18 | 6 | 5 | 0 | 2 | 13 |
-| **合计** | **48** | **32** | **62** | **34** | **176** |
+| Phase19 | 0 | 5 | 0 | 2 | 7 |
+| **合计** | **48** | **37** | **62** | **36** | **183** |
 
 ---
 
@@ -137,6 +138,11 @@
 | 25 | `v87_rc1_dshe_l2_phase18_alert_noise_reduction_validate_report.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 | 26 | `v87_rc1_dshe_l2_phase18_pdf_template_optimize_verify_report.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
 | 27 | `v87_rc1_dshe_l2_phase18_dashboard_gate_evaluation_report.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 28 | `v87_rc1_dshe_l2_phase19_factor_dashboard_design_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 29 | `v87_rc1_dshe_l2_phase19_factor_panel_access_verify_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
+| 30 | `v87_rc1_dshe_l2_phase19_factor_alert_rule_validate_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 31 | `v87_rc1_dshe_l2_phase19_factor_pdf_report_optimize_verify_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~15,000 B |
+| 32 | `v87_rc1_dshe_l2_phase19_factor_dashboard_gate_evaluation_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
 
 ### 3.3 元数据文件
 
@@ -145,7 +151,7 @@
 | 1 | `STATUS.md` | ✅ Phase18 entry added |
 | 2 | `JOB_READY.flag` | ✅ Phase18 section added |
 | 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase18 section added |
-| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v2.7) |
+| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v2.8) |
 
 ---
 
@@ -180,6 +186,7 @@
 | Phase16 | 98.0 GO | 4.97/5.0 GO | 98.0 GO | GO | 外部因子映射方案 |
 | Phase17 | 99.0 GO | 4.97/5.0 GO | 99.0 GO | GO | 外部指标看板升级 |
 | Phase18 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观测 |
+| Phase19 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 因子看板搭建 |
 
 ### 4.3 风险演进
 
@@ -226,6 +233,7 @@
 | Phase16新增文件 | ✅ 8份新增(6报告+2更新) |
 | Phase17新增文件 | ✅ 7份新增(5报告+2更新) |
 | Phase18新增文件 | ✅ 7份新增(5报告+2更新) |
+| Phase19新增文件 | ✅ 7份新增(5报告+2更新) |
 | 元数据更新 | ✅ 4份更新 |
 | NO_MODIFY_V85 | ✅ V85未修改 |
 | NO_ZHIJI_API_CALL | ✅ 未调用知几API |
@@ -272,24 +280,25 @@
 | 外部指标数据流水线 | ✅ V87 RC1 G1 外部指标数据流水线GO |
 | 外部指标看板升级 | ✅ V87 RC1 G1 外部指标看板升级与告警融合验证通过 |
 | 外部指标看板30天长稳观测 | ✅ V87 RC1 G1 外部指标看板30天长稳观测与可维护性评估通过 |
+| 因子看板搭建 | ✅ V87 RC1 G1 因子看板搭建与因子监控告警验证通过 |
 | 约束合规 | ✅ 全部满足 |
 
 ### 7.2 最终结论
 
-**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过, framework-tree GitHub Pages已部署上线**
+**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过, framework-tree GitHub Pages已部署上线**
 
 ---
 
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.7
-MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_18
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=176
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.8
+MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_19
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=183
 MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=60
-MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=27
+MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=32
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
-MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=27
+MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=29
 MD5_MANIFEST_CROSS_REVIEW_MD5_MATCH=100_PERCENT
 MD5_MANIFEST_CROSS_REVIEW_NO_OVERWRITE=TRUE
 MD5_MANIFEST_CROSS_REVIEW_NO_MODIFY_V85=TRUE
@@ -308,6 +317,9 @@ MD5_MANIFEST_CROSS_REVIEW_EXT_PIPELINE_30DAY_OBSERVE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_EXT_DQ_OPTIMIZE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_SHADOW_BACKTEST_DATASET=READY
 MD5_MANIFEST_CROSS_REVIEW_EXT_DASHBOARD_30DAY_OBSERVE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_DASHBOARD=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_ALERT_VALIDATE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_PDF_EXPORT=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```
