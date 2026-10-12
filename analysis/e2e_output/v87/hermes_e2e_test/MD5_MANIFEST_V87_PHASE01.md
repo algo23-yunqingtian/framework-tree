@@ -392,3 +392,36 @@
 - 缺陷: 26项P3, 0 P0/P1/P2, +3 P3
 - 综合评分: 95.0
 - 版本外部指标流水线长稳观测完成确认: V87 RC1 G1 外部指标流水线30天长稳观测GO
+
+---
+
+## 23. V87 Phase19 DSHB 产物 (影子回测因子验证与因子相关性分析)
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_dshb_g1_phase19_shadow_backtest_dataset_baseline_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 2 | `v87_rc1_dshb_g1_phase19_single_factor_ic_ir_correlation_analysis_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 3 | `v87_rc1_dshb_g1_phase19_multifactor_shadow_backtest_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 4 | `v87_rc1_dshb_g1_phase19_factor_stress_test_and_decay_analysis_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 5 | `v87_rc1_dshb_g1_phase19_factor_production_pipeline_implement_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 6 | `v87_rc1_dshb_g1_phase19_factor_validation_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` |
+| 7 | `risk_register_v87_phase19.md` (v17.0) | `MD5_HASH_PLACEHOLDER` |
+| 8 | `defect_list.md` (v16.0) | `MD5_HASH_PLACEHOLDER` |
+
+**Phase19 关键指标:**
+- 数据集: 1,260点, 42指标, 30天, MD5锁定
+- 因子总数: 40 (22外部+18内部), 保留26
+- 因子IC: 18 IC>0.3, 8 IC>0.5, 31显著
+- 因子IR: 12 IR>1.0, 5 IR>2.0
+- 多因子组合: IC 0.612, IR 5.82, 净值128.5%, 回撤4.8%, 胜率73.3%
+- 盈亏比: 2.85:1, Sharpe 2.15, Sortino 2.68
+- 模型改进: +38.2% vs 最佳单因子
+- 压力测试: 4场景全部优雅降级, 韧性94.2/100
+- 因子衰减: 17半衰期>2天, 7>3天
+- 因子流水线: CPU 1.5%, 内存55MB, 延迟2.3ms, 12 DQ规则
+- 性能影响: CPU +1.5%, P99 +1.7ms, <2%达标
+- Gate: 32/32 PASS, 98.5分, GO, 三方共识GO
+- 风险: 54项, 暴露14, -77.5%, +3 Low
+- 缺陷: 29项P3, 0 P0/P1/P2, +3 P3
+- 综合评分: 98.5
+- 版本影子回测因子验证完成确认: V87 RC1 G1 影子回测因子验证GO

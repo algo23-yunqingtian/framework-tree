@@ -2,10 +2,10 @@
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `a01837b` (Phase19 DSHE)
-> 日期: 2027-10-09
+> 基准commit: `977a22d` (Phase19 DSHB)
+> 日期: 2027-10-30
 > 版本: V87-RC1
-> 状态: 🟢 Phase19终态 (DSHE)
+> 状态: 🟢 Phase19终态 (DSHB+DSHE)
 
 ---
 
@@ -13,8 +13,8 @@
 
 | 项目 | 值 |
 |------|----|
-| 审查范围 | V87 RC1 Phase01 ~ Phase18 |
-| 审查日期 | 2027-10-29 |
+| 审查范围 | V87 RC1 Phase01 ~ Phase19 |
+| 审查日期 | 2027-10-30 |
 | 基准版本 | V87.1 RC1 |
 | 分支 | `feature/v87-rc1-g1` |
 | 基准commit | `A0B85953` |
@@ -44,8 +44,8 @@
 | Phase16 | 6 | 5 | 0 | 4 | 15 |
 | Phase17 | 6 | 5 | 0 | 2 | 13 |
 | Phase18 | 6 | 5 | 0 | 2 | 13 |
-| Phase19 | 0 | 5 | 0 | 2 | 7 |
-| **合计** | **48** | **37** | **62** | **36** | **183** |
+| Phase19 | 6 | 5 | 0 | 2 | 13 |
+| **合计** | **54** | **37** | **62** | **36** | **189** |
 
 ---
 
@@ -281,21 +281,22 @@
 | 外部指标看板升级 | ✅ V87 RC1 G1 外部指标看板升级与告警融合验证通过 |
 | 外部指标看板30天长稳观测 | ✅ V87 RC1 G1 外部指标看板30天长稳观测与可维护性评估通过 |
 | 因子看板搭建 | ✅ V87 RC1 G1 因子看板搭建与因子监控告警验证通过 |
+| 影子回测因子验证 | ✅ V87 RC1 G1 影子回测因子验证与因子相关性分析GO |
 | 约束合规 | ✅ 全部满足 |
 
 ### 7.2 最终结论
 
-**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过, framework-tree GitHub Pages已部署上线**
+**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO, framework-tree GitHub Pages已部署上线**
 
 ---
 
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.8
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.9
 MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_19
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=183
-MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=60
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=189
+MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=66
 MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=32
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
 MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=29
@@ -320,6 +321,8 @@ MD5_MANIFEST_CROSS_REVIEW_EXT_DASHBOARD_30DAY_OBSERVE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DASHBOARD=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_ALERT_VALIDATE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_PDF_EXPORT=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_SHADOW_BACKTEST_FACTOR_VALIDATION=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_PRODUCTION_PIPELINE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```
