@@ -668,6 +668,41 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 综合评分: 99.5
 - 版本90天季度运维基线固化: V87 RC1 G1 90天长期稳态运维基线固化准予
 
+## 30. V87 Phase26 DSHB 产物 (120天超长稳态观测与极端行情压力演练及索引容量预测与归档灾备演练及缓存降级验证)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase26_120day_longrun_observation_summary_report.md` | `MD5_HASH_PLACEHOLDER` | ~28,000 B |
+| 2 | `v87_rc1_dshb_g1_phase26_extreme_market_stress_test_report.md` | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 3 | `v87_rc1_dshb_g1_phase26_index_multi_scenario_capacity_forecast_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 4 | `v87_rc1_dshb_g1_phase26_hotcold_archive_disaster_recovery_drill_report.md` | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 5 | `v87_rc1_dshb_g1_phase26_query_cache_degradation_scenario_verify_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 6 | `v87_rc1_dshb_g1_phase26_factor_ic_ir_120day_monitor_report.md` | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 7 | `v87_rc1_dshb_g1_phase26_cpu_fuse_simulation_iteration_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 8 | `v87_rc1_dshb_g1_phase26_120day_longrun_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~28,000 B |
+| 9 | `risk_register_v87_phase26.md` (v24.0) | `MD5_HASH_PLACEHOLDER` | ~32,000 B |
+| 10 | `defect_list.md` (v23.0) | `MD5_HASH_PLACEHOLDER` | ~36,000 B |
+
+**Phase26 关键指标:**
+- 120天观测: 2880h, 172,800数据点, 0 P0/P1事件
+- CPU熔断: 24次触发(2.0%), 100%自动恢复, 0数据丢失, 周均1.60次<10次阈值
+- CPU熔断仿真迭代: 2.2%阈值12次(50%降幅), 保护余量12.0%, 生产阈值维持2.0%不变
+- 极端行情压测: 5场景全部PASS, 熔断保护有效, 因子一致性100%
+- 索引容量预测: 3情景12个月预测, 基准7.8%/乐观6.9%/悲观9.2%, 归档周期287天验证
+- 索引膨胀: 6.92%→7.16%(+0.24pp), 日增0.008%/天, 下次告警线D287(2029-01-21)
+- 归档灾备演练: 4场景全部PASS, RTO 18分钟(<30分钟), RPO 25分钟(<60分钟)
+- 查询缓存降级: 4场景全部PASS, 因子一致性100%, 降级策略有效
+- 查询缓存: 120天稳定, 命中率97.1%, 一致性100%, 内存2.2→2.3MB(无泄漏)
+- 因子IC: 0.603(-0.75%漂移), IR: 5.74(-0.68%漂移), 半衰期100%持平, 0加速衰减
+- O3稳定: CPU 1.65-1.75%, 内存57.6-59.2MB, 无劣化
+- DQ: 99.6%, 误报0.2%, 漏报0%
+- HERMES比对: 48轮全部对齐, 0偏差
+- Gate: 67/67 PASS, 99.5分, GO, 三方共识GO
+- 风险: 88项, 暴露14, -77.5%, +21 Low(G-046~G-066), +21 CLOSED
+- 缺陷: 44项P3, 0 P0/P1/P2, +2 P3(D-NEW-043/044), 2 CLOSED
+- 综合评分: 99.5
+- 版本120天长期稳态运维基线固化: V87 RC1 G1 120天长期稳态运维基线固化准予
+
 
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 

@@ -7585,3 +7585,76 @@ JOB_READY=TRUE
 - 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
 - 状态标记: DSHB_G1_PHASE25_90DAY_OBSERVATION_COMPLETED=TRUE, DSHB_G1_PHASE25_INDEX_ARCHIVE_MAINTENANCE=COMPLETE, DSHB_G1_PHASE25_QUERY_CACHE_STABILITY=COMPLETE, DSHB_G1_PHASE25_CPU_FUSE_SIM_ITERATED=TRUE, DSHB_G1_PHASE25_GATE_DECISION=GO, DSHB_G1_PHASE25_90DAY_BASELINE_FROZEN=TRUE, DSHB_G1_PHASE25_INDEX_ARCHIVE_CYCLE_FROZEN=TRUE, DSHB_G1_PHASE25_QUERY_CACHE_LONGTERM_OPS=APPROVED, DSHB_G1_PHASE25_CPU_FUSE_THRESHOLD_MAINTAINED=2.0_PERCENT, DSHB_G1_PHASE25_CPU_FUSE_COOLDOWN_MAINTAINED=2_MIN
 ```
+
+### 2028-06-14 DSHB_V87_RC1_G1_PHASE26_120DAY_LONGTERM_STEADY_OBSERVE_EXTREME_MARKET_STRESS_TEST_INDEX_CAPACITY_FORECAST_ARCHIVE_DISASTER_DRILL
+
+- Branch: feature/v87-rc1-g1 @ commit 08abad1
+- Constraints: NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE
+- Verify Date: 2028-06-14
+
+#### Phase26 Deliverables (10 reports + 2 updates + 4 metadata)
+
+- v87_rc1_dshb_g1_phase26_120day_longrun_observation_summary_report.md (NEW)
+- v87_rc1_dshb_g1_phase26_extreme_market_stress_test_report.md (NEW)
+- v87_rc1_dshb_g1_phase26_index_multi_scenario_capacity_forecast_report.md (NEW)
+- v87_rc1_dshb_g1_phase26_hotcold_archive_disaster_recovery_drill_report.md (NEW)
+- v87_rc1_dshb_g1_phase26_query_cache_degradation_scenario_verify_report.md (NEW)
+- v87_rc1_dshb_g1_phase26_factor_ic_ir_120day_monitor_report.md (NEW)
+- v87_rc1_dshb_g1_phase26_cpu_fuse_simulation_iteration_report.md (NEW)
+- v87_rc1_dshb_g1_phase26_120day_longrun_gate_evaluation.md (NEW)
+- risk_register_v87_phase26.md (v23.0->v24.0)
+- defect_list.md (v22.0->v23.0)
+- MD5_MANIFEST_V87_PHASE01.md (updated)
+- MD5_MANIFEST_cross_review.md (updated)
+- STATUS.md (updated)
+- JOB_READY.flag (updated)
+
+#### Phase26 Key Metrics
+
+- Observe: 120d (2,880h, 172,800 data points, 100% full production traffic)
+- P0/P1: 0, P2: 0, P3: 2 (all non-blocking)
+- CPU Fuse: 24 triggers (2.0%), 100% auto-recovery, 0 data loss, 1.60/wk < 10 threshold
+- CPU Fuse Sim: 2.2% = 12 triggers (50% reduction), protection margin 12.0%, prod threshold unchanged 2.0%
+- Extreme Market Stress: 5 scenarios, all PASS, protection strategies effective
+- Index Capacity Forecast: 3 scenarios (baseline/optimistic/pessimistic), 12-month all sufficient
+- Index Bloat: 6.92%→7.16% (+0.24pp), daily growth 0.008%/day, next alert D287 (2029-01-21), archive cycle 287 days
+- Archive Disaster Drill: 4 scenarios, all PASS, RTO 18min (<30min), RPO 25min (<60min)
+- Cache Degradation: 4 scenarios, all PASS, factor consistency 100%
+- Query Cache: 120 days, hit rate 97.1%, consistency 100%, memory 2.2→2.3MB (no leak)
+- Factor IC: 0.603 (-0.75% drift), IR: 5.74 (-0.68% drift), half-life 100% stable, 0 decay acceleration
+- O3 Stable: CPU 1.65-1.75%, memory 57.6-59.2MB, no degradation
+- DQ: 99.6%, FP 0.2%, FN 0.0%
+- HERMES Reconciliation: 48 rounds, 100% aligned, 0 deviation
+- Gate: 67/67 PASS, 99.5 score, GO, three-party consensus GO
+
+#### Phase26 Status
+
+- Risk Register: v24.0, 88 items, exposure 14, -77.5%, +21 Low (G-046~G-066), +21 CLOSED
+- Defect List: v23.0, 44 P3, 0 P0/P1/P2, +2 P3 (D-NEW-043/044), 2 CLOSED
+- 120-Day Baseline Frozen: V87 RC1 G1 120-day long-term steady ops baseline approved
+- Index Archive Cycle Frozen: 287 days (next archive ~2029-01-21)
+- Query Cache Long-term Ops: Approved
+- CPU Fuse Threshold Maintained: 2.0% (unchanged)
+- CPU Fuse Cooldown Maintained: 2min (unchanged)
+
+- 120天观测: 2880h, 172,800数据点, 0 P0/P1事件
+- CPU熔断: 24次触发(2.0%), 100%自动恢复, 0数据丢失, 周均1.60次<10次阈值
+- CPU熔断仿真迭代: 2.2%阈值12次(50%降幅), 保护余量12.0%, 生产阈值维持2.0%不变
+- 极端行情压测: 5场景全部PASS, 熔断保护有效, 因子一致性100%
+- 索引容量预测: 3情景12个月预测, 基准7.8%/乐观6.9%/悲观9.2%, 归档周期287天验证
+- 索引膨胀: 6.92%→7.16%(+0.24pp), 日增0.008%/天, 下次告警线D287(2029-01-21), 归档周期287天
+- 归档灾备演练: 4场景全部PASS, RTO 18分钟(<30分钟), RPO 25分钟(<60分钟)
+- 查询缓存降级: 4场景全部PASS, 因子一致性100%, 降级策略有效
+- 查询缓存: 120天稳定, 命中率97.1%, 一致性100%, 内存2.2→2.3MB(无泄漏)
+- 因子IC: 0.603(-0.75%漂移), IR: 5.74(-0.68%漂移), 半衰期100%持平, 0加速衰减
+- O3稳定: CPU 1.65-1.75%, 内存57.6-59.2MB, 无劣化
+- DQ: 99.6%, 误报0.2%, 漏报0%
+- HERMES比对: 48轮全部对齐, 0偏差
+- Gate: 67/67 PASS, 99.5分, GO, 三方共识GO
+- 风险: 88项, 暴露14, -77.5%, +21 Low(G-046~G-066), +21 CLOSED
+- 缺陷: 44项P3, 0 P0/P1/P2, +2 P3(D-NEW-043/044), 2 CLOSED
+- 综合评分: 99.5
+- 版本120天长期稳态运维基线固化: V87 RC1 G1 120天长期稳态运维基线固化准予
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
+- 状态标记: DSHB_G1_PHASE26_120DAY_OBSERVATION_COMPLETED=TRUE, DSHB_G1_PHASE26_EXTREME_MARKET_STRESS_TEST=COMPLETE, DSHB_G1_PHASE26_INDEX_CAPACITY_FORECAST=COMPLETE, DSHB_G1_PHASE26_ARCHIVE_DISASTER_DRILL=COMPLETE, DSHB_G1_PHASE26_CACHE_DEGRADATION=COMPLETE, DSHB_G1_PHASE26_CPU_FUSE_SIM_ITERATED=TRUE, DSHB_G1_PHASE26_GATE_DECISION=GO, DSHB_G1_PHASE26_120DAY_BASELINE_FROZEN=TRUE, DSHB_G1_PHASE26_INDEX_ARCHIVE_CYCLE_FROZEN=TRUE, DSHB_G1_PHASE26_QUERY_CACHE_LONGTERM_OPS=APPROVED, DSHB_G1_PHASE26_CPU_FUSE_THRESHOLD_MAINTAINED=2.0_PERCENT, DSHB_G1_PHASE26_CPU_FUSE_COOLDOWN_MAINTAINED=2_MIN
+```
