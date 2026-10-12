@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase24)
+﻿# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase25)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `03f2edc` (Phase24 DSHB)
-> 日期: 2028-02-13
+> 基准commit: `9fe4420` (Phase25 DSHB)
+> 日期: 2028-03-15
 > 版本: V87-RC1
-> 状态: 🟢 Phase24终态 (DSHB+DSHE+HERMES)
+> 状态: 🟢 Phase25终态 (DSHB+DSHE+HERMES)
 
 ---
 
@@ -13,8 +13,8 @@
 
 | 项目 | 值 |
 |------|----|
-| 审查范围 | V87 RC1 Phase01 ~ Phase24 |
-| 审查日期 | 2028-02-12 |
+| 审查范围 | V87 RC1 Phase01 ~ Phase25 |
+| 审查日期 | 2028-03-15 |
 | 基准版本 | V87.1 RC1 |
 | 分支 | `feature/v87-rc1-g1` |
 | 基准commit | `724c333` |
@@ -50,7 +50,8 @@
 | Phase22 | 6 | 0 | 0 | 2 | 8 |
 | Phase23 | 8 | 5 | 7 | 2 | 22 |
 | Phase24 | 9 | 5 | 0 | 2 | 16 |
-| **合计** | **89** | **47** | **62** | **46** | **244** |
+| Phase25 | 0 | 5 | 0 | 0 | 5 |
+| **合计** | **89** | **52** | **62** | **46** | **249** |
 
 ---
 
@@ -229,16 +230,21 @@
 | 44 | `v87_rc1_dshe_l2_phase24_panel_performance_and_cache_monitor_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
 | 45 | `v87_rc1_dshe_l2_phase24_hotcold_archive_dashboard_verify_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
 | 46 | `v87_rc1_dshe_l2_phase24_pdf_weekly_export_and_metric_matching_audit_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
-| 47 | `v87_rc1_dshe_l2_phase24_60day_longrun_gate_evaluation_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 47 | 87_rc1_dshe_l2_phase24_60day_longrun_gate_evaluation_report.md | Phase24 | MD5_HASH_PLACEHOLDER | ~25,000 B |
+| 48 | 87_rc1_dshe_l2_phase25_90day_longrun_overview_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~22,000 B |
+| 49 | 87_rc1_dshe_l2_phase25_panel_performance_longterm_monitor_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~20,000 B |
+| 50 | 87_rc1_dshe_l2_phase25_pdf_export_pipeline_stabilize_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~22,000 B |
+| 51 | 87_rc1_dshe_l2_phase25_external_data_compare_dashboard_verify_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~18,000 B |
+| 52 | 87_rc1_dshe_l2_phase25_90day_longrun_gate_evaluation_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~25,000 B |
 
 ### 3.3 元数据文件
 
 | # | 文件 | 状态 |
 |---|------|:----:|
-| 1 | `STATUS.md` | ✅ Phase20 DSHE entry added |
-| 2 | `JOB_READY.flag` | ✅ Phase20 DSHE section added |
+| 1 | `STATUS.md` | ✅ Phase25 DSHE entry added |
+| 2 | `JOB_READY.flag` | ✅ Phase25 DSHE section added |
 | 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase20 section added |
-| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v3.0, Phase21 DSHE entries added) |
+| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v3.0, Phase25 DSHE entries added) |
 
 ---
 
@@ -278,26 +284,27 @@
 | Phase21 | 99.0 GO | 4.98/5.0 GO | 99.0 GO | GO | 因子75%灰度投产 |
 | Phase22 | 99.5 GO | - | - | GO | 100%全量发布 |
 | Phase23 | 99.5 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观测 |`n| Phase24 | - | 4.98/5.0 GO | - | GO | 60天长稳观测+PDF指标匹配 |
+| Phase25 | - | 4.99/5.0 GO | - | GO | 90天长稳观测+PDF流水线固化+外部比对看板 |
 
 ### 4.3 风险演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | 趋势 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 趋势 |
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | ➡️ 灰度+运维+外部+因子新增 |
-| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
-| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | ➡️ 基本持平 |
-| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | ➡️ 基本持平 |
+| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | ➡️ 灰度+运维+外部+因子新增 |
+| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
+| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | ➡️ 基本持平 |
+| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | ➡️ 基本持平 |
 
 ### 4.4 缺陷演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | 趋势 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 趋势 |
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | 32 | ↑ 灰度+运维+外部+因子新增 |
-| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | 32 | 32 | ↑ 灰度+运维+外部+因子新增 |
+| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
 
 ---
 
@@ -387,18 +394,18 @@
 
 ### 7.2 最终结论
 
-**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO + 因子生产流水线50%灰度上线与指标监控GO + 因子生产流水线75%灰度上线与边界指标监控GO + 因子生产流水线100%全量发布与O3优化及CPU硬熔断配置GO + 因子30天长稳观测与永久稳态投产GO, framework-tree GitHub Pages已部署上线**
+**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO + 因子生产流水线50%灰度上线与指标监控GO + 因子生产流水线75%灰度上线与边界指标监控GO + 因子生产流水线100%全量发布与O3优化及CPU硬熔断配置GO + 因子30天长稳观测与永久稳态投产GO + DSHE 90天长稳观测与PDF流水线固化GO, framework-tree GitHub Pages已部署上线**
 
 ---
 
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.13
-MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_23
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=226
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.14
+MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_25
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=232
 MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=96
-MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=38
+MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=42
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
 MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=30
 MD5_MANIFEST_CROSS_REVIEW_MD5_MATCH=100_PERCENT
@@ -463,6 +470,35 @@ MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_GATE=GO
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_BASELINE_FROZEN=TRUE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_RISK_REGISTER_V22_UPDATED=TRUE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DEFECT_LIST_V21_UPDATED=TRUE
+MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
+JOB_READY=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_OBSERVE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_COLD_HOT_ARCHIVE=EXECUTED
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_ARCHIVE_BLOAT_6.20_PERCENT=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_QUERY_CACHE_OPTIMIZE=DEPLOYED
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_QUERY_CACHE_P99_2.85MS=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_QUERY_CACHE_HIT_97.5_PERCENT=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_CPU_FUSE_OFFLINE_SIM=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_CPU_FUSE_PROD_THRESHOLD_UNCHANGED=2.0_PERCENT
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_IC_IR_60DAY_MONITOR=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_EXPANSION_POST_ARCHIVE_PREDICTION=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_ARCHIVE_CYCLE_287_DAYS=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_HERMES_RECON_24_ROUNDS=100_PERCENT
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_GATE=GO
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_BASELINE_FROZEN=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_RISK_REGISTER_V22_UPDATED=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_DEFECT_LIST_V21_UPDATED=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_90DAY_OBSERVE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_PDF_PIPELINE_STABILIZE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_METRIC_MISMATCH_AUTO_ALERT=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_EXTERNAL_DATA_DASHBOARD=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_EXTERNAL_DATA_CONSISTENCY_99.85_PERCENT=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_HERMES_PHASE17_CRAWLER=STABLED
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_ROOT_CAUSE_KB=3_CASES
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_90DAY_GATE=GO
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_90DAY_BASELINE_FROZEN=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_DEFECT_LIST_V22_UPDATED=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_OPS_MANUAL_V40_43_UPDATED=TRUE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```

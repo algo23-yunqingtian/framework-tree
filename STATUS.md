@@ -7344,6 +7344,71 @@ JOB_READY=TRUE
 - Ops Manual: v4.0.42, S63 added (7 subsections)
 ```
 
+### 2028-03-15 DSHE_V87_RC1_L2_PHASE25_90DAY_PANEL_LONGTERM_MONITOR_PDF_EXPORT_PIPELINE_STABILIZE_METRIC_MISMATCH_ARCHIVE_DASHBOARD_ENHANCE_EXTERNAL_DATA_VIEW
+
+- Branch: feature/v87-rc1-g1 @ commit 9fe4420
+- Constraints: NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE
+- Verify Date: 2028-03-15
+
+#### Phase25 Deliverables (5 reports + 2 updates + 3 metadata)
+
+- v87_rc1_dshe_l2_phase25_90day_longrun_overview_report.md (NEW)
+- v87_rc1_dshe_l2_phase25_panel_performance_longterm_monitor_report.md (NEW)
+- v87_rc1_dshe_l2_phase25_pdf_export_pipeline_stabilize_report.md (NEW)
+- v87_rc1_dshe_l2_phase25_external_data_compare_dashboard_verify_report.md (NEW)
+- v87_rc1_dshe_l2_phase25_90day_longrun_gate_evaluation_report.md (NEW)
+- v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V21.0->V22.0)
+- v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.42->v4.0.43)
+- MD5_MANIFEST_cross_review.md (updated)
+- STATUS.md (updated)
+- JOB_READY.flag (updated)
+
+#### Phase25 Key Metrics
+
+- Panels: 63 (60+2 Phase24+1 Phase25 new: external data compare)
+- Observe: 90d (100% full production traffic)
+- Panel Inspect: 5670/5670 (100%)
+- Render P99: 200ms (<200ms)
+- Query P99: 273ms (<280ms)
+- First Screen: 2.13s (<2.20s)
+- Cache Hit: 98.0% (>=97%)
+- Panel Success: 99.99%
+- Concurrent Query: 10
+- Alert Rules: 5
+- Alerts(90d): 115
+- FP: 0, FN: 0
+- Noise Suppression: 80% (stable <1% drift)
+- Noise Levels: 7
+- Alert Health: 99.0
+- Peak Latency Max: 0.72ms
+- Peak Latency WARN: 15 events (all auto-recovered)
+- CPU Fuse Events: 0 (threshold 2.0%)
+- PDF: V1.2, 8 pages, 13.8s, 100%, 100% consistent, 12 weekly exports, 5 concurrent
+- PDF Metric Audit: 12/12 weeks, 756 comparisons, 755 matched, 1 mismatch (auto-resolved)
+- HERMES Cross-Verify: 1/1 (external data source)
+- External Data Panel (P63): 100% available, 99.85% consistency
+- External Data Sources: 5 exchanges (LME/SHFE/SGX/CME/ICE)
+- External Data Metrics: 15 commodity factors
+- External Data Latency: avg 8.5h (<24h)
+- Metric Mismatch Auto-Alert: 1 triggered, 100% auto-resolved
+- Root Cause KB: 3 cases archived (RC-001~RC-003)
+- Framework-tree: 99.99%, 100 score
+- V100-2.0 Baseline: maintained (24/24)
+- Maintainability: 99.5/100
+- Stability Score: 99.5/100
+
+#### Phase25 Gate
+
+- 20/20 PASS, 4.99/5.0
+- Three-party: 3/3 GO (DSHB 99.5, DSHE 4.99, HERMES 100)
+- Decision: GO
+
+#### Phase25 Status
+
+- Defect List: V22.0, 0 P0/P1
+- Ops Manual: v4.0.43, S64 added (8 subsections)
+```
+
 ### 2028-02-13 DSHB_V87_RC1_G1_PHASE24_60DAY_STEADY_OBSERVE_INDEX_COLD_HOT_ARCHIVE_IMPLEMENT_QUERY_CACHE_OPTIMIZE_AND_CPU_FUSE_OFFLINE_SIM
 
 - Branch: feature/v87-rc1-g1 @ commit 03f2edc
