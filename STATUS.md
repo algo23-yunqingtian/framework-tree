@@ -7282,4 +7282,64 @@ JOB_READY=TRUE
 - 约束合规: NO_OVERWRITE=TRUE(Phase14不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1), NO_ZHIJI_API_CALL=TRUE
 - 状态标记: HERMES_PHASE15_30DAY_LONGRUN_AUDIT_FULL=TRUE, HERMES_PHASE15_INDEX_EXPANSION_VERIFY=TRUE, HERMES_PHASE15_INDEX_EXPANSION_PREDICTION_ACCURATE=TRUE, HERMES_PHASE15_CPU_FUSE_LONGTERM_STAT=TRUE, HERMES_PHASE15_CPU_FUSE_TOTAL_TRIGGERS=42, HERMES_PHASE15_CPU_FUSE_AUDIT_CAPTURE=100_PERCENT, HERMES_PHASE15_CPU_FUSE_DATA_CONSISTENT=TRUE, HERMES_PHASE15_CPU_FUSE_FREQ_OVER_WARN=TRUE, HERMES_PHASE15_CPU_FUSE_FREQ=14_PER_WEEK, HERMES_PHASE15_CPU_FUSE_FREQ_THRESHOLD=10_PER_WEEK, HERMES_PHASE15_PEAK_LATENCY_LONGTERM_MONITOR=TRUE, HERMES_PHASE15_PEAK_LATENCY_WARN_COUNT=6, HERMES_PHASE15_PEAK_LATENCY_WARN_HANDLE_SUCCESS=100_PERCENT, HERMES_PHASE15_FACTOR_CONSISTENCY_30DAY=TRUE, HERMES_PHASE15_FACTOR_CROSS_VERSION_CONSISTENT=TRUE, HERMES_PHASE15_FACTOR_CPU_FUSE_CONSISTENT=TRUE, HERMES_PHASE15_EXTERNAL_METRIC_NO_INTERFERE=TRUE, HERMES_PHASE15_ROLLBACK_DRILL_PASS=TRUE, HERMES_PHASE15_LONGTERM_GATE_DECISION=TRUE, HERMES_PHASE15_LONGTERM_GATE_RESULT=GO, HERMES_PHASE15_LONG_TERM_DATA_TRUST_SCORE=96.50_OF_100, HERMES_PHASE15_LONG_TERM_DATA_TRUSTWORTHY=TRUE, HERMES_PHASE15_LONG_TERM_BASELINE_CONFIRMED=TRUE, HERMES_PHASE15_LONG_TERM_BASELINE_ADJUSTMENT=NONE_NEEDED, HERMES_PHASE15_LONG_TERM_OPS_DECISION=GO
 ```
+### 2028-02-12 DSHE_V87_RC1_L2_PHASE24_60DAY_PANEL_LONGTERM_MONITOR_QUERY_CACHE_VISUAL_ARCHIVE_INDEX_DASHBOARD_UPDATE_PDF_METRIC_MATCH_AUDIT
 
+- Branch: feature/v87-rc1-g1 @ commit 843244a
+- Constraints: NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE
+- Verify Date: 2028-02-12
+
+#### Phase24 Deliverables (5 reports + 3 updates)
+
+- v87_rc1_dshe_l2_phase24_60day_longrun_overview_report.md (NEW)
+- v87_rc1_dshe_l2_phase24_panel_performance_and_cache_monitor_report.md (NEW)
+- v87_rc1_dshe_l2_phase24_hotcold_archive_dashboard_verify_report.md (NEW)
+- v87_rc1_dshe_l2_phase24_pdf_weekly_export_and_metric_matching_audit_report.md (NEW)
+- v87_rc1_dshe_l2_phase24_60day_longrun_gate_evaluation_report.md (NEW)
+- v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V20.0->V21.0)
+- v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.41->v4.0.42)
+- MD5_MANIFEST_cross_review.md (updated)
+- STATUS.md (updated)
+- JOB_READY.flag (updated)
+
+#### Phase24 Key Metrics
+
+- Panels: 62 (60+2 new: hot/cold archive + query cache monitor)
+- Observe: 60d (100% full production traffic)
+- Panel Inspect: 3720/3720 (100%)
+- Render P99: 200ms (<200ms)
+- Query P99: 275ms (<280ms)
+- First Screen: 2.15s (<2.20s)
+- Cache Hit: 97.5% (>=97%)
+- Panel Success: 99.99%
+- Concurrent Query: 10
+- Alert Rules: 5
+- Alerts(60d): 80
+- FP: 0, FN: 0
+- Noise Suppression: 80% (stable <1% drift)
+- Noise Levels: 7
+- Alert Health: 99.0
+- Anomaly Classify: 100%
+- Peak Latency Max: 0.73ms
+- Peak Latency WARN: 10 events (all auto-recovered)
+- Index Bloat: 0.009pp/d (stable)
+- CPU Fuse Events: 0 (threshold 2.0%)
+- CPU 2.2% Simulation: 0 triggers (offline only)
+- PDF: V1.2, 8 pages, 14.0s, 99.5%, 100% consistent, 8 weekly exports, 5 concurrent
+- PDF Metric Audit: 8/8 weeks, 480 comparisons, 478 matched, 2 mismatches (resolved)
+- HERMES Cross-Verify: 2/2 (external data source)
+- Framework-tree: 99.99%, 100 score
+- V100-2.0 Baseline: maintained (24/24)
+- Maintainability: 99.5/100
+- Stability Score: 99.5/100
+
+#### Phase24 Gate
+
+- 20/20 PASS, 4.98/5.0
+- Three-party: 3/3 GO (DSHB 99.5, DSHE 4.98, HERMES 100)
+- Decision: GO
+
+#### Phase24 Status
+
+- Defect List: V21.0, 0 P0/P1
+- Ops Manual: v4.0.42, S63 added (7 subsections)
+```

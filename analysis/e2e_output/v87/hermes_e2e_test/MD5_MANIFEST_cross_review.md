@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase23)
+# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase24)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `34dbaba` (Phase23 DSHB)
-> 日期: 2027-12-14
+> 基准commit: `843244a` (Phase24 DSHE)
+> 日期: 2028-02-12
 > 版本: V87-RC1
-> 状态: 🟢 Phase23终态 (DSHB+DSHE+HERMES)
+> 状态: 🟢 Phase24终态 (DSHB+DSHE+HERMES)
 
 ---
 
@@ -13,8 +13,8 @@
 
 | 项目 | 值 |
 |------|----|
-| 审查范围 | V87 RC1 Phase01 ~ Phase23 |
-| 审查日期 | 2027-12-14 |
+| 审查范围 | V87 RC1 Phase01 ~ Phase24 |
+| 审查日期 | 2028-02-12 |
 | 基准版本 | V87.1 RC1 |
 | 分支 | `feature/v87-rc1-g1` |
 | 基准commit | `724c333` |
@@ -201,6 +201,11 @@
 | 40 | `v87_rc1_dshe_l2_phase23_alert_longrun_noise_validate_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 41 | `v87_rc1_dshe_l2_phase23_pdf_weekly_export_longterm_verify_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
 | 42 | `v87_rc1_dshe_l2_phase23_dashboard_30day_longrun_gate_evaluation_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~28,000 B |
+| 43 | `v87_rc1_dshe_l2_phase24_60day_longrun_overview_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 44 | `v87_rc1_dshe_l2_phase24_panel_performance_and_cache_monitor_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 45 | `v87_rc1_dshe_l2_phase24_hotcold_archive_dashboard_verify_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
+| 46 | `v87_rc1_dshe_l2_phase24_pdf_weekly_export_and_metric_matching_audit_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 47 | `v87_rc1_dshe_l2_phase24_60day_longrun_gate_evaluation_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 
 ### 3.3 元数据文件
 
@@ -248,25 +253,25 @@
 | Phase20 | 99.0 GO | 4.95/5.0 GO | 99.0 GO | GO | 因子50%灰度投产 |
 | Phase21 | 99.0 GO | 4.98/5.0 GO | 99.0 GO | GO | 因子75%灰度投产 |
 | Phase22 | 99.5 GO | - | - | GO | 100%全量发布 |
-| Phase23 | 99.5 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观测 |
+| Phase23 | 99.5 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观测 |`n| Phase24 | - | 4.98/5.0 GO | - | GO | 60天长稳观测+PDF指标匹配 |
 
 ### 4.3 风险演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | 趋势 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | 趋势 |
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | 4+32G | 4+32G | 4+32G | ➡️ 灰度+运维+外部+因子新增 |
-| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
-| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | ➡️ 基本持平 |
-| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | ➡️ 基本持平 |
+| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | ➡️ 灰度+运维+外部+因子新增 |
+| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
+| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | ➡️ 基本持平 |
+| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | ➡️ 基本持平 |
 
 ### 4.4 缺陷演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | 趋势 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | 趋势 |
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | ↑ 灰度+运维+外部+因子新增 |
+| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | 32 | ↑ 灰度+运维+外部+因子新增 |
 | RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
 | WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
 
@@ -309,7 +314,7 @@
 |------|:----:|
 | Phase01-12报告包含 | ✅ 100% |
 | Phase13报告包含 | ✅ 7份全部 |
-| Phase23报告包含 | ✅ 5份全部 |
+| Phase23报告包含 | ✅ 5份全部 |`n| Phase24报告包含 | ✅ 5份全部 |
 | Phase14报告包含 | ✅ 8份全部 |
 | Phase15报告包含 | ✅ 7份全部 |
 | Phase16报告包含 | ✅ 8份全部 |

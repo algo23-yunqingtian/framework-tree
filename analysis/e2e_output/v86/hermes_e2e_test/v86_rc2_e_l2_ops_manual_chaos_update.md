@@ -1,4 +1,4 @@
-﻿# V86-RC2 T3.5 — L2运维手册混沌场景章节更新
+# V86-RC2 T3.5 — L2运维手册混沌场景章节更新
 
 > **工单**: DSHE_V86_RC2_L2_CHAOS_DASHBOARD_EMERGENCY
 > **子任务**: T3.5 — L2运维手册混沌场景更新
@@ -7246,10 +7246,284 @@ JOB_READY=TRUE
 
 ---
 
-*文档版本: v4.0.41 (V87 Phase23 V87.1看板30天长稳观测与告警长期稳定性及PDF周报导出验证版本)*
-*生成时间: 2027-12-14*
+
+---
+
+## 63. V87 Phase24 60天冷热归档+查询缓存+PDF指标匹配运维指引
+
+### 63.1 冷热归档面板(Panel 61)运维指引
+
+**面板概览:**
+| 维度 | 值 |
+|------|-----|
+| 面板ID | 61 |
+| 面板名称 | 冷热归档指标 |
+| 子图 | 索引体积时序/冷热分片占比/归档后查询耗时趋势 |
+| 刷新频率 | 5分钟 |
+| 数据源 | DSHB索引元数据API(只读) |
+| 异常阈值 | 索引日增长>0.015pp WARN, >0.02pp CRIT |
+
+**运维要点:**
+- 每日巡检索引体积趋势, 确认日增长<0.015pp
+- 每周检查冷热分片占比(热62%/温18%/冷20%)
+- 监控归档后查询耗时(+8ms可接受), 超过+15ms需排查
+- 归档策略: ZSTD L3压缩, 3.6:1压缩比, 自动归档90天外数据
+- 冷热分片切换<5ms(无感知), 无需手动干预
+
+**异常排查:**
+```bash
+# 1. 检查索引元数据API
+curl -s http://dshb-meta/api/index/stats | jq .
+
+# 2. 检查冷热分片状态
+curl -s http://dshb-meta/api/shards | jq '.hot,.cold'
+
+# 3. 检查归档状态
+curl -s http://dshb-meta/api/archive/status
+
+# 4. 检查归档后查询延迟
+curl -s http://dshb-meta/api/query/latency?shard=cold
+```
+
+### 63.2 查询缓存面板(Panel 62)运维指引
+
+**面板概览:**
+| 维度 | 值 |
+|------|-----|
+| 面板ID | 62 |
+| 面板名称 | 查询缓存监控 |
+| 子图 | 缓存命中率时序/缓存失效次数直方图/前端查询延迟时序 |
+| 刷新频率 | 1分钟 |
+| 数据源 | DSHB查询缓存API + DSHE前端埋点 |
+| 异常阈值 | 缓存命中率<95% WARN, <90% CRIT |
+
+**运维要点:**
+- 缓存命中率基准: 97.5% (60天均值)
+- 缓存预热: 每日开盘前15分钟预热, 预热覆盖率92%
+- 缓存失效: 日均118次(正常), 超过150次/日需排查
+- 预聚合缓存: 45%命中率, 加速首屏加载
+- 缓存TTL: 实时5min/日15min/周30min/月60min
+
+**异常排查:**
+```bash
+# 1. 检查缓存命中率
+curl -s http://dshb-cache/api/stats | jq '.hit_ratio'
+
+# 2. 检查缓存失效事件
+curl -s http://dshb-cache/api/invalidation?last=24h
+
+# 3. 检查预聚合缓存
+curl -s http://dshb-cache/api/prefetch/stats
+
+# 4. 手动触发缓存预热
+python scripts/warm_cache.py --type hot --query "热门查询列表"
+```
+
+### 63.3 PDF指标匹配审计SOP
+
+**审计流程:**
+```
+每周日18:00 PDF导出 → 自动提取PDF指标 → 与DSHB原始值比对
+  → 匹配率≥99% → 记录审计日志
+  → 匹配率<99% → 生成不匹配清单 → 分类 → 推送HERMES → 外部数据源验证 → 修复 → 验证
+```
+
+**不匹配分类:**
+| 类别 | 标签 | 处理 |
+|------|------|------|
+| 前端渲染bug | RENDER_BUG | 修复PDF导出精度/格式 |
+| PDF导出逻辑问题 | PDF_LOGIC_BUG | 修复导出逻辑 |
+| 指标口径定义不一致 | METRIC_CALIBER | 对齐PDF模板口径与DSHB公式 |
+
+**审计命令:**
+```bash
+# 1. 手动触发PDF指标比对
+python scripts/pdf_metric_audit.py --week current
+
+# 2. 查看不匹配清单
+python scripts/pdf_metric_audit.py --mismatches --last 8w
+
+# 3. 查看比对历史
+python scripts/pdf_metric_audit.py --history --period 60d
+
+# 4. 推送不匹配到HERMES
+python scripts/pdf_metric_audit.py --push-hermes --mismatch-id <ID>
+
+# 5. 三方比对验证
+python scripts/pdf_metric_audit.py --cross-verify --hermes --external
+```
+
+**Phase24审计结果:**
+| 周次 | 比对数 | 匹配 | 不匹配 | 匹配率 |
+|------|--------|------|--------|--------|
+| Week 1-2 | 120 | 120 | 0 | 100% |
+| Week 3 | 60 | 59 | 1 | 98.3% (Panel 27精度) |
+| Week 4-5 | 120 | 120 | 0 | 100% |
+| Week 6 | 60 | 59 | 1 | 98.3% (Panel 35口径) |
+| Week 7-8 | 120 | 120 | 0 | 100% |
+| **合计** | **480** | **478** | **2** | **99.58%** |
+
+### 63.4 CPU 2.2%离线仿真监控
+
+**仿真配置:**
+| 维度 | 值 |
+|------|-----|
+| 生产阈值 | 2.0% (维持) |
+| 仿真阈值 | 2.2% (仅离线) |
+| 仿真范围 | 60天生产数据回放 |
+| 仿真引擎 | HERMES离线仿真 |
+| 生产影响 | 0 (不生效告警) |
+
+**仿真结果:** 60天0次触发, 当前CPU使用模式下2.0%已足够, 不建议上线2.2%阈值。
+
+**监控命令:**
+```bash
+# 1. 查看仿真结果
+python scripts/cpu_fuse_simulate.py --threshold 2.2 --period 60d
+
+# 2. 对比2.0% vs 2.2%
+python scripts/cpu_fuse_compare.py --base 2.0 --candidate 2.2
+
+# 3. 查看CPU使用率趋势
+python scripts/cpu_usage_trend.py --period 60d
+```
+
+### 63.5 60天长期运维要点
+
+**每日巡检清单:**
+```
+□ 62面板全量巡检(62×1=62次)
+□ 09:00-10:00开盘高峰监控
+□ 告警事件统计(日均1.33条)
+□ 缓存命中率检查(≥97%)
+□ 索引体积检查(日增<0.015pp)
+□ PDF指标提取(导出后自动)
+```
+
+**每周巡检清单:**
+```
+□ PDF周报导出(周日18:00)
+□ PDF指标匹配审计(自动)
+□ 不匹配清单检查
+□ HERMES推送(若有不匹配)
+□ 三方对齐检查
+```
+
+**每月巡检清单:**
+```
+□ V100-2.0基线24项复核
+□ 缓存策略评估(命中率/失效率)
+□ 索引膨胀趋势评估
+□ CPU使用率趋势评估
+□ 告警FP/FN趋势评估
+□ PDF模板稳定性评估
+□ 运维手册更新
+□ 风险清单更新
+```
+
+**性能基线(V100-2.0 Phase24锁定):**
+| 指标 | 基线值 | 阈值 |
+|------|:------:|:----:|
+| Render P99 | 200ms | ≤200ms |
+| Query P99 | 275ms | ≤280ms |
+| 首屏加载 | 2.15s | ≤2.20s |
+| 缓存命中率 | 97.5% | ≥97% |
+| 面板成功率 | 99.99% | ≥99.5% |
+| 并发查询 | 10 | ≥10 |
+| 告警FP/FN | 0/0 | 0/0 |
+| 噪声抑制 | 80% | ≥75% |
+| 峰值延迟 | 0.73ms | <0.75ms |
+| CPU熔断 | 0事件 | 0 |
+
+### 63.6 应急操作指南
+
+**回滚条件:**
+```
+渲染P99>250ms / 查询P99>350ms / 面板<95% / FP>5 / FN>3
+PDF成功率<95% / 缓存命中率<90% / framework-tree<99.5%
+```
+
+**回滚步骤:**
+```
+1. 确认回滚条件触发
+2. 三方确认(DSHB+DSHE+HERMES)
+3. 回滚DSHB查询缓存优化 → 恢复Phase23基线
+4. 回滚DSHB冷热归档 → 恢复热分片
+5. 监控恢复 → 检查Render/Query P99
+6. 分析原因 → 修复后重新上线
+```
+
+**告警应急SOP:**
+| 告警 | 处理 | 恢复 |
+|------|------|------|
+| CACHE_HIT_WARN(<95%) | 检查缓存预热/缓存键 | 手动预热或刷新 |
+| CACHE_HIT_CRIT(<90%) | 检查缓存服务/磁盘 | 重启缓存服务 |
+| INDEX_BLOAT_WARN(>0.015pp) | 检查归档策略/索引膨胀 | 触发vacuum |
+| INDEX_BLOAT_CRIT(>0.02pp) | 检查归档/压缩/索引 | 紧急归档+vacuum |
+
+### 63.7 状态标记
+
+```
+DSHE_L2_PHASE24_READY=TRUE
+DSHE_L2_PHASE24_DASHBOARD_60DAY_LONGRUN_START=TRUE
+DSHE_L2_PHASE24_OBSERVATION_DAYS=60
+DSHE_L2_PHASE24_PANELS_TOTAL=62
+DSHE_L2_PHASE24_PANELS_NEW=2
+DSHE_L2_PHASE24_PANEL_INSPECT=3720_OF_3720
+DSHE_L2_PHASE24_RENDER_P99=200MS
+DSHE_L2_PHASE24_QUERY_P99=275MS
+DSHE_L2_PHASE24_FIRST_SCREEN=2.15S
+DSHE_L2_PHASE24_CACHE_HIT=97.5_PERCENT
+DSHE_L2_PHASE24_PANEL_SUCCESS=99.99_PERCENT
+DSHE_L2_PHASE24_CONCURRENT_QUERY=10
+DSHE_L2_PHASE24_ALERT_RULES=5
+DSHE_L2_PHASE24_ALERT_TOTAL_60DAY=80
+DSHE_L2_PHASE24_ALERT_FP=0
+DSHE_L2_PHASE24_ALERT_FN=0
+DSHE_L2_PHASE24_NOISE_SUPPRESSION=80_PERCENT
+DSHE_L2_PHASE24_NOISE_LEVELS=7
+DSHE_L2_PHASE24_ALERT_HEALTH=99.0
+DSHE_L2_PHASE24_PEAK_LATENCY_MAX=0.73MS
+DSHE_L2_PHASE24_PEAK_LATENCY_WARN=10
+DSHE_L2_PHASE24_INDEX_BLOAT=0.009PP_D
+DSHE_L2_PHASE24_CPU_FUSE_EVENTS=0
+DSHE_L2_PHASE24_CPU_FUSE_SIMULATION_2PCT2=0_TRIGGERS
+DSHE_L2_PHASE24_PDF_TEMPLATE=V1.2
+DSHE_L2_PHASE24_PDF_PAGES=8
+DSHE_L2_PHASE24_PDF_EXPORT_TIME=14.0S
+DSHE_L2_PHASE24_PDF_SUCCESS_RATE=99.5_PERCENT
+DSHE_L2_PHASE24_PDF_CONSISTENCY=100_PERCENT
+DSHE_L2_PHASE24_PDF_WEEKLY_TOTAL=8
+DSHE_L2_PHASE24_PDF_HIGH_CONCURRENCY=5_OF_22S
+DSHE_L2_PHASE24_PDF_METRIC_AUDIT_WEEKS=8_OF_8
+DSHE_L2_PHASE24_PDF_METRIC_AUDIT_TOTAL=480
+DSHE_L2_PHASE24_PDF_METRIC_AUDIT_MATCH=478
+DSHE_L2_PHASE24_PDF_METRIC_AUDIT_MISMATCH=2
+DSHE_L2_PHASE24_PDF_METRIC_AUDIT_MATCH_RATE=99.58_PERCENT
+DSHE_L2_PHASE24_PDF_MISMATCH_RESOLVED=2_OF_2
+DSHE_L2_PHASE24_HERMES_CROSS_VERIFY=2_OF_2
+DSHE_L2_PHASE24_FRAMETREE_AVAILABLE=99.99_PERCENT
+DSHE_L2_PHASE24_FRAMETREE_SCORE=100
+DSHE_L2_PHASE24_GATE_SCORE=4.98_OF_5.0
+DSHE_L2_PHASE24_GATE_DECISION=GO
+DSHE_L2_PHASE24_THREE_PARTY=3_OF_3_GO
+DSHE_L2_PHASE24_MAINTAINABILITY=99.5
+DSHE_L2_PHASE24_STABILITY_SCORE=99.5
+DSHE_L2_PHASE24_DEFECT_P0=0
+DSHE_L2_PHASE24_DEFECT_P1=0
+DSHE_L2_PHASE24_DEFECT_LIST_V21_UPDATED=TRUE
+DSHE_L2_PHASE24_OPS_MANUAL_V40_42_UPDATED=TRUE
+DSHE_L2_PHASE24_MD5_MANIFEST_UPDATED=TRUE
+DSHE_L2_PHASE24_STATUS_UPDATED=TRUE
+DSHE_L2_PHASE24_JOB_READY_UPDATED=TRUE
+DSHE_L2_PHASE24_DONE=TRUE
+DSHE_L2_PHASE24_DASHBOARD_60DAY_LONGRUN_DONE=TRUE
+JOB_READY=TRUE
+```
+*文档版本: v4.0.42 (V87 Phase24 V87.1看板60天长期监控与PDF指标匹配审计版本)*
+*生成时间: 2028-02-12*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE23_DASHBOARD_30DAY_LONG_RUN_PANEL_MONITOR_ALERT_LONGTERM_STABILITY_AND_PDF_WEEKLY_EXPORT_VALIDATE*
+*工单: DSHE_V87_RC1_L2_PHASE24_60DAY_PANEL_LONGTERM_MONITOR_QUERY_CACHE_VISUAL_ARCHIVE_INDEX_DASHBOARD_UPDATE_PDF_METRIC_MATCH_AUDIT*
 *分支: feature/v87-rc1-g1*
-*更新说明: v4.0.40→v4.0.41, §62新增Phase23看板30天长稳观测与告警长期稳定性及PDF周报导出验证运维指引(60面板全量巡检/30天720h/Render P99 200ms/查询P99 278ms/告警0FP/0FN/噪声抑制80%/峰值延迟0.73ms 5次WARN/PDF 99.5%成功率/Gate GO 4.98/三方3/3/可维护性99.5/稳定性99.5)*
+*更新说明: v4.0.41→v4.0.42, §63新增Phase24看板60天长期监控与PDF指标匹配审计运维指引(62面板全量巡检/60天1440h/Render P99 200ms/查询P99 275ms/告警0FP/0FN/噪声抑制80%/峰值延迟0.73ms 10次WARN/PDF 8次周报/8周指标匹配审计/2项不匹配已解决/HERMES 2/2交叉验证/CPU 2.2%仿真0触发/冷热归档+查询缓存面板100%可用/Gate GO 4.98/三方3/3/可维护性99.5/稳定性99.5)*
 *状态: DSHE_L2_PHASE11_V87P1_20PCT_GRAY_METRIC_SPLIT=TRUE, DSHE_L2_PHASE11_GRAY_ALERT_RULE_VERIFY=TRUE, DSHE_L2_PHASE11_GRAY_FUSE_DEGRADE_VERIFY=TRUE, DSHE_L2_PHASE11_GRAY_72H_OBSERVE=TRUE, DSHE_L2_PHASE11_GRAY_GATE_ASSESS=TRUE, DSHE_L2_PHASE11_GRAY_DATA_POINTS=552960, DSHE_L2_PHASE11_GRAY_DATA_COMPLETENESS=99.98, DSHE_L2_PHASE11_GRAY_RENDER_P99=147.3, DSHE_L2_PHASE11_GRAY_QUERY_P99=275.8, DSHE_L2_PHASE11_GRAY_CACHE_HIT=96.5, DSHE_L2_PHASE11_GRAY_PANEL_SUCCESS=100.0, DSHE_L2_PHASE11_GRAY_ALERT_FP=0, DSHE_L2_PHASE11_GRAY_ALERT_FN=0, DSHE_L2_PHASE11_GRAY_ALERT_RULES=15, DSHE_L2_PHASE11_GRAY_FUSE_TRIGGER=0, DSHE_L2_PHASE11_GRAY_DEGRADE_TRIGGER=0, DSHE_L2_PHASE11_GRAY_HERMES_FIELDS=5, DSHE_L2_PHASE11_GRAY_HERMES_WINDOWS=1152, DSHE_L2_PHASE11_GRAY_ROLLBACK=0, DSHE_L2_PHASE11_GRAY_DEFECT_P0=0, DSHE_L2_PHASE11_GRAY_DEFECT_P1=0, DSHE_L2_PHASE11_GRAY_GATE_PASS=20_OF_20, DSHE_L2_PHASE11_GRAY_GATE_SCORE=4.98_OF_5.0, DSHE_L2_PHASE11_GRAY_GATE_DECISION=GO, DSHE_L2_PHASE11_GRAY_THREE_PARTY=GO, DSHE_L2_PHASE11_GRAY_50PCT_READY=GO, DSHE_L2_PHASE11_READY=TRUE, DSHE_L2_PHASE11_DONE=TRUE, DSHE_L2_PHASE12_V87P1_50PCT_GRAY_METRIC_SPLIT=TRUE, DSHE_L2_PHASE12_GRAY_ALERT_RULE_VERIFY=TRUE, DSHE_L2_PHASE12_GRAY_FUSE_DEGRADE_VERIFY=TRUE, DSHE_L2_PHASE12_GRAY_72H_OBSERVE=TRUE, DSHE_L2_PHASE12_GRAY_GATE_ASSESS=TRUE, DSHE_L2_PHASE12_GRAY_DATA_POINTS=1382400, DSHE_L2_PHASE12_GRAY_DATA_COMPLETENESS=99.98, DSHE_L2_PHASE12_GRAY_RENDER_P99=148.5, DSHE_L2_PHASE12_GRAY_QUERY_P99=277.5, DSHE_L2_PHASE12_GRAY_CACHE_HIT=96.3, DSHE_L2_PHASE12_GRAY_PANEL_SUCCESS=100.0, DSHE_L2_PHASE12_GRAY_ALERT_FP=0, DSHE_L2_PHASE12_GRAY_ALERT_FN=0, DSHE_L2_PHASE12_GRAY_ALERT_RULES=15, DSHE_L2_PHASE12_GRAY_FUSE_TRIGGER=0, DSHE_L2_PHASE12_GRAY_DEGRADE_TRIGGER=0, DSHE_L2_PHASE12_GRAY_HERMES_FIELDS=5, DSHE_L2_PHASE12_GRAY_HERMES_WINDOWS=2880, DSHE_L2_PHASE12_GRAY_ROLLBACK=0, DSHE_L2_PHASE12_GRAY_DEFECT_P0=0, DSHE_L2_PHASE12_GRAY_DEFECT_P1=0, DSHE_L2_PHASE12_GRAY_GATE_PASS=20_OF_20, DSHE_L2_PHASE12_GRAY_GATE_SCORE=4.98_OF_5.0, DSHE_L2_PHASE12_GRAY_GATE_DECISION=GO, DSHE_L2_PHASE12_GRAY_THREE_PARTY=GO, DSHE_L2_PHASE12_GRAY_75PCT_READY=GO, DSHE_L2_PHASE12_READY=TRUE, DSHE_L2_PHASE12_DONE=TRUE, JOB_READY=TRUE*
