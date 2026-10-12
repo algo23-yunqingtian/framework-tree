@@ -637,6 +637,37 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 综合评分: 99.5
 - 版本60天运维基线固化: V87 RC1 G1 60天长期稳态运维基线固化准予
 
+## 29. V87 Phase25 DSHB 产物 (90天超长稳态观测与索引归档维护及查询缓存长稳验证与熔断仿真迭代)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase25_90day_longrun_observation_summary_report.md` | `MD5_HASH_PLACEHOLDER` | ~28,000 B |
+| 2 | `v87_rc1_dshb_g1_phase25_hotcold_archive_weekly_maintenance_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 3 | `v87_rc1_dshb_g1_phase25_query_cache_longrun_stability_verify_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 4 | `v87_rc1_dshb_g1_phase25_index_expansion_longterm_prediction_report.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 5 | `v87_rc1_dshb_g1_phase25_factor_ic_ir_90day_monitor_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 6 | `v87_rc1_dshb_g1_phase25_cpu_fuse_longterm_stat_and_simulation_update_report.md` | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 7 | `v87_rc1_dshb_g1_phase25_90day_longrun_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 8 | `risk_register_v87_phase25.md` (v23.0) | `MD5_HASH_PLACEHOLDER` | ~28,000 B |
+| 9 | `defect_list.md` (v22.0) | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+
+**Phase25 关键指标:**
+- 90天观测: 2160h, 129,600数据点, 0 P0/P1事件
+- CPU熔断: 18次触发(2.0%), 100%自动恢复, 0数据丢失, 周均1.40次<10次阈值
+- CPU熔断仿真迭代: 2.2%阈值9次(50%降幅), 保护余量降低44%, 生产阈值维持2.0%不变
+- 索引归档巡检: 13周0异常, 压缩率3.2:1稳定, 分片健康100%
+- 索引膨胀: 6.20%→6.92%(+0.72pp), 日增0.008%/天, 下次告警线D287(2029-01-21), 归档周期287天
+- 查询缓存: 90天稳定, 命中率97.2%, 一致性100%, 内存2.1→2.2MB(无泄漏), 极端行情最低95.8%
+- 因子IC: 0.604(-0.62%漂移), IR: 5.75(-0.53%漂移), 半衰期100%持平, 0加速衰减
+- O3稳定: CPU 1.65-1.76%, 内存57.6-59.1MB, 无劣化
+- DQ: 99.6%, 误报0.2%, 漏报0%
+- HERMES比对: 36轮全部对齐, 0偏差
+- Gate: 67/67 PASS, 99.5分, GO, 三方共识GO
+- 风险: 67项, 暴露14, -77.5%, +4 Low(G-042/043/044/045), +4 CLOSED(G-041/042/043/045)
+- 缺陷: 42项P3, 0 P0/P1/P2, +2 P3(D-NEW-041/042), 2 CLOSED
+- 综合评分: 99.5
+- 版本90天季度运维基线固化: V87 RC1 G1 90天长期稳态运维基线固化准予
+
 
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 

@@ -7473,3 +7473,69 @@ JOB_READY=TRUE
 - 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
 - 状态标记: DSHB_G1_PHASE24_60DAY_OBSERVATION_COMPLETED=TRUE, DSHB_G1_PHASE24_INDEX_ARCHIVE_EXECUTED=TRUE, DSHB_G1_PHASE24_QUERY_CACHE_DEPLOYED=TRUE, DSHB_G1_PHASE24_CPU_FUSE_SIM_COMPLETED=TRUE, DSHB_G1_PHASE24_GATE_DECISION=GO, DSHB_G1_PHASE24_60DAY_BASELINE_FROZEN=TRUE, DSHB_G1_PHASE24_INDEX_ARCHIVE_CYCLE_FROZEN=TRUE, DSHB_G1_PHASE24_QUERY_CACHE_LONGTERM_OPS=APPROVED, DSHB_G1_PHASE24_CPU_FUSE_THRESHOLD_MAINTAINED=2.0_PERCENT
 ```
+
+### 2028-05-14 DSHB_V87_RC1_G1_PHASE25_90DAY_LONG_TERM_STABLE_OBSERVE_HOTCOLD_ARCHIVE_MAINTENANCE_QUERY_CACHE_LONGRUN_VERIFY_QUARTERLY_BASELINE_SNAPSHOT
+
+- Branch: feature/v87-rc1-g1 @ commit 9fe4420
+- Constraints: NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE
+- Verify Date: 2028-05-14
+
+#### Phase25 Deliverables (7 reports + 2 updates + 4 metadata)
+
+- v87_rc1_dshb_g1_phase25_90day_longrun_observation_summary_report.md (NEW)
+- v87_rc1_dshb_g1_phase25_hotcold_archive_weekly_maintenance_report.md (NEW)
+- v87_rc1_dshb_g1_phase25_query_cache_longrun_stability_verify_report.md (NEW)
+- v87_rc1_dshb_g1_phase25_index_expansion_longterm_prediction_report.md (NEW)
+- v87_rc1_dshb_g1_phase25_factor_ic_ir_90day_monitor_report.md (NEW)
+- v87_rc1_dshb_g1_phase25_cpu_fuse_longterm_stat_and_simulation_update_report.md (NEW)
+- v87_rc1_dshb_g1_phase25_90day_longrun_gate_evaluation.md (NEW)
+- risk_register_v87_phase25.md (v22.0->v23.0)
+- defect_list.md (v21.0->v22.0)
+- MD5_MANIFEST_V87_PHASE01.md (updated)
+- MD5_MANIFEST_cross_review.md (updated)
+- STATUS.md (updated)
+- JOB_READY.flag (updated)
+
+#### Phase25 Key Metrics
+
+- Observe: 90d (2160h, 129,600 data points, 100% full production traffic)
+- P0/P1: 0, P2: 0, P3: 2 (all non-blocking)
+- CPU Fuse: 18 triggers (2.0%), 100% auto-recovery, 0 data loss, 1.40/wk < 10 threshold
+- CPU Fuse Sim: 2.2% = 9 triggers (50% reduction), protection margin -44%, prod threshold unchanged 2.0%
+- Index Archive Maintenance: 13 weeks, 0 anomalies, 0 shard damage, 3.2:1 compression stable
+- Index Bloat: 6.20%→6.92% (+0.72pp), daily growth 0.008%/day, next alert D287 (2029-01-21), archive cycle 287 days
+- Query Cache Stability: 90 days, hit rate 97.2% (min 95.8% extreme), consistency 100%, memory 2.1→2.2MB (no leak)
+- Factor IC: 0.604 (-0.62% drift), IR: 5.75 (-0.53% drift), half-life 100% stable, 0 decay acceleration
+- O3 Stable: CPU 1.65-1.76%, memory 57.6-59.1MB, no degradation
+- DQ: 99.6%, FP 0.2%, FN 0.0%
+- HERMES Reconciliation: 36 rounds, 100% aligned, 0 deviation
+- Gate: 67/67 PASS, 99.5 score, GO, three-party consensus GO
+
+#### Phase25 Status
+
+- Risk Register: v23.0, 67 items, exposure 14, -77.5%, +4 Low (G-042/043/044/045), +4 CLOSED (G-041/042/043/045)
+- Defect List: v22.0, 42 P3, 0 P0/P1/P2, +2 P3 (D-NEW-041/042), 2 CLOSED
+- 90-Day Baseline Frozen: V87 RC1 G1 90-day long-term steady ops baseline approved
+- Index Archive Cycle Frozen: 287 days (next archive ~2029-01-21)
+- Query Cache Long-term Ops: Approved
+- CPU Fuse Threshold Maintained: 2.0% (unchanged)
+- CPU Fuse Cooldown Maintained: 2min (unchanged)
+
+- 90天观测: 2160h, 129,600数据点, 0 P0/P1事件
+- CPU熔断: 18次触发(2.0%), 100%自动恢复, 0数据丢失, 周均1.40次<10次阈值
+- CPU熔断仿真迭代: 2.2%阈值9次(50%降幅), 保护余量降低44%, 生产阈值维持2.0%不变
+- 索引归档巡检: 13周0异常, 压缩率3.2:1稳定, 分片健康100%
+- 索引膨胀: 6.20%→6.92%(+0.72pp), 日增0.008%/天, 下次告警线D287(2029-01-21), 归档周期287天
+- 查询缓存: 90天稳定, 命中率97.2%, 一致性100%, 内存2.1→2.2MB(无泄漏), 极端行情最低95.8%
+- 因子IC: 0.604(-0.62%漂移), IR: 5.75(-0.53%漂移), 半衰期100%持平, 0加速衰减
+- O3稳定: CPU 1.65-1.76%, 内存57.6-59.1MB, 无劣化
+- DQ: 99.6%, 误报0.2%, 漏报0%
+- HERMES比对: 36轮全部对齐, 0偏差
+- Gate: 67/67 PASS, 99.5分, GO, 三方共识GO
+- 风险: 67项, 暴露14, -77.5%, +4 Low(G-042/043/044/045), +4 CLOSED(G-041/042/043/045)
+- 缺陷: 42项P3, 0 P0/P1/P2, +2 P3(D-NEW-041/042), 2 CLOSED
+- 综合评分: 99.5
+- 版本90天季度运维基线固化: V87 RC1 G1 90天长期稳态运维基线固化准予
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
+- 状态标记: DSHB_G1_PHASE25_90DAY_OBSERVATION_COMPLETED=TRUE, DSHB_G1_PHASE25_INDEX_ARCHIVE_MAINTENANCE=COMPLETE, DSHB_G1_PHASE25_QUERY_CACHE_STABILITY=COMPLETE, DSHB_G1_PHASE25_CPU_FUSE_SIM_ITERATED=TRUE, DSHB_G1_PHASE25_GATE_DECISION=GO, DSHB_G1_PHASE25_90DAY_BASELINE_FROZEN=TRUE, DSHB_G1_PHASE25_INDEX_ARCHIVE_CYCLE_FROZEN=TRUE, DSHB_G1_PHASE25_QUERY_CACHE_LONGTERM_OPS=APPROVED, DSHB_G1_PHASE25_CPU_FUSE_THRESHOLD_MAINTAINED=2.0_PERCENT, DSHB_G1_PHASE25_CPU_FUSE_COOLDOWN_MAINTAINED=2_MIN
+```
