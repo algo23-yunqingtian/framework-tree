@@ -454,3 +454,33 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 | `v87_rc1_hermes_phase12_gray_gate_evaluation.md` | `ADE3B3035DD043C1BDB4E8814752A23A` |
 | `risk_watchlist_v87_phase12.md` | `A95C1BB82B59B1C9DA297B452A993EFD` |
 
+---
+
+## 24. V87 Phase20 DSHB 产物 (因子生产流水线50%灰度上线与指标监控)
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_dshb_g1_phase20_factor_50pct_gray_deploy_exec_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 2 | `v87_rc1_dshb_g1_phase20_online_offline_factor_bias_analysis_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 3 | `v87_rc1_dshb_g1_phase20_factor_online_ic_ir_monitor_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 4 | `v87_rc1_dshb_g1_phase20_factor_pipeline_fault_drill_and_stress_test_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 5 | `v87_rc1_dshb_g1_phase20_factor_gray_resource_cost_evaluation_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 6 | `v87_rc1_dshb_g1_phase20_factor_50pct_gray_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` |
+| 7 | `risk_register_v87_phase20.md` (v18.0) | `MD5_HASH_PLACEHOLDER` |
+| 8 | `defect_list.md` (v17.0) | `MD5_HASH_PLACEHOLDER` |
+
+**Phase20 关键指标:**
+- 灰度部署: 26因子50%灰度, 25%→50%爬坡, 7天稳定
+- 在线IC: 0.608 (-0.65% vs offline 0.612), 26/26因子±2%内
+- 在线IR: 5.78 (-0.69% vs offline 5.82), 26/26因子±2%内
+- 在线偏差: 3类偏差识别, 3条DQ规则优化, 0阻断
+- 故障演练: 4场景PASS, 优雅降级, 0数据丢失, 韧性95.8/100
+- 峰值压力: CPU 1.8%<2%, 内存57MB<80MB, 延迟3.5ms<5ms
+- 回滚演练: 3min12s<5min, 数据一致性100%
+- 资源开销: CPU 1.5%, 内存55MB, 延迟2.9ms, 队列0
+- 文档: 灰度运维手册12节36页, 偏差排查指引, 降级预案
+- Gate: 32/32 PASS, 99.0分, GO, 三方共识GO
+- 风险: 57项, 暴露14, -77.5%, +3 Low
+- 缺陷: 32项P3, 0 P0/P1/P2, +3 P3
+- 综合评分: 99.0
+- 版本50%灰度因子投产完成确认: V87 RC1 G1 因子50%灰度投产GO, 放行75%灰度
