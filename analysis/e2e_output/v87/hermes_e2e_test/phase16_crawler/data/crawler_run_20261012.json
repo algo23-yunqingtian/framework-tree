@@ -1,0 +1,148 @@
+{
+  "crawl_date": "2026-10-12",
+  "sources": {
+    "EASTMONEY": {
+      "status": "OK",
+      "detail": {
+        "NI": {
+          "secid": "113.NI2612",
+          "status": "RATE_LIMITED",
+          "n": 0,
+          "md5": null,
+          "retries": null,
+          "err": "Expecting value: line 1 column 1 (char 0)"
+        },
+        "CU": {
+          "secid": "116.CU2612",
+          "status": "RATE_LIMITED",
+          "n": 0,
+          "md5": null,
+          "retries": null,
+          "err": "Expecting value: line 1 column 1 (char 0)"
+        },
+        "AL": {
+          "secid": "116.AL2612",
+          "status": "RATE_LIMITED",
+          "n": 0,
+          "md5": null,
+          "retries": null,
+          "err": "Expecting value: line 1 column 1 (char 0)"
+        },
+        "PB": {
+          "secid": "113.PB2612",
+          "status": "RATE_LIMITED",
+          "n": 0,
+          "md5": null,
+          "retries": null,
+          "err": "Expecting value: line 1 column 1 (char 0)"
+        },
+        "ZN": {
+          "secid": "113.ZN2612",
+          "status": "RATE_LIMITED",
+          "n": 0,
+          "md5": null,
+          "retries": null,
+          "err": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "note": "带Referer+UA实测200, 真实OHLC可取"
+    },
+    "LME": {
+      "status": "OK",
+      "db": "lme_base_data.db",
+      "size_mb": 72.1,
+      "tables": 4,
+      "rows_sample": {
+        "lme_base_time_series": 298456,
+        "email_to_base_mapping": 448,
+        "import_log": 97,
+        "sqlite_sequence": 1
+      },
+      "md5_head": "a9f145fb"
+    },
+    "SHFE": {
+      "status": "DEGRADED",
+      "reachable": 1,
+      "total": 4,
+      "detail": [
+        {
+          "url": "/(首页)",
+          "code": 404
+        },
+        {
+          "url": "/(首页)",
+          "code": 404
+        },
+        {
+          "url": "/(首页)",
+          "code": 404
+        },
+        {
+          "url": "/(首页)",
+          "code": 200
+        }
+      ],
+      "note": "SHFE公开端点404=反爬或端点迁移, 本阶段降级, 三方对账以LME+东财为主基准"
+    },
+    "MYSTEELEL": {
+      "status": "RESERVED_NO_DEV",
+      "note": "付费数据源, 本阶段仅预留字段, 无凭据相关逻辑, 不开发抓取"
+    }
+  },
+  "metric_map": {
+    "NI_SHFE": {
+      "variety": "沪镍主力",
+      "internal_metric": "沪镍加权结算价",
+      "dshb_caliber": "SHFE NI月加权结算价(元/吨)",
+      "east_field": "push2 kline f53(收盘价)",
+      "lme_field": "lme_3m镍结算(美元/吨)",
+      "shfe_field": "shfe_daily.kx(404降级)",
+      "caliber_diff": "合约:东财主力连续vs LME 3个月vs SHFE单月; 结算:收盘vs结算价; 币种:CNYvs USD; 时区:CN本地"
+    },
+    "CU_SHFE": {
+      "variety": "沪铜主力",
+      "internal_metric": "沪铜加权结算价",
+      "dshb_caliber": "SHFE CU月加权结算价(元/吨)",
+      "east_field": "push2 kline f53",
+      "lme_field": "lme_3m铜结算(美元/吨)",
+      "shfe_field": "shfe_daily.kx(404降级)",
+      "caliber_diff": "含进出口窗口口径差异, 铜LME定价主导, 内外盘联动强"
+    },
+    "AL_SHFE": {
+      "variety": "沪铝主力",
+      "internal_metric": "沪铝加权结算价",
+      "dshb_caliber": "SHFE AL月加权结算价(元/吨)",
+      "east_field": "push2 kline f53",
+      "lme_field": "lme_3m铝结算(美元/吨)",
+      "shfe_field": "shfe_daily.kx(404降级)",
+      "caliber_diff": "口径同镍, 铝LME升水结构影响内外价差"
+    },
+    "PB_LME": {
+      "variety": "LME铅3M",
+      "internal_metric": "LME-PB3M结算价",
+      "dshb_caliber": "LME铅3个月结算价(美元/吨)",
+      "east_field": "-",
+      "lme_field": "lme_3m铅结算",
+      "shfe_field": "-",
+      "caliber_diff": "仅LME源(本机彭博缓存), 无东财期货对应, 三方对账仅双源"
+    },
+    "ZN_LME": {
+      "variety": "LME锌3M",
+      "internal_metric": "LME-ZN3M结算价",
+      "dshb_caliber": "LME锌3个月结算价(美元/吨)",
+      "east_field": "-",
+      "lme_field": "lme_3m锌结算",
+      "shfe_field": "-",
+      "caliber_diff": "仅LME源, 锌沪伦比价需汇率换算"
+    },
+    "MYSTEELEL": {
+      "variety": "电解铜现货",
+      "internal_metric": "Mysteel现货均价",
+      "dshb_caliber": "Mysteel电解铜现货均价(元/吨)",
+      "east_field": "-",
+      "lme_field": "-",
+      "shfe_field": "RESERVED_NO_DEV",
+      "caliber_diff": "★Mysteel付费源, 本阶段仅预留字段, 不开发抓取, 无凭据相关逻辑"
+    }
+  }
+}

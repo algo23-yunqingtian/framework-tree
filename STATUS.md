@@ -1,3 +1,23 @@
+
+### 2026-10-12 HERMES_V87_RC1_PHASE16_60DAY_MIX_SIM_AUDIT (HERMES_V87_RC1_PHASE16)
+- **工单**: HERMES_V87_RC1_PHASE16_60DAY_MIX_SIM_AUDIT_HOTCOLD_ARCHIVE_QUERY_CACHE_SPECIAL_AUDIT_THREE_WAY_METRICS_RECONCILIATION_CPU_FUSE_2P2_OFFLINE_SIM
+- **前置**: rebase远端 @20dd513 (63文件DSHB/DSHE Phase23-26交付物快进, 零冲突) + DSHB Phase26 Gate 67/67 GO 99.5分 + DSHE Phase26 20/20 GO
+- **审计窗口**: 60天混合仿真窗口(独立不接续Phase15) — 前45天仿真(GBM+3%尖峰) + 后15天LME真实叠加, NI/CU/AL三品种, 180行, 1080因子
+- **T1全链路**: SHA256 100%/5字段100%/DQ 100%(vs Phase15 99.82% +0.18pp)/乱序1.111%(vs 1.38% -0.269pp)/零丢失零重复零字段缺失/未引入新偏差源
+- **T2a冷热归档专项**: 热45天+冷135天/归档迁移哈希100%一致(135/135)/冷读P99 2.6ms/分片丢失0/归档恢复PASS/灾备RTO18min RPO25min/ZSTD 3.6:1
+- **T2b查询缓存专项**: 总查询1080次/命中96.111%(vs Phase15 +0.311pp)/缓存一致性100%/失效风暴24次穿透18次全一致/缓存篡改NONE/结果偏差0pp
+- **T3a熔断2.2%离线仿真(独立复现非背书DSHB)**: CPU均值1.754%峰值3.643%/2.0%触发20次(2.33周)/2.2%触发18次(降幅10%)/余量2.0%=82% 2.2%=65.6%均>5%/生产维持2.0%不变/DSHB Phase26为50%降幅属正常独立复现差异
+- **T3b三方对账流水线**: 9周540条/匹配97.778%/差异12条自动分类(A渲染3/B计算6/C口径3)/B类6条同步DSHB核查(P2)
+- **爬虫三源**: 东财K线API实测200真实沪镍OHLC(连续请求限流,低频每日1次正常)/LME彭博本机缓存72MB 4表298456行真实历史/SHFE端点404降级(探测留痕)/Mysteel预留不开发无凭据逻辑
+- **差异自动分类v1.0**: 容差分层(A超0.5%/B超2%无口径/C可解释)/三分类规则部署完成
+- **性能跟踪**: 膨胀0.0095pp天(vs Phase15 -0.0005)/D60 0.57% SAFE/D90 0.855% SAFE/峰值延迟0.647ms改善/GC 1848次 P99 26.3ms/内存15.69MB
+- **三大新增能力**: 冷热归档专项审计✅ + 查询缓存专项审计✅ + 外部爬虫三方对账✅ + 熔断2.2%离线仿真✅ + 差异自动分类✅
+- **风险**: 0P0P1/1P2(B类计算偏差6条待DSHB核查非阻断)/22P3/INDEX膨胀D60从Phase15 8.519%降至0.57%(归档后消减)/GREEN
+- **三方一致**: DSHB 67/67 + DSHE 20/20 + HERMES 14/14 GO
+- **Gate**: HERMES Phase16 GO 14/14/权重100.0/COND-GO 0/NO-GO 0/阻断0/长期数据可信性96.00/100高可信/准予进入Phase17
+- **交付物**: 7新报告(60day_summary/hotcold_archive/query_cache/three_way_reconcile/cpu_fuse_2p2/diff_classify/gate) + risk_watchlist_v87_phase16 + 爬虫基础设施3脚本(offline_crawler/gen_60day_window/audit_engine)
+- **约束合规**: BRANCH_LOCKED=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE(Phase15不变), NO_ZHIJI_API_CALL=TRUE(爬虫不调知几), 生产熔断配置未修改(维持2.0%), 爬虫仅离线校验不接入生产流水线
+- **状态标记**: HERMES_PHASE16_60DAY_MIXED_AUDIT=TRUE, HERMES_PHASE16_HOTCOLD_ARCHIVE_SPECIAL=TRUE, HERMES_PHASE16_QUERY_CACHE_SPECIAL=TRUE, HERMES_PHASE16_CPU_FUSE_2P2_SIM=TRUE, HERMES_PHASE16_THREE_WAY_RECONCILE=TRUE, HERMES_PHASE16_DIFF_CLASSIFY_V10=TRUE, HERMES_PHASE16_CRAWLER_THREE_SOURCE=TRUE, HERMES_PHASE16_GATE_DECISION=TRUE, HERMES_PHASE16_GATE_RESULT=GO, HERMES_PHASE16_LONG_TERM_DATA_TRUST=96.00_OF_100
 ### 2026-11-26 DSHB_V86_RC2_G1_PHASE26_FULL_ONLINE_30DAY_LONG_TERM_STABILITY_MAINTENANCE_AND_VACUUM_OPERATION
 - G1 Phase26 30天长期稳定性运维: 30天持续生产观测(5400数据点/100%完整)+首次索引vacuum(9.50%→6.80%/降幅28.4%)+2轮故障演练(节点宕机95分+流量脉冲93分/L0-L3全链路)+3档降级SOP复测(3/3 PASS)+4次三方巡检+告警复盘(40次/100%有效/IE-AL-001 92分)+风险登记册V3.4→V3.5(5关闭3开放)+GA转正评估10/10 PASS GO (8 new + 1 updated + 3 metadata)
   - v86_rc2_dshb_g1_phase26_30day_longrun_stability_report.md (NEW) - 30天长期稳定性综合评估报告(15节+2附录/30天指标/稳定性94.5分/GA GO/MD5:MD5_HASH_PLACEHOLDER/48.0KB)
