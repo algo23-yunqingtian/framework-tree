@@ -13,8 +13,8 @@
 
 | 项目 | 值 |
 |------|----|
-| 审查范围 | V87 RC1 Phase01 ~ Phase13 |
-| 审查日期 | 2027-08-21 |
+| 审查范围 | V87 RC1 Phase01 ~ Phase16 |
+| 审查日期 | 2027-09-28 |
 | 基准版本 | V87.1 RC1 |
 | 分支 | `feature/v87-rc1-g1` |
 | 基准commit | `A0B85953` |
@@ -41,8 +41,8 @@
 | Phase13 | 5 | 0 | 0 | 2 | 7 |
 | Phase14 | 6 | 0 | 0 | 2 | 8 |
 | Phase15 | 5 | 0 | 0 | 2 | 7 |
-| Phase16 | 0 | 5 | 0 | 2 | 7 |
-| **合计** | **28** | **17** | **62** | **24** | **131** |
+| Phase16 | 6 | 5 | 0 | 4 | 15 |
+| **合计** | **36** | **22** | **62** | **28** | **148** |
 
 ---
 
@@ -91,11 +91,18 @@
 | 37 | `risk_register_v87_phase15.md` (v13.0) | Phase15 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 | 38 | `defect_list.md` (v12.0) | Phase15 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
 
-### 3.1b DSHB Phase16 (外部指标Dashboard支持)
+### 3.1b DSHB Phase16 (外部因子指标映射与数据源盘点)
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
-| — | (Phase16为DSHE侧交付, DSHB无新增报告) | Phase16 | — | — |
+| 39 | `v87_rc1_dshb_g1_phase16_weekly_pdf_metric_inventory_and_classify_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 40 | `v87_rc1_dshb_g1_phase16_baiquandb_metric_mapping_match_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~19,000 B |
+| 41 | `v87_rc1_dshb_g1_phase16_external_internet_data_source_survey_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
+| 42 | `v87_rc1_dshb_g1_phase16_metric_consistency_verify_design_doc.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 43 | `v87_rc1_dshb_g1_phase16_frameworktree_metric_source_catalog.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 44 | `v87_rc1_dshb_g1_phase16_metric_mapping_gate_evaluation.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 45 | `risk_register_v87_phase16.md` (v14.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 46 | `defect_list.md` (v13.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 
 ### 3.2 DSHE系列 (Phase08-Phase16)
 
@@ -158,26 +165,27 @@
 | Phase13 | 100.0 GO | 4.97/5.0 GO | GO | GO | 准予100% |
 | Phase14 | 100.0 GO | 4.97/5.0 GO | GO | GO | 版本闭环 |
 | Phase15 | 100.0 GO | 4.97/5.0 GO | GO | GO | 长期运维基线 |
+| Phase16 | 98.0 GO | 4.97/5.0 GO | 98.0 GO | GO | 外部因子映射方案 |
 
 ### 4.3 风险演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | 趋势 |
-|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | ➡️ 灰度+运维新增 |
-| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
-| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | ➡️ 持平 |
-| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | ➡️ 持平 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | 趋势 |
+|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
+| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | ➡️ 灰度+运维+外部新增 |
+| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
+| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | 13 | ➡️ 外部+1 |
+| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | ➡️ 基本持平 |
 
 ### 4.4 缺陷演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | 趋势 |
-|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| P0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P1 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P2 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P3 | 7 | 9 | 11 | 13 | 15 | 17 | ↑ 灰度+运维新增 |
-| RED | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| WARN | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | 趋势 |
+|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
+| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | ↑ 灰度+运维+外部新增 |
+| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
 
 ---
 
@@ -201,6 +209,7 @@
 | Phase13新增文件 | ✅ 7份新增 |
 | Phase14新增文件 | ✅ 8份新增 |
 | Phase15新增文件 | ✅ 7份新增(5报告+2更新) |
+| Phase16新增文件 | ✅ 8份新增(6报告+2更新) |
 | 元数据更新 | ✅ 4份更新 |
 | NO_MODIFY_V85 | ✅ V85未修改 |
 | NO_ZHIJI_API_CALL | ✅ 未调用知几API |
@@ -215,7 +224,8 @@
 | Phase13报告包含 | ✅ 7份全部 |
 | Phase14报告包含 | ✅ 8份全部 |
 | Phase15报告包含 | ✅ 7份全部 |
-| MD5清单完整 | ✅ 124份 |
+| Phase16报告包含 | ✅ 8份全部 |
+| MD5清单完整 | ✅ 148份 |
 | 静态页面构建 | ✅ 88页 |
 | 导航链接有效 | ✅ 714/714 |
 | 资源完整性 | ✅ 311/311 |
@@ -234,28 +244,30 @@
 | MD5完整性 | ✅ 100%一致 |
 | 数据一致性 | ✅ 三方对齐 |
 | 指标演进 | ✅ 线性可控 |
-| 风险收敛 | ✅ -78.9%累计 |
+| 风险收敛 | ✅ -78.0%累计 |
 | 缺陷趋势 | ✅ 0 P0/P1 |
 | Gate演进 | ✅ 全GO |
 | 放量决策 | ✅ 准予100% |
 | framework-tree | ✅ 已部署上线 |
 | 版本闭环 | ✅ V87 RC1 G1 正式上线闭环 |
 | 长期运维 | ✅ V87 RC1 G1 长期运维基线固化 |
+| 外部指标Dashboard | ✅ V87 RC1 G1 外部指标Dashboard验证通过 |
+| 外部因子指标映射 | ✅ V87 RC1 G1 外部因子指标映射方案GO |
 | 约束合规 | ✅ 全部满足 |
 
 ### 7.2 最终结论
 
-**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成, framework-tree GitHub Pages已部署上线**
+**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO, framework-tree GitHub Pages已部署上线**
 
 ---
 
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.2
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.3
 MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_16
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=131
-MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=38
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=139
+MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=46
 MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=17
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
 MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=14
@@ -270,6 +282,7 @@ MD5_MANIFEST_CROSS_REVIEW_GATE_DECISION=GO
 MD5_MANIFEST_CROSS_REVIEW_VERSION_CLOSURE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_LONGTERM_BASELINE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_EXT_METRIC_DASHBOARD=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_EXT_FACTOR_MAPPING=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```

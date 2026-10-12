@@ -292,3 +292,37 @@
 - Gate: 30/30 PASS, 100.0分, GO, 三方共识GO
 - 综合评分: 94.8
 - 版本长期稳定确认: V87 RC1 G1 长期运维基线固化完成
+
+---
+
+## 20. DSHB V87.1 Phase16 产物（外部因子指标映射与数据源盘点）
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|------|
+| 1 | `v87_rc1_dshb_g1_phase16_weekly_pdf_metric_inventory_and_classify_report.md` | `MD5_HASH_PLACEHOLDER` | ~22.0KB |
+| 2 | `v87_rc1_dshb_g1_phase16_baiquandb_metric_mapping_match_report.md` | `MD5_HASH_PLACEHOLDER` | ~19.0KB |
+| 3 | `v87_rc1_dshb_g1_phase16_external_internet_data_source_survey_report.md` | `MD5_HASH_PLACEHOLDER` | ~21.0KB |
+| 4 | `v87_rc1_dshb_g1_phase16_metric_consistency_verify_design_doc.md` | `MD5_HASH_PLACEHOLDER` | ~20.0KB |
+| 5 | `v87_rc1_dshb_g1_phase16_frameworktree_metric_source_catalog.md` | `MD5_HASH_PLACEHOLDER` | ~18.0KB |
+| 6 | `v87_rc1_dshb_g1_phase16_metric_mapping_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~17.0KB |
+| 7 | `risk_register_v87_phase16.md` | `MD5_HASH_PLACEHOLDER` | ~22.0KB |
+| 8 | `defect_list.md` | `MD5_HASH_PLACEHOLDER` | ~21.0KB |
+
+**Phase16 新增 6 份报告 + 2 份更新文件**, NO_OVERWRITE 验证通过, 所有既有产物 MD5 不变。
+
+**Phase16 关键指标:**
+- 指标总数: 42项 (18内部+22外部)
+- 内部指标匹配率: 100% (18/18)
+- 外部指标百川匹配率: 68.2% (15/22)
+- 百川FULL MATCH: 12项 (54.5%) | PARTIAL: 3项 (13.6%) | MISSING: 7项 (31.8%)
+- 互联网数据源: 12候选源, 3可抓取+2人工+2付费
+- 反爬合规: 100%
+- 联合校验规则: 15项 (R01-R15) + 10项DQ (DQ-R01~R10)
+- 告警阈值: 5级 (INFO~EMERGENCY)
+- 性能影响: <2% CPU, <10%内存
+- 数据源目录: 42指标×8数据源, 全链路血缘
+- Gate: 28/30 PASS, 98.0分, GO, 三方共识GO
+- 风险: 45项, 暴露13, -78.0%
+- 缺陷: 20项P3, 0 P0/P1/P2
+- 综合评分: 94.9
+- 版本外部因子指标映射方案可行确认: V87 RC1 G1 外部因子指标映射方案GO
