@@ -531,3 +531,16 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 缺陷: 35项P3, 0 P0/P1/P2, +3 P3
 - 综合评分: 99.0
 - 版本75%灰度因子投产完成确认: V87 RC1 G1 因子75%灰度投产GO, 放行100%全量发布
+
+## HERMES Phase14 - V87.1 100% Full Traffic Audit + Peak Latency Optimize + Long-term Baseline
+
+| File | MD5 |
+|------|-----|
+| `v87_rc1_hermes_phase14_100pct_full_traffic_audit_summary.md` | `25EAA6043C08BB7DFBC4E27C07D99E4A` |
+| `v87_rc1_hermes_phase14_full_window_stat.md` | `E8FC56E8AE0593589C0315AE91011122` |
+| `v87_rc1_hermes_phase14_full_index_exp_check.md` | `9CA23025389083A76C63B733461E8547` |
+| `v87_rc1_hermes_phase14_factor_consistency_verify_report.md` | `DA7FE29841366E74419F7481D1D4B60F` |
+| `v87_rc1_hermes_phase14_peak_latency_optimize_verify_report.md` | `4170CAF33CDBA6FE0FB6E78D11E72B48` |
+| `v87_rc1_hermes_phase14_full_release_gate_evaluation.md` | `CD49A675CB4EA482A2119353BDB53314` |
+| `risk_watchlist_v87_phase14.md` | `8A49E40257DE059CCD7F4AEC05B974F8` |
+
