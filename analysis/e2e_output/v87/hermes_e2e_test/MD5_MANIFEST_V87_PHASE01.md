@@ -442,3 +442,15 @@ PHASE11_MD5_ALL_VERIFIED=TRUE
 PHASE11_GATE_DECISION=GO
 PHASE11_SCALE_UP_DECISION=50_PERCENT
 PHASE11_THREE_WAY_CONSISTENT=TRUE
+
+## HERMES Phase12 - V87.1 50% Gray Audit + Factor Integrity
+
+| File | MD5 |
+|------|-----|
+| `v87_rc1_hermes_phase12_50pct_gray_audit_summary.md` | `CE1F164C0F3B37412563943D9A5AF4D3` |
+| `v87_rc1_hermes_phase12_gray_window_stat.md` | `78623F78C0A7E7924E503DBCA9E964EF` |
+| `v87_rc1_hermes_phase12_gray_index_exp_check.md` | `D336F86D5B686AEB936C587E62841CB0` |
+| `v87_rc1_hermes_phase12_factor_integrity_verify_report.md` | `A6CE21E5318461447491CE645D801B9F` |
+| `v87_rc1_hermes_phase12_gray_gate_evaluation.md` | `ADE3B3035DD043C1BDB4E8814752A23A` |
+| `risk_watchlist_v87_phase12.md` | `A95C1BB82B59B1C9DA297B452A993EFD` |
+
