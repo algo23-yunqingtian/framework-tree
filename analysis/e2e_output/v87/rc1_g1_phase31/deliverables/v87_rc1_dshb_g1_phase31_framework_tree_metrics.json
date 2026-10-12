@@ -1,0 +1,847 @@
+{
+  "$schema": "framework_tree_metrics_v1",
+  "tree_version": "1.0",
+  "generated_at": "2028-07-17T21:00:00Z",
+  "project": "DSHB V87 RC1 G1 Phase31",
+  "branch": "feature/v87-rc1-g1",
+  "base_commit": "05f27f5",
+  "total_metrics": 128,
+  "matched_metrics": 86,
+  "partial_metrics": 24,
+  "missing_metrics": 18,
+  "node_count": 43,
+  "chart_config_count": 35,
+  "constraints": {
+    "NO_ZHIJI_API_CALL": true,
+    "NO_MODIFY_V85": true,
+    "NO_OVERWRITE": true,
+    "BRANCH_LOCKED": true,
+    "CPU_FUSE_THRESHOLD": "2.0%"
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "name": "DSHB V87 RC1 G1 全量指标体系",
+      "type": "root",
+      "children": ["price", "inventory", "supply_demand", "cost_profit", "import_export", "technical", "macro_overseas"]
+    },
+    {
+      "id": "price",
+      "name": "价格结构",
+      "type": "category",
+      "parent": "root",
+      "metrics": [],
+      "chart_config": {
+        "type": "line",
+        "title": "价格趋势总览",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "元/吨"
+      },
+      "children": ["cu_price", "al_price", "ni_price", "pb_price", "zn_price"]
+    },
+    {
+      "id": "cu_price",
+      "name": "铜价格",
+      "type": "variety",
+      "parent": "price",
+      "variety": "CU",
+      "metrics": [
+        {"id": "CU_SHFE_spot", "name": "CU现货价格", "factor_id": "F-001", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "CU_SHFE_futures", "name": "CU期货主力合约价格", "factor_id": "F-001", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "CU_spot_futures_spread", "name": "CU现货-期货价差", "factor_id": "F-001", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "CU_3M_spread", "name": "CU三个月价差", "factor_id": "F-001", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "CU现货价格与期货价格",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "元/吨",
+        "lines": ["现货价格", "期货主力合约价格", "现货-期货价差", "三个月价差"],
+        "colors": ["#1890ff", "#52c41a", "#faad14", "#ff7a45"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "al_price",
+      "name": "铝价格",
+      "type": "variety",
+      "parent": "price",
+      "variety": "AL",
+      "metrics": [
+        {"id": "AL_SHFE_spot", "name": "AL现货价格", "factor_id": "F-007", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "AL_SHFE_futures", "name": "AL期货主力合约价格", "factor_id": "F-007", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "AL_spot_futures_spread", "name": "AL现货-期货价差", "factor_id": "F-007", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "AL_3M_spread", "name": "AL三个月价差", "factor_id": "F-007", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "AL现货价格与期货价格",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "元/吨",
+        "lines": ["现货价格", "期货主力合约价格", "现货-期货价差", "三个月价差"],
+        "colors": ["#1890ff", "#52c41a", "#faad14", "#ff7a45"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "ni_price",
+      "name": "镍价格",
+      "type": "variety",
+      "parent": "price",
+      "variety": "NI",
+      "metrics": [
+        {"id": "NI_SHFE_spot", "name": "NI现货价格", "factor_id": "F-013", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "NI_SHFE_futures", "name": "NI期货主力合约价格", "factor_id": "F-013", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "NI_spot_futures_spread", "name": "NI现货-期货价差", "factor_id": "F-013", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "NI_3M_spread", "name": "NI三个月价差", "factor_id": "F-013", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "NI现货价格与期货价格",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "元/吨",
+        "lines": ["现货价格", "期货主力合约价格", "现货-期货价差", "三个月价差"],
+        "colors": ["#1890ff", "#52c41a", "#faad14", "#ff7a45"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "pb_price",
+      "name": "铅价格",
+      "type": "variety",
+      "parent": "price",
+      "variety": "PB",
+      "metrics": [
+        {"id": "PB_SHFE_spot", "name": "PB现货价格", "factor_id": "F-019", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "PB_SHFE_futures", "name": "PB期货主力合约价格", "factor_id": "F-019", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "PB_spot_futures_spread", "name": "PB现货-期货价差", "factor_id": "F-019", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "PB_3M_spread", "name": "PB三个月价差", "factor_id": "F-019", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "PB现货价格与期货价格",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "元/吨",
+        "lines": ["现货价格", "期货主力合约价格", "现货-期货价差", "三个月价差"],
+        "colors": ["#1890ff", "#52c41a", "#faad14", "#ff7a45"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "zn_price",
+      "name": "锌价格",
+      "type": "variety",
+      "parent": "price",
+      "variety": "ZN",
+      "metrics": [
+        {"id": "ZN_SHFE_spot", "name": "ZN现货价格", "factor_id": "F-023", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "ZN_SHFE_futures", "name": "ZN期货主力合约价格", "factor_id": "F-023", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "ZN_spot_futures_spread", "name": "ZN现货-期货价差", "factor_id": "F-023", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"},
+        {"id": "ZN_3M_spread", "name": "ZN三个月价差", "factor_id": "F-023", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "ZN现货价格与期货价格",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "元/吨",
+        "lines": ["现货价格", "期货主力合约价格", "现货-期货价差", "三个月价差"],
+        "colors": ["#1890ff", "#52c41a", "#faad14", "#ff7a45"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "inventory",
+      "name": "库存分析",
+      "type": "category",
+      "parent": "root",
+      "metrics": [],
+      "chart_config": {
+        "type": "line",
+        "title": "库存趋势总览",
+        "x_axis": "date",
+        "y_axis": "inventory",
+        "unit": "万吨"
+      },
+      "children": ["cu_inventory", "al_inventory", "ni_inventory", "pb_inventory", "zn_inventory"]
+    },
+    {
+      "id": "cu_inventory",
+      "name": "铜库存",
+      "type": "variety",
+      "parent": "inventory",
+      "variety": "CU",
+      "metrics": [
+        {"id": "CU_SHFE_inventory", "name": "CU交易所库存", "factor_id": "F-002", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "万吨"},
+        {"id": "CU_inventory_change_rate", "name": "CU库存变化率", "factor_id": "F-002", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "%"},
+        {"id": "CU_inventory_weekly_change", "name": "CU库存周变化率", "factor_id": "F-002", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "CU_WHC_data", "name": "CU仓单数据", "factor_id": "F-002", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "手"},
+        {"id": "CU_social_inventory", "name": "CU社会库存", "factor_id": null, "status": "partial", "data_source": null, "frequency": "weekly", "unit": "万吨", "gap_type": "口径不一致", "gap_description": "DSHB仅有交易所库存, PDF含社会库存"},
+        {"id": "CU_open_interest", "name": "CU持仓量", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": "手", "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓量"},
+        {"id": "CU_long_short_ratio", "name": "CU多空比", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": null, "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓多空比"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "CU库存趋势",
+        "x_axis": "date",
+        "y_axis": "inventory",
+        "unit": "万吨",
+        "lines": ["交易所库存", "库存变化率"],
+        "colors": ["#1890ff", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "al_inventory",
+      "name": "铝库存",
+      "type": "variety",
+      "parent": "inventory",
+      "variety": "AL",
+      "metrics": [
+        {"id": "AL_SHFE_inventory", "name": "AL交易所库存", "factor_id": "F-008", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "万吨"},
+        {"id": "AL_inventory_change_rate", "name": "AL库存变化率", "factor_id": "F-008", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "%"},
+        {"id": "AL_inventory_weekly_change", "name": "AL库存周变化率", "factor_id": "F-008", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "AL_WHC_data", "name": "AL仓单数据", "factor_id": "F-008", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "手"},
+        {"id": "AL_social_inventory", "name": "AL社会库存", "factor_id": null, "status": "partial", "data_source": null, "frequency": "weekly", "unit": "万吨", "gap_type": "口径不一致", "gap_description": "DSHB仅有交易所库存"},
+        {"id": "AL_open_interest", "name": "AL持仓量", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": "手", "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓量"},
+        {"id": "AL_long_short_ratio", "name": "AL多空比", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": null, "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓多空比"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "AL库存趋势",
+        "x_axis": "date",
+        "y_axis": "inventory",
+        "unit": "万吨",
+        "lines": ["交易所库存", "库存变化率"],
+        "colors": ["#1890ff", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "ni_inventory",
+      "name": "镍库存",
+      "type": "variety",
+      "parent": "inventory",
+      "variety": "NI",
+      "metrics": [
+        {"id": "NI_SHFE_inventory", "name": "NI交易所库存", "factor_id": "F-014", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "万吨"},
+        {"id": "NI_inventory_change_rate", "name": "NI库存变化率", "factor_id": "F-014", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "%"},
+        {"id": "NI_inventory_weekly_change", "name": "NI库存周变化率", "factor_id": "F-014", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "NI_WHC_data", "name": "NI仓单数据", "factor_id": "F-014", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "手"},
+        {"id": "NI_social_inventory", "name": "NI社会库存", "factor_id": null, "status": "partial", "data_source": null, "frequency": "weekly", "unit": "万吨", "gap_type": "口径不一致", "gap_description": "DSHB仅有交易所库存"},
+        {"id": "NI_open_interest", "name": "NI持仓量", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": "手", "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓量"},
+        {"id": "NI_long_short_ratio", "name": "NI多空比", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": null, "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓多空比"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "NI库存趋势",
+        "x_axis": "date",
+        "y_axis": "inventory",
+        "unit": "万吨",
+        "lines": ["交易所库存", "库存变化率"],
+        "colors": ["#1890ff", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "pb_inventory",
+      "name": "铅库存",
+      "type": "variety",
+      "parent": "inventory",
+      "variety": "PB",
+      "metrics": [
+        {"id": "PB_SHFE_inventory", "name": "PB交易所库存", "factor_id": "F-020", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "万吨"},
+        {"id": "PB_inventory_change_rate", "name": "PB库存变化率", "factor_id": "F-020", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "%"},
+        {"id": "PB_inventory_weekly_change", "name": "PB库存周变化率", "factor_id": "F-020", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "PB_WHC_data", "name": "PB仓单数据", "factor_id": "F-020", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "手"},
+        {"id": "PB_social_inventory", "name": "PB社会库存", "factor_id": null, "status": "partial", "data_source": null, "frequency": "weekly", "unit": "万吨", "gap_type": "口径不一致", "gap_description": "DSHB仅有交易所库存"},
+        {"id": "PB_open_interest", "name": "PB持仓量", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": "手", "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓量"},
+        {"id": "PB_long_short_ratio", "name": "PB多空比", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": null, "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓多空比"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "PB库存趋势",
+        "x_axis": "date",
+        "y_axis": "inventory",
+        "unit": "万吨",
+        "lines": ["交易所库存", "库存变化率"],
+        "colors": ["#1890ff", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "zn_inventory",
+      "name": "锌库存",
+      "type": "variety",
+      "parent": "inventory",
+      "variety": "ZN",
+      "metrics": [
+        {"id": "ZN_SHFE_inventory", "name": "ZN交易所库存", "factor_id": "F-024", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "万吨"},
+        {"id": "ZN_inventory_change_rate", "name": "ZN库存变化率", "factor_id": "F-024", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "%"},
+        {"id": "ZN_inventory_weekly_change", "name": "ZN库存周变化率", "factor_id": "F-024", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "ZN_WHC_data", "name": "ZN仓单数据", "factor_id": "F-024", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "手"},
+        {"id": "ZN_social_inventory", "name": "ZN社会库存", "factor_id": null, "status": "partial", "data_source": null, "frequency": "weekly", "unit": "万吨", "gap_type": "口径不一致", "gap_description": "DSHB仅有交易所库存"},
+        {"id": "ZN_open_interest", "name": "ZN持仓量", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": "手", "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓量"},
+        {"id": "ZN_long_short_ratio", "name": "ZN多空比", "factor_id": null, "status": "partial", "data_source": null, "frequency": "daily", "unit": null, "gap_type": "缺失字段", "gap_description": "DSHB未采集持仓多空比"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "ZN库存趋势",
+        "x_axis": "date",
+        "y_axis": "inventory",
+        "unit": "万吨",
+        "lines": ["交易所库存", "库存变化率"],
+        "colors": ["#1890ff", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "supply_demand",
+      "name": "供需平衡",
+      "type": "category",
+      "parent": "root",
+      "metrics": [],
+      "chart_config": {
+        "type": "line",
+        "title": "供需平衡总览",
+        "x_axis": "date",
+        "y_axis": "supply_demand_balance",
+        "unit": "万吨"
+      },
+      "children": ["cu_supply_demand", "al_supply_demand", "ni_supply_demand", "pb_supply_demand", "zn_supply_demand"]
+    },
+    {
+      "id": "cu_supply_demand",
+      "name": "铜供需",
+      "type": "variety",
+      "parent": "supply_demand",
+      "variety": "CU",
+      "metrics": [
+        {"id": "CU_operating_rate", "name": "CU开工率", "factor_id": "F-004", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "CU_consumption", "name": "CU消费量", "factor_id": "F-004", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "CU_supply_demand_balance", "name": "CU供需平衡", "factor_id": "F-004", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "CU_production", "name": "CU产量", "factor_id": "F-004", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "CU产量与消费量对比",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["产量", "消费量"],
+        "colors": ["#52c41a", "#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "al_supply_demand",
+      "name": "铝供需",
+      "type": "variety",
+      "parent": "supply_demand",
+      "variety": "AL",
+      "metrics": [
+        {"id": "AL_operating_rate", "name": "AL开工率", "factor_id": "F-010", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "AL_consumption", "name": "AL消费量", "factor_id": "F-010", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "AL_supply_demand_balance", "name": "AL供需平衡", "factor_id": "F-010", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "AL_production", "name": "AL产量", "factor_id": "F-010", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "AL产量与消费量对比",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["产量", "消费量"],
+        "colors": ["#52c41a", "#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "ni_supply_demand",
+      "name": "镍供需",
+      "type": "variety",
+      "parent": "supply_demand",
+      "variety": "NI",
+      "metrics": [
+        {"id": "NI_operating_rate", "name": "NI开工率", "factor_id": "F-016", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "NI_consumption", "name": "NI消费量", "factor_id": "F-016", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "NI_supply_demand_balance", "name": "NI供需平衡", "factor_id": "F-016", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "NI_production", "name": "NI产量", "factor_id": "F-016", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "NI产量与消费量对比",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["产量", "消费量"],
+        "colors": ["#52c41a", "#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "pb_supply_demand",
+      "name": "铅供需",
+      "type": "variety",
+      "parent": "supply_demand",
+      "variety": "PB",
+      "metrics": [
+        {"id": "PB_operating_rate", "name": "PB开工率", "factor_id": "F-021", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "PB_consumption", "name": "PB消费量", "factor_id": "F-021", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "PB_supply_demand_balance", "name": "PB供需平衡", "factor_id": "F-021", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "PB_production", "name": "PB产量", "factor_id": "F-021", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "PB产量与消费量对比",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["产量", "消费量"],
+        "colors": ["#52c41a", "#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "zn_supply_demand",
+      "name": "锌供需",
+      "type": "variety",
+      "parent": "supply_demand",
+      "variety": "ZN",
+      "metrics": [
+        {"id": "ZN_operating_rate", "name": "ZN开工率", "factor_id": "F-025", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "%"},
+        {"id": "ZN_consumption", "name": "ZN消费量", "factor_id": "F-025", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "ZN_supply_demand_balance", "name": "ZN供需平衡", "factor_id": "F-025", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"},
+        {"id": "ZN_production", "name": "ZN产量", "factor_id": "F-025", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "ZN产量与消费量对比",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["产量", "消费量"],
+        "colors": ["#52c41a", "#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "cost_profit",
+      "name": "成本利润",
+      "type": "category",
+      "parent": "root",
+      "metrics": [],
+      "chart_config": {
+        "type": "line",
+        "title": "成本利润总览",
+        "x_axis": "date",
+        "y_axis": "profit",
+        "unit": "元/吨"
+      },
+      "children": ["cu_cost", "al_cost", "ni_cost", "pb_cost", "zn_cost"]
+    },
+    {
+      "id": "cu_cost",
+      "name": "铜成本",
+      "type": "variety",
+      "parent": "cost_profit",
+      "variety": "CU",
+      "metrics": [
+        {"id": "CU_smelting_cost", "name": "CU冶炼成本", "factor_id": "F-005", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "元/吨"},
+        {"id": "CU_TC_RC", "name": "CU加工费(TC/RC)", "factor_id": "F-005", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "美元/吨"},
+        {"id": "CU_smelting_profit", "name": "CU冶炼利润", "factor_id": "F-005", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "CU冶炼利润趋势",
+        "x_axis": "date",
+        "y_axis": "profit",
+        "unit": "元/吨",
+        "lines": ["冶炼成本", "冶炼利润"],
+        "colors": ["#faad14", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "al_cost",
+      "name": "铝成本",
+      "type": "variety",
+      "parent": "cost_profit",
+      "variety": "AL",
+      "metrics": [
+        {"id": "AL_electrolysis_cost", "name": "AL电解成本", "factor_id": "F-011", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "元/吨"},
+        {"id": "AL_power_cost", "name": "AL电力成本", "factor_id": "F-011", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "元/吨"},
+        {"id": "AL_smelting_profit", "name": "AL冶炼利润", "factor_id": "F-011", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "AL冶炼利润趋势",
+        "x_axis": "date",
+        "y_axis": "profit",
+        "unit": "元/吨",
+        "lines": ["电解成本", "冶炼利润"],
+        "colors": ["#faad14", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "ni_cost",
+      "name": "镍成本",
+      "type": "variety",
+      "parent": "cost_profit",
+      "variety": "NI",
+      "metrics": [
+        {"id": "NI_smelting_cost", "name": "NI冶炼成本", "factor_id": "F-017", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "元/吨"},
+        {"id": "NI_processing_fee", "name": "NI加工费", "factor_id": "F-017", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "美元/吨"},
+        {"id": "NI_smelting_profit", "name": "NI冶炼利润", "factor_id": "F-017", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "NI冶炼利润趋势",
+        "x_axis": "date",
+        "y_axis": "profit",
+        "unit": "元/吨",
+        "lines": ["冶炼成本", "冶炼利润"],
+        "colors": ["#faad14", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "pb_cost",
+      "name": "铅成本",
+      "type": "variety",
+      "parent": "cost_profit",
+      "variety": "PB",
+      "metrics": [
+        {"id": "PB_smelting_cost", "name": "PB冶炼成本", "factor_id": "F-022", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "元/吨"},
+        {"id": "PB_smelting_profit", "name": "PB冶炼利润", "factor_id": "F-022", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "PB冶炼利润趋势",
+        "x_axis": "date",
+        "y_axis": "profit",
+        "unit": "元/吨",
+        "lines": ["冶炼成本", "冶炼利润"],
+        "colors": ["#faad14", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "zn_cost",
+      "name": "锌成本",
+      "type": "variety",
+      "parent": "cost_profit",
+      "variety": "ZN",
+      "metrics": [
+        {"id": "ZN_smelting_cost", "name": "ZN冶炼成本", "factor_id": "F-026", "status": "matched", "data_source": "SHFE", "frequency": "weekly", "unit": "元/吨"},
+        {"id": "ZN_processing_fee", "name": "ZN加工费", "factor_id": "F-026", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": "美元/吨"},
+        {"id": "ZN_smelting_profit", "name": "ZN冶炼利润", "factor_id": "F-026", "status": "matched", "data_source": "SHFE", "frequency": "daily", "unit": "元/吨"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "ZN冶炼利润趋势",
+        "x_axis": "date",
+        "y_axis": "profit",
+        "unit": "元/吨",
+        "lines": ["冶炼成本", "冶炼利润"],
+        "colors": ["#faad14", "#52c41a"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "import_export",
+      "name": "进出口",
+      "type": "category",
+      "parent": "root",
+      "metrics": [],
+      "chart_config": {
+        "type": "bar",
+        "title": "进出口总览",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨"
+      },
+      "children": ["cu_import_export", "ni_import_export", "al_import_export"]
+    },
+    {
+      "id": "cu_import_export",
+      "name": "铜进出口",
+      "type": "variety",
+      "parent": "import_export",
+      "variety": "CU",
+      "metrics": [
+        {"id": "CU_import_volume", "name": "CU进口量", "factor_id": "F-006", "status": "matched", "data_source": "海关", "frequency": "monthly", "unit": "万吨"},
+        {"id": "CU_export_volume", "name": "CU出口量", "factor_id": "F-006", "status": "matched", "data_source": "海关", "frequency": "monthly", "unit": "万吨"},
+        {"id": "CU_trade_balance", "name": "CU贸易平衡", "factor_id": "F-006", "status": "matched", "data_source": "海关", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "CU进口与出口对比",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["进口量", "出口量", "贸易平衡"],
+        "colors": ["#1890ff", "#f5222d", "#52c41a"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "ni_import_export",
+      "name": "镍进出口",
+      "type": "variety",
+      "parent": "import_export",
+      "variety": "NI",
+      "metrics": [
+        {"id": "NI_import_volume", "name": "NI进口量", "factor_id": "F-018", "status": "matched", "data_source": "海关", "frequency": "monthly", "unit": "万吨"},
+        {"id": "NI_export_volume", "name": "NI出口量", "factor_id": "F-018", "status": "matched", "data_source": "海关", "frequency": "monthly", "unit": "万吨"},
+        {"id": "NI_trade_balance", "name": "NI贸易平衡", "factor_id": "F-018", "status": "matched", "data_source": "海关", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "NI进口与出口对比",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["进口量", "出口量", "贸易平衡"],
+        "colors": ["#1890ff", "#f5222d", "#52c41a"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "al_import_export",
+      "name": "铝进出口",
+      "type": "variety",
+      "parent": "import_export",
+      "variety": "AL",
+      "metrics": [
+        {"id": "AL_import_volume", "name": "AL进口量", "factor_id": "F-012", "status": "matched", "data_source": "海关", "frequency": "monthly", "unit": "万吨"}
+      ],
+      "chart_config": {
+        "type": "bar",
+        "title": "AL进口趋势",
+        "x_axis": "month",
+        "y_axis": "quantity",
+        "unit": "万吨",
+        "bars": ["进口量"],
+        "colors": ["#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "technical",
+      "name": "技术面",
+      "type": "category",
+      "parent": "root",
+      "metrics": [],
+      "chart_config": {
+        "type": "line",
+        "title": "技术面指标总览",
+        "x_axis": "date",
+        "y_axis": "momentum",
+        "unit": null
+      },
+      "children": ["cu_technical", "al_technical", "ni_technical", "pb_technical"]
+    },
+    {
+      "id": "cu_technical",
+      "name": "铜技术面",
+      "type": "variety",
+      "parent": "technical",
+      "variety": "CU",
+      "metrics": [
+        {"id": "CU_price_momentum", "name": "CU价格动量(MOM)", "factor_id": "F-001", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": null}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "CU价格动量趋势",
+        "x_axis": "month",
+        "y_axis": "momentum",
+        "unit": null,
+        "lines": ["月动量"],
+        "colors": ["#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "al_technical",
+      "name": "铝技术面",
+      "type": "variety",
+      "parent": "technical",
+      "variety": "AL",
+      "metrics": [
+        {"id": "AL_price_momentum", "name": "AL价格动量(MOM)", "factor_id": "F-007", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": null}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "AL价格动量趋势",
+        "x_axis": "month",
+        "y_axis": "momentum",
+        "unit": null,
+        "lines": ["月动量"],
+        "colors": ["#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "ni_technical",
+      "name": "镍技术面",
+      "type": "variety",
+      "parent": "technical",
+      "variety": "NI",
+      "metrics": [
+        {"id": "NI_price_momentum", "name": "NI价格动量(MOM)", "factor_id": "F-013", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": null}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "NI价格动量趋势",
+        "x_axis": "month",
+        "y_axis": "momentum",
+        "unit": null,
+        "lines": ["月动量"],
+        "colors": ["#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "pb_technical",
+      "name": "铅技术面",
+      "type": "variety",
+      "parent": "technical",
+      "variety": "PB",
+      "metrics": [
+        {"id": "PB_price_momentum", "name": "PB价格动量(MOM)", "factor_id": "F-019", "status": "matched", "data_source": "SHFE", "frequency": "monthly", "unit": null}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "PB价格动量趋势",
+        "x_axis": "month",
+        "y_axis": "momentum",
+        "unit": null,
+        "lines": ["月动量"],
+        "colors": ["#1890ff"],
+        "window": "12m"
+      },
+      "children": []
+    },
+    {
+      "id": "macro_overseas",
+      "name": "宏观/外盘",
+      "type": "category",
+      "parent": "root",
+      "metrics": [],
+      "chart_config": {
+        "type": "line",
+        "title": "宏观/外盘指标总览",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": null
+      },
+      "children": ["lme", "macro", "shfe_overseas"]
+    },
+    {
+      "id": "lme",
+      "name": "LME外盘",
+      "type": "variety",
+      "parent": "macro_overseas",
+      "variety": "LME",
+      "metrics": [
+        {"id": "LME_CU_spot", "name": "LME铜现货价格", "factor_id": null, "status": "missing", "data_source": "LME官方API/彭博", "frequency": "daily", "unit": "美元/吨", "gap_type": "缺失数据源", "gap_description": "需要LME官方API或彭博终端"},
+        {"id": "LME_CU_3M_spread", "name": "LME铜3M价差", "factor_id": null, "status": "missing", "data_source": "LME官方API/彭博", "frequency": "daily", "unit": "美元/吨", "gap_type": "缺失数据源", "gap_description": "需要LME官方API或彭博终端"},
+        {"id": "LME_AL_spot", "name": "LME铝现货价格", "factor_id": null, "status": "missing", "data_source": "LME官方API/彭博", "frequency": "daily", "unit": "美元/吨", "gap_type": "缺失数据源", "gap_description": "需要LME官方API或彭博终端"},
+        {"id": "LME_AL_3M_spread", "name": "LME铝3M价差", "factor_id": null, "status": "missing", "data_source": "LME官方API/彭博", "frequency": "daily", "unit": "美元/吨", "gap_type": "缺失数据源", "gap_description": "需要LME官方API或彭博终端"},
+        {"id": "LME_NI_spot", "name": "LME镍现货价格", "factor_id": null, "status": "missing", "data_source": "LME官方API/彭博", "frequency": "daily", "unit": "美元/吨", "gap_type": "缺失数据源", "gap_description": "需要LME官方API或彭博终端"},
+        {"id": "LME_NI_3M_spread", "name": "LME镍3M价差", "factor_id": null, "status": "missing", "data_source": "LME官方API/彭博", "frequency": "daily", "unit": "美元/吨", "gap_type": "缺失数据源", "gap_description": "需要LME官方API或彭博终端"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "LME外盘价格趋势 (待数据源接入)",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "美元/吨",
+        "lines": ["LME铜现货", "LME铜3M价差", "LME铝现货", "LME镍现货"],
+        "colors": ["#f5222d", "#faad14", "#1890ff", "#722ed1"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "macro",
+      "name": "外盘宏观",
+      "type": "variety",
+      "parent": "macro_overseas",
+      "variety": "Macro",
+      "metrics": [
+        {"id": "DXY_us_dollar_index", "name": "美元指数(DXY)", "factor_id": null, "status": "missing", "data_source": "万得/同花顺", "frequency": "daily", "unit": null, "gap_type": "缺失数据源", "gap_description": "需要万得/同花顺付费终端"},
+        {"id": "Gold_price", "name": "黄金价格", "factor_id": null, "status": "missing", "data_source": "万得/同花顺", "frequency": "daily", "unit": "美元/盎司", "gap_type": "缺失数据源", "gap_description": "需要万得/同花顺付费终端"},
+        {"id": "US10Y_yield", "name": "美债10年期收益率", "factor_id": null, "status": "missing", "data_source": "万得/同花顺", "frequency": "daily", "unit": "%", "gap_type": "缺失数据源", "gap_description": "需要万得/同花顺付费终端"},
+        {"id": "WTI_crude_oil", "name": "美油价格(WTI)", "factor_id": null, "status": "missing", "data_source": "万得/同花顺", "frequency": "daily", "unit": "美元/桶", "gap_type": "缺失数据源", "gap_description": "需要万得/同花顺付费终端"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "外盘宏观指标趋势 (待数据源接入)",
+        "x_axis": "date",
+        "y_axis": "value",
+        "unit": null,
+        "lines": ["美元指数", "黄金价格", "美债10Y", "美油WTI"],
+        "colors": ["#1890ff", "#faad14", "#52c41a", "#f5222d"],
+        "window": "30d"
+      },
+      "children": []
+    },
+    {
+      "id": "shfe_overseas",
+      "name": "SHFE外盘",
+      "type": "variety",
+      "parent": "macro_overseas",
+      "variety": "SHFE",
+      "metrics": [
+        {"id": "SHFE_overseas_CU", "name": "SHFE外盘铜价", "factor_id": null, "status": "missing", "data_source": "SHFE外盘端点", "frequency": "daily", "unit": "元/吨", "gap_type": "缺失数据源", "gap_description": "需要SHFE外盘端点爬取"},
+        {"id": "SHFE_overseas_AL", "name": "SHFE外盘铝价", "factor_id": null, "status": "missing", "data_source": "SHFE外盘端点", "frequency": "daily", "unit": "元/吨", "gap_type": "缺失数据源", "gap_description": "需要SHFE外盘端点爬取"},
+        {"id": "SHFE_overseas_NI", "name": "SHFE外盘镍价", "factor_id": null, "status": "missing", "data_source": "SHFE外盘端点", "frequency": "daily", "unit": "元/吨", "gap_type": "缺失数据源", "gap_description": "需要SHFE外盘端点爬取"}
+      ],
+      "chart_config": {
+        "type": "line",
+        "title": "SHFE外盘价格趋势 (待数据源接入)",
+        "x_axis": "date",
+        "y_axis": "price",
+        "unit": "元/吨",
+        "lines": ["SHFE外盘铜", "SHFE外盘铝", "SHFE外盘镍"],
+        "colors": ["#1890ff", "#52c41a", "#722ed1"],
+        "window": "30d"
+      },
+      "children": []
+    }
+  ]
+}

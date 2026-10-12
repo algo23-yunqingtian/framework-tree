@@ -842,3 +842,17 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 | `v87_rc1_hermes_phase15_30day_longrun_gate_evaluation.md` | `2E57F3B41BD3A7213983548116DC233E` |
 | `risk_watchlist_v87_phase15.md` | `93D9F39EDC5F2B676B48D98A94414F8E` |
 
+
+## Phase31 DSHB (2028-07-17)
+
+| 文件 | MD5 | 说明 |
+|------|-----|------|
+| 87_rc1_dshb_g1_phase31_ga_full_traffic_rollout_report.md | MD5_HASH_PLACEHOLDER | GA全量流量切换执行报告 |
+| 87_rc1_dshb_g1_phase31_7day_fulltraffic_longrun_report.md | MD5_HASH_PLACEHOLDER | 7天全量流量长稳观测报告 |
+| 87_rc1_dshb_g1_phase31_pdf_weekly_metric_mapping_report.md | MD5_HASH_PLACEHOLDER | 周报PDF指标映射校验报告 |
+| 87_rc1_dshb_g1_phase31_missing_data_source_inventory_report.md | MD5_HASH_PLACEHOLDER | 缺失数据源清单与评估报告 |
+| 87_rc1_dshb_g1_phase31_framework_tree_metric_node_mount_report.md | MD5_HASH_PLACEHOLDER | Framework Tree节点挂载报告 |
+| 87_rc1_dshb_g1_phase31_framework_tree_metrics.json | MD5_HASH_PLACEHOLDER | Framework Tree指标JSON导出 |
+| 87_rc1_dshb_g1_phase31_gate_evaluation.md | MD5_HASH_PLACEHOLDER | Gate评审报告 |
+| isk_register_v87_phase31.md | MD5_HASH_PLACEHOLDER | 风险登记册v29.0 |
+| defect_list.md | MD5_HASH_PLACEHOLDER | 缺陷清单v28.0 |
