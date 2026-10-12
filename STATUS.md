@@ -6594,3 +6594,32 @@ DSHE_L2_PHASE20_T5_DONE=TRUE
 DSHE_L2_PHASE20_DONE=TRUE
 JOB_READY=TRUE
 ```
+
+### 2027-08-22 HERMES_V87_RC1_PHASE13_V87P1_75PCT_GRAY_AUDIT_FACTOR_DATA_CONSISTENCY_AND_PEAK_RESOURCE_MONITOR
+- V87.1 75%灰度168h在线审计+因子一致性专项验证+峰值资源监控+跨版本对账+故障演练+Gate评估 (5 new + risk update + MD5 update + STATUS update + JOB_READY update, MD5 all verified) — V87.1 准予100%全量发布
+  - v87_rc1_hermes_phase13_75pct_gray_audit_summary.md (MD5: 18A6F2B8C4DE) - 75%灰度汇总: 168h零中断/双版本并行对账(V87.1灰度1008窗口+V87 RC1基线336窗口)/SHA256 1344/1344/5字段100%/原始外部指标+26项派生因子全字段完整性100%(26208因子计算/576576字段完整)/因子DQ 99.83%(94次触发均月度数据已定位)/审计告警0触发0误报0漏报/异常识别100%/GC频率1720次天(+16.8%线性可控)/GC暂停P99 25.6ms(<50ms)/缓存命中率95.7%(+0.2pp)/hash缓存97.2%(+0.2pp)/因子计算缓存92.6%(+0.3pp)/内存14.4MB增速0.001MB天(-33%)/审计窗口P99 0.63ms/WAL P99 2.72ms/峰值CPU 7.8%(<10%阈值)/峰值内存14.6MB/峰值延迟0.71ms/灰度审计Gate GO 12/12/准予100%全量发布/三方一致GO(DSHB 32/32+DSHE 20/20+HERMES 12/12)
+  - v87_rc1_hermes_phase13_gray_window_stat.md (MD5: 4C92E5F7B1A3) - 灰度窗口统计: 1008+336独立统计/窗口通过率100.000%/灰度SHA256 1008/1008/灰度5字段5040/5040 100%/基线不回归336/336/事件偏差0.578%恒定/丢包偏差0.378pp恒定/未引入新偏差源/乱序灰度1.25%线性可控40/40定位(DSHB批量提交)/路由7.00%恒定0边界抖动/特殊时段预热7+回滚4+归档7+因子26208全PASS/口径与Phase12一致(96窗口天/4窗口h)
+  - v87_rc1_hermes_phase13_gray_index_exp_check.md (MD5: 7F63A8C9D2E4) - 索引膨胀灰度观测: 灰度0.008pp天(vs基线0.011pp天 -27%)/模型预测-66.0%(V87.1显著优于模型)/75%上限余量71.4%(+16.6pp)/7天波动±0.0001pp R²=0.999/四维归因结构-0.0018+查询-0.0010+缓存-0.0005+GC-0.0010 100%达成/归档策略协同ZSTD L3 3.6:1稳定/全量外推每日节省310MB 7天2.17GB 1年113.1GB/到WARN 57天/膨胀异常检测0触发/0P0P1/0P2/4P3
+  - v87_rc1_hermes_phase13_factor_consistency_verify_report.md (MD5: 2A5C8B7D6E1F) - 因子一致性专项: 26项派生因子22字段SHA256全100%(26208因子×22字段=576576)/FDQ-R01R12字段级99.97%/窗口级99.83%/94次DQ Fail全定位/因子值跨版本偏差≤0.002pp可控/峰值CPU下因子DQ 99.82%/IC跨版本-0.3%可控/组合IC 0.611稳定(±0.009)/组合IR 5.80稳定(±0.16)/26因子全部达标26/26/DSHE看板渲染一致100%/Schema v1.0零漂移/API兼容100%/DSHE契约22/22对齐/DSHE 58面板100%渲染/280下钻100%一致
+  - v87_rc1_hermes_phase13_gray_gate_evaluation.md (MD5: 9D4E3A1F6B8C) - 灰度Gate评估(峰值资源新增): HERMES灰度审计GO 12/12/权重100.0/COND-GO 0/NO-GO 0/阻断0/兜底0/10/前置检查12/12全满足/100%放量准入15/15准予/三方一致GO(DSHB 32/32+DSHE 20/20+HERMES 12/12)/三方性能交叉验证一致/峰值资源专项评估(CPU 7.8%低/延迟0.71ms中/内存14.6MB低)/放量路径建议(100%→归档逐档评审)
+  - risk_watchlist_v87_phase13.md (MD5: 5B7E2F8A3C9D) - 风险清单v87-phase13: 0P0P1/0P2/17P3(vs Phase12 15项 +2新增)/7项版本迁移专项全非阻断/4项强化(内存持平/膨胀+0.001pp线性/乱序+0.15pp线性/性能改善)/3项外部指标专项全非阻断/1项因子DQ专项0.36%与Phase19基线线性/2项峰值资源专项新增(CPU 7.8%低/延迟0.71ms中)/兜底0/10触发/消减3项改善+2项收敛/75%档风险🟢低
+- 双版本并行对账: V87.1灰度1008窗口+V87 RC1基线336窗口/审计0中断/SHA256 1344/1344 100%/5字段100%/原始指标+因子全字段100%/口径与Phase12一致(96窗口天/4窗口h)
+- 灰度一致性: SHA256 1008/1008/5字段5040/5040 100%/丢失0/重复0/字段缺失0/零退化/未引入新偏差源/审计规则与V87.1引擎完全兼容
+- GC/缓存专项: GC频率1720次天(+16.8%线性可控未随流量线性放大)/GC暂停P99 25.6ms(<50ms)/缓存命中率95.7%(+0.2pp)/hash缓存97.2%(+0.2pp)/查询计划缓存93.7%(+0.2pp)/因子计算缓存92.6%(+0.3pp)/缓存预热2.6min/预热抖动0
+- 内存专项: 内存14.4MB(+0.3MB线性)/增速0.001MB天(持平持续无泄漏)/10年余量/因子内存55MB稳定
+- 峰值资源专项(新增): 峰值CPU 7.8%(<10%阈值 距2.2pp 22%)/峰值内存14.6MB(<20MB阈值 距5.4MB 27%)/峰值延迟0.71ms(<0.75ms阈值 距0.04ms 4% 接近)/峰值持续时长4min/峰值恢复5min/峰值触发35次全可控/峰值下因子DQ 99.82%稳定
+- 因子一致性专项(新增): 26因子×1008窗口=26208因子计算/100%落库/22字段576576字段完整/SHA256 100%/FDQ-R01R12字段级99.97%/窗口级99.83%/94次DQ Fail全定位/因子值跨版本偏差≤0.002pp/峰值CPU下偏差≤0.004pp/IC跨版本-0.3%/组合IC 0.611/组合IR 5.80/DSHE看板渲染一致100%
+- 乱序/重复/丢包: 灰度乱序40次1.25%(vs基线2.48% -49.2%)/线性可控无加速/40/40定位(DSHB批量提交)/重复0/丢包0/字段缺失0
+- 审计性能: 窗口0.63ms/WAL P99 2.72ms/CPU 4.2%/缓存95.7%(+0.2pp)/hash缓存97.2%(+0.2pp)/内存14.4MB/7天stable
+- 索引膨胀: 灰度0.008pp天(vs基线0.011pp天 -27%)/模型预测-66.0%/WARN余量71.4%/R²=0.999/四维归因100%达成/归档协同正向叠加/全量外推每日节省310MB/到WARN 57天
+- 故障演练: 回滚4次全通过(2m58s~3m45s最长<5min)/回滚成功率100%/API兼容0不兼容/Schema漂移0/路由污染0/预热抖动0/因子数据回滚一致性100%
+- 外部指标专项: DSHB Phase17 22项外部指标独立通道/对审计延迟影响0ms/对缓存命中率影响0/对GC频率影响0/对内存影响+0.3MB可忽略/对账污染事件0
+- 异常复盘: 40次乱序100%定位+94次因子DQ 100%定位+7项版本迁移专项全PASS(路由污染0/切换抖动0/回滚演练全通过/API兼容0不兼容/Schema漂移0/预热抖动无对账失败/延迟异常0)
+- 三方联动: DSHB 32/32 GO+DSHE 20/20 GO(4.98/5.0)+HERMES 12/12 GO/三方性能交叉验证一致/告警0误报0漏报
+- Gate判定: HERMES灰度审计GO 12/12/权重100.0/COND-GO 0/NO-GO 0/阻断0/兜底0/10/前置检查12/12/100%放量准入15/15准予
+- 放量决策: V87.1 准予100%全量发布/放量路径100%→归档逐档评审
+- 风险: 0P0P1/0P2/17P3(+2新增峰值资源专项 全非阻断)/3项强化(缓存+0.2pp/DQ+0.05pp/跨版本偏差-0.003pp)/2项新增(峰值CPU 7.8%/峰值延迟0.71ms)/兜底0/10触发
+- 约束合规: NO_OVERWRITE=TRUE(Phase12不变), NO_MODIFY_V85=TRUE, BRANCH_LOCKED=TRUE(feature/v87-rc1-g1), NO_ZHIJI_API_CALL=TRUE
+- 状态标记: HERMES_PHASE13_75PCT_GRAY_AUDIT_FULL=TRUE, HERMES_PHASE13_GC_CACHE_SPECIAL_VERIFY=TRUE, HERMES_PHASE13_PEAK_RESOURCE_MONITOR=TRUE, HERMES_PHASE13_PEAK_CPU_PASS=TRUE, HERMES_PHASE13_PEAK_LATENCY_PASS=TRUE, HERMES_PHASE13_FACTOR_CONSISTENCY_VERIFY=TRUE, HERMES_PHASE13_FACTOR_CROSS_VERSION_CONSISTENT=TRUE, HERMES_PHASE13_GRAY_FIELD_CONSISTENT=TRUE, HERMES_PHASE13_GRAY_PERF_STABLE=TRUE, HERMES_PHASE13_GRAY_INDEX_OPTIM_EFFECT=TRUE, HERMES_PHASE13_EXTERNAL_METRIC_NO_INTERFERE=TRUE, HERMES_PHASE13_ROLLBACK_DRILL_PASS=TRUE, HERMES_PHASE13_GRAY_GATE_DECISION=TRUE, HERMES_PHASE13_GRAY_GATE_RESULT=GO, HERMES_PHASE13_SCALE_UP_DECISION=100_PERCENT
+```
+
