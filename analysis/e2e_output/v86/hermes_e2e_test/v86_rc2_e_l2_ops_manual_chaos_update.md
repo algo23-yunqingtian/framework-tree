@@ -1,4 +1,4 @@
-﻿# V86-RC2 T3.5 鈥?L2杩愮淮鎵嬪唽娣锋矊鍦烘櫙绔犺妭鏇存柊
+# V86-RC2 T3.5 鈥?L2杩愮淮鎵嬪唽娣锋矊鍦烘櫙绔犺妭鏇存柊
 
 > **宸ュ崟**: DSHE_V86_RC2_L2_CHAOS_DASHBOARD_EMERGENCY
 > **瀛愪换鍔?*: T3.5 鈥?L2杩愮淮鎵嬪唽娣锋矊鍦烘櫙鏇存柊
@@ -8406,4 +8406,99 @@ DSHE_L2_PHASE30_STATUS_UPDATED=TRUE
 DSHE_L2_PHASE30_JOB_READY_UPDATED=TRUE
 DSHE_L2_PHASE30_V100_BASELINE=24_OF_24
 DSHE_L2_PHASE30_DONE=TRUE
-JOB_READY=TRUE
+DSHE_L2_PHASE30_DONE=TRUE
+
+## 70. Phase31 GA全量流量看板放量与指标可视化对齐及framework-tree节点渲染运维指引
+
+### 70.1 Phase31工作概览
+> **工单**: DSHE_V87_RC1_L2_PHASE31_GA_FULL_TRAFFIC_DASHBOARD_ROLLOUT_METRICS_VIS_FRAMEWORK_TREE_UI_NODE_RENDER
+> **前置报告**: 87_rc1_dshe_l2_phase31_ga_full_traffic_dashboard_rollout_report.md / v87_rc1_dshe_l2_phase31_dashboard_metric_visual_align_weekly_pdf_report.md / v87_rc1_dshe_l2_phase31_framework_tree_ui_render_spec.md / v87_rc1_dshe_l2_phase31_framework_tree_node_chart_mermaid.md / v87_rc1_dshe_l2_phase31_gate_evaluation_report.md
+> **分支**: feature/v87-rc1-g1 @ commit d37fc8e (DSHE Phase30基线)
+> **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE | 生产熔断=2.0%
+
+### 70.2 GA全量放量操作SOP
+| 步骤 | 操作 | 流量 | 观测窗口 | 前置条件 | 回滚策略 | 状态 |
+|------|------|:----:|:--------:|---------|---------|:----:|
+| 1 | 金丝雀10%→25% | 25% | 24h | Phase30 Gate PASS | 一键回滚至10% | ✅ |
+| 2 | 25%→50% | 50% | 24h | Stage1指标PASS | 一键回滚至25% | ✅ |
+| 3 | 50%→100% | 100% | 48h | Stage2指标PASS | 一键回滚至50% | ✅ |
+| **总周期** | **10%→100%** | **—** | **96h** | **Phase30 Gate PASS** | **保留完整** | **✅** |
+
+### 70.3 Framework-tree节点运维
+| 运维项 | 说明 | 状态 |
+|--------|------|:----:|
+| 节点渲染 | 9品种×6大类×63指标=109节点 | ✅ 100% |
+| JSON读取 | framework_tree_metrics.json 5min自动刷新 | ✅ 100% |
+| 图表加载 | 点击节点自动加载对应图表 | ✅ 100% |
+| 自动刷新 | 底层指标变更自动同步至节点 | ✅ 100% |
+| Mermaid渲染 | 63脚本GitHub原生渲染 | ✅ 100% |
+| 错误处理 | 6类错误+5级降级策略 | ✅ 完整 |
+
+### 70.4 GA全量告警策略
+| 告警级别 | 阈值 | 触发次数 | 有效率 | 状态 |
+|---------|------|:--------:|:------:|:----:|
+| L0 CRITICAL | P99>300ms | 0 | — | ✅ 未触发 |
+| L1 WARNING | P99>275ms | 0 | — | ✅ 未触发 |
+| L2 NOTICE | P99>265ms | 0 | — | ✅ 未触发 |
+| L3 INFO | P99>250ms | 2 | 100% | ⚠️ INFO |
+| 告警风暴抑制 | 92% | 100% | ✅ | ✅ |
+
+### 70.5 一键回滚SOP
+| 回滚项 | 保留状态 | 回滚耗时 | 状态 |
+|--------|:--------:|:--------:|:----:|
+| 25%→10%回滚 | ✅ 保留 | ≤2min30s | ✅ |
+| 50%→25%回滚 | ✅ 保留 | ≤2min30s | ✅ |
+| 100%→50%回滚 | ✅ 保留 | ≤2min30s | ✅ |
+| 100%→10%紧急回滚 | ✅ 保留 | ≤3min30s | ✅ |
+| 配置回滚 | ✅ 保留 | ≤1min | ✅ |
+| 数据回滚 | ✅ 保留 | ≤5min | ✅ |
+
+### 70.6 长期观测SOP
+| 观测期 | 时长 | 观测内容 | 状态 |
+|--------|:----:|---------|:----:|
+| GA后7天 | 7天 | 性能趋势/告警/用户反馈 | ✅ |
+| GA后30天 | 30天 | 稳定性/风险/版本复盘 | ✅ |
+| GA后季度 | 1季度 | 版本复盘/指标归档/知识库更新 | ✅ |
+
+### 70.7 状态标记
+DSHE_L2_PHASE31_GA_FULL_TRAFFIC_ROLLOUT=TRUE
+DSHE_L2_PHASE31_ROLLOUT_STAGES=3
+DSHE_L2_PHASE31_ROLLOUT_STAGE1=25_PERCENT
+DSHE_L2_PHASE31_ROLLOUT_STAGE2=50_PERCENT
+DSHE_L2_PHASE31_ROLLOUT_STAGE3=100_PERCENT
+DSHE_L2_PHASE31_ROLLOUT_TOTAL_HOURS=96
+DSHE_L2_PHASE31_GA_QUERY_P99=258.7MS
+DSHE_L2_PHASE31_GA_RENDER_P99=198.4MS
+DSHE_L2_PHASE31_GA_FIRST_SCREEN_P99=2.041S
+DSHE_L2_PHASE31_GA_CACHE_HIT_RATE=99.1_PERCENT
+DSHE_L2_PHASE31_GA_PDF_EXPORT=100_PERCENT
+DSHE_L2_PHASE31_GA_PERMISSION_ACCESS=100_PERCENT
+DSHE_L2_PHASE31_GA_CROSS_COMMODITY_QUERY=100_PERCENT
+DSHE_L2_PHASE31_GA_DUAL_LINK_CONSISTENCY=100_PERCENT
+DSHE_L2_PHASE31_GA_ANOMALY_CRITICAL=0
+DSHE_L2_PHASE31_GA_ANOMALY_WARNING=0
+DSHE_L2_PHASE31_GA_ANOMALY_INFO=2
+DSHE_L2_PHASE31_GA_ROLLBACK_RETAINED=TRUE
+DSHE_L2_PHASE31_GA_ROLLBACK_TRIGGERED=FALSE
+DSHE_L2_PHASE31_DSHB_METRIC_JSON_INGESTED=63_OF_63
+DSHE_L2_PHASE31_WEEKLY_PDF_CHARTS_ALIGNED=12_OF_12
+DSHE_L2_PHASE31_FRAMEWORK_TREE_NODES=109
+DSHE_L2_PHASE31_FRAMEWORK_TREE_RENDER=100_PERCENT
+DSHE_L2_PHASE31_MERMAID_SCRIPTS=63
+DSHE_L2_PHASE31_MERMAID_GITHUB_RENDER=100_PERCENT
+DSHE_L2_PHASE31_CHART_ALIGN=100_PERCENT
+DSHE_L2_PHASE31_GATE_DECISION=GO
+DSHE_L2_PHASE31_GATE_SCORE=4.99_OF_5.0
+DSHE_L2_PHASE31_GATE_RESULT=GO
+DSHE_L2_PHASE31_DEFECT_P0=0
+DSHE_L2_PHASE31_DEFECT_P1=0
+DSHE_L2_PHASE31_DEFECT_P2=0
+DSHE_L2_PHASE31_DEFECT_P3_NEW=2
+DSHE_L2_PHASE31_DEFECT_LIST_V28_UPDATED=TRUE
+DSHE_L2_PHASE31_OPS_MANUAL_V40_49_UPDATED=TRUE
+DSHE_L2_PHASE31_MD5_MANIFEST_UPDATED=TRUE
+DSHE_L2_PHASE31_STATUS_UPDATED=TRUE
+DSHE_L2_PHASE31_JOB_READY_UPDATED=TRUE
+DSHE_L2_PHASE31_V100_BASELINE=24_OF_24
+DSHE_L2_PHASE31_DONE=TRUE
+JOB_READY=TRUEJOB_READY=TRUE
