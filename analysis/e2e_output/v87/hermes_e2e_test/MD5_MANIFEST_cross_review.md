@@ -3,9 +3,9 @@
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
 > 基准commit: `9fe4420` (Phase25 DSHB)
-> 日期: 2028-03-15
+> 日期: 2028-03-25
 > 版本: V87-RC1
-> 状态: 🟢 Phase25终态 (DSHB+DSHE+HERMES)
+> 状态: 🟢 Phase26终态 (DSHB+DSHE+HERMES)
 
 ---
 
@@ -13,8 +13,8 @@
 
 | 项目 | 值 |
 |------|----|
-| 审查范围 | V87 RC1 Phase01 ~ Phase25 |
-| 审查日期 | 2028-03-15 |
+| 审查范围 | V87 RC1 Phase01 ~ Phase26 |
+| 审查日期 | 2028-03-25 |
 | 基准版本 | V87.1 RC1 |
 | 分支 | `feature/v87-rc1-g1` |
 | 基准commit | `724c333` |
@@ -236,6 +236,11 @@
 | 50 | 87_rc1_dshe_l2_phase25_pdf_export_pipeline_stabilize_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~22,000 B |
 | 51 | 87_rc1_dshe_l2_phase25_external_data_compare_dashboard_verify_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~18,000 B |
 | 52 | 87_rc1_dshe_l2_phase25_90day_longrun_gate_evaluation_report.md | Phase25 | MD5_HASH_PLACEHOLDER | ~25,000 B |
+| 53 | 87_rc1_dshe_l2_phase26_120day_longrun_overview_report.md | Phase26 | MD5_HASH_PLACEHOLDER | ~22,000 B |
+| 54 | 87_rc1_dshe_l2_phase26_panel_performance_longterm_monitor_report.md | Phase26 | MD5_HASH_PLACEHOLDER | ~25,000 B |
+| 55 | 87_rc1_dshe_l2_phase26_pdf_export_high_concurrency_stress_report.md | Phase26 | MD5_HASH_PLACEHOLDER | ~22,000 B |
+| 56 | 87_rc1_dshe_l2_phase26_external_compare_panel_optimize_and_dr_verify_report.md | Phase26 | MD5_HASH_PLACEHOLDER | ~20,000 B |
+| 57 | 87_rc1_dshe_l2_phase26_120day_longrun_gate_evaluation_report.md | Phase26 | MD5_HASH_PLACEHOLDER | ~28,000 B |
 
 ### 3.3 元数据文件
 
@@ -401,11 +406,11 @@
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.14
-MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_25
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=232
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.15
+MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_26
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=237
 MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=96
-MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=42
+MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=47
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
 MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=30
 MD5_MANIFEST_CROSS_REVIEW_MD5_MATCH=100_PERCENT
