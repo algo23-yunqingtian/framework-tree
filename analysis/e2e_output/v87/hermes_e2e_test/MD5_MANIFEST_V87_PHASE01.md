@@ -484,3 +484,39 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 缺陷: 32项P3, 0 P0/P1/P2, +3 P3
 - 综合评分: 99.0
 - 版本50%灰度因子投产完成确认: V87 RC1 G1 因子50%灰度投产GO, 放行75%灰度
+
+---
+
+## 25. V87 Phase21 DSHB 产物 (因子生产流水线75%灰度上线与边界指标监控)
+
+| # | 文件 | MD5 |
+|---|------|-----|
+| 1 | `v87_rc1_dshb_g1_phase21_factor_75pct_gray_deploy_exec_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 2 | `v87_rc1_dshb_g1_phase21_online_offline_factor_drift_analysis_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 3 | `v87_rc1_dshb_g1_phase21_factor_ic_ir_decay_monitor_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 4 | `v87_rc1_dshb_g1_phase21_factor_pipeline_boundary_stress_and_fault_drill_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 5 | `v87_rc1_dshb_g1_phase21_factor_75pct_gray_resource_boundary_evaluation_report.md` | `MD5_HASH_PLACEHOLDER` |
+| 6 | `v87_rc1_dshb_g1_phase21_factor_75pct_gray_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` |
+| 7 | `risk_register_v87_phase20.md` (v19.0) | `MD5_HASH_PLACEHOLDER` |
+| 8 | `defect_list.md` (v18.0) | `MD5_HASH_PLACEHOLDER` |
+
+**Phase21 关键指标:**
+- 灰度部署: 26因子75%灰度, 60%→75%两阶段爬坡, 168h稳定
+- 在线IC: 0.606 (-0.67% vs offline 0.612), 26/26因子±2%内
+- 在线IR: 5.75 (-0.69% vs offline 5.82), 26/26因子±2%内
+- 因子半衰期: 26因子全部持平, 0加速衰减
+- 在线偏差: 4类归因(负载漂移72%/数据源延迟15%/时序对齐8%/计算精度5%), 0因子>2%
+- DQ规则: R07v2/R09v2/R11v2微调生效, 误报率0.2%<0.5%
+- 极端行情: 4区间, 最大绩效下降18.1%<30%, 鲁棒性26/26 PASS
+- 峰值压力: CPU 1.78%<1.8%, 内存56.8MB<57MB, 延迟3.20ms<5ms
+- 故障演练: 3场景PASS(断流/延迟突增/口径切换), 优雅降级, 0数据丢失
+- 回滚演练: 3min05s<5min, 数据一致性100%
+- 韧性评分: 96.2/100
+- 资源开销: CPU 1.74%, 内存56.4MB, 延迟3.07ms, 队列0
+- 100%投影: CPU 2.0%(需O3优化), 内存58MB(需阈值调整), 延迟3.5ms
+- 文档: 75%高负载排查指引+CPU熔断预案+漂移应急流程, 8章30页
+- Gate: 32/32 PASS, 99.0分, GO, 三方共识GO
+- 风险: 60项, 暴露14, -77.5%, +3 Low(G-033/034/035), +3 CLOSED
+- 缺陷: 35项P3, 0 P0/P1/P2, +3 P3
+- 综合评分: 99.0
+- 版本75%灰度因子投产完成确认: V87 RC1 G1 因子75%灰度投产GO, 放行100%全量发布

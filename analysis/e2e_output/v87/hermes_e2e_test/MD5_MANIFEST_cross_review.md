@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase20)
+# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase21)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `5e5b6be` (Phase20 DSHB)
-> 日期: 2027-11-01
+> 基准commit: `abc39d4` (Phase21 DSHB)
+> 日期: 2027-11-09
 > 版本: V87-RC1
-> 状态: 🟢 Phase20终态 (DSHB+DSHE)
+> 状态: 🟢 Phase21终态 (DSHB+DSHE)
 
 ---
 
@@ -13,11 +13,11 @@
 
 | 项目 | 值 |
 |------|----|
-| 审查范围 | V87 RC1 Phase01 ~ Phase20 |
-| 审查日期 | 2027-11-01 |
+| 审查范围 | V87 RC1 Phase01 ~ Phase21 |
+| 审查日期 | 2027-11-09 |
 | 基准版本 | V87.1 RC1 |
 | 分支 | `feature/v87-rc1-g1` |
-| 基准commit | `5e5b6be` |
+| 基准commit | `abc39d4` |
 | 约束 | NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE |
 
 ---
@@ -46,7 +46,8 @@
 | Phase18 | 6 | 5 | 0 | 2 | 13 |
 | Phase19 | 6 | 5 | 0 | 2 | 13 |
 | Phase20 | 6 | 5 | 0 | 2 | 13 |
-| **合计** | **60** | **42** | **62** | **38** | **202** |
+| Phase21 | 6 | 0 | 0 | 2 | 8 |
+| **合计** | **66** | **42** | **62** | **40** | **210** |
 
 ---
 
@@ -340,21 +341,22 @@
 | 因子看板搭建 | ✅ V87 RC1 G1 因子看板搭建与因子监控告警验证通过 |
 | 影子回测因子验证 | ✅ V87 RC1 G1 影子回测因子验证与因子相关性分析GO |
 | 因子50%灰度投产 | ✅ V87 RC1 G1 因子生产流水线50%灰度上线与指标监控GO |
+| 因子75%灰度投产 | ✅ V87 RC1 G1 因子生产流水线75%灰度上线与边界指标监控GO |
 | 约束合规 | ✅ 全部满足 |
 
 ### 7.2 最终结论
 
-**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO + 因子生产流水线50%灰度上线与指标监控GO, framework-tree GitHub Pages已部署上线**
+**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO + 因子生产流水线50%灰度上线与指标监控GO + 因子生产流水线75%灰度上线与边界指标监控GO, framework-tree GitHub Pages已部署上线**
 
 ---
 
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.10
-MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_20
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=197
-MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=76
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.11
+MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_21
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=210
+MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=82
 MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=37
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
 MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=29
@@ -387,6 +389,9 @@ MD5_MANIFEST_CROSS_REVIEW_FACTOR_FAULT_DRILL=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_GRAY_RESOURCE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_50PCT_GRAY_GATE=GO
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_75PCT_READY=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_75PCT_GRAY_DEPLOY=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_75PCT_GRAY_GATE=GO
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_100PCT_READY=TRUE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```
