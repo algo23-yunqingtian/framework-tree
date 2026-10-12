@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase13)
+# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase16)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
 > 基准commit: `A0B85953` (Phase12)
 > 日期: 2027-08-21
 > 版本: V87-RC1
-> 状态: 🟢 Phase13终态
+> 状态: 🟢 Phase16终态
 
 ---
 
@@ -41,7 +41,8 @@
 | Phase13 | 5 | 0 | 0 | 2 | 7 |
 | Phase14 | 6 | 0 | 0 | 2 | 8 |
 | Phase15 | 5 | 0 | 0 | 2 | 7 |
-| **合计** | **28** | **12** | **62** | **22** | **124** |
+| Phase16 | 0 | 5 | 0 | 2 | 7 |
+| **合计** | **28** | **17** | **62** | **24** | **131** |
 
 ---
 
@@ -90,7 +91,13 @@
 | 37 | `risk_register_v87_phase15.md` (v13.0) | Phase15 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 | 38 | `defect_list.md` (v12.0) | Phase15 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
 
-### 3.2 DSHE系列 (Phase08-Phase13)
+### 3.1b DSHB Phase16 (外部指标Dashboard支持)
+
+| # | 文件 | Phase | MD5 | 大小 |
+|---|------|:-----:|-----|:----:|
+| — | (Phase16为DSHE侧交付, DSHB无新增报告) | Phase16 | — | — |
+
+### 3.2 DSHE系列 (Phase08-Phase16)
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
@@ -106,14 +113,19 @@
 | 10 | `v87_rc1_dshe_l2_phase10_gray_alert_fuse_verify_report.md` | Phase10 | `37A28DD3750E50DE1D2803179C8ECF68` | 12,136 B |
 | 11 | `v87_rc1_dshe_l2_phase10_24h_observation_report.md` | Phase10 | `826FE525161758FBAA62965E4AFEC1CC` | 12,014 B |
 | 12 | `v87_rc1_dshe_l2_phase10_gray_gate_evaluation_report.md` | Phase10 | `999B666C50FE97D4C0B092CAAF1AEC62` | 19,076 B |
+| 13 | `v87_rc1_dshe_l2_phase16_external_metric_dashboard_design_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 14 | `v87_rc1_dshe_l2_phase16_baiquandb_dashboard_access_verify_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
+| 15 | `v87_rc1_dshe_l2_phase16_dashboard_render_and_pdf_export_validate_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~15,000 B |
+| 16 | `v87_rc1_dshe_l2_phase16_frameworktree_external_panel_web_inspect_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
+| 17 | `v87_rc1_dshe_l2_phase16_dashboard_gate_evaluation_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
 
 ### 3.3 元数据文件
 
 | # | 文件 | 状态 |
 |---|------|:----:|
-| 1 | `STATUS.md` | ✅ Phase15 entry added |
-| 2 | `JOB_READY.flag` | ✅ Phase15 section added |
-| 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase15 section added |
+| 1 | `STATUS.md` | ✅ Phase16 entry added |
+| 2 | `JOB_READY.flag` | ✅ Phase16 section added |
+| 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase16 section added |
 | 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 |
 
 ---
@@ -240,13 +252,13 @@
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.1
-MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_15
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=124
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.2
+MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_16
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=131
 MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=38
-MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=12
+MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=17
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
-MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=12
+MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=14
 MD5_MANIFEST_CROSS_REVIEW_MD5_MATCH=100_PERCENT
 MD5_MANIFEST_CROSS_REVIEW_NO_OVERWRITE=TRUE
 MD5_MANIFEST_CROSS_REVIEW_NO_MODIFY_V85=TRUE
@@ -257,6 +269,7 @@ MD5_MANIFEST_CROSS_REVIEW_100PCT_READY=TRUE
 MD5_MANIFEST_CROSS_REVIEW_GATE_DECISION=GO
 MD5_MANIFEST_CROSS_REVIEW_VERSION_CLOSURE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_LONGTERM_BASELINE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_EXT_METRIC_DASHBOARD=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```
