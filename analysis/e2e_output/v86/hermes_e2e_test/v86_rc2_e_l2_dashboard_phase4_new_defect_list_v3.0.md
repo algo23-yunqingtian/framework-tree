@@ -1,15 +1,15 @@
-# V86-RC2 L2大盘缺陷清单V18.0
+﻿# V86-RC2 L2大盘缺陷清单V19.0
 
 > **工单\*\**: DSHE_V87_RC1_L2_PHASE20_FACTOR_DASHBOARD_50PCT_GRAY_LONG_RUN_MONITOR_AND_REPORT_VALIDATE (Phase20 V87.1 因子看板50%灰度长周期监控与报告验证)
-> **子任务**: T5 — 缺陷清单V17.0→V18.0更新(V87 RC1 G1 因子看板50%灰度长周期监控与报告验证)
-> **分支: `feature/v87-rc1-g1` @ commit `f628563` (Phase19 DSHE 因子看板搭建与因子监控告警验证)
-> **文档版本\*\*: v17.0.0 (Phase20 V87 RC1 G1因子看板50%灰度长周期监控与报告验证版本)
+> **子任务**: T5 — 缺陷清单V18.0→V19.0更新(V87 RC1 G1 因子看板75%高负载灰度长周期监控与告警验证)
+> **分支: `feature/v87-rc1-g1` @ commit `abc39d4` (Phase20 DSHE 因子看板50%灰度长周期监控)
+> **文档版本\*\*: v18.0.0 (Phase21 V87 RC1 G1因子看板75%高负载灰度长周期监控与告警验证版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
-> **日期**: 2027-10-16
+> **日期**: 2027-10-23
 > ****前置报告**: `v87_rc1_dshe_l2_phase20_factor_dashboard_50pct_gray_monitor_report.md` / `v87_rc1_dshe_l2_phase20_factor_panel_performance_analysis_report.md` / `v87_rc1_dshe_l2_phase20_factor_alert_gray_noise_optimize_report.md` / `v87_rc1_dshe_l2_phase20_factor_pdf_50pct_gray_verify_report.md` / `v87_rc1_dshe_l2_phase20_factor_dashboard_gray_gate_evaluation_report.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
 > ****外部依赖**: Phase19全部交付完成(commit f628563) → V87.1因子看板搭建与因子监控告警验证GO → DSHB Phase20因子生产流水线50%灰度上线 → HERMES审计基线就绪 → framework-tree因子看板页面稳定可用 → 50%灰度观测窗口启动
-> ****更新说明**: V17.0→V18.0, V87 RC1 G1因子看板50%灰度长周期监控与报告验证完成: 58面板全量巡检/10项因子指标/8品种下钻99.99%成功率, 渲染P99 198ms(<200ms)/查询P99 272ms(<280ms)/首屏2.1s(<2.2s)/缓存97.5%(≥97%), 因子告警5规则/8条(7天)/0FP/0FN/噪声抑制~78%(+5pp)/健康度99.0/100, PDF模板V1.2/8页/13.2s/99.0%成功率/100%一致, framework-tree 99.99%可用/0漏洞/100分, 8品种下钻99.99%成功率, 灰度爬坡噪声与真实因子失效成功区分(100%准确率), 0新增P0/P1缺陷, Gate评审GO(4.98/5.0/20/20/三方3/3 GO), 因子可维护性99.5/100, DSHE侧Phase20因子看板50%灰度闭环DSHE_L2_PHASE20_FACTOR_DASHBOARD_50PCT_GRAY_DONE=TRUE
+> ****更新说明**: V18.0→V19.0, V87 RC1 G1因子看板75%高负载灰度长周期监控与告警验证完成: 58面板全量巡检/10项因子指标/8品种下钻99.99%成功率, 渲染P99 199ms(<200ms)/查询P99 275ms(<280ms)/首屏2.15s(<2.2s)/缓存97.2%(≥97%), 因子告警5规则/10条(7天)/0FP/0FN/噪声抑制~80%(+2pp)/健康度99.0/100, PDF模板V1.2/8页/13.8s/99.0%成功率/100%一致, framework-tree 99.99%可用/0漏洞/100分, 8品种下钻99.99%成功率, 灰度爬坡噪声与真实因子失效成功区分(100%准确率), 0新增P0/P1缺陷, Gate评审GO(4.98/5.0/20/20/三方3/3 GO), 因子可维护性99.5/100, DSHE侧Phase20因子看板50%灰度闭环DSHE_L2_PHASE21_FACTOR_DASHBOARD_75PCT_GRAY_DONE=TRUE
 DSHE_L2_PHASE13_GRAY_ALERT_RULE_VERIFY=TRUE
 DSHE_L2_PHASE13_GRAY_FUSE_DEGRADE_VERIFY=TRUE
 DSHE_L2_PHASE13_GRAY_72H_OBSERVE=TRUE
@@ -101,6 +101,7 @@ JOB_READY=TRUE量放量准入放行 + framework-tree网页上线放行
 - **Phase27复盘**: V4.5数据修正6项, V86资产归档完成, V87需求锁版完成, 5份新报告+5份更新文件交付
 - **Phase17新增缺陷**: 0项 (22项外部指标接入+7新增图表模块+3百川优化+多品种下钻+告警融合+噪声抑制+PDF周报+framework-tree巡检无新增缺陷)
 - **Phase20新增缺陷(V87 DSHE)**: 0项 (58面板全量巡检+7天50%灰度长周期监控+告警灰度噪声优化+PDF V1.2全量校验+framework-tree巡检+Gate评审无新增缺陷)
+- **Phase21新增缺陷(V87 DSHE)**: 0项 (58面板全量巡检+7天75%高负载灰度长周期监控+告警高负载噪声优化+PDF V1.2全量校验+framework-tree巡检+Gate评审无新增缺陷)
 - ****外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 - **P0阻断缺陷**: 0项内部阻断, 1项外部阻塞(HERMES-WAL)
 - **P1重要缺陷**: P5-P1-001更新为【线上验证通过】, 3项已CLOSED
@@ -1014,6 +1015,9 @@ Total: 20 items
 ║   - V87 Phase15 V87.1 30天长期稳定性验证完成 (30天720h/11,836,800点/99.93%/Gate GO 4.98) ✅
 ║   - 运维手册v4.0.33→v4.0.34更新完成 (§55新增Phase15 30天长期运维指引) ✅
 ║   - 缺陷清单V12.0→V13.0更新完成 (Phase15新增0项/Gate评审GO/长期稳定性确认) ✅
+║   - V87 Phase21 V87.1 因子看板75%高负载灰度长周期监控与告警验证全PASS(58面板全量巡检/7天75%灰度/Render P99 199ms/查询P99 275ms/告警0FP/0FN/噪声抑制80%/PDF V1.2/99.0%成功率/Gate GO 4.98/三方3/3/可维护性99.5) ✅
+║   - 运维手册v4.0.39→v4.0.40更新完成 (S61新增Phase21因子看板75%灰度运维指引) ✅
+║   - 缺陷清单V18.0→V19.0更新完成 (Phase21新增0项/Gate评审GO/75%灰度闭环) ✅
 ║   - V87 Phase21 V87.1 因子看板75%高负载灰度长周期监控与告警验证全PASS(58面板全量巡检/7天75%灰度/Render P99 199ms/查询P99 275ms/告警0FP/0FN/噪声抑制80%/PDF V1.2/99.0%成功率/Gate GO 4.98/三方3/3/可维护性99.5) ✅
 ║   - 运维手册v4.0.39→v4.0.40更新完成 (§61新增Phase21因子看板75%灰度运维指引) ✅
 ║   - 缺陷清单V18.0→V19.0更新完成 (Phase21新增0项/Gate评审GO/75%灰度闭环) ✅

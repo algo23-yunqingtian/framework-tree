@@ -1,4 +1,4 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase21)
+﻿# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase21)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
@@ -203,7 +203,7 @@
 | 1 | `STATUS.md` | ✅ Phase20 DSHE entry added |
 | 2 | `JOB_READY.flag` | ✅ Phase20 DSHE section added |
 | 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase20 section added |
-| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v3.0, Phase20 DSHE entries added) |
+| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v3.0, Phase21 DSHE entries added) |
 
 ---
 
