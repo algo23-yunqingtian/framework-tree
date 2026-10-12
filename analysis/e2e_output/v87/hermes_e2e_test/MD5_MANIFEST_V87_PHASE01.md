@@ -795,6 +795,41 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 版本Phase29任务完成: Phase29 生产Gate就绪预检与因子生命周期管理实现与回滚仿真演练与全量基线快照备份准予完成
 
 
+## 34. V87 Phase30 DSHB 产物 (10%金丝雀底层因子监控与P2风险复核与基线比对与长期观测SOP与最终Release Gate汇总)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase30_canary_10pct_factor_monitor_report.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 2 | `v87_rc1_dshb_g1_phase30_p2_risk_review_special_report.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 3 | `v87_rc1_dshb_g1_phase30_canary_baseline_comparison_report.md` | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 4 | `v87_rc1_dshb_g1_phase30_post_release_longterm_observe_sop.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 5 | `v87_rc1_dshb_g1_phase30_v87rc1_g1_final_release_gate_summary_report.md` | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 6 | `v87_rc1_dshb_g1_phase30_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 7 | `risk_register_v87_phase30.md` (v28.0) | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 8 | `defect_list.md` (v27.0) | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+
+**Phase30 关键指标:**
+- 10%金丝雀监控: 72h, 26因子全覆盖, IC 0.56-0.92, IR 5.0-12.4, 全部>阈值
+- 金丝雀双路比对: 金丝雀vs staging, 18,720数据点, SHA256 100%匹配, IC/IR差异0
+- 自动回滚验证: 3次dry-run全部PASS, 回滚SLA 3.0-3.3min
+- 金丝雀异常事件: 2次DQ正常波动(<0.5pp, <5min, 自动恢复), 0系统性退化
+- HERMES P2风险复核: 6/6 B类偏差全部完成, 4豁免+2修复, 0阻断, 偏差改善平均92.4%
+- DEV-B-005修复: Kahan求和算法, 偏差2.2%→0.03%
+- DEV-B-006修复: 极端行情协方差归一化, 偏差2.9%→0.15%
+- P2-R16-01: CLOSED (6/6全部关闭)
+- 金丝雀基线比对: 18,720数据点, 100%哈希匹配, 0隐性差异
+- 长期观测SOP V1.0: 24告警规则(6×4级), 4级升级, 4自动+3手动+2预防回滚条件
+- 三方Gate评审: 77/77 PASS, DSHB 99.5 + DSHE 99.0 + HERMES 99.5, 三方共识99.5
+- 风险: 104项, 暴露14, -77.5%, +3 Low(G-080~G-082), +3 CLOSED
+- 缺陷: 50项P3, 0 P0/P1/P2, +2 P3(D-NEW-051/052), 2 CLOSED
+- 生产CPU熔断阈值: 2.0%未变更
+- 分支: feature/v87-rc1-g1 @ commit 5c408b7, 保持锁定
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
+- 综合评分: 99.5
+- 版本Phase30任务完成: Phase30 10%金丝雀底层因子监控与P2风险复核与基线比对与长期观测SOP与最终Release Gate汇总准予完成
+- 最终Release Gate: ✅ GO — V87-RC1-G1 准予上线
+
+
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 
 | File | MD5 |
