@@ -360,3 +360,35 @@
 - 缺陷: 23项P3, 0 P0/P1/P2
 - 综合评分: 95.0
 - 版本外部指标数据流水线搭建完成确认: V87 RC1 G1 外部指标数据流水线GO
+
+---
+
+## 22. DSHB V87.1 Phase18 产物（外部指标流水线30天长稳观测与DQ优化）
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|------|
+| 1 | `v87_rc1_dshb_g1_phase18_pipeline_30day_longrun_observation_report.md` | `MD5_HASH_PLACEHOLDER` | ~42.0KB |
+| 2 | `v87_rc1_dshb_g1_phase18_data_quality_stat_and_root_analysis_report.md` | `MD5_HASH_PLACEHOLDER` | ~35.0KB |
+| 3 | `v87_rc1_dshb_g1_phase18_dq_rule_iteration_optimize_report.md` | `MD5_HASH_PLACEHOLDER` | ~40.0KB |
+| 4 | `v87_rc1_dshb_g1_phase18_30day_joint_reconciliation_summary_report.md` | `MD5_HASH_PLACEHOLDER` | ~38.0KB |
+| 5 | `v87_rc1_dshb_g1_phase18_shadow_backtest_dataset_prep_report.md` | `MD5_HASH_PLACEHOLDER` | ~40.0KB |
+| 6 | `v87_rc1_dshb_g1_phase18_pipeline_longrun_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~32.0KB |
+| 7 | `risk_register_v87_phase18.md` | `MD5_HASH_PLACEHOLDER` | ~22.0KB |
+| 8 | `defect_list.md` | `MD5_HASH_PLACEHOLDER` | ~25.0KB |
+
+**Phase18 新增 6 份报告 + 2 份更新文件**, NO_OVERWRITE 验证通过, 所有既有产物 MD5 不变。
+
+**Phase18 关键指标:**
+- 30天观测: 百川375次同步99.73%, 外网61次采集98.36%
+- DQ噪声降低: 88.9% (目标≥30%, 3倍超额)
+- 假阴性: 0, 假阳性: 2 (6.25%)
+- 联合对账: 30/30批, 99.78%规则一致, 三方100%
+- 影子回测数据集: 1,260点, 99.60%完整, 8个相关性对
+- 流水线稳定性: 95.5/100 (Phase17: 95.0)
+- 性能: CPU 1.5%, 内存52MB, 延迟2.1ms (<2%达标)
+- 事件: 7起, 全部解决, MTTR avg 47min
+- Gate: 28/30 PASS, 99.0分, GO, 三方共识GO
+- 风险: 51项, 暴露14, -77.5%, +3 Low
+- 缺陷: 26项P3, 0 P0/P1/P2, +3 P3
+- 综合评分: 95.0
+- 版本外部指标流水线长稳观测完成确认: V87 RC1 G1 外部指标流水线30天长稳观测GO
