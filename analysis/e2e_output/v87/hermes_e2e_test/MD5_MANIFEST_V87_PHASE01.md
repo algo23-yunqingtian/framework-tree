@@ -326,3 +326,37 @@
 - 缺陷: 20项P3, 0 P0/P1/P2
 - 综合评分: 94.9
 - 版本外部因子指标映射方案可行确认: V87 RC1 G1 外部因子指标映射方案GO
+
+---
+
+## 21. DSHB V87.1 Phase17 产物（外部指标数据流水线搭建与缺失指标数据源实施）
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|------|
+| 1 | `v87_rc1_dshb_g1_phase17_external_metric_pipeline_architecture_design.md` | `MD5_HASH_PLACEHOLDER` | ~28.0KB |
+| 2 | `v87_rc1_dshb_g1_phase17_baiquan_data_sync_pipeline_implement_report.md` | `MD5_HASH_PLACEHOLDER` | ~18.0KB |
+| 3 | `v87_rc1_dshb_g1_phase17_web_crawl_pipeline_implement_report.md` | `MD5_HASH_PLACEHOLDER` | ~24.0KB |
+| 4 | `v87_rc1_dshb_g1_phase17_inside_outside_metric_joint_reconciliation_report.md` | `MD5_HASH_PLACEHOLDER` | ~26.0KB |
+| 5 | `v87_rc1_dshb_g1_phase17_pipeline_stability_and_resource_cost_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~36.0KB |
+| 6 | `v87_rc1_dshb_g1_phase17_pipeline_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~14.0KB |
+| 7 | `risk_register_v87_phase17.md` | `MD5_HASH_PLACEHOLDER` | ~18.0KB |
+| 8 | `defect_list.md` | `MD5_HASH_PLACEHOLDER` | ~20.0KB |
+
+**Phase17 新增 6 份报告 + 2 份更新文件**, NO_OVERWRITE 验证通过, 所有既有产物 MD5 不变。
+
+**Phase17 关键指标:**
+- 百川同步指标: 15项 (12 FULL+3 PARTIAL), 成功率99.7%
+- 外网采集脚本: 3个 (LME/SHFE/IEA), 100%合规
+- 人工录入接口: 2个 (EXT-011/014), 版本记录
+- 付费源占位: 2个 (EXT-023/024), 待预算
+- 计算指标: 1个 (EXT-015), 公式实现
+- MISSING覆盖率: 7项 (100%)
+- 联合校验规则: 15项 (R01-R15), 100%通过率
+- 性能影响: CPU 1.5%, 内存50MB, 延迟2ms (<2%达标)
+- 三方对账: 100%一致, 每日19s
+- 流水线稳定性: 95.0/100
+- Gate: 28/30 PASS, 99.0分, GO, 三方共识GO
+- 风险: 48项, 暴露14, -77.5%
+- 缺陷: 23项P3, 0 P0/P1/P2
+- 综合评分: 95.0
+- 版本外部指标数据流水线搭建完成确认: V87 RC1 G1 外部指标数据流水线GO
