@@ -578,3 +578,16 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 综合评分: 99.5
 - 版本100%全量投产闭环: V87 RC1 G1 因子100%全量投产GO, 准予长期30天稳态运维
 
+
+## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
+
+| File | MD5 |
+|------|-----|
+| `v87_rc1_hermes_phase15_30day_longrun_audit_summary.md` | `7E5889C6C309A655049ABF4222B943DA` |
+| `v87_rc1_hermes_phase15_index_expansion_longterm_verify_report.md` | `DA187E77F02CF77759BC335458134DC2` |
+| `v87_rc1_hermes_phase15_cpu_fuse_longterm_stat_audit_report.md` | `4E75BA4939468F6AF140C8E0C3B344D1` |
+| `v87_rc1_hermes_phase15_factor_consistency_30day_longrun_report.md` | `BAF853B04BD8F544DE9E2F5CEAB978A2` |
+| `v87_rc1_hermes_phase15_peak_latency_longterm_monitor_report.md` | `FD5A66CF338E137C3C349B6EC7B6D420` |
+| `v87_rc1_hermes_phase15_30day_longrun_gate_evaluation.md` | `2E57F3B41BD3A7213983548116DC233E` |
+| `risk_watchlist_v87_phase15.md` | `93D9F39EDC5F2B676B48D98A94414F8E` |
+
