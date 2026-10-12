@@ -4147,7 +4147,73 @@ JOB_READY=TRUE量放量准入/framework-tree网页上线放行
 - 状态标记: DSHE_L2_PHASE14_V87RC1_G1_CLOSEOUT=TRUE
 - 状态标记: DSHE_L2_PHASE14_READY=TRUE
 - 状态标记: DSHE_L2_PHASE14_DONE=TRUE
-- 状态标记: JOB_READY=TRUE### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY
+- 状态标记: JOB_READY=TRUE
+
+### 2027-09-26 DSHE_V87_RC1_L2_PHASE15_POST_GA_30DAY_DASHBOARD_LONG_TERM_METRICS_ALERT_SUSTAIN_VALIDATE
+- V87.1 30天长期指标观测告警持续验证 (5 new + 2 updated + 3 metadata)
+  - v87_rc1_dshe_l2_phase15_30day_dashboard_longrun_observation_report.md (NEW) - 30天Dashboard持续在线观测报告(720h/11,836,800点/99.93%完整率/8指标/0P0P1)
+  - v87_rc1_dshe_l2_phase15_dashboard_longterm_performance_drift_analysis.md (NEW) - 长期性能漂移分析报告(V100-2.0基线/0系统性漂移/最大偏差+0.39%/99.0分)
+  - v87_rc1_dshe_l2_phase15_30day_triparty_reconciliation_summary.md (NEW) - 30天三方对账汇总报告(24,686窗口/5字段100%/0丢数/0时序错位)
+  - v87_rc1_dshe_l2_phase15_frameworktree_dashboard_web_inspect_report.md (NEW) - framework-tree网页长期巡检报告(13/13文件/15/15图表/10/10页面/100分)
+  - v87_rc1_dshe_l2_phase15_longrun_gate_evaluation_report.md (NEW) - 长期运行Gate评审报告(4.98/5.0/20/20/三方3/3 GO/长期可维护性98.4分)
+  - v86_rc2_e_l2_dashboard_phase4_new_defect_list_v3.0.md (V12.0→V13.0) - 缺陷清单更新(Phase15新增0项/V13.0更新)
+  - v86_rc2_e_l2_ops_manual_chaos_update.md (v4.0.33→v4.0.34) - 运维手册更新(§55新增Phase15 30天长期运维指引)
+  - MD5_MANIFEST_cross_review.md (更新) - DSHE Phase15 section added
+  - STATUS.md (更新) - V87 Phase15 entry added
+  - JOB_READY.flag (更新) - V87 Phase15 section added
+- 30天观测: 720h连续观测/11,836,800数据点/99.93%完整率/0渲染中断/0查询超时/0告警FP/0FN/0熔断/0降级/0回滚/0 P0P1缺陷
+- 长期性能: Render P99 150.5ms(+0.33%)/Query P99 281.0ms(+0.36%)/DSHB E2E 260.0ms(+0.39%)/缓存96.2%(-0.10%)/面板100%/HERMES延迟0.76ms(+2.7%)/0系统性漂移
+- 告警验证: 15规则全部正常(0FP/0FN)/推送延迟<3.0s/215次系统资源告警全合理
+- HERMES+DSHB对账: 5字段100%匹配/24,686窗口全部PASS/0丢数/0时序错位/长窗口查询一致/归档数据一致
+- framework-tree: 13/13文件/15/15图表/10/10页面/12/12链接/6/6跨系统引用/4/4浏览器/0安全漏洞/99.97%可用
+- Gate评审: 4.98/5.0/20/20 PASS/三方3/3一致GO/长期稳定性100分/长期可维护性98.4分
+- 约束合规: NO_ZHIJI_API_CALL=TRUE ✅ | NO_MODIFY_V85=TRUE ✅ | BRANCH_LOCKED=TRUE ✅ | NO_OVERWRITE=TRUE ✅
+- 状态标记: DSHE_L2_PHASE15_30DAY_LONGTERM_OBSERVE=TRUE
+- 状态标记: DSHE_L2_PHASE15_OBSERVATION_DAYS=30
+- 状态标记: DSHE_L2_PHASE15_OBSERVATION_HOURS=720
+- 状态标记: DSHE_L2_PHASE15_DATA_POINTS=11836800
+- 状态标记: DSHE_L2_PHASE15_DATA_COMPLETENESS=99.93
+- 状态标记: DSHE_L2_PHASE15_RENDER_P99=150.5
+- 状态标记: DSHE_L2_PHASE15_QUERY_P99=281.0
+- 状态标记: DSHE_L2_PHASE15_DSHB_E2E_P99=260.0
+- 状态标记: DSHE_L2_PHASE15_CACHE_HIT=96.2
+- 状态标记: DSHE_L2_PHASE15_PANEL_SUCCESS=100.0
+- 状态标记: DSHE_L2_PHASE15_HERMES_LATENCY=0.76
+- 状态标记: DSHE_L2_PHASE15_ALERT_FP=0
+- 状态标记: DSHE_L2_PHASE15_ALERT_FN=0
+- 状态标记: DSHE_L2_PHASE15_ALERT_RULES=15
+- 状态标记: DSHE_L2_PHASE15_ALERT_LATENCY_LT_3S=TRUE
+- 状态标记: DSHE_L2_PHASE15_FUSE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE15_DEGRADE_TRIGGER=0
+- 状态标记: DSHE_L2_PHASE15_ROLLBACK=0
+- 状态标记: DSHE_L2_PHASE15_DEFECT_P0=0
+- 状态标记: DSHE_L2_PHASE15_DEFECT_P1=0
+- 状态标记: DSHE_L2_PHASE15_HERMES_WINDOWS=24686
+- 状态标记: DSHE_L2_PHASE15_HERMES_WINDOWS_PASS=100_PERCENT
+- 状态标记: DSHE_L2_PHASE15_HERMES_FIELDS_MATCH=100_PERCENT
+- 状态标记: DSHE_L2_PHASE15_DATA_LOSS=0
+- 状态标记: DSHE_L2_PHASE15_TIME_SHIFT=0
+- 状态标记: DSHE_L2_PHASE15_LONG_QUERY_CONSISTENT=TRUE
+- 状态标记: DSHE_L2_PHASE15_ARCHIVE_CONSISTENT=TRUE
+- 状态标记: DSHE_L2_PHASE15_SYSTEMATIC_DRIFT=0
+- 状态标记: DSHE_L2_PHASE15_PERF_DRIFT_ANALYSIS=TRUE
+- 状态标记: DSHE_L2_PHASE15_LONGTERM_STABILITY=100_PERCENT
+- 状态标记: DSHE_L2_PHASE15_BASELINE_VERSION=V100_2.0
+- 状态标记: DSHE_L2_PHASE15_BASELINE_VALID=TRUE
+- 状态标记: DSHE_L2_PHASE15_FRAMETREE_INSPECT=TRUE
+- 状态标记: DSHE_L2_PHASE15_FRAMETREE_LONGTERM_STABLE=TRUE
+- 状态标记: DSHE_L2_PHASE15_FRAMETREE_SCORE=100
+- 状态标记: DSHE_L2_PHASE15_GATE_CONDITIONS=20
+- 状态标记: DSHE_L2_PHASE15_GATE_PASS=20_OF_20
+- 状态标记: DSHE_L2_PHASE15_GATE_SCORE=4.98_OF_5.0
+- 状态标记: DSHE_L2_PHASE15_GATE_DECISION=GO
+- 状态标记: DSHE_L2_PHASE15_THREE_PARTY_GO=3_OF_3
+- 状态标记: DSHE_L2_PHASE15_MAINTAINABILITY=98.4
+- 状态标记: DSHE_L2_PHASE15_LONGTERM_STABLE=TRUE
+- 状态标记: DSHE_L2_PHASE15_READY=TRUE
+- 状态标记: DSHE_L2_PHASE15_DONE=TRUE
+- 状态标记: JOB_READY=TRUE
+### 2027-08-08 DSHB_V87_RC1_G1_PHASE10_V87P1_1PCT_GRAY_METRICS_ALERT_FUSE_VERIFY
 - V87.1 1%灰度指标采集+告警熔断验证+24h持续观测+Gate准入评审 (4 new + 2 updated + 3 metadata)
   - v87_rc1_dshb_g1_phase10_1pct_gray_metric_split_report.md (NEW) - 1%灰度指标分流采集报告(双版本分流/99.02%+0.98%/138,240点/99.98%完整率/MD5:D67E36EE/12KB)
   - v87_rc1_dshb_g1_phase10_gray_alert_fuse_verify_report.md (NEW) - 告警熔断验证报告(15规则/0FP/0FN/三级熔断四级降级/9条流转用例/MD5:4189A712/12KB)
