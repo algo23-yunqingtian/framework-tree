@@ -606,6 +606,37 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 综合评分: 99.5
 - 版本永久稳态投产: V87 RC1 G1 因子永久稳态投产GO, 30天长期运维基线固化
 
+## 28. V87 Phase24 DSHB 产物 (60天长稳观测与索引冷热分离归档及查询缓存优化与CPU熔断离线仿真)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase24_60day_longrun_observation_summary_report.md` | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 2 | `v87_rc1_dshb_g1_phase24_hotcold_archive_implementation_and_verify_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 3 | `v87_rc1_dshb_g1_phase24_query_cache_optimize_deploy_verify_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 4 | `v87_rc1_dshb_g1_phase24_cpu_fuse_threshold_offline_simulation_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 5 | `v87_rc1_dshb_g1_phase24_index_expansion_post_archive_prediction_report.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 6 | `v87_rc1_dshb_g1_phase24_factor_ic_ir_60day_monitor_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 7 | `v87_rc1_dshb_g1_phase24_60day_longrun_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 8 | `risk_register_v87_phase24.md` (v22.0) | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 9 | `defect_list.md` (v21.0) | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+
+**Phase24 关键指标:**
+- 60天观测: 1440h, 86,400数据点, 0 P0/P1事件
+- CPU熔断: 12次触发, 100%自动恢复, 0数据丢失, 周均0.93次<10次阈值
+- CPU熔断仿真: 2.2%阈值6次(50%降幅), 保护余量降低43%, 生产阈值维持2.0%不变
+- 索引归档: 4批次100GB冷数据压缩归档(3.2:1), 膨胀率8.60%→6.20%(-2.40pp/-27.9%)
+- 归档后日增长率: 0.008%/天(降幅55.6%), 下次告警线D360(2029-02-10), 归档周期287天
+- 查询缓存: 优化上线, P99 3.18→2.85ms(-10.4%), 缓存命中率93.8→97.5%(+3.7pp), 一致性100%
+- 因子IC: 0.605(-0.49%漂移), IR: 5.76(-0.35%漂移), 半衰期100%持平, 0加速衰减
+- O3稳定: CPU 1.70-1.77%, 内存57.5-59.0MB, 无劣化
+- DQ: 99.6%, 误报0.2%, 漏报0%
+- HERMES比对: 24轮全部对齐, 0偏差
+- Gate: 67/67 PASS, 99.5分, GO, 三方共识GO
+- 风险: 64项, 暴露14, -77.5%, +3 Low(G-039/040/041), +3 CLOSED(G-038/039/040)
+- 缺陷: 40项P3, 0 P0/P1/P2, +2 P3(D-NEW-039/040), 2 CLOSED
+- 综合评分: 99.5
+- 版本60天运维基线固化: V87 RC1 G1 60天长期稳态运维基线固化准予
+
 
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 

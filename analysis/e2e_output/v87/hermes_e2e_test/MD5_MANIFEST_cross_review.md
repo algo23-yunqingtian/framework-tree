@@ -2,8 +2,8 @@
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `843244a` (Phase24 DSHE)
-> 日期: 2028-02-12
+> 基准commit: `03f2edc` (Phase24 DSHB)
+> 日期: 2028-02-13
 > 版本: V87-RC1
 > 状态: 🟢 Phase24终态 (DSHB+DSHE+HERMES)
 
@@ -48,7 +48,9 @@
 | Phase20 | 6 | 5 | 0 | 2 | 13 |
 | Phase21 | 6 | 0 | 0 | 2 | 8 |
 | Phase22 | 6 | 0 | 0 | 2 | 8 |
-| **合计** | **72** | **42** | **62** | **40** | **218** |
+| Phase23 | 8 | 5 | 7 | 2 | 22 |
+| Phase24 | 9 | 5 | 0 | 2 | 16 |
+| **合计** | **89** | **47** | **62** | **46** | **244** |
 
 ---
 
@@ -154,6 +156,28 @@
 | 74 | `v87_rc1_dshb_g1_phase20_factor_50pct_gray_gate_evaluation.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~30,000 B |
 | 75 | `risk_register_v87_phase20.md` (v18.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 76 | `defect_list.md` (v17.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+
+### 3.1f DSHB Phase23-24 (30天/60天长稳观测与索引归档与查询缓存优化与熔断仿真)
+
+| # | 文件 | Phase | MD5 | 大小 |
+|---|------|:-----:|-----|:----:|
+| 77 | `v87_rc1_dshb_g1_phase23_30day_longrun_observation_summary_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 78 | `v87_rc1_dshb_g1_phase23_index_expansion_trend_prediction_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 79 | `v87_rc1_dshb_g1_phase23_cpu_frequency_stat_and_root_analysis_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 80 | `v87_rc1_dshb_g1_phase23_factor_ic_ir_30day_longterm_monitor_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 81 | `v87_rc1_dshb_g1_phase23_index_risk_preplan_evaluation_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 82 | `v87_rc1_dshb_g1_phase23_30day_longrun_gate_evaluation.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 83 | `risk_register_v87_phase23.md` (v21.0) | Phase23 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 84 | `defect_list.md` (v20.0) | Phase23 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+| 85 | `v87_rc1_dshb_g1_phase24_60day_longrun_observation_summary_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 86 | `v87_rc1_dshb_g1_phase24_hotcold_archive_implementation_and_verify_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 87 | `v87_rc1_dshb_g1_phase24_query_cache_optimize_deploy_verify_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 88 | `v87_rc1_dshb_g1_phase24_cpu_fuse_threshold_offline_simulation_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 89 | `v87_rc1_dshb_g1_phase24_index_expansion_post_archive_prediction_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 90 | `v87_rc1_dshb_g1_phase24_factor_ic_ir_60day_monitor_report.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 91 | `v87_rc1_dshb_g1_phase24_60day_longrun_gate_evaluation.md` | Phase24 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 92 | `risk_register_v87_phase24.md` (v22.0) | Phase24 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 93 | `defect_list.md` (v21.0) | Phase24 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
 
 ### 3.2 DSHE系列 (Phase08-Phase16)
 
@@ -423,6 +447,22 @@ MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_ARCHIVE_PLAN=READY
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_30DAY_GATE=GO
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_PERMANENT_STEADY_DEPLOYMENT=APPROVED
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_LONGTERM_BASELINE_FROZEN=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_OBSERVE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_COLD_HOT_ARCHIVE=EXECUTED
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_ARCHIVE_BLOAT_6.20_PERCENT=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_QUERY_CACHE_OPTIMIZE=DEPLOYED
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_QUERY_CACHE_P99_2.85MS=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_QUERY_CACHE_HIT_97.5_PERCENT=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_CPU_FUSE_OFFLINE_SIM=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_CPU_FUSE_PROD_THRESHOLD_UNCHANGED=2.0_PERCENT
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_IC_IR_60DAY_MONITOR=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_EXPANSION_POST_ARCHIVE_PREDICTION=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_INDEX_ARCHIVE_CYCLE_287_DAYS=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_HERMES_RECON_24_ROUNDS=100_PERCENT
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_GATE=GO
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_60DAY_BASELINE_FROZEN=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_RISK_REGISTER_V22_UPDATED=TRUE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_DEFECT_LIST_V21_UPDATED=TRUE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```

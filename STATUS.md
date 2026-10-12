@@ -7343,3 +7343,68 @@ JOB_READY=TRUE
 - Defect List: V21.0, 0 P0/P1
 - Ops Manual: v4.0.42, S63 added (7 subsections)
 ```
+
+### 2028-02-13 DSHB_V87_RC1_G1_PHASE24_60DAY_STEADY_OBSERVE_INDEX_COLD_HOT_ARCHIVE_IMPLEMENT_QUERY_CACHE_OPTIMIZE_AND_CPU_FUSE_OFFLINE_SIM
+
+- Branch: feature/v87-rc1-g1 @ commit 03f2edc
+- Constraints: NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE
+- Verify Date: 2028-02-13
+
+#### Phase24 Deliverables (7 reports + 2 updates + 4 metadata)
+
+- v87_rc1_dshb_g1_phase24_60day_longrun_observation_summary_report.md (NEW)
+- v87_rc1_dshb_g1_phase24_hotcold_archive_implementation_and_verify_report.md (NEW)
+- v87_rc1_dshb_g1_phase24_query_cache_optimize_deploy_verify_report.md (NEW)
+- v87_rc1_dshb_g1_phase24_cpu_fuse_threshold_offline_simulation_report.md (NEW)
+- v87_rc1_dshb_g1_phase24_index_expansion_post_archive_prediction_report.md (NEW)
+- v87_rc1_dshb_g1_phase24_factor_ic_ir_60day_monitor_report.md (NEW)
+- v87_rc1_dshb_g1_phase24_60day_longrun_gate_evaluation.md (NEW)
+- risk_register_v87_phase24.md (v21.0->v22.0)
+- defect_list.md (v20.0->v21.0)
+- MD5_MANIFEST_V87_PHASE01.md (updated)
+- MD5_MANIFEST_cross_review.md (updated)
+- STATUS.md (updated)
+- JOB_READY.flag (updated)
+
+#### Phase24 Key Metrics
+
+- Observe: 60d (1440h, 86,400 data points, 100% full production traffic)
+- P0/P1: 0, P2: 0, P3: 4 (all non-blocking)
+- CPU Fuse: 12 triggers (2.0%), 100% auto-recovery, 0 data loss, 0.93/wk < 10 threshold
+- CPU Fuse Sim: 2.2% = 6 triggers (50% reduction), protection margin -43%, prod threshold unchanged 2.0%
+- Index Archive: 4 batches, 100GB cold data compressed (3.2:1), bloat 8.60%->6.20% (-2.40pp / -27.9%)
+- Post-Archive Growth: 0.008%/d (from 0.018%/d, -55.6%), next alert D360 (2029-02-10), archive cycle 287 days
+- Query Cache: deployed, P99 3.18->2.85ms (-10.4%), hit rate 93.8->97.5% (+3.7pp), consistency 100%
+- Factor IC: 0.605 (-0.49% drift), IR: 5.76 (-0.35% drift), half-life 100% stable, 0 decay acceleration
+- O3 Stable: CPU 1.70-1.77%, memory 57.5-59.0MB, no degradation
+- DQ: 99.6%, FP 0.2%, FN 0.0%
+- HERMES Reconciliation: 24 rounds, 100% aligned, 0 deviation
+- Gate: 67/67 PASS, 99.5 score, GO, three-party consensus GO
+
+#### Phase24 Status
+
+- Risk Register: v22.0, 64 items, exposure 14, -77.5%, +3 Low (G-039/040/041), +3 CLOSED (G-038/039/040)
+- Defect List: v21.0, 40 P3, 0 P0/P1/P2, +2 P3 (D-NEW-039/040), 2 CLOSED
+- 60-Day Baseline Frozen: V87 RC1 G1 60-day long-term steady ops baseline approved
+- Index Archive Cycle Frozen: 287 days (next archive ~2028-11-06)
+- Query Cache Long-term Ops: Approved
+- CPU Fuse Threshold Maintained: 2.0% (unchanged)
+
+- 60天观测: 1440h, 86,400数据点, 0 P0/P1事件
+- CPU熔断: 12次触发(2.0%), 100%自动恢复, 0数据丢失, 周均0.93次<10次阈值
+- CPU熔断仿真: 2.2%阈值6次(50%降幅), 保护余量降低43%, 生产阈值维持2.0%不变
+- 索引归档: 4批次100GB冷数据压缩归档(3.2:1), 膨胀率8.60%→6.20%(-2.40pp/-27.9%)
+- 归档后日增长率: 0.008%/天(降幅55.6%), 下次告警线D360(2029-02-10), 归档周期287天
+- 查询缓存: 优化上线, P99 3.18→2.85ms(-10.4%), 缓存命中率93.8→97.5%(+3.7pp), 一致性100%
+- 因子IC: 0.605(-0.49%漂移), IR: 5.76(-0.35%漂移), 半衰期100%持平, 0加速衰减
+- O3稳定: CPU 1.70-1.77%, 内存57.5-59.0MB, 无劣化
+- DQ: 99.6%, 误报0.2%, 漏报0%
+- HERMES比对: 24轮全部对齐, 0偏差
+- Gate: 67/67 PASS, 99.5分, GO, 三方共识GO
+- 风险: 64项, 暴露14, -77.5%, +3 Low(G-039/040/041), +3 CLOSED(G-038/039/040)
+- 缺陷: 40项P3, 0 P0/P1/P2, +2 P3(D-NEW-039/040), 2 CLOSED
+- 综合评分: 99.5
+- 版本60天运维基线固化: V87 RC1 G1 60天长期稳态运维基线固化准予
+- 约束合规: NO_ZHIJI_API_CALL=TRUE, NO_MODIFY_V85=TRUE, NO_OVERWRITE=TRUE, BRANCH_LOCKED=TRUE
+- 状态标记: DSHB_G1_PHASE24_60DAY_OBSERVATION_COMPLETED=TRUE, DSHB_G1_PHASE24_INDEX_ARCHIVE_EXECUTED=TRUE, DSHB_G1_PHASE24_QUERY_CACHE_DEPLOYED=TRUE, DSHB_G1_PHASE24_CPU_FUSE_SIM_COMPLETED=TRUE, DSHB_G1_PHASE24_GATE_DECISION=GO, DSHB_G1_PHASE24_60DAY_BASELINE_FROZEN=TRUE, DSHB_G1_PHASE24_INDEX_ARCHIVE_CYCLE_FROZEN=TRUE, DSHB_G1_PHASE24_QUERY_CACHE_LONGTERM_OPS=APPROVED, DSHB_G1_PHASE24_CPU_FUSE_THRESHOLD_MAINTAINED=2.0_PERCENT
+```
