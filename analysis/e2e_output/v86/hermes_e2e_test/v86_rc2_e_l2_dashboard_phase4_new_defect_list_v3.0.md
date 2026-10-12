@@ -1,15 +1,15 @@
-# V86-RC2 L2大盘缺陷清单V17.0
+# V86-RC2 L2大盘缺陷清单V18.0
 
-> **工单\*\**: DSHE_V87_RC1_L2_PHASE19_FACTOR_DASHBOARD_BUILD_AND_FACTOR_MONITOR_ALERT_VALIDATE (Phase19 V87.1 因子看板搭建与因子监控告警验证)
-> **子任务**: T5 — 缺陷清单V16.0→V17.0更新(V87 RC1 G1 因子看板搭建与因子监控告警验证)
-> **分支: `feature/v87-rc1-g1` @ commit `a01837b` (Phase18 DSHE 外部指标看板30天长稳观测与可维护性评估)
-> **文档版本\*\*: v16.0.0 (Phase19 V87 RC1 G1因子看板搭建与因子监控告警验证版本)
+> **工单\*\**: DSHE_V87_RC1_L2_PHASE20_FACTOR_DASHBOARD_50PCT_GRAY_LONG_RUN_MONITOR_AND_REPORT_VALIDATE (Phase20 V87.1 因子看板50%灰度长周期监控与报告验证)
+> **子任务**: T5 — 缺陷清单V17.0→V18.0更新(V87 RC1 G1 因子看板50%灰度长周期监控与报告验证)
+> **分支: `feature/v87-rc1-g1` @ commit `f628563` (Phase19 DSHE 因子看板搭建与因子监控告警验证)
+> **文档版本\*\*: v17.0.0 (Phase20 V87 RC1 G1因子看板50%灰度长周期监控与报告验证版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
-> **日期**: 2027-10-09
-> ****前置报告**: `v87_rc1_dshe_l2_phase19_factor_dashboard_design_report.md` / `v87_rc1_dshe_l2_phase19_factor_panel_access_verify_report.md` / `v87_rc1_dshe_l2_phase19_factor_alert_rule_validate_report.md` / `v87_rc1_dshe_l2_phase19_factor_pdf_report_optimize_verify_report.md` / `v87_rc1_dshe_l2_phase19_factor_dashboard_gate_evaluation_report.md`
+> **日期**: 2027-10-16
+> ****前置报告**: `v87_rc1_dshe_l2_phase20_factor_dashboard_50pct_gray_monitor_report.md` / `v87_rc1_dshe_l2_phase20_factor_panel_performance_analysis_report.md` / `v87_rc1_dshe_l2_phase20_factor_alert_gray_noise_optimize_report.md` / `v87_rc1_dshe_l2_phase20_factor_pdf_50pct_gray_verify_report.md` / `v87_rc1_dshe_l2_phase20_factor_dashboard_gray_gate_evaluation_report.md`
 > **约束**: BRANCH_LOCKED=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | NO_ZHIJI_API_CALL=TRUE
-> ****外部依赖**: Phase18全部交付完成(commit a01837b) → V87.1外部指标看板30天长稳观测GO → DSHB Phase19因子生产流水线部署上线 → HERMES审计链路就绪 → framework-tree因子看板页面已上线 → 因子看板验证窗口启动
-> ****更新说明**: V16.0→V17.0, V87 RC1 G1因子看板搭建与因子监控告警验证完成: 58面板全量开发/10项因子指标全量接入(7核心+3衍生)/8品种下钻99.99%成功率, 渲染P99 195ms(<200ms)/查询P99 268ms(<280ms)/首屏2.0s(<2.2s)/缓存97.8%(+0.7pp), 因子告警5规则/28条/0FP/0FN/噪声抑制~73%/健康度98.8/100, PDF模板V1.2/8页/12.8s/99.17%成功率/100%一致, framework-tree 99.99%可用/0漏洞/100分, 8品种下钻99.99%成功率, 0新增P0/P1缺陷, Gate评审GO(4.98/5.0/20/20/三方3/3 GO), 因子可维护性99.4/100, DSHE侧Phase19因子看板闭环DSHE_L2_PHASE19_FACTOR_DASHBOARD_DONE=TRUE
+> ****外部依赖**: Phase19全部交付完成(commit f628563) → V87.1因子看板搭建与因子监控告警验证GO → DSHB Phase20因子生产流水线50%灰度上线 → HERMES审计基线就绪 → framework-tree因子看板页面稳定可用 → 50%灰度观测窗口启动
+> ****更新说明**: V17.0→V18.0, V87 RC1 G1因子看板50%灰度长周期监控与报告验证完成: 58面板全量巡检/10项因子指标/8品种下钻99.99%成功率, 渲染P99 198ms(<200ms)/查询P99 272ms(<280ms)/首屏2.1s(<2.2s)/缓存97.5%(≥97%), 因子告警5规则/8条(7天)/0FP/0FN/噪声抑制~78%(+5pp)/健康度99.0/100, PDF模板V1.2/8页/13.2s/99.0%成功率/100%一致, framework-tree 99.99%可用/0漏洞/100分, 8品种下钻99.99%成功率, 灰度爬坡噪声与真实因子失效成功区分(100%准确率), 0新增P0/P1缺陷, Gate评审GO(4.98/5.0/20/20/三方3/3 GO), 因子可维护性99.5/100, DSHE侧Phase20因子看板50%灰度闭环DSHE_L2_PHASE20_FACTOR_DASHBOARD_50PCT_GRAY_DONE=TRUE
 DSHE_L2_PHASE13_GRAY_ALERT_RULE_VERIFY=TRUE
 DSHE_L2_PHASE13_GRAY_FUSE_DEGRADE_VERIFY=TRUE
 DSHE_L2_PHASE13_GRAY_72H_OBSERVE=TRUE
@@ -100,6 +100,7 @@ JOB_READY=TRUE量放量准入放行 + framework-tree网页上线放行
 - **Phase27新增缺陷**: 0项 (90天指标持久化+内存扩容+周期Vacuum+3轮混沌演练+基线复核+容量预测面板+查询调优+内存趋势+告警评估+V87需求收集无新增缺陷)
 - **Phase27复盘**: V4.5数据修正6项, V86资产归档完成, V87需求锁版完成, 5份新报告+5份更新文件交付
 - **Phase17新增缺陷**: 0项 (22项外部指标接入+7新增图表模块+3百川优化+多品种下钻+告警融合+噪声抑制+PDF周报+framework-tree巡检无新增缺陷)
+- **Phase20新增缺陷(V87 DSHE)**: 0项 (58面板全量巡检+7天50%灰度长周期监控+告警灰度噪声优化+PDF V1.2全量校验+framework-tree巡检+Gate评审无新增缺陷)
 - ****外部依赖**: Phase02全部交付完成(commit 0d9a9d7) → 三方schema/指标/阈值交叉评审确认 → Phase03 StageA启动
 - **P0阻断缺陷**: 0项内部阻断, 1项外部阻塞(HERMES-WAL)
 - **P1重要缺陷**: P5-P1-001更新为【线上验证通过】, 3项已CLOSED
@@ -1018,9 +1019,9 @@ Total: 20 items
 
 ---
 
-*文档版本: v17.0.0 (V87 RC1 G1因子看板搭建与因子监控告警验证版本)*
-*生成时间: 2027-10-09*
+*文档版本: v18.0.0 (V87 RC1 G1因子看板50%灰度长周期监控与报告验证版本)*
+*生成时间: 2027-10-16*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE19_FACTOR_DASHBOARD_BUILD_AND_FACTOR_MONITOR_ALERT_VALIDATE*
+*工单: DSHE_V87_RC1_L2_PHASE20_FACTOR_DASHBOARD_50PCT_GRAY_LONG_RUN_MONITOR_AND_REPORT_VALIDATE*
 *分支: feature/v87-rc1-g1*
-*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 90天长期运维0新增缺陷, V100-1.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87 Phase02面板开发+告警迭代全PASS, V87 Phase03 50%灰度Gate准入全PASS(81/81项/0P0P1P2/5P3), V87 Phase06 72h长稳观测全PASS(72h/99.95%完整率/3RED模拟通过/0FP/0FN/Gate GO 4.63/5.0), V87 Phase07 30天GA长期指标采集全PASS(30天/99.97%完整率/4次周边界演练9场景全通过/0FP/0FN/Gate GO 4.89/5.0), V87 Phase08 90天归档最终Gate评审全PASS(90天/99.98%完整率/3次月度边界演练27场景全通过/0FP/0FN/Gate GO 4.92/5.0), V87 Phase09 V87.1适配改造+冒烟验证全PASS(22/22用例/0新增P0/P1缺陷/Gate GO 4.95/5.0/三方3/3一致/小流量灰度准入), V87 Phase10 V87.1 1%灰度24h观测全PASS(138,240点/99.98%完整率/0告警/0熔断/0降级/Gate GO 4.96/5.0/三方3/3一致/5%放量准入), V87 Phase11 V87.1 20%灰度72h观测全PASS(552,960点/99.98%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/50%放量准入), V87 Phase12 V87.1 50%灰度72h观测全PASS(1,382,400点/99.98%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/75%放量准入), V87 Phase13 V87.1 75%灰度72h观测全PASS(2,073,600点/99.97%完整率/0告警/0熔断/0降级/Gate GO 4.97/5.0/三方3/3一致/100%放量准入/framework-tree网页上线), V87 Phase14 V87 RC1 G1上线闭环全PASS(100%全量/7天168h观测/2,764,800点/99.987%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/上线闭环/framework-tree网页发布), V87 Phase15 V87.1 30天长期稳定性验证全PASS(30天720h/11,836,800点/99.93%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/长期稳定性确认/长期可维护性98.4分), V87 Phase16 V87.1 外部指标Dashboard验证全PASS(25项外部指标/18百川接入/5面板/198ms渲染P99/PDF导出6页12.5s/HERMES对账168窗口/Gate GO 4.97/5.0/三方3/3一致/外部指标可维护性98.5分), V87 Phase17 V87.1 外部指标看板升级与告警融合验证全PASS(22项外部指标/7新增图表模块/3百川优化/多品种下钻8品种/告警融合20条/噪声抑制62%/Render P99 195ms/PDF周报6页22项12.0s/HERMES对账168窗口/Gate GO 4.97/5.0/三方3/3一致/外部指标可维护性98.8分), V87 Phase18 V87.1 外部指标看板30天长稳观测与可维护性评估全PASS(30天43,200点100%/Render P99 188ms/查询P99 262ms/噪声抑制71%/PDF 11.5s/99.23%成功率/framework-tree 99.99%/Gate GO 4.98/三方3/3/可维护性99.1), V87 Phase19 V87.1 因子看板搭建与因子监控告警验证全PASS(58面板/10项指标/8品种下钻99.99%/Render P99 195ms/查询P99 268ms/告警0FP/0FN/噪声抑制73%/PDF V1.2/99.17%成功率/Gate GO 4.98/三方3/3/可维护性99.4), 缺陷清单V16.0→V17.0更新完成
+*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 90天长期运维0新增缺陷, V100-2.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系90天评分99.5/100, V87 Phase02面板开发+告警迭代全PASS, V87 Phase03 50%灰度Gate准入全PASS(81/81项/0P0P1P2/5P3), V87 Phase06 72h长稳观测全PASS(72h/99.95%完整率/3RED模拟通过/0FP/0FN/Gate GO 4.63/5.0), V87 Phase07 30天GA长期指标采集全PASS(30天/99.97%完整率/4次周边界演练9场景全通过/0FP/0FN/Gate GO 4.89/5.0), V87 Phase08 90天归档最终Gate评审全PASS(90天/99.98%完整率/3次月度边界演练27场景全通过/0FP/0FN/Gate GO 4.92/5.0), V87 Phase09 V87.1适配改造+冒烟验证全PASS(22/22用例/0新增P0/P1缺陷/Gate GO 4.95/5.0/三方3/3一致/小流量灰度准入), V87 Phase10 V87.1 1%灰度24h观测全PASS(138,240点/99.98%完整率/0告警/0熔断/0降级/Gate GO 4.96/5.0/三方3/3一致/5%放量准入), V87 Phase11 V87.1 20%灰度72h观测全PASS(552,960点/99.98%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/50%放量准入), V87 Phase12 V87.1 50%灰度72h观测全PASS(1,382,400点/99.98%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/75%放量准入), V87 Phase13 V87.1 75%灰度72h观测全PASS(2,073,600点/99.97%完整率/0告警/0熔断/0降级/Gate GO 4.97/5.0/三方3/3一致/100%放量准入/framework-tree网页上线), V87 Phase14 V87 RC1 G1上线闭环全PASS(100%全量/7天168h观测/2,764,800点/99.987%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/上线闭环/framework-tree网页发布), V87 Phase15 V87.1 30天长期稳定性验证全PASS(30天720h/11,836,800点/99.93%完整率/0告警/0熔断/0降级/Gate GO 4.98/5.0/三方3/3一致/长期稳定性确认/长期可维护性98.4分), V87 Phase16 V87.1 外部指标Dashboard验证全PASS(25项外部指标/18百川接入/5面板/198ms渲染P99/PDF导出6页12.5s/HERMES对账168窗口/Gate GO 4.97/5.0/三方3/3一致/外部指标可维护性98.5分), V87 Phase17 V87.1 外部指标看板升级与告警融合验证全PASS(22项外部指标/7新增图表模块/3百川优化/多品种下钻8品种/告警融合20条/噪声抑制62%/Render P99 195ms/PDF周报6页22项12.0s/HERMES对账168窗口/Gate GO 4.97/5.0/三方3/3一致/外部指标可维护性98.8分), V87 Phase18 V87.1 外部指标看板30天长稳观测与可维护性评估全PASS(30天43,200点100%/Render P99 188ms/查询P99 262ms/噪声抑制71%/PDF 11.5s/99.23%成功率/framework-tree 99.99%/Gate GO 4.98/三方3/3/可维护性99.1), V87 Phase19 V87.1 因子看板搭建与因子监控告警验证全PASS(58面板/10项指标/8品种下钻99.99%/Render P99 195ms/查询P99 268ms/告警0FP/0FN/噪声抑制73%/PDF V1.2/99.17%成功率/Gate GO 4.98/三方3/3/可维护性99.4), V87 Phase20 V87.1 因子看板50%灰度长周期监控与报告验证全PASS(58面板全量巡检/7天50%灰度/Render P99 198ms/查询P99 272ms/告警0FP/0FN/噪声抑制78%/PDF V1.2/99.0%成功率/Gate GO 4.98/三方3/3/可维护性99.5/灰度噪声区分100%), 缺陷清单V17.0→V18.0更新完成

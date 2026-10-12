@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase19)
+# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase20)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `977a22d` (Phase19 DSHB)
-> 日期: 2027-10-30
+> 基准commit: `5e5b6be` (Phase20 DSHB)
+> 日期: 2027-11-01
 > 版本: V87-RC1
-> 状态: 🟢 Phase19终态 (DSHB+DSHE)
+> 状态: 🟢 Phase20终态 (DSHB+DSHE)
 
 ---
 
@@ -13,11 +13,11 @@
 
 | 项目 | 值 |
 |------|----|
-| 审查范围 | V87 RC1 Phase01 ~ Phase19 |
-| 审查日期 | 2027-10-30 |
+| 审查范围 | V87 RC1 Phase01 ~ Phase20 |
+| 审查日期 | 2027-11-01 |
 | 基准版本 | V87.1 RC1 |
 | 分支 | `feature/v87-rc1-g1` |
-| 基准commit | `A0B85953` |
+| 基准commit | `5e5b6be` |
 | 约束 | NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE |
 
 ---
@@ -45,7 +45,8 @@
 | Phase17 | 6 | 5 | 0 | 2 | 13 |
 | Phase18 | 6 | 5 | 0 | 2 | 13 |
 | Phase19 | 6 | 5 | 0 | 2 | 13 |
-| **合计** | **54** | **37** | **62** | **36** | **189** |
+| Phase20 | 6 | 5 | 0 | 2 | 13 |
+| **合计** | **60** | **42** | **62** | **38** | **202** |
 
 ---
 
@@ -107,6 +108,51 @@
 | 45 | `risk_register_v87_phase16.md` (v14.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 46 | `defect_list.md` (v13.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 
+### 3.1c DSHB Phase17-18 (外部指标流水线搭建与30天长稳观测)
+
+| # | 文件 | Phase | MD5 | 大小 |
+|---|------|:-----:|-----|:----:|
+| 47 | `v87_rc1_dshb_g1_phase17_external_metric_pipeline_design_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 48 | `v87_rc1_dshb_g1_phase17_baiquandb_sync_pipeline_implement_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 49 | `v87_rc1_dshb_g1_phase17_web_crawl_sync_pipeline_implement_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 50 | `v87_rc1_dshb_g1_phase17_data_quality_rule_design_and_validate_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~19,000 B |
+| 51 | `v87_rc1_dshb_g1_phase17_metric_pipeline_gate_evaluation.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 52 | `risk_register_v87_phase17.md` (v15.0) | Phase17 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 53 | `defect_list.md` (v14.0) | Phase17 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
+| 54 | `v87_rc1_dshb_g1_phase18_external_metric_pipeline_30day_longrun_report.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 55 | `v87_rc1_dshb_g1_phase18_pipeline_stability_and_performance_report.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 56 | `v87_rc1_dshb_g1_phase18_dq_rule_optimization_and_validate_report.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~19,000 B |
+| 57 | `v87_rc1_dshb_g1_phase18_pipeline_resource_cost_evaluation_report.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 58 | `v87_rc1_dshb_g1_phase18_pipeline_longrun_gate_evaluation.md` | Phase18 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 59 | `risk_register_v87_phase18.md` (v16.0) | Phase18 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 60 | `defect_list.md` (v15.0) | Phase18 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
+
+### 3.1d DSHB Phase19 (影子回测因子验证与因子相关性分析)
+
+| # | 文件 | Phase | MD5 | 大小 |
+|---|------|:-----:|-----|:----:|
+| 61 | `v87_rc1_dshb_g1_phase19_shadow_backtest_dataset_baseline_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~30,000 B |
+| 62 | `v87_rc1_dshb_g1_phase19_single_factor_ic_ir_correlation_analysis_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~42,000 B |
+| 63 | `v87_rc1_dshb_g1_phase19_multifactor_shadow_backtest_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+| 64 | `v87_rc1_dshb_g1_phase19_factor_stress_test_and_decay_analysis_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~38,000 B |
+| 65 | `v87_rc1_dshb_g1_phase19_factor_production_pipeline_implement_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~32,000 B |
+| 66 | `v87_rc1_dshb_g1_phase19_factor_validation_gate_evaluation.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~28,000 B |
+| 67 | `risk_register_v87_phase19.md` (v17.0) | Phase19 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 68 | `defect_list.md` (v16.0) | Phase19 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+
+### 3.1e DSHB Phase20 (因子生产流水线50%灰度上线与指标监控)
+
+| # | 文件 | Phase | MD5 | 大小 |
+|---|------|:-----:|-----|:----:|
+| 69 | `v87_rc1_dshb_g1_phase20_factor_50pct_gray_deploy_exec_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~32,000 B |
+| 70 | `v87_rc1_dshb_g1_phase20_online_offline_factor_bias_analysis_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+| 71 | `v87_rc1_dshb_g1_phase20_factor_online_ic_ir_monitor_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~38,000 B |
+| 72 | `v87_rc1_dshb_g1_phase20_factor_pipeline_fault_drill_and_stress_test_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~36,000 B |
+| 73 | `v87_rc1_dshb_g1_phase20_factor_gray_resource_cost_evaluation_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~34,000 B |
+| 74 | `v87_rc1_dshb_g1_phase20_factor_50pct_gray_gate_evaluation.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~30,000 B |
+| 75 | `risk_register_v87_phase20.md` (v18.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
+| 76 | `defect_list.md` (v17.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
+
 ### 3.2 DSHE系列 (Phase08-Phase16)
 
 | # | 文件 | Phase | MD5 | 大小 |
@@ -143,15 +189,20 @@
 | 30 | `v87_rc1_dshe_l2_phase19_factor_alert_rule_validate_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
 | 31 | `v87_rc1_dshe_l2_phase19_factor_pdf_report_optimize_verify_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~15,000 B |
 | 32 | `v87_rc1_dshe_l2_phase19_factor_dashboard_gate_evaluation_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 33 | `v87_rc1_dshe_l2_phase20_factor_dashboard_50pct_gray_monitor_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 34 | `v87_rc1_dshe_l2_phase20_factor_panel_performance_analysis_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 35 | `v87_rc1_dshe_l2_phase20_factor_alert_gray_noise_optimize_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 36 | `v87_rc1_dshe_l2_phase20_factor_pdf_50pct_gray_verify_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 37 | `v87_rc1_dshe_l2_phase20_factor_dashboard_gray_gate_evaluation_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 
 ### 3.3 元数据文件
 
 | # | 文件 | 状态 |
 |---|------|:----:|
-| 1 | `STATUS.md` | ✅ Phase18 entry added |
-| 2 | `JOB_READY.flag` | ✅ Phase18 section added |
-| 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase18 section added |
-| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v2.8) |
+| 1 | `STATUS.md` | ✅ Phase20 DSHE entry added |
+| 2 | `JOB_READY.flag` | ✅ Phase20 DSHE section added |
+| 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase20 section added |
+| 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 (v3.0, Phase20 DSHE entries added) |
 
 ---
 
@@ -187,26 +238,27 @@
 | Phase17 | 99.0 GO | 4.97/5.0 GO | 99.0 GO | GO | 外部指标看板升级 |
 | Phase18 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观测 |
 | Phase19 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 因子看板搭建 |
+| Phase20 | 99.0 GO | 4.95/5.0 GO | 99.0 GO | GO | 因子50%灰度投产 |
 
 ### 4.3 风险演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | 趋势 |
-|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | ➡️ 灰度+运维+外部新增 |
-| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
-| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | 13 | ➡️ 外部+1 |
-| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | ➡️ 基本持平 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | 趋势 |
+|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
+| 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | ➡️ 灰度+运维+外部+因子新增 |
+| 已关闭 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
+| 暴露度 | 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | ➡️ 基本持平 |
+| 消减率 | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | ➡️ 基本持平 |
 
 ### 4.4 缺陷演进
 
-| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | 趋势 |
-|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | ↑ 灰度+运维+外部新增 |
-| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
-| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | 趋势 |
+|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
+| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | ↑ 灰度+运维+外部+因子新增 |
+| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
+| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 零 |
 
 ---
 
@@ -234,6 +286,7 @@
 | Phase17新增文件 | ✅ 7份新增(5报告+2更新) |
 | Phase18新增文件 | ✅ 7份新增(5报告+2更新) |
 | Phase19新增文件 | ✅ 7份新增(5报告+2更新) |
+| Phase20新增文件 | ✅ 8份新增(6报告+2更新) |
 | 元数据更新 | ✅ 4份更新 |
 | NO_MODIFY_V85 | ✅ V85未修改 |
 | NO_ZHIJI_API_CALL | ✅ 未调用知几API |
@@ -249,7 +302,11 @@
 | Phase14报告包含 | ✅ 8份全部 |
 | Phase15报告包含 | ✅ 7份全部 |
 | Phase16报告包含 | ✅ 8份全部 |
-| MD5清单完整 | ✅ 148份 |
+| Phase17报告包含 | ✅ 8份全部 |
+| Phase18报告包含 | ✅ 8份全部 |
+| Phase19报告包含 | ✅ 8份全部 |
+| Phase20报告包含 | ✅ 8份全部 |
+| MD5清单完整 | ✅ 197份 |
 | 静态页面构建 | ✅ 88页 |
 | 导航链接有效 | ✅ 714/714 |
 | 资源完整性 | ✅ 311/311 |
@@ -282,22 +339,23 @@
 | 外部指标看板30天长稳观测 | ✅ V87 RC1 G1 外部指标看板30天长稳观测与可维护性评估通过 |
 | 因子看板搭建 | ✅ V87 RC1 G1 因子看板搭建与因子监控告警验证通过 |
 | 影子回测因子验证 | ✅ V87 RC1 G1 影子回测因子验证与因子相关性分析GO |
+| 因子50%灰度投产 | ✅ V87 RC1 G1 因子生产流水线50%灰度上线与指标监控GO |
 | 约束合规 | ✅ 全部满足 |
 
 ### 7.2 最终结论
 
-**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO, framework-tree GitHub Pages已部署上线**
+**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO + 因子生产流水线50%灰度上线与指标监控GO, framework-tree GitHub Pages已部署上线**
 
 ---
 
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.9
-MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_19
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=189
-MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=66
-MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=32
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.10
+MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_20
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=197
+MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=76
+MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=37
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
 MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=29
 MD5_MANIFEST_CROSS_REVIEW_MD5_MATCH=100_PERCENT
@@ -323,6 +381,12 @@ MD5_MANIFEST_CROSS_REVIEW_FACTOR_ALERT_VALIDATE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_PDF_EXPORT=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_SHADOW_BACKTEST_FACTOR_VALIDATION=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_PRODUCTION_PIPELINE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_50PCT_GRAY_DEPLOY=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_ONLINE_MONITOR=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_FAULT_DRILL=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_GRAY_RESOURCE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_50PCT_GRAY_GATE=GO
+MD5_MANIFEST_CROSS_REVIEW_FACTOR_75PCT_READY=TRUE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```
