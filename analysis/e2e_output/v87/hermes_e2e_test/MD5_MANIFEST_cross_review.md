@@ -1,11 +1,11 @@
-# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase16)
+# MD5_MANIFEST — V87-RC1 交叉审查清单 (Phase01-Phase17)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
-> 基准commit: `A0B85953` (Phase12)
-> 日期: 2027-08-21
+> 基准commit: `7c5356f` (Phase16 DSHE)
+> 日期: 2027-10-08
 > 版本: V87-RC1
-> 状态: 🟢 Phase16终态
+> 状态: 🟢 Phase17终态
 
 ---
 
@@ -125,14 +125,19 @@
 | 15 | `v87_rc1_dshe_l2_phase16_dashboard_render_and_pdf_export_validate_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~15,000 B |
 | 16 | `v87_rc1_dshe_l2_phase16_frameworktree_external_panel_web_inspect_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
 | 17 | `v87_rc1_dshe_l2_phase16_dashboard_gate_evaluation_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~16,000 B |
+| 18 | `v87_rc1_dshe_l2_phase17_dashboard_upgrade_design_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~19,000 B |
+| 19 | `v87_rc1_dshe_l2_phase17_new_external_metric_panel_access_verify_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 20 | `v87_rc1_dshe_l2_phase17_alert_fusion_validate_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 21 | `v87_rc1_dshe_l2_phase17_dashboard_performance_pdf_export_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 22 | `v87_rc1_dshe_l2_phase17_dashboard_gate_evaluation_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
 
 ### 3.3 元数据文件
 
 | # | 文件 | 状态 |
 |---|------|:----:|
-| 1 | `STATUS.md` | ✅ Phase16 entry added |
-| 2 | `JOB_READY.flag` | ✅ Phase16 section added |
-| 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase16 section added |
+| 1 | `STATUS.md` | ✅ Phase17 entry added |
+| 2 | `JOB_READY.flag` | ✅ Phase17 section added |
+| 3 | `MD5_MANIFEST_V87_PHASE01.md` | ✅ Phase17 section added |
 | 4 | `MD5_MANIFEST_cross_review.md` | ✅ 本文件 |
 
 ---
@@ -254,22 +259,23 @@
 | 外部指标Dashboard | ✅ V87 RC1 G1 外部指标Dashboard验证通过 |
 | 外部因子指标映射 | ✅ V87 RC1 G1 外部因子指标映射方案GO |
 | 外部指标数据流水线 | ✅ V87 RC1 G1 外部指标数据流水线GO |
+| 外部指标看板升级 | ✅ V87 RC1 G1 外部指标看板升级与告警融合验证通过 |
 | 约束合规 | ✅ 全部满足 |
 
 ### 7.2 最终结论
 
-**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO, framework-tree GitHub Pages已部署上线**
+**✅ V87.1 RC1 交叉审查通过 — V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完成 + 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过, framework-tree GitHub Pages已部署上线**
 
 ---
 
 ## 8. 状态标记
 
 ```
-MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.4
+MD5_MANIFEST_CROSS_REVIEW_VERSION=v2.5
 MD5_MANIFEST_CROSS_REVIEW_PHASE=01_TO_17
-MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=148
+MD5_MANIFEST_CROSS_REVIEW_TOTAL_FILES=153
 MD5_MANIFEST_CROSS_REVIEW_DSHB_FILES=54
-MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=17
+MD5_MANIFEST_CROSS_REVIEW_DSHE_FILES=22
 MD5_MANIFEST_CROSS_REVIEW_HERMES_FILES=62
 MD5_MANIFEST_CROSS_REVIEW_OTHER_FILES=15
 MD5_MANIFEST_CROSS_REVIEW_MD5_MATCH=100_PERCENT
@@ -285,6 +291,7 @@ MD5_MANIFEST_CROSS_REVIEW_LONGTERM_BASELINE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_EXT_METRIC_DASHBOARD=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_EXT_FACTOR_MAPPING=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_EXT_PIPELINE=COMPLETE
+MD5_MANIFEST_CROSS_REVIEW_EXT_DASHBOARD_UPGRADE=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_DONE=TRUE
 JOB_READY=TRUE
 ```
