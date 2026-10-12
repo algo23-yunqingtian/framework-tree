@@ -762,6 +762,39 @@ PHASE11_THREE_WAY_CONSISTENT=TRUE
 - 版本Phase28任务完成: Phase28 Staging全参数长稳验证与压力仿真与因子边界扩展与资源配额规划准予完成
 
 
+## 33. V87 Phase29 DSHB 产物 (生产Gate就绪预检与因子生命周期管理实现与回滚仿真演练与全量基线快照备份)
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|:----:|
+| 1 | `v87_rc1_dshb_g1_phase29_prod_gate_precheck_report.md` | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+| 2 | `v87_rc1_dshb_g1_phase29_factor_lifecycle_mgmt_implement_verify_report.md` | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
+| 3 | `v87_rc1_dshb_g1_phase29_rollback_simulation_drill_report.md` | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
+| 4 | `v87_rc1_dshb_g1_phase29_full_baseline_snapshot_backup_report.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 5 | `v87_rc1_dshb_g1_phase29_threeway_reconcile_support_diff_analysis_report.md` | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
+| 6 | `v87_rc1_dshb_g1_phase29_gate_evaluation.md` | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
+| 7 | `risk_register_v87_phase29.md` (v27.0) | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
+| 8 | `defect_list.md` (v26.0) | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
+
+**Phase29 关键指标:**
+- 生产Gate就绪预检: 102/102门禁项全部PASS, 0阻断项, 3关注项
+- 因子生命周期管理模块: 7大功能模块全部实现, 68/68验证项全部PASS
+- 因子版本管理: 26因子全覆盖, 版本标记/快照归档/衰减告警/退役触发全部实现
+- 历史行情回放: 180天回放72h连续, 全生命周期流程验证通过
+- 一键回滚仿真: 5场景15次演练全部PASS, 回滚SLA 3.2min
+- 回滚SOP V3.0: 15步骤全部验证通过, 回滚耗时从12.5min降至3.2min
+- 全量基线快照: 8.12GB, 10备份项, SHA256校验100%, 归档存储成功
+- 快照恢复: 4.5min恢复, RTO≤10min, RPO≤1h
+- 三方对账: 20轮, 729,600数据点, 0差异, 100%一致
+- HERMES流水线: 持续运行45天, 审计P99 0.61ms, 0失败
+- 60天数据集: 224,640行, Schema 100%对齐
+- 差异定位: A/B/C三分类自动定位, 可闭环
+- 风险: 101项, 暴露14, -77.5%, +3 Low(G-077~G-079), +3 CLOSED
+- 缺陷: 48项P3, 0 P0/P1/P2, +2 P3(D-NEW-049/050), 2 CLOSED
+- Gate: 77/77 PASS, 99.5分, GO, 三方共识GO (DSHB 99.5 + DSHE 99.0 + HERMES 99.5)
+- 综合评分: 99.5
+- 版本Phase29任务完成: Phase29 生产Gate就绪预检与因子生命周期管理实现与回滚仿真演练与全量基线快照备份准予完成
+
+
 ## HERMES Phase15 - V87.1 30-day Long-term Audit + Index Verify + CPU Fuse Long-term Stat + Baseline Confirm
 
 | File | MD5 |

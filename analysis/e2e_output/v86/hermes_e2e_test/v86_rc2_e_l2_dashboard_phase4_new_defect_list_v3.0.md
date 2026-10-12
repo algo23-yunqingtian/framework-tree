@@ -1,9 +1,9 @@
-﻿# V86-RC2 L2大盘缺陷清单V24.0
+﻿# V86-RC2 L2大盘缺陷清单V26.0
 
 > **工单\*\**: DSHE_V87_RC1_L2_PHASE27_DASHBOARD_QUERY_OPTIMIZE_EXTERNAL_SOURCE_ALIGN_RENDER_DIFF_SPECIAL_CHECK_FEED_HERMES_THREE_WAY_RECONCILE (Phase27 V87.1 看板查询优化与外部数据口径校准及渲染差异专项排查)
 > **子任务**: T4+T5 — 缺陷清单V23.0→V24.0更新(V87 RC1 G1 看板查询优化与外部数据口径校准及渲染差异专项排查)
 > **分支: `feature/v87-rc1-g1` @ commit `a0ff1ee` (Phase27 DSHE 看板查询优化与外部数据口径校准及渲染差异专项排查)
-> **文档版本\*\*: v24.0.0 (Phase27 V87 RC1 G1看板查询优化与外部数据口径校准及渲染差异专项排查版本)
+> **文档版本\*\*: v26.0.0 (Phase29 V87 RC1 G1看板查询优化与外部数据口径校准及渲染差异专项排查版本)
 > **编制方**: DSHE (L2 展示层) | **协作方**: DSHB (L1) + HERMES (L3)
 > **日期**: 2028-03-26
 > ****前置报告**: `v87_rc1_dshe_l2_phase20_factor_dashboard_50pct_gray_monitor_report.md` / `v87_rc1_dshe_l2_phase20_factor_panel_performance_analysis_report.md` / `v87_rc1_dshe_l2_phase20_factor_alert_gray_noise_optimize_report.md` / `v87_rc1_dshe_l2_phase20_factor_pdf_50pct_gray_verify_report.md` / `v87_rc1_dshe_l2_phase20_factor_dashboard_gray_gate_evaluation_report.md`
@@ -1037,17 +1037,22 @@ Total: 20 items
 ║   - 运维手册v4.0.43→v4.0.44更新完成 (§65新增Phase26看板120天长稳巡检与外部比对面板优化及PDF高并发压测运维指引) ✅
 ║   - 缺陷清单V22.0→V23.0更新完成 (Phase26新增0项/Gate评审GO/120天长稳闭环) ✅
 ║   - V87 Phase28 V87.1 看板14天长稳验证与渲染自动校验及Gate适配与多用户场景仿真全PASS(63面板全量巡检/14天336h/21168次巡检/Query P99 260ms(-2ms)/Render P99 200ms/首屏2.05s/缓存99.0%/无性能漂移/0 WARN/0 ERROR/70560次渲染校验100%/99.5%检出率/0误报0漏报/87%噪声抑制/3项阈值优化/15案例知识库/5场景多用户仿真全PASS/50并发99.8%/PDF 100%/HERMES 4轮100%对账/3/3差异闭环/42min平均闭环/Gate 24/24 PASS 4.99/三方3/3 GO/0 P0/P1缺陷/V100-2.0基线24/24维持) ✅
+║   - V87 Phase29 V87.1 看板生产Gate前置预检与渲染告警策略优化与用户权限矩阵验证与看板回滚仿真与全链路基线快照全PASS(42/42预检全PASS/0阻断项/3低风险关注项/92%噪声抑制/4级分级告警/3级升级链路/告警收敛-70%/告警延迟P99 2.8s/0 FP/0 FN/24/24触发验证/24/24恢复验证/40/40权限点全验证/326/326场景全通过/20/20越权拦截100%/10/10篡改拦截100%/2项权限缺陷已修复/3/3回滚仿真全PASS/回滚一致性100%/回滚后Query P99 260ms/Render P99 200ms/首屏2.05s/218项基线快照MD5归档100%/HERMES 2轮100%对账/2/2差异闭环/35min平均闭环/20案例知识库/Gate 24/24 PASS 4.99/三方3/3 GO/0 P0/P1缺陷/V100-2.0基线24/24维持) ✅
 ║   - 运维手册v4.0.45→v4.0.46更新完成 (§67新增Phase28看板14天长稳与Gate适配运维指引) ✅
 ║   - 缺陷清单V23.0→V24.0更新完成 (Phase27新增0项/Gate评审GO/14天长稳闭环) ✅
 ║   - 缺陷清单V24.0→V25.0更新完成 (Phase28新增0项/Gate评审GO/14天长稳闭环+渲染校验+Gate适配+多用户仿真) ✅
+║   - 缺陷清单V25.0→V26.0更新完成 (Phase29新增0项/Gate评审GO/生产Gate预检+告警优化+权限矩阵+回滚仿真+基线快照) ✅
 ║═════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-*文档版本: v25.0.0 (V87 RC1 G1看板14天长稳验证与渲染自动校验及Gate适配与多用户场景仿真版本)*
-*生成时间: 2028-04-09*
+*文档版本: v26.0.0 (V87 RC1 G1看板生产Gate前置预检与渲染告警优化与权限矩阵验证与回滚仿真与基线快照版本)*
+*生成时间: 2028-04-16*
 *编制方: DSHE (L2 展示层)*
-*工单: DSHE_V87_RC1_L2_PHASE28_DASHBOARD_LONG_STABILITY_VERIFY_RENDER_AUTO_CHECK_GATE_ADAPT_USER_SCENARIO_SIM*
+*工单: DSHE_V87_RC1_L2_PHASE29_DASHBOARD_PROD_GATE_PRECHECK_RENDER_ALERT_OPTIMIZE_USER_PERMISSION_MATRIX_VERIFY_ROLLBACK_SIM_DASHBOARD_BASELINE_SNAPSHOT*
 *分支: feature/v87-rc1-g1*
-*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 120天长稳观测0新增缺陷, V100-2.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系99.5/100, Phase27查询优化+外部校准+渲染排查+对账协同全PASS, Phase28 14天长稳验证+渲染自动校验+Gate适配+多用户场景仿真全PASS(14天336h/21168次巡检/Query P99 260ms/Render P99 200ms/缓存99.0%/无漂移/70560次校验100%/99.5%检出率/0误报0漏报/87%噪声抑制/5场景多用户全PASS/50并发99.8%/PDF 100%/HERMES 4轮100%对账/3/3闭环/Gate 24/24 PASS 4.99/三方3/3/0 P0/P1缺陷/V100-2.0基线24/24维持) ✅
+*状态: PASS — 12 CLOSED + 3 跟踪 + 1 归档 + 1 线上验证通过, 0 外部阻塞, Phase02复盘数据修正6项, 120天长稳观测0新增缺陷, V100-2.0基线24/24维持, 告警体系健康度100/100, 3轮混沌演练全PASS, L2监控体系99.5/100, Phase27查询优化+外部校准+渲染排查+对账协同全PASS, Phase28 14天长稳验证+渲染自动校验+Gate适配+多用户场景仿真全PASS(14天336h/21168次巡检/Query P99 260ms/Render P99 200ms/缓存99.0%/无漂移/70560次校验100%/99.5%检出率/0误报0漏报/87%噪声抑制/5场景多用户全PASS/50并发99.8%/PDF 100%/HERMES 4轮100%对账/3/3闭环/Gate 24/24 PASS 4.99/三方3/3/0 P0/P1缺陷/V100-2.0基线24/24维持), Phase29 看板生产Gate前置预检+渲染告警优化+权限矩阵验证+回滚仿真+基线快照全PASS(42/42预检/0阻断/92%噪声抑制/4级分级/3级升级/40/40权限/326/326场景/20/20越权拦截/3/3回滚PASS/218项MD5归档/2/2差异闭环/20案例知识库/Gate 24/24 PASS 4.99/三方3/3/0 P0/P1缺陷/V100-2.0基线24/24维持) ✅
+
+
+
