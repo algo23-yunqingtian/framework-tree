@@ -2289,11 +2289,10 @@ JOB_READY=TRUE
 
 # ===== HERMES V87-RC1-G1 7DAY_OBS (2028-05-17) =====
 # 工单: V87_RC1_G1_7DAY_OBS_HERMES | 分支: feature/v87-rc1-g1
-# 观测周期: 2028-05-11 ~ 2028-05-17 (168h) | 最终结论: PASS (GO_OBSERVATION_PASSED)
-# 附条件放行: 5/5 全部达标 | 综合评分: 99.6/100 | 对账一致率: 100.0% | ③类缺陷: 0
-# CPU熔断: 0次 | CPU峰值: 79.0% | 生产差异: 0 | 829基线MD5: 5803项校验0变更
-# 历史Release资产哈希保持不变 (7/7未变) | Release Tag v87-rc1-g1-final 锁定未修改
-HERMES_7DAY_OBS_COMPLETE=TRUE
+# 观测周期: 2028-05-11 ~ 2028-05-17 (168h) | 最终结�? PASS (GO_OBSERVATION_PASSED)
+# 附条件放�? 5/5 全部达标 | 综合评分: 99.6/100 | 对账一致率: 100.0% | ③类缺陷: 0
+# CPU熔断: 0�?| CPU峰�? 79.0% | 生产差异: 0 | 829基线MD5: 5803项校�?变更
+# 历史Release资产哈希保持不变 (7/7未变) | Release Tag v87-rc1-g1-final 锁定未修�?HERMES_7DAY_OBS_COMPLETE=TRUE
 HERMES_7DAY_OBS_CONCLUSION=PASS
 HERMES_7DAY_OBS_GO_OBSERVATION_PASSED=TRUE
 MD5_HERMES_7DAY_OBS_DAY1=21C68E10
@@ -2313,18 +2312,39 @@ HERMES_7DAY_OBS_CONSTRAINT_COMPLIANCE=6_OF_6
 HERMES_7DAY_OBS_HISTORY_RELEASE_HASH_UNCHANGED=TRUE
 
 
-## 2026-10-12 HERMES_V87_ARCHIVE_FINAL + V88_INIT 新增交付物 MD5
+## 2026-10-12 HERMES_V87_ARCHIVE_FINAL + V88_INIT 新增交付�?MD5
 | # | 文件 | 归属 | MD5 | 行数 |
 |---|---|---|---|---|
 | 1 | v87_rc1_g1_full_project_closure_report.md | V87归档 | 8c6bc78b | 139 |
 | 2 | v87_rc1_g1_all_deliverables_index.md | V87归档 | b27f7b6a | 索引 |
 | 3 | v87_rc1_g1_consolidated_risk_backlog.md | V87归档 | 9b282a75 | 80 |
 | 4 | v88_global_project_init_requirement.md | V88立项 | 74dcf2c9 | 立项 |
-| 5 | v88_phase_milestone_draft.md | V88立项 | ec43807d | 里程碑 |
+| 5 | v88_phase_milestone_draft.md | V88立项 | ec43807d | 里程�?|
 | 6 | v88_global_longterm_ops_sop.md | V88立项 | eae3f234 | SOP |
 
-# 历史Release基线资产哈希保持不变，本次仅追加，v87-rc1-g1-final Tag未修改
-HERMES_ARCHIVE_FINAL_7DAY_OBS_COMPLETE=TRUE
+# 历史Release基线资产哈希保持不变，本次仅追加，v87-rc1-g1-final Tag未修�?HERMES_ARCHIVE_FINAL_7DAY_OBS_COMPLETE=TRUE
 HERMES_ARCHIVE_FINAL_MD5_APPENDED=TRUE
 V87_LIFECYCLE=ARCHIVED
 V88_LIFECYCLE=INIT_STARTED
+---
+
+## V87_RC1_G1_DSHE_OBS_CLEANUP + V88_INIT ������MD5�嵥 (2028-05-18)
+
+| �ļ� | ��С | MD5 |
+|------|:----:|-----|
+| analysis/e2e_output/v87/archive/v87_rc1_g1_dshe_archive_summary_report.md | 7974 | C751C0FEF26BACEE91CB5FEF3A352878 |
+| analysis/e2e_output/v88/backlog/framework_tree_meta_chart.yaml | 55311 | 610D4C4B7B7C0AC2BEDE35DB70773040 |
+| analysis/e2e_output/v88/backlog/v88_dshe_backlog_framework_tree_meta_refactor_report.md | 10385 | 204795E9FCAB7371C1B7E1CA8446AD05 |
+| analysis/e2e_output/v88/backlog/v88_dshe_backlog_weekly_auto_render_test_report.md | 19899 | 99F1DA62A952FEED9D90005D182D50EF |
+
+### ״̬���
+
+V87_RC1_G1_DSHE_OBS_CLEANUP_T5_STATUS_UPDATED=TRUE
+V87_RC1_G1_DSHE_OBS_CLEANUP_T5_JOB_READY_UPDATED=TRUE
+V87_RC1_G1_DSHE_OBS_CLEANUP_T5_MD5_MANIFEST_UPDATED=TRUE
+V87_RC1_G1_DSHE_OBS_CLEANUP_DELIVERABLES=4
+V87_RC1_G1_DSHE_OBS_CLEANUP_DELIVERABLE_SIZE_TOTAL=93569
+V87_RC1_G1_DSHE_OBS_CLEANUP_BASELINE_829_MD5_UNCHANGED=TRUE
+V87_RC1_G1_DSHE_OBS_CLEANUP_ARCHIVE_930_UNCHANGED=TRUE
+V87_RC1_G1_DSHE_OBS_CLEANUP_COMPLETE=TRUE
+JOB_READY=TRUE

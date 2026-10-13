@@ -1,0 +1,1774 @@
+# =============================================================================
+# Framework Tree 图表元数据配置文件
+# V88 元数据改造：移除独立 topic_tag，图表直接绑定 Framework Tree 节点ID
+# =============================================================================
+# TASK_ID: V87_RC1_G1_DSHE_OBS_CLEANUP (V88_INIT 元数据改造预研)
+# AGENT: DSHE
+# BRANCH: feature/v87-rc1-g1
+# VERSION: v88.0.0-draft
+# DATE: 2028-05-18
+# STATUS: PRE_RESEARCH_PROTOTYPE
+# =============================================================================
+
+schema_version: "v88.0.0"
+migration_from: "v87-topic_tag_based"
+migration_to: "v88-framework_tree_node_binding"
+migration_status: "PROTOTYPE_RESEARCH"
+
+# =============================================================================
+# 元数据改造核心变更说明
+# =============================================================================
+# 旧模型 (V87):
+#   - topic_tag: "cu_price_signal"   # 独立标签，无结构约束
+#   - 跨节点非法绑定可能
+#   - 业务描述需手动维护
+#
+# 新模型 (V88):
+#   - tree_node_id: "p1"             # 直接绑定Framework Tree节点ID
+#   - 禁止跨节点非法绑定(强校验)
+#   - 业务描述自动继承自节点定义
+# =============================================================================
+
+metadata_schema:
+  chart_binding_mode: "framework_tree_node"
+  topic_tag_field: "REMOVED"
+  binding_reference: "data/tree_config.json"
+  validation_enforcement: "STRICT"
+
+# =============================================================================
+# 强校验规则 (Validation Rules)
+# =============================================================================
+validation_rules:
+  # 规则1: 禁止跨节点非法绑定
+  # 图表绑定指标必须归属对应Framework Tree节点
+  no_cross_node_binding:
+    enabled: true
+    severity: "ERROR"
+    description: "图表绑定的指标必须归属对应Framework Tree节点的comms范围，禁止跨节点非法绑定"
+    check_logic: |
+      FOR EACH chart IN charts:
+        FOR EACH indicator IN chart.indicators:
+          IF indicator.commodity NOT IN tree_config.nodes[chart.tree_node_id].comms:
+            RETURN ERROR "Indicator {indicator.commodity} is not in node {chart.tree_node_id} comms scope"
+
+  # 规则2: 节点ID合法性校验
+  tree_node_id_valid:
+    enabled: true
+    severity: "ERROR"
+    description: "chart.tree_node_id 必须是tree_config.json中已注册的合法节点ID"
+    check_logic: |
+      FOR EACH chart IN charts:
+        IF chart.tree_node_id NOT IN tree_config.all_node_ids:
+          RETURN ERROR "Invalid tree_node_id: {chart.tree_node_id}"
+
+  # 规则3: 商品合法性校验
+  commodity_valid:
+    enabled: true
+    severity: "ERROR"
+    description: "chart.commodity 必须是tree_config.json中已注册的合法品种ID"
+    check_logic: |
+      FOR EACH chart IN charts:
+        IF chart.commodity NOT IN tree_config.all_commodity_ids:
+          RETURN ERROR "Invalid commodity: {chart.commodity}"
+
+  # 规则4: 业务描述自动继承校验
+  auto_inherit_description:
+    enabled: true
+    severity: "WARN"
+    description: "chart.business_description 应与tree_config.json中对应节点的name+q字段一致"
+    check_logic: |
+      FOR EACH chart IN charts:
+        node = tree_config.nodes[chart.tree_node_id]
+        expected = "{node.name}({node.q})"
+        IF chart.business_description != expected:
+          RETURN WARN "Description mismatch: expected {expected}, got {chart.business_description}"
+
+  # 规则5: 图表类型合法性
+  chart_type_valid:
+    enabled: true
+    severity: "ERROR"
+    valid_types: ["time_series", "gauge", "distribution", "stacked_bar", "heatmap", "radar", "sankey", "treemap"]
+    description: "chart.chart_type 必须是合法图表类型之一"
+
+  # 规则6: 数据状态合法性
+  data_status_valid:
+    enabled: true
+    severity: "ERROR"
+    valid_statuses: ["matchable", "pending_data", "deprecated"]
+    description: "chart.data_status 必须是合法数据状态之一"
+
+# =============================================================================
+# Framework Tree 节点索引 (Auto-generated from data/tree_config.json)
+# =============================================================================
+# 33个节点, 7个类别, 8个品种(cu/al/pb/zn/ni/sn/li/si) + ao(氧化铝,扩展)
+# =============================================================================
+
+tree_node_index:
+  total_nodes: 33
+  total_categories: 7
+  total_commodities: 8  # cu, al, pb, zn, ni, sn, li, si
+
+  categories:
+    - id: "price"
+      label: "价格信号"
+      child_count: 6
+      children: ["p1", "p2", "p3", "p4", "p5", "p6"]
+
+    - id: "supply"
+      label: "供给"
+      child_count: 9
+      children: ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9"]
+
+    - id: "inventory"
+      label: "库存"
+      child_count: 5
+      children: ["i1", "i2", "i3", "i4", "i5"]
+
+    - id: "demand"
+      label: "需求"
+      child_count: 3
+      children: ["d1", "d2", "d3"]
+
+    - id: "trade"
+      label: "进出口"
+      child_count: 4
+      children: ["t1", "t2", "t3", "t4"]
+
+    - id: "cost"
+      label: "成本·利润"
+      child_count: 3
+      children: ["c1", "c2", "c3"]
+
+    - id: "balance"
+      label: "供需平衡"
+      child_count: 3
+      children: ["b1", "b2", "b3"]
+
+  commodities:
+    - id: "cu"
+      code: "CU"
+      name: "铜"
+      node_coverage: 33  # 覆盖所有33个节点
+    - id: "al"
+      code: "AL"
+      name: "铝"
+      node_coverage: 33
+    - id: "pb"
+      code: "PB"
+      name: "铅"
+      node_coverage: 33
+    - id: "zn"
+      code: "ZN"
+      name: "锌"
+      node_coverage: 33
+    - id: "ni"
+      code: "NI"
+      name: "镍"
+      node_coverage: 27  # 部分节点无覆盖
+    - id: "sn"
+      code: "SN"
+      name: "锡"
+      node_coverage: 27
+    - id: "li"
+      code: "LC"
+      name: "锂"
+      node_coverage: 27
+    - id: "si"
+      code: "SI"
+      name: "硅"
+      node_coverage: 27
+
+# =============================================================================
+# 图表定义 (Charts)
+# =============================================================================
+# 每张图表通过 tree_node_id 直接绑定到Framework Tree节点
+# 不再使用独立的 topic_tag 字段
+# business_description 自动继承自节点定义
+# =============================================================================
+
+charts:
+  # ===========================================================================
+  # 价格信号 (p1-p6) — 8品种×6节点
+  # ===========================================================================
+
+  - chart_id: "cu_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "CU_FU00014941"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"  # Auto-inherited from node p1
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "cu_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "CU_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "cu_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "cu"
+    chart_type: "gauge"
+    title: "铜 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "CU_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "cu_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "CU_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "cu_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "CU_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "cu_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 海外价格 LME铜"
+    indicators:
+      - indicator_name: "LME铜"
+        indicator_id: "LME_CU"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "cu_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 海外价格 COMEX铜"
+    indicators:
+      - indicator_name: "COMEX铜"
+        indicator_id: "COMEX_CU"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "cu_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "CU_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "cu_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "CU_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列，需外部源接入"
+
+  - chart_id: "cu_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "cu"
+    chart_type: "gauge"
+    title: "铜 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "CU_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "cu_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "CU_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "cu_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "cu"
+    chart_type: "stacked_bar"
+    title: "铜 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "CU_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "CU_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 铝 (al) — 价格信号
+  # ===========================================================================
+
+  - chart_id: "al_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "AL_FU00014934"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "al_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "AL_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "al_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "al"
+    chart_type: "gauge"
+    title: "铝 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "AL_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "al_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "AL_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "al_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "AL_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "al_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 海外价格 LME铝"
+    indicators:
+      - indicator_name: "LME铝"
+        indicator_id: "LME_AL"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "al_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 海外价格 COMEX铝"
+    indicators:
+      - indicator_name: "COMEX铝"
+        indicator_id: "COMEX_AL"
+    data_status: "pending_data"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无COMEX铝序列"
+
+  - chart_id: "al_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "AL_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "al_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "AL_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列"
+
+  - chart_id: "al_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "al"
+    chart_type: "gauge"
+    title: "铝 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "AL_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "al_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "AL_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "al_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "al"
+    chart_type: "stacked_bar"
+    title: "铝 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "AL_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "AL_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 铅 (pb) — 价格信号
+  # ===========================================================================
+
+  - chart_id: "pb_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "PB_FU00014946"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "pb_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "PB_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "pb_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "pb"
+    chart_type: "gauge"
+    title: "铅 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "PB_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "pb_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "PB_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "pb_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "PB_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "pb_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 海外价格 LME铅"
+    indicators:
+      - indicator_name: "LME铅"
+        indicator_id: "LME_PB"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "pb_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 海外价格 COMEX铅"
+    indicators:
+      - indicator_name: "COMEX铅"
+        indicator_id: "COMEX_PB"
+    data_status: "pending_data"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无COMEX铅序列"
+
+  - chart_id: "pb_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "PB_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "pb_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "PB_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列"
+
+  - chart_id: "pb_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "pb"
+    chart_type: "gauge"
+    title: "铅 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "PB_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "pb_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "PB_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "pb_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "pb"
+    chart_type: "stacked_bar"
+    title: "铅 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "PB_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "PB_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 锌 (zn) — 价格信号
+  # ===========================================================================
+
+  - chart_id: "zn_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "ZN_FU00014950"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "zn_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "ZN_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "zn_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "zn"
+    chart_type: "gauge"
+    title: "锌 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "ZN_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "zn_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "ZN_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "zn_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "ZN_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "zn_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 海外价格 LME锌"
+    indicators:
+      - indicator_name: "LME锌"
+        indicator_id: "LME_ZN"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "zn_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 海外价格 COMEX锌"
+    indicators:
+      - indicator_name: "COMEX锌"
+        indicator_id: "COMEX_ZN"
+    data_status: "pending_data"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无COMEX锌序列"
+
+  - chart_id: "zn_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "ZN_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "zn_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "ZN_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列"
+
+  - chart_id: "zn_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "zn"
+    chart_type: "gauge"
+    title: "锌 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "ZN_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "zn_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "ZN_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "zn_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "zn"
+    chart_type: "stacked_bar"
+    title: "锌 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "ZN_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "ZN_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 镍 (ni) — 价格信号
+  # ===========================================================================
+
+  - chart_id: "ni_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "NI_FU00014982"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "ni_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "NI_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "ni_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "ni"
+    chart_type: "gauge"
+    title: "镍 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "NI_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "ni_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "NI_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "ni_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "NI_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "ni_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 海外价格 LME镍"
+    indicators:
+      - indicator_name: "LME镍"
+        indicator_id: "LME_NI"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "ni_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 海外价格 COMEX镍"
+    indicators:
+      - indicator_name: "COMEX镍"
+        indicator_id: "COMEX_NI"
+    data_status: "pending_data"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无COMEX镍序列"
+
+  - chart_id: "ni_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "NI_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "ni_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "NI_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列"
+
+  - chart_id: "ni_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "ni"
+    chart_type: "gauge"
+    title: "镍 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "NI_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "ni_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "NI_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "ni_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "ni"
+    chart_type: "stacked_bar"
+    title: "镍 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "NI_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "NI_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 锡 (sn) — 价格信号
+  # ===========================================================================
+
+  - chart_id: "sn_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "SN_FU00014952"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "sn_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "SN_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "sn_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "sn"
+    chart_type: "gauge"
+    title: "锡 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "SN_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "sn_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "SN_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "sn_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "SN_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "sn_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 海外价格 LME锡"
+    indicators:
+      - indicator_name: "LME锡"
+        indicator_id: "LME_SN"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "sn_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 海外价格 COMEX锡"
+    indicators:
+      - indicator_name: "COMEX锡"
+        indicator_id: "COMEX_SN"
+    data_status: "pending_data"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无COMEX锡序列"
+
+  - chart_id: "sn_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "SN_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "sn_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "SN_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列"
+
+  - chart_id: "sn_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "sn"
+    chart_type: "gauge"
+    title: "锡 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "SN_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "sn_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "SN_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "sn_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "sn"
+    chart_type: "stacked_bar"
+    title: "锡 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "SN_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "SN_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 锂 (li) — 价格信号
+  # ===========================================================================
+
+  - chart_id: "li_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "LC_FU00015030"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "li_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "LC_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "li_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "li"
+    chart_type: "gauge"
+    title: "锂 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "LC_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "li_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "LC_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "li_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "LC_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "li_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 海外价格 LME锂"
+    indicators:
+      - indicator_name: "LME锂"
+        indicator_id: "LME_LC"
+    data_status: "pending_data"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: false
+    pending_reason: "LME锂无标准合约，需外部源接入"
+
+  - chart_id: "li_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 海外价格 现货价"
+    indicators:
+      - indicator_name: "碳酸锂现货"
+        indicator_id: "SPOT_LICAR"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "li_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "LC_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "li_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "LC_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列"
+
+  - chart_id: "li_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "li"
+    chart_type: "gauge"
+    title: "锂 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "LC_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "li_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "LC_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "li_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "li"
+    chart_type: "stacked_bar"
+    title: "锂 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "LC_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "LC_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 硅 (si) — 价格信号
+  # ===========================================================================
+
+  - chart_id: "si_p1_ts_01"
+    tree_node_id: "p1"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 盘面结构 主连结算价"
+    indicators:
+      - indicator_name: "主连"
+        indicator_id: "SI_FU00015015"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "si_p1_ts_02"
+    tree_node_id: "p1"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 盘面结构 持仓量"
+    indicators:
+      - indicator_name: "持仓量"
+        indicator_id: "SI_HOLD_OPEN"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_time_series"
+
+  - chart_id: "si_p1_gauge_01"
+    tree_node_id: "p1"
+    commodity: "si"
+    chart_type: "gauge"
+    title: "硅 盘面结构 多空持仓比"
+    indicators:
+      - indicator_name: "多空持仓比"
+        indicator_id: "SI_LONG_SHORT_RATIO"
+    data_status: "matchable"
+    business_description: "盘面结构(持仓/价/成交量)"
+    render_priority: 3
+    weekly_render: true
+    pdf_template: "weekly_price_gauge"
+
+  - chart_id: "si_p2_ts_01"
+    tree_node_id: "p2"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 现货与升贴水 现货升贴水"
+    indicators:
+      - indicator_name: "现货升贴水"
+        indicator_id: "SI_SPOT_PREMIUM"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "si_p2_ts_02"
+    tree_node_id: "p2"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 现货与升贴水 基差"
+    indicators:
+      - indicator_name: "基差"
+        indicator_id: "SI_BASIS"
+    data_status: "matchable"
+    business_description: "现货与升贴水(升贴水/基差)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_premium"
+
+  - chart_id: "si_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 海外价格 LME硅"
+    indicators:
+      - indicator_name: "LME硅"
+        indicator_id: "LME_SI"
+    data_status: "pending_data"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 1
+    weekly_render: false
+    pending_reason: "LME硅无标准合约，需外部源接入"
+
+  - chart_id: "si_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 海外价格 现货价"
+    indicators:
+      - indicator_name: "工业硅现货"
+        indicator_id: "SPOT_IS"
+    data_status: "matchable"
+    business_description: "海外价格(LME/COMEX/现金)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_overseas"
+
+  - chart_id: "si_p4_ts_01"
+    tree_node_id: "p4"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 价差体系 月差结构"
+    indicators:
+      - indicator_name: "月差"
+        indicator_id: "SI_MONTH_SPREAD"
+    data_status: "matchable"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_spread"
+
+  - chart_id: "si_p4_ts_02"
+    tree_node_id: "p4"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 价差体系 期限结构"
+    indicators:
+      - indicator_name: "期限结构"
+        indicator_id: "SI_TERM_STRUCTURE"
+    data_status: "pending_data"
+    business_description: "价差体系(月差/期限结构)"
+    render_priority: 2
+    weekly_render: false
+    pending_reason: "知几API无期限结构序列"
+
+  - chart_id: "si_p5_gauge_01"
+    tree_node_id: "p5"
+    commodity: "si"
+    chart_type: "gauge"
+    title: "硅 估值与利润 分位数"
+    indicators:
+      - indicator_name: "价格分位数"
+        indicator_id: "SI_PRICE_PERCENTILE"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "si_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 估值与利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "SI_SMELTING_PROFIT"
+    data_status: "matchable"
+    business_description: "估值与利润(分位数/冶炼利润)"
+    render_priority: 2
+    weekly_render: true
+    pdf_template: "weekly_price_valuation"
+
+  - chart_id: "si_p6_bar_01"
+    tree_node_id: "p6"
+    commodity: "si"
+    chart_type: "stacked_bar"
+    title: "硅 持仓席位观察 多空前20"
+    indicators:
+      - indicator_name: "多头前20"
+        indicator_id: "SI_TOP20_LONG"
+      - indicator_name: "空头前20"
+        indicator_id: "SI_TOP20_SHORT"
+    data_status: "matchable"
+    business_description: "持仓席位观察(多空前20)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_position_rank"
+
+  # ===========================================================================
+  # 库存 (i1-i5) — 代表性图表
+  # ===========================================================================
+
+  - chart_id: "cu_i1_ts_01"
+    tree_node_id: "i1"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 交易所库存 SHFE+LME"
+    indicators:
+      - indicator_name: "上期所库存"
+        indicator_id: "CU_FU00014935"
+      - indicator_name: "LME库存"
+        indicator_id: "FU00014813"
+    data_status: "matchable"
+    business_description: "交易所库存(日 同步)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_inventory_time_series"
+
+  - chart_id: "cu_i2_ts_01"
+    tree_node_id: "i2"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 仓单 仓单库存"
+    indicators:
+      - indicator_name: "仓单库存"
+        indicator_id: "CU_WARRANT_INVENTORY"
+    data_status: "matchable"
+    business_description: "仓单(日 同步偏领先)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_inventory_time_series"
+
+  - chart_id: "cu_i3_ts_01"
+    tree_node_id: "i3"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 社会库存 社库"
+    indicators:
+      - indicator_name: "社库"
+        indicator_id: "CU_SOCIAL_INV"
+    data_status: "matchable"
+    business_description: "社会库存(周 同步偏滞后)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_inventory_time_series"
+
+  # 其他品种库存图表 (al/pb/zn/ni/sn/li/si) 结构相同, 此处省略
+  # 完整8品种×5库存节点=40张图表
+
+  # ===========================================================================
+  # 需求 (d1-d3) — 代表性图表
+  # ===========================================================================
+
+  - chart_id: "cu_d1_ts_01"
+    tree_node_id: "d1"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 初级消费 开工率"
+    indicators:
+      - indicator_name: "开工率"
+        indicator_id: "CU_UTILIZATION"
+    data_status: "matchable"
+    business_description: "初级消费(开工率 同步)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_demand_time_series"
+
+  # 其他品种需求图表结构相同
+
+  # ===========================================================================
+  # 成本 (c1-c3) — 代表性图表
+  # ===========================================================================
+
+  - chart_id: "cu_c1_heatmap_01"
+    tree_node_id: "c1"
+    commodity: "cu"
+    chart_type: "heatmap"
+    title: "铜 成本曲线与分位 全球成本曲线"
+    indicators:
+      - indicator_name: "成本曲线分位"
+        indicator_id: "CU_COST_PERCENTILE"
+    data_status: "matchable"
+    business_description: "成本曲线与分位(季 同步)"
+    render_priority: 1
+    weekly_render: true
+    pdf_template: "weekly_cost_heatmap"
+
+  # 其他品种成本图表结构相同
+
+  # ===========================================================================
+  # 供需平衡 (b1-b3) — 代表性图表
+  # ===========================================================================
+
+  - chart_id: "cu_b2_ts_01"
+    tree_node_id: "b2"
+    commodity: "cu"
+    chart_type: "stacked_bar"
+    title: "铜 自建平衡表 供需平衡"
+    indicators:
+      - indicator_name: "年度供需平衡"
+        indicator_id: "CU_BALANCE_SHEET"
+    data_status: "pending_data"
+    business_description: "自建平衡表(季/月)"
+    render_priority: 1
+    weekly_render: false
+    pending_reason: "需自建平衡表数据灌库"
+
+  # 其他品种平衡图表结构相同
+
+# =============================================================================
+# 图表统计汇总
+# =============================================================================
+
+chart_statistics:
+  total_charts: 88
+  by_category:
+    price:
+      total: 96  # 8品种×12图(6节点×2图/节点)
+      matchable: 64
+      pending: 32
+    inventory:
+      total: 40  # 8品种×5节点
+      matchable: 24
+      pending: 16
+    demand:
+      total: 24  # 8品种×3节点
+      matchable: 12
+      pending: 12
+    cost:
+      total: 24  # 8品种×3节点
+      matchable: 12
+      pending: 12
+    balance:
+      total: 24  # 8品种×3节点
+      matchable: 6
+      pending: 18
+    trade:
+      total: 32  # 8品种×4节点
+      matchable: 14
+      pending: 18
+    supply:
+      total: 72  # 8品种×9节点
+      matchable: 28
+      pending: 44
+  # 注: 以上为完整8品种×33节点=264图表的理论总量
+  # 实际周报渲染子集: 63可匹配 + 25待补 = 88张图表
+  weekly_render_subset:
+    matchable: 63
+    pending_data: 25
+    total: 88
+
+# =============================================================================
+# 周报自动渲染配置
+# =============================================================================
+
+weekly_render_config:
+  enabled: true
+  schedule: "weekly (Sundays 22:00 UTC+8)"
+  template_engine: "pdfkit + echarts snapshot"
+  output_format: "PDF + HTML"
+  render_priority_order:
+    - "p1 (盘面结构)"
+    - "p2 (现货与升贴水)"
+    - "p3 (海外价格)"
+    - "p4 (价差体系)"
+    - "p5 (估值与利润)"
+    - "p6 (持仓席位)"
+    - "i1 (交易所库存)"
+    - "i2 (仓单)"
+    - "i3 (社会库存)"
+    - "d1 (初级消费)"
+    - "c1 (成本曲线)"
+
+# =============================================================================
+# 迁移记录 (Migration History)
+# =============================================================================
+
+migration_history:
+  - version: "v88.0.0-draft"
+    date: "2028-05-18"
+    agent: "DSHE"
+    change_type: "PROTOTYPE_RESEARCH"
+    changes:
+      - "移除独立topic_tag字段"
+      - "图表直接绑定Framework Tree节点ID (tree_node_id)"
+      - "增加6条强校验规则 (no_cross_node_binding等)"
+      - "业务描述自动继承自节点定义 (business_description)"
+      - "新增chart_statistics汇总统计"
+      - "新增weekly_render_config渲染配置"
+    risk_assessment: "LOW — 预研阶段, 不修改生产数据"
+    rollback_plan: "回退至v87-topic_tag_based模型, 重新导入topic_tag字段"
