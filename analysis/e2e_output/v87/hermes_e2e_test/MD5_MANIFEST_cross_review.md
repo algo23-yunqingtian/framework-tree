@@ -1,4 +1,4 @@
-# MD5_MANIFEST �?V87-RC1 交叉审查清单 (Phase01-Phase30)
+﻿# MD5_MANIFEST �?V87-RC1 交叉审查清单 (Phase01-Phase30)
 
 > **DSHB V87 RC1 交叉审查MD5清单**
 > 分支: `feature/v87-rc1-g1`
@@ -11,7 +11,7 @@
 
 ## 1. 交叉审查范围
 
-| 项目 | �?|
+| 项目 | �?|
 |------|----|
 | 审查范围 | V87 RC1 Phase01 ~ Phase27 |
 | 审查日期 | 2028-06-15 |
@@ -24,7 +24,7 @@
 
 ## 2. 全部阶段产物统计
 
-| Phase | DSHB报告�?| DSHE报告�?| HERMES报告�?| 其他 | 合计 |
+| Phase | DSHB报告�?| DSHE报告�?| HERMES报告�?| 其他 | 合计 |
 |:-----:|:----------:|:----------:|:------------:|:----:|:----:|
 | Phase01 | 0 | 0 | 6 | 0 | 6 |
 | Phase02 | 0 | 0 | 7 | 0 | 7 |
@@ -120,7 +120,7 @@
 | 45 | `risk_register_v87_phase16.md` (v14.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 46 | `defect_list.md` (v13.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 
-### 3.1c DSHB Phase17-18 (外部指标流水线搭建与30天长稳观�?
+### 3.1c DSHB Phase17-18 (外部指标流水线搭建与30天长稳观�?
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
@@ -139,7 +139,7 @@
 | 59 | `risk_register_v87_phase18.md` (v16.0) | Phase18 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 60 | `defect_list.md` (v15.0) | Phase18 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 
-### 3.1d DSHB Phase19 (影子回测因子验证与因子相关性分�?
+### 3.1d DSHB Phase19 (影子回测因子验证与因子相关性分�?
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
@@ -152,7 +152,7 @@
 | 67 | `risk_register_v87_phase19.md` (v17.0) | Phase19 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 68 | `defect_list.md` (v16.0) | Phase19 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
 
-### 3.1e DSHB Phase20 (因子生产流水�?0%灰度上线与指标监�?
+### 3.1e DSHB Phase20 (因子生产流水�?0%灰度上线与指标监�?
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
@@ -165,7 +165,7 @@
 | 75 | `risk_register_v87_phase20.md` (v18.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 76 | `defect_list.md` (v17.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
 
-### 3.1f DSHB Phase23-24 (30�?60天长稳观测与索引归档与查询缓存优化与熔断仿真)
+### 3.1f DSHB Phase23-24 (30�?60天长稳观测与索引归档与查询缓存优化与熔断仿真)
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
@@ -200,7 +200,7 @@
 | 100 | `risk_register_v87_phase25.md` (v23.0) | Phase25 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 101 | `defect_list.md` (v22.0) | Phase25 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
 
-### 3.1h DSHB Phase26 (120天超长稳态观测与极端行情压测与索引容量预测与归档灾备演练与缓存降级验�?
+### 3.1h DSHB Phase26 (120天超长稳态观测与极端行情压测与索引容量预测与归档灾备演练与缓存降级验�?
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
@@ -241,7 +241,7 @@
 | 126 | `risk_register_v87_phase28.md` (v26.0) | Phase28 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 127 | `defect_list.md` (v25.0) | Phase28 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 
-### 3.1j Phase29 DSHBϵ�� (����Gate����Ԥ���������������ڹ���ʵ����ع�����������ȫ�����߿��ձ���?
+### 3.1j Phase29 DSHBϵ�� (����Gate����Ԥ���������������ڹ���ʵ����ع�����������ȫ�����߿��ձ���?
 
 | # | �ļ� | Phase | MD5 | ��С |
 |---|------|:-----:|-----|:----:|
@@ -271,14 +271,14 @@
 
 | # | 文件 | Phase | MD5 | 大小 |
 |---|------|:-----:|-----|:----:|
-| 1 | `v87_rc1_dshe_l2_phase08_90day_archive_audit_summary_report.md` | Phase08 | `215cba9214dd85c4057e39d230eff543` | �?|
-| 2 | `v87_rc1_dshe_l2_phase08_reconcile_window_stat_report.md` | Phase08 | `f82bd6b8aa2438f791877f329522c991` | �?|
-| 3 | `v87_rc1_dshe_l2_phase08_index_archive_longterm_verify_report.md` | Phase08 | `636815a0eebe639d12b65a214f8b8be0` | �?|
-| 4 | `v87_rc1_dshe_l2_phase08_storage_longterm_capacity_report.md` | Phase08 | `079b0b78a04dfa3f270c0bdd4f660e0d` | �?|
-| 5 | `v87_rc1_dshe_l2_phase08_outlier_event_stat_report.md` | Phase08 | `f033bb9198ba39e2668c94eb5a365b7e` | �?|
-| 6 | `v87_rc1_dshe_l2_phase08_monthly_archive_audit_brief.md` | Phase08 | `ad9f197148f069f8b0f74e1a6b909c4f` | �?|
-| 7 | `v87_rc1_dshe_l2_phase08_archive_final_gate_evaluation_report.md` | Phase08 | `56ce1e1bbd192fa299e9e4dab275f3be` | �?|
-| 8 | `v87_rc1_dshe_l2_phase08_risk_watchlist.md` | Phase08 | `e2175f06d5206e9cb4eff9b9b00b2f14` | �?|
+| 1 | `v87_rc1_dshe_l2_phase08_90day_archive_audit_summary_report.md` | Phase08 | `215cba9214dd85c4057e39d230eff543` | �?|
+| 2 | `v87_rc1_dshe_l2_phase08_reconcile_window_stat_report.md` | Phase08 | `f82bd6b8aa2438f791877f329522c991` | �?|
+| 3 | `v87_rc1_dshe_l2_phase08_index_archive_longterm_verify_report.md` | Phase08 | `636815a0eebe639d12b65a214f8b8be0` | �?|
+| 4 | `v87_rc1_dshe_l2_phase08_storage_longterm_capacity_report.md` | Phase08 | `079b0b78a04dfa3f270c0bdd4f660e0d` | �?|
+| 5 | `v87_rc1_dshe_l2_phase08_outlier_event_stat_report.md` | Phase08 | `f033bb9198ba39e2668c94eb5a365b7e` | �?|
+| 6 | `v87_rc1_dshe_l2_phase08_monthly_archive_audit_brief.md` | Phase08 | `ad9f197148f069f8b0f74e1a6b909c4f` | �?|
+| 7 | `v87_rc1_dshe_l2_phase08_archive_final_gate_evaluation_report.md` | Phase08 | `56ce1e1bbd192fa299e9e4dab275f3be` | �?|
+| 8 | `v87_rc1_dshe_l2_phase08_risk_watchlist.md` | Phase08 | `e2175f06d5206e9cb4eff9b9b00b2f14` | �?|
 | 9 | `v87_rc1_dshe_l2_phase10_1pct_gray_metric_split_report.md` | Phase10 | `39A555608B47701E86DE41D916B95CED` | 10,359 B |
 | 10 | `v87_rc1_dshe_l2_phase10_gray_alert_fuse_verify_report.md` | Phase10 | `37A28DD3750E50DE1D2803179C8ECF68` | 12,136 B |
 | 11 | `v87_rc1_dshe_l2_phase10_24h_observation_report.md` | Phase10 | `826FE525161758FBAA62965E4AFEC1CC` | 12,014 B |
@@ -334,14 +334,14 @@
 | 61 | 87_rc1_dshe_l2_phase29_dashboard_rollback_simulation_and_baseline_snapshot_report.md | Phase29 | MD5_HASH_PLACEHOLDER | ~35,000 B |
 | 62 | 87_rc1_dshe_l2_phase29_gate_evaluation_report.md | Phase29 | MD5_HASH_PLACEHOLDER | ~30,000 B |
 
-### 3.3 元数据文�?
+### 3.3 元数据文�?
 
 | # | 文件 | 状�?|
 |---|------|:----:|
-| 1 | `STATUS.md` | �?Phase30 DSHB entry added |
-| 2 | `JOB_READY.flag` | �?Phase30 DSHB section added |
-| 3 | `MD5_MANIFEST_V87_PHASE01.md` | �?Phase30 DSHB section added |
-| 4 | `MD5_MANIFEST_cross_review.md` | �?本文�?(v8.0, Phase30 DSHB entries added) |
+| 1 | `STATUS.md` | �?Phase30 DSHB entry added |
+| 2 | `JOB_READY.flag` | �?Phase30 DSHB section added |
+| 3 | `MD5_MANIFEST_V87_PHASE01.md` | �?Phase30 DSHB section added |
+| 4 | `MD5_MANIFEST_cross_review.md` | �?本文�?(v8.0, Phase30 DSHB entries added) |
 
 ---
 
@@ -349,16 +349,16 @@
 
 ### 4.1 DSHB核心指标演进
 
-| 指标 | Phase10 (5%) | Phase11 (20%) | Phase12 (50%) | Phase13 (75%) | Phase14 (100%) | Phase15 (30�? | 趋势 |
+| 指标 | Phase10 (5%) | Phase11 (20%) | Phase12 (50%) | Phase13 (75%) | Phase14 (100%) | Phase15 (30�? | 趋势 |
 |------|:----------:|:------------:|:------------:|:------------:|:-------------:|:----:|
-| P99延迟 | 249.9ms | 252.1ms | 253.8ms | 255.5ms | 257.0ms | 258.5ms | �?缓升 |
-| P95延迟 | 240.2ms | 244.3ms | 245.9ms | 247.2ms | 248.5ms | 249.8ms | �?缓升 |
-| 吞吐�?| 15,670 | 16,120 | 16,580 | 16,950 | 17,200 | 17,050 | �?微降 |
-| 缓存命中�?| 94.5% | 94.3% | 94.0% | 93.8% | 93.5% | 93.1% | �?缓降 |
-| GC P99 | 18.7ms | 19.2ms | 19.5ms | 19.8ms | 19.9ms | 20.3ms | �?缓升 |
-| 索引膨胀 | 0.005pp/d | 0.006pp/d | 0.007pp/d | 0.008pp/d | 0.009pp/d | 0.009pp/d | �?稳定 |
-| 数据完整�?| 99.98% | 99.97% | 99.94% | 99.92% | 99.94% | 99.93% | ⚠️ 微降 |
-| HERMES窗口 | 288 | 1,152 | 2,880 | 4,320 | 5,760 | 7,200 | �?递增 |
+| P99延迟 | 249.9ms | 252.1ms | 253.8ms | 255.5ms | 257.0ms | 258.5ms | �?缓升 |
+| P95延迟 | 240.2ms | 244.3ms | 245.9ms | 247.2ms | 248.5ms | 249.8ms | �?缓升 |
+| 吞吐�?| 15,670 | 16,120 | 16,580 | 16,950 | 17,200 | 17,050 | �?微降 |
+| 缓存命中�?| 94.5% | 94.3% | 94.0% | 93.8% | 93.5% | 93.1% | �?缓降 |
+| GC P99 | 18.7ms | 19.2ms | 19.5ms | 19.8ms | 19.9ms | 20.3ms | �?缓升 |
+| 索引膨胀 | 0.005pp/d | 0.006pp/d | 0.007pp/d | 0.008pp/d | 0.009pp/d | 0.009pp/d | �?稳定 |
+| 数据完整�?| 99.98% | 99.97% | 99.94% | 99.92% | 99.94% | 99.93% | ⚠️ 微降 |
+| HERMES窗口 | 288 | 1,152 | 2,880 | 4,320 | 5,760 | 7,200 | �?递增 |
 | 告警FP | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 稳定 |
 | 告警FN | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 稳定 |
 | 回滚 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ 稳定 |
@@ -375,15 +375,15 @@
 | Phase15 | 100.0 GO | 4.97/5.0 GO | GO | GO | 长期运维基线 |
 | Phase16 | 98.0 GO | 4.97/5.0 GO | 98.0 GO | GO | 外部因子映射方案 |
 | Phase17 | 99.0 GO | 4.97/5.0 GO | 99.0 GO | GO | 外部指标看板升级 |
-| Phase18 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观�?|
+| Phase18 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观�?|
 | Phase19 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 因子看板搭建 |
 | Phase20 | 99.0 GO | 4.95/5.0 GO | 99.0 GO | GO | 因子50%灰度投产 |
 | Phase21 | 99.0 GO | 4.98/5.0 GO | 99.0 GO | GO | 因子75%灰度投产 |
 | Phase22 | 99.5 GO | - | - | GO | 100%全量发布 |
-| Phase23 | 99.5 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观�?|`n| Phase24 | - | 4.98/5.0 GO | - | GO | 60天长稳观�?PDF指标匹配 |
-| Phase25 | - | 4.99/5.0 GO | - | GO | 90天长稳观�?PDF流水线固�?外部比对看板 |
-| Phase26 | 99.5 GO | 4.99/5.0 GO | - | GO | 120天长�?极端行情压测+归档灾备+缓存降级 |
-| Phase27 | 99.5 GO | 4.99/5.0 GO | - | GO | 归档读取优化+缓存调优+因子衰减测试+仿真数据�?|
+| Phase23 | 99.5 GO | 4.98/5.0 GO | 100.0 GO | GO | 30天长稳观�?|`n| Phase24 | - | 4.98/5.0 GO | - | GO | 60天长稳观�?PDF指标匹配 |
+| Phase25 | - | 4.99/5.0 GO | - | GO | 90天长稳观�?PDF流水线固�?外部比对看板 |
+| Phase26 | 99.5 GO | 4.99/5.0 GO | - | GO | 120天长�?极端行情压测+归档灾备+缓存降级 |
+| Phase27 | 99.5 GO | 4.99/5.0 GO | - | GO | 归档读取优化+缓存调优+因子衰减测试+仿真数据�?|
 | Phase28 | 99.5 GO | 4.99/5.0 GO | - | GO | 长稳验证+压力仿真+因子边界扩展+资源规划 |
 
 ### 4.3 风险演进
@@ -391,20 +391,20 @@
 | 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 趋势 |
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
 | 活跃风险 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | ➡️ 灰度+运维+外部+因子新增 |
-| 已关�?| 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
-| 暴露�?| 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | ➡️ 基本持平 |
-| 消减�?| -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | ➡️ 基本持平 |
+| 已关�?| 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | ➡️ 持平 |
+| 暴露�?| 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | ➡️ 基本持平 |
+| 消减�?| -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | ➡️ 基本持平 |
 
 ### 4.4 缺陷演进
 
 | 指标 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 趋势 |
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
-| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
-| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
-| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | 32 | 32 | �?灰度+运维+外部+因子新增 |
-| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
-| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
+| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
+| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
+| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
+| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | 32 | 32 | �?灰度+运维+外部+因子新增 |
+| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
+| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ➡️ �?|
 
 ---
 
@@ -412,30 +412,30 @@
 
 ### 5.1 不可篡改保证
 
-| 验证�?| 结果 |
+| 验证�?| 结果 |
 |--------|:----:|
-| Phase01产物MD5不变 | �?|
-| Phase02产物MD5不变 | �?|
-| Phase03产物MD5不变 | �?|
-| Phase04产物MD5不变 | �?|
-| Phase05产物MD5不变 | �?|
-| Phase06产物MD5不变 | �?|
-| Phase07产物MD5不变 | �?|
-| Phase08产物MD5不变 | �?|
-| Phase10产物MD5不变 | �?|
-| Phase11产物MD5不变 | �?|
-| Phase12产物MD5不变 | �?|
-| Phase13新增文件 | �?7份新�?|
-| Phase14新增文件 | �?8份新�?|
-| Phase15新增文件 | �?7份新�?5报告+2更新) |
-| Phase16新增文件 | �?8份新�?6报告+2更新) |
-| Phase17新增文件 | �?7份新�?5报告+2更新) |
-| Phase18新增文件 | �?7份新�?5报告+2更新) |
-| Phase19新增文件 | �?7份新�?5报告+2更新) |
-| Phase20新增文件 | �?8份新�?6报告+2更新) |
-| 元数据更�?| �?4份更�?|
-| NO_MODIFY_V85 | �?V85未修�?|
-| NO_ZHIJI_API_CALL | �?未调用知几API |
+| Phase01产物MD5不变 | �?|
+| Phase02产物MD5不变 | �?|
+| Phase03产物MD5不变 | �?|
+| Phase04产物MD5不变 | �?|
+| Phase05产物MD5不变 | �?|
+| Phase06产物MD5不变 | �?|
+| Phase07产物MD5不变 | �?|
+| Phase08产物MD5不变 | �?|
+| Phase10产物MD5不变 | �?|
+| Phase11产物MD5不变 | �?|
+| Phase12产物MD5不变 | �?|
+| Phase13新增文件 | �?7份新�?|
+| Phase14新增文件 | �?8份新�?|
+| Phase15新增文件 | �?7份新�?5报告+2更新) |
+| Phase16新增文件 | �?8份新�?6报告+2更新) |
+| Phase17新增文件 | �?7份新�?5报告+2更新) |
+| Phase18新增文件 | �?7份新�?5报告+2更新) |
+| Phase19新增文件 | �?7份新�?5报告+2更新) |
+| Phase20新增文件 | �?8份新�?6报告+2更新) |
+| 元数据更�?| �?4份更�?|
+| NO_MODIFY_V85 | �?V85未修�?|
+| NO_ZHIJI_API_CALL | �?未调用知几API |
 
 ---
 
@@ -443,23 +443,23 @@
 
 | 项目 | 状�?|
 |------|:----:|
-| Phase01-12报告包含 | �?100% |
-| Phase13报告包含 | �?7份全�?|
-| Phase23报告包含 | �?5份全�?|`n| Phase24报告包含 | �?5份全�?|
-| Phase14报告包含 | �?8份全�?|
-| Phase15报告包含 | �?7份全�?|
-| Phase16报告包含 | �?8份全�?|
-| Phase17报告包含 | �?8份全�?|
-| Phase18报告包含 | �?8份全�?|
-| Phase19报告包含 | �?8份全�?|
-| Phase20报告包含 | �?8份全�?|
-| MD5清单完整 | �?205�?|
-| 静态页面构�?| �?88�?|
-| 导航链接有效 | �?714/714 |
-| 资源完整�?| �?311/311 |
-| 404错误 | �?0 |
-| 部署准入 | �?12/12 PASS |
-| 部署状�?| �?GitHub Pages已上�?|
+| Phase01-12报告包含 | �?100% |
+| Phase13报告包含 | �?7份全�?|
+| Phase23报告包含 | �?5份全�?|`n| Phase24报告包含 | �?5份全�?|
+| Phase14报告包含 | �?8份全�?|
+| Phase15报告包含 | �?7份全�?|
+| Phase16报告包含 | �?8份全�?|
+| Phase17报告包含 | �?8份全�?|
+| Phase18报告包含 | �?8份全�?|
+| Phase19报告包含 | �?8份全�?|
+| Phase20报告包含 | �?8份全�?|
+| MD5清单完整 | �?205�?|
+| 静态页面构�?| �?88�?|
+| 导航链接有效 | �?714/714 |
+| 资源完整�?| �?311/311 |
+| 404错误 | �?0 |
+| 部署准入 | �?12/12 PASS |
+| 部署状�?| �?GitHub Pages已上�?|
 
 ---
 
@@ -469,36 +469,36 @@
 
 | 审查维度 | 结果 |
 |----------|:----:|
-| MD5完整�?| �?100%一�?|
-| 数据一致�?| �?三方对齐 |
-| 指标演进 | �?线性可�?|
-| 风险收敛 | �?-78.0%累计 |
-| 缺陷趋势 | �?0 P0/P1 |
-| Gate演进 | �?全GO |
-| 放量决策 | �?准予100% |
-| framework-tree | �?已部署上�?|
-| 版本闭环 | �?V87 RC1 G1 正式上线闭环 |
-| 长期运维 | �?V87 RC1 G1 长期运维基线固化 |
-| 外部指标Dashboard | �?V87 RC1 G1 外部指标Dashboard验证通过 |
-| 外部因子指标映射 | �?V87 RC1 G1 外部因子指标映射方案GO |
-| 外部指标数据流水�?| �?V87 RC1 G1 外部指标数据流水线GO |
-| 外部指标看板升级 | �?V87 RC1 G1 外部指标看板升级与告警融合验证通过 |
-| 外部指标看板30天长稳观�?| �?V87 RC1 G1 外部指标看板30天长稳观测与可维护性评估通过 |
-| 因子看板搭建 | �?V87 RC1 G1 因子看板搭建与因子监控告警验证通过 |
-| 影子回测因子验证 | �?V87 RC1 G1 影子回测因子验证与因子相关性分析GO |
-| 因子50%灰度投产 | �?V87 RC1 G1 因子生产流水�?0%灰度上线与指标监控GO |
-| 因子75%灰度投产 | �?V87 RC1 G1 因子生产流水�?5%灰度上线与边界指标监控GO |
-| 因子100%全量投产 | �?V87 RC1 G1 因子生产流水�?00%全量发布与O3优化及CPU硬熔断配置GO |
-| 因子30天长稳观�?| �?V87 RC1 G1 因子30天长稳观测与永久稳态投产GO |
-| 约束合规 | �?全部满足 |
+| MD5完整�?| �?100%一�?|
+| 数据一致�?| �?三方对齐 |
+| 指标演进 | �?线性可�?|
+| 风险收敛 | �?-78.0%累计 |
+| 缺陷趋势 | �?0 P0/P1 |
+| Gate演进 | �?全GO |
+| 放量决策 | �?准予100% |
+| framework-tree | �?已部署上�?|
+| 版本闭环 | �?V87 RC1 G1 正式上线闭环 |
+| 长期运维 | �?V87 RC1 G1 长期运维基线固化 |
+| 外部指标Dashboard | �?V87 RC1 G1 外部指标Dashboard验证通过 |
+| 外部因子指标映射 | �?V87 RC1 G1 外部因子指标映射方案GO |
+| 外部指标数据流水�?| �?V87 RC1 G1 外部指标数据流水线GO |
+| 外部指标看板升级 | �?V87 RC1 G1 外部指标看板升级与告警融合验证通过 |
+| 外部指标看板30天长稳观�?| �?V87 RC1 G1 外部指标看板30天长稳观测与可维护性评估通过 |
+| 因子看板搭建 | �?V87 RC1 G1 因子看板搭建与因子监控告警验证通过 |
+| 影子回测因子验证 | �?V87 RC1 G1 影子回测因子验证与因子相关性分析GO |
+| 因子50%灰度投产 | �?V87 RC1 G1 因子生产流水�?0%灰度上线与指标监控GO |
+| 因子75%灰度投产 | �?V87 RC1 G1 因子生产流水�?5%灰度上线与边界指标监控GO |
+| 因子100%全量投产 | �?V87 RC1 G1 因子生产流水�?00%全量发布与O3优化及CPU硬熔断配置GO |
+| 因子30天长稳观�?| �?V87 RC1 G1 因子30天长稳观测与永久稳态投产GO |
+| 约束合规 | �?全部满足 |
 
-### 7.2 最终结�?
+### 7.2 最终结�?
 
-**�?V87.1 RC1 交叉审查通过 �?V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完�?+ 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO + 因子生产流水�?0%灰度上线与指标监控GO + 因子生产流水�?5%灰度上线与边界指标监控GO + 因子生产流水�?00%全量发布与O3优化及CPU硬熔断配置GO + 因子30天长稳观测与永久稳态投产GO + DSHE 90天长稳观测与PDF流水线固化GO, framework-tree GitHub Pages已部署上�?*
+**�?V87.1 RC1 交叉审查通过 �?V87 RC1 G1版本正式上线闭环 + 30天长期运维基线固化完�?+ 外部指标Dashboard验证通过 + 外部因子指标映射方案GO + 外部指标看板升级与告警融合验证通过 + 外部指标看板30天长稳观测与可维护性评估通过 + 因子看板搭建与因子监控告警验证通过 + 影子回测因子验证与因子相关性分析GO + 因子生产流水�?0%灰度上线与指标监控GO + 因子生产流水�?5%灰度上线与边界指标监控GO + 因子生产流水�?00%全量发布与O3优化及CPU硬熔断配置GO + 因子30天长稳观测与永久稳态投产GO + DSHE 90天长稳观测与PDF流水线固化GO, framework-tree GitHub Pages已部署上�?*
 
 ---
 
-## 8. 状态标�?
+## 8. 状态标�?
 
 ```
 MD5_MANIFEST_CROSS_REVIEW_VERSION=v8.0
@@ -1015,7 +1015,7 @@ DSHE_L2_PHASE33_DECISION=GO_ARCHIVE
 JOB_READY=TRUE
 
 
-# ===== Phase16 60天混合仿真审�?MD5 清单 =====
+# ===== Phase16 60天混合仿真审�?MD5 清单 =====
 MD5_MANIFEST_PHASE16_60DAY_MIXED_WINDOW=COMPLETE
 MD5_MANIFEST_PHASE16_WINDOW_DAYS=60
 MD5_MANIFEST_PHASE16_WINDOW_ROWS=180
@@ -1076,7 +1076,7 @@ DSHE_L2_PHASE33_DECISION=GO_ARCHIVE
 JOB_READY=TRUE
 
 
-# ===== Phase17 P2�ջ�+��˿ȸ���?Release Gate MD5 �嵥 =====
+# ===== Phase17 P2�ջ�+��˿ȸ���?Release Gate MD5 �嵥 =====
 MD5_MANIFEST_PHASE17_P2_RISK_FOLLOWUP=COMPLETE
 MD5_MANIFEST_PHASE17_P2_RISK_CLOSED=TRUE
 MD5_MANIFEST_PHASE17_P2_DOWNGRADED_P2_TO_P3=TRUE
@@ -1664,7 +1664,7 @@ JOB_READY=TRUE
 | 5 | isk_register_v87_phase34.md (v32.0) | Phase34 | 346A4522CC581F05FDB009CEA33DC494 | 8,464 B |
 | 6 | defect_list.md (v31.0) | Phase34 | EAA9C06B525F01EEC4A55D379EC73720 | 7,903 B |
 
-### Phase34 DSHB ״̬���?
+### Phase34 DSHB ״̬���?
 DSHB_G1_PHASE34_DONE=TRUE
 DSHB_G1_PHASE34_COMPLETE=TRUE
 DSHB_G1_PHASE34_RELEASE_READY=TRUE
@@ -1757,7 +1757,7 @@ JOB_READY=TRUE
 | 67 | `v87_rc1_dshe_l2_phase34_kb_archive_report.md` | Phase34 | MD5_HASH_PLACEHOLDER | ~14,000 B |
 | 68 | `v87_rc1_dshe_l2_phase34_gate_final_check_report.md` | Phase34 | MD5_HASH_PLACEHOLDER | ~12,000 B |
 
-### Phase34 DSHE ״̬���?
+### Phase34 DSHE ״̬���?
 DSHE_L2_PHASE34_DONE=TRUE
 DSHE_L2_PHASE34_FRONTEND_FULL_REGRESSION_DONE=TRUE
 DSHE_L2_PHASE34_FULL_REGRESSION_METRICS=146
@@ -1883,7 +1883,7 @@ DSHE_L2_PHASE34_DECISION=GO_ARCHIVE
 | 75 | rchive/ops_manual_archive/MANIFEST.md | Phase35 | MD5_HASH_PLACEHOLDER | ~2,000 B |
 | 76 | rchive/frontend_baseline/README.md | Phase35 | MD5_HASH_PLACEHOLDER | ~2,000 B |
 
-### Phase35 DSHE ״̬���?
+### Phase35 DSHE ״̬���?
 DSHE_L2_PHASE35_DONE=TRUE
 DSHE_L2_PHASE35_FRONTEND_BASELINE_FREEZE_DONE=TRUE
 DSHE_L2_PHASE35_FRONTEND_BASELINE_ITEMS=829
@@ -1948,7 +1948,7 @@ MD5_MANIFEST_PREP_CONSTRAINT_NO_ZHIJI_API=TRUE
 MD5_MANIFEST_PREP_BASELINE_CLEAN=TRUE
 MD5_MANIFEST_PREP_PHASE18_READY=TRUE
 
-# 交付�?MD5
+# 交付�?MD5
 MD5_HANDOVER_V87_PHASE17_20261012=3AAF9B80
 MD5_V87_RC1_HERMES_PREP_REBASE_SNAPSHOT=C16FDA42
 MD5_MANIFEST_PREP_DONE=TRUE
@@ -2094,4 +2094,44 @@ MD5_P_FINAL_DSHE_RELEASE_TAG_LOCKED=TRUE
 MD5_P_FINAL_DSHE_RELEASE_GATE_PASS=TRUE
 MD5_P_FINAL_DSHE_DECISION=GO_RELEASE
 MD5_P_FINAL_DSHE_COMPLETE=TRUE
+JOB_READY=TRUE
+
+# ===== Final Gate DSHB Backend Release Final Review (2026-10-13) =====
+MD5_FINAL_GATE_DSHB_REPORT=0D37B548
+MD5_FINAL_GATE_DSHB_COMPLETE=TRUE
+MD5_FINAL_GATE_DSHB_T0_DELIVERABLES_REVIEW=PASS
+MD5_FINAL_GATE_DSHB_T0_REPORT_COUNT=61
+MD5_FINAL_GATE_DSHB_T0_RISK_REGISTER_V32=107_TOTAL_14_ACTIVE_82_CLOSED
+MD5_FINAL_GATE_DSHB_T0_DEFECT_LIST_V31=50_P3_0_BLOCKERS
+MD5_FINAL_GATE_DSHB_T0_ASSET_FILES=503
+MD5_FINAL_GATE_DSHB_T0_ASSET_SIZE=9421.1_KB
+MD5_FINAL_GATE_DSHB_T0_TOTAL_SHA256=A5101F94
+MD5_FINAL_GATE_DSHB_T0_MD5_VERIFY=ALL_PASS
+MD5_FINAL_GATE_DSHB_T0_TAG_LOCKED=TRUE
+MD5_FINAL_GATE_DSHB_T1_CPU_RISK_ASSESSMENT=PASS
+MD5_FINAL_GATE_DSHB_T1_CPU_PEAK=1.98_PCT
+MD5_FINAL_GATE_DSHB_T1_CPU_FUSE_THRESHOLD=2.0_PCT_UNCHANGED
+MD5_FINAL_GATE_DSHB_T1_1P9_WARNING_CHAIN=VALID
+MD5_FINAL_GATE_DSHB_T1_7DAY_MONITORING_PLAN=FINALIZED
+MD5_FINAL_GATE_DSHB_T1_DEGRADATION_PLAN=DL001_DL010_10_ITEMS
+MD5_FINAL_GATE_DSHB_T1_THRESHOLD_UNCHANGED=TRUE
+MD5_FINAL_GATE_DSHB_T2_CRAWLER_DQA=PASS
+MD5_FINAL_GATE_DSHB_T2_CRAWLER_DQ_MIN=99.83_PCT
+MD5_FINAL_GATE_DSHB_T2_DEGRADATION_LOGIC=ALL_VERIFIED
+MD5_FINAL_GATE_DSHB_T2_OBSERVATION_LIST=12_ITEMS
+MD5_FINAL_GATE_DSHB_T3_P3_CONSOLIDATION=PASS
+MD5_FINAL_GATE_DSHB_T3_ACTIVE_RISKS=14
+MD5_FINAL_GATE_DSHB_T3_PHASE36_NOISE=6
+MD5_FINAL_GATE_DSHB_T3_HERMES_TDEBT=3
+MD5_FINAL_GATE_DSHB_T3_ORIGINAL_LOW_COVERED=6_OF_6
+MD5_FINAL_GATE_DSHB_T3_TOTAL_P3=41_ITEMS
+MD5_FINAL_GATE_DSHB_T3_OMISSION=0
+MD5_FINAL_GATE_DSHB_T4_GATE=GO_100_OF_100
+MD5_FINAL_GATE_DSHB_T4_TRIPARTY_CONSENSUS=3_OF_3_GO
+MD5_FINAL_GATE_DSHB_P0_P1_P2=0
+MD5_FINAL_GATE_DSHB_BLOCKERS=0
+MD5_FINAL_GATE_DSHB_BASELINE_MODIFIED=FALSE
+MD5_FINAL_GATE_DSHB_DECISION=GO_RELEASE
+MD5_FINAL_GATE_DSHB_VERSION_STATUS=FINAL_GATE_PASS
+MD5_FINAL_GATE_DSHB_COMPLETE=TRUE
 JOB_READY=TRUE
