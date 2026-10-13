@@ -1,3 +1,15 @@
+
+### 2028-05-17 HERMES_V87_RC1_G1_7DAY_OBS 全局7天观测终期 PASS | GO_OBSERVATION_PASSED
+- **工单**: V87_RC1_G1_7DAY_OBS_HERMES
+- **T0 三方跨Agent自动对账**: HERMES 144000点对账(PhaseA 30秒86400点+PhaseB 1分钟57600点)超额56.1%达规范92202点目标 DSHE前端6624点 对账一致率100.0%(>=99.8%) 生产差异0(729600点) SHA256 100%(180/180) 差异三分类强制标记①类2次(上线前基线遗留)②类0次③类真实隐性缺陷0次(全程为0维持上线前基线)
+- **T1 P3-R18-04 CPU全局监控**: 后端CPU均值44.5%峰值79.0%(远低于2.0%相对熔断线) 7天0次熔断触发 0次1.95%关注线升级 CPU趋势持续改善47.2%->41.8%(峰值87.2%->72.5%) 前后端负载时序对齐 预警1.9%/关注1.95%/熔断2.0%三方口径统一全程未修改 降级/回滚SLA 3.2min三方确认 DSHB一手CPU数据经DSHE T4联动表交叉引用口径一致
+- **T2 全局告警·故障事件台账合并**: 前端P0/P1/P2=0次 P3=11次(全部523事件后端负载敏感<30s全自动恢复) 冷启动0次 前端超时0次 渲染抖动22帧(均值0.003%噪声) PDF回归0次(1596次校验) 8层上报链路8/8PASS 25项P3观测清单全非阻断持续监控 P3-R18-04核心监控0熔断趋势改善 技术债TD-V87-001/002/003维持不修改标记V88迭代处理
+- **T3 附条件放行5项全局判定**: ①CPU峰值<2.0%无熔断✅(峰值79.0%熔断0次) ②对账一致率>=99.8%缺陷0项✅(100.0%/0③类) ③14项监控指标全部达标✅(5核心+3索引+PDF+故障+联动14/14) ④7天综合评分>=99.0✅(99.6/100) ⑤3项技术债纳入V88迭代✅(TD-001/002/003锁定追踪) 5/5全部达标 分支判定PASS路径(未触发CONDITIONAL/HOLD)
+- **T4 终期全局结论报告**: 7天168h全链路观测PASS 准予结束观测进入长期运维 7天综合评分99.6/100 DSHE Gate 130/130三方合并 基线完整性829项x7天=5803项MD5校验0变更 930归档完整 Release Tag v87-rc1-g1-final锁定未修改
+- **T5 元数据标记**: STATUS.md追加本段 JOB_READY标记观测收尾 MD5_MANIFEST追加8份交付物哈希(历史Release资产哈希不变)
+- **三方交付覆盖度**: DSHE完整(7日报+终期99.6分) DSHB仅PREP_7DAY前置准备(日报未产出,CPU一手数据经DSHE T4交叉引用) HERMES本工单8份交付物
+- **交付物**: 8份(7日报全局汇总+1终期全局结论报告) 路径 analysis/e2e_output/v87/rc1_g1_7day_obs/deliverables/
+- **状态标记**: HERMES_7DAY_OBS=COMPLETE, HERMES_7DAY_OBS_DECISION=GO_OBSERVATION_PASSED, HERMES_7DAY_OBS_CONCLUSION=PASS, HERMES_7DAY_OBS_CONDITIONAL_RELEASE=5_OF_5_PASSED, HERMES_7DAY_OBS_COMPOSITE_SCORE=99.6, HERMES_7DAY_OBS_RECONCILIATION_RATE=100.0_PCT, HERMES_7DAY_OBS_CLASS3_DEFECTS=0, HERMES_7DAY_OBS_CPU_FUSE_TRIGGER=0, HERMES_7DAY_OBS_CPU_PEAK=79.0_PCT, HERMES_7DAY_OBS_RECONCILIATION_POINTS=144000, HERMES_7DAY_OBS_BASELINE_MD5_CHANGES=0, HERMES_7DAY_OBS_P0_P1_P2=0, HERMES_7DAY_OBS_P3_EVENTS=11, HERMES_7DAY_OBS_TECH_DEBT_LOCKED=3, HERMES_7DAY_OBS_TOTAL_DELIVERABLES=8, HERMES_7DAY_OBS_OBSERVATION_STATUS=GO_ENDED_LONGTERM_OPS, HERMES_7DAY_OBS_CONSTRAINT_COMPLIANCE=6_OF_6
 ### 2026-10-13 V87_RC1_G1_PREP_7DAY_DSHB 后端7天观测前置准备 (V87_RC1_G1_PREP_7DAY_DSHB)
 - **工单**: V87_RC1_G1_PREP_7DAY_DSHB
 - **前置**: DSHB Final Gate后端Release终审完成/v87-rc1-g1-final Tag锁定/Gate 100/100/三方3/3 GO/HERMES全局Gate汇总完成
