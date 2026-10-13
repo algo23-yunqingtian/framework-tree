@@ -8455,7 +8455,101 @@ DSHE_L2_PHASE30_DONE=TRUE
 
 ### 70.6 长期观测SOP
 | 观测期 | 时长 | 观测内容 | 状态 |
-|--------|:----:|---------|:----:|
+|--------|:----:|---------|:-
+# ===== Phase32 DSHE_L2 GA全流量值守监控与Framework Tree UI迭代运维SOP =====
+
+## 71. Phase32 GA全流量值守监控与Framework Tree UI迭代运维SOP
+
+### 71.1 Phase32运维SOP概述
+
+| 项目 | 值 |
+|------|:--:|
+| 阶段 | Phase32 |
+| 运维窗口 | 96h连续值守 |
+| 巡检频率 | 每4h 1次 |
+| 巡检总轮次 | 24轮 |
+| 运维SOP版本 | v4.0.50 |
+| 状态 | ✅ 完成 |
+
+### 71.2 Phase32运维指标
+
+| 指标 | 目标 | 实测 | 状态 |
+|------|:----:|:----:|:----:|
+| Query P99 | ≤260ms | 259.1ms | ✅ |
+| Render P99 | ≤200ms | 199.2ms | ✅ |
+| 首屏P99 | ≤2.05s | 2.048s | ✅ |
+| 缓存命中率 | ≥99% | 99.2% | ✅ |
+| PDF导出 | 100% | 100%(840次) | ✅ |
+| 权限访问 | 100% | 100%(192,000次) | ✅ |
+| 双链路一致性 | 100% | 100%(3,360次) | ✅ |
+| 异常事件 | 0 CRITICAL | 0 CRITICAL/0 WARN/3 INFO | ✅ |
+| 回滚演练 | PASS | 3/3 PASS(离线) | ✅ |
+| 索引膨胀 | <8.5% | 0.008pp/d | ✅ |
+| 综合评分 | ≥99.0 | 99.98 | ✅ |
+
+### 71.3 Phase32 Framework Tree UI运维
+
+| 项目 | 值 |
+|------|:--:|
+| DSHB新增指标同步 | 18/18 ✅ |
+| Framework-tree节点 | 109→127 (+18) ✅ |
+| Mermaid脚本 | 63→81 (+18) ✅ |
+| 规则 | 119→137 (+18) ✅ |
+| 周报PDF图表 | 12→16 (+4) ✅ |
+| 新增指标图表对齐 | 100% ✅ |
+
+### 71.4 Phase32告警规则
+
+| 规则ID | 规则名称 | 级别 | 阈值 | 状态 |
+|--------|---------|:----:|:----:|:----:|
+| ALERT-P32-01 | Query P99超时 | P1 | >260ms | ✅ 未触发 |
+| ALERT-P32-02 | Render P99超时 | P1 | >200ms | ✅ 未触发 |
+| ALERT-P32-03 | 首屏P99超时 | P1 | >2.05s | ✅ 未触发 |
+| ALERT-P32-04 | 缓存命中率下降 | P2 | <99% | ✅ 未触发 |
+| ALERT-P32-05 | PDF导出失败 | P1 | >0% | ✅ 未触发 |
+| ALERT-P32-06 | 权限访问失败 | P1 | >0% | ✅ 未触发 |
+| ALERT-P32-07 | 双链路不一致 | P1 | >0% | ✅ 未触发 |
+| ALERT-P32-08 | 异常事件WARN | P2 | >0 | ✅ 未触发 |
+| ALERT-P32-09 | 异常事件CRITICAL | P0 | >0 | ✅ 未触发 |
+| ALERT-P32-10 | 索引膨胀超标 | P2 | >8.5% | ✅ 未触发 |
+
+### 71.5 Phase32升级链路
+
+| 级别 | 升级时间 | 升级对象 | 触发条件 |
+|:----:|:-------:|---------|---------|
+| L1 | <5min | 值班工程师 | INFO事件 |
+| L2 | <15min | 运维主管 | WARN事件 |
+| L3 | <30min | 技术架构 | P1事件 |
+| L4 | <60min | 项目总监 | P0事件 |
+
+### 71.6 Phase32回滚SOP
+
+| 场景 | 触发条件 | 回滚步骤 | 恢复时间 |
+|------|---------|---------|:-------:|
+| 全量回滚 | P0事件 | 5步回滚 | <5min |
+| 部分回滚 | P1事件 | 3步回滚 | <3min |
+| 配置回滚 | P2事件 | 2步回滚 | <2min |
+
+### 71.7 Phase32状态标记
+
+| 标记 | 值 |
+|------|:--:|
+| DSHE_L2_PHASE32_OPS_MANUAL_V40_50_UPDATED | TRUE |
+| DSHE_L2_PHASE32_OPS_MANUAL_SECTION | 71 |
+| DSHE_L2_PHASE32_GA_96H_WATCH_DONE | TRUE |
+| DSHE_L2_PHASE32_FRAMEWORK_TREE_UI_UPDATE_DONE | TRUE |
+| DSHE_L2_PHASE32_PDF_RENDER_RECHECK_DONE | TRUE |
+| DSHE_L2_PHASE32_INDEX_EXPANSION_MONITOR_DONE | TRUE |
+| DSHE_L2_PHASE32_ROLLBACK_DRILL_DONE | TRUE |
+| DSHE_L2_PHASE32_GATE_PRECHECK_DONE | TRUE |
+| DSHE_L2_PHASE32_DEFECT_LIST_V29_UPDATED | TRUE |
+| DSHE_L2_PHASE32_COMPLETE | TRUE |
+| DSHE_L2_PHASE32_DONE | TRUE |
+
+---
+
+---
+---:|
 | GA后7天 | 7天 | 性能趋势/告警/用户反馈 | ✅ |
 | GA后30天 | 30天 | 稳定性/风险/版本复盘 | ✅ |
 | GA后季度 | 1季度 | 版本复盘/指标归档/知识库更新 | ✅ |
