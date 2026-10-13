@@ -2311,3 +2311,20 @@ HERMES_7DAY_OBS_COMPOSITE_SCORE=99.6
 HERMES_7DAY_OBS_TECH_DEBT_LOCKED_V88=3
 HERMES_7DAY_OBS_CONSTRAINT_COMPLIANCE=6_OF_6
 HERMES_7DAY_OBS_HISTORY_RELEASE_HASH_UNCHANGED=TRUE
+
+
+## 2026-10-12 HERMES_V87_ARCHIVE_FINAL + V88_INIT 新增交付物 MD5
+| # | 文件 | 归属 | MD5 | 行数 |
+|---|---|---|---|---|
+| 1 | v87_rc1_g1_full_project_closure_report.md | V87归档 | 8c6bc78b | 139 |
+| 2 | v87_rc1_g1_all_deliverables_index.md | V87归档 | b27f7b6a | 索引 |
+| 3 | v87_rc1_g1_consolidated_risk_backlog.md | V87归档 | 9b282a75 | 80 |
+| 4 | v88_global_project_init_requirement.md | V88立项 | 74dcf2c9 | 立项 |
+| 5 | v88_phase_milestone_draft.md | V88立项 | ec43807d | 里程碑 |
+| 6 | v88_global_longterm_ops_sop.md | V88立项 | eae3f234 | SOP |
+
+# 历史Release基线资产哈希保持不变，本次仅追加，v87-rc1-g1-final Tag未修改
+HERMES_ARCHIVE_FINAL_7DAY_OBS_COMPLETE=TRUE
+HERMES_ARCHIVE_FINAL_MD5_APPENDED=TRUE
+V87_LIFECYCLE=ARCHIVED
+V88_LIFECYCLE=INIT_STARTED
