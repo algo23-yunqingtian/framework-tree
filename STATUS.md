@@ -8253,3 +8253,70 @@ JOB_READY=TRUE
 
 **V88 P1 Gating:** PR-01(si_p6_bar_01修复)已闭环 → P0全部达标 → 可进入正式排期
 **约束合规:** 8/8 (BRANCH_LOCKED/NO_OVERWRITE/NO_MODIFY_V85/NO_EDIT_RELEASE_TAG_ASSET/NO_ZHIJI_API)
+
+### 2028-05-18 V87_RC1_G1_DSHE_UPDATE_GATING_CHECKLIST
+
+| 工单 | V87_RC1_G1_DSHE_UPDATE_GATING_CHECKLIST |
+|------|:--:|
+| Agent | DSHE |
+| 前置依赖 | FIX_META_SI_ISSUE FULL PASS; DSHB 24项partial修复计划已交付 |
+| 操作 | 更新V88 P1 Gating Checklist |
+
+| # | 任务 | 状态 |
+|:-:|------|:----:|
+| T0 | 读取DSHB交叉核验报告，提取24项partial指标修复计划 | ✅ |
+| T1 | 更新Gating Checklist，标记DSHB后端确认项完成 | ✅ |
+| T2 | 复核P1门禁项，汇总剩余唯一卡点 | ✅ |
+| T3 | 追加元数据 | ✅ |
+
+**Gating Checklist进度：** 7/8项已通过
+
+**剩余唯一卡点：** 渲染引擎适配node_binding模式完成 (V88开发阶段任务)
+
+| 文件 | MD5 | 大小 |
+|------|:---:|:----:|
+| 88_dshe_backlog_framework_tree_meta_refactor_report.md | AE34A596 | 14,882B |
+| 88_dshb_backlog_missing_indicator_list.md | 16D2BD13 | 20,640B |
+| 88_dshb_backlog_framework_tree_data_crawl_spec.md | B6A65206 | 24,179B |
+
+**约束合规：** 8/8合规 | **829基线MD5：** 不变
+
+### 2028-05-18 V87_RC1_G1_DSHB_META_CROSS_CHECK DSHB后端交叉核验+24项partial修复计划
+
+| 工单 | V87_RC1_G1_DSHB_META_CROSS_CHECK |
+|------|:--:|
+| Agent | DSHB |
+| 前置依赖 | DSHB V88 Backlog补数工单完成; DSHE si_p6_bar_01前端修复完成; DSHE P1门禁等待后端确认 |
+
+| # | 任务 | 状态 |
+|:-:|------|:----:|
+| T0 | si_p6_bar_01后端指标库检索 — p6 comms不含si, 无残留绑定 | ✅ |
+| T1 | 24项partial清单核查 — si_p6_bar_01不在清单内, 统计不变 | ✅ |
+| T2 | missing_indicator_list追加si_p6移除备注 | ✅ |
+| T3 | 交叉核验报告+24项partial修复计划输出 | ✅ |
+| T4 | 元数据追加 | ✅ |
+
+**关键发现:**
+- si_p6_bar_01绑定指标SI_TOP20_LONG/SHORT从未入库786指标, 后端无残留
+- 24项partial修复计划完整输出: 5大类/14节点/8品种/12爬虫任务/14.5人天
+- DSHE P1 Gating Checklist 7/8项已通过, 唯一卡点: 渲染引擎适配node_binding模式
+
+**Gating Checklist进度:** 7/8项已通过
+- [P0] si_p6_bar_01修复 ✅
+- [P0] 元数据注入606项0 ERROR ✅
+- [P0] 负向测试7/7 ✅
+- [P0] topic_tag 0残留 ✅
+- [P1] 口径差异文档 ✅
+- [P1] 周报规则R-REPORT-CALIBER-V1 ✅
+- [P1] DSHB后端确认24项partial修复计划 ✅ **(本次新增)**
+- [P1] 渲染引擎适配node_binding模式 ❌ (DSHE V88开发任务)
+
+**交付物哈希:**
+
+| 文件 | MD5 | 大小 |
+|------|:---:|:----:|
+| v88_dshb_meta_cross_check_si_p6_report.md | 3CF773C7 | 14,903B |
+| v88_dshb_backlog_missing_indicator_list.md | 031EC288 | 23,322B |
+
+**约束合规:** 9/9 (BRANCH_LOCKED/NO_OVERWRITE/NO_MODIFY_V85/NO_EDIT_RELEASE_TAG_ASSET/NO_ZHIJI_API_CALL/CPU FUSE 2.0%/15阈值/append-only/基线零修改)
+**829基线MD5:** 不变 | **Tag:** v87-rc1-g1-final不变

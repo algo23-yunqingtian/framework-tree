@@ -272,12 +272,40 @@ V88 元数据正式上线 Gating Checklist:
 ☑ [P0] topic_tag字段确认0残留
 ☑ [P1] 口径差异文档已定义 (v88_dshe_chart_indicator_stat_caliber_spec.md)
 ☑ [P1] 周报统计规则R-REPORT-CALIBER-V1已生效
-□ [P1] DSHB后端确认24项partial指标修复计划
+☑ [P1] DSHB后端确认24项partial指标修复计划 (v88_dshb_backlog_missing_indicator_list.md 已交付)
 □ [P1] 渲染引擎适配node_binding模式完成
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-☑☑☑☑☑☑□□ 6/8项已通过 — PR-01~PR-04 (P0) 全部闭环 + 口径文档+周报规则已生效
-待完成: DSHB partial指标修复计划 + 渲染引擎适配
+☑☑☑☑☑☑☑□ 7/8项已通过 — PR-01~PR-04 (P0) 全部闭环 + 口径文档+周报规则 + DSHB partial修复计划已交付
+剩余唯一卡点: 渲染引擎适配node_binding模式完成 (V88开发阶段任务)
 ```
+
+### DSHB 后端交叉核验确认 (V87_RC1_G1_DSHE_UPDATE_GATING_CHECKLIST)
+
+| 属性 | 值 |
+|------|:--:|
+| 确认来源 | DSHB 交付物 `v88_dshb_backlog_missing_indicator_list.md` + `v88_dshb_backlog_framework_tree_data_crawl_spec.md` |
+| 24项partial指标清单 | ✅ 已完整交付 (8品种/5大类/14节点) |
+| 爬虫规格文档 | ✅ 已完整交付 (25张待补图表/12个CR任务/8条DQA/6套Schema) |
+| 修复计划确认时间 | 2028-05-18 |
+| 确认结果 | ✅ **DSHB后端24项partial指标修复计划已确认** |
+
+**24项partial指标修复计划摘要：**
+
+| 类别 | 数量 | 优先级 | 涉及品种 | 数据源 | 预计工时 |
+|------|:----:|:------:|----------|--------|:--------:|
+| 库存分项拆分 | 6 | P0/P1 | CU/PB/ZN/NI/AL/LC | SHFE/LME/GC公开 | CR-04/05 |
+| 冶炼检修量化损失 | 3 | P1 | CU/NI/SI | SMM付费 | CR-11 |
+| 库存累库/去化速率衍生 | 5 | P1/P2 | CU/SN/SI/PB/ZN | 自建计算 | CR-12 |
+| 现货询盘成交活跃度 | 3 | P2 | CU/LC/SI | SMM付费 | CR-07/08 |
+| 其他半匹配 | 7 | P2 | AL/CU/LC/SI/NI | 多源 | CR-06~11 |
+| **合计** | **24** | — | **8品种** | — | **14.5人天** |
+
+**剩余P1门禁卡点（唯一）：**
+
+| # | 卡点 | 优先级 | 负责 | 说明 |
+|:-:|------|:------:|:----:|------|
+| 1 | 渲染引擎适配node_binding模式完成 | P1 | DSHE | V88开发阶段任务，需将渲染引擎从topic_tag模式切换为node_binding模式 |
+
 ### 与本次交付物关联
 
 | 本次交付物 | 关联的前置条件 |

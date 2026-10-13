@@ -2414,3 +2414,20 @@ JOB_READY=TRUE### 2028-05-18 V87_RC1_G1_DSHB_V88_BACKLOG_FILL DSHB V88后端Back
 | JOB_READY.flag | (׷��) | �� | ׷��key=value |
 
 **�޸���֤:** 606/606 PASS, 0 ERROR, 7/7������� | **Gating:** P0ȫ���ջ�(6/8)
+
+---
+
+## V87_RC1_G1_DSHB_META_CROSS_CHECK - 后端交叉核验交付物哈希
+
+| 文件 | MD5 | 大小 | 状态 |
+|------|:---:|:----:|:----:|
+| v88_dshb_meta_cross_check_si_p6_report.md | 3CF773C7F6656679FAE89F6FDEB18D25 | 14,903B | 新增 |
+| v88_dshb_backlog_missing_indicator_list.md | 031EC2881CDBC00617D63CD329B60508 | 23,322B | 追加备注 |
+
+**任务标记:** V87_RC1_G1_DSHB_META_CROSS_CHECK=COMPLETE
+**分支:** feature/v87-rc1-g1
+**日期:** 2028-05-18
+**829基线MD5:** 不变
+**Tag:** v87-rc1-g1-final不变
+**约束合规:** 9/9
+
