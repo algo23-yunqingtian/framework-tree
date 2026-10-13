@@ -1,30 +1,30 @@
-﻿锘? MD5_MANIFEST 锟?V87-RC1 浜ゅ弶瀹℃煡娓呭崟 (Phase01-Phase30)
+﻿锘? MD5_MANIFEST �?V87-RC1 浜ゅ弶瀹℃煡娓呭崟 (Phase01-Phase30)
 
-> **DSHB V87 RC1 浜ゅ弶瀹℃煡MD5娓呭崟**
-> 鍒嗘敮: `feature/v87-rc1-g1`
+> **DSHB V87 RC1 浜ゅ弶瀹℃煡MD5娓呭�?*
+> 鍒嗘�? `feature/v87-rc1-g1`
 > 鍩哄噯commit: `20dd513` (Phase26 DSHB)
-> 鏃ユ湡: 2028-06-15
-> 鐗堟湰: V87-RC1
-> 鐘讹拷? 馃煝 Phase30缁堬拷?(DSHB+DSHE+HERMES)
+> 鏃ユ�? 2028-06-15
+> 鐗堟�? V87-RC1
+> 鐘讹�? 馃煝 Phase30缁堬�?(DSHB+DSHE+HERMES)
 
 ---
 
 ## 1. 浜ゅ弶瀹℃煡鑼冨洿
 
-| 椤圭洰 | 锟?|
+| 椤圭�?| �?|
 |------|----|
 | 瀹℃煡鑼冨洿 | V87 RC1 Phase01 ~ Phase27 |
 | 瀹℃煡鏃ユ湡 | 2028-06-15 |
 | 鍩哄噯鐗堟湰 | V87.1 RC1 |
-| 鍒嗘敮 | `feature/v87-rc1-g1` |
+| 鍒嗘�?| `feature/v87-rc1-g1` |
 | 鍩哄噯commit | `20dd513` |
-| 绾︽潫 | NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE |
+| 绾︽�?| NO_ZHIJI_API_CALL=TRUE | NO_MODIFY_V85=TRUE | NO_OVERWRITE=TRUE | BRANCH_LOCKED=TRUE |
 
 ---
 
-## 2. 鍏ㄩ儴闃舵浜х墿缁熻
+## 2. 鍏ㄩ儴闃舵浜х墿缁熻�?
 
-| Phase | DSHB鎶ュ憡锟?| DSHE鎶ュ憡锟?| HERMES鎶ュ憡锟?| 鍏朵粬 | 鍚堣 |
+| Phase | DSHB鎶ュ憡锟?| DSHE鎶ュ憡锟?| HERMES鎶ュ憡锟?| 鍏朵�?| 鍚堣�?|
 |:-----:|:----------:|:----------:|:------------:|:----:|:----:|
 | Phase01 | 0 | 0 | 6 | 0 | 6 |
 | Phase02 | 0 | 0 | 7 | 0 | 7 |
@@ -58,15 +58,15 @@
 | Phase29 | 6 | 0 | 0 | 0 | 6 |
 | Phase30 | 0 | 5 | 0 | 0 | 5 |
 | Phase34 | 0 | 6 | 0 | 0 | 6 |
-| **鍚堣** | **122** | **57** | **62** | **46** | **287** |
+| **鍚堣�?* | **122** | **57** | **62** | **46** | **287** |
 
 ---
 
-## 3. V87 RC1 鏍稿績浜や粯鐗㎝D5娓呭崟
+## 3. V87 RC1 鏍稿績浜や粯鐗㎝D5娓呭�?
 
-### 3.1 DSHB绯诲垪 (Phase08-Phase13)
+### 3.1 DSHB绯诲�?(Phase08-Phase13)
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 1 | `v87_rc1_dshb_g1_phase10_1pct_gray_metric_split_report.md` | Phase10 | `D67E36EE902C0562A9CAD5580AB08520` | 12,506 B |
 | 2 | `v87_rc1_dshb_g1_phase10_gray_alert_fuse_verify_report.md` | Phase10 | `4189A7127FEB71512B9B5B560375E5FF` | 12,573 B |
@@ -107,9 +107,9 @@
 | 37 | `risk_register_v87_phase15.md` (v13.0) | Phase15 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 | 38 | `defect_list.md` (v12.0) | Phase15 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
 
-### 3.1b DSHB Phase16 (澶栭儴鍥犲瓙鎸囨爣鏄犲皠涓庢暟鎹簮鐩樼偣)
+### 3.1b DSHB Phase16 (澶栭儴鍥犲瓙鎸囨爣鏄犲皠涓庢暟鎹簮鐩樼�?
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 39 | `v87_rc1_dshb_g1_phase16_weekly_pdf_metric_inventory_and_classify_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 40 | `v87_rc1_dshb_g1_phase16_baiquandb_metric_mapping_match_report.md` | Phase16 | `MD5_HASH_PLACEHOLDER` | ~19,000 B |
@@ -120,9 +120,9 @@
 | 45 | `risk_register_v87_phase16.md` (v14.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 46 | `defect_list.md` (v13.0) | Phase16 | `MD5_HASH_PLACEHOLDER` | ~21,000 B |
 
-### 3.1c DSHB Phase17-18 (澶栭儴鎸囨爣娴佹按绾挎惌寤轰笌30澶╅暱绋宠锟?
+### 3.1c DSHB Phase17-18 (澶栭儴鎸囨爣娴佹按绾挎惌寤轰�?0澶╅暱绋宠�?
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 47 | `v87_rc1_dshb_g1_phase17_external_metric_pipeline_design_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 48 | `v87_rc1_dshb_g1_phase17_baiquandb_sync_pipeline_implement_report.md` | Phase17 | `MD5_HASH_PLACEHOLDER` | ~20,000 B |
@@ -141,7 +141,7 @@
 
 ### 3.1d DSHB Phase19 (褰卞瓙鍥炴祴鍥犲瓙楠岃瘉涓庡洜瀛愮浉鍏虫€у垎锟?
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 61 | `v87_rc1_dshb_g1_phase19_shadow_backtest_dataset_baseline_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~30,000 B |
 | 62 | `v87_rc1_dshb_g1_phase19_single_factor_ic_ir_correlation_analysis_report.md` | Phase19 | `MD5_HASH_PLACEHOLDER` | ~42,000 B |
@@ -152,9 +152,9 @@
 | 67 | `risk_register_v87_phase19.md` (v17.0) | Phase19 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 68 | `defect_list.md` (v16.0) | Phase19 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
 
-### 3.1e DSHB Phase20 (鍥犲瓙鐢熶骇娴佹按锟?0%鐏板害涓婄嚎涓庢寚鏍囩洃锟?
+### 3.1e DSHB Phase20 (鍥犲瓙鐢熶骇娴佹按锟?0%鐏板害涓婄嚎涓庢寚鏍囩洃�?
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 69 | `v87_rc1_dshb_g1_phase20_factor_50pct_gray_deploy_exec_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~32,000 B |
 | 70 | `v87_rc1_dshb_g1_phase20_online_offline_factor_bias_analysis_report.md` | Phase20 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
@@ -165,9 +165,9 @@
 | 75 | `risk_register_v87_phase20.md` (v18.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 76 | `defect_list.md` (v17.0) | Phase20 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
 
-### 3.1f DSHB Phase23-24 (30锟?60澶╅暱绋宠娴嬩笌绱㈠紩褰掓。涓庢煡璇㈢紦瀛樹紭鍖栦笌鐔旀柇浠跨湡)
+### 3.1f DSHB Phase23-24 (30�?60澶╅暱绋宠娴嬩笌绱㈠紩褰掓。涓庢煡璇㈢紦瀛樹紭鍖栦笌鐔旀柇浠跨湡)
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 77 | `v87_rc1_dshb_g1_phase23_30day_longrun_observation_summary_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 78 | `v87_rc1_dshb_g1_phase23_index_expansion_trend_prediction_report.md` | Phase23 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
@@ -187,9 +187,9 @@
 | 92 | `risk_register_v87_phase24.md` (v22.0) | Phase24 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 93 | `defect_list.md` (v21.0) | Phase24 | `MD5_HASH_PLACEHOLDER` | ~35,000 B |
 
-### 3.1g DSHB Phase25 (90澶╄秴闀跨ǔ鎬佽娴嬩笌绱㈠紩褰掓。缁存姢涓庢煡璇㈢紦瀛橀暱绋抽獙璇佷笌鐔旀柇浠跨湡杩唬)
+### 3.1g DSHB Phase25 (90澶╄秴闀跨ǔ鎬佽娴嬩笌绱㈠紩褰掓。缁存姢涓庢煡璇㈢紦瀛橀暱绋抽獙璇佷笌鐔旀柇浠跨湡杩�?
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 94 | `v87_rc1_dshb_g1_phase25_90day_longrun_observation_summary_report.md` | Phase25 | `MD5_HASH_PLACEHOLDER` | ~25,000 B |
 | 95 | `v87_rc1_dshb_g1_phase25_index_archive_maintenance_report.md` | Phase25 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
@@ -202,7 +202,7 @@
 
 ### 3.1h DSHB Phase26 (120澶╄秴闀跨ǔ鎬佽娴嬩笌鏋佺琛屾儏鍘嬫祴涓庣储寮曞閲忛娴嬩笌褰掓。鐏惧婕旂粌涓庣紦瀛橀檷绾ч獙锟?
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 102 | `v87_rc1_dshb_g1_phase26_120day_longrun_observation_summary_report.md` | Phase26 | `MD5_HASH_PLACEHOLDER` | ~28,000 B |
 | 103 | `v87_rc1_dshb_g1_phase26_extreme_market_stress_test_report.md` | Phase26 | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
@@ -215,9 +215,9 @@
 | 110 | `risk_register_v87_phase26.md` (v24.0) | Phase26 | `MD5_HASH_PLACEHOLDER` | ~32,000 B |
 | 111 | `defect_list.md` (v23.0) | Phase26 | `MD5_HASH_PLACEHOLDER` | ~36,000 B |
 
-### 3.1i DSHB Phase27 (鍐风儹褰掓。璇诲彇浼樺寲涓庣紦瀛樿皟浼樹笌鍥犲瓙琛板噺娴嬭瘯涓庝豢鐪熸暟鎹泦瀵煎嚭)
+### 3.1i DSHB Phase27 (鍐风儹褰掓。璇诲彇浼樺寲涓庣紦瀛樿皟浼樹笌鍥犲瓙琛板噺娴嬭瘯涓庝豢鐪熸暟鎹泦瀵煎�?
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 112 | `v87_rc1_dshb_g1_phase27_hotcold_archive_read_optimize_report.md` | Phase27 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
 | 113 | `v87_rc1_dshb_g1_phase27_query_cache_parameter_tuning_report.md` | Phase27 | `MD5_HASH_PLACEHOLDER` | ~19,000 B |
@@ -230,7 +230,7 @@
 
 ### 3.1j DSHB Phase28 (Staging鍏ㄥ弬鏁伴暱绋抽獙璇佷笌鍘嬪姏浠跨湡涓庡洜瀛愯竟鐣屾墿灞曚笌璧勬簮閰嶉瑙勫垝)
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
 | 120 | `v87_rc1_dshb_g1_phase28_staging_parameter_longrun_validate_report.md` | Phase28 | `MD5_HASH_PLACEHOLDER` | ~18,000 B |
 | 121 | `v87_rc1_dshb_g1_phase28_high_concurrency_stress_simulation_report.md` | Phase28 | `MD5_HASH_PLACEHOLDER` | ~17,000 B |
@@ -241,7 +241,7 @@
 | 126 | `risk_register_v87_phase28.md` (v26.0) | Phase28 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 | 127 | `defect_list.md` (v25.0) | Phase28 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 
-### 3.1j Phase29 DSHB系锟斤拷 (锟斤拷锟斤拷Gate锟斤拷锟斤拷预锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟节癸拷锟斤拷实锟斤拷锟斤拷毓锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟饺拷锟斤拷锟斤拷呖锟斤拷毡锟斤拷锟?
+### 3.1j Phase29 DSHB系锟斤拷 (锟斤拷锟斤拷Gate锟斤拷锟斤拷预锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟节癸拷锟斤拷实锟斤拷锟斤拷毓锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟饺拷锟斤拷锟斤拷呖锟斤拷毡锟斤拷�?
 
 | # | 锟侥硷拷 | Phase | MD5 | 锟斤拷小 |
 |---|------|:-----:|-----|:----:|
@@ -267,18 +267,18 @@
 | 142 | `risk_register_v87_phase30.md` (v28.0) | Phase30 | `MD5_HASH_PLACEHOLDER` | ~24,000 B |
 | 143 | `defect_list.md` (v27.0) | Phase30 | `MD5_HASH_PLACEHOLDER` | ~22,000 B |
 
-### 3.2 DSHE绯诲垪 (Phase08-Phase16)
+### 3.2 DSHE绯诲�?(Phase08-Phase16)
 
-| # | 鏂囦欢 | Phase | MD5 | 澶у皬 |
+| # | 鏂囦�?| Phase | MD5 | 澶у皬 |
 |---|------|:-----:|-----|:----:|
-| 1 | `v87_rc1_dshe_l2_phase08_90day_archive_audit_summary_report.md` | Phase08 | `215cba9214dd85c4057e39d230eff543` | 锟?|
-| 2 | `v87_rc1_dshe_l2_phase08_reconcile_window_stat_report.md` | Phase08 | `f82bd6b8aa2438f791877f329522c991` | 锟?|
-| 3 | `v87_rc1_dshe_l2_phase08_index_archive_longterm_verify_report.md` | Phase08 | `636815a0eebe639d12b65a214f8b8be0` | 锟?|
-| 4 | `v87_rc1_dshe_l2_phase08_storage_longterm_capacity_report.md` | Phase08 | `079b0b78a04dfa3f270c0bdd4f660e0d` | 锟?|
-| 5 | `v87_rc1_dshe_l2_phase08_outlier_event_stat_report.md` | Phase08 | `f033bb9198ba39e2668c94eb5a365b7e` | 锟?|
-| 6 | `v87_rc1_dshe_l2_phase08_monthly_archive_audit_brief.md` | Phase08 | `ad9f197148f069f8b0f74e1a6b909c4f` | 锟?|
-| 7 | `v87_rc1_dshe_l2_phase08_archive_final_gate_evaluation_report.md` | Phase08 | `56ce1e1bbd192fa299e9e4dab275f3be` | 锟?|
-| 8 | `v87_rc1_dshe_l2_phase08_risk_watchlist.md` | Phase08 | `e2175f06d5206e9cb4eff9b9b00b2f14` | 锟?|
+| 1 | `v87_rc1_dshe_l2_phase08_90day_archive_audit_summary_report.md` | Phase08 | `215cba9214dd85c4057e39d230eff543` | �?|
+| 2 | `v87_rc1_dshe_l2_phase08_reconcile_window_stat_report.md` | Phase08 | `f82bd6b8aa2438f791877f329522c991` | �?|
+| 3 | `v87_rc1_dshe_l2_phase08_index_archive_longterm_verify_report.md` | Phase08 | `636815a0eebe639d12b65a214f8b8be0` | �?|
+| 4 | `v87_rc1_dshe_l2_phase08_storage_longterm_capacity_report.md` | Phase08 | `079b0b78a04dfa3f270c0bdd4f660e0d` | �?|
+| 5 | `v87_rc1_dshe_l2_phase08_outlier_event_stat_report.md` | Phase08 | `f033bb9198ba39e2668c94eb5a365b7e` | �?|
+| 6 | `v87_rc1_dshe_l2_phase08_monthly_archive_audit_brief.md` | Phase08 | `ad9f197148f069f8b0f74e1a6b909c4f` | �?|
+| 7 | `v87_rc1_dshe_l2_phase08_archive_final_gate_evaluation_report.md` | Phase08 | `56ce1e1bbd192fa299e9e4dab275f3be` | �?|
+| 8 | `v87_rc1_dshe_l2_phase08_risk_watchlist.md` | Phase08 | `e2175f06d5206e9cb4eff9b9b00b2f14` | �?|
 | 9 | `v87_rc1_dshe_l2_phase10_1pct_gray_metric_split_report.md` | Phase10 | `39A555608B47701E86DE41D916B95CED` | 10,359 B |
 | 10 | `v87_rc1_dshe_l2_phase10_gray_alert_fuse_verify_report.md` | Phase10 | `37A28DD3750E50DE1D2803179C8ECF68` | 12,136 B |
 | 11 | `v87_rc1_dshe_l2_phase10_24h_observation_report.md` | Phase10 | `826FE525161758FBAA62965E4AFEC1CC` | 12,014 B |
@@ -334,132 +334,132 @@
 | 61 | 87_rc1_dshe_l2_phase29_dashboard_rollback_simulation_and_baseline_snapshot_report.md | Phase29 | MD5_HASH_PLACEHOLDER | ~35,000 B |
 | 62 | 87_rc1_dshe_l2_phase29_gate_evaluation_report.md | Phase29 | MD5_HASH_PLACEHOLDER | ~30,000 B |
 
-### 3.3 鍏冩暟鎹枃锟?
+### 3.3 鍏冩暟鎹枃�?
 
-| # | 鏂囦欢 | 鐘讹拷?|
+| # | 鏂囦�?| 鐘讹�?|
 |---|------|:----:|
-| 1 | `STATUS.md` | 锟?Phase30 DSHB entry added |
-| 2 | `JOB_READY.flag` | 锟?Phase30 DSHB section added |
-| 3 | `MD5_MANIFEST_V87_PHASE01.md` | 锟?Phase30 DSHB section added |
-| 4 | `MD5_MANIFEST_cross_review.md` | 锟?鏈枃锟?(v8.0, Phase30 DSHB entries added) |
+| 1 | `STATUS.md` | �?Phase30 DSHB entry added |
+| 2 | `JOB_READY.flag` | �?Phase30 DSHB section added |
+| 3 | `MD5_MANIFEST_V87_PHASE01.md` | �?Phase30 DSHB section added |
+| 4 | `MD5_MANIFEST_cross_review.md` | �?鏈枃锟?(v8.0, Phase30 DSHB entries added) |
 
 ---
 
-## 4. 鍏抽敭鎸囨爣婕旇繘
+## 4. 鍏抽敭鎸囨爣婕旇�?
 
-### 4.1 DSHB鏍稿績鎸囨爣婕旇繘
+### 4.1 DSHB鏍稿績鎸囨爣婕旇�?
 
-| 鎸囨爣 | Phase10 (5%) | Phase11 (20%) | Phase12 (50%) | Phase13 (75%) | Phase14 (100%) | Phase15 (30锟? | 瓒嬪娍 |
+| 鎸囨�?| Phase10 (5%) | Phase11 (20%) | Phase12 (50%) | Phase13 (75%) | Phase14 (100%) | Phase15 (30�? | 瓒嬪�?|
 |------|:----------:|:------------:|:------------:|:------------:|:-------------:|:----:|
-| P99寤惰繜 | 249.9ms | 252.1ms | 253.8ms | 255.5ms | 257.0ms | 258.5ms | 锟?缂撳崌 |
-| P95寤惰繜 | 240.2ms | 244.3ms | 245.9ms | 247.2ms | 248.5ms | 249.8ms | 锟?缂撳崌 |
-| 鍚炲悙锟?| 15,670 | 16,120 | 16,580 | 16,950 | 17,200 | 17,050 | 锟?寰檷 |
-| 缂撳瓨鍛戒腑锟?| 94.5% | 94.3% | 94.0% | 93.8% | 93.5% | 93.1% | 锟?缂撻檷 |
-| GC P99 | 18.7ms | 19.2ms | 19.5ms | 19.8ms | 19.9ms | 20.3ms | 锟?缂撳崌 |
-| 绱㈠紩鑶ㄨ儉 | 0.005pp/d | 0.006pp/d | 0.007pp/d | 0.008pp/d | 0.009pp/d | 0.009pp/d | 锟?绋冲畾 |
-| 鏁版嵁瀹屾暣锟?| 99.98% | 99.97% | 99.94% | 99.92% | 99.94% | 99.93% | 鈿狅笍 寰檷 |
-| HERMES绐楀彛 | 288 | 1,152 | 2,880 | 4,320 | 5,760 | 7,200 | 锟?閫掑 |
-| 鍛婅FP | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 绋冲畾 |
-| 鍛婅FN | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 绋冲畾 |
-| 鍥炴粴 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 绋冲畾 |
+| P99寤惰�?| 249.9ms | 252.1ms | 253.8ms | 255.5ms | 257.0ms | 258.5ms | �?缂撳�?|
+| P95寤惰�?| 240.2ms | 244.3ms | 245.9ms | 247.2ms | 248.5ms | 249.8ms | �?缂撳�?|
+| 鍚炲悙锟?| 15,670 | 16,120 | 16,580 | 16,950 | 17,200 | 17,050 | �?寰�?|
+| 缂撳瓨鍛戒腑�?| 94.5% | 94.3% | 94.0% | 93.8% | 93.5% | 93.1% | �?缂撻�?|
+| GC P99 | 18.7ms | 19.2ms | 19.5ms | 19.8ms | 19.9ms | 20.3ms | �?缂撳�?|
+| 绱㈠紩鑶ㄨ儉 | 0.005pp/d | 0.006pp/d | 0.007pp/d | 0.008pp/d | 0.009pp/d | 0.009pp/d | �?绋冲�?|
+| 鏁版嵁瀹屾暣锟?| 99.98% | 99.97% | 99.94% | 99.92% | 99.94% | 99.93% | 鈿狅�?寰�?|
+| HERMES绐楀�?| 288 | 1,152 | 2,880 | 4,320 | 5,760 | 7,200 | �?閫掑�?|
+| 鍛婅FP | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?绋冲�?|
+| 鍛婅FN | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?绋冲�?|
+| 鍥炴�?| 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?绋冲�?|
 
 ### 4.2 Gate璇勫垎婕旇繘
 
-| Phase | DSHB Gate | DSHE Gate | HERMES Gate | 涓夋柟鍏辫瘑 | 鏀鹃噺鍐崇瓥 |
+| Phase | DSHB Gate | DSHE Gate | HERMES Gate | 涓夋柟鍏辫瘑 | 鏀鹃噺鍐崇�?|
 |:-----:|:---------:|:---------:|:-----------:|:--------:|:--------:|
-| Phase10 | 4.96/5.0 GO | 4.96/5.0 GO | GO | GO | 鍑嗕簣20% |
-| Phase11 | 100.0 GO | 4.98/5.0 GO | GO | GO | 鍑嗕簣50% |
-| Phase12 | 100.0 GO | 4.98/5.0 GO | GO | GO | 鍑嗕簣75% |
-| Phase13 | 100.0 GO | 4.97/5.0 GO | GO | GO | 鍑嗕簣100% |
+| Phase10 | 4.96/5.0 GO | 4.96/5.0 GO | GO | GO | 鍑嗕�?0% |
+| Phase11 | 100.0 GO | 4.98/5.0 GO | GO | GO | 鍑嗕�?0% |
+| Phase12 | 100.0 GO | 4.98/5.0 GO | GO | GO | 鍑嗕�?5% |
+| Phase13 | 100.0 GO | 4.97/5.0 GO | GO | GO | 鍑嗕�?00% |
 | Phase14 | 100.0 GO | 4.97/5.0 GO | GO | GO | 鐗堟湰闂幆 |
 | Phase15 | 100.0 GO | 4.97/5.0 GO | GO | GO | 闀挎湡杩愮淮鍩虹嚎 |
 | Phase16 | 98.0 GO | 4.97/5.0 GO | 98.0 GO | GO | 澶栭儴鍥犲瓙鏄犲皠鏂规 |
 | Phase17 | 99.0 GO | 4.97/5.0 GO | 99.0 GO | GO | 澶栭儴鎸囨爣鐪嬫澘鍗囩骇 |
-| Phase18 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 30澶╅暱绋宠锟?|
-| Phase19 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 鍥犲瓙鐪嬫澘鎼缓 |
-| Phase20 | 99.0 GO | 4.95/5.0 GO | 99.0 GO | GO | 鍥犲瓙50%鐏板害鎶曚骇 |
-| Phase21 | 99.0 GO | 4.98/5.0 GO | 99.0 GO | GO | 鍥犲瓙75%鐏板害鎶曚骇 |
+| Phase18 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 30澶╅暱绋宠�?|
+| Phase19 | 99.25 GO | 4.98/5.0 GO | 100.0 GO | GO | 鍥犲瓙鐪嬫澘鎼�?|
+| Phase20 | 99.0 GO | 4.95/5.0 GO | 99.0 GO | GO | 鍥犲�?0%鐏板害鎶曚骇 |
+| Phase21 | 99.0 GO | 4.98/5.0 GO | 99.0 GO | GO | 鍥犲�?5%鐏板害鎶曚骇 |
 | Phase22 | 99.5 GO | - | - | GO | 100%鍏ㄩ噺鍙戝竷 |
-| Phase23 | 99.5 GO | 4.98/5.0 GO | 100.0 GO | GO | 30澶╅暱绋宠锟?|`n| Phase24 | - | 4.98/5.0 GO | - | GO | 60澶╅暱绋宠锟?PDF鎸囨爣鍖归厤 |
-| Phase25 | - | 4.99/5.0 GO | - | GO | 90澶╅暱绋宠锟?PDF娴佹按绾垮浐锟?澶栭儴姣斿鐪嬫澘 |
-| Phase26 | 99.5 GO | 4.99/5.0 GO | - | GO | 120澶╅暱锟?鏋佺琛屾儏鍘嬫祴+褰掓。鐏惧+缂撳瓨闄嶇骇 |
-| Phase27 | 99.5 GO | 4.99/5.0 GO | - | GO | 褰掓。璇诲彇浼樺寲+缂撳瓨璋冧紭+鍥犲瓙琛板噺娴嬭瘯+浠跨湡鏁版嵁锟?|
-| Phase28 | 99.5 GO | 4.99/5.0 GO | - | GO | 闀跨ǔ楠岃瘉+鍘嬪姏浠跨湡+鍥犲瓙杈圭晫鎵╁睍+璧勬簮瑙勫垝 |
+| Phase23 | 99.5 GO | 4.98/5.0 GO | 100.0 GO | GO | 30澶╅暱绋宠�?|`n| Phase24 | - | 4.98/5.0 GO | - | GO | 60澶╅暱绋宠�?PDF鎸囨爣鍖归厤 |
+| Phase25 | - | 4.99/5.0 GO | - | GO | 90澶╅暱绋宠�?PDF娴佹按绾垮浐�?澶栭儴姣斿鐪嬫�?|
+| Phase26 | 99.5 GO | 4.99/5.0 GO | - | GO | 120澶╅暱锟?鏋佺琛屾儏鍘嬫�?褰掓。鐏惧+缂撳瓨闄嶇骇 |
+| Phase27 | 99.5 GO | 4.99/5.0 GO | - | GO | 褰掓。璇诲彇浼樺�?缂撳瓨璋冧紭+鍥犲瓙琛板噺娴嬭�?浠跨湡鏁版嵁�?|
+| Phase28 | 99.5 GO | 4.99/5.0 GO | - | GO | 闀跨ǔ楠岃瘉+鍘嬪姏浠跨湡+鍥犲瓙杈圭晫鎵╁�?璧勬簮瑙勫垝 |
 
 ### 4.3 椋庨櫓婕旇繘
 
-| 鎸囨爣 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 瓒嬪娍 |
+| 鎸囨�?| Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 瓒嬪�?|
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| 娲昏穬椋庨櫓 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | 鉃★笍 鐏板害+杩愮淮+澶栭儴+鍥犲瓙鏂板 |
-| 宸插叧锟?| 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 鉃★笍 鎸佸钩 |
-| 鏆撮湶锟?| 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 鉃★笍 鍩烘湰鎸佸钩 |
-| 娑堝噺锟?| -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | 鉃★笍 鍩烘湰鎸佸钩 |
+| 娲昏穬椋庨櫓 | 4+7G | 4+9G | 4+11G | 4+13G | 4+15G | 4+17G | 4+20G | 4+23G | 4+26G | 4+29G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | 4+32G | 鉃★�?鐏板�?杩愮�?澶栭�?鍥犲瓙鏂板 |
+| 宸插叧锟?| 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 鉃★�?鎸佸�?|
+| 鏆撮湶锟?| 12 | 12 | 12 | 12 | 12 | 12 | 13 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 14 | 鉃★�?鍩烘湰鎸佸钩 |
+| 娑堝噺锟?| -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.9% | -78.0% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | -77.5% | 鉃★�?鍩烘湰鎸佸钩 |
 
 ### 4.4 缂洪櫡婕旇繘
 
-| 鎸囨爣 | Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 瓒嬪娍 |
+| 鎸囨�?| Phase10 | Phase11 | Phase12 | Phase13 | Phase14 | Phase15 | Phase16 | Phase17 | Phase18 | Phase19 | Phase20 | Phase21 | Phase22 | Phase23 | Phase24 | Phase25 | 瓒嬪�?|
 |------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:----:|
-| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 锟?|
-| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 锟?|
-| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 锟?|
-| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | 32 | 32 | 锟?鐏板害+杩愮淮+澶栭儴+鍥犲瓙鏂板 |
-| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 锟?|
-| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★笍 锟?|
+| P0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?�?|
+| P1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?�?|
+| P2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?�?|
+| P3 | 7 | 9 | 11 | 13 | 15 | 17 | 20 | 23 | 26 | 29 | 32 | 32 | 32 | 32 | 32 | 32 | �?鐏板�?杩愮�?澶栭�?鍥犲瓙鏂板 |
+| RED | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?�?|
+| WARN | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 鉃★�?�?|
 
 ---
 
-## 5. NO_OVERWRITE楠岃瘉
+## 5. NO_OVERWRITE楠岃�?
 
-### 5.1 涓嶅彲绡℃敼淇濊瘉
+### 5.1 涓嶅彲绡℃敼淇濊�?
 
-| 楠岃瘉锟?| 缁撴灉 |
+| 楠岃瘉锟?| 缁撴�?|
 |--------|:----:|
-| Phase01浜х墿MD5涓嶅彉 | 锟?|
-| Phase02浜х墿MD5涓嶅彉 | 锟?|
-| Phase03浜х墿MD5涓嶅彉 | 锟?|
-| Phase04浜х墿MD5涓嶅彉 | 锟?|
-| Phase05浜х墿MD5涓嶅彉 | 锟?|
-| Phase06浜х墿MD5涓嶅彉 | 锟?|
-| Phase07浜х墿MD5涓嶅彉 | 锟?|
-| Phase08浜х墿MD5涓嶅彉 | 锟?|
-| Phase10浜х墿MD5涓嶅彉 | 锟?|
-| Phase11浜х墿MD5涓嶅彉 | 锟?|
-| Phase12浜х墿MD5涓嶅彉 | 锟?|
-| Phase13鏂板鏂囦欢 | 锟?7浠芥柊锟?|
-| Phase14鏂板鏂囦欢 | 锟?8浠芥柊锟?|
-| Phase15鏂板鏂囦欢 | 锟?7浠芥柊锟?5鎶ュ憡+2鏇存柊) |
-| Phase16鏂板鏂囦欢 | 锟?8浠芥柊锟?6鎶ュ憡+2鏇存柊) |
-| Phase17鏂板鏂囦欢 | 锟?7浠芥柊锟?5鎶ュ憡+2鏇存柊) |
-| Phase18鏂板鏂囦欢 | 锟?7浠芥柊锟?5鎶ュ憡+2鏇存柊) |
-| Phase19鏂板鏂囦欢 | 锟?7浠芥柊锟?5鎶ュ憡+2鏇存柊) |
-| Phase20鏂板鏂囦欢 | 锟?8浠芥柊锟?6鎶ュ憡+2鏇存柊) |
-| 鍏冩暟鎹洿锟?| 锟?4浠芥洿锟?|
-| NO_MODIFY_V85 | 锟?V85鏈慨锟?|
-| NO_ZHIJI_API_CALL | 锟?鏈皟鐢ㄧ煡鍑燗PI |
+| Phase01浜х墿MD5涓嶅�?| �?|
+| Phase02浜х墿MD5涓嶅�?| �?|
+| Phase03浜х墿MD5涓嶅�?| �?|
+| Phase04浜х墿MD5涓嶅�?| �?|
+| Phase05浜х墿MD5涓嶅�?| �?|
+| Phase06浜х墿MD5涓嶅�?| �?|
+| Phase07浜х墿MD5涓嶅�?| �?|
+| Phase08浜х墿MD5涓嶅�?| �?|
+| Phase10浜х墿MD5涓嶅�?| �?|
+| Phase11浜х墿MD5涓嶅�?| �?|
+| Phase12浜х墿MD5涓嶅�?| �?|
+| Phase13鏂板鏂囦欢 | �?7浠芥柊锟?|
+| Phase14鏂板鏂囦欢 | �?8浠芥柊锟?|
+| Phase15鏂板鏂囦欢 | �?7浠芥柊锟?5鎶ュ�?2鏇存�? |
+| Phase16鏂板鏂囦欢 | �?8浠芥柊锟?6鎶ュ�?2鏇存�? |
+| Phase17鏂板鏂囦欢 | �?7浠芥柊锟?5鎶ュ�?2鏇存�? |
+| Phase18鏂板鏂囦欢 | �?7浠芥柊锟?5鎶ュ�?2鏇存�? |
+| Phase19鏂板鏂囦欢 | �?7浠芥柊锟?5鎶ュ�?2鏇存�? |
+| Phase20鏂板鏂囦欢 | �?8浠芥柊锟?6鎶ュ�?2鏇存�? |
+| 鍏冩暟鎹洿�?| �?4浠芥洿锟?|
+| NO_MODIFY_V85 | �?V85鏈慨锟?|
+| NO_ZHIJI_API_CALL | �?鏈皟鐢ㄧ煡鍑燗PI |
 
 ---
 
 ## 6. framework-tree閮ㄧ讲鐘讹拷?
 
-| 椤圭洰 | 鐘讹拷?|
+| 椤圭�?| 鐘讹�?|
 |------|:----:|
-| Phase01-12鎶ュ憡鍖呭惈 | 锟?100% |
-| Phase13鎶ュ憡鍖呭惈 | 锟?7浠藉叏锟?|
-| Phase23鎶ュ憡鍖呭惈 | 锟?5浠藉叏锟?|`n| Phase24鎶ュ憡鍖呭惈 | 锟?5浠藉叏锟?|
-| Phase14鎶ュ憡鍖呭惈 | 锟?8浠藉叏锟?|
-| Phase15鎶ュ憡鍖呭惈 | 锟?7浠藉叏锟?|
-| Phase16鎶ュ憡鍖呭惈 | 锟?8浠藉叏锟?|
-| Phase17鎶ュ憡鍖呭惈 | 锟?8浠藉叏锟?|
-| Phase18鎶ュ憡鍖呭惈 | 锟?8浠藉叏锟?|
-| Phase19鎶ュ憡鍖呭惈 | 锟?8浠藉叏锟?|
-| Phase20鎶ュ憡鍖呭惈 | 锟?8浠藉叏锟?|
-| MD5娓呭崟瀹屾暣 | 锟?205锟?|
-| 闈欐€侀〉闈㈡瀯锟?| 锟?88锟?|
-| 瀵艰埅閾炬帴鏈夋晥 | 锟?714/714 |
-| 璧勬簮瀹屾暣锟?| 锟?311/311 |
-| 404閿欒 | 锟?0 |
-| 閮ㄧ讲鍑嗗叆 | 锟?12/12 PASS |
-| 閮ㄧ讲鐘讹拷?| 锟?GitHub Pages宸蹭笂锟?|
+| Phase01-12鎶ュ憡鍖呭惈 | �?100% |
+| Phase13鎶ュ憡鍖呭惈 | �?7浠藉叏锟?|
+| Phase23鎶ュ憡鍖呭惈 | �?5浠藉叏锟?|`n| Phase24鎶ュ憡鍖呭惈 | �?5浠藉叏锟?|
+| Phase14鎶ュ憡鍖呭惈 | �?8浠藉叏锟?|
+| Phase15鎶ュ憡鍖呭惈 | �?7浠藉叏锟?|
+| Phase16鎶ュ憡鍖呭惈 | �?8浠藉叏锟?|
+| Phase17鎶ュ憡鍖呭惈 | �?8浠藉叏锟?|
+| Phase18鎶ュ憡鍖呭惈 | �?8浠藉叏锟?|
+| Phase19鎶ュ憡鍖呭惈 | �?8浠藉叏锟?|
+| Phase20鎶ュ憡鍖呭惈 | �?8浠藉叏锟?|
+| MD5娓呭崟瀹屾�?| �?205�?|
+| 闈欐€侀〉闈㈡瀯锟?| �?88�?|
+| 瀵艰埅閾炬帴鏈夋�?| �?714/714 |
+| 璧勬簮瀹屾暣锟?| �?311/311 |
+| 404閿欒�?| �?0 |
+| 閮ㄧ讲鍑嗗叆 | �?12/12 PASS |
+| 閮ㄧ讲鐘讹拷?| �?GitHub Pages宸蹭笂锟?|
 
 ---
 
@@ -467,34 +467,34 @@
 
 ### 7.1 瀹℃煡缁撹
 
-| 瀹℃煡缁村害 | 缁撴灉 |
+| 瀹℃煡缁村害 | 缁撴�?|
 |----------|:----:|
-| MD5瀹屾暣锟?| 锟?100%涓€锟?|
-| 鏁版嵁涓€鑷达拷?| 锟?涓夋柟瀵归綈 |
-| 鎸囨爣婕旇繘 | 锟?绾挎€у彲锟?|
-| 椋庨櫓鏀舵暃 | 锟?-78.0%绱 |
-| 缂洪櫡瓒嬪娍 | 锟?0 P0/P1 |
-| Gate婕旇繘 | 锟?鍏℅O |
-| 鏀鹃噺鍐崇瓥 | 锟?鍑嗕簣100% |
-| framework-tree | 锟?宸查儴缃蹭笂锟?|
-| 鐗堟湰闂幆 | 锟?V87 RC1 G1 姝ｅ紡涓婄嚎闂幆 |
-| 闀挎湡杩愮淮 | 锟?V87 RC1 G1 闀挎湡杩愮淮鍩虹嚎鍥哄寲 |
-| 澶栭儴鎸囨爣Dashboard | 锟?V87 RC1 G1 澶栭儴鎸囨爣Dashboard楠岃瘉閫氳繃 |
-| 澶栭儴鍥犲瓙鎸囨爣鏄犲皠 | 锟?V87 RC1 G1 澶栭儴鍥犲瓙鎸囨爣鏄犲皠鏂规GO |
-| 澶栭儴鎸囨爣鏁版嵁娴佹按锟?| 锟?V87 RC1 G1 澶栭儴鎸囨爣鏁版嵁娴佹按绾縂O |
-| 澶栭儴鎸囨爣鐪嬫澘鍗囩骇 | 锟?V87 RC1 G1 澶栭儴鎸囨爣鐪嬫澘鍗囩骇涓庡憡璀﹁瀺鍚堥獙璇侀€氳繃 |
-| 澶栭儴鎸囨爣鐪嬫澘30澶╅暱绋宠锟?| 锟?V87 RC1 G1 澶栭儴鎸囨爣鐪嬫澘30澶╅暱绋宠娴嬩笌鍙淮鎶ゆ€ц瘎浼伴€氳繃 |
-| 鍥犲瓙鐪嬫澘鎼缓 | 锟?V87 RC1 G1 鍥犲瓙鐪嬫澘鎼缓涓庡洜瀛愮洃鎺у憡璀﹂獙璇侀€氳繃 |
-| 褰卞瓙鍥炴祴鍥犲瓙楠岃瘉 | 锟?V87 RC1 G1 褰卞瓙鍥炴祴鍥犲瓙楠岃瘉涓庡洜瀛愮浉鍏虫€у垎鏋怗O |
-| 鍥犲瓙50%鐏板害鎶曚骇 | 锟?V87 RC1 G1 鍥犲瓙鐢熶骇娴佹按锟?0%鐏板害涓婄嚎涓庢寚鏍囩洃鎺O |
-| 鍥犲瓙75%鐏板害鎶曚骇 | 锟?V87 RC1 G1 鍥犲瓙鐢熶骇娴佹按锟?5%鐏板害涓婄嚎涓庤竟鐣屾寚鏍囩洃鎺O |
-| 鍥犲瓙100%鍏ㄩ噺鎶曚骇 | 锟?V87 RC1 G1 鍥犲瓙鐢熶骇娴佹按锟?00%鍏ㄩ噺鍙戝竷涓嶰3浼樺寲鍙奀PU纭啍鏂厤缃瓽O |
-| 鍥犲瓙30澶╅暱绋宠锟?| 锟?V87 RC1 G1 鍥犲瓙30澶╅暱绋宠娴嬩笌姘镐箙绋虫€佹姇浜O |
-| 绾︽潫鍚堣 | 锟?鍏ㄩ儴婊¤冻 |
+| MD5瀹屾暣锟?| �?100%涓€�?|
+| 鏁版嵁涓€鑷达拷?| �?涓夋柟瀵归�?|
+| 鎸囨爣婕旇繘 | �?绾挎€у彲�?|
+| 椋庨櫓鏀舵暃 | �?-78.0%绱�?|
+| 缂洪櫡瓒嬪娍 | �?0 P0/P1 |
+| Gate婕旇�?| �?鍏℅O |
+| 鏀鹃噺鍐崇�?| �?鍑嗕�?00% |
+| framework-tree | �?宸查儴缃蹭笂�?|
+| 鐗堟湰闂幆 | �?V87 RC1 G1 姝ｅ紡涓婄嚎闂�?|
+| 闀挎湡杩愮�?| �?V87 RC1 G1 闀挎湡杩愮淮鍩虹嚎鍥哄�?|
+| 澶栭儴鎸囨爣Dashboard | �?V87 RC1 G1 澶栭儴鎸囨爣Dashboard楠岃瘉閫氳繃 |
+| 澶栭儴鍥犲瓙鎸囨爣鏄犲皠 | �?V87 RC1 G1 澶栭儴鍥犲瓙鎸囨爣鏄犲皠鏂规GO |
+| 澶栭儴鎸囨爣鏁版嵁娴佹按�?| �?V87 RC1 G1 澶栭儴鎸囨爣鏁版嵁娴佹按绾縂O |
+| 澶栭儴鎸囨爣鐪嬫澘鍗囩骇 | �?V87 RC1 G1 澶栭儴鎸囨爣鐪嬫澘鍗囩骇涓庡憡璀﹁瀺鍚堥獙璇侀€氳�?|
+| 澶栭儴鎸囨爣鐪嬫�?0澶╅暱绋宠�?| �?V87 RC1 G1 澶栭儴鎸囨爣鐪嬫�?0澶╅暱绋宠娴嬩笌鍙淮鎶ゆ€ц瘎浼伴€氳�?|
+| 鍥犲瓙鐪嬫澘鎼�?| �?V87 RC1 G1 鍥犲瓙鐪嬫澘鎼缓涓庡洜瀛愮洃鎺у憡璀﹂獙璇侀€氳�?|
+| 褰卞瓙鍥炴祴鍥犲瓙楠岃瘉 | �?V87 RC1 G1 褰卞瓙鍥炴祴鍥犲瓙楠岃瘉涓庡洜瀛愮浉鍏虫€у垎鏋怗O |
+| 鍥犲�?0%鐏板害鎶曚骇 | �?V87 RC1 G1 鍥犲瓙鐢熶骇娴佹按锟?0%鐏板害涓婄嚎涓庢寚鏍囩洃鎺O |
+| 鍥犲�?5%鐏板害鎶曚骇 | �?V87 RC1 G1 鍥犲瓙鐢熶骇娴佹按锟?5%鐏板害涓婄嚎涓庤竟鐣屾寚鏍囩洃鎺O |
+| 鍥犲�?00%鍏ㄩ噺鎶曚骇 | �?V87 RC1 G1 鍥犲瓙鐢熶骇娴佹按锟?00%鍏ㄩ噺鍙戝竷涓嶰3浼樺寲鍙奀PU纭啍鏂厤缃瓽O |
+| 鍥犲�?0澶╅暱绋宠�?| �?V87 RC1 G1 鍥犲�?0澶╅暱绋宠娴嬩笌姘镐箙绋虫€佹姇浜O |
+| 绾︽潫鍚堣 | �?鍏ㄩ儴婊¤�?|
 
 ### 7.2 鏈€缁堢粨锟?
 
-**锟?V87.1 RC1 浜ゅ弶瀹℃煡閫氳繃 锟?V87 RC1 G1鐗堟湰姝ｅ紡涓婄嚎闂幆 + 30澶╅暱鏈熻繍缁村熀绾垮浐鍖栧畬锟?+ 澶栭儴鎸囨爣Dashboard楠岃瘉閫氳繃 + 澶栭儴鍥犲瓙鎸囨爣鏄犲皠鏂规GO + 澶栭儴鎸囨爣鐪嬫澘鍗囩骇涓庡憡璀﹁瀺鍚堥獙璇侀€氳繃 + 澶栭儴鎸囨爣鐪嬫澘30澶╅暱绋宠娴嬩笌鍙淮鎶ゆ€ц瘎浼伴€氳繃 + 鍥犲瓙鐪嬫澘鎼缓涓庡洜瀛愮洃鎺у憡璀﹂獙璇侀€氳繃 + 褰卞瓙鍥炴祴鍥犲瓙楠岃瘉涓庡洜瀛愮浉鍏虫€у垎鏋怗O + 鍥犲瓙鐢熶骇娴佹按锟?0%鐏板害涓婄嚎涓庢寚鏍囩洃鎺O + 鍥犲瓙鐢熶骇娴佹按锟?5%鐏板害涓婄嚎涓庤竟鐣屾寚鏍囩洃鎺O + 鍥犲瓙鐢熶骇娴佹按锟?00%鍏ㄩ噺鍙戝竷涓嶰3浼樺寲鍙奀PU纭啍鏂厤缃瓽O + 鍥犲瓙30澶╅暱绋宠娴嬩笌姘镐箙绋虫€佹姇浜O + DSHE 90澶╅暱绋宠娴嬩笌PDF娴佹按绾垮浐鍖朑O, framework-tree GitHub Pages宸查儴缃蹭笂锟?*
+**�?V87.1 RC1 浜ゅ弶瀹℃煡閫氳繃 �?V87 RC1 G1鐗堟湰姝ｅ紡涓婄嚎闂幆 + 30澶╅暱鏈熻繍缁村熀绾垮浐鍖栧畬�?+ 澶栭儴鎸囨爣Dashboard楠岃瘉閫氳繃 + 澶栭儴鍥犲瓙鎸囨爣鏄犲皠鏂规GO + 澶栭儴鎸囨爣鐪嬫澘鍗囩骇涓庡憡璀﹁瀺鍚堥獙璇侀€氳�?+ 澶栭儴鎸囨爣鐪嬫�?0澶╅暱绋宠娴嬩笌鍙淮鎶ゆ€ц瘎浼伴€氳�?+ 鍥犲瓙鐪嬫澘鎼缓涓庡洜瀛愮洃鎺у憡璀﹂獙璇侀€氳�?+ 褰卞瓙鍥炴祴鍥犲瓙楠岃瘉涓庡洜瀛愮浉鍏虫€у垎鏋怗O + 鍥犲瓙鐢熶骇娴佹按锟?0%鐏板害涓婄嚎涓庢寚鏍囩洃鎺O + 鍥犲瓙鐢熶骇娴佹按锟?5%鐏板害涓婄嚎涓庤竟鐣屾寚鏍囩洃鎺O + 鍥犲瓙鐢熶骇娴佹按锟?00%鍏ㄩ噺鍙戝竷涓嶰3浼樺寲鍙奀PU纭啍鏂厤缃瓽O + 鍥犲�?0澶╅暱绋宠娴嬩笌姘镐箙绋虫€佹姇浜O + DSHE 90澶╅暱绋宠娴嬩笌PDF娴佹按绾垮浐鍖朑O, framework-tree GitHub Pages宸查儴缃蹭笂�?*
 
 ---
 
@@ -879,7 +879,7 @@ MD5_MANIFEST_CROSS_REVIEW_FACTOR_DSHE_LONG_STABILITY_DONE=TRUE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DSHE_RENDER_AUTO_CHECK_DONE=TRUE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DSHE_GATE_RULE_ADAPT_DONE=TRUE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DSHE_MULTI_USER_SIM_DONE=TRUE
-# ===== Phase29 DSHE 锟斤拷锟斤拷Gate预锟斤拷+锟芥警锟脚伙拷+权锟睫撅拷锟斤拷+锟截癸拷锟斤拷锟斤拷+锟斤拷锟竭匡拷锟斤拷 =====
+# ===== Phase29 DSHE 锟斤拷锟斤拷Gate预锟斤拷+锟芥警锟脚伙�?权锟睫撅拷锟斤拷+锟截癸拷锟斤拷锟斤拷+锟斤拷锟竭匡拷锟斤拷 =====
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DSHE_PROD_GATE_PRECHECK=COMPLETE
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DSHE_PRECHECK_TOTAL=42
 MD5_MANIFEST_CROSS_REVIEW_FACTOR_DSHE_PRECHECK_PASS=42_OF_42
@@ -1015,7 +1015,7 @@ DSHE_L2_PHASE33_DECISION=GO_ARCHIVE
 JOB_READY=TRUE
 
 
-# ===== Phase16 60澶╂贩鍚堜豢鐪熷锟?MD5 娓呭崟 =====
+# ===== Phase16 60澶╂贩鍚堜豢鐪熷锟?MD5 娓呭�?=====
 MD5_MANIFEST_PHASE16_60DAY_MIXED_WINDOW=COMPLETE
 MD5_MANIFEST_PHASE16_WINDOW_DAYS=60
 MD5_MANIFEST_PHASE16_WINDOW_ROWS=180
@@ -1076,7 +1076,7 @@ DSHE_L2_PHASE33_DECISION=GO_ARCHIVE
 JOB_READY=TRUE
 
 
-# ===== Phase17 P2锟秸伙拷+锟斤拷丝雀锟斤拷锟?Release Gate MD5 锟藉单 =====
+# ===== Phase17 P2锟秸伙拷+锟斤拷丝雀锟斤拷锟?Release Gate MD5 锟藉�?=====
 MD5_MANIFEST_PHASE17_P2_RISK_FOLLOWUP=COMPLETE
 MD5_MANIFEST_PHASE17_P2_RISK_CLOSED=TRUE
 MD5_MANIFEST_PHASE17_P2_DOWNGRADED_P2_TO_P3=TRUE
@@ -1238,7 +1238,7 @@ JOB_READY=TRUE
 
 # ============================================================
 # DSHB V87-RC1-G1 Phase31 - GA全锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷指锟斤拷锟斤拷取锟斤拷Framework Tree JSON锟斤拷锟斤拷
-# Commit: 05f27f5 (Phase30锟斤拷态) -> Phase31 commit
+# Commit: 05f27f5 (Phase30锟斤拷�? -> Phase31 commit
 # Date: 2028-07-17
 # ============================================================
 
@@ -1339,7 +1339,7 @@ MD5_MANIFEST_PHASE31_DONE=TRUE
 
 # ============================================================
 # DSHE V87-RC1-L2 Phase31 - GA全锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟街革拷锟斤拷锟接伙拷锟斤拷锟斤拷锟斤拷Framework Tree UI锟斤拷染
-# Commit: d37fc8e (Phase30锟斤拷态) -> Phase31 commit
+# Commit: d37fc8e (Phase30锟斤拷�? -> Phase31 commit
 # Date: 2028-04-23
 # ============================================================
 
@@ -1664,7 +1664,7 @@ JOB_READY=TRUE
 | 5 | isk_register_v87_phase34.md (v32.0) | Phase34 | 346A4522CC581F05FDB009CEA33DC494 | 8,464 B |
 | 6 | defect_list.md (v31.0) | Phase34 | EAA9C06B525F01EEC4A55D379EC73720 | 7,903 B |
 
-### Phase34 DSHB 状态锟斤拷锟?
+### Phase34 DSHB 状态锟斤拷�?
 DSHB_G1_PHASE34_DONE=TRUE
 DSHB_G1_PHASE34_COMPLETE=TRUE
 DSHB_G1_PHASE34_RELEASE_READY=TRUE
@@ -1757,7 +1757,7 @@ JOB_READY=TRUE
 | 67 | `v87_rc1_dshe_l2_phase34_kb_archive_report.md` | Phase34 | MD5_HASH_PLACEHOLDER | ~14,000 B |
 | 68 | `v87_rc1_dshe_l2_phase34_gate_final_check_report.md` | Phase34 | MD5_HASH_PLACEHOLDER | ~12,000 B |
 
-### Phase34 DSHE 状态锟斤拷锟?
+### Phase34 DSHE 状态锟斤拷�?
 DSHE_L2_PHASE34_DONE=TRUE
 DSHE_L2_PHASE34_FRONTEND_FULL_REGRESSION_DONE=TRUE
 DSHE_L2_PHASE34_FULL_REGRESSION_METRICS=146
@@ -1883,7 +1883,7 @@ DSHE_L2_PHASE34_DECISION=GO_ARCHIVE
 | 75 | rchive/ops_manual_archive/MANIFEST.md | Phase35 | MD5_HASH_PLACEHOLDER | ~2,000 B |
 | 76 | rchive/frontend_baseline/README.md | Phase35 | MD5_HASH_PLACEHOLDER | ~2,000 B |
 
-### Phase35 DSHE 状态锟斤拷锟?
+### Phase35 DSHE 状态锟斤拷�?
 DSHE_L2_PHASE35_DONE=TRUE
 DSHE_L2_PHASE35_FRONTEND_BASELINE_FREEZE_DONE=TRUE
 DSHE_L2_PHASE35_FRONTEND_BASELINE_ITEMS=829
@@ -1918,7 +1918,7 @@ DSHE_L2_PHASE35_COMPLETE=TRUE
 DSHE_L2_PHASE35_ARCHIVE_READY=TRUE
 DSHE_L2_PHASE35_DECISION=GO_ARCHIVE
 
-# ===== 鍓嶇疆鍑嗗浠诲姟(P17浜ゆ帴鏂囨。+rebase鍚屾) MD5 娓呭崟 =====
+# ===== 鍓嶇疆鍑嗗浠诲�?P17浜ゆ帴鏂囨�?rebase鍚屾�? MD5 娓呭�?=====
 MD5_MANIFEST_PREP_HANDOVER_REBASE=COMPLETE
 MD5_MANIFEST_PREP_TASK_ID=V87_RC1_HERMES_PREP_P17_HANDOVER_REBASE
 MD5_MANIFEST_PREP_HANDOVER_DOC=HANDOVER_V87_PHASE17_20261012.md
@@ -2135,7 +2135,7 @@ MD5_FINAL_GATE_DSHB_VERSION_STATUS=FINAL_GATE_PASS
 MD5_FINAL_GATE_DSHB_COMPLETE=TRUE
 JOB_READY=TRUE
 
-# ===== V87_RC1_G1_FINAL_GATE_HERMES 鎬籊ate鎶ュ憡 MD5 =====
+# ===== V87_RC1_G1_FINAL_GATE_HERMES 鎬籊ate鎶ュ�?MD5 =====
 MD5_MANIFEST_FINAL_GATE=COMPLETE
 MD5_MANIFEST_FINAL_GATE_DECISION=RELEASE_APPROVED
 MD5_MANIFEST_FINAL_GATE_CONSENSUS=3_OF_3_GO
@@ -2288,11 +2288,11 @@ V87_RC1_G1_7DAY_OBS_DSHE_COMPLETE=TRUE
 JOB_READY=TRUE
 
 # ===== HERMES V87-RC1-G1 7DAY_OBS (2028-05-17) =====
-# 宸ュ崟: V87_RC1_G1_7DAY_OBS_HERMES | 鍒嗘敮: feature/v87-rc1-g1
+# 宸ュ�? V87_RC1_G1_7DAY_OBS_HERMES | 鍒嗘�? feature/v87-rc1-g1
 # 瑙傛祴鍛ㄦ湡: 2028-05-11 ~ 2028-05-17 (168h) | 鏈€缁堢粨璁? PASS (GO_OBSERVATION_PASSED)
-# 闄勬潯浠舵斁琛? 5/5 鍏ㄩ儴杈炬爣 | 缁煎悎璇勫垎: 99.6/100 | 瀵硅处涓€鑷寸巼: 100.0% | 鈶㈢被缂洪櫡: 0
-# CPU鐔旀柇: 0娆?| CPU宄板€? 79.0% | 鐢熶骇宸紓: 0 | 829鍩虹嚎MD5: 5803椤规牎楠?鍙樻洿
-# 鍘嗗彶Release璧勪骇鍝堝笇淇濇寔涓嶅彉 (7/7鏈彉) | Release Tag v87-rc1-g1-final 閿佸畾鏈慨鏀?HERMES_7DAY_OBS_COMPLETE=TRUE
+# 闄勬潯浠舵斁�? 5/5 鍏ㄩ儴杈炬爣 | 缁煎悎璇勫垎: 99.6/100 | 瀵硅处涓€鑷寸巼: 100.0% | 鈶㈢被缂洪櫡: 0
+# CPU鐔旀�? 0�?| CPU宄板�? 79.0% | 鐢熶骇宸紓: 0 | 829鍩虹嚎MD5: 5803椤规牎楠?鍙樻�?
+# 鍘嗗彶Release璧勪骇鍝堝笇淇濇寔涓嶅彉 (7/7鏈�? | Release Tag v87-rc1-g1-final 閿佸畾鏈慨鏀?HERMES_7DAY_OBS_COMPLETE=TRUE
 HERMES_7DAY_OBS_CONCLUSION=PASS
 HERMES_7DAY_OBS_GO_OBSERVATION_PASSED=TRUE
 MD5_HERMES_7DAY_OBS_DAY1=21C68E10
@@ -2312,17 +2312,17 @@ HERMES_7DAY_OBS_CONSTRAINT_COMPLIANCE=6_OF_6
 HERMES_7DAY_OBS_HISTORY_RELEASE_HASH_UNCHANGED=TRUE
 
 
-## 2026-10-12 HERMES_V87_ARCHIVE_FINAL + V88_INIT 鏂板浜や粯鐗?MD5
-| # | 鏂囦欢 | 褰掑睘 | MD5 | 琛屾暟 |
+## 2026-10-12 HERMES_V87_ARCHIVE_FINAL + V88_INIT 鏂板浜や粯�?MD5
+| # | 鏂囦�?| 褰掑�?| MD5 | 琛屾�?|
 |---|---|---|---|---|
-| 1 | v87_rc1_g1_full_project_closure_report.md | V87褰掓。 | 8c6bc78b | 139 |
-| 2 | v87_rc1_g1_all_deliverables_index.md | V87褰掓。 | b27f7b6a | 绱㈠紩 |
-| 3 | v87_rc1_g1_consolidated_risk_backlog.md | V87褰掓。 | 9b282a75 | 80 |
-| 4 | v88_global_project_init_requirement.md | V88绔嬮」 | 74dcf2c9 | 绔嬮」 |
-| 5 | v88_phase_milestone_draft.md | V88绔嬮」 | ec43807d | 閲岀▼纰?|
-| 6 | v88_global_longterm_ops_sop.md | V88绔嬮」 | eae3f234 | SOP |
+| 1 | v87_rc1_g1_full_project_closure_report.md | V87褰掓�?| 8c6bc78b | 139 |
+| 2 | v87_rc1_g1_all_deliverables_index.md | V87褰掓�?| b27f7b6a | 绱㈠�?|
+| 3 | v87_rc1_g1_consolidated_risk_backlog.md | V87褰掓�?| 9b282a75 | 80 |
+| 4 | v88_global_project_init_requirement.md | V88绔嬮�?| 74dcf2c9 | 绔嬮�?|
+| 5 | v88_phase_milestone_draft.md | V88绔嬮�?| ec43807d | 閲岀▼纰?|
+| 6 | v88_global_longterm_ops_sop.md | V88绔嬮�?| eae3f234 | SOP |
 
-# 鍘嗗彶Release鍩虹嚎璧勪骇鍝堝笇淇濇寔涓嶅彉锛屾湰娆′粎杩藉姞锛寁87-rc1-g1-final Tag鏈慨鏀?HERMES_ARCHIVE_FINAL_7DAY_OBS_COMPLETE=TRUE
+# 鍘嗗彶Release鍩虹嚎璧勪骇鍝堝笇淇濇寔涓嶅彉锛屾湰娆′粎杩藉姞锛�?7-rc1-g1-final Tag鏈慨鏀?HERMES_ARCHIVE_FINAL_7DAY_OBS_COMPLETE=TRUE
 HERMES_ARCHIVE_FINAL_MD5_APPENDED=TRUE
 V87_LIFECYCLE=ARCHIVED
 V88_LIFECYCLE=INIT_STARTED
@@ -2337,7 +2337,7 @@ V88_LIFECYCLE=INIT_STARTED
 | analysis/e2e_output/v88/backlog/v88_dshe_backlog_framework_tree_meta_refactor_report.md | 10385 | 204795E9FCAB7371C1B7E1CA8446AD05 |
 | analysis/e2e_output/v88/backlog/v88_dshe_backlog_weekly_auto_render_test_report.md | 19899 | 99F1DA62A952FEED9D90005D182D50EF |
 
-### 状态标记
+### 状态标�?
 
 V87_RC1_G1_DSHE_OBS_CLEANUP_T5_STATUS_UPDATED=TRUE
 V87_RC1_G1_DSHE_OBS_CLEANUP_T5_JOB_READY_UPDATED=TRUE
@@ -2363,8 +2363,7 @@ JOB_READY=TRUE
 | analysis/e2e_output/v87/rc1_g1_7day_obs/deliverables/v87_rc1_g1_7day_obs_dshb_daily_day7.md | 37.5 | 8258EDD825F3D2E57C9C3A818EAB42AB |
 | analysis/e2e_output/v87/rc1_g1_7day_obs/deliverables/v87_rc1_g1_7day_obs_dshb_final_summary_report.md | 58.1 | 0DDA15FF0D2A04C991AFFE90FC6AFCF7 |
 
-### 状态标记
-
+### 状态标�?
 V87_RC1_G1_7DAY_OBS_DSHB_T5_STATUS_UPDATED=TRUE
 V87_RC1_G1_7DAY_OBS_DSHB_T5_JOB_READY_UPDATED=TRUE
 V87_RC1_G1_7DAY_OBS_DSHB_T5_MD5_MANIFEST_UPDATED=TRUE
@@ -2372,4 +2371,24 @@ V87_RC1_G1_7DAY_OBS_DSHB_DELIVERABLES=8
 V87_RC1_G1_7DAY_OBS_DSHB_DELIVERABLE_SIZE_TOTAL=387.9KB
 V87_RC1_G1_7DAY_OBS_DSHB_BASELINE_MD5_UNCHANGED=TRUE
 V87_RC1_G1_7DAY_OBS_DSHB_COMPLETE=TRUE
+JOB_READY=TRUE
+
+### V87_RC1_G1_DSHE_FOLLOWUP (2028-05-18) DSHE Ԫ���������֤+�ھ����
+| analysis/e2e_output/v88/backlog/v88_dshe_framework_meta_load_verify_report.md | 0.031 | 21342CC17C2B5776D19763C88276DE02 |
+| analysis/e2e_output/v88/backlog/v88_dshe_chart_indicator_stat_caliber_spec.md | 0.012 | C9411F5C691860D4B5F86AD39561090B |
+| analysis/e2e_output/v88/backlog/test_meta_injection.py | 0.017 | F9AFF71AA189662F05D53603A5FEBF0C |
+| analysis/e2e_output/v88/backlog/meta_injection_test_results.json | 0.002 | 5F992333CF2F61C7076D859A89CFC084 |
+| analysis/e2e_output/v88/backlog/v88_dshe_backlog_framework_tree_meta_refactor_report.md | 0.012 | 62B0FDCF5C5B6F3857C117768DF067C7 |
+| analysis/e2e_output/v88/backlog/v88_dshe_backlog_weekly_auto_render_test_report.md | 0.019 | C588C0780121BCD9032E96E6B9499FBD |
+
+### ״̬���
+V87_RC1_G1_DSHE_FOLLOWUP_STATUS_UPDATED=TRUE
+V87_RC1_G1_DSHE_FOLLOWUP_JOB_READY_UPDATED=TRUE
+V87_RC1_G1_DSHE_FOLLOWUP_MD5_MANIFEST_UPDATED=TRUE
+V87_RC1_G1_DSHE_FOLLOWUP_DELIVERABLES=6
+V87_RC1_G1_DSHE_FOLLOWUP_DELIVERABLES_NEW=2
+V87_RC1_G1_DSHE_FOLLOWUP_DELIVERABLES_MODIFIED=2
+V87_RC1_G1_DSHE_FOLLOWUP_DELIVERABLES_TOOL=2
+V87_RC1_G1_DSHE_FOLLOWUP_BASELINE_MD5_UNCHANGED=TRUE
+V87_RC1_G1_DSHE_FOLLOWUP_COMPLETE=TRUE
 JOB_READY=TRUE

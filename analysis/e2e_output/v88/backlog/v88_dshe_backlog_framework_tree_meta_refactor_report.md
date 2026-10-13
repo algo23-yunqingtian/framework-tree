@@ -237,6 +237,57 @@ Week 3 (灰度 → 上线):
 
 ---
 
+## 📌 元数据正式上线前置条件 (V88 P1 Gating Criteria)
+
+> 基于 `V87_RC1_G1_DSHE_FOLLOWUP` 工单的入库验证测试发现，元数据正式上线前必须满足以下前置条件。
+
+### P1-Prereq: YAML数据修复
+
+| # | 前置条件 | 当前状态 | 优先级 | 负责Agent |
+|:-:|----------|:--------:|:------:|:---------:|
+| PR-01 | 移除非法图表 si_p6_bar_01 (si不在p6 comms范围) | ❌ 待修复 | P0 | DSHE |
+| PR-02 | 重新运行元数据注入测试 (612项校验0 ERROR) | ❌ 待执行 | P0 | DSHE |
+| PR-03 | 确认全部102张图表通过6条校验规则 | ❌ 待执行 | P0 | DSHE |
+| PR-04 | topic_tag字段确认0残留 (已通过✅) | ✅ 已达标 | — | — |
+
+### PR-01 详情：si_p6_bar_01 数据修复
+
+| 属性 | 值 |
+|------|:--:|
+| 发现来源 | `v88_dshe_framework_meta_load_verify_report.md` T0校验 |
+| 错误类型 | no_cross_node_binding (ERROR) |
+| 错误描述 | 图表 si_p6_bar_01 绑定了 commodity=si 到 tree_node_id=p6，但p6节点comms不包含si |
+| 修复方案 | 从YAML中删除 si_p6_bar_01 图表定义块 (方案A: 推荐) |
+| 预期修复后 | 图表总数 102→101, ERROR 1→0 |
+| 影响范围 | 无 — 该图表不在88张周报渲染子集中 |
+
+### P1上线Gating Checklist
+
+```
+V88 元数据正式上线 Gating Checklist:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+□ [P0] si_p6_bar_01 数据修复完成
+□ [P0] 重新运行 test_meta_injection.py 全部612项0 ERROR
+□ [P0] 负向测试7/7全部通过
+□ [P0] topic_tag字段确认0残留
+□ [P1] 口径差异文档已定义 (v88_dshe_chart_indicator_stat_caliber_spec.md)
+□ [P1] 周报统计规则R-REPORT-CALIBER-V1已生效
+□ [P1] DSHB后端确认24项partial指标修复计划
+□ [P1] 渲染引擎适配node_binding模式完成
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+□□□□□□□□ 全部8项通过 = GATE PASS → 准予上线
+```
+
+### 与本次交付物关联
+
+| 本次交付物 | 关联的前置条件 |
+|-----------|:--------------:|
+| 入库验证报告 | PR-01/02/03 (发现并记录数据错误) |
+| 口径差异文档 | P1前置 (口径规格化) |
+| 测试脚本 test_meta_injection.py | PR-02 (回归验证工具) |
+
+---
+
 ## 📦 交付物清单
 
 | # | 文件 | 类型 | 状态 |

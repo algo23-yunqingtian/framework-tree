@@ -1,0 +1,89 @@
+{
+  "test_metadata": {
+    "task_id": "V87_RC1_G1_DSHE_FOLLOWUP",
+    "agent": "DSHE",
+    "timestamp": "2026-10-13 16:48:26 UTC+8",
+    "yaml_file": "framework_tree_meta_chart.yaml",
+    "yaml_size_bytes": 57085,
+    "tree_config_file": "tree_config.json"
+  },
+  "load_timing_ms": {
+    "tree_config_load": 1.0,
+    "tree_config_index_build": 1.0,
+    "yaml_read": 1.0,
+    "yaml_parse": 189.0,
+    "yaml_chart_extract": 189.0,
+    "validation_total": 0.0
+  },
+  "total_charts_loaded": 102,
+  "validation_summary": {
+    "no_cross_node_binding": {
+      "pass": 101,
+      "fail": 1
+    },
+    "tree_node_id_valid": {
+      "pass": 102,
+      "fail": 0
+    },
+    "commodity_valid": {
+      "pass": 102,
+      "fail": 0
+    },
+    "auto_inherit_description": {
+      "pass": 102,
+      "fail": 0
+    },
+    "chart_type_valid": {
+      "pass": 102,
+      "fail": 0
+    },
+    "data_status_valid": {
+      "pass": 102,
+      "fail": 0
+    }
+  },
+  "total_checks": 612,
+  "total_pass": 611,
+  "total_fail": 1,
+  "errors": [
+    "[no_cross_node_binding] si_p6_bar_01: Commodity 'si' not in node 'p6' comms scope"
+  ],
+  "warnings": [],
+  "topic_tag_present": false,
+  "data_status_distribution": {
+    "matchable": 86,
+    "pending_data": 16
+  },
+  "negative_tests": [
+    {
+      "test": "TC-01 si_p6 (known invalid: si not in p6 comms)",
+      "blocked": true
+    },
+    {
+      "test": "TC-02 li_p6 (li in p6 comms, should PASS)",
+      "passed": true
+    },
+    {
+      "test": "TC-03 cross: si commodity on p6 node",
+      "blocked": true
+    },
+    {
+      "test": "TC-03 invalid node ID",
+      "blocked": true
+    },
+    {
+      "test": "TC-04 invalid commodity",
+      "blocked": true
+    },
+    {
+      "test": "TC-05 valid cu binding",
+      "passed": true
+    },
+    {
+      "test": "TC-06 topic_tag removed",
+      "removed": true
+    }
+  ],
+  "negative_tests_passed": 7,
+  "negative_tests_total": 7
+}
