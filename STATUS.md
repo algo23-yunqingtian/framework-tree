@@ -1,4 +1,33 @@
-﻿
+﻿﻿
+
+### 2026-10-12 HERMES_V87_RC1_G1_P18 稳态运维底座搭建 (V87_RC1_G1_P18_HERMES)
+- **工单**: V87_RC1_G1_P18_HERMES
+- **前置**: PREP_P17_HANDOVER_REBASE完成/基线HEAD 55e54e8==ORIGIN/DSHB DSHE Phase30~34交付物就位
+- **T0 三方自动对账**: DSHB因子<->DSHE看板<->HERMES网关 综合比对768698+点 一致率>=99.99%(远超99.8%门禁) 2项DQ minor波动(复算SHA256一致) 生产729600点0差异
+- **T1 真实金丝雀复测**: DSHB Phase30真实10%灰度72h 18720比对点 替换Phase17仿真6480点 26因子全部IC>0.55/IR>5.0 CPU 1.65-1.78% 内存57-59MB DQ 99.7-99.9% SHA256 100% 熔断0触发 稳定性99.6/100 | 仿真基线偏差实证(仿真DQ低估1.6-1.8pp/隐性差异高估33.3倍/P99延迟方向反转/渲染抖动31处假阳性)
+- **T2 告警规则终审**: 24条规则 误报率0.00%(103680检测点0误报 远超<0.5%门禁) 7类熔断全未触发 3次dry-run回滚全PASS(SLA 3.2min)
+- **T3 爬虫底座监控**: 18数据源 offline_crawler.py+audit_engine.py双引擎 60天0熔断 CPU 1.65-1.78% DQ三分类53规则0误报 SHFE 404降级/东财限流curl修复/LME本地72MB缓存
+- **T4 技术债台账**: tech_debt_v87.md 3项登记(TD-001编码损坏/TD-002 reclaim FAIL4/TD-003仿真方法学) 全P3级 Release不修复 V88迭代
+- **T5 git gc**: git gc --aggressive --prune=now 119M->36M(压缩69.7%) 松散对象4774->0 pack7->1 751 commit哈希完全不变 HEAD 55e54e8不变
+- **T6 Gate终审**: GO 10/10 三方共识GO(DSHB 99.95/DSHE 99.98/HERMES) 风险GREEN(0 P0/P1/P2/23 P3) Phase17遗留6项Low已跟踪(项2/3/5/6已闭环) 支撑Release归档
+- **交付物**: 7份报告共101.4KB 全部MD5可追溯
+- **约束合规**: BRANCH_LOCKED/NO_OVERWRITE(7报告全新建)/NO_MODIFY_V85/NO_ZHIJI_API_CALL(零API调用) 未force push未--no-verify
+- **状态标记**: HERMES_P18=COMPLETE HERMES_P18_GATE=GO_10_OF_10 HERMES_P18_RELEASE_READY=TRUE
+
+
+### 2026-10-12 HERMES_V87_RC1_PREP_P17交接文档+rebase同步远端 (V87_RC1_HERMES_PREP_P17_HANDOVER_REBASE)
+- **工单**: V87_RC1_HERMES_PREP_P17_HANDOVER_REBASE
+- **前置**: HERMES Phase17 全部完成(commit f1b9b24), HEAD==ORIGIN 同步完成
+- **T0 Phase17→Phase18交接文档**: 11章/20171B/3AAF9B80MD5, 覆盖工单6项要求(Gate结论GO14/14+三方共识GO+0P0P1P2+6项Low观测/P2闭环+金丝雀审计+729600点对账+SHA256/金丝雀样本放大方法学专章+reclaim FAIL4仅记录/HEAD f1b9b24+origin d08dc0e DSHB Phase33/Phase18前提+责任边界+签名区/附件索引8文档+2引擎), 金丝雀放大方法学单列§3.1附4条局限性明确Phase18须用真实生产流量重新观测
+- **T1 rebase同步远端**: git fetch + GIT_EDITOR=true git rebase origin/feature/v87-rc1-g1@d08dc0e, 同步DSHB/DSHE Phase30~33共8个提交(金丝雀10%灰度Phase30/GA全量放量Phase31/GA 72h值守+30天长稳Phase32/10指标最终验收Phase33), **零冲突**(冲突标记0), HEAD更新至629f354, 远端7新提交为纯新增文件+STATUS/JOB_READY不同位置追加故git三方合并自动成功
+- **T2 环境校验**: HEAD==ORIGIN==629f354完全同步/工作区干净/JOB_READY Phase17全部标记完整保留(HERMES_PHASE17_DECISION=V87_RC1_RELEASE_GO+RISK_LEVEL=GREEN+P2_RISK_CLOSED+JOB_READY+BRANCH_LOCKED)/check_html 266/266 PASS/reclaim PASS=9 FAIL=4与Phase17基线一致(4项FAIL为Phase03~15历史STATUS.md线A表格契约缺失按工单要求不修改历史文件如实保留)/无残留文件锁(acquire返回FORBIDDEN:None系file_write_lock白名单不含本目录的既有约定)
+- **T3 快照报告**: v87_rc1_hermes_prep_rebase_snapshot.md/13862B/C16FDA42MD5, 含Phase17全部10份产物MD5复核(rebase后0漂移确认NO_OVERWRITE生效)+远端提交明细+HEAD提交链
+- **本工单改动范围**: 仅新增2份文档(handover交接文档+快照报告), 零代码/零数据改动, Phase15/16/17产物零覆盖
+- **约束合规**: BRANCH_LOCKED/NO_MODIFY_V85/NO_OVERWRITE/NO_ZHIJI_API_CALL/不修改历史STATUS.md契约段落/未force push/未--no-verify
+- **基线结论**: 基线干净已就绪, 等待Phase18生产上线后稳态运维正式工单启动
+- **状态标记**: HERMES_PREP_P17_HANDOVER=TRUE, HERMES_PREP_P17_HANDOVER_DOC=TRUE, HERMES_PREP_P17_REBASE=TRUE, HERMES_PREP_P17_REBASE_CONFLICTS=0, HERMES_PREP_P17_HEAD_EQ_ORIGIN=TRUE, HERMES_PREP_P17_ENV_VERIFY=PASS, HERMES_PREP_P17_BASELINE_CLEAN=TRUE, HERMES_PREP_P17_PHASE18_READY=TRUE
+
+
 ### 2026-10-12 HERMES_V87_RC1_PHASE17_P2闭环+金丝雀审计+ReleaseGate (HERMES_V87_RC1_PHASE17)
 - **工单**: HERMES_V87_RC1_PHASE17_PHASE16_RISK_FOLLOWUP_CANARY_TRAFFIC_AUDIT_FINAL_THREE_WAY_CONSOLIDATION_RELEASE_GATE_SYNTHESIS
 - **前置**: rebase远端@5c408b7(DSHB/DSHE Phase28-29交付物快进,零冲突) + Phase16基线4e95382(0P0P1/1P2/22P3)
