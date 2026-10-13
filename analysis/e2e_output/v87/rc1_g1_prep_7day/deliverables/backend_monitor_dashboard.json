@@ -1,0 +1,1079 @@
+{
+  "dashboard_meta": {
+    "dashboard_id": "DSHB-V87-RC1-G1-PREP-7DAY-DASHBOARD-001",
+    "version": "1.0",
+    "task_id": "V87_RC1_G1_PREP_7DAY_DSHB",
+    "agent": "DSHB",
+    "branch": "feature/v87-rc1-g1",
+    "baseline_tag": "v87-rc1-g1-final",
+    "baseline_commit": "629f354",
+    "created_date": "2026-10-13",
+    "description": "V87-RC1-G1 Backend 7-Day Post-Release Monitoring Dashboard",
+    "constraints": {
+      "NO_ZHIJI_API_CALL": true,
+      "NO_MODIFY_V85": true,
+      "NO_OVERWRITE": true,
+      "NO_EDIT_RELEASE_TAG_ASSET": true,
+      "CPU_FUSE_THRESHOLD_UNCHANGED": true,
+      "ALL_THRESHOLDS_UNCHANGED": true
+    },
+    "total_p3_observations": 41,
+    "alert_levels": 4,
+    "degradation_plans": 10
+  },
+
+  "monitoring_phases": {
+    "phase_a": {
+      "name": "Phase A - Dense Monitoring",
+      "time_window": "Day 0-3 (72h)",
+      "snapshot_interval_hours": 2,
+      "cpu_fine_interval_seconds": 10,
+      "staffing": "双人值守 (dual-oncall)",
+      "focus_areas": [
+        "CPU usage (10s granularity)",
+        "Circuit breaker chain",
+        "Memory usage",
+        "Factor IC/IR drift",
+        "DQ scores",
+        "Crawler availability",
+        "Data delay",
+        "Network/GC latency"
+      ],
+      "total_snapshots": 36,
+      "total_cpu_fine_samples": 25920
+    },
+    "phase_b": {
+      "name": "Phase B - Normal Monitoring",
+      "time_window": "Day 3-7 (96h)",
+      "snapshot_interval_hours": 4,
+      "cpu_fine_interval_seconds": 60,
+      "staffing": "单人值守 (single-oncall)",
+      "focus_areas": [
+        "P0/P1 event response",
+        "CPU fuse monitoring",
+        "Memory fuse monitoring",
+        "Factor drift monitoring",
+        "DQ monitoring",
+        "Crawler availability"
+      ],
+      "total_snapshots": 24,
+      "total_cpu_fine_samples": 9600
+    }
+  },
+
+  "alert_levels": [
+    {
+      "level": "P0",
+      "name": "紧急 (Critical)",
+      "response_time": "≤5min",
+      "notification_channels": ["phone", "instant_messaging", "email"],
+      "escalation": "立即升级至CTO",
+      "color": "#FF0000",
+      "icon": "🔴"
+    },
+    {
+      "level": "P1",
+      "name": "高 (High)",
+      "response_time": "≤15min",
+      "notification_channels": ["instant_messaging", "email"],
+      "escalation": "30min未恢复→P0升级",
+      "color": "#FFA500",
+      "icon": "🟡"
+    },
+    {
+      "level": "P2",
+      "name": "中 (Medium)",
+      "response_time": "≤30min",
+      "notification_channels": ["email"],
+      "escalation": "1h未恢复→P1升级",
+      "color": "#FFD700",
+      "icon": "🟢"
+    },
+    {
+      "level": "P3",
+      "name": "低 (Low)",
+      "response_time": "≤4h",
+      "notification_channels": ["email"],
+      "escalation": "记录跟踪",
+      "color": "#00BFFF",
+      "icon": "🔵"
+    }
+  ],
+
+  "alert_escalation_rules": {
+    "cpu_escalation": {
+      "description": "CPU usage alert escalation chain (1.9% warning -> 2.0% fuse)",
+      "steps": [
+        {
+          "time": "T+0",
+          "condition": "CPU > 1.9%",
+          "alert_level": "P2",
+          "action": "记录+邮件通知",
+          "notify": "运维值班"
+        },
+        {
+          "time": "T+30min",
+          "condition": "CPU > 1.95% OR CPU > 1.9% sustained 30min",
+          "alert_level": "P1",
+          "action": "即时通知+电话",
+          "notify": "技术负责人"
+        },
+        {
+          "time": "T+60min",
+          "condition": "CPU > 1.9% sustained 60min",
+          "alert_level": "P1",
+          "action": "准备降级",
+          "notify": "技术负责人+运维主管"
+        },
+        {
+          "time": "T+90min",
+          "condition": "CPU > 1.95% sustained 90min",
+          "alert_level": "P1",
+          "action": "执行降级准备",
+          "notify": "技术负责人+CTO"
+        },
+        {
+          "time": "T+4h",
+          "condition": "CPU > 2.0% sustained 4h",
+          "alert_level": "P0",
+          "action": "执行熔断降级 (DL-003)",
+          "notify": "全体+CTO"
+        },
+        {
+          "time": "T+24h",
+          "condition": "CPU > 2.0% sustained 24h",
+          "alert_level": "P0",
+          "action": "执行回滚 (DL-004)",
+          "notify": "全体+CTO"
+        }
+      ]
+    },
+    "memory_escalation": {
+      "steps": [
+        {"condition": "Memory > 78%", "alert_level": "P2", "action": "通知+趋势分析", "recovery": "Memory < 78% sustained > 1h"},
+        {"condition": "Memory > 80% sustained > 4h", "alert_level": "P0", "action": "强制缓存清理 (DL-006)"}
+      ]
+    },
+    "factor_drift_escalation": {
+      "steps": [
+        {"condition": "Factor IC/IR drift > 0.5%", "alert_level": "P2", "action": "通知+因子分析"},
+        {"condition": "Factor IC/IR drift > 2.0%", "alert_level": "P0", "action": "因子降级 (DL-007)"}
+      ]
+    },
+    "dq_escalation": {
+      "steps": [
+        {"condition": "DQ < 99.5%", "alert_level": "P2", "action": "通知+数据源分析"},
+        {"condition": "DQ < 95%", "alert_level": "P0", "action": "数据源降级 (DL-008)"}
+      ]
+    },
+    "crawler_escalation": {
+      "steps": [
+        {"condition": "Crawler availability < 100%", "alert_level": "P2", "action": "通知+爬虫检查"},
+        {"condition": "Crawler availability < 95%", "alert_level": "P0", "action": "爬虫降级 (DL-009)"}
+      ]
+    },
+    "delay_escalation": {
+      "steps": [
+        {"condition": "Data delay > 5min", "alert_level": "P2", "action": "通知+数据源分析"},
+        {"condition": "Data delay > 15min", "alert_level": "P0", "action": "数据源切换"}
+      ]
+    }
+  },
+
+  "degradation_plans": [
+    {
+      "plan_id": "DL-001",
+      "name": "CPU预警降级",
+      "trigger_condition": "CPU > 1.9% sustained > 1h",
+      "trigger_metric": "cpu_usage_pct",
+      "trigger_value": 1.9,
+      "sustain_minutes": 60,
+      "actions": [
+        "降低非关键计算任务并发数50%",
+        "暂停报表生成任务",
+        "暂停缓存预热任务"
+      ],
+      "recovery_condition": "CPU < 1.9% sustained > 1h",
+      "expected_recovery_minutes": 120,
+      "priority": "P1",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-002",
+      "name": "CPU高负荷降级",
+      "trigger_condition": "CPU > 1.95% sustained > 30min",
+      "trigger_metric": "cpu_usage_pct",
+      "trigger_value": 1.95,
+      "sustain_minutes": 30,
+      "actions": [
+        "暂停所有非关键计算任务",
+        "降低核心计算频率25%",
+        "恢复非关键计算至50%"
+      ],
+      "recovery_condition": "CPU < 1.95% sustained > 1h",
+      "expected_recovery_minutes": 120,
+      "priority": "P1",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-003",
+      "name": "CPU熔断降级",
+      "trigger_condition": "CPU > 2.0% sustained > 4h",
+      "trigger_metric": "cpu_usage_pct",
+      "trigger_value": 2.0,
+      "sustain_minutes": 240,
+      "actions": [
+        "暂停所有非核心任务(报表/预热/分析)",
+        "降低核心计算频率50%(仅保留因子计算+爬虫采集+告警)",
+        "冻结因子快照(使用最近有效快照)",
+        "通知技术负责人+CTO"
+      ],
+      "recovery_condition": "CPU < 2.0% sustained > 2h",
+      "expected_recovery_minutes": 240,
+      "priority": "P0",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-004",
+      "name": "CPU持续超限回滚",
+      "trigger_condition": "CPU > 2.0% sustained > 24h",
+      "trigger_metric": "cpu_usage_pct",
+      "trigger_value": 2.0,
+      "sustain_minutes": 1440,
+      "actions": [
+        "确认熔断持续>24h, 判定为版本级问题",
+        "执行回滚脚本至v87-rc1-g1-final基线",
+        "验证回滚后CPU < 1.9%",
+        "验证全部指标正常",
+        "通知全体+记录回滚事件"
+      ],
+      "recovery_condition": "回滚后CPU < 1.9% + 全指标正常",
+      "expected_recovery_minutes": 4,
+      "sla_minutes": 3.2,
+      "priority": "P0",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-005",
+      "name": "内存预警降级",
+      "trigger_condition": "Memory > 78% sustained > 1h",
+      "trigger_metric": "memory_usage_pct",
+      "trigger_value": 78.0,
+      "sustain_minutes": 60,
+      "actions": [
+        "触发缓存清理"
+      ],
+      "recovery_condition": "Memory < 78% sustained > 1h",
+      "expected_recovery_minutes": 60,
+      "priority": "P2",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-006",
+      "name": "内存熔断降级",
+      "trigger_condition": "Memory > 80% sustained > 4h",
+      "trigger_metric": "memory_usage_pct",
+      "trigger_value": 80.0,
+      "sustain_minutes": 240,
+      "actions": [
+        "强制缓存清理+释放非核心内存"
+      ],
+      "recovery_condition": "Memory < 80% sustained > 2h",
+      "expected_recovery_minutes": 120,
+      "priority": "P0",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-007",
+      "name": "因子漂移降级",
+      "trigger_condition": "Factor IC/IR drift > 2.0%",
+      "trigger_metric": "factor_ic_drift_pct",
+      "trigger_value": 2.0,
+      "sustain_minutes": 0,
+      "actions": [
+        "降级至上一有效因子快照"
+      ],
+      "recovery_condition": "Drift < 0.5% sustained > 4h",
+      "expected_recovery_minutes": 240,
+      "priority": "P0",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-008",
+      "name": "DQ降级",
+      "trigger_condition": "DQ < 95% OR Data delay > 15min",
+      "trigger_metric": "dq_score_pct",
+      "trigger_value": 95.0,
+      "sustain_minutes": 0,
+      "actions": [
+        "切换至备用数据源"
+      ],
+      "recovery_condition": "DQ > 99% sustained > 4h OR Delay < 5min",
+      "expected_recovery_minutes": 60,
+      "priority": "P0",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-009",
+      "name": "爬虫不可用降级",
+      "trigger_condition": "Crawler availability < 95% sustained > 4h",
+      "trigger_metric": "crawler_availability_pct",
+      "trigger_value": 95.0,
+      "sustain_minutes": 240,
+      "actions": [
+        "启用备用爬虫通道"
+      ],
+      "recovery_condition": "Availability > 100%",
+      "expected_recovery_minutes": 60,
+      "priority": "P0",
+      "status": "ARMED"
+    },
+    {
+      "plan_id": "DL-010",
+      "name": "全链路回滚",
+      "trigger_condition": "Multiple fuse events triggered simultaneously",
+      "trigger_metric": "multi_fuse",
+      "trigger_value": 2,
+      "sustain_minutes": 0,
+      "actions": [
+        "执行完整回滚至v87-rc1-g1-final基线",
+        "验证回滚后全指标正常",
+        "通知全体+记录回滚事件"
+      ],
+      "recovery_condition": "回滚后全指标正常",
+      "expected_recovery_minutes": 4,
+      "sla_minutes": 3.2,
+      "priority": "P0",
+      "status": "ARMED"
+    }
+  ],
+
+  "p3_observations": [
+    {
+      "id": "P3-001",
+      "category": "ACTIVE_RISK",
+      "risk_id": "VR-001",
+      "name": "吞吐量瓶颈",
+      "severity": "High",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P2",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "吞吐量瓶颈 - 历史High风险, 110%达标不阻断"
+    },
+    {
+      "id": "P3-002",
+      "category": "ACTIVE_RISK",
+      "risk_id": "VR-044",
+      "name": "吞吐量瓶颈(High)",
+      "severity": "High",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P2",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "吞吐量瓶颈(High) - 历史High风险, 不阻断"
+    },
+    {
+      "id": "P3-003",
+      "category": "ACTIVE_RISK",
+      "risk_id": "VR-045",
+      "name": "外部数据质量(High)",
+      "severity": "High",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 99.5, "fuse": 95.0},
+      "alert_level": "P2",
+      "degradation_plan": "DL-008",
+      "action": "持续监控",
+      "description": "外部数据质量(High) - 18爬虫100%可用, 不阻断"
+    },
+    {
+      "id": "P3-004",
+      "category": "ACTIVE_RISK",
+      "risk_id": "VR-046",
+      "name": "索引增长趋势(Medium)",
+      "severity": "Medium",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.01, "fuse": null},
+      "alert_level": "P2",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "索引增长趋势(Medium) - 0.009pp/d增长, 不阻断"
+    },
+    {
+      "id": "P3-005",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-009",
+      "name": "指标聚合延迟",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 50, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "指标聚合延迟 - P99<50ms, 放行"
+    },
+    {
+      "id": "P3-006",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-010",
+      "name": "数据源变更监控",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "数据源变更监控 - 监控冻结, 放行"
+    },
+    {
+      "id": "P3-007",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-011",
+      "name": "爬虫容错机制",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 95.0, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": "DL-009",
+      "action": "持续监控",
+      "description": "爬虫容错机制 - 容错PASS, 放行"
+    },
+    {
+      "id": "P3-008",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-012",
+      "name": "配置热更新",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "配置热更新 - 热更新PASS, 放行"
+    },
+    {
+      "id": "P3-009",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-013",
+      "name": "快照备份恢复",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "快照备份恢复 - 恢复PASS, 放行"
+    },
+    {
+      "id": "P3-010",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-014",
+      "name": "因子退役管理",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "因子退役管理 - 退役验证PASS, 放行"
+    },
+    {
+      "id": "P3-011",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-015",
+      "name": "金丝雀缓存预热",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "金丝雀缓存预热 - 预热PASS, 放行"
+    },
+    {
+      "id": "P3-012",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-016",
+      "name": "离线回滚演练",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "离线回滚演练 - 回滚PASS, 放行"
+    },
+    {
+      "id": "P3-013",
+      "category": "ACTIVE_RISK",
+      "risk_id": "G-017",
+      "name": "用户权限管理",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "持续监控",
+      "description": "用户权限管理 - 权限PASS, 放行"
+    },
+    {
+      "id": "P3-014",
+      "category": "ACTIVE_RISK",
+      "risk_id": "VR-048",
+      "name": "ACCEPTED风险",
+      "severity": "ACCEPTED",
+      "monitor_frequency_hours": 24,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "已接受, 定期复盘",
+      "description": "ACCEPTED风险 - 已接受, 不阻断"
+    },
+    {
+      "id": "P3-015",
+      "category": "PHASE36_NOISE",
+      "risk_id": "OBS-01",
+      "name": "CU进出口量微抖动",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.15, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "噪声监控, 自动恢复",
+      "description": "Day12 4h +0.15% 季节性噪声, 已登记"
+    },
+    {
+      "id": "P3-016",
+      "category": "PHASE36_NOISE",
+      "risk_id": "OBS-02",
+      "name": "NI进出口量微抖动",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.18, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "噪声监控, 自动恢复",
+      "description": "Day14 8h +0.18% 节假日噪声, 已登记"
+    },
+    {
+      "id": "P3-017",
+      "category": "PHASE36_NOISE",
+      "risk_id": "OBS-03",
+      "name": "AL进出口量微抖动",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.13, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "噪声监控, 自动恢复",
+      "description": "Day22 6h +0.13% 月末噪声, 已登记"
+    },
+    {
+      "id": "P3-018",
+      "category": "PHASE36_NOISE",
+      "risk_id": "OBS-04",
+      "name": "CU冶炼利润微抖动",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.08, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "噪声监控, 自动恢复",
+      "description": "Day27 4h +0.08% 市场波动噪声, 已登记"
+    },
+    {
+      "id": "P3-019",
+      "category": "PHASE36_NOISE",
+      "risk_id": "OBS-05",
+      "name": "万得终端API限流",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.07, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "监控, 自动恢复",
+      "description": "1次/30天(0.07%) 万得终端API限流, 已登记"
+    },
+    {
+      "id": "P3-020",
+      "category": "PHASE36_NOISE",
+      "risk_id": "OBS-06",
+      "name": "终端超时",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.07, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "监控, 自动恢复",
+      "description": "1次/30天(0.07%) 终端超时, 已登记"
+    },
+    {
+      "id": "P3-021",
+      "category": "HERMES_TDEBT",
+      "risk_id": "TD-V87-001",
+      "name": "MD5_MANIFEST编码损坏",
+      "severity": "Low",
+      "monitor_frequency_hours": 168,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "V88迭代修复",
+      "description": "Phase01遗留编码问题, 不影响功能"
+    },
+    {
+      "id": "P3-022",
+      "category": "HERMES_TDEBT",
+      "risk_id": "TD-V87-002",
+      "name": "reclaim FAIL=4",
+      "severity": "Low",
+      "monitor_frequency_hours": 168,
+      "thresholds": {"warning": 4, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "V88迭代修复",
+      "description": "Phase03~15契约缺失, 不影响功能"
+    },
+    {
+      "id": "P3-023",
+      "category": "HERMES_TDEBT",
+      "risk_id": "TD-V87-003",
+      "name": "金丝雀仿真方法学",
+      "severity": "Low",
+      "monitor_frequency_hours": 168,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "V88迭代修复",
+      "description": "Phase17仿真放大, Phase18已复测"
+    },
+    {
+      "id": "P3-024",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C01",
+      "name": "SHFE端点可用性",
+      "severity": "P2",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 100.0, "fuse": 95.0},
+      "alert_level": "P2",
+      "degradation_plan": "DL-009",
+      "action": "通知+检查",
+      "description": "C-001~C-007 SHFE端点可用性监控"
+    },
+    {
+      "id": "P3-025",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C02",
+      "name": "LME API限流",
+      "severity": "P3",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.0, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "记录+趋势",
+      "description": "C-008, C-101~C-106 LME API限流监控"
+    },
+    {
+      "id": "P3-026",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C03",
+      "name": "万得终端超时",
+      "severity": "P3",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.0, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "记录+趋势",
+      "description": "C-107, C-108 万得终端超时监控"
+    },
+    {
+      "id": "P3-027",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C04",
+      "name": "同花顺数据延迟",
+      "severity": "P3",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 5, "fuse": 15},
+      "alert_level": "P3",
+      "degradation_plan": "DL-008",
+      "action": "通知+分析",
+      "description": "C-109, C-110 同花顺数据延迟监控"
+    },
+    {
+      "id": "P3-028",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C05",
+      "name": "爬虫DQ整体",
+      "severity": "P2",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 99.5, "fuse": 95.0},
+      "alert_level": "P2",
+      "degradation_plan": "DL-008",
+      "action": "通知+分析",
+      "description": "全部18路爬虫DQ整体监控"
+    },
+    {
+      "id": "P3-029",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C06",
+      "name": "爬虫DQ熔断",
+      "severity": "P0",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 95.0, "fuse": 95.0},
+      "alert_level": "P0",
+      "degradation_plan": "DL-008",
+      "action": "立即通知+数据源降级",
+      "description": "全部18路爬虫DQ熔断监控"
+    },
+    {
+      "id": "P3-030",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C07",
+      "name": "爬虫可用率",
+      "severity": "P0",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 95.0, "fuse": 95.0},
+      "alert_level": "P0",
+      "degradation_plan": "DL-009",
+      "action": "立即通知+爬虫降级",
+      "description": "全部18路爬虫可用率监控"
+    },
+    {
+      "id": "P3-031",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C08",
+      "name": "数据延迟",
+      "severity": "P2",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 5, "fuse": 15},
+      "alert_level": "P2",
+      "degradation_plan": "DL-008",
+      "action": "通知+分析",
+      "description": "全部18路爬虫数据延迟监控"
+    },
+    {
+      "id": "P3-032",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C09",
+      "name": "数据延迟严重",
+      "severity": "P0",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 15, "fuse": 15},
+      "alert_level": "P0",
+      "degradation_plan": "DL-008",
+      "action": "立即通知+切换数据源",
+      "description": "全部18路爬虫数据延迟>15min严重监控"
+    },
+    {
+      "id": "P3-033",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C10",
+      "name": "数据缺失",
+      "severity": "P3",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "记录+补采",
+      "description": "全部18路爬虫数据缺失监控"
+    },
+    {
+      "id": "P3-034",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C11",
+      "name": "数据缺失严重",
+      "severity": "P2",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 4, "fuse": null},
+      "alert_level": "P2",
+      "degradation_plan": "DL-008",
+      "action": "通知+切换",
+      "description": "全部18路爬虫连续缺失>4h严重监控"
+    },
+    {
+      "id": "P3-035",
+      "category": "CRAWLER_OBSERVATION",
+      "risk_id": "OBS-C12",
+      "name": "DQ三分类规则",
+      "severity": "P2",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.5, "fuse": null},
+      "alert_level": "P2",
+      "degradation_plan": null,
+      "action": "通知+规则检查",
+      "description": "53条DQ规则误报率>0.5%监控"
+    },
+    {
+      "id": "P3-036",
+      "category": "ORIGINAL_LOW",
+      "risk_id": "G-077",
+      "name": "因子退役首7天双人确认",
+      "severity": "Low",
+      "monitor_frequency_hours": 2,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "Phase A密集监控双人确认",
+      "description": "因子退役G-077首7天双人确认 - 上线观测项"
+    },
+    {
+      "id": "P3-037",
+      "category": "ORIGINAL_LOW",
+      "risk_id": "G-078",
+      "name": "回滚SOP 24h生产演练",
+      "severity": "Low",
+      "monitor_frequency_hours": 24,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "一次性验证(Phase18已完成)",
+      "description": "回滚SOP G-078 24h内生产演练 - 已执行(Phase18验证)"
+    },
+    {
+      "id": "P3-038",
+      "category": "ORIGINAL_LOW",
+      "risk_id": "G-079",
+      "name": "金丝雀冷启动缓存预热",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "上线前验证(Phase30已完成)",
+      "description": "金丝雀冷启动上线前缓存预热 - 已预热(Phase30验证)"
+    },
+    {
+      "id": "P3-039",
+      "category": "ORIGINAL_LOW",
+      "risk_id": "G-080",
+      "name": "48项DSHB P3季度复盘",
+      "severity": "Low",
+      "monitor_frequency_hours": 2160,
+      "thresholds": {"warning": null, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "纳入季度复盘计划",
+      "description": "48项DSHB P3季度复盘 - 季度周期"
+    },
+    {
+      "id": "P3-040",
+      "category": "ORIGINAL_LOW",
+      "risk_id": "G-081",
+      "name": "SHFE端点探测",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 100.0, "fuse": 95.0},
+      "alert_level": "P3",
+      "degradation_plan": "DL-009",
+      "action": "纳入爬虫观测清单OBS-C01",
+      "description": "SHFE端点探测 - 纳入OBS-C01"
+    },
+    {
+      "id": "P3-041",
+      "category": "ORIGINAL_LOW",
+      "risk_id": "G-082",
+      "name": "索引膨胀监控",
+      "severity": "Low",
+      "monitor_frequency_hours": 4,
+      "thresholds": {"warning": 0.01, "fuse": null},
+      "alert_level": "P3",
+      "degradation_plan": null,
+      "action": "纳入DSHE索引观测",
+      "description": "索引膨胀监控<0.01pp/d - 纳入DSHE"
+    }
+  ],
+
+  "circuit_breaker_rules": {
+    "cpu_fuse": {
+      "description": "CPU circuit breaker chain: 1.9% warning -> 2.0% fuse",
+      "warning_threshold": 1.9,
+      "critical_threshold": 1.95,
+      "fuse_threshold": 2.0,
+      "warning_sustain_minutes": 60,
+      "critical_sustain_minutes": 30,
+      "fuse_sustain_minutes": 240,
+      "rollback_sustain_minutes": 1440,
+      "escalation_chain": [
+        {"condition": "CPU > 1.9% for > 1h", "action": "DL-001 CPU预警降级"},
+        {"condition": "CPU > 1.95% for > 30min", "action": "DL-002 CPU高负荷降级"},
+        {"condition": "CPU > 2.0% for > 4h", "action": "DL-003 CPU熔断降级"},
+        {"condition": "CPU > 2.0% for > 24h", "action": "DL-004 CPU持续超限回滚"}
+      ],
+      "detection_delay_ms": 50,
+      "response_sla_minutes": 5,
+      "rollback_sla_minutes": 3.2,
+      "threshold_unchanged": true,
+      "warning_threshold_unchanged": true
+    },
+    "memory_fuse": {
+      "description": "Memory circuit breaker: 78% warning -> 80% fuse",
+      "warning_threshold": 78.0,
+      "fuse_threshold": 80.0,
+      "warning_sustain_minutes": 60,
+      "fuse_sustain_minutes": 240,
+      "escalation_chain": [
+        {"condition": "Memory > 78% for > 1h", "action": "DL-005 内存预警降级"},
+        {"condition": "Memory > 80% for > 4h", "action": "DL-006 内存熔断降级"}
+      ],
+      "threshold_unchanged": true
+    },
+    "factor_fuse": {
+      "description": "Factor IC/IR drift circuit breaker: 0.5% warning -> 2.0% fuse",
+      "ic_drift_warning": 0.5,
+      "ic_drift_fuse": 2.0,
+      "ir_drift_warning": 0.5,
+      "ir_drift_fuse": 2.0,
+      "escalation_chain": [
+        {"condition": "Factor IC/IR drift > 0.5%", "action": "P2 通知+因子分析"},
+        {"condition": "Factor IC/IR drift > 2.0%", "action": "DL-007 因子漂移降级"}
+      ],
+      "threshold_unchanged": true
+    },
+    "dq_fuse": {
+      "description": "Data Quality circuit breaker: 99.5% warning -> 95% fuse",
+      "warning_threshold": 99.5,
+      "fuse_threshold": 95.0,
+      "escalation_chain": [
+        {"condition": "DQ < 99.5%", "action": "P2 通知+数据源分析"},
+        {"condition": "DQ < 95%", "action": "DL-008 DQ降级"}
+      ],
+      "threshold_unchanged": true
+    },
+    "crawler_fuse": {
+      "description": "Crawler availability circuit breaker: 99% warning -> 95% fuse",
+      "warning_threshold": 99.0,
+      "fuse_threshold": 95.0,
+      "fuse_sustain_minutes": 240,
+      "escalation_chain": [
+        {"condition": "Crawler availability < 100%", "action": "P2 通知+爬虫检查"},
+        {"condition": "Crawler availability < 95% for > 4h", "action": "DL-009 爬虫不可用降级"}
+      ],
+      "threshold_unchanged": true
+    },
+    "delay_fuse": {
+      "description": "Data delay circuit breaker: 5min warning -> 15min fuse",
+      "warning_threshold_minutes": 5,
+      "fuse_threshold_minutes": 15,
+      "escalation_chain": [
+        {"condition": "Data delay > 5min", "action": "P2 通知+数据源分析"},
+        {"condition": "Data delay > 15min", "action": "P0 立即通知+数据源切换"}
+      ],
+      "threshold_unchanged": true
+    }
+  },
+
+  "crawlers": [
+    {"id": "C-001", "name": "SHFE CU库存", "priority": "HIGH", "dq_score": 99.92, "fallback": "404→备用源", "status": "ACTIVE"},
+    {"id": "C-002", "name": "SHFE CU仓单", "priority": "HIGH", "dq_score": 99.91, "fallback": "404→备用源", "status": "ACTIVE"},
+    {"id": "C-003", "name": "SHFE AL库存", "priority": "HIGH", "dq_score": 99.90, "fallback": "404→备用源", "status": "ACTIVE"},
+    {"id": "C-004", "name": "SHFE AL仓单", "priority": "HIGH", "dq_score": 99.89, "fallback": "404→备用源", "status": "ACTIVE"},
+    {"id": "C-005", "name": "SHFE PB库存", "priority": "HIGH", "dq_score": 99.88, "fallback": "404→备用源", "status": "ACTIVE"},
+    {"id": "C-006", "name": "SHFE ZN库存", "priority": "HIGH", "dq_score": 99.87, "fallback": "404→备用源", "status": "ACTIVE"},
+    {"id": "C-007", "name": "SHFE NI库存", "priority": "HIGH", "dq_score": 99.86, "fallback": "404→备用源", "status": "ACTIVE"},
+    {"id": "C-008", "name": "LME库存周报", "priority": "HIGH", "dq_score": 99.85, "fallback": "限流→本地缓存", "status": "ACTIVE"},
+    {"id": "C-101", "name": "LME CU现货价", "priority": "MEDIUM", "dq_score": 99.92, "fallback": "限流→重试+缓存", "status": "ACTIVE"},
+    {"id": "C-102", "name": "LME AL现货价", "priority": "MEDIUM", "dq_score": 99.91, "fallback": "限流→重试+缓存", "status": "ACTIVE"},
+    {"id": "C-103", "name": "LME NI现货价", "priority": "MEDIUM", "dq_score": 99.90, "fallback": "限流→重试+缓存", "status": "ACTIVE"},
+    {"id": "C-104", "name": "LME PB现货价", "priority": "MEDIUM", "dq_score": 99.89, "fallback": "限流→重试+缓存", "status": "ACTIVE"},
+    {"id": "C-105", "name": "LME ZN现货价", "priority": "MEDIUM", "dq_score": 99.88, "fallback": "限流→重试+缓存", "status": "ACTIVE"},
+    {"id": "C-106", "name": "LME COMEX联动", "priority": "MEDIUM", "dq_score": 99.87, "fallback": "限流→重试+缓存", "status": "ACTIVE"},
+    {"id": "C-107", "name": "万得终端CU数据", "priority": "MEDIUM", "dq_score": 99.86, "fallback": "超时→备用通道", "status": "ACTIVE"},
+    {"id": "C-108", "name": "万得终端AL数据", "priority": "MEDIUM", "dq_score": 99.85, "fallback": "超时→备用通道", "status": "ACTIVE"},
+    {"id": "C-109", "name": "同花顺PB数据", "priority": "MEDIUM", "dq_score": 99.84, "fallback": "超时→备用通道", "status": "ACTIVE"},
+    {"id": "C-110", "name": "同花顺ZN数据", "priority": "MEDIUM", "dq_score": 99.83, "fallback": "超时→备用通道", "status": "ACTIVE"}
+  ],
+
+  "crawlers_dqa_rules": {
+    "description": "18 crawler data quality assurance auto-validation rules",
+    "total_crawlers": 18,
+    "total_rules": 53,
+    "coverage": "100%",
+    "anomaly_types": [
+      {
+        "type": "data_delay",
+        "description": "Data delay detection",
+        "warning_threshold_min": 5,
+        "fuse_threshold_min": 15,
+        "alert_level": "P2/P0",
+        "auto_action": "Auto-tag ALERT:DELAY tag, trigger DL-008 if >15min"
+      },
+      {
+        "type": "data_missing",
+        "description": "Data missing detection",
+        "warning_threshold_count": 1,
+        "fuse_threshold_count": 10,
+        "alert_level": "P3/P2",
+        "auto_action": "Auto-tag ALERT:MISSING tag, trigger backup fetch if >10"
+      },
+      {
+        "type": "data_jump",
+        "description": "Data jump/spike detection",
+        "warning_threshold_count": 1,
+        "fuse_threshold_count": 3,
+        "alert_level": "P2/P1",
+        "auto_action": "Auto-tag ALERT:JUMP tag, manual review if >3"
+      },
+      {
+        "type": "source_404",
+        "description": "Source 404 error detection",
+        "warning_threshold_count": 1,
+        "fuse_threshold_count": 4,
+        "alert_level": "P2/P0",
+        "auto_action": "Auto-switch to backup source if >4h"
+      },
+      {
+        "type": "source_rate_limit",
+        "description": "Source rate limit detection",
+        "warning_threshold_count": 1,
+        "fuse_threshold_count": 3,
+        "alert_level": "P2",
+        "auto_action": "Retry 3x then cache fallback"
+      },
+      {
+        "type": "source_timeout",
+        "description": "Source timeout detection",
+        "warning_threshold_sec": 30,
+        "fuse_threshold_sec": 60,
+        "alert_level": "P2",
+        "auto_action": "Auto-switch to backup channel"
+      },
+      {
+        "type": "dq_score_drop",
+        "description": "DQ score drop detection",
+        "warning_threshold_pct": 99.5,
+        "fuse_threshold_pct": 95.0,
+        "alert_level": "P2/P0",
+        "auto_action": "Auto-tag ALERT:DQ tag, trigger DL-008 if <95%"
+      }
+    ]
+  },
+
+  "threshold_inventory": [
+    {"name": "CPU FUSE", "value": 2.0, "unit": "%", "unchanged": true},
+    {"name": "CPU WARNING", "value": 1.9, "unit": "%", "unchanged": true},
+    {"name": "CPU CRITICAL", "value": 1.95, "unit": "%", "unchanged": true},
+    {"name": "MEMORY FUSE", "value": 80.0, "unit": "%", "unchanged": true},
+    {"name": "MEMORY WARNING", "value": 78.0, "unit": "%", "unchanged": true},
+    {"name": "FACTOR IC DRIFT FUSE", "value": 2.0, "unit": "%", "unchanged": true},
+    {"name": "FACTOR IC DRIFT WARNING", "value": 0.5, "unit": "%", "unchanged": true},
+    {"name": "FACTOR IR DRIFT FUSE", "value": 2.0, "unit": "%", "unchanged": true},
+    {"name": "FACTOR IR DRIFT WARNING", "value": 0.5, "unit": "%", "unchanged": true},
+    {"name": "DQ FUSE", "value": 95.0, "unit": "%", "unchanged": true},
+    {"name": "DQ WARNING", "value": 99.5, "unit": "%", "unchanged": true},
+    {"name": "CRAWLER AVAIL FUSE", "value": 95.0, "unit": "%", "unchanged": true},
+    {"name": "DELAY FUSE", "value": 15, "unit": "min", "unchanged": true},
+    {"name": "DELAY WARNING", "value": 5, "unit": "min", "unchanged": true},
+    {"name": "NETWORK P99 WARNING", "value": 280, "unit": "ms", "unchanged": true}
+  ],
+
+  "end_of_monitoring_acceptance": {
+    "cpu_mean_max_pct": 1.93,
+    "cpu_peak_max_pct": 2.0,
+    "cpu_fuse_count_max": 0,
+    "factor_drift_max_pct": 0.2,
+    "crawler_dq_min_pct": 99.83,
+    "composite_score_min": 99.0,
+    "final_decision": "ALL_PASS"
+  }
+}
