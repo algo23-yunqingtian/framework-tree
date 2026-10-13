@@ -2391,4 +2391,12 @@ V87_RC1_G1_DSHE_FOLLOWUP_DELIVERABLES_MODIFIED=2
 V87_RC1_G1_DSHE_FOLLOWUP_DELIVERABLES_TOOL=2
 V87_RC1_G1_DSHE_FOLLOWUP_BASELINE_MD5_UNCHANGED=TRUE
 V87_RC1_G1_DSHE_FOLLOWUP_COMPLETE=TRUE
-JOB_READY=TRUE
+JOB_READY=TRUE### 2028-05-18 V87_RC1_G1_DSHB_V88_BACKLOG_FILL DSHB V88后端Backlog补数规格
+- 新增文件:
+  1. analysis/e2e_output/v88/backlog/deliverables/v88_dshb_backlog_framework_tree_data_crawl_spec.md (24179 bytes, MD5: B6A65206)
+  2. analysis/e2e_output/v88/backlog/deliverables/v88_dshb_backlog_missing_indicator_list.md (20640 bytes, MD5: 16D2BD13)
+- 修改文件:
+  1. STATUS.md (追加本次状态标记)
+  2. JOB_READY.flag (追加本次状态标记)
+- 约束: BRANCH_LOCKED/NO_OVERWRITE/NO_MODIFY_V85/NO_EDIT_RELEASE_TAG_ASSET/NO_ZHIJI_API 9/9合规
+- 基线829项MD5不变 | Release Tag v87-rc1-g1-final未修改
