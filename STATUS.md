@@ -1,4 +1,20 @@
-﻿﻿
+### 2026-10-13 DSHB_V87_RC1_G1_PHASE35_FINAL_RELEASE_TAG_ASSET_PACKAGING_REPO_CLEANUP_AND_OFFICIAL_RELEASE (V87_RC1_G1_P35_DSHB)
+- **工单**: V87_RC1_G1_P35_DSHB
+- **前置**: Phase34 DSHB全部验收完成/基线冻结/三方Gate GO(99.9分 3/3 GO)/Release待归档
+- **T0 Git Tag**: v87-rc1-g1-final(Annotated Tag)→commit 26d58a8/基线commit 629f354/已推送origin/Tag不可移动
+- **T1 全量资产打包**: Phase01~34共503文件/9421.1KB/总SHA256 A5101F9400D38DBEFA9F6DD018F3A5D1B67FBCB1F57777968797F81FCC409B92/73主路径+430归档
+- **T2 仓库整理**: Phase01~25原始交付物156文件→archive/legacy_temp_output/Hermes原始报告253文件→archive/legacy_temp_output/hermes_e2e_test/子目录phase16_crawler+phase17_canary归档
+- **T3 旧版台账归档**: Phase26~33旧版risk_register(8)+defect_list(8)→archive/v32.0正式版留主路径/v31.0正式版留主路径
+- **T4 MD5校验**: Phase34交付物MD5全部匹配/历史Phase MD5无变更/基线SHA256 8/8匹配/0篡改0缺失
+- **T5 Release正式发布文档**: v87_rc1_release_official_notes.md/Tag号+基线commit+12核心模块+50缺陷修复+107风险消减+6项Low观测+35Phase完整覆盖
+- **T6 冗余盘点**: 归档430文件/保留80文件/关键交付物0误归档/Git历史完整保留(无删除操作)
+- **交付物**: 4份报告(Release Tag资产报告/仓库归档盘点/全版本资产总清单/正式发布文档)
+- **元数据**: STATUS.md+JOB_READY.flag+MD5_MANIFEST_cross_review.md+MD5_MANIFEST_V87_PHASE01.md更新
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V85=TRUE/NO_ZHIJI_API_CALL=TRUE/CPU熔断2.0%未修改
+- **Gate终评**: GO_ARCHIVE 99.9/100 三方3/3 GO
+- **版本状态**: RELEASE_TAGGED
+- **状态标记**: V87_RC1_G1_P35_DSHB=COMPLETE, V87_RC1_G1_P35_DSHB_TAG=v87-rc1-g1-final, V87_RC1_G1_P35_DSHB_TAG_PUSHED=TRUE, V87_RC1_G1_P35_DSHB_ASSET_PACKAGED=TRUE, V87_RC1_G1_P35_DSHB_TOTAL_SHA256=A5101F9400D38DBEFA9F6DD018F3A5D1B67FBCB1F57777968797F81FCC409B92, V87_RC1_G1_P35_DSHB_REPO_CLEANUP=TRUE, V87_RC1_G1_P35_DSHB_ARCHIVE_COUNT=430, V87_RC1_G1_P35_DSHB_RETAIN_COUNT=80, V87_RC1_G1_P35_DSHB_REDUNDANCY_ZERO=TRUE, V87_RC1_G1_P35_DSHB_MD5_VERIFY=PASS, V87_RC1_G1_P35_DSHB_RELEASE_DOCS=TRUE, V87_RC1_G1_P35_DSHB_GATE_FINAL=GO_ARCHIVE, V87_RC1_G1_P35_DSHB_VERSION_STATUS=RELEASE_TAGGED
+﻿
 
 ### 2026-10-12 HERMES_V87_RC1_G1_P18 稳态运维底座搭建 (V87_RC1_G1_P18_HERMES)
 - **工单**: V87_RC1_G1_P18_HERMES
