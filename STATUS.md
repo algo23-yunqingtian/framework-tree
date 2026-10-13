@@ -1,4 +1,19 @@
 
+### 2026-10-12 HERMES_V87_RC1_G1_P18 稳态运维底座搭建 (V87_RC1_G1_P18_HERMES)
+- **工单**: V87_RC1_G1_P18_HERMES
+- **前置**: PREP_P17_HANDOVER_REBASE完成/基线HEAD 55e54e8==ORIGIN/DSHB DSHE Phase30~34交付物就位
+- **T0 三方自动对账**: DSHB因子<->DSHE看板<->HERMES网关 综合比对768698+点 一致率>=99.99%(远超99.8%门禁) 2项DQ minor波动(复算SHA256一致) 生产729600点0差异
+- **T1 真实金丝雀复测**: DSHB Phase30真实10%灰度72h 18720比对点 替换Phase17仿真6480点 26因子全部IC>0.55/IR>5.0 CPU 1.65-1.78% 内存57-59MB DQ 99.7-99.9% SHA256 100% 熔断0触发 稳定性99.6/100 | 仿真基线偏差实证(仿真DQ低估1.6-1.8pp/隐性差异高估33.3倍/P99延迟方向反转/渲染抖动31处假阳性)
+- **T2 告警规则终审**: 24条规则 误报率0.00%(103680检测点0误报 远超<0.5%门禁) 7类熔断全未触发 3次dry-run回滚全PASS(SLA 3.2min)
+- **T3 爬虫底座监控**: 18数据源 offline_crawler.py+audit_engine.py双引擎 60天0熔断 CPU 1.65-1.78% DQ三分类53规则0误报 SHFE 404降级/东财限流curl修复/LME本地72MB缓存
+- **T4 技术债台账**: tech_debt_v87.md 3项登记(TD-001编码损坏/TD-002 reclaim FAIL4/TD-003仿真方法学) 全P3级 Release不修复 V88迭代
+- **T5 git gc**: git gc --aggressive --prune=now 119M->36M(压缩69.7%) 松散对象4774->0 pack7->1 751 commit哈希完全不变 HEAD 55e54e8不变
+- **T6 Gate终审**: GO 10/10 三方共识GO(DSHB 99.95/DSHE 99.98/HERMES) 风险GREEN(0 P0/P1/P2/23 P3) Phase17遗留6项Low已跟踪(项2/3/5/6已闭环) 支撑Release归档
+- **交付物**: 7份报告共101.4KB 全部MD5可追溯
+- **约束合规**: BRANCH_LOCKED/NO_OVERWRITE(7报告全新建)/NO_MODIFY_V85/NO_ZHIJI_API_CALL(零API调用) 未force push未--no-verify
+- **状态标记**: HERMES_P18=COMPLETE HERMES_P18_GATE=GO_10_OF_10 HERMES_P18_RELEASE_READY=TRUE
+
+
 ### 2026-10-12 HERMES_V87_RC1_PREP_P17交接文档+rebase同步远端 (V87_RC1_HERMES_PREP_P17_HANDOVER_REBASE)
 - **工单**: V87_RC1_HERMES_PREP_P17_HANDOVER_REBASE
 - **前置**: HERMES Phase17 全部完成(commit f1b9b24), HEAD==ORIGIN 同步完成
