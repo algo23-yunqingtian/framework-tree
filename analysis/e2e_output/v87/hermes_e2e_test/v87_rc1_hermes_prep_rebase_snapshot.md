@@ -240,6 +240,22 @@ rebase 后对 Phase17 全部 10 份产物重新计算 MD5，确认零漂移（NO
 
 ---
 
+## 8.5 rebase 提交阶段的追加事件（本工单提交期间）
+
+提交与推送阶段遇到多 Agent 并发，如实记录处理过程（体现 append-only 与不 force push 原则）：
+
+| # | 事件 | 处置 | 结果 |
+|---|---|---|---|
+| 1 | 首次 `git push` 被拒（non-fast-forward） | 推送期间 DSHB 提交 `629f354`（Phase34 30天720h终版长稳+全量基线交叉审计+Release打包归档），导致本地分支落后 | `git fetch` + `GIT_EDITOR=true git rebase origin` |
+| 2 | rebase 冲突：`MD5_MANIFEST_cross_review.md` | DSHB Phase34 + DSHE Phase34 与本工单 PREP 段在同一文件尾部追加，产生冲突块 | **append-only 铁律**：以字节方式确定性重建——取 `origin` 版本（已含 DSHE Phase33/34）全量 + 本工单 PREP 段追加，**双方区块全保留，零内容丢失** |
+| 3 | 冲突标记清零验证 | `<<<<<<<` / `>>>>>>>` 残留均为 **0**；DSHE_L2_PHASE34（112 行）、DSHE_L2_PHASE33、DSHB_G1_PHASE33、PREP 29 个键、2 个交付物 MD5 全部完整保留 | ✅ 双方内容完整 |
+| 4 | 最终 HEAD | `76dc4f4`，排于 DSHB/DSHE Phase34（`629f354`、`26d58a8`）之上 | **HEAD == ORIGIN == `76dc4f4`** |
+| 5 | 全程约束 | **未使用 force push**、未使用 `--no-verify`、未重写远端历史 | ✅ 合规 |
+
+**注意**：`MD5_MANIFEST_cross_review.md` 存在**历史编码损坏**（文件首行 `# MD5_MANIFEST V87-RC1 总清单` 处的 `V` 为非法 UTF-8 字节 0x3F，且文件混合 CRLF/LF/NEL 三种行终止符）。该损坏为 Phase01 起的历史遗留，**本工单未修改该历史内容**，仅以字节级方式操作冲突标记，历史字节原样保留。建议作为独立技术债工单处理，不应在审计交接类工单内修复。
+
+---
+
 ## 9. 文档变更记录
 
 | 版本 | 日期 | 编制人 | 内容 |
