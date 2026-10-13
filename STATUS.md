@@ -1,4 +1,17 @@
 
+### 2026-10-12 HERMES_V87_RC1_PREP_P17交接文档+rebase同步远端 (V87_RC1_HERMES_PREP_P17_HANDOVER_REBASE)
+- **工单**: V87_RC1_HERMES_PREP_P17_HANDOVER_REBASE
+- **前置**: HERMES Phase17 全部完成(commit f1b9b24), HEAD==ORIGIN 同步完成
+- **T0 Phase17→Phase18交接文档**: 11章/20171B/3AAF9B80MD5, 覆盖工单6项要求(Gate结论GO14/14+三方共识GO+0P0P1P2+6项Low观测/P2闭环+金丝雀审计+729600点对账+SHA256/金丝雀样本放大方法学专章+reclaim FAIL4仅记录/HEAD f1b9b24+origin d08dc0e DSHB Phase33/Phase18前提+责任边界+签名区/附件索引8文档+2引擎), 金丝雀放大方法学单列§3.1附4条局限性明确Phase18须用真实生产流量重新观测
+- **T1 rebase同步远端**: git fetch + GIT_EDITOR=true git rebase origin/feature/v87-rc1-g1@d08dc0e, 同步DSHB/DSHE Phase30~33共8个提交(金丝雀10%灰度Phase30/GA全量放量Phase31/GA 72h值守+30天长稳Phase32/10指标最终验收Phase33), **零冲突**(冲突标记0), HEAD更新至629f354, 远端7新提交为纯新增文件+STATUS/JOB_READY不同位置追加故git三方合并自动成功
+- **T2 环境校验**: HEAD==ORIGIN==629f354完全同步/工作区干净/JOB_READY Phase17全部标记完整保留(HERMES_PHASE17_DECISION=V87_RC1_RELEASE_GO+RISK_LEVEL=GREEN+P2_RISK_CLOSED+JOB_READY+BRANCH_LOCKED)/check_html 266/266 PASS/reclaim PASS=9 FAIL=4与Phase17基线一致(4项FAIL为Phase03~15历史STATUS.md线A表格契约缺失按工单要求不修改历史文件如实保留)/无残留文件锁(acquire返回FORBIDDEN:None系file_write_lock白名单不含本目录的既有约定)
+- **T3 快照报告**: v87_rc1_hermes_prep_rebase_snapshot.md/13862B/C16FDA42MD5, 含Phase17全部10份产物MD5复核(rebase后0漂移确认NO_OVERWRITE生效)+远端提交明细+HEAD提交链
+- **本工单改动范围**: 仅新增2份文档(handover交接文档+快照报告), 零代码/零数据改动, Phase15/16/17产物零覆盖
+- **约束合规**: BRANCH_LOCKED/NO_MODIFY_V85/NO_OVERWRITE/NO_ZHIJI_API_CALL/不修改历史STATUS.md契约段落/未force push/未--no-verify
+- **基线结论**: 基线干净已就绪, 等待Phase18生产上线后稳态运维正式工单启动
+- **状态标记**: HERMES_PREP_P17_HANDOVER=TRUE, HERMES_PREP_P17_HANDOVER_DOC=TRUE, HERMES_PREP_P17_REBASE=TRUE, HERMES_PREP_P17_REBASE_CONFLICTS=0, HERMES_PREP_P17_HEAD_EQ_ORIGIN=TRUE, HERMES_PREP_P17_ENV_VERIFY=PASS, HERMES_PREP_P17_BASELINE_CLEAN=TRUE, HERMES_PREP_P17_PHASE18_READY=TRUE
+
+
 ### 2026-10-12 HERMES_V87_RC1_PHASE17_P2闭环+金丝雀审计+ReleaseGate (HERMES_V87_RC1_PHASE17)
 - **工单**: HERMES_V87_RC1_PHASE17_PHASE16_RISK_FOLLOWUP_CANARY_TRAFFIC_AUDIT_FINAL_THREE_WAY_CONSOLIDATION_RELEASE_GATE_SYNTHESIS
 - **前置**: rebase远端@5c408b7(DSHB/DSHE Phase28-29交付物快进,零冲突) + Phase16基线4e95382(0P0P1/1P2/22P3)
