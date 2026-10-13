@@ -1,0 +1,826 @@
+{
+  "dashboard_metadata": {
+    "name": "DSHE V87 RC1 G1 — 前端7天监控看板",
+    "version": "1.0.0",
+    "date": "2028-05-10",
+    "task_id": "V87_RC1_G1_PREP_7DAY_DSHE",
+    "agent": "DSHE",
+    "branch": "feature/v87-rc1-g1",
+    "baseline_id": "V87-RC1-G1-BASELINE-FRONTEND-20280509",
+    "description": "上线首7天前端可视化监控看板配置 — 覆盖3项关注项+5项核心指标+14指标矩阵+P1/P2/P3三级告警",
+    "constraints": {
+      "BRANCH_LOCKED": true,
+      "NO_OVERWRITE": true,
+      "NO_MODIFY_V85": true,
+      "NO_EDIT_RELEASE_TAG_ASSET": true,
+      "NO_ZHIJI_API_CALL": true
+    }
+  },
+
+  "phase_schedule": [
+    {
+      "phase": "Day1-2",
+      "label": "上线首48h — 高强度监控",
+      "duration_hours": 48,
+      "sample_interval_seconds": 30,
+      "sample_interval_label": "30秒",
+      "intensity": "HIGH",
+      "alert_policy": "全指标告警(P1/P2/P3全开)",
+      "description": "覆盖上线首48小时，30秒粒度高频采集，全部14指标开启告警"
+    },
+    {
+      "phase": "Day3-4",
+      "label": "上线96h — 中强度监控",
+      "duration_hours": 48,
+      "sample_interval_seconds": 300,
+      "sample_interval_label": "5分钟",
+      "intensity": "MEDIUM",
+      "alert_policy": "核心指标告警(P1/P2/P3全开)",
+      "description": "指标趋于稳定，降低采样频率至5分钟，核心指标保持告警"
+    },
+    {
+      "phase": "Day5-7",
+      "label": "上线168h — 低强度监控",
+      "duration_hours": 72,
+      "sample_interval_seconds": 900,
+      "sample_interval_label": "15分钟",
+      "intensity": "LOW",
+      "alert_policy": "汇总告警(P1/P2/P3全开)",
+      "description": "进入稳定期，15分钟粒度汇总采集，转常规监控节奏"
+    }
+  ],
+
+  "metrics_matrix": [
+    {
+      "id": "M1",
+      "name": "Render P99",
+      "description": "前端渲染P99延迟",
+      "unit": "s",
+      "baseline_value": 1.173,
+      "baseline_deviation": "+5.4%",
+      "category": "core",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 1.23, "label": "基线+5%"},
+        "p2": {"operator": ">", "value": 1.46, "label": "基线+25%"},
+        "p1": {"operator": ">", "value": 2.34, "label": "基线+100%"}
+      },
+      "sample_intervals": {"Day1-2": 30, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "frontend_render_metrics"
+    },
+    {
+      "id": "M2",
+      "name": "Query P99",
+      "description": "查询P99延迟 (关注项#1)",
+      "unit": "ms",
+      "baseline_value": 49.8,
+      "baseline_deviation": "+18.6%",
+      "category": "watch_item",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 50.4, "label": "基线+10% (阈值边界)"},
+        "p2": {"operator": ">", "value": 63.0, "label": "基线+30%"},
+        "p1": {"operator": ">", "value": 84.0, "label": "基线+60%"}
+      },
+      "sample_intervals": {"Day1-2": 30, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "query_performance_metrics",
+      "watch_item_note": "Phase36预检关注项 — Query P99偏高18.6%<20%阈值，余量3.0%"
+    },
+    {
+      "id": "M3",
+      "name": "首屏加载P99",
+      "description": "首屏加载P99耗时 (关注项#2)",
+      "unit": "s",
+      "baseline_value": 3.220,
+      "baseline_deviation": "+9.2%",
+      "category": "watch_item",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 3.25, "label": "基线+10% (阈值边界)"},
+        "p2": {"operator": ">", "value": 3.55, "label": "基线+20%"},
+        "p1": {"operator": ">", "value": 4.40, "label": "基线+50%"}
+      },
+      "sample_intervals": {"Day1-2": 30, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "first_paint_metrics",
+      "watch_item_note": "Phase36预检关注项 — 首屏加载9.2%<10%阈值，余量1.0%，02:00-03:00接近阈值边界"
+    },
+    {
+      "id": "M4",
+      "name": "PDF渲染P99",
+      "description": "PDF渲染P99延迟",
+      "unit": "ms",
+      "baseline_value": 113,
+      "baseline_deviation": "-1.7%",
+      "category": "core",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 124, "label": "基线+10%"},
+        "p2": {"operator": ">", "value": 152, "label": "基线+30%"},
+        "p1": {"operator": ">", "value": 226, "label": "基线+100%"}
+      },
+      "sample_intervals": {"Day1-2": 30, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "pdf_render_metrics"
+    },
+    {
+      "id": "M5",
+      "name": "成功率",
+      "description": "前端请求成功率",
+      "unit": "%",
+      "baseline_value": 100,
+      "category": "core",
+      "alert_thresholds": {
+        "p3": {"operator": "<", "value": 99.9, "label": "成功率<99.9%"},
+        "p2": {"operator": "<", "value": 99.0, "label": "成功率<99%"},
+        "p1": {"operator": "<", "value": 95.0, "label": "成功率<95%"}
+      },
+      "sample_intervals": {"Day1-2": 30, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "success_rate_metrics"
+    },
+    {
+      "id": "M6",
+      "name": "错误率",
+      "description": "前端错误率",
+      "unit": "%",
+      "baseline_value": 0,
+      "category": "core",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 0.1, "label": "错误率>0.1%"},
+        "p2": {"operator": ">", "value": 1.0, "label": "错误率>1%"},
+        "p1": {"operator": ">", "value": 5.0, "label": "错误率>5%"}
+      },
+      "sample_intervals": {"Day1-2": 30, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "error_rate_metrics"
+    },
+    {
+      "id": "M7",
+      "name": "超时率",
+      "description": "前端超时率 (>5s)",
+      "unit": "%",
+      "baseline_value": 0,
+      "category": "core",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 0.1, "label": "超时率>0.1%"},
+        "p2": {"operator": ">", "value": 1.0, "label": "超时率>1%"},
+        "p1": {"operator": ">", "value": 5.0, "label": "超时率>5%"}
+      },
+      "sample_intervals": {"Day1-2": 30, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "timeout_rate_metrics"
+    },
+    {
+      "id": "M8",
+      "name": "渲染抖动率",
+      "description": "渲染抖动率 (关注项#3)",
+      "unit": "%",
+      "baseline_value": 0.005,
+      "category": "watch_item",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 0.01, "label": "抖动率>0.01%"},
+        "p2": {"operator": ">", "value": 0.1, "label": "抖动率>0.1%"},
+        "p1": {"operator": ">", "value": 1.0, "label": "抖动率>1%"}
+      },
+      "sample_intervals": {"Day1-2": 3600, "Day3-4": 3600, "Day5-7": 3600},
+      "data_source": "render_jitter_metrics",
+      "watch_item_note": "Phase36预检噪声 — 1次渲染抖动(0.005%), 缓存未命中回源, 0.32s自动恢复"
+    },
+    {
+      "id": "M9",
+      "name": "冷启动报错",
+      "description": "前端冷启动报错次数",
+      "unit": "次",
+      "baseline_value": 0,
+      "category": "core",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 0, "label": "报错>0次"},
+        "p2": {"operator": ">", "value": 5, "label": "报错>5次"},
+        "p1": {"operator": ">", "value": 20, "label": "报错>20次"}
+      },
+      "sample_intervals": {"Day1-2": 3600, "Day3-4": 3600, "Day5-7": 3600},
+      "data_source": "cold_start_metrics"
+    },
+    {
+      "id": "M10",
+      "name": "索引膨胀D60",
+      "description": "索引膨胀D60预测天数",
+      "unit": "天",
+      "baseline_value": 12,
+      "baseline_margin": "150%",
+      "category": "index_bloat",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 15, "label": "D60>15天"},
+        "p2": {"operator": ">", "value": 20, "label": "D60>20天"},
+        "p1": {"operator": ">", "value": 25, "label": "D60>25天"}
+      },
+      "sample_intervals": {"Day1-2": 86400, "Day3-4": 86400, "Day5-7": 86400},
+      "data_source": "index_metadata_query",
+      "safe_threshold": "<30天(SAFE)"
+    },
+    {
+      "id": "M11",
+      "name": "索引膨胀D90",
+      "description": "索引膨胀D90预测天数",
+      "unit": "天",
+      "baseline_value": 35,
+      "baseline_margin": "157%",
+      "category": "index_bloat",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 45, "label": "D90>45天"},
+        "p2": {"operator": ">", "value": 60, "label": "D90>60天"},
+        "p1": {"operator": ">", "value": 80, "label": "D90>80天"}
+      },
+      "sample_intervals": {"Day1-2": 86400, "Day3-4": 86400, "Day5-7": 86400},
+      "data_source": "index_metadata_query",
+      "safe_threshold": "<90天(SAFE)"
+    },
+    {
+      "id": "M12",
+      "name": "索引膨胀D365",
+      "description": "索引膨胀D365预测天数",
+      "unit": "天",
+      "baseline_value": 365,
+      "baseline_margin": "100%",
+      "category": "index_bloat",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 390, "label": "D365>390天"},
+        "p2": {"operator": ">", "value": 430, "label": "D365>430天"},
+        "p1": {"operator": ">", "value": 480, "label": "D365>480天"}
+      },
+      "sample_intervals": {"Day1-2": 86400, "Day3-4": 86400, "Day5-7": 86400},
+      "data_source": "index_metadata_query",
+      "safe_threshold": "<365天(SAFE)"
+    },
+    {
+      "id": "M13",
+      "name": "缓存命中率",
+      "description": "前端缓存命中率",
+      "unit": "%",
+      "baseline_value": 95,
+      "category": "core",
+      "alert_thresholds": {
+        "p3": {"operator": "<", "value": 90, "label": "命中率<90%"},
+        "p2": {"operator": "<", "value": 80, "label": "命中率<80%"},
+        "p1": {"operator": "<", "value": 70, "label": "命中率<70%"}
+      },
+      "sample_intervals": {"Day1-2": 300, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "cache_hit_metrics"
+    },
+    {
+      "id": "M14",
+      "name": "02-03负载指数",
+      "description": "02:00-03:00时段负载指数 (关注项负载敏感)",
+      "unit": "指数",
+      "baseline_value": 523,
+      "category": "watch_item",
+      "alert_thresholds": {
+        "p3": {"operator": ">", "value": 550, "label": "负载>550"},
+        "p2": {"operator": ">", "value": 600, "label": "负载>600"},
+        "p1": {"operator": ">", "value": 700, "label": "负载>700"}
+      },
+      "sample_intervals": {"Day1-2": 300, "Day3-4": 300, "Day5-7": 900},
+      "data_source": "load_index_metrics",
+      "watch_item_note": "Phase36预检关注项 — 02:00-03:00时段并发峰值523人, Query P99 51ms偏高"
+    }
+  ],
+
+  "watch_items_summary": [
+    {
+      "id": "WI-001",
+      "name": "Query P99偏高",
+      "severity": "WATCH",
+      "current_value": "49.8ms",
+      "baseline": "42ms",
+      "deviation": "+18.6%",
+      "threshold": "<20% (<50.4ms)",
+      "margin": "3.0%",
+      "monitor_metric": "M2",
+      "recommendation": "上线后72h持续观测, 如>50.4ms持续>1h则缓存预热+索引优化"
+    },
+    {
+      "id": "WI-002",
+      "name": "首屏加载接近阈值",
+      "severity": "WATCH",
+      "current_value": "3.220s",
+      "baseline": "2.95s",
+      "deviation": "+9.2%",
+      "threshold": "<10% (<3.25s)",
+      "margin": "1.0%",
+      "monitor_metric": "M3",
+      "recommendation": "上线后72h持续观测, 如>3.25s持续>1h则CDN预热+资源预加载"
+    },
+    {
+      "id": "WI-003",
+      "name": "02:00-03:00负载敏感",
+      "severity": "WATCH",
+      "current_value": "523人峰值",
+      "baseline": "500人",
+      "deviation": "+4.6%",
+      "threshold": "Query P99 <50.4ms",
+      "margin": "3.0%",
+      "monitor_metric": "M14",
+      "recommendation": "上线后峰值时段(02-03)重点观测, 如负载>550则关注缓存命中率"
+    }
+  ],
+
+  "upgrade_strategies": [
+    {
+      "trigger": "任一项P1告警",
+      "action": "启动全量回滚(ROLLBACK-01)",
+      "sla_minutes": 5,
+      "escalation": "立即升级至P1响应团队",
+      "description": "指标严重偏离基线，启动全量回滚恢复基线状态"
+    },
+    {
+      "trigger": "任一项P2告警持续>30min",
+      "action": "启动部分回滚(ROLLBACK-02/03)",
+      "sla_minutes": 15,
+      "escalation": "评估升级至P1",
+      "description": "指标中度偏离，部分回滚+根因分析"
+    },
+    {
+      "trigger": "多项P3告警同时触发",
+      "action": "升级至P2评估",
+      "sla_minutes": 15,
+      "escalation": "评估升级至P1",
+      "description": "多个轻度异常同时出现，可能预示系统性问题"
+    },
+    {
+      "trigger": "Query P99 > 50.4ms 持续>1h",
+      "action": "缓存预热+索引优化",
+      "sla_minutes": 30,
+      "escalation": "如优化后仍>50.4ms则升级至P2",
+      "description": "关注项#1专项响应 — 缓存预热优先，索引Vacuum备选"
+    },
+    {
+      "trigger": "首屏加载 > 3.25s 持续>1h",
+      "action": "CDN预热+资源预加载",
+      "sla_minutes": 30,
+      "escalation": "如优化后仍>3.25s则升级至P2",
+      "description": "关注项#2专项响应 — CDN预热+JS/CSS资源预加载优化"
+    },
+    {
+      "trigger": "渲染抖动率 > 0.01% 持续>1h",
+      "action": "缓存扩容+渲染优化",
+      "sla_minutes": 30,
+      "escalation": "如优化后仍>0.01%则升级至P2",
+      "description": "关注项#3专项响应 — 缓存扩容优先，渲染引擎优化备选"
+    }
+  ],
+
+  "rollback_sop_references": [
+    {
+      "script_id": "ROLLBACK-01",
+      "name": "全量回滚",
+      "duration_minutes": 1.5,
+      "sla_minutes": 5,
+      "trigger_condition": "任一项P1告警",
+      "scripts": 6,
+      "steps": 8,
+      "metrics_verified": 10,
+      "status": "PASS"
+    },
+    {
+      "script_id": "ROLLBACK-02",
+      "name": "部分回滚-看板",
+      "duration_minutes": 1.2,
+      "sla_minutes": 15,
+      "trigger_condition": "P2告警持续>30min",
+      "scripts": 3,
+      "steps": 5,
+      "metrics_verified": 6,
+      "status": "PASS"
+    },
+    {
+      "script_id": "ROLLBACK-03",
+      "name": "部分回滚-PDF",
+      "duration_minutes": 0.8,
+      "sla_minutes": 15,
+      "trigger_condition": "P2告警持续>30min",
+      "scripts": 3,
+      "steps": 4,
+      "metrics_verified": 4,
+      "status": "PASS"
+    }
+  ],
+
+  "index_bloat_auto_validation": {
+    "description": "索引膨胀D60/D90/D365自动持续校验规则",
+    "schedule": "每日1次 (08:00 UTC)",
+    "validation_rules": [
+      {
+        "id": "IBV-001",
+        "metric": "D60",
+        "safe_threshold": "<30天",
+        "p3_warning": "12-15天",
+        "p2_warning": "15-20天",
+        "p1_critical": ">20天",
+        "current_value": 12,
+        "margin_percent": 150,
+        "status": "SAFE",
+        "cusum_linear_p": 0.82,
+        "linear_stable": true,
+        "daily_growth_rate": "0.006%/day"
+      },
+      {
+        "id": "IBV-002",
+        "metric": "D90",
+        "safe_threshold": "<90天",
+        "p3_warning": "35-45天",
+        "p2_warning": "45-60天",
+        "p1_critical": ">60天",
+        "current_value": 35,
+        "margin_percent": 157,
+        "status": "SAFE",
+        "cusum_linear_p": 0.82,
+        "linear_stable": true,
+        "daily_growth_rate": "0.006%/day"
+      },
+      {
+        "id": "IBV-003",
+        "metric": "D365",
+        "safe_threshold": "<365天",
+        "p3_warning": "365-390天",
+        "p2_warning": "390-430天",
+        "p1_critical": ">430天",
+        "current_value": 365,
+        "margin_percent": 100,
+        "status": "SAFE",
+        "cusum_linear_p": 0.82,
+        "linear_stable": true,
+        "daily_growth_rate": "0.006%/day"
+      }
+    ],
+    "observation_ledger": {
+      "description": "上线后Day0-Day30观测台账",
+      "columns": [
+        "day_number",
+        "index_size_mb",
+        "d60_days",
+        "d90_days",
+        "d365_days",
+        "cusum_p_value",
+        "daily_growth_pct",
+        "status",
+        "remark"
+      ],
+      "initial_entry": {
+        "day_number": 0,
+        "label": "Day0 (上线前)",
+        "index_size_mb": 11.75,
+        "d60_days": 12,
+        "d90_days": 35,
+        "d365_days": 365,
+        "cusum_p_value": 0.82,
+        "daily_growth_pct": 0.006,
+        "status": "SAFE",
+        "remark": "Phase36预检终确值, FINAL_GATE终确"
+      }
+    }
+  },
+
+  "pdf_sampling_validation": {
+    "description": "PDF批量自动抽样渲染校验规则",
+    "schedule": "每日1次 (09:00 UTC) + 每4小时快速抽样",
+    "full_coverage": {
+      "template_count": 19,
+      "sample_per_template": 3,
+      "total_daily_samples": 57,
+      "fast_sample_interval_hours": 4,
+      "fast_sample_count": 5
+    },
+    "validation_dimensions": [
+      {
+        "id": "PDF-VAL-001",
+        "name": "数值校验",
+        "description": "数值精度/缺失/格式/计算错误",
+        "items_per_sample": 3.89,
+        "total_daily_items": 222,
+        "pass_threshold": "100%"
+      },
+      {
+        "id": "PDF-VAL-002",
+        "name": "配色校验",
+        "description": "WCAG 2.1 AA合规/颜色区分度>=30%/跨浏览器一致性",
+        "items_per_sample": 2.26,
+        "total_daily_items": 129,
+        "pass_threshold": "100%"
+      },
+      {
+        "id": "PDF-VAL-003",
+        "name": "排版校验",
+        "description": "表格对齐/字体渲染/图表嵌入/分页/页眉页脚",
+        "items_per_sample": 11.1,
+        "total_daily_items": 633,
+        "pass_threshold": "100%"
+      },
+      {
+        "id": "PDF-VAL-004",
+        "name": "后端对齐校验",
+        "description": "数据一致率/数据延迟<5s/数据格式一致",
+        "items_per_sample": 5.08,
+        "total_daily_items": 290,
+        "pass_threshold": "100%"
+      }
+    ],
+    "regression_rules": [
+      {
+        "condition": "数值回归 > 0",
+        "severity": "P3",
+        "action": "标记WARN + 通知DSHE"
+      },
+      {
+        "condition": "配色回归 > 0",
+        "severity": "P3",
+        "action": "标记WARN + 通知DSHE"
+      },
+      {
+        "condition": "排版回归 > 0",
+        "severity": "P3",
+        "action": "标记WARN + 通知DSHE"
+      },
+      {
+        "condition": "任何回归 > 3",
+        "severity": "P2",
+        "action": "升级至P2评估 + SLA<15min"
+      },
+      {
+        "condition": "任何回归 > 10",
+        "severity": "P1",
+        "action": "启动回滚(ROLLBACK-03) + SLA<5min"
+      }
+    ],
+    "performance_thresholds": {
+      "render_p99_baseline_ms": 113,
+      "render_p99_p3": 124,
+      "render_p99_p2": 152,
+      "render_p99_p1": 226,
+      "export_success_rate_baseline": 100,
+      "export_success_rate_p3": 99.9,
+      "export_success_rate_p2": 99.0,
+      "export_success_rate_p1": 95.0
+    }
+  },
+
+  "alert_output_format": {
+    "description": "告警事件JSON输出格式定义",
+    "schema": {
+      "alert_id": "string — 告警唯一标识 (如 ALERT_QUERY_P99_P3)",
+      "description": "string — 告警描述 (含当前值/阈值/基线)",
+      "severity": "string — P1|P2|P3",
+      "timestamp": "string — ISO 8601时间戳",
+      "metric_name": "string — 关联指标ID (M1-M14)",
+      "metric_value": "number — 当前采集值",
+      "threshold_value": "number — 触发阈值",
+      "baseline_value": "number — 基线参考值",
+      "deviation_percent": "number — 偏差百分比",
+      "baseline_reference": "string — 基线ID",
+      "upgrade_strategy": "string — 对应升级策略",
+      "action_required": "string — 需执行动作",
+      "sla_minutes": "integer — SLA响应时间(分钟)",
+      "source_script": "string — 采集脚本名称",
+      "source_version": "string — 脚本版本",
+      "task_id": "string — 任务ID",
+      "agent": "string — 执行Agent",
+      "branch": "string — 分支名",
+      "day_phase": "integer — Day阶段(1-7)",
+      "intensity": "string — 采集强度(HIGH|MEDIUM|LOW)"
+    },
+    "output_directory": "/tmp/dshe_v87_collector/alerts/",
+    "alert_file_pattern": "alert_{severity}_{timestamp}_{alert_id}.json"
+  },
+
+  "event_tracking_schema": {
+    "description": "前端故障事件埋点与上报链路定义",
+    "event_types": [
+      {
+        "type": "COLD_START_ERROR",
+        "description": "冷启动报错 (JS/CSS资源加载失败/Mermaid解析错误/数据格式异常/组件初始化失败)",
+        "collection_frequency": "每小时",
+        "reporting_method": "前端埋点SDK -> 事件总线 -> 告警引擎",
+        "baseline_value": 0,
+        "thresholds": {"p3": ">0", "p2": ">5", "p1": ">20"},
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "error_type",
+          "error_message",
+          "error_stack",
+          "user_agent",
+          "page_url",
+          "load_time_ms",
+          "is_cold_start",
+          "browser_version",
+          "os_type"
+        ]
+      },
+      {
+        "type": "RENDER_JITTER",
+        "description": "渲染抖动 (图表闪烁/重绘延迟)",
+        "collection_frequency": "每小时",
+        "reporting_method": "前端埋点SDK -> 事件总线 -> 告警引擎",
+        "baseline_rate": "0.005%",
+        "thresholds": {"p3": ">0.01%", "p2": ">0.1%", "p1": ">1%"},
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "jitter_duration_ms",
+          "render_object_id",
+          "render_object_type",
+          "cache_hit",
+          "auto_recovered",
+          "recovery_time_ms",
+          "user_impact"
+        ]
+      },
+      {
+        "type": "FRONTEND_TIMEOUT",
+        "description": "前端超时 (API请求/Mermaid渲染/PDF导出/图表交互/页面加载)",
+        "collection_frequency": "实时",
+        "reporting_method": "前端埋点SDK -> 事件总线 -> 告警引擎",
+        "baseline_value": 0,
+        "thresholds": {"p3": ">0.1%", "p2": ">1%", "p1": ">5%"},
+        "timeout_threshold_seconds": 5,
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "timeout_type",
+          "timeout_duration_ms",
+          "target_resource",
+          "request_id",
+          "user_agent",
+          "page_url"
+        ]
+      },
+      {
+        "type": "RENDER_P99_SPIKE",
+        "description": "渲染P99延迟飙升",
+        "collection_frequency": "30s/5min/15min",
+        "reporting_method": "采集脚本 -> 指标时序库 -> 告警引擎",
+        "baseline_value_ms": 1173,
+        "thresholds": {"p3": ">1230ms", "p2": ">1460ms", "p1": ">2340ms"},
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "p99_value_ms",
+          "p50_value_ms",
+          "p90_value_ms",
+          "sample_count",
+          "threshold_triggered",
+          "severity"
+        ]
+      },
+      {
+        "type": "QUERY_P99_SPIKE",
+        "description": "查询P99延迟飙升 (关注项#1)",
+        "collection_frequency": "30s/5min/15min",
+        "reporting_method": "采集脚本 -> 指标时序库 -> 告警引擎",
+        "baseline_value_ms": 49.8,
+        "thresholds": {"p3": ">50.4ms", "p2": ">63ms", "p1": ">84ms"},
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "p99_value_ms",
+          "p50_value_ms",
+          "p90_value_ms",
+          "sample_count",
+          "cache_hit_rate",
+          "concurrent_users",
+          "threshold_triggered",
+          "severity"
+        ]
+      },
+      {
+        "type": "FIRST_PAINT_SPIKE",
+        "description": "首屏加载P99飙升 (关注项#2)",
+        "collection_frequency": "30s/5min/15min",
+        "reporting_method": "采集脚本 -> 指标时序库 -> 告警引擎",
+        "baseline_value_s": 3.220,
+        "thresholds": {"p3": ">3.25s", "p2": ">3.55s", "p1": ">4.40s"},
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "p99_value_s",
+          "p50_value_s",
+          "p90_value_s",
+          "html_parse_ms",
+          "css_load_ms",
+          "js_load_ms",
+          "api_request_ms",
+          "chart_render_ms",
+          "threshold_triggered",
+          "severity"
+        ]
+      },
+      {
+        "type": "PDF_REGRESSION",
+        "description": "PDF渲染回归事件",
+        "collection_frequency": "每日1次",
+        "reporting_method": "PDF抽样脚本 -> 校验引擎 -> 告警引擎",
+        "baseline_regression": 0,
+        "thresholds": {"p3": ">0", "p2": ">3", "p1": ">10"},
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "template_id",
+          "regression_type",
+          "regression_count",
+          "sample_count",
+          "affected_pages",
+          "severity"
+        ]
+      },
+      {
+        "type": "INDEX_BLOAT_ANOMALY",
+        "description": "索引膨胀异常事件",
+        "collection_frequency": "每日1次",
+        "reporting_method": "索引校验脚本 -> 指标时序库 -> 告警引擎",
+        "baseline_d60": 12,
+        "thresholds": {"p3": "D60>15天", "p2": "D60>20天", "p1": "D60>25天"},
+        "event_fields": [
+          "event_id",
+          "timestamp",
+          "d60_days",
+          "d90_days",
+          "d365_days",
+          "index_size_mb",
+          "daily_growth_pct",
+          "cusum_p_value",
+          "linear_stable",
+          "threshold_triggered",
+          "severity"
+        ]
+      }
+    ],
+    "event_persistence": {
+      "hot_storage": "Redis (7天热数据)",
+      "warm_storage": "ClickHouse (30天温数据)",
+      "cold_storage": "S3 (90天冷数据)",
+      "retention_policy": "热数据7天/温数据30天/冷数据90天",
+      "query_api": "/api/v1/events?event_type=&severity=&from=&to="
+    },
+    "alert_persistence": {
+      "alert_log": "/tmp/dshe_v87_collector/alerts/",
+      "alert_summary": "/tmp/dshe_v87_collector/reports/alert_summary_YYYYMMDD.txt",
+      "daily_digest": "每日18:00 UTC生成当日告警汇总"
+    }
+  },
+
+  "fault_event_tracking_verification": {
+    "description": "前端故障埋点与事件上报链路验证",
+    "verification_status": "PASS",
+    "verification_date": "2028-05-10",
+    "rollback_sop_coverage": {
+      "total_sop": 8,
+      "covered": 8,
+      "coverage_percent": 100
+    },
+    "event_collection_chain": [
+      {"step": 1, "component": "前端埋点SDK", "status": "PASS", "description": "JS/CSS加载失败/Mermaid解析/渲染抖动/超时/冷启动事件埋点就绪"},
+      {"step": 2, "component": "事件总线(Kafka)", "status": "PASS", "description": "事件总线通道畅通, 事件消费延迟<100ms"},
+      {"step": 3, "component": "指标时序库(Prometheus)", "status": "PASS", "description": "时序指标采集入库, 30s粒度数据完整"},
+      {"step": 4, "component": "告警引擎", "status": "PASS", "description": "P1/P2/P3三级告警规则配置完成, 阈值校验通过"},
+      {"step": 5, "component": "告警通知", "status": "PASS", "description": "通知渠道(企业微信/邮件)配置完成, 告警通知延迟<30s"},
+      {"step": 6, "component": "回滚脚本", "status": "PASS", "description": "6脚本+8步骤+10指标+3演练全部封存完整, MD5一致"},
+      {"step": 7, "component": "回滚触发", "status": "PASS", "description": "回滚触发状态FALSE, 触发链路验证8/8 PASS"},
+      {"step": 8, "component": "回滚SLA", "status": "PASS", "description": "SLA<5min, 演练3/3 PASS(1.5min/1.2min/0.8min)"}
+    ],
+    "rollback_scripts_verified": [
+      {"script": "full_rollback.sh", "steps": 8, "drill_duration_min": 1.5, "status": "PASS"},
+      {"script": "partial_rollback_dashboard.sh", "steps": 5, "drill_duration_min": 1.2, "status": "PASS"},
+      {"script": "partial_rollback_pdf.sh", "steps": 4, "drill_duration_min": 0.8, "status": "PASS"},
+      {"script": "config_rollback.sh", "steps": 3, "drill_duration_min": 0.8, "status": "PASS"},
+      {"script": "db_rollback.sh", "steps": 4, "drill_duration_min": 1.0, "status": "PASS"},
+      {"script": "rollback_verify.sh", "steps": 2, "drill_duration_min": 0.5, "status": "PASS"}
+    ],
+    "rollback_metrics_verified": [
+      {"metric": "render_p99", "baseline": "1.173s", "threshold_p3": "1.23s", "threshold_p1": "2.34s", "rollback_verified": true},
+      {"metric": "query_p99", "baseline": "49.8ms", "threshold_p3": "50.4ms", "threshold_p1": "84ms", "rollback_verified": true},
+      {"metric": "fpl_p99", "baseline": "3.220s", "threshold_p3": "3.25s", "threshold_p1": "4.40s", "rollback_verified": true},
+      {"metric": "pdf_render_p99", "baseline": "113ms", "threshold_p3": "124ms", "threshold_p1": "226ms", "rollback_verified": true},
+      {"metric": "success_rate", "baseline": "100%", "threshold_p3": "99.9%", "threshold_p1": "95%", "rollback_verified": true},
+      {"metric": "error_rate", "baseline": "0%", "threshold_p3": "0.1%", "threshold_p1": "5%", "rollback_verified": true},
+      {"metric": "timeout_rate", "baseline": "0%", "threshold_p3": "0.1%", "threshold_p1": "5%", "rollback_verified": true},
+      {"metric": "render_jitter_rate", "baseline": "0.005%", "threshold_p3": "0.01%", "threshold_p1": "1%", "rollback_verified": true},
+      {"metric": "cold_start_error", "baseline": "0", "threshold_p3": ">0", "threshold_p1": ">20", "rollback_verified": true},
+      {"metric": "cache_hit_rate", "baseline": "95%", "threshold_p3": "90%", "threshold_p1": "70%", "rollback_verified": true}
+    ],
+    "sop_mapping": [
+      {"sop_id": "SOP-001", "name": "前端服务不可用", "mapping": "ROLLBACK-01", "event_types": ["FRONTEND_TIMEOUT", "COLD_START_ERROR"], "verified": true},
+      {"sop_id": "SOP-002", "name": "看板渲染异常", "mapping": "ROLLBACK-02", "event_types": ["RENDER_P99_SPIKE", "RENDER_JITTER"], "verified": true},
+      {"sop_id": "SOP-003", "name": "PDF导出失败", "mapping": "ROLLBACK-03", "event_types": ["PDF_REGRESSION"], "verified": true},
+      {"sop_id": "SOP-004", "name": "查询超时", "mapping": "ROLLBACK-01", "event_types": ["QUERY_P99_SPIKE", "FRONTEND_TIMEOUT"], "verified": true},
+      {"sop_id": "SOP-005", "name": "首屏加载缓慢", "mapping": "ROLLBACK-02", "event_types": ["FIRST_PAINT_SPIKE"], "verified": true},
+      {"sop_id": "SOP-006", "name": "缓存击穿", "mapping": "ROLLBACK-01", "event_types": ["RENDER_P99_SPIKE", "QUERY_P99_SPIKE"], "verified": true},
+      {"sop_id": "SOP-007", "name": "索引膨胀告警", "mapping": "ROLLBACK-01", "event_types": ["INDEX_BLOAT_ANOMALY"], "verified": true},
+      {"sop_id": "SOP-008", "name": "Mermaid渲染失败", "mapping": "ROLLBACK-02", "event_types": ["RENDER_JITTER", "COLD_START_ERROR"], "verified": true}
+    ]
+  },
+
+  "baseline_integrity": {
+    "description": "829项冻结基线MD5完整性验证",
+    "baseline_id": "V87-RC1-G1-BASELINE-FRONTEND-20280509",
+    "total_items": 829,
+    "md5_pass": 829,
+    "md5_fail": 0,
+    "pass_rate": "100%",
+    "modifications": 0,
+    "archive_total": 930,
+    "archive_integrity": "100%",
+    "tag_locked": "v87-rc1-g1-final",
+    "status": "PASS"
+  }
+}
