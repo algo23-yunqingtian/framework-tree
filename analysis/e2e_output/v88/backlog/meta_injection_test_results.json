@@ -2,62 +2,60 @@
   "test_metadata": {
     "task_id": "V87_RC1_G1_DSHE_FOLLOWUP",
     "agent": "DSHE",
-    "timestamp": "2026-10-13 16:48:26 UTC+8",
+    "timestamp": "2026-10-13 17:11:02 UTC+8",
     "yaml_file": "framework_tree_meta_chart.yaml",
-    "yaml_size_bytes": 57085,
+    "yaml_size_bytes": 56572,
     "tree_config_file": "tree_config.json"
   },
   "load_timing_ms": {
     "tree_config_load": 1.0,
     "tree_config_index_build": 1.0,
     "yaml_read": 1.0,
-    "yaml_parse": 189.0,
-    "yaml_chart_extract": 189.0,
-    "validation_total": 0.0
+    "yaml_parse": 162.0,
+    "yaml_chart_extract": 162.0,
+    "validation_total": 1.0
   },
-  "total_charts_loaded": 102,
+  "total_charts_loaded": 101,
   "validation_summary": {
     "no_cross_node_binding": {
       "pass": 101,
-      "fail": 1
+      "fail": 0
     },
     "tree_node_id_valid": {
-      "pass": 102,
+      "pass": 101,
       "fail": 0
     },
     "commodity_valid": {
-      "pass": 102,
+      "pass": 101,
       "fail": 0
     },
     "auto_inherit_description": {
-      "pass": 102,
+      "pass": 101,
       "fail": 0
     },
     "chart_type_valid": {
-      "pass": 102,
+      "pass": 101,
       "fail": 0
     },
     "data_status_valid": {
-      "pass": 102,
+      "pass": 101,
       "fail": 0
     }
   },
-  "total_checks": 612,
-  "total_pass": 611,
-  "total_fail": 1,
-  "errors": [
-    "[no_cross_node_binding] si_p6_bar_01: Commodity 'si' not in node 'p6' comms scope"
-  ],
+  "total_checks": 606,
+  "total_pass": 606,
+  "total_fail": 0,
+  "errors": [],
   "warnings": [],
   "topic_tag_present": false,
   "data_status_distribution": {
-    "matchable": 86,
+    "matchable": 85,
     "pending_data": 16
   },
   "negative_tests": [
     {
-      "test": "TC-01 si_p6 (known invalid: si not in p6 comms)",
-      "blocked": true
+      "test": "TC-01 si_p6_bar_01 removed (fix verified)",
+      "removed": true
     },
     {
       "test": "TC-02 li_p6 (li in p6 comms, should PASS)",

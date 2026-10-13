@@ -1563,22 +1563,6 @@ charts:
     weekly_render: true
     pdf_template: "weekly_price_valuation"
 
-  - chart_id: "si_p6_bar_01"
-    tree_node_id: "p6"
-    commodity: "si"
-    chart_type: "stacked_bar"
-    title: "硅 持仓席位观察 多空前20"
-    indicators:
-      - indicator_name: "多头前20"
-        indicator_id: "SI_TOP20_LONG"
-      - indicator_name: "空头前20"
-        indicator_id: "SI_TOP20_SHORT"
-    data_status: "matchable"
-    business_description: "持仓席位观察(多空前20)"
-    render_priority: 1
-    weekly_render: true
-    pdf_template: "weekly_position_rank"
-
   # ===========================================================================
   # 库存 (i1-i5) — 代表性图表
   # ===========================================================================

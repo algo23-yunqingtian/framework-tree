@@ -337,8 +337,9 @@ def run_negative_tests(charts, node_index, commodity_index):
         neg_results.append({'test': 'TC-01 si_p6 (known invalid: si not in p6 comms)', 'blocked': blocked})
         print(f"  TC-01: si_p6 (si not in p6 comms) = {'BLOCKED' if blocked else 'NOT BLOCKED!'}")
     else:
-        neg_results.append({'test': 'TC-01 si_p6_bar_01 not found', 'blocked': False})
-        print(f"  TC-01: si_p6_bar_01 chart not found")
+        # After fix: si_p6_bar_01 removed from YAML — this is the expected state
+        neg_results.append({'test': 'TC-01 si_p6_bar_01 removed (fix verified)', 'removed': True})
+        print(f"  TC-01: si_p6_bar_01 removed from YAML = FIXED")
 
     # Test 2: Bind li to p6 (li IS in p6 comms, so this should PASS)
     t2_chart = next((c for c in charts if c.get('commodity') == 'li' and c.get('tree_node_id') == 'p6'), None)

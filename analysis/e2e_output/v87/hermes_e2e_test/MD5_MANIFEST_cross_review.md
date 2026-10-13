@@ -2396,7 +2396,21 @@ JOB_READY=TRUE### 2028-05-18 V87_RC1_G1_DSHB_V88_BACKLOG_FILL DSHB V88åç«¯Back
   1. analysis/e2e_output/v88/backlog/deliverables/v88_dshb_backlog_framework_tree_data_crawl_spec.md (24179 bytes, MD5: B6A65206)
   2. analysis/e2e_output/v88/backlog/deliverables/v88_dshb_backlog_missing_indicator_list.md (20640 bytes, MD5: 16D2BD13)
 - ä¿®æ”¹æ–‡ä»¶:
-  1. STATUS.md (è¿½åŠ æœ¬æ¬¡çŠ¶æ€æ ‡è®°)
-  2. JOB_READY.flag (è¿½åŠ æœ¬æ¬¡çŠ¶æ€æ ‡è®°)
+  1. STATUS.md (è¿½åŠ æœ¬æ¬¡çŠ¶æ€æ ‡è®?
+  2. JOB_READY.flag (è¿½åŠ æœ¬æ¬¡çŠ¶æ€æ ‡è®?
 - çº¦æŸ: BRANCH_LOCKED/NO_OVERWRITE/NO_MODIFY_V85/NO_EDIT_RELEASE_TAG_ASSET/NO_ZHIJI_API 9/9åˆè§„
-- åŸºçº¿829é¡¹MD5ä¸å˜ | Release Tag v87-rc1-g1-finalæœªä¿®æ”¹
+- åŸºçº¿829é¡¹MD5ä¸å˜ | Release Tag v87-rc1-g1-finalæœªä¿®æ”?
+
+## V87-RC1-G1 DSHE_FIX_META_SI_ISSUE ½»¸¶Îï¹şÏ£ (2028-05-18)
+
+| ÎÄ¼ş | MD5 | ´óĞ¡(B) | ²Ù×÷ |
+|------|:---:|:-------:|:----:|
+| framework_tree_meta_chart.yaml | 29713F5FEE17B6BC59B508B3A4F7C059 | 56572 | ĞŞ¸Ä(si_p6_bar_01ÒÆ³ı) |
+| test_meta_injection.py | B10CBC6580656C751264B4CD11BFBC86 | 21719 | ĞŞ¸Ä(TC-01¸üĞÂ) |
+| meta_injection_test_results.json | 88B352922CC9A30321546B39589BF998 | 1900 | ÖØÅÜ(0 ERROR) |
+| v88_dshe_framework_meta_load_verify_report.md | 2C1CEE260207D29D917E5F455F3669DB | 12526 | ¸üĞÂ(FIX-01¼ÇÂ¼) |
+| v88_dshe_backlog_framework_tree_meta_refactor_report.md | 12B8BB2184368A42A2DE6E00392E4B44 | 13306 | ¸üĞÂ(PR-01±Õ»·) |
+| STATUS.md | (×·¼Ó) | ¡ª | ×·¼Ó×´Ì¬¼ÇÂ¼ |
+| JOB_READY.flag | (×·¼Ó) | ¡ª | ×·¼Ókey=value |
+
+**ĞŞ¸´ÑéÖ¤:** 606/606 PASS, 0 ERROR, 7/7¸ºÏò²âÊÔ | **Gating:** P0È«²¿±Õ»·(6/8)

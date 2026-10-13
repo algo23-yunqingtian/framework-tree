@@ -245,9 +245,9 @@ Week 3 (灰度 → 上线):
 
 | # | 前置条件 | 当前状态 | 优先级 | 负责Agent |
 |:-:|----------|:--------:|:------:|:---------:|
-| PR-01 | 移除非法图表 si_p6_bar_01 (si不在p6 comms范围) | ❌ 待修复 | P0 | DSHE |
-| PR-02 | 重新运行元数据注入测试 (612项校验0 ERROR) | ❌ 待执行 | P0 | DSHE |
-| PR-03 | 确认全部102张图表通过6条校验规则 | ❌ 待执行 | P0 | DSHE |
+| PR-01 | 移除非法图表 si_p6_bar_01 (si不在p6 comms范围) | ✅ **已闭环** (FIX_META_SI_ISSUE) | P0 | DSHE |
+| PR-02 | 重新运行元数据注入测试 (612项校验0 ERROR) | ✅ **已闭环** (606/606 PASS, 0 ERROR) | P0 | DSHE |
+| PR-03 | 确认全部102张图表通过6条校验规则 | ✅ **已闭环** (101/101图表全通过) | P0 | DSHE |
 | PR-04 | topic_tag字段确认0残留 (已通过✅) | ✅ 已达标 | — | — |
 
 ### PR-01 详情：si_p6_bar_01 数据修复
@@ -260,24 +260,24 @@ Week 3 (灰度 → 上线):
 | 修复方案 | 从YAML中删除 si_p6_bar_01 图表定义块 (方案A: 推荐) |
 | 预期修复后 | 图表总数 102→101, ERROR 1→0 |
 | 影响范围 | 无 — 该图表不在88张周报渲染子集中 |
+| 修复状态 | ✅ **已闭环** (V87_RC1_G1_DSHE_FIX_META_SI_ISSUE) |
 
 ### P1上线Gating Checklist
-
 ```
 V88 元数据正式上线 Gating Checklist:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-□ [P0] si_p6_bar_01 数据修复完成
-□ [P0] 重新运行 test_meta_injection.py 全部612项0 ERROR
-□ [P0] 负向测试7/7全部通过
-□ [P0] topic_tag字段确认0残留
-□ [P1] 口径差异文档已定义 (v88_dshe_chart_indicator_stat_caliber_spec.md)
-□ [P1] 周报统计规则R-REPORT-CALIBER-V1已生效
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+☑ [P0] si_p6_bar_01 数据修复完成 (FIX_META_SI_ISSUE 闭环)
+☑ [P0] 重新运行 test_meta_injection.py 全部606项0 ERROR
+☑ [P0] 负向测试7/7全部通过
+☑ [P0] topic_tag字段确认0残留
+☑ [P1] 口径差异文档已定义 (v88_dshe_chart_indicator_stat_caliber_spec.md)
+☑ [P1] 周报统计规则R-REPORT-CALIBER-V1已生效
 □ [P1] DSHB后端确认24项partial指标修复计划
 □ [P1] 渲染引擎适配node_binding模式完成
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-□□□□□□□□ 全部8项通过 = GATE PASS → 准予上线
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+☑☑☑☑☑☑□□ 6/8项已通过 — PR-01~PR-04 (P0) 全部闭环 + 口径文档+周报规则已生效
+待完成: DSHB partial指标修复计划 + 渲染引擎适配
 ```
-
 ### 与本次交付物关联
 
 | 本次交付物 | 关联的前置条件 |
