@@ -1,0 +1,441 @@
+{
+  "dashboard_id": "V88_PHASE02_RENDER_MONITOR",
+  "version": "v88.0.0-phase02",
+  "task_id": "V88_PHASE02_DSHE_CHART_DEPLOY_FALLBACK_VERIFY",
+  "agent": "DSHE",
+  "branch": "feature/v88-g1",
+  "created": "2028-05-18T00:00:00+08:00",
+  "description": "V88 Phase02 图表渲染监控大盘 - 持续采集渲染性能、页面报错、降级触发事件",
+  "schedule": "continuous (every 60s)",
+  "retention_days": 30,
+  "metrics": [
+    {
+      "id": "M01",
+      "category": "rendering_performance",
+      "name": "chart_render_p50_ms",
+      "description": "图表渲染P50时延(毫秒)",
+      "unit": "ms",
+      "source": "node_binding_engine.render_chart()",
+      "aggregation": "median",
+      "target": "<100",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M02",
+      "category": "rendering_performance",
+      "name": "chart_render_p95_ms",
+      "description": "图表渲染P95时延(毫秒)",
+      "unit": "ms",
+      "source": "node_binding_engine.render_chart()",
+      "aggregation": "percentile_95",
+      "target": "<300",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M03",
+      "category": "rendering_performance",
+      "name": "chart_render_p99_ms",
+      "description": "图表渲染P99时延(毫秒)",
+      "unit": "ms",
+      "source": "node_binding_engine.render_chart()",
+      "aggregation": "percentile_99",
+      "target": "<500",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M04",
+      "category": "rendering_performance",
+      "name": "chart_render_avg_ms",
+      "description": "图表渲染平均时延(毫秒)",
+      "unit": "ms",
+      "source": "node_binding_engine.render_chart()",
+      "aggregation": "mean",
+      "target": "<50",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M05",
+      "category": "rendering_performance",
+      "name": "batch_render_total_ms",
+      "description": "批量渲染总时延(毫秒)",
+      "unit": "ms",
+      "source": "node_binding_engine.render_all()",
+      "aggregation": "sum",
+      "target": "<1000",
+      "current": null,
+      "collection_interval_sec": 300
+    },
+    {
+      "id": "M06",
+      "category": "rendering_performance",
+      "name": "engine_load_time_ms",
+      "description": "引擎加载耗时(毫秒)",
+      "unit": "ms",
+      "source": "node_binding_engine.load()",
+      "aggregation": "mean",
+      "target": "<500",
+      "current": null,
+      "collection_interval_sec": 300
+    },
+    {
+      "id": "M07",
+      "category": "rendering_performance",
+      "name": "validation_pass_rate_pct",
+      "description": "校验规则通过率(%)",
+      "unit": "%",
+      "source": "node_binding_engine.validate()",
+      "aggregation": "rate",
+      "target": "100",
+      "current": null,
+      "collection_interval_sec": 300
+    },
+    {
+      "id": "M08",
+      "category": "page_errors",
+      "name": "page_render_error_count",
+      "description": "页面渲染错误计数",
+      "unit": "count",
+      "source": "render_chart() exception handler",
+      "aggregation": "count",
+      "target": "0",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M09",
+      "category": "page_errors",
+      "name": "render_error_rate_pct",
+      "description": "渲染错误率(%)",
+      "unit": "%",
+      "source": "error_count / total_requests",
+      "aggregation": "rate",
+      "target": "0",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M10",
+      "category": "page_errors",
+      "name": "render_timeout_count",
+      "description": "渲染超时计数",
+      "unit": "count",
+      "source": "render_chart() timeout handler",
+      "aggregation": "count",
+      "target": "0",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M11",
+      "category": "page_errors",
+      "name": "data_load_error_count",
+      "description": "数据加载错误计数",
+      "unit": "count",
+      "source": "_load_real_data() exception",
+      "aggregation": "count",
+      "target": "0",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M12",
+      "category": "page_errors",
+      "name": "binding_resolve_error_count",
+      "description": "绑定解析错误计数",
+      "unit": "count",
+      "source": "resolve_binding() error",
+      "aggregation": "count",
+      "target": "0",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M13",
+      "category": "fallback_events",
+      "name": "fallback_simulated_count",
+      "description": "模拟数据fallback次数",
+      "unit": "count",
+      "source": "render_chart(source='simulated')",
+      "aggregation": "count",
+      "target": "<10",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M14",
+      "category": "fallback_events",
+      "name": "fallback_placeholder_count",
+      "description": "占位符fallback次数",
+      "unit": "count",
+      "source": "render_chart(source='placeholder')",
+      "aggregation": "count",
+      "target": "0",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M15",
+      "category": "fallback_events",
+      "name": "fallback_trigger_rate_pct",
+      "description": "fallback触发率(%)",
+      "unit": "%",
+      "source": "(simulated+placeholder) / total_renders",
+      "aggregation": "rate",
+      "target": "<20",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M16",
+      "category": "fallback_events",
+      "name": "pending_chart_render_count",
+      "description": "pending图表渲染次数",
+      "unit": "count",
+      "source": "render_chart() for pending_data charts",
+      "aggregation": "count",
+      "target": "N/A",
+      "current": null,
+      "collection_interval_sec": 60
+    },
+    {
+      "id": "M17",
+      "category": "fallback_events",
+      "name": "real_data_available_rate_pct",
+      "description": "真实数据可用率(%)",
+      "unit": "%",
+      "source": "source='real' / total_renders",
+      "aggregation": "rate",
+      "target": ">80",
+      "current": null,
+      "collection_interval_sec": 300
+    },
+    {
+      "id": "M18",
+      "category": "rendering_performance",
+      "name": "concurrent_render_success_rate_pct",
+      "description": "并发渲染成功率(%)",
+      "unit": "%",
+      "source": "concurrent_stress_test",
+      "aggregation": "rate",
+      "target": "100",
+      "current": null,
+      "collection_interval_sec": 300
+    },
+    {
+      "id": "M19",
+      "category": "rendering_performance",
+      "name": "concurrent_render_p99_ms",
+      "description": "并发渲染P99时延(毫秒)",
+      "unit": "ms",
+      "source": "concurrent_stress_test",
+      "aggregation": "percentile_99",
+      "target": "<500",
+      "current": null,
+      "collection_interval_sec": 300
+    },
+    {
+      "id": "M20",
+      "category": "page_errors",
+      "name": "concurrent_render_error_rate_pct",
+      "description": "并发渲染错误率(%)",
+      "unit": "%",
+      "source": "concurrent_stress_test",
+      "aggregation": "rate",
+      "target": "0",
+      "current": null,
+      "collection_interval_sec": 300
+    }
+  ],
+  "alerts": [
+    {
+      "id": "ALERT-001",
+      "metric": "chart_render_p99_ms",
+      "condition": ">500",
+      "severity": "P2",
+      "message": "图表渲染P99时延超过500ms阈值",
+      "action": "notify + investigate",
+      "cooldown_min": 30
+    },
+    {
+      "id": "ALERT-002",
+      "metric": "chart_render_p95_ms",
+      "condition": ">300",
+      "severity": "P3",
+      "message": "图表渲染P95时延超过300ms",
+      "action": "log + investigate",
+      "cooldown_min": 60
+    },
+    {
+      "id": "ALERT-003",
+      "metric": "page_render_error_count",
+      "condition": ">0",
+      "severity": "P1",
+      "message": "页面渲染错误发生",
+      "action": "immediate_notify + rollback_evaluation",
+      "cooldown_min": 0
+    },
+    {
+      "id": "ALERT-004",
+      "metric": "render_error_rate_pct",
+      "condition": ">1",
+      "severity": "P1",
+      "message": "渲染错误率超过1%",
+      "action": "immediate_notify + degradation_check",
+      "cooldown_min": 0
+    },
+    {
+      "id": "ALERT-005",
+      "metric": "fallback_trigger_rate_pct",
+      "condition": ">30",
+      "severity": "P2",
+      "message": "fallback触发率超过30%",
+      "action": "notify + data_source_check",
+      "cooldown_min": 60
+    },
+    {
+      "id": "ALERT-006",
+      "metric": "fallback_placeholder_count",
+      "condition": ">0",
+      "severity": "P3",
+      "message": "占位符fallback触发",
+      "action": "log + pending_chart_review",
+      "cooldown_min": 300
+    },
+    {
+      "id": "ALERT-007",
+      "metric": "binding_resolve_error_count",
+      "condition": ">0",
+      "severity": "P2",
+      "message": "绑定解析错误发生",
+      "action": "notify + binding_check",
+      "cooldown_min": 30
+    },
+    {
+      "id": "ALERT-008",
+      "metric": "concurrent_render_p99_ms",
+      "condition": ">500",
+      "severity": "P2",
+      "message": "并发渲染P99超过500ms",
+      "action": "notify + capacity_planning",
+      "cooldown_min": 60
+    },
+    {
+      "id": "ALERT-009",
+      "metric": "concurrent_render_error_rate_pct",
+      "condition": ">0",
+      "severity": "P1",
+      "message": "并发渲染出现错误",
+      "action": "immediate_notify + stability_check",
+      "cooldown_min": 0
+    },
+    {
+      "id": "ALERT-010",
+      "metric": "real_data_available_rate_pct",
+      "condition": "<60",
+      "severity": "P3",
+      "message": "真实数据可用率低于60%",
+      "action": "log + data_source_health_check",
+      "cooldown_min": 300
+    }
+  ],
+  "panels": [
+    {
+      "id": "P01",
+      "title": "图表渲染性能概览",
+      "type": "stat",
+      "metrics": ["chart_render_p50_ms", "chart_render_p95_ms", "chart_render_p99_ms", "chart_render_avg_ms"],
+      "position": [0, 0],
+      "size": [2, 1]
+    },
+    {
+      "id": "P02",
+      "title": "页面错误计数",
+      "type": "stat",
+      "metrics": ["page_render_error_count", "render_error_rate_pct", "render_timeout_count"],
+      "position": [2, 0],
+      "size": [2, 1]
+    },
+    {
+      "id": "P03",
+      "title": "Fallback触发事件",
+      "type": "stat",
+      "metrics": ["fallback_simulated_count", "fallback_placeholder_count", "fallback_trigger_rate_pct"],
+      "position": [4, 0],
+      "size": [2, 1]
+    },
+    {
+      "id": "P04",
+      "title": "渲染时延趋势 (P50/P95/P99)",
+      "type": "timeseries",
+      "metrics": ["chart_render_p50_ms", "chart_render_p95_ms", "chart_render_p99_ms"],
+      "position": [0, 1],
+      "size": [4, 2],
+      "refresh_sec": 60
+    },
+    {
+      "id": "P05",
+      "title": "页面错误趋势",
+      "type": "timeseries",
+      "metrics": ["page_render_error_count", "render_error_rate_pct", "data_load_error_count"],
+      "position": [4, 1],
+      "size": [4, 2],
+      "refresh_sec": 60
+    },
+    {
+      "id": "P06",
+      "title": "Fallback触发趋势",
+      "type": "timeseries",
+      "metrics": ["fallback_simulated_count", "fallback_placeholder_count", "fallback_trigger_rate_pct", "pending_chart_render_count"],
+      "position": [8, 1],
+      "size": [4, 2],
+      "refresh_sec": 60
+    },
+    {
+      "id": "P07",
+      "title": "并发渲染性能",
+      "type": "timeseries",
+      "metrics": ["concurrent_render_p99_ms", "concurrent_render_success_rate_pct", "concurrent_render_error_rate_pct"],
+      "position": [0, 3],
+      "size": [6, 2],
+      "refresh_sec": 300
+    },
+    {
+      "id": "P08",
+      "title": "数据源健康度",
+      "type": "gauge",
+      "metrics": ["real_data_available_rate_pct", "validation_pass_rate_pct"],
+      "position": [6, 3],
+      "size": [6, 2],
+      "refresh_sec": 300
+    },
+    {
+      "id": "P09",
+      "title": "图表类型渲染分布",
+      "type": "pie",
+      "metrics": ["chart_type_render_count"],
+      "position": [0, 5],
+      "size": [6, 2],
+      "refresh_sec": 600
+    },
+    {
+      "id": "P10",
+      "title": "引擎加载性能",
+      "type": "stat",
+      "metrics": ["engine_load_time_ms", "batch_render_total_ms"],
+      "position": [6, 5],
+      "size": [6, 2]
+    }
+  ],
+  "sla": {
+    "chart_render_p99_ms": {"target": 500, "unit": "ms", "severity": "P2"},
+    "concurrent_render_p99_ms": {"target": 500, "unit": "ms", "severity": "P2"},
+    "concurrent_render_error_rate_pct": {"target": 0, "unit": "%", "severity": "P1"},
+    "page_render_error_count": {"target": 0, "unit": "count", "severity": "P1"},
+    "render_error_rate_pct": {"target": 0, "unit": "%", "severity": "P1"},
+    "fallback_trigger_rate_pct": {"target": 20, "unit": "%", "severity": "P2"}
+  }
+}
