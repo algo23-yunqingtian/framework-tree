@@ -313,6 +313,10 @@ DSHB后端24项partial指标修复计划已确认 + 渲染引擎node_binding适�
 | 入库验证报告 | PR-01/02/03 (发现并记录数据错误) |
 | 口径差异文档 | P1前置 (口径规格化) |
 | 测试脚本 test_meta_injection.py | PR-02 (回归验证工具) |
+| 渲染引擎 node_binding_engine.py | P1前置 (渲染引擎适配) |
+| 单元测试 test_node_binding.py (61项) | P1前置 (引擎单元测试) |
+| E2E测试 test_e2e_render.py (14项) | P1前置 (端到端渲染验证) |
+| 验证报告 v88_p1_node_binding_adapt_verify_report.md | P1前置 (Gating Checklist最终项) |
 
 ---
 
