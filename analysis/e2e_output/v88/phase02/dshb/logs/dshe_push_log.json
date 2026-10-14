@@ -1,0 +1,471 @@
+{
+  "task_id": "V88_PHASE02_DSHB_DATA_SUPPLY_LONGSTABILITY",
+  "generated_at": "2026-10-14T22:20:26.479294",
+  "summary": {
+    "total": 1022,
+    "real": 980,
+    "sim": 42,
+    "ph": 0,
+    "ok": 1022,
+    "fb": 0,
+    "avg_lat": 90.6
+  },
+  "sample_entries": [
+    {
+      "indicator_id": "CU_SHFE_WARRANT_DETAIL",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 109.9
+    },
+    {
+      "indicator_id": "PB_SHFE_WARRANT_DETAIL",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 31.4
+    },
+    {
+      "indicator_id": "ZN_SHFE_WARRANT_DETAIL",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 54.5
+    },
+    {
+      "indicator_id": "NI_LME_WARRANT_COUNTRY",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 104.6
+    },
+    {
+      "indicator_id": "AL_WARRANT_SPLIT",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 121.6
+    },
+    {
+      "indicator_id": "LC_WARRANT_SPLIT",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 42.9
+    },
+    {
+      "indicator_id": "CU_STOCK_WOW_RATE",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 50.4
+    },
+    {
+      "indicator_id": "SN_STOCK_DEPLETION_RATE",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 79.9
+    },
+    {
+      "indicator_id": "SI_STOCK_STOCKPILE_RATE",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 82.7
+    },
+    {
+      "indicator_id": "PB_STOCK_SEASONAL_DEV",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 115.3
+    },
+    {
+      "indicator_id": "ZN_STOCK_TREND_SLOPE",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 106.6
+    },
+    {
+      "indicator_id": "AL_BAUXITE_COUNTRY",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 31.9
+    },
+    {
+      "indicator_id": "AL_BAUXITE_PRICE_PROV",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 90.0
+    },
+    {
+      "indicator_id": "AL_OVERSEAS_SHIPPING",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 94.9
+    },
+    {
+      "indicator_id": "CU_CONS_SUMMARY",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 111.1
+    },
+    {
+      "indicator_id": "LC_DEMAND_LEADING",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 87.2
+    },
+    {
+      "indicator_id": "SI_ENERGY_COST",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 120.5
+    },
+    {
+      "indicator_id": "NI_IMPORT_COST",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 39.1
+    },
+    {
+      "indicator_id": "CU_SMELTER_MAINTENANCE",
+      "day": 0,
+      "is_pending": true,
+      "render_mode": "simulated",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 92.2,
+      "fallback_source": "A4 海关进出口反推法"
+    },
+    {
+      "indicator_id": "NI_SMELTER_MAINTENANCE",
+      "day": 0,
+      "is_pending": true,
+      "render_mode": "simulated",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 110.5,
+      "fallback_source": "A1 交易所产量反推法"
+    },
+    {
+      "indicator_id": "SI_SMELTER_MAINTENANCE",
+      "day": 0,
+      "is_pending": true,
+      "render_mode": "simulated",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 55.2,
+      "fallback_source": "A5 自建综合模型法"
+    },
+    {
+      "indicator_id": "CU_SPOT_INQUIRY_FREQ",
+      "day": 0,
+      "is_pending": true,
+      "render_mode": "simulated",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 123.8,
+      "fallback_source": "B2 Baidu搜索指数法"
+    },
+    {
+      "indicator_id": "LC_SPOT_INQUIRY_FREQ",
+      "day": 0,
+      "is_pending": true,
+      "render_mode": "simulated",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 73.7,
+      "fallback_source": "B5 自建综合模型法"
+    },
+    {
+      "indicator_id": "SI_SPOT_INQUIRY_FREQ",
+      "day": 0,
+      "is_pending": true,
+      "render_mode": "simulated",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 141.1,
+      "fallback_source": "B2 Baidu搜索指数法"
+    },
+    {
+      "indicator_id": "CU_P1_IND_001",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 92.5
+    },
+    {
+      "indicator_id": "CU_P1_IND_002",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 56.9
+    },
+    {
+      "indicator_id": "CU_P1_IND_003",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 52.3
+    },
+    {
+      "indicator_id": "CU_P1_IND_004",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 70.5
+    },
+    {
+      "indicator_id": "CU_P1_IND_005",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 116.9
+    },
+    {
+      "indicator_id": "CU_P1_IND_006",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 105.5
+    },
+    {
+      "indicator_id": "CU_P1_IND_007",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 30.2
+    },
+    {
+      "indicator_id": "CU_P1_IND_008",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 107.6
+    },
+    {
+      "indicator_id": "CU_P1_IND_009",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 146.2
+    },
+    {
+      "indicator_id": "CU_P1_IND_010",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 50.2
+    },
+    {
+      "indicator_id": "CU_P1_IND_011",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 115.0
+    },
+    {
+      "indicator_id": "CU_P2_IND_001",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 123.4
+    },
+    {
+      "indicator_id": "CU_P2_IND_002",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 60.0
+    },
+    {
+      "indicator_id": "CU_P2_IND_003",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 73.0
+    },
+    {
+      "indicator_id": "CU_P2_IND_004",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 149.7
+    },
+    {
+      "indicator_id": "CU_P2_IND_005",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 125.5
+    },
+    {
+      "indicator_id": "CU_P2_IND_006",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 94.2
+    },
+    {
+      "indicator_id": "CU_P2_IND_007",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 116.6
+    },
+    {
+      "indicator_id": "CU_P2_IND_008",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 144.2
+    },
+    {
+      "indicator_id": "CU_P2_IND_009",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 81.0
+    },
+    {
+      "indicator_id": "CU_P2_IND_010",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 55.4
+    },
+    {
+      "indicator_id": "CU_P2_IND_011",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 110.7
+    },
+    {
+      "indicator_id": "CU_P3_IND_001",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 107.6
+    },
+    {
+      "indicator_id": "CU_P3_IND_002",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 30.1
+    },
+    {
+      "indicator_id": "CU_P3_IND_003",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 107.6
+    },
+    {
+      "indicator_id": "CU_P3_IND_004",
+      "day": 0,
+      "is_pending": false,
+      "render_mode": "real",
+      "push_status": "SUCCESS",
+      "data_points": 1,
+      "latency_ms": 140.1
+    }
+  ]
+}

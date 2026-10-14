@@ -1,0 +1,618 @@
+{
+  "task_id": "V88_PHASE02_DSHB_DATA_SUPPLY_LONGSTABILITY",
+  "generated_at": "2026-10-14T22:20:26.476293",
+  "summary": {
+    "total_with_ic": 292,
+    "G_count": 13,
+    "Y_count": 5,
+    "R_count": 274,
+    "ic_mean": -0.456311,
+    "ic_std": 0.364233,
+    "ic_median": -0.542857,
+    "ic_min": -1.0,
+    "ic_max": 0.9
+  },
+  "methodology": "Spearman rank IC, rolling window=30, step=5",
+  "sample_entries": [
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_SHFE_WARRANT_DETAIL",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "PB_SHFE_WARRANT_DETAIL",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "ZN_SHFE_WARRANT_DETAIL",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "NI_LME_WARRANT_COUNTRY",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "AL_WARRANT_SPLIT",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "LC_WARRANT_SPLIT",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_STOCK_WOW_RATE",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "SN_STOCK_DEPLETION_RATE",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "SI_STOCK_STOCKPILE_RATE",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "PB_STOCK_SEASONAL_DEV",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "ZN_STOCK_TREND_SLOPE",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "AL_BAUXITE_COUNTRY",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "AL_BAUXITE_PRICE_PROV",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "AL_OVERSEAS_SHIPPING",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_CONS_SUMMARY",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "LC_DEMAND_LEADING",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "SI_ENERGY_COST",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "NI_IMPORT_COST",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_SMELTER_MAINTENANCE",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "NI_SMELTER_MAINTENANCE",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "SI_SMELTER_MAINTENANCE",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_SPOT_INQUIRY_FREQ",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "LC_SPOT_INQUIRY_FREQ",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "SI_SPOT_INQUIRY_FREQ",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_001",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_002",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_003",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_004",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_005",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_006",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_007",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_008",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_009",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_010",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P1_IND_011",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_001",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_002",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_003",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_004",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_005",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_006",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_007",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_008",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_009",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_010",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P2_IND_011",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_001",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_002",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_003",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_004",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_005",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_006",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_007",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_008",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_009",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_010",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P3_IND_011",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_001",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_002",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_003",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_004",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_005",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_006",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_007",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_008",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_009",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_010",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_P4_IND_011",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_001",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_002",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_003",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_004",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_005",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_006",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_007",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_008",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_009",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_010",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B1_IND_011",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_001",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_002",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_003",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_004",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_005",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_006",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_007",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_008",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_009",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_010",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_B2_IND_011",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_001",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_002",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_003",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_004",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_005",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_006",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_007",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_008",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_009",
+      "ic": null,
+      "classification": "N/A"
+    },
+    {
+      "date": "2026-10-19",
+      "indicator_id": "CU_S1_IND_010",
+      "ic": null,
+      "classification": "N/A"
+    }
+  ]
+}

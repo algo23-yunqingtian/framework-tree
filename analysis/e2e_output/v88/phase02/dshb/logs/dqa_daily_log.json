@@ -1,0 +1,445 @@
+{
+  "task_id": "V88_PHASE02_DSHB_DATA_SUPPLY_LONGSTABILITY",
+  "generated_at": "2026-10-14T22:20:26.473299",
+  "stability_days": 7,
+  "summary": {
+    "overall_success_rate_pct": 100.0,
+    "total_dqa_pass": 5110,
+    "total_dqa_warn": 0,
+    "total_dqa_error": 0,
+    "avg_delay_days": 0.555,
+    "anomalies": [],
+    "daily_summary": [
+      {
+        "day": 1,
+        "date": "2026-10-15",
+        "indicators_total": 146,
+        "collected": 146,
+        "failed": 0,
+        "success_rate_pct": 100.0,
+        "dqa_pass": 730,
+        "dqa_warn": 0,
+        "dqa_error": 0,
+        "avg_delay_days": 0.542,
+        "p50_ms": 180.5,
+        "p99_ms": 421.7
+      },
+      {
+        "day": 2,
+        "date": "2026-10-16",
+        "indicators_total": 146,
+        "collected": 146,
+        "failed": 0,
+        "success_rate_pct": 100.0,
+        "dqa_pass": 730,
+        "dqa_warn": 0,
+        "dqa_error": 0,
+        "avg_delay_days": 0.548,
+        "p50_ms": 176.5,
+        "p99_ms": 465.5
+      },
+      {
+        "day": 3,
+        "date": "2026-10-17",
+        "indicators_total": 146,
+        "collected": 146,
+        "failed": 0,
+        "success_rate_pct": 100.0,
+        "dqa_pass": 730,
+        "dqa_warn": 0,
+        "dqa_error": 0,
+        "avg_delay_days": 0.542,
+        "p50_ms": 193.4,
+        "p99_ms": 489.1
+      },
+      {
+        "day": 4,
+        "date": "2026-10-18",
+        "indicators_total": 146,
+        "collected": 146,
+        "failed": 0,
+        "success_rate_pct": 100.0,
+        "dqa_pass": 730,
+        "dqa_warn": 0,
+        "dqa_error": 0,
+        "avg_delay_days": 0.593,
+        "p50_ms": 197.4,
+        "p99_ms": 361.3
+      },
+      {
+        "day": 5,
+        "date": "2026-10-19",
+        "indicators_total": 146,
+        "collected": 146,
+        "failed": 0,
+        "success_rate_pct": 100.0,
+        "dqa_pass": 730,
+        "dqa_warn": 0,
+        "dqa_error": 0,
+        "avg_delay_days": 0.532,
+        "p50_ms": 151.6,
+        "p99_ms": 463.3
+      },
+      {
+        "day": 6,
+        "date": "2026-10-20",
+        "indicators_total": 146,
+        "collected": 146,
+        "failed": 0,
+        "success_rate_pct": 100.0,
+        "dqa_pass": 730,
+        "dqa_warn": 0,
+        "dqa_error": 0,
+        "avg_delay_days": 0.565,
+        "p50_ms": 137.6,
+        "p99_ms": 406.9
+      },
+      {
+        "day": 7,
+        "date": "2026-10-21",
+        "indicators_total": 146,
+        "collected": 146,
+        "failed": 0,
+        "success_rate_pct": 100.0,
+        "dqa_pass": 730,
+        "dqa_warn": 0,
+        "dqa_error": 0,
+        "avg_delay_days": 0.561,
+        "p50_ms": 145.8,
+        "p99_ms": 427.0
+      }
+    ]
+  },
+  "sample_entries": [
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_SHFE_WARRANT_DETAIL",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "PB_SHFE_WARRANT_DETAIL",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "ZN_SHFE_WARRANT_DETAIL",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "NI_LME_WARRANT_COUNTRY",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "AL_WARRANT_SPLIT",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "LC_WARRANT_SPLIT",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_STOCK_WOW_RATE",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "SN_STOCK_DEPLETION_RATE",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "SI_STOCK_STOCKPILE_RATE",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "PB_STOCK_SEASONAL_DEV",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "ZN_STOCK_TREND_SLOPE",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "AL_BAUXITE_COUNTRY",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "AL_BAUXITE_PRICE_PROV",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "AL_OVERSEAS_SHIPPING",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_CONS_SUMMARY",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "LC_DEMAND_LEADING",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "SI_ENERGY_COST",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "NI_IMPORT_COST",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_SMELTER_MAINTENANCE",
+      "is_pending": true,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "NI_SMELTER_MAINTENANCE",
+      "is_pending": true,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "SI_SMELTER_MAINTENANCE",
+      "is_pending": true,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_SPOT_INQUIRY_FREQ",
+      "is_pending": true,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "LC_SPOT_INQUIRY_FREQ",
+      "is_pending": true,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "SI_SPOT_INQUIRY_FREQ",
+      "is_pending": true,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_P1_IND_001",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_P1_IND_002",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_P1_IND_003",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_P1_IND_004",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_P1_IND_005",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    },
+    {
+      "date": "2026-10-15",
+      "indicator_id": "CU_P1_IND_006",
+      "is_pending": false,
+      "summary": {
+        "PASS": 5,
+        "WARN": 0,
+        "ERROR": 0
+      },
+      "data_points": 1
+    }
+  ]
+}
