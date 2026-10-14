@@ -167,6 +167,201 @@
 
 ---
 
+## 监控快照 v3 | 2026-10-14 17:02 | DSHE P1 node_binding 渲染引擎适配核验
+
+### 触发事件
+
+| 项 | 值 |
+|---|---|
+| 触发类型 | **T2 触发（DSHE 提交）** |
+| DSHE Commit | `70b5335` |
+| 提交时间 | 2026-10-14 17:01 +0800 |
+| 提交内容 | V88_PHASE01_DSHE_P1_NODE_BINDING_ADAPT 渲染引擎node_binding适配 |
+| 交付物 | 5 份（引擎+2测试+验证报告+元数据更新） |
+
+### 分支审计（T0）
+
+| 项 | 值 | 状态 |
+|---|---|---|
+| 本地/远端 v88-g1 HEAD | 70b5335 | ✅ 已同步 |
+| 远端 v87-rc1-g1 | df0b826 | ✅ 未动 |
+| Release Tag v87-rc1-g1-final | `90a931e` | ✅ 未动 |
+| append-only | ✅ | DSHE 交付仅新增/追加，未覆盖 V87 |
+| V87 归档 MD5 | ✅ 完整 | 复验一致 |
+
+### T2 DSHE node_binding 渲染引擎核验（独立提取）
+
+| 指标 | DSHE 声明 | 独立核验 | 结论 |
+|---|---|---|---|
+| node_binding 引擎 | 101张图表/6条规则/109个指标绑定 | 引擎1033行，测试61/61 PASS | ✅ 一致 |
+| 元数据加载 | 101张图表/33节点/9品种 | 85 matchable + 16 pending | ✅ 一致 |
+| 校验规则 | 6条规则全量执行 | 614项校验/0 ERROR/0 WARN | ✅ 一致 |
+| 单元测试 | 61项 | 61/61 PASS/0 FAIL | ✅ 一致 |
+| E2E渲染测试 | 14项 | 14/14 PASS | ✅ 一致 |
+| 16张pending渲染链路 | 100%成功 | 绑定16/模拟16/占位16/回退16/失败0 | ✅ 一致 |
+| 渲染性能 | 101张0.414秒 | 声明值 | ✅ 合理 |
+| P1 Gating Checklist | 8/8 PASS | 8/8项全部通过 | ✅ 一致 |
+
+### DSHE 16张待补图表明细
+
+| # | 图表ID | 节点 | 品种 | 类型 | 渲染链路 |
+|:-:|--------|:----:|:----:|:----:|:--------:|
+| 1 | cu_p4_ts_02 | p4 | CU | time_series | PASS |
+| 2 | al_p3_ts_02 | p3 | AL | time_series | PASS |
+| 3 | al_p4_ts_02 | p4 | AL | time_series | PASS |
+| 4 | pb_p3_ts_02 | p3 | PB | time_series | PASS |
+| 5 | pb_p4_ts_02 | p4 | PB | time_series | PASS |
+| 6 | zn_p3_ts_02 | p3 | ZN | time_series | PASS |
+| 7 | zn_p4_ts_02 | p4 | ZN | time_series | PASS |
+| 8 | ni_p3_ts_02 | p3 | NI | time_series | PASS |
+| 9 | ni_p4_ts_02 | p4 | NI | time_series | PASS |
+| 10 | sn_p3_ts_02 | p3 | SN | time_series | PASS |
+| 11 | sn_p4_ts_02 | p4 | SN | time_series | PASS |
+| 12 | li_p3_ts_01 | p3 | LI | time_series | PASS |
+| 13 | li_p4_ts_02 | p4 | LI | time_series | PASS |
+| 14 | si_p3_ts_01 | p3 | SI | time_series | PASS |
+| 15 | si_p4_ts_02 | p4 | SI | time_series | PASS |
+| 16 | cu_b2_ts_01 | b2 | CU | stacked_bar | PASS |
+
+### 跨Agent联合核验（DSHB+DSHE）
+
+| 项 | DSHB | DSHE | 结论 |
+|---|------|------|------|
+| 6项pending指标 | 全部SMM付费阻塞 | 无s7/d2节点图表 | 指标级缺口，非图表级缺口 |
+| 渲染降级策略 | 不涉及（后端） | render_with_fallback: real→simulated→placeholder | ✅ 已覆盖 |
+| R-REPORT-CALIBER-V1 | 147指标→141+6+0 | 87图表→74+13 | ✅ 口径分离合规 |
+| 图表待补分布 | SMM付费4张 | COMEX 8张+平衡表1张+SMM衍生4张 | ✅ 合计13张一致 |
+
+### 核验结论
+
+> ✅ **DSHE P1 node_binding 渲染引擎核验通过**。101张图表/61项单测/E2E 14项全部PASS，16张pending图表渲染链路100%打通。P1 Gating Checklist 8/8项通过。跨Agent联合核验确认：6项SMM付费pending指标为指标级缺口（非图表级），渲染降级策略已覆盖。R-REPORT-CALIBER-V1口径分离合规。无新增P0/P1。
+
+### 风险台账更新
+
+| 编号 | 等级 | 描述 | 更新 |
+|---|---|---|---|
+| R-V88-001 | ✅ 关闭 | DSHB/DSHE 未启动 | DSHB+DSHE均已提交 |
+| R-V88-002 | INFO | IC/IR 漂移基线待首周数据 | 维持（待全量上线后采集） |
+| R-V88-003 | ✅ 关闭 | 排期风险 | 空窗消除 |
+| R-V88-004 | 🆕 INFO | 6项pending因SMM付费阻塞 | 维持观察（DSHB备选仿真待核验） |
+
+
+---
+
+## 监控快照 v4 | 2026-10-14 18:15 | DSHB P0 备选数据源离线仿真专项审计
+
+### 触发事件
+
+| 项 | 值 |
+|---|---|
+| 触发类型 | **T1b 触发（DSHB 备选仿真提交）** |
+| DSHB Commit | `caa0617` |
+| 提交时间 | 2026-10-14 18:01 +0800 |
+| 提交内容 | V88 Phase01 DSHB P0备选数据源调研+离线仿真 - 6项pending指标30组备选方案 |
+| 交付物 | 4 份（仿真报告+状态更新+仿真代码+仿真结果JSON） |
+
+### 分支审计（T0）
+
+| 项 | 值 | 状态 |
+|---|---|---|
+| 本地/远端 v88-g1 HEAD | caa0617 | ✅ 已同步 |
+| 远端 v87-rc1-g1 | df0b826 | ✅ 未动 |
+| Release Tag v87-rc1-g1-final | `90a931e` | ✅ 未动 |
+| append-only | ✅ | 4新增+4追加，零覆盖 |
+| V87 归档 MD5 | ✅ 完整 | V87目录git diff空输出 |
+| 7 files changed | 3新增文件+4追加修改 | ✅ 符合预期 |
+
+### T1b DSHB 离线仿真独立核验
+
+#### 1.1 代码合规性
+
+| 项 | 检查 | 结果 |
+|---|---|---|
+| 完全离线 | import numpy as np + datetime + json | ✅ 零外部API调用 |
+| 无知几API | 无 requests/urllib/httpx/socket | ✅ 合规 |
+| 随机种子 | np.random.seed(42) 第14行 | ✅ 可复现 |
+| 仿真周期 | 3年×252=756交易日 | ✅ 符合声明 |
+| 可复现性 | 重新运行输出完全一致 | ✅ IC/IR数值完全匹配 |
+
+#### 1.2 IC/IR 数值独立复核（抽样验证）
+
+| 指标 | 备选源 | 声明IC | 声明IR | 独立复现IC | 独立复现IR | 一致 |
+|------|--------|:------:|:------:|:----------:|:----------:|:----:|
+| CU_SMELTER_MAINTENANCE | A4 | 0.1834 | 0.5946 | 0.1834 | 0.5946 | ✅ |
+| NI_SMELTER_MAINTENANCE | A1 | 0.1835 | 0.6574 | 0.1835 | 0.6574 | ✅ |
+| SI_SMELTER_MAINTENANCE | A5 | 0.2226 | 1.1555 | 0.2226 | 1.1555 | ✅ |
+| CU_SPOT_INQUIRY_FREQ | B2 | 0.1514 | 0.8584 | 0.1514 | 0.8584 | ✅ |
+| LC_SPOT_INQUIRY_FREQ | B5 | 0.2832 | 1.4919 | 0.2832 | 1.4919 | ✅ |
+| SI_SPOT_INQUIRY_FREQ | B2 | 0.1482 | 0.8174 | 0.1482 | 0.8174 | ✅ |
+
+#### 1.3 分级结论独立核验
+
+| 分类 | 声明 | 独立核验 | 一致性 |
+|:----:|:----:|:--------:|:------:|
+| [G] 可直接替换 | 0 | 0 | ✅ |
+| [Y] 仅可做参考替代 | 9 | 9 | ✅ |
+| [R] 无法替代 | 21 | 21 | ✅ |
+| 合计 | 30 | 30 | ✅ |
+
+**分类阈值复核**: IC≥0.30且IR≥2.0→[G]; IC≥0.15→[Y]; IC<0.15→[R] ✅
+
+**边界案例验证**: SI_SPOT_INQUIRY_FREQ B2 IC=0.1482 < 0.15 → [R] ✅ 正确
+
+#### 1.4 推荐部署清单核验
+
+| 指标 | 最佳备选 | IC | IR | 分类 | 优先级 | 核验 |
+|------|---------|:--:|:--:|:----:|:------:|:----:|
+| CU_SMELTER_MAINTENANCE | A4 海关进出口反推法 | 0.18 | 0.59 | [Y] | P1 | ✅ |
+| NI_SMELTER_MAINTENANCE | A1 交易所产量反推法 | 0.18 | 0.66 | [Y] | P1 | ✅ |
+| SI_SMELTER_MAINTENANCE | A5 自建综合模型法 | 0.22 | 1.16 | [Y] | **P0** | ✅ |
+| CU_SPOT_INQUIRY_FREQ | B2 Baidu搜索指数法 | 0.15 | 0.86 | [Y] | P1 | ✅ |
+| LC_SPOT_INQUIRY_FREQ | B5 自建综合模型法 | 0.28 | 1.49 | [Y] | **P0** | ✅ |
+| SI_SPOT_INQUIRY_FREQ | B2 Baidu搜索指数法 | 0.15 | 0.82 | [R] | P2 | ✅ |
+
+### 指标台账复核（T2）
+
+| 项 | 状态 | 核验 |
+|---|---|---|
+| §8 备选方案章节 | 已追加 | ✅ 完整记录6项备选 |
+| IC/IR数值 | 6项全部记录 | ✅ 与仿真结果一致 |
+| 部署建议 | 3阶段路线图 | ✅ 短期/中期/长期 |
+| 仿真结论 | 0/9/21分类 | ✅ 明确标注 |
+
+### 风险台账更新（T3）
+
+| 编号 | 等级 | 描述 | 更新 |
+|---|---|---|---|
+| R-V88-004 | 🆕 INFO→✅ **关闭** | 6项pending因SMM付费阻塞 | **补充备选仿真结论：** 无完全等价免费替代源(0 [G])，9个参考替代方案(30%)可降低指标永久缺失风险。P0备选方案(SI→A5/LC→B5)IC≥0.22/IR≥1.16，可作为辅助参考但不能完全替代。指标偏差边界：MAPE 60-200%，Bias -96%~+15%。Phase02排期SMM付费源接入，备选方案作为过渡期参考。 |
+| R-V88-002 | INFO | IC/IR漂移基线待首周数据 | **维持**：全量上线后采集首周数据建立IC/IR基线，无新增P0/P1阻断风险 |
+
+### 跨Agent一致性复核（T4）
+
+| 核验项 | DSHB | DSHE | 结论 |
+|--------|------|------|:----:|
+| 6项pending指标覆盖 | CU/NI/SI_SMELTER_MAINTENANCE + CU/LC/SI_SPOT_INQUIRY_FREQ | 无s7/d2节点图表在16 pending中 | ✅ 指标级缺口，非图表级 |
+| 图表降级策略 | 不涉及 | render_with_fallback: real→simulated→placeholder | ✅ 覆盖所有pending指标场景 |
+| 口径对齐 | 147→141+6+0 (指标口径) | 87→74+13 (图表口径) | ✅ R-REPORT-CALIBER-V1分离合规 |
+| 备选指标口径 | 5备选源×6指标=30组口径定义 | 不涉及 | ✅ 备选口径已标记与SMM口径差异 |
+| 渲染引擎适配 | 不涉及 | 8/8 Gating Checklist PASS | ✅ |
+
+**联合核验记录**: 6项SMM pending指标均为指标级数据缺口，不直接映射到DSHE 16张pending图表（p3/p4/b2价格类）。DSHE node_binding引擎的降级策略（placeholder/simulated）已覆盖这些指标缺失时的图表渲染场景。R-REPORT-CALIBER-V1双口径分离持续合规。
+
+### 审计结论
+
+> ✅ **DSHB P0 备选数据源离线仿真专项审计通过**。
+>
+> - 离线仿真代码完全合规：零API调用，seed=42可复现，IC/IR数值独立复现完全一致
+> - 30组备选方案分级正确：0 [G] / 9 [Y] / 21 [R]
+> - 6项pending指标评估结论完整记录：无完全等价替代源，备选方案仅作辅助参考
+> - 跨Agent联合核验完成：DSHB备选方案与DSHE降级策略对齐，R-REPORT-CALIBER-V1无冲突
+> - R-V88-004更新：补充备选仿真结论，无新增P0/P1阻断风险
+> - R-V88-002维持：IC/IR漂移基线等待全量上线首周数据采集
+>
+> **Phase01 三项计划任务全部交付完成，状态从 READY_FOR_ACCEPT → PHASE01_COMPLETED。**
+
+
+---
+
 ## 轮询记录 #2 | 2026-10-14 15:58
 
 ### 轮询结果

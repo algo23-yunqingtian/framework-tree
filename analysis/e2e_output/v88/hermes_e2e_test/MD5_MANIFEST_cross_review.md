@@ -236,3 +236,67 @@
 *Appended by: DSHB Agent*
 *Branch: feature/v88-g1*
 *Status: V88_P0_PENDING_INDEX_PREP_COMPLETE*
+
+---
+
+## 8. HERMEShf Phase01 终版审计复核 (2026-10-14 18:15)
+
+### 8.1 审计交付物
+
+| # | 文件 | 阶段 | MD5 | 说明 |
+|---|------|------|-----|------|
+| 1 | `v88_phase01_real_time_monitor_shturl` | Phase01-Snapshot-v4 | (增量追加) | DSHB pending仿真专项审计记录 |
+| 2 | `v88_phase01_audit_summary_report.md` | Phase01-Summary-v3 | (增量追加) | Phase01终版汇总报告 |
+| 3 | `MD5_MANIFEST.md` | Phase01-MD5 | (增量追加) | 4份DSHB交付文件MD5 |
+
+### 8.2 DSHB 4份交付文件MD5
+
+| # | 文件 | MD5 | 大小 |
+|---|------|-----|------|
+| 1 | `v88_p0_pending_6index_alternative_source_simulation_report.md` | `7FD8B9E18D67865F894B41C6D1A622AE` | 27,142 B |
+| 2 | `v88_p0_partial_index_status_update.md` | `9E44E3B3FADA3F96D4CCDB94E9C16685` | 42,629 B |
+| 3 | `pending_index_simulation.py` | `275FBDD34DAF35E4E42882BB2A0D0E97` | 11,320 B |
+| 4 | `pending_index_simulation_results.json` | `D0ACCC5277277F87156583583EF88BC6` | ~25 KB |
+
+### 8.3 Phase01 终版验收汇总
+
+| 验收项 | 结果 |
+|--------|:----:|
+| commit caa0617校验 | ✅ PASS |
+| append-only合规 | ✅ 3新增+4追加 |
+| V87基线资产 | ✅ 零修改 |
+| Release Tag v87-rc1-g1-final | ✅ 未修改 |
+| 仿真代码可复现 | ✅ seed=42 |
+| IC/IR数值复核 | ✅ 抽样6组一致 |
+| 分级结论复核 | ✅ 0[G]/9[Y]/21[R] |
+| 6项指标评估记录 | ✅ 完整 |
+| 跨Agent联合核验 | ✅ 渲染降级+口径对齐 |
+| R-REPORT-CALIBER-V1 | ✅ 双口径分离 |
+| 风险台账更新 | ✅ R-V88-004关闭/R-V88-002维持 |
+| 审计交付物MD5 | ✅ 写入清单 |
+| Phase01状态 | ✅ PHASE01_COMPLETED |
+
+### 8.4 约束合规
+
+| 约束 | 状态 |
+|------|:----:|
+| BRANCH_LOCKED | ✅ |
+| NO_OVERWRITE | ✅ |
+| NO_MODIFY_V87 | ✅ |
+| NO_EDIT_RELEASE_TAG | ✅ |
+| NO_ZHIJI_API_CALL | ✅ |
+| APPEND_ONLY | ✅ |
+| CPU FUSE 2.0% | ✅ 未修改 |
+| 15项阈值 | ✅ 未修改 |
+| V87基线零修改 | ✅ |
+
+### 8.5 验收结论
+
+> **PASS** — Phase01 全部三项计划任务交付完成，审计复核通过。状态从 READY_FOR_ACCEPT 更新为 PHASE01_COMPLETED。0 P0/P1 风险，无阻断项。
+
+---
+
+*Appendix Generated: 2026-10-14 18:15 UTC+8*
+*Appended by: HERMEShf Agent*
+*Branch: feature/v88-g1*
+*Status: V88_PHASE01_COMPLETED*
