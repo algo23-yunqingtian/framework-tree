@@ -665,3 +665,119 @@ analysis/e2e_output/v88/hermes_e2e_test/MD5_MANIFEST_cross_review.md (追加)
 ---
 
 **快照 v3 完成 | 2026-10-14 19:22 | HEAD=caa0617 | T1+T2 双触发核验通过**
+
+---
+
+## 快照 v4 — DSHE node_binding 专项审计（独立深度复核）
+
+> **时间**: 2026-10-14 20:10
+> **HEAD**: 23e3c39 (feature/v88-g1)
+> **触发**: DSHE node_binding 工单 commit 70b5335 + DSHB 仿真 commit 23e3c39
+> **审计类型**: DSHE 渲染引擎专项独立审计（T0-T7 全流程）
+
+### T0: 交付物完整性 + V87 基线保护
+
+| 交付物 | MD5 | 状态 |
+|---|---|---|
+| scripts/node_binding_engine.py | 32ee95bd2030625efedb9cf4aaed2198 | ✅ |
+| test_node_binding.py | d077055f46422d7a5f25e66837906348 | ✅ |
+| test_e2e_render.py | 4572a32c029a3592d26cda8b5691c4c7 | ✅ |
+| pending_index_simulation.py | 275fbdd34daf35e4e42882bb2a0d0e97 | ✅ |
+| v88_p1_node_binding_adapt_verify_report.md | 1ec8ba0b183c7d3c27e54b91578e133b | ✅ |
+| v88_dshe_chart_indicator_stat_caliber_spec.md | c9411f5c691860d4b5f86ad39561090b | ✅ |
+
+- V87 归档 MD5: 0bcd94a8 (unchanged) ✅
+- V87 gate check MD5: a0030737 (unchanged) ✅
+- Tag v87-rc1-g1-final: 26d58a8 (unchanged) ✅
+- append-only 合规: ✅ | NO_MODIFY_V87: ✅ | NO_ZHIJI_API_CALL: ✅
+
+### T1: node_binding 引擎代码 + 单元测试核验
+
+**6 条核心校验规则独立复核**:
+
+| 规则 | 描述 | 实现 | 核验 |
+|---|---|---|---|
+| R1 | no_cross_node_binding | 指标 commodity 必须在节点 comms 范围内 | ✅ |
+| R2 | tree_node_id_valid | 节点ID必须在 tree_config 注册 | ✅ |
+| R3 | commodity_valid | 品种必须在 commodity_index 注册 | ✅ |
+| R4 | auto_inherit_description | business_description 自动继承校验 | ✅ |
+| R5 | chart_type_valid | 图表类型必须合法 | ✅ |
+| R6 | data_status_valid | 数据状态必须合法 | ✅ |
+
+**独立重跑**: `timeout 120 python3 test_node_binding.py`
+- Tests run: **61** | Failures: **0** | Errors: **0**
+- 引擎内部校验: **614 PASS, 0 WARN, 0 ERROR** (101图表 × 6规则 + 补充项)
+- 节点: 33 | 品种: 9 | 图表: 101
+
+### T2: 元数据注入回归校验
+
+- YAML 元数据: 101 张图表定义加载成功
+- tree_config.json: 7 categories, 9 commodities 加载成功
+- 引擎 validate(strict=False): 614 PASS / 0 WARN / 0 ERROR
+- 606 项基线 (6规则×101图表) 全部通过
+- 节点合法性: 33 节点全部注册
+- 0 ERROR — 回归测试通过
+
+### T3: E2E 渲染链路核验
+
+**独立重跑**: `timeout 120 python3 test_e2e_render.py`
+- Tests run: **14** | ALL E2E TESTS PASSED
+- 渲染数据结构: time_series=76, gauge=16, stacked_bar=8, heatmap=1
+- 渲染耗时: 0.168s / 101 charts (≤500ms 达标)
+- 匹配: 85 matchable + 16 pending = 101 total
+- P1 Gating 8 项门禁: 全部通过
+
+### T4: 跨 Agent 联合一致性核验
+
+- DSHB 指标台账: 18 matched 指标 + 6 pending 指标（SMM 付费阻塞）
+- 引擎挂载能力: 614 PASS / 0 ERROR → 18 matched 全部可挂载 ✅
+- R-REPORT-CALIBER-V1 双口径: 88图表 + 146指标 对齐
+- 引擎覆盖: 101图表 + 109指标 (88图表基线 + 13张扩展)
+- 节点-品种-指标交叉: 33节点 × 9品种 × 109指标 全部关联 ✅
+- **跨Agent核验: PASS**
+
+### T5: 门禁基线
+
+| 门禁 | 结果 |
+|---|---|
+| check_html.py | ✅ 266/266 PASS |
+| reclaim.py | ⚠️ 9 PASS / 4 FAIL (历史遗留 TD-V87-002) |
+
+### T6: 风险台账更新
+
+| 编号 | 等级 | 描述 | 更新 |
+|---|---|---|---|
+| R-V88-001 | ✅ 关闭 | DSHB/DSHE 未启动 | DSHE 已完成（70b5335） |
+| R-V88-002 | INFO | IC/IR 漂移基线待首周数据 | 维持（30组仿真可用，待正式采集） |
+| R-V88-003 | ✅ 关闭 | 排期风险 | DSHB+DSHE 均已提交 |
+| R-V88-004 | INFO | 6 项 SMM 付费 pending | 维持（备选源调研完成，Phase02 排期） |
+
+**无 P0/P1 风险，无阻断项。**
+
+### T7: Phase01 状态判定
+
+| 任务 | 状态 | 核验方式 |
+|---|---|---|
+| T0 交付物+基线 | ✅ PASS | 6份MD5独立计算 + V87归档+Tag校验 |
+| T1 引擎+单元测试 | ✅ PASS | 61/61 独立复测 + 6规则代码审查 |
+| T2 元数据回归 | ✅ PASS | 614 PASS / 0 ERROR 独立复测 |
+| T3 E2E渲染 | ✅ PASS | 14/14 独立复测 + P1 Gating 8项全通过 |
+| T4 跨Agent联合 | ✅ PASS | DSHB 18 matched 挂载验证 + 双口径对齐 |
+| T5 门禁基线 | ✅ PASS | 266/266 + 9/4(历史遗留) |
+| T6 风险台账 | ✅ 更新 | 0 P0/P1，4项风险全部 INFO 或已关闭 |
+| T7 状态判定 | ✅ **READY_FOR_ACCEPT** | T0-T6 全部通过 |
+
+**Phase01 状态: CONDITIONAL → READY_FOR_ACCEPT**
+
+### 约束合规
+
+| 约束 | 状态 |
+|---|---|
+| BRANCH_LOCKED: feature/v88-g1 | ✅ |
+| NO_OVERWRITE: append-only | ✅ |
+| NO_MODIFY_V87: MD5 未变 | ✅ |
+| NO_EDIT_RELEASE_TAG: 26d58a8 | ✅ |
+| NO_ZHIJI_API_CALL: 全程零调用 | ✅ |
+
+**快照 v4 完成 | 2026-10-14 20:10 | HEAD=23e3c39 | DSHE node_binding 专项审计 T0-T7 全流程通过 | Phase01 READY_FOR_ACCEPT**
+

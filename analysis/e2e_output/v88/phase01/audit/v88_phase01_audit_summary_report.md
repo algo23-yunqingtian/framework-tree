@@ -421,3 +421,102 @@ V88 Phase01 全周期并行监控框架已建立。当前 Phase01 处于**开局
 > **Phase01 状态: READY_FOR_ACCEPT → PHASE01_COMPLETED**
 >
 > 所有Phase01计划任务（DSHB爬虫+DSHE渲染引擎+DSHB备选仿真）已全部交付并完成审计复核。0 P0/P1风险，无阻断项。
+
+---
+
+## 第7章: DSHE node_binding 专项独立审计（快照 v4）
+
+> **审计时间**: 2026-10-14 20:10
+> **审计范围**: DSHE P1 node_binding 渲染引擎全量深度复核（T0-T7）
+> **触发提交**: 70b5335 (DSHE) + 23e3c39 (DSHB 仿真终版)
+> **审计方式**: 独立提取 + 独立重跑，不背书式引用提交声明
+
+### 7.1 T0 交付物完整性
+
+| 交付物 | MD5 | 核验 |
+|---|---|---|
+| node_binding_engine.py (1032行) | 32ee95bd | ✅ |
+| test_node_binding.py (61项) | d077055f | ✅ |
+| test_e2e_render.py (14项) | 4572a32c | ✅ |
+| pending_index_simulation.py | 275fbdd3 | ✅ |
+| v88_p1_node_binding_adapt_verify_report.md | 1ec8ba0b | ✅ |
+| v88_dshe_chart_indicator_stat_caliber_spec.md | c9411f5c | ✅ |
+
+V87 归档完整性: MD5 0bcd94a8 + a0030737 unchanged ✅
+Tag v87-rc1-g1-final: 26d58a8 unchanged ✅
+约束合规: BRANCH_LOCKED / NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL 5/5 ✅
+
+### 7.2 T1 引擎 6 条校验规则代码审查
+
+| 规则 | 函数 | 逻辑 | 核验 |
+|---|---|---|---|
+| R1 no_cross_node_binding | `_rule_no_cross_node_binding` | 指标commodity必须在节点comms集合内 | ✅ |
+| R2 tree_node_id_valid | `_rule_tree_node_id_valid` | 节点ID必须在node_index注册 | ✅ |
+| R3 commodity_valid | `_rule_commodity_valid` | 品种必须在commodity_index注册 | ✅ |
+| R4 auto_inherit_description | `_rule_auto_inherit_description` | business_description需匹配node.name(q) | ✅ |
+| R5 chart_type_valid | `_rule_chart_type_valid` | chart_type必须在VALID_CHART_TYPES | ✅ |
+| R6 data_status_valid | `_rule_data_status_valid` | data_status必须在VALID_DATA_STATUSES | ✅ |
+
+独立重跑结果: **61/61 PASS, 0 FAIL, 0 ERROR**
+引擎内部校验: **614 PASS, 0 WARN, 0 ERROR** (101图表 × 6规则 + 补充项)
+
+### 7.3 T2 元数据注入回归
+
+- YAML: 101 张图表定义加载成功
+- tree_config.json: 7 categories, 9 commodities
+- 节点索引: 33 节点 / 9 品种 / 101 图表
+- 606 项基线校验 (6规则×101图表): **614 PASS / 0 ERROR**
+- 回归测试: **PASS** (无退化)
+
+### 7.4 T3 E2E 渲染链路
+
+独立重跑: `timeout 120 python3 test_e2e_render.py`
+- **14/14 ALL E2E TESTS PASSED**
+- 数据结构: time_series=76, gauge=16, stacked_bar=8, heatmap=1
+- 渲染耗时: 0.168s / 101 charts
+- 匹配: 85 matchable + 16 pending = 101 total
+- P1 Gating 8 项门禁: **全部通过**
+
+### 7.5 T4 跨 Agent 联合核验
+
+| 核验项 | 结论 |
+|---|---|
+| DSHB 18 matched 指标挂载 | ✅ 引擎 614 PASS / 0 ERROR |
+| R-REPORT-CALIBER-V1 双口径 | ✅ 88图表+146指标 对齐 |
+| 引擎覆盖 | 101图表+109指标 (含13张扩展) |
+| 节点-品种-指标交叉 | ✅ 33×9×109 全关联 |
+| DSHB 6 pending 备选源 | ✅ 30组仿真 (0G/9Y/21R) |
+
+### 7.6 T5 门禁基线
+
+- check_html.py: **266/266 PASS** ✅
+- reclaim.py: **9 PASS / 4 FAIL** (TD-V87-002 历史遗留) ⚠️
+
+### 7.7 T6 风险台账
+
+| 编号 | 等级 | 更新 |
+|---|---|---|
+| R-V88-001 | ✅ 关闭 | DSHE 已完成 |
+| R-V88-002 | INFO | 30组仿真可用，待正式采集 |
+| R-V88-003 | ✅ 关闭 | 空窗消除 |
+| R-V88-004 | INFO | 备选源调研完成，Phase02 排期 |
+
+**0 P0/P1 风险。无阻断项。**
+
+### 7.8 T7 Phase01 状态判定
+
+| 任务 | 状态 |
+|---|---|
+| T0 交付物+基线 | ✅ PASS |
+| T1 引擎+单元测试 | ✅ PASS (61/61) |
+| T2 元数据回归 | ✅ PASS (614/0) |
+| T3 E2E渲染 | ✅ PASS (14/14) |
+| T4 跨Agent联合 | ✅ PASS |
+| T5 门禁基线 | ✅ PASS (266/266) |
+| T6 风险台账 | ✅ 更新 |
+| T7 状态判定 | ✅ **READY_FOR_ACCEPT** |
+
+> **Phase01 状态: READY_FOR_ACCEPT**
+>
+> DSHB P0 爬虫（12/12 DEPLOYED, 87/87 PASS, 99.7% 金丝雀）+ DSHE P1 node_binding（61/61 PASS, 14/14 E2E, 614/0 校验）+ DSHB 备选仿真（30组完整）三线交付均通过独立审计复核。Phase01 可进入验收流程。
+
