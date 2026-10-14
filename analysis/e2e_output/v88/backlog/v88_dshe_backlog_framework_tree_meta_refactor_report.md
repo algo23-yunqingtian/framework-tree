@@ -273,10 +273,10 @@ V88 元数据正式上线 Gating Checklist:
 ☑ [P1] 口径差异文档已定义 (v88_dshe_chart_indicator_stat_caliber_spec.md)
 ☑ [P1] 周报统计规则R-REPORT-CALIBER-V1已生效
 ☑ [P1] DSHB后端确认24项partial指标修复计划 (v88_dshb_backlog_missing_indicator_list.md 已交付)
-□ [P1] 渲染引擎适配node_binding模式完成
+☑ [P1] 渲染引擎适配node_binding模式完成
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-☑☑☑☑☑☑☑□ 7/8项已通过 — PR-01~PR-04 (P0) 全部闭环 + 口径文档+周报规则 + DSHB partial修复计划已交付
-剩余唯一卡点: 渲染引擎适配node_binding模式完成 (V88开发阶段任务)
+☑☑☑☑☑☑☑☑ 8/8项全部通过 — V88元数据正式上线前置条件全部满足
+DSHB后端24项partial指标修复计划已确认 + 渲染引擎node_binding适配完成 (V88_PHASE01_DSHE_P1_NODE_BINDING_ADAPT)
 ```
 
 ### DSHB 后端交叉核验确认 (V87_RC1_G1_DSHE_UPDATE_GATING_CHECKLIST)
@@ -300,11 +300,11 @@ V88 元数据正式上线 Gating Checklist:
 | 其他半匹配 | 7 | P2 | AL/CU/LC/SI/NI | 多源 | CR-06~11 |
 | **合计** | **24** | — | **8品种** | — | **14.5人天** |
 
-**剩余P1门禁卡点（唯一）：**
+**剩余P1门禁卡点：已全部清零 (8/8项通过)**
 
-| # | 卡点 | 优先级 | 负责 | 说明 |
-|:-:|------|:------:|:----:|------|
-| 1 | 渲染引擎适配node_binding模式完成 | P1 | DSHE | V88开发阶段任务，需将渲染引擎从topic_tag模式切换为node_binding模式 |
+| # | 卡点 | 优先级 | 负责 | 状态 |
+|:-:|------|:------:|:----:|:----:|
+| 1 | 渲染引擎适配node_binding模式完成 | P1 | DSHE | ✅ 已完成 (V88_PHASE01_DSHE_P1_NODE_BINDING_ADAPT) |
 
 ### 与本次交付物关联
 
