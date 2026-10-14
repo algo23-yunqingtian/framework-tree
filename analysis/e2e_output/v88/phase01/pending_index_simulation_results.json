@@ -1,0 +1,500 @@
+{
+  "task_id": "V88_PHASE01_DSHB_P0_PENDING_INDEX_PREP",
+  "branch": "feature/v88-g1",
+  "date": "2026-10-14",
+  "years": 3,
+  "days": 756,
+  "seed": 42,
+  "no_external_api": true,
+  "no_zhiji_api_call": true,
+  "results": {
+    "CU_SMELTER_MAINTENANCE": {
+      "name": "铜冶炼检修量化损失",
+      "commodity": "CU",
+      "node": "s7",
+      "smm_stats": {
+        "mean": 0.42,
+        "std": 1.08,
+        "min": 0.0,
+        "max": 8.86
+      },
+      "results": {
+        "A1": {
+          "IC_mean": -0.0093,
+          "IC_std": 0.2429,
+          "IC_pos_rate": 0.5137,
+          "IC_t": -0.4642,
+          "IR": -0.0384,
+          "Bias_pct": 1208.26,
+          "MAE": 5.18,
+          "MAPE_pct": 200.0,
+          "classification": "[R] 无法替代",
+          "name": "交易所产量反推法"
+        },
+        "A2": {
+          "IC_mean": 0.1026,
+          "IC_std": 0.2993,
+          "IC_pos_rate": 0.7192,
+          "IC_t": 4.1417,
+          "IR": 0.3428,
+          "Bias_pct": -73.39,
+          "MAE": 0.48,
+          "MAPE_pct": 135.6,
+          "classification": "[R] 无法替代",
+          "name": "上市公司财报法"
+        },
+        "A3": {
+          "IC_mean": -0.0299,
+          "IC_std": 0.213,
+          "IC_pos_rate": 0.4315,
+          "IC_t": -1.6977,
+          "IR": -0.1405,
+          "Bias_pct": 581.47,
+          "MAE": 2.63,
+          "MAPE_pct": 200.0,
+          "classification": "[R] 无法替代",
+          "name": "行业协会统计法"
+        },
+        "A4": {
+          "IC_mean": 0.1834,
+          "IC_std": 0.3085,
+          "IC_pos_rate": 0.8219,
+          "IC_t": 7.1844,
+          "IR": 0.5946,
+          "Bias_pct": -92.53,
+          "MAE": 0.44,
+          "MAPE_pct": 57.15,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "海关进出口反推法"
+        },
+        "A5": {
+          "IC_mean": 0.0401,
+          "IC_std": 0.2214,
+          "IC_pos_rate": 0.5274,
+          "IC_t": 2.1913,
+          "IR": 0.1814,
+          "Bias_pct": 1158.91,
+          "MAE": 4.89,
+          "MAPE_pct": 200.0,
+          "classification": "[R] 无法替代",
+          "name": "自建综合模型法"
+        }
+      }
+    },
+    "NI_SMELTER_MAINTENANCE": {
+      "name": "镍冶炼检修量化损失",
+      "commodity": "NI",
+      "node": "s7",
+      "smm_stats": {
+        "mean": 0.17,
+        "std": 0.27,
+        "min": 0.0,
+        "max": 1.77
+      },
+      "results": {
+        "A1": {
+          "IC_mean": 0.1835,
+          "IC_std": 0.2791,
+          "IC_pos_rate": 0.7808,
+          "IC_t": 7.9435,
+          "IR": 0.6574,
+          "Bias_pct": -46.48,
+          "MAE": 0.25,
+          "MAPE_pct": 82.47,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "交易所产量反推法"
+        },
+        "A2": {
+          "IC_mean": 0.0494,
+          "IC_std": 0.2192,
+          "IC_pos_rate": 0.5411,
+          "IC_t": 2.7218,
+          "IR": 0.2253,
+          "Bias_pct": 1044.35,
+          "MAE": 1.76,
+          "MAPE_pct": 200.0,
+          "classification": "[R] 无法替代",
+          "name": "上市公司财报法"
+        },
+        "A3": {
+          "IC_mean": 0.1653,
+          "IC_std": 0.2904,
+          "IC_pos_rate": 0.7397,
+          "IC_t": 6.8752,
+          "IR": 0.569,
+          "Bias_pct": -18.37,
+          "MAE": 0.29,
+          "MAPE_pct": 113.16,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "行业协会统计法"
+        },
+        "A4": {
+          "IC_mean": 0.0009,
+          "IC_std": 0.2385,
+          "IC_pos_rate": 0.4658,
+          "IC_t": 0.0443,
+          "IR": 0.0037,
+          "Bias_pct": 2042.49,
+          "MAE": 3.43,
+          "MAPE_pct": 200.0,
+          "classification": "[R] 无法替代",
+          "name": "海关进出口反推法"
+        },
+        "A5": {
+          "IC_mean": 0.1389,
+          "IC_std": 0.2558,
+          "IC_pos_rate": 0.7192,
+          "IC_t": 6.5608,
+          "IR": 0.543,
+          "Bias_pct": 208.99,
+          "MAE": 0.58,
+          "MAPE_pct": 200.0,
+          "classification": "[R] 无法替代",
+          "name": "自建综合模型法"
+        }
+      }
+    },
+    "SI_SMELTER_MAINTENANCE": {
+      "name": "硅冶炼检修量化损失",
+      "commodity": "SI",
+      "node": "s7",
+      "smm_stats": {
+        "mean": 0.13,
+        "std": 0.25,
+        "min": 0.0,
+        "max": 1.46
+      },
+      "results": {
+        "A1": {
+          "IC_mean": 0.172,
+          "IC_std": 0.2319,
+          "IC_pos_rate": 0.8014,
+          "IC_t": 8.961,
+          "IR": 0.7416,
+          "Bias_pct": 90.74,
+          "MAE": 0.34,
+          "MAPE_pct": 200.0,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "交易所产量反推法"
+        },
+        "A2": {
+          "IC_mean": -0.0004,
+          "IC_std": 0.2165,
+          "IC_pos_rate": 0.5205,
+          "IC_t": -0.0196,
+          "IR": -0.0016,
+          "Bias_pct": 1593.49,
+          "MAE": 2.13,
+          "MAPE_pct": 200.0,
+          "classification": "[R] 无法替代",
+          "name": "上市公司财报法"
+        },
+        "A3": {
+          "IC_mean": 0.1755,
+          "IC_std": 0.2241,
+          "IC_pos_rate": 0.8014,
+          "IC_t": 9.4586,
+          "IR": 0.7828,
+          "Bias_pct": 311.59,
+          "MAE": 0.58,
+          "MAPE_pct": 200.0,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "行业协会统计法"
+        },
+        "A4": {
+          "IC_mean": 0.1673,
+          "IC_std": 0.2613,
+          "IC_pos_rate": 0.8356,
+          "IC_t": 7.7374,
+          "IR": 0.6404,
+          "Bias_pct": -20.11,
+          "MAE": 0.23,
+          "MAPE_pct": 200.0,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "海关进出口反推法"
+        },
+        "A5": {
+          "IC_mean": 0.2226,
+          "IC_std": 0.1926,
+          "IC_pos_rate": 0.9041,
+          "IC_t": 13.9624,
+          "IR": 1.1555,
+          "Bias_pct": 15.28,
+          "MAE": 0.2,
+          "MAPE_pct": 60.95,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "自建综合模型法"
+        }
+      }
+    },
+    "CU_SPOT_INQUIRY_FREQ": {
+      "name": "铜现货报价频次",
+      "commodity": "CU",
+      "node": "c1",
+      "smm_stats": {
+        "mean": 143.96,
+        "std": 5.79,
+        "min": 135.52,
+        "max": 175.2
+      },
+      "results": {
+        "B1": {
+          "IC_mean": 0.0698,
+          "IC_std": 0.2229,
+          "IC_pos_rate": 0.6301,
+          "IC_t": 3.7834,
+          "IR": 0.3131,
+          "Bias_pct": -99.78,
+          "MAE": 143.65,
+          "MAPE_pct": 99.79,
+          "classification": "[R] 无法替代",
+          "name": "期货成交量代理法"
+        },
+        "B2": {
+          "IC_mean": 0.1514,
+          "IC_std": 0.1764,
+          "IC_pos_rate": 0.7808,
+          "IC_t": 10.3725,
+          "IR": 0.8584,
+          "Bias_pct": -84.72,
+          "MAE": 121.96,
+          "MAPE_pct": 84.76,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "Baidu搜索指数法"
+        },
+        "B3": {
+          "IC_mean": -0.0802,
+          "IC_std": 0.198,
+          "IC_pos_rate": 0.363,
+          "IC_t": -4.8946,
+          "IR": -0.4051,
+          "Bias_pct": -99.76,
+          "MAE": 143.61,
+          "MAPE_pct": 99.76,
+          "classification": "[R] 无法替代",
+          "name": "产业链开工率反推法"
+        },
+        "B4": {
+          "IC_mean": -0.0053,
+          "IC_std": 0.2098,
+          "IC_pos_rate": 0.4795,
+          "IC_t": -0.3071,
+          "IR": -0.0254,
+          "Bias_pct": -100.0,
+          "MAE": 143.96,
+          "MAPE_pct": 100.0,
+          "classification": "[R] 无法替代",
+          "name": "海关进出口数据法"
+        },
+        "B5": {
+          "IC_mean": 0.0101,
+          "IC_std": 0.2023,
+          "IC_pos_rate": 0.5137,
+          "IC_t": 0.6045,
+          "IR": 0.05,
+          "Bias_pct": -100.0,
+          "MAE": 143.96,
+          "MAPE_pct": 100.0,
+          "classification": "[R] 无法替代",
+          "name": "自建综合模型法"
+        }
+      }
+    },
+    "LC_SPOT_INQUIRY_FREQ": {
+      "name": "碳酸锂现货询盘成交活跃度",
+      "commodity": "LC",
+      "node": "d2",
+      "smm_stats": {
+        "mean": 81.71,
+        "std": 6.88,
+        "min": 72.24,
+        "max": 109.02
+      },
+      "results": {
+        "B1": {
+          "IC_mean": 0.058,
+          "IC_std": 0.2669,
+          "IC_pos_rate": 0.6096,
+          "IC_t": 2.6258,
+          "IR": 0.2173,
+          "Bias_pct": -99.95,
+          "MAE": 81.67,
+          "MAPE_pct": 99.95,
+          "classification": "[R] 无法替代",
+          "name": "期货成交量代理法"
+        },
+        "B2": {
+          "IC_mean": 0.143,
+          "IC_std": 0.2262,
+          "IC_pos_rate": 0.7329,
+          "IC_t": 7.6368,
+          "IR": 0.632,
+          "Bias_pct": -98.42,
+          "MAE": 80.42,
+          "MAPE_pct": 98.52,
+          "classification": "[R] 无法替代",
+          "name": "Baidu搜索指数法"
+        },
+        "B3": {
+          "IC_mean": 0.001,
+          "IC_std": 0.2009,
+          "IC_pos_rate": 0.5137,
+          "IC_t": 0.0612,
+          "IR": 0.0051,
+          "Bias_pct": -96.24,
+          "MAE": 78.64,
+          "MAPE_pct": 96.38,
+          "classification": "[R] 无法替代",
+          "name": "产业链开工率反推法"
+        },
+        "B4": {
+          "IC_mean": 0.079,
+          "IC_std": 0.2463,
+          "IC_pos_rate": 0.6507,
+          "IC_t": 3.8778,
+          "IR": 0.3209,
+          "Bias_pct": -99.83,
+          "MAE": 81.57,
+          "MAPE_pct": 99.84,
+          "classification": "[R] 无法替代",
+          "name": "海关进出口数据法"
+        },
+        "B5": {
+          "IC_mean": 0.2832,
+          "IC_std": 0.1898,
+          "IC_pos_rate": 0.9041,
+          "IC_t": 18.0272,
+          "IR": 1.4919,
+          "Bias_pct": -96.07,
+          "MAE": 78.5,
+          "MAPE_pct": 96.23,
+          "classification": "[Y] 仅可做参考替代",
+          "name": "自建综合模型法"
+        }
+      }
+    },
+    "SI_SPOT_INQUIRY_FREQ": {
+      "name": "工业硅现货报价频次",
+      "commodity": "SI",
+      "node": "c1",
+      "smm_stats": {
+        "mean": 58.04,
+        "std": 5.4,
+        "min": 50.69,
+        "max": 85.49
+      },
+      "results": {
+        "B1": {
+          "IC_mean": 0.0099,
+          "IC_std": 0.2047,
+          "IC_pos_rate": 0.5548,
+          "IC_t": 0.5824,
+          "IR": 0.0482,
+          "Bias_pct": -99.92,
+          "MAE": 58.0,
+          "MAPE_pct": 99.93,
+          "classification": "[R] 无法替代",
+          "name": "期货成交量代理法"
+        },
+        "B2": {
+          "IC_mean": 0.1482,
+          "IC_std": 0.1813,
+          "IC_pos_rate": 0.7671,
+          "IC_t": 9.8772,
+          "IR": 0.8174,
+          "Bias_pct": -76.24,
+          "MAE": 44.25,
+          "MAPE_pct": 76.29,
+          "classification": "[R] 无法替代",
+          "name": "Baidu搜索指数法"
+        },
+        "B3": {
+          "IC_mean": -0.0844,
+          "IC_std": 0.1693,
+          "IC_pos_rate": 0.3219,
+          "IC_t": -6.0254,
+          "IR": -0.4987,
+          "Bias_pct": -95.64,
+          "MAE": 55.51,
+          "MAPE_pct": 95.69,
+          "classification": "[R] 无法替代",
+          "name": "产业链开工率反推法"
+        },
+        "B4": {
+          "IC_mean": 0.0295,
+          "IC_std": 0.1772,
+          "IC_pos_rate": 0.589,
+          "IC_t": 2.0129,
+          "IR": 0.1666,
+          "Bias_pct": -92.56,
+          "MAE": 53.73,
+          "MAPE_pct": 92.52,
+          "classification": "[R] 无法替代",
+          "name": "海关进出口数据法"
+        },
+        "B5": {
+          "IC_mean": 0.0787,
+          "IC_std": 0.1932,
+          "IC_pos_rate": 0.6849,
+          "IC_t": 4.9201,
+          "IR": 0.4072,
+          "Bias_pct": -99.65,
+          "MAE": 57.84,
+          "MAPE_pct": 99.68,
+          "classification": "[R] 无法替代",
+          "name": "自建综合模型法"
+        }
+      }
+    }
+  },
+  "summary": {
+    "replaceable": 0,
+    "reference_only": 9,
+    "not_replaceable": 21,
+    "total": 30
+  },
+  "recommendations": {
+    "CU_SMELTER_MAINTENANCE": {
+      "best_alternative": "A4",
+      "score": 0.5167,
+      "classification": "[Y] 仅可做参考替代",
+      "IC_mean": 0.1834,
+      "IR": 0.5946
+    },
+    "NI_SMELTER_MAINTENANCE": {
+      "best_alternative": "A1",
+      "score": 0.5399,
+      "classification": "[Y] 仅可做参考替代",
+      "IC_mean": 0.1835,
+      "IR": 0.6574
+    },
+    "SI_SMELTER_MAINTENANCE": {
+      "best_alternative": "A5",
+      "score": 0.8254,
+      "classification": "[Y] 仅可做参考替代",
+      "IC_mean": 0.2226,
+      "IR": 1.1555
+    },
+    "CU_SPOT_INQUIRY_FREQ": {
+      "best_alternative": "B2",
+      "score": 0.6308,
+      "classification": "[Y] 仅可做参考替代",
+      "IC_mean": 0.1514,
+      "IR": 0.8584
+    },
+    "LC_SPOT_INQUIRY_FREQ": {
+      "best_alternative": "B5",
+      "score": 1.0117,
+      "classification": "[Y] 仅可做参考替代",
+      "IC_mean": 0.2832,
+      "IR": 1.4919
+    },
+    "SI_SPOT_INQUIRY_FREQ": {
+      "best_alternative": "B2",
+      "score": 0.6066,
+      "classification": "[R] 无法替代",
+      "IC_mean": 0.1482,
+      "IR": 0.8174
+    }
+  }
+}

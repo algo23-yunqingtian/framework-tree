@@ -845,3 +845,55 @@ Before (基线):                    After (更新后):
 *Branch: feature/v87-rc1-g1*  
 *Status: V88_P0_PARTIAL_INDICATOR_STATUS_LEDGER*  
 *Phase: Phase01 — Crawler Development Status Update*
+
+---
+
+## 8. 备选方案更新 — 6项Pending指标替代数据源调研 (追加章节)
+
+**TASK_ID:** V88_PHASE01_DSHB_P0_PENDING_INDEX_PREP  
+**DATE:** 2028-05-18  
+**关联报告:** `phase01/dshb/deliverables/v88_p0_pending_6index_alternative_source_simulation_report.md`
+
+### 8.1 更新摘要
+
+针对第2.2节（冶炼检修量化损失，3项）和第2.4节（现货询盘成交活跃度，3项）标记为partial_pending的6项指标，已完成备选数据源调研、离线仿真测算和替代可行性评估。详细仿真结果见独立报告。
+
+### 8.2 6项指标备选方案汇总
+
+| # | 指标ID | 品种 | 节点 | 优先级 | 状态 | 最佳备选源 | IC | IR | 替代可行性 | 优先级建议 |
+|:-:|--------|:----:|:----:|:------:|:----:|-----------|:--:|:--:|:----------:|:----------:|
+| 1 | CU_SMELTER_MAINTENANCE | CU | s7 | P1 | partial_pending | A4 海关进出口反推法 | 0.18 | 0.59 | [Y] 参考替代 | P1 |
+| 2 | NI_SMELTER_MAINTENANCE | NI | s7 | P1 | partial_pending | A1 交易所产量反推法 | 0.18 | 0.66 | [Y] 参考替代 | P1 |
+| 3 | SI_SMELTER_MAINTENANCE | SI | s7 | P1 | partial_pending | A5 自建综合模型法 | 0.22 | 1.16 | [Y] 参考替代 | **P0** |
+| 4 | CU_SPOT_INQUIRY_FREQ | CU | c1 | P2 | partial_pending | B2 Baidu搜索指数法 | 0.15 | 0.86 | [Y] 参考替代 | P1 |
+| 5 | LC_SPOT_INQUIRY_FREQ | LC | d2 | P2 | partial_pending | B5 自建综合模型法 | 0.28 | 1.49 | [Y] 参考替代 | **P0** |
+| 6 | SI_SPOT_INQUIRY_FREQ | SI | c1 | P2 | partial_pending | B2 Baidu搜索指数法 | 0.15 | 0.82 | [R] 无可行备选 | P2 |
+
+### 8.3 备选方案部署建议
+
+| 阶段 | 时间 | 内容 | 预期效果 |
+|------|:----:|------|---------|
+| 短期 | Week 1-2 | 部署A4/A1/B2三个免费参考替代源 | 3项指标从"无数据"→"参考数据可用" |
+| 中期 | Week 3-6 | 开发A5/B5两个自建综合模型 | 2项指标从"无数据"→"模型数据可用" |
+| 长期 | Week 6-9 | SMM付费源接入后全量切换 | 若SMM源不可用，备选方案转为主力源 |
+
+### 8.4 仿真结论
+
+> **核心发现：** 0个方案可直接替换SMM付费数据；9个方案（30%）可作为参考替代；21个方案（70%）无法替代。备选方案部署可降低SMM付费源长期无法采购导致的指标永久缺失风险。
+
+> **推荐优先部署：** SI_SMELTER_MAINTENANCE→A5自建综合模型 (P0) / LC_SPOT_INQUIRY_FREQ→B5自建综合模型 (P0) / CU_SMELTER_MAINTENANCE→A4海关进出口反推 (P1)
+
+### 8.5 仿真代码与结果
+
+| 文件 | 路径 | 说明 |
+|------|------|------|
+| 仿真脚本 | `phase01/pending_index_simulation.py` | 6指标×5备选源完整仿真代码 |
+| 仿真结果 | `phase01/pending_index_simulation_results.json` | 30组仿真IC/IR完整结果 |
+| 独立报告 | `phase01/dshb/deliverables/v88_p0_pending_6index_alternative_source_simulation_report.md` | 完整调研报告 |
+
+---
+
+*Appendix Generated: 2028-05-18 20:30 UTC+8*  
+*Appended by: DSHB Agent (V88_PHASE01_DSHB_P0_PENDING_INDEX_PREP)*  
+*Branch: feature/v88-g1*  
+*Note: 本章节为append-only增量追加，未修改既有内容*
