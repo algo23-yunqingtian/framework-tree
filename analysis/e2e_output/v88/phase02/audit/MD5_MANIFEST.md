@@ -20,3 +20,13 @@
 - Tag: 26d58a8 (不变)
 - check_html.py: 266/266 PASS
 - reclaim.py: PASS=9 FAIL=4 (历史遗留)
+
+## 轮询#2 更新 (2026-10-14 21:30)
+
+- `800d62bd8f14d2bcc320b591e6e0c19f` → `c2a3e8f1` (v88_phase02_monitor_shturl.md, 追加轮询#2)
+- `02cfd447cfaa68773ad3f069e25ea07c` → 更新 (v88_phase02_audit_summary_report.md, 追加轮询#2)
+
+### R-V88-006 澄清
+- 146 = 123 matched + 24 partial (18转matched + 6 pending SMM)
+- 已有数据 141/146 = 96.6%
+- 6项pending与R-V88-004同源 (SMM付费)
