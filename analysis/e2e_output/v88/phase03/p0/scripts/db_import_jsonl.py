@@ -420,7 +420,8 @@ def pattern_map_indicator(indicator_id):
             if "recycle" in metric_key:
                 return f"{comm}_RECYCLE_OUTPUT"
             return f"{comm}_REFINING_OUTPUT"
-        elif metric_key.startswith("capacity"):
+        elif "capacity" in metric_key:
+            # 产能相关: 优先处理回收产能
             if "recycle" in metric_key:
                 if "util" in metric_key:
                     return f"{comm}_RECYCLE_UTIL"
@@ -428,7 +429,7 @@ def pattern_map_indicator(indicator_id):
             if "util" in metric_key:
                 return f"{comm}_UTILIZATION"
             return f"{comm}_REFINING_CAPACITY"
-        elif metric_key == "util" or metric_key == "utilization" or metric_key == "capacity_util":
+        elif "util" in metric_key or metric_key == "utilization":
             return f"{comm}_UTILIZATION"
         elif metric_key.startswith("import"):
             return f"{comm}_IMPORT"
@@ -440,8 +441,6 @@ def pattern_map_indicator(indicator_id):
             return f"{comm}_SMELTING_PROFIT"
         elif metric_key.startswith("cost"):
             return f"{comm}_REFINING_COST"
-        elif metric_key.startswith("util_"):
-            return f"{comm}_UTILIZATION"
         elif metric_key == "inv":
             return f"{comm}_SHFE_INV"
 
