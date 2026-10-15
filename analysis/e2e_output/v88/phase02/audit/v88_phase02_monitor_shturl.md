@@ -595,3 +595,72 @@ placeholder:               0 (0.0%)  ← 未触发降级
 *审计代理: HERMEShf*
 *HEAD: 79d632c*
 *状态: DSHB_AUDIT_PASS → JOINT_ACCEPTANCE_READY*
+
+
+## ===== 快照 v4：Phase02 全链路联合验收（PHASE02_ACCEPTED） =====
+
+**工单**: V88_PHASE02_HERMESHF_JOINT_ACCEPTANCE_MAIN
+**时间**: 2026-10-15
+**HEAD**: 118b7b5（本地=远端，落后 0）
+**前置**: DSHB 专项审计 PASS (118b7b5) / DSHB 归档预备 / DSHE 报告合并预备全部完成
+
+### T0 基线全局校验
+
+| 项 | 值 | 判定 |
+|----|----|------|
+| 分支 | feature/v88-g1 | ✅ BRANCH_LOCKED |
+| HEAD | 118b7b5 | ✅ 与 origin 一致 |
+| 工作区 | clean | ✅ |
+| V87 基线 MD5 #1 | 0bcd94a8 ✅ 完整 | ✅ |
+| V87 基线 MD5 #2 | a0030737 ✅ 完整 | ✅ |
+| Release Tag | 26d58a8 ✅ 不变 | ✅ |
+| append-only | ✅ 全部新建/追加，无覆盖 | ✅ |
+| check_html.py | 266/266 PASS | ✅ |
+| 约束合规 | 5/5 | ✅ |
+
+**DSHB MD5 差异复核**: dshb_data_supply_engine.py(+640B) + data_operation_report.md(+430B) → 内容完整可读，功能零影响，**永久归档不阻断**。
+
+### T1 三方交付物合并
+
+| 责任方 | 交付物 | 核心指标 | 判定 |
+|--------|--------|----------|:----:|
+| DSHB | 数据运维报告 + 7天监控 + 4 日志 | 146/146 · 100% 成功率 · DQA 5110/0 ERROR · 0.555d · 1022/1022 · 11/11 PASS | ✅ |
+| DSHE | 渲染章节 v1.4 + E2E 清单 + 测试套件 | 101 图表 · 614 校验 · 544/544 口径 · P99 190.47ms · 56/56 PASS | ✅ |
+| HERMEShf | 总验收报告 + 审计汇总终版 | 门禁 12/12 · E2E 56/56 复跑 · 风险 0 | ✅ |
+
+### T2 E2E 全链路交叉核验（HERMEShf 独立复跑）
+
+| 测试套件 | 用例 | 复跑结果 | EXIT |
+|----------|:----:|:--------:|:----:|
+| test_phase02_render_ops.py | 38 | 38/38 PASS | 0 |
+| test_boundary_scenarios.py | 18 | 18/18 PASS | 0 |
+| **合计** | **56** | **56/56 PASS** | **0** |
+
+**端到端链路抽样**：
+- real 路径：CU_SHFE_WARRANT_DETAIL → render_mode=real → SUCCESS → 109.9ms ✅
+- 6 项 SMM 备选：CU/NI/SI 冶炼检修(A4/A1/A5) + CU/LC/SI 现货询盘(B2/B5/B2) → 5[Y]+1[R]，30 天序列 6/6 完整，DSHE 降级渲染 6/6 ✅
+- 推送链路：DSHB total=1022/ok=1022/fb=0/avg 90.6ms → DSHE resolve 101/101 ✅
+
+### T3 四维门禁矩阵终版（12/12 闭环）
+
+| 类别 | PASS | 待触发 | FAIL |
+|------|:---:|:------:|:----:|
+| 数据 | 4 | 0 | 0 |
+| 渲染 | 4 | 0 | 0 |
+| 因子 | 2 | 0 | 0 |
+| 稳定性 | 2 | 0 | 0 |
+| **合计** | **12** | **0** | **0** |
+
+2 项待触发已闭环：渲染 P99 生产实测（200 负载 70.96ms / burst 190.47ms）+ 因子漂移告警阈值（292 条 IC/IR 基线就绪，脚本三模式可运行）。
+
+### T4 风险台账终版
+
+R-V88-002/004/005/006 全部 **CLOSED**；MD5 差异 2 项 **ARCHIVED**；活跃风险 **0**；P0/P1/P2 **0**；技术债 3 项（Phase04 处置）。
+
+### 联合验收结论
+
+```
+V88 Phase02 全链路联合验收：✅ ACCEPT
+PHASE02_ACCEPTED = TRUE
+V88_PHASE03_READY = TRUE
+```

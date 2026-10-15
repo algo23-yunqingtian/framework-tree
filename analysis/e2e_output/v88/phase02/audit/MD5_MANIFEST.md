@@ -132,3 +132,40 @@
 - DSHB数据侧: **JOINT_ACCEPTANCE_DATA_READY** ✅
 - 溯源素材就绪: 4份日志随时响应抽样 ✅
 - 新增风险: 0 ✅
+
+## ===== V88 Phase02 联合验收终版 MD5（PHASE02_ACCEPTED） =====
+**工单**: V88_PHASE02_HERMESHF_JOINT_ACCEPTANCE_MAIN | **HEAD**: 118b7b5 | **AGENT**: HERMEShf
+**生成时间**: 2026-10-15
+
+### 本次新增交付物
+
+| 文件 | MD5 | 大小(B) |
+|------|:---:|:-------:|
+| audit/v88_phase02_final_acceptance_report.md | 81B6DFC0DE5CF13DF1744C8742E5DC98 | 18684 |
+
+### 三方交付物 MD5 终版核验清单（HERMEShf 独立复算）
+
+| # | 文件 | MD5(前8) | 大小(B) | 状态 |
+|---|------|:--------:|:-------:|:----:|
+| 1 | dshb/deliverables/v88_phase02_dshb_data_operation_report.md | 0F5D9A52 | 17963 | ⚠️ 差异+430B(已归档) |
+| 2 | dshb/deliverables/v88_phase02_dshb_7day_monitoring_report.md | 12DC82CE | 3313 | ✅ |
+| 3 | dshb/logs/icir_time_series_log.json | 802A82FE | 13375 | ✅ |
+| 4 | dshb/logs/dshe_push_log.json | 9EA852AD | 11045 | ✅ |
+| 5 | dshb/logs/pending_alt_reference_data.json | 93AF6786 | 4876 | ✅ |
+| 6 | dshb/logs/dqa_daily_log.json | B343EA67 | 9313 | ✅ |
+| 7 | dshe/prep_deliverables/v88_phase02_dshe_final_report_render_section.md | 7F893488 | 24961 | ✅ |
+| 8 | dshe/prep_deliverables/v88_phase02_e2e_case_list.md | 51718C28 | 18959 | ✅ |
+| 9 | dshe/test_phase02_render_ops.py | 6FCABD25 | 38485 | ✅ (HERMEShf复跑38/38) |
+| 10 | dshe/prep_deliverables/test_boundary_scenarios.py | 71CEE4C1 | 46390 | ✅ (HERMEShf复跑18/18) |
+
+### DSHB MD5 差异永久记录（归档，不阻断）
+
+| 文件 | 审计MD5 | DSHB声明MD5 | 差异 | 归档状态 |
+|------|:-------:|:-----------:|:----:|:--------:|
+| dshb_data_supply_engine.py | 4E22B6BA | C62F4E95 | +640B (CRLF归一化) | ✅ 永久归档 |
+| data_operation_report.md | 063F1534→0F5D9A52 | 0F5D9A52 | +430B (CRLF归一化) | ✅ 永久归档 |
+
+**门禁矩阵终版**: 12/12 PASS / 0 待触发 / 0 FAIL
+**风险台账**: R-V88-002/004/005/006 全关闭，活跃风险 0
+**约束合规**: 9/9
+**版本状态**: PHASE02_ACCEPTED
