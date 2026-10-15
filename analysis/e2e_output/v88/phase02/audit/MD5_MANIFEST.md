@@ -104,3 +104,31 @@
 - R-V88-006: **关闭** (146/146链路全通)
 - 新增P0/P1: 0 ✅
 - 活跃风险: 0 ✅
+
+## DSHB 联合验收复核交付物 (2026-10-15)
+
+> **TASK_ID**: V88_PHASE02_DSHB_JOINT_ACCEPTANCE_REVIEW
+> **AGENT**: DSHB
+> **HEAD**: 118b7b5
+> **前置**: HERMEShf DSHB审计通过 (118b7b5)
+
+### 新增文件
+
+`96361E8CB8677E417B01616C5EF41AED  analysis/e2e_output/v88/phase02/dshb/prep_deliverables/v88_phase02_dshb_md5_diff_explain.md` (6,197B, MD5差异说明文档)
+`4B4823B000725BF3C457ECA6EF388A2E  analysis/e2e_output/v88/phase02/dshb/prep_deliverables/v88_phase02_dshb_final_report_data_section.md` (11,799B, 数据章节修订版)
+
+### 联合验收复核摘要
+
+| 复核项 | 结果 | 备注 |
+|--------|:----:|------|
+| MD5差异根因 | ✅ CRLF行尾符归一化 | 640处=+640B, 430处=+430B, 精确吻合 |
+| 内容完整性 | ✅ 无损坏 | 引擎语法通过, 报告数据一致 |
+| 6项Pending IC/IR | ✅ 6/6正确 | 5[Y]+1[R]分级与DSHE降级映射一致 |
+| 数据章节复核 | ✅ 无修订意见 | HERMEShf审计结论逐项确认 |
+| 约束合规 | ✅ 9/9 | V87基线/Tag/append-only全合规 |
+
+### 联合验收状态
+
+- DSHB数据侧: **JOINT_ACCEPTANCE_DATA_READY** ✅
+- 溯源素材就绪: 4份日志随时响应抽样 ✅
+- 新增风险: 0 ✅
