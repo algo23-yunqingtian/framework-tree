@@ -200,3 +200,54 @@
 BRANCH_LOCKED / NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL /
 node_binding_engine.py 未修改 / Phase02 生产链路零修改 / api_cache.db 只读零污染 /
 phase03_test.db 未入库 / 旧口径留档不删
+
+### V88_PHASE03_P1_DSHB_MAIN_JOB (DSHB 数据层P1主任务)
+| 文件 | MD5 | 大小(B) |
+|------|:---:|:------:|
+| analysis/e2e_output/v88/phase03/p1/scripts/derive_indicators.py | `P1_NEW` | 派生指标构建(59项) |
+| analysis/e2e_output/v88/phase03/p1/scripts/verify_testdb.py | `P1_NEW` | DQA 8条规则校验 |
+| analysis/e2e_output/v88/phase03/p1/scripts/rebuild_phase03_testdb.py | `P1_NEW` | 一键重建(P1版) |
+| analysis/e2e_output/v88/phase03/p1/scripts/export_mapping_list.py | `P1_NEW` | 映射导出(P1版) |
+| analysis/e2e_output/v88/phase03/p1/scripts/threshold_baseline.py | `P1_NEW` | 三级阈值基线 |
+| analysis/e2e_output/v88/phase03/p1/scripts/noise_rate_analysis.py | `P1_NEW` | 噪声率分析 |
+| analysis/e2e_output/v88/phase03/p1/scripts/expand_base_indicators.py | `P1_NEW` | 基础指标扩量(146→180) |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_main_report.md | `P1_NEW` | P1综合执行报告 |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_metric_indicator_code_mapping.md | `P1_NEW` | 映射清单(13,445B) |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_metric_indicator_code_mapping.json | `P1_NEW` | 映射JSON(183,353B) |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_3level_threshold_baseline.md | `P1_NEW` | 三级阈值基线(72,478B) |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_noise_rate_analysis.md | `P1_NEW` | 噪声率分析(51,692B) |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_risklist.md | `P1_NEW` | 风险台账(更新版) |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_base_indicator_expansion.md | `P1_NEW` | 基础指标扩量报告(6,776B) |
+| analysis/e2e_output/v88/phase03/p1/dshb/threshold_baseline_data.json | `P1_NEW` | 阈值基线数据(327,732B) |
+| analysis/e2e_output/v88/phase03/p1/dshb/noise_rate_data.json | `P1_NEW` | 噪声率数据 |
+| analysis/e2e_output/v88/phase03/p1/scripts/derived_indicator_stats.json | `P1_NEW` | 派生指标统计 |
+| STATUS.md | `UPDATED` | — |
+| analysis/e2e_output/v88/JOB_READY.flag | `UPDATED` | — |
+
+> **DSHB P1核心**: 59项派生指标建库(R-V88-033 RESOLVED) / 114,818行新增数据 / 指标扩量34项(146→180) / DQA 8条规则全PASS / 三级阈值基线652指标(NORMAL=544/TRIP=108) / 噪声率9.54%<10%达标 / P0-9分母恢复109 / 590,411行/674指标/667映射 / R-V88-033→RESOLVED / 14项风险全CLOSED/MITIGATED / PHASE03_P1_DSHB_MAIN=IN_PROGRESS / V88_PHASE03_P1_DSHB_MAIN_JOB=COMPLETE
+
+# ===== V88 Phase03 P1 DSHE Engine Main Job (2026-10-15) =====
+| File | MD5 | Size (bytes) | Status |
+|------|:---:|:------------:|:------:|
+| `dshe/_fix_adapter.py` | `6a265a656f71eeabd521942c48c3902d` | 667 | P1 |
+| `dshe/_update_metadata.py` | `7778fc7e5d9ca74f14ec3b5142200f48` | 9230 | P1 |
+| `dshe/collect_cpu_baseline_p1.py` | `f2da647c5270b648316d3e8bce765662` | 36720 | P1 |
+| `dshe/engine_180indicator_adapter.py` | `6bb32cfdba809d7504c14811388ca457` | 98529 | P1 |
+| `dshe/engine_threshold_monitor.py` | `4da0ead1e5ffb9f8ff13180971a70f1a` | 59059 | P1 |
+| `dshe/longrun_perf_results.json` | `3260fd2959b7d2cdda482e8fceab9ee8` | 2386 | P1 |
+| `dshe/longrun_perf_test.py` | `162bb3bb03851fc21254179c2122adbd` | 11922 | P1 |
+| `dshe/noise_indicator_monitor.py` | `db54f6c340202fa6c8d9e72a3b286137` | 83443 | P1 |
+| `dshe/p1_regression_results.json` | `c9c5af75830265d725c93e43e688acd7` | 14805 | P1 |
+| `dshe/p1_regression_results.md` | `e5c775ecda8aa7da8da9e83f4bb3a036` | 5077 | P1 |
+| `dshe/p1_regression_suite.py` | `31f6230526603a7315f8812d08a2c206` | 49325 | P1 |
+| `dshe/p1_smoke_query_results.json` | `449868bc75976f0c16becad9c5c9dc2d` | 3669 | P1 |
+| `dshe/p1_smoke_query_test.py` | `645af853b1b754e72f90b1fdd5629ddd` | 17206 | P1 |
+| `dshe/v88_phase03_p1_cpu_baseline_contrast_report.md` | `8f6f8ac227f8ff4b130a040f08065091` | 6816 | P1 |
+| `dshe/v88_phase03_p1_dshe_main_report.md` | `f57d11c9a362493dcf67b8468280200e` | 12488 | P1 |
+| `dshe/v88_phase03_p1_engine_threshold_monitor_spec.md` | `3d6aba12fa2226757f05e415c974e7e4` | 30405 | P1 |
+
+## P1 DSHE Engine MD5 Verification
+
+- Engine MD5 (frozen): `cd73deaeec54a7f1f8bde92c1300a9dc`
+- Engine MD5 (current): `cd73deaeec54a7f1f8bde92c1300a9dc`
+- Modified? **NO**

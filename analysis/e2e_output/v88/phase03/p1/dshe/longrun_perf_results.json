@@ -1,0 +1,102 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_MAIN_JOB / T4",
+  "schema_version": "v88-p1.0.0",
+  "execution_timestamp": "2026-10-15T15:56:33",
+  "rounds": 3,
+  "charts_per_round": 101,
+  "total_charts": 101,
+  "matchable_charts": 85,
+  "metrics": {
+    "latency": {
+      "median_ms": 186.999,
+      "p95_ms": 356.998,
+      "p99_ms": 388.642,
+      "max_ms": 409.002,
+      "mean_ms": 208.564,
+      "threshold_p99_ms": 500.0,
+      "target_p99_ms": 200.0
+    },
+    "cpu": {
+      "mean_pct": null,
+      "peak_pct": null,
+      "fuse_threshold_pct": 2.0,
+      "caliber": "process-level instantaneous (NOT comparable to Phase02 FUSE 2.0%)"
+    },
+    "memory": {
+      "rss_max_mb": null
+    },
+    "wall_time": {
+      "total_ms": 63199.9,
+      "avg_per_round_ms": 21066.6
+    },
+    "coverage": {
+      "d7_real": 69,
+      "d7_total": 101,
+      "d7_coverage_pct": 68.3168,
+      "threshold_pct": 60.0
+    },
+    "source_distribution": {
+      "real": 243,
+      "simulated": 60,
+      "placeholder": 0,
+      "error": 0
+    }
+  },
+  "phase02_comparison": {
+    "phase02_p99_ms": 39.193,
+    "phase02_d7_pct": 68.3168,
+    "p99_delta_ms": 349.449,
+    "p99_delta_pct": 891.61,
+    "d7_delta_pct_pts": 0.0
+  },
+  "rounds_detail": [
+    {
+      "round": 1,
+      "charts": 101,
+      "wall_time_ms": 21282.6,
+      "latency_median_ms": 186.0,
+      "latency_p95_ms": 358.999,
+      "latency_p99_ms": 388.642,
+      "cpu_pct": null,
+      "sources": {
+        "real": 81,
+        "simulated": 20,
+        "placeholder": 0,
+        "error": 0
+      }
+    },
+    {
+      "round": 2,
+      "charts": 101,
+      "wall_time_ms": 21085.0,
+      "latency_median_ms": 186.997,
+      "latency_p95_ms": 354.997,
+      "latency_p99_ms": 388.002,
+      "cpu_pct": null,
+      "sources": {
+        "real": 81,
+        "simulated": 20,
+        "placeholder": 0,
+        "error": 0
+      }
+    },
+    {
+      "round": 3,
+      "charts": 101,
+      "wall_time_ms": 20832.3,
+      "latency_median_ms": 189.0,
+      "latency_p95_ms": 356.617,
+      "latency_p99_ms": 383.998,
+      "cpu_pct": null,
+      "sources": {
+        "real": 81,
+        "simulated": 20,
+        "placeholder": 0,
+        "error": 0
+      }
+    }
+  ],
+  "verdict": "PASS",
+  "psutil_available": false,
+  "resource_available": false
+}

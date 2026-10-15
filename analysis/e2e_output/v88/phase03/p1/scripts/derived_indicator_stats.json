@@ -1,0 +1,562 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHB_MAIN_JOB",
+  "agent": "DSHB",
+  "branch": "feature/v88-g1",
+  "generated": "2026-10-15T15:43:02.275493",
+  "db_path": "analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
+  "dry_run": false,
+  "pre_stats": {
+    "rows": 475593,
+    "indicators": 615
+  },
+  "post_stats": {
+    "rows": 590411,
+    "indicators": 674,
+    "derived_indicators": 59
+  },
+  "total_computed": 114818,
+  "total_inserted": 114818,
+  "successful": 59,
+  "failed": 0,
+  "details": [
+    {
+      "derived_id": "cu_term_structure",
+      "category": "term_structure",
+      "commodity": "cu",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "al_term_structure",
+      "category": "term_structure",
+      "commodity": "al",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "zn_term_structure",
+      "category": "term_structure",
+      "commodity": "zn",
+      "rows_computed": 2833,
+      "rows_inserted": 2833,
+      "status": "ok"
+    },
+    {
+      "derived_id": "ni_term_structure",
+      "category": "term_structure",
+      "commodity": "ni",
+      "rows_computed": 1659,
+      "rows_inserted": 1659,
+      "status": "ok"
+    },
+    {
+      "derived_id": "sn_term_structure",
+      "category": "term_structure",
+      "commodity": "sn",
+      "rows_computed": 1535,
+      "rows_inserted": 1535,
+      "status": "ok"
+    },
+    {
+      "derived_id": "si_term_structure",
+      "category": "term_structure",
+      "commodity": "si",
+      "rows_computed": 893,
+      "rows_inserted": 893,
+      "status": "ok"
+    },
+    {
+      "derived_id": "li_term_structure",
+      "category": "term_structure",
+      "commodity": "li",
+      "rows_computed": 754,
+      "rows_inserted": 754,
+      "status": "ok"
+    },
+    {
+      "derived_id": "pb_term_structure",
+      "category": "term_structure",
+      "commodity": "j21",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "cu_month_spread",
+      "category": "month_spread",
+      "commodity": "cu",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "al_month_spread",
+      "category": "month_spread",
+      "commodity": "al",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "zn_month_spread",
+      "category": "month_spread",
+      "commodity": "zn",
+      "rows_computed": 2832,
+      "rows_inserted": 2832,
+      "status": "ok"
+    },
+    {
+      "derived_id": "ni_month_spread",
+      "category": "month_spread",
+      "commodity": "ni",
+      "rows_computed": 1659,
+      "rows_inserted": 1659,
+      "status": "ok"
+    },
+    {
+      "derived_id": "sn_month_spread",
+      "category": "month_spread",
+      "commodity": "sn",
+      "rows_computed": 1537,
+      "rows_inserted": 1537,
+      "status": "ok"
+    },
+    {
+      "derived_id": "si_month_spread",
+      "category": "month_spread",
+      "commodity": "si",
+      "rows_computed": 893,
+      "rows_inserted": 893,
+      "status": "ok"
+    },
+    {
+      "derived_id": "li_month_spread",
+      "category": "month_spread",
+      "commodity": "li",
+      "rows_computed": 436,
+      "rows_inserted": 436,
+      "status": "ok"
+    },
+    {
+      "derived_id": "pb_month_spread",
+      "category": "month_spread",
+      "commodity": "j21",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "cu_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "cu",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "al_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "al",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "zn_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "zn",
+      "rows_computed": 345,
+      "rows_inserted": 345,
+      "status": "ok"
+    },
+    {
+      "derived_id": "ni_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "ni",
+      "rows_computed": 346,
+      "rows_inserted": 346,
+      "status": "ok"
+    },
+    {
+      "derived_id": "sn_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "sn",
+      "rows_computed": 345,
+      "rows_inserted": 345,
+      "status": "ok"
+    },
+    {
+      "derived_id": "si_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "si",
+      "rows_computed": 893,
+      "rows_inserted": 893,
+      "status": "ok"
+    },
+    {
+      "derived_id": "li_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "li",
+      "rows_computed": 754,
+      "rows_inserted": 754,
+      "status": "ok"
+    },
+    {
+      "derived_id": "pb_long_short_ratio",
+      "category": "ls_ratio",
+      "commodity": "j21",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "cu_price_percentile",
+      "category": "price_percentile",
+      "commodity": "cu",
+      "rows_computed": 3022,
+      "rows_inserted": 3022,
+      "status": "ok"
+    },
+    {
+      "derived_id": "al_price_percentile",
+      "category": "price_percentile",
+      "commodity": "al",
+      "rows_computed": 3022,
+      "rows_inserted": 3022,
+      "status": "ok"
+    },
+    {
+      "derived_id": "zn_price_percentile",
+      "category": "price_percentile",
+      "commodity": "zn",
+      "rows_computed": 2814,
+      "rows_inserted": 2814,
+      "status": "ok"
+    },
+    {
+      "derived_id": "ni_price_percentile",
+      "category": "price_percentile",
+      "commodity": "ni",
+      "rows_computed": 2760,
+      "rows_inserted": 2760,
+      "status": "ok"
+    },
+    {
+      "derived_id": "sn_price_percentile",
+      "category": "price_percentile",
+      "commodity": "sn",
+      "rows_computed": 2760,
+      "rows_inserted": 2760,
+      "status": "ok"
+    },
+    {
+      "derived_id": "si_price_percentile",
+      "category": "price_percentile",
+      "commodity": "si",
+      "rows_computed": 874,
+      "rows_inserted": 874,
+      "status": "ok"
+    },
+    {
+      "derived_id": "li_price_percentile",
+      "category": "price_percentile",
+      "commodity": "li",
+      "rows_computed": 735,
+      "rows_inserted": 735,
+      "status": "ok"
+    },
+    {
+      "derived_id": "pb_price_percentile",
+      "category": "price_percentile",
+      "commodity": "j21",
+      "rows_computed": 3022,
+      "rows_inserted": 3022,
+      "status": "ok"
+    },
+    {
+      "derived_id": "cu_top20_net",
+      "category": "top20_net",
+      "commodity": "cu",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "ni_top20_net",
+      "category": "top20_net",
+      "commodity": "ni",
+      "rows_computed": 2779,
+      "rows_inserted": 2779,
+      "status": "ok"
+    },
+    {
+      "derived_id": "sn_top20_net",
+      "category": "top20_net",
+      "commodity": "sn",
+      "rows_computed": 2779,
+      "rows_inserted": 2779,
+      "status": "ok"
+    },
+    {
+      "derived_id": "lc_top20_net",
+      "category": "top20_net",
+      "commodity": "li",
+      "rows_computed": 754,
+      "rows_inserted": 754,
+      "status": "ok"
+    },
+    {
+      "derived_id": "si_top20_net",
+      "category": "top20_net",
+      "commodity": "si",
+      "rows_computed": 893,
+      "rows_inserted": 893,
+      "status": "ok"
+    },
+    {
+      "derived_id": "pb_top20_net",
+      "category": "top20_net",
+      "commodity": "j21",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "cu_inv_change",
+      "category": "inv_change",
+      "commodity": "cu",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "al_inv_change",
+      "category": "inv_change",
+      "commodity": "al",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "zn_inv_change",
+      "category": "inv_change",
+      "commodity": "zn",
+      "rows_computed": 516,
+      "rows_inserted": 516,
+      "status": "ok"
+    },
+    {
+      "derived_id": "ni_inv_change",
+      "category": "inv_change",
+      "commodity": "ni",
+      "rows_computed": 499,
+      "rows_inserted": 499,
+      "status": "ok"
+    },
+    {
+      "derived_id": "comex_cu_lme_spread",
+      "category": "comex_spread",
+      "commodity": "cu",
+      "rows_computed": 3041,
+      "rows_inserted": 3041,
+      "status": "ok"
+    },
+    {
+      "derived_id": "comex_zn_lme_spread",
+      "category": "comex_spread",
+      "commodity": "zn",
+      "rows_computed": 1051,
+      "rows_inserted": 1051,
+      "status": "ok"
+    },
+    {
+      "derived_id": "si_inventory_days",
+      "category": "inv_days",
+      "commodity": "si",
+      "rows_computed": 133,
+      "rows_inserted": 133,
+      "status": "ok"
+    },
+    {
+      "derived_id": "sn_inventory_days",
+      "category": "inv_days",
+      "commodity": "sn",
+      "rows_computed": 2496,
+      "rows_inserted": 2496,
+      "status": "ok"
+    },
+    {
+      "derived_id": "li_basis_change",
+      "category": "basis_change",
+      "commodity": "li",
+      "rows_computed": 753,
+      "rows_inserted": 753,
+      "status": "ok"
+    },
+    {
+      "derived_id": "li_inv_change",
+      "category": "inv_change",
+      "commodity": "li",
+      "rows_computed": 17,
+      "rows_inserted": 17,
+      "status": "ok"
+    },
+    {
+      "derived_id": "li_oi_percentile",
+      "category": "oi_percentile",
+      "commodity": "li",
+      "rows_computed": 735,
+      "rows_inserted": 735,
+      "status": "ok"
+    },
+    {
+      "derived_id": "spot_is_change",
+      "category": "spot_change",
+      "commodity": "si",
+      "rows_computed": 773,
+      "rows_inserted": 773,
+      "status": "ok"
+    },
+    {
+      "derived_id": "spot_licar_change",
+      "category": "spot_change",
+      "commodity": "li",
+      "rows_computed": 438,
+      "rows_inserted": 438,
+      "status": "ok"
+    },
+    {
+      "derived_id": "comex_cu_change",
+      "category": "comex_change",
+      "commodity": "cu",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "comex_zn_change",
+      "category": "comex_change",
+      "commodity": "zn",
+      "rows_computed": 2832,
+      "rows_inserted": 2832,
+      "status": "ok"
+    },
+    {
+      "derived_id": "cu_oi_percentile",
+      "category": "oi_percentile",
+      "commodity": "cu",
+      "rows_computed": 3022,
+      "rows_inserted": 3022,
+      "status": "ok"
+    },
+    {
+      "derived_id": "zn_oi_percentile",
+      "category": "oi_percentile",
+      "commodity": "zn",
+      "rows_computed": 326,
+      "rows_inserted": 326,
+      "status": "ok"
+    },
+    {
+      "derived_id": "cu_premium_change",
+      "category": "premium_change",
+      "commodity": "cu",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "al_premium_change",
+      "category": "premium_change",
+      "commodity": "al",
+      "rows_computed": 3040,
+      "rows_inserted": 3040,
+      "status": "ok"
+    },
+    {
+      "derived_id": "zn_basis_change",
+      "category": "basis_change",
+      "commodity": "zn",
+      "rows_computed": 2833,
+      "rows_inserted": 2833,
+      "status": "ok"
+    },
+    {
+      "derived_id": "ni_basis_change",
+      "category": "basis_change",
+      "commodity": "ni",
+      "rows_computed": 2777,
+      "rows_inserted": 2777,
+      "status": "ok"
+    }
+  ],
+  "by_category": {
+    "term_structure": {
+      "indicators": 8,
+      "computed": 16797,
+      "inserted": 16797
+    },
+    "month_spread": {
+      "indicators": 8,
+      "computed": 16477,
+      "inserted": 16477
+    },
+    "ls_ratio": {
+      "indicators": 8,
+      "computed": 11806,
+      "inserted": 11806
+    },
+    "price_percentile": {
+      "indicators": 8,
+      "computed": 19009,
+      "inserted": 19009
+    },
+    "top20_net": {
+      "indicators": 6,
+      "computed": 13287,
+      "inserted": 13287
+    },
+    "inv_change": {
+      "indicators": 5,
+      "computed": 7112,
+      "inserted": 7112
+    },
+    "comex_spread": {
+      "indicators": 2,
+      "computed": 4092,
+      "inserted": 4092
+    },
+    "inv_days": {
+      "indicators": 2,
+      "computed": 2629,
+      "inserted": 2629
+    },
+    "basis_change": {
+      "indicators": 3,
+      "computed": 6363,
+      "inserted": 6363
+    },
+    "oi_percentile": {
+      "indicators": 3,
+      "computed": 4083,
+      "inserted": 4083
+    },
+    "spot_change": {
+      "indicators": 2,
+      "computed": 1211,
+      "inserted": 1211
+    },
+    "comex_change": {
+      "indicators": 2,
+      "computed": 5872,
+      "inserted": 5872
+    },
+    "premium_change": {
+      "indicators": 2,
+      "computed": 6080,
+      "inserted": 6080
+    }
+  }
+}
