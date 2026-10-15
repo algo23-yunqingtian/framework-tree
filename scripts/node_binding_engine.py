@@ -616,13 +616,114 @@ class NodeBindingEngine:
               f"deprecated={len(results['deprecated'])}, errors={len(results['errors'])}")
         return results
 
+    def _resolve_db_path(self):
+        """解析数据库路径，支持环境变量覆盖。
+
+        优先级（从高到低）:
+          1. V88_PHASE03_TEST_DB  \u2014 Phase03 独立测试库 (series_cache 表)
+          2. V88_API_CACHE_DB     \u2014 自定义 API 缓存库路径
+          3. scripts/api_cache.db \u2014 V87/Phase02 默认路径 (indicator_cache 表)
+
+        返回: db_path 字符串 或 None（不可达时）。
+        """
+        p03_path = os.environ.get("V88_PHASE03_TEST_DB", "").strip()
+        if p03_path and os.path.exists(p03_path):
+            return p03_path
+
+        api_path = os.environ.get("V88_API_CACHE_DB", "").strip()
+        if api_path and os.path.exists(api_path):
+            return api_path
+
+        default_path = os.path.join(self.repo_root, "scripts", "api_cache.db")
+        if os.path.exists(default_path):
+            return default_path
+
+        return None
+
+    def _detect_table_schema(self, cursor):
+        """探测数据库中可用的数据表。
+
+        返回: 表名集合，例如 {"series_cache", "indicator_cache", ...}
+        """
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+        return {r[0] for r in cursor.fetchall()}
+
+    def _load_from_indicator_cache(self, cursor, ind_id, code):
+        """从 indicator_cache 表加载真实数据 (V87/Phase02 schema)。
+
+        表结构: indicator_cache(metric, code, data_json)
+        data_json 格式: {"name": "...", "unit": "...", "points": [{"date": "...", "value": ...}]}
+
+        返回: {"name": str, "unit": str, "points": list} 或 None
+        """
+        try:
+            cursor.execute(
+                "SELECT data_json FROM indicator_cache WHERE metric=? AND code=?",
+                (ind_id, code.upper())
+            )
+            row = cursor.fetchone()
+            if row:
+                d = json.loads(row[0])
+                pts = [{"date": p["date"], "value": float(p["value"])}
+                       for p in d.get("points", [])
+                       if isinstance(p, dict) and p.get("date") and p.get("value") is not None]
+                pts.sort(key=lambda p: p["date"])
+                return {
+                    "name": d.get("name", ""),
+                    "unit": d.get("unit", ""),
+                    "points": pts,
+                }
+        except Exception:
+            pass
+        return None
+
+    def _load_from_series_cache(self, cursor, ind_id, code):
+        """从 series_cache 表加载真实数据 (Phase03 schema)。
+
+        表结构: series_cache(id, indicator_id, indicator_id_mapped, commodity, date, value, source, imported_at)
+        查询条件: indicator_id_mapped = DSHE indicator_id, commodity = 品种代码
+        聚合输出: 与 indicator_cache 的 data_json 格式对齐
+
+        返回: {"name": str, "unit": str, "points": list} 或 None
+        """
+        try:
+            cursor.execute(
+                "SELECT date, value FROM series_cache "
+                "WHERE indicator_id_mapped=? AND commodity=? AND indicator_id_mapped IS NOT NULL "
+                "ORDER BY date",
+                (ind_id, code)
+            )
+            rows = cursor.fetchall()
+            if rows:
+                pts = [{"date": r[0], "value": float(r[1])}
+                       for r in rows if r[1] is not None]
+                if pts:
+                    return {
+                        "name": "",
+                        "unit": "",
+                        "points": pts,
+                    }
+        except Exception:
+            pass
+        return None
+
     def _load_real_data(self, cb):
         """
-        尝试从 api_cache.db 加载真实数据。
-        如果 api_cache.db 不存在或指标无数据，返回 None。
+        从数据库加载真实数据。
+
+        自动检测数据库 schema，支持两种表结构:
+          - indicator_cache (V87/Phase02): data_json 聚合列
+          - series_cache (Phase03): 逐行 date/value, 聚合组装 data_json
+
+        数据库路径解析优先级:
+          1. V88_PHASE03_TEST_DB 环境变量
+          2. V88_API_CACHE_DB 环境变量
+          3. scripts/api_cache.db (默认)
+
+        如果数据库不存在或指标无数据，返回 None。
         """
-        db_path = os.path.join(self.repo_root, "scripts", "api_cache.db")
-        if not os.path.exists(db_path):
+        db_path = self._resolve_db_path()
+        if not db_path:
             return None
 
         try:
@@ -630,26 +731,27 @@ class NodeBindingEngine:
             conn = sqlite3.connect(db_path)
             cursor = conn.cursor()
 
+            tables = self._detect_table_schema(cursor)
+
             all_data = []
             for ind in cb.indicators:
                 ind_id = ind.get("indicator_id", "")
                 code = ind.get("commodity", cb.commodity)
-                cursor.execute(
-                    "SELECT data_json FROM indicator_cache WHERE metric=? AND code=?",
-                    (ind_id, code.upper())
-                )
-                row = cursor.fetchone()
-                if row:
-                    d = json.loads(row[0])
-                    pts = [{"date": p["date"], "value": float(p["value"])}
-                           for p in d.get("points", [])
-                           if isinstance(p, dict) and p.get("date") and p.get("value") is not None]
-                    pts.sort(key=lambda p: p["date"])
-                    all_data.append({
-                        "name": d.get("name", ind.get("indicator_name", "")),
-                        "unit": d.get("unit", ""),
-                        "points": pts,
-                    })
+                ind_name = ind.get("indicator_name", ind_id)
+                data_entry = None
+
+                if "indicator_cache" in tables:
+                    data_entry = self._load_from_indicator_cache(cursor, ind_id, code)
+                    if data_entry and not data_entry.get("name"):
+                        data_entry["name"] = ind_name
+                elif "series_cache" in tables:
+                    data_entry = self._load_from_series_cache(cursor, ind_id, code)
+                    if data_entry and not data_entry.get("name"):
+                        data_entry["name"] = ind_name
+
+                if data_entry and data_entry.get("points"):
+                    all_data.append(data_entry)
+
             conn.close()
 
             if all_data:
