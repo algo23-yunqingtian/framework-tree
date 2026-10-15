@@ -1,6 +1,6 @@
 {
   "task_id": "V88_PHASE03_P0_R2_GATE_BASELINE_AND_REGRESSION",
-  "generated_at": "2026-10-15 12:12:36",
+  "generated_at": "2026-10-15 13:13:03",
   "d7": {
     "gate_id": "D-7",
     "rule": "R3_authoritative_rerun",
@@ -12,10 +12,10 @@
     },
     "renderable": 101,
     "latency_ms": {
-      "median": 1.558,
-      "p95": 2.873,
-      "p99": 2.932,
-      "max": 4.218
+      "median": 1.652,
+      "p95": 3.027,
+      "p99": 3.121,
+      "max": 4.341
     },
     "errors": [],
     "p1_threshold_pct": 60.0,
@@ -165,37 +165,37 @@
     "gate_id": "P0-10",
     "status": "NOT_APPLICABLE",
     "cpu_mean_pct": 81.2333,
-    "cpu_peak_pct": 104.9,
+    "cpu_peak_pct": 101.6,
     "proc_cpu_avg_per_core_pct": 2030.8333,
     "cpu_fuse_threshold_pct": 2.0,
     "p0_optimized_target_pct": 1.75,
     "phase02_baseline_peak_pct": 1.94,
-    "margin_vs_fuse_pct": -102.9,
-    "chg08_improvement_pct_pts": -102.96,
-    "rss_max_mb": 27.4922,
+    "margin_vs_fuse_pct": -99.6,
+    "chg08_improvement_pct_pts": -99.66,
+    "rss_max_mb": 27.3711,
     "rounds": 3,
     "total_renders": 303,
-    "wall_sec": 0.5155,
+    "wall_sec": 0.5017,
     "latency_ms": {
-      "median": 1.59,
-      "p95": 2.955,
-      "p99": 3.0,
-      "max": 3.106,
-      "mean": 1.7
+      "median": 1.541,
+      "p95": 2.875,
+      "p99": 2.93,
+      "max": 3.023,
+      "mean": 1.654
     },
     "errors": [],
     "method": "psutil.Process().cpu_percent + render_with_fallback x3 rounds",
     "comparability_note": "⚠️ 口径说明：Phase02 CPU FUSE 2.0%/峰值1.94% 为全链路业务稳态均值口径，本基线为渲染进程复跑瞬时口径（psutil.Process().cpu_percent），两者不可直接对比。P0-10 门禁判定须以 DSHB 侧 P0-10 专用优化前后对比为准；本基线提供渲染进程 CPU 起点值与 CHG-08 趋势参考。",
     "nproc": 4,
     "samples": 3,
-    "status_reason": "P0-10 门禁须用全链路业务 CPU 口径（DSHB P0-10 专用优化前后对比）判定；本基线为渲染进程瞬时口径（峰值 104.9000%，含 YAML 加载与 Python 启动开销），仅作起点参考。"
+    "status_reason": "P0-10 门禁须用全链路业务 CPU 口径（DSHB P0-10 专用优化前后对比）判定；本基线为渲染进程瞬时口径（峰值 101.6000%，含 YAML 加载与 Python 启动开销），仅作起点参考。"
   },
   "s4": {
     "s4a": {
       "gate_id": "S-4a",
       "name": "灾备写入 RPO",
       "threshold": "=0 (同步双写)",
-      "evidence_count": 88,
+      "evidence_count": 95,
       "dual_write_evidence": [
         "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_align_checklist.md:180",
         "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_align_checklist.md:263",
@@ -210,7 +210,7 @@
         "analysis/e2e_output/v88/phase03/dshe/prep/v88_phase03_visual_align_checklist.md:208",
         "analysis/e2e_output/v88/phase03/dshe/prep/v88_phase03_visual_align_checklist.md:309"
       ],
-      "wal_evidence_count": 27,
+      "wal_evidence_count": 32,
       "wal_evidence": [
         "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_align_checklist.md:280",
         "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_align_checklist.md:309",
@@ -222,13 +222,13 @@
         "analysis/e2e_output/v88/phase03/dshe/prep/v88_phase03_visual_align_checklist.md:323"
       ],
       "status": "NOT_APPLICABLE",
-      "note": "P0 原型阶段：S-4a 判定在 P1 仿真阶段执行（需实际同步双写实现与 P1-8 校验点）。当前仅登记证据痕迹 双写=88 / WAL=27 条（扫描 36 个文件）。"
+      "note": "P0 原型阶段：S-4a 判定在 P1 仿真阶段执行（需实际同步双写实现与 P1-8 校验点）。当前仅登记证据痕迹 双写=95 / WAL=32 条（扫描 45 个文件）。"
     },
     "s4b": {
       "gate_id": "S-4b",
       "name": "灾备恢复 RPO",
       "threshold": "<24h (分片降级)",
-      "evidence_count": 76,
+      "evidence_count": 82,
       "shard_evidence": [
         "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_alt_data_source_review.md:111",
         "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_align_checklist.md:104",
@@ -244,12 +244,12 @@
         "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_module_draft.md:170"
       ],
       "status": "NOT_APPLICABLE",
-      "note": "P0 原型阶段：S-4b 判定在 P2 长稳阶段执行（需真实分片降级演练与 P2-7 校验点）。当前仅登记分片策略痕迹 76 条。"
+      "note": "P0 原型阶段：S-4b 判定在 P2 长稳阶段执行（需真实分片降级演练与 P2-7 校验点）。当前仅登记分片策略痕迹 82 条。"
     },
     "phase03_test_db_exists": false,
     "r09_db_isolation": false,
     "r09_db_isolation_note": "Phase03 独立测试库未创建（期望 phase03_test.db）。R-09 数据库隔离在 P0-R1 灌库时强制要求：db_import_jsonl.py 须写入独立库，禁止写 scripts/api_cache.db（Phase02 生产缓存）。",
-    "scanned_files": 36
+    "scanned_files": 45
   },
   "verdict": "CONDITIONAL_PASS",
   "summary": {
