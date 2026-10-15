@@ -3,6 +3,9 @@
 """
 noise_indicator_monitor.py
 ==========================
+TASK_ID: V88_PHASE03_P1_DSHE_NOISE_MONITOR
+AGENT:   DSHE | BRANCH: feature/v88-g1 (BRANCH_LOCKED)
+
 V88 Phase03 P1 - Noise Indicator Rendering Monitor
 
 Purpose:

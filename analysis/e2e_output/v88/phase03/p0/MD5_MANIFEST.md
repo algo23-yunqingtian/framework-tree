@@ -236,9 +236,9 @@ phase03_test.db 未入库 / 旧口径留档不删
 | `dshe/engine_threshold_monitor.py` | `4da0ead1e5ffb9f8ff13180971a70f1a` | 59059 | P1 |
 | `dshe/longrun_perf_results.json` | `3260fd2959b7d2cdda482e8fceab9ee8` | 2386 | P1 |
 | `dshe/longrun_perf_test.py` | `162bb3bb03851fc21254179c2122adbd` | 11922 | P1 |
-| `dshe/noise_indicator_monitor.py` | `db54f6c340202fa6c8d9e72a3b286137` | 83443 | P1 |
-| `dshe/p1_regression_results.json` | `c9c5af75830265d725c93e43e688acd7` | 14805 | P1 |
-| `dshe/p1_regression_results.md` | `e5c775ecda8aa7da8da9e83f4bb3a036` | 5077 | P1 |
+| `dshe/noise_indicator_monitor.py` | `23654DB3A8F21D18E9497F1D68E02E5B` | 84068 | P1 |
+| `dshe/p1_regression_results.json` | `528711B7388DE45C357479B97F5C1FED` | 14854 | P1 |
+| `dshe/p1_regression_results.md` | `0F206A43738BFE9D0128EA843D5DCB42` | 5124 | P1 |
 | `dshe/p1_regression_suite.py` | `31f6230526603a7315f8812d08a2c206` | 49325 | P1 |
 | `dshe/p1_smoke_query_results.json` | `449868bc75976f0c16becad9c5c9dc2d` | 3669 | P1 |
 | `dshe/p1_smoke_query_test.py` | `645af853b1b754e72f90b1fdd5629ddd` | 17206 | P1 |
