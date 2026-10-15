@@ -60,3 +60,12 @@
 | analysis/e2e_output/v88/phase03/p0/v88_phase03_visual_risk_list.md | `d394ddee9e749ffde6e2606502e9f7f1` | 14,507 |
 | STATUS.md | `ed6f4c71bf7b26ef49655673693d5b37` | 1,047,997 |
 | analysis/e2e_output/v88/JOB_READY.flag | `762adde951011c7a56714e402ea0d4d9` | 52,467 |
+
+### V88_PHASE03_P0_DSHB_WATCHER_TASK (DSHB)
+| 文件 | MD5 | 大小(B) |
+|------|:---:|:------:|
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_prematerials.md | `B832C604AE3EAD20B5A03CEE3D2824F7` | 7,215 |
+| STATUS.md | `UPDATED` | — |
+| analysis/e2e_output/v88/JOB_READY.flag | `UPDATED` | — |
+
+> **DSHB 值守核心**: 归档脚本7个文件MD5全匹配锁定 / DSHE引擎修复确认(D7=78.82% PASS) / P1前置资料就绪(指标基线615/映射基线608/风险11项全闭环) / PHASE03_P0_DSHB_WATCHER=TRUE 待命等待P1工单
