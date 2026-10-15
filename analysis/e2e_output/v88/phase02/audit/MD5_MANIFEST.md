@@ -169,3 +169,32 @@
 **风险台账**: R-V88-002/004/005/006 全关闭，活跃风险 0
 **约束合规**: 9/9
 **版本状态**: PHASE02_ACCEPTED
+
+
+## ===== V88 Phase03 顶层规划交付物 MD5（PHASE03_PLAN_PREP_COMPLETE） =====
+**工单**: V88_PHASE03_HERMESHF_TOP_LEVEL_PLAN_PREP | **BASELINE**: 7949949 | **AGENT**: HERMEShf
+**生成时间**: 2026-10-15
+
+### 本次新增交付物（3 份）
+
+| # | 文件 | MD5 | 大小(B) |
+|---|------|:---:|:-------:|
+| 1 | plan/v88_phase03_top_level_plan.md | `FBDDEE1814CD7EAC71AA18F2F0B3A25F` | 14716 |
+| 2 | plan/v88_phase03_gate_matrix.md | `58C68271EEF15C1291D39104FD2F569C` | 8799 |
+| 3 | plan/v88_phase03_agent_work_breakdown.md | `81AF3AF18BDF4028D247568C74D34273` | 11789 |
+
+### Phase03 规划要点
+
+| 项 | 值 |
+|----|----|
+| Phase03 业务目标 | G1 指标扩量(146→200+) / G2 因子漂移增强监控 / G3 灾备链路压力验证 / G4 渲染大并发扩容(200→500) |
+| 阶段拆分 | P0 原型(3天) → P1 仿真(5天) → P2 长稳(7天) → P3 金丝雀(4天) = 19 天 |
+| 全量门禁 | 20 项（Phase02 12 项 + 新增 8 项） |
+| 阶段门禁 | 38 项（P0×8 + P1×12 + P2×10 + P3×8） |
+| 三方子任务 | 21 项（DSHB 8 + DSHE 6 + HERMEShf 7） |
+| 跨 Agent 依赖 | 5 项（全部显式消解方案） |
+| 冲突任务 | 0 |
+| Phase03 新增风险 | R-V88-007~012（P1×2 / P2×2 / INFO×2，0 P0） |
+| Phase02 遗留纳入 | SMM 6项备选(R-V88-008) + CRLF MD5 规范(R-V88-009) |
+| IC/IR 基线继承 | 292 条冻结为 ic_ir_baseline_v1（只读） |
+| 版本状态 | PHASE03_PLAN_PREP_COMPLETE |
