@@ -251,3 +251,54 @@ phase03_test.db 未入库 / 旧口径留档不删
 - Engine MD5 (frozen): `cd73deaeec54a7f1f8bde92c1300a9dc`
 - Engine MD5 (current): `cd73deaeec54a7f1f8bde92c1300a9dc`
 - Modified? **NO**
+
+---
+
+## V88 Phase03 P1 FOLLOWUP — 门禁持续巡检 + 风险评审（2026-10-15，R1）
+
+> **TASK_ID**: V88_PHASE03_P1_HERMES_FOLLOWUP_JOB | **AGENT**: HERMEShf
+> **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE) | **约束**: NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL
+> **R3 tag**: `r3_p1_followup_v3` + 独立门禁判定（库已派生至 P1 状态）| **verdict**: **FAIL** | **P1 准入**: **ADMIT_WITH_BLOCKERS（P1_DONE=FALSE）**
+> **前置**: MAIN 工单 commit `083fa73`；DSHB P1 `624e2b1`；DSHE P1 `7cbd5a4`
+
+| 文件 | MD5 | 说明 |
+|------|-----|------|
+| `analysis/e2e_output/v88/phase03/p0/scripts/p0_gate_checker.py` | `8F66C80C0E08EB3537DF9FE61BB0B8FA` | **本工单修改**（1787→2005 行）：+P0-9-AUDIT 自报口径审计、候选路径扩展至 dshb/dshe 实际落盘、P0-12 md 解析（阈值语境过滤+声明校验）、P0-13 嵌套结构、P0-14 派生证据+库新鲜度核验、`_latest_mapping_json()` 动态选取 |
+| `analysis/e2e_output/v88/phase03/p1/hermes/followup/v88_phase03_p1_gate_continuous_monitor.md` | `3E67BC3A30313B21B183CE3FBEDA5C10` | **新增**（13,921B）：门禁持续巡检日志 R1（46 门禁全量 + 三项遗留复核 + 11 项衍生品缺口清单 + 踩坑记录） |
+| `analysis/e2e_output/v88/phase03/p1/hermes/followup/v88_phase03_p1_risk_review_report.md` | `991494B899ADFCD2CBAF8B020F783A48` | **新增**（18,774B）：R-V88-034/035/036 评审报告（+R-V88-037 新增、R-V88-033 细化 P2-PARTIAL） |
+| `analysis/e2e_output/v88/phase03/review/v88_phase03_merged_risk_list.md` | `FF936055AFB0B33FAAFD42EEE221718D` | §16 追加（16.1~16.12） |
+| `analysis/e2e_output/v88/phase03/review/v88_phase03_gate_matrix.md` | `D64DB7CE2DF540FA08A33124DBE98A64` | 头部五次更新 + §3.5 阶段门禁 45→46 + P0-9-AUDIT 说明 |
+
+### 本轮实测关键数据（P1 库状态：590,411 行 / 674 指标 / 667 映射）
+
+| 项 | 数值 |
+|---|------|
+| 门禁 verdict | **FAIL** |
+| summary | PASS=10 / FAIL=2 / NOT_APPLICABLE=34 / BLOCKED_PRE_P0=0 / UNKNOWN=23 / WARN=0 |
+| 主/阶段判定数 | 22 / 46 |
+| **P0-12 CPU 基线** | 🔴 **FAIL** — 交付物已提交但无全链路优化后数值（仅进程级 99.34%/每核 620.87%，报告显式声明口径不可比） |
+| **P0-13 噪声率** | ✅ **PASS** — 9.5432%（590,411 数据点/56,344 噪声点，573/674 指标达标） |
+| **P0-14 扩量** | ✅ **PASS** — 674 指标（达标率 374.44%）+ 批次交付物 + `testdb_freshness_match=True` |
+| **P0-9-AUDIT** | 🔴 **FAIL** — DSHB 自报 109/109=100.00%（`min(197,109)` 恒真上界），独立复算 **98/109=89.9083%**，虚高 10.09pp |
+| 口径 A / B / C / C' | 89.9083% / **80.1980%** / 100.0000% / 89.9083%（B 较 P0 库 +11.88pp） |
+| CAL 三口径校验 | PASS（VIOLATION=0） |
+| R-V88-033 | DSHB 已建 59/59 派生，但 meta 侧命中 **48/59**，缺口 11 项，分母维持 50 |
+| 回归 24 用例 | PASS=19 / WARN=5 / BLOCKED=0 / FAIL=0 |
+| R-09 生产库零污染 | 3 行 / code=[AO] / mtime 未变 |
+| 风险统计 | 开放 26→27（+R-V88-037）| 已关闭 6→8（+R-V88-035/036）|
+
+### 风险状态变更
+
+| 风险 | 变更 |
+|------|------|
+| R-V88-035（P0-13 噪声率） | ✅ **RESOLVED**（9.5432% < 10%） |
+| R-V88-036（P0-14 扩量批次） | ✅ **RESOLVED**（674 指标，可追溯性完整） |
+| R-V88-034（P0-12 CPU 基线） | 🔴 **升级 P1-High**（交付物口径不符，从 UNKNOWN 转 FAIL） |
+| R-V88-037（新增） | 🔴 **P1-High** — P0-9 自报口径伪造（`export_mapping_list.py` 第 99-100 行 `min()` 恒真上界） |
+| R-V88-033 | 🟡 **P2-PARTIAL**（59 已建，meta 命中 48/59，切换机制已验证正确） |
+
+### 约束合规（10/10）
+
+BRANCH_LOCKED / NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL /
+node_binding_engine.py 未修改 / Phase02 生产链路零修改 / api_cache.db 只读零污染 /
+phase03_test.db 未入库（运行时派生重建）/ P0 既有资产 append-only

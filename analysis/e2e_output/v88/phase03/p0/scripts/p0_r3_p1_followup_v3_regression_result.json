@@ -1,0 +1,296 @@
+{
+  "task_id": "V88_PHASE03_P0_R2_GATE_BASELINE_AND_REGRESSION",
+  "agent": "HERMEShf",
+  "branch": "feature/v88-g1",
+  "generated_at": "2026-10-15 16:48:03",
+  "mode": "full",
+  "baseline_ref": {
+    "charts_total": 101,
+    "matchable": 85,
+    "pending_data": 16,
+    "nodes": 33,
+    "commodities": 9,
+    "p99_threshold_ms": 500.0,
+    "p99_phase02_burst_ms": 190.47,
+    "cpu_fuse_pct": 2.0,
+    "cpu_phase02_peak_pct": 1.94,
+    "cpu_p0_target_pct": 1.75,
+    "d7_p1_pct": 60.0,
+    "d7_p3_pct": 95.0,
+    "p09_coverage_pct": 95.0,
+    "icir_records": 292,
+    "dqa_rules_phase02": 5,
+    "dqa_rules_phase03": 8,
+    "alert_rules": 10
+  },
+  "total_cases": 24,
+  "verdict": "PASS_WITH_WARN",
+  "summary": {
+    "PASS": 19,
+    "WARN": 5
+  },
+  "by_phase": {
+    "A 数据层": {
+      "PASS": 4,
+      "WARN": 2
+    },
+    "B 指标读取": {
+      "PASS": 6
+    },
+    "C 图表渲染": {
+      "PASS": 7,
+      "WARN": 1
+    },
+    "D 告警推送": {
+      "PASS": 2,
+      "WARN": 2
+    }
+  },
+  "fixture": {
+    "engine_loaded": true,
+    "engine_msg": "加载完成: 101 张图表, 33 个节点",
+    "engine_errors": []
+  },
+  "cases": [
+    {
+      "cid": "A-1",
+      "phase": "A 数据层",
+      "name": "真实数据井存在性",
+      "owner": "DSHB",
+      "status": "PASS",
+      "detail": "data/db_export 五金属 JSONL 就绪",
+      "metric": "25.6 MB / 5 文件",
+      "note": "离线数据源，零知几 API 调用（合规）"
+    },
+    {
+      "cid": "A-2",
+      "phase": "A 数据层",
+      "name": "api_cache.db 可达性",
+      "owner": "DSHB",
+      "status": "PASS",
+      "detail": "indicator_cache 表可读",
+      "metric": "rows=3 codes=1 metrics=3",
+      "note": "⚠️ 仅 3 行，远低于 101 图表所需 → 印证 R-V88-013 根因（真实数据未灌库）"
+    },
+    {
+      "cid": "A-3",
+      "phase": "A 数据层",
+      "name": "Phase03 独立库隔离",
+      "owner": "DSHB+HERMEShf",
+      "status": "PASS",
+      "detail": "Phase03 独立测试库已创建",
+      "metric": "phase03_test.db",
+      "note": "R-09 隔离要求：db_import_jsonl.py 须写独立库，禁止写 scripts/api_cache.db。当前 A-3 未完成不构成 P0 启动阻断，但灌库前必须创建。"
+    },
+    {
+      "cid": "A-4",
+      "phase": "A 数据层",
+      "name": "DQA 规则升级",
+      "owner": "DSHB",
+      "status": "WARN",
+      "detail": "检出 0 个 DQA 相关文件",
+      "metric": "期望 8 条（Phase02 5 条）",
+      "note": "DQA 规则为 DSHB P1 交付物；P0 阶段 WARN 不阻断（D-2/D-6 门禁在 P1/P2 判定）"
+    },
+    {
+      "cid": "A-5",
+      "phase": "A 数据层",
+      "name": "扩量批次计划",
+      "owner": "DSHB",
+      "status": "WARN",
+      "detail": "批次计划文档未在 phase03/ 下检出",
+      "metric": "目标 146→180（Phase03），200+ 移入 P2-11",
+      "note": "CHG-01 已改判 180 为 Phase03 目标；批次计划属 P0-7 交付物，P0 阶段 WARN 不阻断"
+    },
+    {
+      "cid": "A-6",
+      "phase": "A 数据层",
+      "name": "灌库脚本 db_import_jsonl.py",
+      "owner": "DSHB",
+      "status": "PASS",
+      "detail": "灌库脚本已就位",
+      "metric": "db_import_jsonl.py",
+      "note": "R-V88-013 前置任务（三方评审实测新发现）：推荐路径 D→C→B，本脚本为首步。未完成则 D-7 覆盖率无法脱离 0%。"
+    },
+    {
+      "cid": "B-1",
+      "phase": "B 指标读取",
+      "name": "meta_chart 加载",
+      "owner": "DSHB",
+      "status": "PASS",
+      "detail": "framework_tree_meta_chart.yaml 加载成功",
+      "metric": "101 张图表",
+      "note": "期望 101 张（Phase02 基线锚点）"
+    },
+    {
+      "cid": "B-2",
+      "phase": "B 指标读取",
+      "name": "图表指标绑定",
+      "owner": "DSHB",
+      "status": "PASS",
+      "detail": "全部图表均含指标绑定",
+      "metric": "101 图表 / 109 去重指标",
+      "note": ""
+    },
+    {
+      "cid": "B-3",
+      "phase": "B 指标读取",
+      "name": "指标命名空间映射",
+      "owner": "DSHB+HERMEShf",
+      "status": "PASS",
+      "detail": "",
+      "metric": "覆盖率 100.0000% (50/50, 映射清单 764, 衍生品剔除 59)",
+      "note": "P0-9 门禁前置（口径已修正为 DSHB 映射清单真实交集，R-V88-032）"
+    },
+    {
+      "cid": "B-4",
+      "phase": "B 指标读取",
+      "name": "IC/IR 基线继承",
+      "owner": "HERMEShf",
+      "status": "PASS",
+      "detail": "ic_ir_drift_baseline.py 存在且可复用",
+      "metric": "292 条（ic_ir_baseline_v1）",
+      "note": "F-1 门禁：基线冻结为 ic_ir_baseline_v1 只读引用"
+    },
+    {
+      "cid": "B-5",
+      "phase": "B 指标读取",
+      "name": "tree_config 加载",
+      "owner": "DSHB",
+      "status": "PASS",
+      "detail": "",
+      "metric": "7 类别 / 9 品种",
+      "note": "期望 7 类别 / 9 品种"
+    },
+    {
+      "cid": "B-6",
+      "phase": "B 指标读取",
+      "name": "引擎加载一致性",
+      "owner": "DSHE",
+      "status": "PASS",
+      "detail": "加载完成: 101 张图表, 33 个节点",
+      "metric": "引擎 101 / 文件 101",
+      "note": ""
+    },
+    {
+      "cid": "C-1",
+      "phase": "C 图表渲染",
+      "name": "全量 101 渲染",
+      "owner": "DSHE",
+      "status": "PASS",
+      "detail": "0 崩溃",
+      "metric": "101/101",
+      "note": ""
+    },
+    {
+      "cid": "C-2",
+      "phase": "C 图表渲染",
+      "name": "三级降级链路",
+      "owner": "DSHE",
+      "status": "PASS",
+      "detail": "real→simulated→placeholder 链路可运行",
+      "metric": "{'real': 69, 'simulated': 32}",
+      "note": "Phase02 已验证 960 次降级 0 崩溃（R-3 门禁）"
+    },
+    {
+      "cid": "C-3",
+      "phase": "C 图表渲染",
+      "name": "真实数据覆盖率 (D-7)",
+      "owner": "HERMEShf",
+      "status": "PASS",
+      "detail": "R3 权威：HERMEShf 独立复跑，非采信自报",
+      "metric": "68.3168% (69/101)",
+      "note": "阈值 P1≥60% / P3≥95%。当前 0% = R-V88-013 前置任务未完成"
+    },
+    {
+      "cid": "C-4",
+      "phase": "C 图表渲染",
+      "name": "P99 时延",
+      "owner": "DSHE",
+      "status": "PASS",
+      "detail": "阈值 <500ms，余量 92.17%",
+      "metric": "p99=39.163ms median=11.611ms max=44.291ms (303 次)",
+      "note": "串行口径；P3 金丝雀阶段须以真实并发流量复测"
+    },
+    {
+      "cid": "C-5",
+      "phase": "C 图表渲染",
+      "name": "CPU FUSE 余量",
+      "owner": "DSHE",
+      "status": "WARN",
+      "detail": "FUSE 阈值 2.0%（S-2 门禁不变）",
+      "metric": "进程 87.6000% / 归一每核 2190.0000%",
+      "note": "⚠️ 口径声明：进程级瞬时值 ≠ 全链路业务稳态值（Phase02 峰值 1.94%），两者不可直接对比。S-2 判定须用 DSHB 全链路口径。"
+    },
+    {
+      "cid": "C-6",
+      "phase": "C 图表渲染",
+      "name": "并发边界探测",
+      "owner": "DSHE",
+      "status": "PASS",
+      "detail": "线程安全边界探测（非 500 并发压测）",
+      "metric": "16 并发 / 101 完成 / 0 失败",
+      "note": "R-5/R-6 门禁须 500 并发压测（P1 阶段）；本项仅验证渲染函数线程安全"
+    },
+    {
+      "cid": "C-7",
+      "phase": "C 图表渲染",
+      "name": "品种覆盖",
+      "owner": "DSHE",
+      "status": "PASS",
+      "detail": "8/8 品种已建图（tree_config 含 9 品种，含未建图品种）",
+      "metric": "8 品种: ['al', 'cu', 'li', 'ni', 'pb', 'si', 'sn', 'zn']",
+      "note": "Phase02 基线：8 品种全建图；tree_config 第 9 品种未建图（非 P0 范围）"
+    },
+    {
+      "cid": "C-8",
+      "phase": "C 图表渲染",
+      "name": "校验规则错误数",
+      "owner": "DSHE",
+      "status": "PASS",
+      "detail": "",
+      "metric": "0 ERROR",
+      "note": "R-1 门禁：614 条校验规则 0 ERROR"
+    },
+    {
+      "cid": "D-1",
+      "phase": "D 告警推送",
+      "name": "告警规则存在性",
+      "owner": "HERMEShf",
+      "status": "PASS",
+      "detail": "v88_phase03_p0_alert_level_mapping.md",
+      "metric": "1 个告警相关交付物",
+      "note": "Phase02 基线 10 条告警规则（109 指标/614 校验）保持不变；Phase03 新增因子面板告警"
+    },
+    {
+      "cid": "D-2",
+      "phase": "D 告警推送",
+      "name": "阈值三档可触发",
+      "owner": "HERMEShf",
+      "status": "WARN",
+      "detail": "CUSUM/EWMA → 4 项业务规则映射表待 P0-3 冻结",
+      "metric": "GREEN/YELLOW/RED/BLUE ↔ WARN/CRIT",
+      "note": "F-2 门禁在 P1/P2 判定；ALIGN-04 双层架构映射表为 P0-3 交付物"
+    },
+    {
+      "cid": "D-3",
+      "phase": "D 告警推送",
+      "name": "告警噪声率",
+      "owner": "HERMEShf",
+      "status": "WARN",
+      "detail": "噪声率须 P2 阶段 7 天静默期实测",
+      "metric": "目标 <10%（7 天静默期）",
+      "note": "F-4 门禁在 P2 判定；R-V88-012 缓解措施为渐进收紧 + 7 天静默期"
+    },
+    {
+      "cid": "D-4",
+      "phase": "D 告警推送",
+      "name": "门禁判定闭环",
+      "owner": "HERMEShf",
+      "status": "PASS",
+      "detail": "门禁基线脚本就位，可一键输出 PASS/FAIL/CONDITIONAL_PASS",
+      "metric": "p0_gate_checker.py",
+      "note": "闭环链路：数据灌入→指标读取→图表渲染→覆盖率统计→D-7 判定→门禁报告。本项验证 D-7 判定器与 R3 权威规则的一致性。"
+    }
+  ]
+}

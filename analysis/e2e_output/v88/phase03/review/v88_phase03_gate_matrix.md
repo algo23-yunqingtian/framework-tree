@@ -7,7 +7,8 @@
 > **2026-10-15 二次更新**: +P0-11 DB 重建脚本可用性（R-V88-031 落地）· D-7 双口径规范化
 > **2026-10-15 三次更新（终审）**: P0-9 判定源口径修正（废弃 JSONL 文件名口径 → DSHB 映射清单真实交集 + 双向归一 + 衍生品命名空间剔除）→ P0-9 PASS 100.0000%，R-V88-032 RESOLVED；三口径对照（A/B/C）统一定义
 > **2026-10-15 四次更新（P1）**: +P0-12 CPU 基线门禁（R-V88-034）· +P0-13 告警噪声率门禁（R-V88-035）· +P0-14 180 指标全量校验（R-V88-036）· 三口径铁律代码化为 `CAL` 校验门禁（R1/R2/R3 运行时强制，违规判 FAIL 阻断）· 阶段门禁 42→45
-> **更新后**: **21 项全量门禁 / 45 项阶段门禁（+1 CAL 校验门禁）** ｜ **P0 阶段最终判定：0 FAIL / 0 BLOCKED_PRE_P0 → PASS_WITH_UNKNOWN → 解锁 P1** ｜ **P1 准入：CONDITIONAL_ADMIT**
+> **2026-10-15 五次更新（P1 FOLLOWUP）**: +P0-9-AUDIT 自报口径审计（拦截 `min(N,109)` 恒真上界型虚报，R-V88-037）· 门禁候选路径对齐 DSHB/DSHE 实际落盘 · 阶段门禁 45→46 · **准入判定 CONDITIONAL_ADMIT → ADMIT_WITH_BLOCKERS（P0-12、P0-9-AUDIT FAIL；P0-13、P0-14 PASS）**
+> **更新后**: **21 项全量门禁 / 46 项阶段门禁（+2 校验门禁 CAL/P0-9-AUDIT）** ｜ **P0 阶段最终判定：0 FAIL / 0 BLOCKED_PRE_P0 → PASS_WITH_UNKNOWN → 解锁 P1** ｜ **P1 准入：ADMIT_WITH_BLOCKERS（P1_DONE=FALSE）**
 > **约束**: BRANCH_LOCKED / NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL / APPEND_ONLY
 > **状态**: **V88_PHASE03_GATE_MATRIX_REVIEWED**
 
@@ -181,14 +182,17 @@
 |---|:---:|:---:|:---:|---|
 | P0 原型 | 8 | **11** | 11 | `P0_CONTRACT_FROZEN` |
 | **P1 新增（CPU/噪声率/扩量）** | — | — | **3** | `P1_GATE_UPDATE_PASS` |
+| **P1 审计（P0-9 自报口径）** | — | — | **1** | `P1_SELF_AUDIT_PASS` |
 | P1 仿真 | 12 | **12** | 12 | `P1_SIMULATION_PASS` |
 | P2 长稳 | 10 | **11** | 11 | `P2_LONGSTABILITY_PASS` |
 | P3 金丝雀 | 8 | **8** | 8 | `PHASE03_ACCEPT` |
-| **合计** | **38** | **42** | **45** | — |
+| **合计** | **38** | **42** | **46** | — |
 
 > **P1 更新说明（2026-10-15，TASK: V88_PHASE03_P1_HERMES_MAIN_JOB / T0）**：新增 3 项阶段门禁 —— **P0-12 CPU 基线门禁**（R-V88-034，全链路口径峰值 ≤1.75%，判定源 = DSHB P0-10 专用优化前后对比，禁止使用进程级瞬时 CPU）、**P0-13 告警噪声率门禁**（R-V88-035，<10% 7 天静默期，观测不足判 WARN 防误判）、**P0-14 180 指标全量校验**（R-V88-036，独立库去重指标 ≥180 + 批次交付物双判定源）。三项均遵循「规则先就绪，等交付物落地」原则，交付物落盘后自动判定，无需改代码。
 >
-> 另有 **`CAL` 校验门禁**（不占阶段门禁计数）：三口径自动校验，阈值 0 VIOLATION，强制口径铁律 R1/R2/R3，违规判 FAIL 阻断 verdict。P1 R3 复测实测 PASS。
+> 另有 **`CAL` 校验门禁**（不占阶段门禁计数）：三口径自动校验，阈值 0 VIOLATION，强制口径铁律 R1/R2/R3，违规判 FAIL 阻断 verdict。
+>
+> **P1 FOLLOWUP 更新说明（2026-10-15，TASK: V88_PHASE03_P1_HERMES_FOLLOWUP_JOB / T1-T3）**：新增第 4 项阶段门禁 —— **P0-9-AUDIT 自报口径审计**（R-V88-037），阈值 0 VIOLATION，扫描各交付方自报的 P0-9 覆盖率与 `check_naming_map()` 独立复算结果比对，检测三类异常：`ORPHAN_NUMERATOR`（自报分子 = `min(N, 分母)` 型恒真上界，如 `min(197,109)=109`）、`DIVERGENCE`（自报与独立复算偏离 >1pp）、`DENOMINATOR_NOT_READY`（自报已切分母 109 但衍生品命中未达 59 项）。与 `CAL` 构成两道互补防线：`CAL` 管「报告怎么写」（门禁自身披露合规），`P0-9-AUDIT` 管「交付方说什么」（自报值可信度）。
 
 ---
 

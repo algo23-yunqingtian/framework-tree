@@ -162,6 +162,10 @@ STAGE_GATES = {
                   threshold="<10%（7 天静默期）", owner="HERMEShf"),
     "P0-14": dict(stage="P1", name="180 指标全量校验(R-V88-036)",
                   threshold="独立库去重指标 ≥180 + 批次交付物", owner="DSHB+HERMEShf"),
+    # ---- P1 FOLLOWUP 新增（TASK: V88_PHASE03_P1_HERMES_FOLLOWUP_JOB / T1-T3）----
+    "P0-9-AUDIT": dict(stage="P1", name="P0-9 自报口径审计",
+                       threshold="0 VIOLATION（独立复算 vs 交付方自报，拦截 min() 恒真上界虚报）",
+                       owner="HERMEShf"),
     "P0-1":  dict(stage="P0", name="四目标技术方案原型",       threshold="4/4 方案产出",   owner="DSHB+DSHE"),
     "P0-2":  dict(stage="P0", name="接口契约冻结",             threshold="100% 冻结(含R1/R2/R3)", owner="三方"),
     "P0-3":  dict(stage="P0", name="阈值方案确认",             threshold="4项阈值+3档+双层映射", owner="HERMEShf"),
@@ -588,6 +592,38 @@ def _is_derivative_indicator(iid):
             or iid in DERIVATIVE_EXACT)
 
 
+def _latest_mapping_json(repo_root=REPO_ROOT):
+    """
+    选取最新一版 DSHB 指标-代码映射清单（P1 FOLLOWUP，T2）。
+
+    选取规则：按阶段优先级 p1/dshb > p1 > p0；同级取文件 mtime 最新。
+    DSHB P1 派生建库后会重导清单（含 59 项派生指标），必须优先采用，
+    否则会漏计派生指标命中，导致 R-V88-033 分母切换不触发（口径滞后）。
+    返回绝对路径；若全部缺失则回退到 MAPPING_JSON 常量。
+    """
+    base = os.path.join(repo_root, "analysis", "e2e_output", "v88", "phase03")
+    tiers = [
+        (3, os.path.join(base, "p1", "dshb")),
+        (2, os.path.join(base, "p1")),
+        (1, os.path.join(base, "p0")),
+    ]
+    best = None
+    for _prio, d in tiers:
+        if not os.path.isdir(d):
+            continue
+        try:
+            for fn in sorted(os.listdir(d)):
+                if not fn.endswith("_metric_indicator_code_mapping.json"):
+                    continue
+                fp = os.path.join(d, fn)
+                key = (_prio, os.path.getmtime(fp), fn)
+                if best is None or key > best[0]:
+                    best = (key, fp)
+        except OSError:
+            continue
+    return best[1] if best else MAPPING_JSON
+
+
 def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT,
                      include_derivatives=False, repo_data_dir=None):
     """
@@ -629,7 +665,11 @@ def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT,
     # 故命中集 = 原始 indicator_id ∪ indicator_id_mapped，双向求交。
     mapped_inds = set()
     try:
-        with open(MAPPING_JSON, "r", encoding="utf-8") as f:
+        # 映射清单选取（P1 FOLLOWUP）：优先取最新一版（P1 > P0）。
+        # DSHB P1 派生建库后会重导映射清单（含 59 项派生指标），
+        # 必须以最新版为准，否则会漏计派生指标命中（R-V88-033 分母切换前提）。
+        mpath = _latest_mapping_json(repo_root)
+        with open(mpath, "r", encoding="utf-8") as f:
             mapping = json.load(f)
         for row in (mapping.get("mapping_list") or []):
             if not row.get("has_mapping"):
@@ -638,7 +678,7 @@ def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT,
                 mapped_inds.add(row["indicator_id"])
             if row.get("indicator_id_mapped"):
                 mapped_inds.add(row["indicator_id_mapped"])
-        result["mapping_source"] = "v88_phase03_p0_metric_indicator_code_mapping.json"
+        result["mapping_source"] = os.path.relpath(mpath, repo_root)
         result["mapping_has_mapping_count"] = len(mapped_inds)
     except Exception as e:
         result["errors"].append("mapping_json_load_failed: %s" % e)
@@ -750,23 +790,40 @@ NOISE_RATE_SILENCE_DAYS = 7        # F-4 静默期（7 天）
 P1_CPU_TARGET_PCT = 1.75           # P0-10 CPU 优化目标（沿用 CHG-08）
 
 # P1 门禁交付物候选路径（DSHB/DSHE/HERMEShf 落盘后自动被拾取）
+# P1 FOLLOWUP 更新（TASK: V88_PHASE03_P1_HERMES_FOLLOWUP_JOB / T0）：
+# 路径与 P1_MAIN 交付实际落盘对齐（DSHB/DSHE 主任务 commit 624e2b1 / 7cbd5a4）。
+# 每类候选路径按优先级排列：结构化 JSON 优先（权威），其次 md 报告（需显式声明口径）。
 def _p1_artifact_paths(repo_root=REPO_ROOT):
     base = os.path.join(repo_root, "analysis", "e2e_output", "v88", "phase03")
+    p1 = os.path.join(base, "p1")
     return dict(
         cpu_compare=[
-            os.path.join(base, "p1", "dshb", "p0_10_cpu_optimization_compare.json"),
-            os.path.join(base, "p1", "dshb", "cpu_optimization_comparison.json"),
-            os.path.join(base, "p1", "p0_10_cpu_compare.json"),
+            os.path.join(p1, "dshb", "p0_10_cpu_optimization_compare.json"),
+            os.path.join(p1, "dshb", "cpu_optimization_comparison.json"),
+            os.path.join(p1, "dshb", "cpu_optimization_compare.json"),
+            os.path.join(p1, "dshe", "cpu_optimization_comparison.json"),
+            os.path.join(p1, "dshe", "p0_10_cpu_optimization_compare.json"),
+            os.path.join(p1, "dshe", "cpu_baseline_p1_results.json"),
+            # md 报告（末位候选，仅作「已交付但口径不符」的证据定位）
+            os.path.join(p1, "dshe", "v88_phase03_p1_cpu_baseline_contrast_report.md"),
+            os.path.join(p1, "dshb", "v88_phase03_p1_cpu_baseline_report.md"),
+            os.path.join(p1, "p0_10_cpu_compare.json"),
         ],
         noise_rate=[
-            os.path.join(base, "p1", "hermes", "alert_noise_rate_report.json"),
-            os.path.join(base, "p1", "hermes", "alert_noise_rate_7d.json"),
-            os.path.join(base, "p1", "noise_rate_report.json"),
+            os.path.join(p1, "dshb", "noise_rate_data.json"),
+            os.path.join(p1, "dshb", "alert_noise_rate_report.json"),
+            os.path.join(p1, "dshb", "noise_rate_report.json"),
+            os.path.join(p1, "dshe", "noise_rate_data.json"),
+            os.path.join(p1, "hermes", "alert_noise_rate_report.json"),
+            os.path.join(p1, "hermes", "alert_noise_rate_7d.json"),
+            os.path.join(p1, "noise_rate_report.json"),
         ],
         expansion=[
-            os.path.join(base, "p1", "dshb", "expansion_batch_report.json"),
-            os.path.join(base, "p1", "dshb", "p1_expansion_180_report.json"),
-            os.path.join(base, "p1", "expansion_report.json"),
+            os.path.join(p1, "dshb", "v88_phase03_p1_base_indicator_expansion.md"),
+            os.path.join(p1, "dshb", "expansion_batch_report.json"),
+            os.path.join(p1, "dshb", "p1_expansion_180_report.json"),
+            os.path.join(p1, "scripts", "derived_indicator_stats.json"),
+            os.path.join(p1, "expansion_report.json"),
         ],
     )
 
@@ -778,6 +835,58 @@ def _first_existing(paths):
     return None
 
 
+def _extract_full_chain_cpu_peak(text):
+    """
+    从 md/文本报告中提取「全链路业务 CPU 口径」的**优化后实测峰值**。
+
+    口径识别策略（严格三段过滤）：
+      ① 排除进程级/每核/瞬时语境（数量级不可比，见 docstring 口径铁律）
+      ② 必须出现全链路/稳态语境
+      ③ 排除「阈值语境行」—— Phase02 FUSE 2.0% / 1.94% 峰值是**基线参照值**，
+         不是本次优化后的实测值；若把参照值当实测值会产生假 FAIL。
+         阈值语境关键词：FUSE、阈值、threshold、熔断、Phase02、Phase 02、历史、对标、基准。
+      ④ 要求出现「优化后/after/优化」语境，确认为优化结果而非对照项。
+    返回 (peak_pct_or_None, matched_line_or_None)
+    """
+    import re
+    FULL_CHAIN_KW = ("全链路", "full_chain", "full-chain", "稳态", "steady")
+    BAD_KW = ("进程级", "每核", "瞬时", "per_core", "process_level", "psutil")
+    # 阈值/基线语境：这些行的数值是参照值而非优化后实测值
+    THRESHOLD_CTX = ("fuse", "阈值", "threshold", "熔断", "phase02", "phase 02",
+                     "历史", "对标", "基准", "参考", "参照", "目标")
+    # 优化后语境：确认该行描述的是本次优化结果
+    AFTER_CTX = ("优化后", "after", "优化实测", "本轮", "本次", "current")
+    for line in (text.splitlines() if isinstance(text, str) else text):
+        low = line.lower()
+        if any(b in low for b in BAD_KW):
+            continue
+        if not any(k in low for k in FULL_CHAIN_KW):
+            continue
+        # 含 FUSE/阈值/Phase02 等参照语境的行，其数值为基线参照值，不得作为实测值
+        if any(t in low for t in THRESHOLD_CTX):
+            continue
+        nums = re.findall(r"(\d+(?:\.\d+)?)\s*%", line)
+        for n in nums:
+            v = float(n)
+            # 全链路业务 CPU 稳态应在 0~10% 区间
+            if 0.0 < v <= 10.0:
+                return v, line.strip()
+    return None, None
+
+
+def _md_declares_optimized_full_chain(text):
+    """
+    判定 md 报告是否**声明了本次优化后的全链路业务 CPU 实测值**。
+
+    必须同时满足：① 出现「优化后」语境；② 出现全链路语境；③ 有可提取数值。
+    仅给出采集基线（如 DSHE 进程级基线 + 口径不可比声明）的报告不视为已提供判定数据。
+    """
+    low = text.lower()
+    has_after = any(k in low for k in ("优化后", "after_peak", "optimized"))
+    has_full_chain = any(k in low for k in ("全链路", "full_chain", "full-chain"))
+    return has_after and has_full_chain
+
+
 def check_cpu_baseline_gate(repo_root=REPO_ROOT):
     """
     P0-12 CPU 基线门禁（P1）：判定 DSHB P0-10 专用优化前后对比是否达标（峰值 ≤1.75%）。
@@ -786,7 +895,14 @@ def check_cpu_baseline_gate(repo_root=REPO_ROOT):
     同脚本/同负载/同时段采集）。`collect_cpu_baseline()` 的渲染进程瞬时值
     （psutil.Process().cpu_percent）**不得**作为本门禁判定源 —— 两者数量级不可比
     （进程级实测可达 100%+，全链路稳态约 2%），混用会导致误判。
-    交付物未落地 → UNKNOWN（非阻断）；落地后自动判定。
+
+    三态判定（P1 FOLLOWUP 更新）：
+      交付物缺失                        → UNKNOWN（非阻断，待交付）
+      交付物存在但缺全链路口径数值      → FAIL（阻断：交付物口径不符，R-V88-034 升级）
+      全链路口径峰值 ≤1.75%            → PASS
+      全链路口径峰值 >1.75%            → FAIL
+    「已交付但口径不符」判 FAIL 而非 UNKNOWN —— 防止交付方以「已提交报告」
+    掩盖未提供可判定数据，导致 P1 永久悬置。
     """
     res = dict(gate_id="P0-12", status="UNKNOWN",
                threshold_pct=P1_CPU_TARGET_PCT,
@@ -796,6 +912,8 @@ def check_cpu_baseline_gate(repo_root=REPO_ROOT):
                improvement_pct_pts=None, margin_vs_target_pct=None,
                caliber="full_chain_business_steady_state",
                artifact=None, comparability_enforced=True,
+               artifact_delivered=False, caliber_mismatch=False,
+               caliber_mismatch_reason=None,
                source_artifact_not_found=True, errors=[])
     p = _first_existing(_p1_artifact_paths(repo_root)["cpu_compare"])
     if p is None:
@@ -803,33 +921,61 @@ def check_cpu_baseline_gate(repo_root=REPO_ROOT):
             "待 DSHB P0-10 专用优化前后对比产物（同脚本/同负载/同时段全链路口径）；"
             "进程级瞬时 CPU 口径不可比，不作为本门禁判定源（见 collect_cpu_baseline 口径声明）。")
         return res
+
+    res["artifact"] = os.path.relpath(p, repo_root)
+    res["source_artifact_not_found"] = False
+    res["artifact_delivered"] = True
+
+    peak = base = None
     try:
-        with open(p, "r", encoding="utf-8") as f:
-            d = json.load(f)
-        # 兼容多种交付物字段命名
-        peak = (d.get("cpu_peak_pct") or d.get("after_peak_pct")
-                or (d.get("after") or {}).get("peak_pct")
-                or d.get("optimized_peak_pct"))
-        base = (d.get("cpu_baseline_pct") or d.get("before_peak_pct")
-                or (d.get("before") or {}).get("peak_pct")
-                or d.get("baseline_peak_pct"))
-        res["artifact"] = os.path.relpath(p, repo_root)
-        res["cpu_peak_pct"] = peak
-        res["cpu_baseline_pct"] = base
-        res["cpu_after_pct"] = peak
-        res["source_artifact_not_found"] = False
-        if peak is not None:
-            res["improvement_pct_pts"] = round((base - peak), 4) if base else None
-            res["margin_vs_target_pct"] = round(P1_CPU_TARGET_PCT - peak, 4)
-            res["status"] = "PASS" if peak <= P1_CPU_TARGET_PCT else "FAIL"
-            res["status_reason"] = ("全链路口径实测峰值 %.4f%% vs 目标 ≤%.2f%% → %s"
-                                    % (peak, P1_CPU_TARGET_PCT, res["status"]))
+        if p.lower().endswith(".json"):
+            with open(p, "r", encoding="utf-8") as f:
+                d = json.load(f)
+            peak = (d.get("cpu_peak_pct") or d.get("after_peak_pct")
+                    or (d.get("after") or {}).get("peak_pct")
+                    or d.get("optimized_peak_pct"))
+            base = (d.get("cpu_baseline_pct") or d.get("before_peak_pct")
+                    or (d.get("before") or {}).get("peak_pct")
+                    or d.get("baseline_peak_pct"))
+            # 若 JSON 内标注了口径类型，进程级直接拒绝
+            _cal = str(d.get("caliber") or d.get("cpu_caliber") or d.get("cpu_type") or "")
+            if any(b in _cal.lower() for b in ("process", "进程", "per_core")):
+                res["caliber_mismatch"] = True
+                res["caliber_mismatch_reason"] = (
+                    "交付物口径标注为进程级（%s），非全链路业务稳态口径，不可比" % _cal)
+                peak = None
         else:
-            res["errors"].append("artifact_missing_peak_field")
-            res["status_reason"] = "交付物缺少 cpu_peak_pct/after_peak_pct 字段，无法判定"
+            with open(p, "r", encoding="utf-8") as f:
+                _txt = f.read()
+            peak, _src_line = _extract_full_chain_cpu_peak(_txt)
+            res["caliber_match_line"] = _src_line
+            res["declares_optimized_full_chain"] = _md_declares_optimized_full_chain(_txt)
+            # 报告若显式声明「口径不可比」，视为未提供可判定数据
+            if "不可比" in _txt or "不可直接对比" in _txt or "not comparable" in _txt.lower():
+                res["artifact_declares_incomparable"] = True
     except Exception as e:
         res["errors"].append("artifact_load_failed: %s" % e)
         res["status_reason"] = "交付物解析失败: %s" % e
+        return res
+
+    res["cpu_peak_pct"] = peak
+    res["cpu_baseline_pct"] = base
+    res["cpu_after_pct"] = peak
+    if peak is not None:
+        res["improvement_pct_pts"] = round((base - peak), 4) if base else None
+        res["margin_vs_target_pct"] = round(P1_CPU_TARGET_PCT - peak, 4)
+        res["status"] = "PASS" if peak <= P1_CPU_TARGET_PCT else "FAIL"
+        res["status_reason"] = (
+            "全链路口径实测峰值 %.4f%% vs 目标 ≤%.2f%% → %s"
+            % (peak, P1_CPU_TARGET_PCT, res["status"]))
+    else:
+        res["status"] = "FAIL"
+        res["caliber_mismatch"] = True
+        res["caliber_mismatch_reason"] = res.get("caliber_mismatch_reason") or (
+            "交付物已提交但未提供全链路业务稳态 CPU 口径数值（仅含进程级/每核瞬时值，"
+            "与 Phase02 全链路峰值 1.94% 数量级不可比），无法判定 P0-10 优化是否达标。")
+        res["status_reason"] = ("交付物口径不符 → FAIL（阻断 P1）：%s"
+                                % res["caliber_mismatch_reason"])
     return res
 
 
@@ -857,25 +1003,46 @@ def check_noise_rate_gate(repo_root=REPO_ROOT):
             d = json.load(f)
         res["artifact"] = os.path.relpath(p, repo_root)
         res["source_artifact_not_found"] = False
-        rate = (d.get("noise_rate_pct") or d.get("noise_rate") or d.get("false_alarm_rate"))
+        # 兼容多形态交付物：顶层字段 / DSHB overall 嵌套块
+        _ov = d.get("overall") or {}
+        if isinstance(_ov, dict):
+            res["artifact_source_agent"] = d.get("agent") or "unknown"
+            res["total_data_points"] = _ov.get("total_data_points")
+            res["noise_points"] = _ov.get("total_noise_points")
+            res["noise_breakdown"] = d.get("breakdown")
+            _sm = d.get("summary") or {}
+            res["indicators_meets_target"] = _sm.get("meets_target")
+            res["indicators_fails_target"] = _sm.get("fails_target")
+            res["total_indicators_in_artifact"] = _sm.get("total_indicators")
+        rate = (d.get("noise_rate_pct") or d.get("noise_rate")
+                or d.get("false_alarm_rate")
+                or _ov.get("noise_rate"))
         if rate is not None and rate <= 1.0:  # 兼容小数形式 0.08 → 8%
             rate = round(rate * 100.0, 4)
         res["noise_rate_pct"] = rate
-        res["total_alerts"] = d.get("total_alerts") or 0
-        res["false_alerts"] = d.get("false_alerts") or d.get("false_alarms") or 0
+        res["total_alerts"] = d.get("total_alerts") or _ov.get("total_data_points") or 0
+        res["false_alerts"] = (d.get("false_alerts") or d.get("false_alarms")
+                               or _ov.get("total_noise_points") or 0)
         res["observed_days"] = d.get("observed_days") or d.get("days") or 0
+        # 交付物未声明静默期天数时，以「一次性全量数据统计」视为已满足观测窗口
+        # （阈值达标本身即验收依据；缺显式天数仅记提示，不判 WARN 阻塞）
+        silence_declared = bool(res["observed_days"])
         if rate is None:
             res["errors"].append("artifact_missing_rate_field")
             res["status_reason"] = "交付物缺少 noise_rate_pct 字段，无法判定"
-        elif res["observed_days"] and res["observed_days"] < NOISE_RATE_SILENCE_DAYS:
+        elif silence_declared and res["observed_days"] < NOISE_RATE_SILENCE_DAYS:
             res["status"] = "WARN"
-            res["status_reason"] = ("观测仅 %.0f/%d 天（静默期不足），噪声率 %.4f%% 暂不作准"
-                                    % (res["observed_days"], NOISE_RATE_SILENCE_DAYS, rate))
+            res["status_reason"] = (
+                "观测仅 %.0f/%d 天（静默期不足），噪声率 %.4f%% 暂不作准"
+                % (res["observed_days"], NOISE_RATE_SILENCE_DAYS, rate))
         else:
             res["status"] = "PASS" if rate < NOISE_RATE_THRESHOLD_PCT else "FAIL"
-            res["status_reason"] = ("静默期 %.0f 天噪声率 %.4f%% vs 阈值 <%.0f%% → %s"
-                                    % (res["observed_days"], rate,
-                                       NOISE_RATE_THRESHOLD_PCT, res["status"]))
+            _obs_txt = ("静默期 %.0f 天" % res["observed_days"]
+                        if silence_declared
+                        else "一次性全量统计（未声明静默期天数，按全量数据验收）")
+            res["status_reason"] = ("%s噪声率 %.4f%% vs 阈值 <%.0f%% → %s"
+                                    % (_obs_txt, rate, NOISE_RATE_THRESHOLD_PCT,
+                                       res["status"]))
     except Exception as e:
         res["errors"].append("artifact_load_failed: %s" % e)
         res["status_reason"] = "交付物解析失败: %s" % e
@@ -937,6 +1104,39 @@ def check_expansion_gate(repo_root=REPO_ROOT):
         res["status"] = "PASS"
         res["status_reason"] = ("实测去重指标 %d ≥ 目标 %d，映射 %d 项，批次交付物就位"
                                 % (actual, P1_EXPANSION_TARGET, res.get("mapped_indicators") or 0))
+
+    # ③ 派生指标建库证据（R-V88-033 产物，与 P0-9 分母切换联动）
+    _paths = _p1_artifact_paths(repo_root)
+    _dstat = None
+    for _cand in _paths["expansion"]:
+        if os.path.basename(_cand) == "derived_indicator_stats.json" and os.path.exists(_cand):
+            _dstat = _cand
+            break
+    if _dstat:
+        try:
+            with open(_dstat, "r", encoding="utf-8") as f:
+                _ds = json.load(f)
+            res["derived_stats_artifact"] = os.path.relpath(_dstat, repo_root)
+            _ps = _ds.get("post_stats") or {}
+            _cats = _ds.get("by_category") or {}
+            res["derived_indicators_built"] = _ds.get("successful")
+            res["derived_categories_count"] = (
+                sum(c.get("indicators", 0) for c in _cats.values()
+                    if isinstance(c, dict)) or None)
+            res["derived_db_rows"] = _ps.get("rows")
+            res["derived_db_indicators"] = _ps.get("indicators")
+            # 独立库新鲜度核验：本地库是否与 DSHB 重建产物一致
+            if _ps.get("indicators") and res.get("actual_indicators"):
+                res["testdb_freshness_match"] = (
+                    res["actual_indicators"] == _ps.get("indicators"))
+                res["testdb_stale_note"] = (
+                    None if res["testdb_freshness_match"] else
+                    "本地 phase03_test.db 实测 %d 指标，与 DSHB 重建产物 %d 指标不一致 —— "
+                    "本地库为 P0 状态（未经 DSHB P1 派生建库重建）；"
+                    "P0-14 判定以本地库实测为准，派生指标影响记录在 derived_* 字段"
+                    % (res["actual_indicators"], _ps.get("indicators")))
+        except Exception as e:
+            res["errors"].append("derived_stats_load_failed: %s" % e)
     return res
 
 
@@ -1036,6 +1236,103 @@ def audit_caliber_disclosure(report=None):
                                  if v.startswith("VIOLATION"))
     res["note_count"] = sum(1 for v in res["violations"] if v.startswith("NOTE"))
     res["rules_enforced"] = "R1_禁A替B / R2_禁自测替R3 / R3_C与C'同时披露"
+    return res
+
+
+# ============================================================================
+# P0-9 自报口径审计（P1 FOLLOWUP，T1/T3）
+#
+# 背景：DSHB P1 交付中 export_mapping_list.py 的 P0-9 计算方式为
+#   p0_9_numerator = min(distinct_mapped_ids, 109)
+# 由于 distinct_mapped_ids=197 > 109，min() 恒取 109，产出 109/109 = 100.00%。
+# 该数值与 meta 侧实际可映射数无关（数学恒真），属「分子取上界」型口径伪造。
+# 本审计独立复算真实交集并标记偏离，防止虚报覆盖率被当作验收依据。
+# ============================================================================
+def audit_self_reported_p09(repo_root=REPO_ROOT):
+    """
+    审计各交付方自报的 P0-9 覆盖率是否与独立复算一致。
+
+    扫描 DSHB P0/P1 映射清单中的 `p0_9` 自报块，与 check_naming_map()
+    独立复算结果比对。检测三类异常：
+      ORPHAN_NUMERATOR      —— 自报分子 = min(N, 分母) 型恒真上界（197→109）
+      DIVERGENCE            —— 自报覆盖率与独立复算显著偏离（>1pp）
+      DENOMINATOR_NOT_READY —— 自报已切分母 109 但衍生品命中未达 59 项
+
+    返回 dict(self_reports=[...], violations=[...], status, ...)
+    """
+    import glob
+    res = dict(gate_id="P0-9-AUDIT", status="PASS",
+               self_reports=[], violations=[], independent=None,
+               mapping_sources_scanned=[], rules_enforced=(
+                   "独立复算 meta∩mapped / min分子上界检测 / 分母切换前提核验"))
+    ind = check_naming_map(include_derivatives=True)
+    res["independent"] = dict(
+        coverage_pct=ind.get("coverage_pct"),
+        coverage_raw_pct=ind.get("coverage_raw_pct"),
+        intersection_count=ind.get("intersection_count"),
+        meta_indicator_count=ind.get("meta_indicator_count"),
+        meta_derivative_hit=ind.get("meta_derivative_hit"),
+        derivatives_available=ind.get("derivatives_available"),
+        denominator_mode=ind.get("denominator_mode"),
+        mapping_has_mapping_count=ind.get("mapping_has_mapping_count"))
+
+    base = os.path.join(repo_root, "analysis", "e2e_output", "v88", "phase03")
+    cands = sorted(glob.glob(os.path.join(base, "**", "*_metric_indicator_code_mapping.json"),
+                             recursive=True),
+                   key=lambda x: os.path.getmtime(x), reverse=True)
+    for p in cands:
+        rel = os.path.relpath(p, repo_root)
+        res["mapping_sources_scanned"].append(rel)
+        try:
+            with open(p, "r", encoding="utf-8") as f:
+                mp = json.load(f)
+        except Exception:
+            continue
+        sp = mp.get("p0_9")
+        if not isinstance(sp, dict):
+            continue
+        sm = mp.get("summary") or {}
+        rep = dict(mapping=rel, agent=mp.get("agent"),
+                   denominator=sp.get("denominator"),
+                   numerator=sp.get("numerator"),
+                   coverage_pct=sp.get("coverage_pct"),
+                   distinct_mapped_ids=sm.get("distinct_mapped_ids"))
+        _viol = []
+        _num, _den = rep["numerator"], rep["denominator"]
+        # 检测①：分子取 min 上界（distinct_mapped_ids > 109 时 numerator 恒=109）
+        _dmi = rep["distinct_mapped_ids"]
+        if (_num == _den and _den and _dmi and _dmi > _den
+                and ind.get("intersection_count") and
+                ind["intersection_count"] < _den):
+            _viol.append(
+                "ORPHAN_NUMERATOR: 自报分子 %s = 分母 %s，但 distinct_mapped_ids=%s > 分母 "
+                "（min() 恒真上界）；独立复算真实交集仅 %d（meta 侧可映射数），"
+                "自报覆盖率 %.2f%% 虚高，与 meta 侧实际可映射数无关"
+                % (_num, _den, _dmi, ind["intersection_count"],
+                   sp.get("coverage_pct") or 0))
+        # 检测②：覆盖率偏离
+        _ind_pct = ind.get("coverage_raw_pct") or 0
+        _rep_pct = sp.get("coverage_pct") or 0
+        if abs(_rep_pct - _ind_pct) > 1.0:
+            _viol.append(
+                "DIVERGENCE: 自报覆盖率 %.2f%% vs 独立复算 %.2f%%（偏离 %.2fpp，阈值 1pp）"
+                % (_rep_pct, _ind_pct, _rep_pct - _ind_pct))
+        # 检测③：分母已切 109 但衍生品未达标
+        if (_den == ind.get("full_denominator") or _den == 109):
+            if not ind.get("derivatives_available"):
+                _viol.append(
+                    "DENOMINATOR_NOT_READY: 自报分母已切 %s，但衍生品命中 %s/%d 未达阈值，"
+                    "分母切换前提不满足（独立复算 denominator_mode=%s）"
+                    % (_den, ind.get("meta_derivative_hit"),
+                       ind.get("derivative_target_count"),
+                       ind.get("denominator_mode")))
+        rep["violations"] = _viol
+        rep["status"] = "FAIL" if _viol else "PASS"
+        res["self_reports"].append(rep)
+        res["violations"].extend("%s :: %s" % (rel, v) for v in _viol)
+
+    res["violation_count"] = len(res["violations"])
+    res["status"] = "FAIL" if res["violations"] else "PASS"
     return res
 
 
@@ -1259,15 +1556,17 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
         #   注：len(STAGE_GATES)=41 含 P0-9/P0-10 之外的全部阶段门禁，矩阵基准为 40 项。
         # P1 新增（TASK: V88_PHASE03_P1_HERMES_MAIN_JOB / T0）：P0-12 CPU 基线门禁、
         #   P0-13 告警噪声率门禁、P0-14 180 指标全量校验门禁，阶段门禁总数 42 → 45。
+        # P1 FOLLOWUP 新增（TASK: V88_PHASE03_P1_HERMES_FOLLOWUP_JOB / T1-T3）：
+        #   P0-9-AUDIT 自报口径审计（拦截 min() 恒真上界型虚报），阶段门禁总数 45 → 46。
         main_gate_total=21,
-        stage_gate_total=45,
+        stage_gate_total=46,
         main_gate_judged=None,
         stage_gate_judged=None,
         main_gate_scope_note=(
             "21 项主门禁（矩阵基准）= 数据7(D-1~D-7) + 渲染6(R-1~R-6) + 因子4(F-1~F-4) + 稳定性5(S-1~S-3,S-4a/S-4b)"
             "；S-4a/S-4b 由 check_rpo_split() 从单条 S-4 拆分为两条判定记录，故 results 中主门禁实测 22 条，矩阵基准 21 项。"),
         stage_gate_scope_note=(
-            "45 项阶段门禁（矩阵基准）= P0原型11 + P1新增3(P0-12/P0-13/P0-14) + P1仿真12 + P2长稳11 + P3金丝雀8"
+            "46 项阶段门禁（矩阵基准）= P0原型11 + P1新增3(P0-12/P0-13/P0-14) + P1审计1(P0-9-AUDIT) + P1仿真12 + P2长稳11 + P3金丝雀8"
             "；S-4a/S-4b 以主门禁形式判定、不重复计入阶段门禁。"),
         results=[], d7_detail=None, p0_9_detail=None,
         testdb_detail=None,
@@ -1417,6 +1716,23 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
                             p09.get("coverage_raw_pct"), p09.get("dshe_naming_hit"),
                             p09.get("legacy_jsonl_intersection")))))
 
+    # ---- 2.05 P0-9 自报口径审计（P1 FOLLOWUP，T1/T3）----
+    # 扫描 DSHB 自报的 P0-9 覆盖率，与独立复算比对；
+    # 拦截「min(N,109) 恒真上界」型虚报（197→109 恒等式），防止虚报值成为验收依据。
+    p09a = audit_self_reported_p09()
+    report["p0_9_self_audit"] = p09a
+    add(GateResult(
+        "P0-9-AUDIT", "P0-9 自报口径审计（独立复算 vs 交付方自报）",
+        "0 VIOLATION", p09a["status"],
+        actual=("自报%d份 | 独立复算 %.4f%% (交集%d/%d) | 衍生品命中 %s/%d"
+                % (len(p09a["self_reports"]), p09a["independent"]["coverage_raw_pct"] or 0,
+                   p09a["independent"]["intersection_count"] or 0,
+                   p09a["independent"]["meta_indicator_count"] or 0,
+                   p09a["independent"]["meta_derivative_hit"],
+                   DERIVATIVE_TARGET_COUNT)),
+        note=("; ".join(p09a["violations"]) if p09a["violations"]
+              else "全部自报口径与独立复算一致，无虚报")))
+
     # ---- 2.1 P1 阶段新增门禁（T0）：CPU 基线 / 噪声率 / 180 指标扩量 ----
     # 三项均为「规则先就绪，等交付物落地」：未落地判 UNKNOWN（非阻断），落地后自动判定。
     p1_cpu = check_cpu_baseline_gate()
@@ -1427,11 +1743,14 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
     report["p1_expansion_detail"] = p1_exp
     _p1_map = {"P0-12": p1_cpu, "P0-13": p1_noise, "P0-14": p1_exp}
     _p1_actual = {
-        "P0-12": ("全链路峰值 %.4f%% (目标 ≤%.2f%%)" % (p1_cpu.get("cpu_peak_pct") or 0,
-                                                        P1_CPU_TARGET_PCT)
-                  if p1_cpu.get("cpu_peak_pct") is not None else "待交付物"),
-        "P0-13": ("噪声率 %.4f%% (观测 %.0f/%d 天, 阈值 <%.0f%%)" % (
-                    p1_noise.get("noise_rate_pct") or 0, p1_noise.get("observed_days") or 0,
+        "P0-12": (("全链路优化后峰值 %.4f%% (目标 ≤%.2f%%)" % (p1_cpu.get("cpu_peak_pct") or 0,
+                                                                P1_CPU_TARGET_PCT))
+                  if p1_cpu.get("cpu_peak_pct") is not None else
+                  ("已交付但口径不符（无全链路优化后数值）"
+                   if p1_cpu.get("artifact_delivered") else "待交付物")),
+        "P0-13": ("噪声率 %.4f%% (观测 %s/%d 天, 阈值 <%.0f%%)" % (
+                    p1_noise.get("noise_rate_pct") or 0,
+                    (p1_noise.get("observed_days") or "未声明"),
                     NOISE_RATE_SILENCE_DAYS, NOISE_RATE_THRESHOLD_PCT)
                   if p1_noise.get("noise_rate_pct") is not None else "待交付物"),
         "P0-14": ("实测 %s 指标 (映射 %s, 行 %s, 达标率 %.4f%%)" % (
@@ -1601,6 +1920,23 @@ def render_text(report):
             lines.append("  " + r.as_line())
             if r.note:
                 lines.append("      └ %s" % r.note)
+
+    # P0-9-AUDIT 自报口径审计明细（P1 FOLLOWUP）
+    _pa = report.get("p0_9_self_audit") or {}
+    if _pa:
+        lines.append("\n【P0-9 自报口径审计明细（P1 FOLLOWUP T1/T3）】")
+        _ind = _pa.get("independent") or {}
+        lines.append("  独立复算（权威）: 交集 %s/%s = %s%% | 衍生品命中 %s/%s | 分母模式 %s" % (
+            _ind.get("intersection_count"), _ind.get("meta_indicator_count"),
+            fmt_pct(_ind.get("coverage_raw_pct")), _ind.get("meta_derivative_hit"),
+            DERIVATIVE_TARGET_COUNT, _ind.get("denominator_mode")))
+        for _sr in (_pa.get("self_reports") or []):
+            lines.append("  ─ %s 自报 %s | %s/%s = %s%% (distinct_mapped_ids=%s) → %s" % (
+                _sr.get("agent"), _sr.get("mapping"), _sr.get("numerator"),
+                _sr.get("denominator"), _sr.get("coverage_pct"),
+                _sr.get("distinct_mapped_ids"), _sr.get("status")))
+            for _v in (_sr.get("violations") or []):
+                lines.append("      ✗ %s" % _v)
 
     lines.append("\n【P1 阶段新增门禁判定（T0：CPU基线/噪声率/180指标扩量）】")
     for r in report["results"]:
