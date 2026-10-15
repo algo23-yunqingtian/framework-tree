@@ -83,7 +83,7 @@
 ### V88_PHASE03_P0_DSHB_WATCHER_TASK (DSHB)
 | 文件 | MD5 | 大小(B) |
 |------|:---:|:------:|
-| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_prematerials.md | `B832C604AE3EAD20B5A03CEE3D2824F7` | 7,215 |
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_prematerials.md | `B832C604AE3EAD20B5A03CEE3D2824F7` | 6,317 |
 | STATUS.md | `UPDATED` | — |
 | analysis/e2e_output/v88/JOB_READY.flag | `UPDATED` | — |
 
@@ -96,3 +96,12 @@
 
 > **DSHE 值守核心**: 引擎基线锁定(MD5=cd73deae...) / 无HERMES缺陷工单 / 冒烟测试通过(101图表加载/25,497点查询/双Schema检测) / P1前置资料(环境变量/双Schema/D7口径/双引擎对比/风险台账) / PHASE03_P0_DSHE_WATCHER=TRUE 待命等待HERMEShf R3终审
 | analysis/e2e_output/v88/JOB_READY.flag | `762adde951011c7a56714e402ea0d4d9` | 52,467 |
+
+### V88_PHASE03_P0_DSHB_CONTINUE_WATCHER (DSHB 持续值守)
+| 文件 | MD5 | 大小(B) |
+|------|:---:|:------:|
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_prematerials.md | `B832C604AE3EAD20B5A03CEE3D2824F7` | 6,317 |
+| STATUS.md | `UPDATED` | — |
+| analysis/e2e_output/v88/JOB_READY.flag | `UPDATED` | — |
+
+> **DSHB 持续值守核心**: 归档脚本3+文档5个文件MD5全匹配锁定(8/8) / HERMES R3终审未输出,无缺陷工单 / P1前置资料6317B/182行/8节完整就绪 / 无代码改动/无新增开发 / MD5_MANIFEST P1前置资料size修正7215→6317(MD5不变) / PHASE03_P0_DSHB_CONTINUE_WATCHER=TRUE 待命等待HERMEShf终审及P1工单
