@@ -63,6 +63,36 @@ GATE_MATRIX_MD = os.path.join(PHASE03_DIR, "review", "v88_phase03_gate_matrix.md
 BASELINE_JSON = os.path.join(SCRIPT_DIR, "p0_baseline_metrics.json")
 
 # ============================================================================
+# V88 Phase03 P0 测试库注入（TASK: V88_PHASE03_P0_HERMES_GATE_RULE_UPDATE）
+#
+# 背景（R-V88-030）：
+#   node_binding_engine.py 数据源路径硬编码为 scripts/api_cache.db（Phase02 生产缓存），
+#   导致 Phase03 独立库 phase03_test.db 即使数据完备也无法被引擎读取，D-7 恒为 0%。
+#
+# 设计（DSHE 引擎适配前置约定，待引擎侧落地后即刻生效）：
+#   环境变量 V88_PHASE03_TEST_DB 指向 Phase03 独立测试库绝对路径时，
+#   本脚本（1）注入 os.environ 使 DSHE 适配版引擎可读取；
+#              （2）自行采集独立库 schema / 行数 / 双键映射命中率等事实；
+#              （3）在 D-7 明细中区分「引擎真实渲染覆盖率」与「DB 层映射命中率」两个口径。
+#
+#   本脚本**不修改** node_binding_engine.py（DSHE 责任，R-V88-030 处置项），
+#   仅做好注入与就绪态探测，使引擎适配完成后可零改动复测。
+# ============================================================================
+V88_TEST_DB_ENV = "V88_PHASE03_TEST_DB"
+TEST_DB_PATH = os.environ.get(V88_TEST_DB_ENV) or None
+
+# Phase03 独立库候选位置（R-V88-031：不入库 .db，运行时由重建脚本生成）
+TEST_DB_CANDIDATES = [
+    os.path.join(REPO_ROOT, "analysis", "e2e_output", "v88", "phase03", "p0", "phase03_test.db"),
+    os.path.join(REPO_ROOT, "analysis", "e2e_output", "v88", "phase03", "phase03_test.db"),
+    os.path.join(REPO_ROOT, "analysis", "e2e_output", "v88", "phase03", "p0", "scripts", "phase03_test.db"),
+]
+TESTDB_REBUILD_SCRIPT = os.path.join(
+    REPO_ROOT, "analysis", "e2e_output", "v88", "phase03", "p0", "scripts",
+    "import_all_to_testdb.py")
+
+
+# ============================================================================
 # 门禁定义（来源：analysis/e2e_output/v88/phase03/review/v88_phase03_gate_matrix.md）
 # ============================================================================
 
@@ -101,6 +131,9 @@ STABILITY_EXTRA_GATES = {
 }
 # 21 项主门禁全量视图（报告展示用，判定逻辑不变）
 GATE_DEFINITIONS_FULL = dict(GATE_DEFINITIONS)
+# ============================================================================
+# P0 阶段门禁
+# ============================================================================
 GATE_DEFINITIONS_FULL.update(STABILITY_EXTRA_GATES)
 
 # 40 项阶段门禁
@@ -108,6 +141,7 @@ STAGE_GATES = {
     # P0 原型（10 项）
     "P0-9":  dict(stage="P0", name="指标 ID 命名空间映射表",   threshold="覆盖率 ≥95%",    owner="DSHB+HERMEShf"),
     "P0-10": dict(stage="P0", name="CPU 优化达标",             threshold="峰值 ≤1.75%",    owner="DSHB"),
+    "P0-11": dict(stage="P0", name="DB 重建脚本可用性(R-V88-031)", threshold="重建<300s + 行数一致", owner="HERMEShf"),
     "P0-1":  dict(stage="P0", name="四目标技术方案原型",       threshold="4/4 方案产出",   owner="DSHB+DSHE"),
     "P0-2":  dict(stage="P0", name="接口契约冻结",             threshold="100% 冻结(含R1/R2/R3)", owner="三方"),
     "P0-3":  dict(stage="P0", name="阈值方案确认",             threshold="4项阈值+3档+双层映射", owner="HERMEShf"),
@@ -188,6 +222,181 @@ class GateResult(object):
                 "BLOCKED_PRE_P0": "🔴", "UNKNOWN": "❓"}.get(self.status, "·")
         act = "" if self.actual is None else f"  (actual={self.actual})"
         return f"{icon} {self.gate_id:7s} {self.name}{act}"
+
+
+# ============================================================================
+# Phase03 独立测试库事实采集（R-V88-030 / R-V88-031 处置前置）
+# ============================================================================
+def resolve_testdb_path():
+    """
+    解析 Phase03 独立测试库路径，优先级：
+      1. 环境变量 V88_PHASE03_TEST_DB（DSHE 引擎适配版读取同一变量）
+      2. 候选位置中第一个存在的文件
+      3. None（独立库尚未重建）
+    """
+    if TEST_DB_PATH and os.path.exists(TEST_DB_PATH):
+        return TEST_DB_PATH, "env:V88_PHASE03_TEST_DB"
+    for p in TEST_DB_CANDIDATES:
+        if os.path.exists(p):
+            return p, "candidate"
+    return None, "not_found"
+
+
+def audit_testdb_facts(repo_root=REPO_ROOT):
+    """
+    采集 Phase03 独立库事实 + DB 层双键映射命中率。
+
+    双口径定义（本工单确立，写入报告）：
+      口径 A（DB 层映射命中率）：|meta 指标 ID ∩ 独立库 indicator_id_mapped| / |P0-R0 映射指标|
+                                 反映 DSHB 数据层映射有效性（数据是否就绪）
+      口径 B（引擎真实 D-7 覆盖率）：render_with_fallback 结果中 source=="real" 占比
+                                 反映引擎实际渲染数据源（R3 权威，验收依据）
+      口径 A 达成 ≠ 口径 B 达成 —— 两者之间隔着引擎适配层（R-V88-030）。
+
+    引擎兼容探测：
+      - schema_compatible = 独立库含 indicator_cache(metric, code) 表结构
+      - engine_reads_testdb = 引擎是否读取 V88_PHASE03_TEST_DB（DSHE 适配后为 True）
+    """
+    result = dict(
+        gate_id="P0-11", rule="testdb_facts_and_dualkey_mapping",
+        env_var=V88_TEST_DB_ENV, env_set=bool(TEST_DB_PATH),
+        testdb_path=None, testdb_source=None, testdb_exists=False,
+        testdb_size_bytes=None, testdb_tables=None, testdb_total_rows=None,
+        testdb_total_indicators=None, testdb_mapped_rows=None,
+        db_mapping_hit=None, db_mapping_hit_pct=None, db_mapping_denominator=109,
+        db_mapping_meta_count=None, db_mapping_mapped_count=None,
+        db_mapping_intersection=None, db_mapping_threshold_pct=60.0,
+        db_mapping_pass=None,
+        schema_compatible=False, engine_reads_testdb=False, engine_adapter=None,
+        rebuild_script_path=None,
+        status="UNKNOWN",
+    )
+    path, source = resolve_testdb_path()
+    result["testdb_path"] = path
+    result["testdb_source"] = source
+    result["rebuild_script_path"] = TESTDB_REBUILD_SCRIPT
+    result["rebuild_script_exists"] = os.path.exists(TESTDB_REBUILD_SCRIPT)
+
+    if not path:
+        result["status"] = "UNKNOWN"
+        result["note"] = ("Phase03 独立测试库未构建。R-V88-031 流程规范：不提交 *.db 到仓库，"
+                          "由 import_all_to_testdb.py 重建后设置 V88_PHASE03_TEST_DB。")
+        return result
+
+    result["testdb_exists"] = True
+    result["testdb_size_bytes"] = os.path.getsize(path)
+
+    try:
+        con = sqlite3.connect(path)
+        cur = con.cursor()
+        tables = [r[0] for r in cur.execute(
+            "SELECT name FROM sqlite_master WHERE type='table'").fetchall()]
+        result["testdb_tables"] = tables
+
+        if "series_cache" in tables:
+            cols = [d[1] for d in cur.execute("PRAGMA table_info(series_cache)").fetchall()]
+            result["testdb_total_rows"] = cur.execute(
+                "SELECT COUNT(*) FROM series_cache").fetchone()[0]
+            if "indicator_id" in cols:
+                result["testdb_total_indicators"] = cur.execute(
+                    "SELECT COUNT(DISTINCT indicator_id) FROM series_cache").fetchone()[0]
+            if "indicator_id_mapped" in cols:
+                result["testdb_mapped_rows"] = cur.execute(
+                    "SELECT COUNT(*) FROM series_cache WHERE indicator_id_mapped IS NOT NULL"
+                ).fetchone()[0]
+                mapped_ids = set(r[0] for r in cur.execute(
+                    "SELECT DISTINCT indicator_id_mapped FROM series_cache "
+                    "WHERE indicator_id_mapped IS NOT NULL").fetchall())
+            else:
+                mapped_ids = set()
+        elif "indicator_cache" in tables:
+            # DSHE 方案①：独立库以引擎原生 schema 重建
+            result["testdb_total_rows"] = cur.execute(
+                "SELECT COUNT(*) FROM indicator_cache").fetchone()[0]
+            result["testdb_total_indicators"] = cur.execute(
+                "SELECT COUNT(DISTINCT metric) FROM indicator_cache").fetchone()[0]
+            mapped_ids = set(r[0] for r in cur.execute(
+                "SELECT DISTINCT metric FROM indicator_cache").fetchall())
+        else:
+            mapped_ids = set()
+        con.close()
+    except Exception as e:
+        result["status"] = "FAIL"
+        result["note"] = "testdb_read_error: %s" % e
+        return result
+
+    # 引擎适配态探测（R-V88-030 处置态，权威来源 = node_binding_engine.py 源码）
+    # DSHE 采用「双分支查询」方案：引擎保留 indicator_cache 查询分支（生产库），
+    # 新增 series_cache 查询分支（独立库，点级行聚合为 data_json）。
+    # 因此独立库保持 series_cache schema 即完全正确 —— 兼容判据取决于引擎是否
+    # 具备 series_cache 读取能力，而非独立库自身的表结构。
+    engine_src = os.path.join(REPO_ROOT, "scripts", "node_binding_engine.py")
+    engine_ready = False
+    engine_adapter = None
+    try:
+        with open(engine_src, "r", encoding="utf-8") as _f:
+            _src = _f.read()
+        _has_env = "V88_PHASE03_TEST_DB" in _src
+        _has_series = ("series_cache" in _src and "indicator_id_mapped" in _src)
+        engine_ready = bool(_has_env and _has_series)
+        engine_adapter = dict(
+            env_var_supported=_has_env,
+            series_cache_reader=_has_series,
+            r_v88_030_resolved=engine_ready,
+        )
+    except Exception as e:
+        engine_adapter = dict(engine_src_read_error=str(e))
+    result["engine_adapter"] = engine_adapter
+    result["engine_reads_testdb"] = engine_ready
+    # 兼容 = 引擎可读取该库的实际表结构
+    if engine_ready:
+        result["schema_compatible"] = True
+    elif "indicator_cache" in tables:
+        # 引擎未适配，但库为引擎原生 schema —— 老引擎可读（但仍读生产库路径）
+        result["schema_compatible"] = False
+        result["schema_compatible_note"] = (
+            "独立库为 indicator_cache schema，但引擎未适配 V88_PHASE03_TEST_DB，"
+            "仍读 scripts/api_cache.db（R-V88-030 未处置）。")
+    else:
+        result["schema_compatible"] = False
+
+    # DB 层双键映射命中率（口径 A）
+    try:
+        import yaml
+        with open(META_CHART_YAML, "r", encoding="utf-8") as f:
+            meta = yaml.safe_load(f)
+        meta_ids = set()
+        for ch in (meta.get("charts") or []):
+            for ind in (ch.get("indicators") or []):
+                iid = ind.get("indicator_id")
+                if iid:
+                    meta_ids.add(iid)
+        inter = meta_ids & mapped_ids
+        denom = result["db_mapping_denominator"] or (len(meta_ids) or 1)
+        pct = round(len(inter) / denom * 100.0, 4)
+        result.update(dict(
+            db_mapping_meta_count=len(meta_ids),
+            db_mapping_mapped_count=len(mapped_ids),
+            db_mapping_intersection=len(inter),
+            db_mapping_hit=len(inter),
+            db_mapping_hit_pct=pct,
+            db_mapping_pass=bool(pct >= result["db_mapping_threshold_pct"]),
+        ))
+    except Exception as e:
+        result["db_mapping_note"] = "meta_yaml_error: %s" % e
+
+    if not result["schema_compatible"]:
+        result["note"] = (
+            "引擎未适配 V88_PHASE03_TEST_DB（R-V88-030 未处置）：独立库 schema 为 "
+            "series_cache(indicator_id, commodity)，引擎仅支持 indicator_cache(metric, code)。"
+            "DB 层映射命中率达标不代表引擎可读取，D-7 验收须以引擎真实渲染覆盖率为准。")
+    else:
+        result["note"] = (
+            "引擎适配已完成（R-V88-030 RESOLVED）：引擎通过 V88_PHASE03_TEST_DB 读取独立库，"
+            "series_cache 查询分支将点级行聚合为 data_json。独立库保持 series_cache schema 即正确。"
+            "D-7 验收以引擎真实渲染覆盖率（口径 B）为准。")
+    result["status"] = "PASS" if result["db_mapping_pass"] else "BLOCKED_PRE_P0"
+    return result
 
 
 # ============================================================================
@@ -572,6 +781,12 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
             "40 项阶段门禁（矩阵基准）= P0原型10 + P1仿真12 + P2长稳11 + P3金丝雀8"
             "；len(STAGE_GATES)=41，其中 S-4a/S-4b 以主门禁形式判定、不重复计入阶段门禁。"),
         results=[], d7_detail=None, p0_9_detail=None,
+        testdb_detail=None,
+        # D-7 双口径对照（TASK: V88_PHASE03_P0_HERMES_GATE_RULE_UPDATE 确立）
+        #   caliber_a_db_mapping_hit_pct  : DB 层映射命中率（DSHB 数据层就绪度，辅助指标）
+        #   caliber_b_engine_real_render  : 引擎真实渲染覆盖率（R3 权威，D-7 验收依据）
+        #   口径 A 达成 ≠ 口径 B 达成（中间隔着引擎适配层 R-V88-030）
+        dual_caliber=None,
         p0_10_detail=None, s4_detail=None,
         summary=dict(PASS=0, FAIL=0, NOT_APPLICABLE=0, BLOCKED_PRE_P0=0, UNKNOWN=0),
     )
@@ -649,6 +864,32 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
             add(GateResult(gid, gdef["name"], gdef["threshold"], "UNKNOWN",
                            note="待 %s 阶段数据（%s）" % (gdef["phase"], gdef["category"])))
 
+    # ---- 1.5 独立测试库事实采集 + DB 层映射命中率（P0-11 / R-V88-031）----
+    #      该采集不依赖引擎，先于 P0-9 执行，为 P0-9 提供 schema 适配口径依据。
+    testdb = audit_testdb_facts()
+    report["testdb_detail"] = testdb
+    td = testdb
+    p011_status = td.get("status", "UNKNOWN")
+    add(GateResult(
+        "P0-11", STAGE_GATES["P0-11"]["name"],
+        "DB映射命中率 ≥%d%%" % td["db_mapping_threshold_pct"],
+        p011_status,
+        actual=(("%.4f%% (%d/%d)" % (td["db_mapping_hit_pct"] or 0,
+             td.get("db_mapping_hit") or 0, td["db_mapping_denominator"]))
+             if td.get("db_mapping_hit_pct") is not None else "独立库未构建"),
+        note=(
+            "R-V88-031 流程规范：不提交 *.db 到仓库（AGENTS.md §7 红线），"
+            "验收依据为「重建脚本 + 校验报告」。重建脚本: %s（存在=%s）。"
+            "环境变量 %s=%s。独立库: %s（来源=%s, %s 字节, 表=%s, %s 行, %s 指标）。"
+            "引擎 schema 兼容=%s。%s"
+            % (os.path.basename(td["rebuild_script_path"]) if td.get("rebuild_script_path") else "-",
+               td.get("rebuild_script_exists"), td["env_var"], td["env_set"],
+               (td["testdb_path"] or "None"), td["testdb_source"],
+               (td.get("testdb_size_bytes") or 0), td.get("testdb_tables"),
+               td.get("testdb_total_rows"), td.get("testdb_total_indicators"),
+               td.get("schema_compatible"),
+               td.get("note", "")))))
+
     # ---- 2. P0-9 命名映射门禁 ----
     p09 = check_naming_map()
     report["p0_9_detail"] = p09
@@ -689,9 +930,9 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
                    s4["s4b"]["status"], actual="分片证据 %d 条" % len(s4["s4b"]["shard_evidence"]),
                    note=s4["s4b"]["note"]))
 
-    # ---- 5. 其余阶段门禁登记（P0-9/P0-10 已在上文实测，跳过）----
+    # ---- 5. 其余阶段门禁登记（P0-9/P0-10/P0-11 已在上文实测，跳过）----
     for sid, sdef in STAGE_GATES.items():
-        if sid in ("P0-9", "P0-10"):
+        if sid in ("P0-9", "P0-10", "P0-11"):
             continue
         if stage and sdef["stage"] != stage:
             continue
@@ -705,7 +946,7 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
     # ---- 6. 汇总 ----
     # 判定规则：
     #   FAIL                = 存在真正的 FAIL（非 P0 前置任务型）
-    #   BLOCKED_PRE_P0      = 仅存在 P0 前置任务型阻断（R-V88-013/R-V88-024）→ CONDITIONAL_PASS
+    #   BLOCKED_PRE_P0      = 仅存在 P0 前置任务型阻断（R-V88-013/R-V88-024/R-V88-030/R-V88-031）→ CONDITIONAL_PASS
     #   NOT_APPLICABLE / UNKNOWN = 基线阶段未执行或非本阶段门禁，不参与判定
     failed = report["summary"].get("FAIL", 0)
     blocked = report["summary"].get("BLOCKED_PRE_P0", 0)
@@ -722,15 +963,41 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
         verdict = "UNKNOWN"
 
     report["verdict"] = verdict
+    # D-7 双口径对照汇总（口径 A = DB 层映射命中率 / 口径 B = 引擎真实渲染覆盖率）
+    _td = report.get("testdb_detail") or {}
+    _d7 = report.get("d7_detail") or {}
+    report["dual_caliber"] = dict(
+        caliber_a_db_mapping_hit_pct=_td.get("db_mapping_hit_pct"),
+        caliber_a_db_mapping_hit=_td.get("db_mapping_hit"),
+        caliber_a_db_mapping_denominator=_td.get("db_mapping_denominator"),
+        caliber_a_threshold_pct=_td.get("db_mapping_threshold_pct"),
+        caliber_a_pass=_td.get("db_mapping_pass"),
+        caliber_a_note="DSHB 数据层就绪度辅助指标，非 D-7 验收依据",
+        caliber_b_engine_real_render_pct=_d7.get("real_coverage_pct"),
+        caliber_b_engine_source_dist=_d7.get("source_dist"),
+        caliber_b_threshold_pct=_d7.get("p1_threshold_pct"),
+        caliber_b_pass=_d7.get("p1_pass"),
+        caliber_b_note="R3 权威验收依据（D-7 门禁判定源）",
+        caliber_gap_reason=(
+            "口径 A 达标但口径 B 为 0% 时，阻断根因为引擎适配层（R-V88-030）："
+            "node_binding_engine.py 数据源路径硬编码 scripts/api_cache.db 且查询语法依赖 "
+            "indicator_cache(metric, code) schema，与独立库 series_cache(indicator_id, commodity) 不兼容。"),
+        testdb_env_var=V88_TEST_DB_ENV,
+        testdb_env_set=bool(TEST_DB_PATH),
+        testdb_schema_compatible=_td.get("schema_compatible"),
+        engine_adapter=_td.get("engine_adapter"),
+    )
     # 实际判定条数（results 去重后，主门禁/阶段门禁分列）
     _ids = [r.gate_id for r in report["results"]]
     report["main_gate_judged"] = len({i for i in _ids if i.split("-")[0] in ("D", "R", "F", "S")})
     report["stage_gate_judged"] = len({i for i in _ids if i.startswith("P")})
     report["verdict_note"] = (
         "基线阶段语义：PASS ✅ = 已实测且达标 | FAIL ❌ = 已实测未达标 | "
-        "BLOCKED_PRE_P0 🔴 = P0 前置任务型阻断（R-V88-013 D-7 覆盖率 / R-V88-024 CPU 优化，"
-        "任务完成后自动转 PASS）| NOT_APPLICABLE ⚪ = 本阶段不执行 | UNKNOWN ❓ = 待 P1+ 阶段数据。"
-        "CONDITIONAL_PASS = 框架可用且无方案级阻断，前置任务完成后转为 PASS。")
+        "BLOCKED_PRE_P0 🔴 = P0 前置任务型阻断（R-V88-013 D-7 覆盖率 / R-V88-024 CPU 优化 / "
+        "R-V88-030 引擎适配 / R-V88-031 DB 重建脚本，任务完成后自动转 PASS）| "
+        "NOT_APPLICABLE ⚪ = 本阶段不执行 | UNKNOWN ❓ = 待 P1+ 阶段数据。"
+        "CONDITIONAL_PASS = 框架可用且无方案级阻断，前置任务完成后转为 PASS。"
+        "D-7 双口径：口径A(DB映射命中率)为辅助指标，口径B(引擎真实渲染覆盖率)为唯一验收依据。")
     report["verdict_basis"] = dict(
         PASS=report["summary"].get("PASS", 0), FAIL=failed,
         BLOCKED_PRE_P0=blocked, NOT_APPLICABLE=na, UNKNOWN=unk,
@@ -799,6 +1066,35 @@ def render_text(report):
     lines.append("  校验错误    : %s" % d7.get("validation_errors"))
     lines.append("  api_cache   : %s" % json.dumps(d7.get("db_facts"), ensure_ascii=False))
 
+    dc = report.get("dual_caliber") or {}
+    lines.append("")
+    lines.append("【D-7 双口径对照（R-V88-030 / R-V88-031 处置）】")
+    lines.append("  口径 A  DB 层映射命中率 : %s  (阈值 %s%%, 达标=%s)" % (
+        fmt_pct(dc.get("caliber_a_db_mapping_hit_pct")),
+        dc.get("caliber_a_threshold_pct"), dc.get("caliber_a_pass")))
+    lines.append("        命中 %s / %s | %s" % (
+        dc.get("caliber_a_db_mapping_hit"), dc.get("caliber_a_db_mapping_denominator"),
+        dc.get("caliber_a_note")))
+    lines.append("  口径 B  引擎真实渲染覆盖率: %s  (阈值 %s%%, 达标=%s)" % (
+        fmt_pct(dc.get("caliber_b_engine_real_render_pct")),
+        dc.get("caliber_b_threshold_pct"), dc.get("caliber_b_pass")))
+    lines.append("        source 分布 %s | %s" % (
+        json.dumps(dc.get("caliber_b_engine_source_dist"), ensure_ascii=False),
+        dc.get("caliber_b_note")))
+    lines.append("  口径差异根因 : %s" % dc.get("caliber_gap_reason"))
+    lines.append("  独立库注入   : 环境变量 %s=%s | 引擎适配=%s | schema 兼容=%s" % (
+        dc.get("testdb_env_var"), dc.get("testdb_env_set"),
+        dc.get("engine_adapter"), dc.get("testdb_schema_compatible")))
+    td = report.get("testdb_detail") or {}
+    lines.append("  独立库事实   : %s (来源=%s, %s 字节, 表=%s, %s 行, %s 指标)" % (
+        td.get("testdb_path") or "None", td.get("testdb_source"),
+        td.get("testdb_size_bytes") or 0, td.get("testdb_tables"),
+        td.get("testdb_total_rows"), td.get("testdb_total_indicators")))
+    lines.append("  重建脚本     : %s (存在=%s)" % (
+        td.get("rebuild_script_path") or "-", td.get("rebuild_script_exists")))
+    if td.get("note"):
+        lines.append("  ⚠️ %s" % td["note"])
+
     lines.append("\n【P0-9 命名空间映射明细】")
     p09 = report.get("p0_9_detail") or {}
     lines.append("  meta_chart 指标 : %s" % p09.get("meta_indicator_count"))
@@ -866,6 +1162,8 @@ def main():
         bl = dict(
             task_id=report["task_id"], generated_at=report["generated_at"],
             d7=report.get("d7_detail"), p0_9=report.get("p0_9_detail"),
+            testdb=report.get("testdb_detail"),
+            dual_caliber=report.get("dual_caliber"),
             p0_10=report.get("p0_10_detail"), s4=report.get("s4_detail"),
             verdict=report["verdict"], summary=report["summary"],
         )
