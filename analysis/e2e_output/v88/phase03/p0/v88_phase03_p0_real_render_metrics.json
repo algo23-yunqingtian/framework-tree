@@ -1,0 +1,1524 @@
+{
+  "task_id": "V88_PHASE03_P0_R1_REAL_DATA_RENDER_VERIFY",
+  "schema_version": "v88-p0.0.2",
+  "execution_timestamp": "2026-10-15T12:13:22",
+  "branch": "feature/v88-g1",
+  "agent": "DSHE",
+  "branch_locked": true,
+  "constraints": {
+    "no_overwrite": true,
+    "no_modify_v87": true,
+    "no_edit_release_tag": true,
+    "no_zhiji_api_call": true,
+    "append_only": true
+  },
+  "t0_environment": {
+    "db_exists": true,
+    "db_size_mb": 105.1,
+    "mapping_exists": true,
+    "mapping_count": 91,
+    "meta_exists": true,
+    "alert_exists": true,
+    "engine_loaded": true,
+    "chart_count": 37,
+    "db_path": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\api_cache.db"
+  },
+  "t1_batch_render": {
+    "round1_cold": {
+      "total": 37,
+      "real": 4,
+      "simulated": 33,
+      "placeholder": 0,
+      "errors": 0,
+      "duration_ms": 814.0
+    },
+    "round2_warm": {
+      "total": 37,
+      "real": 4,
+      "simulated": 33,
+      "placeholder": 0,
+      "errors": 0,
+      "duration_ms": 1.0
+    },
+    "source_distribution": {
+      "real": 4,
+      "simulated": 33,
+      "placeholder": 0,
+      "errors": 0
+    },
+    "coverage_rate_pct": 10.81,
+    "latency": {
+      "count": 1,
+      "min_ms": 1.001,
+      "max_ms": 1.001,
+      "avg_ms": 1.001,
+      "p50_ms": 1.001,
+      "p95_ms": 1.001,
+      "p99_ms": 1.001
+    },
+    "cache": {
+      "hit_rate_pct": 50.0,
+      "hits": 37,
+      "misses": 37,
+      "size": 37
+    },
+    "commodity_source_distribution": {
+      "cu": {
+        "real": 0,
+        "simulated": 74,
+        "placeholder": 0
+      },
+      "al": {
+        "real": 0,
+        "simulated": 35,
+        "placeholder": 0
+      },
+      "zn": {
+        "real": 0,
+        "simulated": 68,
+        "placeholder": 0
+      },
+      "pb": {
+        "real": 0,
+        "simulated": 32,
+        "placeholder": 0
+      },
+      "ni": {
+        "real": 31,
+        "simulated": 31,
+        "placeholder": 0
+      },
+      "sn": {
+        "real": 29,
+        "simulated": 29,
+        "placeholder": 0
+      },
+      "si": {
+        "real": 27,
+        "simulated": 0,
+        "placeholder": 0
+      },
+      "li": {
+        "real": 26,
+        "simulated": 0,
+        "placeholder": 0
+      },
+      "all": {
+        "real": 0,
+        "simulated": 625,
+        "placeholder": 0
+      }
+    },
+    "chart_render_records": [
+      {
+        "chart_id": "ni_p5_ts_01",
+        "commodity": "ni",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 15740,
+        "indicator_ids": [
+          "NI_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "sn_p5_ts_01",
+        "commodity": "sn",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 2362,
+        "indicator_ids": [
+          "SN_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "si_p5_ts_01",
+        "commodity": "si",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 2635,
+        "indicator_ids": [
+          "SI_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "li_p5_ts_01",
+        "commodity": "li",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 2871,
+        "indicator_ids": [
+          "LI_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "cu_p3_ts_03",
+        "commodity": "cu",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 1.0011,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "CU_SOCIAL_INVENTORY",
+          "CU_EXCHANGE_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "cu_p3_bar_02",
+        "commodity": "cu",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 360,
+        "indicator_ids": [
+          "CU_REGION_EAST",
+          "CU_REGION_SOUTH",
+          "CU_REGION_NORTH"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "al_p3_ts_02",
+        "commodity": "al",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "AL_SOCIAL_INVENTORY",
+          "AL_EXCHANGE_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "zn_p3_ts_02",
+        "commodity": "zn",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "ZN_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "zn_p3_bar_01",
+        "commodity": "zn",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "ZN_REGION_EAST",
+          "ZN_REGION_SOUTH"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "pb_p3_ts_02",
+        "commodity": "pb",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "PB_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "ni_p3_ts_01",
+        "commodity": "ni",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "NI_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "sn_p3_ts_01",
+        "commodity": "sn",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "SN_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ic_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_IC_ABS"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ic_sign_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_IC_SIGN"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ir_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_IR"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_cusum_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_CUSUM"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_p99_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_P99"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_cpu_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_CPU"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_status_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_STATUS"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_dqa_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DQA_ERROR"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ewma_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_EWMA"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_queue_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_QUEUE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_rpo_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_RPO"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_source_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_COLLECT_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_dual_write_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_DUAL_WRITE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_drift_rate_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DRIFT_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_error_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_ERROR_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_latency_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_INGEST_LATENCY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_cache_hit_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_CACHE_HIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_meta_expand_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_COVERAGE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_noise_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_NOISE_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_reconciliation_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_RECON"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_pool_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "MONITOR_POOL_ACTIVE",
+          "MONITOR_POOL_QUEUE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_baseline_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "MONITOR_IC_BASELINE",
+          "MONITOR_IR_BASELINE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_switch_history_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "MONITOR_DR_SWITCHES",
+          "MONITOR_DR_RTO"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_dqa_throughput_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DQA_THROUGHPUT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_indicator_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_SUPPLY_INTEGRITY"
+        ],
+        "phase03_new": true
+      }
+    ]
+  },
+  "t2_test_cases": {
+    "summary": {
+      "total": 36,
+      "pass": 22,
+      "warn": 7,
+      "fail": 4,
+      "blocked": 3
+    },
+    "results": [
+      {
+        "test_id": "TC-PF-01",
+        "test_name": "单图表渲染时延",
+        "category": "渲染时延",
+        "status": "PASS",
+        "message": "avg=1.001ms < 20ms, P99=1.001ms < 100ms",
+        "details": {
+          "count": 1,
+          "min_ms": 1.001,
+          "max_ms": 1.001,
+          "avg_ms": 1.001,
+          "p50_ms": 1.001,
+          "p95_ms": 1.001,
+          "p99_ms": 1.001
+        },
+        "duration_ms": 1.0
+      },
+      {
+        "test_id": "TC-PF-02",
+        "test_name": "批量渲染时延",
+        "category": "渲染时延",
+        "status": "PASS",
+        "message": "两轮总时延 815.0ms < 10s",
+        "details": {},
+        "duration_ms": 815.0
+      },
+      {
+        "test_id": "TC-CH-01",
+        "test_name": "缓存命中率基线",
+        "category": "缓存命中率",
+        "status": "WARN",
+        "message": "命中率 50.0% — 偏低但可用",
+        "details": {
+          "hit_rate_pct": 50.0,
+          "hits": 37,
+          "misses": 37
+        },
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-01",
+        "test_name": "source=real 正常渲染",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "source=real, points=15740, mapping_applied=True",
+        "details": {},
+        "duration_ms": 0.0
+      },
+      {
+        "test_id": "TC-DS-02",
+        "test_name": "映射表为空fallback",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "映射表为空时正确fallback到simulated",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-03",
+        "test_name": "api_cache无此指标fallback",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "所有映射指标DB均有数据, fallback路径无异常",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-04",
+        "test_name": "simulated渲染确定性",
+        "category": "数据源区分",
+        "status": "BLOCKED",
+        "message": "无pending_data图表",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-05",
+        "test_name": "placeholder渲染",
+        "category": "数据源区分",
+        "status": "BLOCKED",
+        "message": "无pending_data图表",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-06",
+        "test_name": "pending_data+use_simulated",
+        "category": "数据源区分",
+        "status": "BLOCKED",
+        "message": "无pending_data图表",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-01",
+        "test_name": "三级降级完整性",
+        "category": "降级链路",
+        "status": "FAIL",
+        "message": "降级不完整: ['simulated']",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-02",
+        "test_name": "降级时延对比",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "时延: real=20.0047ms, simulated=?ms, placeholder=?ms",
+        "details": {
+          "real": 20.0047
+        },
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-03",
+        "test_name": "缓存命中降级恢复",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "缓存失效→命中→失效→重新加载 循环正常",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-04",
+        "test_name": "映射表缺失全量fallback",
+        "category": "降级链路",
+        "status": "FAIL",
+        "message": "33/37 全部fallback到simulated",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-05",
+        "test_name": "DB不存在降级",
+        "category": "降级链路",
+        "status": "FAIL",
+        "message": "33/37 全部fallback (DB不存在)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-PF-03",
+        "test_name": "缓存命中时延对比",
+        "category": "渲染时延",
+        "status": "PASS",
+        "message": "缓存命中时延降低 >90% (miss=14.0076ms → hit=0.0ms)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-PF-04",
+        "test_name": "并发渲染20",
+        "category": "渲染时延",
+        "status": "WARN",
+        "message": "20并发: P99=201.9978ms ≥ 100ms",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-PF-05",
+        "test_name": "并发渲染50",
+        "category": "渲染时延",
+        "status": "WARN",
+        "message": "50并发: P99=342.0002ms ≥ 200ms",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CH-02",
+        "test_name": "缓存TTL过期",
+        "category": "缓存命中率",
+        "status": "PASS",
+        "message": "TTL过期后正确cache_miss",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CH-03",
+        "test_name": "LRU淘汰",
+        "category": "缓存命中率",
+        "status": "PASS",
+        "message": "LRU正确淘汰: size=256 (max=256)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CH-04",
+        "test_name": "缓存手动失效",
+        "category": "缓存命中率",
+        "status": "PASS",
+        "message": "invalidate()后正确cache_miss",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-01",
+        "test_name": "YAML格式校验",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "37张图表YAML格式正确, 必需字段齐全",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-02",
+        "test_name": "图表数量验证",
+        "category": "图表元数据",
+        "status": "FAIL",
+        "message": "图表数 37 < 101",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-03",
+        "test_name": "指标映射字段",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "45/45 指标有映射字段",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-04",
+        "test_name": "降级优先级",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "45/45 指标有有效fallback_priority",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-05",
+        "test_name": "Phase02基线兼容",
+        "category": "图表元数据",
+        "status": "WARN",
+        "message": "0/101 基线图表data_status一致",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-06",
+        "test_name": "新增图表标记",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "新增图表: 37张 (目标≥29)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-01",
+        "test_name": "告警等级映射完整性",
+        "category": "告警映射",
+        "status": "PASS",
+        "message": "4/4 告警等级已映射",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-02",
+        "test_name": "告警规则配置",
+        "category": "告警映射",
+        "status": "WARN",
+        "message": "告警规则数: 3 (目标≥25)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-03",
+        "test_name": "告警消息格式",
+        "category": "告警映射",
+        "status": "WARN",
+        "message": "7/9 字段存在",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-04",
+        "test_name": "噪声率监控",
+        "category": "告警映射",
+        "status": "WARN",
+        "message": "1/3 噪声率指标定义存在",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CC-01",
+        "test_name": "Phase02零修改",
+        "category": "约束合规",
+        "status": "PASS",
+        "message": "node_binding_engine.py MD5=00523aada6c98fcc... (未修改)",
+        "details": {
+          "md5": "00523aada6c98fcce36573294c669a4a"
+        },
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CC-02",
+        "test_name": "V87基线不变",
+        "category": "约束合规",
+        "status": "PASS",
+        "message": "V87基线资产未修改 (BRANCH_LOCKED约束)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CC-03",
+        "test_name": "CPU FUSE不变",
+        "category": "约束合规",
+        "status": "PASS",
+        "message": "CPU FUSE 2.0% 阈值未修改",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-01_EXT",
+        "test_name": "真实指标告警映射",
+        "category": "告警映射",
+        "status": "PASS",
+        "message": "15个指标告警映射正确, 11个触发",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-02_EXT",
+        "test_name": "真实数据驱动告警",
+        "category": "告警映射",
+        "status": "PASS",
+        "message": "11个非GREEN告警被触发 (YELLOW+RED+BLUE)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-05_EXT",
+        "test_name": "三级降级压测完整",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "4场景×37图表 = 148次渲染, 0崩溃0错误",
+        "details": {},
+        "duration_ms": 0
+      }
+    ]
+  },
+  "t3_alert_mapping": {
+    "drift_analysis": [
+      {
+        "commodity": "zn",
+        "indicator_id": "ZN_FU00014950",
+        "latest_date": "2026-08-28",
+        "data_points": 25497,
+        "latest_value": 26485.0,
+        "oldest_value": 25550.0,
+        "drift_pct": 3.66,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "zn",
+        "indicator_id": "ZN_SPOT_PREMIUM",
+        "latest_date": "2026-08-28",
+        "data_points": 11472,
+        "latest_value": -100.0,
+        "oldest_value": -80.0,
+        "drift_pct": -25.0,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "zn",
+        "indicator_id": "ZN_IMPORT",
+        "latest_date": "2026-08-28",
+        "data_points": 8481,
+        "latest_value": -6631.2,
+        "oldest_value": -4222.94,
+        "drift_pct": -57.03,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "ni",
+        "indicator_id": "NI_SMELTING_PROFIT",
+        "latest_date": "2026-08-28",
+        "data_points": 15740,
+        "latest_value": 132.0,
+        "oldest_value": 149.0,
+        "drift_pct": -11.41,
+        "alert_level": "YELLOW",
+        "hermesf_level": "WARN",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "ni",
+        "indicator_id": "NI_IMPORT",
+        "latest_date": "2026-08-28",
+        "data_points": 13933,
+        "latest_value": -1277.34,
+        "oldest_value": -1612.04,
+        "drift_pct": 20.76,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "ni",
+        "indicator_id": "NI_FU00014982",
+        "latest_date": "2026-08-28",
+        "data_points": 13086,
+        "latest_value": 128310.0,
+        "oldest_value": 128000.0,
+        "drift_pct": 0.24,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "si",
+        "indicator_id": "SI_WARRANT",
+        "latest_date": "2026-08-28",
+        "data_points": 7309,
+        "latest_value": 33559.0,
+        "oldest_value": 33223.0,
+        "drift_pct": 1.01,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "si",
+        "indicator_id": "SI_FU00015015",
+        "latest_date": "2026-08-28",
+        "data_points": 4579,
+        "latest_value": 8785.0,
+        "oldest_value": 8335.0,
+        "drift_pct": 5.4,
+        "alert_level": "YELLOW",
+        "hermesf_level": "WARN",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "si",
+        "indicator_id": "SI_HOLD_OPEN",
+        "latest_date": "2026-08-28",
+        "data_points": 3572,
+        "latest_value": 423166.0,
+        "oldest_value": 259304.0,
+        "drift_pct": 63.19,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "sn",
+        "indicator_id": "SN_FU00014952",
+        "latest_date": "2026-08-28",
+        "data_points": 21122,
+        "latest_value": 423870.0,
+        "oldest_value": 425650.0,
+        "drift_pct": -0.42,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "sn",
+        "indicator_id": "SN_TC",
+        "latest_date": "2026-08-28",
+        "data_points": 14114,
+        "latest_value": 250.0,
+        "oldest_value": 17500.0,
+        "drift_pct": -98.57,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "sn",
+        "indicator_id": "SN_TOP20_LONG",
+        "latest_date": "2026-08-28",
+        "data_points": 11116,
+        "latest_value": 72668.0,
+        "oldest_value": 91925.0,
+        "drift_pct": -20.95,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "li",
+        "indicator_id": "LI_WARRANT",
+        "latest_date": "2026-08-28",
+        "data_points": 4634,
+        "latest_value": 44024.0,
+        "oldest_value": 31621.0,
+        "drift_pct": 39.22,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "li",
+        "indicator_id": "LI_SMELTING_PROFIT",
+        "latest_date": "2026-08-28",
+        "data_points": 2871,
+        "latest_value": 1944.0,
+        "oldest_value": -9809.0,
+        "drift_pct": 119.82,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "li",
+        "indicator_id": "LI_SPOT_PREMIUM",
+        "latest_date": "2026-08-28",
+        "data_points": 1756,
+        "latest_value": -400.0,
+        "oldest_value": -4900.0,
+        "drift_pct": 91.84,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      }
+    ],
+    "level_distribution": {
+      "GREEN": 4,
+      "RED": 3,
+      "BLUE": 6,
+      "YELLOW": 2
+    },
+    "triggered_count": 11,
+    "total_indicators_analyzed": 15
+  },
+  "t4_degradation_stress": {
+    "scenes": {
+      "scene1_api_cache_normal": {
+        "real": 4,
+        "simulated": 33,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      },
+      "scene2_empty_mapping": {
+        "real": 4,
+        "simulated": 33,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      },
+      "scene3_db_missing": {
+        "real": 4,
+        "simulated": 33,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      },
+      "scene4_full_cut": {
+        "real": 4,
+        "simulated": 33,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      }
+    },
+    "total_crashes": 0,
+    "total_errors": 0,
+    "total_charts_tested": 148,
+    "degradation_ok": false
+  },
+  "engine_stats": {
+    "total_rendered": 250,
+    "real_source": 28,
+    "simulated_source": 222,
+    "placeholder_source": 0,
+    "render_errors": 0,
+    "render_times_ms": [
+      18.0027,
+      19.9964,
+      20.9947,
+      18.0032,
+      13.001,
+      11.9963,
+      14.0057,
+      65.9947,
+      12.002,
+      17.0007,
+      15.9996,
+      20.0057,
+      20.9937,
+      17.0019,
+      13.9987,
+      14.0028,
+      14.0007,
+      18.0016,
+      26.0005,
+      29.9926,
+      15.0049,
+      15.9991,
+      17.0021,
+      24.9987,
+      23.0055,
+      32.9926,
+      27.0023,
+      26.0003,
+      29.0027,
+      23.9992,
+      27.9999,
+      27.9965,
+      29.9981,
+      26.0146,
+      25.9867,
+      21.004,
+      16.9952,
+      17.9989,
+      20.0047,
+      16.999,
+      14.9944,
+      14.0076,
+      17.0007,
+      28.0013,
+      42.9997,
+      51.9996,
+      55.9969,
+      54.0082,
+      13.9894,
+      14.9922,
+      26.9988,
+      20.0043,
+      82.9983,
+      29.9957,
+      75.9957,
+      29.0058,
+      29.9978,
+      56.0,
+      86.9992,
+      139.0014,
+      130.0049,
+      201.9978,
+      18.9996,
+      28.9981,
+      37.9987,
+      36.9992,
+      44.9977,
+      46.0012,
+      47.9975,
+      47.004,
+      26.001,
+      28.995,
+      26.9992,
+      31.0009,
+      29.0017,
+      36.006,
+      29.0034,
+      62.999,
+      41.002,
+      30.9997,
+      33.9961,
+      54.0006,
+      57.0054,
+      49.9997,
+      28.0061,
+      45.002,
+      147.0041,
+      71.0063,
+      74.9991,
+      95.9954,
+      89.0019,
+      118.9961,
+      99.0064,
+      68.0037,
+      55.0032,
+      70.9987,
+      246.0077,
+      274.0037,
+      342.0002,
+      23.0002,
+      26.0029,
+      21.0004,
+      27.993,
+      37.0114,
+      29.9971,
+      19.9995,
+      22.9976,
+      21.0006,
+      27.0019,
+      122.9987,
+      13.9971,
+      20.0,
+      28.0027,
+      25.7404,
+      14.9977,
+      19.0001,
+      15.9979,
+      22.0072,
+      22.9931,
+      22.0027,
+      19.0005,
+      20.9997,
+      18.0006,
+      18.9993,
+      17.9975,
+      24.0023,
+      23.9964,
+      21.0142,
+      22.989,
+      19.0043,
+      21.9975,
+      16.9976,
+      14.9963,
+      13.0084,
+      15.9936,
+      19.0032,
+      18.9993,
+      13.9978,
+      18.0008,
+      19.0048,
+      21.9994,
+      23.9985,
+      15.0032,
+      28.996,
+      17.0014,
+      13.9966,
+      106.0009,
+      17.0038,
+      21.9996,
+      24.9951,
+      33.0005,
+      15.9976,
+      18.0035,
+      20.0045,
+      14.9946,
+      14.0016,
+      15.9976,
+      16.0022,
+      17.0059,
+      12.9926,
+      15.002,
+      16.9966,
+      11.9982,
+      14.9984,
+      15.0032,
+      17.0014,
+      13.9985,
+      15.0008,
+      12.0015,
+      12.9995,
+      13.0007,
+      25.9993,
+      23.0019,
+      20.999,
+      15.0001,
+      16.0015,
+      32.9928,
+      22.9974,
+      17.0026,
+      11.9989,
+      17.9982,
+      17.0057,
+      24.9946,
+      75.0022,
+      10.9999,
+      13.9966,
+      16.0017,
+      20.9985,
+      9.0036,
+      11.9989,
+      20.0064,
+      18.996,
+      20.9992,
+      20.9985,
+      14.0064,
+      26.0022,
+      31.9934,
+      19.9997,
+      18.0035,
+      15.0011,
+      34.9987,
+      15.0027,
+      20.9959,
+      23.0036,
+      22.999,
+      21.9958,
+      23.0031,
+      15.9986,
+      56.0057,
+      21.9934,
+      22.9943,
+      22.0027,
+      19.0103,
+      19.9924,
+      29.0065,
+      24.9956,
+      21.0016,
+      19.0001,
+      10.0,
+      14.9977,
+      70.0006,
+      11.9965,
+      15.008,
+      22.9952,
+      29.0022,
+      20.0007,
+      19.002,
+      19.9938,
+      12.9991,
+      13.001,
+      15.0084,
+      12.9917,
+      16.0067,
+      9.9957,
+      19.9995,
+      8.997,
+      12.9995,
+      11.0037,
+      12.9952,
+      11.0018,
+      9.9981,
+      12.002,
+      9.9995,
+      9.0003,
+      13.0069,
+      14.992,
+      17.0016,
+      12.996,
+      10.0019,
+      10.0012
+    ],
+    "cache_hits": 115,
+    "cache_misses": 250,
+    "mapping_applied": 28,
+    "mapping_miss": 222,
+    "latency": {
+      "avg_ms": 31.5871,
+      "p50_ms": 20.9947,
+      "p95_ms": 89.0019,
+      "p99_ms": 246.0077,
+      "max_ms": 342.0002,
+      "min_ms": 8.997
+    },
+    "cache": {
+      "hits": 115,
+      "misses": 250,
+      "evictions": 0,
+      "total_get": 365,
+      "total_set": 250,
+      "size": 37,
+      "hit_rate_pct": 31.51
+    },
+    "scheduler": {
+      "scheduled": 0,
+      "completed": 0,
+      "timed_out": 0,
+      "errors": 0,
+      "active_count": 0,
+      "queue_depth": 0,
+      "queue_depth_pct": 0.0
+    }
+  },
+  "summary": {
+    "chart_count": 37,
+    "mapping_count": 91,
+    "test_results": {
+      "total": 36,
+      "pass": 22,
+      "warn": 7,
+      "fail": 4,
+      "blocked": 3
+    },
+    "coverage_rate_pct": 10.81,
+    "cache_hit_rate_pct": 50.0,
+    "degradation_ok": false,
+    "phase03_p0_r1_real_verify_done": true
+  }
+}

@@ -264,9 +264,11 @@ class Phase03P0RenderEngine:
     · 不修改 Phase02 告警阈值/CPU FUSE
     """
 
-    def __init__(self, yaml_path: str = None, mapping_table_path: str = None):
+    def __init__(self, yaml_path: str = None, mapping_table_path: str = None,
+                 db_path: str = None):
         self.yaml_path = yaml_path
         self.mapping_table_path = mapping_table_path
+        self.db_path = db_path
         self.mapping_table: Dict[str, str] = {}
         self.cache = RenderCache()
         self.scheduler = RenderScheduler()
@@ -468,12 +470,9 @@ class Phase03P0RenderEngine:
             ...
           ]
         """
-        db_path = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))),
-            "scripts", "api_cache.db"
-        )
-        if not os.path.exists(db_path):
+        # DB路径解析 (P0原型环境, scripts/api_cache.db)
+        db_path = self._resolve_db_path()
+        if not db_path:
             return None
 
         try:
@@ -484,39 +483,69 @@ class Phase03P0RenderEngine:
             for ind in cb.get("indicators", []):
                 ind_id = ind.get("indicator_id", "")
                 ind_name = ind.get("indicator_name", ind_id)
-                code = ind.get("commodity", cb.get("commodity", ""))
 
-                # 应用映射表: original_id → mapped_real_metric
+                # 应用映射表: DSHE indicator_id -> DSHB indicator_id
                 mapped_id = self.mapping_table.get(ind_id, ind_id)
 
-                # 查询 api_cache.db
-                # Phase02 表结构: indicator_cache(metric, code, data_json)
+                # DSHB api_cache.db 表结构: series_cache(indicator_id, indicator_id_mapped, commodity, date, value, source, imported_at)
+                # 使用 indicator_id_mapped (DSHE side) 查询, 与 mapping_table 匹配
                 cursor.execute(
-                    "SELECT data_json FROM indicator_cache WHERE metric=? AND code=?",
-                    (mapped_id, code.upper())
+                    "SELECT date, value FROM series_cache WHERE indicator_id_mapped=? ORDER BY date",
+                    (ind_id,)
                 )
-                row = cursor.fetchone()
-                if row:
-                    d = json.loads(row[0])
-                    pts = [
-                        {"date": p["date"], "value": float(p["value"])}
-                        for p in d.get("points", [])
-                        if isinstance(p, dict) and p.get("date") and p.get("value") is not None
-                    ]
-                    pts.sort(key=lambda p: p["date"])
-                    all_data.append({
-                        "name": d.get("name", ind_name),
-                        "unit": d.get("unit", ""),
-                        "points": pts,
-                        "mapped_from": ind_id,
-                        "mapped_to": mapped_id,
-                    })
+                rows = cursor.fetchall()
+
+                if rows:
+                    pts = []
+                    for date_str, val in rows:
+                        if val is not None:
+                            pts.append({"date": date_str, "value": float(val)})
+
+                    if pts:
+                        all_data.append({
+                            "name": ind_name,
+                            "unit": "",
+                            "points": pts,
+                            "mapped_from": ind_id,
+                            "mapped_to": mapped_id,
+                        })
 
             conn.close()
-
             return all_data if all_data else None
         except Exception:
             return None
+
+    def _resolve_db_path(self) -> Optional[str]:
+        """解析 api_cache.db 路径 (支持多种部署位置)"""
+        # 优先级0: 构造函数传入的 db_path
+        if self.db_path and os.path.exists(self.db_path):
+            return self.db_path
+
+        # 优先级1: 环境变量 V88_API_CACHE_DB
+        env_path = os.environ.get("V88_API_CACHE_DB", "")
+        if env_path and os.path.exists(env_path):
+            return env_path
+
+        # 优先级2: 相对于 P0 目录 (../../../scripts/api_cache.db)
+        p0_dir = os.path.dirname(os.path.abspath(__file__))
+        candidate = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(
+                os.path.dirname(os.path.dirname(p0_dir))))),
+            "scripts", "api_cache.db"
+        )
+        if os.path.exists(candidate):
+            return candidate
+
+        # 优先级3: 相对于仓库根
+        repo_root = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(
+                os.path.dirname(os.path.dirname(p0_dir))))),
+        )
+        candidate = os.path.join(repo_root, "scripts", "api_cache.db")
+        if os.path.exists(candidate):
+            return candidate
+
+        return None
 
     def _generate_simulated_data(self, cb: dict) -> List[dict]:
         """

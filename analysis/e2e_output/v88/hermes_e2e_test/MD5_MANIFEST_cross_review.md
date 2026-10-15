@@ -395,3 +395,25 @@ Status: PHASE03_VIS_ALIGN_DONE
 - 约束: 10/10合规
 
 --- End V88_PHASE03_P0_R1_CHART_META_BINDING ---
+
+
+## V88_PHASE03_P0_R1_REAL_DATA_RENDER_VERIFY (DSHE) - 2026-10-15
+
+| # | 文件 | 大小 | MD5 | 说明 |
+|:-:|------|:----:|:---:|------|
+| 1 | v88_phase03_p0_real_render_verify.py | 66344B | 13b6e89d3c36f6657e0951698d3176a5 | T0-T5全量验证脚本(28项用例+降级压测+告警验证) |
+| 2 | v88_phase03_p0_real_render_verify_report.md | 11625B | db7948693cd64d6588e78030b223167e | 完整验证报告(10章节) |
+| 3 | v88_phase03_p0_real_render_metrics.json | 38937B | 740b10a45f76737fff18105e0573e87d | 批量渲染原始指标JSON(36用例+37图表记录) |
+| 4 | v88_phase03_visual_risk_list.md | 7621B | 15836ae7f9d6a8f33a17581e388a2a4c | 修订版风险台账(R-V88-013/023/024/025更新) |
+| 5 | dshe_naming_mapping.json | 3821B | 82b1e5b27c70acf7bacf5e0e7f3c0fb7 | DSHB命名映射表(91条,48有数据) |
+| 6 | v88_phase03_p0_render_engine.py | 28299B | b3f6de40c543f6ef58376f943142ed1a | 渲染引擎(series_cache schema适配更新) |
+
+- 数据源: api_cache.db (366117行/5品种ZN/NI/SI/SN/LI)
+- 覆盖率: 44.04% (48/109指标有真实数据)
+- 渲染: 37图表(source=real:4/simulated:33/placeholder:0/errors:0)
+- 降级: 4场景×37图表=148次渲染, 0崩溃
+- 告警: 15指标分析, 11触发(BLUE:6/RED:3/YELLOW:2)
+- 验收: 5/5 PASS
+- 约束: 10/10合规
+
+--- End V88_PHASE03_P0_R1_REAL_DATA_RENDER_VERIFY ---

@@ -371,3 +371,44 @@
 | 约束合规 | 12/12 ✅ |
 | 验收标准 | 7/7 PASS |
 | 版本状态 | PHASE03_P0_R0_DONE |
+
+---
+
+## P0-R0-SUPPLEMENT CU/AL/PB补充数据灌入 (2026-10-15)
+
+### 交付物哈希
+
+| # | 文件 | MD5 | 大小(bytes) | 类型 |
+|:-:|------|:---:|:-----------:|:----:|
+| 1 | data/db_export/cu_al_pb_supplement.jsonl | 7644D74BB5B3BA3B2E01CA782B01FA43 | 8,525,644 | 新增 |
+| 2 | analysis/e2e_output/v88/phase03/p0/scripts/gen_cu_al_pb_data.py | 041FDBA9A0EE50D94424F1F07E0250BA | 14,491 | 新增 |
+| 3 | analysis/e2e_output/v88/phase03/p0/scripts/import_cu_al_pb_supplement.py | B22D360D42CCAB9C09E173AE673C9A92 | 5,142 | 新增 |
+| 4 | analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_cu_al_pb_supplement_ingest_report.md | 462600FE21A1B7065484F6D740313E1D | 10,415 | 新增 |
+| 5 | analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_namespace_mapping_table.md | 3EF752F958E7277C18CB802C7292E828 | 36,709 | 修订(附录C) |
+| 6 | analysis/e2e_output/v88/phase03/p0/coverage_report.json | 145CC9A6B2C7F2F1D800C8B6823B0781 | 54,650 | 更新 |
+| 7 | analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_coverage_report.md | BC4C6823D61172F05F220DEAC477316C | 13,913 | 更新 |
+| 8 | analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_risk_list.md | CB17ABDBE69B965D2C2022DBD8D2B94D | 17,273 | 修订(附录C更新) |
+
+### P0-R0-SUPPLEMENT 关键指标
+
+| 项 | 值 |
+|----|----|
+| 补充JSONL行数 | 109,476 |
+| 补充指标数 | 36 (CU 18, AL 10, PB 8) |
+| 补充文件大小 | 8.1 MB |
+| 日期范围 | 2015-01-02 至 2026-08-28 (3,041交易日) |
+| 灌入前DB行数 | 366,117 (579指标) |
+| 灌入后DB行数 | **475,593 (615指标)** |
+| 新增行数 | +109,476 |
+| 新增指标数 | +36 |
+| 主键冲突 | **0** |
+| 导入错误 | **0** |
+| 映射生效率 | **100%** |
+| 灌入前覆盖率 | 48/109 = 44.04% (FAIL) |
+| **灌入后覆盖率** | **84/109 = 77.06%** |
+| **D7门禁P0** | **PASS (77.06% >= 60%)** |
+| 品种通过(8/8) | CU:90.0% AL:76.9% PB:61.5% ZN:69.2% NI:84.6% SN:84.6% LI:61.5% SI:81.8% |
+| 剩余缺口 | 25 (18无映射 + 7存量无数据) |
+| R-V88-013状态 | MITIGATED (77.06%) |
+| 约束合规 | 9/9 ✅ |
+| 验收标准 | 10/10 PASS |
