@@ -198,3 +198,56 @@
 | Phase02 遗留纳入 | SMM 6项备选(R-V88-008) + CRLF MD5 规范(R-V88-009) |
 | IC/IR 基线继承 | 292 条冻结为 ic_ir_baseline_v1（只读） |
 | 版本状态 | PHASE03_PLAN_PREP_COMPLETE |
+
+## ===== V88 Phase03 DSHB 数据层前置预研 新增文件 (2026-10-16) =====
+**TASK_ID**: V88_PHASE03_DSHB_DATA_PREP | **AGENT**: DSHB | **HEAD**: 448a81d (待更新)
+**前置**: Phase02联合验收通过 JOINT_ACCEPTANCE_DATA_READY=TRUE
+
+### Phase03 新增交付物
+
+`79352DDE27F0AC9DF0F12D21FDADAA5A  analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_alt_data_source_review.md` (12,456B, SMM备选数据源复盘与迭代方案)
+`0B198FD7C66F9AB7D07466229E9B7554  analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_module_draft.md` (24,376B, 数据模块技术草案)
+`28175D8195D3600A3BD2AABCF9C7128A  analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_risk_list.md` (12,182B, 数据层技术风险清单)
+
+### Phase03 数据层预研摘要
+
+| 文件 | MD5 | 大小 | 类型 |
+|------|:---:|:----:|:----:|
+| v88_phase03_data_module_draft.md | 0B198FD7 | 24,376 | 数据模块技术草案 |
+| v88_phase03_alt_data_source_review.md | 79352DDE | 12,456 | 备选数据源复盘与迭代 |
+| v88_phase03_data_risk_list.md | 28175D81 | 12,182 | 数据层技术风险清单 |
+
+### Phase03 数据层关键指标
+
+| 指标 | 值 |
+|------|:--:|
+| 指标扩容 | 146→180 (+34) |
+| 爬虫扩展 | 12→16 (新增4+升级4) |
+| DQA规则升级 | 5→8 (新增3) |
+| 备选源迭代 | 6项优化 (P0=2/P1=2/P2=2) |
+| 因子漂移监测 | CUSUM+EWMA双层 |
+| 灾备分片 | Hot/Warm/Cold/Archive |
+| 风险清单 | 15项 (1Critical/2High/5Medium/7Low) |
+| Phase02链路修改 | 零修改 |
+| 预估工作量 | ~22人天 |
+
+### 约束合规
+
+- V87 基线: 0bcd94a8 + a0030737 (未修改)
+- Tag: 26d58a8 (不变)
+- APPEND_ONLY: 3份交付物全部新建
+- Phase02数据供给链路: 零修改
+- CPU FUSE 2.0%: 未修改
+- 15项阈值: 全部不变
+
+### Phase03 数据侧状态
+
+- 数据模块草案: **READY_FOR_HERMESHF_ALIGN** ✅
+- 备选源迭代: **P0可立即执行** (0外部依赖) ✅
+- 因子漂移监测: **设计就绪** ✅
+- 灾备/归档增强: **V1方案就绪** ✅
+- 数据风险清单: **15项全部登记** ✅
+- HERMEShf对齐: **9项待对齐** ⏳
+- Phase03原型开发: **等待HERMEShf顶层规划** ⏳
+
+**版本状态**: PHASE03_DATA_PREP_READY
