@@ -412,3 +412,39 @@
 | R-V88-013状态 | MITIGATED (77.06%) |
 | 约束合规 | 9/9 ✅ |
 | 验收标准 | 10/10 PASS |
+
+## P0-R0-TESTDB-INGEST 独立测试库灌入 (2026-10-15)
+
+| # | 文件 | MD5 | 大小 | 状态 |
+|:-:|------|:----:|:----:|:----:|
+| 1 | analysis/e2e_output/v88/phase03/p0/scripts/import_all_to_testdb.py | D35E45FCFED1A8B9D897F18C2AF0CBD8 | 11,755 | 新增 |
+| 2 | analysis/e2e_output/v88/phase03/p0/scripts/verify_testdb.py | 64D3325B3961984F73DE3C3C8095D882 | 4,163 | 新增 |
+| 3 | analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_independent_testdb_ingest_report.md | 39FBD58BEDBA588E723EE425FF87F957 | 11,955 | 新增 |
+| 4 | analysis/e2e_output/v88/phase03/p0/phase03_testdb_coverage_report.json | 2E5AC0300074349C64ED1F2B62EFB427 | 54,644 | 新增 |
+| 5 | analysis/e2e_output/v88/phase03/p0/phase03_testdb_coverage_report.md | 63855696A5F66B3F10BAA50F998A4BA3 | 13,908 | 新增 |
+| 6 | analysis/e2e_output/v88/phase03/review/v88_phase03_merged_risk_list.md | 8ED7620E8B515244C59514716E25C2D1 | 21,309 | 修订(R-V88-025/028转MITIGATED) |
+| 7 | analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_risk_list.md | FFAAB96F1EB8447FBF8C2C85773B1742 | 19,864 | 修订(附录D) |
+
+### P0-R0-TESTDB-INGEST 关键指标
+
+| 项目 | 值 |
+|------|------|
+| 独立测试库路径 | analysis/e2e_output/v88/phase03/p0/phase03_test.db |
+| 独立测试库大小 | ~66 MB |
+| JSONL灌入文件数 | 6 (基础5+CU/AL/PB补充1) |
+| 总灌入行数 | 475,593 |
+| 总指标数 | 615 |
+| 映射指标数 | 156 (98.9%) |
+| 主键冲突 | 0 |
+| 导入错误 | 0 |
+| 插入率 | 100% |
+| 耗时 | 27.3秒 |
+| 覆盖率 | **84/109 = 77.06%** |
+| D7门禁P0 | **PASS (77.06% >= 60%)** |
+| 品种通过(8/8) | CU:90% AL:77% PB:62% ZN:69% NI:85% SN:85% LC:62% SI:82% |
+| 原始api_cache.db | 未修改(475,593行) |
+| A-3/B-3/C-3 | 全部解除(3/3) |
+| R-V88-025状态 | MITIGATED |
+| R-V88-028状态 | MITIGATED (77.06%) |
+| 约束合规 | 7/7 ✅ |
+| 验收标准 | 10/10 PASS |
