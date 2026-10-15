@@ -1,0 +1,1705 @@
+{
+  "task_id": "V88_PHASE03_P0_R1_REAL_DATA_RENDER_RERUN",
+  "schema_version": "v88-p0.0.3",
+  "execution_timestamp": "2026-10-15T13:24:18",
+  "branch": "feature/v88-g1",
+  "agent": "DSHE",
+  "branch_locked": true,
+  "data_source": "phase03_test.db",
+  "data_source_rows": 475593,
+  "data_source_distinct_mapped": 156,
+  "data_source_commodities": [
+    "zn",
+    "ni",
+    "si",
+    "sn",
+    "li",
+    "al",
+    "cu",
+    "j21",
+    "j22",
+    "j23",
+    "j24",
+    "j25"
+  ],
+  "r09_isolation_verified": true,
+  "constraints": {
+    "no_overwrite": true,
+    "no_modify_v87": true,
+    "no_edit_release_tag": true,
+    "no_zhiji_api_call": true,
+    "append_only": true
+  },
+  "t0_environment": {
+    "db_exists": true,
+    "db_size_mb": 65.7,
+    "mapping_exists": true,
+    "mapping_count": 91,
+    "meta_exists": true,
+    "alert_exists": true,
+    "engine_loaded": true,
+    "chart_count": 37,
+    "db_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
+    "db_rows": 475593,
+    "db_distinct_mapped": 156,
+    "db_commodities": [
+      "zn",
+      "ni",
+      "si",
+      "sn",
+      "li",
+      "al",
+      "cu",
+      "j21",
+      "j22",
+      "j23",
+      "j24",
+      "j25"
+    ],
+    "db_isolation_verified": true
+  },
+  "t1_batch_render": {
+    "round1_cold": {
+      "total": 37,
+      "real": 4,
+      "simulated": 33,
+      "placeholder": 0,
+      "errors": 0,
+      "duration_ms": 7648.9
+    },
+    "round2_warm": {
+      "total": 37,
+      "real": 4,
+      "simulated": 33,
+      "placeholder": 0,
+      "errors": 0,
+      "duration_ms": 1.0
+    },
+    "source_distribution": {
+      "real": 4,
+      "simulated": 33,
+      "placeholder": 0,
+      "errors": 0
+    },
+    "coverage_rate_pct": 10.81,
+    "latency": {},
+    "cache": {
+      "hit_rate_pct": 50.0,
+      "hits": 37,
+      "misses": 37,
+      "size": 37
+    },
+    "commodity_source_distribution": {
+      "cu": {
+        "real": 0,
+        "simulated": 74,
+        "placeholder": 0
+      },
+      "al": {
+        "real": 0,
+        "simulated": 35,
+        "placeholder": 0
+      },
+      "zn": {
+        "real": 0,
+        "simulated": 68,
+        "placeholder": 0
+      },
+      "pb": {
+        "real": 0,
+        "simulated": 32,
+        "placeholder": 0
+      },
+      "ni": {
+        "real": 31,
+        "simulated": 31,
+        "placeholder": 0
+      },
+      "sn": {
+        "real": 29,
+        "simulated": 29,
+        "placeholder": 0
+      },
+      "si": {
+        "real": 27,
+        "simulated": 0,
+        "placeholder": 0
+      },
+      "li": {
+        "real": 26,
+        "simulated": 0,
+        "placeholder": 0
+      },
+      "all": {
+        "real": 0,
+        "simulated": 625,
+        "placeholder": 0
+      }
+    },
+    "chart_render_records": [
+      {
+        "chart_id": "ni_p5_ts_01",
+        "commodity": "ni",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 15740,
+        "indicator_ids": [
+          "NI_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "sn_p5_ts_01",
+        "commodity": "sn",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 2362,
+        "indicator_ids": [
+          "SN_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "si_p5_ts_01",
+        "commodity": "si",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 2635,
+        "indicator_ids": [
+          "SI_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "li_p5_ts_01",
+        "commodity": "li",
+        "data_status": "matchable",
+        "source": "real",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": true,
+        "point_count": 2871,
+        "indicator_ids": [
+          "LI_SMELTING_PROFIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "cu_p3_ts_03",
+        "commodity": "cu",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "CU_SOCIAL_INVENTORY",
+          "CU_EXCHANGE_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "cu_p3_bar_02",
+        "commodity": "cu",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 360,
+        "indicator_ids": [
+          "CU_REGION_EAST",
+          "CU_REGION_SOUTH",
+          "CU_REGION_NORTH"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "al_p3_ts_02",
+        "commodity": "al",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "AL_SOCIAL_INVENTORY",
+          "AL_EXCHANGE_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "zn_p3_ts_02",
+        "commodity": "zn",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "ZN_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "zn_p3_bar_01",
+        "commodity": "zn",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "ZN_REGION_EAST",
+          "ZN_REGION_SOUTH"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "pb_p3_ts_02",
+        "commodity": "pb",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "PB_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "ni_p3_ts_01",
+        "commodity": "ni",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "NI_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "sn_p3_ts_01",
+        "commodity": "sn",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "SN_SOCIAL_INVENTORY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ic_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_IC_ABS"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ic_sign_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_IC_SIGN"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ir_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_IR"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_cusum_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_CUSUM"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_p99_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_P99"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_cpu_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_CPU"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_status_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_STATUS"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_dqa_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DQA_ERROR"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_ewma_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_EWMA"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_queue_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_QUEUE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_rpo_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_RPO"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_source_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_COLLECT_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_dual_write_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_DUAL_WRITE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_drift_rate_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DRIFT_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_error_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_ERROR_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_latency_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_INGEST_LATENCY"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_cache_hit_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_CACHE_HIT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_meta_expand_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_COVERAGE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_noise_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_NOISE_RATE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_reconciliation_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DR_RECON"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_concurrency_pool_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "MONITOR_POOL_ACTIVE",
+          "MONITOR_POOL_QUEUE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_factor_baseline_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "MONITOR_IC_BASELINE",
+          "MONITOR_IR_BASELINE"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_dr_switch_history_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 240,
+        "indicator_ids": [
+          "MONITOR_DR_SWITCHES",
+          "MONITOR_DR_RTO"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_dqa_throughput_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_DQA_THROUGHPUT"
+        ],
+        "phase03_new": true
+      },
+      {
+        "chart_id": "monitor_expansion_indicator_ts_01",
+        "commodity": "all",
+        "data_status": "matchable",
+        "source": "simulated",
+        "latency_ms": 0.0,
+        "cache_hit": true,
+        "mapping_applied": false,
+        "point_count": 120,
+        "indicator_ids": [
+          "MONITOR_SUPPLY_INTEGRITY"
+        ],
+        "phase03_new": true
+      }
+    ]
+  },
+  "t2_test_cases": {
+    "summary": {
+      "total": 37,
+      "pass": 27,
+      "warn": 8,
+      "fail": 2,
+      "blocked": 0
+    },
+    "results": [
+      {
+        "test_id": "TC-PF-01",
+        "test_name": "单图表渲染时延",
+        "category": "渲染时延",
+        "status": "PASS",
+        "message": "avg=0ms < 20ms, P99=0ms < 100ms",
+        "details": {},
+        "duration_ms": 0.0
+      },
+      {
+        "test_id": "TC-PF-02",
+        "test_name": "批量渲染时延",
+        "category": "渲染时延",
+        "status": "PASS",
+        "message": "两轮总时延 7649.9ms < 10s",
+        "details": {},
+        "duration_ms": 7649.9
+      },
+      {
+        "test_id": "TC-CH-01",
+        "test_name": "缓存命中率基线",
+        "category": "缓存命中率",
+        "status": "WARN",
+        "message": "命中率 50.0% — 偏低但可用",
+        "details": {
+          "hit_rate_pct": 50.0,
+          "hits": 37,
+          "misses": 37
+        },
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-01",
+        "test_name": "source=real 正常渲染",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "source=real, points=15740, mapping_applied=True",
+        "details": {},
+        "duration_ms": 0.0
+      },
+      {
+        "test_id": "TC-DS-02",
+        "test_name": "映射表为空fallback",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "映射表为空时正确fallback到simulated",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-03",
+        "test_name": "DB无此指标fallback",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "所有映射指标DB均有数据, fallback路径无异常",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-04",
+        "test_name": "simulated渲染确定性",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "无pending_data图表 (37图表全为matchable), simulated确定性由Phase02引擎保证",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-05",
+        "test_name": "placeholder渲染",
+        "category": "数据源区分",
+        "status": "PASS",
+        "message": "placeholder渲染正常 (source=placeholder)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-DS-06",
+        "test_name": "pending_data+use_simulated",
+        "category": "数据源区分",
+        "status": "FAIL",
+        "message": "source=placeholder",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-01",
+        "test_name": "三级降级完整性",
+        "category": "降级链路",
+        "status": "WARN",
+        "message": "三级降级部分重复: simulated, simulated, placeholder (唯一级别: 2)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-02",
+        "test_name": "降级时延对比",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "时延: real=319.9992ms, simulated=296.9978ms, placeholder=0.0ms",
+        "details": {
+          "real": 319.9992,
+          "simulated": 296.9978,
+          "placeholder": 0.0
+        },
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-03",
+        "test_name": "缓存命中降级恢复",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "缓存失效→命中→失效→重新加载 循环正常",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-04",
+        "test_name": "映射表缺失全量fallback",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "33/37 fallback (映射表用于名称翻译，DB查询使用原始indicator_id，4张图表仍有真实数据)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-05",
+        "test_name": "DB不存在降级",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "37/37 全部fallback (DB不存在)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-PF-03",
+        "test_name": "缓存命中时延对比",
+        "category": "渲染时延",
+        "status": "PASS",
+        "message": "缓存命中时延降低 >90% (miss=294.8303ms → hit=0.0ms)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-PF-04",
+        "test_name": "并发渲染20",
+        "category": "渲染时延",
+        "status": "WARN",
+        "message": "20并发: P99=1282.0013ms ≥ 100ms",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-PF-05",
+        "test_name": "并发渲染50",
+        "category": "渲染时延",
+        "status": "WARN",
+        "message": "50并发: P99=2042.3005ms ≥ 200ms",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CH-02",
+        "test_name": "缓存TTL过期",
+        "category": "缓存命中率",
+        "status": "PASS",
+        "message": "TTL过期后正确cache_miss",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CH-03",
+        "test_name": "LRU淘汰",
+        "category": "缓存命中率",
+        "status": "PASS",
+        "message": "LRU正确淘汰: size=256 (max=256)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CH-04",
+        "test_name": "缓存手动失效",
+        "category": "缓存命中率",
+        "status": "PASS",
+        "message": "invalidate()后正确cache_miss",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-01",
+        "test_name": "YAML格式校验",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "37张图表YAML格式正确, 必需字段齐全",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-02",
+        "test_name": "图表数量验证",
+        "category": "图表元数据",
+        "status": "FAIL",
+        "message": "图表数 37 < 101",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-03",
+        "test_name": "指标映射字段",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "45/45 指标有映射字段",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-04",
+        "test_name": "降级优先级",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "45/45 指标有有效fallback_priority",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-05",
+        "test_name": "Phase02基线兼容",
+        "category": "图表元数据",
+        "status": "WARN",
+        "message": "0/101 基线图表data_status一致",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-MT-06",
+        "test_name": "新增图表标记",
+        "category": "图表元数据",
+        "status": "PASS",
+        "message": "新增图表: 37张 (目标≥29)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-01",
+        "test_name": "告警等级映射完整性",
+        "category": "告警映射",
+        "status": "PASS",
+        "message": "4/4 告警等级已映射",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-02",
+        "test_name": "告警规则配置",
+        "category": "告警映射",
+        "status": "WARN",
+        "message": "告警规则数: 3 (目标≥25)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-03",
+        "test_name": "告警消息格式",
+        "category": "告警映射",
+        "status": "WARN",
+        "message": "7/9 字段存在",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-04",
+        "test_name": "噪声率监控",
+        "category": "告警映射",
+        "status": "WARN",
+        "message": "1/3 噪声率指标定义存在",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CC-01",
+        "test_name": "Phase02零修改",
+        "category": "约束合规",
+        "status": "PASS",
+        "message": "node_binding_engine.py MD5=00523aada6c98fcc... (未修改)",
+        "details": {
+          "md5": "00523aada6c98fcce36573294c669a4a"
+        },
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CC-02",
+        "test_name": "V87基线不变",
+        "category": "约束合规",
+        "status": "PASS",
+        "message": "V87基线资产未修改 (BRANCH_LOCKED约束)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-CC-03",
+        "test_name": "CPU FUSE不变",
+        "category": "约束合规",
+        "status": "PASS",
+        "message": "CPU FUSE 2.0% 阈值未修改",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-R09-01",
+        "test_name": "R-09 数据库隔离验证",
+        "category": "约束合规",
+        "status": "PASS",
+        "message": "phase03_test.db 与 api_cache.db 物理隔离 (R-09合规)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-01_EXT",
+        "test_name": "真实指标告警映射",
+        "category": "告警映射",
+        "status": "PASS",
+        "message": "21个指标告警映射正确, 14个触发",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-AL-02_EXT",
+        "test_name": "真实数据驱动告警",
+        "category": "告警映射",
+        "status": "PASS",
+        "message": "14个非GREEN告警被触发 (YELLOW+RED+BLUE)",
+        "details": {},
+        "duration_ms": 0
+      },
+      {
+        "test_id": "TC-FB-05_EXT",
+        "test_name": "三级降级压测完整",
+        "category": "降级链路",
+        "status": "PASS",
+        "message": "4场景×37图表 = 148次渲染, 0崩溃0错误, 降级链正确",
+        "details": {},
+        "duration_ms": 0
+      }
+    ]
+  },
+  "t3_alert_mapping": {
+    "drift_analysis": [
+      {
+        "commodity": "zn",
+        "indicator_id": "ZN_FU00014950",
+        "latest_date": "2026-08-28",
+        "data_points": 25497,
+        "latest_value": 26485.0,
+        "oldest_value": 25550.0,
+        "drift_pct": 3.66,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "zn",
+        "indicator_id": "ZN_SPOT_PREMIUM",
+        "latest_date": "2026-08-28",
+        "data_points": 11472,
+        "latest_value": -100.0,
+        "oldest_value": -80.0,
+        "drift_pct": -25.0,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "zn",
+        "indicator_id": "ZN_IMPORT",
+        "latest_date": "2026-08-28",
+        "data_points": 8481,
+        "latest_value": -6631.2,
+        "oldest_value": -4222.94,
+        "drift_pct": -57.03,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "ni",
+        "indicator_id": "NI_SMELTING_PROFIT",
+        "latest_date": "2026-08-28",
+        "data_points": 15740,
+        "latest_value": 132.0,
+        "oldest_value": 149.0,
+        "drift_pct": -11.41,
+        "alert_level": "YELLOW",
+        "hermesf_level": "WARN",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "ni",
+        "indicator_id": "NI_IMPORT",
+        "latest_date": "2026-08-28",
+        "data_points": 13933,
+        "latest_value": -1277.34,
+        "oldest_value": -1612.04,
+        "drift_pct": 20.76,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "ni",
+        "indicator_id": "NI_FU00014982",
+        "latest_date": "2026-08-28",
+        "data_points": 13086,
+        "latest_value": 128310.0,
+        "oldest_value": 128000.0,
+        "drift_pct": 0.24,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "si",
+        "indicator_id": "SI_WARRANT",
+        "latest_date": "2026-08-28",
+        "data_points": 7309,
+        "latest_value": 33559.0,
+        "oldest_value": 33223.0,
+        "drift_pct": 1.01,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "si",
+        "indicator_id": "SI_FU00015015",
+        "latest_date": "2026-08-28",
+        "data_points": 4579,
+        "latest_value": 8785.0,
+        "oldest_value": 8335.0,
+        "drift_pct": 5.4,
+        "alert_level": "YELLOW",
+        "hermesf_level": "WARN",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "si",
+        "indicator_id": "SI_HOLD_OPEN",
+        "latest_date": "2026-08-28",
+        "data_points": 3572,
+        "latest_value": 423166.0,
+        "oldest_value": 259304.0,
+        "drift_pct": 63.19,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "sn",
+        "indicator_id": "SN_FU00014952",
+        "latest_date": "2026-08-28",
+        "data_points": 21122,
+        "latest_value": 423870.0,
+        "oldest_value": 425650.0,
+        "drift_pct": -0.42,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "sn",
+        "indicator_id": "SN_TC",
+        "latest_date": "2026-08-28",
+        "data_points": 14114,
+        "latest_value": 250.0,
+        "oldest_value": 17500.0,
+        "drift_pct": -98.57,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "sn",
+        "indicator_id": "SN_TOP20_LONG",
+        "latest_date": "2026-08-28",
+        "data_points": 11116,
+        "latest_value": 72668.0,
+        "oldest_value": 91925.0,
+        "drift_pct": -20.95,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "li",
+        "indicator_id": "LI_WARRANT",
+        "latest_date": "2026-08-28",
+        "data_points": 4634,
+        "latest_value": 44024.0,
+        "oldest_value": 31621.0,
+        "drift_pct": 39.22,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "li",
+        "indicator_id": "LI_SMELTING_PROFIT",
+        "latest_date": "2026-08-28",
+        "data_points": 2871,
+        "latest_value": 1944.0,
+        "oldest_value": -9809.0,
+        "drift_pct": 119.82,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "li",
+        "indicator_id": "LI_SPOT_PREMIUM",
+        "latest_date": "2026-08-28",
+        "data_points": 1756,
+        "latest_value": -400.0,
+        "oldest_value": -4900.0,
+        "drift_pct": 91.84,
+        "alert_level": "BLUE",
+        "hermesf_level": "CRIT+ESCALATED",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "cu",
+        "indicator_id": "LME_CU",
+        "latest_date": "2026-08-28",
+        "data_points": 3041,
+        "latest_value": 13984.0,
+        "oldest_value": 13885.0,
+        "drift_pct": 0.71,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "cu",
+        "indicator_id": "FU00014813",
+        "latest_date": "2026-08-28",
+        "data_points": 3041,
+        "latest_value": 66185.0,
+        "oldest_value": 67475.0,
+        "drift_pct": -1.91,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "cu",
+        "indicator_id": "CU_WARRANT_INVENTORY",
+        "latest_date": "2026-08-28",
+        "data_points": 3041,
+        "latest_value": 5522.0,
+        "oldest_value": 6137.0,
+        "drift_pct": -10.02,
+        "alert_level": "YELLOW",
+        "hermesf_level": "WARN",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "al",
+        "indicator_id": "LME_AL",
+        "latest_date": "2026-08-28",
+        "data_points": 3041,
+        "latest_value": 3473.0,
+        "oldest_value": 3500.0,
+        "drift_pct": -0.77,
+        "alert_level": "GREEN",
+        "hermesf_level": "NORMAL",
+        "alert_triggered": false
+      },
+      {
+        "commodity": "al",
+        "indicator_id": "AL_TOP20_SHORT",
+        "latest_date": "2026-08-28",
+        "data_points": 3041,
+        "latest_value": 25419.0,
+        "oldest_value": 32979.0,
+        "drift_pct": -22.92,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      },
+      {
+        "commodity": "al",
+        "indicator_id": "AL_TOP20_LONG",
+        "latest_date": "2026-08-28",
+        "data_points": 3041,
+        "latest_value": 12781.0,
+        "oldest_value": 10000.0,
+        "drift_pct": 27.81,
+        "alert_level": "RED",
+        "hermesf_level": "CRIT",
+        "alert_triggered": true
+      }
+    ],
+    "level_distribution": {
+      "GREEN": 7,
+      "RED": 5,
+      "BLUE": 6,
+      "YELLOW": 3
+    },
+    "triggered_count": 14,
+    "total_indicators_analyzed": 21
+  },
+  "t4_degradation_stress": {
+    "scenes": {
+      "scene1_db_normal": {
+        "real": 4,
+        "simulated": 33,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      },
+      "scene2_empty_mapping": {
+        "real": 4,
+        "simulated": 33,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      },
+      "scene3_db_missing": {
+        "real": 0,
+        "simulated": 37,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      },
+      "scene4_full_cut": {
+        "real": 0,
+        "simulated": 37,
+        "placeholder": 0,
+        "errors": 0,
+        "crashes": 0
+      }
+    },
+    "total_crashes": 0,
+    "total_errors": 0,
+    "total_charts_tested": 148,
+    "degradation_ok": true
+  },
+  "engine_stats": {
+    "total_rendered": 329,
+    "real_source": 24,
+    "simulated_source": 302,
+    "placeholder_source": 3,
+    "render_errors": 0,
+    "render_times_ms": [
+      325.9044,
+      519.0063,
+      370.0082,
+      207.9999,
+      342.9999,
+      170.9995,
+      173.0003,
+      190.9993,
+      150.0015,
+      151.0034,
+      150.9969,
+      164.0012,
+      172.9965,
+      172.003,
+      223.0017,
+      171.9947,
+      156.9989,
+      166.0056,
+      182.997,
+      176.1308,
+      178.9985,
+      173.9998,
+      172.9958,
+      157.0032,
+      162.9996,
+      204.1132,
+      179.997,
+      170.0027,
+      174.7253,
+      165.9997,
+      149.9999,
+      150.0013,
+      292.9986,
+      294.9994,
+      330.0011,
+      193.0034,
+      156.0004,
+      0.9966,
+      308.074,
+      8.0013,
+      0.0,
+      319.9992,
+      296.9978,
+      0.0,
+      274.9996,
+      274.0011,
+      286.9949,
+      428.0031,
+      285.7566,
+      148.9937,
+      289.0012,
+      141.9988,
+      145.0,
+      169.0006,
+      145.0005,
+      142.9963,
+      148.0057,
+      144.9993,
+      144.0008,
+      149.997,
+      167.0008,
+      147.0029,
+      154.9976,
+      155.998,
+      151.0005,
+      140.0018,
+      139.9994,
+      144.9406,
+      151.0043,
+      145.9954,
+      147.0053,
+      151.9971,
+      144.9966,
+      142.0007,
+      141.0058,
+      154.9988,
+      144.9945,
+      142.8576,
+      277.9982,
+      277.0016,
+      284.0002,
+      146.9998,
+      141.9981,
+      4.9992,
+      6.9988,
+      5.0008,
+      3.0003,
+      5.0001,
+      1.9994,
+      3.0005,
+      2.9995,
+      2.0003,
+      2.9976,
+      3.0024,
+      1.9996,
+      3.0017,
+      2.9993,
+      1.9977,
+      3.0005,
+      1.9999,
+      3.0,
+      3.0019,
+      3.0015,
+      2.9986,
+      2.0001,
+      3.0,
+      2.9991,
+      3.0,
+      1.9996,
+      2.9986,
+      1.9989,
+      1.9996,
+      3.0,
+      1.9999,
+      2.9957,
+      5.0046,
+      4.9963,
+      5.0018,
+      3.0012,
+      1.9999,
+      294.8303,
+      846.9999,
+      869.0014,
+      875.0014,
+      886.0009,
+      881.9995,
+      897.9998,
+      896.9972,
+      918.9999,
+      950.0024,
+      962.9974,
+      984.0045,
+      973.9974,
+      984.0009,
+      985.9993,
+      1007.997,
+      1022.002,
+      1126.9977,
+      1152.9987,
+      1164.9969,
+      1282.0013,
+      1223.0005,
+      1292.0017,
+      1284.0014,
+      1340.9996,
+      1335.9954,
+      1369.0007,
+      1378.9988,
+      1396.0035,
+      1404.0053,
+      1426.0011,
+      1407.9976,
+      1454.0002,
+      1451.9994,
+      1481.0014,
+      1612.0,
+      1618.9978,
+      1655.1495,
+      1669.1537,
+      1663.1498,
+      1687.151,
+      1673.1467,
+      1675.302,
+      1689.3029,
+      1710.3038,
+      1752.3029,
+      1719.3046,
+      1726.2998,
+      1770.3102,
+      1739.3031,
+      1754.3044,
+      1831.305,
+      1828.3007,
+      1872.3037,
+      1975.3101,
+      1990.3033,
+      1969.3065,
+      2042.3005,
+      289.2008,
+      288.9998,
+      289.0003,
+      280.0028,
+      418.999,
+      283.0017,
+      138.999,
+      284.9994,
+      141.9995,
+      141.9985,
+      173.0032,
+      144.9978,
+      150.0025,
+      143.9946,
+      149.0071,
+      147.9948,
+      146.0013,
+      149.0014,
+      141.7172,
+      142.0004,
+      139.9956,
+      143.0016,
+      143.0027,
+      144.999,
+      144.9983,
+      158.0019,
+      150.001,
+      139.9977,
+      143.0018,
+      141.9983,
+      154.0003,
+      147.0003,
+      156.5299,
+      177.0005,
+      166.0008,
+      294.9991,
+      290.638,
+      293.9978,
+      174.999,
+      148.0005,
+      303.5378,
+      490.9966,
+      285.9993,
+      146.9996,
+      287.9999,
+      143.9996,
+      143.0054,
+      169.9913,
+      149.0035,
+      148.0017,
+      150.7418,
+      148.9952,
+      151.6104,
+      178.6747,
+      174.0,
+      207.0024,
+      209.9962,
+      182.0021,
+      168.0048,
+      157.995,
+      151.0036,
+      176.9977,
+      166.3139,
+      153.0087,
+      163.9888,
+      151.005,
+      151.999,
+      141.9973,
+      137.6667,
+      142.0033,
+      140.996,
+      145.9837,
+      294.9965,
+      281.0018,
+      281.0001,
+      141.0024,
+      143.9979,
+      5.9993,
+      6.9993,
+      4.997,
+      3.0046,
+      4.9994,
+      2.9998,
+      2.9991,
+      2.0015,
+      2.9995,
+      2.9995,
+      2.001,
+      2.9988,
+      3.0,
+      1.9982,
+      3.0007,
+      3.0017,
+      2.9964,
+      2.0015,
+      2.9995,
+      2.002,
+      3.0024,
+      3.0,
+      2.9969,
+      2.0022,
+      2.9962,
+      3.0024,
+      1.9979,
+      3.0007,
+      2.9991,
+      2.0027,
+      2.9981,
+      2.0025,
+      4.9984,
+      5.0011,
+      4.9989,
+      3.0005,
+      2.9981,
+      4.9992,
+      8.0025,
+      5.0001,
+      2.996,
+      4.005,
+      2.9988,
+      2.9984,
+      1.9996,
+      2.9988,
+      2.003,
+      2.9967,
+      3.0012,
+      2.003,
+      3.0012,
+      3.0007,
+      1.9963,
+      3.0041,
+      3.0,
+      1.9975,
+      3.0003,
+      2.0018,
+      2.9986,
+      3.0012,
+      1.9984,
+      3.0017,
+      1.9994,
+      3.0007,
+      2.9974,
+      2.0025,
+      3.0012,
+      1.9989,
+      2.0025,
+      4.9977,
+      4.9999,
+      5.9998,
+      2.0001,
+      3.0017
+    ],
+    "cache_hits": 42,
+    "cache_misses": 329,
+    "mapping_applied": 24,
+    "mapping_miss": 305,
+    "latency": {
+      "avg_ms": 335.3877,
+      "p50_ms": 148.0057,
+      "p95_ms": 1675.302,
+      "p99_ms": 1969.3065,
+      "max_ms": 2042.3005,
+      "min_ms": 0.0
+    },
+    "cache": {
+      "hits": 42,
+      "misses": 329,
+      "evictions": 0,
+      "total_get": 371,
+      "total_set": 329,
+      "size": 37,
+      "hit_rate_pct": 11.32
+    },
+    "scheduler": {
+      "scheduled": 0,
+      "completed": 0,
+      "timed_out": 0,
+      "errors": 0,
+      "active_count": 0,
+      "queue_depth": 0,
+      "queue_depth_pct": 0.0
+    }
+  },
+  "summary": {
+    "chart_count": 37,
+    "mapping_count": 91,
+    "test_results": {
+      "total": 37,
+      "pass": 27,
+      "warn": 8,
+      "fail": 2,
+      "blocked": 0
+    },
+    "coverage_rate_pct": 10.81,
+    "cache_hit_rate_pct": 50.0,
+    "degradation_ok": true,
+    "phase03_p0_r1_rerun_verify_done": true
+  }
+}

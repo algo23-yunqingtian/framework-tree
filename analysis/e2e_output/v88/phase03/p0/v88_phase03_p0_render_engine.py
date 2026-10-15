@@ -383,6 +383,7 @@ class Phase03P0RenderEngine:
 
         # 数据分流
         data_status = cb.get("data_status", "pending_data")
+        mapping_applied = False  # 默认未应用映射 (pending_data路径)
 
         if data_status == "matchable":
             # === Phase03-P0 核心逻辑: 尝试从 api_cache 加载真实数据 ===
@@ -516,10 +517,16 @@ class Phase03P0RenderEngine:
             return None
 
     def _resolve_db_path(self) -> Optional[str]:
-        """解析 api_cache.db 路径 (支持多种部署位置)"""
+        """解析 api_cache.db 路径 (支持多种部署位置)
+        
+        注意: 若 db_path 被显式设置 (非None), 仅使用该路径，不回退到其他优先级。
+        这确保降级测试能正确模拟 DB 不存在场景。
+        """
         # 优先级0: 构造函数传入的 db_path
-        if self.db_path and os.path.exists(self.db_path):
-            return self.db_path
+        if self.db_path is not None:
+            if self.db_path and os.path.exists(self.db_path):
+                return self.db_path
+            return None  # 显式设置但不存在，不回退
 
         # 优先级1: 环境变量 V88_API_CACHE_DB
         env_path = os.environ.get("V88_API_CACHE_DB", "")

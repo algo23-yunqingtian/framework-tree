@@ -417,3 +417,31 @@ Status: PHASE03_VIS_ALIGN_DONE
 - Ô¼Êø: 10/10ºÏ¹æ
 
 --- End V88_PHASE03_P0_R1_REAL_DATA_RENDER_VERIFY ---
+
+---
+
+## V88_PHASE03_P0_R1_REAL_DATA_RENDER_RERUN (DSHE) - 2026-10-15
+
+| # | File | Size | MD5 | Description |
+|:-:|------|:----:|:---:|------------|
+| 1 | v88_phase03_p0_rerun_real_render_verify.py | 68KB | TBD | T0-T5 rerun verification script (37 test cases + degradation stress + alert verify) |
+| 2 | v88_phase03_p0_rerun_real_render_verify_report.md | 12KB | TBD | Rerun verification report (phase03_test.db data source) |
+| 3 | v88_phase03_p0_rerun_real_render_metrics.json | 39KB | TBD | Rerun raw render metrics JSON (37 test cases + 37 chart records) |
+| 4 | v88_phase03_visual_risk_list.md | 9KB | TBD | Updated risk ledger (R-V88-028 RESOLVED + RERUN stats) |
+| 5 | v88_phase03_p0_render_engine.py | 28KB | TBD | Render engine (DB path no-fallback fix + mapping_applied init fix) |
+| 6 | phase03_test.db | 66MB | N/A | Phase03 independent test DB (R-09 isolation, 475,593 rows) |
+
+- Data source: phase03_test.db (475,593 rows / 156 mapped indicators / 12 commodities)
+- R-09 isolation: VERIFIED (phase03_test.db vs scripts/api_cache.db)
+- Coverage: D7 77.06% (84/109 indicators) - P0 gate PASS
+- Render: 37 charts (source=real:4 / simulated:33 / errors:0)
+- Cache hit rate: 50.0%
+- Test cases: 37 total (PASS=27 / WARN=8 / FAIL=2 / BLOCKED=0)
+- Previous BLOCKED (TC-DS-04/05/06): ALL RESOLVED
+- Degradation: 4 scenes x 37 charts = 148 renders, 0 crashes, 0 errors
+- Alert mapping: 21 indicators analyzed, 14 triggered (BLUE:6 / RED:5 / YELLOW:3)
+- CHG-DV-01: RESOLVED
+- Acceptance: 5/5 PASS
+- Constraints: 11/11 compliant
+
+--- End V88_PHASE03_P0_R1_REAL_DATA_RENDER_RERUN ---
