@@ -1,7 +1,7 @@
 {
   "task_id": "V88_PHASE03_P0_R0_NAME_MAPPING_AND_CACHE_IMPORTER",
   "schema_version": "v88-p0.0.1",
-  "timestamp": "2026-10-15T11:21:27.246739",
+  "timestamp": "2026-10-15T11:23:10.549325",
   "db_path": "scripts\\api_cache.db",
   "db_exists": true,
   "db_size_bytes": 79392768,
@@ -13,8 +13,8 @@
   "yaml_path": "analysis\\e2e_output\\v88\\backlog\\framework_tree_meta_chart.yaml",
   "overall": {
     "total_indicators": 109,
-    "covered": 0,
-    "coverage_rate_pct": 0.0,
+    "covered": 48,
+    "coverage_rate_pct": 44.04,
     "gate_threshold_pct": 60.0,
     "gate_status": "FAIL",
     "gate_phase": "P0"
@@ -37,28 +37,28 @@
     },
     "zn": {
       "total": 13,
-      "covered": 0,
-      "rate_pct": 0.0
+      "covered": 9,
+      "rate_pct": 69.23076923076923
     },
     "ni": {
       "total": 13,
-      "covered": 0,
-      "rate_pct": 0.0
+      "covered": 11,
+      "rate_pct": 84.61538461538461
     },
     "sn": {
       "total": 13,
-      "covered": 0,
-      "rate_pct": 0.0
+      "covered": 11,
+      "rate_pct": 84.61538461538461
     },
     "li": {
       "total": 13,
-      "covered": 0,
-      "rate_pct": 0.0
+      "covered": 8,
+      "rate_pct": 61.53846153846154
     },
     "si": {
       "total": 11,
-      "covered": 0,
-      "rate_pct": 0.0
+      "covered": 9,
+      "rate_pct": 81.81818181818183
     }
   },
   "per_indicator": [
@@ -524,10 +524,13 @@
       "indicator_name": "基差",
       "mapped_to": "li_21_basis",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 754,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2023-07-21",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -563,10 +566,13 @@
       "indicator_name": "多空持仓比",
       "mapped_to": "li_21_openinterest_longshort",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 754,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2023-07-21",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -602,10 +608,13 @@
       "indicator_name": "冶炼利润",
       "mapped_to": "li_25_profit",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 891,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2023-02-01",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -615,10 +624,13 @@
       "indicator_name": "现货升贴水",
       "mapped_to": "li_21_premium",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 439,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2024-11-14",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -641,10 +653,13 @@
       "indicator_name": "多头前20",
       "mapped_to": "li_26_openinterest_top20",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 754,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2023-07-21",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -654,10 +669,13 @@
       "indicator_name": "空头前20",
       "mapped_to": "li_26_openinterest_top20_2",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 754,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2023-07-21",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -693,10 +711,13 @@
       "indicator_name": "LME锂",
       "mapped_to": "li_21_close",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 754,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2023-07-21",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -706,10 +727,13 @@
       "indicator_name": "LME镍",
       "mapped_to": "ni_21_lme_price",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1862,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2018-10-10",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -732,10 +756,13 @@
       "indicator_name": "LME硅",
       "mapped_to": "si_25_close_front_polysilicon",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 406,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2024-12-26",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -745,10 +772,13 @@
       "indicator_name": "LME锡",
       "mapped_to": "sn_23_lme_close",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1122,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-03-21",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -758,10 +788,13 @@
       "indicator_name": "LME锌",
       "mapped_to": "zn_23_lme_close",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1122,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-03-21",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -771,10 +804,13 @@
       "indicator_name": "基差",
       "mapped_to": "ni_22_basis",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2778,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -784,10 +820,13 @@
       "indicator_name": "主连",
       "mapped_to": "ni_21_close_front",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -797,10 +836,13 @@
       "indicator_name": "持仓量",
       "mapped_to": "ni_21_openinterest_front",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -810,10 +852,13 @@
       "indicator_name": "多空持仓比",
       "mapped_to": "ni_21_percentile_openinterest",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 346,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2020-01-03",
+        "end": "2026-08-21"
+      },
       "db_used": "series_cache"
     },
     {
@@ -823,10 +868,13 @@
       "indicator_name": "月差",
       "mapped_to": "ni_24_near_price",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1659,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2020-01-02",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -836,10 +884,13 @@
       "indicator_name": "价格分位数",
       "mapped_to": "ni_25_percentile_price",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1872,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2018-10-10",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -849,10 +900,13 @@
       "indicator_name": "冶炼利润",
       "mapped_to": "ni_25_profit",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1745,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2019-08-14",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -862,10 +916,13 @@
       "indicator_name": "现货升贴水",
       "mapped_to": "ni_21_premium",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1655,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2020-01-02",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -888,10 +945,13 @@
       "indicator_name": "多头前20",
       "mapped_to": "ni_26_openinterest_top20_front",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -901,10 +961,13 @@
       "indicator_name": "空头前20",
       "mapped_to": "ni_26_openinterest_top20_front_2",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1057,10 +1120,13 @@
       "indicator_name": "基差",
       "mapped_to": "si_21_basis_industrial_si",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 893,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-12-22",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1070,10 +1136,13 @@
       "indicator_name": "主连",
       "mapped_to": "si_21_close_front_industrial_si",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 893,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-12-22",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1083,10 +1152,13 @@
       "indicator_name": "持仓量",
       "mapped_to": "si_21_openinterest",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 893,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-12-22",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1096,10 +1168,13 @@
       "indicator_name": "多空持仓比",
       "mapped_to": "si_21_openinterest_longshort_indus",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 893,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-12-22",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1109,10 +1184,13 @@
       "indicator_name": "月差",
       "mapped_to": "si_23_close",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 893,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-12-22",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1122,10 +1200,13 @@
       "indicator_name": "价格分位数",
       "mapped_to": "si_25_profit_percentile_industrial",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 186,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-12-16",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1135,10 +1216,13 @@
       "indicator_name": "冶炼利润",
       "mapped_to": "si_25_profit",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 186,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2022-12-16",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1148,10 +1232,13 @@
       "indicator_name": "现货升贴水",
       "mapped_to": "si_21_warrant_industrial_si",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 774,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2023-06-20",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1174,10 +1261,13 @@
       "indicator_name": "基差",
       "mapped_to": "sn_21_basis",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1187,10 +1277,13 @@
       "indicator_name": "主连",
       "mapped_to": "sn_21_close_front",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1200,10 +1293,13 @@
       "indicator_name": "持仓量",
       "mapped_to": "sn_21_openinterest",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 345,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2020-01-03",
+        "end": "2026-08-21"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1213,10 +1309,13 @@
       "indicator_name": "多空持仓比",
       "mapped_to": "sn_21_openinterest_3",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 345,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2020-01-03",
+        "end": "2026-08-21"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1226,10 +1325,13 @@
       "indicator_name": "月差",
       "mapped_to": "sn_22_premium",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1538,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2020-05-06",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1239,10 +1341,13 @@
       "indicator_name": "价格分位数",
       "mapped_to": "sn_71_cost_percentile",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 1686,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2019-11-06",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1252,10 +1357,13 @@
       "indicator_name": "冶炼利润",
       "mapped_to": "sn_72_tc",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2362,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2017-01-03",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1265,10 +1373,13 @@
       "indicator_name": "现货升贴水",
       "mapped_to": "sn_21_premium",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2834,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-01-05",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1291,10 +1402,13 @@
       "indicator_name": "多头前20",
       "mapped_to": "sn_26_openinterest_top20",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1304,10 +1418,13 @@
       "indicator_name": "空头前20",
       "mapped_to": "sn_26_openinterest_top20_2",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2779,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-27",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1330,10 +1447,13 @@
       "indicator_name": "碳酸锂现货",
       "mapped_to": "li_22_premium",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 439,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2024-11-14",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1343,10 +1463,13 @@
       "indicator_name": "基差",
       "mapped_to": "zn_21_basis",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2834,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-01-05",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1356,10 +1479,13 @@
       "indicator_name": "主连",
       "mapped_to": "zn_21_close_front",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2833,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-01-05",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1369,10 +1495,13 @@
       "indicator_name": "持仓量",
       "mapped_to": "zn_21_openinterest",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 345,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2020-01-03",
+        "end": "2026-08-21"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1408,10 +1537,13 @@
       "indicator_name": "价格分位数",
       "mapped_to": "zn_25_profit_percentile",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 13,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-06-30",
+        "end": "2025-12-31"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1421,10 +1553,13 @@
       "indicator_name": "冶炼利润",
       "mapped_to": "zn_25_profit",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 46,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-03-31",
+        "end": "2026-06-30"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1434,10 +1569,13 @@
       "indicator_name": "现货升贴水",
       "mapped_to": "zn_21_premium",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2294,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2017-01-03",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1460,10 +1598,13 @@
       "indicator_name": "多头前20",
       "mapped_to": "zn_26_openinterest_top20",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2833,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-01-05",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     },
     {
@@ -1473,10 +1614,13 @@
       "indicator_name": "空头前20",
       "mapped_to": "zn_26_openinterest",
       "has_mapping": true,
-      "record_count": 0,
-      "has_real_data": false,
-      "coverage_status": "uncovered",
-      "date_range": null,
+      "record_count": 2833,
+      "has_real_data": true,
+      "coverage_status": "covered",
+      "date_range": {
+        "start": "2015-01-05",
+        "end": "2026-08-28"
+      },
       "db_used": "series_cache"
     }
   ],
@@ -1827,14 +1971,6 @@
         "reason": "Mapped metric not found in database (gap: no_data)"
       },
       {
-        "indicator_id": "LC_BASIS",
-        "commodity": "li",
-        "chart_id": "li_p2_ts_02",
-        "indicator_name": "基差",
-        "mapped_to": "li_21_basis",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
         "indicator_id": "LC_FU00015030",
         "commodity": "li",
         "chart_id": "li_p1_ts_01",
@@ -1851,51 +1987,11 @@
         "reason": "Mapped metric not found in database (gap: no_data)"
       },
       {
-        "indicator_id": "LC_LONG_SHORT_RATIO",
-        "commodity": "li",
-        "chart_id": "li_p1_gauge_01",
-        "indicator_name": "多空持仓比",
-        "mapped_to": "li_21_openinterest_longshort",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
         "indicator_id": "LC_MONTH_SPREAD",
         "commodity": "li",
         "chart_id": "li_p4_ts_01",
         "indicator_name": "月差",
         "mapped_to": "li_24_close_near",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LC_SMELTING_PROFIT",
-        "commodity": "li",
-        "chart_id": "li_p5_ts_01",
-        "indicator_name": "冶炼利润",
-        "mapped_to": "li_25_profit",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LC_SPOT_PREMIUM",
-        "commodity": "li",
-        "chart_id": "li_p2_ts_01",
-        "indicator_name": "现货升贴水",
-        "mapped_to": "li_21_premium",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LC_TOP20_LONG",
-        "commodity": "li",
-        "chart_id": "li_p6_bar_01",
-        "indicator_name": "多头前20",
-        "mapped_to": "li_26_openinterest_top20",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LC_TOP20_SHORT",
-        "commodity": "li",
-        "chart_id": "li_p6_bar_01",
-        "indicator_name": "空头前20",
-        "mapped_to": "li_26_openinterest_top20_2",
         "reason": "Mapped metric not found in database (gap: no_data)"
       },
       {
@@ -1915,131 +2011,11 @@
         "reason": "Mapped metric not found in database (gap: no_data)"
       },
       {
-        "indicator_id": "LME_LC",
-        "commodity": "li",
-        "chart_id": "li_p3_ts_01",
-        "indicator_name": "LME锂",
-        "mapped_to": "li_21_close",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LME_NI",
-        "commodity": "ni",
-        "chart_id": "ni_p3_ts_01",
-        "indicator_name": "LME镍",
-        "mapped_to": "ni_21_lme_price",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
         "indicator_id": "LME_PB",
         "commodity": "pb",
         "chart_id": "pb_p3_ts_01",
         "indicator_name": "LME铅",
         "mapped_to": "j23_lme_cash",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LME_SI",
-        "commodity": "si",
-        "chart_id": "si_p3_ts_01",
-        "indicator_name": "LME硅",
-        "mapped_to": "si_25_close_front_polysilicon",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LME_SN",
-        "commodity": "sn",
-        "chart_id": "sn_p3_ts_01",
-        "indicator_name": "LME锡",
-        "mapped_to": "sn_23_lme_close",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "LME_ZN",
-        "commodity": "zn",
-        "chart_id": "zn_p3_ts_01",
-        "indicator_name": "LME锌",
-        "mapped_to": "zn_23_lme_close",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_BASIS",
-        "commodity": "ni",
-        "chart_id": "ni_p2_ts_02",
-        "indicator_name": "基差",
-        "mapped_to": "ni_22_basis",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_FU00014982",
-        "commodity": "ni",
-        "chart_id": "ni_p1_ts_01",
-        "indicator_name": "主连",
-        "mapped_to": "ni_21_close_front",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_HOLD_OPEN",
-        "commodity": "ni",
-        "chart_id": "ni_p1_ts_02",
-        "indicator_name": "持仓量",
-        "mapped_to": "ni_21_openinterest_front",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_LONG_SHORT_RATIO",
-        "commodity": "ni",
-        "chart_id": "ni_p1_gauge_01",
-        "indicator_name": "多空持仓比",
-        "mapped_to": "ni_21_percentile_openinterest",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_MONTH_SPREAD",
-        "commodity": "ni",
-        "chart_id": "ni_p4_ts_01",
-        "indicator_name": "月差",
-        "mapped_to": "ni_24_near_price",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_PRICE_PERCENTILE",
-        "commodity": "ni",
-        "chart_id": "ni_p5_gauge_01",
-        "indicator_name": "价格分位数",
-        "mapped_to": "ni_25_percentile_price",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_SMELTING_PROFIT",
-        "commodity": "ni",
-        "chart_id": "ni_p5_ts_01",
-        "indicator_name": "冶炼利润",
-        "mapped_to": "ni_25_profit",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_SPOT_PREMIUM",
-        "commodity": "ni",
-        "chart_id": "ni_p2_ts_01",
-        "indicator_name": "现货升贴水",
-        "mapped_to": "ni_21_premium",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_TOP20_LONG",
-        "commodity": "ni",
-        "chart_id": "ni_p6_bar_01",
-        "indicator_name": "多头前20",
-        "mapped_to": "ni_26_openinterest_top20_front",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "NI_TOP20_SHORT",
-        "commodity": "ni",
-        "chart_id": "ni_p6_bar_01",
-        "indicator_name": "空头前20",
-        "mapped_to": "ni_26_openinterest_top20_front_2",
         "reason": "Mapped metric not found in database (gap: no_data)"
       },
       {
@@ -2099,187 +2075,11 @@
         "reason": "Mapped metric not found in database (gap: no_data)"
       },
       {
-        "indicator_id": "SI_BASIS",
-        "commodity": "si",
-        "chart_id": "si_p2_ts_02",
-        "indicator_name": "基差",
-        "mapped_to": "si_21_basis_industrial_si",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SI_FU00015015",
-        "commodity": "si",
-        "chart_id": "si_p1_ts_01",
-        "indicator_name": "主连",
-        "mapped_to": "si_21_close_front_industrial_si",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SI_HOLD_OPEN",
-        "commodity": "si",
-        "chart_id": "si_p1_ts_02",
-        "indicator_name": "持仓量",
-        "mapped_to": "si_21_openinterest",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SI_LONG_SHORT_RATIO",
-        "commodity": "si",
-        "chart_id": "si_p1_gauge_01",
-        "indicator_name": "多空持仓比",
-        "mapped_to": "si_21_openinterest_longshort_indus",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SI_MONTH_SPREAD",
-        "commodity": "si",
-        "chart_id": "si_p4_ts_01",
-        "indicator_name": "月差",
-        "mapped_to": "si_23_close",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SI_PRICE_PERCENTILE",
-        "commodity": "si",
-        "chart_id": "si_p5_gauge_01",
-        "indicator_name": "价格分位数",
-        "mapped_to": "si_25_profit_percentile_industrial",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SI_SMELTING_PROFIT",
-        "commodity": "si",
-        "chart_id": "si_p5_ts_01",
-        "indicator_name": "冶炼利润",
-        "mapped_to": "si_25_profit",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SI_SPOT_PREMIUM",
-        "commodity": "si",
-        "chart_id": "si_p2_ts_01",
-        "indicator_name": "现货升贴水",
-        "mapped_to": "si_21_warrant_industrial_si",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_BASIS",
-        "commodity": "sn",
-        "chart_id": "sn_p2_ts_02",
-        "indicator_name": "基差",
-        "mapped_to": "sn_21_basis",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_FU00014952",
-        "commodity": "sn",
-        "chart_id": "sn_p1_ts_01",
-        "indicator_name": "主连",
-        "mapped_to": "sn_21_close_front",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_HOLD_OPEN",
-        "commodity": "sn",
-        "chart_id": "sn_p1_ts_02",
-        "indicator_name": "持仓量",
-        "mapped_to": "sn_21_openinterest",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_LONG_SHORT_RATIO",
-        "commodity": "sn",
-        "chart_id": "sn_p1_gauge_01",
-        "indicator_name": "多空持仓比",
-        "mapped_to": "sn_21_openinterest_3",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_MONTH_SPREAD",
-        "commodity": "sn",
-        "chart_id": "sn_p4_ts_01",
-        "indicator_name": "月差",
-        "mapped_to": "sn_22_premium",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_PRICE_PERCENTILE",
-        "commodity": "sn",
-        "chart_id": "sn_p5_gauge_01",
-        "indicator_name": "价格分位数",
-        "mapped_to": "sn_71_cost_percentile",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_SMELTING_PROFIT",
-        "commodity": "sn",
-        "chart_id": "sn_p5_ts_01",
-        "indicator_name": "冶炼利润",
-        "mapped_to": "sn_72_tc",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_SPOT_PREMIUM",
-        "commodity": "sn",
-        "chart_id": "sn_p2_ts_01",
-        "indicator_name": "现货升贴水",
-        "mapped_to": "sn_21_premium",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_TOP20_LONG",
-        "commodity": "sn",
-        "chart_id": "sn_p6_bar_01",
-        "indicator_name": "多头前20",
-        "mapped_to": "sn_26_openinterest_top20",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SN_TOP20_SHORT",
-        "commodity": "sn",
-        "chart_id": "sn_p6_bar_01",
-        "indicator_name": "空头前20",
-        "mapped_to": "sn_26_openinterest_top20_2",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
         "indicator_id": "SPOT_IS",
         "commodity": "si",
         "chart_id": "si_p3_ts_02",
         "indicator_name": "工业硅现货",
         "mapped_to": "si_24_spot",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "SPOT_LICAR",
-        "commodity": "li",
-        "chart_id": "li_p3_ts_02",
-        "indicator_name": "碳酸锂现货",
-        "mapped_to": "li_22_premium",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_BASIS",
-        "commodity": "zn",
-        "chart_id": "zn_p2_ts_02",
-        "indicator_name": "基差",
-        "mapped_to": "zn_21_basis",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_FU00014950",
-        "commodity": "zn",
-        "chart_id": "zn_p1_ts_01",
-        "indicator_name": "主连",
-        "mapped_to": "zn_21_close_front",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_HOLD_OPEN",
-        "commodity": "zn",
-        "chart_id": "zn_p1_ts_02",
-        "indicator_name": "持仓量",
-        "mapped_to": "zn_21_openinterest",
         "reason": "Mapped metric not found in database (gap: no_data)"
       },
       {
@@ -2297,54 +2097,14 @@
         "indicator_name": "月差",
         "mapped_to": "zn_24_term_struct",
         "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_PRICE_PERCENTILE",
-        "commodity": "zn",
-        "chart_id": "zn_p5_gauge_01",
-        "indicator_name": "价格分位数",
-        "mapped_to": "zn_25_profit_percentile",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_SMELTING_PROFIT",
-        "commodity": "zn",
-        "chart_id": "zn_p5_ts_01",
-        "indicator_name": "冶炼利润",
-        "mapped_to": "zn_25_profit",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_SPOT_PREMIUM",
-        "commodity": "zn",
-        "chart_id": "zn_p2_ts_01",
-        "indicator_name": "现货升贴水",
-        "mapped_to": "zn_21_premium",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_TOP20_LONG",
-        "commodity": "zn",
-        "chart_id": "zn_p6_bar_01",
-        "indicator_name": "多头前20",
-        "mapped_to": "zn_26_openinterest_top20",
-        "reason": "Mapped metric not found in database (gap: no_data)"
-      },
-      {
-        "indicator_id": "ZN_TOP20_SHORT",
-        "commodity": "zn",
-        "chart_id": "zn_p6_bar_01",
-        "indicator_name": "空头前20",
-        "mapped_to": "zn_26_openinterest",
-        "reason": "Mapped metric not found in database (gap: no_data)"
       }
     ],
     "simulated_only": [],
     "other": []
   },
   "recommendations": [
-    "Overall coverage (0.0%) is below P0 gate threshold (60%). Need to import 109 more indicators to reach gate.",
+    "Overall coverage (44.0%) is below P0 gate threshold (60%). Need to import 61 more indicators to reach gate.",
     "18 indicators have no DSHB metric mapping. Update INDICATOR_MAPPING in cache_coverage_calc.py to add mappings.",
-    "91 mapped indicators are missing from api_cache.db. Run refresh_cache.py or db_import_jsonl.py to import data."
+    "43 mapped indicators are missing from api_cache.db. Run refresh_cache.py or db_import_jsonl.py to import data."
   ]
 }

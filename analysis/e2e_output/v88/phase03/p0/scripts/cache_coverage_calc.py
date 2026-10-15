@@ -498,7 +498,9 @@ def check_indicator_coverage(db_path, indicator_id, dshb_metric_code, commodity_
 
         # Strategy 1: Try series_cache table (task-described schema)
         if "series_cache" in tables:
-            cov = get_indicator_coverage_from_series_cache(conn, indicator_id)
+            # Use DSHB metric code (indicator_id in series_cache), not DSHE indicator_id
+            lookup_id = dshb_metric_code if dshb_metric_code else indicator_id
+            cov = get_indicator_coverage_from_series_cache(conn, lookup_id)
             result.update(cov)
             result["db_used"] = "series_cache"
             if not cov["has_real_data"]:

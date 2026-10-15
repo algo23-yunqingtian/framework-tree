@@ -336,3 +336,38 @@
 | 门禁新增建议 | D-7 真实数据覆盖率 ≥95% |
 | CRLF 脚本移交 | md5_normalize.py → Phase03-P0 (HERMES-03), 关联 R-V88-009 |
 | 版本状态 | PHASE02_FULLY_CLOSED_WITH_1_P1 |
+
+## ===== V88 Phase03-P0-R0 命名映射与缓存导入交付物 MD5（PHASE03_P0_R0_DONE） =====
+**工单**: V88_PHASE03_P0_R0_NAME_MAPPING_AND_CACHE_IMPORTER | **BASELINE**: e3673f2 (三方评审CONDITIONAL_PASS) | **AGENT**: DSHB
+**生成时间**: 2026-10-15
+
+| # | 文件 | MD5 | 大小(B) | 类型 |
+|---|------|:---:|:-------:|:----:|
+| 1 | phase03/p0/命名空间映射表(109行全覆盖) | 7DAB19D3B33BF1EF873401D2C944931B | 30074 | 新增 |
+| 2 | phase03/p0/scripts/db_import_jsonl.py | 5ED2EF705ECB786F9FD92F07756454DD | 32786 | 新增 |
+| 3 | phase03/p0/scripts/db_load.py |  D752B2E3B38BB8C92BE2D7DFF134408 | 19257 | 新增 |
+| 4 | phase03/p0/scripts/cache_coverage_calc.py | 38CED7D55AB1B3B4C47C31840ED1C8C9 | 39652 | 新增 |
+| 5 | phase03/p0/coverage_report.json | B29E0CF23A142F7F934D1FBA88F1F0A2 | 62427 | 新增 |
+| 6 | phase03/p0/v88_phase03_p0_coverage_report.md | 908B2B1716025A932D1C4A48A3154F41 | 16161 | 新增 |
+| 7 | phase03/p0/v88_phase03_p0_api_cache_import_verify_report.md | 601AE537AA5466871AFC5B41CDBB2149 | 7057 | 新增 |
+| 8 | dshb/prep/v88_phase03_data_risk_list.md(追加附录C) | FD6F4E3D21A3AC69593C78D7E1303DA4 | 16513 | 修订 |
+
+### P0-R0 关键指标
+
+| 项 | 值 |
+|----|----|
+| DSHE图表指标总数 | 109 |
+| 映射状态 | exact:53 / partial:32 / gap:24 |
+| DSHB指标总数 | 1586 (mapped:78 / reserved:1508) |
+| api_cache灌入行数 | 366,117 (100%成功) |
+| 映射生效行数 | 72,876 (19.9%) |
+| 唯一指标数 | 579 (mapped:50) |
+| **覆盖率** | **48/109 = 44.04%** |
+| **D7门禁P0** | **FAIL (44.04% < 60%)** |
+| 品种通过(5/8) | ZN:69.2% NI:84.6% SN:84.6% SI:81.8% LI:61.5% |
+| 品种失败(3/8) | CU:0% AL:0% PB:0% (JSONL缺失) |
+| R-V88-013状态 | MITIGATED (剩余46项CU/AL/PB) |
+| 脚本隔离防护 | 12/12完备 |
+| 约束合规 | 12/12 ✅ |
+| 验收标准 | 7/7 PASS |
+| 版本状态 | PHASE03_P0_R0_DONE |
