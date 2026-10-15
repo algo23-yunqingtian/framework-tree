@@ -11,9 +11,9 @@
 
 ## 0. 一句话结论
 
-**P0 门禁基线框架与全链路回归套件全部就位并可一键执行，判定 CONDITIONAL_PASS。** 自动化门禁校验覆盖 **21 项主门禁 + 40 项阶段门禁**，其中 **6 项已实测**（D-7/R-1/R-2/R-3/R-4 + P0-9），**2 项为 P0 前置任务型阻断**（D-7 真实覆盖率 0%、P0-9 命名映射 0%），**0 项方案级 FAIL**。全链路回归套件 **24 项用例**（数据层 6 / 指标读取 6 / 图表渲染 8 / 告警推送 4）实测 **PASS 14 · BLOCKED 4 · WARN 6**，四阶段链路完整贯通。
+**P0 门禁基线框架与全链路回归套件全部就位并可一键执行，判定 CONDITIONAL_PASS。** 自动化门禁校验覆盖 **21 项主门禁 + 40 项阶段门禁**，其中 **6 项已实测**（D-7/R-1/R-2/R-3/R-4 + P0-9），**2 项为 P0 前置任务型阻断**（D-7 真实覆盖率 0%、P0-9 命名映射 0%），**0 项方案级 FAIL**。全链路回归套件 **24 项用例**（数据层 6 / 指标读取 6 / 图表渲染 8 / 告警推送 4）实测 **PASS 16 · BLOCKED 3 · WARN 5**（P0-R1 并行工单灌库脚本就位后由 4 项 BLOCKED 降至 3 项），四阶段链路完整贯通。
 
-**关键实测结果**：D-7 真实数据覆盖率 = **0.0000%（0/101，全部 simulated）**，与三方评审实测结论完全一致；P0-9 命名空间映射覆盖率 = **0.0000%（0/109）**，meta_chart 109 指标与 JSONL 579 指标零交集。两者均指向同一根因链：**P0-R0 命名映射 → P0-R1 灌库脚本 → P0-1 灌库 → D-7 达标**。
+**关键实测结果**：D-7 真实数据覆盖率 = **0.0000%（0/101，全部 simulated）**，与三方评审实测结论完全一致；P0-9 命名空间映射覆盖率 = **0.0000%（0/109）**，meta_chart 109 指标与 JSONL 579 指标零交集。**P0-R1 并行工单（DSHE）灌库脚本 `db_import_jsonl.py` / `db_load.py` 已就位**（A-6 转 ✅），BLOCKED 仅剩 **A-3 独立库未创建 / B-3 命名映射零交集 / C-3 D-7 覆盖率 0%** 三项，仍构成同一条因果链。
 
 ---
 
@@ -199,29 +199,30 @@ JSONL:       li_21_basis, li_21_close, ni_21_close_front ← 本地小写风格
 
 ```
 用例总数 : 24
-汇总     : PASS=14 · BLOCKED=4 · WARN=6 · FAIL=0
+汇总     : PASS=16 · BLOCKED=3 · WARN=5 · FAIL=0
 判定     : CONDITIONAL_PASS
 ```
+
+> **重跑说明**：P0-R1 并行工单（DSHE）`db_import_jsonl.py` / `db_load.py` 就位后重跑，A-6 由 🔴 BLOCKED 转 ✅ PASS，A 阶段 WARN 同步降 1。BLOCKED 从 4 项降至 3 项。
 
 **分阶段**：
 
 | 阶段 | PASS | BLOCKED | WARN | FAIL |
 |------|:----:|:-------:|:----:|:----:|
-| A 数据层（DSHB） | 2 | 2 | 2 | 0 |
+| A 数据层（DSHB） | 3 | 1 | 1 | 0 |
 | B 指标读取（DSHB） | 5 | 1 | 0 | 0 |
 | C 图表渲染（DSHE） | 6 | 1 | 1 | 0 |
-| D 告警推送（HERMEShf） | 1 | 0 | 3 | 0 |
+| D 告警推送（HERMEShf） | 2 | 0 | 3 | 0 |
 
-### 4.3 4 项 BLOCKED（前置任务型阻断）
+### 4.3 3 项 BLOCKED（前置任务型阻断）
 
 | 用例 | 问题 | 依赖任务 |
 |------|------|----------|
-| **A-3** | Phase03 独立库未创建 | P0-R1（`db_import_jsonl.py` 写入目标库） |
-| **A-6** | `db_import_jsonl.py` / `db_load.py` 均不存在 | **P0-R1（灌库脚本开发）** |
+| **A-3** | Phase03 独立库未创建 | P0-R1（`db_import_jsonl.py` 写入目标库须为独立库，非 `scripts/api_cache.db`） |
 | **B-3** | 命名域零交集（0/109） | **P0-R0（命名空间映射表）** |
-| **C-3** | D-7 覆盖率 0.0000% | P0-R0 + P0-R1 + P0-1 |
+| **C-3** | D-7 覆盖率 0.0000% | P0-R0 + P0-1 灌库 |
 
-**四项 BLOCKED 构成一条因果链**：P0-R0 命名映射 → P0-R1 灌库脚本 → 独立库创建 → 数据灌入 → D-7 达标。**0 项方案级 FAIL**，框架可用。
+> **A-6 已解除阻断**：P0-R1 并行工单 `db_import_jsonl.py` / `db_load.py` 已就位（✅ PASS），D→C→B 路径首步完成。剩余三项 BLOCKED 仍构成一条因果链：**P0-R0 命名映射 → P0-1 独立库 + 数据灌入 → D-7 达标**。**0 项方案级 FAIL**，框架可用。
 
 ### 4.4 已 PASS 的关键用例
 
@@ -229,6 +230,7 @@ JSONL:       li_21_basis, li_21_close, ni_21_close_front ← 本地小写风格
 |------|------|----------|
 | A-1 真实数据井 | 25.6 MB / 5 文件（离线，零 API 调用） | 合规 |
 | A-2 api_cache 可达 | rows=3 codes=1 metrics=3（**只读校验，未写入生产缓存**） | R-09 |
+| **A-6 灌库脚本** | **`db_import_jsonl.py` / `db_load.py` 已就位（P0-R1 并行工单完成）** | **R-V88-013 前置** |
 | B-1 meta_chart | 101 张图表 | R-2 |
 | B-2 指标绑定 | 101 图表 / 109 去重指标 | D-4 |
 | B-4 IC/IR 基线 | 292 条（`ic_ir_baseline_v1`） | F-1 |
@@ -365,11 +367,13 @@ PHASE03_P0_R2_DONE=TRUE
 PHASE03_P0_GATE_CHECKER_READY=TRUE
 PHASE03_P0_REGRESSION_SUITE_READY=TRUE
 PHASE03_P0_REGRESSION_CASES=24
-PHASE03_P0_REGRESSION_PASS=14
-PHASE03_P0_REGRESSION_BLOCKED=4
-PHASE03_P0_REGRESSION_WARN=6
+PHASE03_P0_REGRESSION_PASS=16
+PHASE03_P0_REGRESSION_BLOCKED=3
+PHASE03_P0_REGRESSION_WARN=5
 PHASE03_P0_REGRESSION_FAIL=0
 PHASE03_P0_REGRESSION_VERDICT=CONDITIONAL_PASS
+PHASE03_P0_REGRESSION_A6_UNBLOCKED_BY_R1=TRUE
+PHASE03_P0_REGRESSION_RERUN_AFTER_P0_R1=TRUE
 PHASE03_P0_MAIN_GATE_TOTAL=21
 PHASE03_P0_STAGE_GATE_TOTAL=40
 PHASE03_P0_GATE_MEASURED=6
