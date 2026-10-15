@@ -1,0 +1,161 @@
+  [tree_config] 已加载: 7 个类别, 9 个品种
+  [yaml] 已加载: 101 张图表定义
+  [index] 构建完成: 33 个节点, 9 个品种, 101 个图表
+  [tree_config] 已加载: 7 个类别, 9 个品种
+  [yaml] 已加载: 101 张图表定义
+  [index] 构建完成: 33 个节点, 9 个品种, 101 个图表
+[baseline] 已写入 /home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p0/scripts/p0_baseline_metrics.json
+==============================================================================
+V88 Phase03 P0 门禁基线自动校验报告
+TASK_ID : V88_PHASE03_P0_R2_GATE_BASELINE_AND_REGRESSION
+AGENT   : HERMEShf | BRANCH: feature/v88-g1
+时间     : 2026-10-15 11:31:19
+门禁矩阵 : analysis/e2e_output/v88/phase03/review/v88_phase03_gate_matrix.md
+门禁规模 : 主门禁 22 项 / 阶段门禁 41 项
+           21 项主门禁 = 数据7(D-1~D-7) + 渲染6(R-1~R-6) + 因子4(F-1~F-4) + 稳定性5(S-1~S-3,S-4a/S-4b)；S-4a/S-4b 由 check_rpo_split() 专项判定，不重复登记。
+           40 项阶段门禁 = P0原型10 + P1仿真12 + P2长稳11 + P3金丝雀8（S-4a/S-4b 作为主门禁，不计入阶段门禁）
+==============================================================================
+
+【总览】
+  汇总: {"PASS": 4, "FAIL": 0, "NOT_APPLICABLE": 34, "BLOCKED_PRE_P0": 2, "UNKNOWN": 23}
+  判定: CONDITIONAL_PASS
+  依据: {"PASS": 4, "FAIL": 0, "BLOCKED_PRE_P0": 2, "NOT_APPLICABLE": 34, "UNKNOWN": 23, "total_judged": 63}
+  说明: 基线阶段语义：PASS ✅ = 已实测且达标 | FAIL ❌ = 已实测未达标 | BLOCKED_PRE_P0 🔴 = P0 前置任务型阻断（R-V88-013 D-7 覆盖率 / R-V88-024 CPU 优化，任务完成后自动转 PASS）| NOT_APPLICABLE ⚪ = 本阶段不执行 | UNKNOWN ❓ = 待 P1+ 阶段数据。CONDITIONAL_PASS = 框架可用且无方案级阻断，前置任务完成后转为 PASS。
+
+【主门禁判定（21 项）】
+  ❓ D-1     采集成功率
+      └ 待 P1/P2 阶段数据（数据）
+  ❓ D-2     DQA ERROR
+      └ 待 P1/P2 阶段数据（数据）
+  ❓ D-3     入库延迟
+      └ 待 P2 阶段数据（数据）
+  ❓ D-4     指标供给完整性
+      └ 待 P1 阶段数据（数据）
+  ❓ D-5     扩量后采集成功率
+      └ 待 P1/P2 阶段数据（数据）
+  ❓ D-6     扩量后 DQA 吞吐
+      └ 待 P2 阶段数据（数据）
+  🔴 D-7     真实数据覆盖率  (actual=0.0000%)
+      └ R3权威判定: 独立复跑 101 张图表, source={'simulated': 101}, 渲染成功 101, api_cache rows=3, distinct_code=['AO'] → 前置任务 P0-R0/R1 未完成
+  ✅ R-1     校验规则  (actual=0 ERROR)
+  ✅ R-2     图表部署  (actual=101/101)
+  ✅ R-3     降级渲染  (actual=101/101 renderable, source_dist={'simulated': 101})
+      └ 三级降级链路可运行（Phase02 已验证 960 次 0 崩溃）
+  ✅ R-4     P99 生产实测  (actual=2.912ms)
+      └ 注: 串行渲染口径（余量 99.42%），非 P3 真实流量并发口径
+  ❓ R-5     500 并发 P99 时延
+      └ 待 P1/P2 阶段数据（渲染）
+  ❓ R-6     并发场景 CPU
+      └ 待 P1/P2 阶段数据（渲染）
+  ❓ F-1     IC/IR 基线继承
+      └ 待 P0 阶段数据（因子）
+  ❓ F-2     漂移告警阈值
+      └ 待 P1/P2 阶段数据（因子）
+  ❓ F-3     新增因子监控告警
+      └ 待 P2 阶段数据（因子）
+  ❓ F-4     告警噪声率
+      └ 待 P2 阶段数据（因子）
+  ❓ S-1     7 天长稳观测
+      └ 待 P2 阶段数据（稳定性）
+  ❓ S-2     CPU 熔断阈值
+      └ 待 P1~P3 阶段数据（稳定性）
+  ❓ S-3     灾备切换时长
+      └ 待 P2 阶段数据（稳定性）
+  ⚪ S-4a    灾备写入 RPO  (actual=双写证据 12 条)
+      └ P0 原型阶段：S-4a 判定在 P1 仿真阶段执行（需实际同步双写实现与 P1-8 校验点）。当前仅登记证据痕迹 双写=85 / WAL=24 条（扫描 34 个文件）。
+  ⚪ S-4b    灾备恢复 RPO  (actual=分片证据 12 条)
+      └ P0 原型阶段：S-4b 判定在 P2 长稳阶段执行（需真实分片降级演练与 P2-7 校验点）。当前仅登记分片策略痕迹 74 条。
+
+【P0 阶段门禁判定】
+  🔴 P0-9    指标 ID 命名空间映射表  (actual=0.0000% (0/109, JSONL 579 指标))
+      └ 覆盖率=0/109 图表指标, 缺口指标 109 个 → 须先完成 P0-R0 命名映射（R-V88-013 前置）
+  ⚪ P0-10   CPU 优化达标  (actual=进程CPU峰值=107.1000% 均值=82.7333% (303次渲染, 0.5052s, psutil.Process().cpu_percent + render_with_fallback x3 rounds))
+      └ CHG-08: 渲染进程峰值 vs Phase02 1.94% 全链路口径 → 改善 -105.1600 百分点；余量 vs FUSE 2.0% = -105.1000%。P0-10 门禁须用全链路业务 CPU 口径（DSHB P0-10 专用优化前后对比）判定；本基线为渲染进程瞬时口径（峰值 107.1000%，含 YAML 加载与 Python 启动开销），仅作起点参考。
+  ❓ P0-1    四目标技术方案原型
+      └ 阶段门禁登记: stage=P0 owner=DSHB+DSHE（待执行）
+  ❓ P0-2    接口契约冻结
+      └ 阶段门禁登记: stage=P0 owner=三方（待执行）
+  ❓ P0-3    阈值方案确认
+      └ 阶段门禁登记: stage=P0 owner=HERMEShf（待执行）
+  ❓ P0-4    依赖矩阵无冲突
+      └ 阶段门禁登记: stage=P0 owner=HERMEShf（待执行）
+  ❓ P0-5    灾备时序协议定义
+      └ 阶段门禁登记: stage=P0 owner=DSHB（待执行）
+  ❓ P0-6    MD5 行尾规范落地
+      └ 阶段门禁登记: stage=P0 owner=HERMEShf（待执行）
+  ❓ P0-7    扩量批次计划
+      └ 阶段门禁登记: stage=P0 owner=DSHB（待执行）
+  ❓ P0-8    Phase02 基线只读
+      └ 阶段门禁登记: stage=P0 owner=HERMEShf（待执行）
+
+【非 P0 阶段门禁登记（未执行）】
+  ⚪ P1-1   扩量批次1(→180)成功率  (owner=DSHB)
+  ⚪ P1-2   扩量后 DQA ERROR  (owner=DSHB)
+  ⚪ P1-3   扩量后 DQA 吞吐  (owner=DSHB)
+  ⚪ P1-4   D-7 过程覆盖率基线  (owner=DSHB+HERMEShf)
+  ⚪ P1-5   新增因子监控告警触发  (owner=HERMEShf)
+  ⚪ P1-6   漂移告警三档阈值  (owner=HERMEShf)
+  ⚪ P1-7   灾备切换仿真  (owner=DSHB)
+  ⚪ P1-8   灾备双写一致性  (owner=DSHB)
+  ⚪ P1-9   灾备期间 DSHE 降级渲染  (owner=DSHE)
+  ⚪ P1-10  500 并发 P99 时延  (owner=DSHE)
+  ⚪ P1-11  500 并发 error_rate  (owner=DSHE)
+  ⚪ P1-12  并发场景 CPU 峰值  (owner=DSHE)
+  ⚪ P2-1   7 天连续长稳  (owner=HERMEShf)
+  ⚪ P2-2   扩量后 7 天采集成功率  (owner=DSHB)
+  ⚪ P2-3   扩量后 DQA ERROR  (owner=DSHB)
+  ⚪ P2-4   入库延迟均值  (owner=DSHB)
+  ⚪ P2-5   灾备真实切换演练  (owner=DSHB)
+  ⚪ P2-6   灾备写入 RPO  (owner=DSHB)
+  ⚪ P2-7   灾备恢复 RPO  (owner=DSHB)
+  ⚪ P2-8   灾备切回后一致性对账  (owner=DSHB)
+  ⚪ P2-9   因子告警噪声率(静默期)  (owner=HERMEShf)
+  ⚪ P2-10  500 并发持续负载稳定性  (owner=DSHE)
+  ⚪ P2-11  扩量批次2(→200+)  (owner=DSHB)
+  ⚪ P3-1   真实金丝雀流量替换仿真  (owner=DSHE+HERMEShf)
+  ⚪ P3-2   金丝雀 72h 连续观测  (owner=HERMEShf)
+  ⚪ P3-3   渲染 P99 生产实测  (owner=DSHE)
+  ⚪ P3-4   扩量指标金丝雀成功率  (owner=DSHB)
+  ⚪ P3-5   因子告警真实流量验证  (owner=HERMEShf)
+  ⚪ P3-6   灾备链路金丝雀就绪  (owner=DSHB)
+  ⚪ P3-7   D-7 真实数据覆盖率终验  (owner=HERMEShf)
+  ⚪ P3-8   三方联合验收+门禁终版  (owner=三方)
+
+==============================================================================
+【D-7 真实数据覆盖率明细（R3 权威判定）】
+  规则        : R3_authoritative_rerun
+  图表总数    : 101
+  渲染成功    : 101
+  source 分布 : {"simulated": 101}
+  真实覆盖率  : 0.0000%
+  P1 阈值≥60% : False
+  P3 阈值≥95% : False
+  时延(ms)    : {"median": 1.552, "p95": 2.888, "p99": 2.912, "max": 4.178}
+  校验错误    : 0
+  api_cache   : {"db_exists": true, "tables": ["indicator_cache"], "indicator_cache_rows": 3, "distinct_codes": ["AO"], "distinct_metrics": ["wr50", "wr52", "wr56"]}
+
+【P0-9 命名空间映射明细】
+  meta_chart 指标 : 109
+  JSONL 指标      : 579
+  交集            : 0
+  覆盖率          : 0.0000%
+  缺口指标数      : 109
+
+【P0-10 CPU 基线明细（CHG-08）】
+  采集方法      : psutil.Process().cpu_percent + render_with_fallback x3 rounds
+  渲染次数      : 303 (墙钟 0.5052s)
+  进程CPU均值   : 82.7333%
+  进程CPU峰值   : 107.1000%
+  归一每核占比  : 2068.3333% (4 核)
+  RSS 峰值      : 27.5977 MB
+  时延(ms)      : {"median": 1.557, "p95": 2.895, "p99": 2.93, "max": 2.999, "mean": 1.665}
+  vs FUSE 2.0%  : 余量 -105.1000%
+  vs Phase02 1.94%(全链路): 改善 -105.1600 百分点
+  判定          : NOT_APPLICABLE
+  ⚠️ P0-10 门禁须用全链路业务 CPU 口径（DSHB P0-10 专用优化前后对比）判定；本基线为渲染进程瞬时口径（峰值 107.1000%，含 YAML 加载与 Python 启动开销），仅作起点参考。
+
+【S-4a / S-4b 灾备 RPO 拆分】
+  S-4a 写入RPO=0   : NOT_APPLICABLE | 双写证据 12 条 | P0 原型阶段：S-4a 判定在 P1 仿真阶段执行（需实际同步双写实现与 P1-8 校验点）。当前仅登记证据痕迹 双写=85 / WAL=24 条（扫描 34 个文件）。
+  S-4b 恢复RPO<24h : NOT_APPLICABLE | 分片证据 12 条 | P0 原型阶段：S-4b 判定在 P2 长稳阶段执行（需真实分片降级演练与 P2-7 校验点）。当前仅登记分片策略痕迹 74 条。
+  Phase03 独立库   : False (R-09 数据库隔离)
+==============================================================================
