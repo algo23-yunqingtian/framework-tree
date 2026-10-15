@@ -155,6 +155,13 @@ STAGE_GATES = {
     "P0-9":  dict(stage="P0", name="指标 ID 命名空间映射表",   threshold="映射覆盖率 ≥95%（在范围内，衍生品剔除；R-V88-032）", owner="DSHB+HERMEShf"),
     "P0-10": dict(stage="P0", name="CPU 优化达标",             threshold="峰值 ≤1.75%",    owner="DSHB"),
     "P0-11": dict(stage="P0", name="DB 重建脚本可用性(R-V88-031)", threshold="重建<300s + 行数一致", owner="HERMEShf"),
+    # ---- P1 阶段新增（TASK: V88_PHASE03_P1_HERMES_MAIN_JOB / T0）----
+    "P0-12": dict(stage="P1", name="CPU 基线门禁(R-V88-034)",
+                  threshold="全链路口径峰值 ≤1.75%（DSHB 优化前后对比）", owner="DSHB+HERMEShf"),
+    "P0-13": dict(stage="P1", name="告警噪声率门禁(R-V88-035)",
+                  threshold="<10%（7 天静默期）", owner="HERMEShf"),
+    "P0-14": dict(stage="P1", name="180 指标全量校验(R-V88-036)",
+                  threshold="独立库去重指标 ≥180 + 批次交付物", owner="DSHB+HERMEShf"),
     "P0-1":  dict(stage="P0", name="四目标技术方案原型",       threshold="4/4 方案产出",   owner="DSHB+DSHE"),
     "P0-2":  dict(stage="P0", name="接口契约冻结",             threshold="100% 冻结(含R1/R2/R3)", owner="三方"),
     "P0-3":  dict(stage="P0", name="阈值方案确认",             threshold="4项阈值+3档+双层映射", owner="HERMEShf"),
@@ -544,6 +551,16 @@ def audit_real_coverage(repo_root=REPO_ROOT, verbose=True):
 #                         meta 指标数，用于确认渲染侧映射链路与 DSHB 映射清单一致。
 # ============================================================================
 P09_THRESHOLD_PCT = 95.0
+# R-V88-033（P1 阶段新增）：衍生品 59 项派生指标库建设完成后，
+# P0-9 分母由 50 切换至 109（全量口径），即口径 C 与 C' 收敛。
+# 判定依据：映射清单 / 独立库中衍生品指标的实际命中数是否达到 59 项。
+DERIVATIVE_TARGET_COUNT = 59
+# 三口径铁律（2026-10-15 终审确立，T1 阶段自动校验）
+CALIBER_RULES = (
+    "口径A=DB映射命中率(P0-11辅助)/口径B=引擎真实渲染覆盖率(D-7唯一验收依据)"
+    "/口径C=命名空间映射覆盖率(P0-9)/C'全量参考(C同计算分母取109)；"
+    "禁A替B；禁DSHE自测抽样78.82%替R3全量68.3168%；C与C'必须同时披露。",
+)
 # 衍生品命名空间（DSHB 一期不建库，不计入 P0-9 映射覆盖率分母，P2 迭代项）。
 # 一、场外期权/进口现货系列（code 前缀）
 DERIVATIVE_PREFIXES = ("COMEX_", "LC_", "SPOT_IS")
@@ -571,12 +588,17 @@ def _is_derivative_indicator(iid):
             or iid in DERIVATIVE_EXACT)
 
 
-def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT):
+def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT,
+                     include_derivatives=False, repo_data_dir=None):
     """
     P0-9 指标命名空间映射门禁（口径已修正，R-V88-032 处置）。
 
     coverage = |meta_indicator ∩ mapped_indicator| / |meta_indicator|
       mapped_indicator 来源：DSHB 指标-代码映射清单（has_mapping=True）。
+
+    R-V88-033（P1）：include_derivatives=True 时纳入衍生品 59 项，分母 50→109。
+      触发条件：映射清单/独立库中衍生品命中数 >= DERIVATIVE_TARGET_COUNT。
+      返回字段新增 denominator_mode / derivatives_available / full_denominator。
     """
     result = dict(gate_id="P0-9", threshold_pct=threshold_pct, status="UNKNOWN",
                   caliber="mapping_table_real_intersection",
@@ -626,21 +648,58 @@ def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT):
     deriv = sorted(i for i in meta_inds if _is_derivative_indicator(i))
     meta_in_scope = sorted(i for i in meta_inds if not _is_derivative_indicator(i))
     inter_in_scope = sorted(i for i in inter if not _is_derivative_indicator(i))
-    denom = len(meta_in_scope) or 1
-    cov = (len(inter_in_scope) / denom * 100.0)
+    # R-V88-033（P1）：衍生品命中数检测 —— 映射清单中实际落库的衍生品指标数
+    deriv_hit = sorted(i for i in inter if _is_derivative_indicator(i))
+    deriv_available = len(deriv_hit) >= DERIVATIVE_TARGET_COUNT
     result.update(dict(
-        meta_indicator_count=len(meta_inds),
-        meta_in_scope_count=denom,
-        meta_derivative_excluded=len(deriv),
-        meta_derivative_excluded_list=deriv,
-        mapped_indicator_count=len(mapped_inds),
-        intersection_count=len(inter),
-        intersection_in_scope=len(inter_in_scope),
-        coverage_pct=round(cov, 4),
-        coverage_in_scope_pct=round(cov, 4),
-        coverage_raw_pct=round(len(inter) / len(meta_inds) * 100.0, 4) if meta_inds else 0.0,
-        missing=sorted(meta_in_scope and (set(meta_in_scope) - mapped_inds) or []),
+        meta_derivative_total=len(deriv),
+        meta_derivative_hit=len(deriv_hit),
+        meta_derivative_hit_list=deriv_hit,
+        derivatives_available=deriv_available,
+        derivative_target_count=DERIVATIVE_TARGET_COUNT,
     ))
+    if include_derivatives and deriv_available:
+        # 分母切换：50 → 109（口径 C 与 C' 收敛，R-V88-033 闭环）
+        denom = len(meta_inds)
+        cov = (len(inter) / denom * 100.0)
+        result.update(dict(
+            meta_in_scope_count=denom,
+            meta_derivative_excluded=0,
+            intersection_count=len(inter),
+            intersection_in_scope=len(inter),
+            coverage_pct=round(cov, 4),
+            coverage_in_scope_pct=round(cov, 4),
+            coverage_raw_pct=round(cov, 4),
+            missing=sorted(set(meta_inds) - mapped_inds),
+            denominator_mode="FULL_109",
+            full_denominator=denom,
+            caliber="mapping_table_real_intersection_full",
+        ))
+    else:
+        denom = len(meta_in_scope) or 1
+        cov = (len(inter_in_scope) / denom * 100.0)
+        result["denominator_mode_note"] = (
+            "R-V88-033 待处置：衍生品命中 %d/%d 项未达阈值，分母维持 50（衍生品剔除口径）"
+            % (len(deriv_hit), DERIVATIVE_TARGET_COUNT)
+            if include_derivatives else
+            "分母 50（衍生品 %d 项剔除，P2 迭代项）；分母 109 全量参考值见 coverage_raw_pct"
+            % len(deriv))
+        result.update(dict(
+            meta_indicator_count=len(meta_inds),
+            meta_in_scope_count=denom,
+            meta_derivative_excluded=len(deriv),
+            meta_derivative_excluded_list=deriv,
+            mapped_indicator_count=len(mapped_inds),
+            intersection_count=len(inter),
+            intersection_in_scope=len(inter_in_scope),
+            coverage_pct=round(cov, 4),
+            coverage_in_scope_pct=round(cov, 4),
+            coverage_raw_pct=round(len(inter) / len(meta_inds) * 100.0, 4) if meta_inds else 0.0,
+            missing=sorted(meta_in_scope and (set(meta_in_scope) - mapped_inds) or []),
+            denominator_mode="IN_SCOPE_50",
+            full_denominator=len(meta_inds),
+            caliber="mapping_table_real_intersection",
+        ))
 
     # --- 辅助：DSHE 命名映射表覆盖度（不参与判定）---
     try:
@@ -673,6 +732,311 @@ def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT):
 
     result["status"] = "PASS" if cov >= threshold_pct else "FAIL"
     return result
+
+
+# ============================================================================
+# P1 阶段新增门禁（TASK: V88_PHASE03_P1_HERMES_MAIN_JOB / T0）
+#
+# 三项 P1 门禁均遵循「规则先就绪，等交付物落地」原则：
+#   P0-12 CPU 基线门禁   —— 判定源 = DSHB P0-10 专用优化前后对比产物（同脚本/同负载/同时段）
+#   P0-13 噪声率门禁     —— 判定源 = 7 天静默期告警噪声率实测产物（F-4 门禁 P1 激活）
+#   P0-14 180指标扩量校验 —— 判定源 = 扩量批次交付物 + 独立库指标数 ≥180 实测
+# 三者交付物未落地前判 UNKNOWN（非阻断）；交付物落地后即刻自动判定。
+# 禁止以 P0 阶段进程级瞬时 CPU / 抽样覆盖率替代（口径不可比，见 collect_cpu_baseline docstring）。
+# ============================================================================
+P1_EXPANSION_TARGET = 180          # D-5 / P1-1 扩量目标（CHG-01 改判 200+→180）
+NOISE_RATE_THRESHOLD_PCT = 10.0    # F-4 告警噪声率阈值（<10%）
+NOISE_RATE_SILENCE_DAYS = 7        # F-4 静默期（7 天）
+P1_CPU_TARGET_PCT = 1.75           # P0-10 CPU 优化目标（沿用 CHG-08）
+
+# P1 门禁交付物候选路径（DSHB/DSHE/HERMEShf 落盘后自动被拾取）
+def _p1_artifact_paths(repo_root=REPO_ROOT):
+    base = os.path.join(repo_root, "analysis", "e2e_output", "v88", "phase03")
+    return dict(
+        cpu_compare=[
+            os.path.join(base, "p1", "dshb", "p0_10_cpu_optimization_compare.json"),
+            os.path.join(base, "p1", "dshb", "cpu_optimization_comparison.json"),
+            os.path.join(base, "p1", "p0_10_cpu_compare.json"),
+        ],
+        noise_rate=[
+            os.path.join(base, "p1", "hermes", "alert_noise_rate_report.json"),
+            os.path.join(base, "p1", "hermes", "alert_noise_rate_7d.json"),
+            os.path.join(base, "p1", "noise_rate_report.json"),
+        ],
+        expansion=[
+            os.path.join(base, "p1", "dshb", "expansion_batch_report.json"),
+            os.path.join(base, "p1", "dshb", "p1_expansion_180_report.json"),
+            os.path.join(base, "p1", "expansion_report.json"),
+        ],
+    )
+
+
+def _first_existing(paths):
+    for p in paths:
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def check_cpu_baseline_gate(repo_root=REPO_ROOT):
+    """
+    P0-12 CPU 基线门禁（P1）：判定 DSHB P0-10 专用优化前后对比是否达标（峰值 ≤1.75%）。
+
+    ⚠️ 口径铁律：本门禁**只采信全链路业务 CPU 口径**（DSHB 专用优化前后对比，
+    同脚本/同负载/同时段采集）。`collect_cpu_baseline()` 的渲染进程瞬时值
+    （psutil.Process().cpu_percent）**不得**作为本门禁判定源 —— 两者数量级不可比
+    （进程级实测可达 100%+，全链路稳态约 2%），混用会导致误判。
+    交付物未落地 → UNKNOWN（非阻断）；落地后自动判定。
+    """
+    res = dict(gate_id="P0-12", status="UNKNOWN",
+               threshold_pct=P1_CPU_TARGET_PCT,
+               phase02_fuse_pct=CPU_FUSE_THRESHOLD_PCT,
+               phase02_peak_pct=CPU_PHASE02_PEAK_PCT,
+               cpu_peak_pct=None, cpu_baseline_pct=None, cpu_after_pct=None,
+               improvement_pct_pts=None, margin_vs_target_pct=None,
+               caliber="full_chain_business_steady_state",
+               artifact=None, comparability_enforced=True,
+               source_artifact_not_found=True, errors=[])
+    p = _first_existing(_p1_artifact_paths(repo_root)["cpu_compare"])
+    if p is None:
+        res["status_reason"] = (
+            "待 DSHB P0-10 专用优化前后对比产物（同脚本/同负载/同时段全链路口径）；"
+            "进程级瞬时 CPU 口径不可比，不作为本门禁判定源（见 collect_cpu_baseline 口径声明）。")
+        return res
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        # 兼容多种交付物字段命名
+        peak = (d.get("cpu_peak_pct") or d.get("after_peak_pct")
+                or (d.get("after") or {}).get("peak_pct")
+                or d.get("optimized_peak_pct"))
+        base = (d.get("cpu_baseline_pct") or d.get("before_peak_pct")
+                or (d.get("before") or {}).get("peak_pct")
+                or d.get("baseline_peak_pct"))
+        res["artifact"] = os.path.relpath(p, repo_root)
+        res["cpu_peak_pct"] = peak
+        res["cpu_baseline_pct"] = base
+        res["cpu_after_pct"] = peak
+        res["source_artifact_not_found"] = False
+        if peak is not None:
+            res["improvement_pct_pts"] = round((base - peak), 4) if base else None
+            res["margin_vs_target_pct"] = round(P1_CPU_TARGET_PCT - peak, 4)
+            res["status"] = "PASS" if peak <= P1_CPU_TARGET_PCT else "FAIL"
+            res["status_reason"] = ("全链路口径实测峰值 %.4f%% vs 目标 ≤%.2f%% → %s"
+                                    % (peak, P1_CPU_TARGET_PCT, res["status"]))
+        else:
+            res["errors"].append("artifact_missing_peak_field")
+            res["status_reason"] = "交付物缺少 cpu_peak_pct/after_peak_pct 字段，无法判定"
+    except Exception as e:
+        res["errors"].append("artifact_load_failed: %s" % e)
+        res["status_reason"] = "交付物解析失败: %s" % e
+    return res
+
+
+def check_noise_rate_gate(repo_root=REPO_ROOT):
+    """
+    P0-13 告警噪声率门禁（P1）：判定 7 天静默期告警噪声率是否 <10%（F-4 门禁 P1 激活）。
+
+    判定源 = HERMEShf 7 天静默期实测产物。噪声率未观测满 7 天 → WARN（观测不足，非阻断）；
+    交付物缺失 → UNKNOWN。禁止以单次告警计数替代比率口径。
+    """
+    res = dict(gate_id="P0-13", status="UNKNOWN",
+               threshold_pct=NOISE_RATE_THRESHOLD_PCT,
+               silence_days=NOISE_RATE_SILENCE_DAYS,
+               noise_rate_pct=None, total_alerts=0, false_alerts=0,
+               observed_days=0, artifact=None,
+               source_artifact_not_found=True, errors=[])
+    p = _first_existing(_p1_artifact_paths(repo_root)["noise_rate"])
+    if p is None:
+        res["status_reason"] = (
+            "待 HERMEShf 7 天静默期告警噪声率实测产物（F-4 门禁 P1 激活，阈值 <%.0f%%）"
+            % NOISE_RATE_THRESHOLD_PCT)
+        return res
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        res["artifact"] = os.path.relpath(p, repo_root)
+        res["source_artifact_not_found"] = False
+        rate = (d.get("noise_rate_pct") or d.get("noise_rate") or d.get("false_alarm_rate"))
+        if rate is not None and rate <= 1.0:  # 兼容小数形式 0.08 → 8%
+            rate = round(rate * 100.0, 4)
+        res["noise_rate_pct"] = rate
+        res["total_alerts"] = d.get("total_alerts") or 0
+        res["false_alerts"] = d.get("false_alerts") or d.get("false_alarms") or 0
+        res["observed_days"] = d.get("observed_days") or d.get("days") or 0
+        if rate is None:
+            res["errors"].append("artifact_missing_rate_field")
+            res["status_reason"] = "交付物缺少 noise_rate_pct 字段，无法判定"
+        elif res["observed_days"] and res["observed_days"] < NOISE_RATE_SILENCE_DAYS:
+            res["status"] = "WARN"
+            res["status_reason"] = ("观测仅 %.0f/%d 天（静默期不足），噪声率 %.4f%% 暂不作准"
+                                    % (res["observed_days"], NOISE_RATE_SILENCE_DAYS, rate))
+        else:
+            res["status"] = "PASS" if rate < NOISE_RATE_THRESHOLD_PCT else "FAIL"
+            res["status_reason"] = ("静默期 %.0f 天噪声率 %.4f%% vs 阈值 <%.0f%% → %s"
+                                    % (res["observed_days"], rate,
+                                       NOISE_RATE_THRESHOLD_PCT, res["status"]))
+    except Exception as e:
+        res["errors"].append("artifact_load_failed: %s" % e)
+        res["status_reason"] = "交付物解析失败: %s" % e
+    return res
+
+
+def check_expansion_gate(repo_root=REPO_ROOT):
+    """
+    P0-14 180 指标全量校验门禁（P1）：判定扩量批次（146→180）是否达标。
+
+    双判定源（须同时满足）：
+      ① 独立库实测去重指标数 ≥ 180（独立复跑 sqlite COUNT DISTINCT，非采信自报）
+      ② DSHB 扩量批次交付物存在（批次计划/执行报告）
+    指标数未达 180 → FAIL；达 180 但交付物缺失 → WARN（缺批次可追溯性）；
+    交付物缺失且指标数已达 → 仍以实测为准判 PASS 但标注 WARN 提示补交付物。
+    """
+    res = dict(gate_id="P0-14", status="UNKNOWN",
+               target_indicators=P1_EXPANSION_TARGET,
+               actual_indicators=None, mapped_indicators=None,
+               total_rows=None, pass_rate_pct=None,
+               caliber="independent_testdb_count_distinct",
+               artifact=None, source_artifact_not_found=True, errors=[])
+    # ① 独立库实测（权威判定源）
+    try:
+        import sqlite3
+        db, _src = resolve_testdb_path()
+        if db:
+            c = sqlite3.connect(db)
+            res["actual_indicators"] = c.execute(
+                "SELECT COUNT(DISTINCT indicator_id) FROM series_cache").fetchone()[0]
+            res["mapped_indicators"] = c.execute(
+                "SELECT COUNT(DISTINCT indicator_id) FROM series_cache "
+                "WHERE indicator_id_mapped IS NOT NULL AND indicator_id_mapped != ''").fetchone()[0]
+            res["total_rows"] = c.execute("SELECT COUNT(*) FROM series_cache").fetchone()[0]
+            c.close()
+    except Exception as e:
+        res["errors"].append("testdb_count_failed: %s" % e)
+    # ② 扩量批次交付物
+    p = _first_existing(_p1_artifact_paths(repo_root)["expansion"])
+    if p:
+        res["artifact"] = os.path.relpath(p, repo_root)
+        res["source_artifact_not_found"] = False
+    actual = res.get("actual_indicators")
+    if actual is None:
+        res["status_reason"] = "独立库不可读或指标数无法统计，扩量状态未知"
+        return res
+    res["pass_rate_pct"] = round(actual / P1_EXPANSION_TARGET * 100.0, 4)
+    if actual < P1_EXPANSION_TARGET:
+        res["status"] = "FAIL"
+        res["status_reason"] = ("实测去重指标 %d < 目标 %d（缺口 %d），扩量批次未完成"
+                                % (actual, P1_EXPANSION_TARGET, P1_EXPANSION_TARGET - actual))
+    elif res["source_artifact_not_found"]:
+        res["status"] = "WARN"
+        res["status_reason"] = (
+            "实测去重指标 %d ≥ 目标 %d（达标率 %.4f%%），但缺 DSHB 扩量批次交付物（批次可追溯性缺失）；"
+            "数据面已达标，非能力阻断，待批次计划/执行报告补件"
+            % (actual, P1_EXPANSION_TARGET, res["pass_rate_pct"]))
+    else:
+        res["status"] = "PASS"
+        res["status_reason"] = ("实测去重指标 %d ≥ 目标 %d，映射 %d 项，批次交付物就位"
+                                % (actual, P1_EXPANSION_TARGET, res.get("mapped_indicators") or 0))
+    return res
+
+
+# ============================================================================
+# 三口径自动校验（T1）—— 强制口径铁律落地，拦截口径混用
+#
+# 判定逻辑（三条铁律，全部代码化）：
+#   R1 禁 A 替 B：若报告用口径 A 数值声称 D-7/覆盖率达标 → VIOLATION
+#   R2 禁自测替 R3：若报告出现 78.82% 等抽样自测值作为验收依据 → VIOLATION
+#   R3 C 与 C' 必须同时披露：仅有 coverage_pct 而无 coverage_raw_pct → VIOLATION
+# 返回 violation=True 时，run_all() 将该门禁判为 FAIL（阻断），并在报告中列出违规明细。
+# ============================================================================
+DSHE_SELF_TEST_PCT = 78.82  # DSHE 抽样自测覆盖率（禁止作为验收依据）
+
+
+def audit_caliber_disclosure(report=None):
+    """
+    三口径自动校验：检查 A/B/C 三口径是否合规披露、是否存在口径混用。
+
+    校验维度：
+      1. dual_caliber 块完整性（口径 A/B 数值与归属门禁均须存在）
+      2. P0-9 是否同时披露在范围内覆盖率(C)与全量参考覆盖率(C')
+      3. 是否存在以口径 A 替代口径 B 的混用迹象（A 达标而 B 未达标却判 PASS）
+      4. 是否出现 DSHE 自测抽样值（78.82%）被当作验收依据
+
+    返回 dict(violations=[...], status, caliber_a/b/c/c_prime, disclosed_ok, ...)
+    """
+    res = dict(gate_id="CAL", status="PASS", violations=[],
+               caliber_a=None, caliber_b=None, caliber_c=None, caliber_c_prime=None,
+               caliber_a_note="口径A=DB映射命中率(P0-11辅助)",
+               caliber_b_note="口径B=引擎真实渲染覆盖率(D-7唯一验收依据)",
+               caliber_c_note="口径C=命名空间映射覆盖率(P0-9在范围内)",
+               caliber_c_prime_note="口径C'=全量参考(分母109)",
+               caliber_a_pass=None, caliber_b_pass=None,
+               disclosed_ok=False, caliber_mixing=False,
+               dshe_selftest_used=False, checks_run=0)
+    r = report or {}
+    dc = r.get("dual_caliber") or {}
+    p09 = r.get("p0_9_detail") or {}
+
+    # --- 采集三口径数值 ---
+    res["caliber_a"] = dc.get("caliber_a_db_mapping_hit_pct")
+    res["caliber_a_pass"] = dc.get("caliber_a_pass")
+    res["caliber_b"] = dc.get("caliber_b_engine_real_render_pct")
+    res["caliber_b_pass"] = dc.get("caliber_b_pass")
+    res["caliber_c"] = p09.get("coverage_in_scope_pct")
+    res["caliber_c_prime"] = p09.get("coverage_raw_pct")
+
+    res["checks_run"] = 4
+
+    # --- R3: 口径 C 与 C' 必须同时披露 ---
+    if res["caliber_c"] is not None and res["caliber_c_prime"] is not None:
+        pass
+    else:
+        res["violations"].append(
+            "VIOLATION_R3_CALIBER_C_DISCLOSURE: 口径 C 与 C' 必须同时披露"
+            "（C=%s, C'=%s）；衍生品剔除属范围界定，不得只报单值"
+            % (res["caliber_c"], res["caliber_c_prime"]))
+
+    # --- R1: 禁止以口径 A 替代口径 B 声称达标 ---
+    # 若 A 达标而 B 不达标，但 verdict 声称 PASS/达标，则属混用
+    if (res["caliber_a_pass"] is True and res["caliber_b_pass"] is False):
+        _verdict = r.get("verdict")
+        if _verdict in ("PASS",):
+            res["caliber_mixing"] = True
+            res["violations"].append(
+                "VIOLATION_R1_CALIBER_MIXING: 口径 A 达标(%.4f%%)但口径 B 未达标(%.4f%%) "
+                "时不得以 A 替代 B 判定 PASS；D-7 验收唯一依据为口径 B"
+                % (res["caliber_a"] or 0, res["caliber_b"] or 0))
+        # A 达标 + B 未达标 但未误判 PASS → 属合规双口径并列披露（提示项）
+        elif not res["violations"]:
+            res["violations"].append(
+                "NOTE_DUAL_CALIBER_GAP: 口径 A 达标(%.4f%%) 但口径 B 未达标(%.4f%%)，"
+                "差值归因引擎适配层；已按铁律分别判定，未混用"
+                % (res["caliber_a"] or 0, res["caliber_b"] or 0))
+
+    # --- R2: 禁止以 DSHE 自测抽样值替代 R3 全量 ---
+    _b = res["caliber_b"]
+    if _b is not None and abs(_b - DSHE_SELF_TEST_PCT) < 0.01:
+        res["dshe_selftest_used"] = True
+        res["violations"].append(
+            "VIOLATION_R2_DSHB_SELFTEST: 检测到验收依据使用 DSHE 自测抽样值 %.2f%%；"
+            "须以 HERMEShf R3 全量口径为唯一验收依据" % _b)
+
+    # --- 完整性：三口径数值是否均存在 ---
+    _missing = [n for n, v in (("A", res["caliber_a"]), ("B", res["caliber_b"]),
+                               ("C", res["caliber_c"])) if v is None]
+    if _missing:
+        res["violations"].append(
+            "VIOLATION_CALIBER_INCOMPLETE: 口径 %s 数值缺失，三口径对照未完整披露"
+            % "/".join(_missing))
+
+    res["disclosed_ok"] = not any(
+        v.startswith("VIOLATION") for v in res["violations"])
+    res["status"] = "PASS" if res["disclosed_ok"] else "FAIL"
+    res["violation_count"] = sum(1 for v in res["violations"]
+                                 if v.startswith("VIOLATION"))
+    res["note_count"] = sum(1 for v in res["violations"] if v.startswith("NOTE"))
+    res["rules_enforced"] = "R1_禁A替B / R2_禁自测替R3 / R3_C与C'同时披露"
+    return res
 
 
 # ============================================================================
@@ -893,16 +1257,18 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
         #   判定记录，故实际 results 中主门禁为 22 条（含 S-4a+S-4b），矩阵基准仍为 21 项。
         # 40 项阶段门禁 = P0原型10 + P1仿真12 + P2长稳11 + P3金丝雀8
         #   注：len(STAGE_GATES)=41 含 P0-9/P0-10 之外的全部阶段门禁，矩阵基准为 40 项。
+        # P1 新增（TASK: V88_PHASE03_P1_HERMES_MAIN_JOB / T0）：P0-12 CPU 基线门禁、
+        #   P0-13 告警噪声率门禁、P0-14 180 指标全量校验门禁，阶段门禁总数 42 → 45。
         main_gate_total=21,
-        stage_gate_total=40,
+        stage_gate_total=45,
         main_gate_judged=None,
         stage_gate_judged=None,
         main_gate_scope_note=(
             "21 项主门禁（矩阵基准）= 数据7(D-1~D-7) + 渲染6(R-1~R-6) + 因子4(F-1~F-4) + 稳定性5(S-1~S-3,S-4a/S-4b)"
             "；S-4a/S-4b 由 check_rpo_split() 从单条 S-4 拆分为两条判定记录，故 results 中主门禁实测 22 条，矩阵基准 21 项。"),
         stage_gate_scope_note=(
-            "40 项阶段门禁（矩阵基准）= P0原型10 + P1仿真12 + P2长稳11 + P3金丝雀8"
-            "；len(STAGE_GATES)=41，其中 S-4a/S-4b 以主门禁形式判定、不重复计入阶段门禁。"),
+            "45 项阶段门禁（矩阵基准）= P0原型11 + P1新增3(P0-12/P0-13/P0-14) + P1仿真12 + P2长稳11 + P3金丝雀8"
+            "；S-4a/S-4b 以主门禁形式判定、不重复计入阶段门禁。"),
         results=[], d7_detail=None, p0_9_detail=None,
         testdb_detail=None,
         # D-7 双口径对照（TASK: V88_PHASE03_P0_HERMES_GATE_RULE_UPDATE 确立）
@@ -1014,23 +1380,73 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
                td.get("note", "")))))
 
     # ---- 2. P0-9 命名映射门禁 ----
+    # R-V88-033（P1）：探针式探测衍生品派生库是否已建成（命中 59 项）；
+    # 建成后自动切换分母 50 → 109，无需改代码。未建成则保持 P0 在范围内口径。
     p09 = check_naming_map()
+    p09_probe = check_naming_map(include_derivatives=True)
+    r_v88_033_resolved = bool(p09_probe.get("denominator_mode") == "FULL_109")
+    if r_v88_033_resolved:
+        p09 = p09_probe
     report["p0_9_detail"] = p09
+    report["r_v88_033"] = dict(
+        resolved=r_v88_033_resolved,
+        derivative_hit=p09.get("meta_derivative_hit"),
+        derivative_target=DERIVATIVE_TARGET_COUNT,
+        denominator_mode=p09.get("denominator_mode"),
+        note=("R-V88-033 已闭环：衍生品命中达标，P0-9 分母 50→109（口径 C 与 C' 收敛）"
+              if r_v88_033_resolved else
+              "R-V88-033 待处置：衍生品命中 %s/%d，分母维持 50（口径 C），全量参考 C'=%s%%"
+              % (p09.get("meta_derivative_hit"), DERIVATIVE_TARGET_COUNT,
+                 p09.get("coverage_raw_pct"))))
     # P0-9 是 D-7 覆盖率的前置任务（P0-R0 命名映射）
     # 口径已修正（R-V88-032）：改用 DSHB 映射清单真实交集，不再使用 JSONL 文件名口径。
     p09_status = "PASS" if p09["status"] == "PASS" else \
                  ("BLOCKED_PRE_P0" if p09["status"] == "FAIL" else p09["status"])
     add(GateResult("P0-9", STAGE_GATES["P0-9"]["name"],
-                   "映射覆盖率 ≥%d%%" % p09["threshold_pct"],
+                   "映射覆盖率 ≥%d%%（%s）" % (p09["threshold_pct"],
+                                               p09.get("denominator_mode", "IN_SCOPE_50")),
                    p09_status,
-                   actual="%.4f%% (%d/%d, 映射清单 %d)" % (
+                   actual="%.4f%% (%d/%d, 映射清单 %s)" % (
                        p09.get("coverage_pct") or 0, p09.get("intersection_count", 0),
-                       p09.get("meta_indicator_count", 0),
-                       p09.get("mapped_indicator_count", 0)),
-                   note=("口径=%s | 映射源=%s | DSHE命名映射覆盖=%d | 旧JSONL口径交集=%d(已废弃)"
-                         % (p09.get("caliber"), p09.get("mapping_source"),
-                            p09.get("dshe_naming_hit", 0),
-                            p09.get("legacy_jsonl_intersection", 0)))))
+                       p09.get("meta_in_scope_count", 0),
+                       p09.get("mapped_indicator_count")),
+                   note=("口径=%s | 分母=%s | 衍生品命中=%s/%d | C'全量参考=%s%% | "
+                         "DSHE命名映射=%s | 旧JSONL口径=%s(已废弃)"
+                         % (p09.get("caliber"), p09.get("meta_in_scope_count"),
+                            p09.get("meta_derivative_hit"), DERIVATIVE_TARGET_COUNT,
+                            p09.get("coverage_raw_pct"), p09.get("dshe_naming_hit"),
+                            p09.get("legacy_jsonl_intersection")))))
+
+    # ---- 2.1 P1 阶段新增门禁（T0）：CPU 基线 / 噪声率 / 180 指标扩量 ----
+    # 三项均为「规则先就绪，等交付物落地」：未落地判 UNKNOWN（非阻断），落地后自动判定。
+    p1_cpu = check_cpu_baseline_gate()
+    p1_noise = check_noise_rate_gate()
+    p1_exp = check_expansion_gate()
+    report["p1_cpu_detail"] = p1_cpu
+    report["p1_noise_detail"] = p1_noise
+    report["p1_expansion_detail"] = p1_exp
+    _p1_map = {"P0-12": p1_cpu, "P0-13": p1_noise, "P0-14": p1_exp}
+    _p1_actual = {
+        "P0-12": ("全链路峰值 %.4f%% (目标 ≤%.2f%%)" % (p1_cpu.get("cpu_peak_pct") or 0,
+                                                        P1_CPU_TARGET_PCT)
+                  if p1_cpu.get("cpu_peak_pct") is not None else "待交付物"),
+        "P0-13": ("噪声率 %.4f%% (观测 %.0f/%d 天, 阈值 <%.0f%%)" % (
+                    p1_noise.get("noise_rate_pct") or 0, p1_noise.get("observed_days") or 0,
+                    NOISE_RATE_SILENCE_DAYS, NOISE_RATE_THRESHOLD_PCT)
+                  if p1_noise.get("noise_rate_pct") is not None else "待交付物"),
+        "P0-14": ("实测 %s 指标 (映射 %s, 行 %s, 达标率 %.4f%%)" % (
+                    p1_exp.get("actual_indicators"), p1_exp.get("mapped_indicators"),
+                    p1_exp.get("total_rows"), p1_exp.get("pass_rate_pct") or 0)
+                  if p1_exp.get("actual_indicators") is not None else "独立库不可读"),
+    }
+    for _gid in ("P0-12", "P0-13", "P0-14"):
+        _d = _p1_map[_gid]
+        # WARN 保留原状（非阻断观测，P1 阶段真实状态），不折算为 UNKNOWN
+        add(GateResult(_gid, STAGE_GATES[_gid]["name"], STAGE_GATES[_gid]["threshold"],
+                       _d["status"],
+                       actual=_p1_actual[_gid],
+                       note=_d.get("status_reason", "") + (
+                           (" | 交付物=%s" % _d["artifact"]) if _d.get("artifact") else "")))
 
     # ---- 3. P0-10 CPU 门禁 + 基线采集 ----
     p010 = collect_cpu_baseline(rounds=3, use_engine=use_engine)
@@ -1114,6 +1530,20 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
         testdb_schema_compatible=_td.get("schema_compatible"),
         engine_adapter=_td.get("engine_adapter"),
     )
+    # ---- 7.5 三口径自动校验（T1）：强制口径铁律落地，拦截口径混用 ----
+    # 在 verdict 初判之后执行，使 R1（禁 A 替 B）能读取 verdict；
+    # 违规时追加 FAIL 判定，阻断「以口径 A 替代口径 B 声称达标」等口径混用。
+    cal = audit_caliber_disclosure(report)
+    report["caliber_audit"] = cal
+    add(GateResult(
+        "CAL", "三口径自动校验（R1禁A替B/R2禁自测替R3/R3 C与C'同时披露）",
+        "0 VIOLATION", cal["status"],
+        actual=("A=%s B=%s C=%s C'=%s | VIOLATION=%d NOTE=%d"
+                % (fmt_pct(cal["caliber_a"]), fmt_pct(cal["caliber_b"]),
+                   fmt_pct(cal["caliber_c"]), fmt_pct(cal["caliber_c_prime"]),
+                   cal["violation_count"], cal["note_count"])),
+        note=("; ".join(cal["violations"]) if cal["violations"]
+              else "三口径铁律全部合规：A/B 并列披露，C 与 C' 同时披露，无 DSHE 自测替代")))
     # 实际判定条数（results 去重后，主门禁/阶段门禁分列）
     _ids = [r.gate_id for r in report["results"]]
     report["main_gate_judged"] = len({i for i in _ids if i.split("-")[0] in ("D", "R", "F", "S")})
@@ -1171,6 +1601,38 @@ def render_text(report):
             lines.append("  " + r.as_line())
             if r.note:
                 lines.append("      └ %s" % r.note)
+
+    lines.append("\n【P1 阶段新增门禁判定（T0：CPU基线/噪声率/180指标扩量）】")
+    for r in report["results"]:
+        if r.gate_id in ("P0-12", "P0-13", "P0-14"):
+            lines.append("  " + r.as_line())
+            if r.note:
+                lines.append("      └ %s" % r.note)
+
+    lines.append("\n【三口径自动校验（T1：口径铁律落地）】")
+    ca = report.get("caliber_audit") or {}
+    lines.append("  判定          : %s（%s）" % (ca.get("status"), ca.get("rules_enforced")))
+    lines.append("  口径 A (DB映射命中率, P0-11辅助) : %s (达标=%s)" % (
+        fmt_pct(ca.get("caliber_a")), ca.get("caliber_a_pass")))
+    lines.append("  口径 B (引擎真实渲染覆盖率, D-7唯一依据) : %s (达标=%s)" % (
+        fmt_pct(ca.get("caliber_b")), ca.get("caliber_b_pass")))
+    lines.append("  口径 C (命名映射, P0-9在范围内) : %s" % fmt_pct(ca.get("caliber_c")))
+    lines.append("  口径 C'(全量参考, 分母109)     : %s" % fmt_pct(ca.get("caliber_c_prime")))
+    lines.append("  VIOLATION=%s NOTE=%s 口径混用=%s DSHE自测替代=%s" % (
+        ca.get("violation_count"), ca.get("note_count"),
+        ca.get("caliber_mixing"), ca.get("dshe_selftest_used")))
+    for _v in (ca.get("violations") or []):
+        lines.append("    %s" % _v)
+    if not ca.get("violations"):
+        lines.append("    三口径铁律全部合规：A/B 并列披露，C 与 C' 同时披露，无 DSHE 自测替代")
+
+    rv = report.get("r_v88_033") or {}
+    lines.append("\n【R-V88-033 衍生品派生库进展（P0-9 分母切换）】")
+    lines.append("  衍生品命中    : %s / %s" % (rv.get("derivative_hit"), rv.get("derivative_target")))
+    lines.append("  分母模式      : %s" % rv.get("denominator_mode"))
+    lines.append("  状态          : %s" % ("已闭环（分母 50→109）" if rv.get("resolved")
+                                          else "待处置（分母维持 50，P2 迭代）"))
+    lines.append("  %s" % rv.get("note"))
 
     lines.append("\n【非 P0 阶段门禁登记（未执行）】")
     for r in report["results"]:

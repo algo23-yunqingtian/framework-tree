@@ -157,3 +157,46 @@
 | analysis/e2e_output/v88/JOB_READY.flag | `UPDATED` | — |
 
 > **DSHE 最终值守核心**: 引擎基线锁定(MD5=cd73deae...) / HERMES终审无新提交(f3daeb5仍为最新)/无引擎缺陷工单 / P1冒烟测试14/14 PASS(双Schema/环境变量切换/101图表冒烟/降级链路/R-09隔离) / P1前置资料314行/10节完整就绪 / 无代码改动 / 待命等待HERMEShf终审PASS及P1工单
+---
+
+## V88 Phase03 P1 — HERMEShf 门禁更新 + R3 E2E 权威复测（2026-10-15）
+
+> **TASK_ID**: V88_PHASE03_P1_HERMES_MAIN_JOB | **AGENT**: HERMEShf
+> **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE) | **约束**: NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL
+> **R3 tag**: `r3_p1_e2e` | **verdict**: PASS_WITH_UNKNOWN | **P1 准入**: CONDITIONAL_ADMIT
+
+| 文件 | MD5(前12) | 全 MD5 | 说明 |
+|------|:---------:|--------|------|
+| `analysis/e2e_output/v88/phase03/p0/scripts/p0_gate_checker.py` | `C3C868C5D979` | `C3C868C5D979136A26AAEC10ABD230CB` | **本工单修改**（1325→1787 行，+462）：+P0-12/P0-13/P0-14 门禁 + CAL 三口径自动校验 + R-V88-033 分母切换机制 + render_text P1/CAL/R-V88-033 三段 |
+| `analysis/e2e_output/v88/phase03/p1/hermes/v88_phase03_p1_hermes_gate_update_report.md` | `3FC0BED012AF` | `3FC0BED012AFD0A35B3C97C939181164` | **新增**（17,646B）：门禁矩阵更新 + 三口径校验 + R-V88-033 评审报告 |
+| `analysis/e2e_output/v88/phase03/p1/hermes/v88_phase03_p1_r3_e2e_final_report.md` | `1FFC035485C1` | `1FFC035485C1F8E720B583D0F46F7E1B` | **新增**（13,249B）：P1 R3 E2E 权威验收报告（CONDITIONAL_ADMIT） |
+| `analysis/e2e_output/v88/phase03/review/v88_phase03_merged_risk_list.md` | `B9D8EB783A5B` | `B9D8EB783A5B8C291CA044319E23461B` | §15 追加（15.1~15.9）：P1 门禁扩展 + CAL + R-V88-033 评审 + 新增 R-V88-034/035/036 |
+| `analysis/e2e_output/v88/phase03/review/v88_phase03_gate_matrix.md` | `28155D944227` | `28155D944227CFC39E881E78C741E011` | 头部四次更新 + §3.5 阶段门禁 42→45 + §5 CAL 门禁化 |
+
+### 本轮实测关键数据（R3 tag=`r3_p1_e2e`）
+
+| 项 | 数值 |
+|---|------|
+| 门禁 verdict | PASS_WITH_UNKNOWN |
+| summary | PASS=8 / FAIL=0 / NOT_APPLICABLE=34 / BLOCKED_PRE_P0=0 / UNKNOWN=25 / WARN=1 |
+| 主/阶段判定数 | 22 / 45 |
+| 口径 A（P0-11） | 77.0642%（84/109）PASS |
+| 口径 B（D-7） | 68.3168%（real=69/sim=32）PASS |
+| 口径 C（P0-9） | 100.0000%（84/50，IN_SCOPE_50）PASS |
+| 口径 C'（全量参考） | 77.0642% |
+| CAL 三口径校验 | PASS（VIOLATION=0） |
+| P0-12 CPU 基线 | UNKNOWN（待 DSHB 交付物） |
+| P0-13 噪声率 | UNKNOWN（待 7 天静默期） |
+| P0-14 180 指标扩量 | WARN（实测 615 ≥ 180，缺批次交付物） |
+| R-V88-033 | 衍生品命中 34/59，分母维持 50，切换机制就绪 |
+| 回归 24 用例 | PASS=19 / WARN=5 / BLOCKED=0 / FAIL=0 |
+| 时延 p99 | 39.193 ms（余量率 92.16%） |
+| 独立库重建 | 110,252,032 字节 / 475,593 行 / 615 指标 / 15s |
+| R-09 生产库零污染 | 3 行 / code=[AO] / mtime 未变 |
+| 风险统计 | 合计 29→32（+R-V88-034/035/036） |
+
+### 约束合规（10/10）
+
+BRANCH_LOCKED / NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL /
+node_binding_engine.py 未修改 / Phase02 生产链路零修改 / api_cache.db 只读零污染 /
+phase03_test.db 未入库 / 旧口径留档不删
