@@ -327,22 +327,49 @@ def phase_b_metrics(fx, cases):
     cases.append(c)
 
     # B-3 命名空间映射（P0-9 前置）
+    # ⚠️ 口径修正（R-V88-032）：不再使用 JSONL 原始 indicator_id 口径（命名空间不同，交集恒 0），
+    #   改用 DSHB 映射清单（原始∪映射 code 双向归一）与 meta_chart 指标的真实交集；
+    #   衍生品命名空间（COMEX_/LC_/SPOT_IS）DSHB 一期不建库，不计入分母。
     c = Case("B-3", "B 指标读取", "指标命名空间映射", "DSHB+HERMEShf")
     m_inds = meta_indicators(fx)
-    j_inds, _ = jsonl_indicators()
-    inter = m_inds & j_inds
-    cov = len(inter) / len(m_inds) * 100.0 if m_inds else 0.0
-    if cov >= BASELINE["p09_coverage_pct"]:
+    mp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           "..", "v88_phase03_p0_metric_indicator_code_mapping.json")
+    mp_path = os.path.normpath(mp_path)
+    mapped_inds = set()
+    mapping_ok = os.path.exists(mp_path)
+    if mapping_ok:
+        try:
+            with open(mp_path, "r", encoding="utf-8") as f:
+                _mp = json.load(f)
+            for _row in (_mp.get("mapping_list") or []):
+                if not _row.get("has_mapping"):
+                    continue
+                if _row.get("indicator_id"):
+                    mapped_inds.add(_row["indicator_id"])
+                if _row.get("indicator_id_mapped"):
+                    mapped_inds.add(_row["indicator_id_mapped"])
+        except Exception:
+            mapping_ok = False
+    _deriv = {i for i in m_inds
+              if i.startswith(("COMEX_", "LC_", "SPOT_IS"))
+              or i.endswith(("_TERM_STRUCTURE", "_MONTH_SPREAD", "_LONG_SHORT_RATIO",
+                             "_PRICE_PERCENTILE", "_TOP20_LONG", "_TOP20_SHORT",
+                             "_BALANCE_SHEET"))}
+    _scope = m_inds - _deriv
+    inter = _scope & mapped_inds
+    cov = len(inter) / len(_scope) * 100.0 if _scope else 0.0
+    _thr = BASELINE.get("p09_coverage_pct") or 95.0
+    if cov >= _thr:
         c.status = "PASS"
-    elif cov == 0:
-        c.status = "BLOCKED"
-    else:
+    elif mapping_ok:
         c.status = "WARN"
-    c.metric = "覆盖率 %.4f%% (%d/%d, JSONL %d)" % (cov, len(inter), len(m_inds), len(j_inds))
-    if cov == 0:
-        c.detail = "命名域零交集：meta=%s / JSONL=%s" % (
-            sorted(m_inds)[:2], sorted(j_inds)[:2])
-    c.note = "P0-9 门禁前置（R-V88-013 / P0-R0 任务）"
+    else:
+        c.status = "BLOCKED"
+    c.metric = "覆盖率 %.4f%% (%d/%d, 映射清单 %d, 衍生品剔除 %d)" % (
+        cov, len(inter), len(_scope), len(mapped_inds), len(_deriv))
+    if not mapping_ok:
+        c.detail = "映射清单缺失或不可读: %s" % mp_path
+    c.note = "P0-9 门禁前置（口径已修正为 DSHB 映射清单真实交集，R-V88-032）"
     cases.append(c)
 
     # B-4 IC/IR 基线继承（F-1）

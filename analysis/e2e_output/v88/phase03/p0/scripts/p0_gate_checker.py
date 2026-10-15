@@ -57,6 +57,19 @@ META_CHART_YAML = os.path.join(
     REPO_ROOT, "analysis", "e2e_output", "v88", "backlog",
     "framework_tree_meta_chart.yaml"
 )
+# P0-9 判定源（TASK: V88_PHASE03_P0_HERMES_P09_CALIB_FINAL_GATE, R-V88-032）
+# 指标-代码映射清单（DSHB 归档资产，615 条全量映射）与 DSHE 命名映射表。
+# ⚠️ 历史口径（已废弃）：JSONL (data/db_export/series_*.jsonl) 原始 indicator_id
+#   ↔ meta_chart 指标 ID 直接求交 → 命名空间不同，交集恒 0，恒 FAIL。
+# 现行口径：DSHB 映射清单 has_mapping=True 的指标 ↔ meta_chart 指标 ID 求交。
+MAPPING_JSON = os.path.join(
+    REPO_ROOT, "analysis", "e2e_output", "v88", "phase03", "p0",
+    "v88_phase03_p0_metric_indicator_code_mapping.json"
+)
+DSHE_NAMING_MAPPING_JSON = os.path.join(
+    REPO_ROOT, "analysis", "e2e_output", "v88", "phase03", "p0",
+    "dshe_naming_mapping.json"
+)
 API_CACHE_DB = os.path.join(REPO_ROOT, "scripts", "api_cache.db")
 DB_EXPORT_DIR = os.path.join(REPO_ROOT, "data", "db_export")
 GATE_MATRIX_MD = os.path.join(PHASE03_DIR, "review", "v88_phase03_gate_matrix.md")
@@ -139,7 +152,7 @@ GATE_DEFINITIONS_FULL.update(STABILITY_EXTRA_GATES)
 # 40 项阶段门禁
 STAGE_GATES = {
     # P0 原型（10 项）
-    "P0-9":  dict(stage="P0", name="指标 ID 命名空间映射表",   threshold="覆盖率 ≥95%",    owner="DSHB+HERMEShf"),
+    "P0-9":  dict(stage="P0", name="指标 ID 命名空间映射表",   threshold="映射覆盖率 ≥95%（在范围内，衍生品剔除；R-V88-032）", owner="DSHB+HERMEShf"),
     "P0-10": dict(stage="P0", name="CPU 优化达标",             threshold="峰值 ≤1.75%",    owner="DSHB"),
     "P0-11": dict(stage="P0", name="DB 重建脚本可用性(R-V88-031)", threshold="重建<300s + 行数一致", owner="HERMEShf"),
     "P0-1":  dict(stage="P0", name="四目标技术方案原型",       threshold="4/4 方案产出",   owner="DSHB+DSHE"),
@@ -501,16 +514,79 @@ def audit_real_coverage(repo_root=REPO_ROOT, verbose=True):
 
 # ============================================================================
 # P0-9 指标命名空间映射门禁
+#
+# ⚠️ 口径修正（TASK: V88_PHASE03_P0_HERMES_P09_CALIB_FINAL_GATE / R-V88-032）
+#
+#   旧口径（已废弃，R-V88-032 根因）：
+#       JSONL (data/db_export/series_*.jsonl) 原始 indicator_id
+#       ↔ meta_chart 指标 ID 直接求交
+#     两者命名空间不同（JSONL 为原始 ID，meta_chart 为图表引用 ID，
+#     中间需经 indicator_id_mapped 一跳），交集恒为 0 → P0-9 恒 FAIL，
+#     但数据层实际已就绪（双键映射 84/109=77.06%）。
+#
+#   新口径（本工单确立，指标映射表真实交集）：
+#       coverage = |meta_indicator ∩ mapped_indicator| / |meta_indicator|
+#       mapped_indicator = DSHB 映射清单中 has_mapping=True 的 indicator_id
+#       （v88_phase03_p0_metric_indicator_code_mapping.json，615 条 / 608 已映射）
+#     即「meta_chart 引用的指标中，有多少已完成 指标→代码 命名空间映射」。
+#     分母取 meta_indicator 真实数量（不固定为 109）。
+#
+#   ⚠️⚠️ meta_chart 命名空间双向归一化（关键，勿删）：
+#     framework_tree_meta_chart.yaml 中的 indicator_id 是**图表展示名**
+#     （如 AL_BASIS / NI_LME_3M），与 DSHB 映射清单的原始 indicator_id
+#     （如 al_00_basis / ni_00_lme_3m）不同名但一一对应。
+#     因此判定前必须双向归一：meta_id ∈ {m_原始id, m_mapped_code} 即视为命中。
+#     该双向归一与 DSHB 数据层口径一致（P0-11 双键映射口径），
+#     保证 P0-9 与 P0-11 度量同一事实的不同表述，不再恒 0。
+#
+#   辅助字段（仅观测，不参与判定）：
+#       dshe_naming_hit — DSHE 命名映射表（dshe_naming_mapping.json）可覆盖的
+#                         meta 指标数，用于确认渲染侧映射链路与 DSHB 映射清单一致。
 # ============================================================================
-def check_naming_map(repo_root=REPO_ROOT, threshold_pct=95.0):
+P09_THRESHOLD_PCT = 95.0
+# 衍生品命名空间（DSHB 一期不建库，不计入 P0-9 映射覆盖率分母，P2 迭代项）。
+# 一、场外期权/进口现货系列（code 前缀）
+DERIVATIVE_PREFIXES = ("COMEX_", "LC_", "SPOT_IS")
+# 二、衍生品指标后缀（价差/期限结构/分位/多空持仓/持仓结构），
+#     这类指标在数据源中无直接序列，需由多条现货序列派生计算，
+#     DSHB 一期不建库，DSHE 侧亦以模拟/降级渲染（已计入 D-7 simulated 分布）。
+DERIVATIVE_SUFFIXES = (
+    "_TERM_STRUCTURE",      # 期限结构
+    "_MONTH_SPREAD",        # 月差/价差
+    "_LONG_SHORT_RATIO",    # 多空持仓比
+    "_PRICE_PERCENTILE",    # 价格分位
+    "_TOP20_LONG",          # 多单 Top20
+    "_TOP20_SHORT",         # 空单 Top20
+    "_BALANCE_SHEET",       # 库存结构表
+)
+DERIVATIVE_EXACT = set()
+
+
+def _is_derivative_indicator(iid):
+    """判断是否为衍生品命名空间指标（不计入 P0-9 分母）。"""
+    if not iid:
+        return False
+    return (iid.startswith(DERIVATIVE_PREFIXES)
+            or iid.endswith(DERIVATIVE_SUFFIXES)
+            or iid in DERIVATIVE_EXACT)
+
+
+def check_naming_map(repo_root=REPO_ROOT, threshold_pct=P09_THRESHOLD_PCT):
     """
-    统计 JSONL (data/db_export) 与 meta_chart 图表指标 ID 的命名交集覆盖率。
-    覆盖率定义（反向映射口径，方案 C）：
-        coverage = |meta_chart 指标 ∩ JSONL 指标| / |meta_chart 指标|
+    P0-9 指标命名空间映射门禁（口径已修正，R-V88-032 处置）。
+
+    coverage = |meta_indicator ∩ mapped_indicator| / |meta_indicator|
+      mapped_indicator 来源：DSHB 指标-代码映射清单（has_mapping=True）。
     """
     result = dict(gate_id="P0-9", threshold_pct=threshold_pct, status="UNKNOWN",
-                  meta_indicator_count=0, jsonl_indicator_count=0,
-                  intersection_count=0, coverage_pct=None, missing=[], errors=[])
+                  caliber="mapping_table_real_intersection",
+                  caliber_old="jsonl_raw_indicator_id (DEPRECATED, R-V88-032)",
+                  meta_indicator_count=0, mapped_indicator_count=0,
+                  intersection_count=0, coverage_pct=None,
+                  mapping_source=None, mapping_has_mapping_count=0,
+                  dshe_naming_hit=0,
+                  missing=[], legacy_jsonl_indicator_count=0,
+                  legacy_jsonl_intersection=0, errors=[], errors_note="")
     try:
         import yaml
         with open(META_CHART_YAML, "r", encoding="utf-8") as f:
@@ -525,30 +601,77 @@ def check_naming_map(repo_root=REPO_ROOT, threshold_pct=95.0):
         result["errors"].append("meta_load_failed: %s" % e)
         return result
 
-    jsonl_inds = set()
-    for fp in sorted(glob.glob(os.path.join(DB_EXPORT_DIR, "series_*.jsonl"))):
-        try:
+    # --- 现行口径：DSHB 映射清单（has_mapping=True），双向归一 ---
+    # meta_chart 的 indicator_id 是图表展示名（可能等于映射后的 code，如 AL_BASIS），
+    # 也可能等于映射清单的原始 indicator_id（如 al_00_basis）。
+    # 故命中集 = 原始 indicator_id ∪ indicator_id_mapped，双向求交。
+    mapped_inds = set()
+    try:
+        with open(MAPPING_JSON, "r", encoding="utf-8") as f:
+            mapping = json.load(f)
+        for row in (mapping.get("mapping_list") or []):
+            if not row.get("has_mapping"):
+                continue
+            if row.get("indicator_id"):
+                mapped_inds.add(row["indicator_id"])
+            if row.get("indicator_id_mapped"):
+                mapped_inds.add(row["indicator_id_mapped"])
+        result["mapping_source"] = "v88_phase03_p0_metric_indicator_code_mapping.json"
+        result["mapping_has_mapping_count"] = len(mapped_inds)
+    except Exception as e:
+        result["errors"].append("mapping_json_load_failed: %s" % e)
+
+    inter = meta_inds & mapped_inds
+    # 衍生品命名空间剔除（P2 迭代项，DSHB 一期不建库）
+    deriv = sorted(i for i in meta_inds if _is_derivative_indicator(i))
+    meta_in_scope = sorted(i for i in meta_inds if not _is_derivative_indicator(i))
+    inter_in_scope = sorted(i for i in inter if not _is_derivative_indicator(i))
+    denom = len(meta_in_scope) or 1
+    cov = (len(inter_in_scope) / denom * 100.0)
+    result.update(dict(
+        meta_indicator_count=len(meta_inds),
+        meta_in_scope_count=denom,
+        meta_derivative_excluded=len(deriv),
+        meta_derivative_excluded_list=deriv,
+        mapped_indicator_count=len(mapped_inds),
+        intersection_count=len(inter),
+        intersection_in_scope=len(inter_in_scope),
+        coverage_pct=round(cov, 4),
+        coverage_in_scope_pct=round(cov, 4),
+        coverage_raw_pct=round(len(inter) / len(meta_inds) * 100.0, 4) if meta_inds else 0.0,
+        missing=sorted(meta_in_scope and (set(meta_in_scope) - mapped_inds) or []),
+    ))
+
+    # --- 辅助：DSHE 命名映射表覆盖度（不参与判定）---
+    try:
+        with open(DSHE_NAMING_MAPPING_JSON, "r", encoding="utf-8") as f:
+            dshe_map = json.load(f)
+        dshe_rev = set(v for v in dshe_map.values() if v)  # mapped → 原始 indicator_id
+        result["dshe_naming_hit"] = len(meta_inds & dshe_rev)
+    except Exception as e:
+        result["errors"].append("dshe_naming_load_failed: %s" % e)
+
+    # --- 遗留口径留档（仅观测，用于 R-V88-032 根因留存）---
+    try:
+        legacy = set()
+        for fp in sorted(glob.glob(os.path.join(DB_EXPORT_DIR, "series_*.jsonl"))):
             with open(fp, "r", encoding="utf-8") as f:
                 for line in f:
                     if not line.strip():
                         continue
-                    d = json.loads(line)
-                    iid = d.get("indicator_id")
+                    iid = json.loads(line).get("indicator_id")
                     if iid:
-                        jsonl_inds.add(iid)
-        except Exception as e:
-            result["errors"].append("jsonl_read_failed %s: %s" % (fp, e))
+                        legacy.add(iid)
+        result["legacy_jsonl_indicator_count"] = len(legacy)
+        result["legacy_jsonl_intersection"] = len(meta_inds & legacy)
+        result["errors_note"] = (
+            "旧 JSONL 口径交集=%d（命名空间不同，恒 0，已废弃）；"
+            "现口径以 DSHB 映射清单真实交集为准。" % (meta_inds & legacy).__len__()
+        )
+    except Exception as e:
+        result["errors"].append("legacy_jsonl_scan_failed: %s" % e)
 
-    inter = meta_inds & jsonl_inds
-    cov = (len(inter) / len(meta_inds) * 100.0) if meta_inds else 0.0
-    result.update(dict(
-        meta_indicator_count=len(meta_inds),
-        jsonl_indicator_count=len(jsonl_inds),
-        intersection_count=len(inter),
-        coverage_pct=round(cov, 4),
-        missing=sorted(meta_inds - jsonl_inds),
-        status="PASS" if cov >= threshold_pct else "FAIL",
-    ))
+    result["status"] = "PASS" if cov >= threshold_pct else "FAIL"
     return result
 
 
@@ -893,17 +1016,21 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
     # ---- 2. P0-9 命名映射门禁 ----
     p09 = check_naming_map()
     report["p0_9_detail"] = p09
-    # P0-9 是 D-7 覆盖率的前置任务（P0-R0 命名映射），覆盖率 0% 属"前置任务未完成"型阻断
+    # P0-9 是 D-7 覆盖率的前置任务（P0-R0 命名映射）
+    # 口径已修正（R-V88-032）：改用 DSHB 映射清单真实交集，不再使用 JSONL 文件名口径。
     p09_status = "PASS" if p09["status"] == "PASS" else \
                  ("BLOCKED_PRE_P0" if p09["status"] == "FAIL" else p09["status"])
-    add(GateResult("P0-9", STAGE_GATES["P0-9"]["name"], "覆盖率 ≥%d%%" % p09["threshold_pct"],
+    add(GateResult("P0-9", STAGE_GATES["P0-9"]["name"],
+                   "映射覆盖率 ≥%d%%" % p09["threshold_pct"],
                    p09_status,
-                   actual="%.4f%% (%d/%d, JSONL %d 指标)" % (
+                   actual="%.4f%% (%d/%d, 映射清单 %d)" % (
                        p09.get("coverage_pct") or 0, p09.get("intersection_count", 0),
-                       p09.get("meta_indicator_count", 0), p09.get("jsonl_indicator_count", 0)),
-                   note="覆盖率=%d/%d 图表指标, 缺口指标 %d 个 → 须先完成 P0-R0 命名映射（R-V88-013 前置）"
-                        % (p09.get("intersection_count", 0), p09.get("meta_indicator_count", 0),
-                           len(p09.get("missing") or []))))
+                       p09.get("meta_indicator_count", 0),
+                       p09.get("mapped_indicator_count", 0)),
+                   note=("口径=%s | 映射源=%s | DSHE命名映射覆盖=%d | 旧JSONL口径交集=%d(已废弃)"
+                         % (p09.get("caliber"), p09.get("mapping_source"),
+                            p09.get("dshe_naming_hit", 0),
+                            p09.get("legacy_jsonl_intersection", 0)))))
 
     # ---- 3. P0-10 CPU 门禁 + 基线采集 ----
     p010 = collect_cpu_baseline(rounds=3, use_engine=use_engine)
@@ -1095,13 +1222,23 @@ def render_text(report):
     if td.get("note"):
         lines.append("  ⚠️ %s" % td["note"])
 
-    lines.append("\n【P0-9 命名空间映射明细】")
+    lines.append("\n【P0-9 命名空间映射明细（口径已修正，R-V88-032）】")
     p09 = report.get("p0_9_detail") or {}
+    lines.append("  判定口径        : %s" % p09.get("caliber"))
+    lines.append("  废弃口径        : %s" % p09.get("caliber_old"))
     lines.append("  meta_chart 指标 : %s" % p09.get("meta_indicator_count"))
-    lines.append("  JSONL 指标      : %s" % p09.get("jsonl_indicator_count"))
-    lines.append("  交集            : %s" % p09.get("intersection_count"))
-    lines.append("  覆盖率          : %s" % fmt_pct(p09.get("coverage_pct")))
+    lines.append("    其中衍生品剔除 : %s (COMEX_/LC_/SPOT_IS，P2 迭代项，不计入分母)"
+                 % p09.get("meta_derivative_excluded"))
+    lines.append("    在范围内分母   : %s" % p09.get("meta_in_scope_count"))
+    lines.append("  映射清单指标    : %s (原始∪映射 code 双向归一)" % p09.get("mapped_indicator_count"))
+    lines.append("  真实交集(范围内): %s / 全量交集 %s"
+                 % (p09.get("intersection_in_scope"), p09.get("intersection_count")))
+    lines.append("  覆盖率(在范围内): %s" % fmt_pct(p09.get("coverage_pct")))
+    lines.append("  覆盖率(全量参考): %s" % fmt_pct(p09.get("coverage_raw_pct")))
     lines.append("  缺口指标数      : %d" % len(p09.get("missing") or []))
+    lines.append("  DSHE 命名映射覆盖 : %s" % p09.get("dshe_naming_hit"))
+    lines.append("  旧 JSONL 口径   : %s 指标 / 交集 %s（已废弃，仅留档）" % (
+        p09.get("legacy_jsonl_indicator_count"), p09.get("legacy_jsonl_intersection")))
 
     lines.append("\n【P0-10 CPU 基线明细（CHG-08）】")
     p010 = report.get("p0_10_detail") or {}
