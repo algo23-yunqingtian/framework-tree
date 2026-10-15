@@ -411,8 +411,159 @@ DSHE 二次渲染核验  : ❌ 不触发（触发条件未满足）
 
 ---
 
+## 11. P0 第三次准入复跑核验（2026-10-15，schema 修复后）
+
+> **TASK_ID**: V88_PHASE03_P0_RERUN_ADMISSION_GATE_AFTER_SCHEMA_FIX
+> **AGENT**: HERMEShf | **复跑结论**: **CONDITIONAL_PASS（P0 准入仍不通过，P1 工单不可下发，DSHE 二次渲染核验不触发）**
+> **依据**: `import_all_to_testdb.py` 独立重建 + `p0_gate_checker.py --json` + `p0_full_regression_suite.py --json` R3 权威复跑 + 双主键查询命中验证
+> **关键进展**: A-3 BLOCKED **已解除**（R-09 隔离 ✅）；**双主键映射命中 84/109 = 77.06%** ✅；但 B-3/C-3 仍未解除
+
+### 11.1 前置依赖核验（T0）
+
+| # | 前置依赖 | 实测 | 判定 |
+|---|----------|------|:----:|
+| 1 | 上一轮阻断为 schema 缺失 code / 目标库错误 / 大小写命名冲突 | 上轮 §10 已确认 | ✅ |
+| 2 | **DSHB 完成 schema 修复 + phase03_test.db 重建与灌入，交付 metric+code 双主键 schema** | 交付物 `import_all_to_testdb.py`（307 行）/ `verify_testdb.py`（113 行）/ `phase03_testdb_coverage_report.json` 就位；**但 `phase03_test.db` 文件本身未提交仓库**（`find . -name 'phase03_test*.db'` → 0），因 AGENTS.md §7 红线「❌ 不推 *.db 到 GitHub」 | ⚠️ **部分达成** |
+| 3 | 脚本缺陷已修复 | 3 项修复持续生效 | ✅ |
+
+**HERMEShf R3 处置**：由于 `.db` 未随仓库交付，HERMEShf **在 R3 环境独立执行 `import_all_to_testdb.py` 重建**独立库，结果与 DSHB 报告一致：
+
+```
+DATABASE_INDEPENDENT   = TRUE  (phase03_test.db, NOT scripts/api_cache.db)
+ALL_JSONL_IMPORTED     = TRUE  (6 files)
+IMPORT_ERRORS          = 0
+PRIMARY_KEY_CONFLICTS  = 0
+TOTAL_INDICATORS       = 615
+TOTAL_ROWS             = 475,593
+phase03_test.db        = 110,252,032 bytes (110.25 MB)
+生产库 scripts/api_cache.db = 未被修改（28,672 B / 3 行 / code=AO / 时间戳 9/9 未变）
+```
+
+### 11.2 ⚠️ 核心阻断发现 — 独立库 schema 与引擎不兼容（T1 双主键验证）
+
+| 项 | 独立库 `phase03_test.db` | 引擎 `node_binding_engine.py` 要求 | 匹配 |
+|----|--------------------------|-----------------------------------|:----:|
+| 表名 | `series_cache` | `indicator_cache` | ❌ **`no such table`** |
+| 指标列 | `indicator_id` / `indicator_id_mapped` | `metric` | ❌ 不存在 |
+| 品种列 | `commodity` | `code` | ❌ 不存在 |
+| 数据形态 | 点级行（`date`,`value`） | `data_json`（`{"points":[...]}`） | ❌ 结构不同 |
+| 引擎数据源路径 | — | `os.path.join(repo_root, "scripts", "api_cache.db")` **硬编码** | ❌ **不读独立库** |
+
+```python
+# scripts/node_binding_engine.py:624
+db_path = os.path.join(self.repo_root, "scripts", "api_cache.db")
+# :638
+"SELECT data_json FROM indicator_cache WHERE metric=? AND code=?"
+```
+
+**结论**：即使 DSHB 独立库数据完备，引擎也**不会读取它**——数据源路径硬编码指向 `scripts/api_cache.db`（仍 3 行 `code=AO`）。
+
+### 11.3 双主键映射有效性验证（T1，引擎语义层面）
+
+按引擎「指标 ID + 品种」双键语义，用 `indicator_id_mapped` + `commodity` 对独立库与 meta 指标做交集验证：
+
+| 项 | 值 |
+|----|----|
+| meta 指标 ID 数 | 124 |
+| 独立库 mapped ID 数 | 156 |
+| 独立库 orig ID 数 | 615 |
+| **meta ∩ mapped** | **84 ✅** |
+| meta ∩ orig | 0 ❌ |
+| **双键覆盖率（84/109 P0-R0 映射指标）** | **77.06% ✅（≥60% 阈值）** |
+
+**样例映射**：`zn_21_close_front` → `ZN_FU00014950`（commodity=`zn`），与 meta `ZN_FU*` 风格一致 → **映射本身正确且有效**。
+
+> ⚠️ **口径区分**：DSHB 覆盖率报告的 77.06%（84/109）与 R3 引擎 D-7 的 0.0000%（0/101）**不是同一口径**——前者是「映射关系命中率」（DB 查询层），后者是「引擎实际渲染数据源」（`source="real"` 占比）。映射成立 ≠ 引擎可用。
+
+### 11.4 R3 权威复跑结果（T1~T3，三轮对比）
+
+| 指标 | 首次准入 | 二次复跑 | **第三次复跑** | 变化 |
+|------|:--------:|:--------:|:--------------:|:----:|
+| `phase03_test.db` 存在 | ❌ | ❌ | **✅（HERMEShf 重建）** | **解除 ✅** |
+| **R-09 隔离达标** | ❌ | ❌ | **✅ TRUE** | **解除 ✅** |
+| **A-3 独立库隔离** | BLOCKED | BLOCKED | **PASS** | **解除 ✅** |
+| B-3 命名映射 | BLOCKED | BLOCKED | **BLOCKED**（0/109，JSONL 579） | 未解除 ❌ |
+| C-3 D-7 覆盖率 | BLOCKED | BLOCKED | **BLOCKED** | 未解除 ❌ |
+| **D-7 真实覆盖率** | 0.0000% | 0.0000% | **0.0000%（0/101）** | 无变化 ❌ |
+| source 分布 | `{"simulated":101}` | 同 | **`{"simulated":101}`** | — |
+| 校验错误 | 0 | 0 | 0 | — |
+| **回归套件** | PASS16/BLOCKED3 | PASS16/BLOCKED3 | **PASS17/BLOCKED2/WARN5/FAIL0** | **PASS+1 / BLOCKED-1 ✅** |
+| P0-9 覆盖率 | 0.0000% | 0.0000% | 0.0000%（交集 0） | 无变化 ❌ |
+| P0-10 CPU | NOT_APPLICABLE | 同 | NOT_APPLICABLE | — |
+| S-4a/S-4b | 88/27/76 | 95/32/82 | 95/32/82 | — |
+| **门禁判定** | CONDITIONAL_PASS | 同 | **CONDITIONAL_PASS**（FAIL=0） | 无变化 |
+
+### 11.5 根因定位（为什么 D-7 仍为 0）
+
+```
+DSHB 已达成（3/4 步）:
+  ✅ 独立库 phase03_test.db 创建（110MB / 475,593 行 / 615 指标）
+  ✅ 6 个 JSONL 全部灌入，0 错误，0 主键冲突
+  ✅ 双键映射有效：84/109 = 77.06% ≥ 60%
+  ❌ 但 schema 为 series_cache(indicator_id, commodity)，非引擎的 indicator_cache(metric, code)
+
+HERMEShf 未达成（1 步，非 DSHB 权限）:
+  ❌ node_binding_engine.py 数据源路径硬编码 scripts/api_cache.db
+     且查询语法 SELECT data_json FROM indicator_cache WHERE metric=? AND code=?
+     → 独立库即使数据完备，引擎也无法读取 → 101 图表全部降级 simulated
+```
+
+**这是本轮唯一阻断，且属引擎适配层（DSHE/HERMEShf 侧），不是 DSHB 数据问题。**
+
+### 11.6 风险项处置状态
+
+| 风险 | 处置 | 说明 |
+|------|:----:|------|
+| **R-V88-028** | 🟡 **部分处置** | 独立库已创建 + 双键映射有效（77.06%）；但 schema 与引擎不兼容，D-7 仍 0% |
+| **R-V88-029** | 🟡 **部分处置** | `import_all_to_testdb.py` 目标库已修正为独立库（`DEFAULT_TESTDB_PATH = SCRIPT_DIR.parent / "phase03_test.db"`，`DATABASE_INDEPENDENT=TRUE`）；生产库零污染。**R-09 隔离已达标** |
+| **R-V88-030** 🆕 | **新增 P0 阻断** | **引擎数据源路径硬编码 `scripts/api_cache.db`，不读 `phase03_test.db`；且查询语法依赖 `indicator_cache(metric,code)` schema，与独立库 `series_cache(indicator_id,commodity)` 不兼容**。即使 DSHB 独立库数据完备（双键命中 77.06%），引擎仍无法读取 → D-7 恒为 0%。须在引擎侧新增独立库路径开关（如 `V88_PHASE03_TEST_DB` 环境变量）+ schema 适配查询，或将独立库以 `indicator_cache` schema 重建 |
+| **R-V88-031** 🆕 | 新增 P2 流程风险 | `.db` 文件受 AGENTS.md §7 红线禁止推送（「❌ 不推 *.db 到 GitHub」），导致 DSHB 交付物「声明完成但文件不可复现」；跨 agent 核验须以「可执行脚本 + 重建」方式替代文件交付。本轮 HERMEShf 已通过重建验证，但流程上需明确约定 |
+| **R-V88-013** | 维持 P0 准入阻断 | D-7 仍 0.0000%（非数据问题，为引擎适配问题） |
+| **R-V88-025** | ✅ **已关闭** | `phase03_test.db` 已创建且隔离达标 |
+| **R-V88-027** | 已缓解 | 脚本口径稳定 |
+
+### 11.7 第三次准入判定
+
+```
+phase03_test.db 存在   : ✅ TRUE（HERMEShf R3 环境重建）
+R-09 隔离达标          : ✅ TRUE
+双键映射有效性          : ✅ 84/109 = 77.06%（≥60% 阈值）
+D-7 真实覆盖率         : 0.0000%  <  60.0000%              → ❌ FAIL（引擎不读独立库）
+A-3                    : ✅ 已解除
+B-3 / C-3              : ❌ 未解除（2/3 BLOCKED）
+回归套件 FAIL          : 0 项                                 → ✅
+验收标准达成           : 3/6 完全达成 / 2/6 部分达成 / 1/6 未达成
+准入结论               : CONDITIONAL_PASS → P0 准入不通过
+P1 工单下发            : ❌ 不可下发
+DSHE 二次渲染核验      : ❌ 不触发（D-7 <60% 条件未满足）
+```
+
+### 11.8 下一轮处置清单（DSHE/HERMEShf 引擎侧，非 DSHB）
+
+| # | 动作 | 责任方 | 验收方式 |
+|---|------|:-----:|----------|
+| 1 | 引擎新增独立库路径开关（如 `V88_PHASE03_TEST_DB` 环境变量），P0 阶段读 `phase03_test.db`，生产阶段读 `scripts/api_cache.db` | DSHE/HERMEShf | `render_with_fallback` 命中独立库 |
+| 2 | schema 适配：独立库以 `indicator_cache(metric, code, data_json)` 重建，或引擎侧新增 `series_cache(indicator_id_mapped, commodity)` 查询分支（点级行 → `data_json` 聚合） | DSHE/HERMEShf | 双键查询命中数据 |
+| 3 | 重跑 `p0_gate_checker.py` 核验 **D-7 ≥60%** | HERMEShf | C-3 转 PASS |
+| 4 | 明确 `.db` 交付约定：以「重建脚本 + 校验报告」替代文件推送（R-V88-031） | 三方 | 流程文档化 |
+
+> ⚠️ **重要提示**：本轮已证明 **DSHB 数据侧问题全部解决**（独立库 ✅ / 隔离 ✅ / 双键映射 77.06% ✅ / 0 错误 ✅）。**剩余唯一阻断在引擎适配层**，继续要求 DSHB 灌库无意义。
+
+### 11.9 合并统计更新
+
+| 等级 | 原（§10） | 现 | 变化 |
+|------|:---------:|:--:|:----:|
+| Critical | 1 | 1 | — |
+| P1/High | 10 | **11** | +R-V88-030；R-V88-025 关闭（−1） |
+| P2/Medium | 9 | 10 | +R-V88-031 |
+| INFO/Low | 2 | 2 | — |
+| 已关闭 | 2 | **3** | +R-V88-025 |
+| **合计** | **26** | **27** | **+1** |
+
+---
+
 *Document Generated: 2026-10-15 UTC+8*
 *Generated by: HERMEShf Agent*
 *Branch: feature/v88-g1 (BRANCH_LOCKED: TRUE)*
 *Status: V88_PHASE03_MERGED_RISK_LIST=READY*
-*Note: 合并自 DSHB 风险清单（含附录 B）、DSHE 风险清单、HERMEShf 顶层规划 §1.3 与 Phase02 归档风险编号；§8 为 P0-R2 门禁基线工单追加；§9 为 P0 首次整体准入核验工单追加；§10 为 P0 二次准入复跑核验工单追加*
+*Note: 合并自 DSHB 风险清单（含附录 B）、DSHE 风险清单、HERMEShf 顶层规划 §1.3 与 Phase02 归档风险编号；§8 为 P0-R2 门禁基线工单追加；§9 为 P0 首次整体准入核验工单追加；§10 为 P0 二次准入复跑核验工单追加；§11 为 P0 第三次准入复跑核验（schema 修复后）工单追加*
