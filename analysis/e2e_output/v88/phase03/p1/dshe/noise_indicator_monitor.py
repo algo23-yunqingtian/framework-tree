@@ -406,7 +406,9 @@ class NoiseIndicatorMonitor:
         # Extract series from render result
         series_data = self._extract_series_from_render_result(render_result)
 
-        if not series_data:
+        # Check if there is any actual data across all series
+        has_data = any(len(pts) > 0 for _, pts in series_data)
+        if not series_data or not has_data:
             # No data - HIGH noise (structural issue)
             result["noise_level"] = NoiseLevel.HIGH.value
             result["noise_category"] = [NoiseCategory.STRUCTURAL.value]
@@ -984,10 +986,6 @@ class NoiseIndicatorMonitor:
     def _classify_from_metrics(self, metrics):
         # type: (NoiseMetrics) -> NoiseLevel
         """Classify noise level from computed metrics."""
-        # If no data points at all, it's HIGH noise (structural issue)
-        if metrics.count == 0:
-            return NoiseLevel.HIGH
-
         # HIGH noise criteria (any one is sufficient)
         if metrics.cv > self.noise_threshold:
             return NoiseLevel.HIGH
@@ -2234,12 +2232,21 @@ def _run_self_test():
           monitor.classify_noise_level([42.0]) == NoiseLevel.LOW)
     check("Single value cv=0", m["cv"] == 0.0)
 
-    # All zeros
+    # All zeros (long run -> structural noise)
     m = monitor.calculate_noise_metrics([0.0] * 20)
-    check("All zeros -> LOW",
-          monitor.classify_noise_level([0.0] * 20) == NoiseLevel.LOW)
+    check("All zeros (20) -> HIGH (long zero run)",
+          monitor.classify_noise_level([0.0] * 20) == NoiseLevel.HIGH,
+          "(got %s)" % monitor.classify_noise_level([0.0] * 20).value)
     check("All zeros cv=0", m["cv"] == 0.0)
     check("All zeros clustering", m["zero_run_max"] >= 20)
+
+    # Short zeros (below threshold -> LOW)
+    m = monitor.calculate_noise_metrics([0.0] * 4)
+    check("Short zeros (4) -> LOW (below threshold)",
+          monitor.classify_noise_level([0.0] * 4) == NoiseLevel.LOW,
+          "(got %s)" % monitor.classify_noise_level([0.0] * 4).value)
+    check("Short zeros cv=0", m["cv"] == 0.0)
+    check("Short zeros below threshold", m["zero_run_max"] < 5)
 
     # All None (all gaps)
     level = monitor.classify_noise_level([None] * 10)
