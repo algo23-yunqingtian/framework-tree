@@ -308,3 +308,31 @@
 - Phase03原型开发: **待HERMEShf确认后启动** ⏳
 
 **版本状态**: PHASE03_DATA_ALIGN_DONE
+
+## ===== V88 Phase02 收尾修订交付物 MD5（PHASE02_FULLY_CLOSED） =====
+**工单**: V88_PHASE02_HERMESHF_FINAL_REPORT_AMEND_AND_SAMPLE_VERIFY | **BASELINE**: 1a1fcd4 | **AGENT**: HERMEShf
+**生成时间**: 2026-10-15
+
+| # | 文件 | MD5 | 大小(B) |
+|---|------|:---:|:-------:|
+| 1 | audit/总验收报告(含修订附录A) | `BEEE0830DD206D1AAAC3AFC469D612BD` | 28257 |
+| 2 | audit/20项抽样回放验证报告 | `D296767E14E9C0F6F3C288D419252808` | 18973 |
+| 3 | audit/审计汇总(含收尾修订) | `7D54E57339F315C07E89B5EF9C1FCC3A` | 19663 |
+| 4 | audit/监控快照(含v5) | `D9F805351C0CD2F88B74E44B0B6C4902` | 28672 |
+
+### 收尾修订要点
+
+| 项 | 值 |
+|----|----|
+| DSHE 8项差异处理 | 9/9 = 100%（HIGH 4 修正 / MEDIUM 2 澄清 / LOW 3 补充） |
+| S-01~S-20 抽样回放 | 20/20 执行，20/20 渲染成功，0 崩溃，0 placeholder |
+| 渲染时延最大 | 4.63ms（<500ms，余量 99.1%） |
+| 品种覆盖 | 8/8 |
+| **真实数据覆盖率** | **0/20（0%）— 🔴 P1 阻断 D-SRC** |
+| 根因 | api_cache.db 仅 3 行 code='AO'，109 图表指标 ∩ 3 db metric = 0 |
+| 渲染侧可信度 | ✅ 引擎机制可信 / ⚠️ 数据真实性待 Phase03 |
+| 新增风险 | R-V88-013(P1) / R-V88-014(MEDIUM) / R-V88-015(MEDIUM) |
+| 门禁矩阵 | 12/12 PASS + 1 项 P1 遗留 |
+| 门禁新增建议 | D-7 真实数据覆盖率 ≥95% |
+| CRLF 脚本移交 | md5_normalize.py → Phase03-P0 (HERMES-03), 关联 R-V88-009 |
+| 版本状态 | PHASE02_FULLY_CLOSED_WITH_1_P1 |

@@ -664,3 +664,69 @@ V88 Phase02 全链路联合验收：✅ ACCEPT
 PHASE02_ACCEPTED = TRUE
 V88_PHASE03_READY = TRUE
 ```
+
+
+## ===== 快照 v5：Phase02 收尾修订与抽样回放验证（PHASE02_FULLY_CLOSED） =====
+
+**工单**: V88_PHASE02_HERMESHF_FINAL_REPORT_AMEND_AND_SAMPLE_VERIFY
+**时间**: 2026-10-15
+**HEAD**: 1a1fcd4（本地=远端，落后 0）
+**前置**: DSHE 联合验收复核完成（8 项差异 + 20 项抽样用例）/ PHASE02_ACCEPTED
+
+### T0 DSHE 8 项差异处理（9 项含拆分）
+
+| 级别 | 项 | 处理 |
+|---|---|---|
+| HIGH | 图表总数 88 vs 101 | ✅ 统一 101（88 为 Phase01 目标口径） |
+| HIGH | P99 0.414s vs 190.47ms | ✅ 口径标注（串行总时长 / 并发 burst P99） |
+| HIGH | 并发报错率未实测 | ✅ 补实测 0.00%（200 负载） |
+| HIGH | 降级渲染未实测 | ✅ 补实测 16/16 成功，9/9 抽样通过 |
+| MEDIUM | 测试覆盖 61 vs 56 | ✅ 澄清：56 用例 / 614 校验规则 |
+| MEDIUM | E2E 14 vs 56 | ✅ 统一 56（14 为 Phase01 残留） |
+| LOW | 监控大盘 | ✅ 20 指标 + 10 告警 + 10 面板 |
+| LOW | 告警演练 | ✅ 10/10 规则触发，4 档级别 |
+| LOW | 口径对齐 | ✅ 544/544 + 146/146 |
+
+**处理完成率: 9/9 = 100% ✅**
+
+### T1/T2 S-01~S-20 抽样回放（HERMEShf 真实执行 NodeBindingEngine）
+
+| 项 | 实测 | 判定 |
+|---|---|---|
+| 执行率 | 20/20 | ✅ |
+| 渲染成功 | 20/20 | ✅ |
+| 崩溃 / placeholder | 0 / 0 | ✅ |
+| 时延最大 | **4.63ms** | ✅ <500ms（余量 99.1%） |
+| 品种覆盖 | 8/8 | ✅ |
+| source | simulated ×20 | ⚠️ |
+| **真实数据覆盖率** | **0/20（0%）** | 🔴 **P1** |
+
+### 🔴 D-SRC 根因（代码行级定位）
+
+```
+_load_real_data() → 101/101 None
+api_cache.db → indicator_cache 仅 3 行, code='AO'(唯一值1), metric='wr50/wr52/wr56'(唯一值3)
+图表指标 109 ∩ db metric 3 = 0（空集）
+```
+
+DSHB 推送 real=980 = 引擎自计数口径，非图表端渲染到真实数据。两侧 "real" 语义未对齐。
+约束合规：NO_ZHIJI_API_CALL ✅ / NO_MODIFY_V87 ✅ / ⚠️ Phase02 门禁未设"真实数据覆盖率"项 = 设计缺口。
+
+### 新增风险（移交 Phase03-P0）
+
+| 编号 | 级别 | 描述 |
+|---|:---:|---|
+| R-V88-013 | 🔴 **P1** | 真实数据覆盖率 0%（api_cache.db 未灌 8 品种） |
+| R-V88-014 | 🟡 MEDIUM | 6 项 pending 备选指标图表层 0 绑定 |
+| R-V88-015 | 🟡 MEDIUM | DSHB real 与 DSHE source 口径未对齐 |
+
+门禁新增建议：**D-7 真实数据覆盖率 ≥95%**
+
+### 收尾结论
+
+```
+Phase02 渲染引擎机制: ✅ 可信（20/20 回放, 4.63ms, 零崩溃）
+Phase02 渲染数据真实性: ⚠️ 待 Phase03 解决（覆盖率 0%）
+门禁矩阵: 12/12 PASS + 1 项 P1 遗留
+Phase02 状态: PHASE02_FULLY_CLOSED
+```
