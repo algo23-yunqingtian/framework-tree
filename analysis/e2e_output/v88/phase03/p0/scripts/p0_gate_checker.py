@@ -555,13 +555,22 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
         branch="feature/v88-g1",
         generated_at=time.strftime("%Y-%m-%d %H:%M:%S"),
         gate_matrix_ref=os.path.relpath(GATE_MATRIX_MD, REPO_ROOT) if os.path.exists(GATE_MATRIX_MD) else None,
-        main_gate_total=len(GATE_DEFINITIONS_FULL),
-        stage_gate_total=len(STAGE_GATES),
+        # 计数口径：以三方评审门禁矩阵 v88_phase03_gate_matrix.md 为基准
+        # 21 项主门禁 = 数据7(D-1~D-7) + 渲染6(R-1~R-6) + 因子4(F-1~F-4) + 稳定性5(S-1,S-2,S-3,S-4a,S-4b)
+        #   注：check_rpo_split() 将 GATE_DEFINITIONS_FULL 中的单条 S-4 拆分为 S-4a/S-4b 两条
+        #   判定记录，故实际 results 中主门禁为 22 条（含 S-4a+S-4b），矩阵基准仍为 21 项。
+        # 40 项阶段门禁 = P0原型10 + P1仿真12 + P2长稳11 + P3金丝雀8
+        #   注：len(STAGE_GATES)=41 含 P0-9/P0-10 之外的全部阶段门禁，矩阵基准为 40 项。
+        main_gate_total=21,
+        stage_gate_total=40,
+        main_gate_judged=None,
+        stage_gate_judged=None,
         main_gate_scope_note=(
-            "21 项主门禁 = 数据7(D-1~D-7) + 渲染6(R-1~R-6) + 因子4(F-1~F-4) + 稳定性5(S-1~S-3,S-4a/S-4b)"
-            "；S-4a/S-4b 由 check_rpo_split() 专项判定，不重复登记。"),
+            "21 项主门禁（矩阵基准）= 数据7(D-1~D-7) + 渲染6(R-1~R-6) + 因子4(F-1~F-4) + 稳定性5(S-1~S-3,S-4a/S-4b)"
+            "；S-4a/S-4b 由 check_rpo_split() 从单条 S-4 拆分为两条判定记录，故 results 中主门禁实测 22 条，矩阵基准 21 项。"),
         stage_gate_scope_note=(
-            "40 项阶段门禁 = P0原型10 + P1仿真12 + P2长稳11 + P3金丝雀8（S-4a/S-4b 作为主门禁，不计入阶段门禁）"),
+            "40 项阶段门禁（矩阵基准）= P0原型10 + P1仿真12 + P2长稳11 + P3金丝雀8"
+            "；len(STAGE_GATES)=41，其中 S-4a/S-4b 以主门禁形式判定、不重复计入阶段门禁。"),
         results=[], d7_detail=None, p0_9_detail=None,
         p0_10_detail=None, s4_detail=None,
         summary=dict(PASS=0, FAIL=0, NOT_APPLICABLE=0, BLOCKED_PRE_P0=0, UNKNOWN=0),
@@ -713,6 +722,10 @@ def run_all(stage=None, only_gates=None, use_engine=True, quiet=False):
         verdict = "UNKNOWN"
 
     report["verdict"] = verdict
+    # 实际判定条数（results 去重后，主门禁/阶段门禁分列）
+    _ids = [r.gate_id for r in report["results"]]
+    report["main_gate_judged"] = len({i for i in _ids if i.split("-")[0] in ("D", "R", "F", "S")})
+    report["stage_gate_judged"] = len({i for i in _ids if i.startswith("P")})
     report["verdict_note"] = (
         "基线阶段语义：PASS ✅ = 已实测且达标 | FAIL ❌ = 已实测未达标 | "
         "BLOCKED_PRE_P0 🔴 = P0 前置任务型阻断（R-V88-013 D-7 覆盖率 / R-V88-024 CPU 优化，"
@@ -832,8 +845,22 @@ def main():
     ap.add_argument("--save-baseline", action="store_true", help="将基线值写入 p0_baseline_metrics.json")
     args = ap.parse_args()
 
-    only = [g.strip() for g in args.gates.split(",")] if args.gates else None
-    report = run_all(stage=args.stage, only_gates=only, use_engine=not args.no_engine)
+    # JSON 模式下重定向 stdout，屏蔽 NodeBindingEngine 的 print 日志，保持 JSON 纯净
+    _json_mode = args.json
+    _devnull = None
+    _real_stdout = sys.stdout
+    if _json_mode:
+        _devnull = open(os.devnull, "w")
+        sys.stdout = _devnull
+
+    try:
+        only = [g.strip() for g in args.gates.split(",")] if args.gates else None
+        report = run_all(stage=args.stage, only_gates=only, use_engine=not args.no_engine)
+    finally:
+        if _json_mode:
+            sys.stdout.close()
+            sys.stdout = _real_stdout
+
 
     if args.save_baseline:
         bl = dict(
@@ -848,7 +875,10 @@ def main():
             print("[baseline] 已写入 %s" % BASELINE_JSON)
 
     if args.json:
-        print(json.dumps(report, ensure_ascii=False, indent=2, default=str))
+        # GateResult 对象需转为 dict，否则 json.dumps(default=str) 会输出对象 repr
+        out = dict(report)
+        out["results"] = [g.as_dict() for g in report["results"]]
+        print(json.dumps(out, ensure_ascii=False, indent=2, default=str))
     else:
         print(render_text(report))
 
