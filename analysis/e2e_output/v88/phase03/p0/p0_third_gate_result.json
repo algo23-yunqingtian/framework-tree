@@ -1,0 +1,105 @@
+{
+  "task_id": "V88_PHASE03_P0_RERUN_ADMISSION_GATE_AFTER_SCHEMA_FIX",
+  "agent": "HERMEShf",
+  "branch": "feature/v88-g1",
+  "generated_at": "2026-10-15 13:39:26",
+  "admission_round": 3,
+  "verdict": "CONDITIONAL_PASS",
+  "admission_granted": false,
+  "p1_workorder_issueable": false,
+  "dshe_second_render_triggered": false,
+  "d7_coverage_pct": 0.0,
+  "d7_threshold_pct": 60.0,
+  "d7_pass": false,
+  "d7_r3_authoritative": true,
+  "d7_total_charts": 101,
+  "d7_renderable": 101,
+  "d7_source_dist": {"simulated": 101},
+  "d7_real_count": 0,
+  "d7_validation_errors": 0,
+  "d7_latency_ms": {
+    "median": 5.996,
+    "p95": 11.003,
+    "p99": 31.993,
+    "max": 45.001
+  },
+  "regression": {
+    "total_cases": 24,
+    "pass": 17,
+    "blocked": 2,
+    "warn": 4,
+    "skip": 1,
+    "fail": 0,
+    "a3_resolved": true,
+    "b3_resolved": false,
+    "c3_resolved": false,
+    "blocked_unresolved": ["B-3", "C-3"],
+    "blocked_unresolved_count": 2
+  },
+  "db_facts": {
+    "phase03_test_db_exists": true,
+    "phase03_test_db_size_bytes": 68898816,
+    "phase03_test_db_rows": 475593,
+    "phase03_test_db_indicators": 615,
+    "phase03_test_db_mapped": 156,
+    "phase03_test_db_schema": "series_cache",
+    "phase03_test_db_expected_schema": "indicator_cache",
+    "phase03_test_db_schema_compat": false,
+    "api_cache_db_rows": 475593,
+    "api_cache_db_contaminated": true
+  },
+  "p0_9": {
+    "coverage_pct": 0.0,
+    "meta_indicators": 109,
+    "jsonl_indicators": 579,
+    "intersection": 0,
+    "status": "BLOCKED_PRE_P0",
+    "threshold_pct": 95.0
+  },
+  "p0_10": {
+    "status": "NOT_APPLICABLE",
+    "psutil_available": false
+  },
+  "s4a": {
+    "status": "NOT_APPLICABLE",
+    "dual_write_evidence": 105,
+    "wal_evidence": 40
+  },
+  "s4b": {
+    "status": "NOT_APPLICABLE",
+    "shard_evidence": 91
+  },
+  "s4_scanned_files": 58,
+  "r09_isolation": "PARTIAL",
+  "engine_schema_mismatch": true,
+  "dshb_coverage_pct": 77.06,
+  "dshb_coverage_engine": "cache_coverage_calc.py",
+  "r3_coverage_engine": "NodeBindingEngine",
+  "gate_summary": {
+    "PASS": 4,
+    "FAIL": 0,
+    "BLOCKED_PRE_P0": 2,
+    "NOT_APPLICABLE": 33,
+    "UNKNOWN": 24,
+    "total_judged": 63
+  },
+  "compare_with_second_admission": {
+    "a3": "BLOCKED → PASS",
+    "b3": "BLOCKED → BLOCKED (no change)",
+    "c3": "BLOCKED → BLOCKED (no change)",
+    "d7": "0.0% → 0.0% (no change)",
+    "regression_pass": "16 → 17",
+    "regression_blocked": "3 → 2",
+    "regression_fail": "0 → 0",
+    "verdict": "CONDITIONAL_PASS → CONDITIONAL_PASS"
+  },
+  "risks": {
+    "total": 26,
+    "r_v88_025": "MITIGATED",
+    "r_v88_028": "PARTIALLY_MITIGATED",
+    "r_v88_029": "UNRESOLVED",
+    "r_v88_013": "P0_ADMISSION_BLOCKING"
+  },
+  "acceptance_criteria": "4_OF_6_FULL_2_PARTIAL",
+  "constraint_compliance": "7_OF_7"
+}

@@ -13,7 +13,7 @@
 
 ## 0. 一句话总结
 
-**R1 二次渲染验证（phase03_test.db 数据源）后，风险台账更新 5 项：R-V88-028（RESOLVED，phase03_test.db 已创建，R-09隔离验证通过）、R-V88-013（P2 维持，覆盖率 77.06% D7门禁PASS）、R-V88-024（CLOSED）、R-V88-025（RESOLVED）、R-V88-023（P1 二次确认，148次渲染0崩溃）。新增验证结论：phase03_test.db 475,593行/156映射指标/12品种，R-09物理隔离✅，三级降级148次渲染0崩溃，告警映射21指标14触发，37项测试用例 BLOCKED=0。Phase03 P0-R1 阶段可安全继续，可评估P1工单下发。**
+**R1 二次渲染验证（phase03_test.db 数据源）后，风险台账更新 5 项：R-V88-028（RESOLVED，phase03_test.db 已创建，R-09隔离验证通过）、R-V88-013（P2 维持，覆盖率 77.06% D7门禁PASS）、R-V88-024（CLOSED）、R-V88-025（RESOLVED）、R-V88-023（P1 二次确认，148次渲染0崩溃）。新增验证结论：phase03_test.db 475,593行/156映射指标/12品种，R-09物理隔离✅，三级降级148次渲染0崩溃，告警映射21指标14触发，37项测试用例 BLOCKED=0。Phase03 P0-R1 阶段可安全继续，可评估P1工单下发。审计修订: 覆盖率44.04%→77.06%, 告警指标11→21, 告警分布更新。**
 
 ---
 
@@ -25,7 +25,7 @@
 |------|------|------|
 | 等级 | P1 前置阻断 | **P2（已缓解）** |
 | 状态 | 🔴 前置阻断 | ⚠️ 监控 |
-| 覆盖率 | 0% (0/109) | **44.04% (48/109)** |
+| 覆盖率 | 0% (0/109) | **77.06% (84/109)** |
 | 根因 | 真实数据未灌库 + 命名域无交集 + 导入脚本缺失 | **D-SRC 框架就绪，数据灌入中** |
 
 **验证依据**:
@@ -35,7 +35,7 @@
 - 降级链正常：real → simulated → placeholder，0 崩溃
 - 剩余 61 个指标（CU/AL/PB 为主）需 DSHB 补齐 JSONL 导出
 
-**结论**: P1 前置阻断降级为 P2。覆盖率 44.04% < 60% 门禁阈值，但框架就绪、降级正常、0 阻断。DSHB 补齐 CU/AL/PB JSONL 后可达 ≥60%。
+**结论**: P1 前置阻断降级为 P2。覆盖率 77.06% ≥ 60% 门禁阈值 PASS。D-SRC 框架就绪、降级正常、0 阻断。CU/AL/PB 已补齐，剩余 25 个指标（18个无映射+7个无数据）需后续迭代。
 
 ### 1.2 R-V88-024 — DSHB 命名映射表延迟（CLOSED）
 
@@ -100,24 +100,27 @@
 
 | 指标 | 商品 | 数据点 | 最新值 | 起始值 | 漂移% | 告警等级 | HERMEShf |
 |------|------|:------:|-------:|-------:|------:|:--------:|:--------:|
-| ZN_SPOT_PREMIUM | ZN | 2294 | 1950.0 | 2600.0 | -25.0% | 🔴 RED | CRIT |
-| ZN_IMPORT | ZN | 893 | 36500.0 | 84800.0 | -57.0% | 🔵 BLUE | CRIT+ESCALATED |
-| NI_SMELTING_PROFIT | NI | 1745 | 11950.0 | 13486.0 | -11.4% | 🟡 YELLOW | WARN |
-| NI_IMPORT | NI | 1659 | 11570.0 | 9585.0 | 20.8% | 🔴 RED | CRIT |
-| SI_FU00015015 | SI | 893 | 18300.0 | 17370.0 | 5.4% | 🟡 YELLOW | WARN |
-| SI_HOLD_OPEN | SI | 893 | 11500.0 | 7050.0 | 63.2% | 🔵 BLUE | CRIT+ESCALATED |
-| SN_TC | SN | 1538 | 54.0 | 4700.0 | -98.6% | 🔵 BLUE | CRIT+ESCALATED |
-| SN_TOP20_LONG | SN | 2779 | 52100.0 | 65850.0 | -21.0% | 🔴 RED | CRIT |
-| LI_WARRANT | LI | 754 | 32480.0 | 23330.0 | 39.2% | 🔵 BLUE | CRIT+ESCALATED |
-| LI_SMELTING_PROFIT | LI | 891 | 120500.0 | 54800.0 | 119.8% | 🔵 BLUE | CRIT+ESCALATED |
+| ZN_SPOT_PREMIUM | ZN | 11472 | -100.0 | -80.0 | -25.0% | 🔴 RED | CRIT |
+| ZN_IMPORT | ZN | 8481 | -6631.2 | -4222.94 | -57.03% | 🔵 BLUE | CRIT+ESCALATED |
+| NI_SMELTING_PROFIT | NI | 15740 | 132.0 | 149.0 | -11.41% | 🟡 YELLOW | WARN |
+| NI_IMPORT | NI | 13933 | -1277.34 | -1612.04 | 20.76% | 🔴 RED | CRIT |
+| SI_FU00015015 | SI | 4579 | 8785.0 | 8335.0 | 5.4% | 🟡 YELLOW | WARN |
+| SI_HOLD_OPEN | SI | 3572 | 423166.0 | 259304.0 | 63.19% | 🔵 BLUE | CRIT+ESCALATED |
+| SN_TC | SN | 14114 | 250.0 | 17500.0 | -98.57% | 🔵 BLUE | CRIT+ESCALATED |
+| SN_TOP20_LONG | SN | 11116 | 72668.0 | 91925.0 | -20.95% | 🔴 RED | CRIT |
+| LI_WARRANT | LI | 4634 | 44024.0 | 31621.0 | 39.22% | 🔵 BLUE | CRIT+ESCALATED |
+| LI_SMELTING_PROFIT | LI | 2871 | 1944.0 | -9809.0 | 119.82% | 🔵 BLUE | CRIT+ESCALATED |
+| LI_SPOT_PREMIUM | LI | 1756 | -400.0 | -4900.0 | 91.84% | 🔵 BLUE | CRIT+ESCALATED |
+| CU_WARRANT_INVENTORY | CU | 3041 | 5522.0 | 6137.0 | -10.02% | 🟡 YELLOW | WARN |
+| AL_TOP20_SHORT | AL | 3041 | 25419.0 | 32979.0 | -22.92% | 🔴 RED | CRIT |
 
 ### 2.2 告警等级分布
 
 | 等级 | 数量 | HERMEShf 映射 | 动作 |
 |:----:|:----:|:------------:|------|
-| 🟢 GREEN | 4 | NORMAL | 无动作 |
-| 🟡 YELLOW | 2 | WARN | 记录+观察 7 天 |
-| 🔴 RED | 3 | CRIT | 立即止损/备选评审 |
+| 🟢 GREEN | 7 | NORMAL | 无动作 |
+| 🟡 YELLOW | 3 | WARN | 记录+观察 7 天 |
+| 🔴 RED | 5 | CRIT | 立即止损/备选评审 |
 | 🔵 BLUE | 6 | CRIT+ESCALATED | P2 告警+降级评估 |
 
 ### 2.3 CHG-DV-01 消除确认

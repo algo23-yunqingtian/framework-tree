@@ -18,12 +18,14 @@
 | 8 | `v88_phase03_p0_gate_baseline_report.md` | `2F452D994FBEC8CA8F10CB74C9E96810` | 21039 |
 | 9 | `v88_phase03_p0_overall_admission_report.md` | `81BB1DD42EB0AE3F862AB9AD937C8757` | 17615 |
 | 10 | `v88_phase03_p0_rerun_admission_report.md` | `7215E4108ADF959097BC82FE8C2736DB` | 13661 |
-| 11 | `v88_phase03_p0_rerun_real_render_verify.py` | TBD | 68000 | DSHE二次真实渲染验证脚本(37项用例+降级压测+告警验证) |
-| 12 | `v88_phase03_p0_rerun_real_render_verify_report.md` | TBD | 12000 | 二次渲染验证报告(phase03_test.db数据源) |
-| 13 | `v88_phase03_p0_rerun_real_render_metrics.json` | TBD | 39000 | 二次渲染原始指标JSON(37项用例+37图表记录) |
-| 14 | `v88_phase03_visual_risk_list.md` | TBD | 9000 | 更新版风险台账(R-V88-028 RESOLVED) |
-| 15 | `v88_phase03_p0_render_engine.py` | TBD | 28000 | 渲染引擎(DB路径不回退修复+mapping_applied初始化修复) |
-| 16 | `phase03_test.db` | N/A | 66000000 | Phase03独立测试库(R-09隔离,475,593行) |
+| 11 | `v88_phase03_p0_rerun_real_render_verify.py` | `08D1AC2175D948219678C37F90DB50B8` | 72825 | DSHE二次真实渲染验证脚本(37项用例+降级压测+告警验证) |
+| 12 | `v88_phase03_p0_rerun_real_render_verify_report.md` | `C38F92473F9DA9BC7F5B6988DDA034D5` | 12572 | 二次渲染验证报告(phase03_test.db数据源) |
+| 13 | `v88_phase03_p0_rerun_real_render_metrics.json` | `63C10EA57FD753818180326C749D3A75` | 43270 | 二次渲染原始指标JSON(37项用例+37图表记录) |
+| 14 | `v88_phase03_visual_risk_list.md` | `2DDB8205E52B40526C041EBB704EE35D` | 9912 | 更新版风险台账(R-V88-028 RESOLVED+审计修订) |
+| 15 | `v88_phase03_p0_render_engine.py` | `BBEB478C2961F459E1FD98D65DF2F22F` | 28685 | 渲染引擎(DB路径不回退修复+mapping_applied初始化修复) |
+| 16 | `phase03_test.db` | N/A | 68898816 | Phase03独立测试库(R-09隔离,475,593行) |
+| 17 | `v88_phase03_p0_dshe_artifact_audit_report.md` | `9273E264EACB9CF7DABC5732C2EF2BB9` | 19713 | DSHE交付物交叉审计报告(审计新增) |
+| 18 | `v88_phase03_p0_review_slide_snippet.md` | `7EEBFCF62A01B700B9B4E908669AB72A` | 8763 | 终审评审摘要素材(审计新增) |
 
 > **MD5 口径**: LF 规范化后计算（顶层规划 §1.2 规范）。
 > **NO_OVERWRITE**: Phase02 / Phase03-review 既有资产 MD5 零修改（`v88_phase03_merged_risk_list.md` §8/§9/§10 为 append-only 追加）。
