@@ -1,0 +1,11 @@
+
+========================================================================
+[2026-10-15 19:44:18 CST] BLOCKER_MONITOR
+[GATE] ❌ 门禁复算失败: gate_checker_failed: Command '['python3', '/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p0/scripts/p0_gate_checker.py', '--json']' returned non-zero exit status 2.
+
+========================================================================
+[2026-10-15 19:45:47 CST] BLOCKER_MONITOR
+[GATE] P0-9-AUDIT   FAIL | 自报1份 | 独立复算 89.9083% (交集98/109) | 衍生品命中 48/59
+[GATE] P0-12        FAIL | 已交付但口径不符（无全链路优化后数值）
+[GATE] P0-13        PASS | 噪声率 9.5432% (观测 未声明/7 天, 阈值 <10%)
+[GATE] P0-14        PASS | 实测 674 指标 (映射 667, 行 590411, 达标率 374.4444%)

@@ -29,9 +29,13 @@ set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../../../../.." && pwd)"
 P0_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+P1_SCRIPT_DIR="$(cd "$SCRIPT_DIR/../p1/scripts" && pwd)"
 GATE_CHECKER="$SCRIPT_DIR/p0_gate_checker.py"
 REGRESSION_SUITE="$SCRIPT_DIR/p0_full_regression_suite.py"
 REBUILD_SCRIPT="$SCRIPT_DIR/import_all_to_testdb.py"
+# P1 派生指标重建脚本（R-V88-033）：基础重建后必须立即调用，
+# 否则 59 项派生指标丢失、库回退到 615 指标口径（P1 BLOCKER_RESOLVE T2）。
+DERIVE_SCRIPT="$P1_SCRIPT_DIR/derive_indicators.py"
 TESTDB="$P0_DIR/phase03_test.db"
 TESTDB_DB_REL="analysis/e2e_output/v88/phase03/p0/phase03_test.db"
 OUT_DIR="$P0_DIR"
@@ -99,9 +103,10 @@ fi
 
 # -----------------------------------------------------------------------------
 # 1. 重建 phase03_test.db（R-V88-031：不入库，运行时重建）
+#    + 1b 重建派生指标（R-V88-033 / P1 BLOCKER_RESOLVE T2）
 # -----------------------------------------------------------------------------
 echo ""
-echo "[1/5] 重建 phase03_test.db"
+echo "[1/5] 重建 phase03_test.db（含 59 项派生指标）"
 if [ "$SKIP_REBUILD" -eq 0 ]; then
   rm -f "$TESTDB"
   REBUILD_T0=$(date +%s)
@@ -109,7 +114,7 @@ if [ "$SKIP_REBUILD" -eq 0 ]; then
   RB_EXIT=$?
   REBUILD_T1=$(date +%s)
   REBUILD_ELAPSED=$((REBUILD_T1 - REBUILD_T0))
-  echo "  exit=$RB_EXIT  elapsed=${REBUILD_ELAPSED}s  log=p0_${TAG}_rebuild.log"
+  echo "  [1a] 基础库 exit=$RB_EXIT  elapsed=${REBUILD_ELAPSED}s  log=p0_${TAG}_rebuild.log"
   if [ "$RB_EXIT" -ne 0 ]; then
     echo "❌ 重建失败（exit=$RB_EXIT），详见 $OUT_DIR/p0_${TAG}_rebuild.log"
     tail -15 "$OUT_DIR/p0_${TAG}_rebuild.log"
@@ -119,11 +124,58 @@ if [ "$SKIP_REBUILD" -eq 0 ]; then
     echo "❌ 重建完成但 phase03_test.db 未生成"
     exit 3
   fi
+  DB_SIZE_BEFORE_DERIVE=$(stat -c%s "$TESTDB" 2>/dev/null || echo 0)
+  echo "  [1a] 基础库重建成功: $DB_SIZE_BEFORE_DERIVE 字节 (${REBUILD_ELAPSED}s)"
+
+  # ---- [1b] 重建 59 项派生指标（P1 BLOCKER_RESOLVE T2 修复）----
+  # 陷阱「库状态回退」：import_all_to_testdb.py 是 P0 版基础重建脚本，
+  # 不含 R-V88-033 的 59 项派生指标。一键复测只跑基础重建会回退到
+  # 615 指标口径，导致 P0-9 分母切换前提（衍生品命中 ≥59）与
+  # 扩量门禁（≥180）均失真。此处必须在重建后立即调用 P1 派生脚本。
+  if [ -f "$DERIVE_SCRIPT" ]; then
+    DERIVE_T0=$(date +%s)
+    python3 "$DERIVE_SCRIPT" --db "$TESTDB" > "$OUT_DIR/p0_${TAG}_derive.log" 2>&1
+    DV_EXIT=$?
+    DERIVE_T1=$(date +%s)
+    DERIVE_ELAPSED=$((DERIVE_T1 - DERIVE_T0))
+    echo "  [1b] 派生指标 exit=$DV_EXIT  elapsed=${DERIVE_ELAPSED}s  log=p0_${TAG}_derive.log"
+    if [ "$DV_EXIT" -ne 0 ]; then
+      echo "❌ 派生指标重建失败（exit=$DV_EXIT），详见 $OUT_DIR/p0_${TAG}_derive.log"
+      tail -15 "$OUT_DIR/p0_${TAG}_derive.log"
+      exit 3
+    fi
+  else
+    echo "  ⚠️  [1b] 派生脚本缺失: $DERIVE_SCRIPT（跳过派生重建，P0-9/扩量门禁可能失真）"
+  fi
+
   DB_SIZE=$(stat -c%s "$TESTDB" 2>/dev/null || echo 0)
-  echo "  ✅ 重建成功: $DB_SIZE 字节 (${REBUILD_ELAPSED}s, 阈值 <300s: $([ "$REBUILD_ELAPSED" -lt 300 ] && echo PASS || echo FAIL))"
+  TOTAL_ELAPSED=$(( $(date +%s) - REBUILD_T0 ))
+  # 校验派生是否生效：库行数须 > 615 基础口径（派生后应达 674 指标量级）
+  DERIVE_ROWS=$(python3 - "$TESTDB" <<'PY'
+import sqlite3, sys
+try:
+    c = sqlite3.connect(sys.argv[1])
+    r = c.execute("SELECT COUNT(*) FROM indicator_cache").fetchone()[0]
+    inds = c.execute("SELECT COUNT(DISTINCT code) FROM indicator_cache").fetchone()[0]
+    c.close()
+    print("%d %d" % (r, inds))
+except Exception as e:
+    print("ERR %s" % e)
+PY
+  )
+  DERIVE_ROWS_N="${DERIVE_ROWS%% *}"
+  DERIVE_INDS="${DERIVE_ROWS##* }"
+  echo "  [1b] 重建后库规模: rows=${DERIVE_ROWS_N}  distinct_codes=${DERIVE_INDS}"
+  if [ "${DERIVE_ROWS_N:-0}" = "ERR" ]; then
+    echo "❌ 派生后库不可读: ${DERIVE_INDS}"
+    exit 3
+  fi
+  echo "  ✅ 重建+派生完成: $DB_SIZE 字节 (${TOTAL_ELAPSED}s, 阈值 <600s: $([ "$TOTAL_ELAPSED" -lt 600 ] && echo PASS || echo FAIL))"
 elif [ -f "$TESTDB" ]; then
   echo "  ⏭  跳过重建（--skip-rebuild），复用现有: $(stat -c%s "$TESTDB") 字节"
   DB_SIZE=$(stat -c%s "$TESTDB")
+  echo "  ⚠️  复用库未经本脚本派生校验；若该库为 P0 基础口径（615 指标），"
+  echo "      P0-9 分母切换前提将失真。确认库为 P1 口径可忽略此提示。"
 else
   echo "❌ 无可用 phase03_test.db 且要求跳过重建"
   exit 3

@@ -1,0 +1,177 @@
+{
+  "task_id": "V88_PHASE03_P1_HERMES_FOLLOWUP_BLOCKER_RESOLVE_JOB",
+  "agent": "HERMEShf",
+  "branch": "feature/v88-g1",
+  "generated_utc8": "2026-10-15 19:40:53",
+  "purpose": "扩展门禁交付物候选路径，消除「文件已产出但门禁无法识别」的假悬置（假 UNKNOWN 掩盖真实阻断）。本配置为 p0_gate_checker.py::_p1_artifact_paths() 的机器可读快照，两者须保持同步。",
+  "code_source_of_truth": "analysis/e2e_output/v88/phase03/p0/scripts/p0_gate_checker.py::_p1_artifact_paths()",
+  "resolution_note": "P0-9-AUDIT 审计源从 glob 隐式发现（跨 P0/P1 混扫、取 mtime 最新）改为 p0_9_mapping 显式候选顺序（P1 > P0），避免 DSHB P09FIX 只更新 P1 目录时 glob 取到 P0 旧版产生口径漂移。",
+  "gates": {
+    "cpu_compare": {
+      "gate_id": "P0-12",
+      "priority": "结构化 JSON（权威）> md 报告（证据定位）",
+      "candidates": [
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/p0_10_cpu_optimization_compare.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/cpu_optimization_comparison.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/cpu_optimization_compare.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/p0_10_cpu_compare.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/p0_10_cpu_optimization_compare.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/cpu_optimization_comparison.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/cpu_optimization_compare.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/cpu_peak_pct.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/longrun_perf_results.json",
+          "exists": true
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/cpu_baseline_p1_results.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/cpu_baseline_results.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/cpu_baseline_p1_results.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p0/cpu_baseline_p1_results.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p0/cpu_optimization_comparison.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p0/cpu_peak_pct.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/v88_phase03_p1_cpu_baseline_contrast_report.md",
+          "exists": true
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_cpu_baseline_report.md",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/p0_10_cpu_compare.json",
+          "exists": false
+        }
+      ]
+    },
+    "noise_rate": {
+      "gate_id": "P0-13",
+      "candidates": [
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/noise_rate_data.json",
+          "exists": true
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/alert_noise_rate_report.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/noise_rate_report.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/noise_rate_data.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshe/noise_indicator_results.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/hermes/alert_noise_rate_report.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/hermes/alert_noise_rate_7d.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p0/alert_noise_rate_7d.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/noise_rate_report.json",
+          "exists": false
+        }
+      ]
+    },
+    "expansion": {
+      "gate_id": "P0-14",
+      "candidates": [
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_base_indicator_expansion.md",
+          "exists": true
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/expansion_batch_report.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/p1_expansion_180_report.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/scripts/derived_indicator_stats.json",
+          "exists": true
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/expansion_report.json",
+          "exists": false
+        }
+      ]
+    },
+    "p0_9_mapping": {
+      "gate_id": "P0-9-AUDIT",
+      "note": "新增类目（BLOCKER_RESOLVE T1）；无候选存在时兜底回退 glob",
+      "candidates": [
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_metric_indicator_code_mapping.json",
+          "exists": true
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/dshb/p09_fix_metric_indicator_code_mapping.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p1/p0/v88_phase03_p0_metric_indicator_code_mapping.json",
+          "exists": false
+        },
+        {
+          "path": "/home/ubuntu/framework-tree/analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_metric_indicator_code_mapping.json",
+          "exists": true
+        }
+      ]
+    }
+  }
+}

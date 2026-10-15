@@ -794,17 +794,47 @@ P1_CPU_TARGET_PCT = 1.75           # P0-10 CPU 优化目标（沿用 CHG-08）
 # 路径与 P1_MAIN 交付实际落盘对齐（DSHB/DSHE 主任务 commit 624e2b1 / 7cbd5a4）。
 # 每类候选路径按优先级排列：结构化 JSON 优先（权威），其次 md 报告（需显式声明口径）。
 def _p1_artifact_paths(repo_root=REPO_ROOT):
+    """
+    P1 门禁交付物候选路径（DSHB/DSHE/HERMEShf 落盘后自动被拾取）。
+
+    P1 BLOCKER_RESOLVE 更新（TASK: V88_PHASE03_P1_HERMES_FOLLOWUP_BLOCKER_RESOLVE_JOB / T1）：
+    陷阱「交付物候选路径不一致」—— DSHB/DSHE 实际落盘文件名与门禁预设候选路径不一致，
+    导致「文件已产出但门禁无法识别」的假悬置（假 UNKNOWN，掩盖真实阻断）。
+
+    加固措施：
+      ① cpu_compare 补齐 DSHE 实际落盘文件 longrun_perf_results.json /
+         collect_cpu_baseline_p1.py 产出，以及 dshb/dshe 两层的
+         p0_10_cpu_*.json / cpu_*.json 变体命名（大小写与下划线变体全覆盖）。
+      ② 新增 p0_9_mapping 类目 —— P0-9-AUDIT 审计源路径独立配置，
+         与 check_naming_map() 的 _latest_mapping_json() 选取逻辑对齐，
+         使 P0-9-AUDIT 不依赖 glob 隐式发现（glob 跨 P0/P1 混扫会产生
+         「扫到多份、取到最旧」的口径漂移）。
+      ③ 每类候选路径按优先级排列：结构化 JSON（权威）> md 报告（证据定位）。
+         md 报告置末位，仅作「已交付但口径不符」的证据定位，不作数值判定源。
+    """
     base = os.path.join(repo_root, "analysis", "e2e_output", "v88", "phase03")
     p1 = os.path.join(base, "p1")
     return dict(
         cpu_compare=[
+            # ---- 权威源：结构化 JSON（DSHB/DSHE P0-10 专用优化前后对比）----
             os.path.join(p1, "dshb", "p0_10_cpu_optimization_compare.json"),
             os.path.join(p1, "dshb", "cpu_optimization_comparison.json"),
             os.path.join(p1, "dshb", "cpu_optimization_compare.json"),
-            os.path.join(p1, "dshe", "cpu_optimization_comparison.json"),
+            os.path.join(p1, "dshb", "p0_10_cpu_compare.json"),
             os.path.join(p1, "dshe", "p0_10_cpu_optimization_compare.json"),
+            os.path.join(p1, "dshe", "cpu_optimization_comparison.json"),
+            os.path.join(p1, "dshe", "cpu_optimization_compare.json"),
+            os.path.join(p1, "dshe", "cpu_peak_pct.json"),
+            # ---- DSHE 实际落盘：长稳/基线采集产物（实测确认存在）----
+            os.path.join(p1, "dshe", "longrun_perf_results.json"),
             os.path.join(p1, "dshe", "cpu_baseline_p1_results.json"),
-            # md 报告（末位候选，仅作「已交付但口径不符」的证据定位）
+            os.path.join(p1, "dshe", "cpu_baseline_results.json"),
+            os.path.join(p1, "dshb", "cpu_baseline_p1_results.json"),
+            # ---- 阶段产物目录（phase03/p0 下门禁脚本自采基线）----
+            os.path.join(base, "p0", "cpu_baseline_p1_results.json"),
+            os.path.join(base, "p0", "cpu_optimization_comparison.json"),
+            os.path.join(base, "p0", "cpu_peak_pct.json"),
+            # ---- md 报告（末位候选，仅作「已交付但口径不符」的证据定位）----
             os.path.join(p1, "dshe", "v88_phase03_p1_cpu_baseline_contrast_report.md"),
             os.path.join(p1, "dshb", "v88_phase03_p1_cpu_baseline_report.md"),
             os.path.join(p1, "p0_10_cpu_compare.json"),
@@ -814,8 +844,10 @@ def _p1_artifact_paths(repo_root=REPO_ROOT):
             os.path.join(p1, "dshb", "alert_noise_rate_report.json"),
             os.path.join(p1, "dshb", "noise_rate_report.json"),
             os.path.join(p1, "dshe", "noise_rate_data.json"),
+            os.path.join(p1, "dshe", "noise_indicator_results.json"),
             os.path.join(p1, "hermes", "alert_noise_rate_report.json"),
             os.path.join(p1, "hermes", "alert_noise_rate_7d.json"),
+            os.path.join(base, "p0", "alert_noise_rate_7d.json"),
             os.path.join(p1, "noise_rate_report.json"),
         ],
         expansion=[
@@ -824,6 +856,16 @@ def _p1_artifact_paths(repo_root=REPO_ROOT):
             os.path.join(p1, "dshb", "p1_expansion_180_report.json"),
             os.path.join(p1, "scripts", "derived_indicator_stats.json"),
             os.path.join(p1, "expansion_report.json"),
+        ],
+        # ---- P0-9-AUDIT 审计源（P1 BLOCKER_RESOLVE 新增，T0/T1）----
+        # 陷阱：原实现用 glob 跨 phase03/** 混扫 *_metric_indicator_code_mapping.json，
+        # P0 版与 P1 版同名并存时取「mtime 最新」—— 若 DSHB P09FIX 只更新了 P1 目录，
+        # glob 仍可能先扫到 P0 旧版产生口径漂移。此处显式列出 P1 > P0 的候选顺序。
+        p0_9_mapping=[
+            os.path.join(p1, "dshb", "v88_phase03_p1_metric_indicator_code_mapping.json"),
+            os.path.join(p1, "dshb", "p09_fix_metric_indicator_code_mapping.json"),
+            os.path.join(p1, "p0", "v88_phase03_p0_metric_indicator_code_mapping.json"),
+            os.path.join(base, "p0", "v88_phase03_p0_metric_indicator_code_mapping.json"),
         ],
     )
 
@@ -1252,19 +1294,28 @@ def audit_self_reported_p09(repo_root=REPO_ROOT):
     """
     审计各交付方自报的 P0-9 覆盖率是否与独立复算一致。
 
+    P1 BLOCKER_RESOLVE 加固（TASK: V88_PHASE03_P1_HERMES_FOLLOWUP_BLOCKER_RESOLVE_JOB / T0）：
+    原实现（FOLLOWUP 版）依赖 glob 隐式发现映射清单，存在两类盲区：
+      ① glob 跨 P0/P1 混扫，可能取到最旧版本造成口径漂移；
+      ② 未检测「自报分子恒等分母但分母≠109」的变体（如 min(N,50) 型）。
+    本版改用 _p1_artifact_paths()["p0_9_mapping"] 显式候选顺序取值，并新增
+    IDENTITY_FORM 变体检测（分子==分母且 distinct 数远超分母时为恒真上界）。
+
     扫描 DSHB P0/P1 映射清单中的 `p0_9` 自报块，与 check_naming_map()
-    独立复算结果比对。检测三类异常：
-      ORPHAN_NUMERATOR      —— 自报分子 = min(N, 分母) 型恒真上界（197→109）
-      DIVERGENCE            —— 自报覆盖率与独立复算显著偏离（>1pp）
-      DENOMINATOR_NOT_READY —— 自报已切分母 109 但衍生品命中未达 59 项
+    独立复算结果比对。检测四类异常：
+      ORPHAN_NUMERATOR       —— 自报分子 = min(N, 分母) 型恒真上界（197→109）
+      IDENTITY_FORM          —— 分子==分母但 distinct_mapped_ids >> 分母（分母≠109 的变体）
+      DIVERGENCE             —— 自报覆盖率与独立复算显著偏离（>1pp）
+      DENOMINATOR_NOT_READY  —— 自报已切分母 109 但衍生品命中未达 59 项
 
     返回 dict(self_reports=[...], violations=[...], status, ...)
     """
-    import glob
     res = dict(gate_id="P0-9-AUDIT", status="PASS",
                self_reports=[], violations=[], independent=None,
                mapping_sources_scanned=[], rules_enforced=(
-                   "独立复算 meta∩mapped / min分子上界检测 / 分母切换前提核验"))
+                   "独立复算 meta∩mapped / min分子上界检测(ORPHAN_NUMERATOR) / "
+                   "恒等式变体检测(IDENTITY_FORM) / 分母切换前提核验(DENOMINATOR_NOT_READY) / "
+                   "覆盖率偏离(DIVERGENCE)"))
     ind = check_naming_map(include_derivatives=True)
     res["independent"] = dict(
         coverage_pct=ind.get("coverage_pct"),
@@ -1276,10 +1327,20 @@ def audit_self_reported_p09(repo_root=REPO_ROOT):
         denominator_mode=ind.get("denominator_mode"),
         mapping_has_mapping_count=ind.get("mapping_has_mapping_count"))
 
-    base = os.path.join(repo_root, "analysis", "e2e_output", "v88", "phase03")
-    cands = sorted(glob.glob(os.path.join(base, "**", "*_metric_indicator_code_mapping.json"),
-                             recursive=True),
-                   key=lambda x: os.path.getmtime(x), reverse=True)
+    cands = []
+    _paths = _p1_artifact_paths(repo_root).get("p0_9_mapping", [])
+    _seen = set()
+    for p in _paths:
+        if os.path.exists(p):
+            _seen.add(p)
+            cands.append(p)
+    # 兜底：若显式候选全部缺失，才回退 glob（保持向后兼容）
+    if not cands:
+        import glob
+        base = os.path.join(repo_root, "analysis", "e2e_output", "v88", "phase03")
+        cands = sorted(glob.glob(os.path.join(base, "**", "*_metric_indicator_code_mapping.json"),
+                                 recursive=True),
+                       key=lambda x: os.path.getmtime(x), reverse=True)
     for p in cands:
         rel = os.path.relpath(p, repo_root)
         res["mapping_sources_scanned"].append(rel)
@@ -1310,14 +1371,26 @@ def audit_self_reported_p09(repo_root=REPO_ROOT):
                 "自报覆盖率 %.2f%% 虚高，与 meta 侧实际可映射数无关"
                 % (_num, _den, _dmi, ind["intersection_count"],
                    sp.get("coverage_pct") or 0))
-        # 检测②：覆盖率偏离
+        # 检测②（BLOCKER_RESOLVE 新增）：恒等式变体 —— 分子==分母 且
+        # distinct_mapped_ids 远超分母但分母不是 109（如误用 50），
+        # 同样属 min() 恒真上界，只是分母未正确切换，不满足 P0-9 全量口径。
+        elif (_num == _den and _den and _dmi and _dmi > _den
+              and _den != ind.get("full_denominator")
+              and ind.get("full_denominator")):
+            _viol.append(
+                "IDENTITY_FORM: 自报分子 %s = 分母 %s（≠109 全量口径 %s），"
+                "distinct_mapped_ids=%s > 分母，min() 恒真上界变体；"
+                "独立复算真实交集 %d，自报覆盖率 %.2f%% 虚高"
+                % (_num, _den, ind.get("full_denominator"), _dmi,
+                   ind["intersection_count"], sp.get("coverage_pct") or 0))
+        # 检测③：覆盖率偏离
         _ind_pct = ind.get("coverage_raw_pct") or 0
         _rep_pct = sp.get("coverage_pct") or 0
         if abs(_rep_pct - _ind_pct) > 1.0:
             _viol.append(
                 "DIVERGENCE: 自报覆盖率 %.2f%% vs 独立复算 %.2f%%（偏离 %.2fpp，阈值 1pp）"
                 % (_rep_pct, _ind_pct, _rep_pct - _ind_pct))
-        # 检测③：分母已切 109 但衍生品未达标
+        # 检测④：分母已切 109 但衍生品未达标
         if (_den == ind.get("full_denominator") or _den == 109):
             if not ind.get("derivatives_available"):
                 _viol.append(
