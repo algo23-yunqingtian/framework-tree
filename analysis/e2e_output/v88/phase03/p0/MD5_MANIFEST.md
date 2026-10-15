@@ -28,3 +28,25 @@
 > **phase03_test.db 未入库**: AGENTS.md §7 红线「❌ 不推 *.db 到 GitHub」，110,252,032 字节的独立库仅存在于运行时环境。HERMEShf 以 DSHB 的 `import_all_to_testdb.py` 脚本重建方式验证（14.0 秒 / 0 错误 / 0 主键冲突）。此为 R-V88-031 流程风险。
 > **check_html**: 266/266 页 PASS。
 > **协作说明**: DSHB 交付 `import_all_to_testdb.py` / `verify_testdb.py` / `phase03_testdb_coverage_report.json` / `v88_phase03_p0_independent_testdb_ingest_report.md`（commit 21f4820）；DSHE 交付 `v88_phase03_p0_real_render_verify.py` / `v88_phase03_p0_real_render_metrics.json`（commit 3e2cd66）；均不计入本工单 MD5 清单。
+
+---
+
+## DSHB 数据侧归档（V88_PHASE03_P0_DSHB_ARTIFACT_ARCHIVE）
+
+> **追加时间**: 2026-10-15
+> **追加内容**: DSHB P0 阶段收尾，固化重建脚本/校验脚本/映射清单/口径文档/风险台账
+
+| # | 文件 | MD5 | 字节 |
+|---|------|-----|-----:|
+| 14 | `scripts/rebuild_phase03_testdb.py` | `717A0B9BEEDD421F368E9A6D9AE88A1F` | 7464 |
+| 15 | `scripts/verify_testdb.py` | `FE6B5470C6480D220B6A8427D2145467` | 13374 |
+| 16 | `scripts/export_mapping_list.py` | `B6A7E0F5AAAF11CB144C512E2582EE39` | 11479 |
+| 17 | `v88_phase03_p0_metric_caliber_definition.md` | `7415BA6D72D99AE57F5AF6B66A0ABDF2` | 6880 |
+| 18 | `v88_phase03_p0_metric_indicator_code_mapping.md` | `BDF859EDC090C98FF021717DC417A911` | 57561 |
+| 19 | `v88_phase03_p0_metric_indicator_code_mapping.json` | `F91C6FA0AEC2C2C90AC49E0F900BB1A5` | 157757 |
+| 20 | `v88_phase03_data_risk_list.md` | `0F2D27BF437DF9EBADCD2658BFCA8D73` | 6749 |
+| 21 | `v88_phase03_p0_dshb_archive_report.md` | `8C360F1623A1BAF76C53EFC75EC369AF` | 6557 |
+
+> **DSHB 归档核心**: rebuild_phase03_testdb.py 一键重建 + verify_testdb.py 9项校验全通过 + 映射清单615条完整导出 + 口径说明文档清晰区分DB映射命中率(77.06%) vs 引擎D7覆盖率(0%) + 数据侧风险9项全部闭环
+> **R-V88-031 缓解**: phase03_test.db 无需推送，rebuild_phase03_testdb.py 可在任意节点一键复现
+> **数据侧风险闭环**: R-V88-025 CLOSED / R-V88-028 CLOSED / R-V88-029 CLOSED / R-V88-031 MITIGATED

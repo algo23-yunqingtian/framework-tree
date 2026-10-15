@@ -1,0 +1,5550 @@
+{
+  "task_id": "V88_PHASE03_P0_DSHB_ARTIFACT_ARCHIVE",
+  "agent": "DSHB",
+  "branch": "feature/v88-g1",
+  "generated": "2026-10-15T14:06:26.223836",
+  "database": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
+  "summary": {
+    "total_indicators": 615,
+    "mapped": 608,
+    "unmapped": 7,
+    "coverage_pct": 98.86
+  },
+  "mapping_list": [
+    {
+      "indicator_id": "al_00_basis",
+      "indicator_id_mapped": "AL_BASIS",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_00_close_front",
+      "indicator_id_mapped": "AL_FU00014934",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_00_cost_percentile",
+      "indicator_id_mapped": "AL_PRICE_PERCENTILE",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_00_lme_close",
+      "indicator_id_mapped": "LME_AL",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_00_openinterest_front",
+      "indicator_id_mapped": "AL_HOLD_OPEN",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_00_premium",
+      "indicator_id_mapped": "AL_SPOT_PREMIUM",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_24_lme_spread",
+      "indicator_id_mapped": "AL_MONTH_SPREAD",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_25_profit",
+      "indicator_id_mapped": "AL_SMELTING_PROFIT",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_26_long_top20",
+      "indicator_id_mapped": "AL_TOP20_LONG",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "al_26_short_top20",
+      "indicator_id_mapped": "AL_TOP20_SHORT",
+      "commodity": "al",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_21_basis",
+      "indicator_id_mapped": "CU_BASIS",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_21_close_front",
+      "indicator_id_mapped": "CU_FU00014941",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_21_openinterest",
+      "indicator_id_mapped": "CU_HOLD_OPEN",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_21_openinterest_longshort",
+      "indicator_id_mapped": "CU_LONG_SHORT_RATIO",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_22_premium",
+      "indicator_id_mapped": "CU_SPOT_PREMIUM",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_23_comex_close",
+      "indicator_id_mapped": "COMEX_CU",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_23_inv",
+      "indicator_id_mapped": "FU00014813",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_23_lme_close",
+      "indicator_id_mapped": "LME_CU",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_24_openinterest_volume",
+      "indicator_id_mapped": "CU_MONTH_SPREAD",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_25_profit",
+      "indicator_id_mapped": "CU_SMELTING_PROFIT",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_25_profit_percentile",
+      "indicator_id_mapped": "CU_PRICE_PERCENTILE",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_25_tc_conc",
+      "indicator_id_mapped": "CU_COST_PERCENTILE",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_26_openinterest",
+      "indicator_id_mapped": "CU_TOP20_SHORT",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_26_openinterest_top20_front",
+      "indicator_id_mapped": "CU_TOP20_LONG",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_321_util_capacity_util",
+      "indicator_id_mapped": "CU_UTILIZATION",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_41_output",
+      "indicator_id_mapped": "CU_FU00014935",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_42_warrant_reg",
+      "indicator_id_mapped": "CU_WARRANT_INVENTORY",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "cu_43_social_stock",
+      "indicator_id_mapped": "CU_SOCIAL_INV",
+      "commodity": "cu",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j21_close",
+      "indicator_id_mapped": "PB_FU00014946",
+      "commodity": "j21",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j21_oi",
+      "indicator_id_mapped": "PB_HOLD_OPEN",
+      "commodity": "j21",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j22_premium",
+      "indicator_id_mapped": "PB_BASIS",
+      "commodity": "j22",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j22_spot",
+      "indicator_id_mapped": "PB_SPOT_PREMIUM",
+      "commodity": "j22",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j23_lme_cash",
+      "indicator_id_mapped": "LME_PB",
+      "commodity": "j23",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j24_spread_m",
+      "indicator_id_mapped": "PB_MONTH_SPREAD",
+      "commodity": "j24",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j24_spread_s",
+      "indicator_id_mapped": "PB_TERM_STRUCTURE",
+      "commodity": "j24",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "j25_smelt_cost",
+      "indicator_id_mapped": "PB_SMELTING_PROFIT",
+      "commodity": "j25",
+      "has_mapping": true,
+      "record_count": 3041,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_basis",
+      "indicator_id_mapped": "LC_BASIS",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_close",
+      "indicator_id_mapped": "LME_LC",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_close_2",
+      "indicator_id_mapped": "LI_FU00015030",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_openinterest_2",
+      "indicator_id_mapped": "LI_HOLD_OPEN",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_openinterest_3",
+      "indicator_id_mapped": "LI_HOLD_OPEN",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_openinterest_longshort",
+      "indicator_id_mapped": "LC_LONG_SHORT_RATIO",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_premium",
+      "indicator_id_mapped": "LC_SPOT_PREMIUM",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 439,
+      "date_start": "2024-11-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_volume",
+      "indicator_id_mapped": "",
+      "commodity": "li",
+      "has_mapping": false,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_21_warrant",
+      "indicator_id_mapped": "LI_WARRANT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_22_basis_carbonate_battery",
+      "indicator_id_mapped": "LI_BASIS",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_22_premium",
+      "indicator_id_mapped": "SPOT_LICAR",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 439,
+      "date_start": "2024-11-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_22_premium_2",
+      "indicator_id_mapped": "LI_SPOT_PREMIUM",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 439,
+      "date_start": "2024-11-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_22_premium_carbonate_battery",
+      "indicator_id_mapped": "LI_SPOT_PREMIUM",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 439,
+      "date_start": "2024-11-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_22_premium_ratio_carbonate",
+      "indicator_id_mapped": "LI_SPOT_PREMIUM",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 439,
+      "date_start": "2024-11-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_22_premium_ratio_carbonate_2",
+      "indicator_id_mapped": "LI_SPOT_PREMIUM",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 439,
+      "date_start": "2024-11-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_25_profit",
+      "indicator_id_mapped": "LC_SMELTING_PROFIT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 891,
+      "date_start": "2023-02-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_25_profit_2",
+      "indicator_id_mapped": "LI_SMELTING_PROFIT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 660,
+      "date_start": "2024-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_25_profit_3",
+      "indicator_id_mapped": "LI_SMELTING_PROFIT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 660,
+      "date_start": "2024-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_25_profit_4",
+      "indicator_id_mapped": "LI_SMELTING_PROFIT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 660,
+      "date_start": "2024-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_25_profit_carbonate",
+      "indicator_id_mapped": "LI_SMELTING_PROFIT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 891,
+      "date_start": "2023-02-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_26_openinterest_longshort",
+      "indicator_id_mapped": "LI_LONG_SHORT_RATIO",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_26_openinterest_longshort_2",
+      "indicator_id_mapped": "LI_LONG_SHORT_RATIO",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_26_openinterest_top20",
+      "indicator_id_mapped": "LC_TOP20_LONG",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_26_openinterest_top20_2",
+      "indicator_id_mapped": "LC_TOP20_SHORT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_26_openinterest_top20_3",
+      "indicator_id_mapped": "LI_TOP20_LONG",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_26_openinterest_top20_4",
+      "indicator_id_mapped": "LI_TOP20_LONG",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 754,
+      "date_start": "2023-07-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_311_capacity",
+      "indicator_id_mapped": "LI_REFINING_CAPACITY",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_311_capacity_util",
+      "indicator_id_mapped": "LI_UTILIZATION",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_311_output",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "li_311_output_2",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 55,
+      "date_start": "2022-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_312_inv",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 68,
+      "date_start": "2025-04-25",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "li_312_output",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "li_312_output_2",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "li_313_output",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_313_output_2",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "li_313_output_3",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_314_import",
+      "indicator_id_mapped": "LI_IMPORT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 19,
+      "date_start": "2025-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_314_import_2",
+      "indicator_id_mapped": "LI_IMPORT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 16,
+      "date_start": "2021-03-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "li_314_import_3",
+      "indicator_id_mapped": "LI_IMPORT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 16,
+      "date_start": "2021-03-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "li_314_import_4",
+      "indicator_id_mapped": "LI_IMPORT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 16,
+      "date_start": "2021-03-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "li_321_output",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 103,
+      "date_start": "2018-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_321_output_2",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_321_output_3",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_321_output_4",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_321_output_carbonate",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_321_output_carbonate_battery",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 55,
+      "date_start": "2022-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_321_output_carbonate_industrial",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 55,
+      "date_start": "2022-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_323_capacity",
+      "indicator_id_mapped": "LI_REFINING_CAPACITY",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_323_capacity_util",
+      "indicator_id_mapped": "LI_UTILIZATION",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_323_output",
+      "indicator_id_mapped": "LI_REFINING_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_323_output_recycle",
+      "indicator_id_mapped": "LI_RECYCLE_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 103,
+      "date_start": "2018-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_323_output_recycle_carbonate",
+      "indicator_id_mapped": "LI_RECYCLE_OUTPUT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 55,
+      "date_start": "2022-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_324_capacity",
+      "indicator_id_mapped": "LI_REFINING_CAPACITY",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 3,
+      "date_start": "2021-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "li_324_capacity_util",
+      "indicator_id_mapped": "LI_UTILIZATION",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 211,
+      "date_start": "2022-08-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_41_inv",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 18,
+      "date_start": "2025-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_41_inv_carbonate_battery",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 34,
+      "date_start": "2023-10-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_41_inv_carbonate_industrial",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 34,
+      "date_start": "2023-10-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_41_inv_implicit",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 34,
+      "date_start": "2023-10-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_41_warrant",
+      "indicator_id_mapped": "LI_WARRANT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_41_warrant_2",
+      "indicator_id_mapped": "LI_WARRANT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_42_inv_warrant_days",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_42_warrant_carbonate",
+      "indicator_id_mapped": "LI_WARRANT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_42_warrant_carbonate_battery",
+      "indicator_id_mapped": "LI_WARRANT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_42_warrant_carbonate_industrial",
+      "indicator_id_mapped": "LI_WARRANT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_42_warrant_ratio",
+      "indicator_id_mapped": "LI_WARRANT",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 662,
+      "date_start": "2023-12-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "li_43_inv_days",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 34,
+      "date_start": "2023-10-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_43_inv_plant",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_44_inv_carbonate",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 34,
+      "date_start": "2023-10-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_44_inv_carbonate_battery",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 34,
+      "date_start": "2023-10-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_44_inv_carbonate_industrial",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 34,
+      "date_start": "2023-10-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_44_inv_plant",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_44_inv_plant_2",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_44_inv_plant_3",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "li_44_inv_plant_days",
+      "indicator_id_mapped": "LI_SHFE_INV",
+      "commodity": "li",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2024-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_21_close_front",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_far_price",
+      "indicator_id_mapped": "NI_FAR_PRICE",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1659,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_front_price",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1659,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_lme_price",
+      "indicator_id_mapped": "LME_NI",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1862,
+      "date_start": "2018-10-10",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_near_price",
+      "indicator_id_mapped": "NI_NEAR_PRICE",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1659,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_openinterest_front",
+      "indicator_id_mapped": "NI_HOLD_OPEN",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_percentile_openinterest",
+      "indicator_id_mapped": "NI_LONG_SHORT_RATIO",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 346,
+      "date_start": "2020-01-03",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "ni_21_premium",
+      "indicator_id_mapped": "NI_SPOT_PREMIUM",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1655,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_volume_front",
+      "indicator_id_mapped": "",
+      "commodity": "ni",
+      "has_mapping": false,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_volume_top20",
+      "indicator_id_mapped": "",
+      "commodity": "ni",
+      "has_mapping": false,
+      "record_count": 2934,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_21_warrant",
+      "indicator_id_mapped": "NI_WARRANT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2764,
+      "date_start": "2015-04-13",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_basis",
+      "indicator_id_mapped": "NI_BASIS",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2778,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_22_premium",
+      "indicator_id_mapped": "NI_SPOT_PREMIUM",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1655,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_premium_2",
+      "indicator_id_mapped": "NI_SPOT_PREMIUM",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1655,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_premium_percentile",
+      "indicator_id_mapped": "NI_SPOT_PREMIUM",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1655,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_price",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 881,
+      "date_start": "2023-02-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_price_2",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 881,
+      "date_start": "2023-02-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_price_3",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1660,
+      "date_start": "2019-12-31",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_22_price_nickel_powder",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2026-07-10",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_23_premium",
+      "indicator_id_mapped": "LME_NI",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1655,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_24_far_price",
+      "indicator_id_mapped": "NI_FAR_PRICE",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1659,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_24_near_price",
+      "indicator_id_mapped": "NI_MONTH_SPREAD",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1659,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_24_price",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1659,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_24_price_2",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1659,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_25_percentile_price",
+      "indicator_id_mapped": "NI_PRICE_PERCENTILE",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1872,
+      "date_start": "2018-10-10",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_25_percentile_price_2",
+      "indicator_id_mapped": "NI_PRICE_PERCENTILE",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1872,
+      "date_start": "2018-10-10",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_25_price",
+      "indicator_id_mapped": "NI_FU00014982",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1872,
+      "date_start": "2018-10-10",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_25_profit",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_25_profit_2",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_26_openinterest_top20_front",
+      "indicator_id_mapped": "NI_TOP20_LONG",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_26_openinterest_top20_front_2",
+      "indicator_id_mapped": "NI_TOP20_SHORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_26_percentile_openinterest_top2",
+      "indicator_id_mapped": "NI_HOLD_PERCENTILE",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_311_capacity",
+      "indicator_id_mapped": "NI_REFINING_CAPACITY",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_311_capacity_2",
+      "indicator_id_mapped": "NI_REFINING_CAPACITY",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_311_capacity_3",
+      "indicator_id_mapped": "NI_REFINING_CAPACITY",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_311_output",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_311_output_2",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_311_output_3",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_311_output_nickel_ore",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_311_output_nickel_ore_2",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_311_output_nickel_ore_3",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_312_nickel_ore_capacity",
+      "indicator_id_mapped": "NI_REFINING_CAPACITY",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 91,
+      "date_start": "2019-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_312_nickel_ore_capacity_2",
+      "indicator_id_mapped": "NI_REFINING_CAPACITY",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 91,
+      "date_start": "2019-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_312_output",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "ni_312_output_2",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_312_output_3",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_312_output_nickel_ore",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_313_import_2",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_313_output",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_313_output_2",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_output_3",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 32,
+      "date_start": "2018-03-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_output_nickel_ore",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 32,
+      "date_start": "2018-03-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_output_nickel_ore_2",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 32,
+      "date_start": "2018-03-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_output_nickel_ore_3",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 32,
+      "date_start": "2018-03-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_output_nickel_ore_4",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 32,
+      "date_start": "2018-03-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_output_nickel_ore_5",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 32,
+      "date_start": "2018-03-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_313_output_nickel_ore_6",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 32,
+      "date_start": "2018-03-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "ni_314_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 138,
+      "date_start": "2015-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "ni_314_import_2",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_314_import_3",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_314_import_4",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_314_import_5",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 130,
+      "date_start": "2015-06-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_314_import_6",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 71,
+      "date_start": "2015-01-31",
+      "date_end": "2026-04-30"
+    },
+    {
+      "indicator_id": "ni_314_import_7",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 127,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_314_import_8",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 127,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_314_import_9",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_315_profit",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_321_capacity_util",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_321_output",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_321_output_2",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_321_output_3",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_321_output_4",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_321_output_nickel_powder",
+      "indicator_id_mapped": "NI_REFINING_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 79,
+      "date_start": "2020-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_322_util",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 91,
+      "date_start": "2019-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_322_util_2",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_322_util_3",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 36,
+      "date_start": "2023-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_322_util_4",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 103,
+      "date_start": "2018-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_322_util_5",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 103,
+      "date_start": "2018-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_323_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_323_import_2",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_323_import_nickel_powder",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_323_output_recycle",
+      "indicator_id_mapped": "NI_RECYCLE_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_41_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1775,
+      "date_start": "2019-03-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_41_lme_inv",
+      "indicator_id_mapped": "LME_NI_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2954,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-27"
+    },
+    {
+      "indicator_id": "ni_42_ratio",
+      "indicator_id_mapped": "NI_INV_RATIO",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 281,
+      "date_start": "2025-07-21",
+      "date_end": "2026-08-27"
+    },
+    {
+      "indicator_id": "ni_43_inv",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_43_inv_2",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 43,
+      "date_start": "2023-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_43_inv_3",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 43,
+      "date_start": "2023-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_43_inv_4",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_43_inv_implicit",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_43_inv_percentile",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 43,
+      "date_start": "2023-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_44_inv",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_44_inv_2",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_44_inv_3",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_44_inv_4",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_44_inv_5",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_44_inv_6",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_44_inv_days",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_44_inv_percentile",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_45_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_45_import_2",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_45_import_3",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_45_import_4",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_45_inv",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_45_inv_implicit",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_45_inv_implicit_2",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_45_inv_implicit_3",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_45_inv_implicit_percentile",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_45_inv_implicit_ratio",
+      "indicator_id_mapped": "NI_SHFE_INV",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 500,
+      "date_start": "2015-01-30",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_51_util",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_51_util_battery",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_51_util_cons",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_52_output",
+      "indicator_id_mapped": "NI_DOWNSTREAM_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_52_output_2",
+      "indicator_id_mapped": "NI_DOWNSTREAM_OUTPUT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_53_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_53_util",
+      "indicator_id_mapped": "NI_UTILIZATION",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_61_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_61_import_2",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1801,
+      "date_start": "2019-01-02",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "ni_61_import_3",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1775,
+      "date_start": "2019-03-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_61_import_4",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 138,
+      "date_start": "2015-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "ni_61_import_5",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_61_import_6",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 54,
+      "date_start": "2022-02-28",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_61_import_nickel_ore",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2015-06-30",
+      "date_end": "2026-04-30"
+    },
+    {
+      "indicator_id": "ni_61_import_nickel_ore_2",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1801,
+      "date_start": "2019-01-02",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "ni_61_import_nickel_ore_3",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2015-06-30",
+      "date_end": "2026-04-30"
+    },
+    {
+      "indicator_id": "ni_61_import_nickel_ore_4",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_61_import_nickel_ore_5",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 130,
+      "date_start": "2015-06-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_61_import_nickel_powder",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1801,
+      "date_start": "2019-01-02",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "ni_62_import",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1775,
+      "date_start": "2019-03-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_62_import_2",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 130,
+      "date_start": "2015-06-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_62_import_3",
+      "indicator_id_mapped": "NI_IMPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 61,
+      "date_start": "2016-02-29",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_63_export",
+      "indicator_id_mapped": "NI_EXPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_63_export_2",
+      "indicator_id_mapped": "NI_EXPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "ni_63_export_3",
+      "indicator_id_mapped": "NI_EXPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 28,
+      "date_start": "2024-02-29",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "ni_63_export_4",
+      "indicator_id_mapped": "NI_EXPORT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 28,
+      "date_start": "2024-02-29",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "ni_71_cost",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_71_cost_2",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_71_cost_3",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_71_cost_4",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_71_cost_5",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_71_cost_nickel_ore",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 31,
+      "date_start": "2018-12-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "ni_71_cost_nickel_powder",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_71_cost_percentile",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_72_profit",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_72_profit_2",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_72_profit_3",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_72_profit_4",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_72_profit_5",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_72_profit_nickel_powder",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_72_profit_percentile",
+      "indicator_id_mapped": "NI_SMELTING_PROFIT",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 1745,
+      "date_start": "2019-08-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_73_cost",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 2320,
+      "date_start": "2017-02-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_73_cost_2",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_73_cost_3",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "ni_73_cost_4",
+      "indicator_id_mapped": "NI_REFINING_COST",
+      "commodity": "ni",
+      "has_mapping": true,
+      "record_count": 890,
+      "date_start": "2023-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_basis_industrial_si",
+      "indicator_id_mapped": "SI_BASIS",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_close_front_industrial_si",
+      "indicator_id_mapped": "SI_FU00015015",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_openinterest",
+      "indicator_id_mapped": "SI_HOLD_OPEN",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_openinterest_2",
+      "indicator_id_mapped": "SI_HOLD_OPEN",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_openinterest_industrial_si",
+      "indicator_id_mapped": "SI_HOLD_OPEN",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_openinterest_industrial_si_2",
+      "indicator_id_mapped": "SI_HOLD_OPEN",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_openinterest_longshort_indus",
+      "indicator_id_mapped": "SI_LONG_SHORT_RATIO",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_percentile_openinterest_indu",
+      "indicator_id_mapped": "SI_HOLD_PERCENTILE",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_volume_industrial_si",
+      "indicator_id_mapped": "",
+      "commodity": "si",
+      "has_mapping": false,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_21_warrant_industrial_si",
+      "indicator_id_mapped": "SI_SPOT_PREMIUM",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_22_basis_industrial_si",
+      "indicator_id_mapped": "SI_BASIS",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_22_price_industrial_si",
+      "indicator_id_mapped": "SI_FU00015015",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 114,
+      "date_start": "2017-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "si_22_warrant_industrial_si",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_23_close",
+      "indicator_id_mapped": "SI_MONTH_SPREAD",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_23_close_2",
+      "indicator_id_mapped": "SI_FU00015015",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_24_basis_industrial_si",
+      "indicator_id_mapped": "SI_BASIS",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_24_close_far_industrial_si",
+      "indicator_id_mapped": "SI_FU00015015",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_24_close_near_industrial_si",
+      "indicator_id_mapped": "SI_FU00015015",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_24_warrant_industrial_si",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_close_front_polysilicon",
+      "indicator_id_mapped": "LME_SI",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 406,
+      "date_start": "2024-12-26",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_cost_industrial_si",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 187,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_cost_polysilicon",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 148,
+      "date_start": "2023-09-15",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_profit",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_profit_2",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_profit_industrial_si",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_profit_percentile_industrial",
+      "indicator_id_mapped": "SI_PRICE_PERCENTILE",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_25_profit_polysilicon",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 1106,
+      "date_start": "2022-03-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_openinterest_longshort_indus",
+      "indicator_id_mapped": "SI_LONG_SHORT_RATIO",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_openinterest_longshort_top20",
+      "indicator_id_mapped": "SI_TOP20_LONG",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_openinterest_longshort_top20_2",
+      "indicator_id_mapped": "SI_TOP20_SHORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_openinterest_top20",
+      "indicator_id_mapped": "SI_TOP20_LONG",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_openinterest_top20_2",
+      "indicator_id_mapped": "SI_TOP20_SHORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_openinterest_top20_industria",
+      "indicator_id_mapped": "SI_TOP20_LONG",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_openinterest_top20_industria_2",
+      "indicator_id_mapped": "SI_TOP20_SHORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_percentile_openinterest_indu",
+      "indicator_id_mapped": "SI_HOLD_PERCENTILE",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_26_volume_industrial_si",
+      "indicator_id_mapped": "",
+      "commodity": "si",
+      "has_mapping": false,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_311_capacity_util",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 94,
+      "date_start": "2016-08-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_311_output",
+      "indicator_id_mapped": "SI_REFINING_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_311_output_recycle",
+      "indicator_id_mapped": "SI_RECYCLE_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_311_util",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 320,
+      "date_start": "2019-10-11",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_312_capacity",
+      "indicator_id_mapped": "SI_REFINING_CAPACITY",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 120,
+      "date_start": "2016-06-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_312_capacity_util",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_312_capacity_util_2",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 126,
+      "date_start": "2016-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "si_312_import",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_312_import_2",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_312_output_recycle",
+      "indicator_id_mapped": "SI_RECYCLE_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 52,
+      "date_start": "2022-04-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_312_output_recycle_2",
+      "indicator_id_mapped": "SI_RECYCLE_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2015-12-31",
+      "date_end": "2022-12-31"
+    },
+    {
+      "indicator_id": "si_312_util",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_312_util_2",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 363,
+      "date_start": "2019-07-26",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_312_util_3",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 363,
+      "date_start": "2019-07-26",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_314_import",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_314_import_2",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_314_import_3",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 118,
+      "date_start": "2015-03-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_314_import_4",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 118,
+      "date_start": "2015-03-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_314_import_ratio",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 3,
+      "date_start": "2020-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "si_315_capacity_util_industrial_si",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_315_import_industrial_si",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 118,
+      "date_start": "2015-03-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_315_util_industrial_si",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 106,
+      "date_start": "2024-08-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_321_capacity",
+      "indicator_id_mapped": "SI_REFINING_CAPACITY",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_321_capacity_industrial_si",
+      "indicator_id_mapped": "SI_REFINING_CAPACITY",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_321_capacity_polysilicon",
+      "indicator_id_mapped": "SI_REFINING_CAPACITY",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_321_capacity_util_industrial_si",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_321_output_polysilicon",
+      "indicator_id_mapped": "SI_REFINING_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 126,
+      "date_start": "2016-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "si_321_util_industrial_si",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_321_util_polysilicon",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 363,
+      "date_start": "2019-07-26",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_322_util",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_322_util_2",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_322_util_3",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_323_output_recycle_polysilicon",
+      "indicator_id_mapped": "SI_RECYCLE_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 126,
+      "date_start": "2016-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "si_323_recycle_capacity",
+      "indicator_id_mapped": "SI_RECYCLE_CAPACITY",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_323_recycle_capacity_industrial_",
+      "indicator_id_mapped": "SI_RECYCLE_CAPACITY",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_323_recycle_capacity_polysilicon",
+      "indicator_id_mapped": "SI_RECYCLE_CAPACITY",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "si_323_recycle_capacity_util",
+      "indicator_id_mapped": "SI_RECYCLE_UTIL",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_323_util_recycle_industrial_si",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 51,
+      "date_start": "2022-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_323_util_recycle_polysilicon",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 363,
+      "date_start": "2019-07-26",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_324_profit",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_324_profit_2",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_41_inv_polysilicon",
+      "indicator_id_mapped": "SI_SHFE_INV",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 133,
+      "date_start": "2024-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_42_warrant",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_42_warrant_2",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_42_warrant_industrial_si",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_42_warrant_polysilicon",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 343,
+      "date_start": "2025-04-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_42_warrant_ratio_industrial_si",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_44_inv_days_polysilicon",
+      "indicator_id_mapped": "SI_SHFE_INV",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 133,
+      "date_start": "2024-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_44_inv_polysilicon",
+      "indicator_id_mapped": "SI_SHFE_INV",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 133,
+      "date_start": "2024-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_45_inv_implicit_polysilicon",
+      "indicator_id_mapped": "SI_SHFE_INV",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 133,
+      "date_start": "2024-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_45_inv_polysilicon",
+      "indicator_id_mapped": "SI_SHFE_INV",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 133,
+      "date_start": "2024-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_51_cons",
+      "indicator_id_mapped": "SI_CONSUMPTION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 6,
+      "date_start": "2017-12-31",
+      "date_end": "2022-12-31"
+    },
+    {
+      "indicator_id": "si_51_output_polysilicon",
+      "indicator_id_mapped": "SI_DOWNSTREAM_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 126,
+      "date_start": "2016-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "si_51_util",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 106,
+      "date_start": "2024-08-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_51_util_industrial_si",
+      "indicator_id_mapped": "SI_UTILIZATION",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 106,
+      "date_start": "2024-08-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_52_output_polysilicon",
+      "indicator_id_mapped": "SI_DOWNSTREAM_OUTPUT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 126,
+      "date_start": "2016-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "si_61_import",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 118,
+      "date_start": "2015-03-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_2",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_industrial_si",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 118,
+      "date_start": "2015-03-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_industrial_si_2",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_industrial_si_3",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 118,
+      "date_start": "2015-03-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_industrial_si_4",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_polysilicon",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 129,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "si_61_import_polysilicon_2",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_shipment_days",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_61_import_tariff_industrial_si",
+      "indicator_id_mapped": "SI_IMPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_62_export_industrial_si",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_62_export_polysilicon",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_62_export_shipment_days",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_62_export_tariff_industrial_si",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_62_warrant_industrial_si",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_63_export_industrial_si",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_63_export_polysilicon",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_63_export_shipment_days",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_63_export_tariff_industrial_si",
+      "indicator_id_mapped": "SI_EXPORT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "si_63_warrant_industrial_si",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_64_warrant_shipment_industrial_",
+      "indicator_id_mapped": "SI_WARRANT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 774,
+      "date_start": "2023-06-20",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_71_close_front",
+      "indicator_id_mapped": "SI_FU00015015",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 893,
+      "date_start": "2022-12-22",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_71_cost",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 187,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_71_cost_2",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 187,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_71_cost_3",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 187,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_71_cost_industrial_si_2",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 187,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_71_cost_industrial_si_3",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2025-11-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_71_cost_percentile_industrial_s",
+      "indicator_id_mapped": "SI_REFINING_COST",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 187,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_72_profit",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_72_profit_2",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_72_profit_3",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 186,
+      "date_start": "2022-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "si_72_profit_industrial_si",
+      "indicator_id_mapped": "SI_SMELTING_PROFIT",
+      "commodity": "si",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2025-11-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_21_basis",
+      "indicator_id_mapped": "SN_BASIS",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_21_close",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_21_close_2",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_21_close_front",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_21_openinterest",
+      "indicator_id_mapped": "SN_HOLD_OPEN",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 345,
+      "date_start": "2020-01-03",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "sn_21_openinterest_2",
+      "indicator_id_mapped": "SN_HOLD_OPEN",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_21_openinterest_3",
+      "indicator_id_mapped": "SN_LONG_SHORT_RATIO",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 345,
+      "date_start": "2020-01-03",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "sn_21_openinterest_4",
+      "indicator_id_mapped": "SN_HOLD_OPEN",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 345,
+      "date_start": "2020-01-03",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "sn_21_premium",
+      "indicator_id_mapped": "SN_SPOT_PREMIUM",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2834,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_21_volume",
+      "indicator_id_mapped": "",
+      "commodity": "sn",
+      "has_mapping": false,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_22_import",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1587,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_22_premium",
+      "indicator_id_mapped": "SN_MONTH_SPREAD",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1538,
+      "date_start": "2020-05-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_22_premium_2",
+      "indicator_id_mapped": "SN_SPOT_PREMIUM",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1538,
+      "date_start": "2020-05-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_22_premium_3",
+      "indicator_id_mapped": "SN_SPOT_PREMIUM",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1538,
+      "date_start": "2020-05-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_22_premium_4",
+      "indicator_id_mapped": "SN_SPOT_PREMIUM",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1538,
+      "date_start": "2020-05-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_22_price",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1752,
+      "date_start": "2019-04-26",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_23_close",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_23_close_2",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_23_import",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1587,
+      "date_start": "2020-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_23_lme_close",
+      "indicator_id_mapped": "LME_SN",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1122,
+      "date_start": "2022-03-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_23_lme_inv",
+      "indicator_id_mapped": "LME_SN_INV",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 43,
+      "date_start": "2023-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_25_price",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1825,
+      "date_start": "2019-04-15",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_25_recycle_price",
+      "indicator_id_mapped": "SN_RECYCLE_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 821,
+      "date_start": "2023-04-14",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_26_openinterest_top20",
+      "indicator_id_mapped": "SN_TOP20_LONG",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_26_openinterest_top20_2",
+      "indicator_id_mapped": "SN_TOP20_SHORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_26_openinterest_top20_3",
+      "indicator_id_mapped": "SN_TOP20_LONG",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_26_openinterest_top20_4",
+      "indicator_id_mapped": "SN_TOP20_LONG",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_26_openinterest_top20_5",
+      "indicator_id_mapped": "SN_TOP20_LONG",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2779,
+      "date_start": "2015-03-27",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_311_output",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_311_output_2",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_311_output_3",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_311_output_tin_ore",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "sn_311_output_tin_ore_2",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 28,
+      "date_start": "2019-06-30",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_312_output",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_312_output_2",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_312_output_3",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_312_output_4",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_312_output_5",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_312_output_6",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_312_output_ratio",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_312_output_ratio_2",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_312_output_ratio_3",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 101,
+      "date_start": "2018-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_313_import_tin_ore",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_313_output",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 9,
+      "date_start": "2015-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "sn_313_output_tin_ore",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 28,
+      "date_start": "2019-06-30",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_313_tc_tc",
+      "indicator_id_mapped": "SN_TC",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2333,
+      "date_start": "2017-03-09",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_313_tc_tc_2",
+      "indicator_id_mapped": "SN_TC",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2333,
+      "date_start": "2017-03-09",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_314_import",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_314_import_2",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_314_import_3",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_314_import_4",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_314_import_5",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_314_import_tin_ore",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_314_import_tin_ore_2",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 100,
+      "date_start": "2015-08-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "sn_314_import_tin_ore_3",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 104,
+      "date_start": "2015-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "sn_314_import_tin_ore_4",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 106,
+      "date_start": "2017-09-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_314_import_tin_ore_5",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_321_import",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_321_output",
+      "indicator_id_mapped": "SN_REFINING_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_321_util",
+      "indicator_id_mapped": "SN_UTILIZATION",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 64,
+      "date_start": "2021-04-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_321_util_2",
+      "indicator_id_mapped": "SN_UTILIZATION",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 64,
+      "date_start": "2021-04-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_323_import_recycle",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_323_output_recycle",
+      "indicator_id_mapped": "SN_RECYCLE_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_323_output_recycle_2",
+      "indicator_id_mapped": "SN_RECYCLE_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "sn_323_output_recycle_3",
+      "indicator_id_mapped": "SN_RECYCLE_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_323_output_recycle_4",
+      "indicator_id_mapped": "SN_RECYCLE_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_323_recycle_capacity",
+      "indicator_id_mapped": "SN_RECYCLE_CAPACITY",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2015-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "sn_41_lme_inv",
+      "indicator_id_mapped": "LME_SN_INV",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 43,
+      "date_start": "2023-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_41_warrant",
+      "indicator_id_mapped": "SN_WARRANT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 3180,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_42_ratio",
+      "indicator_id_mapped": "SN_INV_RATIO",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2496,
+      "date_start": "2016-07-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_42_warrant",
+      "indicator_id_mapped": "SN_WARRANT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 3185,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_42_warrant_2",
+      "indicator_id_mapped": "SN_WARRANT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 3185,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_43_inv",
+      "indicator_id_mapped": "SN_SHFE_INV",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 333,
+      "date_start": "2020-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_43_inv_2",
+      "indicator_id_mapped": "SN_SHFE_INV",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 333,
+      "date_start": "2020-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_43_inv_plant",
+      "indicator_id_mapped": "SN_SHFE_INV",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2022-11-30",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_43_ratio",
+      "indicator_id_mapped": "SN_INV_RATIO",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2496,
+      "date_start": "2016-07-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_51_cons",
+      "indicator_id_mapped": "SN_CONSUMPTION",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 10,
+      "date_start": "2015-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "sn_51_output",
+      "indicator_id_mapped": "SN_DOWNSTREAM_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_52_output",
+      "indicator_id_mapped": "SN_DOWNSTREAM_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_52_output_2",
+      "indicator_id_mapped": "SN_DOWNSTREAM_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_52_output_3",
+      "indicator_id_mapped": "SN_DOWNSTREAM_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_52_output_4",
+      "indicator_id_mapped": "SN_DOWNSTREAM_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_52_output_5",
+      "indicator_id_mapped": "SN_DOWNSTREAM_OUTPUT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 41,
+      "date_start": "2016-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_61_import",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 79,
+      "date_start": "2020-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_61_import_2",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 79,
+      "date_start": "2020-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_61_import_3",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 79,
+      "date_start": "2020-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_61_import_4",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 79,
+      "date_start": "2020-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_61_import_5",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 9,
+      "date_start": "2015-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "sn_61_import_recycle",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_61_import_recycle_2",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_61_import_recycle_3",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_62_export",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_62_export_3",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_62_export_4",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_62_export_5",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_62_import",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_62_import_2",
+      "indicator_id_mapped": "SN_IMPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "sn_63_export",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_63_export_2",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_63_export_3",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_63_export_4",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_63_export_5",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_63_export_6",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "sn_63_export_ratio",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_63_export_ratio_2",
+      "indicator_id_mapped": "SN_EXPORT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 137,
+      "date_start": "2015-01-31",
+      "date_end": "2026-05-31"
+    },
+    {
+      "indicator_id": "sn_71_cost",
+      "indicator_id_mapped": "SN_REFINING_COST",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1686,
+      "date_start": "2019-11-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_71_cost_2",
+      "indicator_id_mapped": "SN_REFINING_COST",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1686,
+      "date_start": "2019-11-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_71_cost_3",
+      "indicator_id_mapped": "SN_REFINING_COST",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1686,
+      "date_start": "2019-11-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_71_cost_percentile",
+      "indicator_id_mapped": "SN_PRICE_PERCENTILE",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1686,
+      "date_start": "2019-11-06",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_71_tc",
+      "indicator_id_mapped": "SN_TC",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2362,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_71_tc_2",
+      "indicator_id_mapped": "SN_TC",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2362,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_71_tc_3",
+      "indicator_id_mapped": "SN_TC",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2362,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_72_tc",
+      "indicator_id_mapped": "SN_SMELTING_PROFIT",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2362,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_72_tc_2",
+      "indicator_id_mapped": "SN_TC",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 2362,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_73_price",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1825,
+      "date_start": "2019-04-15",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "sn_73_price_2",
+      "indicator_id_mapped": "SN_FU00014952",
+      "commodity": "sn",
+      "has_mapping": true,
+      "record_count": 1825,
+      "date_start": "2019-04-15",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_basis",
+      "indicator_id_mapped": "ZN_BASIS",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2834,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_close",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_close_2",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_close_far",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_close_front",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_close_near",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_import",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2299,
+      "date_start": "2016-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_openinterest",
+      "indicator_id_mapped": "ZN_HOLD_OPEN",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 345,
+      "date_start": "2020-01-03",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "zn_21_premium",
+      "indicator_id_mapped": "ZN_SPOT_PREMIUM",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2294,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_21_volume",
+      "indicator_id_mapped": "",
+      "commodity": "zn",
+      "has_mapping": false,
+      "record_count": 1128,
+      "date_start": "2022-02-28",
+      "date_end": "2026-08-27"
+    },
+    {
+      "indicator_id": "zn_22_lme_inv",
+      "indicator_id_mapped": "LME_ZN_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 43,
+      "date_start": "2023-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_22_premium",
+      "indicator_id_mapped": "ZN_SPOT_PREMIUM",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2295,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_22_premium_2",
+      "indicator_id_mapped": "ZN_SPOT_PREMIUM",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2294,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_22_premium_3",
+      "indicator_id_mapped": "ZN_SPOT_PREMIUM",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2295,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_22_premium_4",
+      "indicator_id_mapped": "ZN_SPOT_PREMIUM",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2294,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_23_close",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_23_close_2",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_23_close_front",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_23_lme_close",
+      "indicator_id_mapped": "LME_ZN",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 1122,
+      "date_start": "2022-03-21",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_24_close_near",
+      "indicator_id_mapped": "ZN_FU00014950",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_25_cost_conc",
+      "indicator_id_mapped": "ZN_REFINING_COST",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 13,
+      "date_start": "2015-06-30",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "zn_25_profit",
+      "indicator_id_mapped": "ZN_SMELTING_PROFIT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 46,
+      "date_start": "2015-03-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "zn_25_profit_2",
+      "indicator_id_mapped": "ZN_SMELTING_PROFIT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 46,
+      "date_start": "2015-03-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "zn_25_profit_3",
+      "indicator_id_mapped": "ZN_SMELTING_PROFIT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 46,
+      "date_start": "2015-03-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "zn_25_profit_percentile",
+      "indicator_id_mapped": "ZN_PRICE_PERCENTILE",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 13,
+      "date_start": "2015-06-30",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "zn_25_tc_conc",
+      "indicator_id_mapped": "ZN_TC",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 946,
+      "date_start": "2022-11-15",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_25_tc_conc_2",
+      "indicator_id_mapped": "ZN_TC",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 1081,
+      "date_start": "2022-04-29",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_26_openinterest",
+      "indicator_id_mapped": "ZN_TOP20_SHORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_26_openinterest_2",
+      "indicator_id_mapped": "ZN_HOLD_OPEN",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_26_openinterest_3",
+      "indicator_id_mapped": "ZN_HOLD_OPEN",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_26_openinterest_top20",
+      "indicator_id_mapped": "ZN_TOP20_LONG",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2833,
+      "date_start": "2015-01-05",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_311_import",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 136,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_311_import_2",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 136,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_311_output",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 138,
+      "date_start": "2015-01-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "zn_311_output_2",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 35,
+      "date_start": "2017-12-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "zn_311_output_3",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_311_output_4",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_311_output_recycle",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_312_import",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_312_import_2",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_312_import_3",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 6,
+      "date_start": "2019-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_312_import_4",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 122,
+      "date_start": "2015-05-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_312_output",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_2",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "zn_312_output_3",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_4",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 9,
+      "date_start": "2015-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_5",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 45,
+      "date_start": "2015-03-31",
+      "date_end": "2026-03-31"
+    },
+    {
+      "indicator_id": "zn_312_output_6",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 9,
+      "date_start": "2015-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_7",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_312_output_8",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 9,
+      "date_start": "2015-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_9",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 9,
+      "date_start": "2015-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_recycle",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_recycle_2",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_recycle_3",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 11,
+      "date_start": "2015-12-31",
+      "date_end": "2025-12-31"
+    },
+    {
+      "indicator_id": "zn_312_output_recycle_4",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_313_output",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_313_output_2",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_313_output_recycle",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_314_import",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2299,
+      "date_start": "2016-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_314_import_2",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 136,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_314_import_3",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_314_import_4",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_314_import_5",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 114,
+      "date_start": "2015-05-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "zn_314_import_6",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 114,
+      "date_start": "2015-05-31",
+      "date_end": "2026-06-30"
+    },
+    {
+      "indicator_id": "zn_315_tc",
+      "indicator_id_mapped": "ZN_TC",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 1081,
+      "date_start": "2022-04-29",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_315_tc_2",
+      "indicator_id_mapped": "ZN_TC",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 1081,
+      "date_start": "2022-04-29",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_315_tc_percentile",
+      "indicator_id_mapped": "ZN_TC",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 1081,
+      "date_start": "2022-04-29",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_321_capacity_util",
+      "indicator_id_mapped": "ZN_UTILIZATION",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_321_import",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 52,
+      "date_start": "2018-07-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_321_import_2",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 52,
+      "date_start": "2018-07-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_321_output",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_321_output_recycle",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_323_import_recycle",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 133,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_323_import_recycle_2",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 133,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_323_import_recycle_3",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2299,
+      "date_start": "2016-12-16",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_323_output",
+      "indicator_id_mapped": "ZN_REFINING_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 91,
+      "date_start": "2019-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_323_output_recycle",
+      "indicator_id_mapped": "ZN_RECYCLE_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_323_recycle_capacity_util",
+      "indicator_id_mapped": "ZN_RECYCLE_UTIL",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_41_inv",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 517,
+      "date_start": "2016-09-23",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_41_inv_2",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 517,
+      "date_start": "2016-09-23",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_41_lme_warrant",
+      "indicator_id_mapped": "LME_ZN_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 3180,
+      "date_start": "2015-01-02",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_42_inv_implicit",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 517,
+      "date_start": "2016-09-23",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_43_inv",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 517,
+      "date_start": "2016-09-23",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_43_inv_2",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 517,
+      "date_start": "2016-09-23",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_43_premium",
+      "indicator_id_mapped": "ZN_INV_RATIO",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 2294,
+      "date_start": "2017-01-03",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_44_inv",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 517,
+      "date_start": "2016-09-23",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_44_inv_2",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 517,
+      "date_start": "2016-09-23",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_44_inv_plant",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 543,
+      "date_start": "2016-01-01",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "zn_44_inv_plant_2",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 543,
+      "date_start": "2016-01-01",
+      "date_end": "2026-08-21"
+    },
+    {
+      "indicator_id": "zn_51_cons",
+      "indicator_id_mapped": "ZN_CONSUMPTION",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_51_cons_2",
+      "indicator_id_mapped": "ZN_CONSUMPTION",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_51_cons_3",
+      "indicator_id_mapped": "ZN_CONSUMPTION",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_51_output",
+      "indicator_id_mapped": "ZN_DOWNSTREAM_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_52_cons",
+      "indicator_id_mapped": "ZN_CONSUMPTION",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 9,
+      "date_start": "2015-12-31",
+      "date_end": "2023-12-31"
+    },
+    {
+      "indicator_id": "zn_52_output",
+      "indicator_id_mapped": "ZN_DOWNSTREAM_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_52_output_battery",
+      "indicator_id_mapped": "ZN_DOWNSTREAM_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_52_util",
+      "indicator_id_mapped": "ZN_UTILIZATION",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 528,
+      "date_start": "2016-07-08",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_52_util_2",
+      "indicator_id_mapped": "ZN_UTILIZATION",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 139,
+      "date_start": "2015-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_61_inv_conc",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 227,
+      "date_start": "2022-04-01",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_62_import",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 52,
+      "date_start": "2018-07-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_62_import_2",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 52,
+      "date_start": "2018-07-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_62_import_3",
+      "indicator_id_mapped": "ZN_IMPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 52,
+      "date_start": "2018-07-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_63_output",
+      "indicator_id_mapped": "ZN_EXPORT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 91,
+      "date_start": "2019-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_64_inv",
+      "indicator_id_mapped": "ZN_SHFE_INV",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 8,
+      "date_start": "2017-12-31",
+      "date_end": "2024-12-31"
+    },
+    {
+      "indicator_id": "zn_71_cost",
+      "indicator_id_mapped": "ZN_REFINING_COST",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 1860,
+      "date_start": "2018-10-25",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_71_cost_2",
+      "indicator_id_mapped": "ZN_REFINING_COST",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 1860,
+      "date_start": "2018-10-25",
+      "date_end": "2026-08-28"
+    },
+    {
+      "indicator_id": "zn_72_output",
+      "indicator_id_mapped": "ZN_DOWNSTREAM_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_72_output_2",
+      "indicator_id_mapped": "ZN_DOWNSTREAM_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    },
+    {
+      "indicator_id": "zn_72_output_3",
+      "indicator_id_mapped": "ZN_DOWNSTREAM_OUTPUT",
+      "commodity": "zn",
+      "has_mapping": true,
+      "record_count": 115,
+      "date_start": "2017-01-31",
+      "date_end": "2026-07-31"
+    }
+  ]
+}
