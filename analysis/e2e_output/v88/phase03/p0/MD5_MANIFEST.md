@@ -69,3 +69,10 @@
 | analysis/e2e_output/v88/JOB_READY.flag | `UPDATED` | — |
 
 > **DSHB 值守核心**: 归档脚本7个文件MD5全匹配锁定 / DSHE引擎修复确认(D7=78.82% PASS) / P1前置资料就绪(指标基线615/映射基线608/风险11项全闭环) / PHASE03_P0_DSHB_WATCHER=TRUE 待命等待P1工单
+
+### V88_PHASE03_P0_DSHE_WATCHER_TASK (DSHE 引擎值守)
+| 文件 | MD5 | 大小(B) |
+|------|:---:|:------:|
+| analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshe_engine_prematerials.md | `F60976152591E237951DA3FF85574A89` | 11,227 |
+
+> **DSHE 值守核心**: 引擎基线锁定(MD5=cd73deae...) / 无HERMES缺陷工单 / 冒烟测试通过(101图表加载/25,497点查询/双Schema检测) / P1前置资料(环境变量/双Schema/D7口径/双引擎对比/风险台账) / PHASE03_P0_DSHE_WATCHER=TRUE 待命等待HERMEShf R3终审
