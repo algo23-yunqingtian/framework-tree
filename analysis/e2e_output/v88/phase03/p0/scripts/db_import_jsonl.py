@@ -272,12 +272,12 @@ def pattern_map_indicator(indicator_id):
         if metric_key.startswith("close_front"):
             fu = PRICE_FU_MAP.get(comm)
             return f"{comm}_{fu}" if fu else None
-        elif metric_key == "close" or metric_key.startswith("close_") or metric_key == "close":
+        elif metric_key == "close" or metric_key.startswith("close_"):
             fu = PRICE_FU_MAP.get(comm)
             return f"{comm}_{fu}" if fu else None
         elif metric_key == "openinterest" or metric_key.startswith("openinterest"):
             return f"{comm}_HOLD_OPEN"
-        elif metric_key == "openinterest_front" or metric_key == "openinterest_longshort":
+        elif metric_key in ("openinterest_front", "openinterest_longshort"):
             return f"{comm}_LONG_SHORT_RATIO"
         elif metric_key == "volume" or metric_key.startswith("volume"):
             return None  # 不在 meta_chart 中
@@ -289,14 +289,19 @@ def pattern_map_indicator(indicator_id):
             return f"{comm}_WARRANT"
         elif metric_key == "far_price" or metric_key == "far":
             return f"{comm}_FAR_PRICE"
+        elif metric_key == "front_price" or metric_key.startswith("front_price"):
+            fu = PRICE_FU_MAP.get(comm)
+            return f"{comm}_{fu}" if fu else None
         elif metric_key == "near_price" or metric_key == "near":
             return f"{comm}_NEAR_PRICE"
-        elif metric_key == "percentile_openinterest":
+        elif "percentile" in metric_key:
             return f"{comm}_HOLD_PERCENTILE"
         elif metric_key == "lme_price" or metric_key == "lme":
             return f"LME_{comm}"
         elif metric_key.startswith("volume_top20"):
-            return f"{comm}_TOP20_LONG"
+            return None  # volume, not in meta_chart
+        elif metric_key == "import" or metric_key.startswith("import"):
+            return f"{comm}_IMPORT"
 
     # ---- 22 系列: 现货升贴水 ----
     elif section == "22":
@@ -311,8 +316,10 @@ def pattern_map_indicator(indicator_id):
             return f"{comm}_IMPORT"
         elif metric_key == "lme_inv" or metric_key == "lme_inventory":
             return f"LME_{comm}_INV"
-        elif metric_key == "premium_ratio":
+        elif metric_key == "premium_ratio" or metric_key.startswith("premium_ratio"):
             return f"{comm}_SPOT_PREMIUM_RATIO"
+        elif metric_key.startswith("warrant"):
+            return f"{comm}_WARRANT"
 
     # ---- 23 系列: LME 价格 ----
     elif section == "23":
@@ -325,6 +332,10 @@ def pattern_map_indicator(indicator_id):
             return f"{comm}_{fu}" if fu else None
         elif metric_key == "comex" or metric_key == "comex_close":
             return f"COMEX_{comm}"
+        elif metric_key == "premium" or metric_key.startswith("premium"):
+            return f"LME_{comm}"  # LME 升贴水归入 LME 价格
+        elif metric_key == "import" or metric_key.startswith("import"):
+            return f"{comm}_IMPORT"
 
     # ---- 24 系列: 远期/近月 ----
     elif section == "24":
@@ -359,8 +370,10 @@ def pattern_map_indicator(indicator_id):
         elif metric_key.startswith("close"):
             fu = PRICE_FU_MAP.get(comm)
             return f"{comm}_{fu}" if fu else None
-        elif metric_key == "percentile_price":
+        elif "percentile" in metric_key:
             return f"{comm}_PRICE_PERCENTILE"
+        elif metric_key.startswith("recycle"):
+            return f"{comm}_RECYCLE_OUTPUT"
 
     # ---- 26 系列: 持仓排名 ----
     elif section == "26":
@@ -392,12 +405,14 @@ def pattern_map_indicator(indicator_id):
             return f"{comm}_HIDDEN_INV"
         elif "plant" in metric_key:
             return f"{comm}_PLANT_INV"
-        elif metric_key == "ratio":
+        elif metric_key == "ratio" or metric_key == "premium":
             return f"{comm}_INV_RATIO"
         elif "days" in metric_key:
             return f"{comm}_INV_DAYS"
         elif metric_key == "inv":
             return f"{comm}_SHFE_INV"
+        elif metric_key.startswith("import"):
+            return f"{comm}_IMPORT"
 
     # ---- 供给系列 (3xx) ----
     elif section.startswith("3"):
@@ -406,9 +421,11 @@ def pattern_map_indicator(indicator_id):
                 return f"{comm}_RECYCLE_OUTPUT"
             return f"{comm}_REFINING_OUTPUT"
         elif metric_key.startswith("capacity"):
-            if "util" in metric_key:
-                if "recycle" in metric_key:
+            if "recycle" in metric_key:
+                if "util" in metric_key:
                     return f"{comm}_RECYCLE_UTIL"
+                return f"{comm}_RECYCLE_CAPACITY"
+            if "util" in metric_key:
                 return f"{comm}_UTILIZATION"
             return f"{comm}_REFINING_CAPACITY"
         elif metric_key == "util" or metric_key == "utilization" or metric_key == "capacity_util":
@@ -425,14 +442,16 @@ def pattern_map_indicator(indicator_id):
             return f"{comm}_REFINING_COST"
         elif metric_key.startswith("util_"):
             return f"{comm}_UTILIZATION"
+        elif metric_key == "inv":
+            return f"{comm}_SHFE_INV"
 
     # ---- 需求系列 (5x) ----
     elif section.startswith("5"):
-        if metric_key == "cons" or metric_key == "consumption":
+        if metric_key == "cons" or metric_key.startswith("cons"):
             return f"{comm}_CONSUMPTION"
         elif metric_key.startswith("output"):
             return f"{comm}_DOWNSTREAM_OUTPUT"
-        elif metric_key == "util" or metric_key == "utilization":
+        elif metric_key == "util" or metric_key.startswith("util"):
             return f"{comm}_UTILIZATION"
         elif metric_key == "import":
             return f"{comm}_IMPORT"
@@ -445,6 +464,10 @@ def pattern_map_indicator(indicator_id):
             return f"{comm}_EXPORT"
         elif "inv" in metric_key:
             return f"{comm}_SHFE_INV"
+        elif metric_key.startswith("warrant"):
+            return f"{comm}_WARRANT"
+        elif metric_key.startswith("output"):
+            return f"{comm}_EXPORT"
 
     # ---- 成本系列 (7x) ----
     elif section.startswith("7"):
