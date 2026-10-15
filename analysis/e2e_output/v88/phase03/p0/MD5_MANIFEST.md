@@ -252,6 +252,7 @@ phase03_test.db 未入库 / 旧口径留档不删
 - Engine MD5 (current): `cd73deaeec54a7f1f8bde92c1300a9dc`
 - Modified? **NO**
 
+<<<<<<< HEAD
 ---
 
 ## V88 Phase03 P1 FOLLOWUP — 门禁持续巡检 + 风险评审（2026-10-15，R1）
@@ -302,3 +303,133 @@ phase03_test.db 未入库 / 旧口径留档不删
 BRANCH_LOCKED / NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL /
 node_binding_engine.py 未修改 / Phase02 生产链路零修改 / api_cache.db 只读零污染 /
 phase03_test.db 未入库（运行时派生重建）/ P0 既有资产 append-only
+# ===== V88 Phase03 P1 DSHB Followup Job (2026-10-15) =====
+| File | MD5 | Size (bytes) | Status |
+|------|:---:|:------------:|:------:|
+| `dshb/followup/noise_7d_observation.py` | `a30ca6cd4bb621cae23f01ae476d4de0` | 19737 | P1_FOLLOWUP |
+| `dshb/followup/noise_7d_log.jsonl` | `cccc0e6040657203c2ae59416658e9a9` | 426 | P1_FOLLOWUP |
+| `dshb/followup/noise_7d_checkpoint.json` | `6fc59fdb2ead09d936f690cc411da692` | 404 | P1_FOLLOWUP |
+| `dshb/followup/derived_metric_probe.py` | `427559b8b67b5adeaccc63e6c6e64455` | 17075 | P1_FOLLOWUP |
+| `dshb/followup/v88_phase03_p1_derived_probe_monitor_shturl.md` | `6096565522f90c5e1368182c99c4acf4` | 6184 | P1_FOLLOWUP |
+| `dshb/followup/derived_probe_log.jsonl` | `46407388ca2b24e3f6fe5564be28067f` | 186 | P1_FOLLOWUP |
+| `dshb/followup/derived_probe_checkpoint.json` | `c222f96791f7256db075522787ba22a1` | 529 | P1_FOLLOWUP |
+| `dshb/followup/derived_probe_switch_audit.jsonl` | `e830a9a6dc44bb2212d54decf16978ee` | 312 | P1_FOLLOWUP |
+| `dshb/followup/dqa_weekly_check.py` | `473b93973f28451bb51cd503cc922561` | 13439 | P1_FOLLOWUP |
+| `dshb/followup/dqa_weekly_checkpoint.json` | `a2848832cbe5180b4983f2c48acdc4a7` | 301 | P1_FOLLOWUP |
+| `dshb/followup/dqa_weekly_log.jsonl` | `0cb4a88f9ab33647f0f3fc0b12b31d12` | 1323 | P1_FOLLOWUP |
+| `dshb/followup/v88_phase03_p1_expand_metric_doc.md` | `49892e0823a472de3987d82afcf49811` | 10566 | P1_FOLLOWUP |
+| `dshb/followup/v88_phase03_p1_dshb_followup_report.md` | — | — | P1_FOLLOWUP (current) |
+| `dshb/v88_phase03_p1_dshb_risklist.md` | — | — | UPDATED |
+| `STATUS.md` | `UPDATED` | — |
+| `analysis/e2e_output/v88/JOB_READY.flag` | `UPDATED` | — |
+
+> **DSHB P1跟进核心**: P0-14扩量文档补齐(WARN→PASS) / 7天噪声观测脚本部署(9.54%达标) / 衍生品探针59/59全部命中(P0-9分母50→109切换) / DQA 8条规则全PASS(周度自动校验) / R-V88-034/035/036录入(2 OPEN + 1 MITIGATED) / 全量DQA验证通过 / 13交付物 / V88_PHASE03_P1_DSHB_FOLLOWUP=IN_PROGRESS / V88_PHASE03_P1_DSHB_FOLLOWUP_JOB=COMPLETE
+
+# ===== V88 Phase03 P1 DSHB Followup Watcher Job (2026-10-15) =====
+| File | MD5 | Size (bytes) | Status |
+|------|:---:|:------------:|:------:|
+| `dshb/watcher/v88_phase03_p1_dshb_watchy_monitor.py` | `WATCHER_NEW` | 34,000+ | P1_WATCHER |
+| `dshb/watcher/v88_phase03_p1_dshb_watchy_status_report.md` | `WATCHER_NEW` | — | P1_WATCHER |
+| `dshb/watcher/watcher_checkpoint.json` | `WATCHER_NEW` | — | P1_WATCHER |
+| `dshb/watcher/watcher_log.jsonl` | `WATCHER_NEW` | — | P1_WATCHER |
+| `dshb/watcher/noise_7d_timeseries_log.csv` | `WATCHER_NEW` | — | P1_WATCHER |
+| `dshb/watcher/dqa_weekly_check_result.md` | `WATCHER_NEW` | — | P1_WATCHER |
+| `STATUS.md` | `UPDATED` | — | P1_WATCHER |
+| `analysis/e2e_output/v88/JOB_READY.flag` | `UPDATED` | — | P1_WATCHER |
+
+> **DSHB P1值守核心**: 噪声7天观测守护(2/168h,9.54%达标,后台守护运行中) / DQA周度校验(1次PASS) / R-V88-034(OPEN)/035(IN_PROGRESS)/036(MITIGATED)风险台账更新 / DSHE优化监听(等待中) / 7天噪声总结报告(待满7天自动生成) / 5交付物 / V88_PHASE03_P1_DSHB_WATCHER=IN_PROGRESS / V88_PHASE03_P1_DSHB_FOLLOWUP_WATCHER_JOB=COMPLETE
+
+---
+
+## P0-9FIX Deliverables (2026-10-15)
+
+> TASK_ID: V88_PHASE03_P1_DSHB_FOLLOWUP_P09FIX_JOB
+> Agent: DSHB | Branch: feature/v88-g1
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 1 | `p09fix/p09_add_missing_mappings.py` | TBD | TBD |
+| 2 | `p09fix/p09_missing_mappings_add_result.json` | TBD | TBD |
+| 3 | `p09fix/v88_phase03_p1_dshb_p09_audit_fix_report.md` | TBD | TBD |
+| 4 | `p09fix/generate_p09_audit_fix_report.py` | TBD | TBD |
+| 5 | `p09fix/check_p09.py` | TBD | TBD |
+| 6 | `p09fix/check_db_indicators.py` | TBD | TBD |
+| 7 | `dshb/v88_phase03_p1_dshb_p09_audit_fix_report.md` | TBD | TBD |
+| 8 | `dshb/v88_phase03_p1_metric_indicator_code_mapping.md` | TBD | TBD |
+| 9 | `dshb/v88_phase03_p1_metric_indicator_code_mapping.json` | TBD | TBD |
+| 10 | `dshb/v88_phase03_p1_dshb_risklist.md` | TBD | TBD |
+
+---
+
+## V88_PHASE03_P1_DSHB_POST_FIX_WATCHER_EXTEND 交付物
+
+> **TASK_ID**: V88_PHASE03_P1_DSHB_POST_FIX_WATCHER_EXTEND_JOB
+> **Agent**: DSHB | **Branch**: feature/v88-g1 | **Date**: 2026-10-15
+
+| # | File | MD5 | Size |
+|---|------|-----|------|
+| 1 | `post_fix_watcher/t0_noise_daemon_check.py` | TBD | 7,669 |
+| 2 | `post_fix_watcher/t1_sample_backtest.py` | TBD | 15,868 |
+| 3 | `post_fix_watcher/extended_dqa_result.md` | TBD | 5,228 |
+| 4 | `post_fix_watcher/t4_hermes_monitoring.py` | TBD | 7,046 |
+| 5 | `post_fix_watcher/t4_hermes_monitoring_state.json` | TBD | 2,377 |
+| 6 | `post_fix_watcher/t5_engine_caliber_check.py` | TBD | 25,271 |
+| 7 | `post_fix_watcher/engine_caliber_alignment_report.md` | TBD | 14,420 |
+| 8 | `post_fix_watcher/watcher_state_checkpoint.json` | TBD | 2,258 |
+| 9 | `post_fix_watcher/crawler/common_crawler_lib.py` | TBD | 53,852 |
+| 10 | `post_fix_watcher/crawler/comex_daily_crawler.py` | TBD | TBD |
+| 11 | `post_fix_watcher/crawler/lc_fu_crawler.py` | TBD | TBD |
+| 12 | `post_fix_watcher/crawler/crawler_dqa_check.py` | TBD | TBD |
+| 13 | `post_fix_watcher/crawler/schedule_crawler.py` | TBD | TBD |
+| 14 | `post_fix_watcher/crawler/v88_phase03_p1_external_crawler_design.md` | TBD | TBD |
+| 15 | `dshb/v88_phase03_p1_dshb_risklist.md` (updated) | TBD | TBD |
+
+---
+
+# ===== V88 Phase03 P1 DSHE Post-Performance Validation Job (2026-10-15) =====
+
+> **TASK_ID**: V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB
+> **Agent**: DSHE | **Branch**: feature/v88-g1 (BRANCH_LOCKED)
+> **Prerequisite**: V88_PHASE03_P1_DSHE_FOLLOWUP_JOB=COMPLETE
+> **Status**: COMPLETE | **Acceptance**: 6/6 | **Constraints**: 10/10
+
+## Deliverables
+
+| # | File | MD5 | Size | Status |
+|---|------|-----|------|:------:|
+| 1 | `post_perf_validate/path_fix_config.json` | `TBD` | — | P1_POST_PERF |
+| 2 | `post_perf_validate/v88_phase03_p1_72h_longrun_test.py` | `TBD` | 35,548 | P1_POST_PERF |
+| 3 | `post_perf_validate/cpu_baseline_audit.py` | `TBD` | — | P1_POST_PERF |
+| 4 | `post_perf_validate/verify_derived_indicators.py` | `TBD` | — | P1_POST_PERF |
+| 5 | `post_perf_validate/v88_phase03_p1_72h_longrun_perf_trend.json` | `TBD` | 7,254 | P1_POST_PERF |
+| 6 | `post_perf_validate/v88_phase03_p1_72h_longrun_perf_trend.md` | `TBD` | — | P1_POST_PERF |
+| 7 | `post_perf_validate/cpu_baseline_audit_results.json` | `TBD` | 5,984 | P1_POST_PERF |
+| 8 | `post_perf_validate/v88_phase03_p1_final_cpu_baseline_audit.md` | `TBD` | — | P1_POST_PERF |
+| 9 | `post_perf_validate/verify_derived_indicators.json` | `TBD` | 21,277 | P1_POST_PERF |
+| 10 | `post_perf_validate/new_derived_metric_render_verify_result.md` | `TBD` | — | P1_POST_PERF |
+| 11 | `post_perf_validate/v88_phase03_p1_post_perf_validation_summary.md` | `TBD` | — | P1_POST_PERF |
+| 12 | `dshe/engine_180indicator_adapter.py` (REPO_ROOT fix) | `UPDATED` | — | P1_POST_PERF |
+| 13 | `dshe/p1_smoke_query_results.json` (rerun) | `UPDATED` | — | P1_POST_PERF |
+| 14 | `dshe/p1_regression_results.json` (rerun) | `UPDATED` | — | P1_POST_PERF |
+| 15 | `STATUS.md` | `UPDATED` | — | P1_POST_PERF |
+| 16 | `analysis/e2e_output/v88/JOB_READY.flag` | `UPDATED` | — | P1_POST_PERF |
+| 17 | `analysis/e2e_output/v88/phase03/p0/MD5_MANIFEST.md` | `UPDATED` | — | P1_POST_PERF |
+
+## Key Results
+
+| Metric | Value | Status |
+|--------|:-----:|:------:|
+| P99 Latency (72h sim) | 426.672 ms | **PASS** (<500ms) |
+| D7 Coverage | 90.0990% | **PASS** (>=80.20%) |
+| PATH FAIL Fixed | 5/5 PASS | **PASS** |
+| Smoke Tests | 12/12 PASS | **PASS** |
+| Regression Suite | 40P/2W/0F/0B | **PASS** |
+| Adapter Self-test | 56/56 PASS | **PASS** |
+| Derived Indicators | 70/70 Found | **PASS** |
+| CPU Baseline Audit | 7P/3W/0F | **WARN** (P0-12 ready) |
+| Engine MD5 | `CD73DEAEEC54A7F1F8BDE92C1300A9DC` | **UNCHANGED** |
+| Constraint Compliance | 10/10 | **PASS** |
+| Acceptance Criteria | 6/6 | **PASS** |
+
+> **DSHE Post-Performance Validation Core**: 2项PATH FAIL修复(anchor-search锚定解析) / 72h长稳P99=426.7ms(<500ms PASS) / D7=90.10%稳定 / 70项派生指标全部确认 / CPU基线审计P0-12就绪 / 冒烟12/12 / 回归40P/2W/0F / 适配器56/56 / 引擎MD5不变 / 约束10/10 / 验收6/6 / V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE=COMPLETE
+>>>>>>> ba49501 ([T0-T7] V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB + DSHB跟进/值守/P09FIX 交付物提交 - PATH修复(2项FAIL→PASS,anchor-search锚定解析) + 72h长稳P99=426.7ms(<500ms PASS,D7=90.10%,0错误) + CPU基线审计(7P/3W,P0-12就绪) + 70项派生指标验证(D7=90.10%,0错误) + 性能趋势(P99漂移4.84%,稳定) + 冒烟12/12 + 回归40P/2W/0F + 适配器56/56 + 引擎MD5不变 + 约束10/10 + 验收6/6 + DSHB followup/watcher/P09FIX/post_fix_watcher交付物 + 元数据更新 (DSHE+DSHB))

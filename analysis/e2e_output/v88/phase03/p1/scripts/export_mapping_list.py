@@ -29,6 +29,45 @@ P1_DIR = SCRIPT_DIR.parent
 DB_PATH_DEFAULT = P0_DIR / "p0" / "phase03_test.db"
 OUTPUT_DIR = P1_DIR / "dshb"
 
+# =============================================================================
+# P09FIX: DSHE meta_chart 109 indicator IDs (authoritative denominator list)
+# Source: framework_tree_meta_chart.yaml (109 distinct indicator_ids)
+# =============================================================================
+DSHE_META_CHART_109_INDICATORS = [
+    "AL_BASIS", "AL_FU00014934", "AL_HOLD_OPEN", "AL_LONG_SHORT_RATIO",
+    "AL_MONTH_SPREAD", "AL_PRICE_PERCENTILE", "AL_SMELTING_PROFIT",
+    "AL_SPOT_PREMIUM", "AL_TERM_STRUCTURE", "AL_TOP20_LONG", "AL_TOP20_SHORT",
+    "COMEX_AL", "COMEX_CU", "COMEX_NI", "COMEX_PB", "COMEX_SN", "COMEX_ZN",
+    "CU_BALANCE_SHEET", "CU_BASIS", "CU_COST_PERCENTILE", "CU_FU00014935",
+    "CU_FU00014941", "CU_HOLD_OPEN", "CU_LONG_SHORT_RATIO", "CU_MONTH_SPREAD",
+    "CU_PRICE_PERCENTILE", "CU_SMELTING_PROFIT", "CU_SOCIAL_INV",
+    "CU_SPOT_PREMIUM", "CU_TERM_STRUCTURE", "CU_TOP20_LONG", "CU_TOP20_SHORT",
+    "CU_UTILIZATION", "CU_WARRANT_INVENTORY", "FU00014813",
+    "LC_BASIS", "LC_FU00015030", "LC_HOLD_OPEN", "LC_LONG_SHORT_RATIO",
+    "LC_MONTH_SPREAD", "LC_PRICE_PERCENTILE", "LC_SMELTING_PROFIT",
+    "LC_SPOT_PREMIUM", "LC_TERM_STRUCTURE", "LC_TOP20_LONG", "LC_TOP20_SHORT",
+    "LME_AL", "LME_CU", "LME_LC", "LME_NI", "LME_PB", "LME_SI", "LME_SN",
+    "LME_ZN",
+    "NI_BASIS", "NI_FU00014982", "NI_HOLD_OPEN", "NI_LONG_SHORT_RATIO",
+    "NI_MONTH_SPREAD", "NI_PRICE_PERCENTILE", "NI_SMELTING_PROFIT",
+    "NI_SPOT_PREMIUM", "NI_TERM_STRUCTURE", "NI_TOP20_LONG", "NI_TOP20_SHORT",
+    "PB_BASIS", "PB_FU00014946", "PB_HOLD_OPEN", "PB_LONG_SHORT_RATIO",
+    "PB_MONTH_SPREAD", "PB_PRICE_PERCENTILE", "PB_SMELTING_PROFIT",
+    "PB_SPOT_PREMIUM", "PB_TERM_STRUCTURE", "PB_TOP20_LONG", "PB_TOP20_SHORT",
+    "SI_BASIS", "SI_FU00015015", "SI_HOLD_OPEN", "SI_LONG_SHORT_RATIO",
+    "SI_MONTH_SPREAD", "SI_PRICE_PERCENTILE", "SI_SMELTING_PROFIT",
+    "SI_SPOT_PREMIUM", "SI_TERM_STRUCTURE",
+    "SN_BASIS", "SN_FU00014952", "SN_HOLD_OPEN", "SN_LONG_SHORT_RATIO",
+    "SN_MONTH_SPREAD", "SN_PRICE_PERCENTILE", "SN_SMELTING_PROFIT",
+    "SN_SPOT_PREMIUM", "SN_TERM_STRUCTURE", "SN_TOP20_LONG", "SN_TOP20_SHORT",
+    "SPOT_IS", "SPOT_LICAR",
+    "ZN_BASIS", "ZN_FU00014950", "ZN_HOLD_OPEN", "ZN_LONG_SHORT_RATIO",
+    "ZN_MONTH_SPREAD", "ZN_PRICE_PERCENTILE", "ZN_SMELTING_PROFIT",
+    "ZN_SPOT_PREMIUM", "ZN_TERM_STRUCTURE", "ZN_TOP20_LONG", "ZN_TOP20_SHORT",
+]
+assert len(DSHE_META_CHART_109_INDICATORS) == 109, \
+    f"DSHE_META_CHART_109_INDICATORS has {len(DSHE_META_CHART_109_INDICATORS)} entries, expected 109"
+
 
 def setup_environment():
     if platform.system() == "Windows":
@@ -93,11 +132,13 @@ def generate_markdown(mapping_list, db_path):
         else:
             by_commodity[comm]["real"] += 1
 
-    # P0-9 metric
-    # Count distinct mapped indicator_ids (DSHE meta_chart side)
+    # P0-9 metric — P09FIX: real intersection (no min truncation)
     distinct_mapped_ids = len(set(m['indicator_id_mapped'] for m in mapping_list if m['has_mapping']))
+    db_mapped_set = set(m['indicator_id_mapped'] for m in mapping_list if m['has_mapping'])
     p0_9_denominator = 109  # Fixed denominator per P1 requirement
-    p0_9_numerator = min(distinct_mapped_ids, p0_9_denominator)
+    dshe_109 = set(DSHE_META_CHART_109_INDICATORS)
+    p0_9_intersection = dshe_109 & db_mapped_set
+    p0_9_numerator = len(p0_9_intersection)
     p0_9_pct = p0_9_numerator / p0_9_denominator * 100
 
     lines = []
@@ -122,8 +163,11 @@ def generate_markdown(mapping_list, db_path):
     lines.append(f"| Unmapped indicators | {unmapped} ({100 - pct:.1f}%) |")
     lines.append(f"| Distinct mapped IDs (DSHE meta_chart) | {distinct_mapped_ids} |")
     lines.append(f"| P0-9 denominator (restored) | {p0_9_denominator} |")
-    lines.append(f"| P0-9 numerator | {p0_9_numerator} |")
+    lines.append(f"| P0-9 numerator (real intersection) | {p0_9_numerator} |")
     lines.append(f"| P0-9 coverage | **{p0_9_pct:.2f}%** |")
+    lines.append(f"| Method | real_intersection (no min truncation) |")
+    lines.append(f"| Missing from DSHE 109 | {p0_9_denominator - p0_9_numerator} |")
+    lines.append(f"| Orphan (in DB not in DSHE 109) | {distinct_mapped_ids - p0_9_numerator} |")
     lines.append("")
 
     # Per-commodity summary
@@ -180,8 +224,10 @@ def generate_markdown(mapping_list, db_path):
     lines.append("")
     lines.append("| 口径 | 分子 | 分母 | 比率 | 状态 |")
     lines.append("|------|:----:|:----:|:----:|:----:|")
-    lines.append(f"| DB映射命中率 (P0-9) | {p0_9_numerator} | {p0_9_denominator} | **{p0_9_pct:.2f}%** | {'PASS' if p0_9_pct >= 60 else 'FAIL'} |")
-    lines.append(f"| DSHE指标数 | {distinct_mapped_ids} | - | - | - |")
+    lines.append(f"| DB映射命中率 (P0-9, 真实交集) | {p0_9_numerator} | {p0_9_denominator} | **{p0_9_pct:.2f}%** | {'PASS' if p0_9_pct >= 60 else 'FAIL'} |")
+    lines.append(f"| DSHE指标数 (distinct_mapped_ids) | {distinct_mapped_ids} | - | - | - |")
+    lines.append(f"| 缺失 (DSHE 109 - 交集) | {p0_9_denominator - p0_9_numerator} | - | - | - |")
+    lines.append(f"| 孤儿 (DB mapped - DSHE 109) | {distinct_mapped_ids - p0_9_numerator} | - | - | - |")
     lines.append(f"| 总指标数 | {total} | - | - | - |")
     lines.append(f"| 派生指标数 | {derived_count} | - | - | - |")
     lines.append("")
@@ -196,8 +242,11 @@ def generate_json(mapping_list, db_path):
     total = len(mapping_list)
     mapped = sum(1 for m in mapping_list if m["has_mapping"])
     derived_count = sum(1 for m in mapping_list if m["source"] == "derived")
-    distinct_mapped = len(set(m['indicator_id_mapped'] for m in mapping_list if m['has_mapping']))
+    db_mapped_set = set(m['indicator_id_mapped'] for m in mapping_list if m['has_mapping'])
+    distinct_mapped = len(db_mapped_set)
     pct = mapped / total * 100 if total > 0 else 0
+    dshe_109_set = set(DSHE_META_CHART_109_INDICATORS)
+    p09_intersection = dshe_109_set & db_mapped_set
 
     data = {
         "task_id": "V88_PHASE03_P1_DSHB_MAIN_JOB",
@@ -216,8 +265,12 @@ def generate_json(mapping_list, db_path):
         },
         "p0_9": {
             "denominator": 109,
-            "numerator": min(distinct_mapped, 109),
-            "coverage_pct": round(min(distinct_mapped, 109) / 109 * 100, 2),
+            "numerator": len(p09_intersection),
+            "coverage_pct": round(len(p09_intersection) / 109 * 100, 2),
+            "intersection_ids": sorted(p09_intersection),
+            "missing_ids": sorted(dshe_109_set - db_mapped_set),
+            "orphan_ids": sorted(db_mapped_set - dshe_109_set),
+            "method": "real_intersection",
         },
         "mapping_list": mapping_list,
     }

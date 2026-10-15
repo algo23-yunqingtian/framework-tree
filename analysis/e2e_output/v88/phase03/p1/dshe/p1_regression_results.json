@@ -1,8 +1,8 @@
 {
   "task_id": "V88_PHASE03_P1_DSHE_MAIN_JOB",
   "schema_version": "v88-p1.0.0",
-  "execution_timestamp": "2026-10-15T16:09:39",
-  "total_time_sec": 12.58,
+  "execution_timestamp": "2026-10-15T20:10:55",
+  "total_time_sec": 10.23,
   "total_tests": 42,
   "summary": {
     "PASS": 40,
@@ -18,7 +18,7 @@
       "status": "PASS",
       "message": "source=real renders: 19/20",
       "details": {},
-      "duration_ms": 1084.786
+      "duration_ms": 761.008
     },
     {
       "test_id": "TC-DS-02",
@@ -27,7 +27,7 @@
       "status": "PASS",
       "message": "Render with fallback OK: source=real",
       "details": {},
-      "duration_ms": 61.0
+      "duration_ms": 36.993
     },
     {
       "test_id": "TC-DS-03",
@@ -36,7 +36,7 @@
       "status": "PASS",
       "message": "Graceful fallback: source=real",
       "details": {},
-      "duration_ms": 46.218
+      "duration_ms": 36.002
     },
     {
       "test_id": "TC-DS-04",
@@ -45,7 +45,7 @@
       "status": "PASS",
       "message": "Deterministic: source=real both times",
       "details": {},
-      "duration_ms": 79.162
+      "duration_ms": 74.999
     },
     {
       "test_id": "TC-DS-05",
@@ -54,7 +54,7 @@
       "status": "PASS",
       "message": "Placeholder render OK: source=simulated",
       "details": {},
-      "duration_ms": 38.004
+      "duration_ms": 34.995
     },
     {
       "test_id": "TC-FB-01",
@@ -63,30 +63,30 @@
       "status": "PASS",
       "message": "Degradation chain accessible: sources={'real'}",
       "details": {},
-      "duration_ms": 40.0
+      "duration_ms": 41.001
     },
     {
       "test_id": "TC-FB-02",
       "test_name": "Degradation latency comparison",
       "category": "Degradation",
       "status": "PASS",
-      "message": "Render latency: 43.007ms, source=real",
+      "message": "Render latency: 42.004ms, source=real",
       "details": {
-        "latency_ms": 43.007
+        "latency_ms": 42.004
       },
-      "duration_ms": 43.007
+      "duration_ms": 42.004
     },
     {
       "test_id": "TC-FB-03",
       "test_name": "Cache hit degradation recovery",
       "category": "Degradation",
       "status": "PASS",
-      "message": "Cold=43.991ms, Hot=39.997ms, improvement=3.994ms",
+      "message": "Cold=35.997ms, Hot=38.998ms, improvement=0.000ms",
       "details": {
-        "cold_ms": 43.991,
-        "hot_ms": 39.997
+        "cold_ms": 35.997,
+        "hot_ms": 38.998
       },
-      "duration_ms": 83.988
+      "duration_ms": 74.995
     },
     {
       "test_id": "TC-FB-04",
@@ -95,7 +95,7 @@
       "status": "PASS",
       "message": "Graceful degradation: source=real, renderable=True",
       "details": {},
-      "duration_ms": 36.005
+      "duration_ms": 43.003
     },
     {
       "test_id": "TC-FB-05",
@@ -104,38 +104,38 @@
       "status": "PASS",
       "message": "DB missing -> graceful: source=real",
       "details": {},
-      "duration_ms": 46.997
+      "duration_ms": 47.999
     },
     {
       "test_id": "TC-PF-01",
       "test_name": "Single chart render latency",
       "category": "Latency",
       "status": "WARN",
-      "message": "avg=41.998ms >= 20ms",
+      "message": "avg=37.997ms >= 20ms",
       "details": {
-        "latency_ms": 41.998
+        "latency_ms": 37.997
       },
-      "duration_ms": 41.998
+      "duration_ms": 37.997
     },
     {
       "test_id": "TC-PF-02",
       "test_name": "Batch render latency",
       "category": "Latency",
       "status": "PASS",
-      "message": "10 charts in 431.0ms < 10s",
+      "message": "10 charts in 406.0ms < 10s",
       "details": {
-        "batch_lat_ms": 431.0
+        "batch_lat_ms": 406.0
       },
-      "duration_ms": 430.999
+      "duration_ms": 406.008
     },
     {
       "test_id": "TC-PF-03",
       "test_name": "Cache hit latency comparison",
       "category": "Latency",
       "status": "WARN",
-      "message": "Cache improvement: miss=36.000ms, hit=36.998ms",
+      "message": "Cache improvement: miss=45.100ms, hit=45.001ms",
       "details": {},
-      "duration_ms": 72.998
+      "duration_ms": 90.101
     },
     {
       "test_id": "TC-PF-04",
@@ -146,7 +146,7 @@
       "details": {
         "p99_ms": 0.0
       },
-      "duration_ms": 749.007
+      "duration_ms": 737.998
     },
     {
       "test_id": "TC-PF-05",
@@ -157,7 +157,7 @@
       "details": {
         "p99_ms": 0.0
       },
-      "duration_ms": 1506.997
+      "duration_ms": 1685.86
     },
     {
       "test_id": "TC-CH-01",
@@ -166,7 +166,7 @@
       "status": "PASS",
       "message": "Double-render completed (engine has no explicit cache layer)",
       "details": {},
-      "duration_ms": 80.0
+      "duration_ms": 69.001
     },
     {
       "test_id": "TC-CH-02",
@@ -175,7 +175,7 @@
       "status": "PASS",
       "message": "Multi-render without cache errors",
       "details": {},
-      "duration_ms": 115.999
+      "duration_ms": 110.999
     },
     {
       "test_id": "TC-CH-03",
@@ -184,7 +184,7 @@
       "status": "PASS",
       "message": "Consistent results across renders (no LRU cache layer)",
       "details": {},
-      "duration_ms": 80.0
+      "duration_ms": 67.996
     },
     {
       "test_id": "TC-CH-04",
@@ -193,7 +193,7 @@
       "status": "PASS",
       "message": "Render without cache invalidation errors (no cache layer)",
       "details": {},
-      "duration_ms": 40.001
+      "duration_ms": 37.003
     },
     {
       "test_id": "TC-MT-01",
@@ -204,7 +204,7 @@
       "details": {
         "file_size": 56572
       },
-      "duration_ms": 0.998
+      "duration_ms": 1.003
     },
     {
       "test_id": "TC-MT-02",
@@ -216,7 +216,7 @@
         "total": 101,
         "matchable": 85
       },
-      "duration_ms": 1.004
+      "duration_ms": 0.0
     },
     {
       "test_id": "TC-MT-03",
@@ -237,7 +237,7 @@
       "status": "PASS",
       "message": "Fallback priority working: renderable=True",
       "details": {},
-      "duration_ms": 42.999
+      "duration_ms": 35.999
     },
     {
       "test_id": "TC-MT-05",
@@ -290,10 +290,10 @@
             "error": 0,
             "total": 0
           },
-          "load_time_sec": 0.263
+          "load_time_sec": 0.236
         }
       },
-      "duration_ms": 1.0
+      "duration_ms": 1.003
     },
     {
       "test_id": "TC-AL-01",
@@ -349,7 +349,7 @@
       "details": {
         "engine_md5": "cd73deaeec54a7f1f8bde92c1300a9dc"
       },
-      "duration_ms": 1.998
+      "duration_ms": 0.998
     },
     {
       "test_id": "TC-CC-02",
@@ -358,7 +358,7 @@
       "status": "PASS",
       "message": "Branch: feature/v88-g1 (BRANCH_LOCKED, V87 baselines untouched)",
       "details": {},
-      "duration_ms": 1.003
+      "duration_ms": 0.0
     },
     {
       "test_id": "TC-CC-03",
@@ -379,7 +379,7 @@
         "test_db": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
         "baseline_db": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\api_cache.db"
       },
-      "duration_ms": 0.0
+      "duration_ms": 1.0
     },
     {
       "test_id": "TC-P1-01",
@@ -388,7 +388,7 @@
       "status": "PASS",
       "message": "CPU baseline script exists: 36720 bytes",
       "details": {},
-      "duration_ms": 1.002
+      "duration_ms": 0.0
     },
     {
       "test_id": "TC-P1-02",
@@ -397,7 +397,7 @@
       "status": "PASS",
       "message": "Adapter script exists: 98529 bytes",
       "details": {},
-      "duration_ms": 0.997
+      "duration_ms": 1.0
     },
     {
       "test_id": "TC-P1-03",
@@ -408,7 +408,7 @@
       "details": {
         "derived_count": 39
       },
-      "duration_ms": 537.999
+      "duration_ms": 493.771
     },
     {
       "test_id": "TC-P1-04",
@@ -448,7 +448,7 @@
       "status": "PASS",
       "message": "Long-term test script exists: 11922 bytes",
       "details": {},
-      "duration_ms": 2.004
+      "duration_ms": 1.003
     },
     {
       "test_id": "TC-P1-08",
@@ -459,7 +459,7 @@
       "details": {
         "default": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\api_cache.db"
       },
-      "duration_ms": 0.999
+      "duration_ms": 1.998
     },
     {
       "test_id": "TC-P1-09",
@@ -471,7 +471,7 @@
         "total": 101,
         "errors": 0
       },
-      "duration_ms": 5848.632
+      "duration_ms": 4250.242
     },
     {
       "test_id": "TC-P1-10",

@@ -1,0 +1,61 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB / T0",
+  "schema_version": "v88-post-perf-validate.1.0",
+  "agent": "DSHE",
+  "branch": "feature/v88-g1",
+  "generated": "2026-10-15",
+  "issue_summary": {
+    "problem": "2 PATH-type FAIL in smoke query tests caused by REPO_ROOT derivation using fixed '..' depth count instead of searching for frozen engine anchor",
+    "root_cause": "Scripts at dshe/ level (6 parents to repo root) and dshe/followup/ level (7 parents) used hardcoded '..' counts. When engine MD5 check failed (wrong path resolved to non-frozen engine at D:\\DSH_WORK\\scripts\\), tests reported PATH FAIL instead of correct PASS",
+    "affected_tests": [
+      "TC-PATH-01: REPO_ROOT resolution from dshe/ subdirectory",
+      "TC-PATH-02: REPO_ROOT resolution from dshe/post_perf_validate/ subdirectory"
+    ],
+    "fix_strategy": "Replace fixed '..' depth counting with iterative parent-search that locates the frozen engine anchor at scripts/node_binding_engine.py and validates MD5",
+    "impact": "Eliminates false-positive PATH FAILs across all script depth levels (dshe/, followup/, post_perf_validate/)"
+  },
+  "path_resolution_algorithm": {
+    "name": "anchor_search_repo_root",
+    "description": "Walk up parent directories from script location, checking each for scripts/node_binding_engine.py with frozen MD5",
+    "anchor_file": "scripts/node_binding_engine.py",
+    "anchor_md5": "CD73DEAEEC54A7F1F8BDE92C1300A9DC",
+    "max_parents": 12,
+    "fallback": "os.getcwd() if no anchor found"
+  },
+  "candidate_paths": {
+    "repo_root": "D:\\DSH_WORK\\github工作\\framework-tree",
+    "engine_path": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\node_binding_engine.py",
+    "test_db": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
+    "baseline_db": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\api_cache.db",
+    "yaml_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\backlog\\framework_tree_meta_chart.yaml",
+    "tree_config": "D:\\DSH_WORK\\github工作\\framework-tree\\data\\tree_config.json",
+    "dshb_dir": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshb",
+    "dshe_dir": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshe",
+    "post_perf_validate_dir": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshe\\post_perf_validate"
+  },
+  "depth_analysis": {
+    "dshe_level": {"parents_to_repo": 6, "path_depth": "analysis/e2e_output/v88/phase03/p1/dshe"},
+    "followup_level": {"parents_to_repo": 7, "path_depth": "analysis/e2e_output/v88/phase03/p1/dshe/followup"},
+    "post_perf_validate_level": {"parents_to_repo": 7, "path_depth": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate"},
+    "dshb_level": {"parents_to_repo": 6, "path_depth": "analysis/e2e_output/v88/phase03/p1/dshb"}
+  },
+  "verification_results": {
+    "tc_path_01_dshe": {"status": "PASS", "resolved_repo": "D:\\DSH_WORK\\github工作\\framework-tree", "engine_md5": "CD73DEAEEC54A7F1F8BDE92C1300A9DC", "match": true},
+    "tc_path_02_post_perf_validate": {"status": "PASS", "resolved_repo": "D:\\DSH_WORK\\github工作\\framework-tree", "engine_md5": "CD73DEAEEC54A7F1F8BDE92C1300A9DC", "match": true},
+    "tc_path_03_engine_md5_frozen": {"status": "PASS", "engine_md5": "CD73DEAEEC54A7F1F8BDE92C1300A9DC", "expected": "CD73DEAEEC54A7F1F8BDE92C1300A9DC", "match": true},
+    "tc_path_04_test_db_exists": {"status": "PASS", "db_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db", "exists": true},
+    "tc_path_05_yaml_exists": {"status": "PASS", "yaml_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\backlog\\framework_tree_meta_chart.yaml", "exists": true}
+  },
+  "hermes_gate_alignment": {
+    "description": "HERMEShf gate candidate path rules require all deliverable paths to resolve to committed files under analysis/e2e_output/v88/ phase structure",
+    "resolved_paths": {
+      "post_perf_validate_dir": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/",
+      "reports": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/*.md",
+      "json_results": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/*.json",
+      "scripts": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/*.py"
+    },
+    "gate_compliance": "ALL deliverable paths under analysis/e2e_output/v88/ — HERMES gate candidate compliant"
+  },
+  "status": "COMPLETE",
+  "status_reason": "All 5 PATH verification tests PASS. Fixed anchor-search REPO_ROOT resolution eliminates false-positive PATH FAILs across all script depth levels."
+}

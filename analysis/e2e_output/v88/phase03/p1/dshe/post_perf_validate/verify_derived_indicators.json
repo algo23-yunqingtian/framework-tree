@@ -1,0 +1,796 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB / T3",
+  "schema_version": "v88-post-perf-validate.1.0",
+  "agent": "DSHE",
+  "branch": "feature/v88-g1",
+  "generated": "2026-10-15T20:07:16",
+  "environment": {
+    "hostname": "DESKTOP-OM3O97G",
+    "os": "Windows",
+    "os_release": "10",
+    "arch": "AMD64",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "tests": [
+    {
+      "id": "TC-DI-01",
+      "name": "Engine MD5 Verification",
+      "status": "PASS",
+      "message": "MD5=cd73deaeec54a7f1f8bde92c1300a9dc expected=cd73deaeec54a7f1f8bde92c1300a9dc",
+      "details": {
+        "md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+        "expected": "cd73deaeec54a7f1f8bde92c1300a9dc",
+        "match": true
+      }
+    },
+    {
+      "id": "TC-DI-02",
+      "name": "Engine Load",
+      "status": "PASS",
+      "message": "加载完成: 101 张图表, 33 个节点"
+    },
+    {
+      "id": "TC-DI-03",
+      "name": "Adapter Load",
+      "status": "PASS",
+      "message": "Engine180IndicatorAdapter loaded"
+    }
+  ],
+  "derived_indicators": {
+    "total_from_mapping": 718,
+    "derived_count": 70,
+    "expected_count": 70,
+    "count_match": true,
+    "indicator_ids": [
+      "al_inv_change",
+      "al_long_short_ratio",
+      "al_month_spread",
+      "al_premium_change",
+      "al_price_percentile",
+      "al_term_structure",
+      "placeholder_comexal",
+      "comex_cu_change",
+      "comex_cu_lme_spread",
+      "cu_inv_change",
+      "cu_long_short_ratio",
+      "cu_month_spread",
+      "cu_oi_percentile",
+      "cu_premium_change",
+      "cu_price_percentile",
+      "cu_term_structure",
+      "cu_top20_net",
+      "placeholder_cubalancesheet",
+      "pb_long_short_ratio",
+      "pb_month_spread",
+      "pb_price_percentile",
+      "pb_term_structure",
+      "pb_top20_net",
+      "lc_top20_net",
+      "li_21_close_2_p09fix",
+      "li_21_openinterest_2_p09fix",
+      "li_basis_change",
+      "li_inv_change",
+      "li_long_short_ratio",
+      "li_month_spread",
+      "li_oi_percentile",
+      "li_price_percentile",
+      "li_term_structure",
+      "spot_licar_change",
+      "ni_basis_change",
+      "ni_inv_change",
+      "ni_long_short_ratio",
+      "ni_month_spread",
+      "ni_price_percentile",
+      "ni_term_structure",
+      "ni_top20_net",
+      "placeholder_comexni",
+      "placeholder_comexpb",
+      "placeholder_pbtop20long",
+      "placeholder_pbtop20short",
+      "placeholder_spotis",
+      "si_inventory_days",
+      "si_long_short_ratio",
+      "si_month_spread",
+      "si_price_percentile",
+      "si_term_structure",
+      "si_top20_net",
+      "spot_is_change",
+      "placeholder_comexsn",
+      "sn_inventory_days",
+      "sn_long_short_ratio",
+      "sn_month_spread",
+      "sn_price_percentile",
+      "sn_term_structure",
+      "sn_top20_net",
+      "comex_zn_change",
+      "comex_zn_lme_spread",
+      "placeholder_comexzn",
+      "zn_basis_change",
+      "zn_inv_change",
+      "zn_long_short_ratio",
+      "zn_month_spread",
+      "zn_oi_percentile",
+      "zn_price_percentile",
+      "zn_term_structure"
+    ],
+    "categories": {
+      "long_short_ratio": 8,
+      "month_spread": 8,
+      "percentile_deviation": 11,
+      "term_structure": 8,
+      "price_spread": 9,
+      "top20_concentration": 8
+    },
+    "uncategorized": [
+      "al_inv_change",
+      "al_premium_change",
+      "cu_inv_change",
+      "cu_premium_change",
+      "placeholder_cubalancesheet",
+      "li_21_close_2_p09fix",
+      "li_21_openinterest_2_p09fix",
+      "li_basis_change",
+      "li_inv_change",
+      "spot_licar_change",
+      "ni_basis_change",
+      "ni_inv_change",
+      "placeholder_spotis",
+      "si_inventory_days",
+      "spot_is_change",
+      "sn_inventory_days",
+      "zn_basis_change",
+      "zn_inv_change"
+    ],
+    "categorized_count": 52,
+    "uncategorized_count": 18,
+    "adapter_known": 57,
+    "adapter_unknown": 13,
+    "adapter_coverage_pct": 81.43,
+    "render_results": {
+      "total": 70,
+      "rendered": 65,
+      "failed": 5,
+      "coverage_pct": 92.86,
+      "details": {
+        "al_inv_change": {
+          "commodity": "al",
+          "mapped_id": "AL_INV_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "al_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "al_long_short_ratio": {
+          "commodity": "al",
+          "mapped_id": "AL_LONG_SHORT_RATIO",
+          "rendered": true,
+          "charts_rendered": [
+            "al_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "al_month_spread": {
+          "commodity": "al",
+          "mapped_id": "AL_MONTH_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "al_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "al_premium_change": {
+          "commodity": "al",
+          "mapped_id": "AL_PREMIUM_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "al_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "al_price_percentile": {
+          "commodity": "al",
+          "mapped_id": "AL_PRICE_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "al_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "al_term_structure": {
+          "commodity": "al",
+          "mapped_id": "AL_TERM_STRUCTURE",
+          "rendered": true,
+          "charts_rendered": [
+            "al_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "placeholder_comexal": {
+          "commodity": "al",
+          "mapped_id": "COMEX_AL",
+          "rendered": true,
+          "charts_rendered": [
+            "al_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "comex_cu_change": {
+          "commodity": "cu",
+          "mapped_id": "COMEX_CU_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "comex_cu_lme_spread": {
+          "commodity": "cu",
+          "mapped_id": "COMEX_CU_LME_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_inv_change": {
+          "commodity": "cu",
+          "mapped_id": "CU_INV_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_long_short_ratio": {
+          "commodity": "cu",
+          "mapped_id": "CU_LONG_SHORT_RATIO",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_month_spread": {
+          "commodity": "cu",
+          "mapped_id": "CU_MONTH_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_oi_percentile": {
+          "commodity": "cu",
+          "mapped_id": "CU_OI_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_premium_change": {
+          "commodity": "cu",
+          "mapped_id": "CU_PREMIUM_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_price_percentile": {
+          "commodity": "cu",
+          "mapped_id": "CU_PRICE_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_term_structure": {
+          "commodity": "cu",
+          "mapped_id": "CU_TERM_STRUCTURE",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "cu_top20_net": {
+          "commodity": "cu",
+          "mapped_id": "CU_TOP20_NET",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "placeholder_cubalancesheet": {
+          "commodity": "cu",
+          "mapped_id": "CU_BALANCE_SHEET",
+          "rendered": true,
+          "charts_rendered": [
+            "cu_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "pb_long_short_ratio": {
+          "commodity": "j21",
+          "mapped_id": "PB_LONG_SHORT_RATIO",
+          "rendered": false,
+          "charts_matched": [],
+          "reason": "no matching chart rendered successfully"
+        },
+        "pb_month_spread": {
+          "commodity": "j21",
+          "mapped_id": "PB_MONTH_SPREAD",
+          "rendered": false,
+          "charts_matched": [],
+          "reason": "no matching chart rendered successfully"
+        },
+        "pb_price_percentile": {
+          "commodity": "j21",
+          "mapped_id": "PB_PRICE_PERCENTILE",
+          "rendered": false,
+          "charts_matched": [],
+          "reason": "no matching chart rendered successfully"
+        },
+        "pb_term_structure": {
+          "commodity": "j21",
+          "mapped_id": "PB_TERM_STRUCTURE",
+          "rendered": false,
+          "charts_matched": [],
+          "reason": "no matching chart rendered successfully"
+        },
+        "pb_top20_net": {
+          "commodity": "j21",
+          "mapped_id": "PB_TOP20_NET",
+          "rendered": false,
+          "charts_matched": [],
+          "reason": "no matching chart rendered successfully"
+        },
+        "lc_top20_net": {
+          "commodity": "li",
+          "mapped_id": "LC_TOP20_NET",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_21_close_2_p09fix": {
+          "commodity": "li",
+          "mapped_id": "LC_FU00015030",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_21_openinterest_2_p09fix": {
+          "commodity": "li",
+          "mapped_id": "LC_HOLD_OPEN",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_basis_change": {
+          "commodity": "li",
+          "mapped_id": "LC_BASIS_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_inv_change": {
+          "commodity": "li",
+          "mapped_id": "LI_INV_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_long_short_ratio": {
+          "commodity": "li",
+          "mapped_id": "LC_LONG_SHORT_RATIO",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_month_spread": {
+          "commodity": "li",
+          "mapped_id": "LC_MONTH_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_oi_percentile": {
+          "commodity": "li",
+          "mapped_id": "LI_OI_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_price_percentile": {
+          "commodity": "li",
+          "mapped_id": "LC_PRICE_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "li_term_structure": {
+          "commodity": "li",
+          "mapped_id": "LC_TERM_STRUCTURE",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "spot_licar_change": {
+          "commodity": "li",
+          "mapped_id": "SPOT_LICAR_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "li_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "ni_basis_change": {
+          "commodity": "ni",
+          "mapped_id": "NI_BASIS_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "ni_inv_change": {
+          "commodity": "ni",
+          "mapped_id": "NI_INV_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "ni_long_short_ratio": {
+          "commodity": "ni",
+          "mapped_id": "NI_LONG_SHORT_RATIO",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "ni_month_spread": {
+          "commodity": "ni",
+          "mapped_id": "NI_MONTH_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "ni_price_percentile": {
+          "commodity": "ni",
+          "mapped_id": "NI_PRICE_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "ni_term_structure": {
+          "commodity": "ni",
+          "mapped_id": "NI_TERM_STRUCTURE",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "ni_top20_net": {
+          "commodity": "ni",
+          "mapped_id": "NI_TOP20_NET",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "placeholder_comexni": {
+          "commodity": "ni",
+          "mapped_id": "COMEX_NI",
+          "rendered": true,
+          "charts_rendered": [
+            "ni_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "placeholder_comexpb": {
+          "commodity": "pb",
+          "mapped_id": "COMEX_PB",
+          "rendered": true,
+          "charts_rendered": [
+            "pb_p1_ts_01"
+          ],
+          "source": "simulated"
+        },
+        "placeholder_pbtop20long": {
+          "commodity": "pb",
+          "mapped_id": "PB_TOP20_LONG",
+          "rendered": true,
+          "charts_rendered": [
+            "pb_p1_ts_01"
+          ],
+          "source": "simulated"
+        },
+        "placeholder_pbtop20short": {
+          "commodity": "pb",
+          "mapped_id": "PB_TOP20_SHORT",
+          "rendered": true,
+          "charts_rendered": [
+            "pb_p1_ts_01"
+          ],
+          "source": "simulated"
+        },
+        "placeholder_spotis": {
+          "commodity": "si",
+          "mapped_id": "SPOT_IS",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "si_inventory_days": {
+          "commodity": "si",
+          "mapped_id": "SI_INV_DAYS",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "si_long_short_ratio": {
+          "commodity": "si",
+          "mapped_id": "SI_LONG_SHORT_RATIO",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "si_month_spread": {
+          "commodity": "si",
+          "mapped_id": "SI_MONTH_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "si_price_percentile": {
+          "commodity": "si",
+          "mapped_id": "SI_PRICE_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "si_term_structure": {
+          "commodity": "si",
+          "mapped_id": "SI_TERM_STRUCTURE",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "si_top20_net": {
+          "commodity": "si",
+          "mapped_id": "SI_TOP20_NET",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "spot_is_change": {
+          "commodity": "si",
+          "mapped_id": "SPOT_IS_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "si_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "placeholder_comexsn": {
+          "commodity": "sn",
+          "mapped_id": "COMEX_SN",
+          "rendered": true,
+          "charts_rendered": [
+            "sn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "sn_inventory_days": {
+          "commodity": "sn",
+          "mapped_id": "SN_INV_DAYS",
+          "rendered": true,
+          "charts_rendered": [
+            "sn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "sn_long_short_ratio": {
+          "commodity": "sn",
+          "mapped_id": "SN_LONG_SHORT_RATIO",
+          "rendered": true,
+          "charts_rendered": [
+            "sn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "sn_month_spread": {
+          "commodity": "sn",
+          "mapped_id": "SN_MONTH_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "sn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "sn_price_percentile": {
+          "commodity": "sn",
+          "mapped_id": "SN_PRICE_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "sn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "sn_term_structure": {
+          "commodity": "sn",
+          "mapped_id": "SN_TERM_STRUCTURE",
+          "rendered": true,
+          "charts_rendered": [
+            "sn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "sn_top20_net": {
+          "commodity": "sn",
+          "mapped_id": "SN_TOP20_NET",
+          "rendered": true,
+          "charts_rendered": [
+            "sn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "comex_zn_change": {
+          "commodity": "zn",
+          "mapped_id": "COMEX_ZN_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "comex_zn_lme_spread": {
+          "commodity": "zn",
+          "mapped_id": "COMEX_ZN_LME_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "placeholder_comexzn": {
+          "commodity": "zn",
+          "mapped_id": "COMEX_ZN",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "zn_basis_change": {
+          "commodity": "zn",
+          "mapped_id": "ZN_BASIS_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "zn_inv_change": {
+          "commodity": "zn",
+          "mapped_id": "ZN_INV_CHANGE",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "zn_long_short_ratio": {
+          "commodity": "zn",
+          "mapped_id": "ZN_LONG_SHORT_RATIO",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "zn_month_spread": {
+          "commodity": "zn",
+          "mapped_id": "ZN_MONTH_SPREAD",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "zn_oi_percentile": {
+          "commodity": "zn",
+          "mapped_id": "ZN_OI_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "zn_price_percentile": {
+          "commodity": "zn",
+          "mapped_id": "ZN_PRICE_PERCENTILE",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        },
+        "zn_term_structure": {
+          "commodity": "zn",
+          "mapped_id": "ZN_TERM_STRUCTURE",
+          "rendered": true,
+          "charts_rendered": [
+            "zn_p1_ts_01"
+          ],
+          "source": "real"
+        }
+      }
+    }
+  },
+  "render_results": {
+    "total_charts": 101,
+    "rendered_real": 91,
+    "rendered_simulated": 10,
+    "rendered_placeholder": 0,
+    "render_errors": 0,
+    "d7_coverage_pct": 90.099,
+    "d7_threshold_pct": 80.2,
+    "d7_pass": true,
+    "source_distribution": {
+      "real": 91,
+      "simulated": 10
+    }
+  },
+  "coverage_results": {},
+  "errors": [],
+  "verdict": "PASS",
+  "verdict_message": "All derived indicators verified, D7 coverage stable"
+}

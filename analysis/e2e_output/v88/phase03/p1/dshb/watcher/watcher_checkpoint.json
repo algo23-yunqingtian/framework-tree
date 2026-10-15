@@ -1,0 +1,24 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHB_FOLLOWUP_WATCHER_JOB",
+  "agent": "DSHB",
+  "branch": "feature/v88-g1",
+  "started_at": "2026-10-15T17:14:09",
+  "status": "IN_PROGRESS",
+  "check_count": 2,
+  "last_check_at": "2026-10-15T17:17:09",
+  "t0_hours_observed": 2,
+  "t0_noise_complete": false,
+  "dqa_check_count": 1,
+  "last_dqa_check_at": "2026-10-15T17:14:23",
+  "dqa_last_status": "PASS",
+  "risk_update_count": 1,
+  "last_risk_update_at": "2026-10-15T17:14:23",
+  "risk_status": "UPDATED",
+  "last_risk_data": {
+    "R-V88-034": {"status": "OPEN", "note": "等待DSHE性能优化完成"},
+    "R-V88-035": {"status": "IN_PROGRESS", "note": "观测中 (2/168h), 当前噪声率9.5426%"},
+    "R-V88-036": {"status": "MITIGATED", "note": "P0-14扩量文档已产出(WARN→PASS)"}
+  },
+  "dsHE_optimization_handled": false,
+  "last_rebuild_at": null
+}

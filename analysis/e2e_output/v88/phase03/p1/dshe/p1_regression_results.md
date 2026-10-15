@@ -1,9 +1,9 @@
 # V88 Phase03-P1 DSHE 37-Item Regression Test Results
 
 > **TASK_ID**: V88_PHASE03_P1_DSHE_MAIN_JOB
-> **Execution**: 2026-10-15T16:09:39
+> **Execution**: 2026-10-15T20:10:55
 > **Schema**: v88-p1.0.0
-> **Total Time**: 12.58s
+> **Total Time**: 10.23s
 
 ## Summary
 
@@ -40,13 +40,13 @@
 | 4 | TC-DS-04 | simulated render determinism | PASS | Deterministic: source=real both times |
 | 5 | TC-DS-05 | placeholder render | PASS | Placeholder render OK: source=simulated |
 | 6 | TC-FB-01 | Three-tier degradation completeness | PASS | Degradation chain accessible: sources={'real'} |
-| 7 | TC-FB-02 | Degradation latency comparison | PASS | Render latency: 43.007ms, source=real |
-| 8 | TC-FB-03 | Cache hit degradation recovery | PASS | Cold=43.991ms, Hot=39.997ms, improvement=3.994ms |
+| 7 | TC-FB-02 | Degradation latency comparison | PASS | Render latency: 42.004ms, source=real |
+| 8 | TC-FB-03 | Cache hit degradation recovery | PASS | Cold=35.997ms, Hot=38.998ms, improvement=0.000ms |
 | 9 | TC-FB-04 | Missing mapping table degradation | PASS | Graceful degradation: source=real, renderable=True |
 | 10 | TC-FB-05 | DB missing degradation | PASS | DB missing -> graceful: source=real |
-| 11 | TC-PF-01 | Single chart render latency | WARN | avg=41.998ms >= 20ms |
-| 12 | TC-PF-02 | Batch render latency | PASS | 10 charts in 431.0ms < 10s |
-| 13 | TC-PF-03 | Cache hit latency comparison | WARN | Cache improvement: miss=36.000ms, hit=36.998ms |
+| 11 | TC-PF-01 | Single chart render latency | WARN | avg=37.997ms >= 20ms |
+| 12 | TC-PF-02 | Batch render latency | PASS | 10 charts in 406.0ms < 10s |
+| 13 | TC-PF-03 | Cache hit latency comparison | WARN | Cache improvement: miss=45.100ms, hit=45.001ms |
 | 14 | TC-PF-04 | Concurrent render 20 | PASS | 20-concurrent P99=0.000ms < 100ms |
 | 15 | TC-PF-05 | Concurrent render 50 | PASS | 50-concurrent P99=0.000ms < 200ms |
 | 16 | TC-CH-01 | Cache hit rate baseline | PASS | Double-render completed (engine has no explicit cache layer) |
@@ -77,5 +77,5 @@
 | 41 | TC-P1-09 | Full smoke render all charts | PASS | All 101 charts rendered successfully (0 errors) |
 | 42 | TC-P1-10 | Three-caliber iron rule compliance | PASS | Caliber iron rule: D7=engine real render rate (not DB mapping), threshold >=60%, |
 
-*Report Generated: 2026-10-15T16:09:39*
+*Report Generated: 2026-10-15T20:10:55*
 *Agent: DSHE | Branch: feature/v88-g1 (BRANCH_LOCKED)*

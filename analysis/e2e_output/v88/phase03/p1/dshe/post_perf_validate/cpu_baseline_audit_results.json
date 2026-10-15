@@ -1,0 +1,175 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB / T2",
+  "schema_version": "v88-post-perf-validate.1.0",
+  "agent": "DSHE",
+  "branch": "feature/v88-g1",
+  "generated": "2026-10-15T20:08:11",
+  "environment": {
+    "hostname": "DESKTOP-OM3O97G",
+    "os": "Windows",
+    "os_release": "10",
+    "arch": "AMD64",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "audit_checks": [
+    {
+      "id": "CHK-01",
+      "name": "Script Exists",
+      "status": "PASS",
+      "message": "Script exists: True (36720 bytes)",
+      "details": {
+        "path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshe\\collect_cpu_baseline_p1.py",
+        "exists": true,
+        "size_bytes": 36720
+      }
+    },
+    {
+      "id": "CHK-02",
+      "name": "Caliber Declaration",
+      "status": "PASS",
+      "message": "Caliber difference declared: True",
+      "details": {
+        "has_declaration": true
+      }
+    },
+    {
+      "id": "CHK-03",
+      "name": "artifact_declares_incomparable",
+      "status": "WARN",
+      "message": "Flag present: False (explicit flag ensures consumers know calibers differ)",
+      "details": {
+        "has_explicit_flag": false,
+        "has_comparability_note": true,
+        "has_not_directly_comparable": true,
+        "has_ratio_vs_phase02": true
+      }
+    },
+    {
+      "id": "CHK-04",
+      "name": "FUSE Baseline Isolation",
+      "status": "WARN",
+      "message": "FUSE isolation: 5/6 checks passed",
+      "details": {
+        "fuse_threshold_referenced": true,
+        "phase02_peak_referenced": true,
+        "p0_target_referenced": true,
+        "caliber_separation_declared": true,
+        "comparison_ratio_present": true,
+        "mismatch_warning_present": false
+      }
+    },
+    {
+      "id": "CHK-05",
+      "name": "Constraint Compliance",
+      "status": "PASS",
+      "message": "5/5 constraints verified",
+      "details": {
+        "no_zhiji_api": true,
+        "no_engine_modification": true,
+        "branch_locked": true,
+        "append_only": true,
+        "no_overwrite": true
+      }
+    },
+    {
+      "id": "CHK-06",
+      "name": "Measurement Method Fallbacks",
+      "status": "PASS",
+      "message": "All fallbacks present: True",
+      "details": {
+        "psutil_support": true,
+        "process_time_fallback": true,
+        "resource_module_fallback": true,
+        "per_core_normalization": true,
+        "window_based_cpu": true
+      }
+    },
+    {
+      "id": "CHK-07",
+      "name": "Comparison Metadata Tags",
+      "status": "PASS",
+      "message": "All 3 tags present: True",
+      "details": {
+        "same_script_tag": true,
+        "same_load_tag": true,
+        "same_time_window_tag": true
+      }
+    },
+    {
+      "id": "CHK-08",
+      "name": "DB Path Resolution",
+      "status": "WARN",
+      "message": "DB resolution: 4/5 checks passed",
+      "details": {
+        "test_db_exists": true,
+        "baseline_db_exists": true,
+        "env_var_support": true,
+        "auto_detect": true,
+        "priority_chain": false
+      }
+    },
+    {
+      "id": "CHK-09",
+      "name": "Output Structure Completeness",
+      "status": "PASS",
+      "message": "Output sections: 9/9 present",
+      "details": {
+        "summary_section": true,
+        "per_round_section": true,
+        "per_chart_type_section": true,
+        "caliber_comparability_section": true,
+        "environment_section": true,
+        "measurement_method_section": true,
+        "engine_info_section": true,
+        "log_lines_section": true,
+        "status_field": true
+      }
+    },
+    {
+      "id": "CHK-10",
+      "name": "Engine MD5 Frozen",
+      "status": "PASS",
+      "message": "MD5=cd73deaeec54a7f1f8bde92c1300a9dc (frozen: True)",
+      "details": {
+        "md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+        "expected": "cd73deaeec54a7f1f8bde92c1300a9dc",
+        "match": true
+      }
+    }
+  ],
+  "baseline_data": {
+    "script_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshe\\collect_cpu_baseline_p1.py",
+    "script_size_bytes": 36720,
+    "engine_md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+    "test_db_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
+    "test_db_exists": true,
+    "test_db_size_bytes": 84049920
+  },
+  "comparability_analysis": {
+    "phase02_caliber": {
+      "description": "Full-chain business steady-state mean (data supply + push + render)",
+      "scope": "DSHB",
+      "measurement_method": "Process-level CPU over 24h business window",
+      "fuse_threshold_pct": 2.0,
+      "observed_peak_pct": 1.94,
+      "optimization_target_pct": 1.75
+    },
+    "p1_caliber": {
+      "description": "Render-process instantaneous measurement (psutil or time.process_time())",
+      "scope": "DSHE",
+      "measurement_method": "psutil.Process().cpu_percent() or time.process_time() window-averaged",
+      "includes_yaml_parsing": true,
+      "includes_python_interpreter_overhead": true,
+      "not_comparable_to_phase02": true
+    },
+    "caliber_difference_factor": "~45-52x (full-chain business mean vs process-level instantaneous)",
+    "direct_comparison_allowed": false,
+    "reason": "Phase02 CPU FUSE 2.0% / peak 1.94% is a full-chain business steady-state mean (DSHB scope). P1 CPU baseline is a render-process instantaneous measurement (DSHE scope). The two calibers differ by ~45-52x and are NOT DIRECTLY COMPARABLE.",
+    "correct_usage": "P1 CPU gate decisions require DSHB full-chain caliber A/B comparison (same script / same load / same time window)",
+    "artifact_declares_incomparable": false,
+    "ratio_vs_phase02_peak_note": "Script reports ratio_vs_phase02_peak for reference only — MUST NOT be used for gate decisions"
+  },
+  "verdict": "WARN",
+  "p0_12_gate_readiness": true,
+  "verdict_message": "artifact_declares_incomparable flag missing"
+}

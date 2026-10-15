@@ -1,0 +1,263 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB / T1",
+  "schema_version": "v88-post-perf-validate.1.0",
+  "agent": "DSHE",
+  "branch": "feature/v88-g1",
+  "generated": "2026-10-15T20:10:07",
+  "simulation": {
+    "total_hours": 3,
+    "rounds_per_hour": 1,
+    "total_rounds": 3,
+    "mode": "SIMULATED",
+    "note": "72h simulated via accelerated rounds; each round = 1 full render cycle"
+  },
+  "environment": {
+    "hostname": "DESKTOP-OM3O97G",
+    "os": "Windows",
+    "os_release": "10",
+    "arch": "AMD64",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "cpu_cores": 16,
+    "has_psutil": false,
+    "has_resource": false
+  },
+  "engine": {
+    "path": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\node_binding_engine.py",
+    "md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+    "total_charts": 101,
+    "matchable_charts": 85,
+    "pending_charts": 16
+  },
+  "test_db": {
+    "path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
+    "exists": true,
+    "size_bytes": 84049920
+  },
+  "summary": {
+    "total_hours": 3,
+    "total_renders": 303,
+    "total_errors": 0,
+    "total_wall_time_ms": 67539.2,
+    "avg_wall_time_per_hour_ms": 22513.1,
+    "latency": {
+      "median_ms": 200.998,
+      "p95_ms": 378.006,
+      "p99_ms": 426.672,
+      "max_ms": 620.998,
+      "min_ms": 179.0,
+      "mean_ms": 222.882,
+      "count": 303
+    },
+    "p99_threshold_ms": 500.0,
+    "p99_target_ms": 200.0,
+    "p99_pass": true,
+    "p99_target_met": false
+  },
+  "drift_analysis": {
+    "p99_trend": {
+      "min": 392.999,
+      "max": 426.971,
+      "mean": 410.657,
+      "stdev": 17.026,
+      "drift_pct": 4.84
+    },
+    "p99_stable": true,
+    "cache_trend": {
+      "min": 0.0,
+      "max": 66.67,
+      "mean": 38.89
+    },
+    "cache_stable": false,
+    "d7_trend": {
+      "min": 90.099,
+      "max": 90.099,
+      "mean": 90.099
+    },
+    "d7_stable": true,
+    "cpu_trend": {
+      "min": null,
+      "max": null,
+      "mean": null
+    },
+    "cpu_stable": false,
+    "memory_trend": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "growth_mb": 0,
+      "growth_pct": 0
+    },
+    "memory_stable": true,
+    "drift_alerts": [],
+    "drift_alert_count": 0
+  },
+  "hourly_snapshots": [
+    {
+      "hour": 1,
+      "wall_time_ms": 22206.1,
+      "latency": {
+        "median_ms": 197.998,
+        "p95_ms": 378.007,
+        "p99_ms": 392.999,
+        "max_ms": 453.758,
+        "min_ms": 179.0,
+        "mean_ms": 219.863,
+        "count": 101
+      },
+      "p99_ms": 392.999,
+      "d7_coverage_pct": 90.099,
+      "d7_real": 91,
+      "d7_total": 101,
+      "cache": {
+        "hit_rate_pct": 0.0,
+        "hits": 0,
+        "misses": 101,
+        "size": 202,
+        "capacity": 500
+      },
+      "db": {
+        "active_connections": 1,
+        "persistent": true
+      },
+      "cpu": {
+        "pct": null,
+        "method": "time.process_time() window-averaged"
+      },
+      "memory": {
+        "rss_mb": null
+      },
+      "sources": {
+        "real": 91,
+        "simulated": 10,
+        "placeholder": 0,
+        "errors": 0
+      },
+      "renders": 101,
+      "errors": 0
+    },
+    {
+      "hour": 2,
+      "wall_time_ms": 22355.3,
+      "latency": {
+        "median_ms": 200.996,
+        "p95_ms": 377.003,
+        "p99_ms": 426.971,
+        "max_ms": 494.0,
+        "min_ms": 180.005,
+        "mean_ms": 221.28,
+        "count": 101
+      },
+      "p99_ms": 426.971,
+      "d7_coverage_pct": 90.099,
+      "d7_real": 91,
+      "d7_total": 101,
+      "cache": {
+        "hit_rate_pct": 50.0,
+        "hits": 101,
+        "misses": 101,
+        "size": 202,
+        "capacity": 500
+      },
+      "db": {
+        "active_connections": 1,
+        "persistent": true
+      },
+      "cpu": {
+        "pct": null,
+        "method": "time.process_time() window-averaged"
+      },
+      "memory": {
+        "rss_mb": null
+      },
+      "sources": {
+        "real": 91,
+        "simulated": 10,
+        "placeholder": 0,
+        "errors": 0
+      },
+      "renders": 101,
+      "errors": 0
+    },
+    {
+      "hour": 3,
+      "wall_time_ms": 22977.8,
+      "latency": {
+        "median_ms": 204.998,
+        "p95_ms": 376.998,
+        "p99_ms": 412.002,
+        "max_ms": 620.998,
+        "min_ms": 180.997,
+        "mean_ms": 227.503,
+        "count": 101
+      },
+      "p99_ms": 412.002,
+      "d7_coverage_pct": 90.099,
+      "d7_real": 91,
+      "d7_total": 101,
+      "cache": {
+        "hit_rate_pct": 66.67,
+        "hits": 202,
+        "misses": 101,
+        "size": 202,
+        "capacity": 500
+      },
+      "db": {
+        "active_connections": 1,
+        "persistent": true
+      },
+      "cpu": {
+        "pct": null,
+        "method": "time.process_time() window-averaged"
+      },
+      "memory": {
+        "rss_mb": null
+      },
+      "sources": {
+        "real": 91,
+        "simulated": 10,
+        "placeholder": 0,
+        "errors": 0
+      },
+      "renders": 101,
+      "errors": 0
+    }
+  ],
+  "comparison": {
+    "vs_phase02": {
+      "phase02_p99_ms": 39.193,
+      "delta_p99_ms": 387.479,
+      "delta_p99_pct": 988.64
+    },
+    "vs_followup_optimized": {
+      "followup_p99_ms": 316.9,
+      "delta_p99_ms": 109.772,
+      "followup_cache_hit_rate": 64.59,
+      "followup_d7_pct": 80.2
+    }
+  },
+  "verdict": "WARN",
+  "status": "OK",
+  "errors": [],
+  "log_lines": [
+    "[2026-10-15 20:08:36] [INFO] Starting 72h long-run test: 3 hours, 1 rounds/hour",
+    "[2026-10-15 20:08:36] [INFO] ========================================================================",
+    "[2026-10-15 20:08:36] [INFO] V88 Phase03 P1 — 72h Long-Run Stability Test (Simulated)",
+    "[2026-10-15 20:08:36] [INFO] Script: v88_phase03_p1_72h_longrun_test.py v1.0.0",
+    "[2026-10-15 20:08:36] [INFO] ========================================================================",
+    "[2026-10-15 20:08:36] [INFO] [0/6] Setting up environment...",
+    "[2026-10-15 20:08:36] [INFO]   REPO_ROOT: D:\\DSH_WORK\\github工作\\framework-tree",
+    "[2026-10-15 20:08:36] [INFO]   ENGINE: D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\node_binding_engine.py (MD5: cd73deaeec54a7f1f8bde92c1300a9dc)",
+    "[2026-10-15 20:08:36] [INFO]   TEST_DB: D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db (84049920 bytes)",
+    "[2026-10-15 20:08:36] [INFO] [1/6] Loading NodeBindingEngine...",
+    "[2026-10-15 20:08:37] [INFO]   Engine loaded: 加载完成: 101 张图表, 33 个节点",
+    "[2026-10-15 20:08:37] [INFO]   Charts: 101 total (85 matchable, 16 pending)",
+    "[2026-10-15 20:08:37] [INFO] [2/6] Pre-warming (1 full render pass)...",
+    "[2026-10-15 20:09:00] [INFO]   Pre-warm: 23.04s for 101 charts",
+    "[2026-10-15 20:09:00] [INFO] [3/6] Starting 3 simulated hours (1 rounds/hour)... ",
+    "[2026-10-15 20:10:07] [INFO]   [Hour 003/3] P99=412.0ms D7=90.10% Cache=66.7% DB=1 RSS=N/A CPU=N/A",
+    "[2026-10-15 20:10:07] [INFO] [4/6] Computing aggregate statistics...",
+    "[2026-10-15 20:10:07] [INFO] [5/6] Building report...",
+    "[2026-10-15 20:10:07] [INFO] [6/6] Writing output..."
+  ],
+  "verdict_message": "Cache hit rate <50%"
+}

@@ -1,8 +1,8 @@
 {
   "task_id": "V88_PHASE03_P1_DSHE_MAIN_JOB / T3",
   "schema_version": "v88-p1.0.0",
-  "execution_timestamp": "2026-10-15T15:45:17",
-  "total_time_ms": 13745.1,
+  "execution_timestamp": "2026-10-15T20:10:31",
+  "total_time_ms": 11796.1,
   "summary": {
     "PASS": 12,
     "WARN": 0,
@@ -16,7 +16,7 @@
       "details": {
         "md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
         "expected": "cd73deaeec54a7f1f8bde92c1300a9dc",
-        "elapsed_ms": 1.0
+        "elapsed_ms": 2.0
       }
     },
     {
@@ -50,18 +50,18 @@
           "placeholder": 0,
           "other": 0
         },
-        "elapsed_ms": 6813.2
+        "elapsed_ms": 5713.0
       }
     },
     {
       "test": "Latency Distribution",
       "status": "PASS",
       "details": {
-        "median_ms": 48.0,
-        "p95_ms": 167.008,
-        "p99_ms": 326.002,
-        "max_ms": 634.989,
-        "mean_ms": 67.448
+        "median_ms": 38.904,
+        "p95_ms": 145.997,
+        "p99_ms": 326.925,
+        "max_ms": 386.478,
+        "mean_ms": 56.554
       }
     },
     {
@@ -86,8 +86,8 @@
       "details": {
         "db": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\api_cache.db",
         "tables": [
-          "series_cache",
           "sqlite_sequence",
+          "series_cache",
           "import_log"
         ],
         "indicator_cache": false,
@@ -124,8 +124,8 @@
             "sqlite_sequence",
             "import_log"
           ],
-          "size_bytes": 84045824,
-          "series_cache_rows": 590411
+          "size_bytes": 84049920,
+          "series_cache_rows": 590455
         },
         "baseline_db": {
           "path": "D:\\DSH_WORK\\github工作\\framework-tree\\scripts\\api_cache.db",

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 r"""
 engine_180indicator_adapter.py — V88 Phase03 P1 引擎 180+59 指标适配层
@@ -96,6 +96,49 @@ def platform_name():
         return platform.system()
     except ImportError:
         return os.name
+
+
+# =============================================================================
+# Repository Root (anchor-search resolution for self-test)
+# =============================================================================
+ENGINE_MD5_FROZEN = "cd73deaeec54a7f1f8bde92c1300a9dc"
+
+def _resolve_repo_root():
+    """Walk up parent directories to find scripts/node_binding_engine.py with frozen MD5."""
+    current = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
+    for _ in range(12):
+        candidate = os.path.join(current, "scripts", "node_binding_engine.py")
+        if os.path.exists(candidate):
+            try:
+                with open(candidate, "rb") as f:
+                    md5 = hashlib.md5(f.read()).hexdigest().lower()
+                if md5 == ENGINE_MD5_FROZEN:
+                    return current
+            except Exception:
+                pass
+        parent = os.path.dirname(current)
+        if parent == current:
+            break
+        current = parent
+    # Fallback: cwd
+    current = os.path.abspath(os.getcwd())
+    for _ in range(12):
+        candidate = os.path.join(current, "scripts", "node_binding_engine.py")
+        if os.path.exists(candidate):
+            try:
+                with open(candidate, "rb") as f:
+                    md5 = hashlib.md5(f.read()).hexdigest().lower()
+                if md5 == ENGINE_MD5_FROZEN:
+                    return current
+            except Exception:
+                pass
+        parent = os.path.dirname(current)
+        if parent == current:
+            break
+        current = parent
+    return os.path.abspath(os.getcwd())
+
+REPO_ROOT = _resolve_repo_root()
 
 
 # =============================================================================
