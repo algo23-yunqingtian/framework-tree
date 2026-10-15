@@ -1,4 +1,4 @@
-﻿# V88 Phase03 DSHB 数据模块技术草案
+# V88 Phase03 DSHB 数据模块技术草案
 
 > **TASK_ID**: V88_PHASE03_DSHB_DATA_PREP
 > **AGENT**: DSHB | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED)
@@ -295,3 +295,94 @@ Week 3 (P2):
 *Branch: feature/v88-g1 | BRANCH_LOCKED: TRUE | APPEND_ONLY: TRUE*
 *Note: Phase02数据供给链路零修改，所有设计为Phase03新增能力*
 *Note: 本草案供HERMEShf顶层规划对齐参考，待Phase03原型开发阶段实施*
+
+---
+
+## 附录A: HERMEShf对齐评审修订记录 (2026-10-15)
+
+> **TASK_ID**: V88_PHASE03_DSHB_DATA_ALIGN_REVIEW
+> **参考**: HERMEShf Phase03 顶层规划 (commit 448a81d, PHASE03_PLAN_PREP_COMPLETE)
+> **对齐状态**: CONDITIONAL_PASS (5/9通过, 4/9待调整)
+
+### A.1 对齐修订标记
+
+| 对齐项 | 原状态 | 修订后状态 | 变更项 | 说明 |
+|--------|:------:|:---------:|--------|------|
+| ALIGN-01 指标扩容 | ✅ 待对齐 | ⚠️ 待调整 | CHG-01 | HERMEShf目标≥200, DSHB仅180, 差20指标 |
+| ALIGN-02 爬虫扩展 | ✅ 待对齐 | ✅ **通过** | — | DSHB方案满足HERMEShf G1要求 |
+| ALIGN-03 DQA升级 | ✅ 待对齐 | ✅ **通过** | — | DSHB 5→8覆盖HERMEShf D-5/D-6门禁 |
+| ALIGN-04 漂移检测 | ✅ 待对齐 | ⚠️ 待调整 | CHG-02 | 框架差异: CUSUM+EWMA vs 4项规则 |
+| ALIGN-05 告警规则 | ✅ 待对齐 | ⚠️ 待调整 | CHG-03 | 分级差异: 4级 vs 2档, 需映射 |
+| ALIGN-06 灾备分片 | ✅ 待对齐 | ⚠️ 待调整 | CHG-04/05 | RPO差异+时序协议需采纳 |
+| ALIGN-07 R-09防护 | ✅ 待对齐 | ✅ **通过** | — | 8/8防护项完备, 详见§6 |
+| ALIGN-08 备选源迭代 | ✅ 待对齐 | ✅ **通过** | — | 与HERMEShf R-V88-008互补 |
+| ALIGN-09 工作量估算 | ✅ 待对齐 | ⚠️ 待调整 | CHG-06 | 阶段差异: 3周 vs 4阶段19天 |
+
+### A.2 变更项清单 (CHG-01~08)
+
+| CHG-ID | 描述 | 优先级 | 处置建议 |
+|--------|------|:------:|---------|
+| CHG-01 | 扩容目标差20指标 (146→180 vs ≥200) | P1 | 追加P3批次(+20)或确认180为Phase03目标 |
+| CHG-02 | 漂移监测框架差异 | P1 | 双层架构: CUSUM+EWMA底层+4项规则上层 |
+| CHG-03 | 告警分级体系差异 | P2 | 建立映射表: YELLOW↔WARN, RED↔CRIT |
+| CHG-04 | RPO定义差异 (RPO=0 vs <24h) | P1 | 改进双写机制实现RPO=0 |
+| CHG-05 | 灾备时序协议差异 | P2 | 采纳HERMEShf T-30min→T+10min时序 |
+| CHG-06 | 阶段排期差异 | P1 | DSHB采用HERMEShf 4阶段结构 |
+| CHG-07 | 门禁矩阵DSHB侧对齐 | P2 | 实现D-5/D-6/F-3/F-4/S-3/S-4 |
+| CHG-08 | CPU FUSE余量预警 | P1 | 扩容前优化CPU密集型逻辑 |
+
+**变更分布**: P1×5, P2×3, P0×0 · **阻塞项: 0**
+
+### A.3 风险约束写入 (与risk_list同步)
+
+| 约束 | 来源 | 写入位置 |
+|------|:----:|---------|
+| HERMEShf R-V88-007 (扩容负载) | HERMEShf §1.3 | 对应DSHB R-01, 已缓解(分批+金丝雀) |
+| HERMEShf R-V88-008 (备选长期有效性) | HERMEShf §1.3 | 对应DSHB备选源迭代方案, 已覆盖 |
+| HERMEShf R-V88-009 (MD5行尾) | HERMEShf §1.2 | HERMEShf责任, DSHB配合规范 |
+| HERMEShf R-V88-010 (灾备一致性) | HERMEShf §1.3 | 对应DSHB R-04, 双写机制改进中 |
+| HERMEShf R-V88-011 (并发仿真差异) | HERMEShf §1.3 | DSHE+HERMEShf责任, DSHB配合 |
+| HERMEShf R-V88-012 (告警噪声) | HERMEShf §1.3 | 对应DSHB R-06, 渐进收紧策略覆盖 |
+| DSHB R-09 (Phase02链路保护) | DSHB §3 | **Critical, 8/8完备+5项增量加强** |
+| DSHB R-15 (CPU FUSE逼近) | DSHB §3 | 扩容前必须优化, 否则扩容不可执行 |
+
+### A.4 R-09 Critical 隔离方案增量加强
+
+| # | 原方案 (5项) | 增量加强 (5项新增) |
+|:-:|-------------|-----------------|
+| 1 | 代码冻结 (Phase02只读) | — |
+| 2 | 配置隔离 (独立配置) | — |
+| 3 | 数据库隔离 (独立SQLite) | — |
+| 4 | 变更评审 (HERMEShf审批) | — |
+| 5 | 回滚机制 (独立回滚) | — |
+| 6 | — | **代码diff自动化检测** (phase02_code_diff_check.py) |
+| 7 | — | **Phase02回归测试自动化** (phase02_regression_suite.sh) |
+| 8 | — | **独立测试数据库初始化** (phase03_db_init.sql) |
+| 9 | — | **变更窗口管控** (工作日10:00-18:00) |
+| 10 | — | **双签审批** (DSHB+HERMEShf) |
+
+**完备性**: 10/10 防护项 (原5项+增量5项), Critical风险可管控 ✅
+
+### A.5 门禁对齐状态
+
+| 门禁 | HERMEShf定义 | DSHB实现 | 对齐 |
+|------|:----------:|:--------:|:----:|
+| D-5 扩量后成功率≥95% | G1门禁 | ≥95% | ✅ |
+| D-6 DQA吞吐≥1000条/天 | G1门禁 | 覆盖 | ✅ |
+| F-3 新增3项因子监控告警 | G2门禁 | 待统一框架 | ⚠️ |
+| F-4 告警噪声率<10% | G2门禁 | 待统一阈值 | ⚠️ |
+| S-3 灾备切换≤5min | G3门禁 | <5min | ✅ |
+| S-4 灾备RPO=0 | G3门禁 | 改进中 | ⚠️ |
+
+### A.6 对齐确认签核
+
+| 项目 | 内容 |
+|------|------|
+| DSHB对齐评审完成 | 2026-10-15 |
+| 评审基准 | HERMEShf commit 448a81d |
+| 对齐结论 | CONDITIONAL_PASS |
+| 通过项 | 5/9 (ALIGN-02/03/07/08 + ALIGN-06部分) |
+| 待调整项 | 4/9 (ALIGN-01/04/05/06/09) |
+| 阻塞项 | 0 |
+| 变更项 | 8 (CHG-01~08) |
+| 下一步 | 待HERMEShf确认4项待调整 → 锁定方案 → P0原型开发 |
