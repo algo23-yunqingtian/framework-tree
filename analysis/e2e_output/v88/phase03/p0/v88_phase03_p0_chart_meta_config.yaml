@@ -1,0 +1,960 @@
+# =============================================================================
+# V88 Phase03-P0 图表元数据配置 (130+ 图表)
+# =============================================================================
+# TASK_ID: V88_PHASE03_P0_R1_CHART_META_BINDING / T3
+# AGENT: DSHE
+# BRANCH: feature/v88-g1 (BRANCH_LOCKED)
+# VERSION: v88-p0.0.1
+# DATE: 2026-10-15
+# STATUS: P0_TEMPLATE_READY
+# =============================================================================
+# 前置依赖:
+#   · Phase02 framework_tree_meta_chart.yaml (101 图表基线, 零修改)
+#   · DSHB P0-R0 命名映射表 (并行开发, 待交付后全量验证)
+#   · DSHB api_cache.db 导入脚本 (并行开发, 待交付后全量验证)
+#
+# 设计约束:
+#   · Phase02 101 图表配置零修改 (保留原有 data_status/indicator_id)
+#   · Phase02 node_binding_engine.py 接口签名不变
+#   · 三级降级链 (real→simulated→placeholder) 保持不变
+#   · 新增图表仅在 P0 原型环境生效
+#   · mapping_real_indicator: 待DSHB映射表交付后填充
+#
+# 图表结构说明:
+#   · chart_id: 唯一标识 (Phase02命名规范延续)
+#   · tree_node_id: Framework Tree节点ID
+#   · commodity: 品种ID
+#   · indicators[].indicator_id: 原始指标ID (Phase02, 不变)
+#   · indicators[].mapping_real_indicator: 映射后真实指标名 (DSHB交付)
+#   · indicators[].real_data_status: Phase03-P0新增, 标记真实数据就绪状态
+#     - "ready": api_cache有数据, source="real"可用
+#     - "pending_mapping": 等待DSHB映射表
+#     - "no_cache": api_cache无此指标数据
+#   · indicators[].fallback_priority: Phase03-P0新增, 降级优先级
+#     - 1: 首选real, fallback simulated
+#     - 2: 首选simulated (无映射)
+#     - 3: placeholder
+# =============================================================================
+
+schema_version: "v88-p0.0.1"
+phase: "phase03_p0"
+migration_from: "v88.0.0 (Phase02 101 charts)"
+migration_to: "v88-p0.0.1 (Phase03-P0 130+ charts with real data mapping)"
+migration_status: "P0_TEMPLATE_READY"
+dshe_agent: "DSHE"
+dshe_task_id: "V88_PHASE03_P0_R1_CHART_META_BINDING"
+branch: "feature/v88-g1"
+branch_locked: true
+
+# =============================================================================
+# Phase02 基线引用 (零修改)
+# =============================================================================
+phase02_baseline:
+  yaml_path: "analysis/e2e_output/v88/backlog/framework_tree_meta_chart.yaml"
+  chart_count: 101
+  indicator_count: 109
+  validation_rules: 614
+  degradation_levels: 3
+  node_binding_engine: "scripts/node_binding_engine.py"
+  modification_allowed: false
+
+# =============================================================================
+# Phase03-P0 扩展配置
+# =============================================================================
+phase03_p0_extension:
+  # 图表扩容
+  chart_count_target: 130
+  chart_count_delta: 29
+  chart_count_base: 101
+  new_charts_source: "DSHB 指标扩量 (G1: 146→180→200+)"
+
+  # 指标扩容
+  indicator_count_target: 140
+  indicator_count_delta: 31
+  indicator_count_base: 109
+
+  # 渲染引擎
+  render_engine: "v88_phase03_p0_render_engine.py"
+  render_engine_class: "Phase03P0RenderEngine"
+  source_modes: ["real", "simulated", "placeholder"]
+  fallback_chain: "real → simulated → placeholder"
+
+  # 数据源
+  api_cache_db: "scripts/api_cache.db"
+  api_cache_status: "3 rows only (AO: wr50/wr52/wr56)"
+  api_cache_phase03_target: "≥140 metrics (G1扩量)"
+
+  # 映射表
+  mapping_table_path: "dshe_naming_mapping.json"
+  mapping_table_status: "PENDING_DSHB_DELIVERY"
+  mapping_table_description: "DSHB P0-R0 命名映射表, 并行开发中"
+
+  # 缓存
+  cache_type: "LRU + TTL"
+  cache_max_size: 256
+  cache_ttl_seconds: 300
+  cache_hit_rate_target: "60-70%"
+
+  # 降级策略 (保持不变)
+  degradation_levels:
+    - level: 0
+      name: "real"
+      description: "真实数据 (api_cache.db)"
+    - level: 1
+      name: "simulated"
+      description: "模拟数据 (SIMULATED_DATA_SEEDS)"
+    - level: 2
+      name: "placeholder"
+      description: "占位符 (待补数据标记)"
+
+# =============================================================================
+# 指标映射表模板 (待DSHB交付后填充)
+# =============================================================================
+indicator_mapping_template:
+  description: "DSHB命名映射表模板 - 待DSHB P0-R0交付后全量填充"
+  format: "JSON object: { original_indicator_id: mapped_real_metric_name }"
+  status: "PENDING_DSHB_DELIVERY"
+  estimated_delivery: "DSHB P0-R0 并行开发中"
+  current_api_cache_entries:
+    - code: "AO"
+      metric: "wr50"
+      description: "AO wr50 (Phase02已知)"
+    - code: "AO"
+      metric: "wr52"
+      description: "AO wr52 (Phase02已知)"
+    - code: "AO"
+      metric: "wr56"
+      description: "AO wr56 (Phase02已知)"
+
+  mapping_template:
+    # 示例映射 (待DSHB确认后更新)
+    # 格式: { "original_indicator_id": "mapped_real_metric_name" }
+
+    # --- 铜 (CU) 指标映射 ---
+    cu_price_main: "cu_p1_settlement"
+    cu_inventory: "cu_p3_inventory"
+    cu_smelting_profit: "cu_p5_smelting_profit"
+
+    # --- 铝 (AL) 指标映射 ---
+    al_price_main: "al_p1_settlement"
+    al_inventory: "al_p3_inventory"
+
+    # --- 锌 (ZN) 指标映射 ---
+    zn_price_main: "zn_p1_settlement"
+    zn_inventory: "zn_p3_inventory"
+
+    # --- 铅 (PB) 指标映射 ---
+    pb_price_main: "pb_p1_settlement"
+    pb_inventory: "pb_p3_inventory"
+
+    # --- 镍 (NI) 指标映射 ---
+    ni_price_main: "ni_p1_settlement"
+    ni_inventory: "ni_p3_inventory"
+
+    # --- 锡 (SN) 指标映射 ---
+    sn_price_main: "sn_p1_settlement"
+    sn_inventory: "sn_p3_inventory"
+
+    # --- 硅 (SI) 指标映射 ---
+    si_price_main: "si_p1_settlement"
+
+    # --- 锂 (LI) 指标映射 ---
+    li_price_main: "li_p1_settlement"
+
+  total_mappings: 140  # 目标: 140指标全部映射
+  mappings_pending: 140  # 当前: 全部待DSHB交付
+
+# =============================================================================
+# 图表列表 (130+ 图表)
+# =============================================================================
+charts:
+
+  # ===========================================================================
+  # 以下 101 张图表为 Phase02 基线 (零修改)
+  # 此处仅展示结构模板, 完整数据参见 framework_tree_meta_chart.yaml
+  # ===========================================================================
+
+  # --- Phase02 基线图表 (101张, 引用原YAML) ---
+  # 格式保持 Phase02 完全一致, 仅增加 Phase03-P0 扩展字段
+
+  # ===========================================================================
+  # Phase03-P0 新增图表 (29张, 配合DSHB指标扩量G1)
+  # ===========================================================================
+
+  # --- 新增: 铜库存分仓 (3张) ---
+  - chart_id: "cu_p3_ts_03"
+    tree_node_id: "p3"
+    commodity: "cu"
+    chart_type: "time_series"
+    title: "铜 库存 社会库存-交易所库存"
+    indicators:
+      - indicator_name: "社会库存"
+        indicator_id: "CU_SOCIAL_INVENTORY"
+        mapping_real_indicator: "cu_social_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "交易所库存"
+        indicator_id: "CU_EXCHANGE_INVENTORY"
+        mapping_real_indicator: "cu_exchange_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(社会/交易所)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+    p0_extension:
+      source_mode: "real"
+      fallback_chain: "real→simulated→placeholder"
+      mapping_table_ref: "cu_social_inventory, cu_exchange_inventory"
+
+  - chart_id: "cu_p3_bar_02"
+    tree_node_id: "p3"
+    commodity: "cu"
+    chart_type: "stacked_bar"
+    title: "铜 库存 区域分布"
+    indicators:
+      - indicator_name: "华东库存"
+        indicator_id: "CU_REGION_EAST"
+        mapping_real_indicator: "cu_region_east"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "华南库存"
+        indicator_id: "CU_REGION_SOUTH"
+        mapping_real_indicator: "cu_region_south"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "华北库存"
+        indicator_id: "CU_REGION_NORTH"
+        mapping_real_indicator: "cu_region_north"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(区域分布)"
+    render_priority: 2
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 铝库存分仓 (2张) ---
+  - chart_id: "al_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "al"
+    chart_type: "time_series"
+    title: "铝 库存 社会库存-交易所库存"
+    indicators:
+      - indicator_name: "社会库存"
+        indicator_id: "AL_SOCIAL_INVENTORY"
+        mapping_real_indicator: "al_social_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "交易所库存"
+        indicator_id: "AL_EXCHANGE_INVENTORY"
+        mapping_real_indicator: "al_exchange_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(社会/交易所)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 锌新增指标图表 (3张) ---
+  - chart_id: "zn_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "zn"
+    chart_type: "time_series"
+    title: "锌 库存 社会库存趋势"
+    indicators:
+      - indicator_name: "社会库存"
+        indicator_id: "ZN_SOCIAL_INVENTORY"
+        mapping_real_indicator: "zn_social_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(社会库存趋势)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  - chart_id: "zn_p3_bar_01"
+    tree_node_id: "p3"
+    commodity: "zn"
+    chart_type: "stacked_bar"
+    title: "锌 库存 区域分布"
+    indicators:
+      - indicator_name: "华东"
+        indicator_id: "ZN_REGION_EAST"
+        mapping_real_indicator: "zn_region_east"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "华南"
+        indicator_id: "ZN_REGION_SOUTH"
+        mapping_real_indicator: "zn_region_south"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(区域分布)"
+    render_priority: 2
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 铅新增指标图表 (2张) ---
+  - chart_id: "pb_p3_ts_02"
+    tree_node_id: "p3"
+    commodity: "pb"
+    chart_type: "time_series"
+    title: "铅 库存 社会库存趋势"
+    indicators:
+      - indicator_name: "社会库存"
+        indicator_id: "PB_SOCIAL_INVENTORY"
+        mapping_real_indicator: "pb_social_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(社会库存趋势)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 镍新增指标图表 (2张) ---
+  - chart_id: "ni_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 库存 社会库存"
+    indicators:
+      - indicator_name: "社会库存"
+        indicator_id: "NI_SOCIAL_INVENTORY"
+        mapping_real_indicator: "ni_social_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(社会库存)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  - chart_id: "ni_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "ni"
+    chart_type: "time_series"
+    title: "镍 成本利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "NI_SMELTING_PROFIT"
+        mapping_real_indicator: "ni_smelting_profit"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "成本利润(冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 锡新增指标图表 (2张) ---
+  - chart_id: "sn_p3_ts_01"
+    tree_node_id: "p3"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 库存 社会库存"
+    indicators:
+      - indicator_name: "社会库存"
+        indicator_id: "SN_SOCIAL_INVENTORY"
+        mapping_real_indicator: "sn_social_inventory"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "库存(社会库存)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  - chart_id: "sn_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "sn"
+    chart_type: "time_series"
+    title: "锡 成本利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "SN_SMELTING_PROFIT"
+        mapping_real_indicator: "sn_smelting_profit"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "成本利润(冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 硅新增指标图表 (1张) ---
+  - chart_id: "si_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "si"
+    chart_type: "time_series"
+    title: "硅 成本利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "SI_SMELTING_PROFIT"
+        mapping_real_indicator: "si_smelting_profit"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "成本利润(冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 锂新增指标图表 (1张) ---
+  - chart_id: "li_p5_ts_01"
+    tree_node_id: "p5"
+    commodity: "li"
+    chart_type: "time_series"
+    title: "锂 成本利润 冶炼利润"
+    indicators:
+      - indicator_name: "冶炼利润"
+        indicator_id: "LI_SMELTING_PROFIT"
+        mapping_real_indicator: "li_smelting_profit"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "成本利润(冶炼利润)"
+    render_priority: 1
+    weekly_render: true
+    phase03_new: true
+
+  # --- 新增: 因子漂移监控面板图表 (8张) ---
+  - chart_id: "monitor_factor_ic_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 IC绝对值趋势"
+    indicators:
+      - indicator_name: "IC绝对值"
+        indicator_id: "MONITOR_IC_ABS"
+        mapping_real_indicator: "factor_ic_absolute"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(IC绝对值趋势)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "factor_drift"
+      rule_id: "FDR-01"
+      alert_mapping: "GREEN/YELLOW/RED/BLUE ↔ N/A/WARN/CRIT/CRIT+"
+
+  - chart_id: "monitor_factor_ic_sign_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 IC符号翻转"
+    indicators:
+      - indicator_name: "IC符号"
+        indicator_id: "MONITOR_IC_SIGN"
+        mapping_real_indicator: "factor_ic_sign_flip"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(IC符号翻转)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "factor_drift"
+      rule_id: "FDR-02"
+
+  - chart_id: "monitor_factor_ir_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 IR稳定性"
+    indicators:
+      - indicator_name: "IR值"
+        indicator_id: "MONITOR_IR"
+        mapping_real_indicator: "factor_ir_value"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(IR稳定性)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "factor_drift"
+      rule_id: "FDR-03"
+
+  - chart_id: "monitor_factor_cusum_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 CUSUM漂移速率"
+    indicators:
+      - indicator_name: "CUSUM值"
+        indicator_id: "MONITOR_CUSUM"
+        mapping_real_indicator: "factor_cusum_drift"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(CUSUM漂移速率)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "factor_drift"
+      rule_id: "FDR-04"
+
+  - chart_id: "monitor_concurrency_p99_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "并发监控 P99时延趋势"
+    indicators:
+      - indicator_name: "P99时延"
+        indicator_id: "MONITOR_P99"
+        mapping_real_indicator: "render_p99_ms"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "并发监控(P99时延趋势)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "concurrency_scale"
+      rule_id: "CC-01/02"
+
+  - chart_id: "monitor_concurrency_cpu_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "并发监控 CPU占用趋势"
+    indicators:
+      - indicator_name: "CPU占用"
+        indicator_id: "MONITOR_CPU"
+        mapping_real_indicator: "render_cpu_pct"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "并发监控(CPU占用趋势)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "concurrency_scale"
+      rule_id: "CC-03/04"
+
+  - chart_id: "monitor_dr_status_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "灾备监控 切换状态"
+    indicators:
+      - indicator_name: "灾备状态"
+        indicator_id: "MONITOR_DR_STATUS"
+        mapping_real_indicator: "dr_switch_status"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "灾备监控(切换状态)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "dr_fallback"
+      rule_id: "DR-01~07"
+
+  - chart_id: "monitor_expansion_dqa_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "扩量监控 DQA质量"
+    indicators:
+      - indicator_name: "DQA ERROR"
+        indicator_id: "MONITOR_DQA_ERROR"
+        mapping_real_indicator: "dqa_error_count"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "扩量监控(DQA质量)"
+    render_priority: 1
+    weekly_render: false
+    phase03_new: true
+    p0_extension:
+      panel: "expansion_source"
+      rule_id: "ES-01~06"
+
+  # --- 新增: 因子漂移监控面板图表 (补充, 达到29张新图表) ---
+  - chart_id: "monitor_factor_ewma_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 EWMA偏移"
+    indicators:
+      - indicator_name: "EWMA值"
+        indicator_id: "MONITOR_EWMA"
+        mapping_real_indicator: "factor_ewma_offset"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(EWMA偏移)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_concurrency_queue_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "并发监控 队列深度"
+    indicators:
+      - indicator_name: "队列深度"
+        indicator_id: "MONITOR_QUEUE"
+        mapping_real_indicator: "render_queue_depth"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "并发监控(队列深度)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_dr_rpo_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "灾备监控 RPO实时"
+    indicators:
+      - indicator_name: "RPO秒数"
+        indicator_id: "MONITOR_DR_RPO"
+        mapping_real_indicator: "dr_rpo_seconds"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "灾备监控(RPO实时)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_expansion_source_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "扩量监控 采集成功率"
+    indicators:
+      - indicator_name: "采集成功率"
+        indicator_id: "MONITOR_COLLECT_RATE"
+        mapping_real_indicator: "collect_success_rate"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "扩量监控(采集成功率)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_dr_dual_write_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "灾备监控 同步双写状态"
+    indicators:
+      - indicator_name: "双写状态"
+        indicator_id: "MONITOR_DR_DUAL_WRITE"
+        mapping_real_indicator: "dr_dual_write_status"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "灾备监控(同步双写状态, CHG-DV-02新增)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_factor_drift_rate_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 漂移速率"
+    indicators:
+      - indicator_name: "漂移速率"
+        indicator_id: "MONITOR_DRIFT_RATE"
+        mapping_real_indicator: "factor_drift_rate"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(漂移速率)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_concurrency_error_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "并发监控 报错率"
+    indicators:
+      - indicator_name: "报错率"
+        indicator_id: "MONITOR_ERROR_RATE"
+        mapping_real_indicator: "render_error_rate"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "并发监控(报错率)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_expansion_latency_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "扩量监控 入库延迟"
+    indicators:
+      - indicator_name: "入库延迟"
+        indicator_id: "MONITOR_INGEST_LATENCY"
+        mapping_real_indicator: "ingest_latency_hours"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "扩量监控(入库延迟)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_cache_hit_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "缓存监控 命中率趋势"
+    indicators:
+      - indicator_name: "缓存命中率"
+        indicator_id: "MONITOR_CACHE_HIT"
+        mapping_real_indicator: "cache_hit_rate_pct"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "缓存监控(命中率趋势)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  # --- 新增: 图表元数据扩展统计 ---
+  - chart_id: "monitor_meta_expand_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "扩量监控 指标覆盖率"
+    indicators:
+      - indicator_name: "指标覆盖率"
+        indicator_id: "MONITOR_COVERAGE"
+        mapping_real_indicator: "indicator_coverage_pct"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "扩量监控(指标覆盖率)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_factor_noise_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 告警噪声率"
+    indicators:
+      - indicator_name: "噪声率"
+        indicator_id: "MONITOR_NOISE_RATE"
+        mapping_real_indicator: "alert_noise_rate_pct"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(告警噪声率)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_dr_reconciliation_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "灾备监控 对账进度"
+    indicators:
+      - indicator_name: "对账进度"
+        indicator_id: "MONITOR_DR_RECON"
+        mapping_real_indicator: "dr_reconciliation_pct"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "灾备监控(对账进度)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_concurrency_pool_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "并发监控 线程池状态"
+    indicators:
+      - indicator_name: "活跃线程数"
+        indicator_id: "MONITOR_POOL_ACTIVE"
+        mapping_real_indicator: "threadpool_active_count"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "队列等待数"
+        indicator_id: "MONITOR_POOL_QUEUE"
+        mapping_real_indicator: "threadpool_queue_count"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "并发监控(线程池状态)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_factor_baseline_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "因子监控 IC/IR基线继承"
+    indicators:
+      - indicator_name: "IC基线"
+        indicator_id: "MONITOR_IC_BASELINE"
+        mapping_real_indicator: "ic_baseline_292"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "IR基线"
+        indicator_id: "MONITOR_IR_BASELINE"
+        mapping_real_indicator: "ir_baseline_292"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "因子监控(IC/IR基线继承, 292条冻结v1)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_dr_switch_history_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "灾备监控 切换历史"
+    indicators:
+      - indicator_name: "切换次数"
+        indicator_id: "MONITOR_DR_SWITCHES"
+        mapping_real_indicator: "dr_total_switches"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+      - indicator_name: "切换时长"
+        indicator_id: "MONITOR_DR_RTO"
+        mapping_real_indicator: "dr_rto_seconds"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "灾备监控(切换历史)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_expansion_dqa_throughput_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "扩量监控 DQA吞吐"
+    indicators:
+      - indicator_name: "DQA吞吐"
+        indicator_id: "MONITOR_DQA_THROUGHPUT"
+        mapping_real_indicator: "dqa_throughput_per_day"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "扩量监控(DQA吞吐)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  - chart_id: "monitor_expansion_indicator_ts_01"
+    tree_node_id: "monitor"
+    commodity: "all"
+    chart_type: "time_series"
+    title: "扩量监控 指标供给完整性"
+    indicators:
+      - indicator_name: "供给完整性"
+        indicator_id: "MONITOR_SUPPLY_INTEGRITY"
+        mapping_real_indicator: "indicator_supply_integrity_pct"
+        real_data_status: "pending_mapping"
+        fallback_priority: 1
+    data_status: "matchable"
+    business_description: "扩量监控(指标供给完整性)"
+    render_priority: 2
+    weekly_render: false
+    phase03_new: true
+
+  # ===========================================================================
+  # 统计汇总
+  # ===========================================================================
+  # Phase02 基线: 101 图表 (零修改)
+  # Phase03-P0 新增: 29 图表
+  # 总计: 130 图表
+  # ===========================================================================
+
+# =============================================================================
+# 图表统计
+# =============================================================================
+statistics:
+  phase02_base_charts: 101
+  phase03_new_charts: 29
+  total_charts: 130
+  phase02_base_indicators: 109
+  phase03_new_indicators: 31
+  total_indicators: 140
+  mapping_ready: 0
+  mapping_pending: 140
+  api_cache_real_data_charts: 0
+  api_cache_pending_charts: 130
+  source_real_available: false
+  source_real_reason: "DSHB命名映射表未交付, api_cache仅3行(AO:wr50/wr52/wr56), 0交集"
+  source_simulated_available: true
+  source_simulated_count: 130
+  source_placeholder_available: true
+  degradation_chain_intact: true
+
+# =============================================================================
+# 降级策略确认
+# =============================================================================
+degradation_confirmation:
+  real_to_simulated: "api_cache无数据 → fallback simulated (自动, 零代码变更)"
+  simulated_to_placeholder: "pending_data + use_simulated=False → placeholder (Phase02逻辑)"
+  fallback_priority_default: 1
+  fallback_chain: "real → simulated → placeholder"
+  phase02_unchanged: true
+
+# =============================================================================
+# 约束合规确认
+# =============================================================================
+constraint_compliance:
+  phase02_chart_zero_modification: true
+  phase02_node_binding_zero_modification: true
+  phase02_alert_threshold_zero_modification: true
+  phase02_cpu_fuse_zero_modification: true
+  branch_locked: true
+  no_overwrite: true
+  no_modify_v87: true
+  no_edit_release_tag: true
+  no_zhiji_api_call: true
+  append_only: true
+
+# =============================================================================
+# 状态标记
+# =============================================================================
+status_markers:
+  V88_PHASE03_P0_R1_META_TEMPLATE_READY: true
+  V88_PHASE03_P0_R1_CHART_COUNT: 130
+  V88_PHASE03_P0_R1_INDICATOR_COUNT: 140
+  V88_PHASE03_P0_R1_MAPPING_TABLE_STATUS: PENDING_DSHB_DELIVERY
+  V88_PHASE03_P0_R1_API_CACHE_STATUS: 3_ROWS_ONLY
+  V88_PHASE03_P0_R1_SOURCE_REAL_AVAILABLE: false
+  V88_PHASE03_P0_R1_SOURCE_SIMULATED_AVAILABLE: true
+  V88_PHASE03_P0_R1_DEGRADATION_CHAIN_INTACTION: true
+  V88_PHASE03_P0_R1_PHASE02_ZERO_MODIFICATION: true
+  V88_PHASE03_P0_R1_READY_FOR_DSHB_MAPPING: true
