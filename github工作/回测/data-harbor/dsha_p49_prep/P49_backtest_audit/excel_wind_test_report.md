@@ -1,9 +1,9 @@
 # DSHA-P54 Excel+Wind Minimal Feasibility Test Report
 
 > **Test ID**: DSHA-P54-WIND-EXCEL-MINIMAL-TEST-001
-> **Date**: 2026-10-16 16:15:14 GMT+8
+> **Date**: 2026-10-16 17:15 GMT+8 (Updated)
 > **Agent**: DSHA-P54
-> **Branch**: PHASE48_BASELINE
+> **Branch**: feature/v88-g1
 > **Gate**: CLOSED/HOLD
 > **Release Permit**: NOT_ISSUED
 
@@ -15,70 +15,93 @@
 |---|---|---|
 | Process Gate | **PASS** | FACTOR-004/006/007 allowed, FACTOR-001/002/003/005 blocked |
 | HOLD Block Enforcement | **PASS** | All 4 HOLD factors correctly terminate pipeline |
-| WindPy Backend | **NOT CONNECTED** | Wind desktop client not running (no active session) |
-| Excel+Wind Plugin | **AVAILABLE** | Wind Excel add-in installed and functional |
-| Formula Recognition | **PASS** | WSD function recognized by Excel |
-| Data Calculation | **BLOCKED** | Requires Wind client running + logged in |
-| **Overall** | **PARTIAL PASS** | Infrastructure ready, Wind credentials required |
+| Wind Desktop Client | **NOT FUNCTIONAL** | windlocal.exe exits immediately (code 0), all 26 CLI args tested |
+| WindPy Backend | **NOT CONNECTED** | start() ErrorCode=-2 (desktop client not running) |
+| Wind Excel Add-in (WDF) | **REGISTERED_NOT_LOADED** | COM registered, Excel Addins registered, but cannot load |
+| WSD/WSS Formula Execution | **BLOCKED** | COM error -2147352567 (Invalid formula name) |
+| Simple Excel Formula | **PASS** | =1+1 returns 2.0 (Excel works) |
+| Credentials Provided | **YES** | 13199157886 / Tyq1999! |
+| Credentials Usable | **NO** | WindPy requires desktop client running first |
+| **Overall** | **BLOCKED** | Wind desktop client not functional - ESCALATED TO DSHC |
 
 ---
 
-## 2. Test Configuration
+## 2. Wind Client Exploration (New - Session 2)
 
-| Parameter | Value |
+### 2.1 windlocal.exe Launch Attempts
+
+| Attempt | Command | Result |
+|---|---|---|
+| 1 | `windlocal.exe` | EXITED code=0 immediately |
+| 2 | `windlocal.exe /login` | EXITED code=0 |
+| 3 | `windlocal.exe -login` | EXITED code=0 |
+| 4 | `windlocal.exe --login` | EXITED code=0 |
+| 5 | `windlocal.exe /start` | EXITED code=0 |
+| 6-26 | Various args (`/daemon`, `/service`, `/silent`, `/headless`, etc.) | ALL EXITED code=0 |
+
+**Conclusion**: windlocal.exe exits immediately with code 0 regardless of arguments. It appears to be a launcher/bootstrapper that checks for conditions (license, config, service) and exits if not met.
+
+### 2.2 Other Wind Executables
+
+| Executable | Result |
 |---|---|
-| Factor | FACTOR-004 (G1 IC Threshold Factor) |
-| Wind Code | NI.SHF (Nickel SHFE) |
-| Fields | IC_score |
-| Date Range | 2024-01-01 ~ 2024-01-10 (10 trading days) |
-| Backend | Auto (WindPy → Excel fallback) |
+| WindNavigator.exe | Runs for 8+ seconds, then exits |
+| WindSC.exe | Exit code 3221225595 (crash) |
+| WindRS.exe | Exit code 3221225595 (crash) |
+| ModuleUpdate.exe | Exits after 1 second |
+| WindUpdate.RUN | Persistent process (21260), updater only |
 
----
+### 2.3 Wind Config Directories
 
-## 3. System Environment
+| Directory | Status |
+|---|---|
+| `C:\Users\YAQH\.wind` | EXISTS - only 1-byte marker files (WMain) |
+| `C:\Users\YAQH\AppData\Roaming\.Wind` | EXISTS - only 1-byte marker files (WMain/etc/res/users) |
+| No license files found | — |
+| No Wind environment variables | — |
 
-### 3.1 Python & Excel
-
-| Component | Status | Version |
-|---|---|---|
-| Python | AVAILABLE | 3.12.10 (64-bit) |
-| Excel COM | AVAILABLE | Office 365 |
-| xlwings | AVAILABLE | 0.37.4 |
-| openpyxl | AVAILABLE | — |
-| win32com | AVAILABLE | — |
-| comtypes | AVAILABLE | — |
-
-### 3.2 Wind Client Installation
-
-| Component | Status | Location |
-|---|---|---|
-| WindPy module | AVAILABLE | importable (v1.0) |
-| WindPy.dll (64-bit) | FOUND | `D:\x64\WindPy.dll` (2.4MB) |
-| WindPy.dll (32-bit) | FOUND | `D:\bin\WindPy.dll` (1.7MB) |
-| windlocal.exe | FOUND | `D:\x64\windlocal.exe` |
-| WindQuantData.dll | FOUND | `D:\x64\WindQuantData.dll` (5.1MB) |
-| WindTable.dll | FOUND | `D:\x64\WindTable.dll` (17.4MB) |
-| WINDDEFAULT.dll | FOUND | `D:\x64\WINDDEFAULT.dll` (25.9MB) |
-| WindTerminal | NOT RUNNING | No active process |
-| Wind Login Session | NOT SAVED | Config dirs empty |
-
-### 3.3 WindPy API Status
+### 2.4 WindPy API Status
 
 ```
 WindPy.isconnected() → False
-WindPy.start()       → ErrorCode=-2 (WQERR_INTERNAL_ERROR)
-WindPy.getversion()  → WindPy.dll 1.0.0.1, WindPy.py 1.0
-WindPy.dllpath       → ['D:\x64']
+WindPy.start()       → ErrorCode=-2 (Start Error!)
+WindPy.c_start("13199157886", "Tyq1999!", 30000) → ErrorCode=-2
+WindPy.c_start("", "", 30000) → ErrorCode=-2
 ```
 
-### 3.4 Excel+Wind Plugin Status
+**Conclusion**: ErrorCode=-2 means the Wind desktop client is not running at all. WindPy cannot connect directly to a Wind server - it requires the desktop client to be running as an intermediary.
 
-```
-xlwings.App(visible=False) → OK
-app.books.add()            → OK (workbook created)
-WSD function recognition   → AVAILABLE ([1]!WSD formula stored)
-Formula calculation        → BLOCKED (requires Wind client running)
-```
+---
+
+## 3. Excel+Wind Plugin Deep Exploration (New - Session 2)
+
+### 3.1 COM Registration Status
+
+| Item | Status |
+|---|---|
+| WDF.XLTaskPanel COM object | REGISTERED (HKCR\CLSID\{6B525F62-...}) |
+| wdf.dll location | `D:\x64\wdf.dll` (15MB) |
+| Excel Addins registry | REGISTERED (LoadBehavior=3) |
+| regExcel.bat | Registers `wdf.dll` via `regsvr32` |
+
+### 3.2 Excel Add-in Loading
+
+| Test | Result |
+|---|---|
+| `excel.COMAddIns.Count` | 7 (add-ins present) |
+| WDF in COMAddIns list | NOT FOUND (all 7 have "Item.Name" read errors) |
+| `AddWithPath("D:\x64\wdf.dll")` | FAILED |
+| Simple formula `=1+1` | **PASS** (returns 2.0) |
+| `=[1]!WSD(...)` formula | **FAILED** (COM error -2147352567) |
+| `=[1]!WSS(...)` formula | **FAILED** (COM error -2147352567) |
+| openpyxl write + Excel open | **FAILED** (Excel rejects formula on open) |
+
+### 3.3 Root Cause
+
+The WDF Excel add-in requires the Wind desktop client to be running. Without it:
+1. The add-in cannot load into Excel
+2. WSD/WSS functions are not registered as Excel functions
+3. Formulas referencing `[1]!WSD(...)` fail with "Invalid formula name"
 
 ---
 
@@ -89,12 +112,10 @@ Formula calculation        → BLOCKED (requires Wind client running)
 | FACTOR-004 (G1 IC Threshold) | ALLOWED (CONDITIONAL_PASS) |
 | FACTOR-006 (G7 Leakage Ratio) | ALLOWED (CONDITIONAL_PASS) |
 | FACTOR-007 (SchemeD Frozen Weights) | ALLOWED (CONDITIONAL_PASS) |
-| FACTOR-001 (F19 Hot Money) | **BLOCKED** (HOLD - synthetic-data-zero-signal) |
-| FACTOR-002 (F20 Attention) | **BLOCKED** (HOLD - synthetic-data-zero-signal) |
-| FACTOR-003 (CF003 Speculation) | **BLOCKED** (HOLD - synthetic-data-zero-signal) |
-| FACTOR-005 (G3 ICIR) | **BLOCKED** (HOLD - icir-definition-redesign-required) |
-| Process Gate | ENFORCED (PRE_COMPUTE_CHECK) |
-| Circuit Breaker | READY (DSHD_AUDIT_TRIGGERED_STOP) |
+| FACTOR-001 (F19 Hot Money) | **BLOCKED** (HOLD) |
+| FACTOR-002 (F20 Attention) | **BLOCKED** (HOLD) |
+| FACTOR-003 (CF003 Speculation) | **BLOCKED** (HOLD) |
+| FACTOR-005 (G3 ICIR) | **BLOCKED** (HOLD) |
 | Gate Status | CLOSED/HOLD |
 | Release Permit | NOT_ISSUED |
 | Wind API Calls | 0 |
@@ -102,107 +123,68 @@ Formula calculation        → BLOCKED (requires Wind client running)
 
 ---
 
-## 5. Key Findings
+## 5. Code Infrastructure Status
 
-### 5.1 Excel+Wind Plugin IS INSTALLED
-
-The Wind Excel add-in IS installed on this machine. Evidence:
-- WSD function is recognized by Excel (formula `=[1]!WSD(...)` stored successfully)
-- Plugin check passes (no #NAME? error)
-- This means the Wind desktop client WAS installed and configured at some point
-
-### 5.2 Wind Client NOT Running
-
-Despite the plugin being installed, the Wind desktop client is NOT currently running:
-- `WindPy.isconnected()` returns `False`
-- `WindPy.start()` returns `ErrorCode=-2` (internal error - no active session)
-- No `windlocal.exe` process running
-- Wind config directories (`C:\Users\YAQH\.wind\`, `C:\Users\YAQH\AppData\Roaming\.Wind\`) are empty shells
-
-### 5.3 Both Backends Require Wind Login
-
-| Backend | Plugin Installed | Data Available | Blocker |
-|---|---|---|---|
-| WindPy Direct | N/A (DLL present) | NO | Wind client not running |
-| Excel+Wind Plugin | YES | NO | Wind client not running |
-
-Both approaches require the Wind desktop client to be **running and logged in** with valid credentials.
-
-### 5.4 Output File
-
-```
-Path: D:\DSH_WORK\github工作\回测\data-harbor\dsha_p49_prep\P49_backtest_audit\wind_excel_data\
-      minimal_test_NI.SHF_161459.xlsx
-Content: WSD formula stored (=[1]!WSD("NI.SHF","IC_score","2024-01-01","2024-01-10"))
-Calculated data: NOT POPULATED (requires Wind client running)
-```
+| Component | Status | File |
+|---|---|---|
+| Dual Backend Architecture | **READY** | `wind_excel_automation.py` |
+| Process Gate (HOLD enforcement) | **READY** | `wind_excel_automation.py` |
+| Audit Logger (JSONL + log) | **READY** | `wind_excel_automation.py` |
+| Minimal Test Script | **READY** | `excel_wind_test_minimal.py` |
+| Full Pipeline (108 calls) | **READY** | `wind_data_pull_pipeline.py` |
+| Factor Calculation | **READY** | (pipeline includes) |
 
 ---
 
-## 6. Recommendations
+## 6. Blocker Report
 
-### Immediate Actions Required
+### BLOCKER: WIND_DESKTOP_CLIENT_NOT_FUNCTIONAL
 
-1. **Launch Wind Desktop Client**: Run `D:\x64\windlocal.exe` and log in with Wind API credentials
-2. **Obtain Credentials from DSHC**: Username/password for Wind API access
-3. **Verify Session**: Confirm `WindPy.isconnected()` returns `True` after login
-4. **Re-run This Test**: Execute `excel_wind_test_minimal.py` with active Wind session
+**Severity**: CRITICAL
 
-### Once Wind Client Is Active
+**Impact**:
+- All Wind data queries blocked (108 calls for FACTOR-004/006/007)
+- Excel Wind plugin cannot load without desktop client
+- WindPy cannot connect without desktop client
+- Backtest cannot start
 
-1. Minimal test should return actual data (10 rows for NI.SHF IC_score, 2024-01-01~2024-01-10)
-2. Proceed to full 7-table data pull pipeline
-3. Execute FACTOR-004/006/007 backtest computation
+**What Was Tried**:
+1. windlocal.exe launch (exits code 0 immediately)
+2. 26 CLI argument combinations (all exit code 0)
+3. WindNavigator.exe / WindSC.exe / WindRS.exe (all fail)
+4. WindPy start() with and without credentials (ErrorCode=-2)
+5. WindPy c_start() with credentials directly (ErrorCode=-2)
+6. WDF Excel add-in registration (registered but cannot load)
+7. openpyxl formula write + Excel calculate (formula not recognized)
 
----
+**What Is Needed**:
+1. Wind desktop client must be properly installed with valid license
+2. windlocal.exe must start and remain running as a service
+3. OR: DSHC must provide alternative data access method
 
-## 7. Architecture Summary
-
-```
-DSHA-P54 Wind Data Pipeline (Excel+Wind Plugin Approach)
-├── WindAuditLogger          # DSHD-compatible audit logging (JSONL + log file)
-├── ProcessGate              # HOLD factor enforcement (PRE_COMPUTE_CHECK)
-├── HoldFactorTerminationError  # TERMINATE_PIPELINE_IMMEDIATELY
-├── ExcelWindBackend         # Excel COM + Wind plugin automation
-│   ├── check_wind_plugin()  # Verify Wind add-in availability
-│   ├── write_wsd_formula()  # Write WSD(security, field, start, end) formulas
-│   ├── write_wtd_formula()  # Write WTD(security, field, date) formulas
-│   ├── write_wss_formula()  # Write WSS(security, field) formulas
-│   ├── calculate_all()      # Force Excel calculation
-│   ├── save_workbook()      # Save .xlsx to output directory
-│   └── create_wsd_workbook() # End-to-end: write → calc → save → read back
-├── WindPyBackend            # Direct WindPy Python API (fallback)
-│   ├── check_connection()   # Verify WindPy session
-│   ├── start()              # Initialize WindPy
-│   ├── query_wsd()          # Query time series data
-│   └── stop()               # Close connection
-└── MinimalTestRunner        # 6-step feasibility test
-    ├── Step 1: Process Gate Check
-    ├── Step 2: HOLD Block Verification
-    ├── Step 3: Backend Availability
-    ├── Step 4: Data Query (WindPy → Excel fallback)
-    ├── Step 5: Results Report
-    └── Step 6: Finalize + Audit
-```
+**Escalation**: DSHC
 
 ---
 
-## 8. Audit Trail
+## 7. Audit Trail
 
-| Log File | Path |
-|---|---|
-| Audit Log | `wind_excel_audit.log` |
-| Event Log | `wind_excel_events.jsonl` |
-| Excel Output | `wind_excel_data/minimal_test_NI.SHF_161459.xlsx` |
+| Log File | Path | Events |
+|---|---|---|
+| Wind Excel Events | `wind_excel_events.jsonl` | 28 events |
+| Tracking Monitor | `tracking_monitor_audit.jsonl` | 39 events |
+| Audit Log | `wind_excel_audit.log` | Text log |
+| Excel Output | `wind_excel_data/` | Test files |
 
-### Audit Events Recorded
+### New Audit Events (Session 2)
 
 | Event ID | Type | Result |
 |---|---|---|
-| DSHA-P54-WIND-EXCEL-PIPELINE_READINESS_CHECK | PIPELINE_READINESS_CHECK | PASS |
-| DSHA-P54-WIND-EXCEL-MINIMAL_TEST_START | MINIMAL_TEST_START | STARTING |
-| DSHA-P54-WIND-EXCEL-MINIMAL_TEST_COMPLETE | MINIMAL_TEST_COMPLETE | PASS |
-| DSHA-P54-WIND-EXCEL-WIND_QUERY_RESULT | WIND_QUERY_RESULT | SUCCESS (1 row) |
+| DSHA-P54-WIND-EXCEL-WIND_CLIENT_LAUNCH | WIND_CLIENT_LAUNCH | BLOCKED |
+| DSHA-P54-WIND-EXCEL-EXCEL_PLUGIN_REGISTRATION | EXCEL_PLUGIN_REGISTRATION | REGISTERED_NOT_LOADED |
+| DSHA-P54-WIND-EXCEL-BLOCKER_REPORT | BLOCKER_REPORT | BLOCKED |
+| DSHA-P54-WIND-CLIENT-LAUNCH-001 | wind_client_launch_attempt | BLOCKED |
+| DSHA-P54-EXCEL-PLUGIN-EXPLORATION-001 | excel_plugin_exploration | BLOCKED_ON_CLIENT |
+| DSHA-P54-WIND-BLOCKER-ESCALATION-001 | wind_blocker_escalation | BLOCKED_ESCALATED |
 
 ### Governance Invariants (Maintained)
 
@@ -212,14 +194,11 @@ DSHA-P54 Wind Data Pipeline (Excel+Wind Plugin Approach)
 | backtest_started | false | MAINTAINED |
 | gate | CLOSED/HOLD | MAINTAINED |
 | release_permit | NOT_ISSUED | MAINTAINED |
-| p53_baseline_unchanged | true | MAINTAINED |
-| upstream_writes | 0 | MAINTAINED |
 | hold_factors_blocked | 4/4 | MAINTAINED |
 
 ---
 
-> **DSHA-P54 Declaration**: Excel+Wind plugin approach is INFRASTRUCTURALLY READY.
-> The Wind Excel add-in IS installed and WSD formulas are recognized.
-> **CRITICAL BLOCKER**: Wind desktop client must be launched and logged in with valid credentials.
-> Upon Wind client activation, the full 7-table data pull pipeline can proceed immediately.
+> **DSHA-P54 Declaration**: Code infrastructure is READY (dual backend + pipeline + audit logging).
+> **CRITICAL BLOCKER**: Wind desktop client not functional - escalated to DSHC.
 > All governance controls remain active. No HOLD factor was accessed.
+> wind_api_calls=0, backtest_started=false, gate=CLOSED/HOLD, release_permit=NOT_ISSUED.

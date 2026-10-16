@@ -1,0 +1,38 @@
+{
+  "_comment": "Wind API Configuration for DSHA-P54 - Created 2026-10-16",
+  "_status": "BLOCKED - Wind desktop client not functional",
+  "_credentials_provided": true,
+  "_credentials_note": "Credentials provided by user 2026-10-16 16:30 GMT+8. Cannot be used until Wind desktop client is functional.",
+  "api": {
+    "username": "13199157886",
+    "password": "Tyq1999!",
+    "server": "auto",
+    "use_windpy": true,
+    "windpy_path": "D:\\x64\\WindPy.dll"
+  },
+  "excel": {
+    "use_xlwings": true,
+    "headless": true,
+    "wind_addin_dll": "D:\\x64\\wdf.dll",
+    "wind_addin_clsrid": "{6B525F62-654D-4871-9080-19AB64B6EB2C}",
+    "wsd_formula_prefix": "[1]!",
+    "wind_local_exe": "D:\\x64\\windlocal.exe"
+  },
+  "environment": {
+    "python": "3.12.10",
+    "xlwings": "0.37.4",
+    "openpyxl": "3.1.2",
+    "win32com": "300.0.0",
+    "comtypes": "1.4.1",
+    "wind_py_version": "1.0",
+    "wind_dll_version": "WindPy.dll v1.0"
+  },
+  "blocker": {
+    "status": "BLOCKED",
+    "reason": "Wind desktop client (windlocal.exe) exits immediately with code 0",
+    "windpy_start_error": -2,
+    "excel_wsd_error": "COM error -2147352567 (Invalid formula name)",
+    "escalation": "DSHC",
+    "credentials_usable": false
+  }
+}
