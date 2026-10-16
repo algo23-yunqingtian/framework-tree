@@ -39,10 +39,11 @@ DSHD-P67 monitored the G7 adjudication cycle across **284+ polling cycles** (POL
 
 | Status | Count | Defect IDs |
 |---|---|---|
-| **OPEN 闂?Active / Persistent** | 5 | DEFECT-001, DEFECT-002, DEFECT-003, DEFECT-004, DEFECT-005 |
-| **RESOLVED** | 4 | DEFECT-006, DEFECT-007, DEFECT-008, DEFECT-009 |
+| **OPEN / Active or Deferred** | 4 | DEFECT-001, DEFECT-002, DEFECT-005, DEFECT-012 |
+| **BLOCKED_WAIT_HUMAN_ACTION** | 1 | DEFECT-004 |
+| **RESOLVED** | 5 | DEFECT-003, DEFECT-006, DEFECT-007, DEFECT-008, DEFECT-009 |
 | **INFORMATIONAL** | 2 | DEFECT-010, DEFECT-011 |
-| **Total** | **11** | 闂?|
+| **Total** | **12** | 闂?|
 
 ### 2.3 Defect Count by Severity
 
@@ -58,11 +59,11 @@ DSHD-P67 monitored the G7 adjudication cycle across **284+ polling cycles** (POL
 
 | # | Finding | Severity | Action Status |
 |---|---|---|---|
-| 1 | **Wind desktop client non-functional** 闂?all Wind data queries blocked; 108+ API calls for FACTOR-004/006/007 cannot execute | CRITICAL / BLOCKING | Escalated to DSHC; no response as of POLL-117+ |
-| 2 | **Plaintext credentials committed to git** 闂?3 ledger lines contain exposed credentials | CRITICAL / SECURITY | Escalated; CRITICAL_CREDENTIAL_DETECTED alert active |
+| 1 | **Wind desktop client non-functional** 闂?all Wind data queries blocked; 108+ API calls for FACTOR-004/006/007 cannot execute | CRITICAL / BLOCKING | BLOCKED_WAIT_HUMAN_ACTION; DSHC-P72 requires tomorrow human admin InitWAPI |
+| 2 | **Plaintext credentials committed to git** 闂?ledger exposures retained in history | CRITICAL / SECURITY | OPEN / DEFERRED_TO_LAUNCH; test continues with current account; no password change today |
 | 3 | **P61 scanner toolchain missing** 闂?`_p61_t0_staging/` directory absent; 10 deliverables unavailable | HIGH | Manual review completed as substitute (42/42 false alarms) |
-| 4 | **SHA256 checksum drift** 闂?14/17 files showed hash mismatch (process failure indicator) | HIGH | DSHC regenerated at 17:25; sync mechanism recommended |
-| 5 | **P49_pre_gray_check.md missing** 闂?pre-validation template unavailable | HIGH | DSHC confirmation required on restore necessity |
+| 4 | **SHA256 checksum drift** 闂?14/17 files showed hash mismatch (process failure indicator) | HIGH | DSHC regenerated earlier; DSHC-P72 refresh keeps DRIFT=0 for committed archive |
+| 5 | **P49_pre_gray_check.md missing** 闂?pre-validation template unavailable | HIGH | RESOLVED; file restored and checksummed |
 
 ---
 
@@ -267,9 +268,9 @@ This hash was recorded in the event log at event 18 but cannot be verified becau
 | **Defect ID** | DEFECT-004 |
 | **Title** | Wind Financial Terminal Desktop Client Non-Functional 闂?All Data Queries Blocked |
 | **Severity** | CRITICAL / BLOCKING |
-| **Status** | **IN_PROGRESS** / CRITICAL / BLOCKING (DSHA-P54 actively executing wind_fix_log.md V3 at 22:48-22:50) |
+| **Status** | **BLOCKED_WAIT_HUMAN_ACTION** / CRITICAL / BLOCKING (awaiting tomorrow manual `D:\bin\InitWAPI.exe` as admin) |
 | **First Observed** | 2026-10-16 17:19:11 (DSHA-P54) |
-| **Last Updated** | 2026-10-16 23:05 (DSHD-P67 闂?DSHA-P54 V3 testing complete; wind_fix_log.md produced; both paths FAILED) |
+| **Last Updated** | 2026-10-16 23:50 (DSHC-P72 闂?Excel route permitted; blocked waiting tomorrow human admin InitWAPI) |
 | **Evidence Anchors** | tracking_monitor_audit.jsonl lines 37闂?9, 54; wind_excel_events.jsonl lines 26闂?8, 52; wind_fix_log.md; DSHC escalation record; DSHD_WIND_CONNECTION_DIAGNOSIS.md 闁? |
 
 #### Description
