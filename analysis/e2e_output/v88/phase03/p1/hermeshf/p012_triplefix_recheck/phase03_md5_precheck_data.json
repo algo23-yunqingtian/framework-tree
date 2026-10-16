@@ -1,0 +1,1282 @@
+{
+  "task": "V88_PHASE03_P1_HERMESHF_P012_TRIPLEFIX_RECHECK_AND_PHASE03_PRE_ARCHIVE_JOB/T4",
+  "agent": "HERMEShf",
+  "generated": "2026-10-16T16:54:23+08:00",
+  "total_files": 253,
+  "total_size_kb": 137992.6,
+  "agent_counts": {
+    "PLAN/REVIEW": 7,
+    "P0": 83,
+    "DSHE": 43,
+    "DSHB": 82,
+    "HERMES": 30,
+    "OTHER": 8
+  },
+  "files": [
+    {
+      "path": "analysis/e2e_output/v88/phase03/plan/v88_phase03_agent_work_breakdown.md",
+      "size": 11789,
+      "md5": "81af3af18bdf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/plan/v88_phase03_gate_matrix.md",
+      "size": 8799,
+      "md5": "58c68271eef1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/plan/v88_phase03_top_level_plan.md",
+      "size": 14716,
+      "md5": "fbddee1814cd"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/review/MD5_MANIFEST.md",
+      "size": 766,
+      "md5": "2907d44e0d4c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/review/v88_phase03_gate_matrix.md",
+      "size": 21575,
+      "md5": "d64db7ce2df5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/review/v88_phase03_merged_risk_list.md",
+      "size": 75488,
+      "md5": "ff936055afb0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/review/v88_phase03_three_way_review_report.md",
+      "size": 28060,
+      "md5": "6d5a1009f1b1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/MD5_MANIFEST.md",
+      "size": 49193,
+      "md5": "d607d48a47ef"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/coverage_report.json",
+      "size": 52755,
+      "md5": "9908ef5b9923"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/dshe_naming_mapping.json",
+      "size": 3729,
+      "md5": "36b9c99b7edc"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_overall_gate_result.json",
+      "size": 26492,
+      "md5": "85039e217906"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_p1_probe_gate_result.json",
+      "size": 29933,
+      "md5": "2f7308880cc8"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_p1_probe_rebuild.log",
+      "size": 8134,
+      "md5": "d1410ecd1f7e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_after_engine_fix_gate_result.json",
+      "size": 30296,
+      "md5": "8947c8b002b5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_after_engine_fix_rebuild.log",
+      "size": 8134,
+      "md5": "ea2909769557"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_final_gate_gate_result.json",
+      "size": 29931,
+      "md5": "9b10be0f3668"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_final_gate_rebuild.log",
+      "size": 8134,
+      "md5": "6c989ee10ee0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_e2e_gate_result.json",
+      "size": 35591,
+      "md5": "a09add47a214"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_e2e_rebuild.log",
+      "size": 8134,
+      "md5": "a6b7fcae50d3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_followup_final_gate_result.json",
+      "size": 41083,
+      "md5": "9a05b1f58fa1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_followup_gate_result.json",
+      "size": 41337,
+      "md5": "bab63cd88b7f"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_followup_rebuild.log",
+      "size": 8134,
+      "md5": "f392f095ab9d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_followup_v2_gate_result.json",
+      "size": 41334,
+      "md5": "5497aa861799"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_followup_v2_rebuild.log",
+      "size": 8134,
+      "md5": "3f650a43852b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_followup_v3_gate_result.json",
+      "size": 41330,
+      "md5": "b9f439bfbe7b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_r3_p1_followup_v3_rebuild.log",
+      "size": 8134,
+      "md5": "6f122351e8bb"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_rerun_gate_result.json",
+      "size": 26492,
+      "md5": "fe0c60df6d41"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p0_third_gate_result.json",
+      "size": 26494,
+      "md5": "a73187872af5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p1_smoke_test.py",
+      "size": 25126,
+      "md5": "5b5e1ebfaca0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/p1_smoke_test_results.md",
+      "size": 2060,
+      "md5": "481ab40a97ad"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/phase03_test.db",
+      "size": 135925760,
+      "md5": "a8a271c66184"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/phase03_testdb_coverage_report.json",
+      "size": 52716,
+      "md5": "460646fac730"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/phase03_testdb_coverage_report.md",
+      "size": 13698,
+      "md5": "f39908dd79b5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/update_cross_manifest.py",
+      "size": 1139,
+      "md5": "6a90b1348979"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/update_manifest.py",
+      "size": 1810,
+      "md5": "dc3a764fa0d0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_data_risk_list.md",
+      "size": 6749,
+      "md5": "0f2d27bf437d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_alert_level_mapping.md",
+      "size": 13448,
+      "md5": "9276253d7c03"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_api_cache_import_verify_report.md",
+      "size": 7057,
+      "md5": "601ae537aa54"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_chart_binding_report.md",
+      "size": 16751,
+      "md5": "e6ae105899d0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_chart_binding_test_cases.md",
+      "size": 13063,
+      "md5": "7c16966c2eed"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_chart_meta_config.yaml",
+      "size": 32509,
+      "md5": "02a4aed08f4f"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_coverage_report.md",
+      "size": 13733,
+      "md5": "d0af2770dad2"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_cu_al_pb_supplement_ingest_report.md",
+      "size": 10415,
+      "md5": "462600fe21a1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_dshb_archive_report.md",
+      "size": 6557,
+      "md5": "8c360f1623a1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_dshe_artifact_audit_report.md",
+      "size": 19713,
+      "md5": "9273e264eacb"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_engine_adapt_fix_report.md",
+      "size": 11748,
+      "md5": "480b486c872c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_gate_baseline_report.md",
+      "size": 21039,
+      "md5": "2f452d994fbe"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_gate_rule_update_report.md",
+      "size": 20087,
+      "md5": "439d71e45c40"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_hermes_p09_calib_final_gate_report.md",
+      "size": 17523,
+      "md5": "97af648aa297"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_independent_testdb_ingest_report.md",
+      "size": 11955,
+      "md5": "39fbd58bedba"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_metric_caliber_definition.md",
+      "size": 6880,
+      "md5": "7415ba6d72d9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_metric_indicator_code_mapping.json",
+      "size": 152208,
+      "md5": "123eb2006334"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_metric_indicator_code_mapping.md",
+      "size": 56864,
+      "md5": "0f6e451575d5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_namespace_mapping_table.md",
+      "size": 36229,
+      "md5": "41d82a4827b3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_overall_admission_report.md",
+      "size": 17615,
+      "md5": "81bb1dd42eb0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_real_render_metrics.json",
+      "size": 37414,
+      "md5": "8130eb563547"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_real_render_verify.py",
+      "size": 66344,
+      "md5": "13b6e89d3c36"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_real_render_verify_report.md",
+      "size": 11352,
+      "md5": "bf1481a1325b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_render_engine.py",
+      "size": 27957,
+      "md5": "d55131ac03ac"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_rerun_admission_report.md",
+      "size": 13661,
+      "md5": "7215e4108adf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_rerun_real_render_metrics.json",
+      "size": 41566,
+      "md5": "986339fb01b9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_rerun_real_render_verify.py",
+      "size": 72825,
+      "md5": "08d1ac2175d9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_rerun_real_render_verify_report.md",
+      "size": 12286,
+      "md5": "c2692ef421c9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_review_slide_snippet.md",
+      "size": 8763,
+      "md5": "7eebfcf62a01"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_p0_third_admission_report.md",
+      "size": 17676,
+      "md5": "5c4a8dde116a"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/v88_phase03_visual_risk_list.md",
+      "size": 14207,
+      "md5": "7a4d5a815691"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/cache_coverage_calc.py",
+      "size": 38568,
+      "md5": "6103b2016566"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/db_import_jsonl.py",
+      "size": 33850,
+      "md5": "df6f2f9b966e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/db_load.py",
+      "size": 19257,
+      "md5": "0d752b2e3b38"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/export_mapping_list.py",
+      "size": 11479,
+      "md5": "b6a7e0f5aaaf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/gen_cu_al_pb_data.py",
+      "size": 14491,
+      "md5": "041fdba9a0ee"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/import_all_to_testdb.py",
+      "size": 11755,
+      "md5": "d35e45fcfed1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/import_cu_al_pb_supplement.py",
+      "size": 5142,
+      "md5": "b22d360d42cc"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_baseline_metrics.json",
+      "size": 13249,
+      "md5": "6d8df92265a3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_full_regression_suite.py",
+      "size": 30976,
+      "md5": "049e3ddbbb6c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_gate_checker.py",
+      "size": 121300,
+      "md5": "f9008cccaa60"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_gate_results.txt",
+      "size": 9654,
+      "md5": "eb974376dc7e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_overall_regression_result.json",
+      "size": 9673,
+      "md5": "dcbb77fe39e3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_r3_after_engine_fix_regression_result.json",
+      "size": 9625,
+      "md5": "388d57bdd4f9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_r3_final_gate_regression_result.json",
+      "size": 9553,
+      "md5": "8e263f396428"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_r3_p1_e2e_regression_result.json",
+      "size": 9553,
+      "md5": "772aecf08268"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_r3_p1_followup_final_regression.json",
+      "size": 9553,
+      "md5": "6251eba045c4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_r3_p1_followup_regression_result.json",
+      "size": 9553,
+      "md5": "1c1910ed1aef"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_r3_p1_followup_v2_regression_result.json",
+      "size": 9553,
+      "md5": "bd1e4e2f6cea"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_r3_p1_followup_v3_regression_result.json",
+      "size": 9553,
+      "md5": "b6a334afe56d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_regression_results.json",
+      "size": 9673,
+      "md5": "66a6765cbe5b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_rerun_regression_result.json",
+      "size": 9673,
+      "md5": "3198b7a4f42b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/p0_third_regression_result.json",
+      "size": 9632,
+      "md5": "b1d640d136ec"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/r3_auto_retest.sh",
+      "size": 12503,
+      "md5": "71b3a5501c11"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/rebuild_phase03_testdb.py",
+      "size": 7464,
+      "md5": "717a0b9beedd"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/resource.py",
+      "size": 413,
+      "md5": "113d9c8d35c9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/verify_testdb.py",
+      "size": 13374,
+      "md5": "fe6b5470c648"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/__pycache__/db_import_jsonl.cpython-311.pyc",
+      "size": 40966,
+      "md5": "363b4fbc13b0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p0/scripts/__pycache__/p0_gate_checker.cpython-311.pyc",
+      "size": 143338,
+      "md5": "b812cb55beca"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshe/prep/v88_phase03_render_concurrency_test_case.md",
+      "size": 19750,
+      "md5": "d89c7ee82ef5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshe/prep/v88_phase03_visual_align_checklist.md",
+      "size": 33365,
+      "md5": "76f007ece361"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshe/prep/v88_phase03_visual_module_draft.md",
+      "size": 37651,
+      "md5": "6148b70ad931"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshe/prep/v88_phase03_visual_risk_list.md",
+      "size": 19017,
+      "md5": "180e7225e0e3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/derive_indicators.py",
+      "size": 32718,
+      "md5": "0c797af8fb57"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/derived_indicator_stats.json",
+      "size": 13066,
+      "md5": "dc8a8c4a8721"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/expand_base_indicators.py",
+      "size": 11203,
+      "md5": "c8b2b76f9522"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/export_mapping_list.py",
+      "size": 14526,
+      "md5": "1a30f02a1117"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/noise_rate_analysis.py",
+      "size": 14987,
+      "md5": "a988dd6efcaf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/rebuild_phase03_testdb.py",
+      "size": 6151,
+      "md5": "ddd1001793b5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/threshold_baseline.py",
+      "size": 12671,
+      "md5": "f9eb84085cf6"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/scripts/verify_testdb.py",
+      "size": 24569,
+      "md5": "b9c41639273d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/collect_cpu_baseline_p1.py",
+      "size": 35811,
+      "md5": "e7ac36f19ddf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/engine_180indicator_adapter.py",
+      "size": 97737,
+      "md5": "4bb1f45bc29d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/engine_threshold_monitor.py",
+      "size": 57465,
+      "md5": "0b7febc430f3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/longrun_perf_results.json",
+      "size": 2285,
+      "md5": "24a93351abf6"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/longrun_perf_test.py",
+      "size": 11605,
+      "md5": "3cf571714076"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/noise_indicator_monitor.py",
+      "size": 84068,
+      "md5": "23654db3a8f2"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p1_regression_results.json",
+      "size": 14309,
+      "md5": "363c43e502b6"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p1_regression_results.md",
+      "size": 5044,
+      "md5": "9c9269127e89"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p1_regression_suite.py",
+      "size": 48166,
+      "md5": "0ea39bf256c5"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p1_smoke_query_results.json",
+      "size": 3522,
+      "md5": "8839576120fb"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p1_smoke_query_test.py",
+      "size": 16822,
+      "md5": "b4d824c098bf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/v88_phase03_p1_cpu_baseline_contrast_report.md",
+      "size": 6628,
+      "md5": "6e0aa50351f0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/v88_phase03_p1_dshe_main_report.md",
+      "size": 12488,
+      "md5": "f57d11c9a362"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/v88_phase03_p1_engine_threshold_monitor_spec.md",
+      "size": 29527,
+      "md5": "58d3c4e3ecd4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/render_archive_phase04_prep/frozen_p012_gate_package/p012_enhanced_cpu_baseline_audit.json",
+      "size": 9607,
+      "md5": "5f7d53ce2c48"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/render_archive_phase04_prep/frozen_p012_gate_package/p012_gate_manifest.json",
+      "size": 1677,
+      "md5": "39c90094dc35"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/render_archive_phase04_prep/frozen_p012_gate_package/p012_gate_manifest_frozen.json",
+      "size": 2367,
+      "md5": "e5f2eff7ea7b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/render_archive_phase04_prep/frozen_p012_gate_package/p012_gate_package_FROZEN_README.md",
+      "size": 1628,
+      "md5": "fc3de4bdfb0c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/render_archive_phase04_prep/frozen_p012_gate_package/p012_gate_package_README.md",
+      "size": 2114,
+      "md5": "394e80aef366"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/render_archive_phase04_prep/frozen_p012_gate_package/v88_p012_full_link_cpu_compare.json",
+      "size": 29786,
+      "md5": "23dd6200c0f3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_benchmark/v88_p012_full_link_cpu_benchmark.py",
+      "size": 74163,
+      "md5": "f3199a52a98a"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_benchmark/v88_p012_full_link_cpu_compare.json",
+      "size": 29786,
+      "md5": "23dd6200c0f3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_benchmark/v88_phase03_p012_cpu_benchmark_report.md",
+      "size": 4420,
+      "md5": "3fe61c8c3fac"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_benchmark/v88_phase03_p1_dshe_risklist.md",
+      "size": 1664,
+      "md5": "37d57825cc85"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_benchmark/v88_phase03_r3_e2e_regression_after_cpu_opt.json",
+      "size": 9972,
+      "md5": "4387367d81f4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_benchmark/v88_phase03_r3_e2e_regression_after_cpu_opt.md",
+      "size": 1401,
+      "md5": "5622c448bbc4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/cpu_baseline_audit.py",
+      "size": 25023,
+      "md5": "d5991b14fd16"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/cpu_baseline_audit_results.json",
+      "size": 5998,
+      "md5": "c4e0bc605d6c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/new_derived_metric_render_verify_result.md",
+      "size": 1609,
+      "md5": "0bd9e62d1d49"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/path_fix_config.json",
+      "size": 4799,
+      "md5": "1258b0424841"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/v88_phase03_p1_72h_longrun_perf_trend.json",
+      "size": 7296,
+      "md5": "a01675db8521"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/v88_phase03_p1_72h_longrun_perf_trend.md",
+      "size": 1907,
+      "md5": "5a035fc6ad58"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/v88_phase03_p1_72h_longrun_test.py",
+      "size": 35083,
+      "md5": "7d365ebd6e3b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/v88_phase03_p1_final_cpu_baseline_audit.md",
+      "size": 2976,
+      "md5": "47267e97f013"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/v88_phase03_p1_post_perf_validation_summary.md",
+      "size": 14517,
+      "md5": "51e17e5742e8"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/verify_derived_indicators.json",
+      "size": 21297,
+      "md5": "b871852d789c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshe/post_perf_validate/verify_derived_indicators.py",
+      "size": 25780,
+      "md5": "b1c10559917a"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/v88_phase03_p1_hermes_gate_update_report.md",
+      "size": 17646,
+      "md5": "3fc0bed012af"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/v88_phase03_p1_r3_e2e_final_report.md",
+      "size": 13249,
+      "md5": "1ffc035485c1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/blocker_fix/MD5_MANIFEST.md",
+      "size": 1826,
+      "md5": "4e24f08b4c7e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/blocker_fix/blocker_monitor.py",
+      "size": 8411,
+      "md5": "29f5f64e5b7b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/blocker_fix/blocker_monitor_state.json",
+      "size": 1138,
+      "md5": "9acb0c02dfe3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/blocker_fix/p0_gate_last_check.json",
+      "size": 37649,
+      "md5": "e4c15569ac14"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/blocker_fix/v88_phase03_p1_blocker_monitor.shurl",
+      "size": 1278,
+      "md5": "b98b8e0795e4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/blocker_fix/v88_phase03_p1_candidate_path_extend_config.json",
+      "size": 7258,
+      "md5": "41b54b3fac83"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/blocker_fix/v88_phase03_p1_risk_final_review.md",
+      "size": 8663,
+      "md5": "4b253a39912b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/followup/v88_phase03_p1_gate_continuous_monitor.md",
+      "size": 13921,
+      "md5": "3e67bc3a3031"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermes/followup/v88_phase03_p1_risk_review_report.md",
+      "size": 18774,
+      "md5": "991494b899ad"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/JOB_READY.flag",
+      "size": 1216,
+      "md5": "b084a1018bf7"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/MD5_MANIFEST.md",
+      "size": 907,
+      "md5": "5f7328ce94be"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/STATUS.md",
+      "size": 708,
+      "md5": "434b56755976"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/v88_phase03_all_gate_final_summary.md",
+      "size": 2269,
+      "md5": "c82323593c69"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/v88_phase03_full_deliverable_archive_manifest.md",
+      "size": 6594,
+      "md5": "68d4b3c4224a"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/v88_phase03_p012_final_audit_detail.md",
+      "size": 6399,
+      "md5": "f1021d5e511b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/v88_phase03_p1_risk_final_review.md",
+      "size": 1601,
+      "md5": "7a7a74dcc665"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/p012_final_gate_phase03_summary/v88_phase04_audit_top_level_plan.md",
+      "size": 5383,
+      "md5": "d22e3486b234"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/JOB_READY.flag",
+      "size": 223,
+      "md5": "30366ba78fa1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/MD5_MANIFEST.md",
+      "size": 1228,
+      "md5": "85ed0221c87c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/STATUS.md",
+      "size": 1101,
+      "md5": "550ad397e27f"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/audit_candidate_path_36_evaluation.md",
+      "size": 4147,
+      "md5": "0fefff180ea4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/blocker_monitor_watchdog_regression_test.md",
+      "size": 4530,
+      "md5": "91fb1c843831"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/r3_auto_retest_1b_guard_validation.md",
+      "size": 4963,
+      "md5": "40ef4da14680"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/test_derive_indicators_guard.py",
+      "size": 2536,
+      "md5": "f641d736c973"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/v88_phase03_combined_gate_retest_summary.md",
+      "size": 6567,
+      "md5": "de88df6b5936"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/v88_phase03_p09_audit_3_violation_detail_report.md",
+      "size": 5067,
+      "md5": "530655ad08f2"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/hermeshf/blocker_followup_gate/v88_phase03_p1_risk_final_review.md",
+      "size": 5246,
+      "md5": "26610304a790"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/check_db.py",
+      "size": 2065,
+      "md5": "0bb9c55a41f8"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/list_indicators.py",
+      "size": 1381,
+      "md5": "611aa592524c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/noise_rate_data.json",
+      "size": 241167,
+      "md5": "eab602edcc27"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/threshold_baseline_data.json",
+      "size": 476446,
+      "md5": "036a5dfd2875"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_3level_threshold_baseline.md",
+      "size": 72810,
+      "md5": "82b257abd35a"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_base_indicator_expansion.md",
+      "size": 7724,
+      "md5": "ab05632a8251"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_main_report.md",
+      "size": 6528,
+      "md5": "33983c9047a7"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_prematerials.md",
+      "size": 6317,
+      "md5": "b832c604ae3e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshb_risklist.md",
+      "size": 15990,
+      "md5": "866fd55a9bfe"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_dshe_engine_prematerials.md",
+      "size": 11227,
+      "md5": "f60976152591"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_metric_indicator_code_mapping.json",
+      "size": 200971,
+      "md5": "2fb6441428dc"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_metric_indicator_code_mapping.md",
+      "size": 14556,
+      "md5": "db4056d27509"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/v88_phase03_p1_noise_rate_analysis.md",
+      "size": 52073,
+      "md5": "a8374457a3f8"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/cu_bs_round1_dryrun.json",
+      "size": 1569,
+      "md5": "e560fca2f251"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/cu_bs_round2_dryrun.json",
+      "size": 1571,
+      "md5": "14cf3443e50e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/cu_bs_round2_smm_fallback.json",
+      "size": 1568,
+      "md5": "6454fcad5d3e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/cu_bs_round3_dryrun.json",
+      "size": 1569,
+      "md5": "d4f92353b16a"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/cu_bs_round4_dryrun.json",
+      "size": 2788,
+      "md5": "c05154292e67"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/export_mapping_list.py",
+      "size": 35333,
+      "md5": "b411b8b8c355"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/noise_observation_update.md",
+      "size": 16006,
+      "md5": "c88f25b76a79"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/spot_is_round1_dryrun.json",
+      "size": 1555,
+      "md5": "7f927bad8464"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/spot_is_round2_dryrun.json",
+      "size": 1555,
+      "md5": "26fdb9e84b4d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/spot_is_round3_dryrun.json",
+      "size": 1555,
+      "md5": "14e92279971d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/spot_is_round5_dryrun.json",
+      "size": 1555,
+      "md5": "2cac42be5eed"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/test_bad_cu_data.csv",
+      "size": 565,
+      "md5": "8cd4e4ba5e90"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/v88_phase03_new_crawler_boundary_test.md",
+      "size": 16097,
+      "md5": "e6ef5b513c1a"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/v88_phase03_p09_mapping_fix_report.md",
+      "size": 11038,
+      "md5": "b6bad0bddc10"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/v88_phase03_p1_dshb_risklist.md",
+      "size": 9100,
+      "md5": "e97c2f8f8beb"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/v88_phase03_p1_metric_indicator_code_mapping.json",
+      "size": 204325,
+      "md5": "07c36a3a0096"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/v88_phase03_p1_metric_indicator_code_mapping.md",
+      "size": 18914,
+      "md5": "286a466e5b3b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/mapping_fix_crawler_live/v88_phase03_spotis_cu_crawler_live_verify.md",
+      "size": 16141,
+      "md5": "4834face9a90"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/p09fix/check_db_indicators.py",
+      "size": 3025,
+      "md5": "5f372fe641ca"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/p09fix/check_p09.py",
+      "size": 739,
+      "md5": "a1f95569674b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/p09fix/generate_p09_audit_fix_report.py",
+      "size": 9839,
+      "md5": "deba544dc081"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/p09fix/p09_add_missing_mappings.py",
+      "size": 7220,
+      "md5": "cf4f317f2306"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/p09fix/p09_missing_mappings_add_result.json",
+      "size": 1629,
+      "md5": "c2c85eeae5e3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/p09fix/update_metadata.py",
+      "size": 8660,
+      "md5": "b120d686ded1"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/p09fix/v88_phase03_p1_dshb_p09_audit_fix_report.md",
+      "size": 7476,
+      "md5": "2464dfbc7161"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/watcher/dqa_weekly_check_result.md",
+      "size": 666,
+      "md5": "6cd499db707d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/watcher/noise_7d_timeseries_log.csv",
+      "size": 291,
+      "md5": "aae5c8e4c58d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/watcher/v88_phase03_p1_dshb_watchy_monitor.py",
+      "size": 37023,
+      "md5": "72b5ed6c84ad"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/watcher/v88_phase03_p1_dshb_watchy_status_report.md",
+      "size": 1545,
+      "md5": "3c2426800ca0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/watcher/watcher_checkpoint.json",
+      "size": 852,
+      "md5": "01fd8091e875"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/watcher/watcher_log.jsonl",
+      "size": 873,
+      "md5": "805d2d371c08"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/background_continue/R-V88-042_ni_top20_data_source_review.md",
+      "size": 7912,
+      "md5": "69087a4be2ac"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/background_continue/crawler_live_daily_brief.md",
+      "size": 8347,
+      "md5": "a71e739e9c4f"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/background_continue/noise_observation_update.md",
+      "size": 5934,
+      "md5": "338168778ac8"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/background_continue/v88_phase03_p1_dshb_risklist.md",
+      "size": 5841,
+      "md5": "1784ae2ae75e"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/background_continue/v88_phase04_36metric_data_source_plan.md",
+      "size": 14023,
+      "md5": "0fac1fb659a0"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/derived_metric_probe.py",
+      "size": 17075,
+      "md5": "427559b8b67b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/derived_probe_checkpoint.json",
+      "size": 513,
+      "md5": "0ab94f1a0265"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/derived_probe_log.jsonl",
+      "size": 185,
+      "md5": "5c7031a82381"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/derived_probe_switch_audit.jsonl",
+      "size": 311,
+      "md5": "7cc521c8443d"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/dqa_weekly_check.py",
+      "size": 13439,
+      "md5": "473b93973f28"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/dqa_weekly_checkpoint.json",
+      "size": 292,
+      "md5": "5888f23258de"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/dqa_weekly_log.jsonl",
+      "size": 1320,
+      "md5": "377a6cc60e5b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/noise_7d_checkpoint.json",
+      "size": 392,
+      "md5": "95c2bbb8aec2"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/noise_7d_log.jsonl",
+      "size": 1264,
+      "md5": "3f5f300aebfb"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/noise_7d_observation.py",
+      "size": 19737,
+      "md5": "a30ca6cd4bb6"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/v88_phase03_p1_derived_probe_monitor_shturl.md",
+      "size": 6184,
+      "md5": "6096565522f9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/v88_phase03_p1_dshb_followup_report.md",
+      "size": 11133,
+      "md5": "0e5167a265e6"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/followup/v88_phase03_p1_expand_metric_doc.md",
+      "size": 10566,
+      "md5": "49892e0823a4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/check_db_state.py",
+      "size": 6254,
+      "md5": "c8ec107383fc"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/engine_caliber_alignment_report.md",
+      "size": 14216,
+      "md5": "5614cb987aaf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/extended_dqa_result.md",
+      "size": 5119,
+      "md5": "b668ab398baa"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/inspect_db.py",
+      "size": 669,
+      "md5": "eaa3dbe895c2"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/investigate_fail_indicators.py",
+      "size": 2819,
+      "md5": "a90d07260bb9"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/t0_noise_daemon_check.py",
+      "size": 7669,
+      "md5": "10674d8c752c"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/t1_sample_backtest.py",
+      "size": 15868,
+      "md5": "3193119d0fb7"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/t4_hermes_monitoring.py",
+      "size": 7046,
+      "md5": "d2f3c103749b"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/t4_hermes_monitoring_state.json",
+      "size": 2310,
+      "md5": "06a46f6c88c4"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/t5_engine_caliber_check.py",
+      "size": 25271,
+      "md5": "bd86b88748b3"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/watcher_state_checkpoint.json",
+      "size": 2416,
+      "md5": "cb77760c8bcf"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/crawler/comex_daily_crawler.py",
+      "size": 32963,
+      "md5": "d2fce6bb3f28"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/crawler/common_crawler_lib.py",
+      "size": 56233,
+      "md5": "4a09f11b8eac"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/crawler/lc_fu_crawler.py",
+      "size": 34345,
+      "md5": "e4ed878aa090"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/p1/dshb/post_fix_watcher/crawler/schedule_crawler.py",
+      "size": 34777,
+      "md5": "fb09331f1528"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_alt_data_source_review.md",
+      "size": 6483,
+      "md5": "e79736a7118f"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_align_checklist.md",
+      "size": 19397,
+      "md5": "b5458fca08fd"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_module_draft.md",
+      "size": 18181,
+      "md5": "bf6c9524def6"
+    },
+    {
+      "path": "analysis/e2e_output/v88/phase03/dshb/prep/v88_phase03_data_risk_list.md",
+      "size": 19497,
+      "md5": "23da4bb67abe"
+    }
+  ]
+}
