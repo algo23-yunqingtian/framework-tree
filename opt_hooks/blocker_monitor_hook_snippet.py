@@ -76,11 +76,21 @@ from pathlib import Path
 # 配置常量 — 安全模式锁定
 # =============================================================================
 
-TASK_ID = "V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED_JOB"
+TASK_ID = "V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY"
 AGENT = "DSHE"
 BRANCH = "feature/v88-g1"
 
 # 🚨 安全模式标志 — 禁止自动提交
+# ============================================================================
+# CRITICAL SAFETY CONSTRAINTS — DO NOT MODIFY
+# ============================================================================
+# 1. AUTO_COMMIT_MODE MUST REMAIN False — No git add/commit/push at any time
+# 2. AUTO_PUSH_MODE MUST REMAIN False — No remote push ever
+# 3. AUTO_GIT_ADD MUST REMAIN False — No file staging
+# 4. READ_ONLY_MODE MUST REMAIN True — All filesystem reads only
+# 5. No core audit cron modification — this hook does not touch blocker_monitor
+#    main program logic
+# ============================================================================
 AUTO_COMMIT_MODE = False  # FALSE = 仅预览，不自动提交
 AUTO_PUSH_MODE = False    # FALSE = 禁止自动推送
 AUTO_GIT_ADD = False      # FALSE = 禁止 git add
@@ -96,6 +106,26 @@ SCAN_DIRS = [
     "analysis/e2e_output/v88/phase03/p1/dshe/phase03_p3_gate_triple_lock/",
 ]
 
+# ============================================================================
+# FACTOR WORKSPACE — P4 Upgrade: SHA256 Snapshot Scanning
+# ============================================================================
+# P4 adds factor_workspace/**/ scanning for factor computation runtime monitoring.
+# This is a PREVIEW-ONLY snapshot channel:
+#   - Reads all files under factor_workspace/**
+#   - Computes SHA256 + MD5 for each file
+#   - Writes snapshot to factor_workspace_hash_snapshot.json
+#   - Does NOT git add, commit, or push
+#   - Does NOT modify or delete any files
+#   - Does NOT kill any processes
+#   - Does NOT modify any core audit logic
+# ============================================================================
+FACTOR_WORKSPACE_DIR = "factor_workspace"
+FACTOR_WORKSPACE_ENABLED = True
+FACTOR_WORKSPACE_MAX_DEPTH = 10
+FACTOR_WORKSPACE_HASH_ALGOS = ["SHA256", "MD5"]
+FACTOR_WORKSPACE_SNAPSHOT_OUTPUT = "opt_hooks/factor_workspace_hash_snapshot.json"
+FACTOR_WORKSPACE_MAX_FILES = 5000  # Safety cap to prevent runaway scanning
+
 # 输出配置
 PREVIEW_OUTPUT = "opt_hooks/preview_metrics.json"
 PREVIEW_LOG = "opt_hooks/hook_run_log.txt"
@@ -108,9 +138,9 @@ NO_EDIT_RELEASE_TAG = True
 NO_ZHIJI_API_CALL = True
 UPSTREAM_WRITES = 0
 
-# 版本号
-HOOK_VERSION = "1.0.0-preview"
-HOOK_SCHEMA = "blocker-monitor-hook-preview-1.0"
+# 版本号 — P4 Upgrade: v2.0.0-preview
+HOOK_VERSION = "2.0.0-preview"
+HOOK_SCHEMA = "blocker-monitor-hook-preview-2.0"
 
 # 引擎冻结哈希
 ENGINE_FROZEN_HASH = "cd73deaeec54a7f1f8bde92c1300a9dc"
@@ -327,37 +357,173 @@ def write_preview(snapshot, base_dir):
 
 
 # =============================================================================
+# Factor Workspace SHA256 Snapshot — P4 Upgrade
+# =============================================================================
+
+def scan_factor_workspace(base_dir):
+    """
+    Scan factor_workspace/** for factor computation runtime outputs.
+    Compute SHA256 + MD5 hashes for each file.
+    
+    SAFETY: READ-ONLY operation.
+    - Does NOT modify any files
+    - Does NOT delete any files
+    - Does NOT execute any processes
+    - Does NOT perform any git operations
+    - Output is PREVIEW-ONLY snapshot
+    """
+    result = {
+        "scan_enabled": FACTOR_WORKSPACE_ENABLED,
+        "workspace_path": FACTOR_WORKSPACE_DIR,
+        "max_depth": FACTOR_WORKSPACE_MAX_DEPTH,
+        "hash_algorithms": FACTOR_WORKSPACE_HASH_ALGOS,
+        "snapshot_output": FACTOR_WORKSPACE_SNAPSHOT_OUTPUT,
+        "scan_timestamp": datetime.now(timezone.utc).isoformat(),
+        "total_files": 0,
+        "total_bytes": 0,
+        "files": [],
+        "errors": [],
+        "skipped": 0,
+    }
+    
+    ws_path = os.path.join(base_dir, FACTOR_WORKSPACE_DIR)
+    
+    if not os.path.isdir(ws_path):
+        print(f"  [SKIP] {FACTOR_WORKSPACE_DIR} — directory not found")
+        result["status"] = "NOT_FOUND"
+        return result
+    
+    if not FACTOR_WORKSPACE_ENABLED:
+        print(f"  [SKIP] factor_workspace scan disabled by config")
+        result["status"] = "DISABLED"
+        return result
+    
+    # Safety cap
+    file_count = 0
+    for root, dirs, files in os.walk(ws_path):
+        # Calculate relative depth
+        rel_path = os.path.relpath(root, base_dir)
+        depth = rel_path.count(os.sep) + 1
+        
+        if depth > FACTOR_WORKSPACE_MAX_DEPTH:
+            dirs[:] = []  # Prune deeper traversal
+            result["skipped"] += 1
+            continue
+        
+        for fname in files:
+            file_count += 1
+            
+            if file_count > FACTOR_WORKSPACE_MAX_FILES:
+                print(f"  [CAP] Reached max files cap ({FACTOR_WORKSPACE_MAX_FILES}), stopping scan")
+                result["status"] = "CAP_REACHED"
+                return result
+            
+            filepath = os.path.join(root, fname)
+            
+            try:
+                fsize = os.path.getsize(filepath)
+                rel_file = os.path.relpath(filepath, base_dir)
+                
+                with open(filepath, "rb") as f:
+                    content = f.read()
+                
+                # SHA256
+                sha256_hash = hashlib.sha256(content).hexdigest()
+                # MD5
+                md5_hash = hashlib.md5(content).hexdigest()
+                
+                ext = os.path.splitext(fname)[1].lower()
+                
+                entry = {
+                    "filename": fname,
+                    "relative_path": rel_file,
+                    "size_bytes": fsize,
+                    "extension": ext,
+                    "sha256": sha256_hash,
+                    "md5": md5_hash,
+                    "modified_time": datetime.fromtimestamp(
+                        os.path.getmtime(filepath)
+                    ).isoformat(),
+                }
+                result["files"].append(entry)
+                result["total_files"] += 1
+                result["total_bytes"] += fsize
+                
+            except Exception as e:
+                err_msg = f"{filepath}: {e}"
+                result["errors"].append(err_msg)
+                print(f"  [ERROR] {err_msg}")
+    
+    result["status"] = "COMPLETE"
+    print(f"  [FACTOR_WS] Scanned {result['total_files']} files, "
+          f"{result['total_bytes']} bytes total")
+    
+    return result
+
+
+def write_factor_workspace_snapshot(factor_result, base_dir):
+    """
+    Write factor_workspace hash snapshot to preview output file.
+    PREVIEW-ONLY — no git operations.
+    """
+    snapshot_path = os.path.join(base_dir, FACTOR_WORKSPACE_SNAPSHOT_OUTPUT)
+    
+    # Ensure output directory exists
+    os.makedirs(os.path.dirname(snapshot_path), exist_ok=True)
+    
+    # Write snapshot JSON
+    with open(snapshot_path, "w", encoding="utf-8") as f:
+        json.dump(factor_result, f, indent=2, ensure_ascii=False)
+    
+    print(f"  [WRITE] Factor workspace snapshot -> {FACTOR_WORKSPACE_SNAPSHOT_OUTPUT}")
+    print(f"  [WRITE] Size: {os.path.getsize(snapshot_path)} bytes")
+    
+    return snapshot_path
+
+
+# =============================================================================
 # 主执行
 # =============================================================================
 
 def main():
-    """主入口 — 轻量指标快照钩子"""
+    """主入口 — 轻量指标快照钩子 v2.0.0 (P4 Upgrade)"""
     
     print("=" * 70)
     print(f"  blocker_monitor Hook Snippet — v{HOOK_VERSION}")
     print(f"  TASK_ID: {TASK_ID}")
     print(f"  AGENT: {AGENT} | BRANCH: {BRANCH}")
     print(f"  MODE: {'PREVIEW ONLY' if not AUTO_COMMIT_MODE else 'AUTO COMMIT'}")
+    print(f"  UPGRADE: P4 — factor_workspace SHA256 snapshot scanning added")
     print("=" * 70)
     
     # 1. 安全锁验证
-    print("\n[1/5] Safety lock verification...")
+    print("\n[1/7] Safety lock verification...")
     verify_safety_lock()
     
     # 2. 确定工作目录
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    print(f"\n[2/5] Base directory: {base_dir}")
+    print(f"\n[2/7] Base directory: {base_dir}")
     
     # 3. 扫描指标目录
-    print("\n[3/5] Scanning metrics directories...")
+    print("\n[3/7] Scanning metrics directories...")
     snapshot = generate_preview_snapshot(base_dir)
     
-    # 4. 写入预览
-    print("\n[4/5] Writing preview output...")
+    # 4. P4 Upgrade: Scan factor_workspace
+    print(f"\n[4/7] Scanning factor_workspace (P4 upgrade)...")
+    factor_result = scan_factor_workspace(base_dir)
+    snapshot["factor_workspace_scan"] = factor_result
+    
+    if FACTOR_WORKSPACE_ENABLED:
+        factor_snapshot_path = write_factor_workspace_snapshot(factor_result, base_dir)
+    else:
+        factor_snapshot_path = None
+    
+    # 5. 写入预览
+    print("\n[5/7] Writing preview output...")
     write_preview(snapshot, base_dir)
     
-    # 5. 输出摘要
-    print("\n[5/5] Execution summary:")
+    # 6. 输出摘要
+    print("\n[6/7] Execution summary:")
     s = snapshot["summary"]
     print(f"  Files scanned:    {s['total_files_scanned']}")
     print(f"  Valid JSON:       {s['total_files_valid_json']}")
@@ -369,10 +535,25 @@ def main():
     print(f"  Auto push:        {AUTO_PUSH_MODE} — DISABLED")
     print(f"  Git add:          {AUTO_GIT_ADD} — DISABLED")
     
+    # 7. Factor workspace summary
+    print(f"\n[7/7] Factor workspace scan summary (P4):")
+    if factor_result["status"] == "COMPLETE":
+        print(f"  Status:          {factor_result['status']}")
+        print(f"  Files scanned:   {factor_result['total_files']}")
+        print(f"  Total bytes:     {factor_result['total_bytes']}")
+        print(f"  Hash algos:      {', '.join(FACTOR_WORKSPACE_HASH_ALGOS)}")
+        print(f"  Snapshot output: {FACTOR_WORKSPACE_SNAPSHOT_OUTPUT}")
+        print(f"  Safety cap:      {FACTOR_WORKSPACE_MAX_FILES} files")
+    elif factor_result["status"] == "NOT_FOUND":
+        print(f"  Status:          {factor_result['status']} — {FACTOR_WORKSPACE_DIR}/ not found")
+    elif factor_result["status"] == "DISABLED":
+        print(f"  Status:          {factor_result['status']}")
+    
     print("\n" + "=" * 70)
     print("  ✅ Hook execution COMPLETE — PREVIEW MODE ONLY")
     print("  📋 No git operations performed.")
     print("  📋 No core audit logic modified.")
+    print("  📋 Factor workspace: SHA256 snapshot generated (preview-only)")
     print("  📋 Snapshot ready for manual review.")
     print("=" * 70)
     
