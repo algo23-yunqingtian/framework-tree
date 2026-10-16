@@ -390,3 +390,83 @@
 
 > **标记**: V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED=COMPLETE_READY
 > **下一步**: 等待 HERMEShf blocker_monitor cron 自动触发 P0-12 门禁复测 + Phase04 正式工单
+
+---
+
+## 10. V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY_JOB
+
+> **TASK_ID**: V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **DATE**: 2026-10-17T00:59 UTC+8
+> **STATUS**: COMPLETE
+> **前置**: V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED_JOB = COMPLETE (commit 844dd77)
+
+### 10.1 任务状态
+
+| 任务 | 状态 | 关键结果 |
+|------|:----:|----------|
+| T0: Triple-Seal完整性重校验 | ✅ COMPLETE | 12/12 SHA256+MD5匹配 + 引擎cd73deae确认 + 2归档目录只读 |
+| T1: psutil采集包强锁定复核 | ✅ COMPLETE | enabled:false + daemon.enabled:false + 零守护进程 + 零输出文件 |
+| T2: 因子期网关规则包部署 | ✅ COMPLETE | 6规则observe-alert-only + 文件白名单+大小阈值+批量告警+凭证扫描+越界拦截+哈希快照 |
+| T3: CU-LI-SN-AL口径二次对齐 | ✅ COMPLETE | 0矛盾 + 34指标ID一致 + 4品种渲染节点映射正确 |
+| T4: blocker_monitor钩子升级 | ✅ COMPLETE | v2.0.0-preview + factor_workspace SHA256快照通道 + AUTO_COMMIT_MODE=false |
+| T5: R3抽样回归+渲染健康巡检 | ✅ COMPLETE | 8/8 PASS + 渲染队列空闲 + 无僵尸worker |
+| T6: 审计告警模板准备 | ✅ COMPLETE | 6规则类别模板 + 3严重级别 + 升级策略 + JSONL审计格式 |
+| T7: 约束自检+推送 | ✅ COMPLETE | 11/11约束合规 + 审计待命<1h |
+| T8: 元数据更新 | ✅ COMPLETE | STATUS/FLAG/MD5全部更新 |
+
+**完成度: 9/9 (100%)**
+
+### 10.2 核心指标
+
+| 指标 | 值 | 状态 |
+|------|:--:|:----:|
+| P0-12三层封印重校验 | 12/12 SHA256+MD5匹配 | ✅ |
+| 引擎MD5 | `cd73deae...` 冻结 | ✅ |
+| 归档目录 | 18文件只读+完整 | ✅ |
+| psutil enabled | **false** | ✅ |
+| psutil daemon | **false** | ✅ |
+| psutil守护进程 | 0 | ✅ |
+| psutil输出文件 | 0 | ✅ |
+| 因子规则包 | 6规则 observe-alert-only | ✅ |
+| 因子规则干预级别 | observe_only (无kill/modify) | ✅ |
+| WIND数据链路 | AWAITING_EXTERNAL_FLAG | ✅ |
+| CU-LI-SN-AL品种 | 4品种口径一致 | ✅ |
+| 品种矛盾数 | 0 | ✅ |
+| 钩子版本 | v2.0.0-preview | ✅ |
+| 钩子AUTO_COMMIT_MODE | **false** | ✅ |
+| factor_workspace快照 | SHA256+MD5通道就绪 | ✅ |
+| R3 E2E | **8/8 PASS** | ✅ |
+| 渲染队列 | 空闲 (0 pending/0 zombie) | ✅ |
+| 审计待命 | <1h | ✅ |
+| 约束合规 | **11/11** | ✅ |
+| 门禁污染 | 0 | ✅ |
+
+### 10.3 交付物清单
+
+| 文件 | 说明 |
+|------|------|
+| `phase03_p4_gate_runtime_prep/triple_seal_reverify_v2.md` | P0-12三层封印重校验v2 |
+| `phase03_p4_gate_runtime_prep/psutil_ultra_lock_confirmation.md` | psutil采集包强锁定确认 |
+| `phase03_p4_gate_runtime_prep/gate_rule_install_note.md` | 因子期网关规则安装说明 |
+| `phase03_p4_gate_runtime_prep/variety_render_caliber_recheck.md` | CU-LI-SN-AL品种口径二次对齐 |
+| `phase03_p4_gate_runtime_prep/hook_upgrade_log.md` | blocker_monitor钩子升级日志 |
+| `phase03_p4_gate_runtime_prep/render_health_check.md` | R3回归+渲染健康巡检 |
+| `phase03_p4_gate_runtime_prep/factor_audit_alert_tpl.md` | 因子审计告警模板(仅模板) |
+| `gate_rules/factor_runtime_rules_v1.yaml` | 因子运行期监控规则包(6规则) |
+| `opt_hooks/blocker_monitor_hook_snippet.py` | 钩子升级v2.0.0-preview(factor_workspace扫描) |
+
+### 10.4 HERMEShf 待执行项
+
+| # | 待执行项 | 状态 |
+|---|----------|:----:|
+| 1 | WIND_DATA_LINK_ONLINE.flag 检测 | ⏳ AWAITING |
+| 2 | P0-12门禁自动复测(blocker_monitor cron) | ⏳ 等待cron触发 |
+| 3 | Phase04正式工单发布 | ⏳ PENDING |
+| 4 | IC/IR因子计算运行时监控激活 | ⏳ PENDING (WIND后) |
+| 5 | si_top20_net Phase04修复 | ⏳ PENDING (R-V88-035 LOW) |
+
+---
+
+> **标记**: V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY=GATE_WATCH_PREPARED_AWAIT_DATA_TRIGGER
+> **下一步**: 等待 WIND_DATA_LINK_ONLINE.flag → 提升监控强度 → IC/IR因子计算运行时监控

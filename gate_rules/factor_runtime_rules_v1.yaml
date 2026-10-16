@@ -1,0 +1,243 @@
+# =============================================================================
+# Factor Runtime Gate Rules — V1.0.0
+# =============================================================================
+# TASK_ID: V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY / T2
+# AGENT: DSHE | BRANCH: feature/v88-g1
+# GENERATED: 2026-10-17T00:59 UTC+8
+#
+# PURPOSE: Factor computation runtime monitoring rules
+# MODE: OBSERVE-ALERT ONLY — will NOT kill processes or modify outputs
+# SCOPE: factor_workspace/**
+# STATUS: DEPLOYED — loaded into monitoring logic
+# =============================================================================
+
+rule_package:
+  name: "factor_runtime_rules_v1"
+  version: "1.0.0"
+  phase: "Phase04_IC_IR"
+  role: "factor_computation_runtime_monitor"
+  mode: "observe_alert_only"
+  branch: "feature/v88-g1"
+  agent: "DSHE"
+  created: "2026-10-17T00:59"
+  
+  # Safety constraints — must never be overridden
+  safety:
+    auto_kill_process: false
+    auto_modify_output: false
+    auto_delete_file: false
+    auto_git_operation: false
+    auto_push: false
+    intervention_level: "observe_only"
+    escalation_policy: "notify_and_log"
+  
+  # WIND data link status
+  wind_data_link:
+    status: "AWAITING_EXTERNAL_FLAG"
+    flag_file: "WIND_DATA_LINK_ONLINE.flag"
+    active: false
+    note: "Monitoring intensity will increase only after external WIND_DATA_LINK_ONLINE.flag is detected"
+
+# =============================================================================
+# RULES — All rules are OBSERVE-ALERT type
+# =============================================================================
+
+rules:
+
+  # ---------------------------------------------------------------------------
+  # Rule 1: Output File Extension Whitelist
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-001"
+    name: "output_file_extension_whitelist"
+    description: "Factor output files must have approved extensions only"
+    severity: "WARNING"
+    action: "alert"
+    pattern: "factor_workspace/**/*"
+    whitelist:
+      - ".json"      # JSON results
+      - ".csv"       # CSV data exports
+      - ".parquet"   # Parquet data files
+      - ".npz"       # NumPy compressed
+      - ".h5"        # HDF5 files
+      - ".feather"   # Feather format
+      - ".txt"       # Text logs
+      - ".md"        # Markdown reports
+      - ".yaml"      # YAML configs
+      - ".yml"       # YAML configs
+      - ".py"        # Python scripts
+      - ".flag"      # Flag files
+      - ".html"      # HTML reports
+    blacklist:
+      - ".exe"
+      - ".bat"
+      - ".cmd"
+      - ".ps1"
+      - ".sh"
+      - ".dll"
+      - ".so"
+      - ".dylib"
+      - ".pyc"
+      - ".pyo"
+    scan_depth: 10
+
+  # ---------------------------------------------------------------------------
+  # Rule 2: Single File Size Threshold
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-002"
+    name: "single_file_size_threshold"
+    description: "Alert if any factor output file exceeds size limit"
+    severity: "WARNING"
+    action: "alert"
+    pattern: "factor_workspace/**/*"
+    threshold:
+      warning_bytes: 104857600       # 100 MB
+      critical_bytes: 524288000      # 500 MB
+    excluded_patterns:
+      - "*.h5"          # HDF5 may legitimately be large
+      - "*.parquet"     # Parquet may be large
+      - "*.npz"         # NumPy may be large
+    scan_depth: 10
+
+  # ---------------------------------------------------------------------------
+  # Rule 3: Rapid Bulk File Creation Alert
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-003"
+    name: "rapid_bulk_file_creation"
+    description: "Alert if too many files created in short time window"
+    severity: "WARNING"
+    action: "alert"
+    pattern: "factor_workspace/**/*"
+    window_seconds: 300              # 5-minute window
+    threshold_count: 500             # >500 files in 5 minutes = suspicious
+    critical_threshold_count: 2000   # >2000 files in 5 minutes = critical
+    scan_depth: 10
+
+  # ---------------------------------------------------------------------------
+  # Rule 4: Plaintext Credential Scan
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-004"
+    name: "plaintext_credential_scan"
+    description: "Scan for leaked plaintext credentials in factor outputs"
+    severity: "CRITICAL"
+    action: "alert_and_log"
+    pattern: "factor_workspace/**/*.json"
+    patterns_to_scan:
+      - regex: "(?i)(api[_-]?key|apikey|secret|token|password|passwd|pwd)\s*[:=]\s*['\"][^'\"]+['\"]"
+        description: "API keys, secrets, tokens in JSON"
+      - regex: "(?i)AKIA[0-9A-Z]{16}"
+        description: "AWS access key ID"
+      - regex: "(?i)sk-[a-zA-Z0-9]{20,}"
+        description: "OpenAI/SendGrid style API key"
+      - regex: "(?i)ghp_[a-zA-Z0-9]{36}"
+        description: "GitHub personal access token"
+      - regex: "(?i)gho_[a-zA-Z0-9]{36}"
+        description: "GitHub OAuth token"
+    scan_depth: 10
+    note: "This rule scans JSON files only. Does NOT modify or delete files."
+
+  # ---------------------------------------------------------------------------
+  # Rule 5: Cross-Directory Boundary Violation
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-005"
+    name: "cross_directory_boundary_violation"
+    description: "Alert if factor output references or writes outside factor_workspace"
+    severity: "WARNING"
+    action: "alert"
+    boundary:
+      allowed_output_root: "factor_workspace/"
+      allowed_read_roots:
+        - "factor_workspace/"
+        - "analysis/e2e_output/v88/phase03/p1/dshe/"
+        - "framework-tree/data/"
+        - "framework-tree/metrics-db/"
+      forbidden_write_roots:
+        - "scripts/"
+        - "github工作/framework-tree/scripts/"
+        - "analysis/e2e_output/v88/phase03/p1/dshe/p012_nativepass_consolidate/"
+        - "analysis/e2e_output/v88/phase03/p1/dshe/cross_align_ARCHIVED/"
+        - "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_exception_ARCHIVED/"
+        - "analysis/e2e_output/v88/phase03/p1/dshe/phase03_p2_harden/opt-phase04-psutil-collector/"
+    scan_depth: 10
+    note: "This rule monitors for boundary violations. It will NOT enforce or block — only alert."
+
+  # ---------------------------------------------------------------------------
+  # Rule 6: Factor Output File Triple-Hash Verification
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-006"
+    name: "factor_output_triple_hash"
+    description: "SHA256 snapshot of factor_workspace outputs for audit trail"
+    severity: "INFO"
+    action: "snapshot"
+    pattern: "factor_workspace/**/*.json"
+    hash_algorithms:
+      - "SHA256"
+      - "MD5"
+    snapshot_output: "opt_hooks/factor_workspace_hash_snapshot.json"
+    snapshot_interval_hours: 6
+    scan_depth: 10
+    note: "Snapshot is preview-only. No git add/commit/push performed."
+
+# =============================================================================
+# Alert Configuration
+# =============================================================================
+
+alerting:
+  enabled: true
+  channels:
+    - type: "log"
+      target: "opt_hooks/factor_runtime_alert_log.txt"
+    - type: "json_alert"
+      target: "opt_hooks/factor_runtime_alerts.json"
+  severity_levels:
+    INFO: "log_only"
+    WARNING: "log_and_notify"
+    CRITICAL: "log_and_escalate"
+  deduplication_window_seconds: 300
+  max_alerts_per_hour: 100
+
+# =============================================================================
+# Escalation Policy
+# =============================================================================
+
+escalation:
+  auto_escalate: false
+  manual_escalation_required: true
+  escalation_contact: "DSHE_AGENT"
+  note: "All alerts require manual review. No automatic escalation to HERMES or other agents."
+
+# =============================================================================
+# Audit Trail
+# =============================================================================
+
+audit:
+  enabled: true
+  log_path: "opt_hooks/factor_runtime_audit_log.jsonl"
+  log_retention_days: 90
+  log_format: "jsonl"
+  fields:
+    - "timestamp"
+    - "rule_id"
+    - "severity"
+    - "matched_path"
+    - "match_detail"
+    - "action_taken"
+
+# =============================================================================
+# Deployment Metadata
+# =============================================================================
+
+deployment:
+  deployed_at: "2026-10-17T00:59"
+  deployed_by: "DSHE"
+  branch: "feature/v88-g1"
+  commit: "PENDING"
+  mode: "observe_alert_only"
+  wind_data_active: false
+  upgrade_trigger: "WIND_DATA_LINK_ONLINE.flag detected"
+  note: >
+    This rule package is deployed in OBSERVE-ALERT-ONLY mode.
+    It will NOT kill processes, modify outputs, delete files,
+    or perform any git operations.
+    Monitoring intensity increases only after external WIND_DATA_LINK_ONLINE.flag
+    is detected. Until then, this is a passive rule package loaded into
+    monitoring logic for future factor computation runtime.

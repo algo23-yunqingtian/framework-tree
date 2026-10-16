@@ -285,11 +285,21 @@ def generate_preview_snapshot(base_dir):
             "status": "LOCKED",
         },
         
+        "factor_workspace_upgrade": {
+            "p4_enabled": FACTOR_WORKSPACE_ENABLED,
+            "p4_scan_dir": FACTOR_WORKSPACE_DIR,
+            "p4_hash_algos": FACTOR_WORKSPACE_HASH_ALGOS,
+            "p4_max_files": FACTOR_WORKSPACE_MAX_FILES,
+            "p4_snapshot_output": FACTOR_WORKSPACE_SNAPSHOT_OUTPUT,
+        },
+        
         "preview_only": True,
         "auto_commit_disclaimer": (
             "This is a PREVIEW snapshot only. "
             "No git add/commit/push has been performed. "
-            "Automatic commit requires Phase04 approval."
+            "Automatic commit requires Phase04 approval. "
+            "Factor workspace scan is READ-ONLY — "
+            "no files modified, deleted, or git-operated."
         ),
     }
     

@@ -109,3 +109,42 @@
 | `opt_hooks/blocker_monitor_hook_snippet.py` | 13,846 | `185cf443f5b475cef4f225ed520dda49` |
 
 > *Generated: 2026-10-16T22:45 UTC+8 | DSHE | V88 Phase03 P1*
+
+---
+
+## 7. Phase03 P4 Gate Runtime Prep
+
+**Directory**: `phase03_p4_gate_runtime_prep/`
+**Status**: COMPLETE — GATE_WATCH_PREPARED_AWAIT_DATA_TRIGGER
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `triple_seal_reverify_v2.md` | 12,617 | `3860A5E3535305637C57DD47DE71EDED` |
+| `psutil_ultra_lock_confirmation.md` | 6,519 | `6562ACF77C920FFAD77A8128632DD729` |
+| `gate_rule_install_note.md` | 4,621 | `8CC052F215DB59B0646CBB4DE93F9CF5` |
+| `variety_render_caliber_recheck.md` | 8,554 | `C7062385E2A8A84F4406D9D7B5F0522E` |
+| `hook_upgrade_log.md` | 5,750 | `C99D170EB70AB33F310051D9F39E4AD8` |
+| `render_health_check.md` | 4,095 | `E2BDAF92B75589FCB8CDCBB92E5C9E41` |
+| `factor_audit_alert_tpl.md` | 11,027 | `DC541683EAE7B81004D05A3F1D34C1AB` |
+
+### 7.1 Gate Rules & Hook Upgrade
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `gate_rules/factor_runtime_rules_v1.yaml` | 6,407 | `FB610E02DC1881FEDF29BFC0F36C0E95` |
+| `opt_hooks/blocker_monitor_hook_snippet.py` | 17,087 | `5EC795C516BEC98EF0594648A3D2BA03` |
+
+### 7.2 P4 Metrics Summary
+
+| Metric | Value | Status |
+|--------|:-----:|:------:|
+| Triple seal reverify | 12/12 SHA256+MD5 match | ✅ |
+| Engine frozen | `cd73deae...` | ✅ |
+| psutil enabled | false | ✅ |
+| psutil daemon | false | ✅ |
+| Factor rules deployed | 6 rules | ✅ |
+| Hook version | v2.0.0-preview | ✅ |
+| Hook AUTO_COMMIT_MODE | false | ✅ |
+| R3 E2E | 8/8 PASS | ✅ |
+| Constraints | 11/11 | ✅ |
+| Gate contamination | 0 | ✅ |
