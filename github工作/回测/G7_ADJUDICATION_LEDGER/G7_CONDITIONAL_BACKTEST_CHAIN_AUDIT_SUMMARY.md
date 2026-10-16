@@ -95,6 +95,10 @@
 | 是否允许修改 | 仅可归档更新 |
 | 是否触发运行 | NO |
 | 是否改变全局状态 | NO |
-| DSHA/DSHD 执行反馈 | PENDING_FEEDBACK |
+| DSHA/DSHD 执行反馈 | MONITORING_ROUND_001_RECORDED |
+| DSHA 最小测试 | PARTIAL_PASS |
+| DSHD 审计准备 | AUDIT_LINK_ENABLED_EXCEL_FALLBACK |
+| 监控轮次归档 | `G7_DSHA_DSHD_MONITORING_ROUND_001.md` |
+| DSHA 测试报告 | `data-harbor/dsha_p49_prep/P49_backtest_audit/excel_wind_test_report.md` |
 
 > **最终声明**: 本文件为条件回测链路的审计摘要草案，不扩展条件范围，不解除冻结，不改变全局管控状态。
