@@ -322,7 +322,7 @@ All file references are relative to `G7_ADJUDICATION_LEDGER/`.
 ### 8.4 Credential Scan Configuration
 
 - **Scan range**: Ledger all 42 lines
-- **Pattern**: `credentials_provided|password|passwd|api_key|token|secret|Tyq1999`
+- **Pattern**: `credentials_provided|password|passwd|api_key|token|secret|password-pattern`
 - **Matched lines**: 3 (lines 32, 37, 40)
 - **Monitor script**: `dshd_p67_monitor_v3.ps1` (UTF-8 BOM, 8,307B)
 - **Alert severity**: CRITICAL

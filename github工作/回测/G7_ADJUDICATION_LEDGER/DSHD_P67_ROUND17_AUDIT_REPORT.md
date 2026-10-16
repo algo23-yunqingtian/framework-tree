@@ -1,4 +1,4 @@
-﻿# DSHD-P67 第17轮持续审计监控报告
+# DSHD-P67 第17轮持续审计监控报告
 
 **工单-D (DSHD) · 2026-10-16 · 第17次执行**
 
@@ -44,7 +44,7 @@
 | **Wind 脚本进程检测** | 检测任何 Wind 相关 Python 脚本进程 |
 | **熔断触发逻辑** | wind_api_calls > 0 或 pipeline 运行 → 立即触发熔断 |
 | **DSHA_WIND_PY_TEST 标签** | 所有 Wind 相关事件自动打标 |
-| **凭证扫描增强** | 正则扩展：`credentials_provided|password|passwd|api_key|token|secret|Tyq1999` |
+| **凭证扫描增强** | 正则扩展：`credentials_provided|password|passwd|api_key|token|secret|password-pattern` |
 
 ### 文件变更
 
@@ -130,7 +130,7 @@
 
 ```
 扫描范围: 账本全部 42 行
-匹配模式: credentials_provided|password|passwd|api_key|token|secret|Tyq1999
+匹配模式: credentials_provided|password|passwd|api_key|token|secret|password-pattern
 匹配行数: 3
 - 第32行: password_present（已知）
 - 第37行: credentials_provided（已知）

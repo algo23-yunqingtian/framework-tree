@@ -302,7 +302,7 @@ The v1 and v2 scripts hardcoded `wind_api_calls = 0` as a static invariant value
 |---|---|---|---|---|
 | **v1** | `dshd_p67_monitor.ps1` | POLL-0 → POLL-16 | 17:16 → 17:35 | Basic monitoring. No credential scan. No `credential_alert` field. Boolean invariants. |
 | **v2** | `dshd_p67_monitor_v2.ps1` | POLL-17 → POLL-41 | 18:06 → 18:30 | Added credential scan (limited regex). Added `credential_alert` field. Static `wind_api_calls=0`. LEDGER_CHANGED detection. |
-| **v3** | `dshd_p67_monitor_v3.ps1` | POLL-42 → POLL-58 | 18:48 → 19:04 | Expanded credential regex (+`Tyq1999`). Dynamic `wind_api_calls` computation. Pipeline process detection. Wind script process detection. String invariants. |
+| **v3** | `dshd_p67_monitor_v3.ps1` | POLL-42 → POLL-58 | 18:48 → 19:04 | Expanded credential regex (+password-pattern). Dynamic `wind_api_calls` computation. Pipeline process detection. Wind script process detection. String invariants. |
 
 ### 6.2 Transition v1 → v2
 
@@ -510,8 +510,8 @@ At POLL-34, both the ledger and wind_events changed simultaneously (same timesta
 | 17:16:49 | POLL-0 | v1 | *(field absent)* | v1 did not scan for credentials |
 | 17:20:06–17:35:07 | POLL-1–16 | v1 | *(field absent)* | v1 did not scan for credentials |
 | 18:06:57–18:30:58 | POLL-17–41 | v2 | `NONE` | v2 regex: `credentials_provided|password|passwd|api_key|token|secret` |
-| 18:23:50 | (event) | — | — | DSHA-P49 WindPy test wrote credential `Tyq1999` to ledger line 40 |
-| 18:48:33–19:04:39 | POLL-42–58 | v3 | `CRITICAL_CREDENTIAL_DETECTED` | v3 regex: `credentials_provided|password|passwd|api_key|token|secret|Tyq1999` |
+| 18:23:50 | (event) | — | — | DSHA-P49 WindPy test wrote credential [REDACTED-CREDENTIAL] to ledger line 40 |
+| 18:48:33–19:04:39 | POLL-42–58 | v3 | `CRITICAL_CREDENTIAL_DETECTED` | v3 regex: `credentials_provided|password|passwd|api_key|token|secret|password-pattern` |
 
 ### 10.2 Root Cause Analysis
 
@@ -530,10 +530,10 @@ None of these keywords appeared in the DSHA-P49 event line. The credential was s
 The v3 regex expanded the pattern:
 
 ```
-credentials_provided|password|passwd|api_key|token|secret|Tyq1999
+credentials_provided|password|passwd|api_key|token|secret|password-pattern
 ```
 
-By adding `Tyq1999` as an explicit pattern (likely a known WindPy credential identifier), v3 retroactively matched the credential that was already in the ledger from the DSHA-P49 test.
+By adding `password-pattern` as an explicit pattern (likely a known WindPy credential identifier), v3 retroactively matched the credential that was already in the ledger from the DSHA-P49 test.
 
 ### 10.3 Was This a New Credential or Retroactive Detection?
 
@@ -550,9 +550,9 @@ Evidence:
 
 | Property | v2 | v3 |
 |---|---|---|
-| Regex pattern | `credentials_provided\|password\|passwd\|api_key\|token\|secret` | `credentials_provided\|password\|passwd\|api_key\|token\|secret\|Tyq1999` |
+| Regex pattern | `credentials_provided\|password\|passwd\|api_key\|token\|secret` | `credentials_provided\|password\|passwd\|api_key\|token\|secret\|password-pattern` |
 | Detection scope | Only new lines (ledger_lines - 39) | Only new lines (ledger_lines - 39) |
-| Credential found | No (`creds` keyword not in pattern) | Yes (`Tyq1999` matched) |
+| Credential found | No (`creds` keyword not in pattern) | Yes (`password-pattern` matched) |
 | Alert | NONE | CRITICAL_CREDENTIAL_DETECTED |
 | Line preview | *(not captured)* | `{"timestamp": "2026-10-16T18:23:50+08:00", "source": "DSHA-P49", "event_type": "windpy_connect_attempt", "status": "ATTEMPTING", "detail": "w.start() with creds [REDACTED-CREDENTIAL]"}` |
 | Escalation | — | IMMEDIATE_ESCALATION to DSHC |
@@ -630,7 +630,7 @@ Each new script version hardcoded its starting poll number, maintaining counter 
 |---|---|---|---|---|
 | **F1** | `continue_after_trip` type change from boolean `false` to string `"false"` at v3 boundary | **LOW** | v3 script uses string literal `"false"` instead of PowerShell boolean `$false`. Semantically identical but breaks strict JSON schema validation. | Consider fixing in v4 script. |
 | **F2** | Credential detected in ledger by v3 — needs DSHC adjudication | **CRITICAL** | Credential `[REDACTED-CREDENTIAL]` was written by DSHA-P49 WindPy test at 18:23:50. Detected retroactively by v3 at 18:48:33. Already escalated via CREDENTIAL_ALERT_TRIGGERED events. | DSHC must determine: was this an authorized test credential? Does it need rotation? |
-| **F3** | v2 missed credential due to insufficient regex pattern | **MEDIUM** | v2 regex did not include `creds` or `Tyq1999`. Detection gap was 24m 43s (18:23:50 → 18:48:33). | Improve credential regex in future script versions. Consider adding `creds`, `username`, `account`, `login`. |
+| **F3** | v2 missed credential due to insufficient regex pattern | **MEDIUM** | v2 regex did not include `creds` or `password-pattern`. Detection gap was 24m 43s (18:23:50 → 18:48:33). | Improve credential regex in future script versions. Consider adding `creds`, `username`, `account`, `login`. |
 | **F4** | POLL-16→POLL-17 gap of 31m 50s (monitor downtime) | **LOW** | Session boundary caused monitor loss. Monitoring resumed with v2 script. No invariant was lost or reset. | Consider implementing monitor auto-restart on session resume. |
 | **F5** | POLL-41→POLL-42 gap of 17m 35s (script transition) | **LOW** | v2→v3 development/review period. No monitoring coverage during this gap. | Consider hot-swapping scripts without downtime. |
 
