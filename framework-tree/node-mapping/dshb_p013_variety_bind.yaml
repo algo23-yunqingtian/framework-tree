@@ -1,0 +1,134 @@
+# =============================================================================
+# DSHB P0-13 品种树节点绑定映射
+# =============================================================================
+# TASK_ID: V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB
+# AGENT: DSHB | BRANCH: feature/v88-g1
+# GENERATED: 2026-10-22T16:39:20
+#
+# 用途: 静态绑定配置，供后续GitHub Pages前端用来"点品种节点加载对应指标"
+# 注意: 此为纯映射配置，不包含任何前端代码
+# =============================================================================
+
+# 绑定树根节点
+framework-tree:
+  # 一级: 数据Agent
+  data-agent:
+    # 二级: DSHB (数据侧)
+    DSHB:
+      # 三级: jobs
+      jobs:
+        # P0-13 噪声观测任务节点
+        P0-13-Noise-Observation:
+          # 任务元数据
+          task_id: "V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB"
+          status: "OBSERVATION_COMPLETE"
+          branch: "feature/v88-g1"
+          commit: "a27a03f"
+
+          # 观测指标摘要
+          observation_metrics:
+            total_hours: 168
+            noise_pct: 6.64
+            pass_rate_pct: 92.6
+            pass_count: 664
+            total_count: 717
+            restart_count: 0
+            intervention_count: 0
+            data_completeness_pct: 100.0
+
+          # 品种节点绑定
+          children:
+            # 铅 (PB) 节点
+            PB:
+              name: "铅"
+              english: "Lead"
+              symbol: "PB"
+              bind_type: "static"
+              metrics_binding:
+                source: "dshb_v88_p013.json"
+                fields:
+                  - noise_pct
+                  - pass_rate_pct
+                  - data_completeness_pct
+              indicator_ids:
+                - "pb_long_short_ratio"
+                - "pb_month_spread"
+                - "pb_price_percentile"
+                - "pb_term_structure"
+                - "pb_top20_net"
+              boundary_status: "HAS_DATA_ORPHAN"
+              phase04_action: "Register chart definitions in engine"
+              notes: "5 PB orphan indicators with data but no chart registration"
+
+            # 锌 (ZN) 节点
+            ZN:
+              name: "锌"
+              english: "Zinc"
+              symbol: "ZN"
+              bind_type: "static"
+              metrics_binding:
+                source: "dshb_v88_p013.json"
+                fields:
+                  - noise_pct
+                  - pass_rate_pct
+                  - data_completeness_pct
+              indicator_ids: []
+              boundary_status: "PLACEHOLDER_ZERO"
+              phase04_action: "Monitor for data activation"
+              notes: "placeholder_comexzn — all-zero values, data issue not render"
+
+            # 再生铅 (Recycle-PB) 链路节点
+            Recycle-PB:
+              name: "再生铅"
+              english: "Recycled Lead"
+              symbol: "Recycle-PB"
+              bind_type: "static"
+              metrics_binding:
+                source: "dshb_v88_p013.json"
+                fields:
+                  - noise_pct
+                  - pass_rate_pct
+                  - data_completeness_pct
+              indicator_ids: []
+              boundary_status: "DATA_SOURCE_GAP"
+              phase04_action: "Acquire recycled lead data source or substitute"
+              notes: "Recycled lead data source not yet available; placeholder data only"
+
+          # 链路元数据
+          lineage:
+            upstream_agent: "DSHB"
+            downstream_agent: "DSHE"
+            calibration_agent: "HERMES"
+            pipeline_type: "noise_observation_168h"
+            data_flow: "observation → snapshot → metrics-db → variety-tree → frontend"
+            snapshot_path: "p013_watch_prep/final_archive/noise_168h_final_snapshot.json"
+            metrics_path: "framework-tree/metrics-db/weekly/dshb_v88_p013.json"
+
+          # 约束锁定
+          constraints:
+            branch_locked: true
+            no_overwrite: true
+            no_modify_v87: true
+            no_edit_release_tag: true
+            no_zhiji_api_call: true
+            upstream_writes: 0
+            frozen_code_unmodified: true
+            manual_intervention: false
+            caliber_not_modified: true
+            baseline_merge_prohibited: true
+            hermes_release_required: true
+
+          # 绑定声明
+          binding_declaration: >
+            This is a static binding configuration for P0-13 Noise Observation
+            variety tree node. It maps DSHB job results to PB (Lead), ZN (Zinc),
+            and Recycle-PB (Recycled Lead) variety nodes. This mapping is intended
+            for future GitHub Pages frontend to load corresponding metrics when
+            a variety node is clicked. No frontend code is included in this file.
+            The binding is immutable — any changes require a new job execution.
+
+          # 版本与时间戳
+          version: "1.0.0"
+          created: "2026-10-22T16:39:20"
+          updated: "2026-10-22T16:39:20"
+          schema: "framework-tree-variety-bind-1.0"

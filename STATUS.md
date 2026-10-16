@@ -1,4 +1,20 @@
 
+### 2026-10-22 V88 Phase03 P3 DSHB P0-13 Final Close + Metrics-DB Seed (V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB)
+- **工单**: V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB
+- **前置**: DSHB commit a27a03f (P2 8/8 tasks); 噪声观测worker PID 32672 持续运行 160→168h/168h; DSHE commit 82d593e; 24-partial摸底已完整建档; 仓库已存在 /framework-tree/ 目录
+- **T0 最后窗口值守**: PID 32672锁定/168h/168h(100%)/6.64%噪声率/664/717达标/3.36pp安全裕度/100%完整性/0重启/0人为干预/13条日志完整连续/自动快照+渲染触发器ALL TRIGGERED/输出锁UNLOCKED/P0-13 GENERATED/终版noise_watch_log.md+noise_168h_final_snapshot.json
+- **T1 终版归档**: FINAL_SHA256_SEAL.md生成(10文件密封/SHA256+MD5双校验)/P0-13=OBSERVATION_COMPLETE/merge_readiness_check.md重申双锁策略(Lock1 FOUND/Lock2 NOT FOUND/联合FALSE)/🚨仍然没有HERMES放行→不执行基线merge
+- **T2 指标JSON入库**: dshb_v88_p013.json写入/framework-tree/metrics-db/weekly/(15字段: job_id/commit_hash/finish_timestamp/noise_total_hours/noise_pct=6.64/pass_case_count=664/total_case_count=717/fail_rate=7.39/restart_count=0/intervention_flag=false/audit_response_s=3600/p0_blocker_count=0/partial_inventory_count=24/spotis_quality_delta=-8.3/smm_case_added=13/branch_name=feature/v88-g1)/MD5校验文件dshb_v88_p013.json.md5(52BF7EA7B1E73D601C00D0AD2B408E6D)
+- **T3 品种树绑定**: dshb_p013_variety_bind.yaml写入/framework-tree/node-mapping/(framework-tree→data-agent→DSHB→jobs→P0-13-Noise-Observation→children: PB铅/ZN锌/Recycle-PB再生铅)/静态绑定配置/供后续GitHub Pages前端"点品种节点加载对应指标"/仅写映射不写前端代码
+- **T4 ECharts模板固化**: dshb_weekly_report_fixed_tpl.js写入/chart-tpl/(完整ECharts option: 6张KPI卡片+横向任务进度条+状态仪表盘+门禁状态仪表盘)/固定色值字号边距卡片尺寸/注释写明【构图锁定:仅换series/data;禁止改option顶层布局】/可复用chart option模块(非HTML)
+- **T5 跨Agent对齐**: 读取DSHE 82d593e commit/24-partial口径交叉比对: DSHB数据侧4类根因×DSHE渲染侧3类边界=互补无冲突/0口径差异/caliber状态双方均未修改/quick_cross_check_note.md产出
+- **T6 SPOT-IS/SMM巡检**: spot_is_crawler_v2.py冻结/11案例已归档/1511行DRY-RUN 9/9 PASS; smm_cloudflare_bypass_proto.py冻结/13案例已归档/765行原型; p012_p013_baseline_merge.py未修改; 无未提交变更
+- **T7 审计待命+提交**: 审计响应<1h/11/11约束合规/全部推送feature/v88-g1
+- **T8 元数据更新**: STATUS.md+JOB_READY.flag+MD5_MANIFEST.md全部更新/V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB=COMPLETE_READY
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V87=TRUE/NO_EDIT_RELEASE_TAG=TRUE/NO_ZHIJI_API_CALL=TRUE/UPSTREAM_WRITES=0/冻结代码未修改/禁止手动干预/不修改caliber状态/无正式基线输出/11/11
+- **状态标记**: V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB=COMPLETE_READY, V88_PHASE03_P3_P013_GENERATED=TRUE, V88_PHASE03_P3_P013_PROGRESS=100_PCT, V88_PHASE03_P3_P013_NOISE_PCT=6.64, V88_PHASE03_P3_P013_PASS_COUNT=664_OF_717, V88_PHASE03_P3_P013_RESTARTS=0, V88_PHASE03_P3_P013_INTERVENTION=0, V88_PHASE03_P3_LOCK1_P013_SNAPSHOT=FOUND, V88_PHASE03_P3_LOCK2_HERMES_MARKER=NOT_FOUND, V88_PHASE03_P3_MERGE_PROHIBITED=TRUE, V88_PHASE03_P3_METRICS_JSON_SEEDED=TRUE, V88_PHASE03_P3_VARIETY_BIND=PB_ZN_RECYCLE_PB, V88_PHASE03_P3_ECHARTS_TPL=FIXED_LAYOUT, V88_PHASE03_P3_CROSS_CHECK=NO_CONFLICT, V88_PHASE03_P3_P0_BLOCKERS=0, V88_PHASE03_P3_AUDIT_READY=UNDER_1H
+- **状态标记**: P013_FINAL_CLOSE_METRICSDB_SEED=COMPLETE_READY
+
 ### 2026-10-22 V88 Phase03 P2 DSHB P0-13 Watch + Partial Datasource Inventory (V88_PHASE03_P2_DSHB_P013_WATCH_AND_PARTIAL_DATASIDE_INVENTORY_JOB)
 - **工单**: V88_PHASE03_P2_DSHB_P013_WATCH_AND_PARTIAL_DATASIDE_INVENTORY_JOB
 - **前置**: DSHB commit d8778b6 (P1 POST_EXEMPTION_ALIGN+P013_PREP); 噪声观测worker PID 32672 持续运行 148→160h/168h; 基线合并脚本双锁就绪(DRY-RUN only)
