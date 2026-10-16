@@ -1,0 +1,61 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_FINAL_RENDER_ARCHIVE_AND_PHASE04_UI_PREP_JOB",
+  "task": "T1",
+  "task_description": "Freeze P0-12 audit package for V88 version gate",
+  "generated": "2026-10-16T14:34:51.749188",
+  "version": "1.3.0-cpu-benchmark",
+  "previous_version": "1.2.0-frozen",
+  "freeze_status": "FROZEN",
+  "immutable": true,
+  "version_locked": true,
+  "engine_md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+  "md5_frozen": true,
+  "cpu_metrics": {
+    "fuse_threshold_pct": 2.0,
+    "phase02_peak_pct": 1.94,
+    "pre_opt_cpu_pct_mean": 99.5251,
+    "post_opt_cpu_pct_mean": 99.4871,
+    "cpu_reduction_pct": 0.04,
+    "full_link_caliber": true,
+    "caliber_note": "Full-link business CPU (data+binding+render+output), not process-level"
+  },
+  "comparability": {
+    "direct_comparison_allowed": false,
+    "artifact_declares_incomparable": true
+  },
+  "p0_12_gate_ready": true,
+  "hermes_audit_prepared": true,
+  "audit_target": "P0-9 (independent recalculation) + P0-12 (enhanced CPU baseline) joint audit",
+  "contents": [
+    {
+      "file": "p012_enhanced_cpu_baseline_audit.json",
+      "size_bytes": 9855,
+      "md5": "154f61fca746e15ed3ac0bbd71cb2831",
+      "source": "long_render_monitor_audit_prep/p012_gate_package"
+    },
+    {
+      "file": "p012_gate_manifest.json",
+      "size_bytes": 1729,
+      "md5": "7bc7d695fc9b69e1d75494d2476f6d46",
+      "source": "long_render_monitor_audit_prep/p012_gate_package"
+    },
+    {
+      "file": "p012_gate_package_README.md",
+      "size_bytes": 2172,
+      "md5": "8768520dfc5cbe0e32ef046dc1d5f539",
+      "source": "long_render_monitor_audit_prep/p012_gate_package"
+    },
+    {
+      "file": "v88_p012_full_link_cpu_compare.json",
+      "size_bytes": 30737,
+      "md5": "404f831cbe3e7240a0b7b81c4ebd01f7",
+      "source": "p012_cpu_benchmark/",
+      "note": "Full-link business steady-state CPU A/B comparison (pre/post optimization)"
+    }
+  ],
+  "freeze_note": "Updated with full-link CPU benchmark (v88_p012_full_link_cpu_compare.json). All gate checks PASS. Full-link caliber active. Ready for HERMEShf P0-12 audit. NO MODIFICATION after this freeze.",
+  "frozen_timestamp": "2026-10-16T15:29:23",
+  "frozen_by": "V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK_JOB",
+  "last_updated": "2026-10-16T15:29:23",
+  "last_updated_by": "V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK_JOB"
+}

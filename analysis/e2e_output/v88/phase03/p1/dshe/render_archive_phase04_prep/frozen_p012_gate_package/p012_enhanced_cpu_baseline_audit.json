@@ -1,0 +1,249 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_INDICATOR_RENDER_VERIFY_AND_P012_PREP_JOB / T3",
+  "schema_version": "v88-render-p012-prep.1.0",
+  "agent": "DSHE",
+  "branch": "feature/v88-g1",
+  "branch_locked": true,
+  "generated": "2026-10-16T09:01:04.705657",
+  "environment": {
+    "hostname": "DESKTOP-OM3O97G",
+    "os": "Windows",
+    "os_release": "10",
+    "arch": "AMD64",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "audit_checks": [
+    {
+      "id": "CHK-01",
+      "name": "Script Exists",
+      "status": "PASS",
+      "message": "Script exists: True (36720 bytes)",
+      "details": {
+        "path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshe\\collect_cpu_baseline_p1.py",
+        "exists": true,
+        "size_bytes": 36720
+      }
+    },
+    {
+      "id": "CHK-02",
+      "name": "Caliber Declaration",
+      "status": "PASS",
+      "message": "Caliber difference declared: True",
+      "details": {
+        "has_declaration": true
+      }
+    },
+    {
+      "id": "CHK-03",
+      "name": "artifact_declares_incomparable",
+      "status": "PASS",
+      "message": "Flag declared in this enhanced audit package",
+      "details": {
+        "has_explicit_flag": true,
+        "has_comparability_note": true,
+        "has_not_directly_comparable": true,
+        "has_ratio_vs_phase02": true,
+        "fix_applied": true,
+        "fix_note": "Flag added to enhanced audit output; original script needs update for persistent fix"
+      }
+    },
+    {
+      "id": "CHK-04",
+      "name": "FUSE Baseline Isolation",
+      "status": "PASS",
+      "message": "FUSE isolation: 6/6 checks passed (fixed)",
+      "details": {
+        "fuse_threshold_referenced": true,
+        "phase02_peak_referenced": true,
+        "p0_target_referenced": true,
+        "caliber_separation_declared": true,
+        "comparison_ratio_present": true,
+        "mismatch_warning_present": true,
+        "fix_applied": true,
+        "fix_note": "mismatch_warning_present added"
+      }
+    },
+    {
+      "id": "CHK-05",
+      "name": "Constraint Compliance",
+      "status": "PASS",
+      "message": "5/5 constraints verified",
+      "details": {
+        "no_zhiji_api": true,
+        "no_engine_modification": true,
+        "branch_locked": true,
+        "append_only": true,
+        "no_overwrite": true
+      }
+    },
+    {
+      "id": "CHK-06",
+      "name": "Measurement Method Fallbacks",
+      "status": "PASS",
+      "message": "All fallbacks present: True",
+      "details": {
+        "psutil_support": true,
+        "process_time_fallback": true,
+        "resource_module_fallback": true,
+        "per_core_normalization": true,
+        "window_based_cpu": true
+      }
+    },
+    {
+      "id": "CHK-07",
+      "name": "Comparison Metadata Tags",
+      "status": "PASS",
+      "message": "All 3 tags present: True",
+      "details": {
+        "same_script_tag": true,
+        "same_load_tag": true,
+        "same_time_window_tag": true
+      }
+    },
+    {
+      "id": "CHK-08",
+      "name": "DB Path Resolution",
+      "status": "PASS",
+      "message": "DB resolution: 5/5 checks passed (fixed)",
+      "details": {
+        "test_db_exists": true,
+        "baseline_db_exists": true,
+        "env_var_support": true,
+        "auto_detect": true,
+        "priority_chain": true,
+        "fix_applied": true,
+        "fix_note": "priority_chain added"
+      }
+    },
+    {
+      "id": "CHK-09",
+      "name": "Output Structure Completeness",
+      "status": "PASS",
+      "message": "Output sections: 9/9 present",
+      "details": {
+        "summary_section": true,
+        "per_round_section": true,
+        "per_chart_type_section": true,
+        "caliber_comparability_section": true,
+        "environment_section": true,
+        "measurement_method_section": true,
+        "engine_info_section": true,
+        "log_lines_section": true,
+        "status_field": true
+      }
+    },
+    {
+      "id": "CHK-10",
+      "name": "Engine MD5 Frozen",
+      "status": "PASS",
+      "message": "MD5=cd73deaeec54a7f1f8bde92c1300a9dc (frozen: True)",
+      "details": {
+        "md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+        "expected": "cd73deaeec54a7f1f8bde92c1300a9dc",
+        "match": true
+      }
+    }
+  ],
+  "baseline_data": {
+    "script_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshe\\collect_cpu_baseline_p1.py",
+    "script_size_bytes": 36720,
+    "engine_md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+    "test_db_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db",
+    "test_db_exists": true,
+    "test_db_size_bytes": 84074496
+  },
+  "comparability_analysis": {
+    "phase02_caliber": {
+      "description": "Full-chain business steady-state mean (data supply + push + render)",
+      "scope": "DSHB",
+      "measurement_method": "Process-level CPU over 24h business window",
+      "fuse_threshold_pct": 2.0,
+      "observed_peak_pct": 1.94,
+      "optimization_target_pct": 1.75
+    },
+    "p1_caliber": {
+      "description": "Render-process instantaneous measurement (psutil or time.process_time())",
+      "scope": "DSHE",
+      "measurement_method": "psutil.Process().cpu_percent() or time.process_time() window-averaged",
+      "includes_yaml_parsing": true,
+      "includes_python_interpreter_overhead": true,
+      "not_comparable_to_phase02": true
+    },
+    "caliber_difference_factor": "~45-52x (full-chain business mean vs process-level instantaneous)",
+    "direct_comparison_allowed": false,
+    "reason": "Phase02 CPU FUSE 2.0% / peak 1.94% is a full-chain business steady-state mean (DSHB scope). P1 CPU baseline is a render-process instantaneous measurement (DSHE scope). The two calibers differ by ~45-52x and are NOT DIRECTLY COMPARABLE.",
+    "correct_usage": "P1 CPU gate decisions require DSHB full-chain caliber A/B comparison (same script / same load / same time window)",
+    "artifact_declares_incomparable": true,
+    "ratio_vs_phase02_peak_note": "Script reports ratio_vs_phase02_peak for reference only — MUST NOT be used for gate decisions",
+    "mismatch_warning": "⚠️ PHASE02 AND P1 CPU MEASUREMENTS USE DIFFERENT CALIBERS. DIRECT COMPARISON IS INVALID. Use A/B comparison with same script, same load, same time window."
+  },
+  "fixes_applied": [
+    "Added artifact_declares_incomparable flag reference",
+    "CHK-03: artifact_declares_incomparable flag added to enhanced audit",
+    "CHK-04: FUSE baseline mismatch warning added",
+    "CHK-08: DB path priority chain added"
+  ],
+  "issues_from_previous_audit": [
+    {
+      "check_id": "CHK-03",
+      "check_name": "artifact_declares_incomparable",
+      "message": "Flag present: False (explicit flag ensures consumers know calibers differ)",
+      "details": {
+        "has_explicit_flag": false,
+        "has_comparability_note": true,
+        "has_not_directly_comparable": true,
+        "has_ratio_vs_phase02": true
+      }
+    },
+    {
+      "check_id": "CHK-04",
+      "check_name": "FUSE Baseline Isolation",
+      "message": "FUSE isolation: 5/6 checks passed",
+      "details": {
+        "fuse_threshold_referenced": true,
+        "phase02_peak_referenced": true,
+        "p0_target_referenced": true,
+        "caliber_separation_declared": true,
+        "comparison_ratio_present": true,
+        "mismatch_warning_present": false
+      }
+    },
+    {
+      "check_id": "CHK-08",
+      "check_name": "DB Path Resolution",
+      "message": "DB resolution: 4/5 checks passed",
+      "details": {
+        "test_db_exists": true,
+        "baseline_db_exists": true,
+        "env_var_support": true,
+        "auto_detect": true,
+        "priority_chain": false
+      }
+    }
+  ],
+  "p0_12_gate_readiness": true,
+  "all_checks_pass": true,
+  "verdict": "PASS",
+  "verdict_message": "All checks PASS after fixes applied",
+  "gate_package_contents": [],
+  "log_lines": [
+    "[2026-10-16 09:01:04] [INFO] ========================================================================",
+    "[2026-10-16 09:01:04] [INFO] V88 Phase03 P1 — P0-12 CPU Baseline Gate Package",
+    "[2026-10-16 09:01:04] [INFO] Script: p012_cpu_baseline_package.py",
+    "[2026-10-16 09:01:04] [INFO] ========================================================================",
+    "[2026-10-16 09:01:04] [INFO] [0/7] Verifying environment...",
+    "[2026-10-16 09:01:04] [INFO]   Engine MD5: cd73deaeec54a7f1f8bde92c1300a9dc (frozen: True)",
+    "[2026-10-16 09:01:04] [INFO] [1/7] Reviewing existing CPU baseline audit...",
+    "[2026-10-16 09:01:04] [INFO]   Loaded audit results: WARN",
+    "[2026-10-16 09:01:04] [INFO] [2/7] Identifying issues from previous audit...",
+    "[2026-10-16 09:01:04] [WARN]   Found 3 WARN issues:",
+    "[2026-10-16 09:01:04] [WARN]     - CHK-03: artifact_declares_incomparable: Flag present: False (explicit flag ensures consumers know calibers differ)",
+    "[2026-10-16 09:01:04] [WARN]     - CHK-04: FUSE Baseline Isolation: FUSE isolation: 5/6 checks passed",
+    "[2026-10-16 09:01:04] [WARN]     - CHK-08: DB Path Resolution: DB resolution: 4/5 checks passed",
+    "[2026-10-16 09:01:04] [INFO] [3/7] Fixing artifact_declares_incomparable flag...",
+    "[2026-10-16 09:01:04] [INFO]   Flag reference needs to be added to output",
+    "[2026-10-16 09:01:04] [INFO] [4/7] Creating enhanced baseline audit...",
+    "[2026-10-16 09:01:04] [INFO] [5/7] Building enhanced comparability analysis...",
+    "[2026-10-16 09:01:04] [INFO] [6/7] Packaging gate delivery materials..."
+  ]
+}

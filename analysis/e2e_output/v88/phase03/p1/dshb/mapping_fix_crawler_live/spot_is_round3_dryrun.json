@@ -1,0 +1,50 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHB_NI_TOP20_HISTORY_FILL_AND_REMAIN_CRAWLER_FINALIZE_JOB",
+  "script": "spot_is_crawler",
+  "lib_version": "v88-p1-t2-spot-is-mvp-v1.0",
+  "branch": "feature/v88-g1",
+  "indicator_code": "SPOT_IS",
+  "indicator_name": "工业硅现货价格",
+  "commodity": "si",
+  "dry_run": true,
+  "mode": "dry-run",
+  "source": "100PPI_SI_DAY",
+  "date_range": {
+    "start": "2026-08-01",
+    "end": "2026-08-31"
+  },
+  "rows_fetched": 21,
+  "rows_new": 21,
+  "rows_duplicated": 0,
+  "rows_written": 0,
+  "dqa": {
+    "dqa_results": [
+      {
+        "id": "DQA-ALL",
+        "name": "数据文件不存在",
+        "status": "FAIL",
+        "detail": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshb\\ni_history_fill_crawler_final\\crawler_mvp\\crawler_data\\spot_is_data.csv"
+      }
+    ],
+    "overall": "FAIL",
+    "pass": 0,
+    "warn": 0,
+    "fail": 1,
+    "total": 1
+  },
+  "csv_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshb\\ni_history_fill_crawler_final\\crawler_mvp\\crawler_data\\spot_is_data.csv",
+  "existing_mapping": {
+    "source_indicator": "spot_is_change",
+    "existing_rows": 773,
+    "description": "已有 spot_is_change (工业硅现货变化), SPOT_IS 为绝对价格指标"
+  },
+  "constraints": {
+    "NO_ZHIJI_API_CALL": true,
+    "NO_OVERWRITE": true,
+    "APPEND_ONLY": true,
+    "BRANCH_LOCKED": true,
+    "NO_MODIFY_V87": true,
+    "NO_EDIT_RELEASE_TAG": true
+  },
+  "generated_at": "2026-10-16T15:15:46"
+}

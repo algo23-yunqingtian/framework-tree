@@ -1,0 +1,109 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHB_NI_TOP20_HISTORY_FILL_AND_REMAIN_CRAWLER_FINALIZE_JOB",
+  "script": "cu_balance_sheet_crawler",
+  "lib_version": "v88-p1-t2-cu-balance-mvp-v1.0",
+  "branch": "feature/v88-g1",
+  "indicator_code": "CU_BALANCE_SHEET",
+  "indicator_name": "铜资产负债表",
+  "commodity": "cu",
+  "dry_run": true,
+  "mode": "dry-run",
+  "source": "ICSG_MONTHLY",
+  "date_range": {
+    "start": "2024-06-01",
+    "end": "2024-12-01"
+  },
+  "rows_fetched": 7,
+  "rows_new": 7,
+  "rows_duplicated": 0,
+  "rows_written": 0,
+  "dqa": {
+    "dqa_results": [
+      {
+        "id": "DQA-01",
+        "name": "数据完整性",
+        "status": "PASS",
+        "detail": "6 rows"
+      },
+      {
+        "id": "DQA-02",
+        "name": "数值范围",
+        "status": "PASS",
+        "detail": "48/48 in range"
+      },
+      {
+        "id": "DQA-03",
+        "name": "无空值",
+        "status": "WARN",
+        "detail": "6/6 rows empty (100.00%)"
+      },
+      {
+        "id": "DQA-04",
+        "name": "时序连续性",
+        "status": "PASS",
+        "detail": "max_gap=0d, 0 unique months"
+      },
+      {
+        "id": "DQA-05",
+        "name": "无重复",
+        "status": "WARN",
+        "detail": "5 duplicates"
+      },
+      {
+        "id": "DQA-06",
+        "name": "全零检测",
+        "status": "PASS",
+        "detail": "zero_ratio=0.0000"
+      },
+      {
+        "id": "DQA-07",
+        "name": "单调性",
+        "status": "PASS",
+        "detail": "0 jumps >50% / 0 transitions (0.00%)"
+      },
+      {
+        "id": "DQA-08",
+        "name": "数据源一致性",
+        "status": "PASS",
+        "detail": "1 source(s): {'ICSG_MONTHLY'}"
+      },
+      {
+        "id": "DQA-09",
+        "name": "指标一致性",
+        "status": "PASS",
+        "detail": "1 code(s): {'CU_BALANCE_SHEET'}"
+      },
+      {
+        "id": "DQA-10",
+        "name": "供需平衡校验",
+        "status": "WARN",
+        "detail": "6 balance issues / 6 checks"
+      }
+    ],
+    "pass": 7,
+    "warn": 3,
+    "fail": 0,
+    "total": 10,
+    "overall": "PASS",
+    "row_count": 6,
+    "date_range": {
+      "start": null,
+      "end": null
+    }
+  },
+  "csv_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshb\\ni_history_fill_crawler_final\\crawler_mvp\\crawler_data\\cu_balance_sheet_data.csv",
+  "existing_mapping": {
+    "source_indicator": "CU_BALANCE_SHEET",
+    "existing_rows": 0,
+    "description": "PLACEHOLDER状态, 无已有数据, 需从零开始采集"
+  },
+  "constraints": {
+    "NO_ZHIJI_API_CALL": true,
+    "NO_OVERWRITE": true,
+    "APPEND_ONLY": true,
+    "BRANCH_LOCKED": true,
+    "NO_MODIFY_V87": true,
+    "NO_EDIT_RELEASE_TAG": true
+  },
+  "generated_at": "2026-10-16T15:18:22"
+}

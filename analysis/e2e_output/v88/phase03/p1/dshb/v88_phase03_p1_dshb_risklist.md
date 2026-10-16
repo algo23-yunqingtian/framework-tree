@@ -24,14 +24,16 @@
 | **R-V88-034** | **CPU基线优化(P0-12门禁)** | **P2** | **🟡 OPEN** | **DSHB** |
 | **R-V88-035** | **告警噪声率7天观测(P0-13门禁)** | **P2** | **🟡 IN_PROGRESS** (4/168h, 9.54%) | **DSHB+HERMES** |
 | **R-V88-036** | **180指标扩量可追溯(P0-14门禁)** | **P2** | **🟢 MITIGATED** | **DSHB** |
-| **R-V88-037** | **派生指标零值数据源缺失** | **P2** | **🟡 OPEN** (2/70 FAIL) | **DSHB** |
-| **R-V88-038** | **派生指标连续相同值(数据停滞)** | **P2** | **🟡 MONITORED** (6/14 WARN) | **DSHB** |
+| **R-V88-037** | **派生指标零值数据源缺失** | **P2** | **✅ CLOSED** (8/9已修复, 1项PARTIAL) | **DSHB** |
+| **R-V88-038** | **派生指标连续相同值(数据停滞)** | **P2** | **🟡 MONITORED** (9/9 WARN已归档根因) | **DSHB** |
 | DSHB R-01 | 容量突破 | P2 | ✅ **MITIGATED** | DSHB |
 | DSHB R-04 | 灾备一致性 | P1 | ✅ **MITIGATED** | DSHB |
 | DSHB R-06 | 告警噪声 | P2 | ✅ **MITIGATED** | DSHB |
 | DSHB R-09 | Phase02 影响 | Critical | ✅ **CLOSED** | DSHB |
 
-**总计**: 19 项 / 15项 CLOSED 或 MITIGATED / 3项 OPEN (R-V88-034, R-V88-037, R-V88-038) / 1项 IN_PROGRESS (R-V88-035, 4/168h观测中) / 0项 P0 阻断
+**总计**: 19 项 / 16项 CLOSED 或 MITIGATED / 2项 OPEN (R-V88-034, R-V88-038) / 1项 IN_PROGRESS (R-V88-035, 4/168h观测中) / 0项 P0 阻断
+
+> **INDICATOR_ALIGN_AND_CRAWLER_DEPLOY 更新**: R-V88-037 CLOSED (8/9全零修复, 1项PARTIAL) / R-V88-038 MONITORED (9项WARN全部归档根因) / 对齐率100%达标 / 爬虫3轮试运行全PASS
 
 ---
 

@@ -1,0 +1,53 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_REMAIN_METRIC_RENDER_FIX_AND_R3_AUDIT_READY_JOB / T5+T6",
+  "package_name": "p012_cpu_baseline_gate_package",
+  "generated": "2026-10-16T11:26:07.001224",
+  "version": "1.1.0",
+  "previous_version": "1.0.0",
+  "contents": [
+    {
+      "file": "p012_enhanced_cpu_baseline_audit.json",
+      "md5": "154f61fca746e15ed3ac0bbd71cb2831",
+      "size_bytes": 9855
+    },
+    {
+      "file": "p012_gate_package_README.md",
+      "md5": "8768520dfc5cbe0e32ef046dc1d5f539",
+      "size_bytes": 2172
+    },
+    {
+      "file": "cpu_baseline_audit_results.json",
+      "md5": "813f1a5e1018672243dcb1a64855f0c9",
+      "size_bytes": 6172,
+      "note": "Reference only (original audit)"
+    },
+    {
+      "file": "v88_phase03_p1_final_cpu_baseline_audit.md",
+      "md5": "4a9577725224da99131da37ff10d3c69",
+      "size_bytes": 3042,
+      "note": "Reference only (original audit)"
+    }
+  ],
+  "audit_summary": {
+    "total_checks": 10,
+    "passed": 10,
+    "warned": 0,
+    "failed": 0,
+    "previous_verdict": "PASS",
+    "current_verdict": "PASS"
+  },
+  "engine_md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+  "md5_frozen": true,
+  "cpu_metrics": {
+    "fuse_threshold_pct": 2.0,
+    "phase02_peak_pct": 1.94
+  },
+  "comparability": {
+    "direct_comparison_allowed": false,
+    "artifact_declares_incomparable": true
+  },
+  "p0_12_gate_ready": true,
+  "maintenance_note": "Updated in V88_PHASE03_P1_DSHE_LONG_TERM_RENDER_MONITOR_AND_FINAL_AUDIT_PREP_JOB. All files verified. P0-12 gate ready for HERMEShf audit.",
+  "last_updated": "2026-10-16T14:05:10",
+  "last_updated_by": "V88_PHASE03_P1_DSHE_LONG_TERM_RENDER_MONITOR_AND_FINAL_AUDIT_PREP_JOB"
+}
