@@ -1,0 +1,300 @@
+{
+  "package_id": "DSHC-P66-G7-ADJUDICATION-PACKAGE-001",
+  "generated_at": "2026-10-16 GMT+8",
+  "updated_at": "2026-10-16 GMT+8",
+  "agent": "DSHC-P66",
+  "branch": "PHASE48_BASELINE",
+  "gate": "CLOSED/HOLD",
+  "wind_api_calls": 0,
+  "release_permit": "NOT_ISSUED",
+  "git_push_executed": false,
+  "audit_ledger_modified": false,
+  "p49_p53_baseline_modified": false,
+  "documents": [
+    {
+      "filename": "FL01_FL02_manual_review.md",
+      "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\FL01_FL02_manual_review.md",
+      "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\FL01_FL02_manual_review.md",
+      "sha256": "EB8689D71B29F5829013205113FC987814695A43EAEF20C6017E2BAE3F822A5E",
+      "size_bytes": 24406,
+      "status": "PRESENT"
+    },
+    {
+      "filename": "poll39_main_audit_report.md",
+      "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_main_audit_report.md",
+      "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_main_audit_report.md",
+      "sha256": "B328A408B889D6CB7C0613CA2B7B73ED7DE20BF2D1BC6937CFCC549F0DF43622",
+      "size_bytes": 8292,
+      "status": "PRESENT"
+    },
+    {
+      "filename": "poll39_factor_leakage_risk_appendix.md",
+      "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_factor_leakage_risk_appendix.md",
+      "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_factor_leakage_risk_appendix.md",
+      "sha256": "2E8377D02604C5DD2C425266A728092FB7FF7F28A202252DBBDC530F0D16F43E",
+      "size_bytes": 8537,
+      "status": "PRESENT"
+    },
+    {
+      "filename": "P66_KB_SECOND_REVIEW_REPORT.md",
+      "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\P66_KB_SECOND_REVIEW_REPORT.md",
+      "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\P66_KB_SECOND_REVIEW_REPORT.md",
+      "sha256": "244371CA5E2177C2EE35259503736A946312819E3799F02DD00D5F1CB8D36115",
+      "size_bytes": 4205,
+      "status": "PRESENT"
+    },
+    {
+      "filename": "G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
+      "path": "G7_ADJUDICATION_LEDGER\\G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
+      "sha256": "B96B5A1FDB8C9897FA428408909E14B72E43B677D5AE31EEABC7CC91C1AE5926",
+      "size_bytes": 4769,
+      "status": "TEMP_WIND_EXCEL_FALLBACK_GUIDE_RECORDED"
+    }
+  ],
+  "conditional_release_documents": [
+    {
+      "filename": "G7_CONDITIONAL_RELEASE_PERMIT.md",
+      "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_PERMIT.md",
+      "sha256": "E534B27ACD88442A505A8703F29A3D312428A02D892541FA0F2472B16B726D66",
+      "size_bytes": 3232,
+      "status": "RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
+      "scope": [
+        "FACTOR-004",
+        "FACTOR-006",
+        "FACTOR-007"
+      ],
+      "blocked_factors": [
+        "FACTOR-001",
+        "FACTOR-002",
+        "FACTOR-003",
+        "FACTOR-005"
+      ]
+    },
+    {
+      "filename": "G7_CONDITIONAL_RELEASE_BROADCAST.md",
+      "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_BROADCAST.md",
+      "sha256": "43EAC1F2EF4AEA1B09D835C765CB4477775A77ACD60D43F759BF14E44504E3D6",
+      "size_bytes": 2683,
+      "status": "BROADCAST_ISSUED_RESTRICTED_GRAY_ONLY_EXCEL_FALLBACK_NOTED",
+      "audience": [
+        "DSHA",
+        "DSHD"
+      ]
+    },
+    {
+      "filename": "G7_CONDITIONAL_BACKTEST_CHAIN_AUDIT_SUMMARY.md",
+      "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_BACKTEST_CHAIN_AUDIT_SUMMARY.md",
+      "sha256": "762124DD55A958969C5418C5EF1A93D20853ADB6E62C308D0E58B9E6FD1F1E4E",
+      "size_bytes": 3945,
+      "status": "DRAFT_AUDIT_SUMMARY_RECORDED_WITH_EXCEL_FALLBACK",
+      "scope": [
+        "FACTOR-004",
+        "FACTOR-006",
+        "FACTOR-007"
+      ],
+      "blocked_factors": [
+        "FACTOR-001",
+        "FACTOR-002",
+        "FACTOR-003",
+        "FACTOR-005"
+      ]
+    },
+    {
+      "filename": "G7_CONDITIONAL_WIND_TEMP_CREDENTIAL.md",
+      "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_WIND_TEMP_CREDENTIAL.md",
+      "sha256": "0C8834AE0C32A144DF6886679C69D4DD0945323FE45036FDD1F40694C0AEC9AF",
+      "size_bytes": 3422,
+      "status": "TEMP_WIND_CREDENTIAL_UPDATED_TO_EXCEL_FALLBACK",
+      "scope": [
+        "FACTOR-004",
+        "FACTOR-006",
+        "FACTOR-007"
+      ],
+      "blocked_factors": [
+        "FACTOR-001",
+        "FACTOR-002",
+        "FACTOR-003",
+        "FACTOR-005"
+      ]
+    },
+    {
+      "filename": "G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
+      "path": "G7_ADJUDICATION_LEDGER\\G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
+      "sha256": "B96B5A1FDB8C9897FA428408909E14B72E43B677D5AE31EEABC7CC91C1AE5926",
+      "size_bytes": 4769,
+      "status": "TEMP_WIND_EXCEL_FALLBACK_GUIDE_RECORDED",
+      "scope": [
+        "FACTOR-004",
+        "FACTOR-006",
+        "FACTOR-007"
+      ],
+      "blocked_factors": [
+        "FACTOR-001",
+        "FACTOR-002",
+        "FACTOR-003",
+        "FACTOR-005"
+      ]
+    }
+  ],
+  "formal_adjudication": {
+    "filename": "G7_FACTOR_ADJUDICATION_REPORT.md",
+    "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\G7_FACTOR_ADJUDICATION_REPORT.md",
+    "sha256": "EF98B5510B95833AEA9AC1399352C7E77D60C0BB28425C88876A9F6550D7A562",
+    "size_bytes": 12071,
+    "status": "EFFECTIVE_REPORT_GENERATED_GATE_STILL_CLOSED",
+    "final_matrix": {
+      "pass": 0,
+      "conditional_pass": 3,
+      "hold": 4,
+      "reject": 0,
+      "production_release_allowed": 0
+    }
+  },
+  "whitelist_decisions": {
+    "scheme_selected": "A",
+    "code_scanner_namespace": "WL-006~WL-014",
+    "factor_tracking_namespace": "WL-A001~WL-A007",
+    "approved_entries": [
+      "WL-006",
+      "WL-007",
+      "WL-008",
+      "WL-009",
+      "WL-010",
+      "WL-011",
+      "WL-012",
+      "WL-013",
+      "WL-014"
+    ],
+    "coverage": "42/42",
+    "defect_count": 0,
+    "status": "APPROVED_FOR_CODE_LEAKAGE_SCANNER"
+  },
+  "whitelist_drafts": [
+    {
+      "filename": "WL006_WL014_whitelist_draft.md",
+      "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\WL006_WL014_whitelist_draft.md",
+      "sha256": "FD7FB054B5702CBAC1583526629C1A7F11F27221E8A9F56A6DBEDC93499C7F54",
+      "size_bytes": 7350,
+      "entries": 9,
+      "status": "APPROVED_BY_FORMAL_ADJUDICATION"
+    }
+  ],
+  "review_documents": [
+    {
+      "filename": "DRAFT_REVIEW_COMMENTS.md",
+      "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\DRAFT_REVIEW_COMMENTS.md",
+      "sha256": "5201F239D7C2F9FFE0B6FAAC74E7AB3383F2017205B32353B7A26AC2AC52CB6B",
+      "size_bytes": 14356,
+      "review_target": "G7_FACTOR_ADJUDICATION_DRAFT.md",
+      "critical_issues": 2,
+      "confirmations": 4,
+      "status": "CRITICAL_ISSUES_CLOSED"
+    },
+    {
+      "filename": "DRAFT_REVIEW_COMMENTS_RESPONSE.md",
+      "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\DRAFT_REVIEW_COMMENTS_RESPONSE.md",
+      "sha256": "131F99879E03E73365E096326E254DF4990223F75049B9875F1C1B356864ED8D",
+      "size_bytes": 2090,
+      "review_target": "DRAFT_REVIEW_COMMENTS.md",
+      "respondent": "DSHC",
+      "status": "ACK_RECORDED"
+    }
+  ],
+  "conditional_release": {
+    "filename": "G7_CONDITIONAL_RELEASE_PERMIT.md",
+    "broadcast_filename": "G7_CONDITIONAL_RELEASE_BROADCAST.md",
+    "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_PERMIT.md",
+    "broadcast_path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_BROADCAST.md",
+    "sha256": "E534B27ACD88442A505A8703F29A3D312428A02D892541FA0F2472B16B726D66",
+    "broadcast_sha256": "F138F6BFA75FDF26C2CC3B0DCBC33AE1936D7A05E503D2EA49DFAF23DD5FD6DF",
+    "size_bytes": 3232,
+    "broadcast_size_bytes": 2163,
+    "status": "ISSUED_RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
+    "scope": {
+      "conditional_pass_factors": [
+        "FACTOR-004",
+        "FACTOR-006",
+        "FACTOR-007"
+      ],
+      "hold_factors": [
+        "FACTOR-001",
+        "FACTOR-002",
+        "FACTOR-003",
+        "FACTOR-005"
+      ]
+    },
+    "constraints": [
+      "Only the 3 CONDITIONAL_PASS factors may enter the restricted gray channel.",
+      "No HOLD factor may be computed, read, or backtested.",
+      "Global GATE remains CLOSED/HOLD.",
+      "Global Release Permit remains NOT_ISSUED.",
+      "P49/P53 baseline remains locked.",
+      "Audit ledger remains immutable except for this conditional release record and checksum/manifest archival."
+    ],
+    "revocation_triggers": [
+      "Any HOLD factor triggered",
+      "Any condition boundary violated",
+      "Any new leakage evidence",
+      "Any unauthorized access or abnormal log event"
+    ],
+    "notifications": {
+      "dsha": "BROADCAST_ISSUED_EXCEL_FALLBACK_UPDATED",
+      "dshd": "AUDIT_LINK_ENABLED_EXCEL_FALLBACK"
+    },
+    "data_acquisition": "excel_wind_terminal",
+    "source_path": "EXCEL_WIND_FALLBACK"
+  },
+  "pre_gray_check": {
+    "filename": "P49_pre_gray_check.md",
+    "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\data-harbor\\dsha_p49_prep\\P49_backtest_audit\\factor_knowledge_base\\P49_pre_gray_check.md",
+    "sha256": "FBBC4C243F42EDD54B8D5C69746D503A10765B0939D9C7D1AE5C1091421FAF55",
+    "size_bytes": 11899,
+    "status": "G7_ADJUDICATED_HOLD_WITH_CONDITIONAL_GRAY"
+  },
+  "release_permit_plan": {
+    "status": "PREPARED_ONLY_PENDING_SCHEDULER_CONFIRMATION",
+    "permit_issued": false,
+    "gate_opened": false,
+    "trigger_status": "DISABLED",
+    "wind_credentials_configured": false,
+    "required_scheduler_confirmation": true,
+    "not_executed_actions": [
+      "git push",
+      "release permit issuance",
+      "gate open",
+      "wind api call",
+      "backtest trigger",
+      "gray release trigger"
+    ]
+  },
+  "missing_documents": [],
+  "summary": {
+    "documents_total": 5,
+    "documents_present": 5,
+    "documents_missing": 0,
+    "conditional_release_document_count": 5,
+    "formal_report_status": "EFFECTIVE_GATE_CLOSED",
+    "whitelist_approved_entries": 9,
+    "total_whitelist_hits_covered": 42,
+    "false_alarm_count": 42,
+    "defect_count": 0,
+    "review_critical_issues": 2,
+    "review_critical_issues_closed": 2,
+    "p49_pre_gray_check_status": "G7_ADJUDICATED_HOLD_WITH_CONDITIONAL_GRAY",
+    "conditional_release_status": "ISSUED_RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
+    "release_permit_plan_status": "PREPARED_ONLY_PENDING_SCHEDULER_CONFIRMATION"
+  },
+  "governance_invariants": {
+    "wind_api_calls": 0,
+    "backtest_started": false,
+    "trigger_status": "DISABLED",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "git_push_executed": false,
+    "audit_ledger_modified": false,
+    "p49_p53_baseline_modified": false,
+    "upstream_writes": 0,
+    "factor_formula_fixed": true,
+    "self_approval": 0
+  }
+}
