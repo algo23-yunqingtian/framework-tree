@@ -1,0 +1,313 @@
+{
+  "script": "P49_backtest_pipeline_offline_validation.py",
+  "timestamp": "2026-10-16T20:30:08.689903+08:00",
+  "checks": [
+    {
+      "name": "HOLD_FACTORS_DEFINED",
+      "status": "PASS",
+      "detail": "4 HOLD factors defined: ['FACTOR-001', 'FACTOR-002', 'FACTOR-003', 'FACTOR-005']"
+    },
+    {
+      "name": "HOLD_ERROR_CLASS",
+      "status": "PASS",
+      "detail": "HoldFactorTerminationError class defined"
+    },
+    {
+      "name": "HOLD_GATE_METHOD",
+      "status": "PASS",
+      "detail": "ProcessGate.check_factor_access method defined"
+    },
+    {
+      "name": "HOLD_TERMINATE_MSG",
+      "status": "PASS",
+      "detail": "TERMINATE_PIPELINE_IMMEDIATELY message present"
+    },
+    {
+      "name": "HOLD_LOG_METHOD",
+      "status": "PASS",
+      "detail": "WindAuditLogger.log_hold_block method defined"
+    },
+    {
+      "name": "CONDITIONAL_FACTORS_DEFINED",
+      "status": "PASS",
+      "detail": "3 CONDITIONAL factors defined: ['FACTOR-004', 'FACTOR-006', 'FACTOR-007']"
+    },
+    {
+      "name": "CONDITIONAL_PROCESS_BLOCK",
+      "status": "PASS",
+      "detail": "CONDITIONAL_FACTORS have process_block=False"
+    },
+    {
+      "name": "CHUNK_COUNT",
+      "status": "PASS",
+      "detail": "3 chunks generated"
+    },
+    {
+      "name": "CHUNK_1_DAYS",
+      "status": "PASS",
+      "detail": "Chunk 1: 2023-01-01~2023-12-31 (365d)"
+    },
+    {
+      "name": "CHUNK_2_DAYS",
+      "status": "PASS",
+      "detail": "Chunk 2: 2024-01-01~2024-12-30 (365d)"
+    },
+    {
+      "name": "CHUNK_3_DAYS",
+      "status": "PASS",
+      "detail": "Chunk 3: 2024-12-31~2024-12-31 (1d)"
+    },
+    {
+      "name": "CHUNK_TOTAL_DAYS",
+      "status": "PASS",
+      "detail": "Total days: 731 = 731"
+    },
+    {
+      "name": "CALL_ESTIMATE_TOTAL",
+      "status": "PASS",
+      "detail": "Total: 108 calls = 108"
+    },
+    {
+      "name": "CALL_ESTIMATE_FACTOR-004",
+      "status": "PASS",
+      "detail": "FACTOR-004: 36 calls"
+    },
+    {
+      "name": "CALL_ESTIMATE_FACTOR-006",
+      "status": "PASS",
+      "detail": "FACTOR-006: 24 calls"
+    },
+    {
+      "name": "CALL_ESTIMATE_FACTOR-007",
+      "status": "PASS",
+      "detail": "FACTOR-007: 48 calls"
+    },
+    {
+      "name": "HOLD_NO_CALLS_FACTOR-001",
+      "status": "PASS",
+      "detail": "FACTOR-001 correctly excluded from data pull"
+    },
+    {
+      "name": "HOLD_NO_CALLS_FACTOR-002",
+      "status": "PASS",
+      "detail": "FACTOR-002 correctly excluded from data pull"
+    },
+    {
+      "name": "HOLD_NO_CALLS_FACTOR-003",
+      "status": "PASS",
+      "detail": "FACTOR-003 correctly excluded from data pull"
+    },
+    {
+      "name": "HOLD_NO_CALLS_FACTOR-005",
+      "status": "PASS",
+      "detail": "FACTOR-005 correctly excluded from data pull"
+    },
+    {
+      "name": "MAPPING_FIELDS_FACTOR-004",
+      "status": "PASS",
+      "detail": "FACTOR-004: 3 fields = 3 wind_fields"
+    },
+    {
+      "name": "MAPPING_COMPLETE_FACTOR-004",
+      "status": "PASS",
+      "detail": "FACTOR-004: all fields mapped"
+    },
+    {
+      "name": "MAPPING_FIELDS_FACTOR-006",
+      "status": "PASS",
+      "detail": "FACTOR-006: 2 fields = 2 wind_fields"
+    },
+    {
+      "name": "MAPPING_COMPLETE_FACTOR-006",
+      "status": "PASS",
+      "detail": "FACTOR-006: all fields mapped"
+    },
+    {
+      "name": "MAPPING_FIELDS_FACTOR-007",
+      "status": "PASS",
+      "detail": "FACTOR-007: 4 fields = 4 wind_fields"
+    },
+    {
+      "name": "MAPPING_COMPLETE_FACTOR-007",
+      "status": "PASS",
+      "detail": "FACTOR-007: all fields mapped"
+    },
+    {
+      "name": "SHA256_ENTRIES_PARSED",
+      "status": "PASS",
+      "detail": "Parsed 18 checksum entries"
+    },
+    {
+      "name": "SHA256_VERIFY_FL01_FL02_manual_review.md",
+      "status": "PASS",
+      "detail": "FL01_FL02_manual_review.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_poll39_main_audit_report.md",
+      "status": "PASS",
+      "detail": "poll39_main_audit_report.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_poll39_factor_leakage_risk_appendix.md",
+      "status": "PASS",
+      "detail": "poll39_factor_leakage_risk_appendix.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_P66_KB_SECOND_REVIEW_REPORT.md",
+      "status": "PASS",
+      "detail": "P66_KB_SECOND_REVIEW_REPORT.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_WL006_WL014_whitelist_draft.md",
+      "status": "PASS",
+      "detail": "WL006_WL014_whitelist_draft.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_DRAFT_REVIEW_COMMENTS.md",
+      "status": "PASS",
+      "detail": "DRAFT_REVIEW_COMMENTS.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_DRAFT_REVIEW_COMMENTS_RESPONSE.md",
+      "status": "PASS",
+      "detail": "DRAFT_REVIEW_COMMENTS_RESPONSE.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_FACTOR_ADJUDICATION_REPORT.md",
+      "status": "PASS",
+      "detail": "G7_FACTOR_ADJUDICATION_REPORT.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_ADJUDICATION_PACKAGE_MANIFEST.json",
+      "status": "PASS",
+      "detail": "G7_ADJUDICATION_PACKAGE_MANIFEST.json: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_CONDITIONAL_RELEASE_PERMIT.md",
+      "status": "PASS",
+      "detail": "G7_CONDITIONAL_RELEASE_PERMIT.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_CONDITIONAL_RELEASE_BROADCAST.md",
+      "status": "PASS",
+      "detail": "G7_CONDITIONAL_RELEASE_BROADCAST.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_CONDITIONAL_BACKTEST_CHAIN_AUDIT_SUMMARY.md",
+      "status": "PASS",
+      "detail": "G7_CONDITIONAL_BACKTEST_CHAIN_AUDIT_SUMMARY.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_CONDITIONAL_WIND_TEMP_CREDENTIAL.md",
+      "status": "PASS",
+      "detail": "G7_CONDITIONAL_WIND_TEMP_CREDENTIAL.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
+      "status": "PASS",
+      "detail": "G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md: hash match"
+    },
+    {
+      "name": "SHA256_VERIFY_G7_DSHA_DSHD_MONITORING_ROUND_001.md",
+      "status": "FAIL",
+      "detail": "G7_DSHA_DSHD_MONITORING_ROUND_001.md: expected BF9742B48584EF99..., got 14BEC08AE5342C65..."
+    },
+    {
+      "name": "SHA256_VERIFY_G7_DSHA_DSHD_MONITORING_ROUND_002.md",
+      "status": "FAIL",
+      "detail": "G7_DSHA_DSHD_MONITORING_ROUND_002.md: expected 7B304A635DC76ECA..., got BB30F54BCEBCE7DD..."
+    },
+    {
+      "name": "SHA256_VERIFY_data-harbor/dsha_p49_prep/P49_backtest_audit/excel_wind_test_report.md",
+      "status": "FAIL",
+      "detail": "data-harbor/dsha_p49_prep/P49_backtest_audit/excel_wind_test_report.md: expected E666DAD46103B287..., got 1D963C8534AE7122..."
+    },
+    {
+      "name": "SHA256_VERIFY_DSHD_P67_EXPLORATION_RISK_OBSERVATION_BRIEF.md",
+      "status": "PASS",
+      "detail": "DSHD_P67_EXPLORATION_RISK_OBSERVATION_BRIEF.md: hash match"
+    },
+    {
+      "name": "SHA256_SUMMARY",
+      "status": "WARN",
+      "detail": "Verified: 15, Mismatched: 3, Missing: 0"
+    },
+    {
+      "name": "AUDIT_EVENTS_COUNT",
+      "status": "PASS",
+      "detail": "tracking_monitor_audit.jsonl: 42 events"
+    },
+    {
+      "name": "AUDIT_WIND_CALLS",
+      "status": "PASS",
+      "detail": "wind_api_calls=0 in all 42 events"
+    },
+    {
+      "name": "AUDIT_BACKTEST",
+      "status": "PASS",
+      "detail": "backtest_started=false in all 42 events"
+    },
+    {
+      "name": "AUDIT_GATE",
+      "status": "PASS",
+      "detail": "gate=CLOSED/HOLD in all 42 events"
+    },
+    {
+      "name": "AUDIT_PERMIT",
+      "status": "PASS",
+      "detail": "release_permit=NOT_ISSUED in all 42 events"
+    },
+    {
+      "name": "WIND_EVENTS_COUNT",
+      "status": "PASS",
+      "detail": "wind_excel_events.jsonl: 36 events"
+    },
+    {
+      "name": "WIND_AUDIT_WIND_CALLS",
+      "status": "PASS",
+      "detail": "wind_api_calls=0 in all 36 wind events"
+    },
+    {
+      "name": "WIND_AUDIT_BACKTEST",
+      "status": "PASS",
+      "detail": "backtest_started=false in all 36 wind events"
+    },
+    {
+      "name": "ADMISSION_MATRIX_TOTAL",
+      "status": "PASS",
+      "detail": "7 factors in admission matrix"
+    },
+    {
+      "name": "ADMISSION_HOLD_COUNT",
+      "status": "PASS",
+      "detail": "HOLD: 4/4"
+    },
+    {
+      "name": "ADMISSION_CONDITIONAL_COUNT",
+      "status": "PASS",
+      "detail": "CONDITIONAL_PASS: 3/3"
+    },
+    {
+      "name": "ADMISSION_PASS_COUNT",
+      "status": "PASS",
+      "detail": "PASS: 0/0"
+    },
+    {
+      "name": "ADMISSION_PRODUCTION",
+      "status": "PASS",
+      "detail": "production_release_allowed=0 for all factors"
+    }
+  ],
+  "summary": {
+    "total": 59,
+    "pass": 55,
+    "fail": 3,
+    "warn": 1
+  },
+  "governance_invariants": {
+    "wind_api_calls": 0,
+    "backtest_started": false,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  }
+}
