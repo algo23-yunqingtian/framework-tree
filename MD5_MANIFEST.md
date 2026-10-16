@@ -27,3 +27,16 @@
 | R-V88-042_ni_top20_data_source_review.md | `A603C35FFA9E7ADC2A6C2FE30C65BA91` | 37293 |
 | phase04_36metric_prototype_precheck.md | `E292A143F853F38D0E15F2CA26FB8DE9` | 37757 |
 | v88_phase03_p1_dshb_risklist.md | `C03A15C388680520C0A8FA0324833EF9` | 8400 |
+
+---
+
+## 2026-10-16 V88_PHASE03_P1_DSHB_NOISE_FINALIZE_AND_PHASE04_PREP_JOB 交付物 MD5 清单
+
+| 文件 | MD5 | 大小 (bytes) |
+|------|-----|-------------|
+| noise_observation_update.md | `F8351EDD254333CCEED4E3185417E5CC` | 13195 |
+| wind_authorization_precheck.md | `2032E12079BF92CEDD0D67EA3DD955A0` | 27396 |
+| spotis_url_fix_report.md | `4278C61B0A59231F6BF6749C86CDFDEC` | 22058 |
+| smm_cloudflare_bypass_package.md | `FE6BF581E444B4E8203BE34410C2A972` | 55184 |
+| phase04_dqa_rules_draft.md | `553A21EC5F9CF93D7EBB2A6208FB3E1A` | 46276 |
+| v88_phase03_p1_dshb_risklist.md | `DA9D5906BF0AF39DA445709DF811B7B3` | 20302 |
