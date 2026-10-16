@@ -93,10 +93,10 @@
 
 | File | Size (B) | MD5 |
 |------|--------:|-----|
-| `gate_triple_seal_final.md` | — | `TBD_ON_COMMIT` |
-| `psutil_package_locked_confirmation.md` | — | `TBD_ON_COMMIT` |
-| `dshe_dshb_quick_reconcile.md` | — | `TBD_ON_COMMIT` |
-| `quick_r3_recheck.md` | — | `TBD_ON_COMMIT` |
+| `gate_triple_seal_final.md` | 11,176 | `74eaea204cb437dc13ed72b2468e7ca1` |
+| `psutil_package_locked_confirmation.md` | 3,029 | `fd598094973b572f215dcdf00439622b` |
+| `dshe_dshb_quick_reconcile.md` | 5,719 | `3e5eab08ab7f46d8f6fb79bfe8a685e2` |
+| `quick_r3_recheck.md` | 1,865 | `e20322e3f9ecd2f82f5c97c80b8a4aa7` |
 
 ### 6.1 Framework-tree Additions
 
@@ -104,8 +104,8 @@
 |------|--------:|-----|
 | `framework-tree/metrics-db/weekly/dshe_v88_gate_harden.json` | 480 | `90B5A1AB57DAB5FEE43284CDC4FE5039` |
 | `framework-tree/metrics-db/weekly/dshe_v88_gate_harden.json.md5` | — | — |
-| `framework-tree/node-mapping/dshe_gate_variety_bind.yaml` | — | `TBD_ON_COMMIT` |
-| `chart-tpl/dshe_weekly_report_fixed_tpl.js` | — | `TBD_ON_COMMIT` |
-| `opt_hooks/blocker_monitor_hook_snippet.py` | — | `TBD_ON_COMMIT` |
+| `framework-tree/node-mapping/dshe_gate_variety_bind.yaml` | 8,374 | `f8d2472d38f30ebadd714b7a8194f625` |
+| `chart-tpl/dshe_weekly_report_fixed_tpl.js` | 14,856 | `6ae73aec5b4869fc206b3df506c34f2a` |
+| `opt_hooks/blocker_monitor_hook_snippet.py` | 13,846 | `185cf443f5b475cef4f225ed520dda49` |
 
 > *Generated: 2026-10-16T22:45 UTC+8 | DSHE | V88 Phase03 P1*
