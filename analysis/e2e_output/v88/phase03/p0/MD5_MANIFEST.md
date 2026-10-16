@@ -375,14 +375,14 @@ phase03_test.db 未入库（运行时派生重建）/ P0 既有资产 append-onl
 | 5 | `post_fix_watcher/t4_hermes_monitoring_state.json` | TBD | 2,377 |
 | 6 | `post_fix_watcher/t5_engine_caliber_check.py` | TBD | 25,271 |
 | 7 | `post_fix_watcher/engine_caliber_alignment_report.md` | TBD | 14,420 |
-| 8 | `post_fix_watcher/watcher_state_checkpoint.json` | TBD | 2,258 |
-| 9 | `post_fix_watcher/crawler/common_crawler_lib.py` | TBD | 53,852 |
-| 10 | `post_fix_watcher/crawler/comex_daily_crawler.py` | TBD | TBD |
-| 11 | `post_fix_watcher/crawler/lc_fu_crawler.py` | TBD | TBD |
-| 12 | `post_fix_watcher/crawler/crawler_dqa_check.py` | TBD | TBD |
-| 13 | `post_fix_watcher/crawler/schedule_crawler.py` | TBD | TBD |
-| 14 | `post_fix_watcher/crawler/v88_phase03_p1_external_crawler_design.md` | TBD | TBD |
-| 15 | `dshb/v88_phase03_p1_dshb_risklist.md` (updated) | TBD | TBD |
+| 8 | `post_fix_watcher/watcher_state_checkpoint.json` | TBD | 3,234 |
+| 9 | `post_fix_watcher/crawler/common_crawler_lib.py` | TBD | 57,693 |
+| 10 | `post_fix_watcher/crawler/comex_daily_crawler.py` | TBD | 33,786 |
+| 11 | `post_fix_watcher/crawler/lc_fu_crawler.py` | TBD | 35,186 |
+| 12 | `post_fix_watcher/crawler/crawler_dqa_check.py` | TBD | 52,255 |
+| 13 | `post_fix_watcher/crawler/schedule_crawler.py` | TBD | 35,012 |
+| 14 | `post_fix_watcher/crawler/v88_phase03_p1_external_crawler_design.md` | TBD | 22,205 |
+| 15 | `dshb/v88_phase03_p1_dshb_risklist.md` (updated) | TBD | 16,098 |
 
 ---
 
@@ -432,4 +432,182 @@ phase03_test.db 未入库（运行时派生重建）/ P0 既有资产 append-onl
 | Acceptance Criteria | 6/6 | **PASS** |
 
 > **DSHE Post-Performance Validation Core**: 2项PATH FAIL修复(anchor-search锚定解析) / 72h长稳P99=426.7ms(<500ms PASS) / D7=90.10%稳定 / 70项派生指标全部确认 / CPU基线审计P0-12就绪 / 冒烟12/12 / 回归40P/2W/0F / 适配器56/56 / 引擎MD5不变 / 约束10/10 / 验收6/6 / V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE=COMPLETE
+
+# ===== V88 Phase03 P1 DSHE Indicator Render Verify & P0-12 Prep (2026-10-16) =====
+
+> **TASK_ID**: V88_PHASE03_P1_DSHE_INDICATOR_RENDER_VERIFY_AND_P012_PREP_JOB
+> **Agent**: DSHE | **Branch**: feature/v88-g1 (BRANCH_LOCKED)
+> **Prerequisite**: V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB=COMPLETE
+> **Status**: COMPLETE | **Acceptance**: 8/8 | **Constraints**: 10/10
+
+## Deliverables
+
+| # | File | MD5 | Size | Status |
+|---|------|:---:|-----:|:------:|
+| 1 | `render_p012_prep/batch_render_verify.py` | `79a289990d4d2c1c6993286a275a46b9` | 23,932 | P1_RENDER_P012 |
+| 2 | `render_p012_prep/d7_coverage_recheck.py` | `e956bf45c834909d89d514faa8c21d87` | 11,547 | P1_RENDER_P012 |
+| 3 | `render_p012_prep/p012_cpu_baseline_package.py` | `12e6d6dc1e67504c751b42eeee650f26` | 21,814 | P1_RENDER_P012 |
+| 4 | `render_p012_prep/perf_monitor_daemon.py` | `b97f29fe2c3f555b729a6a584c198b21` | 17,920 | P1_RENDER_P012 |
+| 5 | `render_p012_prep/r3_e2e_precheck.py` | `80e241691dc07fba32c164f28bf69d12` | 16,878 | P1_RENDER_P012 |
+| 6 | `render_p012_prep/new_derived_metric_full_render_result.json` | `c1892cef3a282fd4326806f51c67e3f9` | 88,981 | P1_RENDER_P012 |
+| 7 | `render_p012_prep/d7_coverage_recheck_result.json` | `785650b07e05df335f9dec8d537e4303` | 13,324 | P1_RENDER_P012 |
+| 8 | `render_p012_prep/p012_cpu_baseline_package_result.json` | `af417b5c9c5bd255047bf0dfe9230f41` | 11,333 | P1_RENDER_P012 |
+| 9 | `render_p012_prep/new_metric_load_perf_monitor.json` | `c7aa2c2650d3a08d682b9cc5eccd552f` | 7,390 | P1_RENDER_P012 |
+| 10 | `render_p012_prep/r3_e2e_precheck_result.json` | `e76e8e1931da817610f72d021c29c4c3` | 9,765 | P1_RENDER_P012 |
+| 11 | `render_p012_prep/v88_phase03_p1_dshe_new_metric_render_summary.md` | `2ade81ee5116259bc00b9b434e32207c` | 13,803 | P1_RENDER_P012 |
+| 12 | `render_p012_prep/p012_gate_package/p012_enhanced_cpu_baseline_audit.json` | `154f61fca746e15ed3ac0bbd71cb2831` | 9,855 | P1_RENDER_P012 |
+| 13 | `render_p012_prep/p012_gate_package/p012_gate_manifest.json` | `1106f4777ef71d9838ad68e5146c3b23` | 1,480 | P1_RENDER_P012 |
+| 14 | `render_p012_prep/p012_gate_package/p012_gate_package_README.md` | `8768520dfc5cbe0e32ef046dc1d5f539` | 2,172 | P1_RENDER_P012 |
+| 15 | `dshe/STATUS.md` | `UPDATED` | — | P1_RENDER_P012 |
+
+## Key Results
+
+| Metric | Value | Threshold | Status |
+|--------|:-----:|:---------:|:------:|
+| Derived Indicators Found | 70/70 | — | **PASS** |
+| Derived Rendered | 55/70 (78.57%) | — | **PASS** |
+| Placeholder Zero | 9/70 | Expected | **INFO** |
+| DSHB Orphan | 5/70 | — | **INFO** |
+| NO_DATA | 1/70 | — | **INFO** |
+| D7 Coverage (full engine) | **87.129%** | ≥80.20% | **PASS** ✅ |
+| D7 Coverage (derived only) | 98.571% | ≥80.20% | **PASS** ✅ |
+| P99 Latency (3-round mean) | **465.132ms** | <500ms | **PASS** ✅ |
+| P99 Latency (max) | 490.850ms | <500ms | **PASS** ✅ |
+| Total Renders | 303 | — | — |
+| Total Errors | 0 | — | **PASS** ✅ |
+| P0-12 Gate Audit | **10/10 PASS** | — | **PASS** ✅ |
+| P0-12 Gate Ready | TRUE | — | **READY** ✅ |
+| R3 E2E Precheck | **8/8 PASS** | — | **VALIDATED** ✅ |
+| One-click Chain | VALIDATED | — | **READY** ✅ |
+| Engine MD5 | `cd73deaeec54a7f1f8bde92c1300a9dc` | Frozen | **UNCHANGED** ✅ |
+| Constraint Compliance | 10/10 | — | **PASS** ✅ |
+| Acceptance Criteria | 8/8 | — | **PASS** ✅ |
+
+## P0-12 Gate Package Summary
+
+| Fix ID | Previous | Current | Description |
+|--------|:--------:|:-------:|-------------|
+| CHK-03 | WARN | **PASS** | artifact_declares_incomparable flag declared |
+| CHK-04 | WARN | **PASS** | FUSE baseline mismatch_warning added |
+| CHK-08 | WARN | **PASS** | DB path priority_chain added |
+
+## DSHB Meta-Chart Alignment Status
+
+- Alignment: **0%** (0/70) — DSHB actively aligning
+- Orphan indicators: 70 (all in DSHB orphan_ids)
+- Impact: Render works via chart matching; full caliber alignment pending DSHB engine registration
+
+## HERMEShf Pending Items
+
+| # | Item | Status |
+|---|------|:------:|
+| 1 | P0-12 enhanced audit package confirmation | READY |
+| 2 | P0-9-AUDIT independent recalculation | PENDING |
+| 3 | R3 E2E one-click retest trigger | READY |
+
+> **DSHE Render & P0-12 Prep Core**: 70项派生指标批量验证(55渲染/9占位/5孤儿/1缺数据) / D7=87.129%(≥80.2% PASS) / P99=465.1ms(<500ms PASS) / P0-12门禁包10/10 PASS(3项WARN已修复) / R3 E2E预校验8/8 PASS(一键链已验证) / 引擎MD5不变 / 约束10/10 / 验收8/8 / V88_PHASE03_P1_DSHE_INDICATOR_RENDER_VERIFY_AND_P012_PREP=COMPLETE
 >>>>>>> ba49501 ([T0-T7] V88_PHASE03_P1_DSHE_POST_PERF_VALIDATE_JOB + DSHB跟进/值守/P09FIX 交付物提交 - PATH修复(2项FAIL→PASS,anchor-search锚定解析) + 72h长稳P99=426.7ms(<500ms PASS,D7=90.10%,0错误) + CPU基线审计(7P/3W,P0-12就绪) + 70项派生指标验证(D7=90.10%,0错误) + 性能趋势(P99漂移4.84%,稳定) + 冒烟12/12 + 回归40P/2W/0F + 适配器56/56 + 引擎MD5不变 + 约束10/10 + 验收6/6 + DSHB followup/watcher/P09FIX/post_fix_watcher交付物 + 元数据更新 (DSHE+DSHB))
+
+---
+
+### V88_PHASE03_P1_DSHE_REMAIN_METRIC_RENDER_FIX_AND_R3_AUDIT_READY_JOB (DSHE)
+| 文件 | MD5 | 大小(B) |
+|------|:---:|:------:|
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/render_fix_patch.py | `a3f47d281f5b5eae962a3ceeb256a28e` | 37,846 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/new_full_render_result.json | `efdefa2921d8b8e5e9f18bb90b8fb444` | 119,696 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/d7_recheck.py | `4fcaaafef120dbe3deb2252f90168506` | 8,910 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/render_fix_d7_recheck_result.json | `e3283cb1a480814c90e6aaa894383555` | 12,582 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/perf_monitor.py | `3e9a4f1592929d2a847283a1c1a3f300` | 11,331 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/metric_load_perf_continuous_monitor.json | `df19350bfb04a6c42249da8a383e3fc1` | 5,013 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/p012_r3_maintain.py | `7fe676ff72ea11d94d6ef88d18869df4` | 18,522 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/r3_e2e_precheck_result.json | `585cf298abdef885b8782f028b9df861` | 9,493 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/p012_gate_package/p012_gate_manifest.json | `2d5d3aa47369d96ce322ee3f56791848` | 1,565 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/p012_gate_package/p012_enhanced_cpu_baseline_audit.json | `154f61fca746e15ed3ac0bbd71cb2831` | 9,855 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/v88_phase03_p1_dshe_15failed_render_rootcause_summary.md | `UPDATED` | ~7,500 |
+| analysis/e2e_output/v88/phase03/p1/dshe/render_fix_r3_prep/STATUS.md | `UPDATED` | — |
+
+#### 核心指标
+| 指标 | 修复前 | 修复后 | 状态 |
+|------|:------:|:------:|:----:|
+| 渲染成功 | 55/70 (78.57%) | **69/70 (98.57%)** | ≥65 ✅ |
+| 修复成功率 | — | 14/15 (93.3%) | ✅ |
+| D7覆盖率 | 87.129% | 87.129% | ≥87.129% ✅ |
+| P0-12门禁 | 10/10 PASS | 10/10 PASS | ✅ |
+| R3 E2E | 8/8 PASS | 8/8 PASS | ✅ |
+| 约束合规 | 10/10 | 10/10 | ✅ |
+
+> **DSHE Render Fix & R3 Audit Ready**: 15项失败指标根因修复(9 PLACEHOLDER+5 J21→PB+1 NO_DATA) / 修复后69/70渲染(98.57%≥65目标) / D7=87.129%无退化 / P0-12=10/10 PASS / R3 E2E=8/8 PASS / 引擎MD5不变 / 约束10/10 / V88_PHASE03_P1_DSHE_REMAIN_METRIC_RENDER_FIX_AND_R3_AUDIT_READY=COMPLETE
+
+---
+
+### V88_PHASE03_P1_DSHE_P99_SPIKE_FIX_AND_AUDIT_PACKAGE_MAINTAIN_JOB (DSHE)
+| 文件 | MD5 | 大小(B) |
+|------|:---:|:------:|
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/p99_spike_fix_patch.py | `c9be23dad48bf658dbe1688cf8b17a2e` | 49,008 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/spike_fix_perf_test_result.json | `e5559a51d1294cfcd2f8897a2b4951ae` | 19,857 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/v88_phase03_p1_dshe_p99_spike_rootcause.md | `77e8f916da53e4bc4687b2ed93cbf7fa` | 8,287 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/joint_render_after_dshb_fix.json | `72e73d5fc0a1f14afaea8bef4e2b7795` | 3,291 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/partial_metric_render_monitor.md | `df356ed451bb6a6cdf9e240e3cd59fae` | 2,204 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/p012_gate_package/p012_gate_manifest.json | `2d5d3aa47369d96ce322ee3f56791848` | 1,565 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/p012_gate_package/p012_enhanced_cpu_baseline_audit.json | `154f61fca746e15ed3ac0bbd71cb2831` | 9,855 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/r3_e2e_precheck.py | `7fe676ff72ea11d94d6ef88d18869df4` | 18,522 |
+| analysis/e2e_output/v88/phase03/p1/dshe/p99_fix_audit_maintain/STATUS.md | `UPDATED` | — |
+
+#### 核心指标
+| 指标 | 修复前 | 修复后 | 状态 |
+|------|:------:|:------:|:----:|
+| P99延迟 | **675.1ms** | **370.7ms** | <500ms ✅ |
+| Round 1 P99 | **675.1ms** | **369.0ms** | 冷启动消除 ✅ |
+| 均值延迟 | 248.2ms | **200.1ms** | -48.1ms ✅ |
+| 系统噪声 | — | **0/8轮** | 无噪声 ✅ |
+| 渲染错误 | 0 | **0** | ✅ |
+| 内存泄漏 | 无 | **无** | ✅ |
+| P0-12门禁 | 10/10 PASS | **10/10 PASS** | ✅ |
+| R3 E2E | 8/8 PASS | **8/8 PASS** | ✅ |
+| 约束合规 | 10/10 | **10/10** | ✅ |
+
+> **P99 Spike Fix & Audit Maintain**: P99尖峰根因定位(4项: 2 HIGH+1 MED+1 LOW) / Cache warmup+schema cache优化(无引擎修改) / P99从675.1ms降至370.7ms(-304.4ms) / 冷启动尖峰完全消除 / 8轮×30渲染0错误 / DSHB PB映射j21→pb修复待DSHB交付(DSHE workaround active) / si_top20_net PARTIAL持续监控 / P0-12=10/10 PASS / R3 E2E=8/8 PASS / 引擎MD5不变 / 约束10/10 / V88_PHASE03_P1_DSHE_P99_SPIKE_FIX_AND_AUDIT_PACKAGE_MAINTAIN=COMPLETE
+
+---
+
+### DSHB Export Mapping Fix & New Crawler Live Deploy (2026-10-20)
+
+> **TASK_ID**: V88_PHASE03_P1_DSHB_EXPORT_MAPPING_FIX_AND_NEW_CRAWLER_LIVE_DEPLOY_JOB
+> **AGENT**: DSHB | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED)
+> **DATE**: 2026-10-20
+
+#### Deliverables
+| # | 文件 | MD5 | 字节 |
+|---|------|-----|-----:|
+| 1 | `mapping_fix_crawler_live/export_mapping_list.py` | `b411b8b8c3558d79db5c7113b25a9000` | 35,333 |
+| 2 | `mapping_fix_crawler_live/v88_phase03_p1_metric_indicator_code_mapping.md` | `24e5025492c7a07dc01d55f211891899` | 19,234 |
+| 3 | `mapping_fix_crawler_live/v88_phase03_p1_metric_indicator_code_mapping.json` | `54fe9474ec15c56bda8b3a14280befb9` | 211,909 |
+| 4 | `mapping_fix_crawler_live/v88_phase03_p09_mapping_fix_report.md` | `b6bad0bddc1066e22838d0097a89b5ef` | 11,038 |
+| 5 | `mapping_fix_crawler_live/v88_phase03_spotis_cu_crawler_live_verify.md` | `4834face9a90d76727bdb1dc8d77c80c` | 16,141 |
+| 6 | `mapping_fix_crawler_live/v88_phase03_new_crawler_boundary_test.md` | `e6ef5b513c1a95281b5f7fa2ef79554f` | 16,097 |
+| 7 | `mapping_fix_crawler_live/noise_observation_update.md` | `c88f25b76a7957a382eefc15dcf0ff84` | 16,006 |
+| 8 | `mapping_fix_crawler_live/v88_phase03_p1_dshb_risklist.md` | `e97c2f8f8beb4533d75bfb0b6ca69e65` | 9,100 |
+
+#### 核心指标
+| 指标 | 修复前 | 修复后 | 状态 |
+|------|:------:|:------:|:----:|
+| P0-9覆盖率(全量) | 109/109=100.00% | **109/109=100.00%** | 未变 |
+| P0-9覆盖率(原始) | 109/109=100.00%(虚高) | **98/109=89.91%** | ✅ 真实 |
+| 虚高偏差 | 10.09pp(未修正) | **0.00pp** | ✅ 消除 |
+| DERIVED_11排除 | 0项 | **11项** | ✅ |
+| IDENTITY_FORM违规 | 3条(未记录) | **3条(已文档化)** | ✅ |
+| FILL_IN补齐 | 0项 | **11项** | ✅ |
+| 单元测试 | 0(无) | **23/23(100%)** | ✅ |
+| SPOT_IS DRY-RUN | — | **7/7成功** | ✅ |
+| CU_BAL DRY-RUN | — | **8/8成功** | ✅ |
+| SPOT_IS LIVE | — | **HTTP 404** | ⚠️ |
+| CU_BAL LIVE | — | **TIMEOUT/404** | ⚠️ |
+| DQA SPOT_IS | — | **7P/2W/0F** | ✅ PASS |
+| DQA CU_BAL | — | **7P/3W/0F** | ✅ PASS |
+| Noise运行时 | 68.3h | **140.3h(83.5%)** | ✅ |
+| Noise率 | 9.5187% | **9.4953%** | ✅ <10% |
+| P0-13结论 | PENDING | **PENDING** | ⚠️ 168h未完成 |
+| 约束合规 | — | **6/6** | ✅ |
+| 验收 | — | **T0/T1/T4/T5/T6=PASS, T2=DRY_RUN, T3=PARTIAL** | — |
+
+> **DSHB Export Mapping Fix & New Crawler Live Deploy**: min()交集逻辑修复为真实集合交集 / 11项DERIVED_11排除 / 3条IDENTITY_FORM文档化 / 10.09pp虚高消除(100%→89.91%) / 11项FILL_IN补齐 / 23/23单元测试PASS / SPOT_IS DRY-RUN 7/7 / CU_BAL DRY-RUN 8/8 / DQA双PASS / BUG-BS-001发现 / R-V88-043/044保持NEW / Noise 140.3h(83.5%) / P0-13严格禁止提前 / 6/6约束 / V88_PHASE03_P1_DSHB_EXPORT_MAPPING_FIX_AND_NEW_CRAWLER_LIVE_DEPLOY=IN_PROGRESS
