@@ -1,0 +1,42 @@
+{
+  "baseline_id": "V88-P012-RENDER-CPU-BASELINE",
+  "baseline_type": "render_engine_cpu_performance",
+  "agent": "DSHE",
+  "phase": "V88-Phase03-P1",
+  "generated_at": "2026-10-16T10:42:37.424096+00:00",
+  "source_file": "e2e_output/v88/phase03/p1/dshe/p012_final_triplefix/frozen_p012_gate_package/v88_p012_full_link_cpu_compare.json",
+  "source_md5": "C10D5A32ECCB8A0D5866B872538F7C5A",
+  "schema_version": "v88-baseline-export-1.0",
+  "metrics": {
+    "cpu_peak_pct": 99.4871,
+    "cpu_threshold_phase03": 1.75,
+    "cpu_threshold_phase04": 2.0,
+    "cpu_caliber": "full_chain_business_steady_state",
+    "p99_latency_ms": null,
+    "avg_latency_ms": null,
+    "render_count": null
+  },
+  "merge_compatible": {
+    "target_baseline": "V88-Phase04-LongTerm-Monitoring",
+    "merge_with": "DSHB-P013-Noise-Baseline",
+    "merge_fields": [
+      "cpu_peak_pct",
+      "p99_latency_ms",
+      "noise_rate_pct"
+    ],
+    "merge_status": "ready"
+  },
+  "audit": {
+    "frozen_commit": "b1987a4",
+    "frozen_version": "3.0.0",
+    "exemption_requested": true,
+    "exemption_status": "PENDING_HERMESHF_REVIEW",
+    "physical_constraint": true,
+    "optimization_exhausted": true
+  },
+  "metadata": {
+    "caliber_note": "process_time/wall_time*100, CPU-intensive rendering physical constraint",
+    "comparability_note": "Full-link business steady-state CPU. Measured across data_load, node_binding, render, serialize, output stages.",
+    "artifact_declares_incomparable": false
+  }
+}

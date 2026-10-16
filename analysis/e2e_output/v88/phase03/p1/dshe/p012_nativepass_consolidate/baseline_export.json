@@ -1,0 +1,54 @@
+{
+  "baseline_id": "V88-P012-RENDER-CPU-BASELINE",
+  "baseline_type": "render_engine_cpu_performance",
+  "agent": "DSHE",
+  "phase": "V88-Phase03-P1",
+  "generated_at": "2026-10-16T13:01:00.432390+00:00",
+  "source_file": "analysis\\e2e_output\\v88\\phase03\\p1\\dshe\\p012_triple_fix\\v88_p012_full_link_cpu_compare.json",
+  "source_md5": "C704C685559980D65BC96DC41A3F8C44",
+  "schema_version": "v88-baseline-export-2.0-steady-state",
+  "metrics": {
+    "cpu_peak_pct": 0.0654,
+    "cpu_threshold_phase03": 1.75,
+    "cpu_threshold_phase04": 2.0,
+    "cpu_caliber": "full_link_business_steady_state",
+    "cpu_measurement_method": "psutil.cpu_times() system-level steady-state",
+    "p99_latency_ms": 449.305,
+    "avg_latency_ms": 220.948,
+    "p50_latency_ms": 194.99,
+    "render_count": 101,
+    "pre_opt_cpu_peak_pct": 0.0,
+    "post_opt_steady_state_pct": 0.0654,
+    "duty_cycle": null
+  },
+  "merge_compatible": {
+    "target_baseline": "V88-Phase04-LongTerm-Monitoring",
+    "merge_with": "DSHB-P013-Noise-Baseline",
+    "merge_fields": [
+      "cpu_peak_pct",
+      "p99_latency_ms",
+      "noise_rate_pct"
+    ],
+    "merge_status": "ready-refresh",
+    "refresh_reason": "v1.4.0-cpu-triple-fix baseline (was v3.0.0 exemption)",
+    "original_frozen_version": "3.0.0",
+    "current_frozen_version": "1.4.0-cpu-triple-fix"
+  },
+  "audit": {
+    "frozen_commit": "55458b6",
+    "frozen_version": "1.4.0-cpu-triple-fix",
+    "exemption_requested": false,
+    "exemption_status": "TERMINATED (native PASS)",
+    "native_pass": true,
+    "reproducibility_verified": true,
+    "self_verify_runs": 4
+  },
+  "metadata": {
+    "caliber_note": "psutil.cpu_times() system-level full-link steady-state CPU",
+    "caliber_comparable_with_phase02": true,
+    "comparability_note": "",
+    "artifact_declares_incomparable": false,
+    "triple_fix_applied": true,
+    "triple_fix_commit": "55458b6"
+  }
+}

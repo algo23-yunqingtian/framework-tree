@@ -174,3 +174,74 @@
 
 > **标记**: V88_PHASE03_P1_DSHE_P012_GATE_TRIPLE_FIX=COMPLETE
 > **下一步**: HERMEShf blocker_monitor cron 自动触发 P0-12 门禁审计
+
+---
+
+## 7. V88_PHASE03_P1_DSHE_P012_NATIVE_PASS_CONSOLIDATE_AND_SYNC_JOB
+
+> **TASK_ID**: V88_PHASE03_P1_DSHE_P012_NATIVE_PASS_CONSOLIDATE_AND_SYNC_JOB
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **DATE**: 2026-10-16T22:22 UTC+8
+> **STATUS**: COMPLETE
+> **前置**: V88_PHASE03_P1_DSHE_P012_GATE_TRIPLE_FIX_JOB = COMPLETE (commits 55458b6 + 3c72104)
+
+### 7.1 任务状态
+
+| 任务 | 状态 | 关键结果 |
+|------|:----:|----------|
+| T0: 加固锁定 + 归档旧材料 | ✅ COMPLETE | 只读锁定 + MD5快照 + 2目录归档 |
+| T1: 修复反转说明 | ✅ COMPLETE | 豁免终止声明 + 完整时间线 |
+| T2: 风险台账更新 + DSHB补丁 | ✅ COMPLETE | R-V88-034=CLOSED + diff补丁 |
+| T3: 基线导出刷新 + DQA影响评估 | ✅ COMPLETE | merge_status=ready-refresh |
+| T4: 新SOP创建 | ✅ COMPLETE | 分支A(PASS→Phase04) + 分支B(FAIL→debug) |
+| T5: 4轮独立自检 + R3回归 | ✅ COMPLETE | 4/4轮<1.75%, R3 8/8 PASS |
+| T6: 审计就绪 | ✅ COMPLETE | 不主动调用HERMES审批 |
+| T7: commit + push | ✅ COMPLETE | 已推送feature/v88-g1 |
+| T8: 元数据更新 | ✅ COMPLETE | STATUS/FLAG/MD5全部更新 |
+
+**完成度: 9/9 (100%)**
+
+### 7.2 核心指标
+
+| 指标 | 值 | 阈值 | 状态 |
+|------|:--:|:----:|:----:|
+| 稳态CPU (原始基准) | **0.0654%** | ≤1.75% | ✅ |
+| 稳态CPU (4轮验证均值) | **1.0362%** | ≤1.75% | ✅ |
+| 稳态CPU (4轮验证最大) | **1.3452%** | ≤1.75% | ✅ |
+| 口径 | psutil.cpu_times() 系统级 | 非process级 | ✅ |
+| Schema | v2.0-steady-state | — | ✅ |
+| 基线版本 | v1.4.0-cpu-triple-fix | — | ✅ |
+| R-V88-034 | ✅ CLOSED | CLOSED | ✅ |
+| 豁免流程 | TERMINATED | — | ✅ |
+| DSHB补丁 | ready-refresh | — | ✅ |
+| R3 E2E | **8/8 PASS** | 8/8 | ✅ |
+| 可复现性 | ✅ 已验证 | — | ✅ |
+
+### 7.3 交付物清单
+
+| 文件 | 说明 |
+|------|------|
+| `frozen_artifact_lock_confirm.md` | MD5快照 + 只读锁定确认 |
+| `ARCHIVED_DIRECTORIES_NOTE.md` | 旧豁免材料归档说明 |
+| `v88_phase03_p012_reversal_nativepass_note.md` | 修复反转完整说明 |
+| `v88_phase03_p1_dshe_risklist.md` | 风险台账(R-V88-034=CLOSED) |
+| `dshb_risklist_patch.md` | DSHB台账同步补丁 |
+| `baseline_export.py` + `baseline_export.json` | 刷新版基线导出 |
+| `dqa_render_impact_analysis.md` | DQA影响评估(刷新版) |
+| `cross_agent_post_nativepass_sop.md` | 原生PASS三方协同SOP |
+| `native_pass_self_verify_report.md` | 4轮验证报告 |
+| `native_pass_self_verify_bench_results.json` | 4轮验证原始数据 |
+| `v88_p012_native_pass_self_verify_bench.py` | 自检基准测试脚本 |
+
+### 7.4 HERMEShf 待执行项
+
+| # | 待执行项 | 状态 |
+|---|----------|:----:|
+| 1 | P0-12门禁自动复测(blocker_monitor cron) | ⏳ 等待cron触发 |
+| 2 | P0-13噪声观测完成(148/168h) | 🟡 IN_PROGRESS |
+| 3 | si_top20_net Phase04修复 | ⏳ PENDING (R-V88-035 LOW) |
+
+---
+
+> **标记**: V88_PHASE03_P1_DSHE_P012_NATIVE_PASS_CONSOLIDATE_AND_SYNC=COMPLETE
+> **下一步**: 等待 HERMEShf blocker_monitor cron 自动触发 P0-12 门禁复测
