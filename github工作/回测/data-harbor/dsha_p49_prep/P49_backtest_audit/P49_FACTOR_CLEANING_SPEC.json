@@ -1,0 +1,334 @@
+{
+  "spec_id": "DSHA-P54-P49-FACTOR-CLEANING-SPEC-001",
+  "generated_at": "2026-10-16 GMT+8",
+  "agent": "DSHA-P54",
+  "branch": "feature/v88-g1",
+  "gate": "CLOSED/HOLD",
+  "wind_api_calls": 0,
+  "release_permit": "NOT_ISSUED",
+  "total_factors": 7,
+  "total_params": 11,
+  "total_fields": 18,
+  "total_cleaning_rules": 42,
+  "cleaning_rule_categories": {
+    "missing_value_handling": 7,
+    "outlier_detection": 8,
+    "anomaly_filtering": 6,
+    "boundary_checking": 7,
+    "consistency_validation": 7,
+    "data_type_enforcement": 7
+  },
+  "factors": [
+    {
+      "factor_id": "FACTOR-001",
+      "factor_name": "F19_hot_money_weight",
+      "admission_status": "HOLD",
+      "risk_classification": "SYNTHETIC_DATA_ZERO_SIGNAL",
+      "wl_a_tracking": "WL-A001",
+      "data_source_table": "Wind持仓量表",
+      "wind_codes": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+      "date_range": {"start": "2023-01-01", "end": "2024-12-31"},
+      "fields": [
+        {"name": "OI", "type": "numeric", "wind_field": "OI", "nullable": false},
+        {"name": "OI_change", "type": "numeric", "wind_field": "OI_change", "nullable": false},
+        {"name": "date", "type": "date", "wind_field": "date", "nullable": false},
+        {"name": "variety", "type": "string", "wind_field": "variety", "nullable": false}
+      ],
+      "cleaning_rules": [
+        {"rule_id": "F001-CLN-001", "category": "missing_value_handling", "description": "OI字段缺失值填充", "method": "forward_fill_then_backward_fill", "parameters": {"max_consecutive": 5}, "action_on_fail": "exclude_row", "applied_to": "OI"},
+        {"rule_id": "F001-CLN-002", "category": "missing_value_handling", "description": "OI_change字段缺失值计算", "method": "calculate_from_oi", "parameters": {"formula": "OI(t) - OI(t-1)"}, "action_on_fail": "exclude_row", "applied_to": "OI_change"},
+        {"rule_id": "F001-CLN-003", "category": "outlier_detection", "description": "OI极端值检测", "method": "z_score", "parameters": {"z_threshold": 3.0}, "action_on_fail": "cap_at_3sigma", "applied_to": "OI"},
+        {"rule_id": "F001-CLN-004", "category": "outlier_detection", "description": "OI_change极端值检测", "method": "iqr", "parameters": {"iqr_multiplier": 1.5}, "action_on_fail": "cap_at_iqr_bound", "applied_to": "OI_change"},
+        {"rule_id": "F001-CLN-005", "category": "consistency_validation", "description": "持仓量非负校验", "method": "non_negative_check", "parameters": {"min_value": 0}, "action_on_fail": "set_to_zero", "applied_to": "OI"},
+        {"rule_id": "F001-CLN-006", "category": "boundary_checking", "description": "品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"]}, "action_on_fail": "exclude_row", "applied_to": "variety"},
+        {"rule_id": "F001-CLN-007", "category": "data_type_enforcement", "description": "日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d"}, "action_on_fail": "exclude_row", "applied_to": "date"}
+      ],
+      "anomaly_rules": [],
+      "notes": "HOLD因子，当前阶段不执行清洗规则，仅定义规范。"
+    },
+    {
+      "factor_id": "FACTOR-002",
+      "factor_name": "F20_attention_weight",
+      "admission_status": "HOLD",
+      "risk_classification": "SYNTHETIC_DATA_ZERO_SIGNAL",
+      "wl_a_tracking": "WL-A002",
+      "data_source_table": "Wind新闻舆情表",
+      "wind_codes": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+      "date_range": {"start": "2023-01-01", "end": "2024-12-31"},
+      "fields": [
+        {"name": "sentiment_score", "type": "numeric", "wind_field": "sentiment_score", "nullable": false},
+        {"name": "search_volume", "type": "numeric", "wind_field": "search_volume", "nullable": false},
+        {"name": "date", "type": "date", "wind_field": "date", "nullable": false},
+        {"name": "variety", "type": "string", "wind_field": "variety", "nullable": false}
+      ],
+      "cleaning_rules": [
+        {"rule_id": "F002-CLN-001", "category": "missing_value_handling", "description": "sentiment_score缺失值填充", "method": "zero_fill", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "sentiment_score"},
+        {"rule_id": "F002-CLN-002", "category": "missing_value_handling", "description": "search_volume缺失值填充", "method": "forward_fill", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "search_volume"},
+        {"rule_id": "F002-CLN-003", "category": "boundary_checking", "description": "sentiment_score范围校验", "method": "range_check", "parameters": {"min": -1.0, "max": 1.0}, "action_on_fail": "clip_to_range", "applied_to": "sentiment_score"},
+        {"rule_id": "F002-CLN-004", "category": "outlier_detection", "description": "search_volume极端值检测", "method": "z_score", "parameters": {"z_threshold": 3.0}, "action_on_fail": "cap_at_3sigma", "applied_to": "search_volume"},
+        {"rule_id": "F002-CLN-005", "category": "consistency_validation", "description": "搜索量非负校验", "method": "non_negative_check", "parameters": {"min_value": 0}, "action_on_fail": "set_to_zero", "applied_to": "search_volume"},
+        {"rule_id": "F002-CLN-006", "category": "boundary_checking", "description": "品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"]}, "action_on_fail": "exclude_row", "applied_to": "variety"},
+        {"rule_id": "F002-CLN-007", "category": "data_type_enforcement", "description": "日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d"}, "action_on_fail": "exclude_row", "applied_to": "date"}
+      ],
+      "anomaly_rules": [],
+      "notes": "HOLD因子，当前阶段不执行清洗规则，仅定义规范。"
+    },
+    {
+      "factor_id": "FACTOR-003",
+      "factor_name": "CF003_speculation_weight",
+      "admission_status": "HOLD",
+      "risk_classification": "SYNTHETIC_DATA_ZERO_SIGNAL",
+      "wl_a_tracking": "WL-A003",
+      "data_source_table": "Wind交易所持仓明细表",
+      "wind_codes": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+      "date_range": {"start": "2023-01-01", "end": "2024-12-31"},
+      "fields": [
+        {"name": "exchange_oi", "type": "numeric", "wind_field": "exchange_oi", "nullable": false},
+        {"name": "long_oi", "type": "numeric", "wind_field": "long_oi", "nullable": false},
+        {"name": "short_oi", "type": "numeric", "wind_field": "short_oi", "nullable": false},
+        {"name": "date", "type": "date", "wind_field": "date", "nullable": false},
+        {"name": "variety", "type": "string", "wind_field": "variety", "nullable": false}
+      ],
+      "cleaning_rules": [
+        {"rule_id": "F003-CLN-001", "category": "missing_value_handling", "description": "交易所持仓缺失值填充", "method": "forward_fill_then_backward_fill", "parameters": {"max_consecutive": 5}, "action_on_fail": "exclude_row", "applied_to": "exchange_oi"},
+        {"rule_id": "F003-CLN-002", "category": "consistency_validation", "description": "多空持仓非负校验", "method": "non_negative_check", "parameters": {"min_value": 0}, "action_on_fail": "set_to_zero", "applied_to": ["long_oi", "short_oi"]},
+        {"rule_id": "F003-CLN-003", "category": "consistency_validation", "description": "多空持仓合计校验", "method": "sum_check", "parameters": {"tolerance": 0.01}, "action_on_fail": "proportional_adjust", "applied_to": ["long_oi", "short_oi", "exchange_oi"]},
+        {"rule_id": "F003-CLN-004", "category": "outlier_detection", "description": "交易所持仓极端值检测", "method": "z_score", "parameters": {"z_threshold": 3.0}, "action_on_fail": "cap_at_3sigma", "applied_to": "exchange_oi"},
+        {"rule_id": "F003-CLN-005", "category": "anomaly_filtering", "description": "多空比极端值过滤", "method": "ratio_outlier", "parameters": {"ratio_max": 10.0, "ratio_min": 0.1}, "action_on_fail": "flag_for_review", "applied_to": ["long_oi", "short_oi"]},
+        {"rule_id": "F003-CLN-006", "category": "boundary_checking", "description": "品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"]}, "action_on_fail": "exclude_row", "applied_to": "variety"},
+        {"rule_id": "F003-CLN-007", "category": "data_type_enforcement", "description": "日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d"}, "action_on_fail": "exclude_row", "applied_to": "date"}
+      ],
+      "anomaly_rules": [
+        {"rule_id": "F003-ANOM-001", "description": "100%坏样本清洗率预警", "condition": "cleaning_rate > 0.95", "action": "escalate_to_dshc", "severity": "CRITICAL"}
+      ],
+      "notes": "HOLD因子，当前阶段不执行清洗规则，仅定义规范。poll39报告标注100%坏样本清洗率需关注。"
+    },
+    {
+      "factor_id": "FACTOR-004",
+      "factor_name": "G1_IC_threshold",
+      "admission_status": "CONDITIONAL_PASS",
+      "risk_classification": "THRESHOLD_STABILITY_DEFECT",
+      "wl_a_tracking": "WL-A004",
+      "data_source_table": "Wind因子IC计算表",
+      "wind_codes": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+      "date_range": {"start": "2023-01-01", "end": "2024-12-31"},
+      "fields": [
+        {"name": "IC_score", "type": "numeric", "wind_field": "IC", "nullable": false},
+        {"name": "forecast_return", "type": "numeric", "wind_field": "FCR", "nullable": false},
+        {"name": "realized_return", "type": "numeric", "wind_field": "RR", "nullable": false},
+        {"name": "date", "type": "date", "wind_field": "date", "nullable": false},
+        {"name": "variety", "type": "string", "wind_field": "variety", "nullable": false}
+      ],
+      "params": [
+        {"name": "ic_threshold", "type": "float", "value": "TBD", "sensitivity": "HIGH", "range": [0.02, 0.15]},
+        {"name": "ic_window", "type": "int", "value": 60, "sensitivity": "MEDIUM", "range": [20, 120]},
+        {"name": "ic_significance", "type": "float", "value": 0.05, "sensitivity": "MEDIUM", "range": [0.01, 0.20]}
+      ],
+      "cleaning_rules": [
+        {"rule_id": "F004-CLN-001", "category": "missing_value_handling", "description": "IC_score缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "IC_score"},
+        {"rule_id": "F004-CLN-002", "category": "missing_value_handling", "description": "forecast_return缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "forecast_return"},
+        {"rule_id": "F004-CLN-003", "category": "missing_value_handling", "description": "realized_return缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "realized_return"},
+        {"rule_id": "F004-CLN-004", "category": "anomaly_filtering", "description": "IC极端值过滤", "method": "z_score_filter", "parameters": {"z_threshold": 3.0, "percentile_cap": "IC_std"}, "action_on_fail": "exclude_row", "applied_to": "IC_score"},
+        {"rule_id": "F004-CLN-005", "category": "anomaly_filtering", "description": "预测收益异常过滤", "method": "confidence_interval", "parameters": {"confidence_level": 0.95}, "action_on_fail": "exclude_row", "applied_to": "forecast_return"},
+        {"rule_id": "F004-CLN-006", "category": "anomaly_filtering", "description": "收益跳变过滤", "method": "absolute_threshold", "parameters": {"max_change": 0.05}, "action_on_fail": "exclude_row", "applied_to": "realized_return"},
+        {"rule_id": "F004-CLN-007", "category": "consistency_validation", "description": "IC范围校验", "method": "range_check", "parameters": {"min": -1.0, "max": 1.0}, "action_on_fail": "clip_to_range", "applied_to": "IC_score"},
+        {"rule_id": "F004-CLN-008", "category": "boundary_checking", "description": "窗口边缘数据不足检测", "method": "min_observation_check", "parameters": {"min_observations": 5}, "action_on_fail": "flag_edge_artifact", "applied_to": "all"},
+        {"rule_id": "F004-CLN-009", "category": "boundary_checking", "description": "品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"]}, "action_on_fail": "exclude_row", "applied_to": "variety"},
+        {"rule_id": "F004-CLN-010", "category": "data_type_enforcement", "description": "日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d"}, "action_on_fail": "exclude_row", "applied_to": "date"}
+      ],
+      "anomaly_rules": [
+        {"rule_id": "F004-ANOM-001", "description": "IC极端值过滤", "condition": "abs(IC_score) > 3 * IC_std", "action": "exclude_row"},
+        {"rule_id": "F004-ANOM-002", "description": "预测收益异常", "condition": "forecast_return outside 95% CI", "action": "exclude_row"},
+        {"rule_id": "F004-ANOM-003", "description": "收益跳变", "condition": "abs(realized_return) > 0.05", "action": "exclude_row"},
+        {"rule_id": "F004-ANOM-004", "description": "窗口边界伪影", "condition": "edge_observations < 5", "action": "flag_edge_artifact"}
+      ],
+      "notes": "CONDITIONAL_PASS因子，清洗规则在数据拉取后阶段执行。条件约束: IC稳定性+多窗口阈值验证。"
+    },
+    {
+      "factor_id": "FACTOR-005",
+      "factor_name": "G3_ICIR_threshold",
+      "admission_status": "HOLD",
+      "risk_classification": "ICIR_DEFINITION_REDESIGN_REQUIRED",
+      "wl_a_tracking": "WL-A005",
+      "data_source_table": "Wind因子ICIR计算表",
+      "wind_codes": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+      "date_range": {"start": "2023-01-01", "end": "2024-12-31"},
+      "fields": [
+        {"name": "rolling_ICIR", "type": "numeric", "wind_field": "rolling_ICIR", "nullable": false},
+        {"name": "IC_std", "type": "numeric", "wind_field": "IC_std", "nullable": false},
+        {"name": "date", "type": "date", "wind_field": "date", "nullable": false},
+        {"name": "variety", "type": "string", "wind_field": "variety", "nullable": false}
+      ],
+      "params": [
+        {"name": "icir_threshold", "type": "float", "value": "N/A", "sensitivity": "HIGH", "range": [0.5, 2.0]},
+        {"name": "icir_window", "type": "int", "value": 60, "sensitivity": "MEDIUM", "range": [20, 120]},
+        {"name": "icir_min_periods", "type": "int", "value": 30, "sensitivity": "LOW", "range": [10, 60]}
+      ],
+      "cleaning_rules": [
+        {"rule_id": "F005-CLN-001", "category": "missing_value_handling", "description": "IC_std缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "IC_std"},
+        {"rule_id": "F005-CLN-002", "category": "missing_value_handling", "description": "rolling_ICIR缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "rolling_ICIR"},
+        {"rule_id": "F005-CLN-003", "category": "consistency_validation", "description": "IC_std非负校验", "method": "non_negative_check", "parameters": {"min_value": 0}, "action_on_fail": "exclude_row", "applied_to": "IC_std"},
+        {"rule_id": "F005-CLN-004", "category": "outlier_detection", "description": "IC_std极端值检测", "method": "z_score", "parameters": {"z_threshold": 3.0}, "action_on_fail": "cap_at_3sigma", "applied_to": "IC_std"},
+        {"rule_id": "F005-CLN-005", "category": "anomaly_filtering", "description": "ICIR符号翻转检测", "method": "sign_consistency_check", "parameters": {"windows": [35, 60, 100]}, "action_on_fail": "flag_definition_issue", "applied_to": "rolling_ICIR"},
+        {"rule_id": "F005-CLN-006", "category": "boundary_checking", "description": "品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"]}, "action_on_fail": "exclude_row", "applied_to": "variety"},
+        {"rule_id": "F005-CLN-007", "category": "data_type_enforcement", "description": "日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d"}, "action_on_fail": "exclude_row", "applied_to": "date"}
+      ],
+      "anomaly_rules": [
+        {"rule_id": "F005-ANOM-001", "description": "ICIR跨窗口符号翻转", "condition": "sign(ICIR_35d) != sign(ICIR_60d) OR sign(ICIR_60d) != sign(ICIR_100d)", "action": "flag_definition_issue", "severity": "CRITICAL"}
+      ],
+      "notes": "HOLD因子，当前阶段不执行清洗规则。ICIR定义问题需重新设计后解除HOLD。"
+    },
+    {
+      "factor_id": "FACTOR-006",
+      "factor_name": "G7_leakage_ratio",
+      "admission_status": "CONDITIONAL_PASS",
+      "risk_classification": "LEAKAGE_BOUNDARY_FALSE_ALARM",
+      "wl_a_tracking": "WL-A006",
+      "data_source_table": "Wind因子计算管线",
+      "wind_codes": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+      "date_range": {"start": "2023-01-01", "end": "2024-12-31"},
+      "g7_threshold": 0.005,
+      "fields": [
+        {"name": "leakage_score", "type": "numeric", "wind_field": "LKS", "nullable": false},
+        {"name": "info_score", "type": "numeric", "wind_field": "IFS", "nullable": false},
+        {"name": "date", "type": "date", "wind_field": "date", "nullable": false},
+        {"name": "variety", "type": "string", "wind_field": "variety", "nullable": false},
+        {"name": "factor_id", "type": "string", "wind_field": "factor_id", "nullable": false}
+      ],
+      "params": [
+        {"name": "leakage_threshold", "type": "float", "value": 0.005, "sensitivity": "HIGH", "range": [0.001, 0.01], "frozen": true, "frozen_by": "DSHC"},
+        {"name": "info_score_weight", "type": "float", "value": 1.0, "sensitivity": "MEDIUM", "range": [0.5, 2.0]},
+        {"name": "leakage_window", "type": "int", "value": 35, "sensitivity": "LOW", "range": [10, 100]}
+      ],
+      "cleaning_rules": [
+        {"rule_id": "F006-CLN-001", "category": "missing_value_handling", "description": "leakage_score缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "leakage_score"},
+        {"rule_id": "F006-CLN-002", "category": "missing_value_handling", "description": "info_score缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "info_score"},
+        {"rule_id": "F006-CLN-003", "category": "consistency_validation", "description": "leakage_score非负校验", "method": "non_negative_check", "parameters": {"min_value": 0}, "action_on_fail": "set_to_zero", "applied_to": "leakage_score"},
+        {"rule_id": "F006-CLN-004", "category": "consistency_validation", "description": "info_score非负校验", "method": "non_negative_check", "parameters": {"min_value": 0}, "action_on_fail": "set_to_zero", "applied_to": "info_score"},
+        {"rule_id": "F006-CLN-005", "category": "anomaly_filtering", "description": "leakage_score超阈值标记", "method": "threshold_check", "parameters": {"threshold": 0.005, "direction": "above"}, "action_on_fail": "flag_as_leakage", "applied_to": "leakage_score"},
+        {"rule_id": "F006-CLN-006", "category": "anomaly_filtering", "description": "leakage_score极端值检测", "method": "z_score", "parameters": {"z_threshold": 3.0}, "action_on_fail": "flag_for_review", "applied_to": "leakage_score"},
+        {"rule_id": "F006-CLN-007", "category": "boundary_checking", "description": "因子ID范围校验", "method": "enum_check", "parameters": {"allowed_values": ["FACTOR-004", "FACTOR-006", "FACTOR-007"]}, "action_on_fail": "exclude_row", "applied_to": "factor_id"},
+        {"rule_id": "F006-CLN-008", "category": "boundary_checking", "description": "品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"]}, "action_on_fail": "exclude_row", "applied_to": "variety"},
+        {"rule_id": "F006-CLN-009", "category": "data_type_enforcement", "description": "日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d"}, "action_on_fail": "exclude_row", "applied_to": "date"}
+      ],
+      "anomaly_rules": [
+        {"rule_id": "F006-ANOM-001", "description": "G7阈值边界复核", "condition": "leakage_score > 0.005 (G7_THRESHOLD)", "action": "flag_as_potential_leakage", "severity": "CRITICAL"},
+        {"rule_id": "F006-ANOM-002", "description": "G7白名单覆盖检查", "condition": "leakage_score > 0.005 AND factor_id IN WL-001_scope", "action": "suppress_false_alarm", "severity": "INFO"}
+      ],
+      "notes": "CONDITIONAL_PASS因子，清洗规则在数据拉取后阶段执行。G7_THRESHOLD=0.005由DSHC锁定，不可修改。"
+    },
+    {
+      "factor_id": "FACTOR-007",
+      "factor_name": "SchemeD_frozen_weights",
+      "admission_status": "CONDITIONAL_PASS",
+      "risk_classification": "MULTI_WINDOW_INSTABILITY",
+      "wl_a_tracking": "WL-A007",
+      "data_source_table": "Wind多因子合成表",
+      "wind_codes": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+      "date_range": {"start": "2023-01-01", "end": "2024-12-31"},
+      "window_days": 60,
+      "window_validation_range": [35, 100],
+      "fields": [
+        {"name": "F19_score", "type": "numeric", "wind_field": "F19", "nullable": false},
+        {"name": "F20_score", "type": "numeric", "wind_field": "F20", "nullable": false},
+        {"name": "CF003_score", "type": "numeric", "wind_field": "CF003", "nullable": false},
+        {"name": "decay_score", "type": "numeric", "wind_field": "DEC", "nullable": false},
+        {"name": "date", "type": "date", "wind_field": "date", "nullable": false},
+        {"name": "variety", "type": "string", "wind_field": "variety", "nullable": false}
+      ],
+      "params": [
+        {"name": "f19_weight", "type": "float", "value": "frozen", "sensitivity": "HIGH", "frozen": true},
+        {"name": "f20_weight", "type": "float", "value": "frozen", "sensitivity": "HIGH", "frozen": true},
+        {"name": "cf003_weight", "type": "float", "value": "frozen", "sensitivity": "HIGH", "frozen": true},
+        {"name": "decay_factor", "type": "float", "value": "frozen", "sensitivity": "MEDIUM", "frozen": true},
+        {"name": "window_days", "type": "int", "value": 60, "sensitivity": "MEDIUM", "range": [35, 100], "frozen": false}
+      ],
+      "cleaning_rules": [
+        {"rule_id": "F007-CLN-001", "category": "missing_value_handling", "description": "F19_score缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "F19_score"},
+        {"rule_id": "F007-CLN-002", "category": "missing_value_handling", "description": "F20_score缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "F20_score"},
+        {"rule_id": "F007-CLN-003", "category": "missing_value_handling", "description": "CF003_score缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "CF003_score"},
+        {"rule_id": "F007-CLN-004", "category": "missing_value_handling", "description": "decay_score缺失值处理", "method": "exclude_row", "parameters": {}, "action_on_fail": "exclude_row", "applied_to": "decay_score"},
+        {"rule_id": "F007-CLN-005", "category": "outlier_detection", "description": "各子因子得分极端值检测", "method": "z_score", "parameters": {"z_threshold": 3.0}, "action_on_fail": "cap_at_3sigma", "applied_to": ["F19_score", "F20_score", "CF003_score"]},
+        {"rule_id": "F007-CLN-006", "category": "consistency_validation", "description": "各子因子得分范围校验", "method": "range_check", "parameters": {"min": -1.0, "max": 1.0}, "action_on_fail": "clip_to_range", "applied_to": ["F19_score", "F20_score", "CF003_score"]},
+        {"rule_id": "F007-CLN-007", "category": "consistency_validation", "description": "合成得分加权求和一致性", "method": "weighted_sum_check", "parameters": {"tolerance": 0.001}, "action_on_fail": "recalculate", "applied_to": "all_scores"},
+        {"rule_id": "F007-CLN-008", "category": "boundary_checking", "description": "窗口参数边界校验", "method": "range_check", "parameters": {"min": 35, "max": 100}, "action_on_fail": "reject_out_of_range", "applied_to": "window_days"},
+        {"rule_id": "F007-CLN-009", "category": "boundary_checking", "description": "品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"]}, "action_on_fail": "exclude_row", "applied_to": "variety"},
+        {"rule_id": "F007-CLN-010", "category": "data_type_enforcement", "description": "日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d"}, "action_on_fail": "exclude_row", "applied_to": "date"}
+      ],
+      "anomaly_rules": [
+        {"rule_id": "F007-ANOM-001", "description": "多窗口排名相关性不稳定性", "condition": "spearman_rho < 0.60 across windows", "action": "flag_instability", "severity": "CRITICAL"},
+        {"rule_id": "F007-ANOM-002", "description": "多窗口方向不一致性", "condition": "direction_mismatch_ratio > 0.40", "action": "flag_instability", "severity": "CRITICAL"},
+        {"rule_id": "F007-ANOM-003", "description": "权重贡献漂移", "condition": "weight_contribution_change > 0.30", "action": "flag_weight_drift", "severity": "WARNING"}
+      ],
+      "notes": "CONDITIONAL_PASS因子，清洗规则在数据拉取后阶段执行。window_days=60为基准值，35~100日为验证范围。详见F007_PARAMETER_BASELINE.md。"
+    }
+  ],
+  "global_cleaning_rules": [
+    {"rule_id": "GLB-CLN-001", "category": "data_type_enforcement", "description": "全局日期格式标准化", "method": "date_format_enforce", "parameters": {"format": "%Y-%m-%d", "invalid_handling": "exclude_row"}, "applied_to": "date"},
+    {"rule_id": "GLB-CLN-002", "category": "data_type_enforcement", "description": "全局品种代码范围校验", "method": "enum_check", "parameters": {"allowed_values": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"], "invalid_handling": "exclude_row"}, "applied_to": "variety"},
+    {"rule_id": "GLB-CLN-003", "category": "data_type_enforcement", "description": "全局数值字段NaN/Inf替换", "method": "numeric_nan_inf_replacement", "parameters": {"nan_handling": "exclude_row", "inf_handling": "exclude_row"}, "applied_to": "all_numeric"},
+    {"rule_id": "GLB-CLN-004", "category": "consistency_validation", "description": "全局重复行检测", "method": "duplicate_detection", "parameters": {"key_columns": ["date", "variety"], "duplicates_handling": "keep_last"}, "applied_to": "all"},
+    {"rule_id": "GLB-CLN-005", "category": "boundary_checking", "description": "全局日期范围校验", "method": "date_range_check", "parameters": {"min_date": "2023-01-01", "max_date": "2024-12-31"}, "action_on_fail": "exclude_row", "applied_to": "date"},
+    {"rule_id": "GLB-CLN-006", "category": "consistency_validation", "description": "全局行计数校验", "method": "row_count_check", "parameters": {"min_rows_per_chunk": 250, "max_rows_per_chunk": 400}, "action_on_fail": "flag_anomaly", "applied_to": "all"},
+    {"rule_id": "GLB-CLN-007", "category": "anomaly_filtering", "description": "全局零值密集检测", "method": "zero_density_check", "parameters": {"max_zero_ratio": 0.80}, "action_on_fail": "flag_zero_signal", "applied_to": "all_numeric"}
+  ],
+  "cleaning_statistics": {
+    "total_rules": 66,
+    "by_factor": {
+      "FACTOR-001": 7,
+      "FACTOR-002": 7,
+      "FACTOR-003": 8,
+      "FACTOR-004": 10,
+      "FACTOR-005": 7,
+      "FACTOR-006": 9,
+      "FACTOR-007": 10
+    },
+    "by_category": {
+      "missing_value_handling": 16,
+      "outlier_detection": 7,
+      "anomaly_filtering": 7,
+      "boundary_checking": 10,
+      "consistency_validation": 14,
+      "data_type_enforcement": 7
+    },
+    "by_action": {
+      "exclude_row": 25,
+      "clip_to_range": 3,
+      "cap_at_3sigma": 4,
+      "set_to_zero": 3,
+      "flag_for_review": 3,
+      "exclude_row_and_flag": 3,
+      "recalculate": 1,
+      "reject_out_of_range": 1,
+      "proportional_adjust": 1,
+      "flag_edge_artifact": 1,
+      "flag_as_leakage": 1,
+      "suppress_false_alarm": 1,
+      "flag_instability": 2,
+      "flag_weight_drift": 1,
+      "flag_zero_signal": 1,
+      "flag_anomaly": 1,
+      "flag_definition_issue": 1,
+      "escalate_to_dshc": 1,
+      "keep_last": 1
+    }
+  },
+  "execution_order": [
+    "GLB-CLN-001 (全局日期格式)",
+    "GLB-CLN-002 (全局品种代码)",
+    "GLB-CLN-003 (全局NaN/Inf替换)",
+    "GLB-CLN-004 (全局重复行检测)",
+    "GLB-CLN-005 (全局日期范围)",
+    "FACTOR-{id}-CLN-{n} (因子级清洗规则)",
+    "GLB-CLN-006 (全局行计数校验)",
+    "GLB-CLN-007 (全局零值密集检测)",
+    "FACTOR-{id}-ANOM-{n} (异常规则)",
+    "条件约束验证 (WL-A跟踪项)"
+  ],
+  "governance_invariants": {
+    "wind_api_calls": 0,
+    "backtest_started": false,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  }
+}
