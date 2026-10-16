@@ -245,3 +245,72 @@
 
 > **标记**: V88_PHASE03_P1_DSHE_P012_NATIVE_PASS_CONSOLIDATE_AND_SYNC=COMPLETE
 > **下一步**: 等待 HERMEShf blocker_monitor cron 自动触发 P0-12 门禁复测
+
+---
+
+## 8. V88_PHASE03_P2_DSHE_GATE_HARDEN_AND_PHASE04_PREP_PARTIAL_CHECK_JOB
+
+> **TASK_ID**: V88_PHASE03_P2_DSHE_GATE_HARDEN_AND_PHASE04_PREP_PARTIAL_CHECK_JOB
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **DATE**: 2026-10-16T22:45 UTC+8
+> **STATUS**: COMPLETE
+> **前置**: V88_PHASE03_P1_DSHE_P012_NATIVE_PASS_CONSOLIDATE_AND_SYNC_JOB = COMPLETE (commit 09bf0be)
+
+### 8.1 任务状态
+
+| 任务 | 状态 | 关键结果 |
+|------|:----:|----------|
+| T0: P0-12二次密封(SHA256) | ✅ COMPLETE | 12文件SHA256密封 + 归档目录只读确认 + 引擎锁定确认 |
+| T1: Phase04 psutil采集生产包 | ✅ COMPLETE | config.yaml + daemon + alarm + 14测试 + deploy_guide |
+| T2: 24-partial渲染预校验 | ✅ COMPLETE | 15项已知非RENDERED分析 + 6项渲染相关边界证据 |
+| T3: Phase04渲染检查清单 | ✅ COMPLETE | 渲染侧环境/依赖/资源/内存/队列参数 |
+| T4: R3抽样回归 + 审计待命 | ✅ COMPLETE | 8/8 PASS + 审计待命<1h |
+| T5: commit + push | ✅ COMPLETE | 已推送feature/v88-g1 |
+| T6: 元数据更新 | ✅ COMPLETE | STATUS/FLAG/MD5全部更新 |
+
+**完成度: 7/7 (100%)**
+
+### 8.2 核心指标
+
+| 指标 | 值 | 状态 |
+|------|:--:|:----:|
+| P0-12二次密封 | SHA256 12文件 | ✅ |
+| 归档目录 | 只读+完整 | ✅ |
+| 引擎MD5 | `cd73deae...` 冻结 | ✅ |
+| Phase04 psutil采集包 | 生产就绪 v1.0.0-prod | ✅ |
+| 单元测试 | 14/14 | ✅ |
+| 非RENDERED指标 | 15项(已知) | ✅ |
+| 渲染相关边界 | 6项(5 PB orphan + 1 si_top20_net) | ✅ |
+| R3 E2E回归 | 8/8 PASS | ✅ |
+| 审计待命 | <1h | ✅ |
+| 约束合规 | 11/11 | ✅ |
+
+### 8.3 交付物清单
+
+| 文件 | 说明 |
+|------|------|
+| `gate_freeze_seal.md` | P0-12二次SHA256密封清单 |
+| `opt-phase04-psutil-collector/` | Phase04 psutil生产就绪包(独立目录) |
+| `opt-phase04-psutil-collector/config.yaml` | 采集配置文件 |
+| `opt-phase04-psutil-collector/simple_daemon.py` | 生产级守护进程 |
+| `opt-phase04-psutil-collector/alarm_threshold.json` | 告警阈值配置 |
+| `opt-phase04-psutil-collector/test_collector.py` | 14条单元用例 |
+| `opt-phase04-psutil-collector/deploy_guide.md` | 部署指南 |
+| `partial_render_precheck_report.md` | 24-partial渲染预校验报告 |
+| `partial_render_evidence/non_rendered_indicators_evidence.json` | 证据JSON |
+| `dshe_phase04_rendering_bootstrap_checklist.md` | Phase04渲染启动检查清单 |
+| `quick_r3_sample_verify.md` | R3抽样回归报告 |
+
+### 8.4 HERMEShf 待执行项
+
+| # | 待执行项 | 状态 |
+|---|----------|:----:|
+| 1 | P0-12门禁自动复测(blocker_monitor cron) | ⏳ 等待cron触发 |
+| 2 | Phase04正式工单发布 | ⏳ PENDING |
+| 3 | DSHB数据采集就绪 | ⏳ PENDING |
+| 4 | si_top20_net Phase04修复 | ⏳ PENDING (R-V88-035 LOW) |
+
+---
+
+> **标记**: V88_PHASE03_P2_DSHE_GATE_HARDEN_AND_PHASE04_PREP_PARTIAL_CHECK=COMPLETE
+> **下一步**: 等待 HERMEShf blocker_monitor cron 自动触发 P0-12 门禁复测 + Phase04 正式工单

@@ -1,0 +1,67 @@
+# Phase04 psutil Collector — Configuration
+# 
+# NOTE: This collector is for Phase04 production deployment ONLY.
+# It does NOT interfere with Phase03 gate paths.
+# Do NOT deploy until Phase04 formal work order is issued.
+#
+# C-3 Constraint: Phase04 psutil steady-state collection package
+# must be upgraded from prototype to production-ready version.
+
+# ─── Global Settings ───────────────────────────────────────────────
+collector:
+  version: "1.0.0-prod"
+  phase: "Phase04"
+  role: "steady-state-cpu-monitor"
+  enabled: false          # FALSE until Phase04 formal work order
+  log_level: "info"
+  output_format: "json"
+
+# ─── Collection Config ─────────────────────────────────────────────
+collection:
+  interval_sec: 60          # Collection interval (seconds)
+  batch_size: 101           # Charts per batch (matches Phase03 engine)
+  rounds_per_cycle: 3       # Measurement rounds per collection cycle
+  idle_gap_sec: 300         # Idle gap between rounds (for true steady-state)
+  baseline_duration_sec: 15 # Baseline CPU measurement duration
+  
+# ─── Measurement Method ────────────────────────────────────────────
+measurement:
+  method: "psutil.cpu_times"   # System-level full-link window (NOT process-level)
+  caliber: "system-level"
+  # Phase03 used psutil.cpu_times() system-level → Phase04 inherits same caliber
+  # DO NOT switch to psutil.Process().cpu_percent() (process-level)
+  cpu_threshold_pct: 1.75     # Steady-state CPU threshold
+  p99_latency_ms: 500         # P99 latency threshold
+
+# ─── Engine Binding ────────────────────────────────────────────────
+engine:
+  path: "scripts/node_binding_engine.py"
+  expected_md5: "cd73deaeec54a7f1f8bde92c1300a9dc"
+  db_path: "analysis/e2e_output/v88/phase03/p0/phase03_test.db"
+  total_charts: 101
+
+# ─── Output Config ─────────────────────────────────────────────────
+output:
+  directory: "analysis/e2e_output/v88/phase04/psutil_collector_data"
+  retention_days: 30          # Keep 30 days of historical data
+  filename_pattern: "psutil_steady_{YYYYMMDD_HHMMSS}.json"
+  archive_format: "compressed"  # gzip compressed JSON
+  max_archive_size_mb: 100    # Rotate at 100MB
+
+# ─── Alarm Thresholds ──────────────────────────────────────────────
+# See alarm_threshold.json for detailed alarm configuration
+alarm:
+  enabled: true
+  config_file: "alarm_threshold.json"
+  notification_channels:
+    - "log"
+    - "json_alert"
+
+# ─── Daemon Mode ───────────────────────────────────────────────────
+daemon:
+  enabled: false
+  pid_file: "/tmp/phase04_psutil_collector.pid"
+  log_file: "/var/log/phase04_psutil_collector.log"
+  max_restarts: 3
+  restart_delay_sec: 30
+  watchdog_interval_sec: 300

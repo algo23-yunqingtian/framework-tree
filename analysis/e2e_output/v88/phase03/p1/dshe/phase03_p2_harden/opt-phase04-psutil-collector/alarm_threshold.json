@@ -1,0 +1,125 @@
+{
+  "alarm_version": "1.0.0-prod",
+  "phase": "Phase04",
+  "description": "Alarm threshold configuration for Phase04 psutil steady-state CPU collector. Independent of Phase03 gate paths.",
+  
+  "cpu_thresholds": {
+    "steady_state_pct": {
+      "warning": 0.50,
+      "critical": 1.00,
+      "fuse": 1.75,
+      "unit": "percent",
+      "measurement": "psutil.cpu_times() system-level full-link window",
+      "caliber_note": "System-level caliber, NOT process-level. Matches Phase03 P0-12 steady-state measurement."
+    },
+    "p99_latency_ms": {
+      "warning": 400,
+      "critical": 450,
+      "fuse": 500,
+      "unit": "milliseconds",
+      "measurement": "per-chart render latency P99"
+    },
+    "cpu_drift_pct": {
+      "warning": 5.0,
+      "critical": 10.0,
+      "fuse": 20.0,
+      "unit": "percent_change_from_baseline",
+      "description": "Percentage drift from baseline steady-state CPU"
+    }
+  },
+  
+  "collection_thresholds": {
+    "min_rounds": 3,
+    "min_idle_gap_sec": 300,
+    "min_baseline_sec": 15,
+    "max_collection_time_sec": 900
+  },
+  
+  "engine_health_thresholds": {
+    "engine_md5_mismatch": {
+      "severity": "critical",
+      "action": "halt_collection"
+    },
+    "db_connectivity_failures": {
+      "warning": 1,
+      "critical": 3,
+      "unit": "consecutive_failures"
+    },
+    "chart_load_failures": {
+      "warning": 0,
+      "critical": 5,
+      "unit": "charts_failed_per_round"
+    }
+  },
+  
+  "memory_thresholds": {
+    "engine_memory_mb": {
+      "warning": 512,
+      "critical": 1024,
+      "fuse": 2048
+    },
+    "collector_process_memory_mb": {
+      "warning": 256,
+      "critical": 512,
+      "fuse": 1024
+    }
+  },
+  
+  "data_quality_thresholds": {
+    "render_success_rate_pct": {
+      "warning": 99.0,
+      "critical": 98.5,
+      "fuse": 97.0
+    },
+    "noise_indicator_count": {
+      "warning": 3,
+      "critical": 5,
+      "fuse": 10
+    }
+  },
+  
+  "alert_response": {
+    "warning": {
+      "action": "log_and_continue",
+      "retry_interval_sec": 300,
+      "max_retries": 3
+    },
+    "critical": {
+      "action": "log_and_alert",
+      "notification": true,
+      "escalate_after_sec": 600
+    },
+    "fuse": {
+      "action": "halt_collection",
+      "notification": true,
+      "auto_recovery": false,
+      "requires_manual_reset": true
+    }
+  },
+  
+  "notification_config": {
+    "channels": [
+      {
+        "type": "log",
+        "enabled": true,
+        "level": "warning"
+      },
+      {
+        "type": "json_alert",
+        "enabled": true,
+        "output_path": "alerts/phase04_psutil_alerts.jsonl",
+        "rotation_days": 30
+      }
+    ],
+    "dedup_window_sec": 600,
+    "max_alerts_per_hour": 100
+  },
+  
+  "constraints": {
+    "phase03_gate_path_untouched": true,
+    "engine_md5_frozen": "cd73deaeec54a7f1f8bde92c1300a9dc",
+    "no_noise_monitor_modification": true,
+    "no_threshold_monitor_modification": true,
+    "branch_locked": "feature/v88-g1"
+  }
+}

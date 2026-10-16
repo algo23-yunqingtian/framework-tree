@@ -1,0 +1,224 @@
+{
+  "task_id": "V88_PHASE03_P2_DSHE_GATE_HARDEN_AND_PHASE04_PREP_PARTIAL_CHECK_JOB",
+  "task": "T2",
+  "task_description": "Partial render precheck for non-RENDERED indicators",
+  "generated": "2026-10-16T22:45:00+08:00",
+  "source": "new_derived_metric_full_render_result.json",
+  "total_indicators": 70,
+  "non_rendered_count": 15,
+  "status_distribution": {
+    "PLACEHOLDER_ZERO": 9,
+    "HAS_DATA": 5,
+    "NO_DATA": 1
+  },
+  "non_rendered_indicators": [
+    {
+      "indicator_id": "placeholder_comexal",
+      "mapped_target": "COMEX_AL",
+      "commodity": "al",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "placeholder_cubalancesheet",
+      "mapped_target": "CU_BALANCE_SHEET",
+      "commodity": "cu",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "pb_long_short_ratio",
+      "mapped_target": "PB_LONG_SHORT_RATIO",
+      "commodity": "j21",
+      "render_status": "HAS_DATA",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [],
+      "anomaly_type": [],
+      "db_row_count": 3041
+    },
+    {
+      "indicator_id": "pb_month_spread",
+      "mapped_target": "PB_MONTH_SPREAD",
+      "commodity": "j21",
+      "render_status": "HAS_DATA",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "2 zero values (0.1%)",
+        "8 outliers (>3σ, mean=0.00, σ=2.48)"
+      ],
+      "anomaly_type": [],
+      "db_row_count": 3040
+    },
+    {
+      "indicator_id": "pb_price_percentile",
+      "mapped_target": "PB_PRICE_PERCENTILE",
+      "commodity": "j21",
+      "render_status": "HAS_DATA",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [],
+      "anomaly_type": [],
+      "db_row_count": 3022
+    },
+    {
+      "indicator_id": "pb_term_structure",
+      "mapped_target": "PB_TERM_STRUCTURE",
+      "commodity": "j21",
+      "render_status": "HAS_DATA",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [],
+      "anomaly_type": [],
+      "db_row_count": 3041
+    },
+    {
+      "indicator_id": "pb_top20_net",
+      "mapped_target": "PB_TOP20_NET",
+      "commodity": "j21",
+      "render_status": "HAS_DATA",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [],
+      "anomaly_type": [],
+      "db_row_count": 3041
+    },
+    {
+      "indicator_id": "placeholder_comexni",
+      "mapped_target": "COMEX_NI",
+      "commodity": "ni",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "placeholder_comexpb",
+      "mapped_target": "COMEX_PB",
+      "commodity": "pb",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "placeholder_pbtop20long",
+      "mapped_target": "PB_TOP20_LONG",
+      "commodity": "pb",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "placeholder_pbtop20short",
+      "mapped_target": "PB_TOP20_SHORT",
+      "commodity": "pb",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "placeholder_spotis",
+      "mapped_target": "SPOT_IS",
+      "commodity": "si",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "si_top20_net",
+      "mapped_target": "SI_TOP20_NET",
+      "commodity": "si",
+      "render_status": "NO_DATA",
+      "has_mapping": true,
+      "has_data": false,
+      "quality_issues": [],
+      "anomaly_type": [
+        "db_missing"
+      ],
+      "db_row_count": 0
+    },
+    {
+      "indicator_id": "placeholder_comexsn",
+      "mapped_target": "COMEX_SN",
+      "commodity": "sn",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    },
+    {
+      "indicator_id": "placeholder_comexzn",
+      "mapped_target": "COMEX_ZN",
+      "commodity": "zn",
+      "render_status": "PLACEHOLDER_ZERO",
+      "has_mapping": true,
+      "has_data": true,
+      "quality_issues": [
+        "All 1 values are zero (anomaly)"
+      ],
+      "anomaly_type": [
+        "expected_placeholder"
+      ],
+      "db_row_count": 1
+    }
+  ],
+  "disclaimer": "This is a PRECHECK only. No indicator status changes have been made. No matched/partial classification has been altered.",
+  "caliber_note": "caliber_inventory_snapshot not yet available from HERMES; this precheck uses existing render results from Phase03 P1."
+}
