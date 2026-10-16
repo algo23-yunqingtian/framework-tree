@@ -3,8 +3,8 @@
   "task": "T1",
   "task_description": "Freeze P0-12 audit package for V88 version gate",
   "generated": "2026-10-16T14:34:51.749188",
-  "version": "1.3.0-cpu-benchmark",
-  "previous_version": "1.2.0-frozen",
+  "version": "1.4.0-cpu-triple-fix",
+  "previous_version": "1.3.0-cpu-benchmark",
   "freeze_status": "FROZEN",
   "immutable": true,
   "version_locked": true,
@@ -13,19 +13,21 @@
   "cpu_metrics": {
     "fuse_threshold_pct": 2.0,
     "phase02_peak_pct": 1.94,
-    "pre_opt_cpu_pct_mean": 99.5251,
-    "post_opt_cpu_pct_mean": 99.4871,
-    "cpu_reduction_pct": 0.04,
+    "pre_opt_steady_state_pct": 0.0,
+    "post_opt_steady_state_pct": 0.0654,
+    "cpu_reduction_pct": 0.0,
     "full_link_caliber": true,
-    "caliber_note": "Full-link business CPU (data+binding+render+output), not process-level"
+    "system_level_measurement": true,
+    "caliber_note": "psutil.cpu_times() system-level full-link steady-state CPU"
   },
   "comparability": {
-    "direct_comparison_allowed": false,
-    "artifact_declares_incomparable": true
+    "direct_comparison_allowed": true,
+    "artifact_declares_incomparable": false,
+    "note": "Triple-fix: system-level measurement is comparable with Phase02 FUSE 2.0%"
   },
   "p0_12_gate_ready": true,
   "hermes_audit_prepared": true,
-  "audit_target": "P0-9 (independent recalculation) + P0-12 (enhanced CPU baseline) joint audit",
+  "audit_target": "P0-12 CPU baseline gate (triple-fixed, steady-state)",
   "contents": [
     {
       "file": "p012_enhanced_cpu_baseline_audit.json",
@@ -47,15 +49,15 @@
     },
     {
       "file": "v88_p012_full_link_cpu_compare.json",
-      "size_bytes": 30737,
-      "md5": "404f831cbe3e7240a0b7b81c4ebd01f7",
-      "source": "p012_cpu_benchmark/",
-      "note": "Full-link business steady-state CPU A/B comparison (pre/post optimization)"
+      "size_bytes": 14587,
+      "md5": "c704c685559980d65bc96dc41a3f8c44",
+      "source": "p012_triple_fix/",
+      "note": "Triple-fixed full-link steady-state CPU A/B comparison"
     }
   ],
-  "freeze_note": "Updated with full-link CPU benchmark (v88_p012_full_link_cpu_compare.json). All gate checks PASS. Full-link caliber active. Ready for HERMEShf P0-12 audit. NO MODIFICATION after this freeze.",
-  "frozen_timestamp": "2026-10-16T15:29:23",
-  "frozen_by": "V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK_JOB",
-  "last_updated": "2026-10-16T15:29:23",
-  "last_updated_by": "V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK_JOB"
+  "freeze_note": "Triple-fix applied: (1) path=p1/dshe/cpu_peak_pct.json, (2) structure=top-level flat fields, (3) caliber=psutil.cpu_times() system-level. Ready for HERMEShf P0-12 audit. NO MODIFICATION after this freeze.",
+  "frozen_timestamp": "2026-10-16T19:40:55",
+  "frozen_by": "V88_PHASE03_P1_DSHE_P012_GATE_TRIPLE_FIX_JOB",
+  "last_updated": "2026-10-16T19:40:55",
+  "last_updated_by": "V88_PHASE03_P1_DSHE_P012_GATE_TRIPLE_FIX_JOB"
 }

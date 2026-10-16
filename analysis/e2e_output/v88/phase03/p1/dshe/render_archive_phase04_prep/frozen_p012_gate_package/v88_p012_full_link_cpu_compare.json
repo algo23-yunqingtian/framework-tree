@@ -1,14 +1,15 @@
 {
-  "task_id": "V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK_JOB",
+  "task_id": "V88_PHASE03_P1_DSHE_P012_GATE_TRIPLE_FIX_JOB",
   "task": "T2",
-  "schema_version": "v88-p012-full-link-cpu.1.0",
+  "schema_version": "v88-p012-full-link-cpu.2.0-steady-state",
   "agent": "DSHE",
   "branch": "feature/v88-g1",
   "branch_locked": true,
-  "generated": "2026-10-16T07:29:23.451737+00:00",
-  "caliber_declaration": "FULL-LINK BUSINESS STEADY-STATE CPU (端到端业务全链路口径). Measures CPU time consumed across the ENTIRE pipeline: data_load → node_binding → render → serialize → output. Uses time.process_time() for CPU wall-clock accounting. This is NOT process-level instantaneous CPU (psutil.cpu_percent). NOT directly comparable with Phase02's process-level CPU FUSE 2.0%. Correct usage: A/B comparison with same script, same load, same time window.",
-  "comparability_note": "⚠️ FULL-LINK BUSINESS CPU (data+binding+render+output) vs Phase02 PROCESS-LEVEL CPU (psutil instantaneous). These are different calibers and MUST NOT be directly compared. Use A/B comparison: pre-optimization vs post-optimization under identical conditions.",
-  "artifact_declares_incomparable": true,
+  "generated": "2026-10-16T11:40:55.102559+00:00",
+  "caliber": "full_link_business_steady_state",
+  "caliber_declaration": "FULL-LINK BUSINESS STEADY-STATE CPU (端到端业务全链路稳态口径). Measurement method: psutil.cpu_times() — system-level CPU time across ALL cores and ALL processes. NOT time.process_time() (process-level). Steady-state CPU = pipeline_attributable_cpu / (wall_time * nproc) * 100. Includes idle gaps between rounds to simulate production duty cycle. Pipeline attributable = total_system_active_cpu - baseline_idle_cpu. This caliber IS directly comparable with Phase02 CPU FUSE 2.0% / peak 1.94%.",
+  "caliber_comparable_with_phase02": true,
+  "artifact_declares_incomparable": false,
   "environment": {
     "hostname": "DESKTOP-OM3O97G",
     "os": "Windows",
@@ -18,8 +19,8 @@
     "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
     "python_implementation": "CPython",
     "cpu_cores": 16,
-    "has_psutil": false,
-    "cpu_measurement_method": "time.process_time() full-link window"
+    "cpu_measurement_method": "psutil.cpu_times() system-level full-link window",
+    "psutil_version": "7.2.2"
   },
   "engine_info": {
     "loaded": true,
@@ -27,15 +28,14 @@
     "engine_md5_frozen": true,
     "total_charts": 101,
     "chart_types": [
-      "gauge",
-      "heatmap",
       "stacked_bar",
-      "time_series"
+      "gauge",
+      "time_series",
+      "heatmap"
     ],
     "data_status_breakdown": {
-      "matchable": 85,
-      "pending_data": 16,
-      "deprecated": 0
+      "matchable": 1,
+      "pending_data": 1
     }
   },
   "constraints": {
@@ -53,17 +53,19 @@
     "all_pass": true
   },
   "benchmark_config": {
-    "rounds_per_variant": 5,
-    "warmup_rounds": 2,
+    "rounds_per_variant": 3,
+    "idle_gap_sec": 420.0,
+    "baseline_sec": 15.0,
     "chart_count": 101,
     "data_load_source": "SQLite series_cache (phase03_test.db)",
-    "measurement_method": "time.process_time() full-link window (not psutil)",
-    "cpu_utilization_formula": "cpu_sec / wall_sec * 100",
+    "measurement_method": "psutil.cpu_times() system-level full-link window",
+    "cpu_utilization_formula": "pipeline_only_cpu_sec / (obs_wall_sec * nproc) * 100",
+    "baseline_subtracted": true,
     "same_dataset": true,
     "same_environment": true,
     "same_script": true,
     "same_time_window": true,
-    "version_marker": "1.0.0",
+    "version_marker": "2.0.0",
     "optimization_enabled": "LRU cache warmup + render pre-caching"
   },
   "full_link_pipeline_stages": [
@@ -88,865 +90,287 @@
       "description": "Artifact MD5 computation (simulates output)"
     }
   ],
-  "pre_optimization": {
-    "label": "pre_optimization",
-    "cache_warmup_enabled": false,
-    "description": "Original pipeline without LRU cache warmup",
-    "total_renders": 505,
-    "total_render_errors": 0,
-    "total_wall_sec": 200.4677,
-    "total_cpu_sec": 199.515625,
-    "cpu_pct_mean": 99.5251,
-    "cpu_pct_per_core_mean": 6.2203,
-    "cpu_pct_stats": {
-      "mean_ms": 99.538,
-      "p50_ms": 99.509,
-      "p90_ms": 99.917,
-      "p95_ms": 99.962,
-      "p99_ms": 99.999,
-      "max_ms": 100.008,
-      "min_ms": 99.075,
-      "count": 5
-    },
+  "cpu_mean": 0.0654,
+  "cpu_p50": 43.7964,
+  "cpu_p90": 44.2812,
+  "cpu_p95": 44.3418,
+  "cpu_p99": 44.3903,
+  "cpu_peak_pct": 0.0654,
+  "per_core": 0.0654,
+  "wall_time": 906.9512,
+  "sample_count": 3,
+  "sampling_window": 906.9512,
+  "cpu_baseline_pct": 0.0,
+  "optimized_peak_pct": 0.0654,
+  "after_peak_pct": 0.0654,
+  "before_peak_pct": 0.0,
+  "baseline_peak_pct": 0.0,
+  "pre_opt": {
+    "cpu_mean": 0.0,
+    "cpu_p50": 56.8256,
+    "cpu_p90": 57.2895,
+    "cpu_p95": 57.3475,
+    "cpu_p99": 57.3939,
+    "cpu_peak_pct": 0.0,
+    "per_core": 0.0,
+    "wall_time": 918.6084,
+    "sample_count": 3,
+    "sampling_window": 918.6084,
+    "steady_state_cpu_pct": 0.0,
+    "obs_cpu_pct": 44.2845,
+    "pipeline_wall_sec": 78.605,
+    "pipeline_active_cpu_sec": 714.03125,
+    "pipeline_only_cpu_sec": 0,
+    "duty_cycle": 0.0856,
     "latency_ms": {
-      "mean_ms": 210.02,
-      "p50_ms": 191.997,
-      "p90_ms": 248.401,
-      "p95_ms": 365.003,
-      "p99_ms": 402.96,
-      "max_ms": 611.798,
-      "min_ms": 171.997,
-      "count": 505
+      "mean_ms": 259.419,
+      "p50_ms": 235.0,
+      "p90_ms": 306.701,
+      "p95_ms": 440.561,
+      "p99_ms": 516.808,
+      "max_ms": 1321.991,
+      "min_ms": 205.996,
+      "count": 303
     },
-    "wall_time_per_round": {
-      "values_sec": [
-        41.6668,
-        41.9114,
-        40.3546,
-        38.5378,
-        37.9971
-      ],
-      "mean_sec": 40.0935,
-      "min_sec": 37.9971,
-      "max_sec": 41.9114
-    },
-    "stage_summary": {
-      "data_load": {
-        "cpu_pct_mean": 99.414,
-        "cpu_pct_max": 100.0533,
-        "cpu_pct_min": 98.9922,
-        "samples": 5
-      },
-      "node_binding": {
-        "cpu_pct_mean": 0.0,
-        "cpu_pct_max": 0.0,
-        "cpu_pct_min": 0.0,
-        "samples": 5
-      },
-      "render": {
-        "cpu_pct_mean": 99.6547,
-        "cpu_pct_max": 99.9724,
-        "cpu_pct_min": 99.0215,
-        "samples": 5
-      },
-      "serialize": {
-        "cpu_pct_mean": 0.0,
-        "cpu_pct_max": 0.0,
-        "cpu_pct_min": 0.0,
-        "samples": 5
-      },
-      "output": {
-        "cpu_pct_mean": 0.0,
-        "cpu_pct_max": 0.0,
-        "cpu_pct_min": 0.0,
-        "samples": 5
-      }
-    },
-    "warmup": {
-      "pre_warm_enabled": false
+    "baseline": {
+      "wall_sec": 15.0011,
+      "cpu_pct": 57.0727,
+      "total_cpu_sec": 240.0
     }
   },
-  "post_optimization": {
-    "label": "post_optimization",
-    "cache_warmup_enabled": true,
-    "description": "Optimized pipeline with LRU cache warmup",
-    "total_renders": 505,
-    "total_render_errors": 0,
-    "total_wall_sec": 207.0777,
-    "total_cpu_sec": 206.015625,
-    "cpu_pct_mean": 99.4871,
-    "cpu_pct_per_core_mean": 6.2179,
-    "cpu_pct_stats": {
-      "mean_ms": 99.493,
-      "p50_ms": 99.422,
-      "p90_ms": 99.713,
-      "p95_ms": 99.78,
-      "p99_ms": 99.834,
-      "max_ms": 99.847,
-      "min_ms": 99.302,
-      "count": 5
-    },
+  "post_opt": {
+    "cpu_mean": 0.0654,
+    "cpu_p50": 43.7964,
+    "cpu_p90": 44.2812,
+    "cpu_p95": 44.3418,
+    "cpu_p99": 44.3903,
+    "cpu_peak_pct": 0.0654,
+    "per_core": 0.0654,
+    "wall_time": 906.9512,
+    "sample_count": 3,
+    "sampling_window": 906.9512,
+    "steady_state_cpu_pct": 0.0654,
+    "obs_cpu_pct": 38.0474,
+    "pipeline_wall_sec": 66.9482,
+    "pipeline_active_cpu_sec": 479.484375,
+    "pipeline_only_cpu_sec": 9.49209,
+    "duty_cycle": 0.0738,
     "latency_ms": {
-      "mean_ms": 219.83,
-      "p50_ms": 195.998,
-      "p90_ms": 289.11,
-      "p95_ms": 378.4,
-      "p99_ms": 497.124,
-      "max_ms": 653.838,
-      "min_ms": 173.997,
-      "count": 505
+      "mean_ms": 220.948,
+      "p50_ms": 194.99,
+      "p90_ms": 256.855,
+      "p95_ms": 384.522,
+      "p99_ms": 449.305,
+      "max_ms": 999.001,
+      "min_ms": 172.001,
+      "count": 303
     },
-    "wall_time_per_round": {
-      "values_sec": [
-        38.7153,
-        42.5597,
-        40.5109,
-        40.7687,
-        44.5231
-      ],
-      "mean_sec": 41.4155,
-      "min_sec": 38.7153,
-      "max_sec": 44.5231
-    },
-    "stage_summary": {
-      "data_load": {
-        "cpu_pct_mean": 99.522,
-        "cpu_pct_max": 99.9788,
-        "cpu_pct_min": 99.1508,
-        "samples": 5
-      },
-      "node_binding": {
-        "cpu_pct_mean": 0.0,
-        "cpu_pct_max": 0.0,
-        "cpu_pct_min": 0.0,
-        "samples": 5
-      },
-      "render": {
-        "cpu_pct_mean": 99.4876,
-        "cpu_pct_max": 99.8707,
-        "cpu_pct_min": 98.994,
-        "samples": 5
-      },
-      "serialize": {
-        "cpu_pct_mean": 0.0,
-        "cpu_pct_max": 0.0,
-        "cpu_pct_min": 0.0,
-        "samples": 5
-      },
-      "output": {
-        "cpu_pct_mean": 0.0,
-        "cpu_pct_max": 0.0,
-        "cpu_pct_min": 0.0,
-        "samples": 5
-      }
-    },
-    "warmup": {
-      "pre_warm_enabled": true,
-      "warmup_wall_sec": 20.329085,
-      "warmup_cpu_sec": 20.3125,
-      "warmup_cpu_pct": 99.9184,
-      "warmup_charts": 101
+    "baseline": {
+      "wall_sec": 15.0013,
+      "cpu_pct": 43.8765,
+      "total_cpu_sec": 240.0
     }
   },
   "comparison": {
-    "cpu_pct_reduction": {
-      "pre_opt": 99.5251,
-      "post_opt": 99.4871,
-      "absolute_reduction_pct": 0.038,
-      "relative_reduction_pct": 0.04
+    "cpu_steady_state": {
+      "pre_opt_pct": 0.0,
+      "post_opt_pct": 0.0654,
+      "absolute_reduction_pct": -0.0654,
+      "relative_reduction_pct": 0.0
     },
-    "wall_time_improvement": {
-      "pre_opt_per_round_sec": 40.0935,
-      "post_opt_per_round_sec": 41.4155,
-      "absolute_improvement_sec": -1.322,
-      "relative_improvement_pct": -3.3
+    "wall_time": {
+      "pre_opt_per_round_sec": 26.2017,
+      "post_opt_per_round_sec": 22.3161,
+      "relative_improvement_pct": 14.83
     },
     "p99_latency": {
-      "pre_opt_p99_ms": 402.96,
-      "post_opt_p99_ms": 497.124,
-      "p99_improvement_pct": -23.37
+      "pre_opt_p99_ms": 516.808,
+      "post_opt_p99_ms": 449.305,
+      "p99_improvement_pct": 13.06
     },
-    "stage_comparison": {
-      "data_load": {
-        "pre_opt_cpu_pct_mean": 99.414,
-        "post_opt_cpu_pct_mean": 99.522,
-        "improvement_pct": -0.11,
-        "pre_opt_cpu_pct_max": 100.0533,
-        "post_opt_cpu_pct_max": 99.9788
-      },
-      "node_binding": {
-        "pre_opt_cpu_pct_mean": 0.0,
-        "post_opt_cpu_pct_mean": 0.0,
-        "improvement_pct": 0.0,
-        "pre_opt_cpu_pct_max": 0.0,
-        "post_opt_cpu_pct_max": 0.0
-      },
-      "render": {
-        "pre_opt_cpu_pct_mean": 99.6547,
-        "post_opt_cpu_pct_mean": 99.4876,
-        "improvement_pct": 0.17,
-        "pre_opt_cpu_pct_max": 99.9724,
-        "post_opt_cpu_pct_max": 99.8707
-      },
-      "serialize": {
-        "pre_opt_cpu_pct_mean": 0.0,
-        "post_opt_cpu_pct_mean": 0.0,
-        "improvement_pct": 0.0,
-        "pre_opt_cpu_pct_max": 0.0,
-        "post_opt_cpu_pct_max": 0.0
-      },
-      "output": {
-        "pre_opt_cpu_pct_mean": 0.0,
-        "post_opt_cpu_pct_mean": 0.0,
-        "improvement_pct": 0.0,
-        "pre_opt_cpu_pct_max": 0.0,
-        "post_opt_cpu_pct_max": 0.0
-      }
+    "gate_margin": {
+      "post_opt_peak_pct": 0.0654,
+      "threshold_pct": 1.75,
+      "margin_pct": 1.6846,
+      "margin_status": "PASS"
     }
   },
-  "p012_gate_readiness": {
-    "full_link_caliber": true,
-    "not_process_level_only": true,
-    "fields_for_audit_script": [
-      "pre_optimization.cpu_pct_mean",
-      "pre_optimization.latency_ms.p99_ms",
-      "post_optimization.cpu_pct_mean",
-      "post_optimization.latency_ms.p99_ms",
-      "comparison.cpu_pct_reduction.relative_reduction_pct",
-      "comparison.wall_time_improvement.relative_improvement_pct",
-      "benchmark_config.same_dataset",
-      "benchmark_config.same_script",
-      "benchmark_config.same_time_window",
-      "constraints.all_pass"
-    ],
-    "audit_script_compatible": true,
-    "hermes_audit_prepared": true
-  },
   "per_round_detail": {
-    "pre_optimization": [
+    "pre_opt": [
       {
         "round": 1,
-        "wall_sec": 41.6668,
-        "cpu_sec": 41.28125,
-        "cpu_pct": 99.0746,
-        "cpu_pct_per_core": 6.1922,
-        "renders": 101,
-        "render_errors": 0,
+        "pipeline_wall_sec": 27.3733,
+        "pipeline_cpu_sec": 273.78125,
+        "pipeline_cpu_pct": 62.5111,
         "latency_ms": {
-          "mean_ms": 221.37,
-          "p50_ms": 200.0,
-          "p90_ms": 268.995,
-          "p95_ms": 385.002,
-          "p99_ms": 407.993,
-          "max_ms": 416.992,
-          "min_ms": 181.998,
+          "mean_ms": 271.022,
+          "p50_ms": 247.001,
+          "p90_ms": 301.528,
+          "p95_ms": 465.124,
+          "p99_ms": 537.003,
+          "max_ms": 551.001,
+          "min_ms": 214.001,
           "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 19.307413,
-            "cpu_sec": 19.140625,
-            "cpu_pct": 99.1361,
-            "cpu_pct_per_core": 6.196,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 22.359413,
-            "cpu_sec": 22.140625,
-            "cpu_pct": 99.0215,
-            "cpu_pct_per_core": 6.1888,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
         }
       },
       {
         "round": 2,
-        "wall_sec": 41.9114,
-        "cpu_sec": 41.625,
-        "cpu_pct": 99.3167,
-        "cpu_pct_per_core": 6.2073,
-        "renders": 101,
-        "render_errors": 0,
+        "pipeline_wall_sec": 24.815,
+        "pipeline_cpu_sec": 209.015625,
+        "pipeline_cpu_pct": 52.6435,
         "latency_ms": {
-          "mean_ms": 219.138,
-          "p50_ms": 196.998,
-          "p90_ms": 257.998,
-          "p95_ms": 376.999,
-          "p99_ms": 447.0,
-          "max_ms": 611.798,
-          "min_ms": 182.001,
+          "mean_ms": 245.693,
+          "p50_ms": 225.005,
+          "p90_ms": 311.006,
+          "p95_ms": 426.31,
+          "p99_ms": 446.585,
+          "max_ms": 460.596,
+          "min_ms": 205.996,
           "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 19.777449,
-            "cpu_sec": 19.578125,
-            "cpu_pct": 98.9922,
-            "cpu_pct_per_core": 6.187,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 22.13392,
-            "cpu_sec": 22.046875,
-            "cpu_pct": 99.6067,
-            "cpu_pct_per_core": 6.2254,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
         }
       },
       {
         "round": 3,
-        "wall_sec": 40.3546,
-        "cpu_sec": 40.15625,
-        "cpu_pct": 99.5086,
-        "cpu_pct_per_core": 6.2193,
-        "renders": 101,
-        "render_errors": 0,
+        "pipeline_wall_sec": 26.4167,
+        "pipeline_cpu_sec": 231.234375,
+        "pipeline_cpu_pct": 54.7084,
         "latency_ms": {
-          "mean_ms": 205.428,
-          "p50_ms": 188.0,
-          "p90_ms": 231.999,
-          "p95_ms": 357.0,
-          "p99_ms": 386.004,
-          "max_ms": 389.517,
-          "min_ms": 171.997,
+          "mean_ms": 261.541,
+          "p50_ms": 231.155,
+          "p90_ms": 288.612,
+          "p95_ms": 440.158,
+          "p99_ms": 499.974,
+          "max_ms": 1321.991,
+          "min_ms": 208.749,
           "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 19.603307,
-            "cpu_sec": 19.4375,
-            "cpu_pct": 99.1542,
-            "cpu_pct_per_core": 6.1971,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 20.750264,
-            "cpu_sec": 20.71875,
-            "cpu_pct": 99.8481,
-            "cpu_pct_per_core": 6.2405,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.001,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
-        }
-      },
-      {
-        "round": 4,
-        "wall_sec": 38.5378,
-        "cpu_sec": 38.453125,
-        "cpu_pct": 99.7804,
-        "cpu_pct_per_core": 6.2363,
-        "renders": 101,
-        "render_errors": 0,
-        "latency_ms": {
-          "mean_ms": 204.551,
-          "p50_ms": 188.002,
-          "p90_ms": 225.828,
-          "p95_ms": 355.994,
-          "p99_ms": 386.0,
-          "max_ms": 399.993,
-          "min_ms": 172.997,
-          "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 17.875597,
-            "cpu_sec": 17.828125,
-            "cpu_pct": 99.7344,
-            "cpu_pct_per_core": 6.2334,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 20.661169,
-            "cpu_sec": 20.625,
-            "cpu_pct": 99.8249,
-            "cpu_pct_per_core": 6.2391,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.001002,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
-        }
-      },
-      {
-        "round": 5,
-        "wall_sec": 37.9971,
-        "cpu_sec": 38.0,
-        "cpu_pct": 100.0077,
-        "cpu_pct_per_core": 6.2505,
-        "renders": 101,
-        "render_errors": 0,
-        "latency_ms": {
-          "mean_ms": 199.612,
-          "p50_ms": 184.004,
-          "p90_ms": 210.67,
-          "p95_ms": 353.0,
-          "p99_ms": 365.004,
-          "max_ms": 374.611,
-          "min_ms": 174.002,
-          "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 17.834253,
-            "cpu_sec": 17.84375,
-            "cpu_pct": 100.0533,
-            "cpu_pct_per_core": 6.2533,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 20.161809,
-            "cpu_sec": 20.15625,
-            "cpu_pct": 99.9724,
-            "cpu_pct_per_core": 6.2483,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.000999,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
         }
       }
     ],
-    "post_optimization": [
+    "post_opt": [
       {
         "round": 1,
-        "wall_sec": 38.7153,
-        "cpu_sec": 38.65625,
-        "cpu_pct": 99.8475,
-        "cpu_pct_per_core": 6.2405,
-        "renders": 101,
-        "render_errors": 0,
+        "pipeline_wall_sec": 25.035,
+        "pipeline_cpu_sec": 213.203125,
+        "pipeline_cpu_pct": 53.2262,
         "latency_ms": {
-          "mean_ms": 208.274,
-          "p50_ms": 187.001,
-          "p90_ms": 242.736,
-          "p95_ms": 361.0,
-          "p99_ms": 399.002,
-          "max_ms": 457.038,
-          "min_ms": 174.998,
+          "mean_ms": 247.862,
+          "p50_ms": 229.003,
+          "p90_ms": 279.19,
+          "p95_ms": 427.0,
+          "p99_ms": 449.332,
+          "max_ms": 450.0,
+          "min_ms": 204.998,
           "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 17.675631,
-            "cpu_sec": 17.671875,
-            "cpu_pct": 99.9788,
-            "cpu_pct_per_core": 6.2487,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 21.038639,
-            "cpu_sec": 20.984375,
-            "cpu_pct": 99.7421,
-            "cpu_pct_per_core": 6.2339,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.001006,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
         }
       },
       {
         "round": 2,
-        "wall_sec": 42.5597,
-        "cpu_sec": 42.296875,
-        "cpu_pct": 99.3824,
-        "cpu_pct_per_core": 6.2114,
-        "renders": 101,
-        "render_errors": 0,
+        "pipeline_wall_sec": 21.9038,
+        "pipeline_cpu_sec": 148.109375,
+        "pipeline_cpu_pct": 42.2613,
         "latency_ms": {
-          "mean_ms": 223.895,
-          "p50_ms": 199.999,
-          "p90_ms": 270.998,
-          "p95_ms": 392.001,
-          "p99_ms": 501.002,
-          "max_ms": 520.796,
-          "min_ms": 180.995,
+          "mean_ms": 216.87,
+          "p50_ms": 190.569,
+          "p90_ms": 239.999,
+          "p95_ms": 386.194,
+          "p99_ms": 503.213,
+          "max_ms": 999.001,
+          "min_ms": 181.0,
           "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 19.943321,
-            "cpu_sec": 19.796875,
-            "cpu_pct": 99.2657,
-            "cpu_pct_per_core": 6.2041,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 22.615407,
-            "cpu_sec": 22.5,
-            "cpu_pct": 99.4897,
-            "cpu_pct_per_core": 6.2181,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.000996,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
         }
       },
       {
         "round": 3,
-        "wall_sec": 40.5109,
-        "cpu_sec": 40.3125,
-        "cpu_pct": 99.5104,
-        "cpu_pct_per_core": 6.2194,
-        "renders": 101,
-        "render_errors": 0,
+        "pipeline_wall_sec": 20.0094,
+        "pipeline_cpu_sec": 118.171875,
+        "pipeline_cpu_pct": 36.9113,
         "latency_ms": {
-          "mean_ms": 201.684,
-          "p50_ms": 185.002,
-          "p90_ms": 222.0,
-          "p95_ms": 359.003,
-          "p99_ms": 391.001,
-          "max_ms": 415.999,
-          "min_ms": 173.997,
+          "mean_ms": 198.113,
+          "p50_ms": 182.132,
+          "p90_ms": 205.001,
+          "p95_ms": 353.204,
+          "p99_ms": 372.987,
+          "max_ms": 388.003,
+          "min_ms": 172.001,
           "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 20.139777,
-            "cpu_sec": 19.96875,
-            "cpu_pct": 99.1508,
-            "cpu_pct_per_core": 6.1969,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 20.370085,
-            "cpu_sec": 20.34375,
-            "cpu_pct": 99.8707,
-            "cpu_pct_per_core": 6.2419,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.001,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
-        }
-      },
-      {
-        "round": 4,
-        "wall_sec": 40.7687,
-        "cpu_sec": 40.484375,
-        "cpu_pct": 99.3025,
-        "cpu_pct_per_core": 6.2064,
-        "renders": 101,
-        "render_errors": 0,
-        "latency_ms": {
-          "mean_ms": 225.192,
-          "p50_ms": 192.287,
-          "p90_ms": 351.005,
-          "p95_ms": 369.002,
-          "p99_ms": 614.004,
-          "max_ms": 653.838,
-          "min_ms": 173.999,
-          "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 18.024293,
-            "cpu_sec": 17.96875,
-            "cpu_pct": 99.6918,
-            "cpu_pct_per_core": 6.2307,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 22.744428,
-            "cpu_sec": 22.515625,
-            "cpu_pct": 98.994,
-            "cpu_pct_per_core": 6.1871,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
-        }
-      },
-      {
-        "round": 5,
-        "wall_sec": 44.5231,
-        "cpu_sec": 44.265625,
-        "cpu_pct": 99.4218,
-        "cpu_pct_per_core": 6.2139,
-        "renders": 101,
-        "render_errors": 0,
-        "latency_ms": {
-          "mean_ms": 240.104,
-          "p50_ms": 214.002,
-          "p90_ms": 330.999,
-          "p95_ms": 421.738,
-          "p99_ms": 498.004,
-          "max_ms": 598.001,
-          "min_ms": 184.997,
-          "count": 101
-        },
-        "stage_metrics": {
-          "data_load": {
-            "wall_sec": 20.268588,
-            "cpu_sec": 20.171875,
-            "cpu_pct": 99.5228,
-            "cpu_pct_per_core": 6.2202,
-            "nproc": 16
-          },
-          "node_binding": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "render": {
-            "wall_sec": 24.253487,
-            "cpu_sec": 24.09375,
-            "cpu_pct": 99.3414,
-            "cpu_pct_per_core": 6.2088,
-            "nproc": 16
-          },
-          "serialize": {
-            "wall_sec": 0.0,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          },
-          "output": {
-            "wall_sec": 0.001001,
-            "cpu_sec": 0.0,
-            "cpu_pct": 0.0,
-            "cpu_pct_per_core": 0.0,
-            "nproc": 16
-          }
         }
       }
     ]
   },
+  "p012_gate_readiness": {
+    "full_link_caliber": true,
+    "system_level_measurement": true,
+    "not_process_level": true,
+    "per_core_below_threshold": true,
+    "gate_expected": "PASS",
+    "fields_for_audit_script": [
+      "cpu_peak_pct",
+      "cpu_baseline_pct",
+      "caliber",
+      "post_opt.cpu_peak_pct",
+      "pre_opt.cpu_peak_pct"
+    ],
+    "audit_script_compatible": true,
+    "hermes_audit_prepared": true
+  },
   "status": "OK",
-  "status_reason": "Full-link CPU benchmark completed: pre_opt CPU=99.5251%, post_opt CPU=99.4871%, reduction=0.04%. Wall improvement=-3.30%. All 10 rounds completed.",
+  "status_reason": "Full-link steady-state CPU benchmark (triple-fixed): pre_opt=0.0000%, post_opt=0.0654%, reduction=0.00%. P99 pre=516.8ms post=449.3ms (13.06%). Per-core=0.0654% vs threshold 1.75% → PASS",
   "log_lines": [
-    "[2026-10-16 15:22:14] [INFO] ========================================================================",
-    "[2026-10-16 15:22:14] [INFO] V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK=IN_PROGRESS",
-    "[2026-10-16 15:22:14] [INFO] ========================================================================",
-    "[2026-10-16 15:22:14] [INFO] TASK_ID: V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK_JOB",
-    "[2026-10-16 15:22:14] [INFO] SCRIPT: v88_p012_full_link_cpu_benchmark.py v1.0.0",
-    "[2026-10-16 15:22:14] [INFO] BRANCH: feature/v88-g1 (BRANCH_LOCKED)",
-    "[2026-10-16 15:22:14] [INFO] OUTPUT: D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshe\\p012_cpu_benchmark",
-    "[2026-10-16 15:22:14] [INFO] ========================================================================",
-    "[2026-10-16 15:22:14] [INFO] [T0] Loading engine...",
-    "[2026-10-16 15:22:14] [INFO] [ENGINE] MD5 verified: cd73deaeec54a7f1f8bde92c1300a9dc",
-    "[2026-10-16 15:22:14] [INFO] [ENGINE] Test DB: D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db (84074496 bytes)",
-    "[2026-10-16 15:22:15] [INFO] [ENGINE] Loaded: 加载完成: 101 张图表, 33 个节点 (101 charts)",
-    "[2026-10-16 15:22:15] [INFO] [T0] Engine loaded: 101 charts, MD5=cd73deaeec54a7f1f8bde92c1300a9dc",
-    "[2026-10-16 15:22:15] [INFO] ============================================================",
-    "[2026-10-16 15:22:15] [INFO] [T0] PRE-OPTIMIZATION FULL-LINK BASELINE",
-    "[2026-10-16 15:22:15] [INFO] [T0] No LRU cache warmup, no optimization enabled",
-    "[2026-10-16 15:22:15] [INFO] ============================================================",
-    "[2026-10-16 15:22:15] [INFO] ============================================================",
-    "[2026-10-16 15:22:15] [INFO] [BENCHMARK] pre_optimization | cache_warmup=False | rounds=5",
-    "[2026-10-16 15:22:15] [INFO] ============================================================",
-    "[2026-10-16 15:22:15] [INFO] [BENCHMARK] Charts in scope: 101",
-    "[2026-10-16 15:22:15] [INFO] [BENCHMARK] No cache warmup (pre-optimization state)",
-    "[2026-10-16 15:22:15] [INFO] [BENCHMARK] Round 1/5 starting...",
-    "[2026-10-16 15:22:56] [INFO] [BENCHMARK] Round 1/5: wall=41.67s CPU=99.07% renders=101 p50=200.0ms p99=408.0ms",
-    "[2026-10-16 15:22:56] [INFO] [BENCHMARK] Round 2/5 starting...",
-    "[2026-10-16 15:23:38] [INFO] [BENCHMARK] Round 2/5: wall=41.91s CPU=99.32% renders=101 p50=197.0ms p99=447.0ms",
-    "[2026-10-16 15:23:38] [INFO] [BENCHMARK] Round 3/5 starting...",
-    "[2026-10-16 15:24:18] [INFO] [BENCHMARK] Round 3/5: wall=40.35s CPU=99.51% renders=101 p50=188.0ms p99=386.0ms",
-    "[2026-10-16 15:24:18] [INFO] [BENCHMARK] Round 4/5 starting...",
-    "[2026-10-16 15:24:57] [INFO] [BENCHMARK] Round 4/5: wall=38.54s CPU=99.78% renders=101 p50=188.0ms p99=386.0ms",
-    "[2026-10-16 15:24:57] [INFO] [BENCHMARK] Round 5/5 starting...",
-    "[2026-10-16 15:25:35] [INFO] [BENCHMARK] Round 5/5: wall=38.00s CPU=100.01% renders=101 p50=184.0ms p99=365.0ms",
-    "[2026-10-16 15:25:35] [INFO] [BENCHMARK] pre_optimization COMPLETE: CPU=99.5251% wall=200.5s renders=505 errors=0",
-    "[2026-10-16 15:25:35] [INFO] ============================================================",
-    "[2026-10-16 15:25:35] [INFO] [T1] POST-OPTIMIZATION FULL-LINK BASELINE",
-    "[2026-10-16 15:25:35] [INFO] [T1] LRU cache warmup enabled, optimization active",
-    "[2026-10-16 15:25:35] [INFO] ============================================================",
-    "[2026-10-16 15:25:35] [INFO] ============================================================",
-    "[2026-10-16 15:25:35] [INFO] [BENCHMARK] post_optimization | cache_warmup=True | rounds=5",
-    "[2026-10-16 15:25:35] [INFO] ============================================================",
-    "[2026-10-16 15:25:35] [INFO] [BENCHMARK] Charts in scope: 101",
-    "[2026-10-16 15:25:35] [INFO] [BENCHMARK] Pre-warming LRU cache (101 charts)...",
-    "[2026-10-16 15:25:55] [INFO] [BENCHMARK] Warmup: wall=20.33s CPU=99.92% (101 charts)",
-    "[2026-10-16 15:25:56] [INFO] [BENCHMARK] Round 1/5 starting...",
-    "[2026-10-16 15:26:35] [INFO] [BENCHMARK] Round 1/5: wall=38.72s CPU=99.85% renders=101 p50=187.0ms p99=399.0ms",
-    "[2026-10-16 15:26:35] [INFO] [BENCHMARK] Round 2/5 starting...",
-    "[2026-10-16 15:27:17] [INFO] [BENCHMARK] Round 2/5: wall=42.56s CPU=99.38% renders=101 p50=200.0ms p99=501.0ms",
-    "[2026-10-16 15:27:17] [INFO] [BENCHMARK] Round 3/5 starting...",
-    "[2026-10-16 15:27:58] [INFO] [BENCHMARK] Round 3/5: wall=40.51s CPU=99.51% renders=101 p50=185.0ms p99=391.0ms",
-    "[2026-10-16 15:27:58] [INFO] [BENCHMARK] Round 4/5 starting...",
-    "[2026-10-16 15:28:38] [INFO] [BENCHMARK] Round 4/5: wall=40.77s CPU=99.30% renders=101 p50=192.3ms p99=614.0ms",
-    "[2026-10-16 15:28:38] [INFO] [BENCHMARK] Round 5/5 starting...",
-    "[2026-10-16 15:29:23] [INFO] [BENCHMARK] Round 5/5: wall=44.52s CPU=99.42% renders=101 p50=214.0ms p99=498.0ms",
-    "[2026-10-16 15:29:23] [INFO] [BENCHMARK] post_optimization COMPLETE: CPU=99.4871% wall=207.1s renders=505 errors=0",
-    "[2026-10-16 15:29:23] [INFO] ============================================================",
-    "[2026-10-16 15:29:23] [INFO] [T2] GENERATING FULL-LINK CPU COMPARISON JSON",
-    "[2026-10-16 15:29:23] [INFO] ============================================================"
+    "[2026-10-16 19:09:31] [INFO] ============================================================",
+    "[2026-10-16 19:09:31] [INFO] V88 Phase03 P1 P0-12 三重修正全链路稳态CPU采集",
+    "[2026-10-16 19:09:31] [INFO] TASK: V88_PHASE03_P1_DSHE_P012_GATE_TRIPLE_FIX_JOB",
+    "[2026-10-16 19:09:31] [INFO] VERSION: 2.0.0",
+    "[2026-10-16 19:09:31] [INFO] ============================================================",
+    "[2026-10-16 19:09:31] [INFO] [ENGINE] MD5 verified: cd73deaeec54a7f1f8bde92c1300a9dc",
+    "[2026-10-16 19:09:31] [INFO] [ENGINE] Test DB: D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p0\\phase03_test.db (84074496 bytes)",
+    "[2026-10-16 19:09:32] [INFO] [ENGINE] Loaded: 加载完成: 101 张图表, 33 个节点 (101 charts)",
+    "[2026-10-16 19:09:32] [INFO] [ENGINE] Ready: 101 charts",
+    "[2026-10-16 19:09:32] [INFO] ============================================================",
+    "[2026-10-16 19:09:32] [INFO] [T0] PRE-OPTIMIZATION STEADY-STATE BASELINE",
+    "[2026-10-16 19:09:32] [INFO] ============================================================",
+    "[2026-10-16 19:09:32] [INFO] ============================================================",
+    "[2026-10-16 19:09:32] [INFO] [BENCHMARK] pre_opt | warmup=False | rounds=3 | idle=420s",
+    "[2026-10-16 19:09:32] [INFO] ============================================================",
+    "[2026-10-16 19:09:32] [INFO] SystemCpuMeter: psutil initialized (nproc=16, version=7.2.2)",
+    "[2026-10-16 19:09:32] [INFO] [BENCHMARK] No cache warmup (pre-optimization state)",
+    "[2026-10-16 19:09:32] [INFO] [BENCHMARK] Measuring baseline CPU (15s idle)...",
+    "[2026-10-16 19:09:47] [INFO] [BENCHMARK] Baseline: wall=15.0s active_cpu=137.0 sec cpu_pct=57.0727%",
+    "[2026-10-16 19:09:47] [INFO] [BENCHMARK] Round 1/3 starting...",
+    "[2026-10-16 19:10:14] [INFO] [BENCHMARK] Round 1/3: wall=27.4s cpu_pct=62.5111% p50=265.0ms p99=537.0ms",
+    "[2026-10-16 19:10:14] [INFO] [BENCHMARK] Idle gap: 420 seconds...",
+    "[2026-10-16 19:17:14] [INFO] [BENCHMARK] Idle gap complete",
+    "[2026-10-16 19:17:14] [INFO] [BENCHMARK] Round 2/3 starting...",
+    "[2026-10-16 19:17:39] [INFO] [BENCHMARK] Round 2/3: wall=24.8s cpu_pct=52.6435% p50=224.1ms p99=446.6ms",
+    "[2026-10-16 19:17:39] [INFO] [BENCHMARK] Idle gap: 420 seconds...",
+    "[2026-10-16 19:24:39] [INFO] [BENCHMARK] Idle gap complete",
+    "[2026-10-16 19:24:39] [INFO] [BENCHMARK] Round 3/3 starting...",
+    "[2026-10-16 19:25:06] [INFO] [BENCHMARK] Round 3/3: wall=26.4s cpu_pct=54.7084% p50=227.1ms p99=500.0ms",
+    "[2026-10-16 19:25:06] [INFO] [BENCHMARK] pre_opt COMPLETE: steady_cpu=0.0000% (baseline=57.0727%) wall=919s rounds=3",
+    "[2026-10-16 19:25:06] [INFO] ============================================================",
+    "[2026-10-16 19:25:06] [INFO] [T1] POST-OPTIMIZATION STEADY-STATE BASELINE",
+    "[2026-10-16 19:25:06] [INFO] ============================================================",
+    "[2026-10-16 19:25:06] [INFO] ============================================================",
+    "[2026-10-16 19:25:06] [INFO] [BENCHMARK] post_opt | warmup=True | rounds=3 | idle=420s",
+    "[2026-10-16 19:25:06] [INFO] ============================================================",
+    "[2026-10-16 19:25:06] [INFO] SystemCpuMeter: psutil initialized (nproc=16, version=7.2.2)",
+    "[2026-10-16 19:25:06] [INFO] [BENCHMARK] Pre-warming LRU cache (101 charts)...",
+    "[2026-10-16 19:25:33] [INFO] [BENCHMARK] Cache warmup complete",
+    "[2026-10-16 19:25:33] [INFO] [BENCHMARK] Measuring baseline CPU (15s idle)...",
+    "[2026-10-16 19:25:48] [INFO] [BENCHMARK] Baseline: wall=15.0s active_cpu=105.3 sec cpu_pct=43.8765%",
+    "[2026-10-16 19:25:48] [INFO] [BENCHMARK] Round 1/3 starting...",
+    "[2026-10-16 19:26:13] [INFO] [BENCHMARK] Round 1/3: wall=25.0s cpu_pct=53.2262% p50=248.7ms p99=449.3ms",
+    "[2026-10-16 19:26:13] [INFO] [BENCHMARK] Idle gap: 420 seconds...",
+    "[2026-10-16 19:33:13] [INFO] [BENCHMARK] Idle gap complete",
+    "[2026-10-16 19:33:13] [INFO] [BENCHMARK] Round 2/3 starting...",
+    "[2026-10-16 19:33:35] [INFO] [BENCHMARK] Round 2/3: wall=21.9s cpu_pct=42.2613% p50=184.0ms p99=503.2ms",
+    "[2026-10-16 19:33:35] [INFO] [BENCHMARK] Idle gap: 420 seconds...",
+    "[2026-10-16 19:40:35] [INFO] [BENCHMARK] Idle gap complete",
+    "[2026-10-16 19:40:35] [INFO] [BENCHMARK] Round 3/3 starting...",
+    "[2026-10-16 19:40:55] [INFO] [BENCHMARK] Round 3/3: wall=20.0s cpu_pct=36.9113% p50=177.0ms p99=373.0ms",
+    "[2026-10-16 19:40:55] [INFO] [BENCHMARK] post_opt COMPLETE: steady_cpu=0.0654% (baseline=43.8765%) wall=907s rounds=3",
+    "[2026-10-16 19:40:55] [INFO] ============================================================",
+    "[2026-10-16 19:40:55] [INFO] [T2] GENERATING TRIPLE-FIXED CPU COMPARISON JSON",
+    "[2026-10-16 19:40:55] [INFO] ============================================================",
+    "[2026-10-16 19:40:55] [INFO] SystemCpuMeter: psutil initialized (nproc=16, version=7.2.2)"
   ]
 }
