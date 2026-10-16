@@ -1,0 +1,221 @@
+# =============================================================================
+# DSHE Gate Harden V88 品种树节点静态绑定映射
+# =============================================================================
+# TASK_ID: V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED_JOB
+# AGENT: DSHE | BRANCH: feature/v88-g1
+# GENERATED: 2026-10-16T23:55
+#
+# 用途: 静态绑定配置，供后续GitHub Pages前端用来"点品种节点调取渲染引擎指标"
+# 注意: 此为纯映射配置，不包含任何前端代码
+# 仅输出映射，不写完整前端页面
+# =============================================================================
+
+# 绑定树根节点
+framework-tree:
+  # 一级: 渲染Agent
+  render-agent:
+    # 二级: DSHE (渲染侧)
+    DSHE:
+      # 三级: jobs
+      jobs:
+        # Gate-Harden P0-12 任务节点
+        Gate-Harden-P012:
+          # 任务元数据
+          task_id: "V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED_JOB"
+          status: "GATE_TRIPLE_SEALED"
+          branch: "feature/v88-g1"
+          commit: "82d593e"
+          seal_layers: 3
+          seal_file_count: 12
+          engine_frozen_hash: "cd73deaeec54a7f1f8bde92c1300a9dc"
+
+          # 核心性能指标
+          performance_metrics:
+            steady_state_cpu_pct: 0.0654
+            steady_state_cpu_4round_mean_pct: 1.0362
+            steady_state_cpu_4round_max_pct: 1.3452
+            cpu_threshold_pct: 1.75
+            r3_e2e_pass: 8
+            r3_e2e_total: 8
+            d7_coverage_pct: 98.571
+            p99_latency_ms: 449.3
+            p99_improvement_pct: -13.1
+
+          # Gate合规指标
+          gate_compliance:
+            p0_12_gate_ready: true
+            native_pass: true
+            exemption_flow: "TERMINATED"
+            caliber_comparable: true
+            artifact_incomparable: false
+            schema_version: "v2.0-steady-state"
+            constraint_pass_count: 11
+            constraint_total: 11
+            gate_contamination_count: 0
+
+          # 渲染边界指标
+          render_boundary:
+            partial_render_check_count: 15
+            render_related_partial: 6
+            pb_orphan_count: 5
+            si_no_data_count: 1
+            placeholder_zero_count: 9
+
+          # psutil采集器指标
+          psutil_collector:
+            version: "1.0.0-prod"
+            enabled: false
+            test_count: 14
+            test_pass: 14
+            phase: "Phase04"
+            status: "AWAITING_WORK_ORDER"
+
+          # 品种节点绑定
+          children:
+            # 铜 (CU) 节点
+            CU:
+              name: "铜"
+              english: "Copper"
+              symbol: "CU"
+              bind_type: "static"
+              metrics_binding:
+                source: "dshe_v88_gate_harden.json"
+                fields:
+                  - steady_state_cpu_pct
+                  - r3_e2e_pass
+                  - d7_coverage_pct
+                  - p99_latency_ms
+              indicator_ids:
+                - "cu_long_short_ratio"
+                - "cu_month_spread"
+                - "cu_price_percentile"
+                - "cu_term_structure"
+                - "cu_inv_change"
+                - "cu_premium_change"
+                - "cu_oi_percentile"
+                - "cu_top20_net"
+                - "comex_cu_change"
+                - "comex_cu_lme_spread"
+              render_engine_node: "Gate-Harden-P012/CU"
+              chart_registration_status: "PARTIAL"
+              notes: "8 derived indicators; cu_long_short_ratio/cu_month_spread/cu_price_percentile/cu_term_structure have chart registration; rest pending"
+
+            # 锂 (LI) 节点
+            LI:
+              name: "锂"
+              english: "Lithium"
+              symbol: "LI"
+              bind_type: "static"
+              metrics_binding:
+                source: "dshe_v88_gate_harden.json"
+                fields:
+                  - steady_state_cpu_pct
+                  - r3_e2e_pass
+                  - d7_coverage_pct
+                  - p99_latency_ms
+              indicator_ids:
+                - "li_basis_change"
+                - "li_inv_change"
+                - "li_long_short_ratio"
+                - "li_month_spread"
+                - "li_oi_percentile"
+                - "li_price_percentile"
+                - "li_term_structure"
+                - "spot_licar_change"
+                - "li_21_close_2_p09fix"
+                - "li_21_openinterest_2_p09fix"
+              render_engine_node: "Gate-Harden-P012/LI"
+              chart_registration_status: "PARTIAL"
+              notes: "10 derived indicators; li_long_short_ratio/li_month_spread/li_price_percentile/li_term_structure have chart registration; rest pending"
+
+            # 锡 (SN) 节点
+            SN:
+              name: "锡"
+              english: "Tin"
+              symbol: "SN"
+              bind_type: "static"
+              metrics_binding:
+                source: "dshe_v88_gate_harden.json"
+                fields:
+                  - steady_state_cpu_pct
+                  - r3_e2e_pass
+                  - d7_coverage_pct
+                  - p99_latency_ms
+              indicator_ids:
+                - "sn_long_short_ratio"
+                - "sn_month_spread"
+                - "sn_price_percentile"
+                - "sn_term_structure"
+                - "sn_inv_change"
+                - "sn_premium_change"
+                - "sn_oi_percentile"
+                - "sn_top20_net"
+              render_engine_node: "Gate-Harden-P012/SN"
+              chart_registration_status: "PARTIAL"
+              notes: "8 derived indicators; chart registration pending for all SN indicators"
+
+            # 铝 (AL) 节点
+            AL:
+              name: "铝"
+              english: "Aluminum"
+              symbol: "AL"
+              bind_type: "static"
+              metrics_binding:
+                source: "dshe_v88_gate_harden.json"
+                fields:
+                  - steady_state_cpu_pct
+                  - r3_e2e_pass
+                  - d7_coverage_pct
+                  - p99_latency_ms
+              indicator_ids:
+                - "al_inv_change"
+                - "al_long_short_ratio"
+                - "al_month_spread"
+                - "al_premium_change"
+                - "al_price_percentile"
+                - "al_term_structure"
+              render_engine_node: "Gate-Harden-P012/AL"
+              chart_registration_status: "PARTIAL"
+              notes: "6 derived indicators; al_long_short_ratio/al_month_spread/al_price_percentile/al_term_structure have chart registration"
+
+          # 链路元数据
+          lineage:
+            upstream_agent: "DSHB"
+            downstream_agent: "DSHE"
+            calibration_agent: "HERMES"
+            pipeline_type: "gate_harden_triple_seal"
+            data_flow: "p012_consolidate → triple_seal → metrics-db → variety-tree → frontend"
+            seal_layers: "MD5 → SHA256 → Independent"
+            metrics_path: "framework-tree/metrics-db/weekly/dshe_v88_gate_harden.json"
+            template_path: "chart-tpl/dshe_weekly_report_fixed_tpl.js"
+
+          # 约束锁定
+          constraints:
+            branch_locked: true
+            no_overwrite: true
+            no_modify_v87: true
+            no_edit_release_tag: true
+            no_zhiji_api_call: true
+            upstream_writes: 0
+            frozen_code_unmodified: true
+            engine_frozen: true
+            engine_hash: "cd73deaeec54a7f1f8bde92c1300a9dc"
+            triple_seal_complete: true
+            psutil_enabled: false
+            gate_contamination: 0
+
+          # 绑定声明
+          binding_declaration: >
+            This is a static binding configuration for DSHE Gate-Harden-P012
+            variety tree node. It maps CU (Copper), LI (Lithium), SN (Tin),
+            and AL (Aluminum) variety nodes to the DSHE rendering engine
+            metrics. This mapping is intended for future GitHub Pages frontend
+            to load corresponding rendering engine metrics when a variety node
+            is clicked. No frontend code is included in this file. The binding
+            is immutable — any changes require a new job execution.
+
+          # 版本与时间戳
+          version: "1.0.0"
+          created: "2026-10-16T23:55"
+          updated: "2026-10-16T23:55"
+          schema: "framework-tree-variety-bind-1.0"

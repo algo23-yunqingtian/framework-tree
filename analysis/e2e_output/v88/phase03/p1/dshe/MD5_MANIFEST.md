@@ -86,4 +86,26 @@
 > Get-FileHash -Path '<file_path>' -Algorithm MD5
 > ```
 >
+## 6. Phase03 P3 Gate Triple Lock & Metrics DB Seed
+
+**Directory**: `phase03_p3_gate_triple_lock/`
+**Status**: COMPLETE
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `gate_triple_seal_final.md` | — | `TBD_ON_COMMIT` |
+| `psutil_package_locked_confirmation.md` | — | `TBD_ON_COMMIT` |
+| `dshe_dshb_quick_reconcile.md` | — | `TBD_ON_COMMIT` |
+| `quick_r3_recheck.md` | — | `TBD_ON_COMMIT` |
+
+### 6.1 Framework-tree Additions
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `framework-tree/metrics-db/weekly/dshe_v88_gate_harden.json` | 480 | `90B5A1AB57DAB5FEE43284CDC4FE5039` |
+| `framework-tree/metrics-db/weekly/dshe_v88_gate_harden.json.md5` | — | — |
+| `framework-tree/node-mapping/dshe_gate_variety_bind.yaml` | — | `TBD_ON_COMMIT` |
+| `chart-tpl/dshe_weekly_report_fixed_tpl.js` | — | `TBD_ON_COMMIT` |
+| `opt_hooks/blocker_monitor_hook_snippet.py` | — | `TBD_ON_COMMIT` |
+
 > *Generated: 2026-10-16T22:45 UTC+8 | DSHE | V88 Phase03 P1*

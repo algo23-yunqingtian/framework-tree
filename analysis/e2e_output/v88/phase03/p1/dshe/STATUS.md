@@ -314,3 +314,79 @@
 
 > **标记**: V88_PHASE03_P2_DSHE_GATE_HARDEN_AND_PHASE04_PREP_PARTIAL_CHECK=COMPLETE
 > **下一步**: 等待 HERMEShf blocker_monitor cron 自动触发 P0-12 门禁复测 + Phase04 正式工单
+
+---
+
+## 9. V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED_JOB
+
+> **TASK_ID**: V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED_JOB
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **DATE**: 2026-10-16T23:55 UTC+8
+> **STATUS**: COMPLETE
+> **前置**: V88_PHASE03_P2_DSHE_GATE_HARDEN_AND_PHASE04_PREP_PARTIAL_CHECK_JOB = COMPLETE (commit 82d593e)
+
+### 9.1 任务状态
+
+| 任务 | 状态 | 关键结果 |
+|------|:----:|----------|
+| T0: P0-12 第三层保险锁 | ✅ COMPLETE | 12/12 SHA256匹配 + 引擎cd73deae确认冻结 + 2归档目录只读 |
+| T1: psutil 采集包锁定 | ✅ COMPLETE | enabled:false + 14/14测试PASS + 零守护进程 |
+| T2: DSHE 指标JSON入库 | ✅ COMPLETE | metrics-db/weekly/dshe_v88_gate_harden.json + MD5校验 |
+| T3: 品种树静态绑定YAML | ✅ COMPLETE | CU/LI/SN/AL 4品种绑定 + 纯映射配置 |
+| T4: ECharts 周报固定模板 | ✅ COMPLETE | 构图锁定 + 6卡片 + 进度条 + 仪表盘 + 门禁状态 |
+| T5: blocker_monitor 快照钩子 | ✅ COMPLETE | 安全预览模式 + 无自动提交 + 无核心审计修改 |
+| T6: DSHB 快速交叉核对 | ✅ COMPLETE | 0矛盾 + 15/15指标分类一致 |
+| T7: R3 回归 + commit + push | ✅ COMPLETE | 8/8 PASS + 审计待命<1h |
+| T8: 元数据更新 | ✅ COMPLETE | STATUS/FLAG/MD5全部更新 |
+
+**完成度: 9/9 (100%)**
+
+### 9.2 核心指标
+
+| 指标 | 值 | 状态 |
+|------|:--:|:----:|
+| P0-12 第三层密封 | 12/12 SHA256匹配 | ✅ |
+| 三层封印链 | L1(MD5) → L2(SHA256) → L3(独立) | ✅ |
+| 归档目录 | 18文件只读+完整 | ✅ |
+| 引擎MD5 | `cd73deae...` 冻结 | ✅ |
+| psutil 采集包 | v1.0.0-prod 锁定 | ✅ |
+| psutil enabled | **false** | ✅ |
+| psutil 测试 | 14/14 PASS | ✅ |
+| 指标JSON入库 | dshe_v88_gate_harden.json | ✅ |
+| 指标MD5 | `90B5A1AB...` | ✅ |
+| 品种绑定 | CU/LI/SN/AL 4品种 | ✅ |
+| ECharts模板 | dshe_weekly_report_fixed_tpl.js | ✅ |
+| 快照钩子 | 安全预览模式 | ✅ |
+| DSHB交叉核对 | 0矛盾 | ✅ |
+| R3 E2E回归 | 8/8 PASS | ✅ |
+| 审计待命 | <1h | ✅ |
+| 约束合规 | 11/11 | ✅ |
+| 门禁污染 | 0 | ✅ |
+
+### 9.3 交付物清单
+
+| 文件 | 说明 |
+|------|------|
+| `phase03_p3_gate_triple_lock/gate_triple_seal_final.md` | P0-12第三层保险封印 |
+| `phase03_p3_gate_triple_lock/psutil_package_locked_confirmation.md` | psutil采集包锁定确认 |
+| `phase03_p3_gate_triple_lock/dshe_dshb_quick_reconcile.md` | DSHE↔DSHB快速交叉核对 |
+| `phase03_p3_gate_triple_lock/quick_r3_recheck.md` | R3回归快速校验 |
+| `framework-tree/metrics-db/weekly/dshe_v88_gate_harden.json` | DSHE指标JSON |
+| `framework-tree/metrics-db/weekly/dshe_v88_gate_harden.json.md5` | 指标JSON MD5校验 |
+| `framework-tree/node-mapping/dshe_gate_variety_bind.yaml` | CU/LI/SN/AL品种静态绑定 |
+| `chart-tpl/dshe_weekly_report_fixed_tpl.js` | ECharts周报固定模板 |
+| `opt_hooks/blocker_monitor_hook_snippet.py` | 轻量指标快照钩子(预览模式) |
+
+### 9.4 HERMEShf 待执行项
+
+| # | 待执行项 | 状态 |
+|---|----------|:----:|
+| 1 | P0-12门禁自动复测(blocker_monitor cron) | ⏳ 等待cron触发 |
+| 2 | Phase04正式工单发布 | ⏳ PENDING |
+| 3 | DSHB数据采集就绪 | ⏳ PENDING |
+| 4 | si_top20_net Phase04修复 | ⏳ PENDING (R-V88-035 LOW) |
+
+---
+
+> **标记**: V88_PHASE03_P3_DSHE_GATE_LOCK_METRICSDB_SEED=COMPLETE_READY
+> **下一步**: 等待 HERMEShf blocker_monitor cron 自动触发 P0-12 门禁复测 + Phase04 正式工单
