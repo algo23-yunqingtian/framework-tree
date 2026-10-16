@@ -97,7 +97,7 @@ Each defect entry in this registry follows the standardized format below:
 | **Defect ID** | DEFECT-001 |
 | **Title** | P61 Scanner Toolchain Directory and 10 Deliverables Missing |
 | **Severity** | HIGH |
-| **Status** | OPEN / PERSISTENT |
+| **Status** | OPEN / RECOVERY_PLANNED |
 | **First Observed** | During DSHD-P67 exploration phase (2026-10-16) |
 | **Evidence Anchors** | DSHD_P67_EXPLORATION_RISK_OBSERVATION_BRIEF.md §6.1 |
 
@@ -140,6 +140,16 @@ Clarify the recovery path for the P61 toolchain:
 1. **Rebuild** — redeploy `_p61_t0_staging/` with the full scanner toolchain
 2. **Migrate** — move the toolchain to a new canonical location
 3. **Cancel** — formally deprecate the P61 toolchain and update downstream references
+
+#### Recovery Plan
+
+- **Immediate containment**: keep GATE CLOSED/HOLD and do not run `_p61e_poll39_scan.py` or any scanner execution until the canonical path is confirmed.
+- **Path recovery decision**: DSHC must choose one of the three paths above and record the canonical location in the ledger.
+- **Minimal recovery steps**:
+  1. Restore `_p61_t0_staging/` (or the new canonical directory) from source control / release artifact.
+  2. Re-add `_p61e_poll39_scan.py`, `_p61e_scan_result.json`, and the 10 missing deliverables to the expected location.
+  3. Re-run a dry-run inventory and update `DSHD_DEFECT_OBSERVATION_REGISTRY.md` + `SHA256_CHECKSUMS.txt` together in the same commit.
+- **Exit criteria**: scanner directory present, 10/10 deliverables accounted for, and DSHD monitoring confirms the path is discoverable from the repo root.
 
 ---
 
@@ -206,9 +216,9 @@ DSHC-P66 regenerated the checksums at **17:25** with **19 entries** (reflecting 
 | **Defect ID** | DEFECT-003 |
 | **Title** | P49 Pre-Gray-Check Pre-Validation Template File Missing |
 | **Severity** | HIGH |
-| **Status** | OPEN / PERSISTENT |
+| **Status** | RESOLVED (2026-10-16 20:59:35) |
 | **First Observed** | During DSHD-P67 exploration phase (2026-10-16) |
-| **Evidence Anchors** | SHA256_CHECKSUMS.txt entry #10 (status: MISSING); disk search returned no matches |
+| **Evidence Anchors** | SHA256_CHECKSUMS.txt entry #10 (status: MISSING → now PRESENT); disk search returned 13,892 B file |
 
 #### Description
 
@@ -235,18 +245,18 @@ This hash was recorded in the event log at event 18 but cannot be verified becau
 
 #### Current State
 
-Still missing as of the latest monitoring cycle. DSHD has not observed the file being restored.
+**RESOLVED**. File restored by DSHA-P54 at 2026-10-16 20:59:35 (commit `28f0c9d`). File size: 13,892 B. Path: `data-harbor/dsha_p49_prep/P49_backtest_audit/factor_knowledge_base/P49_pre_gray_check.md`. DSHD-P67 confirmed presence via disk check and credential scan (CLEAN).
 
 #### DSHD Action
 
-- Observed the missing entry in SHA256_CHECKSUMS.txt and confirmed absence via disk search
+- Observed the missing entry in SHA256_CHECKSUMS.txt and confirmed absence via disk search (original observation)
 - Cross-referenced with the original SHA256 from event 18 for completeness
+- **Confirmed resolution** at 22:00 on 2026-10-16: file exists (13,892 B), created 20:59:35, credential-clean
 
 #### DSHC Action Required
 
-1. **Confirm** whether this file is still required for the current pipeline
-2. **Restore** the file from a backup or reconstruct if it remains needed
-3. If the file has been superseded, **update** SHA256_CHECKSUMS.txt to reflect the removal
+1. **Update** SHA256_CHECKSUMS.txt entry #10 from `MISSING` to `PRESENT` with correct SHA256 and file size (DSHC authority)
+2. Verify the restored file content is correct for the P49 gray-check pre-validation template
 
 ---
 
