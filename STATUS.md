@@ -1,4 +1,20 @@
 
+### 2026-10-22 V88 Phase03 P4 DSHB P0-14 Ready for Factor Calc (V88_PHASE03_P4_DSHB_P014_READY_FOR_FACTOR_CALC)
+- **工单**: V88_PHASE03_P4_DSHB_P014_READY_FOR_FACTOR_CALC
+- **前置**: DSHB commit 4949464 (P3 9/9 tasks); P0-13 168h GENERATED; FINAL_SHA256_SEAL; framework-tree指标种子+PB/ZN/Recycle-PB品种绑定+ECharts固定模板全部落地; DSHE commit 82d593e/0496158; 24-partial口径对齐; SPOT-IS/SMM冻结; Lock1=FOUND/Lock2=NOT_FOUND/merge PROHIBITED
+- **T0 资产锁确认**: 13文件扫描/9哈希匹配/4已知漂移(DSHE 844dd77/0496158追加/字段添加/格式修改/内容有效)/0未授权修改/p013_asset_lock_reconfirm.md产出
+- **T1 漂移基线预加载**: noise_168h_final_snapshot.json载入管道/717指标(664达标/53未达标)/6.64%噪声率基线/3.36pp安全裕度/只读确认/管道就绪但休眠/等待WIND_DATA_LINK_ONLINE.flag
+- **T2 因子测算目录**: factor_workspace/pb_zn_recyclepb_v1/创建/{input,output,audit,checksum}/命名规范定义/输出schema(IC/IR/Meta)/校验钩子就绪/无真实数据/无计算执行/workspace_ready_manifest.md
+- **T3 IC-IR骨架**: ic_ir_calc_skeleton.py部署/14613B/3个输出schema(ic_result.json/ir_result.json/factor_meta.json)/每个产出自动附带.md5/【仅当WIND_DATA_LINK_ONLINE.flag存在才允许执行run_calc入口】/无硬编码Wind调用/无自动git push/无API调用/STUB状态
+- **T4 安全触发器**: wind_online_watcher.py部署/18287B/默认SLEEP/无flag永远休眠/6层防御(flag验证+precheck+skeleton自检+双锁策略不绕过)/无WindPy import/无自动API/trigger_safety_note.md产出
+- **T5 品种映射二次核对**: DSHB(PB/ZN/Recycle-PB)×DSHE(CU/LI/SN/AL)/0 ID冲突/0品种符号冲突/0前缀冲突/互补覆盖/7品种总计/只核对不改对方文件/variety_mapping_recheck.md
+- **T6 冻结巡检**: 6/6冻结资产未修改/SPOT-IS/SMM/proto/crawler/DSHE/HERMES均冻结/0未提交变更/DSHB代码WindPy import=0/因子脚本WindPy import=0/SMM selenium CONDITIONAL/freeze_post_check.md
+- **T7 审计自检+提交**: 审计响应<1h/12/12约束合规/推送feature/v88-g1
+- **T8 元数据更新**: STATUS.md+JOB_READY.flag+MD5_MANIFEST.md全部更新/V88_PHASE03_P4_DSHB_P014_READY_FOR_FACTOR_CALC=WARMUP_COMPLETE_AWAIT_DATA_TRIGGER
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V87=TRUE/NO_EDIT_RELEASE_TAG=TRUE/NO_ZHIJI_API_CALL=TRUE/UPSTREAM_WRITES=0/冻结代码未修改/禁止手动干预/不修改caliber状态/无正式基线输出/无WindPy调用/无自动推送/12/12
+- **状态标记**: V88_PHASE03_P4_DSHB_P014_READY_FOR_FACTOR_CALC=WARMUP_COMPLETE_AWAIT_DATA_TRIGGER, V88_PHASE03_P4_P014_WARMUP=TRUE, V88_PHASE03_P4_FACTOR_CALCULATION_PROHIBITED=TRUE, V88_PHASE03_P4_WIND_DATA_LINK_REQUIRED=TRUE, V88_PHASE03_P4_WIND_DATA_LINK_ONLINE=NOT_FOUND, V88_PHASE03_P4_AWAITING_FLAG=TRUE
+- **状态标记**: P014_READY_FOR_FACTOR_CALC=WARMUP_COMPLETE_AWAIT_DATA_TRIGGER
+
 ### 2026-10-22 V88 Phase03 P3 DSHB P0-13 Final Close + Metrics-DB Seed (V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB)
 - **工单**: V88_PHASE03_P3_DSHB_P013_FINAL_CLOSE_METRICSDB_SEED_JOB
 - **前置**: DSHB commit a27a03f (P2 8/8 tasks); 噪声观测worker PID 32672 持续运行 160→168h/168h; DSHE commit 82d593e; 24-partial摸底已完整建档; 仓库已存在 /framework-tree/ 目录

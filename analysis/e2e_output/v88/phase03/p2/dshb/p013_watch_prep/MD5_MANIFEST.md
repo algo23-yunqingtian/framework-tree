@@ -80,7 +80,30 @@ MD5 HASH                                     SIZE        FILE
 [updated to 13 entries]                     ~4000 B    followup/noise_7d_log.jsonl
 ```
 
-## === TOTALS ===
+## === P4 DELIVERABLES (8 files) ===
+
+```
+MD5 HASH                                     SIZE        FILE
+----------------------------------------------------------------------------------
+12DEBAB2F2E4C6C2BC88443746B44382            4675 B     p013_asset_lock_reconfirm.md
+164019728557ADBFB6466C7DDD0FC3D1            5058 B     baseline_preload_check.md
+AD75F4B6B25A82CDEE7A5A8B9669D63A            5245 B     workspace_ready_manifest.md
+17160B5FAEEB5A3DCA56A75E538D4B4A            6549 B     trigger_safety_note.md
+F817BBDAF7014DE7E942C8991E7EA5E3            5798 B     variety_mapping_recheck.md
+4D36C8A3B92E9C89EC87F6FE4BF67111            5695 B     freeze_post_check.md
+2D7BCA8604BC673AEEA37A6C66E818E6           14613 B     factor_workspace/pb_zn_recyclepb_v1/ic_ir_calc_skeleton.py
+006CC5DB0A4E35635B37F15D285412B3           18287 B     opt_trigger/wind_online_watcher.py
+```
+
+### P4 Checksum Sidecar Files (2 files)
+```
+MD5 HASH                                     SIZE        FILE
+----------------------------------------------------------------------------------
+[see .md5 file]                             ~100 B     ic_ir_calc_skeleton.py.md5
+[see .md5 file]                             ~100 B     wind_online_watcher.py.md5
+```
+
+## === P3 TOTALS ===
 
 | Category | Count | Total Size |
 |----------|:-----:|:----------:|
@@ -89,7 +112,7 @@ MD5 HASH                                     SIZE        FILE
 | Variety Bind (YAML) | 1 | ~3,000 B |
 | ECharts Template (JS) | 1 | ~15,000 B |
 | Updated Followup | 2 | ~5,200 B |
-| **Grand Total** | **12** | **~75,000 B** |
+| **Grand Total** | **20** | **~115,000 B** |
 
 ## === VERIFICATION ===
 
@@ -127,6 +150,18 @@ MD5 HASH                                     SIZE        FILE
 - NO_MANUAL_INTERVENTION: ✅ 0 interventions
 - CALIBER_NOT_MODIFIED: ✅ 24-partial only documented
 - NO_FINAL_BASELINE: ✅ VERIFIED
+- P4: 13 sealed assets reconfirmed (9 match, 4 known drifts, 0 unauthorized): ✅ VERIFIED
+- P4: 168h drift baseline preloaded (717 indicators, READ-ONLY): ✅ VERIFIED
+- P4: Factor workspace created (4 subdirs, naming convention): ✅ VERIFIED
+- P4: IC-IR skeleton deployed (14613B, 3 schemas, no Wind calls): ✅ VERIFIED
+- P4: Wind online watcher deployed (18287B, default SLEEP): ✅ VERIFIED
+- P4: Variety mapping recheck (0 conflicts, DSHB×DSHE): ✅ VERIFIED
+- P4: Freeze post-check (6/6 frozen, 0 WindPy imports): ✅ VERIFIED
+- P4: No factor results produced (dormant, awaiting flag): ✅ VERIFIED
+- P4: No WindPy imports in DSHB code: ✅ VERIFIED
+- P4: No auto-push in any script: ✅ VERIFIED
+- P4: No auto-API calls in any script: ✅ VERIFIED
+- P4: Factor calculation PROHIBITED (awaiting WIND_DATA_LINK_ONLINE.flag): ✅ VERIFIED
 
 ---
 
