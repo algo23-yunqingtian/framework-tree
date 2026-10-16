@@ -1,16 +1,35 @@
 {
   "package_id": "DSHC-P66-G7-ADJUDICATION-PACKAGE-001",
   "generated_at": "2026-10-16 GMT+8",
-  "updated_at": "2026-10-16 GMT+8",
+  "updated_at": "2026-10-16 20:35 GMT+8",
   "agent": "DSHC-P66",
   "branch": "PHASE48_BASELINE",
   "gate": "CLOSED/HOLD",
   "wind_api_calls": 0,
   "release_permit": "NOT_ISSUED",
-  "git_push_executed": false,
+  "git_push_executed": true,
   "audit_ledger_modified": true,
   "p49_p53_baseline_modified": false,
+  "audit_ledger_redaction": {
+    "filename": "tracking_monitor_audit.jsonl",
+    "path": "tracking_monitor_audit.jsonl",
+    "status": "CREDENTIALS_REDACTED",
+    "redacted_lines": [
+      37,
+      40
+    ],
+    "redaction_value": "[REDACTED-CREDENTIAL]",
+    "credential_rotation_status": "PENDING_ACCOUNT_OWNER_ROTATION",
+    "note": "Audit events preserved; only plaintext credential payloads were replaced."
+  },
   "documents": [
+    {
+      "filename": "tracking_monitor_audit.jsonl",
+      "path": "tracking_monitor_audit.jsonl",
+      "sha256": "F88FA0696AB8B652EB5E28932714916169D02ECA1D0650125D730A12860EA33D",
+      "size_bytes": 41923,
+      "status": "CREDENTIALS_REDACTED_LINES_37_40"
+    },
     {
       "filename": "FL01_FL02_manual_review.md",
       "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\FL01_FL02_manual_review.md",
@@ -297,8 +316,8 @@
   },
   "missing_documents": [],
   "summary": {
-    "documents_total": 19,
-    "documents_present": 19,
+    "documents_total": 20,
+    "documents_present": 20,
     "documents_missing": 0,
     "conditional_release_document_count": 5,
     "formal_report_status": "EFFECTIVE_GATE_CLOSED",
@@ -312,7 +331,8 @@
     "conditional_release_status": "ISSUED_RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
     "release_permit_plan_status": "PREPARED_ONLY_PENDING_SCHEDULER_CONFIRMATION",
     "monitoring_rounds_recorded": 2,
-    "dsha_partial_pass_report_recorded": 1
+    "dsha_partial_pass_report_recorded": 1,
+    "audit_ledger_redaction_status": "CREDENTIALS_REDACTED"
   },
   "governance_invariants": {
     "wind_api_calls": 0,
