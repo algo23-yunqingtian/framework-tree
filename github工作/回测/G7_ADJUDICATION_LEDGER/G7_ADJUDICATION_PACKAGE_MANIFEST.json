@@ -58,6 +58,20 @@
       "status": "MONITORING_ROUND_RECORDED"
     },
     {
+      "filename": "G7_DSHA_DSHD_MONITORING_ROUND_002.md",
+      "path": "G7_ADJUDICATION_LEDGER\\G7_DSHA_DSHD_MONITORING_ROUND_002.md",
+      "sha256": "7B304A635DC76ECA534D6BA0666E00B9993D2878610787DDA579B6665D423469",
+      "size_bytes": 3389,
+      "status": "MONITORING_ROUND_002_RECORDED"
+    },
+    {
+      "filename": "DSHD_P67_EXPLORATION_RISK_OBSERVATION_BRIEF.md",
+      "path": "G7_ADJUDICATION_LEDGER\\DSHD_P67_EXPLORATION_RISK_OBSERVATION_BRIEF.md",
+      "sha256": "35E930F691AB1E25E0007DD6484435AEFF0F1C905DA305E2CB6B005B5DF18C98",
+      "size_bytes": 26566,
+      "status": "DSHD_EXPLORATION_BRIEF_ARCHIVED"
+    },
+    {
       "filename": "data-harbor/dsha_p49_prep/P49_backtest_audit/excel_wind_test_report.md",
       "path": "D:\\DSH_WORK\\github工作\\回测\\data-harbor\\dsha_p49_prep\\P49_backtest_audit\\excel_wind_test_report.md",
       "sha256": "E666DAD46103B287D99AD1F902BBF52E8EE208FA6624694642DDD66B9533695E",
@@ -283,8 +297,8 @@
   },
   "missing_documents": [],
   "summary": {
-    "documents_total": 17,
-    "documents_present": 17,
+    "documents_total": 19,
+    "documents_present": 19,
     "documents_missing": 0,
     "conditional_release_document_count": 5,
     "formal_report_status": "EFFECTIVE_GATE_CLOSED",
@@ -297,7 +311,7 @@
     "p49_pre_gray_check_status": "G7_ADJUDICATED_HOLD_WITH_CONDITIONAL_GRAY",
     "conditional_release_status": "ISSUED_RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
     "release_permit_plan_status": "PREPARED_ONLY_PENDING_SCHEDULER_CONFIRMATION",
-    "monitoring_rounds_recorded": 1,
+    "monitoring_rounds_recorded": 2,
     "dsha_partial_pass_report_recorded": 1
   },
   "governance_invariants": {
