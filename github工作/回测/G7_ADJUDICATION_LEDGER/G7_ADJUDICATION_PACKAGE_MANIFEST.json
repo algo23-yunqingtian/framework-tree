@@ -13,88 +13,92 @@
   "audit_ledger_redaction": {
     "filename": "tracking_monitor_audit.jsonl",
     "path": "tracking_monitor_audit.jsonl",
-    "status": "CREDENTIALS_REDACTED",
+    "status": "CREDENTIALS_REDACTED_LINES_37_40",
     "redacted_lines": [
       37,
       40
     ],
     "redaction_value": "[REDACTED-CREDENTIAL]",
-    "credential_rotation_status": "PENDING_ACCOUNT_OWNER_ROTATION",
+    "credential_rotation_status": "ROTATION_PENDING_ACCOUNT_OWNER",
     "note": "Audit events preserved; only plaintext credential payloads were replaced."
   },
   "documents": [
     {
       "filename": "tracking_monitor_audit.jsonl",
       "path": "tracking_monitor_audit.jsonl",
-      "sha256": "F88FA0696AB8B652EB5E28932714916169D02ECA1D0650125D730A12860EA33D",
-      "size_bytes": 41923,
+      "sha256": "06830FB1CDFFEE0EFB0C9D1B7333DF781AF2674B1A38FE96A6777543DB526AFB",
+      "size_bytes": 46305,
       "status": "CREDENTIALS_REDACTED_LINES_37_40"
     },
     {
       "filename": "FL01_FL02_manual_review.md",
       "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\FL01_FL02_manual_review.md",
       "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\FL01_FL02_manual_review.md",
-      "sha256": "EB8689D71B29F5829013205113FC987814695A43EAEF20C6017E2BAE3F822A5E",
-      "size_bytes": 24406,
-      "status": "PRESENT"
+      "sha256": "1AF9BB37C20FBEC52C90E0617243FB36A7662857041798736CD4812C5B7A9928",
+      "size_bytes": 25027,
+      "status": "PRESENT",
+      "path": "G7_ADJUDICATION_LEDGER\\FL01_FL02_manual_review.md"
     },
     {
       "filename": "poll39_main_audit_report.md",
       "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_main_audit_report.md",
       "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_main_audit_report.md",
-      "sha256": "B328A408B889D6CB7C0613CA2B7B73ED7DE20BF2D1BC6937CFCC549F0DF43622",
-      "size_bytes": 8292,
-      "status": "PRESENT"
+      "sha256": "8B8A08E1EC4C9EAA164D21D06F9C2A23795C22E26DBFE211E086D2F59B184745",
+      "size_bytes": 8439,
+      "status": "PRESENT",
+      "path": "G7_ADJUDICATION_LEDGER\\poll39_main_audit_report.md"
     },
     {
       "filename": "poll39_factor_leakage_risk_appendix.md",
       "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_factor_leakage_risk_appendix.md",
       "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\poll39_factor_leakage_risk_appendix.md",
-      "sha256": "2E8377D02604C5DD2C425266A728092FB7FF7F28A202252DBBDC530F0D16F43E",
-      "size_bytes": 8537,
-      "status": "PRESENT"
+      "sha256": "8982FE433CE258F9D31082727AE212772127C5EA190802B31DB31BDCBBCBA286",
+      "size_bytes": 8716,
+      "status": "PRESENT",
+      "path": "G7_ADJUDICATION_LEDGER\\poll39_factor_leakage_risk_appendix.md"
     },
     {
       "filename": "P66_KB_SECOND_REVIEW_REPORT.md",
       "source": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\P66_KB_SECOND_REVIEW_REPORT.md",
       "destination": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\P66_KB_SECOND_REVIEW_REPORT.md",
-      "sha256": "244371CA5E2177C2EE35259503736A946312819E3799F02DD00D5F1CB8D36115",
-      "size_bytes": 4205,
-      "status": "PRESENT"
+      "sha256": "A7FF6E8818257B75BC2FD4E91A4B82806BD4234F928C71E7FF8ED239F00B095D",
+      "size_bytes": 4359,
+      "status": "PRESENT",
+      "path": "G7_ADJUDICATION_LEDGER\\P66_KB_SECOND_REVIEW_REPORT.md"
     },
     {
       "filename": "G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
-      "sha256": "B96B5A1FDB8C9897FA428408909E14B72E43B677D5AE31EEABC7CC91C1AE5926",
-      "size_bytes": 4769,
+      "sha256": "8BE852C3ED5BEE55D12041708BA849824E6C0072C6CE7DDBC5E63DD9FC6F2F5E",
+      "size_bytes": 4905,
       "status": "TEMP_WIND_EXCEL_FALLBACK_GUIDE_RECORDED"
     },
     {
       "filename": "G7_DSHA_DSHD_MONITORING_ROUND_001.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_DSHA_DSHD_MONITORING_ROUND_001.md",
-      "sha256": "BF9742B48584EF995A809630DE4237F8D68BF40BDF889C1A0CCA50942C3E6AA5",
-      "size_bytes": 3124,
+      "sha256": "14BEC08AE5342C6579A2CC6439CAF331E4A2927349EC3A03AEA3AF1FC71741D5",
+      "size_bytes": 3207,
       "status": "MONITORING_ROUND_RECORDED"
     },
     {
       "filename": "G7_DSHA_DSHD_MONITORING_ROUND_002.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_DSHA_DSHD_MONITORING_ROUND_002.md",
-      "sha256": "7B304A635DC76ECA534D6BA0666E00B9993D2878610787DDA579B6665D423469",
-      "size_bytes": 3389,
+      "sha256": "BB30F54BCEBCE7DDBD4926951ACC4D446430137FFAB064D9A6E0833DEE33D1DD",
+      "size_bytes": 3478,
       "status": "MONITORING_ROUND_002_RECORDED"
     },
     {
       "filename": "DSHD_P67_EXPLORATION_RISK_OBSERVATION_BRIEF.md",
       "path": "G7_ADJUDICATION_LEDGER\\DSHD_P67_EXPLORATION_RISK_OBSERVATION_BRIEF.md",
       "sha256": "35E930F691AB1E25E0007DD6484435AEFF0F1C905DA305E2CB6B005B5DF18C98",
-      "size_bytes": 26566,
+      "size_bytes": 29342,
       "status": "DSHD_EXPLORATION_BRIEF_ARCHIVED"
     },
     {
       "filename": "data-harbor/dsha_p49_prep/P49_backtest_audit/excel_wind_test_report.md",
-      "path": "D:\\DSH_WORK\\github工作\\回测\\data-harbor\\dsha_p49_prep\\P49_backtest_audit\\excel_wind_test_report.md",
-      "sha256": "E666DAD46103B287D99AD1F902BBF52E8EE208FA6624694642DDD66B9533695E",
-      "size_bytes": 8606,
+      "path": "data-harbor\\dsha_p49_prep\\P49_backtest_audit\\excel_wind_test_report.md",
+      "sha256": "1D963C8534AE71229166BC0E6231C3970894C8E0BF63DDDC67E6E67370E4A35F",
+      "size_bytes": 14732,
       "status": "DSHA_PARTIAL_PASS_REPORT_RECORDED"
     }
   ],
@@ -102,8 +106,8 @@
     {
       "filename": "G7_CONDITIONAL_RELEASE_PERMIT.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_PERMIT.md",
-      "sha256": "E534B27ACD88442A505A8703F29A3D312428A02D892541FA0F2472B16B726D66",
-      "size_bytes": 3232,
+      "sha256": "7D37ADDB83E9A08F2C40E13C890DB93BFF8C9E6AFF84131489DA57E91D3E8047",
+      "size_bytes": 3314,
       "status": "RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
       "scope": [
         "FACTOR-004",
@@ -120,8 +124,8 @@
     {
       "filename": "G7_CONDITIONAL_RELEASE_BROADCAST.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_BROADCAST.md",
-      "sha256": "43EAC1F2EF4AEA1B09D835C765CB4477775A77ACD60D43F759BF14E44504E3D6",
-      "size_bytes": 2683,
+      "sha256": "EDAC4071C2CE7E4D3E18F9F327BD63FD9E7B6A018A45ACA82BBDEB21E5E0BC65",
+      "size_bytes": 2749,
       "status": "BROADCAST_ISSUED_RESTRICTED_GRAY_ONLY_EXCEL_FALLBACK_NOTED",
       "audience": [
         "DSHA",
@@ -131,8 +135,8 @@
     {
       "filename": "G7_CONDITIONAL_BACKTEST_CHAIN_AUDIT_SUMMARY.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_BACKTEST_CHAIN_AUDIT_SUMMARY.md",
-      "sha256": "762124DD55A958969C5418C5EF1A93D20853ADB6E62C308D0E58B9E6FD1F1E4E",
-      "size_bytes": 3945,
+      "sha256": "2CAC9B471FF3870683235E81DDC23647CDF444803237FCF6E8DBA86DB5E8FAC8",
+      "size_bytes": 4394,
       "status": "DRAFT_AUDIT_SUMMARY_RECORDED_WITH_EXCEL_FALLBACK",
       "scope": [
         "FACTOR-004",
@@ -149,8 +153,8 @@
     {
       "filename": "G7_CONDITIONAL_WIND_TEMP_CREDENTIAL.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_WIND_TEMP_CREDENTIAL.md",
-      "sha256": "0C8834AE0C32A144DF6886679C69D4DD0945323FE45036FDD1F40694C0AEC9AF",
-      "size_bytes": 3422,
+      "sha256": "466406FD1C5263F5189C4CB9440825213F661ED063FB79A4819678E7C8C135AB",
+      "size_bytes": 3492,
       "status": "TEMP_WIND_CREDENTIAL_UPDATED_TO_EXCEL_FALLBACK",
       "scope": [
         "FACTOR-004",
@@ -167,8 +171,8 @@
     {
       "filename": "G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
       "path": "G7_ADJUDICATION_LEDGER\\G7_EXCEL_WIND_PLUGIN_ACCESS_GUIDE.md",
-      "sha256": "B96B5A1FDB8C9897FA428408909E14B72E43B677D5AE31EEABC7CC91C1AE5926",
-      "size_bytes": 4769,
+      "sha256": "8BE852C3ED5BEE55D12041708BA849824E6C0072C6CE7DDBC5E63DD9FC6F2F5E",
+      "size_bytes": 4905,
       "status": "TEMP_WIND_EXCEL_FALLBACK_GUIDE_RECORDED",
       "scope": [
         "FACTOR-004",
@@ -185,9 +189,9 @@
   ],
   "formal_adjudication": {
     "filename": "G7_FACTOR_ADJUDICATION_REPORT.md",
-    "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\G7_FACTOR_ADJUDICATION_REPORT.md",
-    "sha256": "EF98B5510B95833AEA9AC1399352C7E77D60C0BB28425C88876A9F6550D7A562",
-    "size_bytes": 12071,
+    "path": "G7_ADJUDICATION_LEDGER\\G7_FACTOR_ADJUDICATION_REPORT.md",
+    "sha256": "A87D1896DE6D121D2C63C2F73147B245F4AE970DB2FE1C7F9FE76FF21DFC42B5",
+    "size_bytes": 12307,
     "status": "EFFECTIVE_REPORT_GENERATED_GATE_STILL_CLOSED",
     "final_matrix": {
       "pass": 0,
@@ -219,7 +223,7 @@
   "whitelist_drafts": [
     {
       "filename": "WL006_WL014_whitelist_draft.md",
-      "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\WL006_WL014_whitelist_draft.md",
+      "path": "G7_ADJUDICATION_LEDGER\\WL006_WL014_whitelist_draft.md",
       "sha256": "FD7FB054B5702CBAC1583526629C1A7F11F27221E8A9F56A6DBEDC93499C7F54",
       "size_bytes": 7350,
       "entries": 9,
@@ -229,9 +233,9 @@
   "review_documents": [
     {
       "filename": "DRAFT_REVIEW_COMMENTS.md",
-      "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\DRAFT_REVIEW_COMMENTS.md",
-      "sha256": "5201F239D7C2F9FFE0B6FAAC74E7AB3383F2017205B32353B7A26AC2AC52CB6B",
-      "size_bytes": 14356,
+      "path": "G7_ADJUDICATION_LEDGER\\DRAFT_REVIEW_COMMENTS.md",
+      "sha256": "B32D7A4CCE4FC9D0930ABC9F8103AE5CBD1249F264D1CD93148BD74B3061FA1A",
+      "size_bytes": 14660,
       "review_target": "G7_FACTOR_ADJUDICATION_DRAFT.md",
       "critical_issues": 2,
       "confirmations": 4,
@@ -239,9 +243,9 @@
     },
     {
       "filename": "DRAFT_REVIEW_COMMENTS_RESPONSE.md",
-      "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\DRAFT_REVIEW_COMMENTS_RESPONSE.md",
-      "sha256": "131F99879E03E73365E096326E254DF4990223F75049B9875F1C1B356864ED8D",
-      "size_bytes": 2090,
+      "path": "G7_ADJUDICATION_LEDGER\\DRAFT_REVIEW_COMMENTS_RESPONSE.md",
+      "sha256": "4A9DB50197B01B6E860632F94DAB77EEEC46EF9D137F05E7A1E6494F05467554",
+      "size_bytes": 2164,
       "review_target": "DRAFT_REVIEW_COMMENTS.md",
       "respondent": "DSHC",
       "status": "ACK_RECORDED"
@@ -250,12 +254,12 @@
   "conditional_release": {
     "filename": "G7_CONDITIONAL_RELEASE_PERMIT.md",
     "broadcast_filename": "G7_CONDITIONAL_RELEASE_BROADCAST.md",
-    "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_PERMIT.md",
-    "broadcast_path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_BROADCAST.md",
-    "sha256": "E534B27ACD88442A505A8703F29A3D312428A02D892541FA0F2472B16B726D66",
-    "broadcast_sha256": "F138F6BFA75FDF26C2CC3B0DCBC33AE1936D7A05E503D2EA49DFAF23DD5FD6DF",
-    "size_bytes": 3232,
-    "broadcast_size_bytes": 2163,
+    "path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_PERMIT.md",
+    "broadcast_path": "G7_ADJUDICATION_LEDGER\\G7_CONDITIONAL_RELEASE_BROADCAST.md",
+    "sha256": "7D37ADDB83E9A08F2C40E13C890DB93BFF8C9E6AFF84131489DA57E91D3E8047",
+    "broadcast_sha256": "EDAC4071C2CE7E4D3E18F9F327BD63FD9E7B6A018A45ACA82BBDEB21E5E0BC65",
+    "size_bytes": 3314,
+    "broadcast_size_bytes": 2749,
     "status": "ISSUED_RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
     "scope": {
       "conditional_pass_factors": [
@@ -293,10 +297,10 @@
   },
   "pre_gray_check": {
     "filename": "P49_pre_gray_check.md",
-    "path": "D:\\DSH_WORK\\github宸ヤ綔\\鍥炴祴\\data-harbor\\dsha_p49_prep\\P49_backtest_audit\\factor_knowledge_base\\P49_pre_gray_check.md",
-    "sha256": "FBBC4C243F42EDD54B8D5C69746D503A10765B0939D9C7D1AE5C1091421FAF55",
-    "size_bytes": 11899,
-    "status": "G7_ADJUDICATED_HOLD_WITH_CONDITIONAL_GRAY"
+    "path": "data-harbor\\dsha_p49_prep\\P49_backtest_audit\\factor_knowledge_base\\P49_pre_gray_check.md",
+    "sha256": "E8E2A1E2A43BA3F736C9582B87834E4DEE73D6DAD8B969B58CA73B85155FE593",
+    "size_bytes": 13892,
+    "status": "RESTORED_PRESENT"
   },
   "release_permit_plan": {
     "status": "PREPARED_ONLY_PENDING_SCHEDULER_CONFIRMATION",
@@ -327,12 +331,12 @@
     "defect_count": 0,
     "review_critical_issues": 2,
     "review_critical_issues_closed": 2,
-    "p49_pre_gray_check_status": "G7_ADJUDICATED_HOLD_WITH_CONDITIONAL_GRAY",
+    "p49_pre_gray_check_status": "RESTORED_PRESENT",
     "conditional_release_status": "ISSUED_RESTRICTED_GRAY_CONDITIONAL_PASS_ONLY",
     "release_permit_plan_status": "PREPARED_ONLY_PENDING_SCHEDULER_CONFIRMATION",
     "monitoring_rounds_recorded": 2,
     "dsha_partial_pass_report_recorded": 1,
-    "audit_ledger_redaction_status": "CREDENTIALS_REDACTED"
+    "audit_ledger_redaction_status": "CREDENTIALS_REDACTED_LINES_37_40"
   },
   "governance_invariants": {
     "wind_api_calls": 0,
@@ -341,7 +345,7 @@
     "gate": "CLOSED/HOLD",
     "release_permit": "NOT_ISSUED",
     "git_push_executed": false,
-    "audit_ledger_modified": false,
+    "audit_ledger_modified": true,
     "p49_p53_baseline_modified": false,
     "upstream_writes": 0,
     "factor_formula_fixed": true,
