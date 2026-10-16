@@ -1,0 +1,27 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHE_P012_FINAL_TRIPLEFIX_JOB",
+  "package_name": "p012_final_triplefix_gate_package",
+  "generated": "2026-10-16T17:34:21+08:00",
+  "version": "2.0.0",
+  "contents": [
+    {
+      "file": "p012_gate_manifest.json",
+      "md5": "8D603FA0352EC24FFD1509C9CFA562EE",
+      "size_bytes": 658
+    },
+    {
+      "file": "v88_p012_full_link_cpu_compare.json",
+      "md5": "C10D5A32ECCB8A0D5866B872538F7C5A",
+      "size_bytes": 8911
+    }
+  ],
+  "audit_summary": {
+    "total_checks": 4,
+    "passed": 4,
+    "warned": 0,
+    "failed": 0
+  },
+  "p0_12_gate_ready": true,
+  "schema_version": "v88-p012-full-link-cpu.2.0",
+  "note": "Triple fix: path migrated, top-level fields, caliber cleaned. cpu_peak_pct=99.4871 read by gate."
+}

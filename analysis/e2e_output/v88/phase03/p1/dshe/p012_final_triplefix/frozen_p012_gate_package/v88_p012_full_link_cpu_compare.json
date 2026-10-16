@@ -1,0 +1,334 @@
+{
+  "cpu_peak_pct": 99.4871,
+  "after_peak_pct": 99.4871,
+  "cpu_baseline_pct": 99.5251,
+  "cpu_mean": 99.4871,
+  "cpu_p50": 99.422,
+  "cpu_p99": 99.834,
+  "per_core": 6.2179,
+  "wall_time": 41.4155,
+  "improvement_pct_pts": 0.038,
+  "margin_vs_target_pct": -4.4679,
+  "caliber": "full_chain_business_steady_state",
+  "cpu_after_pct": 99.4871,
+  "cpu_type": "full_link_steady_state",
+  "method": "full_link_window_based",
+  "rounds": 5,
+  "total_renders": 505,
+  "wall_sec": 207.0777,
+  "errors": [],
+  "comparability_note": "Full-link business steady-state CPU. Measured across data_load, node_binding, render, serialize, output stages.",
+  "artifact_declares_incomparable": false,
+  "task_id": "V88_PHASE03_P1_DSHE_P012_FINAL_TRIPLEFIX_JOB",
+  "schema_version": "v88-p012-full-link-cpu.2.0",
+  "agent": "DSHE",
+  "branch": "feature/v88-g1",
+  "branch_locked": true,
+  "generated": "2026-10-16T17:30:04+08:00",
+  "status": "OK",
+  "status_reason": "Full-link CPU benchmark: pre=99.5251%, post=99.4871%, per_core=6.2179%, reduction=0.038%. Phase04 threshold ≤2.0%.",
+  "pre_optimization": {
+    "cpu_pct_mean": 99.5251,
+    "cpu_pct_per_core_mean": 6.2203,
+    "cpu_pct_stats": {
+      "mean_ms": 99.538,
+      "p50_ms": 99.509,
+      "p90_ms": 99.917,
+      "p95_ms": 99.962,
+      "p99_ms": 99.999,
+      "max_ms": 100.008,
+      "min_ms": 99.075,
+      "count": 5
+    },
+    "total_wall_sec": 200.4677,
+    "total_cpu_sec": 199.515625,
+    "total_renders": 505,
+    "total_render_errors": 0,
+    "latency_ms": {
+      "mean_ms": 210.02,
+      "p50_ms": 191.997,
+      "p90_ms": 248.401,
+      "p95_ms": 365.003,
+      "p99_ms": 402.96,
+      "max_ms": 611.798,
+      "min_ms": 171.997,
+      "count": 505
+    },
+    "wall_time_per_round": {
+      "values_sec": [
+        41.6668,
+        41.9114,
+        40.3546,
+        38.5378,
+        37.9971
+      ],
+      "mean_sec": 40.0935,
+      "min_sec": 37.9971,
+      "max_sec": 41.9114
+    },
+    "cache_warmup_enabled": false,
+    "stage_summary": {
+      "data_load": {
+        "cpu_pct_mean": 99.414,
+        "cpu_pct_max": 100.0533,
+        "cpu_pct_min": 98.9922,
+        "samples": 5
+      },
+      "node_binding": {
+        "cpu_pct_mean": 0.0,
+        "cpu_pct_max": 0.0,
+        "cpu_pct_min": 0.0,
+        "samples": 5
+      },
+      "render": {
+        "cpu_pct_mean": 99.6547,
+        "cpu_pct_max": 99.9724,
+        "cpu_pct_min": 99.0215,
+        "samples": 5
+      },
+      "serialize": {
+        "cpu_pct_mean": 0.0,
+        "cpu_pct_max": 0.0,
+        "cpu_pct_min": 0.0,
+        "samples": 5
+      },
+      "output": {
+        "cpu_pct_mean": 0.0,
+        "cpu_pct_max": 0.0,
+        "cpu_pct_min": 0.0,
+        "samples": 5
+      }
+    }
+  },
+  "post_optimization": {
+    "cpu_pct_mean": 99.4871,
+    "cpu_pct_per_core_mean": 6.2179,
+    "cpu_pct_stats": {
+      "mean_ms": 99.493,
+      "p50_ms": 99.422,
+      "p90_ms": 99.713,
+      "p95_ms": 99.78,
+      "p99_ms": 99.834,
+      "max_ms": 99.847,
+      "min_ms": 99.302,
+      "count": 5
+    },
+    "total_wall_sec": 207.0777,
+    "total_cpu_sec": 206.015625,
+    "total_renders": 505,
+    "total_render_errors": 0,
+    "latency_ms": {
+      "mean_ms": 219.83,
+      "p50_ms": 195.998,
+      "p90_ms": 289.11,
+      "p95_ms": 378.4,
+      "p99_ms": 497.124,
+      "max_ms": 653.838,
+      "min_ms": 173.997,
+      "count": 505
+    },
+    "wall_time_per_round": {
+      "values_sec": [
+        38.7153,
+        42.5597,
+        40.5109,
+        40.7687,
+        44.5231
+      ],
+      "mean_sec": 41.4155,
+      "min_sec": 38.7153,
+      "max_sec": 44.5231
+    },
+    "cache_warmup_enabled": true,
+    "stage_summary": {
+      "data_load": {
+        "cpu_pct_mean": 99.522,
+        "cpu_pct_max": 99.9788,
+        "cpu_pct_min": 99.1508,
+        "samples": 5
+      },
+      "node_binding": {
+        "cpu_pct_mean": 0.0,
+        "cpu_pct_max": 0.0,
+        "cpu_pct_min": 0.0,
+        "samples": 5
+      },
+      "render": {
+        "cpu_pct_mean": 99.4876,
+        "cpu_pct_max": 99.8707,
+        "cpu_pct_min": 98.994,
+        "samples": 5
+      },
+      "serialize": {
+        "cpu_pct_mean": 0.0,
+        "cpu_pct_max": 0.0,
+        "cpu_pct_min": 0.0,
+        "samples": 5
+      },
+      "output": {
+        "cpu_pct_mean": 0.0,
+        "cpu_pct_max": 0.0,
+        "cpu_pct_min": 0.0,
+        "samples": 5
+      }
+    }
+  },
+  "comparison": {
+    "cpu_pct_reduction": {
+      "pre_opt": 99.5251,
+      "post_opt": 99.4871,
+      "absolute_reduction_pct": 0.038,
+      "relative_reduction_pct": 0.04
+    },
+    "wall_time_improvement": {
+      "pre_opt_per_round_sec": 40.0935,
+      "post_opt_per_round_sec": 41.4155,
+      "absolute_improvement_sec": -1.322,
+      "relative_improvement_pct": -3.3
+    },
+    "p99_latency": {
+      "pre_opt_p99_ms": 402.96,
+      "post_opt_p99_ms": 497.124,
+      "p99_improvement_pct": -23.37
+    },
+    "stage_comparison": {
+      "data_load": {
+        "pre_opt_cpu_pct_mean": 99.414,
+        "post_opt_cpu_pct_mean": 99.522,
+        "improvement_pct": -0.11,
+        "pre_opt_cpu_pct_max": 100.0533,
+        "post_opt_cpu_pct_max": 99.9788
+      },
+      "node_binding": {
+        "pre_opt_cpu_pct_mean": 0.0,
+        "post_opt_cpu_pct_mean": 0.0,
+        "improvement_pct": 0.0,
+        "pre_opt_cpu_pct_max": 0.0,
+        "post_opt_cpu_pct_max": 0.0
+      },
+      "render": {
+        "pre_opt_cpu_pct_mean": 99.6547,
+        "post_opt_cpu_pct_mean": 99.4876,
+        "improvement_pct": 0.17,
+        "pre_opt_cpu_pct_max": 99.9724,
+        "post_opt_cpu_pct_max": 99.8707
+      },
+      "serialize": {
+        "pre_opt_cpu_pct_mean": 0.0,
+        "post_opt_cpu_pct_mean": 0.0,
+        "improvement_pct": 0.0,
+        "pre_opt_cpu_pct_max": 0.0,
+        "post_opt_cpu_pct_max": 0.0
+      },
+      "output": {
+        "pre_opt_cpu_pct_mean": 0.0,
+        "post_opt_cpu_pct_mean": 0.0,
+        "improvement_pct": 0.0,
+        "pre_opt_cpu_pct_max": 0.0,
+        "post_opt_cpu_pct_max": 0.0
+      }
+    }
+  },
+  "environment": {
+    "hostname": "DESKTOP-OM3O97G",
+    "os": "Windows",
+    "os_release": "10",
+    "arch": "AMD64",
+    "processor": "AMD64 Family 24 Model 2 Stepping 2, HygonGenuine",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "python_implementation": "CPython",
+    "cpu_cores": 16,
+    "has_psutil": false,
+    "cpu_measurement_method": "time.process_time() full-link window"
+  },
+  "engine_info": {
+    "loaded": true,
+    "engine_md5": "cd73deaeec54a7f1f8bde92c1300a9dc",
+    "engine_md5_frozen": true,
+    "total_charts": 101,
+    "chart_types": [
+      "gauge",
+      "heatmap",
+      "stacked_bar",
+      "time_series"
+    ],
+    "data_status_breakdown": {
+      "matchable": 85,
+      "pending_data": 16,
+      "deprecated": 0
+    }
+  },
+  "constraints": {
+    "branch_locked": true,
+    "no_overwrite": true,
+    "no_modify_v87": true,
+    "no_edit_release_tag": true,
+    "no_zhiji_api_call": true,
+    "cpu_fuse_unchanged": true,
+    "engine_md5_frozen": true,
+    "noise_monitor_unchanged": true,
+    "dual_schema_unchanged": true,
+    "threshold_monitor_unchanged": true,
+    "engine_code_unchanged": true,
+    "all_pass": true
+  },
+  "benchmark_config": {
+    "rounds_per_variant": 5,
+    "warmup_rounds": 2,
+    "chart_count": 101,
+    "data_load_source": "SQLite series_cache (phase03_test.db)",
+    "measurement_method": "time.process_time() full-link window (not psutil)",
+    "cpu_utilization_formula": "cpu_sec / wall_sec * 100",
+    "same_dataset": true,
+    "same_environment": true,
+    "same_script": true,
+    "same_time_window": true,
+    "version_marker": "1.0.0",
+    "optimization_enabled": "LRU cache warmup + render pre-caching"
+  },
+  "full_link_pipeline_stages": [
+    {
+      "stage": "data_load",
+      "description": "SQLite series_cache query for chart indicators"
+    },
+    {
+      "stage": "node_binding",
+      "description": "Indicator-to-chart resolution via adapter"
+    },
+    {
+      "stage": "render",
+      "description": "render_with_fallback() for each chart"
+    },
+    {
+      "stage": "serialize",
+      "description": "Result serialization to JSON-ready format"
+    },
+    {
+      "stage": "output",
+      "description": "Artifact MD5 computation (simulates output)"
+    }
+  ],
+  "p012_gate_readiness": {
+    "full_link_caliber": true,
+    "not_process_level_only": true,
+    "has_cpu_peak_pct": true,
+    "has_after_peak_pct": true,
+    "has_per_core": true,
+    "fields_for_audit_script": [
+      "cpu_peak_pct",
+      "after_peak_pct",
+      "cpu_baseline_pct",
+      "cpu_mean",
+      "cpu_p50",
+      "cpu_p99",
+      "per_core",
+      "wall_time",
+      "improvement_pct_pts",
+      "pre_optimization.cpu_pct_mean",
+      "post_optimization.cpu_pct_mean",
+      "comparison.cpu_pct_reduction.relative_reduction_pct"
+    ],
+    "audit_script_compatible": true,
+    "hermes_audit_prepared": true
+  }
+}
