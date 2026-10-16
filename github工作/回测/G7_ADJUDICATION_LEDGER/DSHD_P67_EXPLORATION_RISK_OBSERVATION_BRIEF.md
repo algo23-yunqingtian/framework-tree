@@ -106,6 +106,9 @@
 | 16:24:31 | PIPELINE_START (DRY RUN) | STARTING |
 | 16:24:31 | PIPELINE_PLAN | 3 chunks, 108 Wind calls planned |
 | 16:24:31 | PIPELINE_COMPLETE | **DRY_RUN_COMPLETE (0 rows)** |
+| **17:19:11** | **WIND_CLIENT_LAUNCH** | **BLOCKED** (windlocal.exe exits immediately) |
+| **17:19:11** | **EXCEL_PLUGIN_EXPLORATION** | **BLOCKED_ON_CLIENT** (WSD formula fails) |
+| **17:19:11** | **WIND_BLOCKER_ESCALATION** | **ESCALATED TO DSHC** (CRITICAL) |
 
 ### 3.2 HOLD 因子阻断有效性核验
 
@@ -230,7 +233,20 @@
 
 **总计**：5 个 EXCEL.EXE 进程，均保持运行。**DSHD 未 kill 任何进程**。
 
-**观察**：16:45-16:48 时段出现 2 个新 Excel 进程（PID 35320 / 35488），工作集 106 MB（远高于早期 28 MB 测试进程），对应 DSHA 的 `quick_wind_test2.py` / `quick_wind_test3.py` 探针迭代。
+### 5.1b Excel 进程状态更新 @ 2026-10-16 17:20 GMT+8
+
+| PID | 状态 |
+|---|---|
+| 16428 | ❌ EXITED |
+| 37336 | ❌ EXITED |
+| 36948 | ❌ EXITED |
+| 35320 | ❌ EXITED |
+| 35488 | ❌ EXITED |
+| **当前总计** | **0 个进程** |
+
+**分析**：全部 5 个 Excel 进程在 16:52-17:20 期间全部退出。对应 DSHA-P54 在 17:19:11 的 Wind 客户端启动尝试（BLOCKED）和 Excel 插件探索（BLOCKED_ON_CLIENT）。**无 DSHD kill 操作**，进程自然退出。
+
+**影响**：Excel 进程退出意味着 Wind Excel 备选方案当前不可用。DSHA-P54 已升级至 DSHC，等待 DSHC 决策。
 
 ### 5.2 xlsx 文件变更监控
 
@@ -367,6 +383,8 @@ DSHD 对 G7_ADJUDICATION_LEDGER/ 全部 17 个文件执行 SHA256 重算，发�
 | R3 | SHA256 校验清单 14/17 文件失同步 | 🟠 高 | DSHC 重新生成清单 |
 | R4 | P49_pre_gray_check.md 缺失 | 🟠 高 | DSHC 确认是否恢复 |
 | R5 | 广播 SHA256 三方漂移 | 🟡 中 | DSHC 同步更新 checksums |
+| **R13** | **Wind 客户端启动尝试失败，阻断升级** | 🔴 阻塞 | DSHC 需修复 Wind 客户端安装或提供替代数据源 |
+| **R14** | **账本事件 37 含明文 Wind 凭证** | 🟠 高 | DSHC 立即从账本中清除凭证，轮换已暴露凭证 |
 
 ### 8.2 中风险（关注型）
 
@@ -404,13 +422,19 @@ DSHD 对 G7_ADJUDICATION_LEDGER/ 全部 17 个文件执行 SHA256 重算，发�
 | audit_ledger_modified | false | 36/36 | ✅ MAINTAINED |
 | self_approval | 0 | 36/36 | ✅ MAINTAINED |
 
-**账本状态**：
+**账本状态（初始快照）**：
 - 路径: `github工作/回测/tracking_monitor_audit.jsonl`
 - 大小: 35472 B
 - 行数: 36
 - SHA256: `0C71ECB2CEDF81F3DE45A38185795D0E55EB2414E5A0C99FF1B81644CBA5FB67`
 - 时间范围: 2026-10-16 09:03:19 → 16:15:14 GMT+8
 - 首末事件: DSHC broadcast received → Wind pipeline infrastructure ready
+
+**账本状态（监控更新 @ 17:20 GMT+8）**：
+- 大小: 39072 B
+- 行数: **39**（+3 新事件）
+- SHA256: **`22B734F8...`**（已变更）
+- 新增事件 37-39 @ 17:19:11（DSHA 阻断升级，详见 §13）
 
 ---
 
@@ -494,19 +518,81 @@ DSHD-P67 启动后台监控任务，每 60 秒扫描一次上述监控对象，�
 
 ---
 
-## 12. 归档声明
+## 13. 监控执行结果（DSHD-P67 后台监控）
+
+### 13.1 监控配置
+
+| 项 | 值 |
+|---|---|
+| 监控启动时间 | 2026-10-16 17:14 GMT+8 |
+| 轮询间隔 | 60 秒 |
+| 监控日志 | `G7_ADJUDICATION_LEDGER/dshd_p67_monitor_log.jsonl` |
+| 监控对象 | Excel 进程 / xlsx 文件 / 账本 SHA / Wind events |
+
+### 13.2 监控发现
+
+#### 发现 1：账本变更（3 新事件）
+
+| 时间 | 事件 ID | 结果 |
+|---|---|---|
+| 17:19:11 | DSHA-P54-WIND-CLIENT-LAUNCH-001 | **BLOCKED** |
+| 17:19:11 | DSHA-P54-EXCEL-PLUGIN-EXPLORATION-001 | **BLOCKED_ON_CLIENT** |
+| 17:19:11 | DSHA-P54-WIND-BLOCKER-ESCALATION-001 | **ESCALATED TO DSHC** |
+
+**分析**：DSHA-P54 在 17:19:11 尝试启动 Wind 桌面客户端（windlocal.exe），但客户端**立即退出**（code 0），windpy_start 返回 ErrorCode=-2。Excel 插件探索确认 WDF COM 加载失败，WSD 公式报错（Invalid formula name）。DSHA 已正式向 DSHC 升级阻断，推荐"修复 Wind 客户端安装或提供替代数据源"。
+
+**治理影响**：全 39 账本事件治理不变量全部保持 MAINTAINED，wind_api_calls=0，gate=CLOSED/HOLD，release_permit=NOT_ISSUED，backtest_started=false。
+
+#### 发现 2：Excel 进程全部退出
+
+- 16:52 快照：5 个 EXCEL 进程（PID 16428/37336/36948/35320/35488）
+- 17:20 快照：**0 个 EXCEL 进程**
+- DSHD 未执行任何 kill 操作，进程自然退出
+- 与 DSHA-P54 17:19:11 的 Wind 客户端启动失败时间线一致
+
+#### 发现 3：⚠️ 安全发现 — 账本含明文凭证
+
+**账本事件 37 包含明文 Wind 访问凭证**：
+
+- `credentials_provided`: 手机号 + 密码（已暴露）
+- `credentials_usable`: false
+
+**风险评估**：
+- 凭证已出现在审计日志中，且已提交至 git 仓库
+- 虽标记为"不可用"，但凭证本身暴露构成安全隐患
+- 建议 DSHC 立即从账本中清除凭证字段，轮换已暴露凭证
+
+**DSHD 声明**：本简报**不复述**任何明文凭证内容。凭证暴露风险已记录，处置决策权归 DSHC。
+
+### 13.3 监控状态
+
+| 项 | 状态 |
+|---|---|
+| 监控任务 | ✅ 运行中（后台 pwsh 任务） |
+| 已轮询次数 | 1+ |
+| 异常检测 | ⚠️ LEDGER_CHANGED（预期内，DSHA 升级） |
+| 熔断触发 | ❌ 未触发 |
+| 下次轮询 | 每 60 秒自动 |
+
+---
+
+## 14. 归档声明
 
 > **DSHD-P67 声明**：
 > - 本简报仅用于探索期审计观察归档，**不改变全局 GATE**，**不签发 Release Permit**，**不触发生产回测**。
-> - 全部治理不变量在审计期间保持 MAINTAINED 状态。
+> - 全部治理不变量在审计期间保持 MAINTAINED 状态（39/39 事件）。
 > - HOLD 因子阻断 4/4 有效，无越界访问。
-> - Wind API Calls = 0，Excel + Wind 插件方案已授权。
+> - Wind API Calls = 0，Excel + Wind 插件方案已授权但当前 BLOCKED。
 > - 扫描器工具缺失已记录，DSHD 未擅自补建。
-> - Excel 进程未 kill（5 个进程保持运行）。
-> - 原始审计账本、广播、manifest 文件未修改。
+> - Excel 进程全部自然退出（0 个进程），DSHD 未 kill。
+> - 原始审计账本、广播、manifest 文件未修改（账本新增事件由 DSHA 写入）。
+> - **⚠️ 账本事件 37 含明文凭证** — 建议 DSHC 立即清除并轮换。
+> - **⚠️ SHA256 校验清单 14/17 文件失同步** — 建议 DSHC 重建清单。
+> - **⚠️ P49_pre_gray_check.md 缺失** — 建议 DSHC 确认恢复。
 > - GitHub 文档整理任务（README / REPO_STRUCTURE / REPO_CHECKLIST）保持 PAUSED。
 > - 熔断器 continue_after_trip=false 保持就绪。
 > - 全局 GATE 维持 CLOSED/HOLD。
+> - DSHD-P67 后台监控持续运行中，每 60 秒轮询。
 > - SHA256 校验清单 14/17 文件失同步已记录，建议 DSHC 重建清单。
 
 ---
