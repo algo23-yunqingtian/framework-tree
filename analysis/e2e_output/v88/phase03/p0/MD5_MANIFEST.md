@@ -611,3 +611,45 @@ phase03_test.db 未入库（运行时派生重建）/ P0 既有资产 append-onl
 | 验收 | — | **T0/T1/T4/T5/T6=PASS, T2=DRY_RUN, T3=PARTIAL** | — |
 
 > **DSHB Export Mapping Fix & New Crawler Live Deploy**: min()交集逻辑修复为真实集合交集 / 11项DERIVED_11排除 / 3条IDENTITY_FORM文档化 / 10.09pp虚高消除(100%→89.91%) / 11项FILL_IN补齐 / 23/23单元测试PASS / SPOT_IS DRY-RUN 7/7 / CU_BAL DRY-RUN 8/8 / DQA双PASS / BUG-BS-001发现 / R-V88-043/044保持NEW / Noise 140.3h(83.5%) / P0-13严格禁止提前 / 6/6约束 / V88_PHASE03_P1_DSHB_EXPORT_MAPPING_FIX_AND_NEW_CRAWLER_LIVE_DEPLOY=IN_PROGRESS
+
+---
+
+### DSHB Background Continue Task (2026-10-21)
+
+> **TASK_ID**: V88_PHASE03_P1_DSHB_BACKGROUND_CONTINUE_TASK_JOB
+> **AGENT**: DSHB | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED)
+> **前置**: V88_PHASE03_P1_DSHB_EXPORT_MAPPING_FIX_AND_NEW_CRAWLER_LIVE_DEPLOY_JOB = COMPLETE
+> **约束**: BRANCH_LOCKED / NO_OVERWRITE / NO_MODIFY_V87 / NO_EDIT_RELEASE_TAG / NO_ZHIJI_API_CALL / UPSTREAM_WRITES=0
+
+#### Deliverables
+
+| # | 文件 | MD5 | 字节 |
+|---|------|-----|-----:|
+| 1 | `background_continue/crawler_live_daily_brief.md` | `A71E739E9C4F4BD3E67B0E0EA9CEC50E` | 8,347 |
+| 2 | `background_continue/noise_observation_update.md` | `338168778AC81E1B289AFF873D916C2E` | 5,934 |
+| 3 | `background_continue/R-V88-042_ni_top20_data_source_review.md` | `69087A4BE2AC08EA99BAE6D697FCC530` | 7,912 |
+| 4 | `background_continue/v88_phase04_36metric_data_source_plan.md` | `0FAC1FB659A02CBF5BA52154985A8F28` | 14,023 |
+| 5 | `background_continue/v88_phase03_p1_dshb_risklist.md` | `1784AE2AE75E7539BFC202FB0B5BA5FD` | 5,841 |
+
+#### 核心指标
+
+| 指标 | 值 | 状态 |
+|------|:---:|:----:|
+| SPOT_IS LIVE | HTTP 404 | ⚠️ |
+| SPOT_IS DRY-RUN | 7/7 (100%) | ✅ |
+| CU_BAL LIVE | TIMEOUT/404 | ⚠️ |
+| CU_BAL DRY-RUN | 8/8 (100%) | ✅ |
+| 全量爬虫DQA FAIL | 0 | ✅ |
+| Noise运行时 | 140.3h/168h (83.5%) | ✅ |
+| Noise率 | 9.4953% (收敛) | ✅ <10% |
+| Noise数据点 | 1,684 (100%完整) | ✅ |
+| Noise事件 | 14 (全LOW, 全自动恢复) | ✅ |
+| P0-13结论 | PENDING | 🚨 NOT GENERATED |
+| R-V88-042覆盖率 | 66.3% (PARTIAL) | ⏳ |
+| R-V88-043缓解 | 13% | NEW |
+| R-V88-044缓解 | 43% | NEW |
+| Phase04指标 | 36项/8品种 | ✅ 完成 |
+| Phase04工时 | 50.5人天/12周 | ✅ 完成 |
+| 约束合规 | 6/6 | ✅ |
+
+> **DSHB Background Continue**: 爬虫每日巡检SPOT_IS+CU_BAL(双LIVE失败DRY-RUN双100%) / 噪声持续观测140.3h(83.5%,9.4953%收敛) / R-V88-042数据源评估(Wind首选) / Phase04 36指标数据源规划(50.5人天) / 风险台账持续更新(26项,0 P0阻断) / 审计预案就绪 / 6/6约束 / V88_PHASE03_P1_DSHB_BACKGROUND_CONTINUE_TASK=IN_PROGRESS
