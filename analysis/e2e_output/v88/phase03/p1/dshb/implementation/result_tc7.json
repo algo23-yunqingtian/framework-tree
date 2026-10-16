@@ -1,0 +1,117 @@
+{
+  "task_id": "V88_PHASE03_P1_DSHB_IMPLEMENT_AND_NOISE_CONTINUE_JOB",
+  "script": "spot_is_crawler_v2",
+  "lib_version": "v88-p1-t2-spot-is-mvp-v2.0",
+  "branch": "feature/v88-g1",
+  "indicator_code": "SPOT_IS",
+  "indicator_name": "工业硅现货价格",
+  "commodity": "si",
+  "dry_run": true,
+  "deployment_env": "dev",
+  "mode": "dry-run",
+  "force_fallback": true,
+  "source": "100PPI_SI_DAY_V2",
+  "primary_url": "http://www.100ppi.com/spot/is/daily-price/",
+  "fallback_sources": [
+    "SMM_SI_MONTHLY",
+    "CSPC_SI_MONTHLY"
+  ],
+  "date_range": {
+    "start": "2026-10-01",
+    "end": "2026-10-05"
+  },
+  "rows_fetched": 3,
+  "rows_new": 0,
+  "rows_duplicated": 3,
+  "rows_written": 0,
+  "dqa": {
+    "dqa_results": [
+      {
+        "id": "DQA-01",
+        "name": "数据完整性",
+        "status": "PASS",
+        "detail": "12 rows"
+      },
+      {
+        "id": "DQA-02",
+        "name": "价格范围",
+        "status": "PASS",
+        "detail": "60/60 in range"
+      },
+      {
+        "id": "DQA-03",
+        "name": "无空值",
+        "status": "PASS",
+        "detail": "0/12 rows empty (0.00%)"
+      },
+      {
+        "id": "DQA-04",
+        "name": "时序连续性",
+        "status": "PASS",
+        "detail": "max_gap=1d, 12 unique dates"
+      },
+      {
+        "id": "DQA-05",
+        "name": "无重复",
+        "status": "PASS",
+        "detail": "0 duplicates"
+      },
+      {
+        "id": "DQA-06",
+        "name": "全零检测",
+        "status": "PASS",
+        "detail": "zero_ratio=0.0000"
+      },
+      {
+        "id": "DQA-07",
+        "name": "单调性",
+        "status": "PASS",
+        "detail": "0 jumps >10% / 11 transitions (0.00%)"
+      },
+      {
+        "id": "DQA-08",
+        "name": "数据源一致性",
+        "status": "PASS",
+        "detail": "1 source(s): {'100PPI_SI_DAY_V2'}"
+      },
+      {
+        "id": "DQA-09",
+        "name": "指标一致性",
+        "status": "PASS",
+        "detail": "1 code(s): {'SPOT_IS'}"
+      },
+      {
+        "id": "DQA-10",
+        "name": "文件完整性",
+        "status": "SKIP",
+        "detail": "requires --md5-snapshot flag"
+      }
+    ],
+    "pass": 9,
+    "warn": 0,
+    "fail": 0,
+    "skip": 1,
+    "total": 10,
+    "overall": "PASS",
+    "row_count": 12,
+    "date_range": {
+      "start": "2026-10-01",
+      "end": "2026-10-12"
+    }
+  },
+  "csv_path": "D:\\DSH_WORK\\github工作\\framework-tree\\analysis\\e2e_output\\v88\\phase03\\p1\\dshb\\implementation\\crawler_data\\spot_is_data.csv",
+  "existing_mapping": {
+    "source_indicator": "spot_is_change",
+    "existing_rows": 773,
+    "description": "已有 spot_is_change (工业硅现货变化), SPOT_IS 为绝对价格指标"
+  },
+  "constraints": {
+    "NO_ZHIJI_API_CALL": true,
+    "NO_OVERWRITE": true,
+    "APPEND_ONLY": true,
+    "BRANCH_LOCKED": true,
+    "NO_MODIFY_V87": true,
+    "NO_EDIT_RELEASE_TAG": true
+  },
+  "generated_at": "2026-10-16T20:34:55"
+}
