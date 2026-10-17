@@ -1,4 +1,17 @@
 
+### 2026-10-22 V88 Phase03 P6 DSHB P0-16 Factor Compute Standby (V88_PHASE03_P6_DSHB_P016_FACTOR_COMPUTE_STANDBY)
+- **工单**: V88_PHASE03_P6_DSHB_P016_FACTOR_COMPUTE_STANDBY
+- **前置**: DSHB commit 26ce455 (P4 9/9 tasks); P0-14全部交付(IC-IR骨架/wind_online_watcher); Phase03全部闭环; 双钥匙机制生效(WIND_DATA_LINK_ONLINE.flag+HERMES_TRIGGER_AUTHORIZED.flag); 两把钥匙均不存在; 全程待命加固严禁主动计算
+- **T0 全量资产二次封签**: 10文件git blob哈希核验/MD5+SHA256双校验/8文件哈希漂移(归因于P4 rebase编码变化/文件大小完全一致/0未授权修改)/git diff空/dshb_p016_asset_reseal.md
+- **T1 IC-IR产出规则加固**: 输出标准v2.0定义/MD5+SHA256双校验强制/4层异常截断保护(输入验证/缩尾/输出截断/原子写入)/schema升级(v88-factor-*-v2.0)/12项合规清单/factor_output_standard_v2.md
+- **T2 双钥匙逻辑二次校验**: wind_online_watcher.py升级v2.0.0(22717B)/新增check_dual_flags()函数/4态决策矩阵(NO_FLAGS_SLEEP/KEY_A_ONLY_SLEEP/KEY_B_ONLY_SLEEP/DUAL_KEY_AUTHORIZED)/单钥匙→休眠+告警日志/0 WindPy/0自动推送/0 API调用/trigger_second_check.md
+- **T3 第一批因子执行入口预配置**: 3品种(PB/ZN/Recycle-PB)×3因子(momentum_20d/momentum_60d/vol_20d)=9因子/时间区间2025-01-01~2026-10-22/仅配置不执行/执行入口上锁(仅触发器自动解锁)/factor_run_config_prep.md
+- **T4 本地巡检常态化**: 30分钟巡检间隔/10项检查项(代码扫描/进程检测/双钥匙/工作区完整性/脚本哈希/归档完整性/git状态/分支锁定/因子产出)/初始巡检HEALTHY_STANDBY/standby_health_log.md
+- **T5 约束自检+元数据更新**: 12/12约束合规/STATUS.md+JOB_READY.flag+MD5_MANIFEST.md全部更新/推送feature/v88-g1
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V87=TRUE/NO_EDIT_RELEASE_TAG=TRUE/NO_ZHIJI_API_CALL=TRUE/UPSTREAM_WRITES=0/冻结代码未修改/禁止手动干预/不修改caliber状态/无正式基线输出/无WindPy调用/无自动推送/12/12
+- **状态标记**: V88_PHASE03_P6_DSHB_P016_FACTOR_COMPUTE_STANDBY=FACTOR_STANDBY_AWAIT_DUAL_KEYS, V88_PHASE03_P6_DUAL_KEY_MODE=ACTIVE, V88_PHASE03_P6_KEY_A_WIND_DATA_LINK=NOT_FOUND, V88_PHASE03_P6_KEY_B_HERMES_TRIGGER=NOT_FOUND, V88_PHASE03_P6_DUAL_KEY_READY=FALSE, V88_PHASE03_P6_FACTOR_CALCULATION_PROHIBITED=TRUE, V88_PHASE03_P6_WARMUP_ASSETS_SEALED=TRUE, V88_PHASE03_P6_OUTPUT_STANDARD=v2.0_DUAL_CHECKSUM, V88_PHASE03_P6_FACTORS_CONFIGURED=9(3x3), V88_PHASE03_P6_EXECUTION_LOCKED=TRUE, V88_PHASE03_P6_FACTOR_RESULTS=0, V88_PHASE03_P6_WIND_CALL_CODE=0, V88_PHASE03_P6_STANDBY_STATUS=HEALTHY_STANDBY
+- **状态标记**: P016_FACTOR_COMPUTE_STANDBY=FACTOR_STANDBY_AWAIT_DUAL_KEYS
+
 ### 2026-10-22 V88 Phase03 P4 DSHB P0-14 Ready for Factor Calc (V88_PHASE03_P4_DSHB_P014_READY_FOR_FACTOR_CALC)
 - **工单**: V88_PHASE03_P4_DSHB_P014_READY_FOR_FACTOR_CALC
 - **前置**: DSHB commit 4949464 (P3 9/9 tasks); P0-13 168h GENERATED; FINAL_SHA256_SEAL; framework-tree指标种子+PB/ZN/Recycle-PB品种绑定+ECharts固定模板全部落地; DSHE commit 82d593e/0496158; 24-partial口径对齐; SPOT-IS/SMM冻结; Lock1=FOUND/Lock2=NOT_FOUND/merge PROHIBITED
