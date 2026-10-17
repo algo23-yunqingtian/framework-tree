@@ -222,3 +222,38 @@
 | Engine SHA256 | `604958f2...` (frozen) | ✅ |
 | Constraints | 11/11 compliant | ✅ |
 | Gate contamination | 0 | ✅ |
+
+---
+
+## 10. Phase03 P8 Gate Calib Snapshot Await (P0-19)
+
+**Directory**: `analysis/e2e_output/v88/phase03/p7/dshe/dshe_p019_calib_await_archive/`
+**Task**: V88_PHASE03_P8_DSHE_P019_GATE_CALIB_SNAPSHOT_AWAIT
+**Status**: COMPLETE — GATE_ON_WATCH_AWAIT_DUAL_KEYS
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `snapshot_import_verify.md` | 8,886 | `AF424BBC12645ED675B751EA1B6BEA6F` |
+| `cross_agent_caliber_compare.md` | 9,080 | `B91991DCD39092CD258861B70B802977` |
+| `seal_recheck_after_snapshot.md` | 8,989 | `E283EAF8E69F22A46DB5048F7E3094E7` |
+| `gate_rule_lock_check.md` | 12,328 | `82A9994C66DC12961BBEE20E4661F4F4` |
+
+**Total**: 4 files | 39,283 bytes
+
+### 10.1 Verification Summary
+
+| Item | Value | Status |
+|:-----|:------|:------:|
+| HERMEShf snapshot | FOUND (commit 9e1f6c7, 9 factor definitions imported) | ✅ |
+| Snapshot import slots | 9/9 filled (BASE_PRICE classification) | ✅ |
+| Cross-agent caliber compare | 24/24 3-way, 0 conflicts | ✅ |
+| Seal recheck v5 | 12/12 MD5 MATCH, 7-layer chain unbroken | ✅ |
+| Engine MD5 | `cd73deae...` (frozen) | ✅ |
+| Engine SHA256 | `604958f2...` (frozen) | ✅ |
+| Gate rules | FR-001~006 ACTIVE, FR-007~009 SEALED | ✅ |
+| Dual-key status | INACTIVE (BASIC WATCH) | ⏳ |
+| Safety constraints | 22/22 verified | ✅ |
+| psutil enabled | false | ✅ |
+| psutil daemon | false | ✅ |
+| Constraints | 11/11 compliant | ✅ |
+| Gate contamination | 0 | ✅ |

@@ -180,3 +180,30 @@
 # Constraints: 11/11 compliant
 # Gate contamination: 0
 # JOB: V88_PHASE03_P7_DSHE_P018_GATE_PENDING_ISSUE_CLEANUP=GATE_ON_WATCH_AWAIT_DUAL_KEYS
+
+
+# V88_PHASE03_P8_DSHE_P019_GATE_CALIB_SNAPSHOT_AWAIT_JOB
+# Date: 2026-10-22 UTC+8
+# Status: GATE_ON_WATCH_AWAIT_DUAL_KEYS
+# T0: Snapshot listen & import verify - COMPLETE (HERMEShf快照已到达9e1f6c7+9因子定义导入+9槽位全部填充)
+# T1: Cross-agent caliber compare - COMPLETE (三方DSHB+DSHE+HERMEShf交叉比对,0冲突)
+# T2: Engine & seal recheck v5 - COMPLETE (12/12 MD5 MATCH+引擎冻结+7层封印链未断)
+# T3: Gate rule lock check - COMPLETE (FR-001~006 ACTIVE+FR-007~009 SEALED+双钥匙INACTIVE+22/22约束)
+# T4: Constraint self-check + metadata - COMPLETE (11/11约束合规)
+# HERMEShf snapshot: FOUND (commit 9e1f6c7, 9 factor definitions imported)
+# Seal layers: 7 (L1→L2→L3→v2→v3→v4→v5) all MATCH
+# Seal files: 12 P0-12 + 18 archived + 1 engine
+# Engine MD5: cd73deaeec54a7f1f8bde92c1300a9dc (frozen: True)
+# Engine SHA256: 604958f257e24c3cf1ccb42e6a1214ee1b21193c8a1542e13dcf07158be92d15 (frozen: True)
+# psutil enabled: false
+# psutil daemon: false
+# Factor rules: 9 (v1.1.0-preview, observe-alert-only)
+# Hook version: v2.1.0-preview
+# Hook AUTO_COMMIT_MODE: false
+# Dual keys status: INACTIVE (BASIC WATCH)
+# Cross-agent caliber conflicts: 0
+# Calibration indicators imported: 9/9 (BASE_PRICE classification)
+# Audit standby: <1h
+# Constraints: 11/11 compliant
+# Gate contamination: 0
+# JOB: V88_PHASE03_P8_DSHE_P019_GATE_CALIB_SNAPSHOT_AWAIT=GATE_ON_WATCH_AWAIT_DUAL_KEYS
