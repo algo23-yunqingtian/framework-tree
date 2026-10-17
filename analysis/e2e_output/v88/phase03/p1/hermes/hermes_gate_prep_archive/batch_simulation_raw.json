@@ -1,0 +1,136 @@
+[
+  {
+    "id": "S1",
+    "desc": "无 Key A 无 Key B（正常待命）",
+    "key_a": false,
+    "key_b": false,
+    "prechecks_run": 0,
+    "all_pass": false,
+    "some_fail": false,
+    "skipped": true,
+    "authorized": "NO",
+    "precheck_detail": [],
+    "exit_code": 0
+  },
+  {
+    "id": "S2",
+    "desc": "Key A 存在 Key B 不存在（单钥匙预检触发）",
+    "key_a": true,
+    "key_b": false,
+    "prechecks_run": 5,
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "authorized": "NO",
+    "precheck_detail": [
+      "  ✅ P0-13-CLOSED: True",
+      "  ✅ BASELINE-SWITCH-FREE: phase03_summary_asset_re_seal.md confirms no silent baseline switch",
+      "  ✅ PHASE03-BLOCKERS-ZERO: global_gate_dashboard.md confirms Phase03 blockers=0",
+      "  ✅ NO-PREMATUROUS-MERGE: no v88-long-stable-baseline.json",
+      "  ✅ DSHE-AUTO-COMMIT-OFF: blocker_monitor_hook_snippet.py: AUTO_COMMIT_MODE=False (source verified)"
+    ],
+    "exit_code": 0
+  },
+  {
+    "id": "S3",
+    "desc": "Key A 不存在 Key B 存在（异常态）",
+    "key_a": false,
+    "key_b": true,
+    "prechecks_run": 0,
+    "all_pass": false,
+    "some_fail": false,
+    "skipped": true,
+    "authorized": "NO",
+    "precheck_detail": [],
+    "exit_code": 0
+  },
+  {
+    "id": "S4",
+    "desc": "Key A+B 都存在（授权态模拟）",
+    "key_a": true,
+    "key_b": true,
+    "prechecks_run": 5,
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "authorized": "YES",
+    "precheck_detail": [
+      "  ✅ P0-13-CLOSED: True",
+      "  ✅ BASELINE-SWITCH-FREE: phase03_summary_asset_re_seal.md confirms no silent baseline switch",
+      "  ✅ PHASE03-BLOCKERS-ZERO: global_gate_dashboard.md confirms Phase03 blockers=0",
+      "  ✅ NO-PREMATUROUS-MERGE: no v88-long-stable-baseline.json",
+      "  ✅ DSHE-AUTO-COMMIT-OFF: blocker_monitor_hook_snippet.py: AUTO_COMMIT_MODE=False (source verified)"
+    ],
+    "exit_code": 0
+  },
+  {
+    "id": "S5",
+    "desc": "重复 S1 稳定性测试",
+    "key_a": false,
+    "key_b": false,
+    "prechecks_run": 0,
+    "all_pass": false,
+    "some_fail": false,
+    "skipped": true,
+    "authorized": "NO",
+    "precheck_detail": [],
+    "exit_code": 0
+  },
+  {
+    "id": "S6",
+    "desc": "重复 S2 稳定性测试",
+    "key_a": true,
+    "key_b": false,
+    "prechecks_run": 5,
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "authorized": "NO",
+    "precheck_detail": [
+      "  ✅ P0-13-CLOSED: True",
+      "  ✅ BASELINE-SWITCH-FREE: phase03_summary_asset_re_seal.md confirms no silent baseline switch",
+      "  ✅ PHASE03-BLOCKERS-ZERO: global_gate_dashboard.md confirms Phase03 blockers=0",
+      "  ✅ NO-PREMATUROUS-MERGE: no v88-long-stable-baseline.json",
+      "  ✅ DSHE-AUTO-COMMIT-OFF: blocker_monitor_hook_snippet.py: AUTO_COMMIT_MODE=False (source verified)"
+    ],
+    "exit_code": 0
+  },
+  {
+    "id": "S7",
+    "desc": "Key A 空内容存在（边界）",
+    "key_a": true,
+    "key_b": false,
+    "prechecks_run": 5,
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "authorized": "NO",
+    "precheck_detail": [
+      "  ✅ P0-13-CLOSED: True",
+      "  ✅ BASELINE-SWITCH-FREE: phase03_summary_asset_re_seal.md confirms no silent baseline switch",
+      "  ✅ PHASE03-BLOCKERS-ZERO: global_gate_dashboard.md confirms Phase03 blockers=0",
+      "  ✅ NO-PREMATUROUS-MERGE: no v88-long-stable-baseline.json",
+      "  ✅ DSHE-AUTO-COMMIT-OFF: blocker_monitor_hook_snippet.py: AUTO_COMMIT_MODE=False (source verified)"
+    ],
+    "exit_code": 0
+  },
+  {
+    "id": "S8",
+    "desc": "Key A 大文件存在（边界）",
+    "key_a": true,
+    "key_b": false,
+    "prechecks_run": 5,
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "authorized": "NO",
+    "precheck_detail": [
+      "  ✅ P0-13-CLOSED: True",
+      "  ✅ BASELINE-SWITCH-FREE: phase03_summary_asset_re_seal.md confirms no silent baseline switch",
+      "  ✅ PHASE03-BLOCKERS-ZERO: global_gate_dashboard.md confirms Phase03 blockers=0",
+      "  ✅ NO-PREMATUROUS-MERGE: no v88-long-stable-baseline.json",
+      "  ✅ DSHE-AUTO-COMMIT-OFF: blocker_monitor_hook_snippet.py: AUTO_COMMIT_MODE=False (source verified)"
+    ],
+    "exit_code": 0
+  }
+]

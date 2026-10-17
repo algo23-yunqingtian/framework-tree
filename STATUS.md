@@ -9638,3 +9638,46 @@ V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_
 
 ### Status Flags
 V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_AGENT=HERMEShf, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_BRANCH=feature/v88-g1, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_DATE=2026-10-17, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_CONSTRAINT_COMPLIANCE=5_OF_5
+
+---
+
+## V88 Phase03 P8 HERMEShf Gate Monitor Upgrade Prep (2026-10-17)
+
+**TASK_ID**: V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_JOB
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 | **DATE**: 2026-10-17
+
+### T0-T5 Summary
+
+| Task | Description | Status |
+|------|-------------|:------:|
+| T0 | R-V88-P7-001 JSON migration plan (schema+steps+rollback, no code) | ✅ |
+| T1 | Arbiter batch simulation (8 scenarios, 0 false positives) | ✅ |
+| T2 | Exemption v6 (3 yellow tasks detailed) | ✅ |
+| T3 | Global gate dashboard v5 (3-party synced) | ✅ |
+| T4 | Snapshot cross-delivery verify (content consistent, R-P8-001) | ✅ |
+| T5 | Metadata triple update + commit/push | ✅ |
+
+### Risk Register
+
+| ID | Level | Status |
+|----|-------|:------:|
+| R-V88-P6-001 | LOW | ✅ RESOLVED (P7) |
+| R-V88-P7-001 | LOW | ✅ plan complete (P8), await Phase04 |
+| R-V88-P8-001 | LOW | 🟡 snapshot format mismatch (MD vs JSON) |
+
+### 3-Party Status
+
+| Agent | Status |
+|-------|--------|
+| HERMEShf | ARBITER_ON_STANDBY_AWAIT_KEY_A |
+| DSHB | FACTOR_STANDBY_AWAIT_DUAL_KEYS (P020 in progress) |
+| DSHE | GATE_ON_WATCH_AWAIT_DUAL_KEYS (P018 done) |
+
+### Key Status (unchanged)
+
+- KEY_A: **ABSENT** | KEY_B: **ABSENT** | AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING** | BASELINE_MERGE: **WAIT** | PHASE04: **FROZEN**
+- Zero external API calls | Zero WindPy | Zero auto merge
+
+### Status Flags
+V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_AGENT=HERMEShf, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_BRANCH=feature/v88-g1, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_DATE=2026-10-17, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_CONSTRAINT_COMPLIANCE=5_OF_5

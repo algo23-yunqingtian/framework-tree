@@ -1,0 +1,41 @@
+# JOB_READY.flag — HERMES Gate Prep Archive
+
+# V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_JOB
+# Date: 2026-10-17T15:10 +0800
+# Agent: HERMEShf
+# Branch: feature/v88-g1 (BRANCH_LOCKED)
+# Status: ARBITER_ON_STANDBY_AWAIT_KEY_A
+
+# T0: R-V88-P7-001 JSON migration plan — COMPLETE (schema+steps+rollback, no code change)
+# T1: Arbiter batch simulation — COMPLETE (8 scenarios, 5 ALL PASS + 3 SKIP, 0 FAIL)
+# T2: Exemption followup v6 — COMPLETE (3 yellow tasks detailed, 0 blockers)
+# T3: Global gate dashboard v5 — COMPLETE (3-party status synced)
+# T4: Snapshot cross-delivery verify — COMPLETE (content consistent, format mismatch R-P8-001)
+# T5: Metadata triple update — COMPLETE
+
+# Risk register:
+# R-V88-P6-001 LOW → RESOLVED (P7)
+# R-V88-P7-001 LOW → plan complete, await Phase04
+# R-V88-P8-001 LOW → snapshot format mismatch (MD vs JSON), non-blocking
+
+# Constraints:
+# BRANCH_LOCKED=TRUE
+# NO_OVERWRITE=TRUE
+# NO_MODIFY_V87=TRUE
+# NO_EDIT_RELEASE_TAG=TRUE
+# NO_ZHIJI_API_CALL=TRUE
+# Constraint compliance: 5/5
+
+# Key status:
+# KEY_A=WIND_DATA_LINK_ONLINE.flag: ABSENT
+# KEY_B=HERMES_TRIGGER_AUTHORIZED.flag: ABSENT
+# AUTHORIZED=NO
+# ARBITER_STATE=OBSERVING
+# BASELINE_MERGE=WAIT_AFTER_PHASE04_GO
+# PHASE04_IGNITION=FROZEN
+
+# Zero external API calls: confirmed
+# Zero WindPy calls: confirmed
+# Zero auto baseline merge: confirmed
+
+JOB: V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP=ARBITER_ON_STANDBY_AWAIT_KEY_A
