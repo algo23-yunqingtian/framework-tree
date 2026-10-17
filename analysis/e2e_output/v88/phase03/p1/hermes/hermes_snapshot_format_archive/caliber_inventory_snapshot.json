@@ -1,0 +1,146 @@
+{
+  "snapshot_id": "HERMEShf_Caliber_20261017",
+  "schema_version": "1.0.0",
+  "generated_at": "2026-10-17T14:15:00+08:00",
+  "source": "HERMEShf",
+  "task_id": "V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_JOB / T1",
+  "branch": "feature/v88-g1",
+  "branch_locked": true,
+  "md_source_file": "analysis/e2e_output/v88/phase03/p1/hermes/hermes_risk_calib_archive/caliber_snapshot_for_dshe.md",
+  "md_source_md5": "5CE83A6517F0EFC7DDC588A5C7907CA7",
+  "distribution_targets": ["DSHE", "DSHB"],
+
+  "section_1_factor_matrix": {
+    "description": "3 factors x 3 varieties = 9 factor computation units",
+    "source_ref": "analysis/e2e_output/v88/phase03/p2/dshb/p016_standby_archive/factor_run_config_prep.md",
+    "status": "LOCKED",
+    "status_detail": "Config frozen, not executed, awaiting dual-key activation",
+
+    "factors": [
+      {
+        "id": "F1",
+        "factor_id": "momentum_20d",
+        "name_cn": "20日动量",
+        "category": "momentum",
+        "formula": "(close[t] - close[t-20]) / close[t-20]",
+        "lookback": "20d",
+        "forward": "20d",
+        "neutralization": "industry",
+        "winsorize": "1%-99%"
+      },
+      {
+        "id": "F2",
+        "factor_id": "momentum_60d",
+        "name_cn": "60日动量",
+        "category": "momentum",
+        "formula": "(close[t] - close[t-60]) / close[t-60]",
+        "lookback": "60d",
+        "forward": "20d",
+        "neutralization": "industry",
+        "winsorize": "1%-99%"
+      },
+      {
+        "id": "F3",
+        "factor_id": "vol_20d",
+        "name_cn": "20日实现波动率",
+        "category": "volatility",
+        "formula": "std(returns[t-20:t]) * sqrt(252)",
+        "lookback": "20d",
+        "forward": "20d",
+        "neutralization": "none",
+        "winsorize": "5%-95%"
+      }
+    ],
+
+    "varieties": [
+      {
+        "id": "V1",
+        "name_cn": "铅",
+        "code": "PB",
+        "category": "基础金属",
+        "factor_suite": ["momentum", "mean_reversion", "volatility"]
+      },
+      {
+        "id": "V2",
+        "name_cn": "锌",
+        "code": "ZN",
+        "category": "基础金属",
+        "factor_suite": ["momentum", "carry", "term_structure"]
+      },
+      {
+        "id": "V3",
+        "name_cn": "再生铅",
+        "code": "Recycle-PB",
+        "category": "再生金属",
+        "factor_suite": ["momentum", "policy_impact", "scrap_premium"]
+      }
+    ],
+
+    "matrix": [
+      {"seq": 1, "factor_id": "momentum_20d", "variety": "PB",         "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.03, "t_min": 1.5, "n_min": 200}},
+      {"seq": 2, "factor_id": "momentum_20d", "variety": "ZN",         "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.03, "t_min": 1.5, "n_min": 200}},
+      {"seq": 3, "factor_id": "momentum_20d", "variety": "Recycle-PB", "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.03, "t_min": 1.5, "n_min": 200}},
+      {"seq": 4, "factor_id": "momentum_60d", "variety": "PB",         "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.02, "t_min": 1.5, "n_min": 200}},
+      {"seq": 5, "factor_id": "momentum_60d", "variety": "ZN",         "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.02, "t_min": 1.5, "n_min": 200}},
+      {"seq": 6, "factor_id": "momentum_60d", "variety": "Recycle-PB", "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.02, "t_min": 1.5, "n_min": 200}},
+      {"seq": 7, "factor_id": "vol_20d",      "variety": "PB",         "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.01, "t_min": 1.2, "n_min": 200}},
+      {"seq": 8, "factor_id": "vol_20d",      "variety": "ZN",         "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.01, "t_min": 1.2, "n_min": 200}},
+      {"seq": 9, "factor_id": "vol_20d",      "variety": "Recycle-PB", "data_field": "close", "adjustment": "后复权", "data_source": "WIND_DATA_LINK", "quality_threshold": {"ic_min": 0.01, "t_min": 1.2, "n_min": 200}}
+    ]
+  },
+
+  "section_2_caliber_metadata": {
+    "data_caliber": {
+      "price_field": "close",
+      "adjusted": true,
+      "data_source": "WIND_DATA_LINK (via gateway only)",
+      "universe_filter": "active contracts, liquidity > 10M USD/day",
+      "date_start": "2025-01-01",
+      "date_end": "2026-10-22",
+      "min_sample_size": 200
+    },
+    "statistical_caliber": {
+      "dshb_db_mapping_rate": {"value": "84/109", "pct": 77.06, "threshold": ">=60%", "status": "PASS"},
+      "engine_d7_render_coverage": {"value": "0/101", "pct": 0.00, "threshold": ">=60%", "status": "FAIL"},
+      "chart_caliber": {"value": "88张", "detail": "63 matchable + 25 pending_data"},
+      "indicator_caliber": {"value": "123 matched + 24 partial + 0 missing"},
+      "discrepancy_note": "DSHB DB层映射命中率 PASS(77.06%)，引擎侧 D7 渲染覆盖率 FAIL(0%)——根因是引擎数据源路径硬编码到 scripts/api_cache.db，无法读取 DSHB 的 phase03_test.db。此差异为已知问题，不影响因子计算口径（因子计算使用 close price series，通过 Wind 网关获取）。"
+    }
+  },
+
+  "section_3_variety_mapping": [
+    {"dshb_indicator_id": "pb_21_close_front",   "dshe_meta_chart_id": "PB_FU00014950",      "variety": "PB",         "data_status": "base price"},
+    {"dshb_indicator_id": "zn_21_close_front",   "dshe_meta_chart_id": "ZN_FU00014950",      "variety": "ZN",         "data_status": "base price"},
+    {"dshb_indicator_id": "recycle_pb_21_close", "dshe_meta_chart_id": "RECYCLEPB_FU00014950","variety": "Recycle-PB", "data_status": "base price"}
+  ],
+  "variety_mapping_note": "9 因子所需指标均为 close price series（基础价格数据），不在 P019 的 24-partial 清单中。P019 已确认 9 因子所需指标属于基础价格数据，不受 partial 状态影响。",
+
+  "section_4_p019_cross_check": {
+    "source_ref": "analysis/e2e_output/v88/phase03/p2/dshb/p019_calib_archive/partial_indicator_cross_check.md",
+    "checks": [
+      {"item": "9因子配置",     "p019": "3x3 LOCKED",                          "snapshot": "3x3 LOCKED",                          "consistent": true},
+      {"item": "品种列表",       "p019": "PB, ZN, Recycle-PB",                 "snapshot": "PB, ZN, Recycle-PB",                 "consistent": true},
+      {"item": "因子列表",       "p019": "momentum_20d, momentum_60d, vol_20d","snapshot": "momentum_20d, momentum_60d, vol_20d","consistent": true},
+      {"item": "数据源",         "p019": "WIND_DATA_LINK (via gateway)",       "snapshot": "WIND_DATA_LINK (via gateway)",       "consistent": true},
+      {"item": "执行状态",       "p019": "not executed",                       "snapshot": "LOCKED",                             "consistent": true},
+      {"item": "24-partial关联","p019": "0/24（9因子不依赖partial指标）",     "snapshot": "确认",                               "consistent": true}
+    ],
+    "all_consistent": true
+  },
+
+  "section_5_distribution": {
+    "to_dshe": "DSHE 应使用本快照中 section_1 的 9 因子矩阵定义和 section_2 的口径元数据，校验因子运行时监控规则（gate_rules/factor_runtime_rules_v1.yaml）中的指标是否与本快照一致。如有偏差，DSHE 需更新规则并提交。",
+    "to_dshb": "DSHB 应使用本快照中 section_3 的品种映射，校验 factor_run_config_prep.md 中的品种-指标映射是否与本快照一致。P019 已用现有口径源完成 24-partial 交叉核对（24/24 PASS），本快照补齐了 DSHB 等待的 HERMEShf 口径源。"
+  },
+
+  "section_6_conclusion": {
+    "factor_definition": "complete",
+    "variety_mapping": "3 varieties x 9 factors",
+    "caliber_metadata": "close + adjusted + WIND_DATA_LINK",
+    "p019_consistency": "6/6 aligned",
+    "execution_status": "LOCKED (awaiting dual keys)",
+    "distribution": "DSHE + DSHB"
+  },
+
+  "status": "CALIBER_SNAPSHOT_GENERATED_DISTRIBUTED_TO_DSHB_DSHE"
+}

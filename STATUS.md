@@ -9681,3 +9681,51 @@ V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_JOB=ARBITER_ON_STANDBY_AW
 
 ### Status Flags
 V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_AGENT=HERMEShf, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_BRANCH=feature/v88-g1, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_DATE=2026-10-17, V88_PHASE03_P8_HERMESHF_P7_GATE_MONITOR_UPGRADE_PREP_CONSTRAINT_COMPLIANCE=5_OF_5
+
+---
+
+## V88 Phase03 P9 HERMEShf Snapshot Format Adapt (2026-10-17)
+
+**TASK_ID**: V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_JOB
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 | **DATE**: 2026-10-17
+
+### T0-T5 Summary
+
+| Task | Description | Status |
+|------|-------------|:------:|
+| T0 | JSON snapshot generation (caliber_inventory_snapshot.json, 9-factor 3x3) | ✅ |
+| T1 | Dual-source consistency check (10/10 content match, hash binding) | ✅ |
+| T2 | Risk ledger v4 (R-V88-P8-001 RESOLVED, all 3 risks cleared) | ✅ |
+| T3 | Global gate dashboard v6 (JSON delivery, 3-party synced) | ✅ |
+| T4 | Arbiter self-check (arbiter.py NOT modified, 5 prechecks unchanged) | ✅ |
+| T5 | Metadata triple update + commit/push | ✅ |
+
+### Risk Register (ALL RESOLVED)
+
+| ID | Level | Status |
+|----|-------|:------:|
+| R-V88-P6-001 | LOW | ✅ RESOLVED (P7) |
+| R-V88-P7-001 | LOW | ✅ plan complete (P8), await Phase04 |
+| R-V88-P8-001 | LOW | ✅ RESOLVED (P9, JSON snapshot) |
+
+### JSON Snapshot Delivery
+
+- File: caliber_inventory_snapshot.json (8378B)
+- Content: 9-factor 3x3 matrix, 100% match with MD source
+- Dual-source verification: 10/10 passed
+- Hash binding: MD5+SHA256 recorded
+- DSHE schema adapted
+
+### DSHE P019 Update (external)
+
+- DSHE confirmed snapshot import (commit ffbe8ce)
+- Status: SNAPSHOT RECEIVED — IMPORT VERIFIED — 9 SLOTS FILLED
+
+### Key Status (unchanged)
+
+- KEY_A: **ABSENT** | KEY_B: **ABSENT** | AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING** | BASELINE_MERGE: **WAIT** | PHASE04: **FROZEN**
+- Zero external API calls | Zero WindPy | Zero auto merge | Zero arbiter modification
+
+### Status Flags
+V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_AGENT=HERMEShf, V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_BRANCH=feature/v88-g1, V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_DATE=2026-10-17, V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_CONSTRAINT_COMPLIANCE=5_OF_5

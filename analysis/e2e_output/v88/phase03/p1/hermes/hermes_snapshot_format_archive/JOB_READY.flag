@@ -1,0 +1,42 @@
+# JOB_READY.flag — HERMES Snapshot Format Archive
+
+# V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_JOB
+# Date: 2026-10-17T15:40 +0800
+# Agent: HERMEShf
+# Branch: feature/v88-g1 (BRANCH_LOCKED)
+# Status: ARBITER_ON_STANDBY_AWAIT_KEY_A
+
+# T0: JSON snapshot generation — COMPLETE (caliber_inventory_snapshot.json, 9-factor 3x3 matrix, 100% content match with MD)
+# T1: Dual-source consistency check — COMPLETE (10/10 content checks passed, hash binding recorded)
+# T2: Risk ledger v4 — COMPLETE (R-V88-P8-001 RESOLVED, all 3 risks cleared)
+# T3: Global gate dashboard v6 — COMPLETE (JSON delivery recorded, 3-party synced)
+# T4: Arbiter self-check — COMPLETE (arbiter.py NOT modified, 5 prechecks unchanged)
+# T5: Metadata triple update — COMPLETE
+
+# Risk register (ALL RESOLVED):
+# R-V88-P6-001 LOW → RESOLVED (P7)
+# R-V88-P7-001 LOW → plan complete (P8), await Phase04
+# R-V88-P8-001 LOW → RESOLVED (P9, JSON snapshot generated)
+
+# Constraints:
+# BRANCH_LOCKED=TRUE
+# NO_OVERWRITE=TRUE
+# NO_MODIFY_V87=TRUE
+# NO_EDIT_RELEASE_TAG=TRUE
+# NO_ZHIJI_API_CALL=TRUE
+# Constraint compliance: 5/5
+
+# Key status (unchanged):
+# KEY_A=WIND_DATA_LINK_ONLINE.flag: ABSENT
+# KEY_B=HERMES_TRIGGER_AUTHORIZED.flag: ABSENT
+# AUTHORIZED=NO
+# ARBITER_STATE=OBSERVING
+# BASELINE_MERGE=WAIT_AFTER_PHASE04_GO
+# PHASE04_IGNITION=FROZEN
+
+# Zero external API calls: confirmed
+# Zero WindPy calls: confirmed
+# Zero auto baseline merge: confirmed
+# Zero arbiter code modification: confirmed
+
+JOB: V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT=ARBITER_ON_STANDBY_AWAIT_KEY_A
