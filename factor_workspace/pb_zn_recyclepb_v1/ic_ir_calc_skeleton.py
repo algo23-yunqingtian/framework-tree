@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-IC-IR Calculation Skeleton — P0-14 Factor Calculation Framework
+IC-IR Calculation Skeleton 鈥?P0-14 Factor Calculation Framework
 
 TASK_ID: V88_PHASE03_P4_DSHB_P014_READY_FOR_FACTOR_CALC
 AGENT: DSHB | BRANCH: feature/v88-g1 (BRANCH_LOCKED)
 GENERATED: 2026-10-22
 
-⚠️  CRITICAL SAFETY NOTICE ⚠️
+鈿狅笍  CRITICAL SAFETY NOTICE 鈿狅笍
 ============================================================
 1. This script is a SKELETON ONLY. It does NOT contain any
    hardcoded WindPy or external API calls.
@@ -17,8 +17,8 @@ GENERATED: 2026-10-22
 
 3. This script NEVER calls any external API by itself.
    Wind data is pulled exclusively through the trigger pipeline:
-     WIND_DATA_LINK_ONLINE.flag → wind_online_watcher.py → 
-     (approved gateway) → factor data ingestion → THIS SCRIPT
+     WIND_DATA_LINK_ONLINE.flag 鈫?wind_online_watcher.py 鈫?
+     (approved gateway) 鈫?factor data ingestion 鈫?THIS SCRIPT
 
 4. NO AUTO-PUSH: This script does NOT execute any git operations.
 
@@ -33,7 +33,7 @@ GENERATED: 2026-10-22
 8. This script is DORMANT and INERT. It produces NO factor results
    until the trigger condition is met.
 
-⚠️  END OF SAFETY NOTICE ⚠️
+鈿狅笍  END OF SAFETY NOTICE 鈿狅笍
 ============================================================
 
 Author: DSHB Agent
@@ -49,7 +49,7 @@ import time
 from datetime import datetime
 
 # =============================================================================
-# CONSTANTS — DO NOT MODIFY WITHOUT REVIEW
+# CONSTANTS 鈥?DO NOT MODIFY WITHOUT REVIEW
 # =============================================================================
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
@@ -105,11 +105,11 @@ def validate_trigger_condition():
     """
     if os.path.exists(FLAG_PATH):
         return True, (
-            f"✅ TRIGGER ACTIVE: WIND_DATA_LINK_ONLINE.flag found at {FLAG_PATH}\n"
+            f"鉁?TRIGGER ACTIVE: WIND_DATA_LINK_ONLINE.flag found at {FLAG_PATH}\n"
             f"   Data link confirmed online. Factor calculation authorized."
         )
     return False, (
-        f"⛔ TRIGGER INACTIVE: WIND_DATA_LINK_ONLINE.flag NOT FOUND at {FLAG_PATH}\n"
+        f"鉀?TRIGGER INACTIVE: WIND_DATA_LINK_ONLINE.flag NOT FOUND at {FLAG_PATH}\n"
         f"   Factor calculation PROHIBITED. No data source confirmed.\n"
         f"   Awaiting external placement of WIND_DATA_LINK_ONLINE.flag."
     )
@@ -119,14 +119,103 @@ def validate_input(input_dir):
     """
     Validate that input data exists and is well-formed.
     Called BEFORE any calculation.
+
+    Exception Fuse #1 - Empty Input File Detection:
+    Checks that every required input file is present AND non-empty (> 0 bytes).
+    Empty files are treated as a hard error (aborts calculation, no fallback).
     """
     required_files = []  # Will be populated after data ingestion
     for f in required_files:
         fpath = os.path.join(input_dir, f)
         if not os.path.exists(fpath):
             return False, f"Missing required input file: {f}"
-    return True, "Input validation passed"
+        # ===== EXCEPTION FUSE #1: Empty input file guard =====
+        file_size = os.path.getsize(fpath)
+        if file_size == 0:
+            return False, (
+                f"EXCEPTION_FUSE_EMPTY_INPUT: Input file {f} is empty "
+                f"(0 bytes). Calculation aborted."
+            )
+    return True, "Input validation passed (no empty files detected)"
 
+
+def validate_time_series_continuity(dates, tolerance_days=3):
+    """
+    Exception Fuse #2 - Time Series Gap Detection:
+    Checks for gaps (missing dates) in a time series.
+    A gap exceeding tolerance_days is treated as a data quality error.
+    """
+    from datetime import date, timedelta
+
+    if not dates or len(dates) < 2:
+        return True, "Fewer than 2 data points - continuity check skipped"
+
+    parsed = []
+    for d in dates:
+        if isinstance(d, date):
+            parsed.append(d)
+        elif isinstance(d, str):
+            try:
+                parsed.append(date.fromisoformat(d))
+            except ValueError:
+                return False, f"Invalid date format: '{d}' (expected YYYY-MM-DD)"
+        else:
+            return False, f"Unsupported date type: {type(d).__name__}"
+
+    gaps = []
+    for i in range(1, len(parsed)):
+        delta = (parsed[i] - parsed[i - 1]).days
+        if delta > tolerance_days:
+            gaps.append({
+                'from_date': parsed[i - 1].isoformat(),
+                'to_date': parsed[i].isoformat(),
+                'gap_days': delta,
+                'expected_max_days': tolerance_days,
+            })
+
+    if gaps:
+        gap_summary = "; ".join(
+            f"{g['from_date']}->{g['to_date']} ({g['gap_days']}d > {tolerance_days}d)"
+            for g in gaps[:5]
+        )
+        total_gaps = len(gaps)
+        if total_gaps > 5:
+            gap_summary += f"; ... +{total_gaps - 5} more gaps"
+        return False, (
+            f"EXCEPTION_FUSE_TIME_GAP: {total_gaps} time series gap(s) detected "
+            f"(tolerance={tolerance_days}d): {gap_summary}. "
+            f"Calculation aborted - data continuity requirement not met."
+        )
+
+    return True, "Time series continuity check passed (no gaps detected)"
+
+
+def validate_output_dir_exists(output_dir):
+    """
+    Exception Fuse #3 - Output Directory Existence Check:
+    Verifies that the output directory exists and is writable.
+    """
+    if not os.path.exists(output_dir):
+        return False, (
+            f"EXCEPTION_FUSE_OUTPUT_DIR_MISSING: Output directory does not exist: "
+            f"'{output_dir}'. Calculation aborted."
+        )
+    if not os.path.isdir(output_dir):
+        return False, (
+            f"EXCEPTION_FUSE_OUTPUT_DIR_INVALID: Path is not a directory: "
+            f"'{output_dir}'. Calculation aborted."
+        )
+    test_file = os.path.join(output_dir, '.write_test')
+    try:
+        with open(test_file, 'w') as f:
+            f.write('test')
+        os.remove(test_file)
+        return True, "Output directory existence check passed"
+    except (OSError, IOError) as e:
+        return False, (
+            f"EXCEPTION_FUSE_OUTPUT_DIR_NOT_WRITABLE: Output directory "
+            f"'{output_dir}' is not writable: {e}. Calculation aborted."
+        )
 
 def validate_output_schema(result, expected_schema):
     """Validate that output result matches expected schema version."""
@@ -138,14 +227,14 @@ def validate_output_schema(result, expected_schema):
 
 
 # =============================================================================
-# CALCULATION STUBS — DO NOT EXECUTE WITHOUT TRIGGER
+# CALCULATION STUBS 鈥?DO NOT EXECUTE WITHOUT TRIGGER
 # =============================================================================
 
 def calculate_ic(factor_data, return_data):
     """
     Calculate Information Coefficient (IC) between factor values and forward returns.
     
-    ⚠️ STUB — This function is a placeholder. Real implementation requires
+    鈿狅笍 STUB 鈥?This function is a placeholder. Real implementation requires
     Wind data ingestion through the approved gateway pipeline.
     
     Args:
@@ -156,7 +245,7 @@ def calculate_ic(factor_data, return_data):
         dict: IC calculation results
     """
     if not factor_data or not return_data:
-        raise ValueError("Empty factor or return data — cannot compute IC")
+        raise ValueError("Empty factor or return data 鈥?cannot compute IC")
     if len(factor_data) != len(return_data):
         raise ValueError("Factor and return data must have equal length")
 
@@ -169,7 +258,7 @@ def calculate_ic(factor_data, return_data):
     var_r = sum((r - mean_r) ** 2 for r in return_data) / n
 
     if var_f == 0 or var_r == 0:
-        raise ValueError("Zero variance in factor or return data — cannot compute IC")
+        raise ValueError("Zero variance in factor or return data 鈥?cannot compute IC")
 
     ic_mean = cov / (var_f * var_r) ** 0.5
     return {
@@ -184,7 +273,7 @@ def calculate_ir(ic_series):
     """
     Calculate Information Ratio (IR) from a series of IC values.
     
-    ⚠️ STUB — Real implementation depends on IC calculation.
+    鈿狅笍 STUB 鈥?Real implementation depends on IC calculation.
     
     Args:
         ic_series: list of IC values over time
@@ -193,7 +282,7 @@ def calculate_ir(ic_series):
         dict: IR calculation results
     """
     if not ic_series:
-        raise ValueError("Empty IC series — cannot compute IR")
+        raise ValueError("Empty IC series 鈥?cannot compute IR")
 
     n = len(ic_series)
     ic_mean = sum(ic_series) / n
@@ -201,7 +290,7 @@ def calculate_ir(ic_series):
     ic_std = ic_var ** 0.5
 
     if ic_std == 0:
-        raise ValueError("Zero IC variance — IR undefined")
+        raise ValueError("Zero IC variance 鈥?IR undefined")
 
     ir_mean = ic_mean / ic_std
     t_stat = (ic_mean / ic_std) * (n ** 0.5) if n > 1 else 0
@@ -284,21 +373,21 @@ def build_factor_meta(factor_id, factor_name, variety, category, lookback_days, 
 
 def run_calc(factor_id='momentum_20d', variety='PB', date_range=('2026-10-01', '2026-10-22')):
     """
-    ⚠️ ENTRY POINT — WILL NOT EXECUTE WITHOUT WIND_DATA_LINK_ONLINE.flag ⚠️
+    鈿狅笍 ENTRY POINT 鈥?WILL NOT EXECUTE WITHOUT WIND_DATA_LINK_ONLINE.flag 鈿狅笍
     
     This is the main execution entry point for factor calculation.
     It is INERT until the trigger condition is met.
     
     Execution flow:
-    1. Check WIND_DATA_LINK_ONLINE.flag → if absent, EXIT immediately
-    2. Validate input data → if invalid, EXIT with error
+    1. Check WIND_DATA_LINK_ONLINE.flag 鈫?if absent, EXIT immediately
+    2. Validate input data 鈫?if invalid, EXIT with error
     3. Calculate IC
     4. Calculate IR
     5. Write results with MD5 checksums
     6. Write audit log
     
-    ⚠️ NO AUTO-PUSH: This function does NOT call any git commands.
-    ⚠️ NO AUTO-API: This function does NOT call any external API.
+    鈿狅笍 NO AUTO-PUSH: This function does NOT call any git commands.
+    鈿狅笍 NO AUTO-API: This function does NOT call any external API.
     
     Args:
         factor_id: Factor identifier string
@@ -309,7 +398,7 @@ def run_calc(factor_id='momentum_20d', variety='PB', date_range=('2026-10-01', '
         dict: Execution result with status
     """
     print("=" * 70)
-    print("IC-IR CALCULATION SKELETON — ENTRY POINT")
+    print("IC-IR CALCULATION SKELETON 鈥?ENTRY POINT")
     print(f"Factor: {factor_id} | Variety: {variety} | Range: {date_range}")
     print("=" * 70)
 
@@ -317,7 +406,7 @@ def run_calc(factor_id='momentum_20d', variety='PB', date_range=('2026-10-01', '
     is_valid, message = validate_trigger_condition()
     print(message)
     if not is_valid:
-        print("\n⛔ EXITING — Trigger condition not met.")
+        print("\n鉀?EXITING 鈥?Trigger condition not met.")
         return {
             'status': 'ABORTED',
             'reason': 'WIND_DATA_LINK_ONLINE.flag not found',
@@ -328,22 +417,36 @@ def run_calc(factor_id='momentum_20d', variety='PB', date_range=('2026-10-01', '
     input_dir = os.path.join(WORKSPACE, 'input')
     input_ok, input_msg = validate_input(input_dir)
     if not input_ok:
-        print(f"\n❌ Input validation failed: {input_msg}")
+        print(f"\n鉂?Input validation failed: {input_msg}")
         return {
             'status': 'FAILED',
             'reason': input_msg,
             'factor_calculation_prohibited': False,
         }
-    print(f"✅ {input_msg}")
+    print(f"鉁?{input_msg}")
 
-    # ---- CALCULATION (STUB — no real data) ----
-    print("\n⚠️  STUB: No real factor data available. Cannot execute calculation.")
+    # ---- GATE 3: Output directory existence check (Exception Fuse #3) ----
+    output_dir = os.path.join(WORKSPACE, "output")
+    output_ok, output_msg = validate_output_dir_exists(output_dir)
+    if not output_ok:
+        print(f"\n Output directory check failed: {output_msg}")
+        return {
+            "status": "FAILED",
+            "reason": output_msg,
+            "factor_calculation_prohibited": False,
+            "exception_fuse": "OUTPUT_DIR_MISSING",
+        }
+    print(f" {output_msg}")
+
+
+    # ---- CALCULATION (STUB 鈥?no real data) ----
+    print("\n鈿狅笍  STUB: No real factor data available. Cannot execute calculation.")
     print("    Real execution requires data ingestion through approved Wind gateway.")
-    print("    This is a SKELETON ONLY — no hardcoded Wind calls.\n")
+    print("    This is a SKELETON ONLY 鈥?no hardcoded Wind calls.\n")
 
     return {
         'status': 'STUB_INERT',
-        'reason': 'Skeleton only — no real data for calculation',
+        'reason': 'Skeleton only 鈥?no real data for calculation',
         'factor_calculation_prohibited': False,
         'requires_data_ingestion': True,
         'data_source_required': 'WIND_DATA_LINK',
@@ -359,10 +462,10 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='IC-IR Factor Calculation Skeleton (INERT — requires WIND_DATA_LINK_ONLINE.flag)',
+        description='IC-IR Factor Calculation Skeleton (INERT 鈥?requires WIND_DATA_LINK_ONLINE.flag)',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
-            '⚠️  SAFETY NOTICE:\n'
+            '鈿狅笍  SAFETY NOTICE:\n'
             '  This script is a SKELETON ONLY.\n'
             '  It does NOT contain hardcoded WindPy or external API calls.\n'
             '  The run_calc() entry point is INERT until\n'

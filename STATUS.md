@@ -1,4 +1,28 @@
 
+### 2026-10-22 V88 Phase03 P9 DSHB P0-21 Factor Config Final Audit (V88_PHASE03_P9_DSHB_P021_FACTOR_CONFIG_FINAL_AUDIT)
+- **工单**: V88_PHASE03_P9_DSHB_P021_FACTOR_CONFIG_FINAL_AUDIT
+- **前置**: P020 Pre-Run Sanity Precheck全部完成(6/6 PASS); HERMEShf MD快照已到达(JSON待迁移R-V88-P8-001); 看门狗存量bug 1个(仅文档登记不修代码); KeyA+KeyB均NOT_FOUND; 因子计算保持禁止; 仅配置审计与快照交叉核验
+- **T0 JSON快照载入与配置对账**: JSON快照caliber_inventory_snapshot.json NOT_FOUND; 使用HERMEShf MD快照(caliber_snapshot_for_dshe.md); DSHB本地9因子配置与官方快照逐项比对23个维度; 23/23 PASS/0偏差; 因子/品种/时间区间/参数完全匹配; dshb_snapshot_config_audit.md
+- **T1 熔断保护回归校验**: 3条熔断分支(空文件/时间断档/输出目录)逐一验证; 触发逻辑正常; 计算主体代码0改动; ic_ir_calc_skeleton.py 19033B/136 insertions/33 deletions; 5个异常消息(EMPTY_INPUT/TIME_GAP/OUTPUT_DIR_MISSING/INVALID/NOT_WRITABLE); fuse_regression_check.md
+- **T2 存量bug登记归档**: 预存bug完整描述(wind_online_watcher.py line 562 global声明后置); 复现条件(CLI调用触发SyntaxError); 影响范围(仅CLI/main路径; 模块导入安全); 风险台账RISK-V88-P021-001; 标记Phase04待修复; 本次不修改代码; legacy_bug_log.md
+- **T3 审计钩子持续可用性核验**: 再次执行审计钩子; 5文件采集/15哈希(MD5+SHA256+git blob SHA1); 1个预期漂移(skeleton fuse); 0 auto-push/0 API调用; 审计日志更新; audit_hook_second_verify.md
+- **T4 全资产封签复核**: P021 5交付物~23233B; P020 5交付物稳定; 核心文件3个(1预期漂移+2稳定); CRLF漂移1个(预期); 0未授权改动/0后门/0自动推送/0 API调用; asset_final_seal_v2.md
+- **T5 约束自检+元数据更新**: 12/12约束合规; STATUS.md+JOB_READY.flag+MD5_MANIFEST.md全部更新; 状态维持FACTOR_STANDBY_AWAIT_DUAL_KEYS
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V87=TRUE/NO_EDIT_RELEASE_TAG=TRUE/NO_ZHIJI_API_CALL=TRUE/UPSTREAM_WRITES=0/冻结代码未修改/禁止手动干预/不修改caliber状态/无正式基线输出/无WindPy调用/无自动推送/12/12
+- **状态标记**: V88_PHASE03_P9_DSHB_P021_FACTOR_CONFIG_FINAL_AUDIT=FACTOR_STANDBY_AWAIT_DUAL_KEYS, V88_PHASE03_P9_SNAPSHOT_AUDIT=23_OF_23_PASS, V88_PHASE03_P9_JSON_SNAPSHOT=NOT_FOUND, V88_PHASE03_P9_MD_SNAPSHOT=USED, V88_PHASE03_P9_CROSS_AUDIT_DEVIATIONS=0, V88_PHASE03_P9_FUSE_REGRESSION=3_OF_3_VERIFIED, V88_PHASE03_P9_CALC_LOGIC_MODIFIED=0, V88_PHASE03_P9_LEGACY_BUG_REGISTERED=1, V88_PHASE03_P9_BUG_DEFERRED=Phase04, V88_PHASE03_P9_CODE_MODIFICATIONS=0, V88_PHASE03_P9_AUDIT_HASHES=15_OF_15, V88_PHASE03_P9_UNAUTHORIZED_MODS=0, V88_PHASE03_P9_BACKDOOR=0, V88_PHASE03_P9_WINDPY_IMPORT=0, V88_PHASE03_P9_AUTO_PUSH=0, V88_PHASE03_P9_API_CALLS=0, V88_PHASE03_P9_FACTOR_RESULTS=0, V88_PHASE03_P9_DELIVERABLES=5_FILES, V88_PHASE03_P9_TOTAL_TASKS=6_OF_6_COMPLETE
+
+### 2026-10-22 V88 Phase03 P8 DSHB P0-20 Pre-Run Sanity Precheck (V88_PHASE03_P8_DSHB_P020_PRE_RUN_SANITY_PRECHECK)
+- **工单**: V88_PHASE03_P8_DSHB_P020_PRE_RUN_SANITY_PRECHECK
+- **前置**: P019口径对齐闭环(FACTOR_STANDBY_AWAIT_DUAL_KEYS); 24-partial 24/24 PASS/0冲突; 审计钩子只读部署; KeyA+KeyB均NOT_FOUND; 严禁执行IC/IR因子计算
+- **T0 9因子离线静态预检**: 3品种×3因子=9任务配置静态校验(时间区间/品种代码/输出路径/schema版本); 9/9 PASS; 0数据请求; 0运算; 未修改任何配置文件; factor_precheck_static_report.md
+- **T1 异常熔断分支补全**: ic_ir_calc_skeleton.py新增3类异常保护(空输入文件/时间序列断档/输出目录不存在); 仅增加判断分支不改动原有计算逻辑; 3/3 fuses ready; exception_fuse_upgrade.md
+- **T2 双钥匙看门狗全链路巡检**: wind_online_watcher.py v2.0.0四态逻辑再次核验; 66 patterns扫描(0 WindPy/0 auto-push/0 API/0动态执行/0后门/0绕过); 1预存语法bug已记录; watchdog_full_scan.md
+- **T3 审计链路全流程验证**: 触发本地模拟写入; workspace_audit_hook.py采集6文件/18哈希值(MD5+SHA256+git blob SHA1); 全程只读/0 auto-push/0 API调用; audit_hook_validation.md
+- **T4 全资产最终封签复核**: git diff仅T1 fuse+DSHE预存改动; 0未授权代码改动; 0后门; CRLF漂移预期; final_asset_seal_check.md
+- **T5 约束自检+元数据更新**: 12/12约束合规; STATUS.md+JOB_READY.flag+MD5_MANIFEST.md全部更新; 状态维持FACTOR_STANDBY_AWAIT_DUAL_KEYS
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V87=TRUE/NO_EDIT_RELEASE_TAG=TRUE/NO_ZHIJI_API_CALL=TRUE/UPSTREAM_WRITES=0/冻结代码未修改/禁止手动干预/不修改caliber状态/无正式基线输出/无WindPy调用/无自动推送/12/12
+- **状态标记**: V88_PHASE03_P8_DSHB_P020_PRE_RUN_SANITY_PRECHECK=FACTOR_STANDBY_AWAIT_DUAL_KEYS, V88_PHASE03_P8_STATIC_PRECHECK=9_OF_9_PASS, V88_PHASE03_P8_EXCEPTION_FUSE=3_OF_3_ADDED, V88_PHASE03_P8_WINDPY_IMPORT=0, V88_PHASE03_P8_AUTO_PUSH=0, V88_PHASE03_P8_API_CALLS=0, V88_PHASE03_P8_BACKDOOR=0, V88_PHASE03_P8_AUDIT_HOOK=VERIFIED, V88_PHASE03_P8_AUDIT_HASHES=18_OF_18, V88_PHASE03_P8_GIT_DIFF=EXPECTED_CHANGES_ONLY, V88_PHASE03_P8_UNAUTHORIZED_MODS=0, V88_PHASE03_P8_FACTOR_RESULTS=0, V88_PHASE03_P8_DELIVERABLES=5_FILES, V88_PHASE03_P8_TOTAL_TASKS=6_OF_6_COMPLETE
+
 ### 2026-10-22 V88 Phase03 P7 DSHB P0-19 Factor Calib Alignment (V88_PHASE03_P7_DSHB_P019_FACTOR_CALIB_ALIGNMENT)
 - **工单**: V88_PHASE03_P7_DSHB_P019_FACTOR_CALIB_ALIGNMENT
 - **前置**: DSHB P016待命闭环(FACTOR_STANDBY_AWAIT_DUAL_KEYS); trigger v2.0.0就绪; 双钥匙校验完整; HERMEShf 9项口径快照未下发; KeyA+KeyB均NOT_FOUND; 9条因子配置上锁保持只配置不运行

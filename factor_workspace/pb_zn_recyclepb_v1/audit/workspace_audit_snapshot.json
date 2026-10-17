@@ -1,0 +1,69 @@
+{
+  "schema": "v88-workspace-audit-v1.0",
+  "task_id": "V88_PHASE03_P7_DSHB_P019_FACTOR_CALIB_ALIGNMENT",
+  "task": "T1_AUDIT_HOOK_DEPLOYMENT",
+  "generated_at": "2026-10-17T07:18:21.688743+00:00",
+  "branch": "feature/v88-g1",
+  "branch_locked": true,
+  "read_only": true,
+  "no_auto_git_push": true,
+  "summary": {
+    "total_entries": 5,
+    "exists": 5,
+    "empty": 0,
+    "not_found": 0,
+    "error": 0
+  },
+  "entries": [
+    {
+      "filename": "ic_ir_calc_skeleton.py",
+      "timestamp": "2026-10-17T07:18:21.670740+00:00",
+      "status": "EXISTS",
+      "size_bytes": 19033,
+      "mtime": "2026-10-17T07:01:19.876747+00:00",
+      "md5": "E3D715A7B068423EE21F1CDA1B03947D",
+      "sha256": "a70e15b4b8a13ba4f8a1fd984f9f6f9ebe3ddfd6873412de20f037cc075dd8fa",
+      "git_blob_sha1": "09bf081ef52390422d9a8b3b1a10cfc230337a1f"
+    },
+    {
+      "filename": "ic_ir_calc_skeleton.py.md5",
+      "timestamp": "2026-10-17T07:18:21.673747+00:00",
+      "status": "EXISTS",
+      "size_bytes": 131,
+      "mtime": "2026-10-17T04:55:26.958937+00:00",
+      "md5": "1DD5A7C5B475AC79F61440D90522B1C5",
+      "sha256": "c93666a00885b32c3dcffbcc37b3423737a51482e28976328ae207205dd9f2df",
+      "git_blob_sha1": "273f62a8f1227dc8ce260b5ed6200f305df9bf7a"
+    },
+    {
+      "filename": "audit/workspace_audit_hook.py",
+      "timestamp": "2026-10-17T07:18:21.678740+00:00",
+      "status": "EXISTS",
+      "size_bytes": 5561,
+      "mtime": "2026-10-17T05:20:55.913978+00:00",
+      "md5": "9C19048BB341CAAC1710FBEB186EA374",
+      "sha256": "b688812b3fcd1c81aa1ff064e88bf0e4635a78674b6c03997644cfa237343761",
+      "git_blob_sha1": "677490a61f69cfb0eaa3d1df1f46e285ed08694a"
+    },
+    {
+      "filename": "opt_trigger/wind_online_watcher.py",
+      "timestamp": "2026-10-17T07:18:21.683743+00:00",
+      "status": "EXISTS",
+      "size_bytes": 23293,
+      "mtime": "2026-10-17T04:55:26.959939+00:00",
+      "md5": "50AF7F9735427C88A86A91CF8C491828",
+      "sha256": "cea831aa5898e2c9d6d1e7f3d15864ef079dc13a5658791b3e24a667232137ef",
+      "git_blob_sha1": "c0374f3ae753fb284268e17b67fb4f7a24c6fb0a"
+    },
+    {
+      "filename": "opt_trigger/wind_online_watcher.py.md5",
+      "timestamp": "2026-10-17T07:18:21.686745+00:00",
+      "status": "EXISTS",
+      "size_bytes": 131,
+      "mtime": "2026-10-17T04:55:26.960937+00:00",
+      "md5": "B1E4D3E652E9E70DA1E3450F995781F2",
+      "sha256": "f267d1621b3e4f7ff24e19072797c9a6377439ad19629d6cb500a197076422ee",
+      "git_blob_sha1": "e2c002de96a7f763bf0efde34d9a04981afde166"
+    }
+  ]
+}
