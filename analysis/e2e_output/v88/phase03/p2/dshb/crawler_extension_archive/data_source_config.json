@@ -1,0 +1,454 @@
+{
+  "version": "2.0.0",
+  "task_id": "V88_PHASE03_P14_DSHB_P026_CRAWLER_DATA_SOURCE_EXPANSION_AND_PHASE04_INTEGRATION_PLAN",
+  "agent": "DSHB",
+  "branch": "feature/v88-g1",
+  "generated_at": "2026-10-22T20:00:00",
+  "description": "Multi-source data crawler configuration with per-source enable/disable controls",
+  "global": {
+    "switch": "OFF",
+    "enable_live": false,
+    "rate_limit_seconds": 3.0,
+    "min_rate_limit_seconds": 3.0,
+    "max_consecutive_errors": 3,
+    "max_requests_per_session": 100,
+    "dry_run_default": true,
+    "no_overwrite": true,
+    "append_only": true,
+    "audit_log_enabled": true,
+    "notify_on_failure": false,
+    "notify_on_success": false
+  },
+  "sources": {
+    "shfe": {
+      "name": "Shanghai Futures Exchange (SHFE)",
+      "enabled": true,
+      "category": "exchange",
+      "base_url": "https://www.shfe.com.cn",
+      "endpoints": {
+        "daily_kline": {
+          "url": "https://www.shfe.com.cn/cn/business/data/dailydata/",
+          "enabled": true,
+          "data_type": "daily_kline",
+          "variety": "pb"
+        },
+        "position_ranking": {
+          "url": "https://www.shfe.com.cn/cn/business/data/positionranking/",
+          "enabled": true,
+          "data_type": "position_ranking",
+          "variety": "all"
+        },
+        "warrant_registration": {
+          "url": "https://www.shfe.com.cn/cn/business/data/warrant/",
+          "enabled": true,
+          "data_type": "warrant_registration",
+          "variety": "all"
+        }
+      },
+      "symbols": {
+        "pb": "SHFE_PBU",
+        "zn": "SHFE_ZNU"
+      },
+      "robots_txt": "none",
+      "compliance_risk": "LOW",
+      "crawl_frequency": "daily",
+      "schedule": "0 6 * * 1-5"
+    },
+    "dce": {
+      "name": "Dalian Commodity Exchange (DCE)",
+      "enabled": true,
+      "category": "exchange",
+      "base_url": "https://www.dce.com.cn",
+      "endpoints": {
+        "daily_kline": {
+          "url": "https://www.dce.com.cn/publicweb/quotesdata/dailyQuotes.html",
+          "enabled": true,
+          "data_type": "daily_kline",
+          "variety": "zn"
+        },
+        "position_ranking": {
+          "url": "https://www.dce.com.cn/publicweb/quotesdata/memberRankings.html",
+          "enabled": true,
+          "data_type": "position_ranking",
+          "variety": "zn"
+        },
+        "warrant_registration": {
+          "url": "https://www.dce.com.cn/publicweb/quotesdata/warrant.html",
+          "enabled": true,
+          "data_type": "warrant_registration",
+          "variety": "zn"
+        }
+      },
+      "symbols": {
+        "zn": "DCE_ZNU"
+      },
+      "robots_txt": "none",
+      "compliance_risk": "LOW",
+      "crawl_frequency": "daily",
+      "schedule": "0 6 * * 1-5"
+    },
+    "czce": {
+      "name": "Zhengzhou Commodity Exchange (CZCE)",
+      "enabled": false,
+      "category": "exchange",
+      "base_url": "https://www.czce.com.cn",
+      "endpoints": {
+        "daily_kline": {
+          "url": "https://www.czce.com.cn/cn/BB2729010175/BB2729010176.htm",
+          "enabled": false,
+          "data_type": "daily_kline",
+          "variety": "none"
+        }
+      },
+      "symbols": {},
+      "robots_txt": "none",
+      "compliance_risk": "LOW",
+      "crawl_frequency": "daily",
+      "schedule": "0 6 * * 1-5",
+      "note": "CZCE not currently needed for PB/ZN pipeline; kept disabled"
+    },
+    "100ppi": {
+      "name": "生意社 (100ppi.com)",
+      "enabled": true,
+      "category": "industry",
+      "base_url": "https://www.100ppi.com",
+      "indicators": {
+        "LEAD_SMELTING_RATE": {
+          "name_cn": "铅冶炼开工率",
+          "name_en": "Lead Smelting Rate",
+          "unit": "%",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-lead-smelting.html",
+          "enabled": true
+        },
+        "ZINC_SMELTING_RATE": {
+          "name_cn": "锌冶炼开工率",
+          "name_en": "Zinc Smelting Rate",
+          "unit": "%",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-zinc-smelting.html",
+          "enabled": true
+        },
+        "PRIMARY_LEAD_PROFIT": {
+          "name_cn": "原生铅利润",
+          "name_en": "Primary Lead Profit",
+          "unit": "元/吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-primary-lead-profit.html",
+          "enabled": true
+        },
+        "RECYCLE_LEAD_PROFIT": {
+          "name_cn": "再生铅利润",
+          "name_en": "Recycled Lead Profit",
+          "unit": "元/吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-recycle-lead-profit.html",
+          "enabled": true
+        },
+        "ZINC_SMELTING_PROFIT": {
+          "name_cn": "锌冶炼利润",
+          "name_en": "Zinc Smelting Profit",
+          "unit": "元/吨",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-zinc-smelting-profit.html",
+          "enabled": true
+        },
+        "LEAD_SOCIAL_INVENTORY": {
+          "name_cn": "铅锭社会库存",
+          "name_en": "Lead Social Inventory",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-lead-social-inventory.html",
+          "enabled": true
+        },
+        "LEAD_SMM_INVENTORY": {
+          "name_cn": "铅锭冶炼厂库存",
+          "name_en": "Lead Smelter Inventory",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-lead-smelter-inventory.html",
+          "enabled": true
+        },
+        "ZINC_SOCIAL_INVENTORY": {
+          "name_cn": "锌锭社会库存",
+          "name_en": "Zinc Social Inventory",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-zinc-social-inventory.html",
+          "enabled": true
+        },
+        "ZINC_SMM_INVENTORY": {
+          "name_cn": "锌锭冶炼厂库存",
+          "name_en": "Zinc Smelter Inventory",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-zinc-smelter-inventory.html",
+          "enabled": true
+        },
+        "LEAD_SMELTING_RATE_V2": {
+          "name_cn": "铅锭冶炼厂开工率(扩展)",
+          "name_en": "Lead Smelter Utilization Rate (Expanded)",
+          "unit": "%",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-lead-utilization.html",
+          "enabled": true,
+          "p026_new": true
+        },
+        "LEAD_SOCIAL_INV_V2": {
+          "name_cn": "铅锭社会库存(扩展)",
+          "name_en": "Lead Social Inventory (Expanded)",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-lead-social-inventory-v2.html",
+          "enabled": true,
+          "p026_new": true
+        },
+        "LEAD_SMM_INV_V2": {
+          "name_cn": "铅锭冶炼厂库存(扩展)",
+          "name_en": "Lead Smelter Inventory (Expanded)",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-lead-smelter-inventory-v2.html",
+          "enabled": true,
+          "p026_new": true
+        },
+        "ZINC_SMELTING_RATE_V2": {
+          "name_cn": "锌锭冶炼厂开工率(扩展)",
+          "name_en": "Zinc Smelter Utilization Rate (Expanded)",
+          "unit": "%",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-zinc-utilization.html",
+          "enabled": true,
+          "p026_new": true
+        },
+        "ZINC_SOCIAL_INV_V2": {
+          "name_cn": "锌锭社会库存(扩展)",
+          "name_en": "Zinc Social Inventory (Expanded)",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-zinc-social-inventory-v2.html",
+          "enabled": true,
+          "p026_new": true
+        },
+        "ZINC_SMM_INV_V2": {
+          "name_cn": "锌锭冶炼厂库存(扩展)",
+          "name_en": "Zinc Smelter Inventory (Expanded)",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.100ppi.com/sf/{date}-zinc-smelter-inventory-v2.html",
+          "enabled": true,
+          "p026_new": true
+        }
+      },
+      "robots_txt": "none",
+      "compliance_risk": "LOW",
+      "crawl_frequency": "weekly",
+      "schedule": "0 7 * * 1"
+    },
+    "mysteel": {
+      "name": "Mysteel (我的钢铁网) — Public News",
+      "enabled": false,
+      "category": "industry_news",
+      "base_url": "https://www.mysteel.com",
+      "indicators": {
+        "MSTEEL_LEAD_TC": {
+          "name_cn": "铅冶炼加工费(TC)",
+          "name_en": "Lead TC",
+          "unit": "元/吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.mysteel.com/news/lead/tc/",
+          "enabled": false,
+          "p026_new": true
+        },
+        "MSTEEL_LEAD_IMP_ORE": {
+          "name_cn": "铅精矿进口量",
+          "name_en": "Lead Ore Import Volume",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "pb",
+          "url_pattern": "https://www.mysteel.com/market/lead/import/",
+          "enabled": false,
+          "p026_new": true
+        },
+        "MSTEEL_PB_BATTERY_RATE": {
+          "name_cn": "铅酸电池开工率",
+          "name_en": "Lead-Acid Battery Utilization Rate",
+          "unit": "%",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.mysteel.com/news/battery/utilization/",
+          "enabled": false,
+          "p026_new": true
+        },
+        "MSTEEL_LEAD_SOCIAL_INV": {
+          "name_cn": "铅锭社会库存(Mysteel)",
+          "name_en": "Lead Social Inventory (Mysteel)",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "pb",
+          "url_pattern": "https://www.mysteel.com/market/lead/inventory/",
+          "enabled": false,
+          "p026_new": true
+        },
+        "MSTEEL_ZINC_TC": {
+          "name_cn": "锌冶炼加工费(TC)",
+          "name_en": "Zinc TC",
+          "unit": "元/吨",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.mysteel.com/news/zinc/tc/",
+          "enabled": false,
+          "p026_new": true
+        },
+        "MSTEEL_ZINC_IMP_ORE": {
+          "name_cn": "锌精矿进口量",
+          "name_en": "Zinc Ore Import Volume",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "zn",
+          "url_pattern": "https://www.mysteel.com/market/zinc/import/",
+          "enabled": false,
+          "p026_new": true
+        },
+        "MSTEEL_ZINC_SOCIAL_INV": {
+          "name_cn": "锌锭社会库存(Mysteel)",
+          "name_en": "Zinc Social Inventory (Mysteel)",
+          "unit": "吨",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.mysteel.com/market/zinc/inventory/",
+          "enabled": false,
+          "p026_new": true
+        },
+        "MSTEEL_GALVANIZED_RATE": {
+          "name_cn": "镀锌开工率",
+          "name_en": "Galvanized Utilization Rate",
+          "unit": "%",
+          "frequency": "weekly",
+          "variety": "zn",
+          "url_pattern": "https://www.mysteel.com/news/galvanized/utilization/",
+          "enabled": false,
+          "p026_new": true
+        }
+      },
+      "robots_txt": "exists_but_permissive",
+      "robots_txt_paths_disallowed": ["/paid/", "/vip/", "/member/"],
+      "compliance_risk": "LOW",
+      "crawl_frequency": "weekly",
+      "schedule": "0 7 * * 2",
+      "note": "Only free public news is crawled. Paid/VIP/member sections are NOT crawled."
+    },
+    "customs": {
+      "name": "Customs General Administration (海关总署)",
+      "enabled": false,
+      "category": "government_stats",
+      "base_url": "https://www.customs.gov.cn",
+      "indicators": {
+        "CUSTOMS_LEAD_ORE_IMP": {
+          "name_cn": "铅矿砂进口量",
+          "name_en": "Lead Ore Import Volume",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "pb",
+          "url_pattern": "https://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302275/index.html",
+          "enabled": false,
+          "p026_new": true
+        },
+        "CUSTOMS_LEAD_BAR_EXP": {
+          "name_cn": "铅锭出口量",
+          "name_en": "Lead Bar Export Volume",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "pb",
+          "url_pattern": "https://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302275/index.html",
+          "enabled": false,
+          "p026_new": true
+        },
+        "CUSTOMS_RECYCLE_LEAD_IMP": {
+          "name_cn": "再生铅原料进口量",
+          "name_en": "Recycled Lead Raw Material Import",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "pb",
+          "url_pattern": "https://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302275/index.html",
+          "enabled": false,
+          "p026_new": true
+        },
+        "CUSTOMS_ZINC_ORE_IMP": {
+          "name_cn": "锌矿砂进口量",
+          "name_en": "Zinc Ore Import Volume",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "zn",
+          "url_pattern": "https://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302275/index.html",
+          "enabled": false,
+          "p026_new": true
+        },
+        "CUSTOMS_ZINC_BAR_EXP": {
+          "name_cn": "锌锭出口量",
+          "name_en": "Zinc Bar Export Volume",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "zn",
+          "url_pattern": "https://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302275/index.html",
+          "enabled": false,
+          "p026_new": true
+        },
+        "CUSTOMS_GALVANIZED_IMP": {
+          "name_cn": "镀锌板进口量",
+          "name_en": "Galvanized Sheet Import Volume",
+          "unit": "吨",
+          "frequency": "monthly",
+          "variety": "zn",
+          "url_pattern": "https://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302275/index.html",
+          "enabled": false,
+          "p026_new": true
+        }
+      },
+      "robots_txt": "none",
+      "compliance_risk": "LOW",
+      "crawl_frequency": "monthly",
+      "schedule": "0 8 1 * *"
+    }
+  },
+  "phase04_integration": {
+    "target_db": "data/factor_data.db",
+    "data_import": "INSERT OR IGNORE for idempotent loading",
+    "factor_fields": {
+      "momentum_20d": "Uses daily_kline.close for 20-day momentum",
+      "momentum_60d": "Uses daily_kline.close for 60-day momentum",
+      "vol_20d": "Uses daily_kline.close for 20-day volatility"
+    },
+    "data_layers": {
+      "market_data": ["daily_kline", "position_ranking", "warrant_registration"],
+      "fundamental_data": ["industry_fundamental", "msteel_fundamental", "customs_fundamental"]
+    },
+    "ready": true
+  },
+  "constraints": {
+    "NO_ZHIJI_API_CALL": true,
+    "NO_OVERWRITE": true,
+    "APPEND_ONLY": true,
+    "DRY_RUN_DEFAULT": true,
+    "RATE_LIMIT_MIN_SECONDS": 3.0,
+    "NO_CONCURRENT_REQUESTS": true,
+    "NO_FACTOR_CALCULATION": true,
+    "NO_PAID_API_CALLS": true
+  }
+}

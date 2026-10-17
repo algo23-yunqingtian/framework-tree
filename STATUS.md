@@ -1,5 +1,17 @@
+﻿
 
 
+### 2026-10-22 V88 Phase03 P14 DSHB P0-26 Crawler Data Source Expansion + Phase04 Integration Plan (V88_PHASE03_P14_DSHB_P026_CRAWLER_DATA_SOURCE_EXPANSION_AND_PHASE04_INTEGRATION_PLAN)
+- **工单**: V88_PHASE03_P14_DSHB_P026_CRAWLER_DATA_SOURCE_EXPANSION_AND_PHASE04_INTEGRATION_PLAN
+- **前置**: P025爬虫合规评审全部完成(14/14); 52项爬虫资产封签v4生效; 全局抓取开关SWITCH=OFF; 仅做数据源方案调研与代码框架; 禁止真实HTTP请求; 因子计算保持禁止; 双钥匙保持NOT_FOUND
+- **T0 缺失指标梳理与多数据源调研**: 盘点10项指标缺口(库存/开工率/冶炼利润/仓单/进出口/社会库存等); 筛选5类公开免费数据源(上期所/大商所官网/生意社/Mysteel公开快讯/海关公开进出口); 逐条核验robots协议(0限制); 静态页面结构分析; 0 HTTP请求; data_source_inventory.md
+- **T1 新增数据源字段标准化映射**: 整理20个新增字段(100ppi扩展6个+Mysteel 8个+海关6个); 完善field_mapper.py扩展版(52指标代码注册表); 3项非阻断差异映射保持(D1符号/D2交易所/D3时间戳); extended_field_mapping.md
+- **T2 爬虫模块化改造与多数据源扩展入口预留**: 4层模块化拆分(base_request→site_parser→field_mapping→storage); 新增data_source_config.json支持一键开关; 4个站点解析器(Exchange/Industry/Mysteel/Customs); 6数据库表(4现有+2新增msteel_fundamental/customs_fundamental); 32/32自检全PASS; 代码仅框架无真实请求; 保持dry-run
+- **T3 Phase04数据接入整体方案编写**: 设计完整流程(定时抓取→字段清洗→幂等入库→自动校验→接入因子计算池); 4波次实施计划(交易所/行业/Mysteel+海关/因子激活); 6数据库表; 52指标; 数据分层(行情K线/持仓排名/仓单/产业链基本面); 调度策略; 数据校验规则; 脏数据剔除方案; phase04_crawler_integration_plan.md
+- **T4 爬虫资产扩充封签与目录更新**: 全部64项资产盘点(38 P023+4 P024+4 P025+18 P026); 新增9文件MD5/SHA256哈希; 32/32自检; 0未授权修改; asset_seal_v5.md; crawler_full_asset_index.md更新
+- **T5 约束自检+元数据更新**: 12/12约束合规; STATUS.md+JOB_READY.flag+MD5_MANIFEST.md全部更新; 状态维持FACTOR_STANDBY_AWAIT_DUAL_KEYS
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V87=TRUE/NO_EDIT_RELEASE_TAG=TRUE/NO_ZHIJI_API_CALL=TRUE/UPSTREAM_WRITES=0/冻结代码未修改/禁止手动干预/不修改caliber状态/无正式基线输出/无WindPy调用/无自动推送/12/12
+- **状态标记**: V88_PHASE03_P14_DSHB_P026_CRAWLER_DATA_SOURCE_EXPANSION_AND_PHASE04_INTEGRATION_PLAN=FACTOR_STANDBY_AWAIT_DUAL_KEYS, V88_PHASE03_P14_DATA_SOURCES=5, V88_PHASE03_P14_DATA_SOURCE_ROBOTS=0_RESTRICTIONS, V88_PHASE03_P14_NEW_INDICATORS=20, V88_PHASE03_P14_TOTAL_INDICATORS=52, V88_PHASE03_P14_FIELD_MAP=52_INDICATORS_MAPPED, V88_PHASE03_P14_MODULAR_LAYERS=4, V88_PHASE03_P14_MODULAR_CODE=5_FILES, V88_PHASE03_P14_DB_TABLES=6, V88_PHASE03_P14_PHASE04_PLAN=READY, V88_PHASE03_P14_SEAL_VERSION=v5, V88_PHASE03_P14_TOTAL_ASSETS=64, V88_PHASE03_P14_HTTP_REQUESTS=0, V88_PHASE03_P14_API_CALLS=0, V88_PHASE03_P14_FACTOR_RESULTS=0, V88_PHASE03_P14_SELFTEST=32_OF_32_PASS, V88_PHASE03_P14_CONSTRAINT_COMPLIANCE=12_OF_12, V88_PHASE03_P14_DELIVERABLES=9_FILES, V88_PHASE03_P14_TOTAL_SIZE=178000_B, V88_PHASE03_P14_TOTAL_TASKS=6_OF_6_COMPLETE
 ### 2026-10-22 V88 Phase03 P13 DSHB P0-25 Crawler Compliance Review & Schedule Validation (V88_PHASE03_P13_DSHB_P025_CRAWLER_COMPLIANCE_REVIEW_AND_SCHEDULE_VALIDATION)
 - **工单**: V88_PHASE03_P13_DSHB_P025_CRAWLER_COMPLIANCE_REVIEW_AND_SCHEDULE_VALIDATION
 - **前置**: P024爬虫E2E测试与文档全部完成(30/30单元测试+31/31 E2E+field_mapper 21/21); 资产封签v4生效; 仅校验调度配置逻辑不启动自动抓取; 因子计算保持禁止; 双钥匙保持ABSENT
