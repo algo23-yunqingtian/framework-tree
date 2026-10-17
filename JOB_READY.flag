@@ -5160,3 +5160,19 @@ V88_PHASE03_P1_DSHB_NI_TOP20_HISTORY_FILL_AND_REMAIN_CRAWLER_FINALIZE_VERSION_ST
 - **psutil状态**: LOCKED (enabled:false, daemon:false)
 - **验收标准**: 6/6 达成
 - **状态标记**: V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY=GATE_ON_WATCH_AWAIT_DUAL_KEYS
+
+### 2026-10-22 V88_PHASE03_P12_DSHB_P024_CRAWLER_E2E_TEST_AND_DOC
+- **状态**: COMPLETE — FACTOR_STANDBY_AWAIT_DUAL_KEYS
+- **T0**: 单元测试 — 4模块30用例全PASS, 限流/UA/403-429/脏数据过滤全验证
+- **T1**: E2E dry-run — 18结果(dry-run), DB自检7/7, 幂等验证31/31, 0 HTTP请求
+- **T2**: field_mapper.py — 3项非阻断差异映射(D1符号/D2交易所/D3时间戳), 21/21 PASS
+- **T3**: crawler_operation_manual.md — 启动/启停/日志/反爬/校验/crontab模板完整
+- **T4**: asset_seal_v4.md — 59088B交付物, MD5+SHA256双哈希, 0未授权修改
+- **T5**: 约束自检+元数据更新 — 12/12合规, STATUS/FLAG/MD5全更新
+- **交付物**: crawler_unit_test_report.md + e2e_test_result.md + field_mapper.py + crawler_operation_manual.md + asset_seal_v4.md (5 files, 59088 B)
+- **双钥匙状态**: NOT_FOUND (Key A: WIND_DATA_LINK_ONLINE.flag + Key B: HERMES_TRIGGER_AUTHORIZED.flag)
+- **因子计算**: PROHIBITED
+- **HTTP请求**: 0 (全部dry-run)
+- **约束合规**: 12/12
+- **验收标准**: 6/6 达成
+- **状态标记**: V88_PHASE03_P12_DSHB_P024_CRAWLER_E2E_TEST_AND_DOC=FACTOR_STANDBY_AWAIT_DUAL_KEYS
