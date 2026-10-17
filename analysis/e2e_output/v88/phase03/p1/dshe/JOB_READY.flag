@@ -151,3 +151,32 @@
 # Constraints: 11/11 compliant
 # Gate contamination: 0
 # JOB: V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY=GATE_WATCH_PREPARED_AWAIT_DATA_TRIGGER
+
+
+# V88_PHASE03_P7_DSHE_P018_GATE_PENDING_ISSUE_CLEANUP_JOB
+# Date: 2026-10-17 UTC+8
+# Status: GATE_ON_WATCH_AWAIT_DUAL_KEYS
+# T0: R-V88-035 si_top20_net fix - COMPLETE (boundary handling verified, R3 8/8 PASS, Phase04 7-phase plan)
+# T1: Calibration indicator list - COMPLETE (9 slots reserved, HERMEShf import channel ready, no caliber changes)
+# T2: Enhanced gate trigger verify - COMPLETE (dual-key INACTIVE, FR-007~009 sealed, FR-001~006 basic watch, 20 safety constraints verified)
+# T3: Triple-seal v4 recheck - COMPLETE (12/12 MD5+SHA256 match, engine frozen, 18 archives read-only, 6-layer chain unbroken)
+# T4: psutil lock recheck v3 - COMPLETE (enabled:false, daemon:false, 0 processes, 0 output, 0 PID file)
+# T5: Metadata update + push - COMPLETE (11/11 constraints compliant)
+# R-V88-035: CLOSED
+# Seal layers: 6 (L1→L2→L3→v2→v3→v4) all MATCH
+# Seal files: 12 P0-12 + 18 archived + 1 engine
+# Engine MD5: cd73deaeec54a7f1f8bde92c1300a9dc (frozen: True)
+# Engine SHA256: 604958f257e24c3cf1ccb42e6a1214ee1b21193c8a1542e13dcf07158be92d15 (frozen: True)
+# psutil enabled: false
+# psutil daemon: false
+# psutil processes: 0
+# psutil output: 0
+# Factor rules: 9 (v1.1.0-preview, observe-alert-only)
+# Hook version: v2.1.0-preview
+# Hook AUTO_COMMIT_MODE: false
+# Dual keys status: INACTIVE (BASIC WATCH)
+# R3 E2E: 8/8 PASS
+# Audit standby: <1h
+# Constraints: 11/11 compliant
+# Gate contamination: 0
+# JOB: V88_PHASE03_P7_DSHE_P018_GATE_PENDING_ISSUE_CLEANUP=GATE_ON_WATCH_AWAIT_DUAL_KEYS
