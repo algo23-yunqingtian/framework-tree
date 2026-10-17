@@ -1,5 +1,17 @@
 
 
+### 2026-10-22 V88 Phase03 P13 DSHB P0-25 Crawler Compliance Review & Schedule Validation (V88_PHASE03_P13_DSHB_P025_CRAWLER_COMPLIANCE_REVIEW_AND_SCHEDULE_VALIDATION)
+- **工单**: V88_PHASE03_P13_DSHB_P025_CRAWLER_COMPLIANCE_REVIEW_AND_SCHEDULE_VALIDATION
+- **前置**: P024爬虫E2E测试与文档全部完成(30/30单元测试+31/31 E2E+field_mapper 21/21); 资产封签v4生效; 仅校验调度配置逻辑不启动自动抓取; 因子计算保持禁止; 双钥匙保持ABSENT
+- **T0 爬虫全量合规评审**: 逐条核验14项合规检查项(限流>=3s/无并发/UA轮换/403-429退避/30s超时/dry-run默认/无付费API/APPEND_ONLY/NO_OVERWRITE/审计日志/合规日志/来源标记/robots.txt); 复核4目标网站robots.txt(均无robots.txt文件); 评估访问频率(<=18请求/会话); 评估UA轮换(4 UA池); 评估退避策略(403→10s/429→30s); crawler_compliance_review.md
+- **T1 定时调度模板校验与全局开关开发**: crawler_switch.cfg开发完成(默认SWITCH=OFF; ENABLE_LIVE=false; 双钥匙检查; 5项预检); crontab模板校验(5条目全部DISABLED); Windows Task Scheduler模板校验; 7项dry-run调度模拟全部PASS(18结果/0 HTTP); DB自检7/7; field_mapper自检8/8; 调度链路10/10验证通过; schedule_validation_report.md
+- **T2 资产封签二次复核**: 重新扫描crawler_archive+crawler_verification_archive全部38文件; 二次比对asset_seal_v4.md MD5+SHA256哈希; 38/38 MATCH; 0未授权修改; 0删除; 0新增冲突; seal_recheck_report.md
+- **T3 爬虫故障应急处置文档编写**: crawler_emergency_handling.md覆盖4场景(网站改版/403封禁/字段变更/网络超时); 每场景含检测/诊断/缓解/恢复步骤; 4级应急严重度(P1-P4); 数据备份与恢复流程; 人工干预步骤; crawler_emergency_handling.md
+- **T4 爬虫资产总目录整理**: 52项资产完整盘点(5核心脚本+2配置+4文档+27样本+3测试+1封签+6 P025+1日志); 4数据库表; 3数据类型; 9行业指标; 13 API端点; 3品种; 12/12约束; Phase04集成就绪评估; crawler_full_asset_index.md
+- **T5 约束自检+元数据更新**: 12/12约束合规; STATUS.md+JOB_READY.flag+MD5_MANIFEST.md全部更新; 状态维持FACTOR_STANDBY_AWAIT_DUAL_KEYS
+- **约束合规**: BRANCH_LOCKED=TRUE/NO_OVERWRITE=TRUE/NO_MODIFY_V87=TRUE/NO_EDIT_RELEASE_TAG=TRUE/NO_ZHIJI_API_CALL=TRUE/UPSTREAM_WRITES=0/冻结代码未修改/禁止手动干预/不修改caliber状态/无正式基线输出/无WindPy调用/无自动推送/12/12
+- **状态标记**: V88_PHASE03_P13_DSHB_P025_CRAWLER_COMPLIANCE_REVIEW_AND_SCHEDULE_VALIDATION=FACTOR_STANDBY_AWAIT_DUAL_KEYS, V88_PHASE03_P13_COMPLIANCE_REVIEW=14_OF_14_PASS, V88_PHASE03_P13_ROBOTS_TXT=0_RESTRICTIONS, V88_PHASE03_P13_SCHEDULE_VALIDATION=10_OF_10_PASS, V88_PHASE03_P13_SWITCH_STATUS=OFF, V88_PHASE03_P13_DRY_RUN_SIMULATION=7_OF_7_PASS, V88_PHASE03_P13_SEAL_RECHECK=38_OF_38_MATCH, V88_PHASE03_P13_UNAUTHORIZED_MODS=0, V88_PHASE03_P13_EMERGENCY_SCENARIOS=4, V88_PHASE03_P13_TOTAL_ASSETS=52, V88_PHASE03_P13_HTTP_REQUESTS=0, V88_PHASE03_P13_FACTOR_RESULTS=0, V88_PHASE03_P13_CONSTRAINT_COMPLIANCE=12_OF_12, V88_PHASE03_P13_DELIVERABLES=6_FILES, V88_PHASE03_P13_TOTAL_SIZE=89208_B, V88_PHASE03_P13_TOTAL_TASKS=6_OF_6_COMPLETE
+
 ### 2026-10-22 V88 Phase03 P12 DSHB P0-24 Crawler E2E Test & Documentation (V88_PHASE03_P12_DSHB_P024_CRAWLER_E2E_TEST_AND_DOC)
 - **工单**: V88_PHASE03_P12_DSHB_P024_CRAWLER_E2E_TEST_AND_DOC
 - **前置**: P023爬虫开发全部完成(crawler_main/exchange_crawler/industry_crawler/db_interface全部交付); 仅做小批量测试验证链路; 遵守3s最小请求间隔; 顺序请求无并发; 因子计算保持禁止; 双钥匙保持ABSENT
