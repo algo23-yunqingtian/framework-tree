@@ -207,3 +207,32 @@
 # Constraints: 11/11 compliant
 # Gate contamination: 0
 # JOB: V88_PHASE03_P8_DSHE_P019_GATE_CALIB_SNAPSHOT_AWAIT=GATE_ON_WATCH_AWAIT_DUAL_KEYS
+
+
+# V88_PHASE03_P9_DSHE_P020_JSON_SNAPSHOT_LOAD_VERIFY_JOB
+# Date: 2026-10-22 UTC+8
+# Status: GATE_ON_WATCH_AWAIT_DUAL_KEYS
+# T0: JSON snapshot listen & import - COMPLETE (HERMEShf JSON已到达490b9f8+9因子定义从JSON导入+9槽位全部填充+JSON解析验证)
+# T1: MD/JSON double-check - COMPLETE (47/47数据点一致+9/9因子矩阵匹配+7/7口径元数据匹配+0内容偏差)
+# T2: Engine & seal recheck v6 - COMPLETE (12/12 MD5 MATCH+引擎冻结+8层封印链未断+JSON导入隔离)
+# T3: Gate rule lock check v2 - COMPLETE (FR-001~006 ACTIVE+FR-007~009 SEALED+双钥匙INACTIVE+22/22约束)
+# T4: Constraint self-check + metadata - COMPLETE (11/11约束合规)
+# HERMEShf JSON snapshot: FOUND (commit 490b9f8, 8,378 B, schema v1.0.0)
+# MD/JSON content consistency: 47/47 data points verified
+# Seal layers: 8 (L1→L2→L3→v2→v3→v4→v5→v6) all MATCH
+# Seal files: 12 P0-12 + 18 archived + 1 engine
+# Engine MD5: cd73deaeec54a7f1f8bde92c1300a9dc (frozen: True)
+# Engine SHA256: 604958f257e24c3cf1ccb42e6a1214ee1b21193c8a1542e13dcf07158be92d15 (frozen: True)
+# psutil enabled: false
+# psutil daemon: false
+# Factor rules: 9 (v1.1.0-preview, observe-alert-only)
+# Hook version: v2.1.0-preview
+# Hook AUTO_COMMIT_MODE: false
+# Dual keys status: INACTIVE (BASIC WATCH)
+# JSON import isolation: 0 sealed dir writes
+# Cross-agent caliber conflicts: 0
+# Calibration indicators imported: 9/9 (BASE_PRICE classification, JSON source)
+# Audit standby: <1h
+# Constraints: 11/11 compliant
+# Gate contamination: 0
+# JOB: V88_PHASE03_P9_DSHE_P020_JSON_SNAPSHOT_LOAD_VERIFY=GATE_ON_WATCH_AWAIT_DUAL_KEYS

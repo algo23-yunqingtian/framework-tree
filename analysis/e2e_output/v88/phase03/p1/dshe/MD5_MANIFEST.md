@@ -257,3 +257,44 @@
 | psutil daemon | false | ✅ |
 | Constraints | 11/11 compliant | ✅ |
 | Gate contamination | 0 | ✅ |
+
+---
+
+## 11. Phase03 P9 Gate JSON Snapshot Load Verify (P0-20)
+
+**Directory**: `analysis/e2e_output/v88/phase03/p7/dshe/dshe_p020_json_load_archive/`
+**Task**: V88_PHASE03_P9_DSHE_P020_JSON_SNAPSHOT_LOAD_VERIFY
+**Status**: COMPLETE — GATE_ON_WATCH_AWAIT_DUAL_KEYS
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `json_snapshot_import_report.md` | 8,435 | `BE3FFDDFFB08D635416689BFB0041FA1` |
+| `md_json_double_check.md` | 10,336 | `20826E59C2BE508100A75A3E64D586B0` |
+| `seal_v6_recheck.md` | 8,702 | `C33CE8D84D8B65006D6F9FC0E3F2E7D1` |
+| `gate_lock_v2_check.md` | 8,804 | `CEEB5D3056361038DBFDC385B8A329B1` |
+
+**Total**: 4 files | 36,277 bytes
+
+### 11.1 Verification Summary
+
+| Item | Value | Status |
+|:-----|:------|:------:|
+| HERMEShf JSON snapshot | FOUND (commit 490b9f8, 8,378 B, schema v1.0.0) | ✅ |
+| JSON parse validation | VALID (no errors) | ✅ |
+| JSON import slots | 9/9 filled (BASE_PRICE classification) | ✅ |
+| MD/JSON content consistency | 47/47 data points verified | ✅ |
+| Factor matrix consistency | 9/9 factor definitions match | ✅ |
+| Caliber metadata consistency | 7/7 dimensions match | ✅ |
+| Content deviations | 0 | ✅ |
+| Seal recheck v6 | 12/12 MD5 MATCH, 8-layer chain unbroken | ✅ |
+| Engine MD5 | `cd73deae...` (frozen) | ✅ |
+| Engine SHA256 | `604958f2...` (frozen) | ✅ |
+| JSON import isolation | 0 sealed dir writes | ✅ |
+| Gate rules | FR-001~006 ACTIVE, FR-007~009 SEALED | ✅ |
+| Dual-key status | INACTIVE (BASIC WATCH) | ⏳ |
+| Safety constraints | 22/22 verified | ✅ |
+| P0-19→P0-20 invariance | 11/11 components unchanged | ✅ |
+| psutil enabled | false | ✅ |
+| psutil daemon | false | ✅ |
+| Constraints | 11/11 compliant | ✅ |
+| Gate contamination | 0 | ✅ |

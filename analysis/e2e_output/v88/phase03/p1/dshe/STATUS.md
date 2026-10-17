@@ -797,3 +797,116 @@
 
 > **标记**: V88_PHASE03_P8_DSHE_P019_GATE_CALIB_SNAPSHOT_AWAIT=GATE_ON_WATCH_AWAIT_DUAL_KEYS
 > **下一步**: 等待双钥匙(WIND_DATA_LINK_ONLINE.flag + DUAL_KEYS_ACTIVE.flag) → 提升监控强度 → Phase04因子计算运行时监控(9因子LOCKED)
+
+---
+
+## 14. Phase03 P9 DSHE P0-20 JSON Snapshot Load Verify (2026-10-22)
+
+> **TASK_ID**: V88_PHASE03_P9_DSHE_P020_JSON_SNAPSHOT_LOAD_VERIFY
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **DATE**: 2026-10-22 UTC+8
+> **STATUS**: COMPLETE — GATE_ON_WATCH_AWAIT_DUAL_KEYS
+> **前置**: V88_PHASE03_P8_DSHE_P019_GATE_CALIB_SNAPSHOT_AWAIT = COMPLETE (commit ffbe8ce)
+
+### 14.1 任务状态
+
+| 任务 | 状态 | 关键结果 |
+|------|:----:|----------|
+| T0: JSON快照监听与载入 | ✅ COMPLETE | HERMEShf JSON快照已到达(490b9f8) + 9因子定义从JSON源导入 + 9槽位全部填充 + JSON解析验证通过 |
+| T1: MD/JSON双向比对 | ✅ COMPLETE | 47/47数据点验证一致 + 9/9因子矩阵匹配 + 7/7口径元数据匹配 + **0内容偏差** |
+| T2: 引擎与封印复核v6 | ✅ COMPLETE | 12/12 MD5 MATCH + 引擎cd73deae/604958f2冻结 + 18归档只读 + **8层封印链未断** |
+| T3: 网关规则锁定校验v2 | ✅ COMPLETE | FR-001~006 ACTIVE + FR-007~009 SEALED + 双钥匙INACTIVE + **22/22安全约束** |
+| T4: 约束自检+元数据更新 | ✅ COMPLETE | 11/11约束合规 + 审计待命<1h + 推送完成 |
+
+**完成度: 5/5 (100%)**
+
+### 14.2 核心指标
+
+| 指标 | 值 | 状态 |
+|------|:--:|:----:|
+| HERMEShf JSON快照 | ✅ FOUND (commit 490b9f8, 8,378 B) | ✅ |
+| JSON解析验证 | ✅ VALID (schema v1.0.0, 无错误) | ✅ |
+| JSON灌入槽位 | 9/9填充(全部BASE_PRICE分类) | ✅ |
+| MD/JSON内容一致 | **47/47数据点验证** | ✅ |
+| 因子矩阵一致 | **9/9因子定义匹配** | ✅ |
+| 口径元数据一致 | **7/7维度匹配** | ✅ |
+| 口径偏差 | **0** | ✅ |
+| 文件哈希差异 | ⚠️ CRLF/LF编码差异(非内容差异) | ✅ |
+| 三层封印v6重校验 | 12/12 MD5 MATCH | ✅ |
+| 引擎MD5 | `cd73deae...` 冻结 | ✅ |
+| 引擎SHA256 | `604958f2...` 冻结 | ✅ |
+| 封印链 | **8层连续**(09bf0be→v6)未断 | ✅ |
+| 归档目录 | 18文件只读+完整 | ✅ |
+| JSON导入对封印影响 | ❌ 不影响(隔离路径) | ✅ |
+| FR-001~006基础规则 | ✅ ACTIVE(仅告警) | ✅ |
+| FR-007~009增强规则 | ⬜ 密封未激活 | ✅ |
+| 双钥匙状态 | **INACTIVE** (BASIC WATCH) | ⏳ |
+| 钩子安全锁 | 9/9验证通过 | ✅ |
+| 安全约束 | **22/22**验证通过 | ✅ |
+| 规则包不变性 | v1.1.0-preview(9规则,未变更) | ✅ |
+| P0-19→P0-20不变性 | 11/11组件未变更 | ✅ |
+| 钩子版本 | v2.1.0-preview(AUTO_COMMIT=false) | ✅ |
+| psutil enabled | **false** | ✅ |
+| psutil daemon | **false** | ✅ |
+| Phase04工单 | ⬜ NOT ISSUED | ⏳ |
+| 审计待命 | <1h | ✅ |
+| 约束合规 | **11/11** | ✅ |
+| 门禁污染 | 0 | ✅ |
+
+### 14.3 交付物清单
+
+| 文件 | 大小 | MD5 | 说明 |
+|------|-----:|-----|------|
+| `json_snapshot_import_report.md` | 8,435 | `BE3FFDDF...` | JSON快照检测+载入+9槽位填充+导入路径隔离 |
+| `md_json_double_check.md` | 10,336 | `20826E59...` | MD/JSON双向比对47/47一致+0内容偏差 |
+| `seal_v6_recheck.md` | 8,702 | `C33CE8D8...` | 封印v6重校验+8层链+引擎冻结+JSON导入隔离验证 |
+| `gate_lock_v2_check.md` | 8,804 | `CEEB5D30...` | 规则包不变性+双钥匙+安全约束22/22 |
+
+**目录**: `analysis/e2e_output/v88/phase03/p7/dshe/dshe_p020_json_load_archive/`
+**总计**: 4 files | 36,277 bytes
+
+### 14.4 HERMEShf 待执行项
+
+| # | 待执行项 | 状态 |
+|---|----------|:----:|
+| 1 | WIND_DATA_LINK_ONLINE.flag 检测 | ⏳ AWAITING |
+| 2 | DUAL_KEYS_ACTIVE.flag 检测 | ⏳ AWAITING |
+| 3 | P0-12门禁自动复测(blocker_monitor cron) | ⏳ 等待cron触发 |
+| 4 | Phase04正式工单发布 | ⏳ PENDING |
+| 5 | IC/IR因子计算运行时监控激活 | ⏳ PENDING (双钥匙后) |
+| 6 | si_top20_net Phase04数据源接入 | ⏳ PENDING (DSHB爬虫+DSHE图表注册) |
+| 7 | HERMEShf口径快照交付(9指标) | ✅ DONE (MD: 9e1f6c7, JSON: 490b9f8) |
+| 8 | si_top20_net R-V88-035 CLOSED确认 | ✅ CLOSED |
+| 9 | R-V88-P8-001格式不匹配 | ✅ RESOLVED (JSON交付) |
+
+### 14.5 双钥匙协议
+
+| 钥匙 | 状态 | 说明 |
+|:----:|:----:|------|
+| `WIND_DATA_LINK_ONLINE.flag` | ❌ 未检测 | 外部HERMEShf信号 |
+| `DUAL_KEYS_ACTIVE.flag` | ❌ 未检测 | 第二钥匙信号 |
+| 双钥匙组合 | ❌ 未激活 | 仅当双钥匙同时生效才提升监控强度 |
+
+**当前监控强度**: BASIC WATCH (FR-001~006 + 基础WSM扫描)
+**双钥匙激活后**: ENHANCED WATCH (FR-001~009 + 增强WSM扫描 + 轮询间隔缩短至60s)
+
+### 14.6 安全约束自检 (11/11)
+
+| 约束 | 状态 |
+|------|:----:|
+| BRANCH_LOCKED | ✅ |
+| NO_OVERWRITE | ✅ |
+| NO_MODIFY_V87 | ✅ |
+| NO_EDIT_RELEASE_TAG | ✅ |
+| NO_ZHIJI_API_CALL | ✅ |
+| UPSTREAM_WRITES=0 | ✅ |
+| psutil_enabled=false | ✅ |
+| engine_frozen=TRUE | ✅ |
+| triple_seal=VERIFIED | ✅ |
+| gate_contamination=0 | ✅ |
+| audit_standby <1h | ✅ |
+
+---
+
+> **标记**: V88_PHASE03_P9_DSHE_P020_JSON_SNAPSHOT_LOAD_VERIFY=GATE_ON_WATCH_AWAIT_DUAL_KEYS
+> **下一步**: 等待双钥匙(WIND_DATA_LINK_ONLINE.flag + DUAL_KEYS_ACTIVE.flag) → 提升监控强度 → Phase04因子计算运行时监控(9因子LOCKED)
