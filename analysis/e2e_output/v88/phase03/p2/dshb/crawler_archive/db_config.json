@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "task_id": "V88_PHASE03_P11_DSHB_P023_DATA_CRAWLER_DEVELOPMENT",
+  "agent": "DSHB",
+  "branch": "feature/v88-g1",
+  "generated_at": "2026-10-22T16:00:00",
+  "db_type": "sqlite",
+  "db_path": "data/factor_data.db",
+  "tables": {
+    "daily_kline": {
+      "description": "Daily K-line data (OHLCV) - WIND-aligned",
+      "primary_key": ["date", "symbol"],
+      "columns": ["date", "symbol", "exchange", "open", "high", "low", "close", "volume", "open_interest", "avg_price", "source_url", "crawl_timestamp"],
+      "target_varieties": ["SHFE_PBU", "SHFE_ZNU", "DCE_ZNU"]
+    },
+    "position_ranking": {
+      "description": "Position ranking data - member long/short positions",
+      "primary_key": ["date", "symbol", "company_name"],
+      "columns": ["date", "symbol", "exchange", "rank", "company_name", "long_position", "short_position", "long_change", "short_change", "source_url", "crawl_timestamp"],
+      "target_varieties": ["SHFE_PBU", "SHFE_ZNU", "DCE_ZNU"]
+    },
+    "warrant_registration": {
+      "description": "Warrant registration/cancellation data",
+      "primary_key": ["date", "symbol"],
+      "columns": ["date", "symbol", "exchange", "registration_amount", "cancellation_amount", "net_change", "total_balance", "source_url", "crawl_timestamp"],
+      "target_varieties": ["SHFE_PBU", "SHFE_ZNU", "DCE_ZNU"]
+    },
+    "industry_fundamental": {
+      "description": "Industry fundamental indicators - smelting rate, profit, inventory",
+      "primary_key": ["date", "indicator_code"],
+      "columns": ["date", "indicator_code", "indicator_name", "value", "unit", "source_url", "crawl_timestamp"],
+      "indicators": [
+        "LEAD_SMELTING_RATE",
+        "ZINC_SMELTING_RATE",
+        "PRIMARY_LEAD_PROFIT",
+        "RECYCLE_LEAD_PROFIT",
+        "ZINC_SMELTING_PROFIT",
+        "LEAD_SOCIAL_INVENTORY",
+        "LEAD_SMM_INVENTORY",
+        "ZINC_SOCIAL_INVENTORY",
+        "ZINC_SMM_INVENTORY"
+      ]
+    }
+  },
+  "constraints": {
+    "NO_ZHIJI_API_CALL": true,
+    "NO_OVERWRITE": true,
+    "APPEND_ONLY": true,
+    "DRY_RUN_DEFAULT": true,
+    "RATE_LIMIT_MIN_SECONDS": 3.0,
+    "NO_CONCURRENT_REQUESTS": true
+  },
+  "phase04_integration": {
+    "factor_module": "ic_ir_calc_skeleton.py",
+    "data_import": "INSERT OR IGNORE for idempotent loading",
+    "factor_fields": {
+      "momentum_20d": "Uses daily_kline.close for 20-day momentum",
+      "momentum_60d": "Uses daily_kline.close for 60-day momentum",
+      "vol_20d": "Uses daily_kline.close for 20-day volatility"
+    },
+    "ready": true
+  }
+}
