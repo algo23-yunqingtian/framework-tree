@@ -1,0 +1,82 @@
+[
+  {
+    "id": "S1",
+    "desc": "无KeyA无KeyB(正常待命)",
+    "all_pass": false,
+    "some_fail": false,
+    "skipped": true,
+    "auth_yes": true,
+    "prechecks": 0,
+    "exit": 0
+  },
+  {
+    "id": "S2",
+    "desc": "KeyA存在KeyB不存在(单钥匙预检)",
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "auth_yes": true,
+    "prechecks": 5,
+    "exit": 0
+  },
+  {
+    "id": "S3",
+    "desc": "KeyA不存在KeyB存在(异常态)",
+    "all_pass": false,
+    "some_fail": false,
+    "skipped": true,
+    "auth_yes": true,
+    "prechecks": 0,
+    "exit": 0
+  },
+  {
+    "id": "S4",
+    "desc": "KeyA+B都存在(授权态)",
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "auth_yes": true,
+    "prechecks": 5,
+    "exit": 0
+  },
+  {
+    "id": "S5",
+    "desc": "重复S1稳定性",
+    "all_pass": false,
+    "some_fail": false,
+    "skipped": true,
+    "auth_yes": true,
+    "prechecks": 0,
+    "exit": 0
+  },
+  {
+    "id": "S6",
+    "desc": "重复S2稳定性",
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "auth_yes": true,
+    "prechecks": 5,
+    "exit": 0
+  },
+  {
+    "id": "S7",
+    "desc": "KeyA空文件(边界)",
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "auth_yes": true,
+    "prechecks": 5,
+    "exit": 0
+  },
+  {
+    "id": "S8",
+    "desc": "KeyA大文件(边界)",
+    "all_pass": true,
+    "some_fail": false,
+    "skipped": false,
+    "auth_yes": true,
+    "prechecks": 5,
+    "exit": 0
+  }
+]
