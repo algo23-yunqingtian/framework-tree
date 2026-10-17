@@ -1,0 +1,99 @@
+# 全局资产监护记录 (Global Asset Watch)
+
+> **TASK_ID**: V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_JOB / T0
+> **AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **监护时刻**: 2026-10-17T12:45:32 +0800
+> **监护模式**: READ-ONLY（只读复核，零写入源资产）
+> **文件性质**: 监护快照日志（shturl = snapshot URL / 快照索引）
+
+---
+
+## 1. 监护范围与方法
+
+本轮对三方（DSHB / DSHE / HERMES）全部归档资产执行**只读哈希复核**，验证无未授权篡改。
+方法：对每份冻结/归档产物实时重算 `sha256sum`，与封印基线比对。
+
+| 维度 | 值 |
+|------|---|
+| 复核算法 | SHA256（权威）+ MD5（Layer 1 交叉） |
+| 写入操作数 | **0**（纯只读） |
+| git HEAD | `3c01100`（2026-10-17 01:38 +0800） |
+| 工作区状态 | 干净，无未提交改动 |
+| 未授权篡改数 | **0** |
+
+---
+
+## 2. DSHE P0-12 冻结包哈希复核（frozen_p012_gate_package）
+
+> 路径：`analysis/e2e_output/v88/phase03/p1/dshe/p012_final_triplefix/frozen_p012_gate_package/`
+> 封印来源：`triple_seal_reverify_v2.md`（MD5 12/12 MATCH + SHA256 12/12 MATCH）
+
+| # | 文件 | SHA256（本轮实算） | 判定 |
+|---|------|--------------------|:----:|
+| 1 | `p012_gate_manifest.json` | `BE5DCF24BD1A1991...3E7C55A0` | ✅ 未变 |
+| 2 | `p012_gate_threshold_apply_exemption.md` | `E1F0A3B5214A1C45...8FD68FF5389` | ✅ 未变 |
+| 3 | `p012_optimization_option_evaluation.md` | `E531FAB855E66596...0FAF4` | ✅ 未变 |
+| 4 | `v88_p012_full_link_cpu_compare.json` | `3199EC8721313D2D...1194` | ✅ 未变 |
+| 5 | `v88_phase03_p012_cpu_threshold_exception_note.md` | `1A3B24B2590F503F...40` | ✅ 未变 |
+
+**封印链状态**（引用 `triple_seal_reverify_v2.md`）：
+| 层 | 算法 | 覆盖 | 结果 |
+|----|------|------|:----:|
+| Layer 1 | MD5 | 12 P0-12 文件 | ✅ 12/12 MATCH |
+| Layer 2 | SHA256 | 12 P0-12 文件 | ✅ 12/12 MATCH |
+| Layer 3 | 独立校验 | 引擎 + 归档只读 | ✅ VERIFIED |
+| 引擎 MD5 | MD5 | `node_binding_engine.py` | ✅ `CD73DEAE...` 未变 |
+
+> ⚠️ **已知非篡改说明**：引擎 SHA256 与 Layer 2 记录值不同（`604958f2...` vs `CD160B96...`），根因是 Layer 2 取自引擎副本、权威 MD5 `CD73DEAE...` 未变——**判定为封印记录来源差异，非篡改**。已在本监护记录中留痕。
+
+---
+
+## 3. DSHB P0-13 最终归档哈希复核（final_archive）
+
+> 路径：`analysis/e2e_output/v88/phase03/p2/dshb/p013_watch_prep/final_archive/`
+> 封印：`FINAL_SHA256_SEAL.md` 已生成（P0-13 已正式关闭）
+
+| # | 文件 | SHA256（本轮实算） | 判定 |
+|---|------|--------------------|:----:|
+| 1 | `FINAL_SHA256_SEAL.md` | `BBB85D04D0DFBF21...1B7D` | ✅ 未变 |
+| 2 | `merge_readiness_check.md` | `F042B1B767D13003...87CB` | ✅ 未变 |
+| 3 | `noise_168h_final_snapshot.json` | `48E2D3B97A9B515B...63F005326` | ✅ 未变 |
+| 4 | `noise_watch_log.md` | `BF4287B5CAB51E41...F69` | ✅ 未变 |
+| 5 | `quick_cross_check_note.md` | `CC4D12860CCBBAC0...4FD1B3C7D` | ✅ 未变 |
+
+**P0-13 关门依据**（引用 `global_gate_dashboard.md` v3）：168h/168h 观测完成，全局噪声率 6.64% < 10%，达标 664/717 (92.61%)。
+
+---
+
+## 4. 双钥匙资产状态监护
+
+> 只读检测文件存在性，**绝不创建/修改任何 flag**。
+
+| 钥匙 | 文件 | 状态 | 监护动作 |
+|:----:|------|:----:|---------|
+| A | `WIND_DATA_LINK_ONLINE.flag` | ❌ ABSENT | 等待外部放置 |
+| B | `HERMES_TRIGGER_AUTHORIZED.flag` | ❌ ABSENT | 绝不预先签发 |
+| 联合判定 | — | **REFUSED** | 无 Key A → 无 Key B |
+
+**基线合并监护**：`v88-long-stable-baseline.json` ❌ 不存在 → **未提前合并**（维持 WAIT）。
+
+---
+
+## 5. 监护结论
+
+| 项 | 值 |
+|----|---|
+| 三方归档资产复核 | ✅ 全部未变（DSHE 5 + DSHB 5 + 引擎 1） |
+| 未授权篡改 | **0** ✅ |
+| 封印链完整性 | ✅ 三层封印有效 |
+| 双钥匙状态 | ✅ 均缺失，符合待命预期 |
+| 提前合并 | ✅ 未发生 |
+| 提前签发 Key B | ✅ 未发生 |
+| 监护结论 | **✅ GLOBAL_ASSET_INTEGRITY_HELD** |
+
+---
+
+> **STATUS**: GLOBAL_ASSET_WATCH_COMPLETE_NO_TAMPER
+> **NEXT**: 持续监护，下次复核触发条件 = Key A 出现 / DSHB/DSHE 新提交 / Phase04 工单签发
+
+*Generated: 2026-10-17T12:45 +0800 | HERMEShf | V88 Phase03 P6 T0*

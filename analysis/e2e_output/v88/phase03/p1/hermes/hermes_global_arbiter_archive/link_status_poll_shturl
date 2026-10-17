@@ -1,0 +1,83 @@
+# 外部链路轮询记录 (Link Status Poll Snapshot)
+
+> **TASK_ID**: V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_JOB / T2
+> **AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED)
+> **轮询时刻**: 2026-10-17T12:50 +0800
+> **轮询模式**: 被动检测（只读 `os.path.exists`），绝不创建任何 flag 文件
+
+---
+
+## 1. 钥匙 A 状态
+
+| 项 | 值 |
+|----|---|
+| 钥匙 A 路径 | `WIND_DATA_LINK_ONLINE.flag`（仓库根） |
+| 期望位置 | `/home/ubuntu/framework-tree/WIND_DATA_LINK_ONLINE.flag` |
+| 当前状态 | ❌ ABSENT（不存在） |
+| 检测方法 | `os.path.exists()` / `ls -la` |
+| 创建操作数 | **0**（仅检测，不创建） |
+
+---
+
+## 2. 钥匙 B 状态
+
+| 项 | 值 |
+|----|---|
+| 钥匙 B 路径 | `HERMES_TRIGGER_AUTHORIZED.flag`（仓库根） |
+| 期望位置 | `/home/ubuntu/framework-tree/HERMES_TRIGGER_AUTHORIZED.flag` |
+| 当前状态 | ❌ ABSENT（不存在） |
+| 签发逻辑 | 仅当 Key A 出现 + 5 项预检全 PASS 才由 HERMES 手动签发 |
+| 创建操作数 | **0**（绝不预先签发） |
+
+---
+
+## 3. 基线合并标记状态
+
+| 项 | 值 |
+|----|---|
+| 合并标记路径 | `v88-long-stable-baseline.json`（仓库根） |
+| 当前状态 | ❌ ABSENT（未提前合并） |
+| 合并规则 | WAIT_AFTER_PHASE04_GO（Phase04 工单签发前禁止合并） |
+| 创建操作数 | **0** |
+
+---
+
+## 4. 联合判定
+
+```
+Key A = ABSENT
+Key B = ABSENT
+联合判定 = REFUSED
+仲裁器状态 = OBSERVING
+下一步动作 = LOG_ONLY_REFUSE_START
+```
+
+---
+
+## 5. 轮询协议确认
+
+| # | 协议 | 实施 |
+|:-:|------|:----:|
+| 1 | 仅检测 `os.path.exists`，不 `open('w')` / `touch` / `Path.write_text` | ✅ |
+| 2 | 不主动创建任何 flag 文件 | ✅ |
+| 3 | 不修改 `WIND_DATA_LINK_ONLINE.flag` | ✅（文件不存在，无法修改） |
+| 4 | 不调用 Wind API / zhiji API | ✅（NO_ZHIJI_API_CALL=TRUE） |
+| 5 | 不执行 git 提交 / push | ✅（本轮纯只读） |
+
+---
+
+## 6. 下次轮询触发条件
+
+| 触发 | 动作 |
+|------|------|
+| blocker_monitor cron 触发（30min） | 自动跑 arbiter.py，记录结果 |
+| Key A 出现 | 立即升级为 5 项预检；全 PASS 则手动签发 Key B |
+| DSHB/DSHE 新提交 | 触发三方资产复核（T3） |
+| Phase04 工单签发 | 触发 bootstrap precheck + Key B 评估 |
+
+---
+
+> **STATUS**: LINK_STATUS_ABSENT_ARBITER_OBSERVING
+> **NEXT_POLL**: blocker_monitor cron 下次触发时（约 30min 后）
+
+*Generated: 2026-10-17T12:50 +0800 | HERMEShf | V88 Phase03 P6 T2*

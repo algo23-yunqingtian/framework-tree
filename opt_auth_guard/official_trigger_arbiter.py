@@ -35,7 +35,9 @@ def check_key_b(path):
 
 def run_5_point_safety_precheck():
     checks = []
-    base = os.path.dirname(os.path.dirname(AUTH_GUARD_DIR))
+    # FIX(V88-P6): AUTH_GUARD_DIR=/repo/opt_auth_guard，剥一层即仓库根；
+    # 原 dirname 两层误指到 /home/ubuntu，导致 5 项预检路径全部失效。
+    base = os.path.dirname(AUTH_GUARD_DIR)
     # 1. P0-13 closed
     p013 = os.path.join(base, "analysis/e2e_output/v88/phase03/p2/dshb/p013_watch_prep/final_archive/noise_168h_final_snapshot.json")
     checks.append({"id": "P0-13-CLOSED", "passed": os.path.exists(p013), "detail": os.path.exists(p013)})
@@ -51,7 +53,7 @@ def run_5_point_safety_precheck():
     return checks
 
 def main():
-    repo_path = os.path.dirname(os.path.dirname(AUTH_GUARD_DIR))
+    repo_path = os.path.dirname(AUTH_GUARD_DIR)
     print(f"=== HERMEShf Trigger Arbiter ===")
     print(f"Check time: {datetime.datetime.now().isoformat()}")
     print(f"Repo path: {repo_path}")

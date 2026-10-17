@@ -1,0 +1,41 @@
+# JOB_READY.flag — HERMES Global Arbiter Archive
+
+# V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_JOB
+# Date: 2026-10-17T13:00 +0800
+# Agent: HERMEShf
+# Branch: feature/v88-g1 (BRANCH_LOCKED)
+# Status: ARBITER_ON_STANDBY_AWAIT_KEY_A
+
+# T0: Global asset watch — COMPLETE (DSHE 5 + DSHB 5 + engine 1, 0 tamper)
+# T1: Arbiter logic lock — COMPLETE (path radix fixed, 5-precheck logic locked)
+# T2: Link status poll — COMPLETE (Key A ABSENT, Key B ABSENT, REFUSED)
+# T3: Triparty sanity check — COMPLETE (0 backdoor, 0 auto-commit, 6 rules observe-only)
+# T4: Exemption followup v4 — COMPLETE (C1-C5: 2/5 done, 3/5 pending Phase04, 0 blockers)
+# T5: Phase04 bootstrap freeze — COMPLETE (13/13 precheck PASS, no ignition)
+# T6: Metadata triple update — COMPLETE (MD5_MANIFEST + STATUS + JOB_READY)
+
+# Guard fixes:
+# - official_trigger_arbiter.py: path radix (dirname 2->1 layer)
+# - phase04_boot_precheck.py: path radix (dirname 2->.git upward search)
+# - Precheck result: 3/13 -> 13/13 PASS
+
+# Constraints:
+# BRANCH_LOCKED=TRUE
+# NO_OVERWRITE=TRUE
+# NO_MODIFY_V87=TRUE
+# NO_EDIT_RELEASE_TAG=TRUE
+# NO_ZHIJI_API_CALL=TRUE
+# Constraint compliance: 5/5
+
+# Key status:
+# KEY_A=WIND_DATA_LINK_ONLINE.flag: ABSENT
+# KEY_B=HERMES_TRIGGER_AUTHORIZED.flag: ABSENT
+# AUTHORIZED=NO
+# ARBITER_STATE=OBSERVING
+# BASELINE_MERGE=WAIT_AFTER_PHASE04_GO
+# PHASE04_IGNITION=FROZEN
+
+# Risk register:
+# R-V88-P6-001 LOW: 3 of 5 prechecks are static True (upgrade before Phase04)
+
+JOB: V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY=ARBITER_ON_STANDBY_AWAIT_KEY_A

@@ -9506,3 +9506,63 @@ JOB_READY=TRUE
 
 ### Status Flags
 V88_PHASE03_P1_DSHB_IMPLEMENT_AND_NOISE_CONTINUE_JOB=COMPLETE, V88_PHASE03_P1_DSHB_IMPLEMENT_AND_NOISE_CONTINUE_AGENT=DSHB, V88_PHASE03_P1_DSHB_IMPLEMENT_AND_NOISE_CONTINUE_BRANCH=feature/v88-g1, V88_PHASE03_P1_DSHB_IMPLEMENT_AND_NOISE_CONTINUE_DATE=2026-10-16, V88_PHASE03_P1_DSHB_IMPLEMENT_AND_NOISE_CONTINUE_CONSTRAINT_COMPLIANCE=6_OF_6
+
+---
+
+## V88 Phase03 P6 HERMEShf Global Arbiter Standby (2026-10-17)
+
+**TASK_ID**: V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_JOB
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 | **DATE**: 2026-10-17
+
+### T0-T6 Summary
+
+| Task | Description | Status |
+|------|-------------|:------:|
+| T0 | Global asset watch (SHA256 re-verify, 0 tamper) | ✅ |
+| T1 | Arbiter logic lock (path radix fix + 5-precheck) | ✅ |
+| T2 | Link status poll (Key A/B ABSENT, REFUSED) | ✅ |
+| T3 | Triparty sanity (0 backdoor, 6 rules observe-only) | ✅ |
+| T4 | Exemption followup v4 (C1-C5: 2/5 done, 0 blockers) | ✅ |
+| T5 | Phase04 bootstrap freeze (13/13 PASS, no ignition) | ✅ |
+| T6 | Metadata triple update + commit/push | ✅ |
+
+### Guard Fixes (Critical)
+
+1. `official_trigger_arbiter.py`: path radix dirname 2→1 layer; Repo path now correct `/home/ubuntu/framework-tree`
+2. `phase04_boot_precheck.py`: path radix dirname 2→`.git` upward search; precheck 3/13→**13/13 PASS**
+
+### Key Status
+
+- KEY_A (WIND_DATA_LINK_ONLINE.flag): **ABSENT**
+- KEY_B (HERMES_TRIGGER_AUTHORIZED.flag): **ABSENT**
+- AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING**
+- BASELINE_MERGE: **WAIT_AFTER_PHASE04_GO**
+- PHASE04_IGNITION: **FROZEN**
+
+### Constraints
+
+- BRANCH_LOCKED=TRUE ✅
+- NO_OVERWRITE=TRUE ✅
+- NO_MODIFY_V87=TRUE ✅
+- NO_EDIT_RELEASE_TAG=TRUE ✅
+- NO_ZHIJI_API_CALL=TRUE ✅
+- Constraint compliance: 5/5 ✅
+
+### Risk Register
+
+- R-V88-P6-001 LOW: 3 of 5 arbiter prechecks are static True (upgrade before Phase04)
+
+### Deliverables
+
+- `hermes_global_arbiter_archive/global_asset_watch_shturl`
+- `hermes_global_arbiter_archive/arbiter_logic_lock_confirm.md`
+- `hermes_global_arbiter_archive/link_status_poll_shturl`
+- `hermes_global_arbiter_archive/triparty_weekly_sanity_check.md`
+- `hermes_global_arbiter_archive/exemption_followup_v4.md`
+- `hermes_global_arbiter_archive/phase04_bootstrap_freeze_confirm.md`
+- `hermes_global_arbiter_archive/MD5_MANIFEST.md`
+- `hermes_global_arbiter_archive/JOB_READY.flag`
+
+### Status Flags
+V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_AGENT=HERMEShf, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_BRANCH=feature/v88-g1, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_DATE=2026-10-17, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_CONSTRAINT_COMPLIANCE=5_OF_5

@@ -13,7 +13,19 @@ Phase04 正式点火仍需 HERMES 签发独立的 Phase04-GO 工单。
 """
 import os, json, sys, hashlib, datetime, yaml
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# FIX(V88-P6): 脚本嵌套深，dirname 层数容易数错；向上查找最近 .git 标识仓库根。
+def _find_repo_root():
+    p = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(15):
+        if os.path.isdir(os.path.join(p, ".git")):
+            return p
+        up = os.path.dirname(p)
+        if up == p:
+            break
+        p = up
+    return os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+REPO = _find_repo_root()
 
 def check(path, label):
     exists = os.path.exists(path)
