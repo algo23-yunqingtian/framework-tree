@@ -1,0 +1,179 @@
+# Factor Runtime Rules Upgrade — SHTURL Document (P0-17 T1)
+
+> **TASK_ID**: V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY / T1
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1
+> **GENERATED**: 2026-10-17T02:30 UTC+8
+> **RULES_VERSION**: v1.0.0 → v1.1.0-preview
+> **MODE**: OBSERVE-ALERT ONLY — no kill, no modify, no git ops
+> **STATUS**: DEPLOYED
+
+---
+
+## 1. Upgrade Summary
+
+| Item | v1.0.0 (P0-15) | v1.1.0-preview (P0-17) | Change |
+|------|:--------------:|:----------------------:|:------:|
+| Total rules | 6 | **9** | +3 |
+| FR-001~006 | ✅ Existing | ✅ Preserved | No change |
+| FR-007 | — | **NEW** | Plaintext credential regex scan (enhanced) |
+| FR-008 | — | **NEW** | Short-time batch file generation alert (enhanced) |
+| FR-009 | — | **NEW** | Output directory whitelist (explicit allowed dirs) |
+| Intervention level | observe_only | **observe_only** | Unchanged |
+| Auto-kill | false | **false** | Unchanged |
+| Auto-modify | false | **false** | Unchanged |
+| Auto-git-op | false | **false** | Unchanged |
+
+---
+
+## 2. New Rules — v1.1.0-preview
+
+### FR-007: Enhanced Plaintext Credential Regex Scan
+
+**Purpose**: Expand credential scanning beyond JSON files to ALL file types in factor_workspace. Covers Python scripts, config files, CSV exports, and text logs that may contain leaked credentials.
+
+| Field | Value |
+|-------|-------|
+| Rule ID | FR-007 |
+| Name | `enhanced_plaintext_credential_scan` |
+| Severity | CRITICAL |
+| Action | `alert_and_log` |
+| Scope | `factor_workspace/**/*` (ALL file types) |
+| Max file size for scan | 10 MB |
+| Excluded | `*.pyc`, `*.pyo`, `*.so`, `*.dll` |
+
+**Patterns**:
+- AWS access key ID: `AKIA[0-9A-Z]{16}`
+- GitHub personal access token: `ghp_[a-zA-Z0-9]{36}`
+- GitHub OAuth token: `gho_[a-zA-Z0-9]{36}`
+- OpenAI/SendGrid API key: `sk-[a-zA-Z0-9]{20,}`
+- Generic API key pattern: `(?i)(api[_-]?key|apikey|secret|token|password|passwd|pwd)\s*[:=]\s*['\"][^'\"]+['\"]`
+- Private key header: `-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----`
+- Slack token: `xox[baprs]-[a-zA-Z0-9-]+`
+- Telegram bot token: `([0-9]{8,10}):[a-zA-Z0-9_-]{35}`
+- Stripe secret key: `sk_live_[a-zA-Z0-9]{24,48}`
+
+**Safety**: No file modification. Alerts logged to `opt_hooks/factor_runtime_alert_log.txt` and `opt_hooks/factor_runtime_alerts.json`. Manual escalation required.
+
+### FR-008: Short-Time Batch File Generation Alert
+
+**Purpose**: Detect anomalous rapid file creation patterns that may indicate runaway factor computation loops, data corruption, or unintended mass generation.
+
+| Field | Value |
+|-------|-------|
+| Rule ID | FR-008 |
+| Name | `short_time_batch_generation_alert` |
+| Severity | WARNING |
+| Action | `alert` |
+| Scope | `factor_workspace/**/*` |
+
+**Detection logic**:
+
+| Metric | Threshold | Critical |
+|--------|:---------:|:--------:|
+| Files created in 60s window | >100 | >500 |
+| Files created in 300s window | >500 | >2000 |
+| Files created in 1800s window | >2000 | >10000 |
+| Single directory creation rate | >50 files/60s | >200 files/60s |
+| Total new bytes in 60s | >10 MB | >100 MB |
+
+**Safety**: Observe-alert only. Does NOT delete files, kill processes, or modify outputs. Alerts logged and require manual review.
+
+### FR-009: Output Directory Whitelist
+
+**Purpose**: Explicit whitelist of allowed output directories within factor_workspace. Any file written outside these directories triggers an alert.
+
+| Field | Value |
+|-------|-------|
+| Rule ID | FR-009 |
+| Name | `output_directory_whitelist` |
+| Severity | WARNING |
+| Action | `alert` |
+| Scope | `factor_workspace/` root |
+
+**Allowed output directories**:
+```
+factor_workspace/pb_zn_recyclepb_v1/input/
+factor_workspace/pb_zn_recyclepb_v1/output/
+factor_workspace/pb_zn_recyclepb_v1/audit/
+factor_workspace/pb_zn_recyclepb_v1/checksum/
+```
+
+**Forbidden output patterns**:
+- Any path containing `..` (directory traversal)
+- Any path outside `factor_workspace/`
+- Any path within `scripts/`, `framework-tree/scripts/`
+- Any path within archived directories (`*_ARCHIVED/`)
+- Any path within `p012_nativepass_consolidate/`
+- Any path within `opt-phase04-psutil-collector/`
+
+**Safety**: Alert only. Does NOT block writes or modify the filesystem. Boundary violations are logged for manual review.
+
+---
+
+## 3. Updated Rule Set Overview (v1.1.0-preview)
+
+| Rule ID | Name | Severity | Action | Category |
+|:-------:|------|:--------:|:------:|:--------:|
+| FR-001 | output_file_extension_whitelist | WARNING | alert | Extension control |
+| FR-002 | single_file_size_threshold | WARNING | alert | Size control |
+| FR-003 | rapid_bulk_file_creation | WARNING | alert | Batch detection |
+| FR-004 | plaintext_credential_scan | CRITICAL | alert_and_log | Security (JSON only) |
+| FR-005 | cross_directory_boundary_violation | WARNING | alert | Boundary control |
+| FR-006 | factor_output_triple_hash | INFO | snapshot | Audit trail |
+| **FR-007** | **enhanced_plaintext_credential_scan** | **CRITICAL** | **alert_and_log** | **Security (ALL files)** |
+| **FR-008** | **short_time_batch_generation_alert** | **WARNING** | **alert** | **Real-time batch** |
+| **FR-009** | **output_directory_whitelist** | **WARNING** | **alert** | **Directory control** |
+
+---
+
+## 4. Safety Locks — Unchanged
+
+| Safety Constraint | Value | Status |
+|:------------------|:-----:|:------:|
+| `auto_kill_process` | false | ✅ |
+| `auto_modify_output` | false | ✅ |
+| `auto_delete_file` | false | ✅ |
+| `auto_git_operation` | false | ✅ |
+| `auto_push` | false | ✅ |
+| `intervention_level` | observe_only | ✅ |
+| `escalation_policy` | notify_and_log | ✅ |
+
+**No rule in v1.1.0-preview can kill processes, modify outputs, delete files, or perform git operations.**
+
+---
+
+## 5. Dual-Key Protocol Impact
+
+| Key Status | Monitoring Intensity | Rules Active |
+|:----------:|:--------------------:|:------------:|
+| No keys | BASIC WATCH | FR-001~006 only |
+| Key 1 only | STANDARD WATCH | FR-001~006 + FR-007 |
+| Key 2 only | STANDARD WATCH | FR-001~006 + FR-008 |
+| Both keys | ENHANCED WATCH | FR-001~009 (all 9 rules) |
+
+**Current status**: No keys → BASIC WATCH (FR-001~006 only active in alerting)
+
+---
+
+## 6. Deployment Metadata
+
+| Field | Value |
+|-------|-------|
+| Upgraded at | 2026-10-17T02:30 UTC+8 |
+| Upgraded by | DSHE |
+| Branch | feature/v88-g1 |
+| Mode | observe_alert_only |
+| Previous version | 1.0.0 |
+| New version | 1.1.0-preview |
+| Rules added | 3 (FR-007, FR-008, FR-009) |
+| Rules removed | 0 |
+| Rules modified | 0 |
+| Total rules | 9 |
+| Wind data active | false |
+| Dual keys status | INACTIVE |
+
+---
+
+> **标记**: T1=COMPLETE | Factor runtime rules upgraded v1.0.0 → v1.1.0-preview
+> **9 rules deployed, all observe-alert-only, no intervention**
+> *Generated: 2026-10-17T02:30 UTC+8 | DSHE | V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY*

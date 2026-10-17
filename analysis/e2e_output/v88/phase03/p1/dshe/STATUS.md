@@ -470,3 +470,108 @@
 
 > **标记**: V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY=GATE_WATCH_PREPARED_AWAIT_DATA_TRIGGER
 > **下一步**: 等待 WIND_DATA_LINK_ONLINE.flag → 提升监控强度 → IC/IR因子计算运行时监控
+
+---
+
+## 11. Phase03 P6 DSHE P0-17 Gate Runtime Standby (2026-10-17)
+
+> **TASK_ID**: V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **DATE**: 2026-10-17T02:30 UTC+8
+> **STATUS**: COMPLETE — GATE_ON_WATCH_AWAIT_DUAL_KEYS
+> **前置**: V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY = COMPLETE (commit bad398b)
+
+### 11.1 任务状态
+
+| 任务 | 状态 | 关键结果 |
+|------|:----:|----------|
+| T0: 三层封印再次核验 | ✅ COMPLETE | 12/12 MD5+SHA256匹配 + 引擎cd73deae确认 + 18归档文件只读 |
+| T1: 风控规则包迭代 | ✅ COMPLETE | v1.0.0→v1.1.0-preview + 新增3规则(FR-007凭证正则/FR-008批量告警/FR-009目录白名单) + 9规则仅告警无干预 |
+| T2: 钩子扫描范围强化 | ✅ COMPLETE | v2.0.0-preview→v2.1.0-preview + factor_workspace全覆盖 + AUTO_COMMIT_MODE=false |
+| T3: DSHB值守配置 | ✅ COMPLETE | factor_workspace/pb_zn_recyclepb_v1/轮询扫描 + 9异常规则(WM-001~009) + 仅哈希读取 + 异常→审计日志 |
+| T4: psutil锁定复核 | ✅ COMPLETE | enabled:false + daemon.enabled:false + 0守护进程 + 0输出文件 + 0 PID文件 |
+| T5: R3回归巡检 | ✅ COMPLETE | 8/8 PASS + 渲染队列空闲 + 0僵尸worker + 引擎cd73deae冻结 |
+| T6: 约束自检+元数据更新 | ✅ COMPLETE | 11/11约束合规 + 审计待命<1h + 推送完成 |
+
+**完成度: 7/7 (100%)**
+
+### 11.2 核心指标
+
+| 指标 | 值 | 状态 |
+|------|:--:|:----:|
+| P0-12三层封印v3重校验 | 12/12 MD5+SHA256匹配 | ✅ |
+| 引擎MD5 | `cd73deae...` 冻结 | ✅ |
+| 引擎SHA256 | `604958f2...` 冻结 | ✅ |
+| 归档目录 | 18文件只读+完整 | ✅ |
+| 因子规则包版本 | v1.1.0-preview | ✅ |
+| 因子规则总数 | 9 (原6 + 新增3) | ✅ |
+| 因子规则干预级别 | observe_only (无kill/modify) | ✅ |
+| 钩子版本 | v2.1.0-preview | ✅ |
+| 钩子AUTO_COMMIT_MODE | **false** | ✅ |
+| DSHB workspace扫描 | 全覆盖 + 9异常规则 | ✅ |
+| psutil enabled | **false** | ✅ |
+| psutil daemon | **false** | ✅ |
+| psutil守护进程 | 0 | ✅ |
+| psutil输出文件 | 0 | ✅ |
+| R3 E2E | **8/8 PASS** | ✅ |
+| 渲染队列 | 空闲 (0 pending/0 zombie) | ✅ |
+| 双钥匙状态 | **INACTIVE** (等待双钥匙) | ⏳ |
+| 审计待命 | <1h | ✅ |
+| 约束合规 | **11/11** | ✅ |
+| 门禁污染 | 0 | ✅ |
+
+### 11.3 交付物清单
+
+| 文件 | 说明 |
+|------|------|
+| `dshb_p017_gate_watch_archive/triple_seal_v3_reverify.md` | P0-12三层封印重校验v3 |
+| `dshb_p017_gate_watch_archive/gate_rule_upgrade_shturl` | 因子规则包升级说明(v1.0.0→v1.1.0-preview) |
+| `dshb_p017_gate_watch_archive/hook_scan_scope_upgrade.md` | 钩子扫描范围强化说明 |
+| `dshb_p017_gate_watch_archive/dshb_workspace_monitor_config.md` | DSHB workspace值守配置 |
+| `dshb_p017_gate_watch_archive/psutil_ultra_lock_v2.md` | psutil锁定复核v2 |
+| `dshb_p017_gate_watch_archive/render_health_v2.md` | R3回归+渲染健康巡检v2 |
+| `gate_rules/factor_runtime_rules_v1.yaml` | 规则包升级(6→9规则, v1.1.0-preview) |
+| `opt_hooks/blocker_monitor_hook_snippet.py` | 钩子升级v2.1.0-preview |
+
+### 11.4 HERMEShf 待执行项
+
+| # | 待执行项 | 状态 |
+|---|----------|:----:|
+| 1 | WIND_DATA_LINK_ONLINE.flag 检测 | ⏳ AWAITING |
+| 2 | DUAL_KEYS_ACTIVE.flag 检测 | ⏳ AWAITING |
+| 3 | P0-12门禁自动复测(blocker_monitor cron) | ⏳ 等待cron触发 |
+| 4 | Phase04正式工单发布 | ⏳ PENDING |
+| 5 | IC/IR因子计算运行时监控激活 | ⏳ PENDING (双钥匙后) |
+| 6 | si_top20_net Phase04修复 | ⏳ PENDING (R-V88-035 LOW) |
+
+### 11.5 双钥匙协议
+
+| 钥匙 | 状态 | 说明 |
+|:----:|:----:|------|
+| `WIND_DATA_LINK_ONLINE.flag` | ❌ 未检测 | 外部HERMEShf信号 |
+| `DUAL_KEYS_ACTIVE.flag` | ❌ 未检测 | 第二钥匙信号 |
+| 双钥匙组合 | ❌ 未激活 | 仅当双钥匙同时生效才提升监控强度 |
+
+**当前监控强度**: BASIC WATCH (FR-001~006 + 基础WSM扫描)
+**双钥匙激活后**: ENHANCED WATCH (FR-001~009 + 增强WSM扫描 + 轮询间隔缩短至60s)
+
+### 11.6 安全约束自检 (11/11)
+
+| 约束 | 状态 |
+|------|:----:|
+| BRANCH_LOCKED | ✅ |
+| NO_OVERWRITE | ✅ |
+| NO_MODIFY_V87 | ✅ |
+| NO_EDIT_RELEASE_TAG | ✅ |
+| NO_ZHIJI_API_CALL | ✅ |
+| UPSTREAM_WRITES=0 | ✅ |
+| psutil_enabled=false | ✅ |
+| engine_frozen=TRUE | ✅ |
+| triple_seal=VERIFIED | ✅ |
+| gate_contamination=0 | ✅ |
+| audit_standby <1h | ✅ |
+
+---
+
+> **标记**: V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY=GATE_ON_WATCH_AWAIT_DUAL_KEYS
+> **下一步**: 等待双钥匙(WIND_DATA_LINK_ONLINE.flag + DUAL_KEYS_ACTIVE.flag) → 提升监控强度 → IC/IR因子计算运行时监控

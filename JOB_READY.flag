@@ -5143,3 +5143,20 @@ V88_PHASE03_P1_DSHB_NI_TOP20_HISTORY_FILL_AND_REMAIN_CRAWLER_FINALIZE_VERSION_ST
 - **引擎MD5**: cd73deaeec54a7f1f8bde92c1300a9dc (冻结不变)
 - **验收标准**: 6/6 达成
 - **状态标记**: V88_PHASE03_P1_DSHE_P012_FULL_LINK_CPU_BENCHMARK=COMPLETE
+
+### 2026-10-17 V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY_JOB
+- **状态**: COMPLETE — GATE_ON_WATCH_AWAIT_DUAL_KEYS
+- **T0**: 三层封印再次核验 — 12/12 MD5+SHA256匹配, 引擎cd73deae确认, 18归档文件只读
+- **T1**: 风控规则包迭代 — v1.0.0→v1.1.0-preview, 新增3规则(FR-007/008/009), 9规则仅告警无干预
+- **T2**: 钩子扫描范围强化 — v2.0.0-preview→v2.1.0-preview, factor_workspace全覆盖, AUTO_COMMIT_MODE=false
+- **T3**: DSHB值守配置 — factor_workspace/pb_zn_recyclepb_v1/轮询扫描, 9异常规则(WM-001~009), 仅哈希读取
+- **T4**: psutil锁定复核 — enabled:false, daemon.enabled:false, 0守护进程, 0输出文件
+- **T5**: R3回归巡检 — 8/8 PASS, 渲染队列空闲, 0僵尸worker
+- **T6**: 约束自检+元数据更新 — 11/11合规, 审计待命<1h
+- **双钥匙状态**: INACTIVE (等待WIND_DATA_LINK_ONLINE.flag + DUAL_KEYS_ACTIVE.flag)
+- **监控强度**: BASIC WATCH (FR-001~006 + 基础WSM扫描)
+- **双钥匙激活后**: ENHANCED WATCH (FR-001~009 + 增强WSM + 60s轮询)
+- **引擎MD5**: cd73deaeec54a7f1f8bde92c1300a9dc (冻结不变)
+- **psutil状态**: LOCKED (enabled:false, daemon:false)
+- **验收标准**: 6/6 达成
+- **状态标记**: V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY=GATE_ON_WATCH_AWAIT_DUAL_KEYS

@@ -13,7 +13,7 @@
 
 rule_package:
   name: "factor_runtime_rules_v1"
-  version: "1.0.0"
+  version: "1.1.0-preview"
   phase: "Phase04_IC_IR"
   role: "factor_computation_runtime_monitor"
   mode: "observe_alert_only"
@@ -176,6 +176,106 @@ rules:
     snapshot_interval_hours: 6
     scan_depth: 10
     note: "Snapshot is preview-only. No git add/commit/push performed."
+
+  # =============================================================================
+  # P0-17 T1 UPGRADE: 3 NEW RULES (v1.1.0-preview)
+  # All observe-alert-only. No kill, no modify, no delete, no git ops.
+  # =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # Rule 7: Enhanced Plaintext Credential Regex Scan (ALL file types)
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-007"
+    name: "enhanced_plaintext_credential_scan"
+    description: "Extended credential scan across ALL file types in factor_workspace (not just JSON)"
+    severity: "CRITICAL"
+    action: "alert_and_log"
+    pattern: "factor_workspace/**/*"
+    max_file_size_bytes: 10485760  # 10 MB
+    excluded_extensions:
+      - ".pyc"
+      - ".pyo"
+      - ".so"
+      - ".dll"
+      - ".exe"
+    patterns_to_scan:
+      - regex: "(?i)AKIA[0-9A-Z]{16}"
+        description: "AWS access key ID"
+      - regex: "(?i)ghp_[a-zA-Z0-9]{36}"
+        description: "GitHub personal access token"
+      - regex: "(?i)gho_[a-zA-Z0-9]{36}"
+        description: "GitHub OAuth token"
+      - regex: "(?i)sk-[a-zA-Z0-9]{20,}"
+        description: "OpenAI/SendGrid style API key"
+      - regex: "(?i)(api[_-]?key|apikey|secret|token|password|passwd|pwd)\s*[:=]\s*['\"][^'\"]+['\"]"
+        description: "Generic API key/secret/token pattern"
+      - regex: "-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----"
+        description: "Private key header"
+      - regex: "(?i)xox[baprs]-[a-zA-Z0-9-]+"
+        description: "Slack token"
+      - regex: "([0-9]{8,10}):[a-zA-Z0-9_-]{35}"
+        description: "Telegram bot token"
+      - regex: "(?i)sk_live_[a-zA-Z0-9]{20,}"
+        description: "Stripe secret key"
+    scan_depth: 10
+    note: "Scans ALL file types (not just JSON). No file modification. Alerts logged only."
+
+  # ---------------------------------------------------------------------------
+  # Rule 8: Short-Time Batch File Generation Alert
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-008"
+    name: "short_time_batch_generation_alert"
+    description: "Detect anomalous rapid file creation in factor_workspace"
+    severity: "WARNING"
+    action: "alert"
+    pattern: "factor_workspace/**/*"
+    detection_windows:
+      - window_seconds: 60
+        warning_threshold: 100
+        critical_threshold: 500
+      - window_seconds: 300
+        warning_threshold: 500
+        critical_threshold: 2000
+      - window_seconds: 1800
+        warning_threshold: 2000
+        critical_threshold: 10000
+    per_directory_window:
+      window_seconds: 60
+      warning_threshold: 50
+      critical_threshold: 200
+    byte_rate_threshold:
+      window_seconds: 60
+      warning_bytes: 10485760      # 10 MB
+      critical_bytes: 104857600     # 100 MB
+    scan_depth: 10
+    note: "Observe-alert only. Does NOT delete files, kill processes, or modify outputs."
+
+  # ---------------------------------------------------------------------------
+  # Rule 9: Output Directory Whitelist
+  # ---------------------------------------------------------------------------
+  - rule_id: "FR-009"
+    name: "output_directory_whitelist"
+    description: "Explicit whitelist of allowed output directories within factor_workspace"
+    severity: "WARNING"
+    action: "alert"
+    allowed_output_directories:
+      - "factor_workspace/pb_zn_recyclepb_v1/input/"
+      - "factor_workspace/pb_zn_recyclepb_v1/output/"
+      - "factor_workspace/pb_zn_recyclepb_v1/audit/"
+      - "factor_workspace/pb_zn_recyclepb_v1/checksum/"
+    forbidden_output_patterns:
+      - "*.traversal*"     # Directory traversal attempts
+      - "*.archive*"      # Archive directory writes
+      - "*scripts*"       # Scripts directory writes
+    forbidden_parent_paths:
+      - "scripts/"
+      - "github工作/framework-tree/scripts/"
+      - "analysis/e2e_output/v88/phase03/p1/dshe/p012_nativepass_consolidate/"
+      - "analysis/e2e_output/v88/phase03/p1/dshe/cross_align_ARCHIVED/"
+      - "analysis/e2e_output/v88/phase03/p1/dshe/p012_cpu_exception_ARCHIVED/"
+      - "analysis/e2e_output/v88/phase03/p1/dshe/phase03_p2_harden/opt-phase04-psutil-collector/"
+    scan_depth: 10
+    note: "Alert only. Does NOT block writes or modify the filesystem. Boundary violations logged for manual review."
 
 # =============================================================================
 # Alert Configuration

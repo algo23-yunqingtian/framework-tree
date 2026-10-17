@@ -148,3 +148,45 @@
 | R3 E2E | 8/8 PASS | ✅ |
 | Constraints | 11/11 | ✅ |
 | Gate contamination | 0 | ✅ |
+
+---
+
+## 8. Phase03 P6 Gate Runtime Standby (P0-17)
+
+**Directory**: `dshb_p017_gate_watch_archive/`
+**Status**: COMPLETE — GATE_ON_WATCH_AWAIT_DUAL_KEYS
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `triple_seal_v3_reverify.md` | 13,717 | `8BC3FDD6F66B6D727D1725BD79263ACE` |
+| `gate_rule_upgrade_shturl` | 6,805 | `665735A07EBFA0B4C7B1600BC117AB25` |
+| `hook_scan_scope_upgrade.md` | 6,288 | `4AEA39C16D052B168E70AB12BCEB1A16` |
+| `dshb_workspace_monitor_config.md` | 6,045 | `741A633B8841F88D937F5B4B4125063F` |
+| `psutil_ultra_lock_v2.md` | 4,449 | `3F7FC55E880839430622EB303B6998FB` |
+| `render_health_v2.md` | 4,872 | `E3148F2BEC39A296591C1E305541E973` |
+
+### 8.1 Updated Files
+
+| File | Size (B) | MD5 |
+|------|--------:|-----|
+| `gate_rules/factor_runtime_rules_v1.yaml` | 13,936 | `1CEB1245C5012839698110299160F7F9` |
+| `opt_hooks/blocker_monitor_hook_snippet.py` | 22,438 | `CDA86B397177EBCAF8546F1BE6FE6636` |
+
+### 8.2 P0-17 Metrics Summary
+
+| Metric | Value | Status |
+|--------|:-----:|:------:|
+| Triple seal v3 reverify | 12/12 MD5+SHA256 match | ✅ |
+| Engine frozen | `cd73deae...` (MD5) | ✅ |
+| Engine SHA256 | `604958f2...` | ✅ |
+| Archive dirs | 18 files read-only | ✅ |
+| Factor rules | 9 rules (v1.1.0-preview) | ✅ |
+| Hook version | v2.1.0-preview | ✅ |
+| Hook AUTO_COMMIT_MODE | false | ✅ |
+| psutil enabled | false | ✅ |
+| psutil daemon | false | ✅ |
+| R3 E2E | 8/8 PASS | ✅ |
+| Render queue | idle, 0 zombies | ✅ |
+| Dual keys status | INACTIVE | ⏳ |
+| Constraints | 11/11 | ✅ |
+| Gate contamination | 0 | ✅ |

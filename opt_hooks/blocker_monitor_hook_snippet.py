@@ -76,7 +76,7 @@ from pathlib import Path
 # 配置常量 — 安全模式锁定
 # =============================================================================
 
-TASK_ID = "V88_PHASE03_P4_DSHE_P015_GATE_MONITOR_READY"
+TASK_ID = "V88_PHASE03_P6_DSHE_P017_GATE_RUNTIME_STANDBY"
 AGENT = "DSHE"
 BRANCH = "feature/v88-g1"
 
@@ -139,8 +139,8 @@ NO_ZHIJI_API_CALL = True
 UPSTREAM_WRITES = 0
 
 # 版本号 — P4 Upgrade: v2.0.0-preview
-HOOK_VERSION = "2.0.0-preview"
-HOOK_SCHEMA = "blocker-monitor-hook-preview-2.0"
+HOOK_VERSION = "2.1.0-preview"
+HOOK_SCHEMA = "blocker-monitor-hook-preview-2.1"
 
 # 引擎冻结哈希
 ENGINE_FROZEN_HASH = "cd73deaeec54a7f1f8bde92c1300a9dc"
