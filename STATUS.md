@@ -9591,3 +9591,50 @@ V88_PHASE03_P1_DSHB_IMPLEMENT_AND_NOISE_CONTINUE_JOB=COMPLETE, V88_PHASE03_P1_DS
 
 ### Status Flags
 V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_AGENT=HERMEShf, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_BRANCH=feature/v88-g1, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_DATE=2026-10-17, V88_PHASE03_P6_HERMESHF_GLOBAL_ARBITER_STANDBY_CONSTRAINT_COMPLIANCE=5_OF_5
+
+---
+
+## V88 Phase03 P7 HERMEShf Risk Fix + Calib Snapshot (2026-10-17)
+
+**TASK_ID**: V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_JOB
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 | **DATE**: 2026-10-17
+
+### T0-T5 Summary
+
+| Task | Description | Status |
+|------|-------------|:------:|
+| T0 | R-V88-P6-001 fix: 3 static True → real file checks | ✅ RESOLVED |
+| T1 | 9-factor caliber snapshot (3x3, distributed DSHE+DSHB) | ✅ |
+| T2 | Exemption followup v5 (C1-C5: 2/5 done, 0 blockers) | ✅ |
+| T3 | Arbiter self test (12/12 PASS, Key A simulation 5/5) | ✅ |
+| T4 | Global gate dashboard v4 (risk fix + calib snapshot) | ✅ |
+| T5 | Metadata triple update + commit/push | ✅ |
+
+### Risk Fix Details (R-V88-P6-001 RESOLVED)
+
+| # | Precheck | Before | After |
+|:-:|----------|--------|-------|
+| 2 | BASELINE-SWITCH-FREE | static True | phase03_summary_asset_re_seal.md content check |
+| 3 | PHASE03-BLOCKERS-ZERO | static True | global_gate_dashboard.md content check |
+| 5 | DSHE-AUTO-COMMIT-OFF | static True | blocker_monitor_hook_snippet.py source regex |
+
+### 9-Factor Caliber Snapshot
+
+- 3 factors: momentum_20d, momentum_60d, vol_20d
+- 3 varieties: PB, ZN, Recycle-PB
+- Data: close (adjusted), WIND_DATA_LINK via gateway
+- Status: LOCKED (awaiting dual keys)
+- Distributed to: DSHE + DSHB
+
+### Key Status (unchanged)
+
+- KEY_A: **ABSENT** | KEY_B: **ABSENT** | AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING** | BASELINE_MERGE: **WAIT** | PHASE04: **FROZEN**
+
+### Risk Register
+
+- R-V88-P6-001 LOW → ✅ RESOLVED
+- R-V88-P7-001 LOW: #3 document check limitation (Phase04 upgrade to JSON)
+
+### Status Flags
+V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_AGENT=HERMEShf, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_BRANCH=feature/v88-g1, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_DATE=2026-10-17, V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_CONSTRAINT_COMPLIANCE=5_OF_5

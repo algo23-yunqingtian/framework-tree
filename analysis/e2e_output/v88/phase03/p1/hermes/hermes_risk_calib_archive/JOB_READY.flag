@@ -1,0 +1,41 @@
+# JOB_READY.flag — HERMES Risk Calib Archive
+
+# V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT_JOB
+# Date: 2026-10-17T14:30 +0800
+# Agent: HERMEShf
+# Branch: feature/v88-g1 (BRANCH_LOCKED)
+# Status: ARBITER_ON_STANDBY_AWAIT_KEY_A
+
+# T0: R-V88-P6-001 risk fix — COMPLETE (3 static True → real file checks)
+# T1: 9-factor caliber snapshot — COMPLETE (3x3 matrix, distributed to DSHE+DSHB)
+# T2: Exemption followup v5 — COMPLETE (C1-C5: 2/5 done, R-P6-001 RESOLVED)
+# T3: Arbiter self test — COMPLETE (12/12 PASS, Key A simulation 5/5 ALL PASS)
+# T4: Global gate dashboard v4 — COMPLETE (risk fix + caliber snapshot recorded)
+# T5: Metadata triple update — COMPLETE
+
+# Risk fix details:
+# - #2 BASELINE-SWITCH-FREE: phase03_summary_asset_re_seal.md content check
+# - #3 PHASE03-BLOCKERS-ZERO: global_gate_dashboard.md content check
+# - #5 DSHE-AUTO-COMMIT-OFF: blocker_monitor_hook_snippet.py source regex check
+
+# Risk register:
+# R-V88-P6-001 LOW → RESOLVED (3 static True eliminated)
+# R-V88-P7-001 LOW: #3 document check limitation (Phase04 upgrade to JSON)
+
+# Constraints:
+# BRANCH_LOCKED=TRUE
+# NO_OVERWRITE=TRUE
+# NO_MODIFY_V87=TRUE
+# NO_EDIT_RELEASE_TAG=TRUE
+# NO_ZHIJI_API_CALL=TRUE
+# Constraint compliance: 5/5
+
+# Key status:
+# KEY_A=WIND_DATA_LINK_ONLINE.flag: ABSENT
+# KEY_B=HERMES_TRIGGER_AUTHORIZED.flag: ABSENT
+# AUTHORIZED=NO
+# ARBITER_STATE=OBSERVING
+# BASELINE_MERGE=WAIT_AFTER_PHASE04_GO
+# PHASE04_IGNITION=FROZEN
+
+JOB: V88_PHASE03_P7_HERMESHF_P6_RISK_FIX_AND_CALIB_SNAPSHOT=ARBITER_ON_STANDBY_AWAIT_KEY_A
