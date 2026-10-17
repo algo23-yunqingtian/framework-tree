@@ -910,3 +910,112 @@
 
 > **标记**: V88_PHASE03_P9_DSHE_P020_JSON_SNAPSHOT_LOAD_VERIFY=GATE_ON_WATCH_AWAIT_DUAL_KEYS
 > **下一步**: 等待双钥匙(WIND_DATA_LINK_ONLINE.flag + DUAL_KEYS_ACTIVE.flag) → 提升监控强度 → Phase04因子计算运行时监控(9因子LOCKED)
+
+---
+
+## 15. Phase03 P10 DSHE P0-21 Phase03 Readiness Watcher (2026-10-22)
+
+> **TASK_ID**: V88_PHASE03_P10_DSHE_P021_PHASE03_READINESS_WATCHER
+> **AGENT**: DSHE | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED: TRUE)
+> **DATE**: 2026-10-22 UTC+8
+> **STATUS**: COMPLETE — GATE_ON_WATCH_AWAIT_DUAL_KEYS
+> **前置**: V88_PHASE03_P9_DSHE_P020_JSON_SNAPSHOT_LOAD_VERIFY = COMPLETE (commit 01a022f)
+
+### 15.1 任务状态
+
+| 任务 | 状态 | 关键结果 |
+|------|:----:|----------|
+| T0: DSHB审计回执监听与三方口径合并 | ✅ COMPLETE | DSHB P021: 23/23 PASS (MD审计), DSHB P022: PENDING (JSON审计中), 三方口径0冲突 |
+| T1: 引擎与封印v7轻量巡检 | ✅ COMPLETE | 12/12 MD5 MATCH, 引擎cd73deae/604958f2冻结, **9层封印链未断**, 0漂移 |
+| T2: 网关规则不变性校验 | ✅ COMPLETE | FR-001~006 ACTIVE, FR-007~009 SEALED, **22/22安全约束**, 11/11组件不变 |
+| T3: DSHE Phase03就绪自检报告 | ✅ COMPLETE | 8/8工单完成, 35+交付物, 12/12 Phase04就绪项, 供HERMEShf准入评审 |
+| T4: 就绪标记+双钥匙等待 | ✅ COMPLETE | JOB_READY.flag更新, GATE_ON_WATCH_AWAIT_DUAL_KEYS |
+| T5: 约束自检+元数据更新 | ✅ COMPLETE | 11/11约束合规, STATUS/JOB_READY/MD5三件套更新 |
+
+**完成度: 6/6 (100%)**
+
+### 15.2 核心指标
+
+| 指标 | 值 | 状态 |
+|------|:--:|:----:|
+| DSHB P021审计 | ✅ 23/23 PASS (MD快照, 0偏差) | ✅ |
+| DSHB P022审计 | ⏳ PENDING (JSON快照审计中) | ⏳ |
+| 三方口径冲突 | **0** (13维度全一致) | ✅ |
+| 引擎MD5 | `cd73deae...` 冻结 | ✅ |
+| 引擎SHA256 | `604958f2...` 冻结 | ✅ |
+| 三层封印v7重校验 | 12/12 MD5 MATCH | ✅ |
+| 封印链 | **9层连续**(09bf0be→v7)未断 | ✅ |
+| 归档目录 | 18文件只读+完整 | ✅ |
+| FR-001~006基础规则 | ✅ ACTIVE(仅告警) | ✅ |
+| FR-007~009增强规则 | ⬜ 密封未激活 | ✅ |
+| 双钥匙状态 | **INACTIVE** (BASIC WATCH) | ⏳ |
+| 钩子安全锁 | 9/9验证通过 | ✅ |
+| 安全约束 | **22/22**验证通过 | ✅ |
+| 规则包不变性 | v1.1.0-preview(9规则,未变更) | ✅ |
+| P0-19→P0-21不变性 | 11/11组件未变更 | ✅ |
+| 钩子版本 | v2.1.0-preview(AUTO_COMMIT=false) | ✅ |
+| psutil enabled | **false** | ✅ |
+| psutil daemon | **false** | ✅ |
+| Phase03就绪项 | **12/12满足** | ✅ |
+| 审计待命 | <1h | ✅ |
+| 约束合规 | **11/11** | ✅ |
+| 门禁污染 | 0 | ✅ |
+
+### 15.3 交付物清单
+
+| 文件 | 大小 | MD5 | 说明 |
+|------|-----:|-----|------|
+| `dshe_3way_cross_summary.md` | 9,134 | `C8580C3C...` | DSHB P021: 23/23 PASS, 三方0冲突, DSHB P022 PENDING |
+| `seal_v7_quick_check.md` | 7,146 | `02ABC755...` | 封印v7, 12/12 MD5 MATCH, 9层链未断, 0漂移 |
+| `gate_invariant_check.md` | 6,488 | `B1288C23...` | 规则不变性, 22/22约束, 11/11不变 |
+| `dshe_phase03_readiness_report.md` | 11,816 | `595A0666...` | Phase03就绪自检报告, 供HERMEShf准入评审 |
+
+**目录**: `analysis/e2e_output/v88/phase03/p7/dshe/dshe_p021_watcher_archive/`
+**总计**: 4 files | 34,584 bytes
+
+### 15.4 HERMEShf 待执行项
+
+| # | 待执行项 | 状态 |
+|---|----------|:----:|
+| 1 | WIND_DATA_LINK_ONLINE.flag 检测 | ⏳ AWAITING |
+| 2 | DUAL_KEYS_ACTIVE.flag 检测 | ⏳ AWAITING |
+| 3 | P0-12门禁自动复测(blocker_monitor cron) | ⏳ 等待cron触发 |
+| 4 | Phase04正式工单发布 | ⏳ PENDING |
+| 5 | IC/IR因子计算运行时监控激活 | ⏳ PENDING (双钥匙后) |
+| 6 | si_top20_net Phase04数据源接入 | ⏳ PENDING (DSHB爬虫+DSHE图表注册) |
+| 7 | HERMEShf口径快照交付(9指标) | ✅ DONE (MD: 9e1f6c7, JSON: 490b9f8) |
+| 8 | si_top20_net R-V88-035 CLOSED确认 | ✅ CLOSED |
+| 9 | R-V88-P8-001格式不匹配 | ✅ RESOLVED (JSON交付) |
+| 10 | DSHB P022 JSON审计完成 | ⏳ PENDING |
+
+### 15.5 双钥匙协议
+
+| 钥匙 | 状态 | 说明 |
+|:----:|:----:|------|
+| `WIND_DATA_LINK_ONLINE.flag` | ❌ 未检测 | 外部HERMEShf信号 |
+| `DUAL_KEYS_ACTIVE.flag` | ❌ 未检测 | 第二钥匙信号 |
+| 双钥匙组合 | ❌ 未激活 | 仅当双钥匙同时生效才提升监控强度 |
+
+**当前监控强度**: BASIC WATCH (FR-001~006 + 基础WSM扫描)
+**双钥匙激活后**: ENHANCED WATCH (FR-001~009 + 增强WSM扫描 + 轮询间隔缩短至60s)
+
+### 15.6 安全约束自检 (11/11)
+
+| 约束 | 状态 |
+|------|:----:|
+| BRANCH_LOCKED | ✅ |
+| NO_OVERWRITE | ✅ |
+| NO_MODIFY_V87 | ✅ |
+| NO_EDIT_RELEASE_TAG | ✅ |
+| NO_ZHIJI_API_CALL | ✅ |
+| UPSTREAM_WRITES=0 | ✅ |
+| psutil_enabled=false | ✅ |
+| engine_frozen=TRUE | ✅ |
+| triple_seal=VERIFIED | ✅ |
+| gate_contamination=0 | ✅ |
+| audit_standby <1h | ✅ |
+
+---
+
+> **标记**: V88_PHASE03_P10_DSHE_P021_PHASE03_READINESS_WATCHER=GATE_ON_WATCH_AWAIT_DUAL_KEYS
+> **下一步**: 等待双钥匙(WIND_DATA_LINK_ONLINE.flag + DUAL_KEYS_ACTIVE.flag) + DSHB P022 + HERMEShf P11 → Phase03准入评审 → Phase04正式工单
