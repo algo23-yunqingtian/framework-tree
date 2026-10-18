@@ -4,9 +4,9 @@
   "fail_count": 0,
   "missing_count": 0,
   "success_rate": 100.0,
-  "min_value": 24298.93,
-  "max_value": 24820.77,
-  "mean_value": 24581.76,
+  "min_value": 24364.06,
+  "max_value": 24630.65,
+  "mean_value": 24559.62,
   "date_range": [
     "2025-01-02",
     "2025-01-15"
@@ -15,12 +15,15 @@
   "indicator": "close",
   "data_source": "SIMULATED (NOT REAL)",
   "real_wind_call": false,
-  "run_timestamp": "2026-10-18T00:22:58.253377+00:00",
-  "total_sleep_time_sec": 120.2,
-  "total_calls": 11,
+  "permit_marker_exists": false,
+  "run_timestamp": "2026-10-18T01:16:23.266668+00:00",
+  "total_sleep_time_sec": 120.1,
+  "total_calls": 10,
   "min_interval_sec": 12,
   "max_interval_sec": 15,
-  "max_days_per_round": 12,
+  "max_days_per_round": 10,
   "emergency_stop_file": ".emergency_stop",
-  "simulation_note": "SIMULATED DATA — NOT REAL MARKET DATA"
+  "simulation_note": "SIMULATED DATA — NOT REAL MARKET DATA",
+  "alert_count": 0,
+  "phase": "DSHA-P56"
 }
