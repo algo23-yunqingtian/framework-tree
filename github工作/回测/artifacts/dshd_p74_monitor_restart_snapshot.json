@@ -1,0 +1,65 @@
+﻿{
+  "timestamp": "2026-10-18T12:48:12+08:00",
+  "event_type": "MONITOR_PRE_RESTART_SNAPSHOT",
+  "event_id": "DSHD-P74-PRE-RESTART-SNAPSHOT",
+  "agent": "DSHD-P74",
+  "severity": "OK",
+  "baseline": "feature/v88-g1 @ fcf6624",
+  "constraint": {
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "monitor_before_restart": {
+    "pid": 21496,
+    "poll_number": 1901,
+    "monitor_version": "v1.0",
+    "poll_interval_seconds": 60,
+    "monitor_script": "dshd_p71_sample_run_audit_relay.ps1",
+    "monitor_script_lines": 1908,
+    "p73_features_in_script": {
+      "offline_factor_var": true,
+      "tracking_json_var": true,
+      "tracking_historical_var": true,
+      "tracking_new_var": true,
+      "tracking_alert_flag": true,
+      "dsha_p59_ref": true,
+      "offline_factor_section": true,
+      "tracking_section": true
+    }
+  },
+  "system_state_at_stop": {
+    "wmain": {
+      "pid": 824,
+      "status": "RUNNING",
+      "visible": true,
+      "window_title": "Wind金融终端..Alice"
+    },
+    "initwapi": {
+      "pid": 14188,
+      "status": "RUNNING"
+    },
+    "excel": {
+      "pid": 28272,
+      "status": "RUNNING",
+      "orphan": false,
+      "window_title": "铅周报240127 - Excel"
+    },
+    "windlocal": { "count": 0 },
+    "python": { "count": 0 },
+    "wind_ports": 1,
+    "com_stability_score": 100,
+    "com_health_rating": "优秀",
+    "session_flicker_history": ["V","V","V"],
+    "sample_marker_exists": false,
+    "sample_active_observing": false,
+    "p86_controller_ready": "READY-WAITING",
+    "all_alerts_clear": true,
+    "invariants_all_pass": true,
+    "monitor_log_lines": 1316,
+    "tracking_audit_lines": 294
+  },
+  "protected_processes_untouched": true,
+  "marker_created_or_deleted": false,
+  "controller_or_python_invoked": false
+}

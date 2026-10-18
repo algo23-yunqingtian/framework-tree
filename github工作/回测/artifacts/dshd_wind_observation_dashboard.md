@@ -1,7 +1,7 @@
 # DSHD-P68 Enhanced Wind Observation Dashboard
 
-**Generated**: 2026-10-18T12:02:39+08:00
-**Poll Number**: #1860
+**Generated**: 2026-10-18T13:03:56+08:00
+**Poll Number**: #1910
 **Session**: DSHD-P71 (inherited P68/P69/P70 monitor)
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
@@ -11,7 +11,7 @@
 
 ## Health Assessment
 
-[GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=2) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing
+[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=1 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: SKILL_HASH_MISMATCH.
 
 ---
 
@@ -21,7 +21,7 @@
 |---------|-----|-------|------------|--------------|---------|
 | wmain.exe | 824 | RUNNING | 2026-10-18T10:11:59+08:00 | Wind金融终端..Alice | True |
 | InitWAPI.exe | 14188 | RUNNING | 2026-10-17T16:33:32+08:00 | N/A | N/A |
-| EXCEL.EXE | 26020, 28272 | RUNNING | N/A | N/A | N/A |
+| EXCEL.EXE | 28272 | RUNNING | N/A | N/A | N/A |
 | windlocal.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 | python.exe/pythonw.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 
@@ -75,13 +75,13 @@
 | WDF Addin LoadBehavior (HKCU) | 3 |
 | WDF Addin LoadBehavior (HKLM) | 3 |
 | WDF XL Task Panel LB | 2 |
-| Wind TCP Ports (62000-64000) | 0 |
+| Wind TCP Ports (62000-64000) | 1 |
 | .wind/users File Count | 0 |
 | Credential Alert | NONE |
 | Wind API Calls | 0 |
-| Skill SHA Check | ALL_MATCH |
-| Monitor Log Lines | 1270 |
-| Tracking Ledger Lines | 252 |
+| Skill SHA Check | MISMATCH: $($skillHashFailed -join  ) |
+| Monitor Log Lines | 1327 |
+| Tracking Ledger Lines | 305 |
 
 ---
 
