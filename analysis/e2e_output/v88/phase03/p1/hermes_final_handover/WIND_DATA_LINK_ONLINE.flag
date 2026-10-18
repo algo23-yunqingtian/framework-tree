@@ -1,0 +1,19 @@
+# WIND_DATA_LINK_ONLINE.flag
+# HERMEShf Dual-Key Prepare — KEY_A
+# 性质: 就绪标记 flag (PREPARED), 不含任何真实密钥凭证
+# 工单: INSTRUCTION_HERMESHF_C5_ALIGN_AND_DUALKEY_PREP (T1)
+# ARBITER: OBSERVING | AUTHORIZED: NO
+
+timestamp: 2026-10-18T17:35:00+08:00
+commit: f98ca4c
+branch: feature/v88-g1
+status: PREPARED
+prepared_by: HERMEShf
+arbiter_state: OBSERVING
+key_a_value: PREPARED
+key_b_value: ABSENT
+authorized: NO
+note: |
+  本 flag 仅作为就绪状态标记, 不包含任何 API key / token / 凭证。
+  真实激活需 DSHB 联合 QC Retry#5 全 PASS 且双 key 同步 PREPARED→ARMED。
+  当前 C5 chart_input_data.json 源资产 MIRROR_SOURCE_ABSENT, 不满足激活前置。

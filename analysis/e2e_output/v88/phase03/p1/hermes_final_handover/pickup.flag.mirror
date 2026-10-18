@@ -1,0 +1,66 @@
+# V88 Phase03 P1 HERMEShf 公共调度标记 (pickup.flag)
+# 工单: INSTRUCTION_HERMESHF_GENERATE_C1_PICKUP_FLAG
+# 用途: 全仓库可检索公共路径, 供 DSHB 全局检索快照验证 C1 条件
+
+TASK_ID: V88_PHASE03_P1_HERMESHF_C1_PICKUP_FLAG_GENERATION
+AGENT: HERMEShf
+BRANCH: feature/v88-g1 (BRANCH_LOCKED)
+GENERATED_AT: 20261018T155522
+GENERATED_DATE: 2026-10-18
+GIT_COMMIT: 8bf72c2fdaa141cbf2ca9c0f7528c9348f8b1d13
+GIT_COMMIT_SHORT: 8bf72c2
+
+## 前置条件确认
+PRECONDITION_C1: SATISFIED (HERMEShf 沙箱 pickup.flag 真实存在, P11+P12 签收完整)
+PRECONDITION_C5: VERIFIED (DSHE chart_input_data.json 全局路径落盘完成)
+PRECONDITION_C4: COMPLETED (V88 Phase03 P14 C4 索引修复, commit 25faa6b)
+PRECONDITION_SANDBOX_ISOLATION: ARCHIVED (沙箱隔离根因已归档, QC 状态 6/6 READY)
+PRECONDITION_DSHB_SEAL_CHAIN: STABLE (P31→P42 完整)
+
+## C1 校验元数据
+C1_STATUS: SATISFIED
+C1_REASON: pickup.flag 已生成至公共路径, DSHB 全局检索可命中
+C1_PICKUP_PATH: analysis/e2e_output/v88/phase03/p1/pickup.flag
+C1_PICKUP_LOCATION: PUBLIC (全仓库可检索, 非私有沙箱)
+C1_PICKUP_RETAIN_ORIGINAL: TRUE (原有 hermes/hermes_dispatch/pickup.flag 保留不动)
+
+## 任务版本
+TASK_VERSION: V88_PHASE03_P1
+TASK_PARENT: V88_PHASE03_P14_C4_INDEX_FIX (commit 25faa6b)
+TASK_RECHECK: V88_PHASE03_P14_ARTIFACT_RECHECK (commit 8bf72c2)
+
+## 状态标记
+STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A
+ARBITER_STATE: OBSERVING
+KEY_A: ABSENT
+KEY_B: ABSENT
+AUTHORIZED: NO
+NEXT_ACTION: AWAIT_DSHB_SNAPSHOT_VERIFY_C1
+
+## 原私有沙箱 pickup.flag 引用 (历史归档)
+ORIGINAL_PICKUP_PATH: analysis/e2e_output/v88/phase03/p1/hermes/hermes_dispatch/pickup.flag
+ORIGINAL_PICKUP_STATUS: PRESERVED (P11+P12 签收区块完整)
+ORIGINAL_PICKUP_RETAIN: TRUE
+
+## 约束合规
+BRANCH_LOCKED: TRUE
+NO_OVERWRITE: TRUE
+NO_ZHIJI_API_CALL: TRUE
+NO_AUTO_PUSH: TRUE
+NO_MODIFY_LOCKED_SEAL: TRUE
+NO_EDIT_RELEASE_TAG_ASSET: TRUE
+NO_DESTRUCTIVE: TRUE
+CONSTRAINTS_TOTAL: 7/7 PASS
+
+## 交付物引用
+P14_C4_REPORT: analysis/e2e_output/v88/phase03/p1/hermes/hermes_delivery_archive/c4_index_fix_report.md
+P14_RECHECK_REPORT: analysis/e2e_output/v88/phase03/p1/hermes/hermes_delivery_archive/p14_artifact_recheck_report.md
+P14_ARCHIVE_BACKUP: analysis/e2e_output/v88/phase03/p1/hermes/backup/v88/phase03/P14_C4_INDEX_FIX/wiki_admission_gate.md
+P14_ARCHIVE_MD5: 3286e1469f7ce6b23bedfef061fbc63f
+
+## 下一步
+NEXT: DSHB 执行全局检索快照, 验证 C1 pickup.flag 可命中
+NEXT_OWNER: DSHB
+NEXT_EXPECTED_ACTION: 从 p1 根目录或全局检索 pickup.flag, 确认 SATISFIED
+
+--- END OF PICKUP.FLAG ---
