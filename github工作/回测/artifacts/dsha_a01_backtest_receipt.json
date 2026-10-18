@@ -1,20 +1,22 @@
 {
-  "receipt_id": "DSHA-P66-A01-RUN-20261018_175627",
-  "generated_at": "2026-10-18T09:56:27Z",
-  "generated_at_gmt8": "2026-10-18 17:56:27 GMT+8",
-  "agent": "DSHA-P66",
+  "receipt_id": "DSHA-P67-A01-USER-REMOTE-001-20261018_194700",
+  "generated_at": "2026-10-18T11:47:00Z",
+  "generated_at_gmt8": "2026-10-18 19:47:00 GMT+8",
+  "agent": "DSHA-P67",
   "branch": "feature/v88-g1",
-  "baseline_commit": "f98ca4c",
-  "task": "ENHANCED_LISTEN_AND_EXECUTE_STANDBY",
-  "a01_tag": "A01-RUN",
+  "baseline_commit": "784537f",
+  "task": "STABILIZED_LISTEN_STANDBY_DATA_SANITY_PRECHECK",
+  "a01_tag": "A01-USER-REMOTE-001",
+  "git_tag": "A01-READY-STABLE",
   "real_wind_call": false,
   "wind_api_calls": 0,
-  "status": "STANDBY",
+  "status": "STANDBY_STABLE",
   "status_line": {
-    "DSHA_P66": "STANDBY",
+    "DSHA_P67": "STANDBY_STABLE",
     "P62_HEALTH": "8/8",
-    "next_action": "waiting_for_csv_from_DSHC",
-    "log": "enabled_verbose",
+    "next_action": "waiting_for_csv",
+    "sanity_precheck": "enabled",
+    "log": "verbose",
     "receipt_path": "N/A",
     "archive_path": "N/A",
     "reason": "N/A"
@@ -86,6 +88,12 @@
         "all_pass": true,
         "pass_count": 8
       },
+      "p66_script": {
+        "exists": true,
+        "size_bytes": 73235,
+        "sha256": "37651568fced0edba0e8ad1a0c3afd927bb81f769766aae6bd628644ef5ddf8e",
+        "importable": true
+      },
       "p65_deliverables": {
         "instrument_fetch_table": {
           "exists": true,
@@ -152,8 +160,9 @@
     "meets_min_size": false,
     "size_stable": false,
     "detected": false,
-    "scan_at": "2026-10-18T09:56:27Z"
+    "scan_at": "2026-10-18T11:47:00Z"
   },
+  "p1_sanity_precheck": null,
   "factor_status": {
     "total_factors": 7,
     "available_factors": [
@@ -181,11 +190,12 @@
     "no_wsd_wss_request": true
   },
   "next_action": {
-    "current_state": "STANDBY",
+    "current_state": "STANDBY_STABLE",
     "if_standby": "等待DSHC取数输出 wdf_sample_metals_raw.csv 到 output_sample/",
-    "if_csv_arrives": "重新运行 p66_listen_execute.py 触发完整回测管线",
+    "if_csv_arrives": "重新运行 p67_stabilized_listen.py → sanity预检→放行/拒绝→9步管线",
     "p62_loop": "P62-LOOP保持常驻, 12s轮询间隔",
     "log_level": "VERBOSE",
-    "a01_trigger_trace": "enabled"
+    "a01_trigger_trace": "enabled",
+    "sanity_precheck": "enabled (≥300行, CLOSE/VOL/OI/SETTLE, 时间连续性)"
   }
 }
