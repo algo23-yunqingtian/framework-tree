@@ -47,7 +47,7 @@
 |------|----:|------|
 | `github_pages/index.html` | 6093B | 主页（含 8 KPI 卡片 + 5 图表嵌入） |
 | `github_pages/README.md` | 2773B | 仓库说明 |
-| `github_pages/wiki_admission_gate.md` | 3591B | Wiki 准入看板源码 |
+| ~~`github_pages/wiki_admission_gate.md`~~ | ~~3591B~~ | P14 C4 修复已移至 `backup/v88/phase03/P14_C4_INDEX_FIX/`（方案 A，消除 22 vs 23 索引不匹配；归档副本仍存 `hermes_web_dashboard_archive/github_pages/`） |
 | `github_pages_deploy.zip` | 314685B | 一键部署包（13 文件） |
 
 ### 3.4 报告与看板
@@ -111,7 +111,7 @@
 本索引可直接接入 framework-tree 仓库 Wiki：
 
 1. **Wiki 首页**: 链接到 `github_pages/README.md`
-2. **准入看板**: 复制 `github_pages/wiki_admission_gate.md` 到 Wiki 页面
+2. **准入看板**: ~~复制 `github_pages/wiki_admission_gate.md` 到 Wiki 页面~~ (P14 C4 修复后从挂载目录移出, 归档副本在 `hermes_web_dashboard_archive/github_pages/wiki_admission_gate.md`, 内容 MD5=3286e1469f7ce6b23bedfef061fbc63f 不变)
 3. **资产清单**: 本文件作为资产索引页
 4. **图表预览**: 部署 `github_pages_deploy.zip` 到 GitHub Pages
 
