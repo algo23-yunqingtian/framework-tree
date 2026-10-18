@@ -1,0 +1,142 @@
+﻿{
+    "started_at":  "2026-10-18T20:45:42.4294568+08:00",
+    "auth_ref":  "A01-USER-REMOTE-001",
+    "branch":  "feature/v88-g1",
+    "checklist":  [
+                      {
+                          "name":  "R03_MANIFEST_INDEX_CONSISTENT",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "live=284E766178B861D39E47095DC1F453AA4819163750FA66721C714A2E85599707 index=284E766178B861D39E47095DC1F453AA4819163750FA66721C714A2E85599707"
+                      },
+                      {
+                          "name":  "SKILL_FILES_MATCH_R03",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "match=5/5 mismatch="
+                      },
+                      {
+                          "name":  "SKILL_PS1_PARSE_OK",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "parse_ok=3/3"
+                      },
+                      {
+                          "name":  "DSHA_P65_PAYLOAD_OK",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "instruments=CU.SHF,ZN.SHF,LC.SHF,PB.SHF,SN.SHF,NI.SHF,AL.SHF range=2025-01-01~2026-10-17 fields=CLOSE;VOL;OI;SETTLE"
+                      },
+                      {
+                          "name":  "HEADER_TEMPLATE_OK",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "header=date,symbol,indicator,CLOSE,VOL,OI,SETTLE,source"
+                      },
+                      {
+                          "name":  "SAMPLE_FETCH_ALLOW_MARKER_ABSENT",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "one-shot workorder replaces marker; marker must NOT be created"
+                      },
+                      {
+                          "name":  "PROTECTED_EXCEL_PIDS_CAPTURED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "pids=14644"
+                      },
+                      {
+                          "name":  "WMAIN_BACKEND_ALIVE",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "wmain_pids=824"
+                      },
+                      {
+                          "name":  "WDF_ADDIN_REGISTERED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "hklm_loadbehavior=3"
+                      },
+                      {
+                          "name":  "WDF_DLL_PRESENT",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "dll=D:\\x64\\WDF.dll"
+                      },
+                      {
+                          "name":  "HEALTH_CHECK_WDF_OK",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "status=OK"
+                      },
+                      {
+                          "name":  "HEALTH_CHECK_WDF_NO_WIND_CALLS",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "wind_calls=0"
+                      },
+                      {
+                          "name":  "BG_EXCEL_COM_ISOLATION_OK",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "new_pids=29520 err="
+                      },
+                      {
+                          "name":  "BG_EXCEL_QUIT_CLEAN",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "residual_agent_pids="
+                      },
+                      {
+                          "name":  "WDF_ADDIN_LOADED_IN_BG_EXCEL",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "progids=ExcelPlugInShell.PowerMapConnect;MysteelAddin.ExcelAddin;SMM.Pro.Addin;TCSCConv.SharedAddin.16;ThsXlsSlug.ExcelAddin;WDF.Addin;WDF.XLTaskPanel"
+                      },
+                      {
+                          "name":  "WDF_ADDIN_CONNECTED_IN_BG_EXCEL",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "connected=WDF.Addin"
+                      }
+                  ],
+    "summary":  16,
+    "total":  16,
+    "finished_at":  "2026-10-18T20:45:55.4041815+08:00",
+    "status":  "PASS",
+    "wind_api_calls":  0,
+    "real_wind_call":  false,
+    "protected_excel_pids":  [
+                                 14644
+                             ],
+    "wdf_addins_seen":  [
+                            "ExcelPlugInShell.PowerMapConnect",
+                            "MysteelAddin.ExcelAddin",
+                            "SMM.Pro.Addin",
+                            "TCSCConv.SharedAddin.16",
+                            "ThsXlsSlug.ExcelAddin",
+                            "WDF.Addin",
+                            "WDF.XLTaskPanel"
+                        ],
+    "wdf_addins_connected":  [
+                                 "WDF.Addin"
+                             ],
+    "wdf_dll_path":  "D:\\x64\\WDF.dll",
+    "note":  "Preflight performs NO Wind data calls: registry / process / COM / add-in probes only."
+}

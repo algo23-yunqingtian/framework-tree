@@ -1,0 +1,142 @@
+﻿{
+    "receipt_id":  "DSHC-IGNITE-A01-RECEIPT-001",
+    "ticket":  "DSHC-IGNITE-A01-AUTH",
+    "audit_marker":  "IGNITE_VIA_USER_WORKORDER_A01_AUTH",
+    "auth_ref":  "A01-USER-REMOTE-001",
+    "status":  "FETCH_ERROR",
+    "end_reason":  "WDF channel failure on first instrument (CU.SHF): 无法读取数据！",
+    "gate":  "AUTHORISED_BY_USER_WORKORDER",
+    "ignition_authority":  "USER_EXPLICIT_ONE_SHOT_REMOTE_AUTHORISATION",
+    "audit_note":  "USER_REMOTE_AUTH - physical keyboard operation not available; signed-as-workorder counts as ignition approval for this one batch only",
+    "branch":  "feature/v88-g1",
+    "timestamp_start":  "2026-10-18T20:45:42.4294568+08:00",
+    "timestamp_end":  "2026-10-18T20:47:16.6693425+08:00",
+    "duration_sec":  94,
+    "channel":  "Excel COM + WDF add-in WSD formula (WindPy / InitWAPI NOT used)",
+    "hard_timeout_min":  12,
+    "max_retries_allowed":  2,
+    "retry_interval_sec":  30,
+    "wind_api_calls":  0,
+    "wdf_retries":  2,
+    "wdf_inject_attempts":  3,
+    "wind_api_calls_semantics":  "counted only when a WSD formula returned a data grid; formula injections that never evaluated are wdf_inject_attempts",
+    "real_wind_call":  true,
+    "real_wind_call_scope":  "task-scoped to this A01 run only; NOT persisted to code constants or cross_agent_artifact_index baseline",
+    "auth_expired_after_this_run":  true,
+    "sample_fetch_allow_marker_created":  false,
+    "permanent_config_modified":  false,
+    "windpy_used":  false,
+    "initwapi_used":  false,
+    "preflight":  {
+                      "status":  "PASS",
+                      "checks_passed":  16,
+                      "checks_total":  16,
+                      "report":  "artifacts/wdf_preflight_check.json"
+                  },
+    "payload":  {
+                    "payload_id":  "DSHA-P65-WDF-INSTRUMENT-FETCH-TABLE-001",
+                    "instruments":  [
+                                        "CU.SHF",
+                                        "ZN.SHF",
+                                        "LC.SHF",
+                                        "PB.SHF",
+                                        "SN.SHF",
+                                        "NI.SHF",
+                                        "AL.SHF"
+                                    ],
+                    "wdf_fields":  [
+                                       "CLOSE",
+                                       "VOL",
+                                       "OI",
+                                       "SETTLE"
+                                   ],
+                    "time_range":  {
+                                       "start":  "2025-01-01",
+                                       "end":  "2026-10-17",
+                                       "frequency":  "DAILY"
+                                   }
+                },
+    "background_excel":  {
+                             "agent_pid":  24736,
+                             "created_at":  "2026-10-18T20:46:02.9538740+08:00",
+                             "quit_at":  "2026-10-18T20:47:10.1207019+08:00",
+                             "lifetime_sec":  67,
+                             "within_hard_timeout":  true,
+                             "agent_addins":  [
+                                                  "ExcelPlugInShell.PowerMapConnect",
+                                                  "MysteelAddin.ExcelAddin",
+                                                  "SMM.Pro.Addin",
+                                                  "TCSCConv.SharedAddin.16",
+                                                  "ThsXlsSlug.ExcelAddin",
+                                                  "WDF.Addin",
+                                                  "WDF.XLTaskPanel"
+                                              ]
+                         },
+    "user_excel":  {
+                       "protected_pids":  [
+                                              14644
+                                          ],
+                       "alive_after_run":  [
+                                               14644
+                                           ],
+                       "terminated":  false,
+                       "protected":  true
+                   },
+    "reset":  {
+                  "action":  "SAFETY_NET_RESET: {\r\n    \"script\":  \"system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/reset_wdf_safe.ps1\",\r\n    \"requested_stop_excel\":  true,\r\n    \"wind_calls\":  0,\r\n    \"status\":  \"OK\",\r\n    \"note\":  \"Safe reset smoke entrypoint.\",\r\n    \"action\":  \"AGENT_PID_TARGETED\",\r\n    \"pid\":  24736,\r\n    \"marker_cleared\":  true\r\n}\r\n [marker already cleared]",
+                  "agent_excel_pid":  24736,
+                  "marker_cleared":  true,
+                  "broad_excel_kill":  false
+              },
+    "instruments":  [
+                        {
+                            "instrument":  "CU.SHF",
+                            "status":  "FAIL",
+                            "attempts":  3,
+                            "retries":  2,
+                            "rows":  0,
+                            "fields":  [
+                                           "CLOSE",
+                                           "VOL",
+                                           "OI",
+                                           "SETTLE"
+                                       ],
+                            "na_captured":  1,
+                            "elapsed_sec":  64,
+                            "note":  "无法读取数据！"
+                        }
+                    ],
+    "instruments_ok":  0,
+    "instruments_total":  7,
+    "csv":  {
+                "path":  "output_sample/wdf_sample_metals_raw.csv",
+                "header":  "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,source",
+                "rows":  0,
+                "bytes":  50,
+                "sha256":  "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895"
+            },
+    "p62_loop":  {
+                     "declared_trigger_dir":  "output_sample",
+                     "actual_listener_dir":  "artifacts/sample_output",
+                     "mirror_files":  [
+
+                                      ],
+                     "note":  "CSV landed in output_sample per workorder; long-format mirror placed in artifacts/sample_output because sample_data_trigger.py (P62-LOOP/P60) scans that directory"
+                 },
+    "ledger":  {
+                   "g7_tracking_log":  "tracking_monitor_audit.jsonl",
+                   "dshc_events":  "artifacts/dshc_p90a_final_events.jsonl",
+                   "local_log":  "artifacts/dshc_ignite_a01_events.jsonl"
+               },
+    "red_lines":  {
+                      "user_excel_untouched":  true,
+                      "no_windpy":  true,
+                      "no_initwapi":  true,
+                      "hard_timeout_enforced":  true,
+                      "max_retries_enforced":  true,
+                      "no_permanent_marker":  true,
+                      "no_long_term_config_change":  true,
+                      "auth_expired_after_this_run":  true,
+                      "no_wind_bombardment":  true
+                  }
+}

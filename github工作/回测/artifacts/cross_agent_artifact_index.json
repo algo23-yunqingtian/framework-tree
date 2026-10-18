@@ -2,38 +2,128 @@
     "ticket":  "DSHC-P90A-FIX-POSTFIX-SHELL_VIEW_REFRESH_AND_WDF_FINAL_OFFLINE_TEST",
     "artifacts":  {
                       "final_test_result_json":  {
-                                                      "key":  "final_test_result_json",
-                                                      "path":  "artifacts/dshc_p90a_final_test_result.json",
-                                                      "sha256":  "380D40736CF07DBA2ED1F40A5AA59079AD62B6E3E9FA5F791B6B3FF1A9E17F7E"
-                                                  },
+                                                     "key":  "final_test_result_json",
+                                                     "path":  "artifacts/dshc_p90a_final_test_result.json",
+                                                     "sha256":  "380D40736CF07DBA2ED1F40A5AA59079AD62B6E3E9FA5F791B6B3FF1A9E17F7E"
+                                                 },
                       "final_test_report_md":  {
-                                                    "key":  "final_test_report_md",
-                                                    "path":  "artifacts/dshc_p90a_final_test_report.md",
-                                                    "sha256":  "E94CADD490D4E2B36EEBD033E897F4E0F29CBC0E7C43ADF86BCEEB10F1BC2CEA"
-                                                },
+                                                   "key":  "final_test_report_md",
+                                                   "path":  "artifacts/dshc_p90a_final_test_report.md",
+                                                   "sha256":  "E94CADD490D4E2B36EEBD033E897F4E0F29CBC0E7C43ADF86BCEEB10F1BC2CEA"
+                                               },
                       "final_events_jsonl":  {
-                                                  "key":  "final_events_jsonl",
-                                                  "path":  "artifacts/dshc_p90a_final_events.jsonl",
-                                                  "sha256":  "D6F019C5D4F29A296622130420927FF3E8FF5A3365F20481D37B73188F402941"
-                                              },
+                                                 "key":  "final_events_jsonl",
+                                                 "path":  "artifacts/dshc_p90a_final_events.jsonl",
+                                                 "sha256":  "D6F019C5D4F29A296622130420927FF3E8FF5A3365F20481D37B73188F402941"
+                                             },
                       "bootstrap_dryrun_result_json":  {
-                                                            "key":  "bootstrap_dryrun_result_json",
-                                                            "path":  "artifacts/dshc_p90a_bootstrap_dryrun_result.json",
-                                                            "sha256":  "700CE2F87EEA125FCC99377D17E37F919F607D3FAFADA860D0B1222AD139C156"
-                                                        },
+                                                           "key":  "bootstrap_dryrun_result_json",
+                                                           "path":  "artifacts/dshc_p90a_bootstrap_dryrun_result.json",
+                                                           "sha256":  "700CE2F87EEA125FCC99377D17E37F919F607D3FAFADA860D0B1222AD139C156"
+                                                       },
                       "harness_script":  {
-                                              "key":  "harness_script",
-                                              "path":  "scripts/dshc_p90a_offline_wdf_bootstrap_test.ps1",
-                                              "sha256":  "D6E4E303E945D8D659DAC8E7C7764EAFB1A7BDB819B183BE3F5C4E184770DF11"
-                                          },
+                                             "key":  "harness_script",
+                                             "path":  "scripts/dshc_p90a_offline_wdf_bootstrap_test.ps1",
+                                             "sha256":  "D6E4E303E945D8D659DAC8E7C7764EAFB1A7BDB819B183BE3F5C4E184770DF11"
+                                         },
                       "skill_release_manifest_json":  {
-                                                           "key":  "skill_release_manifest_json",
-                                                           "path":  "artifacts/skill_release_manifest.json",
-                                                           "sha256":  "284E766178B861D39E47095DC1F453AA4819163750FA66721C714A2E85599707"
-                                                       }
+                                                          "key":  "skill_release_manifest_json",
+                                                          "path":  "artifacts/skill_release_manifest.json",
+                                                          "sha256":  "284E766178B861D39E47095DC1F453AA4819163750FA66721C714A2E85599707"
+                                                      },
+                      "a01_ignite":  {
+                                         "ignite_receipt_json":  {
+                                                                     "key":  "a01_ignite_receipt_json",
+                                                                     "path":  "artifacts/dshc_ignite_run_receipt.json",
+                                                                     "sha256":  "B41079BA3EE0DC06997B806393A6A4AEF29E9280B84117BC9D5B21F8383C43B1"
+                                                                 },
+                                         "preflight_check_json":  {
+                                                                      "key":  "a01_preflight_check_json",
+                                                                      "path":  "artifacts/wdf_preflight_check.json",
+                                                                      "sha256":  "33CF3A66550FE66B0B060717586824FC244CCD71CA0403DBD8B9D4DE5B35B630"
+                                                                  },
+                                         "ignite_events_jsonl":  {
+                                                                     "key":  "a01_ignite_events_jsonl",
+                                                                     "path":  "artifacts/dshc_ignite_a01_events.jsonl",
+                                                                     "sha256":  "2105B8E8E6FD8D31974F251E0AE158D2B3696E2B67AC09065109FA1B91078793"
+                                                                 },
+                                         "fetch_executor_ps1":  {
+                                                                    "key":  "a01_fetch_executor_ps1",
+                                                                    "path":  "scripts/dshc_ignite_a01_wdf_fetch.ps1",
+                                                                    "sha256":  "325F4CC4D29245230DA45D9BA1B65ACA0E50BB2356E7DA9679002D7C2C97C008"
+                                                                },
+                                         "hardtimeout_watchdog_ps1":  {
+                                                                          "key":  "a01_hardtimeout_watchdog_ps1",
+                                                                          "path":  "scripts/dshc_ignite_a01_hardtimeout_watchdog.ps1",
+                                                                          "sha256":  "D6A0A4C3E4BDD8B7DB245B4820B22700D166D47AEE15D6B104B8FFB43FF0CFDF"
+                                                                      },
+                                         "csv_output":  {
+                                                            "key":  "a01_csv_output",
+                                                            "path":  "output_sample/wdf_sample_metals_raw.csv",
+                                                            "sha256":  "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895",
+                                                            "rows":  0,
+                                                            "note":  "header only - no data returned by the WDF channel"
+                                                        }
+                                     }
                   },
     "generated_at":  "2026-10-18T17:21:58.9356933+08:00",
     "wind_api_calls":  0,
     "real_wind_call":  false,
-    "marker_created":  false
+    "marker_created":  false,
+    "ignite_runs":  {
+                        "A01-USER-REMOTE-001":  {
+                                                    "receipt_id":  "DSHC-IGNITE-A01-RECEIPT-001",
+                                                    "ticket":  "DSHC-IGNITE-A01-AUTH",
+                                                    "auth_ref":  "A01-USER-REMOTE-001",
+                                                    "gate":  "AUTHORISED_BY_USER_WORKORDER",
+                                                    "audit_marker":  "IGNITE_VIA_USER_WORKORDER_A01_AUTH",
+                                                    "ignition_authority":  "USER_EXPLICIT_ONE_SHOT_REMOTE_AUTHORISATION",
+                                                    "branch":  "feature/v88-g1",
+                                                    "status":  "FETCH_ERROR",
+                                                    "end_reason":  "WDF channel failure on first instrument (CU.SHF): add-in replied with the zh-CN cannot-read-data token",
+                                                    "timestamp_start":  "2026-10-18T20:45:42.4294568+08:00",
+                                                    "timestamp_end":  "2026-10-18T20:47:16.6693425+08:00",
+                                                    "duration_sec":  94,
+                                                    "preflight":  "16/16 PASS",
+                                                    "payload_id":  "DSHA-P65-WDF-INSTRUMENT-FETCH-TABLE-001",
+                                                    "instruments_total":  7,
+                                                    "instruments_ok":  0,
+                                                    "instruments_failed":  1,
+                                                    "instruments_skipped":  6,
+                                                    "wind_api_calls":  0,
+                                                    "wdf_retries":  2,
+                                                    "wdf_inject_attempts":  3,
+                                                    "csv_rows":  0,
+                                                    "channel":  "Excel COM + WDF add-in WSD formula (WindPy / InitWAPI NOT used)",
+                                                    "background_excel_pid":  24736,
+                                                    "background_excel_lifetime_sec":  67,
+                                                    "hard_timeout_min":  12,
+                                                    "hard_timeout_reached":  false,
+                                                    "protected_foreground_excel_pids":  [
+                                                                                            14644
+                                                                                        ],
+                                                    "protected_foreground_excel_terminated":  false,
+                                                    "agent_excel_terminated":  true,
+                                                    "marker_present_after_run":  false,
+                                                    "sample_fetch_allow_marker_created":  false,
+                                                    "windpy_used":  false,
+                                                    "initwapi_used":  false,
+                                                    "permanent_config_modified":  false,
+                                                    "auth_expired_after_this_run":  true,
+                                                    "wind_api_calls_semantics":  "counted only when a WSD formula returned a data grid; none ever did in this run",
+                                                    "environment_root_cause":  "Wind terminal API bridge layer not activated: WDF.Addin loads and WSD responds but never returns a data grid. Consistent with the P54 investigation under data-harbor/dsha_p49_prep/P49_backtest_audit/.",
+                                                    "p62_loop_consequence":  "No data rows exported, so DSHA-P62-LOOP has nothing to consume; no backtest was triggered.",
+                                                    "receipt_path":  "artifacts/dshc_ignite_run_receipt.json"
+                                                }
+                    },
+    "a01_red_line_note":  {
+                              "baseline_fields_preserved":  true,
+                              "wind_api_calls_baseline":  0,
+                              "real_wind_call_baseline":  false,
+                              "marker_created_baseline":  false,
+                              "note":  "The top-level wind_api_calls / real_wind_call / marker_created fields are the DSHD-P79 P90A baseline and were NOT modified by the A01 run. The A01 run made 3 WDF formula injections that returned no data, so A01 wind_api_calls=0 as well; per-run facts live under ignite_runs."
+                          },
+    "updated_at":  "2026-10-18T21:11:57.3078344+08:00",
+    "updated_by":  "DSHC-IGNITE-A01",
+    "updated_reason":  "additive A01 ignition run record; DSHD-P79 baseline red-line fields preserved unchanged"
 }
