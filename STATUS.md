@@ -10045,3 +10045,54 @@ asset_seal_v5.txt  →  pickup.flag (持有 v5 sha256)  →  MD5_MANIFEST.md P12
 
 ### Status Flags
 V88_PHASE03_P12_HERMESHF=C1_SATISFIED, V88_PHASE03_P12_NORMALIZE=0_FILES_CHANGED_IDEMPOTENT, V88_PHASE03_P12_RECAL=22_OF_22, V88_PHASE03_P12_INDEX_GAP=1_PENDING_DSHE_DECISION, V88_PHASE03_P12_CONSTRAINT_COMPLIANCE=7_OF_7, V88_PHASE03_P12_SEAL_CHAIN=L0_L4_ALL_GREEN
+
+---
+
+## V88 Phase03 P13 HERMEShf Asset Index Gap Audit (2026-10-20)
+
+**TASK_ID**: V88_PHASE03_P13_HERMESHF_ASSET_INDEX_GAP_AUDIT
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED) | **源 commit**: 8765c21
+
+### T0-T4 Summary (纯审计工单)
+
+| Task | 内容 | 结果 |
+|------|------|:---:|
+| T0 | 23 项资产全量哈希复核 | asset_gap_hash_check_P13.md |
+| T1 | 索引缺口审计 + 两套方案 (未落地) | asset_index_solution_P13.md |
+| T2 | 封签链路 v2~v5 L0-L4 复核 | seal_chain_v2_to_v6_check_P13.md |
+| T3 | 元清单追加 P13 段 | MD5_MANIFEST.md (A~H 节) |
+| T4 | 7 项约束 + 2 项 P13 特有自检 | hermes_constraint_P13.md (7/7 + 2/2) |
+
+### 关键发现
+
+1. **无哈希漂移**: 三方比对 (磁盘 23 项 vs asset_index.lst 22 项 vs zip 23 项) 全部一致
+2. **无换行漂移**: 13 个 HTML/MD 文件 CRLF=0, 孤立 CR=0
+3. **索引缺口 1 项**: `github_pages/wiki_admission_gate.md` 在磁盘+zip, 但未在 asset_index.lst
+4. **zip 含 6 项非资产条目**: 3 个 Python + 1 个嵌套 zip + 2 个 MD (不在缺口范围)
+5. **v2 SHA256 截断**: P17 历史格式特性, MD5 校验有效, 非异常
+
+### 两套方案 (均未落地)
+
+| 方案 | 操作 | v3 影响 | 合规 | 推荐 |
+|------|------|:---:|:---:|:---:|
+| A | 移出挂载目录 | 无 | PASS | 推荐 |
+| B | 扩容索引+v6 | 断裂 | FAIL | 需重新授权 |
+
+### 封签链状态 (零变更)
+
+| 封签 | 来源 | 表条目 | 一致性 | 状态 |
+|------|------|:---:|:---:|:---:|
+| v2 | P17 | 5 | 5/5 | 原样保留 |
+| v3 | P18 | 10 | 10/10 | 原样保留 |
+| v4 | P11 | 13 | 13/13 | 原样保留 |
+| v5 | P12 | 17 | 17/17 | 原样保留 |
+| v6 | — | — | — | 未生成 |
+
+### Key Status (unchanged)
+
+- KEY_A: ABSENT | KEY_B: ABSENT | AUTHORIZED: NO
+- ARBITER_STATE: OBSERVING | PHASE04: FROZEN
+- DELIVERY_PACKAGE_FROZEN: TRUE
+
+### Status Flags
+V88_PHASE03_P13_HERMESHF_AUDIT=23_OF_23_VERIFIED, V88_PHASE03_P13_NO_HASH_DRIFT, V88_PHASE03_P13_NO_EOL_DRIFT, V88_PHASE03_P13_INDEX_GAP=1_PENDING_DSHE_DECISION, V88_PHASE03_P13_SEAL_CHANGES=0, V88_PHASE03_P13_V6_NOT_GENERATED, V88_PHASE03_P13_CONSTRAINT_COMPLIANCE=7_OF_7, V88_PHASE03_P13_SEAL_CHAIN=L0_L4_ALL_GREEN

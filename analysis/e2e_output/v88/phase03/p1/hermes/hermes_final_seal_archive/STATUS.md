@@ -116,3 +116,16 @@ HERMEShf 不自动生成 Key B 放行标记。Phase04 保持冻结。
 - DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC (维持)
 - PACKAGE_STATUS: DELIVERY_PACKAGE_FROZEN (不变)
 - STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A (维持)
+
+## P13 索引缺口审计状态 (追加 2026-10-20)
+- TASK_ID: V88_PHASE03_P13_HERMESHF_ASSET_INDEX_GAP_AUDIT
+- 性质: **纯审计工单, 零封签/零资产/零方案落地**
+- T0 23 项资产全量哈希: ✅ (三方 23/23 一致)
+- T1 索引缺口两套方案: ✅ (A 推荐 / B 需重新授权, 均未落地)
+- T2 封签链路 L0-L4: ✅ (v2~v5 全绿, 无断点)
+- T3 全局清单追加: ✅ (MD5_MANIFEST.md P13 段 A~H 节)
+- T4 约束自检: ✅ 7/7 + 2/2 PASS
+- 发现: 无哈希漂移, 无换行漂移, v2 SHA256 截断 (非异常)
+- DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC (维持)
+- PACKAGE_STATUS: DELIVERY_PACKAGE_FROZEN (不变)
+- STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A (维持)
