@@ -1,0 +1,191 @@
+{
+  "receipt_id": "DSHA-P66-A01-RUN-20261018_175627",
+  "generated_at": "2026-10-18T09:56:27Z",
+  "generated_at_gmt8": "2026-10-18 17:56:27 GMT+8",
+  "agent": "DSHA-P66",
+  "branch": "feature/v88-g1",
+  "baseline_commit": "f98ca4c",
+  "task": "ENHANCED_LISTEN_AND_EXECUTE_STANDBY",
+  "a01_tag": "A01-RUN",
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "status": "STANDBY",
+  "status_line": {
+    "DSHA_P66": "STANDBY",
+    "P62_HEALTH": "8/8",
+    "next_action": "waiting_for_csv_from_DSHC",
+    "log": "enabled_verbose",
+    "receipt_path": "N/A",
+    "archive_path": "N/A",
+    "reason": "N/A"
+  },
+  "p0_preflight": {
+    "all_pass": true,
+    "fail_count": 0,
+    "checks": {
+      "p62_listener_health": {
+        "import_ok": true,
+        "final_lock": {
+          "status": "PASS",
+          "total_expected": 4,
+          "found": [
+            "FINAL-LOCK-1: MISSING_SAMPLE_MARKER",
+            "FINAL-LOCK-2: REAL_WIND_CALL_NOT_ENABLED",
+            "FINAL-LOCK-3: MAX_DAYS_HAS_BEEN_ALTERED-PROTECTED",
+            "FINAL-LOCK-4: MIN_INTERVAL_HAS_BEEN_ALTERED-PROTECTED"
+          ],
+          "missing": []
+        },
+        "real_wind_call": {
+          "all_pass": true,
+          "files": {
+            "prototype_wss_assemble_sim.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False  # ← 硬锁死，本轮禁止修改"
+            },
+            "backtest_skeleton.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False"
+            },
+            "sample_data_trigger.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False"
+            },
+            "factor_constructor.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False"
+            },
+            "factor_data_loader.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False   # ← 硬锁死，禁止修改"
+            }
+          }
+        },
+        "param_integrity": {
+          "all_pass": true,
+          "params": {
+            "MAX_DAYS_PER_ROUND": {
+              "found": 10,
+              "expected": 10,
+              "match": true,
+              "status": "PASS"
+            },
+            "MIN_INTERVAL_SEC": {
+              "found": 12,
+              "expected": 12,
+              "match": true,
+              "status": "PASS"
+            }
+          }
+        },
+        "all_pass": true,
+        "pass_count": 8
+      },
+      "p65_deliverables": {
+        "instrument_fetch_table": {
+          "exists": true,
+          "size_bytes": 7047
+        },
+        "column_mapping_verify": {
+          "exists": true,
+          "size_bytes": 10295
+        },
+        "csv_header_template": {
+          "exists": true,
+          "size_bytes": 54
+        },
+        "backtest_taskcard": {
+          "exists": true,
+          "size_bytes": 3782
+        },
+        "dryrun_check": {
+          "exists": true,
+          "size_bytes": 4053
+        },
+        "all_exist": true
+      },
+      "p64_engine_modules": {
+        "all_import_ok": true,
+        "import_count": 9,
+        "total": 9,
+        "details": {
+          "factor_data_loader": true,
+          "factor_constructor": true,
+          "backtest_skeleton": true,
+          "sample_data_trigger": true,
+          "plot_net_curve": true,
+          "plot_ic_series": true,
+          "p63_report_render_test": true,
+          "p63_audit_and_redline": true,
+          "p62_listener_health_check": true
+        }
+      },
+      "final_lock": {
+        "assertion_count": 4,
+        "markers_found": 4,
+        "real_wind_call_raw": "False",
+        "real_wind_call_is_false": true,
+        "intact": true
+      },
+      "output_sample_dir": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\output_sample",
+        "exists": true,
+        "writable": true
+      },
+      "archive_a01_backtest": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\archive\\a01_backtest",
+        "exists": true,
+        "writable": true
+      }
+    }
+  },
+  "p1_csv_detection": {
+    "target_csv": "wdf_sample_metals_raw.csv",
+    "target_path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_raw.csv",
+    "exists": false,
+    "size_bytes": 0,
+    "meets_min_size": false,
+    "size_stable": false,
+    "detected": false,
+    "scan_at": "2026-10-18T09:56:27Z"
+  },
+  "factor_status": {
+    "total_factors": 7,
+    "available_factors": [
+      "F19",
+      "G1",
+      "G3",
+      "G7",
+      "F007"
+    ],
+    "warning_factors": [
+      "F20",
+      "CF003"
+    ],
+    "available_count": 5,
+    "warning_count": 2,
+    "f20_cf003_warning": "F20和CF003缺少外部信号, 置为NULL跳过, 不阻断其余5个因子"
+  },
+  "pipeline_result": null,
+  "red_line_self_check": {
+    "wind_api_calls": 0,
+    "no_excel_control": "OK",
+    "final_lock_intact": "YES",
+    "real_wind_call_false": true,
+    "no_marker_creation": true,
+    "no_wsd_wss_request": true
+  },
+  "next_action": {
+    "current_state": "STANDBY",
+    "if_standby": "等待DSHC取数输出 wdf_sample_metals_raw.csv 到 output_sample/",
+    "if_csv_arrives": "重新运行 p66_listen_execute.py 触发完整回测管线",
+    "p62_loop": "P62-LOOP保持常驻, 12s轮询间隔",
+    "log_level": "VERBOSE",
+    "a01_trigger_trace": "enabled"
+  }
+}
