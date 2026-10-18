@@ -102,6 +102,15 @@ MAX_CONSECUTIVE_FAIL  = 3       # 连续失败阈值 → 自动停止
 EMERGENCY_STOP_FILE   = ".emergency_stop"  # 紧急停止标记文件
 
 # ════════════════════════════════════════════════════════════
+# P60: Excel 实例隔离保护 (多实例隔离设计)
+# ════════════════════════════════════════════════════════════
+
+COM_HANG_TIMEOUT_SEC        = 30      # COM 卡死超时 (秒)
+COM_HANG_KILL_ONLY_AGENT   = True     # COM 卡死时仅终止 Agent 实例
+AGENT_INSTANCE_LABEL       = "DSHA_P60_AGENT_EXCEL"  # Agent 实例标识
+USER_INSTANCE_LABEL        = "USER_INSTANCE_EXCEL"   # 用户前台 Excel 标识
+
+# ════════════════════════════════════════════════════════════
 # P56: 双开关保护 — 外部许可文件 (第一层开关)
 # ════════════════════════════════════════════════════════════
 
@@ -561,6 +570,111 @@ def assert_com_cleanup(com_obj):
 
 
 # ════════════════════════════════════════════════════════════
+# P60: Excel 多实例隔离 — 用户实例识别与 Agent 实例管理
+# ════════════════════════════════════════════════════════════
+
+def _identify_user_excel_instances() -> list:
+    """
+    P60: 识别用户前台Excel实例 (USER_INSTANCE)。
+
+    在创建 Agent Excel 实例之前调用，记录当前所有已存在的
+    Excel 进程PID。这些是用户的前台 Excel 实例，脚本全程
+    不读取、不操作、不终止。
+
+    返回:
+        list of dict: [{pid, name, note}, ...]
+        空列表表示无用户Excel进程运行。
+    """
+    processes = enumerate_excel_processes()
+    user_instances = []
+    for p in processes:
+        user_instances.append({
+            'pid': p['pid'],
+            'name': p['name'],
+            'note': f'{USER_INSTANCE_LABEL} — DO NOT TOUCH'
+        })
+    if user_instances:
+        print(f"  🔍 [P60] 识别到 {len(user_instances)} 个用户前台Excel实例 (PID: "
+              f"{[u['pid'] for u in user_instances]}) — 不操作、不终止")
+    else:
+        print(f"  🔍 [P60] 无用户前台Excel进程")
+    return user_instances
+
+
+def _detect_agent_excel_pid(before_pids: list) -> int:
+    """
+    P60: 检测 Agent 新建的 Excel 实例 PID。
+
+    通过对比创建 COM 对象前后的 Excel 进程列表，
+    找到新出现的 PID 即为 Agent 的 Excel 实例。
+
+    参数:
+        before_pids: 创建 COM 对象之前的 Excel PID 列表
+
+    返回:
+        Agent Excel 实例的 PID (int)，未找到则返回 None
+    """
+    try:
+        after_processes = enumerate_excel_processes()
+        after_pids = [p['pid'] for p in after_processes]
+        new_pids = [pid for pid in after_pids if pid not in before_pids]
+        if new_pids:
+            agent_pid = new_pids[0]
+            print(f"  🆔 [P60] Agent Excel 隔离实例 PID={agent_pid} 已创建")
+            return agent_pid
+        else:
+            print(f"  ⚠️ [P60] 未检测到新Excel进程 (可能复用已有实例)")
+    except Exception as e:
+        print(f"  ⚠️ [P60] Agent PID 检测异常: {e}")
+    return None
+
+
+def _kill_agent_excel_only(agent_pid: int, user_instances: list) -> bool:
+    """
+    P60: 仅终止 Agent Excel 实例，保留用户前台 Excel。
+
+    COM 卡死或异常时调用。仅终止指定的 Agent PID，
+    绝不终止用户前台 Excel (USER_INSTANCE) 进程。
+
+    安全设计:
+      - 先验证 agent_pid 不在 user_instances 排除列表中
+      - 仅对 Agent PID 执行 taskkill /F
+      - 用户前台 Excel 会话完全不受影响
+
+    参数:
+        agent_pid: Agent Excel 实例的 PID
+        user_instances: 用户前台 Excel 实例列表 (排除列表)
+
+    返回:
+        bool: 终止是否成功
+    """
+    import subprocess
+
+    user_pids = set(u['pid'] for u in user_instances)
+
+    # 安全检查: 确保 agent_pid 不是用户实例
+    if agent_pid in user_pids:
+        print(f"  🚨 [P60] 安全拦截: agent_pid={agent_pid} 属于用户实例，拒绝终止！")
+        return False
+
+    try:
+        r = subprocess.run(
+            ['taskkill', '/F', '/PID', str(agent_pid)],
+            capture_output=True, text=True
+        )
+        if r.returncode == 0:
+            print(f"  ✅ [P60] Agent Excel 实例已终止 PID={agent_pid}")
+            print(f"     用户Excel实例 (PID: {user_pids}) 未受影响")
+            return True
+        else:
+            print(f"  ⚠️ [P60] Agent Excel 终止失败 (returncode={r.returncode}): {r.stderr.strip()}")
+            return False
+    except Exception as e:
+        print(f"  ⚠️ [P60] Agent Excel 终止异常: {e}")
+        return False
+
+
+# ════════════════════════════════════════════════════════════
 # 交易日生成 (模拟中国期货市场交易日)
 # ════════════════════════════════════════════════════════════
 
@@ -669,18 +783,27 @@ def real_wss_query(symbol: str, indicator: str, date: str) -> dict:
     excel_before = enumerate_excel_processes()
     before_pids = [p['pid'] for p in excel_before]
 
+    # ── P60: 记录用户前台Excel实例 (隔离保护) ──
+    user_instances = _identify_user_excel_instances()
+
     try:
         import win32com.client
 
         xl = None
         wb = None
         ws = None
+        agent_pid = None  # P60: Agent Excel 实例 PID
         for attempt in range(1, 3):  # COM 重试: 最多 2 次
             try:
                 # 创建 Excel COM 实例
                 xl = win32com.client.Dispatch("Excel.Application")
                 xl.Visible = False
                 xl.DisplayAlerts = False
+
+                # ── P60: 检测 Agent Excel 隔离实例 PID ──
+                agent_pid = _detect_agent_excel_pid(before_pids)
+                if agent_pid:
+                    print(f"     用户实例 PID={[u['pid'] for u in user_instances]} — 不操作、不终止")
 
                 wb = xl.Workbooks.Add()
                 ws = wb.Sheets(1)
@@ -703,6 +826,17 @@ def real_wss_query(symbol: str, indicator: str, date: str) -> dict:
                 error = True
                 error_msg = f"COM error (attempt {attempt}/2): {e}"
 
+                # ── P60: COM 异常 — 仅终止 Agent Excel 实例，保留用户Excel ──
+                if agent_pid:
+                    _kill_agent_excel_only(agent_pid, user_instances)
+                    log_alert(
+                        "COM_HANG_AGENT_ONLY_KILLED", "CRITICAL",
+                        f"COM异常，已终止Agent Excel实例 PID={agent_pid}，用户Excel未受影响",
+                        {"agent_pid": agent_pid,
+                         "user_pids": [u['pid'] for u in user_instances],
+                         "error": str(e), "trade_date": date, "attempt": attempt}
+                    )
+
                 # COM 释放后重试
                 if attempt < 2:
                     print(f"  ⚠️ COM 调用失败，尝试释放并重试...")
@@ -718,6 +852,7 @@ def real_wss_query(symbol: str, indicator: str, date: str) -> dict:
             xl = None
             wb = None
             ws = None
+            agent_pid = None  # P60: Agent 实例已清理
 
             # ── P57 第三层COM防锁: 兜底进程自检 ──
             residue_check = check_excel_residue(before_pids)
