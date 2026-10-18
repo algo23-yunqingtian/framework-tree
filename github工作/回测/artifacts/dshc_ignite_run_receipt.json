@@ -1,19 +1,24 @@
 ﻿{
-    "receipt_id":  "DSHC-IGNITE-A02-RECEIPT-001",
-    "ticket":  "DSHC-TASK-A01-PHASE2",
-    "audit_marker":  "IGNITE_VIA_USER_WORKORDER_A02_AUTH",
+    "receipt_id":  "DSHC-IGNITE-A03-RECEIPT-001",
+    "ticket":  "DSHC-TASK-A03-WDF-DIRECT",
+    "audit_marker":  "IGNITE_VIA_USER_WORKORDER_A03_AUTH",
     "auth_ref":  "A01-USER-REMOTE-002",
     "a01_tag":  "A01-USER-REMOTE-002",
-    "ignite_session":  "A02-IGNITE-20261019-003927",
+    "ignite_session":  "A03-IGNITE-20261019-030750",
     "manual_permission_ref":  "PERM-A01-REMOTE-WIND-BRIDGE-001",
-    "status":  "WAIT_BRIDGE",
-    "end_reason":  "bridge not activated within 8 min; returning to STANDBY. No ignition, token A01-USER-REMOTE-002 NOT consumed.",
+    "status":  "FETCH_ERROR",
+    "end_reason":  "WDF channel failure on first instrument (CU.SHF): fields_ok=0/7; last_error=grid delivered but no usable date/value pairs (rows=276 cols=2 header=0); fast-fail fuse tripped -- this round did not succeed, the diagnosis package has been produced, awaiting the next textual workorder for a retry; token A01-USER-REMOTE-002 EXHAUSTED",
     "gate":  "AUTHORISED_BY_USER_WORKORDER",
+    "gate_effective":  "WDF_ADDIN_CONNECTED_IN_BG_EXCEL",
+    "gate_note":  "the old \"a Wind API bridge listening port must exist\" gate is removed for this workorder; session-scoped only, NOT a permanent baseline change",
+    "gate_static_prefab":  "CLOSED",
+    "release_permit_effective":  "GRANTED_BY_A03_WORKORDER",
+    "release_permit_prefab_unchanged":  "NOT_ISSUED",
     "ignition_authority":  "USER_EXPLICIT_ONE_SHOT_REMOTE_AUTHORISATION",
     "branch":  "feature/v88-g1",
-    "timestamp_start":  "2026-10-19T00:39:27.8898514+08:00",
-    "timestamp_end":  "2026-10-19T00:48:08.3816827+08:00",
-    "duration_sec":  520,
+    "timestamp_start":  "2026-10-19T03:07:50.8359401+08:00",
+    "timestamp_end":  "2026-10-19T03:11:30.3193989+08:00",
+    "duration_sec":  219,
     "mode":  "full",
     "channel":  "Excel COM + WDF add-in WSD formula (WindPy / InitWAPI NOT used)",
     "strategy":  "per instrument, per FIELD separate WSD call, then in-memory align-merge (avoids the known WDF multi-field WSD defect)",
@@ -22,68 +27,79 @@
     "retry_interval_sec":  20,
     "attempt_window_sec":  35,
     "wind_api_calls":  0,
-    "wdf_retries":  0,
-    "wdf_inject_attempts":  2,
+    "wdf_retries":  7,
+    "wdf_inject_attempts":  16,
     "probe_wind_calls":  2,
-    "wind_api_calls_semantics":  "counted only when a WSD formula actually returned a data grid; formula injections that never evaluated are wdf_inject_attempts; bridge-readiness probes are counted separately in probe_wind_calls",
+    "wind_api_calls_semantics":  "counted only when a WSD formula actually returned a data grid; formula injections that never evaluated are wdf_inject_attempts; channel probes are counted separately in probe_wind_calls",
     "real_wind_call":  false,
-    "real_wind_call_scope":  "task-scoped to this A02 run only; NOT persisted to code constants or to the cross_agent_artifact_index baseline",
-    "token_state":  "UNUSED",
-    "token_exhausted_after_this_run":  false,
-    "one_shot_auth_used":  false,
+    "real_wind_call_scope":  "task-scoped to this A03 run only; NOT persisted to code constants or to the cross_agent_artifact_index baseline",
+    "token_state":  "EXHAUSTED",
+    "token_exhausted_after_this_run":  true,
+    "one_shot_auth_used":  true,
     "sample_fetch_allow_marker_created":  false,
     "permanent_config_modified":  false,
     "windpy_used":  false,
+    "windpy_invocation":  false,
     "initwapi_used":  false,
     "admin_operation_performed":  false,
+    "human_operation_requested":  false,
+    "human_action_required":  false,
+    "admin_optional_note":  "【备选通路已启用，此步骤非必须，持有人无需操作】 launching D:\\bin\\InitWAPI.exe as administrator, toggling the Wind terminal UI API switch and repairing C:\\Users\\YAQH\\.wind\\WMain are optional only and are NOT dispatched to the holder by this workorder",
     "backtest_run":  false,
     "factor_computation_run":  false,
     "no_backtest_stolen":  true,
+    "backtest_not_run_by_dshc":  true,
     "no_p62_mirror_written":  true,
-    "p4_receipt_line_running":  "DSHC_A01_PHASE2=IGNITE_RUNNING｜token=A01-USER-REMOTE-002｜bridge_status=NOT_ACTIVATED｜protected_front_excel=OK",
-    "p4_receipt_line":  "DSHC_A01_PHASE2=WAIT_BRIDGE｜token=A01-USER-REMOTE-002｜bridge_status=NOT_ACTIVATED｜protected_front_excel=OK｜token_state=UNUSED｜no_windpy=YES｜no_backtest_stolen=YES",
+    "p4_receipt_line_running":  "DSHC_A03_WDF_FETCH=IGNITE_RUNNING｜token=A01-USER-REMOTE-002｜wdf_pathway=ACTIVE｜protected_front_excel=OK",
+    "p4_receipt_line":  "DSHC_A03_WDF_FETCH=FETCH_ERROR｜token=A01-USER-REMOTE-002｜token_state=EXHAUSTED｜wdf_pathway=PARTIAL-FAILED｜see_diagnosis=artifacts/dshc_a03_wdf_channel_diagnosis.md",
+    "red_line_line":  "wind_api_calls=0｜no_windpy_invocation=YES｜front_excel_untouched=YES｜no_human_operation_requested=YES｜backtest_not_run_by_dshc=YES",
     "red_lines":  {
                       "user_excel_untouched":  true,
+                      "front_excel_untouched":  true,
                       "front_excel_pid_14644_alive":  true,
                       "no_windpy":  true,
+                      "no_windpy_invocation":  true,
                       "no_initwapi":  true,
                       "no_admin_operation":  true,
+                      "no_human_operation_requested":  true,
                       "hard_timeout_enforced":  true,
                       "max_attempts_enforced":  true,
                       "no_wind_bombardment":  true,
                       "no_permanent_marker":  true,
                       "no_long_term_config_change":  true,
-                      "token_exhausted":  false,
+                      "token_exhausted":  true,
                       "no_backtest_stolen":  true,
+                      "backtest_not_run_by_dshc":  true,
                       "no_p62_mirror":  true,
                       "dsha_p68_untouched":  true,
                       "dshd_p80_untouched":  false
                   },
     "preflight":  {
                       "status":  "PASS",
-                      "checks_passed":  26,
-                      "checks_total":  26,
+                      "checks_passed":  27,
+                      "checks_total":  27,
                       "report":  "artifacts/wdf_preflight_check.json"
                   },
-    "bridge_readiness":  {
-                             "verdict":  "NOT_ACTIVATED",
-                             "bridge_status":  "DEAD_DATA_PLANE",
-                             "wsd_kind":  "DATA_GRID_EMPTY",
-                             "wsd_rows":  0,
-                             "health_check":  "OK",
-                             "wind_listen_ports":  [
+    "channel_probe":  {
+                          "role":  "diagnostic only; never a gate under this workorder",
+                          "gate_verdict":  "CHANNEL_READY_BY_WDF_CONNECT",
+                          "data_plane":  "DEAD_DATA_PLANE",
+                          "channel_status":  "DEAD_DATA_PLANE",
+                          "wsd_kind":  "DATA_GRID_EMPTY",
+                          "wsd_rows":  0,
+                          "wsd_anchor":  "2026-10-12",
+                          "wss_kind":  "NON_NUMERIC_TEXT",
+                          "wss_anchor":  "2026-10-12",
+                          "health_check":  "OK",
+                          "wind_listen_ports":  [
 
-                                                   ],
-                             "dotwind_file_count":  0,
-                             "probe_wind_calls":  1
-                         },
+                                                ],
+                          "dotwind_file_count":  0,
+                          "probe_wind_calls":  2
+                      },
     "bridge_wait":  {
-                        "max_wait_min":  8,
-                        "polls":  14,
-                        "signal_changes":  1,
-                        "reprobes":  1,
-                        "bridge_activated":  false,
-                        "result":  "STANDBY"
+                        "removed":  true,
+                        "note":  "the A02 WAIT_BRIDGE lock, its bridge-port gate and its bounded 8-minute wait loop are lifted by this workorder: no waiting, no standby, no token preservation"
                     },
     "payload":  {
                     "source_prefab":  "artifacts/wdf_instrument_fetch_table.json (DSHA-P65 prefab, read-only)",
@@ -100,8 +116,13 @@
                                        "CLOSE",
                                        "VOL",
                                        "OI",
-                                       "SETTLE"
+                                       "SETTLE",
+                                       "OPEN",
+                                       "HIGH",
+                                       "LOW"
                                    ],
+                    "fields_logical_count":  8,
+                    "date_field_note":  "DATE is the anchor column returned by every WSD grid call",
                     "strategy":  "one WSD per field; in-memory align-merge",
                     "time_range":  {
                                        "start":  "2025-08-25",
@@ -112,12 +133,12 @@
                     "trading_days":  250
                 },
     "background_excel":  {
-                             "agent_pid":  17124,
-                             "created_at":  "2026-10-19T00:40:49.0006010+08:00",
-                             "quit_at":  "2026-10-19T00:40:54.2633748+08:00",
-                             "lifetime_sec":  5,
+                             "agent_pid":  20296,
+                             "created_at":  "2026-10-19T03:08:41.1111191+08:00",
+                             "quit_at":  "2026-10-19T03:11:24.1768109+08:00",
+                             "lifetime_sec":  163,
                              "within_hard_timeout":  true,
-                             "reset_action":  "SAFETY_NET_RESET: {\r\n    \"script\":  \"system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/reset_wdf_safe.ps1\",\r\n    \"requested_stop_excel\":  true,\r\n    \"wind_calls\":  0,\r\n    \"status\":  \"OK\",\r\n    \"note\":  \"Safe reset smoke entrypoint.\",\r\n    \"action\":  \"AGENT_PID_TARGETED\",\r\n    \"pid\":  17124,\r\n    \"marker_cleared\":  true\r\n}"
+                             "reset_action":  "SAFETY_NET_RESET: {\r\n    \"script\":  \"system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/reset_wdf_safe.ps1\",\r\n    \"requested_stop_excel\":  true,\r\n    \"wind_calls\":  0,\r\n    \"status\":  \"OK\",\r\n    \"note\":  \"Safe reset smoke entrypoint.\",\r\n    \"action\":  \"AGENT_PID_TARGETED\",\r\n    \"pid\":  20296,\r\n    \"marker_cleared\":  true\r\n}"
                          },
     "user_excel":  {
                        "protected_pids":  [
@@ -130,20 +151,31 @@
                        "protected":  true
                    },
     "instruments":  [
-
+                        {
+                            "instrument":  "CU.SHF",
+                            "status":  "FAIL",
+                            "attempts":  14,
+                            "rows":  0,
+                            "fields_ok":  0,
+                            "note":  "fields_ok=0/7; last_error=grid delivered but no usable date/value pairs (rows=276 cols=2 header=0)"
+                        }
                     ],
     "instruments_ok":  0,
-    "instruments_failed":  0,
+    "instruments_failed":  1,
     "instruments_skipped":  0,
     "instruments_total":  7,
+    "csv_ready_for_dsha":  false,
     "csv":  {
                 "path":  "output_sample/wdf_sample_metals_raw.csv",
-                "header":  "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,source",
+                "header":  "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,OPEN,HIGH,LOW,source",
                 "rows":  0,
-                "bytes":  50,
-                "sha256":  "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895"
+                "bytes":  64,
+                "sha256":  "41EC38315397FB70CC30BB313B88C3965BB50B30A628A3422743A48026806A92"
             },
     "preview_check":  "artifacts/dshc_raw_preview_check.json",
+    "channel_probe_report":  "artifacts/dshc_a03_channel_probe.json",
+    "diagnosis":  "artifacts/dshc_a03_wdf_channel_diagnosis.md",
+    "data_requirement_checklist":  "artifacts/P49_data_requirement_checklist.md",
     "guardrails":  {
                        "dsha_p68_files_pinned":  3,
                        "dsha_p68_deltas":  [
@@ -151,10 +183,9 @@
                                            ],
                        "dshd_p80_files_pinned":  7,
                        "dshd_p80_deltas":  [
-                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_observation_brief.md MODIFIED 722216A0CA0B5068DA8F12DC6D438EEB56E4875E93B58CF7182CFA5AE4DEC901-\u003eA8FD6FF1C9D7CDFE7C56A0B2C8D5B42A1E6635805CD6243806FC83274517544A",
-                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_file_evidence.json MODIFIED FEA1D7DF1F6E0397A8AC40B388F6CC98597C523823ACDE6C8B917E7B73B37E7E-\u003eBE1C14085D20169B60F780377B9446FBDA797E86C5106D4993DF94520407E4D9",
-                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_p80_a01_audit_snapshot.json MODIFIED 0493C0C868E563D91F86040B6B77A28936F0A3290F54AE95215B9675AD01712E-\u003e3C90AB2F2DD5A64635124F5975C86BC7A6CCB02E1A5F2766187E83A87B5CD919",
-                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_artifact_catalog.json MODIFIED 65490210C2822C8D0B5A3A780B0B073CC0802D628B880C872DA909474FF45D3D-\u003e582CE96E5623F3158D2456AECCD5704A85666BC207D16EF607F4D3AF462F2AA9"
+                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_file_evidence.json MODIFIED 7EB1F44897D111E8B2DB3351C674D20FA792876E72DA0D59694A8ED97D5FD3F0-\u003e4448A4285F24BA8E277D5246D88E049BBB81FB293223E215CDDD39D1DF1DA698",
+                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_p80_a01_audit_snapshot.json MODIFIED 5E8E4C59B02B4F5065C6808A6A60A59B5B787D71BCC1614398E4FD02C90A66A2-\u003e23630CBC9B567C5A7CBF6B41F705AFF9E996537C29AD48402FF4BC5B1606103A",
+                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_artifact_catalog.json MODIFIED BD5752A02E380B6DA45CED4ABCBC09D89A840B310116FD40C712AFCA0196F46B-\u003e22704A8979D781A7C5B995A8E454A9BB477298CBD4FD5F3F5B901ADFA5110B5E"
                                            ],
                        "no_backtest":  true,
                        "no_p62_mirror":  true
@@ -162,13 +193,16 @@
     "ledger":  {
                    "g7_tracking_log":  "tracking_monitor_audit.jsonl",
                    "dshc_events":  "artifacts/dshc_p90a_final_events.jsonl",
-                   "local_log":  "artifacts/dshc_ignite_a02_events.jsonl",
+                   "local_log":  "artifacts/dshc_a03_fetch_events.jsonl",
                    "a01_tag":  "A01-USER-REMOTE-002"
                },
     "prior_run":  {
-                      "auth_ref":  "A01-USER-REMOTE-001",
-                      "receipt_archived_at":  "artifacts/dshc_ignite_run_receipt_A01_USER_REMOTE_001.json",
-                      "status":  "FETCH_ERROR",
-                      "wind_api_calls":  0
+                      "auth_ref":  "A01-USER-REMOTE-002",
+                      "phase":  "A02 (DSHC-TASK-A01-PHASE2)",
+                      "receipt_archived_at":  "artifacts/dshc_ignite_run_receipt_A02_wait_cycle2.json",
+                      "status":  "WAIT_BRIDGE",
+                      "token_state":  "UNUSED",
+                      "wind_api_calls":  0,
+                      "note":  "A02 ran two bounded 8-minute wait cycles; ignition was withheld every time so the token was never consumed. This A03 run is the first one authorised to consume it."
                   }
 }

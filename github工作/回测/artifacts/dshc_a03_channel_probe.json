@@ -1,0 +1,100 @@
+﻿{
+    "started_at":  "2026-10-19T03:08:04.4142768+08:00",
+    "ticket":  "DSHC-TASK-A03-WDF-DIRECT",
+    "a01_tag":  "A01-USER-REMOTE-002",
+    "auth_ref":  "A01-USER-REMOTE-002",
+    "probe_wind_calls":  2,
+    "method":  "isolated background Excel + single-field WSD(CU.SHF, CLOSE, 8 calendar days) + WSS snapshot",
+    "gate_role":  "NONE -- diagnostic only. The A03 gate is WDF add-in Connect=True (preflight WDF_ADDIN_CONNECTED_IN_BG_EXCEL); this probe never withholds ignition.",
+    "token_consumed_by_probe":  false,
+    "human_action_required":  false,
+    "human_action_note":  "ALTERNATIVE CHANNEL ENABLED -- running D:\\bin\\InitWAPI.exe as administrator, toggling the Wind terminal UI API switch and repairing C:\\Users\\YAQH\\.wind\\WMain are NOT prerequisites for this workorder and are NOT dispatched to the holder.",
+    "admin_operation_performed":  false,
+    "manual_permission_ref":  "PERM-A01-REMOTE-WIND-BRIDGE-001",
+    "health_check_wdf":  {
+                             "status":  "OK",
+                             "wind_calls":  0,
+                             "missing":  [
+
+                                         ],
+                             "note":  "entrypoint performs NO Wind data call and NO Excel launch; it cannot observe WSD by design"
+                         },
+    "wind_env":  {
+                     "initwapi_pids":  [
+                                           14188
+                                       ],
+                     "initwapi_started":  [
+                                              "2026-10-17T16:33:32.5311077+08:00"
+                                          ],
+                     "wmain_pids":  [
+                                        824
+                                    ],
+                     "wmain_started":  [
+                                           "2026-10-18T10:11:59.3715375+08:00"
+                                       ],
+                     "windupdate_pids":  [
+                                             17564
+                                         ],
+                     "wind_listen_ports":  [
+
+                                           ],
+                     "dotwind_path_exists":  true,
+                     "dotwind_file_count":  0,
+                     "dotwind_dir_count":  9,
+                     "wdf_addin_loadbehavior":  3
+                 },
+    "wind_listen_ports":  [
+
+                          ],
+    "dotwind_file_count":  0,
+    "agent_excel_pid":  28328,
+    "agent_addins":  [
+                         "ExcelPlugInShell.PowerMapConnect",
+                         "MysteelAddin.ExcelAddin",
+                         "SMM.Pro.Addin",
+                         "TCSCConv.SharedAddin.16",
+                         "ThsXlsSlug.ExcelAddin",
+                         "WDF.Addin",
+                         "WDF.XLTaskPanel"
+                     ],
+    "agent_wdf_connected":  [
+                                "WDF.Addin"
+                            ],
+    "probe_code":  "CU.SHF",
+    "probe_field":  "CLOSE",
+    "probe_window":  {
+                         "start":  "2026-10-11",
+                         "end":  "2026-10-19"
+                     },
+    "wsd_probe":  {
+                      "code":  "CU.SHF",
+                      "field":  "CLOSE",
+                      "window":  {
+                                     "start":  "2026-10-11",
+                                     "end":  "2026-10-19"
+                                 },
+                      "kind":  "DATA_GRID_EMPTY",
+                      "rows":  0,
+                      "cols":  2,
+                      "anchor_text":  "2026-10-12",
+                      "error":  "grid delivered but no usable date/value pairs (rows=6 cols=2 header=0)",
+                      "elapsed_sec":  6,
+                      "sample_values":  [
+
+                                        ]
+                  },
+    "wss_probe":  {
+                      "code":  "CU.SHF",
+                      "field":  "CLOSE",
+                      "date":  "2026-10-19",
+                      "kind":  "NON_NUMERIC_TEXT",
+                      "anchor_text":  "2026-10-12"
+                  },
+    "data_plane":  "DEAD_DATA_PLANE",
+    "channel_status":  "DEAD_DATA_PLANE",
+    "verdict":  "CHANNEL_READY_BY_WDF_CONNECT",
+    "finished_at":  "2026-10-19T03:08:23.7332177+08:00",
+    "background_excel_lifetime_sec":  10,
+    "background_excel_reset_action":  "SAFETY_NET_RESET: {\r\n    \"script\":  \"system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/reset_wdf_safe.ps1\",\r\n    \"requested_stop_excel\":  true,\r\n    \"wind_calls\":  0,\r\n    \"status\":  \"OK\",\r\n    \"note\":  \"Safe reset smoke entrypoint.\",\r\n    \"action\":  \"AGENT_PID_TARGETED\",\r\n    \"pid\":  28328,\r\n    \"marker_cleared\":  true\r\n}",
+    "protected_excel_terminated":  false
+}

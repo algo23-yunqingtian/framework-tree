@@ -1,6 +1,6 @@
 ﻿{
-    "started_at":  "2026-10-19T00:39:27.8898514+08:00",
-    "ticket":  "DSHC-TASK-A01-PHASE2",
+    "started_at":  "2026-10-19T03:07:50.8359401+08:00",
+    "ticket":  "DSHC-TASK-A03-WDF-DIRECT",
     "auth_ref":  "A01-USER-REMOTE-002",
     "a01_tag":  "A01-USER-REMOTE-002",
     "manual_permission_ref":  "PERM-A01-REMOTE-WIND-BRIDGE-001",
@@ -28,7 +28,7 @@
                           "detail":  "parse_ok=3/3"
                       },
                       {
-                          "name":  "A02_EXECUTOR_AND_WATCHDOG_PARSE_OK",
+                          "name":  "A03_EXECUTOR_AND_WATCHDOG_PARSE_OK",
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
@@ -39,14 +39,14 @@
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "prefab=CU.SHF,ZN.SHF,LC.SHF,PB.SHF,SN.SHF,NI.SHF,AL.SHF"
+                          "detail":  "prefab_instruments=CU.SHF,ZN.SHF,LC.SHF,PB.SHF,SN.SHF,NI.SHF,AL.SHF; prefab_fields=CLOSE,VOL,OI,SETTLE; prefab_subset_of_a03=True"
                       },
                       {
                           "name":  "HEADER_TEMPLATE_OK",
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "header=date,symbol,indicator,CLOSE,VOL,OI,SETTLE,source"
+                          "detail":  "header=date,symbol,indicator,CLOSE,VOL,OI,SETTLE,OPEN,HIGH,LOW,source"
                       },
                       {
                           "name":  "SAMPLE_FETCH_ALLOW_MARKER_ABSENT",
@@ -102,7 +102,7 @@
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "new_pids=13100 err="
+                          "detail":  "new_pids=13620 err="
                       },
                       {
                           "name":  "BG_EXCEL_QUIT_CLEAN",
@@ -144,14 +144,14 @@
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "gate must be CLOSED; ignition is authorised only by the one-shot token"
+                          "detail":  "prefab gate stays CLOSED; A03 authorises this run session-scoped only"
                       },
                       {
                           "name":  "RELEASE_PERMIT_NOT_ISSUED",
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "release_permit must be NOT_ISSUED"
+                          "detail":  "prefab release_permit stays NOT_ISSUED; effective grant = GRANTED_BY_A03_WORKORDER"
                       },
                       {
                           "name":  "PREFAB_WIND_API_CALLS_ZERO",
@@ -161,11 +161,11 @@
                           "detail":  "wind_api_calls=0"
                       },
                       {
-                          "name":  "TOKEN_A02_STATE_UNUSED",
+                          "name":  "TOKEN_A01_002_READY_TO_CONSUME",
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "already_in_index=False"
+                          "detail":  "index_token_state=UNUSED"
                       },
                       {
                           "name":  "NO_WINDPY_CHANNEL",
@@ -179,7 +179,7 @@
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "the human owns PERM-A01-REMOTE-WIND-BRIDGE-001; the agent never runs InitWAPI"
+                          "detail":  "the agent never runs InitWAPI; PERM-A01-REMOTE-WIND-BRIDGE-001 is a legacy reference only under this workorder"
                       },
                       {
                           "name":  "FRONT_EXCEL_PRESENT",
@@ -187,14 +187,24 @@
                           "expected":  true,
                           "pass":  true,
                           "detail":  "protected_pids=14644"
+                      },
+                      {
+                          "name":  "NO_HUMAN_OPERATION_REQUESTED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "A03: the agent-side WDF-Excel pathway is the primary collection channel; no admin action is requested, required or listed"
                       }
                   ],
-    "summary":  26,
-    "total":  26,
-    "finished_at":  "2026-10-19T00:39:40.0738692+08:00",
+    "summary":  27,
+    "total":  27,
+    "finished_at":  "2026-10-19T03:08:04.3682002+08:00",
     "status":  "PASS",
     "wind_api_calls":  0,
     "real_wind_call":  false,
+    "gate_effective":  "WDF_ADDIN_CONNECTED_IN_BG_EXCEL",
+    "gate_note":  "the old \"Wind API bridge listening port must exist\" gate is removed for this workorder; session-scoped only -- the DSHA-P65 prefab gate/release_permit are NOT edited",
+    "release_permit_effective":  "GRANTED_BY_A03_WORKORDER",
     "protected_excel_pids":  [
                                  14644
                              ],
@@ -224,8 +234,13 @@
                    "CLOSE",
                    "VOL",
                    "OI",
-                   "SETTLE"
+                   "SETTLE",
+                   "OPEN",
+                   "HIGH",
+                   "LOW"
                ],
+    "fields_logical_count":  8,
+    "date_field_note":  "DATE is not injected as a formula: it is the anchor column the WSD grid returns for every field call",
     "trading_days":  250,
     "guardrails":  {
                        "dsha_p68_files_pinned":  3,
@@ -233,7 +248,8 @@
                        "no_windpy":  true,
                        "no_initwapi":  true,
                        "no_backtest":  true,
-                       "no_mirror_to_p62_scan_dir":  true
+                       "no_mirror_to_p62_scan_dir":  true,
+                       "no_human_operation_requested":  true
                    },
     "note":  "Preflight performs NO Wind data calls: registry / process / COM / add-in probes only."
 }

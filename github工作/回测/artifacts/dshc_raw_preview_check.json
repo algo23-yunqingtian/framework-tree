@@ -1,11 +1,11 @@
 ﻿{
-    "generated_at":  "2026-10-19T00:48:08.2226956+08:00",
-    "ticket":  "DSHC-TASK-A01-PHASE2",
+    "generated_at":  "2026-10-19T03:11:30.0013735+08:00",
+    "ticket":  "DSHC-TASK-A03-WDF-DIRECT",
     "a01_tag":  "A01-USER-REMOTE-002",
     "auth_ref":  "A01-USER-REMOTE-002",
-    "ignite_session":  "A02-IGNITE-20261019-003927",
+    "ignite_session":  "A03-IGNITE-20261019-030750",
     "csv_path":  "output_sample/wdf_sample_metals_raw.csv",
-    "header":  "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,source",
+    "header":  "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,OPEN,HIGH,LOW,source",
     "header_fields":  [
                           "date",
                           "symbol",
@@ -14,11 +14,14 @@
                           "VOL",
                           "OI",
                           "SETTLE",
+                          "OPEN",
+                          "HIGH",
+                          "LOW",
                           "source"
                       ],
     "row_count":  0,
-    "file_bytes":  50,
-    "sha256":  "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895",
+    "file_bytes":  64,
+    "sha256":  "41EC38315397FB70CC30BB313B88C3965BB50B30A628A3422743A48026806A92",
     "preview_only":  true,
     "backtest_run":  false,
     "dsha_p68_handoff":  true,
@@ -52,6 +55,27 @@
                         "nullish":  0,
                         "ratio":  0,
                         "numeric_count":  0
+                    },
+                    {
+                        "column":  "OPEN",
+                        "non_null":  0,
+                        "nullish":  0,
+                        "ratio":  0,
+                        "numeric_count":  0
+                    },
+                    {
+                        "column":  "HIGH",
+                        "non_null":  0,
+                        "nullish":  0,
+                        "ratio":  0,
+                        "numeric_count":  0
+                    },
+                    {
+                        "column":  "LOW",
+                        "non_null":  0,
+                        "nullish":  0,
+                        "ratio":  0,
+                        "numeric_count":  0
                     }
                 ],
     "date_range":  {
@@ -62,7 +86,18 @@
 
                   ],
     "requested_trading_days":  250,
-    "requested_field_count":  4,
+    "requested_field_count":  7,
+    "requested_field_count_logical":  8,
+    "fields":  [
+                   "CLOSE",
+                   "VOL",
+                   "OI",
+                   "SETTLE",
+                   "OPEN",
+                   "HIGH",
+                   "LOW"
+               ],
+    "date_field_note":  "DATE is the anchor column returned by every WSD grid call, not a separately injected formula",
     "instruments_requested":  [
                                   "CU.SHF",
                                   "ZN.SHF",
@@ -76,14 +111,18 @@
 
                        ],
     "instruments_failed":  [
-
+                               {
+                                   "symbol":  "CU.SHF",
+                                   "status":  "FAIL",
+                                   "note":  "fields_ok=0/7; last_error=grid delivered but no usable date/value pairs (rows=276 cols=2 header=0)"
+                               }
                            ],
     "wind_api_calls":  0,
-    "wdf_retries":  0,
-    "wdf_inject_attempts":  2,
+    "wdf_retries":  7,
+    "wdf_inject_attempts":  16,
     "probe_wind_calls":  2,
-    "bridge_status":  "NOT_ACTIVATED",
-    "token_state":  "UNUSED",
+    "bridge_status":  "DEAD_DATA_PLANE",
+    "token_state":  "EXHAUSTED",
     "sanity_reference":  {
                              "dsha_p68_MIN_FILE_SIZE":  5120,
                              "dsha_p68_SANITY_MIN_ROWS":  300,

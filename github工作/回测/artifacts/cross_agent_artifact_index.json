@@ -238,7 +238,88 @@
       "p4_receipt_line": "DSHC_A01_PHASE2=WAIT_BRIDGE｜token=A01-USER-REMOTE-002｜bridge_status=NOT_ACTIVATED｜protected_front_excel=OK｜token_state=UNUSED｜no_windpy=YES｜no_backtest_stolen=YES",
       "receipt_path": "artifacts/dshc_ignite_run_receipt.json",
       "diagnosis_path": "artifacts/dshc_ignite_a02_channel_diagnosis.md",
-      "next_step": "bridge still inactive; holder executes PERM-A01-REMOTE-WIND-BRIDGE-001 (InitWAPI as admin / terminal UI API enable / .wind WMain repair), then re-issue the ignite command; token A01-USER-REMOTE-002 remains UNUSED and ready"
+      "next_step": "bridge still inactive; holder executes PERM-A01-REMOTE-WIND-BRIDGE-001 (InitWAPI as admin / terminal UI API enable / .wind WMain repair), then re-issue the ignite command; token A01-USER-REMOTE-002 remains UNUSED and ready",
+      "a03_run": {
+        "phase": "A03 (DSHC-TASK-A03-WDF-DIRECT)",
+        "receipt_id": "DSHC-IGNITE-A03-RECEIPT-001",
+        "auth_ref": "A01-USER-REMOTE-002",
+        "a01_tag": "A01-USER-REMOTE-002",
+        "ignite_session": "A03-IGNITE-20261019-030750",
+        "gate": "AUTHORISED_BY_USER_WORKORDER",
+        "gate_effective": "WDF_ADDIN_CONNECTED_IN_BG_EXCEL",
+        "gate_change": "the old 'a Wind API bridge listening port must exist' gate is REMOVED for this workorder and replaced by WDF add-in Connect=True. Session-scoped only: the DSHA-P65 prefab gate stays CLOSED and release_permit stays NOT_ISSUED.",
+        "release_permit_effective": "GRANTED_BY_A03_WORKORDER",
+        "branch": "feature/v88-g1",
+        "status": "FETCH_ERROR",
+        "end_reason": "WDF channel failure on first instrument (CU.SHF): fields_ok=0/7 after 14 attempts; fast-fail fuse tripped -- remaining 6 instruments never traversed to avoid Wind bombardment",
+        "timestamp_start": "2026-10-19T03:07:50.8359401+08:00",
+        "timestamp_end": "2026-10-19T03:11:30.3193989+08:00",
+        "duration_sec": 219,
+        "preflight": "PASS",
+        "preflight_checks": "27/27",
+        "channel_probe_gate_verdict": "CHANNEL_READY_BY_WDF_CONNECT",
+        "channel_probe_data_plane": "DEAD_DATA_PLANE",
+        "wsd_kind": "DATA_GRID_EMPTY",
+        "wsd_rows": 0,
+        "wsd_anchor": "2026-10-12",
+        "wss_kind": "NON_NUMERIC_TEXT",
+        "wss_anchor": "2026-10-12",
+        "bridge_wait_min": null,
+        "bridge_wait_removed": true,
+        "wait_loop_ever_started": false,
+        "instruments_total": 7,
+        "instruments_ok": 0,
+        "instruments_failed": 1,
+        "instruments_skipped": 6,
+        "fast_fail_fuse_tripped": true,
+        "fields_logical_count": 8,
+        "wind_api_calls": 0,
+        "wdf_retries": 7,
+        "wdf_inject_attempts": 16,
+        "probe_wind_calls": 2,
+        "csv_rows": 0,
+        "csv_bytes": 64,
+        "csv_ready_for_dsha": false,
+        "token_state": "EXHAUSTED",
+        "token_consumed": true,
+        "one_shot_auth_used": true,
+        "auth_expired_after_this_run": true,
+        "channel": "Excel COM + WDF add-in WSD/WSS formula (WindPy / InitWAPI NOT used)",
+        "strategy": "per instrument, per FIELD separate WSD call, then in-memory align-merge (avoids the known WDF multi-field WSD defect)",
+        "agent_excel_pid": 20296,
+        "agent_excel_lifetime_sec": 163,
+        "hard_timeout_min": 12,
+        "hard_timeout_reached": false,
+        "protected_foreground_excel_pids": [ 14644 ],
+        "protected_foreground_excel_terminated": false,
+        "wind_listen_ports": [],
+        "dotwind_file_count": 0,
+        "dotwind_dir_count": 9,
+        "marker_present_after_run": false,
+        "sample_fetch_allow_marker_created": false,
+        "windpy_used": false,
+        "windpy_invocation": false,
+        "initwapi_used": false,
+        "admin_operation_performed": false,
+        "human_operation_requested": false,
+        "permanent_config_modified": false,
+        "backtest_run": false,
+        "factor_computation_run": false,
+        "no_backtest_stolen": true,
+        "backtest_not_run_by_dshc": true,
+        "no_p62_mirror": true,
+        "dsha_p68_untouched": true,
+        "dsha_p68_deltas": [],
+        "dshd_p80_delta_note": "3 P80 snapshot/catalog/evidence files show hash deltas, but their mtimes are 03:19:58 / 03:20:28 / 03:22:54 -- all AFTER this run ended at 03:11:30. Those are DSHD-P80 audit watcher s own periodic rewrites; this executor never wrote to any DSHD-P80 path.",
+        "wind_api_calls_semantics": "counted only when a WSD formula actually returned a data grid; none of the 16 formula injections ever did, so wind_api_calls=0. Channel probes are counted separately in probe_wind_calls.",
+        "key_evidence": "the WDF add-in loaded (7 COMAddIns incl. WDF.Addin) with Connect=True, parsed all 16 formulas and assembled a correct 276-row x 2-col grid skeleton, but every price cell was empty -- only the date anchor column had a value. Both WSD (range series) and WSS (single-point snapshot) returned the bare date anchor instead of data. Data plane dead; not a formula, field or code problem.",
+        "p4_receipt_line": "DSHC_A03_WDF_FETCH=FETCH_ERROR|token=A01-USER-REMOTE-002|token_state=EXHAUSTED|wdf_pathway=PARTIAL-FAILED|see_diagnosis=artifacts/dshc_a03_wdf_channel_diagnosis.md",
+        "red_line_line": "wind_api_calls=0|no_windpy_invocation=YES|front_excel_untouched=YES|no_human_operation_requested=YES|backtest_not_run_by_dshc=YES",
+        "receipt_path": "artifacts/dshc_ignite_run_receipt.json",
+        "diagnosis_path": "artifacts/dshc_a03_wdf_channel_diagnosis.md",
+        "data_requirement_checklist_path": "artifacts/P49_data_requirement_checklist.md",
+        "next_step": "awaiting the next textual workorder for a retry; token A01-USER-REMOTE-002 is EXHAUSTED and cannot be reused"
+      }
     }
   },
   "a01_red_line_note": {
@@ -248,9 +329,9 @@
     "marker_created_baseline": false,
     "note": "The top-level wind_api_calls / real_wind_call / marker_created fields are the DSHD-P79 P90A baseline and were NOT modified by the A01 run. The A01 run made 3 WDF formula injections that returned no data, so A01 wind_api_calls=0 as well; per-run facts live under ignite_runs."
   },
-  "updated_at": "2026-10-18T17:02:28Z",
-  "updated_by": "DSHA-A02-PLUS",
-  "updated_reason": "additive A02-PLUS experimental hook registration; DSHD-P79/DSHE top-level red-line fields preserved unchanged",
+  "updated_at": "2026-10-18T19:56:29Z",
+  "updated_by": "DSHC-A03",
+  "updated_reason": "additive DSHC-TASK-A03-WDF-DIRECT direct-fetch run (FETCH_ERROR, token A01-USER-REMOTE-002 EXHAUSTED, gate changed to WDF add-in Connect=True); DSHD-P79/DSHE/A01/A02 top-level red-line baselines preserved unchanged",
   "a02_ready_preheat": {
     "ticket": "DSHA-A02-READY-PREHEAT",
     "agent": "DSHA-A02",
@@ -392,5 +473,96 @@
     },
     "trigger_authority": "P68_SANITY_GATE",
     "auto_ignition_by_a02_plus": "DENIED"
+  },
+  "a03_wdf_direct": {
+    "ticket": "DSHC-TASK-A03-WDF-DIRECT",
+    "a01_tag": "A01-USER-REMOTE-002",
+    "auth_ref": "A01-USER-REMOTE-002",
+    "ignite_session": "A03-IGNITE-20261019-030750",
+    "gate_effective": "WDF_ADDIN_CONNECTED_IN_BG_EXCEL",
+    "status": "FETCH_ERROR",
+    "token_state": "EXHAUSTED",
+    "wind_api_calls": 0,
+    "artifacts": {
+      "fetch_executor_ps1": {
+        "key": "a03_fetch_executor_ps1",
+        "path": "scripts/dshc_ignite_a03_wdf_fetch.ps1",
+        "sha256": "5F473172CDC28BD85D9A4210A587F6DCC698BC93F823010435C8D3955F03086C"
+      },
+      "ignite_receipt_json": {
+        "key": "a03_ignite_receipt_json",
+        "path": "artifacts/dshc_ignite_run_receipt.json",
+        "sha256": "AFB4A7F14E1549E4F7E1D6FCEBB63415E5D30B3760BC883BFABBE3B8B3560BCD",
+        "status": "FETCH_ERROR",
+        "token_state": "EXHAUSTED"
+      },
+      "preview_check_json": {
+        "key": "a03_raw_preview_check_json",
+        "path": "artifacts/dshc_raw_preview_check.json",
+        "sha256": "9F8ABE53943C206992B6CBB236F64DD3D434FF6362EF07D40BCE991488937FC3",
+        "rows": 0
+      },
+      "ignite_events_jsonl": {
+        "key": "a03_ignite_events_jsonl",
+        "path": "artifacts/dshc_a03_fetch_events.jsonl",
+        "sha256": "7B1F307D57FDAE98DDD49E810616335909DD33342BE026CB67D3F5036CB6376D",
+        "event_count": 48
+      },
+      "channel_probe_json": {
+        "key": "a03_channel_probe_json",
+        "path": "artifacts/dshc_a03_channel_probe.json",
+        "sha256": "88E891BA1B8BEDB122D9AE72FA4AEC77C039C8DA5BE942866FFF56A2118029CA",
+        "gate_verdict": "CHANNEL_READY_BY_WDF_CONNECT",
+        "data_plane": "DEAD_DATA_PLANE"
+      },
+      "preflight_check_json": {
+        "key": "a03_preflight_check_json",
+        "path": "artifacts/wdf_preflight_check.json",
+        "sha256": "F51634355B69DF23C9E097A0E9BD328017132D7D13AC70544471D0153E1B3EC1",
+        "checks": "27/27"
+      },
+      "channel_diagnosis_md": {
+        "key": "a03_channel_diagnosis_md",
+        "path": "artifacts/dshc_a03_wdf_channel_diagnosis.md",
+        "sha256": "883BD908A7D07BFC262BE8ACC5D8C57BCED32BD37C43E8AD354F2C0F32F8C869"
+      },
+      "data_requirement_checklist_md": {
+        "key": "a03_data_requirement_checklist_md",
+        "path": "artifacts/P49_data_requirement_checklist.md",
+        "sha256": "07FBB3A8F9CFD106D425923FA85BE84B2391D0CEDC0EA179D88F0A269EBC4F48"
+      },
+      "csv_output": {
+        "key": "a03_csv_output",
+        "path": "output_sample/wdf_sample_metals_raw.csv",
+        "sha256": "41EC38315397FB70CC30BB313B88C3965BB50B30A628A3422743A48026806A92",
+        "rows": 0,
+        "bytes": 64,
+        "header": "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,OPEN,HIGH,LOW,source",
+        "note": "11-column A03 P49 contract header, 0 data rows. Replaces the 8-column 50-byte A01/A02 header; that file also held 0 data rows so no data was lost."
+      },
+      "prior_receipt_archive": {
+        "key": "a03_prior_receipt_archive",
+        "path": "artifacts/dshc_ignite_run_receipt_A02_wait_cycle2.json",
+        "sha256": "2A197163561E460A878BCB1EC9B9AB917577B0B30B6037A95DC484A4FE7053D2",
+        "note": "the A02 WAIT_BRIDGE cycle-2 receipt, archived before the A03 receipt took the canonical path"
+      }
+    }
+  },
+  "a03_gate_change": {
+    "ticket": "DSHC-TASK-A03-WDF-DIRECT",
+    "removed_gate": "a Wind API bridge listening port must exist before ignition",
+    "new_gate": "WDF add-in Connect=True observed in an isolated background Excel",
+    "new_gate_result": "PASS (connected=WDF.Addin; 7 COMAddIns present)",
+    "prefab_unchanged": {
+      "gate": "CLOSED",
+      "release_permit": "NOT_ISSUED",
+      "wind_api_calls": 0
+    },
+    "release_permit_effective": "GRANTED_BY_A03_WORKORDER",
+    "scope": "session-scoped to DSHC-TASK-A03-WDF-DIRECT only; NOT a permanent baseline change to the DSHA-P65 prefab",
+    "wait_removed": true,
+    "wait_reason": "the A02 WAIT_BRIDGE lock, its bounded 8-minute wait loop and its STANDBY state are lifted by this workorder",
+    "token_exhausted": true,
+    "outcome": "the gate change authorised ignition immediately with no wait; the run still failed because the data plane behind the add-in is empty (both WSD and WSS return the bare date anchor). See artifacts/dshc_a03_wdf_channel_diagnosis.md"
   }
 }
