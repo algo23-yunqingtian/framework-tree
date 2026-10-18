@@ -1,0 +1,22 @@
+{
+  "file_id": "DSHA-A02-STUB-WATCH-LOG",
+  "path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_raw.csv",
+  "created_at": "2026-10-18T17:02:28Z",
+  "last_updated_at": "2026-10-18T17:02:28Z",
+  "policy": "STUB_ONLY-IGNORE: 50B header-only stub 永远不喂进 9 步管线",
+  "entries": [
+    {
+      "entry_id": "A02-STUB-20261019_010228",
+      "observed_at": "2026-10-18T17:02:28Z",
+      "observed_at_gmt8": "2026-10-19 01:02:28 GMT+8",
+      "size_bytes": 50,
+      "sha256": "bef26114cc1fca4bdd40e911f888e7ca388dd150a1d48fd6c623d8fe07850895",
+      "classification": "STUB_ONLY-IGNORE",
+      "meets_min_file_size": false,
+      "note": "size=50B < min=5120B, data_rows=0; 标记 STUB_ONLY-IGNORE，永不喂进 9 步管线；Sanity 闸门由 P68 唯一权威执行"
+    }
+  ],
+  "total_observations": 1,
+  "real_wind_call": false,
+  "wind_api_calls": 0
+}

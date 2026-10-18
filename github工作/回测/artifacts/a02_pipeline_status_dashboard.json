@@ -1,0 +1,122 @@
+{
+  "dashboard_id": "DSHA-A02-PIPELINE-STATUS-DASHBOARD",
+  "generated_at": "2026-10-18T17:02:28Z",
+  "generated_at_gmt8": "2026-10-19 01:02:28 GMT+8",
+  "purpose": "人类友好状态看板 — 供人一眼看整条链状态；不能作为绕过 Sanity 自动放行的条件",
+  "trigger_authority": "P68_SANITY_GATE (FINAL_STANDBY_LOCKED) — 唯一权威",
+  "a02_role": "AUXILIARY (preheat + dashboard only)",
+  "dsha_state": "PREHEAT_STANDBY",
+  "p68_lock": {
+    "git_diff_empty": true,
+    "last_commit": "684342e feat(P68): FINAL FULLY-STABLE STANDBY LOCKED鍩虹嚎 [A01-LOCKED-BASELINE]",
+    "param_check": "12/12",
+    "poll_interval_sec": 12,
+    "final_lock_intact": true
+  },
+  "a01_state": {
+    "status": "FINAL_STANDBY_LOCKED",
+    "receipt_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dsha_a01_factor_v1_receipt.json"
+  },
+  "preheat": {
+    "cache_loaded": true,
+    "engine_modules_declared": 9,
+    "engine_modules_all_importable": true,
+    "backtest_engine_functions_ready": 7,
+    "f007_window_days": 60,
+    "f007_window_validation_range": [
+      35,
+      60,
+      100
+    ],
+    "tier_factors_admission": {
+      "FACTOR-001": "HOLD",
+      "FACTOR-002": "HOLD",
+      "FACTOR-003": "HOLD",
+      "FACTOR-004": "CONDITIONAL_PASS",
+      "FACTOR-005": "HOLD",
+      "FACTOR-006": "CONDITIONAL_PASS",
+      "FACTOR-007": "CONDITIONAL_PASS"
+    }
+  },
+  "meta_precheck": {
+    "varieties": [
+      "CU.SHF",
+      "LI.SHF",
+      "NI.SHF",
+      "ZN.SHF"
+    ],
+    "contract_mapping_count": 6,
+    "warnings_count": 0
+  },
+  "stub_status": {
+    "path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_raw.csv",
+    "size_bytes": 50,
+    "classification": "STUB_ONLY-IGNORE",
+    "sanity_gate": "NOT_RUN (never — stub)",
+    "stub_only_ignore": true
+  },
+  "dshc_signal": {
+    "latest_timestamp": "2026-10-19T00:48:08.4696810+08:00",
+    "latest_task": "DSHC-TASK-A01-PHASE2",
+    "latest_mode": "",
+    "dshc_reported_wind_api_calls": 0,
+    "note": "以上为 DSHC 自身产物内报告值，权威；DSHC 之外任何 wind_api_calls>0 声称都不采信"
+  },
+  "cross_agent_signals": {
+    "sources_scanned": [
+      "dshc_ignite_a02_events",
+      "dshc_ignite_a01_events",
+      "dshc_ignite_run_receipt",
+      "dshc_ignite_wait_cycle1",
+      "dshc_p90a_final_events",
+      "a01_audit_observation",
+      "a01_file_evidence"
+    ],
+    "mode": "READ_ONLY_LOCAL_SCAN",
+    "rpc_called": false,
+    "ipc_injection": false
+  },
+  "monitor_side_assertions": [
+    {
+      "pattern": "wind_api_calls=460 detected (expected 0)",
+      "count_in_tail500": 78,
+      "oldest_seen_timestamp": "2026-10-19 00:25:00 GMT+8",
+      "source_agent": "DSHD-P79 (monitor-side)",
+      "intervention": "NONE",
+      "audit_only": true,
+      "interpretation": "历史残留噪声：DSHD-P79 监视器侧告警，早于 DSHC A02 会话；非本次会话，非 DSHC 内部事件；只做备注解释，不修改 DSHD 审计账本"
+    }
+  ],
+  "decision": {
+    "auto_ignition": "DENIED",
+    "reason": "Sanity 闸门由 P68 权威执行；stub 分类 STUB_ONLY-IGNORE 未满足 ≥5120B 或 ≥300 行 → 本模块不下触发决策",
+    "sanity_gate_locked": {
+      "MIN_FILE_SIZE": 5120,
+      "MIN_ROWS": 300,
+      "REQUIRED_COLUMNS": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "MIN_NON_NULL_RATIO": 0.9,
+      "DATE_CONTINUITY": true,
+      "note": "本模块只读，不改；Sanity 由 P68 权威执行"
+    }
+  },
+  "briefing": {
+    "interval_sec": 300,
+    "note": "本脚本单次运行；如需常驻每 5 分钟简报，可由外部调度器循环调用"
+  },
+  "red_line": {
+    "wind_api_calls": 0,
+    "real_wind_call": false,
+    "no_excel_operation": true,
+    "offline_preheat": true,
+    "no_marker_creation": true,
+    "no_ipc_injection": true,
+    "no_rpc": true,
+    "final_lock_intact": true,
+    "p68_script_not_modified": true
+  }
+}

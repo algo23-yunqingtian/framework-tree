@@ -1,0 +1,138 @@
+{
+  "receipt_id": "DSHA-A02-READY-RECEIPT-001",
+  "ticket": "DSHA-A02-READY-PREHEAT",
+  "agent": "DSHA-A02",
+  "git_tag": "A02-READY-PREHEAT-V1",
+  "branch": "feature/v88-g1",
+  "baseline_commit": "684342e",
+  "a02_tag": "A02-PROBE-001",
+  "generated_at": "2026-10-18T17:02:28Z",
+  "generated_at_gmt8": "2026-10-19 01:02:28 GMT+8",
+  "status": "PREHEAT_STANDBY",
+  "role": "AUXILIARY (preheat + dashboard) — 永不接管触发逻辑",
+  "p0_baseline": {
+    "p68_git_diff_empty": true,
+    "p68_last_commit": "684342e feat(P68): FINAL FULLY-STABLE STANDBY LOCKED鍩虹嚎 [A01-LOCKED-BASELINE]",
+    "p68_param_check": "12/12",
+    "a01_receipt_status": "FINAL_STANDBY_LOCKED",
+    "dirs_writeable": {
+      "D:\\DSH_WORK\\github工作\\回测\\output_sample": true,
+      "D:\\DSH_WORK\\github工作\\回测\\factor_hub": true,
+      "D:\\DSH_WORK\\github工作\\回测\\factor_hub\\meta": true
+    }
+  },
+  "preheat_summary": {
+    "factor_library": {
+      "available_factors": [
+        "F19",
+        "G1",
+        "G3",
+        "G7",
+        "F007"
+      ],
+      "warning_factors": [
+        "F20",
+        "CF003"
+      ],
+      "primary_instrument": "ZN.SHF"
+    },
+    "engine_modules": {
+      "declared_count": 9,
+      "all_importable": true,
+      "per_module": {
+        "factor_data_loader": true,
+        "factor_constructor": true,
+        "backtest_skeleton": true,
+        "sample_data_trigger": true,
+        "plot_net_curve": true,
+        "plot_ic_series": true,
+        "p63_report_render_test": true,
+        "p63_audit_and_redline": true,
+        "p62_listener_health_check": true
+      }
+    },
+    "backtest_engine_functions_ready": 7,
+    "tier_factors_admission": {
+      "FACTOR-001": "HOLD",
+      "FACTOR-002": "HOLD",
+      "FACTOR-003": "HOLD",
+      "FACTOR-004": "CONDITIONAL_PASS",
+      "FACTOR-005": "HOLD",
+      "FACTOR-006": "CONDITIONAL_PASS",
+      "FACTOR-007": "CONDITIONAL_PASS"
+    }
+  },
+  "meta_precheck": {
+    "warnings_count": 0,
+    "notes_count": 2,
+    "all_ok": true
+  },
+  "stub_status": {
+    "observed_at": "2026-10-18T17:02:28Z",
+    "observed_at_gmt8": "2026-10-19 01:02:28 GMT+8",
+    "path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_raw.csv",
+    "exists": true,
+    "size_bytes": 50,
+    "mtime": "2026-10-18T16:48:08Z",
+    "header": "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,source",
+    "row_count_data_only": 0,
+    "meets_min_file_size": false,
+    "sanity_gate": "NOT_RUN (never — stub)",
+    "classification": "STUB_ONLY-IGNORE",
+    "note": "size=50B < min=5120B, data_rows=0; 标记 STUB_ONLY-IGNORE，永不喂进 9 步管线；Sanity 闸门由 P68 唯一权威执行",
+    "sha256": "bef26114cc1fca4bdd40e911f888e7ca388dd150a1d48fd6c623d8fe07850895"
+  },
+  "dshc_signal": {
+    "latest_timestamp": "2026-10-19T00:48:08.4696810+08:00",
+    "latest_task": "DSHC-TASK-A01-PHASE2",
+    "latest_mode": "",
+    "dshc_reported_wind_api_calls": 0,
+    "note": "以上为 DSHC 自身产物内报告值，权威；DSHC 之外任何 wind_api_calls>0 声称都不采信"
+  },
+  "monitor_side_assertions": [
+    {
+      "pattern": "wind_api_calls=460 detected (expected 0)",
+      "count_in_tail500": 78,
+      "oldest_seen_timestamp": "2026-10-19 00:25:00 GMT+8",
+      "source_agent": "DSHD-P79 (monitor-side)",
+      "intervention": "NONE",
+      "audit_only": true,
+      "interpretation": "历史残留噪声：DSHD-P79 监视器侧告警，早于 DSHC A02 会话；非本次会话，非 DSHC 内部事件；只做备注解释，不修改 DSHD 审计账本"
+    }
+  ],
+  "decision": {
+    "auto_ignition": "DENIED",
+    "reason": "Sanity 闸门由 P68 权威执行；stub 分类 STUB_ONLY-IGNORE 未满足 ≥5120B 或 ≥300 行 → 本模块不下触发决策",
+    "sanity_gate_locked": {
+      "MIN_FILE_SIZE": 5120,
+      "MIN_ROWS": 300,
+      "REQUIRED_COLUMNS": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "MIN_NON_NULL_RATIO": 0.9,
+      "DATE_CONTINUITY": true,
+      "note": "本模块只读，不改；Sanity 由 P68 权威执行"
+    }
+  },
+  "artifacts_produced": [
+    "D:\\DSH_WORK\\github工作\\回测\\artifacts\\a02_preheat_cache.json",
+    "D:\\DSH_WORK\\github工作\\回测\\artifacts\\a02_pipeline_status_dashboard.json",
+    "D:\\DSH_WORK\\github工作\\回测\\artifacts\\a02_stub_watch_log.json",
+    "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dsha_a02_ready_receipt.json"
+  ],
+  "audit_appended": true,
+  "fixed_format_receipt_line": "→ DSHA_A02_READY=PREHEAT_STANDBY | P68_LOCK=INTACT | preheat_cache=LOADED | DSHC=PREFLIGHT_READY | system_stable=100%",
+  "red_line_selfcheck": {
+    "wind_api_calls": 0,
+    "no_excel_operation": true,
+    "final_lock_intact": true,
+    "offline_preheat": true,
+    "no_marker_creation": true,
+    "p68_not_modified": true
+  },
+  "red_line_receipt_line": "→ wind_api_calls=0 | no_excel_operation=YES | final_lock_intact=YES | offline_preheat=YES",
+  "note": "本回执只表示 A02 预热就绪；DSHC 一旦输出合格 CSV，触发权仍 100% 由 P68 Sanity 闸门控制；本模块不下触发决策"
+}

@@ -1,0 +1,249 @@
+{
+  "cache_id": "DSHA-A02-PREHEAT-CACHE",
+  "generated_at": "2026-10-18T17:02:28Z",
+  "generated_at_gmt8": "2026-10-19 01:02:28 GMT+8",
+  "purpose": "预热只读缓存：函数/配置/引擎模块的元信息快照；不是输出结果",
+  "factor_library": {
+    "p68_factor_definitions": {
+      "F19": {
+        "name": "F19_hot_money_weight",
+        "status": "AVAILABLE",
+        "required_columns": [
+          "OI",
+          "OI_change",
+          "date",
+          "variety"
+        ],
+        "note": "OI available from WDF; OI_change derived from OI delta"
+      },
+      "F20": {
+        "name": "F20_attention_weight",
+        "status": "WARNING_SKIPPED",
+        "required_columns": [
+          "sentiment_score",
+          "search_volume",
+          "date",
+          "variety"
+        ],
+        "note": "External source needed: sentiment_score, search_volume — NOT in WDF daily fields"
+      },
+      "CF003": {
+        "name": "CF003_speculation_weight",
+        "status": "WARNING_SKIPPED",
+        "required_columns": [
+          "exchange_oi",
+          "long_oi",
+          "short_oi",
+          "date",
+          "variety"
+        ],
+        "note": "External source needed: exchange_oi, long_oi, short_oi — NOT in WDF daily fields"
+      },
+      "G1": {
+        "name": "G1_IC_threshold",
+        "status": "DERIVED",
+        "required_columns": [
+          "IC_score",
+          "returns",
+          "date",
+          "variety"
+        ],
+        "note": "Derived from backtest IC computation"
+      },
+      "G3": {
+        "name": "G3_ICIR_threshold",
+        "status": "DERIVED",
+        "required_columns": [
+          "rolling_ICIR",
+          "IC_std",
+          "date",
+          "variety"
+        ],
+        "note": "Derived from rolling IC computation"
+      },
+      "G7": {
+        "name": "G7_leakage_ratio",
+        "status": "DERIVED",
+        "required_columns": [
+          "leakage_score",
+          "info_score",
+          "date",
+          "variety"
+        ],
+        "note": "Derived from backtest leakage analysis"
+      },
+      "F007": {
+        "name": "F007_synthetic_factor",
+        "status": "AVAILABLE_PARTIAL",
+        "required_columns": [
+          "F19_score",
+          "F20_score",
+          "CF003_score",
+          "date",
+          "variety"
+        ],
+        "note": "F20_score and CF003_score are NULL (WARNING); F19_score available"
+      },
+      "__available_factors__": [
+        "F19",
+        "G1",
+        "G3",
+        "G7",
+        "F007"
+      ],
+      "__warning_factors__": [
+        "F20",
+        "CF003"
+      ],
+      "__primary_instrument__": "ZN.SHF",
+      "__f007_baseline__": {
+        "window_days": 60,
+        "min_trading_days": 61,
+        "frozen_weights": [
+          "f19_weight",
+          "f20_weight",
+          "cf003_weight",
+          "decay_factor"
+        ]
+      },
+      "__engine_modules__": [
+        "factor_data_loader",
+        "factor_constructor",
+        "backtest_skeleton",
+        "sample_data_trigger",
+        "plot_net_curve",
+        "plot_ic_series",
+        "p63_report_render_test",
+        "p63_audit_and_redline",
+        "p62_listener_health_check"
+      ],
+      "__p68_callables__": {
+        "run_p0_preflight": true,
+        "verify_p67_integrity": true,
+        "scan_for_wdf_csv": true,
+        "run_sanity_precheck": true,
+        "read_wdf_csv": true,
+        "prepare_price_data": true,
+        "run_9_step_pipeline": true,
+        "generate_receipt": true
+      }
+    },
+    "factor_constructor_f007_baseline": {
+      "window_days": {
+        "value": 60,
+        "unit": "days",
+        "definition": "合成因子计算的标准滚动窗口",
+        "is_baseline": true,
+        "verification_range": [
+          35,
+          60,
+          80,
+          100
+        ]
+      },
+      "weights": {
+        "f19_weight": {
+          "value": "frozen",
+          "mutable": false
+        },
+        "f20_weight": {
+          "value": "frozen",
+          "mutable": false
+        },
+        "cf003_weight": {
+          "value": "frozen",
+          "mutable": false
+        }
+      },
+      "decay_factor": {
+        "value": "frozen",
+        "mutable": false
+      },
+      "drift_thresholds": {
+        "ranking_correlation": {
+          "warning": 0.8,
+          "critical": 0.6,
+          "metric": "spearman_rho"
+        },
+        "direction_consistency": {
+          "warning": 0.2,
+          "critical": 0.4,
+          "metric": "disagreement_ratio"
+        },
+        "ic_volatility": {
+          "warning": "2x_baseline_std",
+          "critical": "3x_baseline_std"
+        }
+      }
+    },
+    "factor_data_loader_imported": true
+  },
+  "tier_params": {
+    "total_factors": 7,
+    "total_params": 11,
+    "factors_admission": {
+      "FACTOR-001": "HOLD",
+      "FACTOR-002": "HOLD",
+      "FACTOR-003": "HOLD",
+      "FACTOR-004": "CONDITIONAL_PASS",
+      "FACTOR-005": "HOLD",
+      "FACTOR-006": "CONDITIONAL_PASS",
+      "FACTOR-007": "CONDITIONAL_PASS"
+    },
+    "governance_invariants": {
+      "wind_api_calls": 0,
+      "backtest_started": false,
+      "gate": "CLOSED/HOLD",
+      "release_permit": "NOT_ISSUED"
+    },
+    "window_days_baseline": 60,
+    "window_days_validation_range": [
+      35,
+      60,
+      100
+    ]
+  },
+  "engine_modules": {
+    "declared_count": 9,
+    "all_importable": true,
+    "per_module": {
+      "factor_data_loader": true,
+      "factor_constructor": true,
+      "backtest_skeleton": true,
+      "sample_data_trigger": true,
+      "plot_net_curve": true,
+      "plot_ic_series": true,
+      "p63_report_render_test": true,
+      "p63_audit_and_redline": true,
+      "p62_listener_health_check": true
+    }
+  },
+  "backtest_engine_functions": {
+    "check_inputs": true,
+    "run_backtest": true,
+    "compute_IC": true,
+    "save_backtest_metrics_csv": true,
+    "save_net_value_series_csv": true,
+    "save_backtest_snapshot_json": true,
+    "archive_backtest_result": true
+  },
+  "plot_styles": {
+    "plot_ic_series_imported": true,
+    "plot_net_curve_imported": true
+  },
+  "sanity_gate_locked": {
+    "MIN_FILE_SIZE": 5120,
+    "MIN_ROWS": 300,
+    "REQUIRED_COLUMNS": [
+      "CLOSE",
+      "VOL",
+      "OI",
+      "SETTLE"
+    ],
+    "MIN_NON_NULL_RATIO": 0.9,
+    "DATE_CONTINUITY": true,
+    "note": "本模块只读，不改；Sanity 由 P68 权威执行"
+  },
+  "real_wind_call": false,
+  "wind_api_calls": 0
+}
