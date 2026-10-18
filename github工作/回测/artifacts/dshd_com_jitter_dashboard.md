@@ -1,7 +1,7 @@
 # DSHD-P71 Sample Run Audit Relay Dashboard
 
-**Generated**: 2026-10-18T13:03:56+08:00
-**Poll Number**: #1910
+**Generated**: 2026-10-18T21:31:27+08:00
+**Poll Number**: #2380
 **Session**: DSHD-P71
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
@@ -13,7 +13,7 @@
 
 [优秀] COM stability score: 100/100 | Excel=1 Orphan=0 Flash1min=0 WDFchg=0
 
-**Overall**: [YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=1 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: SKILL_HASH_MISMATCH.
+**Overall**: [YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=TRIPPED | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,health_check_wdf.ps1,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: WIND_API_CALLS_GT0, SKILL_HASH_MISMATCH.
 
 ---
 
@@ -33,7 +33,7 @@
 
 | PID | Window | Visible | Orphan | Start Time | Working Set (MB) | WDF Modules |
 |-----|--------|---------|--------|------------|------------------|-------------|
-| 28272 | 铅周报240127 - Excel | True | NO | 2026-10-18T11:56:33+08:00 | 484.3 | WDF.dll |
+| 14644 | 【永安期货研究中心】锌数据库-锭篇 - Excel | True | NO | 2026-10-18T15:50:01+08:00 | 143.6 | WDF.dll |
 
 ---
 
@@ -65,7 +65,7 @@
 | WDF_INIT_MISSING (InitWAPI disappeared) | CLEAR | Present |
 | SESSION_FLICKER (P71: visible/invisible flicker 3 polls) | CLEAR | History: VVV |
 | SAMPLE_ACTIVE_OBSERVING (P71: marker+python running) | CLEAR | Not active |
-| TRACKING_JSON_NEW_ERRORS (P73: new JSON parse errors) | CRITICAL | TRACKING_JSON_NEW_ERRORS_CRITICAL: 2 new JSON parse errors (lines: 2,5) |
+| TRACKING_JSON_NEW_ERRORS (P73: new JSON parse errors) | CRITICAL | TRACKING_JSON_NEW_ERRORS_CRITICAL: 93 new JSON parse errors (lines: 243,303,737,791,837,841,845,853,857,864,868,875,880,887,892,899,901,902,904,905,907,908,910,911,913,914,915,917,918,920,921,923,924,926,927,928,930,931,933,934,936,938,939,941,942,944,945,946,948,949,951,952,954,955,957,958,960,961,964,965,967,968,970,971,973,974,976,977,978,980,981,983,984,986,987,989,990,991,993,994,996,997,999,1000,1002,1003,1005,1006,1008,1009,1272,1274,1275) |
 
 ---
 
@@ -127,10 +127,10 @@
 
 | Metric | Value |
 |--------|-------|
-| Total Parse Errors | 15 |
-| Historical DSHA-P54 Artifacts | 13 |
-| New JSON Parse Errors | 2 |
-| Historical Error Lines | 2, 5, 8, 11, 12 |
+| Total Parse Errors | 93 |
+| Historical DSHA-P54 Artifacts | 0 |
+| New JSON Parse Errors | 93 |
+| Historical Error Lines | 243, 303, 737, 791, 837 |
 | Alert Status | CRITICAL - New errors detected |
 | Threshold Rule | Historical DSHA-P54 encoding artifacts → INFO log only; new JSON parse errors → CRITICAL alert |
 
@@ -144,7 +144,7 @@
 |---------|-----|-------|------------|--------------|---------|
 | wmain.exe | 824 | RUNNING | 2026-10-18T10:11:59+08:00 | Wind金融终端..Alice | True |
 | InitWAPI.exe | 14188 | RUNNING | 2026-10-17T16:33:32+08:00 | N/A | N/A |
-| EXCEL.EXE | 28272 | RUNNING | N/A | N/A | N/A |
+| EXCEL.EXE | 14644 | RUNNING | N/A | N/A | N/A |
 | windlocal.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 | python.exe/pythonw.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 
@@ -156,10 +156,10 @@
 |-----------|----------|--------|--------|
 | gate | CLOSED/HOLD | CLOSED/HOLD | PASS |
 | release_permit | NOT_ISSUED | NOT_ISSUED | PASS |
-| wind_api_calls | 0 | 0 | PASS |
+| wind_api_calls | 0 | 2212495360 | FAIL |
 | credential_alert | NONE | NONE | PASS |
-| circuit_breaker | READY | READY | PASS |
-| hold_block_check | PASS | PASS | PASS |
+| circuit_breaker | READY | TRIPPED | FAIL |
+| hold_block_check | PASS | FAIL | FAIL |
 | ledger_append_only | TRUE | TRUE | PASS |
 
 ---
@@ -168,14 +168,14 @@
 
 | Item | Value |
 |------|-------|
-| Wind TCP Ports (62000-64000) | 1 |
+| Wind TCP Ports (62000-64000) | 0 |
 | .wind/users File Count | 0 |
 | Credential Alert | NONE |
-| Wind API Calls | 0 |
-| Skill SHA Check | MISMATCH: $($skillHashFailed -join  ) |
-| Monitor Log Lines | 1327 |
-| Tracking Ledger Lines | 305 |
-| COM Lock Events Lines | 24 |
+| Wind API Calls | 2212495360 |
+| Skill SHA Check | MISMATCH: skill_readme.md, bootstrap_wdf.ps1, skill_manifest.json, health_check_wdf.ps1, reset_wdf_safe.ps1 |
+| Monitor Log Lines | 1436 |
+| Tracking Ledger Lines | 1275 |
+| COM Lock Events Lines | 29 |
 
 ---
 

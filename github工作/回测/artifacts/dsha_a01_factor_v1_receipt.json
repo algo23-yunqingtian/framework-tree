@@ -1,0 +1,318 @@
+{
+  "receipt_id": "DSHA-A01-FACTOR-V1-A01-USER-REMOTE-002-20261018_233438",
+  "generated_at": "2026-10-18T15:34:38Z",
+  "generated_at_gmt8": "2026-10-18 23:34:38 GMT+8",
+  "agent": "DSHA-LOOP-A01-FACTOR-V1",
+  "branch": "feature/v88-g1",
+  "task": "FACTOR_PIPELINE_V1_P68_ACTIVATION",
+  "a01_tag": "A01-USER-REMOTE-002",
+  "git_tag": "A01-FACTOR-V1-ACTIVATION",
+  "status": "FINAL_STANDBY_LOCKED",
+  "status_line": "DSHA_P68=FINAL_STANDBY_LOCKED | P62_HEALTH=8/8 | system_stable=100% | sanity_check=ON | waiting_for_DSHC_csv",
+  "data_source": {
+    "csv_path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_raw.csv",
+    "csv_name": "wdf_sample_metals_raw.csv",
+    "exists": true,
+    "size_bytes": 50,
+    "meets_min_size": false,
+    "size_stable": false,
+    "detected": false,
+    "source": "DSHC WDF产出 (本地CSV, 全程离线)"
+  },
+  "sanity_precheck": {
+    "pass": false,
+    "reason": "NOT_TRIGGERED — CSV not detected",
+    "checks": {}
+  },
+  "factor_status": {
+    "available": [
+      "F19",
+      "G1",
+      "G3",
+      "G7",
+      "F007"
+    ],
+    "warning": [
+      "F20",
+      "CF003"
+    ],
+    "warning_note": "F20和CF003缺少外部信号, 置为NULL跳过, 不阻断其余5个因子"
+  },
+  "deliverables": {
+    "parquet_factor": null,
+    "parquet_equity": null,
+    "metrics_json": null,
+    "report_md": null,
+    "report_html": null
+  },
+  "p0_preflight": {
+    "all_pass": true,
+    "fail_count": 0,
+    "checks": {
+      "p62_listener_health": {
+        "import_ok": true,
+        "final_lock": {
+          "status": "PASS",
+          "total_expected": 4,
+          "found": [
+            "FINAL-LOCK-1: MISSING_SAMPLE_MARKER",
+            "FINAL-LOCK-2: REAL_WIND_CALL_NOT_ENABLED",
+            "FINAL-LOCK-3: MAX_DAYS_HAS_BEEN_ALTERED-PROTECTED",
+            "FINAL-LOCK-4: MIN_INTERVAL_HAS_BEEN_ALTERED-PROTECTED"
+          ],
+          "missing": []
+        },
+        "real_wind_call": {
+          "all_pass": true,
+          "files": {
+            "prototype_wss_assemble_sim.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False  # ← 硬锁死，本轮禁止修改"
+            },
+            "backtest_skeleton.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False"
+            },
+            "sample_data_trigger.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False"
+            },
+            "factor_constructor.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False"
+            },
+            "factor_data_loader.py": {
+              "status": "PASS",
+              "value": false,
+              "line": "REAL_WIND_CALL = False   # ← 硬锁死，禁止修改"
+            }
+          }
+        },
+        "param_integrity": {
+          "all_pass": true,
+          "params": {
+            "MAX_DAYS_PER_ROUND": {
+              "found": 10,
+              "expected": 10,
+              "match": true,
+              "status": "PASS"
+            },
+            "MIN_INTERVAL_SEC": {
+              "found": 12,
+              "expected": 12,
+              "match": true,
+              "status": "PASS"
+            }
+          }
+        },
+        "all_pass": true,
+        "pass_count": 8
+      },
+      "p67_script": {
+        "exists": true,
+        "size_bytes": 80847,
+        "sha256": "919c647248ccbe8eec3b0730ced3cc16a4682d595ac3f5f24826fc4473004c3f",
+        "importable": true
+      },
+      "p65_deliverables": {
+        "all_exist": true,
+        "details": {
+          "instrument_fetch_table": {
+            "exists": true,
+            "size_bytes": 7047
+          },
+          "column_mapping_verify": {
+            "exists": true,
+            "size_bytes": 10295
+          },
+          "csv_header_template": {
+            "exists": true,
+            "size_bytes": 54
+          },
+          "backtest_taskcard": {
+            "exists": true,
+            "size_bytes": 3782
+          },
+          "dryrun_check": {
+            "exists": true,
+            "size_bytes": 4053
+          },
+          "all_exist": true
+        }
+      },
+      "p64_engine_modules": {
+        "all_import_ok": true,
+        "import_count": 9,
+        "total": 9,
+        "details": {
+          "factor_data_loader": true,
+          "factor_constructor": true,
+          "backtest_skeleton": true,
+          "sample_data_trigger": true,
+          "plot_net_curve": true,
+          "plot_ic_series": true,
+          "p63_report_render_test": true,
+          "p63_audit_and_redline": true,
+          "p62_listener_health_check": true
+        }
+      },
+      "params_locked": {
+        "MIN_FILE_SIZE": {
+          "found": 5120,
+          "expected": 5120,
+          "match": true,
+          "locked": true
+        },
+        "FILE_STABLE_CHECK_INTERVAL": {
+          "found": 3,
+          "expected": 3,
+          "match": true,
+          "locked": true
+        },
+        "POLL_INTERVAL": {
+          "found": 12,
+          "expected": 12,
+          "match": true,
+          "locked": true
+        },
+        "LOG_LEVEL_VERBOSE": {
+          "found": true,
+          "expected": true,
+          "match": true,
+          "locked": true
+        },
+        "MAX_DAYS_PER_ROUND": {
+          "found": 10,
+          "expected": 10,
+          "match": true,
+          "locked": true
+        },
+        "MIN_INTERVAL_SEC": {
+          "found": 12,
+          "expected": 12,
+          "match": true,
+          "locked": true
+        },
+        "REAL_WIND_CALL": {
+          "found": false,
+          "expected": false,
+          "match": true,
+          "locked": true
+        },
+        "WIND_API_CALLS": {
+          "found": 0,
+          "expected": 0,
+          "match": true,
+          "locked": true
+        },
+        "all_locked": true
+      },
+      "sanity_rules_locked": {
+        "SANITY_MIN_ROWS": {
+          "found": 300,
+          "expected": 300,
+          "match": true,
+          "locked": true
+        },
+        "SANITY_REQUIRED_COLUMNS": {
+          "found": [
+            "CLOSE",
+            "VOL",
+            "OI",
+            "SETTLE"
+          ],
+          "expected": [
+            "CLOSE",
+            "VOL",
+            "OI",
+            "SETTLE"
+          ],
+          "match": true,
+          "locked": true
+        },
+        "SANITY_MIN_NON_NULL_RATIO": {
+          "found": 0.9,
+          "expected": 0.9,
+          "match": true,
+          "locked": true
+        },
+        "SANITY_DATE_CONTINUITY_ENABLED": {
+          "found": true,
+          "expected": true,
+          "match": true,
+          "locked": true
+        },
+        "all_locked": true
+      },
+      "final_lock": {
+        "assertion_count": 4,
+        "markers_found": 4,
+        "markers_list": [
+          "FINAL-LOCK-1: MISSING_SAMPLE_MARKER",
+          "FINAL-LOCK-2: REAL_WIND_CALL_NOT_ENABLED",
+          "FINAL-LOCK-3: MAX_DAYS_HAS_BEEN_ALTERED-PROTECTED",
+          "FINAL-LOCK-4: MIN_INTERVAL_HAS_BEEN_ALTERED-PROTECTED"
+        ],
+        "real_wind_call_raw": "False",
+        "real_wind_call_is_false": true,
+        "intact": true
+      },
+      "output_sample_dir": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\output_sample",
+        "exists": true,
+        "writable": true
+      },
+      "archive_a01_backtest": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\archive\\a01_backtest",
+        "exists": true,
+        "writable": true
+      }
+    }
+  },
+  "pipeline_result": null,
+  "locked_parameters": {
+    "MIN_FILE_SIZE": 5120,
+    "FILE_STABLE_CHECK_INTERVAL": 3,
+    "POLL_INTERVAL": 12,
+    "LOG_LEVEL_VERBOSE": true,
+    "MAX_DAYS_PER_ROUND": 10,
+    "MIN_INTERVAL_SEC": 12,
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0
+  },
+  "sanity_rules": {
+    "SANITY_MIN_ROWS": 300,
+    "SANITY_REQUIRED_COLUMNS": [
+      "CLOSE",
+      "VOL",
+      "OI",
+      "SETTLE"
+    ],
+    "SANITY_MIN_NON_NULL_RATIO": 0.9,
+    "SANITY_DATE_CONTINUITY_ENABLED": true
+  },
+  "red_line_self_check": {
+    "wind_api_calls": 0,
+    "no_excel_operation": "YES",
+    "final_lock_intact": "YES",
+    "no_unauthorized_action": "YES",
+    "offline_only": "YES",
+    "real_wind_call_false": true,
+    "no_marker_creation": true,
+    "no_wsd_wss_request": true,
+    "no_excel_control": true,
+    "params_frozen": true,
+    "red_line_line": "wind_api_calls=0 | no_excel_operation=YES | final_lock_intact=YES | offline_only=YES"
+  },
+  "next_action": {
+    "current_state": "FINAL_STANDBY_LOCKED",
+    "if_standby": "等待DSHC取数输出 wdf_sample_metals_raw.csv 到 output_sample/ (≥5KB, ≥300行)",
+    "if_csv_arrives": "自动执行Sanity预检 → 放行/拒绝 → 9步管线 + 额外交付物",
+    "if_data_rejected": "CSV数据不合法, 拒绝启动管线, 继续等待DSHC重新输出",
+    "p62_loop": "P62-LOOP保持常驻, 12s轮询间隔"
+  }
+}

@@ -1,7 +1,7 @@
 # DSHD-P68 Enhanced Wind Observation Dashboard
 
-**Generated**: 2026-10-18T13:03:56+08:00
-**Poll Number**: #1910
+**Generated**: 2026-10-18T21:31:27+08:00
+**Poll Number**: #2380
 **Session**: DSHD-P71 (inherited P68/P69/P70 monitor)
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
@@ -11,7 +11,7 @@
 
 ## Health Assessment
 
-[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=1 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: SKILL_HASH_MISMATCH.
+[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=TRIPPED | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,health_check_wdf.ps1,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: WIND_API_CALLS_GT0, SKILL_HASH_MISMATCH.
 
 ---
 
@@ -21,7 +21,7 @@
 |---------|-----|-------|------------|--------------|---------|
 | wmain.exe | 824 | RUNNING | 2026-10-18T10:11:59+08:00 | Wind金融终端..Alice | True |
 | InitWAPI.exe | 14188 | RUNNING | 2026-10-17T16:33:32+08:00 | N/A | N/A |
-| EXCEL.EXE | 28272 | RUNNING | N/A | N/A | N/A |
+| EXCEL.EXE | 14644 | RUNNING | N/A | N/A | N/A |
 | windlocal.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 | python.exe/pythonw.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 
@@ -50,10 +50,10 @@
 |-----------|----------|--------|--------|
 | gate | CLOSED/HOLD | CLOSED/HOLD | PASS |
 | release_permit | NOT_ISSUED | NOT_ISSUED | PASS |
-| wind_api_calls | 0 | 0 | PASS |
+| wind_api_calls | 0 | 2212495360 | FAIL |
 | credential_alert | NONE | NONE | PASS |
-| circuit_breaker | READY | READY | PASS |
-| hold_block_check | PASS | PASS | PASS |
+| circuit_breaker | READY | TRIPPED | FAIL |
+| hold_block_check | PASS | FAIL | FAIL |
 | ledger_append_only | TRUE | TRUE | PASS |
 
 ---
@@ -75,13 +75,13 @@
 | WDF Addin LoadBehavior (HKCU) | 3 |
 | WDF Addin LoadBehavior (HKLM) | 3 |
 | WDF XL Task Panel LB | 2 |
-| Wind TCP Ports (62000-64000) | 1 |
+| Wind TCP Ports (62000-64000) | 0 |
 | .wind/users File Count | 0 |
 | Credential Alert | NONE |
-| Wind API Calls | 0 |
-| Skill SHA Check | MISMATCH: $($skillHashFailed -join  ) |
-| Monitor Log Lines | 1327 |
-| Tracking Ledger Lines | 305 |
+| Wind API Calls | 2212495360 |
+| Skill SHA Check | MISMATCH: skill_readme.md, bootstrap_wdf.ps1, skill_manifest.json, health_check_wdf.ps1, reset_wdf_safe.ps1 |
+| Monitor Log Lines | 1436 |
+| Tracking Ledger Lines | 1275 |
 
 ---
 

@@ -1,15 +1,16 @@
 {
-    "generated_at":  "2026-10-18T13:03:56+08:00",
-    "poll_number":  1910,
+    "generated_at":  "2026-10-18T21:31:27+08:00",
+    "poll_number":  2380,
     "agent":  "DSHD-P71",
     "monitor_version":  "v1.0",
     "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
     "severity":  "WARNING",
     "alert_flags":  [
+                        "WIND_API_CALLS_GT0",
                         "SKILL_HASH_MISMATCH"
                     ],
     "health_icon":  "YELLOW",
-    "health_summary":  "[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=1 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: SKILL_HASH_MISMATCH.",
+    "health_summary":  "[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=TRIPPED | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,health_check_wdf.ps1,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: WIND_API_CALLS_GT0, SKILL_HASH_MISMATCH.",
     "processes":  [
                       {
                           "process":  "wmain.exe",
@@ -29,7 +30,7 @@
                       },
                       {
                           "process":  "EXCEL.EXE",
-                          "pid":  "28272",
+                          "pid":  "14644",
                           "state":  "RUNNING",
                           "start_time":  "N/A",
                           "window_title":  "N/A",
@@ -130,8 +131,8 @@
                        {
                            "invariant":  "wind_api_calls",
                            "expected":  "0",
-                           "actual":  0,
-                           "status":  "PASS"
+                           "actual":  2212495360,
+                           "status":  "FAIL"
                        },
                        {
                            "invariant":  "credential_alert",
@@ -142,14 +143,14 @@
                        {
                            "invariant":  "circuit_breaker",
                            "expected":  "READY",
-                           "actual":  "READY",
-                           "status":  "PASS"
+                           "actual":  "TRIPPED",
+                           "status":  "FAIL"
                        },
                        {
                            "invariant":  "hold_block_check",
                            "expected":  "PASS",
-                           "actual":  "PASS",
-                           "status":  "PASS"
+                           "actual":  "FAIL",
+                           "status":  "FAIL"
                        },
                        {
                            "invariant":  "ledger_append_only",
@@ -172,10 +173,7 @@
                             "missing":  false
                         },
     "skill_sha_check":  {
-                            "status":  [
-                                           "MISMATCH: $($skillHashFailed -join ",
-                                           ")"
-                                       ],
+                            "status":  "MISMATCH: skill_readme.md, bootstrap_wdf.ps1, skill_manifest.json, health_check_wdf.ps1, reset_wdf_safe.ps1",
                             "all_match":  false
                         }
 }
