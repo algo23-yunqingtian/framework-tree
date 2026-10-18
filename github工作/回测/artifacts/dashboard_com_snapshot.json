@@ -1,25 +1,25 @@
 {
-    "generated_at":  "2026-10-18T09:29:59+08:00",
-    "poll_number":  1730,
-    "agent":  "DSHD-P69",
+    "generated_at":  "2026-10-18T10:17:12+08:00",
+    "poll_number":  1760,
+    "agent":  "DSHD-P70",
     "monitor_version":  "v1.0",
     "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
-    "severity":  "WARNING",
+    "severity":  "OK",
     "alert_flags":  [
-                        "SESSION_VISIBILITY"
+
                     ],
-    "health_icon":  "YELLOW",
-    "com_health_summary":  "[COM稳定] COM stability score: 100/100 | Excel=0 Orphan=0 Flash1min=0 WDFchg=0",
+    "health_icon":  "GREEN",
+    "com_health_summary":  "[优秀] COM stability score: 100/100 | Excel=0 Orphan=0 Flash1min=0 WDFchg=0",
     "com_metrics":  {
                         "excel_flash_1min":  0,
-                        "excel_flash_5min":  0,
+                        "excel_flash_5min":  2,
                         "orphan_excel_count":  0,
                         "orphan_excel_pids":  [
 
                                               ],
                         "wdf_load_changes_5min":  0,
                         "wdf_load_stability_score":  100,
-                        "com_health_rating":  "COM稳定"
+                        "com_health_rating":  "优秀"
                     },
     "excel_processes":  [
 
@@ -36,12 +36,6 @@
 
                                ],
     "recent_wdf_excel_events":  [
-                                    {
-                                        "timestamp":  "2026-10-16T22:48:56+08:00",
-                                        "event":  "WIND_CLIENT_PROCESS_CHECK",
-                                        "severity":  "INFO",
-                                        "note":  ""
-                                    },
                                     {
                                         "timestamp":  "2026-10-16T22:48:57+08:00",
                                         "event":  "WIND_CLIENT_PROCESS_CHECK",
@@ -95,6 +89,12 @@
                                         "event":  "WSS_SHARD_OFFLINE_SIMULATION_COMPLETE",
                                         "severity":  "INFO",
                                         "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-18T02:13:43Z",
+                                        "event":  "DSHA-P57-COM-LOCK-ENHANCE-002",
+                                        "severity":  "INFO",
+                                        "note":  ""
                                     }
                                 ],
     "invariants":  [
@@ -144,11 +144,11 @@
     "processes":  [
                       {
                           "process":  "wmain.exe",
-                          "pid":  "N/A",
-                          "state":  "NOT_RUNNING",
-                          "start_time":  "N/A",
-                          "window_title":  "N/A",
-                          "visible":  false
+                          "pid":  824,
+                          "state":  "RUNNING",
+                          "start_time":  "2026-10-18T10:11:59+08:00",
+                          "window_title":  "Wind金融终端..Alice",
+                          "visible":  true
                       },
                       {
                           "process":  "InitWAPI.exe",
@@ -202,16 +202,16 @@
                                              "detail":  "WDF_LOAD_FLAP_CLEAR: 0 changes in 5 min"
                                          },
                        "com_jitter_5min":  {
-                                               "count":  0,
+                                               "count":  2,
                                                "threshold":  4,
                                                "triggered":  false,
-                                               "detail":  "COM_JITTER_CLEAR: 0 flash events in 5 min"
+                                               "detail":  "COM_JITTER_CLEAR: 2 flash events in 5 min"
                                            },
                        "session_visibility":  {
-                                                  "streak":  6,
+                                                  "streak":  0,
                                                   "threshold":  3,
-                                                  "triggered":  true,
-                                                  "detail":  "SESSION_VISIBILITY_WARNING: wmain not visible for 6 consecutive polls"
+                                                  "triggered":  false,
+                                                  "detail":  "SESSION_VISIBILITY_CLEAR: wmain invisible streak=0"
                                               },
                        "wdf_init_missing":  {
                                                 "was_present":  true,
@@ -220,14 +220,33 @@
                                                 "detail":  "WDF_INIT_PROCESS_PRESENT"
                                             }
                    },
+    "cleanup_guard":  {
+                          "marker_exists":  false,
+                          "marker_path":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\com_clean_allow.marker",
+                          "guard_status":  "STATIC_STANDBY",
+                          "guard_action_taken":  false,
+                          "guard_actions_count":  0,
+                          "guard_actions":  [
+
+                                            ],
+                          "target_orphan_pids":  [
+                                                     22660,
+                                                     25976
+                                                 ],
+                          "cleanup_total":  0,
+                          "cleanup_com_success":  0,
+                          "cleanup_taskkill_fallback":  0,
+                          "cleanup_skipped_windowed":  0
+                      },
     "system_details":  {
                            "wind_tcp_ports":  0,
                            "wind_users_file_count":  0,
                            "credential_alert":  "NONE",
                            "wind_api_calls":  0,
                            "skill_sha_check":  "ALL_MATCH",
-                           "monitor_log_lines":  1079,
-                           "tracking_ledger_lines":  118,
-                           "com_lock_events_lines":  0
+                           "monitor_log_lines":  1149,
+                           "tracking_ledger_lines":  149,
+                           "com_lock_events_lines":  16,
+                           "clean_guard_events_lines":  4
                        }
 }
