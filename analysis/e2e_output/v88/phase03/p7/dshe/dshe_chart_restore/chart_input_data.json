@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "task_id": "V88_PHASE03_P11_DSHE_P023_WEB_CHART_PREP_AND_HERMES_WATCHER",
+    "task": "T0 — 绘图数据集导出固化",
+    "agent": "DSHE",
+    "branch": "feature/v88-g1",
+    "branch_locked": true,
+    "generated_at": "2026-10-22T16:00:00+08:00",
+    "version": "1.0.0-FROZEN",
+    "description": "绘图数据集 — 从P022三方口径回归、封印链终审、风险台账、爬虫字段对齐中提取的全部结构化指标数据",
+    "caliber_status": "FROZEN",
+    "engine_md5": "CD73DEAEEC54A7F1F8BDE92C1300A9DC",
+    "engine_sha256": "604958F257E24C3CF1CCB42E6A1214EE1B21193C8A1542E13DCF07158BE92D15",
+    "gate_rules_md5": "1CEB1245C5012839698110299160F7F9"
+  },
+
+  "kpi_summary": {
+    "caliber_regression": {
+      "total_dimensions": 192,
+      "matched": 192,
+      "deviations": 0,
+      "conflicts": 0,
+      "pass_rate": "100.00%",
+      "status": "ALL_PASS"
+    },
+    "factors": {
+      "factor_count": 3,
+      "variety_count": 3,
+      "total_slots": 9,
+      "all_frozen": true,
+      "freeze_date": "2026-10-22"
+    },
+    "seal_chain": {
+      "total_layers": 9,
+      "layers_intact": 9,
+      "broken": 0,
+      "status": "CONTINUOUS"
+    },
+    "constraints": {
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "pass_rate": "100%"
+    },
+    "phase04_readiness": {
+      "total_items": 15,
+      "passed": 15,
+      "failed": 0,
+      "status": "ADMISSION_READY"
+    },
+    "risk_ledger": {
+      "total_risks": 3,
+      "resolved": 3,
+      "active": 0,
+      "blocking": 0,
+      "status": "ALL_RESOLVED"
+    },
+    "audit_results": {
+      "dshb_p021_audit": {"total": 23, "passed": 23, "fail": 0},
+      "dshe_p020_double_check": {"total": 47, "passed": 47, "fail": 0},
+      "dshb_24_partial": {"total": 24, "passed": 24, "fail": 0},
+      "p019_cross_check": {"total": 6, "passed": 6, "fail": 0}
+    }
+  },
+
+  "factor_definitions": [
+    {
+      "factor_id": "momentum_20d",
+      "name_zh": "20日动量",
+      "name_en": "20-Day Momentum",
+      "category": "momentum",
+      "formula": "(close[t] - close[t-20]) / close[t-20]",
+      "lookback_days": 20,
+      "forward_days": 20,
+      "neutralization": "industry",
+      "winsorize": "1%-99%",
+      "ic_threshold": ">=0.03",
+      "t_threshold": ">=1.5",
+      "min_sample": 200,
+      "data_field": "close",
+      "adjusted": true,
+      "data_source": "WIND_DATA_LINK",
+      "status": "FROZEN"
+    },
+    {
+      "factor_id": "momentum_60d",
+      "name_zh": "60日动量",
+      "name_en": "60-Day Momentum",
+      "category": "momentum",
+      "formula": "(close[t] - close[t-60]) / close[t-60]",
+      "lookback_days": 60,
+      "forward_days": 20,
+      "neutralization": "industry",
+      "winsorize": "1%-99%",
+      "ic_threshold": ">=0.02",
+      "t_threshold": ">=1.5",
+      "min_sample": 200,
+      "data_field": "close",
+      "adjusted": true,
+      "data_source": "WIND_DATA_LINK",
+      "status": "FROZEN"
+    },
+    {
+      "factor_id": "vol_20d",
+      "name_zh": "20日波动率",
+      "name_en": "20-Day Volatility",
+      "category": "volatility",
+      "formula": "std(returns[t-20:t]) * sqrt(252)",
+      "lookback_days": 20,
+      "forward_days": 20,
+      "neutralization": "none",
+      "winsorize": "5%-95%",
+      "ic_threshold": ">=0.01",
+      "t_threshold": ">=1.2",
+      "min_sample": 200,
+      "data_field": "close",
+      "adjusted": true,
+      "data_source": "WIND_DATA_LINK",
+      "status": "FROZEN"
+    }
+  ],
+
+  "variety_definitions": [
+    {
+      "variety_id": "PB",
+      "name_zh": "铅",
+      "category": "base_metal",
+      "dsbh_indicator": "pb_21_close_front",
+      "dshe_chart_id": "PB_FU00014950",
+      "data_status": "base_price",
+      "status": "FROZEN"
+    },
+    {
+      "variety_id": "ZN",
+      "name_zh": "锌",
+      "category": "base_metal",
+      "dsbh_indicator": "zn_21_close_front",
+      "dshe_chart_id": "ZN_FU00014950",
+      "data_status": "base_price",
+      "status": "FROZEN"
+    },
+    {
+      "variety_id": "Recycle-PB",
+      "name_zh": "再生铅",
+      "category": "recycled_metal",
+      "dsbh_indicator": "recycle_pb_21_close",
+      "dshe_chart_id": "RECYCLEPB_FU00014950",
+      "data_status": "base_price",
+      "status": "FROZEN"
+    }
+  ],
+
+  "triple_calibration_matrix": {
+    "description": "9因子×3品种 三方口径比对矩阵 (JSON↔MD↔DSHB)",
+    "sources": ["JSON_snapshot_490b9f8", "MD_snapshot_9e1f6c7", "DSHB_Config_P016"],
+    "slots": [
+      {"seq": 1, "factor": "momentum_20d", "variety": "PB", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 2, "factor": "momentum_20d", "variety": "ZN", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 3, "factor": "momentum_20d", "variety": "Recycle-PB", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 4, "factor": "momentum_60d", "variety": "PB", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 5, "factor": "momentum_60d", "variety": "ZN", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 6, "factor": "momentum_60d", "variety": "Recycle-PB", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 7, "factor": "vol_20d", "variety": "PB", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 8, "factor": "vol_20d", "variety": "ZN", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"},
+      {"seq": 9, "factor": "vol_20d", "variety": "Recycle-PB", "field": "close", "adjusted": true, "source": "WIND_DATA_LINK", "json": "PASS", "md": "PASS", "dshb": "PASS"}
+    ],
+    "result": {"total": 9, "pass": 9, "fail": 0, "pass_rate": "100%"}
+  },
+
+  "regression_dimension_breakdown": [
+    {"category": "因子定义 (JSON↔MD↔DSHB)", "params_per_factor": 14, "factors": 3, "total_dims": 42, "matched": 42, "deviations": 0},
+    {"category": "品种定义", "params_per_variety": 4, "varieties": 3, "total_dims": 12, "matched": 12, "deviations": 0},
+    {"category": "矩阵槽位 (JSON↔MD)", "params_per_slot": 5, "slots": 9, "total_dims": 45, "matched": 45, "deviations": 0},
+    {"category": "口径元数据", "total_dims": 7, "matched": 7, "deviations": 0},
+    {"category": "品种映射", "params_per_row": 3, "rows": 3, "total_dims": 9, "matched": 9, "deviations": 0},
+    {"category": "统计口径", "total_dims": 5, "matched": 5, "deviations": 0},
+    {"category": "分发说明", "total_dims": 2, "matched": 2, "deviations": 0},
+    {"category": "DSHB P0-21审计", "total_dims": 23, "matched": 23, "deviations": 0},
+    {"category": "DSHE P0-20双向", "total_dims": 47, "matched": 47, "deviations": 0}
+  ],
+
+  "seal_chain": {
+    "description": "9层封印链 — 从初始封印到Phase03就绪",
+    "engine_md5_frozen": "CD73DEAEEC54A7F1F8BDE92C1300A9DC",
+    "engine_size": 45411,
+    "engine_path": "github工作/framework-tree/scripts/node_binding_engine.py",
+    "layers": [
+      {"layer": "L1", "commit": "09bf0be", "file": "MD5_MANIFEST.md", "task": "P0-12", "status": "EXISTS"},
+      {"layer": "L2", "commit": "82d593e", "file": "gate_freeze_seal.md", "task": "P0-2", "status": "EXISTS"},
+      {"layer": "L3", "commit": "844dd77", "file": "gate_triple_seal_final.md", "task": "P0-3", "status": "EXISTS"},
+      {"layer": "v2", "commit": "bad398b", "file": "triple_seal_reverify_v2.md", "task": "P0-4", "status": "EXISTS"},
+      {"layer": "v3", "commit": "2cbb75a", "file": "triple_seal_v3_reverify.md", "task": "P0-17", "status": "EXISTS"},
+      {"layer": "v4", "commit": "05e5846", "file": "triple_seal_v4_check.md", "task": "P0-18", "status": "EXISTS"},
+      {"layer": "v5", "commit": "ffbe8ce", "file": "seal_recheck_after_snapshot.md", "task": "P0-19", "status": "EXISTS"},
+      {"layer": "v6", "commit": "01a022f", "file": "seal_v6_recheck.md", "task": "P0-20", "status": "EXISTS"},
+      {"layer": "v7", "commit": "b9a0e5f", "file": "P0-21_readiness_report", "task": "P0-21", "status": "EXISTS"}
+    ],
+    "integrity": {"total": 9, "intact": 9, "broken": 0}
+  },
+
+  "gate_rules": {
+    "file": "gate_rules/factor_runtime_rules_v1.yaml",
+    "version": "v1.1.0-preview",
+    "md5": "1CEB1245C5012839698110299160F7F9",
+    "size": 13936,
+    "total_rules": 9,
+    "active_rules": 6,
+    "sealed_rules": 3,
+    "mode": "observe_alert_only",
+    "rules": [
+      {"id": "FR-001", "status": "ACTIVE"},
+      {"id": "FR-002", "status": "ACTIVE"},
+      {"id": "FR-003", "status": "ACTIVE"},
+      {"id": "FR-004", "status": "ACTIVE"},
+      {"id": "FR-005", "status": "ACTIVE"},
+      {"id": "FR-006", "status": "ACTIVE"},
+      {"id": "FR-007", "status": "SEALED"},
+      {"id": "FR-008", "status": "SEALED"},
+      {"id": "FR-009", "status": "SEALED"}
+    ]
+  },
+
+  "calibration_metadata": {
+    "price_field": "close",
+    "adjusted": true,
+    "data_source": "WIND_DATA_LINK (via gateway only)",
+    "universe_filter": "active contracts, liquidity > 10M USD/day",
+    "date_start": "2025-01-01",
+    "date_end": "2026-10-22",
+    "min_sample_size": 200,
+    "partial_interference": "0/24 — 9因子不依赖partial指标"
+  },
+
+  "risk_ledger": {
+    "version": "v4",
+    "source": "risk_ledger_v4.md",
+    "updated_at": "2026-10-17T15:30+08:00",
+    "total_risks": 3,
+    "resolved": 3,
+    "active": 0,
+    "blocking": 0,
+    "items": [
+      {"id": "R-V88-P6-001", "level": "LOW", "description": "3项预检静态True", "p8_status": "RESOLVED", "p9_status": "RESOLVED", "change": "持平"},
+      {"id": "R-V88-P7-001", "level": "LOW", "description": "#3文档校验局限", "p8_status": "方案完成", "p9_status": "方案完成", "change": "持平"},
+      {"id": "R-V88-P8-001", "level": "LOW", "description": "快照格式不匹配(MD vs JSON)", "p8_status": "新登记", "p9_status": "RESOLVED", "change": "整改"}
+    ],
+    "trend": {"p6_total": 1, "p7_total": 1, "p8_total": 2, "p9_total": 1, "current_active": 0}
+  },
+
+  "arbitration_scenarios": {
+    "description": "仲裁器回归巡检 v2 (P10)",
+    "version": "P10 v2",
+    "metrics": {
+      "all_pass": {"p8": 5, "p10_v2": 5, "consistent": true},
+      "skip": {"p8": 3, "p10_v2": 3, "consistent": true},
+      "some_fail": {"p8": 0, "p10_v2": 0, "consistent": true},
+      "false_positive": {"p8": 0, "p10_v2": 0, "consistent": true},
+      "false_negative": {"p8": 0, "p10_v2": 0, "consistent": true}
+    },
+    "stability": "PASS",
+    "boundary": "PASS",
+    "result": "ALL_SCENARIOS_PASS"
+  },
+
+  "crawler_data_alignment": {
+    "source": "spot_is_data.csv",
+    "source_path": "analysis/e2e_output/v88/phase03/p1/dshb/implementation/crawler_data/",
+    "source_commodity": "si",
+    "source_data_source": "100PPI_SI_DAY_V2",
+    "source_fields_count": 12,
+    "wind_standard_fields_count": 10,
+    "rows": 12,
+    "field_alignment": {
+      "date": {"crawler": "date", "wind": "date", "status": "MATCH"},
+      "spot_price_avg": {"crawler": "spot_price_avg", "wind": "close", "status": "CONFLICT_SEMANTIC"},
+      "commodity": {"crawler": "commodity", "wind": "contract_code", "status": "CONFLICT_VARIETY"},
+      "source": {"crawler": "100PPI_SI_DAY_V2", "wind": "WIND_DATA_LINK", "status": "CONFLICT_SOURCE"},
+      "extra_fields": 8,
+      "total_conflicts": 3,
+      "conflicts_blocking": 0,
+      "mapped_merge_feasible": true
+    },
+    "conflict_details": [
+      {"field": "spot_price_avg vs close", "type": "semantic", "detail": "现货均价 ≠ 合约收盘价", "blocking": false},
+      {"field": "si vs PB/ZN/Recycle-PB", "type": "variety", "detail": "品种不重叠，爬虫数据为独立品种", "blocking": false},
+      {"field": "100PPI vs WIND_DATA_LINK", "type": "source", "detail": "数据源不同，爬虫为独立外部源", "blocking": false}
+    ]
+  },
+
+  "phase04_readiness": {
+    "total_items": 15,
+    "items": [
+      {"id": 1, "item": "9因子口径定义完整", "status": "PASS", "detail": "3因子×3品种=9单元"},
+      {"id": 2, "item": "品种映射完整", "status": "PASS", "detail": "3品种×3映射=9行"},
+      {"id": 3, "item": "数据口径明确", "status": "PASS", "detail": "close+后复权+WIND_DATA_LINK"},
+      {"id": 4, "item": "三方口径一致", "status": "PASS", "detail": "DSHB+DSHE+HERMES 0冲突"},
+      {"id": 5, "item": "24-partial无干扰", "status": "PASS", "detail": "9因子不依赖partial"},
+      {"id": 6, "item": "引擎封印完整", "status": "PASS", "detail": "9层封印链未断"},
+      {"id": 7, "item": "引擎MD5冻结", "status": "PASS", "detail": "cd73deae 永久冻结"},
+      {"id": 8, "item": "网关规则就绪", "status": "PASS", "detail": "v1.1.0-preview 9规则"},
+      {"id": 9, "item": "因子计算骨架就绪", "status": "PASS", "detail": "ic_ir_calc_skeleton.py"},
+      {"id": 10, "item": "执行入口预配置", "status": "PASS", "detail": "factor_run_config_prep.md"},
+      {"id": 11, "item": "双钥匙逻辑就绪", "status": "PASS", "detail": "wind_online_watcher.py"},
+      {"id": 12, "item": "约束合规", "status": "PASS", "detail": "11/11全部通过"},
+      {"id": 13, "item": "风险台账已更新", "status": "PASS", "detail": "3项全部RESOLVED"},
+      {"id": 14, "item": "审计日志就绪", "status": "PASS", "detail": "audit_hook v2"},
+      {"id": 15, "item": "口径冻结确认书", "status": "PASS", "detail": "triple_caliber_final_freeze.md"}
+    ],
+    "result": "ADMISSION_READY"
+  },
+
+  "constraints_checklist": [
+    {"id": 1, "constraint": "BRANCH_LOCKED", "status": "PASS"},
+    {"id": 2, "constraint": "NO_OVERWRITE", "status": "PASS"},
+    {"id": 3, "constraint": "NO_MODIFY_V87", "status": "PASS"},
+    {"id": 4, "constraint": "NO_EDIT_RELEASE_TAG", "status": "PASS"},
+    {"id": 5, "constraint": "NO_ZHIJI_API_CALL", "status": "PASS"},
+    {"id": 6, "constraint": "psutil.enabled=false", "status": "PASS"},
+    {"id": 7, "constraint": "engine_frozen=TRUE", "status": "PASS"},
+    {"id": 8, "constraint": "triple_seal=VERIFIED", "status": "PASS"},
+    {"id": 9, "constraint": "gate_contamination=0", "status": "PASS"},
+    {"id": 10, "constraint": "audit_standby <1h", "status": "PASS"},
+    {"id": 11, "constraint": "dual_key=INACTIVE", "status": "PASS"}
+  ],
+
+  "dual_key_status": {
+    "wind_data_link_online_flag": "NOT_FOUND",
+    "dual_keys_active_flag": "NOT_FOUND",
+    "combined_status": "NOT_ACTIVATED",
+    "current_watch_mode": "BASIC_WATCH",
+    "enhanced_mode_triggers": ["FR-007~009", "增强WSM扫描", "轮询间隔缩短至10s"]
+  },
+
+  "hermes_status": {
+    "snapshot_json": {"commit": "490b9f8", "file": "caliber_inventory_snapshot.json", "status": "DELIVERED"},
+    "snapshot_md": {"commit": "9e1f6c7", "file": "caliber_snapshot_for_dshe.md", "status": "DELIVERED"},
+    "visual_development": "NOT_STARTED",
+    "visual_assets_count": 0,
+    "expected_task": "V88_PHASE03_P12_HERMESHF_P11_WEB_DASHBOARD_CHART_BUILD",
+    "pending_items": 10
+  }
+}
