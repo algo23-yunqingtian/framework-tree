@@ -10294,3 +10294,56 @@ PREPARED ≠ ARMED. 需 DSHB-QC Retry#5 全 PASS + ARBITER 仲裁才可 PREPARED
 
 
 *V88 Phase03 P14 HERMEShf C5 Align + Dual-Key Prepare | 2026-10-18 17:30-18:00 | commit f98ca4c*
+
+
+## V88 Phase03 P14 HERMEShf C5-Mirror-Finalize + Full-Worktree-Proof (2026-10-18 20:20-20:45 +0800)
+
+> **工单**: INSTRUCTION_HERMESHF_C5_MIRROR_FINALIZE_AND_WORKTREE_PROOF
+> **HEAD**: `c920626` (V88-PHASE03-P1-DSHE: C5 chart_input_data.json materialize)
+> **状态**: ✅ **JOB COMPLETE (4/4 MATERIALIZED)**
+
+### 工单摘要
+
+| T | 任务 | 结果 |
+|:-:|------|:---:|
+| T0 | sync + locate + md5 | ✅ 二次 pull 后源到位, MD5=7724fa52... 完全匹配基准 |
+| T1 | COPY to p1/dshe_c5_mirror/ | ✅ 15302 bytes, MD5 一致 |
+| T2 | 全工作树可见性证明 | ✅ 3 交付物 (manifest 498 + md5.lst + proof 报告) |
+| T3 | 交接文档段十五追加 | ✅ |
+| T4 | STATUS+MD5 AppendOnly + 7-constraint | ✅ 4/4 -> COMPLETE |
+
+### 4/4 完整度
+
+| # | 项 | 磁盘 | MD5 | 状态 |
+|:-:|------|:---:|:---:|:---:|
+| 1 | pickup.flag (主+冗余) | OK | `5ed8959c...` | OK |
+| 2 | P14 交付物 (9 件) | OK | 9/9 | OK |
+| 3 | 双-Key flags | OK | 2/2 | OK PREPARED |
+| 4 | C5-mirror chart_input_data.json | OK 15302B | `7724fa52...` | OK **MATERIALIZED** |
+
+### 关键交付物
+
+- `hermes_p14_c4_fix/c5_mirror_deployment_log.md`
+- `hermes_p14_c4_fix/working_tree_manifest.txt` (498 条)
+- `hermes_p14_c4_fix/key_artifacts_md5.lst`
+- `hermes_p14_c4_fix/hermes_working_tree_full_proof_report.md`
+- `hermes_final_handover/HANDOVER_V88_Phase03_HermesDeployFix_2026-10-18.md` (段十五)
+
+### 7-constraint 自检 (7/7 PASS)
+
+C1 BRANCH_LOCKED OK | C2 NO_OVERWRITE OK | C3 NO_ZHIJI_API_CALL OK | C4 NO_AUTO_PUSH OK | C5 NO_MODIFY_LOCKED_SEAL OK | C6 NO_EDIT_RELEASE_TAG_ASSET OK | C7 NO_DESTRUCTIVE OK
+
+### 状态标记
+
+```
+JOB_STATUS=COMPLETE
+C5_SOURCE_STATUS=DELIVERED (commit c920626)
+C5_MIRROR_STATUS=MATERIALIZED
+WORKING_TREE_FULL_MATERIALIZED=YES (4/4)
+KEY_A=PREPARED
+KEY_B=PREPARED
+AUTHORIZED=NO
+ARBITER=OBSERVING
+CONSTRAINTS_PASS=7/7
+NEXT_ACTION=STANDBY_AWAIT_DSHB_QC_RETRY5
+```

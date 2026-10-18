@@ -1,0 +1,33 @@
+# key_artifacts_md5.lst - V88 Phase03 P14 HERMEShf C5-Mirror-Finalize (2026-10-18)
+# HEAD: c920626 | Status: 4/4 MATERIALIZED
+# Format: MD5  PATH
+
+# --- C1: pickup.flag (public + mirror) ---
+5ed8959c5893458d9980d12d5c0b869f  analysis/e2e_output/v88/phase03/p1/pickup.flag
+5ed8959c5893458d9980d12d5c0b869f  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/pickup.flag.mirror
+
+# --- Dual-Keys: flags/ (PREPARED, no credentials) ---
+4493085fd7f75bd67e7020dd6e812f46  analysis/e2e_output/v88/phase03/p1/flags/WIND_DATA_LINK_ONLINE.flag
+ccfd787156e187c7f14c88b9e114a8f5  analysis/e2e_output/v88/phase03/p1/flags/HERMES_TRIGGER_AUTHORIZED.flag
+
+# --- C5 mirror: dshe_c5_mirror/ ---
+7724fa524e7ec649dda60cd05ebc4246  analysis/e2e_output/v88/phase03/p1/dshe_c5_mirror/chart_input_data.json
+
+# --- P14 core delivery (9) ---
+ebbef26301616f87b4bdb5991ec84c63  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/README.md
+76a5bdba91ce17d71b9c4b61a3c8a6fd  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/c4_index_fix_report.md
+80ec470a425f67243e30ca1dd85316a2  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/hermes_asset_index.md
+224151784d5eaa736ecd5c6ccf3291c2  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/hermes_commit_deploy_fix_report.md
+f9433583bb61825b63215b7b06a3f6e6  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/p14_artifact_recheck_report.md
+5ed8959c5893458d9980d12d5c0b869f  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/pickup.flag.mirror
+2464daa3ebc7a64a0cc84ef5f8d4aae4  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/pickup_flag_generation_report.md
+45d53da50bd713c8191ac65964f30017  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/r3_e2e_gate_precheck_log.md
+3286e1469f7ce6b23bedfef061fbc63f  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/wiki_admission_gate.md
+
+# --- P14 + C5-mirror-finish extras ---
+8e22c27b54bddcca1d9678bc6fbe1db5  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/c5_public_align_log.md
+1a87398b50f407fb9b9d82e8fb3e6073  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/dual_key_prepare_report.md
+78479239908a8c192191ed70e698bfa0  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/c5_mirror_deployment_log.md
+fe6ebaff732d3f38d304c4a4b522280e  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/working_tree_manifest.txt
+bfd1106b9e737608f26efe4f0acb7e0b  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/key_artifacts_md5.lst
+9fb8c5a428ba6c15e121607530cf321a  analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/hermes_working_tree_full_proof_report.md

@@ -363,7 +363,96 @@ authorized: NO
 3. 源可见后由 HERMEShf 或 DSHB 执行真正 COPY 落盘到 `dshe_c5_mirror/`
 4. DSHB-QC Retry#5 启动联合门禁审计
 
+## 十五、C5-Mirror Finalize + Full-Worktree-Proof 追加段（2026-10-18 20:20-20:45）
+
+> **追加时间**: 2026-10-18 20:20 - 20:45
+> **源 commit**: `c920626` (V88-PHASE03-P1-DSHE: C5 chart_input_data.json materialize)
+> **工单**: INSTRUCTION_HERMESHF_C5_MIRROR_FINALIZE_AND_WORKTREE_PROOF
+> **ARBITER**: OBSERVING | **KEY_A**: PREPARED | **KEY_B**: PREPARED | **AUTHORIZED**: NO
+
+### 15.1 前置同步（T0）
+
+| 步骤 | 命令 | 结果 |
+|------|------|:---:|
+| 首次 pull | `git pull origin feature/v88-g1` | ✅ → `684342e` (P68 standby) |
+| locate 首次 | `p7/dshe/dshe_chart_restore/chart_input_data.json` | ❌ NOT_FOUND（DSHE 未推）|
+| 二次 fetch | `git fetch origin` | ✅ 发现新增 commit |
+| 二次 pull | `git pull origin feature/v88-g1` | ✅ → `c920626` (DSHE 提交) |
+| locate 二次 | 同上 | ✅ **存在 (15302 bytes)** |
+| MD5 校验 | vs 基准 `7724FA524E7EC649DDA60CD05EBC4246` | ✅ **完全匹配** |
+
+**教训**: 前置承诺"DSHE 会推送"，实测需 `git fetch` 双闸核验；首次拉取时源尚未到达。
+
+### 15.2 T1 C5-Mirror COPY 部署
+
+| 项 | 值 |
+|----|-----|
+| 源路径 | `p7/dshe/dshe_chart_restore/chart_input_data.json` |
+| 源 MD5 | `7724fa524e7ec649dda60cd05ebc4246` |
+| 目标路径 | `p1/dshe_c5_mirror/chart_input_data.json` |
+| 目标 MD5 | `7724fa524e7ec649dda60cd05ebc4246` |
+| **COPY 语义** | ✅ cp（非 mv），原始 p7 保持不动 |
+| **MD5 匹配基准** | ✅ **完全匹配** `7724FA524E7EC649DDA60CD05EBC4246` |
+
+### 15.3 T2 全工作树可见性证明
+
+| 交付物 | 路径 | 说明 |
+|--------|------|------|
+| working_tree_manifest.txt | `hermes_p14_c4_fix/` | 498 条文件清单（p1 全树扫描）|
+| key_artifacts_md5.lst | `hermes_p14_c4_fix/` | C1+flags+C5+P14 关键资产 MD5 |
+| hermes_working_tree_full_proof_report.md | `hermes_p14_c4_fix/` | 4/4 MATERIALIZED 综合证明报告 |
+
+**WORKING_TREE_FULL_MATERIALIZED = YES (4/4)**
+
+### 15.4 当前 4/4 完整度
+
+| # | 项 | 磁盘实体 | MD5 通过 | 结论 |
+|:-:|------|:---:|:---:|:---:|
+| 1 | C1: pickup.flag | ✅ | ✅ `5ed8959c...` ×2 | ✅ MATERIALIZED |
+| 2 | P14 交付物 (9 件) | ✅ | ✅ 9/9 | ✅ MATERIALIZED |
+| 3 | 双-Key flags | ✅ | ✅ 2/2 | ✅ MATERIALIZED (PREPARED only) |
+| 4 | C5-mirror | ✅ 15302 bytes | ✅ `7724fa52...` | ✅ **MATERIALIZED** |
+
+**四项完整度**: **4/4** ✅ → 工单 COMPLETE 条件满足
+
+### 15.5 冻结资产完整性核验
+
+| 资产 | MD5（与 e1d5c3f 基线一致） |
+|------|-----|
+| asset_index.lst (22 条) | `d312f3c98e76398982f5f43adf0feb7b` |
+| asset_seal_v3.txt | `183ae823b2bff2817b6ad263f3e0b7ea` |
+| asset_seal_v4.txt | `2c43b3638dc6c0e913c6b4689d80cd2a` |
+| asset_seal_v5.txt | `a53be34c22d3e1d9e92399cf91a1b7c2` |
+
+### 15.6 7-constraint 自检（15/15 PASS）
+
+| # | 约束 | 结果 |
+|:-:|------|:---:|
+| C1 | BRANCH_LOCKED | ✅ |
+| C2 | NO_OVERWRITE | ✅ |
+| C3 | NO_ZHIJI_API_CALL | ✅ |
+| C4 | NO_AUTO_PUSH | ✅ |
+| C5 | NO_MODIFY_LOCKED_SEAL | ✅ |
+| C6 | NO_EDIT_RELEASE_TAG_ASSET | ✅ |
+| C7 | NO_DESTRUCTIVE | ✅ |
+
+### 15.7 状态标记
+
+```
+JOB_STATUS = COMPLETE
+C5_SOURCE_STATUS = DELIVERED (commit c920626)
+C5_MIRROR_STATUS = MATERIALIZED
+WORKING_TREE_FULL_MATERIALIZED = YES (4/4)
+KEY_A = PREPARED
+KEY_B = PREPARED
+AUTHORIZED = NO
+ARBITER = OBSERVING
+CONSTRAINTS_PASS = 7/7
+NEXT_ACTION = COMMIT + PUSH + STANDBY
+```
+
 ---
 
 *V88 Phase03 HERMEShf 部署修复交接文档 | 生成 2026-10-18 16:45:07 | 源 commit `e23e03e`*
 *C5-Align+DualKey-Prep 追加段 | 追加 2026-10-18 17:30-18:00 | 源 commit `f98ca4c`*
+*C5-Mirror-Finalize+Full-Worktree-Proof 追加段 | 追加 2026-10-18 20:45 | 源 commit `c920626` | JOB COMPLETE*
