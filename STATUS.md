@@ -10120,3 +10120,68 @@ V88_PHASE03_P13_HERMESHF_AUDIT=23_OF_23_VERIFIED, V88_PHASE03_P13_NO_HASH_DRIFT,
   STATUS_FLAGS: V88_PHASE03_P1_C1_PICKUP_GENERATED=TRUE, V88_PHASE03_P1_C1_SATISFIED=TRUE, V88_PHASE03_P1_TASK_VERSION=V88_PHASE03_P1, V88_PHASE03_P1_ARBITER=OBSERVING, V88_PHASE03_P1_KEY_ABSENT=ABSENT, V88_PHASE03_P1_CONSTRAINTS=7_OF_7_PASS, V88_PHASE03_P1_PICKUP_PUBLIC=TRUE
 
 ---
+
+
+---
+
+## V88 Phase03 P14 HERMEShf - Commit Artifact Deploy Fix (2026-10-18)
+
+| 项 | 值 |
+|----|-----|
+| 工单 | INSTRUCTION_HERMESHF_FIX_COMMIT_ARTIFACT_DEPLOY |
+| AGENT | HERMEShf |
+| BRANCH | feature/v88-g1 (LOCKED) |
+| 生成时间 | 2026-10-18 16:37:41  |
+| 前置 | 0151ab7 + 25faa6b |
+| 状态 | **DEPLOY_FIX_SUCCESSFUL** |
+
+**根因**: DSHB 全局检索根在 `phase03/p1/` 层，不深入 `hermes/` 私有沙箱；P14 C4 交付物原深度 6-8 不可达。
+
+**处置**: 平铺复制到 `analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/` (深度 4)，DSHB 递归检索可命中 7 项交付物。
+
+**关键决策**:
+- 复制非移动，源文件 MD5 全不变 (NO_OVERWRITE 合规)
+- 不修改 asset_index.lst (22 条锁定)
+- 不触碰封签链 v2/v3/v4/v5
+- 不触碰 frozen 包
+
+**R3 E2E 门禁预校验**: **9/9 PASS**
+- asset_index 计数=22 ✅
+- 挂载目录 22/22 可达且 MD5 全匹配 ✅
+- 归档副本存在且 MD5 正确 ✅
+- 部署副本 MD5 全匹配源 ✅
+- 封签链完整未变 ✅
+- 原私有 pickup.flag 未变 ✅
+
+**约束**: 7/7 PASS | ARBITER=OBSERVING | KEY_A/KEY_B=ABSENT
+
+**交付物**:
+- hermes_p14_c4_fix/hermes_commit_deploy_fix_report.md
+- hermes_p14_c4_fix/r3_e2e_gate_precheck_log.md
+- hermes_p14_c4_fix/README.md
+- 6 个 P14 C4 交付物冗余副本
+
+HERMES_PHASE03_P14_C4_DEPLOY_FIX=DEPLOY_FIX_SUCCESSFUL
+R3_E2E_GATE_PASS=9/9
+C1_PICKUP_FLAG_PUBLIC_PATH=YES
+C4_INDEX_ALIGNMENT=22/22
+DSHB_DISCOVERABILITY=DEPTH_4_READY
+DEPLOY_DIR=analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/
+
+
+### 附：未跟踪文件清单（待本次 commit）
+
+**分类**:
+- **本次部署目录 (`hermes_p14_c4_fix/`)**: 1 个文件 — 全部纳入本次 commit
+- **其他历史未跟踪**: 5 个 — 保留不提交（STANDBY 期未跟踪资产）
+- **已跟踪变更**: 2 — 全部为本次工单修改
+
+**本次 commit 将包含**:
+- `analysis/e2e_output/v88/phase03/p1/hermes_p14_c4_fix/` (4096)
+
+**不纳入本次 commit** (保留 STANDBY 状态):
+- `analysis/e2e_output/v88/phase03/p1/hermes/hermes_delivery_archive/pickup_flag_view_diag.md` (11866)
+- `analysis/e2e_output/v88/phase03/p1/hermes/hermes_delivery_archive/standby_monitor_hermes.md` (4536)
+- `analysis/e2e_output/v88/phase03/p1/hermes/hermes_delivery_archive/standby_monitor_hermes_p1.md` (5556)
+- `backup/` (4096)
+- `wiki/` (4096)
