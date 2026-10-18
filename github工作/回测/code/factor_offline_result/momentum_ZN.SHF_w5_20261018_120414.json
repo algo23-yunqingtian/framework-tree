@@ -1,0 +1,44 @@
+{
+  "factor_type": "momentum",
+  "factor_id": "TEST-MOM",
+  "factor_name": "测试动量",
+  "symbol": "ZN.SHF",
+  "indicator": "close",
+  "window_days": 5,
+  "factor_count": 5,
+  "factor_dates": [
+    "2025-01-09",
+    "2025-01-10",
+    "2025-01-13",
+    "2025-01-14",
+    "2025-01-15"
+  ],
+  "factor_values": [
+    -0.00493025,
+    -0.00286861,
+    -0.00350817,
+    -0.00724456,
+    -0.00625545
+  ],
+  "params": {
+    "window_days": 5,
+    "factor_id": "TEST-MOM",
+    "factor_name": "测试动量"
+  },
+  "param_validation": {
+    "overall_passed": false,
+    "errors": [
+      "window_days=5 超出有效范围 [35, 60, 80, 100]"
+    ],
+    "warnings": [],
+    "passed_checks": 2,
+    "total_checks": 3
+  },
+  "data_source": "SIMULATED (NOT REAL)",
+  "data_status": "OK",
+  "computed_at": "2026-10-18T04:04:14.271423+00:00",
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "notes": [],
+  "status": "OK"
+}
