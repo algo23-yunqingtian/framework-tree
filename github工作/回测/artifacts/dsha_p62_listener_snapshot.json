@@ -1,0 +1,174 @@
+{
+  "snapshot_id": "P62-20261018_055240",
+  "timestamp_utc": "2026-10-18T05:52:40.926102+00:00",
+  "phase": "DSHA-P62",
+  "gate": "CLOSED",
+  "release_permit": "NOT_ISSUED",
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "status": "HEALTHY",
+  "critical_count": 0,
+  "warning_count": 0,
+  "checks": {
+    "real_wind_call": {
+      "all_pass": true,
+      "files": {
+        "prototype_wss_assemble_sim.py": {
+          "status": "PASS",
+          "value": false,
+          "line": "REAL_WIND_CALL = False  # ← 硬锁死，本轮禁止修改"
+        },
+        "backtest_skeleton.py": {
+          "status": "PASS",
+          "value": false,
+          "line": "REAL_WIND_CALL = False"
+        },
+        "sample_data_trigger.py": {
+          "status": "PASS",
+          "value": false,
+          "line": "REAL_WIND_CALL = False"
+        },
+        "factor_constructor.py": {
+          "status": "PASS",
+          "value": false,
+          "line": "REAL_WIND_CALL = False"
+        },
+        "factor_data_loader.py": {
+          "status": "PASS",
+          "value": false,
+          "line": "REAL_WIND_CALL = False   # ← 硬锁死，禁止修改"
+        }
+      }
+    },
+    "final_lock_assertions": {
+      "status": "PASS",
+      "total_expected": 4,
+      "found": [
+        "FINAL-LOCK-1: MISSING_SAMPLE_MARKER",
+        "FINAL-LOCK-2: REAL_WIND_CALL_NOT_ENABLED",
+        "FINAL-LOCK-3: MAX_DAYS_HAS_BEEN_ALTERED-PROTECTED",
+        "FINAL-LOCK-4: MIN_INTERVAL_HAS_BEEN_ALTERED-PROTECTED"
+      ],
+      "missing": []
+    },
+    "param_integrity": {
+      "all_pass": true,
+      "params": {
+        "MAX_DAYS_PER_ROUND": {
+          "found": 10,
+          "expected": 10,
+          "match": true,
+          "status": "PASS"
+        },
+        "MIN_INTERVAL_SEC": {
+          "found": 12,
+          "expected": 12,
+          "match": true,
+          "status": "PASS"
+        }
+      }
+    },
+    "excel_isolation": {
+      "status": "PASS",
+      "functions_found": [
+        "_identify_user_excel_instances",
+        "_detect_agent_excel_pid",
+        "_kill_agent_excel_only"
+      ],
+      "functions_missing": [],
+      "has_USER_INSTANCE_LABEL": true,
+      "has_safety_check": true
+    },
+    "p61_output_functions": {
+      "status": "PASS",
+      "functions_found": [
+        "save_backtest_metrics_csv",
+        "save_net_value_series_csv",
+        "save_backtest_snapshot_json",
+        "archive_backtest_result",
+        "compute_IC"
+      ],
+      "functions_missing": []
+    },
+    "trigger_health": {
+      "all_pass": true,
+      "checks": {
+        "sha256_function": true,
+        "state_load": true,
+        "state_save": true,
+        "csv_scan": true,
+        "check_new_csv_files": true,
+        "real_wind_call_false": true,
+        "wait_state": true
+      }
+    },
+    "directory_permissions": {
+      "all_pass": true,
+      "directories": {
+        "sample_output": {
+          "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\sample_output",
+          "exists": true,
+          "writable": true,
+          "readable": true,
+          "status": "PASS",
+          "file_count": 3
+        },
+        "backtest_archive": {
+          "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive",
+          "exists": true,
+          "writable": true,
+          "readable": true,
+          "status": "PASS",
+          "file_count": 3
+        }
+      }
+    },
+    "marker_absence": {
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\sample_fetch_allow.marker",
+      "exists": false,
+      "status": "PASS"
+    }
+  },
+  "file_hashes": {
+    "prototype_wss_assemble_sim.py": {
+      "sha256": "7360f6d94e33a9a84856529262faf73efdbd4e6dace19b0dab3372ecf4473731",
+      "size": 66227
+    },
+    "backtest_skeleton.py": {
+      "sha256": "ec43442bf755590752a4f9adcfc0964d6ea3c05f09985b6a8d3b89570bcc5c33",
+      "size": 48149
+    },
+    "sample_data_trigger.py": {
+      "sha256": "4ef554928ea995497824d8aa91d3a94eb1ab7b8c03b9fff51c77ae73ad77c242",
+      "size": 22992
+    }
+  },
+  "key_files": {
+    "prototype": {
+      "exists": true,
+      "size": 66227
+    },
+    "backtest_skeleton": {
+      "exists": true,
+      "size": 48149
+    },
+    "sample_data_trigger": {
+      "exists": true,
+      "size": 22992
+    },
+    "factor_constructor": {
+      "exists": true,
+      "size": 20468
+    },
+    "factor_data_loader": {
+      "exists": true,
+      "size": 22496
+    }
+  },
+  "red_lines": {
+    "wind_api_calls_zero": true,
+    "real_wind_call_false": true,
+    "marker_absent": true,
+    "no_active_collection": true
+  }
+}
