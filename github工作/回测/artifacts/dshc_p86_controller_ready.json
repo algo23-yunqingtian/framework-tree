@@ -1,0 +1,36 @@
+﻿{
+    "captured_at":  "2026-10-18T10:49:32.0403885+08:00",
+    "ticket":  "DSHC-P86-WSS_SMALL_SAMPLE_LAUNCH_CONTROLLER",
+    "baseline_branch":  "feature/v88-g1",
+    "baseline_head":  "01a022fdffb36e603abd623842cef65f80f24c92",
+    "gate":  "CLOSED/HOLD",
+    "release_permit":  "NOT_ISSUED",
+    "wind_api_calls":  0,
+    "defect_012":  "CLOSED",
+    "matlab_ignored":  true,
+    "status":  "READY-WAITING",
+    "controller_ready":  true,
+    "sample_marker_exists":  false,
+    "sample_approve_expand_marker_exists":  false,
+    "active_token_exists":  false,
+    "registry_modified":  false,
+    "skill_sha256_unchanged":  true,
+    "prototype_modified":  false,
+    "real_wind_call_modified":  false,
+    "max_days_per_round":  10,
+    "min_interval_sec":  12,
+    "output_artifacts":  [
+                             "artifacts/wss_sample_run_controller.ps1",
+                             "artifacts/wss_sample_post_checklist.json",
+                             "artifacts/dshc_p86_controller_ready.json",
+                             "artifacts/dshc_p86_events.jsonl"
+                         ],
+    "artifact_index":  [
+                           "artifacts/wss_sample_run_controller.ps1",
+                           "artifacts/wss_sample_post_checklist.json",
+                           "artifacts/wss_sample_run_report.md",
+                           "artifacts/sample_output/",
+                           "artifacts/dshc_p86_controller_ready.json",
+                           "artifacts/dshc_p86_events.jsonl"
+                       ]
+}

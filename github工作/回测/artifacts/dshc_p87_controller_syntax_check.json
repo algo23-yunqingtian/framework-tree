@@ -1,0 +1,142 @@
+{
+  "captured_at": "2026-10-18T11:09:19.2745503+08:00",
+  "ticket": "DSHC-P87-CONTROLLER_SYNTAX_SELFCHECK_EVENT_FINALIZE",
+  "baseline_branch": "feature/v88-g1",
+  "baseline_head": "01a022fdffb36e603abd623842cef65f80f24c92",
+  "gate": "CLOSED/HOLD",
+  "release_permit": "NOT_ISSUED",
+  "wind_api_calls": 0,
+  "defect_012": "CLOSED",
+  "matlab_ignored": true,
+  "requested_command": "powershell -NoProfile -Command \"Test-Syntax-Path artifacts/wss_sample_run_controller.ps1\"",
+  "requested_command_status": "FAILED_NOT_RECOGNIZED",
+  "requested_command_note": "Test-Syntax-Path is not a PowerShell cmdlet; no syntax was inferred from that invocation.",
+  "fallback_syntax_check": {
+    "method": "[System.Management.Automation.Language.Parser]::ParseFile",
+    "parser_errors": [],
+    "token_count": 3312,
+    "syntax_valid": true,
+    "script_path": "artifacts/wss_sample_run_controller.ps1"
+  },
+  "path_validation": {
+    "template": {
+      "path": "artifacts/wss_single_fetch_template.xlsx",
+      "exists": true
+    },
+    "prototype": {
+      "path": "code/prototype_wss_assemble_sim.py",
+      "exists": true
+    },
+    "precheck_result": {
+      "path": "artifacts/wss_fetch_precheck_result.json",
+      "exists": true,
+      "summary": "PASS"
+    },
+    "dashboard_com_snapshot": {
+      "path": "artifacts/dashboard_com_snapshot.json",
+      "exists": true,
+      "com_health_score": 100
+    },
+    "sample_output_dir": {
+      "path": "artifacts/sample_output/",
+      "exists": true
+    },
+    "controller_log": {
+      "path": "artifacts/sample_output/controller_run.log",
+      "exists": false,
+      "note": "expected only on sample-run branch"
+    },
+    "controller_alerts": {
+      "path": "artifacts/sample_output/controller_alerts.jsonl",
+      "exists": false,
+      "note": "expected only on sample-run branch"
+    },
+    "marker": {
+      "path": "artifacts/sample_fetch_allow.marker",
+      "exists": false
+    },
+    "approve_marker": {
+      "path": "artifacts/sample_approve_expand.marker",
+      "exists": false
+    },
+    "token": {
+      "path": "artifacts/WDF_ENV_READY.token",
+      "exists": false
+    }
+  },
+  "branch_logic": {
+    "marker_gate": "Test-Path $MarkerPath",
+    "no_marker_branch": "writes READY-WAITING artifacts and exits 0",
+    "marker_branch": "runs P85 precheck, sets SAMPLE_RUN=TRUE, invokes python code\\prototype_wss_assemble_sim.py, collects outputs/logs/alerts, resets Excel-only, writes report/checklist/ready artifacts",
+    "sample_output_collection": "artifacts/sample_output/",
+    "report_checklist_ready": "artifacts/wss_sample_run_report.md, artifacts/wss_sample_post_checklist.json, artifacts/dshc_p86_controller_ready.json"
+  },
+  "protection_logic": {
+    "wmain_protected": true,
+    "initwapi_protected": true,
+    "excel_cleanup_only": true,
+    "excel_residual_target": 0,
+    "wmain_stop_present": false,
+    "initwapi_stop_present": false,
+    "cleanup_notes": "Stop-Process is applied only to EXCEL after prototype run; no Stop-Process targets wmain or InitWAPI."
+  },
+  "audit": {
+    "auto_creates_marker": false,
+    "auto_creates_approve_marker": false,
+    "auto_sets_real_wind_call_true": false,
+    "auto_opens_batch_collection": false,
+    "real_wind_call_true_present": false,
+    "prototype_modified": false,
+    "controller_modified_prototype": false,
+    "registry_modified": false,
+    "marker_generated": false,
+    "approve_marker_generated": false,
+    "token_generated": false,
+    "sample_run_invoked": false,
+    "wind_api_calls_observed": 0
+  },
+  "prototype_constants": {
+    "REAL_WIND_CALL": false,
+    "MAX_DAYS_PER_ROUND": 10,
+    "MIN_INTERVAL_SEC": 12,
+    "MAX_INTERVAL_SEC": 15,
+    "SIM_DATA_POINTS": 10
+  },
+  "environment_snapshot": {
+    "wmain_pid": 824,
+    "wmain_title": "Wind金融终端..Alice",
+    "initwapi_pid": 14188,
+    "excel_count": 0,
+    "dashboard_com_health_score": 100
+  },
+  "system_skill_sha256": {
+    "bootstrap_wdf.ps1": {
+      "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/bootstrap_wdf.ps1",
+      "sha256": "B677DF2E7C9E9DDD2686B9C1E06C5D70A41CA1572179EE40DAF066CCDE1BDB73",
+      "match": true
+    },
+    "health_check_wdf.ps1": {
+      "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/health_check_wdf.ps1",
+      "sha256": "0D0F4D76B9BE6B2126A11BB2C2D87BDF037DF10D118F06F02D18389CABE609A7",
+      "match": true
+    },
+    "reset_wdf_safe.ps1": {
+      "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/reset_wdf_safe.ps1",
+      "sha256": "BE62716D853F6B816042891D67B7A19DE6561F59E2ED1F3578104EDD55C3EA8C",
+      "match": true
+    },
+    "skill_manifest.json": {
+      "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/skill_manifest.json",
+      "sha256": "3F4CCB7F8F645E399048BA912FE257B2FA5DAEAD046F17CAA9FA2E22E000A401",
+      "match": true
+    },
+    "skill_readme.md": {
+      "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/skill_readme.md",
+      "sha256": "8ABF5A9AE1A3100B7DB7CF15C9035CFEB58EC8F0DD2C0C4DACCD85EDDADB219B",
+      "match": true
+    },
+    "all_match": true
+  },
+  "summary": "STATIC_PASS_NO_FIRE",
+  "status": "PASS"
+}

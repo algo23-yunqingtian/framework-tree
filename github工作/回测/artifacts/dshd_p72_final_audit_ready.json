@@ -1,0 +1,151 @@
+{
+    "captured_at": "2026-10-18T11:22:00+08:00",
+    "ticket": "DSHD-P72-AUDIT_LOG_COMPRESS_AND_FIRE_READINESS_FINAL_VALIDATE",
+    "baseline_branch": "feature/v88-g1",
+    "baseline_head": "01a022fdffb36e603abd623842cef65f80f24c92",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+
+    "audit_pipeline_status": "AUDIT_READY",
+    "com_health_score": 100,
+    "sample_observation_channel": "ENABLED",
+    "fast_poll_trigger": "VALID",
+    "risk_rating": "ZERO_RISK",
+
+    "log_integrity": {
+        "tracking_monitor_audit_jsonl": {
+            "total_lines": 207,
+            "json_errors": 13,
+            "new_corruption": false,
+            "note": "13 pre-existing DSHA encoding artifacts (mojibake). No new corruption."
+        },
+        "dshd_p67_monitor_log_jsonl": {
+            "total_lines": 1216,
+            "json_errors": 0,
+            "new_corruption": false,
+            "note": "12 sequence gaps (expected cross-phase boundaries). 1 pre-existing timestamp issue."
+        },
+        "com_lock_events_jsonl": {
+            "total_lines": 22,
+            "json_errors": 0,
+            "new_corruption": false,
+            "timestamps_monotonic": true
+        },
+        "com_clean_guard_events_jsonl": {
+            "total_lines": 61,
+            "json_errors": 0,
+            "new_corruption": false,
+            "timestamps_monotonic": true
+        }
+    },
+
+    "audit_backup": {
+        "file": "artifacts/dshd_p72_audit_backup.zip",
+        "size_bytes": 51140,
+        "files_archived": 4,
+        "files": [
+            "tracking_monitor_audit.jsonl",
+            "dshd_p67_monitor_log.jsonl",
+            "com_lock_events.jsonl",
+            "com_clean_guard_events.jsonl"
+        ]
+    },
+
+    "sample_observation_validation": {
+        "channel_enabled": true,
+        "marker_path": "artifacts/sample_fetch_allow.marker",
+        "marker_status": "ABSENT",
+        "wss_alerts_log": "artifacts/wss_small_sample_alerts.jsonl",
+        "wss_alerts_status": "NOT_FOUND",
+        "wss_alerts_total_lines": 0,
+        "alerts_indexed_total": 0,
+        "python_prototype_running": false,
+        "sample_active_observing": false
+    },
+
+    "fast_poll_trigger_validation": {
+        "logic_valid": true,
+        "trigger_condition": "sample_marker_exists AND python_prototype_running",
+        "trigger_action": "30s interval, 10 polls (5 minutes)",
+        "revert_condition": "sample_active_observing=false OR sample_fast_poll_remaining<=0",
+        "revert_action": "60s interval",
+        "entry_event": "SAMPLE_ACTIVE_OBSERVING",
+        "exit_event": "SAMPLE_FAST_POLL_REVERT",
+        "code_lines": "637-669 of dshd_p71_sample_run_audit_relay.ps1"
+    },
+
+    "dashboard_validation": {
+        "sample_readiness_section": true,
+        "p72_fire_readiness_section": true,
+        "marker_status_readable": true,
+        "com_score_readable": true,
+        "alert_count_readable": true,
+        "last_generated": "2026-10-18T11:21:49+08:00",
+        "poll_number": 1820
+    },
+
+    "three_party_readiness": {
+        "dsha_p58": {
+            "component": "Safety gate (fire authorization design)",
+            "status": "STATIC_READY",
+            "artifact": "docs/prototype_wss_shard_fetch_design.md",
+            "artifact_size": 35880,
+            "details": "FINAL-LOCK assertions defined, 4-layer safety system, fire authorization path documented"
+        },
+        "dshd_p71": {
+            "component": "Observation gate (sample monitoring)",
+            "status": "STATIC_READY",
+            "monitor_pid": 21496,
+            "poll_number": 1820,
+            "invariants_passing": "7/7",
+            "com_health_score": 100,
+            "session_flicker": "VVV (stable)"
+        },
+        "dshc_p86": {
+            "component": "Controller gate (sample run execution)",
+            "status": "READY-WAITING",
+            "artifact": "artifacts/dshc_p86_controller_ready.json",
+            "controller_ready": true,
+            "sample_marker_exists": false
+        },
+        "dshc_p87": {
+            "component": "Syntax check (controller validation)",
+            "status": "PASS",
+            "artifact": "artifacts/dshc_p87_controller_syntax_check.json",
+            "syntax_valid": true,
+            "parser_errors": 0,
+            "protection_logic_verified": true
+        },
+        "all_aligned": true,
+        "fire_requires_manual_only": true
+    },
+
+    "current_state": {
+        "wmain_pid": 824,
+        "wmain_visible": true,
+        "initwapi_pid": 14188,
+        "excel_count": 0,
+        "orphan_excel_count": 0,
+        "guard_status": "STATIC_STANDBY",
+        "sample_marker": "ABSENT",
+        "sample_approve_marker": "ABSENT",
+        "p86_controller_ready": "READY-WAITING",
+        "wind_local": "NOT_RUNNING",
+        "python_prototype": "NOT_RUNNING",
+        "wind_tcp_ports": 0,
+        "credential_alert": "NONE",
+        "skill_sha_check": "ALL_MATCH"
+    },
+
+    "red_lines_verified": {
+        "never_create_delete_marker": true,
+        "never_call_controller_or_python": true,
+        "wind_api_calls_zero": true,
+        "never_terminate_protected_processes": true,
+        "never_modify_wdf_or_registry": true,
+        "observe_only": true
+    },
+
+    "summary": "AUDIT_READY - All systems static-ready. 3-party gates aligned. Fire requires MANUAL_ONLY human intervention."
+}
