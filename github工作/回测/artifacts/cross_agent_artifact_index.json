@@ -1,0 +1,39 @@
+{
+    "ticket":  "DSHC-P90A-FIX-POSTFIX-SHELL_VIEW_REFRESH_AND_WDF_FINAL_OFFLINE_TEST",
+    "artifacts":  {
+                      "final_test_result_json":  {
+                                                      "key":  "final_test_result_json",
+                                                      "path":  "artifacts/dshc_p90a_final_test_result.json",
+                                                      "sha256":  "380D40736CF07DBA2ED1F40A5AA59079AD62B6E3E9FA5F791B6B3FF1A9E17F7E"
+                                                  },
+                      "final_test_report_md":  {
+                                                    "key":  "final_test_report_md",
+                                                    "path":  "artifacts/dshc_p90a_final_test_report.md",
+                                                    "sha256":  "E94CADD490D4E2B36EEBD033E897F4E0F29CBC0E7C43ADF86BCEEB10F1BC2CEA"
+                                                },
+                      "final_events_jsonl":  {
+                                                  "key":  "final_events_jsonl",
+                                                  "path":  "artifacts/dshc_p90a_final_events.jsonl",
+                                                  "sha256":  "D6F019C5D4F29A296622130420927FF3E8FF5A3365F20481D37B73188F402941"
+                                              },
+                      "bootstrap_dryrun_result_json":  {
+                                                            "key":  "bootstrap_dryrun_result_json",
+                                                            "path":  "artifacts/dshc_p90a_bootstrap_dryrun_result.json",
+                                                            "sha256":  "700CE2F87EEA125FCC99377D17E37F919F607D3FAFADA860D0B1222AD139C156"
+                                                        },
+                      "harness_script":  {
+                                              "key":  "harness_script",
+                                              "path":  "scripts/dshc_p90a_offline_wdf_bootstrap_test.ps1",
+                                              "sha256":  "D6E4E303E945D8D659DAC8E7C7764EAFB1A7BDB819B183BE3F5C4E184770DF11"
+                                          },
+                      "skill_release_manifest_json":  {
+                                                           "key":  "skill_release_manifest_json",
+                                                           "path":  "artifacts/skill_release_manifest.json",
+                                                           "sha256":  "284E766178B861D39E47095DC1F453AA4819163750FA66721C714A2E85599707"
+                                                       }
+                  },
+    "generated_at":  "2026-10-18T17:21:58.9356933+08:00",
+    "wind_api_calls":  0,
+    "real_wind_call":  false,
+    "marker_created":  false
+}

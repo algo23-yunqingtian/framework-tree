@@ -1,0 +1,28 @@
+{
+    "release_id": "SKILL-WIND-WDF-BOOTSTRAP-R03",
+    "commit": "40944e52219664672f3be4d7bcfc34c9c60d23b3",
+    "issuer": "DSHC-CONTROLLER",
+    "release_note": "P90A harness修复、路径解析修复；离线WDF bootstrap-reset验证PASS；此为R03认可哈希，替代P76旧基线；取数仍等待用户点火许可",
+    "file_entries": [
+        {
+            "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/skill_readme.md",
+            "actual_sha256": "3BE3E14511DEC8E669068CA944C43FC374DDFB6C94C2FEB2EA04120B3FBE10DD"
+        },
+        {
+            "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/bootstrap_wdf.ps1",
+            "actual_sha256": "F568F9723AA16DDB0105BFC74ADE68797B7DA5E54C7BA3A345711876B34344C2"
+        },
+        {
+            "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/skill_manifest.json",
+            "actual_sha256": "95FE2B60398F952888655F7604DFB06E332A8D8C0F2B37B9625B315DF6A1B45A"
+        },
+        {
+            "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/health_check_wdf.ps1",
+            "actual_sha256": "AF04F9EC099CF58B3E4312E7E7D93AEF50E93766715A9294DAA48E6326FF0397"
+        },
+        {
+            "path": "system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/reset_wdf_safe.ps1",
+            "actual_sha256": "4E7EDCB1305E8DE3585867BD08EA0A8B4C872785BA134862618D37A43D58451E"
+        }
+    ]
+}
