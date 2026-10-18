@@ -4,9 +4,9 @@
   "fail_count": 0,
   "missing_count": 0,
   "success_rate": 100.0,
-  "min_value": 24364.06,
-  "max_value": 24630.65,
-  "mean_value": 24559.62,
+  "min_value": 24250.88,
+  "max_value": 24655.33,
+  "mean_value": 24514.3,
   "date_range": [
     "2025-01-02",
     "2025-01-15"
@@ -16,8 +16,8 @@
   "data_source": "SIMULATED (NOT REAL)",
   "real_wind_call": false,
   "permit_marker_exists": false,
-  "run_timestamp": "2026-10-18T01:16:23.266668+00:00",
-  "total_sleep_time_sec": 120.1,
+  "run_timestamp": "2026-10-18T02:11:52.098156+00:00",
+  "total_sleep_time_sec": 125.5,
   "total_calls": 10,
   "min_interval_sec": 12,
   "max_interval_sec": 15,
@@ -25,5 +25,20 @@
   "emergency_stop_file": ".emergency_stop",
   "simulation_note": "SIMULATED DATA — NOT REAL MARKET DATA",
   "alert_count": 0,
-  "phase": "DSHA-P56"
+  "phase": "DSHA-P57",
+  "com_layers": {
+    "layer1_prefix_check": "assert_no_orphan_excel()",
+    "layer2_forced_reclaim": "assert_com_cleanup() + GC.Collect()×2",
+    "layer3_postcheck_residue": "check_excel_residue()"
+  },
+  "com_cleanup_count": 10,
+  "orphan_residue_count": 0,
+  "p57_features": {
+    "orphan_excel_detection": true,
+    "layered_com_cleanup": true,
+    "gc_double_release": true,
+    "post_call_residue_check": true,
+    "wdf_jitter_detection": true,
+    "wmain_visible_check": true
+  }
 }

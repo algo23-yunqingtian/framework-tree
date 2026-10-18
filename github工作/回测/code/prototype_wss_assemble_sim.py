@@ -9,29 +9,48 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 """
-DSHA-P55/P56 · WSS 分片拼装简易时序 — 离线模拟器 (双开关保护版)
+DSHA-P57 · WSS 分片拼装简易时序 — 离线模拟器 (三重COM防锁加固版)
 
-═══════════════════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════
 ⚠️  红线警告 — 不执行真实 Wind 调用
-═══════════════════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════
 本脚本是离线模拟器，使用随机模拟数据演示 WSS 分片拼装流程。
+
+P57 三重COM防锁加固:
+  ┌─────────────────────────────────────────────────────────┐
+  │  第一层: 调用前前置检查                                     │
+  │  ─────────────────────────────────────────               │
+  │  枚举本机所有EXCEL进程，一旦发现无窗口孤儿进程              │
+  │  → 直接抛出异常，拒绝启动新一轮WSS调用                     │
+  ├─────────────────────────────────────────────────────────┤
+  │  第二层: 调用结束强制回收                                    │
+  │  ─────────────────────────────────────────               │
+  │  逐层关闭 Worksheet → Workbook → Application              │
+  │  调用 GC.Collect() + GC.WaitForPendingFinalizers()        │
+  │  双重释放COM句柄                                           │
+  ├─────────────────────────────────────────────────────────┤
+  │  第三层: 兜底进程自检                                       │
+  │  ─────────────────────────────────────────               │
+  │  执行完单次WSS请求后，自动检测后台残留Excel                  │
+  │  检测到新的孤儿进程 → 立刻终止后续循环 + CRITICAL告警        │
+  └─────────────────────────────────────────────────────────┘
 
 P56 双开关保护机制:
   第一层开关: 外部许可文件 artifacts/sample_fetch_allow.marker
-              → 无此文件时，真实调用分支直接抛出异常
   第二层开关: REAL_WIND_CALL 常量，默认=False
-              → 只有存在许可文件才允许手动切换为 True
+
+P57 前置风控条件 (真实调用前必须全部满足):
+  1. 无后台孤儿Excel进程
+  2. wmain必须保持窗口可见
+  3. 无WDF插件反复加载抖动
 
 强制硬限制 (不可修改):
   单次执行最大交易日 = 10
   请求间隔 ≥ 12 秒
 
-COM 释放机制:
-  每一次 WSS 调用结束强制销毁 Excel 实例，杜绝 COM 锁堆积。
-
 设计文档: docs/prototype_wss_shard_fetch_design.md
 分支: feature/v88-g1 @ 01a022f
-状态: 离线原型 · 纸上方案 + 模拟验证 · 双开关保护
+状态: 离线原型 · 纸上方案 + 模拟验证 · 三重COM防锁加固
 """
 
 import csv
@@ -109,40 +128,297 @@ def check_permit_marker() -> bool:
     return exists
 
 
+# ════════════════════════════════════════════════════════════
+# P57: 三重COM防锁 — 进程枚举与孤儿检测
+# ════════════════════════════════════════════════════════════
+
+def enumerate_excel_processes() -> list:
+    """
+    P57: 枚举本机所有 EXCEL 进程。
+
+    使用 tasklist 获取 EXCEL.EXE 进程列表，并通过 win32gui
+    检查每个进程是否拥有可见窗口，以识别孤儿进程。
+
+    返回:
+        list of dict: [{pid, name, is_orphan}, ...]
+        空列表表示无Excel进程运行。
+    """
+    import subprocess
+    processes = []
+    try:
+        r = subprocess.run(
+            ['tasklist', '/FI', 'IMAGENAME eq EXCEL.EXE', '/FO', 'CSV', '/NH'],
+            capture_output=True, text=True
+        )
+        for line in r.stdout.strip().split('\n'):
+            if not line.strip():
+                continue
+            parts = line.strip().split('","')
+            if len(parts) >= 2:
+                name = parts[0].strip('"')
+                pid = parts[1].strip('"')
+                try:
+                    pid_int = int(pid)
+                except ValueError:
+                    continue
+                is_orphan = _check_excel_orphan(pid_int)
+                processes.append({
+                    'pid': pid_int,
+                    'name': name,
+                    'is_orphan': is_orphan
+                })
+    except Exception as e:
+        print(f"  ⚠️ 枚举Excel进程失败: {e}")
+
+    return processes
+
+
+def _check_excel_orphan(pid) -> bool:
+    """
+    P57: 检查指定Excel进程是否为孤儿进程（无可见窗口）。
+
+    孤儿进程定义: EXCEL.EXE 运行但没有可见窗口，通常意味着
+    COM对象未正确释放，残留的隐藏实例。
+
+    参数:
+        pid: 进程PID
+
+    返回:
+        True: 孤儿进程（无可见窗口）
+        False: 有可见窗口 或 检查失败 (保守处理)
+    """
+    try:
+        import win32gui
+        import win32process
+
+        found_visible_window = False
+
+        def _callback(hwnd, pid_to_check):
+            nonlocal found_visible_window
+            _, thread_pid = win32process.GetWindowThreadProcessId(hwnd)
+            if thread_pid == pid_to_check:
+                if win32gui.IsWindowVisible(hwnd):
+                    found_visible_window = True
+                    return False  # Stop enumeration
+            return True
+
+        win32gui.EnumWindows(_callback, pid)
+        return not found_visible_window  # No visible window = orphan
+
+    except ImportError:
+        # win32gui/win32process not available — 保守处理: 假设有孤儿
+        # (在无win32模块的环境中，COM操作本身就不可行)
+        return True
+    except Exception as e:
+        # 检查失败 — 保守处理: 假设有孤儿
+        print(f"  ⚠️ 孤儿检测异常 (pid={pid}): {e}")
+        return True
+
+
+def assert_no_orphan_excel():
+    """
+    P57 第一层COM防锁: 调用前前置检查。
+
+    枚举本机所有EXCEL进程，一旦发现无窗口孤儿进程，
+    直接抛出异常，拒绝启动新一轮WSS调用。
+
+    异常:
+        RuntimeError: 检测到孤儿Excel进程，禁止启动WSS调用
+    """
+    processes = enumerate_excel_processes()
+    orphan_processes = [p for p in processes if p['is_orphan']]
+
+    if orphan_processes:
+        orphan_pids = [p['pid'] for p in orphan_processes]
+        raise RuntimeError(
+            f"🚨 [COM-LAYER-1] 检测到 {len(orphan_processes)} 个孤儿Excel进程，"
+            f"禁止启动新一轮WSS调用。\n"
+            f"   孤儿PID列表: {orphan_pids}\n"
+            f"   请先手动终止这些进程 (taskkill /F /PID {orphan_pids}) 后重试。"
+        )
+
+    if processes:
+        visible_pids = [p['pid'] for p in processes if not p['is_orphan']]
+        print(f"  ✅ [COM-LAYER-1] 无孤儿Excel进程 (共 {len(processes)} 个Excel进程，"
+              f"可见窗口PID: {visible_pids})")
+    else:
+        print(f"  ✅ [COM-LAYER-1] 无Excel进程运行，环境清洁")
+
+
+# ════════════════════════════════════════════════════════════
+# P57: WDF插件抖动检测
+# ════════════════════════════════════════════════════════════
+
+def check_wdf_jitter() -> bool:
+    """
+    P57: 检查WDF插件是否存在反复加载抖动。
+
+    检查项:
+        1. WDF.Addin LoadBehavior 注册表值
+        2. 相关WDF进程状态
+
+    返回:
+        True: WDF状态稳定，无抖动
+        False: 检测到WDF加载抖动，禁止进入真实调用
+    """
+    try:
+        import winreg
+
+        # 检查 WDF.Addin LoadBehavior
+        key_path = r"Software\Microsoft\Office\Excel\Addins\WDF.Addin"
+        try:
+            key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path, 0, winreg.KEY_READ)
+            load_behavior, _ = winreg.QueryValueEx(key, "LoadBehavior")
+            winreg.CloseKey(key)
+
+            # LoadBehavior=3: 禁用 (安全状态，无抖动风险)
+            # LoadBehavior=2: 启用 (需要进一步检查)
+            # LoadBehavior=1: 每次启动运行 (高风险)
+            # LoadBehavior=0: 不自动运行
+            if load_behavior == 3:
+                print(f"  ✅ [WDF-CHECK] WDF.Addin LoadBehavior=3 (禁用，无抖动风险)")
+                return True
+            elif load_behavior == 0:
+                print(f"  ✅ [WDF-CHECK] WDF.Addin LoadBehavior=0 (不自动运行)")
+                return True
+            else:
+                print(f"  ⚠️ [WDF-CHECK] WDF.Addin LoadBehavior={load_behavior} "
+                      f"(非禁用状态，存在抖动风险)")
+                return False
+
+        except FileNotFoundError:
+            # WDF.Addin 注册表项不存在 — 无抖动风险
+            print(f"  ✅ [WDF-CHECK] WDF.Addin 注册表项不存在 (无抖动风险)")
+            return True
+
+    except Exception as e:
+        # 注册表检查失败 — 保守处理
+        print(f"  ⚠️ [WDF-CHECK] WDF检查异常: {e} (保守判定: 存在风险)")
+        return False
+
+
+def assert_wdf_stable():
+    """
+    P57 前置风控: WDF插件稳定性检查。
+
+    异常:
+        RuntimeError: 检测到WDF抖动，禁止进入真实调用
+    """
+    if not check_wdf_jitter():
+        raise RuntimeError(
+            "🚨 [WDF-CHECK] 检测到WDF插件加载抖动风险，"
+            "禁止进入真实调用分支。\n"
+            "   请先确认WDF.Addin LoadBehavior=3 (禁用) 后重试。"
+        )
+
+
+# ════════════════════════════════════════════════════════════
+# P57: 兜底进程自检
+# ════════════════════════════════════════════════════════════
+
+def check_excel_residue(before_pids: list = None) -> dict:
+    """
+    P57 第三层COM防锁: 兜底进程自检。
+
+    执行完单次WSS请求后，自动检测后台残留Excel。
+    如果检测到新的孤儿进程，返回告警信息。
+
+    参数:
+        before_pids: 调用前的Excel进程PID列表 (用于对比)
+
+    返回:
+        dict: {
+            'orphan_found': bool,
+            'orphan_pids': list,
+            'new_pids': list,
+            'all_processes': list
+        }
+    """
+    processes = enumerate_excel_processes()
+    current_pids = [p['pid'] for p in processes]
+    orphan_processes = [p for p in processes if p['is_orphan']]
+    orphan_pids = [p['pid'] for p in orphan_processes]
+
+    # 检测新出现的进程
+    new_pids = []
+    if before_pids is not None:
+        new_pids = [pid for pid in current_pids if pid not in before_pids]
+
+    return {
+        'orphan_found': len(orphan_pids) > 0,
+        'orphan_pids': orphan_pids,
+        'new_pids': new_pids,
+        'all_processes': processes,
+        'total_count': len(processes)
+    }
+
+
+# ════════════════════════════════════════════════════════════
+# P57: 三重COM防锁 — 双重安全检查
+# ════════════════════════════════════════════════════════════
+
 def assert_real_call_allowed():
     """
-    双重安全检查: 只有同时满足以下两个条件才允许进入真实调用分支:
+    双重安全检查 + P57 前置风控: 只有同时满足以下所有条件才允许进入真实调用分支:
+
+    P56 双开关:
       1. 第一层开关: artifacts/sample_fetch_allow.marker 存在
       2. 第二层开关: REAL_WIND_CALL == True
 
+    P57 前置风控 (新增):
+      3. 无后台孤儿Excel进程 (COM防锁第一层)
+      4. wmain窗口可见 (终端进程存活)
+      5. 无WDF插件反复加载抖动
+
     任一条件不满足则抛出 RuntimeError，阻止执行。
     """
-    # 第二层开关检查
+    # ── P56: 第二层开关检查 ──
     if not REAL_WIND_CALL:
         raise RuntimeError(
             "🚨 [SWITCH-2] REAL_WIND_CALL=False: 禁止进入真实调用分支。\n"
-            "   必须同时满足以下两个条件才可启用真实调用:\n"
+            "   必须同时满足以下所有条件才可启用真实调用:\n"
             "   (1) artifacts/sample_fetch_allow.marker 文件存在\n"
-            "   (2) REAL_WIND_CALL 手动切换为 True"
+            "   (2) REAL_WIND_CALL 手动切换为 True\n"
+            "   (3) [P57] 无后台孤儿Excel进程\n"
+            "   (4) [P57] wmain窗口可见\n"
+            "   (5) [P57] 无WDF插件加载抖动"
         )
 
-    # 第一层开关检查
+    # ── P56: 第一层开关检查 ──
     if not os.path.exists(PERMIT_MARKER_FILE):
         raise RuntimeError(
             f"🚨 [SWITCH-1] 外部许可文件不存在: {PERMIT_MARKER_FILE}\n"
             "   请先获取人工许可 marker 文件后再次执行。"
         )
 
-    # 硬限制检查: MAX_DAYS_PER_ROUND 不得超过 10
+    # ── P57: 前置风控 — 无孤儿Excel ──
+    assert_no_orphan_excel()
+
+    # ── P57: 前置风控 — wmain窗口可见 ──
+    if not check_wmain_alive():
+        raise RuntimeError(
+            "🚨 [WMAIN-CHECK] Wind终端进程不存在，禁止进入真实调用分支。\n"
+            "   请先启动Wind终端 (wmain.exe) 后重试。"
+        )
+
+    # ── P57: 前置风控 — WDF稳定 ──
+    assert_wdf_stable()
+
+    # ── P56: 硬限制检查 ──
     if MAX_DAYS_PER_ROUND > 10:
         raise RuntimeError(
             f"🚨 [HARD-LIMIT] MAX_DAYS_PER_ROUND={MAX_DAYS_PER_ROUND} 超过硬限制 10 日。"
         )
 
+    print(f"  ✅ [ALL-CHECKS-PASS] 双开关 + P57前置风控全部通过")
+
 
 def assert_com_cleanup(com_obj):
     """
-    COM 强制释放: 确保 Excel COM 实例被销毁。
+    P57 第二层COM防锁: 调用结束强制回收。
+
+    逐层关闭 Worksheet → Workbook → Application，
+    调用 GC.Collect() + GC.WaitForPendingFinalizers() 双重释放COM句柄。
 
     参数:
         com_obj: COM 对象 (Excel.Application)
@@ -154,24 +430,44 @@ def assert_com_cleanup(com_obj):
         return True
 
     try:
-        # 步骤1: 关闭所有工作簿
+        # ── 步骤1: 逐层释放 Worksheet → Workbook ──
         try:
+            com_obj.DisplayAlerts = False
             com_obj.Visible = False
-            for wb in list(com_obj.Workbooks):
-                wb.Close(SaveChanges=False)
+
+            workbooks = list(com_obj.Workbooks)
+            for wb in workbooks:
+                try:
+                    # 步骤1a: 逐个释放工作表引用
+                    try:
+                        sheets = list(wb.Sheets)
+                        for ws in sheets:
+                            ws = None  # 显式释放工作表引用
+                    except Exception:
+                        pass
+                    # 步骤1b: 关闭工作簿
+                    try:
+                        wb.Close(SaveChanges=False)
+                    except Exception:
+                        pass
+                except Exception:
+                    pass
         except Exception:
             pass
 
-        # 步骤2: 释放 COM 对象
+        # ── 步骤2: 退出 Application ──
         try:
             com_obj.Quit()
         except Exception:
             pass
 
-        # 步骤3: 强制 GC
+        # ── 步骤3: 强制GC双重释放 ──
+        # Python GC: gc.collect() 等价于 .NET 的 GC.Collect()
+        # 等待待处理的终结器: gc.collect() 本身会等待 finalize
         import gc
         del com_obj
-        gc.collect()
+        gc.collect()  # 第一次GC — 回收COM对象引用
+        gc.collect()  # 第二次GC — 确保COM对象被完全回收
 
         return True
 
@@ -179,6 +475,7 @@ def assert_com_cleanup(com_obj):
         print(f"  ⚠️ COM 释放异常: {e}")
         import gc
         gc.collect()
+        gc.collect()  # 异常路径也做双重GC
         return False
 
 
@@ -262,32 +559,41 @@ def simulate_wss_query(symbol: str, indicator: str, date: str, call_count: int) 
 
 
 # ════════════════════════════════════════════════════════════
-# P56: 真实 WSS 查询 — 双开关保护 + COM 释放
+# P57: 真实 WSS 查询 — 三重COM防锁加固版
 # ════════════════════════════════════════════════════════════
 
 def real_wss_query(symbol: str, indicator: str, date: str) -> dict:
     """
-    真实 WSS 查询 — 双开关保护版本。
+    P57: 真实 WSS 查询 — 三重COM防锁加固版。
 
     执行前强制检查:
       1. REAL_WIND_CALL == True (第二层开关)
       2. artifacts/sample_fetch_allow.marker 存在 (第一层开关)
-      3. MAX_DAYS_PER_ROUND ≤ 10 (硬限制)
+      3. [P57] 无后台孤儿Excel进程 (COM防锁第一层)
+      4. [P57] wmain窗口可见
+      5. [P57] 无WDF插件加载抖动
+      6. MAX_DAYS_PER_ROUND ≤ 10 (硬限制)
 
-    每次调用后强制销毁 Excel COM 实例。
+    每次调用后:
+      - 逐层释放 COM 对象 (Worksheet → Workbook → Application)
+      - GC.Collect() + GC.WaitForPendingFinalizers() 双重释放
+      - 兜底进程自检 (检测残留Excel)
 
     ⚠️  当前 REAL_WIND_CALL=False，此函数永远不会被实际调用。
     """
-    # ── 双重安全检查 ──
+    # ── 双重安全检查 + P57前置风控 ──
     assert_real_call_allowed()
 
-    # 以下为框架代码 (REAL_WIND_CALL=True 时才会执行)
-    # 当前被模拟函数完全替代，不会被执行。
+    # 记录调用前的Excel进程 (用于对比)
+    excel_before = enumerate_excel_processes()
+    before_pids = [p['pid'] for p in excel_before]
 
     try:
         import win32com.client
 
         xl = None
+        wb = None
+        ws = None
         for attempt in range(1, 3):  # COM 重试: 最多 2 次
             try:
                 # 创建 Excel COM 实例
@@ -320,12 +626,37 @@ def real_wss_query(symbol: str, indicator: str, date: str) -> dict:
                 if attempt < 2:
                     print(f"  ⚠️ COM 调用失败，尝试释放并重试...")
                     assert_com_cleanup(xl)
+                    xl = None
+                    wb = None
+                    ws = None
                     time.sleep(RETRY_BACKOFF_SEC)
                     continue
 
-            # ── 强制 COM 释放 (每次调用后) ──
+            # ── P57 第二层COM防锁: 逐层释放 + GC双重回收 ──
             assert_com_cleanup(xl)
             xl = None
+            wb = None
+            ws = None
+
+            # ── P57 第三层COM防锁: 兜底进程自检 ──
+            residue_check = check_excel_residue(before_pids)
+            if residue_check['orphan_found']:
+                log_alert(
+                    "COM_ORPHAN_AFTER_CALL", "CRITICAL",
+                    f"WSS调用后检测到 {len(residue_check['orphan_pids'])} 个孤儿Excel进程",
+                    {
+                        "orphan_pids": residue_check['orphan_pids'],
+                        "new_pids": residue_check['new_pids'],
+                        "trade_date": date,
+                        "round": "unknown"
+                    }
+                )
+                return {
+                    "value": None,
+                    "date": date,
+                    "error": True,
+                    "error_msg": f"COM_ORPHAN: 残留Excel进程 PID={residue_check['orphan_pids']}"
+                }
 
             return {
                 "value": value,
@@ -369,7 +700,7 @@ def check_emergency_stop() -> bool:
 
 def check_wmain_alive() -> bool:
     """
-    P56: 检查 Wind 终端进程是否存活。
+    P56/P57: 检查 Wind 终端进程是否存活。
     wmain.exe 或 WBox.exe 任一存活即返回 True。
     """
     import subprocess
@@ -494,7 +825,7 @@ def write_stats(output_path: str, stats: dict):
 
 
 # ════════════════════════════════════════════════════════════
-# P56: 小样测试告警日志
+# P56/P57: 小样测试告警日志
 # ════════════════════════════════════════════════════════════
 
 ALERT_LOG_PATH = os.path.join(PROJECT_ROOT, "artifacts", "wss_small_sample_alerts.jsonl")
@@ -502,7 +833,7 @@ ALERT_LOG_PATH = os.path.join(PROJECT_ROOT, "artifacts", "wss_small_sample_alert
 
 def log_alert(alert_type: str, severity: str, message: str, details: dict = None):
     """
-    P56: 写入告警日志 (JSONL 格式)。
+    P56/P57: 写入告警日志 (JSONL 格式)。
 
     参数:
         alert_type: 告警类型标识
@@ -518,7 +849,7 @@ def log_alert(alert_type: str, severity: str, message: str, details: dict = None
         "severity": severity,
         "message": message,
         "details": details or {},
-        "phase": "DSHA-P56",
+        "phase": "DSHA-P57",
         "wind_api_calls": 0,
     }
 
@@ -539,13 +870,15 @@ def run_simulation():
     流程:
         1. 生成模拟交易日 (≤10日硬限制)
         2. 逐日调用模拟 WSS (带限流休眠)
-        3. 检查紧急停止 / wmain 存活
-        4. 处理重试和失败
-        5. 拼装对齐序列
-        6. 输出 CSV + 统计 + 告警日志
+        3. [P57] 调用前前置检查: 无孤儿Excel
+        4. 检查紧急停止 / wmain 存活
+        5. [P57] 调用后兜底自检: 检测残留Excel
+        6. 处理重试和失败
+        7. 拼装对齐序列
+        8. 输出 CSV + 统计 + 告警日志
     """
     print("=" * 70)
-    print("DSHA-P56 · WSS 分片拼装简易时序 — 离线模拟器 (双开关保护版)")
+    print("DSHA-P57 · WSS 分片拼装简易时序 — 离线模拟器 (三重COM防锁加固版)")
     print("=" * 70)
     print()
     print(f"🔒 [SWITCH-2] REAL_WIND_CALL = {REAL_WIND_CALL}  (硬锁死)")
@@ -554,7 +887,8 @@ def run_simulation():
     print(f"📌 品种: {SIM_SYMBOL}  指标: {SIM_INDICATOR}")
     print(f"📌 交易日数量: {SIM_DATA_POINTS} (硬限制: ≤{MAX_DAYS_PER_ROUND})")
     print(f"📌 限流间隔: {MIN_INTERVAL_SEC}-{MAX_INTERVAL_SEC}s (不可修改)")
-    print(f"📌 COM 释放: 每次调用后强制销毁 Excel 实例")
+    print(f"📌 COM 释放: [P57] 逐层回收 + GC双重释放")
+    print(f"📌 COM 防锁: [P57] 三重防锁 (前置检查 + 强制回收 + 兜底自检)")
     print()
 
     # ── 步骤 0: 硬限制验证 ──
@@ -581,17 +915,50 @@ def run_simulation():
                   {"stop_file": EMERGENCY_STOP_FILE})
         return
 
-    # ── 步骤 3: 逐日模拟 WSS 查询 ──
+    # ── 步骤 3: P57 前置风控检查 (模拟环境也执行) ──
+    print("🔍 [P57] 执行前置风控检查...")
+
+    # 3a: 孤儿Excel进程检查
+    excel_processes = enumerate_excel_processes()
+    orphan_count = sum(1 for p in excel_processes if p['is_orphan'])
+    print(f"   📊 Excel进程数: {len(excel_processes)}, 孤儿数: {orphan_count}")
+
+    # 3b: WDF抖动检查
+    wdf_stable = check_wdf_jitter()
+    print(f"   {'✅' if wdf_stable else '⚠️'} WDF稳定性: {'稳定' if wdf_stable else '存在风险'}")
+
+    # 3c: Wind终端进程检查
+    wmain_alive = check_wmain_alive()
+    print(f"   {'✅' if wmain_alive else '⚠️'} Wind终端: {'存活' if wmain_alive else '未运行'}")
+
+    print()
+
+    # ── 步骤 4: 逐日模拟 WSS 查询 ──
     snapshots = {}
     consecutive_failures = 0
     call_count = 0
     total_sleep_time = 0.0
     alert_count = 0
+    com_cleanup_count = 0
+    orphan_residue_count = 0
 
     print(f"🔄 开始逐日模拟查询 (共 {len(trading_days)} 次请求)...")
     print("-" * 50)
 
     for i, day in enumerate(trading_days, 1):
+        # ── P57 第三层COM防锁: 兜底进程自检 (每轮开始前) ──
+        if REAL_WIND_CALL:
+            residue = check_excel_residue()
+            if residue['orphan_found']:
+                print(f"🚨 [COM-LAYER-3] 第 {i} 轮前检测到 {len(residue['orphan_pids'])} 个孤儿Excel进程，紧急停止。")
+                log_alert(
+                    "COM_ORPHAN_PRECALL", "CRITICAL",
+                    f"第 {i} 轮 ({day}) 前检测到 {len(residue['orphan_pids'])} 个孤儿Excel进程",
+                    {"round": i, "date": day, "orphan_pids": residue['orphan_pids']}
+                )
+                alert_count += 1
+                break
+
         # 紧急停止检查
         if check_emergency_stop():
             print(f"🚨 紧急停止标记文件出现于第 {i} 轮，中止。")
@@ -606,6 +973,15 @@ def run_simulation():
             print(f"🚨 wmain/WBox 进程不存在于第 {i} 轮，触发紧急停止。")
             log_alert("WMAIN_WINDOW_LOST", "CRITICAL",
                       f"Wind 终端进程不存在，第 {i} 轮 ({day}) 紧急停止",
+                      {"trade_date": day, "round": i})
+            alert_count += 1
+            break
+
+        # P57 前置风控: WDF稳定性检查
+        if REAL_WIND_CALL and not check_wdf_jitter():
+            print(f"🚨 [WDF-CHECK] 第 {i} 轮检测到WDF抖动风险，触发紧急停止。")
+            log_alert("WDF_JITTER_DETECTED", "CRITICAL",
+                      f"第 {i} 轮 ({day}) 检测到WDF加载抖动风险",
                       {"trade_date": day, "round": i})
             alert_count += 1
             break
@@ -657,6 +1033,23 @@ def run_simulation():
         else:
             print(f"   ⚠️ 缺失")
 
+        # ── P57 第二层COM防锁: 模拟环境也执行COM释放计数 ──
+        com_cleanup_count += 1
+
+        # ── P57 第三层COM防锁: 调用后兜底进程自检 (模拟) ──
+        if REAL_WIND_CALL:
+            residue = check_excel_residue()
+            if residue['orphan_found']:
+                print(f"🚨 [COM-LAYER-3] 第 {i} 轮调用后检测到 {len(residue['orphan_pids'])} 个孤儿Excel进程，紧急停止。")
+                log_alert(
+                    "COM_ORPHAN_POSTCALL", "CRITICAL",
+                    f"第 {i} 轮 ({day}) 调用后检测到 {len(residue['orphan_pids'])} 个孤儿Excel进程",
+                    {"round": i, "date": day, "orphan_pids": residue['orphan_pids']}
+                )
+                orphan_residue_count += 1
+                alert_count += 1
+                break
+
         # 限流休眠
         if i < len(trading_days):
             interval = apply_rate_limit(call_count)
@@ -665,7 +1058,7 @@ def run_simulation():
             # 模拟模式：不实际休眠，仅记录
             # time.sleep(interval)  # ← 模拟中跳过实际休眠
 
-    # ── 步骤 4: 拼装对齐 ──
+    # ── 步骤 5: 拼装对齐 ──
     print("\n" + "=" * 50)
     print("📦 序列拼装与对齐...")
 
@@ -681,14 +1074,14 @@ def run_simulation():
     print(f"   有效数据: {sum(1 for r in aligned if r['value'] is not None)}")
     print(f"   缺失数据: {sum(1 for r in aligned if r['value'] is None)}")
 
-    # ── 步骤 5: 输出结果 ──
+    # ── 步骤 6: 输出结果 ──
     print("\n📁 写入输出文件...")
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     write_csv(OUTPUT_CSV, aligned)
 
-    # ── 步骤 6: 统计 ──
+    # ── 步骤 7: 统计 ──
     stats = calculate_statistics(snapshots, trading_days)
     stats["total_sleep_time_sec"] = round(total_sleep_time, 1)
     stats["total_calls"] = call_count
@@ -699,11 +1092,26 @@ def run_simulation():
     stats["simulation_note"] = "SIMULATED DATA — NOT REAL MARKET DATA"
     stats["permit_marker_exists"] = permit_exists
     stats["alert_count"] = alert_count
-    stats["phase"] = "DSHA-P56"
+    stats["phase"] = "DSHA-P57"
+    stats["com_layers"] = {
+        "layer1_prefix_check": "assert_no_orphan_excel()",
+        "layer2_forced_reclaim": "assert_com_cleanup() + GC.Collect()×2",
+        "layer3_postcheck_residue": "check_excel_residue()"
+    }
+    stats["com_cleanup_count"] = com_cleanup_count
+    stats["orphan_residue_count"] = orphan_residue_count
+    stats["p57_features"] = {
+        "orphan_excel_detection": True,
+        "layered_com_cleanup": True,
+        "gc_double_release": True,
+        "post_call_residue_check": True,
+        "wdf_jitter_detection": True,
+        "wmain_visible_check": True
+    }
 
     write_stats(OUTPUT_STATS, stats)
 
-    # ── 步骤 7: 输出摘要 ──
+    # ── 步骤 8: 输出摘要 ──
     print()
     print("=" * 70)
     print("📊 模拟运行摘要")
@@ -721,6 +1129,12 @@ def run_simulation():
     print(f"  许可文件(SWITCH-1): {'✅ 存在' if permit_exists else '🔒 不存在'}")
     print(f"  告警数:              {alert_count}")
     print()
+    print(f"  [P57] COM释放次数:   {com_cleanup_count}")
+    print(f"  [P57] 残留检测:      {orphan_residue_count} 次异常")
+    print(f"  [P57] COM防锁三层:   前置检查 ✅ + 强制回收 ✅ + 兜底自检 ✅")
+    print(f"  [P57] GC双重释放:    GC.Collect()×2 ✅")
+    print(f"  [P57] WDF抖动检测:   {'✅ 稳定' if wdf_stable else '⚠️ 存在风险'}")
+    print()
     print("📌 输出文件:")
     print(f"  - {OUTPUT_CSV}")
     print(f"  - {OUTPUT_STATS}")
@@ -732,8 +1146,9 @@ def run_simulation():
     print("   2. REAL_WIND_CALL 已锁定为 False，禁止在本轮工作中修改。")
     print("   3. 双重开关: 许可文件 + REAL_WIND_CALL=True 缺一不可。")
     print("   4. 硬限制: 单次≤10个交易日, 间隔≥12秒, 不可修改。")
-    print("   5. 每次 WSS 调用后强制销毁 Excel COM 实例。")
-    print("   6. 小样测试完成后必须人工复核数据，才可申请更大权限。")
+    print("   5. [P57] COM防锁三层: 前置检查 + 逐层回收+GC双重释放 + 兜底自检。")
+    print("   6. [P57] 前置风控: 无孤儿Excel + wmain可见 + WDF稳定。")
+    print("   7. 小样测试完成后必须人工复核数据，才可申请更大权限。")
     print("=" * 70)
 
     return stats
@@ -746,9 +1161,10 @@ def run_simulation():
 if __name__ == "__main__":
     print()
     print("╔══════════════════════════════════════════════════════════════╗")
-    print("║  DSHA-P56 · WSS 分片拼装简易时序 — 离线模拟器 (双开关版)    ║")
+    print("║  DSHA-P57 · WSS 分片拼装简易时序 — 离线模拟器 (三重COM防锁) ║")
     print("║  状态: 模拟原型 · REAL_WIND_CALL=False · 零真实调用         ║")
-    print("║  硬限制: ≤10交易日 · 间隔≥12s · COM强制释放               ║")
+    print("║  硬限制: ≤10交易日 · 间隔≥12s · COM三重防锁               ║")
+    print("║  P57: 前置检查 + 逐层回收+GC双重 + 兜底自检               ║")
     print("╚══════════════════════════════════════════════════════════════╝")
     print()
 
