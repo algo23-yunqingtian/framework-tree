@@ -1,0 +1,47 @@
+{
+  "manifest_id": "DSHA-FACTOR-CATALOG-MANIFEST-V1",
+  "created_at_gmt8": "2026-10-19T01:55:41.801381+08:00",
+  "updated_at_gmt8": "2026-10-19T01:56:40.585371+08:00",
+  "updated_by": "DSHA-A02-PLUS",
+  "updated_reason": "追加实验因子钩子 (A02-PLUS)",
+  "append_only_contract": true,
+  "p49_catalog": {
+    "spec_path": "factor_hub/p49_spec.json",
+    "spec_exists": false,
+    "spec_sha256": null,
+    "spec_size": 0,
+    "note": "P49 权威规范文件为唯一真源, 本manifest不复制其内容; 7因子 CU/ZN/PB/AL/SN/NI/LC.SHF 详见 spec"
+  },
+  "factors": {},
+  "experimental_hooks": {
+    "SF-TOGGLE-01": {
+      "display_name": "股期联动01-Toggle开关因子 (条件闸门)",
+      "source_path": "factor_hub/experimental/sf_toggle_rule.json",
+      "source_exists": false,
+      "source_sha256": "SOURCE_MISSING",
+      "status": "STANDBY-NOT-ACTIVE",
+      "note": "等待A股板块指数数据集补齐后, 由DSHC确认后可接入回测; 当前不进入任何信号/IC/绩效计算",
+      "tier": "tier2",
+      "in_backtest_loop": false,
+      "participates_in_signals": false,
+      "participates_in_ic": false,
+      "registered_at_gmt8": "2026-10-19T01:56:40.585371+08:00"
+    },
+    "NEWS-PULSE": {
+      "display_name": "News-Pulse 热点/研报小作文投机注意力通道",
+      "source_path": "data-harbor/research_drafts/narrative_sentinel_outline.md",
+      "source_exists": false,
+      "source_sha256": "SOURCE_MISSING",
+      "status": "BLUEPRINT-ONLY",
+      "note": "仅设计文档; 尚未配置数据源; 暂不进入回测循环",
+      "tier": "tier3",
+      "in_backtest_loop": false,
+      "participates_in_signals": false,
+      "participates_in_ic": false,
+      "registered_at_gmt8": "2026-10-19T01:56:40.585371+08:00"
+    }
+  },
+  "hook_count": 2,
+  "trigger_authority": "P68_SANITY_GATE",
+  "note": "本manifest为目录型指针 + 钩子登记表; 因子规范以 factor_hub/p49_spec.json 为唯一真源; 实验因子仅登记, 不参与本轮回测"
+}

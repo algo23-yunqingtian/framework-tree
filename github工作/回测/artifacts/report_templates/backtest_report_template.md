@@ -291,6 +291,31 @@
 
 ---
 
+## 附录: 待激活实验因子预览
+
+<!-- START_EXP_PREVIEW_APPENDIX -->
+<!-- INJECTED_BY: DSHA-A02-PLUS (only-append, no main-output changes) -->
+<!-- INJECTED_AT_GMT8: 2026-10-19T01:56:40.592370+08:00 -->
+
+> ⚠️ **声明**: 以下实验因子仅为管线目录中的**未来路线占位**;
+> 本轮回测 **未执行** 任何实验因子计算, **未输出** 任何实验因子信号、曲线或 IC;
+> 触发权仍完全属于 **P68 Sanity 闸门**; A02-PLUS 不允许自动放行。
+
+| 因子 ID | 展示名 | 状态 | 依赖缺失 | 接入条件 | 本轮参与信号/IC/绩效 |
+|--------|--------|------|----------|----------|---------------------|
+| SF-TOGGLE-01 | 股期联动01-Toggle开关因子 (条件闸门) | STANDBY-NOT-ACTIVE | — | — | **否 (NOT_INCLUDED)** |
+| NEWS-PULSE | News-Pulse 热点/研报小作文投机注意力通道 | BLUEPRINT-ONLY | — | — | **否 (NOT_INCLUDED)** |
+
+**未来路线说明**: 上述因子已挂入管线目录 (`factor_hub/meta/factor_catalog_manifest.json`),
+钩子注册表见 `artifacts/dsha_exp_hook_register.json`。
+等上游蓝图源文件补齐 + DSHC 配置数据源 + 通过人工/DSHC 审核后, 才会以新工单激活并进入回测循环。
+
+_本小节仅为**文字说明**, 不含任何实验因子信号、净值曲线、IC 时序或绩效数字。_
+
+<!-- END_EXP_PREVIEW_APPENDIX -->
+
+---
+
 > **DSHA-P63 声明**: 本报告模板为离线预构建产物，未调用任何Wind API。
 > 所有治理不变量保持: wind_api_calls=0, backtest_started=false, gate=CLOSED, release_permit=NOT_ISSUED。
 > 等DSHD/DSHC创建 marker 并设置 REAL_WIND_CALL=True 后，可直接套用模板渲染真实回测报告。

@@ -85,6 +85,14 @@
       "intervention": "NONE",
       "audit_only": true,
       "interpretation": "历史残留噪声：DSHD-P79 监视器侧告警，早于 DSHC A02 会话；非本次会话，非 DSHC 内部事件；只做备注解释，不修改 DSHD 审计账本"
+    },
+    {
+      "source": "DSHA-A02-PLUS",
+      "ts": "2026-10-19T01:56:40.614372+08:00",
+      "a02plus_status": "HOOKS_REGISTERED",
+      "trigger_authority": "P68_SANITY_GATE",
+      "auto_ignition_by_a02plus": "DENIED",
+      "note": "A02-PLUS 只挂钩子, 不执行实验因子计算, 不自动放行"
     }
   ],
   "decision": {
@@ -118,5 +126,7 @@
     "no_rpc": true,
     "final_lock_intact": true,
     "p68_script_not_modified": true
-  }
+  },
+  "updated_at_gmt8_by_a02plus": "2026-10-19T01:56:40.614372+08:00",
+  "a02plus_update_note": "DSHA-A02-PLUS 已完成钩子注册; dashboard 保持 human-observation-only; 仍不允许绕过 P68 Sanity"
 }

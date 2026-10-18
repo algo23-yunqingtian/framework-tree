@@ -18,5 +18,33 @@
   ],
   "total_observations": 1,
   "real_wind_call": false,
-  "wind_api_calls": 0
+  "wind_api_calls": 0,
+  "observations": [
+    {
+      "observed_at_gmt8": "2026-10-19T01:55:41.819378+08:00",
+      "csv_path": "output_sample/wdf_sample_metals_raw.csv",
+      "exists": true,
+      "size": 50,
+      "sha256": "bef26114cc1fca4bdd40e911f888e7ca388dd150a1d48fd6c623d8fe07850895",
+      "classification": "STUB_ONLY-IGNORE",
+      "size_below_threshold": true,
+      "note": "STUB_ONLY-IGNORE: 50B header-only stub, 永不喂入 9 步管线; A02-PLUS 只观察, 不参与放行判定",
+      "sanity_executed": false,
+      "trigger": "P68_SANITY_GATE (唯一权威)"
+    },
+    {
+      "observed_at_gmt8": "2026-10-19T01:56:40.598371+08:00",
+      "csv_path": "output_sample/wdf_sample_metals_raw.csv",
+      "exists": true,
+      "size": 50,
+      "sha256": "bef26114cc1fca4bdd40e911f888e7ca388dd150a1d48fd6c623d8fe07850895",
+      "classification": "STUB_ONLY-IGNORE",
+      "size_below_threshold": true,
+      "note": "STUB_ONLY-IGNORE: 50B header-only stub, 永不喂入 9 步管线; A02-PLUS 只观察, 不参与放行判定",
+      "sanity_executed": false,
+      "trigger": "P68_SANITY_GATE (唯一权威)"
+    }
+  ],
+  "updated_by": "DSHA-A02-PLUS",
+  "updated_at_gmt8": "2026-10-19T01:56:40.600372+08:00"
 }

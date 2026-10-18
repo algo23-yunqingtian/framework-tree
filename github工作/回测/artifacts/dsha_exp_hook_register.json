@@ -1,0 +1,85 @@
+{
+  "register_id": "DSHA-EXP-HOOK-REGISTER-V1",
+  "generated_at_utc": "2026-10-18T17:56:40.582370Z",
+  "generated_at_gmt8": "2026-10-19T01:56:40.582370+08:00",
+  "ticket": "DSHA-A02-PLUS",
+  "role": "AUXILIARY (HOOK-ONLY REGISTRATION)",
+  "purpose": "实验因子只读钩子注册; 不进入本轮信号/IC/绩效; 由 P68 Sanity 通过后才可能激活",
+  "baseline": {
+    "git_head": "41364fa",
+    "git_branch": "feature/v88-g1",
+    "p68_diff_empty": true,
+    "p68_params_ok": "12/12",
+    "a01_receipt_status": "FINAL_STANDBY_LOCKED",
+    "a02_receipt_status": "PREHEAT_STANDBY",
+    "a02_preheat_cache_id": "DSHA-A02-PREHEAT-CACHE"
+  },
+  "hooks": [
+    {
+      "factor_id": "SF-TOGGLE-01",
+      "display_name": "股期联动01-Toggle开关因子 (条件闸门)",
+      "design_sha": "SOURCE_MISSING",
+      "source_path": "factor_hub/experimental/sf_toggle_rule.json",
+      "source_exists": false,
+      "status": "STANDBY-NOT-ACTIVE",
+      "missing_data": [
+        "产业链A股板块指数时序 (待补齐)",
+        "Toggle 触发逻辑规则明细 (需从蓝图源文件读入)"
+      ],
+      "ready_condition": "等待A股板块指数数据集补齐后, 由DSHC确认后可接入回测; 当前不进入任何信号/IC/绩效计算",
+      "tier": "tier2",
+      "category": "hook_only_registered",
+      "participates_in_signals": false,
+      "participates_in_ic": false,
+      "participates_in_performance": false,
+      "compute_executed_this_round": false,
+      "execution_block_reason": "HOOK_ONLY_REGISTERED (P68 Sanity 未通过前不激活实验因子)"
+    },
+    {
+      "factor_id": "NEWS-PULSE",
+      "display_name": "News-Pulse 热点/研报小作文投机注意力通道",
+      "design_sha": "SOURCE_MISSING",
+      "source_path": "data-harbor/research_drafts/narrative_sentinel_outline.md",
+      "source_exists": false,
+      "status": "BLUEPRINT-ONLY",
+      "missing_data": [
+        "新闻/研报数据源尚未配置",
+        "投机注意力通道算法参数未定",
+        "蓝图源文件缺失 (SOURCE_MISSING)"
+      ],
+      "ready_condition": "仅设计文档; 尚未配置数据源; 暂不进入回测循环",
+      "tier": "tier3",
+      "category": "blueprint_only",
+      "participates_in_signals": false,
+      "participates_in_ic": false,
+      "participates_in_performance": false,
+      "compute_executed_this_round": false,
+      "execution_block_reason": "HOOK_ONLY_REGISTERED (P68 Sanity 未通过前不激活实验因子)"
+    }
+  ],
+  "hook_count": 2,
+  "hook_all_inactive": true,
+  "hook_all_unexecuted": true,
+  "hook_all_excluded_from_signals": true,
+  "blueprints_status": {
+    "SF-TOGGLE-01": "SOURCE_MISSING",
+    "NEWS-PULSE": "SOURCE_MISSING"
+  },
+  "activation_gate": {
+    "trigger_authority": "P68_SANITY_GATE",
+    "a02_plus_can_auto_ignite": false,
+    "auto_ignition_by_a02_plus": "DENIED",
+    "note": "钩子激活必须等 P68 Sanity PASS + 上游蓝图源文件补齐 + 人工/DSHC 审核; A02-PLUS 永远不自动放行"
+  },
+  "governance_invariants": {
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0,
+    "MARKER_CREATED": false,
+    "OFFLINE_ONLY": true,
+    "EXPERIMENTAL_COMPUTE_EXECUTED": false,
+    "EXPERIMENTAL_IN_SIGNALS": "NOT_INCLUDED",
+    "EXPERIMENTAL_IN_IC": "NOT_INCLUDED",
+    "EXPERIMENTAL_IN_PERFORMANCE": "NOT_INCLUDED",
+    "NO_HUMAN_OPERATION_REQUIRED": true
+  }
+}

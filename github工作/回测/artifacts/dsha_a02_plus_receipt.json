@@ -1,0 +1,129 @@
+{
+  "receipt_id": "DSHA-A02-PLUS-RECEIPT",
+  "generated_at_utc": "2026-10-18T17:56:40.629369Z",
+  "generated_at_gmt8": "2026-10-19T01:56:40.629369+08:00",
+  "ticket": "DSHA-A02-PLUS",
+  "role": "AUXILIARY (HOOK-ONLY REGISTRATION)",
+  "status": "HOOKS_REGISTERED",
+  "baseline": {
+    "git_head": "41364fa",
+    "git_branch": "feature/v88-g1",
+    "p68_diff_empty": true,
+    "p68_params_ok": "12/12",
+    "a01_receipt_status": "FINAL_STANDBY_LOCKED",
+    "a02_receipt_status": "PREHEAT_STANDBY",
+    "a02_preheat_cache_id": "DSHA-A02-PREHEAT-CACHE"
+  },
+  "blueprints_status": {
+    "SF-TOGGLE-01": "SOURCE_MISSING",
+    "NEWS-PULSE": "SOURCE_MISSING"
+  },
+  "hooks": [
+    {
+      "factor_id": "SF-TOGGLE-01",
+      "display_name": "股期联动01-Toggle开关因子 (条件闸门)",
+      "design_sha": "SOURCE_MISSING",
+      "source_path": "factor_hub/experimental/sf_toggle_rule.json",
+      "source_exists": false,
+      "status": "STANDBY-NOT-ACTIVE",
+      "missing_data": [
+        "产业链A股板块指数时序 (待补齐)",
+        "Toggle 触发逻辑规则明细 (需从蓝图源文件读入)"
+      ],
+      "ready_condition": "等待A股板块指数数据集补齐后, 由DSHC确认后可接入回测; 当前不进入任何信号/IC/绩效计算",
+      "tier": "tier2",
+      "category": "hook_only_registered",
+      "participates_in_signals": false,
+      "participates_in_ic": false,
+      "participates_in_performance": false,
+      "compute_executed_this_round": false,
+      "execution_block_reason": "HOOK_ONLY_REGISTERED (P68 Sanity 未通过前不激活实验因子)"
+    },
+    {
+      "factor_id": "NEWS-PULSE",
+      "display_name": "News-Pulse 热点/研报小作文投机注意力通道",
+      "design_sha": "SOURCE_MISSING",
+      "source_path": "data-harbor/research_drafts/narrative_sentinel_outline.md",
+      "source_exists": false,
+      "status": "BLUEPRINT-ONLY",
+      "missing_data": [
+        "新闻/研报数据源尚未配置",
+        "投机注意力通道算法参数未定",
+        "蓝图源文件缺失 (SOURCE_MISSING)"
+      ],
+      "ready_condition": "仅设计文档; 尚未配置数据源; 暂不进入回测循环",
+      "tier": "tier3",
+      "category": "blueprint_only",
+      "participates_in_signals": false,
+      "participates_in_ic": false,
+      "participates_in_performance": false,
+      "compute_executed_this_round": false,
+      "execution_block_reason": "HOOK_ONLY_REGISTERED (P68 Sanity 未通过前不激活实验因子)"
+    }
+  ],
+  "hook_count": 2,
+  "hook_all_inactive": true,
+  "hook_all_unexecuted": true,
+  "hook_all_excluded_from_signals": true,
+  "report_template_appendix": {
+    "template_path": "artifacts/report_templates/backtest_report_template.md",
+    "before_size": 11246,
+    "after_size": 11239,
+    "size_delta": -7,
+    "before_sha256": "813b896a762fda3122d4c227be41fe22640b7a0e0a6e9369a5986ad28ce9fc9e",
+    "after_sha256": "e79eaeda0fc887ab2bda89debf1ada78efcaf076d039fea800302df357c087b2",
+    "block_id": "START_EXP_PREVIEW_APPENDIX",
+    "idempotent": true,
+    "main_output_logic_modified": false,
+    "signals_in_appendix": false,
+    "ic_in_appendix": false,
+    "curves_in_appendix": false,
+    "note": "仅追加未来路线备注小节, 主回测输出逻辑未改动; 若CSV触发P49回测, 报告会自动带出此小节; 未触发前不会渲染; 追加完成后由A02-PLUS手动去重了 markdown 多余分隔线, 最终大小见 after_size"
+  },
+  "stub_status": {
+    "observed_at_gmt8": "2026-10-19T01:56:40.598371+08:00",
+    "csv_path": "output_sample/wdf_sample_metals_raw.csv",
+    "exists": true,
+    "size": 50,
+    "sha256": "bef26114cc1fca4bdd40e911f888e7ca388dd150a1d48fd6c623d8fe07850895",
+    "classification": "STUB_ONLY-IGNORE",
+    "size_below_threshold": true,
+    "note": "STUB_ONLY-IGNORE: 50B header-only stub, 永不喂入 9 步管线; A02-PLUS 只观察, 不参与放行判定",
+    "sanity_executed": false,
+    "trigger": "P68_SANITY_GATE (唯一权威)"
+  },
+  "dshc_signal": {
+    "path": "artifacts/dshc_ignite_a02_events.jsonl",
+    "exists": true,
+    "latest_ts": "2026-10-19T00:48:08.4696810+08:00",
+    "latest_task": "DSHC-TASK-A01-PHASE2",
+    "latest_mode": null,
+    "wind_api_calls": 0,
+    "dashboard_updated": true
+  },
+  "audit_events_appended": 6,
+  "decision": {
+    "trigger_authority": "P68_SANITY_GATE",
+    "auto_ignition_by_a02_plus": "DENIED",
+    "note": "钩子激活等 P68 Sanity PASS + 上游蓝图源文件补齐 + 人工/DSHC 审核; A02-PLUS 永远不自动放行"
+  },
+  "governance_invariants": {
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0,
+    "MARKER_CREATED": false,
+    "OFFLINE_ONLY": true,
+    "EXPERIMENTAL_COMPUTE_EXECUTED": false,
+    "EXPERIMENTAL_IN_SIGNALS": "NOT_INCLUDED",
+    "EXPERIMENTAL_IN_IC": "NOT_INCLUDED",
+    "EXPERIMENTAL_IN_PERFORMANCE": "NOT_INCLUDED",
+    "NO_HUMAN_OPERATION_REQUIRED": true
+  },
+  "fixed_format_receipt_line": "→ DSHA_A02_PLUS=HOOKS_REGISTERED｜P68_LOCK=INTACT｜preheat_cache=ACTIVE｜tier1=READY｜tier2=STANDBY-NOT-ACTIVE｜tier3=BLUEPRINT-ONLY｜system_stable=100%",
+  "red_line_receipt_line": "→ wind_api_calls=0｜offline_only=YES｜final_lock_intact=YES｜experimental_hooks_only_registered_not_executed=YES｜no_human_operation_required=YES",
+  "future_activation_path": {
+    "step1": "等 DSHC 输出通过 Sanity 的行情 CSV",
+    "step2": "P68 唯一权威判定 Sanity PASS → 跑 P49 9 步回测",
+    "step3": "报告自动带出附录'待激活实验因子预览' (纯文字)",
+    "step4": "另开工单激活 SF-TOGGLE-01 / NEWS-PULSE 时才进入信号/IC/绩效"
+  }
+}

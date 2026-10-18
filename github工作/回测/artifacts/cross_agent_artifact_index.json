@@ -249,8 +249,8 @@
     "note": "The top-level wind_api_calls / real_wind_call / marker_created fields are the DSHD-P79 P90A baseline and were NOT modified by the A01 run. The A01 run made 3 WDF formula injections that returned no data, so A01 wind_api_calls=0 as well; per-run facts live under ignite_runs."
   },
   "updated_at": "2026-10-18T17:02:28Z",
-  "updated_by": "DSHA-A02",
-  "updated_reason": "additive A02-READY-PREHEAT artifacts; DSHD-P79 / DSHE baseline red-line fields preserved unchanged",
+  "updated_by": "DSHA-A02-PLUS",
+  "updated_reason": "additive A02-PLUS experimental hook registration; DSHD-P79/DSHE top-level red-line fields preserved unchanged",
   "a02_ready_preheat": {
     "ticket": "DSHA-A02-READY-PREHEAT",
     "agent": "DSHA-A02",
@@ -284,5 +284,113 @@
     "real_wind_call": false,
     "marker_created": false,
     "note": "A02 增强待命预热：只做预热+看板；触发权 100% 留在 P68 Sanity 闸门；P79/DSHD 顶层 red-line 字段未被修改"
+  },
+  "updated_at_gmt8": "2026-10-19T01:56:40.623370+08:00",
+  "a02_plus_hook_register": {
+    "created_at_gmt8": "2026-10-19T01:56:40.623370+08:00",
+    "ticket": "DSHA-A02-PLUS",
+    "role": "AUXILIARY",
+    "p0_baseline": {
+      "p68_diff_empty": true,
+      "p68_params_ok": "12/12",
+      "a01_receipt_status": "FINAL_STANDBY_LOCKED",
+      "a02_receipt_status": "PREHEAT_STANDBY"
+    },
+    "blueprints": {
+      "SF-TOGGLE-01": {
+        "path": "factor_hub/experimental/sf_toggle_rule.json",
+        "exists": false,
+        "sha256": "SOURCE_MISSING",
+        "status": "SOURCE_MISSING"
+      },
+      "NEWS-PULSE": {
+        "path": "data-harbor/research_drafts/narrative_sentinel_outline.md",
+        "exists": false,
+        "sha256": "SOURCE_MISSING",
+        "status": "SOURCE_MISSING"
+      }
+    },
+    "artifacts": {
+      "dsha_exp_hook_register": {
+        "path": "artifacts/dsha_exp_hook_register.json",
+        "sha256": "6cafaae2e9e068d1e8f38085135f5564f4d7a4315296d342d052bebfcb3cdc79"
+      },
+      "factor_catalog_manifest": {
+        "path": "factor_hub/meta/factor_catalog_manifest.json",
+        "sha256": "15673f337f4c8ebd3f910c614207139e7a19cdf80c7578218d3d185729a7faa0"
+      },
+      "backtest_report_template": {
+        "path": "artifacts/report_templates/backtest_report_template.md",
+        "sha256": "e79eaeda0fc887ab2bda89debf1ada78efcaf076d039fea800302df357c087b2",
+        "appendix_added": true,
+        "main_output_logic_modified": false
+      },
+      "a02_stub_watch_log": {
+        "path": "artifacts/a02_stub_watch_log.json",
+        "latest_classification": "STUB_ONLY-IGNORE"
+      },
+      "dsha_a02_plus_receipt": {
+        "path": "artifacts/dsha_a02_plus_receipt.json",
+        "sha256": "0fded4977eb9abd1a86433fbcf257a2c4f48befa7f7ac40bbb09b00714381dbb"
+      }
+    },
+    "hooks": [
+      {
+        "factor_id": "SF-TOGGLE-01",
+        "display_name": "股期联动01-Toggle开关因子 (条件闸门)",
+        "design_sha": "SOURCE_MISSING",
+        "source_path": "factor_hub/experimental/sf_toggle_rule.json",
+        "source_exists": false,
+        "status": "STANDBY-NOT-ACTIVE",
+        "missing_data": [
+          "产业链A股板块指数时序 (待补齐)",
+          "Toggle 触发逻辑规则明细 (需从蓝图源文件读入)"
+        ],
+        "ready_condition": "等待A股板块指数数据集补齐后, 由DSHC确认后可接入回测; 当前不进入任何信号/IC/绩效计算",
+        "tier": "tier2",
+        "category": "hook_only_registered",
+        "participates_in_signals": false,
+        "participates_in_ic": false,
+        "participates_in_performance": false,
+        "compute_executed_this_round": false,
+        "execution_block_reason": "HOOK_ONLY_REGISTERED (P68 Sanity 未通过前不激活实验因子)"
+      },
+      {
+        "factor_id": "NEWS-PULSE",
+        "display_name": "News-Pulse 热点/研报小作文投机注意力通道",
+        "design_sha": "SOURCE_MISSING",
+        "source_path": "data-harbor/research_drafts/narrative_sentinel_outline.md",
+        "source_exists": false,
+        "status": "BLUEPRINT-ONLY",
+        "missing_data": [
+          "新闻/研报数据源尚未配置",
+          "投机注意力通道算法参数未定",
+          "蓝图源文件缺失 (SOURCE_MISSING)"
+        ],
+        "ready_condition": "仅设计文档; 尚未配置数据源; 暂不进入回测循环",
+        "tier": "tier3",
+        "category": "blueprint_only",
+        "participates_in_signals": false,
+        "participates_in_ic": false,
+        "participates_in_performance": false,
+        "compute_executed_this_round": false,
+        "execution_block_reason": "HOOK_ONLY_REGISTERED (P68 Sanity 未通过前不激活实验因子)"
+      }
+    ],
+    "hook_count": 2,
+    "hook_all_inactive": true,
+    "governance_invariants": {
+      "REAL_WIND_CALL": false,
+      "WIND_API_CALLS": 0,
+      "MARKER_CREATED": false,
+      "OFFLINE_ONLY": true,
+      "EXPERIMENTAL_COMPUTE_EXECUTED": false,
+      "EXPERIMENTAL_IN_SIGNALS": "NOT_INCLUDED",
+      "EXPERIMENTAL_IN_IC": "NOT_INCLUDED",
+      "EXPERIMENTAL_IN_PERFORMANCE": "NOT_INCLUDED",
+      "NO_HUMAN_OPERATION_REQUIRED": true
+    },
+    "trigger_authority": "P68_SANITY_GATE",
+    "auto_ignition_by_a02_plus": "DENIED"
   }
 }
