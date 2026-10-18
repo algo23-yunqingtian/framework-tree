@@ -1,0 +1,225 @@
+{
+  "summary": {
+    "total": 8,
+    "all_pass": 5,
+    "skipped": 3,
+    "some_fail": 0,
+    "false_positive": 0,
+    "false_negative": 0,
+    "stability_S1_S5": true,
+    "stability_S2_S6": true,
+    "boundary_S7_pass": true,
+    "boundary_S8_pass": true
+  },
+  "scenarios": [
+    {
+      "key_a_present": false,
+      "key_b_present": false,
+      "authorized": false,
+      "prechecks_run": false,
+      "prechecks_count": 0,
+      "all_pass": false,
+      "some_fail": false,
+      "skipped": true,
+      "prechecks": [],
+      "id": "S1",
+      "desc": "无KeyA无KeyB(正常待命)"
+    },
+    {
+      "key_a_present": true,
+      "key_b_present": false,
+      "authorized": false,
+      "prechecks_run": true,
+      "prechecks_count": 5,
+      "all_pass": true,
+      "some_fail": false,
+      "skipped": false,
+      "prechecks": [
+        [
+          "P0-13-CLOSED",
+          true
+        ],
+        [
+          "BASELINE-SWITCH-FREE",
+          true
+        ],
+        [
+          "PHASE03-BLOCKERS-ZERO",
+          true
+        ],
+        [
+          "NO-PREMATUROUS-MERGE",
+          true
+        ],
+        [
+          "DSHE-AUTO-COMMIT-OFF",
+          true
+        ]
+      ],
+      "id": "S2",
+      "desc": "KeyA存在KeyB不存在(单钥匙预检)"
+    },
+    {
+      "key_a_present": false,
+      "key_b_present": true,
+      "authorized": false,
+      "prechecks_run": false,
+      "prechecks_count": 0,
+      "all_pass": false,
+      "some_fail": false,
+      "skipped": true,
+      "prechecks": [],
+      "id": "S3",
+      "desc": "KeyA不存在KeyB存在(异常态)"
+    },
+    {
+      "key_a_present": true,
+      "key_b_present": true,
+      "authorized": true,
+      "prechecks_run": true,
+      "prechecks_count": 5,
+      "all_pass": true,
+      "some_fail": false,
+      "skipped": false,
+      "prechecks": [
+        [
+          "P0-13-CLOSED",
+          true
+        ],
+        [
+          "BASELINE-SWITCH-FREE",
+          true
+        ],
+        [
+          "PHASE03-BLOCKERS-ZERO",
+          true
+        ],
+        [
+          "NO-PREMATUROUS-MERGE",
+          true
+        ],
+        [
+          "DSHE-AUTO-COMMIT-OFF",
+          true
+        ]
+      ],
+      "id": "S4",
+      "desc": "KeyA+B都存在(授权态)"
+    },
+    {
+      "key_a_present": false,
+      "key_b_present": false,
+      "authorized": false,
+      "prechecks_run": false,
+      "prechecks_count": 0,
+      "all_pass": false,
+      "some_fail": false,
+      "skipped": true,
+      "prechecks": [],
+      "id": "S5",
+      "desc": "重复S1稳定性"
+    },
+    {
+      "key_a_present": true,
+      "key_b_present": false,
+      "authorized": false,
+      "prechecks_run": true,
+      "prechecks_count": 5,
+      "all_pass": true,
+      "some_fail": false,
+      "skipped": false,
+      "prechecks": [
+        [
+          "P0-13-CLOSED",
+          true
+        ],
+        [
+          "BASELINE-SWITCH-FREE",
+          true
+        ],
+        [
+          "PHASE03-BLOCKERS-ZERO",
+          true
+        ],
+        [
+          "NO-PREMATUROUS-MERGE",
+          true
+        ],
+        [
+          "DSHE-AUTO-COMMIT-OFF",
+          true
+        ]
+      ],
+      "id": "S6",
+      "desc": "重复S2稳定性"
+    },
+    {
+      "key_a_present": true,
+      "key_b_present": false,
+      "authorized": false,
+      "prechecks_run": true,
+      "prechecks_count": 5,
+      "all_pass": true,
+      "some_fail": false,
+      "skipped": false,
+      "prechecks": [
+        [
+          "P0-13-CLOSED",
+          true
+        ],
+        [
+          "BASELINE-SWITCH-FREE",
+          true
+        ],
+        [
+          "PHASE03-BLOCKERS-ZERO",
+          true
+        ],
+        [
+          "NO-PREMATUROUS-MERGE",
+          true
+        ],
+        [
+          "DSHE-AUTO-COMMIT-OFF",
+          true
+        ]
+      ],
+      "id": "S7",
+      "desc": "KeyA空文件(边界)"
+    },
+    {
+      "key_a_present": true,
+      "key_b_present": false,
+      "authorized": false,
+      "prechecks_run": true,
+      "prechecks_count": 5,
+      "all_pass": true,
+      "some_fail": false,
+      "skipped": false,
+      "prechecks": [
+        [
+          "P0-13-CLOSED",
+          true
+        ],
+        [
+          "BASELINE-SWITCH-FREE",
+          true
+        ],
+        [
+          "PHASE03-BLOCKERS-ZERO",
+          true
+        ],
+        [
+          "NO-PREMATUROUS-MERGE",
+          true
+        ],
+        [
+          "DSHE-AUTO-COMMIT-OFF",
+          true
+        ]
+      ],
+      "id": "S8",
+      "desc": "KeyA10KB大文件(边界)"
+    }
+  ]
+}

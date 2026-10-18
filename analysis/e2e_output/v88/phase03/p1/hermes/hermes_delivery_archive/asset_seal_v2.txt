@@ -1,0 +1,21 @@
+V88 PHASE03 P17 SECOND SEAL (MD5+SHA256)
+
+## 2026-10-17 V88_PHASE03_P17_HERMESHF_P14_FINAL_QC_PATH_VERIFY 二次哈希封签
+
+> AGENT: HERMEShf | Branch: feature/v88-g1 (BRANCH_LOCKED) | 追加 (不修改 P13/P14 原封签)
+> 范围: hermes_delivery_archive/ 全目录
+> 算法: MD5 + SHA256
+> 状态: READY_FOR_DSHE_SECOND_QC
+
+| 文件 | MD5 | SHA256 | 字节 |
+|------|-----|--------|-----:|
+| asset_delivery_path.md | `075dc5b210fdf857918ce64796de5bef` | `378392a7e057365d...` | 4749 |
+| asset_index.lst | `d312f3c98e76398982f5f43adf0feb7b` | `9b51f1e5d64b3d6a...` | 2010 |
+| visual_asset_shturl.H.zip | `3b465d4cb56dc6cd2573bc3bfb68c8a8` | `9ba039fc31ac9bee...` | 955472 |
+| visual_asset_shturl.cc.zip | `8e12412c4971068c37670ca741991b76` | `0b17585300f9aa90...` | 11539 |
+| wiki_onboarding_record.png | `2eec63230f6aac4067261dd3eff36f6e` | `921bfbeabab482bd...` | 134156 |
+
+---
+
+**说明**: 本段为 P17 二次封签，H.zip 已去除 visual_asset_pkg/ 前缀，22 项资产路径对齐 DSHE 扫描入口。
+**P13/P14 原封签未修改**: MD5_MANIFEST.md 及 hermes_final_seal_archive/ 内条目保持不变。

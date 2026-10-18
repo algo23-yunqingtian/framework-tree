@@ -9845,3 +9845,41 @@ V88_PHASE03_P9_HERMESHF_P8_SNAPSHOT_FORMAT_ADAPT_JOB=ARBITER_ON_STANDBY_AWAIT_KE
 
 ### Status Flags
 V88_PHASE03_P10_HERMESHF_P9_FULL_GATE_SYNCHRONIZE_JOB=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_P10_HERMESHF_P9_FULL_GATE_SYNCHRONIZE_AGENT=HERMEShf, V88_PHASE03_P10_HERMESHF_P9_FULL_GATE_SYNCHRONIZE_BRANCH=feature/v88-g1, V88_PHASE03_P10_HERMESHF_P9_FULL_GATE_SYNCHRONIZE_DATE=2026-10-17, V88_PHASE03_P10_HERMESHF_P9_FULL_GATE_SYNCHRONIZE_CONSTRAINT_COMPLIANCE=5_OF_5
+
+
+---
+
+## V88 Phase03 P11~P17 HERMEShf Deliverables Commit Backfill (2026-10-18 11:38 +0800)
+
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED)
+**RECOVERY**: 2026-10-17 22:00 后 P11~P17 交付物已落盘但未提交，本轮环境复原时补提交
+
+### 工单完成记录
+
+| 工单 | 交付目录 | 核心产物 |
+|------|----------|----------|
+| P11 准入门境固化 | hermes_admission_gate_archive/ | phase03_admission_checklist.md + arbiter_final_regression.md(v3, 8场景5PASS/3SKIP) + global_gate_dashboard_v8.md + HANDOVER_v2.md |
+| P12 图表资产最终封签 | hermes_final_seal_archive/ | hermes_asset_index.md + chart_asset_recheck_report.md + cleanup_shturl |
+| P13 可视化看板 | hermes_web_dashboard_archive/ + web_asset/ | github_pages/ (index+5图) + 5 PNG + build_charts.py/build_html_charts.py/chart_lib.py + global_gate_dashboard_v9.md |
+| P14 可视化资产交付闭环 | hermes_delivery_archive/ | visual_asset_shturl.cc.zip + visual_asset_shturl.H.zip + asset_delivery_path.md |
+| P15~P16 | - | (DSHB/DSHE 侧工单，不在 HERMEShf 交付范围) |
+| P17 DSHE QC 路径修复 | hermes_delivery_archive/ | path_fix_report.md + asset_index.lst(22项) + asset_seal_v2.txt + delivery_package_v2.zip |
+
+### P17 QC 阻塞修复
+- 根因: visual_asset_shturl.H.zip 内部所有资产带 `visual_asset_pkg/` 前缀，DSHE 按 P12 约定路径扫描 -> 0/22
+- 修复: 去除前缀，22/22 全部可扫描 (web_asset/ 10 + github_pages/assets/ 10 + index.html + README.md)
+- DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC
+
+### 基线同步记录
+- 快进合并远端 17 个提交 (df821b4 -> 48b7197): DSHB P022/P023/P024/P025/P026 + DSHE P020/P021 + DSHA P55~P57 + DSHD P68/P69/P70/P71/P72
+- MD5_MANIFEST.md 双向合并: 保留远端 P024/P025 段 + 补回本地 P13/P14/P17 段 (9 段全保留)
+
+### Key Status (unchanged)
+- KEY_A: **ABSENT** | KEY_B: **ABSENT** | AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING** | PHASE04: **FROZEN** (不自动签发 KeyB)
+
+### 约束合规
+BRANCH_LOCKED=TRUE, NO_OVERWRITE=TRUE (MD5 纯追加), NO_MODIFY_V87=TRUE, NO_EDIT_RELEASE_TAG=TRUE, NO_ZHIJI_API_CALL=TRUE, NO_FACTOR_COMPUTE=TRUE, NO_ENGINE_MODIFY=TRUE -> 7/7
+
+### Status Flags
+V88_PHASE03_P11_TO_P17_HERMESHF_COMMIT_BACKFILL=TRUE, V88_PHASE03_P17_QC_BLOCKER_FIX=22_OF_22, V88_PHASE03_BASELINE_FF_MERGE=48b7197, V88_PHASE03_STATUS=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_CONSTRAINT_COMPLIANCE=7_OF_7

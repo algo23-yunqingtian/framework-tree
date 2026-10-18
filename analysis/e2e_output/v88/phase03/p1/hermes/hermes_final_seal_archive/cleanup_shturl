@@ -1,0 +1,56 @@
+# cleanup_shturl — P12 图表资产封签临时资源清理记录
+
+> TASK_ID: V88_PHASE03_P13_HERMESHF_P12
+> AGENT: HERMEShf
+> 时间: 2026-10-17
+> 操作类型: 临时缓存清理（仅删临时，不动正式资产）
+
+---
+
+## 清理执行明细
+
+| 类型 | 路径 | 项数 | 状态 |
+|------|------|----:|:---:|
+| dir | `__pycache__/` (chart_lib.cpython-312.pyc) | 1 | ✅ DELETED |
+| cache_dir | `~/.cache/matplotlib/` (font list cache) | 1 | ✅ DELETED |
+
+**总计清理**: 2 项
+
+## 保留的正式交付资产
+
+### 顶层脚本（4 项）
+| 文件 | 大小 | 用途 |
+|------|----:|------|
+| `chart_lib.py` | 14713B | 通用绘图库 |
+| `build_charts.py` | 7766B | PNG 批量生成 |
+| `build_html_charts.py` | 12198B | HTML 交互图表生成 |
+| `phase03_weekly_report.md` | 4797B | 投研周报 |
+
+### hermes_web_dashboard_archive/（30 文件, 1106.8KB）
+- `web_asset/` 10 文件 (5 PNG + 5 HTML)
+- `github_pages/` 含 `index.html`, `README.md`, `wiki_admission_gate.md`, `assets/` (10 文件)
+- `github_pages_deploy.zip` (314685B, 一键部署包)
+- `global_gate_dashboard_v9.md`, `phase03_weekly_report.md` (archive 副本)
+- `final_verification_report.md`
+- 元数据三件套 (STATUS.md, JOB_READY.flag, MD5_MANIFEST.md)
+
+## 不删除项（保留原因）
+
+- `web_asset/` 与 `hermes_web_dashboard_archive/web_asset/` 看似重复
+  → 前者是顶层源（供周报引用），后者是归档副本（供部署包），均为正式资产
+- `github_pages/assets/` 与 `web_asset/` 内容相同
+  → GitHub Pages 部署结构要求，`index.html` 引用相对路径 `assets/`
+- `github_pages_deploy.zip`
+  → 工单明确要求"输出可直接上传的部署包"，保留
+
+## 约束合规
+
+- ✅ 不修改引擎代码
+- ✅ 不修改因子逻辑
+- ✅ 不调用行情 API
+- ✅ 不触发因子计算
+- ✅ 不签发 KeyB
+
+---
+
+*V88 Phase03 P13 | HERMEShf | cleanup_shturl v1.0 | 2026-10-17*
