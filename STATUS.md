@@ -9980,3 +9980,68 @@ MD5_MANIFEST.md     ← 最外层权威源
 
 ### Status Flags
 V88_PHASE03_P11_HERMESHF_DISPATCH_CONSUME=PICKED_UP, V88_PHASE03_P11_DSHE_PROBE_ENTRY=READY, V88_PHASE03_P11_CONSTRAINT_COMPLIANCE=7_OF_7, V88_PHASE03_P11_VERIFICATION_CHAIN=L0_L4_ALL_GREEN, V88_PHASE03_P11_ASSET_COUNT=22_OF_22
+
+
+---
+
+## V88 Phase03 P12 HERMEShf Text Normalize Reseal and Dispatch Pickup Job (2026-10-20)
+
+**TASK_ID**: V88_PHASE03_P12_HERMESHF_TEXT_NORMALIZE_RESEAL_AND_DISPATCH_PICKUP_JOB
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED) | **源 commit**: 4e815ed
+
+### T0-T4 Summary
+
+| Task | 内容 | 结果 |
+|------|------|:---:|
+| T0 | 调度标记拾取签收 (C1 补齐) | ✅ pickup.flag P12 区块 + dispatch_pickup_record_P12.md |
+| T1 | 文本换行归一化 (LF) | ✅ text_normalize_report_P12.md (0 文件需修改) |
+| T2 | 哈希重算 + v5 封签 + L0-L4 校验 | ✅ reseal_verification_P12.md + asset_seal_v5.txt |
+| T3 | 元清单追加 P12 段 | ✅ MD5_MANIFEST.md (A~H 节) |
+| T4 | 7 项约束自检 | ✅ 7/7 PASS |
+
+### 关键核验结论 (与工单前置声明不一致)
+
+工单前置声明"DSHE P39 确认 HTML/MD 文本文件因 CRLF/LF 差异导致哈希漂移"。
+**实测三方勘察均未发现 CRLF**:
+
+| 勘察面 | CRLF 计数 | 结论 |
+|--------|:---:|:---:|
+| 磁盘 22 项资产 | 0 | 已为纯 LF |
+| visual_asset_shturl.H.zip 内部 | 0 | 已为纯 LF |
+| git HEAD 追踪内容 | 0 | 已为纯 LF |
+| asset_index.lst vs 磁盘 | 22/22 | 无哈希漂移 |
+
+**归一化幂等执行, 0 个文件需要修改。** 未伪造修改条目。
+建议 DSHE 排查: 是否比较了压缩包内部条目 vs asset_index.lst (已核验 22/22 一致),
+或涉及 v3/v4 封签中 delivery 文件 (非 22 项资产) 的哈希比对。
+
+### 索引缺口 (需 DSHE 决策)
+
+asset_index.lst 22 条, 但挂载目录实际含 23 个文件。缺口:
+- `github_pages/wiki_admission_gate.md` (3591B) —— 存在于 visual_asset_shturl.H.zip 内, 但未在 asset_index.lst 中
+
+**本轮未修改 asset_index.lst**: 该文件被 asset_seal_v3.txt (P17/P18) 锁定哈希。
+实测: 首次尝试改 3→4 列格式导致 v3 表从 10/10 降为 9/10, 已立即回退到 HEAD 版本并复核 10/10。
+交 DSHE 决策: 扩容至 23 条 + 生成 v6, 或移出挂载点。
+
+### 封签层级 (四版并存)
+
+| 封签 | 来源 | 状态 |
+|------|------|:---:|
+| asset_seal_v2.txt | P17 | 原样保留 |
+| asset_seal_v3.txt | P18 | 原样保留 (10/10) |
+| asset_seal_v4.txt | P11 | 原样保留 (13/13) |
+| asset_seal_v5.txt | P12 | 新增 (17/17) |
+
+```
+asset_seal_v5.txt  →  pickup.flag (持有 v5 sha256)  →  MD5_MANIFEST.md P12 段
+```
+
+### Key Status (unchanged)
+
+- KEY_A: **ABSENT** | KEY_B: **ABSENT** | AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING** | PHASE04: **FROZEN**
+- DELIVERY_PACKAGE_FROZEN: **TRUE** (不变)
+
+### Status Flags
+V88_PHASE03_P12_HERMESHF=C1_SATISFIED, V88_PHASE03_P12_NORMALIZE=0_FILES_CHANGED_IDEMPOTENT, V88_PHASE03_P12_RECAL=22_OF_22, V88_PHASE03_P12_INDEX_GAP=1_PENDING_DSHE_DECISION, V88_PHASE03_P12_CONSTRAINT_COMPLIANCE=7_OF_7, V88_PHASE03_P12_SEAL_CHAIN=L0_L4_ALL_GREEN

@@ -104,3 +104,15 @@ HERMEShf 不自动生成 Key B 放行标记。Phase04 保持冻结。
 - DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC (维持)
 - PACKAGE_STATUS: DELIVERY_PACKAGE_FROZEN (不变)
 - STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A (维持)
+
+## P12 文本归一化+重封签+调度签收状态 (追加 2026-10-20)
+- TASK_ID: V88_PHASE03_P12_HERMESHF_TEXT_NORMALIZE_RESEAL_AND_DISPATCH_PICKUP_JOB
+- T0 调度签收: ✅ (pickup.flag P12 区块, C1 SATISFIED)
+- T1 换行归一化: ✅ (0 文件需修改, 幂等, PNG 未动)
+- T2 哈希重算+v5 封签: ✅ (22/22 一致, L0-L4 全绿, 四版封签并存)
+- T3 全局清单追加: ✅ (MD5_MANIFEST.md P12 段 A~H 节)
+- T4 约束自检: ✅ 7/7 PASS
+- INDEX_GAP: 1 项 (github_pages/wiki_admission_gate.md, 交 DSHE 决策)
+- DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC (维持)
+- PACKAGE_STATUS: DELIVERY_PACKAGE_FROZEN (不变)
+- STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A (维持)
