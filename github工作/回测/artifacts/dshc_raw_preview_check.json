@@ -1,0 +1,100 @@
+﻿{
+    "generated_at":  "2026-10-19T00:48:08.2226956+08:00",
+    "ticket":  "DSHC-TASK-A01-PHASE2",
+    "a01_tag":  "A01-USER-REMOTE-002",
+    "auth_ref":  "A01-USER-REMOTE-002",
+    "ignite_session":  "A02-IGNITE-20261019-003927",
+    "csv_path":  "output_sample/wdf_sample_metals_raw.csv",
+    "header":  "date,symbol,indicator,CLOSE,VOL,OI,SETTLE,source",
+    "header_fields":  [
+                          "date",
+                          "symbol",
+                          "indicator",
+                          "CLOSE",
+                          "VOL",
+                          "OI",
+                          "SETTLE",
+                          "source"
+                      ],
+    "row_count":  0,
+    "file_bytes":  50,
+    "sha256":  "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895",
+    "preview_only":  true,
+    "backtest_run":  false,
+    "dsha_p68_handoff":  true,
+    "dsha_p68_note":  "raw CSV only; DSHA-P68 owns the formal sanity precheck + 9-step pipeline. This executor never invokes p68_final_stabilized_standby.py.",
+    "no_p62_mirror":  true,
+    "columns":  [
+                    {
+                        "column":  "CLOSE",
+                        "non_null":  0,
+                        "nullish":  0,
+                        "ratio":  0,
+                        "numeric_count":  0
+                    },
+                    {
+                        "column":  "VOL",
+                        "non_null":  0,
+                        "nullish":  0,
+                        "ratio":  0,
+                        "numeric_count":  0
+                    },
+                    {
+                        "column":  "OI",
+                        "non_null":  0,
+                        "nullish":  0,
+                        "ratio":  0,
+                        "numeric_count":  0
+                    },
+                    {
+                        "column":  "SETTLE",
+                        "non_null":  0,
+                        "nullish":  0,
+                        "ratio":  0,
+                        "numeric_count":  0
+                    }
+                ],
+    "date_range":  {
+                       "min":  "",
+                       "max":  ""
+                   },
+    "by_symbol":  [
+
+                  ],
+    "requested_trading_days":  250,
+    "requested_field_count":  4,
+    "instruments_requested":  [
+                                  "CU.SHF",
+                                  "ZN.SHF",
+                                  "PB.SHF",
+                                  "AL.SHF",
+                                  "SN.SHF",
+                                  "NI.SHF",
+                                  "LC.SHF"
+                              ],
+    "instruments_ok":  [
+
+                       ],
+    "instruments_failed":  [
+
+                           ],
+    "wind_api_calls":  0,
+    "wdf_retries":  0,
+    "wdf_inject_attempts":  2,
+    "probe_wind_calls":  2,
+    "bridge_status":  "NOT_ACTIVATED",
+    "token_state":  "UNUSED",
+    "sanity_reference":  {
+                             "dsha_p68_MIN_FILE_SIZE":  5120,
+                             "dsha_p68_SANITY_MIN_ROWS":  300,
+                             "dsha_p68_SANITY_MIN_NON_NULL_RATIO":  0.9,
+                             "dsha_p68_SANITY_REQUIRED_COLUMNS":  [
+                                                                      "CLOSE",
+                                                                      "VOL",
+                                                                      "OI",
+                                                                      "SETTLE"
+                                                                  ],
+                             "note":  "informational only -- thresholds belong to DSHA-P68, not to this executor"
+                         },
+    "ready_for_downstream":  false
+}

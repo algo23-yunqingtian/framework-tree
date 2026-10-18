@@ -34,8 +34,9 @@
                       "a01_ignite":  {
                                          "ignite_receipt_json":  {
                                                                      "key":  "a01_ignite_receipt_json",
-                                                                     "path":  "artifacts/dshc_ignite_run_receipt.json",
-                                                                     "sha256":  "B41079BA3EE0DC06997B806393A6A4AEF29E9280B84117BC9D5B21F8383C43B1"
+                                                                     "path":  "artifacts/dshc_ignite_run_receipt_A01_USER_REMOTE_001.json",
+                                                                     "sha256":  "B41079BA3EE0DC06997B806393A6A4AEF29E9280B84117BC9D5B21F8383C43B1",
+                                                                     "note":  "canonical path artifacts/dshc_ignite_run_receipt.json now holds the A02 receipt; A01 receipt preserved at the archived path"
                                                                  },
                                          "preflight_check_json":  {
                                                                       "key":  "a01_preflight_check_json",
@@ -64,6 +65,59 @@
                                                             "rows":  0,
                                                             "note":  "header only - no data returned by the WDF channel"
                                                         }
+                                     },
+                      "a02_ignite":  {
+                                         "fetch_executor_ps1":  {
+                                                                    "key":  "a02_fetch_executor_ps1",
+                                                                    "path":  "scripts/dshc_ignite_a02_wdf_fetch.ps1",
+                                                                    "sha256":  "70BADB957F56D26DE9D26C99EDE1F132A3E41E943DC9D3BA2DE552E26E73E369"
+                                                                },
+                                         "preflight_check_json":  {
+                                                                      "key":  "a02_preflight_check_json",
+                                                                      "path":  "artifacts/wdf_preflight_check.json",
+                                                                      "sha256":  "29047FE15E6D06AA00B71134C6CE8BA113CA93D68A08561178D9C9E1E1B41A94"
+                                                                  },
+                                         "bridge_readiness_json":  {
+                                                                       "key":  "a02_bridge_readiness_json",
+                                                                       "path":  "artifacts/wdf_bridge_readiness.json",
+                                                                       "sha256":  "1AD0546B3160E1654A876BC46B219F449A145497A4823582F81B29A590F3B331",
+                                                                       "note":  "bridge wait-cycle summary with 14-poll signal log; probe detail lives in the receipt bridge_readiness block"
+                                                                   },
+                                         "ignite_receipt_json":  {
+                                                                     "key":  "a02_ignite_receipt_json",
+                                                                     "path":  "artifacts/dshc_ignite_run_receipt.json",
+                                                                     "sha256":  "2A197163561E460A878BCB1EC9B9AB917577B0B30B6037A95DC484A4FE7053D2",
+                                                                     "status":  "WAIT_BRIDGE"
+                                                                 },
+                                         "preview_check_json":  {
+                                                                    "key":  "a02_raw_preview_check_json",
+                                                                    "path":  "artifacts/dshc_raw_preview_check.json",
+                                                                    "sha256":  "8DB08DEB089E429511682AFE0089FA95C6F9C7954F5F5358A9CAAACA300CE963",
+                                                                    "rows":  0
+                                                                },
+                                         "ignite_events_jsonl":  {
+                                                                     "key":  "a02_ignite_events_jsonl",
+                                                                     "path":  "artifacts/dshc_ignite_a02_events.jsonl",
+                                                                     "sha256":  "E0D17056F8A4DD1A3BB5CB67B1319F64853C9B8E3A51C339F929E35957644AE7"
+                                                                 },
+                                         "channel_diagnosis_md":  {
+                                                                      "key":  "a02_channel_diagnosis_md",
+                                                                      "path":  "artifacts/dshc_ignite_a02_channel_diagnosis.md",
+                                                                      "sha256":  "9602EDC898CCD04DBD63E85E8882624E89192BD17144A0EEDB4B6D455B980FC0"
+                                                                  },
+                                         "csv_output":  {
+                                                            "key":  "a02_csv_output",
+                                                            "path":  "output_sample/wdf_sample_metals_raw.csv",
+                                                            "sha256":  "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895",
+                                                            "rows":  0,
+                                                            "note":  "header only - bridge inactive, no ignition, 0 data rows (unchanged from A01)"
+                                                        },
+                                         "receipt_cycle1_archive":  {
+                                                                        "key":  "a02_receipt_cycle1_archive",
+                                                                        "path":  "artifacts/dshc_ignite_run_receipt_A02_wait_cycle1.json",
+                                                                        "sha256":  "D97035559BD3E73ED292AC0DD2821ED13227BD96A5CA59ECF752541D91A0A1FA",
+                                                                        "note":  "first 8-minute wait cycle receipt, archived for evidence"
+                                                                    }
                                      }
                   },
     "generated_at":  "2026-10-18T17:21:58.9356933+08:00",
@@ -114,6 +168,77 @@
                                                     "environment_root_cause":  "Wind terminal API bridge layer not activated: WDF.Addin loads and WSD responds but never returns a data grid. Consistent with the P54 investigation under data-harbor/dsha_p49_prep/P49_backtest_audit/.",
                                                     "p62_loop_consequence":  "No data rows exported, so DSHA-P62-LOOP has nothing to consume; no backtest was triggered.",
                                                     "receipt_path":  "artifacts/dshc_ignite_run_receipt.json"
+                                                },
+                        "A01-USER-REMOTE-002":  {
+                                                    "receipt_id":  "DSHC-IGNITE-A02-RECEIPT-001",
+                                                    "ticket":  "DSHC-TASK-A01-PHASE2",
+                                                    "auth_ref":  "A01-USER-REMOTE-002",
+                                                    "a01_tag":  "A01-USER-REMOTE-002",
+                                                    "manual_permission_ref":  "PERM-A01-REMOTE-WIND-BRIDGE-001",
+                                                    "gate":  "AUTHORISED_BY_USER_WORKORDER",
+                                                    "audit_marker":  "IGNITE_VIA_USER_WORKORDER_A02_AUTH",
+                                                    "ignition_authority":  "USER_EXPLICIT_ONE_SHOT_REMOTE_AUTHORISATION",
+                                                    "branch":  "feature/v88-g1",
+                                                    "status":  "WAIT_BRIDGE",
+                                                    "end_reason":  "bridge not activated within 8 min; returning to STANDBY. No ignition, token A01-USER-REMOTE-002 NOT consumed.",
+                                                    "timestamp_start":  "2026-10-19T00:39:27.8898514+08:00",
+                                                    "timestamp_end":  "2026-10-19T00:48:08.3816827+08:00",
+                                                    "duration_sec":  520,
+                                                    "preflight":  "PASS",
+                                                    "preflight_checks":  "26/26",
+                                                    "bridge_verdict":  "NOT_ACTIVATED",
+                                                    "bridge_status":  "DEAD_DATA_PLANE",
+                                                    "wsd_kind":  "DATA_GRID_EMPTY",
+                                                    "wsd_rows":  0,
+                                                    "bridge_wait_min":  8,
+                                                    "bridge_wait_polls":  14,
+                                                    "bridge_wait_signal_changes":  1,
+                                                    "bridge_wait_reprobes":  1,
+                                                    "bridge_wait_result":  "STANDBY",
+                                                    "instruments_total":  7,
+                                                    "instruments_ok":  0,
+                                                    "instruments_failed":  0,
+                                                    "instruments_skipped":  0,
+                                                    "wind_api_calls":  0,
+                                                    "wdf_retries":  0,
+                                                    "wdf_inject_attempts":  2,
+                                                    "probe_wind_calls":  2,
+                                                    "csv_rows":  0,
+                                                    "token_state":  "UNUSED",
+                                                    "token_consumed":  false,
+                                                    "channel":  "Excel COM + WDF add-in WSD formula (WindPy / InitWAPI NOT used)",
+                                                    "strategy":  "per instrument, per FIELD separate WSD call, then in-memory align-merge (avoids the known WDF multi-field WSD defect)",
+                                                    "protected_foreground_excel_pids":  [
+                                                                                            14644
+                                                                                        ],
+                                                    "protected_foreground_excel_terminated":  false,
+                                                    "agent_excel_pid":  17124,
+                                                    "agent_excel_lifetime_sec":  5,
+                                                    "agent_excel_reset_action":  "SAFETY_NET_RESET: {\r\n    \"script\":  \"system_skills/SKILL-WIND-EXCEL-WDF-BOOTSTRAP/reset_wdf_safe.ps1\",\r\n    \"requested_stop_excel\":  true,\r\n    \"wind_calls\":  0,\r\n    \"status\":  \"OK\",\r\n    \"note\":  \"Safe reset smoke entrypoint.\",\r\n    \"action\":  \"AGENT_PID_TARGETED\",\r\n    \"pid\":  17124,\r\n    \"marker_cleared\":  true\r\n}",
+                                                    "hard_timeout_min":  12,
+                                                    "hard_timeout_reached":  false,
+                                                    "marker_present_after_run":  false,
+                                                    "sample_fetch_allow_marker_created":  false,
+                                                    "windpy_used":  false,
+                                                    "initwapi_used":  false,
+                                                    "admin_operation_performed":  false,
+                                                    "permanent_config_modified":  false,
+                                                    "backtest_run":  false,
+                                                    "no_backtest_stolen":  true,
+                                                    "no_p62_mirror":  true,
+                                                    "dsha_p68_untouched":  true,
+                                                    "dshd_p80_deltas":  [
+                                                                            "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_observation_brief.md MODIFIED 722216A0CA0B5068DA8F12DC6D438EEB56E4875E93B58CF7182CFA5AE4DEC901-\u003eA8FD6FF1C9D7CDFE7C56A0B2C8D5B42A1E6635805CD6243806FC83274517544A",
+                                                                            "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_file_evidence.json MODIFIED FEA1D7DF1F6E0397A8AC40B388F6CC98597C523823ACDE6C8B917E7B73B37E7E-\u003eBE1C14085D20169B60F780377B9446FBDA797E86C5106D4993DF94520407E4D9",
+                                                                            "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_p80_a01_audit_snapshot.json MODIFIED 0493C0C868E563D91F86040B6B77A28936F0A3290F54AE95215B9675AD01712E-\u003e3C90AB2F2DD5A64635124F5975C86BC7A6CCB02E1A5F2766187E83A87B5CD919",
+                                                                            "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_artifact_catalog.json MODIFIED 65490210C2822C8D0B5A3A780B0B073CC0802D628B880C872DA909474FF45D3D-\u003e582CE96E5623F3158D2456AECCD5704A85666BC207D16EF607F4D3AF462F2AA9"
+                                                                        ],
+                                                    "dshd_p80_delta_note":  "deltas are DSHD-P80 audit watcher s own periodic rewrites of its snapshot/catalog/brief files (mtimes 00:48:37-00:51:03, after this run ended); the executor never wrote to any DSHD-P80 path",
+                                                    "wind_api_calls_semantics":  "counted only when a WSD formula actually returned a data grid; readiness probes are counted separately in probe_wind_calls",
+                                                    "p4_receipt_line":  "DSHC_A01_PHASE2=WAIT_BRIDGE｜token=A01-USER-REMOTE-002｜bridge_status=NOT_ACTIVATED｜protected_front_excel=OK｜token_state=UNUSED｜no_windpy=YES｜no_backtest_stolen=YES",
+                                                    "receipt_path":  "artifacts/dshc_ignite_run_receipt.json",
+                                                    "diagnosis_path":  "artifacts/dshc_ignite_a02_channel_diagnosis.md",
+                                                    "next_step":  "bridge still inactive; holder executes PERM-A01-REMOTE-WIND-BRIDGE-001 (InitWAPI as admin / terminal UI API enable / .wind WMain repair), then re-issue the ignite command; token A01-USER-REMOTE-002 remains UNUSED and ready"
                                                 }
                     },
     "a01_red_line_note":  {
@@ -123,7 +248,7 @@
                               "marker_created_baseline":  false,
                               "note":  "The top-level wind_api_calls / real_wind_call / marker_created fields are the DSHD-P79 P90A baseline and were NOT modified by the A01 run. The A01 run made 3 WDF formula injections that returned no data, so A01 wind_api_calls=0 as well; per-run facts live under ignite_runs."
                           },
-    "updated_at":  "2026-10-18T21:11:57.3078344+08:00",
-    "updated_by":  "DSHC-IGNITE-A01",
-    "updated_reason":  "additive A01 ignition run record; DSHD-P79 baseline red-line fields preserved unchanged"
+    "updated_at":  "2026-10-19T00:56:56.3267077+08:00",
+    "updated_by":  "DSHC-TASK-A01-PHASE2",
+    "updated_reason":  "additive A02 phase-2 ignite-run record (WAIT_BRIDGE/STANDBY, token UNUSED); DSHD-P79 P90A baseline red-line fields (wind_api_calls=0 / real_wind_call=false / marker_created=false) preserved unchanged; A01 receipt entry re-pointed to its archive"
 }

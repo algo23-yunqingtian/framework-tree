@@ -1,6 +1,9 @@
 ﻿{
-    "started_at":  "2026-10-18T20:45:42.4294568+08:00",
-    "auth_ref":  "A01-USER-REMOTE-001",
+    "started_at":  "2026-10-19T00:39:27.8898514+08:00",
+    "ticket":  "DSHC-TASK-A01-PHASE2",
+    "auth_ref":  "A01-USER-REMOTE-002",
+    "a01_tag":  "A01-USER-REMOTE-002",
+    "manual_permission_ref":  "PERM-A01-REMOTE-WIND-BRIDGE-001",
     "branch":  "feature/v88-g1",
     "checklist":  [
                       {
@@ -25,11 +28,18 @@
                           "detail":  "parse_ok=3/3"
                       },
                       {
-                          "name":  "DSHA_P65_PAYLOAD_OK",
+                          "name":  "A02_EXECUTOR_AND_WATCHDOG_PARSE_OK",
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "instruments=CU.SHF,ZN.SHF,LC.SHF,PB.SHF,SN.SHF,NI.SHF,AL.SHF range=2025-01-01~2026-10-17 fields=CLOSE;VOL;OI;SETTLE"
+                          "detail":  "executor=1/1 watchdog=1/1"
+                      },
+                      {
+                          "name":  "DSHA_P65_PREFAB_CONSISTENT",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "prefab=CU.SHF,ZN.SHF,LC.SHF,PB.SHF,SN.SHF,NI.SHF,AL.SHF"
                       },
                       {
                           "name":  "HEADER_TEMPLATE_OK",
@@ -92,7 +102,7 @@
                           "value":  true,
                           "expected":  true,
                           "pass":  true,
-                          "detail":  "new_pids=29520 err="
+                          "detail":  "new_pids=13100 err="
                       },
                       {
                           "name":  "BG_EXCEL_QUIT_CLEAN",
@@ -114,11 +124,74 @@
                           "expected":  true,
                           "pass":  true,
                           "detail":  "connected=WDF.Addin"
+                      },
+                      {
+                          "name":  "DSHA_P68_BASELINE_PINNED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "files=3"
+                      },
+                      {
+                          "name":  "DSHD_P80_BASELINE_PINNED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "files=7"
+                      },
+                      {
+                          "name":  "GATE_CLOSED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "gate must be CLOSED; ignition is authorised only by the one-shot token"
+                      },
+                      {
+                          "name":  "RELEASE_PERMIT_NOT_ISSUED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "release_permit must be NOT_ISSUED"
+                      },
+                      {
+                          "name":  "PREFAB_WIND_API_CALLS_ZERO",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "wind_api_calls=0"
+                      },
+                      {
+                          "name":  "TOKEN_A02_STATE_UNUSED",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "already_in_index=False"
+                      },
+                      {
+                          "name":  "NO_WINDPY_CHANNEL",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "this executor uses Excel COM + WDF WSD only"
+                      },
+                      {
+                          "name":  "NO_INITWAPI_CHANNEL",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "the human owns PERM-A01-REMOTE-WIND-BRIDGE-001; the agent never runs InitWAPI"
+                      },
+                      {
+                          "name":  "FRONT_EXCEL_PRESENT",
+                          "value":  true,
+                          "expected":  true,
+                          "pass":  true,
+                          "detail":  "protected_pids=14644"
                       }
                   ],
-    "summary":  16,
-    "total":  16,
-    "finished_at":  "2026-10-18T20:45:55.4041815+08:00",
+    "summary":  26,
+    "total":  26,
+    "finished_at":  "2026-10-19T00:39:40.0738692+08:00",
     "status":  "PASS",
     "wind_api_calls":  0,
     "real_wind_call":  false,
@@ -138,5 +211,29 @@
                                  "WDF.Addin"
                              ],
     "wdf_dll_path":  "D:\\x64\\WDF.dll",
+    "instruments":  [
+                        "CU.SHF",
+                        "ZN.SHF",
+                        "PB.SHF",
+                        "AL.SHF",
+                        "SN.SHF",
+                        "NI.SHF",
+                        "LC.SHF"
+                    ],
+    "fields":  [
+                   "CLOSE",
+                   "VOL",
+                   "OI",
+                   "SETTLE"
+               ],
+    "trading_days":  250,
+    "guardrails":  {
+                       "dsha_p68_files_pinned":  3,
+                       "dshd_p80_files_pinned":  7,
+                       "no_windpy":  true,
+                       "no_initwapi":  true,
+                       "no_backtest":  true,
+                       "no_mirror_to_p62_scan_dir":  true
+                   },
     "note":  "Preflight performs NO Wind data calls: registry / process / COM / add-in probes only."
 }

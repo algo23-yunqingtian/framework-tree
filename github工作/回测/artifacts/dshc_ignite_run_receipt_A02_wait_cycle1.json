@@ -1,0 +1,174 @@
+﻿{
+    "receipt_id":  "DSHC-IGNITE-A02-RECEIPT-001",
+    "ticket":  "DSHC-TASK-A01-PHASE2",
+    "audit_marker":  "IGNITE_VIA_USER_WORKORDER_A02_AUTH",
+    "auth_ref":  "A01-USER-REMOTE-002",
+    "a01_tag":  "A01-USER-REMOTE-002",
+    "ignite_session":  "A02-IGNITE-20261019-001744",
+    "manual_permission_ref":  "PERM-A01-REMOTE-WIND-BRIDGE-001",
+    "status":  "WAIT_BRIDGE",
+    "end_reason":  "bridge not activated within 8 min; returning to STANDBY. No ignition, token A01-USER-REMOTE-002 NOT consumed.",
+    "gate":  "AUTHORISED_BY_USER_WORKORDER",
+    "ignition_authority":  "USER_EXPLICIT_ONE_SHOT_REMOTE_AUTHORISATION",
+    "branch":  "feature/v88-g1",
+    "timestamp_start":  "2026-10-19T00:17:45.0523420+08:00",
+    "timestamp_end":  "2026-10-19T00:26:49.5293761+08:00",
+    "duration_sec":  544,
+    "mode":  "full",
+    "channel":  "Excel COM + WDF add-in WSD formula (WindPy / InitWAPI NOT used)",
+    "strategy":  "per instrument, per FIELD separate WSD call, then in-memory align-merge (avoids the known WDF multi-field WSD defect)",
+    "hard_timeout_min":  12,
+    "max_attempts_per_field":  2,
+    "retry_interval_sec":  20,
+    "attempt_window_sec":  35,
+    "wind_api_calls":  0,
+    "wdf_retries":  0,
+    "wdf_inject_attempts":  2,
+    "probe_wind_calls":  2,
+    "wind_api_calls_semantics":  "counted only when a WSD formula actually returned a data grid; formula injections that never evaluated are wdf_inject_attempts; bridge-readiness probes are counted separately in probe_wind_calls",
+    "real_wind_call":  false,
+    "real_wind_call_scope":  "task-scoped to this A02 run only; NOT persisted to code constants or to the cross_agent_artifact_index baseline",
+    "token_state":  "UNUSED",
+    "token_exhausted_after_this_run":  false,
+    "one_shot_auth_used":  false,
+    "sample_fetch_allow_marker_created":  false,
+    "permanent_config_modified":  false,
+    "windpy_used":  false,
+    "initwapi_used":  false,
+    "admin_operation_performed":  false,
+    "backtest_run":  false,
+    "factor_computation_run":  false,
+    "no_backtest_stolen":  true,
+    "no_p62_mirror_written":  true,
+    "p4_receipt_line_running":  "DSHC_A01_PHASE2=IGNITE_RUNNING｜token=A01-USER-REMOTE-002｜bridge_status=NOT_ACTIVATED｜protected_front_excel=OK",
+    "p4_receipt_line":  "DSHC_A01_PHASE2=WAIT_BRIDGE｜token=A01-USER-REMOTE-002｜bridge_status=NOT_ACTIVATED｜protected_front_excel=OK｜token_state=UNUSED｜no_windpy=YES｜no_backtest_stolen=YES",
+    "red_lines":  {
+                      "user_excel_untouched":  true,
+                      "front_excel_pid_14644_alive":  true,
+                      "no_windpy":  true,
+                      "no_initwapi":  true,
+                      "no_admin_operation":  true,
+                      "hard_timeout_enforced":  true,
+                      "max_attempts_enforced":  true,
+                      "no_wind_bombardment":  true,
+                      "no_permanent_marker":  true,
+                      "no_long_term_config_change":  true,
+                      "token_exhausted":  false,
+                      "no_backtest_stolen":  true,
+                      "no_p62_mirror":  true,
+                      "dsha_p68_untouched":  true,
+                      "dshd_p80_untouched":  false
+                  },
+    "preflight":  {
+                      "status":  "PASS",
+                      "checks_passed":  26,
+                      "checks_total":  26,
+                      "report":  "artifacts/wdf_preflight_check.json"
+                  },
+    "bridge_readiness":  {
+                             "verdict":  "NOT_ACTIVATED",
+                             "bridge_status":  "DEAD_DATA_PLANE",
+                             "wsd_kind":  "DATA_GRID_EMPTY",
+                             "wsd_rows":  0,
+                             "health_check":  "OK",
+                             "wind_listen_ports":  [
+
+                                                   ],
+                             "dotwind_file_count":  0,
+                             "probe_wind_calls":  1
+                         },
+    "bridge_wait":  {
+                        "max_wait_min":  8,
+                        "polls":  15,
+                        "signal_changes":  1,
+                        "reprobes":  1,
+                        "bridge_activated":  false,
+                        "result":  "STANDBY"
+                    },
+    "payload":  {
+                    "source_prefab":  "artifacts/wdf_instrument_fetch_table.json (DSHA-P65 prefab, read-only)",
+                    "instruments":  [
+                                        "CU.SHF",
+                                        "ZN.SHF",
+                                        "PB.SHF",
+                                        "AL.SHF",
+                                        "SN.SHF",
+                                        "NI.SHF",
+                                        "LC.SHF"
+                                    ],
+                    "wdf_fields":  [
+                                       "CLOSE",
+                                       "VOL",
+                                       "OI",
+                                       "SETTLE"
+                                   ],
+                    "strategy":  "one WSD per field; in-memory align-merge",
+                    "time_range":  {
+                                       "start":  "2025-08-25",
+                                       "end":  "2026-10-19",
+                                       "frequency":  "DAILY",
+                                       "span_calendar_days":  420
+                                   },
+                    "trading_days":  250
+                },
+    "background_excel":  {
+                             "agent_pid":  22804,
+                             "created_at":  "2026-10-19T00:19:09.5366227+08:00",
+                             "quit_at":  "2026-10-19T00:19:17.4721069+08:00",
+                             "lifetime_sec":  0,
+                             "within_hard_timeout":  true,
+                             "reset_action":  "RESET_ERROR: Cannot bind parameter \u0027Id\u0027. Cannot convert value \"[int]System.Collections.Specialized.OrderedDictionary.pid\" to type \"System.Int32\". Error: \"Input string was not in a correct format.\""
+                         },
+    "user_excel":  {
+                       "protected_pids":  [
+                                              14644
+                                          ],
+                       "alive_after_run":  [
+                                               14644
+                                           ],
+                       "terminated":  false,
+                       "protected":  true
+                   },
+    "instruments":  [
+
+                    ],
+    "instruments_ok":  0,
+    "instruments_failed":  0,
+    "instruments_skipped":  0,
+    "instruments_total":  7,
+    "csv":  {
+                "path":  "output_sample/wdf_sample_metals_raw.csv",
+                "header":  "",
+                "rows":  0,
+                "bytes":  0,
+                "sha256":  ""
+            },
+    "preview_check":  "artifacts/dshc_raw_preview_check.json",
+    "guardrails":  {
+                       "dsha_p68_files_pinned":  3,
+                       "dsha_p68_deltas":  [
+
+                                           ],
+                       "dshd_p80_files_pinned":  7,
+                       "dshd_p80_deltas":  [
+                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_observation_brief.md MODIFIED 34B68FC0FBB438C68F80EB64F1A60BF3D648CDA716BD5A36E2A56AE6E2BFE9D0-\u003e9D2AD37C77E6704B258EE5192264D90965D172D9E4880B9F2490C412BAE4BF3E",
+                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_file_evidence.json MODIFIED 1324E9D525921FE10C5F3781A40CD0B30C5D14457E87A4C716319FC140A677DE-\u003e7275CA92CDD2B13B3480EAA409DE66F67B4733F73668AB34810634DA4C30585A",
+                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_p80_a01_audit_snapshot.json MODIFIED BB81F87AE36B60B0B85AFC9C13CDC733D2572A326F8E8F28BE9565A6F1E2E3F6-\u003eF3244278ECEBE5107C9DA06B68AB79DFD207EA5A308E638404D5978C17AB677B",
+                                               "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_a01_artifact_catalog.json MODIFIED 6730589A7D0DE65C9226BFD4BB21971BD205433F9E2AC1D150DD7516D836E10D-\u003e150875AFB77861ACC2687E95D97FAB3A12EF3ACEA4EA6DB88BF2FBF5E8F59FC9"
+                                           ],
+                       "no_backtest":  true,
+                       "no_p62_mirror":  true
+                   },
+    "ledger":  {
+                   "g7_tracking_log":  "tracking_monitor_audit.jsonl",
+                   "dshc_events":  "artifacts/dshc_p90a_final_events.jsonl",
+                   "local_log":  "artifacts/dshc_ignite_a02_events.jsonl",
+                   "a01_tag":  "A01-USER-REMOTE-002"
+               },
+    "prior_run":  {
+                      "auth_ref":  "A01-USER-REMOTE-001",
+                      "receipt_archived_at":  "artifacts/dshc_ignite_run_receipt_A01_USER_REMOTE_001.json",
+                      "status":  "FETCH_ERROR",
+                      "wind_api_calls":  0
+                  }
+}
