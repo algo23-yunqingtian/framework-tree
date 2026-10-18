@@ -9928,3 +9928,55 @@ v3 的 SHA256 由最外层载体 hermes_dispatch/p18_delivery_ready.flag 持有,
 
 ### Status Flags
 V88_PHASE03_P18_HERMESHF_ASSET_DELIVERY_SEAL=READY_FOR_SECOND_QC, V88_PHASE03_P18_PACKAGE_FROZEN=TRUE, V88_PHASE03_P18_CONSTRAINT_COMPLIANCE=7_OF_7, V88_PHASE03_P18_QC_PREFIX_RESIDUAL=0, V88_PHASE03_P18_STATUS=ARBITER_ON_STANDBY_AWAIT_KEY_A
+
+
+---
+
+## V88 Phase03 P11 HERMEShf Dispatch Consume + Deliverable Sync Job (2026-10-18 12:15 +0800)
+
+**TASK_ID**: V88_PHASE03_P11_HERMESHF_DISPATCH_CONSUME
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED)
+
+### T0-T4 Summary
+
+| Task | 内容 | 结果 |
+|------|------|:---:|
+| T0 | 调度标记拾取与签收 (MD5 校验未篡改) | ✅ pickup.flag + dispatch_pickup_record.md |
+| T1 | P18 交付包全链路复核 (L0/L0'/L1/L2/L3/L4) | ✅ p11_asset_package_review.md |
+| T2 | 资产目录只读挂载 (补齐 C3 探测入口) | ✅ asset_dir_mount_log.md |
+| T3 | 全局清单追加 P11 段 (A~F 六节) | ✅ MD5_MANIFEST.md |
+| T4 | 7 项约束自检 (7/7 PASS) | ✅ hermes_constraint_P11.md |
+
+### 关键核验结论
+
+- **单向校验链全绿**: flag → asset_seal_v3.txt → 10 交付文件 → 22 项资产
+- **22/22**: MD5 一致 + 大小一致 + 只读锁定 (0444/0555)
+- **0 前缀残留**: visual_asset_pkg 全清除
+- **压缩包无损坏**: delivery_package_v2.zip + visual_asset_shturl.H.zip (testzip 通过)
+
+### C3 条件补齐 (DSHE 探测入口)
+
+挂载 `hermes/github_pages/` (源自 hermes_web_dashboard_archive/github_pages/, 13 文件),
+使 DSHE 可按 asset_index.lst 相对路径直接探测到全部 22 项资产。
+`hermes/web_asset/` (10 文件) 原位只读锁定。
+
+### 封签层级 (避免循环依赖)
+
+```
+asset_seal_v4.txt   ← 封签 P11 交付内容 (13 条)
+  ↓ v4 哈希由最外层持有
+pickup.flag         ← 持有 v4 SHA256 + P18 flag 哈希
+  ↓ flag 哈希由全局清单持有
+MD5_MANIFEST.md     ← 最外层权威源
+```
+
+**分层单向, 无循环依赖**。历史封签 v2 (P17) / v3 (P18) 原样保留, 不重复封签。
+
+### Key Status (unchanged)
+
+- KEY_A: **ABSENT** | KEY_B: **ABSENT** | AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING** | PHASE04: **FROZEN**
+- DELIVERY_PACKAGE_FROZEN: **TRUE** (不变)
+
+### Status Flags
+V88_PHASE03_P11_HERMESHF_DISPATCH_CONSUME=PICKED_UP, V88_PHASE03_P11_DSHE_PROBE_ENTRY=READY, V88_PHASE03_P11_CONSTRAINT_COMPLIANCE=7_OF_7, V88_PHASE03_P11_VERIFICATION_CHAIN=L0_L4_ALL_GREEN, V88_PHASE03_P11_ASSET_COUNT=22_OF_22

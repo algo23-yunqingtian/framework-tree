@@ -1,0 +1,29 @@
+# V88 Phase03 P11 交付包双哈希终封 (asset_seal_v4.txt)
+# AGENT: HERMEShf | BRANCH: feature/v88-g1 | 生成: 2026-10-20
+# 范围: hermes_delivery_archive/ 全部交付文件 (排除历史封签 v2/v3 与自身)
+# 算法: MD5 + SHA256 | 状态: DELIVERY_PACKAGE_FROZEN
+# 层级: v4 封签 P11 交付内容, v4 的哈希由 pickup.flag 持有
+#
+# ⚠️ 自引用排除: 本文件不封签自身 (文件无法包含自身哈希)。
+#    完整性保障: v4 的 SHA256 由 hermes_dispatch/pickup.flag 持有。
+# ⚠️ 历史封签保留: asset_seal_v2.txt (P17), asset_seal_v3.txt (P18) 原样保留, 不重复封签。
+
+| 文件 | MD5 | SHA256 | 字节 |
+|------|-----|--------|-----:|
+| asset_delivery_final_verify.md | `bf5cb3a6d3e3e7b59b7a77c285bc05e2` | `0823bfd0ed0dc67d26ea1d198a0fdd8ce17fa0540b1d0c91c256961a5967b915` | 3464 |
+| asset_delivery_path.md | `075dc5b210fdf857918ce64796de5bef` | `378392a7e057365dd43639db40bb73e0cd0360965cad4c8ebc934aa365e48a10` | 4749 |
+| asset_dir_mount_log.md | `f4e6b04e874057c56436c0f9ce420278` | `f74a026ad072e22e53779c2f4af035a5656df178cacadfbc38b7df539ed48be0` | 3448 |
+| asset_index.lst | `d312f3c98e76398982f5f43adf0feb7b` | `9b51f1e5d64b3d6a9402a908aad9af3e21eb1543a6e65699f9a10227c6006bad` | 2010 |
+| delivery_package_v2.zip | `674b85fa8263d957f4085bd5ac108af0` | `033906e59f3d4016efab6e8023fa42329b6a0f32125f9ff953f4222a622ce8b4` | 1084991 |
+| dispatch_pickup_record.md | `9651bd5caaf36ed44af8398856b5cb86` | `5c4f4ba04ed3164942a7f2107b5077dd24dc82e99c963d1fb3f734a48cda093e` | 1971 |
+| hermes_constraint_P11.md | `8a68ff82efe22c0c9cbb4cdbea2837c6` | `de20d17d28c8607d54ca097c0f4e63b20faaea93c90a05a09fab21301594777e` | 2763 |
+| hermes_constraint_P18.md | `caf36b7b518dafa69ded7e719fd99bc3` | `891fe1d225326aaf27b980e5db5cc6fc2493b25c725d9214609cc0333cca1e31` | 2017 |
+| p11_asset_package_review.md | `9050f98c5d9136832f5175a9c1e7ac6d` | `15595c3ff0886f6d6824ff32f0aa07379aa603e1b13e8c375ef2af1f6a28cb50` | 4272 |
+| path_fix_report.md | `d7d4087a8b1fd2541a19878bc674ff9a` | `532db3c737177e736d5c801c3143f21da616668a20ebd4e32957e319a478d096` | 5178 |
+| visual_asset_shturl.H.zip | `3b465d4cb56dc6cd2573bc3bfb68c8a8` | `9ba039fc31ac9beeb1075ffff3652908ee3199913b1a633dea73aca7652469fd` | 955472 |
+| visual_asset_shturl.cc.zip | `8e12412c4971068c37670ca741991b76` | `0b17585300f9aa903ed06d9a80c6651e7885d1790f097bae5909fd4eb683fc0a` | 11539 |
+| wiki_onboarding_record.png | `2eec63230f6aac4067261dd3eff36f6e` | `921bfbeabab482bdba5472e77da89bd2c8897d299fe77a145f93040e83f782ba` | 134156 |
+
+---
+
+**P11 终封声明**: 本表覆盖 hermes_delivery_archive/ 全部 13 个交付文件 (排除历史封签 v2/v3 与自身)。历史封签原样保留。

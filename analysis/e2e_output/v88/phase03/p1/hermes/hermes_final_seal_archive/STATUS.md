@@ -93,3 +93,14 @@ HERMEShf 不自动生成 Key B 放行标记。Phase04 保持冻结。
 - DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC (维持)
 - PACKAGE_STATUS: DELIVERY_PACKAGE_FROZEN
 - STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A (维持)
+
+## P11 调度消费+交付元信息同步状态 (追加 2026-10-20)
+- TASK_ID: V88_PHASE03_P11_HERMESHF_DISPATCH_CONSUME
+- T0 调度标记拾取: ✅ (pickup.flag 生成, MD5/SHA256 校验未篡改)
+- T1 P18 交付包全链路复核: ✅ (L0/L0'/L1/L2/L3/L4 全绿, 22/22)
+- T2 资产目录只读挂载: ✅ (web_asset/ + github_pages/, 0444/0555, C3 就绪)
+- T3 全局清单追加: ✅ (MD5_MANIFEST.md P11 段 A~G 节, 历史保留)
+- T4 约束自检 7/7: ✅
+- DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC (维持)
+- PACKAGE_STATUS: DELIVERY_PACKAGE_FROZEN (不变)
+- STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A (维持)
