@@ -81,3 +81,15 @@ HERMEShf 不自动生成 Key B 放行标记。Phase04 保持冻结。
 - T4 约束自检 7/7: ✅
 - DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC
 - 新增交付物: path_fix_report.md / asset_index.lst / asset_seal_v2.txt / delivery_package_v2.zip
+
+
+## P18 交付包终封+QC就绪状态 (追加 2026-10-18T11:49)
+- TASK_ID: V88_PHASE03_P18_HERMESHF_ASSET_DELIVERY_SEAL
+- T0 完整性核验: ✅ (22/22 MD5 一致, 0 前缀残留, zip 无损坏)
+- T1 双哈希终封: ✅ (asset_seal_v3.txt, MD5+SHA256 9 文件)
+- T2 DSHE 拾取标记: ✅ (hermes_dispatch/p18_delivery_ready.flag, 被动模式)
+- T3 全局清单追加: ✅ (MD5_MANIFEST.md + P18 段, 历史保留)
+- T4 约束自检 7/7: ✅
+- DELIVERY_STATUS: READY_FOR_DSHE_SECOND_QC (维持)
+- PACKAGE_STATUS: DELIVERY_PACKAGE_FROZEN
+- STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A (维持)

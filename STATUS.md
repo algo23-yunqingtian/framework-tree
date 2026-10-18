@@ -9883,3 +9883,48 @@ BRANCH_LOCKED=TRUE, NO_OVERWRITE=TRUE (MD5 纯追加), NO_MODIFY_V87=TRUE, NO_ED
 
 ### Status Flags
 V88_PHASE03_P11_TO_P17_HERMESHF_COMMIT_BACKFILL=TRUE, V88_PHASE03_P17_QC_BLOCKER_FIX=22_OF_22, V88_PHASE03_BASELINE_FF_MERGE=48b7197, V88_PHASE03_STATUS=ARBITER_ON_STANDBY_AWAIT_KEY_A, V88_PHASE03_CONSTRAINT_COMPLIANCE=7_OF_7
+
+
+---
+
+## V88 Phase03 P18 HERMEShf Asset Delivery Seal + QC Ready Flag (2026-10-18 11:56 +0800)
+
+**TASK_ID**: V88_PHASE03_P18_HERMESHF_ASSET_DELIVERY_SEAL
+**AGENT**: HERMEShf | **BRANCH**: feature/v88-g1 (BRANCH_LOCKED)
+
+### T0-T4 Summary
+
+| Task | 内容 | 结果 |
+|------|------|:---:|
+| T0 | 交付包完整性二次核验 (22项 MD5 逐条比对 + zip 无损坏) | ✅ asset_delivery_final_verify.md |
+| T1 | P18 交付包双哈希终封 (MD5+SHA256, 10 文件) | ✅ asset_seal_v3.txt |
+| T2 | DSHE QC 拾取就绪标记 (被动轮询, 无 RPC) | ✅ hermes_dispatch/p18_delivery_ready.flag |
+| T3 | 全局清单追加 P18 哈希段 (A/B/C 三节) | ✅ MD5_MANIFEST.md |
+| T4 | 7 项约束自检 (7/7 PASS) | ✅ hermes_constraint_P18.md |
+
+### 关键核验结论
+
+- 22 项资产: 22/22 MD5 一致, 0 `visual_asset_pkg` 前缀残留
+- 压缩包: delivery_package_v2.zip 无损坏, visual_asset_shturl.H.zip 29 文件无前缀
+- 交付包状态: **DELIVERY_PACKAGE_FROZEN** (禁止再次修改)
+- DSHE 校验链: flag.SEAL_V3_SHA256 -> v3 表 10 条 -> asset_index.lst 22 项
+
+### 封签自引用处理 (重要)
+
+asset_seal_v3.txt **不封签自身** (文件无法包含自身哈希, 重写即失效)。
+v3 的 SHA256 由最外层载体 hermes_dispatch/p18_delivery_ready.flag 持有, 形成
+"flag -> v3 封签文件 -> 10 个交付文件 -> 22 项资产" 单向校验链, 无循环依赖。
+
+### 历史封印链完整性
+
+- P17 v2 封签 (asset_seal_v2.txt): **原样保留, 未覆盖**
+- MD5_MANIFEST.md: P18 纯追加, P13/P14/P17 段与远端 P024/P025 段完整 (19 段)
+- 全程零文件覆盖, 零外部 API, 零因子计算, 零引擎改动
+
+### Key Status (unchanged)
+
+- KEY_A: **ABSENT** | KEY_B: **ABSENT** | AUTHORIZED: **NO**
+- ARBITER_STATE: **OBSERVING** | PHASE04: **FROZEN** (不自动签发 KeyB)
+
+### Status Flags
+V88_PHASE03_P18_HERMESHF_ASSET_DELIVERY_SEAL=READY_FOR_SECOND_QC, V88_PHASE03_P18_PACKAGE_FROZEN=TRUE, V88_PHASE03_P18_CONSTRAINT_COMPLIANCE=7_OF_7, V88_PHASE03_P18_QC_PREFIX_RESIDUAL=0, V88_PHASE03_P18_STATUS=ARBITER_ON_STANDBY_AWAIT_KEY_A

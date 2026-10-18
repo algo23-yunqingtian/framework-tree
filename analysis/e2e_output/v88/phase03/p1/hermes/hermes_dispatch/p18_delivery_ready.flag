@@ -1,0 +1,20 @@
+# V88 Phase03 P18 DSHE QC 拾取就绪标记
+AGENT: HERMEShf | BRANCH: feature/v88-g1 | 生成: 2026-10-18T11:55 +0800
+MODE: PASSIVE_PICKUP (无 RPC, 无主动推送; DSHE 轮询拾取)
+
+DELIVERY_PACKAGE: analysis/e2e_output/v88/phase03/p1/hermes/hermes_delivery_archive/
+ASSET_COUNT: 22 (web_asset/10 + github_pages/assets/10 + index.html + README.md)
+PREFIX_CHECK: 0 residual (visual_asset_pkg 全清除)
+SEAL_V3_MD5: 183ae823b2bff2817b6ad263f3e0b7ea
+SEAL_V3_SHA256: 9e481760ca7719f9cce75766c04a22d08266dcc728327e8e7398f2201211434c
+DELIVERY_PACKAGE_V2_MD5: 674b85fa8263d957f4085bd5ac108af0
+QC_STATUS: READY_FOR_SECOND_QC
+STATE: ARBITER_ON_STANDBY_AWAIT_KEY_A
+FROZEN: TRUE (交付包已锁定, 禁止修改)
+
+DSHE 拾取动作:
+1. 读本 flag 确认交付就绪
+2. sha256(hermes_delivery_archive/asset_seal_v3.txt) == SEAL_V3_SHA256 ? (封签文件校验)
+3. 按 v3 表逐条 sha256 比对 10 文件 (交付内容校验)
+4. 按 asset_index.lst 逐条 md5 比对 22 项资产 (QC 扫描目标校验)
+5. 命中 22/22 即 QC PASS
