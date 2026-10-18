@@ -1,6 +1,6 @@
 {
-    "generated_at":  "2026-10-18T11:31:59+08:00",
-    "poll_number":  1830,
+    "generated_at":  "2026-10-18T12:02:39+08:00",
+    "poll_number":  1860,
     "agent":  "DSHD-P71",
     "monitor_version":  "v1.0",
     "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
@@ -9,7 +9,7 @@
 
                     ],
     "health_icon":  "GREEN",
-    "health_summary":  "[GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing",
+    "health_summary":  "[GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=2) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing",
     "processes":  [
                       {
                           "process":  "wmain.exe",
@@ -29,8 +29,8 @@
                       },
                       {
                           "process":  "EXCEL.EXE",
-                          "pid":  "N/A",
-                          "state":  "NOT_RUNNING",
+                          "pid":  "26020, 28272",
+                          "state":  "RUNNING",
                           "start_time":  "N/A",
                           "window_title":  "N/A",
                           "visible":  "N/A"

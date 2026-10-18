@@ -1,4 +1,4 @@
-﻿# =============================================================================
+# =============================================================================
 # DSHD-P71 SAMPLE RUN AUDIT RELAY
 # Baseline: feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92
 # Constraints: gate=CLOSED/HOLD, release_permit=NOT_ISSUED, wind_api_calls=0
@@ -93,6 +93,19 @@ $sessionFlickerWarning = $false
 $sessionFlickerDetail = 'SESSION_FLICKER_CLEAR: No flicker in last 3 polls'
 $recentAlertCount10min = 0
 $pythonPrototypeRunning = $false
+
+# === State Tracking (P73 NEW) ===
+$trackingJsonErrorCount = 0
+$trackingJsonHistoricalErrors = 0
+$trackingJsonNewErrors = 0
+$trackingJsonErrorLines = @()
+$trackingJsonHistoricalPattern = @('DSHA-P54-','DSHA-P54','\p{Cs}')
+$trackingJsonErrorDetected = $false
+$trackingJsonErrorAlertTriggered = $false
+$trackingJsonErrorDetail = 'TRACKING_JSON_INTEGRITY_CLEAR: 0 parse errors'
+$offlineFactorReadiness = 'NOT_FOUND'
+$offlineFactorArtifactPath = 'NOT_FOUND'
+$p59ArtifactState = 'NOT_FOUND'
 
 # === Initialize Poll Number ===
 $pollNum = 1700
@@ -838,6 +851,109 @@ while ($true) {
         }
 
         # ==========================================================
+        # P73: TRACKING LOG JSON INTEGRITY CHECK (NEW)
+        # Historical DSHA-P54 encoding artifacts → INFO log only
+        # New JSON parse errors → CRITICAL alert
+        # ==========================================================
+        $trackingJsonErrorCount = 0
+        $trackingJsonHistoricalErrors = 0
+        $trackingJsonNewErrors = 0
+        $trackingJsonErrorLines = @()
+        if (Test-Path $trackingLedger) {
+            $tlLines = Get-Content $trackingLedger -ErrorAction SilentlyContinue
+            $lineNum = 0
+            foreach ($tl in $tlLines) {
+                $lineNum++
+                if ($tl -match '^\s*$') { continue }
+                try {
+                    $null = $tl | ConvertFrom-Json
+                } catch {
+                    $trackingJsonErrorCount++
+                    $trackingJsonErrorLines += $lineNum
+                    # Check if this is a historical DSHA-P54 encoding artifact
+                    $isHistorical = $false
+                    if ($tl -match 'DSHA-P54') {
+                        $isHistorical = $true
+                        # Additional check: Chinese characters or mojibake pattern
+                        if ($tl -match '[\u4e00-\u9fff]|[\u2e80-\u2eff]|[\uff00-\uffef]') {
+                            $isHistorical = $true
+                        }
+                    }
+                    if ($isHistorical) {
+                        $trackingJsonHistoricalErrors++
+                    } else {
+                        $trackingJsonNewErrors++
+                    }
+                }
+            }
+        }
+        # Threshold: new errors > 0 triggers CRITICAL
+        $trackingJsonErrorDetected = ($trackingJsonErrorCount -gt 0)
+        $trackingJsonErrorAlertTriggered = ($trackingJsonNewErrors -gt 0)
+        if ($trackingJsonNewErrors -gt 0) {
+            $trackingJsonErrorDetail = "TRACKING_JSON_NEW_ERRORS_CRITICAL: $trackingJsonNewErrors new JSON parse errors (lines: $(($trackingJsonErrorLines | Where-Object { $trackingJsonErrorLines.IndexOf($_) -lt $trackingJsonNewErrors }) -join ','))"
+            $alertFlags += 'TRACKING_JSON_NEW_ERRORS_CRITICAL'
+        } elseif ($trackingJsonHistoricalErrors -gt 0) {
+            $trackingJsonErrorDetail = "TRACKING_JSON_HISTORICAL_NOTE: $trackingJsonHistoricalErrors historical DSHA-P54 encoding artifacts (line numbers: $(($trackingJsonErrorLines | Select-Object -First 5) -join ',')) - INFO only, no alert"
+        } else {
+            $trackingJsonErrorDetail = "TRACKING_JSON_INTEGRITY_CLEAR: 0 parse errors"
+        }
+
+        # ==========================================================
+        # P73: DSHA-P59 OFFLINE FACTOR FRAMEWORK READINESS CHECK (NEW)
+        # ==========================================================
+        $p59ArtifactCandidates = @(
+            "$artifactsDir\dsha_p59_offline_factor_framework.json",
+            "$artifactsDir\dsha_p59_artifact_index.json",
+            "$artifactsDir\offline_factor_framework_readiness.json",
+            "$artifactsDir\cross_agent_artifact_index.json"
+        )
+        $p59ArtifactFound = $false
+        foreach ($p59Path in $p59ArtifactCandidates) {
+            if (Test-Path $p59Path) {
+                $p59ArtifactFound = $true
+                $offlineFactorArtifactPath = $p59Path
+                $offlineFactorReadiness = 'ARTIFACT_FOUND'
+                break
+            }
+        }
+        if (-not $p59ArtifactFound) {
+            # Check cross_agent_artifact_index.json for P59 entries
+            $crossIndexPath = "$artifactsDir\cross_agent_artifact_index.json"
+            if (Test-Path $crossIndexPath) {
+                try {
+                    $crossIndexData = Get-Content $crossIndexPath -Raw -Encoding UTF8 | ConvertFrom-Json
+                    # Check if P59 is listed in any agent's artifacts
+                    $p59InIndex = $false
+                    if ($crossIndexData.agents.DSHA.artifacts) {
+                        foreach ($art in $crossIndexData.agents.DSHA.artifacts) {
+                            if ($art.name -match 'P59') {
+                                $p59InIndex = $true
+                                $offlineFactorArtifactPath = $art.path
+                                $offlineFactorReadiness = 'INDEXED_IN_CROSS_AGENT'
+                                $p59ArtifactState = $art.state
+                                break
+                            }
+                        }
+                    }
+                    if (-not $p59InIndex) {
+                        $offlineFactorReadiness = 'NOT_FOUND'
+                        $offlineFactorArtifactPath = 'NOT_FOUND'
+                        $p59ArtifactState = 'NOT_FOUND'
+                    }
+                } catch {
+                    $offlineFactorReadiness = 'PARSE_ERROR'
+                    $offlineFactorArtifactPath = 'PARSE_ERROR'
+                    $p59ArtifactState = 'PARSE_ERROR'
+                }
+            } else {
+                $offlineFactorReadiness = 'NOT_FOUND'
+                $offlineFactorArtifactPath = 'NOT_FOUND'
+                $p59ArtifactState = 'NOT_FOUND'
+            }
+        }
+
+        # ==========================================================
         # P4: SYSTEM SKILL SHA CHECK
         # ==========================================================
         $skillHashResults = [ordered]@{}
@@ -1484,6 +1600,24 @@ while ($true) {
                     com_lock_events_lines = if (Test-Path $comLockEventsLog) { (Get-Content $comLockEventsLog -ErrorAction SilentlyContinue).Count } else { 0 }
                     clean_guard_events_lines = if (Test-Path $cleanGuardEventsLog) { (Get-Content $cleanGuardEventsLog -ErrorAction SilentlyContinue).Count } else { 0 }
                 }
+                # P73: Offline Factor Framework Readiness
+                offline_factor_readiness = [ordered]@{
+                    dsha_p59_status = $p59ArtifactState
+                    readiness_state = $offlineFactorReadiness
+                    artifact_path = $offlineFactorArtifactPath
+                    p89_cross_index_status = 'CROSS_INDEX_IN_PROGRESS'
+                    note = 'DSHA-P59 offline factor framework artifact not yet published; P89 cross-agent artifact index in progress'
+                }
+                # P73: Tracking Log JSON Integrity
+                tracking_log_json_integrity = [ordered]@{
+                    total_parse_errors = $trackingJsonErrorCount
+                    historical_dsha_p54_artifacts = $trackingJsonHistoricalErrors
+                    new_json_parse_errors = $trackingJsonNewErrors
+                    error_line_numbers = $trackingJsonErrorLines
+                    alert_triggered = $trackingJsonErrorAlertTriggered
+                    detail = $trackingJsonErrorDetail
+                    threshold_rule = 'Historical DSHA-P54 encoding artifacts: INFO only; new JSON parse errors: CRITICAL alert'
+                }
             }
             $comDashJsonFile = $comDashJson | ConvertTo-Json -Depth 12
             [System.IO.File]::WriteAllText($comDashboardJson, $comDashJsonFile, (New-Object System.Text.UTF8Encoding($false)))
@@ -1572,6 +1706,7 @@ while ($true) {
             $cmLines += "| WDF_INIT_MISSING (InitWAPI disappeared) | $(if ($initWapiMissing) { 'TRIGGERED' } else { 'CLEAR' }) | $(if ($initWapiPids.Count -gt 0) { 'Present' } else { 'Absent' }) |"
             $cmLines += "| SESSION_FLICKER (P71: visible/invisible flicker 3 polls) | $(if ($sessionFlickerWarning) { 'TRIGGERED' } else { 'CLEAR' }) | History: $( ($wmainVisibilityHistory | ForEach-Object { if ($_ -eq $true) { 'V' } else { 'I' } }) -join '' ) |"
             $cmLines += "| SAMPLE_ACTIVE_OBSERVING (P71: marker+python running) | $(if ($sampleActiveObserving) { 'TRIGGERED' } else { 'CLEAR' }) | $(if ($sampleActiveObserving) { "Fast poll: $($sampleFastPollRemaining) remaining" } else { 'Not active' }) |"
+            $cmLines += "| TRACKING_JSON_NEW_ERRORS (P73: new JSON parse errors) | $(if ($trackingJsonErrorAlertTriggered) { 'CRITICAL' } elseif ($trackingJsonHistoricalErrors -gt 0) { 'INFO' } else { 'CLEAR' }) | $trackingJsonErrorDetail |"
             $cmLines += ""
             $cmLines += "---"
             $cmLines += ""
@@ -1626,6 +1761,35 @@ while ($true) {
             $cmLines += "| 风险评级 | $comRiskRating |"
             $cmLines += ""
             $cmLines += "> **Red Line**: DSHD never creates/deletes sample_fetch_allow.marker. DSHD never calls controller or Python scripts. DSHD only observes."
+            $cmLines += ""
+            $cmLines += "---"
+            $cmLines += ""
+            $cmLines += "## Offline Factor Framework Readiness (P73 NEW)"
+            $cmLines += ""
+            $cmLines += "| Item | Value |"
+            $cmLines += "|------|-------|"
+            $cmLines += "| DSHA-P59 Artifact Status | $p59ArtifactState |"
+            $cmLines += "| Offline Factor Framework Readiness | $offlineFactorReadiness |"
+            $cmLines += "| Artifact Path | $offlineFactorArtifactPath |"
+            $cmLines += "| P89 Cross-Index Status | CROSS_INDEX_IN_PROGRESS |"
+            $cmLines += "| Note | DSHA-P59 offline factor framework artifact not yet published. P89 cross-agent artifact index in progress. |"
+            $cmLines += ""
+            $cmLines += "> **Status**: Offline factor framework (DSHA-P59) pending. DSHC-P89 artifact cross-indexing underway. DSHD observes only."
+            $cmLines += ""
+            $cmLines += "---"
+            $cmLines += ""
+            $cmLines += "## Tracking Log JSON Integrity (P73 NEW)"
+            $cmLines += ""
+            $cmLines += "| Metric | Value |"
+            $cmLines += "|--------|-------|"
+            $cmLines += "| Total Parse Errors | $trackingJsonErrorCount |"
+            $cmLines += "| Historical DSHA-P54 Artifacts | $trackingJsonHistoricalErrors |"
+            $cmLines += "| New JSON Parse Errors | $trackingJsonNewErrors |"
+            $cmLines += "| Historical Error Lines | $((($trackingJsonErrorLines | Select-Object -First 5) -join ', ')) |"
+            $cmLines += "| Alert Status | $(if ($trackingJsonErrorAlertTriggered) { 'CRITICAL - New errors detected' } elseif ($trackingJsonHistoricalErrors -gt 0) { 'INFO - Historical artifacts only' } else { 'CLEAR' }) |"
+            $cmLines += "| Threshold Rule | Historical DSHA-P54 encoding artifacts → INFO log only; new JSON parse errors → CRITICAL alert |"
+            $cmLines += ""
+            $cmLines += "> **P73 Threshold**: Historical tracking_monitor_audit.jsonl encoding artifacts (13 lines from DSHA-P54 with Chinese characters) do NOT trigger CRITICAL. New parse errors WILL trigger CRITICAL."
             $cmLines += ""
             $cmLines += "---"
             $cmLines += ""
@@ -1716,6 +1880,7 @@ while ($true) {
         Write-Host "  Guard=$guardStatus marker=$(if ($cleanMarkerExists) { 'YES' } else { 'NO' }) actions=$($guardActions.Count) cleanupTotal=$cleanupActionsTotal"
         Write-Host "  SampleMarker=$(if ($sampleMarkerExists) { 'PRESENT' } else { 'ABSENT' }) | SampleActive=$(if ($sampleActiveObserving) { 'YES' } else { 'NO' }) | P86Ready=$p86ControllerReady"
         Write-Host "  WSSAlerts=$wssAlertsTotalLines lines | New=$wssAlertsNewCount | Indexed=$wssAlertIndexCount | Recent10min=$recentAlertCount10min"
+        Write-Host "  P73 OfflineFactor=$offlineFactorReadiness | TrackingJSON: $($trackingJsonErrorCount) errors ($($trackingJsonHistoricalErrors) historical, $($trackingJsonNewErrors) new)"
         if ($sessionFlickerWarning) { Write-Host "  SESSION_FLICKER: $($sessionFlickerDetail)" }
         if ($sampleActiveObserving) { Write-Host "  SAMPLE_ACTIVE: Fast poll $sampleFastPollRemaining remaining @ ${tempPollInterval}s" }
         if ($pollNum % 10 -eq 0) { Write-Host "  >>> Dashboards generated (P68 MD+JSON + P71 COM MD+JSON)" }

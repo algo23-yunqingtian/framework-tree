@@ -72,3 +72,10 @@
 - P87 只做静态自检、链路闭环、事件补全和最终就绪盖章。
 - 未点火、未创建任何 marker、未生成 token、未修改安全锁常量。
 - 当前最终状态：FINAL_READY，但仍必须 MANUAL_ONLY。
+
+## 补充简报链接
+- 终验收简报：`artifacts/pre_fire_audit_brief.md`
+- P89 事件链：`artifacts/dshc_p89_events.jsonl`
+- 跨 Agent 索引：`artifacts/cross_agent_artifact_index.json`
+- 重建就绪戳：`artifacts/FINAL_PRE_FIRE_READY_STAMP.json`
+- P87 重建事件链：`artifacts/dshc_p87_events.jsonl`

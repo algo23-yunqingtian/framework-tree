@@ -1,7 +1,7 @@
 # DSHD-P71 Sample Run Audit Relay Dashboard
 
-**Generated**: 2026-10-18T11:31:59+08:00
-**Poll Number**: #1830
+**Generated**: 2026-10-18T12:12:57+08:00
+**Poll Number**: #1870
 **Session**: DSHD-P71
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
@@ -11,9 +11,9 @@
 
 ## COM Health Assessment
 
-[优秀] COM stability score: 100/100 | Excel=0 Orphan=0 Flash1min=0 WDFchg=0
+[优秀] COM stability score: 100/100 | Excel=2 Orphan=0 Flash1min=0 WDFchg=0
 
-**Overall**: [GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing
+**Overall**: [GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=2) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing
 
 ---
 
@@ -31,7 +31,10 @@
 
 ## Excel Process Detail
 
-*No EXCEL.EXE processes running.*
+| PID | Window | Visible | Orphan | Start Time | Working Set (MB) | WDF Modules |
+|-----|--------|---------|--------|------------|------------------|-------------|
+| 26020 | 锌SMM补充数据 - Excel | True | NO | 2026-10-18T11:56:33+08:00 | 677.8 | WDF.dll |
+| 28272 | Excel | True | NO | 2026-10-18T11:56:33+08:00 | 188.1 | WDF.dll |
 
 ---
 
@@ -63,6 +66,7 @@
 | WDF_INIT_MISSING (InitWAPI disappeared) | CLEAR | Present |
 | SESSION_FLICKER (P71: visible/invisible flicker 3 polls) | CLEAR | History: VVV |
 | SAMPLE_ACTIVE_OBSERVING (P71: marker+python running) | CLEAR | Not active |
+| TRACKING_JSON_NEW_ERRORS (P73: new JSON parse errors) | INFO | 13 historical DSHA-P54 encoding artifacts - no CRITICAL |
 
 ---
 
@@ -106,13 +110,42 @@
 
 ---
 
+## Offline Factor Framework Readiness (P73 NEW)
+
+| Item | Value |
+|------|-------|
+| DSHA-P59 Artifact Status | NOT_FOUND |
+| Offline Factor Framework Readiness | NOT_FOUND |
+| Artifact Path | NOT_FOUND |
+| P89 Cross-Index Status | CROSS_INDEX_IN_PROGRESS |
+| Note | DSHA-P59 offline factor framework artifact not yet published. P89 cross-agent artifact index in progress. |
+
+> **Status**: Offline factor framework (DSHA-P59) pending. DSHC-P89 artifact cross-indexing underway. DSHD observes only.
+
+---
+
+## Tracking Log JSON Integrity (P73 NEW)
+
+| Metric | Value |
+|--------|-------|
+| Total Parse Errors | 13 |
+| Historical DSHA-P54 Artifacts | 13 |
+| New JSON Parse Errors | 0 |
+| Historical Error Lines | 2, 5, 8, 11, 12 |
+| Alert Status | INFO - Historical artifacts only |
+| Threshold Rule | Historical DSHA-P54 encoding artifacts → INFO log only; new JSON parse errors → CRITICAL alert |
+
+> **P73 Threshold**: Historical tracking_monitor_audit.jsonl encoding artifacts (13 lines from DSHA-P54 with Chinese characters) do NOT trigger CRITICAL. New parse errors WILL trigger CRITICAL.
+
+---
+
 ## Process Status (Inherited)
 
 | Process | PID | State | Start Time | Window Title | Visible |
 |---------|-----|-------|------------|--------------|---------|
 | wmain.exe | 824 | RUNNING | 2026-10-18T10:11:59+08:00 | Wind金融终端..Alice | True |
 | InitWAPI.exe | 14188 | RUNNING | 2026-10-17T16:33:32+08:00 | N/A | N/A |
-| EXCEL.EXE | N/A | NOT_RUNNING | N/A | N/A | N/A |
+| EXCEL.EXE | 26020, 28272 | RUNNING | N/A | N/A | N/A |
 | windlocal.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 | python.exe/pythonw.exe | N/A | NOT_RUNNING | N/A | N/A | N/A |
 
@@ -141,9 +174,9 @@
 | Credential Alert | NONE |
 | Wind API Calls | 0 |
 | Skill SHA Check | ALL_MATCH |
-| Monitor Log Lines | 1234 |
-| Tracking Ledger Lines | 221 |
-| COM Lock Events Lines | 22 |
+| Monitor Log Lines | 1281 |
+| Tracking Ledger Lines | 263 |
+| COM Lock Events Lines | 23 |
 
 ---
 
