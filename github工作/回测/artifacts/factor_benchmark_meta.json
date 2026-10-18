@@ -1,0 +1,164 @@
+{
+  "meta_id": "DSHA-P63-FACTOR-BENCHMARK-META-001",
+  "generated_at": "2026-10-18 GMT+8",
+  "agent": "DSHA-P63",
+  "branch": "feature/v88-g1",
+  "baseline": "201ce9a",
+  "gate": "CLOSED",
+  "release_permit": "NOT_ISSUED",
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "description": "因子基准参数、样本过滤条件、异常值剔除规则 — 静态配置，不执行计算",
+  "source_documents": [
+    "data-harbor/dsha_p49_prep/P49_backtest_audit/F007_PARAMETER_BASELINE.md",
+    "data-harbor/dsha_p49_prep/P49_backtest_audit/P49_FACTOR_CLEANING_SPEC.json",
+    "data-harbor/dsha_p49_prep/P49_backtest_audit/P49_FACTOR_CLEANING_SPEC.md"
+  ],
+  "f007_parameter_baseline": {
+    "baseline_window_days": 60,
+    "baseline_unit": "days",
+    "baseline_definition": "合成因子计算的标准滚动窗口",
+    "verification_range": [35, 60, 80, 100],
+    "verification_range_description": "G7裁决报告条件约束范围，60为基准锚点",
+    "frozen_weights": {
+      "f19_weight": {"value": "frozen", "mutable": false, "frozen_by": "DSHC"},
+      "f20_weight": {"value": "frozen", "mutable": false, "frozen_by": "DSHC"},
+      "cf003_weight": {"value": "frozen", "mutable": false, "frozen_by": "DSHC"}
+    },
+    "decay_factor": {"value": "frozen", "mutable": false, "frozen_by": "DSHC"},
+    "mutable_params": [
+      {
+        "name": "window_days",
+        "current_value": 60,
+        "mutable": true,
+        "mutable_in_phase": "verification",
+        "range": [35, 100]
+      }
+    ],
+    "drift_warning_thresholds": {
+      "ranking_correlation": {"warning": 0.80, "critical": 0.60, "metric": "spearman_rho"},
+      "direction_consistency": {"warning": 0.20, "critical": 0.40, "metric": "disagreement_ratio"},
+      "distribution_shape": {"warning": 0.10, "critical": 0.05, "metric": "ks_test_pvalue"},
+      "weight_contribution": {"warning": 0.15, "critical": 0.30, "metric": "contribution_change_ratio"},
+      "ic_volatility": {"warning": "2x_baseline_std", "critical": "3x_baseline_std", "metric": "ic_std"}
+    },
+    "drift_response": {
+      "WARNING": "标记异常，记录日志，继续计算",
+      "CRITICAL": "停止窗口扩展，升级DSHC审核",
+      "ESCALATION": "连续3个窗口WARNING → 暂停F007条件验证，等待人工判断"
+    },
+    "verification_pass_criteria": {
+      "ranking_correlation": {"pass_threshold": "spearman_rho >= 0.80", "min_windows": "3/4"},
+      "direction_consistency": {"pass_threshold": "disagreement_ratio <= 0.20", "min_windows": "3/4"},
+      "ic_volatility": {"pass_threshold": "std < 2x_baseline_std", "min_windows": "3/4"}
+    }
+  },
+  "sample_filter_conditions": {
+    "min_trading_days": 61,
+    "min_trading_days_reason": "window_days=60 + 1，因子计算最少需要61个交易日",
+    "min_factor_points": 30,
+    "min_factor_points_reason": "IC计算最少需要3个数据点，30为统计意义门槛",
+    "max_trading_days_per_round": 10,
+    "max_trading_days_per_round_note": "P62触发器采集参数，MAX_DAYS_PER_ROUND=10",
+    "min_interval_sec": 12,
+    "min_interval_sec_note": "P62触发器采集参数，MIN_INTERVAL_SEC=12",
+    "date_range": {
+      "start": "2023-01-01",
+      "end": "2024-12-31",
+      "source": "P49_FACTOR_CLEANING_SPEC.json global_cleaning_rules GLB-CLN-005"
+    },
+    "allowed_varieties": ["LI.SHF", "NI.SHF", "ZN.SHF", "CU.SHF"],
+    "row_count_per_chunk": {
+      "min": 250,
+      "max": 400,
+      "source": "GLB-CLN-006"
+    }
+  },
+  "outlier_removal_rules": {
+    "z_score_threshold": {
+      "value": 3.0,
+      "applied_to": ["OI", "search_volume", "exchange_oi", "IC_std", "leakage_score", "IC_score"],
+      "action": "cap_at_3sigma (clip to mean ± 3*std)",
+      "method": "z_score"
+    },
+    "iqr_outlier": {
+      "multiplier": 1.5,
+      "applied_to": ["OI_change"],
+      "action": "cap_at_iqr_bound",
+      "method": "iqr"
+    },
+    "range_clipping": {
+      "sentiment_score": {"min": -1.0, "max": 1.0, "action": "clip_to_range"},
+      "IC_score": {"min": -1.0, "max": 1.0, "action": "clip_to_range"},
+      "long_short_ratio": {"min": 0.1, "max": 10.0, "action": "flag_for_review"}
+    },
+    "threshold_based": {
+      "leakage_score": {"threshold": 0.005, "direction": "above", "action": "flag_as_leakage", "frozen_by": "DSHC"},
+      "max_daily_return_change": {"threshold": 0.05, "action": "exclude_row"}
+    },
+    "zero_density_check": {
+      "max_zero_ratio": 0.80,
+      "action": "flag_zero_signal"
+    },
+    "cleaning_rate_anomaly": {
+      "max_cleaning_rate": 0.95,
+      "action": "escalate_to_dshc",
+      "severity": "CRITICAL"
+    }
+  },
+  "factor_sensitivity_summary": {
+    "high_sensitivity_params": [
+      {"param": "f19_weight", "factor": "FACTOR-007", "note": "frozen, DSHC锁定"},
+      {"param": "f20_weight", "factor": "FACTOR-007", "note": "frozen, DSHC锁定"},
+      {"param": "cf003_weight", "factor": "FACTOR-007", "note": "frozen, DSHC锁定"},
+      {"param": "ic_threshold", "factor": "FACTOR-004", "note": "TBD, 待数据落地后设定"},
+      {"param": "leakage_threshold", "factor": "FACTOR-006", "note": "0.005, DSHC冻结"}
+    ],
+    "medium_sensitivity_params": [
+      {"param": "ic_window", "factor": "FACTOR-004", "value": 60, "range": [20, 120]},
+      {"param": "ic_significance", "factor": "FACTOR-004", "value": 0.05, "range": [0.01, 0.20]},
+      {"param": "icir_window", "factor": "FACTOR-005", "value": 60, "range": [20, 120]},
+      {"param": "decay_factor", "factor": "FACTOR-007", "note": "frozen, DSHC锁定"},
+      {"param": "window_days", "factor": "FACTOR-007", "value": 60, "range": [35, 100]}
+    ],
+    "low_sensitivity_params": [
+      {"param": "icir_min_periods", "factor": "FACTOR-005", "value": 30, "range": [10, 60]},
+      {"param": "leakage_window", "factor": "FACTOR-006", "value": 35, "range": [10, 100]}
+    ]
+  },
+  "ic_calculation_config": {
+    "method": "Pearson_correlation",
+    "forward_return_lag": 1,
+    "min_observations_for_ic": 3,
+    "min_observations_for_significance": 30,
+    "significance_alpha": 0.05,
+    "ic_range": [-1.0, 1.0],
+    "ic_ir_formula": "IC * sqrt(N)",
+    "notes": "IC = corr(factor_t, forward_return_{t+1}), IC_IR = mean(IC) / std(IC)"
+  },
+  "report_metadata_config": {
+    "version": "v88-g1/P63",
+    "skill_name": "DSHA-P63 OFFLINE_PREP_FACTOR_REPORT_TEMPLATES",
+    "final_lock_version": "P58 (4 assertions, lines 1438-1468 in prototype_wss_assemble_sim.py)",
+    "excel_isolation_strategy": "P60 _kill_agent_excel_only() + USER_INSTANCE_LABEL protection",
+    "template_auto_fill_fields": [
+      "version",
+      "skill_name",
+      "final_lock_version",
+      "excel_isolation_strategy",
+      "real_wind_call",
+      "wind_api_calls",
+      "gate",
+      "release_permit",
+      "generated_at",
+      "agent"
+    ]
+  },
+  "governance_invariants": {
+    "wind_api_calls": 0,
+    "backtest_started": false,
+    "gate": "CLOSED",
+    "release_permit": "NOT_ISSUED",
+    "real_wind_call": false
+  }
+}
