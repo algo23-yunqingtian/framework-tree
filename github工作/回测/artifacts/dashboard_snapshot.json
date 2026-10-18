@@ -1,7 +1,7 @@
 {
-    "generated_at":  "2026-10-18T08:31:57+08:00",
-    "poll_number":  1680,
-    "agent":  "DSHD-P68",
+    "generated_at":  "2026-10-18T09:29:59+08:00",
+    "poll_number":  1730,
+    "agent":  "DSHD-P69",
     "monitor_version":  "v1.0",
     "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
     "severity":  "WARNING",
@@ -9,7 +9,7 @@
                         "SESSION_VISIBILITY"
                     ],
     "health_icon":  "YELLOW",
-    "health_summary":  "[YELLOW] WARNING: wmain(NOT_RUNNING) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | CB=READY | SkillSHA=OK -- All invariants with alerts: SESSION_VISIBILITY.",
+    "health_summary":  "[YELLOW] WARNING: wmain(NOT_RUNNING) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=COM稳定 -- All invariants with alerts: SESSION_VISIBILITY.",
     "processes":  [
                       {
                           "process":  "wmain.exe",
@@ -158,12 +158,12 @@
                            "status":  "PASS"
                        }
                    ],
-    "com_jitter":  {
-                       "flash_count_5min":  0,
-                       "warning":  false
-                   },
+    "com_jitter_5min":  {
+                            "flash_count_5min":  0,
+                            "warning":  false
+                        },
     "session_visibility":  {
-                               "wmain_invisible_consecutive":  4,
+                               "wmain_invisible_consecutive":  6,
                                "warning":  true
                            },
     "initwapi_status":  {

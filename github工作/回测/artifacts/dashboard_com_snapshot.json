@@ -1,0 +1,233 @@
+{
+    "generated_at":  "2026-10-18T09:29:59+08:00",
+    "poll_number":  1730,
+    "agent":  "DSHD-P69",
+    "monitor_version":  "v1.0",
+    "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
+    "severity":  "WARNING",
+    "alert_flags":  [
+                        "SESSION_VISIBILITY"
+                    ],
+    "health_icon":  "YELLOW",
+    "com_health_summary":  "[COM稳定] COM stability score: 100/100 | Excel=0 Orphan=0 Flash1min=0 WDFchg=0",
+    "com_metrics":  {
+                        "excel_flash_1min":  0,
+                        "excel_flash_5min":  0,
+                        "orphan_excel_count":  0,
+                        "orphan_excel_pids":  [
+
+                                              ],
+                        "wdf_load_changes_5min":  0,
+                        "wdf_load_stability_score":  100,
+                        "com_health_rating":  "COM稳定"
+                    },
+    "excel_processes":  [
+
+                        ],
+    "excel_wdf_modules":  [
+
+                          ],
+    "wdf_loadbehavior":  {
+                             "hkcu":  3,
+                             "hklm":  3,
+                             "xl_task_panel":  2
+                         },
+    "recent_wdf_load_events":  [
+
+                               ],
+    "recent_wdf_excel_events":  [
+                                    {
+                                        "timestamp":  "2026-10-16T22:48:56+08:00",
+                                        "event":  "WIND_CLIENT_PROCESS_CHECK",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-16T22:48:57+08:00",
+                                        "event":  "WIND_CLIENT_PROCESS_CHECK",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-16T22:48:57+08:00",
+                                        "event":  "WINDPY_W_START",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-16T22:48:57+08:00",
+                                        "event":  "WINDPY_W_START",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-16T22:48:57+08:00",
+                                        "event":  "WINDPY_STOP",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-16T22:55:43+08:00",
+                                        "event":  "windpy_connect_test_result",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-17T00:01:33.6801002+08:00",
+                                        "event":  "DSHA-P54-V6-Excel-Wind-Check",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-17T15:47:00+08:00",
+                                        "event":  "WDF_ENV_PROBE_SESSION",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  null,
+                                        "event":  "DSHA-P54-V9-WDF-ENV-PROBE-001",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    },
+                                    {
+                                        "timestamp":  "2026-10-18T08:22:58+08:00",
+                                        "event":  "WSS_SHARD_OFFLINE_SIMULATION_COMPLETE",
+                                        "severity":  "INFO",
+                                        "note":  ""
+                                    }
+                                ],
+    "invariants":  [
+                       {
+                           "invariant":  "gate",
+                           "expected":  "CLOSED/HOLD",
+                           "actual":  "CLOSED/HOLD",
+                           "status":  "PASS"
+                       },
+                       {
+                           "invariant":  "release_permit",
+                           "expected":  "NOT_ISSUED",
+                           "actual":  "NOT_ISSUED",
+                           "status":  "PASS"
+                       },
+                       {
+                           "invariant":  "wind_api_calls",
+                           "expected":  "0",
+                           "actual":  0,
+                           "status":  "PASS"
+                       },
+                       {
+                           "invariant":  "credential_alert",
+                           "expected":  "NONE",
+                           "actual":  "NONE",
+                           "status":  "PASS"
+                       },
+                       {
+                           "invariant":  "circuit_breaker",
+                           "expected":  "READY",
+                           "actual":  "READY",
+                           "status":  "PASS"
+                       },
+                       {
+                           "invariant":  "hold_block_check",
+                           "expected":  "PASS",
+                           "actual":  "PASS",
+                           "status":  "PASS"
+                       },
+                       {
+                           "invariant":  "ledger_append_only",
+                           "expected":  "TRUE",
+                           "actual":  "TRUE",
+                           "status":  "PASS"
+                       }
+                   ],
+    "processes":  [
+                      {
+                          "process":  "wmain.exe",
+                          "pid":  "N/A",
+                          "state":  "NOT_RUNNING",
+                          "start_time":  "N/A",
+                          "window_title":  "N/A",
+                          "visible":  false
+                      },
+                      {
+                          "process":  "InitWAPI.exe",
+                          "pid":  "14188",
+                          "state":  "RUNNING",
+                          "start_time":  "2026-10-17T16:33:32+08:00",
+                          "window_title":  "N/A",
+                          "visible":  "N/A"
+                      },
+                      {
+                          "process":  "EXCEL.EXE",
+                          "pid":  "N/A",
+                          "state":  "NOT_RUNNING",
+                          "start_time":  "N/A",
+                          "window_title":  "N/A",
+                          "visible":  "N/A"
+                      },
+                      {
+                          "process":  "windlocal.exe",
+                          "pid":  "N/A",
+                          "state":  "NOT_RUNNING",
+                          "start_time":  "N/A",
+                          "window_title":  "N/A",
+                          "visible":  "N/A"
+                      },
+                      {
+                          "process":  "python.exe/pythonw.exe",
+                          "pid":  "N/A",
+                          "state":  "NOT_RUNNING",
+                          "start_time":  "N/A",
+                          "window_title":  "N/A",
+                          "visible":  "N/A"
+                      }
+                  ],
+    "com_alerts":  {
+                       "com_jitter_1min":  {
+                                               "count":  0,
+                                               "threshold":  3,
+                                               "triggered":  false,
+                                               "detail":  "COM_JITTER_CLEAR: 0 events in 1 min"
+                                           },
+                       "com_orphan":  {
+                                          "count":  0,
+                                          "triggered":  false,
+                                          "detail":  "COM_ORPHAN_CLEAR: 0 orphan Excel processes"
+                                      },
+                       "wdf_load_flap":  {
+                                             "changes":  0,
+                                             "threshold":  2,
+                                             "triggered":  false,
+                                             "detail":  "WDF_LOAD_FLAP_CLEAR: 0 changes in 5 min"
+                                         },
+                       "com_jitter_5min":  {
+                                               "count":  0,
+                                               "threshold":  4,
+                                               "triggered":  false,
+                                               "detail":  "COM_JITTER_CLEAR: 0 flash events in 5 min"
+                                           },
+                       "session_visibility":  {
+                                                  "streak":  6,
+                                                  "threshold":  3,
+                                                  "triggered":  true,
+                                                  "detail":  "SESSION_VISIBILITY_WARNING: wmain not visible for 6 consecutive polls"
+                                              },
+                       "wdf_init_missing":  {
+                                                "was_present":  true,
+                                                "now_present":  true,
+                                                "triggered":  false,
+                                                "detail":  "WDF_INIT_PROCESS_PRESENT"
+                                            }
+                   },
+    "system_details":  {
+                           "wind_tcp_ports":  0,
+                           "wind_users_file_count":  0,
+                           "credential_alert":  "NONE",
+                           "wind_api_calls":  0,
+                           "skill_sha_check":  "ALL_MATCH",
+                           "monitor_log_lines":  1079,
+                           "tracking_ledger_lines":  118,
+                           "com_lock_events_lines":  0
+                       }
+}

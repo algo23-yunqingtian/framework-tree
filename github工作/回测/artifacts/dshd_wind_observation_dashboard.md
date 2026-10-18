@@ -1,8 +1,8 @@
 # DSHD-P68 Enhanced Wind Observation Dashboard
 
-**Generated**: 2026-10-18T08:31:57+08:00
-**Poll Number**: #1680
-**Session**: DSHD-P68
+**Generated**: 2026-10-18T09:29:59+08:00
+**Poll Number**: #1730
+**Session**: DSHD-P69 (inherited P68 monitor)
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
 **Poll Interval**: 60s
@@ -11,7 +11,7 @@
 
 ## Health Assessment
 
-[YELLOW] WARNING: wmain(NOT_RUNNING) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | CB=READY | SkillSHA=OK -- All invariants with alerts: SESSION_VISIBILITY.
+[YELLOW] WARNING: wmain(NOT_RUNNING) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=COM稳定 -- All invariants with alerts: SESSION_VISIBILITY.
 
 ---
 
@@ -63,7 +63,7 @@
 | Alert | Status | Detail |
 |-------|--------|--------|
 | COM_JITTER (>4 flash/5min) | CLEAR | Flash events: 0 |
-| SESSION_VISIBILITY (wmain invisible 3 polls) | TRIGGERED | Invisible streak: 4 |
+| SESSION_VISIBILITY (wmain invisible 3 polls) | TRIGGERED | Invisible streak: 6 |
 | INIT_WDF_MISSING (InitWAPI disappeared) | CLEAR | Present |
 
 ---
@@ -80,8 +80,8 @@
 | Credential Alert | NONE |
 | Wind API Calls | 0 |
 | Skill SHA Check | ALL_MATCH |
-| Monitor Log Lines | 976 |
-| Tracking Ledger Lines | 67 |
+| Monitor Log Lines | 1079 |
+| Tracking Ledger Lines | 118 |
 
 ---
 
