@@ -1,0 +1,96 @@
+{
+  "receipt_id": "DSHA-P65-DRYRUN-CHECK-001",
+  "generated_at": "2026-10-18T09:22:25Z",
+  "generated_at_gmt8": "2026-10-18 17:22:25 GMT+8",
+  "agent": "DSHA-P65",
+  "branch": "feature/v88-g1",
+  "baseline_commit": "40944e5",
+  "task": "WDF_FETCH_PAYLOAD_PRE_ASSEMBLY",
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "status": "PASS",
+  "pipeline_dryrun": {
+    "dryrun_id": "DSHA-P65-DRYRUN-CHECK-001",
+    "pipeline_steps": {
+      "1_load": {
+        "available": true,
+        "record_count": 10,
+        "data_keys": [
+          "dates",
+          "values",
+          "symbols",
+          "indicators",
+          "sources",
+          "filepath",
+          "row_count"
+        ],
+        "status": "PASS"
+      },
+      "2_compute": {
+        "available": true,
+        "factor_points": 0,
+        "factor_id": "P65-DRYRUN-MOM",
+        "status": "PASS"
+      },
+      "3_run": {
+        "available": true,
+        "backtest_status": "OK",
+        "trading_days": 7,
+        "factor_points": 7,
+        "total_return": -0.00677243,
+        "sharpe_ratio": -7.52815899,
+        "status": "PASS"
+      },
+      "4_save": {
+        "available": true,
+        "output_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\P65_DRYRUN_ARCHIVE",
+        "archive_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\20261018_172214_momentum_ZN.SHF",
+        "md_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\P65_DRYRUN_ARCHIVE\\backtest_momentum_ZN.SHF_20261018_172214.md",
+        "json_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\P65_DRYRUN_ARCHIVE\\backtest_momentum_ZN.SHF_20261018_172214.json",
+        "metrics_csv": "D:\\DSH_WORK\\github工作\\回测\\code\\backtest_output\\backtest_metrics_momentum_ZN.SHF_20261018_172214.csv",
+        "net_value_csv": "D:\\DSH_WORK\\github工作\\回测\\code\\backtest_output\\net_value_series_momentum_ZN.SHF_20261018_172214.csv",
+        "snapshot_json": "D:\\DSH_WORK\\github工作\\回测\\code\\backtest_output\\backtest_snapshot_momentum_ZN.SHF_20261018_172214.json",
+        "status": "PASS"
+      },
+      "5_trigger": {
+        "available": true,
+        "trigger_result": "{'status': 'SKIPPED', 'new_files_triggered': [], 'files_skipped': [], 'total_new': 1, 'total_skipped': 0, 'details': [{'csv': 'D:\\\\DSH_WORK\\\\github工作\\\\回测\\\\artifacts\\\\sample_output\\\\ZN.SHF_close_simulated.csv', 'status': 'WAIT', 'notes': ['数据加载成功: 10 个数据点', '因子计算返回 NO_DATA (数据点不足)']}], 'scan': {'status': 'NEW_FOUND', 'new_files': ['D:\\\\DSH_WORK\\\\github工作\\\\回测\\\\artifacts\\\\sample_output\\\\ZN.SHF_close_simulated.csv'], 'modified_files': [], 'unchanged_files': [], 'total_csv_count': 1}}",
+        "status": "PASS"
+      },
+      "6_fill": {
+        "available": true,
+        "report_length_chars": 7159,
+        "report_preview_length": 200,
+        "status": "PASS"
+      },
+      "7_plot_net_curve": {
+        "available": true,
+        "plot_status": "OK",
+        "data_points": 20,
+        "output_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\report_templates\\net_value_curve_20261018_172221.png",
+        "status": "PASS"
+      },
+      "8_plot_ic_series": {
+        "available": true,
+        "plot_status": "OK",
+        "data_points": 20,
+        "output_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\report_templates\\ic_series_20261018_172224.png",
+        "status": "PASS"
+      },
+      "9_render_preview_report": {
+        "available": true,
+        "report_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\report_templates\\simulation_sample_report_20261018_172225.md",
+        "report_size_bytes": 9818,
+        "status": "PASS"
+      }
+    },
+    "errors": [],
+    "all_steps_pass": true,
+    "summary": {
+      "total_steps": 9,
+      "pass_count": 9,
+      "fail_count": 0,
+      "all_pass": true
+    }
+  }
+}

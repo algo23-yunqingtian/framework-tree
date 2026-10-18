@@ -1,0 +1,350 @@
+{
+  "verify_id": "DSHA-P65-WDF-TO-FACTOR-COLUMN-MAPPING-VERIFY-001",
+  "generated_at": "2026-10-18T09:22:14Z",
+  "generated_at_gmt8": "2026-10-18 17:22:14 GMT+8",
+  "agent": "DSHA-P65",
+  "branch": "feature/v88-g1",
+  "baseline_commit": "40944e5",
+  "task": "WDF_FETCH_PAYLOAD_PRE_ASSEMBLY",
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "status": "WARNING",
+  "summary": {
+    "factors_total": 7,
+    "factors_ok": 5,
+    "factors_warning": 2,
+    "wdf_output_columns": [
+      "CLOSE",
+      "OI",
+      "SETTLE",
+      "VOL",
+      "date"
+    ],
+    "all_required_columns": [
+      "CF003_score",
+      "F19_score",
+      "F20_score",
+      "IC_score",
+      "IC_std",
+      "OI",
+      "OI_change",
+      "date",
+      "decay_score",
+      "exchange_oi",
+      "factor_id",
+      "forecast_return",
+      "info_score",
+      "leakage_score",
+      "long_oi",
+      "realized_return",
+      "rolling_ICIR",
+      "search_volume",
+      "sentiment_score",
+      "short_oi",
+      "variety"
+    ],
+    "missing_direct_columns_summary": [
+      {
+        "factor_id": "FACTOR-002",
+        "factor_name": "F20_attention_weight",
+        "missing_columns": [
+          "search_volume",
+          "sentiment_score"
+        ],
+        "reason": "Requires external data source beyond WDF daily fields (CLOSE/VOL/OI/SETTLE)"
+      },
+      {
+        "factor_id": "FACTOR-003",
+        "factor_name": "CF003_speculation_weight",
+        "missing_columns": [
+          "exchange_oi",
+          "long_oi",
+          "short_oi"
+        ],
+        "reason": "Requires external data source beyond WDF daily fields (CLOSE/VOL/OI/SETTLE)"
+      }
+    ],
+    "global_fields_coverage": {
+      "date": {
+        "in_wdf_output": true,
+        "required": true
+      },
+      "variety": {
+        "in_wdf_output": false,
+        "required": true
+      },
+      "symbol": {
+        "in_wdf_output": false,
+        "required": false
+      },
+      "indicator": {
+        "in_wdf_output": false,
+        "required": false
+      },
+      "source": {
+        "in_wdf_output": false,
+        "required": false
+      }
+    }
+  },
+  "factor_column_checks": [
+    {
+      "factor_id": "FACTOR-001",
+      "factor_name": "F19_hot_money_weight",
+      "required_columns": [
+        "OI",
+        "OI_change",
+        "date",
+        "variety"
+      ],
+      "column_classification": {
+        "OI": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        },
+        "variety": {
+          "status": "DERIVED_FROM_GLOBAL_FIELDS",
+          "source": "global_fields definition"
+        },
+        "date": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        },
+        "OI_change": {
+          "status": "DERIVED_FROM_OI",
+          "source": "derived: OI(t) - OI(t-1)",
+          "note": "OI is available from WDF; OI_change is computed delta"
+        }
+      },
+      "missing_direct_columns": [],
+      "status": "OK"
+    },
+    {
+      "factor_id": "FACTOR-002",
+      "factor_name": "F20_attention_weight",
+      "required_columns": [
+        "date",
+        "search_volume",
+        "sentiment_score",
+        "variety"
+      ],
+      "column_classification": {
+        "search_volume": {
+          "status": "EXTERNAL_DATA_SOURCE",
+          "source": "Wind新闻舆情表 (NOT in WDF daily fields)",
+          "note": "Requires separate WSD query for sentiment data"
+        },
+        "variety": {
+          "status": "DERIVED_FROM_GLOBAL_FIELDS",
+          "source": "global_fields definition"
+        },
+        "sentiment_score": {
+          "status": "EXTERNAL_DATA_SOURCE",
+          "source": "Wind新闻舆情表 (NOT in WDF daily fields)",
+          "note": "Requires separate WSD query for sentiment data"
+        },
+        "date": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        }
+      },
+      "missing_direct_columns": [
+        "search_volume",
+        "sentiment_score"
+      ],
+      "status": "WARNING"
+    },
+    {
+      "factor_id": "FACTOR-003",
+      "factor_name": "CF003_speculation_weight",
+      "required_columns": [
+        "date",
+        "exchange_oi",
+        "long_oi",
+        "short_oi",
+        "variety"
+      ],
+      "column_classification": {
+        "variety": {
+          "status": "DERIVED_FROM_GLOBAL_FIELDS",
+          "source": "global_fields definition"
+        },
+        "exchange_oi": {
+          "status": "EXTERNAL_DATA_SOURCE",
+          "source": "Wind交易所持仓明细表 (NOT in WDF daily fields)",
+          "note": "Requires separate exchange-position data query"
+        },
+        "long_oi": {
+          "status": "EXTERNAL_DATA_SOURCE",
+          "source": "Wind交易所持仓明细表 (NOT in WDF daily fields)",
+          "note": "Requires separate exchange-position data query"
+        },
+        "short_oi": {
+          "status": "EXTERNAL_DATA_SOURCE",
+          "source": "Wind交易所持仓明细表 (NOT in WDF daily fields)",
+          "note": "Requires separate exchange-position data query"
+        },
+        "date": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        }
+      },
+      "missing_direct_columns": [
+        "exchange_oi",
+        "long_oi",
+        "short_oi"
+      ],
+      "status": "WARNING"
+    },
+    {
+      "factor_id": "FACTOR-004",
+      "factor_name": "G1_IC_threshold",
+      "required_columns": [
+        "IC_score",
+        "date",
+        "forecast_return",
+        "realized_return",
+        "variety"
+      ],
+      "column_classification": {
+        "variety": {
+          "status": "DERIVED_FROM_GLOBAL_FIELDS",
+          "source": "global_fields definition"
+        },
+        "forecast_return": {
+          "status": "DERIVED_FROM_CLOSE",
+          "source": "derived: return = (CLOSE(t+1)/CLOSE(t)) - 1"
+        },
+        "realized_return": {
+          "status": "DERIVED_FROM_CLOSE",
+          "source": "derived: return = (CLOSE(t+1)/CLOSE(t)) - 1"
+        },
+        "IC_score": {
+          "status": "DERIVED_FROM_FACTOR_COMPUTATION",
+          "source": "IC calculation pipeline output"
+        },
+        "date": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        }
+      },
+      "missing_direct_columns": [],
+      "status": "OK"
+    },
+    {
+      "factor_id": "FACTOR-005",
+      "factor_name": "G3_ICIR_threshold",
+      "required_columns": [
+        "IC_std",
+        "date",
+        "rolling_ICIR",
+        "variety"
+      ],
+      "column_classification": {
+        "variety": {
+          "status": "DERIVED_FROM_GLOBAL_FIELDS",
+          "source": "global_fields definition"
+        },
+        "rolling_ICIR": {
+          "status": "DERIVED_FROM_FACTOR_COMPUTATION",
+          "source": "IC calculation pipeline output"
+        },
+        "IC_std": {
+          "status": "DERIVED_FROM_FACTOR_COMPUTATION",
+          "source": "IC calculation pipeline output"
+        },
+        "date": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        }
+      },
+      "missing_direct_columns": [],
+      "status": "OK"
+    },
+    {
+      "factor_id": "FACTOR-006",
+      "factor_name": "G7_leakage_ratio",
+      "required_columns": [
+        "date",
+        "factor_id",
+        "info_score",
+        "leakage_score",
+        "variety"
+      ],
+      "column_classification": {
+        "variety": {
+          "status": "DERIVED_FROM_GLOBAL_FIELDS",
+          "source": "global_fields definition"
+        },
+        "factor_id": {
+          "status": "CONFIG_COLUMN",
+          "source": "metadata column, not a data field"
+        },
+        "info_score": {
+          "status": "DERIVED_FROM_LEAKAGE_CHECK",
+          "source": "G7 leakage detection output"
+        },
+        "leakage_score": {
+          "status": "DERIVED_FROM_LEAKAGE_CHECK",
+          "source": "G7 leakage detection output"
+        },
+        "date": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        }
+      },
+      "missing_direct_columns": [],
+      "status": "OK"
+    },
+    {
+      "factor_id": "FACTOR-007",
+      "factor_name": "SchemeD_frozen_weights",
+      "required_columns": [
+        "CF003_score",
+        "F19_score",
+        "F20_score",
+        "date",
+        "decay_score",
+        "variety"
+      ],
+      "column_classification": {
+        "CF003_score": {
+          "status": "DERIVED_FROM_COMPOSITE_FACTORS",
+          "source": "downstream composite factor outputs"
+        },
+        "F20_score": {
+          "status": "DERIVED_FROM_COMPOSITE_FACTORS",
+          "source": "downstream composite factor outputs"
+        },
+        "variety": {
+          "status": "DERIVED_FROM_GLOBAL_FIELDS",
+          "source": "global_fields definition"
+        },
+        "decay_score": {
+          "status": "DERIVED_FROM_COMPOSITE_FACTORS",
+          "source": "downstream composite factor outputs"
+        },
+        "F19_score": {
+          "status": "DERIVED_FROM_COMPOSITE_FACTORS",
+          "source": "downstream composite factor outputs"
+        },
+        "date": {
+          "status": "AVAILABLE_IN_WDF",
+          "source": "WDF fetch table"
+        }
+      },
+      "missing_direct_columns": [],
+      "status": "OK"
+    }
+  ],
+  "notes": [
+    "WDF daily fields (CLOSE/VOL/OI/SETTLE) provide raw price, volume, open interest data.",
+    "OI_change is derived from OI (delta computation, available from WDF).",
+    "Returns (forecast/realized) are derived from CLOSE.",
+    "Factor composite scores (F19_score, etc.) are downstream computation outputs.",
+    "IC/ICIR/leakage scores are pipeline computation outputs.",
+    "sentiment_score/search_volume/exchange_oi/long_oi/short_oi require external data sources.",
+    "These external sources are NOT covered by the basic WDF daily fetch table.",
+    "WARNING status on factors using external data sources is EXPECTED and DOCUMENTED."
+  ]
+}

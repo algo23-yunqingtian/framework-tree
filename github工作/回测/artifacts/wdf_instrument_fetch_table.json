@@ -1,0 +1,254 @@
+{
+  "payload_id": "DSHA-P65-WDF-INSTRUMENT-FETCH-TABLE-001",
+  "generated_at": "2026-10-18T09:22:14Z",
+  "generated_at_gmt8": "2026-10-18 17:22:14 GMT+8",
+  "agent": "DSHA-P65",
+  "branch": "feature/v88-g1",
+  "baseline_commit": "40944e5",
+  "task": "WDF_FETCH_PAYLOAD_PRE_ASSEMBLY",
+  "gate": "CLOSED",
+  "release_permit": "NOT_ISSUED",
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "description": "WDF取数载荷预组装 — 7种大宗商品日频数据，CLOSE/VOL/OI/SETTLE",
+  "instrument_count": 7,
+  "instruments": [
+    {
+      "instrument_code": "CU.SHF",
+      "name_cn": "沪铜",
+      "exchange": "Shanghai Futures Exchange",
+      "time_range": {
+        "start": "2025-01-01",
+        "end": "2026-10-17",
+        "frequency": "日频 (DAILY)",
+        "estimated_trading_days": "~430"
+      },
+      "wdf_fields": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "wdf_fields_desc": {
+        "CLOSE": "收盘价",
+        "VOL": "成交量",
+        "OI": "持仓量",
+        "SETTLE": "结算价"
+      },
+      "wsd_formula": "=WSD(\"CU.SHF\",\"CLOSE;VOL;OI;SETTLE\",\"2025-01-01\",\"2026-10-17\", \"Fill=Previous\")",
+      "wsd_formula_note": "仅配置字符串，禁止调用Excel执行",
+      "expected_output_columns": [
+        "date",
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ]
+    },
+    {
+      "instrument_code": "ZN.SHF",
+      "name_cn": "沪锌",
+      "exchange": "Shanghai Futures Exchange",
+      "time_range": {
+        "start": "2025-01-01",
+        "end": "2026-10-17",
+        "frequency": "日频 (DAILY)",
+        "estimated_trading_days": "~430"
+      },
+      "wdf_fields": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "wdf_fields_desc": {
+        "CLOSE": "收盘价",
+        "VOL": "成交量",
+        "OI": "持仓量",
+        "SETTLE": "结算价"
+      },
+      "wsd_formula": "=WSD(\"ZN.SHF\",\"CLOSE;VOL;OI;SETTLE\",\"2025-01-01\",\"2026-10-17\", \"Fill=Previous\")",
+      "wsd_formula_note": "仅配置字符串，禁止调用Excel执行",
+      "expected_output_columns": [
+        "date",
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ]
+    },
+    {
+      "instrument_code": "LC.SHF",
+      "name_cn": "铝铜比价(铝-沪铜)",
+      "exchange": "Shanghai Futures Exchange",
+      "time_range": {
+        "start": "2025-01-01",
+        "end": "2026-10-17",
+        "frequency": "日频 (DAILY)",
+        "estimated_trading_days": "~430"
+      },
+      "wdf_fields": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "wdf_fields_desc": {
+        "CLOSE": "收盘价",
+        "VOL": "成交量",
+        "OI": "持仓量",
+        "SETTLE": "结算价"
+      },
+      "wsd_formula": "=WSD(\"LC.SHF\",\"CLOSE;VOL;OI;SETTLE\",\"2025-01-01\",\"2026-10-17\", \"Fill=Previous\")",
+      "wsd_formula_note": "仅配置字符串，禁止调用Excel执行",
+      "expected_output_columns": [
+        "date",
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ]
+    },
+    {
+      "instrument_code": "PB.SHF",
+      "name_cn": "沪铅",
+      "exchange": "Shanghai Futures Exchange",
+      "time_range": {
+        "start": "2025-01-01",
+        "end": "2026-10-17",
+        "frequency": "日频 (DAILY)",
+        "estimated_trading_days": "~430"
+      },
+      "wdf_fields": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "wdf_fields_desc": {
+        "CLOSE": "收盘价",
+        "VOL": "成交量",
+        "OI": "持仓量",
+        "SETTLE": "结算价"
+      },
+      "wsd_formula": "=WSD(\"PB.SHF\",\"CLOSE;VOL;OI;SETTLE\",\"2025-01-01\",\"2026-10-17\", \"Fill=Previous\")",
+      "wsd_formula_note": "仅配置字符串，禁止调用Excel执行",
+      "expected_output_columns": [
+        "date",
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ]
+    },
+    {
+      "instrument_code": "SN.SHF",
+      "name_cn": "沪锡",
+      "exchange": "Shanghai Futures Exchange",
+      "time_range": {
+        "start": "2025-01-01",
+        "end": "2026-10-17",
+        "frequency": "日频 (DAILY)",
+        "estimated_trading_days": "~430"
+      },
+      "wdf_fields": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "wdf_fields_desc": {
+        "CLOSE": "收盘价",
+        "VOL": "成交量",
+        "OI": "持仓量",
+        "SETTLE": "结算价"
+      },
+      "wsd_formula": "=WSD(\"SN.SHF\",\"CLOSE;VOL;OI;SETTLE\",\"2025-01-01\",\"2026-10-17\", \"Fill=Previous\")",
+      "wsd_formula_note": "仅配置字符串，禁止调用Excel执行",
+      "expected_output_columns": [
+        "date",
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ]
+    },
+    {
+      "instrument_code": "NI.SHF",
+      "name_cn": "沪镍",
+      "exchange": "Shanghai Futures Exchange",
+      "time_range": {
+        "start": "2025-01-01",
+        "end": "2026-10-17",
+        "frequency": "日频 (DAILY)",
+        "estimated_trading_days": "~430"
+      },
+      "wdf_fields": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "wdf_fields_desc": {
+        "CLOSE": "收盘价",
+        "VOL": "成交量",
+        "OI": "持仓量",
+        "SETTLE": "结算价"
+      },
+      "wsd_formula": "=WSD(\"NI.SHF\",\"CLOSE;VOL;OI;SETTLE\",\"2025-01-01\",\"2026-10-17\", \"Fill=Previous\")",
+      "wsd_formula_note": "仅配置字符串，禁止调用Excel执行",
+      "expected_output_columns": [
+        "date",
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ]
+    },
+    {
+      "instrument_code": "AL.SHF",
+      "name_cn": "沪铝",
+      "exchange": "Shanghai Futures Exchange",
+      "time_range": {
+        "start": "2025-01-01",
+        "end": "2026-10-17",
+        "frequency": "日频 (DAILY)",
+        "estimated_trading_days": "~430"
+      },
+      "wdf_fields": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "wdf_fields_desc": {
+        "CLOSE": "收盘价",
+        "VOL": "成交量",
+        "OI": "持仓量",
+        "SETTLE": "结算价"
+      },
+      "wsd_formula": "=WSD(\"AL.SHF\",\"CLOSE;VOL;OI;SETTLE\",\"2025-01-01\",\"2026-10-17\", \"Fill=Previous\")",
+      "wsd_formula_note": "仅配置字符串，禁止调用Excel执行",
+      "expected_output_columns": [
+        "date",
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ]
+    }
+  ],
+  "time_range": {
+    "start": "2025-01-01",
+    "end": "2026-10-17",
+    "frequency": "日频 (DAILY)",
+    "estimated_trading_days": "~430"
+  },
+  "wdf_fields": [
+    "CLOSE",
+    "VOL",
+    "OI",
+    "SETTLE"
+  ],
+  "execution_constraint": "STATIC_STANDBY — 禁止Excel执行，仅配置字符串"
+}
