@@ -453,6 +453,120 @@ NEXT_ACTION = COMMIT + PUSH + STANDBY
 
 ---
 
+## 段十六、Rebased Post-Deploy Snapshot + Close Disclosure (P15)
+
+> **生成时间**: 2026-10-18 21:07
+> **工单**: INSTRUCTION_HERMESHF_REBASED_POST_DEPLOY_SNAPSHOT_AND_CLOSE_DISCLOSURE
+> **基线重对齐**: **c920626** (DSHE C5 commit, 本工单以此为新工作基线)
+> **HEAD**: `c1f04c1` (A01-FACTOR-V1, c920626 与 b42f566 均为祖先)
+> **CRITICAL NOTICE**: 前次 b42f566 在 c920626 到达前部分执行；本工单要求以 c920626 为新基线重对齐、重做门禁部署、重固化证据。
+> **重要纪律**: **禁止再执行任何 rm**；C7 历史偏差只归档留痕；不自判 EXEMPT。
+
+### 16.1 T0 安全对齐到最新基线
+
+| 步骤 | 命令 | 结果 |
+|------|------|:---:|
+| 分支 | `git checkout feature/v88-g1` | ✅ |
+| 拉取 | `git pull origin feature/v88-g1` | 拉到 `c1f04c1`（含 c920626 + b42f566 双祖先）|
+| c920626 祖先性 | `git merge-base --is-ancestor c920626 HEAD` | ✅ YES |
+| b42f566 祖先性 | `git merge-base --is-ancestor b42f566 HEAD` | ✅ YES (SUPERSEDED as working baseline, 保留历史) |
+| Origin tree 校验 | `git ls-tree -r origin/feature/v88-g1 \| grep chart_input_data.json` | ✅ 命中 p7 + p1 mirror |
+| Blob MD5 | `git cat-file -p origin/...chart_input_data.json \| md5sum` | ✅ `7724fa524e7ec649dda60cd05ebc4246` 完全匹配基准 |
+| 磁盘 MD5 (p7) | `md5sum p7/dshe/dshe_chart_restore/chart_input_data.json` | ✅ `7724fa52...` |
+| 磁盘 MD5 (p1 mirror) | `md5sum p1/dshe_c5_mirror/chart_input_data.json` | ✅ `7724fa52...` |
+| 同步状态 | `git rev-list --count HEAD..origin/feature/v88-g1` | ✅ 0 |
+
+### 16.2 T1 门禁资产定点部署（COPY-ONLY，零 rm/mv）
+
+**post_deploy_final_md5_snapshot.lst**（6 项）:
+
+| # | 门禁 | 磁盘 | MD5 |
+|:-:|------|:---:|:---:|
+| 1 | pickup.flag | ✅ | `b60cab6dec5d4b0b4cc7e6f2738ff356` |
+| 2 | pickup.flag.mirror | ✅ | `d7c0132a9d0fa76fd05caaa0ba3e7787` |
+| 3 | hermes_asset_index.md (22/22) | ✅ | `ea2d4f11b9dcca6eb8299fcd99af42df` |
+| 4 | flags/WIND_DATA_LINK_ONLINE.flag | ✅ | `1d566229e8cd451ba560cef0ff2f47e4` |
+| 5 | flags/HERMES_TRIGGER_AUTHORIZED.flag | ✅ | `e515f31bfa930f1b24a2abf209c8d3e5` |
+| 6 | dshe_c5_mirror/chart_input_data.json | ✅ 15302B | `7724fa524e7ec649dda60cd05ebc4246` |
+
+- **C4 索引**: hermes_asset_index.md 记录 22 条，磁盘 22/22 MD5 全通过（路径相对 `hermes/`）
+- **双 Key flag**: 仅写 timestamp/commit/status=PREPARED，grep 无敏感模式，零 API 调用
+- **C5 mirror**: MD5 完全匹配 c920626 基准
+
+### 16.3 T2 C7 偏差正式闭环归档
+
+- **披露路径**: `analysis/e2e_output/v88/phase03/hermes_disclosure/c7_deviation_record_final.md`
+- **偏差事实**: 前次工单 b42f566 执行中 `rm` 删除过 `c5_receive_invalid.md`
+- **偏差对象**: 前次工单**自己生成的临时中间文件**（未追踪、非冻结、非他人资产）
+- **偏差严重度**: LOW（字面违反 C7，未触碰保护资产）
+- **信息完整性**: 时间线信息在 `c5_mirror_deployment_log.md` 完整保留
+- **逐字节副本**: 无法提供（文件已 rm + 未 commit），重建版语义等价版本已附披露文档
+- **SELF_EXEMPT**: NO（DSHB 决策权保留）
+
+### 16.4 T3 7-Constraint 自检（诚实标记 6/7）
+
+| # | 约束 | 结果 |
+|:-:|------|:---:|
+| C1 | BRANCH_LOCKED | ✅ PASS |
+| C2 | NO_OVERWRITE | ✅ PASS |
+| C3 | NO_ZHIJI_API_CALL | ✅ PASS |
+| C4 | NO_AUTO_PUSH | ✅ PASS |
+| C5 | NO_MODIFY_LOCKED_SEAL | ✅ PASS |
+| C6 | NO_EDIT_RELEASE_TAG_ASSET | ✅ PASS |
+| **C7** | **NO_DESTRUCTIVE** | ⚠️ **OBSERVED_DEVIATION_AWAIT_EXEMPT** |
+
+**严禁伪造 7-of-7 全 PASS**。C7 待 DSHB 扫描 + 上层调度判定 EXEMPT。
+
+### 16.5 冻结资产完整性（C5 验证）
+
+| 冻结资产 | MD5 | 状态 |
+|---------|-----|:---:|
+| asset_index.lst | `d312f3c9...` | ✅ 未变 |
+| asset_seal_v3.txt | `183ae823...` | ✅ 未变 |
+| asset_seal_v4.txt | `2c43b363...` | ✅ 未变 |
+| asset_seal_v5.txt | `a53be34c...` | ✅ 未变 |
+
+### 16.6 状态标记
+
+```
+JOB_STATUS=COMPLETE
+BASELINE=c920626
+HEAD=c1f04c1
+HERMES_ALIGNED_TO_DSHE_c920626=YES
+GATE_ARTIFACT_DEPLOYED=YES (4/4)
+DUAL_KEY_A=PREPARED
+DUAL_KEY_B=PREPARED
+AUTHORIZED=NO
+ZERO_RM_IN_THIS_WORK_ORDER=YES
+ZERO_ZHIJI_API_CALL=YES
+C7_FULLY_DISCLOSED=YES
+C7_SELF_EXEMPT=NO
+C7_STATUS=OBSERVED_DEVIATION_AWAIT_EXEMPT
+CONSTRAINTS_PASS=6/7
+ARBITER=OBSERVING
+BRANCH_LOCKED=YES
+NEXT_ACTION=STANDBY_AWAIT_DSHB_SNAPSHOT_SCAN_REPORT
+DO_NOT=主动呼叫 DSHB 触发 QC-Retry#5 / 自判 EXEMPT
+```
+
+### 16.7 本工单关键交付物
+
+| 交付物 | 路径 |
+|--------|------|
+| post_deploy_final_md5_snapshot.lst | `p1/hermes_p14_c4_fix/post_deploy_final_md5_snapshot.lst` |
+| hermes_gate_artifact_proof_final.md | `p1/hermes_p14_c4_fix/hermes_gate_artifact_proof_final.md` |
+| c7_deviation_record_final.md | `phase03/hermes_disclosure/c7_deviation_record_final.md` |
+| 修订版 HANDOVER | `hermes_final_handover/HANDOVER_V88_Phase03_HermesDeployFix_2026-10-18.md` (本段) |
+
+### 16.8 部署进度
+
+- **P14 (b42f566)**: 部署完成，4/4 MATERIALIZED
+- **P15 (本工单)**: 基线重对齐 + 全部门禁重部署 + C7 披露闭环
+- **部署进度**: **90%** (等待 DSHB 靶扫 + C7 EXEMPT 判定后 → 100%)
+
+---
+
 *V88 Phase03 HERMEShf 部署修复交接文档 | 生成 2026-10-18 16:45:07 | 源 commit `e23e03e`*
 *C5-Align+DualKey-Prep 追加段 | 追加 2026-10-18 17:30-18:00 | 源 commit `f98ca4c`*
 *C5-Mirror-Finalize+Full-Worktree-Proof 追加段 | 追加 2026-10-18 20:45 | 源 commit `c920626` | JOB COMPLETE*
+*Rebased Post-Deploy Snapshot + Close Disclosure 追加段 | 追加 2026-10-18 21:07 | 基线 `c920626` / HEAD `c1f04c1` | 6/7 PASS + C7 诚实披露*

@@ -1,150 +1,50 @@
-# HERMEShf 可视化模块资产索引
+# Hermes Asset Index (documentation mirror)
 
-> **模块**: V88 Phase03 P12/P13 图表资产
-> **AGENT**: HERMEShf
-> **Branch**: `feature/v88-g1` (BRANCH_LOCKED)
-> **生成**: 2026-10-17
-> **状态**: SEALED (已封签，等待 DSHE QC)
-
----
-
-## 一、模块概述
-
-本索引记录 HERMEShf 可视化模块在 V88 Phase03 P12/P13 工单中产出的全部交付资产。所有图表严格遵循 `#6B4C9A` 纯色商务规范，无渐变、无圆角、无阴影。资产已封签并入全局 MD5_MANIFEST.md。
-
-## 二、交付资产总览
-
-**文件总数**: 34 | **总大小**: ~1.1MB | **算法**: MD5 + SHA256
-
-## 三、图表资产明细
-
-### 3.1 通用绘图库
-
-| 文件 | 大小 | MD5 | 说明 |
-|------|----:|-----|------|
-| `chart_lib.py` | 14713B | `164419781ca20d8b9ed81b2dc8041adf` | matplotlib 通用库，5 类图表函数 |
-| `build_charts.py` | 7766B | `459d0d2f4fd21e72ad20eeadba3a0aca` | PNG 批量生成脚本 |
-| `build_html_charts.py` | 12198B | `29a062833f957804af49e6bdaf50d702` | HTML 交互图表生成（Plotly） |
-
-### 3.2 图表资产（web_asset/）
-
-| # | 文件 | 类型 | 大小 | MD5 | 数据源 |
-|:-:|------|------|----:|-----|--------|
-| 1 | `01_kpi_cards.png` | PNG | 73713B | `ad6e5b...` | 静态 KPI |
-| 1 | `01_kpi_cards.html` | HTML | 9046B | `b1e02a...` | Plotly 交互 |
-| 2 | `02_factor_heatmap.png` | PNG | 62523B | `...` | caliber_inventory_snapshot.json |
-| 2 | `02_factor_heatmap.html` | HTML | 8910B | `...` | caliber_inventory_snapshot.json |
-| 3 | `03_scenario_bars.png` | PNG | 64814B | `...` | arbiter_final_regression_raw.json |
-| 3 | `03_scenario_bars.html` | HTML | 9677B | `...` | arbiter_final_regression_raw.json |
-| 4 | `04_risk_progress.png` | PNG | 80302B | `...` | risk_ledger_v4 |
-| 4 | `04_risk_progress.html` | HTML | 10012B | `...` | risk_ledger_v4 |
-| 5 | `05_caliber_matrix.png` | PNG | 66962B | `...` | 三方口径数据 |
-| 5 | `05_caliber_matrix.html` | HTML | 8987B | `...` | 三方口径数据 |
-
-### 3.3 GitHub Pages 部署资产
-
-| 文件 | 大小 | 说明 |
-|------|----:|------|
-| `github_pages/index.html` | 6093B | 主页（含 8 KPI 卡片 + 5 图表嵌入） |
-| `github_pages/README.md` | 2773B | 仓库说明 |
-| ~~`github_pages/wiki_admission_gate.md`~~ | ~~3591B~~ | P14 C4 修复已移至 `backup/v88/phase03/P14_C4_INDEX_FIX/`（方案 A，消除 22 vs 23 索引不匹配；归档副本仍存 `hermes_web_dashboard_archive/github_pages/`） |
-| `github_pages_deploy.zip` | 314685B | 一键部署包（13 文件） |
-
-### 3.4 报告与看板
-
-| 文件 | 大小 | 说明 |
-|------|----:|------|
-| `phase03_weekly_report.md` | 4797B | 投研周报（嵌图） |
-| `global_gate_dashboard_v9.md` | 3705B | 门禁看板 v9（含图表预览入口） |
-| `final_verification_report.md` | 4048B | P12 最终验证报告 |
-
-### 3.5 元数据
-
-| 文件 | 大小 | 说明 |
-|------|----:|------|
-| `STATUS.md` | 1284B | P12 状态 |
-| `JOB_READY.flag` | 1043B | 工单就绪标记 |
-| `MD5_MANIFEST.md` | 1472B | P12 本地哈希清单 |
-
-## 四、图表质量验证
-
-| 项 | 数值 | 状态 |
-|---|:---:|:---:|
-| PNG 主色 #6B4C9A 标准差 | 0.0000 | ✅ SOLID |
-| HTML 无渐变 | 5/5 | ✅ |
-| HTML 无 border-radius | 5/5 | ✅ |
-| HTML 无 box-shadow | 5/5 | ✅ |
-| HTML Plotly CDN 加载 | 5/5 | ✅ |
-| HTML plotly-graph-div | 5/5 | ✅ |
-| HTML hover/tooltip | 3/5 (KPI/矩阵为静态展示) | ✅ |
-| 周报图片链接 | 5/5 | ✅ |
-| 数据源结构一致 | 8 场景 + 9 矩阵单元 | ✅ |
-
-## 五、数据源
-
-| 图表 | JSON 数据源 | 一致性 |
-|------|------------|:---:|
-| 03 场景回归 | `arbiter_final_regression_raw.json` | ✅ 8 场景一致 |
-| 02 因子矩阵 | `caliber_inventory_snapshot.json` | ✅ 3×3 结构一致 |
-
-**注**: 因子矩阵 IC_min 值在图表中用 0.03/0.04/0.05 简化档展示（已在周报注明"待 Phase04 双钥匙激活后真实执行"），JSON 真实值为 0.03/0.02/0.01。**这是设计简化，不是数据错误**——因子计算未执行（双钥匙未激活），展示的是门槛结构而非真实计算结果。
-
-## 六、配色规范
-
-| 色号 | 用途 | 十六进制 |
-|------|------|---------|
-| 主色 | PASS / 数据点 / 主标题 | `#6B4C9A` |
-| 深主色 | 表头 / 状态条 | `#4A3272` |
-| 中主色 | 警告态 | `#8B6DB8` |
-| 浅主色 | 浅强调 | `#C7B5DC` |
-| 极浅紫 | 背景 | `#E7DEEF` |
-| 浅灰 | N/A / 次要 | `#ECECF1` |
-| 中灰 | 边框 | `#D6D6DF` |
-| 深灰 | 文字 | `#6E6E7A` |
-| 黑字 | 主要文字 | `#1F1F2A` |
-| 红色 | FAIL / 异常 | `#B0413E` |
-
-**零渐变 / 零圆角 / 零阴影**
-
-## 七、Wiki 接入指南
-
-本索引可直接接入 framework-tree 仓库 Wiki：
-
-1. **Wiki 首页**: 链接到 `github_pages/README.md`
-2. **准入看板**: ~~复制 `github_pages/wiki_admission_gate.md` 到 Wiki 页面~~ (P14 C4 修复后从挂载目录移出, 归档副本在 `hermes_web_dashboard_archive/github_pages/wiki_admission_gate.md`, 内容 MD5=3286e1469f7ce6b23bedfef061fbc63f 不变)
-3. **资产清单**: 本文件作为资产索引页
-4. **图表预览**: 部署 `github_pages_deploy.zip` 到 GitHub Pages
-
-### GitHub Pages 部署步骤
-
-```bash
-# 在 framework-tree 仓库
-git checkout gh-pages  # 或创建: git checkout -b gh-pages
-unzip hermes_web_dashboard_archive/github_pages_deploy.zip -d .
-git add .
-git commit -m "deploy V88 Phase03 dashboard (P12)"
-git push origin gh-pages
-# 访问 https://<user>.github.io/framework-tree/
-```
-
-## 八、版本与 Commit
-
-| 项 | 值 |
-|---|---|
-| 基线 commit | df821b4 (P11) |
-| P12 增量 | (P13 封签) |
-| 分支 | feature/v88-g1 |
-| 工单链 | P7→P8→P9→P10→P11→**P12→P13** |
-
-## 九、状态
-
-- **ARBITER_ON_STANDBY_AWAIT_KEY_A**（维持）
-- **Key B 未自动签发**
-- **Phase04 保持 FROZEN**
-- **5 项约束全部合规**
-- **零行情调用 / 零外部 API**
+> **性质**: 文档化索引副本；**不是** 冻结资产 asset_index.lst  
+> **冻结原件**: `analysis/e2e_output/v88/phase03/p1/hermes/hermes_delivery_archive/asset_index.lst`  
+> **冻结 MD5**: `d312f3c98e76398982f5f43adf0feb7b` (未变, 本文件只读引用)  
+> **基线**: c920626 (DSHE C5 commit), HEAD: c1f04c1  
+> **工单**: INSTRUCTION_HERMESHF_REBASED_POST_DEPLOY_SNAPSHOT_AND_CLOSE_DISCLOSURE  
+> **生成时间**: 2026-10-18 21:03  
 
 ---
 
-*V88 Phase03 P13 | HERMEShf | 可视化模块资产索引 v1.0 | 2026-10-17*
-*完整哈希清单见全局 MD5_MANIFEST.md "V88_PHASE03_P13" 段*
+## 22/22 条目完整对齐 (基线 c920626)
+
+| # | MD5 | 相对路径 (以 hermes/ 为根) | 大小 (B) | 磁盘校验 |
+|:-:|-----|------|-----:|:---:|
+| 1 | `a94d67a255c64e2ea49caca4fc612c68` | `github_pages/README.md` | 2773 | ✅ |
+| 2 | `13d534aacf12f068e690425c7c50bee1` | `github_pages/assets/01_kpi_cards.html` | 9046 | ✅ |
+| 3 | `c1a8b539e339b9971a7270a176a15b62` | `github_pages/assets/01_kpi_cards.png` | 73713 | ✅ |
+| 4 | `a7032a51cf24b5d7495039c2d1496697` | `github_pages/assets/02_factor_heatmap.html` | 8910 | ✅ |
+| 5 | `a52233f179a18b171cbcc36d5ae2f703` | `github_pages/assets/02_factor_heatmap.png` | 62523 | ✅ |
+| 6 | `9146b62be2d756416bfaaf0f208327b2` | `github_pages/assets/03_scenario_bars.html` | 9677 | ✅ |
+| 7 | `8c270e3f780ec30ea28a3c3d704d50cc` | `github_pages/assets/03_scenario_bars.png` | 64814 | ✅ |
+| 8 | `d1ecbe31a956e1c6bb0424daf586ac41` | `github_pages/assets/04_risk_progress.html` | 10012 | ✅ |
+| 9 | `722f112b8d2ddc917d50268dd9877f90` | `github_pages/assets/04_risk_progress.png` | 80302 | ✅ |
+| 10 | `5a63e1a27cf048876b64ad04b058ebb5` | `github_pages/assets/05_caliber_matrix.html` | 8987 | ✅ |
+| 11 | `52006e66e2fc8f6fa3120d3e51686d77` | `github_pages/assets/05_caliber_matrix.png` | 66962 | ✅ |
+| 12 | `280e8729f388fcab86266d3701d68939` | `github_pages/index.html` | 6093 | ✅ |
+| 13 | `13d534aacf12f068e690425c7c50bee1` | `web_asset/01_kpi_cards.html` | 9046 | ✅ |
+| 14 | `c1a8b539e339b9971a7270a176a15b62` | `web_asset/01_kpi_cards.png` | 73713 | ✅ |
+| 15 | `a7032a51cf24b5d7495039c2d1496697` | `web_asset/02_factor_heatmap.html` | 8910 | ✅ |
+| 16 | `a52233f179a18b171cbcc36d5ae2f703` | `web_asset/02_factor_heatmap.png` | 62523 | ✅ |
+| 17 | `9146b62be2d756416bfaaf0f208327b2` | `web_asset/03_scenario_bars.html` | 9677 | ✅ |
+| 18 | `8c270e3f780ec30ea28a3c3d704d50cc` | `web_asset/03_scenario_bars.png` | 64814 | ✅ |
+| 19 | `d1ecbe31a956e1c6bb0424daf586ac41` | `web_asset/04_risk_progress.html` | 10012 | ✅ |
+| 20 | `722f112b8d2ddc917d50268dd9877f90` | `web_asset/04_risk_progress.png` | 80302 | ✅ |
+| 21 | `5a63e1a27cf048876b64ad04b058ebb5` | `web_asset/05_caliber_matrix.html` | 8987 | ✅ |
+| 22 | `52006e66e2fc8f6fa3120d3e51686d77` | `web_asset/05_caliber_matrix.png` | 66962 | ✅ |
+
+**总条目**: 22 / **磁盘校验通过**: 22 / **通过率**: 22/22
+
+## 路径解析说明
+
+`asset_index.lst` 中每条格式 `MD5 RELATIVE_PATH SIZE`，路径相对 `hermes/` 目录（含 `github_pages/` 和 `web_asset/` 两个子树）。
+此解释来自 R3-G2 首次误报 FAIL 后的修正；DSHB 全局检索按 `hermes/<relative>` 拼装定位。
+
+## 冻结资产保护声明
+
+- **禁止修改 asset_index.lst** 本体（本次工单未动，MD5 保持 `d312f3c9...`）
+- 本文件仅作**文档化副本**，供 DSHB 快速浏览
+- 冻结链 `asset_seal_v3/v4/v5.txt` 亦未修改
