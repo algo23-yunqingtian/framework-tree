@@ -1,7 +1,7 @@
 {
-    "generated_at":  "2026-10-18T10:17:12+08:00",
-    "poll_number":  1760,
-    "agent":  "DSHD-P70",
+    "generated_at":  "2026-10-18T11:01:22+08:00",
+    "poll_number":  1800,
+    "agent":  "DSHD-P71",
     "monitor_version":  "v1.0",
     "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
     "severity":  "OK",
@@ -12,7 +12,7 @@
     "com_health_summary":  "[优秀] COM stability score: 100/100 | Excel=0 Orphan=0 Flash1min=0 WDFchg=0",
     "com_metrics":  {
                         "excel_flash_1min":  0,
-                        "excel_flash_5min":  2,
+                        "excel_flash_5min":  0,
                         "orphan_excel_count":  0,
                         "orphan_excel_pids":  [
 
@@ -202,10 +202,10 @@
                                              "detail":  "WDF_LOAD_FLAP_CLEAR: 0 changes in 5 min"
                                          },
                        "com_jitter_5min":  {
-                                               "count":  2,
+                                               "count":  0,
                                                "threshold":  4,
                                                "triggered":  false,
-                                               "detail":  "COM_JITTER_CLEAR: 2 flash events in 5 min"
+                                               "detail":  "COM_JITTER_CLEAR: 0 flash events in 5 min"
                                            },
                        "session_visibility":  {
                                                   "streak":  0,
@@ -213,6 +213,15 @@
                                                   "triggered":  false,
                                                   "detail":  "SESSION_VISIBILITY_CLEAR: wmain invisible streak=0"
                                               },
+                       "session_flicker":  {
+                                               "history":  [
+                                                               true,
+                                                               true,
+                                                               true
+                                                           ],
+                                               "triggered":  false,
+                                               "detail":  "SESSION_FLICKER_CLEAR: Stable visibility in last 3 polls"
+                                           },
                        "wdf_init_missing":  {
                                                 "was_present":  true,
                                                 "now_present":  true,
@@ -238,15 +247,29 @@
                           "cleanup_taskkill_fallback":  0,
                           "cleanup_skipped_windowed":  0
                       },
+    "sample_observation":  {
+                               "sample_marker_exists":  false,
+                               "sample_marker_path":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\sample_fetch_allow.marker",
+                               "sample_active_observing":  false,
+                               "sample_fast_poll_remaining":  0,
+                               "temp_poll_interval":  60,
+                               "wss_alerts_total_lines":  0,
+                               "wss_alerts_new_count":  0,
+                               "wss_alert_index_total":  0,
+                               "recent_alert_count_10min":  0,
+                               "python_prototype_running":  false,
+                               "p86_controller_ready":  "READY-WAITING",
+                               "p86_ready_path":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshc_p86_controller_ready.json"
+                           },
     "system_details":  {
                            "wind_tcp_ports":  0,
                            "wind_users_file_count":  0,
                            "credential_alert":  "NONE",
                            "wind_api_calls":  0,
                            "skill_sha_check":  "ALL_MATCH",
-                           "monitor_log_lines":  1149,
-                           "tracking_ledger_lines":  149,
-                           "com_lock_events_lines":  16,
-                           "clean_guard_events_lines":  4
+                           "monitor_log_lines":  1197,
+                           "tracking_ledger_lines":  190,
+                           "com_lock_events_lines":  22,
+                           "clean_guard_events_lines":  44
                        }
 }

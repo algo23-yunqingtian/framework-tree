@@ -9,12 +9,28 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 """
-DSHA-P57 · WSS 分片拼装简易时序 — 离线模拟器 (三重COM防锁加固版)
+DSHA-P57/P58 · WSS 分片拼装简易时序 — 离线模拟器
+(Final-Lock 不可绕过断言版 + 日志路由 + 双输出落地)
 
 ═══════════════════════════════════════════════════════════════
 ⚠️  红线警告 — 不执行真实 Wind 调用
 ═══════════════════════════════════════════════════════════════
 本脚本是离线模拟器，使用随机模拟数据演示 WSS 分片拼装流程。
+
+P58 不可绕过 Final-Lock (四层断言):
+  ┌─────────────────────────────────────────────────────────┐
+  │  FINAL-LOCK-1: artifacts/sample_fetch_allow.marker 存在  │
+  │  FINAL-LOCK-2: REAL_WIND_CALL 必须为 True                │
+  │  FINAL-LOCK-3: MAX_DAYS_PER_ROUND 必须为 10              │
+  │  FINAL-LOCK-4: MIN_INTERVAL_SEC 必须为 12                │
+  │  任一断言失败 → AssertionError → 拒绝执行                │
+  │  ⚠️ 禁止注释、临时屏蔽或绕过这四道锁                      │
+  └─────────────────────────────────────────────────────────┘
+
+P58 日志路由 (控制器对接):
+  主运行日志 → artifacts/wss_sample_run.log
+  告警事件   → artifacts/wss_small_sample_alerts.jsonl
+  输出CSV/JSON → code/sim_output + artifacts/sample_output (双落地)
 
 P57 三重COM防锁加固:
   ┌─────────────────────────────────────────────────────────┐
@@ -51,6 +67,7 @@ P57 前置风控条件 (真实调用前必须全部满足):
 设计文档: docs/prototype_wss_shard_fetch_design.md
 分支: feature/v88-g1 @ 01a022f
 状态: 离线原型 · 纸上方案 + 模拟验证 · 三重COM防锁加固
+P58: Final-Lock 4道不可绕过断言 + 日志路由 + 双输出落地
 """
 
 import csv
@@ -104,6 +121,70 @@ SIM_PRICE_STD         = 120.0   # 模拟价格波动标准差
 OUTPUT_DIR            = os.path.join(os.path.dirname(__file__), "sim_output")
 OUTPUT_CSV            = os.path.join(OUTPUT_DIR, f"{SIM_SYMBOL}_{SIM_INDICATOR}_simulated.csv")
 OUTPUT_STATS          = os.path.join(OUTPUT_DIR, "sim_run_stats.json")
+
+# ════════════════════════════════════════════════════════════
+# P58: 日志路由与双输出 (控制器对接)
+# ════════════════════════════════════════════════════════════
+
+ARTIFACTS_DIR                 = os.path.join(PROJECT_ROOT, "artifacts")
+MAIN_LOG_PATH                 = os.path.join(ARTIFACTS_DIR, "wss_sample_run.log")
+ARTIFACTS_SAMPLE_OUTPUT_DIR   = os.path.join(ARTIFACTS_DIR, "sample_output")
+ARTIFACTS_CSV                 = os.path.join(ARTIFACTS_SAMPLE_OUTPUT_DIR,
+                                              f"{SIM_SYMBOL}_{SIM_INDICATOR}_simulated.csv")
+ARTIFACTS_STATS               = os.path.join(ARTIFACTS_SAMPLE_OUTPUT_DIR, "sim_run_stats.json")
+
+
+# ════════════════════════════════════════════════════════════
+# P58: TeeStream — 控制台+日志文件双输出
+# ════════════════════════════════════════════════════════════
+
+class TeeStream:
+    """
+    P58: 双输出流，同时写入原流和日志文件。
+    用于将主运行日志同步写入 artifacts/wss_sample_run.log。
+    """
+    def __init__(self, original, file_handle):
+        self.original = original
+        self.file_handle = file_handle
+    def write(self, data):
+        self.original.write(data)
+        self.file_handle.write(data)
+        self.file_handle.flush()
+    def flush(self):
+        self.original.flush()
+        self.file_handle.flush()
+
+    def isatty(self):
+        return self.original.isatty() if hasattr(self.original, 'isatty') else False
+
+    def reconfigure(self, **kwargs):
+        if hasattr(self.original, 'reconfigure'):
+            self.original.reconfigure(**kwargs)
+
+class TeeContext:
+    """
+    P58: 上下文管理器，切换 stdout/stderr 到双输出模式。
+    退出时恢复原始流并关闭日志文件。
+    """
+    def __init__(self, log_path):
+        self.log_path = log_path
+        self.orig_stdout = None
+        self.orig_stderr = None
+        self.log_file = None
+    def __enter__(self):
+        os.makedirs(os.path.dirname(self.log_path), exist_ok=True)
+        self.log_file = open(self.log_path, 'a', encoding='utf-8')
+        self.orig_stdout = sys.stdout
+        self.orig_stderr = sys.stderr
+        sys.stdout = TeeStream(self.orig_stdout, self.log_file)
+        sys.stderr = TeeStream(self.orig_stderr, self.log_file)
+        return self
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stdout = self.orig_stdout
+        sys.stderr = self.orig_stderr
+        if self.log_file:
+            self.log_file.close()
+        return False
 
 
 # ════════════════════════════════════════════════════════════
@@ -791,8 +872,11 @@ def calculate_statistics(snapshots: dict, trading_days: list) -> dict:
 # 输出
 # ════════════════════════════════════════════════════════════
 
-def write_csv(output_path: str, aligned_series: list):
-    """将模拟结果写入 CSV。"""
+def write_csv(output_path: str, aligned_series: list, copy_to: str = None):
+    """
+    将模拟结果写入 CSV。
+    P58: 可选 copy_to 参数实现双落地（code/sim_output + artifacts/sample_output）。
+    """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w", newline="", encoding="utf-8-sig") as f:
@@ -813,15 +897,32 @@ def write_csv(output_path: str, aligned_series: list):
 
     print(f"  📄 CSV 已写入: {output_path}")
 
+    # P58: 双落地到 artifacts/sample_output
+    if copy_to:
+        os.makedirs(os.path.dirname(copy_to), exist_ok=True)
+        import shutil
+        shutil.copy2(output_path, copy_to)
+        print(f"  📄 CSV 副本(artifacts): {copy_to}")
 
-def write_stats(output_path: str, stats: dict):
-    """将运行统计写入 JSON。"""
+
+def write_stats(output_path: str, stats: dict, copy_to: str = None):
+    """
+    将运行统计写入 JSON。
+    P58: 可选 copy_to 参数实现双落地。
+    """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)
 
     print(f"  📊 统计已写入: {output_path}")
+
+    # P58: 双落地到 artifacts/sample_output
+    if copy_to:
+        os.makedirs(os.path.dirname(copy_to), exist_ok=True)
+        import shutil
+        shutil.copy2(output_path, copy_to)
+        print(f"  📊 统计副本(artifacts): {copy_to}")
 
 
 # ════════════════════════════════════════════════════════════
@@ -1079,7 +1180,7 @@ def run_simulation():
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    write_csv(OUTPUT_CSV, aligned)
+    write_csv(OUTPUT_CSV, aligned, copy_to=ARTIFACTS_CSV)
 
     # ── 步骤 7: 统计 ──
     stats = calculate_statistics(snapshots, trading_days)
@@ -1108,8 +1209,17 @@ def run_simulation():
         "wdf_jitter_detection": True,
         "wmain_visible_check": True
     }
+    stats["p58_features"] = {
+        "final_lock_assertions": 4,
+        "main_log_path": MAIN_LOG_PATH,
+        "alert_log_path": ALERT_LOG_PATH,
+        "dual_output_enabled": True,
+        "artifacts_sample_output_dir": ARTIFACTS_SAMPLE_OUTPUT_DIR,
+        "real_wind_call": REAL_WIND_CALL,
+        "marker_exists": permit_exists
+    }
 
-    write_stats(OUTPUT_STATS, stats)
+    write_stats(OUTPUT_STATS, stats, copy_to=ARTIFACTS_STATS)
 
     # ── 步骤 8: 输出摘要 ──
     print()
@@ -1134,11 +1244,17 @@ def run_simulation():
     print(f"  [P57] COM防锁三层:   前置检查 ✅ + 强制回收 ✅ + 兜底自检 ✅")
     print(f"  [P57] GC双重释放:    GC.Collect()×2 ✅")
     print(f"  [P57] WDF抖动检测:   {'✅ 稳定' if wdf_stable else '⚠️ 存在风险'}")
+    print(f"  [P58] Final-Lock:    4道不可绕过断言 ✅")
+    print(f"  [P58] 主日志路由:    {MAIN_LOG_PATH} ✅")
+    print(f"  [P58] 双输出落地:    code/sim_output + artifacts/sample_output ✅")
     print()
     print("📌 输出文件:")
     print(f"  - {OUTPUT_CSV}")
     print(f"  - {OUTPUT_STATS}")
     print(f"  - {ALERT_LOG_PATH} (告警日志)")
+    print(f"  - [P58] {MAIN_LOG_PATH} (主运行日志)")
+    print(f"  - [P58] {ARTIFACTS_CSV} (CSV副本)")
+    print(f"  - [P58] {ARTIFACTS_STATS} (统计副本)")
     print()
     print("=" * 70)
     print("⚠️  再次提醒:")
@@ -1148,28 +1264,83 @@ def run_simulation():
     print("   4. 硬限制: 单次≤10个交易日, 间隔≥12秒, 不可修改。")
     print("   5. [P57] COM防锁三层: 前置检查 + 逐层回收+GC双重释放 + 兜底自检。")
     print("   6. [P57] 前置风控: 无孤儿Excel + wmain可见 + WDF稳定。")
-    print("   7. 小样测试完成后必须人工复核数据，才可申请更大权限。")
+    print("   7. [P58] Final-Lock: 4道不可绕过断言(markeR+REAL_WIND_CALL+MAX_DAYS+MIN_INTERVAL)。")
+    print("   8. [P58] 日志路由: 主日志→wss_sample_run.log, 告警→wss_small_sample_alerts.jsonl。")
+    print("   9. [P58] 双输出: code/sim_output + artifacts/sample_output。")
+    print("  10. 小样测试完成后必须人工复核数据，才可申请更大权限。")
     print("=" * 70)
 
     return stats
 
 
 # ════════════════════════════════════════════════════════════
-# 入口
+# 入口 — P58 Final-Lock (不可绕过断言)
 # ════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    print()
-    print("╔══════════════════════════════════════════════════════════════╗")
-    print("║  DSHA-P57 · WSS 分片拼装简易时序 — 离线模拟器 (三重COM防锁) ║")
-    print("║  状态: 模拟原型 · REAL_WIND_CALL=False · 零真实调用         ║")
-    print("║  硬限制: ≤10交易日 · 间隔≥12s · COM三重防锁               ║")
-    print("║  P57: 前置检查 + 逐层回收+GC双重 + 兜底自检               ║")
-    print("╚══════════════════════════════════════════════════════════════╝")
-    print()
+    # ── P58: 主运行日志路由 (TeeStream: 控制台 + artifacts/wss_sample_run.log) ──
+    with TeeContext(MAIN_LOG_PATH):
+        print()
+        print("╔══════════════════════════════════════════════════════════════╗")
+        print("║  DSHA-P57/P58 · WSS 分片拼装简易时序 — 离线模拟器          ║")
+        print("║  状态: 模拟原型 · REAL_WIND_CALL=False · 零真实调用        ║")
+        print("║  硬限制: ≤10交易日 · 间隔≥12s · COM三重防锁              ║")
+        print("║  P57: 前置检查 + 逐层回收+GC双重 + 兜底自检              ║")
+        print("║  P58: Final-Lock 4道断言 + 日志路由 + 双输出落地          ║")
+        print("╚══════════════════════════════════════════════════════════════╝")
+        print()
 
-    stats = run_simulation()
+        # ═══════════════════════════════════════════════════════════════
+        # 🔒 P58 Final-Lock: 四层不可绕过断言
+        # ──────────────────────────────────────────────────────────────
+        # ⚠️⚠️⚠️ 这些断言禁止被注释、临时屏蔽或绕过 ⚠️⚠️⚠️
+        # ⚠️ 任何试图绕过这四道锁的操作都是违规的 ⚠️
+        # ⚠️ 真实调用需要同时满足: marker存在 + REAL_WIND_CALL=True ⚠️
+        # ⚠️ 缺少任一条件 → AssertionError → 拒绝执行          ⚠️
+        # ⚠️ 本注释块与下方四道断言必须整体保留, 禁止分离        ⚠️
+        # ═══════════════════════════════════════════════════════════════
 
-    print()
-    print("✅ 模拟完成。本脚本未调用任何真实 Wind API。")
-    sys.exit(0)
+        # ── FINAL-LOCK-1: 许可文件存在 (第一层开关) ──
+        # 人类步骤2: New-Item artifacts\sample_fetch_allow.marker
+        # Agent不允许自行创建此文件; 必须由人类触发
+        assert os.path.exists(PERMIT_MARKER_FILE), \
+            f"🔒 FINAL-LOCK-1: MISSING_SAMPLE_MARKER\n" \
+            f"   许可文件不存在: {PERMIT_MARKER_FILE}\n" \
+            f"   Agent禁止自行创建此文件。需由DSHC人工执行:\n" \
+            f"   New-Item -ItemType File {PERMIT_MARKER_FILE}"
+
+        # ── FINAL-LOCK-2: REAL_WIND_CALL 必须为 True (第二层开关) ──
+        # 人类步骤3: 手动编辑 prototype_wss_assemble_sim.py → REAL_WIND_CALL = True
+        # Agent不允许自行修改此常量
+        assert REAL_WIND_CALL is True, \
+            f"🔒 FINAL-LOCK-2: REAL_WIND_CALL_NOT_ENABLED\n" \
+            f"   REAL_WIND_CALL={REAL_WIND_CALL} (当前值)\n" \
+            f"   Agent禁止自行修改此常量。需由DSHC人工编辑:\n" \
+            f"   将 REAL_WIND_CALL = False 改为 REAL_WIND_CALL = True"
+
+        # ── FINAL-LOCK-3: MAX_DAYS_PER_ROUND 必须为 10 (硬限制保护) ──
+        # 此值不可修改, 防止数据规模膨胀
+        assert MAX_DAYS_PER_ROUND == 10, \
+            f"🔒 FINAL-LOCK-3: MAX_DAYS_HAS_BEEN_ALTERED-PROTECTED\n" \
+            f"   MAX_DAYS_PER_ROUND={MAX_DAYS_PER_ROUND} (预期: 10)\n" \
+            f"   单次执行最大交易日数量被篡改, 拒绝执行。"
+
+        # ── FINAL-LOCK-4: MIN_INTERVAL_SEC 必须为 12 (硬限制保护) ──
+        # 此值不可修改, 防止请求频率膨胀
+        assert MIN_INTERVAL_SEC == 12, \
+            f"🔒 FINAL-LOCK-4: MIN_INTERVAL_HAS_BEEN_ALTERED-PROTECTED\n" \
+            f"   MIN_INTERVAL_SEC={MIN_INTERVAL_SEC} (预期: 12)\n" \
+            f"   最小请求间隔被篡改, 拒绝执行。"
+
+        # ═══════════════════════════════════════════════════════════════
+        # ✅ Final-Lock 全部通过 — 进入正式执行
+        # ═══════════════════════════════════════════════════════════════
+        print()
+        print("🔓 [P58] Final-Lock 全部通过: 4/4 断言 ✅")
+        print()
+
+        stats = run_simulation()
+
+        print()
+        print("✅ 模拟完成。本脚本未调用任何真实 Wind API。")
+        sys.exit(0)

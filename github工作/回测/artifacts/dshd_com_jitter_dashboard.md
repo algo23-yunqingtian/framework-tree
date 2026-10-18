@@ -1,11 +1,11 @@
-# DSHD-P70 Orphan Excel Cleanup Safe Guard Dashboard
+# DSHD-P71 Sample Run Audit Relay Dashboard
 
-**Generated**: 2026-10-18T10:17:12+08:00
-**Poll Number**: #1760
-**Session**: DSHD-P70
+**Generated**: 2026-10-18T11:01:22+08:00
+**Poll Number**: #1800
+**Session**: DSHD-P71
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
-**Poll Interval**: 60s
+**Poll Interval**: 60s (current: 60)s
 
 ---
 
@@ -13,7 +13,7 @@
 
 [优秀] COM stability score: 100/100 | Excel=0 Orphan=0 Flash1min=0 WDFchg=0
 
-**Overall**: [GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=2 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 -- All invariants passing
+**Overall**: [GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing
 
 ---
 
@@ -22,7 +22,7 @@
 | Metric | Value | Status |
 |--------|-------|--------|
 | Excel Flash Events (1min) | 0 | CLEAR |
-| Excel Flash Events (5min) | 2 | CLEAR |
+| Excel Flash Events (5min) | 0 | CLEAR |
 | Orphan Excel Count | 0 | CLEAR |
 | WDF Load Changes (5min) | 0 | CLEAR |
 | WDF Load Stability Score | 100/100 | 优秀 |
@@ -58,9 +58,11 @@
 | COM_JITTER_ALERT (>3 start/stop/1min) | CLEAR | 0 events in 1min |
 | COM_ORPHAN_PROCESS_WARNING | CLEAR | None |
 | WDF_LOAD_FLAP_WARNING (>2 changes/5min) | CLEAR | 0 changes in 5min |
-| COM_JITTER_WARNING (>4 flash/5min) | CLEAR | 2 flash events |
+| COM_JITTER_WARNING (>4 flash/5min) | CLEAR | 0 flash events |
 | SESSION_VISIBILITY (wmain invisible 3 polls) | CLEAR | Streak: 0 |
 | WDF_INIT_MISSING (InitWAPI disappeared) | CLEAR | Present |
+| SESSION_FLICKER (P71: visible/invisible flicker 3 polls) | CLEAR | History: VVV |
+| SAMPLE_ACTIVE_OBSERVING (P71: marker+python running) | CLEAR | Not active |
 
 ---
 
@@ -81,6 +83,26 @@
 *No guard actions this poll (no marker or no orphans).*
 
 > **Red Line**: No cleanup without marker. Never kills windowed Excel, wmain, or InitWAPI.
+
+---
+
+## P71 Sample Readiness Status (NEW)
+
+| Item | Value |
+|------|-------|
+| SAMPLE_CONTROLLER_READY | READY-WAITING |
+| SAMPLE_MARKER_STATUS | ABSENT |
+| Sample Marker Path | D:\DSH_WORK\github工作\回测\artifacts\sample_fetch_allow.marker |
+| RECENT_ALERT_COUNT (10min) | 0 |
+| Total WSS Alert Lines | 0 |
+| Alerts Indexed Total | 0 |
+| New Alerts This Poll | 0 |
+| Python Prototype Running | NO |
+| SAMPLE_ACTIVE_OBSERVING | NO |
+| CURRENT_COM_HEALTH | 100/100 (优秀) |
+| 风险评级 | 环境就绪，适合点火 |
+
+> **Red Line**: DSHD never creates/deletes sample_fetch_allow.marker. DSHD never calls controller or Python scripts. DSHD only observes.
 
 ---
 
@@ -119,9 +141,9 @@
 | Credential Alert | NONE |
 | Wind API Calls | 0 |
 | Skill SHA Check | ALL_MATCH |
-| Monitor Log Lines | 1149 |
-| Tracking Ledger Lines | 149 |
-| COM Lock Events Lines | 16 |
+| Monitor Log Lines | 1197 |
+| Tracking Ledger Lines | 190 |
+| COM Lock Events Lines | 22 |
 
 ---
 

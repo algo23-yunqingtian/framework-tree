@@ -1,8 +1,8 @@
 # DSHD-P68 Enhanced Wind Observation Dashboard
 
-**Generated**: 2026-10-18T10:17:12+08:00
-**Poll Number**: #1760
-**Session**: DSHD-P70 (inherited P68/P69 monitor)
+**Generated**: 2026-10-18T11:01:22+08:00
+**Poll Number**: #1800
+**Session**: DSHD-P71 (inherited P68/P69/P70 monitor)
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
 **Poll Interval**: 60s
@@ -11,7 +11,7 @@
 
 ## Health Assessment
 
-[GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=2 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 -- All invariants passing
+[GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing
 
 ---
 
@@ -62,7 +62,7 @@
 
 | Alert | Status | Detail |
 |-------|--------|--------|
-| COM_JITTER (>4 flash/5min) | CLEAR | Flash events: 2 |
+| COM_JITTER (>4 flash/5min) | CLEAR | Flash events: 0 |
 | SESSION_VISIBILITY (wmain invisible 3 polls) | CLEAR | Invisible streak: 0 |
 | INIT_WDF_MISSING (InitWAPI disappeared) | CLEAR | Present |
 
@@ -80,8 +80,8 @@
 | Credential Alert | NONE |
 | Wind API Calls | 0 |
 | Skill SHA Check | ALL_MATCH |
-| Monitor Log Lines | 1149 |
-| Tracking Ledger Lines | 149 |
+| Monitor Log Lines | 1197 |
+| Tracking Ledger Lines | 190 |
 
 ---
 

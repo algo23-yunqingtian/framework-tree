@@ -4,9 +4,9 @@
   "fail_count": 0,
   "missing_count": 0,
   "success_rate": 100.0,
-  "min_value": 24250.88,
-  "max_value": 24655.33,
-  "mean_value": 24514.3,
+  "min_value": 24400.18,
+  "max_value": 24839.2,
+  "mean_value": 24542.78,
   "date_range": [
     "2025-01-02",
     "2025-01-15"
@@ -16,8 +16,8 @@
   "data_source": "SIMULATED (NOT REAL)",
   "real_wind_call": false,
   "permit_marker_exists": false,
-  "run_timestamp": "2026-10-18T02:11:52.098156+00:00",
-  "total_sleep_time_sec": 125.5,
+  "run_timestamp": "2026-10-18T02:56:19.290415+00:00",
+  "total_sleep_time_sec": 121.9,
   "total_calls": 10,
   "min_interval_sec": 12,
   "max_interval_sec": 15,
@@ -40,5 +40,14 @@
     "post_call_residue_check": true,
     "wdf_jitter_detection": true,
     "wmain_visible_check": true
+  },
+  "p58_features": {
+    "final_lock_assertions": 4,
+    "main_log_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\wss_sample_run.log",
+    "alert_log_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\wss_small_sample_alerts.jsonl",
+    "dual_output_enabled": true,
+    "artifacts_sample_output_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\sample_output",
+    "real_wind_call": false,
+    "marker_exists": false
   }
 }

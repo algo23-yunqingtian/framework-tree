@@ -1,7 +1,7 @@
 {
-    "generated_at":  "2026-10-18T10:17:12+08:00",
-    "poll_number":  1760,
-    "agent":  "DSHD-P70",
+    "generated_at":  "2026-10-18T11:01:22+08:00",
+    "poll_number":  1800,
+    "agent":  "DSHD-P71",
     "monitor_version":  "v1.0",
     "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
     "severity":  "OK",
@@ -9,7 +9,7 @@
 
                     ],
     "health_icon":  "GREEN",
-    "health_summary":  "[GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=2 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 -- All invariants passing",
+    "health_summary":  "[GREEN] OK: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(NONE) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=READY | SkillSHA=OK | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants passing",
     "processes":  [
                       {
                           "process":  "wmain.exe",
@@ -159,7 +159,7 @@
                        }
                    ],
     "com_jitter_5min":  {
-                            "flash_count_5min":  2,
+                            "flash_count_5min":  0,
                             "warning":  false
                         },
     "session_visibility":  {

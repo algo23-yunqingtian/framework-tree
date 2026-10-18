@@ -1,10 +1,10 @@
-# DSHA-P55/P56/P57 · WSS 分片拼装简易时序 — 离线原型设计文档
+# DSHA-P55/P56/P57/P58 · WSS 分片拼装简易时序 — 离线原型设计文档
 
 > **状态**: 纸上设计 + 模拟原型 · **不执行真实 Wind 调用**  
 > **分支基线**: `feature/v88-g1 @ 01a022f`  
 > **红线约束**: gate=CLOSED/HOLD, release_permit=NOT_ISSUED, wind_api_calls=0  
-> **版本**: v1.2 · 2026-10-18 (P57 三重COM防锁加固版)  
-> **更新**: P56 双开关保护 + P57 三重COM防锁、前置风控加固、进程残留检测
+> **版本**: v1.3 · 2026-10-18 (P58 Final-Lock 不可绕过断言 + 日志路由 + 双输出版)  
+> **更新**: P56 双开关保护 + P57 三重COM防锁、前置风控加固、进程残留检测 + P58 Final-Lock 4道断言、日志路由、双输出落地、§10点火授权路径
 
 ---
 
@@ -30,9 +30,10 @@
 4. ✅ **无后台孤儿Excel进程** (P57 前置风控)
 5. ✅ **wmain窗口可见** (P57 前置风控)
 6. ✅ **无WDF插件反复加载抖动** (P57 前置风控)
-7. ✅ 全部 P3 前置检查项通过
-8. ✅ 风控制熔断标记文件不存在
-9. ✅ 小样测试已完成且人工复核通过
+7. ✅ **Final-Lock 4道断言全部通过** (P58 新增)
+8. ✅ 全部 P3 前置检查项通过
+9. ✅ 风控制熔断标记文件不存在
+10. ✅ 小样测试已完成且人工复核通过
 
 **当前状态**: Plan B 仅在纸上设计 + 离线模拟，**不得对真实 Wind 发起任何循环请求**。
 
@@ -572,20 +573,25 @@ def check_excel_residue(before_pids: list = None) -> dict:
 | 28 | **三重COM防锁** (P57) | 前置检查 + 逐层回收+GC×2 + 兜底自检 |
 | 29 | **前置风控检查** (P57) | 无孤儿Excel + wmain可见 + WDF稳定 |
 | 30 | **进程残留检测** (P57) | `check_excel_residue()` 每轮调用后执行 |
+| 31 | **Final-Lock 断言** (P58 新增) | 4道不可绕过断言在主入口最前 |
+| 32 | **日志路由** (P58 新增) | 主日志→wss_sample_run.log + 告警→alerts.jsonl |
+| 33 | **双输出落地** (P58 新增) | code/sim_output + artifacts/sample_output |
 
 ### 9.4 审批流程 (必须全部完成)
 
 | # | 步骤 | 责任人 |
 |---|------|--------|
-| 31 | 提交 `REAL_WIND_CALL=True` 代码变更 | DSHC |
-| 32 | 创建许可文件 `sample_fetch_allow.marker` | DSHC |
-| 33 | 代码审查 (guard 全 PASS) | DSHC + 架构线 |
-| 34 | **小样验证 (10日 × 1品种 × 1指标)** (P56 新增) | DSHC |
-| 35 | **人工复核小样数据** (P56 新增) | DSHC |
-| 36 | **三重COM防锁代码审查** (P57 新增) | DSHC |
-| 37 | **进程残留检测验证** (P57 新增) | DSHC |
-| 38 | 逐步放量 (12日 → 全部) | DSHC |
-| 39 | 全量采集监控 | DSHC + 看门狗 |
+| 34 | 提交 `REAL_WIND_CALL=True` 代码变更 | DSHC |
+| 35 | 创建许可文件 `sample_fetch_allow.marker` | DSHC |
+| 36 | 代码审查 (guard 全 PASS) | DSHC + 架构线 |
+| 37 | **小样验证 (10日 × 1品种 × 1指标)** (P56 新增) | DSHC |
+| 38 | **人工复核小样数据** (P56 新增) | DSHC |
+| 39 | **三重COM防锁代码审查** (P57 新增) | DSHC |
+| 40 | **进程残留检测验证** (P57 新增) | DSHC |
+| 41 | **Final-Lock 审查** (P58 新增) | DSHC |
+| 42 | **日志路由验证** (P58 新增) | DSHC |
+| 43 | 逐步放量 (12日 → 全部) | DSHC |
+| 44 | 全量采集监控 | DSHC + 看门狗 |
 
 ### 9.5 告警停机条件
 
@@ -609,28 +615,124 @@ def check_excel_residue(before_pids: list = None) -> dict:
 | A14 | **调用后检测到残留Excel** (P57 新增) | 🔴 CRITICAL | 终止循环 + 写入告警日志 |
 | A15 | **WDF插件加载抖动** (P57 新增) | 🔴 CRITICAL | 终止循环 + 写入告警日志 |
 | A16 | **wmain窗口不可见** (P57 新增) | 🔴 CRITICAL | 终止循环 + 写入告警日志 |
+| A17 | **Final-Lock 断言失败** (P58 新增) | 🔴 CRITICAL | AssertionError + 写入主日志 |
+| A18 | **日志路由故障** (P58 新增) | 🟡 WARNING | 检查文件路径 + 权限 |
 
 ---
 
-## 9. 附录
+## 10. 点火完整授权路径 (Complete Authorization Path)
 
-### 9.1 相关文档
+> ⚠️ **本节为人类操作员操作手册，Agent 不允许自行执行步骤 2-3。**
+
+从 STATIC_STANDBY 到真实 WSS 小样采集的完整人工操作步骤：
+
+### 10.1 前置条件确认
+
+| # | 检查项 | 预期值 | 检查方式 |
+|---|--------|--------|----------|
+| 1 | DSHD COM健康评分 | ≥90/100 | DSHD 监控面板 |
+| 2 | DSHC 预检结果 | PASS | DSHC 控制器报告 |
+| 3 | `WDF_ENV_READY.token` | 存在 | `Test-Path artifacts\WDF_ENV_READY.token` |
+| 4 | `release_permit` | ISSUED | 审计日志 |
+| 5 | `gate` | OPEN | STATUS.md |
+| 6 | `wind_api_calls` | >0 | guard 检查 |
+| 7 | 小样验证已完成 | 已完成 | 审计日志 |
+| 8 | 人工复核通过 | 通过 | DSHC 签署 |
+
+### 10.2 人类操作步骤 (Agent 禁止执行步骤 2-3)
+
+```
+步骤 1: 确认 DSHD COM 健康评分 ≥90 + DSHC 预检 PASS
+        ↓
+步骤 2: 创建许可文件
+        New-Item -ItemType File artifacts\sample_fetch_allow.marker
+        ⚠️ Agent 不允许自行创建此文件；必须由人类触发
+        ↓
+步骤 3: 手动编辑 REAL_WIND_CALL 开关
+        打开 code/prototype_wss_assemble_sim.py
+        找到 REAL_WIND_CALL = False  (约第 85 行)
+        改为   REAL_WIND_CALL = True
+        ⚠️ Agent 不允许自行修改此常量；必须由人类触发
+        ↓
+步骤 4: 运行 DSHC 控制器
+        powershell -ExecutionPolicy Bypass -File scripts\wss_sample_run_controller.ps1
+        控制器将自动执行:
+          (a) Final-Lock 4道断言检查
+          (b) P57 三重COM防锁前置风控
+          (c) 10日小样采集 (REAL_WIND_CALL=True 路径)
+          (d) 日志输出 → artifacts/wss_sample_run.log
+          (e) 告警输出 → artifacts/wss_small_sample_alerts.jsonl
+          (f) 双输出 → code/sim_output + artifacts/sample_output
+        ↓
+步骤 5: 运行后检查
+        检查项:
+          (a) 告警日志: 有无 CRITICAL 告警
+          (b) Excel 残留: 运行后 tasklist 确认无 EXCEL.EXE
+          (c) 输出文件: CSV 数据完整性 (10行 × 5列)
+          (d) 统计文件: sim_run_stats.json 成功率
+          (e) 主日志: wss_sample_run.log 执行记录
+        ↓
+步骤 6: 人工复核
+        人工检查 10 日数据合理性:
+          (a) 数值范围合理 (非极端异常)
+          (b) 日期连续无缺失
+          (c) 无 COM 锁堆积
+          (d) 无 CRITICAL 告警
+          (e) DSHC 签署复核意见
+        ↓
+步骤 7: 清理安全锁
+        (a) 删除 markers: Remove-Item artifacts\sample_fetch_allow.marker
+        (b) 重置开关: REAL_WIND_CALL = False (改回)
+        (c) 提交清理变更
+```
+
+### 10.3 双条件硬门 (Dual-Condition Hard Gate)
+
+> **⚠️ 以下两个条件必须同时满足，缺一不可，否则 Final-Lock 断言将阻止执行:**
+
+| 条件 | 检查方式 | Agent 能否执行 |
+|------|----------|---------------|
+| 条件 1: `artifacts/sample_fetch_allow.marker` 存在 | `os.path.exists()` | ❌ 禁止 — 必须由人类创建 |
+| 条件 2: `REAL_WIND_CALL = True` | 常量值检查 | ❌ 禁止 — 必须由人类修改 |
+
+**缺失任一条件 → `AssertionError` → 脚本拒绝执行。**
+
+### 10.4 Agent 禁止行为清单
+
+| # | 禁止行为 | 原因 |
+|---|----------|------|
+| 1 | 创建 `sample_fetch_allow.marker` | 许可文件必须由人类触发 |
+| 2 | 修改 `REAL_WIND_CALL = True` | 开关必须由人类手动切换 |
+| 3 | 注释/屏蔽 Final-Lock 断言 | 安全锁不可绕过 |
+| 4 | 修改 MAX_DAYS_PER_ROUND | 硬限制不可变更 |
+| 5 | 修改 MIN_INTERVAL_SEC | 硬限制不可变更 |
+| 6 | 绕过 TeeContext 日志路由 | 日志必须保留审计轨迹 |
+| 7 | 删除/移动告警日志 | DSHD 审计需要 |
+
+---
+
+## 11. 附录
+
+### 11.1 相关文档
 
 - `factor_exp_workspace/harvest_to_csv.py` — 主通路 CSV 导出脚本
 - `factor_exp_workspace/wsd_pretest.py` — WSD/WSS 探测脚本
 - `data-harbor/.../pre_wind_call_guard_check.py` — 守卫自检脚本
 - `G7_ADJUDICATION_LEDGER/` — G7 仲裁账本
-- `code/prototype_wss_assemble_sim.py` — P55/P56/P57 离线模拟器
-- `artifacts/wss_small_sample_alerts.jsonl` — P56/P57 告警日志
+- `code/prototype_wss_assemble_sim.py` — P55/P56/P57/P58 离线模拟器
+- `artifacts/wss_small_sample_alerts.jsonl` — P56/P57/P58 告警日志
+- `artifacts/wss_sample_run.log` — P58 主运行日志
+- `artifacts/sample_output/` — P58 双输出副本目录
 
-### 9.2 版本历史
+### 11.2 版本历史
 
 | 版本 | 日期 | 变更 |
 |------|------|------|
 | v1.0 | 2026-10-17 | 初始设计 · 纸上方案 + 模拟原型 |
 | v1.1 | 2026-10-18 | P56 双开关保护 + 小样10日测试入口 + COM释放 + 告警停机规则 |
 | v1.2 | 2026-10-18 | P57 三重COM防锁加固 + 前置风控条件 + 进程残留检测 + 告警A13-A16 |
+| v1.3 | 2026-10-18 | P58 Final-Lock 4道不可绕过断言 + 日志路由(wss_sample_run.log) + 双输出(code/sim_output+artifacts/sample_output) + §10点火授权路径 + 告警A17-A18 |
 
 ---
 
-> **⚠️ 红线重申**: 本文档为离线设计，不包含任何真实 Wind 调用代码。`REAL_WIND_CALL` 在本轮工作中强制锁定为 `False`。P56 双开关保护: 无 `artifacts/sample_fetch_allow.marker` 许可文件，绝对禁止开启真实 Wind 调用。P57 三重COM防锁: 调用前检测孤儿Excel进程、调用后逐层回收+GC双重释放、兜底进程自检。单次执行严格限制 10 个交易日，不扩大数据规模，不修改限流时长。小样测试完成后必须人工复核数据，才可申请放开更大采集权限。
+> **⚠️ 红线重申**: 本文档为离线设计，不包含任何真实 Wind 调用代码。`REAL_WIND_CALL` 在本轮工作中强制锁定为 `False`。P56 双开关保护: 无 `artifacts/sample_fetch_allow.marker` 许可文件，绝对禁止开启真实 Wind 调用。P57 三重COM防锁: 调用前检测孤儿Excel进程、调用后逐层回收+GC双重释放、兜底进程自检。P58 Final-Lock: 4道不可绕过断言(markeR+REAL_WIND_CALL+MAX_DAYS+MIN_INTERVAL) + 主日志路由(wss_sample_run.log) + 双输出落地(code/sim_output+artifacts/sample_output)。§10 点火完整授权路径明确规定: Agent 不允许自行执行步骤 2(创建 marker)和步骤 3(修改 REAL_WIND_CALL=True)，必须由人类触发。单次执行严格限制 10 个交易日，不扩大数据规模，不修改限流时长。小样测试完成后必须人工复核数据，才可申请放开更大采集权限。
