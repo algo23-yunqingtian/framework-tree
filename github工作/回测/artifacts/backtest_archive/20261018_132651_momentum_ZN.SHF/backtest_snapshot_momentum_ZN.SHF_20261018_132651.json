@@ -1,0 +1,77 @@
+{
+  "snapshot_id": "BT-20261018132651-MOM",
+  "created_at": "2026-10-18T05:26:51.689982+00:00",
+  "status": "OK",
+  "metadata": {
+    "factor_type": "momentum",
+    "factor_id": "unknown",
+    "symbol": "ZN.SHF",
+    "indicator": "close",
+    "data_source": "SIMULATED",
+    "start_date": "2025-03-27",
+    "end_date": "2025-04-09",
+    "trading_days": 10,
+    "factor_points": 10,
+    "config": {
+      "risk_free_rate": 0.0,
+      "initial_capital": 100000.0
+    }
+  },
+  "metrics": {
+    "total_return": -0.00372012,
+    "annualized_return": 0.0,
+    "annual_volatility": 0.04671112,
+    "daily_volatility": 0.00294252,
+    "max_drawdown": -0.00832601,
+    "sharpe_ratio": -2.21028386,
+    "information_coefficient": -0.57366014,
+    "IC_IR": -1.81407265,
+    "IC_sample_size": 10
+  },
+  "factor_stats": {
+    "count": 10,
+    "mean": 0.00397196,
+    "std": 0.00232479,
+    "min": -0.00021695,
+    "max": 0.00810349,
+    "p25": 0.0027098,
+    "p50": 0.00381717,
+    "p75": 0.00422796,
+    "positive_ratio": 0.9,
+    "negative_ratio": 0.1
+  },
+  "equity_curve_summary": {
+    "length": 10,
+    "start_value": 24566.39,
+    "end_value": 24475.0,
+    "preview_first5": [
+      24566.39,
+      24680.49,
+      24672.97,
+      24559.13,
+      24516.57
+    ]
+  },
+  "data_provenance": {
+    "price_source": "SIMULATED",
+    "price_status": "OK",
+    "price_metadata": {
+      "loaded_at": "2026-10-18T05:26:51.630983+00:00",
+      "record_count": 70,
+      "source_file": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\sample_output\\ZN.SHF_70d_test.csv",
+      "validation": {
+        "overall_passed": true,
+        "null_count": 0,
+        "duplicate_count": 0,
+        "anomalous_count": 0,
+        "anomaly_threshold": 3.0
+      }
+    },
+    "factor_data_source": "UNKNOWN"
+  },
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0
+  },
+  "archive_info": {}
+}

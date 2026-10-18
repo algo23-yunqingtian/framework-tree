@@ -372,7 +372,9 @@ def run_pipeline_for_csv(csv_path: str) -> Dict[str, Any]:
             "status": backtest_result.get("status"),
             "summary": backtest_result.get("summary", {}),
         }
-        notes.append(f"回测完成: 累计收益={backtest_result.get('summary', {}).get('cumulative_return', 'N/A'):.4f}")
+        total_ret = backtest_result.get("summary", {}).get("total_return")
+        ret_str = f"{total_ret:.4f}" if isinstance(total_ret, (int, float)) else "N/A"
+        notes.append(f"回测完成: 累计收益={ret_str}")
 
     except Exception as e:
         result["status"] = STATUS_ERROR
@@ -404,6 +406,10 @@ def run_pipeline_for_csv(csv_path: str) -> Dict[str, Any]:
         "factor_length": result["factor_result"]["factor_length"],
         "backtest_md": backtest_files.get("md"),
         "backtest_json": backtest_files.get("json"),
+        "backtest_metrics_csv": backtest_files.get("metrics_csv"),
+        "backtest_net_value_csv": backtest_files.get("net_value_csv"),
+        "backtest_snapshot_json": backtest_files.get("snapshot_json"),
+        "archive_dir": backtest_files.get("archive_dir"),
     })
 
     return result

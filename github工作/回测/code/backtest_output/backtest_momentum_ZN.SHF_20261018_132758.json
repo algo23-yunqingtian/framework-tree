@@ -1,0 +1,84 @@
+{
+  "status": "OK",
+  "summary": {
+    "factor_type": "momentum",
+    "factor_id": "TEST-MOM",
+    "symbol": "ZN.SHF",
+    "indicator": "close",
+    "data_source": "SIMULATED (NOT REAL)",
+    "total_return": -0.00677243,
+    "annual_volatility": 0.03779566,
+    "daily_volatility": 0.0023809,
+    "max_drawdown": -0.00724456,
+    "sharpe_ratio": -7.52815899,
+    "trading_days": 7,
+    "factor_points": 7,
+    "start_date": "2025-01-07",
+    "end_date": "2025-01-15",
+    "config": {
+      "risk_free_rate": 0.0,
+      "initial_capital": 100000.0
+    }
+  },
+  "factor_stats": {
+    "count": 7,
+    "mean": -0.00191741,
+    "std": 0.00291757,
+    "min": -0.00584305,
+    "max": 0.00189265,
+    "p25": -0.00527003,
+    "p50": -0.00151036,
+    "p75": 0.00170631,
+    "positive_count": 2,
+    "negative_count": 5,
+    "zero_count": 0,
+    "positive_ratio": 0.2857,
+    "negative_ratio": 0.7143
+  },
+  "factor_values": [
+    0.00170631,
+    0.00189265,
+    -0.00377394,
+    -0.00527003,
+    -0.00584305,
+    -0.00062344,
+    -0.00151036
+  ],
+  "aligned_dates": [
+    "2025-01-07",
+    "2025-01-08",
+    "2025-01-09",
+    "2025-01-10",
+    "2025-01-13",
+    "2025-01-14",
+    "2025-01-15"
+  ],
+  "notes": [],
+  "real_wind_call": false,
+  "wind_api_calls": 0,
+  "timestamp": "2026-10-18T05:27:58.839229+00:00",
+  "data_provenance": {
+    "price_source": "SIMULATED (NOT REAL)",
+    "price_status": "OK",
+    "price_metadata": {
+      "record_count": 10
+    },
+    "factor_data_source": "SIMULATED (NOT REAL)"
+  },
+  "equity_curve_preview": [
+    24527.37,
+    24514.61,
+    24364.87,
+    24398.11,
+    24371.37
+  ],
+  "equity_curve_length": 7,
+  "return_curve_preview": [
+    -0.00052024,
+    -0.00662525,
+    -0.00527003,
+    -0.00636024,
+    -0.00724456
+  ],
+  "return_curve_length": 6
+}
