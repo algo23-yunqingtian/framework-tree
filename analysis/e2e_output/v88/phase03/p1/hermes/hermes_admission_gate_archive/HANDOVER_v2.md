@@ -1,7 +1,7 @@
 # V88 Phase03 HERMEShf 交接文档 v2
 
 > **生成时刻**: 2026-10-17T16:00 +0800
-> **当前 commit**: `df821b4` (feature/v88-g1, BRANCH_LOCKED)
+> **当前 commit**: `34ea480` (feature/v88-g1, BRANCH_LOCKED) | 基线同步至 `48b7197` 后补提交
 > **状态标记**: ARBITER_ON_STANDBY_AWAIT_KEY_A → PHASE03_PRE_ADMISSION_READY (维持)
 > **前一版本**: P10 HANDOVER (`ec20944`)
 
@@ -32,7 +32,7 @@ HERMEShf (仲裁器/你) ←→ DSHB (因子配置) ←→ DSHE (引擎网关)
 - **DSHE**：引擎封印 + 网关规则 + 快照导入
 - **DSHD**：审计值守（独立旁路监控）
 
-### 1.3 完成的工单链（P7→P11）
+### 1.3 完成的工单链（P7→P17）
 
 | 工单 | commit | 核心内容 |
 |------|--------|----------|
@@ -41,7 +41,13 @@ HERMEShf (仲裁器/你) ←→ DSHB (因子配置) ←→ DSHE (引擎网关)
 | P9 | `490b9f8` | R-V88-P8-001 整改（JSON 快照生成 + 双源校验 10/10）|
 | P10 | `ec20944` | 跨 Agent 回执 + 看板 v7 + 仲裁回归 v2 + Phase03 准入预审 |
 | P10-HANDOVER | `df821b4` | 完整交接文档（本 v2 的前一版本） |
-| **P11 (本次)** | 待提交 | **准入门禁清单固化 + 仲裁最终回归 v3 + 三方最终回执采集 + 看板 v8** |
+| P11 | `34ea480` | 准入门禁清单固化 + 仲裁最终回归 v3 + 三方最终回执采集 + 看板 v8 |
+| P12 | `34ea480` | 图表资产最终封签（hermes_asset_index.md + chart_asset_recheck_report.md）|
+| P13 | `34ea480` | 可视化看板（22 项资产 web_asset/ + github_pages/ + build 脚本）|
+| P14 | `34ea480` | 可视化资产交付闭环（cc.zip + H.zip + asset_delivery_path.md）|
+| P17 | `34ea480` | **DSHE QC 路径修复（0/22 → 22/22）** + asset_index.lst + 二次哈希封签 |
+
+> P15/P16 为 DSHB/DSHE 侧工单，不在 HERMEShf 交付范围。P11~P17 产物于 2026-10-18 环境复原时补提交（commit `34ea480`，基线同步至 `48b7197`）。
 
 ---
 
@@ -281,7 +287,7 @@ python3 ~/.hermes/scripts/file_write_lock.py release /home/ubuntu/framework-tree
 1. **读取本交接文档 v2**：`analysis/e2e_output/v88/phase03/p1/hermes/hermes_admission_gate_archive/HANDOVER_v2.md`
 2. **当前状态**：ARBITER_ON_STANDBY_AWAIT_KEY_A → PHASE03_PRE_ADMISSION_READY (维持)
 3. **下一步**：等待 Key A 出现 / 或布置 Phase04 工单
-4. **分支**：`feature/v88-g1`，最新 commit `df821b4`
+4. **分支**：`feature/v88-g1`，最新 commit `34ea480`（基线同步至 `48b7197`，已 push）
 5. **风险台账**：3/3 全部闭环 + LEGACY-BUG-001 延期
 6. **仲裁器**：P11 v3 回归 8 场景行为符合预期，三期一致无退化
 7. **准入门禁**：清单已固化于 `phase03_admission_checklist.md`
