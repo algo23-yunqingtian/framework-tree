@@ -1,9 +1,10 @@
 {
-  "manifest_id": "DSHA-P49-V3-FACTOR-WEIGHT-METRICS",
-  "generated_at": "2026-10-19T08:19:57.624773+00:00",
-  "token": "DSHA-P49-V3-FACTOR-WEIGHT-TOKEN",
-  "baseline_commit": "a011ba0",
-  "status": "WEIGHT_OPTIMIZATION_COMPLETE",
+  "manifest_id": "DSHA-P49-V3-FACTOR-WEIGHT-FIX-METRICS",
+  "generated_at": "2026-10-19T08:35:14.517321+00:00",
+  "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN",
+  "baseline_commit": "edf4cc0",
+  "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM",
+  "status": "WEIGHT_FIX_COMPLETE",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -11,57 +12,60 @@
     "set_e_params_unchanged": true,
     "white_list_enforced": true,
     "old_v2_v3_results_unchanged": true,
+    "old_factor_weight_results_unchanged": true,
     "gate": "CLOSED/HOLD",
     "release": "NOT_ISSUED"
   },
   "factor_weights": {
-    "method": "IC_mean_weighted_abs_normalized",
-    "description": "用4品种样本IC值作为权重, |IC|归一化到sum=1, 保留符号",
+    "method": "positive_IC_mean_weighted_with_shrinkage",
+    "description": "正向IC加权+收缩正则化: 仅IC>0因子, |IC|归一化, λ=0.5, 权重和=1",
+    "positive_ic_factors": [
+      "vol_regime_change",
+      "oi_change_rate_7d",
+      "realized_vol_20d",
+      "oi_level"
+    ],
+    "positive_ic_count": 4,
     "ic_values": {
-      "contract_switch_flag": 0.0,
-      "momentum_20d": -0.012427,
-      "oi_change_1d": -0.029155,
+      "vol_regime_change": 0.026994,
       "oi_change_rate_7d": 0.008839,
-      "oi_level": 0.000973,
       "realized_vol_20d": 0.005817,
-      "spread_cs": -0.090153,
-      "vol_regime_change": 0.026994
+      "oi_level": 0.000973
     },
     "ic_ir_values": {
-      "contract_switch_flag": 0.0,
-      "momentum_20d": -4.633849,
-      "oi_change_1d": -7.398079,
+      "vol_regime_change": 9.922075,
       "oi_change_rate_7d": 4.885137,
-      "oi_level": 0.687767,
       "realized_vol_20d": 3.882697,
-      "spread_cs": -12.739293,
-      "vol_regime_change": 9.922075
+      "oi_level": 0.687767
     },
     "effective_weights": {
-      "contract_switch_flag": 0.0625,
-      "momentum_20d": 0.026863550855137128,
-      "oi_change_1d": -0.021106717214007975,
-      "oi_change_rate_7d": 0.08784727399947236,
-      "oi_level": 0.0652902361807316,
-      "realized_vol_20d": 0.0791811961596256,
-      "spread_cs": -0.1960284300118148,
-      "vol_regime_change": 0.13990969728948488
+      "vol_regime_change": 0.44166,
+      "oi_change_rate_7d": 0.228688,
+      "realized_vol_20d": 0.193238,
+      "oi_level": 0.136414
     },
     "abs_weights_sum_to_1": {
-      "contract_switch_flag": 0.0625,
-      "momentum_20d": 0.098136,
-      "oi_change_1d": 0.146107,
-      "oi_change_rate_7d": 0.087847,
-      "oi_level": 0.06529,
-      "realized_vol_20d": 0.079181,
-      "spread_cs": 0.321028,
-      "vol_regime_change": 0.13991
+      "vol_regime_change": 0.44166,
+      "oi_change_rate_7d": 0.228688,
+      "realized_vol_20d": 0.193238,
+      "oi_level": 0.136414
     },
-    "total_abs_ic": 0.174358
+    "total_abs_ic": 0.042623,
+    "excluded_factors": {
+      "negative_ic": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "spread_cs"
+      ],
+      "temporarily_disabled": [
+        "spread_cs"
+      ]
+    }
   },
   "scenarios": {
-    "IC_weighted_4symbol": {
-      "description": "核心实验组: 4品种白名单 + IC加权因子组合",
+    "Positive_IC_weighted_4symbol": {
+      "description": "实验组: 4品种白名单 + 正向IC加权因子组合 (剔除spread_cs, 仅IC>0因子)",
       "symbols": [
         "LC.GFE",
         "NI.SHF",
@@ -70,45 +74,37 @@
       ],
       "symbol_count": 4,
       "factors": [
-        "contract_switch_flag",
-        "momentum_20d",
-        "oi_change_1d",
+        "vol_regime_change",
         "oi_change_rate_7d",
-        "oi_level",
         "realized_vol_20d",
-        "spread_cs",
-        "vol_regime_change"
+        "oi_level"
       ],
-      "factor_count": 8,
+      "factor_count": 4,
       "weights": {
-        "contract_switch_flag": 0.0625,
-        "momentum_20d": 0.026863550855137128,
-        "oi_change_1d": -0.021106717214007975,
-        "oi_change_rate_7d": 0.08784727399947236,
-        "oi_level": 0.0652902361807316,
-        "realized_vol_20d": 0.0791811961596256,
-        "spread_cs": -0.1960284300118148,
-        "vol_regime_change": 0.13990969728948488
+        "vol_regime_change": 0.44166,
+        "oi_change_rate_7d": 0.228688,
+        "realized_vol_20d": 0.193238,
+        "oi_level": 0.136414
       },
       "metrics": {
-        "total_return": -0.059561,
-        "annualized_return": -0.035268,
-        "annual_volatility": 0.031102,
-        "daily_volatility": 0.001959,
-        "max_drawdown": -0.069475,
-        "sharpe_ratio": -1.13394,
-        "calmar_ratio": -0.50763,
-        "win_rate": 0.264501,
-        "avg_win": 0.001616,
-        "avg_loss": 0.001913,
-        "profit_loss_ratio": 0.845017,
-        "trade_count": 192,
-        "total_trades": 192,
+        "total_return": 0.016438,
+        "annualized_return": 0.009579,
+        "annual_volatility": 0.042867,
+        "daily_volatility": 0.0027,
+        "max_drawdown": -0.053244,
+        "sharpe_ratio": 0.223453,
+        "calmar_ratio": 0.179902,
+        "win_rate": 0.429234,
+        "avg_win": 0.002237,
+        "avg_loss": 0.001876,
+        "profit_loss_ratio": 1.192023,
+        "trade_count": 304,
+        "total_trades": 304,
         "n_periods": 431,
         "initial_capital": 1000000.0,
-        "final_capital": 940439.03,
-        "total_transaction_cost": 0.004737,
-        "cost_ratio": 0.07953
+        "final_capital": 1016438.41,
+        "total_transaction_cost": 0.011404,
+        "cost_ratio": 0.693722
       },
       "equity_timeline": [
         {
@@ -123,235 +119,235 @@
         },
         {
           "index": 28,
-          "equity": 999981.25,
-          "drawdown": -1.9e-05
+          "equity": 999918.75,
+          "drawdown": -8.1e-05
         },
         {
           "index": 42,
-          "equity": 999981.25,
-          "drawdown": -1.9e-05
+          "equity": 997836.66,
+          "drawdown": -0.005321
         },
         {
           "index": 56,
-          "equity": 999981.25,
-          "drawdown": -1.9e-05
+          "equity": 1003089.62,
+          "drawdown": -0.000806
         },
         {
           "index": 70,
-          "equity": 994002.84,
-          "drawdown": -0.005997
+          "equity": 998195.62,
+          "drawdown": -0.005681
         },
         {
           "index": 84,
-          "equity": 993592.31,
-          "drawdown": -0.006408
+          "equity": 994821.17,
+          "drawdown": -0.009043
         },
         {
           "index": 98,
-          "equity": 993636.76,
-          "drawdown": -0.006363
+          "equity": 996057.96,
+          "drawdown": -0.007811
         },
         {
           "index": 112,
-          "equity": 995215.03,
-          "drawdown": -0.004785
+          "equity": 1000833.0,
+          "drawdown": -0.003054
         },
         {
           "index": 126,
-          "equity": 995215.03,
-          "drawdown": -0.004785
+          "equity": 995959.17,
+          "drawdown": -0.007909
         },
         {
           "index": 140,
-          "equity": 987105.95,
-          "drawdown": -0.014367
+          "equity": 984758.77,
+          "drawdown": -0.019066
         },
         {
           "index": 154,
-          "equity": 986403.23,
-          "drawdown": -0.015068
+          "equity": 995201.87,
+          "drawdown": -0.008663
         },
         {
           "index": 168,
-          "equity": 983993.0,
-          "drawdown": -0.017475
+          "equity": 991952.3,
+          "drawdown": -0.0119
         },
         {
           "index": 182,
-          "equity": 983425.54,
-          "drawdown": -0.018041
+          "equity": 991626.5,
+          "drawdown": -0.012225
         },
         {
           "index": 196,
-          "equity": 979054.77,
-          "drawdown": -0.022406
+          "equity": 990264.69,
+          "drawdown": -0.013581
         },
         {
           "index": 210,
-          "equity": 976673.26,
-          "drawdown": -0.024784
+          "equity": 996112.76,
+          "drawdown": -0.007756
         },
         {
           "index": 224,
-          "equity": 983367.38,
-          "drawdown": -0.0181
+          "equity": 1002389.07,
+          "drawdown": -0.005603
         },
         {
           "index": 238,
-          "equity": 996555.44,
-          "drawdown": -0.004931
+          "equity": 1026231.16,
+          "drawdown": 0.0
         },
         {
           "index": 252,
-          "equity": 1005406.73,
-          "drawdown": -0.000782
+          "equity": 1049344.59,
+          "drawdown": -0.00572
         },
         {
           "index": 266,
-          "equity": 1003721.67,
-          "drawdown": -0.00686
+          "equity": 1052130.21,
+          "drawdown": -0.006317
         },
         {
           "index": 280,
-          "equity": 999727.07,
-          "drawdown": -0.010812
+          "equity": 1049496.87,
+          "drawdown": -0.008804
         },
         {
           "index": 294,
-          "equity": 1006256.57,
-          "drawdown": -0.004352
+          "equity": 1067006.95,
+          "drawdown": -0.003466
         },
         {
           "index": 308,
-          "equity": 995762.71,
-          "drawdown": -0.014735
+          "equity": 1065472.49,
+          "drawdown": -0.004899
         },
         {
           "index": 322,
-          "equity": 988585.72,
-          "drawdown": -0.021836
+          "equity": 1062366.44,
+          "drawdown": -0.010465
         },
         {
           "index": 336,
-          "equity": 981825.38,
-          "drawdown": -0.028525
+          "equity": 1045114.32,
+          "drawdown": -0.026534
         },
         {
           "index": 350,
-          "equity": 967552.9,
-          "drawdown": -0.042647
+          "equity": 1035233.13,
+          "drawdown": -0.035738
         },
         {
           "index": 364,
-          "equity": 959192.34,
-          "drawdown": -0.05092
+          "equity": 1045206.95,
+          "drawdown": -0.026448
         },
         {
           "index": 378,
-          "equity": 959336.22,
-          "drawdown": -0.050777
+          "equity": 1036161.87,
+          "drawdown": -0.034873
         },
         {
           "index": 392,
-          "equity": 959336.22,
-          "drawdown": -0.050777
+          "equity": 1048875.36,
+          "drawdown": -0.023031
         },
         {
           "index": 406,
-          "equity": 954851.7,
-          "drawdown": -0.055215
+          "equity": 1042213.03,
+          "drawdown": -0.029237
         },
         {
           "index": 420,
-          "equity": 951398.39,
-          "drawdown": -0.058632
+          "equity": 1029795.32,
+          "drawdown": -0.040803
         }
       ],
       "per_symbol": {
         "CU.SHF": {
-          "total_return": -0.048679,
-          "annualized_return": -0.028757,
-          "annual_volatility": 0.054935,
-          "daily_volatility": 0.003461,
-          "max_drawdown": -0.06428,
-          "sharpe_ratio": -0.523468,
-          "calmar_ratio": -0.447367,
-          "win_rate": 0.085847,
-          "avg_win": 0.005397,
-          "avg_loss": 0.004117,
-          "profit_loss_ratio": 1.310978,
-          "trade_count": 38,
-          "total_trades": 38,
+          "total_return": -0.008554,
+          "annualized_return": -0.00501,
+          "annual_volatility": 0.062677,
+          "daily_volatility": 0.003948,
+          "max_drawdown": -0.075529,
+          "sharpe_ratio": -0.079938,
+          "calmar_ratio": -0.066335,
+          "win_rate": 0.25522,
+          "avg_win": 0.003728,
+          "avg_loss": 0.002946,
+          "profit_loss_ratio": 1.265662,
+          "trade_count": 61,
+          "total_trades": 61,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 951320.61,
-          "total_transaction_cost": 0.00735,
-          "cost_ratio": 0.150991
+          "final_capital": 991446.16,
+          "total_transaction_cost": 0.011828,
+          "cost_ratio": 1.382722
         },
         "LC.GFE": {
-          "total_return": -0.164783,
-          "annualized_return": -0.099928,
-          "annual_volatility": 0.050586,
-          "daily_volatility": 0.003187,
-          "max_drawdown": -0.17159,
-          "sharpe_ratio": -1.975425,
-          "calmar_ratio": -0.582368,
-          "win_rate": 0.095128,
-          "avg_win": 0.003701,
-          "avg_loss": 0.004394,
-          "profit_loss_ratio": 0.842248,
-          "trade_count": 82,
-          "total_trades": 82,
+          "total_return": -0.088678,
+          "annualized_return": -0.052846,
+          "annual_volatility": 0.078071,
+          "daily_volatility": 0.004918,
+          "max_drawdown": -0.151436,
+          "sharpe_ratio": -0.6769,
+          "calmar_ratio": -0.348968,
+          "win_rate": 0.278422,
+          "avg_win": 0.004533,
+          "avg_loss": 0.004479,
+          "profit_loss_ratio": 1.011953,
+          "trade_count": 161,
+          "total_trades": 161,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 835216.89,
-          "total_transaction_cost": 0.005743,
-          "cost_ratio": 0.03485
+          "final_capital": 911321.55,
+          "total_transaction_cost": 0.0075,
+          "cost_ratio": 0.084573
         },
         "NI.SHF": {
-          "total_return": 0.024918,
-          "annualized_return": 0.014495,
-          "annual_volatility": 0.047415,
-          "daily_volatility": 0.002987,
-          "max_drawdown": -0.032696,
-          "sharpe_ratio": 0.305705,
-          "calmar_ratio": 0.443326,
-          "win_rate": 0.055684,
-          "avg_win": 0.006847,
-          "avg_loss": 0.003937,
-          "profit_loss_ratio": 1.739181,
-          "trade_count": 38,
-          "total_trades": 38,
+          "total_return": 0.128213,
+          "annualized_return": 0.073081,
+          "annual_volatility": 0.080589,
+          "daily_volatility": 0.005077,
+          "max_drawdown": -0.075805,
+          "sharpe_ratio": 0.906833,
+          "calmar_ratio": 0.964061,
+          "win_rate": 0.303944,
+          "avg_win": 0.004811,
+          "avg_loss": 0.00379,
+          "profit_loss_ratio": 1.269438,
+          "trade_count": 93,
+          "total_trades": 93,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 1024918.3,
-          "total_transaction_cost": 0.00458,
-          "cost_ratio": 0.183783
+          "final_capital": 1128213.2,
+          "total_transaction_cost": 0.015304,
+          "cost_ratio": 0.119362
         },
         "ZN.SHF": {
-          "total_return": -0.013057,
-          "annualized_return": -0.007655,
-          "annual_volatility": 0.046217,
-          "daily_volatility": 0.002911,
-          "max_drawdown": -0.038596,
-          "sharpe_ratio": -0.165628,
-          "calmar_ratio": -0.198336,
-          "win_rate": 0.136891,
-          "avg_win": 0.003963,
-          "avg_loss": 0.003064,
-          "profit_loss_ratio": 1.293309,
-          "trade_count": 39,
-          "total_trades": 39,
+          "total_return": 0.054405,
+          "annualized_return": 0.031459,
+          "annual_volatility": 0.054422,
+          "daily_volatility": 0.003428,
+          "max_drawdown": -0.036831,
+          "sharpe_ratio": 0.578066,
+          "calmar_ratio": 0.85415,
+          "win_rate": 0.287703,
+          "avg_win": 0.003464,
+          "avg_loss": 0.002597,
+          "profit_loss_ratio": 1.333647,
+          "trade_count": 55,
+          "total_trades": 55,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 986943.38,
-          "total_transaction_cost": 0.01075,
-          "cost_ratio": 0.823337
+          "final_capital": 1054404.92,
+          "total_transaction_cost": 0.01625,
+          "cost_ratio": 0.298686
         }
       }
     },
     "Equal_weight_4symbol": {
-      "description": "对照组: 4品种白名单 + 等权因子组合",
+      "description": "对照组: 4品种白名单 + 等权因子组合 (8因子, 已达标基准)",
       "symbols": [
         "LC.GFE",
         "NI.SHF",
@@ -646,24 +642,24 @@
     "sharpe_target": 0.9,
     "max_drawdown_target": -0.027,
     "results": {
-      "IC_weighted_4symbol": {
-        "scenario": "IC_weighted_4symbol",
+      "Positive_IC_weighted_4symbol": {
+        "scenario": "Positive_IC_weighted",
         "return_target": 0.05,
         "sharpe_target": 0.9,
         "max_drawdown_target": -0.027,
-        "actual_return": -0.059561,
-        "actual_sharpe": -1.13394,
-        "actual_max_drawdown": -0.069475,
+        "actual_return": 0.016438,
+        "actual_sharpe": 0.223453,
+        "actual_max_drawdown": -0.053244,
         "return_achieved": false,
         "sharpe_achieved": false,
         "drawdown_achieved": false,
         "all_achieved": false,
-        "return_gap": -0.109561,
-        "sharpe_gap": -2.03394,
-        "drawdown_gap": -0.042475
+        "return_gap": -0.033562,
+        "sharpe_gap": -0.676547,
+        "drawdown_gap": -0.026244
       },
       "Equal_weight_4symbol": {
-        "scenario": "Equal_weight_4symbol",
+        "scenario": "Equal_weight",
         "return_target": 0.05,
         "sharpe_target": 0.9,
         "max_drawdown_target": -0.027,
@@ -681,12 +677,12 @@
     }
   },
   "comparison": {
-    "return_improvement_ic_vs_eq": -0.246294,
-    "sharpe_improvement_ic_vs_eq": -4.044885,
-    "drawdown_improvement_ic_vs_eq": -0.052373,
-    "return_improvement_ic_vs_v2": -0.115212,
-    "sharpe_improvement_ic_vs_v2": -2.413523,
-    "drawdown_improvement_ic_vs_v2": -0.047606
+    "return_improvement_positive_ic_vs_eq": -0.170295,
+    "sharpe_improvement_positive_ic_vs_eq": -2.687492,
+    "drawdown_improvement_positive_ic_vs_eq": -0.036142,
+    "return_improvement_positive_ic_vs_old_ic": 0.075999,
+    "sharpe_improvement_positive_ic_vs_old_ic": 1.357393,
+    "drawdown_improvement_positive_ic_vs_old_ic": 0.016231
   },
   "factor_ic_4symbol": {
     "contract_switch_flag": {
@@ -796,124 +792,151 @@
       "vol_regime_change": 0.007418249190113307
     }
   },
+  "positive_factors": [
+    "vol_regime_change",
+    "oi_change_rate_7d",
+    "realized_vol_20d",
+    "oi_level"
+  ],
+  "negative_factors": [
+    "contract_switch_flag",
+    "momentum_20d",
+    "oi_change_1d",
+    "spread_cs"
+  ],
+  "temporarily_disabled_factors": [
+    "spread_cs"
+  ],
   "stability_check": {
-    "check_type": "time_series_segment_split",
-    "segments": 3,
-    "segment_boundaries": [
-      [
-        "2025-01-02",
-        "2025-08-06"
-      ],
-      [
-        "2025-08-07",
-        "2026-03-16"
-      ],
-      [
-        "2026-03-17",
-        "2026-10-19"
-      ]
+    "check_type": "rolling_window_ic_stability",
+    "window_size": 120,
+    "step": 20,
+    "n_windows": 16,
+    "date_range": [
+      "2025-01-02",
+      "2026-09-23"
     ],
-    "segment_details": {
-      "segment_1": {
-        "dates": [
-          "2025-01-02",
-          "2025-08-06"
-        ],
-        "n_dates": 144,
-        "ic_values": {
-          "contract_switch_flag": 0.0,
-          "momentum_20d": 0.005307,
-          "oi_change_1d": 0.013486,
-          "oi_change_rate_7d": 0.001701,
-          "oi_level": 0.016006,
-          "realized_vol_20d": 0.023115,
-          "spread_cs": -0.116649,
-          "vol_regime_change": -0.067252
-        }
-      },
-      "segment_2": {
-        "dates": [
-          "2025-08-07",
-          "2026-03-16"
-        ],
-        "n_dates": 144,
-        "ic_values": {
-          "contract_switch_flag": 0.0,
-          "momentum_20d": 0.010255,
-          "oi_change_1d": -0.03223,
-          "oi_change_rate_7d": -0.017511,
-          "oi_level": 0.104693,
-          "realized_vol_20d": 0.050423,
-          "spread_cs": -0.116076,
-          "vol_regime_change": 0.040844
-        }
-      },
-      "segment_3": {
-        "dates": [
-          "2026-03-17",
-          "2026-10-19"
-        ],
-        "n_dates": 144,
-        "ic_values": {
-          "contract_switch_flag": 0.0,
-          "momentum_20d": 0.027478,
-          "oi_change_1d": 0.021984,
-          "oi_change_rate_7d": 4.9e-05,
-          "oi_level": -0.105001,
-          "realized_vol_20d": -0.062836,
-          "spread_cs": 0.01821,
-          "vol_regime_change": 0.004501
-        }
-      }
-    },
-    "oi_factor_sign_stability": {
+    "stability_threshold": 0.8,
+    "stability_criterion": "positive_IC_ratio >= 0.8",
+    "factor_results": {
       "oi_change_1d": {
-        "segment_ics": [
-          0.013486,
-          -0.03223,
-          0.021984
+        "n_windows": 16,
+        "rolling_ic_series": [
+          0.009894,
+          0.029514,
+          0.064325,
+          0.064691,
+          0.082896,
+          0.03628,
+          0.043556,
+          -0.007325,
+          -0.040478,
+          -0.026535,
+          -0.027265,
+          -0.004669,
+          -0.040597,
+          -0.020886,
+          -0.001913,
+          0.014154
         ],
+        "positive_ic_count": 8,
+        "positive_ic_ratio": 0.5,
+        "mean_ic": 0.010978,
+        "std_ic": 0.03783,
+        "min_ic": -0.040597,
+        "max_ic": 0.082896,
         "sign_stable": false,
-        "all_positive": false,
-        "mean_ic": 0.00108,
-        "std_ic": 0.023808
+        "stability_threshold": 0.8
       },
       "oi_change_rate_7d": {
-        "segment_ics": [
-          0.001701,
-          -0.017511,
-          4.9e-05
+        "n_windows": 16,
+        "rolling_ic_series": [
+          0.07117,
+          0.023388,
+          0.026153,
+          -0.017574,
+          0.05374,
+          0.036396,
+          0.037036,
+          0.049306,
+          -0.003297,
+          0.004848,
+          -0.027611,
+          -0.03673,
+          -0.044368,
+          -0.01779,
+          0.000689,
+          -0.014482
         ],
+        "positive_ic_count": 9,
+        "positive_ic_ratio": 0.5625,
+        "mean_ic": 0.008805,
+        "std_ic": 0.033561,
+        "min_ic": -0.044368,
+        "max_ic": 0.07117,
         "sign_stable": false,
-        "all_positive": false,
-        "mean_ic": -0.005254,
-        "std_ic": 0.008693
+        "stability_threshold": 0.8
       },
       "oi_level": {
-        "segment_ics": [
-          0.016006,
-          0.104693,
-          -0.105001
+        "n_windows": 16,
+        "rolling_ic_series": [
+          0.01043,
+          -0.005482,
+          -0.018139,
+          -0.00207,
+          0.017791,
+          -0.007203,
+          0.032041,
+          0.053495,
+          -0.006161,
+          0.011204,
+          -0.010835,
+          -0.019129,
+          -0.045115,
+          -0.059606,
+          0.002721,
+          -0.021086
         ],
+        "positive_ic_count": 6,
+        "positive_ic_ratio": 0.375,
+        "mean_ic": -0.004196,
+        "std_ic": 0.02638,
+        "min_ic": -0.059606,
+        "max_ic": 0.053495,
         "sign_stable": false,
-        "all_positive": false,
-        "mean_ic": 0.005233,
-        "std_ic": 0.085945
+        "stability_threshold": 0.8
+      },
+      "realized_vol_20d": {
+        "n_windows": 16,
+        "rolling_ic_series": [
+          0.044306,
+          0.00295,
+          0.038087,
+          0.044365,
+          -0.026749,
+          -0.031935,
+          -0.008417,
+          0.057277,
+          -0.037714,
+          -0.051051,
+          -0.057331,
+          -0.049732,
+          0.004273,
+          -0.000625,
+          0.008207,
+          0.023277
+        ],
+        "positive_ic_count": 8,
+        "positive_ic_ratio": 0.5,
+        "mean_ic": -0.002551,
+        "std_ic": 0.036047,
+        "min_ic": -0.057331,
+        "max_ic": 0.057277,
+        "sign_stable": false,
+        "stability_threshold": 0.8
       }
     },
-    "vol_factor_stability": {
-      "factor": "realized_vol_20d",
-      "segment_ics": [
-        0.023115,
-        0.050423,
-        -0.062836
-      ],
-      "sign_stable": false,
-      "all_positive": false,
-      "mean_ic": 0.003567,
-      "std_ic": 0.04826
-    },
-    "all_oi_factors_stable": false,
-    "overall_stability_pass": false
+    "overall_stability_pass": false,
+    "window_count": 16
   }
 }

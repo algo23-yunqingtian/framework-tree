@@ -565,5 +565,80 @@
     },
     "total_artifact_count_after_update": 20,
     "total_artifact_bytes_after_update": 2300360
+  },
+  "weight_fix_update": {
+    "update_id": "DSHA-P49-V3-FACTOR-WEIGHT-FIX",
+    "updated_at": "2026-10-19T08:35:14.542315+00:00",
+    "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN",
+    "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM",
+    "new_artifacts": {
+      "factor_enable_config.json": {
+        "path": "artifacts\\p49_v3_backtest\\factor_enable_config.json",
+        "sha256": "b2e5464b4fed2109f5c9bd4e6b397df69efd7d7c25dec7a390e5ba38b752d189",
+        "size_bytes": 2547
+      },
+      "factor_weight.json": {
+        "path": "artifacts\\p49_v3_backtest\\factor_weight.json",
+        "sha256": "14a99ffc6b5e39752e3b147c365cab27c90249c0866de3832fc5accb55235118",
+        "size_bytes": 2289
+      },
+      "weighted_backtest_metrics.json": {
+        "path": "artifacts\\p49_v3_backtest\\weighted_backtest_metrics.json",
+        "sha256": "a7e5b042ca1dd29609cd59c15e09c637aa4d00448abd53763eb79d2233408d97",
+        "size_bytes": 25735
+      },
+      "factor_stability_report.md": {
+        "path": "artifacts\\p49_v3_backtest\\factor_stability_report.md",
+        "sha256": "5df308c8de635728961e5cc79c7d3ea3734541c1bd6ba05ba62a9430b17ce7f1",
+        "size_bytes": 2822
+      },
+      "v3_weight_fix_report.md": {
+        "path": "artifacts\\p49_v3_backtest\\v3_weight_fix_report.md",
+        "sha256": "fb10969f4a88cccd4286d806c33a58b7b72b079a79ac8b935cf8ef9f3c1a47b2",
+        "size_bytes": 7186
+      },
+      "equity_curve_weighted.csv": {
+        "path": "artifacts\\p49_v3_backtest\\equity_curve_weighted.csv",
+        "sha256": "d2d93da0be2020383a91f0115f3c6439b31d8f232c9fc0670f2f696e701ec535",
+        "size_bytes": 1365
+      },
+      "run_v3_weight_fix.py": {
+        "path": "artifacts\\p49_v3_backtest\\run_v3_weight_fix.py",
+        "sha256": "50f698e40965cb429c68b2e79e2ba0e5dedd0b95012a8e2e1ea435076663ce15",
+        "size_bytes": 83402
+      }
+    },
+    "total_artifact_count_after_update": 27,
+    "total_artifact_bytes_after_update": 2425706,
+    "summary": {
+      "negative_factor_removed": "spread_cs",
+      "ic_weight_rebuilt": true,
+      "positive_ic_factors": [
+        "vol_regime_change",
+        "oi_change_rate_7d",
+        "realized_vol_20d",
+        "oi_level"
+      ],
+      "positive_ic_count": 4,
+      "excluded_factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "spread_cs"
+      ],
+      "temporarily_disabled": [
+        "spread_cs"
+      ],
+      "shrinkage_parameter": 0.5,
+      "stability_method": "rolling_window",
+      "rolling_window_size": 120,
+      "rolling_step": 20,
+      "rolling_n_windows": 16,
+      "overall_stability_pass": false,
+      "experiment_return": 0.016438,
+      "experiment_sharpe": 0.223453,
+      "experiment_max_drawdown": -0.053244,
+      "performance_all_achieved": false
+    }
   }
 }
