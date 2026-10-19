@@ -1,0 +1,48 @@
+{
+  "registry_id": "DSHC-EXCH-BINDING-REGISTRY",
+  "version": "1.0.0",
+  "created_by": "DSHC-DATA-ARCHIVE-TOKEN",
+  "created_at": "2026-10-19",
+  "description": "Explicit exchange binding declaration for DSHC pipeline symbols. LC.SHF is permanently INVALID; LC.GFE is the sole valid exchange binding for lithium carbonate (product=LC, exchange=GFE).",
+  "scope": "DSHC pipeline (F01 fetch, aligned tables, factor extraction)",
+
+  "product_exchange_registry": {
+    "LC": {
+      "valid_exchange": "GFE",
+      "valid_symbol": "LC.GFE",
+      "invalid_symbols": ["LC.SHF"],
+      "invalid_reason": "GFE exchange only — LC.SHF does not exist on Wind; all indicators return 0 rows (confirmed DSHC-F01, DSHC-T1, DSHC-VOL-PROBE, DSHC-VOL-FULL)",
+      "invalid_since": "2026-10-19",
+      "invalid_status": "PERMANENTLY_BLACKLISTED",
+      "substitute_symbol": "LC.GFE",
+      "substitute_status": "ACTIVE — 432 rows all 6 indicators (CLOSE/SETTLE/OI/VOL/HIGH/LOW)",
+      "evidence": [
+        "DSHC-F01: LC.SHF all 4 indicators COMBO-FAIL (rows=0, all 3 attempts)"
+      ]
+    }
+  },
+
+  "auto_clear_contract": {
+    "mechanism": "P81 exchange binding audit scans dshc_* files. LC.SHF in files triggers EXCH-001-ATTRIBUTED-MISMATCH. Auto-clear triggers when LC.SHF absent from mismatches AND LC.GFE resolves BOUND_OK.",
+    "lc_gfe_verdict": "BOUND_OK",
+    "lc_gfe_expected_exchange": "GFE",
+    "lc_shf_verdict": "MISMATCH (expected GFE, actual SHF)",
+    "lc_shf_expected_exchange": "GFE",
+    "repair_condition": "Remove LC.SHF references from active dshc_* artifact files OR rely on P81 auto-clear when mismatch_count→0",
+    "note": "Historical dshc_* event/receipt files retain LC.SHF references as legitimate failure logs. These are audit trail, not active config. New dshc_* files MUST NOT reference LC.SHF.",
+    "auto_clear_status": "CONFIRMED"
+  },
+
+  "full_symbol_whitelist": {
+    "active": ["CU.SHF","ZN.SHF","PB.SHF","AL.SHF","SN.SHF","NI.SHF","RB.SHF","HC.SHF","LC.GFE"],
+    "invalid": ["LC.SHF"],
+    "count_active": 9,
+    "count_invalid": 1
+  },
+
+  "affected_files_permanent_exclusion": [
+    "artifacts/skill_lib/factor_v1/factor_extract_v1.py (BLACKLIST)",
+    "code/a06_longformat_validator.py (SYMBOL_WHITELIST excludes LC.SHF)",
+    "code/a06_pipeline_sync.py (SYMBOL_WHITELIST uses LC.GFE)"
+  ]
+}
