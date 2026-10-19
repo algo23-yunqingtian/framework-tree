@@ -1,0 +1,242 @@
+﻿{
+    "row_threshold":  300,
+    "source":  "WDF-GUI",
+    "failed_combos_list":  [
+                               "LC.SHF/CLOSE",
+                               "LC.SHF/VOL",
+                               "LC.SHF/OI",
+                               "LC.SHF/SETTLE"
+                           ],
+    "token_status":  "EXHAUSTED",
+    "total_combinations":  28,
+    "release_permit":  "NOT_ISSUED",
+    "spawned":  1,
+    "status":  "PARTIAL_FETCH",
+    "guard_all_5":  "ENFORCED",
+    "guards":  [
+                   "GR1_SINGLE_WINDOW",
+                   "GR2_SPAWN_CAP",
+                   "GR3_CLEANUP_ON_EXIT",
+                   "GR4_NULL_GUARD",
+                   "GR5_WALL_CLOCK"
+               ],
+    "wallclock_used_sec":  538.4,
+    "combos_succeeded":  24,
+    "symbols_data":  {
+                         "ZN.SHF":  {
+                                        "CLOSE":  {
+                                                      "last_value":  26240,
+                                                      "first_date":  "2025-01-02",
+                                                      "rows":  400,
+                                                      "first_value":  25265,
+                                                      "last_date":  "2026-08-26"
+                                                  },
+                                        "SETTLE":  {
+                                                       "last_value":  26255,
+                                                       "first_date":  "2025-01-02",
+                                                       "rows":  400,
+                                                       "first_value":  25205,
+                                                       "last_date":  "2026-08-26"
+                                                   },
+                                        "OI":  {
+                                                   "last_value":  161482,
+                                                   "first_date":  "2025-01-02",
+                                                   "rows":  400,
+                                                   "first_value":  130684,
+                                                   "last_date":  "2026-08-26"
+                                               },
+                                        "VOL":  {
+                                                    "last_value":  25470,
+                                                    "first_date":  "2026-09-03",
+                                                    "rows":  27,
+                                                    "first_value":  26610,
+                                                    "last_date":  "2026-10-19"
+                                                }
+                                    },
+                         "SN.SHF":  {
+                                        "CLOSE":  {
+                                                      "last_value":  425260,
+                                                      "first_date":  "2025-01-02",
+                                                      "rows":  400,
+                                                      "first_value":  244640,
+                                                      "last_date":  "2026-08-26"
+                                                  },
+                                        "SETTLE":  {
+                                                       "last_value":  426090,
+                                                       "first_date":  "2025-01-02",
+                                                       "rows":  400,
+                                                       "first_value":  243920,
+                                                       "last_date":  "2026-08-26"
+                                                   },
+                                        "OI":  {
+                                                   "last_value":  42787,
+                                                   "first_date":  "2025-01-02",
+                                                   "rows":  400,
+                                                   "first_value":  26658,
+                                                   "last_date":  "2026-08-26"
+                                               },
+                                        "VOL":  {
+                                                    "last_value":  376860,
+                                                    "first_date":  "2026-09-03",
+                                                    "rows":  27,
+                                                    "first_value":  416090,
+                                                    "last_date":  "2026-10-19"
+                                                }
+                                    },
+                         "AL.SHF":  {
+                                        "CLOSE":  {
+                                                      "last_value":  23760,
+                                                      "first_date":  "2025-01-02",
+                                                      "rows":  400,
+                                                      "first_value":  19945,
+                                                      "last_date":  "2026-08-26"
+                                                  },
+                                        "SETTLE":  {
+                                                       "last_value":  23870,
+                                                       "first_date":  "2025-01-02",
+                                                       "rows":  400,
+                                                       "first_value":  19890,
+                                                       "last_date":  "2026-08-26"
+                                                   },
+                                        "OI":  {
+                                                   "last_value":  262191,
+                                                   "first_date":  "2025-01-02",
+                                                   "rows":  400,
+                                                   "first_value":  151307,
+                                                   "last_date":  "2026-08-26"
+                                               },
+                                        "VOL":  {
+                                                    "last_value":  23270,
+                                                    "first_date":  "2026-09-03",
+                                                    "rows":  27,
+                                                    "first_value":  24370,
+                                                    "last_date":  "2026-10-19"
+                                                }
+                                    },
+                         "CU.SHF":  {
+                                        "CLOSE":  {
+                                                      "last_value":  108750,
+                                                      "first_date":  "2025-01-02",
+                                                      "rows":  400,
+                                                      "first_value":  73280,
+                                                      "last_date":  "2026-08-26"
+                                                  },
+                                        "SETTLE":  {
+                                                       "last_value":  108800,
+                                                       "first_date":  "2025-01-02",
+                                                       "rows":  400,
+                                                       "first_value":  73300,
+                                                       "last_date":  "2026-08-26"
+                                                   },
+                                        "OI":  {
+                                                   "last_value":  221610,
+                                                   "first_date":  "2025-01-02",
+                                                   "rows":  400,
+                                                   "first_value":  156644,
+                                                   "last_date":  "2026-08-26"
+                                               },
+                                        "VOL":  {
+                                                    "last_value":  109860,
+                                                    "first_date":  "2026-09-03",
+                                                    "rows":  27,
+                                                    "first_value":  108410,
+                                                    "last_date":  "2026-10-19"
+                                                }
+                                    },
+                         "PB.SHF":  {
+                                        "CLOSE":  {
+                                                      "last_value":  16120,
+                                                      "first_date":  "2025-01-02",
+                                                      "rows":  400,
+                                                      "first_value":  16825,
+                                                      "last_date":  "2026-08-26"
+                                                  },
+                                        "SETTLE":  {
+                                                       "last_value":  16115,
+                                                       "first_date":  "2025-01-02",
+                                                       "rows":  400,
+                                                       "first_value":  16815,
+                                                       "last_date":  "2026-08-26"
+                                                   },
+                                        "OI":  {
+                                                   "last_value":  72501,
+                                                   "first_date":  "2025-01-02",
+                                                   "rows":  400,
+                                                   "first_value":  49567,
+                                                   "last_date":  "2026-08-26"
+                                               },
+                                        "VOL":  {
+                                                    "last_value":  16140,
+                                                    "first_date":  "2026-09-03",
+                                                    "rows":  27,
+                                                    "first_value":  16120,
+                                                    "last_date":  "2026-10-19"
+                                                }
+                                    },
+                         "NI.SHF":  {
+                                        "CLOSE":  {
+                                                      "last_value":  129310,
+                                                      "first_date":  "2025-01-02",
+                                                      "rows":  400,
+                                                      "first_value":  123820,
+                                                      "last_date":  "2026-08-26"
+                                                  },
+                                        "SETTLE":  {
+                                                       "last_value":  129520,
+                                                       "first_date":  "2025-01-02",
+                                                       "rows":  400,
+                                                       "first_value":  124330,
+                                                       "last_date":  "2026-08-26"
+                                                   },
+                                        "OI":  {
+                                                   "last_value":  127106,
+                                                   "first_date":  "2025-01-02",
+                                                   "rows":  400,
+                                                   "first_value":  79893,
+                                                   "last_date":  "2026-08-26"
+                                               },
+                                        "VOL":  {
+                                                    "last_value":  115040,
+                                                    "first_date":  "2026-09-03",
+                                                    "rows":  27,
+                                                    "first_value":  128890,
+                                                    "last_date":  "2026-10-19"
+                                                }
+                                    },
+                         "LC.SHF":  {
+                                        "CLOSE":  "NO_DATA",
+                                        "SETTLE":  "NO_DATA",
+                                        "OI":  "NO_DATA",
+                                        "VOL":  "NO_DATA"
+                                    }
+                     },
+    "baseline":  "feature/v88-g1 HEAD=45690d5",
+    "no_leak":  "YES",
+    "token":  "A01-USER-REMOTE-F01",
+    "task":  "DSHC-F01",
+    "protected_alive":  true,
+    "combos_failed":  4,
+    "note":  "Full fetch. Gate remains CLOSED/HOLD. No release_permit issued.",
+    "gate":  "CLOSED/HOLD",
+    "temp_excel_pid":  22160,
+    "row_threshold_met":  true,
+    "no_fake_data":  "YES",
+    "spawn_counter":  1,
+    "total_rows":  7362,
+    "symbols_attempted":  [
+                              "ZN.SHF",
+                              "CU.SHF",
+                              "PB.SHF",
+                              "AL.SHF",
+                              "SN.SHF",
+                              "NI.SHF",
+                              "LC.SHF"
+                          ],
+    "indicators_attempted":  [
+                                 "CLOSE",
+                                 "VOL",
+                                 "OI",
+                                 "SETTLE"
+                             ],
+    "protected_pid":  14644
+}

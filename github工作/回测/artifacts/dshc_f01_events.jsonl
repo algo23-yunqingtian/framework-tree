@@ -1,0 +1,157 @@
+﻿{"level":"INFO","extra":"GR1 gate active, no orphaned Excel","event":"P0-PREFLIGHT-PASS","ts":"2026-10-19T01:47:43Z"}
+{"level":"INFO","extra":"PID 14644 alive: 工作簿2 - Excel","event":"P0-PROTECTED-ALIVE","ts":"2026-10-19T01:47:43Z"}
+{"level":"INFO","extra":"Begin fetch execution","event":"P1-START","ts":"2026-10-19T01:47:43Z"}
+{"level":"INFO","extra":"spawn_counter=1","event":"GR2-SPAWN","ts":"2026-10-19T01:47:43Z"}
+{"level":"INFO","extra":"Creating Excel COM object","event":"EXCEL-CREATE","ts":"2026-10-19T01:47:43Z"}
+{"level":"INFO","extra":"Excel COM created","event":"GR4-PASS","ts":"2026-10-19T01:47:47Z"}
+{"level":"INFO","extra":"temp=22160 protected=14644","event":"EXCEL-PID","ts":"2026-10-19T01:47:48Z"}
+{"level":"INFO","extra":"Workbook created","event":"GR4-PASS","ts":"2026-10-19T01:47:48Z"}
+{"level":"INFO","extra":"Sheet1 activated","event":"GR4-PASS","ts":"2026-10-19T01:47:48Z"}
+{"level":"INFO","extra":"[1/28] sym=ZN.SHF ind=CLOSE row=1 elapsed=5.5s","event":"COMBO-START","ts":"2026-10-19T01:47:48Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=CLOSE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:47:48Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=CLOSE clipLen=8800 matches=400 preview=\u00272025-01-02\t25265.0000 2025-01-03\t24665.0000 2025-01-06\t24490.0000 2025-01-07\t24395.0000 2025-01-08\t2\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:48:06Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=CLOSE rows=400 first=2025-01-02/25265 last=2026-08-26/26240","event":"COMBO-OK","ts":"2026-10-19T01:48:06Z"}
+{"level":"INFO","extra":"[2/28] sym=ZN.SHF ind=VOL row=405 elapsed=22.9s","event":"COMBO-START","ts":"2026-10-19T01:48:06Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=VOL attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:48:06Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=VOL clipLen=613 matches=27 preview=\u0027无法读取数据！\t26585.0000 2026-09-03\t26610.0000 2026-09-04\t26745.0000 2026-09-07\t27095.0000 2026-09-08\t2750\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:48:20Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=VOL rows=27 first=2026-09-03/26610 last=2026-10-19/25470","event":"COMBO-OK","ts":"2026-10-19T01:48:20Z"}
+{"level":"INFO","extra":"[3/28] sym=ZN.SHF ind=OI row=809 elapsed=37.6s","event":"COMBO-START","ts":"2026-10-19T01:48:20Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=OI attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:48:20Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=OI clipLen=9004 matches=400 preview=\u00272025-01-02\t130684.0000 2025-01-03\t114750.0000 2025-01-06\t109194.0000 2025-01-07\t104494.0000 2025-01-\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:48:35Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=OI rows=400 first=2025-01-02/130684 last=2026-08-26/161482","event":"COMBO-OK","ts":"2026-10-19T01:48:35Z"}
+{"level":"INFO","extra":"[4/28] sym=ZN.SHF ind=SETTLE row=1213 elapsed=52.2s","event":"COMBO-START","ts":"2026-10-19T01:48:35Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=SETTLE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:48:35Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=SETTLE clipLen=8800 matches=400 preview=\u00272025-01-02\t25205.0000 2025-01-03\t24755.0000 2025-01-06\t24500.0000 2025-01-07\t24510.0000 2025-01-08\t2\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:48:50Z"}
+{"level":"INFO","extra":"sym=ZN.SHF ind=SETTLE rows=400 first=2025-01-02/25205 last=2026-08-26/26255","event":"COMBO-OK","ts":"2026-10-19T01:48:50Z"}
+{"level":"INFO","extra":"[5/28] sym=CU.SHF ind=CLOSE row=1617 elapsed=66.9s","event":"COMBO-START","ts":"2026-10-19T01:48:50Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=CLOSE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:48:50Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=CLOSE clipLen=8936 matches=400 preview=\u00272025-01-02\t73280.0000 2025-01-03\t72920.0000 2025-01-06\t73600.0000 2025-01-07\t74470.0000 2025-01-08\t7\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:49:04Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=CLOSE rows=400 first=2025-01-02/73280 last=2026-08-26/108750","event":"COMBO-OK","ts":"2026-10-19T01:49:04Z"}
+{"level":"INFO","extra":"[6/28] sym=CU.SHF ind=VOL row=2021 elapsed=81.5s","event":"COMBO-START","ts":"2026-10-19T01:49:04Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=VOL attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:49:04Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=VOL clipLen=641 matches=27 preview=\u0027无法读取数据！\t108040.0000 2026-09-03\t108410.0000 2026-09-04\t108780.0000 2026-09-07\t109410.0000 2026-09-08\t\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:49:19Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=VOL rows=27 first=2026-09-03/108410 last=2026-10-19/109860","event":"COMBO-OK","ts":"2026-10-19T01:49:19Z"}
+{"level":"INFO","extra":"[7/28] sym=CU.SHF ind=OI row=2425 elapsed=96.1s","event":"COMBO-START","ts":"2026-10-19T01:49:19Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=OI attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:49:19Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=OI clipLen=9199 matches=400 preview=\u00272025-01-02\t156644.0000 2025-01-03\t160879.0000 2025-01-06\t151603.0000 2025-01-07\t145731.0000 2025-01-\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:49:34Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=OI rows=400 first=2025-01-02/156644 last=2026-08-26/221610","event":"COMBO-OK","ts":"2026-10-19T01:49:34Z"}
+{"level":"INFO","extra":"[8/28] sym=CU.SHF ind=SETTLE row=2829 elapsed=110.8s","event":"COMBO-START","ts":"2026-10-19T01:49:34Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=SETTLE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:49:34Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=SETTLE clipLen=8938 matches=400 preview=\u00272025-01-02\t73300.0000 2025-01-03\t73020.0000 2025-01-06\t73660.0000 2025-01-07\t74420.0000 2025-01-08\t7\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:49:48Z"}
+{"level":"INFO","extra":"sym=CU.SHF ind=SETTLE rows=400 first=2025-01-02/73300 last=2026-08-26/108800","event":"COMBO-OK","ts":"2026-10-19T01:49:48Z"}
+{"level":"INFO","extra":"[9/28] sym=PB.SHF ind=CLOSE row=3233 elapsed=125.4s","event":"COMBO-START","ts":"2026-10-19T01:49:48Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=CLOSE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:49:48Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=CLOSE clipLen=8800 matches=400 preview=\u00272025-01-02\t16825.0000 2025-01-03\t16685.0000 2025-01-06\t16730.0000 2025-01-07\t16730.0000 2025-01-08\t1\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:50:03Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=CLOSE rows=400 first=2025-01-02/16825 last=2026-08-26/16120","event":"COMBO-OK","ts":"2026-10-19T01:50:03Z"}
+{"level":"INFO","extra":"[10/28] sym=PB.SHF ind=VOL row=3637 elapsed=140.1s","event":"COMBO-START","ts":"2026-10-19T01:50:03Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=VOL attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:50:03Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=VOL clipLen=613 matches=27 preview=\u0027无法读取数据！\t16155.0000 2026-09-03\t16120.0000 2026-09-04\t16130.0000 2026-09-07\t16210.0000 2026-09-08\t1613\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:50:17Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=VOL rows=27 first=2026-09-03/16120 last=2026-10-19/16140","event":"COMBO-OK","ts":"2026-10-19T01:50:17Z"}
+{"level":"INFO","extra":"[11/28] sym=PB.SHF ind=OI row=4041 elapsed=154.7s","event":"COMBO-START","ts":"2026-10-19T01:50:17Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=OI attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:50:17Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=OI clipLen=8807 matches=400 preview=\u00272025-01-02\t49567.0000 2025-01-03\t49563.0000 2025-01-06\t47338.0000 2025-01-07\t43709.0000 2025-01-08\t4\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:50:32Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=OI rows=400 first=2025-01-02/49567 last=2026-08-26/72501","event":"COMBO-OK","ts":"2026-10-19T01:50:32Z"}
+{"level":"INFO","extra":"[12/28] sym=PB.SHF ind=SETTLE row=4445 elapsed=169.3s","event":"COMBO-START","ts":"2026-10-19T01:50:32Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=SETTLE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:50:32Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=SETTLE clipLen=8800 matches=400 preview=\u00272025-01-02\t16815.0000 2025-01-03\t16725.0000 2025-01-06\t16735.0000 2025-01-07\t16730.0000 2025-01-08\t1\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:50:47Z"}
+{"level":"INFO","extra":"sym=PB.SHF ind=SETTLE rows=400 first=2025-01-02/16815 last=2026-08-26/16115","event":"COMBO-OK","ts":"2026-10-19T01:50:47Z"}
+{"level":"INFO","extra":"[13/28] sym=AL.SHF ind=CLOSE row=4849 elapsed=184s","event":"COMBO-START","ts":"2026-10-19T01:50:47Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=CLOSE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:50:47Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=CLOSE clipLen=8800 matches=400 preview=\u00272025-01-02\t19945.0000 2025-01-03\t19840.0000 2025-01-06\t19565.0000 2025-01-07\t19680.0000 2025-01-08\t1\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:51:01Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=CLOSE rows=400 first=2025-01-02/19945 last=2026-08-26/23760","event":"COMBO-OK","ts":"2026-10-19T01:51:01Z"}
+{"level":"INFO","extra":"[14/28] sym=AL.SHF ind=VOL row=5253 elapsed=198.6s","event":"COMBO-START","ts":"2026-10-19T01:51:01Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=VOL attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:51:01Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=VOL clipLen=613 matches=27 preview=\u0027无法读取数据！\t24100.0000 2026-09-03\t24370.0000 2026-09-04\t24290.0000 2026-09-07\t24420.0000 2026-09-08\t2446\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:51:16Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=VOL rows=27 first=2026-09-03/24370 last=2026-10-19/23270","event":"COMBO-OK","ts":"2026-10-19T01:51:16Z"}
+{"level":"INFO","extra":"[15/28] sym=AL.SHF ind=OI row=5657 elapsed=213.2s","event":"COMBO-START","ts":"2026-10-19T01:51:16Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=OI attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:51:16Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=OI clipLen=9200 matches=400 preview=\u00272025-01-02\t151307.0000 2025-01-03\t139756.0000 2025-01-06\t146626.0000 2025-01-07\t138998.0000 2025-01-\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:51:31Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=OI rows=400 first=2025-01-02/151307 last=2026-08-26/262191","event":"COMBO-OK","ts":"2026-10-19T01:51:31Z"}
+{"level":"INFO","extra":"[16/28] sym=AL.SHF ind=SETTLE row=6061 elapsed=227.9s","event":"COMBO-START","ts":"2026-10-19T01:51:31Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=SETTLE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:51:31Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=SETTLE clipLen=8800 matches=400 preview=\u00272025-01-02\t19890.0000 2025-01-03\t19900.0000 2025-01-06\t19670.0000 2025-01-07\t19655.0000 2025-01-08\t1\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:51:45Z"}
+{"level":"INFO","extra":"sym=AL.SHF ind=SETTLE rows=400 first=2025-01-02/19890 last=2026-08-26/23870","event":"COMBO-OK","ts":"2026-10-19T01:51:45Z"}
+{"level":"INFO","extra":"[17/28] sym=SN.SHF ind=CLOSE row=6465 elapsed=242.5s","event":"COMBO-START","ts":"2026-10-19T01:51:45Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=CLOSE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:51:45Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=CLOSE clipLen=9200 matches=400 preview=\u00272025-01-02\t244640.0000 2025-01-03\t244180.0000 2025-01-06\t246660.0000 2025-01-07\t248320.0000 2025-01-\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:52:00Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=CLOSE rows=400 first=2025-01-02/244640 last=2026-08-26/425260","event":"COMBO-OK","ts":"2026-10-19T01:52:00Z"}
+{"level":"INFO","extra":"[18/28] sym=SN.SHF ind=VOL row=6869 elapsed=257.2s","event":"COMBO-START","ts":"2026-10-19T01:52:00Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=VOL attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:52:00Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=VOL clipLen=641 matches=27 preview=\u0027无法读取数据！\t412960.0000 2026-09-03\t416090.0000 2026-09-04\t416460.0000 2026-09-07\t418870.0000 2026-09-08\t\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:52:15Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=VOL rows=27 first=2026-09-03/416090 last=2026-10-19/376860","event":"COMBO-OK","ts":"2026-10-19T01:52:15Z"}
+{"level":"INFO","extra":"[19/28] sym=SN.SHF ind=OI row=7273 elapsed=271.9s","event":"COMBO-START","ts":"2026-10-19T01:52:15Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=OI attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:52:15Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=OI clipLen=8797 matches=400 preview=\u00272025-01-02\t26658.0000 2025-01-03\t26981.0000 2025-01-06\t27790.0000 2025-01-07\t27419.0000 2025-01-08\t2\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:52:29Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=OI rows=400 first=2025-01-02/26658 last=2026-08-26/42787","event":"COMBO-OK","ts":"2026-10-19T01:52:29Z"}
+{"level":"INFO","extra":"[20/28] sym=SN.SHF ind=SETTLE row=7677 elapsed=286.6s","event":"COMBO-START","ts":"2026-10-19T01:52:29Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=SETTLE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:52:29Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=SETTLE clipLen=9200 matches=400 preview=\u00272025-01-02\t243920.0000 2025-01-03\t243070.0000 2025-01-06\t246970.0000 2025-01-07\t248040.0000 2025-01-\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:52:44Z"}
+{"level":"INFO","extra":"sym=SN.SHF ind=SETTLE rows=400 first=2025-01-02/243920 last=2026-08-26/426090","event":"COMBO-OK","ts":"2026-10-19T01:52:44Z"}
+{"level":"INFO","extra":"[21/28] sym=NI.SHF ind=CLOSE row=8081 elapsed=301.3s","event":"COMBO-START","ts":"2026-10-19T01:52:44Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=CLOSE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:52:44Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=CLOSE clipLen=9200 matches=400 preview=\u00272025-01-02\t123820.0000 2025-01-03\t122640.0000 2025-01-06\t122260.0000 2025-01-07\t122720.0000 2025-01-\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:52:59Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=CLOSE rows=400 first=2025-01-02/123820 last=2026-08-26/129310","event":"COMBO-OK","ts":"2026-10-19T01:52:59Z"}
+{"level":"INFO","extra":"[22/28] sym=NI.SHF ind=VOL row=8485 elapsed=315.9s","event":"COMBO-START","ts":"2026-10-19T01:52:59Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=VOL attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:52:59Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=VOL clipLen=641 matches=27 preview=\u0027无法读取数据！\t126910.0000 2026-09-03\t128890.0000 2026-09-04\t127780.0000 2026-09-07\t127820.0000 2026-09-08\t\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:53:13Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=VOL rows=27 first=2026-09-03/128890 last=2026-10-19/115040","event":"COMBO-OK","ts":"2026-10-19T01:53:13Z"}
+{"level":"INFO","extra":"[23/28] sym=NI.SHF ind=OI row=8889 elapsed=330.5s","event":"COMBO-START","ts":"2026-10-19T01:53:13Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=OI attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:53:13Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=OI clipLen=8999 matches=400 preview=\u00272025-01-02\t79893.0000 2025-01-03\t86042.0000 2025-01-06\t83997.0000 2025-01-07\t80385.0000 2025-01-08\t6\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:53:28Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=OI rows=400 first=2025-01-02/79893 last=2026-08-26/127106","event":"COMBO-OK","ts":"2026-10-19T01:53:28Z"}
+{"level":"INFO","extra":"[24/28] sym=NI.SHF ind=SETTLE row=9293 elapsed=345.2s","event":"COMBO-START","ts":"2026-10-19T01:53:28Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=SETTLE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:53:28Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=SETTLE clipLen=9200 matches=400 preview=\u00272025-01-02\t124330.0000 2025-01-03\t122920.0000 2025-01-06\t122530.0000 2025-01-07\t123300.0000 2025-01-\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:53:43Z"}
+{"level":"INFO","extra":"sym=NI.SHF ind=SETTLE rows=400 first=2025-01-02/124330 last=2026-08-26/129520","event":"COMBO-OK","ts":"2026-10-19T01:53:43Z"}
+{"level":"INFO","extra":"[25/28] sym=LC.SHF ind=CLOSE row=9697 elapsed=359.8s","event":"COMBO-START","ts":"2026-10-19T01:53:43Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=CLOSE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:53:43Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=CLOSE clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:53:57Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=CLOSE attempt=1 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:53:57Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=CLOSE attempt=2/3","event":"ATTEMPT","ts":"2026-10-19T01:53:57Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=CLOSE clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:54:12Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=CLOSE attempt=2 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:54:12Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=CLOSE attempt=3/3","event":"ATTEMPT","ts":"2026-10-19T01:54:12Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=CLOSE clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:54:26Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=CLOSE attempt=3 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:54:26Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=CLOSE all attempts failed","event":"COMBO-FAIL","ts":"2026-10-19T01:54:26Z"}
+{"level":"INFO","extra":"[26/28] sym=LC.SHF ind=VOL row=10909 elapsed=403.6s","event":"COMBO-START","ts":"2026-10-19T01:54:26Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=VOL attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:54:26Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=VOL clipLen=333 matches=0 preview=\u0027无法读取数据！\t 2026-09-03\t 2026-09-04\t 2026-09-07\t 2026-09-08\t 2026-09-09\t 2026-09-10\t 2026-09-11\t 2026-09\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:54:41Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=VOL attempt=1 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:54:41Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=VOL attempt=2/3","event":"ATTEMPT","ts":"2026-10-19T01:54:41Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=VOL clipLen=9 matches=0 preview=\u0027无法读取数据！\t \u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:54:56Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=VOL attempt=2 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:54:56Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=VOL attempt=3/3","event":"ATTEMPT","ts":"2026-10-19T01:54:56Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=VOL clipLen=9 matches=0 preview=\u0027无法读取数据！\t \u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:55:10Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=VOL attempt=3 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:55:10Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=VOL all attempts failed","event":"COMBO-FAIL","ts":"2026-10-19T01:55:10Z"}
+{"level":"INFO","extra":"[27/28] sym=LC.SHF ind=OI row=12121 elapsed=447.4s","event":"COMBO-START","ts":"2026-10-19T01:55:10Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=OI attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:55:10Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=OI clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:55:25Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=OI attempt=1 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:55:25Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=OI attempt=2/3","event":"ATTEMPT","ts":"2026-10-19T01:55:25Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=OI clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:55:39Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=OI attempt=2 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:55:39Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=OI attempt=3/3","event":"ATTEMPT","ts":"2026-10-19T01:55:39Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=OI clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:55:54Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=OI attempt=3 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:55:54Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=OI all attempts failed","event":"COMBO-FAIL","ts":"2026-10-19T01:55:54Z"}
+{"level":"INFO","extra":"[28/28] sym=LC.SHF ind=SETTLE row=13333 elapsed=491.3s","event":"COMBO-START","ts":"2026-10-19T01:55:54Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=SETTLE attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T01:55:54Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=SETTLE clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:56:09Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=SETTLE attempt=1 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:56:09Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=SETTLE attempt=2/3","event":"ATTEMPT","ts":"2026-10-19T01:56:09Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=SETTLE clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:56:23Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=SETTLE attempt=2 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:56:23Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=SETTLE attempt=3/3","event":"ATTEMPT","ts":"2026-10-19T01:56:23Z"}
+{"level":"INFO","extra":"sym=LC.SHF ind=SETTLE clipLen=4800 matches=0 preview=\u00272025-01-02\t 2025-01-03\t 2025-01-06\t 2025-01-07\t 2025-01-08\t 2025-01-09\t 2025-01-10\t 2025-01-13\t 2025\u0027","event":"CLIP-DEBUG","ts":"2026-10-19T01:56:38Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=SETTLE attempt=3 rows=0","event":"ATTEMPT-FAIL","ts":"2026-10-19T01:56:38Z"}
+{"level":"WARN","extra":"sym=LC.SHF ind=SETTLE all attempts failed","event":"COMBO-FAIL","ts":"2026-10-19T01:56:38Z"}
+{"level":"INFO","extra":"success=24/28 failed=4","event":"FETCH-DONE","ts":"2026-10-19T01:56:38Z"}
+{"level":"INFO","extra":"Starting GR3 cleanup","event":"SAFE-SHUTDOWN","ts":"2026-10-19T01:56:38Z"}
+{"level":"WARN","extra":"Found 1 leaked Excel, killing","event":"LEAK-DETECT","ts":"2026-10-19T01:56:40Z"}
+{"level":"INFO","extra":"PID 14644 alive after cleanup","event":"PROTECTED-ALIVE","ts":"2026-10-19T01:56:41Z"}
+{"level":"INFO","extra":"total=538.4s","event":"WALL-CLOCK","ts":"2026-10-19T01:56:41Z"}
+{"level":"INFO","extra":"total_rows=7362 threshold=300 met=True","event":"DATA-PROCESS","ts":"2026-10-19T01:56:42Z"}
+{"level":"INFO","extra":"path=D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_raw.csv rows=7362","event":"CSV-WRITTEN","ts":"2026-10-19T01:56:42Z"}
+{"level":"INFO","extra":"status=PARTIAL_FETCH","event":"RECEIPT-WRITTEN","ts":"2026-10-19T01:56:46Z"}
