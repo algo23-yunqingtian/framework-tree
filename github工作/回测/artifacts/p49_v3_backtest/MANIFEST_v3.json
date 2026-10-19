@@ -640,5 +640,90 @@
       "experiment_max_drawdown": -0.053244,
       "performance_all_achieved": false
     }
+  },
+  "prod_freeze_update": {
+    "update_id": "DSHA-P50-V3-FACTOR-PROD-FREEZE",
+    "updated_at": "2026-10-19T12:03:47.058688+00:00",
+    "token": "DSHA-P50-V3-FREEZE-TOKEN",
+    "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-FIX",
+    "new_artifacts": {
+      "factor_enable_config.json": {
+        "path": "artifacts\\p49_v3_backtest\\factor_enable_config.json",
+        "sha256": "25af165913709e433c4932169349a3f782570cb05b6c303518f8fb067fd8b503",
+        "size_bytes": 2279
+      },
+      "factor_weight_prod.json": {
+        "path": "artifacts\\p49_v3_backtest\\factor_weight_prod.json",
+        "sha256": "06b0d6c4f477ca3b53d1f1881fd243ffaff06cfbe0761564ead8eb680790cff3",
+        "size_bytes": 2179
+      },
+      "v3_factor_prod_freeze.md": {
+        "path": "artifacts\\p49_v3_backtest\\v3_factor_prod_freeze.md",
+        "sha256": "be9307d26a10f2515b85404b51c60ad29c53ad4c7d9ff507ea5d8b668b473c6f",
+        "size_bytes": 7107
+      },
+      "run_v3_ic_weight_deprecated.py": {
+        "path": "artifacts\\p49_v3_backtest\\run_v3_ic_weight_deprecated.py",
+        "sha256": "9c1ca2b0d7c048429aff9f7de33875757c528dea7a18c3a80395890cc9655bad",
+        "size_bytes": 84514
+      }
+    },
+    "total_artifact_count_after_update": 31,
+    "total_artifact_bytes_after_update": 2521785,
+    "production_baseline": {
+      "method": "equal_weight",
+      "factor_count": 8,
+      "factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change"
+      ],
+      "symbols": [
+        "LC.GFE",
+        "NI.SHF",
+        "CU.SHF",
+        "ZN.SHF"
+      ],
+      "symbol_count": 4,
+      "weight_per_factor": 0.125,
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "all_targets_achieved": true
+    },
+    "reproduction_check": {
+      "all_passed": true,
+      "return_drift": 0.0,
+      "sharpe_drift": 0.0,
+      "drawdown_drift": 0.0
+    },
+    "smoke_checks": {
+      "set_e_params_unchanged": true,
+      "white_list_enforced": true,
+      "v2_baseline_unchanged": true,
+      "v3_baseline_unchanged": true,
+      "old_factor_weight_script_preserved": true,
+      "ic_weight_script_deprecated": true,
+      "wind_api_calls_zero": true,
+      "prod_configs_exist": true
+    },
+    "smoke_all_passed": true,
+    "deprecated_tasks": [
+      "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM",
+      "DSHA-P49-V3-FACTOR-WEIGHT-FIX"
+    ],
+    "deprecated_artifacts": [
+      "run_v3_ic_weight_deprecated.py",
+      "factor_weight.json",
+      "weighted_backtest_metrics.json",
+      "factor_stability_report.md",
+      "v3_weight_fix_report.md",
+      "equity_curve_weighted.csv"
+    ]
   }
 }

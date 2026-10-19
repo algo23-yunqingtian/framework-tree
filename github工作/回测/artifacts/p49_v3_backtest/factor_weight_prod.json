@@ -1,0 +1,72 @@
+{
+  "config_id": "DSHA-P50-V3-FACTOR-WEIGHT-PROD",
+  "generated_at": "2026-10-19T08:50:00.000000+00:00",
+  "token": "DSHA-P50-V3-FREEZE-TOKEN",
+  "baseline_commit": "edf4cc0",
+  "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-FIX",
+  "status": "PRODUCTION_FROZEN",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "weighting_method": "equal_weight",
+  "description": "等权配置: 全部8个因子权重均等, 每个因子权重=1/8=0.125, 权重和=1.0",
+  "normalization": "equal_weight_all_factors",
+  "factor_weights": {
+    "contract_switch_flag": 0.125,
+    "momentum_20d": 0.125,
+    "oi_change_1d": 0.125,
+    "oi_change_rate_7d": 0.125,
+    "oi_level": 0.125,
+    "realized_vol_20d": 0.125,
+    "spread_cs": 0.125,
+    "vol_regime_change": 0.125
+  },
+  "weight_factors_sorted": [
+    ["contract_switch_flag", 0.125],
+    ["momentum_20d", 0.125],
+    ["oi_change_1d", 0.125],
+    ["oi_change_rate_7d", 0.125],
+    ["oi_level", 0.125],
+    ["realized_vol_20d", 0.125],
+    ["spread_cs", 0.125],
+    ["vol_regime_change", 0.125]
+  ],
+  "total_factors": 8,
+  "weight_sum": 1.0,
+  "weight_uniform": true,
+  "ic_values_4symbol": {
+    "contract_switch_flag": 0.0,
+    "momentum_20d": -0.012427,
+    "oi_change_1d": -0.029155,
+    "oi_change_rate_7d": 0.008839,
+    "oi_level": 0.000973,
+    "realized_vol_20d": 0.005817,
+    "spread_cs": -0.090153,
+    "vol_regime_change": 0.026994
+  },
+  "ic_note": "IC值仅供参考(4品种样本), 等权配置不依赖IC值, 所有因子权重均等",
+  "symbol_pool": "4_symbol_whitelist",
+  "symbols": [
+    "LC.GFE",
+    "NI.SHF",
+    "CU.SHF",
+    "ZN.SHF"
+  ],
+  "symbol_count": 4,
+  "deprecated_alternatives": [
+    "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM (IC加权8因子, -5.96% return, 已废弃)",
+    "DSHA-P49-V3-FACTOR-WEIGHT-FIX (正向IC加权4因子, 1.64% return, 已废弃)"
+  ],
+  "production_status": "V3_OFFICIAL_PRODUCTION_BASELINE",
+  "backtest_reference": {
+    "total_return": 0.186733,
+    "sharpe_ratio": 2.910945,
+    "max_drawdown": -0.017102,
+    "annualized_return": 0.105282,
+    "calmar_ratio": 6.155973
+  }
+}

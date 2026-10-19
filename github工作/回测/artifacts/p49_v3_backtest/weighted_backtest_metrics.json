@@ -938,5 +938,10 @@
     },
     "overall_stability_pass": false,
     "window_count": 16
-  }
+  },
+  "deprecated_status": "DEPRECATED",
+  "deprecated_at": "2026-10-19T12:03:47.012687+00:00",
+  "deprecated_by_token": "DSHA-P50-V3-FREEZE-TOKEN",
+  "deprecated_reason": "DSHA-P50-V3-FACTOR-PROD-FREEZE: IC加权回测结果已废弃, 仅等权方案为生产基线",
+  "replacement": "factor_weight_prod.json (等权8因子)"
 }

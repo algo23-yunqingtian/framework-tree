@@ -1,9 +1,10 @@
 {
-  "config_id": "DSHA-P49-V3-FACTOR-ENABLE-CONFIG",
-  "generated_at": "2026-10-19T08:35:13.750882+00:00",
-  "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN",
+  "config_id": "DSHA-P50-V3-FACTOR-ENABLE-CONFIG",
+  "generated_at": "2026-10-19T08:50:00.000000+00:00",
+  "token": "DSHA-P50-V3-FREEZE-TOKEN",
   "baseline_commit": "edf4cc0",
-  "status": "FROZEN",
+  "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-FIX",
+  "status": "PRODUCTION_FROZEN",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -34,29 +35,19 @@
     },
     "standard_factors": {
       "factors": [
+        "spread_cs",
         "momentum_20d",
         "vol_regime_change",
         "contract_switch_flag"
       ],
-      "description": "标准因子(排除临时禁用), 全品种池启用",
+      "description": "标准因子, 全品种池启用 (DSHA-P50-V3-FACTOR-PROD-FREEZE恢复全部因子)",
       "enabled_in_4_symbol_pool": true,
       "enabled_in_9_symbol_pool": true
-    },
-    "temporarily_disabled": {
-      "factors": [
-        "spread_cs"
-      ],
-      "condition": "negative_ic_dominant_factor",
-      "enabled_in_4_symbol_pool": false,
-      "enabled_in_9_symbol_pool": false,
-      "description": "临时禁用因子: spread_cs因IC均值为负(-0.0902), 权重过大拖累整体收益",
-      "reason": "DSHA-P49-V3-WEIGHT-FIX: spread_cs IC=-0.0902, 为最大负向贡献因子, 临时禁用待后续优化",
-      "disabled_at": "2026-10-19T08:35:13.750882+00:00",
-      "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN"
     }
   },
   "enabled_4_symbol_pool": [
     "realized_vol_20d",
+    "spread_cs",
     "momentum_20d",
     "vol_regime_change",
     "contract_switch_flag",
@@ -66,12 +57,18 @@
   ],
   "enabled_9_symbol_pool": [
     "realized_vol_20d",
+    "spread_cs",
     "momentum_20d",
     "vol_regime_change",
     "contract_switch_flag"
   ],
-  "total_factors_4_symbol": 7,
-  "total_factors_9_symbol": 4,
-  "previously_enabled_4_symbol": 8,
-  "change_summary": "spread_cs从标准因子移入临时禁用, 4品种池因子数从8降至7"
+  "total_factors_4_symbol": 8,
+  "total_factors_9_symbol": 5,
+  "total_factors_original_4_symbol": 8,
+  "change_summary": "DSHA-P50-V3-FACTOR-PROD-FREEZE: 恢复spread_cs, 全部8个原始因子重新启用, 维持OI因子仅在4品种池的分层规则",
+  "restored_from_temp_disabled": [
+    "spread_cs"
+  ],
+  "restored_at": "2026-10-19T08:50:00.000000+00:00",
+  "restored_by_token": "DSHA-P50-V3-FREEZE-TOKEN"
 }
