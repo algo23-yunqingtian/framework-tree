@@ -1,0 +1,171 @@
+{
+  "skill_id": "FACTOR_EXTRACT_V1",
+  "version": "1.0.0",
+  "version_locked": true,
+  "created_at": "2026-10-19",
+  "generated_at": "2026-10-19T04:18:16.754128+00:00",
+  "source_csv": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_aligned.csv",
+  "symbols_used": [
+    "AL.SHF",
+    "CU.SHF",
+    "NI.SHF",
+    "PB.SHF",
+    "SN.SHF",
+    "ZN.SHF"
+  ],
+  "symbols_blacklisted": [
+    "LC.GFE",
+    "LC.SHF"
+  ],
+  "date_range": {
+    "start": "2025-01-02",
+    "end": "2026-08-26"
+  },
+  "output_columns": [
+    "date",
+    "symbol",
+    "CLOSE",
+    "SETTLE",
+    "OI",
+    "VOL",
+    "spread_cs",
+    "oi_level",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "spread_pct",
+    "contract_switch_flag",
+    "momentum_20d"
+  ],
+  "factor_count": 7,
+  "factors": [
+    {
+      "id": "spread_cs",
+      "name": "Cross-sectional Spread",
+      "formula": "CLOSE - SETTLE",
+      "indicators": [
+        "CLOSE",
+        "SETTLE"
+      ]
+    },
+    {
+      "id": "oi_level",
+      "name": "Open Interest Level",
+      "formula": "OI",
+      "indicators": [
+        "OI"
+      ]
+    },
+    {
+      "id": "oi_change_1d",
+      "name": "1-Day OI Change",
+      "formula": "OI(t) - OI(t-1)",
+      "indicators": [
+        "OI"
+      ]
+    },
+    {
+      "id": "oi_change_rate_7d",
+      "name": "7-Day OI Change Rate %",
+      "formula": "(OI(t) - OI(t-7)) / OI(t-7) * 100",
+      "indicators": [
+        "OI"
+      ]
+    },
+    {
+      "id": "spread_pct",
+      "name": "Spread Percentage %",
+      "formula": "(CLOSE - SETTLE) / SETTLE * 100",
+      "indicators": [
+        "CLOSE",
+        "SETTLE"
+      ]
+    },
+    {
+      "id": "contract_switch_flag",
+      "name": "Contract Switch Flag",
+      "formula": "abs(CLOSE(t)-CLOSE(t-1))/CLOSE(t-1) > 0.02",
+      "indicators": [
+        "CLOSE"
+      ]
+    },
+    {
+      "id": "momentum_20d",
+      "name": "20-Day Momentum %",
+      "formula": "(CLOSE(t) - CLOSE(t-20)) / CLOSE(t-20) * 100",
+      "indicators": [
+        "CLOSE"
+      ]
+    }
+  ],
+  "data_quality": {
+    "date_misalignment": [],
+    "pk_duplicates": [],
+    "null_values": [],
+    "symbol_skipped": [],
+    "symbol_date_count": {
+      "AL.SHF": 427,
+      "CU.SHF": 427,
+      "NI.SHF": 427,
+      "PB.SHF": 427,
+      "SN.SHF": 427,
+      "ZN.SHF": 427
+    }
+  },
+  "row_count": 2400,
+  "row_per_symbol": {
+    "AL.SHF": 400,
+    "CU.SHF": 400,
+    "NI.SHF": 400,
+    "PB.SHF": 400,
+    "SN.SHF": 400,
+    "ZN.SHF": 400
+  },
+  "input_format": {
+    "type": "long_form_csv",
+    "columns": [
+      "date",
+      "symbol",
+      "indicator",
+      "value",
+      "source"
+    ],
+    "delimiter": ","
+  },
+  "output_format": {
+    "type": "wide_form_csv",
+    "columns": [
+      "date",
+      "symbol",
+      "CLOSE",
+      "SETTLE",
+      "OI",
+      "VOL",
+      "spread_cs",
+      "oi_level",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "spread_pct",
+      "contract_switch_flag",
+      "momentum_20d"
+    ],
+    "delimiter": ","
+  },
+  "data_requirements": {
+    "required_indicators": [
+      "CLOSE",
+      "OI",
+      "SETTLE"
+    ],
+    "optional_indicators": [
+      "VOL"
+    ],
+    "min_trading_days": 20
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "f01_script_locked": true,
+    "f01_script_version": "v1.0 @ 593d688",
+    "f01_script_params_only": true
+  }
+}

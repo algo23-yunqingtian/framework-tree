@@ -60,7 +60,9 @@ def _now_iso() -> str:
 LONG_HEADER = "date,symbol,indicator,value,source"
 LONG_HEADER_COLS = ["date", "symbol", "indicator", "value", "source"]
 
-SYMBOL_WHITELIST = ["ZN.SHF", "CU.SHF", "PB.SHF", "AL.SHF", "SN.SHF", "NI.SHF", "LC.SHF"]
+# LC exchange mapping: LC.GFE (Guangzhou Futures Exchange) only. LC.SHF is INVALID — no data.
+# Updated by DSHC-MAINT-01 on 2026-10-19: LC.SHF → LC.GFE
+SYMBOL_WHITELIST = ["ZN.SHF", "CU.SHF", "PB.SHF", "AL.SHF", "SN.SHF", "NI.SHF", "LC.GFE"]
 INDICATOR_WHITELIST = ["CLOSE", "VOL", "OI", "SETTLE"]
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 DATE_REPARSE = "%Y-%m-%d"

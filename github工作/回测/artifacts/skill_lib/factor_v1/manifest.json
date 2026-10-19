@@ -39,6 +39,44 @@
   "iteration_policy": "V1 is frozen. New iterations must create V2 in artifacts/skill_lib/factor_v2/. Direct overwrite of V1 files is prohibited.",
   "next_version": "V2",
   "receipt": "DSHC_SKILL_FACTOR01=SKILL_PACKAGED",
+  "exchange_mapping": {
+    "_description": "Symbol-exchange mapping for all tracked instruments. LC.SHF is INVALID; lithium carbonate trades on GFE (Guangzhou Futures Exchange) only. SHF suffix for LC yields no data.",
+    "_updated_by": "DSHC-MAINT-01",
+    "_updated_at": "2026-10-19T00:00:00Z",
+    "instruments": {
+      "CU.SHF": { "exchange": "SHFE", "name": "Copper" },
+      "ZN.SHF": { "exchange": "SHFE", "name": "Zinc" },
+      "PB.SHF": { "exchange": "SHFE", "name": "Lead" },
+      "AL.SHF": { "exchange": "SHFE", "name": "Aluminum" },
+      "SN.SHF": { "exchange": "SHFE", "name": "Tin" },
+      "NI.SHF": { "exchange": "SHFE", "name": "Nickel" },
+      "LC.GFE": { "exchange": "GFE", "name": "Lithium Carbonate" }
+    },
+    "blacklist": [
+      "LC.GFE"
+    ],
+    "invalid_symbols": [
+      "LC.SHF"
+    ],
+    "invalid_reason": "Lithium carbonate (LC) is listed on GFE only. SHF suffix produces no data (WIND_EMPTY_SYMBOL). Permanently invalidated.",
+    "exchange_codes": {
+      "SHFE": "Shanghai Futures Exchange",
+      "GFE": "Guangzhou Futures Exchange"
+    }
+  },
+  "maintenance_history": [
+    {
+      "ticket": "DSHC-MAINT-01",
+      "date": "2026-10-19",
+      "changes": [
+        "Added exchange_mapping section with 7 instruments",
+        "Corrected LC.SHF → LC.GFE (GFE exchange)",
+        "Marked LC.SHF as INVALID_SYMBOL",
+        "Blacklist reduced to LC.GFE only",
+        "Smoke test and abnormal test suite added"
+      ]
+    }
+  ],
   "data_integrity": {
     "aligned_csv_path": "output_sample/wdf_sample_metals_aligned.csv",
     "aligned_csv_sha256": "E74B06787048099D5EBF9962027AF9DC6DFBAA7ED5387B714A9A2CA0440AFE20",

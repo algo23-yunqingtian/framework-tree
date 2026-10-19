@@ -1,0 +1,173 @@
+{
+  "template_config": {
+    "task_id": "SHFE_RB_HC_WDF_PREP",
+    "version": "1.0.0",
+    "prepared_by": "DSHC-MAINT-01",
+    "prepared_at": "2026-10-19",
+    "wind_api_calls": 0,
+    "executed": false,
+    "execution_status": "PREPARED_ONLY",
+    "time_window": {
+      "start": "2025-01-02",
+      "end": "2026-10-19",
+      "note": "Identical to metals template (DSHC-SKILL-FACTOR01)"
+    },
+    "indicators": [
+      "CLOSE",
+      "VOL",
+      "OI",
+      "SETTLE"
+    ],
+    "symbols": {
+      "RB.SHF": {
+        "exchange": "SHFE",
+        "name_cn": "螺纹钢",
+        "name_en": "Rebar",
+        "status": "NEW",
+        "wind_code": "RB.SHF"
+      },
+      "HC.SHF": {
+        "exchange": "SHFE",
+        "name_cn": "热轧卷板",
+        "name_en": "Hot-rolled Coil",
+        "status": "NEW",
+        "wind_code": "HC.SHF"
+      }
+    },
+    "api_calls_estimated": {
+      "total_wsd_calls": 8,
+      "max_attempts_per_call": 3,
+      "max_total_calls": 24,
+      "fields_per_call": "CLOSE;VOL;OI;SETTLE"
+    },
+    "output_format": {
+      "type": "long_form_csv",
+      "columns": [
+        "date",
+        "symbol",
+        "indicator",
+        "value",
+        "source"
+      ],
+      "encoding": "utf-8"
+    },
+    "wind_formula_template": "WSD(\"{symbol}\",\"CLOSE;VOL;OI;SETTLE\",\"{start}\",\"{end}\",\"Fill=Previous\")",
+    "f01_script_integration": {
+      "primary": "scripts/dshc_f01_gui_fetch.ps1",
+      "integration_point": "Update $symbols array: add 'RB.SHF','HC.SHF'",
+      "locked": true,
+      "locked_version": "v1.0 @ 593d688"
+    },
+    "factor_integration": {
+      "skill": "FACTOR_EXTRACT_V1",
+      "version": "1.0.0",
+      "supported_factors": [
+        "spread_cs",
+        "oi_level",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "spread_pct",
+        "contract_switch_flag",
+        "momentum_20d"
+      ],
+      "note": "All 7 factors use only CLOSE/OI/SETTLE. No additional work needed."
+    }
+  },
+  "sample_output": {
+    "description": "Simulated sample rows — NOT real data. Shows expected CSV format.",
+    "columns": [
+      "date",
+      "symbol",
+      "indicator",
+      "value",
+      "source"
+    ],
+    "sample_rows": [
+      [
+        "2025-01-02",
+        "RB.SHF",
+        "CLOSE",
+        3650.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-02",
+        "RB.SHF",
+        "SETTLE",
+        3648.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-02",
+        "RB.SHF",
+        "OI",
+        1850000.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-02",
+        "RB.SHF",
+        "VOL",
+        245000.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-03",
+        "RB.SHF",
+        "CLOSE",
+        3680.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-03",
+        "RB.SHF",
+        "SETTLE",
+        3678.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-03",
+        "RB.SHF",
+        "OI",
+        1860000.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-03",
+        "RB.SHF",
+        "VOL",
+        251000.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-02",
+        "HC.SHF",
+        "CLOSE",
+        3420.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-02",
+        "HC.SHF",
+        "SETTLE",
+        3418.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-02",
+        "HC.SHF",
+        "OI",
+        920000.0,
+        "SHFE"
+      ],
+      [
+        "2025-01-02",
+        "HC.SHF",
+        "VOL",
+        180000.0,
+        "SHFE"
+      ]
+    ]
+  },
+  "generated_at": "2026-10-19"
+}

@@ -1,0 +1,66 @@
+{
+  "test_suite": "FACTOR_EXTRACT_V1_ABNORMAL",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "test_id": "TC-001",
+      "test_name": "date_misalignment",
+      "description": "CU.SHF has dates not present for ZN.SHF; script should complete with misalignment warnings",
+      "expected_result": "WARN_MISALIGNMENT",
+      "actual_result": "WARN_MISALIGNMENT",
+      "exit_code": 0,
+      "row_count": 9,
+      "factor_count": 7,
+      "warning_count": 3,
+      "error": null,
+      "output_files": [
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\data\\tc001_date_misalignment.csv",
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\output\\TC-001\\factors_output.csv",
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\output\\TC-001\\factors_metadata.json"
+      ],
+      "output_sha256": "63FD70400043C7B46B6E8E7EB84CA1B93D8BC7F14CDE9CBA71F036EA831351DB"
+    },
+    {
+      "test_id": "TC-002",
+      "test_name": "illegal_instrument",
+      "description": "FOO.SHF is not in whitelist and not blacklisted; script processes it silently",
+      "expected_result": "COMPLETES_WITH_UNKNOWN_SYMBOL",
+      "actual_result": "COMPLETES_WITH_UNKNOWN_SYMBOL",
+      "exit_code": 0,
+      "row_count": 4,
+      "factor_count": 7,
+      "warning_count": 0,
+      "error": null,
+      "output_files": [
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\data\\tc002_illegal_instrument.csv",
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\output\\TC-002\\factors_output.csv",
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\output\\TC-002\\factors_metadata.json"
+      ],
+      "output_sha256": "FD6BD77B0B95333A55A38F0A00B9B1395DD7A7B643ADA2E18BBDA18E0720D88A"
+    },
+    {
+      "test_id": "TC-003",
+      "test_name": "empty_required_indicator",
+      "description": "CU.SHF missing SETTLE indicator; spread factors produce NaN",
+      "expected_result": "COMPLETES_WITH_NAN_FACTORS",
+      "actual_result": "COMPLETES_WITH_NAN_FACTORS",
+      "exit_code": 0,
+      "row_count": 3,
+      "factor_count": 7,
+      "warning_count": 0,
+      "error": null,
+      "output_files": [
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\data\\tc003_missing_settle.csv",
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\output\\TC-003\\factors_output.csv",
+        "C:\\Users\\YAQH\\AppData\\Local\\Temp\\fev1_tests__x_9h89b\\output\\TC-003\\factors_metadata.json"
+      ],
+      "output_sha256": "A8F4E4C9678717C7C3BB0F7B59470D66627265CFA2117A05791AAEA6F56CD47B"
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "note": "V1 frozen. These tests validate V1 behavior with abnormal inputs."
+}
