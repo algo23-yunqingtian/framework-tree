@@ -1,4 +1,15 @@
 # -*- coding: utf-8 -*-
+# ============================================================
+# [ARCHIVED] DSHD-P81-TWEAK patch — DO NOT RE-RUN
+# ============================================================
+# This patch is non-idempotent (contains assert src.count(old)==1 guards).
+# Re-running will FAIL with assertion error.
+#
+# For incremental changes, create a NEW patch file:
+#   patch_p81_tweak2.py  (for the next TWEAK iteration)
+#
+# This file is preserved for historical reference only.
+# ============================================================
 # patch_p81_tweak.py  -  DSHD-P81-TWEAK  (token DSHD-P81-TWEAK-TOKEN)
 #
 # 31 exact string replacements applied to recreate_p81.py (single source of

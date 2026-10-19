@@ -143,6 +143,7 @@ $zh = @{
   head_skill   = '八、FACTOR_EXTRACT_V1 Skill 目录哈希监控'
   head_p0      = '九、P0 校验'
   head_red     = '十、红线确认'
+  head_verm    = '十一、P81 工具链版本管理'
   st_duty      = '审计值守'
   st_post      = '复盘已归档'
   st_preheat   = '预热待命'
@@ -1853,6 +1854,21 @@ function Write-ClusterBrief {
   Add-BriefLine $L $r
   $r = ('- wind_api_calls = ' + $RedLines.wind_api_calls)
   Add-BriefLine $L $r
+  Add-BriefLine $L ''
+  Add-BriefLine $L $zh['head_verm']
+  Add-BriefLine $L ''
+  Add-BriefLine $L ('> 本章节由 v1.2.1+ 持久化生成，不再被 5 分钟轮询覆盖。')
+  Add-BriefLine $L ('> 完整信息见 `G7_ADJUDICATION_LEDGER/dshd_p81_toolchain_versions.md`。')
+  Add-BriefLine $L ('> SHA 真源：`G7_ADJUDICATION_LEDGER/p81_version_history.json`。')
+  Add-BriefLine $L ''
+  Add-BriefLine $L '| 项 | 值 |'
+  Add-BriefLine $L '|---|---|'
+  Add-BriefLine $L ('| 工具链版本 | ' + $scriptVersion + ' |')
+  Add-BriefLine $L ('| 备份钩子 | p81_safe_edit.py v1.0.0 |')
+  Add-BriefLine $L ('| 快照目录 | `_p81_snapshots/` (git tracked) |')
+  Add-BriefLine $L ('| 版本台账 | `p81_version_history.json` |')
+  Add-BriefLine $L ('| 补丁规范 | 旧补丁已归档；增量修改必须新建 patch_p81_tweak2.py |')
+  Add-BriefLine $L ('| 永久文档 | `dshd_p81_toolchain_versions.md` |')
   Add-BriefLine $L ''
 
   return ([string]::Join("`n", ([string[]]$L.ToArray())))

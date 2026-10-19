@@ -41,7 +41,7 @@
 
 | 文件 | 原因 |
 |---|---|
-| `_p81_snapshots/*.bak` | 本地快照备份，由 `.gitignore` 的 `*.bak` 规则忽略 |
+| `_p81_snapshots/*.bak` | **已改为 git tracked**（DSHD-P81-TWEAK-FIX），`.gitignore` 已添加 `!` 例外规则，支持多机版本同步 |
 | `artifacts/dshd_p81_watch_*.json` | watcher 运行时快照（动态） |
 | `dshd_p81_watch.log` | watcher 日志 |
 | `tracking_monitor_audit.jsonl` | 全集群共享审计账本（被多个 agent 追加） |
@@ -280,7 +280,8 @@ python p81_safe_edit.py check recreate_p81.py
 - ❌ 不允许直接编辑 P81 工具链文件而不先 snapshot
 - ❌ 不允许删除 `_p81_snapshots/` 中的 `.bak` 文件
 - ❌ 不允许清空 `p81_version_history.json`
-- ❌ 不允许将 `_p81_snapshots/` 加入 git 跟踪
+- ✅ 允许（且推荐）将 `_p81_snapshots/` 纳入 git 跟踪（DSHD-P81-TWEAK-FIX 已配置）
+- ❌ 不允许重跑已归档的旧补丁脚本（`patch_p81_ext.py` / `patch_p81_tweak.py` 均非幂等）
 
 ---
 
@@ -297,8 +298,100 @@ python p81_safe_edit.py check recreate_p81.py
 
 ---
 
-## 七、变更记录
+## 七、补丁迭代规范
+
+### 7.1 问题背景
+
+P81 工具链的补丁脚本（`patch_p81_ext.py`、`patch_p81_tweak.py`）采用**精确字符串替换**方式修改 `recreate_p81.py`，内部含 `assert src.count(old) == 1` 唯一性守卫。一旦补丁成功应用，目标字符串已变更，**重跑同一补丁必然失败**。
+
+### 7.2 归档规则
+
+已应用的补丁脚本**立即标记为归档**（文件头添加 `[ARCHIVED]` banner）：
+
+| 文件 | 状态 | 说明 |
+|---|---|---|
+| `patch_p81_ext.py` | **ARCHIVED** | v1.0.0-EXT 补丁，已应用，不可重跑 |
+| `patch_p81_tweak.py` | **ARCHIVED** | v1.2.0-TWEAK 补丁，已应用，不可重跑 |
+| `patch_p81_brief.py` | 未归档 | 简报补丁，幂等设计 |
+| `patch_p81_fast_excel.py` | 未归档 | 快采样补丁，幂等设计 |
+
+### 7.3 增量修改规范
+
+后续增量修改**必须新建补丁文件**，命名规范：
+
+```
+patch_p81_tweak2.py      # TWEAK 第二轮增量
+patch_p81_tweak3.py      # TWEAK 第三轮增量
+patch_p81_v121.py        # v1.2.1 功能版本增量
+```
+
+**新补丁编写规则：**
+1. 基于**当前** `recreate_p81.py` 内容编写，不基于旧版本
+2. 使用 `assert src.count(old) == 1` 唯一性守卫（确保修改位置精确）
+3. 补丁执行前必须先 snapshot 目标文件
+4. 补丁执行后立即更新本文件的版本表
+
+### 7.4 示例：创建新补丁
+
+```python
+# patch_p81_tweak2.py 骨架
+# -*- coding: utf-8 -*-
+"""
+DSHD-P81-TWEAK-2 patch — v1.2.1 incremental changes.
+Based on recreate_p81.py as of commit 1cf2512 (v1.2.0-TWEAK).
+"""
+import io
+GEN = r"D:\DSH_WORK\github工作\回测\G7_ADJUDICATION_LEDGER\recreate_p81.py"
+
+with io.open(GEN, 'r', encoding='utf-8') as f:
+    src = f.read()
+
+# --- Change 1: description ---
+old1 = 'original text to find'
+new1 = 'replacement text'
+assert src.count(old1) == 1, f'expected 1 match for old1, got {src.count(old1)}'
+src = src.replace(old1, new1)
+
+# ... more changes ...
+
+with io.open(GEN, 'w', encoding='utf-8') as f:
+    f.write(src)
+
+print('patch_p81_tweak2.py: ALL CHANGES APPLIED')
+```
+
+### 7.5 安全修改流程（更新版）
+
+```powershell
+# 1. 备份当前版本
+python p81_safe_edit.py snapshot recreate_p81.py --agent DSHD-P81 --reason "pre-tweak-2"
+
+# 2. 创建新补丁文件（禁止重跑旧补丁！）
+#    新建 patch_p81_tweak2.py，基于当前 recreate_p81.py 编写
+
+# 3. 执行新补丁
+python patch_p81_tweak2.py
+
+# 4. 重生成 PS1
+python recreate_p81.py
+
+# 5. 语法检查
+powershell -File verify_p81_tweak_syntax.ps1
+
+# 6. 冒烟测试
+powershell -File test_p81_tweak.ps1
+
+# 7. 提交
+git add G7_ADJUDICATION_LEDGER/recreate_p81.py G7_ADJUDICATION_LEDGER/dshd_p81_watch.ps1
+git add G7_ADJUDICATION_LEDGER/patch_p81_tweak2.py
+git commit -m "[DSHD-P81-TWEAK-2] 新增 XX 功能"
+```
+
+---
+
+## 八、变更记录
 
 | 日期 | 版本 | 说明 |
 |---|---|---|
+| 2026-10-19 | v1.0.1 | DSHD-P81-TWEAK-FIX：brief 持久化、快照入库、补丁迭代规范 |
 | 2026-10-19 | v1.0.0 | 初始版本：备份钩子 + 版本台账 + 回滚指引 |

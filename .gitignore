@@ -11,3 +11,8 @@ __pycache__/
 *.bak.*
 *.bak_before_*
 api_cache.db.bak_*
+
+# DSHD-P81-TWEAK-FIX: un-ignore P81 snapshot directory for multi-machine sync
+!github工作/回测/G7_ADJUDICATION_LEDGER/_p81_snapshots/
+!github工作/回测/G7_ADJUDICATION_LEDGER/_p81_snapshots/*.bak
+!github工作/回测/G7_ADJUDICATION_LEDGER/_p81_snapshots/*.bak.*
