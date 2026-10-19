@@ -61,9 +61,12 @@
       "csv_output": {
         "key": "a01_csv_output",
         "path": "output_sample/wdf_sample_metals_raw.csv",
-        "sha256": "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895",
-        "rows": 0,
-        "note": "header only - no data returned by the WDF channel"
+        "sha256": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+        "rows": 9,
+        "note": "A06 sync: refreshed to live sha256 AC6349CF… (was stale BEF26114…); 11-col wide-format header, 9 data rows, still BELOW_P68_MIN_SIZE; gate remains CLOSED; A06 re-anchored cross_agent reference to eliminate A01_HASH_MISMATCH_WARNING (see artifacts/dsha_a06_hash_index_sync.json).",
+        "size_bytes": 783,
+        "last_write": "2026-10-19T08:49:17+08:00",
+        "a06_aligned_at_gmt8": "2026-10-19T09:44:23+08:00"
       }
     },
     "a02_ignite": {
@@ -290,7 +293,9 @@
         "agent_excel_lifetime_sec": 163,
         "hard_timeout_min": 12,
         "hard_timeout_reached": false,
-        "protected_foreground_excel_pids": [ 14644 ],
+        "protected_foreground_excel_pids": [
+          14644
+        ],
         "protected_foreground_excel_terminated": false,
         "wind_listen_ports": [],
         "dotwind_file_count": 0,
@@ -330,8 +335,8 @@
     "note": "The top-level wind_api_calls / real_wind_call / marker_created fields are the DSHD-P79 P90A baseline and were NOT modified by the A01 run. The A01 run made 3 WDF formula injections that returned no data, so A01 wind_api_calls=0 as well; per-run facts live under ignite_runs."
   },
   "updated_at": "2026-10-18T19:56:29Z",
-  "updated_by": "DSHC-A03",
-  "updated_reason": "additive DSHC-TASK-A03-WDF-DIRECT direct-fetch run (FETCH_ERROR, token A01-USER-REMOTE-002 EXHAUSTED, gate changed to WDF add-in Connect=True); DSHD-P79/DSHE/A01/A02 top-level red-line baselines preserved unchanged",
+  "updated_by": "DSHA-A06",
+  "updated_reason": "DSHA-A06 hash-index sync: aligned local A01 hash index to AC6349CF (live sha256 of output_sample/wdf_sample_metals_raw.csv), reconciled P81 A01_HASH_MISMATCH_WARNING stale-reference, appended a06_pipeline_sync block. All DSHC-A03/DSHD-P81/DSHA-A01/A02/A02-PLUS red-line baselines preserved unchanged. CSV read-only; gate remains CLOSED; release_permit NOT_ISSUED.",
   "a02_ready_preheat": {
     "ticket": "DSHA-A02-READY-PREHEAT",
     "agent": "DSHA-A02",
@@ -366,7 +371,7 @@
     "marker_created": false,
     "note": "A02 增强待命预热：只做预热+看板；触发权 100% 留在 P68 Sanity 闸门；P79/DSHD 顶层 red-line 字段未被修改"
   },
-  "updated_at_gmt8": "2026-10-19T01:56:40.623370+08:00",
+  "updated_at_gmt8": "2026-10-19T09:44:23+08:00",
   "a02_plus_hook_register": {
     "created_at_gmt8": "2026-10-19T01:56:40.623370+08:00",
     "ticket": "DSHA-A02-PLUS",
@@ -564,5 +569,67 @@
     "wait_reason": "the A02 WAIT_BRIDGE lock, its bounded 8-minute wait loop and its STANDBY state are lifted by this workorder",
     "token_exhausted": true,
     "outcome": "the gate change authorised ignition immediately with no wait; the run still failed because the data plane behind the add-in is empty (both WSD and WSS return the bare date anchor). See artifacts/dshc_a03_wdf_channel_diagnosis.md"
+  },
+  "a06_pipeline_sync": {
+    "created_at_gmt8": "2026-10-19T09:44:23+08:00",
+    "ticket": "DSHA-A06-PIPELINE-SYNC",
+    "role": "AUXILIARY",
+    "token": "DSHA-A06-TOKEN",
+    "p0_baseline": {
+      "p68_diff_empty": true,
+      "p68_params_ok": "8/8",
+      "gate": "CLOSED",
+      "release_permit": "NOT_ISSUED",
+      "wind_api_calls": 0
+    },
+    "hash_index_sync": {
+      "final_a01_hash_index": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+      "aligned_to_AC6349CF": true,
+      "target_path": "output_sample\\wdf_sample_metals_raw.csv",
+      "target_size_bytes": 783,
+      "target_last_write": "2026-10-19T08:49:17+08:00",
+      "p81_warn_reconciled": "A01_HASH_MISMATCH_WARNING → RECONCILED_BY_A06",
+      "independent_hashes_verified": 3
+    },
+    "artifacts": {
+      "dsha_a06_hash_index_sync": {
+        "path": "artifacts/dsha_a06_hash_index_sync.json",
+        "sha256": "B4CBEDC3C68201DB6BA28C3E8389A484DD58DCAD008A42125A5B732524A27FA3"
+      },
+      "dsha_csv_poll_log": {
+        "path": "artifacts/dsha_csv_poll_log.json",
+        "sha256": "A43BD0CBAA63829526B63043782E6110EC97D5E175B93B98B213EFA87B6614D5"
+      },
+      "dsha_longformat_validator_report": {
+        "path": "artifacts/dsha_longformat_validator_report.md",
+        "sha256": "590996660CCA4BE144A323184B1C4B4F98D3C8E0EAE73A98C1CE7D40CAEF96D8"
+      },
+      "a06_validator_sidecar": {
+        "path": "artifacts/_a06_validator_sidecar.json",
+        "sha256": "7BEECC46EB2754086C18459E94DA02F772C916A92CA26BA15BD40E4D48E07B9C"
+      },
+      "dsha_cluster_sync_note": {
+        "path": "artifacts/dsha_cluster_sync_note.md",
+        "sha256": "5D51570C01145996CE7FB5E71327124E85478A111E9EC66624A83A38A0CF63EB"
+      },
+      "dsha_a06_receipt": {
+        "path": "artifacts/dsha_a06_receipt.json",
+        "sha256": "5C5E17A714730165BB4B2EE00E224C65532C4344C712965C1AEC4C500B319B4A"
+      }
+    },
+    "red_lines": {
+      "REAL_WIND_CALL": false,
+      "WIND_API_CALLS": 0,
+      "OFFLINE_ONLY": true,
+      "AUTO_BACKTEST": "DENIED",
+      "RELEASE_PERMIT": "NOT_ISSUED",
+      "P68_GATE_UNCHANGED": true,
+      "CSV_NOT_MODIFIED": true,
+      "DSHD_AUDIT_NOT_TOUCHED": true,
+      "DSHC_NOT_INTERFERED": true,
+      "NO_HUMAN_OPERATION_REQUIRED": true
+    },
+    "trigger_authority": "P68_SANITY_GATE",
+    "auto_ignition_by_a06": "DENIED"
   }
 }

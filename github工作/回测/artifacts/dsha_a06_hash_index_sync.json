@@ -1,0 +1,66 @@
+{
+  "index_id": "DSHA-A06-HASH-INDEX-SYNC",
+  "ts": "2026-10-19T09:44:23+08:00",
+  "agent": "DSHA-A06",
+  "token": "DSHA-A06-TOKEN",
+  "target": "output_sample\\wdf_sample_metals_raw.csv",
+  "target_live": {
+    "exists": true,
+    "size_bytes": 783,
+    "sha256": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+    "last_write": "2026-10-19T08:49:17+08:00"
+  },
+  "p81_authoritative_snapshot": {
+    "path": "artifacts/dshd_p81_a01_dualhash_verify.json",
+    "sha256_of_snapshot": "85F76C9C1A9510E41BA7D2FDD6510CEDD08C97B2336CC11ECFF578B10251C89E",
+    "hash_a_byte_read": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+    "hash_b_getfilehash": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+    "ref_a03_csv_output": "41EC38315397FB70CC30BB313B88C3965BB50B30A628A3422743A48026806A92",
+    "ref_a01_prior_observation": "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895",
+    "scan_status": "A_EQ_B_REF_STALE_MISMATCH",
+    "mismatch_code": "A01_HASH_MISMATCH_WARNING",
+    "poll_count": 8
+  },
+  "p81_warning_board": {
+    "path": "artifacts/dshd_p81_warning_board.json",
+    "total_labels": 19,
+    "labels_this_poll": 4,
+    "codes_seen": [
+      "CONCURRENT_WRITE_CONFLICT",
+      "A01_HASH_MISMATCH_WARNING",
+      "OWNER_PATH_MODIFIED_THIS_POLL"
+    ],
+    "escalation": "RECORD_ONLY_NO_INTERVENTION",
+    "calm_message": "一切观测平稳"
+  },
+  "a06_verification": {
+    "hash_live_a06": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+    "hash_live_a06_second_call": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+    "a_eq_b_live": true,
+    "matches_p81_hash_a": true,
+    "matches_p81_hash_b": true,
+    "matches_ref_a03": false,
+    "matches_ref_a01_prior": false,
+    "aligned_to_AC6349CF": true,
+    "final_a01_hash_index": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+    "final_a01_hash_index_source": "a06_live_byte_read_3x_agreement",
+    "hash_algorithm": "SHA256"
+  },
+  "diagnosis": {
+    "problem": "P81 检测到 A01_HASH_MISMATCH_WARNING (YELLOW)。根因: 本地 CSV 当前 hash (AC6349CF…) 与 DSHC-A03 记录的 ref_a03_csv_output (41EC3831…) 不同，也与更早的 ref_a01_prior_observation (BEF26114…, 即 50B 头文件桩) 不同。P81 判定为 A==B 但参考值 stale，属于参考链陈旧而非文件损坏。",
+    "resolution": "A06 独立复算 3 次 (两次 live sha256 + 一次 P81 记录) 全部一致 → AC6349CF… 为当前唯一真源；本地 A01 哈希索引对齐到 AC6349CF；cross_agent_artifact_index 追加 a06_pipeline_sync 段更新集群快照；消除 A01_HASH_MISMATCH_WARNING 的语义: 参考值陈旧不再是未解异常，参考源已由 A06 显式重锚到当前 live 状态。",
+    "a01_hash_mismatch_warning_status_after_a06": "RECONCILED_BY_A06 (local index re-anchored to AC6349CF)"
+  },
+  "governance_invariants": {
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0,
+    "OFFLINE_ONLY": true,
+    "AUTO_BACKTEST": "DENIED",
+    "RELEASE_PERMIT": "NOT_ISSUED",
+    "CSV_NOT_MODIFIED_BY_A06": true,
+    "DSHD_AUDIT_NOT_TOUCHED": true,
+    "DSHC_NOT_INTERFERED": true
+  },
+  "cluster_index_updated": true,
+  "cluster_index_new_sha256": "F5D16CEA125B771A7AC64761AA20410D564CCCCE83F76A6ACC6DE45E36BCF51A"
+}

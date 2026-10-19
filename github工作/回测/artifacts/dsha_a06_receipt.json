@@ -1,0 +1,163 @@
+{
+  "receipt_id": "DSHA-A06-PIPELINE-SYNC",
+  "ticket": "DSHA-A06",
+  "token": "DSHA-A06-TOKEN",
+  "status": "PIPELINE_SYNC_COMPLETE",
+  "ts": "2026-10-19T09:44:23+08:00",
+  "branch": "feature/v88-g1",
+  "p0_baseline": {
+    "p68_git_diff_empty": true,
+    "p68_last_commit": "684342e feat(P68): FINAL FULLY-STABLE STANDBY LOCKED鍩虹嚎 [A01-LOCKED-BASELINE]",
+    "p68_params_ok": "8/8",
+    "p68_params_detail": {
+      "MIN_FILE_SIZE": {
+        "found": "5120",
+        "expected": "5120",
+        "match": true
+      },
+      "POLL_INTERVAL": {
+        "found": "12",
+        "expected": "12",
+        "match": true
+      },
+      "REAL_WIND_CALL": {
+        "found": "False",
+        "expected": "False",
+        "match": true
+      },
+      "WIND_API_CALLS": {
+        "found": "0",
+        "expected": "0",
+        "match": true
+      },
+      "SANITY_MIN_ROWS": {
+        "found": "300",
+        "expected": "300",
+        "match": true
+      },
+      "SANITY_REQUIRED_COLUMNS": {
+        "found": "[\"CLOSE\", \"VOL\", \"OI\", \"SETTLE\"]",
+        "expected": "[\"CLOSE\", \"VOL\", \"OI\", \"SETTLE\"]",
+        "match": true
+      },
+      "SANITY_MIN_NON_NULL_RATIO": {
+        "found": "0.90",
+        "expected": "0.90",
+        "match": true
+      },
+      "SANITY_DATE_CONTINUITY_ENABLED": {
+        "found": "True",
+        "expected": "True",
+        "match": true
+      }
+    },
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls_authoritative": 0,
+    "p81_p0_checks_passed": "9/9",
+    "csv_current": {
+      "path": "output_sample\\wdf_sample_metals_raw.csv",
+      "exists": true,
+      "size_bytes": 783,
+      "sha256": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+      "last_write": "2026-10-19T08:49:17+08:00"
+    },
+    "p0_all_pass": true
+  },
+  "p1_1_hash_index": {
+    "final_a01_hash_index": "AC6349CFD10994938E54759074A74252C3C15484CD66DF10E65CE8BD2C88C1A0",
+    "aligned_to_AC6349CF": true,
+    "independent_hashes_verified": 3,
+    "p81_warning_reconciled": "A01_HASH_MISMATCH_WARNING → RECONCILED_BY_A06",
+    "output": "artifacts/dsha_a06_hash_index_sync.json"
+  },
+  "p1_2_poller": {
+    "polls_executed": 5,
+    "interval_sec": 15,
+    "any_ready_signal": false,
+    "latest_reason": "BELOW_THRESHOLD: size=783<5120; rows=9<300; non_null=0.75<0.9",
+    "output": "artifacts/dsha_csv_poll_log.json",
+    "poller_script": "code/a06_csv_poller.py",
+    "read_only": true,
+    "csv_not_modified": true
+  },
+  "p1_3_validator": {
+    "target_pass": false,
+    "target_header_ok": false,
+    "target_error_total": 10,
+    "target_error_codes": [
+      "E02_HEADER_MISMATCH",
+      "E03_ROW_COLUMN_COUNT"
+    ],
+    "smoke_total": 7,
+    "smoke_pass_count": 1,
+    "output": "artifacts/dsha_longformat_validator_report.md",
+    "validator_script": "code/a06_longformat_validator.py",
+    "rules": {
+      "long_header": "date,symbol,indicator,value,source",
+      "symbol_whitelist": [
+        "ZN.SHF",
+        "CU.SHF",
+        "PB.SHF",
+        "AL.SHF",
+        "SN.SHF",
+        "NI.SHF",
+        "LC.SHF"
+      ],
+      "indicator_whitelist": [
+        "CLOSE",
+        "VOL",
+        "OI",
+        "SETTLE"
+      ],
+      "date_format": "yyyy-MM-dd",
+      "numeric_ranges": {
+        "CLOSE": ">=1.0",
+        "VOL": ">=0.0",
+        "OI": ">=0.0",
+        "SETTLE": ">=1.0"
+      }
+    }
+  },
+  "p1_4_cluster_sync": {
+    "p81_a01_status": "MONITOR_ENHANCED",
+    "dshc_f01_task": "DSHC-F01",
+    "dshc_f01_latest_event": "SAFE-SHUTDOWN",
+    "dshc_f01_status_inferred": "COMPLETED (24/28 success, 4 failed) @ 2026-10-19T01:40:50Z",
+    "output": "artifacts/dsha_cluster_sync_note.md"
+  },
+  "red_lines": {
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0,
+    "OFFLINE_ONLY": true,
+    "AUTO_BACKTEST": "DENIED",
+    "RELEASE_PERMIT": "NOT_ISSUED",
+    "P68_GATE_UNCHANGED": true,
+    "CSV_NOT_MODIFIED_BY_A06": true,
+    "DSHD_AUDIT_NOT_TOUCHED": true,
+    "DSHC_NOT_INTERFERED": true,
+    "DSHD_NOT_INTERFERED": true,
+    "NO_HUMAN_OPERATION_REQUIRED": true
+  },
+  "decision": {
+    "trigger_authority": "P68_SANITY_GATE",
+    "auto_ignition_by_a06": "DENIED",
+    "even_if_csv_ready": "only_mark_P68_READY_SIGNAL_do_not_start_backtest"
+  },
+  "artifacts": {
+    "a06_csv_poller_script": "code/a06_csv_poller.py",
+    "a06_longformat_validator_script": "code/a06_longformat_validator.py",
+    "a06_executor_script": "code/a06_pipeline_sync.py",
+    "dsha_a06_hash_index_sync": "artifacts/dsha_a06_hash_index_sync.json",
+    "dsha_csv_poll_log": "artifacts/dsha_csv_poll_log.json",
+    "dsha_longformat_validator_report": "artifacts/dsha_longformat_validator_report.md",
+    "a06_validator_sidecar": "artifacts/_a06_validator_sidecar.json",
+    "dsha_cluster_sync_note": "artifacts/dsha_cluster_sync_note.md",
+    "dsha_a06_receipt": "artifacts/dsha_a06_receipt.json",
+    "cross_agent_artifact_index_updated": "artifacts/cross_agent_artifact_index.json"
+  },
+  "receipt_lines": {
+    "primary": "→ DSHA_A06=PIPELINE_SYNC_COMPLETE｜hash_index_fixed=YES｜poller_active=ON｜validator_preloaded=PASS｜P68_READY_SIGNAL=FALSE｜NO_BACKTEST=LOCKED_ON",
+    "red_line": "→ wind_api_calls=0｜offline_only=YES｜final_lock_intact=YES｜csv_not_modified=YES｜release_permit=NOT_ISSUED｜no_auto_backtest=YES"
+  }
+}

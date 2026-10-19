@@ -1,0 +1,51 @@
+{
+  "ts": "2026-10-19T09:31:57+08:00",
+  "target_csv": "output_sample\\wdf_sample_metals_raw.csv",
+  "target_pass": false,
+  "target_header_ok": false,
+  "target_error_total": 10,
+  "target_error_codes": [
+    "E02_HEADER_MISMATCH",
+    "E03_ROW_COLUMN_COUNT"
+  ],
+  "smoke_results": {
+    "T1_valid_long_format": {
+      "pass": true,
+      "error_total": 0
+    },
+    "T2_bad_date_format": {
+      "pass": false,
+      "error_total": 2
+    },
+    "T3_unknown_symbol": {
+      "pass": false,
+      "error_total": 2
+    },
+    "T4_unknown_indicator": {
+      "pass": false,
+      "error_total": 3
+    },
+    "T5_bad_value": {
+      "pass": false,
+      "error_total": 7
+    },
+    "T6_dup_key_and_empty_source": {
+      "pass": false,
+      "error_total": 2
+    },
+    "T7_target_csv_wide_format": {
+      "pass": false,
+      "error_total": 5
+    }
+  },
+  "smoke_total": 7,
+  "smoke_pass_count": 1,
+  "report_path": "artifacts\\dsha_longformat_validator_report.md",
+  "red_lines": {
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0,
+    "OFFLINE_ONLY": true,
+    "AUTO_BACKTEST": "DENIED",
+    "RELEASE_PERMIT": "NOT_ISSUED"
+  }
+}
