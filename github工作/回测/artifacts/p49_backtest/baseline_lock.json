@@ -1,0 +1,178 @@
+{
+  "document_id": "DSHA-P49-BASELINE-LOCK",
+  "generated_at": "2026-10-19T10:00:00+00:00",
+  "baseline_commit": "19e80cb",
+  "branch": "feature/v88-g1",
+  "token": "DSHA-P49-PREP-TOKEN",
+  "status": "LOCKED",
+  "description": "P49原版回测结果锁定快照 — 作为对照组基线, 不可修改",
+
+  "lock_scope": {
+    "original_csv": {
+      "path": "output_sample/wdf_sample_metals_long.csv",
+      "sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+      "rows": 7362,
+      "immutable": true,
+      "note": "DSHC-F01采集产物, 不可修改"
+    },
+    "backtest_metrics": {
+      "path": "artifacts/p49_backtest/backtest_metrics.json",
+      "report_id": "DSHA-P49-20261019_103451",
+      "immutable": true,
+      "note": "P49原版回测结果, 对照基线"
+    },
+    "pipeline_metadata": {
+      "path": "artifacts/p49_backtest/pipeline_metadata.json",
+      "immutable": true
+    },
+    "symbol_performance": {
+      "path": "artifacts/p49_backtest/symbol_performance.csv",
+      "immutable": true
+    }
+  },
+
+  "locked_portfolio_metrics": {
+    "symbols_run": 6,
+    "total_return_avg": -0.376868,
+    "total_return_median": -0.250829,
+    "sharpe_avg": -1.297965,
+    "sharpe_median": -1.322666,
+    "max_drawdown_avg": -0.420961,
+    "max_drawdown_worst": -0.828087,
+    "win_rate_avg": 0.446818,
+    "profit_loss_ratio_avg": 0.919272
+  },
+
+  "locked_per_symbol_metrics": {
+    "CU.SHF": {
+      "total_return": -0.15959,
+      "sharpe_ratio": -0.54305,
+      "max_drawdown": -0.22853,
+      "win_rate": 0.462312,
+      "profit_loss_ratio": 1.046151,
+      "trade_count": 92,
+      "final_capital": 840410.24
+    },
+    "ZN.SHF": {
+      "total_return": -0.187399,
+      "sharpe_ratio": -0.815932,
+      "max_drawdown": -0.278498,
+      "win_rate": 0.454774,
+      "profit_loss_ratio": 1.034065,
+      "trade_count": 114,
+      "final_capital": 812601.01
+    },
+    "AL.SHF": {
+      "total_return": -0.189542,
+      "sharpe_ratio": -0.776124,
+      "max_drawdown": -0.246869,
+      "win_rate": 0.472362,
+      "profit_loss_ratio": 0.943936,
+      "trade_count": 78,
+      "final_capital": 810458.14
+    },
+    "PB.SHF": {
+      "total_return": -0.312116,
+      "sharpe_ratio": -1.948448,
+      "max_drawdown": -0.320377,
+      "win_rate": 0.404523,
+      "profit_loss_ratio": 0.973126,
+      "trade_count": 142,
+      "final_capital": 687883.51
+    },
+    "NI.SHF": {
+      "total_return": -0.599941,
+      "sharpe_ratio": -1.829399,
+      "max_drawdown": -0.623406,
+      "win_rate": 0.452261,
+      "profit_loss_ratio": 0.778974,
+      "trade_count": 107,
+      "final_capital": 400059.11
+    },
+    "SN.SHF": {
+      "total_return": -0.812619,
+      "sharpe_ratio": -1.874839,
+      "max_drawdown": -0.828087,
+      "win_rate": 0.434673,
+      "profit_loss_ratio": 0.739378,
+      "trade_count": 109,
+      "final_capital": 187380.58
+    }
+  },
+
+  "locked_strategy_config": {
+    "strategy": "multi_factor_composite_momentum",
+    "factors_used": ["momentum_20d", "spread_cs", "oi_momentum_7d"],
+    "signal_weights": [1/3, 1/3, 1/3],
+    "normalization": "zscore",
+    "signal_formula": "signal = (momentum_norm + spread_norm + oi_momentum_norm) / 3",
+    "position_strategy": "full",
+    "position_rule": "signal>0→Long(+1), signal<0→Short(-1), signal=0→Flat(0)",
+    "rebalance_frequency": "daily",
+    "transaction_cost": 0.0005,
+    "initial_capital": 1000000.0,
+    "trading_days_per_year": 252,
+    "momentum_window": 20,
+    "oi_momentum_window": 7,
+    "rolling_window": 60
+  },
+
+  "locked_data_provenance": {
+    "source_csv": "wdf_sample_metals_long.csv",
+    "source_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+    "source_rows": 7362,
+    "symbols": ["AL.SHF", "CU.SHF", "NI.SHF", "PB.SHF", "SN.SHF", "ZN.SHF"],
+    "indicators": ["CLOSE", "OI", "SETTLE", "VOL"],
+    "date_range": "2025-01-02 ~ 2026-10-19",
+    "trading_days": 400,
+    "data_source_tag": "WDF-GUI-F01",
+    "exchange": "上期所 (SHFE)",
+    "vol_status": "162 rows, 0% overlap with CLOSE, 0 effective after alignment"
+  },
+
+  "integrity_verification": {
+    "csv_sha256_match": true,
+    "csv_rows_match": true,
+    "csv_size_bytes": 285191,
+    "metrics_json_exists": true,
+    "metrics_report_id": "DSHA-P49-20261019_103451",
+    "symbol_csv_exists": true,
+    "pipeline_metadata_exists": true,
+    "all_artifacts_present": true
+  },
+
+  "mutation_protection": {
+    "git_tag": "p49-baseline-lock",
+    "read_only_artifacts": [
+      "artifacts/p49_backtest/backtest_metrics.json",
+      "artifacts/p49_backtest/pipeline_metadata.json",
+      "artifacts/p49_backtest/symbol_performance.csv",
+      "artifacts/p49_backtest/symbol_performance.md",
+      "artifacts/p49_backtest/backtest_report.pdf",
+      "artifacts/p49_backtest/p49_full_review.md",
+      "output_sample/wdf_sample_metals_long.csv"
+    ],
+    "verification_script": "python3 -c \"import json,hashlib; d=json.load(open('artifacts/p49_backtest/backtest_metrics.json')); assert d['report_id']=='DSHA-P49-20261019_103451'; assert d['backtest_results']['portfolio_metrics']['total_return_avg']==-0.376868; print('BASELINE_LOCK_INTEGRITY_OK')\""
+  },
+
+  "comparison_reference": {
+    "description": "后续实验组对照时, 使用以下锁定值作为比较基准",
+    "primary_metrics": {
+      "total_return_avg": -0.376868,
+      "sharpe_avg": -1.297965,
+      "max_drawdown_avg": -0.420961,
+      "win_rate_avg": 0.446818,
+      "profit_loss_ratio_avg": 0.919272
+    },
+    "improvement_formula": {
+      "return_improvement": "experiment_return - (-0.376868)",
+      "sharpe_improvement": "experiment_sharpe - (-1.297965)",
+      "drawdown_reduction": "experiment_drawdown - (-0.420961)",
+      "win_rate_improvement": "experiment_winrate - 0.446818"
+    }
+  },
+
+  "lock_timestamp": "2026-10-19T10:00:00+00:00",
+  "locked_by": "DSHA-P49-PREP",
+  "lock_purpose": "固定对照组基线, 确保实验组回测结果可对比、可复现、可审计"
+}

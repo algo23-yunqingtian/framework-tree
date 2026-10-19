@@ -1,0 +1,205 @@
+{
+  "document_id": "DSHA-P49-PREP-OPT-PARAMS",
+  "generated_at": "2026-10-19",
+  "baseline": "feature/v88-g1 HEAD=19e80cb",
+  "token": "DSHA-P49-PREP-TOKEN",
+  "status": "PREPARED",
+  "description": "仓位管理与调仓频率5套备选参数集 (对应复盘TODO-02子任务2.5-2.9)",
+
+  "baseline_reference": {
+    "label": "P49原版 (当前基线)",
+    "position_strategy": "full",
+    "rebalance_frequency": "daily",
+    "signal_threshold": 0.0,
+    "transaction_cost": 0.0005,
+    "initial_capital": 1000000.0,
+    "result_metrics": {
+      "total_return_avg": -0.376868,
+      "sharpe_avg": -1.297965,
+      "max_drawdown_avg": -0.420961,
+      "win_rate_avg": 0.446818,
+      "profit_loss_ratio_avg": 0.919272,
+      "avg_trade_count": 107
+    }
+  },
+
+  "param_sets": [
+    {
+      "id": "set_A_conservative",
+      "label": "A: 保守型 — 周度调仓 + 信号阈值0.3",
+      "category": "调仓频率优化",
+      "description": "最小改动: 降低交易频率, 过滤弱信号, 减少成本侵蚀",
+      "changes_from_baseline": {
+        "rebalance_frequency": {"from": "daily", "to": "weekly"},
+        "signal_threshold": {"from": 0.0, "to": 0.3}
+      },
+      "position_strategy": "full",
+      "rebalance_frequency": "weekly",
+      "signal_threshold": 0.3,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0,
+      "expected_effect": {
+        "trade_reduction": "40-60%",
+        "cost_reduction": "40-60%",
+        "signal_noise_reduction": "中等",
+        "return_improvement": "不确定, 需回测验证"
+      },
+      "risk": "低 — 仅减少交易次数, 不改变信号逻辑",
+      "priority": "🟡 P1",
+      "recommendation": "⭐ 推荐作为第一版优化"
+    },
+    {
+      "id": "set_B_vol_target",
+      "label": "B: 波动率目标 — 15%目标波动 + 周度调仓",
+      "category": "仓位管理优化",
+      "description": "动态仓位: 高波动期降低仓位, 低波动期提高仓位, 实现等风险预算",
+      "changes_from_baseline": {
+        "position_strategy": {"from": "full", "to": "vol_target"},
+        "target_vol": {"from": null, "to": 0.15},
+        "max_single_weight": {"from": 1.0, "to": 0.50},
+        "rebalance_frequency": {"from": "daily", "to": "weekly"}
+      },
+      "position_strategy": "vol_target",
+      "target_vol": 0.15,
+      "max_single_weight": 0.50,
+      "rebalance_frequency": "weekly",
+      "signal_threshold": 0.0,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0,
+      "expected_effect": {
+        "drawdown_reduction": "30-50%",
+        "return_volatility": "降低",
+        "return_improvement": "不确定, 需回测验证",
+        "cost_reduction": "20-40% (周度调仓)"
+      },
+      "risk": "中 — 波动率估计误差可能导致仓位过大/过小",
+      "priority": "🟡 P1",
+      "recommendation": "⭐ 推荐作为第二版优化"
+    },
+    {
+      "id": "set_C_drawdown_stop",
+      "label": "C: 回撤控制 — 20%清仓 + 10%减半",
+      "category": "仓位管理优化",
+      "description": "硬性止损: 回撤超10%仓位减半, 超20%全部清仓, 保护本金",
+      "changes_from_baseline": {
+        "position_strategy": {"from": "full", "to": "drawdown_stop"},
+        "drawdown_stop": {"from": null, "to": {"warn": -0.10, "halt": -0.20}},
+        "rebalance_frequency": {"from": "daily", "to": "daily"}
+      },
+      "position_strategy": "drawdown_stop",
+      "drawdown_stop": {
+        "warn": -0.10,
+        "halt": -0.20,
+        "description": "回撤超-10%仓位减半, 超-20%清仓"
+      },
+      "rebalance_frequency": "daily",
+      "signal_threshold": 0.0,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0,
+      "expected_effect": {
+        "max_drawdown_reduction": "50-70% (预期从-42%降至-15~-21%)",
+        "return_impact": "可能降低 (清仓后错过反弹)",
+        "capital_preservation": "高 — 硬性保护本金"
+      },
+      "risk": "中 — 清仓后如果市场反弹, 错过收益",
+      "priority": "🟡 P1",
+      "recommendation": "⭐ 推荐与B组合使用"
+    },
+    {
+      "id": "set_D_biweekly_threshold",
+      "label": "D: 低频增强 — 双周调仓 + 信号阈值0.5",
+      "category": "调仓频率优化",
+      "description": "更激进的频率降低: 每两周评估一次, 仅交易强信号",
+      "changes_from_baseline": {
+        "rebalance_frequency": {"from": "daily", "to": "biweekly"},
+        "signal_threshold": {"from": 0.0, "to": 0.5}
+      },
+      "position_strategy": "full",
+      "rebalance_frequency": "biweekly",
+      "signal_threshold": 0.5,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0,
+      "expected_effect": {
+        "trade_reduction": "60-80%",
+        "cost_reduction": "60-80%",
+        "signal_noise_reduction": "高 — 仅保留最强信号",
+        "return_improvement": "不确定, 可能错过部分机会"
+      },
+      "risk": "中 — 阈值0.5可能过滤掉过多信号",
+      "priority": "🟢 P2",
+      "recommendation": "激进方案, 适合信号质量高时使用"
+    },
+    {
+      "id": "set_E_combined",
+      "label": "E: 组合最优 — 波动率目标 + 回撤控制 + 周度调仓 + 阈值0.3",
+      "category": "综合优化",
+      "description": "全部优化叠加: 波动率目标仓位 + 回撤控制 + 周度调仓 + 信号阈值过滤",
+      "changes_from_baseline": {
+        "position_strategy": {"from": "full", "to": "vol_target_drawdown"},
+        "target_vol": {"from": null, "to": 0.15},
+        "max_single_weight": {"from": 1.0, "to": 0.50},
+        "drawdown_stop": {"from": null, "to": {"warn": -0.10, "halt": -0.20}},
+        "rebalance_frequency": {"from": "daily", "to": "weekly"},
+        "signal_threshold": {"from": 0.0, "to": 0.3}
+      },
+      "position_strategy": "vol_target",
+      "target_vol": 0.15,
+      "max_single_weight": 0.50,
+      "drawdown_stop": {
+        "warn": -0.10,
+        "halt": -0.20
+      },
+      "rebalance_frequency": "weekly",
+      "signal_threshold": 0.3,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0,
+      "expected_effect": {
+        "trade_reduction": "50-70%",
+        "cost_reduction": "50-70%",
+        "drawdown_reduction": "40-60%",
+        "return_improvement": "不确定, 需回测验证",
+        "capital_preservation": "高"
+      },
+      "risk": "高 — 多层规则可能冲突 (如波动率目标仓位与回撤清仓同时触发)",
+      "priority": "🟢 P2",
+      "recommendation": "全面方案, 需回测验证各规则协同效果"
+    }
+  ],
+
+  "comparison_matrix": {
+    "description": "5套参数集对比矩阵",
+    "columns": ["参数", "基线", "A-保守", "B-波动目标", "C-回撤控制", "D-低频增强", "E-组合最优"],
+    "rows": [
+      {"param": "调仓频率", "baseline": "daily", "A": "weekly", "B": "weekly", "C": "daily", "D": "biweekly", "E": "weekly"},
+      {"param": "信号阈值", "baseline": 0.0, "A": 0.3, "B": 0.0, "C": 0.0, "D": 0.5, "E": 0.3},
+      {"param": "仓位策略", "baseline": "full", "A": "full", "B": "vol_target", "C": "drawdown_stop", "D": "full", "E": "vol_target+drawdown_stop"},
+      {"param": "目标波动率", "baseline": null, "A": null, "B": 0.15, "C": null, "D": null, "E": 0.15},
+      {"param": "单品种权重上限", "baseline": 1.0, "A": 1.0, "B": 0.50, "C": 1.0, "D": 1.0, "E": 0.50},
+      {"param": "回撤止损(减半)", "baseline": null, "A": null, "B": null, "C": -0.10, "D": null, "E": -0.10},
+      {"param": "回撤止损(清仓)", "baseline": null, "A": null, "B": null, "C": -0.20, "D": null, "E": -0.20},
+      {"param": "预期交易次数", "baseline": "~107/年", "A": "~50-60", "B": "~50-60", "C": "~107", "D": "~20-30", "E": "~30-40"},
+      {"param": "预期成本占比", "baseline": "5.35%", "A": "2.5-3.5%", "B": "2.5-3.5%", "C": "5.35%", "D": "1.0-1.5%", "E": "1.5-2.5%"},
+      {"param": "风险等级", "baseline": "—", "A": "低", "B": "中", "C": "中", "D": "中", "E": "高"},
+      {"param": "优先级", "baseline": "—", "A": "🟡 P1", "B": "🟡 P1", "C": "🟡 P1", "D": "🟢 P2", "E": "🟢 P2"}
+    ]
+  },
+
+  "implementation_notes": {
+    "vol_target_formula": "weight = clip(target_vol / realized_vol_20d, 0, max_single_weight)",
+    "drawdown_stop_formula": "if dd < halt_level: position=0; elif dd < warn_level: position *= 0.5",
+    "weekly_rebalance": "每5个交易日更新仓位, 其他日期保持上次仓位",
+    "biweekly_rebalance": "每10个交易日更新仓位, 其他日期保持上次仓位",
+    "signal_threshold_formula": "if signal > threshold: Long(+1); elif signal < -threshold: Short(-1); else: Flat(0)",
+    "combined_rule_precedence": "1. signal→position; 2. apply threshold; 3. apply rebalance freq; 4. apply vol target; 5. apply drawdown stop (last override)",
+    "pipeline_v2_support": "所有参数集已通过 pipeline_v2_draft.py 的 apply_position_management() 和 apply_rebalance_frequency() 接口支持"
+  },
+
+  "activation_prerequisites": [
+    "✅ factor_candidate_list.md 因子定义完成",
+    "✅ pipeline_v2_draft.py 接口定义完成",
+    "✅ comparison_framework.md 对照框架完成",
+    "⏳ FACTOR_EXTRACT_V1 Skill就绪 (VolatilityFactorExtractor实现)",
+    "⏳ DSHC VOL数据修复完成 (TODO-01)",
+    "⏳ comparison_config.json 实验组配置填充"
+  ]
+}
