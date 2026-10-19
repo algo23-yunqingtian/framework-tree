@@ -765,5 +765,93 @@
     },
     "config_frozen": true,
     "readonly_locked": true
+  },
+  "factor_op_update": {
+    "update_id": "DSHA-TASK043-FACTOR-OP",
+    "updated_at": "2026-10-19T15:41:27.725203+00:00",
+    "token": "DSHA-TASK043-FACTOR-OP-TOKEN",
+    "task": "DSHA-TASK043-FACTOR-OP",
+    "execution_type": "daily_operational",
+    "baseline_commit": "73b0e32",
+    "p1_prod_guard": {
+      "config_readonly_verified": true,
+      "daily_perf_zero_drift": true,
+      "file_checksum_ok": true,
+      "backtest_results": {
+        "total_return": 0.186733,
+        "annualized_return": 0.105282,
+        "annual_volatility": 0.036168,
+        "daily_volatility": 0.002278,
+        "max_drawdown": -0.017102,
+        "sharpe_ratio": 2.910945,
+        "calmar_ratio": 6.155973,
+        "win_rate": 0.422274,
+        "avg_win": 0.002157,
+        "avg_loss": 0.001335,
+        "profit_loss_ratio": 1.61592,
+        "trade_count": 251,
+        "total_trades": 251,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1186732.8,
+        "total_transaction_cost": 0.008798,
+        "cost_ratio": 0.047118
+      },
+      "zero_drift_checks": {
+        "total_return": {
+          "actual": 0.186733,
+          "target": 0.186733,
+          "diff": 0.0,
+          "passed": true
+        },
+        "sharpe_ratio": {
+          "actual": 2.910945,
+          "target": 2.910945,
+          "diff": 0.0,
+          "passed": true
+        },
+        "max_drawdown": {
+          "actual": -0.017102,
+          "target": -0.017102,
+          "diff": 0.0,
+          "passed": true
+        }
+      }
+    },
+    "p2_rolling_ic": {
+      "export_path": "G7_ADJUDICATION_LEDGER\\rolling_ic_export.json",
+      "export_md5": "d413e54e2f20d6869c9ef471050f1def",
+      "export_sha256": "24b53df36b01a996ae62b10a0e425d5307f142e1bda8faf109b166e4af86e05d",
+      "total_factors": 8,
+      "window_days": 20,
+      "total_windows": 165,
+      "flip_rate_summary": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.6842,
+        "oi_change_1d": 0.55,
+        "oi_change_rate_7d": 0.55,
+        "oi_level": 0.6,
+        "realized_vol_20d": 0.6316,
+        "spread_cs": 0.55,
+        "vol_regime_change": 0.7368
+      },
+      "alarm_factors": [
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change"
+      ],
+      "file_checksum_ok": true
+    },
+    "safety": {
+      "real_wind_call": false,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED"
+    }
   }
 }
