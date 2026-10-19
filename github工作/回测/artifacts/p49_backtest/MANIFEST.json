@@ -1,0 +1,143 @@
+{
+  "archive_id": "DSHA-P49-20261019_103457",
+  "created_at": "2026-10-19T02:34:57.462742+00:00",
+  "agent": "DSHA-P49",
+  "token": "DSHA-P49-TOKEN",
+  "token_status": "EXHAUSTED",
+  "release_permit": "ISSUED",
+  "gate": "READY",
+  "status": "BACKTEST_COMPLETE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "csv_not_modified": true,
+    "p68_params_not_modified": true,
+    "dshd_p81_not_interrupted": true,
+    "total_wind_api_calls": 0,
+    "network_requests_made": 0,
+    "offline_verified": true
+  },
+  "files": [
+    {
+      "type": "json",
+      "path": "backtest_metrics.json",
+      "description": "结构化回测指标"
+    },
+    {
+      "type": "pdf",
+      "path": "backtest_report.pdf",
+      "description": "PDF回测报告"
+    },
+    {
+      "type": "csv",
+      "path": "symbol_performance.csv",
+      "description": "品种分层绩效CSV"
+    },
+    {
+      "type": "md",
+      "path": "symbol_performance.md",
+      "description": "品种分层绩效MD"
+    },
+    {
+      "type": "json",
+      "path": "pipeline_metadata.json",
+      "description": "流水线元数据"
+    },
+    {
+      "type": "json",
+      "path": "MANIFEST.json",
+      "description": "归档清单"
+    }
+  ],
+  "pipeline_summary": {
+    "p0_baseline_locks": {
+      "csv_path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_long.csv",
+      "csv_exists": true,
+      "csv_size": 285191,
+      "csv_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+      "csv_writeable": true,
+      "csv_not_modified": true,
+      "p68_git_diff": "EMPTY",
+      "p68_params_ok": true,
+      "p81_monitor_running": true,
+      "wind_api_calls": 0,
+      "real_wind_call": false,
+      "p81_gate": "UNKNOWN",
+      "audit_log_age_seconds": 15,
+      "audit_log_recent": true,
+      "all_pass": true
+    },
+    "p1_1_load_validate": {
+      "rows": 7362,
+      "duplicates": 0,
+      "lc_excluded": 0
+    },
+    "p1_2_alignment": {
+      "aligned_rows": 2400,
+      "vol_treatment": "ffill_forward_after_alignment"
+    },
+    "p1_3_factors": {
+      "factor_count": 7
+    },
+    "p1_4_sample": {
+      "symbols": [
+        "CU.SHF",
+        "ZN.SHF",
+        "PB.SHF",
+        "AL.SHF",
+        "SN.SHF",
+        "NI.SHF"
+      ],
+      "rows_used": 2400,
+      "trading_days": 400
+    },
+    "p1_5_backtest": {
+      "strategy": "multi_factor_composite_momentum",
+      "factors_used": [
+        "momentum_20d",
+        "spread_cs",
+        "oi_momentum_7d"
+      ],
+      "initial_capital": 1000000.0,
+      "transaction_cost": 0.0005,
+      "rolling_window": 60,
+      "momentum_window": 20,
+      "oi_momentum_window": 7,
+      "trading_days_per_year": 252,
+      "portfolio_metrics": {
+        "symbols_run": 6,
+        "total_return_avg": -0.376868,
+        "total_return_median": -0.250829,
+        "sharpe_avg": -1.297965,
+        "sharpe_median": -1.322666,
+        "max_drawdown_avg": -0.420961,
+        "max_drawdown_worst": -0.828087,
+        "win_rate_avg": 0.446818,
+        "profit_loss_ratio_avg": 0.919272
+      }
+    },
+    "p1_6_metrics": "OUTPUT: backtest_metrics.json + backtest_report.pdf",
+    "p1_7_performance": "OUTPUT: symbol_performance.csv + symbol_performance.md",
+    "p1_8_offline": {
+      "real_wind_call": false,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "csv_not_modified": true,
+      "p68_params_not_modified": true,
+      "dshd_p81_not_interrupted": true,
+      "total_wind_api_calls": 0,
+      "network_requests_made": 0,
+      "offline_verified": true
+    },
+    "p1_9_archive": "COMPLETE"
+  },
+  "receipt": {
+    "DSHA_P49": "BACKTEST_COMPLETE",
+    "symbols_run": 6,
+    "rows_used": 7362,
+    "LC_GFE": "SKIPPED",
+    "offline_only": true,
+    "wind_api_calls": 0
+  }
+}

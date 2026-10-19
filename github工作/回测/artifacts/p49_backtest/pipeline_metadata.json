@@ -1,0 +1,258 @@
+{
+  "p0": {
+    "csv_path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_long.csv",
+    "csv_exists": true,
+    "csv_size": 285191,
+    "csv_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+    "csv_writeable": true,
+    "csv_not_modified": true,
+    "p68_git_diff": "EMPTY",
+    "p68_params_ok": true,
+    "p81_monitor_running": true,
+    "wind_api_calls": 0,
+    "real_wind_call": false,
+    "p81_gate": "UNKNOWN",
+    "audit_log_age_seconds": 15,
+    "audit_log_recent": true,
+    "all_pass": true
+  },
+  "p1_1": {
+    "total_rows": 7362,
+    "columns_ok": true,
+    "lc_excluded_rows": 0,
+    "duplicate_keys": 0,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "NI.SHF",
+      "PB.SHF",
+      "SN.SHF",
+      "ZN.SHF"
+    ],
+    "symbol_count": 6,
+    "indicators": [
+      "CLOSE",
+      "OI",
+      "SETTLE",
+      "VOL"
+    ],
+    "indicator_counts": {
+      "CLOSE": 2400,
+      "OI": 2400,
+      "SETTLE": 2400,
+      "VOL": 162
+    },
+    "null_values": 0,
+    "date_min": "2025-01-02",
+    "date_max": "2026-10-19",
+    "date_count": 427,
+    "sources": [
+      "WDF-GUI"
+    ],
+    "data_source_tag": "WDF-GUI-F01"
+  },
+  "p1_2": {
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "NI.SHF",
+      "PB.SHF",
+      "SN.SHF",
+      "ZN.SHF"
+    ],
+    "trading_days": 400,
+    "total_aligned_rows": 2400,
+    "effective_rows": {
+      "close": 2400,
+      "oi": 2400,
+      "settle": 2400,
+      "vol": 0
+    },
+    "per_symbol_alignment": {
+      "AL.SHF": {
+        "total_dates": 400,
+        "close_present": 400,
+        "oi_present": 400,
+        "settle_present": 400,
+        "vol_present": 0,
+        "vol_null": 400,
+        "vol_ratio": 0.0
+      },
+      "CU.SHF": {
+        "total_dates": 400,
+        "close_present": 400,
+        "oi_present": 400,
+        "settle_present": 400,
+        "vol_present": 0,
+        "vol_null": 400,
+        "vol_ratio": 0.0
+      },
+      "NI.SHF": {
+        "total_dates": 400,
+        "close_present": 400,
+        "oi_present": 400,
+        "settle_present": 400,
+        "vol_present": 0,
+        "vol_null": 400,
+        "vol_ratio": 0.0
+      },
+      "PB.SHF": {
+        "total_dates": 400,
+        "close_present": 400,
+        "oi_present": 400,
+        "settle_present": 400,
+        "vol_present": 0,
+        "vol_null": 400,
+        "vol_ratio": 0.0
+      },
+      "SN.SHF": {
+        "total_dates": 400,
+        "close_present": 400,
+        "oi_present": 400,
+        "settle_present": 400,
+        "vol_present": 0,
+        "vol_null": 400,
+        "vol_ratio": 0.0
+      },
+      "ZN.SHF": {
+        "total_dates": 400,
+        "close_present": 400,
+        "oi_present": 400,
+        "settle_present": 400,
+        "vol_present": 0,
+        "vol_null": 400,
+        "vol_ratio": 0.0
+      }
+    },
+    "vol_treatment": "ffill_forward_after_alignment",
+    "excluded_symbols": [
+      "LC.SHF",
+      "LC.GFE"
+    ]
+  },
+  "p1_3": {
+    "factor_definitions": {
+      "spread_cs": "CLOSE - SETTLE 价差 (元)",
+      "oi_level": "持仓量水平 (手)",
+      "oi_change_1d": "持仓量日变化 (手)",
+      "oi_change_rate_7d": "持仓量7日变化率",
+      "spread_pct": "价差率 (CLOSE-SETTLE)/CLOSE*100",
+      "contract_switch_flag": "主力合约切换标记 (OI突变阈值)",
+      "momentum_20d": "20日价格动量 (收盘价变化率)"
+    },
+    "factor_count": 7,
+    "per_symbol": {
+      "AL.SHF": {
+        "spread_cs_present": 400,
+        "oi_level_present": 400,
+        "spread_pct_present": 400,
+        "contract_switch_flags": 362,
+        "momentum_20d_present": 380,
+        "vol_present": 0,
+        "rows": 400
+      },
+      "CU.SHF": {
+        "spread_cs_present": 400,
+        "oi_level_present": 400,
+        "spread_pct_present": 400,
+        "contract_switch_flags": 362,
+        "momentum_20d_present": 380,
+        "vol_present": 0,
+        "rows": 400
+      },
+      "NI.SHF": {
+        "spread_cs_present": 400,
+        "oi_level_present": 400,
+        "spread_pct_present": 400,
+        "contract_switch_flags": 343,
+        "momentum_20d_present": 380,
+        "vol_present": 0,
+        "rows": 400
+      },
+      "PB.SHF": {
+        "spread_cs_present": 400,
+        "oi_level_present": 400,
+        "spread_pct_present": 400,
+        "contract_switch_flags": 370,
+        "momentum_20d_present": 380,
+        "vol_present": 0,
+        "rows": 400
+      },
+      "SN.SHF": {
+        "spread_cs_present": 400,
+        "oi_level_present": 400,
+        "spread_pct_present": 400,
+        "contract_switch_flags": 368,
+        "momentum_20d_present": 380,
+        "vol_present": 0,
+        "rows": 400
+      },
+      "ZN.SHF": {
+        "spread_cs_present": 400,
+        "oi_level_present": 400,
+        "spread_pct_present": 400,
+        "contract_switch_flags": 373,
+        "momentum_20d_present": 380,
+        "vol_present": 0,
+        "rows": 400
+      }
+    },
+    "note": "跨期价差以CLOSE-SETTLE价差率代理; 主力合约切换以OI突变代理"
+  },
+  "p1_4": {
+    "date_range": "2025-01-02 ~ 2026-10-19",
+    "symbols": [
+      "CU.SHF",
+      "ZN.SHF",
+      "PB.SHF",
+      "AL.SHF",
+      "SN.SHF",
+      "NI.SHF"
+    ],
+    "symbols_in_sample": 6,
+    "trading_days": 400,
+    "rows_used": 2400,
+    "excluded_symbols": [
+      "LC.SHF",
+      "LC.GFE"
+    ],
+    "data_source": "WDF-GUI-F01",
+    "exchange": "上期所"
+  },
+  "p1_5": {
+    "strategy": "multi_factor_composite_momentum",
+    "factors_used": [
+      "momentum_20d",
+      "spread_cs",
+      "oi_momentum_7d"
+    ],
+    "initial_capital": 1000000.0,
+    "transaction_cost": 0.0005,
+    "rolling_window": 60,
+    "momentum_window": 20,
+    "oi_momentum_window": 7,
+    "trading_days_per_year": 252,
+    "portfolio_metrics": {
+      "symbols_run": 6,
+      "total_return_avg": -0.376868,
+      "total_return_median": -0.250829,
+      "sharpe_avg": -1.297965,
+      "sharpe_median": -1.322666,
+      "max_drawdown_avg": -0.420961,
+      "max_drawdown_worst": -0.828087,
+      "win_rate_avg": 0.446818,
+      "profit_loss_ratio_avg": 0.919272
+    }
+  },
+  "p1_8": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "csv_not_modified": true,
+    "p68_params_not_modified": true,
+    "dshd_p81_not_interrupted": true,
+    "total_wind_api_calls": 0,
+    "network_requests_made": 0,
+    "offline_verified": true
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "report_id": "DSHA-P49-20261019_103451",
+  "report_type": "metal_multi_factor_backtest",
+  "agent": "DSHA-P49",
+  "created_at": "2026-10-19T02:34:51.528066+00:00",
+  "status": "BACKTEST_COMPLETE",
+  "token": "DSHA-P49-TOKEN",
+  "token_status": "EXHAUSTED",
+  "release_permit": "ISSUED",
+  "gate": "READY",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "csv_not_modified": true,
+    "p68_params_not_modified": true,
+    "dshd_p81_not_interrupted": true
+  },
+  "p0_baseline_locks": {
+    "csv_path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_long.csv",
+    "csv_exists": true,
+    "csv_size": 285191,
+    "csv_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+    "csv_writeable": true,
+    "csv_not_modified": true,
+    "p68_git_diff": "EMPTY",
+    "p68_params_ok": true,
+    "p81_monitor_running": true,
+    "wind_api_calls": 0,
+    "real_wind_call": false,
+    "p81_gate": "UNKNOWN",
+    "audit_log_age_seconds": 15,
+    "audit_log_recent": true,
+    "all_pass": true
+  },
+  "data_provenance": {
+    "source_csv": "wdf_sample_metals_long.csv",
+    "source_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+    "source_rows": 7362,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "NI.SHF",
+      "PB.SHF",
+      "SN.SHF",
+      "ZN.SHF"
+    ],
+    "indicators": [
+      "CLOSE",
+      "OI",
+      "SETTLE",
+      "VOL"
+    ],
+    "date_range": "2025-01-02 ~ 2026-10-19",
+    "data_source_tag": "WDF-GUI-F01",
+    "exchange": "上期所 (SHFE)"
+  },
+  "pipeline_steps": {
+    "p1_1_load_validate": {
+      "rows_loaded": 7362,
+      "duplicate_keys": 0,
+      "lc_excluded": 0,
+      "validation_pass": true
+    },
+    "p1_2_symbol_alignment": {
+      "total_aligned_rows": 2400,
+      "effective_rows": {
+        "close": 2400,
+        "oi": 2400,
+        "settle": 2400,
+        "vol": 0
+      },
+      "vol_treatment": "ffill_forward_after_alignment",
+      "per_symbol": {
+        "AL.SHF": {
+          "total_dates": 400,
+          "close_present": 400,
+          "oi_present": 400,
+          "settle_present": 400,
+          "vol_present": 0,
+          "vol_null": 400,
+          "vol_ratio": 0.0
+        },
+        "CU.SHF": {
+          "total_dates": 400,
+          "close_present": 400,
+          "oi_present": 400,
+          "settle_present": 400,
+          "vol_present": 0,
+          "vol_null": 400,
+          "vol_ratio": 0.0
+        },
+        "NI.SHF": {
+          "total_dates": 400,
+          "close_present": 400,
+          "oi_present": 400,
+          "settle_present": 400,
+          "vol_present": 0,
+          "vol_null": 400,
+          "vol_ratio": 0.0
+        },
+        "PB.SHF": {
+          "total_dates": 400,
+          "close_present": 400,
+          "oi_present": 400,
+          "settle_present": 400,
+          "vol_present": 0,
+          "vol_null": 400,
+          "vol_ratio": 0.0
+        },
+        "SN.SHF": {
+          "total_dates": 400,
+          "close_present": 400,
+          "oi_present": 400,
+          "settle_present": 400,
+          "vol_present": 0,
+          "vol_null": 400,
+          "vol_ratio": 0.0
+        },
+        "ZN.SHF": {
+          "total_dates": 400,
+          "close_present": 400,
+          "oi_present": 400,
+          "settle_present": 400,
+          "vol_present": 0,
+          "vol_null": 400,
+          "vol_ratio": 0.0
+        }
+      }
+    },
+    "p1_3_factor_generation": {
+      "factors_generated": 7,
+      "factor_definitions": {
+        "spread_cs": "CLOSE - SETTLE 价差 (元)",
+        "oi_level": "持仓量水平 (手)",
+        "oi_change_1d": "持仓量日变化 (手)",
+        "oi_change_rate_7d": "持仓量7日变化率",
+        "spread_pct": "价差率 (CLOSE-SETTLE)/CLOSE*100",
+        "contract_switch_flag": "主力合约切换标记 (OI突变阈值)",
+        "momentum_20d": "20日价格动量 (收盘价变化率)"
+      },
+      "per_symbol": {
+        "AL.SHF": {
+          "spread_cs_present": 400,
+          "oi_level_present": 400,
+          "spread_pct_present": 400,
+          "contract_switch_flags": 362,
+          "momentum_20d_present": 380,
+          "vol_present": 0,
+          "rows": 400
+        },
+        "CU.SHF": {
+          "spread_cs_present": 400,
+          "oi_level_present": 400,
+          "spread_pct_present": 400,
+          "contract_switch_flags": 362,
+          "momentum_20d_present": 380,
+          "vol_present": 0,
+          "rows": 400
+        },
+        "NI.SHF": {
+          "spread_cs_present": 400,
+          "oi_level_present": 400,
+          "spread_pct_present": 400,
+          "contract_switch_flags": 343,
+          "momentum_20d_present": 380,
+          "vol_present": 0,
+          "rows": 400
+        },
+        "PB.SHF": {
+          "spread_cs_present": 400,
+          "oi_level_present": 400,
+          "spread_pct_present": 400,
+          "contract_switch_flags": 370,
+          "momentum_20d_present": 380,
+          "vol_present": 0,
+          "rows": 400
+        },
+        "SN.SHF": {
+          "spread_cs_present": 400,
+          "oi_level_present": 400,
+          "spread_pct_present": 400,
+          "contract_switch_flags": 368,
+          "momentum_20d_present": 380,
+          "vol_present": 0,
+          "rows": 400
+        },
+        "ZN.SHF": {
+          "spread_cs_present": 400,
+          "oi_level_present": 400,
+          "spread_pct_present": 400,
+          "contract_switch_flags": 373,
+          "momentum_20d_present": 380,
+          "vol_present": 0,
+          "rows": 400
+        }
+      }
+    },
+    "p1_4_portfolio_sample": {
+      "symbols": [
+        "CU.SHF",
+        "ZN.SHF",
+        "PB.SHF",
+        "AL.SHF",
+        "SN.SHF",
+        "NI.SHF"
+      ],
+      "trading_days": 400,
+      "rows_used": 2400,
+      "date_range": "2025-01-02 ~ 2026-10-19"
+    },
+    "p1_5_backtest": {
+      "strategy": "multi_factor_composite_momentum",
+      "factors_used": [
+        "momentum_20d",
+        "spread_cs",
+        "oi_momentum_7d"
+      ],
+      "initial_capital": 1000000.0,
+      "transaction_cost": 0.0005,
+      "rolling_window": 60,
+      "momentum_window": 20,
+      "oi_momentum_window": 7,
+      "trading_days_per_year": 252,
+      "portfolio_metrics": {
+        "symbols_run": 6,
+        "total_return_avg": -0.376868,
+        "total_return_median": -0.250829,
+        "sharpe_avg": -1.297965,
+        "sharpe_median": -1.322666,
+        "max_drawdown_avg": -0.420961,
+        "max_drawdown_worst": -0.828087,
+        "win_rate_avg": 0.446818,
+        "profit_loss_ratio_avg": 0.919272
+      }
+    }
+  },
+  "backtest_results": {
+    "portfolio_metrics": {
+      "symbols_run": 6,
+      "total_return_avg": -0.376868,
+      "total_return_median": -0.250829,
+      "sharpe_avg": -1.297965,
+      "sharpe_median": -1.322666,
+      "max_drawdown_avg": -0.420961,
+      "max_drawdown_worst": -0.828087,
+      "win_rate_avg": 0.446818,
+      "profit_loss_ratio_avg": 0.919272
+    },
+    "per_symbol": {
+      "AL.SHF": {
+        "symbol": "AL.SHF",
+        "total_return": -0.189542,
+        "annualized_return": -0.12459,
+        "annual_volatility": 0.160529,
+        "daily_volatility": 0.010112,
+        "max_drawdown": -0.246869,
+        "sharpe_ratio": -0.776124,
+        "calmar_ratio": -0.504683,
+        "win_rate": 0.472362,
+        "avg_win": 0.00651,
+        "avg_loss": 0.006896,
+        "profit_loss_ratio": 0.943936,
+        "trade_count": 78,
+        "total_trades": 78,
+        "n_periods": 398,
+        "start_date": "2025-01-02",
+        "end_date": "2026-08-26",
+        "trading_days": 398,
+        "initial_capital": 1000000.0,
+        "final_capital": 810458.14
+      },
+      "CU.SHF": {
+        "symbol": "CU.SHF",
+        "total_return": -0.15959,
+        "annualized_return": -0.104242,
+        "annual_volatility": 0.191957,
+        "daily_volatility": 0.012092,
+        "max_drawdown": -0.22853,
+        "sharpe_ratio": -0.54305,
+        "calmar_ratio": -0.456143,
+        "win_rate": 0.462312,
+        "avg_win": 0.008188,
+        "avg_loss": 0.007827,
+        "profit_loss_ratio": 1.046151,
+        "trade_count": 92,
+        "total_trades": 92,
+        "n_periods": 398,
+        "start_date": "2025-01-02",
+        "end_date": "2026-08-26",
+        "trading_days": 398,
+        "initial_capital": 1000000.0,
+        "final_capital": 840410.24
+      },
+      "NI.SHF": {
+        "symbol": "NI.SHF",
+        "total_return": -0.599941,
+        "annualized_return": -0.440141,
+        "annual_volatility": 0.240593,
+        "daily_volatility": 0.015156,
+        "max_drawdown": -0.623406,
+        "sharpe_ratio": -1.829399,
+        "calmar_ratio": -0.706026,
+        "win_rate": 0.452261,
+        "avg_win": 0.008937,
+        "avg_loss": 0.011472,
+        "profit_loss_ratio": 0.778974,
+        "trade_count": 107,
+        "total_trades": 107,
+        "n_periods": 398,
+        "start_date": "2025-01-02",
+        "end_date": "2026-08-26",
+        "trading_days": 398,
+        "initial_capital": 1000000.0,
+        "final_capital": 400059.11
+      },
+      "PB.SHF": {
+        "symbol": "PB.SHF",
+        "total_return": -0.312116,
+        "annualized_return": -0.210922,
+        "annual_volatility": 0.108251,
+        "daily_volatility": 0.006819,
+        "max_drawdown": -0.320377,
+        "sharpe_ratio": -1.948448,
+        "calmar_ratio": -0.658355,
+        "win_rate": 0.404523,
+        "avg_win": 0.005119,
+        "avg_loss": 0.005261,
+        "profit_loss_ratio": 0.973126,
+        "trade_count": 142,
+        "total_trades": 142,
+        "n_periods": 398,
+        "start_date": "2025-01-02",
+        "end_date": "2026-08-26",
+        "trading_days": 398,
+        "initial_capital": 1000000.0,
+        "final_capital": 687883.51
+      },
+      "SN.SHF": {
+        "symbol": "SN.SHF",
+        "total_return": -0.812619,
+        "annualized_return": -0.653651,
+        "annual_volatility": 0.348644,
+        "daily_volatility": 0.021962,
+        "max_drawdown": -0.828087,
+        "sharpe_ratio": -1.874839,
+        "calmar_ratio": -0.78935,
+        "win_rate": 0.434673,
+        "avg_win": 0.01198,
+        "avg_loss": 0.016203,
+        "profit_loss_ratio": 0.739378,
+        "trade_count": 109,
+        "total_trades": 109,
+        "n_periods": 398,
+        "start_date": "2025-01-02",
+        "end_date": "2026-08-26",
+        "trading_days": 398,
+        "initial_capital": 1000000.0,
+        "final_capital": 187380.58
+      },
+      "ZN.SHF": {
+        "symbol": "ZN.SHF",
+        "total_return": -0.187399,
+        "annualized_return": -0.123126,
+        "annual_volatility": 0.150902,
+        "daily_volatility": 0.009506,
+        "max_drawdown": -0.278498,
+        "sharpe_ratio": -0.815932,
+        "calmar_ratio": -0.442105,
+        "win_rate": 0.454774,
+        "avg_win": 0.007041,
+        "avg_loss": 0.006809,
+        "profit_loss_ratio": 1.034065,
+        "trade_count": 114,
+        "total_trades": 114,
+        "n_periods": 398,
+        "start_date": "2025-01-02",
+        "end_date": "2026-08-26",
+        "trading_days": 398,
+        "initial_capital": 1000000.0,
+        "final_capital": 812601.01
+      }
+    }
+  },
+  "factor_details": [
+    "momentum_20d",
+    "spread_cs",
+    "oi_momentum_7d"
+  ]
+}
