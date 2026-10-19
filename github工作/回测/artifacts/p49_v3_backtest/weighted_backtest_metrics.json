@@ -1,6 +1,6 @@
 {
   "manifest_id": "DSHA-P49-V3-FACTOR-WEIGHT-METRICS",
-  "generated_at": "2026-10-19T08:16:01.953306+00:00",
+  "generated_at": "2026-10-19T08:19:57.624773+00:00",
   "token": "DSHA-P49-V3-FACTOR-WEIGHT-TOKEN",
   "baseline_commit": "a011ba0",
   "status": "WEIGHT_OPTIMIZATION_COMPLETE",
@@ -19,45 +19,45 @@
     "description": "用4品种样本IC值作为权重, |IC|归一化到sum=1, 保留符号",
     "ic_values": {
       "contract_switch_flag": 0.0,
-      "momentum_20d": 0.03706,
-      "oi_change_1d": 0.00616,
-      "oi_change_rate_7d": 0.044248,
-      "oi_level": 0.038378,
-      "realized_vol_20d": 0.053897,
-      "spread_cs": -0.064899,
-      "vol_regime_change": 0.011865
+      "momentum_20d": -0.012427,
+      "oi_change_1d": -0.029155,
+      "oi_change_rate_7d": 0.008839,
+      "oi_level": 0.000973,
+      "realized_vol_20d": 0.005817,
+      "spread_cs": -0.090153,
+      "vol_regime_change": 0.026994
     },
     "ic_ir_values": {
       "contract_switch_flag": 0.0,
-      "momentum_20d": 0.821351,
-      "oi_change_1d": 0.154011,
-      "oi_change_rate_7d": 1.142341,
-      "oi_level": 0.850292,
-      "realized_vol_20d": 1.147314,
-      "spread_cs": -1.50836,
-      "vol_regime_change": 0.299238
+      "momentum_20d": -4.633849,
+      "oi_change_1d": -7.398079,
+      "oi_change_rate_7d": 4.885137,
+      "oi_level": 0.687767,
+      "realized_vol_20d": 3.882697,
+      "spread_cs": -12.739293,
+      "vol_regime_change": 9.922075
     },
     "effective_weights": {
-      "realized_vol_20d": 0.21011902209296435,
-      "oi_change_rate_7d": 0.1725021149520286,
-      "oi_level": 0.1496177492232181,
-      "momentum_20d": 0.1444794878892194,
-      "vol_regime_change": 0.046256047593243074,
-      "oi_change_1d": 0.024014939163453628,
-      "contract_switch_flag": 0.0,
-      "spread_cs": -0.2530106390858729
+      "contract_switch_flag": 0.0625,
+      "momentum_20d": 0.026863550855137128,
+      "oi_change_1d": -0.021106717214007975,
+      "oi_change_rate_7d": 0.08784727399947236,
+      "oi_level": 0.0652902361807316,
+      "realized_vol_20d": 0.0791811961596256,
+      "spread_cs": -0.1960284300118148,
+      "vol_regime_change": 0.13990969728948488
     },
     "abs_weights_sum_to_1": {
-      "realized_vol_20d": 0.210119,
-      "oi_change_rate_7d": 0.172502,
-      "oi_level": 0.149618,
-      "momentum_20d": 0.144479,
-      "vol_regime_change": 0.046256,
-      "oi_change_1d": 0.024015,
-      "contract_switch_flag": 0.0,
-      "spread_cs": 0.253011
+      "contract_switch_flag": 0.0625,
+      "momentum_20d": 0.098136,
+      "oi_change_1d": 0.146107,
+      "oi_change_rate_7d": 0.087847,
+      "oi_level": 0.06529,
+      "realized_vol_20d": 0.079181,
+      "spread_cs": 0.321028,
+      "vol_regime_change": 0.13991
     },
-    "total_abs_ic": 0.256507
+    "total_abs_ic": 0.174358
   },
   "scenarios": {
     "IC_weighted_4symbol": {
@@ -81,34 +81,34 @@
       ],
       "factor_count": 8,
       "weights": {
-        "realized_vol_20d": 0.21011902209296435,
-        "oi_change_rate_7d": 0.1725021149520286,
-        "oi_level": 0.1496177492232181,
-        "momentum_20d": 0.1444794878892194,
-        "vol_regime_change": 0.046256047593243074,
-        "oi_change_1d": 0.024014939163453628,
-        "contract_switch_flag": 0.0,
-        "spread_cs": -0.2530106390858729
+        "contract_switch_flag": 0.0625,
+        "momentum_20d": 0.026863550855137128,
+        "oi_change_1d": -0.021106717214007975,
+        "oi_change_rate_7d": 0.08784727399947236,
+        "oi_level": 0.0652902361807316,
+        "realized_vol_20d": 0.0791811961596256,
+        "spread_cs": -0.1960284300118148,
+        "vol_regime_change": 0.13990969728948488
       },
       "metrics": {
-        "total_return": -0.039148,
-        "annualized_return": -0.023079,
-        "annual_volatility": 0.038693,
-        "daily_volatility": 0.002437,
-        "max_drawdown": -0.07315,
-        "sharpe_ratio": -0.596463,
-        "calmar_ratio": -0.315499,
-        "win_rate": 0.415313,
-        "avg_win": 0.001826,
-        "avg_loss": 0.001894,
-        "profit_loss_ratio": 0.964178,
-        "trade_count": 290,
-        "total_trades": 290,
+        "total_return": -0.059561,
+        "annualized_return": -0.035268,
+        "annual_volatility": 0.031102,
+        "daily_volatility": 0.001959,
+        "max_drawdown": -0.069475,
+        "sharpe_ratio": -1.13394,
+        "calmar_ratio": -0.50763,
+        "win_rate": 0.264501,
+        "avg_win": 0.001616,
+        "avg_loss": 0.001913,
+        "profit_loss_ratio": 0.845017,
+        "trade_count": 192,
+        "total_trades": 192,
         "n_periods": 431,
         "initial_capital": 1000000.0,
-        "final_capital": 960852.2,
-        "total_transaction_cost": 0.008852,
-        "cost_ratio": 0.226121
+        "final_capital": 940439.03,
+        "total_transaction_cost": 0.004737,
+        "cost_ratio": 0.07953
       },
       "equity_timeline": [
         {
@@ -118,235 +118,235 @@
         },
         {
           "index": 14,
-          "equity": 1001301.38,
-          "drawdown": -0.000254
+          "equity": 999981.25,
+          "drawdown": -1.9e-05
         },
         {
           "index": 28,
-          "equity": 1001301.38,
-          "drawdown": -0.000254
+          "equity": 999981.25,
+          "drawdown": -1.9e-05
         },
         {
           "index": 42,
-          "equity": 999161.1,
-          "drawdown": -0.003663
+          "equity": 999981.25,
+          "drawdown": -1.9e-05
         },
         {
           "index": 56,
-          "equity": 996308.62,
-          "drawdown": -0.006508
+          "equity": 999981.25,
+          "drawdown": -1.9e-05
         },
         {
           "index": 70,
-          "equity": 994533.81,
-          "drawdown": -0.009153
+          "equity": 994002.84,
+          "drawdown": -0.005997
         },
         {
           "index": 84,
-          "equity": 996979.17,
-          "drawdown": -0.006717
+          "equity": 993592.31,
+          "drawdown": -0.006408
         },
         {
           "index": 98,
-          "equity": 1000095.0,
-          "drawdown": -0.003612
+          "equity": 993636.76,
+          "drawdown": -0.006363
         },
         {
           "index": 112,
-          "equity": 1005765.68,
-          "drawdown": -0.000366
+          "equity": 995215.03,
+          "drawdown": -0.004785
         },
         {
           "index": 126,
-          "equity": 999409.85,
-          "drawdown": -0.006683
+          "equity": 995215.03,
+          "drawdown": -0.004785
         },
         {
           "index": 140,
-          "equity": 981431.65,
-          "drawdown": -0.024551
+          "equity": 987105.95,
+          "drawdown": -0.014367
         },
         {
           "index": 154,
-          "equity": 990254.36,
-          "drawdown": -0.015782
+          "equity": 986403.23,
+          "drawdown": -0.015068
         },
         {
           "index": 168,
-          "equity": 984308.34,
-          "drawdown": -0.021692
+          "equity": 983993.0,
+          "drawdown": -0.017475
         },
         {
           "index": 182,
-          "equity": 980019.21,
-          "drawdown": -0.025955
+          "equity": 983425.54,
+          "drawdown": -0.018041
         },
         {
           "index": 196,
-          "equity": 976679.9,
-          "drawdown": -0.029274
+          "equity": 979054.77,
+          "drawdown": -0.022406
         },
         {
           "index": 210,
-          "equity": 984106.39,
-          "drawdown": -0.021893
+          "equity": 976673.26,
+          "drawdown": -0.024784
         },
         {
           "index": 224,
-          "equity": 992468.61,
-          "drawdown": -0.013582
+          "equity": 983367.38,
+          "drawdown": -0.0181
         },
         {
           "index": 238,
-          "equity": 1013434.42,
-          "drawdown": 0.0
+          "equity": 996555.44,
+          "drawdown": -0.004931
         },
         {
           "index": 252,
-          "equity": 1031897.12,
-          "drawdown": -0.001946
+          "equity": 1005406.73,
+          "drawdown": -0.000782
         },
         {
           "index": 266,
-          "equity": 1026325.92,
-          "drawdown": -0.009993
+          "equity": 1003721.67,
+          "drawdown": -0.00686
         },
         {
           "index": 280,
-          "equity": 1027386.09,
-          "drawdown": -0.008971
+          "equity": 999727.07,
+          "drawdown": -0.010812
         },
         {
           "index": 294,
-          "equity": 1030580.72,
-          "drawdown": -0.005889
+          "equity": 1006256.57,
+          "drawdown": -0.004352
         },
         {
           "index": 308,
-          "equity": 1023872.59,
-          "drawdown": -0.01236
+          "equity": 995762.71,
+          "drawdown": -0.014735
         },
         {
           "index": 322,
-          "equity": 1021270.4,
-          "drawdown": -0.01487
+          "equity": 988585.72,
+          "drawdown": -0.021836
         },
         {
           "index": 336,
-          "equity": 1006891.65,
-          "drawdown": -0.02874
+          "equity": 981825.38,
+          "drawdown": -0.028525
         },
         {
           "index": 350,
-          "equity": 990824.39,
-          "drawdown": -0.044239
+          "equity": 967552.9,
+          "drawdown": -0.042647
         },
         {
           "index": 364,
-          "equity": 994886.23,
-          "drawdown": -0.040321
+          "equity": 959192.34,
+          "drawdown": -0.05092
         },
         {
           "index": 378,
-          "equity": 988695.02,
-          "drawdown": -0.046293
+          "equity": 959336.22,
+          "drawdown": -0.050777
         },
         {
           "index": 392,
-          "equity": 986379.81,
-          "drawdown": -0.048526
+          "equity": 959336.22,
+          "drawdown": -0.050777
         },
         {
           "index": 406,
-          "equity": 985508.12,
-          "drawdown": -0.049367
+          "equity": 954851.7,
+          "drawdown": -0.055215
         },
         {
           "index": 420,
-          "equity": 968010.4,
-          "drawdown": -0.066245
+          "equity": 951398.39,
+          "drawdown": -0.058632
         }
       ],
       "per_symbol": {
         "CU.SHF": {
-          "total_return": -0.060764,
-          "annualized_return": -0.035989,
-          "annual_volatility": 0.057885,
-          "daily_volatility": 0.003646,
-          "max_drawdown": -0.100522,
-          "sharpe_ratio": -0.621738,
-          "calmar_ratio": -0.358023,
-          "win_rate": 0.234339,
-          "avg_win": 0.003515,
-          "avg_loss": 0.003167,
-          "profit_loss_ratio": 1.109973,
-          "trade_count": 60,
-          "total_trades": 60,
+          "total_return": -0.048679,
+          "annualized_return": -0.028757,
+          "annual_volatility": 0.054935,
+          "daily_volatility": 0.003461,
+          "max_drawdown": -0.06428,
+          "sharpe_ratio": -0.523468,
+          "calmar_ratio": -0.447367,
+          "win_rate": 0.085847,
+          "avg_win": 0.005397,
+          "avg_loss": 0.004117,
+          "profit_loss_ratio": 1.310978,
+          "trade_count": 38,
+          "total_trades": 38,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 939236.35,
-          "total_transaction_cost": 0.012076,
-          "cost_ratio": 0.198731
+          "final_capital": 951320.61,
+          "total_transaction_cost": 0.00735,
+          "cost_ratio": 0.150991
         },
         "LC.GFE": {
-          "total_return": -0.020048,
-          "annualized_return": -0.011771,
-          "annual_volatility": 0.093668,
-          "daily_volatility": 0.005901,
-          "max_drawdown": -0.126449,
-          "sharpe_ratio": -0.125668,
-          "calmar_ratio": -0.093089,
-          "win_rate": 0.271462,
-          "avg_win": 0.005935,
-          "avg_loss": 0.005357,
-          "profit_loss_ratio": 1.107854,
-          "trade_count": 148,
-          "total_trades": 148,
+          "total_return": -0.164783,
+          "annualized_return": -0.099928,
+          "annual_volatility": 0.050586,
+          "daily_volatility": 0.003187,
+          "max_drawdown": -0.17159,
+          "sharpe_ratio": -1.975425,
+          "calmar_ratio": -0.582368,
+          "win_rate": 0.095128,
+          "avg_win": 0.003701,
+          "avg_loss": 0.004394,
+          "profit_loss_ratio": 0.842248,
+          "trade_count": 82,
+          "total_trades": 82,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 979952.07,
-          "total_transaction_cost": 0.007698,
-          "cost_ratio": 0.383966
+          "final_capital": 835216.89,
+          "total_transaction_cost": 0.005743,
+          "cost_ratio": 0.03485
         },
         "NI.SHF": {
-          "total_return": -0.01748,
-          "annualized_return": -0.010258,
-          "annual_volatility": 0.0684,
-          "daily_volatility": 0.004309,
-          "max_drawdown": -0.059782,
-          "sharpe_ratio": -0.149969,
-          "calmar_ratio": -0.171588,
-          "win_rate": 0.180974,
-          "avg_win": 0.004923,
-          "avg_loss": 0.004017,
-          "profit_loss_ratio": 1.225677,
-          "trade_count": 68,
-          "total_trades": 68,
+          "total_return": 0.024918,
+          "annualized_return": 0.014495,
+          "annual_volatility": 0.047415,
+          "daily_volatility": 0.002987,
+          "max_drawdown": -0.032696,
+          "sharpe_ratio": 0.305705,
+          "calmar_ratio": 0.443326,
+          "win_rate": 0.055684,
+          "avg_win": 0.006847,
+          "avg_loss": 0.003937,
+          "profit_loss_ratio": 1.739181,
+          "trade_count": 38,
+          "total_trades": 38,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 982519.77,
-          "total_transaction_cost": 0.009815,
-          "cost_ratio": 0.561474
+          "final_capital": 1024918.3,
+          "total_transaction_cost": 0.00458,
+          "cost_ratio": 0.183783
         },
         "ZN.SHF": {
-          "total_return": 0.037947,
-          "annualized_return": 0.022016,
-          "annual_volatility": 0.050342,
-          "daily_volatility": 0.003171,
-          "max_drawdown": -0.042172,
-          "sharpe_ratio": 0.437318,
-          "calmar_ratio": 0.522047,
-          "win_rate": 0.24826,
-          "avg_win": 0.00352,
-          "avg_loss": 0.002764,
-          "profit_loss_ratio": 1.273445,
-          "trade_count": 47,
-          "total_trades": 47,
+          "total_return": -0.013057,
+          "annualized_return": -0.007655,
+          "annual_volatility": 0.046217,
+          "daily_volatility": 0.002911,
+          "max_drawdown": -0.038596,
+          "sharpe_ratio": -0.165628,
+          "calmar_ratio": -0.198336,
+          "win_rate": 0.136891,
+          "avg_win": 0.003963,
+          "avg_loss": 0.003064,
+          "profit_loss_ratio": 1.293309,
+          "trade_count": 39,
+          "total_trades": 39,
           "n_periods": 431,
           "initial_capital": 1000000.0,
-          "final_capital": 1037947.41,
-          "total_transaction_cost": 0.01375,
-          "cost_ratio": 0.362344
+          "final_capital": 986943.38,
+          "total_transaction_cost": 0.01075,
+          "cost_ratio": 0.823337
         }
       }
     },
@@ -651,16 +651,16 @@
         "return_target": 0.05,
         "sharpe_target": 0.9,
         "max_drawdown_target": -0.027,
-        "actual_return": -0.039148,
-        "actual_sharpe": -0.596463,
-        "actual_max_drawdown": -0.07315,
+        "actual_return": -0.059561,
+        "actual_sharpe": -1.13394,
+        "actual_max_drawdown": -0.069475,
         "return_achieved": false,
         "sharpe_achieved": false,
         "drawdown_achieved": false,
         "all_achieved": false,
-        "return_gap": -0.089148,
-        "sharpe_gap": -1.496463,
-        "drawdown_gap": -0.04615
+        "return_gap": -0.109561,
+        "sharpe_gap": -2.03394,
+        "drawdown_gap": -0.042475
       },
       "Equal_weight_4symbol": {
         "scenario": "Equal_weight_4symbol",
@@ -681,85 +681,77 @@
     }
   },
   "comparison": {
-    "return_improvement_ic_vs_eq": -0.225881,
-    "sharpe_improvement_ic_vs_eq": -3.507408,
-    "drawdown_improvement_ic_vs_eq": -0.056048,
-    "return_improvement_ic_vs_v2": -0.094799,
-    "sharpe_improvement_ic_vs_v2": -1.876046,
-    "drawdown_improvement_ic_vs_v2": -0.051281
+    "return_improvement_ic_vs_eq": -0.246294,
+    "sharpe_improvement_ic_vs_eq": -4.044885,
+    "drawdown_improvement_ic_vs_eq": -0.052373,
+    "return_improvement_ic_vs_v2": -0.115212,
+    "sharpe_improvement_ic_vs_v2": -2.413523,
+    "drawdown_improvement_ic_vs_v2": -0.047606
   },
   "factor_ic_4symbol": {
-    "realized_vol_20d": {
-      "ic_mean": 0.053897,
-      "ic_std": 0.0,
-      "ic_ir_annualized": 1.147314,
-      "hit_rate": 0.5,
-      "sample_size": 4,
-      "ic_ts_raw": 0.053897,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
-    },
-    "oi_change_rate_7d": {
-      "ic_mean": 0.044248,
-      "ic_std": 0.0,
-      "ic_ir_annualized": 1.142341,
-      "hit_rate": 0.5,
-      "sample_size": 4,
-      "ic_ts_raw": 0.044248,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
-    },
-    "oi_level": {
-      "ic_mean": 0.038378,
-      "ic_std": 0.0,
-      "ic_ir_annualized": 0.850292,
-      "hit_rate": 0.5,
-      "sample_size": 4,
-      "ic_ts_raw": 0.038378,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
-    },
-    "momentum_20d": {
-      "ic_mean": 0.03706,
-      "ic_std": 0.0,
-      "ic_ir_annualized": 0.821351,
-      "hit_rate": 0.5,
-      "sample_size": 4,
-      "ic_ts_raw": 0.03706,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
-    },
-    "vol_regime_change": {
-      "ic_mean": 0.011865,
-      "ic_std": 0.0,
-      "ic_ir_annualized": 0.299238,
-      "hit_rate": 0.5,
-      "sample_size": 4,
-      "ic_ts_raw": 0.011865,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
-    },
-    "oi_change_1d": {
-      "ic_mean": 0.00616,
-      "ic_std": 0.0,
-      "ic_ir_annualized": 0.154011,
-      "hit_rate": 0.5,
-      "sample_size": 4,
-      "ic_ts_raw": 0.00616,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
-    },
     "contract_switch_flag": {
       "ic_mean": 0.0,
       "ic_std": 0.0,
       "ic_ir_annualized": 0.0,
-      "hit_rate": 0.5,
-      "sample_size": 4,
-      "ic_ts_raw": 0.0,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
-    },
-    "spread_cs": {
-      "ic_mean": -0.064899,
-      "ic_std": 0.0,
-      "ic_ir_annualized": -1.50836,
       "hit_rate": 0.0,
       "sample_size": 4,
-      "ic_ts_raw": -0.064899,
-      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+      "ic_ts_raw": 0.0
+    },
+    "momentum_20d": {
+      "ic_mean": -0.012427,
+      "ic_std": 0.042571,
+      "ic_ir_annualized": -4.633849,
+      "hit_rate": 0.25,
+      "sample_size": 4,
+      "ic_ts_raw": -0.012427
+    },
+    "oi_change_1d": {
+      "ic_mean": -0.029155,
+      "ic_std": 0.062559,
+      "ic_ir_annualized": -7.398079,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": -0.029155
+    },
+    "oi_change_rate_7d": {
+      "ic_mean": 0.008839,
+      "ic_std": 0.028723,
+      "ic_ir_annualized": 4.885137,
+      "hit_rate": 0.75,
+      "sample_size": 4,
+      "ic_ts_raw": 0.008839
+    },
+    "oi_level": {
+      "ic_mean": 0.000973,
+      "ic_std": 0.02246,
+      "ic_ir_annualized": 0.687767,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.000973
+    },
+    "realized_vol_20d": {
+      "ic_mean": 0.005817,
+      "ic_std": 0.023784,
+      "ic_ir_annualized": 3.882697,
+      "hit_rate": 0.75,
+      "sample_size": 4,
+      "ic_ts_raw": 0.005817
+    },
+    "spread_cs": {
+      "ic_mean": -0.090153,
+      "ic_std": 0.11234,
+      "ic_ir_annualized": -12.739293,
+      "hit_rate": 0.25,
+      "sample_size": 4,
+      "ic_ts_raw": -0.090153
+    },
+    "vol_regime_change": {
+      "ic_mean": 0.026994,
+      "ic_std": 0.043188,
+      "ic_ir_annualized": 9.922075,
+      "hit_rate": 0.75,
+      "sample_size": 4,
+      "ic_ts_raw": 0.026994
     }
   },
   "per_symbol_ts_ic": {

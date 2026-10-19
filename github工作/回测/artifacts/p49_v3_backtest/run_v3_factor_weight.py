@@ -312,24 +312,34 @@ def load_ic_values_from_csv(csv_path: Path) -> dict:
     return ic_dict
 
 
-def compute_ic_weights(ic_values: dict) -> dict:
+def compute_ic_weights(ic_values: dict, shrinkage: float = 0.5) -> dict:
+    """
+    IC均值加权: 用|IC|归一化权重, 保留符号, 加收缩正则化.
+    
+    w_i = λ * (|IC_i| / sum(|IC|)) * sign(IC_i) + (1-λ) * (1/n)
+    
+    λ=0: 等权; λ=1: 纯IC加权; λ=0.5: 50%IC+50%等权(默认)
+    
+    收缩正则化避免IC估计噪声导致的过度拟合.
+    """
     raw_ics = {}
     for fname, ic_info in ic_values.items():
         raw_ics[fname] = ic_info["ic_mean"]
+
+    n = len(raw_ics)
+    equal_weight = 1.0 / n if n > 0 else 0.0
 
     abs_ics = {f: abs(ic) for f, ic in raw_ics.items()}
     total_abs_ic = sum(abs_ics.values())
 
     if total_abs_ic == 0:
-        # Fallback: equal weight
-        n = len(raw_ics)
-        abs_weights = {f: 1.0 / n for f in raw_ics}
-        normalized = {f: 1.0 / n for f in raw_ics}
+        abs_weights = {f: equal_weight for f in raw_ics}
+        effective_weights = {f: equal_weight for f in raw_ics}
     else:
-        # Absolute weights (sum=1)
-        abs_weights = {f: abs_ics[f] / total_abs_ic for f in raw_ics}
-        # Effective weights with sign preservation
-        normalized = {f: abs_weights[f] * (1 if raw_ics[f] >= 0 else -1) for f in raw_ics}
+        ic_abs_weights = {f: abs_ics[f] / total_abs_ic for f in raw_ics}
+        ic_effective = {f: ic_abs_weights[f] * (1 if raw_ics[f] >= 0 else -1) for f in raw_ics}
+        abs_weights = {f: shrinkage * ic_abs_weights[f] + (1 - shrinkage) * equal_weight for f in raw_ics}
+        effective_weights = {f: shrinkage * ic_effective[f] + (1 - shrinkage) * equal_weight for f in raw_ics}
 
     weight_config = {
         "config_id": "DSHA-P49-V3-FACTOR-WEIGHT-CONFIG",
@@ -344,22 +354,23 @@ def compute_ic_weights(ic_values: dict) -> dict:
             "gate": GATE_STATUS,
             "release": RELEASE_STATUS,
         },
-        "weighting_method": "IC_mean_weighted_abs_normalized",
-        "description": "IC均值加权: 用4品种样本IC值作为权重, |IC|归一化到sum=1, 保留符号",
+        "weighting_method": "IC_mean_weighted_with_shrinkage",
+        "description": f"IC均值加权+收缩正则化: |IC|归一化, λ={shrinkage}, 保留符号",
         "normalization": "abs_ic_sum_to_1",
+        "shrinkage_parameter": shrinkage,
         "ic_values": {f: ic_info["ic_mean"] for f, ic_info in ic_values.items()},
         "ic_ir_values": {f: ic_info["ic_ir_annualized"] for f, ic_info in ic_values.items()},
         "total_abs_ic": round(float(total_abs_ic), 6),
         "abs_weights_sum_to_1": {f: round(w, 6) for f, w in abs_weights.items()},
         "raw_ic_values": {f: round(ic, 6) for f, ic in raw_ics.items()},
-        "effective_weights": {f: round(w, 6) for f, w in normalized.items()},
+        "effective_weights": {f: round(w, 6) for f, w in effective_weights.items()},
         "weight_factors_sorted": sorted(abs_weights.items(), key=lambda x: x[1], reverse=True),
         "symbol_pool": "4_symbol_whitelist",
         "symbols": ALL_4_SYMBOLS,
         "symbol_count": 4,
     }
 
-    return weight_config, normalized
+    return weight_config, effective_weights
 
 # ════════════════════════════════════════════════════════════════
 # 回测引擎 (支持自定义因子权重)

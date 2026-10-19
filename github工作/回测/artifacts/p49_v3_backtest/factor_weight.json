@@ -1,6 +1,6 @@
 {
   "config_id": "DSHA-P49-V3-FACTOR-WEIGHT-CONFIG",
-  "generated_at": "2026-10-19T08:16:01.792305+00:00",
+  "generated_at": "2026-10-19T08:19:57.453775+00:00",
   "token": "DSHA-P49-V3-FACTOR-WEIGHT-TOKEN",
   "baseline_commit": "a011ba0",
   "status": "FROZEN",
@@ -11,92 +11,93 @@
     "gate": "CLOSED/HOLD",
     "release": "NOT_ISSUED"
   },
-  "weighting_method": "IC_mean_weighted_abs_normalized",
-  "description": "IC均值加权: 用4品种样本IC值作为权重, |IC|归一化到sum=1, 保留符号",
+  "weighting_method": "IC_mean_weighted_with_shrinkage",
+  "description": "IC均值加权+收缩正则化: |IC|归一化, λ=0.5, 保留符号",
   "normalization": "abs_ic_sum_to_1",
+  "shrinkage_parameter": 0.5,
   "ic_values": {
-    "realized_vol_20d": 0.053897,
-    "oi_change_rate_7d": 0.044248,
-    "oi_level": 0.038378,
-    "momentum_20d": 0.03706,
-    "vol_regime_change": 0.011865,
-    "oi_change_1d": 0.00616,
     "contract_switch_flag": 0.0,
-    "spread_cs": -0.064899
+    "momentum_20d": -0.012427,
+    "oi_change_1d": -0.029155,
+    "oi_change_rate_7d": 0.008839,
+    "oi_level": 0.000973,
+    "realized_vol_20d": 0.005817,
+    "spread_cs": -0.090153,
+    "vol_regime_change": 0.026994
   },
   "ic_ir_values": {
-    "realized_vol_20d": 1.147314,
-    "oi_change_rate_7d": 1.142341,
-    "oi_level": 0.850292,
-    "momentum_20d": 0.821351,
-    "vol_regime_change": 0.299238,
-    "oi_change_1d": 0.154011,
     "contract_switch_flag": 0.0,
-    "spread_cs": -1.50836
+    "momentum_20d": -4.633849,
+    "oi_change_1d": -7.398079,
+    "oi_change_rate_7d": 4.885137,
+    "oi_level": 0.687767,
+    "realized_vol_20d": 3.882697,
+    "spread_cs": -12.739293,
+    "vol_regime_change": 9.922075
   },
-  "total_abs_ic": 0.256507,
+  "total_abs_ic": 0.174358,
   "abs_weights_sum_to_1": {
-    "realized_vol_20d": 0.210119,
-    "oi_change_rate_7d": 0.172502,
-    "oi_level": 0.149618,
-    "momentum_20d": 0.144479,
-    "vol_regime_change": 0.046256,
-    "oi_change_1d": 0.024015,
-    "contract_switch_flag": 0.0,
-    "spread_cs": 0.253011
+    "contract_switch_flag": 0.0625,
+    "momentum_20d": 0.098136,
+    "oi_change_1d": 0.146107,
+    "oi_change_rate_7d": 0.087847,
+    "oi_level": 0.06529,
+    "realized_vol_20d": 0.079181,
+    "spread_cs": 0.321028,
+    "vol_regime_change": 0.13991
   },
   "raw_ic_values": {
-    "realized_vol_20d": 0.053897,
-    "oi_change_rate_7d": 0.044248,
-    "oi_level": 0.038378,
-    "momentum_20d": 0.03706,
-    "vol_regime_change": 0.011865,
-    "oi_change_1d": 0.00616,
     "contract_switch_flag": 0.0,
-    "spread_cs": -0.064899
+    "momentum_20d": -0.012427,
+    "oi_change_1d": -0.029155,
+    "oi_change_rate_7d": 0.008839,
+    "oi_level": 0.000973,
+    "realized_vol_20d": 0.005817,
+    "spread_cs": -0.090153,
+    "vol_regime_change": 0.026994
   },
   "effective_weights": {
-    "realized_vol_20d": 0.210119,
-    "oi_change_rate_7d": 0.172502,
-    "oi_level": 0.149618,
-    "momentum_20d": 0.144479,
-    "vol_regime_change": 0.046256,
-    "oi_change_1d": 0.024015,
-    "contract_switch_flag": 0.0,
-    "spread_cs": -0.253011
+    "contract_switch_flag": 0.0625,
+    "momentum_20d": 0.026864,
+    "oi_change_1d": -0.021107,
+    "oi_change_rate_7d": 0.087847,
+    "oi_level": 0.06529,
+    "realized_vol_20d": 0.079181,
+    "spread_cs": -0.196028,
+    "vol_regime_change": 0.13991
   },
   "weight_factors_sorted": [
     [
       "spread_cs",
-      0.2530106390858729
-    ],
-    [
-      "realized_vol_20d",
-      0.21011902209296435
-    ],
-    [
-      "oi_change_rate_7d",
-      0.1725021149520286
-    ],
-    [
-      "oi_level",
-      0.1496177492232181
-    ],
-    [
-      "momentum_20d",
-      0.1444794878892194
-    ],
-    [
-      "vol_regime_change",
-      0.046256047593243074
+      0.3210284300118148
     ],
     [
       "oi_change_1d",
-      0.024014939163453628
+      0.14610671721400798
+    ],
+    [
+      "vol_regime_change",
+      0.13990969728948488
+    ],
+    [
+      "momentum_20d",
+      0.09813644914486287
+    ],
+    [
+      "oi_change_rate_7d",
+      0.08784727399947236
+    ],
+    [
+      "realized_vol_20d",
+      0.0791811961596256
+    ],
+    [
+      "oi_level",
+      0.0652902361807316
     ],
     [
       "contract_switch_flag",
-      0.0
+      0.0625
     ]
   ],
   "symbol_pool": "4_symbol_whitelist",
