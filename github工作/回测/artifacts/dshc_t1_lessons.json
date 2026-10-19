@@ -71,14 +71,33 @@
     "description": "Symbols confirmed to have NO DATA in Wind WSD for any indicator. Do not attempt fetch — will return empty values.",
     "LC.SHF": {
       "status": "WIND_EMPTY_SYMBOL",
+      "exchange": "GFE",
+      "exchange_confirmed_by": "DSHC-F02-CONFIG",
       "indicators_checked": ["CLOSE", "VOL", "OI", "SETTLE"],
       "confirmed_runs": ["DSHC-T1FIX", "DSHC-F01"],
       "first_detected": "2026-10-16",
       "last_verified": "2026-10-19",
       "evidence": "All 4 indicators return dates in col A but empty values in col B. WSD formula executes without error but returns no data.",
       "blacklisted": true,
+      "blacklist_stable": true,
+      "blacklist_action": "Remove from fetch symbol lists. Do not include in future GUI-fetch workorders. LC.SHF=GFE confirmed at DSHC-F02-CONFIG (2026-10-19). Blacklist status is final and will not be revisited.",
       "action": "Remove from fetch symbol lists. Do not include in future GUI-fetch workorders."
     }
+  },
+  "exchange_map": {
+    "description": "Symbol-to-exchange mapping for all metal symbols. Source: DSHC-F02-CONFIG (2026-10-19). LC.SHF=GFE confirmed; all others=SHFE.",
+    "ticket": "DSHC-F02-CONFIG",
+    "confirmed_at": "2026-10-19",
+    "mappings": {
+      "CU.SHF": "SHFE",
+      "ZN.SHF": "SHFE",
+      "PB.SHF": "SHFE",
+      "AL.SHF": "SHFE",
+      "SN.SHF": "SHFE",
+      "NI.SHF": "SHFE",
+      "LC.SHF": "GFE"
+    },
+    "notes": "LC.SHF is the only non-SHFE symbol. GFE classification confirmed at DSHC-F02-CONFIG. LC.SHF remains WIND_EMPTY_SYMBOL blacklisted — do not use in future fetch operations."
   },
   "red_lines_verified": {
     "front_excel_14644_untouched": true,
@@ -116,5 +135,18 @@
     "commit": "593d688",
     "finalized_at": "2026-10-19",
     "finalize_receipt": "DSHC_F01_FINALIZE=ARCHIVED|lc_shf_blacklisted=YES|guard_rules_locked=YES"
+  },
+  "f02_finalization": {
+    "ticket": "DSHC-F02-CONFIG",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "exchange_map_written": true,
+    "lc_gfe_confirmed": true,
+    "lc_blacklist_stable": true,
+    "f01_script_status": "UNCHANGED_LOCKED@593d688",
+    "files_modified": ["artifacts/dshc_t1_lessons.json"],
+    "files_not_modified": ["scripts/dshc_f01_gui_fetch.ps1"],
+    "config_receipt": "DSHC_F02_CONFIG=CONFIG_LOCKED|exchange_map_written=YES|lc_gfe_blacklist_stable=YES",
+    "config_at": "2026-10-19"
   }
 }
