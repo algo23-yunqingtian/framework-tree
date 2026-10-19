@@ -1,0 +1,79 @@
+{
+  "postmortem_id": "DSHC-POSTMORTEM-T1",
+  "ticket": "DSHC-T1-GUI-HUMAN-LIKE",
+  "incident": "SPAWN_LOOP",
+  "root_cause": "MISSING_TRY_FINALLY",
+  "trigger_line": "scripts/dshc_t1_gui_fetch.ps1:85",
+  "trigger_code": "$wb=$xl.Workbooks.Add();$ws=$wb.Sheets.Item(1)",
+  "trigger_error": "You cannot call a method on a null-valued expression",
+  "total_orphaned_excel": 18,
+  "wall_clock_minutes": 100,
+  "successful_runs": 2,
+  "failed_runs": 13,
+  "local_wdf_hint_found": true,
+  "wdf_data_plane_status": "ALIVE_NOT_DEAD",
+  "a03_conclusion_correction": "A03 said data plane dead (checked col A=dates). Data was in col B=prices. WSD returns 2-col grid: dates in A, prices in B.",
+  "spawn_bug_root": "NO_TRY_FINALLY_CLEANUP",
+  "guard_rules": [
+    {
+      "id": "GR1_SINGLE_WINDOW",
+      "name": "Single Window Principle",
+      "rule": "Maximum 1 Excel COM instance per script execution. If orphaned EXCEL processes (≠14644) exist at startup, kill them and exit 20. If $xl is null after New-Object -ComObject, exit 30 immediately. Do NOT retry or create a new instance.",
+      "check_code": "IF (Get-Process -Name EXCEL | Where-Object {$_.Id -ne 14644}).Count -gt 0 { KILL; EXIT 20 }; IF ($null -eq $xl) { EXIT 30 }",
+      "fast_fail_exit": 20,
+      "applies_to": "All GUI-HUMAN-LIKE workorders that create Excel COM objects"
+    },
+    {
+      "id": "GR2_SPAWN_CAP",
+      "name": "Spawn Cap Counter",
+      "rule": "Hard limit of 1 Excel process creation per script execution. Track $spawnCounter. If $spawnCounter > 1, exit 30. Retries must be new script invocations, not internal loops.",
+      "check_code": "$spawnCounter++; IF ($spawnCounter -gt 1) { EXIT 30 }",
+      "fast_fail_exit": 30,
+      "applies_to": "All scripts that call New-Object -ComObject Excel.Application"
+    },
+    {
+      "id": "GR3_CLEANUP_ON_EXIT",
+      "name": "Try/Finally Excel Lifecycle",
+      "rule": "Excel COM object must be created inside a try block with a finally block that calls $xl.Quit() + ReleaseComObject + GC.Collect on every exit path. Linear cleanup is prohibited.",
+      "check_code": "$xl=$null; try { $xl=New-Object -ComObject Excel.Application; ... } finally { IF($xl){$xl.Quit();[Marshal]::ReleaseComObject($xl)|Out-Null;[GC]::Collect()} }",
+      "fast_fail_exit": null,
+      "applies_to": "All scripts that create Excel COM objects"
+    },
+    {
+      "id": "GR4_NULL_GUARD",
+      "name": "Null Guard After COM Access",
+      "rule": "After every New-Object -ComObject and every COM property/method access that returns an object, check for null before proceeding. If null, exit 30. Do not call methods on potentially null objects.",
+      "check_code": "IF ($null -eq $xl) { EXIT 30 }; IF ($null -eq $wb) { EXIT 30 }; IF ($null -eq $ws) { EXIT 30 }",
+      "fast_fail_exit": 30,
+      "applies_to": "All scripts that use COM automation"
+    },
+    {
+      "id": "GR5_WALL_CLOCK",
+      "name": "Hard Wall-Clock Timeout",
+      "rule": "Hard 5-minute (300 second) timeout for the entire script execution. Check elapsed time at each loop iteration. If exceeded, kill all EXCEL processes (≠14644) and exit 30.",
+      "check_code": "$elapsed=([DateTimeOffset]::UtcNow - $t0).TotalSeconds; IF ($elapsed -gt 300) { KILL-EXCEL; EXIT 30 }",
+      "fast_fail_exit": 30,
+      "applies_to": "All GUI-HUMAN-LIKE workorders with a stated time budget"
+    }
+  ],
+  "additional_findings": {
+    "sendkeys_nonfunctional": true,
+    "sendkeys_foreground_issue": "fg_match=false in all runs. SetForegroundWindow and AttachThreadInput could not bring Excel to foreground. Windows foreground lock prevents programmatic focus change.",
+    "range_formula_works": true,
+    "range_formula_method": "Set formula via Range.Formula, call Calculate(), read from column B (price), not column A (date).",
+    "wdf_grid_structure": "WSD returns 2-column grid: Column A = dates (string or Excel serial), Column B = prices (numeric). A03 checked column A only and concluded 'price column empty' — incorrect.",
+    "wss_status": "Returns 'Fetching...' — add-in processes but data plane returns placeholder.",
+    "vol_field_status": "Returns '无法读取数据！' for all instruments on 2026-10-16. Data not available.",
+    "lc_shf_status": "Returns empty B1 for all fields on 2026-10-16. No data for this instrument.",
+    "b1_clear_bug": "Range('A1:B10').ClearContents() does not clear B1 when it contains a WSD array formula result. Previous field's value persists in B1."
+  },
+  "red_lines_verified": {
+    "front_excel_14644_untouched": true,
+    "no_windpy_invocation": true,
+    "no_human_operation_requested": true,
+    "no_backtest_by_dshc": true,
+    "honest_no_fabrication": true,
+    "no_marker_file": true,
+    "no_auto_retry": true
+  }
+}

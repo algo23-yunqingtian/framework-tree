@@ -1,0 +1,109 @@
+{"kind":"start","ts":"2026-10-19T07:59:08.2189279+08:00","data":{"instruments":7,"attempts":1,"fields":7,"wait":3}}
+{"kind":"xl_ready","ts":"2026-10-19T07:59:45.9774994+08:00","data":{"fg_match":false,"hwnd":203034,"pid":3792,"fg_before":983248,"fg_after":69870}}
+{"kind":"addins","ts":"2026-10-19T07:59:46.7823836+08:00","data":{"total":7,"wdf_connected":true}}
+{"kind":"grid_read","ts":"2026-10-19T07:59:57.6913602+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":109860,"formula":"=WSD(\"CU.SHF\",\"CLOSE\",\"2026-10-16\",\"2026-10-16\")","key":"CU.SHF.CLOSE","att":1,"B1_txt":"109860"}}
+{"kind":"captured","ts":"2026-10-19T07:59:57.7093621+08:00","data":{"from":"B1_grid","key":"CU.SHF.CLOSE","value":"109860"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:00.0051998+08:00","data":{"A1_val":"无法读取数据！","A1_txt":"无法读取数据！","B1_val":109860,"formula":"=WSD(\"CU.SHF\",\"VOL\",\"2026-10-16\",\"2026-10-16\")","key":"CU.SHF.VOL","att":1,"B1_txt":"109860"}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:00:00.0121955+08:00","data":{"key":"CU.SHF.VOL","reason":"data_error: A1=\u0027无法读取数据！\u0027","att":1}}
+{"kind":"captured","ts":"2026-10-19T08:00:00.0172029+08:00","data":{"from":"B1_grid","key":"CU.SHF.VOL","value":"109860"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:02.8233902+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":176863,"formula":"=WSD(\"CU.SHF\",\"OI\",\"2026-10-16\",\"2026-10-16\")","key":"CU.SHF.OI","att":1,"B1_txt":"176863"}}
+{"kind":"captured","ts":"2026-10-19T08:00:02.8283961+08:00","data":{"from":"B1_grid","key":"CU.SHF.OI","value":"176863"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:05.0381970+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":109450,"formula":"=WSD(\"CU.SHF\",\"SETTLE\",\"2026-10-16\",\"2026-10-16\")","key":"CU.SHF.SETTLE","att":1,"B1_txt":"109450"}}
+{"kind":"captured","ts":"2026-10-19T08:00:05.0401976+08:00","data":{"from":"B1_grid","key":"CU.SHF.SETTLE","value":"109450"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:07.1246824+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":108850,"formula":"=WSD(\"CU.SHF\",\"OPEN\",\"2026-10-16\",\"2026-10-16\")","key":"CU.SHF.OPEN","att":1,"B1_txt":"108850"}}
+{"kind":"captured","ts":"2026-10-19T08:00:07.1316785+08:00","data":{"from":"B1_grid","key":"CU.SHF.OPEN","value":"108850"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:09.2811218+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":110240,"formula":"=WSD(\"CU.SHF\",\"HIGH\",\"2026-10-16\",\"2026-10-16\")","key":"CU.SHF.HIGH","att":1,"B1_txt":"110240"}}
+{"kind":"captured","ts":"2026-10-19T08:00:09.2881259+08:00","data":{"from":"B1_grid","key":"CU.SHF.HIGH","value":"110240"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:12.4505049+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":108600,"formula":"=WSD(\"CU.SHF\",\"LOW\",\"2026-10-16\",\"2026-10-16\")","key":"CU.SHF.LOW","att":1,"B1_txt":"108600"}}
+{"kind":"captured","ts":"2026-10-19T08:00:12.4565960+08:00","data":{"from":"B1_grid","key":"CU.SHF.LOW","value":"108600"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:14.6519597+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":25470,"formula":"=WSD(\"ZN.SHF\",\"CLOSE\",\"2026-10-16\",\"2026-10-16\")","key":"ZN.SHF.CLOSE","att":1,"B1_txt":"25470"}}
+{"kind":"captured","ts":"2026-10-19T08:00:14.6559641+08:00","data":{"from":"B1_grid","key":"ZN.SHF.CLOSE","value":"25470"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:16.8289293+08:00","data":{"A1_val":"无法读取数据！","A1_txt":"无法读取数据！","B1_val":25470,"formula":"=WSD(\"ZN.SHF\",\"VOL\",\"2026-10-16\",\"2026-10-16\")","key":"ZN.SHF.VOL","att":1,"B1_txt":"25470"}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:00:16.8309241+08:00","data":{"key":"ZN.SHF.VOL","reason":"data_error: A1=\u0027无法读取数据！\u0027","att":1}}
+{"kind":"captured","ts":"2026-10-19T08:00:16.8329242+08:00","data":{"from":"B1_grid","key":"ZN.SHF.VOL","value":"25470"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:19.0799218+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":76677,"formula":"=WSD(\"ZN.SHF\",\"OI\",\"2026-10-16\",\"2026-10-16\")","key":"ZN.SHF.OI","att":1,"B1_txt":"76677"}}
+{"kind":"captured","ts":"2026-10-19T08:00:19.0839184+08:00","data":{"from":"B1_grid","key":"ZN.SHF.OI","value":"76677"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:21.3286202+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":25425,"formula":"=WSD(\"ZN.SHF\",\"SETTLE\",\"2026-10-16\",\"2026-10-16\")","key":"ZN.SHF.SETTLE","att":1,"B1_txt":"25425"}}
+{"kind":"captured","ts":"2026-10-19T08:00:21.3316204+08:00","data":{"from":"B1_grid","key":"ZN.SHF.SETTLE","value":"25425"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:23.4889808+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":25300,"formula":"=WSD(\"ZN.SHF\",\"OPEN\",\"2026-10-16\",\"2026-10-16\")","key":"ZN.SHF.OPEN","att":1,"B1_txt":"25300"}}
+{"kind":"captured","ts":"2026-10-19T08:00:23.4939774+08:00","data":{"from":"B1_grid","key":"ZN.SHF.OPEN","value":"25300"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:25.6224240+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":25615,"formula":"=WSD(\"ZN.SHF\",\"HIGH\",\"2026-10-16\",\"2026-10-16\")","key":"ZN.SHF.HIGH","att":1,"B1_txt":"25615"}}
+{"kind":"captured","ts":"2026-10-19T08:00:25.6304298+08:00","data":{"from":"B1_grid","key":"ZN.SHF.HIGH","value":"25615"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:28.0312356+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":25240,"formula":"=WSD(\"ZN.SHF\",\"LOW\",\"2026-10-16\",\"2026-10-16\")","key":"ZN.SHF.LOW","att":1,"B1_txt":"25240"}}
+{"kind":"captured","ts":"2026-10-19T08:00:28.0372421+08:00","data":{"from":"B1_grid","key":"ZN.SHF.LOW","value":"25240"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:30.3003287+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":16140,"formula":"=WSD(\"PB.SHF\",\"CLOSE\",\"2026-10-16\",\"2026-10-16\")","key":"PB.SHF.CLOSE","att":1,"B1_txt":"16140"}}
+{"kind":"captured","ts":"2026-10-19T08:00:30.3033253+08:00","data":{"from":"B1_grid","key":"PB.SHF.CLOSE","value":"16140"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:32.4531617+08:00","data":{"A1_val":"无法读取数据！","A1_txt":"无法读取数据！","B1_val":16140,"formula":"=WSD(\"PB.SHF\",\"VOL\",\"2026-10-16\",\"2026-10-16\")","key":"PB.SHF.VOL","att":1,"B1_txt":"16140"}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:00:32.4557014+08:00","data":{"key":"PB.SHF.VOL","reason":"data_error: A1=\u0027无法读取数据！\u0027","att":1}}
+{"kind":"captured","ts":"2026-10-19T08:00:32.4576981+08:00","data":{"from":"B1_grid","key":"PB.SHF.VOL","value":"16140"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:34.6437051+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":40977,"formula":"=WSD(\"PB.SHF\",\"OI\",\"2026-10-16\",\"2026-10-16\")","key":"PB.SHF.OI","att":1,"B1_txt":"40977"}}
+{"kind":"captured","ts":"2026-10-19T08:00:34.6517111+08:00","data":{"from":"B1_grid","key":"PB.SHF.OI","value":"40977"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:36.8574766+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":16190,"formula":"=WSD(\"PB.SHF\",\"SETTLE\",\"2026-10-16\",\"2026-10-16\")","key":"PB.SHF.SETTLE","att":1,"B1_txt":"16190"}}
+{"kind":"captured","ts":"2026-10-19T08:00:36.8614827+08:00","data":{"from":"B1_grid","key":"PB.SHF.SETTLE","value":"16190"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:39.1024777+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":16155,"formula":"=WSD(\"PB.SHF\",\"OPEN\",\"2026-10-16\",\"2026-10-16\")","key":"PB.SHF.OPEN","att":1,"B1_txt":"16155"}}
+{"kind":"captured","ts":"2026-10-19T08:00:39.1084881+08:00","data":{"from":"B1_grid","key":"PB.SHF.OPEN","value":"16155"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:41.2783793+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":16255,"formula":"=WSD(\"PB.SHF\",\"HIGH\",\"2026-10-16\",\"2026-10-16\")","key":"PB.SHF.HIGH","att":1,"B1_txt":"16255"}}
+{"kind":"captured","ts":"2026-10-19T08:00:41.2983848+08:00","data":{"from":"B1_grid","key":"PB.SHF.HIGH","value":"16255"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:43.6356731+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":16125,"formula":"=WSD(\"PB.SHF\",\"LOW\",\"2026-10-16\",\"2026-10-16\")","key":"PB.SHF.LOW","att":1,"B1_txt":"16125"}}
+{"kind":"captured","ts":"2026-10-19T08:00:43.6396706+08:00","data":{"from":"B1_grid","key":"PB.SHF.LOW","value":"16125"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:46.0912037+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":23270,"formula":"=WSD(\"AL.SHF\",\"CLOSE\",\"2026-10-16\",\"2026-10-16\")","key":"AL.SHF.CLOSE","att":1,"B1_txt":"23270"}}
+{"kind":"captured","ts":"2026-10-19T08:00:46.0952017+08:00","data":{"from":"B1_grid","key":"AL.SHF.CLOSE","value":"23270"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:48.3410434+08:00","data":{"A1_val":"无法读取数据！","A1_txt":"无法读取数据！","B1_val":23270,"formula":"=WSD(\"AL.SHF\",\"VOL\",\"2026-10-16\",\"2026-10-16\")","key":"AL.SHF.VOL","att":1,"B1_txt":"23270"}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:00:48.3450441+08:00","data":{"key":"AL.SHF.VOL","reason":"data_error: A1=\u0027无法读取数据！\u0027","att":1}}
+{"kind":"captured","ts":"2026-10-19T08:00:48.3520420+08:00","data":{"from":"B1_grid","key":"AL.SHF.VOL","value":"23270"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:50.5645392+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":210819,"formula":"=WSD(\"AL.SHF\",\"OI\",\"2026-10-16\",\"2026-10-16\")","key":"AL.SHF.OI","att":1,"B1_txt":"210819"}}
+{"kind":"captured","ts":"2026-10-19T08:00:50.5695337+08:00","data":{"from":"B1_grid","key":"AL.SHF.OI","value":"210819"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:52.7454885+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":23185,"formula":"=WSD(\"AL.SHF\",\"SETTLE\",\"2026-10-16\",\"2026-10-16\")","key":"AL.SHF.SETTLE","att":1,"B1_txt":"23185"}}
+{"kind":"captured","ts":"2026-10-19T08:00:52.7474942+08:00","data":{"from":"B1_grid","key":"AL.SHF.SETTLE","value":"23185"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:54.9176213+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":23095,"formula":"=WSD(\"AL.SHF\",\"OPEN\",\"2026-10-16\",\"2026-10-16\")","key":"AL.SHF.OPEN","att":1,"B1_txt":"23095"}}
+{"kind":"captured","ts":"2026-10-19T08:00:54.9226209+08:00","data":{"from":"B1_grid","key":"AL.SHF.OPEN","value":"23095"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:57.0494912+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":23360,"formula":"=WSD(\"AL.SHF\",\"HIGH\",\"2026-10-16\",\"2026-10-16\")","key":"AL.SHF.HIGH","att":1,"B1_txt":"23360"}}
+{"kind":"captured","ts":"2026-10-19T08:00:57.0534942+08:00","data":{"from":"B1_grid","key":"AL.SHF.HIGH","value":"23360"}}
+{"kind":"grid_read","ts":"2026-10-19T08:00:59.2182174+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":22965,"formula":"=WSD(\"AL.SHF\",\"LOW\",\"2026-10-16\",\"2026-10-16\")","key":"AL.SHF.LOW","att":1,"B1_txt":"22965"}}
+{"kind":"captured","ts":"2026-10-19T08:00:59.2242218+08:00","data":{"from":"B1_grid","key":"AL.SHF.LOW","value":"22965"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:01.3928267+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":376860,"formula":"=WSD(\"SN.SHF\",\"CLOSE\",\"2026-10-16\",\"2026-10-16\")","key":"SN.SHF.CLOSE","att":1,"B1_txt":"376860"}}
+{"kind":"captured","ts":"2026-10-19T08:01:01.4028284+08:00","data":{"from":"B1_grid","key":"SN.SHF.CLOSE","value":"376860"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:03.5593718+08:00","data":{"A1_val":"无法读取数据！","A1_txt":"无法读取数据！","B1_val":376860,"formula":"=WSD(\"SN.SHF\",\"VOL\",\"2026-10-16\",\"2026-10-16\")","key":"SN.SHF.VOL","att":1,"B1_txt":"376860"}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:03.5643708+08:00","data":{"key":"SN.SHF.VOL","reason":"data_error: A1=\u0027无法读取数据！\u0027","att":1}}
+{"kind":"captured","ts":"2026-10-19T08:01:03.5673683+08:00","data":{"from":"B1_grid","key":"SN.SHF.VOL","value":"376860"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:05.7282644+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":32147,"formula":"=WSD(\"SN.SHF\",\"OI\",\"2026-10-16\",\"2026-10-16\")","key":"SN.SHF.OI","att":1,"B1_txt":"32147"}}
+{"kind":"captured","ts":"2026-10-19T08:01:05.7302668+08:00","data":{"from":"B1_grid","key":"SN.SHF.OI","value":"32147"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:07.8612400+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":377370,"formula":"=WSD(\"SN.SHF\",\"SETTLE\",\"2026-10-16\",\"2026-10-16\")","key":"SN.SHF.SETTLE","att":1,"B1_txt":"377370"}}
+{"kind":"captured","ts":"2026-10-19T08:01:07.8648727+08:00","data":{"from":"B1_grid","key":"SN.SHF.SETTLE","value":"377370"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:10.0446389+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":373260,"formula":"=WSD(\"SN.SHF\",\"OPEN\",\"2026-10-16\",\"2026-10-16\")","key":"SN.SHF.OPEN","att":1,"B1_txt":"373260"}}
+{"kind":"captured","ts":"2026-10-19T08:01:10.0466405+08:00","data":{"from":"B1_grid","key":"SN.SHF.OPEN","value":"373260"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:12.2147846+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":383920,"formula":"=WSD(\"SN.SHF\",\"HIGH\",\"2026-10-16\",\"2026-10-16\")","key":"SN.SHF.HIGH","att":1,"B1_txt":"383920"}}
+{"kind":"captured","ts":"2026-10-19T08:01:12.2177829+08:00","data":{"from":"B1_grid","key":"SN.SHF.HIGH","value":"383920"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:14.3749667+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":371220,"formula":"=WSD(\"SN.SHF\",\"LOW\",\"2026-10-16\",\"2026-10-16\")","key":"SN.SHF.LOW","att":1,"B1_txt":"371220"}}
+{"kind":"captured","ts":"2026-10-19T08:01:14.3789626+08:00","data":{"from":"B1_grid","key":"SN.SHF.LOW","value":"371220"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:16.5484467+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":115040,"formula":"=WSD(\"NI.SHF\",\"CLOSE\",\"2026-10-16\",\"2026-10-16\")","key":"NI.SHF.CLOSE","att":1,"B1_txt":"115040"}}
+{"kind":"captured","ts":"2026-10-19T08:01:16.5504495+08:00","data":{"from":"B1_grid","key":"NI.SHF.CLOSE","value":"115040"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:18.7630855+08:00","data":{"A1_val":"无法读取数据！","A1_txt":"无法读取数据！","B1_val":115040,"formula":"=WSD(\"NI.SHF\",\"VOL\",\"2026-10-16\",\"2026-10-16\")","key":"NI.SHF.VOL","att":1,"B1_txt":"115040"}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:18.7660782+08:00","data":{"key":"NI.SHF.VOL","reason":"data_error: A1=\u0027无法读取数据！\u0027","att":1}}
+{"kind":"captured","ts":"2026-10-19T08:01:18.7710761+08:00","data":{"from":"B1_grid","key":"NI.SHF.VOL","value":"115040"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:21.2911908+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":126641,"formula":"=WSD(\"NI.SHF\",\"OI\",\"2026-10-16\",\"2026-10-16\")","key":"NI.SHF.OI","att":1,"B1_txt":"126641"}}
+{"kind":"captured","ts":"2026-10-19T08:01:21.2951881+08:00","data":{"from":"B1_grid","key":"NI.SHF.OI","value":"126641"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:23.5769416+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":115330,"formula":"=WSD(\"NI.SHF\",\"SETTLE\",\"2026-10-16\",\"2026-10-16\")","key":"NI.SHF.SETTLE","att":1,"B1_txt":"115330"}}
+{"kind":"captured","ts":"2026-10-19T08:01:23.5849463+08:00","data":{"from":"B1_grid","key":"NI.SHF.SETTLE","value":"115330"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:25.7054303+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":114790,"formula":"=WSD(\"NI.SHF\",\"OPEN\",\"2026-10-16\",\"2026-10-16\")","key":"NI.SHF.OPEN","att":1,"B1_txt":"114790"}}
+{"kind":"captured","ts":"2026-10-19T08:01:25.7104367+08:00","data":{"from":"B1_grid","key":"NI.SHF.OPEN","value":"114790"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:27.8402011+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":116200,"formula":"=WSD(\"NI.SHF\",\"HIGH\",\"2026-10-16\",\"2026-10-16\")","key":"NI.SHF.HIGH","att":1,"B1_txt":"116200"}}
+{"kind":"captured","ts":"2026-10-19T08:01:27.8432028+08:00","data":{"from":"B1_grid","key":"NI.SHF.HIGH","value":"116200"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:29.9541176+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":114440,"formula":"=WSD(\"NI.SHF\",\"LOW\",\"2026-10-16\",\"2026-10-16\")","key":"NI.SHF.LOW","att":1,"B1_txt":"114440"}}
+{"kind":"captured","ts":"2026-10-19T08:01:29.9601156+08:00","data":{"from":"B1_grid","key":"NI.SHF.LOW","value":"114440"}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:32.1163064+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":null,"formula":"=WSD(\"LC.SHF\",\"CLOSE\",\"2026-10-16\",\"2026-10-16\")","key":"LC.SHF.CLOSE","att":1,"B1_txt":""}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:32.1293125+08:00","data":{"key":"LC.SHF.CLOSE","reason":"A1=2026-10-16/2026-10-16 B1=/","att":1}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:34.3146051+08:00","data":{"A1_val":"无法读取数据！","A1_txt":"无法读取数据！","B1_val":null,"formula":"=WSD(\"LC.SHF\",\"VOL\",\"2026-10-16\",\"2026-10-16\")","key":"LC.SHF.VOL","att":1,"B1_txt":""}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:34.3236066+08:00","data":{"key":"LC.SHF.VOL","reason":"data_error: A1=\u0027无法读取数据！\u0027","att":1}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:34.3276057+08:00","data":{"key":"LC.SHF.VOL","reason":"A1=无法读取数据！/无法读取数据！ B1=/","att":1}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:36.4840462+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":null,"formula":"=WSD(\"LC.SHF\",\"OI\",\"2026-10-16\",\"2026-10-16\")","key":"LC.SHF.OI","att":1,"B1_txt":""}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:36.4860464+08:00","data":{"key":"LC.SHF.OI","reason":"A1=2026-10-16/2026-10-16 B1=/","att":1}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:39.1941601+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":null,"formula":"=WSD(\"LC.SHF\",\"SETTLE\",\"2026-10-16\",\"2026-10-16\")","key":"LC.SHF.SETTLE","att":1,"B1_txt":""}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:39.1967001+08:00","data":{"key":"LC.SHF.SETTLE","reason":"A1=2026-10-16/2026-10-16 B1=/","att":1}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:41.3615122+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":null,"formula":"=WSD(\"LC.SHF\",\"OPEN\",\"2026-10-16\",\"2026-10-16\")","key":"LC.SHF.OPEN","att":1,"B1_txt":""}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:41.3645077+08:00","data":{"key":"LC.SHF.OPEN","reason":"A1=2026-10-16/2026-10-16 B1=/","att":1}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:43.5864826+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":null,"formula":"=WSD(\"LC.SHF\",\"HIGH\",\"2026-10-16\",\"2026-10-16\")","key":"LC.SHF.HIGH","att":1,"B1_txt":""}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:43.5884803+08:00","data":{"key":"LC.SHF.HIGH","reason":"A1=2026-10-16/2026-10-16 B1=/","att":1}}
+{"kind":"grid_read","ts":"2026-10-19T08:01:45.7100375+08:00","data":{"A1_val":"2026-10-16","A1_txt":"2026-10-16","B1_val":null,"formula":"=WSD(\"LC.SHF\",\"LOW\",\"2026-10-16\",\"2026-10-16\")","key":"LC.SHF.LOW","att":1,"B1_txt":""}}
+{"kind":"attempt_fail","ts":"2026-10-19T08:01:45.7130339+08:00","data":{"key":"LC.SHF.LOW","reason":"A1=2026-10-16/2026-10-16 B1=/","att":1}}
+{"kind":"xl_closed","ts":"2026-10-19T08:01:46.6112970+08:00","data":{}}

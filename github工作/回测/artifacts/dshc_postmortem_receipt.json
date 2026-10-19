@@ -1,0 +1,49 @@
+{
+  "receipt_id": "DSHC-POSTMORTEM-T1-RECEIPT-001",
+  "ticket": "DSHC-POST-MORTEM-T1",
+  "session": "POSTMORTEM-20261019-0805",
+  "status": "COMPLETED_ARCHIVED",
+  "exit_code": 0,
+  "token": "A01-POSTMORTEM-T1",
+  "token_state": "EXHAUSTED",
+  "method": "POST_MORTEM_ANALYSIS",
+  "spawn_bug_root": "NO_TRY_FINALLY_CLEANUP",
+  "local_wdf_hint_found": true,
+  "guard_rules_written": 5,
+  "no_auto_retry": "LOCKED_ON",
+  "total_orphaned_excel_killed": 18,
+  "front_excel_14644_preserved": true,
+  "wall_clock_minutes_t1_session": 100,
+  "successful_t1_runs": 2,
+  "failed_t1_runs": 13,
+  "a03_conclusion_corrected": true,
+  "data_plane_status": "ALIVE_NOT_DEAD",
+  "wdf_grid_structure": "2_col_dates_A_prices_B",
+  "postmortem_artifacts": [
+    "artifacts/dshc_t1_postmortem_report.md",
+    "artifacts/dshc_t1_lessons.json",
+    "artifacts/dshc_postmortem_receipt.json"
+  ],
+  "safe_reset_performed": true,
+  "safe_reset_detail": "18 EXCEL processes killed (PID≠14644). PID 14644 '工作簿2 - Excel' preserved.",
+  "token_A01_USER_REMOTE_T1_state": "FORCE_EXHAUSTED_CANCELLED",
+  "red_lines": {
+    "front_excel_14644_untouched": true,
+    "no_windpy_invocation": true,
+    "no_human_operation_requested": true,
+    "no_backtest_by_dshc": true,
+    "honest_no_fabrication": true,
+    "no_marker_file": true,
+    "no_auto_retry": true,
+    "no_gui_fetch_started": true,
+    "wind_api_calls_unchanged": true
+  },
+  "guard_rules": [
+    "GR1_SINGLE_WINDOW",
+    "GR2_SPAWN_CAP",
+    "GR3_CLEANUP_ON_EXIT",
+    "GR4_NULL_GUARD",
+    "GR5_WALL_CLOCK"
+  ],
+  "ts": "2026-10-19T08:05:00+08:00"
+}

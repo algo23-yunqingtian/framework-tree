@@ -1,0 +1,46 @@
+﻿{
+    "receipt_id":  "DSHC-T1-RECEIPT-001",
+    "ticket":  "DSHC-T1-GUI-HUMAN-LIKE",
+    "session":  "T1-20261019-080146",
+    "status":  "FETCH_SUCCESS",
+    "exit_code":  0,
+    "duration_sec":  159.9,
+    "token":  "A01-USER-REMOTE-T1",
+    "token_state":  "EXHAUSTED",
+    "method":  "GUI_HUMAN_LIKE",
+    "data_rows":  6,
+    "csv_path":  "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_raw.csv",
+    "csv_bytes":  618,
+    "csv_ge_5120":  false,
+    "sample_value":  "16155",
+    "anchor_date":  "2026-10-16",
+    "excel_pid":  3792,
+    "instruments":  7,
+    "fields":  7,
+    "captured":  42,
+    "failed":  7,
+    "errors":  {
+                   "LC.SHF.SETTLE":  "A1=2026-10-16/2026-10-16 B1=/",
+                   "LC.SHF.VOL":  "A1=无法读取数据！/无法读取数据！ B1=/",
+                   "LC.SHF.OPEN":  "A1=2026-10-16/2026-10-16 B1=/",
+                   "LC.SHF.LOW":  "A1=2026-10-16/2026-10-16 B1=/",
+                   "LC.SHF.OI":  "A1=2026-10-16/2026-10-16 B1=/",
+                   "LC.SHF.CLOSE":  "A1=2026-10-16/2026-10-16 B1=/",
+                   "LC.SHF.HIGH":  "A1=2026-10-16/2026-10-16 B1=/"
+               },
+    "preflight":  {
+                      "pass":  6,
+                      "result":  "PASS",
+                      "total":  6
+                  },
+    "red_lines":  {
+                      "front_excel_14644_untouched":  true,
+                      "no_windpy_invocation":  true,
+                      "no_human_operation_requested":  true,
+                      "no_backtest_by_dshc":  true,
+                      "honest_no_fabrication":  true,
+                      "no_marker_file":  true
+                  },
+    "events":  109,
+    "ts":  "2026-10-19T08:01:46.7692947+08:00"
+}
