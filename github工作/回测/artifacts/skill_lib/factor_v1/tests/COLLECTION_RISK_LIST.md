@@ -40,36 +40,41 @@ ATR% = ATR / CLOSE * 100
 
 | Field | WSD Field Name | Returns | Notes |
 |-------|---------------|---------|-------|
-| CLOSE | `close`       | Single price | Always available |
-| SETTLE | `settle`     | Single price | Always available |
-| OI | `oi`         | Single count | Always available |
-| VOL | `vol`        | Single count | May have gaps (observed: 27/427 dates for LC) |
-| **HIGH** | `high`      | Single price | Standard, but GFE instruments may not report |
-| **LOW** | `low`       | Single price | Same as HIGH |
+| CLOSE | `CLOSE`       | Single price | Always available (UPPERCASE) |
+| SETTLE | `SETTLE`     | Single price | Always available (UPPERCASE) |
+| OI | `OI`         | Single count | Always available (UPPERCASE) |
+| VOL | `volume`     | Single count | **FIXED** — `vol` fails, `volume` (lowercase) works |
+| **HIGH** | `HIGH`      | Single price | Always available (UPPERCASE) |
+| **LOW** | `LOW`       | Single price | Always available (UPPERCASE) |
 
-**Key Risk:** GFE (Guangzhou Futures Exchange) may not provide HIGH/LOW data through
-Wind's WSD interface. This was observed with VOL data for LC.SHF (27/427 dates).
-For HIGH/LOW, the risk is **HIGH** for LC.GFE — may yield zero data.
+**Key Fix (DSHC-VOL-FULL-COLLECT):** WSD field name case sensitivity resolved.
+- `CLOSE`/`SETTLE`/`OI`/`HIGH`/`LOW` use **UPPERCASE**
+- `volume` uses **lowercase** (`vol` returns 0 rows, `volume` returns full data)
+- All 9 instruments × 6 indicators × 432 days confirmed available
 
 ### 1.4 Time Window Risk
 
-All templates use **2025-01-02 → 2026-10-19** window.
+All templates use **2025-01-02 → 2026-10-19** window (432 trading days).
 
 | Risk | Description | Impact | Mitigation |
 |------|-------------|--------|------------|
-| VOL gap | LC.SHF VOL only covers 2026-09-03→2026-10-19 (27 days) | HIGH for VOL factor | Already documented; not used by V1 factors |
-| HIGH/LOW gap | May be similar to VOL — GFE instruments sparse | **HIGH** | Test before building ATR% factor |
-| Contract month gaps | Different contract months may have different date ranges | MEDIUM | Use continuous contract or dominant contract |
-| New instruments | RB/HC data availability untested in this time window | MEDIUM | First fetch may reveal gaps |
+| VOL gap | `vol` field returns 0 rows | **RESOLVED** | Use `volume` (lowercase) — confirmed 432 rows for all 9 instruments |
+| HIGH/LOW gap | GFE instruments may be sparse | **RESOLVED** | All 7 instruments confirmed 432 rows (including LC.GFE) |
+| CLOSE/OI/SETTLE gap | 6 metals previously had 400 days | **RESOLVED** | Full 432-day coverage confirmed for all 9 instruments |
+| Contract month gaps | Different contract months may have different date ranges | LOW | Use continuous contract or dominant contract |
+| New instruments | RB/HC data availability untested | **RESOLVED** | 432 rows confirmed for all indicators |
 
 ### 1.5 WSD Formula Risk Matrix
 
 | Formula Pattern | Tested? | Risk | Notes |
 |----------------|---------|------|-------|
-| `WSD(sym,"CLOSE;OI;SETTLE",...)` | ✅ Yes (6 metals) | LOW | All indicators returned |
+| `WSD(sym,"CLOSE;OI;SETTLE",...)` | ✅ Yes (6 metals) | LOW | All indicators returned (UPPERCASE) |
 | `WSD(sym,"HIGH;LOW",...)` | ✅ **Yes (all 7)** | **LOW** | **PROBE CONFIRMED** — all instruments return 432 rows |
+| `WSD(sym,"volume",...)` | ✅ **Yes (all 9)** | **LOW** | **FULL-COLLECT CONFIRMED** — 432 rows each (lowercase) |
+| `WSD(sym,"CLOSE;SETTLE;OI",...)` | ✅ Yes (F01) | LOW | F01 script proven (UPPERCASE fields) |
 | `WSD(sym,"HIGH;LOW;CLOSE",...)` | ❌ No | MEDIUM | Mixed fields may behave differently |
 | `WSD(sym,"OPEN;HIGH;LOW;CLOSE",...)` | ❌ No | MEDIUM | OHLC — most standard, likely works |
+| `WSD(sym,"VOL",...)` | ❌ **FAILS** | **HIGH** | **`vol`/`VOL` returns 0 rows — use `volume` instead** |
 | `WSD(sym,"ATR",...)` | ❌ No | HIGH | ATR may not be a direct WSD field |
 
 ### 1.6 ATR% Factor — Pre-Implementation Checklist
@@ -82,8 +87,9 @@ Before building ATR% as F10 factor, verify:
 - [ ] HIGH ≤ CLOSE × 1.02 (upper bound sanity)
 - [ ] LOW ≥ CLOSE × 0.98 (lower bound sanity)
 - [ ] No NULL/NaN values in HIGH/LOW columns
-- [x] GFE (LC.GFE) specifically tested for HIGH/LOW availability **(AVAILABLE)**
+- [x] GFE (LC.GFE) specifically tested for HIGH/LOW availability **(AVAILABLE — 432 rows)**
 - [x] RB.SHF and HC.SHF tested for date range coverage **(432 rows each)**
+- [x] **VOL data confirmed for all 9 instruments (432 rows each using `volume` field)**
 
 ---
 
@@ -235,12 +241,12 @@ Probe results (2026-10-19, DSHC-VOL-PROBE-COLLECT):
 
 | Indicator | WSD Field | RB.SHF | HC.SHF | V1 Usage | F10 Usage |
 |-----------|-----------|--------|--------|----------|-----------|
-| CLOSE     | `close`   | ✅ Expected | ✅ Expected | ✅ Yes (7 factors) | ✅ Yes (ATR%) |
-| SETTLE    | `settle`  | ✅ Expected | ✅ Expected | ✅ Yes (7 factors) | — |
-| OI        | `oi`      | ✅ Expected | ✅ Expected | ✅ Yes (7 factors) | — |
-| VOL       | `volume`  | ✅ 0 rows (`vol` fails) | ✅ 0 rows (`vol` fails) | ❌ No | — |
-| HIGH      | `high`    | ✅ **YES (432)** | ✅ **YES (432)** | ❌ No | ✅ Yes (ATR%) |
-| LOW       | `low`     | ✅ **YES (432)** | ✅ **YES (432)** | ❌ No | ✅ Yes (ATR%) |
+| CLOSE     | `CLOSE`   | ✅ **432** | ✅ **432** | ✅ Yes (7 factors) | ✅ Yes (ATR%) |
+| SETTLE    | `SETTLE`  | ✅ **432** | ✅ **432** | ✅ Yes (7 factors) | — |
+| OI        | `OI`      | ✅ **432** | ✅ **432** | ✅ Yes (7 factors) | — |
+| VOL       | `volume`  | ✅ **432** | ✅ **432** | ❌ No | — |
+| HIGH      | `HIGH`    | ✅ **432** | ✅ **432** | ❌ No | ✅ Yes (ATR%) |
+| LOW       | `LOW`     | ✅ **432** | ✅ **432** | ❌ No | ✅ Yes (ATR%) |
 
 ### 6.2 RB/HC Collection Schema
 
@@ -260,17 +266,82 @@ PROBE RESULTS:
 - VOL (`vol`): 0 rows (use `volume` instead)
 ```
 
-### 6.3 Volume Note for RB/HC (PROBE RESULTS)
+### 6.3 Volume Note for RB/HC (FULL-COLLECT CONFIRMED)
 
-RB/HC VOL data using `vol` field: **0 rows** (both RB and HC).
+RB/HC VOL data: **432 rows each** (both RB and HC) using `volume` field.
 
-**Root Cause:** WSD field name mismatch. The correct field name is `volume`, not `vol`.
+**Root Cause (RESOLVED):** WSD field name mismatch. The correct field name is `volume` (lowercase), not `vol`.
 
-**Probe evidence:** `WSD("CU.SHF","volume","2025-01-02","2025-01-10")` returns 7 rows (full data).
-`WSD("CU.SHF","vol","2025-01-02","2025-01-10")` returns 0 rows.
+**Evidence:**
+- `WSD("RB.SHF","volume","2025-01-02","2026-10-19","Fill=Previous")` → **432 rows**
+- `WSD("HC.SHF","volume","2025-01-02","2026-10-19","Fill=Previous")` → **432 rows**
+- `WSD("CU.SHF","vol","2025-01-02","2025-01-10")` → **0 rows** (fail)
+- `WSD("CU.SHF","volume","2025-01-02","2025-01-10")` → **7 rows** (OK)
 
-**Mitigation:** Use `volume` instead of `vol` in all WSD formulas. Full historical volume data is available.
+**Mitigation:** Use `volume` (lowercase) instead of `vol` in all WSD formulas. Full historical volume data is available for all 9 instruments.
 
 ---
 
-*Generated by DSHC-MAINT-01 | Updated by DSHC-VOL-PREP (pre-check) | Updated by DSHC-VOL-PROBE-COLLECT (probe results) | 2026-10-19 | wind_api_calls=32 (probe)*
+---
+
+## 7. DSHC-VOL-FULL-COLLECT — Full 9-Instrument Collection Results
+
+> Executed: 2026-10-19 | Token: DSHC-VOL-FULL-TOKEN | Wind API calls: 30
+
+### 7.1 Collection Summary
+
+All 9 instruments × 6 indicators × 432 trading days = **23,328 rows** collected.
+
+| Symbol | CLOSE | SETTLE | OI | VOL | HIGH | LOW | Total | Status |
+|--------|-------|--------|----|----|------|-----|-------|--------|
+| CU.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| ZN.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| PB.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| AL.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| SN.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| NI.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| LC.GFE | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| RB.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| HC.SHF | 432 | 432 | 432 | 432 | 432 | 432 | 2,592 | ✅ COMPLETE |
+| **Total** | **3,888** | **3,888** | **3,888** | **3,888** | **3,888** | **3,888** | **23,328** | |
+
+### 7.2 Key Findings
+
+1. **VOL gap RESOLVED:** Using `volume` (lowercase) returns full 432-day data for all 9 instruments
+2. **All indicators complete:** CLOSE/SETTLE/OI/VOL/HIGH/LOW all have 432 rows per symbol
+3. **LC.GFE fully available:** All 6 indicators confirmed (432 rows each) — no longer blacklisted for ATR%
+4. **RB/HC fully available:** All 6 indicators confirmed — expansion complete
+5. **Unified aligned table generated:** `output_sample/wdf_sample_all_aligned_v2.csv` (DATA_ONLY_V2)
+
+### 7.3 WSD Field Name Rules (Confirmed)
+
+| Indicator | Correct Field Name | Case | Notes |
+|-----------|-------------------|------|-------|
+| CLOSE | `CLOSE` | UPPERCASE | ✅ Works |
+| SETTLE | `SETTLE` | UPPERCASE | ✅ Works |
+| OI | `OI` | UPPERCASE | ✅ Works |
+| VOL | `volume` | **lowercase** | ✅ Works (NOT `vol`) |
+| HIGH | `HIGH` | UPPERCASE | ✅ Works |
+| LOW | `LOW` | UPPERCASE | ✅ Works |
+
+### 7.4 Artifacts
+
+| File | Size | SHA256 |
+|------|------|--------|
+| `all_9instruments_raw.csv` | 890,576B | `25eec50098afa5ed...` |
+| `wdf_sample_all_aligned_v2.csv` | 869,246B | `14950b9464baefd8...` |
+| `vol_full_sha_snapshot.json` | 304B | — |
+| `vol_full_collect_report.md` | 3,337B | — |
+| `vol_full_collect.py` | Script | — |
+
+### 7.5 Gate Status
+
+- **Gate:** CLOSED/HOLD
+- **Release Permit:** NOT_ISSUED
+- **FACTOR_EXTRACT_V1:** FROZEN V1.0.0 (unchanged)
+- **F01 Script:** LOCKED @ 593d688 (unchanged)
+- **Original V1 table:** `wdf_sample_metals_aligned.csv` — UNMODIFIED
+
+---
+
+*Generated by DSHC-MAINT-01 | Updated by DSHC-VOL-PREP (pre-check) | Updated by DSHC-VOL-PROBE-COLLECT (probe results) | Updated by DSHC-VOL-FULL-COLLECT (full collection) | 2026-10-19 | wind_api_calls=30 (full) + 32 (probe) = 62 total*
