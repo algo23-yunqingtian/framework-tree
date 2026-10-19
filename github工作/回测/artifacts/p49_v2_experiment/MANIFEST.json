@@ -1,9 +1,11 @@
 {
   "manifest_id": "DSHA-P49-V2-MANIFEST",
   "generated_at": "2026-10-19T04:29:22.943898+00:00",
+  "updated_at": "2026-10-19T05:15:00+00:00",
   "token": "DSHA-P49-V2-RUN-TOKEN",
-  "baseline_commit": "d496922",
-  "status": "EXPERIMENT_COMPLETE",
+  "summary_token": "DSHA-P49-V2-SUMMARY-TOKEN",
+  "baseline_commit": "43a03df",
+  "status": "SUMMARY_COMPLETE",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -142,10 +144,43 @@
       "path": "artifacts\\skill_lib\\factor_v1\\output\\factors_metadata.json",
       "sha256": "cd329c6ba1c2eaafb99e5c64cd1fd04784b41ee14ec7a41af3b068cab68284d6",
       "size_bytes": 3528
+    },
+    "p49_v2_full_review.md": {
+      "path": "artifacts\\p49_v2_experiment\\p49_v2_full_review.md",
+      "sha256": "B6A4FFE35605FED2889382780A4C68FAB7CD16A6166C9EC0C01A1C7A33CFEBA8",
+      "size_bytes": 36286,
+      "added_by": "DSHA-P49-V2-SUMMARY"
+    },
+    "diagnostic_stats.json": {
+      "path": "artifacts\\p49_v2_experiment\\diagnostic_stats.json",
+      "sha256": "DE60EFE3CF15A1CF34639DA13C77C470AF484321E24528D725000EF9309DC4CE",
+      "size_bytes": 33992,
+      "added_by": "DSHA-P49-V2-SUMMARY"
+    },
+    "diagnostics_compute.py": {
+      "path": "artifacts\\p49_v2_experiment\\diagnostics_compute.py",
+      "sha256": "9B6FABEF9EC6EE1358FAC74E0A8A0870C77B48F6344A482319B40025C65619F9",
+      "size_bytes": 34204,
+      "added_by": "DSHA-P49-V2-SUMMARY"
     }
   },
-  "total_artifact_count": 5,
-  "total_artifact_bytes": 914010,
+  "total_artifact_count": 8,
+  "total_artifact_bytes": 1018492,
+  "v2_summary": {
+    "agent": "DSHA-P49-V2-SUMMARY",
+    "summary_report": "p49_v2_full_review.md",
+    "diagnostic_stats": "diagnostic_stats.json",
+    "set_e_analysis": "COMPLETED",
+    "set_c_risk_warning": "RECORDED",
+    "vol_data_gap_recorded": true,
+    "high_low_gap_recorded": true,
+    "task_backlog": ["TODO-01: VOL全时段数据补齐", "TODO-02: RB/HC新品种接入", "TODO-03: ATR/F10因子验证"],
+    "factor_ic_ir_computed": true,
+    "factor_correlation_matrix": true,
+    "per_symbol_returns": true,
+    "drawdown_stats": true,
+    "diagnostic_script": "diagnostics_compute.py"
+  },
   "experiment_summary": {
     "set_A": {
       "label": "A: 保守型 — 周度调仓 + 信号阈值0.3",
