@@ -1,0 +1,107 @@
+{
+  "output_id": "DSHA-TASK044-CORR-MATRIX",
+  "generated_at": "2026-10-19T16:20:55.607358+00:00",
+  "token": "DSHA-TASK044-FACTOR-RESEARCH-TOKEN",
+  "task": "DSHA-TASK044-FACTOR-RESEARCH",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "factor_list": [
+    "contract_switch_flag",
+    "momentum_20d",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "oi_level",
+    "realized_vol_20d",
+    "spread_cs",
+    "vol_regime_change"
+  ],
+  "num_factors": 8,
+  "correlation_matrix": {
+    "contract_switch_flag": {
+      "contract_switch_flag": 1.0,
+      "momentum_20d": 0.0,
+      "oi_change_1d": 0.0,
+      "oi_change_rate_7d": 0.0,
+      "oi_level": 0.0,
+      "realized_vol_20d": 0.0,
+      "spread_cs": 0.0,
+      "vol_regime_change": 0.0
+    },
+    "momentum_20d": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 1.0,
+      "oi_change_1d": 0.019038,
+      "oi_change_rate_7d": 0.008277,
+      "oi_level": 0.294343,
+      "realized_vol_20d": 0.264431,
+      "spread_cs": 0.112415,
+      "vol_regime_change": 0.126657
+    },
+    "oi_change_1d": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.019038,
+      "oi_change_1d": 1.0,
+      "oi_change_rate_7d": 0.241454,
+      "oi_level": 0.084802,
+      "realized_vol_20d": -0.02892,
+      "spread_cs": 0.134107,
+      "vol_regime_change": -0.088787
+    },
+    "oi_change_rate_7d": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.008277,
+      "oi_change_1d": 0.241454,
+      "oi_change_rate_7d": 1.0,
+      "oi_level": 0.124333,
+      "realized_vol_20d": -0.011488,
+      "spread_cs": 0.013811,
+      "vol_regime_change": -0.015936
+    },
+    "oi_level": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.294343,
+      "oi_change_1d": 0.084802,
+      "oi_change_rate_7d": 0.124333,
+      "oi_level": 1.0,
+      "realized_vol_20d": 0.604092,
+      "spread_cs": -0.011664,
+      "vol_regime_change": 0.056305
+    },
+    "realized_vol_20d": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.264431,
+      "oi_change_1d": -0.02892,
+      "oi_change_rate_7d": -0.011488,
+      "oi_level": 0.604092,
+      "realized_vol_20d": 1.0,
+      "spread_cs": -0.067852,
+      "vol_regime_change": 0.130237
+    },
+    "spread_cs": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.112415,
+      "oi_change_1d": 0.134107,
+      "oi_change_rate_7d": 0.013811,
+      "oi_level": -0.011664,
+      "realized_vol_20d": -0.067852,
+      "spread_cs": 1.0,
+      "vol_regime_change": -0.000115
+    },
+    "vol_regime_change": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.126657,
+      "oi_change_1d": -0.088787,
+      "oi_change_rate_7d": -0.015936,
+      "oi_level": 0.056305,
+      "realized_vol_20d": 0.130237,
+      "spread_cs": -0.000115,
+      "vol_regime_change": 1.0
+    }
+  },
+  "notes": "Pearson相关性矩阵, 基于4品种白名单全样本计算"
+}

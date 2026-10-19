@@ -1,0 +1,123 @@
+{
+  "manifest_id": "DSHA-TASK044-RESEARCH-MANIFEST",
+  "generated_at": "2026-10-19T16:22:13.256193+00:00",
+  "token": "DSHA-TASK044-FACTOR-RESEARCH-TOKEN",
+  "task": "DSHA-TASK044-FACTOR-RESEARCH",
+  "execution_type": "research_sandbox",
+  "baseline_commit": "73b0e32",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "sandbox_isolation": {
+    "research_dir": "artifacts\\p49_v3_research",
+    "production_dir": "artifacts\\p49_v3_backtest",
+    "production_configs_untouched": true,
+    "deprecated_script_archived": true
+  },
+  "p1_high_flip_diagnosis": {
+    "factors_analyzed": [
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "root_cause_distribution": {
+      "REGIME_DEPENDENT": 7
+    },
+    "correlation_matrix": {
+      "path": "artifacts\\p49_v3_research\\corr_matrix.json",
+      "num_factors": 8
+    },
+    "regime_report": {
+      "path": "artifacts\\p49_v3_research\\regime_stability_report.json"
+    }
+  },
+  "p2_candidate_pool": {
+    "total_candidates": 15,
+    "passed_count": 3,
+    "passed_factors": [
+      "oi_acceleration_5d",
+      "vol_return_kurtosis_20d",
+      "vol_range_pct_20d"
+    ],
+    "candidate_list": {
+      "path": "artifacts\\p49_v3_research\\candidate_factor_list.json"
+    }
+  },
+  "p3_comparison_backtest": {
+    "control_metrics": {
+      "total_return": 0.186733,
+      "annualized_return": 0.105282,
+      "annual_volatility": 0.036168,
+      "daily_volatility": 0.002278,
+      "max_drawdown": -0.017102,
+      "sharpe_ratio": 2.910945,
+      "calmar_ratio": 6.155973,
+      "win_rate": 0.422274,
+      "avg_win": 0.002157,
+      "avg_loss": 0.001335,
+      "profit_loss_ratio": 1.61592,
+      "trade_count": 251,
+      "total_trades": 251,
+      "n_periods": 431,
+      "initial_capital": 1000000.0,
+      "final_capital": 1186732.8,
+      "total_transaction_cost": 0.008798,
+      "cost_ratio": 0.047118
+    },
+    "experimental_metrics": {
+      "total_return": 0.163306,
+      "annualized_return": 0.092472,
+      "annual_volatility": 0.037014,
+      "daily_volatility": 0.002332,
+      "max_drawdown": -0.034359,
+      "sharpe_ratio": 2.498293,
+      "calmar_ratio": 2.691329,
+      "win_rate": 0.477958,
+      "avg_win": 0.001994,
+      "avg_loss": 0.001374,
+      "profit_loss_ratio": 1.451161,
+      "trade_count": 287,
+      "total_trades": 287,
+      "n_periods": 431,
+      "initial_capital": 1000000.0,
+      "final_capital": 1163306.06,
+      "total_transaction_cost": 0.009693,
+      "cost_ratio": 0.059355
+    },
+    "comparison_summary": {
+      "return_delta": -0.023427,
+      "sharpe_delta": -0.412652,
+      "max_dd_delta": -0.017257,
+      "flip_rate_reduction": 0.0503,
+      "trade_count_delta": 36,
+      "win_rate_delta": 0.055684
+    },
+    "metrics_path": "artifacts\\p49_v3_research\\comparison_backtest_metrics.json"
+  },
+  "p4_artifacts": {
+    "corr_matrix_json": "artifacts\\p49_v3_research\\corr_matrix.json",
+    "candidate_factor_list_json": "artifacts\\p49_v3_research\\candidate_factor_list.json",
+    "regime_stability_report_json": "artifacts\\p49_v3_research\\regime_stability_report.json",
+    "comparison_backtest_metrics_json": "artifacts\\p49_v3_research\\comparison_backtest_metrics.json",
+    "research_manifest_json": "artifacts\\p49_v3_research\\MANIFEST_v3_research.json"
+  },
+  "research_data": {
+    "factors_csv": "artifacts\\p49_v3_backtest\\factors_full_11_v3.csv",
+    "factors_csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+    "data_rows": 1728,
+    "symbols": [
+      "LC.GFE",
+      "NI.SHF",
+      "CU.SHF",
+      "ZN.SHF"
+    ]
+  }
+}
