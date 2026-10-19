@@ -487,5 +487,39 @@
     }
   },
   "total_artifact_count": 8,
-  "total_artifact_bytes": 2114270
+  "total_artifact_bytes": 2114270,
+  "attribution_update": {
+    "update_id": "DSHA-P49-V3-ATTRIBUTION",
+    "updated_at": "2026-10-19T06:42:22.119274+00:00",
+    "token": "DSHA-P49-V3-ATTRIBUTION-TOKEN",
+    "new_artifacts": {
+      "v3_performance_attribution.md": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\v3_performance_attribution.md",
+        "sha256": "69813973fd70bf4a6ef57b781237df5f1aa5e77a11045626b233b874ff8f1335",
+        "size_bytes": 7698
+      },
+      "instrument_white_list.json": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\instrument_white_list.json",
+        "sha256": "db4f2a96c327d4e2286edfc8608b7eb330de829e543f6b45e9a2f73884c42d37",
+        "size_bytes": 3691
+      },
+      "factor_ic_ir_9vs4_comparison.csv": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_ic_ir_9vs4_comparison.csv",
+        "sha256": "04187b4c959848c75ac7f0af4349af36be9e3a1843d6150ecddff57898964e59",
+        "size_bytes": 609
+      },
+      "scenario_ab_metrics.json": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\scenario_ab_metrics.json",
+        "sha256": "77aa00381b0b7a61aca25861a722c0eb592a39769892fd177cd5c2add7a08ee4",
+        "size_bytes": 4742
+      },
+      "run_v3_attribution.py": {
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\run_v3_attribution.py",
+        "sha256": "5be813b064f1457e075a2c1dfa93e68a9eb4045d0e98c99a161d4673966cce4f",
+        "size_bytes": 57118
+      }
+    },
+    "total_artifact_count_after_update": 13,
+    "total_artifact_bytes_after_update": 2188128
+  }
 }

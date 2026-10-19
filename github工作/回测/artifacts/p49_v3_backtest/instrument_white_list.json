@@ -1,0 +1,142 @@
+{
+  "manifest_id": "DSHA-P49-V3-INSTRUMENT-WHITELIST",
+  "generated_at": "2026-10-19T06:42:13.118836+00:00",
+  "token": "DSHA-P49-V3-ATTRIBUTION-TOKEN",
+  "baseline_commit": "a2a7fe2",
+  "status": "FROZEN",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "criteria": {
+    "min_sharpe_ratio": 0.3,
+    "min_total_return": 0.0,
+    "rule": "Sharpe≥0.3 AND cumulative_return>0"
+  },
+  "tiers": {
+    "CORE": {
+      "description": "核心池 (必选): 正收益 + 夏普>0.9",
+      "symbols": [
+        "LC.GFE",
+        "NI.SHF"
+      ],
+      "count": 2
+    },
+    "WATCH": {
+      "description": "观察池 (备选): 小幅正收益 + 夏普偏低",
+      "symbols": [
+        "CU.SHF",
+        "ZN.SHF"
+      ],
+      "count": 2
+    },
+    "ELIMINATED": {
+      "description": "淘汰池 (直接剔除): 全部负收益",
+      "symbols": [
+        "AL.SHF",
+        "HC.SHF",
+        "PB.SHF",
+        "RB.SHF",
+        "SN.SHF"
+      ],
+      "count": 5
+    }
+  },
+  "per_symbol": {
+    "AL.SHF": {
+      "tier": "ELIMINATED",
+      "total_return": -0.032484,
+      "sharpe_ratio": -0.388008,
+      "max_drawdown": -0.052636,
+      "win_rate": 0.143852,
+      "profit_loss_ratio": 1.429842,
+      "trade_count": 46,
+      "passes_criteria": false
+    },
+    "CU.SHF": {
+      "tier": "WATCH",
+      "total_return": 0.044297,
+      "sharpe_ratio": 0.381165,
+      "max_drawdown": -0.064191,
+      "win_rate": 0.229698,
+      "profit_loss_ratio": 1.408621,
+      "trade_count": 65,
+      "passes_criteria": true
+    },
+    "HC.SHF": {
+      "tier": "ELIMINATED",
+      "total_return": -0.05038,
+      "sharpe_ratio": -0.825331,
+      "max_drawdown": -0.053929,
+      "win_rate": 0.148492,
+      "profit_loss_ratio": 1.03405,
+      "trade_count": 29,
+      "passes_criteria": false
+    },
+    "LC.GFE": {
+      "tier": "CORE",
+      "total_return": 0.169641,
+      "sharpe_ratio": 0.898052,
+      "max_drawdown": -0.088987,
+      "win_rate": 0.273782,
+      "profit_loss_ratio": 1.332263,
+      "trade_count": 162,
+      "passes_criteria": true
+    },
+    "NI.SHF": {
+      "tier": "CORE",
+      "total_return": 0.112227,
+      "sharpe_ratio": 0.983273,
+      "max_drawdown": -0.042268,
+      "win_rate": 0.187935,
+      "profit_loss_ratio": 1.323877,
+      "trade_count": 67,
+      "passes_criteria": true
+    },
+    "PB.SHF": {
+      "tier": "ELIMINATED",
+      "total_return": -0.031085,
+      "sharpe_ratio": -0.562623,
+      "max_drawdown": -0.073915,
+      "win_rate": 0.162413,
+      "profit_loss_ratio": 1.164331,
+      "trade_count": 43,
+      "passes_criteria": false
+    },
+    "RB.SHF": {
+      "tier": "ELIMINATED",
+      "total_return": -0.050468,
+      "sharpe_ratio": -0.74367,
+      "max_drawdown": -0.067431,
+      "win_rate": 0.164733,
+      "profit_loss_ratio": 1.1059,
+      "trade_count": 40,
+      "passes_criteria": false
+    },
+    "SN.SHF": {
+      "tier": "ELIMINATED",
+      "total_return": -0.057099,
+      "sharpe_ratio": -0.400448,
+      "max_drawdown": -0.119954,
+      "win_rate": 0.213457,
+      "profit_loss_ratio": 1.200567,
+      "trade_count": 125,
+      "passes_criteria": false
+    },
+    "ZN.SHF": {
+      "tier": "WATCH",
+      "total_return": 0.074252,
+      "sharpe_ratio": 0.856203,
+      "max_drawdown": -0.034667,
+      "win_rate": 0.229698,
+      "profit_loss_ratio": 1.414153,
+      "trade_count": 49,
+      "passes_criteria": true
+    }
+  },
+  "total_approved": 4,
+  "total_rejected": 5
+}

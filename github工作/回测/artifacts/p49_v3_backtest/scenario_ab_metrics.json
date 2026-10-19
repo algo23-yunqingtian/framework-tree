@@ -1,0 +1,164 @@
+{
+  "manifest_id": "DSHA-P49-V3-SCENARIO-AB",
+  "generated_at": "2026-10-19T06:42:22.103279+00:00",
+  "token": "DSHA-P49-V3-ATTRIBUTION-TOKEN",
+  "baseline_commit": "a2a7fe2",
+  "status": "SCENARIO_COMPLETE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "set_e_params_unchanged": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "scenarios": {
+    "V3_original_9symbols": {
+      "description": "V3原始: 9品种, 8因子, Set E参数",
+      "symbols": [
+        "AL.SHF",
+        "CU.SHF",
+        "HC.SHF",
+        "LC.GFE",
+        "NI.SHF",
+        "PB.SHF",
+        "RB.SHF",
+        "SN.SHF",
+        "ZN.SHF"
+      ],
+      "symbol_count": 9,
+      "metrics": {
+        "total_return": 0.019341,
+        "annualized_return": 0.011263,
+        "annual_volatility": 0.022386,
+        "daily_volatility": 0.00141,
+        "max_drawdown": -0.031036,
+        "sharpe_ratio": 0.50314,
+        "calmar_ratio": 0.362903,
+        "win_rate": 0.276102,
+        "avg_win": 0.00147,
+        "avg_loss": 0.000761,
+        "profit_loss_ratio": 1.930454,
+        "trade_count": 316,
+        "total_trades": 316,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1019340.52,
+        "total_transaction_cost": 0.034745,
+        "cost_ratio": 1.796495
+      }
+    },
+    "V2_setE_6symbols": {
+      "description": "V2对照: 6品种, Set E参数 (READ_ONLY)",
+      "symbols": [
+        "AL.SHF",
+        "CU.SHF",
+        "NI.SHF",
+        "PB.SHF",
+        "SN.SHF",
+        "ZN.SHF"
+      ],
+      "symbol_count": 6,
+      "metrics": {
+        "total_return": 0.055651,
+        "annualized_return": 0.032556,
+        "annual_volatility": 0.025442,
+        "daily_volatility": 0.001603,
+        "max_drawdown": -0.021869,
+        "sharpe_ratio": 1.279583,
+        "calmar_ratio": 1.488678,
+        "win_rate": 0.410798,
+        "avg_win": 0.001314,
+        "avg_loss": 0.001031,
+        "profit_loss_ratio": 1.274675,
+        "trade_count": 240,
+        "total_trades": 240,
+        "n_periods": 426,
+        "initial_capital": 1000000.0,
+        "final_capital": 1055651.1,
+        "total_transaction_cost": 0.008652,
+        "cost_ratio": 0.155477
+      }
+    },
+    "ScenarioA_4core_symbols": {
+      "description": "情景A: 仅保留核心4盈利品种 (LC/NI/ZN/CU), Set E参数不变",
+      "symbols": [
+        "LC.GFE",
+        "NI.SHF",
+        "ZN.SHF",
+        "CU.SHF"
+      ],
+      "symbol_count": 4,
+      "metrics": {
+        "total_return": 0.048046,
+        "annualized_return": 0.027818,
+        "annual_volatility": 0.039033,
+        "daily_volatility": 0.002459,
+        "max_drawdown": -0.027017,
+        "sharpe_ratio": 0.712669,
+        "calmar_ratio": 1.029637,
+        "win_rate": 0.234339,
+        "avg_win": 0.002924,
+        "avg_loss": 0.001594,
+        "profit_loss_ratio": 1.834139,
+        "trade_count": 244,
+        "total_trades": 244,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1048045.61,
+        "total_transaction_cost": 0.032804,
+        "cost_ratio": 0.682765
+      }
+    },
+    "ScenarioB_9symbols_drag_zero": {
+      "description": "情景B: 9品种保留, 5个拖累品种零仓位上限",
+      "symbols": [
+        "AL.SHF",
+        "CU.SHF",
+        "HC.SHF",
+        "LC.GFE",
+        "NI.SHF",
+        "PB.SHF",
+        "RB.SHF",
+        "SN.SHF",
+        "ZN.SHF"
+      ],
+      "symbol_count": 9,
+      "zero_position_symbols": [
+        "AL.SHF",
+        "SN.SHF",
+        "PB.SHF",
+        "RB.SHF",
+        "HC.SHF"
+      ],
+      "metrics": {
+        "total_return": 0.023611,
+        "annualized_return": 0.013738,
+        "annual_volatility": 0.012457,
+        "daily_volatility": 0.000785,
+        "max_drawdown": -0.011057,
+        "sharpe_ratio": 1.102883,
+        "calmar_ratio": 1.24243,
+        "win_rate": 0.301624,
+        "avg_win": 0.000765,
+        "avg_loss": 0.000418,
+        "profit_loss_ratio": 1.832406,
+        "trade_count": 294,
+        "total_trades": 294,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1023611.1,
+        "total_transaction_cost": 0.013996,
+        "cost_ratio": 0.592785
+      }
+    }
+  },
+  "comparison_summary": {
+    "return_improvement_A_vs_V3": 0.028705,
+    "return_improvement_B_vs_V3": 0.00427,
+    "sharpe_improvement_A_vs_V3": 0.209529,
+    "sharpe_improvement_B_vs_V3": 0.599743,
+    "drawdown_improvement_A_vs_V3": 0.004019,
+    "drawdown_improvement_B_vs_V3": 0.019979
+  }
+}
