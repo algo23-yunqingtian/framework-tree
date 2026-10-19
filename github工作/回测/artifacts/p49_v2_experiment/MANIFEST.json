@@ -1,0 +1,216 @@
+{
+  "manifest_id": "DSHA-P49-V2-MANIFEST",
+  "generated_at": "2026-10-19T04:29:22.943898+00:00",
+  "token": "DSHA-P49-V2-RUN-TOKEN",
+  "baseline_commit": "d496922",
+  "status": "EXPERIMENT_COMPLETE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "baseline_read_only": true,
+    "csv_not_modified": true,
+    "draft_mode": false
+  },
+  "data_provenance": {
+    "aligned_csv_path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_aligned.csv",
+    "aligned_csv_sha256": "E74B06787048099D5EBF9962027AF9DC6DFBAA7ED5387B714A9A2CA0440AFE20",
+    "original_csv_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+    "total_factors": 11,
+    "base_factors": [
+      "spread_cs",
+      "oi_level",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "spread_pct",
+      "contract_switch_flag",
+      "momentum_20d"
+    ],
+    "new_factors": [
+      "realized_vol_20d",
+      "vol_regime_change",
+      "vol_target_weight",
+      "oi_change_accel_7d",
+      "oi_slope_14d",
+      "cross_sectional_momentum_20d",
+      "momentum_dispersion"
+    ],
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "NI.SHF",
+      "PB.SHF",
+      "SN.SHF",
+      "ZN.SHF"
+    ]
+  },
+  "factor_availability": {
+    "realized_vol_20d": 2280,
+    "vol_regime_change": 2250,
+    "vol_target_weight": 2280,
+    "oi_change_accel_7d": 2316,
+    "oi_slope_14d": 2322,
+    "cross_sectional_momentum_20d": 2280,
+    "momentum_dispersion": 2280
+  },
+  "experiment_config": {
+    "signal_factors": [
+      "spread_cs",
+      "oi_level",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "spread_pct",
+      "contract_switch_flag",
+      "momentum_20d",
+      "realized_vol_20d",
+      "vol_regime_change",
+      "vol_target_weight",
+      "oi_change_accel_7d",
+      "oi_slope_14d",
+      "cross_sectional_momentum_20d",
+      "momentum_dispersion"
+    ],
+    "signal_weights": [
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142
+    ],
+    "normalization": "zscore",
+    "transaction_cost": 0.0005,
+    "initial_capital": 1000000.0
+  },
+  "vol_data_gap": {
+    "vol_source": "Wind F01",
+    "vol_total_rows": 162,
+    "vol_ratio": 0.0632,
+    "vol_date_count": 27,
+    "close_date_count": 400,
+    "date_overlap": 0,
+    "date_overlap_ratio": 0.0,
+    "vol_date_range": {
+      "min": "2026-09-03 00:00:00",
+      "max": "2026-10-19 00:00:00"
+    },
+    "close_date_range": {
+      "min": "2025-01-02 00:00:00",
+      "max": "2026-08-26 00:00:00"
+    },
+    "impact": {
+      "factors_affected": [
+        "realized_vol_20d (F08)",
+        "vol_regime_change (F09)",
+        "vol_target_weight (F11)"
+      ],
+      "note": "VOL原始Wind数据仅27天, 与CLOSE零重叠. 波动率因子使用CLOSE收益率计算, 非VOL数据.",
+      "vol_data_status": "ZERO_OVERLAP_WITH_CLOSE",
+      "workaround": "波动率因子基于CLOSE价格收益率计算, 不依赖VOL数据列"
+    }
+  },
+  "artifact_files": {
+    "factors_full_11.csv": {
+      "path": "artifacts\\p49_v2_experiment\\factors_full_11.csv",
+      "sha256": "805208aba8c3d9bed958549c3af2f7fc5a4d696795a44adf129261079cff86d6",
+      "size_bytes": 584809
+    },
+    "backtest_metrics_v2.json": {
+      "path": "artifacts\\p49_v2_experiment\\backtest_metrics_v2.json",
+      "sha256": "8a6d927ecc0169be74692db7381d10f6075a6216d88e8d583a4953c340ec14c8",
+      "size_bytes": 10719
+    },
+    "comparison_report.md": {
+      "path": "artifacts\\p49_v2_experiment\\comparison_report.md",
+      "sha256": "1bb4351f373fc0d6ea221ec6e61398381682f3a5b3b8f26e2106dc6861fc4b18",
+      "size_bytes": 6352
+    },
+    "factors_output.csv": {
+      "path": "artifacts\\skill_lib\\factor_v1\\output\\factors_output.csv",
+      "sha256": "01f5f3c15eddd2b4c5f0a5626dd94fdb95ec949716e551001e6d26d6f9d21c69",
+      "size_bytes": 308602
+    },
+    "factors_metadata.json": {
+      "path": "artifacts\\skill_lib\\factor_v1\\output\\factors_metadata.json",
+      "sha256": "cd329c6ba1c2eaafb99e5c64cd1fd04784b41ee14ec7a41af3b068cab68284d6",
+      "size_bytes": 3528
+    }
+  },
+  "total_artifact_count": 5,
+  "total_artifact_bytes": 914010,
+  "experiment_summary": {
+    "set_A": {
+      "label": "A: 保守型 — 周度调仓 + 信号阈值0.3",
+      "total_return": 0.084834,
+      "sharpe_ratio": 0.748363,
+      "max_drawdown": -0.083965,
+      "trade_count": 190,
+      "improvement_vs_baseline": {
+        "return_improvement": 0.461702,
+        "sharpe_improvement": 2.046328,
+        "drawdown_reduction": 0.336996,
+        "win_rate_improvement": -0.043062
+      }
+    },
+    "set_B": {
+      "label": "B: 波动率目标 — 15%目标波动 + 周度调仓",
+      "total_return": 0.051912,
+      "sharpe_ratio": 0.803762,
+      "max_drawdown": -0.03942,
+      "trade_count": 250,
+      "improvement_vs_baseline": {
+        "return_improvement": 0.42878,
+        "sharpe_improvement": 2.101727,
+        "drawdown_reduction": 0.381541,
+        "win_rate_improvement": 0.003886
+      }
+    },
+    "set_C": {
+      "label": "C: 回撤控制 — 20%清仓 + 10%减半",
+      "total_return": 1.550546,
+      "sharpe_ratio": 7.176913,
+      "max_drawdown": -0.034244,
+      "trade_count": 233,
+      "improvement_vs_baseline": {
+        "return_improvement": 1.927414,
+        "sharpe_improvement": 8.474878,
+        "drawdown_reduction": 0.386717,
+        "win_rate_improvement": 0.140036
+      }
+    },
+    "set_D": {
+      "label": "D: 低频增强 — 双周调仓 + 信号阈值0.5",
+      "total_return": 0.038126,
+      "sharpe_ratio": 0.472659,
+      "max_drawdown": -0.071018,
+      "trade_count": 39,
+      "improvement_vs_baseline": {
+        "return_improvement": 0.414994,
+        "sharpe_improvement": 1.770624,
+        "drawdown_reduction": 0.349943,
+        "win_rate_improvement": -0.251982
+      }
+    },
+    "set_E": {
+      "label": "E: 组合最优 — 波动率目标+回撤+周度+阈值0.3",
+      "total_return": 0.055651,
+      "sharpe_ratio": 1.279583,
+      "max_drawdown": -0.021869,
+      "trade_count": 240,
+      "improvement_vs_baseline": {
+        "return_improvement": 0.432519,
+        "sharpe_improvement": 2.577548,
+        "drawdown_reduction": 0.399092,
+        "win_rate_improvement": -0.03602
+      }
+    }
+  }
+}

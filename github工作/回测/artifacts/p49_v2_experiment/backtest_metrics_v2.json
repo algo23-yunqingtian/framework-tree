@@ -1,0 +1,336 @@
+{
+  "report_id": "DSHA-P49-V2-20261019_122922",
+  "report_type": "p49_v2_comparison_backtest",
+  "agent": "DSHA-P49-V2-RUN",
+  "created_at": "2026-10-19T04:29:22.941899+00:00",
+  "token": "DSHA-P49-V2-RUN-TOKEN",
+  "token_status": "ACTIVE",
+  "status": "EXPERIMENT_COMPLETE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "baseline_read_only": true,
+    "csv_not_modified": true,
+    "draft_mode": false
+  },
+  "baseline": {
+    "label": "P49原版 (基线)",
+    "status": "LOCKED",
+    "source": "baseline_lock.json",
+    "data_source": "wdf_sample_metals_long.csv",
+    "data_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+    "factors_used": [
+      "momentum_20d",
+      "spread_cs",
+      "oi_momentum_7d"
+    ],
+    "factor_count": 3,
+    "position_strategy": "full",
+    "rebalance_freq": "daily",
+    "threshold": 0.0,
+    "transaction_cost": 0.0005,
+    "metrics": {
+      "symbols_run": 6,
+      "total_return_avg": -0.376868,
+      "total_return_median": -0.250829,
+      "sharpe_avg": -1.297965,
+      "sharpe_median": -1.322666,
+      "max_drawdown_avg": -0.420961,
+      "max_drawdown_worst": -0.828087,
+      "win_rate_avg": 0.446818,
+      "profit_loss_ratio_avg": 0.919272
+    },
+    "per_symbol": {
+      "CU.SHF": {
+        "total_return": -0.15959,
+        "sharpe_ratio": -0.54305,
+        "max_drawdown": -0.22853,
+        "win_rate": 0.462312,
+        "profit_loss_ratio": 1.046151,
+        "trade_count": 92,
+        "final_capital": 840410.24
+      },
+      "ZN.SHF": {
+        "total_return": -0.187399,
+        "sharpe_ratio": -0.815932,
+        "max_drawdown": -0.278498,
+        "win_rate": 0.454774,
+        "profit_loss_ratio": 1.034065,
+        "trade_count": 114,
+        "final_capital": 812601.01
+      },
+      "AL.SHF": {
+        "total_return": -0.189542,
+        "sharpe_ratio": -0.776124,
+        "max_drawdown": -0.246869,
+        "win_rate": 0.472362,
+        "profit_loss_ratio": 0.943936,
+        "trade_count": 78,
+        "final_capital": 810458.14
+      },
+      "PB.SHF": {
+        "total_return": -0.312116,
+        "sharpe_ratio": -1.948448,
+        "max_drawdown": -0.320377,
+        "win_rate": 0.404523,
+        "profit_loss_ratio": 0.973126,
+        "trade_count": 142,
+        "final_capital": 687883.51
+      },
+      "NI.SHF": {
+        "total_return": -0.599941,
+        "sharpe_ratio": -1.829399,
+        "max_drawdown": -0.623406,
+        "win_rate": 0.452261,
+        "profit_loss_ratio": 0.778974,
+        "trade_count": 107,
+        "final_capital": 400059.11
+      },
+      "SN.SHF": {
+        "total_return": -0.812619,
+        "sharpe_ratio": -1.874839,
+        "max_drawdown": -0.828087,
+        "win_rate": 0.434673,
+        "profit_loss_ratio": 0.739378,
+        "trade_count": 109,
+        "final_capital": 187380.58
+      }
+    }
+  },
+  "experiment": {
+    "set_A": {
+      "config": {
+        "id": "set_A",
+        "label": "A: 保守型 — 周度调仓 + 信号阈值0.3",
+        "position_strategy": "full",
+        "rebalance_freq": "weekly",
+        "threshold": 0.3,
+        "target_vol": null,
+        "max_single_weight": 1.0,
+        "drawdown_stop": null,
+        "description": "降低交易频率, 过滤弱信号, 减少成本侵蚀"
+      },
+      "metrics": {
+        "total_return": 0.084834,
+        "annualized_return": 0.049347,
+        "annual_volatility": 0.06594,
+        "daily_volatility": 0.004154,
+        "max_drawdown": -0.083965,
+        "sharpe_ratio": 0.748363,
+        "calmar_ratio": 0.587706,
+        "win_rate": 0.403756,
+        "avg_win": 0.00306,
+        "avg_loss": 0.00255,
+        "profit_loss_ratio": 1.199846,
+        "trade_count": 190,
+        "total_trades": 190,
+        "n_periods": 426,
+        "initial_capital": 1000000.0,
+        "final_capital": 1084833.88,
+        "total_transaction_cost": 0.018333,
+        "cost_ratio": 0.216109
+      },
+      "improvement_vs_baseline": {
+        "return_improvement": 0.461702,
+        "sharpe_improvement": 2.046328,
+        "drawdown_reduction": 0.336996,
+        "win_rate_improvement": -0.043062
+      },
+      "elapsed_seconds": 0.01
+    },
+    "set_B": {
+      "config": {
+        "id": "set_B",
+        "label": "B: 波动率目标 — 15%目标波动 + 周度调仓",
+        "position_strategy": "vol_target",
+        "rebalance_freq": "weekly",
+        "threshold": 0.0,
+        "target_vol": 0.15,
+        "max_single_weight": 0.5,
+        "drawdown_stop": null,
+        "description": "动态仓位: 高波动期降低仓位, 低波动期提高仓位"
+      },
+      "metrics": {
+        "total_return": 0.051912,
+        "annualized_return": 0.030391,
+        "annual_volatility": 0.037811,
+        "daily_volatility": 0.002382,
+        "max_drawdown": -0.03942,
+        "sharpe_ratio": 0.803762,
+        "calmar_ratio": 0.770955,
+        "win_rate": 0.450704,
+        "avg_win": 0.00192,
+        "avg_loss": 0.001686,
+        "profit_loss_ratio": 1.139283,
+        "trade_count": 250,
+        "total_trades": 250,
+        "n_periods": 426,
+        "initial_capital": 1000000.0,
+        "final_capital": 1051912.49,
+        "total_transaction_cost": 0.013873,
+        "cost_ratio": 0.267241
+      },
+      "improvement_vs_baseline": {
+        "return_improvement": 0.42878,
+        "sharpe_improvement": 2.101727,
+        "drawdown_reduction": 0.381541,
+        "win_rate_improvement": 0.003886
+      },
+      "elapsed_seconds": 0.01
+    },
+    "set_C": {
+      "config": {
+        "id": "set_C",
+        "label": "C: 回撤控制 — 20%清仓 + 10%减半",
+        "position_strategy": "drawdown_stop",
+        "rebalance_freq": "daily",
+        "threshold": 0.0,
+        "target_vol": null,
+        "max_single_weight": 1.0,
+        "drawdown_stop": {
+          "warn": -0.1,
+          "halt": -0.2
+        },
+        "description": "硬性止损: 回撤超10%仓位减半, 超20%全部清仓"
+      },
+      "metrics": {
+        "total_return": 1.550546,
+        "annualized_return": 0.739977,
+        "annual_volatility": 0.103105,
+        "daily_volatility": 0.006495,
+        "max_drawdown": -0.034244,
+        "sharpe_ratio": 7.176913,
+        "calmar_ratio": 21.608836,
+        "win_rate": 0.586854,
+        "avg_win": 0.005469,
+        "avg_loss": 0.003341,
+        "profit_loss_ratio": 1.636868,
+        "trade_count": 233,
+        "total_trades": 233,
+        "n_periods": 426,
+        "initial_capital": 1000000.0,
+        "final_capital": 2550545.77,
+        "total_transaction_cost": 0.057667,
+        "cost_ratio": 0.037191
+      },
+      "improvement_vs_baseline": {
+        "return_improvement": 1.927414,
+        "sharpe_improvement": 8.474878,
+        "drawdown_reduction": 0.386717,
+        "win_rate_improvement": 0.140036
+      },
+      "elapsed_seconds": 0.01
+    },
+    "set_D": {
+      "config": {
+        "id": "set_D",
+        "label": "D: 低频增强 — 双周调仓 + 信号阈值0.5",
+        "position_strategy": "full",
+        "rebalance_freq": "biweekly",
+        "threshold": 0.5,
+        "target_vol": null,
+        "max_single_weight": 1.0,
+        "drawdown_stop": null,
+        "description": "更激进的频率降低: 每两周评估, 仅交易强信号"
+      },
+      "metrics": {
+        "total_return": 0.038126,
+        "annualized_return": 0.022381,
+        "annual_volatility": 0.047351,
+        "daily_volatility": 0.002983,
+        "max_drawdown": -0.071018,
+        "sharpe_ratio": 0.472659,
+        "calmar_ratio": 0.315141,
+        "win_rate": 0.194836,
+        "avg_win": 0.003444,
+        "avg_loss": 0.002935,
+        "profit_loss_ratio": 1.173435,
+        "trade_count": 39,
+        "total_trades": 39,
+        "n_periods": 426,
+        "initial_capital": 1000000.0,
+        "final_capital": 1038125.82,
+        "total_transaction_cost": 0.0035,
+        "cost_ratio": 0.091801
+      },
+      "improvement_vs_baseline": {
+        "return_improvement": 0.414994,
+        "sharpe_improvement": 1.770624,
+        "drawdown_reduction": 0.349943,
+        "win_rate_improvement": -0.251982
+      },
+      "elapsed_seconds": 0.01
+    },
+    "set_E": {
+      "config": {
+        "id": "set_E",
+        "label": "E: 组合最优 — 波动率目标+回撤+周度+阈值0.3",
+        "position_strategy": "combined",
+        "rebalance_freq": "weekly",
+        "threshold": 0.3,
+        "target_vol": 0.15,
+        "max_single_weight": 0.5,
+        "drawdown_stop": {
+          "warn": -0.1,
+          "halt": -0.2
+        },
+        "description": "全部优化叠加: 波动率目标+回撤控制+周度调仓+阈值过滤"
+      },
+      "metrics": {
+        "total_return": 0.055651,
+        "annualized_return": 0.032556,
+        "annual_volatility": 0.025442,
+        "daily_volatility": 0.001603,
+        "max_drawdown": -0.021869,
+        "sharpe_ratio": 1.279583,
+        "calmar_ratio": 1.488678,
+        "win_rate": 0.410798,
+        "avg_win": 0.001314,
+        "avg_loss": 0.001031,
+        "profit_loss_ratio": 1.274675,
+        "trade_count": 240,
+        "total_trades": 240,
+        "n_periods": 426,
+        "initial_capital": 1000000.0,
+        "final_capital": 1055651.1,
+        "total_transaction_cost": 0.008652,
+        "cost_ratio": 0.155477
+      },
+      "improvement_vs_baseline": {
+        "return_improvement": 0.432519,
+        "sharpe_improvement": 2.577548,
+        "drawdown_reduction": 0.399092,
+        "win_rate_improvement": -0.03602
+      },
+      "elapsed_seconds": 0.01
+    }
+  },
+  "vol_data_gap": {
+    "vol_source": "Wind F01",
+    "vol_total_rows": 162,
+    "vol_ratio": 0.0632,
+    "vol_date_count": 27,
+    "close_date_count": 400,
+    "date_overlap": 0,
+    "date_overlap_ratio": 0.0,
+    "vol_date_range": {
+      "min": "2026-09-03 00:00:00",
+      "max": "2026-10-19 00:00:00"
+    },
+    "close_date_range": {
+      "min": "2025-01-02 00:00:00",
+      "max": "2026-08-26 00:00:00"
+    },
+    "impact": {
+      "factors_affected": [
+        "realized_vol_20d (F08)",
+        "vol_regime_change (F09)",
+        "vol_target_weight (F11)"
+      ],
+      "note": "VOL原始Wind数据仅27天, 与CLOSE零重叠. 波动率因子使用CLOSE收益率计算, 非VOL数据.",
+      "vol_data_status": "ZERO_OVERLAP_WITH_CLOSE",
+      "workaround": "波动率因子基于CLOSE价格收益率计算, 不依赖VOL数据列"
+    }
+  }
+}
