@@ -1,0 +1,1627 @@
+{
+  "export_id": "DSHA-TASK042-ROLLING-IC-EXPORT",
+  "generated_at": "2026-10-19T14:19:57.743823+00:00",
+  "token": "DSHA-TASK042-V3-LOCK-TOKEN",
+  "task": "DSHA-TASK042-V3-LOCK",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "window_days": 20,
+  "step_days": 20,
+  "symbols": [
+    "LC.GFE",
+    "NI.SHF",
+    "CU.SHF",
+    "ZN.SHF"
+  ],
+  "factor_columns": [
+    "contract_switch_flag",
+    "momentum_20d",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "oi_level",
+    "realized_vol_20d",
+    "spread_cs",
+    "vol_regime_change"
+  ],
+  "factors": {
+    "contract_switch_flag": {
+      "window_ics": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-02-06",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": 0.0,
+          "sign": 0
+        }
+      ],
+      "num_windows": 21,
+      "flip_count": 0,
+      "flip_rate": 0.0,
+      "flip_rate_pct": "0.0%",
+      "ic_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "signs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "momentum_20d": {
+      "window_ics": [
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": -0.067554,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": 0.076945,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": -0.131901,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": 0.037485,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": -0.058894,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": -0.013324,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.15848,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": -0.199338,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": -0.049225,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.063224,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": -0.012317,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": 0.016185,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": -0.367127,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": -0.340423,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.077165,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": -0.188238,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": -0.189158,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": -0.057482,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": -0.183097,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": 0.019462,
+          "sign": 1
+        }
+      ],
+      "num_windows": 20,
+      "flip_count": 13,
+      "flip_rate": 0.6842,
+      "flip_rate_pct": "68.4%",
+      "ic_values": [
+        -0.067554,
+        0.076945,
+        -0.131901,
+        0.037485,
+        -0.058894,
+        -0.013324,
+        0.15848,
+        -0.199338,
+        -0.049225,
+        0.063224,
+        -0.012317,
+        0.016185,
+        -0.367127,
+        -0.340423,
+        0.077165,
+        -0.188238,
+        -0.189158,
+        -0.057482,
+        -0.183097,
+        0.019462
+      ],
+      "signs": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1
+      ]
+    },
+    "oi_change_1d": {
+      "window_ics": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-02-06",
+          "n_pairs": 76,
+          "ic": -0.044875,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": -0.029255,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": -0.005788,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": -0.167797,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": 0.164698,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.048485,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": -0.014023,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.338556,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": -0.009048,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": 0.073014,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": -0.210375,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": 0.044175,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": -0.032188,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": -0.072908,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": -0.007497,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.050912,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": 0.048317,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": -0.177833,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": 0.263576,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": 0.00245,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": 0.075827,
+          "sign": 1
+        }
+      ],
+      "num_windows": 21,
+      "flip_count": 11,
+      "flip_rate": 0.55,
+      "flip_rate_pct": "55.0%",
+      "ic_values": [
+        -0.044875,
+        -0.029255,
+        -0.005788,
+        -0.167797,
+        0.164698,
+        0.048485,
+        -0.014023,
+        0.338556,
+        -0.009048,
+        0.073014,
+        -0.210375,
+        0.044175,
+        -0.032188,
+        -0.072908,
+        -0.007497,
+        0.050912,
+        0.048317,
+        -0.177833,
+        0.263576,
+        0.00245,
+        0.075827
+      ],
+      "signs": [
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ]
+    },
+    "oi_change_rate_7d": {
+      "window_ics": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-02-06",
+          "n_pairs": 52,
+          "ic": 0.161257,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": -0.002683,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": 0.201023,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": -0.143146,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": 0.170874,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.105818,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": -0.151218,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.071303,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": 0.056282,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": 0.114098,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.034174,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": 0.014503,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": -0.053608,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": -0.084391,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": 0.006152,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.02958,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": -0.096025,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": -0.032727,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": 0.007655,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": -0.064238,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": -0.017094,
+          "sign": -1
+        }
+      ],
+      "num_windows": 21,
+      "flip_count": 11,
+      "flip_rate": 0.55,
+      "flip_rate_pct": "55.0%",
+      "ic_values": [
+        0.161257,
+        -0.002683,
+        0.201023,
+        -0.143146,
+        0.170874,
+        0.105818,
+        -0.151218,
+        0.071303,
+        0.056282,
+        0.114098,
+        0.034174,
+        0.014503,
+        -0.053608,
+        -0.084391,
+        0.006152,
+        0.02958,
+        -0.096025,
+        -0.032727,
+        0.007655,
+        -0.064238,
+        -0.017094
+      ],
+      "signs": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1
+      ]
+    },
+    "oi_level": {
+      "window_ics": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-02-06",
+          "n_pairs": 80,
+          "ic": -0.006284,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": -0.021696,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": 0.051913,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": -0.166252,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": -0.041603,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.155781,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": 0.039355,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.052881,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": -0.119224,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": 0.133486,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.164756,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": 0.191035,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": 0.164939,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": -0.07077,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": 0.044049,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.211746,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": -0.229368,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": 0.052208,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": -0.217956,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": 0.007429,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": -0.245418,
+          "sign": -1
+        }
+      ],
+      "num_windows": 21,
+      "flip_count": 12,
+      "flip_rate": 0.6,
+      "flip_rate_pct": "60.0%",
+      "ic_values": [
+        -0.006284,
+        -0.021696,
+        0.051913,
+        -0.166252,
+        -0.041603,
+        0.155781,
+        0.039355,
+        0.052881,
+        -0.119224,
+        0.133486,
+        0.164756,
+        0.191035,
+        0.164939,
+        -0.07077,
+        0.044049,
+        0.211746,
+        -0.229368,
+        0.052208,
+        -0.217956,
+        0.007429,
+        -0.245418
+      ],
+      "signs": [
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ]
+    },
+    "realized_vol_20d": {
+      "window_ics": [
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": -0.068744,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": -0.158526,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": 0.263978,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": -0.10451,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.054872,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": -0.100984,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.174401,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": -0.160171,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": -0.006935,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.14377,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": 0.128084,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": 0.095552,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": 0.037772,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": 0.067315,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.180328,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": -0.255201,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": 0.088657,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": -0.256619,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": 0.015965,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": -0.253674,
+          "sign": -1
+        }
+      ],
+      "num_windows": 20,
+      "flip_count": 12,
+      "flip_rate": 0.6316,
+      "flip_rate_pct": "63.2%",
+      "ic_values": [
+        -0.068744,
+        -0.158526,
+        0.263978,
+        -0.10451,
+        0.054872,
+        -0.100984,
+        0.174401,
+        -0.160171,
+        -0.006935,
+        0.14377,
+        0.128084,
+        0.095552,
+        0.037772,
+        0.067315,
+        0.180328,
+        -0.255201,
+        0.088657,
+        -0.256619,
+        0.015965,
+        -0.253674
+      ],
+      "signs": [
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ]
+    },
+    "spread_cs": {
+      "window_ics": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-02-06",
+          "n_pairs": 80,
+          "ic": -0.130749,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": -0.362679,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": -0.081655,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": -0.071565,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": -0.259565,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.085181,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": -0.146445,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.168636,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": 0.119074,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": -0.242584,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.01007,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": -0.064865,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": -0.302568,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": 0.001298,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": -0.176148,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.264062,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": -0.224142,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": -0.00961,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": -0.044497,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": -0.117862,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": 0.174302,
+          "sign": 1
+        }
+      ],
+      "num_windows": 21,
+      "flip_count": 11,
+      "flip_rate": 0.55,
+      "flip_rate_pct": "55.0%",
+      "ic_values": [
+        -0.130749,
+        -0.362679,
+        -0.081655,
+        -0.071565,
+        -0.259565,
+        0.085181,
+        -0.146445,
+        0.168636,
+        0.119074,
+        -0.242584,
+        0.01007,
+        -0.064865,
+        -0.302568,
+        0.001298,
+        -0.176148,
+        0.264062,
+        -0.224142,
+        -0.00961,
+        -0.044497,
+        -0.117862,
+        0.174302
+      ],
+      "signs": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1
+      ]
+    },
+    "vol_regime_change": {
+      "window_ics": [
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 60,
+          "ic": -0.061494,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": -0.097135,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": 0.18943,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": -0.146327,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.127612,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": -0.191367,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.151734,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": 0.081532,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": -0.085262,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.059813,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": -0.068448,
+          "sign": -1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": 0.108843,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": -0.100343,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": 0.112436,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.075426,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": -0.061574,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": 0.087898,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": 0.136,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": -0.0693,
+          "sign": -1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": -0.002509,
+          "sign": -1
+        }
+      ],
+      "num_windows": 20,
+      "flip_count": 14,
+      "flip_rate": 0.7368,
+      "flip_rate_pct": "73.7%",
+      "ic_values": [
+        -0.061494,
+        -0.097135,
+        0.18943,
+        -0.146327,
+        0.127612,
+        -0.191367,
+        0.151734,
+        0.081532,
+        -0.085262,
+        0.059813,
+        -0.068448,
+        0.108843,
+        -0.100343,
+        0.112436,
+        0.075426,
+        -0.061574,
+        0.087898,
+        0.136,
+        -0.0693,
+        -0.002509
+      ],
+      "signs": [
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        -1
+      ]
+    }
+  },
+  "summary": {
+    "total_factors": 8,
+    "total_windows_computed": 165,
+    "window_days": 20,
+    "step_days": 20,
+    "symbols": [
+      "LC.GFE",
+      "NI.SHF",
+      "CU.SHF",
+      "ZN.SHF"
+    ],
+    "symbol_count": 4
+  }
+}

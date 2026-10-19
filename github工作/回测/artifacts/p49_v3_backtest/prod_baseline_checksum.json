@@ -1,0 +1,113 @@
+{
+  "checksum_id": "DSHA-TASK042-PROD-BASELINE-CHECKSUM",
+  "generated_at": "2026-10-19T14:19:40.047326+00:00",
+  "token": "DSHA-TASK042-V3-LOCK-TOKEN",
+  "baseline_commit": "0f224cb",
+  "task": "DSHA-TASK042-V3-LOCK",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "production_baseline": {
+    "method": "equal_weight",
+    "factor_count": 8,
+    "factors": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "weight_per_factor": 0.125,
+    "symbol_count": 4,
+    "symbols": [
+      "LC.GFE",
+      "NI.SHF",
+      "CU.SHF",
+      "ZN.SHF"
+    ]
+  },
+  "backtest_results": {
+    "total_return": 0.186733,
+    "annualized_return": 0.105282,
+    "annual_volatility": 0.036168,
+    "daily_volatility": 0.002278,
+    "max_drawdown": -0.017102,
+    "sharpe_ratio": 2.910945,
+    "calmar_ratio": 6.155973,
+    "win_rate": 0.422274,
+    "avg_win": 0.002157,
+    "avg_loss": 0.001335,
+    "profit_loss_ratio": 1.61592,
+    "trade_count": 251,
+    "total_trades": 251,
+    "n_periods": 431,
+    "initial_capital": 1000000.0,
+    "final_capital": 1186732.8,
+    "total_transaction_cost": 0.008798,
+    "cost_ratio": 0.047118
+  },
+  "zero_drift_verification": {
+    "all_passed": true,
+    "tolerance": 1e-06,
+    "checks": {
+      "total_return": {
+        "actual": 0.186733,
+        "target": 0.186733,
+        "diff": 0.0,
+        "passed": true
+      },
+      "sharpe_ratio": {
+        "actual": 2.910945,
+        "target": 2.910945,
+        "diff": 0.0,
+        "passed": true
+      },
+      "max_drawdown": {
+        "actual": -0.017102,
+        "target": -0.017102,
+        "diff": 0.0,
+        "passed": true
+      }
+    }
+  },
+  "set_e_params": {
+    "signal_threshold": 0.3,
+    "rebalance_interval": 5,
+    "target_vol": 0.15,
+    "max_single_weight": 0.5,
+    "drawdown_warn": -0.1,
+    "drawdown_halt": -0.2,
+    "transaction_cost": 0.0005,
+    "initial_capital": 1000000.0
+  },
+  "data_source": {
+    "factors_csv": "artifacts\\p49_v3_backtest\\factors_full_11_v3.csv",
+    "factors_csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+    "csv_rows": 3888,
+    "csv_symbols": 9
+  },
+  "config_fingerprints": {
+    "factor_weight_prod": {
+      "path": "artifacts\\p49_v3_backtest\\factor_weight_prod.json",
+      "sha256": "ed42e17040796aba64e12c6ae5ebea1618f47e1dbca7b3fd2c427a1c060cf07b",
+      "size_bytes": 2924
+    },
+    "factor_enable_config": {
+      "path": "artifacts\\p49_v3_backtest\\factor_enable_config.json",
+      "sha256": "1c0ecba61dd210a716096c7d3e664dc0812456e6067311a47ab783f7339fbd91",
+      "size_bytes": 2854
+    },
+    "set_e_lock": {
+      "path": "artifacts\\p49_v2_experiment\\strategy_set_e.lock.json",
+      "sha256": "2e0ecb49d08a2097932828ffcff780d30a1321baf5e1f54c2e5b82d0f6a7490e",
+      "size_bytes": 8465
+    }
+  }
+}

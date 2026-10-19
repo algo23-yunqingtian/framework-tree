@@ -10,7 +10,9 @@
     "wind_api_calls": 0,
     "offline_only": true,
     "gate": "CLOSED/HOLD",
-    "release": "NOT_ISSUED"
+    "release": "NOT_ISSUED",
+    "readonly_locked": true,
+    "readonly_locked_at": "2026-10-19T14:19:39.810321+00:00"
   },
   "factor_layers": {
     "always_enabled": {
@@ -70,5 +72,17 @@
     "spread_cs"
   ],
   "restored_at": "2026-10-19T08:50:00.000000+00:00",
-  "restored_by_token": "DSHA-P50-V3-FREEZE-TOKEN"
+  "restored_by_token": "DSHA-P50-V3-FREEZE-TOKEN",
+  "readonly": {
+    "locked": true,
+    "locked_at": "2026-10-19T14:19:39.810321+00:00",
+    "locked_by_token": "DSHA-TASK042-V3-LOCK-TOKEN",
+    "locked_by_task": "DSHA-TASK042-V3-LOCK",
+    "lock_reason": "生产基线固化 — 只读标记, 因子启用逻辑不可修改",
+    "readonly_fields": [
+      "factor_layers",
+      "enabled_4_symbol_pool",
+      "enabled_9_symbol_pool"
+    ]
+  }
 }

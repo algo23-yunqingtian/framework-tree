@@ -10,7 +10,9 @@
     "wind_api_calls": 0,
     "offline_only": true,
     "gate": "CLOSED/HOLD",
-    "release": "NOT_ISSUED"
+    "release": "NOT_ISSUED",
+    "readonly_locked": true,
+    "readonly_locked_at": "2026-10-19T14:19:39.808324+00:00"
   },
   "weighting_method": "equal_weight",
   "description": "等权配置: 全部8个因子权重均等, 每个因子权重=1/8=0.125, 权重和=1.0",
@@ -26,14 +28,38 @@
     "vol_regime_change": 0.125
   },
   "weight_factors_sorted": [
-    ["contract_switch_flag", 0.125],
-    ["momentum_20d", 0.125],
-    ["oi_change_1d", 0.125],
-    ["oi_change_rate_7d", 0.125],
-    ["oi_level", 0.125],
-    ["realized_vol_20d", 0.125],
-    ["spread_cs", 0.125],
-    ["vol_regime_change", 0.125]
+    [
+      "contract_switch_flag",
+      0.125
+    ],
+    [
+      "momentum_20d",
+      0.125
+    ],
+    [
+      "oi_change_1d",
+      0.125
+    ],
+    [
+      "oi_change_rate_7d",
+      0.125
+    ],
+    [
+      "oi_level",
+      0.125
+    ],
+    [
+      "realized_vol_20d",
+      0.125
+    ],
+    [
+      "spread_cs",
+      0.125
+    ],
+    [
+      "vol_regime_change",
+      0.125
+    ]
   ],
   "total_factors": 8,
   "weight_sum": 1.0,
@@ -68,5 +94,18 @@
     "max_drawdown": -0.017102,
     "annualized_return": 0.105282,
     "calmar_ratio": 6.155973
+  },
+  "readonly": {
+    "locked": true,
+    "locked_at": "2026-10-19T14:19:39.808324+00:00",
+    "locked_by_token": "DSHA-TASK042-V3-LOCK-TOKEN",
+    "locked_by_task": "DSHA-TASK042-V3-LOCK",
+    "lock_reason": "生产基线固化 — 只读标记, 任何修改须经人工审批",
+    "readonly_fields": [
+      "factor_weights",
+      "weighting_method",
+      "symbol_pool",
+      "symbols"
+    ]
   }
 }
