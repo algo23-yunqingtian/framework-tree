@@ -1,0 +1,234 @@
+{
+  "lock_id": "DSHA-P49-V2-SET-E-LOCK",
+  "lock_token": "DSHA-P49-V2-PARAM-TOKEN",
+  "created_at": "2026-10-19T05:30:00+00:00",
+  "status": "PERMANENTLY_FROZEN",
+  "frozen_by": "DSHA-P49-V2-PARAM-LOCK",
+  "source_commit": "43a03df",
+  "source_experiment": "DSHA-P49-V2-RUN",
+  "source_metrics_sha256": "8a6d927ecc0169be74692db7381d10f6075a6216d88e8d583a4953c340ec14c8",
+
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "baseline_read_only": true,
+    "csv_not_modified": true,
+    "draft_mode": false
+  },
+
+  "strategy_identity": {
+    "id": "set_E",
+    "label": "E: 组合最优 — 波动率目标+回撤控制+周度调仓+信号阈值过滤",
+    "rank": 2,
+    "rank_by": "sharpe_ratio",
+    "rank_note": "Rank 1 is Set C (drawdown-stop theoretical extreme, NOT for production)",
+    "recommendation": "PRIMARILY_RECOMMENDED_FOR_LIVE_TRADING"
+  },
+
+  "parameters": {
+    "signal_config": {
+      "factor_pool_size": 14,
+      "factor_pool": [
+        "spread_cs",
+        "oi_level",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "spread_pct",
+        "contract_switch_flag",
+        "momentum_20d",
+        "realized_vol_20d",
+        "vol_regime_change",
+        "vol_target_weight",
+        "oi_change_accel_7d",
+        "oi_slope_14d",
+        "cross_sectional_momentum_20d",
+        "momentum_dispersion"
+      ],
+      "normalization": "zscore",
+      "aggregation": "equal_weight",
+      "signal_weights": {
+        "spread_cs": 0.07142857142857142,
+        "oi_level": 0.07142857142857142,
+        "oi_change_1d": 0.07142857142857142,
+        "oi_change_rate_7d": 0.07142857142857142,
+        "spread_pct": 0.07142857142857142,
+        "contract_switch_flag": 0.07142857142857142,
+        "momentum_20d": 0.07142857142857142,
+        "realized_vol_20d": 0.07142857142857142,
+        "vol_regime_change": 0.07142857142857142,
+        "vol_target_weight": 0.07142857142857142,
+        "oi_change_accel_7d": 0.07142857142857142,
+        "oi_slope_14d": 0.07142857142857142,
+        "cross_sectional_momentum_20d": 0.07142857142857142,
+        "momentum_dispersion": 0.07142857142857142
+      },
+      "signal_threshold": 0.3,
+      "signal_formula": "signal = (1/14) * sum(zscore(f_i) for f_i in factor_pool); position = +1 if signal > 0.3, -1 if signal < -0.3, 0 otherwise"
+    },
+
+    "rebalance_config": {
+      "frequency": "weekly",
+      "frequency_days": 5,
+      "non_rebalance_days_behavior": "hold_last_position"
+    },
+
+    "position_config": {
+      "strategy": "combined",
+      "strategy_components": [
+        "vol_target",
+        "drawdown_stop",
+        "threshold_filter"
+      ],
+      "vol_target": {
+        "target_annual_volatility": 0.15,
+        "max_weight_clip": 0.5,
+        "min_weight_clip": 0.0,
+        "formula": "vol_weight = clip(target_vol / realized_vol_20d, 0, 0.5)"
+      },
+      "max_single_symbol_weight": 0.5,
+      "weight_cap_formula": "final_position = signal_position * vol_weight, capped at max_single_weight per symbol"
+    },
+
+    "drawdown_stop_config": {
+      "warn_threshold": -0.10,
+      "halt_threshold": -0.20,
+      "warn_action": "position * 0.5 (half position)",
+      "halt_action": "position = 0 (full liquidation)",
+      "evaluation_method": "sequential_daily",
+      "actual_trigger_count": 0,
+      "actual_trigger_note": "Never triggered in backtest; max drawdown -2.19% never reached -10% warn line"
+    },
+
+    "backtest_config": {
+      "initial_capital": 1000000.0,
+      "transaction_cost": 0.0005,
+      "transaction_cost_note": "0.05% per trade, fixed assumption",
+      "aggregation_method": "portfolio_level_daily_average",
+      "aggregation_formula": "daily_portfolio_return = mean(per_symbol_returns) across 6 symbols",
+      "symbols_count": 6,
+      "symbols": [
+        "AL.SHF",
+        "CU.SHF",
+        "NI.SHF",
+        "PB.SHF",
+        "SN.SHF",
+        "ZN.SHF"
+      ],
+      "total_trading_periods": 426,
+      "date_range_start": "2025-01-02",
+      "date_range_end": "2026-08-26"
+    }
+  },
+
+  "frozen_performance": {
+    "total_return": 0.055651,
+    "annualized_return": 0.032556,
+    "annual_volatility": 0.025442,
+    "sharpe_ratio": 1.279583,
+    "max_drawdown": -0.021869,
+    "calmar_ratio": 1.488678,
+    "win_rate": 0.410798,
+    "profit_loss_ratio": 1.274675,
+    "trade_count": 240,
+    "total_transaction_cost": 0.008652,
+    "cost_ratio": 0.155477,
+    "final_capital": 1055651.10,
+    "improvement_vs_baseline": {
+      "return_improvement_pct": 43.25,
+      "sharpe_improvement_abs": 2.577548,
+      "drawdown_reduction_pct": 39.91
+    },
+    "baseline_comparison": {
+      "baseline_total_return": -0.376868,
+      "baseline_sharpe": -1.297965,
+      "baseline_max_drawdown": -0.420961
+    }
+  },
+
+  "frozen_per_symbol_performance": {
+    "NI.SHF": { "total_return": 0.2519, "sharpe": 1.9390, "max_drawdown": -0.0510, "contribution": "PRIMARY_POSITIVE" },
+    "CU.SHF": { "total_return": 0.1356, "sharpe": 1.4195, "max_drawdown": -0.0303, "contribution": "STABLE_POSITIVE" },
+    "ZN.SHF": { "total_return": 0.0445, "sharpe": 0.6922, "max_drawdown": -0.0451, "contribution": "MODERATE_POSITIVE" },
+    "SN.SHF": { "total_return": 0.0322, "sharpe": 0.2471, "max_drawdown": -0.0883, "contribution": "LOW_POSITIVE" },
+    "PB.SHF": { "total_return": 0.0295, "sharpe": 0.8157, "max_drawdown": -0.0178, "contribution": "LOW_POSITIVE" },
+    "AL.SHF": { "total_return": -0.0872, "sharpe": -1.1907, "max_drawdown": -0.1001, "contribution": "NEGATIVE_DRAG" }
+  },
+
+  "frozen_factor_diagnostics": {
+    "top_3_by_ir_annualized": [
+      { "factor": "spread_cs", "ic_mean": 0.760675, "ir_annualized": 343.9066, "hit_rate": 1.0 },
+      { "factor": "spread_pct", "ic_mean": 0.766663, "ir_annualized": 324.112, "hit_rate": 1.0 },
+      { "factor": "momentum_20d", "ic_mean": 0.21009, "ir_annualized": 229.0181, "hit_rate": 1.0 }
+    ],
+    "negative_ic_factors": [
+      { "factor": "realized_vol_20d", "ic_mean": -0.017375, "ir_annualized": -16.1158 },
+      { "factor": "oi_slope_14d", "ic_mean": -0.000533, "ir_annualized": -0.149 }
+    ],
+    "highly_correlated_pairs_above_0.7": [
+      { "pair": ["realized_vol_20d", "vol_target_weight"], "correlation": -0.9297 },
+      { "pair": ["spread_cs", "spread_pct"], "correlation": 0.8305 },
+      { "pair": ["oi_change_rate_7d", "oi_change_accel_7d"], "correlation": 0.8244 }
+    ],
+    "effective_independent_factors": 11,
+    "effective_independent_factors_note": "14 total minus 3 highly correlated pairs (one from each pair considered redundant)"
+  },
+
+  "frozen_risk_disclosures": [
+    {
+      "risk_id": "RISK-001",
+      "title": "AL.SHF拖累",
+      "description": "铝品种贡献-8.72%, 夏普-1.19, 显著拖累组合",
+      "severity": "HIGH",
+      "mitigation": "V3需优化品种权重或剔除AL"
+    },
+    {
+      "risk_id": "RISK-002",
+      "title": "低胜率41.1%",
+      "description": "胜率低于50%, 依赖盈亏比1.27弥补",
+      "severity": "MEDIUM",
+      "mitigation": "V3需优化信号阈值或增加因子IC权重"
+    },
+    {
+      "risk_id": "RISK-003",
+      "title": "因子相关性冗余",
+      "description": "3对因子|r|>0.7, 实际有效独立因子仅约11个",
+      "severity": "MEDIUM",
+      "mitigation": "V3需剔除重复因子或改为加权复合"
+    },
+    {
+      "risk_id": "RISK-004",
+      "title": "样本量有限",
+      "description": "426交易日, 约1.7年, 未覆盖完整牛熊周期",
+      "severity": "MEDIUM",
+      "mitigation": "V3需全样本回测"
+    },
+    {
+      "risk_id": "RISK-005",
+      "title": "VOL数据缺口",
+      "description": "VOL仅27天与CLOSE零重叠; F08/F09/F11基于CLOSE收益率计算不受影响, 但F10 ATR需HIGH/LOW数据",
+      "severity": "CRITICAL",
+      "mitigation": "TODO-01: VOL全时段数据补齐(阻塞)"
+    }
+  ],
+
+  "integrity_hash": {
+    "description": "SHA256 of all frozen parameter values concatenated",
+    "values": [
+      "factor_pool=14",
+      "normalization=zscore",
+      "aggregation=equal_weight",
+      "signal_threshold=0.3",
+      "rebalance_freq=weekly",
+      "rebalance_days=5",
+      "position_strategy=combined",
+      "target_vol=0.15",
+      "max_single_weight=0.5",
+      "drawdown_warn=-0.10",
+      "drawdown_halt=-0.20",
+      "transaction_cost=0.0005",
+      "initial_capital=1000000.0"
+    ],
+    "note": "Any change to these values requires a new PARAM-LOCK token"
+  }
+}

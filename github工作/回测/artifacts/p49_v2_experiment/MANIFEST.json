@@ -1,11 +1,12 @@
 {
   "manifest_id": "DSHA-P49-V2-MANIFEST",
   "generated_at": "2026-10-19T04:29:22.943898+00:00",
-  "updated_at": "2026-10-19T05:15:00+00:00",
+  "updated_at": "2026-10-19T05:30:00+00:00",
   "token": "DSHA-P49-V2-RUN-TOKEN",
   "summary_token": "DSHA-P49-V2-SUMMARY-TOKEN",
+  "param_lock_token": "DSHA-P49-V2-PARAM-TOKEN",
   "baseline_commit": "43a03df",
-  "status": "SUMMARY_COMPLETE",
+  "status": "SUMMARY_LOCKED",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -147,9 +148,11 @@
     },
     "p49_v2_full_review.md": {
       "path": "artifacts\\p49_v2_experiment\\p49_v2_full_review.md",
-      "sha256": "B6A4FFE35605FED2889382780A4C68FAB7CD16A6166C9EC0C01A1C7A33CFEBA8",
-      "size_bytes": 36286,
-      "added_by": "DSHA-P49-V2-SUMMARY"
+      "sha256": "496f791e84067fef3599e7ba00e0a60323cc52eb10ecb3ad5c6c8162af57ff35",
+      "size_bytes": 60052,
+      "added_by": "DSHA-P49-V2-SUMMARY",
+      "updated_by": "DSHA-P49-V2-PARAM-LOCK",
+      "update_note": "定稿版: 补充诊断详情(IC/IR逐品种分解/相关性扩展/品种收益时序归因), 红字标注SetC风险, 新增V3迭代清单和参数冻结摘要"
     },
     "diagnostic_stats.json": {
       "path": "artifacts\\p49_v2_experiment\\diagnostic_stats.json",
@@ -162,10 +165,17 @@
       "sha256": "9B6FABEF9EC6EE1358FAC74E0A8A0870C77B48F6344A482319B40025C65619F9",
       "size_bytes": 34204,
       "added_by": "DSHA-P49-V2-SUMMARY"
+    },
+    "strategy_set_e.lock.json": {
+      "path": "artifacts\\p49_v2_experiment\\strategy_set_e.lock.json",
+      "sha256": "2e0ecb49d08a2097932828ffcff780d30a1321baf5e1f54c2e5b82d0f6a7490e",
+      "size_bytes": 8465,
+      "added_by": "DSHA-P49-V2-PARAM-LOCK",
+      "lock_status": "PERMANENTLY_FROZEN"
     }
   },
-  "total_artifact_count": 8,
-  "total_artifact_bytes": 1018492,
+  "total_artifact_count": 9,
+  "total_artifact_bytes": 1050723,
   "v2_summary": {
     "agent": "DSHA-P49-V2-SUMMARY",
     "summary_report": "p49_v2_full_review.md",
@@ -180,6 +190,38 @@
     "per_symbol_returns": true,
     "drawdown_stats": true,
     "diagnostic_script": "diagnostics_compute.py"
+  },
+  "param_lock": {
+    "agent": "DSHA-P49-V2-PARAM-LOCK",
+    "lock_file": "strategy_set_e.lock.json",
+    "lock_status": "PERMANENTLY_FROZEN",
+    "lock_token": "DSHA-P49-V2-PARAM-TOKEN",
+    "set_e_params_frozen": true,
+    "frozen_parameters": {
+      "factor_pool_size": 14,
+      "normalization": "zscore",
+      "aggregation": "equal_weight",
+      "signal_threshold": 0.3,
+      "rebalance_freq": "weekly",
+      "target_vol": 0.15,
+      "max_single_weight": 0.5,
+      "drawdown_warn": -0.1,
+      "drawdown_halt": -0.2,
+      "transaction_cost": 0.0005
+    },
+    "frozen_performance": {
+      "total_return": 0.055651,
+      "sharpe_ratio": 1.279583,
+      "max_drawdown": -0.021869,
+      "calmar_ratio": 1.488678
+    },
+    "v3_iteration_checklist": {
+      "v3_01": "9品种全样本回测 (P0, 阻塞性)",
+      "v3_02": "启用F08/F09/F11波动率因子 (P1)",
+      "v3_03": "上线F10 ATR%因子 (P1)",
+      "v3_04": "新增RB/HC两个新品种 (P1)"
+    },
+    "set_c_red_text_warning": "永久标注: Set C收益+155.05%为理论极值, 禁止实盘"
   },
   "experiment_summary": {
     "set_A": {
