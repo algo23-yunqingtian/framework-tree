@@ -1,0 +1,105 @@
+{
+  "report_id": "DSHC-SMOKE-LIVE-REPORT-001",
+  "version": "1.0.0",
+  "workorder": "DSHC-DATA-PIPELINE-SMOKE-LIVE",
+  "token": "DSHC-DATA-PIPELINE-SMOKE-LIVE-TOKEN",
+  "created_at": "2026-10-19T16:41:03+08:00",
+  "total_scenarios": 6,
+  "scenarios_passed": 6,
+  "scenarios_failed": 0,
+  "overall_result": "PASS",
+  "governance": {
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "real_wind_call": false,
+    "csv_readonly": true,
+    "v1_frozen": true,
+    "f01_a06_unchanged": true,
+    "lc_shf_permanently_blacklisted": true
+  },
+  "scenarios": {
+    "p1_1_dryrun_dag": {
+      "passed": true,
+      "return_code": 0,
+      "duration_seconds": 0.17,
+      "v2_sha_unchanged": true,
+      "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4"
+    },
+    "p1_2a_collect_timeout": {
+      "passed": true,
+      "retry_attempts": 3,
+      "expected_retries": 3,
+      "rollback_triggered": true,
+      "v2_unchanged": true,
+      "return_code": 2,
+      "duration_seconds": 10.09
+    },
+    "p1_2b_field_format_error": {
+      "passed": true,
+      "e14_blocked": true,
+      "errors_found": 2,
+      "expected_errors": 2,
+      "vol_uppercase_not_blocked": true,
+      "duration_seconds": 0.01
+    },
+    "p1_2c_blacklist_hit": {
+      "passed": true,
+      "e13_blocked": true,
+      "errors_found": 2,
+      "blocked_symbol": "LC.SHF",
+      "cu_shf_not_blocked": true,
+      "lc_gfe_not_blocked": true,
+      "duration_seconds": 0.0
+    },
+    "p1_5_lock_pressure": {
+      "passed": true,
+      "instance_1_lock_created": true,
+      "instance_2_rejected": true,
+      "instance_2_return_code": 1,
+      "v2_unchanged": true,
+      "duration_seconds": 0.01
+    },
+    "p1_6_backfill_dryrun": {
+      "passed": true,
+      "return_code": 0,
+      "backfill_shard_created": true,
+      "backfill_shard_name": "increment_bar_backfill_20261001_20261019.csv",
+      "daily_dir_untouched": true,
+      "v2_unchanged": true,
+      "duration_seconds": 0.19
+    }
+  },
+  "alert_summary": {
+    "total_alerts": 8,
+    "by_status": {
+      "PASS": 4,
+      "ROLLBACK": 2,
+      "FAIL": 2
+    },
+    "by_stage": {
+      "system": 2,
+      "collect": 2,
+      "validate": 2,
+      "lock": 1,
+      "backfill": 1
+    },
+    "by_severity": {
+      "OK": 4,
+      "WARNING": 2,
+      "CRITICAL": 2
+    },
+    "dry_run": false,
+    "workorder": "DSHC-DATA-PIPELINE-SMOKE-LIVE",
+    "token": "DSHC-DATA-PIPELINE-SMOKE-LIVE-TOKEN",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "v2_verification": {
+    "known_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "final_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "unchanged": true
+  },
+  "receipt": "DSHC_DATA_PIPELINE_SMOKE_LIVE=SMOKE_COMPLETE｜dryrun_full_dag=YES｜three_exception_sim=YES｜alert_hook_built=YES｜mutex_lock_validated=YES｜backfill_dryrun_ok=YES｜v2_sha_unchanged=YES"
+}
