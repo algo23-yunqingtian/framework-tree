@@ -1,0 +1,32 @@
+# VOL Gap Collection — Probe Commands
+# DSHC-VOL-PREP | 2026-10-19
+# wind_api_calls=0 (PREPARED ONLY — not executed)
+#
+# Usage: Paste each formula into Wind Excel WSD formula bar
+# Test with SHORT window first (2025-01-02 to 2025-01-10)
+# If PASS, scale to full window (2025-01-02 to 2026-10-19)
+#
+# Variant: A_current | Symbol: CU.SHF
+# Formula: WSD("CU.SHF","vol","2025-01-02","2025-01-10","Fill=Previous")
+# Expected: 5 rows with volume data
+#
+# Variant: B_volume | Symbol: CU.SHF
+# Formula: WSD("CU.SHF","volume","2025-01-02","2025-01-10","Fill=Previous")
+# Expected: 5 rows with volume data (if field name is 'volume')
+#
+# Variant: C_turnover | Symbol: CU.SHF
+# Formula: WSD("CU.SHF","turnover","2025-01-02","2025-01-10","Fill=Previous")
+# Expected: 5 rows with turnover data
+#
+# Variant: D_multi | Symbol: CU.SHF
+# Formula: WSD("CU.SHF","vol;turnover;close","2025-01-02","2025-01-10","Fill=Previous")
+# Expected: 5 rows with 3 columns (vol, turnover, close)
+#
+# Variant: E_datefill | Symbol: CU.SHF
+# Formula: WSD("CU.SHF","vol","2025-01-02","2025-01-10","Fill=Previous","DateFill=Previous")
+# Expected: 5 rows with volume data (interpolated across all trading days)
+#
+# Variant: F_wdp | Symbol: CU.SHF
+# Formula: WDP("CU.SHF","vol","2025-01-02","2025-01-10","Fill=Previous")
+# Expected: 5 rows with volume data (panel data function)
+#

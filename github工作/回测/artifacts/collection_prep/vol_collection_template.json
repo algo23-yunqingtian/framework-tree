@@ -1,0 +1,242 @@
+{
+  "template_config": {
+    "task_id": "VOL_GAP_COLLECTION_PREP",
+    "version": "1.0.0",
+    "prepared_by": "DSHC-VOL-PREP",
+    "prepared_at": "2026-10-19",
+    "baseline": "feature/v88-g1 HEAD=48b248b",
+    "token": "DSHC-VOL-PREP-TOKEN",
+    "wind_api_calls": 0,
+    "executed": false,
+    "execution_status": "PREPARED_ONLY",
+    "problem_summary": {
+      "indicator": "VOL",
+      "current_coverage": "27 trading days (2026-09-03 to 2026-10-19)",
+      "target_coverage": "400+ trading days (2025-01-02 to 2026-10-19)",
+      "gap_type": "WIND_DATA_AVAILABILITY (most likely) or WSD_FIELD_NAME",
+      "affected_symbols": [
+        "CU.SHF",
+        "ZN.SHF",
+        "PB.SHF",
+        "AL.SHF",
+        "SN.SHF",
+        "NI.SHF"
+      ],
+      "lc_gfe_note": "LC.GFE is HIGH RISK — may have zero VOL data (GFE exchange)"
+    },
+    "time_window": {
+      "start": "2025-01-02",
+      "end": "2026-10-19",
+      "note": "Identical to metals template (DSHC-SKILL-FACTOR01)"
+    },
+    "symbols": {
+      "CU.SHF": {
+        "exchange": "SHFE",
+        "name": "Copper"
+      },
+      "ZN.SHF": {
+        "exchange": "SHFE",
+        "name": "Zinc"
+      },
+      "PB.SHF": {
+        "exchange": "SHFE",
+        "name": "Lead"
+      },
+      "AL.SHF": {
+        "exchange": "SHFE",
+        "name": "Aluminum"
+      },
+      "SN.SHF": {
+        "exchange": "SHFE",
+        "name": "Tin"
+      },
+      "NI.SHF": {
+        "exchange": "SHFE",
+        "name": "Nickel"
+      },
+      "LC.GFE": {
+        "exchange": "GFE",
+        "name": "Lithium Carbonate",
+        "risk": "HIGH"
+      }
+    },
+    "variants": {
+      "A_current": {
+        "description": "Current F01 approach — WSD vol field, individual calls",
+        "formula": "WSD(\"{symbol}\",\"vol\",\"{start}\",\"{end}\",\"Fill=Previous\")",
+        "indicator_name": "vol",
+        "fill_param": "Fill=Previous",
+        "expected_rows_per_symbol": 427,
+        "known_issue": "Returns only 27 rows — likely Wind data availability gap",
+        "priority": 1,
+        "test_short_window": "WSD(\"CU.SHF\",\"vol\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")"
+      },
+      "B_volume_field": {
+        "description": "Try lowercase 'volume' field name",
+        "formula": "WSD(\"{symbol}\",\"volume\",\"{start}\",\"{end}\",\"Fill=Previous\")",
+        "indicator_name": "volume",
+        "fill_param": "Fill=Previous",
+        "expected_rows_per_symbol": 427,
+        "rationale": "Wind may use 'volume' as the full field name for daily volume",
+        "priority": 2,
+        "test_short_window": "WSD(\"CU.SHF\",\"volume\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")"
+      },
+      "C_turnover_field": {
+        "description": "Try 'turnover' field — may contain volume-equivalent data",
+        "formula": "WSD(\"{symbol}\",\"turnover\",\"{start}\",\"{end}\",\"Fill=Previous\")",
+        "indicator_name": "turnover",
+        "fill_param": "Fill=Previous",
+        "expected_rows_per_symbol": 427,
+        "rationale": "Turnover (成交额) may have better historical availability than vol (成交量)",
+        "priority": 3,
+        "test_short_window": "WSD(\"CU.SHF\",\"turnover\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")"
+      },
+      "D_multi_indicator": {
+        "description": "Combine multiple indicators in single WSD call — may change fill behavior",
+        "formula": "WSD(\"{symbol}\",\"vol;turnover;close\",\"{start}\",\"{end}\",\"Fill=Previous\")",
+        "indicator_name": "vol;turnover;close",
+        "fill_param": "Fill=Previous",
+        "expected_rows_per_symbol": 427,
+        "rationale": "Multi-indicator WSD calls may trigger different Wind backend behavior; CLOSE serves as anchor date",
+        "priority": 4,
+        "test_short_window": "WSD(\"CU.SHF\",\"vol;turnover;close\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")"
+      },
+      "E_with_date_fill": {
+        "description": "WSD with date fill parameter to force all trading days",
+        "formula": "WSD(\"{symbol}\",\"vol\",\"{start}\",\"{end}\",\"Fill=Previous\",\"DateFill=Previous\")",
+        "indicator_name": "vol",
+        "fill_param": "Fill=Previous,DateFill=Previous",
+        "expected_rows_per_symbol": 427,
+        "rationale": "DateFill=Previous may force interpolation across all trading days, not just days with data",
+        "priority": 5,
+        "test_short_window": "WSD(\"CU.SHF\",\"vol\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\",\"DateFill=Previous\")"
+      },
+      "F_wdp_panel": {
+        "description": "WDP panel data function — may have different availability than WSD",
+        "formula": "WDP(\"{symbol}\",\"vol\",\"{start}\",\"{end}\",\"Fill=Previous\")",
+        "indicator_name": "vol",
+        "api_function": "WDP",
+        "fill_param": "Fill=Previous",
+        "expected_rows_per_symbol": 427,
+        "rationale": "WDP (panel data) may query a different Wind data table with longer history",
+        "priority": 6,
+        "test_short_window": "WDP(\"CU.SHF\",\"vol\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")"
+      }
+    },
+    "execution_plan": {
+      "phase_1_short_probe": {
+        "description": "Test each variant with 5-day window on CU.SHF first",
+        "symbols": [
+          "CU.SHF"
+        ],
+        "window": "2025-01-02 to 2025-01-10",
+        "indicators_per_variant": 1,
+        "total_calls": 6,
+        "max_attempts_per_call": 3,
+        "estimated_max_calls": 18
+      },
+      "phase_2_full_history": {
+        "description": "If Phase 1 PASS, run full window for all 6 SHFE metals",
+        "symbols": [
+          "CU.SHF",
+          "ZN.SHF",
+          "PB.SHF",
+          "AL.SHF",
+          "SN.SHF",
+          "NI.SHF"
+        ],
+        "window": "2025-01-02 to 2026-10-19",
+        "indicators_per_variant": 1,
+        "variants_per_symbol": 6,
+        "total_calls": 36,
+        "max_attempts_per_call": 3,
+        "estimated_max_calls": 108
+      },
+      "phase_3_lc_gfe": {
+        "description": "Test LC.GFE separately — HIGH RISK, may yield zero data",
+        "symbols": [
+          "LC.GFE"
+        ],
+        "window": "2025-01-02 to 2026-10-19",
+        "indicators_per_variant": 1,
+        "variants_per_symbol": 6,
+        "total_calls": 6,
+        "max_attempts_per_call": 3,
+        "estimated_max_calls": 18
+      }
+    },
+    "output_format": {
+      "type": "long_form_csv",
+      "columns": [
+        "date",
+        "symbol",
+        "indicator",
+        "value",
+        "source"
+      ],
+      "encoding": "utf-8",
+      "file_pattern": "wdf_vol_{variant_label}.csv"
+    },
+    "f01_script_integration": {
+      "primary": "scripts/dshc_f01_gui_fetch.ps1",
+      "integration_point": "Update $indicators array: replace 'VOL' with the variant field name",
+      "locked": true,
+      "locked_version": "v1.0 @ 593d688",
+      "note": "F01 is LOCKED. Create a new VOL-specific script if needed."
+    },
+    "factor_integration": {
+      "vol_dependent_factors": [
+        "volume_turnover_ratio",
+        "volume_change_5d",
+        "volume_zscore"
+      ],
+      "note": "V1 factors (7 factors) do NOT use VOL. This is preparation for future volume-based factors."
+    },
+    "cross_references": {
+      "root_cause_analysis": "artifacts/collection_prep/vol_root_cause_analysis.md",
+      "highlow_precheck": "artifacts/collection_prep/highlow_precheck_report.md",
+      "aligned_csv": "output_sample/wdf_sample_metals_aligned.csv",
+      "f01_script": "scripts/dshc_f01_gui_fetch.ps1",
+      "rb_hc_template": "artifacts/skill_lib/factor_v1/tests/shfe_rb_hc_template.json"
+    }
+  },
+  "probe_commands": [
+    {
+      "variant": "A_current",
+      "symbol": "CU.SHF",
+      "formula": "WSD(\"CU.SHF\",\"vol\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")",
+      "expected": "5 rows with volume data"
+    },
+    {
+      "variant": "B_volume",
+      "symbol": "CU.SHF",
+      "formula": "WSD(\"CU.SHF\",\"volume\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")",
+      "expected": "5 rows with volume data (if field name is 'volume')"
+    },
+    {
+      "variant": "C_turnover",
+      "symbol": "CU.SHF",
+      "formula": "WSD(\"CU.SHF\",\"turnover\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")",
+      "expected": "5 rows with turnover data"
+    },
+    {
+      "variant": "D_multi",
+      "symbol": "CU.SHF",
+      "formula": "WSD(\"CU.SHF\",\"vol;turnover;close\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")",
+      "expected": "5 rows with 3 columns (vol, turnover, close)"
+    },
+    {
+      "variant": "E_datefill",
+      "symbol": "CU.SHF",
+      "formula": "WSD(\"CU.SHF\",\"vol\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\",\"DateFill=Previous\")",
+      "expected": "5 rows with volume data (interpolated across all trading days)"
+    },
+    {
+      "variant": "F_wdp",
+      "symbol": "CU.SHF",
+      "formula": "WDP(\"CU.SHF\",\"vol\",\"2025-01-02\",\"2025-01-10\",\"Fill=Previous\")",
+      "expected": "5 rows with volume data (panel data function)"
+    }
+  ],
+  "generated_at": "2026-10-19"
+}

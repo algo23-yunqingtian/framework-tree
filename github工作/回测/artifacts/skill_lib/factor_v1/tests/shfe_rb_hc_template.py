@@ -65,7 +65,7 @@ TEMPLATE_CONFIG = {
         "end": "2026-10-19",
         "note": "Identical to metals template (DSHC-SKILL-FACTOR01)"
     },
-    "indicators": ["CLOSE", "VOL", "OI", "SETTLE"],
+    "indicators": ["CLOSE", "VOL", "OI", "SETTLE", "HIGH", "LOW"],
     "symbols": {
         "RB.SHF": {
             "exchange": "SHFE",
@@ -83,17 +83,35 @@ TEMPLATE_CONFIG = {
         },
     },
     "api_calls_estimated": {
-        "total_wsd_calls": 8,
+        "total_wsd_calls": 12,
         "max_attempts_per_call": 3,
-        "max_total_calls": 24,
-        "fields_per_call": "CLOSE;VOL;OI;SETTLE",
+        "max_total_calls": 36,
+        "fields_per_call": "CLOSE;VOL;OI;SETTLE;HIGH;LOW",
     },
     "output_format": {
         "type": "long_form_csv",
         "columns": ["date", "symbol", "indicator", "value", "source"],
         "encoding": "utf-8",
     },
-    "wind_formula_template": 'WSD("{symbol}","CLOSE;VOL;OI;SETTLE","{start}","{end}","Fill=Previous")',
+    "wind_formula_template": 'WSD("{symbol}","CLOSE;VOL;OI;SETTLE;HIGH;LOW","{start}","{end}","Fill=Previous")',
+    "risk_notes": {
+        "vol_gap": "VOL may only have 27 days of data (Wind limitation). See vol_root_cause_analysis.md.",
+        "highlow_risk": "HIGH/LOW are expected to work for SHFE instruments. LC.GFE is HIGH RISK.",
+        "atr_factor": "HIGH/LOW are included for future ATR% factor (F10, P2备选).",
+        "reference": "artifacts/collection_prep/highlow_precheck_report.md",
+    },
+    "update_history": [
+        {
+            "ticket": "DSHC-MAINT-01",
+            "date": "2026-10-19",
+            "changes": ["Initial template creation — 4 indicators (CLOSE/VOL/OI/SETTLE)"]
+        },
+        {
+            "ticket": "DSHC-VOL-PREP",
+            "date": "2026-10-19",
+            "changes": ["Added HIGH/LOW indicators for ATR% factor", "Updated WSD formula", "Added risk notes"]
+        }
+    ],
     "f01_script_integration": {
         "primary": "scripts/dshc_f01_gui_fetch.ps1",
         "integration_point": "Update $symbols array: add 'RB.SHF','HC.SHF'",
@@ -108,7 +126,7 @@ TEMPLATE_CONFIG = {
             "oi_change_rate_7d", "spread_pct",
             "contract_switch_flag", "momentum_20d",
         ],
-        "note": "All 7 factors use only CLOSE/OI/SETTLE. No additional work needed.",
+        "note": "All 7 factors use only CLOSE/OI/SETTLE. HIGH/LOW are for future ATR% factor (F10, P2备选).",
     },
 }
 
@@ -125,14 +143,20 @@ SAMPLE_OUTPUT = {
         ["2025-01-02", "RB.SHF", "SETTLE", 3648.0, "SHFE"],
         ["2025-01-02", "RB.SHF", "OI", 1850000.0, "SHFE"],
         ["2025-01-02", "RB.SHF", "VOL", 245000.0, "SHFE"],
+        ["2025-01-02", "RB.SHF", "HIGH", 3665.0, "SHFE"],
+        ["2025-01-02", "RB.SHF", "LOW", 3635.0, "SHFE"],
         ["2025-01-03", "RB.SHF", "CLOSE", 3680.0, "SHFE"],
         ["2025-01-03", "RB.SHF", "SETTLE", 3678.0, "SHFE"],
         ["2025-01-03", "RB.SHF", "OI", 1860000.0, "SHFE"],
         ["2025-01-03", "RB.SHF", "VOL", 251000.0, "SHFE"],
+        ["2025-01-03", "RB.SHF", "HIGH", 3695.0, "SHFE"],
+        ["2025-01-03", "RB.SHF", "LOW", 3658.0, "SHFE"],
         ["2025-01-02", "HC.SHF", "CLOSE", 3420.0, "SHFE"],
         ["2025-01-02", "HC.SHF", "SETTLE", 3418.0, "SHFE"],
         ["2025-01-02", "HC.SHF", "OI", 920000.0, "SHFE"],
         ["2025-01-02", "HC.SHF", "VOL", 180000.0, "SHFE"],
+        ["2025-01-02", "HC.SHF", "HIGH", 3438.0, "SHFE"],
+        ["2025-01-02", "HC.SHF", "LOW", 3405.0, "SHFE"],
     ],
 }
 
