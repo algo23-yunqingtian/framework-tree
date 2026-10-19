@@ -1,0 +1,66 @@
+{
+  "config_id": "DSHA-P49-V3-FACTOR-ENABLE-CONFIG",
+  "generated_at": "2026-10-19T08:15:59.287226+00:00",
+  "token": "DSHA-P49-V3-FACTOR-WEIGHT-TOKEN",
+  "baseline_commit": "a011ba0",
+  "status": "FROZEN",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "factor_layers": {
+    "always_enabled": {
+      "factors": [
+        "realized_vol_20d"
+      ],
+      "description": "稳定有效波动率因子, 全品种池始终启用",
+      "enabled_in_4_symbol_pool": true,
+      "enabled_in_9_symbol_pool": true
+    },
+    "conditional_pool_switch": {
+      "factors": [
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level"
+      ],
+      "condition": "enabled_only_in_4_symbol_whitelist_pool",
+      "enabled_in_4_symbol_pool": true,
+      "enabled_in_9_symbol_pool": false,
+      "description": "OI持仓因子仅在4品种白名单内启用, 9品种池自动屏蔽",
+      "reason": "归因分析发现OI因子在9品种池IC符号翻转, 4品种池稳定为正"
+    },
+    "standard_factors": {
+      "factors": [
+        "spread_cs",
+        "momentum_20d",
+        "vol_regime_change",
+        "contract_switch_flag"
+      ],
+      "description": "标准因子, 全品种池启用",
+      "enabled_in_4_symbol_pool": true,
+      "enabled_in_9_symbol_pool": true
+    }
+  },
+  "enabled_4_symbol_pool": [
+    "realized_vol_20d",
+    "spread_cs",
+    "momentum_20d",
+    "vol_regime_change",
+    "contract_switch_flag",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "oi_level"
+  ],
+  "enabled_9_symbol_pool": [
+    "realized_vol_20d",
+    "spread_cs",
+    "momentum_20d",
+    "vol_regime_change",
+    "contract_switch_flag"
+  ],
+  "total_factors_4_symbol": 8,
+  "total_factors_9_symbol": 5
+}

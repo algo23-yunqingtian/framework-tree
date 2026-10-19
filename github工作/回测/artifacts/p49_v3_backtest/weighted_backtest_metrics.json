@@ -1,0 +1,927 @@
+{
+  "manifest_id": "DSHA-P49-V3-FACTOR-WEIGHT-METRICS",
+  "generated_at": "2026-10-19T08:16:01.953306+00:00",
+  "token": "DSHA-P49-V3-FACTOR-WEIGHT-TOKEN",
+  "baseline_commit": "a011ba0",
+  "status": "WEIGHT_OPTIMIZATION_COMPLETE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "set_e_params_unchanged": true,
+    "white_list_enforced": true,
+    "old_v2_v3_results_unchanged": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "factor_weights": {
+    "method": "IC_mean_weighted_abs_normalized",
+    "description": "用4品种样本IC值作为权重, |IC|归一化到sum=1, 保留符号",
+    "ic_values": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.03706,
+      "oi_change_1d": 0.00616,
+      "oi_change_rate_7d": 0.044248,
+      "oi_level": 0.038378,
+      "realized_vol_20d": 0.053897,
+      "spread_cs": -0.064899,
+      "vol_regime_change": 0.011865
+    },
+    "ic_ir_values": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.821351,
+      "oi_change_1d": 0.154011,
+      "oi_change_rate_7d": 1.142341,
+      "oi_level": 0.850292,
+      "realized_vol_20d": 1.147314,
+      "spread_cs": -1.50836,
+      "vol_regime_change": 0.299238
+    },
+    "effective_weights": {
+      "realized_vol_20d": 0.21011902209296435,
+      "oi_change_rate_7d": 0.1725021149520286,
+      "oi_level": 0.1496177492232181,
+      "momentum_20d": 0.1444794878892194,
+      "vol_regime_change": 0.046256047593243074,
+      "oi_change_1d": 0.024014939163453628,
+      "contract_switch_flag": 0.0,
+      "spread_cs": -0.2530106390858729
+    },
+    "abs_weights_sum_to_1": {
+      "realized_vol_20d": 0.210119,
+      "oi_change_rate_7d": 0.172502,
+      "oi_level": 0.149618,
+      "momentum_20d": 0.144479,
+      "vol_regime_change": 0.046256,
+      "oi_change_1d": 0.024015,
+      "contract_switch_flag": 0.0,
+      "spread_cs": 0.253011
+    },
+    "total_abs_ic": 0.256507
+  },
+  "scenarios": {
+    "IC_weighted_4symbol": {
+      "description": "核心实验组: 4品种白名单 + IC加权因子组合",
+      "symbols": [
+        "LC.GFE",
+        "NI.SHF",
+        "CU.SHF",
+        "ZN.SHF"
+      ],
+      "symbol_count": 4,
+      "factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change"
+      ],
+      "factor_count": 8,
+      "weights": {
+        "realized_vol_20d": 0.21011902209296435,
+        "oi_change_rate_7d": 0.1725021149520286,
+        "oi_level": 0.1496177492232181,
+        "momentum_20d": 0.1444794878892194,
+        "vol_regime_change": 0.046256047593243074,
+        "oi_change_1d": 0.024014939163453628,
+        "contract_switch_flag": 0.0,
+        "spread_cs": -0.2530106390858729
+      },
+      "metrics": {
+        "total_return": -0.039148,
+        "annualized_return": -0.023079,
+        "annual_volatility": 0.038693,
+        "daily_volatility": 0.002437,
+        "max_drawdown": -0.07315,
+        "sharpe_ratio": -0.596463,
+        "calmar_ratio": -0.315499,
+        "win_rate": 0.415313,
+        "avg_win": 0.001826,
+        "avg_loss": 0.001894,
+        "profit_loss_ratio": 0.964178,
+        "trade_count": 290,
+        "total_trades": 290,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 960852.2,
+        "total_transaction_cost": 0.008852,
+        "cost_ratio": 0.226121
+      },
+      "equity_timeline": [
+        {
+          "index": 0,
+          "equity": 1000000.0,
+          "drawdown": 0.0
+        },
+        {
+          "index": 14,
+          "equity": 1001301.38,
+          "drawdown": -0.000254
+        },
+        {
+          "index": 28,
+          "equity": 1001301.38,
+          "drawdown": -0.000254
+        },
+        {
+          "index": 42,
+          "equity": 999161.1,
+          "drawdown": -0.003663
+        },
+        {
+          "index": 56,
+          "equity": 996308.62,
+          "drawdown": -0.006508
+        },
+        {
+          "index": 70,
+          "equity": 994533.81,
+          "drawdown": -0.009153
+        },
+        {
+          "index": 84,
+          "equity": 996979.17,
+          "drawdown": -0.006717
+        },
+        {
+          "index": 98,
+          "equity": 1000095.0,
+          "drawdown": -0.003612
+        },
+        {
+          "index": 112,
+          "equity": 1005765.68,
+          "drawdown": -0.000366
+        },
+        {
+          "index": 126,
+          "equity": 999409.85,
+          "drawdown": -0.006683
+        },
+        {
+          "index": 140,
+          "equity": 981431.65,
+          "drawdown": -0.024551
+        },
+        {
+          "index": 154,
+          "equity": 990254.36,
+          "drawdown": -0.015782
+        },
+        {
+          "index": 168,
+          "equity": 984308.34,
+          "drawdown": -0.021692
+        },
+        {
+          "index": 182,
+          "equity": 980019.21,
+          "drawdown": -0.025955
+        },
+        {
+          "index": 196,
+          "equity": 976679.9,
+          "drawdown": -0.029274
+        },
+        {
+          "index": 210,
+          "equity": 984106.39,
+          "drawdown": -0.021893
+        },
+        {
+          "index": 224,
+          "equity": 992468.61,
+          "drawdown": -0.013582
+        },
+        {
+          "index": 238,
+          "equity": 1013434.42,
+          "drawdown": 0.0
+        },
+        {
+          "index": 252,
+          "equity": 1031897.12,
+          "drawdown": -0.001946
+        },
+        {
+          "index": 266,
+          "equity": 1026325.92,
+          "drawdown": -0.009993
+        },
+        {
+          "index": 280,
+          "equity": 1027386.09,
+          "drawdown": -0.008971
+        },
+        {
+          "index": 294,
+          "equity": 1030580.72,
+          "drawdown": -0.005889
+        },
+        {
+          "index": 308,
+          "equity": 1023872.59,
+          "drawdown": -0.01236
+        },
+        {
+          "index": 322,
+          "equity": 1021270.4,
+          "drawdown": -0.01487
+        },
+        {
+          "index": 336,
+          "equity": 1006891.65,
+          "drawdown": -0.02874
+        },
+        {
+          "index": 350,
+          "equity": 990824.39,
+          "drawdown": -0.044239
+        },
+        {
+          "index": 364,
+          "equity": 994886.23,
+          "drawdown": -0.040321
+        },
+        {
+          "index": 378,
+          "equity": 988695.02,
+          "drawdown": -0.046293
+        },
+        {
+          "index": 392,
+          "equity": 986379.81,
+          "drawdown": -0.048526
+        },
+        {
+          "index": 406,
+          "equity": 985508.12,
+          "drawdown": -0.049367
+        },
+        {
+          "index": 420,
+          "equity": 968010.4,
+          "drawdown": -0.066245
+        }
+      ],
+      "per_symbol": {
+        "CU.SHF": {
+          "total_return": -0.060764,
+          "annualized_return": -0.035989,
+          "annual_volatility": 0.057885,
+          "daily_volatility": 0.003646,
+          "max_drawdown": -0.100522,
+          "sharpe_ratio": -0.621738,
+          "calmar_ratio": -0.358023,
+          "win_rate": 0.234339,
+          "avg_win": 0.003515,
+          "avg_loss": 0.003167,
+          "profit_loss_ratio": 1.109973,
+          "trade_count": 60,
+          "total_trades": 60,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 939236.35,
+          "total_transaction_cost": 0.012076,
+          "cost_ratio": 0.198731
+        },
+        "LC.GFE": {
+          "total_return": -0.020048,
+          "annualized_return": -0.011771,
+          "annual_volatility": 0.093668,
+          "daily_volatility": 0.005901,
+          "max_drawdown": -0.126449,
+          "sharpe_ratio": -0.125668,
+          "calmar_ratio": -0.093089,
+          "win_rate": 0.271462,
+          "avg_win": 0.005935,
+          "avg_loss": 0.005357,
+          "profit_loss_ratio": 1.107854,
+          "trade_count": 148,
+          "total_trades": 148,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 979952.07,
+          "total_transaction_cost": 0.007698,
+          "cost_ratio": 0.383966
+        },
+        "NI.SHF": {
+          "total_return": -0.01748,
+          "annualized_return": -0.010258,
+          "annual_volatility": 0.0684,
+          "daily_volatility": 0.004309,
+          "max_drawdown": -0.059782,
+          "sharpe_ratio": -0.149969,
+          "calmar_ratio": -0.171588,
+          "win_rate": 0.180974,
+          "avg_win": 0.004923,
+          "avg_loss": 0.004017,
+          "profit_loss_ratio": 1.225677,
+          "trade_count": 68,
+          "total_trades": 68,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 982519.77,
+          "total_transaction_cost": 0.009815,
+          "cost_ratio": 0.561474
+        },
+        "ZN.SHF": {
+          "total_return": 0.037947,
+          "annualized_return": 0.022016,
+          "annual_volatility": 0.050342,
+          "daily_volatility": 0.003171,
+          "max_drawdown": -0.042172,
+          "sharpe_ratio": 0.437318,
+          "calmar_ratio": 0.522047,
+          "win_rate": 0.24826,
+          "avg_win": 0.00352,
+          "avg_loss": 0.002764,
+          "profit_loss_ratio": 1.273445,
+          "trade_count": 47,
+          "total_trades": 47,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1037947.41,
+          "total_transaction_cost": 0.01375,
+          "cost_ratio": 0.362344
+        }
+      }
+    },
+    "Equal_weight_4symbol": {
+      "description": "对照组: 4品种白名单 + 等权因子组合",
+      "symbols": [
+        "LC.GFE",
+        "NI.SHF",
+        "CU.SHF",
+        "ZN.SHF"
+      ],
+      "symbol_count": 4,
+      "factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change"
+      ],
+      "factor_count": 8,
+      "weights": {
+        "contract_switch_flag": 0.125,
+        "momentum_20d": 0.125,
+        "oi_change_1d": 0.125,
+        "oi_change_rate_7d": 0.125,
+        "oi_level": 0.125,
+        "realized_vol_20d": 0.125,
+        "spread_cs": 0.125,
+        "vol_regime_change": 0.125
+      },
+      "metrics": {
+        "total_return": 0.186733,
+        "annualized_return": 0.105282,
+        "annual_volatility": 0.036168,
+        "daily_volatility": 0.002278,
+        "max_drawdown": -0.017102,
+        "sharpe_ratio": 2.910945,
+        "calmar_ratio": 6.155973,
+        "win_rate": 0.422274,
+        "avg_win": 0.002157,
+        "avg_loss": 0.001335,
+        "profit_loss_ratio": 1.61592,
+        "trade_count": 251,
+        "total_trades": 251,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1186732.8,
+        "total_transaction_cost": 0.008798,
+        "cost_ratio": 0.047118
+      },
+      "equity_timeline": [
+        {
+          "index": 0,
+          "equity": 1000000.0,
+          "drawdown": 0.0
+        },
+        {
+          "index": 14,
+          "equity": 1001283.73,
+          "drawdown": 0.0
+        },
+        {
+          "index": 28,
+          "equity": 1001283.73,
+          "drawdown": 0.0
+        },
+        {
+          "index": 42,
+          "equity": 1000978.69,
+          "drawdown": -0.002754
+        },
+        {
+          "index": 56,
+          "equity": 1004170.16,
+          "drawdown": -6.3e-05
+        },
+        {
+          "index": 70,
+          "equity": 1019200.79,
+          "drawdown": -0.004996
+        },
+        {
+          "index": 84,
+          "equity": 1021978.02,
+          "drawdown": -0.002284
+        },
+        {
+          "index": 98,
+          "equity": 1026846.85,
+          "drawdown": -0.000615
+        },
+        {
+          "index": 112,
+          "equity": 1032604.05,
+          "drawdown": 0.0
+        },
+        {
+          "index": 126,
+          "equity": 1027942.76,
+          "drawdown": -0.004843
+        },
+        {
+          "index": 140,
+          "equity": 1018717.27,
+          "drawdown": -0.013774
+        },
+        {
+          "index": 154,
+          "equity": 1031747.28,
+          "drawdown": -0.004028
+        },
+        {
+          "index": 168,
+          "equity": 1029467.8,
+          "drawdown": -0.006228
+        },
+        {
+          "index": 182,
+          "equity": 1031146.56,
+          "drawdown": -0.004608
+        },
+        {
+          "index": 196,
+          "equity": 1038652.1,
+          "drawdown": 0.0
+        },
+        {
+          "index": 210,
+          "equity": 1046486.47,
+          "drawdown": 0.0
+        },
+        {
+          "index": 224,
+          "equity": 1053659.1,
+          "drawdown": -0.003859
+        },
+        {
+          "index": 238,
+          "equity": 1087341.23,
+          "drawdown": 0.0
+        },
+        {
+          "index": 252,
+          "equity": 1123541.45,
+          "drawdown": -0.001917
+        },
+        {
+          "index": 266,
+          "equity": 1128157.6,
+          "drawdown": -0.003725
+        },
+        {
+          "index": 280,
+          "equity": 1139538.7,
+          "drawdown": 0.0
+        },
+        {
+          "index": 294,
+          "equity": 1154398.1,
+          "drawdown": -0.003466
+        },
+        {
+          "index": 308,
+          "equity": 1155210.85,
+          "drawdown": -0.002765
+        },
+        {
+          "index": 322,
+          "equity": 1181503.37,
+          "drawdown": 0.0
+        },
+        {
+          "index": 336,
+          "equity": 1174468.66,
+          "drawdown": -0.007793
+        },
+        {
+          "index": 350,
+          "equity": 1172774.76,
+          "drawdown": -0.009224
+        },
+        {
+          "index": 364,
+          "equity": 1193468.18,
+          "drawdown": -0.002963
+        },
+        {
+          "index": 378,
+          "equity": 1187998.31,
+          "drawdown": -0.007533
+        },
+        {
+          "index": 392,
+          "equity": 1198254.69,
+          "drawdown": 0.0
+        },
+        {
+          "index": 406,
+          "equity": 1200160.67,
+          "drawdown": -6.3e-05
+        },
+        {
+          "index": 420,
+          "equity": 1188498.92,
+          "drawdown": -0.011868
+        }
+      ],
+      "per_symbol": {
+        "CU.SHF": {
+          "total_return": 0.044297,
+          "annualized_return": 0.025666,
+          "annual_volatility": 0.067337,
+          "daily_volatility": 0.004242,
+          "max_drawdown": -0.064191,
+          "sharpe_ratio": 0.381165,
+          "calmar_ratio": 0.399847,
+          "win_rate": 0.229698,
+          "avg_win": 0.004601,
+          "avg_loss": 0.003266,
+          "profit_loss_ratio": 1.408621,
+          "trade_count": 65,
+          "total_trades": 65,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1044296.96,
+          "total_transaction_cost": 0.013013,
+          "cost_ratio": 0.293766
+        },
+        "LC.GFE": {
+          "total_return": 0.169641,
+          "annualized_return": 0.095947,
+          "annual_volatility": 0.106839,
+          "daily_volatility": 0.00673,
+          "max_drawdown": -0.088987,
+          "sharpe_ratio": 0.898052,
+          "calmar_ratio": 1.078209,
+          "win_rate": 0.273782,
+          "avg_win": 0.007592,
+          "avg_loss": 0.005699,
+          "profit_loss_ratio": 1.332263,
+          "trade_count": 162,
+          "total_trades": 162,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1169641.44,
+          "total_transaction_cost": 0.006993,
+          "cost_ratio": 0.041222
+        },
+        "NI.SHF": {
+          "total_return": 0.112227,
+          "annualized_return": 0.064164,
+          "annual_volatility": 0.065256,
+          "daily_volatility": 0.004111,
+          "max_drawdown": -0.042268,
+          "sharpe_ratio": 0.983273,
+          "calmar_ratio": 1.518019,
+          "win_rate": 0.187935,
+          "avg_win": 0.005347,
+          "avg_loss": 0.004039,
+          "profit_loss_ratio": 1.323877,
+          "trade_count": 67,
+          "total_trades": 67,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1112227.0,
+          "total_transaction_cost": 0.008416,
+          "cost_ratio": 0.07499
+        },
+        "ZN.SHF": {
+          "total_return": 0.074252,
+          "annualized_return": 0.042767,
+          "annual_volatility": 0.04995,
+          "daily_volatility": 0.003147,
+          "max_drawdown": -0.034667,
+          "sharpe_ratio": 0.856203,
+          "calmar_ratio": 1.233667,
+          "win_rate": 0.229698,
+          "avg_win": 0.003597,
+          "avg_loss": 0.002543,
+          "profit_loss_ratio": 1.414153,
+          "trade_count": 49,
+          "total_trades": 49,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1074251.64,
+          "total_transaction_cost": 0.01275,
+          "cost_ratio": 0.171713
+        }
+      }
+    }
+  },
+  "performance_targets": {
+    "return_target": 0.05,
+    "sharpe_target": 0.9,
+    "max_drawdown_target": -0.027,
+    "results": {
+      "IC_weighted_4symbol": {
+        "scenario": "IC_weighted_4symbol",
+        "return_target": 0.05,
+        "sharpe_target": 0.9,
+        "max_drawdown_target": -0.027,
+        "actual_return": -0.039148,
+        "actual_sharpe": -0.596463,
+        "actual_max_drawdown": -0.07315,
+        "return_achieved": false,
+        "sharpe_achieved": false,
+        "drawdown_achieved": false,
+        "all_achieved": false,
+        "return_gap": -0.089148,
+        "sharpe_gap": -1.496463,
+        "drawdown_gap": -0.04615
+      },
+      "Equal_weight_4symbol": {
+        "scenario": "Equal_weight_4symbol",
+        "return_target": 0.05,
+        "sharpe_target": 0.9,
+        "max_drawdown_target": -0.027,
+        "actual_return": 0.186733,
+        "actual_sharpe": 2.910945,
+        "actual_max_drawdown": -0.017102,
+        "return_achieved": true,
+        "sharpe_achieved": true,
+        "drawdown_achieved": true,
+        "all_achieved": true,
+        "return_gap": 0.136733,
+        "sharpe_gap": 2.010945,
+        "drawdown_gap": 0.009898
+      }
+    }
+  },
+  "comparison": {
+    "return_improvement_ic_vs_eq": -0.225881,
+    "sharpe_improvement_ic_vs_eq": -3.507408,
+    "drawdown_improvement_ic_vs_eq": -0.056048,
+    "return_improvement_ic_vs_v2": -0.094799,
+    "sharpe_improvement_ic_vs_v2": -1.876046,
+    "drawdown_improvement_ic_vs_v2": -0.051281
+  },
+  "factor_ic_4symbol": {
+    "realized_vol_20d": {
+      "ic_mean": 0.053897,
+      "ic_std": 0.0,
+      "ic_ir_annualized": 1.147314,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.053897,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    },
+    "oi_change_rate_7d": {
+      "ic_mean": 0.044248,
+      "ic_std": 0.0,
+      "ic_ir_annualized": 1.142341,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.044248,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    },
+    "oi_level": {
+      "ic_mean": 0.038378,
+      "ic_std": 0.0,
+      "ic_ir_annualized": 0.850292,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.038378,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    },
+    "momentum_20d": {
+      "ic_mean": 0.03706,
+      "ic_std": 0.0,
+      "ic_ir_annualized": 0.821351,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.03706,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    },
+    "vol_regime_change": {
+      "ic_mean": 0.011865,
+      "ic_std": 0.0,
+      "ic_ir_annualized": 0.299238,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.011865,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    },
+    "oi_change_1d": {
+      "ic_mean": 0.00616,
+      "ic_std": 0.0,
+      "ic_ir_annualized": 0.154011,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.00616,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    },
+    "contract_switch_flag": {
+      "ic_mean": 0.0,
+      "ic_std": 0.0,
+      "ic_ir_annualized": 0.0,
+      "hit_rate": 0.5,
+      "sample_size": 4,
+      "ic_ts_raw": 0.0,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    },
+    "spread_cs": {
+      "ic_mean": -0.064899,
+      "ic_std": 0.0,
+      "ic_ir_annualized": -1.50836,
+      "hit_rate": 0.0,
+      "sample_size": 4,
+      "ic_ts_raw": -0.064899,
+      "source": "factor_ic_ir_9vs4_comparison.csv (validated)"
+    }
+  },
+  "per_symbol_ts_ic": {
+    "LC.GFE": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": 0.05247824990695058,
+      "oi_change_1d": 0.03702411130338267,
+      "oi_change_rate_7d": -0.02563511263368346,
+      "oi_level": 0.034653321593694913,
+      "realized_vol_20d": 0.03739709097261379,
+      "spread_cs": 0.09490535910667655,
+      "vol_regime_change": -0.02833141379910258
+    },
+    "NI.SHF": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": -0.0011840402377529455,
+      "oi_change_1d": -0.09823945016928741,
+      "oi_change_rate_7d": 0.003415451514854427,
+      "oi_level": -0.010415112538758887,
+      "realized_vol_20d": 0.012752795261479617,
+      "spread_cs": -0.11905130567635025,
+      "vol_regime_change": 0.08905656753212449
+    },
+    "CU.SHF": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": -0.048173837613452716,
+      "oi_change_1d": -0.0847027152732596,
+      "oi_change_rate_7d": 0.00342843117996502,
+      "oi_level": -0.026066597663333566,
+      "realized_vol_20d": 0.0019806911645985728,
+      "spread_cs": -0.20827297415525614,
+      "vol_regime_change": 0.039831031117559354
+    },
+    "ZN.SHF": {
+      "contract_switch_flag": 0.0,
+      "momentum_20d": -0.052826856153479,
+      "oi_change_1d": 0.02929857030016186,
+      "oi_change_rate_7d": 0.05414716896408014,
+      "oi_level": 0.005720657356152188,
+      "realized_vol_20d": -0.028861507580924744,
+      "spread_cs": -0.1281921872838941,
+      "vol_regime_change": 0.007418249190113307
+    }
+  },
+  "stability_check": {
+    "check_type": "time_series_segment_split",
+    "segments": 3,
+    "segment_boundaries": [
+      [
+        "2025-01-02",
+        "2025-08-06"
+      ],
+      [
+        "2025-08-07",
+        "2026-03-16"
+      ],
+      [
+        "2026-03-17",
+        "2026-10-19"
+      ]
+    ],
+    "segment_details": {
+      "segment_1": {
+        "dates": [
+          "2025-01-02",
+          "2025-08-06"
+        ],
+        "n_dates": 144,
+        "ic_values": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.005307,
+          "oi_change_1d": 0.013486,
+          "oi_change_rate_7d": 0.001701,
+          "oi_level": 0.016006,
+          "realized_vol_20d": 0.023115,
+          "spread_cs": -0.116649,
+          "vol_regime_change": -0.067252
+        }
+      },
+      "segment_2": {
+        "dates": [
+          "2025-08-07",
+          "2026-03-16"
+        ],
+        "n_dates": 144,
+        "ic_values": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.010255,
+          "oi_change_1d": -0.03223,
+          "oi_change_rate_7d": -0.017511,
+          "oi_level": 0.104693,
+          "realized_vol_20d": 0.050423,
+          "spread_cs": -0.116076,
+          "vol_regime_change": 0.040844
+        }
+      },
+      "segment_3": {
+        "dates": [
+          "2026-03-17",
+          "2026-10-19"
+        ],
+        "n_dates": 144,
+        "ic_values": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.027478,
+          "oi_change_1d": 0.021984,
+          "oi_change_rate_7d": 4.9e-05,
+          "oi_level": -0.105001,
+          "realized_vol_20d": -0.062836,
+          "spread_cs": 0.01821,
+          "vol_regime_change": 0.004501
+        }
+      }
+    },
+    "oi_factor_sign_stability": {
+      "oi_change_1d": {
+        "segment_ics": [
+          0.013486,
+          -0.03223,
+          0.021984
+        ],
+        "sign_stable": false,
+        "all_positive": false,
+        "mean_ic": 0.00108,
+        "std_ic": 0.023808
+      },
+      "oi_change_rate_7d": {
+        "segment_ics": [
+          0.001701,
+          -0.017511,
+          4.9e-05
+        ],
+        "sign_stable": false,
+        "all_positive": false,
+        "mean_ic": -0.005254,
+        "std_ic": 0.008693
+      },
+      "oi_level": {
+        "segment_ics": [
+          0.016006,
+          0.104693,
+          -0.105001
+        ],
+        "sign_stable": false,
+        "all_positive": false,
+        "mean_ic": 0.005233,
+        "std_ic": 0.085945
+      }
+    },
+    "vol_factor_stability": {
+      "factor": "realized_vol_20d",
+      "segment_ics": [
+        0.023115,
+        0.050423,
+        -0.062836
+      ],
+      "sign_stable": false,
+      "all_positive": false,
+      "mean_ic": 0.003567,
+      "std_ic": 0.04826
+    },
+    "all_oi_factors_stable": false,
+    "overall_stability_pass": false
+  }
+}

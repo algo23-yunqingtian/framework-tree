@@ -521,5 +521,49 @@
     },
     "total_artifact_count_after_update": 13,
     "total_artifact_bytes_after_update": 2188128
+  },
+  "factor_weight_update": {
+    "update_id": "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM",
+    "updated_at": "2026-10-19T08:16:01.980305+00:00",
+    "token": "DSHA-P49-V3-FACTOR-WEIGHT-TOKEN",
+    "new_artifacts": {
+      "factor_enable_config.json": {
+        "path": "artifacts\\p49_v3_backtest\\factor_enable_config.json",
+        "sha256": "fafa32b3478417bb1c1246c3da30570e96b6848ddb8393fe67c6faa8f7d13385",
+        "size_bytes": 1886
+      },
+      "factor_weight.json": {
+        "path": "artifacts\\p49_v3_backtest\\factor_weight.json",
+        "sha256": "2bc70bec839eb22e630acac43b1e8135cd1e0da4739ed9d879f978c2a46794b1",
+        "size_bytes": 2733
+      },
+      "weighted_backtest_metrics.json": {
+        "path": "artifacts\\p49_v3_backtest\\weighted_backtest_metrics.json",
+        "sha256": "5ddcfc7ee47ce77e7542c7eacdd9fe0f0fb5a754e64868ba7833711af0b9ea57",
+        "size_bytes": 25942
+      },
+      "factor_stability_report.md": {
+        "path": "artifacts\\p49_v3_backtest\\factor_stability_report.md",
+        "sha256": "b4680de891941c7b36edae9878845277566be54b3684040fe1309e76bd26a878",
+        "size_bytes": 1420
+      },
+      "v3_factor_weight_report.md": {
+        "path": "artifacts\\p49_v3_backtest\\v3_factor_weight_report.md",
+        "sha256": "db1364f5d22b0134669a247a74444ea9d6b2c56a5f9b521790910ffda3af1289",
+        "size_bytes": 5877
+      },
+      "equity_curve_weighted.csv": {
+        "path": "artifacts\\p49_v3_backtest\\equity_curve_weighted.csv",
+        "sha256": "1190c4de0a9ee19753e0a754d1f2d2e6a0dfed8abad469cd2fc7b736b7de7be5",
+        "size_bytes": 1434
+      },
+      "run_v3_factor_weight.py": {
+        "path": "artifacts\\p49_v3_backtest\\run_v3_factor_weight.py",
+        "sha256": "a38b0de5f725eda40e54edaac58ff98eca6d9a83e6d82658ff1eb5bda06069b8",
+        "size_bytes": 73101
+      }
+    },
+    "total_artifact_count_after_update": 20,
+    "total_artifact_bytes_after_update": 2300521
   }
 }

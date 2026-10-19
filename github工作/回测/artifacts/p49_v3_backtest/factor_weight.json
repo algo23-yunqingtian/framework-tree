@@ -1,0 +1,110 @@
+{
+  "config_id": "DSHA-P49-V3-FACTOR-WEIGHT-CONFIG",
+  "generated_at": "2026-10-19T08:16:01.792305+00:00",
+  "token": "DSHA-P49-V3-FACTOR-WEIGHT-TOKEN",
+  "baseline_commit": "a011ba0",
+  "status": "FROZEN",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "weighting_method": "IC_mean_weighted_abs_normalized",
+  "description": "IC均值加权: 用4品种样本IC值作为权重, |IC|归一化到sum=1, 保留符号",
+  "normalization": "abs_ic_sum_to_1",
+  "ic_values": {
+    "realized_vol_20d": 0.053897,
+    "oi_change_rate_7d": 0.044248,
+    "oi_level": 0.038378,
+    "momentum_20d": 0.03706,
+    "vol_regime_change": 0.011865,
+    "oi_change_1d": 0.00616,
+    "contract_switch_flag": 0.0,
+    "spread_cs": -0.064899
+  },
+  "ic_ir_values": {
+    "realized_vol_20d": 1.147314,
+    "oi_change_rate_7d": 1.142341,
+    "oi_level": 0.850292,
+    "momentum_20d": 0.821351,
+    "vol_regime_change": 0.299238,
+    "oi_change_1d": 0.154011,
+    "contract_switch_flag": 0.0,
+    "spread_cs": -1.50836
+  },
+  "total_abs_ic": 0.256507,
+  "abs_weights_sum_to_1": {
+    "realized_vol_20d": 0.210119,
+    "oi_change_rate_7d": 0.172502,
+    "oi_level": 0.149618,
+    "momentum_20d": 0.144479,
+    "vol_regime_change": 0.046256,
+    "oi_change_1d": 0.024015,
+    "contract_switch_flag": 0.0,
+    "spread_cs": 0.253011
+  },
+  "raw_ic_values": {
+    "realized_vol_20d": 0.053897,
+    "oi_change_rate_7d": 0.044248,
+    "oi_level": 0.038378,
+    "momentum_20d": 0.03706,
+    "vol_regime_change": 0.011865,
+    "oi_change_1d": 0.00616,
+    "contract_switch_flag": 0.0,
+    "spread_cs": -0.064899
+  },
+  "effective_weights": {
+    "realized_vol_20d": 0.210119,
+    "oi_change_rate_7d": 0.172502,
+    "oi_level": 0.149618,
+    "momentum_20d": 0.144479,
+    "vol_regime_change": 0.046256,
+    "oi_change_1d": 0.024015,
+    "contract_switch_flag": 0.0,
+    "spread_cs": -0.253011
+  },
+  "weight_factors_sorted": [
+    [
+      "spread_cs",
+      0.2530106390858729
+    ],
+    [
+      "realized_vol_20d",
+      0.21011902209296435
+    ],
+    [
+      "oi_change_rate_7d",
+      0.1725021149520286
+    ],
+    [
+      "oi_level",
+      0.1496177492232181
+    ],
+    [
+      "momentum_20d",
+      0.1444794878892194
+    ],
+    [
+      "vol_regime_change",
+      0.046256047593243074
+    ],
+    [
+      "oi_change_1d",
+      0.024014939163453628
+    ],
+    [
+      "contract_switch_flag",
+      0.0
+    ]
+  ],
+  "symbol_pool": "4_symbol_whitelist",
+  "symbols": [
+    "LC.GFE",
+    "NI.SHF",
+    "CU.SHF",
+    "ZN.SHF"
+  ],
+  "symbol_count": 4
+}
