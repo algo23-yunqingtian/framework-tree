@@ -1,0 +1,33 @@
+{
+  "snapshot_id": "DSHC-TASK011-PARALLEL-SNAPSHOT",
+  "created_at": "2026-10-20T00:46:50+08:00",
+  "workorder": "DSHC-TASK-011",
+  "token": "DSHC-TASK011-PIPE-SCALE-TOKEN",
+  "status": "PASS",
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "v2_sha_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "prod_pipeline_unchanged": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "receipt": {
+    "DSHC_TASK011_PIPE_SCALE": "SCALE_COMPLETE",
+    "prod_pipeline_unchanged": "YES",
+    "parallel_shard_validated": "YES",
+    "no_cross_contamination": "YES",
+    "alert_hook_stable": "YES",
+    "sandbox_data_aligned": "YES"
+  },
+  "rounds_summary": {
+    "total_rounds": 8,
+    "rounds_passed": 8,
+    "rounds_failed": 0,
+    "lock_conflicts_total": 0,
+    "cross_contamination_total": 0,
+    "v2_unchanged_all": true
+  }
+}
