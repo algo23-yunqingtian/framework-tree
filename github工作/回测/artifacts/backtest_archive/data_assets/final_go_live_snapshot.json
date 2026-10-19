@@ -1,0 +1,437 @@
+{
+  "snapshot_id": "DSHC-TASK009-FINAL-SNAPSHOT-001",
+  "version": "1.0.0",
+  "workorder": "DSHC-TASK-009",
+  "token": "DSHC-TASK009-INCR-CONSOLIDATE-TOKEN",
+  "created_at": "2026-10-19T22:23:43+08:00",
+  "overall_result": "PASS",
+  "baseline": {
+    "feature_branch": "feature/v88-g1",
+    "head_commit": "394682a"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "v2_sha_current": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "v2_sha_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_validators": true,
+    "file_lock": true,
+    "incr_pipeline_daily_unchanged": true,
+    "incr_pipeline_rollback_unchanged": true,
+    "incr_pipeline_schedule_unchanged": true
+  },
+  "tasks": {
+    "P1.1_schedule_task": {
+      "passed": true,
+      "task_name": "DSHC-IncrPipelineDaily",
+      "task_path": "\\DSHC\\",
+      "state": "Ready",
+      "xml_verified": true,
+      "exec_python": true,
+      "args_execute": true,
+      "workdir_correct": true,
+      "trigger_weekdays": true,
+      "multiple_instances_ignorenew": true,
+      "execution_time_limit_1h": true,
+      "next_run": "10/20/2026 15:30:30"
+    },
+    "P1.2_ten_round_dryrun": {
+      "total_rounds": 10,
+      "rounds_passed": 10,
+      "rounds_failed": 0,
+      "all_passed": true,
+      "total_duration_seconds": 1.53,
+      "avg_duration_seconds": 0.15,
+      "snapshots": [
+        {
+          "round": 1,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.16,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 2,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 3,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 4,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.17,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 5,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.14,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 6,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 7,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 8,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.16,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 9,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        },
+        {
+          "round": 10,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "daily_shards_before": 0,
+          "daily_shards_after": 1,
+          "backfill_shards": 0,
+          "dag_steps_completed": 5,
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED"
+        }
+      ]
+    },
+    "P1.3_backfill_isolation": {
+      "passed": true,
+      "return_code": 0,
+      "backfill_shard_created": true,
+      "backfill_shard_name": "increment_bar_backfill_20261001_20261019.csv",
+      "daily_dir_untouched": true,
+      "daily_shards_before": 0,
+      "daily_shards_after": 0,
+      "v2_unchanged": true,
+      "isolation_verified": true,
+      "duration_seconds": 0.16
+    },
+    "P1.4_go_live_validation": {
+      "passed": true,
+      "return_code": 0,
+      "all_pass_in_output": true,
+      "v2_unchanged_in_output": true,
+      "wind_calls_zero_in_output": true,
+      "output_tail": "report):      PASS\n  P3.3 (manifest):    PASS\n  V2 SHA unchanged:   True\n  Wind API calls:     0\n  Gate:               CLOSED/HOLD\n  Release:            NOT_ISSUED\n======================================================================\n\n  Receipt:\n  DSHC_DATA_INCR_GOLIVE=READY_FOR_PROD｜schedule_task_online=YES｜alert_hook_connected=YES｜seven_round_dryrun_ok=YES｜v2_sha_protected=YES｜no_concurrent_risk=YES\n\n  Acceptance report: artifacts\\backtest_archive\\data_assets\\pipeline_go_live_acceptance.json\n",
+      "stderr_tail": "0-19 22:23:43 [INFO] PIPELINE_DAILY: Audit: PIPELINE_MANIFEST_UPDATED\n2026-10-19 22:23:43 [INFO] PIPELINE_DAILY: Audit: PIPELINE_DAG_COMPLETE\n2026-10-19 22:23:43 [INFO] PIPELINE_DAILY: Lock released.\n"
+    },
+    "P2.1_alert_hook_12_types": {
+      "passed": true,
+      "alert_types_defined": 14,
+      "alert_types_emitted": 12,
+      "expected_types": 12,
+      "audit_log_written": true,
+      "emit_results": {
+        "PIPELINE_COLLECT_TIMEOUT": {
+          "run_id": "DSHC-ALERT-20261019222343-013",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_COLLECT_FAIL_ROLLBACK": {
+          "run_id": "DSHC-ALERT-20261019222343-014",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_VALIDATE_E13_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019222343-015",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_VALIDATE_E14_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019222343-016",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_VALIDATE_E15_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019222343-017",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_MERGE_FAIL": {
+          "run_id": "DSHC-ALERT-20261019222343-018",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_SHA_TAMPER_DETECTED": {
+          "run_id": "DSHC-ALERT-20261019222343-019",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_LOCK_CONFLICT": {
+          "run_id": "DSHC-ALERT-20261019222343-020",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_BACKFILL_DRYRUN": {
+          "run_id": "DSHC-ALERT-20261019222343-021",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_DAG_DRYRUN_COMPLETE": {
+          "run_id": "DSHC-ALERT-20261019222343-022",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_SMOKE_LIVE_COMPLETE": {
+          "run_id": "DSHC-ALERT-20261019222343-023",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_ALERT_HOOK_READY": {
+          "run_id": "DSHC-ALERT-20261019222343-024",
+          "severity": "OK",
+          "written": true
+        }
+      },
+      "log_compliance": {
+        "total_alerts": 24,
+        "compliant_count": 24,
+        "non_compliant_count": 0,
+        "field_errors": {},
+        "all_8_fields_present": true,
+        "fields_required": [
+          "run_id",
+          "stage",
+          "status",
+          "error_code",
+          "shard_path",
+          "row_count",
+          "sha256",
+          "duration_seconds"
+        ],
+        "fields_present": [
+          "duration_seconds",
+          "error_code",
+          "row_count",
+          "run_id",
+          "sha256",
+          "shard_path",
+          "stage",
+          "status"
+        ],
+        "invariants_and_severity_ok": true
+      }
+    },
+    "P2.2_injection_tests": {
+      "passed": true,
+      "tests_run": 4,
+      "all_captured": true,
+      "capture_results": {
+        "LOCK_CONFLICT": {
+          "passed": true,
+          "test_name": "LOCK_CONFLICT",
+          "event_type": "PIPELINE_LOCK_CONFLICT",
+          "stage": "lock",
+          "status": "REJECTED",
+          "error_code": "LOCK_CONFLICT",
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_zero": true,
+          "all_invariants_ok": true,
+          "run_id": "DSHC-ALERT-20261019222343-025"
+        },
+        "COLLECTION_TIMEOUT": {
+          "passed": true,
+          "test_name": "COLLECTION_TIMEOUT",
+          "event_type": "PIPELINE_COLLECT_TIMEOUT",
+          "stage": "collect",
+          "status": "FAIL",
+          "error_code": "COLLECTION_TIMEOUT",
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_zero": true,
+          "all_invariants_ok": true,
+          "run_id": "DSHC-ALERT-20261019222343-026"
+        },
+        "BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "test_name": "BLACKLIST_INTERCEPT",
+          "event_type": "PIPELINE_VALIDATE_E13_BLOCK",
+          "stage": "validate",
+          "status": "FAIL",
+          "error_code": "BLACKLIST_INTERCEPT",
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_zero": true,
+          "all_invariants_ok": true,
+          "run_id": "DSHC-ALERT-20261019222343-027"
+        },
+        "FIELD_VALIDATION_ERROR": {
+          "passed": true,
+          "test_name": "FIELD_VALIDATION_ERROR",
+          "event_type": "PIPELINE_VALIDATE_E14_BLOCK",
+          "stage": "validate",
+          "status": "FAIL",
+          "error_code": "FIELD_VALIDATION_ERROR",
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_zero": true,
+          "all_invariants_ok": true,
+          "run_id": "DSHC-ALERT-20261019222343-028"
+        }
+      }
+    }
+  },
+  "smoke_check": {
+    "v2_sha_unchanged": true,
+    "all_tasks_passed": true,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  },
+  "alert_summary": {
+    "total_alerts": 29,
+    "by_status": {
+      "PASS": 25,
+      "REJECTED": 1,
+      "FAIL": 3
+    },
+    "by_stage": {
+      "system": 14,
+      "backfill": 2,
+      "collect": 3,
+      "validate": 5,
+      "merge": 1,
+      "sha_snapshot": 1,
+      "lock": 2,
+      "smoke_test": 1
+    },
+    "by_severity": {
+      "OK": 25,
+      "WARNING": 1,
+      "CRITICAL": 3
+    },
+    "dry_run": false,
+    "workorder": "DSHC-TASK-009",
+    "token": "DSHC-TASK009-INCR-CONSOLIDATE-TOKEN",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "v2_verification": {
+    "known_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "final_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "unchanged": true
+  },
+  "receipt": "DSHC_TASK009_INCR_CONSOLIDATE=DONE｜task_verified=YES｜ten_dryrun_ok=YES｜alert_end2end_ok=YES｜v2_sha_locked=YES｜artifact_archived=YES"
+}

@@ -4,10 +4,10 @@
   "version": "2.1.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-19T20:05:42+08:00",
+  "updated_at": "2026-10-19T22:23:43+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
   "registry_version": "v2.3.0",
-  "updated_by": "DSHC-DATA-INCR-GOLIVE-TOKEN",
+  "updated_by": "DSHC-TASK009-INCR-CONSOLIDATE-TOKEN",
   "total_rows": 23328,
   "files": [
     {
@@ -173,12 +173,14 @@
     "V1_FROZEN": true,
     "F01_A06_UNCHANGED": true,
     "LC_SHF_PERMANENTLY_BLACKLISTED": true,
-    "LAST_PIPELINE_RUN": "2026-10-19T20:05:42+08:00",
+    "LAST_PIPELINE_RUN": "2026-10-19T22:23:43+08:00",
     "LAST_PIPELINE_STATUS": "SUCCESS",
     "LAST_SMOKE_LIVE_RUN": "2026-10-19T16:41:03+08:00",
     "LAST_SMOKE_LIVE_STATUS": "COMPLETE",
-    "LAST_GO_LIVE_RUN": "2026-10-19T20:05:42+08:00",
-    "LAST_GO_LIVE_STATUS": "COMPLETE"
+    "LAST_GO_LIVE_RUN": "2026-10-19T22:23:43+08:00",
+    "LAST_GO_LIVE_STATUS": "COMPLETE",
+    "LAST_CONSOLIDATE_RUN": "2026-10-19T22:23:43+08:00",
+    "LAST_CONSOLIDATE_STATUS": "COMPLETE"
   },
   "data_format": {
     "long_header": "date,symbol,indicator,value,source",
@@ -240,7 +242,7 @@
     "workorder": "DSHC-DATA-INCR-PIPELINE-GO-LIVE",
     "token": "DSHC-DATA-INCR-GOLIVE-TOKEN",
     "version": "1.0.0",
-    "created_at": "2026-10-19T20:05:42+08:00",
+    "created_at": "2026-10-19T22:23:43+08:00",
     "schedule": {
       "task_name": "DSHC-IncrPipelineDaily",
       "trigger": "WEEKDAYS 15:30",
@@ -286,6 +288,13 @@
     "version": "1.0.0",
     "workorder": "DSHC-DATA-INCR-PIPELINE-GO-LIVE",
     "token": "DSHC-DATA-INCR-GOLIVE-TOKEN",
-    "created_at": "2026-10-19T20:05:42+08:00"
+    "created_at": "2026-10-19T22:23:43+08:00"
+  },
+  "final_go_live_snapshot": {
+    "path": "artifacts\\backtest_archive\\data_assets\\final_go_live_snapshot.json",
+    "version": "1.0.0",
+    "workorder": "DSHC-TASK-009",
+    "token": "DSHC-TASK009-INCR-CONSOLIDATE-TOKEN",
+    "created_at": "2026-10-19T22:23:43+08:00"
   }
 }
