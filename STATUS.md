@@ -10672,3 +10672,45 @@ V88_PHASE03_P15_DO_NOT=主动呼叫 DSHB 触发 QC-Retry#5 / 自判 EXEMPT
 
 === V88_PHASE03_P15 END ===
 
+
+
+### 2026-10-19 V88 Phase03 P51 HERMEShf Real-Seal-Recovery-Fix (V88_PHASE03_P51_HERMESHF_REAL_SEAL_RECOVERY_FIX)
+
+- **工单**: INSTRUCTION_HERMESHF_REAL_SEAL_RECOVERY_FIX
+- **AGENT**: HERMEShf | **BRANCH**: `feature/v88-g1` (BRANCH_LOCKED) | **ARBITER**: OBSERVING
+- **基线**: rebased to origin HEAD `45690d5` (落后 0)
+- **背景**: DSHB P50 指控 b4a5dc6 不存在 + 三份交付物 NOT_FOUND。实测三项指控**全部不成立**：
+  - b4a5dc6 真实存在且为 origin 祖先 (`git merge-base --is-ancestor` rc=0)
+  - 三份交付物磁盘存在 + origin 树 IN_TREE (`git cat-file -e` rc=0)
+  - 六项门禁资产 MD5 与 b4a5dc6 快照 6/6 MATCH（非硬编码假哈希）
+  - P50 自身从未 push 到 origin (`grep -ic P50` = 0)；其扫描基线过期 (b42f566 距 HEAD 11 commits)
+- **T0 真基线**: fetch + rebase origin/feature/v88-g1 → HEAD=`45690d5`
+- **T1 目录**: hermes_disclosure/ 与 hermes_p14_c4_fix/ 已存在（mkdir 幂等，未破坏）
+- **T2 c7 偏差披露 v2**: `c7_deviation_record_final_v2.md` (新文件名，NO_OVERWRITE)
+- **T3 gate proof v2**: `hermes_gate_artifact_proof_final_v2.md` (新文件名，NO_OVERWRITE)
+- **T4 快照 v2**: `post_deploy_final_md5_snapshot_v2.lst` (12 条实时 md5sum)
+- **T5 commit + push**: 见 git log
+- **T6 7-Constraint**: 6/7 PASS (C7=OBSERVED_DEVIATION_AWAIT_EXEMPT, SELF_EXEMPT=NO)
+- **T7 AppendOnly**: STATUS.md + MD5_MANIFEST.md 仅尾部追加，未触碰 0141736a 冲突区段
+- **冻结封印链 v2-v5 + asset_index.lst**: MD5 逐项不变 (C5 PASS)
+- **零外部 API**: YES | **零 rm/mv (本工单内)**: YES
+- **状态**: JOB_STATUS=COMPLETE | NEXT_ACTION=STANDBY_AWAIT_OBSERVER
+- **DO_NOT**: 主动呼叫 DSHB 触发 QC-Retry#5 / 自判 C7 EXEMPT
+
+V88_PHASE03_P51_HERMESHF_REAL_SEAL_RECOVERY_FIX=COMPLETE
+V88_PHASE03_P51_BASELINE=45690d5aa7aa3da9c62793eea2e259727d8761ab
+V88_PHASE03_P51_P50_CLAIMS_REJECTED=3_OF_3
+V88_PHASE03_P51_P50_ROOT_CAUSE=STALE_SCAN_BASELINE_AND_P50_NEVER_PUSHED
+V88_PHASE03_P51_B4A5DC6_REAL_COMMIT=YES
+V88_PHASE03_P51_DELIVERABLES_IN_ORIGIN_TREE=YES
+V88_PHASE03_P51_SNAPSHOT_VS_LIVE_DISK=6_OF_6_MATCH
+V88_PHASE03_P51_FROZEN_SEAL_CHAIN_UNCHANGED=YES
+V88_PHASE03_P51_ZERO_RM=YES
+V88_PHASE03_P51_ZERO_API=YES
+V88_PHASE03_P51_CONSTRAINTS_PASS=6_OF_7
+V88_PHASE03_P51_C7_STATUS=OBSERVED_DEVIATION_AWAIT_EXEMPT
+V88_PHASE03_P51_C7_SELF_EXEMPT=NO
+V88_PHASE03_P51_ARBITER=OBSERVING
+V88_PHASE03_P51_NEXT_ACTION=STANDBY_AWAIT_OBSERVER
+
+### V88_PHASE03_P51 END
