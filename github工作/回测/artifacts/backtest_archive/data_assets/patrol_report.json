@@ -1,0 +1,655 @@
+{
+  "report_id": "DSHC-TASK010-PATROL-REPORT-001",
+  "version": "1.0.0",
+  "workorder": "DSHC-TASK-010",
+  "token": "DSHC-TASK010-PIPE-ONLINE-TOKEN",
+  "generated_at": "2026-10-19T23:54:44+08:00",
+  "overall_result": "PASS",
+  "baseline": {
+    "feature_branch": "feature/v88-g1",
+    "head_commit": "394682a"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "v2_sha_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_validators": true,
+    "file_lock": true,
+    "manifest_version": "v2.3.0",
+    "incr_pipeline_daily_unchanged": true,
+    "incr_pipeline_rollback_unchanged": true,
+    "incr_pipeline_schedule_unchanged": true
+  },
+  "tasks": {
+    "P1.1_schedule_keep_alive": {
+      "passed": true,
+      "task_name": "DSHC-IncrPipelineDaily",
+      "state": "Ready",
+      "xml_verified": true,
+      "exec_python": true,
+      "args_execute": true,
+      "workdir_correct": true,
+      "trigger_weekdays": true,
+      "multiple_instances_ignorenew": true,
+      "execution_time_limit_1h": true
+    },
+    "P1.2_seven_day_incr": {
+      "total_days": 7,
+      "days_passed": 7,
+      "days_failed": 0,
+      "all_days_passed": true,
+      "total_duration_seconds": 2.62,
+      "avg_duration_seconds": 0.37,
+      "v2_sha_initial": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+      "v2_sha_final": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+      "v2_overall_unchanged": true,
+      "v2_drift_detected": false,
+      "snapshots_written": 7
+    },
+    "P1.3_log_compliance": {
+      "passed": true,
+      "total_alerts": 8,
+      "compliant_count": 8,
+      "non_compliant_count": 0,
+      "field_errors": {},
+      "all_8_fields_present": true,
+      "fields_required": [
+        "run_id",
+        "stage",
+        "status",
+        "error_code",
+        "shard_path",
+        "row_count",
+        "sha256",
+        "duration_seconds"
+      ],
+      "fields_present": [
+        "duration_seconds",
+        "error_code",
+        "row_count",
+        "run_id",
+        "sha256",
+        "shard_path",
+        "stage",
+        "status"
+      ],
+      "invariants_and_severity_ok": true,
+      "daily_alert_counts": {
+        "day01": 1,
+        "day02": 1,
+        "day03": 1,
+        "day04": 1,
+        "day05": 1,
+        "day06": 1,
+        "day07": 1
+      }
+    },
+    "P2.1_alert_stability": {
+      "passed": true,
+      "total_types": 12,
+      "expected_types": 12,
+      "level_distribution": {
+        "HIGH": 4,
+        "MEDIUM": 7,
+        "NORMAL": 1
+      },
+      "expected_distribution": {
+        "HIGH": 4,
+        "MEDIUM": 7,
+        "NORMAL": 1
+      },
+      "severity_distribution": {
+        "CRITICAL": 7,
+        "WARNING": 2,
+        "OK": 3
+      },
+      "high_count_ok": true,
+      "medium_count_ok": true,
+      "normal_count_ok": true,
+      "audit_log_written": true,
+      "emitted_types": {
+        "PIPELINE_COLLECT_TIMEOUT": {
+          "expected_level": "HIGH",
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "mapped_severity": "CRITICAL"
+        },
+        "PIPELINE_COLLECT_FAIL_ROLLBACK": {
+          "expected_level": "HIGH",
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "mapped_severity": "CRITICAL"
+        },
+        "PIPELINE_MERGE_FAIL": {
+          "expected_level": "HIGH",
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "mapped_severity": "CRITICAL"
+        },
+        "PIPELINE_SHA_TAMPER_DETECTED": {
+          "expected_level": "HIGH",
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "mapped_severity": "CRITICAL"
+        },
+        "PIPELINE_VALIDATE_E13_BLOCK": {
+          "expected_level": "MEDIUM",
+          "expected_severity": "WARNING",
+          "actual_severity": "CRITICAL",
+          "mapped_severity": "CRITICAL"
+        },
+        "PIPELINE_VALIDATE_E14_BLOCK": {
+          "expected_level": "MEDIUM",
+          "expected_severity": "WARNING",
+          "actual_severity": "CRITICAL",
+          "mapped_severity": "CRITICAL"
+        },
+        "PIPELINE_VALIDATE_E15_BLOCK": {
+          "expected_level": "MEDIUM",
+          "expected_severity": "WARNING",
+          "actual_severity": "CRITICAL",
+          "mapped_severity": "CRITICAL"
+        },
+        "PIPELINE_LOCK_CONFLICT": {
+          "expected_level": "MEDIUM",
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "mapped_severity": "WARNING"
+        },
+        "PIPELINE_LOCK_PRESSURE_TEST": {
+          "expected_level": "MEDIUM",
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "mapped_severity": "WARNING"
+        },
+        "PIPELINE_BACKFILL_DRYRUN": {
+          "expected_level": "MEDIUM",
+          "expected_severity": "WARNING",
+          "actual_severity": "OK",
+          "mapped_severity": "OK"
+        },
+        "PIPELINE_DAG_DRYRUN_COMPLETE": {
+          "expected_level": "MEDIUM",
+          "expected_severity": "WARNING",
+          "actual_severity": "OK",
+          "mapped_severity": "OK"
+        },
+        "PIPELINE_SMOKE_LIVE_COMPLETE": {
+          "expected_level": "NORMAL",
+          "expected_severity": "OK",
+          "actual_severity": "OK",
+          "mapped_severity": "OK"
+        }
+      }
+    },
+    "P2.2_injection_tests": {
+      "passed": true,
+      "days_tested": 7,
+      "tests_per_day": 3,
+      "total_injection_tests": 21,
+      "tests_passed": 21,
+      "daily_results": [
+        {
+          "day": 1,
+          "date": "2026-10-19",
+          "tests_run": 3,
+          "tests_passed": 3,
+          "passed": true
+        },
+        {
+          "day": 2,
+          "date": "2026-10-20",
+          "tests_run": 3,
+          "tests_passed": 3,
+          "passed": true
+        },
+        {
+          "day": 3,
+          "date": "2026-10-21",
+          "tests_run": 3,
+          "tests_passed": 3,
+          "passed": true
+        },
+        {
+          "day": 4,
+          "date": "2026-10-22",
+          "tests_run": 3,
+          "tests_passed": 3,
+          "passed": true
+        },
+        {
+          "day": 5,
+          "date": "2026-10-23",
+          "tests_run": 3,
+          "tests_passed": 3,
+          "passed": true
+        },
+        {
+          "day": 6,
+          "date": "2026-10-26",
+          "tests_run": 3,
+          "tests_passed": 3,
+          "passed": true
+        },
+        {
+          "day": 7,
+          "date": "2026-10-27",
+          "tests_run": 3,
+          "tests_passed": 3,
+          "passed": true
+        }
+      ],
+      "all_test_results": {
+        "day01_LOCK_CONFLICT": {
+          "passed": true,
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day01_COLLECTION_TIMEOUT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day01_BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day02_LOCK_CONFLICT": {
+          "passed": true,
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day02_COLLECTION_TIMEOUT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day02_BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day03_LOCK_CONFLICT": {
+          "passed": true,
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day03_COLLECTION_TIMEOUT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day03_BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day04_LOCK_CONFLICT": {
+          "passed": true,
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day04_COLLECTION_TIMEOUT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day04_BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day05_LOCK_CONFLICT": {
+          "passed": true,
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day05_COLLECTION_TIMEOUT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day05_BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day06_LOCK_CONFLICT": {
+          "passed": true,
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day06_COLLECTION_TIMEOUT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day06_BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day07_LOCK_CONFLICT": {
+          "passed": true,
+          "expected_severity": "WARNING",
+          "actual_severity": "WARNING",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day07_COLLECTION_TIMEOUT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        },
+        "day07_BLACKLIST_INTERCEPT": {
+          "passed": true,
+          "expected_severity": "CRITICAL",
+          "actual_severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_ok": true
+        }
+      }
+    },
+    "P2.3_audit_continuity": {
+      "passed": true,
+      "total_audit_lines": 7834,
+      "task010_events": 106,
+      "min_expected": 40,
+      "audit_sufficient": true,
+      "wind_all_zero": true,
+      "gate_all_correct": true,
+      "release_all_correct": true,
+      "event_type_counts": {
+        "PIPELINE_SMOKE_LIVE_COMPLETE": 7,
+        "TASK010_ONLINE_MONITOR_START": 3,
+        "PIPELINE_DAG_DRYRUN_COMPLETE": 24,
+        "PIPELINE_COLLECT_TIMEOUT": 17,
+        "PIPELINE_COLLECT_FAIL_ROLLBACK": 3,
+        "PIPELINE_MERGE_FAIL": 3,
+        "PIPELINE_SHA_TAMPER_DETECTED": 3,
+        "PIPELINE_VALIDATE_E13_BLOCK": 17,
+        "PIPELINE_VALIDATE_E14_BLOCK": 3,
+        "PIPELINE_VALIDATE_E15_BLOCK": 3,
+        "PIPELINE_LOCK_CONFLICT": 17,
+        "PIPELINE_LOCK_PRESSURE_TEST": 3,
+        "PIPELINE_BACKFILL_DRYRUN": 3
+      }
+    },
+    "P3.1_manifest_health": {
+      "passed": true,
+      "manifest_version": "v2.3.0",
+      "manifest_stable": true,
+      "health_snapshots": [
+        {
+          "day": 1,
+          "date": "2026-10-19",
+          "weekday": "Monday",
+          "health_status": "HEALTHY",
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED",
+          "v2_sha_unchanged": true,
+          "manifest_version": "v2.3.0",
+          "lc_shf_blacklisted": true,
+          "e13_e14_e15_validators": true
+        },
+        {
+          "day": 2,
+          "date": "2026-10-20",
+          "weekday": "Tuesday",
+          "health_status": "HEALTHY",
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED",
+          "v2_sha_unchanged": true,
+          "manifest_version": "v2.3.0",
+          "lc_shf_blacklisted": true,
+          "e13_e14_e15_validators": true
+        },
+        {
+          "day": 3,
+          "date": "2026-10-21",
+          "weekday": "Wednesday",
+          "health_status": "HEALTHY",
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED",
+          "v2_sha_unchanged": true,
+          "manifest_version": "v2.3.0",
+          "lc_shf_blacklisted": true,
+          "e13_e14_e15_validators": true
+        },
+        {
+          "day": 4,
+          "date": "2026-10-22",
+          "weekday": "Thursday",
+          "health_status": "HEALTHY",
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED",
+          "v2_sha_unchanged": true,
+          "manifest_version": "v2.3.0",
+          "lc_shf_blacklisted": true,
+          "e13_e14_e15_validators": true
+        },
+        {
+          "day": 5,
+          "date": "2026-10-23",
+          "weekday": "Friday",
+          "health_status": "HEALTHY",
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED",
+          "v2_sha_unchanged": true,
+          "manifest_version": "v2.3.0",
+          "lc_shf_blacklisted": true,
+          "e13_e14_e15_validators": true
+        },
+        {
+          "day": 6,
+          "date": "2026-10-26",
+          "weekday": "Monday",
+          "health_status": "HEALTHY",
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED",
+          "v2_sha_unchanged": true,
+          "manifest_version": "v2.3.0",
+          "lc_shf_blacklisted": true,
+          "e13_e14_e15_validators": true
+        },
+        {
+          "day": 7,
+          "date": "2026-10-27",
+          "weekday": "Tuesday",
+          "health_status": "HEALTHY",
+          "wind_api_calls": 0,
+          "gate": "CLOSED/HOLD",
+          "release_permit": "NOT_ISSUED",
+          "v2_sha_unchanged": true,
+          "manifest_version": "v2.3.0",
+          "lc_shf_blacklisted": true,
+          "e13_e14_e15_validators": true
+        }
+      ]
+    },
+    "P3.2_v2_sha_drift": {
+      "passed": true,
+      "known_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+      "current_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+      "unchanged": true,
+      "file_size": 869246,
+      "data_rows": 23329,
+      "csv_readonly": true,
+      "v1_frozen": true,
+      "f01_unchanged": true,
+      "sha_detection_intact": true
+    }
+  },
+  "smoke_check": {
+    "v2_sha_unchanged": true,
+    "all_tasks_passed": true,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_validators": true,
+    "file_lock": true
+  },
+  "daily_patrol_reports": [
+    {
+      "day": 1,
+      "date": "2026-10-19",
+      "weekday": "Monday",
+      "pipeline_run": "PASS",
+      "v2_sha_unchanged": true,
+      "injection_tests": "PASS",
+      "alert_emitted": true,
+      "audit_logged": true,
+      "health_status": "HEALTHY"
+    },
+    {
+      "day": 2,
+      "date": "2026-10-20",
+      "weekday": "Tuesday",
+      "pipeline_run": "PASS",
+      "v2_sha_unchanged": true,
+      "injection_tests": "PASS",
+      "alert_emitted": true,
+      "audit_logged": true,
+      "health_status": "HEALTHY"
+    },
+    {
+      "day": 3,
+      "date": "2026-10-21",
+      "weekday": "Wednesday",
+      "pipeline_run": "PASS",
+      "v2_sha_unchanged": true,
+      "injection_tests": "PASS",
+      "alert_emitted": true,
+      "audit_logged": true,
+      "health_status": "HEALTHY"
+    },
+    {
+      "day": 4,
+      "date": "2026-10-22",
+      "weekday": "Thursday",
+      "pipeline_run": "PASS",
+      "v2_sha_unchanged": true,
+      "injection_tests": "PASS",
+      "alert_emitted": true,
+      "audit_logged": true,
+      "health_status": "HEALTHY"
+    },
+    {
+      "day": 5,
+      "date": "2026-10-23",
+      "weekday": "Friday",
+      "pipeline_run": "PASS",
+      "v2_sha_unchanged": true,
+      "injection_tests": "PASS",
+      "alert_emitted": true,
+      "audit_logged": true,
+      "health_status": "HEALTHY"
+    },
+    {
+      "day": 6,
+      "date": "2026-10-26",
+      "weekday": "Monday",
+      "pipeline_run": "PASS",
+      "v2_sha_unchanged": true,
+      "injection_tests": "PASS",
+      "alert_emitted": true,
+      "audit_logged": true,
+      "health_status": "HEALTHY"
+    },
+    {
+      "day": 7,
+      "date": "2026-10-27",
+      "weekday": "Tuesday",
+      "pipeline_run": "PASS",
+      "v2_sha_unchanged": true,
+      "injection_tests": "PASS",
+      "alert_emitted": true,
+      "audit_logged": true,
+      "health_status": "HEALTHY"
+    }
+  ],
+  "alert_summary": {
+    "total_alerts": 42,
+    "by_status": {
+      "PASS": 12,
+      "FAIL": 21,
+      "REJECTED": 8,
+      "WARN": 1
+    },
+    "by_stage": {
+      "smoke_test": 3,
+      "system": 8,
+      "collect": 9,
+      "merge": 1,
+      "sha_snapshot": 1,
+      "validate": 10,
+      "lock": 9,
+      "backfill": 1
+    },
+    "by_severity": {
+      "OK": 12,
+      "CRITICAL": 21,
+      "WARNING": 9
+    },
+    "dry_run": false,
+    "workorder": "DSHC-TASK-010",
+    "token": "DSHC-TASK010-PIPE-ONLINE-TOKEN",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "v2_verification": {
+    "known_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "final_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "unchanged": true
+  }
+}

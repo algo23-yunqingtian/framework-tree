@@ -4,10 +4,10 @@
   "version": "2.1.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-19T22:23:43+08:00",
+  "updated_at": "2026-10-19T23:54:44+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
   "registry_version": "v2.3.0",
-  "updated_by": "DSHC-TASK009-INCR-CONSOLIDATE-TOKEN",
+  "updated_by": "DSHC-TASK010-PIPE-ONLINE-TOKEN",
   "total_rows": 23328,
   "files": [
     {
@@ -48,7 +48,512 @@
       "blacklisted_by": "DSHC-DATA-ARCHIVE-TOKEN"
     }
   },
-  "incremental_runs": [],
+  "incremental_runs": [
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234054",
+      "timestamp": "2026-10-19T23:40:54+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234054",
+      "timestamp": "2026-10-19T23:40:54+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234054",
+      "timestamp": "2026-10-19T23:40:54+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235230",
+      "timestamp": "2026-10-19T23:52:30+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "v2_rows": 23329,
+      "new_rows_added": 0,
+      "merged_total_rows": 23329,
+      "row_count_verifiable": true,
+      "shard_path": "artifacts\\backtest_archive\\data_assets\\incremental\\increment_bar_20261019.csv",
+      "shard_sha256": "46EA341499F930A1B353169AB7AFAB1601CE5D4ACDCBAD1754C0305D78D973D7",
+      "status": "SUCCESS"
+    }
+  ],
   "incremental_shards": [
     {
       "shard_id": "increment_bar_20261019",
@@ -173,14 +678,17 @@
     "V1_FROZEN": true,
     "F01_A06_UNCHANGED": true,
     "LC_SHF_PERMANENTLY_BLACKLISTED": true,
-    "LAST_PIPELINE_RUN": "2026-10-19T22:23:43+08:00",
+    "LAST_PIPELINE_RUN": "2026-10-19T23:54:43+08:00",
     "LAST_PIPELINE_STATUS": "SUCCESS",
     "LAST_SMOKE_LIVE_RUN": "2026-10-19T16:41:03+08:00",
     "LAST_SMOKE_LIVE_STATUS": "COMPLETE",
     "LAST_GO_LIVE_RUN": "2026-10-19T22:23:43+08:00",
     "LAST_GO_LIVE_STATUS": "COMPLETE",
     "LAST_CONSOLIDATE_RUN": "2026-10-19T22:23:43+08:00",
-    "LAST_CONSOLIDATE_STATUS": "COMPLETE"
+    "LAST_CONSOLIDATE_STATUS": "COMPLETE",
+    "LAST_ONLINE_MONITOR_RUN": "2026-10-19T23:54:44+08:00",
+    "LAST_ONLINE_MONITOR_STATUS": "RUNNING_STABLE",
+    "LAST_ONLINE_MONITOR_DAYS": 7
   },
   "data_format": {
     "long_header": "date,symbol,indicator,value,source",
@@ -214,7 +722,302 @@
     "field_case_rule": "VOL → volume (lowercase in WSD query); all others uppercase",
     "source_tag": "WDF-GUI"
   },
-  "schedule_run_logs": [],
+  "schedule_run_logs": [
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234052",
+      "timestamp": "2026-10-19T23:40:52+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234053",
+      "timestamp": "2026-10-19T23:40:53+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234054",
+      "timestamp": "2026-10-19T23:40:54+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234054",
+      "timestamp": "2026-10-19T23:40:54+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019234054",
+      "timestamp": "2026-10-19T23:40:54+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235230",
+      "timestamp": "2026-10-19T23:52:30+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235231",
+      "timestamp": "2026-10-19T23:52:31+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235232",
+      "timestamp": "2026-10-19T23:52:32+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235233",
+      "timestamp": "2026-10-19T23:52:33+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235441",
+      "timestamp": "2026-10-19T23:54:41+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235442",
+      "timestamp": "2026-10-19T23:54:42+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    },
+    {
+      "run_id": "DSHC-RUN-20261019235443",
+      "timestamp": "2026-10-19T23:54:43+08:00",
+      "mode": "DRY_RUN",
+      "status": "SUCCESS",
+      "duration_seconds": 0
+    }
+  ],
   "schedule_config": {
     "task_name": "DSHC-IncrPipelineDaily",
     "trigger": "WEEKDAYS 15:30",
@@ -296,5 +1099,12 @@
     "workorder": "DSHC-TASK-009",
     "token": "DSHC-TASK009-INCR-CONSOLIDATE-TOKEN",
     "created_at": "2026-10-19T22:23:43+08:00"
+  },
+  "online_monitor_snapshot": {
+    "path": "artifacts\\backtest_archive\\data_assets\\online_monitor_snapshot.json",
+    "version": "1.0.0",
+    "workorder": "DSHC-TASK-010",
+    "token": "DSHC-TASK010-PIPE-ONLINE-TOKEN",
+    "created_at": "2026-10-19T23:54:44+08:00"
   }
 }
