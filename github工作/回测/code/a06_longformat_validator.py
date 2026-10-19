@@ -62,14 +62,17 @@ LONG_HEADER_COLS = ["date", "symbol", "indicator", "value", "source"]
 
 # LC exchange mapping: LC.GFE (Guangzhou Futures Exchange) only. LC.SHF is INVALID — no data.
 # Updated by DSHC-MAINT-01 on 2026-10-19: LC.SHF → LC.GFE
-SYMBOL_WHITELIST = ["ZN.SHF", "CU.SHF", "PB.SHF", "AL.SHF", "SN.SHF", "NI.SHF", "LC.GFE"]
-INDICATOR_WHITELIST = ["CLOSE", "VOL", "OI", "SETTLE"]
+SYMBOL_WHITELIST = ["AL.SHF", "CU.SHF", "HC.SHF", "NI.SHF", "PB.SHF", "RB.SHF", "SN.SHF", "ZN.SHF", "LC.GFE"]
+INDICATOR_WHITELIST = ["CLOSE", "HIGH", "LOW", "OI", "SETTLE", "VOL"]
+SYMBOL_BLACKLIST = ["LC.SHF"]  # 永久黑名单 — INVALID, Wind 上无数据
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 DATE_REPARSE = "%Y-%m-%d"
 
 # 数值范围预校验 (宽松下界；不做上界，因为价格随行情浮动)
 NUMERIC_RANGES: Dict[str, Tuple[float, Optional[float]]] = {
     "CLOSE":  (1.0, None),
+    "HIGH":   (1.0, None),
+    "LOW":    (1.0, None),
     "VOL":    (0.0, None),
     "OI":     (0.0, None),
     "SETTLE": (1.0, None),
@@ -88,6 +91,9 @@ ERR_VALUE_NON_NUMERIC = "E09_VALUE_NON_NUMERIC"
 ERR_VALUE_OUT_OF_RANGE = "E10_VALUE_OUT_OF_RANGE"
 ERR_SOURCE_EMPTY = "E11_SOURCE_EMPTY"
 ERR_DUP_ROW = "E12_DUP_ROW"
+ERR_SYMBOL_BLACKLISTED = "E13_SYMBOL_BLACKLISTED"
+ERR_FIELD_CASE_MISMATCH = "E14_FIELD_CASE_MISMATCH"
+ERR_INCOMPLETE_DAILY = "E15_INCOMPLETE_DAILY"
 
 
 class ValidationError:
@@ -312,6 +318,139 @@ def validate_file(path: str) -> Dict[str, Any]:
 
 
 # ════════════════════════════════════════════════════════════════
+# 新增校验规则 (DSHC-DATA-INCREMENT-PIPELINE)
+# ════════════════════════════════════════════════════════════════
+def check_field_consistency(rows_iter: List[List[str]], row_offset: int = 0) -> Tuple[Dict[str, Any], List[ValidationError]]:
+    """
+    新增检查 1: 字段一致性 — VOL 字段必须为 volume，禁止写成 vol。
+    检查内容:
+      - CSV indicator 列必须为 VOL (uppercase)，禁止 vol/volume
+      - WSD 字段映射: VOL → volume (lowercase)
+    """
+    errors: List[ValidationError] = []
+    summary = {"rows_scanned": 0, "field_case_errors": 0}
+
+    for i, row in enumerate(rows_iter):
+        actual_idx = i + row_offset
+        summary["rows_scanned"] = actual_idx
+        if len(row) < 3:
+            continue
+        ind_v = row[2].strip().upper()
+        if row[2].strip() in ("vol", "volume"):
+            errors.append(ValidationError(
+                ERR_FIELD_CASE_MISMATCH,
+                f"VOL 字段大小写错误: 期望 'VOL' (uppercase), 实际 '{row[2].strip()}'",
+                actual_idx, "indicator", row[2].strip()))
+            summary["field_case_errors"] += 1
+
+    return summary, errors
+
+
+def check_symbol_blacklist(rows_iter: List[List[str]], row_offset: int = 0) -> Tuple[Dict[str, Any], List[ValidationError]]:
+    """
+    新增检查 2: 品种黑白名单 — 自动拦截 LC.SHF，只放行 LC.GFE。
+    检查内容:
+      - LC.SHF 为永久黑名单，出现即报 E13_SYMBOL_BLACKLISTED
+      - LC.GFE 为唯一有效 LC 绑定
+      - 其他 8 个白名单品种正常放行
+    """
+    errors: List[ValidationError] = []
+    summary = {
+        "rows_scanned": 0,
+        "blacklisted_symbols": [],
+        "symbols_seen": set(),
+    }
+
+    for i, row in enumerate(rows_iter):
+        actual_idx = i + row_offset
+        summary["rows_scanned"] = actual_idx
+        if len(row) < 2:
+            continue
+        symbol_v = row[1].strip()
+        if not symbol_v:
+            continue
+        summary["symbols_seen"].add(symbol_v)
+        if symbol_v in SYMBOL_BLACKLIST:
+            errors.append(ValidationError(
+                ERR_SYMBOL_BLACKLISTED,
+                f"永久黑名单品种: {symbol_v} (INVALID, Wind 上无数据). 请使用 LC.GFE",
+                actual_idx, "symbol", symbol_v))
+            if symbol_v not in summary["blacklisted_symbols"]:
+                summary["blacklisted_symbols"].append(symbol_v)
+
+    summary["symbols_seen"] = sorted(summary["symbols_seen"])
+    return summary, errors
+
+
+def check_daily_completeness(rows_iter: List[List[str]], row_offset: int = 0) -> Tuple[Dict[str, Any], List[ValidationError]]:
+    """
+    新增检查 3: 完整性校验 — 每只品种每日必须 6 个指标齐全，无空行、零值异常。
+    检查内容:
+      - 每个 (date, symbol) 组合必须包含全部 6 个指标
+      - 不完整的组合报 E15_INCOMPLETE_DAILY
+      - 零值异常: VOL/OI=0, CLOSE/SETTLE/HIGH/LOW<=0
+    """
+    errors: List[ValidationError] = []
+    summary = {
+        "rows_scanned": 0,
+        "incomplete_groups": 0,
+        "zero_value_anomalies": 0,
+        "groups_total": 0,
+    }
+
+    group_indicators: Dict[Tuple[str, str], set] = {}
+    for i, row in enumerate(rows_iter):
+        actual_idx = i + row_offset
+        summary["rows_scanned"] = actual_idx
+        if len(row) < 5:
+            continue
+        date_v = row[0].strip()
+        symbol_v = row[1].strip()
+        ind_v = row[2].strip().upper()
+        value_v = row[3].strip()
+
+        key = (date_v, symbol_v)
+        if key not in group_indicators:
+            group_indicators[key] = set()
+        group_indicators[key].add(ind_v)
+
+        if ind_v in ("VOL", "OI"):
+            try:
+                if float(value_v) == 0:
+                    errors.append(ValidationError(
+                        ERR_VALUE_OUT_OF_RANGE,
+                        f"零值异常: {ind_v}=0 on {date_v}/{symbol_v}",
+                        actual_idx, "value", value_v))
+                    summary["zero_value_anomalies"] += 1
+            except (ValueError, TypeError):
+                pass
+        elif ind_v in ("CLOSE", "SETTLE", "HIGH", "LOW"):
+            try:
+                if float(value_v) <= 0:
+                    errors.append(ValidationError(
+                        ERR_VALUE_OUT_OF_RANGE,
+                        f"零值/负值异常: {ind_v}={value_v} on {date_v}/{symbol_v}",
+                        actual_idx, "value", value_v))
+                    summary["zero_value_anomalies"] += 1
+            except (ValueError, TypeError):
+                pass
+
+    summary["groups_total"] = len(group_indicators)
+
+    required_indicators = set(INDICATOR_WHITELIST)
+    for (date_v, symbol_v), indicators in sorted(group_indicators.items()):
+        missing = required_indicators - indicators
+        if missing:
+            errors.append(ValidationError(
+                ERR_INCOMPLETE_DAILY,
+                f"每日指标不全: {date_v}/{symbol_v} 缺少 {sorted(missing)}",
+                -1, "indicator", ",".join(sorted(missing))))
+            summary["incomplete_groups"] += 1
+
+    return summary, errors
+
+
+# ════════════════════════════════════════════════════════════════
 # 合成小样 (冒烟测试)
 # ════════════════════════════════════════════════════════════════
 def _make_csv_text(rows: List[List[str]]) -> str:
@@ -339,7 +478,7 @@ def smoke_tests() -> Dict[str, Any]:
                ["2025-01-03", "NI.SHF", "CLOSE", "115040.0", "WDF-GUI"],
                ["2025-01-03", "SN.SHF", "CLOSE", "376860.0", "WDF-GUI"],
                ["2025-01-03", "PB.SHF", "VOL", "40977", "WDF-GUI"],
-               ["2025-01-03", "LC.SHF", "SETTLE", "185000.0", "WDF-GUI"]]
+               ["2025-01-03", "LC.GFE", "SETTLE", "185000.0", "WDF-GUI"]]
     p = _write_temp_csv(t1_rows, "valid_long.csv")
     r = validate_file(p)
     out["T1_valid_long_format"] = {
@@ -434,6 +573,46 @@ def smoke_tests() -> Dict[str, Any]:
         "expected": "FAIL with E02_HEADER_MISMATCH (target is wide, not long)",
     }
 
+    # T8: 字段一致性 — VOL 字段大小写错误
+    t8_rows = [header,
+               ["2025-01-02", "ZN.SHF", "vol", "76677", "WDF-GUI"],
+               ["2025-01-02", "CU.SHF", "volume", "73280", "WDF-GUI"],
+               ["2025-01-02", "AL.SHF", "VOL", "25265", "WDF-GUI"]]
+    p = _write_temp_csv(t8_rows, "field_case.csv")
+    _, errs8 = check_field_consistency(t8_rows[1:])
+    out["T8_field_case_consistency"] = {
+        "path": os.path.relpath(p, PROJECT_ROOT),
+        "errors": [e.to_dict() for e in errs8],
+        "expected": "FAIL with E14_FIELD_CASE_MISMATCH ×2 (vol, volume)",
+    }
+
+    # T9: 品种黑名单 — LC.SHF 拦截
+    t9_rows = [header,
+               ["2025-01-02", "LC.SHF", "CLOSE", "8000.0", "WDF-GUI"],
+               ["2025-01-02", "LC.GFE", "CLOSE", "8000.0", "WDF-GUI"],
+               ["2025-01-02", "CU.SHF", "CLOSE", "73280.0", "WDF-GUI"]]
+    p = _write_temp_csv(t9_rows, "blacklist.csv")
+    _, errs9 = check_symbol_blacklist(t9_rows[1:])
+    out["T9_symbol_blacklist"] = {
+        "path": os.path.relpath(p, PROJECT_ROOT),
+        "errors": [e.to_dict() for e in errs9],
+        "expected": "FAIL with E13_SYMBOL_BLACKLISTED ×1 (LC.SHF)",
+    }
+
+    # T10: 完整性 — 缺少指标
+    t10_rows = [header,
+                ["2025-01-02", "ZN.SHF", "CLOSE", "25265.0", "WDF-GUI"],
+                ["2025-01-02", "ZN.SHF", "VOL", "76677", "WDF-GUI"],
+                ["2025-01-02", "ZN.SHF", "OI", "176863", "WDF-GUI"],
+                ["2025-01-02", "ZN.SHF", "SETTLE", "25200.0", "WDF-GUI"]]
+    p = _write_temp_csv(t10_rows, "incomplete.csv")
+    _, errs10 = check_daily_completeness(t10_rows[1:])
+    out["T10_daily_completeness"] = {
+        "path": os.path.relpath(p, PROJECT_ROOT),
+        "errors": [e.to_dict() for e in errs10],
+        "expected": "FAIL with E15_INCOMPLETE_DAILY (missing HIGH, LOW)",
+    }
+
     # 清理临时小样
     for k, v in list(out.items()):
         p = v.get("path", "")
@@ -468,8 +647,8 @@ def render_report(target_result: Dict[str, Any], smokes: Dict[str, Any]) -> str:
     lines.append("| 字段 | 类型 | 约束 |")
     lines.append("|---|---|---|")
     lines.append("| `date` | 字符串 | `yyyy-MM-dd` 格式 (正则 `^\\d{4}-\\d{2}-\\d{2}$`)；语义范围 [1990-01-01, 2099-12-31] |")
-    lines.append(f"| `symbol` | 字符串 | 白名单: `{', '.join(SYMBOL_WHITELIST)}` (7 品种) |")
-    lines.append(f"| `indicator` | 字符串 | 白名单: `{', '.join(INDICATOR_WHITELIST)}` (4 指标) |")
+    lines.append(f"| `symbol` | 字符串 | 白名单: `{', '.join(SYMBOL_WHITELIST)}` (9 品种) |")
+    lines.append(f"| `indicator` | 字符串 | 白名单: `{', '.join(INDICATOR_WHITELIST)}` (6 指标) |")
     lines.append("| `value` | 浮点 | 非空、可解析为 float、非 NaN/Inf；按 indicator 应用下界 (CLOSE/SETTLE≥1.0；VOL/OI≥0.0) |")
     lines.append("| `source` | 字符串 | 非空 (标识数据来源) |")
     lines.append("")
@@ -492,13 +671,16 @@ def render_report(target_result: Dict[str, Any], smokes: Dict[str, Any]) -> str:
     lines.append(f"| `{ERR_ROW_COLUMN_COUNT}` | 行列数与表头不一致 | ERROR | CSV 转义问题，检查源文件 |")
     lines.append(f"| `{ERR_DATE_FORMAT}` | 日期不符 `yyyy-MM-dd` 正则 | ERROR | 标准化日期字段 |")
     lines.append(f"| `{ERR_DATE_INVALID}` | 日期在合理范围外或解析失败 | ERROR | 检查上游时间戳 |")
-    lines.append(f"| `{ERR_SYMBOL_UNKNOWN}` | 品种不在 7 品种白名单 | ERROR | 拒绝行、上报品种清单差异 |")
-    lines.append(f"| `{ERR_INDICATOR_UNKNOWN}` | 指标不在 4 指标白名单 | ERROR | 拒绝行、上报指标清单差异 |")
+    lines.append(f"| `{ERR_SYMBOL_UNKNOWN}` | 品种不在 9 品种白名单 | ERROR | 拒绝行、上报品种清单差异 |")
+    lines.append(f"| `{ERR_INDICATOR_UNKNOWN}` | 指标不在 6 指标白名单 | ERROR | 拒绝行、上报指标清单差异 |")
     lines.append(f"| `{ERR_VALUE_EMPTY}` | value 为空 | ERROR | 数据缺失，上报 null 率 |")
     lines.append(f"| `{ERR_VALUE_NON_NUMERIC}` | 非数值 / NaN / Inf | ERROR | 类型污染，上报 |")
     lines.append(f"| `{ERR_VALUE_OUT_OF_RANGE}` | 数值越界 | WARN | 按 indicator 下界判据 |")
     lines.append(f"| `{ERR_SOURCE_EMPTY}` | source 为空 | WARN | 元数据缺失，不阻断 |")
     lines.append(f"| `{ERR_DUP_ROW}` | 主键重复 | WARN | 保留首行、上报重复 |")
+    lines.append(f"| `{ERR_SYMBOL_BLACKLISTED}` | 永久黑名单品种 (LC.SHF) | FATAL | 自动拦截，不发起查询 |")
+    lines.append(f"| `{ERR_FIELD_CASE_MISMATCH}` | VOL 字段大小写错误 (vol/volume) | ERROR | 应为 VOL (uppercase) |")
+    lines.append(f"| `{ERR_INCOMPLETE_DAILY}` | 每日指标不全 (缺少指标) | FATAL | 补采缺失指标 |")
     lines.append("")
     lines.append("---")
     lines.append("")

@@ -1,0 +1,348 @@
+{
+  "config_id": "DSHC-INCR-COLLECT-CONFIG",
+  "workorder": "DSHC-DATA-INCREMENT-PIPELINE",
+  "token": "DSHC-DATA-INCREMENT-PIPELINE-TOKEN",
+  "generated_at": "2026-10-19T14:48:56+08:00",
+  "mode": "DRY_RUN",
+  "end_date": "2026-10-19",
+  "last_dates_per_symbol": {
+    "AL.SHF": "2026-10-19",
+    "CU.SHF": "2026-10-19",
+    "HC.SHF": "2026-10-19",
+    "LC.GFE": "2026-10-19",
+    "NI.SHF": "2026-10-19",
+    "PB.SHF": "2026-10-19",
+    "RB.SHF": "2026-10-19",
+    "SN.SHF": "2026-10-19",
+    "ZN.SHF": "2026-10-19"
+  },
+  "symbol_whitelist": [
+    "AL.SHF",
+    "CU.SHF",
+    "HC.SHF",
+    "NI.SHF",
+    "PB.SHF",
+    "RB.SHF",
+    "SN.SHF",
+    "ZN.SHF",
+    "LC.GFE"
+  ],
+  "symbol_blacklist": [
+    "LC.SHF"
+  ],
+  "lc_shf_permanently_blacklisted": true,
+  "indicator_to_wsd_field": {
+    "CLOSE": "CLOSE",
+    "HIGH": "HIGH",
+    "LOW": "LOW",
+    "OI": "OI",
+    "SETTLE": "SETTLE",
+    "VOL": "volume"
+  },
+  "field_count": 6,
+  "instrument_count": 9,
+  "total_queries": 9,
+  "wind_api_calls_in_dry_run": 0,
+  "wind_api_calls_in_execute": 0,
+  "queries": [
+    {
+      "instrument": "AL.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"AL.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "CU.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"CU.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "HC.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"HC.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "NI.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"NI.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "PB.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"PB.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "RB.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"RB.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "SN.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"SN.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "ZN.SHF",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"ZN.SHF\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    },
+    {
+      "instrument": "LC.GFE",
+      "fields_wsd": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "volume"
+      ],
+      "fields_csv_indicator": [
+        "CLOSE",
+        "HIGH",
+        "LOW",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "field_mapping": {
+        "CLOSE": "CLOSE",
+        "HIGH": "HIGH",
+        "LOW": "LOW",
+        "OI": "OI",
+        "SETTLE": "SETTLE",
+        "VOL": "volume"
+      },
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "last_date_in_archive": "2026-10-19",
+      "wsd_formula": "=WSD(\"LC.GFE\",\"CLOSE;HIGH;LOW;OI;SETTLE;volume\",\"2026-10-19\",\"2026-10-19\",\"Fill=Previous\")",
+      "query_type": "INCREMENTAL"
+    }
+  ],
+  "governance": {
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0,
+    "OFFLINE_ONLY": true,
+    "AUTO_BACKTEST": "DENIED",
+    "RELEASE_PERMIT": "NOT_ISSUED",
+    "GATE": "CLOSED/HOLD",
+    "CSV_READONLY": true,
+    "V1_FROZEN": true,
+    "F01_A06_UNCHANGED": true
+  }
+}
