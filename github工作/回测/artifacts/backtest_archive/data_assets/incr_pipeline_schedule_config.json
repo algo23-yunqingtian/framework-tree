@@ -1,0 +1,64 @@
+{
+  "config_id": "DSHC-PIPELINE-SCHEDULE-CONFIG",
+  "workorder": "DSHC-DATA-INCR-SCHEDULE-ROLLBACK",
+  "token": "DSHC-DATA-INCR-SCHEDULE-TOKEN",
+  "version": "1.0.0",
+  "created_at": "2026-10-19T16:00:00+08:00",
+  "description": "增量管道每日定时调度配置 — 周一至周五收盘15:30触发",
+  "schedule": {
+    "task_name": "DSHC-IncrPipelineDaily",
+    "description": "DSHC增量数据管道每日采集+合并+校验",
+    "script_path": "code/incr_pipeline_daily.py",
+    "workdir": ".",
+    "python_path": "python",
+    "arguments": "--execute",
+    "trigger": {
+      "type": "WEEKDAYS",
+      "description": "周一至周五",
+      "days_of_week": [1, 2, 3, 4, 5],
+      "start_time": "15:30",
+      "timezone": "Asia/Shanghai"
+    },
+    "execution_settings": {
+      "single_instance": true,
+      "single_instance_description": "最大单实例防并发重复运行",
+      "lock_file": "artifacts/backtest_archive/data_assets/.pipeline_lock",
+      "lock_timeout_minutes": 30,
+      "stop_on_session_lock": false,
+      "disallow_start_if_ons_batteries": false,
+      "start_when_available": true
+    },
+    "retry_policy": {
+      "max_retries": 2,
+      "retry_interval_seconds": 5,
+      "retry_on_collect_failure": true
+    }
+  },
+  "governance": {
+    "GATE": "CLOSED/HOLD",
+    "RELEASE_PERMIT": "NOT_ISSUED",
+    "AUTO_BACKTEST": "DENIED",
+    "REAL_WIND_CALL": false,
+    "WIND_API_CALLS": 0,
+    "OFFLINE_ONLY": true,
+    "CSV_READONLY": true,
+    "V1_FROZEN": true,
+    "F01_A06_UNCHANGED": true,
+    "LC_SHF_PERMANENTLY_BLACKLISTED": true
+  },
+  "validation_rules": {
+    "pre_checks": [
+      "E13_SYMBOL_BLACKLISTED",
+      "E14_FIELD_CASE_MISMATCH",
+      "E15_INCOMPLETE_DAILY"
+    ],
+    "row_count_strict": true,
+    "sha_tamper_check": true
+  },
+  "rollback": {
+    "auto_backup_before_run": true,
+    "auto_restore_on_failure": true,
+    "cleanup_incomplete_shards": true,
+    "backup_dir": "artifacts/backtest_archive/data_assets/.backup"
+  }
+}

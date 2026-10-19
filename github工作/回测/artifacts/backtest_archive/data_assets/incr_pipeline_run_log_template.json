@@ -1,0 +1,132 @@
+{
+  "template_id": "DSHC-PIPELINE-RUN-LOG-TEMPLATE",
+  "version": "1.0.0",
+  "description": "增量管道每日运行日志模板",
+  "fields": {
+    "run_id": {
+      "type": "string",
+      "format": "DSHC-RUN-YYYYMMDDHHMMSS",
+      "description": "唯一运行标识"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "ISO 8601",
+      "description": "运行开始时间"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "运行总耗时 (秒)"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["DRY_RUN", "EXECUTE"],
+      "description": "运行模式"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["INCREMENTAL", "BACKFILL"],
+      "description": "运行类型"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["SUCCESS", "FAILED", "ROLLED_BACK"],
+      "description": "最终状态"
+    },
+    "steps": {
+      "type": "object",
+      "description": "各步骤执行结果",
+      "properties": {
+        "collect": { "type": "string", "enum": ["PASS", "FAIL", "SKIPPED"] },
+        "sha_snapshot": { "type": "string", "enum": ["PASS", "FAIL", "SKIPPED"] },
+        "validate": { "type": "string", "enum": ["PASS", "FAIL", "SKIPPED"] },
+        "merge": { "type": "string", "enum": ["PASS", "FAIL", "SKIPPED"] },
+        "update_manifest": { "type": "string", "enum": ["PASS", "FAIL", "SKIPPED"] }
+      }
+    },
+    "data": {
+      "type": "object",
+      "description": "数据统计",
+      "properties": {
+        "v2_rows": { "type": "number", "description": "V2 原始行数" },
+        "shard_rows": { "type": "number", "description": "增量分片行数" },
+        "new_rows_added": { "type": "number", "description": "新增行数" },
+        "merged_total": { "type": "number", "description": "合并后总行数" },
+        "skipped_duplicates": { "type": "number", "description": "跳过的重复行数" },
+        "row_count_ok": { "type": "boolean", "description": "行数校验是否通过" }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "description": "校验结果",
+      "properties": {
+        "e13_blacklist": { "type": "boolean" },
+        "e14_field_case": { "type": "boolean" },
+        "e15_completeness": { "type": "boolean" },
+        "sha_tamper_ok": { "type": "boolean" }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "description": "回滚信息",
+      "properties": {
+        "backup_created": { "type": "boolean" },
+        "rollback_executed": { "type": "boolean" },
+        "files_restored": { "type": "number" },
+        "shards_cleaned": { "type": "number" }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "description": "治理状态",
+      "properties": {
+        "gate": { "type": "string" },
+        "release_permit": { "type": "string" },
+        "wind_api_calls": { "type": "number" }
+      }
+    },
+    "error": {
+      "type": "string",
+      "description": "错误信息 (仅失败时)"
+    }
+  },
+  "example": {
+    "run_id": "DSHC-RUN-20261020153000",
+    "timestamp": "2026-10-20T15:30:00+08:00",
+    "duration_seconds": 45.23,
+    "mode": "EXECUTE",
+    "type": "INCREMENTAL",
+    "status": "SUCCESS",
+    "steps": {
+      "collect": "PASS",
+      "sha_snapshot": "PASS",
+      "validate": "PASS",
+      "merge": "PASS",
+      "update_manifest": "PASS"
+    },
+    "data": {
+      "v2_rows": 23328,
+      "shard_rows": 54,
+      "new_rows_added": 54,
+      "merged_total": 23382,
+      "skipped_duplicates": 0,
+      "row_count_ok": true
+    },
+    "validation": {
+      "e13_blacklist": true,
+      "e14_field_case": true,
+      "e15_completeness": true,
+      "sha_tamper_ok": true
+    },
+    "rollback": {
+      "backup_created": true,
+      "rollback_executed": false,
+      "files_restored": 0,
+      "shards_cleaned": 0
+    },
+    "governance": {
+      "gate": "CLOSED/HOLD",
+      "release_permit": "NOT_ISSUED",
+      "wind_api_calls": 9
+    }
+  }
+}
