@@ -67,6 +67,19 @@
     "lc_shf_status": "Returns empty B1 for all fields on 2026-10-16. No data for this instrument.",
     "b1_clear_bug": "Range('A1:B10').ClearContents() does not clear B1 when it contains a WSD array formula result. Previous field's value persists in B1."
   },
+  "wind_empty_symbols": {
+    "description": "Symbols confirmed to have NO DATA in Wind WSD for any indicator. Do not attempt fetch — will return empty values.",
+    "LC.SHF": {
+      "status": "WIND_EMPTY_SYMBOL",
+      "indicators_checked": ["CLOSE", "VOL", "OI", "SETTLE"],
+      "confirmed_runs": ["DSHC-T1FIX", "DSHC-F01"],
+      "first_detected": "2026-10-16",
+      "last_verified": "2026-10-19",
+      "evidence": "All 4 indicators return dates in col A but empty values in col B. WSD formula executes without error but returns no data.",
+      "blacklisted": true,
+      "action": "Remove from fetch symbol lists. Do not include in future GUI-fetch workorders."
+    }
+  },
   "red_lines_verified": {
     "front_excel_14644_untouched": true,
     "no_windpy_invocation": true,
@@ -75,5 +88,33 @@
     "honest_no_fabrication": true,
     "no_marker_file": true,
     "no_auto_retry": true
+  },
+  "script_locks": {
+    "description": "Version-locked scripts. No further modifications without new workorder ticket.",
+    "dshc_f01_gui_fetch.ps1": {
+      "version": "v1.0",
+      "locked_at_commit": "593d688",
+      "locked_at": "2026-10-19",
+      "ticket": "DSHC-F01",
+      "status": "LOCKED",
+      "changes_require_new_workorder": true,
+      "notes": "Proven GUI-fetch script for multi-symbol multi-indicator data collection. Uses regex-based clipboard parsing, row-based formula placement, GR1-GR5 guards."
+    }
+  },
+  "f01_finalization": {
+    "ticket": "DSHC-F01",
+    "token": "A01-USER-REMOTE-F01",
+    "token_status": "EXHAUSTED",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "result": "PARTIAL_FETCH",
+    "combos_succeeded": 24,
+    "combos_failed": 4,
+    "failed_symbols": "LC.SHF (all 4 indicators — WIND_EMPTY_SYMBOL)",
+    "total_rows": 7362,
+    "wall_clock_sec": 538.4,
+    "commit": "593d688",
+    "finalized_at": "2026-10-19",
+    "finalize_receipt": "DSHC_F01_FINALIZE=ARCHIVED|lc_shf_blacklisted=YES|guard_rules_locked=YES"
   }
 }
