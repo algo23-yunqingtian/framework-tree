@@ -1,0 +1,296 @@
+{
+  "report_id": "DSHC-GO-LIVE-ACCEPTANCE-001",
+  "version": "1.0.0",
+  "workorder": "DSHC-DATA-INCR-PIPELINE-GO-LIVE",
+  "token": "DSHC-DATA-INCR-GOLIVE-TOKEN",
+  "created_at": "2026-10-19T20:05:42+08:00",
+  "overall_result": "PASS",
+  "p1_production_schedule": {
+    "schedule_task_registered": true,
+    "task_name": "DSHC-IncrPipelineDaily",
+    "trigger": "WEEKDAYS 15:30",
+    "single_instance": true,
+    "seven_round_dryrun": {
+      "total_rounds": 7,
+      "rounds_passed": 7,
+      "rounds_failed": 0,
+      "all_passed": true,
+      "total_duration_seconds": 1.08,
+      "avg_duration_seconds": 0.15,
+      "rounds": [
+        {
+          "round": 1,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.16,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "dag_steps_completed": 5
+        },
+        {
+          "round": 2,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "dag_steps_completed": 5
+        },
+        {
+          "round": 3,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.16,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "dag_steps_completed": 5
+        },
+        {
+          "round": 4,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.16,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "dag_steps_completed": 5
+        },
+        {
+          "round": 5,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.16,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "dag_steps_completed": 5
+        },
+        {
+          "round": 6,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.15,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "dag_steps_completed": 5
+        },
+        {
+          "round": 7,
+          "passed": true,
+          "return_code": 0,
+          "duration_seconds": 0.14,
+          "v2_sha_unchanged": true,
+          "v2_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+          "dag_steps_completed": 5
+        }
+      ]
+    },
+    "backfill_isolation": {
+      "passed": true,
+      "return_code": 0,
+      "backfill_shard_created": true,
+      "backfill_shard_name": "increment_bar_backfill_20261001_20261019.csv",
+      "daily_dir_untouched": true,
+      "v2_unchanged": true,
+      "isolation_verified": true,
+      "duration_seconds": 0.15
+    }
+  },
+  "p2_alert_chain": {
+    "alert_hook_enabled": true,
+    "alert_types_12": {
+      "passed": true,
+      "alert_types_defined": 14,
+      "alert_types_emitted": 12,
+      "expected_types": 12,
+      "audit_log_written": true,
+      "emit_results": {
+        "PIPELINE_ALERT_HOOK_READY": {
+          "run_id": "DSHC-ALERT-20261019200542-010",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_DAG_DRYRUN_COMPLETE": {
+          "run_id": "DSHC-ALERT-20261019200542-011",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_COLLECT_TIMEOUT": {
+          "run_id": "DSHC-ALERT-20261019200542-012",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_COLLECT_FAIL_ROLLBACK": {
+          "run_id": "DSHC-ALERT-20261019200542-013",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_VALIDATE_E13_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019200542-014",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_VALIDATE_E14_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019200542-015",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_VALIDATE_E15_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019200542-016",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_MERGE_FAIL": {
+          "run_id": "DSHC-ALERT-20261019200542-017",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_SHA_TAMPER_DETECTED": {
+          "run_id": "DSHC-ALERT-20261019200542-018",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_LOCK_CONFLICT": {
+          "run_id": "DSHC-ALERT-20261019200542-019",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_BACKFILL_DRYRUN": {
+          "run_id": "DSHC-ALERT-20261019200542-020",
+          "severity": "OK",
+          "written": true
+        },
+        "PIPELINE_SMOKE_LIVE_COMPLETE": {
+          "run_id": "DSHC-ALERT-20261019200542-021",
+          "severity": "OK",
+          "written": true
+        }
+      }
+    },
+    "dshd_watcher_connected": {
+      "passed": true,
+      "critical_events_tested": 4,
+      "all_captured": true,
+      "all_invariants_ok": true,
+      "capture_results": {
+        "PIPELINE_LOCK_CONFLICT": {
+          "run_id": "DSHC-ALERT-20261019200542-022",
+          "severity": "WARNING",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_calls_zero": true
+        },
+        "PIPELINE_COLLECT_TIMEOUT": {
+          "run_id": "DSHC-ALERT-20261019200542-023",
+          "severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_calls_zero": true
+        },
+        "PIPELINE_VALIDATE_E13_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019200542-024",
+          "severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_calls_zero": true
+        },
+        "PIPELINE_VALIDATE_E14_BLOCK": {
+          "run_id": "DSHC-ALERT-20261019200542-025",
+          "severity": "CRITICAL",
+          "severity_matches": true,
+          "invariants_present": true,
+          "invariants_gate_ok": true,
+          "invariants_release_ok": true,
+          "invariants_wind_calls_zero": true
+        }
+      }
+    },
+    "log_field_compliance": {
+      "passed": true,
+      "total_alerts_checked": 26,
+      "compliant_count": 26,
+      "non_compliant_count": 0,
+      "field_errors": {},
+      "all_8_fields_present": true,
+      "fields_required": [
+        "run_id",
+        "stage",
+        "status",
+        "error_code",
+        "shard_path",
+        "row_count",
+        "sha256",
+        "duration_seconds"
+      ],
+      "fields_present": [
+        "duration_seconds",
+        "error_code",
+        "row_count",
+        "run_id",
+        "sha256",
+        "shard_path",
+        "stage",
+        "status"
+      ],
+      "invariants_and_severity_ok": true
+    }
+  },
+  "p3_acceptance": {
+    "v2_sha_protection": {
+      "passed": true,
+      "known_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+      "current_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+      "unchanged": true
+    },
+    "overall_passed": true
+  },
+  "governance": {
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "real_wind_call": false,
+    "csv_readonly": true,
+    "v1_frozen": true,
+    "f01_a06_unchanged": true,
+    "lc_shf_permanently_blacklisted": true,
+    "original_dag_unchanged": true,
+    "original_rollback_unchanged": true,
+    "original_schedule_unchanged": true
+  },
+  "alert_summary": {
+    "total_alerts": 27,
+    "by_status": {
+      "PASS": 23,
+      "REJECTED": 1,
+      "FAIL": 3
+    },
+    "by_stage": {
+      "system": 22,
+      "backfill": 1,
+      "lock": 1,
+      "collect": 1,
+      "validate": 2
+    },
+    "by_severity": {
+      "OK": 23,
+      "WARNING": 1,
+      "CRITICAL": 3
+    },
+    "dry_run": false,
+    "workorder": "DSHC-DATA-PIPELINE-SMOKE-LIVE",
+    "token": "DSHC-DATA-PIPELINE-SMOKE-LIVE-TOKEN",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "v2_verification": {
+    "known_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "final_sha": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "unchanged": true
+  },
+  "receipt": "DSHC_DATA_INCR_GOLIVE=READY_FOR_PROD｜schedule_task_online=YES｜alert_hook_connected=YES｜seven_round_dryrun_ok=YES｜v2_sha_protected=YES｜no_concurrent_risk=YES"
+}

@@ -4,10 +4,10 @@
   "version": "2.1.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-19T16:41:03+08:00",
+  "updated_at": "2026-10-19T20:05:42+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
-  "registry_version": "v2.2.0",
-  "updated_by": "DSHC-DATA-PIPELINE-SMOKE-LIVE-TOKEN",
+  "registry_version": "v2.3.0",
+  "updated_by": "DSHC-DATA-INCR-GOLIVE-TOKEN",
   "total_rows": 23328,
   "files": [
     {
@@ -173,10 +173,12 @@
     "V1_FROZEN": true,
     "F01_A06_UNCHANGED": true,
     "LC_SHF_PERMANENTLY_BLACKLISTED": true,
-    "LAST_PIPELINE_RUN": "2026-10-19T16:41:03+08:00",
+    "LAST_PIPELINE_RUN": "2026-10-19T20:05:42+08:00",
     "LAST_PIPELINE_STATUS": "SUCCESS",
     "LAST_SMOKE_LIVE_RUN": "2026-10-19T16:41:03+08:00",
-    "LAST_SMOKE_LIVE_STATUS": "COMPLETE"
+    "LAST_SMOKE_LIVE_STATUS": "COMPLETE",
+    "LAST_GO_LIVE_RUN": "2026-10-19T20:05:42+08:00",
+    "LAST_GO_LIVE_STATUS": "COMPLETE"
   },
   "data_format": {
     "long_header": "date,symbol,indicator,value,source",
@@ -233,5 +235,57 @@
     "version": "1.0.0",
     "description": "管道运行日志标准化规范文档",
     "workorder": "DSHC-DATA-PIPELINE-SMOKE-LIVE"
+  },
+  "go_live_config": {
+    "workorder": "DSHC-DATA-INCR-PIPELINE-GO-LIVE",
+    "token": "DSHC-DATA-INCR-GOLIVE-TOKEN",
+    "version": "1.0.0",
+    "created_at": "2026-10-19T20:05:42+08:00",
+    "schedule": {
+      "task_name": "DSHC-IncrPipelineDaily",
+      "trigger": "WEEKDAYS 15:30",
+      "single_instance": true,
+      "multiple_instances": "IgnoreNew",
+      "execution_time_limit_hours": 1,
+      "script": "code/incr_pipeline_daily.py",
+      "arguments": "--execute",
+      "ps1_script": "code/incr_pipeline_schedule.ps1",
+      "config_file": "artifacts/backtest_archive/data_assets/incr_pipeline_schedule_config.json"
+    },
+    "alert_hook": {
+      "module": "code/incr_alert_hook.py",
+      "alert_types_count": 12,
+      "dshd_watcher_compatible": true,
+      "log_standardization_fields": [
+        "run_id",
+        "stage",
+        "status",
+        "error_code",
+        "shard_path",
+        "row_count",
+        "sha256",
+        "duration_seconds"
+      ],
+      "audit_log": "tracking_monitor_audit.jsonl"
+    },
+    "seven_round_dryrun": {
+      "rounds": 7,
+      "mode": "DRY_RUN",
+      "v2_sha_protected": true,
+      "auto_retry_verified": true,
+      "rollback_verified": true
+    },
+    "backfill_isolation": {
+      "backfill_dir": "artifacts/backtest_archive/data_assets/incremental/backfill",
+      "daily_dir": "artifacts/backtest_archive/data_assets/incremental",
+      "isolation_verified": true
+    }
+  },
+  "go_live_acceptance_report": {
+    "path": "artifacts\\backtest_archive\\data_assets\\pipeline_go_live_acceptance.json",
+    "version": "1.0.0",
+    "workorder": "DSHC-DATA-INCR-PIPELINE-GO-LIVE",
+    "token": "DSHC-DATA-INCR-GOLIVE-TOKEN",
+    "created_at": "2026-10-19T20:05:42+08:00"
   }
 }
