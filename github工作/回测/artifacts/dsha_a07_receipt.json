@@ -1,0 +1,128 @@
+{
+  "task": "DSHA-A07",
+  "title": "宽表转长表 + P68正式放行核验",
+  "token": "DSHA-A07-TOKEN",
+  "token_status": "CONSUMED",
+  "baseline": "feature/v88-g1 HEAD=71c1e0b",
+  "timestamp": "2026-10-19T10:10:18+08:00",
+  "status": "FORMAT_CONVERT_SUCCESS",
+  "p0_locks": {
+    "p0_all_pass": true,
+    "gate": "CLOSED",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "p68_git_diff_empty": true,
+    "csv_not_modified": true
+  },
+  "p1_1_read_filter": {
+    "original_csv": "output_sample\\wdf_sample_metals_raw.csv",
+    "original_header": "date,symbol,indicator,value,source",
+    "original_data_rows": 7362,
+    "format_detected": "long_format",
+    "format_note": "CSV is already in long-format (date,symbol,indicator,value,source). No wide→long conversion needed. Pass-through with LC.SHF filtering.",
+    "conversion_needed": false,
+    "lc_shf_rows_removed": 0,
+    "filtered_data_rows": 7362,
+    "original_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1"
+  },
+  "p1_2_write_output": {
+    "output_csv": "output_sample\\wdf_sample_metals_long.csv",
+    "output_size_bytes": 285191,
+    "output_data_rows": 7362,
+    "output_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1"
+  },
+  "p1_3_validation": {
+    "validator_module": "code/a06_longformat_validator.py",
+    "validation_pass": true,
+    "header_ok": true,
+    "header": "date,symbol,indicator,value,source",
+    "total_errors": 0,
+    "error_codes": [],
+    "summary": {
+      "rows_scanned": 7362,
+      "rows_ok": 7362,
+      "rows_failed": 0,
+      "symbols_seen": [
+        "AL.SHF",
+        "CU.SHF",
+        "NI.SHF",
+        "PB.SHF",
+        "SN.SHF",
+        "ZN.SHF"
+      ],
+      "indicators_seen": [
+        "CLOSE",
+        "OI",
+        "SETTLE",
+        "VOL"
+      ],
+      "date_range": [
+        "2025-01-02T00:00:00",
+        "2026-10-19T00:00:00"
+      ],
+      "value_stats": {
+        "CLOSE": {
+          "min": 15430.0,
+          "max": 453240.0,
+          "count": 2400,
+          "sum": 241711665.0,
+          "avg": 100713.19375
+        },
+        "OI": {
+          "min": 7521.0,
+          "max": 446659.0,
+          "count": 2400,
+          "sum": 287592499.0,
+          "avg": 119830.20791666667
+        },
+        "SETTLE": {
+          "min": 15330.0,
+          "max": 448740.0,
+          "count": 2400,
+          "sum": 241688405.0,
+          "avg": 100703.50208333334
+        },
+        "VOL": {
+          "min": 15775.0,
+          "max": 425770.0,
+          "count": 162,
+          "sum": 18960865.0,
+          "avg": 117042.37654320987
+        }
+      },
+      "dup_key_count": 0
+    }
+  },
+  "p1_4_ready_signal": {
+    "P68_READY_SIGNAL": "TRUE",
+    "gate_state": "CLOSED",
+    "release_permit": "NOT_ISSUED",
+    "auto_backtest": "DENIED"
+  },
+  "p1_5_no_backtest": {
+    "auto_backtest": "DENIED",
+    "release_permit": "NOT_ISSUED",
+    "note": "P49 backtest NOT auto-started. Waiting for human release_permit."
+  },
+  "receipt_lines": [
+    "→ DSHA_A07=FORMAT_CONVERT_SUCCESS｜long_table_rows=7362｜validation_pass=YES｜P68_GATE=READY｜NO_BACKTEST=LOCKED_ON",
+    "→ wind_api_calls=0｜offline_only=YES｜final_lock_intact=YES｜csv_not_modified=YES｜release_permit=NOT_ISSUED｜no_auto_backtest=YES"
+  ],
+  "red_lines": {
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "p68_params_unchanged": true,
+    "original_csv_not_modified": true,
+    "dshc_not_interfered": true,
+    "dshd_not_interfered": true,
+    "no_auto_backtest": true,
+    "no_human_operation_required": true
+  },
+  "decision": {
+    "trigger_authority": "P68_SANITY_GATE",
+    "auto_ignition_by_a07": "DENIED",
+    "even_if_csv_ready": "only_mark_P68_READY_SIGNAL_do_not_start_backtest",
+    "release_permit_required": "HUMAN",
+    "note": "P68_READY_SIGNAL=TRUE but release_permit=NOT_ISSUED. P49 will not start until human issues release_permit."
+  }
+}

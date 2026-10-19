@@ -1,0 +1,11 @@
+{
+  "signal": "P68_READY_SIGNAL",
+  "value": "TRUE",
+  "set_by": "DSHA-A07",
+  "set_ts": "2026-10-19T10:10:18+08:00",
+  "reason": "validation_passed",
+  "gate_state": "CLOSED",
+  "release_permit": "NOT_ISSUED",
+  "auto_backtest": "DENIED",
+  "note": "CSV validation passed. P68_READY_SIGNAL=TRUE marks the CSV as ready for P68 Sanity Gate evaluation. P49 backtest is NOT auto-started; waiting for human release_permit."
+}
