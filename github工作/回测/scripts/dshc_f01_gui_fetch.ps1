@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # DSHC-F01: WDF GUI Full Metal Market Data Collection
 # Token: A01-USER-REMOTE-F01 (one-time, EXHAUSTED at end)
 # Baseline: feature/v88-g1 HEAD=45690d5
@@ -22,7 +22,7 @@ $symbols      = @("ZN.SHF","CU.SHF","PB.SHF","AL.SHF","SN.SHF","NI.SHF","LC.SHF"
 $indicators   = @("CLOSE","VOL","OI","SETTLE")
 $renderWait   = 14
 $maxAttempts  = 3
-$copyRows     = 400
+$copyRows     = 600
 $hardDeadlineSec = 600
 
 # === HELPER FUNCTIONS ===
@@ -184,7 +184,7 @@ try {
             break
         }
 
-        $formula = '=WSD("'+$sym+'","'+$ind+'","2025-01-01","TODAY()","Fill=Previous")'
+        $formula = '=WSD("'+$sym+'","'+$ind+'","2025-01-02","2026-10-19","Fill=Previous")'
         $elapsedNow = [math]::Round(((Get-Date) - $t0).TotalSeconds, 1)
         LogEvent "INFO" "COMBO-START" "[$comboIndex/$totalCombos] sym=$sym ind=$ind row=$currentRow elapsed=${elapsedNow}s"
 

@@ -1,0 +1,49 @@
+{
+  "skill_id": "FACTOR_EXTRACT_V1",
+  "version": "1.0.0",
+  "version_locked": true,
+  "locked_at": "2026-10-19T00:00:00Z",
+  "locked_by": "DSHC-SKILL-FACTOR01",
+  "baseline": "feature/v88-g1 HEAD=19e80cb",
+  "token": "DSHC-SKILL-FACTOR01-TOKEN",
+  "status": "VERSION_LOCKED",
+  "files": [
+    {
+      "name": "factor_extract_v1.py",
+      "type": "python",
+      "description": "Main skill script"
+    },
+    {
+      "name": "factor_definitions.json",
+      "type": "json",
+      "description": "Factor metadata and definitions"
+    },
+    {
+      "name": "README.md",
+      "type": "markdown",
+      "description": "Documentation and usage guide"
+    },
+    {
+      "name": "manifest.json",
+      "type": "json",
+      "description": "Version lock manifest"
+    }
+  ],
+  "constraints": {
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "f01_script_locked": true,
+    "f01_script_version": "v1.0 @ 593d688",
+    "f01_script_params_only": true
+  },
+  "iteration_policy": "V1 is frozen. New iterations must create V2 in artifacts/skill_lib/factor_v2/. Direct overwrite of V1 files is prohibited.",
+  "next_version": "V2",
+  "receipt": "DSHC_SKILL_FACTOR01=SKILL_PACKAGED",
+  "data_integrity": {
+    "aligned_csv_path": "output_sample/wdf_sample_metals_aligned.csv",
+    "aligned_csv_sha256": "E74B06787048099D5EBF9962027AF9DC6DFBAA7ED5387B714A9A2CA0440AFE20",
+    "aligned_csv_rows": 7362,
+    "unique_dates": 427,
+    "original_csv_sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1"
+  }
+}

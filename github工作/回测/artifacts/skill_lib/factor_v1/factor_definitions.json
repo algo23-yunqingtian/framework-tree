@@ -1,0 +1,71 @@
+{
+  "skill_id": "FACTOR_EXTRACT_V1",
+  "version": "1.0.0",
+  "version_locked": true,
+  "created_at": "2026-10-19",
+  "factors": [
+    {
+      "id": "spread_cs",
+      "name": "Cross-sectional Spread",
+      "formula": "CLOSE - SETTLE",
+      "indicators": ["CLOSE", "SETTLE"]
+    },
+    {
+      "id": "oi_level",
+      "name": "Open Interest Level",
+      "formula": "OI",
+      "indicators": ["OI"]
+    },
+    {
+      "id": "oi_change_1d",
+      "name": "1-Day OI Change",
+      "formula": "OI(t) - OI(t-1)",
+      "indicators": ["OI"]
+    },
+    {
+      "id": "oi_change_rate_7d",
+      "name": "7-Day OI Change Rate %",
+      "formula": "(OI(t) - OI(t-7)) / OI(t-7) * 100",
+      "indicators": ["OI"]
+    },
+    {
+      "id": "spread_pct",
+      "name": "Spread Percentage %",
+      "formula": "(CLOSE - SETTLE) / SETTLE * 100",
+      "indicators": ["CLOSE", "SETTLE"]
+    },
+    {
+      "id": "contract_switch_flag",
+      "name": "Contract Switch Flag",
+      "formula": "abs(CLOSE(t)-CLOSE(t-1))/CLOSE(t-1) > 0.02",
+      "indicators": ["CLOSE"]
+    },
+    {
+      "id": "momentum_20d",
+      "name": "20-Day Momentum %",
+      "formula": "(CLOSE(t) - CLOSE(t-20)) / CLOSE(t-20) * 100",
+      "indicators": ["CLOSE"]
+    }
+  ],
+  "input_format": {
+    "type": "long_form_csv",
+    "columns": ["date", "symbol", "indicator", "value", "source"],
+    "delimiter": ","
+  },
+  "output_format": {
+    "type": "wide_form_csv",
+    "columns": ["date", "symbol", "CLOSE", "SETTLE", "OI", "VOL", "spread_cs", "oi_level", "oi_change_1d", "oi_change_rate_7d", "spread_pct", "contract_switch_flag", "momentum_20d"],
+    "delimiter": ","
+  },
+  "blacklist": ["LC.GFE", "LC.SHF"],
+  "data_requirements": {
+    "required_indicators": ["CLOSE", "OI", "SETTLE"],
+    "optional_indicators": ["VOL"],
+    "min_trading_days": 20,
+    "date_range_locked": "2025-01-02 to 2026-10-19"
+  },
+  "call_example": {
+    "command": "python artifacts/skill_lib/factor_v1/factor_extract_v1.py --csv output_sample/wdf_sample_metals_aligned.csv --symbols CU.SHF,ZN.SHF,PB.SHF,AL.SHF,SN.SHF,NI.SHF --start 2025-01-02 --end 2026-08-26 --outdir artifacts/skill_lib/factor_v1/output/",
+    "description": "DSHA one-click invocation example"
+  }
+}
