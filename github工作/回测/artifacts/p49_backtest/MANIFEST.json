@@ -48,8 +48,37 @@
       "type": "json",
       "path": "MANIFEST.json",
       "description": "归档清单"
+    },
+    {
+      "type": "md",
+      "path": "p49_full_review.md",
+      "description": "全链路复盘文档 (采集+回测全链路)"
     }
   ],
+  "full_asset_manifest": {
+    "description": "DSHA-P49 全套资产清单",
+    "created_at": "2026-10-19",
+    "assets": [
+      {"category": "原始数据", "file": "output_sample/wdf_sample_metals_long.csv", "size_bytes": 285191, "sha256": "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1", "description": "WDF采集长表原始CSV, 7362行"},
+      {"category": "回测指标", "file": "artifacts/p49_backtest/backtest_metrics.json", "size_bytes": 11667, "description": "结构化回测指标JSON"},
+      {"category": "PDF报告", "file": "artifacts/p49_backtest/backtest_report.pdf", "size_bytes": 69000, "description": "5页PDF回测报告"},
+      {"category": "品种绩效", "file": "artifacts/p49_backtest/symbol_performance.csv", "size_bytes": 1300, "description": "品种分层绩效CSV"},
+      {"category": "品种绩效", "file": "artifacts/p49_backtest/symbol_performance.md", "size_bytes": 2335, "description": "品种绩效MD对比"},
+      {"category": "流水线元数据", "file": "artifacts/p49_backtest/pipeline_metadata.json", "size_bytes": 6671, "description": "流水线全步骤元数据"},
+      {"category": "归档清单", "file": "artifacts/p49_backtest/MANIFEST.json", "size_bytes": 3956, "description": "归档索引清单"},
+      {"category": "复盘文档", "file": "artifacts/p49_backtest/p49_full_review.md", "description": "全链路复盘报告"},
+      {"category": "审计日志", "file": "tracking_monitor_audit.jsonl", "description": "P49事件10条 (A07-001 tag), A07事件7条"},
+      {"category": "执行脚本", "file": "code/p49_backtest_pipeline.py", "lines": 1506, "description": "回测流水线主脚本"}
+    ]
+  },
+  "vol_data_issue_recorded": true,
+  "vol_data_issue": {
+    "severity": "CRITICAL",
+    "description": "VOL成交量时序与价格时间错位, 162行VOL数据与CLOSE日期零重叠",
+    "impact": "VOL完全不可用, 因子维度从4维降至3维",
+    "resolution": "需DSHC上游修复WDF采集时间窗口同步",
+    "todo_id": "TODO-01"
+  },
   "pipeline_summary": {
     "p0_baseline_locks": {
       "csv_path": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_metals_long.csv",
