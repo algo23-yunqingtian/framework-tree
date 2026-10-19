@@ -1,0 +1,38 @@
+﻿{
+    "results":  {
+                    "ZN.SHF":  25265,
+                    "CU.SHF":  73280,
+                    "PB.SHF":  16825
+                },
+    "protected_pid":  14644,
+    "note":  "Path validation only. Gate remains CLOSED/HOLD. No release_permit issued.",
+    "token_status":  "EXHAUSTED",
+    "temp_excel_pid":  22592,
+    "spawned":  1,
+    "wallclock_used_sec":  56.9,
+    "guards":  [
+                   "GR1_SINGLE_WINDOW",
+                   "GR2_SPAWN_CAP",
+                   "GR3_CLEANUP_ON_EXIT",
+                   "GR4_NULL_GUARD",
+                   "GR5_WALL_CLOCK"
+               ],
+    "task":  "DSHC-T1FIX",
+    "protected_alive":  true,
+    "baseline":  "feature/v88-g1 HEAD=12a6399",
+    "no_fake_data":  "YES",
+    "symbols_attempted":  [
+                              "CU.SHF",
+                              "ZN.SHF",
+                              "PB.SHF"
+                          ],
+    "token":  "A01-USER-REMOTE-T1FIX",
+    "no_leak":  "YES",
+    "guard_all_5":  "ENFORCED",
+    "status":  "FETCH_SUCCESS",
+    "symbols_succeeded":  3,
+    "release_permit":  "NOT_ISSUED",
+    "sample_cu":  73280,
+    "spawn_counter":  1,
+    "gate":  "CLOSED/HOLD"
+}

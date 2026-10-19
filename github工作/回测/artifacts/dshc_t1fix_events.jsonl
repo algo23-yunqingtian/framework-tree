@@ -1,0 +1,68 @@
+﻿{"level":"INFO","extra":"GR1 gate active, no orphaned Excel","event":"P0-PREFLIGHT-PASS","ts":"2026-10-19T00:40:01Z"}
+{"level":"INFO","extra":"PID 14644 alive: 工作簿2 - Excel","event":"P0-PROTECTED-ALIVE","ts":"2026-10-19T00:40:01Z"}
+{"level":"INFO","extra":"Begin fetch execution","event":"P1-START","ts":"2026-10-19T00:40:01Z"}
+{"level":"INFO","extra":"spawn_counter=1","event":"GR2-SPAWN","ts":"2026-10-19T00:40:01Z"}
+{"level":"INFO","extra":"Creating Excel COM object","event":"EXCEL-CREATE","ts":"2026-10-19T00:40:01Z"}
+{"level":"INFO","extra":"Excel COM created","event":"GR4-PASS","ts":"2026-10-19T00:40:11Z"}
+{"level":"INFO","extra":"temp=30460 protected=14644","event":"EXCEL-PID","ts":"2026-10-19T00:40:12Z"}
+{"level":"INFO","extra":"Workbook created","event":"GR4-PASS","ts":"2026-10-19T00:40:12Z"}
+{"level":"INFO","extra":"Sheet1 activated","event":"GR4-PASS","ts":"2026-10-19T00:40:12Z"}
+{"level":"ERROR","extra":"Exception: Cannot bind parameter \u0027Date\u0027. Cannot convert value \"-\" to type \"System.DateTime\". Error: \"String was not recognized as a valid DateTime.\"","event":"CATCH","ts":"2026-10-19T00:40:12Z"}
+{"level":"INFO","extra":"Starting GR3 cleanup","event":"SAFE-SHUTDOWN","ts":"2026-10-19T00:40:12Z"}
+{"level":"INFO","extra":"GR3 enforced: no leaked Excel","event":"CLEANUP-OK","ts":"2026-10-19T00:40:14Z"}
+{"level":"INFO","extra":"PID 14644 alive after cleanup","event":"PROTECTED-ALIVE","ts":"2026-10-19T00:40:14Z"}
+{"level":"INFO","extra":"GR1 gate active, no orphaned Excel","event":"P0-PREFLIGHT-PASS","ts":"2026-10-19T00:44:27Z"}
+{"level":"INFO","extra":"PID 14644 alive: 工作簿2 - Excel","event":"P0-PROTECTED-ALIVE","ts":"2026-10-19T00:44:27Z"}
+{"level":"INFO","extra":"Begin fetch execution","event":"P1-START","ts":"2026-10-19T00:44:27Z"}
+{"level":"INFO","extra":"spawn_counter=1","event":"GR2-SPAWN","ts":"2026-10-19T00:44:27Z"}
+{"level":"INFO","extra":"Creating Excel COM object","event":"EXCEL-CREATE","ts":"2026-10-19T00:44:27Z"}
+{"level":"INFO","extra":"Excel COM created","event":"GR4-PASS","ts":"2026-10-19T00:44:30Z"}
+{"level":"INFO","extra":"temp=33592 protected=14644","event":"EXCEL-PID","ts":"2026-10-19T00:44:31Z"}
+{"level":"INFO","extra":"Workbook created","event":"GR4-PASS","ts":"2026-10-19T00:44:31Z"}
+{"level":"INFO","extra":"Sheet1 activated","event":"GR4-PASS","ts":"2026-10-19T00:44:31Z"}
+{"level":"INFO","extra":"sym=CU.SHF formula=A price=B elapsed=4.8756426s","event":"SYM-START","ts":"2026-10-19T00:44:31Z"}
+{"level":"INFO","extra":"sym=CU.SHF formula==WSD(\"CU.SHF\",\"CLOSE\",\"2025-01-01\",\"TODAY()\",\"Fill=Previous\")","event":"FORMULA","ts":"2026-10-19T00:44:31Z"}
+{"level":"INFO","extra":"sym=CU.SHF attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T00:44:31Z"}
+{"level":"INFO","extra":"sym=CU.SHF attempt=1 wait=14s","event":"WAIT","ts":"2026-10-19T00:44:34Z"}
+{"level":"INFO","extra":"sym=CU.SHF attempt=1 clip=\u002773280.0000 \u0027 com=\u002773280\u0027","event":"RAW-VALUE","ts":"2026-10-19T00:44:48Z"}
+{"level":"ERROR","extra":"Exception: Cannot convert the \"System.Object[]\" value of type \"System.Object[]\" to type \"System.Double\".","event":"CATCH","ts":"2026-10-19T00:44:49Z"}
+{"level":"INFO","extra":"Starting GR3 cleanup","event":"SAFE-SHUTDOWN","ts":"2026-10-19T00:44:49Z"}
+{"level":"WARN","extra":"Found 1 leaked Excel, killing","event":"LEAK-DETECT","ts":"2026-10-19T00:44:53Z"}
+{"level":"INFO","extra":"PID 14644 alive after cleanup","event":"PROTECTED-ALIVE","ts":"2026-10-19T00:44:55Z"}
+{"level":"INFO","extra":"total=28.6113538s","event":"WALL-CLOCK","ts":"2026-10-19T00:44:55Z"}
+{"level":"INFO","extra":"status=SAFE_TIMEOUT","event":"RECEIPT-WRITTEN","ts":"2026-10-19T00:44:55Z"}
+{"level":"INFO","extra":"GR1 gate active, no orphaned Excel","event":"P0-PREFLIGHT-PASS","ts":"2026-10-19T00:48:20Z"}
+{"level":"INFO","extra":"PID 14644 alive: 工作簿2 - Excel","event":"P0-PROTECTED-ALIVE","ts":"2026-10-19T00:48:20Z"}
+{"level":"INFO","extra":"Begin fetch execution","event":"P1-START","ts":"2026-10-19T00:48:20Z"}
+{"level":"INFO","extra":"spawn_counter=1","event":"GR2-SPAWN","ts":"2026-10-19T00:48:20Z"}
+{"level":"INFO","extra":"Creating Excel COM object","event":"EXCEL-CREATE","ts":"2026-10-19T00:48:20Z"}
+{"level":"INFO","extra":"Excel COM created","event":"GR4-PASS","ts":"2026-10-19T00:48:25Z"}
+{"level":"INFO","extra":"temp=22592 protected=14644","event":"EXCEL-PID","ts":"2026-10-19T00:48:25Z"}
+{"level":"INFO","extra":"Workbook created","event":"GR4-PASS","ts":"2026-10-19T00:48:25Z"}
+{"level":"INFO","extra":"Sheet1 activated","event":"GR4-PASS","ts":"2026-10-19T00:48:25Z"}
+{"level":"INFO","extra":"sym=CU.SHF formula=A price=B elapsed=5.4635689s","event":"SYM-START","ts":"2026-10-19T00:48:25Z"}
+{"level":"INFO","extra":"sym=CU.SHF formula==WSD(\"CU.SHF\",\"CLOSE\",\"2025-01-01\",\"TODAY()\",\"Fill=Previous\")","event":"FORMULA","ts":"2026-10-19T00:48:25Z"}
+{"level":"INFO","extra":"sym=CU.SHF attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T00:48:25Z"}
+{"level":"INFO","extra":"sym=CU.SHF attempt=1 wait=14s","event":"WAIT","ts":"2026-10-19T00:48:27Z"}
+{"level":"INFO","extra":"sym=CU.SHF attempt=1 clip=\u002773280.0000\u0027 com=\u0027System.__ComObject.Value2\u0027","event":"RAW-VALUE","ts":"2026-10-19T00:48:42Z"}
+{"level":"WARN","extra":"sym=CU.SHF price=73280 outside 80000-120000","event":"RANGE-WARN","ts":"2026-10-19T00:48:42Z"}
+{"level":"INFO","extra":"sym=CU.SHF price=73280 source=clipboard","event":"SYM-OK","ts":"2026-10-19T00:48:42Z"}
+{"level":"INFO","extra":"sym=ZN.SHF formula=D price=E elapsed=22.065651s","event":"SYM-START","ts":"2026-10-19T00:48:42Z"}
+{"level":"INFO","extra":"sym=ZN.SHF formula==WSD(\"ZN.SHF\",\"CLOSE\",\"2025-01-01\",\"TODAY()\",\"Fill=Previous\")","event":"FORMULA","ts":"2026-10-19T00:48:42Z"}
+{"level":"INFO","extra":"sym=ZN.SHF attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T00:48:42Z"}
+{"level":"INFO","extra":"sym=ZN.SHF attempt=1 wait=14s","event":"WAIT","ts":"2026-10-19T00:48:42Z"}
+{"level":"INFO","extra":"sym=ZN.SHF attempt=1 clip=\u002725265.0000\u0027 com=\u0027System.__ComObject.Value2\u0027","event":"RAW-VALUE","ts":"2026-10-19T00:48:57Z"}
+{"level":"INFO","extra":"sym=ZN.SHF price=25265 source=clipboard","event":"SYM-OK","ts":"2026-10-19T00:48:57Z"}
+{"level":"INFO","extra":"sym=PB.SHF formula=G price=H elapsed=36.6968461s","event":"SYM-START","ts":"2026-10-19T00:48:57Z"}
+{"level":"INFO","extra":"sym=PB.SHF formula==WSD(\"PB.SHF\",\"CLOSE\",\"2025-01-01\",\"TODAY()\",\"Fill=Previous\")","event":"FORMULA","ts":"2026-10-19T00:48:57Z"}
+{"level":"INFO","extra":"sym=PB.SHF attempt=1/3","event":"ATTEMPT","ts":"2026-10-19T00:48:57Z"}
+{"level":"INFO","extra":"sym=PB.SHF attempt=1 wait=14s","event":"WAIT","ts":"2026-10-19T00:48:57Z"}
+{"level":"INFO","extra":"sym=PB.SHF attempt=1 clip=\u002716825.0000\u0027 com=\u0027System.__ComObject.Value2\u0027","event":"RAW-VALUE","ts":"2026-10-19T00:49:11Z"}
+{"level":"INFO","extra":"sym=PB.SHF price=16825 source=clipboard","event":"SYM-OK","ts":"2026-10-19T00:49:11Z"}
+{"level":"INFO","extra":"success=3/3","event":"FETCH-DONE","ts":"2026-10-19T00:49:11Z"}
+{"level":"INFO","extra":"Starting GR3 cleanup","event":"SAFE-SHUTDOWN","ts":"2026-10-19T00:49:11Z"}
+{"level":"WARN","extra":"Found 1 leaked Excel, killing","event":"LEAK-DETECT","ts":"2026-10-19T00:49:15Z"}
+{"level":"INFO","extra":"PID 14644 alive after cleanup","event":"PROTECTED-ALIVE","ts":"2026-10-19T00:49:17Z"}
+{"level":"INFO","extra":"total=56.9249345s","event":"WALL-CLOCK","ts":"2026-10-19T00:49:17Z"}
+{"level":"INFO","extra":"status=FETCH_SUCCESS","event":"RECEIPT-WRITTEN","ts":"2026-10-19T00:49:17Z"}
+{"level":"INFO","extra":"3 rows appended","event":"CSV-APPENDED","ts":"2026-10-19T00:49:17Z"}
