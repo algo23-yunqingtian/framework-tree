@@ -1,0 +1,491 @@
+{
+  "manifest_id": "DSHA-P49-V3-MANIFEST",
+  "generated_at": "2026-10-19T06:22:59.953938+00:00",
+  "token": "DSHA-P49-V3-TOKEN",
+  "baseline_commit": "469d17c",
+  "status": "V3_BACKTEST_COMPLETE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "baseline_read_only": true,
+    "csv_not_modified": true,
+    "draft_mode": false,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "data_provenance": {
+    "source_csv": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_all_aligned_v2.csv",
+    "source_sha256": "14950b9464baefd8c90dbfcd58c99904631755dc26a85bf94dc51e73908bddb4",
+    "source_raw_csv": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\collection_prep\\all_9instruments_raw.csv",
+    "source_raw_sha256": "25eec50098afa5ed9df9062f4ae5b5e3b3420ceb272a5129a5b50f71ea617db4",
+    "data_format": "DATA_ONLY_V2",
+    "long_format_rows": 23328,
+    "wide_format_rows": 3888,
+    "date_count": 432,
+    "symbol_count": 9,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "HC.SHF",
+      "LC.GFE",
+      "NI.SHF",
+      "PB.SHF",
+      "RB.SHF",
+      "SN.SHF",
+      "ZN.SHF"
+    ],
+    "indicators": [
+      "CLOSE",
+      "HIGH",
+      "LOW",
+      "OI",
+      "SETTLE",
+      "VOL"
+    ],
+    "date_range": {
+      "min": "2025-01-02",
+      "max": "2026-10-19"
+    },
+    "null_report": {
+      "close": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "settle": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "oi": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "vol": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "high": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "low": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      }
+    },
+    "row_count_note": "Long-format行数=23328, 预期7362不匹配; 宽表3888行=432日×9品种 ✅"
+  },
+  "experiment_config": {
+    "factor_pool": [
+      "spread_cs",
+      "oi_level",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "spread_pct",
+      "contract_switch_flag",
+      "momentum_20d",
+      "realized_vol_20d",
+      "vol_regime_change",
+      "vol_target_weight",
+      "atr_pct"
+    ],
+    "retained_factors": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "removed_factors": [
+      "atr_pct",
+      "vol_target_weight",
+      "spread_pct"
+    ],
+    "retained_count": 8,
+    "normalization": "zscore",
+    "aggregation": "equal_weight",
+    "signal_threshold": 0.3,
+    "rebalance_freq": "weekly",
+    "target_vol": 0.15,
+    "max_single_weight": 0.5,
+    "drawdown_stop": {
+      "warn": -0.1,
+      "halt": -0.2
+    },
+    "transaction_cost": 0.0005,
+    "initial_capital": 1000000.0,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "HC.SHF",
+      "LC.GFE",
+      "NI.SHF",
+      "PB.SHF",
+      "RB.SHF",
+      "SN.SHF",
+      "ZN.SHF"
+    ],
+    "symbol_count": 9
+  },
+  "experiment_results": {
+    "portfolio_metrics": {
+      "total_return": 0.019341,
+      "annualized_return": 0.011263,
+      "annual_volatility": 0.022386,
+      "daily_volatility": 0.00141,
+      "max_drawdown": -0.031036,
+      "sharpe_ratio": 0.50314,
+      "calmar_ratio": 0.362903,
+      "win_rate": 0.276102,
+      "avg_win": 0.00147,
+      "avg_loss": 0.000761,
+      "profit_loss_ratio": 1.930454,
+      "trade_count": 316,
+      "total_trades": 316,
+      "n_periods": 431,
+      "initial_capital": 1000000.0,
+      "final_capital": 1019340.52,
+      "total_transaction_cost": 0.034745,
+      "cost_ratio": 1.796495
+    },
+    "per_symbol": {
+      "AL.SHF": {
+        "total_return": -0.032484,
+        "annualized_return": -0.019123,
+        "annual_volatility": 0.049285,
+        "daily_volatility": 0.003105,
+        "max_drawdown": -0.052636,
+        "sharpe_ratio": -0.388008,
+        "calmar_ratio": -0.363306,
+        "win_rate": 0.143852,
+        "avg_win": 0.003899,
+        "avg_loss": 0.002727,
+        "profit_loss_ratio": 1.429842,
+        "trade_count": 46,
+        "total_trades": 46,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 967516.0,
+        "total_transaction_cost": 0.008656,
+        "cost_ratio": 0.266468
+      },
+      "CU.SHF": {
+        "total_return": 0.044297,
+        "annualized_return": 0.025666,
+        "annual_volatility": 0.067337,
+        "daily_volatility": 0.004242,
+        "max_drawdown": -0.064191,
+        "sharpe_ratio": 0.381165,
+        "calmar_ratio": 0.399847,
+        "win_rate": 0.229698,
+        "avg_win": 0.004601,
+        "avg_loss": 0.003266,
+        "profit_loss_ratio": 1.408621,
+        "trade_count": 65,
+        "total_trades": 65,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1044296.96,
+        "total_transaction_cost": 0.013013,
+        "cost_ratio": 0.293766
+      },
+      "HC.SHF": {
+        "total_return": -0.05038,
+        "annualized_return": -0.029772,
+        "annual_volatility": 0.036073,
+        "daily_volatility": 0.002272,
+        "max_drawdown": -0.053929,
+        "sharpe_ratio": -0.825331,
+        "calmar_ratio": -0.552059,
+        "win_rate": 0.148492,
+        "avg_win": 0.002639,
+        "avg_loss": 0.002552,
+        "profit_loss_ratio": 1.03405,
+        "trade_count": 29,
+        "total_trades": 29,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 949620.34,
+        "total_transaction_cost": 0.008,
+        "cost_ratio": 0.158794
+      },
+      "LC.GFE": {
+        "total_return": 0.169641,
+        "annualized_return": 0.095947,
+        "annual_volatility": 0.106839,
+        "daily_volatility": 0.00673,
+        "max_drawdown": -0.088987,
+        "sharpe_ratio": 0.898052,
+        "calmar_ratio": 1.078209,
+        "win_rate": 0.273782,
+        "avg_win": 0.007592,
+        "avg_loss": 0.005699,
+        "profit_loss_ratio": 1.332263,
+        "trade_count": 162,
+        "total_trades": 162,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1169641.44,
+        "total_transaction_cost": 0.006993,
+        "cost_ratio": 0.041222
+      },
+      "NI.SHF": {
+        "total_return": 0.112227,
+        "annualized_return": 0.064164,
+        "annual_volatility": 0.065256,
+        "daily_volatility": 0.004111,
+        "max_drawdown": -0.042268,
+        "sharpe_ratio": 0.983273,
+        "calmar_ratio": 1.518019,
+        "win_rate": 0.187935,
+        "avg_win": 0.005347,
+        "avg_loss": 0.004039,
+        "profit_loss_ratio": 1.323877,
+        "trade_count": 67,
+        "total_trades": 67,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1112227.0,
+        "total_transaction_cost": 0.008416,
+        "cost_ratio": 0.07499
+      },
+      "PB.SHF": {
+        "total_return": -0.031085,
+        "annualized_return": -0.018294,
+        "annual_volatility": 0.032516,
+        "daily_volatility": 0.002048,
+        "max_drawdown": -0.073915,
+        "sharpe_ratio": -0.562623,
+        "calmar_ratio": -0.2475,
+        "win_rate": 0.162413,
+        "avg_win": 0.002464,
+        "avg_loss": 0.002116,
+        "profit_loss_ratio": 1.164331,
+        "trade_count": 43,
+        "total_trades": 43,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 968914.99,
+        "total_transaction_cost": 0.012,
+        "cost_ratio": 0.386038
+      },
+      "RB.SHF": {
+        "total_return": -0.050468,
+        "annualized_return": -0.029825,
+        "annual_volatility": 0.040105,
+        "daily_volatility": 0.002526,
+        "max_drawdown": -0.067431,
+        "sharpe_ratio": -0.74367,
+        "calmar_ratio": -0.442302,
+        "win_rate": 0.164733,
+        "avg_win": 0.002862,
+        "avg_loss": 0.002588,
+        "profit_loss_ratio": 1.1059,
+        "trade_count": 40,
+        "total_trades": 40,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 949531.56,
+        "total_transaction_cost": 0.0105,
+        "cost_ratio": 0.208051
+      },
+      "SN.SHF": {
+        "total_return": -0.057099,
+        "annualized_return": -0.033792,
+        "annual_volatility": 0.084385,
+        "daily_volatility": 0.005316,
+        "max_drawdown": -0.119954,
+        "sharpe_ratio": -0.400448,
+        "calmar_ratio": -0.281706,
+        "win_rate": 0.213457,
+        "avg_win": 0.005483,
+        "avg_loss": 0.004567,
+        "profit_loss_ratio": 1.200567,
+        "trade_count": 125,
+        "total_trades": 125,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 942901.15,
+        "total_transaction_cost": 0.011872,
+        "cost_ratio": 0.207914
+      },
+      "ZN.SHF": {
+        "total_return": 0.074252,
+        "annualized_return": 0.042767,
+        "annual_volatility": 0.04995,
+        "daily_volatility": 0.003147,
+        "max_drawdown": -0.034667,
+        "sharpe_ratio": 0.856203,
+        "calmar_ratio": 1.233667,
+        "win_rate": 0.229698,
+        "avg_win": 0.003597,
+        "avg_loss": 0.002543,
+        "profit_loss_ratio": 1.414153,
+        "trade_count": 49,
+        "total_trades": 49,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1074251.64,
+        "total_transaction_cost": 0.01275,
+        "cost_ratio": 0.171713
+      }
+    },
+    "control_group_v2": {
+      "set_e_metrics": {
+        "total_return": 0.055651,
+        "annualized_return": 0.032556,
+        "annual_volatility": 0.025442,
+        "daily_volatility": 0.001603,
+        "max_drawdown": -0.021869,
+        "sharpe_ratio": 1.279583,
+        "calmar_ratio": 1.488678,
+        "win_rate": 0.410798,
+        "avg_win": 0.001314,
+        "avg_loss": 0.001031,
+        "profit_loss_ratio": 1.274675,
+        "trade_count": 240,
+        "total_trades": 240,
+        "n_periods": 426,
+        "initial_capital": 1000000.0,
+        "final_capital": 1055651.1,
+        "total_transaction_cost": 0.008652,
+        "cost_ratio": 0.155477
+      },
+      "baseline_metrics": {
+        "symbols_run": 6,
+        "total_return_avg": -0.376868,
+        "total_return_median": -0.250829,
+        "sharpe_avg": -1.297965,
+        "sharpe_median": -1.322666,
+        "max_drawdown_avg": -0.420961,
+        "max_drawdown_worst": -0.828087,
+        "win_rate_avg": 0.446818,
+        "profit_loss_ratio_avg": 0.919272
+      }
+    }
+  },
+  "factor_diagnostics": {
+    "correlation_pairs": [
+      {
+        "factor_a": "realized_vol_20d",
+        "factor_b": "atr_pct",
+        "correlation": 0.9646,
+        "abs_correlation": 0.9646
+      },
+      {
+        "factor_a": "realized_vol_20d",
+        "factor_b": "vol_target_weight",
+        "correlation": -0.9192,
+        "abs_correlation": 0.9192
+      },
+      {
+        "factor_a": "vol_target_weight",
+        "factor_b": "atr_pct",
+        "correlation": -0.9017,
+        "abs_correlation": 0.9017
+      },
+      {
+        "factor_a": "spread_cs",
+        "factor_b": "spread_pct",
+        "correlation": 0.8062,
+        "abs_correlation": 0.8062
+      }
+    ],
+    "removed_factors": [
+      "atr_pct",
+      "vol_target_weight",
+      "spread_pct"
+    ],
+    "retained_factors": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "effective_independent_factors": 8
+  },
+  "risk_checks": {
+    "lc_gfe_atr_pct": {
+      "valid_count": 426,
+      "mean": 0.039317,
+      "range": [
+        0.010007,
+        0.09642
+      ],
+      "status": "NORMAL"
+    },
+    "new_symbol_nulls": {
+      "rb_shf": {
+        "close": 0,
+        "settle": 0,
+        "oi": 0,
+        "vol": 0,
+        "high": 0,
+        "low": 0
+      },
+      "hc_shf": {
+        "close": 0,
+        "settle": 0,
+        "oi": 0,
+        "vol": 0,
+        "high": 0,
+        "low": 0
+      },
+      "all_zero": true
+    },
+    "future_function_safe": true,
+    "data_leakage_safe": true,
+    "all_pass": true
+  },
+  "artifact_files": {
+    "factors_full_11_v3.csv": {
+      "path": "artifacts\\p49_v3_backtest\\factors_full_11_v3.csv",
+      "sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+      "size_bytes": 816982
+    },
+    "backtest_v3_metrics.json": {
+      "path": "artifacts\\p49_v3_backtest\\backtest_v3_metrics.json",
+      "sha256": "28c578595ea2a8bc73959fad0e50bea186ff15dcc1b0992044f7553c0f548809",
+      "size_bytes": 21827
+    },
+    "v3_comparison_report.md": {
+      "path": "artifacts\\p49_v3_backtest\\v3_comparison_report.md",
+      "sha256": "f661e7d0785a2b3d9a1615c26b508f4495bb73c4b34cd92ad55b4137840bd4c2",
+      "size_bytes": 5726
+    },
+    "strategy_set_e.lock.json": {
+      "path": "artifacts\\p49_v2_experiment\\strategy_set_e.lock.json",
+      "sha256": "2e0ecb49d08a2097932828ffcff780d30a1321baf5e1f54c2e5b82d0f6a7490e",
+      "size_bytes": 8465
+    },
+    "wdf_sample_all_aligned_v2.csv": {
+      "path": "output_sample\\wdf_sample_all_aligned_v2.csv",
+      "sha256": "14950b9464baefd8c90dbfcd58c99904631755dc26a85bf94dc51e73908bddb4",
+      "size_bytes": 869246
+    },
+    "vol_full_sha_snapshot.json": {
+      "path": "artifacts\\collection_prep\\vol_full_sha_snapshot.json",
+      "sha256": "ff7bf836c54eb46847664865cc8398595a56eb8a7dfe1723add2818416c5cd00",
+      "size_bytes": 304
+    },
+    "highlow_raw_data.csv": {
+      "path": "artifacts\\collection_prep\\highlow_raw_data.csv",
+      "sha256": "694cf1baf03676911473360fac916b523582ed5f8972d50aa231b9b8263fdd0b",
+      "size_bytes": 229298
+    },
+    "rbhc_raw_data.csv": {
+      "path": "artifacts\\collection_prep\\rbhc_raw_data.csv",
+      "sha256": "e0a4a1978f97b09a65d4f9e1e883cdfc64e2ea4ed9a9bae6d7540498c527b4b1",
+      "size_bytes": 162422
+    }
+  },
+  "total_artifact_count": 8,
+  "total_artifact_bytes": 2114270
+}

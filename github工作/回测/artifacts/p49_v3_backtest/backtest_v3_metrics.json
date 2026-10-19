@@ -1,0 +1,768 @@
+{
+  "report_id": "DSHA-P49-V3-20261019_142259",
+  "report_type": "p49_v3_comparison_backtest",
+  "agent": "DSHA-P49-V3-BACKTEST",
+  "created_at": "2026-10-19T06:22:59.949942+00:00",
+  "token": "DSHA-P49-V3-TOKEN",
+  "token_status": "ACTIVE",
+  "status": "V3_BACKTEST_COMPLETE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "baseline_read_only": true,
+    "csv_not_modified": true,
+    "draft_mode": false,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "data_provenance": {
+    "source_csv": "D:\\DSH_WORK\\github工作\\回测\\output_sample\\wdf_sample_all_aligned_v2.csv",
+    "source_sha256": "14950b9464baefd8c90dbfcd58c99904631755dc26a85bf94dc51e73908bddb4",
+    "source_raw_csv": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\collection_prep\\all_9instruments_raw.csv",
+    "source_raw_sha256": "25eec50098afa5ed9df9062f4ae5b5e3b3420ceb272a5129a5b50f71ea617db4",
+    "data_format": "DATA_ONLY_V2",
+    "long_format_rows": 23328,
+    "wide_format_rows": 3888,
+    "date_count": 432,
+    "symbol_count": 9,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "HC.SHF",
+      "LC.GFE",
+      "NI.SHF",
+      "PB.SHF",
+      "RB.SHF",
+      "SN.SHF",
+      "ZN.SHF"
+    ],
+    "indicators": [
+      "CLOSE",
+      "HIGH",
+      "LOW",
+      "OI",
+      "SETTLE",
+      "VOL"
+    ],
+    "date_range": {
+      "min": "2025-01-02",
+      "max": "2026-10-19"
+    },
+    "null_report": {
+      "close": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "settle": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "oi": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "vol": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "high": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "low": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      }
+    },
+    "row_count_note": "Long-format行数=23328, 预期7362不匹配; 宽表3888行=432日×9品种 ✅"
+  },
+  "factor_pool": {
+    "base_factors": [
+      "spread_cs",
+      "oi_level",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "spread_pct",
+      "contract_switch_flag",
+      "momentum_20d"
+    ],
+    "new_factors": [
+      "realized_vol_20d",
+      "vol_regime_change",
+      "vol_target_weight",
+      "atr_pct"
+    ],
+    "all_factors": [
+      "spread_cs",
+      "oi_level",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "spread_pct",
+      "contract_switch_flag",
+      "momentum_20d",
+      "realized_vol_20d",
+      "vol_regime_change",
+      "vol_target_weight",
+      "atr_pct"
+    ],
+    "retained_factors": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "removed_factors": [
+      "atr_pct",
+      "vol_target_weight",
+      "spread_pct"
+    ],
+    "retained_count": 8
+  },
+  "factor_availability": {
+    "spread_cs": 3888,
+    "oi_level": 3888,
+    "oi_change_1d": 3879,
+    "oi_change_rate_7d": 3825,
+    "spread_pct": 3888,
+    "contract_switch_flag": 3888,
+    "momentum_20d": 3708,
+    "realized_vol_20d": 3708,
+    "vol_regime_change": 3663,
+    "vol_target_weight": 3708,
+    "atr_pct": 3834
+  },
+  "factor_diagnostics": {
+    "correlation_pairs": [
+      {
+        "factor_a": "realized_vol_20d",
+        "factor_b": "atr_pct",
+        "correlation": 0.9646,
+        "abs_correlation": 0.9646
+      },
+      {
+        "factor_a": "realized_vol_20d",
+        "factor_b": "vol_target_weight",
+        "correlation": -0.9192,
+        "abs_correlation": 0.9192
+      },
+      {
+        "factor_a": "vol_target_weight",
+        "factor_b": "atr_pct",
+        "correlation": -0.9017,
+        "abs_correlation": 0.9017
+      },
+      {
+        "factor_a": "spread_cs",
+        "factor_b": "spread_pct",
+        "correlation": 0.8062,
+        "abs_correlation": 0.8062
+      }
+    ],
+    "effective_independent_factors": 8
+  },
+  "experiment": {
+    "label": "V3实验组 (9品种, 11因子, Set E冻结参数)",
+    "portfolio_metrics": {
+      "total_return": 0.019341,
+      "annualized_return": 0.011263,
+      "annual_volatility": 0.022386,
+      "daily_volatility": 0.00141,
+      "max_drawdown": -0.031036,
+      "sharpe_ratio": 0.50314,
+      "calmar_ratio": 0.362903,
+      "win_rate": 0.276102,
+      "avg_win": 0.00147,
+      "avg_loss": 0.000761,
+      "profit_loss_ratio": 1.930454,
+      "trade_count": 316,
+      "total_trades": 316,
+      "n_periods": 431,
+      "initial_capital": 1000000.0,
+      "final_capital": 1019340.52,
+      "total_transaction_cost": 0.034745,
+      "cost_ratio": 1.796495
+    },
+    "per_symbol": {
+      "AL.SHF": {
+        "total_return": -0.032484,
+        "annualized_return": -0.019123,
+        "annual_volatility": 0.049285,
+        "daily_volatility": 0.003105,
+        "max_drawdown": -0.052636,
+        "sharpe_ratio": -0.388008,
+        "calmar_ratio": -0.363306,
+        "win_rate": 0.143852,
+        "avg_win": 0.003899,
+        "avg_loss": 0.002727,
+        "profit_loss_ratio": 1.429842,
+        "trade_count": 46,
+        "total_trades": 46,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 967516.0,
+        "total_transaction_cost": 0.008656,
+        "cost_ratio": 0.266468
+      },
+      "CU.SHF": {
+        "total_return": 0.044297,
+        "annualized_return": 0.025666,
+        "annual_volatility": 0.067337,
+        "daily_volatility": 0.004242,
+        "max_drawdown": -0.064191,
+        "sharpe_ratio": 0.381165,
+        "calmar_ratio": 0.399847,
+        "win_rate": 0.229698,
+        "avg_win": 0.004601,
+        "avg_loss": 0.003266,
+        "profit_loss_ratio": 1.408621,
+        "trade_count": 65,
+        "total_trades": 65,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1044296.96,
+        "total_transaction_cost": 0.013013,
+        "cost_ratio": 0.293766
+      },
+      "HC.SHF": {
+        "total_return": -0.05038,
+        "annualized_return": -0.029772,
+        "annual_volatility": 0.036073,
+        "daily_volatility": 0.002272,
+        "max_drawdown": -0.053929,
+        "sharpe_ratio": -0.825331,
+        "calmar_ratio": -0.552059,
+        "win_rate": 0.148492,
+        "avg_win": 0.002639,
+        "avg_loss": 0.002552,
+        "profit_loss_ratio": 1.03405,
+        "trade_count": 29,
+        "total_trades": 29,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 949620.34,
+        "total_transaction_cost": 0.008,
+        "cost_ratio": 0.158794
+      },
+      "LC.GFE": {
+        "total_return": 0.169641,
+        "annualized_return": 0.095947,
+        "annual_volatility": 0.106839,
+        "daily_volatility": 0.00673,
+        "max_drawdown": -0.088987,
+        "sharpe_ratio": 0.898052,
+        "calmar_ratio": 1.078209,
+        "win_rate": 0.273782,
+        "avg_win": 0.007592,
+        "avg_loss": 0.005699,
+        "profit_loss_ratio": 1.332263,
+        "trade_count": 162,
+        "total_trades": 162,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1169641.44,
+        "total_transaction_cost": 0.006993,
+        "cost_ratio": 0.041222
+      },
+      "NI.SHF": {
+        "total_return": 0.112227,
+        "annualized_return": 0.064164,
+        "annual_volatility": 0.065256,
+        "daily_volatility": 0.004111,
+        "max_drawdown": -0.042268,
+        "sharpe_ratio": 0.983273,
+        "calmar_ratio": 1.518019,
+        "win_rate": 0.187935,
+        "avg_win": 0.005347,
+        "avg_loss": 0.004039,
+        "profit_loss_ratio": 1.323877,
+        "trade_count": 67,
+        "total_trades": 67,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1112227.0,
+        "total_transaction_cost": 0.008416,
+        "cost_ratio": 0.07499
+      },
+      "PB.SHF": {
+        "total_return": -0.031085,
+        "annualized_return": -0.018294,
+        "annual_volatility": 0.032516,
+        "daily_volatility": 0.002048,
+        "max_drawdown": -0.073915,
+        "sharpe_ratio": -0.562623,
+        "calmar_ratio": -0.2475,
+        "win_rate": 0.162413,
+        "avg_win": 0.002464,
+        "avg_loss": 0.002116,
+        "profit_loss_ratio": 1.164331,
+        "trade_count": 43,
+        "total_trades": 43,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 968914.99,
+        "total_transaction_cost": 0.012,
+        "cost_ratio": 0.386038
+      },
+      "RB.SHF": {
+        "total_return": -0.050468,
+        "annualized_return": -0.029825,
+        "annual_volatility": 0.040105,
+        "daily_volatility": 0.002526,
+        "max_drawdown": -0.067431,
+        "sharpe_ratio": -0.74367,
+        "calmar_ratio": -0.442302,
+        "win_rate": 0.164733,
+        "avg_win": 0.002862,
+        "avg_loss": 0.002588,
+        "profit_loss_ratio": 1.1059,
+        "trade_count": 40,
+        "total_trades": 40,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 949531.56,
+        "total_transaction_cost": 0.0105,
+        "cost_ratio": 0.208051
+      },
+      "SN.SHF": {
+        "total_return": -0.057099,
+        "annualized_return": -0.033792,
+        "annual_volatility": 0.084385,
+        "daily_volatility": 0.005316,
+        "max_drawdown": -0.119954,
+        "sharpe_ratio": -0.400448,
+        "calmar_ratio": -0.281706,
+        "win_rate": 0.213457,
+        "avg_win": 0.005483,
+        "avg_loss": 0.004567,
+        "profit_loss_ratio": 1.200567,
+        "trade_count": 125,
+        "total_trades": 125,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 942901.15,
+        "total_transaction_cost": 0.011872,
+        "cost_ratio": 0.207914
+      },
+      "ZN.SHF": {
+        "total_return": 0.074252,
+        "annualized_return": 0.042767,
+        "annual_volatility": 0.04995,
+        "daily_volatility": 0.003147,
+        "max_drawdown": -0.034667,
+        "sharpe_ratio": 0.856203,
+        "calmar_ratio": 1.233667,
+        "win_rate": 0.229698,
+        "avg_win": 0.003597,
+        "avg_loss": 0.002543,
+        "profit_loss_ratio": 1.414153,
+        "trade_count": 49,
+        "total_trades": 49,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1074251.64,
+        "total_transaction_cost": 0.01275,
+        "cost_ratio": 0.171713
+      }
+    }
+  },
+  "control_group": {
+    "label": "V2原版 (6品种, 11因子)",
+    "status": "READ_ONLY",
+    "set_e_metrics": {
+      "total_return": 0.055651,
+      "annualized_return": 0.032556,
+      "annual_volatility": 0.025442,
+      "daily_volatility": 0.001603,
+      "max_drawdown": -0.021869,
+      "sharpe_ratio": 1.279583,
+      "calmar_ratio": 1.488678,
+      "win_rate": 0.410798,
+      "avg_win": 0.001314,
+      "avg_loss": 0.001031,
+      "profit_loss_ratio": 1.274675,
+      "trade_count": 240,
+      "total_trades": 240,
+      "n_periods": 426,
+      "initial_capital": 1000000.0,
+      "final_capital": 1055651.1,
+      "total_transaction_cost": 0.008652,
+      "cost_ratio": 0.155477
+    },
+    "baseline_metrics": {
+      "symbols_run": 6,
+      "total_return_avg": -0.376868,
+      "total_return_median": -0.250829,
+      "sharpe_avg": -1.297965,
+      "sharpe_median": -1.322666,
+      "max_drawdown_avg": -0.420961,
+      "max_drawdown_worst": -0.828087,
+      "win_rate_avg": 0.446818,
+      "profit_loss_ratio_avg": 0.919272
+    }
+  },
+  "comparison": {
+    "return_improvement": -0.03631,
+    "sharpe_improvement": -0.776443,
+    "drawdown_improvement": -0.009167
+  },
+  "factor_ic_ir": {
+    "per_symbol_ic": {
+      "AL.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.08991989538027965,
+        "oi_change_1d": -0.040349845769397014,
+        "oi_change_rate_7d": -0.05873727597176488,
+        "oi_level": -0.07694516281695356,
+        "realized_vol_20d": 0.02053338670300063,
+        "spread_cs": -0.17469099090005116,
+        "vol_regime_change": -0.08864885072855762
+      },
+      "CU.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.048173837613452695,
+        "oi_change_1d": -0.08470271527325964,
+        "oi_change_rate_7d": 0.003428431179965004,
+        "oi_level": -0.026066597663333545,
+        "realized_vol_20d": 0.001980691164598595,
+        "spread_cs": -0.20827297415525617,
+        "vol_regime_change": 0.039831031117559354
+      },
+      "HC.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.008212682317173198,
+        "oi_change_1d": -0.03790024303116089,
+        "oi_change_rate_7d": 0.023288728109074893,
+        "oi_level": 0.04879416827404307,
+        "realized_vol_20d": -0.08037077282599527,
+        "spread_cs": -0.0647712798384828,
+        "vol_regime_change": 0.016367930181794586
+      },
+      "LC.GFE": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.052478249906950596,
+        "oi_change_1d": 0.03702411130338265,
+        "oi_change_rate_7d": -0.02563511263368347,
+        "oi_level": 0.03465332159369491,
+        "realized_vol_20d": 0.037397090972613824,
+        "spread_cs": 0.0949053591066766,
+        "vol_regime_change": -0.028331413799102617
+      },
+      "NI.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.0011840402377529845,
+        "oi_change_1d": -0.09823945016928742,
+        "oi_change_rate_7d": 0.003415451514854439,
+        "oi_level": -0.010415112538758892,
+        "realized_vol_20d": 0.012752795261479613,
+        "spread_cs": -0.11905130567635028,
+        "vol_regime_change": 0.08905656753212446
+      },
+      "PB.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.0954144582741441,
+        "oi_change_1d": 0.025141835584662747,
+        "oi_change_rate_7d": 0.0280929949399535,
+        "oi_level": -0.023549717526705354,
+        "realized_vol_20d": -0.018426737754197627,
+        "spread_cs": -0.017886788332273612,
+        "vol_regime_change": 0.012650600899895358
+      },
+      "RB.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.022228844895475493,
+        "oi_change_1d": -0.050421188652271166,
+        "oi_change_rate_7d": -0.02004087226271886,
+        "oi_level": 0.008963717370354302,
+        "realized_vol_20d": -0.1109656774172402,
+        "spread_cs": -0.009763955439290263,
+        "vol_regime_change": -0.03906860415458536
+      },
+      "SN.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.10600697189941512,
+        "oi_change_1d": -0.048440172094031175,
+        "oi_change_rate_7d": -0.1102963948093012,
+        "oi_level": -0.08951067544292975,
+        "realized_vol_20d": -0.028349658996880134,
+        "spread_cs": 0.03111533145738927,
+        "vol_regime_change": 0.02527352228498041
+      },
+      "ZN.SHF": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": -0.05282685615347897,
+        "oi_change_1d": 0.029298570300161853,
+        "oi_change_rate_7d": 0.05414716896408013,
+        "oi_level": 0.005720657356152187,
+        "realized_vol_20d": -0.0288615075809248,
+        "spread_cs": -0.1281921872838941,
+        "vol_regime_change": 0.007418249190113328
+      }
+    },
+    "aggregated_ic_ir": {
+      "contract_switch_flag": {
+        "ic_mean": 0.0,
+        "ic_std": 0.0,
+        "ic_ir_annualized": 0.0,
+        "hit_rate": NaN
+      },
+      "momentum_20d": {
+        "ic_mean": -0.041277,
+        "ic_std": 0.051867,
+        "ic_ir_annualized": -12.6332,
+        "hit_rate": 1.0
+      },
+      "oi_change_1d": {
+        "ic_mean": -0.029843,
+        "ic_std": 0.049528,
+        "ic_ir_annualized": -9.5651,
+        "hit_rate": 1.0
+      },
+      "oi_change_rate_7d": {
+        "ic_mean": -0.011371,
+        "ic_std": 0.049746,
+        "ic_ir_annualized": -3.6285,
+        "hit_rate": 1.0
+      },
+      "oi_level": {
+        "ic_mean": -0.014262,
+        "ic_std": 0.046286,
+        "ic_ir_annualized": -4.8912,
+        "hit_rate": 1.0
+      },
+      "realized_vol_20d": {
+        "ic_mean": -0.02159,
+        "ic_std": 0.048141,
+        "ic_ir_annualized": -7.1193,
+        "hit_rate": 1.0
+      },
+      "spread_cs": {
+        "ic_mean": -0.06629,
+        "ic_std": 0.099711,
+        "ic_ir_annualized": -10.5537,
+        "hit_rate": 1.0
+      },
+      "vol_regime_change": {
+        "ic_mean": 0.003839,
+        "ic_std": 0.050861,
+        "ic_ir_annualized": 1.1982,
+        "hit_rate": 1.0
+      }
+    },
+    "ranked_by_ir": [
+      {
+        "factor": "momentum_20d",
+        "ic_ir": -12.6332,
+        "ic_mean": -0.041277
+      },
+      {
+        "factor": "spread_cs",
+        "ic_ir": -10.5537,
+        "ic_mean": -0.06629
+      },
+      {
+        "factor": "oi_change_1d",
+        "ic_ir": -9.5651,
+        "ic_mean": -0.029843
+      },
+      {
+        "factor": "realized_vol_20d",
+        "ic_ir": -7.1193,
+        "ic_mean": -0.02159
+      },
+      {
+        "factor": "oi_level",
+        "ic_ir": -4.8912,
+        "ic_mean": -0.014262
+      },
+      {
+        "factor": "oi_change_rate_7d",
+        "ic_ir": -3.6285,
+        "ic_mean": -0.011371
+      },
+      {
+        "factor": "vol_regime_change",
+        "ic_ir": 1.1982,
+        "ic_mean": 0.003839
+      },
+      {
+        "factor": "contract_switch_flag",
+        "ic_ir": 0.0,
+        "ic_mean": 0.0
+      }
+    ]
+  },
+  "drawdown_timeline": {
+    "max_drawdown": -0.020183,
+    "min_drawdown_index": 93,
+    "timeline_sampled": [
+      {
+        "index": 0,
+        "drawdown": 0.0,
+        "equity": 1000000.0
+      },
+      {
+        "index": 21,
+        "drawdown": 0.0,
+        "equity": 1000000.0
+      },
+      {
+        "index": 42,
+        "drawdown": -0.003687,
+        "equity": 996312.93
+      },
+      {
+        "index": 63,
+        "drawdown": -0.010943,
+        "equity": 989056.9
+      },
+      {
+        "index": 84,
+        "drawdown": -0.012745,
+        "equity": 987255.26
+      },
+      {
+        "index": 105,
+        "drawdown": -0.018341,
+        "equity": 981658.57
+      },
+      {
+        "index": 126,
+        "drawdown": -0.017813,
+        "equity": 982186.92
+      },
+      {
+        "index": 147,
+        "drawdown": -0.014761,
+        "equity": 985239.01
+      },
+      {
+        "index": 168,
+        "drawdown": -0.013738,
+        "equity": 986261.63
+      },
+      {
+        "index": 189,
+        "drawdown": -0.016275,
+        "equity": 983724.54
+      },
+      {
+        "index": 210,
+        "drawdown": -0.010645,
+        "equity": 989355.11
+      },
+      {
+        "index": 231,
+        "drawdown": -0.005031,
+        "equity": 994968.71
+      },
+      {
+        "index": 252,
+        "drawdown": -0.000497,
+        "equity": 1018562.72
+      },
+      {
+        "index": 273,
+        "drawdown": 0.0,
+        "equity": 1032135.95
+      },
+      {
+        "index": 294,
+        "drawdown": -0.004141,
+        "equity": 1034256.59
+      },
+      {
+        "index": 315,
+        "drawdown": -0.002462,
+        "equity": 1036000.46
+      },
+      {
+        "index": 336,
+        "drawdown": -0.000541,
+        "equity": 1044190.05
+      },
+      {
+        "index": 357,
+        "drawdown": -0.000382,
+        "equity": 1049349.9
+      },
+      {
+        "index": 378,
+        "drawdown": -0.003236,
+        "equity": 1049098.95
+      },
+      {
+        "index": 399,
+        "drawdown": -0.004149,
+        "equity": 1054354.44
+      },
+      {
+        "index": 420,
+        "drawdown": -0.012182,
+        "equity": 1045848.72
+      }
+    ],
+    "total_periods": 433
+  },
+  "risk_checks": {
+    "lc_gfe_atr_pct": {
+      "valid_count": 426,
+      "mean": 0.039317,
+      "range": [
+        0.010007,
+        0.09642
+      ],
+      "status": "NORMAL"
+    },
+    "new_symbol_nulls": {
+      "rb_shf": {
+        "close": 0,
+        "settle": 0,
+        "oi": 0,
+        "vol": 0,
+        "high": 0,
+        "low": 0
+      },
+      "hc_shf": {
+        "close": 0,
+        "settle": 0,
+        "oi": 0,
+        "vol": 0,
+        "high": 0,
+        "low": 0
+      },
+      "all_zero": true
+    },
+    "future_function_analysis": {
+      "spread_cs": "SAME_DAY_ONLY (close-settle)",
+      "oi_level": "SAME_DAY_ONLY",
+      "oi_change_1d": "LAG_1 (oi.diff())",
+      "oi_change_rate_7d": "LAG_7 (oi.pct_change(7))",
+      "spread_pct": "SAME_DAY_ONLY (spread_cs/close)",
+      "contract_switch_flag": "SAME_DAY_ONLY (oi.pct_change())",
+      "momentum_20d": "LAG_20 (close.pct_change(20))",
+      "realized_vol_20d": "LAG_20 (rolling(20).std())",
+      "vol_regime_change": "LAG_25 (rolling(20).std().pct_change(5))",
+      "vol_target_weight": "LAG_20 (target_vol/realized_vol_20d)",
+      "atr_pct": "LAG_14 (rolling(14).mean())"
+    },
+    "future_function_safe": true,
+    "data_leakage_safe": true,
+    "vol_coverage": {
+      "AL.SHF": 432,
+      "CU.SHF": 432,
+      "HC.SHF": 432,
+      "LC.GFE": 432,
+      "NI.SHF": 432,
+      "PB.SHF": 432,
+      "RB.SHF": 432,
+      "SN.SHF": 432,
+      "ZN.SHF": 432
+    },
+    "all_pass": true
+  }
+}
