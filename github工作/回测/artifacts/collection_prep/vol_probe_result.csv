@@ -1,0 +1,7 @@
+﻿variant,field,params,func,desc,window,symbol,rows,status,first_date,last_date,first_val,last_val
+A_current,vol,"""Fill=Previous""",WSD,Current vol field name,2025-01-02~2025-01-10,CU.SHF,0,FAIL,,,,
+B_volume,volume,"""Fill=Previous""",WSD,volume field name variant,2025-01-02~2025-01-10,CU.SHF,7,OK,2025-01-02,2025-01-10,48466.0,54781.0
+C_turnover,turnover,"""Fill=Previous""",WSD,turnover field name variant,2025-01-02~2025-01-10,CU.SHF,0,FAIL,,,,
+D_multi,vol;turnover;close,"""Fill=Previous""",WSD,Multi-field query,2025-01-02~2025-01-10,CU.SHF,0,FAIL,,,,
+E_datefill,vol,"""Fill=Previous"",""DateFill=Previous""",WSD,DateFill parameter,2025-01-02~2025-01-10,CU.SHF,0,FAIL,,,,
+F_wdp,vol,"""Fill=Previous""",WDP,WDP panel data function,2025-01-02~2025-01-10,CU.SHF,0,FAIL,,,,
