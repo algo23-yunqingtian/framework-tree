@@ -128,16 +128,17 @@ assert_test("B2: .gitignore has *.bak exception", has_bak_ex)
 has_bak_dot_ex = "!github工作/回测/G7_ADJUDICATION_LEDGER/_p81_snapshots/*.bak.*" in gi_content
 assert_test("B3: .gitignore has *.bak.* exception", has_bak_dot_ex)
 
-# B4: Snapshot files visible in git (not ignored)
+# B4: Snapshot files tracked in git (not ignored)
 try:
     r = subprocess.run(
-        ["git", "status", "--short", "--", os.path.join(BASE, "G7_ADJUDICATION_LEDGER/_p81_snapshots")],
+        ["git", "ls-files", "--", os.path.join(BASE, "G7_ADJUDICATION_LEDGER/_p81_snapshots")],
         capture_output=True, text=True, cwd=r"D:\DSH_WORK", encoding="utf-8"
     )
-    has_untracked = "?? " in r.stdout
+    tracked_count = len(r.stdout.strip().splitlines())
+    b4_ok = tracked_count >= 15
 except Exception:
-    has_untracked = False
-assert_test("B4: Snapshot files visible in git status", has_untracked)
+    b4_ok = False
+assert_test("B4: Snapshot files tracked in git (>=15)", b4_ok)
 
 # B5: At least 15 snapshot files exist
 try:
@@ -282,8 +283,20 @@ def is_pid_alive(pid):
     except Exception:
         return False
 
-# F1: Watcher process alive
-assert_test("F1: P81 watcher PID 2700 alive", is_pid_alive(2700))
+# F1: Watcher process alive (any PID running dshd_p81_watch.ps1)
+import subprocess as _sp
+try:
+    _ps = _sp.run(
+        ["powershell", "-NoProfile", "-Command",
+         "(Get-CimInstance Win32_Process -Filter \"Name='powershell.exe'\" | "
+         "Where-Object { $_.CommandLine -match 'dshd_p81_watch' }).Count"],
+        capture_output=True, text=True, encoding="utf-8", timeout=10
+    )
+    watcher_count = int(_ps.stdout.strip())
+    f1_ok = watcher_count >= 1
+except Exception:
+    f1_ok = False
+assert_test("F1: P81 watcher process alive", f1_ok)
 
 # F2: Protected main process alive
 assert_test("F2: Protected main PID 3472 alive", is_pid_alive(3472))
