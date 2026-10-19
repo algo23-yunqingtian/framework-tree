@@ -88,14 +88,15 @@ DSHB P50 要求「deliverable discoverable by DSHB scanner」。以下给出磁�
 
 ## 六、本工单实际 commit hash
 
-> **HERMEShf 待 commit + push 后回填此处。绝不预生成 / 编造 commit id。**
+> **HERMEShf 已 commit + push 后回填。绝不预生成 / 编造 commit id。**
 
 ```
-P51_COMMIT_HASH = <待 push 后实测填入>
-P51_PUSH_ACK    = <待 push 后实测填入>
+P51_COMMIT_HASH = b0a0f765a46b13377618fa64c2a0aa8514f8ec59
+P51_PUSH_ACK    = 45690d5..b0a0f76  feature/v88-g1 -> feature/v88-g1  (rc=0,落后=0)
 ```
 
-push 后将通过 `patch` 工具回填本节，**禁止在 commit 之前写入任何 hash 值**。
+push ack 由 `git push origin feature/v88-g1` 原始输出捕获，非编造。
+**禁止在 commit 之前写入任何 hash 值** —— 本节为 push 后回填。
 
 ---
 
