@@ -1,0 +1,115 @@
+{
+  "output_id": "DSHA-TASK045-DYNAMIC-WEIGHTS",
+  "generated_at": "2026-10-20T00:14:20.587209+00:00",
+  "token": "DSHA-TASK045-REGIME-WEIGHT-TOKEN",
+  "task": "DSHA-TASK045-REGIME-WEIGHT",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "dynamic_weights": {
+    "sideways": {
+      "contract_switch_flag": 0.125,
+      "momentum_20d": 0.125,
+      "oi_change_1d": 0.125,
+      "oi_change_rate_7d": 0.125,
+      "oi_level": 0.125,
+      "realized_vol_20d": 0.125,
+      "spread_cs": 0.125,
+      "vol_regime_change": 0.125
+    },
+    "up": {
+      "contract_switch_flag": 0.1225,
+      "momentum_20d": 0.1625,
+      "oi_change_1d": 0.1275,
+      "oi_change_rate_7d": 0.0975,
+      "oi_level": 0.0925,
+      "realized_vol_20d": 0.0975,
+      "spread_cs": 0.1875,
+      "vol_regime_change": 0.1125
+    },
+    "down": {
+      "contract_switch_flag": 0.1325,
+      "momentum_20d": 0.1725,
+      "oi_change_1d": 0.1025,
+      "oi_change_rate_7d": 0.1125,
+      "oi_level": 0.1025,
+      "realized_vol_20d": 0.0925,
+      "spread_cs": 0.1525,
+      "vol_regime_change": 0.1325
+    }
+  },
+  "fixed_weights": {
+    "contract_switch_flag": 0.04,
+    "momentum_20d": 0.33,
+    "oi_change_1d": 0.08,
+    "oi_change_rate_7d": 0.07,
+    "oi_level": 0.05,
+    "realized_vol_20d": 0.05,
+    "spread_cs": 0.32,
+    "vol_regime_change": 0.06
+  },
+  "weight_rules_description": {
+    "design_principle": "基于TASK044分行情IC诊断, 各行情段提权IC绝对值最大的因子, 降权IC符号不稳定或接近零的因子",
+    "sideways": {
+      "strategy": "等权 (所有因子IC符号不稳定, 无法确定优势方向)",
+      "weights": {
+        "contract_switch_flag": 0.125,
+        "momentum_20d": 0.125,
+        "oi_change_1d": 0.125,
+        "oi_change_rate_7d": 0.125,
+        "oi_level": 0.125,
+        "realized_vol_20d": 0.125,
+        "spread_cs": 0.125,
+        "vol_regime_change": 0.125
+      },
+      "rationale": "震荡行情中因子IC符号频繁翻转, 等权分散风险最合理"
+    },
+    "up": {
+      "strategy": "提价spread_cs + momentum_20d, 降权realized_vol_20d/vol_regime_change",
+      "weights": {
+        "contract_switch_flag": 0.1225,
+        "momentum_20d": 0.1625,
+        "oi_change_1d": 0.1275,
+        "oi_change_rate_7d": 0.0975,
+        "oi_level": 0.0925,
+        "realized_vol_20d": 0.0975,
+        "spread_cs": 0.1875,
+        "vol_regime_change": 0.1125
+      },
+      "rationale": "上涨行情中spread_cs(IC=-0.14)和momentum_20d(IC=-0.13)具有最强预测力"
+    },
+    "down": {
+      "strategy": "降权高波动持仓因子(oi_change_1d/oi_level/realized_vol_20d), 提价momentum_20d",
+      "weights": {
+        "contract_switch_flag": 0.1325,
+        "momentum_20d": 0.1725,
+        "oi_change_1d": 0.1025,
+        "oi_change_rate_7d": 0.1125,
+        "oi_level": 0.1025,
+        "realized_vol_20d": 0.0925,
+        "spread_cs": 0.1525,
+        "vol_regime_change": 0.1325
+      },
+      "rationale": "下跌行情中momentum_20d(IC=-0.25)预测力最强, 持仓因子IC接近零或为负"
+    }
+  },
+  "weight_bounds": {
+    "min": 0.04,
+    "max": 0.25
+  },
+  "normalization": "sum_to_1_per_regime",
+  "factor_list": [
+    "contract_switch_flag",
+    "momentum_20d",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "oi_level",
+    "realized_vol_20d",
+    "spread_cs",
+    "vol_regime_change"
+  ]
+}

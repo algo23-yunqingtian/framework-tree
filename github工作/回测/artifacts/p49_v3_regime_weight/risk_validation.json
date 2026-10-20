@@ -1,0 +1,529 @@
+{
+  "output_id": "DSHA-TASK045-RISK-VALIDATION",
+  "generated_at": "2026-10-20T00:14:36.714191+00:00",
+  "token": "DSHA-TASK045-REGIME-WEIGHT-TOKEN",
+  "task": "DSHA-TASK045-REGIME-WEIGHT",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "correlation_analysis": {
+    "base_corr_matrix": {
+      "contract_switch_flag": {
+        "contract_switch_flag": 1.0,
+        "momentum_20d": 0.0,
+        "oi_change_1d": 0.0,
+        "oi_change_rate_7d": 0.0,
+        "oi_level": 0.0,
+        "realized_vol_20d": 0.0,
+        "spread_cs": 0.0,
+        "vol_regime_change": 0.0
+      },
+      "momentum_20d": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 1.0,
+        "oi_change_1d": 0.019038,
+        "oi_change_rate_7d": 0.008277,
+        "oi_level": 0.294343,
+        "realized_vol_20d": 0.264431,
+        "spread_cs": 0.112415,
+        "vol_regime_change": 0.126657
+      },
+      "oi_change_1d": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.019038,
+        "oi_change_1d": 1.0,
+        "oi_change_rate_7d": 0.241454,
+        "oi_level": 0.084802,
+        "realized_vol_20d": -0.02892,
+        "spread_cs": 0.134107,
+        "vol_regime_change": -0.088787
+      },
+      "oi_change_rate_7d": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.008277,
+        "oi_change_1d": 0.241454,
+        "oi_change_rate_7d": 1.0,
+        "oi_level": 0.124333,
+        "realized_vol_20d": -0.011488,
+        "spread_cs": 0.013811,
+        "vol_regime_change": -0.015936
+      },
+      "oi_level": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.294343,
+        "oi_change_1d": 0.084802,
+        "oi_change_rate_7d": 0.124333,
+        "oi_level": 1.0,
+        "realized_vol_20d": 0.604092,
+        "spread_cs": -0.011664,
+        "vol_regime_change": 0.056305
+      },
+      "realized_vol_20d": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.264431,
+        "oi_change_1d": -0.02892,
+        "oi_change_rate_7d": -0.011488,
+        "oi_level": 0.604092,
+        "realized_vol_20d": 1.0,
+        "spread_cs": -0.067852,
+        "vol_regime_change": 0.130237
+      },
+      "spread_cs": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.112415,
+        "oi_change_1d": 0.134107,
+        "oi_change_rate_7d": 0.013811,
+        "oi_level": -0.011664,
+        "realized_vol_20d": -0.067852,
+        "spread_cs": 1.0,
+        "vol_regime_change": -0.000115
+      },
+      "vol_regime_change": {
+        "contract_switch_flag": 0.0,
+        "momentum_20d": 0.126657,
+        "oi_change_1d": -0.088787,
+        "oi_change_rate_7d": -0.015936,
+        "oi_level": 0.056305,
+        "realized_vol_20d": 0.130237,
+        "spread_cs": -0.000115,
+        "vol_regime_change": 1.0
+      }
+    },
+    "high_corr_pairs": [
+      {
+        "f1": "oi_level",
+        "f2": "realized_vol_20d",
+        "corr": 0.604092
+      }
+    ],
+    "weighted_corr_by_scheme": {
+      "equal_weight": {
+        "contract_switch_flag": {
+          "contract_switch_flag": 0.015625,
+          "momentum_20d": 0.0,
+          "oi_change_1d": 0.0,
+          "oi_change_rate_7d": 0.0,
+          "oi_level": 0.0,
+          "realized_vol_20d": 0.0,
+          "spread_cs": 0.0,
+          "vol_regime_change": 0.0
+        },
+        "momentum_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.015625,
+          "oi_change_1d": 0.000297,
+          "oi_change_rate_7d": 0.000129,
+          "oi_level": 0.004599,
+          "realized_vol_20d": 0.004132,
+          "spread_cs": 0.001756,
+          "vol_regime_change": 0.001979
+        },
+        "oi_change_1d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000297,
+          "oi_change_1d": 0.015625,
+          "oi_change_rate_7d": 0.003773,
+          "oi_level": 0.001325,
+          "realized_vol_20d": -0.000452,
+          "spread_cs": 0.002095,
+          "vol_regime_change": -0.001387
+        },
+        "oi_change_rate_7d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000129,
+          "oi_change_1d": 0.003773,
+          "oi_change_rate_7d": 0.015625,
+          "oi_level": 0.001943,
+          "realized_vol_20d": -0.000179,
+          "spread_cs": 0.000216,
+          "vol_regime_change": -0.000249
+        },
+        "oi_level": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004599,
+          "oi_change_1d": 0.001325,
+          "oi_change_rate_7d": 0.001943,
+          "oi_level": 0.015625,
+          "realized_vol_20d": 0.009439,
+          "spread_cs": -0.000182,
+          "vol_regime_change": 0.00088
+        },
+        "realized_vol_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004132,
+          "oi_change_1d": -0.000452,
+          "oi_change_rate_7d": -0.000179,
+          "oi_level": 0.009439,
+          "realized_vol_20d": 0.015625,
+          "spread_cs": -0.00106,
+          "vol_regime_change": 0.002035
+        },
+        "spread_cs": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.001756,
+          "oi_change_1d": 0.002095,
+          "oi_change_rate_7d": 0.000216,
+          "oi_level": -0.000182,
+          "realized_vol_20d": -0.00106,
+          "spread_cs": 0.015625,
+          "vol_regime_change": -2e-06
+        },
+        "vol_regime_change": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.001979,
+          "oi_change_1d": -0.001387,
+          "oi_change_rate_7d": -0.000249,
+          "oi_level": 0.00088,
+          "realized_vol_20d": 0.002035,
+          "spread_cs": -2e-06,
+          "vol_regime_change": 0.015625
+        }
+      },
+      "fixed_weight": {
+        "contract_switch_flag": {
+          "contract_switch_flag": 0.0016,
+          "momentum_20d": 0.0,
+          "oi_change_1d": 0.0,
+          "oi_change_rate_7d": 0.0,
+          "oi_level": 0.0,
+          "realized_vol_20d": 0.0,
+          "spread_cs": 0.0,
+          "vol_regime_change": 0.0
+        },
+        "momentum_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.1089,
+          "oi_change_1d": 0.000503,
+          "oi_change_rate_7d": 0.000191,
+          "oi_level": 0.004857,
+          "realized_vol_20d": 0.004363,
+          "spread_cs": 0.011871,
+          "vol_regime_change": 0.002508
+        },
+        "oi_change_1d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000503,
+          "oi_change_1d": 0.0064,
+          "oi_change_rate_7d": 0.001352,
+          "oi_level": 0.000339,
+          "realized_vol_20d": -0.000116,
+          "spread_cs": 0.003433,
+          "vol_regime_change": -0.000426
+        },
+        "oi_change_rate_7d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000191,
+          "oi_change_1d": 0.001352,
+          "oi_change_rate_7d": 0.0049,
+          "oi_level": 0.000435,
+          "realized_vol_20d": -4e-05,
+          "spread_cs": 0.000309,
+          "vol_regime_change": -6.7e-05
+        },
+        "oi_level": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004857,
+          "oi_change_1d": 0.000339,
+          "oi_change_rate_7d": 0.000435,
+          "oi_level": 0.0025,
+          "realized_vol_20d": 0.00151,
+          "spread_cs": -0.000187,
+          "vol_regime_change": 0.000169
+        },
+        "realized_vol_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004363,
+          "oi_change_1d": -0.000116,
+          "oi_change_rate_7d": -4e-05,
+          "oi_level": 0.00151,
+          "realized_vol_20d": 0.0025,
+          "spread_cs": -0.001086,
+          "vol_regime_change": 0.000391
+        },
+        "spread_cs": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.011871,
+          "oi_change_1d": 0.003433,
+          "oi_change_rate_7d": 0.000309,
+          "oi_level": -0.000187,
+          "realized_vol_20d": -0.001086,
+          "spread_cs": 0.1024,
+          "vol_regime_change": -2e-06
+        },
+        "vol_regime_change": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.002508,
+          "oi_change_1d": -0.000426,
+          "oi_change_rate_7d": -6.7e-05,
+          "oi_level": 0.000169,
+          "realized_vol_20d": 0.000391,
+          "spread_cs": -2e-06,
+          "vol_regime_change": 0.0036
+        }
+      },
+      "dynamic_up": {
+        "contract_switch_flag": {
+          "contract_switch_flag": 0.015006,
+          "momentum_20d": 0.0,
+          "oi_change_1d": 0.0,
+          "oi_change_rate_7d": 0.0,
+          "oi_level": 0.0,
+          "realized_vol_20d": 0.0,
+          "spread_cs": 0.0,
+          "vol_regime_change": 0.0
+        },
+        "momentum_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.026406,
+          "oi_change_1d": 0.000394,
+          "oi_change_rate_7d": 0.000131,
+          "oi_level": 0.004424,
+          "realized_vol_20d": 0.00419,
+          "spread_cs": 0.003425,
+          "vol_regime_change": 0.002315
+        },
+        "oi_change_1d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000394,
+          "oi_change_1d": 0.016256,
+          "oi_change_rate_7d": 0.003002,
+          "oi_level": 0.001,
+          "realized_vol_20d": -0.00036,
+          "spread_cs": 0.003206,
+          "vol_regime_change": -0.001274
+        },
+        "oi_change_rate_7d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000131,
+          "oi_change_1d": 0.003002,
+          "oi_change_rate_7d": 0.009506,
+          "oi_level": 0.001121,
+          "realized_vol_20d": -0.000109,
+          "spread_cs": 0.000252,
+          "vol_regime_change": -0.000175
+        },
+        "oi_level": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004424,
+          "oi_change_1d": 0.001,
+          "oi_change_rate_7d": 0.001121,
+          "oi_level": 0.008556,
+          "realized_vol_20d": 0.005448,
+          "spread_cs": -0.000202,
+          "vol_regime_change": 0.000586
+        },
+        "realized_vol_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.00419,
+          "oi_change_1d": -0.00036,
+          "oi_change_rate_7d": -0.000109,
+          "oi_level": 0.005448,
+          "realized_vol_20d": 0.009506,
+          "spread_cs": -0.00124,
+          "vol_regime_change": 0.001429
+        },
+        "spread_cs": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.003425,
+          "oi_change_1d": 0.003206,
+          "oi_change_rate_7d": 0.000252,
+          "oi_level": -0.000202,
+          "realized_vol_20d": -0.00124,
+          "spread_cs": 0.035156,
+          "vol_regime_change": -2e-06
+        },
+        "vol_regime_change": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.002315,
+          "oi_change_1d": -0.001274,
+          "oi_change_rate_7d": -0.000175,
+          "oi_level": 0.000586,
+          "realized_vol_20d": 0.001429,
+          "spread_cs": -2e-06,
+          "vol_regime_change": 0.012656
+        }
+      },
+      "dynamic_down": {
+        "contract_switch_flag": {
+          "contract_switch_flag": 0.017556,
+          "momentum_20d": 0.0,
+          "oi_change_1d": 0.0,
+          "oi_change_rate_7d": 0.0,
+          "oi_level": 0.0,
+          "realized_vol_20d": 0.0,
+          "spread_cs": 0.0,
+          "vol_regime_change": 0.0
+        },
+        "momentum_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.029756,
+          "oi_change_1d": 0.000337,
+          "oi_change_rate_7d": 0.000161,
+          "oi_level": 0.005204,
+          "realized_vol_20d": 0.004219,
+          "spread_cs": 0.002957,
+          "vol_regime_change": 0.002895
+        },
+        "oi_change_1d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000337,
+          "oi_change_1d": 0.010506,
+          "oi_change_rate_7d": 0.002784,
+          "oi_level": 0.000891,
+          "realized_vol_20d": -0.000274,
+          "spread_cs": 0.002096,
+          "vol_regime_change": -0.001206
+        },
+        "oi_change_rate_7d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000161,
+          "oi_change_1d": 0.002784,
+          "oi_change_rate_7d": 0.012656,
+          "oi_level": 0.001434,
+          "realized_vol_20d": -0.00012,
+          "spread_cs": 0.000237,
+          "vol_regime_change": -0.000238
+        },
+        "oi_level": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.005204,
+          "oi_change_1d": 0.000891,
+          "oi_change_rate_7d": 0.001434,
+          "oi_level": 0.010506,
+          "realized_vol_20d": 0.005728,
+          "spread_cs": -0.000182,
+          "vol_regime_change": 0.000765
+        },
+        "realized_vol_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004219,
+          "oi_change_1d": -0.000274,
+          "oi_change_rate_7d": -0.00012,
+          "oi_level": 0.005728,
+          "realized_vol_20d": 0.008556,
+          "spread_cs": -0.000957,
+          "vol_regime_change": 0.001596
+        },
+        "spread_cs": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.002957,
+          "oi_change_1d": 0.002096,
+          "oi_change_rate_7d": 0.000237,
+          "oi_level": -0.000182,
+          "realized_vol_20d": -0.000957,
+          "spread_cs": 0.023256,
+          "vol_regime_change": -2e-06
+        },
+        "vol_regime_change": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.002895,
+          "oi_change_1d": -0.001206,
+          "oi_change_rate_7d": -0.000238,
+          "oi_level": 0.000765,
+          "realized_vol_20d": 0.001596,
+          "spread_cs": -2e-06,
+          "vol_regime_change": 0.017556
+        }
+      },
+      "dynamic_sideways": {
+        "contract_switch_flag": {
+          "contract_switch_flag": 0.015625,
+          "momentum_20d": 0.0,
+          "oi_change_1d": 0.0,
+          "oi_change_rate_7d": 0.0,
+          "oi_level": 0.0,
+          "realized_vol_20d": 0.0,
+          "spread_cs": 0.0,
+          "vol_regime_change": 0.0
+        },
+        "momentum_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.015625,
+          "oi_change_1d": 0.000297,
+          "oi_change_rate_7d": 0.000129,
+          "oi_level": 0.004599,
+          "realized_vol_20d": 0.004132,
+          "spread_cs": 0.001756,
+          "vol_regime_change": 0.001979
+        },
+        "oi_change_1d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000297,
+          "oi_change_1d": 0.015625,
+          "oi_change_rate_7d": 0.003773,
+          "oi_level": 0.001325,
+          "realized_vol_20d": -0.000452,
+          "spread_cs": 0.002095,
+          "vol_regime_change": -0.001387
+        },
+        "oi_change_rate_7d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.000129,
+          "oi_change_1d": 0.003773,
+          "oi_change_rate_7d": 0.015625,
+          "oi_level": 0.001943,
+          "realized_vol_20d": -0.000179,
+          "spread_cs": 0.000216,
+          "vol_regime_change": -0.000249
+        },
+        "oi_level": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004599,
+          "oi_change_1d": 0.001325,
+          "oi_change_rate_7d": 0.001943,
+          "oi_level": 0.015625,
+          "realized_vol_20d": 0.009439,
+          "spread_cs": -0.000182,
+          "vol_regime_change": 0.00088
+        },
+        "realized_vol_20d": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.004132,
+          "oi_change_1d": -0.000452,
+          "oi_change_rate_7d": -0.000179,
+          "oi_level": 0.009439,
+          "realized_vol_20d": 0.015625,
+          "spread_cs": -0.00106,
+          "vol_regime_change": 0.002035
+        },
+        "spread_cs": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.001756,
+          "oi_change_1d": 0.002095,
+          "oi_change_rate_7d": 0.000216,
+          "oi_level": -0.000182,
+          "realized_vol_20d": -0.00106,
+          "spread_cs": 0.015625,
+          "vol_regime_change": -2e-06
+        },
+        "vol_regime_change": {
+          "contract_switch_flag": 0.0,
+          "momentum_20d": 0.001979,
+          "oi_change_1d": -0.001387,
+          "oi_change_rate_7d": -0.000249,
+          "oi_level": 0.00088,
+          "realized_vol_20d": 0.002035,
+          "spread_cs": -2e-06,
+          "vol_regime_change": 0.015625
+        }
+      }
+    }
+  },
+  "crowding_analysis": {
+    "equal_weight_hhi": 0.125,
+    "fixed_weight_hhi": 0.2328,
+    "dynamic_hhi_by_regime": {
+      "up": 0.13305,
+      "down": 0.13035,
+      "sideways": 0.125
+    },
+    "dynamic_avg_hhi": 0.130444,
+    "crowding_ratio": 1.0436,
+    "crowding_acceptable": true
+  },
+  "redundancy_flags": []
+}

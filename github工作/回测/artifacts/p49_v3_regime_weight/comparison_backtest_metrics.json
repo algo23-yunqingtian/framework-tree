@@ -1,0 +1,223 @@
+{
+  "output_id": "DSHA-TASK045-COMPARISON-BACKTEST",
+  "generated_at": "2026-10-20T00:14:36.691190+00:00",
+  "token": "DSHA-TASK045-REGIME-WEIGHT-TOKEN",
+  "task": "DSHA-TASK045-REGIME-WEIGHT",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "groups": {
+    "group_a_equal_weight": {
+      "factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change"
+      ],
+      "num_factors": 8,
+      "weight_method": "equal_weight",
+      "metrics": {
+        "total_return": 0.186733,
+        "annualized_return": 0.105282,
+        "annual_volatility": 0.036168,
+        "daily_volatility": 0.002278,
+        "max_drawdown": -0.017102,
+        "sharpe_ratio": 2.910945,
+        "calmar_ratio": 6.155973,
+        "win_rate": 0.422274,
+        "avg_win": 0.002157,
+        "avg_loss": 0.001335,
+        "profit_loss_ratio": 1.61592,
+        "trade_count": 251,
+        "total_trades": 251,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1186732.8,
+        "total_transaction_cost": 0.008798,
+        "cost_ratio": 0.047118
+      },
+      "composite_flip_rate": 0.5,
+      "composite_ic_mean": -0.025126
+    },
+    "group_b_fixed_weight": {
+      "factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change"
+      ],
+      "num_factors": 8,
+      "weight_method": "ic_magnitude_weighted",
+      "weights": {
+        "contract_switch_flag": 0.04,
+        "momentum_20d": 0.33,
+        "oi_change_1d": 0.08,
+        "oi_change_rate_7d": 0.07,
+        "oi_level": 0.05,
+        "realized_vol_20d": 0.05,
+        "spread_cs": 0.32,
+        "vol_regime_change": 0.06
+      },
+      "metrics": {
+        "total_return": 0.298687,
+        "annualized_return": 0.165104,
+        "annual_volatility": 0.042942,
+        "daily_volatility": 0.002705,
+        "max_drawdown": -0.014895,
+        "sharpe_ratio": 3.844803,
+        "calmar_ratio": 11.084509,
+        "win_rate": 0.477958,
+        "avg_win": 0.002466,
+        "avg_loss": 0.001644,
+        "profit_loss_ratio": 1.49982,
+        "trade_count": 254,
+        "total_trades": 254,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1298687.22,
+        "total_transaction_cost": 0.007548,
+        "cost_ratio": 0.02527
+      },
+      "composite_flip_rate": 0.55,
+      "composite_ic_mean": -0.05956
+    },
+    "group_c_dynamic_regime": {
+      "factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change"
+      ],
+      "num_factors": 8,
+      "weight_method": "dynamic_regime_weighted",
+      "dynamic_weights": {
+        "sideways": {
+          "contract_switch_flag": 0.125,
+          "momentum_20d": 0.125,
+          "oi_change_1d": 0.125,
+          "oi_change_rate_7d": 0.125,
+          "oi_level": 0.125,
+          "realized_vol_20d": 0.125,
+          "spread_cs": 0.125,
+          "vol_regime_change": 0.125
+        },
+        "up": {
+          "contract_switch_flag": 0.1225,
+          "momentum_20d": 0.1625,
+          "oi_change_1d": 0.1275,
+          "oi_change_rate_7d": 0.0975,
+          "oi_level": 0.0925,
+          "realized_vol_20d": 0.0975,
+          "spread_cs": 0.1875,
+          "vol_regime_change": 0.1125
+        },
+        "down": {
+          "contract_switch_flag": 0.1325,
+          "momentum_20d": 0.1725,
+          "oi_change_1d": 0.1025,
+          "oi_change_rate_7d": 0.1125,
+          "oi_level": 0.1025,
+          "realized_vol_20d": 0.0925,
+          "spread_cs": 0.1525,
+          "vol_regime_change": 0.1325
+        }
+      },
+      "metrics": {
+        "total_return": 0.257692,
+        "annualized_return": 0.143457,
+        "annual_volatility": 0.037769,
+        "daily_volatility": 0.002379,
+        "max_drawdown": -0.011479,
+        "sharpe_ratio": 3.798262,
+        "calmar_ratio": 12.496953,
+        "win_rate": 0.436195,
+        "avg_win": 0.00231,
+        "avg_loss": 0.00134,
+        "profit_loss_ratio": 1.723479,
+        "trade_count": 245,
+        "total_trades": 245,
+        "n_periods": 431,
+        "initial_capital": 1000000.0,
+        "final_capital": 1257691.68,
+        "total_transaction_cost": 0.008242,
+        "cost_ratio": 0.031984
+      },
+      "composite_flip_rate": 0.5,
+      "composite_ic_mean": -0.034139
+    },
+    "comparison_summary": {
+      "fixed_vs_equal": {
+        "return_delta": 0.111954,
+        "sharpe_delta": 0.933858,
+        "max_dd_delta": 0.002207,
+        "flip_rate_reduction": -0.05,
+        "weighted_flip_rate_reduction": -0.0522
+      },
+      "dynamic_vs_equal": {
+        "return_delta": 0.070959,
+        "sharpe_delta": 0.887317,
+        "max_dd_delta": 0.005623,
+        "flip_rate_reduction": 0.0,
+        "flip_rate_reduction_pct": 0.0,
+        "weighted_flip_rate_reduction": -0.0,
+        "weighted_flip_rate_reduction_pct": -0.0
+      },
+      "dynamic_vs_fixed": {
+        "return_delta": -0.040995,
+        "sharpe_delta": -0.046541,
+        "max_dd_delta": 0.003416,
+        "flip_rate_reduction": 0.05
+      }
+    }
+  },
+  "comparison_summary": {
+    "fixed_vs_equal": {
+      "return_delta": 0.111954,
+      "sharpe_delta": 0.933858,
+      "max_dd_delta": 0.002207,
+      "flip_rate_reduction": -0.05,
+      "weighted_flip_rate_reduction": -0.0522
+    },
+    "dynamic_vs_equal": {
+      "return_delta": 0.070959,
+      "sharpe_delta": 0.887317,
+      "max_dd_delta": 0.005623,
+      "flip_rate_reduction": 0.0,
+      "flip_rate_reduction_pct": 0.0,
+      "weighted_flip_rate_reduction": -0.0,
+      "weighted_flip_rate_reduction_pct": -0.0
+    },
+    "dynamic_vs_fixed": {
+      "return_delta": -0.040995,
+      "sharpe_delta": -0.046541,
+      "max_dd_delta": 0.003416,
+      "flip_rate_reduction": 0.05
+    }
+  },
+  "set_e_params": {
+    "signal_threshold": 0.3,
+    "rebalance_interval": 5,
+    "target_vol": 0.15,
+    "max_single_weight": 0.5,
+    "drawdown_warn": -0.1,
+    "drawdown_halt": -0.2,
+    "transaction_cost": 0.0005,
+    "initial_capital": 1000000.0
+  }
+}
