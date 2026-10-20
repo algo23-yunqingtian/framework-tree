@@ -1,7 +1,7 @@
 # DSHD-P68 Enhanced Wind Observation Dashboard
 
-**Generated**: 2026-10-18T21:31:27+08:00
-**Poll Number**: #2380
+**Generated**: 2026-10-20T11:40:25+08:00
+**Poll Number**: #4340
 **Session**: DSHD-P71 (inherited P68/P69/P70 monitor)
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
@@ -11,7 +11,7 @@
 
 ## Health Assessment
 
-[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=TRIPPED | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,health_check_wdf.ps1,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: WIND_API_CALLS_GT0, SKILL_HASH_MISMATCH.
+[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=1 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=TRIPPED | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,health_check_wdf.ps1,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: WIND_API_CALLS_GT0, SKILL_HASH_MISMATCH.
 
 ---
 
@@ -50,7 +50,7 @@
 |-----------|----------|--------|--------|
 | gate | CLOSED/HOLD | CLOSED/HOLD | PASS |
 | release_permit | NOT_ISSUED | NOT_ISSUED | PASS |
-| wind_api_calls | 0 | 2212495360 | FAIL |
+| wind_api_calls | 0 | 2212495422 | FAIL |
 | credential_alert | NONE | NONE | PASS |
 | circuit_breaker | READY | TRIPPED | FAIL |
 | hold_block_check | PASS | FAIL | FAIL |
@@ -75,13 +75,13 @@
 | WDF Addin LoadBehavior (HKCU) | 3 |
 | WDF Addin LoadBehavior (HKLM) | 3 |
 | WDF XL Task Panel LB | 2 |
-| Wind TCP Ports (62000-64000) | 0 |
+| Wind TCP Ports (62000-64000) | 1 |
 | .wind/users File Count | 0 |
 | Credential Alert | NONE |
-| Wind API Calls | 2212495360 |
+| Wind API Calls | 2212495422 |
 | Skill SHA Check | MISMATCH: skill_readme.md, bootstrap_wdf.ps1, skill_manifest.json, health_check_wdf.ps1, reset_wdf_safe.ps1 |
-| Monitor Log Lines | 1436 |
-| Tracking Ledger Lines | 1275 |
+| Monitor Log Lines | 4099 |
+| Tracking Ledger Lines | 10631 |
 
 ---
 

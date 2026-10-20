@@ -2,43 +2,37 @@
     "snapshot_id":  "DSHD-P81-A01-AUDIT-SNAPSHOT",
     "exchange_field_check":  "ON",
     "bom_status":  {
-                       "size_bytes":  139680,
-                       "has_bom":  true
+                       "size_bytes":  141340,
+                       "has_bom":  false
                    },
     "a01_warnings":  [
                          {
                              "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                             "ts":  "2026-10-19T14:29:14+08:00",
+                             "ts":  "2026-10-20T11:45:40+08:00",
                              "code":  "A01_HASH_MISMATCH_WARNING",
                              "severity":  "YELLOW"
                          },
                          {
                              "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                             "ts":  "2026-10-19T14:29:14+08:00",
+                             "ts":  "2026-10-20T11:45:40+08:00",
                              "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
                              "severity":  "INFO"
                          },
                          {
                              "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                             "ts":  "2026-10-19T14:29:14+08:00",
+                             "ts":  "2026-10-20T11:45:40+08:00",
                              "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
                              "severity":  "YELLOW"
                          },
                          {
-                             "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=2; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                             "ts":  "2026-10-19T14:29:14+08:00",
+                             "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=255; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                             "ts":  "2026-10-20T11:45:40+08:00",
                              "code":  "P49-001-ARTIFACT-UNEXPECTED",
                              "severity":  "YELLOW"
                          },
                          {
-                             "detail":  "skill dir hash change since last poll: tests\\COLLECTION_RISK_LIST.md; read-only audit, no intervention",
-                             "ts":  "2026-10-19T14:29:14+08:00",
-                             "code":  "SKILL-001-FILE-MODIFIED",
-                             "severity":  "YELLOW"
-                         },
-                         {
-                             "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                             "ts":  "2026-10-19T14:29:14+08:00",
+                             "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                             "ts":  "2026-10-20T11:45:40+08:00",
                              "code":  "SKILL-001-FILE-UNDECLARED",
                              "severity":  "YELLOW"
                          }
@@ -68,7 +62,7 @@
                   },
     "token":  "DSHD-P81-TOKEN",
     "p49_artifact_audit_on":  true,
-    "p0_checks_passed":  9,
+    "p0_checks_passed":  6,
     "row_count_convention":  "DATA_ONLY_V2",
     "skill_dir_hash_monitor_on":  true,
     "excel_spawn_observer":  {
@@ -84,7 +78,7 @@
                                  "fast_max_non_protected_in_task_window":  0,
                                  "fast_samples":  [
                                                       {
-                                                          "ts":  "2026-10-19T14:24:33+08:00",
+                                                          "ts":  "2026-10-20T11:40:59+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -94,7 +88,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:24:53+08:00",
+                                                          "ts":  "2026-10-20T11:41:19+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -104,7 +98,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:25:13+08:00",
+                                                          "ts":  "2026-10-20T11:41:40+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -114,7 +108,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:25:33+08:00",
+                                                          "ts":  "2026-10-20T11:42:00+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -124,7 +118,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:25:53+08:00",
+                                                          "ts":  "2026-10-20T11:42:20+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -134,7 +128,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:26:13+08:00",
+                                                          "ts":  "2026-10-20T11:42:40+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -144,7 +138,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:26:34+08:00",
+                                                          "ts":  "2026-10-20T11:43:00+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -154,7 +148,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:26:54+08:00",
+                                                          "ts":  "2026-10-20T11:43:20+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -164,7 +158,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:27:14+08:00",
+                                                          "ts":  "2026-10-20T11:43:40+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -174,7 +168,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:27:34+08:00",
+                                                          "ts":  "2026-10-20T11:44:00+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -184,7 +178,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:27:54+08:00",
+                                                          "ts":  "2026-10-20T11:44:20+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -194,7 +188,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:28:14+08:00",
+                                                          "ts":  "2026-10-20T11:44:40+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -204,7 +198,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:28:34+08:00",
+                                                          "ts":  "2026-10-20T11:45:00+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -214,7 +208,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:28:54+08:00",
+                                                          "ts":  "2026-10-20T11:45:20+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -224,7 +218,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-19T14:29:14+08:00",
+                                                          "ts":  "2026-10-20T11:45:40+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -257,35 +251,35 @@
                                               "result":  true
                                           },
                       "gate_closed":  {
-                                          "detail":  "CLOSED/HOLD (line 4587)",
+                                          "detail":  "CLOSED/HOLD (line 10654)",
                                           "result":  true
                                       },
                       "pwsh_13_p77":  {
-                                          "detail":  "pids=1",
-                                          "result":  true
+                                          "detail":  "pids=0",
+                                          "result":  false
                                       },
                       "script_bom_intact":  {
-                                                "detail":  "bom=True size=139680",
-                                                "result":  true
+                                                "detail":  "bom=False size=141340",
+                                                "result":  false
                                             },
                       "self_p81":  {
                                        "detail":  "pids=1",
                                        "result":  true
                                    },
                       "pwsh_30_p80":  {
-                                          "detail":  "pids=1",
-                                          "result":  true
+                                          "detail":  "pids=0",
+                                          "result":  false
                                       },
                       "pid_3472":  {
                                        "detail":  "ALIVE",
                                        "result":  true
                                    },
                       "permit_not_issued":  {
-                                                "detail":  "NOT_ISSUED (line 4587)",
+                                                "detail":  "NOT_ISSUED (line 10654)",
                                                 "result":  true
                                             },
                       "pwsh_37_phase2":  {
-                                             "detail":  "pids=2",
+                                             "detail":  "pids=1",
                                              "result":  true
                                          }
                   },
@@ -365,6 +359,7 @@
                                                    "tests\\shfe_rb_hc_sample.csv":  "84B18164D0A8330FCBE203FF6514A8FA7C5B1A00F498F1BE577EA9E27565192F",
                                                    "generate_aligned_csv.py":  "6F746B1935409ACB789702E80734E69D6ED33520A5D9E3FC0CCD3A0641B9EAD0",
                                                    "tests\\COLLECTION_RISK_LIST.md":  "CFA3DADBBBC6F43BA09517C6A76FD9845C53E5520FD7B14F170D919678869142",
+                                                   "tests\\data_quality_checklist.md":  "1AFC655B87AAE4DF62C44BD3A242D07D3968BF261F8D6158EBDCFB115BEDB9CA",
                                                    "factor_extract_v1.py":  "75000F3E7ACA715DDF50B4CEA9986A426DB6C1EAA50F18877A57DA32A5A1065C",
                                                    "tests\\shfe_rb_hc_template.json":  "570EE0AD9AD9F1FA752037F56B166F3BC1806C301999223679B7F43795832BDA",
                                                    "data_sha256.txt":  "419AC48A3E0DC1AD56CD5324FCADCD271B97E94FB01A6350B70077ABC42B9563"
@@ -489,10 +484,19 @@
                                               "sha256":  "CFA3DADBBBC6F43BA09517C6A76FD9845C53E5520FD7B14F170D919678869142",
                                               "name":  "COLLECTION_RISK_LIST.md",
                                               "declared":  false,
-                                              "change":  "MODIFIED",
+                                              "change":  "UNCHANGED",
                                               "size_bytes":  20161,
                                               "last_write":  "2026-10-19T14:25:58+08:00",
                                               "relative_path":  "tests\\COLLECTION_RISK_LIST.md"
+                                          },
+                                          {
+                                              "sha256":  "1AFC655B87AAE4DF62C44BD3A242D07D3968BF261F8D6158EBDCFB115BEDB9CA",
+                                              "name":  "data_quality_checklist.md",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  6685,
+                                              "last_write":  "2026-10-19T14:50:18+08:00",
+                                              "relative_path":  "tests\\data_quality_checklist.md"
                                           },
                                           {
                                               "sha256":  "4519024BC31EED30B9B9BB022C1FD4EC2CB8595D563E9C9057DBAEAD940A47E3",
@@ -544,7 +548,7 @@
                             "wrote_anything":  false,
                             "locked_by":  "DSHC-SKILL-FACTOR01",
                             "modified_files":  [
-                                                   "tests\\COLLECTION_RISK_LIST.md"
+
                                                ],
                             "declared_count":  4,
                             "manifest_last_write":  "2026-10-19T12:16:58+08:00",
@@ -556,9 +560,9 @@
                                                           ],
                             "intervention":  "NONE",
                             "manifest_path":  "artifacts/skill_lib/factor_v1/manifest.json",
-                            "file_count":  17,
+                            "file_count":  18,
                             "locked_at":  "2026-10-19T00:00:00Z",
-                            "total_bytes":  711922,
+                            "total_bytes":  718607,
                             "auto_intervene":  false,
                             "iteration_policy":  "V1 is frozen. New iterations must create V2 in artifacts/skill_lib/factor_v2/. Direct overwrite of V1 files is prohibited.",
                             "skill_id":  "FACTOR_EXTRACT_V1",
@@ -578,7 +582,7 @@
                             "constraint_f01_script_locked":  true,
                             "constraint_offline_only":  true,
                             "data_integrity_unique_dates":  427,
-                            "audit_status":  "SKILL_DIR_CHANGED",
+                            "audit_status":  "SKILL_UNDECLARED_FILE",
                             "constraint_wind_api_calls":  0,
                             "undeclared_files":  [
                                                      "data_sha256.txt",
@@ -589,6 +593,7 @@
                                                      "output\\smoke_test\\factors_output.csv",
                                                      "tests\\abnormal_test_results.json",
                                                      "tests\\COLLECTION_RISK_LIST.md",
+                                                     "tests\\data_quality_checklist.md",
                                                      "tests\\run_abnormal_tests.py",
                                                      "tests\\shfe_rb_hc_sample.csv",
                                                      "tests\\shfe_rb_hc_template.json",
@@ -601,10 +606,10 @@
                             "previous_version":  "1.0.0",
                             "skill_baseline":  "feature/v88-g1 HEAD=19e80cb"
                         },
-    "warning_count":  6,
+    "warning_count":  5,
     "dshc_task_window":  {
-                             "event_hits":  1164,
-                             "end":  "2026-10-19T14:24:08",
+                             "event_hits":  5820,
+                             "end":  "2026-10-20T11:45:24",
                              "start":  "2026-10-16T09:03:19"
                          },
     "watch_started_at":  "2026-10-19T14:24:08+08:00",
@@ -616,28 +621,28 @@
                            "start_time":  "2026-10-18T15:50:01",
                            "protected":  true,
                            "in_task_window":  true,
-                           "age_minutes":  1359.2,
+                           "age_minutes":  2635.7,
                            "main_module":  "C:\\Program Files\\Microsoft Office\\Office16\\EXCEL.EXE"
                        },
     "phase":  "P81",
     "peer_watchers":  {
                           "pwsh-30":  {
                                           "pids":  [
-                                                       30252
+
                                                    ],
                                           "min_age_sec":  120,
                                           "label":  "DSHD-P80-a01",
-                                          "alive":  true,
-                                          "pid_count":  1
+                                          "alive":  false,
+                                          "pid_count":  0
                                       },
                           "pwsh-13":  {
                                           "pids":  [
-                                                       30492
+
                                                    ],
                                           "min_age_sec":  120,
                                           "label":  "DSHD-P77-skillpack",
-                                          "alive":  true,
-                                          "pid_count":  1
+                                          "alive":  false,
+                                          "pid_count":  0
                                       },
                           "self":  {
                                        "pids":  [
@@ -650,13 +655,12 @@
                                    },
                           "pwsh-37":  {
                                           "pids":  [
-                                                       29708,
                                                        29652
                                                    ],
                                           "min_age_sec":  120,
                                           "label":  "DSHD-P80-PHASE2",
                                           "alive":  true,
-                                          "pid_count":  2
+                                          "pid_count":  1
                                       }
                       },
     "tweak_token":  "DSHD-P81-TWEAK-TOKEN",
@@ -837,9 +841,9 @@
                                                        ]
                          },
     "p0_checks_total":  9,
-    "timestamp":  "2026-10-19T14:29:14+08:00",
+    "timestamp":  "2026-10-20T11:45:40+08:00",
     "a01_status":  "MONITOR_ENHANCED",
-    "p0_all_pass":  true,
+    "p0_all_pass":  false,
     "territory_contract":  {
                                "interception_enabled":  false,
                                "status":  "ACTIVE",
@@ -862,7 +866,7 @@
                       "warning_raised":  true
                   },
     "intervention":  "NONE",
-    "poll_count":  2,
+    "poll_count":  255,
     "skill_dir_read_only":  true,
     "backtest_started":  false,
     "audit_context_loaded":  true,
@@ -921,17 +925,17 @@
                                },
     "token_state":  "ACTIVE_AUDIT_READ_ONLY",
     "gate_state":  {
-                       "permit_line_no":  4587,
+                       "permit_line_no":  10654,
                        "p68_commit":  "8ebe3b7",
                        "gate":  "CLOSED/HOLD",
                        "wind_api_calls":  0,
-                       "total_lines":  4588,
+                       "total_lines":  10656,
                        "release_permit":  "NOT_ISSUED",
                        "p68_lock":  "FINAL_STANDBY_LOCKED",
                        "p68_line_no":  1031,
-                       "wind_api_garbage_hits_tail500":  115,
+                       "wind_api_garbage_hits_tail500":  124,
                        "wind_api_calls_found":  true,
-                       "gate_line_no":  4587
+                       "gate_line_no":  10654
                    },
     "p49_artifact_audit":  {
                                "manifest_sealed":  true,

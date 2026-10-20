@@ -1,0 +1,141 @@
+﻿{
+    "ticket":  "DSHC-P90A-FIX-POSTFIX-SHELL_VIEW_REFRESH_AND_WDF_FINAL_OFFLINE_TEST",
+    "started_at":  "2026-10-18T17:13:25.0646600+08:00",
+    "finished_at":  "2026-10-18T17:13:28.5930272+08:00",
+    "wind_api_calls":  0,
+    "real_wind_call":  false,
+    "marker_created":  false,
+    "user_instance_preserved":  true,
+    "no_broad_excel_kill":  true,
+    "checks":  [
+                   {
+                       "name":  "PATH_EXISTS_SKILL-WIND-EXCEL-WDF-BOOTSTRAP",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "PATH_EXISTS_dshc_p90a_offline_wdf_bootstrap_test.ps1",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "PATH_EXISTS_bootstrap_wdf.ps1",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "PATH_EXISTS_reset_wdf_safe.ps1",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "PATH_EXISTS_health_check_wdf.ps1",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "PATH_EXISTS_skill_manifest.json",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "PATH_EXISTS_skill_readme.md",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "MARKER_ABSENT",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "BOOTSTRAP_DRYRUN_OK",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "BOOTSTRAP_WIND_CALLS_ZERO",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "BOOTSTRAP_REAL_WIND_FALSE",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "BOOTSTRAP_MARKER_ZERO",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "HEALTH_OK",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "HEALTH_NO_MISSING",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "RESET_OK",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "RESET_NO_MARKER",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "RESET_WIND_CALLS_ZERO",
+                       "value":  true,
+                       "expected":  true,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "SKILL_FILE_COUNT",
+                       "value":  5,
+                       "expected":  5,
+                       "pass":  true
+                   }
+               ],
+    "warnings":  [
+
+                 ],
+    "defects":  [
+
+                ],
+    "events":  [
+                   {
+                       "captured_at":  "2026-10-18T17:13:25.0726606+08:00",
+                       "type":  "START",
+                       "message":  "P90A offline WDF bootstrap test started"
+                   }
+               ],
+    "artifacts":  {
+                      "final_test_result_json":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshc_p90a_final_test_result.json",
+                      "final_test_report_md":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshc_p90a_final_test_report.md",
+                      "final_events_jsonl":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshc_p90a_final_events.jsonl",
+                      "cross_agent_artifact_index":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\cross_agent_artifact_index.json"
+                  },
+    "summary":  "PASS",
+    "status":  "PASS"
+}

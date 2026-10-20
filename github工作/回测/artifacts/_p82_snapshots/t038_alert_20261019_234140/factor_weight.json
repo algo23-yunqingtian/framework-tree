@@ -1,0 +1,99 @@
+{
+  "config_id": "DSHA-P49-V3-FACTOR-WEIGHT-FIX-CONFIG",
+  "generated_at": "2026-10-19T08:35:13.748882+00:00",
+  "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN",
+  "baseline_commit": "edf4cc0",
+  "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM",
+  "status": "FROZEN",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "weighting_method": "positive_IC_mean_weighted_with_shrinkage",
+  "description": "正向IC加权+收缩正则化: 仅IC>0因子, |IC|归一化, λ=0.5, 权重和=1",
+  "normalization": "abs_ic_sum_to_1_positive_only",
+  "shrinkage_parameter": 0.5,
+  "positive_ic_factors": [
+    "vol_regime_change",
+    "oi_change_rate_7d",
+    "realized_vol_20d",
+    "oi_level"
+  ],
+  "positive_ic_count": 4,
+  "ic_values": {
+    "vol_regime_change": 0.026994,
+    "oi_change_rate_7d": 0.008839,
+    "realized_vol_20d": 0.005817,
+    "oi_level": 0.000973
+  },
+  "ic_ir_values": {
+    "vol_regime_change": 9.922075,
+    "oi_change_rate_7d": 4.885137,
+    "realized_vol_20d": 3.882697,
+    "oi_level": 0.687767
+  },
+  "total_abs_ic": 0.042623,
+  "abs_weights_sum_to_1": {
+    "vol_regime_change": 0.44166,
+    "oi_change_rate_7d": 0.228688,
+    "realized_vol_20d": 0.193238,
+    "oi_level": 0.136414
+  },
+  "raw_ic_values": {
+    "vol_regime_change": 0.026994,
+    "oi_change_rate_7d": 0.008839,
+    "realized_vol_20d": 0.005817,
+    "oi_level": 0.000973
+  },
+  "effective_weights": {
+    "vol_regime_change": 0.44166,
+    "oi_change_rate_7d": 0.228688,
+    "realized_vol_20d": 0.193238,
+    "oi_level": 0.136414
+  },
+  "weight_factors_sorted": [
+    [
+      "vol_regime_change",
+      0.44166
+    ],
+    [
+      "oi_change_rate_7d",
+      0.228688
+    ],
+    [
+      "realized_vol_20d",
+      0.193238
+    ],
+    [
+      "oi_level",
+      0.136414
+    ]
+  ],
+  "excluded_factors": {
+    "negative_ic": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "spread_cs"
+    ],
+    "temporarily_disabled": [
+      "spread_cs"
+    ]
+  },
+  "symbol_pool": "4_symbol_whitelist",
+  "symbols": [
+    "LC.GFE",
+    "NI.SHF",
+    "CU.SHF",
+    "ZN.SHF"
+  ],
+  "symbol_count": 4,
+  "deprecated_status": "DEPRECATED",
+  "deprecated_at": "2026-10-19T12:03:47.009689+00:00",
+  "deprecated_by_token": "DSHA-P50-V3-FREEZE-TOKEN",
+  "deprecated_reason": "DSHA-P50-V3-FACTOR-PROD-FREEZE: IC加权方案绩效不达标, 被等权方案替代",
+  "replacement": "factor_weight_prod.json (等权8因子)"
+}

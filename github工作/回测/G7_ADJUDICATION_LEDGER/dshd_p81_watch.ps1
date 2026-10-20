@@ -1,4 +1,4 @@
-﻿#requires -Version 5.1
+#requires -Version 5.1
 # ============================================================
 # DSHD-P81-WATCH (EXT)
 #   territory contract solidification + OBS-SPAWN-EXCEL-001
@@ -14,6 +14,18 @@
 #              observe + record ONLY.
 # ============================================================
 $ErrorActionPreference = 'Stop'
+
+# ============================================================
+# TASK-040: File Lock Module Import (exclusive lock + retry + timeout)
+# Prevents file lock contention between P80/P81 when writing
+# shared files (cluster brief, tracking log, state JSONs).
+# ============================================================
+$FileLockModulePath = "$g7Dir\dshd_p81_watch.ps1"
+$FileLockModulePath = "D:\DSH_WORK\github工作\回测\G7_ADJUDICATION_LEDGER\p81_file_lock.ps1"
+if (Test-Path $FileLockModulePath) {
+  try { . $FileLockModulePath; Write-Host "[TASK-040] File lock module loaded" } catch { Write-Host "[TASK-040] File lock module load failed: $_" }
+}
+# ============================================================
 
 # ---------------- CONSTANTS ----------------
 $scriptVersion             = '1.2.0-TWEAK'
@@ -132,6 +144,7 @@ $zh = @{
   head_skill   = '八、FACTOR_EXTRACT_V1 Skill 目录哈希监控'
   head_p0      = '九、P0 校验'
   head_red     = '十、红线确认'
+  head_verm    = '十一、P81 工具链版本管理'
   st_duty      = '审计值守'
   st_post      = '复盘已归档'
   st_preheat   = '预热待命'
@@ -169,6 +182,15 @@ function Get-JsonProp {
 
 function Write-Utf8File {
   param([string]$Path, [string]$Text)
+  # TASK-040: Use exclusive file lock if module available
+  if (Get-Command -Name Write-FileWithLock -ErrorAction SilentlyContinue) {
+    $ok = Write-FileWithLock -Path $Path -Text $Text -TimeoutSec 30
+    if (-not $ok) {
+      Write-Host "[TASK-040] Write-FileWithLock failed for $Path, falling back to WriteAllText"
+    }
+    return
+  }
+  # Fallback: original behavior
   $enc = New-Object System.Text.UTF8Encoding($true)
   [System.IO.File]::WriteAllText($Path, $Text, $enc)
 }
@@ -1843,6 +1865,21 @@ function Write-ClusterBrief {
   $r = ('- wind_api_calls = ' + $RedLines.wind_api_calls)
   Add-BriefLine $L $r
   Add-BriefLine $L ''
+  Add-BriefLine $L $zh['head_verm']
+  Add-BriefLine $L ''
+  Add-BriefLine $L ('> 本章节由 v1.2.1+ 持久化生成，不再被 5 分钟轮询覆盖。')
+  Add-BriefLine $L ('> 完整信息见 `G7_ADJUDICATION_LEDGER/dshd_p81_toolchain_versions.md`。')
+  Add-BriefLine $L ('> SHA 真源：`G7_ADJUDICATION_LEDGER/p81_version_history.json`。')
+  Add-BriefLine $L ''
+  Add-BriefLine $L '| 项 | 值 |'
+  Add-BriefLine $L '|---|---|'
+  Add-BriefLine $L ('| 工具链版本 | ' + $scriptVersion + ' |')
+  Add-BriefLine $L ('| 备份钩子 | p81_safe_edit.py v1.0.0 |')
+  Add-BriefLine $L ('| 快照目录 | `_p81_snapshots/` (git tracked) |')
+  Add-BriefLine $L ('| 版本台账 | `p81_version_history.json` |')
+  Add-BriefLine $L ('| 补丁规范 | 旧补丁已归档；增量修改必须新建 patch_p81_tweak2.py |')
+  Add-BriefLine $L ('| 永久文档 | `dshd_p81_toolchain_versions.md` |')
+  Add-BriefLine $L ''
 
   return ([string]::Join("`n", ([string[]]$L.ToArray())))
 }
@@ -2328,6 +2365,12 @@ while ($true) {
 
     # ---------- observation brief (every poll) ----------
     $brief = Write-ClusterBrief $pollTs $agents $excelRule $territoryState $dualHash $quickScan $warnList $p0Checks $p0Pass $p0Total $redLines $longTableAudit $attribAudit $p49Audit $skillAudit
+    # TASK-040: Append pointer to split sections 12-14 (independent persistence file)
+    $splitBriefPath = $artDir + '\dshd_cluster_brief_regime_crowding.md'
+    $brief += "`n`n---`n"
+    $brief += "`n> TASK-040: 第12-14章 (Regime识别 + 拥挤度监控 + 看门狗修复) 已拆分至独立子文件: dshd_cluster_brief_regime_crowding.md`n"
+    $brief += "`n> 数据真源: p82_regime_state.json + p82_crowding_state.json + p82_crowding_baseline.json`n"
+    $brief += "`n> 本主文件不再包含第12-14章内容, 避免被巡检覆盖。`n"
     Write-Utf8File $outBrief $brief
 
     # ---------- poll snapshot (P81 dedicated path) ----------

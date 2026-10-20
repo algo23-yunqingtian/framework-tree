@@ -1,0 +1,49 @@
+{
+  "snapshot_id": "T037-SNAP-20261019_222101",
+  "snapshot_timestamp": "2026-10-19T22:21:01+08:00",
+  "trigger": "AUTO_SNAPSHOT_ON_PIPELINE_ERROR",
+  "trigger_source": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+  "anomalies": [
+    {
+      "anomaly_type": "BLACKLIST_INTERCEPT",
+      "severity": "MEDIUM",
+      "description": "黑名单拦截",
+      "event_id": "DSHD-T037-SIM-BLACKLIST-INTERCEPT-001",
+      "event_type": "BLACKLIST_INTERCEPT",
+      "result": "WARN",
+      "agent": "DSHD-TASK037",
+      "line": 6596,
+      "timestamp": "2026-10-19T22:18:37+08:00"
+    },
+    {
+      "anomaly_type": "BLACKLIST_INTERCEPT",
+      "severity": "MEDIUM",
+      "description": "黑名单拦截",
+      "event_id": "DSHD-T037-SIM-BLACKLIST-INTERCEPT-001",
+      "event_type": "BLACKLIST_INTERCEPT",
+      "result": "WARN",
+      "agent": "DSHD-TASK037",
+      "line": 6614,
+      "timestamp": "2026-10-19T22:21:01+08:00"
+    }
+  ],
+  "files_copied": [
+    "dshd_cluster_brief.md",
+    "weighted_backtest_metrics.json",
+    "factor_weight.json",
+    "factor_enable_config.json",
+    "p82_ic_watchdog_state.json",
+    "p82_perf_drift_state.json",
+    "p82_risk_ledger.json"
+  ],
+  "sha_manifest": {
+    "dshd_cluster_brief.md": "9ddc70aea86dc6667a598df702cbf48dc5b58ed2d23832e484fb4bfe431e70df",
+    "weighted_backtest_metrics.json": "529ac2217b938195cd122e41f1745a7e28bf12c1edc3e68840277d2446b9cc4c",
+    "factor_weight.json": "eb5ad597d5e65729387fe827cbcd15de3aa8dab9745b6088675656d3d5744ac7",
+    "factor_enable_config.json": "1c0ecba61dd210a716096c7d3e664dc0812456e6067311a47ab783f7339fbd91",
+    "p82_ic_watchdog_state.json": "454b0c28ce30c2e2f72d39b56f2a552ff48e0d2c9d2427393b3ce5e6a642f2d1",
+    "p82_perf_drift_state.json": "64037340785c094936cff30529fe1e0507703bf58aae18fa75147f8ed8491014",
+    "p82_risk_ledger.json": "2e8059ba9a0d5d4d493453bfaa018c3ed73f12ea4a83d9df99c782a05416fb23"
+  },
+  "snapshot_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\_p82_snapshots\\t037_alert_20261019_222101"
+}

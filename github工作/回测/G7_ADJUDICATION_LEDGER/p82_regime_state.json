@@ -1,0 +1,957 @@
+{
+  "regime_detector": {
+    "detector_id": "DSHD-TASK039-REGIME-DETECT",
+    "version": "1.0.0",
+    "task_id": "DSHD-TASK-039-MONITOR-UPGRADE",
+    "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+    "mode": "AUDIT_READ_ONLY",
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  },
+  "classification_rules": {
+    "rolling_window_days": 20,
+    "return_threshold_up": 0.03,
+    "return_threshold_down": -0.03,
+    "vol_threshold": 0.015,
+    "consensus_method": "majority_vote",
+    "hard_locked": true,
+    "hard_lock_reason": "TASK-039 PERMANENT"
+  },
+  "regime_counts": {
+    "UNKNOWN": 2,
+    "SIDEWAYS": 386,
+    "UP": 37,
+    "DOWN": 7,
+    "DOWN_INSUFFICIENT_DATA": 6,
+    "UNKNOWN_note": "UNKNOWN=2 days are boundary cases, not DOWN insufficiency"
+  },
+  "regime_timeline": [
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-01-14",
+      "end_date": "2026-01-15",
+      "num_days": 2
+    },
+    {
+      "regime": "DOWN",
+      "start_date": "2026-01-16",
+      "end_date": "2026-01-16",
+      "num_days": 1
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-01-19",
+      "end_date": "2026-01-22",
+      "num_days": 4
+    },
+    {
+      "regime": "UP",
+      "start_date": "2026-01-23",
+      "end_date": "2026-01-23",
+      "num_days": 1
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-01-26",
+      "end_date": "2026-01-26",
+      "num_days": 1
+    },
+    {
+      "regime": "DOWN",
+      "start_date": "2026-01-27",
+      "end_date": "2026-01-28",
+      "num_days": 2
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-01-29",
+      "end_date": "2026-02-02",
+      "num_days": 3
+    },
+    {
+      "regime": "UP",
+      "start_date": "2026-02-03",
+      "end_date": "2026-02-03",
+      "num_days": 1
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-02-04",
+      "end_date": "2026-02-06",
+      "num_days": 3
+    },
+    {
+      "regime": "UP",
+      "start_date": "2026-02-09",
+      "end_date": "2026-02-09",
+      "num_days": 1
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-02-10",
+      "end_date": "2026-02-11",
+      "num_days": 2
+    },
+    {
+      "regime": "DOWN",
+      "start_date": "2026-02-12",
+      "end_date": "2026-02-12",
+      "num_days": 1
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-02-13",
+      "end_date": "2026-03-18",
+      "num_days": 18
+    },
+    {
+      "regime": "UP",
+      "start_date": "2026-03-19",
+      "end_date": "2026-03-19",
+      "num_days": 1
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-03-20",
+      "end_date": "2026-04-03",
+      "num_days": 11
+    },
+    {
+      "regime": "UP",
+      "start_date": "2026-04-07",
+      "end_date": "2026-04-15",
+      "num_days": 7
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-04-16",
+      "end_date": "2026-06-18",
+      "num_days": 43
+    },
+    {
+      "regime": "DOWN",
+      "start_date": "2026-06-22",
+      "end_date": "2026-06-23",
+      "num_days": 2
+    },
+    {
+      "regime": "SIDEWAYS",
+      "start_date": "2026-06-24",
+      "end_date": "2026-10-16",
+      "num_days": 77
+    },
+    {
+      "regime": "UNKNOWN",
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "num_days": 1
+    }
+  ],
+  "regime_segmented_ic": {
+    "UP": {
+      "oi_change_1d": {
+        "num_observations": 18,
+        "ic_values": [
+          0.242475,
+          0.165346,
+          0.326169,
+          0.346342,
+          0.367452,
+          0.394711,
+          0.408673,
+          0.383436,
+          0.32913,
+          0.320748,
+          0.298906,
+          0.298326,
+          0.280429,
+          0.335603,
+          0.329892,
+          0.318153,
+          0.224406,
+          0.239152
+        ],
+        "mean_ic": 0.31163,
+        "mean_abs_ic": 0.31163,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.061329
+      },
+      "oi_change_rate_7d": {
+        "num_observations": 18,
+        "ic_values": [
+          0.058268,
+          0.049754,
+          0.074733,
+          0.157132,
+          0.173098,
+          0.130109,
+          0.088901,
+          0.056926,
+          0.01493,
+          0.00336,
+          0.020667,
+          0.031486,
+          0.017363,
+          0.030165,
+          0.016734,
+          -0.001459,
+          -0.001433,
+          0.012572
+        ],
+        "mean_ic": 0.05185,
+        "mean_abs_ic": 0.05185,
+        "flip_rate": 0.1176,
+        "flip_rate_pct": "11.8%",
+        "flip_count": 2,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.052226
+      },
+      "oi_level": {
+        "num_observations": 18,
+        "ic_values": [
+          0.284798,
+          0.311761,
+          0.218951,
+          0.217761,
+          0.248042,
+          0.268065,
+          0.295012,
+          0.279811,
+          0.271424,
+          0.255624,
+          0.238784,
+          0.274472,
+          0.25453,
+          0.277225,
+          0.226755,
+          0.263944,
+          0.239085,
+          0.246624
+        ],
+        "mean_ic": 0.259593,
+        "mean_abs_ic": 0.259593,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.025232
+      },
+      "realized_vol_20d": {
+        "num_observations": 18,
+        "ic_values": [
+          0.189766,
+          0.223717,
+          0.089069,
+          0.122757,
+          0.153298,
+          0.217419,
+          0.299095,
+          0.367347,
+          0.522752,
+          0.488569,
+          0.413324,
+          0.440863,
+          0.407769,
+          0.371664,
+          0.365546,
+          0.389847,
+          0.38589,
+          0.389942
+        ],
+        "mean_ic": 0.324369,
+        "mean_abs_ic": 0.324369,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.12439
+      },
+      "vol_regime_change": {
+        "num_observations": 18,
+        "ic_values": [
+          -0.048343,
+          -0.04789,
+          -0.088102,
+          -0.046937,
+          -0.071088,
+          -0.052725,
+          -0.048251,
+          -0.06285,
+          0.012231,
+          0.021684,
+          0.111858,
+          0.109154,
+          0.141168,
+          0.166579,
+          0.21175,
+          0.200526,
+          0.220343,
+          0.215533
+        ],
+        "mean_ic": 0.05248,
+        "mean_abs_ic": 0.05248,
+        "flip_rate": 0.0588,
+        "flip_rate_pct": "5.9%",
+        "flip_count": 1,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.113507
+      },
+      "spread_cs": {
+        "num_observations": 18,
+        "ic_values": [
+          0.727174,
+          0.732684,
+          0.781768,
+          0.790414,
+          0.782039,
+          0.797564,
+          0.803725,
+          0.822323,
+          0.81192,
+          0.805353,
+          0.819079,
+          0.816916,
+          0.815979,
+          0.822812,
+          0.832546,
+          0.828711,
+          0.828297,
+          0.827958
+        ],
+        "mean_ic": 0.802626,
+        "mean_abs_ic": 0.802626,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.02985
+      },
+      "momentum_20d": {
+        "num_observations": 18,
+        "ic_values": [
+          0.2974,
+          0.387027,
+          0.241209,
+          0.274445,
+          0.281442,
+          0.364255,
+          0.443902,
+          0.50391,
+          0.380218,
+          0.337844,
+          0.398381,
+          0.405411,
+          0.404453,
+          0.41571,
+          0.428849,
+          0.421142,
+          0.409375,
+          0.411295
+        ],
+        "mean_ic": 0.378126,
+        "mean_abs_ic": 0.378126,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.065476
+      },
+      "contract_switch_flag": {
+        "num_observations": 18,
+        "ic_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_ic": 0.0,
+        "mean_abs_ic": 0.0,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": false,
+        "hard_locked": true,
+        "ic_std": 0.0
+      }
+    },
+    "DOWN": {
+      "oi_change_1d": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      },
+      "oi_change_rate_7d": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      },
+      "oi_level": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      },
+      "realized_vol_20d": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      },
+      "vol_regime_change": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      },
+      "spread_cs": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      },
+      "momentum_20d": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      },
+      "contract_switch_flag": {
+        "num_observations": 0,
+        "ic_values": [],
+        "mean_ic": null,
+        "flip_rate": null,
+        "flip_count": 0,
+        "alert_triggered": null,
+        "hard_locked": null
+      }
+    },
+    "SIDEWAYS": {
+      "oi_change_1d": {
+        "num_observations": 367,
+        "ic_values": [
+          0.062664,
+          0.043707,
+          0.045476,
+          0.023331,
+          0.028563,
+          0.016939,
+          0.046411,
+          0.052448,
+          0.036185,
+          -0.049119,
+          -0.104911,
+          -0.203522,
+          -0.23796,
+          -0.211351,
+          -0.227814,
+          -0.172171,
+          -0.180068,
+          -0.183072,
+          -0.145706,
+          -0.137845
+        ],
+        "mean_ic": 0.170292,
+        "mean_abs_ic": 0.170292,
+        "flip_rate": 0.0464,
+        "flip_rate_pct": "4.6%",
+        "flip_count": 17,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.299593
+      },
+      "oi_change_rate_7d": {
+        "num_observations": 367,
+        "ic_values": [
+          0.094586,
+          0.098537,
+          0.116651,
+          0.116359,
+          0.119593,
+          0.10618,
+          0.11709,
+          0.149738,
+          0.135103,
+          0.064749,
+          0.125563,
+          0.085682,
+          0.059865,
+          0.09544,
+          0.092972,
+          0.139447,
+          0.160465,
+          0.144548,
+          0.215699,
+          0.177352
+        ],
+        "mean_ic": 0.048862,
+        "mean_abs_ic": 0.048862,
+        "flip_rate": 0.0683,
+        "flip_rate_pct": "6.8%",
+        "flip_count": 25,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.108775
+      },
+      "oi_level": {
+        "num_observations": 367,
+        "ic_values": [
+          0.005401,
+          0.031625,
+          0.001431,
+          -0.013875,
+          0.032279,
+          -0.009912,
+          0.016584,
+          0.031082,
+          0.020363,
+          -0.065468,
+          -0.018955,
+          -0.056603,
+          -0.053252,
+          0.001937,
+          -0.043285,
+          -0.116134,
+          -0.124028,
+          -0.130892,
+          -0.125587,
+          -0.021217
+        ],
+        "mean_ic": 0.01312,
+        "mean_abs_ic": 0.01312,
+        "flip_rate": 0.0902,
+        "flip_rate_pct": "9.0%",
+        "flip_count": 33,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.162811
+      },
+      "realized_vol_20d": {
+        "num_observations": 365,
+        "ic_values": [
+          -0.252183,
+          -0.194806,
+          -0.259521,
+          -0.242904,
+          -0.178582,
+          -0.161034,
+          -0.169537,
+          -0.11641,
+          -0.116364,
+          -0.073699,
+          -0.069828,
+          -0.058109,
+          -0.030132,
+          0.036682,
+          0.018152,
+          0.027817,
+          0.023588,
+          -0.053114,
+          -0.049947,
+          -0.020969
+        ],
+        "mean_ic": -0.002637,
+        "mean_abs_ic": 0.002637,
+        "flip_rate": 0.0934,
+        "flip_rate_pct": "9.3%",
+        "flip_count": 34,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.171019
+      },
+      "vol_regime_change": {
+        "num_observations": 360,
+        "ic_values": [
+          -0.301816,
+          -0.229407,
+          -0.036199,
+          -0.085471,
+          -0.034588,
+          -0.019123,
+          0.028836,
+          0.034467,
+          0.107729,
+          0.105858,
+          0.109923,
+          0.105862,
+          0.117315,
+          0.068162,
+          0.068252,
+          0.067642,
+          0.07015,
+          0.063677,
+          0.108417,
+          0.1832
+        ],
+        "mean_ic": -0.004548,
+        "mean_abs_ic": 0.004548,
+        "flip_rate": 0.1058,
+        "flip_rate_pct": "10.6%",
+        "flip_count": 38,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.156977
+      },
+      "spread_cs": {
+        "num_observations": 367,
+        "ic_values": [
+          0.687107,
+          0.695636,
+          0.755291,
+          0.771723,
+          0.754103,
+          0.755485,
+          0.759183,
+          0.751726,
+          0.75565,
+          0.768784,
+          0.786988,
+          0.80002,
+          0.802331,
+          0.798417,
+          0.801374,
+          0.77384,
+          0.74407,
+          0.724335,
+          0.74765,
+          0.667527
+        ],
+        "mean_ic": 0.730305,
+        "mean_abs_ic": 0.730305,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.09288
+      },
+      "momentum_20d": {
+        "num_observations": 365,
+        "ic_values": [
+          0.077386,
+          0.022381,
+          0.078272,
+          0.106083,
+          0.10167,
+          0.092292,
+          0.075765,
+          0.087305,
+          0.158615,
+          0.118916,
+          0.148299,
+          0.171816,
+          0.15351,
+          0.197747,
+          0.185944,
+          0.184541,
+          0.220968,
+          0.221362,
+          0.264648,
+          0.281563
+        ],
+        "mean_ic": 0.226014,
+        "mean_abs_ic": 0.226014,
+        "flip_rate": 0.022,
+        "flip_rate_pct": "2.2%",
+        "flip_count": 8,
+        "alert_triggered": true,
+        "hard_locked": true,
+        "ic_std": 0.136299
+      },
+      "contract_switch_flag": {
+        "num_observations": 367,
+        "ic_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_ic": 0.0,
+        "mean_abs_ic": 0.0,
+        "flip_rate": 0.0,
+        "flip_rate_pct": "0.0%",
+        "flip_count": 0,
+        "alert_triggered": false,
+        "hard_locked": true,
+        "ic_std": 0.0
+      }
+    }
+  },
+  "regime_flip_rates": {
+    "UP": {
+      "oi_change_1d": 0.0,
+      "oi_change_rate_7d": 0.1176,
+      "oi_level": 0.0,
+      "realized_vol_20d": 0.0,
+      "vol_regime_change": 0.0588,
+      "spread_cs": 0.0,
+      "momentum_20d": 0.0,
+      "contract_switch_flag": 0.0
+    },
+    "DOWN": {
+      "oi_change_1d": null,
+      "oi_change_rate_7d": null,
+      "oi_level": null,
+      "realized_vol_20d": null,
+      "vol_regime_change": null,
+      "spread_cs": null,
+      "momentum_20d": null,
+      "contract_switch_flag": null
+    },
+    "SIDEWAYS": {
+      "oi_change_1d": 0.0464,
+      "oi_change_rate_7d": 0.0683,
+      "oi_level": 0.0902,
+      "realized_vol_20d": 0.0934,
+      "vol_regime_change": 0.1058,
+      "spread_cs": 0.0,
+      "momentum_20d": 0.022,
+      "contract_switch_flag": 0.0
+    }
+  },
+  "overall_ic_comparison": {
+    "oi_change_1d": {
+      "num_observations": 413,
+      "mean_ic": 0.177311,
+      "flip_rate": 0.0413
+    },
+    "oi_change_rate_7d": {
+      "num_observations": 413,
+      "mean_ic": 0.04767,
+      "flip_rate": 0.0655
+    },
+    "oi_level": {
+      "num_observations": 413,
+      "mean_ic": 0.028456,
+      "flip_rate": 0.0971
+    },
+    "realized_vol_20d": {
+      "num_observations": 410,
+      "mean_ic": 0.013301,
+      "flip_rate": 0.0831
+    },
+    "vol_regime_change": {
+      "num_observations": 405,
+      "mean_ic": -0.000787,
+      "flip_rate": 0.099
+    },
+    "spread_cs": {
+      "num_observations": 413,
+      "mean_ic": 0.736342,
+      "flip_rate": 0.0
+    },
+    "momentum_20d": {
+      "num_observations": 410,
+      "mean_ic": 0.228015,
+      "flip_rate": 0.0293
+    },
+    "contract_switch_flag": {
+      "num_observations": 413,
+      "mean_ic": 0.0,
+      "flip_rate": 0.0
+    }
+  },
+  "regime_effectiveness": {
+    "UP": {
+      "best_factors": [
+        {
+          "factor": "spread_cs",
+          "mean_ic": 0.802626,
+          "flip_rate": 0.0
+        },
+        {
+          "factor": "momentum_20d",
+          "mean_ic": 0.378126,
+          "flip_rate": 0.0
+        },
+        {
+          "factor": "realized_vol_20d",
+          "mean_ic": 0.324369,
+          "flip_rate": 0.0
+        }
+      ],
+      "worst_factors": [
+        {
+          "factor": "vol_regime_change",
+          "mean_ic": 0.05248,
+          "flip_rate": 0.0588
+        },
+        {
+          "factor": "oi_change_rate_7d",
+          "mean_ic": 0.05185,
+          "flip_rate": 0.1176
+        },
+        {
+          "factor": "contract_switch_flag",
+          "mean_ic": 0.0,
+          "flip_rate": 0.0
+        }
+      ],
+      "top_performing_regime": true
+    },
+    "DOWN": {
+      "best_factors": [],
+      "worst_factors": [],
+      "top_performing_regime": true
+    },
+    "SIDEWAYS": {
+      "best_factors": [
+        {
+          "factor": "spread_cs",
+          "mean_ic": 0.730305,
+          "flip_rate": 0.0
+        },
+        {
+          "factor": "momentum_20d",
+          "mean_ic": 0.226014,
+          "flip_rate": 0.022
+        },
+        {
+          "factor": "oi_change_1d",
+          "mean_ic": 0.170292,
+          "flip_rate": 0.0464
+        }
+      ],
+      "worst_factors": [
+        {
+          "factor": "vol_regime_change",
+          "mean_ic": -0.004548,
+          "flip_rate": 0.1058
+        },
+        {
+          "factor": "realized_vol_20d",
+          "mean_ic": -0.002637,
+          "flip_rate": 0.0934
+        },
+        {
+          "factor": "contract_switch_flag",
+          "mean_ic": 0.0,
+          "flip_rate": 0.0
+        }
+      ],
+      "top_performing_regime": true
+    }
+  },
+  "factor_failure_scenarios": [],
+  "last_run": "2026-10-20T00:46:23+08:00",
+  "total_runs": 3,
+  "run_history": [
+    {
+      "timestamp": "2026-10-20T00:43:41+08:00",
+      "regime_counts": {
+        "UNKNOWN": 2,
+        "SIDEWAYS": 386,
+        "UP": 37,
+        "DOWN": 7
+      },
+      "num_segments": 20,
+      "failure_scenarios": 0,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "timestamp": "2026-10-20T00:45:09+08:00",
+      "regime_counts": {
+        "UNKNOWN": 2,
+        "SIDEWAYS": 386,
+        "UP": 37,
+        "DOWN": 7
+      },
+      "num_segments": 20,
+      "failure_scenarios": 0,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "timestamp": "2026-10-20T00:46:23+08:00",
+      "regime_counts": {
+        "UNKNOWN": 2,
+        "SIDEWAYS": 386,
+        "UP": 37,
+        "DOWN": 7
+      },
+      "num_segments": 20,
+      "failure_scenarios": 0,
+      "source": "DSHD-TASK039"
+    }
+  ],
+  "segmented_ic": {
+    "DOWN": {
+      "data_sufficient": false,
+      "days_available": 6,
+      "min_window_required": 20,
+      "status": "INSUFFICIENT_DATA",
+      "note": "DOWN regime has 6 days, below 20-day minimum window. Per-factor IC not computed. No UNKNOWN false alerts generated."
+    }
+  },
+  "insufficient_data_handling": {
+    "min_window_days": 20,
+    "regimes_below_threshold": [
+      "DOWN"
+    ],
+    "down_days": 6,
+    "handling": "INSUFFICIENT_DATA - marked but no per-factor IC computed, no UNKNOWN false alerts",
+    "task": "DSHD-TASK-040-WATCHER-FIX"
+  }
+}

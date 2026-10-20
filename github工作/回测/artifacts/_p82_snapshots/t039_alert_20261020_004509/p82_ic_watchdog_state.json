@@ -1,0 +1,548 @@
+{
+  "last_run": "2026-10-20T00:45:09+08:00",
+  "total_runs": 9,
+  "factor_history": {
+    "oi_change_1d": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.3,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.3,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      }
+    ],
+    "oi_change_rate_7d": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.45,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.45,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      }
+    ],
+    "oi_level": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.6,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.6,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.6,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.6,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.6,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.6,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.6,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.5,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.5,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      }
+    ],
+    "realized_vol_20d": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.6316,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      }
+    ],
+    "vol_regime_change": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.7368,
+        "num_windows": 20
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.7368,
+        "num_windows": 20
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.7368,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.7368,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.7368,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.7368,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.7368,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.4737,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.4737,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      }
+    ],
+    "spread_cs": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.55,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      }
+    ],
+    "momentum_20d": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.6842,
+        "num_windows": 20
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.6842,
+        "num_windows": 20
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.6842,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.6842,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.6842,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.6842,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.6842,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.2105,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.2105,
+        "num_windows": 20,
+        "hard_locked": true,
+        "hard_lock_status": "ALERT",
+        "source": "DSHD-TASK039"
+      }
+    ],
+    "contract_switch_flag": [
+      {
+        "timestamp": "2026-10-19T20:03:41+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T20:05:22+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21
+      },
+      {
+        "timestamp": "2026-10-19T22:18:37+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "STABLE"
+      },
+      {
+        "timestamp": "2026-10-19T22:21:01+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "STABLE"
+      },
+      {
+        "timestamp": "2026-10-19T23:40:58+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "STABLE",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:41:40+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "STABLE",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-19T23:42:48+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "STABLE",
+        "source": "DSHD-TASK038"
+      },
+      {
+        "timestamp": "2026-10-20T00:43:40+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "STABLE",
+        "source": "DSHD-TASK039"
+      },
+      {
+        "timestamp": "2026-10-20T00:45:09+08:00",
+        "flip_rate": 0.0,
+        "num_windows": 21,
+        "hard_locked": true,
+        "hard_lock_status": "STABLE",
+        "source": "DSHD-TASK039"
+      }
+    ]
+  },
+  "hard_locked": true,
+  "hard_locked_at": "2026-10-19T22:21:01+08:00",
+  "hard_locked_alert_factors": [
+    "vol_regime_change",
+    "momentum_20d",
+    "realized_vol_20d",
+    "oi_level",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "spread_cs"
+  ],
+  "hard_locked_stable_factors": [
+    "contract_switch_flag"
+  ]
+}

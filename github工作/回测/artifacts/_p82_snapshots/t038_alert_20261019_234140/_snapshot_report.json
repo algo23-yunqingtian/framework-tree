@@ -1,0 +1,94 @@
+{
+  "snapshot_id": "T038-SNAP-20261019_234140",
+  "snapshot_timestamp": "2026-10-19T23:41:40+08:00",
+  "trigger": "AUTO_SNAPSHOT_ON_PIPELINE_ERROR",
+  "trigger_source": "DSHD-TASK-038-MONITOR-OP",
+  "anomalies": [
+    {
+      "anomaly_type": "COLLECTION_TIMEOUT",
+      "severity": "HIGH",
+      "description": "采集超时",
+      "event_id": "DSHD-T038-SIM-COLLECTION-TIMEOUT-001",
+      "event_type": "COLLECTION_TIMEOUT",
+      "result": "ERROR",
+      "agent": "DSHD-TASK038",
+      "line": 7517,
+      "timestamp": "2026-10-19T23:40:58+08:00"
+    },
+    {
+      "anomaly_type": "COLLECTION_TIMEOUT",
+      "severity": "HIGH",
+      "description": "采集超时",
+      "event_id": "DSHD-T038-SIM-COLLECTION-TIMEOUT-001",
+      "event_type": "COLLECTION_TIMEOUT",
+      "result": "ERROR",
+      "agent": "DSHD-TASK038",
+      "line": 7524,
+      "timestamp": "2026-10-19T23:41:40+08:00"
+    }
+  ],
+  "files_copied": [
+    "dshd_cluster_brief.md",
+    "weighted_backtest_metrics.json",
+    "factor_weight.json",
+    "factor_enable_config.json",
+    "p82_ic_watchdog_state.json",
+    "p82_perf_drift_state.json",
+    "p82_risk_ledger.json",
+    "p82_pipeline_alerts.json"
+  ],
+  "file_manifest": {
+    "dshd_cluster_brief.md": {
+      "size_bytes": 11772,
+      "sha256": "9aca580df9a1e58013d8765a5fcde5eb90ab8063362a3488a04145148c770aa5",
+      "mtime": 1792424320.8841777
+    },
+    "weighted_backtest_metrics.json": {
+      "size_bytes": 26065,
+      "sha256": "529ac2217b938195cd122e41f1745a7e28bf12c1edc3e68840277d2446b9cc4c",
+      "mtime": 1792411427.0146873
+    },
+    "factor_weight.json": {
+      "size_bytes": 2610,
+      "sha256": "eb5ad597d5e65729387fe827cbcd15de3aa8dab9745b6088675656d3d5744ac7",
+      "mtime": 1792411427.0106883
+    },
+    "factor_enable_config.json": {
+      "size_bytes": 2854,
+      "sha256": "1c0ecba61dd210a716096c7d3e664dc0812456e6067311a47ab783f7339fbd91",
+      "mtime": 1792419579.8113246
+    },
+    "p82_ic_watchdog_state.json": {
+      "size_bytes": 9450,
+      "sha256": "2c708047716cf4eb91cf3e2c15b8463e1722336a94c0c54ba7a378e74e4f47f3",
+      "mtime": 1792424500.3867078
+    },
+    "p82_perf_drift_state.json": {
+      "size_bytes": 2930,
+      "sha256": "13c66c6813e7eed9b666cc9ec5a938b23d99a8a2eff9190c1b839b05fef866e9",
+      "mtime": 1792424500.3967087
+    },
+    "p82_risk_ledger.json": {
+      "size_bytes": 6283,
+      "sha256": "1803fef1a5ecab9478fad7f285a266cdc87661e0d6b28f3155ead032c603f390",
+      "mtime": 1792419662.896083
+    },
+    "p82_pipeline_alerts.json": {
+      "size_bytes": 2835,
+      "sha256": "ab074133f8d2930341649208ef5085d5788fdf4e4cacac45d8d6c7be6c73f304",
+      "mtime": 1792424501.1000276
+    }
+  },
+  "sha_manifest": {
+    "dshd_cluster_brief.md": "9aca580df9a1e58013d8765a5fcde5eb90ab8063362a3488a04145148c770aa5",
+    "weighted_backtest_metrics.json": "529ac2217b938195cd122e41f1745a7e28bf12c1edc3e68840277d2446b9cc4c",
+    "factor_weight.json": "eb5ad597d5e65729387fe827cbcd15de3aa8dab9745b6088675656d3d5744ac7",
+    "factor_enable_config.json": "1c0ecba61dd210a716096c7d3e664dc0812456e6067311a47ab783f7339fbd91",
+    "p82_ic_watchdog_state.json": "2c708047716cf4eb91cf3e2c15b8463e1722336a94c0c54ba7a378e74e4f47f3",
+    "p82_perf_drift_state.json": "13c66c6813e7eed9b666cc9ec5a938b23d99a8a2eff9190c1b839b05fef866e9",
+    "p82_risk_ledger.json": "1803fef1a5ecab9478fad7f285a266cdc87661e0d6b28f3155ead032c603f390",
+    "p82_pipeline_alerts.json": "ab074133f8d2930341649208ef5085d5788fdf4e4cacac45d8d6c7be6c73f304"
+  },
+  "snapshot_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\_p82_snapshots\\t038_alert_20261019_234140",
+  "archive_status": "ARCHIVED"
+}

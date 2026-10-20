@@ -1,7 +1,7 @@
 {
   "package_id": "DSHC-P72-G7-ADJUDICATION-PACKAGE-001",
   "generated_at": "2026-10-16 GMT+8",
-  "updated_at": "2026-10-16 23:50 GMT+8",
+  "updated_at": "2026-10-19 15:10 GMT+8",
   "agent": "DSHC-P72",
   "branch": "PHASE48_BASELINE",
   "gate": "CLOSED/HOLD",
@@ -101,6 +101,34 @@
       "sha256": "1D963C8534AE71229166BC0E6231C3970894C8E0BF63DDDC67E6E67370E4A35F",
       "size_bytes": 14732,
       "status": "DSHA_PARTIAL_PASS_REPORT_RECORDED"
+    },
+    {
+      "filename": "p81_periodic_inspect.ps1",
+      "path": "G7_ADJUDICATION_LEDGER\\p81_periodic_inspect.ps1",
+      "sha256": "405CF987167671FBDF6540E567D608E788324E6A02CACD51D7E4D8A30EB27C93",
+      "size_bytes": 45362,
+      "status": "PERIODIC_INSPECT_SCRIPT_V1_0_0",
+      "version": "1.0.0",
+      "task": "DSHD-P81-PERIODIC-INSPECT",
+      "mode": "AUDIT_READ_ONLY",
+      "wind_api_calls": 0,
+      "intervention": "NONE (except P81 auto-heal)",
+      "scheduled_task": "P81PeriodicInspect (5-min interval)",
+      "self_healing_scope": "P81 watcher only"
+    },
+    {
+      "filename": "p81_inspect_daily.md",
+      "path": "G7_ADJUDICATION_LEDGER\\p81_inspect_daily.md",
+      "sha256": "38C70E86A52E0202E960390076653EC755E5AECF0233A58ADB3100FCB9B0A54B",
+      "size_bytes": 2277,
+      "status": "PERIODIC_INSPECT_REPORT_GENERATED"
+    },
+    {
+      "filename": "p81_inspect_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p81_inspect_state.json",
+      "sha256": "39C91C7762242843CF701E0839A2A452E9A976738336D5FB3AAEC9ECFF36DC26",
+      "size_bytes": 1600,
+      "status": "INSPECT_STATE_PERSISTED"
     }
   ],
   "conditional_release_documents": [

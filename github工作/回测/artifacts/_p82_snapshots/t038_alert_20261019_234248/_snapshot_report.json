@@ -1,0 +1,105 @@
+{
+  "snapshot_id": "T038-SNAP-20261019_234248",
+  "snapshot_timestamp": "2026-10-19T23:42:48+08:00",
+  "trigger": "AUTO_SNAPSHOT_ON_PIPELINE_ERROR",
+  "trigger_source": "DSHD-TASK-038-MONITOR-OP",
+  "anomalies": [
+    {
+      "anomaly_type": "COLLECTION_TIMEOUT",
+      "severity": "HIGH",
+      "description": "采集超时",
+      "event_id": "DSHD-T038-SIM-COLLECTION-TIMEOUT-001",
+      "event_type": "COLLECTION_TIMEOUT",
+      "result": "ERROR",
+      "agent": "DSHD-TASK038",
+      "line": 7517,
+      "timestamp": "2026-10-19T23:40:58+08:00"
+    },
+    {
+      "anomaly_type": "COLLECTION_TIMEOUT",
+      "severity": "HIGH",
+      "description": "采集超时",
+      "event_id": "DSHD-T038-SIM-COLLECTION-TIMEOUT-001",
+      "event_type": "COLLECTION_TIMEOUT",
+      "result": "ERROR",
+      "agent": "DSHD-TASK038",
+      "line": 7524,
+      "timestamp": "2026-10-19T23:41:40+08:00"
+    },
+    {
+      "anomaly_type": "COLLECTION_TIMEOUT",
+      "severity": "HIGH",
+      "description": "采集超时",
+      "event_id": "DSHD-T038-SIM-COLLECTION-TIMEOUT-001",
+      "event_type": "COLLECTION_TIMEOUT",
+      "result": "ERROR",
+      "agent": "DSHD-TASK038",
+      "line": 7535,
+      "timestamp": "2026-10-19T23:42:48+08:00"
+    }
+  ],
+  "files_copied": [
+    "dshd_cluster_brief.md",
+    "weighted_backtest_metrics.json",
+    "factor_weight.json",
+    "factor_enable_config.json",
+    "p82_ic_watchdog_state.json",
+    "p82_perf_drift_state.json",
+    "p82_risk_ledger.json",
+    "p82_pipeline_alerts.json"
+  ],
+  "file_manifest": {
+    "dshd_cluster_brief.md": {
+      "size_bytes": 17988,
+      "sha256": "e1637990165f422eb7118c4e09e8526ad0d9a1b554aa539790235d70225f6635",
+      "mtime": 1792424501.5186255
+    },
+    "weighted_backtest_metrics.json": {
+      "size_bytes": 26065,
+      "sha256": "529ac2217b938195cd122e41f1745a7e28bf12c1edc3e68840277d2446b9cc4c",
+      "mtime": 1792411427.0146873
+    },
+    "factor_weight.json": {
+      "size_bytes": 2610,
+      "sha256": "eb5ad597d5e65729387fe827cbcd15de3aa8dab9745b6088675656d3d5744ac7",
+      "mtime": 1792411427.0106883
+    },
+    "factor_enable_config.json": {
+      "size_bytes": 2854,
+      "sha256": "1c0ecba61dd210a716096c7d3e664dc0812456e6067311a47ab783f7339fbd91",
+      "mtime": 1792419579.8113246
+    },
+    "p82_ic_watchdog_state.json": {
+      "size_bytes": 11279,
+      "sha256": "613ff7e7a736fc8f23d09134e727ba86b700c28aa3cdcfa6c509456ba1fce84e",
+      "mtime": 1792424568.2404764
+    },
+    "p82_perf_drift_state.json": {
+      "size_bytes": 3315,
+      "sha256": "9a6b4ec8c4a291522aab46b721b3de68845f0b10950265320af5b2e62f8b50cd",
+      "mtime": 1792424568.2514763
+    },
+    "p82_risk_ledger.json": {
+      "size_bytes": 6810,
+      "sha256": "d6f9ba5fac48335e08e09749a98b855b6d60475434c25586dc46be18e25af98a",
+      "mtime": 1792424501.5156264
+    },
+    "p82_pipeline_alerts.json": {
+      "size_bytes": 4444,
+      "sha256": "c3577ad56382ff7287fd41a0ee13e40ccb1566f89d0d3b42f412c271ad40e6b5",
+      "mtime": 1792424568.9774246
+    }
+  },
+  "sha_manifest": {
+    "dshd_cluster_brief.md": "e1637990165f422eb7118c4e09e8526ad0d9a1b554aa539790235d70225f6635",
+    "weighted_backtest_metrics.json": "529ac2217b938195cd122e41f1745a7e28bf12c1edc3e68840277d2446b9cc4c",
+    "factor_weight.json": "eb5ad597d5e65729387fe827cbcd15de3aa8dab9745b6088675656d3d5744ac7",
+    "factor_enable_config.json": "1c0ecba61dd210a716096c7d3e664dc0812456e6067311a47ab783f7339fbd91",
+    "p82_ic_watchdog_state.json": "613ff7e7a736fc8f23d09134e727ba86b700c28aa3cdcfa6c509456ba1fce84e",
+    "p82_perf_drift_state.json": "9a6b4ec8c4a291522aab46b721b3de68845f0b10950265320af5b2e62f8b50cd",
+    "p82_risk_ledger.json": "d6f9ba5fac48335e08e09749a98b855b6d60475434c25586dc46be18e25af98a",
+    "p82_pipeline_alerts.json": "c3577ad56382ff7287fd41a0ee13e40ccb1566f89d0d3b42f412c271ad40e6b5"
+  },
+  "snapshot_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\_p82_snapshots\\t038_alert_20261019_234248",
+  "archive_status": "ARCHIVED"
+}

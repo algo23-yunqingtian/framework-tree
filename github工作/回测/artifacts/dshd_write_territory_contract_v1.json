@@ -1,0 +1,215 @@
+﻿{
+    "poll_count":  255,
+    "auto_kill_enabled":  false,
+    "auto_block_enabled":  false,
+    "territories":  [
+                        {
+                            "id":  "T1",
+                            "allowed_appenders":  [
+                                                      "DSHD-P67",
+                                                      "DSHD-P71",
+                                                      "DSHD-P77",
+                                                      "DSHD-P79",
+                                                      "DSHD-P80",
+                                                      "DSHD-P80-PHASE2",
+                                                      "DSHD-P81",
+                                                      "DSHC",
+                                                      "DSHA"
+                                                  ],
+                            "policy":  "APPEND_ONLY",
+                            "forbidden":  [
+                                              "TRUNCATE",
+                                              "REWRITE",
+                                              "DELETE",
+                                              "LINE_RENUMBER"
+                                          ],
+                            "newline_contract":  "each event object terminated by LF (0x0A); multi-object physical lines are a defect",
+                            "exclusive_owner":  null,
+                            "relative_path":  "tracking_monitor_audit.jsonl"
+                        },
+                        {
+                            "id":  "T2",
+                            "allowed_appenders":  [
+
+                                                  ],
+                            "policy":  "OWNER_EXCLUSIVE",
+                            "forbidden":  [
+                                              "DSHD_ANY_WRITE",
+                                              "DSHA_ANY_WRITE",
+                                              "DSHC-DSHD_SHARED"
+                                          ],
+                            "exclusive_owner":  "DSHC",
+                            "relative_path":  "cross_agent_artifact_index.json"
+                        },
+                        {
+                            "id":  "T3",
+                            "allowed_appenders":  [
+
+                                                  ],
+                            "policy":  "OWNER_EXCLUSIVE",
+                            "forbidden":  [
+                                              "DSHD_ANY_WRITE",
+                                              "DSHA_ANY_WRITE",
+                                              "AUDIT_AGENT_ANY_WRITE"
+                                          ],
+                            "note":  "DSHD computes hashes only; never writes this file",
+                            "exclusive_owner":  "DSHC",
+                            "relative_path":  "output_sample/wdf_sample_metals_raw.csv"
+                        },
+                        {
+                            "id":  "T4",
+                            "pattern":  "artifacts/dshc_*.json",
+                            "policy":  "OWNER_EXCLUSIVE",
+                            "forbidden":  [
+                                              "DSHD_ANY_WRITE",
+                                              "DSHA_ANY_WRITE"
+                                          ],
+                            "exclusive_owner":  "DSHC",
+                            "allowed_appenders":  [
+
+                                                  ]
+                        },
+                        {
+                            "id":  "T5",
+                            "pattern":  "artifacts/dsha_*.json",
+                            "policy":  "OWNER_EXCLUSIVE",
+                            "forbidden":  [
+                                              "DSHD_ANY_WRITE",
+                                              "DSHC_ANY_WRITE"
+                                          ],
+                            "exclusive_owner":  "DSHA",
+                            "allowed_appenders":  [
+
+                                                  ]
+                        },
+                        {
+                            "id":  "T6",
+                            "known_shared_exception":  [
+                                                           "artifacts/dshd_p80_a01_audit_snapshot.json"
+                                                       ],
+                            "policy":  "NAME_PREFIX_EXCLUSIVE",
+                            "forbidden":  [
+                                              "NON_DSHD_PREFIX_WRITE"
+                                          ],
+                            "known_shared_exception_detail":  "written by both DSHD-P80 (tag A01-USER-REMOTE-001) and DSHD-P80-PHASE2 (tag A01-USER-REMOTE-002); observed as CONCURRENT_WRITE_CONFLICT, recorded only",
+                            "allowed_appenders":  [
+
+                                                  ],
+                            "exclusive_owner":  "DSHD-FAMILY",
+                            "pattern":  "artifacts/dshd_*.json"
+                        },
+                        {
+                            "id":  "T7",
+                            "pattern":  "scripts/*",
+                            "policy":  "HUMAN_LICENSOR_ONLY",
+                            "forbidden":  [
+                                              "AGENT_ANY_WRITE"
+                                          ],
+                            "exclusive_owner":  "HOLDER",
+                            "allowed_appenders":  [
+
+                                                  ]
+                        },
+                        {
+                            "id":  "T8",
+                            "pattern":  "ignition markers / release_permit",
+                            "policy":  "HUMAN_LICENSE_ONLY",
+                            "note":  "DSHC ignition and DSHA backtest are human-licensed only; DSHD watches and records",
+                            "forbidden":  [
+                                              "AGENT_ANY_WRITE"
+                                          ],
+                            "exclusive_owner":  "HOLDER",
+                            "allowed_appenders":  [
+
+                                                  ]
+                        }
+                    ],
+    "a01_tag":  "A01-USER-REMOTE-003",
+    "protection_list":  [
+                            {
+                                "never_kill":  true,
+                                "pid":  3472,
+                                "role":  "DSHD-P71-main-monitor"
+                            },
+                            {
+                                "never_kill":  true,
+                                "pid":  14644,
+                                "role":  "zin-database-front-excel"
+                            },
+                            {
+                                "script":  "dshd_p77_skillpack_watch.ps1",
+                                "never_kill":  true,
+                                "role":  "DSHD-P77 (pwsh-13)"
+                            },
+                            {
+                                "script":  "dshd_p79_a01_audit_watch.ps1",
+                                "never_kill":  true,
+                                "role":  "DSHD-P79"
+                            },
+                            {
+                                "script":  "dshd_p80_a01_audit_watch.ps1",
+                                "never_kill":  true,
+                                "role":  "DSHD-P80 (pwsh-30)"
+                            },
+                            {
+                                "script":  "dshd_p80_a01_phase2_watch.ps1",
+                                "never_kill":  true,
+                                "role":  "DSHD-P80-PHASE2 (pwsh-37)"
+                            },
+                            {
+                                "script":  "dshd_p81_watch.ps1",
+                                "never_kill":  true,
+                                "role":  "DSHD-P81 (self)"
+                            }
+                        ],
+    "version":  "1.0",
+    "contract_id":  "DSHD-WRITE-TERRITORY-CONTRACT-V1",
+    "issued_at":  "2026-10-20T11:45:40+08:00",
+    "token_state":  "ACTIVE_AUDIT_READ_ONLY",
+    "rules_observed":  [
+                           {
+                               "mode":  "OBSERVATION_ONLY",
+                               "auto_kill":  false,
+                               "rule_id":  "OBS-SPAWN-EXCEL-001",
+                               "origin":  "DSHC-POST-MORTEM-T1 guard GR1/GR2/GR3"
+                           }
+                       ],
+    "branch":  "feature/v88-g1",
+    "enforcement_mode":  "OBSERVATION_ONLY",
+    "issued_by":  "DSHD-P81",
+    "interception_enabled":  false,
+    "auto_circuit_break_enabled":  false,
+    "token":  "DSHD-P81-TOKEN",
+    "task":  "DSHD-P81-WATCH",
+    "territory_count":  8,
+    "contract_status":  "ACTIVE",
+    "concurrent_write_scan":  {
+                                  "conflict_count":  1,
+                                  "blocking_enabled":  false,
+                                  "action_on_conflict":  "RECORD_ONLY",
+                                  "monitored_path_count":  25,
+                                  "conflicts":  [
+                                                    {
+                                                        "relative_path":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json",
+                                                        "action_taken":  "NONE",
+                                                        "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                                                        "severity":  "INFO",
+                                                        "path":  "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_p80_phase2_a01_audit_snapshot.json",
+                                                        "observed_agent_tag":  "A01-USER-REMOTE-002",
+                                                        "detail":  "owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2",
+                                                        "observation_only":  true
+                                                    }
+                                                ],
+                                  "enabled":  true
+                              },
+    "mode":  "AUDIT_READ_ONLY",
+    "red_lines":  {
+                      "do_not_disturb_post_mortem_t1":  true,
+                      "no_intervention":  true,
+                      "no_kill":  true,
+                      "no_dshc_fetch_proxy":  true,
+                      "no_dsha_backtest_proxy":  true,
+                      "observe_and_record_only":  true,
+                      "audit_only":  true
+                  }
+}

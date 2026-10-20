@@ -1,0 +1,109 @@
+{
+  "ledger_id": "DSHD-P82-RISK-LEDGER",
+  "version": "1.0.0",
+  "created_at": "2026-10-19T20:05:22+08:00",
+  "updated_at": "2026-10-19T20:05:22+08:00",
+  "risk_entries": [
+    {
+      "factor": "oi_change_1d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "HIGH",
+      "flip_rate": 0.55,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=55.0%, 21个窗口"
+    },
+    {
+      "factor": "oi_change_rate_7d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "HIGH",
+      "flip_rate": 0.55,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=55.0%, 21个窗口"
+    },
+    {
+      "factor": "oi_level",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "HIGH",
+      "flip_rate": 0.6,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=60.0%, 21个窗口"
+    },
+    {
+      "factor": "realized_vol_20d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "MEDIUM",
+      "flip_rate": 0.6316,
+      "num_windows": 20,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=63.2%, 20个窗口"
+    },
+    {
+      "factor": "vol_regime_change",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.7368,
+      "num_windows": 20,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=73.7%, 20个窗口"
+    },
+    {
+      "factor": "spread_cs",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.55,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=55.0%, 21个窗口"
+    },
+    {
+      "factor": "momentum_20d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.6842,
+      "num_windows": 20,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=68.4%, 20个窗口"
+    },
+    {
+      "factor": "contract_switch_flag",
+      "risk_type": "IC_STABLE",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.0,
+      "num_windows": 21,
+      "status": "STABLE",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "滚动IC翻转率=0.0%, 21个窗口"
+    },
+    {
+      "factor": "_PORTFOLIO_",
+      "risk_type": "PERFORMANCE_STABLE",
+      "status": "STABLE",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "等权组合: 收益=18.67%, 夏普=2.911, 回撤=-1.71%"
+    },
+    {
+      "factor": "_IC_METHOD_",
+      "risk_type": "IC_METHOD_DISCREPANCY",
+      "status": "WARN",
+      "updated_at": "2026-10-19T20:05:22+08:00",
+      "detail": "IC加权方法使用TS_IC而非CSV_IC (P81审计发现, TS_IC根因未修复)"
+    }
+  ],
+  "last_monitor_run": "2026-10-19T20:05:22+08:00",
+  "summary": {
+    "total_entries": 10,
+    "alert_count": 7,
+    "warn_count": 1,
+    "stable_count": 2
+  }
+}

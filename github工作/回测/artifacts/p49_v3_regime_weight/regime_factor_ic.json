@@ -1,8 +1,8 @@
 {
-  "output_id": "DSHA-TASK046-REGIME-IC",
-  "generated_at": "2026-10-20T08:50:00+08:00",
-  "token": "DSHA-TASK046-FACTOR-ANALYSIS-TOKEN",
-  "task": "DSHA-TASK046-FACTOR-ANALYSIS",
+  "output_id": "DSHA-TASK047-REGIME-IC",
+  "generated_at": "2026-10-20T11:44:31+08:00",
+  "token": "DSHA-TASK047-ENGINE-OPTIMIZE-TOKEN",
+  "task": "DSHA-TASK047-ENGINE-OPTIMIZE",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -11,24 +11,25 @@
     "release": "NOT_ISSUED"
   },
   "regime_counts_4sym": {
-    "UP": 1607,
-    "DOWN": 1422,
-    "SIDEWAYS": 859
+    "up": 730,
+    "down": 660,
+    "sideways": 338
   },
   "regime_counts_9sym": {
-    "UP": 1334,
-    "DOWN": 1025,
-    "SIDEWAYS": 665
+    "up": 1334,
+    "down": 1025,
+    "sideways": 665
   },
   "down_sample_sufficient_4sym": true,
   "down_sample_sufficient_9sym": true,
   "min_window_required": 20,
   "ic_4sym": {
-    "UP": {
+    "up": {
       "contract_switch_flag": {
-        "mean_ic": NaN,
-        "num_windows": 36,
-        "flip_rate": 1.0
+        "mean_ic": 0.0,
+        "num_windows": 0,
+        "flip_rate": 0.0,
+        "note": "constant_or_zero_factor"
       },
       "momentum_20d": {
         "mean_ic": -0.2463966337037784,
@@ -66,11 +67,12 @@
         "flip_rate": 0.3939393939393939
       }
     },
-    "DOWN": {
+    "down": {
       "contract_switch_flag": {
-        "mean_ic": NaN,
-        "num_windows": 32,
-        "flip_rate": 1.0
+        "mean_ic": 0.0,
+        "num_windows": 0,
+        "flip_rate": 0.0,
+        "note": "constant_or_zero_factor"
       },
       "momentum_20d": {
         "mean_ic": -0.16815252035764042,
@@ -108,11 +110,12 @@
         "flip_rate": 0.6896551724137931
       }
     },
-    "SIDEWAYS": {
+    "sideways": {
       "contract_switch_flag": {
-        "mean_ic": NaN,
-        "num_windows": 16,
-        "flip_rate": 1.0
+        "mean_ic": 0.0,
+        "num_windows": 0,
+        "flip_rate": 0.0,
+        "note": "constant_or_zero_factor"
       },
       "momentum_20d": {
         "mean_ic": -0.022999808870113846,
@@ -152,11 +155,12 @@
     }
   },
   "ic_9sym": {
-    "UP": {
+    "up": {
       "contract_switch_flag": {
-        "mean_ic": NaN,
-        "num_windows": 66,
-        "flip_rate": 1.0
+        "mean_ic": 0.0,
+        "num_windows": 0,
+        "flip_rate": 0.0,
+        "note": "constant_or_zero_factor"
       },
       "momentum_20d": {
         "mean_ic": -0.22064681209344245,
@@ -194,11 +198,12 @@
         "flip_rate": 0.5
       }
     },
-    "DOWN": {
+    "down": {
       "contract_switch_flag": {
-        "mean_ic": NaN,
-        "num_windows": 50,
-        "flip_rate": 1.0
+        "mean_ic": 0.0,
+        "num_windows": 0,
+        "flip_rate": 0.0,
+        "note": "constant_or_zero_factor"
       },
       "momentum_20d": {
         "mean_ic": -0.16644419760962406,
@@ -236,11 +241,12 @@
         "flip_rate": 0.5957446808510638
       }
     },
-    "SIDEWAYS": {
+    "sideways": {
       "contract_switch_flag": {
-        "mean_ic": NaN,
-        "num_windows": 32,
-        "flip_rate": 1.0
+        "mean_ic": 0.0,
+        "num_windows": 0,
+        "flip_rate": 0.0,
+        "note": "constant_or_zero_factor"
       },
       "momentum_20d": {
         "mean_ic": -0.08182767345260399,
@@ -288,5 +294,51 @@
     "realized_vol_20d",
     "spread_cs",
     "vol_regime_change"
+  ],
+  "p3_factor_diagnostics": {
+    "contract_switch_flag": {
+      "status": "ALL_ZERO",
+      "reason": "全零因子(合约换月标记在当前数据中无触发)",
+      "valid_ic": true,
+      "note": "设为IC=0.0处理"
+    },
+    "momentum_20d": {
+      "status": "OK",
+      "reason": "正常因子, 3696非零值, std=0.068893",
+      "valid_ic": true
+    },
+    "oi_change_1d": {
+      "status": "OK",
+      "reason": "正常因子, 3869非零值, std=39666.041259",
+      "valid_ic": true
+    },
+    "oi_change_rate_7d": {
+      "status": "OK",
+      "reason": "正常因子, 3825非零值, std=0.418261",
+      "valid_ic": true
+    },
+    "oi_level": {
+      "status": "OK",
+      "reason": "正常因子, 3888非零值, std=624886.537433",
+      "valid_ic": true
+    },
+    "realized_vol_20d": {
+      "status": "OK",
+      "reason": "正常因子, 3708非零值, std=0.156472",
+      "valid_ic": true
+    },
+    "spread_cs": {
+      "status": "OK",
+      "reason": "正常因子, 3800非零值, std=1668.803072",
+      "valid_ic": true
+    },
+    "vol_regime_change": {
+      "status": "OK",
+      "reason": "正常因子, 3663非零值, std=0.204045",
+      "valid_ic": true
+    }
+  },
+  "constant_factors_handled": [
+    "contract_switch_flag"
   ]
 }

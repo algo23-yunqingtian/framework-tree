@@ -1,0 +1,285 @@
+﻿{
+    "branch":  "feature/v88-g1",
+    "dshd_wrote_skill_artifact":  false,
+    "action_taken":  "RECORD_ONLY",
+    "a01_tag":  "A01-USER-REMOTE-003",
+    "dshd_modified_skill_artifact":  false,
+    "intervention":  "NONE",
+    "timestamp":  "2026-10-20T11:45:40+08:00",
+    "skill_dir_audit":  {
+                            "original_csv_sha256_actual":  "3C14F50F063C4734950064B1072585626588E93568191D6A85767BA1699B5ED1",
+                            "data_integrity_original_sha256":  "3c14f50f063c4734950064b1072585626588e93568191d6a85767ba1699b5ed1",
+                            "state_snapshot":  {
+                                                   "__pycache__\\factor_extract_v1.cpython-312.pyc":  "AD8C821C7F199B780FE887FB195C3EE6DD923016CF7DECCB12A4B0B7D1BC69F3",
+                                                   "__META__version":  "1.0.0",
+                                                   "tests\\shfe_rb_hc_template.py":  "CAC14FDEFCCE56585D5EF22E7F60C3149598C6D3B6B996B197C6D719A12E4FE8",
+                                                   "factor_definitions.json":  "F78F08FA4B56D33CB599ACB233FF1F782E6F9A9AA29A07542D51668CE74CA855",
+                                                   "output\\factors_metadata.json":  "CD329C6BA1C2EAAFB99E5C64CD1FD04784B41EE14EC7A41AF3B068CAB68284D6",
+                                                   "tests\\run_abnormal_tests.py":  "4519024BC31EED30B9B9BB022C1FD4EC2CB8595D563E9C9057DBAEAD940A47E3",
+                                                   "output\\factors_output.csv":  "01F5F3C15EDDD2B4C5F0A5626DD94FDB95EC949716E551001E6D26D6F9D21C69",
+                                                   "manifest.json":  "5F3E93AAD0705F7AEF979C3310515B9E9F8DD21704D1671BE796BB7256C3CB66",
+                                                   "output\\smoke_test\\factors_metadata.json":  "1F69E24C9E24FAF6DD62E6CC6C45A7AAC5DB7469F097061CE1E3A77B21987387",
+                                                   "README.md":  "B2396DBFC5B5E94FCC078955337C6442643002452B31B182C8BF25377405DAA6",
+                                                   "output\\smoke_test\\factors_output.csv":  "052797E35C4C1FBD2A8DB873D698488AD576694D77BF43B553005ED0C1C8D637",
+                                                   "__META__manifest_sha256":  "5F3E93AAD0705F7AEF979C3310515B9E9F8DD21704D1671BE796BB7256C3CB66",
+                                                   "tests\\abnormal_test_results.json":  "BF3A764615E323AFC15E735A231B4A6BF453113F1B1D907287CD76848333C611",
+                                                   "tests\\shfe_rb_hc_sample.csv":  "84B18164D0A8330FCBE203FF6514A8FA7C5B1A00F498F1BE577EA9E27565192F",
+                                                   "generate_aligned_csv.py":  "6F746B1935409ACB789702E80734E69D6ED33520A5D9E3FC0CCD3A0641B9EAD0",
+                                                   "tests\\COLLECTION_RISK_LIST.md":  "CFA3DADBBBC6F43BA09517C6A76FD9845C53E5520FD7B14F170D919678869142",
+                                                   "tests\\data_quality_checklist.md":  "1AFC655B87AAE4DF62C44BD3A242D07D3968BF261F8D6158EBDCFB115BEDB9CA",
+                                                   "factor_extract_v1.py":  "75000F3E7ACA715DDF50B4CEA9986A426DB6C1EAA50F18877A57DA32A5A1065C",
+                                                   "tests\\shfe_rb_hc_template.json":  "570EE0AD9AD9F1FA752037F56B166F3BC1806C301999223679B7F43795832BDA",
+                                                   "data_sha256.txt":  "419AC48A3E0DC1AD56CD5324FCADCD271B97E94FB01A6350B70077ABC42B9563"
+                                               },
+                            "original_csv_sha256_match":  true,
+                            "declared_missing_files":  [
+
+                                                       ],
+                            "manifest_sha256":  "5F3E93AAD0705F7AEF979C3310515B9E9F8DD21704D1671BE796BB7256C3CB66",
+                            "declared_files":  [
+                                                   "factor_extract_v1.py",
+                                                   "factor_definitions.json",
+                                                   "README.md",
+                                                   "manifest.json"
+                                               ],
+                            "manifest_hash_changed":  false,
+                            "next_version":  "V2",
+                            "check":  "FACTOR_EXTRACT_V1_SKILL_DIR_HASH_AUDIT",
+                            "data_integrity_aligned_rows":  7362,
+                            "dir":  "artifacts/skill_lib/factor_v1",
+                            "files":  [
+                                          {
+                                              "sha256":  "419AC48A3E0DC1AD56CD5324FCADCD271B97E94FB01A6350B70077ABC42B9563",
+                                              "name":  "data_sha256.txt",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  328,
+                                              "last_write":  "2026-10-19T11:26:19+08:00",
+                                              "relative_path":  "data_sha256.txt"
+                                          },
+                                          {
+                                              "sha256":  "F78F08FA4B56D33CB599ACB233FF1F782E6F9A9AA29A07542D51668CE74CA855",
+                                              "name":  "factor_definitions.json",
+                                              "declared":  true,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  2214,
+                                              "last_write":  "2026-10-19T11:23:27+08:00",
+                                              "relative_path":  "factor_definitions.json"
+                                          },
+                                          {
+                                              "sha256":  "75000F3E7ACA715DDF50B4CEA9986A426DB6C1EAA50F18877A57DA32A5A1065C",
+                                              "name":  "factor_extract_v1.py",
+                                              "declared":  true,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  23702,
+                                              "last_write":  "2026-10-19T11:28:30+08:00",
+                                              "relative_path":  "factor_extract_v1.py"
+                                          },
+                                          {
+                                              "sha256":  "6F746B1935409ACB789702E80734E69D6ED33520A5D9E3FC0CCD3A0641B9EAD0",
+                                              "name":  "generate_aligned_csv.py",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  4474,
+                                              "last_write":  "2026-10-19T11:25:37+08:00",
+                                              "relative_path":  "generate_aligned_csv.py"
+                                          },
+                                          {
+                                              "sha256":  "5F3E93AAD0705F7AEF979C3310515B9E9F8DD21704D1671BE796BB7256C3CB66",
+                                              "name":  "manifest.json",
+                                              "declared":  true,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  3083,
+                                              "last_write":  "2026-10-19T12:16:58+08:00",
+                                              "relative_path":  "manifest.json"
+                                          },
+                                          {
+                                              "sha256":  "B2396DBFC5B5E94FCC078955337C6442643002452B31B182C8BF25377405DAA6",
+                                              "name":  "README.md",
+                                              "declared":  true,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  7814,
+                                              "last_write":  "2026-10-19T11:24:20+08:00",
+                                              "relative_path":  "README.md"
+                                          },
+                                          {
+                                              "sha256":  "CD329C6BA1C2EAAFB99E5C64CD1FD04784B41EE14EC7A41AF3B068CAB68284D6",
+                                              "name":  "factors_metadata.json",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  3528,
+                                              "last_write":  "2026-10-19T12:29:22+08:00",
+                                              "relative_path":  "output\\factors_metadata.json"
+                                          },
+                                          {
+                                              "sha256":  "01F5F3C15EDDD2B4C5F0A5626DD94FDB95EC949716E551001E6D26D6F9D21C69",
+                                              "name":  "factors_output.csv",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  308602,
+                                              "last_write":  "2026-10-19T12:29:22+08:00",
+                                              "relative_path":  "output\\factors_output.csv"
+                                          },
+                                          {
+                                              "sha256":  "1F69E24C9E24FAF6DD62E6CC6C45A7AAC5DB7469F097061CE1E3A77B21987387",
+                                              "name":  "factors_metadata.json",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  3528,
+                                              "last_write":  "2026-10-19T12:18:16+08:00",
+                                              "relative_path":  "output\\smoke_test\\factors_metadata.json"
+                                          },
+                                          {
+                                              "sha256":  "052797E35C4C1FBD2A8DB873D698488AD576694D77BF43B553005ED0C1C8D637",
+                                              "name":  "factors_output.csv",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  278365,
+                                              "last_write":  "2026-10-19T12:18:16+08:00",
+                                              "relative_path":  "output\\smoke_test\\factors_output.csv"
+                                          },
+                                          {
+                                              "sha256":  "BF3A764615E323AFC15E735A231B4A6BF453113F1B1D907287CD76848333C611",
+                                              "name":  "abnormal_test_results.json",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  2838,
+                                              "last_write":  "2026-10-19T12:21:33+08:00",
+                                              "relative_path":  "tests\\abnormal_test_results.json"
+                                          },
+                                          {
+                                              "sha256":  "CFA3DADBBBC6F43BA09517C6A76FD9845C53E5520FD7B14F170D919678869142",
+                                              "name":  "COLLECTION_RISK_LIST.md",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  20161,
+                                              "last_write":  "2026-10-19T14:25:58+08:00",
+                                              "relative_path":  "tests\\COLLECTION_RISK_LIST.md"
+                                          },
+                                          {
+                                              "sha256":  "1AFC655B87AAE4DF62C44BD3A242D07D3968BF261F8D6158EBDCFB115BEDB9CA",
+                                              "name":  "data_quality_checklist.md",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  6685,
+                                              "last_write":  "2026-10-19T14:50:18+08:00",
+                                              "relative_path":  "tests\\data_quality_checklist.md"
+                                          },
+                                          {
+                                              "sha256":  "4519024BC31EED30B9B9BB022C1FD4EC2CB8595D563E9C9057DBAEAD940A47E3",
+                                              "name":  "run_abnormal_tests.py",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  11617,
+                                              "last_write":  "2026-10-19T12:20:15+08:00",
+                                              "relative_path":  "tests\\run_abnormal_tests.py"
+                                          },
+                                          {
+                                              "sha256":  "84B18164D0A8330FCBE203FF6514A8FA7C5B1A00F498F1BE577EA9E27565192F",
+                                              "name":  "shfe_rb_hc_sample.csv",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  888,
+                                              "last_write":  "2026-10-19T13:14:56+08:00",
+                                              "relative_path":  "tests\\shfe_rb_hc_sample.csv"
+                                          },
+                                          {
+                                              "sha256":  "570EE0AD9AD9F1FA752037F56B166F3BC1806C301999223679B7F43795832BDA",
+                                              "name":  "shfe_rb_hc_template.json",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  5278,
+                                              "last_write":  "2026-10-19T13:14:56+08:00",
+                                              "relative_path":  "tests\\shfe_rb_hc_template.json"
+                                          },
+                                          {
+                                              "sha256":  "CAC14FDEFCCE56585D5EF22E7F60C3149598C6D3B6B996B197C6D719A12E4FE8",
+                                              "name":  "shfe_rb_hc_template.py",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  8034,
+                                              "last_write":  "2026-10-19T13:14:50+08:00",
+                                              "relative_path":  "tests\\shfe_rb_hc_template.py"
+                                          },
+                                          {
+                                              "sha256":  "AD8C821C7F199B780FE887FB195C3EE6DD923016CF7DECCB12A4B0B7D1BC69F3",
+                                              "name":  "factor_extract_v1.cpython-312.pyc",
+                                              "declared":  false,
+                                              "change":  "UNCHANGED",
+                                              "size_bytes":  27468,
+                                              "last_write":  "2026-10-19T12:21:31+08:00",
+                                              "relative_path":  "__pycache__\\factor_extract_v1.cpython-312.pyc"
+                                          }
+                                      ],
+                            "constraint_f01_script_version":  "v1.0 @ 593d688",
+                            "wrote_anything":  false,
+                            "locked_by":  "DSHC-SKILL-FACTOR01",
+                            "modified_files":  [
+
+                                               ],
+                            "declared_count":  4,
+                            "manifest_last_write":  "2026-10-19T12:16:58+08:00",
+                            "constraint_f01_script_params_only":  true,
+                            "version_locked":  true,
+                            "read_only":  true,
+                            "v1_frozen_violation_files":  [
+
+                                                          ],
+                            "intervention":  "NONE",
+                            "manifest_path":  "artifacts/skill_lib/factor_v1/manifest.json",
+                            "file_count":  18,
+                            "locked_at":  "2026-10-19T00:00:00Z",
+                            "total_bytes":  718607,
+                            "auto_intervene":  false,
+                            "iteration_policy":  "V1 is frozen. New iterations must create V2 in artifacts/skill_lib/factor_v2/. Direct overwrite of V1 files is prohibited.",
+                            "skill_id":  "FACTOR_EXTRACT_V1",
+                            "version":  "1.0.0",
+                            "mode":  "OBSERVATION_ONLY",
+                            "skill_version_changed":  false,
+                            "status":  "VERSION_LOCKED",
+                            "data_integrity_aligned_sha256":  "E74B06787048099D5EBF9962027AF9DC6DFBAA7ED5387B714A9A2CA0440AFE20",
+                            "removed_files":  [
+
+                                              ],
+                            "cold_start":  false,
+                            "added_files":  [
+
+                                            ],
+                            "v1_frozen_violation":  false,
+                            "constraint_f01_script_locked":  true,
+                            "constraint_offline_only":  true,
+                            "data_integrity_unique_dates":  427,
+                            "audit_status":  "SKILL_UNDECLARED_FILE",
+                            "constraint_wind_api_calls":  0,
+                            "undeclared_files":  [
+                                                     "data_sha256.txt",
+                                                     "generate_aligned_csv.py",
+                                                     "output\\factors_metadata.json",
+                                                     "output\\factors_output.csv",
+                                                     "output\\smoke_test\\factors_metadata.json",
+                                                     "output\\smoke_test\\factors_output.csv",
+                                                     "tests\\abnormal_test_results.json",
+                                                     "tests\\COLLECTION_RISK_LIST.md",
+                                                     "tests\\data_quality_checklist.md",
+                                                     "tests\\run_abnormal_tests.py",
+                                                     "tests\\shfe_rb_hc_sample.csv",
+                                                     "tests\\shfe_rb_hc_template.json",
+                                                     "tests\\shfe_rb_hc_template.py",
+                                                     "__pycache__\\factor_extract_v1.cpython-312.pyc"
+                                                 ],
+                            "skill_token":  "DSHC-SKILL-FACTOR01-TOKEN",
+                            "exists":  true,
+                            "manifest_readable":  true,
+                            "previous_version":  "1.0.0",
+                            "skill_baseline":  "feature/v88-g1 HEAD=19e80cb"
+                        },
+    "token":  "DSHD-P81-TWEAK-TOKEN",
+    "task":  "DSHD-P81-TWEAK",
+    "dshd_unlocked_skill_version":  false,
+    "read_only":  true,
+    "audit_only":  true,
+    "token_state":  "ACTIVE_AUDIT_READ_ONLY",
+    "poll_count":  255,
+    "agent":  "DSHD-P81",
+    "verification_type":  "FACTOR_EXTRACT_V1_SKILL_DIR_HASH_AUDIT"
+}

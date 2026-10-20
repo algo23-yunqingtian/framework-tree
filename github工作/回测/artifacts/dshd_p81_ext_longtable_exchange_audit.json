@@ -1,0 +1,271 @@
+﻿{
+    "intervention":  "NONE",
+    "agent":  "DSHD-P81",
+    "a01_tag":  "A01-USER-REMOTE-003",
+    "exchange_suffixes_known":  [
+                                    "SHF",
+                                    "GFE",
+                                    "DCE",
+                                    "CZCE",
+                                    "INE"
+                                ],
+    "exchange_registry_product_count":  60,
+    "verification_type":  "LONG_TABLE_INTEGRITY_AND_EXCHANGE_BINDING",
+    "attribution_audit":  {
+                              "lc_gfe_expected_exchange":  "GFE",
+                              "lc_shf_verdict":  "MISMATCH",
+                              "files_scanned":  23,
+                              "intervention":  "NONE",
+                              "owner_filter":  "dshc_* (json + jsonl under 2MB)",
+                              "lc_gfe_verdict":  "BOUND_OK",
+                              "check":  "DSHC_ATTRIBUTION_SYMBOL_EXCHANGE_SCAN",
+                              "lc_repaired_via":  "",
+                              "lc_binding_repaired":  false,
+                              "unknown_exchange_count":  0,
+                              "mode":  "OBSERVATION_ONLY",
+                              "distinct_symbols":  [
+                                                       "CU.SHF",
+                                                       "ZN.SHF",
+                                                       "PB.SHF",
+                                                       "AL.SHF",
+                                                       "SN.SHF",
+                                                       "NI.SHF",
+                                                       "LC.SHF"
+                                                   ],
+                              "mismatch_count":  1,
+                              "audit_status":  "ATTRIBUTED_EXCHANGE_ANOMALY",
+                              "symbol_tokens_total":  7,
+                              "mismatches":  [
+                                                 {
+                                                     "symbol":  "LC.SHF",
+                                                     "verdict":  "MISMATCH",
+                                                     "files":  [
+                                                                   "dshc_f01_events.jsonl",
+                                                                   "dshc_f01_receipt.json",
+                                                                   "dshc_ignite_a01_events.jsonl",
+                                                                   "dshc_ignite_run_receipt.json",
+                                                                   "dshc_ignite_run_receipt_A01_USER_REMOTE_001.json",
+                                                                   "dshc_ignite_run_receipt_A02_wait_cycle1.json",
+                                                                   "dshc_ignite_run_receipt_A02_wait_cycle2.json",
+                                                                   "dshc_p90a_final_events.jsonl",
+                                                                   "dshc_raw_preview_check.json",
+                                                                   "dshc_t1_fetch_events.jsonl",
+                                                                   "dshc_t1_lessons.json",
+                                                                   "dshc_t1_run_receipt.json"
+                                                               ],
+                                                     "no_data_present_in_files":  true,
+                                                     "detail":  "LC belongs to GFE but is bound to SHF; no intervention"
+                                                 }
+                                             ],
+                              "auto_clear_enabled":  true,
+                              "lc_shf_expected_exchange":  "GFE",
+                              "no_data_symbols":  [
+                                                      "LC.SHF"
+                                                  ],
+                              "auto_intervene":  false
+                          },
+    "token_state":  "ACTIVE_AUDIT_READ_ONLY",
+    "symbol_whitelist":  [
+                             "AL.SHF",
+                             "CU.SHF",
+                             "NI.SHF",
+                             "PB.SHF",
+                             "SN.SHF",
+                             "ZN.SHF"
+                         ],
+    "exchange_field_check":  "ON",
+    "branch":  "feature/v88-g1",
+    "task":  "DSHD-P81-EXT",
+    "action_taken":  "RECORD_ONLY",
+    "indicator_expected":  [
+                               "CLOSE",
+                               "VOL",
+                               "OI",
+                               "SETTLE"
+                           ],
+    "csv_bytes":  285191,
+    "long_table_audit":  {
+                             "data_rows":  7362,
+                             "symbols":  [
+                                             "AL.SHF",
+                                             "CU.SHF",
+                                             "NI.SHF",
+                                             "PB.SHF",
+                                             "SN.SHF",
+                                             "ZN.SHF"
+                                         ],
+                             "indicators":  [
+                                                "CLOSE",
+                                                "OI",
+                                                "SETTLE",
+                                                "VOL"
+                                            ],
+                             "sources":  [
+                                             "WDF-GUI"
+                                         ],
+                             "malformed_row_count":  0,
+                             "symbol_indicator_row_counts":  {
+                                                                 "PB.SHF|VOL":  27,
+                                                                 "AL.SHF|OI":  400,
+                                                                 "AL.SHF|SETTLE":  400,
+                                                                 "AL.SHF|CLOSE":  400,
+                                                                 "NI.SHF|VOL":  27,
+                                                                 "NI.SHF|SETTLE":  400,
+                                                                 "SN.SHF|SETTLE":  400,
+                                                                 "SN.SHF|OI":  400,
+                                                                 "CU.SHF|VOL":  27,
+                                                                 "CU.SHF|CLOSE":  400,
+                                                                 "SN.SHF|CLOSE":  400,
+                                                                 "NI.SHF|OI":  400,
+                                                                 "ZN.SHF|CLOSE":  400,
+                                                                 "ZN.SHF|OI":  400,
+                                                                 "PB.SHF|OI":  400,
+                                                                 "CU.SHF|OI":  400,
+                                                                 "CU.SHF|SETTLE":  400,
+                                                                 "SN.SHF|VOL":  27,
+                                                                 "NI.SHF|CLOSE":  400,
+                                                                 "AL.SHF|VOL":  27,
+                                                                 "PB.SHF|SETTLE":  400,
+                                                                 "ZN.SHF|VOL":  27,
+                                                                 "ZN.SHF|SETTLE":  400,
+                                                                 "PB.SHF|CLOSE":  400
+                                                             },
+                             "bad_date_count":  0,
+                             "primary_key_columns":  [
+                                                         "date",
+                                                         "symbol",
+                                                         "indicator"
+                                                     ],
+                             "indicator_row_counts":  {
+                                                          "CLOSE":  2400,
+                                                          "SETTLE":  2400,
+                                                          "OI":  2400,
+                                                          "VOL":  162
+                                                      },
+                             "auto_intervene":  false,
+                             "exchange_ok_count":  6,
+                             "exchange_unknown_count":  0,
+                             "exchange_mismatch_count":  0,
+                             "value_min":  "7521",
+                             "distinct_source_count":  1,
+                             "value_max":  "453240",
+                             "key_field_count_expected":  5,
+                             "symbol_exchange_bindings":  [
+                                                              {
+                                                                  "suffix":  "SHF",
+                                                                  "expected_exchange":  "SHF",
+                                                                  "ok":  true,
+                                                                  "symbol":  "AL.SHF",
+                                                                  "verdict":  "BOUND_OK",
+                                                                  "product":  "AL",
+                                                                  "actual_exchange":  "SHF",
+                                                                  "detail":  "AL correctly bound to SHF"
+                                                              },
+                                                              {
+                                                                  "suffix":  "SHF",
+                                                                  "expected_exchange":  "SHF",
+                                                                  "ok":  true,
+                                                                  "symbol":  "CU.SHF",
+                                                                  "verdict":  "BOUND_OK",
+                                                                  "product":  "CU",
+                                                                  "actual_exchange":  "SHF",
+                                                                  "detail":  "CU correctly bound to SHF"
+                                                              },
+                                                              {
+                                                                  "suffix":  "SHF",
+                                                                  "expected_exchange":  "SHF",
+                                                                  "ok":  true,
+                                                                  "symbol":  "NI.SHF",
+                                                                  "verdict":  "BOUND_OK",
+                                                                  "product":  "NI",
+                                                                  "actual_exchange":  "SHF",
+                                                                  "detail":  "NI correctly bound to SHF"
+                                                              },
+                                                              {
+                                                                  "suffix":  "SHF",
+                                                                  "expected_exchange":  "SHF",
+                                                                  "ok":  true,
+                                                                  "symbol":  "PB.SHF",
+                                                                  "verdict":  "BOUND_OK",
+                                                                  "product":  "PB",
+                                                                  "actual_exchange":  "SHF",
+                                                                  "detail":  "PB correctly bound to SHF"
+                                                              },
+                                                              {
+                                                                  "suffix":  "SHF",
+                                                                  "expected_exchange":  "SHF",
+                                                                  "ok":  true,
+                                                                  "symbol":  "SN.SHF",
+                                                                  "verdict":  "BOUND_OK",
+                                                                  "product":  "SN",
+                                                                  "actual_exchange":  "SHF",
+                                                                  "detail":  "SN correctly bound to SHF"
+                                                              },
+                                                              {
+                                                                  "suffix":  "SHF",
+                                                                  "expected_exchange":  "SHF",
+                                                                  "ok":  true,
+                                                                  "symbol":  "ZN.SHF",
+                                                                  "verdict":  "BOUND_OK",
+                                                                  "product":  "ZN",
+                                                                  "actual_exchange":  "SHF",
+                                                                  "detail":  "ZN correctly bound to SHF"
+                                                              }
+                                                          ],
+                             "format":  "LONG",
+                             "date_max":  "2026-10-19",
+                             "distinct_symbol_count":  6,
+                             "blank_key_field_count":  0,
+                             "exists":  true,
+                             "duplicate_key_count":  0,
+                             "indicators_missing":  [
+
+                                                    ],
+                             "check":  "LONG_TABLE_PRIMARY_KEY_INTEGRITY",
+                             "distinct_indicator_count":  4,
+                             "symbols_not_whitelisted":  [
+
+                                                         ],
+                             "watchlist_present":  [
+
+                                                   ],
+                             "audit_status":  "LONGTABLE_AUDIT_OK",
+                             "whitelist_absent":  [
+
+                                                  ],
+                             "indicators_unexpected":  [
+
+                                                       ],
+                             "date_min":  "2025-01-02",
+                             "header_column_count":  5,
+                             "symbol_row_counts":  {
+                                                       "ZN.SHF":  1227,
+                                                       "SN.SHF":  1227,
+                                                       "AL.SHF":  1227,
+                                                       "CU.SHF":  1227,
+                                                       "PB.SHF":  1227,
+                                                       "NI.SHF":  1227
+                                                   },
+                             "header":  "date,symbol,indicator,value,source",
+                             "malformed_row_samples":  [
+
+                                                       ],
+                             "mode":  "OBSERVATION_ONLY",
+                             "intervention":  "NONE",
+                             "non_numeric_value_count":  0,
+                             "exchange_info_count":  0,
+                             "duplicate_key_samples":  [
+
+                                                       ]
+                         },
+    "token":  "DSHD-P81-EXT-TOKEN",
+    "poll_count":  255,
+    "symbol_watchlist":  [
+                             "LC.GFE"
+                         ],
+    "audit_only":  true,
+    "csv_sha256":  "3C14F50F063C4734950064B1072585626588E93568191D6A85767BA1699B5ED1",
+    "csv_data_rows":  7362,
+    "csv_path":  "output_sample/wdf_sample_metals_raw.csv",
+    "timestamp":  "2026-10-20T11:45:40+08:00"
+}

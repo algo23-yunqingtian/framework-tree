@@ -1,0 +1,51 @@
+﻿{
+    "action_taken":  "NONE",
+    "timestamp":  "2026-10-20T11:45:40+08:00",
+    "scan_status":  "SCAN_OK_P68_GATE_STILL_AUTHORITY",
+    "quick_scan":  {
+                       "still_stub_header_only":  false,
+                       "keywords_missing":  [
+
+                                            ],
+                       "blank_alarm":  false,
+                       "min_rows_ok":  true,
+                       "max_consecutive_blank":  0,
+                       "header":  "date,symbol,indicator,value,source",
+                       "circuit_breaker_raised":  false,
+                       "size_bytes":  285191,
+                       "data_rows_convention":  "DATA_ONLY_V2",
+                       "keyword_count":  5,
+                       "exists":  true,
+                       "header_columns":  [
+                                              "date",
+                                              "symbol",
+                                              "indicator",
+                                              "value",
+                                              "source"
+                                          ],
+                       "header_column_count":  5,
+                       "rough_lines":  7363,
+                       "data_rows":  7362,
+                       "scan_status":  "SCAN_OK_P68_GATE_STILL_AUTHORITY",
+                       "dshd_bypasses_p68":  false,
+                       "min_size_ok":  true,
+                       "data_rows_legacy_header_inclusive":  7363,
+                       "format_kind":  "LONG",
+                       "header_line_count":  1,
+                       "min_size_required":  5120,
+                       "min_rows_required":  300,
+                       "keywords_missing_count":  0,
+                       "p68_gate_is_authority":  true
+                   },
+    "a01_tag":  "A01-USER-REMOTE-003",
+    "task":  "DSHD-P81-WATCH",
+    "p68_gate_is_authority":  true,
+    "poll_count":  255,
+    "token":  "DSHD-P81-TOKEN",
+    "verification_type":  "QUICK_SCAN_NON_AUTHORITATIVE",
+    "audit_only":  true,
+    "circuit_breaker_raised":  false,
+    "dshd_bypasses_p68":  false,
+    "agent":  "DSHD-P81",
+    "csv_path":  "output_sample/wdf_sample_metals_raw.csv"
+}

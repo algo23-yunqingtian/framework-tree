@@ -1,0 +1,275 @@
+﻿{
+    "dshd_ran_backtest":  false,
+    "action_taken":  "RECORD_ONLY",
+    "a01_tag":  "A01-USER-REMOTE-003",
+    "intervention":  "NONE",
+    "timestamp":  "2026-10-20T11:45:40+08:00",
+    "branch":  "feature/v88-g1",
+    "dshd_modified_p49_artifact":  false,
+    "p49_artifact_audit":  {
+                               "manifest_sealed":  true,
+                               "expected_file_count":  7,
+                               "manifest_agent":  "DSHA-P49",
+                               "exists":  true,
+                               "post_seal_mutation_kinds":  [
+                                                                "ADDED_UNDECLARED"
+                                                            ],
+                               "wrote_anything":  false,
+                               "manifest_declared_files":  [
+                                                               "backtest_metrics.json",
+                                                               "backtest_report.pdf",
+                                                               "symbol_performance.csv",
+                                                               "symbol_performance.md",
+                                                               "pipeline_metadata.json",
+                                                               "MANIFEST.json",
+                                                               "p49_full_review.md"
+                                                           ],
+                               "check":  "P49_BACKTEST_ARTIFACT_READ_ONLY_AUDIT",
+                               "dir":  "artifacts/p49_backtest",
+                               "post_seal_mutation":  true,
+                               "intervention":  "NONE",
+                               "audit_status":  "P49_POSTSEAL_MUTATION",
+                               "missing_files":  [
+
+                                                 ],
+                               "under_min_size_files":  [
+
+                                                        ],
+                               "manifest_declared_count":  7,
+                               "manifest_status":  "BACKTEST_COMPLETE",
+                               "mode":  "OBSERVATION_ONLY",
+                               "manifest_wind_api_calls":  0,
+                               "manifest_archive_id":  "DSHA-P49-20261019_103457",
+                               "expected_source":  "MANIFEST.files[].path",
+                               "exchange_column_rows":  [
+                                                            {
+                                                                "column_matches_suffix":  true,
+                                                                "derived_suffix":  "SHF",
+                                                                "binding_verdict":  "BOUND_OK",
+                                                                "normalized_suffix":  "SHF",
+                                                                "symbol":  "AL.SHF",
+                                                                "exchange_column":  "上期所(SHFE)"
+                                                            },
+                                                            {
+                                                                "column_matches_suffix":  true,
+                                                                "derived_suffix":  "SHF",
+                                                                "binding_verdict":  "BOUND_OK",
+                                                                "normalized_suffix":  "SHF",
+                                                                "symbol":  "CU.SHF",
+                                                                "exchange_column":  "上期所(SHFE)"
+                                                            },
+                                                            {
+                                                                "column_matches_suffix":  true,
+                                                                "derived_suffix":  "SHF",
+                                                                "binding_verdict":  "BOUND_OK",
+                                                                "normalized_suffix":  "SHF",
+                                                                "symbol":  "NI.SHF",
+                                                                "exchange_column":  "上期所(SHFE)"
+                                                            },
+                                                            {
+                                                                "column_matches_suffix":  true,
+                                                                "derived_suffix":  "SHF",
+                                                                "binding_verdict":  "BOUND_OK",
+                                                                "normalized_suffix":  "SHF",
+                                                                "symbol":  "PB.SHF",
+                                                                "exchange_column":  "上期所(SHFE)"
+                                                            },
+                                                            {
+                                                                "column_matches_suffix":  true,
+                                                                "derived_suffix":  "SHF",
+                                                                "binding_verdict":  "BOUND_OK",
+                                                                "normalized_suffix":  "SHF",
+                                                                "symbol":  "SN.SHF",
+                                                                "exchange_column":  "上期所(SHFE)"
+                                                            },
+                                                            {
+                                                                "column_matches_suffix":  true,
+                                                                "derived_suffix":  "SHF",
+                                                                "binding_verdict":  "BOUND_OK",
+                                                                "normalized_suffix":  "SHF",
+                                                                "symbol":  "ZN.SHF",
+                                                                "exchange_column":  "上期所(SHFE)"
+                                                            }
+                                                        ],
+                               "read_only":  true,
+                               "manifest_release_permit":  "ISSUED",
+                               "cold_start":  false,
+                               "exchange_column_mismatch_count":  0,
+                               "state_snapshot":  {
+                                                      "pipeline_metadata.json":  "8B17168728FF70F1E1883891A68386F88CAD7E0550C3E2E24414440123AC2496",
+                                                      "backtest_report.pdf":  "5DDC94E78245A86C74090E2EAA18BBE5B2424647A159DBAA95013CA665ECD0D1",
+                                                      "p49_full_review.md":  "6393687BB0F0A59F3822142B74821409BFEA271F5C69AC7F31C5BB283B0CDCCF",
+                                                      "MANIFEST.json":  "45DB1A5AAB34EFCF5F7F6EF12425755C98E1B67ACF5FF00F89E83B0E078712AC",
+                                                      "symbol_performance.csv":  "3241004FB39C0F29564878DFF8D70C5062CC84E35966AC13A4CA3ED90BBC8CE2",
+                                                      "backtest_metrics.json":  "E6B5BCF8CC55D6652A1EF51E535B422C88FD3697349798DFE9CA8036FD0E0F26",
+                                                      "optimization_params.json":  "744029D7FF0B11313A817B5E9B3099525855E1EE5519FCFA01090884C6A30275",
+                                                      "baseline_lock.json":  "BDCE3814139D79B1AEBDE191A94A2FAB22A34B4A5DDDD02C57040633F604A705",
+                                                      "comparison_framework.md":  "8AA4AC62197754B62B895B7FFF7DC511736861DAC36CF8FF6F9A2A763F0BB8FE",
+                                                      "symbol_performance.md":  "D68C156FFFA921637E0FC462445C642C9C0EABACB4D933CAA1F42A101320130C",
+                                                      "factor_candidate_list.md":  "7F887DEC7D7D3D4A6B3C1BB9ABF2F5B7E9317A32D25378F757DD584B3C9115C8",
+                                                      "pipeline_v2_draft.py":  "FDBA5F4F451471C813E118B45CDBF8767516227E256FF28029D73587F4547BEE"
+                                                  },
+                               "total_bytes":  218305,
+                               "files":  [
+                                             {
+                                                 "relative_path":  "backtest_metrics.json",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T10:34:51+08:00",
+                                                 "name":  "backtest_metrics.json",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  true,
+                                                 "size_bytes":  11667,
+                                                 "sha256":  "E6B5BCF8CC55D6652A1EF51E535B422C88FD3697349798DFE9CA8036FD0E0F26"
+                                             },
+                                             {
+                                                 "relative_path":  "backtest_report.pdf",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T10:34:57+08:00",
+                                                 "name":  "backtest_report.pdf",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  true,
+                                                 "size_bytes":  69000,
+                                                 "sha256":  "5DDC94E78245A86C74090E2EAA18BBE5B2424647A159DBAA95013CA665ECD0D1"
+                                             },
+                                             {
+                                                 "relative_path":  "baseline_lock.json",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T12:21:23+08:00",
+                                                 "name":  "baseline_lock.json",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  false,
+                                                 "size_bytes":  6041,
+                                                 "sha256":  "BDCE3814139D79B1AEBDE191A94A2FAB22A34B4A5DDDD02C57040633F604A705"
+                                             },
+                                             {
+                                                 "relative_path":  "comparison_framework.md",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T11:26:47+08:00",
+                                                 "name":  "comparison_framework.md",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  false,
+                                                 "size_bytes":  17329,
+                                                 "sha256":  "8AA4AC62197754B62B895B7FFF7DC511736861DAC36CF8FF6F9A2A763F0BB8FE"
+                                             },
+                                             {
+                                                 "relative_path":  "factor_candidate_list.md",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T11:22:10+08:00",
+                                                 "name":  "factor_candidate_list.md",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  false,
+                                                 "size_bytes":  19969,
+                                                 "sha256":  "7F887DEC7D7D3D4A6B3C1BB9ABF2F5B7E9317A32D25378F757DD584B3C9115C8"
+                                             },
+                                             {
+                                                 "relative_path":  "MANIFEST.json",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T10:56:08+08:00",
+                                                 "name":  "MANIFEST.json",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  true,
+                                                 "size_bytes":  6166,
+                                                 "sha256":  "45DB1A5AAB34EFCF5F7F6EF12425755C98E1B67ACF5FF00F89E83B0E078712AC"
+                                             },
+                                             {
+                                                 "relative_path":  "optimization_params.json",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T11:28:02+08:00",
+                                                 "name":  "optimization_params.json",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  false,
+                                                 "size_bytes":  9411,
+                                                 "sha256":  "744029D7FF0B11313A817B5E9B3099525855E1EE5519FCFA01090884C6A30275"
+                                             },
+                                             {
+                                                 "relative_path":  "p49_full_review.md",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T10:54:11+08:00",
+                                                 "name":  "p49_full_review.md",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  true,
+                                                 "size_bytes":  15992,
+                                                 "sha256":  "6393687BB0F0A59F3822142B74821409BFEA271F5C69AC7F31C5BB283B0CDCCF"
+                                             },
+                                             {
+                                                 "relative_path":  "pipeline_metadata.json",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T10:34:57+08:00",
+                                                 "name":  "pipeline_metadata.json",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  true,
+                                                 "size_bytes":  6671,
+                                                 "sha256":  "8B17168728FF70F1E1883891A68386F88CAD7E0550C3E2E24414440123AC2496"
+                                             },
+                                             {
+                                                 "relative_path":  "pipeline_v2_draft.py",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T11:25:37+08:00",
+                                                 "name":  "pipeline_v2_draft.py",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  false,
+                                                 "size_bytes":  52424,
+                                                 "sha256":  "FDBA5F4F451471C813E118B45CDBF8767516227E256FF28029D73587F4547BEE"
+                                             },
+                                             {
+                                                 "relative_path":  "symbol_performance.csv",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T10:34:57+08:00",
+                                                 "name":  "symbol_performance.csv",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  true,
+                                                 "size_bytes":  1300,
+                                                 "sha256":  "3241004FB39C0F29564878DFF8D70C5062CC84E35966AC13A4CA3ED90BBC8CE2"
+                                             },
+                                             {
+                                                 "relative_path":  "symbol_performance.md",
+                                                 "under_min_size":  false,
+                                                 "last_write":  "2026-10-19T10:34:57+08:00",
+                                                 "name":  "symbol_performance.md",
+                                                 "change":  "UNCHANGED",
+                                                 "expected":  true,
+                                                 "size_bytes":  2335,
+                                                 "sha256":  "D68C156FFFA921637E0FC462445C642C9C0EABACB4D933CAA1F42A101320130C"
+                                             }
+                                         ],
+                               "added_files":  [
+
+                                               ],
+                               "manifest_gate":  "READY",
+                               "manifest_lc_gfe":  "SKIPPED",
+                               "manifest_csv_not_modified":  true,
+                               "removed_files":  [
+
+                                                 ],
+                               "manifest_symbols_run":  6,
+                               "file_count":  12,
+                               "manifest_last_write":  "2026-10-19T10:56:08+08:00",
+                               "manifest_real_wind_call":  false,
+                               "auto_intervene":  false,
+                               "manifest_sealed_at":  "2026-10-19T10:56:08+08:00",
+                               "manifest_readable":  true,
+                               "unexpected_files":  [
+                                                        "baseline_lock.json",
+                                                        "comparison_framework.md",
+                                                        "factor_candidate_list.md",
+                                                        "optimization_params.json",
+                                                        "pipeline_v2_draft.py"
+                                                    ],
+                               "manifest_offline_only":  true,
+                               "manifest_token":  "DSHA-P49-TOKEN",
+                               "hash_changed_files":  [
+
+                                                      ],
+                               "post_seal_mutation_kinds_count":  1,
+                               "post_seal_archive_modify_alert":  true
+                           },
+    "token":  "DSHD-P81-EXT-TOKEN",
+    "task":  "DSHD-P81-EXT",
+    "read_only":  true,
+    "audit_only":  true,
+    "token_state":  "ACTIVE_AUDIT_READ_ONLY",
+    "dshd_wrote_p49_artifact":  false,
+    "poll_count":  255,
+    "agent":  "DSHD-P81",
+    "verification_type":  "P49_BACKTEST_ARTIFACT_READ_ONLY_AUDIT"
+}

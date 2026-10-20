@@ -1,0 +1,169 @@
+{
+  "last_scan": "2026-10-19T23:42:48+08:00",
+  "total_scans": 19,
+  "total_alerts_detected": 10,
+  "alerts_history": [],
+  "last_scan_results": {
+    "scanned_lines": 5614,
+    "anomalies_found": 35,
+    "by_severity": {
+      "NORMAL": 10,
+      "HIGH": 16,
+      "MEDIUM": 9
+    },
+    "by_type": {
+      "SMOKETEST_COMPLETE": 10,
+      "LOCK_CONFLICT": 7,
+      "COLLECTION_TIMEOUT": 7,
+      "BLACKLIST_INTERCEPT": 3,
+      "PIPELINE_STARTUP_FAILURE": 1,
+      "PIPELINE_HEARTBEAT_LOST": 1,
+      "FIELD_VALIDATION_ERROR": 1,
+      "DATA_MISSING": 1,
+      "SCHEMA_MISMATCH": 1,
+      "DUPLICATE_DATA": 1,
+      "TIME_SEQUENCE_ERROR": 1,
+      "CROSS_CONTAMINATION": 1
+    }
+  },
+  "scan_history": [
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "scanned_lines": 4410,
+      "anomalies_found": 1
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "scanned_lines": 4411,
+      "anomalies_found": 2
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "scanned_lines": 4412,
+      "anomalies_found": 3
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "scanned_lines": 4413,
+      "anomalies_found": 4
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "scanned_lines": 4843,
+      "anomalies_found": 8,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "scanned_lines": 4844,
+      "anomalies_found": 9,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "scanned_lines": 4845,
+      "anomalies_found": 10,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "scanned_lines": 4845,
+      "anomalies_found": 10,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "scanned_lines": 4856,
+      "anomalies_found": 13,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "scanned_lines": 4857,
+      "anomalies_found": 14,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "scanned_lines": 4858,
+      "anomalies_found": 15,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "scanned_lines": 4858,
+      "anomalies_found": 15,
+      "source": "DSHD-TASK037"
+    },
+    {
+      "timestamp": "2026-10-19T23:40:58+08:00",
+      "scanned_lines": 5599,
+      "anomalies_found": 18,
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:40:58+08:00",
+      "scanned_lines": 5600,
+      "anomalies_found": 19,
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "scanned_lines": 5604,
+      "anomalies_found": 20,
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "scanned_lines": 5605,
+      "anomalies_found": 21,
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "scanned_lines": 5605,
+      "anomalies_found": 21,
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "scanned_lines": 5613,
+      "anomalies_found": 34,
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "scanned_lines": 5614,
+      "anomalies_found": 35,
+      "source": "DSHD-TASK038"
+    }
+  ],
+  "last_completeness_check": {
+    "scanned_lines": 5605,
+    "t038_events": 4,
+    "types_detected": 4,
+    "types_expected": 12,
+    "completeness_pct": 33.3,
+    "missing_types": [
+      "CROSS_CONTAMINATION",
+      "DATA_MISSING",
+      "DUPLICATE_DATA",
+      "FIELD_VALIDATION_ERROR",
+      "PIPELINE_HEARTBEAT_LOST",
+      "PIPELINE_STARTUP_FAILURE",
+      "SCHEMA_MISMATCH",
+      "TIME_SEQUENCE_ERROR"
+    ],
+    "high_types_captured": [
+      "COLLECTION_TIMEOUT",
+      "LOCK_CONFLICT"
+    ],
+    "high_types_missing": [
+      "PIPELINE_HEARTBEAT_LOST",
+      "PIPELINE_STARTUP_FAILURE"
+    ],
+    "zero_loss_for_high": false,
+    "passed": false,
+    "detail": "Scanned 5605 events. Types detected: 4/12 (33%). High-severity: 2/4 captured. T038 events: 4. [FAIL] Missing HIGH: {'PIPELINE_STARTUP_FAILURE', 'PIPELINE_HEARTBEAT_LOST'}"
+  }
+}

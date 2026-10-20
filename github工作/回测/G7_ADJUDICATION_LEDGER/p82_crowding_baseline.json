@@ -1,0 +1,233 @@
+{
+  "baseline_id": "DSHD-TASK042-CROWDING-BASELINE",
+  "version": "1.0.0",
+  "generated_at": "2026-10-20T08:10:42+08:00",
+  "task_id": "DSHD-TASK-040-WATCHER-FIX",
+  "data_source": "p82_crowding_state.json (TASK-039 Run #3)",
+  "total_factors_analyzed": 7,
+  "factors_included": [
+    "momentum_20d",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "oi_level",
+    "realized_vol_20d",
+    "spread_cs",
+    "vol_regime_change"
+  ],
+  "cross_sectional_percentiles": {
+    "vol_regime_change": {
+      "score": 15.64,
+      "percentile": 0.0,
+      "rank": 1,
+      "total_factors": 7
+    },
+    "momentum_20d": {
+      "score": 16.94,
+      "percentile": 16.7,
+      "rank": 2,
+      "total_factors": 7
+    },
+    "oi_change_rate_7d": {
+      "score": 20.19,
+      "percentile": 33.3,
+      "rank": 3,
+      "total_factors": 7
+    },
+    "spread_cs": {
+      "score": 24.92,
+      "percentile": 50.0,
+      "rank": 4,
+      "total_factors": 7
+    },
+    "oi_change_1d": {
+      "score": 37.1,
+      "percentile": 66.7,
+      "rank": 5,
+      "total_factors": 7
+    },
+    "oi_level": {
+      "score": 46.84,
+      "percentile": 83.3,
+      "rank": 6,
+      "total_factors": 7
+    },
+    "realized_vol_20d": {
+      "score": 47.58,
+      "percentile": 100.0,
+      "rank": 7,
+      "total_factors": 7
+    }
+  },
+  "p90_threshold": 47.6,
+  "p90_threshold_source": "10% above 90th percentile of 7 factors (score=46.8)",
+  "component_baselines": {
+    "directional": {
+      "mean": 12.89,
+      "min": 0.53,
+      "max": 35.0,
+      "p90": 35.0
+    },
+    "value_concentration": {
+      "mean": 15.97,
+      "min": 7.25,
+      "max": 26.03,
+      "p90": 23.75
+    },
+    "ic_decay": {
+      "mean": 1.02,
+      "min": 0,
+      "max": 4.59,
+      "p90": 1.94
+    }
+  },
+  "portfolio_baseline": {
+    "mean_score": 30.53,
+    "max_score": 47.58,
+    "min_score": 15.64,
+    "std_score": 12.07,
+    "overall_level": "CROWDING_LOW"
+  },
+  "history_accumulation": {
+    "run_count": 9,
+    "runs": [
+      {
+        "run_id": 1,
+        "timestamp": "2026-10-20T08:10:42+08:00",
+        "source": "DSHD-TASK039",
+        "scores": {
+          "vol_regime_change": 15.64,
+          "momentum_20d": 16.94,
+          "oi_change_rate_7d": 20.19,
+          "spread_cs": 24.92,
+          "oi_change_1d": 37.1,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58
+        }
+      },
+      {
+        "run_id": 2,
+        "timestamp": "2026-10-20T08:50:01+08:00",
+        "source": "DSHD-TASK041",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 3,
+        "timestamp": "2026-10-20T08:50:35+08:00",
+        "source": "DSHD-TASK041",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 4,
+        "timestamp": "2026-10-20T08:52:24+08:00",
+        "source": "DSHD-TASK041",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 5,
+        "timestamp": "2026-10-20T08:53:52+08:00",
+        "source": "DSHD-TASK041",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 6,
+        "timestamp": "2026-10-20T08:56:33+08:00",
+        "source": "DSHD-TASK041",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 7,
+        "timestamp": "2026-10-20T08:57:42+08:00",
+        "source": "DSHD-TASK041",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 8,
+        "timestamp": "2026-10-20T11:37:28+08:00",
+        "source": "DSHD-TASK042",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 9,
+        "timestamp": "2026-10-20T11:42:17+08:00",
+        "source": "DSHD-TASK042",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      }
+    ],
+    "note": "Baseline accumulated over 8 runs. Minimum 5 runs recommended for stable percentile thresholds."
+  },
+  "thresholds_solidified": {
+    "p90_percentile_threshold": 51.5,
+    "directional_concentration_extreme": 0.7,
+    "value_hhi_high": 0.25,
+    "ic_decay_threshold": 0.3,
+    "portfolio_alert_threshold": 50.0,
+    "alert_severity": "MEDIUM",
+    "hard_locked": true,
+    "hard_lock_reason": "TASK-040 PERMANENT"
+  },
+  "last_updated": "2026-10-20T11:42:17+08:00"
+}

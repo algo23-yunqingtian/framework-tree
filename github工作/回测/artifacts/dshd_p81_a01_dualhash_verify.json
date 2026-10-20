@@ -1,0 +1,33 @@
+﻿{
+    "mismatch_code":  "A01_HASH_MISMATCH_WARNING",
+    "csv_path":  "output_sample/wdf_sample_metals_raw.csv",
+    "action_taken":  "NONE",
+    "audit_only":  true,
+    "warning_raised":  true,
+    "agent":  "DSHD-P81",
+    "a01_tag":  "A01-USER-REMOTE-003",
+    "task":  "DSHD-P81-WATCH",
+    "hash_a_method":  "System.Security.Cryptography.SHA256 over raw file bytes",
+    "dual_hash":  {
+                      "independent_verify":  true,
+                      "hash_a_byte_read":  "3C14F50F063C4734950064B1072585626588E93568191D6A85767BA1699B5ED1",
+                      "hash_b_getfilehash":  "3C14F50F063C4734950064B1072585626588E93568191D6A85767BA1699B5ED1",
+                      "ref_a03_csv_output":  "41EC38315397FB70CC30BB313B88C3965BB50B30A628A3422743A48026806A92",
+                      "exists":  true,
+                      "ref_a01_prior_observation":  "BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895",
+                      "mismatch_code":  "A01_HASH_MISMATCH_WARNING",
+                      "scan_status":  "A_EQ_B_REF_STALE_MISMATCH",
+                      "matches_ref_a01_prior":  false,
+                      "a_eq_b":  true,
+                      "matches_ref_a03":  false,
+                      "warning_raised":  true
+                  },
+    "poll_count":  255,
+    "verification_type":  "DUAL_HASH_INDEPENDENT",
+    "hash_b_method":  "Get-FileHash -Algorithm SHA256 (independent)",
+    "all_match":  false,
+    "token":  "DSHD-P81-TOKEN",
+    "timestamp":  "2026-10-20T11:45:40+08:00",
+    "scan_status":  "A_EQ_B_REF_STALE_MISMATCH",
+    "csv_first_seen":  "PRESENT"
+}

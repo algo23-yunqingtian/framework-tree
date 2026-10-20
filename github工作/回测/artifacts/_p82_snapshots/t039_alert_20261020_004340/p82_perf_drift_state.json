@@ -1,0 +1,126 @@
+{
+  "last_run": "2026-10-20T00:43:40+08:00",
+  "total_runs": 8,
+  "history": [
+    {
+      "timestamp": "2026-10-19T20:03:41+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true,
+      "drift_level": "PERF_DRIFT_NONE"
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true,
+      "drift_level": "PERF_DRIFT_NONE"
+    },
+    {
+      "timestamp": "2026-10-19T23:40:58+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true,
+      "drift_level": "PERF_DRIFT_NONE",
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true,
+      "drift_level": "PERF_DRIFT_NONE",
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true,
+      "drift_level": "PERF_DRIFT_NONE",
+      "source": "DSHD-TASK038"
+    },
+    {
+      "timestamp": "2026-10-20T00:43:40+08:00",
+      "scenario": "Equal_weight_4symbol",
+      "total_return": 0.186733,
+      "sharpe_ratio": 2.910945,
+      "max_drawdown": -0.017102,
+      "return_ok": true,
+      "sharpe_ok": true,
+      "drawdown_ok": true,
+      "all_pass": true,
+      "drift_level": "PERF_DRIFT_NONE",
+      "source": "DSHD-TASK039"
+    }
+  ],
+  "baseline_fingerprint": {
+    "fingerprint_id": "DSHD-TASK037-BASELINE-FP",
+    "fingerprint_at": "2026-10-19T22:21:01+08:00",
+    "scenario": "Equal_weight_4symbol",
+    "total_return": 0.186733,
+    "sharpe_ratio": 2.910945,
+    "max_drawdown": -0.017102,
+    "thresholds": {
+      "return_threshold": 0.05,
+      "sharpe_threshold": 0.9,
+      "drawdown_threshold": -0.027
+    },
+    "status": "BASELINE_STABLE",
+    "note": "TASK-037 固化基线: 当前绩效达标, 作为后续漂移检测基准",
+    "last_checked": "2026-10-20T00:43:40+08:00"
+  },
+  "perf_drift_thresholds": {
+    "return_threshold": 0.05,
+    "sharpe_threshold": 0.9,
+    "drawdown_threshold": -0.027
+  },
+  "perf_drift_gate_configured": true
+}

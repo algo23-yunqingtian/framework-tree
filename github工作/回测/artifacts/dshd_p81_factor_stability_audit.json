@@ -1,0 +1,288 @@
+{
+  "audit_id": "DSHD-P81-AUDIT-FACTOR-STABILITY-001",
+  "task_id": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+  "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+  "baseline": "feature/v88-g1 HEAD=9237b8f",
+  "audit_timestamp": "2026-10-19T16:36:56.929614+08:00",
+  "mode": "AUDIT_READ_ONLY",
+  "intervention": "NONE",
+  "wind_api_calls": 0,
+  "gate": "CLOSED/HOLD",
+  "release": "NOT_ISSUED",
+  "p1_1_ic_reproduction": {
+    "verified": true,
+    "method": "Pearson correlation on factor value vs next_return, 3-segment split, 4-variety whitelist",
+    "reproduced_ic": {
+      "oi_change_1d": {
+        "seg1": 0.013486,
+        "seg2": -0.03223,
+        "seg3": 0.021984,
+        "sign_stable": false
+      },
+      "oi_change_rate_7d": {
+        "seg1": 0.001701,
+        "seg2": -0.017511,
+        "seg3": 4.9e-05,
+        "sign_stable": false
+      },
+      "oi_level": {
+        "seg1": 0.016006,
+        "seg2": 0.104693,
+        "seg3": -0.105001,
+        "sign_stable": false
+      },
+      "realized_vol_20d": {
+        "seg1": 0.023115,
+        "seg2": 0.050423,
+        "seg3": -0.062836,
+        "sign_stable": false
+      }
+    },
+    "matches_report": true,
+    "note": "All 12 IC values match factor_stability_report.md exactly"
+  },
+  "p1_2_risk_grading": {
+    "HIGH": [
+      {
+        "factor": "oi_change_1d",
+        "risk": "HIGH",
+        "severity": "信号不稳定，不适合生产直接上线",
+        "evidence": "段IC: +0.013486 -> -0.032230 -> +0.021984; 符号翻转2次(+->-->+)",
+        "mean_ic": 0.00108,
+        "std_ic": 0.023808,
+        "action": "BLOCK: 禁止上线OI仓位变化因子"
+      },
+      {
+        "factor": "oi_change_rate_7d",
+        "risk": "HIGH",
+        "severity": "信号不稳定，不适合生产直接上线",
+        "evidence": "段IC: +0.001701 -> -0.017511 -> +0.000049; 符号翻转2次(+->-->+)",
+        "mean_ic": -0.005254,
+        "std_ic": 0.008693,
+        "action": "BLOCK: 禁止上线OI持仓变化率因子"
+      },
+      {
+        "factor": "oi_level",
+        "risk": "HIGH",
+        "severity": "信号不稳定，不适合生产直接上线",
+        "evidence": "段IC: +0.016006 -> +0.104693 -> -0.105001; 符号翻转1次(+->+->-)",
+        "mean_ic": 0.005233,
+        "std_ic": 0.085945,
+        "action": "BLOCK: 禁止上线OI持仓水平因子"
+      }
+    ],
+    "MEDIUM": [
+      {
+        "factor": "realized_vol_20d",
+        "risk": "MEDIUM",
+        "severity": "尾部段IC反转，需持续监控",
+        "evidence": "段IC: +0.023115 -> +0.050423 -> -0.062836; 段3 IC反转(-)",
+        "mean_ic": 0.003567,
+        "std_ic": 0.04826,
+        "action": "WARN: 波动率因子可用但需监控尾部段"
+      }
+    ],
+    "LOW": [
+      {
+        "factor": "equal_weight_4pool",
+        "risk": "LOW",
+        "severity": "等权4品种组合绩效达标，但依赖不稳定因子池，存在样本内过拟合隐患",
+        "evidence": "收益+18.67% > 5.0%; 夏普2.91 > 0.9; 回撤-1.71% > -2.7%; 但含3个不稳定OI因子",
+        "action": "WARN: 等权组合可用但需验证因子稳定性后再扩展"
+      }
+    ]
+  },
+  "p1_2_ic_method_finding": {
+    "finding": "IC加权方法未生效",
+    "severity": "MEDIUM",
+    "detail": "factor_weight.json使用的IC值来自compute_per_symbol_ts_ic()方法(时间序列Pearson), 而非factor_ic_ir_9vs4_comparison.csv中已验证的截面IC值。例如: spread_cs TS_IC=-0.090153 vs CSV_IC=-0.064899。脚本中load_ic_values_from_csv()函数已存在但未被调用(line 1132仍使用compute_per_symbol_ts_ic)。导致spread_cs获得主导负权重(-0.253)，使IC加权组合绩效劣于等权组合(-5.96% vs +18.67%)。",
+    "action": "NOTIFY: 建议后续修复IC加权逻辑，使用已验证的CSV IC值"
+  },
+  "p1_3_sha_snapshots": {
+    "factor_weight.json": {
+      "sha256": "14a99ffc6b5e39752e3b147c365cab27c90249c0866de3832fc5accb55235118",
+      "size_bytes": 2289
+    },
+    "factor_enable_config.json": {
+      "sha256": "b2e5464b4fed2109f5c9bd4e6b397df69efd7d7c25dec7a390e5ba38b752d189",
+      "size_bytes": 2547
+    },
+    "weighted_backtest_metrics.json": {
+      "sha256": "a7e5b042ca1dd29609cd59c15e09c637aa4d00448abd53763eb79d2233408d97",
+      "size_bytes": 25735
+    },
+    "factor_stability_report.md": {
+      "sha256": "5df308c8de635728961e5cc79c7d3ea3734541c1bd6ba05ba62a9430b17ce7f1",
+      "size_bytes": 2822
+    },
+    "v3_factor_weight_report.md": {
+      "sha256": "a18d1c44bc5a4821387f857946d661df42c569b898fedc731dc78df56259076b",
+      "size_bytes": 5869
+    },
+    "factor_ic_ir_9vs4_comparison.csv": {
+      "sha256": "04187b4c959848c75ac7f0af4349af36be9e3a1843d6150ecddff57898964e59",
+      "size_bytes": 609
+    },
+    "run_v3_factor_weight.py": {
+      "sha256": "a2e4ec2d24228c7b74241ddfdbcbbca80d1eb044c4eb48963a740c7530adcd28",
+      "size_bytes": 73427
+    },
+    "factors_full_11_v3.csv": {
+      "sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+      "size_bytes": 816982
+    },
+    "MANIFEST_v3.json": {
+      "sha256": "a07c1bf81078e2f2a516e5db3bc3d7e324329b225d141a99b423597881a2c9b6",
+      "size_bytes": 21088
+    },
+    "instrument_white_list.json": {
+      "sha256": "db4f2a96c327d4e2286edfc8608b7eb330de829e543f6b45e9a2f73884c42d37",
+      "size_bytes": 3691
+    },
+    "scenario_ab_metrics.json": {
+      "sha256": "77aa00381b0b7a61aca25861a722c0eb592a39769892fd177cd5c2add7a08ee4",
+      "size_bytes": 4742
+    },
+    "v3_performance_attribution.md": {
+      "sha256": "69813973fd70bf4a6ef57b781237df5f1aa5e77a11045626b233b874ff8f1335",
+      "size_bytes": 7698
+    },
+    "equity_curve_weighted.csv": {
+      "sha256": "d2d93da0be2020383a91f0115f3c6439b31d8f232c9fc0670f2f696e701ec535",
+      "size_bytes": 1365
+    }
+  },
+  "summary": {
+    "total_factors_audited": 8,
+    "high_risk_count": 3,
+    "medium_risk_count": 1,
+    "low_risk_count": 1,
+    "ic_flip_verified": true,
+    "risk_rated": true,
+    "artifact_snapshotted": true,
+    "brief_update_required": true,
+    "watcher_hook_required": true
+  },
+  "conclusion": {
+    "available_scheme": "4品种等权组合 (equal_weight_4pool): 收益+18.67%, 夏普2.91, 回撤-1.71%",
+    "disabled_scheme": "IC加权组合 (IC_weighted_4pool): 收益-5.96%, 夏普-1.13, 回撤-6.95%",
+    "risk_summary": "3个OI因子高风险(BLOCK), 1个波动率因子中风险(WARN), 1个等权组合低风险(WARN)",
+    "boundary": "本次审计仅标记风险，不阻断现有流水线。IC加权方案建议冻结。"
+  },
+  "p1_3_current_sha_snapshots": {
+    "backtest_v3_metrics.json": {
+      "sha256": "28c578595ea2a8bc73959fad0e50bea186ff15dcc1b0992044f7553c0f548809",
+      "size_bytes": 21827
+    },
+    "equity_curve_weighted.csv": {
+      "sha256": "d2d93da0be2020383a91f0115f3c6439b31d8f232c9fc0670f2f696e701ec535",
+      "size_bytes": 1365
+    },
+    "factors_full_11_v3.csv": {
+      "sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+      "size_bytes": 816982
+    },
+    "factor_enable_config.json": {
+      "sha256": "b2e5464b4fed2109f5c9bd4e6b397df69efd7d7c25dec7a390e5ba38b752d189",
+      "size_bytes": 2547
+    },
+    "factor_ic_ir_9vs4_comparison.csv": {
+      "sha256": "04187b4c959848c75ac7f0af4349af36be9e3a1843d6150ecddff57898964e59",
+      "size_bytes": 609
+    },
+    "factor_stability_report.md": {
+      "sha256": "5df308c8de635728961e5cc79c7d3ea3734541c1bd6ba05ba62a9430b17ce7f1",
+      "size_bytes": 2822
+    },
+    "factor_weight.json": {
+      "sha256": "14a99ffc6b5e39752e3b147c365cab27c90249c0866de3832fc5accb55235118",
+      "size_bytes": 2289
+    },
+    "instrument_white_list.json": {
+      "sha256": "db4f2a96c327d4e2286edfc8608b7eb330de829e543f6b45e9a2f73884c42d37",
+      "size_bytes": 3691
+    },
+    "MANIFEST_v3.json": {
+      "sha256": "a07c1bf81078e2f2a516e5db3bc3d7e324329b225d141a99b423597881a2c9b6",
+      "size_bytes": 21088
+    },
+    "run_v3_attribution.py": {
+      "sha256": "5be813b064f1457e075a2c1dfa93e68a9eb4045d0e98c99a161d4673966cce4f",
+      "size_bytes": 57118
+    },
+    "run_v3_backtest.py": {
+      "sha256": "3d1b687dbca7af814acdff27e28eae9f25deb88f6e54f6bddc05306a9dd580d8",
+      "size_bytes": 75413
+    },
+    "run_v3_factor_weight.py": {
+      "sha256": "a2e4ec2d24228c7b74241ddfdbcbbca80d1eb044c4eb48963a740c7530adcd28",
+      "size_bytes": 73427
+    },
+    "run_v3_weight_fix.py": {
+      "sha256": "50f698e40965cb429c68b2e79e2ba0e5dedd0b95012a8e2e1ea435076663ce15",
+      "size_bytes": 83402
+    },
+    "scenario_ab_metrics.json": {
+      "sha256": "77aa00381b0b7a61aca25861a722c0eb592a39769892fd177cd5c2add7a08ee4",
+      "size_bytes": 4742
+    },
+    "v3_comparison_report.md": {
+      "sha256": "f661e7d0785a2b3d9a1615c26b508f4495bb73c4b34cd92ad55b4137840bd4c2",
+      "size_bytes": 5726
+    },
+    "v3_factor_weight_report.md": {
+      "sha256": "a18d1c44bc5a4821387f857946d661df42c569b898fedc731dc78df56259076b",
+      "size_bytes": 5869
+    },
+    "v3_performance_attribution.md": {
+      "sha256": "69813973fd70bf4a6ef57b781237df5f1aa5e77a11045626b233b874ff8f1335",
+      "size_bytes": 7698
+    },
+    "v3_weight_fix_report.md": {
+      "sha256": "fb10969f4a88cccd4286d806c33a58b7b72b079a79ac8b935cf8ef9f3c1a47b2",
+      "size_bytes": 7186
+    },
+    "weighted_backtest_metrics.json": {
+      "sha256": "a7e5b042ca1dd29609cd59c15e09c637aa4d00448abd53763eb79d2233408d97",
+      "size_bytes": 25735
+    }
+  },
+  "p1_3_concurrent_changes": {
+    "detected": true,
+    "changes": [
+      {
+        "file": "factor_weight.json",
+        "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN",
+        "config_id": "DSHA-P49-V3-FACTOR-WEIGHT-FIX-CONFIG",
+        "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM",
+        "description": "File modified by DSHA-P49-V3-WEIGHT-FIX during audit window"
+      },
+      {
+        "file": "factor_enable_config.json",
+        "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN",
+        "config_id": "DSHA-P49-V3-FACTOR-ENABLE-CONFIG",
+        "prev_task": "",
+        "description": "File modified by DSHA-P49-V3-WEIGHT-FIX during audit window"
+      },
+      {
+        "file": "weighted_backtest_metrics.json",
+        "token": "DSHA-P49-V3-WEIGHT-FIX-TOKEN",
+        "config_id": "",
+        "prev_task": "DSHA-P49-V3-FACTOR-WEIGHT-OPTIM",
+        "description": "File modified by DSHA-P49-V3-WEIGHT-FIX during audit window"
+      }
+    ],
+    "analysis": {
+      "summary": "DSHA-P49-V3-WEIGHT-FIX task modified factor config files during audit window",
+      "changes_applied": [
+        "factor_enable_config.json: spread_cs moved from standard_factors to temporarily_disabled",
+        "factor_weight.json: method changed to positive_IC_mean_weighted_with_shrinkage (4 positive IC factors only)",
+        "weighted_backtest_metrics.json: backtest results regenerated with new config",
+        "factor_stability_report.md: stability report regenerated"
+      ],
+      "ic_method_finding_status": "PARTIALLY_MITIGATED",
+      "detail": "The WEIGHT-FIX task excluded spread_cs (negative IC dominant factor) and filtered to positive IC factors only. This addresses the symptom but not the root cause: IC values still use TS_IC method, not CSV_IC. The factor_stability_report.md should still show the same OI sign instability."
+    }
+  },
+  "updated_at": "2026-10-19T16:40:53.610765+08:00"
+}

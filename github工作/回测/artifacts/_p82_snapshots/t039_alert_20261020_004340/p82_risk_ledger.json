@@ -1,0 +1,197 @@
+{
+  "ledger_id": "DSHD-P82-RISK-LEDGER",
+  "version": "3.0.0-TASK038",
+  "created_at": "2026-10-19T20:05:22+08:00",
+  "updated_at": "2026-10-19T23:42:48+08:00",
+  "risk_entries": [
+    {
+      "factor": "oi_change_1d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "HIGH",
+      "flip_rate": 0.55,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=55.0%, 21个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "PERMANENT_LOCK"
+    },
+    {
+      "factor": "oi_change_rate_7d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "HIGH",
+      "flip_rate": 0.55,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=55.0%, 21个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "PERMANENT_LOCK"
+    },
+    {
+      "factor": "oi_level",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "HIGH",
+      "flip_rate": 0.6,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=60.0%, 21个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "PERMANENT_LOCK"
+    },
+    {
+      "factor": "realized_vol_20d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "MEDIUM",
+      "flip_rate": 0.6316,
+      "num_windows": 20,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=63.2%, 20个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "PERMANENT_LOCK"
+    },
+    {
+      "factor": "vol_regime_change",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.7368,
+      "num_windows": 20,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=73.7%, 20个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "PERMANENT_LOCK"
+    },
+    {
+      "factor": "spread_cs",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.55,
+      "num_windows": 21,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=55.0%, 21个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "PERMANENT_LOCK"
+    },
+    {
+      "factor": "momentum_20d",
+      "risk_type": "IC_UNSTABILITY",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.6842,
+      "num_windows": 20,
+      "status": "ALERT",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=68.4%, 20个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "PERMANENT_LOCK"
+    },
+    {
+      "factor": "contract_switch_flag",
+      "risk_type": "IC_STABLE",
+      "base_risk": "UNKNOWN",
+      "flip_rate": 0.0,
+      "num_windows": 21,
+      "status": "STABLE",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "滚动IC翻转率=0.0%, 21个窗口 [LOCKED]",
+      "hard_locked": true,
+      "hard_lock_reason": "WHITELIST_LOCK"
+    },
+    {
+      "factor": "_PORTFOLIO_",
+      "risk_type": "PERFORMANCE_STABLE",
+      "status": "STABLE",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "等权组合: 收益=18.67%, 夏普=2.911, 回撤=-1.71%",
+      "hard_locked": false,
+      "hard_lock_reason": ""
+    },
+    {
+      "factor": "_IC_METHOD_",
+      "risk_type": "IC_METHOD_DISCREPANCY",
+      "status": "WARN",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "IC加权方法使用TS_IC而非CSV_IC (P81审计发现, TS_IC根因未修复)",
+      "hard_locked": false,
+      "hard_lock_reason": ""
+    },
+    {
+      "factor": "_V3_BASELINE_NARRATIVE_",
+      "risk_type": "PRODUCTION_BASELINE_QUALIFICATION",
+      "status": "WARN",
+      "hard_locked": true,
+      "hard_lock_reason": "V3_BASELINE_FIXED",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "V3等权当前绩效达标, 但7/8因子高翻转, 属于「可用但带已知重大局限性的投产基线」; 不代表因子已经很强, 仅为经过完整审计的临时生产版本。",
+      "narrative": {
+        "production_version": "V3 Equal-Weight 4-Symbol",
+        "current_status": "PERFORMANCE_PASS",
+        "factors_checked": 8,
+        "factors_alerting": 7,
+        "factors_stable": 1,
+        "performance": {
+          "return": 0.186733,
+          "sharpe": 2.910945,
+          "max_drawdown": -0.017102
+        },
+        "qualification": "可用但带已知重大局限性的投产基线 — 不代表因子已经很强, 仅为经过完整审计的临时生产版本",
+        "audit_tasks": [
+          "DSHD-P81-AUDIT-FACTOR-STABILITY",
+          "DSHD-P82-MONITOR-DUAL-LINK",
+          "DSHD-TASK-037-MONITOR-SOLIDIFY",
+          "DSHD-TASK-038-MONITOR-OP"
+        ],
+        "next_review": "当因子池配置变更或绩效漂移时重新评估"
+      }
+    },
+    {
+      "factor": "_DSHA_IC_EXPORT_",
+      "risk_type": "DSHA_ROLLING_IC_CHECKSUM",
+      "status": "DSHA_DIR_NOT_FOUND",
+      "hard_locked": false,
+      "hard_lock_reason": "",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "DSHA directory not found: D:\\DSH_WORK\\github工作\\回测\\DSHA",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\DSHA\\rolling_ic_export.json",
+      "sha256": null,
+      "checksum_valid": null,
+      "read_only": true,
+      "dsha_write_attempted": false
+    },
+    {
+      "factor": "_CAPTURE_COMPLETENESS_",
+      "risk_type": "EVENT_CAPTURE_INTEGRITY",
+      "status": "STABLE",
+      "hard_locked": false,
+      "hard_lock_reason": "",
+      "updated_at": "2026-10-19T23:42:48+08:00",
+      "detail": "每日事件捕获完整性校验, 零丢包验证通过",
+      "source": "DSHD-TASK038"
+    }
+  ],
+  "last_monitor_run": "2026-10-19T23:42:48+08:00",
+  "summary": {
+    "total_entries": 13,
+    "alert_count": 7,
+    "warn_count": 2,
+    "stable_count": 3,
+    "other_count": 1
+  },
+  "last_solidify_run": "2026-10-19T22:21:01+08:00",
+  "solidify_task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+  "solidify_token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+  "solidify_summary": {
+    "ic_locked_alert": 7,
+    "ic_locked_stable": 1,
+    "perf_gate_configured": true,
+    "perf_drift_level": "PERF_DRIFT_NONE",
+    "dsha_ic_check": "DSHA_DIR_NOT_FOUND",
+    "anomaly_types_confirmed": true
+  },
+  "last_op_run": "2026-10-19T23:42:48+08:00",
+  "op_task": "DSHD-TASK-038-MONITOR-OP",
+  "op_token": "DSHD-TASK038-MONITOR-OP-TOKEN"
+}

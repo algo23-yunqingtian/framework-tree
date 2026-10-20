@@ -1,0 +1,62 @@
+{
+  "shard_id": "t039_alert_20261020_004623",
+  "generated_at": "2026-10-20T00:46:23+08:00",
+  "task": "DSHD-TASK039",
+  "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+  "mode": "AUDIT_READ_ONLY",
+  "total_files": 10,
+  "files": [
+    "p82_ic_watchdog_state.json",
+    "p82_perf_drift_state.json",
+    "p82_pipeline_alerts.json",
+    "p82_risk_ledger.json",
+    "p82_regime_state.json",
+    "p82_crowding_state.json",
+    "factors_full_11_v3.csv",
+    "weighted_backtest_metrics.json",
+    "task039_monitor_upgrade.py",
+    "_factor_ic_snapshot.json"
+  ],
+  "shard_data_list": {
+    "p82_ic_watchdog_state.json": {
+      "size_bytes": 16761,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\p82_ic_watchdog_state.json"
+    },
+    "p82_perf_drift_state.json": {
+      "size_bytes": 4471,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\p82_perf_drift_state.json"
+    },
+    "p82_pipeline_alerts.json": {
+      "size_bytes": 6954,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\p82_pipeline_alerts.json"
+    },
+    "p82_risk_ledger.json": {
+      "size_bytes": 11912,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\p82_risk_ledger.json"
+    },
+    "p82_regime_state.json": {
+      "size_bytes": 21822,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\p82_regime_state.json"
+    },
+    "p82_crowding_state.json": {
+      "size_bytes": 18321,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\p82_crowding_state.json"
+    },
+    "factors_full_11_v3.csv": {
+      "size_bytes": 816982,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factors_full_11_v3.csv"
+    },
+    "weighted_backtest_metrics.json": {
+      "size_bytes": 26065,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\weighted_backtest_metrics.json"
+    },
+    "task039_monitor_upgrade.py": {
+      "size_bytes": 63714,
+      "source": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\task039_monitor_upgrade.py"
+    },
+    "_factor_ic_snapshot.json": {
+      "size_bytes": 5437,
+      "source": "computed"
+    }
+  }
+}

@@ -405,6 +405,87 @@ except Exception:
 assert_test("F15: git HEAD at or after 1cf2512", git_head_ok, f"HEAD={head}")
 
 # ============================================================
+# GROUP G: Periodic Inspection Script (15 tests)
+# ============================================================
+print("")
+print("--- Group G: p81_periodic_inspect.ps1 verification ---")
+
+INSPECT_PS1 = os.path.join(G7, "p81_periodic_inspect.ps1")
+INSPECT_DAILY = os.path.join(G7, "p81_inspect_daily.md")
+INSPECT_STATE = os.path.join(G7, "p81_inspect_state.json")
+
+# G1: Inspection script exists
+g1_ok = os.path.exists(INSPECT_PS1)
+assert_test("G1: p81_periodic_inspect.ps1 exists", g1_ok)
+
+# G2: Inspection script has UTF-8 BOM
+g2_ok = False
+try:
+    with open(INSPECT_PS1, "rb") as f:
+        bom = f.read(3)
+    g2_ok = (bom == b"\xef\xbb\xbf")
+except Exception:
+    g2_ok = False
+assert_test("G2: Inspection script has UTF-8 BOM", g2_ok)
+
+# G3: Inspection script > 30KB
+inspect_size = os.path.getsize(INSPECT_PS1) if g1_ok else 0
+g3_ok = inspect_size > 30000
+assert_test("G3: Inspection script > 30KB", g3_ok, f"size={inspect_size}")
+
+# G4: Has P0 nine-check verification
+inspect_src = read_file(INSPECT_PS1)
+g4_ok = "P0 Nine-Check Verification" in inspect_src
+assert_test("G4: Has P0 nine-check verification", g4_ok)
+
+# G5: Has process liveness check
+g5_ok = "Process Liveness Check" in inspect_src and "ProtectedPIDs" in inspect_src
+assert_test("G5: Has process liveness check", g5_ok)
+
+# G6: Has watcher poll status check
+g6_ok = "Poll Status Check" in inspect_src and "poll_status" in inspect_src
+assert_test("G6: Has watcher poll status check", g6_ok)
+
+# G7: Has git snapshot consistency check
+g7_ok = "Snapshot Consistency Check" in inspect_src and "ls-files" in inspect_src
+assert_test("G7: Has git snapshot consistency check", g7_ok)
+
+# G8: Has blacklist + CSV SHA check
+g8_ok = "Blacklist" in inspect_src and "CSV" in inspect_src and "dualHash" in inspect_src
+assert_test("G8: Has blacklist + CSV SHA check", g8_ok)
+
+# G9: Has brief section 十一 check
+g9_ok = "BriefSection11" in inspect_src and "十一" in inspect_src
+assert_test("G9: Has brief section 十一 check", g9_ok)
+
+# G10: Has disk snapshot dir integrity check
+g10_ok = "DiskSnapshotIntegrity" in inspect_src and "Zero-byte" in inspect_src
+assert_test("G10: Has disk snapshot dir integrity check", g10_ok)
+
+# G11: Has anomaly alert rules (4 categories)
+g11_ok = all(kw in inspect_src for kw in ["PROCESS-EXIT", "SNAPSHOT-LOSS", "BRIEF-SECTION-LOSS", "PATCH-VIOLATION"])
+assert_test("G11: Has 4 anomaly alert categories", g11_ok)
+
+# G12: Has self-healing logic (P81 watcher only)
+g12_ok = "Heal-P81Watcher" in inspect_src and "WATCHER_RESTART" in inspect_src
+assert_test("G12: Has self-healing logic", g12_ok)
+
+# G13: Has auto-restrict: only P81 watcher, never kill protected
+g13_ok = "ProtectedPIDs" in inspect_src and "3472" in inspect_src and "14644" in inspect_src
+assert_test("G13: Auto-restrict only P81 (never kill protected)", g13_ok)
+
+# G14: Has daily report output
+g14_ok = os.path.exists(INSPECT_DAILY)
+assert_test("G14: Daily report file exists", g14_ok)
+
+# G15: Daily report has P0 red-line declaration
+g15_ok = False
+if g14_ok:
+    daily_src = read_file(INSPECT_DAILY)
+    g15_ok = "wind_api_calls" in daily_src and "CLOSED/HOLD" in daily_src
+assert_test("G15: Daily report has P0 red-line declaration", g15_ok)
+
+# ============================================================
 # SUMMARY
 # ============================================================
 print("")

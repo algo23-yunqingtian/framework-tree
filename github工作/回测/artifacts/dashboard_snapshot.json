@@ -1,6 +1,6 @@
 {
-    "generated_at":  "2026-10-18T21:31:27+08:00",
-    "poll_number":  2380,
+    "generated_at":  "2026-10-20T11:40:25+08:00",
+    "poll_number":  4340,
     "agent":  "DSHD-P71",
     "monitor_version":  "v1.0",
     "baseline":  "feature/v88-g1 @ 01a022fdffb36e603abd623842cef65f80f24c92",
@@ -10,7 +10,7 @@
                         "SKILL_HASH_MISMATCH"
                     ],
     "health_icon":  "YELLOW",
-    "health_summary":  "[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=0 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=TRIPPED | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,health_check_wdf.ps1,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: WIND_API_CALLS_GT0, SKILL_HASH_MISMATCH.",
+    "health_summary":  "[YELLOW] WARNING: wmain(RUNNING,PID=824,visible=True) | InitWAPI(RUNNING,PID=14188) | Excel(count=1) | Ports=1 | Flash5min=0 | Flash1min=0 | Orphan=0 | WDFchg=0 | CB=TRIPPED | SkillSHA=FAIL(skill_readme.md,bootstrap_wdf.ps1,skill_manifest.json,health_check_wdf.ps1,reset_wdf_safe.ps1) | ComScore=100/100 | Rating=优秀 | SampleMarker=ABSENT | SampleActive=NO | P86Ready=READY-WAITING -- All invariants with alerts: WIND_API_CALLS_GT0, SKILL_HASH_MISMATCH.",
     "processes":  [
                       {
                           "process":  "wmain.exe",
@@ -131,7 +131,7 @@
                        {
                            "invariant":  "wind_api_calls",
                            "expected":  "0",
-                           "actual":  2212495360,
+                           "actual":  2212495422,
                            "status":  "FAIL"
                        },
                        {

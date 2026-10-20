@@ -1,9 +1,9 @@
 {
   "_meta": {
     "created_at": "2026-10-19T13:23:47+0800",
-    "script_version": "v1.0.0",
-    "task": "DSHD-P81-GIT-SAVE",
-    "token": "DSHD-P81-GIT-SAVE-TOKEN",
+    "script_version": "v1.0.1-TASK041",
+    "task": "DSHD-P81-GIT-SAVE + DSHD-P81-AUDIT-FACTOR-STABILITY",
+    "token": "DSHD-P81-GIT-SAVE-TOKEN + DSHD-P81-AUDIT-FACTOR-TOKEN",
     "protected_files": [
       "dshd_p81_watch.ps1",
       "dshd_p81_watch.v1.2.0-TWEAK.ps1",
@@ -21,7 +21,27 @@
       "verify_p81_ext.ps1",
       "verify_p81_tweak_syntax.ps1"
     ],
-    "snapshot_dir": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\_p81_snapshots"
+    "snapshot_dir": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\_p81_snapshots",
+    "last_audit": {
+      "task_id": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "audit_timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "audit_type": "factor_stability",
+      "mode": "AUDIT_READ_ONLY"
+    },
+    "last_factor_audit_update": "2026-10-19T16:40:53.610765+08:00",
+    "last_factor_audit_sha_count": 19,
+    "last_upgrade": {
+      "task_id": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+      "timestamp": "2026-10-20T00:46:23+08:00",
+      "mode": "AUDIT_READ_ONLY"
+    },
+    "last_update": "2026-10-20T08:10:42+08:00",
+    "last_task": "DSHD-TASK-040-WATCHER-FIX",
+    "last_token": "DSHD-TASK040-TOKEN",
+    "last_updated": "2026-10-20T08:58:12+08:00",
+    "total_entries": 106
   },
   "entries": [
     {
@@ -403,6 +423,1171 @@
       "snapshot_sha256": "5fb39d3d70ef39ebf091d75f27cff51b9e0724e91817d4e6611e8c82cb3f6c54",
       "snapshot_size_bytes": 55389,
       "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-factor_weight-json-20261019_163656",
+      "file": "factor_weight.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_weight.json",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "14a99ffc6b5e39752e3b147c365cab27c90249c0866de3832fc5accb55235118",
+        "size_bytes": 2289
+      },
+      "snapshot_sha256": "14a99ffc6b5e39752e3b147c365cab27c90249c0866de3832fc5accb55235118",
+      "snapshot_size_bytes": 2289,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-factor_enable_config-json-20261019_163656",
+      "file": "factor_enable_config.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_enable_config.json",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "b2e5464b4fed2109f5c9bd4e6b397df69efd7d7c25dec7a390e5ba38b752d189",
+        "size_bytes": 2547
+      },
+      "snapshot_sha256": "b2e5464b4fed2109f5c9bd4e6b397df69efd7d7c25dec7a390e5ba38b752d189",
+      "snapshot_size_bytes": 2547,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-weighted_backtest_metrics-json-20261019_163656",
+      "file": "weighted_backtest_metrics.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\weighted_backtest_metrics.json",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a7e5b042ca1dd29609cd59c15e09c637aa4d00448abd53763eb79d2233408d97",
+        "size_bytes": 25735
+      },
+      "snapshot_sha256": "a7e5b042ca1dd29609cd59c15e09c637aa4d00448abd53763eb79d2233408d97",
+      "snapshot_size_bytes": 25735,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-factor_stability_report-md-20261019_163656",
+      "file": "factor_stability_report.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_stability_report.md",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "5df308c8de635728961e5cc79c7d3ea3734541c1bd6ba05ba62a9430b17ce7f1",
+        "size_bytes": 2822
+      },
+      "snapshot_sha256": "5df308c8de635728961e5cc79c7d3ea3734541c1bd6ba05ba62a9430b17ce7f1",
+      "snapshot_size_bytes": 2822,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-v3_factor_weight_report-md-20261019_163656",
+      "file": "v3_factor_weight_report.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\v3_factor_weight_report.md",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a18d1c44bc5a4821387f857946d661df42c569b898fedc731dc78df56259076b",
+        "size_bytes": 5869
+      },
+      "snapshot_sha256": "a18d1c44bc5a4821387f857946d661df42c569b898fedc731dc78df56259076b",
+      "snapshot_size_bytes": 5869,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-factor_ic_ir_9vs4_comparison-csv-20261019_163656",
+      "file": "factor_ic_ir_9vs4_comparison.csv",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_ic_ir_9vs4_comparison.csv",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "04187b4c959848c75ac7f0af4349af36be9e3a1843d6150ecddff57898964e59",
+        "size_bytes": 609
+      },
+      "snapshot_sha256": "04187b4c959848c75ac7f0af4349af36be9e3a1843d6150ecddff57898964e59",
+      "snapshot_size_bytes": 609,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-run_v3_factor_weight-py-20261019_163656",
+      "file": "run_v3_factor_weight.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\run_v3_factor_weight.py",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a2e4ec2d24228c7b74241ddfdbcbbca80d1eb044c4eb48963a740c7530adcd28",
+        "size_bytes": 73427
+      },
+      "snapshot_sha256": "a2e4ec2d24228c7b74241ddfdbcbbca80d1eb044c4eb48963a740c7530adcd28",
+      "snapshot_size_bytes": 73427,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-factors_full_11_v3-csv-20261019_163656",
+      "file": "factors_full_11_v3.csv",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factors_full_11_v3.csv",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+        "size_bytes": 816982
+      },
+      "snapshot_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+      "snapshot_size_bytes": 816982,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-MANIFEST_v3-json-20261019_163656",
+      "file": "MANIFEST_v3.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\MANIFEST_v3.json",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a07c1bf81078e2f2a516e5db3bc3d7e324329b225d141a99b423597881a2c9b6",
+        "size_bytes": 21088
+      },
+      "snapshot_sha256": "a07c1bf81078e2f2a516e5db3bc3d7e324329b225d141a99b423597881a2c9b6",
+      "snapshot_size_bytes": 21088,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-instrument_white_list-json-20261019_163656",
+      "file": "instrument_white_list.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\instrument_white_list.json",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "db4f2a96c327d4e2286edfc8608b7eb330de829e543f6b45e9a2f73884c42d37",
+        "size_bytes": 3691
+      },
+      "snapshot_sha256": "db4f2a96c327d4e2286edfc8608b7eb330de829e543f6b45e9a2f73884c42d37",
+      "snapshot_size_bytes": 3691,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-scenario_ab_metrics-json-20261019_163656",
+      "file": "scenario_ab_metrics.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\scenario_ab_metrics.json",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "77aa00381b0b7a61aca25861a722c0eb592a39769892fd177cd5c2add7a08ee4",
+        "size_bytes": 4742
+      },
+      "snapshot_sha256": "77aa00381b0b7a61aca25861a722c0eb592a39769892fd177cd5c2add7a08ee4",
+      "snapshot_size_bytes": 4742,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-v3_performance_attribution-md-20261019_163656",
+      "file": "v3_performance_attribution.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\v3_performance_attribution.md",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "69813973fd70bf4a6ef57b781237df5f1aa5e77a11045626b233b874ff8f1335",
+        "size_bytes": 7698
+      },
+      "snapshot_sha256": "69813973fd70bf4a6ef57b781237df5f1aa5e77a11045626b233b874ff8f1335",
+      "snapshot_size_bytes": 7698,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "dshd-p81-audit-factor-stability-equity_curve_weighted-csv-20261019_163656",
+      "file": "equity_curve_weighted.csv",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\equity_curve_weighted.csv",
+      "action": "AUDIT_SHA_SNAPSHOT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: factor stability audit SHA snapshot",
+      "timestamp": "2026-10-19T16:36:56.929614+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "d2d93da0be2020383a91f0115f3c6439b31d8f232c9fc0670f2f696e701ec535",
+        "size_bytes": 1365
+      },
+      "snapshot_sha256": "d2d93da0be2020383a91f0115f3c6439b31d8f232c9fc0670f2f696e701ec535",
+      "snapshot_size_bytes": 1365,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-backtest_v3_metrics-json",
+      "file": "backtest_v3_metrics.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\backtest_v3_metrics.json",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "28c578595ea2a8bc73959fad0e50bea186ff15dcc1b0992044f7553c0f548809",
+        "size_bytes": 21827
+      },
+      "snapshot_sha256": "28c578595ea2a8bc73959fad0e50bea186ff15dcc1b0992044f7553c0f548809",
+      "snapshot_size_bytes": 21827,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-equity_curve_weighted-csv",
+      "file": "equity_curve_weighted.csv",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\equity_curve_weighted.csv",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "d2d93da0be2020383a91f0115f3c6439b31d8f232c9fc0670f2f696e701ec535",
+        "size_bytes": 1365
+      },
+      "snapshot_sha256": "d2d93da0be2020383a91f0115f3c6439b31d8f232c9fc0670f2f696e701ec535",
+      "snapshot_size_bytes": 1365,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-factors_full_11_v3-csv",
+      "file": "factors_full_11_v3.csv",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factors_full_11_v3.csv",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+        "size_bytes": 816982
+      },
+      "snapshot_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+      "snapshot_size_bytes": 816982,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-factor_enable_config-json",
+      "file": "factor_enable_config.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_enable_config.json",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "b2e5464b4fed2109f5c9bd4e6b397df69efd7d7c25dec7a390e5ba38b752d189",
+        "size_bytes": 2547
+      },
+      "snapshot_sha256": "b2e5464b4fed2109f5c9bd4e6b397df69efd7d7c25dec7a390e5ba38b752d189",
+      "snapshot_size_bytes": 2547,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-factor_ic_ir_9vs4_comparison-csv",
+      "file": "factor_ic_ir_9vs4_comparison.csv",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_ic_ir_9vs4_comparison.csv",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "04187b4c959848c75ac7f0af4349af36be9e3a1843d6150ecddff57898964e59",
+        "size_bytes": 609
+      },
+      "snapshot_sha256": "04187b4c959848c75ac7f0af4349af36be9e3a1843d6150ecddff57898964e59",
+      "snapshot_size_bytes": 609,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-factor_stability_report-md",
+      "file": "factor_stability_report.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_stability_report.md",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "5df308c8de635728961e5cc79c7d3ea3734541c1bd6ba05ba62a9430b17ce7f1",
+        "size_bytes": 2822
+      },
+      "snapshot_sha256": "5df308c8de635728961e5cc79c7d3ea3734541c1bd6ba05ba62a9430b17ce7f1",
+      "snapshot_size_bytes": 2822,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-factor_weight-json",
+      "file": "factor_weight.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factor_weight.json",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "14a99ffc6b5e39752e3b147c365cab27c90249c0866de3832fc5accb55235118",
+        "size_bytes": 2289
+      },
+      "snapshot_sha256": "14a99ffc6b5e39752e3b147c365cab27c90249c0866de3832fc5accb55235118",
+      "snapshot_size_bytes": 2289,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-instrument_white_list-json",
+      "file": "instrument_white_list.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\instrument_white_list.json",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "db4f2a96c327d4e2286edfc8608b7eb330de829e543f6b45e9a2f73884c42d37",
+        "size_bytes": 3691
+      },
+      "snapshot_sha256": "db4f2a96c327d4e2286edfc8608b7eb330de829e543f6b45e9a2f73884c42d37",
+      "snapshot_size_bytes": 3691,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-MANIFEST_v3-json",
+      "file": "MANIFEST_v3.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\MANIFEST_v3.json",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a07c1bf81078e2f2a516e5db3bc3d7e324329b225d141a99b423597881a2c9b6",
+        "size_bytes": 21088
+      },
+      "snapshot_sha256": "a07c1bf81078e2f2a516e5db3bc3d7e324329b225d141a99b423597881a2c9b6",
+      "snapshot_size_bytes": 21088,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-run_v3_attribution-py",
+      "file": "run_v3_attribution.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\run_v3_attribution.py",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "5be813b064f1457e075a2c1dfa93e68a9eb4045d0e98c99a161d4673966cce4f",
+        "size_bytes": 57118
+      },
+      "snapshot_sha256": "5be813b064f1457e075a2c1dfa93e68a9eb4045d0e98c99a161d4673966cce4f",
+      "snapshot_size_bytes": 57118,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-run_v3_backtest-py",
+      "file": "run_v3_backtest.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\run_v3_backtest.py",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "3d1b687dbca7af814acdff27e28eae9f25deb88f6e54f6bddc05306a9dd580d8",
+        "size_bytes": 75413
+      },
+      "snapshot_sha256": "3d1b687dbca7af814acdff27e28eae9f25deb88f6e54f6bddc05306a9dd580d8",
+      "snapshot_size_bytes": 75413,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-run_v3_factor_weight-py",
+      "file": "run_v3_factor_weight.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\run_v3_factor_weight.py",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a2e4ec2d24228c7b74241ddfdbcbbca80d1eb044c4eb48963a740c7530adcd28",
+        "size_bytes": 73427
+      },
+      "snapshot_sha256": "a2e4ec2d24228c7b74241ddfdbcbbca80d1eb044c4eb48963a740c7530adcd28",
+      "snapshot_size_bytes": 73427,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-run_v3_weight_fix-py",
+      "file": "run_v3_weight_fix.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\run_v3_weight_fix.py",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "50f698e40965cb429c68b2e79e2ba0e5dedd0b95012a8e2e1ea435076663ce15",
+        "size_bytes": 83402
+      },
+      "snapshot_sha256": "50f698e40965cb429c68b2e79e2ba0e5dedd0b95012a8e2e1ea435076663ce15",
+      "snapshot_size_bytes": 83402,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-scenario_ab_metrics-json",
+      "file": "scenario_ab_metrics.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\scenario_ab_metrics.json",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "77aa00381b0b7a61aca25861a722c0eb592a39769892fd177cd5c2add7a08ee4",
+        "size_bytes": 4742
+      },
+      "snapshot_sha256": "77aa00381b0b7a61aca25861a722c0eb592a39769892fd177cd5c2add7a08ee4",
+      "snapshot_size_bytes": 4742,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-v3_comparison_report-md",
+      "file": "v3_comparison_report.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\v3_comparison_report.md",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "f661e7d0785a2b3d9a1615c26b508f4495bb73c4b34cd92ad55b4137840bd4c2",
+        "size_bytes": 5726
+      },
+      "snapshot_sha256": "f661e7d0785a2b3d9a1615c26b508f4495bb73c4b34cd92ad55b4137840bd4c2",
+      "snapshot_size_bytes": 5726,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-v3_factor_weight_report-md",
+      "file": "v3_factor_weight_report.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\v3_factor_weight_report.md",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a18d1c44bc5a4821387f857946d661df42c569b898fedc731dc78df56259076b",
+        "size_bytes": 5869
+      },
+      "snapshot_sha256": "a18d1c44bc5a4821387f857946d661df42c569b898fedc731dc78df56259076b",
+      "snapshot_size_bytes": 5869,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-v3_performance_attribution-md",
+      "file": "v3_performance_attribution.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\v3_performance_attribution.md",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "69813973fd70bf4a6ef57b781237df5f1aa5e77a11045626b233b874ff8f1335",
+        "size_bytes": 7698
+      },
+      "snapshot_sha256": "69813973fd70bf4a6ef57b781237df5f1aa5e77a11045626b233b874ff8f1335",
+      "snapshot_size_bytes": 7698,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-v3_weight_fix_report-md",
+      "file": "v3_weight_fix_report.md",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\v3_weight_fix_report.md",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "fb10969f4a88cccd4286d806c33a58b7b72b079a79ac8b935cf8ef9f3c1a47b2",
+        "size_bytes": 7186
+      },
+      "snapshot_sha256": "fb10969f4a88cccd4286d806c33a58b7b72b079a79ac8b935cf8ef9f3c1a47b2",
+      "snapshot_size_bytes": 7186,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "snapshot_id": "p81-audit-factor-current-weighted_backtest_metrics-json",
+      "file": "weighted_backtest_metrics.json",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\weighted_backtest_metrics.json",
+      "action": "AUDIT_SHA_SNAPSHOT_CURRENT",
+      "agent": "DSHD-P81-AUDIT-FACTOR",
+      "reason": "DSHD-P81-AUDIT-FACTOR-STABILITY: current SHA snapshot (post WEIGHT-FIX)",
+      "timestamp": "2026-10-19T16:40:53.610765+08:00",
+      "task": "DSHD-P81-AUDIT-FACTOR-STABILITY",
+      "token": "DSHD-P81-AUDIT-FACTOR-TOKEN",
+      "pre_edit": {
+        "sha256": "a7e5b042ca1dd29609cd59c15e09c637aa4d00448abd53763eb79d2233408d97",
+        "size_bytes": 25735
+      },
+      "snapshot_sha256": "a7e5b042ca1dd29609cd59c15e09c637aa4d00448abd53763eb79d2233408d97",
+      "snapshot_size_bytes": 25735,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
+      "audit_context": "factor_stability_audit_current"
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "task": "DSHD-P82-MONITOR-DUAL-LINK",
+      "token": "DSHD-P82-DUAL-MONITOR-TOKEN",
+      "file": "p82_dual_link_monitor.py",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_dual_link_monitor.py",
+      "sha256": "e72857c2a7b931ab755c09753a6afaf58cf175945fa46e8880f6b5732ed7e492",
+      "size_bytes": 54445
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "task": "DSHD-P82-MONITOR-DUAL-LINK",
+      "token": "DSHD-P82-DUAL-MONITOR-TOKEN",
+      "file": "p82_ic_watchdog_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_ic_watchdog_state.json",
+      "sha256": "de9ee45167324a6d583b3568381b3d91c94f4e30e483e8f4387b282341b2bc0c",
+      "size_bytes": 2358
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "task": "DSHD-P82-MONITOR-DUAL-LINK",
+      "token": "DSHD-P82-DUAL-MONITOR-TOKEN",
+      "file": "p82_perf_drift_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_perf_drift_state.json",
+      "sha256": "8621d496e10c56975df990f95d12b61fd35941bc736134456bde308c87323654",
+      "size_bytes": 710
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "task": "DSHD-P82-MONITOR-DUAL-LINK",
+      "token": "DSHD-P82-DUAL-MONITOR-TOKEN",
+      "file": "p82_pipeline_alerts.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_pipeline_alerts.json",
+      "sha256": "8098a5647371329f4c8b701a619fcac16ea4c36ce8c8df57747511f9495b93ea",
+      "size_bytes": 962
+    },
+    {
+      "timestamp": "2026-10-19T20:05:22+08:00",
+      "task": "DSHD-P82-MONITOR-DUAL-LINK",
+      "token": "DSHD-P82-DUAL-MONITOR-TOKEN",
+      "file": "p82_risk_ledger.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_risk_ledger.json",
+      "sha256": "802f2244309939a9f17dedef9945b38f5939a8fe249c3e26d065a3ec29a4b765",
+      "size_bytes": 3270
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "task037_monitor_solidify.py",
+      "path": "G7_ADJUDICATION_LEDGER\\task037_monitor_solidify.py",
+      "sha256": "5d1fd42302709288ca273e7077caf9b1001437b90ca1205f141a35dc311a1840",
+      "size_bytes": 77090
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_ic_watchdog_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_ic_watchdog_state.json",
+      "sha256": "9fce68642302dcdf99402691723e00fc93051a4e604eabeaed926d801cb02b66",
+      "size_bytes": 4243
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_perf_drift_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_perf_drift_state.json",
+      "sha256": "e63fc6292d69785ad13793d0f90f56b0f262f848cee5b2390540b6281d8b9fbb",
+      "size_bytes": 1760
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_pipeline_alerts.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_pipeline_alerts.json",
+      "sha256": "2f661be7246e6b65fdb2df25aeb87ff0621a6604a247b0696ff63e9c1f96c1f2",
+      "size_bytes": 1585
+    },
+    {
+      "timestamp": "2026-10-19T22:18:37+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_risk_ledger.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_risk_ledger.json",
+      "sha256": "2e8059ba9a0d5d4d493453bfaa018c3ed73f12ea4a83d9df99c782a05416fb23",
+      "size_bytes": 6283
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "task037_monitor_solidify.py",
+      "path": "G7_ADJUDICATION_LEDGER\\task037_monitor_solidify.py",
+      "sha256": "ca95fd1d5edb451b6d762b96a8285d0f06021abf531d7eafb04eb35cd81cc278",
+      "size_bytes": 78225
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_ic_watchdog_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_ic_watchdog_state.json",
+      "sha256": "454b0c28ce30c2e2f72d39b56f2a552ff48e0d2c9d2427393b3ce5e6a642f2d1",
+      "size_bytes": 5792
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_perf_drift_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_perf_drift_state.json",
+      "sha256": "64037340785c094936cff30529fe1e0507703bf58aae18fa75147f8ed8491014",
+      "size_bytes": 2112
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_pipeline_alerts.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_pipeline_alerts.json",
+      "sha256": "0dbd20d31718f1ac6b392176ce1a51a23c791dcd8aa32e07df18b909dd2c3e86",
+      "size_bytes": 2210
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "p82_risk_ledger.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_risk_ledger.json",
+      "sha256": "1803fef1a5ecab9478fad7f285a266cdc87661e0d6b28f3155ead032c603f390",
+      "size_bytes": 6283
+    },
+    {
+      "timestamp": "2026-10-19T22:21:01+08:00",
+      "task": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+      "token": "DSHD-TASK037-MONITOR-SOLIDIFY-TOKEN",
+      "file": "task037_dsha_ic_checksum.json",
+      "path": "G7_ADJUDICATION_LEDGER\\task037_dsha_ic_checksum.json",
+      "sha256": "3fd0b6cbacacdc5f9e76770fdf831ced6c2cc31ea22bdb7f7a263eb2f1131c95",
+      "size_bytes": 306
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "task038_monitor_op.py",
+      "path": "G7_ADJUDICATION_LEDGER\\task038_monitor_op.py",
+      "sha256": "8cfafcb2491c79a29bb9dd65d1947f616ba6f9b9ecf5a5fdd01e1bcb3dc126de",
+      "size_bytes": 83960
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_ic_watchdog_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_ic_watchdog_state.json",
+      "sha256": "2c708047716cf4eb91cf3e2c15b8463e1722336a94c0c54ba7a378e74e4f47f3",
+      "size_bytes": 9450
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_perf_drift_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_perf_drift_state.json",
+      "sha256": "13c66c6813e7eed9b666cc9ec5a938b23d99a8a2eff9190c1b839b05fef866e9",
+      "size_bytes": 2930
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_pipeline_alerts.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_pipeline_alerts.json",
+      "sha256": "815caa715b5141ac63de8ffbe030dfa3cb837aa0c2b20af3d8c8719f930b72c4",
+      "size_bytes": 3870
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_risk_ledger.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_risk_ledger.json",
+      "sha256": "d6f9ba5fac48335e08e09749a98b855b6d60475434c25586dc46be18e25af98a",
+      "size_bytes": 6810
+    },
+    {
+      "timestamp": "2026-10-19T23:41:40+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "task037_dsha_ic_checksum.json",
+      "path": "G7_ADJUDICATION_LEDGER\\task037_dsha_ic_checksum.json",
+      "sha256": "9d80667463ccb1b9215260268c97b59aa0b9fb54466c88dd48112c4e6bdb5769",
+      "size_bytes": 742
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "task038_monitor_op.py",
+      "path": "G7_ADJUDICATION_LEDGER\\task038_monitor_op.py",
+      "sha256": "a5ed1ecb3eba06399cd7ed34df9146354b56baadc9b2c7d029c630cd4a65d296",
+      "size_bytes": 84786
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_ic_watchdog_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_ic_watchdog_state.json",
+      "sha256": "613ff7e7a736fc8f23d09134e727ba86b700c28aa3cdcfa6c509456ba1fce84e",
+      "size_bytes": 11279
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_perf_drift_state.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_perf_drift_state.json",
+      "sha256": "9a6b4ec8c4a291522aab46b721b3de68845f0b10950265320af5b2e62f8b50cd",
+      "size_bytes": 3315
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_pipeline_alerts.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_pipeline_alerts.json",
+      "sha256": "c4126bd52e43e4474e9a0508927c91733b917b1d9aaf9e6bfb0ff413a802352c",
+      "size_bytes": 4409
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "p82_risk_ledger.json",
+      "path": "G7_ADJUDICATION_LEDGER\\p82_risk_ledger.json",
+      "sha256": "ea8fa8ea61c9f58946b911a583ce16dc946fa2a2eeb9e6694db6dd6a9beb7b89",
+      "size_bytes": 6810
+    },
+    {
+      "timestamp": "2026-10-19T23:42:48+08:00",
+      "task": "DSHD-TASK-038-MONITOR-OP",
+      "token": "DSHD-TASK038-MONITOR-OP-TOKEN",
+      "file": "task037_dsha_ic_checksum.json",
+      "path": "G7_ADJUDICATION_LEDGER\\task037_dsha_ic_checksum.json",
+      "sha256": "b27558389ddbceb09dda0e460ee30532936e63b53fc3f8ba6bc19687a90d47dd",
+      "size_bytes": 960
+    },
+    {
+      "snapshot_id": "task039-regime-detect-py-20261020_004509",
+      "file": "regime_detect.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\regime_detect.py",
+      "action": "TASK-039_NEW_SCRIPT",
+      "agent": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "reason": "DSHD-TASK-039: new monitoring script regime_detect.py",
+      "timestamp": "2026-10-20T00:45:09+08:00",
+      "task": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+      "pre_edit": {
+        "sha256": "c98274c7daed864b621513e9bbf4ac4cb5d6882189123f5878f0208d1e7efcd2",
+        "size_bytes": 20368
+      },
+      "snapshot_sha256": "c98274c7daed864b621513e9bbf4ac4cb5d6882189123f5878f0208d1e7efcd2",
+      "snapshot_size_bytes": 20368,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER",
+      "audit_context": "task039_monitor_upgrade"
+    },
+    {
+      "snapshot_id": "task039-crowding-monitor-py-20261020_004509",
+      "file": "crowding_monitor.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\crowding_monitor.py",
+      "action": "TASK-039_NEW_SCRIPT",
+      "agent": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "reason": "DSHD-TASK-039: new monitoring script crowding_monitor.py",
+      "timestamp": "2026-10-20T00:45:09+08:00",
+      "task": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+      "pre_edit": {
+        "sha256": "0da6e1dc4b26225dc7e70f515a04b02cb355c4e5acf6d7aa753e375bfb1594d1",
+        "size_bytes": 22189
+      },
+      "snapshot_sha256": "0da6e1dc4b26225dc7e70f515a04b02cb355c4e5acf6d7aa753e375bfb1594d1",
+      "snapshot_size_bytes": 22189,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER",
+      "audit_context": "task039_monitor_upgrade"
+    },
+    {
+      "snapshot_id": "task039-task039-monitor-upgrade-py-20261020_004509",
+      "file": "task039_monitor_upgrade.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\task039_monitor_upgrade.py",
+      "action": "TASK-039_NEW_SCRIPT",
+      "agent": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "reason": "DSHD-TASK-039: new monitoring script task039_monitor_upgrade.py",
+      "timestamp": "2026-10-20T00:45:09+08:00",
+      "task": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+      "pre_edit": {
+        "sha256": "90087d16c21de5edd111c319208a1346cb89bed20454beffe7516e8403fc83e4",
+        "size_bytes": 63668
+      },
+      "snapshot_sha256": "90087d16c21de5edd111c319208a1346cb89bed20454beffe7516e8403fc83e4",
+      "snapshot_size_bytes": 63668,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER",
+      "audit_context": "task039_monitor_upgrade"
+    },
+    {
+      "snapshot_id": "task039-regime-detect-py-20261020_004623",
+      "file": "regime_detect.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\regime_detect.py",
+      "action": "TASK-039_NEW_SCRIPT",
+      "agent": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "reason": "DSHD-TASK-039: new monitoring script regime_detect.py",
+      "timestamp": "2026-10-20T00:46:23+08:00",
+      "task": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+      "pre_edit": {
+        "sha256": "c98274c7daed864b621513e9bbf4ac4cb5d6882189123f5878f0208d1e7efcd2",
+        "size_bytes": 20368
+      },
+      "snapshot_sha256": "c98274c7daed864b621513e9bbf4ac4cb5d6882189123f5878f0208d1e7efcd2",
+      "snapshot_size_bytes": 20368,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER",
+      "audit_context": "task039_monitor_upgrade"
+    },
+    {
+      "snapshot_id": "task039-crowding-monitor-py-20261020_004623",
+      "file": "crowding_monitor.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\crowding_monitor.py",
+      "action": "TASK-039_NEW_SCRIPT",
+      "agent": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "reason": "DSHD-TASK-039: new monitoring script crowding_monitor.py",
+      "timestamp": "2026-10-20T00:46:23+08:00",
+      "task": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+      "pre_edit": {
+        "sha256": "0da6e1dc4b26225dc7e70f515a04b02cb355c4e5acf6d7aa753e375bfb1594d1",
+        "size_bytes": 22189
+      },
+      "snapshot_sha256": "0da6e1dc4b26225dc7e70f515a04b02cb355c4e5acf6d7aa753e375bfb1594d1",
+      "snapshot_size_bytes": 22189,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER",
+      "audit_context": "task039_monitor_upgrade"
+    },
+    {
+      "snapshot_id": "task039-task039-monitor-upgrade-py-20261020_004623",
+      "file": "task039_monitor_upgrade.py",
+      "file_path": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\task039_monitor_upgrade.py",
+      "action": "TASK-039_NEW_SCRIPT",
+      "agent": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "reason": "DSHD-TASK-039: new monitoring script task039_monitor_upgrade.py",
+      "timestamp": "2026-10-20T00:46:23+08:00",
+      "task": "DSHD-TASK-039-MONITOR-UPGRADE",
+      "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+      "pre_edit": {
+        "sha256": "ea3e816b75c850e00b23c72dbc15fde3ec828ffcfe9e3d492dcb2f0119eb4e12",
+        "size_bytes": 63714
+      },
+      "snapshot_sha256": "ea3e816b75c850e00b23c72dbc15fde3ec828ffcfe9e3d492dcb2f0119eb4e12",
+      "snapshot_size_bytes": 63714,
+      "toolchain_root": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER",
+      "audit_context": "task039_monitor_upgrade"
+    },
+    {
+      "ts": "2026-10-20T08:04:18+08:00",
+      "file": "task040_watcher_fix.py",
+      "sha256": "460bae9692b645f53fc87c39122bae31424f4f23a5daea11aef4a007a03a966b",
+      "size": 40413,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:04:18+08:00",
+      "file": "dshd_p81_watch.ps1",
+      "sha256": "9982bf2ce5abc52e48428ada504365ee24f95e04c4496e46a57aef4e2005e8f5",
+      "size": 139680,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:04:18+08:00",
+      "file": "p81_periodic_inspect.ps1",
+      "sha256": "0be405eb8181f0ddbc181ac1dafb8b9f06704650ed9937154e25c79c292da5e0",
+      "size": 46523,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:04:18+08:00",
+      "file": "p82_crowding_baseline.json",
+      "sha256": "97dd655054e6bb213d1a2e6a3bf094af7c57a3a60d227c792fa701f77b962160",
+      "size": 2973,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:04:18+08:00",
+      "file": "dshd_cluster_brief_regime_crowding.md",
+      "sha256": "42ea3afec8f431efffddcfef1d8359fc8578e2dc2dc3695a0dbcbddfd4e748fa",
+      "size": 3374,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:17+08:00",
+      "file": "task040_watcher_fix.py",
+      "sha256": "460bae9692b645f53fc87c39122bae31424f4f23a5daea11aef4a007a03a966b",
+      "size": 40413,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:17+08:00",
+      "file": "p81_file_lock.ps1",
+      "sha256": "2f58142c43c6b26c05031ed342a689cb0145b3af8602cea9b671bc1dc56115c4",
+      "size": 7763,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:17+08:00",
+      "file": "dshd_p81_watch.ps1",
+      "sha256": "01cd454f793273654896ff30b0f543117822a852795b70ce53a4b9c78056126d",
+      "size": 141340,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:17+08:00",
+      "file": "p81_periodic_inspect.ps1",
+      "sha256": "f514252ce277333f0e53904917e789e84621d990a637b8cc1525239f5f125f26",
+      "size": 56044,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:17+08:00",
+      "file": "p82_crowding_baseline.json",
+      "sha256": "8ac2161d6157ecd29c6bae6ef7b71a7cc8b3ed7994d8dcd1090122d5dbc1e54e",
+      "size": 2973,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:17+08:00",
+      "file": "dshd_cluster_brief_regime_crowding.md",
+      "sha256": "113f881560e492f71d753ae0c52d84cd8d91cf18189d03eec71d50dc018dcba5",
+      "size": 3410,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:42+08:00",
+      "file": "task040_watcher_fix.py",
+      "sha256": "fc94c21317eb19a6e1750bbd17a38404068a840265c3a70fa9f65a5dd93044a1",
+      "size": 40490,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:42+08:00",
+      "file": "p81_file_lock.ps1",
+      "sha256": "2f58142c43c6b26c05031ed342a689cb0145b3af8602cea9b671bc1dc56115c4",
+      "size": 7763,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:42+08:00",
+      "file": "dshd_p81_watch.ps1",
+      "sha256": "01cd454f793273654896ff30b0f543117822a852795b70ce53a4b9c78056126d",
+      "size": 141340,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:42+08:00",
+      "file": "p81_periodic_inspect.ps1",
+      "sha256": "f514252ce277333f0e53904917e789e84621d990a637b8cc1525239f5f125f26",
+      "size": 56044,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:42+08:00",
+      "file": "p82_crowding_baseline.json",
+      "sha256": "3065105c044acee8b7e821146f100bc707820b7085150fc5e808e88002c0cfae",
+      "size": 2973,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "ts": "2026-10-20T08:10:42+08:00",
+      "file": "dshd_cluster_brief_regime_crowding.md",
+      "sha256": "1f5e7d5b56f2a98ffc6a5f66bdf92dc67a8d39e85576a01a3347bbed31d4220d",
+      "size": 3410,
+      "task": "DSHD-TASK-040-WATCHER-FIX",
+      "change": "TASK-040 new/modified"
+    },
+    {
+      "file": "task041_monitor.py",
+      "sha256": "d005b2799bc53d646a6f036d11786d12dca1e9449dc396282fbd8ca84bc01c7c",
+      "size_bytes": 44252,
+      "last_modified": "2026-10-20T08:51:22+08:00",
+      "recorded_at": "2026-10-20T08:52:14+08:00",
+      "source": "DSHD-TASK041",
+      "task": "DSHD-TASK-041-MONITOR",
+      "description": "TASK-041 Global Monitor + Crowding/Regime Inspection"
+    },
+    {
+      "file": "task041_check_state.py",
+      "sha256": "563ece21f4ea73fa76356d746b6e88d800518f10e808e630863d396d3bdb2056",
+      "size_bytes": 3575,
+      "last_modified": "2026-10-20T08:47:36+08:00",
+      "recorded_at": "2026-10-20T08:52:14+08:00",
+      "source": "DSHD-TASK041",
+      "task": "DSHD-TASK-041-MONITOR",
+      "description": "TASK-041 Global Monitor + Crowding/Regime Inspection"
+    },
+    {
+      "file": "task041_update_version.py",
+      "sha256": "c1dccb45b82e798b2095fdd2a085fbb2ec0991a31bebcf0cc088f1a493a33bcb",
+      "size_bytes": 2375,
+      "last_modified": "2026-10-20T08:51:56+08:00",
+      "recorded_at": "2026-10-20T08:52:14+08:00",
+      "source": "DSHD-TASK041",
+      "task": "DSHD-TASK-041-MONITOR",
+      "description": "TASK-041 Global Monitor + Crowding/Regime Inspection"
+    },
+    {
+      "file": "task041_monitor.py",
+      "sha256": "0605bd997ea101880474d6d42ac020dfd68707192bcc342d07534e13205d4b6d",
+      "size_bytes": 43942,
+      "last_modified": "2026-10-20T08:57:28+08:00",
+      "recorded_at": "2026-10-20T08:58:12+08:00",
+      "source": "DSHD-TASK041",
+      "task": "DSHD-TASK-041-MONITOR",
+      "description": "TASK-041 Global Monitor + Crowding/Regime Inspection"
+    },
+    {
+      "file": "task042_monitor.py",
+      "path": "G7_ADJUDICATION_LEDGER/task042_monitor.py",
+      "version": "1.0.0-TASK042",
+      "change_type": "NEW",
+      "description": "TASK-042 Monitor Governance: Memory soft-restart + file lock enforcement",
+      "sha256": "3022df751dfb156dd3892c62336da95c38e7421b599d1e86d62142eeb98e22e8",
+      "size_bytes": 64447,
+      "changed_at": "2026-10-20T11:41:28+08:00",
+      "changed_by": "DSHD-T042-MONITOR",
+      "task_id": "DSHD-TASK-042-MONITOR",
+      "token": "DSHD-TASK042-TOKEN"
     }
-  ]
+  ],
+  "updated_at": "2026-10-20T11:41:28+08:00",
+  "total_entries": 107
 }

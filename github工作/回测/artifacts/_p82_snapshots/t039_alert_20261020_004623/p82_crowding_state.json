@@ -1,0 +1,654 @@
+{
+  "crowding_monitor": {
+    "monitor_id": "DSHD-TASK039-CROWDING-MONITOR",
+    "version": "1.0.0",
+    "task_id": "DSHD-TASK-039-MONITOR-UPGRADE",
+    "token": "DSHD-TASK039-MONITOR-UPGRADE-TOKEN",
+    "mode": "AUDIT_READ_ONLY",
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  },
+  "thresholds": {
+    "crowding_alert_percentile": 90,
+    "dir_concentration_extreme": 0.7,
+    "value_hhi_high": 0.25,
+    "ic_decay_threshold": 0.3,
+    "short_ic_window": 5,
+    "long_ic_window": 20,
+    "alert_severity": "MEDIUM",
+    "hard_locked": true,
+    "hard_lock_reason": "TASK-039 PERMANENT"
+  },
+  "factor_results": {
+    "oi_change_1d": {
+      "status": "CROWDED",
+      "total_observations": 1724,
+      "directional_concentration": {
+        "total_observations": 1724,
+        "positive_count": 588,
+        "negative_count": 1132,
+        "zero_count": 4,
+        "positive_ratio": 0.3419,
+        "negative_ratio": 0.6581,
+        "skewness": 3.4475,
+        "concentration_flag": false,
+        "mean_value": 147.824246,
+        "std_value": 18607.555186
+      },
+      "value_concentration": {
+        "hhi": 0.743683,
+        "hhi_normalized": 0.669314,
+        "num_bins": 10,
+        "bin_counts": [
+          1,
+          5,
+          32,
+          1479,
+          139,
+          49,
+          11,
+          2,
+          3,
+          3
+        ],
+        "dominant_bin_index": 3,
+        "dominant_bin_pct": 0.8579,
+        "value_range": 304322.0,
+        "concentration_flag": true
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.185782,
+        "long_window_ic": 0.179637,
+        "ic_decay": 0,
+        "ic_decay_pct": "0.0%",
+        "momentum_flag": false,
+        "short_window_observations": 428,
+        "long_window_observations": 423,
+        "interpretation": "短期IC=0.18578, 长期IC=0.17964, 衰减率=0.0%"
+      },
+      "crowding_score": {
+        "score": 37.1,
+        "max_score": 100,
+        "score_pct": 37.1,
+        "components": {
+          "directional": 11.07,
+          "value_concentration": 26.03,
+          "ic_decay": 0
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": true,
+      "alert_severity": "MEDIUM",
+      "alert_flags": [
+        "VALUE_CONCENTRATED"
+      ]
+    },
+    "oi_change_rate_7d": {
+      "status": "CROWDED",
+      "total_observations": 1700,
+      "directional_concentration": {
+        "total_observations": 1700,
+        "positive_count": 747,
+        "negative_count": 953,
+        "zero_count": 0,
+        "positive_ratio": 0.4394,
+        "negative_ratio": 0.5606,
+        "skewness": 3.2673,
+        "concentration_flag": false,
+        "mean_value": 0.069317,
+        "std_value": 0.442178
+      },
+      "value_concentration": {
+        "hhi": 0.400098,
+        "hhi_normalized": 0.360088,
+        "num_bins": 10,
+        "bin_counts": [
+          525,
+          918,
+          190,
+          40,
+          13,
+          7,
+          3,
+          2,
+          0,
+          2
+        ],
+        "dominant_bin_index": 1,
+        "dominant_bin_pct": 0.54,
+        "value_range": 5.259802,
+        "concentration_flag": true
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.046124,
+        "long_window_ic": 0.049313,
+        "ic_decay": 0.0647,
+        "ic_decay_pct": "6.5%",
+        "momentum_flag": false,
+        "short_window_observations": 424,
+        "long_window_observations": 423,
+        "interpretation": "短期IC=0.04612, 长期IC=0.04931, 衰减率=6.5%"
+      },
+      "crowding_score": {
+        "score": 20.19,
+        "max_score": 100,
+        "score_pct": 20.2,
+        "components": {
+          "directional": 4.24,
+          "value_concentration": 14.0,
+          "ic_decay": 1.94
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": true,
+      "alert_severity": "MEDIUM",
+      "alert_flags": [
+        "VALUE_CONCENTRATED"
+      ]
+    },
+    "oi_level": {
+      "status": "CROWDED",
+      "total_observations": 1728,
+      "directional_concentration": {
+        "total_observations": 1728,
+        "positive_count": 1728,
+        "negative_count": 0,
+        "zero_count": 0,
+        "positive_ratio": 1.0,
+        "negative_ratio": 0.0,
+        "skewness": 1.4209,
+        "concentration_flag": true,
+        "mean_value": 187137.337963,
+        "std_value": 120070.818427
+      },
+      "value_concentration": {
+        "hhi": 0.207184,
+        "hhi_normalized": 0.186466,
+        "num_bins": 10,
+        "bin_counts": [
+          287,
+          569,
+          403,
+          171,
+          82,
+          73,
+          85,
+          37,
+          11,
+          10
+        ],
+        "dominant_bin_index": 1,
+        "dominant_bin_pct": 0.3293,
+        "value_range": 650682.0,
+        "concentration_flag": false
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.025265,
+        "long_window_ic": 0.029828,
+        "ic_decay": 0.153,
+        "ic_decay_pct": "15.3%",
+        "momentum_flag": false,
+        "short_window_observations": 428,
+        "long_window_observations": 423,
+        "interpretation": "短期IC=0.02527, 长期IC=0.02983, 衰减率=15.3%"
+      },
+      "crowding_score": {
+        "score": 46.84,
+        "max_score": 100,
+        "score_pct": 46.8,
+        "components": {
+          "directional": 35.0,
+          "value_concentration": 7.25,
+          "ic_decay": 4.59
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": true,
+      "alert_severity": "MEDIUM",
+      "alert_flags": [
+        "DIRECTIONAL_CROWDED"
+      ]
+    },
+    "realized_vol_20d": {
+      "status": "CROWDED",
+      "total_observations": 1648,
+      "directional_concentration": {
+        "total_observations": 1648,
+        "positive_count": 1648,
+        "negative_count": 0,
+        "zero_count": 0,
+        "positive_ratio": 1.0,
+        "negative_ratio": 0.0,
+        "skewness": 2.2112,
+        "concentration_flag": true,
+        "mean_value": 0.240277,
+        "std_value": 0.182686
+      },
+      "value_concentration": {
+        "hhi": 0.359396,
+        "hhi_normalized": 0.323457,
+        "num_bins": 10,
+        "bin_counts": [
+          898,
+          367,
+          104,
+          125,
+          83,
+          36,
+          9,
+          5,
+          6,
+          15
+        ],
+        "dominant_bin_index": 0,
+        "dominant_bin_pct": 0.5449,
+        "value_range": 1.118613,
+        "concentration_flag": true
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.036353,
+        "long_window_ic": 0.013301,
+        "ic_decay": 0,
+        "ic_decay_pct": "0.0%",
+        "momentum_flag": false,
+        "short_window_observations": 411,
+        "long_window_observations": 410,
+        "interpretation": "短期IC=0.03635, 长期IC=0.01330, 衰减率=0.0%"
+      },
+      "crowding_score": {
+        "score": 47.58,
+        "max_score": 100,
+        "score_pct": 47.6,
+        "components": {
+          "directional": 35.0,
+          "value_concentration": 12.58,
+          "ic_decay": 0
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": true,
+      "alert_severity": "MEDIUM",
+      "alert_flags": [
+        "DIRECTIONAL_CROWDED",
+        "VALUE_CONCENTRATED"
+      ]
+    },
+    "vol_regime_change": {
+      "status": "CROWDED",
+      "total_observations": 1628,
+      "directional_concentration": {
+        "total_observations": 1628,
+        "positive_count": 837,
+        "negative_count": 791,
+        "zero_count": 0,
+        "positive_ratio": 0.5141,
+        "negative_ratio": 0.4859,
+        "skewness": 1.7806,
+        "concentration_flag": false,
+        "mean_value": 0.022896,
+        "std_value": 0.213418
+      },
+      "value_concentration": {
+        "hhi": 0.418607,
+        "hhi_normalized": 0.376747,
+        "num_bins": 10,
+        "bin_counts": [
+          25,
+          171,
+          978,
+          340,
+          85,
+          15,
+          7,
+          4,
+          1,
+          2
+        ],
+        "dominant_bin_index": 2,
+        "dominant_bin_pct": 0.6007,
+        "value_range": 2.43605,
+        "concentration_flag": true
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.009842,
+        "long_window_ic": -0.000787,
+        "ic_decay": 0,
+        "ic_decay_pct": "0.0%",
+        "momentum_flag": false,
+        "short_window_observations": 406,
+        "long_window_observations": 405,
+        "interpretation": "短期IC=0.00984, 长期IC=-0.00079, 衰减率=0.0%"
+      },
+      "crowding_score": {
+        "score": 15.64,
+        "max_score": 100,
+        "score_pct": 15.6,
+        "components": {
+          "directional": 0.99,
+          "value_concentration": 14.65,
+          "ic_decay": 0
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": true,
+      "alert_severity": "MEDIUM",
+      "alert_flags": [
+        "VALUE_CONCENTRATED"
+      ]
+    },
+    "spread_cs": {
+      "status": "CROWDED",
+      "total_observations": 1728,
+      "directional_concentration": {
+        "total_observations": 1728,
+        "positive_count": 868,
+        "negative_count": 842,
+        "zero_count": 18,
+        "positive_ratio": 0.5076,
+        "negative_ratio": 0.4924,
+        "skewness": -1.4356,
+        "concentration_flag": false,
+        "mean_value": -18.582176,
+        "std_value": 1117.733406
+      },
+      "value_concentration": {
+        "hhi": 0.678677,
+        "hhi_normalized": 0.61081,
+        "num_bins": 10,
+        "bin_counts": [
+          1,
+          1,
+          5,
+          11,
+          23,
+          179,
+          1410,
+          73,
+          18,
+          7
+        ],
+        "dominant_bin_index": 6,
+        "dominant_bin_pct": 0.816,
+        "value_range": 17840.0,
+        "concentration_flag": true
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.717062,
+        "long_window_ic": 0.732691,
+        "ic_decay": 0.0213,
+        "ic_decay_pct": "2.1%",
+        "momentum_flag": false,
+        "short_window_observations": 428,
+        "long_window_observations": 423,
+        "interpretation": "短期IC=0.71706, 长期IC=0.73269, 衰减率=2.1%"
+      },
+      "crowding_score": {
+        "score": 24.92,
+        "max_score": 100,
+        "score_pct": 24.9,
+        "components": {
+          "directional": 0.53,
+          "value_concentration": 23.75,
+          "ic_decay": 0.64
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": true,
+      "alert_severity": "MEDIUM",
+      "alert_flags": [
+        "VALUE_CONCENTRATED"
+      ]
+    },
+    "momentum_20d": {
+      "status": "CROWDED",
+      "total_observations": 1648,
+      "directional_concentration": {
+        "total_observations": 1648,
+        "positive_count": 902,
+        "negative_count": 742,
+        "zero_count": 4,
+        "positive_ratio": 0.5487,
+        "negative_ratio": 0.4513,
+        "skewness": 1.9411,
+        "concentration_flag": false,
+        "mean_value": 0.013741,
+        "std_value": 0.089942
+      },
+      "value_concentration": {
+        "hhi": 0.38646,
+        "hhi_normalized": 0.347814,
+        "num_bins": 10,
+        "bin_counts": [
+          11,
+          53,
+          571,
+          841,
+          107,
+          41,
+          12,
+          7,
+          3,
+          2
+        ],
+        "dominant_bin_index": 3,
+        "dominant_bin_pct": 0.5103,
+        "value_range": 1.02709,
+        "concentration_flag": true
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.250119,
+        "long_window_ic": 0.228015,
+        "ic_decay": 0,
+        "ic_decay_pct": "0.0%",
+        "momentum_flag": false,
+        "short_window_observations": 411,
+        "long_window_observations": 410,
+        "interpretation": "短期IC=0.25012, 长期IC=0.22801, 衰减率=0.0%"
+      },
+      "crowding_score": {
+        "score": 16.94,
+        "max_score": 100,
+        "score_pct": 16.9,
+        "components": {
+          "directional": 3.41,
+          "value_concentration": 13.53,
+          "ic_decay": 0
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": true,
+      "alert_severity": "MEDIUM",
+      "alert_flags": [
+        "VALUE_CONCENTRATED"
+      ]
+    },
+    "contract_switch_flag": {
+      "status": "OK",
+      "total_observations": 1728,
+      "directional_concentration": {
+        "total_observations": 1728,
+        "positive_count": 0,
+        "negative_count": 0,
+        "zero_count": 1728,
+        "positive_ratio": 0.5,
+        "negative_ratio": 0.5,
+        "skewness": 0,
+        "concentration_flag": false,
+        "mean_value": 0.0,
+        "std_value": 0.0
+      },
+      "value_concentration": {
+        "hhi": 1.0,
+        "num_bins": 1,
+        "dominant_bin": "all_same",
+        "range": 0
+      },
+      "ic_momentum": {
+        "short_window_ic": 0.0,
+        "long_window_ic": 0.0,
+        "ic_decay": 0,
+        "ic_decay_pct": "0.0%",
+        "momentum_flag": false,
+        "short_window_observations": 428,
+        "long_window_observations": 423,
+        "interpretation": "短期IC=0.00000, 长期IC=0.00000, 衰减率=0.0%"
+      },
+      "crowding_score": {
+        "score": 35.0,
+        "max_score": 100,
+        "score_pct": 35.0,
+        "components": {
+          "directional": 0.0,
+          "value_concentration": 35.0,
+          "ic_decay": 0
+        }
+      },
+      "score_percentile": null,
+      "alert_triggered": false,
+      "alert_severity": null
+    }
+  },
+  "portfolio_crowding": {
+    "mean_score": 30.53,
+    "max_score": 47.58,
+    "min_score": 15.64,
+    "std_score": 12.07,
+    "num_factors_alerting": 0,
+    "avg_score_pct": 30.5
+  },
+  "overall_crowding_level": "CROWDING_LOW",
+  "alerts": [
+    {
+      "factor": "oi_change_1d",
+      "alert_type": "FACTOR_CROWDING_DETECTED",
+      "severity": "MEDIUM",
+      "crowding_score": 37.1,
+      "score_percentile": null,
+      "flags": [
+        "VALUE_CONCENTRATED"
+      ],
+      "detail": "oi_change_1d 拥挤度异常: score=37.1, dir_conc=0.3419, HHI=0.743683, IC_decay=0",
+      "directional_concentration": 0.3419,
+      "value_hhi": 0.743683,
+      "ic_decay": 0,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "factor": "oi_change_rate_7d",
+      "alert_type": "FACTOR_CROWDING_DETECTED",
+      "severity": "MEDIUM",
+      "crowding_score": 20.19,
+      "score_percentile": null,
+      "flags": [
+        "VALUE_CONCENTRATED"
+      ],
+      "detail": "oi_change_rate_7d 拥挤度异常: score=20.19, dir_conc=0.4394, HHI=0.400098, IC_decay=0.0647",
+      "directional_concentration": 0.4394,
+      "value_hhi": 0.400098,
+      "ic_decay": 0.0647,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "factor": "oi_level",
+      "alert_type": "FACTOR_CROWDING_DETECTED",
+      "severity": "MEDIUM",
+      "crowding_score": 46.84,
+      "score_percentile": null,
+      "flags": [
+        "DIRECTIONAL_CROWDED"
+      ],
+      "detail": "oi_level 拥挤度异常: score=46.84, dir_conc=1.0, HHI=0.207184, IC_decay=0.153",
+      "directional_concentration": 1.0,
+      "value_hhi": 0.207184,
+      "ic_decay": 0.153,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "factor": "realized_vol_20d",
+      "alert_type": "FACTOR_CROWDING_DETECTED",
+      "severity": "MEDIUM",
+      "crowding_score": 47.58,
+      "score_percentile": null,
+      "flags": [
+        "DIRECTIONAL_CROWDED",
+        "VALUE_CONCENTRATED"
+      ],
+      "detail": "realized_vol_20d 拥挤度异常: score=47.58, dir_conc=1.0, HHI=0.359396, IC_decay=0",
+      "directional_concentration": 1.0,
+      "value_hhi": 0.359396,
+      "ic_decay": 0,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "factor": "vol_regime_change",
+      "alert_type": "FACTOR_CROWDING_DETECTED",
+      "severity": "MEDIUM",
+      "crowding_score": 15.64,
+      "score_percentile": null,
+      "flags": [
+        "VALUE_CONCENTRATED"
+      ],
+      "detail": "vol_regime_change 拥挤度异常: score=15.64, dir_conc=0.5141, HHI=0.418607, IC_decay=0",
+      "directional_concentration": 0.5141,
+      "value_hhi": 0.418607,
+      "ic_decay": 0,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "factor": "spread_cs",
+      "alert_type": "FACTOR_CROWDING_DETECTED",
+      "severity": "MEDIUM",
+      "crowding_score": 24.92,
+      "score_percentile": null,
+      "flags": [
+        "VALUE_CONCENTRATED"
+      ],
+      "detail": "spread_cs 拥挤度异常: score=24.92, dir_conc=0.5076, HHI=0.678677, IC_decay=0.0213",
+      "directional_concentration": 0.5076,
+      "value_hhi": 0.678677,
+      "ic_decay": 0.0213,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "factor": "momentum_20d",
+      "alert_type": "FACTOR_CROWDING_DETECTED",
+      "severity": "MEDIUM",
+      "crowding_score": 16.94,
+      "score_percentile": null,
+      "flags": [
+        "VALUE_CONCENTRATED"
+      ],
+      "detail": "momentum_20d 拥挤度异常: score=16.94, dir_conc=0.5487, HHI=0.38646, IC_decay=0",
+      "directional_concentration": 0.5487,
+      "value_hhi": 0.38646,
+      "ic_decay": 0,
+      "source": "DSHD-TASK039"
+    }
+  ],
+  "last_run": "2026-10-20T00:46:25+08:00",
+  "total_runs": 3,
+  "run_history": [
+    {
+      "timestamp": "2026-10-20T00:43:42+08:00",
+      "overall_level": "CROWDING_LOW",
+      "num_alerts": 7,
+      "mean_score": 30.53,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "timestamp": "2026-10-20T00:45:10+08:00",
+      "overall_level": "CROWDING_LOW",
+      "num_alerts": 7,
+      "mean_score": 30.53,
+      "source": "DSHD-TASK039"
+    },
+    {
+      "timestamp": "2026-10-20T00:46:25+08:00",
+      "overall_level": "CROWDING_LOW",
+      "num_alerts": 7,
+      "mean_score": 30.53,
+      "source": "DSHD-TASK039"
+    }
+  ]
+}

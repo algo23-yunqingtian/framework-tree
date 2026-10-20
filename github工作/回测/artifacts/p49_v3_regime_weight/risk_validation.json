@@ -1,8 +1,8 @@
 {
-  "output_id": "DSHA-TASK046-RISK-VALIDATION",
-  "generated_at": "2026-10-20T08:50:00+08:00",
-  "token": "DSHA-TASK046-FACTOR-ANALYSIS-TOKEN",
-  "task": "DSHA-TASK046-FACTOR-ANALYSIS",
+  "output_id": "DSHA-TASK047-RISK-VALIDATION",
+  "generated_at": "2026-10-20T11:44:31+08:00",
+  "token": "DSHA-TASK047-ENGINE-OPTIMIZE-TOKEN",
+  "task": "DSHA-TASK047-ENGINE-OPTIMIZE",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -94,15 +94,15 @@
   },
   "weighted_corr_equal": 0.11659,
   "weighted_corr_fixed": 0.172523,
-  "weighted_corr_dynamic_avg": 0.13265,
+  "weighted_corr_dynamic_avg": 0.128573,
   "hhi_equal": 0.125,
   "hhi_dynamic_per_regime": {
-    "UP": 0.13402,
-    "DOWN": 0.13702,
-    "SIDEWAYS": 0.125
+    "up": 0.130772,
+    "down": 0.132693,
+    "sideways": 0.125
   },
-  "hhi_dynamic_avg": 0.132013,
-  "crowding_ratio": 1.0561,
+  "hhi_dynamic_avg": 0.129488,
+  "crowding_ratio": 1.0359,
   "crowding_threshold": 1.5,
   "crowding_alert": false,
   "high_corr_pairs": [],

@@ -1,0 +1,38 @@
+{
+  "snapshot_id": "T037-SNAP-20261019_221837",
+  "snapshot_timestamp": "2026-10-19T22:18:37+08:00",
+  "trigger": "AUTO_SNAPSHOT_ON_PIPELINE_ERROR",
+  "trigger_source": "DSHD-TASK-037-MONITOR-SOLIDIFY",
+  "anomalies": [
+    {
+      "anomaly_type": "BLACKLIST_INTERCEPT",
+      "severity": "MEDIUM",
+      "description": "黑名单拦截",
+      "event_id": "DSHD-T037-SIM-BLACKLIST-INTERCEPT-001",
+      "event_type": "BLACKLIST_INTERCEPT",
+      "result": "WARN",
+      "agent": "DSHD-TASK037",
+      "line": 6596,
+      "timestamp": "2026-10-19T22:18:37+08:00"
+    }
+  ],
+  "files_copied": [
+    "dshd_cluster_brief.md",
+    "weighted_backtest_metrics.json",
+    "factor_weight.json",
+    "factor_enable_config.json",
+    "p82_ic_watchdog_state.json",
+    "p82_perf_drift_state.json",
+    "p82_risk_ledger.json"
+  ],
+  "sha_manifest": {
+    "dshd_cluster_brief.md": "d139786af26f822d44f53c60697833a62fc688166a98074d3b7797812b1d11d0",
+    "weighted_backtest_metrics.json": "529ac2217b938195cd122e41f1745a7e28bf12c1edc3e68840277d2446b9cc4c",
+    "factor_weight.json": "eb5ad597d5e65729387fe827cbcd15de3aa8dab9745b6088675656d3d5744ac7",
+    "factor_enable_config.json": "6ef882f2833b7a960ca1ddeb16f38dfc1ec3a6ab451039d19f37966e21741234",
+    "p82_ic_watchdog_state.json": "9fce68642302dcdf99402691723e00fc93051a4e604eabeaed926d801cb02b66",
+    "p82_perf_drift_state.json": "e63fc6292d69785ad13793d0f90f56b0f262f848cee5b2390540b6281d8b9fbb",
+    "p82_risk_ledger.json": "802f2244309939a9f17dedef9945b38f5939a8fe249c3e26d065a3ec29a4b765"
+  },
+  "snapshot_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\_p82_snapshots\\t037_alert_20261019_221837"
+}
