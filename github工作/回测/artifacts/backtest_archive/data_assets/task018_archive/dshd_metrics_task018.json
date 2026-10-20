@@ -1,0 +1,26 @@
+{
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:30+08:00",
+  "receiver": "DSHD-TASK046",
+  "metrics": {
+    "patrol_pass": true,
+    "rollover_quality_pass": true,
+    "consistency_pass": true,
+    "down_count": 26,
+    "down_minimum": 26,
+    "conflicts": 0,
+    "cross": 0,
+    "timeouts": 0,
+    "sha_matched": 540,
+    "sha_total": 540,
+    "alerts_pushed": 10,
+    "alert_types_count": 10
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  }
+}

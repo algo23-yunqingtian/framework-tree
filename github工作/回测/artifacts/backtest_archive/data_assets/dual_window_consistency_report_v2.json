@@ -1,0 +1,45 @@
+{
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:30+08:00",
+  "mode": "DUAL_WINDOW_CONSISTENCY_V2",
+  "cross_round": {
+    "rounds": 42,
+    "all_success": true,
+    "symbols_total": 9,
+    "symbols_passed_min": 9,
+    "regime_counts": {
+      "DOWN": 26,
+      "UP": 8,
+      "SIDEWAYS": 8
+    },
+    "down_count": 26
+  },
+  "cross_round_pass": true,
+  "shard_consistency": {
+    "40d_files": 360,
+    "20d_files": 180,
+    "expected_40d": 360,
+    "expected_20d": 180,
+    "bad_40d": [],
+    "bad_20d": [],
+    "20d_subset_of_40d": true,
+    "non_subset_files": [],
+    "pass": true
+  },
+  "sha_verify": {
+    "total_verified": 540,
+    "matched": 540,
+    "mismatch": 0,
+    "mismatch_files": [],
+    "pass": true
+  },
+  "sha_ledger_ref": "artifacts\\backtest_archive\\data_assets\\dual_window_sha_fingerprint_list_v2.json",
+  "all_pass": true,
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  }
+}

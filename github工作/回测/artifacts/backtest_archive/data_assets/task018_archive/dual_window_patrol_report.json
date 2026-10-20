@@ -1,0 +1,80 @@
+{
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:26+08:00",
+  "mode": "DUAL_WINDOW_FULL_CHAIN_PATROL",
+  "monitor_trading_days": 7,
+  "monitor_rounds_per_day": 6,
+  "monitor_total_rounds": 42,
+  "checks": {
+    "P1.1_dir_isolation": {
+      "pass": true,
+      "20d": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_20d",
+      "40d": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_40d",
+      "parallel": "artifacts\\backtest_archive\\data_assets\\incremental\\parallel"
+    },
+    "P1.2_shard_counts": {
+      "pass": true,
+      "expected_40d": 360,
+      "actual_40d": 360,
+      "expected_20d": 180,
+      "actual_20d": 180
+    },
+    "P1.3_no_cross_contamination": {
+      "pass": true,
+      "illegal_40d": [],
+      "illegal_20d": [],
+      "content_mismatch": [],
+      "20d_subset_of_40d_dates": true,
+      "non_subset_files": [],
+      "same_name_shared_count": 180,
+      "scan_duration_sec": 0.803
+    },
+    "P1.4_down_sample": {
+      "pass": true,
+      "down_count": 26,
+      "down_minimum_required": 26,
+      "regime_counts": {
+        "DOWN": 26,
+        "UP": 8,
+        "SIDEWAYS": 8
+      },
+      "rounds_total": 42,
+      "rounds_all_success": 42
+    },
+    "P1.5_lock_conflicts": {
+      "pass": true,
+      "total_conflicts": 0,
+      "total_cross": 0,
+      "total_timeouts": 0,
+      "ledger_rounds": 242
+    },
+    "P1.6_live_schedule": {
+      "pass": true,
+      "details": {
+        "verify_40d": {
+          "success": 9,
+          "total": 9,
+          "all_success": true
+        },
+        "verify_20d": {
+          "success": 9,
+          "total": 9,
+          "all_success": true
+        },
+        "verify_shards_total": 18,
+        "verify_row_count_ok": true
+      }
+    }
+  },
+  "all_pass": true,
+  "duration_seconds": 13.401,
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha_unchanged": true,
+    "serial_pipeline_unchanged": true
+  }
+}

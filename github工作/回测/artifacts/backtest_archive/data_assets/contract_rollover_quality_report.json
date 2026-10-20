@@ -1,0 +1,147 @@
+{
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:26+08:00",
+  "mode": "CONTRACT_ROLLOVER_QUALITY_PATROL",
+  "symbols_processed": 9,
+  "oi_change_threshold": -0.3,
+  "expected_switch_events": 25,
+  "switches_verified": 25,
+  "missing_segments": 0,
+  "threshold_violations": 0,
+  "per_symbol": {
+    "AL.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 2,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 2
+      }
+    },
+    "CU.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 4,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 4
+      }
+    },
+    "HC.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 3,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 3
+      }
+    },
+    "NI.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 2,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 2
+      }
+    },
+    "PB.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 3,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 3
+      }
+    },
+    "RB.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 3,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 3
+      }
+    },
+    "SN.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 3,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 3
+      }
+    },
+    "ZN.SHF": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 2,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 2
+      }
+    },
+    "LC.GFE": {
+      "pass": true,
+      "details": {
+        "total_days": 40,
+        "missing_day_indices": [],
+        "dates_match_trading_days": true,
+        "switch_count": 3,
+        "threshold_violations": [],
+        "flag_vs_switch_mismatch": [],
+        "quote_rows": 240,
+        "quote_symbol_column_ok": true,
+        "summary_switch_count": 3
+      }
+    }
+  },
+  "all_pass": true,
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED"
+  }
+}

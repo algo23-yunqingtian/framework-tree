@@ -1,0 +1,205 @@
+{
+  "dag_id": "DSHC-DUAL-WINDOW-INCR-DAG",
+  "version": "1.0.0",
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:26+08:00",
+  "baseline_branch": "origin/feature/v88-g1",
+  "description": "双窗口常态化增量采集DAG — 只固化调度规则与目录规范，核心采集逻辑零改动",
+  "schedule": {
+    "trigger": "WEEKDAYS 15:35",
+    "timezone": "Asia/Shanghai",
+    "long_term_policy": "EVERY_TRADING_DAY",
+    "retry_policy": {
+      "max_retries": 3,
+      "retry_interval_sec": 60
+    },
+    "failure_policy": "FAIL_FAST — 任一锁冲突/交叉污染/分片缺失即终止固化流程"
+  },
+  "nodes": [
+    {
+      "id": "node_00_smoke",
+      "phase": "P0",
+      "script": "incr_pipeline_pipeline_freeze.py",
+      "action": "--p0-self-check",
+      "depends_on": [],
+      "description": "冒烟自检13项"
+    },
+    {
+      "id": "node_01_patrol",
+      "phase": "P1",
+      "script": "incr_pipeline_pipeline_freeze.py",
+      "action": "--p1-patrol",
+      "depends_on": [
+        "node_00_smoke"
+      ],
+      "description": "全链路巡检"
+    },
+    {
+      "id": "node_02_freeze",
+      "phase": "P2",
+      "script": "incr_pipeline_pipeline_freeze.py",
+      "action": "--p2-freeze",
+      "depends_on": [
+        "node_01_patrol"
+      ],
+      "description": "链路固化DAG"
+    },
+    {
+      "id": "node_03_rollover_quality",
+      "phase": "P3",
+      "script": "incr_pipeline_pipeline_freeze.py",
+      "action": "--p3-rollover-quality",
+      "depends_on": [
+        "node_02_freeze"
+      ],
+      "description": "合约换月数据源质量巡检"
+    },
+    {
+      "id": "node_04_consistency",
+      "phase": "P4",
+      "script": "incr_pipeline_pipeline_freeze.py",
+      "action": "--p4-consistency",
+      "depends_on": [
+        "node_03_rollover_quality"
+      ],
+      "description": "双窗口一致性核验+SHA台账"
+    },
+    {
+      "id": "node_05_upstream_downstream",
+      "phase": "P5",
+      "script": "incr_pipeline_pipeline_freeze.py",
+      "action": "--p5-upstream-downstream",
+      "depends_on": [
+        "node_04_consistency"
+      ],
+      "description": "DSHD指标推送+DSHA数据包"
+    },
+    {
+      "id": "node_06_archive",
+      "phase": "P6",
+      "script": "incr_pipeline_pipeline_freeze.py",
+      "action": "--p6-archive-manifest",
+      "depends_on": [
+        "node_05_upstream_downstream"
+      ],
+      "description": "制品归档+Manifest升级"
+    }
+  ],
+  "edges": [
+    {
+      "from": "node_00_smoke",
+      "to": "node_01_patrol"
+    },
+    {
+      "from": "node_01_patrol",
+      "to": "node_02_freeze"
+    },
+    {
+      "from": "node_02_freeze",
+      "to": "node_03_rollover_quality"
+    },
+    {
+      "from": "node_03_rollover_quality",
+      "to": "node_04_consistency"
+    },
+    {
+      "from": "node_04_consistency",
+      "to": "node_05_upstream_downstream"
+    },
+    {
+      "from": "node_05_upstream_downstream",
+      "to": "node_06_archive"
+    }
+  ],
+  "frozen_rules": {
+    "shard_writing": {
+      "engine": "dual_window_worker (TASK-017)",
+      "worker_function": "code/incr_pipeline_dual_window.py::dual_window_worker",
+      "shard_format": "CSV, header: date,symbol,indicator,value,source",
+      "rows_per_shard": 6,
+      "indicators": [
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "SETTLE",
+        "OI"
+      ],
+      "market_regime_supported": [
+        "UP",
+        "DOWN",
+        "SIDEWAYS",
+        "MIXED"
+      ],
+      "seed_rule": "seed_base*1000 + symbol_index (deterministic)",
+      "lock_rule": "global lock orchestrator-only (120s) + per-symbol shard lock worker-only (120s)",
+      "core_logic_untouched": true
+    },
+    "directory_structure": {
+      "window_40d_dir": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_40d",
+      "window_20d_dir": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_20d",
+      "parallel_dir": "artifacts\\backtest_archive\\data_assets\\incremental\\parallel",
+      "contract_rollover_dir": "artifacts\\backtest_archive\\data_assets\\contract_rollover",
+      "isolation_requirement": "STRICT — 20d/40d/parallel 三目录物理隔离，禁止跨窗口写入"
+    },
+    "filename_convention": {
+      "pattern": "parallel_shard_{SAFE_SYMBOL}_{YYYYMMDD}.csv",
+      "example": "parallel_shard_AL_SHF_20260923.csv",
+      "safe_symbol_rule": "symbol.replace('.','_').replace('/','_')"
+    },
+    "window_params": {
+      "window_20d_days": 20,
+      "window_40d_days": 40,
+      "expected_shards_40d": 360,
+      "expected_shards_20d": 180
+    },
+    "regime_params": {
+      "monitor_trading_days": 7,
+      "monitor_rounds_per_day": 6,
+      "monitor_total_rounds": 42,
+      "regime_cycle": [
+        "DOWN",
+        "DOWN",
+        "DOWN",
+        "UP",
+        "SIDEWAYS"
+      ],
+      "down_minimum": 26
+    },
+    "contract_rollover_params": {
+      "oi_change_threshold": -0.3,
+      "sim_days": 40,
+      "expected_symbols": 9,
+      "expected_switch_events": 25
+    }
+  },
+  "symbols": [
+    "AL.SHF",
+    "CU.SHF",
+    "HC.SHF",
+    "NI.SHF",
+    "PB.SHF",
+    "RB.SHF",
+    "SN.SHF",
+    "ZN.SHF",
+    "LC.GFE"
+  ],
+  "blacklist": {
+    "LC.SHF": "PERMANENTLY_BLACKLISTED — replaced by LC.GFE"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "serial_pipeline_untouched": true,
+    "core_collection_logic_untouched": true,
+    "dual_window_isolation_mandatory": true
+  },
+  "downstream": {
+    "dshd": "DSHD-TASK046 — 进程监控/告警接收",
+    "dsha": "DSHA-TASK051 — 策略回放/翻转率评估"
+  }
+}
