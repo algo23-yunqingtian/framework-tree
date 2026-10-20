@@ -1,0 +1,54 @@
+{
+  "output_id": "DSHA-TASK053-P5-REJECTED-VARIANTS",
+  "generated_at": "2026-10-20T18:07:09+0800",
+  "token": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE-TOKEN",
+  "task": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "total_rejected": 3,
+  "variants": [
+    {
+      "variant_id": "V4",
+      "description": "alpha=0.7, 20d IC",
+      "rejection_reason": "sharpe=3.3468 < 3.4 threshold",
+      "metrics": {
+        "sharpe": 3.346833,
+        "return": 0.218901,
+        "max_dd": -0.018025,
+        "crowding": null
+      }
+    },
+    {
+      "variant_id": "V5",
+      "description": "alpha=0.7, 40d IC",
+      "rejection_reason": "sharpe=3.1482 < 3.4 threshold",
+      "metrics": {
+        "sharpe": 3.148211,
+        "return": 0.201413,
+        "max_dd": -0.018025,
+        "crowding": null
+      }
+    },
+    {
+      "variant_id": "V4_40d_fallback",
+      "description": "alpha=0.6, 40d IC (40d窗口方案)",
+      "rejection_reason": "sharpe=3.2650 < 3.4 threshold",
+      "metrics": {
+        "sharpe": 3.264958,
+        "return": 0.209407,
+        "max_dd": -0.018025,
+        "crowding": 1.0205
+      }
+    }
+  ],
+  "rejection_policy": {
+    "sharpe_threshold": 3.4,
+    "reason": "任何变体夏普比率 < 3.4 即自动拒绝",
+    "fallback_mechanism": "自动回退到alpha=0.6"
+  }
+}

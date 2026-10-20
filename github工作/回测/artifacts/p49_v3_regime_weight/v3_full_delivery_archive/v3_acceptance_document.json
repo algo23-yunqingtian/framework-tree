@@ -1,0 +1,849 @@
+{
+  "output_id": "DSHA-TASK051-V3-ACCEPTANCE-DOC",
+  "generated_at": "2026-10-20T16:43:19+08:00",
+  "token": "DSHA-TASK051-FROZEN-BACKTEST-VALID-TOKEN",
+  "task": "DSHA-TASK051-FROZEN-BACKTEST-VALID",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "v3_version": {
+    "variant_id": "V3",
+    "description": "TASK050: alpha=0.6, 20d IC, PERMANENTLY_FROZEN",
+    "alpha": 0.6,
+    "ic_window": 20,
+    "selected_window": "20d",
+    "freeze_status": "PERMANENTLY_FROZEN",
+    "frozen_at": "2026-10-20T15:48:50+08:00",
+    "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+    "baseline_commit": "e170ed3",
+    "engine": "Set-E (PERMANENTLY_FROZEN)"
+  },
+  "p0_prereq": {
+    "v3_final_weight_rules": true,
+    "v3_selected_window": "20d",
+    "v3_selected_alpha": 0.6,
+    "v3_sharpe_achieved": 3.488982,
+    "v3_crowding_achieved": 1.0359,
+    "v3_fwr_sha256": "aa859251c98228f938a0dc8f7f04598b002f3656583b2568c06b51e4fcdc78b3",
+    "set_e_frozen": true,
+    "factor_count": 8,
+    "factor_names": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "v3_params_complete": true,
+    "v3_missing_keys": [],
+    "task050_artifacts": true,
+    "task050_missing": [],
+    "prod_configs_unchanged": true,
+    "factors_csv": true,
+    "factors_csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+    "factors_csv_size": 816982,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "deviation_threshold": 0.005,
+    "engine_params_match_v3": true,
+    "baseline_metrics_readable": true,
+    "baseline_sharpe": 3.488982,
+    "baseline_return": 0.229334,
+    "baseline_max_dd": -0.012099,
+    "p0_all_pass": true
+  },
+  "p1_replay_validation": {
+    "replay_metrics": {
+      "total_return": 0.229334,
+      "annualized_return": 0.128311,
+      "annual_volatility": 0.036776,
+      "daily_volatility": 0.002317,
+      "max_drawdown": -0.012099,
+      "sharpe_ratio": 3.488982,
+      "calmar_ratio": 10.604686,
+      "win_rate": 0.431555,
+      "avg_win": 0.002229,
+      "avg_loss": 0.001301,
+      "profit_loss_ratio": 1.712786,
+      "trade_count": 251,
+      "total_trades": 251,
+      "n_periods": 431,
+      "initial_capital": 1000000.0,
+      "final_capital": 1229334.08,
+      "total_transaction_cost": 0.008427,
+      "cost_ratio": 0.036744
+    },
+    "baseline_metrics": {
+      "total_return": 0.229334,
+      "annualized_return": 0.128311,
+      "annual_volatility": 0.036776,
+      "daily_volatility": 0.002317,
+      "max_drawdown": -0.012099,
+      "sharpe_ratio": 3.488982,
+      "calmar_ratio": 10.604686,
+      "win_rate": 0.431555,
+      "avg_win": 0.002229,
+      "avg_loss": 0.001301,
+      "profit_loss_ratio": 1.712786,
+      "trade_count": 251,
+      "total_trades": 251,
+      "n_periods": 431,
+      "initial_capital": 1000000.0,
+      "final_capital": 1229334.08,
+      "total_transaction_cost": 0.008427,
+      "cost_ratio": 0.036744
+    },
+    "flip_rate_20d": {
+      "baseline": 0.5,
+      "replay": 0.5,
+      "deviation": 0.0,
+      "within_threshold": true
+    },
+    "flip_rate_40d": {
+      "baseline": 0.2105,
+      "replay": 0.2105,
+      "deviation": 0.0,
+      "within_threshold": true
+    },
+    "deviation_check": {
+      "deviations": {
+        "total_return": {
+          "baseline": 0.229334,
+          "replay": 0.229334,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "sharpe_ratio": {
+          "baseline": 3.488982,
+          "replay": 3.488982,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "max_drawdown": {
+          "baseline": -0.012099,
+          "replay": -0.012099,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "annualized_return": {
+          "baseline": 0.128311,
+          "replay": 0.128311,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "annual_volatility": {
+          "baseline": 0.036776,
+          "replay": 0.036776,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "daily_volatility": {
+          "baseline": 0.002317,
+          "replay": 0.002317,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "calmar_ratio": {
+          "baseline": 10.604686,
+          "replay": 10.604686,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "win_rate": {
+          "baseline": 0.431555,
+          "replay": 0.431555,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "avg_win": {
+          "baseline": 0.002229,
+          "replay": 0.002229,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "avg_loss": {
+          "baseline": 0.001301,
+          "replay": 0.001301,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "profit_loss_ratio": {
+          "baseline": 1.712786,
+          "replay": 1.712786,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "trade_count": {
+          "baseline": 251,
+          "replay": 251,
+          "deviation": 0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "final_capital": {
+          "baseline": 1229334.08,
+          "replay": 1229334.08,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "total_transaction_cost": {
+          "baseline": 0.008427,
+          "replay": 0.008427,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "cost_ratio": {
+          "baseline": 0.036744,
+          "replay": 0.036744,
+          "deviation": 0.0,
+          "deviation_pct": 0.0,
+          "within_threshold": true
+        },
+        "flip_rate_20d": {
+          "baseline": 0.5,
+          "replay": 0.5,
+          "deviation": 0.0,
+          "within_threshold": true
+        },
+        "flip_rate_40d": {
+          "baseline": 0.2105,
+          "replay": 0.2105,
+          "deviation": 0.0,
+          "within_threshold": true
+        }
+      },
+      "all_pass": true,
+      "threshold": 0.005
+    },
+    "threshold": 0.005,
+    "pass": true
+  },
+  "p2_stress_test": {
+    "scenarios": [
+      {
+        "scenario_name": "S1_FACTOR_NOISE",
+        "description": "因子噪声扰动 (σ=2%×因子std)",
+        "seed": 42,
+        "metrics": {
+          "total_return": 0.085723,
+          "annualized_return": 0.049263,
+          "annual_volatility": 0.023856,
+          "daily_volatility": 0.001503,
+          "max_drawdown": -0.017186,
+          "sharpe_ratio": 2.064992,
+          "calmar_ratio": 2.866461,
+          "win_rate": 0.489559,
+          "avg_win": 0.001141,
+          "avg_loss": 0.000877,
+          "profit_loss_ratio": 1.299985,
+          "trade_count": 313,
+          "total_trades": 313,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1085722.96,
+          "total_transaction_cost": 0.006452,
+          "cost_ratio": 0.075262
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3684,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true
+      },
+      {
+        "scenario_name": "S2_MARKET_JUMP",
+        "description": "行情跳变 (±5%, 日期=['2026-10-08 00:00:00', '2025-04-28 00:00:00', '2025-09-26 00:00:00'])",
+        "seed": 43,
+        "metrics": {
+          "total_return": 0.083473,
+          "annualized_return": 0.047992,
+          "annual_volatility": 0.02391,
+          "daily_volatility": 0.001506,
+          "max_drawdown": -0.018168,
+          "sharpe_ratio": 2.007149,
+          "calmar_ratio": 2.641567,
+          "win_rate": 0.484919,
+          "avg_win": 0.001145,
+          "avg_loss": 0.000881,
+          "profit_loss_ratio": 1.299363,
+          "trade_count": 312,
+          "total_trades": 312,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1083473.46,
+          "total_transaction_cost": 0.006311,
+          "cost_ratio": 0.075611
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3684,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true
+      },
+      {
+        "scenario_name": "S3_VOL_SPIKE",
+        "description": "波动率放大 (2x realized_vol_20d)",
+        "seed": 44,
+        "metrics": {
+          "total_return": 0.045244,
+          "annualized_return": 0.02621,
+          "annual_volatility": 0.015475,
+          "daily_volatility": 0.000975,
+          "max_drawdown": -0.013712,
+          "sharpe_ratio": 1.693717,
+          "calmar_ratio": 1.91141,
+          "win_rate": 0.482599,
+          "avg_win": 0.000742,
+          "avg_loss": 0.000603,
+          "profit_loss_ratio": 1.229282,
+          "trade_count": 368,
+          "total_trades": 368,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1045243.77,
+          "total_transaction_cost": 0.005521,
+          "cost_ratio": 0.122036
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3684,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true
+      },
+      {
+        "scenario_name": "S4_COMBO",
+        "description": "组合扰动 (噪声+跳变叠加)",
+        "seed": 47,
+        "metrics": {
+          "total_return": 0.081923,
+          "annualized_return": 0.047114,
+          "annual_volatility": 0.023806,
+          "daily_volatility": 0.0015,
+          "max_drawdown": -0.016907,
+          "sharpe_ratio": 1.979105,
+          "calmar_ratio": 2.786693,
+          "win_rate": 0.484919,
+          "avg_win": 0.001137,
+          "avg_loss": 0.00089,
+          "profit_loss_ratio": 1.277565,
+          "trade_count": 310,
+          "total_trades": 310,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1081922.57,
+          "total_transaction_cost": 0.006207,
+          "cost_ratio": 0.075764
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3158,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true
+      },
+      {
+        "scenario_name": "S5_HEAVY_NOISE",
+        "description": "高强度噪声 (σ=5%×因子std)",
+        "seed": 49,
+        "metrics": {
+          "total_return": 0.085925,
+          "annualized_return": 0.049377,
+          "annual_volatility": 0.023595,
+          "daily_volatility": 0.001486,
+          "max_drawdown": -0.018817,
+          "sharpe_ratio": 2.09272,
+          "calmar_ratio": 2.624076,
+          "win_rate": 0.487239,
+          "avg_win": 0.001152,
+          "avg_loss": 0.000864,
+          "profit_loss_ratio": 1.332951,
+          "trade_count": 316,
+          "total_trades": 316,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1085924.53,
+          "total_transaction_cost": 0.006249,
+          "cost_ratio": 0.072722
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.2632,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true
+      }
+    ],
+    "summary": {
+      "total": 5,
+      "pass": 5,
+      "fail": 0,
+      "all_pass": true,
+      "max_crowding": 1.0359,
+      "min_sharpe": 1.693717,
+      "threshold": 1.1
+    },
+    "pass": true
+  },
+  "p3_boundary_test": {
+    "scenarios": [
+      {
+        "scenario_name": "B1_LOW_LIQUIDITY",
+        "description": "低流动性 (20% OI数据缺失)",
+        "metrics": {
+          "total_return": 0.083473,
+          "annualized_return": 0.047992,
+          "annual_volatility": 0.02391,
+          "daily_volatility": 0.001506,
+          "max_drawdown": -0.018168,
+          "sharpe_ratio": 2.007149,
+          "calmar_ratio": 2.641567,
+          "win_rate": 0.484919,
+          "avg_win": 0.001145,
+          "avg_loss": 0.000881,
+          "profit_loss_ratio": 1.299363,
+          "trade_count": 312,
+          "total_trades": 312,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1083473.46,
+          "total_transaction_cost": 0.006311,
+          "cost_ratio": 0.075611
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3684,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true,
+        "extra_info": {
+          "affected_oi_rows": 797,
+          "affected_pct": 0.2
+        },
+        "regime_counts": {
+          "up": 1607,
+          "down": 1422,
+          "sideways": 859
+        }
+      },
+      {
+        "scenario_name": "B2_CONTINUOUS_SWITCH",
+        "description": "连续换月 (每品种3个强制换月标记)",
+        "metrics": {
+          "total_return": 0.088274,
+          "annualized_return": 0.050704,
+          "annual_volatility": 0.023829,
+          "daily_volatility": 0.001501,
+          "max_drawdown": -0.016897,
+          "sharpe_ratio": 2.127817,
+          "calmar_ratio": 3.000787,
+          "win_rate": 0.491879,
+          "avg_win": 0.001142,
+          "avg_loss": 0.000872,
+          "profit_loss_ratio": 1.309343,
+          "trade_count": 314,
+          "total_trades": 314,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1088273.58,
+          "total_transaction_cost": 0.006556,
+          "cost_ratio": 0.074274
+        },
+        "flip_rate_20d": 0.4,
+        "flip_rate_40d": 0.3158,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true,
+        "extra_info": {
+          "total_switch_marks": 38
+        },
+        "regime_counts": {
+          "up": 1607,
+          "down": 1422,
+          "sideways": 859
+        }
+      },
+      {
+        "scenario_name": "B3_EXTREME_MOVES",
+        "description": "极端涨跌 (±8%注入)",
+        "metrics": {
+          "total_return": 0.083089,
+          "annualized_return": 0.047774,
+          "annual_volatility": 0.024481,
+          "daily_volatility": 0.001542,
+          "max_drawdown": -0.018168,
+          "sharpe_ratio": 1.951461,
+          "calmar_ratio": 2.629589,
+          "win_rate": 0.487239,
+          "avg_win": 0.001158,
+          "avg_loss": 0.00091,
+          "profit_loss_ratio": 1.272733,
+          "trade_count": 312,
+          "total_trades": 312,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1083088.7,
+          "total_transaction_cost": 0.006311,
+          "cost_ratio": 0.075961
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3684,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true,
+        "extra_info": {
+          "extreme_dates": [
+            "2026-10-08 00:00:00",
+            "2025-04-28 00:00:00",
+            "2025-09-26 00:00:00",
+            "2025-02-21 00:00:00",
+            "2026-08-17 00:00:00"
+          ],
+          "extreme_pct": 0.08
+        },
+        "regime_counts": {
+          "up": 1609,
+          "down": 1429,
+          "sideways": 850
+        }
+      },
+      {
+        "scenario_name": "B4_SUPER_LIQUIDITY",
+        "description": "超级流动性 (OI均匀+10%)",
+        "metrics": {
+          "total_return": 0.083473,
+          "annualized_return": 0.047992,
+          "annual_volatility": 0.02391,
+          "daily_volatility": 0.001506,
+          "max_drawdown": -0.018168,
+          "sharpe_ratio": 2.007149,
+          "calmar_ratio": 2.641567,
+          "win_rate": 0.484919,
+          "avg_win": 0.001145,
+          "avg_loss": 0.000881,
+          "profit_loss_ratio": 1.299363,
+          "trade_count": 312,
+          "total_trades": 312,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1083473.46,
+          "total_transaction_cost": 0.006311,
+          "cost_ratio": 0.075611
+        },
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3684,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true,
+        "extra_info": {
+          "oi_multiplier": 1.1
+        },
+        "regime_counts": {
+          "up": 1607,
+          "down": 1422,
+          "sideways": 859
+        }
+      },
+      {
+        "scenario_name": "B5_DATA_MISSING",
+        "description": "数据缺失 (5%随机缺失后填充)",
+        "metrics": {
+          "total_return": 0.120135,
+          "annualized_return": 0.068581,
+          "annual_volatility": 0.348018,
+          "daily_volatility": 0.021923,
+          "max_drawdown": -0.233488,
+          "sharpe_ratio": 0.197063,
+          "calmar_ratio": 0.293726,
+          "win_rate": 0.055684,
+          "avg_win": 0.022307,
+          "avg_loss": 0.014849,
+          "profit_loss_ratio": 1.502235,
+          "trade_count": 31,
+          "total_trades": 31,
+          "n_periods": 431,
+          "initial_capital": 1000000.0,
+          "final_capital": 1120134.62,
+          "total_transaction_cost": 0.000772,
+          "cost_ratio": 0.006425
+        },
+        "flip_rate_20d": 0.2,
+        "flip_rate_40d": 0.0,
+        "hhi_dynamic_avg": 0.129488,
+        "crowding_ratio": 1.0359,
+        "crowding_alert": false,
+        "high_corr_pairs": 0,
+        "redundancy_alert": false,
+        "total_alerts": 0,
+        "pass": true,
+        "extra_info": {
+          "missing_pct": 0.05,
+          "missing_rows": 183
+        },
+        "regime_counts": {
+          "up": 1754,
+          "down": 1679,
+          "sideways": 455
+        }
+      }
+    ],
+    "summary": {
+      "total": 5,
+      "pass": 5,
+      "fail": 0,
+      "all_pass": true
+    },
+    "pass": true
+  },
+  "p4_risk_review": {
+    "output_id": "DSHA-TASK051-P4-RISK-REPORT",
+    "generated_at": "2026-10-20T16:43:19+08:00",
+    "token": "DSHA-TASK051-FROZEN-BACKTEST-VALID-TOKEN",
+    "task": "DSHA-TASK051-FROZEN-BACKTEST-VALID",
+    "safety": {
+      "real_wind_call": false,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED"
+    },
+    "baseline_risk": {
+      "base_corr_matrix": {
+        "contract_switch_flag": {
+          "contract_switch_flag": 1.0,
+          "momentum_20d": -3.5e-05,
+          "oi_change_1d": -0.002638,
+          "oi_change_rate_7d": -0.009898,
+          "oi_level": -0.038398,
+          "realized_vol_20d": 0.005387,
+          "spread_cs": -0.0129,
+          "vol_regime_change": 0.025164
+        },
+        "momentum_20d": {
+          "contract_switch_flag": -3.5e-05,
+          "momentum_20d": 1.0,
+          "oi_change_1d": -0.015694,
+          "oi_change_rate_7d": 0.046941,
+          "oi_level": -0.06358,
+          "realized_vol_20d": 0.232103,
+          "spread_cs": 0.024111,
+          "vol_regime_change": 0.005393
+        },
+        "oi_change_1d": {
+          "contract_switch_flag": -0.002638,
+          "momentum_20d": -0.015694,
+          "oi_change_1d": 1.0,
+          "oi_change_rate_7d": 0.006485,
+          "oi_level": -0.045352,
+          "realized_vol_20d": 0.008607,
+          "spread_cs": 0.004364,
+          "vol_regime_change": -0.006332
+        },
+        "oi_change_rate_7d": {
+          "contract_switch_flag": -0.009898,
+          "momentum_20d": 0.046941,
+          "oi_change_1d": 0.006485,
+          "oi_change_rate_7d": 1.0,
+          "oi_level": -0.063095,
+          "realized_vol_20d": 0.034456,
+          "spread_cs": -0.043337,
+          "vol_regime_change": 0.017403
+        },
+        "oi_level": {
+          "contract_switch_flag": -0.038398,
+          "momentum_20d": -0.06358,
+          "oi_change_1d": -0.045352,
+          "oi_change_rate_7d": -0.063095,
+          "oi_level": 1.0,
+          "realized_vol_20d": -0.149682,
+          "spread_cs": 0.003328,
+          "vol_regime_change": -0.017208
+        },
+        "realized_vol_20d": {
+          "contract_switch_flag": 0.005387,
+          "momentum_20d": 0.232103,
+          "oi_change_1d": 0.008607,
+          "oi_change_rate_7d": 0.034456,
+          "oi_level": -0.149682,
+          "realized_vol_20d": 1.0,
+          "spread_cs": -0.004574,
+          "vol_regime_change": -0.126408
+        },
+        "spread_cs": {
+          "contract_switch_flag": -0.0129,
+          "momentum_20d": 0.024111,
+          "oi_change_1d": 0.004364,
+          "oi_change_rate_7d": -0.043337,
+          "oi_level": 0.003328,
+          "realized_vol_20d": -0.004574,
+          "spread_cs": 1.0,
+          "vol_regime_change": -0.008154
+        },
+        "vol_regime_change": {
+          "contract_switch_flag": 0.025164,
+          "momentum_20d": 0.005393,
+          "oi_change_1d": -0.006332,
+          "oi_change_rate_7d": 0.017403,
+          "oi_level": -0.017208,
+          "realized_vol_20d": -0.126408,
+          "spread_cs": -0.008154,
+          "vol_regime_change": 1.0
+        }
+      },
+      "weighted_corr_equal": 0.118952,
+      "weighted_corr_fixed": 0.152798,
+      "weighted_corr_dynamic_avg": 0.125924,
+      "hhi_equal": 0.125,
+      "hhi_dynamic_per_regime": {
+        "up": 0.130546,
+        "down": 0.132918,
+        "sideways": 0.125
+      },
+      "hhi_dynamic_avg": 0.129488,
+      "crowding_ratio": 1.0359,
+      "crowding_threshold": 1.1,
+      "crowding_alert": false,
+      "high_corr_pairs": [],
+      "redundancy_flags": [],
+      "redundancy_alert": false
+    },
+    "stress_test_risk": {
+      "scenario_crowding": [
+        1.0359,
+        1.0359,
+        1.0359,
+        1.0359,
+        1.0359
+      ],
+      "scenario_sharpe": [
+        2.064992,
+        2.007149,
+        1.693717,
+        1.979105,
+        2.09272
+      ],
+      "scenario_return": [
+        0.085723,
+        0.083473,
+        0.045244,
+        0.081923,
+        0.085925
+      ],
+      "scenario_max_dd": [
+        -0.017186,
+        -0.018168,
+        -0.013712,
+        -0.016907,
+        -0.018817
+      ],
+      "max_crowding": 1.0359,
+      "min_sharpe": 1.693717,
+      "worst_return": 0.045244,
+      "worst_dd": -0.018817,
+      "crowding_threshold": 1.1,
+      "crowding_within_all": true
+    },
+    "boundary_test_risk": {
+      "scenario_crowding": [
+        1.0359,
+        1.0359,
+        1.0359,
+        1.0359,
+        1.0359
+      ],
+      "scenario_sharpe": [
+        2.007149,
+        2.127817,
+        1.951461,
+        2.007149,
+        0.197063
+      ],
+      "scenario_return": [
+        0.083473,
+        0.088274,
+        0.083089,
+        0.083473,
+        0.120135
+      ],
+      "max_crowding": 1.0359,
+      "min_sharpe": 0.197063
+    },
+    "aggregate": {
+      "baseline_crowding": 1.0359,
+      "stress_max_crowding": 1.0359,
+      "boundary_max_crowding": 1.0359,
+      "overall_max_crowding": 1.0359,
+      "all_within_threshold": true
+    }
+  },
+  "red_line_violations": {
+    "deviation_exceeded": false,
+    "crowding_exceeded": false,
+    "any_red_line": false,
+    "fail_reasons": []
+  },
+  "overall_verdict": {
+    "status": "PASS",
+    "pass": true,
+    "timestamp": "2026-10-20T16:43:19+08:00",
+    "fail_reasons": "None — all checks passed",
+    "next_action": "V3版本可继续保持冻结状态"
+  },
+  "receipt": "DSHA_TASK051_FROZEN_BACKTEST_VALID=COMPLETE|p0_all_pass=YES|p1_replay_sharpe=3.4890|p1_baseline_sharpe=3.4890|p1_sharpe_deviation=0.000000|p1_return_deviation=0.000000|p1_max_dd_deviation=0.000000|p1_flip_20d_deviation=0.000000|p1_flip_40d_deviation=0.000000|p1_deviation_threshold=±0.005|p1_pass=YES|p2_scenarios=5|p2_all_pass=YES|p2_max_crowding=1.0359x|p2_crowding_threshold=1.1x|p3_scenarios=5|p3_all_pass=YES|p4_crowding=1.0359x|p4_high_corr_pairs=0|p4_crowding_alert=NO|overall_status=PASS|engine=Set-E|v3_modified=NO|read_only=YES|wind=0|gate=CLOSED/HOLD|release=NOT_ISSUED"
+}

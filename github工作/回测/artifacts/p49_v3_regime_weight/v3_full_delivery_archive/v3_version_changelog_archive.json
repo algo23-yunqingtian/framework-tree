@@ -1,0 +1,132 @@
+{
+  "output_id": "DSHA-TASK053-P5-VERSION-CHANGELOG",
+  "generated_at": "2026-10-20T18:07:09+0800",
+  "token": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE-TOKEN",
+  "task": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "version_lineage": [
+    {
+      "variant_id": "V1",
+      "description": "TASK048基准: alpha=0.6, 20d IC, contract_switch_flag=ALL_ZERO",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.4293,
+      "return": 0.2244,
+      "max_dd": -0.0135,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.5,
+      "crowding": 1.0359,
+      "status": "SUPERSEDED",
+      "superseded_by": "V2 (TASK049)",
+      "notes": "contract_switch_flag全零, 无40d窗口测试"
+    },
+    {
+      "variant_id": "V2",
+      "description": "TASK049: alpha=0.6, 20d IC, contract_switch_flag=REBUILT",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.489,
+      "return": 0.2293,
+      "max_dd": -0.0121,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "status": "SUPERSEDED",
+      "superseded_by": "SELECTED (TASK050 fallback)",
+      "notes": "40d翻转率突破: 50%→21.1%, 8/8因子正常"
+    },
+    {
+      "variant_id": "V3",
+      "description": "TASK050: alpha=0.6, 20d IC, FINALIZED",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.488982,
+      "return": 0.229334,
+      "max_dd": -0.012099,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "status": "PERMANENTLY_FROZEN",
+      "frozen_at": "2026-10-20T15:48:50+08:00",
+      "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+      "notes": "双窗口定稿, 选定20d窗口"
+    },
+    {
+      "variant_id": "V4-REJECTED",
+      "description": "TASK049: alpha=0.7, 20d IC (rejected: sharpe<3.4)",
+      "alpha": 0.7,
+      "ic_window": 20,
+      "sharpe": 3.3468,
+      "return": 0.2189,
+      "max_dd": -0.018,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.3158,
+      "crowding": null,
+      "status": "REJECTED",
+      "rejection_reason": "sharpe=3.3468 < 3.4 threshold",
+      "notes": "红线触发: 自动回退alpha=0.6"
+    },
+    {
+      "variant_id": "V5-REJECTED",
+      "description": "TASK049: alpha=0.7, 40d IC (rejected: sharpe<3.4)",
+      "alpha": 0.7,
+      "ic_window": 40,
+      "sharpe": 3.1482,
+      "return": 0.2014,
+      "max_dd": -0.018,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.4211,
+      "crowding": null,
+      "status": "REJECTED",
+      "rejection_reason": "sharpe=3.1482 < 3.4 threshold",
+      "notes": "40d IC + alpha=0.7夏普更低, 未达标"
+    }
+  ],
+  "change_log": [
+    {
+      "from": "V1",
+      "to": "V2",
+      "task": "TASK049",
+      "change": "contract_switch_flag重建, 40d翻转率优化"
+    },
+    {
+      "from": "V2",
+      "to": "V3",
+      "task": "TASK050",
+      "change": "双窗口定稿, 选定20d窗口alpha=0.6"
+    },
+    {
+      "from": "V3",
+      "to": "V3",
+      "task": "TASK051",
+      "change": "冻结回放验证, 零偏差复现"
+    },
+    {
+      "from": "V3",
+      "to": "V3",
+      "task": "TASK052",
+      "change": "预发布评审包构建, 门禁核验, 运维文档"
+    }
+  ],
+  "commit_chain": {
+    "TASK045": "73b0e32",
+    "TASK046": "d09e1ff",
+    "TASK047": "9f849ec",
+    "TASK048": "65712e3",
+    "TASK049": "e170ed3",
+    "TASK050": "e61f2f4",
+    "TASK051": "8041c8e",
+    "TASK052": "PENDING"
+  },
+  "current_version": "V3",
+  "current_status": "PERMANENTLY_FROZEN",
+  "next_versions": "feature/v89+ (new branches required)",
+  "frozen_at": "2026-10-20T15:48:50+08:00",
+  "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN"
+}

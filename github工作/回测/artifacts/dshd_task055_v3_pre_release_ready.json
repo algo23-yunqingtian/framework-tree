@@ -1,0 +1,91 @@
+{
+  "sync_id": "DSHD-TASK055-SYNC-1792494053",
+  "generated_at": "2026-10-20T19:00:53+08:00",
+  "source_task": "DSHA-TASK055-V3-FULL-ARCHIVE-V89-INIT",
+  "source_token": "DSHA-TASK055-V3-FULL-ARCHIVE-V89-INIT-TOKEN",
+  "sync_type": "READ_ONLY_NOTIFICATION",
+  "mode": "AUDIT_READ_ONLY",
+  "write_to_dshd_monitors": false,
+  "modify_dshd_scripts": false,
+  "modify_dshd_ledger": false,
+  "write_to_dshc_data": false,
+  "modify_dshc_scripts": false,
+  "modify_dshc_ledger": false,
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "admission_status": "ADMISSION_APPROVED",
+  "branch": "feature/v88-g1",
+  "strategy_version": "V3",
+  "freeze_status": "STRATEGY_SIDE_FROZEN",
+  "engine": "Set-E",
+  "ready_status": "READY_FOR_CLUSTER_JOINT_TEST",
+  "joint_precheck": {
+    "dshc_task018_consistency": {
+      "all_pass": true,
+      "40d_files": 360,
+      "20d_files": 180,
+      "cross_round_pass": true,
+      "sha_matched": 540,
+      "sha_total": 540,
+      "receipt": "DSHC_TASK018_DUAL_WINDOW_PIPELINE_FREEZE=COMPLETE"
+    },
+    "dshd_task048_monitoring": {
+      "crowding_threshold": 1.1,
+      "crowding_actual": 1.0359,
+      "crowding_alert": false,
+      "high_corr_pairs": 0,
+      "total_active_alerts": 0
+    },
+    "v3_flip_rate_crosscheck": {
+      "flip_rate_20d": 0.5,
+      "flip_rate_20d_status": "ALERT",
+      "flip_rate_40d": 0.2105,
+      "flip_rate_40d_status": "STABLE",
+      "alert_threshold": 0.5,
+      "watch_threshold": 0.3
+    },
+    "v3_stability_crosscheck": {
+      "sharpe": 3.488982,
+      "crowding": 1.0359,
+      "high_corr_pairs": 0,
+      "replay_deviation": 0.0,
+      "crowding_within_threshold": true,
+      "shard_data_consistent": true
+    },
+    "overall_precheck": {
+      "dshc_consistency_pass": true,
+      "dshd_monitoring_aligned": true,
+      "v3_flip_rates_reasonable": true,
+      "all_checks_pass": true
+    }
+  },
+  "red_lines": {
+    "any_triggered": false,
+    "sharpe_ok": true,
+    "crowding_ok": true,
+    "deviation_ok": true,
+    "v3_modified": false,
+    "gate_maintained": true,
+    "release_not_issued": true
+  },
+  "alerts": [],
+  "notification_type": "V3_PRE_RELEASE_READY_FOR_JOINT_TEST",
+  "next_action": "V3全链路制品归档完成, V89分支初始化完成, 可进入集群联调阶段",
+  "dshc_write_status": {
+    "status_json_written": true,
+    "shard_data_modified": false,
+    "consistency_report_modified": false,
+    "write_territory_respected": true
+  },
+  "dsd_write_status": {
+    "status_json_written": true,
+    "monitor_script_modified": false,
+    "ledger_modified": false,
+    "write_territory_respected": true
+  }
+}

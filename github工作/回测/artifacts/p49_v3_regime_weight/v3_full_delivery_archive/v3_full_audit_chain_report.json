@@ -1,0 +1,228 @@
+{
+  "output_id": "DSHA-TASK055-P4-AUDIT-CHAIN-CLOSURE",
+  "generated_at": "2026-10-20T19:00:56+08:00",
+  "token": "DSHA-TASK055-V3-FULL-ARCHIVE-V89-INIT-TOKEN",
+  "task": "DSHA-TASK055-V3-FULL-ARCHIVE-V89-INIT",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "report_type": "V3_FULL_AUDIT_CHAIN_REPORT",
+  "chain_status": "CLOSED",
+  "audit_chain": {
+    "tasks_covered": [
+      "TASK049",
+      "TASK050",
+      "TASK051",
+      "TASK052",
+      "TASK053",
+      "TASK054",
+      "TASK055"
+    ],
+    "chain_complete": true,
+    "chain_gap": "NONE",
+    "total_tasks": 7,
+    "total_commits": 6,
+    "task055_commit": "PENDING"
+  },
+  "receipts": {
+    "TASK049": {
+      "commit": "e170ed3",
+      "script": "run_task049_contract_flag_rebuild.py",
+      "status": "COMPLETE",
+      "key_metrics": {
+        "sharpe_20d": 3.489,
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.2105,
+        "factors_rebuilt": "contract_switch_flag"
+      }
+    },
+    "TASK050": {
+      "commit": "e61f2f4",
+      "script": "run_task050_strategy_freeze.py",
+      "status": "COMPLETE",
+      "key_metrics": {
+        "sharpe": 3.488982,
+        "crowding": 1.0359,
+        "freeze_status": "PERMANENTLY_FROZEN",
+        "selected_window": "20d",
+        "alpha": 0.6
+      }
+    },
+    "TASK051": {
+      "commit": "8041c8e",
+      "script": "run_task051_frozen_backtest_valid.py",
+      "status": "COMPLETE",
+      "key_metrics": {
+        "replay_deviation": 0.0,
+        "stress_max_crowding": 1.0359,
+        "verdict": "PASS"
+      }
+    },
+    "TASK052": {
+      "commit": "fdc3ddb",
+      "script": "run_task052_review_package.py",
+      "status": "COMPLETE",
+      "key_metrics": {
+        "gates_pass": "6/6",
+        "review_status": "READY_FOR_REVIEW",
+        "zip_sha256": "EA58FA666A652C4C..."
+      }
+    },
+    "TASK053": {
+      "commit": "ac70df2",
+      "script": "run_task053_pre_review_archive.py",
+      "status": "COMPLETE",
+      "key_metrics": {
+        "archive_files": 14,
+        "admission_status": "ADMISSION_READY",
+        "gates": "6/6"
+      }
+    },
+    "TASK054": {
+      "commit": "5223ced",
+      "script": "run_task054_admission_doc_final.py",
+      "status": "COMPLETE",
+      "key_metrics": {
+        "snapshot_sha256": "78A248FE876E7A8154C413671690AEC8",
+        "gates": "6/6",
+        "risk_review": "NO_RISK_ALERT",
+        "fallback_scenarios": 63,
+        "freeze_rules": 15
+      }
+    },
+    "TASK055": {
+      "commit": "PENDING",
+      "script": "run_task055_v3_full_archive.py",
+      "status": "IN_PROGRESS",
+      "key_metrics": {}
+    }
+  },
+  "gate_records": {
+    "total_gates": 6,
+    "gates_passed": 6,
+    "gates": [
+      {
+        "gate_id": 1,
+        "name": "夏普比率达标",
+        "threshold": ">= 3.4",
+        "actual": 3.488982,
+        "margin": 0.089,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED"
+      },
+      {
+        "gate_id": 2,
+        "name": "拥挤度达标",
+        "threshold": "<= 1.1x",
+        "actual": 1.0359,
+        "margin": 0.0641,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED"
+      },
+      {
+        "gate_id": 3,
+        "name": "因子相关性达标",
+        "threshold": "高相关对=0",
+        "actual": 0,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED"
+      },
+      {
+        "gate_id": 4,
+        "name": "回放复现偏差达标",
+        "threshold": "<= +/-0.005",
+        "actual": 0.0,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED"
+      },
+      {
+        "gate_id": 5,
+        "name": "压力/边界无越界",
+        "threshold": "max_crowding<=1.1x",
+        "actual": 1.0359,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED"
+      },
+      {
+        "gate_id": 6,
+        "name": "审计链路可追溯",
+        "threshold": "TASK049→054完整",
+        "actual": "TRACEABLE",
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED"
+      }
+    ]
+  },
+  "snapshot_fingerprints": {
+    "final_weight_rules": "AA859251C98228F938A0DC8F7F04598B002F3656583B2568C06B51E4FCDC78B3",
+    "dual_window_backtest_metrics": "F8D06F0BBECF57B4E02CC06498358552217770B8F99D392F18EE87317A53DA07",
+    "risk_validation_final": "4364E5B571E02623B7C08BF6716B8EE34680663460A23D7D59362AA935E1D909",
+    "version_freeze_document": "661C3F89D4ACF91B3788E15363BB7C237C7F38BE87EF4665994E8CACF7FE914F",
+    "v3_acceptance_document": "891F7682C743B102CB73F5D6ABC28846E0486FA278D7EC38E04C9B28003DD4D8",
+    "contract_switch_flag_final": "19D04B59A659B978FDE7B2D1A87490917B55D68CB05280A7BE45AAFEAB29B092",
+    "tradeoff_evaluation": "451B982F9C5C95795811A76959FCE98216D0BBABC4995F66D8136179E3138445",
+    "dual_window_comparison_report": "B9E69261A27F1EDD5FC14F1BE3736D4ED0B05784B6303AFBFA0B2EB4BB134BC6",
+    "comparison_backtest_metrics": "63F1920447CA0C10D242F6A270B6151E88D28DE09BE896FB8506AD7D8131027E",
+    "admission_snapshot": "78A248FE876E7A8154C413671690AEC89622852F3D82777D83AB0D584A716827",
+    "factor_weight_prod": "ED42E17040796ABA64E12C6AE5EBEA1618F47E1DBCA7B3FD2C427A1C060CF07B",
+    "factor_enable_config": "1C0ECBA61DD210A716096C7D3E664DC0812456E6067311A47AB783F7339FBD91"
+  },
+  "frozen_artifacts": {
+    "count": 9,
+    "all_sha_verified": true,
+    "all_exist": true
+  },
+  "production_configs": {
+    "count": 2,
+    "all_sha_verified": true,
+    "all_exist": true
+  },
+  "red_lines_summary": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "v3_modified": false,
+    "factors_modified": false,
+    "engine_modified": false,
+    "production_configs_modified": false,
+    "gate_bypassed": false,
+    "release_triggered": false,
+    "all_observed": true
+  },
+  "delivery_summary": {
+    "strategy": "V3",
+    "engine": "Set-E",
+    "alpha": 0.6,
+    "ic_window": 20,
+    "factors": 8,
+    "symbol_pool": [
+      "LC.GFE",
+      "NI.SHF",
+      "ZN.SHF",
+      "CU.SHF"
+    ],
+    "sharpe": 3.488982,
+    "crowding": 1.0359,
+    "total_return": 0.229334,
+    "max_drawdown": -0.012099,
+    "trade_count": 251,
+    "freeze_status": "PERMANENTLY_FROZEN",
+    "admission_status": "ADMISSION_APPROVED",
+    "branch_freeze_status": "STRATEGY_SIDE_FROZEN",
+    "gates_passed": "6/6",
+    "fallback_scenarios": 63,
+    "full_archive_files": "SEE_MANIFEST"
+  },
+  "next_actions": [
+    "V3全链路制品归档完成",
+    "V89分支初始化完成, 版本隔离生效",
+    "可进入集群联调阶段",
+    "DSHD预检通知已发送 (READ_ONLY)",
+    "审计链路闭环, 可追溯复现"
+  ]
+}

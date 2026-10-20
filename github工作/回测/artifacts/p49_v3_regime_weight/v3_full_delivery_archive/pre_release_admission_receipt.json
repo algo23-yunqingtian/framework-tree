@@ -1,0 +1,145 @@
+{
+  "output_id": "DSHA-TASK053-P4-PRE-RELEASE-RECEIPT",
+  "generated_at": "2026-10-20T18:07:09+0800",
+  "token": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE-TOKEN",
+  "task": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE",
+  "receipt_type": "V3_PRE_RELEASE_ADMISSION_RECEIPT",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "p0_smoke_check": {
+    "checks_total": 11,
+    "checks_passed": 11,
+    "all_pass": true
+  },
+  "p1_archive": {
+    "archive_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_archive",
+    "total_files": 14,
+    "immutable": true,
+    "archive_zip_sha256": "ea58fa666a652c4c631362bc9ff8a5a4a786bea23d16624ce21b52676613e2c1"
+  },
+  "p2_admission_pre_review": {
+    "status": "ADMISSION_READY",
+    "overall_verdict": "PASS",
+    "gates_passed": 6,
+    "gates_total": 6,
+    "confirmation": {
+      "v3_no_parameter_change": true,
+      "replay_zero_deviation": true,
+      "stress_no_crowding_breach": true,
+      "all_confirmed": true
+    }
+  },
+  "p3_dshd_sync": {
+    "sync_id": "DSHD-TASK053-SYNC-1792487816",
+    "sync_type": "READ_ONLY_NOTIFICATION",
+    "write_to_dshd_monitors": false
+  },
+  "pre_release_admission": {
+    "status": "ADMISSION_READY",
+    "ready_for_manual_review": true,
+    "admission_conditions_met": {
+      "sharpe_threshold": true,
+      "crowding_threshold": true,
+      "high_corr_pairs": true,
+      "replay_deviation": true,
+      "stress_boundary": true,
+      "audit_chain": true
+    }
+  },
+  "branch_strategy_freeze": {
+    "branch": "feature/v88-g1",
+    "freeze_status": "STRATEGY_SIDE_FROZEN",
+    "frozen_at": "2026-10-20T17:16:56+08:00",
+    "frozen_by": "DSHA-TASK052-V3-REVIEW-PACKAGE-TOKEN",
+    "freeze_scope": "V3策略相关参数迭代",
+    "freeze_rules": {
+      "v3_parameter_changes": "FORBIDDEN",
+      "v3_factor_modification": "FORBIDDEN",
+      "v3_engine_modification": "FORBIDDEN",
+      "new_strategy_versions": "NEW_BRANCH_REQUIRED",
+      "new_requirements": "SUBMIT_NEW_TASK_TICKET",
+      "bug_fix_affecting_v3": "REQUIRES_REVIEW_PROCESS",
+      "read_only_replay": "ALLOWED",
+      "monitoring_and_reporting": "ALLOWED"
+    },
+    "frozen_strategy": {
+      "variant_id": "V3",
+      "freeze_status": "PERMANENTLY_FROZEN",
+      "engine": "Set-E",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.488982,
+      "crowding": 1.0359
+    },
+    "red_lines_observed": {
+      "v3_modified": false,
+      "factors_modified": false,
+      "engine_modified": false,
+      "production_configs_modified": false,
+      "gate_bypassed": false,
+      "release_triggered": false,
+      "all_observed": true
+    }
+  },
+  "strategy_snapshot": {
+    "variant_id": "V3",
+    "engine": "Set-E",
+    "engine_params": {
+      "signal_threshold": 0.3,
+      "rebalance_interval": 5,
+      "target_vol": 0.15,
+      "max_single_weight": 0.5,
+      "drawdown_warn": -0.1,
+      "drawdown_halt": -0.2,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0
+    },
+    "alpha": 0.6,
+    "ic_window": 20,
+    "selected_window": "20d",
+    "factor_count": 8,
+    "factors": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "freeze_status": "PERMANENTLY_FROZEN",
+    "frozen_at": "2026-10-20T15:48:50+08:00",
+    "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN"
+  },
+  "key_metrics": {
+    "sharpe_ratio": 3.488982,
+    "crowding_ratio": 1.0359,
+    "total_return": 0.229334,
+    "max_drawdown": -0.012099,
+    "trade_count": 251,
+    "high_corr_pairs": 0,
+    "replay_max_deviation": 0.0,
+    "stress_max_crowding": 1.0359
+  },
+  "freeze_period_policy": {
+    "strategy_iteration_forbidden": true,
+    "new_requirements_go_to_v89_plus": true,
+    "monitoring_and_reporting_allowed": true,
+    "read_only_replay_allowed": true,
+    "bug_fix_requires_review_process": true
+  },
+  "next_actions": [
+    "V3策略保持永久冻结, 不再接收参数迭代工单",
+    "新需求走后续版本分支 (feature/v89+)",
+    "运维文档已归档, 供后续运维查阅",
+    "DSHD预审就绪, 等待人工审核决策",
+    "评审包已结构化归档, 不可变快照已固化"
+  ],
+  "receipt_status": "COMPLETE"
+}

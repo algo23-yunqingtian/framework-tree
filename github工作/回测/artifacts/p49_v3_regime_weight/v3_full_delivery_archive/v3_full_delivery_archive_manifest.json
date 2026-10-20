@@ -1,0 +1,313 @@
+{
+  "output_id": "DSHA-TASK055-P1-FULL-DELIVERY-ARCHIVE",
+  "generated_at": "2026-10-20T19:00:53+08:00",
+  "token": "DSHA-TASK055-V3-FULL-ARCHIVE-V89-INIT-TOKEN",
+  "task": "DSHA-TASK055-V3-FULL-ARCHIVE-V89-INIT",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "archive_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive",
+  "archive_type": "READ_ONLY_FULL_DELIVERY_ARCHIVE",
+  "immutable": true,
+  "modification_forbidden": true,
+  "global_sha256": "37d27da2138a2c24ea56b75eb561ddeec05fa3b24f36471cc3301a0fa4335c36",
+  "total_files": 30,
+  "files": [
+    {
+      "name": "run_task049_long_window_eval.py",
+      "description": "TASK049脚本",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\run_task049_long_window_eval.py",
+      "size": 98762,
+      "sha256": "46e2c2b05c205fc0c20eace8fe81d8a3335931904405491f2184a6e8ed6536d2",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "final_weight_rules.json",
+      "description": "最终权重规则 (V3冻结)",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\final_weight_rules.json",
+      "size": 3427,
+      "sha256": "aa859251c98228f938a0dc8f7f04598b002f3656583b2568c06b51e4fcdc78b3",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "dual_window_backtest_metrics.json",
+      "description": "双窗口回测指标",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\dual_window_backtest_metrics.json",
+      "size": 8517,
+      "sha256": "f8d06f0bbecf57b4e02cc06498358552217770b8f99d392f18ee87317a53da07",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "tradeoff_evaluation.json",
+      "description": "权衡评估",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\tradeoff_evaluation.json",
+      "size": 2300,
+      "sha256": "451b982f9c5c95795811a76959fce98216d0bbabc4995f66d8136179e3138445",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "risk_validation_final.json",
+      "description": "风险验证",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\risk_validation_final.json",
+      "size": 3757,
+      "sha256": "4364e5b571e02623b7c08bf6716b8ee34680663460a23d7d59362aa935e1d909",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "contract_switch_flag_final.json",
+      "description": "合约切换标记",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\contract_switch_flag_final.json",
+      "size": 1018,
+      "sha256": "19d04b59a659b978fde7b2d1a87490917b55d68cb05280a7be45aafeab29b092",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "version_freeze_document.json",
+      "description": "版本冻结文档",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\version_freeze_document.json",
+      "size": 4816,
+      "sha256": "661c3f89d4acf91b3788e15363bb7c237c7f38be87ef4665994e8cacf7fe914f",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "dual_window_comparison_report.json",
+      "description": "双窗口对比报告",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\dual_window_comparison_report.json",
+      "size": 2339,
+      "sha256": "b9e69261a27f1edd5fc14f1be3736d4ed0b05784b6303afbfa0b2eb4bb134bc6",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "comparison_backtest_metrics.json",
+      "description": "对比回测指标",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\comparison_backtest_metrics.json",
+      "size": 12032,
+      "sha256": "63f1920447ca0c10d242f6a270b6151e88d28de09be896fb8506ad7d8131027e",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_acceptance_document.json",
+      "description": "V3验收文档",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_acceptance_document.json",
+      "size": 26371,
+      "sha256": "891f7682c743b102cb73f5d6abc28846e0486fa278d7ec38e04c9b28003dd4d8",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "run_task051_frozen_backtest_valid.py",
+      "description": "TASK051脚本",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\run_task051_frozen_backtest_valid.py",
+      "size": 90245,
+      "sha256": "578a1bce6d7d48369e67dfa3cf05619d2c6947af55512b7b215d743b42df33e5",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_review_package_manifest.json",
+      "description": "评审包清单",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_review_package_manifest.json",
+      "size": 14458,
+      "sha256": "849383db3666fda38152943d24f00d86bf3495ab7f4b7a826ccc6c844a1b1af0",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_pre_release_review_package.zip",
+      "description": "评审包ZIP",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_pre_release_review_package.zip",
+      "size": 33280,
+      "sha256": "ea58fa666a652c4c631362bc9ff8a5a4a786bea23d16624ce21b52676613e2c1",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "branch_freeze_marker.json",
+      "description": "分支冻结标记v1",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\branch_freeze_marker.json",
+      "size": 4716,
+      "sha256": "96e8da26a9c3f31dfadffd17ed676996c9c0677ef2cfc20e0d6b464aac9b8b72",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_strategy_om_documentation.md",
+      "description": "运维文档",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_strategy_om_documentation.md",
+      "size": 9594,
+      "sha256": "a47abdcecc9610809fe4a6164bf5a93bd967e166b58ae13f12669305140541e9",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "run_task052_pre_release_package.py",
+      "description": "TASK052脚本",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\run_task052_pre_release_package.py",
+      "size": 66105,
+      "sha256": "67288fb517d3769a7d58cc9f892b9458b6ff69b6f1e335c3baceb91d4e3f9da0",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "p2_admission_pre_review_conclusion.json",
+      "description": "预审结论",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\p2_admission_pre_review_conclusion.json",
+      "size": 3193,
+      "sha256": "82af4d6d706c03c0b3288cb952dbc4bf21dcb65ede55ee08e24ca9e4924432f2",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "pre_release_admission_receipt.json",
+      "description": "预发布准入回执",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\pre_release_admission_receipt.json",
+      "size": 4534,
+      "sha256": "c3a0bd019459dcb95353ada6a27a3fd79650dd70bf0c4c190d578549b8b719ff",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_gate_checklist_archive.json",
+      "description": "门禁清单归档",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_gate_checklist_archive.json",
+      "size": 2209,
+      "sha256": "b4513496fab104fd1623c7bc9bb4eb769082de9c2e29911b96df8ee75162ae5a",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_version_changelog_archive.json",
+      "description": "版本变更清单归档",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_version_changelog_archive.json",
+      "size": 3915,
+      "sha256": "da689e87ff9b6ddfeb4b77253bd4b1853d67f277d21b679f5e10f5c26cab3ae9",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_rejected_variants_archive.json",
+      "description": "被拒变体归档",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_rejected_variants_archive.json",
+      "size": 1504,
+      "sha256": "32a0d58219039263eb3847a09d61d004898bd1ff5984fb72e594ec9ee957f712",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_om_documentation_index.json",
+      "description": "运维文档索引",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_om_documentation_index.json",
+      "size": 909,
+      "sha256": "bafffc8a47c78ef9847e3fa46e1df872f8e2f6db5582552cdc8db4c3bdb2a390",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "run_task053_pre_review_archive.py",
+      "description": "TASK053脚本",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\run_task053_pre_review_archive.py",
+      "size": 44675,
+      "sha256": "7afdd573152427375238bc4a722518d7ed1adb510601ec34da9f4d867bc60376",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_admission_document_final.json",
+      "description": "准入文档定稿",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_admission_document_final.json",
+      "size": 9052,
+      "sha256": "78a248fe876e7a8154c413671690aec89622852f3d82777d83ab0d584a716827",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "branch_freeze_marker_v2.json",
+      "description": "冻结规则固化v2",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\branch_freeze_marker_v2.json",
+      "size": 3916,
+      "sha256": "b7a07b8a9449591e6a1a5cd2d2104bbc1b74ab921cedfbddd945d5b56d999470",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_fallback_rules_supplement.md",
+      "description": "兜底规则补充MD",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_fallback_rules_supplement.md",
+      "size": 9699,
+      "sha256": "e44f45e594468ab74691479f85c011ee1aff3c393208720b9a537dda565ecacf",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "v3_fallback_supplement.json",
+      "description": "兜底规则补充JSON",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\v3_fallback_supplement.json",
+      "size": 4008,
+      "sha256": "ba07d09221c04a838662fb39d58b12ec9782e6015d41903c3712d76f709c1bef",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "run_task054_admission_doc_final.py",
+      "description": "TASK054脚本",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\run_task054_admission_doc_final.py",
+      "size": 61891,
+      "sha256": "e2f5c3a9f385d302b431ccc5532ac10e92404e64b8bf0cee4f839d1d04e4c4a2",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "archive_manifest.json",
+      "description": "准入归档清单",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\archive_manifest.json",
+      "size": 3464,
+      "sha256": "8ba68a00977866d07f35b3ef51abafc1ab82ebb02a7475cf36a2381920c2049a",
+      "read_only": true,
+      "source_task": "UNKNOWN"
+    },
+    {
+      "name": "dshd_task054_admission_final_sync.json",
+      "description": "DSHD同步通知",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_full_delivery_archive\\dshd_task054_admission_final_sync.json",
+      "size": 2398,
+      "sha256": "4ae6e67f5273c1831a4abae851730da292222a96197e6c6b1894cebba922ba7d",
+      "read_only": true,
+      "source_task": "TASK054"
+    }
+  ],
+  "source_tasks": [
+    "TASK049",
+    "TASK050",
+    "TASK051",
+    "TASK052",
+    "TASK053",
+    "TASK054"
+  ],
+  "delivery_evidence": {
+    "description": "V3完整交付证据包, 包含TASK049~054全部交付物, 可用于后续集群联调核验",
+    "frozen_artifacts_count": 9,
+    "admission_document": "v3_admission_document_final.json",
+    "admission_snapshot": "v3_admission_document_final_snapshot.json",
+    "gate_checklist": "v3_gate_checklist_archive.json",
+    "fallback_supplement": "v3_fallback_rules_supplement.md",
+    "branch_freeze_marker": "branch_freeze_marker_v2.json",
+    "engine": "Set-E",
+    "strategy": "V3 (PERMANENTLY_FROZEN)",
+    "sharpe": 3.488982,
+    "crowding": 1.0359,
+    "all_gates_pass": true
+  }
+}

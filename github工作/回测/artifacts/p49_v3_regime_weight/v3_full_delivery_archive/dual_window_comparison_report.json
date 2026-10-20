@@ -1,0 +1,82 @@
+{
+  "output_id": "DSHA-TASK050-DUAL-WINDOW-COMP",
+  "generated_at": "2026-10-20T15:48:50+08:00",
+  "token": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+  "task": "DSHA-TASK050-STRATEGY-FREEZE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "alpha": 0.6,
+  "scheme_1_baseline_20d": {
+    "name": "20d窗口 alpha=0.6 (原基准)",
+    "window": "20d",
+    "alpha": 0.6,
+    "ic_window": 20,
+    "sharpe": 3.488982,
+    "return": 0.229334,
+    "max_dd": -0.012099,
+    "flip_rate_20d": 0.5,
+    "flip_rate_40d": 0.2105,
+    "crowding": 1.0359,
+    "trade_count": 251,
+    "annualized_return": 0.128311,
+    "annual_volatility": 0.036776,
+    "calmar_ratio": 10.604686,
+    "win_rate": 0.431555,
+    "profit_loss_ratio": 1.712786,
+    "cost_ratio": 0.036744
+  },
+  "scheme_2_optimized_40d": {
+    "name": "40d窗口 alpha=0.6 (低翻转优化版)",
+    "window": "40d",
+    "alpha": 0.6,
+    "ic_window": 40,
+    "sharpe": 3.264958,
+    "return": 0.209407,
+    "max_dd": -0.018025,
+    "flip_rate_20d": 0.5,
+    "flip_rate_40d": 0.3158,
+    "crowding": 1.0205,
+    "trade_count": 250,
+    "annualized_return": 0.117581,
+    "annual_volatility": 0.036013,
+    "calmar_ratio": 6.523045,
+    "win_rate": 0.433875,
+    "profit_loss_ratio": 1.638572,
+    "cost_ratio": 0.041423
+  },
+  "comparison": {
+    "sharpe_delta": -0.224,
+    "return_delta": -0.0199,
+    "max_dd_delta": -0.0059,
+    "flip_rate_20d_delta": 0.0,
+    "flip_rate_40d_delta": 0.1053,
+    "crowding_delta": -0.0154,
+    "trade_count_delta": -1
+  },
+  "selected": {
+    "window": "20d",
+    "scheme": "scheme_1_20d",
+    "recommendation": "回退至20d窗口: 40d窗口夏普未达标(红线触发)",
+    "sharpe_threshold_met": true,
+    "crowding_within_limit": true
+  },
+  "tradeoff_analysis": {
+    "sharpe_gain_40d": "-0.2240",
+    "flip_rate_reduction_40d_pp": "-10.53pp",
+    "return_delta": "-0.0199",
+    "conclusion": "回退至20d窗口: 40d窗口夏普未达标(红线触发)"
+  },
+  "red_line_checks": {
+    "sharpe_threshold": 3.4,
+    "sharpe_20d_ok": true,
+    "sharpe_40d_ok": false,
+    "crowding_threshold": 1.1,
+    "crowding_20d_ok": true,
+    "crowding_40d_ok": true
+  }
+}
