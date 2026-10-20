@@ -274,6 +274,8 @@ def write_simulated_shard(
         close = base_close * (1.0 + random.uniform(0.01, 0.03))
     elif market_regime == "DOWN":
         close = base_close * (1.0 - random.uniform(0.01, 0.03))
+    elif market_regime == "SIDEWAYS":
+        close = base_close * (1.0 + random.uniform(-0.005, 0.005))
     else:  # MIXED or any other
         close = base_close * (1.0 + random.uniform(-0.02, 0.02))
 

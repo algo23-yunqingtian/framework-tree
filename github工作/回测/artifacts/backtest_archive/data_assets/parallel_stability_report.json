@@ -1,0 +1,217 @@
+{
+  "workorder": "DSHC-TASK-015",
+  "token": "DSHC-TASK015-STABILITY-TEST-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T12:55:18+08:00",
+  "mode": "STABILITY_TEST",
+  "is_dry_run": false,
+  "real_wind_call_authorized": true,
+  "trading_days": 7,
+  "rounds_per_day": 6,
+  "total_rounds": 42,
+  "rounds_planned": 42,
+  "rounds_completed_pct": 100.0,
+  "regime_cycle": [
+    "UP",
+    "DOWN",
+    "SIDEWAYS"
+  ],
+  "regime_counts": {
+    "UP": 14,
+    "DOWN": 14,
+    "SIDEWAYS": 14
+  },
+  "regime_analysis": {
+    "UP": 14,
+    "DOWN": 14,
+    "SIDEWAYS": 14,
+    "total": 42,
+    "proportions": {
+      "UP": 0.333,
+      "DOWN": 0.333,
+      "SIDEWAYS": 0.333
+    },
+    "total_down_cumulative": 21,
+    "down_threshold": 20,
+    "down_threshold_met": true
+  },
+  "symbols": [
+    "AL.SHF",
+    "CU.SHF",
+    "HC.SHF",
+    "NI.SHF",
+    "PB.SHF",
+    "RB.SHF",
+    "SN.SHF",
+    "ZN.SHF",
+    "LC.GFE"
+  ],
+  "data_collection_results": {
+    "total_runs": 378,
+    "all_success": true,
+    "lock_conflicts": 0,
+    "cross_contamination": 0,
+    "timeouts": 0,
+    "total_rows_collected": 2268,
+    "sha_varies_by_design": true,
+    "sha_note": "SHA differs per round due to different market_regime seeds (UP/DOWN/SIDEWAYS)"
+  },
+  "resource_stability": {
+    "rounds_analyzed": 42,
+    "total_duration_sec": 259.42,
+    "avg_duration_sec": 6.177,
+    "max_duration_sec": 6.724,
+    "min_duration_sec": 5.986,
+    "total_rows": 2268,
+    "throughput_rows_per_sec": 8.74,
+    "queue_peak_max": 9,
+    "memory_tracking_available": false,
+    "open_file_handles": -1,
+    "conflicts": 0,
+    "cross_contamination": 0,
+    "timeouts": 0,
+    "consistency_pass": true,
+    "lock_test_pass": true
+  },
+  "window_counts": {
+    "AL.SHF": 42,
+    "CU.SHF": 42,
+    "HC.SHF": 42,
+    "NI.SHF": 42,
+    "PB.SHF": 42,
+    "RB.SHF": 42,
+    "SN.SHF": 42,
+    "ZN.SHF": 42,
+    "LC.GFE": 42
+  },
+  "down_sample_tracking": {
+    "task014_down_rounds": 7,
+    "task015_down_rounds": 14,
+    "total_down_cumulative": 21,
+    "min_down_threshold": 20,
+    "down_threshold_met": true
+  },
+  "consistency_results": {
+    "consistency_pass": true,
+    "rounds": 5,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "HC.SHF",
+      "NI.SHF",
+      "PB.SHF",
+      "RB.SHF",
+      "SN.SHF",
+      "ZN.SHF",
+      "LC.GFE"
+    ]
+  },
+  "lock_results": {
+    "all_pass": true
+  },
+  "anomaly_summary": {
+    "total_events": 0,
+    "by_type": {},
+    "by_severity": {}
+  },
+  "round_metrics_sample": [
+    {
+      "round": 1,
+      "day": "2026-10-12",
+      "regime": "UP",
+      "duration_seconds": 6.099,
+      "conflicts": 0,
+      "cross_contamination": 0,
+      "timeouts": 0,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "total_rows": 54,
+      "memory_before_mb": 0.0,
+      "memory_after_mb": 0.0,
+      "memory_delta_mb": null,
+      "queue_peak_depth": 9
+    },
+    {
+      "round": 2,
+      "day": "2026-10-12",
+      "regime": "DOWN",
+      "duration_seconds": 6.064,
+      "conflicts": 0,
+      "cross_contamination": 0,
+      "timeouts": 0,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "total_rows": 54,
+      "memory_before_mb": 0.0,
+      "memory_after_mb": 0.0,
+      "memory_delta_mb": null,
+      "queue_peak_depth": 9
+    },
+    {
+      "round": 3,
+      "day": "2026-10-12",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 6.25,
+      "conflicts": 0,
+      "cross_contamination": 0,
+      "timeouts": 0,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "total_rows": 54,
+      "memory_before_mb": 0.0,
+      "memory_after_mb": 0.0,
+      "memory_delta_mb": null,
+      "queue_peak_depth": 9
+    },
+    {
+      "round": 4,
+      "day": "2026-10-12",
+      "regime": "UP",
+      "duration_seconds": 6.122,
+      "conflicts": 0,
+      "cross_contamination": 0,
+      "timeouts": 0,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "total_rows": 54,
+      "memory_before_mb": 0.0,
+      "memory_after_mb": 0.0,
+      "memory_delta_mb": null,
+      "queue_peak_depth": 9
+    },
+    {
+      "round": 5,
+      "day": "2026-10-12",
+      "regime": "DOWN",
+      "duration_seconds": 6.067,
+      "conflicts": 0,
+      "cross_contamination": 0,
+      "timeouts": 0,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "total_rows": 54,
+      "memory_before_mb": 0.0,
+      "memory_after_mb": 0.0,
+      "memory_delta_mb": null,
+      "queue_peak_depth": 9
+    }
+  ],
+  "lock_conflict_ledger_ref": "artifacts\\backtest_archive\\data_assets\\parallel_lock_conflict_ledger.json",
+  "anomaly_events_ref": "artifacts\\backtest_archive\\data_assets\\parallel_anomaly_events.json",
+  "constraints": {
+    "v2_sha_unchanged": true,
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "stability_pass": true
+}

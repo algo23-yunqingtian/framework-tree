@@ -1,0 +1,76 @@
+{
+  "snapshot_id": "DSHC-STABILITY-TEST-SNAPSHOT",
+  "workorder": "DSHC-TASK-015",
+  "token": "DSHC-TASK015-STABILITY-TEST-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T12:55:18+08:00",
+  "manifest_version": "v2.4.0",
+  "gate": "CLOSED/HOLD",
+  "release_permit": "NOT_ISSUED",
+  "wind_api_calls": 0,
+  "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+  "v2_sha_short": "14950B9464BAEFD8",
+  "mode": "STABILITY_TEST",
+  "is_dry_run": false,
+  "trading_days": 7,
+  "rounds_per_day": 6,
+  "total_rounds": 42,
+  "rounds_planned": 42,
+  "regime_cycle": [
+    "UP",
+    "DOWN",
+    "SIDEWAYS"
+  ],
+  "regime_counts": {
+    "UP": 14,
+    "DOWN": 14,
+    "SIDEWAYS": 14
+  },
+  "window_counts": {
+    "AL.SHF": 42,
+    "CU.SHF": 42,
+    "HC.SHF": 42,
+    "NI.SHF": 42,
+    "PB.SHF": 42,
+    "RB.SHF": 42,
+    "SN.SHF": 42,
+    "ZN.SHF": 42,
+    "LC.GFE": 42
+  },
+  "total_down_cumulative": 21,
+  "down_threshold_met": true,
+  "resource_stability": {
+    "rounds_analyzed": 42,
+    "total_duration_sec": 259.42,
+    "avg_duration_sec": 6.177,
+    "max_duration_sec": 6.724,
+    "min_duration_sec": 5.986,
+    "total_rows": 2268,
+    "throughput_rows_per_sec": 8.74,
+    "queue_peak_max": 9,
+    "memory_tracking_available": false,
+    "open_file_handles": -1,
+    "conflicts": 0,
+    "cross_contamination": 0,
+    "timeouts": 0,
+    "consistency_pass": true,
+    "lock_test_pass": true
+  },
+  "data_collect_pass": true,
+  "constraints": {
+    "v2_sha_unchanged": true,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "artifacts": {
+    "stability_report": "artifacts/backtest_archive/data_assets/parallel_stability_report.json",
+    "lock_conflict_ledger": "artifacts/backtest_archive/data_assets/parallel_lock_conflict_ledger.json",
+    "anomaly_events": "artifacts/backtest_archive/data_assets/parallel_anomaly_events.json",
+    "consistency_report": "artifacts/backtest_archive/data_assets/parallel_consistency_report.json",
+    "lock_conflict_stats": "artifacts/backtest_archive/data_assets/parallel_lock_conflict_stats.json"
+  },
+  "receipt": "DSHC_TASK015_STABILITY_TEST=COMPLETE｜seven_day_stress_test=YES｜continuous_parallel_rounds=YES｜regime_distribution_tracked=YES｜down_windows_gte_20=YES｜lock_conflict_ledger=YES｜resource_monitoring=YES｜anomaly_events_archived=YES｜dshd_alerts_pushed=YES｜dsha_ready=YES"
+}
