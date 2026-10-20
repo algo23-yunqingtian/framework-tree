@@ -1,0 +1,209 @@
+{
+  "push_id": "DSHD-TASK051-PUSH-1792485799",
+  "generated_at": "2026-10-20T16:43:19+08:00",
+  "source_task": "DSHA-TASK051-FROZEN-BACKTEST-VALID",
+  "source_token": "DSHA-TASK051-FROZEN-BACKTEST-VALID-TOKEN",
+  "push_token": "DSHD-TASK051-FROZEN-BACKTEST-VALID-TOKEN",
+  "push_type": "FROZEN_BACKTEST_VALIDATION",
+  "mode": "AUDIT_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "offline_only": true,
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "p0_prereq": {
+    "all_pass": true,
+    "v3_frozen": true,
+    "set_e_frozen": true,
+    "prod_configs_unchanged": true,
+    "engine_params_match_v3": true
+  },
+  "p1_replay": {
+    "replay_sharpe": 3.488982,
+    "baseline_sharpe": 3.488982,
+    "replay_return": 0.229334,
+    "baseline_return": 0.229334,
+    "replay_max_dd": -0.012099,
+    "baseline_max_dd": -0.012099,
+    "deviation_all_pass": true,
+    "deviation_threshold": 0.005,
+    "key_deviations": {
+      "total_return": {
+        "baseline": 0.229334,
+        "replay": 0.229334,
+        "deviation": 0.0,
+        "deviation_pct": 0.0,
+        "within_threshold": true
+      },
+      "sharpe_ratio": {
+        "baseline": 3.488982,
+        "replay": 3.488982,
+        "deviation": 0.0,
+        "deviation_pct": 0.0,
+        "within_threshold": true
+      },
+      "max_drawdown": {
+        "baseline": -0.012099,
+        "replay": -0.012099,
+        "deviation": 0.0,
+        "deviation_pct": 0.0,
+        "within_threshold": true
+      }
+    }
+  },
+  "p2_stress": {
+    "summary": {
+      "total_scenarios": 5,
+      "pass_count": 5,
+      "fail_count": 0,
+      "all_pass": true,
+      "max_crowding": 1.0359,
+      "min_sharpe": 1.693717,
+      "max_drawdown": -0.018817
+    },
+    "scenarios": [
+      {
+        "name": "S1_FACTOR_NOISE",
+        "description": "因子噪声扰动 (σ=2%×因子std)",
+        "sharpe": 2.064992,
+        "return": 0.085723,
+        "max_dd": -0.017186,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "S2_MARKET_JUMP",
+        "description": "行情跳变 (±5%, 日期=['2026-10-08 00:00:00', '2025-04-28 00:00:00', '2025-09-26 00:00:00'])",
+        "sharpe": 2.007149,
+        "return": 0.083473,
+        "max_dd": -0.018168,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "S3_VOL_SPIKE",
+        "description": "波动率放大 (2x realized_vol_20d)",
+        "sharpe": 1.693717,
+        "return": 0.045244,
+        "max_dd": -0.013712,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "S4_COMBO",
+        "description": "组合扰动 (噪声+跳变叠加)",
+        "sharpe": 1.979105,
+        "return": 0.081923,
+        "max_dd": -0.016907,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "S5_HEAVY_NOISE",
+        "description": "高强度噪声 (σ=5%×因子std)",
+        "sharpe": 2.09272,
+        "return": 0.085925,
+        "max_dd": -0.018817,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      }
+    ]
+  },
+  "p3_boundary": {
+    "summary": {
+      "total_scenarios": 5,
+      "pass_count": 5,
+      "fail_count": 0,
+      "all_pass": true
+    },
+    "scenarios": [
+      {
+        "name": "B1_LOW_LIQUIDITY",
+        "description": "低流动性 (20% OI数据缺失)",
+        "sharpe": 2.007149,
+        "return": 0.083473,
+        "max_dd": -0.018168,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "B2_CONTINUOUS_SWITCH",
+        "description": "连续换月 (每品种3个强制换月标记)",
+        "sharpe": 2.127817,
+        "return": 0.088274,
+        "max_dd": -0.016897,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "B3_EXTREME_MOVES",
+        "description": "极端涨跌 (±8%注入)",
+        "sharpe": 1.951461,
+        "return": 0.083089,
+        "max_dd": -0.018168,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "B4_SUPER_LIQUIDITY",
+        "description": "超级流动性 (OI均匀+10%)",
+        "sharpe": 2.007149,
+        "return": 0.083473,
+        "max_dd": -0.018168,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      },
+      {
+        "name": "B5_DATA_MISSING",
+        "description": "数据缺失 (5%随机缺失后填充)",
+        "sharpe": 0.197063,
+        "return": 0.120135,
+        "max_dd": -0.233488,
+        "crowding": 1.0359,
+        "crowding_alert": false,
+        "pass": true
+      }
+    ]
+  },
+  "p4_risk": {
+    "hhi_equal": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "crowding_ratio": 1.0359,
+    "crowding_threshold": 1.1,
+    "crowding_alert": false,
+    "high_corr_pairs": 0,
+    "redundancy_alert": false
+  },
+  "red_lines": {
+    "no_v3_modification": true,
+    "read_only_mode": true,
+    "wind_api_calls": 0,
+    "gate_observed": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "deviation_threshold_observed": 0.005,
+    "crowding_threshold_observed": 1.1,
+    "auto_fail_on_deviation": true,
+    "auto_fail_on_crowding": true
+  },
+  "alerts": {
+    "p0_alert": false,
+    "p1_deviation_alert": false,
+    "p2_stress_alert": true,
+    "p3_boundary_alert": true,
+    "p4_risk_alert": false,
+    "total_active_alerts": 0
+  },
+  "task051_receipt": "DSHA_TASK051_FROZEN_BACKTEST_VALID=COMPLETE"
+}

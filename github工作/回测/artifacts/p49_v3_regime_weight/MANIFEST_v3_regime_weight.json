@@ -180,7 +180,7 @@
     "17_no_high_crowding_alerts": true,
     "18_red_line_fallback_correct": true
   },
-  "receipt": "DSHA_TASK050_STRATEGY_FREEZE=COMPLETE|p0_prereq_verified=YES|p0_dshc_task017_receipt=NO(available_DSHC_receipts_used)|p1_windows=[20d,40d]|p1_alpha=0.6|p1_sharpe_20d=3.4890|p1_sharpe_40d=3.2650|p1_return_20d=0.2293|p1_return_40d=0.2094|p1_flip_20d_20d=0.5000|p1_flip_20d_40d=0.2105|p1_flip_40d_20d=0.5000|p1_flip_40d_40d=0.3158|p1_crowding_20d=1.0359|p1_crowding_40d=1.0205|p2_sharpe_delta=-0.2240|p2_return_delta=-0.0199|p2_flip_40d_delta=+0.1053|p2_selected_window=20d|p2_recommendation=回退至20d窗口: 40d窗口夏普未达标(红线触发)|p3_freeze_status=PERMANENTLY_FROZEN|p3_selected_window=20d|p3_sharpe=3.4890|p3_sharpe_ok=YES|p3_crowding=1.0359x|p3_crowding_ok=YES|p4_risk_validation=PASS|p4_high_corr_pairs=0|p5_final_weight_rules=YES|p5_dshd_pushed=YES|p6_variant_count=5|p6_rejected=['V4-REJECTED','V5-REJECTED']|engine=Set-E|smoke_pass=11/11",
+  "receipt": "DSHA_TASK051_FROZEN_BACKTEST_VALID=COMPLETE|p0_all_pass=YES|p1_replay_sharpe=3.4890|p1_baseline_sharpe=3.4890|p1_sharpe_deviation=0.000000|p1_return_deviation=0.000000|p1_max_dd_deviation=0.000000|p1_flip_20d_deviation=0.000000|p1_flip_40d_deviation=0.000000|p1_deviation_threshold=±0.005|p1_pass=YES|p2_scenarios=5|p2_all_pass=YES|p2_max_crowding=1.0359x|p2_crowding_threshold=1.1x|p3_scenarios=5|p3_all_pass=YES|p4_crowding=1.0359x|p4_high_corr_pairs=0|p4_crowding_alert=NO|overall_status=PASS|engine=Set-E|v3_modified=NO|read_only=YES|wind=0|gate=CLOSED/HOLD|release=NOT_ISSUED",
   "smoke_check": {
     "passed": 11,
     "total": 11,
@@ -253,5 +253,16 @@
       }
     ],
     "all_pass": true
+  },
+  "task051_validation": {
+    "output_id": "DSHA-TASK051-V3-ACCEPTANCE-DOC",
+    "generated_at": "2026-10-20T16:43:19+08:00",
+    "token": "DSHA-TASK051-FROZEN-BACKTEST-VALID-TOKEN",
+    "overall_status": "PASS",
+    "p1_pass": true,
+    "p2_stress_all_pass": true,
+    "p3_boundary_all_pass": true,
+    "p4_risk_alert": false,
+    "report_path": "artifacts/p49_v3_regime_weight/v3_acceptance_document.json"
   }
 }
