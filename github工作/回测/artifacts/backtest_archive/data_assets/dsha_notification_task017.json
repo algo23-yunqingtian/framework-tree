@@ -1,0 +1,38 @@
+{
+  "workorder": "DSHC-TASK-017",
+  "token": "DSHC-TASK017-DUAL-WINDOW-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T16:26:54+08:00",
+  "notification_id": "DSHC-DSHA-NOTIFY-20261020162654",
+  "event": "NOTIFY_DUAL_WINDOW_READY",
+  "status": "READY",
+  "next_action": "DSHA_START_DUAL_WINDOW_FLIP_RATE_EVALUATION",
+  "dataset_info": {
+    "window_20d_days": 20,
+    "window_20d_shards": 180,
+    "window_20d_rows": 1080,
+    "window_40d_days": 40,
+    "window_40d_shards": 360,
+    "window_40d_rows": 2160,
+    "regime_rounds": 42,
+    "down_count": 26,
+    "down_minimum": 20,
+    "contract_rollover_symbols": 9,
+    "contract_rollover_switch_events": 25,
+    "contract_rollover_rows": 2160,
+    "oi_change_threshold": -0.3
+  },
+  "sha_fingerprint_list": "artifacts\\backtest_archive\\data_assets\\dual_window_sha_fingerprint_list.json",
+  "dual_window_report": "artifacts\\backtest_archive\\data_assets\\dual_window_report.json",
+  "dual_window_snapshot": "artifacts\\backtest_archive\\data_assets\\dual_window_snapshot.json",
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha_unchanged": true,
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true
+  },
+  "receipt_marker": "DSHC_TASK017_DUAL_WINDOW_PIPELINE=COMPLETE"
+}

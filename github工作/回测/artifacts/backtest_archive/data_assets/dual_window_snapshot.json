@@ -1,0 +1,59 @@
+{
+  "workorder": "DSHC-TASK-017",
+  "token": "DSHC-TASK017-DUAL-WINDOW-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T16:26:54+08:00",
+  "version": "1.0.0",
+  "constraints": {
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "v2_sha_unchanged": true,
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true,
+    "csv_readonly": true,
+    "v1_frozen": true
+  },
+  "receipt": {
+    "marker": "DSHC_TASK017_DUAL_WINDOW_PIPELINE=COMPLETE",
+    "p0_smoke_check": true,
+    "p1_dual_window_40d": true,
+    "p1_dual_window_20d": true,
+    "p2_regime_balance": true,
+    "p2_consistency": true,
+    "p2_lock_test": true,
+    "p3_contract_rollover": true,
+    "p4_dshd_alerts": true,
+    "overall_pass": true
+  },
+  "artifacts": {
+    "dual_window_report": "artifacts\\backtest_archive\\data_assets\\dual_window_report.json",
+    "dual_window_snapshot": "artifacts\\backtest_archive\\data_assets\\dual_window_snapshot.json",
+    "sha_fingerprint_list": "artifacts\\backtest_archive\\data_assets\\dual_window_sha_fingerprint_list.json",
+    "lock_conflict_ledger": "artifacts\\backtest_archive\\data_assets\\dual_window_lock_ledger.json",
+    "consistency_report": "artifacts\\backtest_archive\\data_assets\\dual_window_consistency_report.json",
+    "anomaly_events": "artifacts\\backtest_archive\\data_assets\\dual_window_anomaly_events.json",
+    "rollover_summary": "artifacts\\backtest_archive\\data_assets\\contract_rollover\\rollover_summary.json",
+    "dual_window_20d_dir": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_20d",
+    "dual_window_40d_dir": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_40d",
+    "contract_rollover_dir": "artifacts\\backtest_archive\\data_assets\\contract_rollover"
+  },
+  "summary": {
+    "window_20d_days": 20,
+    "window_20d_shards": 180,
+    "window_20d_rows": 1080,
+    "window_40d_days": 40,
+    "window_40d_shards": 360,
+    "window_40d_rows": 2160,
+    "regime_rounds": 42,
+    "down_count": 26,
+    "down_minimum": 20,
+    "contract_rollover_symbols": 9,
+    "contract_rollover_switches": 25,
+    "contract_rollover_rows": 2160,
+    "dshd_alerts_pushed": 22,
+    "total_sha_files": 1638
+  }
+}
