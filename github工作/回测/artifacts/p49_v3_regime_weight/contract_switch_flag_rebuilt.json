@@ -1,0 +1,38 @@
+{
+  "output_id": "DSHA-TASK049-CONTRACT-SWITCH-FLAG-REBUILT",
+  "generated_at": "2026-10-20T13:34:16+08:00",
+  "token": "DSHA-TASK049-LONG-WINDOW-EVAL-TOKEN",
+  "task": "DSHA-TASK049-LONG-WINDOW-EVAL",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "old_flag": {
+    "nonzero": 0,
+    "std": 0.0,
+    "status": "ALL_ZERO"
+  },
+  "new_flag": {
+    "nonzero": 11,
+    "total": 3888,
+    "pct": 0.28,
+    "std": 0.05312192992887123,
+    "threshold": -0.3
+  },
+  "oi_change_stats": {
+    "min": -0.340413,
+    "max": 4.381429,
+    "mean": 0.017154,
+    "std": 0.258206,
+    "below_neg30": 11,
+    "below_neg20": 46,
+    "below_neg10": 327
+  },
+  "status": "REBUILT",
+  "reason": "OI变化率<-30%标记合约换月",
+  "method": "OI变化率 = (当日OI - 前一日OI) / 前一日OI, 标记条件: OI变化率 < -30%",
+  "inherited_from": "TASK048 (old all-zero flag)"
+}

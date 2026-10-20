@@ -1,0 +1,54 @@
+{
+  "output_id": "DSHA-TASK049-SCHEME-COMPARISON",
+  "generated_at": "2026-10-20T13:34:16+08:00",
+  "token": "DSHA-TASK049-LONG-WINDOW-EVAL-TOKEN",
+  "task": "DSHA-TASK049-LONG-WINDOW-EVAL",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "scheme_1_baseline": {
+    "name": "20d窗口 alpha=0.6 基准 (TASK048)",
+    "window": "20d",
+    "alpha": 0.6,
+    "ic_window": 20,
+    "sharpe": 3.488982,
+    "return": 0.229334,
+    "max_dd": -0.012099,
+    "flip_rate_20d": 0.5,
+    "flip_rate_40d": 0.2105,
+    "crowding": 1.0359,
+    "trade_count": 251
+  },
+  "scheme_2_long_window": {
+    "name": "40d窗口 alpha=0.7 方案",
+    "window": "40d",
+    "alpha": 0.7,
+    "ic_window": 40,
+    "sharpe": 3.148211,
+    "return": 0.201413,
+    "max_dd": -0.018025,
+    "flip_rate_20d": 0.5,
+    "flip_rate_40d": 0.4211,
+    "crowding": 1.0115,
+    "trade_count": 249
+  },
+  "comparison": {
+    "sharpe_delta": -0.3408,
+    "return_delta": -0.0279,
+    "max_dd_delta": -0.0059,
+    "flip_rate_20d_delta": 0.0,
+    "flip_rate_40d_delta": 0.2106,
+    "crowding_delta": -0.0244
+  },
+  "tradeoff_analysis": {
+    "sharpe_gain": "-0.3408",
+    "flip_rate_tradeoff": "40d窗口翻转率变化取决于IC稳定性",
+    "recommendation": "alpha=0.7 + 40d窗口若夏普达标则推荐; 否则回退alpha=0.6基准"
+  },
+  "recommended": "scheme_1_baseline",
+  "recommendation": "回退至20d窗口alpha=0.6基准: alpha=0.7方案未达标"
+}

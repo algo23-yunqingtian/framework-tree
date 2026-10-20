@@ -1,0 +1,52 @@
+{
+  "output_id": "DSHA-TASK049-FLIP-RATE-WINDOW-COMP",
+  "generated_at": "2026-10-20T13:34:16+08:00",
+  "token": "DSHA-TASK049-LONG-WINDOW-EVAL-TOKEN",
+  "task": "DSHA-TASK049-LONG-WINDOW-EVAL",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "comparison": "20d vs 40d IC窗口翻转率",
+  "ic_step": 20,
+  "scheme_comparison": {
+    "alpha_0.6_20d_baseline": {
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "flip_reduction_pp": 28.95,
+      "sharpe": 3.488982,
+      "return": 0.229334,
+      "max_dd": -0.012099
+    },
+    "alpha_0.7_20d": {
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.3158,
+      "flip_reduction_pp": 18.42,
+      "sharpe": 3.346833,
+      "return": 0.218901,
+      "max_dd": -0.018025
+    },
+    "alpha_0.7_40d": {
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.4211,
+      "flip_reduction_pp": 7.89,
+      "sharpe": 3.148211,
+      "return": 0.201413,
+      "max_dd": -0.018025
+    }
+  },
+  "alpha_0.6_baseline_flip": {
+    "20d": 0.5,
+    "40d": 0.2105,
+    "reduction_pp": 28.95
+  },
+  "alpha_0.7_flip": {
+    "20d": 0.5,
+    "40d": 0.3158,
+    "reduction_pp": 18.42
+  },
+  "conclusion": "40d窗口翻转率降低幅度取决于IC稳定性"
+}

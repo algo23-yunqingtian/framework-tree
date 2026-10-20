@@ -1,8 +1,8 @@
 {
-  "output_id": "DSHA-TASK048-DYNAMIC-WEIGHTS",
-  "generated_at": "2026-10-20T12:43:58+08:00",
-  "token": "DSHA-TASK048-WEIGHT-FINALIZE-TOKEN",
-  "task": "DSHA-TASK048-WEIGHT-FINALIZE",
+  "output_id": "DSHA-TASK049-DYNAMIC-WEIGHTS",
+  "generated_at": "2026-10-20T13:34:16+08:00",
+  "token": "DSHA-TASK049-LONG-WINDOW-EVAL-TOKEN",
+  "task": "DSHA-TASK049-LONG-WINDOW-EVAL",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -11,130 +11,30 @@
     "release": "NOT_ISSUED"
   },
   "baseline_alpha": 0.6,
+  "optimal_alpha": 0.7,
+  "selected_alpha": 0.6,
+  "selected_scheme": "scheme_1_baseline",
   "blend_strategy": "60%_equal_40%_regime_extreme",
-  "flip_rate_optimization": {
-    "baseline_flip_rate": 0.5,
-    "selected_variant": "baseline",
-    "selected_flip_rate": 0.5,
-    "flip_reduction_pp": 0.0,
-    "flip_reduction_pct": 0.0,
-    "sharpe_threshold": 3.4,
-    "sharpe_maintained": true,
-    "crowding_max": 1.1,
-    "crowding_maintained": true
-  },
-  "variant_results": {
-    "baseline": {
-      "desc": "TASK047 alpha=0.6 基准",
-      "flip_rate": 0.5,
-      "sharpe": 3.429335,
-      "return": 0.229847,
-      "max_dd": -0.018025,
-      "crowding": 1.0359,
-      "selected": true
-    },
-    "v1_cap_only": {
-      "desc": "仅①权重上限0.20",
-      "flip_rate": 0.5,
-      "sharpe": 3.429335,
-      "return": 0.229847,
-      "max_dd": -0.018025,
-      "crowding": 1.0359,
-      "selected": false
-    },
-    "v2_mom_neutral": {
-      "desc": "②momentum_20d等权化",
-      "flip_rate": 0.5,
-      "sharpe": 3.13876,
-      "return": 0.196296,
-      "max_dd": -0.017102,
-      "crowding": 1.0196,
-      "selected": false
-    },
-    "v3_anti_stack": {
-      "desc": "③oi_level+vol反叠加",
-      "flip_rate": 0.5,
-      "sharpe": 3.429335,
-      "return": 0.229847,
-      "max_dd": -0.018025,
-      "crowding": 1.0359,
-      "selected": false
-    },
-    "v4_combined": {
-      "desc": "①+②+③三项合并",
-      "flip_rate": 0.5,
-      "sharpe": 3.360753,
-      "return": 0.215789,
-      "max_dd": -0.017102,
-      "crowding": 1.0195,
-      "selected": false
-    },
-    "v5_ema_composite_3": {
-      "desc": "基准+复合信号EMA(3)",
-      "flip_rate": 0.35,
-      "sharpe": 2.183854,
-      "return": 0.147691,
-      "max_dd": -0.017495,
-      "crowding": 1.0359,
-      "selected": false
-    },
-    "v6_ema_composite_2": {
-      "desc": "基准+复合信号EMA(2)",
-      "flip_rate": 0.45,
-      "sharpe": 2.720051,
-      "return": 0.183526,
-      "max_dd": -0.015725,
-      "crowding": 1.0359,
-      "selected": false
-    },
-    "v7_alpha07_opt": {
-      "desc": "alpha=0.7+三项优化",
-      "flip_rate": 0.5,
-      "sharpe": 3.489182,
-      "return": 0.228199,
-      "max_dd": -0.017102,
-      "crowding": 1.0106,
-      "selected": false
-    },
-    "v8_all_ema_c3": {
-      "desc": "①+②+③+复合EMA(3)",
-      "flip_rate": 0.45,
-      "sharpe": 2.32075,
-      "return": 0.149537,
-      "max_dd": -0.017034,
-      "crowding": 1.0195,
-      "selected": false
-    },
-    "v9_ema_c2_opt": {
-      "desc": "①+②+③+复合EMA(2)",
-      "flip_rate": 0.45,
-      "sharpe": 2.332886,
-      "return": 0.155496,
-      "max_dd": -0.023434,
-      "crowding": 1.0195,
-      "selected": false
-    }
-  },
-  "dynamic_weights_baseline": {
+  "dynamic_weights_a06_20d": {
     "up": {
-      "contract_switch_flag": 0.090821,
-      "momentum_20d": 0.173881,
-      "oi_change_1d": 0.090821,
-      "oi_change_rate_7d": 0.120714,
-      "oi_level": 0.149331,
-      "realized_vol_20d": 0.126577,
-      "spread_cs": 0.138618,
-      "vol_regime_change": 0.109238
+      "contract_switch_flag": 0.161648,
+      "momentum_20d": 0.169874,
+      "oi_change_1d": 0.090389,
+      "oi_change_rate_7d": 0.109452,
+      "oi_level": 0.131019,
+      "realized_vol_20d": 0.113871,
+      "spread_cs": 0.122945,
+      "vol_regime_change": 0.100803
     },
     "down": {
-      "contract_switch_flag": 0.092818,
-      "momentum_20d": 0.186363,
-      "oi_change_1d": 0.121492,
-      "oi_change_rate_7d": 0.110245,
-      "oi_level": 0.100876,
-      "realized_vol_20d": 0.092818,
-      "spread_cs": 0.150328,
-      "vol_regime_change": 0.14506
+      "contract_switch_flag": 0.169436,
+      "momentum_20d": 0.179666,
+      "oi_change_1d": 0.10884,
+      "oi_change_rate_7d": 0.100654,
+      "oi_level": 0.093834,
+      "realized_vol_20d": 0.091747,
+      "spread_cs": 0.129829,
+      "vol_regime_change": 0.125994
     },
     "sideways": {
       "contract_switch_flag": 0.125,
@@ -147,26 +47,26 @@
       "vol_regime_change": 0.125
     }
   },
-  "dynamic_weights_optimized": {
+  "dynamic_weights_a07_20d": {
     "up": {
-      "contract_switch_flag": 0.090821,
-      "momentum_20d": 0.173881,
-      "oi_change_1d": 0.090821,
-      "oi_change_rate_7d": 0.120714,
-      "oi_level": 0.149331,
-      "realized_vol_20d": 0.126577,
-      "spread_cs": 0.138618,
-      "vol_regime_change": 0.109238
+      "contract_switch_flag": 0.152486,
+      "momentum_20d": 0.158655,
+      "oi_change_1d": 0.099042,
+      "oi_change_rate_7d": 0.113339,
+      "oi_level": 0.129514,
+      "realized_vol_20d": 0.116653,
+      "spread_cs": 0.123459,
+      "vol_regime_change": 0.106852
     },
     "down": {
-      "contract_switch_flag": 0.092818,
-      "momentum_20d": 0.186363,
-      "oi_change_1d": 0.121492,
-      "oi_change_rate_7d": 0.110245,
-      "oi_level": 0.100876,
-      "realized_vol_20d": 0.092818,
-      "spread_cs": 0.150328,
-      "vol_regime_change": 0.14506
+      "contract_switch_flag": 0.158327,
+      "momentum_20d": 0.166,
+      "oi_change_1d": 0.11288,
+      "oi_change_rate_7d": 0.10674,
+      "oi_level": 0.101626,
+      "realized_vol_20d": 0.10006,
+      "spread_cs": 0.128622,
+      "vol_regime_change": 0.125746
     },
     "sideways": {
       "contract_switch_flag": 0.125,
@@ -179,21 +79,89 @@
       "vol_regime_change": 0.125
     }
   },
-  "optimization_details": {
-    "applied": [
-      "none (baseline)"
-    ],
-    "changes": []
+  "dynamic_weights_a07_40d": {
+    "up": {
+      "contract_switch_flag": 0.135055,
+      "momentum_20d": 0.148057,
+      "oi_change_1d": 0.099193,
+      "oi_change_rate_7d": 0.116286,
+      "oi_level": 0.134106,
+      "realized_vol_20d": 0.127348,
+      "spread_cs": 0.126023,
+      "vol_regime_change": 0.113933
+    },
+    "down": {
+      "contract_switch_flag": 0.148472,
+      "momentum_20d": 0.147098,
+      "oi_change_1d": 0.137471,
+      "oi_change_rate_7d": 0.099024,
+      "oi_level": 0.112231,
+      "realized_vol_20d": 0.099024,
+      "spread_cs": 0.12707,
+      "vol_regime_change": 0.129609
+    },
+    "sideways": {
+      "contract_switch_flag": 0.125,
+      "momentum_20d": 0.125,
+      "oi_change_1d": 0.125,
+      "oi_change_rate_7d": 0.125,
+      "oi_level": 0.125,
+      "realized_vol_20d": 0.125,
+      "spread_cs": 0.125,
+      "vol_regime_change": 0.125
+    }
   },
-  "fixed_weights": {
-    "contract_switch_flag": 0.039884,
-    "momentum_20d": 0.249275,
-    "oi_change_1d": 0.039884,
-    "oi_change_rate_7d": 0.088574,
-    "oi_level": 0.138379,
-    "realized_vol_20d": 0.126339,
-    "spread_cs": 0.156316,
-    "vol_regime_change": 0.161349
+  "selected_weights": {
+    "up": {
+      "contract_switch_flag": 0.161648,
+      "momentum_20d": 0.169874,
+      "oi_change_1d": 0.090389,
+      "oi_change_rate_7d": 0.109452,
+      "oi_level": 0.131019,
+      "realized_vol_20d": 0.113871,
+      "spread_cs": 0.122945,
+      "vol_regime_change": 0.100803
+    },
+    "down": {
+      "contract_switch_flag": 0.169436,
+      "momentum_20d": 0.179666,
+      "oi_change_1d": 0.10884,
+      "oi_change_rate_7d": 0.100654,
+      "oi_level": 0.093834,
+      "realized_vol_20d": 0.091747,
+      "spread_cs": 0.129829,
+      "vol_regime_change": 0.125994
+    },
+    "sideways": {
+      "contract_switch_flag": 0.125,
+      "momentum_20d": 0.125,
+      "oi_change_1d": 0.125,
+      "oi_change_rate_7d": 0.125,
+      "oi_level": 0.125,
+      "realized_vol_20d": 0.125,
+      "spread_cs": 0.125,
+      "vol_regime_change": 0.125
+    }
+  },
+  "fixed_weights_a07_20d": {
+    "contract_switch_flag": 0.173862,
+    "momentum_20d": 0.240761,
+    "oi_change_1d": 0.039409,
+    "oi_change_rate_7d": 0.072074,
+    "oi_level": 0.112601,
+    "realized_vol_20d": 0.102804,
+    "spread_cs": 0.127197,
+    "vol_regime_change": 0.131292
+  },
+  "fixed_weights_a07_40d": {
+    "contract_switch_flag": 0.134932,
+    "momentum_20d": 0.18613,
+    "oi_change_1d": 0.045295,
+    "oi_change_rate_7d": 0.086747,
+    "oi_level": 0.131699,
+    "realized_vol_20d": 0.120315,
+    "spread_cs": 0.132047,
+    "vol_regime_change": 0.162836
   },
   "equal_weight_baseline": {
     "contract_switch_flag": 0.125,
@@ -210,24 +178,15 @@
     "max_baseline": 0.25,
     "max_optimized": 0.2
   },
-  "up_down_weight_diff_baseline": {
-    "contract_switch_flag": -0.001997,
-    "momentum_20d": -0.012482,
-    "oi_change_1d": -0.030671,
-    "oi_change_rate_7d": 0.010469,
-    "oi_level": 0.048455,
-    "realized_vol_20d": 0.033759,
-    "spread_cs": -0.01171,
-    "vol_regime_change": -0.035822
+  "up_down_weight_diff_a07": {
+    "contract_switch_flag": -0.005841,
+    "momentum_20d": -0.007345,
+    "oi_change_1d": -0.013838,
+    "oi_change_rate_7d": 0.006599,
+    "oi_level": 0.027889,
+    "realized_vol_20d": 0.016593,
+    "spread_cs": -0.005163,
+    "vol_regime_change": -0.018894
   },
-  "up_down_weight_diff_optimized": {
-    "contract_switch_flag": -0.001997,
-    "momentum_20d": -0.012482,
-    "oi_change_1d": -0.030671,
-    "oi_change_rate_7d": 0.010469,
-    "oi_level": 0.048455,
-    "realized_vol_20d": 0.033759,
-    "spread_cs": -0.01171,
-    "vol_regime_change": -0.035822
-  }
+  "contract_switch_flag_rebuilt": true
 }

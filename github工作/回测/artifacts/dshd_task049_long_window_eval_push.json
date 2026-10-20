@@ -1,0 +1,328 @@
+{
+  "push_id": "DSHD-TASK049-PUSH-1792474456",
+  "generated_at": "2026-10-20T13:34:16+08:00",
+  "source_task": "DSHA-TASK049-LONG-WINDOW-EVAL",
+  "source_token": "DSHA-TASK049-LONG-WINDOW-EVAL-TOKEN",
+  "push_token": "DSHD-TASK049-LONG-WINDOW-EVAL-TOKEN",
+  "push_type": "LONG_WINDOW_EVAL_ALPHAV07",
+  "mode": "AUDIT_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "offline_only": true
+  },
+  "crowding": {
+    "monitor": "DSHD-TASK039-CROWDING-MONITOR",
+    "version": "2.2.0",
+    "alert_percentile": 90,
+    "alert_level": "MEDIUM",
+    "aggregate": {
+      "level": "CROWDING_LOW",
+      "avg_score": 24.73,
+      "max_score": 55.9,
+      "min_score": 7.65,
+      "std_score": 18.35,
+      "alert_factor_count": 3
+    },
+    "per_factor": {
+      "contract_switch_flag": {
+        "score": 40.0,
+        "directional_concentration": 1.0,
+        "value_hhi": 0.0,
+        "flags": [
+          "DIRECTIONAL_CROWDED"
+        ],
+        "status": "⚠ MEDIUM",
+        "data_status": "OK"
+      },
+      "momentum_20d": {
+        "score": 8.27,
+        "directional_concentration": 0.0741,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "oi_change_1d": {
+        "score": 15.51,
+        "directional_concentration": 0.3042,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "oi_change_rate_7d": {
+        "score": 7.65,
+        "directional_concentration": 0.1033,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "oi_level": {
+        "score": 46.86,
+        "directional_concentration": 1.0,
+        "value_hhi": 0.1,
+        "flags": [
+          "DIRECTIONAL_CROWDED"
+        ],
+        "status": "⚠ MEDIUM",
+        "data_status": "OK"
+      },
+      "realized_vol_20d": {
+        "score": 55.9,
+        "directional_concentration": 1.0,
+        "value_hhi": 0.1,
+        "flags": [
+          "DIRECTIONAL_CROWDED"
+        ],
+        "status": "⚠ MEDIUM",
+        "data_status": "OK"
+      },
+      "spread_cs": {
+        "score": 8.85,
+        "directional_concentration": 0.0137,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "vol_regime_change": {
+        "score": 14.82,
+        "directional_concentration": 0.0194,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      }
+    }
+  },
+  "regime": {
+    "regime_counts_4sym": {
+      "up": 730,
+      "down": 660,
+      "sideways": 338
+    },
+    "regime_counts_9sym": {
+      "up": 1334,
+      "down": 1025,
+      "sideways": 665
+    },
+    "min_window_per_factor": 20,
+    "down_sample_sufficient": true
+  },
+  "hhi_crowding": {
+    "hhi_equal_baseline": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "crowding_ratio": 1.0359,
+    "crowding_threshold": 1.1,
+    "crowding_alert_triggered": false,
+    "per_regime_hhi": {
+      "up": 0.130546,
+      "down": 0.132918,
+      "sideways": 0.125
+    }
+  },
+  "backtest_risk": {
+    "group_a_equal": {
+      "max_drawdown": -0.017102,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 2.724257,
+      "total_return": 0.173991
+    },
+    "group_b_fixed_a07": {
+      "max_drawdown": -0.017964,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 2.74675,
+      "total_return": 0.187896
+    },
+    "group_c_dynamic_a07_20d": {
+      "max_drawdown": -0.018025,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 3.346833,
+      "total_return": 0.218901
+    },
+    "group_d_dynamic_a07_40d": {
+      "max_drawdown": -0.018025,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 3.148211,
+      "total_return": 0.201413
+    },
+    "group_e_dynamic_a06_20d": {
+      "max_drawdown": -0.012099,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 3.488982,
+      "total_return": 0.229334
+    }
+  },
+  "correlation_alerts": {
+    "high_corr_pairs": [],
+    "pair_count": 0,
+    "alert_threshold": 0.5,
+    "status": "NORMAL"
+  },
+  "factor_diagnostics": {
+    "contract_switch_flag": {
+      "status": "OK",
+      "reason": "正常因子, 11非零值, std=0.053122"
+    },
+    "momentum_20d": {
+      "status": "OK",
+      "reason": "正常因子, 3696非零值, std=0.068893"
+    },
+    "oi_change_1d": {
+      "status": "OK",
+      "reason": "正常因子, 3869非零值, std=39666.041259"
+    },
+    "oi_change_rate_7d": {
+      "status": "OK",
+      "reason": "正常因子, 3825非零值, std=0.418261"
+    },
+    "oi_level": {
+      "status": "OK",
+      "reason": "正常因子, 3888非零值, std=624886.537433"
+    },
+    "realized_vol_20d": {
+      "status": "OK",
+      "reason": "正常因子, 3708非零值, std=0.156472"
+    },
+    "spread_cs": {
+      "status": "OK",
+      "reason": "正常因子, 3800非零值, std=1668.803072"
+    },
+    "vol_regime_change": {
+      "status": "OK",
+      "reason": "正常因子, 3663非零值, std=0.204045"
+    }
+  },
+  "contract_switch_flag_rebuild": {
+    "old_flag_nonzero": 0,
+    "old_flag_std": 0.0,
+    "new_flag_nonzero": 11,
+    "new_flag_total": 3888,
+    "new_flag_pct": 0.28,
+    "new_flag_std": 0.05312192992887123,
+    "threshold": -0.3,
+    "oi_change_stats": {
+      "min": -0.340413,
+      "max": 4.381429,
+      "mean": 0.017154,
+      "std": 0.258206,
+      "below_neg30": 11,
+      "below_neg20": 46,
+      "below_neg10": 327
+    },
+    "status": "REBUILT",
+    "reason": "OI变化率<-30%标记合约换月"
+  },
+  "flip_rate_comparison": {
+    "comparison": "20d vs 40d IC窗口",
+    "ic_step": 20,
+    "scheme_comparison": {
+      "alpha_0.6_20d_baseline": {
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.2105,
+        "flip_reduction_pp": 28.95,
+        "sharpe": 3.488982,
+        "return": 0.229334,
+        "max_dd": -0.012099
+      },
+      "alpha_0.7_20d": {
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.3158,
+        "flip_reduction_pp": 18.42,
+        "sharpe": 3.346833,
+        "return": 0.218901,
+        "max_dd": -0.018025
+      },
+      "alpha_0.7_40d": {
+        "flip_rate_20d": 0.5,
+        "flip_rate_40d": 0.4211,
+        "flip_reduction_pp": 7.89,
+        "sharpe": 3.148211,
+        "return": 0.201413,
+        "max_dd": -0.018025
+      }
+    },
+    "window_comparison": {
+      "20d": {
+        "ic_window": 20,
+        "step": 20
+      },
+      "40d": {
+        "ic_window": 40,
+        "step": 20
+      }
+    },
+    "alpha_0.6_baseline_flip": {
+      "20d": 0.5,
+      "40d": 0.2105,
+      "reduction_pp": 28.95
+    },
+    "alpha_0.7_flip": {
+      "20d": 0.5,
+      "40d": 0.3158,
+      "reduction_pp": 18.42
+    },
+    "conclusion": "40d窗口翻转率降低幅度取决于IC稳定性"
+  },
+  "scheme_comparison": {
+    "scheme_1_baseline": {
+      "name": "20d窗口 alpha=0.6 基准 (TASK048)",
+      "window": "20d",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.488982,
+      "return": 0.229334,
+      "max_dd": -0.012099,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "trade_count": 251
+    },
+    "scheme_2_long_window": {
+      "name": "40d窗口 alpha=0.7 方案",
+      "window": "40d",
+      "alpha": 0.7,
+      "ic_window": 40,
+      "sharpe": 3.148211,
+      "return": 0.201413,
+      "max_dd": -0.018025,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.4211,
+      "crowding": 1.0115,
+      "trade_count": 249
+    },
+    "comparison": {
+      "sharpe_delta": -0.3408,
+      "return_delta": -0.0279,
+      "max_dd_delta": -0.0059,
+      "flip_rate_20d_delta": 0.0,
+      "flip_rate_40d_delta": 0.2106,
+      "crowding_delta": -0.0244
+    },
+    "tradeoff_analysis": {
+      "sharpe_gain": "-0.3408",
+      "flip_rate_tradeoff": "40d窗口翻转率变化取决于IC稳定性",
+      "recommendation": "alpha=0.7 + 40d窗口若夏普达标则推荐; 否则回退alpha=0.6基准"
+    },
+    "recommended": "scheme_1_baseline",
+    "recommendation": "回退至20d窗口alpha=0.6基准: alpha=0.7方案未达标"
+  },
+  "alerts": {
+    "crowding_alert": false,
+    "redundancy_alert": false,
+    "drawdown_alert": false,
+    "total_active_alerts": 0
+  },
+  "red_lines": {
+    "no_circuit_break": true,
+    "audit_only": true,
+    "wind_api_calls": 0,
+    "gate_observed": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "output_csv_touched": false
+  },
+  "task049_receipt": "DSHA_TASK049_LONG_WINDOW_EVAL=COMPLETE"
+}
