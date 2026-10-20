@@ -1,0 +1,134 @@
+{
+  "phase": "P3",
+  "name": "因子共线性二次清洗",
+  "total_factors_input": 39,
+  "total_removed": 11,
+  "total_remaining": 28,
+  "correlation_threshold": 0.75,
+  "high_corr_pairs_found": 11,
+  "remaining_high_corr_pairs": 0,
+  "removed_factors": [
+    "bollinger_bandwidth_20d",
+    "capital_inflow_intensity",
+    "down_volatility_20d",
+    "oi_vol_ratio_20d",
+    "quantile_volatility_20d",
+    "realized_volatility_40d",
+    "up_volatility_20d",
+    "vol_asymmetry_20d",
+    "vol_fractal_dimension_20d",
+    "volume_deviation_from_mean",
+    "volume_trend_ratio"
+  ],
+  "kept_factors": [
+    "basis_2nd_momentum_5d",
+    "close_relative_range",
+    "contango_premium_20d",
+    "contract_switch_flag",
+    "cross_symbol_oi_linkage",
+    "institutional_concentration_20d",
+    "intraday_ohlc_position",
+    "momentum_20d",
+    "oi_2nd_growth_5d",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "oi_level",
+    "oi_momentum_divergence_20d",
+    "price_momentum_2nd_diff",
+    "price_vol_momentum",
+    "price_volume_divergence",
+    "realized_vol_20d",
+    "return_kurtosis_20d",
+    "return_skewness_20d",
+    "roll_return_stability_20d",
+    "spread_cs",
+    "term_curvature_20d",
+    "term_slope_20d",
+    "term_spread_volatility_20d",
+    "vol_clustering_20d",
+    "vol_regime_change",
+    "volume_breakout",
+    "volume_squeeze"
+  ],
+  "cleaning_decisions": [
+    {
+      "factor1": "oi_level",
+      "factor2": "capital_inflow_intensity",
+      "correlation": 0.76138,
+      "removed": "capital_inflow_intensity",
+      "reason": "|r|=0.7614 > 0.75"
+    },
+    {
+      "factor1": "realized_vol_20d",
+      "factor2": "quantile_volatility_20d",
+      "correlation": 0.894916,
+      "removed": "quantile_volatility_20d",
+      "reason": "|r|=0.8949 > 0.75"
+    },
+    {
+      "factor1": "realized_vol_20d",
+      "factor2": "realized_volatility_40d",
+      "correlation": 0.928923,
+      "removed": "realized_volatility_40d",
+      "reason": "|r|=0.9289 > 0.75"
+    },
+    {
+      "factor1": "realized_vol_20d",
+      "factor2": "up_volatility_20d",
+      "correlation": 0.926365,
+      "removed": "up_volatility_20d",
+      "reason": "|r|=0.9264 > 0.75"
+    },
+    {
+      "factor1": "realized_vol_20d",
+      "factor2": "down_volatility_20d",
+      "correlation": 0.932735,
+      "removed": "down_volatility_20d",
+      "reason": "|r|=0.9327 > 0.75"
+    },
+    {
+      "factor1": "realized_vol_20d",
+      "factor2": "bollinger_bandwidth_20d",
+      "correlation": 0.864674,
+      "removed": "bollinger_bandwidth_20d",
+      "reason": "|r|=0.8647 > 0.75"
+    },
+    {
+      "factor1": "return_skewness_20d",
+      "factor2": "vol_asymmetry_20d",
+      "correlation": 0.786893,
+      "removed": "vol_asymmetry_20d",
+      "reason": "|r|=0.7869 > 0.75"
+    },
+    {
+      "factor1": "return_kurtosis_20d",
+      "factor2": "vol_fractal_dimension_20d",
+      "correlation": 0.788894,
+      "removed": "vol_fractal_dimension_20d",
+      "reason": "|r|=0.7889 > 0.75"
+    },
+    {
+      "factor1": "volume_breakout",
+      "factor2": "volume_deviation_from_mean",
+      "correlation": 0.918483,
+      "removed": "volume_deviation_from_mean",
+      "reason": "|r|=0.9185 > 0.75"
+    },
+    {
+      "factor1": "volume_breakout",
+      "factor2": "volume_trend_ratio",
+      "correlation": 0.918483,
+      "removed": "volume_trend_ratio",
+      "reason": "|r|=0.9185 > 0.75"
+    },
+    {
+      "factor1": "institutional_concentration_20d",
+      "factor2": "oi_vol_ratio_20d",
+      "correlation": 0.893494,
+      "removed": "oi_vol_ratio_20d",
+      "reason": "|r|=0.8935 > 0.75"
+    }
+  ],
+  "final_high_corr_pairs_zero": true,
+  "timestamp": "2026-10-21T01:38:04+08:00"
+}

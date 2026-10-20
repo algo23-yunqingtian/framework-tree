@@ -1,0 +1,30 @@
+{
+  "notification_id": "DSHA-TASK057-FACTOR-POOL-READY",
+  "generated_at": "2026-10-21T01:38:09+08:00",
+  "token": "DSHA-TASK057-FACTOR-POOL-EXPAND-CLEAN-TOKEN",
+  "task": "DSHA-TASK057-FACTOR-POOL-EXPAND-CLEAN",
+  "baseline_commit": "4d66ad4",
+  "prev_task": "DSHA-TASK056-V3-JOINT-TEST-ADMISSION",
+  "status": "FACTOR_POOL_EXPANDED&CLEANED",
+  "mode": "RESEARCH_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "summary": {
+    "new_factors_built": 31,
+    "factors_after_p2_filter": 10,
+    "factors_after_p3_clean": 28,
+    "stable_factors": 8
+  },
+  "watchdog_status": {
+    "dsdh_process": "OK",
+    "dshc_process": "OK",
+    "process_restart": false,
+    "popup": false
+  },
+  "disclaimer": "备选因子池仅供研究参考, 不修改V3主策略"
+}

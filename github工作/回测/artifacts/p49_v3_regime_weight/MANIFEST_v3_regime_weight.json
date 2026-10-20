@@ -501,5 +501,22 @@
     "wind_api_calls": 0,
     "gate": "CLOSED/HOLD",
     "release": "NOT_ISSUED"
+  },
+  "task057_factor_pool_expand_clean": {
+    "task": "DSHA-TASK057-FACTOR-POOL-EXPAND-CLEAN",
+    "completed_at": "2026-10-21T01:38:09+08:00",
+    "baseline_commit": "4d66ad4",
+    "new_factors_built": 31,
+    "factors_passed_p2": 10,
+    "factors_after_p3_clean": 28,
+    "stable_factors": 8,
+    "overall_status": "PASS",
+    "v3_main_factors_frozen": true,
+    "safety": {
+      "wind_api_calls": 0,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED",
+      "read_only": true
+    }
   }
 }

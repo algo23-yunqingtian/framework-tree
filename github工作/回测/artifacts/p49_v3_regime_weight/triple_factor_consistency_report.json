@@ -1,0 +1,59 @@
+{
+  "phase": "P5",
+  "name": "只读一致性交叉核验",
+  "sources": {
+    "dsha": "factors_full_11_v3.csv",
+    "dshc": "dual_window_sha_fingerprint_list_v2.json",
+    "dshd": "triple_end_consistency_report.json"
+  },
+  "cross_checks": [
+    {
+      "id": "x01",
+      "check": "DSHC分片SHA校验",
+      "status": "PASS",
+      "detail": "sha_fingerprints=0"
+    },
+    {
+      "id": "x02",
+      "check": "DSHD V3因子列表未修改",
+      "status": "PASS",
+      "detail": "DSHD=8, V3=8, match=True"
+    },
+    {
+      "id": "x03",
+      "check": "双窗口因子绩效差异对比",
+      "status": "PASS",
+      "detail": "both_windows_effective=11/28",
+      "both_effective_factors": [
+        "price_momentum_2nd_diff",
+        "return_skewness_20d",
+        "return_kurtosis_20d",
+        "intraday_ohlc_position",
+        "close_relative_range",
+        "basis_2nd_momentum_5d",
+        "contango_premium_20d",
+        "term_slope_20d",
+        "term_curvature_20d",
+        "oi_2nd_growth_5d",
+        "cross_symbol_oi_linkage"
+      ]
+    },
+    {
+      "id": "x04",
+      "check": "V3主因子列表未修改",
+      "status": "PASS",
+      "detail": "V3_in_pool=8, new_factors=20"
+    },
+    {
+      "id": "x05",
+      "check": "因子计算数据源一致性",
+      "status": "PASS",
+      "detail": "csv_sha=dd6674bb323ce6f5..., match=True"
+    }
+  ],
+  "all_pass": true,
+  "failure_count": 0,
+  "read_only_confirm": true,
+  "cross_write": false,
+  "timestamp": "2026-10-21T01:38:09+08:00"
+}
