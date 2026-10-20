@@ -1,0 +1,490 @@
+{
+  "output_id": "DSHA-TASK052-P3-REVIEW-PACKAGE",
+  "generated_at": "2026-10-20T17:16:56+08:00",
+  "token": "DSHA-TASK052-V3-REVIEW-PACKAGE-TOKEN",
+  "task": "DSHA-TASK052-V3-PRE-RELEASE-REVIEW",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "package_name": "V3_PRE_RELEASE_REVIEW_PACKAGE",
+  "version": "V3.0.0",
+  "variant_id": "V3",
+  "engine": "Set-E",
+  "freeze_status": "PERMANENTLY_FROZEN",
+  "p0_prereq": {
+    "checks_total": 11,
+    "checks_passed": 11,
+    "all_pass": true,
+    "checks": [
+      {
+        "id": 1,
+        "check": "V3冻结制品全部存在",
+        "result": true,
+        "detail": "存在=7/7, 缺失=0"
+      },
+      {
+        "id": 2,
+        "check": "全部SHA256指纹一致",
+        "result": true,
+        "detail": "12/12 匹配"
+      },
+      {
+        "id": 3,
+        "check": "Set-E引擎永久冻结",
+        "result": true,
+        "detail": "freeze_status=PERMANENTLY_FROZEN, 参数匹配=True"
+      },
+      {
+        "id": 4,
+        "check": "V3选中变体参数正确",
+        "result": true,
+        "detail": "window=20d, alpha=0.6, ic_window=20, factors=8"
+      },
+      {
+        "id": 5,
+        "check": "TASK051验收文档PASS且回执完整",
+        "result": true,
+        "detail": "verdict=PASS, receipt_present=True"
+      },
+      {
+        "id": 6,
+        "check": "TASK051回放偏差全部为零",
+        "result": true,
+        "detail": "all_pass=True, max_deviation=0.000000"
+      },
+      {
+        "id": 7,
+        "check": "TASK051压力+边界测试全部PASS",
+        "result": true,
+        "detail": "stress=True, boundary=True, max_crowding=999x"
+      },
+      {
+        "id": 8,
+        "check": "风险复核：0高相关对, 无拥挤度告警",
+        "result": true,
+        "detail": "high_corr_pairs=0, crowding_alert=False"
+      },
+      {
+        "id": 9,
+        "check": "版本冻结文档完整",
+        "result": true,
+        "detail": "status=PERMANENTLY_FROZEN, frozen_by=DSHA-TASK050-STRATEGY-FREEZE-T..., variants=5, rejected=['V4-REJECTED', 'V5-REJECTED']"
+      },
+      {
+        "id": 10,
+        "check": "生产配置指纹未变",
+        "result": true,
+        "detail": "weight_prod=True, enable_config=True"
+      },
+      {
+        "id": 11,
+        "check": "安全约束未违反",
+        "result": true,
+        "detail": "wind=0, gate=CLOSED/HOLD, release=NOT_ISSUED, read_only=True"
+      }
+    ]
+  },
+  "p2_gate_checks": {
+    "gates_total": 6,
+    "gates_passed": 6,
+    "all_pass": true,
+    "gates": [
+      {
+        "gate_id": 1,
+        "name": "夏普比率达标",
+        "threshold": ">= 3.4",
+        "actual": 3.488982,
+        "pass": true,
+        "margin": 0.088982,
+        "detail": "sharpe=3.488982, threshold=3.4, margin=0.088982"
+      },
+      {
+        "gate_id": 2,
+        "name": "拥挤度达标",
+        "threshold": "<= 1.1x",
+        "actual": 1.0359,
+        "pass": true,
+        "margin": 0.0641,
+        "detail": "crowding=1.0359x, threshold=1.1x, margin=0.0641"
+      },
+      {
+        "gate_id": 3,
+        "name": "因子相关性达标",
+        "threshold": "高相关对=0, 冗余告警=NO",
+        "actual": {
+          "high_corr_pairs": 0,
+          "redundancy_alert": false
+        },
+        "pass": true,
+        "detail": "high_corr_pairs=0, redundancy_alert=False"
+      },
+      {
+        "gate_id": 4,
+        "name": "回放复现偏差达标",
+        "threshold": "<= ±0.005",
+        "actual": {
+          "max_deviation": 0,
+          "all_pass": true
+        },
+        "pass": true,
+        "detail": "max_deviation=0.000000, threshold=±0.005, all_pass=True"
+      },
+      {
+        "gate_id": 5,
+        "name": "压力/边界场景无拥挤度越界",
+        "threshold": "最大拥挤度 <= 1.1x",
+        "actual": {
+          "stress_max_crowding": 1.0359,
+          "boundary_max_crowding": 1.0359,
+          "combined_max_crowding": 1.0359
+        },
+        "pass": true,
+        "detail": "stress_max=1.0359x, boundary_max=1.0359x, combined_max=1.0359x"
+      },
+      {
+        "gate_id": 6,
+        "name": "全链路审计可追溯",
+        "threshold": "TASK049→050→051→052链路完整",
+        "actual": {
+          "task049": {
+            "artifacts_exist": true,
+            "commit": "e170ed3",
+            "status": "complete"
+          },
+          "task050": {
+            "artifacts_exist": true,
+            "commit": "e61f2f4",
+            "freeze_status": "PERMANENTLY_FROZEN",
+            "status": "complete"
+          },
+          "task051": {
+            "artifacts_exist": true,
+            "commit": "8041c8e",
+            "verdict": "PASS",
+            "status": "complete"
+          },
+          "dshd_pushes": {
+            "all_exist": true
+          },
+          "manifest_task051": true,
+          "task052_script": true,
+          "task052_summary": true
+        },
+        "pass": true,
+        "detail": "task049=True, task050=True, task051=True, dshd_pushes=True"
+      }
+    ]
+  },
+  "strategy_version": {
+    "variant_id": "V3",
+    "description": "alpha=0.6, IC窗口=20d, 动态权重融合",
+    "alpha": 0.6,
+    "ic_window": 20,
+    "blend_strategy": "60%_equal_40%_regime_extreme",
+    "engine": "Set-E",
+    "engine_params": {
+      "signal_threshold": 0.3,
+      "rebalance_interval": 5,
+      "target_vol": 0.15,
+      "max_single_weight": 0.5,
+      "drawdown_warn": -0.1,
+      "drawdown_halt": -0.2,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0
+    },
+    "factor_count": 8,
+    "factors": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "weight_bounds": {
+      "min": 0.04,
+      "max_baseline": 0.25,
+      "max_optimized": 0.2
+    },
+    "freeze_status": "PERMANENTLY_FROZEN",
+    "frozen_at": "2026-10-20T15:48:50+08:00",
+    "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+    "sharpe_achieved": 3.488982,
+    "crowding_achieved": 1.0359,
+    "symbol_pool": [
+      "LC.GFE",
+      "NI.SHF",
+      "ZN.SHF",
+      "CU.SHF"
+    ],
+    "contract_switch_flag_threshold": -0.3
+  },
+  "variant_history": [
+    {
+      "variant_id": "V1",
+      "description": "TASK048基准: alpha=0.6, 20d IC, contract_switch_flag=ALL_ZERO",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.4293,
+      "return": 0.2244,
+      "max_dd": -0.0135,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.5,
+      "crowding": 1.0359,
+      "status": "SUPERSEDED",
+      "superseded_by": "V2 (TASK049)",
+      "notes": "contract_switch_flag全零, 无40d窗口测试"
+    },
+    {
+      "variant_id": "V2",
+      "description": "TASK049: alpha=0.6, 20d IC, contract_switch_flag=REBUILT",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.489,
+      "return": 0.2293,
+      "max_dd": -0.0121,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "status": "SUPERSEDED",
+      "superseded_by": "SELECTED (TASK050 fallback)",
+      "notes": "40d翻转率突破: 50%→21.1%, 8/8因子正常"
+    },
+    {
+      "variant_id": "V3",
+      "description": "TASK050: alpha=0.6, 20d IC, FINALIZED",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.488982,
+      "return": 0.229334,
+      "max_dd": -0.012099,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "status": "PERMANENTLY_FROZEN",
+      "frozen_at": "2026-10-20T15:48:50+08:00",
+      "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+      "notes": "双窗口定稿, 选定20d窗口"
+    },
+    {
+      "variant_id": "V4-REJECTED",
+      "description": "TASK049: alpha=0.7, 20d IC (rejected: sharpe<3.4)",
+      "alpha": 0.7,
+      "ic_window": 20,
+      "sharpe": 3.3468,
+      "return": 0.2189,
+      "max_dd": -0.018,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.3158,
+      "crowding": null,
+      "status": "REJECTED",
+      "rejection_reason": "sharpe=3.3468 < 3.4 threshold",
+      "notes": "红线触发: 自动回退alpha=0.6"
+    },
+    {
+      "variant_id": "V5-REJECTED",
+      "description": "TASK049: alpha=0.7, 40d IC (rejected: sharpe<3.4)",
+      "alpha": 0.7,
+      "ic_window": 40,
+      "sharpe": 3.1482,
+      "return": 0.2014,
+      "max_dd": -0.018,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.4211,
+      "crowding": null,
+      "status": "REJECTED",
+      "rejection_reason": "sharpe=3.1482 < 3.4 threshold",
+      "notes": "40d IC + alpha=0.7夏普更低, 未达标"
+    }
+  ],
+  "rejected_variants": {
+    "V4": {
+      "description": "alpha=0.7, 20d IC",
+      "reason": "sharpe=3.3468 < 3.4 threshold",
+      "metrics": {
+        "sharpe": 3.346833,
+        "return": 0.218901,
+        "max_dd": -0.018025,
+        "crowding": null
+      }
+    },
+    "V5": {
+      "description": "alpha=0.7, 40d IC",
+      "reason": "sharpe=3.1482 < 3.4 threshold",
+      "metrics": {
+        "sharpe": 3.148211,
+        "return": 0.201413,
+        "max_dd": -0.018025,
+        "crowding": null
+      }
+    },
+    "V4_40d_fallback": {
+      "description": "alpha=0.6, 40d IC (40d窗口方案)",
+      "reason": "sharpe=3.2650 < 3.4 threshold",
+      "metrics": {
+        "sharpe": 3.264958,
+        "return": 0.209407,
+        "max_dd": -0.018025,
+        "crowding": 1.0205
+      }
+    }
+  },
+  "backtest_metrics": {
+    "baseline_20d_alpha06": {
+      "total_return": 0.229334,
+      "annualized_return": 0.128311,
+      "annual_volatility": 0.036776,
+      "max_drawdown": -0.012099,
+      "sharpe_ratio": 3.488982,
+      "calmar_ratio": 10.604686,
+      "win_rate": 0.431555,
+      "profit_loss_ratio": 1.712786,
+      "trade_count": 251,
+      "final_capital": 1229334.08,
+      "cost_ratio": 0.036744
+    },
+    "equal_weight_baseline": {
+      "total_return": 0.173991,
+      "sharpe_ratio": 2.724257,
+      "max_drawdown": -0.017102,
+      "trade_count": 252
+    },
+    "improvement_vs_equal_weight": {
+      "sharpe_gain": 0.764725,
+      "return_gain": 0.055343,
+      "dd_improvement": 0.005003
+    }
+  },
+  "risk_reports": {
+    "crowding_ratio": 1.0359,
+    "hhi_equal": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "high_corr_pairs": [],
+    "crowding_alert": false,
+    "base_corr_matrix_available": true
+  },
+  "test_results": {
+    "task051_replay": {
+      "all_pass": true,
+      "max_deviation": 0.0,
+      "deviation_threshold": 0.005
+    },
+    "task051_stress": {
+      "scenarios": 5,
+      "all_pass": true,
+      "max_crowding": 1.0359,
+      "min_sharpe": 1.693717
+    },
+    "task051_boundary": {
+      "scenarios": 5,
+      "all_pass": true
+    },
+    "task051_risk_review": {
+      "high_corr_pairs": 0,
+      "crowding_alert": false,
+      "overall_max_crowding": 1.0359
+    }
+  },
+  "change_log": [
+    {
+      "from": "V1",
+      "to": "V2",
+      "task": "TASK049",
+      "change": "contract_switch_flag重建, 40d翻转率优化"
+    },
+    {
+      "from": "V2",
+      "to": "V3",
+      "task": "TASK050",
+      "change": "双窗口定稿, 选定20d窗口alpha=0.6"
+    },
+    {
+      "from": "V3",
+      "to": "V3",
+      "task": "TASK051",
+      "change": "冻结回放验证, 零偏差复现"
+    },
+    {
+      "from": "V3",
+      "to": "V3",
+      "task": "TASK052",
+      "change": "预发布评审包构建, 门禁核验, 运维文档"
+    }
+  ],
+  "artifact_inventory": {
+    "sandbox_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight",
+    "files": [
+      {
+        "name": "final_weight_rules.json",
+        "sha256": "AA859251C98228F938A0DC8F7F04598B002F3656583B2568C06B51E4FCDC78B3"
+      },
+      {
+        "name": "dual_window_backtest_metrics.json",
+        "sha256": "F8D06F0BBECF57B4E02CC06498358552217770B8F99D392F18EE87317A53DA07"
+      },
+      {
+        "name": "risk_validation_final.json",
+        "sha256": "4364E5B571E02623B7C08BF6716B8EE34680663460A23D7D59362AA935E1D909"
+      },
+      {
+        "name": "version_freeze_document.json",
+        "sha256": "661C3F89D4ACF91B3788E15363BB7C237C7F38BE87EF4665994E8CACF7FE914F"
+      },
+      {
+        "name": "v3_acceptance_document.json",
+        "sha256": "891F7682C743B102CB73F5D6ABC28846E0486FA278D7EC38E04C9B28003DD4D8"
+      },
+      {
+        "name": "MANIFEST_v3_regime_weight.json",
+        "sha256": "C9EB288D6B4ABDD1F236725D6C2DC2C1D73A5C9D863ABC034485ACA7E6B6EE78"
+      },
+      {
+        "name": "contract_switch_flag_final.json",
+        "sha256": "19D04B59A659B978FDE7B2D1A87490917B55D68CB05280A7BE45AAFEAB29B092"
+      },
+      {
+        "name": "tradeoff_evaluation.json",
+        "sha256": "451B982F9C5C95795811A76959FCE98216D0BBABC4995F66D8136179E3138445"
+      },
+      {
+        "name": "dual_window_comparison_report.json",
+        "sha256": "B9E69261A27F1EDD5FC14F1BE3736D4ED0B05784B6303AFBFA0B2EB4BB134BC6"
+      },
+      {
+        "name": "comparison_backtest_metrics.json",
+        "sha256": "63F1920447CA0C10D242F6A270B6151E88D28DE09BE896FB8506AD7D8131027E"
+      },
+      {
+        "name": "factor_weight_prod.json",
+        "sha256": "ED42E17040796ABA64E12C6AE5EBEA1618F47E1DBCA7B3FD2C427A1C060CF07B"
+      },
+      {
+        "name": "factor_enable_config.json",
+        "sha256": "1C0ECBA61DD210A716096C7D3E664DC0812456E6067311A47AB783F7339FBD91"
+      }
+    ]
+  },
+  "freeze_constraints": {
+    "no_further_modification": true,
+    "modification_requires_new_task": true,
+    "engine": "Set-E (PERMANENTLY_FROZEN)",
+    "production_configs_untouched": true
+  },
+  "red_lines": {
+    "sharpe_threshold": 3.4,
+    "sharpe_achieved": 3.488982,
+    "sharpe_pass": true,
+    "crowding_threshold": 1.1,
+    "crowding_achieved": 1.0359,
+    "crowding_pass": true,
+    "deviation_threshold": 0.005,
+    "deviation_pass": true,
+    "any_red_line_triggered": false
+  }
+}

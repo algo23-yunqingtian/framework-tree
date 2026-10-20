@@ -1,8 +1,8 @@
 # DSHD 监控文档 — Regime识别 + 拥挤度监控 (独立持久化)
 
-> 生成时间: 2026-10-20T16:10:30+08:00
-> 任务: DSHD-TASK-044-MONITOR
-> 令牌: DSHD-TASK044-TOKEN
+> 生成时间: 2026-10-20T17:16:21+08:00
+> 任务: DSHD-TASK-046-MONITOR
+> 令牌: DSHD-TASK046-TOKEN
 > 模式: AUDIT_READ_ONLY | wind_api_calls=0 | Gate=CLOSED/HOLD
 > 注意: 本文件独立于 P81 集群简报 (dshd_cluster_brief.md), 不会被 5 分钟巡检覆盖。
 > 数据真源: p82_regime_state.json + p82_crowding_state.json + p82_crowding_baseline.json
@@ -15,7 +15,7 @@
 > 检测器: DSHD-TASK039-REGIME-DETECT
 > 版本: 1.0.0
 > 锁定: True
-> TASK-044 巡检时间: 2026-10-20T16:10:30+08:00
+> TASK-044 巡检时间: 2026-10-20T17:16:21+08:00
 
 ### 12.1 行情分布
 
@@ -39,8 +39,8 @@
 > 监控器: DSHD-TASK039-CROWDING-MONITOR
 > 版本: 1.0.0
 > P90 基线阈值: 47.6
-> 基线运行次数: 16
-> TASK-044 巡检时间: 2026-10-20T16:10:30+08:00
+> 基线运行次数: 19
+> TASK-044 巡检时间: 2026-10-20T17:16:21+08:00
 
 ### 13.1 告警阈值
 
@@ -72,32 +72,32 @@
 | 整体等级 | CROWDING_LOW |
 | 告警因子数 | 7 |
 | P90基线阈值 | 47.6 |
-| 基线运行次数 | 16 |
+| 基线运行次数 | 19 |
 
 ---
 
-## 十四、TASK-044 监控治理状态
+## 十四、TASK-046 监控治理状态
 
-> 任务: DSHD-TASK-044-MONITOR
-> 巡检时间: 2026-10-20T16:10:30+08:00
-> 令牌: DSHD-TASK044-TOKEN
-> 版本升级: v4.3.0-TASK043
+> 任务: DSHD-TASK-046-MONITOR
+> 巡检时间: 2026-10-20T17:16:21+08:00
+> 令牌: DSHD-TASK046-TOKEN
+> 版本升级: v4.4.0-TASK044 -> v4.4.1-TASK046
 
 ### 14.1 监控覆盖
 
 | 子任务 | 状态 | 详情 |
 |---|---|---|
 | P0 事件流监听 | ✅ | DSHC 8个事件文件, DSHA=NO |
-| P1 进程巡检 | ✅ | P81 Watch=DEAD, P81 Inspect=RUN |
-| P1 P80 Audit Watch | ❌ | DEAD |
-| P1 P80 Phase2 Watch | ✅ | ALIVE |
-| P1 P77 Hash Watch | ❌ | DEAD |
+| P1 进程巡检 | ✅ | P81 Watch=RUN, P81 Inspect=DEAD |
+| P1 P80 Audit Watch | ✅ | ALIVE |
+| P1 P80 Phase2 Watch | ❌ | DEAD |
+| P1 P77 Hash Watch | ✅ | ALIVE |
 | P1① 内存软重启 | ✅ | 0 次重启触发 |
 | P1② 文件锁强制 | ✅ | 全程带锁读写, 无降级fallback |
 | P2 拥挤度计算 | ✅ | P90=47.6, 告警=9因子 |
 | P3 Regime识别 | ✅ | DOWN=INSUFFICIENT_DATA, 20天窗口强制 |
 | P3 信号翻转率 | ✅ | 复合翻转率=32.07% (WATCH) |
-| P4 风险台账 | ✅ | v4.4.0-TASK044, 30条, 清理7条重复 |
+| P4 风险台账 | ✅ | v4.4.1-TASK046, 30条, 清理7条重复 |
 | P5 文档维护 | ✅ | 本文件已更新 |
 | P5 告警分类 | ✅ | 52 total, 4 categories |
 | P6 P80/P81/P77保活 | ✅ | 7x24覆盖 |
@@ -136,11 +136,11 @@
 
 ---
 
-## 十五、TASK-044 复合信号翻转率监控 (20d)
+## 十五、TASK-046 复合信号翻转率监控 (20d)
 
-> 监控器: DSHD-TASK-043-COMPOSITE-SIGNAL-FLIP
+> 监控器: DSHD-TASK-046-COMPOSITE-SIGNAL-FLIP
 > 版本: 1.0.0
-> TASK-044 巡检时间: 2026-10-20T16:10:30+08:00
+> TASK-044 巡检时间: 2026-10-20T17:16:21+08:00
 
 ### 15.1 翻转率阈值
 
@@ -179,8 +179,8 @@
 
 ## 十六、四类告警分类
 
-> 分类器: DSHD-TASK-044-FOUR-CATEGORY-CLASSIFICATION
-> TASK-044 巡检时间: 2026-10-20T16:10:30+08:00
+> 分类器: DSHD-TASK-046-FOUR-CATEGORY-CLASSIFICATION
+> TASK-044 巡检时间: 2026-10-20T17:16:21+08:00
 
 ### 16.1 告警分类摘要
 
@@ -218,17 +218,17 @@
 ## 十七、7x24 监控覆盖
 
 > 覆盖范围: P80 Audit Watch, P80 Phase2 Watch, P81 Watch, P81 Inspect, P77 Hash Watch
-> TASK-044 巡检时间: 2026-10-20T16:10:30+08:00
+> TASK-044 巡检时间: 2026-10-20T17:16:21+08:00
 
 ### 17.1 进程状态
 
 | 进程 | 状态 | PID | 内存 | 运行时长 |
 |---|---|---|---|---|
-| P80 Audit Watch | ❌ DEAD | 0 | 0MB | - |
-| P80 Phase2 Watch | ✅ ALIVE | 0 | 0MB | - |
-| P81 Watch | ❌ DEAD | 0 | 0MB | - |
-| P81 Inspect | ✅ ALIVE | 0 | 0MB | - |
-| P77 Hash Watch | ❌ DEAD | 0 | 0MB | - |
+| P80 Audit Watch | ✅ ALIVE | 0 | 0MB | - |
+| P80 Phase2 Watch | ❌ DEAD | 0 | 0MB | - |
+| P81 Watch | ✅ ALIVE | 0 | 0MB | - |
+| P81 Inspect | ❌ DEAD | 0 | 0MB | - |
+| P77 Hash Watch | ✅ ALIVE | 0 | 0MB | - |
 
 ### 17.2 P81 Watch 脚本升级状态
 
@@ -242,54 +242,61 @@
 
 | 组件 | 状态 | 保活检查 | 软重启 | P77哈希检查 |
 |---|---|---|---|---|
-| P77 Skillpack Watch | ❌ DEAD | ❌ | ❌ | ✅ |
+| P77 Skillpack Watch | ✅ ALIVE | ❌ | ❌ | ✅ |
 
 ---
 
-*本文件由 DSHD-TASK-044-MONITOR 自动生成*
-*2026-10-20T16:10:30+08:00*
+## 18. TASK052 — V3策略预发布评审包 + 上线门禁校验
+
+> 生成时间: 2026-10-20T17:16:56+08:00
+> Token: DSHA-TASK052-V3-REVIEW-PACKAGE-TOKEN
+> 模式: READ_ONLY | wind=0 | Gate=CLOSED/HOLD | Release=NOT_ISSUED
+> 评审状态: **READY_FOR_REVIEW**
+
+### 18.1 上线门禁核验结果 — 6/6 PASS
+
+| 门禁 | 阈值 | 实际值 | 余量 | 结果 |
+|------|------|--------|------|------|
+| Gate 1: 夏普比率 | >=3.4 | 3.4890 | +0.0890 | PASS |
+| Gate 2: 拥挤度 | <=1.1x | 1.0359x | +0.0641 | PASS |
+| Gate 3: 高相关因子对 | =0 | 0 | — | PASS |
+| Gate 4: 回放偏差 | <=±0.005 | 0.000000 | +0.005 | PASS |
+| Gate 5: 压力/边界拥挤度 | <=1.1x | 1.0359x | +0.0641 | PASS |
+| Gate 6: 审计链路 | 完整 | 完整 | — | PASS |
+
+### 18.2 评审包内容 (15文件, 33,280B)
+
+| 类别 | 文件 | 说明 |
+|------|------|------|
+| 策略定义 | final_weight_rules.json | V3冻结权重规则 |
+| 回测指标 | dual_window_backtest_metrics.json | 双窗口回测 |
+| 风险验证 | risk_validation_final.json | 拥挤度/HHI/相关性 |
+| 版本冻结 | version_freeze_document.json | 5个变体历史 |
+| 验收文档 | v3_acceptance_document.json | TASK051验证 |
+| 换月因子 | contract_switch_flag_final.json | 换月标记因子 |
+| 参数对比 | tradeoff_evaluation.json, dual_window_comparison_report.json, comparison_backtest_metrics.json | 参数对比分析 |
+| 生产配置 | factor_weight_prod.json, factor_enable_config.json | SHA指纹验证 |
+| 评审摘要 | p1_review_summary.json | TASK049-051汇总 |
+| 门禁回执 | gate_summary_receipt.json | 6门禁结果 |
+| 运维文档 | v3_strategy_om_documentation.md | 信号逻辑/指标/告警/兜底 |
+| 分支冻结 | branch_freeze_marker.json | 策略侧冻结标记 |
+| DSHD推送 | dshd_task052_v3_review_package_push.json | 评审就绪推送 |
+
+### 18.3 安全约束确认
+
+| 约束 | 状态 |
+|------|------|
+| V3策略未修改 | YES |
+| 因子定义未修改 | YES |
+| 引擎参数未修改 | YES |
+| 生产配置未修改 | YES (SHA一致) |
+| 只读回放模式 | YES |
+| wind_api_calls=0 | YES |
+| Gate=CLOSED/HOLD | YES |
+| Release=NOT_ISSUED | YES |
+| 分支策略侧冻结 | STRATEGY_SIDE_FROZEN |
+
 ---
 
-## TASK-051 冻结策略沙箱回放+压力校验 — 监控推送
-
-> 任务: DSHA-TASK051-FROZEN-BACKTEST-VALID
-> 时间: 2026-10-20T16:43:19+08:00
-> 令牌: DSHD-TASK051-FROZEN-BACKTEST-VALID-TOKEN
-> 模式: AUDIT_READ_ONLY · wind_api_calls=0
-> 引擎: Set-E (PERMANENTLY_FROZEN)
-
-### P1 沙箱回放指标核对
-
-| 指标 | 基准(TASK050) | 回放值 | 偏差 | 阈值内 |
-|---|---|---|---|---|
-| total_return | 0.229334 | 0.229334 | 0.0 | ✅ |
-| sharpe_ratio | 3.488982 | 3.488982 | 0.0 | ✅ |
-| max_drawdown | -0.012099 | -0.012099 | 0.0 | ✅ |
-
-### P2 压力扰动测试 (5/5 PASS)
-
-| 场景 | 夏普 | 收益 | 回撤 | 拥挤度 | 告警 | 判定 |
-|---|---|---|---|---|---|---|
-| S1_FACTOR_NOISE | 2.0650 | 8.57% | -1.72% | 1.0359x | ✅ | PASS |
-| S2_MARKET_JUMP | 2.0071 | 8.35% | -1.82% | 1.0359x | ✅ | PASS |
-| S3_VOL_SPIKE | 1.6937 | 4.52% | -1.37% | 1.0359x | ✅ | PASS |
-| S4_COMBO | 1.9791 | 8.19% | -1.69% | 1.0359x | ✅ | PASS |
-| S5_HEAVY_NOISE | 2.0927 | 8.59% | -1.88% | 1.0359x | ✅ | PASS |
-
-### P3 边界场景测试 (5/5 PASS)
-
-| 场景 | 夏普 | 收益 | 回撤 | 拥挤度 | 告警 | 判定 |
-|---|---|---|---|---|---|---|
-| B1_LOW_LIQUIDITY | 2.0071 | 8.35% | -1.82% | 1.0359x | ✅ | PASS |
-| B2_CONTINUOUS_SWITCH | 2.1278 | 8.83% | -1.69% | 1.0359x | ✅ | PASS |
-| B3_EXTREME_MOVES | 1.9515 | 8.31% | -1.82% | 1.0359x | ✅ | PASS |
-| B4_SUPER_LIQUIDITY | 2.0071 | 8.35% | -1.82% | 1.0359x | ✅ | PASS |
-| B5_DATA_MISSING | 0.1971 | 12.01% | -23.35% | 1.0359x | ✅ | PASS |
-
-### P4 风险复核
-
-| 指标 | 值 | 阈值 | 判定 |
-|---|---|---|---|
-| 拥挤度 | 1.0359x | ≤1.1x | ✅ |
-| 高相关对 | 0 | ≤2 | ✅ |
-| 冗余告警 | 否 | — | ✅ |
+*本文件由 DSHD-TASK-046-MONITOR 自动生成*
+*2026-10-20T17:16:21+08:00*

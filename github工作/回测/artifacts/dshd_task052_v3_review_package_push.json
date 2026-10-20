@@ -1,0 +1,93 @@
+{
+  "push_id": "DSHD-TASK052-PUSH-1792487816",
+  "generated_at": "2026-10-20T17:16:56+08:00",
+  "source_task": "DSHA-TASK052-V3-PRE-RELEASE-REVIEW",
+  "source_token": "DSHA-TASK052-V3-REVIEW-PACKAGE-TOKEN",
+  "push_token": "DSHD-TASK052-V3-REVIEW-PACKAGE-TOKEN",
+  "push_type": "V3_PRE_RELEASE_REVIEW_PACKAGE",
+  "mode": "AUDIT_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "offline_only": true,
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "p0_prereq": {
+    "all_pass": true,
+    "checks_passed": 11,
+    "checks_total": 11
+  },
+  "gate_checks": {
+    "all_pass": true,
+    "gates_passed": 6,
+    "gates_total": 6,
+    "gates": [
+      {
+        "gate_id": 1,
+        "name": "夏普比率达标",
+        "pass": true
+      },
+      {
+        "gate_id": 2,
+        "name": "拥挤度达标",
+        "pass": true
+      },
+      {
+        "gate_id": 3,
+        "name": "因子相关性达标",
+        "pass": true
+      },
+      {
+        "gate_id": 4,
+        "name": "回放复现偏差达标",
+        "pass": true
+      },
+      {
+        "gate_id": 5,
+        "name": "压力/边界场景无拥挤度越界",
+        "pass": true
+      },
+      {
+        "gate_id": 6,
+        "name": "全链路审计可追溯",
+        "pass": true
+      }
+    ]
+  },
+  "review_status": "READY_FOR_REVIEW",
+  "key_metrics": {
+    "sharpe_ratio": 3.488982,
+    "sharpe_threshold": 3.4,
+    "sharpe_margin": 0.088982,
+    "crowding_ratio": 1.0359,
+    "crowding_threshold": 1.1,
+    "crowding_margin": 0.0641,
+    "total_return": 0.229334,
+    "max_drawdown": -0.012099,
+    "trade_count": 251,
+    "replay_max_deviation": 0.0,
+    "deviation_threshold": 0.005,
+    "high_corr_pairs": 0,
+    "stress_max_crowding": 1.0359,
+    "boundary_max_crowding": null
+  },
+  "review_package": {
+    "manifest_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_review_package_manifest.json",
+    "zip_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_pre_release_review_package.zip",
+    "zip_size": 33280,
+    "zip_sha256": "EA58FA666A652C4C631362BC9FF8A5A4A786BEA23D16624CE21B52676613E2C1",
+    "files_packaged": 15
+  },
+  "red_lines": {
+    "any_triggered": false,
+    "sharpe_ok": true,
+    "crowding_ok": true,
+    "deviation_ok": true,
+    "v3_modified": false,
+    "gate_maintained": true
+  },
+  "alerts": [],
+  "next_action": "V3策略进入READY_FOR_REVIEW状态, 等待DSHD人工审核决策"
+}

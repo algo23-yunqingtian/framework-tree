@@ -264,5 +264,33 @@
     "p3_boundary_all_pass": true,
     "p4_risk_alert": false,
     "report_path": "artifacts/p49_v3_regime_weight/v3_acceptance_document.json"
+  },
+  "task052_review_package": {
+    "output_id": "DSHA-TASK052-V3-REVIEW-PACKAGE",
+    "generated_at": "2026-10-20T17:16:56+08:00",
+    "token": "DSHA-TASK052-V3-REVIEW-PACKAGE-TOKEN",
+    "overall_status": "PASS",
+    "review_status": "READY_FOR_REVIEW",
+    "p0_all_pass": true,
+    "p2_all_gates_pass": true,
+    "gate1_sharpe": "3.4890 >= 3.4",
+    "gate2_crowding": "1.0359x <= 1.1x",
+    "gate3_high_corr_pairs": 0,
+    "gate4_deviation": "0.0 <= 0.005",
+    "gate5_stress_crowding": "1.0359x <= 1.1x",
+    "gate6_audit_chain": "TRACEABLE",
+    "review_package_zip": "artifacts/p49_v3_regime_weight/v3_pre_release_review_package.zip",
+    "review_package_sha256": "EA58FA666A652C4C...",
+    "review_package_size": 33280,
+    "files_packaged": 15,
+    "om_documentation": "artifacts/p49_v3_regime_weight/v3_strategy_om_documentation.md",
+    "branch_freeze_marker": "artifacts/p49_v3_regime_weight/branch_freeze_marker.json",
+    "dshd_push": "artifacts/dshd_task052_v3_review_package_push.json",
+    "engine": "Set-E",
+    "v3_modified": false,
+    "read_only": true,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
   }
 }
