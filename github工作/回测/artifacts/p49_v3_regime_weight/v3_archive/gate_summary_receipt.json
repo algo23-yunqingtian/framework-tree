@@ -1,0 +1,157 @@
+{
+  "output_id": "DSHA-TASK052-P4-GATE-RECEIPT",
+  "generated_at": "2026-10-20T17:16:56+08:00",
+  "token": "DSHA-TASK052-V3-REVIEW-PACKAGE-TOKEN",
+  "task": "DSHA-TASK052-V3-PRE-RELEASE-REVIEW",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "review_status": "READY_FOR_REVIEW",
+  "overall_verdict": {
+    "status": "PASS",
+    "p0_all_pass": true,
+    "p2_all_gates_pass": true,
+    "ready_for_review": true
+  },
+  "gate_summary": {
+    "total_gates": 6,
+    "gates_passed": 6,
+    "gates_failed": 0,
+    "all_pass": true,
+    "gates": [
+      {
+        "gate_id": 1,
+        "name": "夏普比率达标",
+        "threshold": ">= 3.4",
+        "actual": 3.488982,
+        "pass": true,
+        "margin": 0.088982,
+        "detail": "sharpe=3.488982, threshold=3.4, margin=0.088982"
+      },
+      {
+        "gate_id": 2,
+        "name": "拥挤度达标",
+        "threshold": "<= 1.1x",
+        "actual": 1.0359,
+        "pass": true,
+        "margin": 0.0641,
+        "detail": "crowding=1.0359x, threshold=1.1x, margin=0.0641"
+      },
+      {
+        "gate_id": 3,
+        "name": "因子相关性达标",
+        "threshold": "高相关对=0, 冗余告警=NO",
+        "actual": {
+          "high_corr_pairs": 0,
+          "redundancy_alert": false
+        },
+        "pass": true,
+        "detail": "high_corr_pairs=0, redundancy_alert=False"
+      },
+      {
+        "gate_id": 4,
+        "name": "回放复现偏差达标",
+        "threshold": "<= ±0.005",
+        "actual": {
+          "max_deviation": 0,
+          "all_pass": true
+        },
+        "pass": true,
+        "detail": "max_deviation=0.000000, threshold=±0.005, all_pass=True"
+      },
+      {
+        "gate_id": 5,
+        "name": "压力/边界场景无拥挤度越界",
+        "threshold": "最大拥挤度 <= 1.1x",
+        "actual": {
+          "stress_max_crowding": 1.0359,
+          "boundary_max_crowding": 1.0359,
+          "combined_max_crowding": 1.0359
+        },
+        "pass": true,
+        "detail": "stress_max=1.0359x, boundary_max=1.0359x, combined_max=1.0359x"
+      },
+      {
+        "gate_id": 6,
+        "name": "全链路审计可追溯",
+        "threshold": "TASK049→050→051→052链路完整",
+        "actual": {
+          "task049": {
+            "artifacts_exist": true,
+            "commit": "e170ed3",
+            "status": "complete"
+          },
+          "task050": {
+            "artifacts_exist": true,
+            "commit": "e61f2f4",
+            "freeze_status": "PERMANENTLY_FROZEN",
+            "status": "complete"
+          },
+          "task051": {
+            "artifacts_exist": true,
+            "commit": "8041c8e",
+            "verdict": "PASS",
+            "status": "complete"
+          },
+          "dshd_pushes": {
+            "all_exist": true
+          },
+          "manifest_task051": true,
+          "task052_script": true,
+          "task052_summary": true
+        },
+        "pass": true,
+        "detail": "task049=True, task050=True, task051=True, dshd_pushes=True"
+      }
+    ]
+  },
+  "p0_summary": {
+    "checks_total": 11,
+    "checks_passed": 11,
+    "all_pass": true
+  },
+  "key_metrics": {
+    "sharpe_ratio": 3.488982,
+    "sharpe_threshold": 3.4,
+    "sharpe_margin": 0.088982,
+    "crowding_ratio": 1.0359,
+    "crowding_threshold": 1.1,
+    "crowding_margin": 0.0641,
+    "total_return": 0.229334,
+    "max_drawdown": -0.012099,
+    "trade_count": 251,
+    "replay_max_deviation": 0.0,
+    "deviation_threshold": 0.005,
+    "high_corr_pairs": 0,
+    "stress_max_crowding": 1.0359,
+    "boundary_max_crowding": null
+  },
+  "review_package": {
+    "manifest_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_review_package_manifest.json",
+    "zip_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_pre_release_review_package.zip",
+    "zip_size": 33280,
+    "zip_sha256": "EA58FA666A652C4C631362BC9FF8A5A4A786BEA23D16624CE21B52676613E2C1",
+    "files_packaged": 15
+  },
+  "branch_info": {
+    "branch": "feature/v88-g1",
+    "baseline_commit": "e61f2f4",
+    "task049_commit": "e170ed3",
+    "task050_commit": "e61f2f4",
+    "task051_commit": "8041c8e",
+    "task052_commit": "PENDING"
+  },
+  "next_action": "DSHD评审就绪, 等待人工审核决策",
+  "review_gate_rules": {
+    "1_sharpe_ge_3.4": "sharpe=3.488982 >= 3.4",
+    "2_crowding_le_1.1x": "crowding=1.0359x <= 1.1x",
+    "3_high_corr_pairs_eq_0": "high_corr_pairs=0 == 0",
+    "4_replay_deviation_le_0.005": "max_deviation=0.0 <= 0.005",
+    "5_stress_boundary_no_crowding_breach": "max_crowding=1.0359x <= 1.1x",
+    "6_audit_chain_traceable": "TASK049→050→051→052链路完整"
+  }
+}

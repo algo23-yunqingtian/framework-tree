@@ -1,0 +1,89 @@
+{
+  "output_id": "DSHA-TASK053-P5-GATE-CHECKLIST",
+  "generated_at": "2026-10-20T18:07:09+0800",
+  "token": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE-TOKEN",
+  "task": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "strategy": "V3",
+  "engine": "Set-E",
+  "total_gates": 6,
+  "gates": [
+    {
+      "gate_id": 1,
+      "name": "夏普比率达标",
+      "threshold": ">= 3.4",
+      "actual": 3.488982,
+      "margin": 0.088982,
+      "pass": true,
+      "recheck": "VERIFIED"
+    },
+    {
+      "gate_id": 2,
+      "name": "拥挤度达标",
+      "threshold": "<= 1.1x",
+      "actual": 1.0359,
+      "margin": 0.0641,
+      "pass": true,
+      "recheck": "VERIFIED"
+    },
+    {
+      "gate_id": 3,
+      "name": "因子相关性达标",
+      "threshold": "高相关对=0, 冗余告警=NO",
+      "actual": {
+        "high_corr_pairs": 0,
+        "redundancy_alert": false
+      },
+      "margin": null,
+      "pass": true,
+      "recheck": "VERIFIED"
+    },
+    {
+      "gate_id": 4,
+      "name": "回放复现偏差达标",
+      "threshold": "<= +/-0.005",
+      "actual": {
+        "max_deviation": 0.0,
+        "all_pass": true
+      },
+      "margin": null,
+      "pass": true,
+      "recheck": "VERIFIED"
+    },
+    {
+      "gate_id": 5,
+      "name": "压力/边界场景无拥挤度越界",
+      "threshold": "最大拥挤度 <= 1.1x",
+      "actual": {
+        "stress_max_crowding": 1.0359,
+        "boundary_max_crowding": 1.0359,
+        "combined_max_crowding": 1.0359
+      },
+      "margin": null,
+      "pass": true,
+      "recheck": "VERIFIED"
+    },
+    {
+      "gate_id": 6,
+      "name": "全链路审计可追溯",
+      "threshold": "TASK049→050→051→052链路完整",
+      "actual": {
+        "task049": true,
+        "task050": true,
+        "task051": true,
+        "dshd_pushes": true,
+        "task052": true
+      },
+      "margin": null,
+      "pass": true,
+      "recheck": "VERIFIED"
+    }
+  ],
+  "overall_status": "PASS"
+}

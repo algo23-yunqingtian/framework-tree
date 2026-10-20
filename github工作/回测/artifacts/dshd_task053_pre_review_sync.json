@@ -1,0 +1,48 @@
+{
+  "sync_id": "DSHD-TASK053-SYNC-1792487816",
+  "generated_at": "2026-10-20T18:07:09+0800",
+  "source_task": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE",
+  "source_token": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE-TOKEN",
+  "sync_type": "READ_ONLY_NOTIFICATION",
+  "mode": "AUDIT_READ_ONLY",
+  "write_to_dshd_monitors": false,
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "offline_only": true,
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "pre_review_status": "ADMISSION_READY",
+  "overall_verdict": "PASS",
+  "branch": "feature/v88-g1",
+  "strategy_version": "V3",
+  "freeze_status": "STRATEGY_SIDE_FROZEN",
+  "gates": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "all_pass": true,
+    "details": {
+      "gate1_sharpe": "3.488982 >= 3.4",
+      "gate2_crowding": "1.0359x <= 1.1x",
+      "gate3_high_corr": 0,
+      "gate4_deviation": "0.0 <= 0.005",
+      "gate5_stress_max": "1.0359x <= 1.1x",
+      "gate6_audit_chain": "TRACEABLE"
+    }
+  },
+  "red_lines": {
+    "any_triggered": false,
+    "sharpe_ok": true,
+    "crowding_ok": true,
+    "deviation_ok": true,
+    "v3_modified": false,
+    "gate_maintained": true,
+    "release_not_issued": true
+  },
+  "alerts": [],
+  "notification_type": "PRE_REVIEW_ADMISSION_READY",
+  "next_action": "V3策略预审通过, 等待DSHD人工审核决策"
+}

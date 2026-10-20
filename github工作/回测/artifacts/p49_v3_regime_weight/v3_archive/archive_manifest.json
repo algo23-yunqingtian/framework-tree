@@ -1,0 +1,95 @@
+{
+  "output_id": "DSHA-TASK053-P1-ARCHIVE-MANIFEST",
+  "generated_at": "2026-10-20T18:07:09+0800",
+  "token": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE-TOKEN",
+  "task": "DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE",
+  "archive_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_archive",
+  "archive_type": "READ_ONLY_SNAPSHOT",
+  "immutable": true,
+  "modification_forbidden": true,
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "source": {
+    "task": "DSHA-TASK052-V3-PRE-RELEASE-REVIEW",
+    "zip_sha256": "EA58FA666A652C4C631362BC9FF8A5A4A786BEA23D16624CE21B52676613E2C1"
+  },
+  "archived_files": [
+    {
+      "name": "final_weight_rules.json",
+      "size": 3427,
+      "sha256": "aa859251c98228f938a0dc8f7f04598b002f3656583b2568c06b51e4fcdc78b3"
+    },
+    {
+      "name": "dual_window_backtest_metrics.json",
+      "size": 8517,
+      "sha256": "f8d06f0bbecf57b4e02cc06498358552217770b8f99d392f18ee87317a53da07"
+    },
+    {
+      "name": "risk_validation_final.json",
+      "size": 3757,
+      "sha256": "4364e5b571e02623b7c08bf6716b8ee34680663460a23d7d59362aa935e1d909"
+    },
+    {
+      "name": "version_freeze_document.json",
+      "size": 4816,
+      "sha256": "661c3f89d4acf91b3788e15363bb7c237c7f38be87ef4665994e8cacf7fe914f"
+    },
+    {
+      "name": "v3_acceptance_document.json",
+      "size": 26371,
+      "sha256": "891f7682c743b102cb73f5d6abc28846e0486fa278d7ec38e04c9b28003dd4d8"
+    },
+    {
+      "name": "contract_switch_flag_final.json",
+      "size": 1018,
+      "sha256": "19d04b59a659b978fde7b2d1a87490917b55d68cb05280a7be45aafeab29b092"
+    },
+    {
+      "name": "tradeoff_evaluation.json",
+      "size": 2300,
+      "sha256": "451b982f9c5c95795811a76959fce98216d0bbabc4995f66d8136179e3138445"
+    },
+    {
+      "name": "dual_window_comparison_report.json",
+      "size": 2339,
+      "sha256": "b9e69261a27f1edd5fc14f1be3736d4ed0b05784b6303afbfa0b2eb4bb134bc6"
+    },
+    {
+      "name": "comparison_backtest_metrics.json",
+      "size": 12032,
+      "sha256": "63f1920447ca0c10d242f6a270b6151e88d28de09be896fb8506ad7d8131027e"
+    },
+    {
+      "name": "gate_summary_receipt.json",
+      "size": 4947,
+      "sha256": "2a23ec96b72bdc60b327883e460fc17c6e14d64a0034c95940173ec91bb3c2da"
+    },
+    {
+      "name": "v3_review_package_manifest.json",
+      "size": 14458,
+      "sha256": "849383db3666fda38152943d24f00d86bf3495ab7f4b7a826ccc6c844a1b1af0"
+    },
+    {
+      "name": "branch_freeze_marker.json",
+      "size": 4716,
+      "sha256": "96e8da26a9c3f31dfadffd17ed676996c9c0677ef2cfc20e0d6b464aac9b8b72"
+    },
+    {
+      "name": "p1_review_summary.json",
+      "size": 7430,
+      "sha256": "8b121b34ff674f34e5ee42168841a27b71c15cf3d09938eaa5b55db7f632f7ff"
+    },
+    {
+      "name": "v3_strategy_om_documentation.md",
+      "size": 9594,
+      "sha256": "a47abdcecc9610809fe4a6164bf5a93bd967e166b58ae13f12669305140541e9"
+    }
+  ],
+  "total_files": 14,
+  "archive_status": "COMPLETE"
+}
