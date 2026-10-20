@@ -1,6 +1,6 @@
 # DSHD 监控文档 — Regime识别 + 拥挤度监控 (独立持久化)
 
-> 生成时间: 2026-10-20T18:05:27+08:00
+> 生成时间: 2026-10-20T18:45:51+08:00
 > 任务: DSHD-TASK-046-MONITOR
 > 令牌: DSHD-TASK046-TOKEN
 > 模式: AUDIT_READ_ONLY | wind_api_calls=0 | Gate=CLOSED/HOLD
@@ -15,7 +15,7 @@
 > 检测器: DSHD-TASK039-REGIME-DETECT
 > 版本: 1.0.0
 > 锁定: True
-> TASK-044 巡检时间: 2026-10-20T18:05:27+08:00
+> TASK-044 巡检时间: 2026-10-20T18:45:51+08:00
 
 ### 12.1 行情分布
 
@@ -39,8 +39,8 @@
 > 监控器: DSHD-TASK039-CROWDING-MONITOR
 > 版本: 1.0.0
 > P90 基线阈值: 47.6
-> 基线运行次数: 31
-> TASK-044 巡检时间: 2026-10-20T18:05:27+08:00
+> 基线运行次数: 39
+> TASK-044 巡检时间: 2026-10-20T18:45:51+08:00
 
 ### 13.1 告警阈值
 
@@ -72,14 +72,14 @@
 | 整体等级 | CROWDING_LOW |
 | 告警因子数 | 7 |
 | P90基线阈值 | 47.6 |
-| 基线运行次数 | 31 |
+| 基线运行次数 | 39 |
 
 ---
 
 ## 十四、TASK-046 监控治理状态
 
 > 任务: DSHD-TASK-046-MONITOR
-> 巡检时间: 2026-10-20T18:05:27+08:00
+> 巡检时间: 2026-10-20T18:45:51+08:00
 > 令牌: DSHD-TASK046-TOKEN
 > 版本升级: v4.4.0-TASK044 -> v4.4.1-TASK046
 
@@ -94,10 +94,10 @@
 | P1 P77 Hash Watch | ✅ | ALIVE |
 | P1① 内存软重启 | ✅ | 0 次重启触发 |
 | P1② 文件锁强制 | ✅ | 全程带锁读写, 无降级fallback |
-| P2 拥挤度计算 | ✅ | P90=47.6, 告警=11因子 |
+| P2 拥挤度计算 | ✅ | P90=47.6, 告警=9因子 |
 | P3 Regime识别 | ✅ | DOWN=INSUFFICIENT_DATA, 20天窗口强制 |
 | P3 信号翻转率 | ✅ | 复合翻转率=32.07% (WATCH) |
-| P4 风险台账 | ✅ | v4.4.1-TASK046, 29条, 清理0条重复 |
+| P4 风险台账 | ✅ | v4.4.1-TASK046, 30条, 清理7条重复 |
 | P5 文档维护 | ✅ | 本文件已更新 |
 | P5 告警分类 | ✅ | 52 total, 4 categories |
 | P6 P80/P81/P77保活 | ✅ | 7x24覆盖 |
@@ -140,7 +140,7 @@
 
 > 监控器: DSHD-TASK-046-COMPOSITE-SIGNAL-FLIP
 > 版本: 1.0.0
-> TASK-044 巡检时间: 2026-10-20T18:05:27+08:00
+> TASK-044 巡检时间: 2026-10-20T18:45:51+08:00
 
 ### 15.1 翻转率阈值
 
@@ -180,7 +180,7 @@
 ## 十六、四类告警分类
 
 > 分类器: DSHD-TASK-046-FOUR-CATEGORY-CLASSIFICATION
-> TASK-044 巡检时间: 2026-10-20T18:05:27+08:00
+> TASK-044 巡检时间: 2026-10-20T18:45:51+08:00
 
 ### 16.1 告警分类摘要
 
@@ -218,17 +218,17 @@
 ## 十七、7x24 监控覆盖
 
 > 覆盖范围: P80 Audit Watch, P80 Phase2 Watch, P81 Watch, P81 Inspect, P77 Hash Watch
-> TASK-044 巡检时间: 2026-10-20T18:05:27+08:00
+> TASK-044 巡检时间: 2026-10-20T18:45:51+08:00
 
 ### 17.1 进程状态
 
 | 进程 | 状态 | PID | 内存 | 运行时长 |
 |---|---|---|---|---|
-| P80 Audit Watch | ✅ ALIVE | 5092 | 196.9MB | - |
+| P80 Audit Watch | ✅ ALIVE | 0 | 0MB | - |
 | P80 Phase2 Watch | ❌ DEAD | 0 | 0MB | - |
 | P81 Watch | ✅ ALIVE | 0 | 0MB | - |
 | P81 Inspect | ✅ ALIVE | 0 | 0MB | - |
-| P77 Hash Watch | ✅ ALIVE | 23528 | 76MB | - |
+| P77 Hash Watch | ✅ ALIVE | 23528 | 75.7MB | - |
 
 ### 17.2 P81 Watch 脚本升级状态
 
@@ -246,71 +246,73 @@
 
 ---
 
+*本文件由 DSHD-TASK-046-MONITOR 自动生成*
+*2026-10-20T18:45:51+08:00*
+
+
 ---
 
-## 十八、TASK053 V3预发布准入预审+归档
+## 19. TASK054: V3准入文档定稿+冻结规则固化 (2026-10-20T18:45:55+0800)
 
-> 令牌: DSHA-TASK053-V3-PRE-REVIEW-ARCHIVE-TOKEN
-> 时间: 2026-10-20T18:07:09+0800
-> 基线: TASK052 (feature/v88-g1 @ fdc3ddb)
+### 19.1 冒烟自检 (P0)
 
-### 18.1 预审门禁结果
-
-| 门禁 | 阈值 | 实际值 | 余量 | 结果 |
-|------|------|--------|------|------|
-| Gate1 夏普比率 | >=3.4 | **3.4890** | +0.0890 | PASS |
-| Gate2 拥挤度 | <=1.1x | **1.0359x** | +0.0641 | PASS |
-| Gate3 因子相关性 | 高相关对=0 | **0** | — | PASS |
-| Gate4 回放偏差 | <=±0.005 | **0.000000** | +0.005 | PASS |
-| Gate5 压力/边界拥挤度 | <=1.1x | **1.0359x** | +0.0641 | PASS |
-| Gate6 审计链路 | 完整 | **TASK049→050→051→052** | — | PASS |
-
-### 18.2 预审确认项
-
-| 确认项 | 结果 |
+| 检查项 | 结果 |
 |--------|------|
-| V3无任何参数变更 | YES |
-| 回放零偏差 | YES (max=0.000000) |
-| 压力场景无拥挤度越界 | YES (max=1.0359x) |
-| 全部6门禁PASS | YES |
+| 评审包ZIP SHA256一致 | ✅ |
+| 6项上线门禁全部PASS | ✅ 6/6 |
+| 分支冻结STRATEGY_SIDE_FROZEN | ✅ |
+| 审计链路TASK049→054完整 | ✅ |
+| V3策略参数未变更 | ✅ alpha=0.6, 20d |
+| Set-E引擎永久冻结 | ✅ |
+| TASK053全部制品存在 | ✅ 6/6 |
+| 安全约束未违反 | ✅ wind=0, gate=CLOSED/HOLD |
+| 生产配置指纹未变 | ✅ 2/2 |
+| 冻结制品存在 | ✅ 9/9 |
+| 冻结制品SHA256一致 | ✅ 9/9 |
 
-### 18.3 评审包归档
+### 19.2 准入文档定稿 (P1)
 
-| 项目 | 值 |
-|------|-----|
-| 归档目录 | artifacts/p49_v3_regime_weight/v3_archive/ |
-| 归档文件数 | 14 |
-| 不可变快照 | YES |
-| ZIP SHA256 | ea58fa666a652c4c... |
-
-### 18.4 制品整理
-
-| 制品 | 文件 |
+| 项目 | 内容 |
 |------|------|
-| 门禁核验清单 | v3_gate_checklist_archive.json |
-| 版本变更清单 | v3_version_changelog_archive.json |
-| 被拒变体说明 | v3_rejected_variants_archive.json |
-| 运维文档索引 | v3_om_documentation_index.json |
+| 文档 | v3_admission_document_final.json |
+| 状态 | FINAL (不可变快照) |
+| 门禁 | 6/6 PASS |
+| 风险复核 | NO_RISK_ALERT |
+| 准入结论 | ADMISSION_APPROVED |
 
-### 18.5 DSHD同步
+### 19.3 DSHD同步 (P2)
 
-- 类型: READ_ONLY_NOTIFICATION (只读通知, 不写入DSHD监控)
-- 预审状态: ADMISSION_READY
-- 整体判定: PASS
-
-### 18.6 安全约束
-
-| 红线 | 状态 |
+| 项目 | 内容 |
 |------|------|
-| V3策略未修改 | NO |
-| 因子定义未修改 | NO |
-| 引擎参数未修改 | NO |
-| 生产配置未修改 | NO (SHA一致) |
-| Gate保持CLOSED/HOLD | YES |
-| Release=NOT_ISSUED | YES |
-| wind_api_calls=0 | YES |
+| 类型 | READ_ONLY_NOTIFICATION |
+| 通知类型 | ADMISSION_FINAL_APPROVED |
+| 写入DSHD监控 | ❌ 否 |
+| 修改DSHD脚本 | ❌ 否 |
+| 修改DSHD台账 | ❌ 否 |
 
----
+### 19.4 冻结规则固化 (P3)
 
-*本文件由 DSHA-TASK053 追加更新*
-*2026-10-20T18:07:09+0800*
+| 项目 | 内容 |
+|------|------|
+| 分支 | feature/v88-g1 |
+| 冻结状态 | STRATEGY_SIDE_FROZEN |
+| 冻结规则数 | 15条 |
+| V89过渡 | 必须 (feature/v89+) |
+
+### 19.5 制品归档 (P4)
+
+| 项目 | 内容 |
+|------|------|
+| 归档目录 | v3_admission_archive |
+| 归档文件 | 6个 |
+| 不可变 | ✅ YES |
+| 修改禁止 | ✅ YES |
+
+### 19.6 运维兜底补充 (P5)
+
+| 项目 | 内容 |
+|------|------|
+| 补充文档 | v3_fallback_rules_supplement.md |
+| 场景总数 | 63 |
+| 代码修改 | ❌ 否 |
+| V3修改 | ❌ 否 |

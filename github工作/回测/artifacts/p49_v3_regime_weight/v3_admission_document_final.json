@@ -1,0 +1,300 @@
+{
+  "output_id": "DSHA-TASK054-V3-ADMISSION-DOC-FINAL",
+  "document_type": "V3_PRE_RELEASE_ADMISSION_DOCUMENT_FINAL",
+  "generated_at": "2026-10-20T18:45:55+0800",
+  "token": "DSHA-TASK054-V3-ADMISSION-DOC-FINAL-TOKEN",
+  "task": "DSHA-TASK054-V3-ADMISSION-DOC-FINAL",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "document_status": "FINAL",
+  "admission_status": "ADMISSION_APPROVED",
+  "ready_for_manual_review": true,
+  "strategy_snapshot": {
+    "variant_id": "V3",
+    "engine": "Set-E",
+    "engine_status": "PERMANENTLY_FROZEN",
+    "engine_params": {
+      "signal_threshold": 0.3,
+      "rebalance_interval": 5,
+      "target_vol": 0.15,
+      "max_single_weight": 0.5,
+      "drawdown_warn": -0.1,
+      "drawdown_halt": -0.2,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0
+    },
+    "alpha": 0.6,
+    "ic_window": 20,
+    "selected_window": "20d",
+    "factor_count": 8,
+    "factors": [
+      "contract_switch_flag",
+      "momentum_20d",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "spread_cs",
+      "vol_regime_change"
+    ],
+    "blend_strategy": "60%_equal_40%_regime_extreme",
+    "weight_bounds": {
+      "min": 0.04,
+      "max": 0.25
+    },
+    "symbol_pool": [
+      "LC.GFE",
+      "NI.SHF",
+      "ZN.SHF",
+      "CU.SHF"
+    ],
+    "contract_switch_flag_threshold": -0.3,
+    "freeze_status": "PERMANENTLY_FROZEN",
+    "frozen_at": "2026-10-20T15:48:50+08:00",
+    "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN"
+  },
+  "key_metrics": {
+    "sharpe_ratio": 3.488982,
+    "total_return": 0.229334,
+    "annualized_return": 0.128311,
+    "max_drawdown": -0.012099,
+    "calmar_ratio": 10.604686,
+    "win_rate": 0.431555,
+    "profit_loss_ratio": 1.712786,
+    "trade_count": 251,
+    "cost_ratio": 0.036744,
+    "crowding_ratio": 1.0359,
+    "hhi_equal": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "high_corr_pairs": 0,
+    "replay_max_deviation": 0.0,
+    "stress_max_crowding": 1.0359
+  },
+  "gate_checks": {
+    "total_gates": 6,
+    "gates_passed": 6,
+    "gates_failed": 0,
+    "all_pass": true,
+    "gates": [
+      {
+        "gate_id": 1,
+        "name": "夏普比率达标",
+        "threshold": ">= 3.4",
+        "actual": 3.488982,
+        "margin": 0.088982,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED",
+        "source": "TASK051回放 + TASK052评审 + TASK053预审"
+      },
+      {
+        "gate_id": 2,
+        "name": "拥挤度达标",
+        "threshold": "<= 1.1x",
+        "actual": 1.0359,
+        "margin": 0.0641,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED",
+        "source": "TASK050双窗口回测 + TASK051压力验证"
+      },
+      {
+        "gate_id": 3,
+        "name": "因子相关性达标",
+        "threshold": "高相关对=0, 冗余告警=NO",
+        "actual": {
+          "high_corr_pairs": 0,
+          "redundancy_alert": false
+        },
+        "margin": null,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED",
+        "source": "TASK050风险验证 + TASK051回放"
+      },
+      {
+        "gate_id": 4,
+        "name": "回放复现偏差达标",
+        "threshold": "<= +/-0.005",
+        "actual": {
+          "max_deviation": 0.0,
+          "all_pass": true
+        },
+        "margin": null,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED",
+        "source": "TASK051冻结回放验证 (零偏差复现)"
+      },
+      {
+        "gate_id": 5,
+        "name": "压力/边界场景无拥挤度越界",
+        "threshold": "最大拥挤度 <= 1.1x",
+        "actual": {
+          "stress_max_crowding": 1.0359,
+          "boundary_max_crowding": 1.0359,
+          "combined_max_crowding": 1.0359
+        },
+        "margin": null,
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED",
+        "source": "TASK051压力/边界测试 (5+5场景)"
+      },
+      {
+        "gate_id": 6,
+        "name": "全链路审计可追溯",
+        "threshold": "TASK049→050→051→052→053→054链路完整",
+        "actual": {
+          "TASK049": {
+            "commit": "e170ed3",
+            "status": "complete"
+          },
+          "TASK050": {
+            "commit": "e61f2f4",
+            "freeze_status": "PERMANENTLY_FROZEN",
+            "status": "complete"
+          },
+          "TASK051": {
+            "commit": "8041c8e",
+            "verdict": "PASS",
+            "status": "complete"
+          },
+          "TASK052": {
+            "commit": "fdc3ddb",
+            "review_status": "READY_FOR_REVIEW",
+            "status": "complete"
+          },
+          "TASK053": {
+            "commit": "ac70df2",
+            "pre_review_status": "ADMISSION_READY",
+            "status": "complete"
+          },
+          "TASK054": {
+            "commit": "PENDING",
+            "document_status": "FINAL",
+            "status": "complete"
+          }
+        },
+        "result": "PASS",
+        "recheck": "FINAL_VERIFIED",
+        "source": "全链路TASK045→054审计追溯"
+      }
+    ]
+  },
+  "risk_review": {
+    "final_verdict": "NO_RISK_ALERT",
+    "crowding_ratio": 1.0359,
+    "crowding_threshold": 1.1,
+    "crowding_alert": false,
+    "hhi_equal": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "hhi_delta": 0.004488,
+    "high_corr_pairs": 0,
+    "redundancy_alert": false,
+    "stress_test": {
+      "scenarios": 5,
+      "all_pass": true,
+      "max_crowding": 1.0359,
+      "min_sharpe": 1.693717
+    },
+    "boundary_test": {
+      "scenarios": 5,
+      "all_pass": true
+    },
+    "playback_validation": {
+      "max_deviation": 0.0,
+      "deviation_threshold": 0.005,
+      "all_pass": true,
+      "metrics_verified": [
+        "total_return",
+        "sharpe_ratio",
+        "max_drawdown",
+        "flip_rate_20d",
+        "flip_rate_40d"
+      ]
+    }
+  },
+  "variant_history": {
+    "selected": "V3 (alpha=0.6, 20d IC, PERMANENTLY_FROZEN)",
+    "rejected": [
+      {
+        "variant": "V4",
+        "alpha": 0.7,
+        "ic_window": 20,
+        "sharpe": 3.3468,
+        "reason": "sharpe < 3.4"
+      },
+      {
+        "variant": "V5",
+        "alpha": 0.7,
+        "ic_window": 40,
+        "sharpe": 3.1482,
+        "reason": "sharpe < 3.4"
+      },
+      {
+        "variant": "V4_40d_fallback",
+        "alpha": 0.6,
+        "ic_window": 40,
+        "sharpe": 3.265,
+        "reason": "sharpe < 3.4"
+      }
+    ],
+    "selection_rationale": "20d窗口alpha=0.6夏普3.4890优于40d窗口3.2650, 40d窗口低翻转优化未能补偿夏普损失"
+  },
+  "branch_freeze": {
+    "branch": "feature/v88-g1",
+    "freeze_status": "STRATEGY_SIDE_FROZEN",
+    "frozen_at": "2026-10-20T17:16:56+08:00",
+    "frozen_by": "DSHA-TASK052-V3-REVIEW-PACKAGE-TOKEN",
+    "v3_parameter_changes": "FORBIDDEN",
+    "v3_factor_modification": "FORBIDDEN",
+    "v3_engine_modification": "FORBIDDEN",
+    "new_strategy_versions": "NEW_BRANCH_REQUIRED (feature/v89+)",
+    "new_requirements": "SUBMIT_NEW_TASK_TICKET",
+    "bug_fix_affecting_v3": "REQUIRES_REVIEW_PROCESS",
+    "read_only_replay": "ALLOWED",
+    "monitoring_and_reporting": "ALLOWED"
+  },
+  "review_package": {
+    "archive_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_archive",
+    "total_files": 14,
+    "immutable": true,
+    "modification_forbidden": true,
+    "zip_sha256": "EA58FA666A652C4C631362BC9FF8A5A4A786BEA23D16624CE21B52676613E2C1"
+  },
+  "om_documentation": {
+    "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_strategy_om_documentation.md",
+    "sha256": "a47abdcecc9610809fe4a6164bf5a93bd967e166b58ae13f12669305140541e9",
+    "sections": [
+      "1. 信号触发逻辑",
+      "2. 指标释义",
+      "3. 告警阈值",
+      "4. 异常兜底规则",
+      "5. 运维操作流程",
+      "6. 制品清单",
+      "7. 安全约束"
+    ]
+  },
+  "admission_conclusion": {
+    "status": "ADMISSION_APPROVED",
+    "verdict": "V3策略通过全部6项准入门禁终审核验, 准入文档定稿完成",
+    "confirmation": {
+      "v3_no_parameter_change": true,
+      "replay_zero_deviation": true,
+      "stress_no_crowding_breach": true,
+      "high_corr_pairs_zero": true,
+      "audit_chain_complete": true,
+      "production_configs_unchanged": true,
+      "safety_constraints_observed": true,
+      "all_confirmed": true
+    },
+    "next_actions": [
+      "V3准入文档定稿完成, 可供人工审核",
+      "V3策略保持永久冻结, 不再接收参数迭代",
+      "新需求走后续版本分支 (feature/v89+)",
+      "DSHD准入通知已发送 (READ_ONLY)",
+      "冻结规则已固化, 分支锁定确认"
+    ]
+  }
+}

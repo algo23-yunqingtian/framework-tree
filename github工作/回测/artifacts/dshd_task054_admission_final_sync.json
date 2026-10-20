@@ -1,0 +1,74 @@
+{
+  "sync_id": "DSHD-TASK054-SYNC-1792493155",
+  "generated_at": "2026-10-20T18:45:55+0800",
+  "source_task": "DSHA-TASK054-V3-ADMISSION-DOC-FINAL",
+  "source_token": "DSHA-TASK054-V3-ADMISSION-DOC-FINAL-TOKEN",
+  "sync_type": "READ_ONLY_NOTIFICATION",
+  "mode": "AUDIT_READ_ONLY",
+  "write_to_dshd_monitors": false,
+  "modify_dshd_scripts": false,
+  "modify_dshd_ledger": false,
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "admission_status": "ADMISSION_APPROVED",
+  "admission_document": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_document_final.json",
+  "document_status": "FINAL",
+  "overall_verdict": "PASS",
+  "branch": "feature/v88-g1",
+  "strategy_version": "V3",
+  "freeze_status": "STRATEGY_SIDE_FROZEN",
+  "gates": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "all_pass": true,
+    "details": {
+      "gate1_sharpe": "3.488982 >= 3.4 (margin=0.0890)",
+      "gate2_crowding": "1.0359x <= 1.1x (margin=0.0641)",
+      "gate3_high_corr": 0,
+      "gate4_deviation": "0.000000 <= 0.005",
+      "gate5_stress_max": "1.0359x <= 1.1x",
+      "gate6_audit_chain": "TASK049→050→051→052→053→054 TRACEABLE"
+    }
+  },
+  "key_metrics": {
+    "sharpe_ratio": 3.488982,
+    "total_return": 0.229334,
+    "annualized_return": 0.128311,
+    "max_drawdown": -0.012099,
+    "calmar_ratio": 10.604686,
+    "win_rate": 0.431555,
+    "profit_loss_ratio": 1.712786,
+    "trade_count": 251,
+    "cost_ratio": 0.036744,
+    "crowding_ratio": 1.0359,
+    "hhi_equal": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "high_corr_pairs": 0,
+    "replay_max_deviation": 0.0,
+    "stress_max_crowding": 1.0359
+  },
+  "red_lines": {
+    "any_triggered": false,
+    "sharpe_ok": true,
+    "crowding_ok": true,
+    "deviation_ok": true,
+    "v3_modified": false,
+    "gate_maintained": true,
+    "release_not_issued": true
+  },
+  "alerts": [],
+  "notification_type": "ADMISSION_FINAL_APPROVED",
+  "next_action": "V3准入文档定稿完成, 分支冻结规则已固化, 等待人工审核决策",
+  "dsd_write_status": {
+    "status_json_written": true,
+    "monitor_script_modified": false,
+    "ledger_modified": false,
+    "write_territory_respected": true
+  }
+}

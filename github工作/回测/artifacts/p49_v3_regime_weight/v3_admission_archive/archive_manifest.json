@@ -1,0 +1,75 @@
+{
+  "output_id": "DSHA-TASK054-P4-ADMISSION-ARCHIVE-MANIFEST",
+  "generated_at": "2026-10-20T18:45:55+0800",
+  "token": "DSHA-TASK054-V3-ADMISSION-DOC-FINAL-TOKEN",
+  "task": "DSHA-TASK054-V3-ADMISSION-DOC-FINAL",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "archive_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_archive",
+  "archive_type": "READ_ONLY_ADMISSION_ARCHIVE",
+  "immutable": true,
+  "modification_forbidden": true,
+  "source": {
+    "admission_document": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_document_final.json",
+    "gate_checklist": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_gate_checklist_archive.json",
+    "version_changelog": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_version_changelog_archive.json"
+  },
+  "archived_files": [
+    {
+      "name": "v3_admission_document_final.json",
+      "description": "准入文档定稿",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_archive\\v3_admission_document_final.json",
+      "size": 9052,
+      "sha256": "78a248fe876e7a8154c413671690aec89622852f3d82777d83ab0d584a716827",
+      "read_only": true
+    },
+    {
+      "name": "v3_admission_document_final_snapshot.json",
+      "description": "准入文档不可变快照",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_archive\\v3_admission_document_final_snapshot.json",
+      "size": 9052,
+      "sha256": "78a248fe876e7a8154c413671690aec89622852f3d82777d83ab0d584a716827",
+      "read_only": true
+    },
+    {
+      "name": "v3_gate_checklist_archive.json",
+      "description": "6项门禁核验清单",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_archive\\v3_gate_checklist_archive.json",
+      "size": 2209,
+      "sha256": "b4513496fab104fd1623c7bc9bb4eb769082de9c2e29911b96df8ee75162ae5a",
+      "read_only": true
+    },
+    {
+      "name": "v3_version_changelog_archive.json",
+      "description": "版本变更清单",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_archive\\v3_version_changelog_archive.json",
+      "size": 3915,
+      "sha256": "da689e87ff9b6ddfeb4b77253bd4b1853d67f277d21b679f5e10f5c26cab3ae9",
+      "read_only": true
+    },
+    {
+      "name": "v3_rejected_variants_archive.json",
+      "description": "被拒变体说明",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_archive\\v3_rejected_variants_archive.json",
+      "size": 1504,
+      "sha256": "32a0d58219039263eb3847a09d61d004898bd1ff5984fb72e594ec9ee957f712",
+      "read_only": true
+    },
+    {
+      "name": "branch_freeze_marker_v2.json",
+      "description": "冻结规则固化标记",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_admission_archive\\branch_freeze_marker_v2.json",
+      "size": 3916,
+      "sha256": "b7a07b8a9449591e6a1a5cd2d2104bbc1b74ab921cedfbddd945d5b56d999470",
+      "read_only": true
+    }
+  ],
+  "total_files": 6,
+  "archive_status": "COMPLETE",
+  "read_only_verification": true
+}
