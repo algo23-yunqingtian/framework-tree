@@ -2,44 +2,44 @@
     "snapshot_id":  "DSHD-P81-A01-AUDIT-SNAPSHOT",
     "exchange_field_check":  "ON",
     "bom_status":  {
-                       "size_bytes":  141340,
+                       "size_bytes":  158604,
                        "has_bom":  false
                    },
     "a01_warnings":  [
                          {
                              "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                             "ts":  "2026-10-20T11:45:40+08:00",
+                             "ts":  "2026-10-20T14:02:16+08:00",
                              "code":  "A01_HASH_MISMATCH_WARNING",
                              "severity":  "YELLOW"
                          },
                          {
                              "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                             "ts":  "2026-10-20T11:45:40+08:00",
+                             "ts":  "2026-10-20T14:02:16+08:00",
                              "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
                              "severity":  "INFO"
                          },
                          {
                              "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                             "ts":  "2026-10-20T11:45:40+08:00",
+                             "ts":  "2026-10-20T14:02:16+08:00",
                              "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
                              "severity":  "YELLOW"
                          },
                          {
-                             "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=255; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                             "ts":  "2026-10-20T11:45:40+08:00",
+                             "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=282; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                             "ts":  "2026-10-20T14:02:16+08:00",
                              "code":  "P49-001-ARTIFACT-UNEXPECTED",
                              "severity":  "YELLOW"
                          },
                          {
                              "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                             "ts":  "2026-10-20T11:45:40+08:00",
+                             "ts":  "2026-10-20T14:02:16+08:00",
                              "code":  "SKILL-001-FILE-UNDECLARED",
                              "severity":  "YELLOW"
                          }
                      ],
     "process_protection":  {
                                "pid_14644_never_kill":  true,
-                               "pid_3472_alive":  true,
+                               "pid_3472_alive":  false,
                                "pid_3472_never_kill":  true,
                                "pid_14644_alive":  true
                            },
@@ -62,7 +62,7 @@
                   },
     "token":  "DSHD-P81-TOKEN",
     "p49_artifact_audit_on":  true,
-    "p0_checks_passed":  6,
+    "p0_checks_passed":  5,
     "row_count_convention":  "DATA_ONLY_V2",
     "skill_dir_hash_monitor_on":  true,
     "excel_spawn_observer":  {
@@ -78,7 +78,7 @@
                                  "fast_max_non_protected_in_task_window":  0,
                                  "fast_samples":  [
                                                       {
-                                                          "ts":  "2026-10-20T11:40:59+08:00",
+                                                          "ts":  "2026-10-20T13:57:36+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -88,7 +88,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:41:19+08:00",
+                                                          "ts":  "2026-10-20T13:57:56+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -98,7 +98,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:41:40+08:00",
+                                                          "ts":  "2026-10-20T13:58:16+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -108,7 +108,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:42:00+08:00",
+                                                          "ts":  "2026-10-20T13:58:36+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -118,7 +118,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:42:20+08:00",
+                                                          "ts":  "2026-10-20T13:58:56+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -128,7 +128,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:42:40+08:00",
+                                                          "ts":  "2026-10-20T13:59:16+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -138,7 +138,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:43:00+08:00",
+                                                          "ts":  "2026-10-20T13:59:36+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -148,7 +148,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:43:20+08:00",
+                                                          "ts":  "2026-10-20T13:59:56+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -158,7 +158,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:43:40+08:00",
+                                                          "ts":  "2026-10-20T14:00:16+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -168,7 +168,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:44:00+08:00",
+                                                          "ts":  "2026-10-20T14:00:36+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -178,7 +178,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:44:20+08:00",
+                                                          "ts":  "2026-10-20T14:00:56+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -188,7 +188,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:44:40+08:00",
+                                                          "ts":  "2026-10-20T14:01:16+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -198,7 +198,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:45:00+08:00",
+                                                          "ts":  "2026-10-20T14:01:36+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -208,7 +208,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:45:20+08:00",
+                                                          "ts":  "2026-10-20T14:01:56+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -218,7 +218,7 @@
                                                           "non_protected_in_task_window":  0
                                                       },
                                                       {
-                                                          "ts":  "2026-10-20T11:45:40+08:00",
+                                                          "ts":  "2026-10-20T14:02:16+08:00",
                                                           "non_protected":  0,
                                                           "triggered":  false,
                                                           "non_protected_pids":  [
@@ -251,7 +251,7 @@
                                               "result":  true
                                           },
                       "gate_closed":  {
-                                          "detail":  "CLOSED/HOLD (line 10654)",
+                                          "detail":  "CLOSED/HOLD (line 14939)",
                                           "result":  true
                                       },
                       "pwsh_13_p77":  {
@@ -259,7 +259,7 @@
                                           "result":  false
                                       },
                       "script_bom_intact":  {
-                                                "detail":  "bom=False size=141340",
+                                                "detail":  "bom=False size=158604",
                                                 "result":  false
                                             },
                       "self_p81":  {
@@ -271,11 +271,11 @@
                                           "result":  false
                                       },
                       "pid_3472":  {
-                                       "detail":  "ALIVE",
-                                       "result":  true
+                                       "detail":  "DEAD",
+                                       "result":  false
                                    },
                       "permit_not_issued":  {
-                                                "detail":  "NOT_ISSUED (line 10654)",
+                                                "detail":  "NOT_ISSUED (line 14939)",
                                                 "result":  true
                                             },
                       "pwsh_37_phase2":  {
@@ -608,8 +608,8 @@
                         },
     "warning_count":  5,
     "dshc_task_window":  {
-                             "event_hits":  5820,
-                             "end":  "2026-10-20T11:45:24",
+                             "event_hits":  10011,
+                             "end":  "2026-10-20T14:02:16",
                              "start":  "2026-10-16T09:03:19"
                          },
     "watch_started_at":  "2026-10-19T14:24:08+08:00",
@@ -621,7 +621,7 @@
                            "start_time":  "2026-10-18T15:50:01",
                            "protected":  true,
                            "in_task_window":  true,
-                           "age_minutes":  2635.7,
+                           "age_minutes":  2772.3,
                            "main_module":  "C:\\Program Files\\Microsoft Office\\Office16\\EXCEL.EXE"
                        },
     "phase":  "P81",
@@ -841,7 +841,7 @@
                                                        ]
                          },
     "p0_checks_total":  9,
-    "timestamp":  "2026-10-20T11:45:40+08:00",
+    "timestamp":  "2026-10-20T14:02:16+08:00",
     "a01_status":  "MONITOR_ENHANCED",
     "p0_all_pass":  false,
     "territory_contract":  {
@@ -866,7 +866,7 @@
                       "warning_raised":  true
                   },
     "intervention":  "NONE",
-    "poll_count":  255,
+    "poll_count":  282,
     "skill_dir_read_only":  true,
     "backtest_started":  false,
     "audit_context_loaded":  true,
@@ -925,17 +925,17 @@
                                },
     "token_state":  "ACTIVE_AUDIT_READ_ONLY",
     "gate_state":  {
-                       "permit_line_no":  10654,
+                       "permit_line_no":  14939,
                        "p68_commit":  "8ebe3b7",
                        "gate":  "CLOSED/HOLD",
                        "wind_api_calls":  0,
-                       "total_lines":  10656,
+                       "total_lines":  14939,
                        "release_permit":  "NOT_ISSUED",
                        "p68_lock":  "FINAL_STANDBY_LOCKED",
                        "p68_line_no":  1031,
-                       "wind_api_garbage_hits_tail500":  124,
+                       "wind_api_garbage_hits_tail500":  0,
                        "wind_api_calls_found":  true,
-                       "gate_line_no":  10654
+                       "gate_line_no":  14939
                    },
     "p49_artifact_audit":  {
                                "manifest_sealed":  true,

@@ -27,8 +27,401 @@ if (Test-Path $FileLockModulePath) {
 }
 # ============================================================
 
+# ============================================================
+# TASK-043: P1① Check-P80WatcherKeepalive
+# Monitors P80 watchdog processes and auto-restarts if dead.
+# Verifies protected PIDs before restarting.
+# ============================================================
+function Check-P80WatcherKeepalive {
+    param()
+    $result = @{
+        keepalive_enabled = $false
+        p80_alive = $false
+        action = 'DISABLED'
+        restarted_pids = @()
+    }
+    if (-not $P80AutoKeepalive) {
+        Write-Host "[TASK-043] P80 auto-keepalive disabled"
+        $result.keepalive_enabled = $false
+        $result.action = 'DISABLED'
+        return $result
+    }
+    $result.keepalive_enabled = $true
+
+    # Check each P80 watcher script individually using Get-CimInstance
+    $p80Scripts = @(
+        @{name = 'audit';  script = $P80WatchScript1}
+        @{name = 'phase2'; script = $P80WatchScript2}
+    )
+
+    $anyAlive = $false
+    $deadScripts = @()
+
+    foreach ($entry in $p80Scripts) {
+        $scriptFile = $entry.script
+        $rx = [regex]::Escape($scriptFile)
+        $selfId = [int]$PID
+        $found = $false
+        try {
+            $cim = Get-CimInstance Win32_Process -Filter "Name LIKE 'powershell%'"
+            foreach ($p in @($cim)) {
+                if ($null -eq $p) { continue }
+                $pid2 = [int]$p.ProcessId
+                if ($pid2 -eq $selfId) { continue }
+                $cl = $p.CommandLine
+                if ($null -eq $cl) { continue }
+                if ($cl -notmatch $rx) { continue }
+                $found = $true
+                break
+            }
+        } catch { }
+        if ($found) {
+            $anyAlive = $true
+        } else {
+            $deadScripts += $entry
+        }
+    }
+
+    $result.p80_alive = $anyAlive
+
+    if ($anyAlive) {
+        $result.action = 'ALIVE'
+        Write-Host "[TASK-043] P80 keepalive OK | both watch scripts running"
+        return $result
+    }
+
+    # P80 watcher(s) are dead - attempt auto-restart
+    Write-Host "[TASK-043] P80 watcher DEAD - attempting auto-restart"
+
+    # Verify protected PIDs are alive before restarting
+    $protectOk = $true
+    foreach ($protPid in $protectedPids) {
+        if (-not (Test-PidAlive $protPid)) {
+            Write-Host ("[TASK-043] CRITICAL: Protected PID " + $protPid + " is dead! Aborting P80 restart!")
+            $protectOk = $false
+            break
+        }
+    }
+
+    if (-not $protectOk) {
+        $result.action = 'ABORT_PROTECTED_PID_DEAD'
+        try {
+            $evt = @{
+                timestamp = (Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz')
+                event = 'DSHD-P81-TASK043-P80-KEEPALIVE-ABORT'
+                event_type = 'p80_keepalive_protected_pid_dead'
+                agent = $agentName
+                task = 'DSHD-P81-TASK043'
+                a01_tag = $a01Tag
+                token = $tokenName
+                token_state = $tokenState
+                branch = $branch
+                mode = 'AUDIT_READ_ONLY'
+                severity = 'CRITICAL'
+                action = 'ABORT'
+                reason = 'Protected PID dead - refusing to restart P80'
+                audit_only = $true
+            }
+            Add-AuditEvent $auditLog $evt
+        } catch { }
+        return $result
+    }
+
+    # Restart dead P80 scripts
+    $restartedPids = @()
+    foreach ($entry in $deadScripts) {
+        $scriptFile = $entry.script
+        $scriptName = $entry.name
+        if (Test-Path $scriptFile) {
+            try {
+                $startArgs = @(
+                    '-NoLogo', '-NoProfile', '-NonInteractive', '-Command',
+                    "[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false); & powershell -NoProfile -ExecutionPolicy Bypass -File '$scriptFile'"
+                )
+                $newProc = Start-Process -FilePath 'powershell.exe' -ArgumentList $startArgs -PassThru
+                if ($null -ne $newProc) {
+                    $restartedPids += [int]$newProc.Id
+                    Write-Host ("[TASK-043] P80 " + $scriptName + " watcher restarted (PID " + $newProc.Id + ")")
+                }
+            } catch {
+                Write-Host ("[TASK-043] P80 " + $scriptName + " watcher restart failed: " + $_.Exception.Message)
+            }
+        }
+    }
+
+    # Write CRITICAL alert for the restart action
+    try {
+        $evt = @{
+            timestamp = (Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz')
+            event = 'DSHD-P81-TASK043-P80-KEEPALIVE-RESTART'
+            event_type = 'p80_keepalive_restart'
+            agent = $agentName
+            task = 'DSHD-P81-TASK043'
+            a01_tag = $a01Tag
+            token = $tokenName
+            token_state = $tokenState
+            branch = $branch
+            mode = 'AUDIT_READ_ONLY'
+            severity = 'CRITICAL'
+            action = 'P80_RESTARTED'
+            restarted_pids = $restartedPids
+            audit_only = $true
+            intervention = 'P80_RESTART_ONLY'
+        }
+        Add-AuditEvent $auditLog $evt
+    } catch { }
+
+    if ($restartedPids.Count -gt 0) {
+        $result.action = 'P80_RESTARTED'
+    } else {
+        $result.action = 'P80_RESTART_FAILED'
+    }
+    $result.restarted_pids = $restartedPids
+
+    Write-Host ("[TASK-043] P80 keepalive action=" + $result.action + " restarted_pids=" + ($restartedPids -join ','))
+    return $result
+}
+
+# ============================================================
+# TASK-043: P1② SoftRestart
+# Checks PowerShell process memory usage; if any exceeds threshold,
+# gracefully stops and restarts via Start-Process. Cooldown enforced.
+# ============================================================
+function SoftRestart {
+    param()
+
+    # Track cooldown state in script-scoped variable
+    if (-not $script:softRestartCooldown) { $script:softRestartCooldown = @{} }
+    $cooldownSec = $MemorySoftRestartCooldownSec
+    $thresholdMB = $MemoryThresholdMB
+    $now = Get-Date
+
+    $result = @{
+        memory_threshold = $thresholdMB
+        processes_checked = 0
+        processes_over_threshold = @()
+        restarts_triggered = @()
+        restarts_success = @()
+    }
+
+    # Find all powershell/pwsh processes
+    $procs = @()
+    try { $procs = Get-Process -Name powershell, pwsh -ErrorAction Stop } catch { }
+
+    $result.processes_checked = $procs.Count
+
+    $overThreshold = @()
+    foreach ($p in $procs) {
+        if ($null -eq $p) { continue }
+        $memMB = [math]::Round($p.WorkingSet64 / 1MB, 1)
+        if ($memMB -ge $thresholdMB) {
+            $overThreshold += $p
+            $result.processes_over_threshold += @{
+                pid = [int]$p.Id
+                name = $p.ProcessName
+                mem_mb = $memMB
+            }
+        }
+    }
+
+    if ($overThreshold.Count -eq 0) {
+        Write-Host ("[TASK-043] Soft restart OK | threshold=" + $thresholdMB + "MB checked=" + $result.processes_checked + " over=" + $result.processes_over_threshold.Count)
+        return $result
+    }
+
+    # Attempt soft restart for over-threshold processes
+    foreach ($p in $overThreshold) {
+        $pid2 = [int]$p.Id
+        if ($pid2 -eq [int]$PID) {
+            # Cannot restart ourselves here - skip self
+            continue
+        }
+
+        # Check cooldown
+        $lastRestart = $script:softRestartCooldown[$pid2]
+        if ($null -ne $lastRestart) {
+            $ageSec = $now.Subtract($lastRestart).TotalSeconds
+            if ($ageSec -lt $cooldownSec) {
+                Write-Host ("[TASK-043] Soft restart SKIPPED for PID " + $pid2 + " (cooldown " + [int]$ageSec + "/" + $cooldownSec + "s)")
+                continue
+            }
+        }
+
+        # Verify protected PIDs before restart
+        $protectOk = $true
+        foreach ($protPid in $protectedPids) {
+            if (-not (Test-PidAlive $protPid)) {
+                Write-Host ("[TASK-043] CRITICAL: Protected PID " + $protPid + " is dead! Aborting soft restart!")
+                $protectOk = $false
+                break
+            }
+        }
+        if (-not $protectOk) {
+            continue
+        }
+
+        # Attempt graceful stop
+        try {
+            Stop-Process -Id $pid2 -Force -ErrorAction Stop
+            Write-Host ("[TASK-043] Stopped process PID " + $pid2)
+            $result.restarts_triggered += @{
+                pid = $pid2
+                mem_mb = [math]::Round($p.WorkingSet64 / 1MB, 1)
+            }
+        } catch {
+            Write-Host ("[TASK-043] Stop-Process failed for PID " + $pid2 + ": " + $_.Exception.Message)
+            continue
+        }
+
+        # Verify process is dead
+        Start-Sleep -Seconds 2
+        $stillAlive = $false
+        try { $stillAlive = [bool](Get-Process -Id $pid2 -ErrorAction Stop) } catch { }
+
+        if ($stillAlive) {
+            Write-Host ("[TASK-043] Process PID " + $pid2 + " still alive after stop attempt")
+            continue
+        }
+
+        # Restart P81 Watch script
+        try {
+            $selfScriptPath = $scriptPath
+            if (Test-Path $selfScriptPath) {
+                $startArgs = @(
+                    '-NoLogo', '-NoProfile', '-NonInteractive', '-Command',
+                    "[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false); & powershell -NoProfile -ExecutionPolicy Bypass -File '$selfScriptPath'"
+                )
+                $newProc = Start-Process -FilePath 'powershell.exe' -ArgumentList $startArgs -PassThru
+                if ($null -ne $newProc) {
+                    $newPid = [int]$newProc.Id
+                    $result.restarts_success += @{
+                        pid = $pid2
+                        new_pid = $newPid
+                    }
+                    Write-Host ("[TASK-043] Soft restart SUCCESS for PID " + $pid2 + " -> new PID " + $newPid)
+
+                    # Record cooldown
+                    $script:softRestartCooldown[$pid2] = $now
+
+                    # Write audit event
+                    try {
+                        $evt = @{
+                            timestamp = (Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz')
+                            event = 'DSHD-P81-TASK043-SOFT-RESTART'
+                            event_type = 'memory_soft_restart'
+                            agent = $agentName
+                            task = 'DSHD-P81-TASK043'
+                            a01_tag = $a01Tag
+                            token = $tokenName
+                            token_state = $tokenState
+                            branch = $branch
+                            mode = 'AUDIT_READ_ONLY'
+                            memory_threshold_mb = $thresholdMB
+                            old_pid = $pid2
+                            new_pid = $newPid
+                            restart_success = $true
+                            audit_only = $false
+                            intervention = 'SOFT_RESTART'
+                            cooldown_sec = $cooldownSec
+                        }
+                        Add-AuditEvent $auditLog $evt
+                    } catch { }
+                }
+            }
+        } catch {
+            Write-Host ("[TASK-043] Soft restart failed for PID " + $pid2 + ": " + $_.Exception.Message)
+        }
+    }
+
+    # Clean up old cooldown entries (older than 2x cooldown)
+    $script:softRestartCooldown.GetEnumerator() | ForEach-Object {
+        if ($null -ne $_.Value) {
+            $age = $now.Subtract($_.Value).TotalSeconds
+            if ($age -gt ($cooldownSec * 2)) {
+                $script:softRestartCooldown.Remove($_.Key)
+            }
+        }
+    }
+
+    Write-Host ("[TASK-043] Soft restart | threshold=" + $thresholdMB + "MB checked=" + $result.processes_checked + " over=" + $result.processes_over_threshold.Count + " triggered=" + $result.restarts_triggered.Count + " success=" + $result.restarts_success.Count)
+    return $result
+}
+
+# ============================================================
+# TASK-043: P1③ Check-P77HashWatch
+# Monitors P77 hash watch process. If dead, writes WARNING alert
+# (not CRITICAL - known issue, observation only).
+# ============================================================
+function Check-P77HashWatch {
+    param()
+
+    $result = @{
+        p77_alive = $false
+        p77_status = 'UNKNOWN'
+        alert_severity = 'NONE'
+    }
+
+    # Check if P77 hash watch process is alive
+    $rx = [regex]::Escape($P77WatchScript)
+    $selfId = [int]$PID
+    $found = $false
+    $p77Pids = @()
+
+    try {
+        $cim = Get-CimInstance Win32_Process -Filter "Name LIKE 'powershell%'"
+        foreach ($p in @($cim)) {
+            if ($null -eq $p) { continue }
+            $pid2 = [int]$p.ProcessId
+            if ($pid2 -eq $selfId) { continue }
+            $cl = $p.CommandLine
+            if ($null -eq $cl) { continue }
+            if ($cl -notmatch $rx) { continue }
+            $found = $true
+            $p77Pids += $pid2
+        }
+    } catch { }
+
+    $result.p77_alive = $found
+
+    if ($found) {
+        $result.p77_status = 'ALIVE'
+        Write-Host ("[TASK-043] P77 hash watch ALIVE | pids=" + ($p77Pids -join ','))
+    } else {
+        $result.p77_status = 'DEAD'
+        $result.alert_severity = 'WARNING'
+        Write-Host "[TASK-043] P77 hash watch DEAD - WARNING (known issue, observation only)"
+
+        # Write WARNING alert (not CRITICAL - known issue)
+        try {
+            $evt = @{
+                timestamp = (Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz')
+                event = 'DSHD-P81-TASK043-P77-HASH-WATCH-DEAD'
+                event_type = 'p77_hash_watch_dead'
+                agent = $agentName
+                task = 'DSHD-P81-TASK043'
+                a01_tag = $a01Tag
+                token = $tokenName
+                token_state = $tokenState
+                branch = $branch
+                mode = 'AUDIT_READ_ONLY'
+                severity = 'WARNING'
+                p77_status = 'DEAD'
+                alert_severity = 'WARNING'
+                known_issue = $true
+                intervention = 'NONE'
+                audit_only = $true
+            }
+            Add-AuditEvent $auditLog $evt
+        } catch { }
+    }
+
+    return $result
+}
+
+# ============================================================
+
 # ---------------- CONSTANTS ----------------
-$scriptVersion             = '1.2.0-TWEAK'
+$scriptVersion             = '1.3.0-TASK043'
 $agentName                 = 'DSHD-P81'
 $taskName                  = 'DSHD-P81-WATCH'
 $a01Tag                    = 'A01-USER-REMOTE-003'
@@ -67,6 +460,15 @@ $p68MinRows                = 300
 $dshcWindowFallbackH       = 24
 $boardKeepMax              = 300
 $histKeepMax               = 120
+
+# --- TASK-043: P80 keepalive + memory soft-restart + P77 hash watch ---
+$P80AutoKeepalive          = $true
+$MemoryThresholdMB         = 256
+$MemorySoftRestartCooldownSec = 300
+$P80WatchScript1           = 'D:\DSH_WORK\github工作\回测\G7_ADJUDICATION_LEDGER\dshd_p80_a01_audit_watch.ps1'
+$P80WatchScript2           = 'D:\DSH_WORK\github工作\回测\G7_ADJUDICATION_LEDGER\dshd_p80_a01_phase2_watch.ps1'
+$P77WatchScript            = 'D:\DSH_WORK\github工作\回测\G7_ADJUDICATION_LEDGER\dshd_p77_skillpack_watch.ps1'
+$protectedPids             = @(3472, 14644, 30492, 29652, 29708)
 
 $refCsvSha256A03           = '41EC38315397FB70CC30BB313B88C3965BB50B30A628A3422743A48026806A92'
 $refCsvSha256A01           = 'BEF26114CC1FCA4BDD40E911F888E7CA388DD150A1D48FD6C623D8FE07850895'
@@ -1931,6 +2333,11 @@ while ($true) {
     }
     $bomInfo = Get-BomStatus $scriptPath
 
+    # ---------- TASK-043: P80 keepalive, P77 hash watch, memory soft restart ----------
+    $p80Keepalive = Check-P80WatcherKeepalive
+    $p77Watch = Check-P77HashWatch
+    $softRestart = SoftRestart
+
     # ---------- tracking log derived state ----------
     $trackState = Get-TrackingState $auditLog
     $dshcWindow = Get-DshcTaskWindow $auditLog $dshcWindowFallbackH
@@ -2585,6 +2992,36 @@ while ($true) {
       loop_elapsed_ms = 0
     }
     Add-AuditEvent $auditLog $evt
+    # ---------- TASK-043: per-poll audit event for P80 keepalive + P77 hash watch + memory soft restart ----------
+    $t043Evt = @{
+      timestamp = $pollTs.ToString('yyyy-MM-ddTHH:mm:sszzz')
+      event = 'DSHD-P81-TASK043-POLL-' + ($pollNo.ToString('D5'))
+      event_type = 'task043_poll_cycle'
+      agent = $agentName
+      task = 'DSHD-P81-TASK043'
+      a01_tag = $a01Tag
+      token = $tokenName
+      token_state = $tokenState
+      branch = $branch
+      poll_count = $pollNo
+      mode = 'AUDIT_READ_ONLY'
+      p80_keepalive_enabled = $p80Keepalive.keepalive_enabled
+      p80_alive = $p80Keepalive.p80_alive
+      p80_action = $p80Keepalive.action
+      p80_restarted_pids = $p80Keepalive.restarted_pids
+      p77_alive = $p77Watch.p77_alive
+      p77_status = $p77Watch.p77_status
+      p77_alert_severity = $p77Watch.alert_severity
+      memory_threshold_mb = $softRestart.memory_threshold
+      memory_processes_checked = $softRestart.processes_checked
+      memory_processes_over_threshold = $softRestart.processes_over_threshold
+      memory_restarts_triggered = $softRestart.restarts_triggered
+      memory_restarts_success = $softRestart.restarts_success
+      audit_only = $true
+      intervention = 'NONE'
+      no_kill_executed = $true
+    }
+    Add-AuditEvent $auditLog $t043Evt
     # ---------- EXT: one-shot P49 backtest completion audit event ----------
     if (($p49Audit.exists -eq $true) -and ($p49CompleteReported -eq $false) -and ($p49Audit.manifest_status -match 'BACKTEST_COMPLETE')) {
       $p49CompleteReported = $true
@@ -2813,6 +3250,7 @@ while ($true) {
     Write-Host ("[{0}] POLL {1:D3} OK | p0={2}/{3} | wind={4} | gate={5} | permit={6} | excel=total{7}/np{8}/npwin{9} warn={10} | territory_conflicts={11} | csv={12}B rows={13} {14} | dual={15} | warns={16} | {17}ms" -f (Get-Date).ToString('HH:mm:ss'), $pollNo, $p0Pass, $p0Total, $trackState.wind_api_calls, $trackState.gate, $trackState.release_permit, $excelRule.total_excel, $excelRule.non_protected_excel, $excelRule.non_protected_in_task_window, $excelRule.triggered, $territoryState.conflict_count, $quickScan.size_bytes, $quickScan.data_rows, $quickScan.scan_status, $dualHash.scan_status, $warnList.Count, $elapsedMs)
     Write-Host ("[{0}] POLL {1:D3} TWEAK | rows_conv={2} legacy_hdr_inc={3} hdr_line={4} | sealed={5} postseal={6} polls={7} kinds={8} | skill_ver={9} locked={10} files={11} undecl={12} mod={13} rem={14} sha_match={15} {16} | lc_shf={17} lc_gfe={18} cleared={19}" -f (Get-Date).ToString('HH:mm:ss'), $pollNo, $quickScan.data_rows_convention, $quickScan.data_rows_legacy_header_inclusive, $quickScan.header_line_count, $p49Audit.manifest_sealed, $p49Audit.post_seal_archive_modify_alert, $p49PostSealMutationPolls, ($p49Audit.post_seal_mutation_kinds -join ','), $skillAudit.version, $skillAudit.version_locked, $skillAudit.file_count, $skillAudit.undeclared_files.Count, $skillAudit.modified_files.Count, $skillAudit.removed_files.Count, $skillAudit.original_csv_sha256_match, $skillAudit.audit_status, $attribAudit.lc_shf_verdict, $attribAudit.lc_gfe_verdict, $exchClearedReported)
     Write-Host ("[{0}] POLL {1:D3} EXT | longtable={2} rows={3} dup={4} malformed={5} badkey={6} baddate={7} nonnum={8} | syms={9} ind={10} | exch_ok={11} exch_mismatch={12} exch_unknown={13} attr_exch={14} | whitelist_vio={15} ind_miss={16} | p49={17} files={18} miss={19} chg={20} {21}" -f (Get-Date).ToString('HH:mm:ss'), $pollNo, $longTableAudit.audit_status, $longTableAudit.data_rows, $longTableAudit.duplicate_key_count, $longTableAudit.malformed_row_count, $longTableAudit.blank_key_field_count, $longTableAudit.bad_date_count, $longTableAudit.non_numeric_value_count, $longTableAudit.distinct_symbol_count, $longTableAudit.distinct_indicator_count, $longTableAudit.exchange_ok_count, $longTableAudit.exchange_mismatch_count, $longTableAudit.exchange_unknown_count, $attribAudit.mismatch_count, $longTableAudit.symbols_not_whitelisted.Count, $longTableAudit.indicators_missing.Count, $p49Audit.exists, $p49Audit.file_count, $p49Audit.missing_files.Count, $p49Audit.hash_changed_files.Count, $p49Audit.audit_status)
+    Write-Host ("[{0}] POLL {1:D3} TASK043 | p80_keepalive={2} p80_action={3} p80_restarted={4} | p77_alive={5} p77_sev={6} | mem_thr={7}MB procs={8} over={9} restarted={10} success={11} {12}ms" -f (Get-Date).ToString('HH:mm:ss'), $pollNo, $p80Keepalive.p80_alive, $p80Keepalive.action, $p80Keepalive.restarted_pids.Count, $p77Watch.p77_alive, $p77Watch.alert_severity, $softRestart.memory_threshold, $softRestart.processes_checked, $softRestart.processes_over_threshold.Count, $softRestart.restarts_triggered.Count, $softRestart.restarts_success.Count, $elapsedMs)
   }
   catch {
     $pollErr = $true

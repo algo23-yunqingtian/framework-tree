@@ -1,7 +1,7 @@
 # DSHD-P68 Enhanced Wind Observation Dashboard
 
-**Generated**: 2026-10-20T11:40:25+08:00
-**Poll Number**: #4340
+**Generated**: 2026-10-20T12:32:29+08:00
+**Poll Number**: #4380
 **Session**: DSHD-P71 (inherited P68/P69/P70 monitor)
 **Monitor Version**: v1.0
 **Baseline**: feature/v88-g1 @ 01a022f
@@ -80,8 +80,8 @@
 | Credential Alert | NONE |
 | Wind API Calls | 2212495422 |
 | Skill SHA Check | MISMATCH: skill_readme.md, bootstrap_wdf.ps1, skill_manifest.json, health_check_wdf.ps1, reset_wdf_safe.ps1 |
-| Monitor Log Lines | 4099 |
-| Tracking Ledger Lines | 10631 |
+| Monitor Log Lines | 4143 |
+| Tracking Ledger Lines | 11050 |
 
 ---
 

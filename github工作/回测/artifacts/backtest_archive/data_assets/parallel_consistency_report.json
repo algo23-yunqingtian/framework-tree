@@ -1,266 +1,726 @@
 {
-  "workorder": "DSHC-TASK-015",
-  "token": "DSHC-TASK015-STABILITY-TEST-TOKEN",
-  "generated_at": "2026-10-20T12:55:18+08:00",
-  "rounds": 5,
-  "symbols": [
-    "AL.SHF",
-    "CU.SHF",
-    "HC.SHF",
-    "NI.SHF",
-    "PB.SHF",
-    "RB.SHF",
-    "SN.SHF",
-    "ZN.SHF",
-    "LC.GFE"
-  ],
-  "all_success": true,
-  "lock_conflicts": 0,
-  "cross_contamination": 0,
-  "sha_stability": {
-    "AL.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "EB6BBBED4647552220574A9A731549FE253E4259FA49DBB1EAB72A3C1B8F7E34"
-      ],
-      "stable": true
-    },
-    "CU.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "405E9FA87C4777B1FA8F5CAE73FB46965949D1897DB8EFDFD48341280169A980"
-      ],
-      "stable": true
-    },
-    "HC.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "9CC0EA73FA13F4CB5CE40261DD4189810740A573313E9B0C0083461DA25E2AEC"
-      ],
-      "stable": true
-    },
-    "NI.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "EA1C875D4932503B8593B6526A0DAA4002D31E3D467AF8B27EDCBC43A29C1C36"
-      ],
-      "stable": true
-    },
-    "PB.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "A7DA5DBA41C18BDF8F3F75724EED7050ECBF449ABE79570223617F5F1D76CE58"
-      ],
-      "stable": true
-    },
-    "RB.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "32BDC8D52F6326F451E5D4DA26F4D03E16A84234799C1DF9415AD96DF51CA62A"
-      ],
-      "stable": true
-    },
-    "SN.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "3829DBD3A08209D3A3D18E6BF4360BFD4BEE609C31FD424AA469A87B0B1B9F86"
-      ],
-      "stable": true
-    },
-    "ZN.SHF": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "E7C20AAF9DC7C5F7563A7D016574DF2DECCA2DDEFE9597BB7110B8B264E0191C"
-      ],
-      "stable": true
-    },
-    "LC.GFE": {
-      "rounds_with_sha": 5,
-      "unique_shas": 1,
-      "sha_values": [
-        "D293102CA4D7F15432A6C7E68C4A53D388C883D400562BA89BA21FEC46D89719"
-      ],
-      "stable": true
-    }
-  },
-  "row_consistency": {
-    "AL.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "CU.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "HC.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "NI.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "PB.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "RB.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "SN.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "ZN.SHF": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    },
-    "LC.GFE": {
-      "rounds": 5,
-      "row_counts": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "unique_counts": 1,
-      "consistent": true
-    }
-  },
-  "timeline_sorted": true,
+  "workorder": "DSHC-TASK-016",
+  "token": "DSHC-TASK016-DATA-EXTEND-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T13:59:10+08:00",
+  "mode": "DATA_EXTEND_MONITOR",
+  "rounds": 42,
   "round_details": [
     {
       "round": 1,
       "all_success": true,
       "symbols_passed": 9,
-      "symbols_total": 9
+      "symbols_total": 9,
+      "shard_date": "20261020135910",
+      "regime": "UP",
+      "duration_seconds": 5.978
     },
     {
       "round": 2,
       "all_success": true,
       "symbols_passed": 9,
-      "symbols_total": 9
+      "symbols_total": 9,
+      "shard_date": "20261020135916",
+      "regime": "DOWN",
+      "duration_seconds": 5.894
     },
     {
       "round": 3,
       "all_success": true,
       "symbols_passed": 9,
-      "symbols_total": 9
+      "symbols_total": 9,
+      "shard_date": "20261020135922",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.853
     },
     {
       "round": 4,
       "all_success": true,
       "symbols_passed": 9,
-      "symbols_total": 9
+      "symbols_total": 9,
+      "shard_date": "20261020135928",
+      "regime": "UP",
+      "duration_seconds": 5.919
     },
     {
       "round": 5,
       "all_success": true,
       "symbols_passed": 9,
-      "symbols_total": 9
+      "symbols_total": 9,
+      "shard_date": "20261020135934",
+      "regime": "DOWN",
+      "duration_seconds": 5.916
+    },
+    {
+      "round": 6,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020135940",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.862
+    },
+    {
+      "round": 7,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020135946",
+      "regime": "UP",
+      "duration_seconds": 6.008
+    },
+    {
+      "round": 8,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020135952",
+      "regime": "DOWN",
+      "duration_seconds": 5.816
+    },
+    {
+      "round": 9,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020135958",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.837
+    },
+    {
+      "round": 10,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140004",
+      "regime": "UP",
+      "duration_seconds": 5.954
+    },
+    {
+      "round": 11,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140010",
+      "regime": "DOWN",
+      "duration_seconds": 5.844
+    },
+    {
+      "round": 12,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140016",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.861
+    },
+    {
+      "round": 13,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140022",
+      "regime": "UP",
+      "duration_seconds": 5.962
+    },
+    {
+      "round": 14,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140028",
+      "regime": "DOWN",
+      "duration_seconds": 5.992
+    },
+    {
+      "round": 15,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140034",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.953
+    },
+    {
+      "round": 16,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140040",
+      "regime": "UP",
+      "duration_seconds": 5.956
+    },
+    {
+      "round": 17,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140046",
+      "regime": "DOWN",
+      "duration_seconds": 6.001
+    },
+    {
+      "round": 18,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140052",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.905
+    },
+    {
+      "round": 19,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140057",
+      "regime": "UP",
+      "duration_seconds": 5.954
+    },
+    {
+      "round": 20,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140103",
+      "regime": "DOWN",
+      "duration_seconds": 5.999
+    },
+    {
+      "round": 21,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140110",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 6.006
+    },
+    {
+      "round": 22,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140116",
+      "regime": "UP",
+      "duration_seconds": 5.853
+    },
+    {
+      "round": 23,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140121",
+      "regime": "DOWN",
+      "duration_seconds": 5.909
+    },
+    {
+      "round": 24,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140127",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.87
+    },
+    {
+      "round": 25,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140133",
+      "regime": "UP",
+      "duration_seconds": 5.908
+    },
+    {
+      "round": 26,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140139",
+      "regime": "DOWN",
+      "duration_seconds": 5.875
+    },
+    {
+      "round": 27,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140145",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 6.119
+    },
+    {
+      "round": 28,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140151",
+      "regime": "UP",
+      "duration_seconds": 5.837
+    },
+    {
+      "round": 29,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140157",
+      "regime": "DOWN",
+      "duration_seconds": 5.838
+    },
+    {
+      "round": 30,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140203",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 6.032
+    },
+    {
+      "round": 31,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140209",
+      "regime": "UP",
+      "duration_seconds": 5.827
+    },
+    {
+      "round": 32,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140215",
+      "regime": "DOWN",
+      "duration_seconds": 5.857
+    },
+    {
+      "round": 33,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140221",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.993
+    },
+    {
+      "round": 34,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140227",
+      "regime": "UP",
+      "duration_seconds": 5.947
+    },
+    {
+      "round": 35,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140233",
+      "regime": "DOWN",
+      "duration_seconds": 5.936
+    },
+    {
+      "round": 36,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140239",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.991
+    },
+    {
+      "round": 37,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140245",
+      "regime": "UP",
+      "duration_seconds": 5.923
+    },
+    {
+      "round": 38,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140251",
+      "regime": "DOWN",
+      "duration_seconds": 5.828
+    },
+    {
+      "round": 39,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140257",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.9
+    },
+    {
+      "round": 40,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140303",
+      "regime": "UP",
+      "duration_seconds": 6.049
+    },
+    {
+      "round": 41,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140309",
+      "regime": "DOWN",
+      "duration_seconds": 5.87
+    },
+    {
+      "round": 42,
+      "all_success": true,
+      "symbols_passed": 9,
+      "symbols_total": 9,
+      "shard_date": "20261020140314",
+      "regime": "SIDEWAYS",
+      "duration_seconds": 5.873
     }
   ],
-  "consistency_pass": true,
-  "authorization": "USER-A01",
-  "mode": "STABILITY_TEST",
-  "is_dry_run": false,
-  "stability_test_ignited": true,
-  "trading_days": 7,
-  "rounds_per_day": 6,
-  "total_stress_rounds": 42,
+  "consistency_check": {
+    "workorder": "DSHC-TASK-012",
+    "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
+    "generated_at": "2026-10-20T14:03:50+08:00",
+    "rounds": 5,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "HC.SHF",
+      "NI.SHF",
+      "PB.SHF",
+      "RB.SHF",
+      "SN.SHF",
+      "ZN.SHF",
+      "LC.GFE"
+    ],
+    "all_success": true,
+    "lock_conflicts": 0,
+    "cross_contamination": 0,
+    "sha_stability": {
+      "AL.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "EB6BBBED4647552220574A9A731549FE253E4259FA49DBB1EAB72A3C1B8F7E34"
+        ],
+        "stable": true
+      },
+      "CU.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "405E9FA87C4777B1FA8F5CAE73FB46965949D1897DB8EFDFD48341280169A980"
+        ],
+        "stable": true
+      },
+      "HC.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "9CC0EA73FA13F4CB5CE40261DD4189810740A573313E9B0C0083461DA25E2AEC"
+        ],
+        "stable": true
+      },
+      "NI.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "EA1C875D4932503B8593B6526A0DAA4002D31E3D467AF8B27EDCBC43A29C1C36"
+        ],
+        "stable": true
+      },
+      "PB.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "A7DA5DBA41C18BDF8F3F75724EED7050ECBF449ABE79570223617F5F1D76CE58"
+        ],
+        "stable": true
+      },
+      "RB.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "32BDC8D52F6326F451E5D4DA26F4D03E16A84234799C1DF9415AD96DF51CA62A"
+        ],
+        "stable": true
+      },
+      "SN.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "3829DBD3A08209D3A3D18E6BF4360BFD4BEE609C31FD424AA469A87B0B1B9F86"
+        ],
+        "stable": true
+      },
+      "ZN.SHF": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "E7C20AAF9DC7C5F7563A7D016574DF2DECCA2DDEFE9597BB7110B8B264E0191C"
+        ],
+        "stable": true
+      },
+      "LC.GFE": {
+        "rounds_with_sha": 5,
+        "unique_shas": 1,
+        "sha_values": [
+          "D293102CA4D7F15432A6C7E68C4A53D388C883D400562BA89BA21FEC46D89719"
+        ],
+        "stable": true
+      }
+    },
+    "row_consistency": {
+      "AL.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "CU.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "HC.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "NI.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "PB.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "RB.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "SN.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "ZN.SHF": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      },
+      "LC.GFE": {
+        "rounds": 5,
+        "row_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "unique_counts": 1,
+        "consistent": true
+      }
+    },
+    "timeline_sorted": true,
+    "round_details": [
+      {
+        "round": 1,
+        "all_success": true,
+        "symbols_passed": 9,
+        "symbols_total": 9
+      },
+      {
+        "round": 2,
+        "all_success": true,
+        "symbols_passed": 9,
+        "symbols_total": 9
+      },
+      {
+        "round": 3,
+        "all_success": true,
+        "symbols_passed": 9,
+        "symbols_total": 9
+      },
+      {
+        "round": 4,
+        "all_success": true,
+        "symbols_passed": 9,
+        "symbols_total": 9
+      },
+      {
+        "round": 5,
+        "all_success": true,
+        "symbols_passed": 9,
+        "symbols_total": 9
+      }
+    ],
+    "consistency_pass": true
+  },
+  "lock_test": {
+    "all_pass": true,
+    "details": {
+      "acquire_global": {
+        "success": true,
+        "message": "acquired"
+      },
+      "acquire_global_twice": {
+        "success": false,
+        "message": "Global lock held by PID 21940, blocking"
+      },
+      "release_global": {
+        "lock_released": true
+      },
+      "shard_locks": {
+        "all_acquired": true,
+        "details": {
+          "AL.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "CU.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "HC.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "NI.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "PB.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "RB.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "SN.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "ZN.SHF": {
+            "success": true,
+            "message": "acquired"
+          },
+          "LC.GFE": {
+            "success": true,
+            "message": "acquired"
+          }
+        }
+      },
+      "stale_lock_cleanup": {
+        "stale_found": [],
+        "cleaned": []
+      },
+      "stale_lock_override": {
+        "success": true,
+        "message": "acquired",
+        "expected": true
+      },
+      "lock_stats": {
+        "total_attempts": 12,
+        "global_conflicts": 1,
+        "shard_conflicts": 0,
+        "total_conflicts": 1,
+        "global_lock_timeout_sec": 120,
+        "shard_lock_timeout_sec": 120,
+        "global_lock_file": "artifacts\\backtest_archive\\data_assets\\.parallel_global_lock"
+      }
+    }
+  },
+  "resource_stability": {
+    "rounds_analyzed": 42,
+    "total_duration_sec": 248.706,
+    "avg_duration_sec": 5.922,
+    "max_duration_sec": 6.119,
+    "min_duration_sec": 5.816,
+    "total_rows": 2268,
+    "throughput_rows_per_sec": 9.12,
+    "queue_peak_max": 9,
+    "memory_tracking_available": false,
+    "open_file_handles": -1,
+    "conflicts": 0,
+    "cross_contamination": 0,
+    "timeouts": 0,
+    "consistency_pass": true,
+    "lock_test_pass": true
+  },
+  "lock_conflicts": 0,
+  "cross_contamination": 0,
+  "timeouts": 0,
   "regime_counts": {
     "UP": 14,
     "DOWN": 14,
     "SIDEWAYS": 14
-  },
-  "window_counts": {
-    "AL.SHF": 42,
-    "CU.SHF": 42,
-    "HC.SHF": 42,
-    "NI.SHF": 42,
-    "PB.SHF": 42,
-    "RB.SHF": 42,
-    "SN.SHF": 42,
-    "ZN.SHF": 42,
-    "LC.GFE": 42
-  },
-  "total_down_cumulative": 21,
-  "down_threshold_met": true,
-  "stress_lock_conflicts": 0,
-  "stress_cross_contamination": 0,
-  "stress_timeouts": 0
+  }
 }

@@ -1,0 +1,190 @@
+{
+  "workorder": "DSHC-TASK-016",
+  "token": "DSHC-TASK016-DATA-EXTEND-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T13:59:10+08:00",
+  "oi_change_threshold": -0.3,
+  "contract_rollover_sim_days": 40,
+  "symbols_processed": 9,
+  "total_switch_events": 25,
+  "total_rollover_rows": 2160,
+  "per_symbol_stats": {
+    "AL.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 2,
+      "switch_indices": [
+        16,
+        31
+      ],
+      "switch_dates": [
+        "2026-09-17",
+        "2026-10-08"
+      ],
+      "avg_oi": 1471364.27,
+      "min_oi": 722859,
+      "max_oi": 2269209,
+      "min_oi_change_rate": -0.565557,
+      "threshold_met": true
+    },
+    "CU.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 4,
+      "switch_indices": [
+        5,
+        15,
+        28,
+        35
+      ],
+      "switch_dates": [
+        "2026-09-02",
+        "2026-09-16",
+        "2026-10-05",
+        "2026-10-14"
+      ],
+      "avg_oi": 210128.98,
+      "min_oi": 51562,
+      "max_oi": 537221,
+      "min_oi_change_rate": -0.528929,
+      "threshold_met": true
+    },
+    "HC.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 3,
+      "switch_indices": [
+        12,
+        17,
+        23
+      ],
+      "switch_dates": [
+        "2026-09-11",
+        "2026-09-18",
+        "2026-09-28"
+      ],
+      "avg_oi": 525679.7,
+      "min_oi": 133949,
+      "max_oi": 1173137,
+      "min_oi_change_rate": -0.64104,
+      "threshold_met": true
+    },
+    "NI.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 2,
+      "switch_indices": [
+        7,
+        25
+      ],
+      "switch_dates": [
+        "2026-09-04",
+        "2026-09-30"
+      ],
+      "avg_oi": 994557.0,
+      "min_oi": 618271,
+      "max_oi": 1500616,
+      "min_oi_change_rate": -0.493457,
+      "threshold_met": true
+    },
+    "PB.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 3,
+      "switch_indices": [
+        24,
+        25,
+        32
+      ],
+      "switch_dates": [
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-09"
+      ],
+      "avg_oi": 1289364.2,
+      "min_oi": 253425,
+      "max_oi": 2100229,
+      "min_oi_change_rate": -0.524961,
+      "threshold_met": true
+    },
+    "RB.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 3,
+      "switch_indices": [
+        11,
+        20,
+        35
+      ],
+      "switch_dates": [
+        "2026-09-10",
+        "2026-09-23",
+        "2026-10-14"
+      ],
+      "avg_oi": 645128.97,
+      "min_oi": 186918,
+      "max_oi": 1519682,
+      "min_oi_change_rate": -0.611812,
+      "threshold_met": true
+    },
+    "SN.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 3,
+      "switch_indices": [
+        25,
+        27,
+        35
+      ],
+      "switch_dates": [
+        "2026-09-30",
+        "2026-10-02",
+        "2026-10-14"
+      ],
+      "avg_oi": 539437.15,
+      "min_oi": 91981,
+      "max_oi": 865400,
+      "min_oi_change_rate": -0.624062,
+      "threshold_met": true
+    },
+    "ZN.SHF": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 2,
+      "switch_indices": [
+        8,
+        13
+      ],
+      "switch_dates": [
+        "2026-09-07",
+        "2026-09-14"
+      ],
+      "avg_oi": 578696.68,
+      "min_oi": 279308,
+      "max_oi": 1343311,
+      "min_oi_change_rate": -0.648206,
+      "threshold_met": true
+    },
+    "LC.GFE": {
+      "total_days": 40,
+      "total_oi_rows": 40,
+      "total_switches": 3,
+      "switch_indices": [
+        7,
+        11,
+        29
+      ],
+      "switch_dates": [
+        "2026-09-04",
+        "2026-09-10",
+        "2026-10-06"
+      ],
+      "avg_oi": 337197.9,
+      "min_oi": 91270,
+      "max_oi": 880345,
+      "min_oi_change_rate": -0.639562,
+      "threshold_met": true
+    }
+  },
+  "data_directory": "artifacts\\backtest_archive\\data_assets\\contract_rollover"
+}

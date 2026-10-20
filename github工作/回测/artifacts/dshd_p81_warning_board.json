@@ -1,958 +1,6 @@
 ﻿{
-    "updated_at":  "2026-10-20T11:45:40+08:00",
+    "updated_at":  "2026-10-20T14:02:16+08:00",
     "labels":  [
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T06:47:42+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  196,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T06:47:42+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  196,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T06:47:42+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  196,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=196; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T06:47:42+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  196,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T06:47:42+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  196,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T06:52:45+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  197,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T06:52:45+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  197,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T06:52:45+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  197,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=197; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T06:52:45+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  197,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T06:52:45+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  197,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T06:57:48+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  198,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T06:57:48+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  198,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T06:57:48+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  198,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=198; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T06:57:48+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  198,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T06:57:48+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  198,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:02:50+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  199,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:02:50+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  199,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:02:50+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  199,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=199; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:02:50+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  199,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:02:50+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  199,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:07:53+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  200,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:07:53+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  200,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:07:53+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  200,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=200; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:07:53+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  200,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:07:53+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  200,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:12:56+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  201,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:12:56+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  201,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:12:56+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  201,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=201; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:12:56+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  201,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:12:56+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  201,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:17:59+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  202,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:17:59+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  202,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:17:59+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  202,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=202; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:17:59+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  202,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:17:59+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  202,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:23:02+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  203,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:23:02+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  203,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:23:02+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  203,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=203; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:23:02+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  203,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:23:02+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  203,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:28:04+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  204,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:28:04+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  204,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:28:04+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  204,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=204; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:28:04+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  204,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:28:04+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  204,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:33:07+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  205,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:33:07+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  205,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:33:07+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  205,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=205; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:33:07+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  205,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:33:07+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  205,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:38:10+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  206,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:38:10+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  206,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:38:10+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  206,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=206; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:38:10+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  206,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:38:10+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  206,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:43:13+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  207,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:43:13+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  207,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:43:13+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  207,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=207; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:43:13+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  207,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:43:13+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  207,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:48:15+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  208,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:48:15+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  208,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:48:15+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  208,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=208; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:48:15+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  208,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:48:15+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  208,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:53:18+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  209,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:53:18+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  209,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:53:18+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  209,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=209; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:53:18+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  209,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:53:18+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  209,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T07:58:22+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  210,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T07:58:22+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  210,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T07:58:22+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  210,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=210; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T07:58:22+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  210,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T07:58:22+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  210,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:03:26+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  211,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:03:26+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  211,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:03:26+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  211,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=211; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:03:26+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  211,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:03:26+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  211,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:08:29+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  212,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:08:29+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  212,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:08:29+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  212,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=212; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:08:29+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  212,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:08:29+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  212,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:13:33+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  213,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:13:33+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  213,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:13:33+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  213,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=213; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:13:33+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  213,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:13:33+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  213,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:18:36+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  214,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:18:36+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  214,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:18:36+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  214,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=214; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:18:36+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  214,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:18:36+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  214,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:23:39+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  215,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:23:39+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  215,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:23:39+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  215,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=215; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:23:39+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  215,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:23:39+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  215,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:28:41+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  216,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:28:41+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  216,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:28:41+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  216,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=216; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:28:41+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  216,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:28:41+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  216,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:33:44+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  217,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:33:44+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  217,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:33:44+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  217,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=217; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:33:44+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  217,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:33:44+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  217,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:38:47+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  218,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:38:47+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  218,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:38:47+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  218,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=218; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:38:47+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  218,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:38:47+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  218,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:43:50+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  219,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:43:50+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  219,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:43:50+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  219,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=219; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:43:50+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  219,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:43:50+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  219,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:48:53+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  220,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:48:53+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  220,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:48:53+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  220,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=220; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:48:53+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  220,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:48:53+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  220,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:53:56+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  221,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:53:56+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  221,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:53:56+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  221,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=221; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:53:56+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  221,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:53:56+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  221,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T08:58:59+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  222,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
-                       "ts":  "2026-10-20T08:58:59+08:00",
-                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
-                       "poll_count":  222,
-                       "severity":  "INFO"
-                   },
-                   {
-                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
-                       "ts":  "2026-10-20T08:58:59+08:00",
-                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
-                       "poll_count":  222,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=222; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
-                       "ts":  "2026-10-20T08:58:59+08:00",
-                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
-                       "poll_count":  222,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
-                       "ts":  "2026-10-20T08:58:59+08:00",
-                       "code":  "SKILL-001-FILE-UNDECLARED",
-                       "poll_count":  222,
-                       "severity":  "YELLOW"
-                   },
-                   {
-                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
-                       "ts":  "2026-10-20T09:04:03+08:00",
-                       "code":  "A01_HASH_MISMATCH_WARNING",
-                       "poll_count":  223,
-                       "severity":  "YELLOW"
-                   },
                    {
                        "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
                        "ts":  "2026-10-20T09:04:03+08:00",
@@ -2100,11 +1148,963 @@
                        "code":  "SKILL-001-FILE-UNDECLARED",
                        "poll_count":  255,
                        "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T11:50:43+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  256,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T11:50:43+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  256,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T11:50:43+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  256,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=256; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T11:50:43+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  256,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T11:50:43+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  256,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T11:55:46+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  257,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T11:55:46+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  257,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T11:55:46+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  257,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=257; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T11:55:46+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  257,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T11:55:46+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  257,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:00:49+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  258,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:00:49+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  258,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:00:49+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  258,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=258; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:00:49+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  258,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:00:49+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  258,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:05:52+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  259,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:05:52+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  259,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:05:52+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  259,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=259; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:05:52+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  259,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:05:52+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  259,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:10:55+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  260,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:10:55+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  260,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:10:55+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  260,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=260; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:10:55+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  260,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:10:55+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  260,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:15:58+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  261,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:15:58+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  261,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:15:58+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  261,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=261; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:15:58+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  261,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:15:58+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  261,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:21:01+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  262,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:21:01+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  262,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:21:01+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  262,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=262; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:21:01+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  262,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:21:01+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  262,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:26:05+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  263,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:26:05+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  263,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:26:05+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  263,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=263; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:26:05+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  263,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:26:05+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  263,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:31:09+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  264,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:31:09+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  264,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:31:09+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  264,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=264; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:31:09+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  264,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:31:09+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  264,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:36:13+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  265,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:36:13+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  265,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:36:13+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  265,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=265; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:36:13+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  265,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:36:13+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  265,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:41:16+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  266,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:41:16+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  266,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:41:16+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  266,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=266; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:41:16+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  266,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:41:16+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  266,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:46:20+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  267,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:46:20+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  267,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:46:20+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  267,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=267; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:46:20+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  267,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:46:20+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  267,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:51:24+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  268,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:51:24+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  268,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:51:24+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  268,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=268; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:51:24+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  268,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:51:24+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  268,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T12:56:28+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  269,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T12:56:28+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  269,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T12:56:28+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  269,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=269; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T12:56:28+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  269,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T12:56:28+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  269,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:01:32+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  270,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:01:32+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  270,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:01:32+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  270,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=270; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:01:32+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  270,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:01:32+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  270,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:06:35+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  271,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:06:35+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  271,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:06:35+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  271,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=271; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:06:35+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  271,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:06:35+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  271,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:11:38+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  272,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:11:38+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  272,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:11:38+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  272,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=272; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:11:38+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  272,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:11:38+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  272,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:16:42+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  273,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:16:42+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  273,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:16:42+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  273,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=273; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:16:42+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  273,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:16:42+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  273,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:21:45+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  274,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:21:45+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  274,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:21:45+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  274,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=274; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:21:45+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  274,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:21:45+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  274,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:26:50+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  275,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:26:50+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  275,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_a01_file_evidence.json :: same path observed with different agent tags across polls; multi-writer on shared artifact: from= to=A01-USER-REMOTE-002",
+                       "ts":  "2026-10-20T13:26:50+08:00",
+                       "code":  "CONCURRENT_WRITE_CONFLICT",
+                       "poll_count":  275,
+                       "severity":  "WARN"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:26:50+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  275,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=275; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:26:50+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  275,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:26:50+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  275,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:31:53+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  276,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:31:53+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  276,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:31:53+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  276,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=276; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:31:53+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  276,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:31:53+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  276,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:36:57+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  277,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:36:57+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  277,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:36:57+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  277,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=277; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:36:57+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  277,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:36:57+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  277,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:42:01+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  278,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:42:01+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  278,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:42:01+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  278,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=278; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:42:01+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  278,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:42:01+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  278,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:47:05+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  279,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:47:05+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  279,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:47:05+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  279,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=279; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:47:05+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  279,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:47:05+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  279,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:52:09+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  280,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:52:09+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  280,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:52:09+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  280,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=280; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:52:09+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  280,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:52:09+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  280,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T13:57:13+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  281,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T13:57:13+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  281,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T13:57:13+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  281,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=281; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T13:57:13+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  281,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T13:57:13+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  281,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)",
+                       "ts":  "2026-10-20T14:02:16+08:00",
+                       "code":  "A01_HASH_MISMATCH_WARNING",
+                       "poll_count":  282,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "artifacts\\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=",
+                       "ts":  "2026-10-20T14:02:16+08:00",
+                       "code":  "OWNER_PATH_MODIFIED_THIS_POLL",
+                       "poll_count":  282,
+                       "severity":  "INFO"
+                   },
+                   {
+                       "detail":  "DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention",
+                       "ts":  "2026-10-20T14:02:16+08:00",
+                       "code":  "EXCH-001-ATTRIBUTED-MISMATCH",
+                       "poll_count":  282,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=282; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention",
+                       "ts":  "2026-10-20T14:02:16+08:00",
+                       "code":  "P49-001-ARTIFACT-UNEXPECTED",
+                       "poll_count":  282,
+                       "severity":  "YELLOW"
+                   },
+                   {
+                       "detail":  "skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\\factors_metadata.json,output\\factors_output.csv,output\\smoke_test\\factors_metadata.json,output\\smoke_test\\factors_output.csv,tests\\abnormal_test_results.json,tests\\COLLECTION_RISK_LIST.md,tests\\data_quality_checklist.md,tests\\run_abnormal_tests.py,tests\\shfe_rb_hc_sample.csv,tests\\shfe_rb_hc_template.json,tests\\shfe_rb_hc_template.py,__pycache__\\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only",
+                       "ts":  "2026-10-20T14:02:16+08:00",
+                       "code":  "SKILL-001-FILE-UNDECLARED",
+                       "poll_count":  282,
+                       "severity":  "YELLOW"
                    }
                ],
     "agent":  "DSHD-P81",
     "a01_tag":  "A01-USER-REMOTE-003",
-    "poll_count":  255,
+    "poll_count":  282,
     "rule_ids":  [
                      "OBS-SPAWN-EXCEL-001",
                      "OBS-SPAWN-EXCEL-001-TRANSIENT",

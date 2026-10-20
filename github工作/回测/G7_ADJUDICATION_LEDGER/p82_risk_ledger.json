@@ -1,8 +1,8 @@
 {
   "ledger_id": "DSHD-P82-RISK-LEDGER",
-  "version": "4.2.0-TASK042",
+  "version": "4.3.0-TASK043",
   "created_at": "2026-10-19T20:05:22+08:00",
-  "updated_at": "2026-10-20T11:37:28+08:00",
+  "updated_at": "2026-10-20T12:40:18+08:00",
   "risk_entries": [
     {
       "factor": "oi_change_1d",
@@ -280,6 +280,183 @@
       "updated_at": "2026-10-20T08:10:42+08:00",
       "detail": "文档持久化修复: 第12-14章已拆分至独立子文件 dshd_cluster_brief_regime_crowding.md, 不再被P81巡检覆盖",
       "source": "DSHD-TASK040"
+    },
+    {
+      "source": "DSHD-TASK043",
+      "factor": "COMPOSITE_SIGNAL_FLIP_RATE",
+      "risk_type": "SIGNAL_FLIP_MONITORING",
+      "status": "WATCH",
+      "severity": "INFO",
+      "composite_flip_rate": 0.3207,
+      "alert_count": 2,
+      "watch_count": 3,
+      "stable_count": 3,
+      "total_factors": 8,
+      "alert_threshold": 0.5,
+      "watch_threshold": 0.3,
+      "timestamp": "2026-10-20T12:40:18+08:00",
+      "cycle_id": "TASK-043-COMPOSITE-FLIP"
+    },
+    {
+      "source": "DSHD-TASK043",
+      "factor": "ALERT_CLASSIFICATION_PIPELINE_FAULT",
+      "risk_type": "ALERT_CLASSIFICATION_PIPELINE_FAULT",
+      "status": "ALERT",
+      "severity": "HIGH",
+      "count": 32,
+      "alert_details": [
+        {
+          "type": "COLLECTION_TIMEOUT",
+          "count": 4,
+          "severity": "HIGH",
+          "description": "4 collection timeout(s) detected in DSHC events"
+        },
+        {
+          "type": "DSHC_PIPELINE_ERROR",
+          "count": 28,
+          "severity": "MEDIUM",
+          "description": "28 DSHC pipeline error/fail event(s) detected"
+        }
+      ],
+      "timestamp": "2026-10-20T12:40:18+08:00",
+      "cycle_id": "TASK-043-CLASSIFY-PIPELINE_FAULT"
+    },
+    {
+      "source": "DSHD-TASK043",
+      "factor": "ALERT_CLASSIFICATION_FACTOR_CROWDING",
+      "risk_type": "ALERT_CLASSIFICATION_FACTOR_CROWDING",
+      "status": "WARNING",
+      "severity": "LOW",
+      "count": 7,
+      "alert_details": [
+        {
+          "factor": "oi_change_1d",
+          "score": 37.1,
+          "p90_threshold": 47.6,
+          "flags": [
+            "VALUE_CONCENTRATED"
+          ],
+          "severity": "INFO"
+        },
+        {
+          "factor": "oi_change_rate_7d",
+          "score": 20.19,
+          "p90_threshold": 47.6,
+          "flags": [
+            "VALUE_CONCENTRATED"
+          ],
+          "severity": "INFO"
+        },
+        {
+          "factor": "oi_level",
+          "score": 46.84,
+          "p90_threshold": 47.6,
+          "flags": [
+            "DIRECTIONAL_CROWDED"
+          ],
+          "severity": "INFO"
+        },
+        {
+          "factor": "realized_vol_20d",
+          "score": 47.58,
+          "p90_threshold": 47.6,
+          "flags": [
+            "DIRECTIONAL_CROWDED",
+            "VALUE_CONCENTRATED"
+          ],
+          "severity": "INFO"
+        },
+        {
+          "factor": "vol_regime_change",
+          "score": 15.64,
+          "p90_threshold": 47.6,
+          "flags": [
+            "VALUE_CONCENTRATED"
+          ],
+          "severity": "INFO"
+        }
+      ],
+      "timestamp": "2026-10-20T12:40:18+08:00",
+      "cycle_id": "TASK-043-CLASSIFY-FACTOR_CROWDING"
+    },
+    {
+      "source": "DSHD-TASK043",
+      "factor": "ALERT_CLASSIFICATION_SIGNAL_FLIP",
+      "risk_type": "ALERT_CLASSIFICATION_SIGNAL_FLIP",
+      "status": "ALERT",
+      "severity": "HIGH",
+      "count": 6,
+      "alert_details": [
+        {
+          "type": "COMPOSITE_FLIP_RATE_WATCH",
+          "flip_rate": 0.3207,
+          "threshold": 0.3,
+          "severity": "MEDIUM",
+          "description": "Composite signal flip rate 32.07% >= WATCH threshold 30%"
+        },
+        {
+          "type": "FACTOR_FLIP_WATCH",
+          "factor": "oi_change_1d",
+          "flip_rate": 0.3,
+          "threshold": 0.3,
+          "severity": "MEDIUM",
+          "description": "Factor oi_change_1d flip rate 30.00% >= WATCH threshold"
+        },
+        {
+          "type": "FACTOR_FLIP_WATCH",
+          "factor": "oi_change_rate_7d",
+          "flip_rate": 0.45,
+          "threshold": 0.3,
+          "severity": "MEDIUM",
+          "description": "Factor oi_change_rate_7d flip rate 45.00% >= WATCH threshold"
+        },
+        {
+          "type": "FACTOR_FLIP_ALERT",
+          "factor": "oi_level",
+          "flip_rate": 0.5,
+          "threshold": 0.5,
+          "severity": "HIGH",
+          "description": "Factor oi_level flip rate 50.00% >= ALERT threshold"
+        },
+        {
+          "type": "FACTOR_FLIP_ALERT",
+          "factor": "realized_vol_20d",
+          "flip_rate": 0.6316,
+          "threshold": 0.5,
+          "severity": "HIGH",
+          "description": "Factor realized_vol_20d flip rate 63.16% >= ALERT threshold"
+        }
+      ],
+      "timestamp": "2026-10-20T12:40:18+08:00",
+      "cycle_id": "TASK-043-CLASSIFY-SIGNAL_FLIP"
+    },
+    {
+      "source": "DSHD-TASK043",
+      "factor": "ALERT_CLASSIFICATION_PERFORMANCE_DRIFT",
+      "risk_type": "ALERT_CLASSIFICATION_PERFORMANCE_DRIFT",
+      "status": "WARNING",
+      "severity": "LOW",
+      "count": 2,
+      "alert_details": [
+        {
+          "type": "IC_FACTOR_HIGH_FLIP",
+          "factor": "oi_level",
+          "flip_rate": 0.5,
+          "threshold": 0.5,
+          "severity": "WARNING",
+          "description": "IC factor oi_level has high flip rate 50.00%"
+        },
+        {
+          "type": "IC_FACTOR_HIGH_FLIP",
+          "factor": "realized_vol_20d",
+          "flip_rate": 0.6316,
+          "threshold": 0.5,
+          "severity": "WARNING",
+          "description": "IC factor realized_vol_20d has high flip rate 63.16%"
+        }
+      ],
+      "timestamp": "2026-10-20T12:40:18+08:00",
+      "cycle_id": "TASK-043-CLASSIFY-PERFORMANCE_DRIFT"
     }
   ],
   "last_monitor_run": "2026-10-19T23:42:48+08:00",
@@ -310,5 +487,5 @@
   "last_watcher_fix_run": "2026-10-20T08:10:42+08:00",
   "watcher_fix_task": "DSHD-TASK-040-WATCHER-FIX",
   "watcher_fix_token": "DSHD-TASK040-TOKEN",
-  "version_history_note": "v4.2.0-TASK042: Cleaned 0 duplicate entries (from 23 to 23)"
+  "version_history_note": "v4.3.0-TASK043: Cleaned 5 duplicate entries (from 28 to 23), added 5 TASK-043 entries (composite flip + alert classification)"
 }

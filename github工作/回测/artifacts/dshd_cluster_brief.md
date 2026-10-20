@@ -1,6 +1,6 @@
 ﻿DSHD-P81 集群状态简报
 
-生成时间: 2026-10-20 11:45:40 (GMT+8)
+生成时间: 2026-10-20 14:02:16 (GMT+8)
 token: DSHD-P81-TOKEN (AUDIT_READ_ONLY) | auth_ref: A01-USER-REMOTE-003
 模式: 领地契约固化 · Excel 漂移观测器 · 交易所归属校验 · P49 产物只读审计 · Skill 目录哈希监控
 
@@ -10,7 +10,7 @@ token: DSHD-P81-TOKEN (AUDIT_READ_ONLY) | auth_ref: A01-USER-REMOTE-003
 |---|---|---|---|
 | DSHC | 复盘已归档 | artifacts/dshc_postmortem_receipt.json @ 2026-10-19T08:05:00+08:00 | wind_api_calls=0; token_state=EXHAUSTED; root=NO_TRY_FINALLY_CLEANUP; guard_rules=5 |
 | DSHA | FINAL_STANDBY_LOCKED | artifacts/dsha_a02_plus_receipt.json @  | P68=FINAL_STANDBY_LOCKED commit=8ebe3b7; gate=CLOSED/HOLD; permit=NOT_ISSUED |
-| DSHD | 审计值守 | poll#255 @ 2026-10-20T11:45:40+08:00 | audit_only=YES; excel_observer=ON; tag=A01-USER-REMOTE-003 |
+| DSHD | 审计值守 | poll#282 @ 2026-10-20T14:02:16+08:00 | audit_only=YES; excel_observer=ON; tag=A01-USER-REMOTE-003 |
 
 二、OBS-SPAWN-EXCEL-001 漂移观测
 
@@ -57,11 +57,11 @@ token: DSHD-P81-TOKEN (AUDIT_READ_ONLY) | auth_ref: A01-USER-REMOTE-003
 
 五、告警看板
 
-- [YELLOW] A01_HASH_MISMATCH_WARNING @ 2026-10-20T11:45:40+08:00 :: hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)
-- [INFO] OWNER_PATH_MODIFIED_THIS_POLL @ 2026-10-20T11:45:40+08:00 :: artifacts\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=
-- [YELLOW] EXCH-001-ATTRIBUTED-MISMATCH @ 2026-10-20T11:45:40+08:00 :: DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention
-- [YELLOW] P49-001-ARTIFACT-UNEXPECTED @ 2026-10-20T11:45:40+08:00 :: P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=255; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention
-- [YELLOW] SKILL-001-FILE-UNDECLARED @ 2026-10-20T11:45:40+08:00 :: skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\factors_metadata.json,output\factors_output.csv,output\smoke_test\factors_metadata.json,output\smoke_test\factors_output.csv,tests\abnormal_test_results.json,tests\COLLECTION_RISK_LIST.md,tests\data_quality_checklist.md,tests\run_abnormal_tests.py,tests\shfe_rb_hc_sample.csv,tests\shfe_rb_hc_template.json,tests\shfe_rb_hc_template.py,__pycache__\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only
+- [YELLOW] A01_HASH_MISMATCH_WARNING @ 2026-10-20T14:02:16+08:00 :: hash A==B but differs from DSHC cross_agent reference; reference likely stale (scan_status=A_EQ_B_REF_STALE_MISMATCH)
+- [INFO] OWNER_PATH_MODIFIED_THIS_POLL @ 2026-10-20T14:02:16+08:00 :: artifacts\dshd_p80_phase2_a01_audit_snapshot.json :: owner-exclusive path advanced this poll; expected owner=DSHD-P80-PHASE2: from= to=
+- [YELLOW] EXCH-001-ATTRIBUTED-MISMATCH @ 2026-10-20T14:02:16+08:00 :: DSHC artifact references LC.SHF (MISMATCH) :: LC belongs to GFE but is bound to SHF; no intervention; no_data_present=True; files=dshc_f01_events.jsonl,dshc_f01_receipt.json,dshc_ignite_a01_events.jsonl,dshc_ignite_run_receipt.json,dshc_ignite_run_receipt_A01_USER_REMOTE_001.json,dshc_ignite_run_receipt_A02_wait_cycle1.json,dshc_ignite_run_receipt_A02_wait_cycle2.json,dshc_p90a_final_events.jsonl,dshc_raw_preview_check.json,dshc_t1_fetch_events.jsonl,dshc_t1_lessons.json,dshc_t1_run_receipt.json; observation only, no intervention
+- [YELLOW] P49-001-ARTIFACT-UNEXPECTED @ 2026-10-20T14:02:16+08:00 :: P49 archive sealed (MANIFEST.status=BACKTEST_COMPLETE at 2026-10-19T10:56:08+08:00) but mutated post-seal: kinds=ADDED_UNDECLARED; continuous_alert_polls=282; cold_start=False; undeclared=baseline_lock.json,comparison_framework.md,factor_candidate_list.md,optimization_params.json,pipeline_v2_draft.py; modified=; removed=; declared_missing=; observation only, no intervention
+- [YELLOW] SKILL-001-FILE-UNDECLARED @ 2026-10-20T14:02:16+08:00 :: skill dir contains file(s) not declared in manifest.json: data_sha256.txt,generate_aligned_csv.py,output\factors_metadata.json,output\factors_output.csv,output\smoke_test\factors_metadata.json,output\smoke_test\factors_output.csv,tests\abnormal_test_results.json,tests\COLLECTION_RISK_LIST.md,tests\data_quality_checklist.md,tests\run_abnormal_tests.py,tests\shfe_rb_hc_sample.csv,tests\shfe_rb_hc_template.json,tests\shfe_rb_hc_template.py,__pycache__\factor_extract_v1.cpython-312.pyc; declared_count=4; observation only
 
 六、长表主键 + 品种白名单 + 交易所归属
 
@@ -171,15 +171,15 @@ DSHC 归属档案扫描: 文件 23 个; 命中品种令牌 7 个; 交易所归�
 
 九、P0 校验
 
-P0 校验: 6/9
+P0 校验: 5/9
 - [PASS] excel_pid_14644 = ALIVE (protected)
-- [PASS] gate_closed = CLOSED/HOLD (line 10654)
+- [PASS] gate_closed = CLOSED/HOLD (line 14939)
 - [FAIL] pwsh_13_p77 = pids=0
-- [FAIL] script_bom_intact = bom=False size=141340
+- [FAIL] script_bom_intact = bom=False size=158604
 - [PASS] self_p81 = pids=1
 - [FAIL] pwsh_30_p80 = pids=0
-- [PASS] pid_3472 = ALIVE
-- [PASS] permit_not_issued = NOT_ISSUED (line 10654)
+- [FAIL] pid_3472 = DEAD
+- [PASS] permit_not_issued = NOT_ISSUED (line 14939)
 - [PASS] pwsh_37_phase2 = pids=1
 
 十、红线确认

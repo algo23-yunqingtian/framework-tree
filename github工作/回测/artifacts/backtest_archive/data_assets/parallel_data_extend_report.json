@@ -1,0 +1,119 @@
+{
+  "workorder": "DSHC-TASK-016",
+  "token": "DSHC-TASK016-DATA-EXTEND-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T14:03:50+08:00",
+  "mode": "DATA_EXTEND",
+  "is_dry_run": false,
+  "wind_api_calls": 0,
+  "rolling_window": {
+    "days_planned": 40,
+    "days_completed": 40,
+    "days_success": 40,
+    "shards_generated": 360,
+    "total_rows": 2160,
+    "total_duration_sec": 236.519,
+    "conflicts": 0,
+    "cross_contamination": 0,
+    "regime_cycle": [
+      "UP",
+      "DOWN",
+      "SIDEWAYS"
+    ],
+    "pass": true
+  },
+  "contract_rollover": {
+    "symbols_processed": 9,
+    "total_switch_events": 25,
+    "total_rollover_rows": 2160,
+    "oi_change_threshold": -0.3,
+    "rollover_sim_days": 40,
+    "per_symbol_switches": {
+      "AL.SHF": 2,
+      "CU.SHF": 4,
+      "HC.SHF": 3,
+      "NI.SHF": 2,
+      "PB.SHF": 3,
+      "RB.SHF": 3,
+      "SN.SHF": 3,
+      "ZN.SHF": 2,
+      "LC.GFE": 3
+    },
+    "threshold_met_all": true,
+    "pass": true
+  },
+  "monitoring": {
+    "rounds_planned": 42,
+    "rounds_completed": 42,
+    "conflicts": 0,
+    "cross_contamination": 0,
+    "timeouts": 0,
+    "regime_counts": {
+      "UP": 14,
+      "DOWN": 14,
+      "SIDEWAYS": 14
+    },
+    "resource_stability": {
+      "rounds_analyzed": 42,
+      "total_duration_sec": 248.706,
+      "avg_duration_sec": 5.922,
+      "max_duration_sec": 6.119,
+      "min_duration_sec": 5.816,
+      "total_rows": 2268,
+      "throughput_rows_per_sec": 9.12,
+      "queue_peak_max": 9,
+      "memory_tracking_available": false,
+      "open_file_handles": -1,
+      "conflicts": 0,
+      "cross_contamination": 0,
+      "timeouts": 0,
+      "consistency_pass": true,
+      "lock_test_pass": true
+    },
+    "consistency_pass": true,
+    "lock_test_pass": true,
+    "pass": true
+  },
+  "dshd_alerts": {
+    "total_alerts": 19,
+    "alert_types": [
+      "DATA_EXTEND_ALERT_INTEGRATION_TEST",
+      "DATA_EXTEND_ANOMALY_EVENTS",
+      "DATA_EXTEND_CONTRACT_ROLLOVER_COMPLETE",
+      "DATA_EXTEND_DATA_INTEGRITY",
+      "DATA_EXTEND_DUAL_PIPELINE",
+      "DATA_EXTEND_LOCK_CONFLICT_LEDGER",
+      "DATA_EXTEND_MODE_SWITCH",
+      "DATA_EXTEND_PIPELINE_SUMMARY",
+      "DATA_EXTEND_ROLLING_WINDOW_COMPLETE",
+      "DATA_EXTEND_SHA_FINGERPRINT_LIST",
+      "DATA_EXTEND_SYMBOL_ROLLOVER_EVENTS"
+    ],
+    "alert_types_count": 11,
+    "alert_test_pass": true,
+    "total_sha_files": 1494,
+    "pass": true
+  },
+  "p0_pass": true,
+  "overall_pass": true,
+  "constraints": {
+    "v2_sha_unchanged": true,
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "artifacts": {
+    "data_extend_report": "artifacts\\backtest_archive\\data_assets\\parallel_data_extend_report.json",
+    "data_extend_snapshot": "artifacts\\backtest_archive\\data_assets\\parallel_data_extend_snapshot.json",
+    "sha_fingerprint_list": "artifacts\\backtest_archive\\data_assets\\parallel_sha_fingerprint_list.json",
+    "lock_conflict_ledger": "artifacts\\backtest_archive\\data_assets\\parallel_extend_lock_ledger.json",
+    "anomaly_events": "artifacts\\backtest_archive\\data_assets\\parallel_anomaly_events.json",
+    "rollover_summary": "artifacts\\backtest_archive\\data_assets\\contract_rollover\\rollover_summary.json",
+    "rolling_window_dir": "artifacts\\backtest_archive\\data_assets\\incremental\\rolling_window",
+    "contract_rollover_dir": "artifacts\\backtest_archive\\data_assets\\contract_rollover"
+  }
+}

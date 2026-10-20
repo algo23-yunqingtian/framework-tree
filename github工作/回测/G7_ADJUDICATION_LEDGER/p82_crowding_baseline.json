@@ -1,5 +1,5 @@
 {
-  "baseline_id": "DSHD-TASK042-CROWDING-BASELINE",
+  "baseline_id": "DSHD-TASK043-CROWDING-BASELINE",
   "version": "1.0.0",
   "generated_at": "2026-10-20T08:10:42+08:00",
   "task_id": "DSHD-TASK-040-WATCHER-FIX",
@@ -88,7 +88,7 @@
     "overall_level": "CROWDING_LOW"
   },
   "history_accumulation": {
-    "run_count": 9,
+    "run_count": 14,
     "runs": [
       {
         "run_id": 1,
@@ -215,9 +215,79 @@
           "spread_cs": 24.92,
           "momentum_20d": 16.94
         }
+      },
+      {
+        "run_id": 10,
+        "timestamp": "2026-10-20T12:36:43+08:00",
+        "source": "DSHD-TASK043",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 11,
+        "timestamp": "2026-10-20T12:38:03+08:00",
+        "source": "DSHD-TASK043",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 12,
+        "timestamp": "2026-10-20T12:38:27+08:00",
+        "source": "DSHD-TASK043",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 13,
+        "timestamp": "2026-10-20T12:38:38+08:00",
+        "source": "DSHD-TASK043",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
+      },
+      {
+        "run_id": 14,
+        "timestamp": "2026-10-20T12:40:18+08:00",
+        "source": "DSHD-TASK043",
+        "scores": {
+          "oi_change_1d": 37.1,
+          "oi_change_rate_7d": 20.19,
+          "oi_level": 46.84,
+          "realized_vol_20d": 47.58,
+          "vol_regime_change": 15.64,
+          "spread_cs": 24.92,
+          "momentum_20d": 16.94
+        }
       }
     ],
-    "note": "Baseline accumulated over 8 runs. Minimum 5 runs recommended for stable percentile thresholds."
+    "note": "Baseline accumulated over 13 runs. Minimum 5 runs recommended for stable percentile thresholds."
   },
   "thresholds_solidified": {
     "p90_percentile_threshold": 51.5,
@@ -229,5 +299,5 @@
     "hard_locked": true,
     "hard_lock_reason": "TASK-040 PERMANENT"
   },
-  "last_updated": "2026-10-20T11:42:17+08:00"
+  "last_updated": "2026-10-20T12:40:18+08:00"
 }

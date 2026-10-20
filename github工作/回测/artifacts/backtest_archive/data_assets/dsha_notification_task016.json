@@ -1,0 +1,32 @@
+{
+  "workorder": "DSHC-TASK-016",
+  "token": "DSHC-TASK016-DATA-EXTEND-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T14:03:50+08:00",
+  "notification_id": "DSHC-DSHA-NOTIFY-20261020140350",
+  "event": "NOTIFY_DATA_EXTEND_READY",
+  "status": "READY",
+  "next_action": "DSHA_START_LONG_WINDOW_FLIP_RATE_EVALUATION",
+  "dataset_info": {
+    "rolling_window_days": 40,
+    "rolling_window_shards": 360,
+    "rolling_window_rows": 2160,
+    "contract_rollover_symbols": 9,
+    "contract_rollover_switch_events": 25,
+    "contract_rollover_rows": 2160,
+    "oi_change_threshold": -0.3
+  },
+  "sha_fingerprint_list": "artifacts\\backtest_archive\\data_assets\\parallel_sha_fingerprint_list.json",
+  "data_extend_report": "artifacts\\backtest_archive\\data_assets\\parallel_data_extend_report.json",
+  "data_extend_snapshot": "artifacts\\backtest_archive\\data_assets\\parallel_data_extend_snapshot.json",
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha_unchanged": true,
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true
+  },
+  "receipt_marker": "DSHC_TASK016_DATA_EXTEND=COMPLETE"
+}
