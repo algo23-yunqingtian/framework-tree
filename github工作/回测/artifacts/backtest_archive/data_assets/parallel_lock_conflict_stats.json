@@ -1,7 +1,7 @@
 {
-  "workorder": "DSHC-TASK-012",
-  "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
-  "generated_at": "2026-10-20T08:05:33+08:00",
+  "workorder": "DSHC-TASK-013",
+  "token": "DSHC-TASK013-DATA-FETCH-TOKEN",
+  "generated_at": "2026-10-20T08:51:30+08:00",
   "global_timeout_sec": 120,
   "lock_stats": {
     "total_attempts": 12,
@@ -54,5 +54,7 @@
     "success": true,
     "message": "acquired",
     "expected": true
-  }
+  },
+  "authorization": "USER-A01",
+  "data_fetch_ignited": true
 }

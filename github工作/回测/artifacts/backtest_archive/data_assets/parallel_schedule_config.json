@@ -1,9 +1,9 @@
 {
   "config_id": "DSHC-PARALLEL-SCHEDULE-CONFIG",
-  "workorder": "DSHC-TASK-012",
-  "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
-  "generated_at": "2026-10-20T08:05:33+08:00",
-  "version": "1.0.0",
+  "workorder": "DSHC-TASK-013",
+  "token": "DSHC-TASK013-DATA-FETCH-TOKEN",
+  "generated_at": "2026-10-20T08:50:55+08:00",
+  "version": "2.0.0",
   "gate": "CLOSED/HOLD",
   "release_permit": "NOT_ISSUED",
   "wind_api_calls": 0,
@@ -24,7 +24,7 @@
       "arguments": "--parallel-run",
       "schedule_task": "DSHC-IncrPipelineParallel",
       "trigger": "WEEKDAYS 15:35",
-      "status": "ACTIVE",
+      "status": "DATA_FETCH_ACTIVE",
       "lock_file": "artifacts/backtest_archive/data_assets/.parallel_global_lock",
       "global_lock_timeout_sec": 120,
       "symbols": [
@@ -39,7 +39,9 @@
         "LC.GFE"
       ],
       "shard_dir": "artifacts/backtest_archive/data_assets/incremental/parallel/",
-      "dsha_sandbox_dir": "output_sample/parallel_shards/"
+      "dsha_sandbox_dir": "output_sample/parallel_shards/",
+      "data_collection_enabled": true,
+      "real_wind_call_authorized": true
     }
   },
   "mode_switch": {
@@ -47,7 +49,8 @@
     "serial_only": false,
     "parallel_only": false,
     "dual": true,
-    "description": "DUAL mode: serial and parallel pipelines run independently, parallel at 15:35 (5 min after serial at 15:30)"
+    "description": "DUAL mode: serial (15:30) + parallel (15:35), parallel pipeline data fetch ignited by DSHC-TASK-013",
+    "data_fetch_ignition": true
   },
   "constraints": {
     "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
@@ -56,6 +59,10 @@
     "wind_api_calls": 0,
     "gate": "CLOSED/HOLD",
     "release_permit": "NOT_ISSUED",
-    "lc_shf_blacklisted": true
-  }
+    "lc_shf_blacklisted": true,
+    "data_fetch_authorized": true,
+    "data_fetch_authorization": "USER-A01",
+    "data_fetch_workorder": "DSHC-TASK-013"
+  },
+  "authorization": "USER-A01"
 }

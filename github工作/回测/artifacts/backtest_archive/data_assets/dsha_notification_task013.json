@@ -1,0 +1,18 @@
+{
+  "notification_id": "DSHC-DATA-FETCH-TO-DSHA",
+  "workorder": "DSHC-TASK-013",
+  "token": "DSHC-TASK013-DATA-FETCH-TOKEN",
+  "authorization": "USER-A01",
+  "timestamp": "2026-10-20T08:51:30+08:00",
+  "action": "NOTIFY_DATA_FETCH_COMPLETE",
+  "message": "DSHC-TASK-013 并行流水线真实数据采集链路已完成。数据落盘完成，分片快照已生成，一致性报告已通过。请 DSHA 启动因子计算与动态加权回测。",
+  "data_fetch_status": "COMPLETE",
+  "total_runs": 9,
+  "total_rows": 54,
+  "lock_conflicts": 0,
+  "cross_contamination": 0,
+  "sha_stable": true,
+  "shard_dir": "artifacts/backtest_archive/data_assets/incremental/parallel/",
+  "dsha_sandbox_dir": "output_sample/parallel_shards/",
+  "next_action": "DSHA_START_FACTOR_CALCULATION_AND_DYNAMIC_WEIGHTED_BACKTEST"
+}

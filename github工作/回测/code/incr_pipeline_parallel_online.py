@@ -687,24 +687,29 @@ def run_parallel_round(
             p.start()
             processes.append((sym, p))
 
-        # Collect results
+        # Collect results — match by symbol field, not queue order
+        import queue as _queue
         results = {}
+        # Join all processes first
         for sym, proc in processes:
             proc.join(timeout=60)
+        # Drain queue and match by result's own symbol field
+        while True:
             try:
-                result = queue.get_nowait()
-                results[sym] = result
-            except Exception:
-                import queue as _queue
-                try:
-                    result = queue.get(timeout=5)
-                    results[sym] = result
-                except _queue.Empty:
-                    results[sym] = {
-                        "symbol": sym, "status": "TIMEOUT", "error": "Worker timed out",
-                        "sha256": None, "row_count": 0, "duration_seconds": 60.0,
-                        "round": round_id,
-                    }
+                result = queue.get(timeout=5)
+                sym_from_result = result.get("symbol", "")
+                if sym_from_result:
+                    results[sym_from_result] = result
+            except _queue.Empty:
+                break
+        # Add timeout stubs for any missing symbols
+        for sym, proc in processes:
+            if sym not in results:
+                results[sym] = {
+                    "symbol": sym, "status": "TIMEOUT", "error": "Worker timed out",
+                    "sha256": None, "row_count": 0, "duration_seconds": 60.0,
+                    "round": round_id,
+                }
 
         return {
             "round": round_id,

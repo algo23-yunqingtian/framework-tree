@@ -1,0 +1,34 @@
+{
+  "snapshot_id": "DSHC-DATA-FETCH-SNAPSHOT",
+  "workorder": "DSHC-TASK-013",
+  "token": "DSHC-TASK013-DATA-FETCH-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T08:51:30+08:00",
+  "manifest_version": "v2.4.0",
+  "gate": "CLOSED/HOLD",
+  "release_permit": "NOT_ISSUED",
+  "wind_api_calls": 0,
+  "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+  "v2_sha_short": "14950B9464BAEFD8",
+  "mode": "DATA_FETCH",
+  "is_dry_run": false,
+  "real_wind_call_authorized": true,
+  "dual_pipeline": true,
+  "data_fetch_results": {
+    "total_runs": 9,
+    "all_success": true,
+    "lock_conflicts": 0,
+    "cross_contamination": 0,
+    "total_rows_collected": 54,
+    "sha_stable": true
+  },
+  "constraints": {
+    "v2_sha_unchanged": true,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "receipt": "DSHC_TASK013_DATA_FETCH=COMPLETE｜data_fetch_pipeline_ignited=YES｜dual_pipeline_running=YES｜shard_data_collected=YES｜lock_control_intact=YES｜consistency_reports_generated=YES｜dshd_alerts_pushed=YES｜dsha_notified=YES"
+}
