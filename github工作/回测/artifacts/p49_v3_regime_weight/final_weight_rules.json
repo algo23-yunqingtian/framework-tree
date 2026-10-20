@@ -1,0 +1,120 @@
+{
+  "output_id": "DSHA-TASK050-FINAL-WEIGHT-RULES",
+  "generated_at": "2026-10-20T15:48:50+08:00",
+  "token": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+  "task": "DSHA-TASK050-STRATEGY-FREEZE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "freeze_status": "PERMANENTLY_FROZEN",
+  "selected_window": "20d",
+  "selected_alpha": 0.6,
+  "ic_window": 20,
+  "blend_strategy": "60%_equal_40%_regime_extreme",
+  "dynamic_weights": {
+    "up": {
+      "contract_switch_flag": 0.161648,
+      "momentum_20d": 0.169874,
+      "oi_change_1d": 0.090389,
+      "oi_change_rate_7d": 0.109452,
+      "oi_level": 0.131019,
+      "realized_vol_20d": 0.113871,
+      "spread_cs": 0.122945,
+      "vol_regime_change": 0.100803
+    },
+    "down": {
+      "contract_switch_flag": 0.169436,
+      "momentum_20d": 0.179666,
+      "oi_change_1d": 0.10884,
+      "oi_change_rate_7d": 0.100654,
+      "oi_level": 0.093834,
+      "realized_vol_20d": 0.091747,
+      "spread_cs": 0.129829,
+      "vol_regime_change": 0.125994
+    },
+    "sideways": {
+      "contract_switch_flag": 0.125,
+      "momentum_20d": 0.125,
+      "oi_change_1d": 0.125,
+      "oi_change_rate_7d": 0.125,
+      "oi_level": 0.125,
+      "realized_vol_20d": 0.125,
+      "spread_cs": 0.125,
+      "vol_regime_change": 0.125
+    }
+  },
+  "fixed_weights": {
+    "contract_switch_flag": 0.173862,
+    "momentum_20d": 0.240761,
+    "oi_change_1d": 0.039409,
+    "oi_change_rate_7d": 0.072074,
+    "oi_level": 0.112601,
+    "realized_vol_20d": 0.102804,
+    "spread_cs": 0.127197,
+    "vol_regime_change": 0.131292
+  },
+  "equal_weight_baseline": {
+    "contract_switch_flag": 0.125,
+    "momentum_20d": 0.125,
+    "oi_change_1d": 0.125,
+    "oi_change_rate_7d": 0.125,
+    "oi_level": 0.125,
+    "realized_vol_20d": 0.125,
+    "spread_cs": 0.125,
+    "vol_regime_change": 0.125
+  },
+  "weight_bounds": {
+    "min": 0.04,
+    "max_baseline": 0.25,
+    "max_optimized": 0.2
+  },
+  "up_down_weight_diff": {
+    "contract_switch_flag": -0.007788,
+    "momentum_20d": -0.009793,
+    "oi_change_1d": -0.018451,
+    "oi_change_rate_7d": 0.008798,
+    "oi_level": 0.037185,
+    "realized_vol_20d": 0.022124,
+    "spread_cs": -0.006884,
+    "vol_regime_change": -0.025192
+  },
+  "contract_switch_flag_rebuilt": true,
+  "contract_switch_flag_threshold": -0.3,
+  "engine": "Set-E",
+  "engine_params": {
+    "signal_threshold": 0.3,
+    "rebalance_interval": 5,
+    "target_vol": 0.15,
+    "max_single_weight": 0.5,
+    "drawdown_warn": -0.1,
+    "drawdown_halt": -0.2,
+    "transaction_cost": 0.0005,
+    "initial_capital": 1000000.0
+  },
+  "sharpe_threshold": 3.4,
+  "sharpe_achieved": 3.488982,
+  "sharpe_threshold_met": true,
+  "crowding_threshold": 1.1,
+  "crowding_achieved": 1.0359,
+  "crowding_within_limit": true,
+  "frozen_at": "2026-10-20T15:48:50+08:00",
+  "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+  "baseline_commit": "e170ed3",
+  "inherited_from": "TASK049 (long window evaluation)",
+  "change_log": [
+    {
+      "from": "TASK048",
+      "to": "TASK049",
+      "change": "alpha=0.7 tested, not adopted (sharpe<3.4)"
+    },
+    {
+      "from": "TASK049",
+      "to": "TASK050",
+      "change": "双窗口定稿, 选定20d窗口alpha=0.6"
+    }
+  ]
+}

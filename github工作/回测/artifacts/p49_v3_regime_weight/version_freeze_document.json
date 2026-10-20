@@ -1,0 +1,141 @@
+{
+  "output_id": "DSHA-TASK050-VERSION-FREEZE",
+  "generated_at": "2026-10-20T15:48:50+08:00",
+  "token": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+  "task": "DSHA-TASK050-STRATEGY-FREEZE",
+  "safety": {
+    "real_wind_call": false,
+    "wind_api_calls": 0,
+    "offline_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED"
+  },
+  "freeze_status": "PERMANENTLY_FROZEN",
+  "freeze_timestamp": "2026-10-20T15:48:50+08:00",
+  "freeze_authority": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+  "final_variant": {
+    "variant_id": "V3",
+    "description": "TASK050: alpha=0.6, 20d IC, FINALIZED",
+    "alpha": 0.6,
+    "ic_window": 20,
+    "sharpe": 3.488982,
+    "return": 0.229334,
+    "max_dd": -0.012099,
+    "flip_rate_20d": 0.5,
+    "flip_rate_40d": 0.2105,
+    "crowding": 1.0359,
+    "status": "PERMANENTLY_FROZEN",
+    "frozen_at": "2026-10-20T15:48:50+08:00",
+    "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+    "notes": "双窗口定稿, 选定20d窗口"
+  },
+  "variant_history": [
+    {
+      "variant_id": "V1",
+      "description": "TASK048基准: alpha=0.6, 20d IC, contract_switch_flag=ALL_ZERO",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.4293,
+      "return": 0.2244,
+      "max_dd": -0.0135,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.5,
+      "crowding": 1.0359,
+      "status": "SUPERSEDED",
+      "superseded_by": "V2 (TASK049)",
+      "notes": "contract_switch_flag全零, 无40d窗口测试"
+    },
+    {
+      "variant_id": "V2",
+      "description": "TASK049: alpha=0.6, 20d IC, contract_switch_flag=REBUILT",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.489,
+      "return": 0.2293,
+      "max_dd": -0.0121,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "status": "SUPERSEDED",
+      "superseded_by": "SELECTED (TASK050 fallback)",
+      "notes": "40d翻转率突破: 50%→21.1%, 8/8因子正常"
+    },
+    {
+      "variant_id": "V3",
+      "description": "TASK050: alpha=0.6, 20d IC, FINALIZED",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.488982,
+      "return": 0.229334,
+      "max_dd": -0.012099,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "status": "PERMANENTLY_FROZEN",
+      "frozen_at": "2026-10-20T15:48:50+08:00",
+      "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+      "notes": "双窗口定稿, 选定20d窗口"
+    },
+    {
+      "variant_id": "V4-REJECTED",
+      "description": "TASK049: alpha=0.7, 20d IC (rejected: sharpe<3.4)",
+      "alpha": 0.7,
+      "ic_window": 20,
+      "sharpe": 3.3468,
+      "return": 0.2189,
+      "max_dd": -0.018,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.3158,
+      "crowding": null,
+      "status": "REJECTED",
+      "rejection_reason": "sharpe=3.3468 < 3.4 threshold",
+      "notes": "红线触发: 自动回退alpha=0.6"
+    },
+    {
+      "variant_id": "V5-REJECTED",
+      "description": "TASK049: alpha=0.7, 40d IC (rejected: sharpe<3.4)",
+      "alpha": 0.7,
+      "ic_window": 40,
+      "sharpe": 3.1482,
+      "return": 0.2014,
+      "max_dd": -0.018,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.4211,
+      "crowding": null,
+      "status": "REJECTED",
+      "rejection_reason": "sharpe=3.1482 < 3.4 threshold",
+      "notes": "40d IC + alpha=0.7夏普更低, 未达标"
+    }
+  ],
+  "variant_count": 5,
+  "rejected_variants": [
+    "V4-REJECTED",
+    "V5-REJECTED"
+  ],
+  "frozen_artifacts": {
+    "final_weight_rules": "artifacts/p49_v3_regime_weight/final_weight_rules.json",
+    "dual_window_backtest": "artifacts/p49_v3_regime_weight/dual_window_backtest_metrics.json",
+    "tradeoff_evaluation": "artifacts/p49_v3_regime_weight/tradeoff_evaluation.json",
+    "risk_validation_final": "artifacts/p49_v3_regime_weight/risk_validation_final.json",
+    "dual_window_comparison": "artifacts/p49_v3_regime_weight/dual_window_comparison_report.json",
+    "contract_switch_flag": "artifacts/p49_v3_regime_weight/contract_switch_flag_final.json",
+    "dshd_push": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_task050_strategy_freeze_push.json",
+    "manifest": "artifacts/p49_v3_regime_weight/MANIFEST_v3_regime_weight.json"
+  },
+  "freeze_constraints": {
+    "no_further_modification": true,
+    "modification_requires_new_task": true,
+    "engine": "Set-E (PERMANENTLY_FROZEN)",
+    "production_configs_untouched": true
+  },
+  "red_line_summary": {
+    "sharpe_threshold": 3.4,
+    "sharpe_achieved": 3.488982,
+    "sharpe_ok": true,
+    "crowding_threshold": 1.1,
+    "crowding_achieved": 1.0359,
+    "crowding_ok": true,
+    "force_fallback_triggered": true,
+    "fallback_to": "20d"
+  }
+}

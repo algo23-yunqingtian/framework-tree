@@ -1,0 +1,424 @@
+{
+  "push_id": "DSHD-TASK050-PUSH-1792482530",
+  "generated_at": "2026-10-20T15:48:50+08:00",
+  "source_task": "DSHA-TASK050-STRATEGY-FREEZE",
+  "source_token": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+  "push_token": "DSHD-TASK050-STRATEGY-FREEZE-TOKEN",
+  "push_type": "STRATEGY_FREEZE_DUAL_WINDOW",
+  "mode": "AUDIT_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "offline_only": true
+  },
+  "crowding": {
+    "monitor": "DSHD-TASK039-CROWDING-MONITOR",
+    "version": "2.2.0",
+    "alert_percentile": 90,
+    "alert_level": "MEDIUM",
+    "aggregate": {
+      "level": "CROWDING_LOW",
+      "avg_score": 24.73,
+      "max_score": 55.9,
+      "min_score": 7.65,
+      "std_score": 18.35,
+      "alert_factor_count": 3
+    },
+    "per_factor": {
+      "contract_switch_flag": {
+        "score": 40.0,
+        "directional_concentration": 1.0,
+        "value_hhi": 0.0,
+        "flags": [
+          "DIRECTIONAL_CROWDED"
+        ],
+        "status": "⚠ MEDIUM",
+        "data_status": "OK"
+      },
+      "momentum_20d": {
+        "score": 8.27,
+        "directional_concentration": 0.0741,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "oi_change_1d": {
+        "score": 15.51,
+        "directional_concentration": 0.3042,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "oi_change_rate_7d": {
+        "score": 7.65,
+        "directional_concentration": 0.1033,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "oi_level": {
+        "score": 46.86,
+        "directional_concentration": 1.0,
+        "value_hhi": 0.1,
+        "flags": [
+          "DIRECTIONAL_CROWDED"
+        ],
+        "status": "⚠ MEDIUM",
+        "data_status": "OK"
+      },
+      "realized_vol_20d": {
+        "score": 55.9,
+        "directional_concentration": 1.0,
+        "value_hhi": 0.1,
+        "flags": [
+          "DIRECTIONAL_CROWDED"
+        ],
+        "status": "⚠ MEDIUM",
+        "data_status": "OK"
+      },
+      "spread_cs": {
+        "score": 8.85,
+        "directional_concentration": 0.0137,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      },
+      "vol_regime_change": {
+        "score": 14.82,
+        "directional_concentration": 0.0194,
+        "value_hhi": 0.1,
+        "flags": [],
+        "status": "OK",
+        "data_status": "OK"
+      }
+    }
+  },
+  "regime": {
+    "regime_counts_4sym": {
+      "up": 730,
+      "down": 660,
+      "sideways": 338
+    },
+    "regime_counts_9sym": {
+      "up": 1334,
+      "down": 1025,
+      "sideways": 665
+    },
+    "min_window_per_factor": 20,
+    "down_sample_sufficient": true
+  },
+  "hhi_crowding": {
+    "hhi_equal_baseline": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "crowding_ratio": 1.0359,
+    "crowding_threshold": 1.1,
+    "crowding_alert_triggered": false,
+    "per_regime_hhi": {
+      "up": 0.130546,
+      "down": 0.132918,
+      "sideways": 0.125
+    }
+  },
+  "backtest_risk": {
+    "group_a_equal": {
+      "max_drawdown": -0.017102,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 2.724257,
+      "total_return": 0.173991
+    },
+    "group_b_dynamic_a06_20d": {
+      "max_drawdown": -0.012099,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 3.488982,
+      "total_return": 0.229334
+    },
+    "group_c_dynamic_a06_40d": {
+      "max_drawdown": -0.018025,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 3.264958,
+      "total_return": 0.209407
+    },
+    "group_d_fixed_a06": {
+      "max_drawdown": -0.017964,
+      "drawdown_within_threshold": true,
+      "sharpe_ratio": 2.74675,
+      "total_return": 0.187896
+    }
+  },
+  "correlation_alerts": {
+    "high_corr_pairs": [],
+    "pair_count": 0,
+    "alert_threshold": 0.5,
+    "status": "NORMAL"
+  },
+  "factor_diagnostics": {
+    "contract_switch_flag": {
+      "status": "OK",
+      "reason": "正常因子, 11非零值, std=0.053122"
+    },
+    "momentum_20d": {
+      "status": "OK",
+      "reason": "正常因子, 3696非零值, std=0.068893"
+    },
+    "oi_change_1d": {
+      "status": "OK",
+      "reason": "正常因子, 3869非零值, std=39666.041259"
+    },
+    "oi_change_rate_7d": {
+      "status": "OK",
+      "reason": "正常因子, 3825非零值, std=0.418261"
+    },
+    "oi_level": {
+      "status": "OK",
+      "reason": "正常因子, 3888非零值, std=624886.537433"
+    },
+    "realized_vol_20d": {
+      "status": "OK",
+      "reason": "正常因子, 3708非零值, std=0.156472"
+    },
+    "spread_cs": {
+      "status": "OK",
+      "reason": "正常因子, 3800非零值, std=1668.803072"
+    },
+    "vol_regime_change": {
+      "status": "OK",
+      "reason": "正常因子, 3663非零值, std=0.204045"
+    }
+  },
+  "contract_switch_flag_rebuild": {
+    "old_flag_nonzero": 0,
+    "old_flag_std": 0.0,
+    "new_flag_nonzero": 11,
+    "new_flag_total": 3888,
+    "new_flag_pct": 0.28,
+    "new_flag_std": 0.05312192992887123,
+    "threshold": -0.3,
+    "oi_change_stats": {
+      "min": -0.340413,
+      "max": 4.381429,
+      "mean": 0.017154,
+      "std": 0.258206,
+      "below_neg30": 11,
+      "below_neg20": 46,
+      "below_neg10": 327
+    },
+    "status": "REBUILT",
+    "reason": "OI变化率<-30%标记合约换月"
+  },
+  "flip_rate_comparison": {
+    "output_id": "DSHA-TASK050-TRADEOFF-EVAL",
+    "generated_at": "2026-10-20T15:48:50+08:00",
+    "token": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+    "task": "DSHA-TASK050-STRATEGY-FREEZE",
+    "safety": {
+      "real_wind_call": false,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED"
+    },
+    "scheme_1_20d": {
+      "name": "20d窗口 alpha=0.6 (原基准)",
+      "window": "20d",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.488982,
+      "return": 0.229334,
+      "max_dd": -0.012099,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "trade_count": 251,
+      "annualized_return": 0.128311,
+      "annual_volatility": 0.036776,
+      "calmar_ratio": 10.604686,
+      "win_rate": 0.431555,
+      "profit_loss_ratio": 1.712786,
+      "cost_ratio": 0.036744
+    },
+    "scheme_2_40d": {
+      "name": "40d窗口 alpha=0.6 (低翻转优化版)",
+      "window": "40d",
+      "alpha": 0.6,
+      "ic_window": 40,
+      "sharpe": 3.264958,
+      "return": 0.209407,
+      "max_dd": -0.018025,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.3158,
+      "crowding": 1.0205,
+      "trade_count": 250,
+      "annualized_return": 0.117581,
+      "annual_volatility": 0.036013,
+      "calmar_ratio": 6.523045,
+      "win_rate": 0.433875,
+      "profit_loss_ratio": 1.638572,
+      "cost_ratio": 0.041423
+    },
+    "comparison": {
+      "sharpe_delta": -0.224,
+      "return_delta": -0.0199,
+      "max_dd_delta": -0.0059,
+      "flip_rate_20d_delta": 0.0,
+      "flip_rate_40d_delta": 0.1053,
+      "crowding_delta": -0.0154,
+      "trade_count_delta": -1
+    },
+    "red_line_checks": {
+      "sharpe_threshold": 3.4,
+      "sharpe_20d_ok": true,
+      "sharpe_40d_ok": false,
+      "crowding_threshold": 1.1,
+      "crowding_20d_ok": true,
+      "crowding_40d_ok": true
+    },
+    "selected": {
+      "window": "20d",
+      "scheme": "scheme_1_20d",
+      "recommendation": "回退至20d窗口: 40d窗口夏普未达标(红线触发)",
+      "sharpe_threshold_met": true,
+      "crowding_within_limit": true
+    },
+    "tradeoff_analysis": {
+      "sharpe_gain_40d": "-0.2240",
+      "flip_rate_reduction_40d_pp": "-10.53pp",
+      "return_delta": "-0.0199",
+      "conclusion": "回退至20d窗口: 40d窗口夏普未达标(红线触发)"
+    }
+  },
+  "scheme_comparison": {
+    "output_id": "DSHA-TASK050-DUAL-WINDOW-COMP",
+    "generated_at": "2026-10-20T15:48:50+08:00",
+    "token": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+    "task": "DSHA-TASK050-STRATEGY-FREEZE",
+    "safety": {
+      "real_wind_call": false,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED"
+    },
+    "alpha": 0.6,
+    "scheme_1_baseline_20d": {
+      "name": "20d窗口 alpha=0.6 (原基准)",
+      "window": "20d",
+      "alpha": 0.6,
+      "ic_window": 20,
+      "sharpe": 3.488982,
+      "return": 0.229334,
+      "max_dd": -0.012099,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.2105,
+      "crowding": 1.0359,
+      "trade_count": 251,
+      "annualized_return": 0.128311,
+      "annual_volatility": 0.036776,
+      "calmar_ratio": 10.604686,
+      "win_rate": 0.431555,
+      "profit_loss_ratio": 1.712786,
+      "cost_ratio": 0.036744
+    },
+    "scheme_2_optimized_40d": {
+      "name": "40d窗口 alpha=0.6 (低翻转优化版)",
+      "window": "40d",
+      "alpha": 0.6,
+      "ic_window": 40,
+      "sharpe": 3.264958,
+      "return": 0.209407,
+      "max_dd": -0.018025,
+      "flip_rate_20d": 0.5,
+      "flip_rate_40d": 0.3158,
+      "crowding": 1.0205,
+      "trade_count": 250,
+      "annualized_return": 0.117581,
+      "annual_volatility": 0.036013,
+      "calmar_ratio": 6.523045,
+      "win_rate": 0.433875,
+      "profit_loss_ratio": 1.638572,
+      "cost_ratio": 0.041423
+    },
+    "comparison": {
+      "sharpe_delta": -0.224,
+      "return_delta": -0.0199,
+      "max_dd_delta": -0.0059,
+      "flip_rate_20d_delta": 0.0,
+      "flip_rate_40d_delta": 0.1053,
+      "crowding_delta": -0.0154,
+      "trade_count_delta": -1
+    },
+    "selected": {
+      "window": "20d",
+      "scheme": "scheme_1_20d",
+      "recommendation": "回退至20d窗口: 40d窗口夏普未达标(红线触发)",
+      "sharpe_threshold_met": true,
+      "crowding_within_limit": true
+    },
+    "tradeoff_analysis": {
+      "sharpe_gain_40d": "-0.2240",
+      "flip_rate_reduction_40d_pp": "-10.53pp",
+      "return_delta": "-0.0199",
+      "conclusion": "回退至20d窗口: 40d窗口夏普未达标(红线触发)"
+    },
+    "red_line_checks": {
+      "sharpe_threshold": 3.4,
+      "sharpe_20d_ok": true,
+      "sharpe_40d_ok": false,
+      "crowding_threshold": 1.1,
+      "crowding_20d_ok": true,
+      "crowding_40d_ok": true
+    }
+  },
+  "final_strategy": {
+    "selected_window": "20d",
+    "selected_alpha": 0.6,
+    "ic_window": 20,
+    "blend_strategy": "60%_equal_40%_regime_extreme",
+    "sharpe": 3.488982,
+    "return": 0.229334,
+    "max_dd": -0.012099,
+    "flip_rate_20d": 0.5,
+    "flip_rate_40d": 0.2105,
+    "crowding": 1.0359,
+    "trade_count": 251,
+    "freeze_status": "FINALIZED",
+    "frozen_at": "2026-10-20T15:48:50+08:00",
+    "frozen_by": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
+    "engine": "Set-E",
+    "engine_params": {
+      "signal_threshold": 0.3,
+      "rebalance_interval": 5,
+      "target_vol": 0.15,
+      "max_single_weight": 0.5,
+      "drawdown_warn": -0.1,
+      "drawdown_halt": -0.2,
+      "transaction_cost": 0.0005,
+      "initial_capital": 1000000.0
+    },
+    "sharpe_threshold": 3.4,
+    "sharpe_threshold_met": true,
+    "crowding_threshold": 1.1,
+    "crowding_within_limit": true,
+    "contract_switch_flag_rebuilt": true,
+    "contract_switch_flag_threshold": -0.3
+  },
+  "alerts": {
+    "crowding_alert": false,
+    "redundancy_alert": false,
+    "drawdown_alert": false,
+    "total_active_alerts": 0
+  },
+  "red_lines": {
+    "no_circuit_break": true,
+    "audit_only": true,
+    "wind_api_calls": 0,
+    "gate_observed": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "output_csv_touched": false
+  },
+  "task050_receipt": "DSHA_TASK050_STRATEGY_FREEZE=COMPLETE"
+}
