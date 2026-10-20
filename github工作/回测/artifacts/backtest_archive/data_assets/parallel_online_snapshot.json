@@ -1,0 +1,28 @@
+{
+  "snapshot_id": "DSHC-PARALLEL-ONLINE-SNAPSHOT",
+  "workorder": "DSHC-TASK-012",
+  "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
+  "generated_at": "2026-10-20T08:05:40+08:00",
+  "manifest_version": "v2.4.0",
+  "gate": "CLOSED/HOLD",
+  "release_permit": "NOT_ISSUED",
+  "wind_api_calls": 0,
+  "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+  "v2_sha_short": "14950B9464BAEFD8",
+  "parallel_schedule_config": "artifacts/backtest_archive/data_assets/parallel_schedule_config.json",
+  "consistency_report": "artifacts/backtest_archive/data_assets/parallel_consistency_report.json",
+  "lock_conflict_stats": "artifacts/backtest_archive/data_assets/parallel_lock_conflict_stats.json",
+  "dshd_alert_types_count": 9,
+  "dual_pipeline": true,
+  "serial_pipeline_untouched": true,
+  "global_lock_timeout_sec": 120,
+  "constraints": {
+    "v2_sha_unchanged": true,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "receipt": "DSHC_TASK012_PARALLEL_ONLINE=SCHEDULE_DONE｜serial_pipeline_stable=YES｜global_lock_optimized=YES｜shard_data_consistent=YES｜alert_monitor_connected=YES"
+}

@@ -1,0 +1,61 @@
+{
+  "config_id": "DSHC-PARALLEL-SCHEDULE-CONFIG",
+  "workorder": "DSHC-TASK-012",
+  "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
+  "generated_at": "2026-10-20T08:05:33+08:00",
+  "version": "1.0.0",
+  "gate": "CLOSED/HOLD",
+  "release_permit": "NOT_ISSUED",
+  "wind_api_calls": 0,
+  "dual_pipeline": {
+    "serial_pipeline": {
+      "enabled": true,
+      "script": "code/incr_pipeline_daily.py",
+      "arguments": "--execute",
+      "schedule_task": "DSHC-IncrPipelineDaily",
+      "trigger": "WEEKDAYS 15:30",
+      "status": "UNTOUCHED",
+      "lock_file": "artifacts/backtest_archive/data_assets/.pipeline_lock",
+      "lock_timeout_minutes": 30
+    },
+    "parallel_pipeline": {
+      "enabled": true,
+      "script": "code/incr_pipeline_parallel_online.py",
+      "arguments": "--parallel-run",
+      "schedule_task": "DSHC-IncrPipelineParallel",
+      "trigger": "WEEKDAYS 15:35",
+      "status": "ACTIVE",
+      "lock_file": "artifacts/backtest_archive/data_assets/.parallel_global_lock",
+      "global_lock_timeout_sec": 120,
+      "symbols": [
+        "AL.SHF",
+        "CU.SHF",
+        "HC.SHF",
+        "NI.SHF",
+        "PB.SHF",
+        "RB.SHF",
+        "SN.SHF",
+        "ZN.SHF",
+        "LC.GFE"
+      ],
+      "shard_dir": "artifacts/backtest_archive/data_assets/incremental/parallel/",
+      "dsha_sandbox_dir": "output_sample/parallel_shards/"
+    }
+  },
+  "mode_switch": {
+    "current_mode": "DUAL",
+    "serial_only": false,
+    "parallel_only": false,
+    "dual": true,
+    "description": "DUAL mode: serial and parallel pipelines run independently, parallel at 15:35 (5 min after serial at 15:30)"
+  },
+  "constraints": {
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "v2_sha_short": "14950B9464BAEFD8",
+    "serial_pipeline_unchanged": true,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "lc_shf_blacklisted": true
+  }
+}

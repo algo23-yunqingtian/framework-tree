@@ -1,0 +1,58 @@
+{
+  "workorder": "DSHC-TASK-012",
+  "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
+  "generated_at": "2026-10-20T08:05:33+08:00",
+  "global_timeout_sec": 120,
+  "lock_stats": {
+    "total_attempts": 12,
+    "global_conflicts": 1,
+    "shard_conflicts": 0,
+    "total_conflicts": 1,
+    "global_lock_timeout_sec": 120,
+    "shard_lock_timeout_sec": 120,
+    "global_lock_file": "artifacts\\backtest_archive\\data_assets\\.parallel_global_lock"
+  },
+  "shard_results": {
+    "AL.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "CU.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "HC.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "NI.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "PB.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "RB.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "SN.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "ZN.SHF": {
+      "success": true,
+      "message": "acquired"
+    },
+    "LC.GFE": {
+      "success": true,
+      "message": "acquired"
+    }
+  },
+  "stale_lock_override": {
+    "success": true,
+    "message": "acquired",
+    "expected": true
+  }
+}

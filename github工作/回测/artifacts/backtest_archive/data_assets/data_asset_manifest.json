@@ -1,13 +1,13 @@
 {
   "source_workorder": "DSHC-VOL-FULL-COLLECT",
   "archive_dir": "artifacts/backtest_archive/data_assets",
-  "version": "2.1.0",
+  "version": "2.4.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-20T00:46:50+08:00",
+  "updated_at": "2026-10-20T08:05:40+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
-  "registry_version": "v2.3.0",
-  "updated_by": "DSHC-TASK011-PIPE-SCALE-TOKEN",
+  "registry_version": "v2.4.0",
+  "updated_by": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
   "total_rows": 23328,
   "files": [
     {
@@ -577,40 +577,6 @@
       "created_at": "2026-10-19T16:41:03+08:00",
       "source": "PIPELINE_DAILY",
       "status": "MERGED"
-    },
-    {
-      "shard_id": "parallel_shards_batch",
-      "path": "artifacts/backtest_archive/data_assets/incremental/parallel/",
-      "sha256": null,
-      "sha256_short": null,
-      "size_bytes": null,
-      "data_rows": 0,
-      "created_at": "2026-10-20T00:45:05+08:00",
-      "source": "PIPELINE_PARALLEL",
-      "status": "DRY_RUN_COMPLETE",
-      "shard_count": 8,
-      "symbol_groups": [
-        "4_symbol",
-        "9_symbol"
-      ],
-      "workorder": "DSHC-TASK-011"
-    },
-    {
-      "shard_id": "parallel_shards_batch",
-      "path": "artifacts/backtest_archive/data_assets/incremental/parallel/",
-      "sha256": null,
-      "sha256_short": null,
-      "size_bytes": null,
-      "data_rows": 0,
-      "created_at": "2026-10-20T00:46:50+08:00",
-      "source": "PIPELINE_PARALLEL",
-      "status": "DRY_RUN_COMPLETE",
-      "shard_count": 8,
-      "symbol_groups": [
-        "4_symbol",
-        "9_symbol"
-      ],
-      "workorder": "DSHC-TASK-011"
     }
   ],
   "pipeline_scripts": {
@@ -700,35 +666,28 @@
       "dshd_watcher_compatible": true,
       "created_at": "2026-10-19T16:41:03+08:00"
     },
-    "incr_pipeline_parallel": {
-      "path": "code/incr_pipeline_parallel.py",
-      "purpose": "分片并行扩容脚本 — 多品种并行采集, 分片独立写入, 4/9品种支持",
+    "incr_pipeline_parallel_online": {
+      "path": "code/incr_pipeline_parallel_online.py",
+      "purpose": "并行分片接入每日增量调度 + 全局锁优化",
       "version": "1.0.0",
-      "workorder": "DSHC-TASK-011",
-      "token": "DSHC-TASK011-PIPE-SCALE-TOKEN",
-      "parallel_mode": true,
-      "symbol_groups": {
-        "4_symbol": [
-          "AL.SHF",
-          "CU.SHF",
-          "HC.SHF",
-          "RB.SHF"
-        ],
-        "9_symbol": [
-          "AL.SHF",
-          "CU.SHF",
-          "HC.SHF",
-          "NI.SHF",
-          "PB.SHF",
-          "RB.SHF",
-          "SN.SHF",
-          "ZN.SHF",
-          "LC.GFE"
-        ]
-      },
-      "shard_lock": "per-symbol file lock",
-      "dsha_sandbox_aligned": true,
-      "created_at": "2026-10-20T00:46:50+08:00"
+      "workorder": "DSHC-TASK-012",
+      "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
+      "created_at": "2026-10-20T08:05:40+08:00",
+      "global_lock_timeout_sec": 120,
+      "parallel_schedule_config": "artifacts/backtest_archive/data_assets/parallel_schedule_config.json",
+      "lock_conflict_stats": "artifacts/backtest_archive/data_assets/parallel_lock_conflict_stats.json",
+      "consistency_report": "artifacts/backtest_archive/data_assets/parallel_consistency_report.json",
+      "dshd_alert_types": [
+        "PARALLEL_RUNTIME_DURATION",
+        "PARALLEL_LOCK_CONFLICT",
+        "PARALLEL_SHARD_INTEGRITY",
+        "PARALLEL_CONSISTENCY_CHECK",
+        "PARALLEL_SCHEDULE_DUAL_PIPELINE",
+        "PARALLEL_GLOBAL_LOCK_TIMEOUT",
+        "PARALLEL_GLOBAL_LOCK_CONFLICT",
+        "PARALLEL_SHARD_LOCK_CONFLICT",
+        "PARALLEL_VALIDATE_FAIL"
+      ]
     }
   },
   "governance": {
@@ -753,10 +712,14 @@
     "LAST_ONLINE_MONITOR_RUN": "2026-10-19T23:54:44+08:00",
     "LAST_ONLINE_MONITOR_STATUS": "RUNNING_STABLE",
     "LAST_ONLINE_MONITOR_DAYS": 7,
-    "LAST_PARALLEL_SCALE_RUN": "2026-10-20T00:46:50+08:00",
-    "LAST_PARALLEL_SCALE_STATUS": "PASS",
-    "LAST_PARALLEL_SCALE_ROUNDS": 8,
-    "LAST_PARALLEL_SCALE_PASS": 8
+    "LAST_PARALLEL_ONLINE_RUN": "2026-10-20T08:05:40+08:00",
+    "LAST_PARALLEL_ONLINE_STATUS": "PASS",
+    "LAST_PARALLEL_ONLINE_ROUNDS": 5,
+    "LAST_PARALLEL_ONLINE_CONSISTENCY": "PASS",
+    "LAST_PARALLEL_ONLINE_LOCK_CONFLICTS": 0,
+    "LAST_PARALLEL_ONLINE_CROSS_CONTAMINATION": 0,
+    "LAST_PARALLEL_ONLINE_ALERT_MONITOR": "DSHD_CONNECTED",
+    "LAST_PARALLEL_ONLINE_MANIFEST_VERSION": "v2.4.0"
   },
   "data_format": {
     "long_header": "date,symbol,indicator,value,source",
@@ -1093,7 +1056,16 @@
     "lock_file": "artifacts/backtest_archive/data_assets/.pipeline_lock",
     "lock_timeout_minutes": 30,
     "config_path": "artifacts/backtest_archive/data_assets/incr_pipeline_schedule_config.json",
-    "ps1_script": "code/incr_pipeline_schedule.ps1"
+    "ps1_script": "code/incr_pipeline_schedule.ps1",
+    "parallel_task": {
+      "task_name": "DSHC-IncrPipelineParallel",
+      "trigger": "WEEKDAYS 15:35",
+      "script": "code/incr_pipeline_parallel_online.py",
+      "arguments": "--parallel-run",
+      "single_instance": true,
+      "lock_file": "artifacts/backtest_archive/data_assets/.parallel_global_lock",
+      "global_lock_timeout_sec": 120
+    }
   },
   "smoke_live_report": {
     "path": "artifacts\\backtest_archive\\data_assets\\incr_pipeline_smoke_live_report.json",
@@ -1175,18 +1147,16 @@
     "token": "DSHC-TASK010-PIPE-ONLINE-TOKEN",
     "created_at": "2026-10-19T23:54:44+08:00"
   },
-  "parallel_scale_snapshot": {
-    "path": "artifacts\\backtest_archive\\data_assets\\parallel_scale_snapshot.json",
+  "parallel_online_snapshot": {
+    "path": "artifacts/backtest_archive/data_assets/parallel_online_snapshot.json",
     "version": "1.0.0",
-    "workorder": "DSHC-TASK-011",
-    "token": "DSHC-TASK011-PIPE-SCALE-TOKEN",
-    "created_at": "2026-10-20T00:46:50+08:00"
+    "workorder": "DSHC-TASK-012",
+    "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
+    "created_at": "2026-10-20T08:05:40+08:00"
   },
-  "parallel_scale_report": {
-    "path": "artifacts\\backtest_archive\\data_assets\\parallel_scale_report.json",
-    "version": "1.0.0",
-    "workorder": "DSHC-TASK-011",
-    "token": "DSHC-TASK011-PIPE-SCALE-TOKEN",
-    "created_at": "2026-10-20T00:46:50+08:00"
+  "parallel_schedule_config": {
+    "path": "artifacts/backtest_archive/data_assets/parallel_schedule_config.json",
+    "dual_pipeline": true,
+    "serial_pipeline_untouched": true
   }
 }
