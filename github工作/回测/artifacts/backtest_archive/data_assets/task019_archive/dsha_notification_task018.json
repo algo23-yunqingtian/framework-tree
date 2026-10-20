@@ -1,0 +1,42 @@
+{
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:30+08:00",
+  "notification_id": "DSHC-DSHA-NOTIFY-018-20261020184930",
+  "event": "NOTIFY_DUAL_WINDOW_FREEZE_READY",
+  "status": "READY",
+  "next_action": "DSHA_START_TASK051_SANDBOX_REPLAY",
+  "dataset": {
+    "window_40d": {
+      "days": 40,
+      "shards": 360,
+      "dir": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_40d",
+      "filename_pattern": "parallel_shard_{SAFE_SYMBOL}_{YYYYMMDD}.csv"
+    },
+    "window_20d": {
+      "days": 20,
+      "shards": 180,
+      "dir": "artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_20d",
+      "filename_pattern": "parallel_shard_{SAFE_SYMBOL}_{YYYYMMDD}.csv"
+    },
+    "contract_rollover": {
+      "dir": "artifacts\\backtest_archive\\data_assets\\contract_rollover",
+      "symbols": 9,
+      "switch_events": 25,
+      "oi_change_threshold": -0.3
+    },
+    "sha_ledger": "artifacts\\backtest_archive\\data_assets\\dual_window_sha_fingerprint_list_v2.json",
+    "consistency_report": "artifacts\\backtest_archive\\data_assets\\dual_window_consistency_report_v2.json"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "v2_sha_unchanged": true,
+    "serial_pipeline_unchanged": true,
+    "core_collection_logic_unchanged": true,
+    "lc_shf_blacklisted": true
+  },
+  "receipt_marker": "DSHC_TASK018_DUAL_WINDOW_PIPELINE_FREEZE=COMPLETE"
+}

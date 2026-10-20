@@ -1,0 +1,123 @@
+{
+  "workorder": "DSHC-TASK-019",
+  "token": "DSHC-TASK019-PIPELINE-LINK-LOCK-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T01:16:19+08:00",
+  "notice_id": "DSHC-TASK019-NOTICE-20261021011619",
+  "event": "NOTIFY_PIPELINE_LINK_LOCKED",
+  "status": "LINK_LOCKED",
+  "lock_id": "DSHC-DUAL-WINDOW-LINK-LOCK-019",
+  "mode": "READ_ONLY_LINK_LOCK",
+  "read_only_sync": true,
+  "write_to_dsha": false,
+  "write_to_dshd": false,
+  "modify_dsha_config": false,
+  "modify_dshd_config": false,
+  "write_to_dshc_data": true,
+  "write_scope": "DSHC 本地数据资产目录 + 审计日志 (上游/下游仅只读)",
+  "next_action": "DSHA-TASK056 集群联调回放可基于锁定后的双窗口分片数据集启动",
+  "chain": {
+    "dshc_task017": {
+      "workorder": "DSHC-TASK-017",
+      "role": "双窗口常态化并行采集",
+      "down_count": 26,
+      "shards_40d": 360,
+      "shards_20d": 180
+    },
+    "dshc_task018": {
+      "workorder": "DSHC-TASK-018",
+      "role": "全链路巡检 + 增量链路固化",
+      "receipt": "DSHC_TASK018_DUAL_WINDOW_PIPELINE_FREEZE=COMPLETE",
+      "dag_id": "DSHC-DUAL-WINDOW-INCR-DAG",
+      "monitor_rounds": 42,
+      "down_count": 26,
+      "sha_files": 559,
+      "audit_events": 20,
+      "report": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_patrol_report.json"
+    },
+    "dshc_task019": {
+      "workorder": "DSHC-TASK-019",
+      "role": "集群联调分片链路锁闭 + 调度冻结",
+      "receipt_marker": "DSHC_TASK019_PIPELINE_LINK_LOCK=COMPLETE",
+      "lock_id": "DSHC-DUAL-WINDOW-LINK-LOCK-019",
+      "baseline_commit": "b77a61e",
+      "p0": true,
+      "p1": true,
+      "p2": true,
+      "p3": true,
+      "audit_events": 17
+    },
+    "dsha_side": {
+      "task_ids": [
+        "DSHA-TASK050",
+        "DSHA-TASK051",
+        "DSHA-TASK052",
+        "DSHA-TASK053",
+        "DSHA-TASK054",
+        "DSHA-TASK055"
+      ],
+      "latest_joint_ready": "DSHA-TASK055-V3-FULL-ARCHIVE-V89-INIT",
+      "ready_status": "READY_FOR_CLUSTER_JOINT_TEST",
+      "v3_freeze_status": "PERMANENTLY_FROZEN",
+      "v3_selected_window": "20d",
+      "next_action": "DSHA-TASK056 (集群联调回放)"
+    },
+    "dshd_side": {
+      "task_ids": [
+        "DSHD-TASK046",
+        "DSHD-TASK050",
+        "DSHD-TASK051",
+        "DSHD-TASK052",
+        "DSHD-TASK053",
+        "DSHD-TASK054",
+        "DSHD-TASK055"
+      ],
+      "monitoring_baseline": "DSHD-TASK050 (STRATEGY_FREEZE_DUAL_WINDOW)",
+      "monitoring_push_type": "STRATEGY_FREEZE_DUAL_WINDOW",
+      "total_active_alerts": 0,
+      "crowding_actual": 1.0359,
+      "high_corr_pairs": 0
+    }
+  },
+  "locked_dataset": {
+    "window_40d": {
+      "days": 40,
+      "shards": 360,
+      "rows": 2160,
+      "dir": "github工作/回测/artifacts/backtest_archive/data_assets/incremental/dual_window_40d",
+      "filename_pattern": "parallel_shard_{SAFE_SYMBOL}_{YYYYMMDD}.csv"
+    },
+    "window_20d": {
+      "days": 20,
+      "shards": 180,
+      "rows": 1080,
+      "dir": "github工作/回测/artifacts/backtest_archive/data_assets/incremental/dual_window_20d",
+      "filename_pattern": "parallel_shard_{SAFE_SYMBOL}_{YYYYMMDD}.csv"
+    },
+    "contract_rollover": {
+      "dir": "github工作/回测/artifacts/backtest_archive/data_assets/contract_rollover",
+      "symbols": 9,
+      "switch_events": 25,
+      "oi_change_threshold": -0.3
+    },
+    "sha_lock_manifest": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_sha_lock_manifest.json",
+    "link_lock_report": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_link_lock_report.json",
+    "link_lock_snapshot": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_link_lock_snapshot.json",
+    "dag_config_locked": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_dag_config.json",
+    "long_term_schedule_locked": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_long_term_schedule.json"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true,
+    "silent_mode": true,
+    "v2_sha_unchanged": true,
+    "core_code_unchanged": true,
+    "frozen_task018_unchanged": true,
+    "no_upstream_write": true,
+    "v3_data_structure_unchanged": true,
+    "lc_shf_blacklisted": true
+  },
+  "receipt_marker": "DSHC_TASK019_PIPELINE_LINK_LOCK=COMPLETE"
+}

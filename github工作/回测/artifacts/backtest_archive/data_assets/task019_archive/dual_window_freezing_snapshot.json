@@ -1,0 +1,47 @@
+{
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:30+08:00",
+  "version": "1.0.0",
+  "receipt_marker": "DSHC_TASK018_DUAL_WINDOW_PIPELINE_FREEZE=COMPLETE",
+  "constraints": {
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "v2_sha_unchanged": true,
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "serial_pipeline_unchanged": true,
+    "core_collection_logic_unchanged": true,
+    "lc_shf_blacklisted": true
+  },
+  "phases": {
+    "p0_self_check": true,
+    "p1_patrol": true,
+    "p2_freeze": true,
+    "p3_rollover_quality": true,
+    "p4_consistency": true,
+    "p5_upstream_downstream": true,
+    "p6_archive_manifest": true
+  },
+  "artifacts": {
+    "patrol_report": "artifacts\\backtest_archive\\data_assets\\dual_window_patrol_report.json",
+    "dag_config": "artifacts\\backtest_archive\\data_assets\\dual_window_dag_config.json",
+    "rollover_quality_report": "artifacts\\backtest_archive\\data_assets\\contract_rollover_quality_report.json",
+    "consistency_v2": "artifacts\\backtest_archive\\data_assets\\dual_window_consistency_report_v2.json",
+    "sha_ledger_v2": "artifacts\\backtest_archive\\data_assets\\dual_window_sha_fingerprint_list_v2.json",
+    "dshd_metrics": "artifacts\\backtest_archive\\data_assets\\dshd_metrics_task018.json",
+    "dsha_package": "artifacts\\backtest_archive\\data_assets\\dsha_notification_task018.json",
+    "archive_manifest": "artifacts\\backtest_archive\\data_assets\\task018_archive\\task018_archive_manifest.json"
+  },
+  "summary": {
+    "monitor_rounds": 42,
+    "down_minimum": 26,
+    "down_count": 26,
+    "shards_40d": 360,
+    "shards_20d": 180,
+    "switches_verified": 25,
+    "sha_files": 559,
+    "dshd_alerts": 10
+  }
+}

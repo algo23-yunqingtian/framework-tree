@@ -1,0 +1,67 @@
+{
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:30+08:00",
+  "archive_id": "DSHC-TASK018-ARCHIVE",
+  "archive_dir": "artifacts\\backtest_archive\\data_assets\\task018_archive",
+  "items": [
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\dual_window_patrol_report.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\dual_window_patrol_report.json",
+      "sha256": "AFB97DA4DA32FCDB502AAF38CB0B5DD4F9ED99EAF2808F9598E73D1C38F4FAAB",
+      "size_bytes": 2176,
+      "archived": true
+    },
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\dual_window_dag_config.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\dual_window_dag_config.json",
+      "sha256": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+      "size_bytes": 6038,
+      "archived": true
+    },
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\dual_window_long_term_schedule.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\dual_window_long_term_schedule.json",
+      "sha256": "2893600EBF78038903FF72DC73C8E28B39FDD59CE5172A37EAD159950C46D13E",
+      "size_bytes": 1111,
+      "archived": true
+    },
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\contract_rollover_quality_report.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\contract_rollover_quality_report.json",
+      "sha256": "F90681A46B5B8F5FE542E4D076E00EAB677C998AA0EE76C449645AC07B29CB2B",
+      "size_bytes": 4063,
+      "archived": true
+    },
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\dual_window_consistency_report_v2.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\dual_window_consistency_report_v2.json",
+      "sha256": "559A05A8F8C5BC2509BAB54CEFB7FE1F24DDF51DA7DC77F848A4750CB9A0CFBB",
+      "size_bytes": 1107,
+      "archived": true
+    },
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\dual_window_sha_fingerprint_list_v2.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\dual_window_sha_fingerprint_list_v2.json",
+      "sha256": "358DA1E3A9B600A391515DB56084F22650E84607C80548DC18B2CDEE853BDB3A",
+      "size_bytes": 243808,
+      "archived": true
+    },
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\dshd_metrics_task018.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\dshd_metrics_task018.json",
+      "sha256": "AF623C3DC9251548B477B256502ADCF42B2A4BACD522FEE223D721B1323FA6B0",
+      "size_bytes": 640,
+      "archived": true
+    },
+    {
+      "source": "artifacts\\backtest_archive\\data_assets\\dsha_notification_task018.json",
+      "archived_to": "artifacts\\backtest_archive\\data_assets\\task018_archive\\dsha_notification_task018.json",
+      "sha256": "7816A131CAE1527F530738F09DF3F7BC27DB8ED6EFB4F0584E630570EE285269",
+      "size_bytes": 1590,
+      "archived": true
+    }
+  ],
+  "note": "只读巡检+链路固化：核心采集逻辑零改动，归档仅复制巡检制品"
+}

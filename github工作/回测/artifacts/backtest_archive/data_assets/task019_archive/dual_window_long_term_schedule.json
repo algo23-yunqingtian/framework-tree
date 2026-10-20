@@ -1,0 +1,26 @@
+{
+  "schedule_id": "DSHC-DUAL-WINDOW-LONG-TERM-SCHEDULE",
+  "version": "1.0.0",
+  "workorder": "DSHC-TASK-018",
+  "token": "DSHC-TASK018-DUAL-WINDOW-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T18:49:26+08:00",
+  "dag_ref": "artifacts\\backtest_archive\\data_assets\\dual_window_dag_config.json",
+  "runs_per_day": 1,
+  "trigger_cron": "35 15 * * 1-5",
+  "timezone": "Asia/Shanghai",
+  "estimated_runtime_sec": 900,
+  "outputs": {
+    "report": "artifacts\\backtest_archive\\data_assets\\dual_window_patrol_report.json",
+    "consistency_v2": "artifacts\\backtest_archive\\data_assets\\dual_window_consistency_report_v2.json",
+    "sha_ledger_v2": "artifacts\\backtest_archive\\data_assets\\dual_window_sha_fingerprint_list_v2.json",
+    "dag_config": "artifacts\\backtest_archive\\data_assets\\dual_window_dag_config.json",
+    "archive": "artifacts\\backtest_archive\\data_assets\\task018_archive"
+  },
+  "governance": {
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "v2_sha_short": "14950B9464BAEFD8"
+  }
+}

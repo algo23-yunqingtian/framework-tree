@@ -1,0 +1,587 @@
+{
+  "workorder": "DSHC-TASK-019",
+  "token": "DSHC-TASK019-PIPELINE-LINK-LOCK-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T01:16:16+08:00",
+  "mode": "READ_ONLY_TRIPLE_DATA_CHAIN_LOCK",
+  "p0_smoke_result": {
+    "workorder": "DSHC-TASK-019",
+    "token": "DSHC-TASK019-PIPELINE-LINK-LOCK-TOKEN",
+    "authorization": "USER-A01",
+    "generated_at": "2026-10-21T01:16:14+08:00",
+    "baseline_commit": "b77a61e",
+    "total_checks": 12,
+    "passed": 12,
+    "failed": 0,
+    "all_pass": true,
+    "checks": {
+      "P0.1_shard_count_stable": {
+        "pass": true,
+        "40d_expected": 360,
+        "40d_actual": 360,
+        "20d_expected": 180,
+        "20d_actual": 180,
+        "total_actual": 540,
+        "source": "TASK-018 baseline (40d=360 / 20d=180)"
+      },
+      "P0.2_sha_fingerprint_all_match": {
+        "pass": true,
+        "expected_files": 559,
+        "compared": 559,
+        "matched": 559,
+        "mismatched": [],
+        "shards_matched": 540,
+        "shards_total": 540,
+        "rollover_matched": 19,
+        "ledger_ref": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_sha_fingerprint_list_v2.json"
+      },
+      "P0.3_rollover_events_zero_violations": {
+        "pass": true,
+        "switches_verified": 25,
+        "expected_switches": 25,
+        "threshold_violations": 0,
+        "missing_segments": 0,
+        "oi_change_threshold": -0.3,
+        "report": "github工作/回测/artifacts/backtest_archive/data_assets/contract_rollover_quality_report.json"
+      },
+      "P0.4_dag_schedule_intact": {
+        "pass": true,
+        "dag_id": "DSHC-DUAL-WINDOW-INCR-DAG",
+        "dag_version": "1.0.0",
+        "dag_nodes": 7,
+        "dag_constraints_ok": true,
+        "schedule_id": "DSHC-DUAL-WINDOW-LONG-TERM-SCHEDULE",
+        "schedule_cron": "35 15 * * 1-5",
+        "schedule_runs_per_day": 1,
+        "schedule_ok": true,
+        "dag_sha256": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+        "schedule_sha256": "2893600EBF78038903FF72DC73C8E28B39FDD59CE5172A37EAD159950C46D13E"
+      },
+      "P0.5_upstream_notices_readable": {
+        "pass": true,
+        "dsha_notice_path": "github工作/回测/artifacts/dsh_task056_joint_ready_notice.json",
+        "dsha_notice_is_task056": true,
+        "dsha_notice_note": "DSHA-TASK056 联调就绪通知已签发并只读读取",
+        "dsha_ready_status": "READY_FOR_CLUSTER_JOINT_TEST",
+        "dsha_admission_status": "ADMISSION_APPROVED",
+        "dsha_notification_type": "JOINT_TEST_ADMISSION_READY",
+        "dsha_sync_id": "DSHD-TASK056-SYNC-1792509566",
+        "dsha_source_task": "DSHA-TASK056-V3-JOINT-TEST-ADMISSION",
+        "dsha_branch": "feature/v88-g1",
+        "dsha_next_action": "DSHA_START_TASK057_CLUSTER_JOINT_TEST_EXECUTION",
+        "dsha_all_locks": "ENGAGED",
+        "dsha_gov_ok": true,
+        "dshd_task050_path": "github工作/回测/artifacts/dshd_task050_strategy_freeze_push.json",
+        "dshd_task050_ok": true,
+        "dshd_task050_push_type": "STRATEGY_FREEZE_DUAL_WINDOW",
+        "dshd_task050_freeze_status": "FINALIZED",
+        "dshd_task050_gate_observed": "CLOSED/HOLD",
+        "dshd_task050_release_permit": "NOT_ISSUED",
+        "dshd_task050_total_active_alerts": 0,
+        "read_only": true
+      },
+      "P0.6_lock_stats_zero": {
+        "pass": true,
+        "total_conflicts": 0,
+        "total_cross": 0,
+        "total_timeouts": 0,
+        "ledger_rounds": 242,
+        "consistency_v2_all_pass": true,
+        "patrol_lock_check_pass": true,
+        "ledger_ref": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_lock_ledger.json"
+      },
+      "P0.7_serial_script_untouched": {
+        "pass": true,
+        "baseline_commit": "b77a61e",
+        "files": {
+          "incr_pipeline_daily.py": {
+            "exists": true,
+            "baseline_blob": "7118f8814d5356a01cfe8bfffb10f9d278211f02",
+            "worktree_blob": "7118f8814d5356a01cfe8bfffb10f9d278211f02",
+            "identical_to_baseline": true
+          },
+          "incr_pipeline_rollback.py": {
+            "exists": true,
+            "baseline_blob": "2e7df71c4fee20643ef6b41edf0604b0fa1218a8",
+            "worktree_blob": "2e7df71c4fee20643ef6b41edf0604b0fa1218a8",
+            "identical_to_baseline": true
+          }
+        },
+        "verification": "git blob SHA 与工作树比对"
+      },
+      "P0.8_core_collection_logic_unchanged": {
+        "pass": true,
+        "baseline_commit": "b77a61e",
+        "files_checked": 5,
+        "files": {
+          "incr_pipeline_daily.py": {
+            "exists": true,
+            "baseline_blob": "7118f8814d5356a01cfe8bfffb10f9d278211f02",
+            "worktree_blob": "7118f8814d5356a01cfe8bfffb10f9d278211f02",
+            "identical_to_baseline": true
+          },
+          "incr_pipeline_rollback.py": {
+            "exists": true,
+            "baseline_blob": "2e7df71c4fee20643ef6b41edf0604b0fa1218a8",
+            "worktree_blob": "2e7df71c4fee20643ef6b41edf0604b0fa1218a8",
+            "identical_to_baseline": true
+          },
+          "incr_pipeline_parallel_online.py": {
+            "exists": true,
+            "baseline_blob": "056ccd321821ed9b7021e0fb331850949b9d31d8",
+            "worktree_blob": "056ccd321821ed9b7021e0fb331850949b9d31d8",
+            "identical_to_baseline": true
+          },
+          "incr_pipeline_dual_window.py": {
+            "exists": true,
+            "baseline_blob": "98641c28c07b0c6422a1a0b9f5a779918faa2856",
+            "worktree_blob": "98641c28c07b0c6422a1a0b9f5a779918faa2856",
+            "identical_to_baseline": true
+          },
+          "incr_pipeline_pipeline_freeze.py": {
+            "exists": true,
+            "baseline_blob": "6ee0ab70d1aba5952ba16ecb659ed3ca5f75841f",
+            "worktree_blob": "6ee0ab70d1aba5952ba16ecb659ed3ca5f75841f",
+            "identical_to_baseline": true
+          }
+        },
+        "note": "仅冻结调度规则, 不触碰分片写入/行情采集/换月因子生成逻辑"
+      },
+      "P0.9_v89_branch_isolation": {
+        "pass": true,
+        "head_branch": "feature/v88-g1",
+        "head_commit": "4d66ad4",
+        "baseline_commit": "b77a61e",
+        "baseline_is_ancestor_of_head": true,
+        "isolation_branch": "feature/v89",
+        "isolation_branch_exists": true,
+        "on_baseline_branch": true,
+        "v3_frozen_state_ok": true,
+        "v89_branch_commit_at_baseline": "b77a61e...",
+        "v89_branch_created": true,
+        "v3_version_isolation": true,
+        "v3_modified": false,
+        "task056_v3_frozen": true,
+        "task056_joint_ready": true,
+        "task056_cross_write": false,
+        "rule": "feature/v88-g1 冻结分支仅允许 bug 修复/链路锁闭; feature/v89 承载策略迭代"
+      },
+      "P0.10_triple_metrics_aligned": {
+        "pass": true,
+        "metrics": {
+          "crowding_ratio": {
+            "label": "crowding_ratio",
+            "endpoints": {
+              "DSHC_shard_sha_ledger": null,
+              "DSHA_v3_manifest.p4_risk_validation": 1.0359,
+              "DSHD_TASK050.hhi_crowding": 1.0359,
+              "DSHD_TASK055.joint_precheck.monitoring": 1.0359
+            },
+            "endpoint_count": 4,
+            "max_abs_deviation": 0.0,
+            "consistent": true
+          },
+          "sharpe_20d": {
+            "label": "sharpe_20d",
+            "endpoints": {
+              "DSHA_v3_manifest.p1_backtest": 3.488982,
+              "DSHD_TASK050.backtest_risk": null,
+              "DSHD_TASK055.v3_stability_crosscheck": 3.488982
+            },
+            "endpoint_count": 3,
+            "max_abs_deviation": 0.0,
+            "consistent": true
+          },
+          "shards_40d": {
+            "label": "shards_40d",
+            "endpoints": {
+              "DSHC_consistency_v2": 360,
+              "DSHD_TASK055.dshc_task018_consistency": 360
+            },
+            "endpoint_count": 2,
+            "max_abs_deviation": 0.0,
+            "consistent": true
+          },
+          "shards_20d": {
+            "label": "shards_20d",
+            "endpoints": {
+              "DSHC_consistency_v2": 180,
+              "DSHD_TASK055.dshc_task018_consistency": 180
+            },
+            "endpoint_count": 2,
+            "max_abs_deviation": 0.0,
+            "consistent": true
+          },
+          "sha_matched": {
+            "label": "sha_matched",
+            "endpoints": {
+              "DSHC_consistency_v2.sha_verify": 540,
+              "DSHD_TASK055.dshc_task018_consistency": 540
+            },
+            "endpoint_count": 2,
+            "max_abs_deviation": 0.0,
+            "consistent": true
+          },
+          "high_corr_pairs": {
+            "label": "high_corr_pairs",
+            "endpoints": {
+              "DSHA_v3_manifest.p4_risk_validation": 0,
+              "DSHD_TASK050.correlation_alerts": 0,
+              "DSHD_TASK055.joint_precheck.monitoring": 0
+            },
+            "endpoint_count": 3,
+            "max_abs_deviation": 0.0,
+            "consistent": true
+          },
+          "down_sample_sufficient": {
+            "label": "down_sample_sufficient",
+            "endpoints": {
+              "DSHC_consistency_v2.cross_round.down_count": 26
+            },
+            "endpoint_count": 1,
+            "max_abs_deviation": 0.0,
+            "consistent": true,
+            "floor_check": {
+              "down_count": 26,
+              "down_minimum": 26,
+              "sufficient": true
+            }
+          }
+        },
+        "max_abs_deviation": 0.0,
+        "tolerance": 1e-06,
+        "endpoints": [
+          "DSHC shard/consistency",
+          "DSHA V3 manifest",
+          "DSHD TASK050/055 notification"
+        ]
+      },
+      "P0.11_silent_mode_no_popup": {
+        "pass": true,
+        "no_os_system": true,
+        "no_os_popen": true,
+        "no_shell_true": true,
+        "no_input_prompt": true,
+        "no_gui_toolkit": true,
+        "create_no_window_defined": true,
+        "creationflags_applied": true,
+        "silent_mode": true,
+        "violations": [],
+        "parseable": true,
+        "stdout_is_tty": false,
+        "run_mode": "background_silent",
+        "note": "AST 静态校验: 无 os.system/os.popen, 无 shell=True, 无 input(), 无 GUI 工具包, 子进程统一 CREATE_NO_WINDOW"
+      },
+      "P0.12_redline_precheck": {
+        "pass": true,
+        "wind_api_calls": 0,
+        "gate": "CLOSED/HOLD",
+        "release_permit": "NOT_ISSUED",
+        "offline_only": true,
+        "real_wind_call": false,
+        "v2_sha_now": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+        "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+        "v2_sha_match": true,
+        "manifest_gate": "CLOSED/HOLD",
+        "manifest_release": "NOT_ISSUED",
+        "manifest_wind": 0,
+        "manifest_offline_only": true
+      }
+    }
+  },
+  "p1_link_lock_result": {
+    "workorder": "DSHC-TASK-019",
+    "token": "DSHC-TASK019-PIPELINE-LINK-LOCK-TOKEN",
+    "generated_at": "2026-10-21T01:16:16+08:00",
+    "lock_id": "DSHC-DUAL-WINDOW-LINK-LOCK-019",
+    "lock_mode": "READ_ONLY_LINK_LOCK",
+    "dag_frozen": true,
+    "schedule_locked": true,
+    "shard_write_protection": true,
+    "sample_fixation": true,
+    "all_pass": true,
+    "locks": {
+      "P1.1_dag_frozen": {
+        "pass": true,
+        "lock_action": "FREEZE",
+        "dag_id": "DSHC-DUAL-WINDOW-INCR-DAG",
+        "dag_version": "1.0.0",
+        "dag_sha256": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+        "modification_forbidden": true,
+        "node_count": 7,
+        "pinned_rules": {
+          "shard_writing_engine": "dual_window_worker (TASK-017)",
+          "worker_function": "code/incr_pipeline_dual_window.py::dual_window_worker",
+          "shard_format": "CSV, header: date,symbol,indicator,value,source",
+          "rows_per_shard": 6,
+          "indicators": [
+            "OPEN",
+            "HIGH",
+            "LOW",
+            "CLOSE",
+            "SETTLE",
+            "OI"
+          ],
+          "market_regimes": [
+            "UP",
+            "DOWN",
+            "SIDEWAYS",
+            "MIXED"
+          ],
+          "seed_rule": "seed_base*1000 + symbol_index (deterministic)",
+          "lock_rule": "global lock orchestrator-only (120s) + per-symbol shard lock worker-only (120s)",
+          "filename_pattern": "parallel_shard_{SAFE_SYMBOL}_{YYYYMMDD}.csv",
+          "window_20d_days": 20,
+          "window_40d_days": 40,
+          "expected_shards_40d": 360,
+          "expected_shards_20d": 180,
+          "oi_change_threshold": -0.3,
+          "down_minimum": 26,
+          "symbols": [
+            "AL.SHF",
+            "CU.SHF",
+            "HC.SHF",
+            "NI.SHF",
+            "PB.SHF",
+            "RB.SHF",
+            "SN.SHF",
+            "ZN.SHF",
+            "LC.GFE"
+          ],
+          "blacklist": {
+            "LC.SHF": "PERMANENTLY_BLACKLISTED — replaced by LC.GFE"
+          }
+        },
+        "guard": "任一字段变更 → SHA 比对失败 → 链路锁闭判 FAIL"
+      },
+      "P1.2_schedule_locked": {
+        "pass": true,
+        "lock_action": "LOCK",
+        "schedule_id": "DSHC-DUAL-WINDOW-LONG-TERM-SCHEDULE",
+        "schedule_sha256": "2893600EBF78038903FF72DC73C8E28B39FDD59CE5172A37EAD159950C46D13E",
+        "time_change_forbidden": true,
+        "trigger": "WEEKDAYS 15:35",
+        "trigger_cron": "35 15 * * 1-5",
+        "timezone": "Asia/Shanghai",
+        "runs_per_day": 1,
+        "estimated_runtime_sec": 900,
+        "long_term_policy": "EVERY_TRADING_DAY",
+        "retry_policy": {
+          "max_retries": 3,
+          "retry_interval_sec": 60
+        },
+        "guard": "联调期间禁止自动变更调度时段; 变更须经下一工单重签 SHA"
+      },
+      "P1.3_shard_write_protection": {
+        "pass": true,
+        "lock_action": "WRITE_PROTECT",
+        "freeze_baseline_time": "2026-10-20T18:49:30+08:00",
+        "newest_shard_mtime": "2026-10-20T16:22:07.604980+08:00",
+        "shards_written_since_freeze": 0,
+        "shards_written_since_freeze_list": [],
+        "total_shards_verified": 540,
+        "sha_verify_pass": true,
+        "sha_matched": 540,
+        "history_snapshot_overwritten": false,
+        "mode": "read_only_verify_only",
+        "note": "联调阶段仅只读校验历史分片, 不生成新分片、不覆盖任何历史快照"
+      },
+      "P1.4_sample_fixation": {
+        "pass": true,
+        "lock_action": "FIXATE",
+        "rows_per_shard": 6,
+        "bad_row_count_files": [],
+        "bad_row_count_files_total": 0,
+        "40d_shards": 360,
+        "40d_rows": 2160,
+        "40d_rows_expected": 2160,
+        "20d_shards": 180,
+        "20d_rows": 1080,
+        "20d_rows_expected": 1080,
+        "monitor_total_rounds": 42,
+        "rounds_all_success": null,
+        "regime_counts": {
+          "DOWN": 26,
+          "UP": 8,
+          "SIDEWAYS": 8
+        },
+        "down_count": 26,
+        "down_minimum": 26,
+        "down_sufficient": true,
+        "sample_shrink_forbidden": true,
+        "guard": "样本量只增不减; DOWN 样本量低于 26 即判 FAIL"
+      }
+    }
+  },
+  "p2_1_triple_data_consistent": {
+    "pass": true,
+    "comparisons": [
+      {
+        "metric": "crowding_ratio",
+        "dshc_shard_side": null,
+        "dsha_backtest_side": 1.0359,
+        "dshd_monitor_side[DSHD_TASK050.hhi_crowding]": 1.0359,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "sharpe_20d",
+        "dshc_shard_side": null,
+        "dsha_backtest_side": 3.488982,
+        "dshd_monitor_side[DSHD_TASK050.backtest_risk]": null,
+        "endpoint_count": 1,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "sharpe_20d_crosscheck",
+        "dshc_shard_side": null,
+        "dsha_backtest_side": 3.488982,
+        "dshd_monitor_side[DSHD_TASK055.v3_stability_crosscheck]": 3.488982,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "shards_40d",
+        "dshc_shard_side": 360,
+        "dsha_backtest_side": null,
+        "dshd_monitor_side[DSHD_TASK055.dshc_task018_consistency]": 360,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "shards_20d",
+        "dshc_shard_side": 180,
+        "dsha_backtest_side": null,
+        "dshd_monitor_side[DSHD_TASK055.dshc_task018_consistency]": 180,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "sha_matched_540",
+        "dshc_shard_side": 540,
+        "dsha_backtest_side": null,
+        "dshd_monitor_side[DSHD_TASK055.dshc_task018_consistency]": 540,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "high_corr_pairs",
+        "dshc_shard_side": null,
+        "dsha_backtest_side": 0,
+        "dshd_monitor_side[DSHD_TASK050.correlation_alerts]": 0,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "high_corr_pairs_crosscheck",
+        "dshc_shard_side": null,
+        "dsha_backtest_side": 0,
+        "dshd_monitor_side[DSHD_TASK055.joint_precheck]": 0,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      },
+      {
+        "metric": "crowding_threshold",
+        "dshc_shard_side": null,
+        "dsha_backtest_side": 1.1,
+        "dshd_monitor_side[DSHD_TASK055.joint_precheck]": 1.1,
+        "endpoint_count": 2,
+        "max_abs_deviation": 0.0,
+        "consistent": true
+      }
+    ],
+    "max_abs_deviation": 0.0,
+    "tolerance": 1e-06,
+    "chain": "分片数据(DSHC) → DSHA 回测 → DSHD 时序监控",
+    "linkage": {
+      "consistency_v2_all_pass": true,
+      "cross_round_all_success": true,
+      "rounds": 42,
+      "shard_20d_subset_of_40d": true,
+      "sha_pass": true,
+      "dshd_task055_overall_precheck": {
+        "dshc_consistency_pass": true,
+        "dshd_monitoring_aligned": true,
+        "v3_flip_rates_reasonable": true,
+        "all_checks_pass": true
+      },
+      "dshd_task055_ready_status": "READY_FOR_CLUSTER_JOINT_TEST",
+      "dshd_task055_red_lines": {
+        "any_triggered": false,
+        "sharpe_ok": true,
+        "crowding_ok": true,
+        "deviation_ok": true,
+        "v3_modified": false,
+        "gate_maintained": true,
+        "release_not_issued": true
+      },
+      "dsha_v3_freeze_status": "PERMANENTLY_FROZEN",
+      "dsha_v3_selected_window": "20d",
+      "dsha_v3_contract_switch_flag_rebuilt": true,
+      "dsha_v3_contract_switch_flag_threshold": -0.3
+    },
+    "down_sample": {
+      "down_count": 26,
+      "down_minimum": 26,
+      "sufficient": true,
+      "dshd_down_sample_sufficient": true,
+      "dshd_regime_counts_9sym": {
+        "up": 1334,
+        "down": 1025,
+        "sideways": 665
+      },
+      "dshd_total_active_alerts": 0
+    }
+  },
+  "p2_2_rollover_rule_locked": {
+    "pass": true,
+    "lock_action": "LOCK_RULE",
+    "oi_change_threshold_locked": -0.3,
+    "threshold_sources": {
+      "rollover_quality_report": -0.3,
+      "rollover_summary": -0.3,
+      "dag_frozen_rules": -0.3,
+      "dsha_final_strategy": -0.3,
+      "dshd_task050_rebuild": -0.3
+    },
+    "threshold_max_deviation": 0.0,
+    "switch_event_sources": {
+      "rollover_quality_report": 25,
+      "rollover_summary_total_switch_events": 25,
+      "dag_frozen_rules_expected": 25
+    },
+    "expected_switch_events": 25,
+    "symbols_processed": 9,
+    "total_rollover_rows": 2160,
+    "missing_segments": 0,
+    "threshold_violations": 0,
+    "rule_change_forbidden": true,
+    "quality_report_sha256": "F90681A46B5B8F5FE542E4D076E00EAB677C998AA0EE76C449645AC07B29CB2B",
+    "rollover_summary_sha256": "3E52531020FBB1E91C65AD52149C07564696DBCAC8F1A6EB1A1AE597D3F47A56"
+  },
+  "p2_3_local_only_no_push": {
+    "pass": true,
+    "pushed_to_dsha": false,
+    "pushed_to_dshd": false,
+    "modified_dsha_config": false,
+    "modified_dshd_config": false,
+    "report_path": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_link_lock_report.json",
+    "note": "分片链路锁定报告仅本地归档, 不推送/不修改 DSHA/DSHD 配置"
+  },
+  "all_pass": true,
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true,
+    "silent_mode": true
+  }
+}
