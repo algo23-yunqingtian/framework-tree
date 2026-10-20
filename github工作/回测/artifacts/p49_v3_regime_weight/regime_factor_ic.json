@@ -1,8 +1,8 @@
 {
-  "output_id": "DSHA-TASK047-REGIME-IC",
-  "generated_at": "2026-10-20T11:44:31+08:00",
-  "token": "DSHA-TASK047-ENGINE-OPTIMIZE-TOKEN",
-  "task": "DSHA-TASK047-ENGINE-OPTIMIZE",
+  "output_id": "DSHA-TASK048-REGIME-IC",
+  "generated_at": "2026-10-20T12:43:58+08:00",
+  "token": "DSHA-TASK048-WEIGHT-FINALIZE-TOKEN",
+  "task": "DSHA-TASK048-WEIGHT-FINALIZE",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -340,5 +340,6 @@
   },
   "constant_factors_handled": [
     "contract_switch_flag"
-  ]
+  ],
+  "inherits_from": "TASK047"
 }

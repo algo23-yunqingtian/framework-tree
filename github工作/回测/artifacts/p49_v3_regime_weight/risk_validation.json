@@ -1,8 +1,8 @@
 {
-  "output_id": "DSHA-TASK047-RISK-VALIDATION",
-  "generated_at": "2026-10-20T11:44:31+08:00",
-  "token": "DSHA-TASK047-ENGINE-OPTIMIZE-TOKEN",
-  "task": "DSHA-TASK047-ENGINE-OPTIMIZE",
+  "output_id": "DSHA-TASK048-RISK-VALIDATION",
+  "generated_at": "2026-10-20T12:43:58+08:00",
+  "token": "DSHA-TASK048-WEIGHT-FINALIZE-TOKEN",
+  "task": "DSHA-TASK048-WEIGHT-FINALIZE",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -10,6 +10,7 @@
     "gate": "CLOSED/HOLD",
     "release": "NOT_ISSUED"
   },
+  "crowding_threshold": 1.1,
   "base_corr_matrix": {
     "contract_switch_flag": {
       "contract_switch_flag": 0.0,
@@ -103,7 +104,6 @@
   },
   "hhi_dynamic_avg": 0.129488,
   "crowding_ratio": 1.0359,
-  "crowding_threshold": 1.5,
   "crowding_alert": false,
   "high_corr_pairs": [],
   "redundancy_flags": [],
