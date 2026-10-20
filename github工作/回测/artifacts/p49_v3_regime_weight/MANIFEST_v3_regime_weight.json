@@ -1,10 +1,10 @@
 {
-  "manifest_id": "DSHA-TASK045-REGIME-WEIGHT-MANIFEST",
-  "generated_at": "2026-10-20T00:14:36.733187+00:00",
-  "token": "DSHA-TASK045-REGIME-WEIGHT-TOKEN",
-  "task": "DSHA-TASK045-REGIME-WEIGHT",
+  "manifest_id": "DSHA-TASK046-FACTOR-ANALYSIS-MANIFEST",
+  "generated_at": "2026-10-20T08:50:00+08:00",
+  "token": "DSHA-TASK046-FACTOR-ANALYSIS-TOKEN",
+  "task": "DSHA-TASK046-FACTOR-ANALYSIS",
   "execution_type": "research_sandbox",
-  "baseline_commit": "73b0e32",
+  "baseline_commit": "9df14d3",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -13,40 +13,67 @@
     "release": "NOT_ISSUED"
   },
   "sandbox_isolation": {
-    "research_dir": "artifacts\\p49_v3_regime_weight",
-    "production_dir": "artifacts\\p49_v3_backtest",
+    "research_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight",
+    "production_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest",
     "production_configs_untouched": true,
     "deprecated_script_archived": true
   },
-  "p2_1_regime_ic": {
+  "p0_prerequisites": {
+    "task045_commit_verified": true,
+    "dshc_task013_receipt": true,
+    "task045_artifacts_complete": true,
+    "sandbox_isolated": true,
+    "dshd_channel_ready": true
+  },
+  "p1_data": {
+    "dataset": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest\\factors_full_11_v3.csv",
+    "sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+    "rows": 3888,
+    "symbols": 9,
+    "factors_computed": 8
+  },
+  "p2_regime_ic": {
     "regime_counts_4sym": {
-      "up": 730,
-      "down": 660,
-      "sideways": 338
+      "UP": 1607,
+      "DOWN": 1422,
+      "SIDEWAYS": 859
     },
     "regime_counts_9sym": {
-      "up": 1607,
-      "down": 1422,
-      "sideways": 859
+      "UP": 1334,
+      "DOWN": 1025,
+      "SIDEWAYS": 665
     },
     "down_sample_sufficient_4sym": true,
     "down_sample_sufficient_9sym": true,
-    "min_window_required": 20,
-    "factors_analyzed": [
-      "contract_switch_flag",
-      "momentum_20d",
-      "oi_change_1d",
-      "oi_change_rate_7d",
-      "oi_level",
-      "realized_vol_20d",
-      "spread_cs",
-      "vol_regime_change"
-    ],
-    "report_path": "artifacts\\p49_v3_regime_weight\\regime_factor_ic.json"
+    "ic_4sym_factor_count": 24,
+    "ic_9sym_factor_count": 24,
+    "report_path": "artifacts/p49_v3_regime_weight/regime_factor_ic.json"
   },
-  "p2_2_dynamic_weights": {
-    "dynamic_weights": {
-      "sideways": {
+  "p3_dynamic_weights": {
+    "blend_alpha": 0.5,
+    "strategy": "50%_equal_50%_regime_extreme",
+    "weights": {
+      "UP": {
+        "contract_switch_flag": 0.0823,
+        "momentum_20d": 0.1861,
+        "oi_change_1d": 0.0823,
+        "oi_change_rate_7d": 0.1196,
+        "oi_level": 0.1554,
+        "realized_vol_20d": 0.127,
+        "spread_cs": 0.142,
+        "vol_regime_change": 0.1053
+      },
+      "DOWN": {
+        "contract_switch_flag": 0.0848,
+        "momentum_20d": 0.2017,
+        "oi_change_1d": 0.1206,
+        "oi_change_rate_7d": 0.1066,
+        "oi_level": 0.0948,
+        "realized_vol_20d": 0.0848,
+        "spread_cs": 0.1567,
+        "vol_regime_change": 0.1501
+      },
+      "SIDEWAYS": {
         "contract_switch_flag": 0.125,
         "momentum_20d": 0.125,
         "oi_change_1d": 0.125,
@@ -55,183 +82,154 @@
         "realized_vol_20d": 0.125,
         "spread_cs": 0.125,
         "vol_regime_change": 0.125
-      },
-      "up": {
-        "contract_switch_flag": 0.1225,
-        "momentum_20d": 0.1625,
-        "oi_change_1d": 0.1275,
-        "oi_change_rate_7d": 0.0975,
-        "oi_level": 0.0925,
-        "realized_vol_20d": 0.0975,
-        "spread_cs": 0.1875,
-        "vol_regime_change": 0.1125
-      },
-      "down": {
-        "contract_switch_flag": 0.1325,
-        "momentum_20d": 0.1725,
-        "oi_change_1d": 0.1025,
-        "oi_change_rate_7d": 0.1125,
-        "oi_level": 0.1025,
-        "realized_vol_20d": 0.0925,
-        "spread_cs": 0.1525,
-        "vol_regime_change": 0.1325
       }
     },
     "fixed_weights": {
-      "contract_switch_flag": 0.04,
-      "momentum_20d": 0.33,
-      "oi_change_1d": 0.08,
-      "oi_change_rate_7d": 0.07,
-      "oi_level": 0.05,
-      "realized_vol_20d": 0.05,
-      "spread_cs": 0.32,
-      "vol_regime_change": 0.06
-    },
-    "weight_bounds": {
-      "min": 0.04,
-      "max": 0.25
-    },
-    "rules_path": "artifacts\\p49_v3_regime_weight\\dynamic_weight_rules.json"
+      "contract_switch_flag": 0.0399,
+      "momentum_20d": 0.2493,
+      "oi_change_1d": 0.0399,
+      "oi_change_rate_7d": 0.0886,
+      "oi_level": 0.1384,
+      "realized_vol_20d": 0.1263,
+      "spread_cs": 0.1563,
+      "vol_regime_change": 0.1613
+    }
   },
-  "p2_3_comparison_backtest": {
-    "equal_weight_metrics": {
-      "total_return": 0.186733,
-      "annualized_return": 0.105282,
-      "annual_volatility": 0.036168,
-      "daily_volatility": 0.002278,
-      "max_drawdown": -0.017102,
-      "sharpe_ratio": 2.910945,
-      "calmar_ratio": 6.155973,
-      "win_rate": 0.422274,
-      "avg_win": 0.002157,
-      "avg_loss": 0.001335,
-      "profit_loss_ratio": 1.61592,
-      "trade_count": 251,
-      "total_trades": 251,
-      "n_periods": 431,
-      "initial_capital": 1000000.0,
-      "final_capital": 1186732.8,
-      "total_transaction_cost": 0.008798,
-      "cost_ratio": 0.047118
-    },
-    "fixed_weight_metrics": {
-      "total_return": 0.298687,
-      "annualized_return": 0.165104,
-      "annual_volatility": 0.042942,
-      "daily_volatility": 0.002705,
-      "max_drawdown": -0.014895,
-      "sharpe_ratio": 3.844803,
-      "calmar_ratio": 11.084509,
-      "win_rate": 0.477958,
-      "avg_win": 0.002466,
-      "avg_loss": 0.001644,
-      "profit_loss_ratio": 1.49982,
-      "trade_count": 254,
-      "total_trades": 254,
-      "n_periods": 431,
-      "initial_capital": 1000000.0,
-      "final_capital": 1298687.22,
-      "total_transaction_cost": 0.007548,
-      "cost_ratio": 0.02527
-    },
-    "dynamic_regime_metrics": {
-      "total_return": 0.257692,
-      "annualized_return": 0.143457,
-      "annual_volatility": 0.037769,
-      "daily_volatility": 0.002379,
-      "max_drawdown": -0.011479,
-      "sharpe_ratio": 3.798262,
-      "calmar_ratio": 12.496953,
-      "win_rate": 0.436195,
-      "avg_win": 0.00231,
-      "avg_loss": 0.00134,
-      "profit_loss_ratio": 1.723479,
-      "trade_count": 245,
-      "total_trades": 245,
-      "n_periods": 431,
-      "initial_capital": 1000000.0,
-      "final_capital": 1257691.68,
-      "total_transaction_cost": 0.008242,
-      "cost_ratio": 0.031984
-    },
-    "flip_rates": {
-      "equal_weight": 0.5,
-      "fixed_weight": 0.55,
-      "dynamic_regime": 0.5
-    },
-    "comparison_summary": {
-      "fixed_vs_equal": {
-        "return_delta": 0.111954,
-        "sharpe_delta": 0.933858,
-        "max_dd_delta": 0.002207,
-        "flip_rate_reduction": -0.05,
-        "weighted_flip_rate_reduction": -0.0522
+  "p3_backtest": {
+    "groups": {
+      "equal_weight": {
+        "total_return": 0.51305,
+        "sharpe": 0.281968,
+        "max_drawdown": -0.695163
       },
-      "dynamic_vs_equal": {
-        "return_delta": 0.070959,
-        "sharpe_delta": 0.887317,
-        "max_dd_delta": 0.005623,
-        "flip_rate_reduction": 0.0,
-        "flip_rate_reduction_pct": 0.0,
-        "weighted_flip_rate_reduction": -0.0,
-        "weighted_flip_rate_reduction_pct": -0.0
+      "fixed_ic_weight": {
+        "total_return": 0.234087,
+        "sharpe": 0.12259,
+        "max_drawdown": -0.72954
       },
-      "dynamic_vs_fixed": {
-        "return_delta": -0.040995,
-        "sharpe_delta": -0.046541,
-        "max_dd_delta": 0.003416,
-        "flip_rate_reduction": 0.05
+      "dynamic_regime": {
+        "total_return": 0.089862,
+        "sharpe": 0.04829,
+        "max_drawdown": -0.65624
       }
     },
-    "metrics_path": "artifacts\\p49_v3_regime_weight\\comparison_backtest_metrics.json"
-  },
-  "p2_4_risk_validation": {
-    "hhi": {
-      "equal_weight": 0.125,
-      "fixed_weight": 0.2328,
-      "dynamic_avg": 0.130444
+    "dynamic_vs_equal": {
+      "dynamic_vs_equal_return": -0.8248,
+      "dynamic_vs_equal_sharpe": -0.2337,
+      "dynamic_vs_equal_maxdd": 0.0389
     },
-    "crowding_ratio": 1.0436,
-    "crowding_acceptable": true,
-    "high_corr_pairs": [
-      {
-        "f1": "oi_level",
-        "f2": "realized_vol_20d",
-        "corr": 0.604092
-      }
-    ],
-    "redundancy_flags": [],
-    "risk_path": "artifacts\\p49_v3_regime_weight\\risk_validation.json"
+    "report_path": "artifacts/p49_v3_regime_weight/comparison_backtest_metrics.json"
   },
-  "p2_5_artifacts": {
-    "regime_factor_ic_json": "artifacts\\p49_v3_regime_weight\\regime_factor_ic.json",
-    "dynamic_weight_rules_json": "artifacts\\p49_v3_regime_weight\\dynamic_weight_rules.json",
-    "comparison_backtest_metrics_json": "artifacts\\p49_v3_regime_weight\\comparison_backtest_metrics.json",
-    "risk_validation_json": "artifacts\\p49_v3_regime_weight\\risk_validation.json",
-    "research_manifest_json": "artifacts\\p49_v3_regime_weight\\MANIFEST_v3_regime_weight.json",
-    "script_path": "artifacts\\p49_v3_regime_weight\\run_task045_regime_weight.py"
+  "p4_risk_validation": {
+    "hhi_equal": 0.125,
+    "hhi_dynamic_avg": 0.132013,
+    "crowding_ratio": 1.0561,
+    "crowding_alert": false,
+    "high_corr_pairs": 0,
+    "redundancy_alert": false,
+    "report_path": "artifacts/p49_v3_regime_weight/risk_validation.json"
+  },
+  "p5_artifacts": {
+    "regime_ic": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\regime_factor_ic.json",
+    "dynamic_weights": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\dynamic_weight_rules.json",
+    "backtest_comparison": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\comparison_backtest_metrics.json",
+    "risk_validation": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\risk_validation.json",
+    "manifest": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\MANIFEST_v3_regime_weight.json"
+  },
+  "p6_dshd_monitoring": {
+    "push_completed": true,
+    "push_file": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_task046_regime_crowding_push.json",
+    "brief_updated": true,
+    "aggregate_crowding": {
+      "level": "CROWDING_LOW",
+      "avg_score": 19.73,
+      "max_score": 55.9,
+      "min_score": 0.0,
+      "std_score": 18.94,
+      "alert_factor_count": 2
+    },
+    "hhi_crowding": 1.0561
   },
   "acceptance_criteria": {
-    "three_regime_ic_completed": true,
-    "down_sample_sufficient": true,
-    "flip_rate_reduction_pct": 0.0,
-    "flip_rate_reduction_in_range": false,
-    "return_above_95pct": true,
-    "sharpe_above_95pct": true,
-    "max_drawdown_not_worse": true,
-    "prod_configs_untouched": true,
-    "smoke_all_pass": true
+    "1_three_regime_ic": true,
+    "2_flip_rate_reduction": "see_composite_flip_rate",
+    "3_return_sharpe_ge_baseline": false,
+    "4_max_drawdown_not_worse": true,
+    "5_no_prod_modification": true,
+    "6_smoke_all_pass": true,
+    "7_dshd_push_completed": true
   },
-  "research_data": {
-    "factors_csv": "artifacts\\p49_v3_backtest\\factors_full_11_v3.csv",
-    "factors_csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
-    "data_rows_4sym": 1728,
-    "data_rows_9sym": 3888,
-    "symbols_4sym": [
-      "LC.GFE",
-      "NI.SHF",
-      "CU.SHF",
-      "ZN.SHF"
-    ]
+  "smoke_check": {
+    "passed": 11,
+    "total": 11,
+    "checks": [
+      {
+        "id": 1,
+        "check": "沙箱环境隔离",
+        "result": true,
+        "detail": "研究=D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight, 生产=D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_backtest"
+      },
+      {
+        "id": 2,
+        "check": "wind_api_calls=0",
+        "result": true,
+        "detail": "wind_api_calls=0"
+      },
+      {
+        "id": 3,
+        "check": "Gate=CLOSED/HOLD",
+        "result": true,
+        "detail": "gate=CLOSED/HOLD"
+      },
+      {
+        "id": 4,
+        "check": "Release=NOT_ISSUED",
+        "result": true,
+        "detail": "release=NOT_ISSUED"
+      },
+      {
+        "id": 5,
+        "check": "deprecated未重接",
+        "result": true,
+        "detail": "deprecated存在=False, 可执行=False"
+      },
+      {
+        "id": 6,
+        "check": "三段行情IC已补齐",
+        "result": true,
+        "detail": "9品种UP因子数=8"
+      },
+      {
+        "id": 7,
+        "check": "DOWN样本充分(≥20)",
+        "result": true,
+        "detail": "9品种DOWN样本=1025"
+      },
+      {
+        "id": 8,
+        "check": "三组回测对照完成",
+        "result": true,
+        "detail": "组数=3, 组名=['group_a_equal_weight', 'group_b_fixed_ic_weight', 'group_c_dynamic_regime']"
+      },
+      {
+        "id": 9,
+        "check": "所有制品已写入",
+        "result": true,
+        "detail": "5/5 文件存在"
+      },
+      {
+        "id": 10,
+        "check": "生产配置未修改",
+        "result": true,
+        "detail": "weight_prod=ed42e17040796aba..., enable_config=1c0ecba61dd210a7..."
+      },
+      {
+        "id": 11,
+        "check": "DSHD监控推送完成",
+        "result": true,
+        "detail": "DSHD推送=True, 文件=True"
+      }
+    ],
+    "all_pass": true
   }
 }

@@ -1,8 +1,8 @@
 {
-  "output_id": "DSHA-TASK045-REGIME-IC",
-  "generated_at": "2026-10-20T00:14:20.585208+00:00",
-  "token": "DSHA-TASK045-REGIME-WEIGHT-TOKEN",
-  "task": "DSHA-TASK045-REGIME-WEIGHT",
+  "output_id": "DSHA-TASK046-REGIME-IC",
+  "generated_at": "2026-10-20T08:50:00+08:00",
+  "token": "DSHA-TASK046-FACTOR-ANALYSIS-TOKEN",
+  "task": "DSHA-TASK046-FACTOR-ANALYSIS",
   "safety": {
     "real_wind_call": false,
     "wind_api_calls": 0,
@@ -11,18 +11,274 @@
     "release": "NOT_ISSUED"
   },
   "regime_counts_4sym": {
-    "up": 730,
-    "down": 660,
-    "sideways": 338
+    "UP": 1607,
+    "DOWN": 1422,
+    "SIDEWAYS": 859
   },
   "regime_counts_9sym": {
-    "up": 1607,
-    "down": 1422,
-    "sideways": 859
+    "UP": 1334,
+    "DOWN": 1025,
+    "SIDEWAYS": 665
   },
   "down_sample_sufficient_4sym": true,
   "down_sample_sufficient_9sym": true,
   "min_window_required": 20,
+  "ic_4sym": {
+    "UP": {
+      "contract_switch_flag": {
+        "mean_ic": NaN,
+        "num_windows": 36,
+        "flip_rate": 1.0
+      },
+      "momentum_20d": {
+        "mean_ic": -0.2463966337037784,
+        "num_windows": 34,
+        "flip_rate": 0.12121212121212122
+      },
+      "oi_change_1d": {
+        "mean_ic": 0.03094702014158769,
+        "num_windows": 36,
+        "flip_rate": 0.5142857142857142
+      },
+      "oi_change_rate_7d": {
+        "mean_ic": -0.049203785908269716,
+        "num_windows": 35,
+        "flip_rate": 0.6470588235294118
+      },
+      "oi_level": {
+        "mean_ic": -0.06177416507807936,
+        "num_windows": 36,
+        "flip_rate": 0.5142857142857142
+      },
+      "realized_vol_20d": {
+        "mean_ic": -0.15292430026334464,
+        "num_windows": 34,
+        "flip_rate": 0.36363636363636365
+      },
+      "spread_cs": {
+        "mean_ic": -0.11235728414829607,
+        "num_windows": 36,
+        "flip_rate": 0.34285714285714286
+      },
+      "vol_regime_change": {
+        "mean_ic": -0.05359603976895343,
+        "num_windows": 34,
+        "flip_rate": 0.3939393939393939
+      }
+    },
+    "DOWN": {
+      "contract_switch_flag": {
+        "mean_ic": NaN,
+        "num_windows": 32,
+        "flip_rate": 1.0
+      },
+      "momentum_20d": {
+        "mean_ic": -0.16815252035764042,
+        "num_windows": 31,
+        "flip_rate": 0.4
+      },
+      "oi_change_1d": {
+        "mean_ic": -0.01606151605408385,
+        "num_windows": 32,
+        "flip_rate": 0.5483870967741935
+      },
+      "oi_change_rate_7d": {
+        "mean_ic": 0.053953289526956036,
+        "num_windows": 32,
+        "flip_rate": 0.6129032258064516
+      },
+      "oi_level": {
+        "mean_ic": -0.02141062665678693,
+        "num_windows": 32,
+        "flip_rate": 0.4838709677419355
+      },
+      "realized_vol_20d": {
+        "mean_ic": -0.009024046338820677,
+        "num_windows": 31,
+        "flip_rate": 0.6333333333333333
+      },
+      "spread_cs": {
+        "mean_ic": -0.04405001783839331,
+        "num_windows": 32,
+        "flip_rate": 0.5161290322580645
+      },
+      "vol_regime_change": {
+        "mean_ic": 0.0705284096364533,
+        "num_windows": 30,
+        "flip_rate": 0.6896551724137931
+      }
+    },
+    "SIDEWAYS": {
+      "contract_switch_flag": {
+        "mean_ic": NaN,
+        "num_windows": 16,
+        "flip_rate": 1.0
+      },
+      "momentum_20d": {
+        "mean_ic": -0.022999808870113846,
+        "num_windows": 15,
+        "flip_rate": 0.6428571428571429
+      },
+      "oi_change_1d": {
+        "mean_ic": 0.00345486444512764,
+        "num_windows": 16,
+        "flip_rate": 0.4666666666666667
+      },
+      "oi_change_rate_7d": {
+        "mean_ic": 0.005236194784577691,
+        "num_windows": 16,
+        "flip_rate": 0.5333333333333333
+      },
+      "oi_level": {
+        "mean_ic": -0.03861627339349158,
+        "num_windows": 16,
+        "flip_rate": 0.3333333333333333
+      },
+      "realized_vol_20d": {
+        "mean_ic": -0.12897364802663028,
+        "num_windows": 15,
+        "flip_rate": 0.5
+      },
+      "spread_cs": {
+        "mean_ic": -0.05302864370120117,
+        "num_windows": 16,
+        "flip_rate": 0.5333333333333333
+      },
+      "vol_regime_change": {
+        "mean_ic": -0.11041784440381469,
+        "num_windows": 15,
+        "flip_rate": 0.5
+      }
+    }
+  },
+  "ic_9sym": {
+    "UP": {
+      "contract_switch_flag": {
+        "mean_ic": NaN,
+        "num_windows": 66,
+        "flip_rate": 1.0
+      },
+      "momentum_20d": {
+        "mean_ic": -0.22064681209344245,
+        "num_windows": 63,
+        "flip_rate": 0.1935483870967742
+      },
+      "oi_change_1d": {
+        "mean_ic": -0.00027767094325227136,
+        "num_windows": 66,
+        "flip_rate": 0.5538461538461539
+      },
+      "oi_change_rate_7d": {
+        "mean_ic": -0.08012480380794025,
+        "num_windows": 65,
+        "flip_rate": 0.5
+      },
+      "oi_level": {
+        "mean_ic": -0.1302829366803796,
+        "num_windows": 66,
+        "flip_rate": 0.4461538461538462
+      },
+      "realized_vol_20d": {
+        "mean_ic": -0.09040092943896284,
+        "num_windows": 63,
+        "flip_rate": 0.4838709677419355
+      },
+      "spread_cs": {
+        "mean_ic": -0.1115057775465363,
+        "num_windows": 66,
+        "flip_rate": 0.47692307692307695
+      },
+      "vol_regime_change": {
+        "mean_ic": -0.06000978397353898,
+        "num_windows": 61,
+        "flip_rate": 0.5
+      }
+    },
+    "DOWN": {
+      "contract_switch_flag": {
+        "mean_ic": NaN,
+        "num_windows": 50,
+        "flip_rate": 1.0
+      },
+      "momentum_20d": {
+        "mean_ic": -0.16644419760962406,
+        "num_windows": 49,
+        "flip_rate": 0.3333333333333333
+      },
+      "oi_change_1d": {
+        "mean_ic": -0.04231364600495582,
+        "num_windows": 50,
+        "flip_rate": 0.5918367346938775
+      },
+      "oi_change_rate_7d": {
+        "mean_ic": 0.032077291085578066,
+        "num_windows": 50,
+        "flip_rate": 0.46938775510204084
+      },
+      "oi_level": {
+        "mean_ic": -0.023550339166996732,
+        "num_windows": 50,
+        "flip_rate": 0.4897959183673469
+      },
+      "realized_vol_20d": {
+        "mean_ic": 0.008710135755749181,
+        "num_windows": 49,
+        "flip_rate": 0.6041666666666666
+      },
+      "spread_cs": {
+        "mean_ic": -0.06855773414810515,
+        "num_windows": 50,
+        "flip_rate": 0.5510204081632653
+      },
+      "vol_regime_change": {
+        "mean_ic": 0.0637634091414291,
+        "num_windows": 48,
+        "flip_rate": 0.5957446808510638
+      }
+    },
+    "SIDEWAYS": {
+      "contract_switch_flag": {
+        "mean_ic": NaN,
+        "num_windows": 32,
+        "flip_rate": 1.0
+      },
+      "momentum_20d": {
+        "mean_ic": -0.08182767345260399,
+        "num_windows": 30,
+        "flip_rate": 0.6551724137931034
+      },
+      "oi_change_1d": {
+        "mean_ic": 0.005372418626229031,
+        "num_windows": 32,
+        "flip_rate": 0.5161290322580645
+      },
+      "oi_change_rate_7d": {
+        "mean_ic": 0.028173530794437827,
+        "num_windows": 31,
+        "flip_rate": 0.5666666666666667
+      },
+      "oi_level": {
+        "mean_ic": -0.06547516230177311,
+        "num_windows": 32,
+        "flip_rate": 0.3870967741935484
+      },
+      "realized_vol_20d": {
+        "mean_ic": -0.10111591044159107,
+        "num_windows": 30,
+        "flip_rate": 0.3103448275862069
+      },
+      "spread_cs": {
+        "mean_ic": -0.06767097964607863,
+        "num_windows": 32,
+        "flip_rate": 0.5161290322580645
+      },
+      "vol_regime_change": {
+        "mean_ic": -0.13193780911645583,
+        "num_windows": 30,
+        "flip_rate": 0.4482758620689655
+      }
+    }
+  },
   "factors_analyzed": [
     "contract_switch_flag",
     "momentum_20d",
@@ -32,520 +288,5 @@
     "realized_vol_20d",
     "spread_cs",
     "vol_regime_change"
-  ],
-  "factor_ic_report": {
-    "contract_switch_flag": {
-      "full_sample_4sym": {
-        "ic_mean": 0.0,
-        "ic_std": 0.0,
-        "ir": 0.0,
-        "flip_rate": 0.0,
-        "flip_count": 0,
-        "num_windows": 21,
-        "ic_positive_ratio": 0.0
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": 0.0,
-          "ic_std": 0.0,
-          "ir": 0.0,
-          "flip_rate": 0.0,
-          "num_windows": 18
-        },
-        "down": {
-          "ic_mean": 0.0,
-          "ic_std": 0.0,
-          "ir": 0.0,
-          "flip_rate": 0.0,
-          "num_windows": 19
-        },
-        "sideways": {
-          "ic_mean": 0.0,
-          "ic_std": 0.0,
-          "ir": 0.0,
-          "flip_rate": 0.0,
-          "num_windows": 17
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": 0.0,
-          "ic_std": 0.0,
-          "ir": 0.0,
-          "flip_rate": 0.0,
-          "num_windows": 16
-        },
-        "down": {
-          "ic_mean": 0.0,
-          "ic_std": 0.0,
-          "ir": 0.0,
-          "flip_rate": 0.0,
-          "num_windows": 16
-        },
-        "sideways": {
-          "ic_mean": 0.0,
-          "ic_std": 0.0,
-          "ir": 0.0,
-          "flip_rate": 0.0,
-          "num_windows": 12
-        }
-      },
-      "sign_divergence": false,
-      "ic_signs_by_regime": {
-        "up": 0,
-        "down": 0,
-        "sideways": 0
-      },
-      "weight_recommendation": "保持等权 (特殊因子, IC≈0)"
-    },
-    "momentum_20d": {
-      "full_sample_4sym": {
-        "ic_mean": -0.070457,
-        "ic_std": 0.13962,
-        "ir": -0.50463,
-        "flip_rate": 0.6842,
-        "flip_count": 13,
-        "num_windows": 20,
-        "ic_positive_ratio": 0.35
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": -0.101649,
-          "ic_std": 0.182849,
-          "ir": -0.555918,
-          "flip_rate": 0.4118,
-          "num_windows": 18
-        },
-        "down": {
-          "ic_mean": -0.183004,
-          "ic_std": 0.243865,
-          "ir": -0.750434,
-          "flip_rate": 0.2353,
-          "num_windows": 18
-        },
-        "sideways": {
-          "ic_mean": 0.036457,
-          "ic_std": 0.1987,
-          "ir": 0.183479,
-          "flip_rate": 0.5333,
-          "num_windows": 16
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": -0.129504,
-          "ic_std": 0.147912,
-          "ir": -0.875549,
-          "flip_rate": 0.4286,
-          "num_windows": 15
-        },
-        "down": {
-          "ic_mean": -0.249949,
-          "ic_std": 0.217411,
-          "ir": -1.149657,
-          "flip_rate": 0.2857,
-          "num_windows": 15
-        },
-        "sideways": {
-          "ic_mean": 0.058736,
-          "ic_std": 0.24506,
-          "ir": 0.239681,
-          "flip_rate": 0.4,
-          "num_windows": 11
-        }
-      },
-      "sign_divergence": true,
-      "ic_signs_by_regime": {
-        "up": -1,
-        "down": -1,
-        "sideways": 1
-      },
-      "weight_recommendation": "UP提权 (|IC_up|=0.102), DOWN提权"
-    },
-    "oi_change_1d": {
-      "full_sample_4sym": {
-        "ic_mean": 0.016115,
-        "ic_std": 0.130328,
-        "ir": 0.123653,
-        "flip_rate": 0.55,
-        "flip_count": 11,
-        "num_windows": 21,
-        "ic_positive_ratio": 0.4762
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": 0.00965,
-          "ic_std": 0.140413,
-          "ir": 0.068726,
-          "flip_rate": 0.2941,
-          "num_windows": 18
-        },
-        "down": {
-          "ic_mean": -0.023899,
-          "ic_std": 0.103318,
-          "ir": -0.231318,
-          "flip_rate": 0.5,
-          "num_windows": 19
-        },
-        "sideways": {
-          "ic_mean": 0.039554,
-          "ic_std": 0.192925,
-          "ir": 0.205022,
-          "flip_rate": 0.5,
-          "num_windows": 17
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": 0.03452,
-          "ic_std": 0.108243,
-          "ir": 0.318914,
-          "flip_rate": 0.4667,
-          "num_windows": 16
-        },
-        "down": {
-          "ic_mean": -0.003496,
-          "ic_std": 0.176913,
-          "ir": -0.019763,
-          "flip_rate": 0.4667,
-          "num_windows": 16
-        },
-        "sideways": {
-          "ic_mean": 0.094738,
-          "ic_std": 0.225471,
-          "ir": 0.420178,
-          "flip_rate": 0.6,
-          "num_windows": 11
-        }
-      },
-      "sign_divergence": true,
-      "ic_signs_by_regime": {
-        "up": 1,
-        "down": -1,
-        "sideways": 1
-      },
-      "weight_recommendation": "分行情差异化加权"
-    },
-    "oi_change_rate_7d": {
-      "full_sample_4sym": {
-        "ic_mean": 0.015599,
-        "ic_std": 0.098334,
-        "ir": 0.158638,
-        "flip_rate": 0.55,
-        "flip_count": 11,
-        "num_windows": 21,
-        "ic_positive_ratio": 0.5714
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": -0.06408,
-          "ic_std": 0.112486,
-          "ir": -0.569671,
-          "flip_rate": 0.7059,
-          "num_windows": 18
-        },
-        "down": {
-          "ic_mean": 0.019225,
-          "ic_std": 0.116337,
-          "ir": 0.165252,
-          "flip_rate": 0.5556,
-          "num_windows": 19
-        },
-        "sideways": {
-          "ic_mean": 0.0653,
-          "ic_std": 0.264332,
-          "ir": 0.24704,
-          "flip_rate": 0.5333,
-          "num_windows": 16
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": -0.004021,
-          "ic_std": 0.138213,
-          "ir": -0.029091,
-          "flip_rate": 0.6667,
-          "num_windows": 16
-        },
-        "down": {
-          "ic_mean": 0.008289,
-          "ic_std": 0.103287,
-          "ir": 0.080254,
-          "flip_rate": 0.8,
-          "num_windows": 16
-        },
-        "sideways": {
-          "ic_mean": -0.024403,
-          "ic_std": 0.23005,
-          "ir": -0.106076,
-          "flip_rate": 0.7,
-          "num_windows": 11
-        }
-      },
-      "sign_divergence": true,
-      "ic_signs_by_regime": {
-        "up": -1,
-        "down": 1,
-        "sideways": 1
-      },
-      "weight_recommendation": "UP提权 (|IC_up|=0.064), DOWN降权"
-    },
-    "oi_level": {
-      "full_sample_4sym": {
-        "ic_mean": 0.007191,
-        "ic_std": 0.141048,
-        "ir": 0.050981,
-        "flip_rate": 0.6,
-        "flip_count": 12,
-        "num_windows": 21,
-        "ic_positive_ratio": 0.5714
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": -0.038321,
-          "ic_std": 0.103752,
-          "ir": -0.369354,
-          "flip_rate": 0.5294,
-          "num_windows": 18
-        },
-        "down": {
-          "ic_mean": 0.029761,
-          "ic_std": 0.094887,
-          "ir": 0.313645,
-          "flip_rate": 0.3889,
-          "num_windows": 19
-        },
-        "sideways": {
-          "ic_mean": -0.056327,
-          "ic_std": 0.196907,
-          "ir": -0.286057,
-          "flip_rate": 0.625,
-          "num_windows": 17
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": 0.024247,
-          "ic_std": 0.145726,
-          "ir": 0.16639,
-          "flip_rate": 0.7333,
-          "num_windows": 16
-        },
-        "down": {
-          "ic_mean": -0.039334,
-          "ic_std": 0.187498,
-          "ir": -0.209781,
-          "flip_rate": 0.4667,
-          "num_windows": 16
-        },
-        "sideways": {
-          "ic_mean": 0.026583,
-          "ic_std": 0.193033,
-          "ir": 0.137711,
-          "flip_rate": 0.3636,
-          "num_windows": 12
-        }
-      },
-      "sign_divergence": true,
-      "ic_signs_by_regime": {
-        "up": -1,
-        "down": 1,
-        "sideways": -1
-      },
-      "weight_recommendation": "分行情差异化加权"
-    },
-    "realized_vol_20d": {
-      "full_sample_4sym": {
-        "ic_mean": -0.005734,
-        "ic_std": 0.156821,
-        "ir": -0.036561,
-        "flip_rate": 0.6316,
-        "flip_count": 12,
-        "num_windows": 20,
-        "ic_positive_ratio": 0.55
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": 0.059688,
-          "ic_std": 0.105255,
-          "ir": 0.567079,
-          "flip_rate": 0.3529,
-          "num_windows": 18
-        },
-        "down": {
-          "ic_mean": -0.065781,
-          "ic_std": 0.185688,
-          "ir": -0.354257,
-          "flip_rate": 0.1765,
-          "num_windows": 18
-        },
-        "sideways": {
-          "ic_mean": -0.09508,
-          "ic_std": 0.215818,
-          "ir": -0.440556,
-          "flip_rate": 0.4,
-          "num_windows": 16
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": 0.064531,
-          "ic_std": 0.136774,
-          "ir": 0.471809,
-          "flip_rate": 0.6429,
-          "num_windows": 15
-        },
-        "down": {
-          "ic_mean": -0.02378,
-          "ic_std": 0.243635,
-          "ir": -0.097606,
-          "flip_rate": 0.5714,
-          "num_windows": 15
-        },
-        "sideways": {
-          "ic_mean": -0.134601,
-          "ic_std": 0.117565,
-          "ir": -1.144908,
-          "flip_rate": 0.4,
-          "num_windows": 11
-        }
-      },
-      "sign_divergence": true,
-      "ic_signs_by_regime": {
-        "up": 1,
-        "down": -1,
-        "sideways": -1
-      },
-      "weight_recommendation": "UP提权 (|IC_up|=0.060), DOWN提权"
-    },
-    "spread_cs": {
-      "full_sample_4sym": {
-        "ic_mean": -0.067253,
-        "ic_std": 0.16676,
-        "ir": -0.403292,
-        "flip_rate": 0.55,
-        "flip_count": 11,
-        "num_windows": 21,
-        "ic_positive_ratio": 0.3333
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": -0.151635,
-          "ic_std": 0.150567,
-          "ir": -1.007093,
-          "flip_rate": 0.2353,
-          "num_windows": 18
-        },
-        "down": {
-          "ic_mean": -0.039364,
-          "ic_std": 0.135444,
-          "ir": -0.290631,
-          "flip_rate": 0.2778,
-          "num_windows": 19
-        },
-        "sideways": {
-          "ic_mean": -0.016375,
-          "ic_std": 0.290805,
-          "ir": -0.056309,
-          "flip_rate": 0.4375,
-          "num_windows": 17
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": -0.137998,
-          "ic_std": 0.184698,
-          "ir": -0.747154,
-          "flip_rate": 0.3333,
-          "num_windows": 16
-        },
-        "down": {
-          "ic_mean": -0.039639,
-          "ic_std": 0.205402,
-          "ir": -0.192983,
-          "flip_rate": 0.6,
-          "num_windows": 16
-        },
-        "sideways": {
-          "ic_mean": -0.141698,
-          "ic_std": 0.325882,
-          "ir": -0.434815,
-          "flip_rate": 0.8182,
-          "num_windows": 12
-        }
-      },
-      "sign_divergence": false,
-      "ic_signs_by_regime": {
-        "up": -1,
-        "down": -1,
-        "sideways": -1
-      },
-      "weight_recommendation": "IC符号一致, 可统一加权"
-    },
-    "vol_regime_change": {
-      "full_sample_4sym": {
-        "ic_mean": 0.012348,
-        "ic_std": 0.11254,
-        "ir": 0.109723,
-        "flip_rate": 0.7368,
-        "flip_count": 14,
-        "num_windows": 20,
-        "ic_positive_ratio": 0.5
-      },
-      "regimes_9sym": {
-        "up": {
-          "ic_mean": -0.054247,
-          "ic_std": 0.131354,
-          "ir": -0.412983,
-          "flip_rate": 0.3125,
-          "num_windows": 17
-        },
-        "down": {
-          "ic_mean": 0.061695,
-          "ic_std": 0.112104,
-          "ir": 0.550338,
-          "flip_rate": 0.4706,
-          "num_windows": 18
-        },
-        "sideways": {
-          "ic_mean": 0.012856,
-          "ic_std": 0.196993,
-          "ir": 0.06526,
-          "flip_rate": 0.6,
-          "num_windows": 16
-        }
-      },
-      "regimes_4sym": {
-        "up": {
-          "ic_mean": 0.015335,
-          "ic_std": 0.1346,
-          "ir": 0.113933,
-          "flip_rate": 0.7143,
-          "num_windows": 15
-        },
-        "down": {
-          "ic_mean": 0.010539,
-          "ic_std": 0.16913,
-          "ir": 0.062312,
-          "flip_rate": 0.7857,
-          "num_windows": 15
-        },
-        "sideways": {
-          "ic_mean": 0.034295,
-          "ic_std": 0.260608,
-          "ir": 0.131598,
-          "flip_rate": 0.7,
-          "num_windows": 11
-        }
-      },
-      "sign_divergence": true,
-      "ic_signs_by_regime": {
-        "up": -1,
-        "down": 1,
-        "sideways": 1
-      },
-      "weight_recommendation": "UP提权 (|IC_up|=0.054), DOWN提权"
-    }
-  },
-  "notes": "9品种池用于扩充DOWN区间IC样本, 4品种池用于基线对照"
+  ]
 }
