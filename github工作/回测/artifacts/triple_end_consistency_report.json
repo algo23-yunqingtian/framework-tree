@@ -1,0 +1,242 @@
+{
+  "output_id": "DSHA-TASK056-P1-TRIPLE-END-CONSISTENCY",
+  "generated_at": "2026-10-20T23:19:26+08:00",
+  "token": "DSHA-TASK056-JOINT-TEST-ADMISSION-TOKEN",
+  "mode": "AUDIT_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true
+  },
+  "sources": {
+    "dsha": "v3_full_delivery_archive (TASK055)",
+    "dshc": "DSHC-TASK018 dual_window_consistency_report_v2.json",
+    "dshd": "DSHD-TASK048/049 push + p82_factor_time_series_monitor + p82_thresholds_v443"
+  },
+  "dsha_metrics": {
+    "sharpe": 3.488982,
+    "crowding": 1.0359,
+    "high_corr_pairs": 0,
+    "replay_deviation": 0.0,
+    "trade_count": 251,
+    "flip_rate_20d": 0.5,
+    "flip_rate_40d": 0.2105,
+    "alpha": 0.6,
+    "ic_window": 20,
+    "factors": 8,
+    "engine": "SET-E",
+    "status": "PERMANENTLY_FROZEN"
+  },
+  "dshc_metrics": {
+    "40d_files": 360,
+    "20d_files": 180,
+    "sha_matched": 540,
+    "sha_total": 540,
+    "cross_round": 42,
+    "cross_all_success": true,
+    "patrol_pass": true,
+    "consistency_pass": true,
+    "sha_matched_metrics": 540,
+    "rollover_symbols": 9,
+    "rollover_events": 25,
+    "40d_file_count_actual": 360,
+    "20d_file_count_actual": 180
+  },
+  "dshd_metrics": {
+    "crowding_ratio": 1.0359,
+    "crowding_threshold": 1.1,
+    "crowding_alert": false,
+    "hhi_equal_baseline": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "high_corr_pairs": 0,
+    "corr_alert_threshold": 0.5,
+    "total_active_alerts": 0,
+    "monitored_factors": [
+      "momentum_20d",
+      "spread_cs",
+      "oi_change_1d",
+      "oi_change_rate_7d",
+      "oi_level",
+      "realized_vol_20d",
+      "vol_regime_change",
+      "contract_switch_flag"
+    ],
+    "momentum_20d_cv": 0.4004,
+    "momentum_20d_high_variance": true,
+    "momentum_20d_recent_flips": [
+      0.6842,
+      0.6842,
+      0.2105,
+      0.2105,
+      0.2105
+    ],
+    "spread_cs_cv": 0.6547,
+    "spread_cs_high_variance": true,
+    "spread_cs_recent_flips": [
+      0.55,
+      0.55,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "oi_change_1d_cv": 0.2412,
+    "oi_change_1d_high_variance": false,
+    "oi_change_1d_recent_flips": [
+      0.55,
+      0.55,
+      0.3,
+      0.3,
+      0.3
+    ],
+    "oi_change_rate_7d_cv": 0.0881,
+    "oi_change_rate_7d_high_variance": false,
+    "oi_change_rate_7d_recent_flips": [
+      0.55,
+      0.55,
+      0.45,
+      0.45,
+      0.45
+    ],
+    "oi_level_cv": 0.0804,
+    "oi_level_high_variance": false,
+    "oi_level_recent_flips": [
+      0.6,
+      0.6,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "realized_vol_20d_cv": 0.0,
+    "realized_vol_20d_high_variance": false,
+    "realized_vol_20d_recent_flips": [
+      0.6316,
+      0.6316,
+      0.6316,
+      0.6316,
+      0.6316
+    ],
+    "vol_regime_change_cv": 0.1833,
+    "vol_regime_change_high_variance": false,
+    "vol_regime_change_recent_flips": [
+      0.7368,
+      0.7368,
+      0.4737,
+      0.4737,
+      0.4737
+    ],
+    "contract_switch_flag_cv": 0,
+    "contract_switch_flag_high_variance": false,
+    "contract_switch_flag_recent_flips": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "threshold_20d_stable": 0.3,
+    "threshold_20d_watch": 0.5,
+    "threshold_20d_alert": 1.0,
+    "threshold_40d_stable": 0.1,
+    "threshold_40d_volatile": 0.4,
+    "threshold_structural_destab": "20d_flip < 30% AND 40d_flip > 40% => STRUCTURAL_DESTABILIZATION",
+    "crowding_p90_threshold": 47.6,
+    "crowding_baseline_runs": 71
+  },
+  "cross_checks": [
+    {
+      "id": "c01",
+      "metric": "sharpe_ratio",
+      "dsha_value": 3.488982,
+      "dshd_value": "N/A (DSHD monitors crowding, not sharpe)",
+      "dshc_value": "N/A",
+      "status": "INFO",
+      "detail": "DSHA端夏普3.489为回测真值; DSHD/DSHC不直接监控夏普"
+    },
+    {
+      "id": "c02",
+      "metric": "crowding_ratio",
+      "dsha_value": 1.0359,
+      "dshd_value": 1.0359,
+      "dshc_value": "N/A",
+      "status": "PASS",
+      "detail": "DSHA=1.0359, DSHD=1.0359, threshold=1.1"
+    },
+    {
+      "id": "c03",
+      "metric": "high_corr_pairs",
+      "dsha_value": 0,
+      "dshd_value": 0,
+      "dshc_value": "N/A",
+      "status": "PASS",
+      "detail": "DSHA=0, DSHD=0, threshold=0.5"
+    },
+    {
+      "id": "c04",
+      "metric": "flip_rate_20d (momentum_20d)",
+      "dsha_value": 0.5,
+      "dshd_value": 0.2105,
+      "dshc_value": "N/A",
+      "status": "INFO",
+      "detail": "DSHA composite flip=20d=0.5, DSHD latest momentum_20d=0.2105, spread_cs=0.0"
+    },
+    {
+      "id": "c05",
+      "metric": "structural_destabilization",
+      "dsha_value": "20d=50.00%, 40d=21.05%",
+      "dshd_value": "20d_flip < 30% AND 40d_flip > 40% => STRUCTURAL_DESTABILIZATION",
+      "dshc_value": "N/A",
+      "status": "PASS",
+      "detail": "V3 20d=50.00% (not <30%), 40d=21.05% (not >=40%) — rule NOT triggered"
+    },
+    {
+      "id": "c06",
+      "metric": "shard_data_coverage",
+      "dsha_value": "V3 uses 20d window on 4 symbols",
+      "dshd_value": "N/A",
+      "dshc_value": "40d=360, 20d=180",
+      "status": "PASS",
+      "detail": "DSHC 40d files=360 (expected 360), 20d files=180 (expected 180), cross_round=42"
+    },
+    {
+      "id": "c07",
+      "metric": "sha_fingerprint_integrity",
+      "dsha_value": "archive_sha=cfa77052df0821db...",
+      "dshd_value": "N/A",
+      "dshc_value": "matched=540/540",
+      "status": "PASS",
+      "detail": "DSHC SHA 540/540 matched, all_pass=True"
+    },
+    {
+      "id": "c08",
+      "metric": "contract_rollover_events",
+      "dsha_value": "V3 contract_switch_flag factor (11 nonzero switches)",
+      "dshd_value": "N/A",
+      "dshc_value": "9 symbols, 25 switch events",
+      "status": "PASS",
+      "detail": "DSHC rollover: 9 symbols, 25 events; V3 contract_switch_flag has 11 nonzero values (OI<-30% threshold)"
+    },
+    {
+      "id": "c09",
+      "metric": "high_variance_factors",
+      "dsha_value": "momentum_20d & spread_cs used in V3",
+      "dshd_value": "momentum_20d cv=0.4004, spread_cs cv=0.6547",
+      "dshc_value": "N/A",
+      "status": "INFO",
+      "detail": "DSHD monitoring: momentum_20d high_var=True(cv=0.4004), spread_cs high_var=True(cv=0.6547); both are monitored HIGH variance factors"
+    },
+    {
+      "id": "c10",
+      "metric": "crowding_baseline_stability",
+      "dsha_value": "crowding=1.0359, threshold=1.1, margin=0.0641",
+      "dshd_value": "P90 baseline=47.6, runs=71",
+      "dshc_value": "N/A",
+      "status": "PASS",
+      "detail": "DSHD crowding baseline stable across 71 runs, P90=47.6; V3 crowding 1.0359 well below 1.1 threshold"
+    }
+  ],
+  "all_pass": true,
+  "failure_count": 0,
+  "failures": [],
+  "summary": "三端指标交叉一致性核验完成"
+}

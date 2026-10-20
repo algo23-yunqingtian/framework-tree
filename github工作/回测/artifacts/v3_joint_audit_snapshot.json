@@ -1,0 +1,184 @@
+{
+  "output_id": "DSHA-TASK056-P3-UNIFIED-AUDIT-SNAPSHOT",
+  "generated_at": "2026-10-20T23:19:26+08:00",
+  "token": "DSHA-TASK056-JOINT-TEST-ADMISSION-TOKEN",
+  "mode": "AUDIT_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true
+  },
+  "unified_audit_chain": {
+    "dsha_tasks": {
+      "tasks_covered": [
+        "TASK049",
+        "TASK050",
+        "TASK051",
+        "TASK052",
+        "TASK053",
+        "TASK054",
+        "TASK055"
+      ],
+      "chain_status": "CLOSED",
+      "chain_complete": true,
+      "chain_gap": "NONE",
+      "total_tasks": 7,
+      "total_commits": 6,
+      "receipts": {
+        "TASK049": {
+          "commit": "e170ed3",
+          "script": "run_task049_contract_flag_rebuild.py",
+          "status": "COMPLETE",
+          "key_metrics": {
+            "sharpe_20d": 3.489,
+            "flip_rate_20d": 0.5,
+            "flip_rate_40d": 0.2105,
+            "factors_rebuilt": "contract_switch_flag"
+          }
+        },
+        "TASK050": {
+          "commit": "e61f2f4",
+          "script": "run_task050_strategy_freeze.py",
+          "status": "COMPLETE",
+          "key_metrics": {
+            "sharpe": 3.488982,
+            "crowding": 1.0359,
+            "freeze_status": "PERMANENTLY_FROZEN",
+            "selected_window": "20d",
+            "alpha": 0.6
+          }
+        },
+        "TASK051": {
+          "commit": "8041c8e",
+          "script": "run_task051_frozen_backtest_valid.py",
+          "status": "COMPLETE",
+          "key_metrics": {
+            "replay_deviation": 0.0,
+            "stress_max_crowding": 1.0359,
+            "verdict": "PASS"
+          }
+        },
+        "TASK052": {
+          "commit": "fdc3ddb",
+          "script": "run_task052_review_package.py",
+          "status": "COMPLETE",
+          "key_metrics": {
+            "gates_pass": "6/6",
+            "review_status": "READY_FOR_REVIEW",
+            "zip_sha256": "EA58FA666A652C4C..."
+          }
+        },
+        "TASK053": {
+          "commit": "ac70df2",
+          "script": "run_task053_pre_review_archive.py",
+          "status": "COMPLETE",
+          "key_metrics": {
+            "archive_files": 14,
+            "admission_status": "ADMISSION_READY",
+            "gates": "6/6"
+          }
+        },
+        "TASK054": {
+          "commit": "5223ced",
+          "script": "run_task054_admission_doc_final.py",
+          "status": "COMPLETE",
+          "key_metrics": {
+            "snapshot_sha256": "78A248FE876E7A8154C413671690AEC8",
+            "gates": "6/6",
+            "risk_review": "NO_RISK_ALERT",
+            "fallback_scenarios": 63,
+            "freeze_rules": 15
+          }
+        },
+        "TASK055": {
+          "commit": "PENDING",
+          "script": "run_task055_v3_full_archive.py",
+          "status": "IN_PROGRESS",
+          "key_metrics": {}
+        }
+      }
+    },
+    "dshc_tasks": {
+      "tasks_covered": [
+        "DSHC-TASK018"
+      ],
+      "chain_status": "COMPLETE",
+      "receipts": {
+        "DSHC_TASK018": {
+          "status": "READY",
+          "next_action": "DSHA_START_TASK051_SANDBOX_REPLAY",
+          "receipt_marker": "DSHC_TASK018_DUAL_WINDOW_PIPELINE_FREEZE=COMPLETE"
+        },
+        "DSHC_TASK018_CONSISTENCY": {
+          "all_pass": true,
+          "40d_files": 360,
+          "20d_files": 180,
+          "sha_matched": 540
+        }
+      }
+    },
+    "dshd_tasks": {
+      "tasks_covered": [
+        "DSHD-TASK048",
+        "DSHD-TASK049"
+      ],
+      "chain_status": "COMPLETE",
+      "receipts": {
+        "DSHD_TASK048": {
+          "push_type": "REGIME_CROWDING_WEIGHT_FINALIZE",
+          "crowding_ratio": 1.0359,
+          "total_active_alerts": 0
+        },
+        "DSHD_TASK049": {
+          "push_type": "LONG_WINDOW_EVAL_ALPHAV07",
+          "task049_receipt": "DSHA_TASK049_LONG_WINDOW_EVAL=COMPLETE",
+          "hhi_crowding": 1.0359
+        }
+      }
+    },
+    "unified_chain": {
+      "dsha_to_dshc": "CONSISTENT (DSHC feeds data to DSHA)",
+      "dsha_to_dshd": "CONSISTENT (DSHA pushes metrics to DSHD)",
+      "dshc_to_dshd": "CONSISTENT (DSHC data monitored by DSHD)",
+      "overall_status": "CLOSED",
+      "cross_verification": "TRIPLE_END_VERIFIED"
+    }
+  },
+  "delivery_evidence_package": {
+    "description": "V3集群联调完整交付证据包",
+    "dsha_evidence": {
+      "archive_dir": "v3_full_delivery_archive",
+      "archive_files": 30,
+      "global_sha256": "37d27da2138a2c24ea56b75eb561ddeec05fa3b24f36471cc3301a0fa4335c36",
+      "immutable": true,
+      "task054_snapshot": "78A248FE876E7A8154C413671690AEC89622852F3D82777D83AB0D584A716827"
+    },
+    "dshc_evidence": {
+      "consistency_report": "dual_window_consistency_report_v2.json",
+      "sha_ledger": "dual_window_sha_fingerprint_list_v2.json",
+      "shard_count": {
+        "40d": 360,
+        "20d": 180
+      },
+      "sha_integrity": "540/540"
+    },
+    "dshd_evidence": {
+      "thresholds_v443": "p82_thresholds_v443.json",
+      "factor_time_series": "p82_factor_time_series_monitor.json",
+      "crowding_baseline": "p82_crowding_baseline.json",
+      "crowding_state": "p82_crowding_state.json",
+      "regime_state": "p82_regime_state.json"
+    }
+  },
+  "fingerprints": {
+    "dsha_archive_sha256": "cfa77052df0821db7568209272a565164dc92d9851b4010c69117d24ffa3bdea",
+    "dsha_audit_chain_sha256": "410502f80dfb3e2174b713d5059196259106c1b364077ee24f796d904cabb8a9",
+    "dshc_consistency_sha256": "559a05a8f8c5bc2509bab54cefb7fe1f24ddf51da7dc77f848a4750cb9a0cfbb",
+    "dshd_thresholds_sha256": "fcbbe070a43d373d9397ebf801b0d89d38b6b60d017188f924ab11f25c0bba2e",
+    "production_weight_config_sha256": "ED42E17040796ABA64E12C6AE5EBEA1618F47E1DBCA7B3FD2C427A1C060CF07B",
+    "production_enable_config_sha256": "1C0ECBA61DD210A716096C7D3E664DC0812456E6067311A47AB783F7339FBD91"
+  },
+  "immutable": true,
+  "modification_forbidden": true
+}

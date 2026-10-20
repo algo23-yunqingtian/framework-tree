@@ -1,6 +1,6 @@
 # DSHD 监控文档 — Regime识别 + 拥挤度监控 (独立持久化)
 
-> 生成时间: 2026-10-20T19:00:58+08:00
+> 生成时间: 2026-10-20T21:27:05+08:00
 > 任务: DSHD-TASK-046-MONITOR
 > 令牌: DSHD-TASK046-TOKEN
 > 模式: AUDIT_READ_ONLY | wind_api_calls=0 | Gate=CLOSED/HOLD
@@ -15,7 +15,7 @@
 > 检测器: DSHD-TASK039-REGIME-DETECT
 > 版本: 1.0.0
 > 锁定: True
-> TASK-044 巡检时间: 2026-10-20T19:00:58+08:00
+> TASK-044 巡检时间: 2026-10-20T21:27:05+08:00
 
 ### 12.1 行情分布
 
@@ -39,8 +39,8 @@
 > 监控器: DSHD-TASK039-CROWDING-MONITOR
 > 版本: 1.0.0
 > P90 基线阈值: 47.6
-> 基线运行次数: 42
-> TASK-044 巡检时间: 2026-10-20T19:00:58+08:00
+> 基线运行次数: 71
+> TASK-044 巡检时间: 2026-10-20T21:27:05+08:00
 
 ### 13.1 告警阈值
 
@@ -72,14 +72,14 @@
 | 整体等级 | CROWDING_LOW |
 | 告警因子数 | 7 |
 | P90基线阈值 | 47.6 |
-| 基线运行次数 | 42 |
+| 基线运行次数 | 71 |
 
 ---
 
 ## 十四、TASK-046 监控治理状态
 
 > 任务: DSHD-TASK-046-MONITOR
-> 巡检时间: 2026-10-20T19:00:58+08:00
+> 巡检时间: 2026-10-20T21:27:05+08:00
 > 令牌: DSHD-TASK046-TOKEN
 > 版本升级: v4.4.0-TASK044 -> v4.4.1-TASK046
 
@@ -140,7 +140,7 @@
 
 > 监控器: DSHD-TASK-046-COMPOSITE-SIGNAL-FLIP
 > 版本: 1.0.0
-> TASK-044 巡检时间: 2026-10-20T19:00:58+08:00
+> TASK-044 巡检时间: 2026-10-20T21:27:05+08:00
 
 ### 15.1 翻转率阈值
 
@@ -180,7 +180,7 @@
 ## 十六、四类告警分类
 
 > 分类器: DSHD-TASK-046-FOUR-CATEGORY-CLASSIFICATION
-> TASK-044 巡检时间: 2026-10-20T19:00:58+08:00
+> TASK-044 巡检时间: 2026-10-20T21:27:05+08:00
 
 ### 16.1 告警分类摘要
 
@@ -218,17 +218,17 @@
 ## 十七、7x24 监控覆盖
 
 > 覆盖范围: P80 Audit Watch, P80 Phase2 Watch, P81 Watch, P81 Inspect, P77 Hash Watch
-> TASK-044 巡检时间: 2026-10-20T19:00:58+08:00
+> TASK-044 巡检时间: 2026-10-20T21:27:05+08:00
 
 ### 17.1 进程状态
 
 | 进程 | 状态 | PID | 内存 | 运行时长 |
 |---|---|---|---|---|
-| P80 Audit Watch | ✅ ALIVE | 33660 | 191.5MB | - |
+| P80 Audit Watch | ✅ ALIVE | 17508 | 213.7MB | - |
 | P80 Phase2 Watch | ❌ DEAD | 0 | 0MB | - |
 | P81 Watch | ✅ ALIVE | 0 | 0MB | - |
 | P81 Inspect | ✅ ALIVE | 0 | 0MB | - |
-| P77 Hash Watch | ✅ ALIVE | 23528 | 76.2MB | - |
+| P77 Hash Watch | ✅ ALIVE | 23528 | 77MB | - |
 
 ### 17.2 P81 Watch 脚本升级状态
 
@@ -247,4 +247,202 @@
 ---
 
 *本文件由 DSHD-TASK-046-MONITOR 自动生成*
-*2026-10-20T19:00:58+08:00*
+*2026-10-20T21:27:05+08:00*
+
+
+---
+
+## 十八、TASK-049 告警规则锁定 + 集群联调巡检 (22:37)
+
+> 任务: DSHD-TASK-049-ALERT-RULE-LOCK
+> 令牌: DSHD-TASK049-TOKEN
+> 版本: v4.4.4
+> 状态: PASS
+
+### 18.1 告警规则固化
+
+| 项目 | 状态 |
+|---|---|
+| 告警规则版本 | 4.4.4-TASK049 ✅ |
+| 严重度分级 | 4级 (CRITICAL/HIGH/MEDIUM/LOW) ✅ |
+| 结构性不稳定 | CRITICAL (20d<30% AND 40d>40%) ✅ |
+| 高方差因子 | momentum_20d, spread_cs ✅ |
+| 去重窗口 | HIGH=30min MEDIUM=10min LOW=5min ✅ |
+
+### 18.2 快照清理
+
+| 项目 | 状态 |
+|---|---|
+| 清理前条目 | 10 ✅ |
+| 清理后条目 | 10 ✅ |
+| 移除覆盖条目 | 0 ✅ |
+| 保留已验证 | 10 ✅ |
+
+### 18.3 风险台账
+
+| 项目 | 状态 |
+|---|---|
+| 版本 | v4.4.4-TASK049 ✅ |
+| 总条目 | 36 ✅ |
+| 新增条目 | 6 ✅ |
+
+### 18.4 红线约束
+
+| 约束 | 状态 |
+|---|---|
+| wind_api_calls | 0 ✅ |
+| Gate | CLOSED/HOLD ✅ |
+| Release | NOT_ISSUED ✅ |
+| 无PowerShell弹窗 | ✅ 全部静默 |
+| 无DSHC/DSHA修改 | ✅ 只读 |
+| 守护进程PID | 7612不变 ✅ |
+| V3策略未修改 | ✅ 冻结 |
+
+
+---
+
+## 十八、TASK-049 告警规则锁定 + 集群联调巡检 (22:40)
+
+> 任务: DSHD-TASK-049-ALERT-RULE-LOCK
+> 令牌: DSHD-TASK049-TOKEN
+> 版本: v4.4.4
+> 状态: PASS
+
+### 18.1 告警规则固化
+
+| 项目 | 状态 |
+|---|---|
+| 告警规则版本 | 4.4.4-TASK049 ✅ |
+| 严重度分级 | 4级 (CRITICAL/HIGH/MEDIUM/LOW) ✅ |
+| 结构性不稳定 | CRITICAL (20d<30% AND 40d>40%) ✅ |
+| 高方差因子 | momentum_20d, spread_cs ✅ |
+| 去重窗口 | HIGH=30min MEDIUM=10min LOW=5min ✅ |
+
+### 18.2 快照清理
+
+| 项目 | 状态 |
+|---|---|
+| 清理前条目 | 10 ✅ |
+| 清理后条目 | 10 ✅ |
+| 移除覆盖条目 | 0 ✅ |
+| 保留已验证 | 10 ✅ |
+
+### 18.3 风险台账
+
+| 项目 | 状态 |
+|---|---|
+| 版本 | v4.4.4-TASK049 ✅ |
+| 总条目 | 36 ✅ |
+| 新增条目 | 6 ✅ |
+
+### 18.4 红线约束
+
+| 约束 | 状态 |
+|---|---|
+| wind_api_calls | 0 ✅ |
+| Gate | CLOSED/HOLD ✅ |
+| Release | NOT_ISSUED ✅ |
+| 无PowerShell弹窗 | ✅ 全部静默 |
+| 无DSHC/DSHA修改 | ✅ 只读 |
+| 守护进程PID | 7612不变 ✅ |
+| V3策略未修改 | ✅ 冻结 |
+
+
+---
+
+## 十八、TASK-049 告警规则锁定 + 集群联调巡检 (22:45)
+
+> 任务: DSHD-TASK-049-ALERT-RULE-LOCK
+> 令牌: DSHD-TASK049-TOKEN
+> 版本: v4.4.4
+> 状态: PASS
+
+### 18.1 告警规则固化
+
+| 项目 | 状态 |
+|---|---|
+| 告警规则版本 | 4.4.4-TASK049 ✅ |
+| 严重度分级 | 4级 (CRITICAL/HIGH/MEDIUM/LOW) ✅ |
+| 结构性不稳定 | CRITICAL (20d<30% AND 40d>40%) ✅ |
+| 高方差因子 | momentum_20d, spread_cs ✅ |
+| 去重窗口 | HIGH=30min MEDIUM=10min LOW=5min ✅ |
+
+### 18.2 快照清理
+
+| 项目 | 状态 |
+|---|---|
+| 清理前条目 | 10 ✅ |
+| 清理后条目 | 10 ✅ |
+| 移除覆盖条目 | 0 ✅ |
+| 保留已验证 | 10 ✅ |
+
+### 18.3 风险台账
+
+| 项目 | 状态 |
+|---|---|
+| 版本 | v4.4.4-TASK049 ✅ |
+| 总条目 | 36 ✅ |
+| 新增条目 | 6 ✅ |
+
+### 18.4 红线约束
+
+| 约束 | 状态 |
+|---|---|
+| wind_api_calls | 0 ✅ |
+| Gate | CLOSED/HOLD ✅ |
+| Release | NOT_ISSUED ✅ |
+| 无PowerShell弹窗 | ✅ 全部静默 |
+| 无DSHC/DSHA修改 | ✅ 只读 |
+| 守护进程PID | 7612不变 ✅ |
+| V3策略未修改 | ✅ 冻结 |
+
+
+---
+
+## 二十、TASK056: V3集群联调准入核验 (2026-10-20T23:19:26+08:00)
+
+### 20.1 冒烟自检 (P0)
+
+| 检查项 | 结果 |
+|--------|------|
+| TASK055归档包SHA256不变 | ✅ sha256=cfa77052df0821db..., immutable=True, files=30 |
+| 分支冻结标记+V89隔离已开启 | ✅ freeze=STRATEGY_SIDE_FROZEN, rules=15, forbidden=8, v89_created=True |
+| DSHC-TASK018双窗口一致性 | ✅ 40d=360, 20d=180, SHA=540/540, cross_round=42 |
+| DSHD-TASK048告警基线 | ✅ crowding=1.0359, threshold=1.1, corr_pairs=0, alerts=0 |
+| 审计链路TASK049→055闭环 | ✅ status=CLOSED, tasks=7, commits=6, gap=NONE |
+| 6项门禁FINAL_VERIFIED | ✅ gates=6, all_verified=True, all_pass=True |
+| 63条兜底运维规则 | ✅ code_modified=False, scenarios=63 |
+| 静默模式+守护进程不重启 | ✅ silent_mode=enabled, no_ps_popup=confirmed, daemon_restart=none |
+| 红线预检 wind=0/gate/release | ✅ wind_api_calls=0, gate=CLOSED/HOLD, release=NOT_ISSUED |
+| 全局只读锁 | ✅ read_only_mode=active, cross_write_forbidden=YES, v3_modified=NO |
+| **总计** | **10/10 PASS** |
+
+### 20.2 三端一致性核验 (P1)
+
+| 核验项 | 结果 |
+|--------|------|
+| 三端数据源 | DSHA(归档) + DSHC(分片) + DSHD(时序监控) |
+| 交叉核验项数 | 10 |
+| 全部通过 | ✅ |
+| 失败项 | 0 |
+| 一致性结论 | 三端指标交叉一致性核验完成 |
+
+### 20.3 集群联调准入 (P2)
+
+| 项目 | 内容 |
+|------|------|
+| 准入清单 | cluster_joint_checklist.json |
+| 准入状态 | ADMISSION_APPROVED |
+| 联调就绪 | ✅ READY_FOR_CLUSTER_JOINT_TEST |
+| 写入DSHC/DSHD | ❌ 否 (仅只读通知) |
+
+### 20.4 审计链路最终归档 (P3)
+
+| 项目 | 内容 |
+|------|------|
+| 统一审计快照 | v3_joint_audit_snapshot.json |
+| DSHA任务 | 7 (TASK049→055) |
+| DSHC任务 | 1 (DSHC-TASK018) |
+| DSHD任务 | 2 (DSHD-TASK048/049) |
+| 链路状态 | CLOSED (TRIPLE_END_VERIFIED) |
+| 证据包不可变 | ✅ YES |

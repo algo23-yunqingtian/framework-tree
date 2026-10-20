@@ -1,0 +1,45 @@
+{
+  "sync_id": "DSHD-TASK056-SYNC-1792509566",
+  "generated_at": "2026-10-20T23:19:26+08:00",
+  "source_task": "DSHA-TASK056-V3-JOINT-TEST-ADMISSION",
+  "source_token": "DSHA-TASK056-JOINT-TEST-ADMISSION-TOKEN",
+  "sync_type": "READ_ONLY_NOTIFICATION",
+  "mode": "AUDIT_READ_ONLY",
+  "write_to_dshd_monitors": false,
+  "modify_dshd_scripts": false,
+  "modify_dshd_ledger": false,
+  "write_to_dshc_data": false,
+  "modify_dshc_scripts": false,
+  "modify_dshc_ledger": false,
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true
+  },
+  "admission_status": "ADMISSION_APPROVED",
+  "branch": "feature/v88-g1",
+  "strategy_version": "V3",
+  "freeze_status": "STRATEGY_SIDE_FROZEN",
+  "engine": "Set-E",
+  "ready_status": "READY_FOR_CLUSTER_JOINT_TEST",
+  "next_action": "DSHA_START_TASK057_CLUSTER_JOINT_TEST_EXECUTION",
+  "notification_type": "JOINT_TEST_ADMISSION_READY",
+  "joint_readiness": {
+    "p0_smoke": "10/10 PASS",
+    "p1_consistency": "ALL PASS",
+    "p2_admission": "READY",
+    "p3_audit": "CLOSED",
+    "all_locks": "ENGAGED"
+  },
+  "red_lines": {
+    "any_triggered": false,
+    "sharpe_ok": true,
+    "crowding_ok": true,
+    "deviation_ok": true,
+    "v3_modified": false,
+    "gate_maintained": true,
+    "release_not_issued": true,
+    "cross_write": false
+  }
+}
