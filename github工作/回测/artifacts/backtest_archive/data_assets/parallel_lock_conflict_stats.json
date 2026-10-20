@@ -1,7 +1,7 @@
 {
-  "workorder": "DSHC-TASK-013",
-  "token": "DSHC-TASK013-DATA-FETCH-TOKEN",
-  "generated_at": "2026-10-20T08:51:30+08:00",
+  "workorder": "DSHC-TASK-014",
+  "token": "DSHC-TASK014-DATA-COLLECT-TOKEN",
+  "generated_at": "2026-10-20T12:29:52+08:00",
   "global_timeout_sec": 120,
   "lock_stats": {
     "total_attempts": 12,
@@ -56,5 +56,6 @@
     "expected": true
   },
   "authorization": "USER-A01",
-  "data_fetch_ignited": true
+  "data_collect_mode": true,
+  "consistency_pass": true
 }

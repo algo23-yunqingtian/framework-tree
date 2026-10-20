@@ -1,0 +1,46 @@
+{
+  "snapshot_id": "DSHC-DATA-COLLECT-SNAPSHOT",
+  "workorder": "DSHC-TASK-014",
+  "token": "DSHC-TASK014-DATA-COLLECT-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T12:29:52+08:00",
+  "manifest_version": "v2.4.0",
+  "gate": "CLOSED/HOLD",
+  "release_permit": "NOT_ISSUED",
+  "wind_api_calls": 0,
+  "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+  "v2_sha_short": "14950B9464BAEFD8",
+  "mode": "DATA_COLLECT",
+  "is_dry_run": false,
+  "trading_days": 7,
+  "min_windows": 20,
+  "total_rounds": 21,
+  "market_regimes": [
+    "UP",
+    "DOWN",
+    "MIXED"
+  ],
+  "window_counts": {
+    "AL.SHF": 21,
+    "CU.SHF": 21,
+    "HC.SHF": 21,
+    "NI.SHF": 21,
+    "PB.SHF": 21,
+    "RB.SHF": 21,
+    "SN.SHF": 21,
+    "ZN.SHF": 21,
+    "LC.GFE": 21
+  },
+  "all_windows_met": true,
+  "down_sample_count": 7,
+  "data_collect_pass": true,
+  "constraints": {
+    "v2_sha_unchanged": true,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "receipt": "DSHC_TASK014_DATA_COLLECT=COMPLETE｜seven_day_collection=YES｜down_samples_supplemented=YES｜min_20_windows_met=YES｜shard_isolation_intact=YES｜consistency_reports_generated=YES｜dshd_alerts_pushed=YES｜dsha_ready=YES"
+}

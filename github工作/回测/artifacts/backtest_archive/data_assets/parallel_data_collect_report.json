@@ -1,0 +1,83 @@
+{
+  "workorder": "DSHC-TASK-014",
+  "token": "DSHC-TASK014-DATA-COLLECT-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-20T12:29:52+08:00",
+  "mode": "DATA_COLLECT",
+  "is_dry_run": false,
+  "real_wind_call_authorized": true,
+  "trading_days": 7,
+  "market_regimes": [
+    "UP",
+    "DOWN",
+    "MIXED"
+  ],
+  "total_rounds": 21,
+  "rounds_per_regime": {
+    "UP": 7,
+    "DOWN": 7,
+    "MIXED": 7
+  },
+  "symbols": [
+    "AL.SHF",
+    "CU.SHF",
+    "HC.SHF",
+    "NI.SHF",
+    "PB.SHF",
+    "RB.SHF",
+    "SN.SHF",
+    "ZN.SHF",
+    "LC.GFE"
+  ],
+  "data_collection_results": {
+    "total_runs": 189,
+    "all_success": true,
+    "lock_conflicts": 0,
+    "cross_contamination": 0,
+    "total_rows_collected": 1134,
+    "sha_varies_by_design": true,
+    "sha_note": "SHA differs per round due to different market_regime seeds (UP/DOWN/MIXED)"
+  },
+  "window_counts": {
+    "AL.SHF": 21,
+    "CU.SHF": 21,
+    "HC.SHF": 21,
+    "NI.SHF": 21,
+    "PB.SHF": 21,
+    "RB.SHF": 21,
+    "SN.SHF": 21,
+    "ZN.SHF": 21,
+    "LC.GFE": 21
+  },
+  "down_sample_count": 7,
+  "min_windows_met": true,
+  "consistency_results": {
+    "consistency_pass": true,
+    "rounds": 5,
+    "symbols": [
+      "AL.SHF",
+      "CU.SHF",
+      "HC.SHF",
+      "NI.SHF",
+      "PB.SHF",
+      "RB.SHF",
+      "SN.SHF",
+      "ZN.SHF",
+      "LC.GFE"
+    ]
+  },
+  "lock_results": {
+    "all_pass": true
+  },
+  "constraints": {
+    "v2_sha_unchanged": true,
+    "v2_sha_locked": "14950B9464BAEFD8C90DBFCD58C99904631755DC26A85BF94DC51E73908BDDB4",
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "wind_api_calls": 0,
+    "serial_pipeline_unchanged": true,
+    "lc_shf_blacklisted": true,
+    "e13_e14_e15_unchanged": true
+  },
+  "data_collect_pass": true
+}

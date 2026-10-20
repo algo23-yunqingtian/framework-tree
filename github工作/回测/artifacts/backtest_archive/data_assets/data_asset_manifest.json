@@ -4,7 +4,7 @@
   "version": "2.4.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-20T08:51:30+08:00",
+  "updated_at": "2026-10-20T12:29:52+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
   "registry_version": "v2.4.0",
   "updated_by": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
@@ -672,7 +672,7 @@
       "version": "1.0.0",
       "workorder": "DSHC-TASK-012",
       "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
-      "created_at": "2026-10-20T08:51:30+08:00",
+      "created_at": "2026-10-20T12:29:52+08:00",
       "global_lock_timeout_sec": 120,
       "parallel_schedule_config": "artifacts/backtest_archive/data_assets/parallel_schedule_config.json",
       "lock_conflict_stats": "artifacts/backtest_archive/data_assets/parallel_lock_conflict_stats.json",
@@ -698,6 +698,16 @@
       "authorization": "USER-A01",
       "created_at": "2026-10-20T08:51:30+08:00",
       "data_fetch_report": "artifacts/backtest_archive/data_assets/parallel_data_fetch_report.json"
+    },
+    "incr_pipeline_data_collect": {
+      "path": "code/incr_pipeline_data_collect.py",
+      "purpose": "并行链路稳定性+全量数据采集工单",
+      "version": "1.0.0",
+      "workorder": "DSHC-TASK-014",
+      "token": "DSHC-TASK014-DATA-COLLECT-TOKEN",
+      "authorization": "USER-A01",
+      "created_at": "2026-10-20T12:29:52+08:00",
+      "data_collect_report": "artifacts/backtest_archive/data_assets/parallel_data_collect_report.json"
     }
   },
   "governance": {
@@ -722,7 +732,7 @@
     "LAST_ONLINE_MONITOR_RUN": "2026-10-19T23:54:44+08:00",
     "LAST_ONLINE_MONITOR_STATUS": "RUNNING_STABLE",
     "LAST_ONLINE_MONITOR_DAYS": 7,
-    "LAST_PARALLEL_ONLINE_RUN": "2026-10-20T08:51:30+08:00",
+    "LAST_PARALLEL_ONLINE_RUN": "2026-10-20T12:29:52+08:00",
     "LAST_PARALLEL_ONLINE_STATUS": "PASS",
     "LAST_PARALLEL_ONLINE_ROUNDS": 5,
     "LAST_PARALLEL_ONLINE_CONSISTENCY": "PASS",
@@ -739,7 +749,20 @@
     "LAST_DATA_FETCH_TOTAL_ROWS": 54,
     "LAST_DATA_FETCH_LOCK_CONFLICTS": 0,
     "LAST_DATA_FETCH_CROSS_CONTAMINATION": 0,
-    "LAST_DATA_FETCH_SHA_STABLE": true
+    "LAST_DATA_FETCH_SHA_STABLE": true,
+    "LAST_DATA_COLLECT_RUN": "2026-10-20T12:29:52+08:00",
+    "LAST_DATA_COLLECT_STATUS": "PASS",
+    "LAST_DATA_COLLECT_WORKORDER": "DSHC-TASK-014",
+    "LAST_DATA_COLLECT_TOKEN": "DSHC-TASK014-DATA-COLLECT-TOKEN",
+    "LAST_DATA_COLLECT_AUTHORIZATION": "USER-A01",
+    "LAST_DATA_COLLECT_IS_DRY_RUN": false,
+    "LAST_DATA_COLLECT_TOTAL_ROUNDS": 21,
+    "LAST_DATA_COLLECT_TRADING_DAYS": 7,
+    "LAST_DATA_COLLECT_MIN_WINDOWS": 20,
+    "LAST_DATA_COLLECT_DOWN_SAMPLES": 7,
+    "LAST_DATA_COLLECT_LOCK_CONFLICTS": 0,
+    "LAST_DATA_COLLECT_CROSS_CONTAMINATION": 0,
+    "LAST_DATA_COLLECT_ALL_WINDOWS_MET": true
   },
   "data_format": {
     "long_header": "date,symbol,indicator,value,source",
@@ -1172,7 +1195,7 @@
     "version": "1.0.0",
     "workorder": "DSHC-TASK-012",
     "token": "DSHC-TASK012-PARALLEL-ONLINE-TOKEN",
-    "created_at": "2026-10-20T08:51:30+08:00"
+    "created_at": "2026-10-20T12:29:52+08:00"
   },
   "parallel_schedule_config": {
     "path": "artifacts/backtest_archive/data_assets/parallel_schedule_config.json",

@@ -1,0 +1,30 @@
+{
+  "notification_id": "DSHC-DATA-COLLECT-TO-DSHA",
+  "workorder": "DSHC-TASK-014",
+  "token": "DSHC-TASK014-DATA-COLLECT-TOKEN",
+  "authorization": "USER-A01",
+  "timestamp": "2026-10-20T12:29:52+08:00",
+  "action": "NOTIFY_DATA_COLLECT_READY",
+  "message": "DSHC-TASK-014 并行链路稳定性+全量数据采集已完成。7个交易日全量并行采集，9品种分片独立写入，DOWN行情样本已补齐，每品种≥20窗口已满足。一致性报告已通过，锁冲突为零。请DSHA启动因子计算与动态加权回测。",
+  "data_collect_status": "COMPLETE",
+  "total_rounds": 21,
+  "total_windows": {
+    "AL.SHF": 21,
+    "CU.SHF": 21,
+    "HC.SHF": 21,
+    "NI.SHF": 21,
+    "PB.SHF": 21,
+    "RB.SHF": 21,
+    "SN.SHF": 21,
+    "ZN.SHF": 21,
+    "LC.GFE": 21
+  },
+  "down_samples": 7,
+  "lock_conflicts": 0,
+  "cross_contamination": 0,
+  "all_windows_met": true,
+  "trading_days": 7,
+  "shard_dir": "artifacts/backtest_archive/data_assets/incremental/parallel/",
+  "dsha_sandbox_dir": "output_sample/parallel_shards/",
+  "next_action": "DSHA_START_FACTOR_CALCULATION_AND_DYNAMIC_WEIGHTED_BACKTEST"
+}

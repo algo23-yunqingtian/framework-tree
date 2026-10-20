@@ -1,7 +1,7 @@
 {
-  "workorder": "DSHC-TASK-013",
-  "token": "DSHC-TASK013-DATA-FETCH-TOKEN",
-  "generated_at": "2026-10-20T08:51:30+08:00",
+  "workorder": "DSHC-TASK-014",
+  "token": "DSHC-TASK014-DATA-COLLECT-TOKEN",
+  "generated_at": "2026-10-20T12:29:52+08:00",
   "rounds": 5,
   "symbols": [
     "AL.SHF",
@@ -236,7 +236,25 @@
   ],
   "consistency_pass": true,
   "authorization": "USER-A01",
-  "mode": "DATA_FETCH",
+  "mode": "DATA_COLLECT",
   "is_dry_run": false,
-  "data_fetch_ignited": true
+  "data_collect_ignited": true,
+  "trading_days": 7,
+  "min_windows": 20,
+  "total_collect_rounds": 21,
+  "window_counts": {
+    "AL.SHF": 21,
+    "CU.SHF": 21,
+    "HC.SHF": 21,
+    "NI.SHF": 21,
+    "PB.SHF": 21,
+    "RB.SHF": 21,
+    "SN.SHF": 21,
+    "ZN.SHF": 21,
+    "LC.GFE": 21
+  },
+  "all_windows_met": true,
+  "down_sample_count": 7,
+  "collect_lock_conflicts": 0,
+  "collect_cross_contamination": 0
 }

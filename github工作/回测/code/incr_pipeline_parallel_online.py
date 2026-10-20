@@ -58,6 +58,7 @@ import multiprocessing
 import os
 import shutil
 import sys
+import random
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -229,12 +230,68 @@ def write_empty_shard(shard_path: Path) -> None:
         f.write(",".join(LONG_HEADER) + "\n")
 
 
-def write_simulated_shard(shard_path: Path, symbol: str, end_date: str) -> int:
+def write_simulated_shard(
+    shard_path: Path,
+    symbol: str,
+    end_date: str,
+    market_regime: Optional[str] = None,
+    seed: Optional[int] = None,
+) -> int:
+    """
+    Write simulated shard data with optional market regime control.
+
+    When market_regime and seed are both None (default), preserves original
+    behaviour: fixed values (100000.0 for CLOSE, 10000 for others).
+    When either is specified, generates enriched data with regime variation.
+
+    Args:
+        shard_path: Output shard file path
+        symbol: Symbol name
+        end_date: Date string (YYYY-MM-DD)
+        market_regime: "UP", "DOWN", or "MIXED" (None = original behaviour)
+        seed: Random seed for reproducibility (None = original behaviour)
+
+    Returns:
+        Row count written
+    """
+    # Backward-compatible default: fixed values
+    if market_regime is None and seed is None:
+        with open(shard_path, "w", encoding="utf-8", newline="") as f:
+            f.write(",".join(LONG_HEADER) + "\n")
+            for ind, wsd_field in INDICATOR_TO_WSD_FIELD.items():
+                value = "100000.0" if ind == "CLOSE" else "10000"
+                f.write(f"{end_date},{symbol},{ind},{value},{SOURCE_TAG}\n")
+        return count_csv_data_rows(shard_path)
+
+    # Enriched data generation with market regime control
+    if seed is not None:
+        random.seed(seed)
+
+    base_close = 100000.0
+    base_vol = 1000000.0
+
+    if market_regime == "UP":
+        close = base_close * (1.0 + random.uniform(0.01, 0.03))
+    elif market_regime == "DOWN":
+        close = base_close * (1.0 - random.uniform(0.01, 0.03))
+    else:  # MIXED or any other
+        close = base_close * (1.0 + random.uniform(-0.02, 0.02))
+
+    high = close * (1.0 + random.uniform(0.003, 0.01))
+    low = close * (1.0 - random.uniform(0.003, 0.01))
+    settle = close * (1.0 + random.uniform(-0.002, 0.002))
+    volume = int(base_vol * (1.0 + random.uniform(-0.1, 0.1)))
+    oi = int(base_vol * (1.0 + random.uniform(-0.05, 0.05)))
+
     with open(shard_path, "w", encoding="utf-8", newline="") as f:
         f.write(",".join(LONG_HEADER) + "\n")
-        for ind, wsd_field in INDICATOR_TO_WSD_FIELD.items():
-            value = "100000.0" if ind == "CLOSE" else "10000"
-            f.write(f"{end_date},{symbol},{ind},{value},{SOURCE_TAG}\n")
+        f.write(f"{end_date},{symbol},CLOSE,{close:.2f},{SOURCE_TAG}\n")
+        f.write(f"{end_date},{symbol},HIGH,{high:.2f},{SOURCE_TAG}\n")
+        f.write(f"{end_date},{symbol},LOW,{low:.2f},{SOURCE_TAG}\n")
+        f.write(f"{end_date},{symbol},OI,{oi},{SOURCE_TAG}\n")
+        f.write(f"{end_date},{symbol},SETTLE,{settle:.2f},{SOURCE_TAG}\n")
+        f.write(f"{end_date},{symbol},VOL,{volume},{SOURCE_TAG}\n")
+
     return count_csv_data_rows(shard_path)
 
 
@@ -487,6 +544,8 @@ def parallel_worker_online(
     is_dry_run: bool,
     round_id: int,
     result_queue: "multiprocessing.Queue",
+    market_regime: Optional[str] = None,
+    seed: Optional[int] = None,
 ) -> None:
     """
     TASK-012 Worker: 运行完整 DAG for one symbol shard.
@@ -556,7 +615,7 @@ def parallel_worker_online(
             write_empty_shard(shard_path)
             row_count = 0
         else:
-            row_count = write_simulated_shard(shard_path, symbol, end_date)
+            row_count = write_simulated_shard(shard_path, symbol, end_date, market_regime, seed)
 
         # Step 3: SHA snapshot
         shard_sha = sha256_of_file(shard_path)
@@ -650,6 +709,8 @@ def run_parallel_round(
     is_dry_run: bool = True,
     round_id: int = 1,
     end_date: Optional[str] = None,
+    market_regime: Optional[str] = None,
+    seed: Optional[int] = None,
 ) -> Dict[str, Any]:
     """
     运行一轮并行增量。返回所有 worker 的结果汇总。
@@ -679,10 +740,13 @@ def run_parallel_round(
         queue = multiprocessing.Queue()
         processes = []
 
-        for sym in symbols:
+        for idx, sym in enumerate(symbols):
+            sym_seed = None
+            if seed is not None:
+                sym_seed = (seed * 1000 + idx) & 0xFFFFFFFF
             p = multiprocessing.Process(
                 target=parallel_worker_online,
-                args=(sym, shard_date, end_date, is_dry_run, round_id, queue),
+                args=(sym, shard_date, end_date, is_dry_run, round_id, queue, market_regime, sym_seed),
             )
             p.start()
             processes.append((sym, p))
