@@ -1,0 +1,501 @@
+{
+  "phase": "P1",
+  "name": "14因子组合尾部风险压力回测(历史极端行情复刻)",
+  "disclaimer": "仅候选仿真，非生产权重，不修改V3主因子",
+  "extreme_period_types": [
+    "LIQUIDITY_DROUGHT",
+    "EXTREME_RETURN",
+    "SPREAD_GAP",
+    "CROWDING_SURGE",
+    "RESONANCE_DRAWDOWN"
+  ],
+  "num_extreme_periods": 5,
+  "crowding_p95_threshold": 0.2483,
+  "period_results": [
+    {
+      "type": "LIQUIDITY_DROUGHT",
+      "date_range": "2025-01-22 to 2026-08-14",
+      "n_days": 39,
+      "severity": 0.2203,
+      "v3_baseline_8": {
+        "backtest": {
+          "total_return": 0.517081,
+          "annualized_return": 0.321273,
+          "annual_volatility": 0.132514,
+          "max_drawdown": -0.056232,
+          "sharpe_ratio": 2.424443,
+          "win_rate": 0.469496,
+          "profit_loss_ratio": 1.421943,
+          "trade_count": 123,
+          "n_periods": 377,
+          "flip_rate": 0.1698,
+          "flip_count": 64,
+          "crowding_hhi": 0.1516,
+          "num_factors": 8
+        },
+        "cvar_95": -0.032089,
+        "max_consecutive_drawdown_days": 7,
+        "industry_exposure": {
+          "basic_metals": 0.000603,
+          "new_energy": 0.002288,
+          "nonferrous": 9.6e-05
+        },
+        "risk_flags": []
+      },
+      "group_a_14": {
+        "backtest": {
+          "total_return": 0.624655,
+          "annualized_return": 0.383185,
+          "annual_volatility": 0.131026,
+          "max_drawdown": -0.043205,
+          "sharpe_ratio": 2.924501,
+          "win_rate": 0.472149,
+          "profit_loss_ratio": 1.340085,
+          "trade_count": 122,
+          "n_periods": 377,
+          "flip_rate": 0.2626,
+          "flip_count": 99,
+          "crowding_hhi": 0.1042,
+          "num_factors": 14
+        },
+        "cvar_95": -0.032089,
+        "max_consecutive_drawdown_days": 7,
+        "industry_exposure": {
+          "basic_metals": 0.000603,
+          "new_energy": 0.002288,
+          "nonferrous": 9.6e-05
+        },
+        "risk_flags": []
+      },
+      "group_b_6": {
+        "backtest": {
+          "total_return": 1.176759,
+          "annualized_return": 0.681916,
+          "annual_volatility": 0.130719,
+          "max_drawdown": -0.038076,
+          "sharpe_ratio": 5.216675,
+          "win_rate": 0.583554,
+          "profit_loss_ratio": 1.517095,
+          "trade_count": 175,
+          "n_periods": 377,
+          "flip_rate": 0.4456,
+          "flip_count": 168,
+          "crowding_hhi": 0.1805,
+          "num_factors": 6
+        },
+        "cvar_95": -0.032089,
+        "max_consecutive_drawdown_days": 7,
+        "industry_exposure": {
+          "basic_metals": 0.000603,
+          "new_energy": 0.002288,
+          "nonferrous": 9.6e-05
+        },
+        "risk_flags": [
+          "FLIP_L2_ALERT"
+        ]
+      }
+    },
+    {
+      "type": "EXTREME_RETURN",
+      "date_range": "2025-04-07 to 2026-10-12",
+      "n_days": 23,
+      "severity": 5.423,
+      "v3_baseline_8": {
+        "backtest": {
+          "total_return": 0.553275,
+          "annualized_return": 0.354189,
+          "annual_volatility": 0.121948,
+          "max_drawdown": -0.040891,
+          "sharpe_ratio": 2.904434,
+          "win_rate": 0.456284,
+          "profit_loss_ratio": 1.571041,
+          "trade_count": 116,
+          "n_periods": 366,
+          "flip_rate": 0.1776,
+          "flip_count": 65,
+          "crowding_hhi": 0.1516,
+          "num_factors": 8
+        },
+        "cvar_95": -0.033051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000685,
+          "new_energy": 0.001548,
+          "nonferrous": -9.5e-05
+        },
+        "risk_flags": []
+      },
+      "group_a_14": {
+        "backtest": {
+          "total_return": 0.846267,
+          "annualized_return": 0.525282,
+          "annual_volatility": 0.121904,
+          "max_drawdown": -0.040242,
+          "sharpe_ratio": 4.308974,
+          "win_rate": 0.47541,
+          "profit_loss_ratio": 1.656849,
+          "trade_count": 116,
+          "n_periods": 366,
+          "flip_rate": 0.2678,
+          "flip_count": 98,
+          "crowding_hhi": 0.1042,
+          "num_factors": 14
+        },
+        "cvar_95": -0.033051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000685,
+          "new_energy": 0.001548,
+          "nonferrous": -9.5e-05
+        },
+        "risk_flags": []
+      },
+      "group_b_6": {
+        "backtest": {
+          "total_return": 1.214904,
+          "annualized_return": 0.728962,
+          "annual_volatility": 0.127558,
+          "max_drawdown": -0.056291,
+          "sharpe_ratio": 5.714736,
+          "win_rate": 0.584699,
+          "profit_loss_ratio": 1.540109,
+          "trade_count": 185,
+          "n_periods": 366,
+          "flip_rate": 0.4344,
+          "flip_count": 159,
+          "crowding_hhi": 0.1805,
+          "num_factors": 6
+        },
+        "cvar_95": -0.033051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000685,
+          "new_energy": 0.001548,
+          "nonferrous": -9.5e-05
+        },
+        "risk_flags": [
+          "FLIP_L2_ALERT"
+        ]
+      }
+    },
+    {
+      "type": "SPREAD_GAP",
+      "date_range": "2025-12-29 to 2026-10-13",
+      "n_days": 46,
+      "severity": 9.6212,
+      "v3_baseline_8": {
+        "backtest": {
+          "total_return": 0.192088,
+          "annualized_return": 0.267163,
+          "annual_volatility": 0.147624,
+          "max_drawdown": -0.079225,
+          "sharpe_ratio": 1.809759,
+          "win_rate": 0.486631,
+          "profit_loss_ratio": 1.101652,
+          "trade_count": 59,
+          "n_periods": 187,
+          "flip_rate": 0.2193,
+          "flip_count": 41,
+          "crowding_hhi": 0.1516,
+          "num_factors": 8
+        },
+        "cvar_95": -0.039051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000664,
+          "new_energy": -0.000273,
+          "nonferrous": -0.000186
+        },
+        "risk_flags": []
+      },
+      "group_a_14": {
+        "backtest": {
+          "total_return": 0.352289,
+          "annualized_return": 0.501857,
+          "annual_volatility": 0.132834,
+          "max_drawdown": -0.038228,
+          "sharpe_ratio": 3.778065,
+          "win_rate": 0.502674,
+          "profit_loss_ratio": 1.261733,
+          "trade_count": 60,
+          "n_periods": 187,
+          "flip_rate": 0.3422,
+          "flip_count": 64,
+          "crowding_hhi": 0.1042,
+          "num_factors": 14
+        },
+        "cvar_95": -0.039051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000664,
+          "new_energy": -0.000273,
+          "nonferrous": -0.000186
+        },
+        "risk_flags": [
+          "FLIP_L2_ALERT"
+        ]
+      },
+      "group_b_6": {
+        "backtest": {
+          "total_return": 0.47568,
+          "annualized_return": 0.689402,
+          "annual_volatility": 0.152093,
+          "max_drawdown": -0.047143,
+          "sharpe_ratio": 4.532764,
+          "win_rate": 0.588235,
+          "profit_loss_ratio": 1.269402,
+          "trade_count": 90,
+          "n_periods": 187,
+          "flip_rate": 0.4118,
+          "flip_count": 77,
+          "crowding_hhi": 0.1805,
+          "num_factors": 6
+        },
+        "cvar_95": -0.039051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000664,
+          "new_energy": -0.000273,
+          "nonferrous": -0.000186
+        },
+        "risk_flags": [
+          "FLIP_L2_ALERT"
+        ]
+      }
+    },
+    {
+      "type": "CROWDING_SURGE",
+      "date_range": "2025-01-03 to 2026-10-15",
+      "n_days": 149,
+      "severity": 0.3449,
+      "v3_baseline_8": {
+        "backtest": {
+          "total_return": 0.605638,
+          "annualized_return": 0.321546,
+          "annual_volatility": 0.126313,
+          "max_drawdown": -0.064645,
+          "sharpe_ratio": 2.545621,
+          "win_rate": 0.462617,
+          "profit_loss_ratio": 1.356766,
+          "trade_count": 121,
+          "n_periods": 428,
+          "flip_rate": 0.2103,
+          "flip_count": 90,
+          "crowding_hhi": 0.1516,
+          "num_factors": 8
+        },
+        "cvar_95": -0.03111,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000529,
+          "new_energy": 0.001058,
+          "nonferrous": -4.4e-05
+        },
+        "risk_flags": []
+      },
+      "group_a_14": {
+        "backtest": {
+          "total_return": 0.784844,
+          "annualized_return": 0.406496,
+          "annual_volatility": 0.114104,
+          "max_drawdown": -0.042998,
+          "sharpe_ratio": 3.562492,
+          "win_rate": 0.481308,
+          "profit_loss_ratio": 1.336311,
+          "trade_count": 117,
+          "n_periods": 428,
+          "flip_rate": 0.2944,
+          "flip_count": 126,
+          "crowding_hhi": 0.1042,
+          "num_factors": 14
+        },
+        "cvar_95": -0.03111,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000529,
+          "new_energy": 0.001058,
+          "nonferrous": -4.4e-05
+        },
+        "risk_flags": []
+      },
+      "group_b_6": {
+        "backtest": {
+          "total_return": 0.920451,
+          "annualized_return": 0.468465,
+          "annual_volatility": 0.123143,
+          "max_drawdown": -0.082144,
+          "sharpe_ratio": 3.804244,
+          "win_rate": 0.542056,
+          "profit_loss_ratio": 1.46511,
+          "trade_count": 200,
+          "n_periods": 428,
+          "flip_rate": 0.4346,
+          "flip_count": 186,
+          "crowding_hhi": 0.1805,
+          "num_factors": 6
+        },
+        "cvar_95": -0.03111,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000529,
+          "new_energy": 0.001058,
+          "nonferrous": -4.4e-05
+        },
+        "risk_flags": [
+          "FLIP_L2_ALERT"
+        ]
+      }
+    },
+    {
+      "type": "RESONANCE_DRAWDOWN",
+      "date_range": "2025-04-07 to 2026-10-12",
+      "n_days": 19,
+      "severity": -5.423,
+      "v3_baseline_8": {
+        "backtest": {
+          "total_return": 0.553275,
+          "annualized_return": 0.354189,
+          "annual_volatility": 0.121948,
+          "max_drawdown": -0.040891,
+          "sharpe_ratio": 2.904434,
+          "win_rate": 0.456284,
+          "profit_loss_ratio": 1.571041,
+          "trade_count": 116,
+          "n_periods": 366,
+          "flip_rate": 0.1776,
+          "flip_count": 65,
+          "crowding_hhi": 0.1516,
+          "num_factors": 8
+        },
+        "cvar_95": -0.033051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000685,
+          "new_energy": 0.001548,
+          "nonferrous": -9.5e-05
+        },
+        "risk_flags": []
+      },
+      "group_a_14": {
+        "backtest": {
+          "total_return": 0.846267,
+          "annualized_return": 0.525282,
+          "annual_volatility": 0.121904,
+          "max_drawdown": -0.040242,
+          "sharpe_ratio": 4.308974,
+          "win_rate": 0.47541,
+          "profit_loss_ratio": 1.656849,
+          "trade_count": 116,
+          "n_periods": 366,
+          "flip_rate": 0.2678,
+          "flip_count": 98,
+          "crowding_hhi": 0.1042,
+          "num_factors": 14
+        },
+        "cvar_95": -0.033051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000685,
+          "new_energy": 0.001548,
+          "nonferrous": -9.5e-05
+        },
+        "risk_flags": []
+      },
+      "group_b_6": {
+        "backtest": {
+          "total_return": 1.214904,
+          "annualized_return": 0.728962,
+          "annual_volatility": 0.127558,
+          "max_drawdown": -0.056291,
+          "sharpe_ratio": 5.714736,
+          "win_rate": 0.584699,
+          "profit_loss_ratio": 1.540109,
+          "trade_count": 185,
+          "n_periods": 366,
+          "flip_rate": 0.4344,
+          "flip_count": 159,
+          "crowding_hhi": 0.1805,
+          "num_factors": 6
+        },
+        "cvar_95": -0.033051,
+        "max_consecutive_drawdown_days": 8,
+        "industry_exposure": {
+          "basic_metals": 0.000685,
+          "new_energy": 0.001548,
+          "nonferrous": -9.5e-05
+        },
+        "risk_flags": [
+          "FLIP_L2_ALERT"
+        ]
+      }
+    }
+  ],
+  "risk_inflection_summary": [
+    {
+      "period_type": "LIQUIDITY_DROUGHT",
+      "date_range": "2025-01-22 to 2026-08-14",
+      "group": "group_b_6",
+      "flags": [
+        "FLIP_L2_ALERT"
+      ],
+      "crowding": 0.1805,
+      "sharpe": 5.216675
+    },
+    {
+      "period_type": "EXTREME_RETURN",
+      "date_range": "2025-04-07 to 2026-10-12",
+      "group": "group_b_6",
+      "flags": [
+        "FLIP_L2_ALERT"
+      ],
+      "crowding": 0.1805,
+      "sharpe": 5.714736
+    },
+    {
+      "period_type": "SPREAD_GAP",
+      "date_range": "2025-12-29 to 2026-10-13",
+      "group": "group_a_14",
+      "flags": [
+        "FLIP_L2_ALERT"
+      ],
+      "crowding": 0.1042,
+      "sharpe": 3.778065
+    },
+    {
+      "period_type": "SPREAD_GAP",
+      "date_range": "2025-12-29 to 2026-10-13",
+      "group": "group_b_6",
+      "flags": [
+        "FLIP_L2_ALERT"
+      ],
+      "crowding": 0.1805,
+      "sharpe": 4.532764
+    },
+    {
+      "period_type": "CROWDING_SURGE",
+      "date_range": "2025-01-03 to 2026-10-15",
+      "group": "group_b_6",
+      "flags": [
+        "FLIP_L2_ALERT"
+      ],
+      "crowding": 0.1805,
+      "sharpe": 3.804244
+    },
+    {
+      "period_type": "RESONANCE_DRAWDOWN",
+      "date_range": "2025-04-07 to 2026-10-12",
+      "group": "group_b_6",
+      "flags": [
+        "FLIP_L2_ALERT"
+      ],
+      "crowding": 0.1805,
+      "sharpe": 5.714736
+    }
+  ],
+  "risk_inflection_count": 6,
+  "shard_sha_traceability": {
+    "csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+    "dshc_agg_digest": "2784883E7B3368C0D2B1D6B4D6ECAC1FFB42472E029E5C62DC6EEB01E9B5BE9C"
+  },
+  "timestamp": "2026-10-21T15:30:51+08:00"
+}

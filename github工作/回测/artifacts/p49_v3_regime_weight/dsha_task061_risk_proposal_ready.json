@@ -1,0 +1,39 @@
+{
+  "notification_id": "DSHA-TASK061-RISK-MC-PROPOSAL-READY",
+  "generated_at": "2026-10-21T15:35:35+08:00",
+  "token": "DSHA-TASK-061-RISK-MC-PROPOSAL-TOKEN",
+  "task": "DSHA-TASK-061",
+  "baseline_commit": "5e9cd50",
+  "status": "14POOL_RISK_ASSESS_PROPOSAL_COMPLETE",
+  "mode": "RESEARCH_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "summary": {
+    "group_a_factors": 14,
+    "observe_factors": 6,
+    "deferred_factors": 3,
+    "p0_all_pass": true,
+    "p1_extreme_periods": 5,
+    "p1_risk_inflections": 6,
+    "p2_mc_rounds": 2000,
+    "p2_failure_probability": 0.0,
+    "p3_boundary_rules": 7,
+    "p4_recommendation": "RECOMMEND_MONITORING",
+    "p5_triple_sha_consistent": true,
+    "p6_snapshot_version": "V3-EXT-14POOL-061"
+  },
+  "v3_main_factors_frozen": true,
+  "candidate_only": true,
+  "watchdog_status": {
+    "dshc_process": "OK",
+    "dshd_process": "OK",
+    "process_restart": false,
+    "popup": false
+  },
+  "disclaimer": "候选14因子组合仿真仅供DSHD评估, 不修改V3主策略"
+}

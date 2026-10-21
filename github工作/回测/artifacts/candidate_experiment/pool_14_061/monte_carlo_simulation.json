@@ -1,0 +1,249 @@
+{
+  "phase": "P2",
+  "name": "蒙特卡洛扰动仿真(收益/残差/拥挤扰动, 2000轮)",
+  "disclaimer": "仅候选仿真，非生产参数，不修改V3主因子",
+  "mc_config": {
+    "rounds": 2000,
+    "perturbation_dimensions": [
+      "factor_return_noise (σ=0.05~0.30)",
+      "residual_correlation_perturbation (0~0.15)",
+      "crowding_acceleration (0~0.1 linear)",
+      "flip_random_jumps (0~n/50)"
+    ],
+    "weight_structure": "TASK060最优参数组不变(80%V3+20%候选)"
+  },
+  "total_valid_rounds": 2000,
+  "distributions": {
+    "sharpe": {
+      "p5": 3.79663,
+      "p10": 4.015893,
+      "p25": 4.288064,
+      "p50": 4.540833,
+      "p75": 4.747082,
+      "p90": 4.932408,
+      "p95": 5.034088
+    },
+    "max_drawdown": {
+      "p5": -0.060276,
+      "p10": -0.052953,
+      "p25": -0.045068,
+      "p50": -0.040242,
+      "p75": -0.040242,
+      "p90": -0.040229,
+      "p95": -0.040229
+    },
+    "crowding_hhi": {
+      "p5": 0.1042,
+      "p10": 0.1042,
+      "p25": 0.1042,
+      "p50": 0.1042,
+      "p75": 0.1042,
+      "p90": 0.1042,
+      "p95": 0.1042
+    }
+  },
+  "zone_classification": {
+    "safe_count": 314,
+    "warning_count": 1686,
+    "high_failure_count": 0,
+    "safe_probability": 0.157,
+    "warning_probability": 0.843,
+    "high_failure_probability": 0.0
+  },
+  "boundary_calibration": {
+    "sharpe_p5": 3.79663,
+    "mdd_p5": -0.060276,
+    "crowding_p95": 0.1042,
+    "performance_collapse_threshold": {
+      "sharpe_below": 3.7966,
+      "mdd_below": -0.0603,
+      "crowding_above": 0.1042
+    },
+    "failure_probability": 0.0,
+    "warning_probability": 0.843,
+    "safe_probability": 0.157
+  },
+  "sample_rounds": [
+    {
+      "round": 1,
+      "sharpe": 3.988519,
+      "max_drawdown": -0.050881,
+      "crowding": 0.1042,
+      "flip_rate": 0.3086,
+      "zone": "WARNING",
+      "total_return": 0.904764
+    },
+    {
+      "round": 2,
+      "sharpe": 4.441274,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.348,
+      "zone": "WARNING",
+      "total_return": 1.008973
+    },
+    {
+      "round": 3,
+      "sharpe": 4.835753,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.3109,
+      "zone": "WARNING",
+      "total_return": 1.157723
+    },
+    {
+      "round": 4,
+      "sharpe": 4.746675,
+      "max_drawdown": -0.045989,
+      "crowding": 0.1042,
+      "flip_rate": 0.2877,
+      "zone": "SAFE",
+      "total_return": 1.112988
+    },
+    {
+      "round": 5,
+      "sharpe": 4.297588,
+      "max_drawdown": -0.060458,
+      "crowding": 0.1042,
+      "flip_rate": 0.3248,
+      "zone": "WARNING",
+      "total_return": 0.988916
+    },
+    {
+      "round": 6,
+      "sharpe": 4.797318,
+      "max_drawdown": -0.040242,
+      "crowding": 0.1042,
+      "flip_rate": 0.3503,
+      "zone": "WARNING",
+      "total_return": 1.149733
+    },
+    {
+      "round": 7,
+      "sharpe": 4.325927,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.3457,
+      "zone": "WARNING",
+      "total_return": 0.966129
+    },
+    {
+      "round": 8,
+      "sharpe": 4.53152,
+      "max_drawdown": -0.040242,
+      "crowding": 0.1042,
+      "flip_rate": 0.3132,
+      "zone": "WARNING",
+      "total_return": 1.063064
+    },
+    {
+      "round": 9,
+      "sharpe": 5.096191,
+      "max_drawdown": -0.037323,
+      "crowding": 0.1042,
+      "flip_rate": 0.3295,
+      "zone": "WARNING",
+      "total_return": 1.179843
+    },
+    {
+      "round": 10,
+      "sharpe": 5.116917,
+      "max_drawdown": -0.044459,
+      "crowding": 0.1042,
+      "flip_rate": 0.3202,
+      "zone": "WARNING",
+      "total_return": 1.199502
+    },
+    {
+      "round": 11,
+      "sharpe": 4.954199,
+      "max_drawdown": -0.043273,
+      "crowding": 0.1042,
+      "flip_rate": 0.3387,
+      "zone": "WARNING",
+      "total_return": 1.142748
+    },
+    {
+      "round": 12,
+      "sharpe": 4.645724,
+      "max_drawdown": -0.040242,
+      "crowding": 0.1042,
+      "flip_rate": 0.3179,
+      "zone": "WARNING",
+      "total_return": 1.07005
+    },
+    {
+      "round": 13,
+      "sharpe": 4.794958,
+      "max_drawdown": -0.046156,
+      "crowding": 0.1042,
+      "flip_rate": 0.3248,
+      "zone": "WARNING",
+      "total_return": 1.115446
+    },
+    {
+      "round": 14,
+      "sharpe": 4.4017,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.3016,
+      "zone": "WARNING",
+      "total_return": 1.028116
+    },
+    {
+      "round": 15,
+      "sharpe": 4.84119,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.3341,
+      "zone": "WARNING",
+      "total_return": 1.14363
+    },
+    {
+      "round": 16,
+      "sharpe": 4.662613,
+      "max_drawdown": -0.047952,
+      "crowding": 0.1042,
+      "flip_rate": 0.29,
+      "zone": "SAFE",
+      "total_return": 1.13324
+    },
+    {
+      "round": 17,
+      "sharpe": 4.550635,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.3086,
+      "zone": "WARNING",
+      "total_return": 1.092983
+    },
+    {
+      "round": 18,
+      "sharpe": 4.550347,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.3295,
+      "zone": "WARNING",
+      "total_return": 1.086025
+    },
+    {
+      "round": 19,
+      "sharpe": 3.635343,
+      "max_drawdown": -0.058866,
+      "crowding": 0.1042,
+      "flip_rate": 0.355,
+      "zone": "WARNING",
+      "total_return": 0.879335
+    },
+    {
+      "round": 20,
+      "sharpe": 4.964225,
+      "max_drawdown": -0.040229,
+      "crowding": 0.1042,
+      "flip_rate": 0.3503,
+      "zone": "WARNING",
+      "total_return": 1.193486
+    }
+  ],
+  "timestamp": "2026-10-21T15:35:35+08:00"
+}

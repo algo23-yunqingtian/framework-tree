@@ -1,0 +1,133 @@
+{
+  "phase": "P4",
+  "name": "正式入池建议书撰写与结论分级",
+  "disclaimer": "仅候选建议，非生产决策，不修改V3主因子",
+  "comparison_table": {
+    "v3_baseline": {
+      "factors": 8,
+      "sharpe": 3.488982,
+      "total_return": 0.229334,
+      "max_drawdown": -0.012099,
+      "crowding": 1.0359,
+      "flip_rate": 0.2105
+    },
+    "group_a_14factor": {
+      "factors": 14,
+      "sharpe": 4.736471,
+      "total_return": 1.129548,
+      "max_drawdown": -0.040242,
+      "crowding": 0.1042,
+      "flip_rate": 0.297
+    },
+    "delta": {
+      "sharpe_delta": 1.247489,
+      "return_delta": 0.900214,
+      "mdd_delta": -0.028143,
+      "crowding_delta": -0.9317
+    }
+  },
+  "integrated_metrics": {
+    "oos_stability": "STABLE",
+    "oos_unstable_nodes": 0,
+    "mc_failure_probability": 0.0,
+    "mc_safe_probability": 0.157,
+    "sensitivity_sensitive_points": 72,
+    "tail_risk_inflections": 6
+  },
+  "conclusions": {
+    "tier_1_recommendation": {
+      "tier": "TIER-1",
+      "conclusion": "推荐监控上线(观测仓，不并入主策略实盘)",
+      "rationale": [
+        "14因子组合Sharpe=4.7365，较V3.1基准提升+1.2475",
+        "OOS稳定性=STABLE，不稳定节点=0个",
+        "蒙特卡洛安全区概率=15.70%，警戒区=84.30%，高失效区=0.00%",
+        "尾部风险压力测试未发现不可接受的失效模式",
+        "建议以观测仓方式部署，不并入V3主策略实盘"
+      ],
+      "conditions": [
+        "仅限4品种(LC.GFE/NI.SHF/CU.SHF/ZN.SHF)仿真环境",
+        "20日窗口，rebalance_interval=5",
+        "80%V3主因子+20%候选因子权重结构"
+      ]
+    },
+    "tier_2_constraints": {
+      "tier": "TIER-2",
+      "conclusion": "准入约束清单",
+      "crowding_cap": {
+        "hard_limit": 1.0359,
+        "soft_warning": 0.2483,
+        "description": "拥挤度硬上限+软预警阈值"
+      },
+      "flip_cap": {
+        "hard_limit": 0.35,
+        "soft_warning": 0.3,
+        "description": "翻转率硬上限+软预警阈值"
+      },
+      "dynamic_weight_reduction": {
+        "trigger_crowding": 0.2483,
+        "reduction_pct": 0.2,
+        "description": "拥挤度超软预警时，候选因子权重下调20%"
+      },
+      "ir_decay_trigger": {
+        "critical_ir": 0.2,
+        "action": "IR低于临界点时，对应因子权重归零"
+      },
+      "industry_neutral_cap": {
+        "max_single_industry": 0.15,
+        "action": "单一行业暴露超15%时，启动行业中性化调整"
+      }
+    },
+    "tier_3_exclusions": {
+      "tier": "TIER-3",
+      "conclusion": "排除理由与遗留风险清单",
+      "deferred_factors": [
+        {
+          "factor": "price_momentum_2nd_diff",
+          "reason": "TASK059评审列为暂缓，IR不足"
+        },
+        {
+          "factor": "oi_momentum_divergence_20d",
+          "reason": "TASK059评审列为暂缓，高风险标记"
+        },
+        {
+          "factor": "price_vol_momentum",
+          "reason": "TASK059评审列为暂缓，波动率衰减"
+        }
+      ],
+      "residual_risks": [
+        {
+          "risk": "蒙特卡洛高失效区概率",
+          "value": "0.00%",
+          "mitigation": "动态降权+告警体系"
+        },
+        {
+          "risk": "尾部行情拥挤度峰值",
+          "value": "max_crowding=0.1042",
+          "mitigation": "DSHD告警规则对齐"
+        },
+        {
+          "risk": "行业暴露集中",
+          "value": "basic_metals占比偏高",
+          "mitigation": "行业中性化阈值15%"
+        },
+        {
+          "risk": "参数敏感性敏感点",
+          "value": "72个敏感配置",
+          "mitigation": "参数冻结+定期复核"
+        }
+      ]
+    }
+  },
+  "overall_recommendation": {
+    "status": "RECOMMEND_MONITORING",
+    "summary": "14因子组合表现优异(Sharpe=4.7365)，OOS稳定(STABLE)，MC安全区15.70%，建议以观测仓方式监控部署，不并入V3主策略",
+    "next_steps": [
+      "1. DSHD评估观测仓部署可行性",
+      "2. 建立动态降权触发机制",
+      "3. 定期(月度)复核绩效衰减边界",
+      "4. 暂缓3因子保持监控但排除运算"
+    ]
+  },
+  "timestamp": "2026-10-21T15:35:35+08:00"
+}
