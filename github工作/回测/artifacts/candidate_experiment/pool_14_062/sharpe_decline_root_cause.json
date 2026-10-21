@@ -1,0 +1,33 @@
+{
+  "sharpe_delta_total": -0.695794,
+  "flip_rate_delta": -0.2351,
+  "return_delta": -8.160481,
+  "mdd_delta": -0.075946,
+  "component_attribution": {
+    "1_candidate_weight_reduction": {
+      "effective_weight_factor_avg": 0.6439,
+      "candidate_exposure_lost_pct": 35.61,
+      "estimated_return_loss": -2.905697,
+      "share_of_delta": 35.6
+    },
+    "2_crowding_flip_resonance": {
+      "both_trigger_count": 3,
+      "resonance_ratio": 0.15,
+      "resonance_pct": 15.0
+    },
+    "3_flip_sync_penalty": {
+      "avg_sync_penalty_factor": 0.9648,
+      "applies_to_grades": [
+        "MEDIUM",
+        "HEAVY"
+      ],
+      "applied_count": 11
+    },
+    "4_timing_lag": {
+      "rebalance_interval_days": 5,
+      "max_lag_days": 5,
+      "description": "5日调仓周期导致降权反应滞后，无法完全避免回撤"
+    }
+  },
+  "root_cause_summary": "Sharpe下滑-0.696的主因是动态权重将候选因子平均敞口从100%降至64.4%（35.6%损失），贡献约35.6%的Sharpe损失。拥挤度-翻转共振占15.0%的时间点，同步翻转惩罚因子均值0.965。5日调仓滞后使回撤压缩效果受限。"
+}

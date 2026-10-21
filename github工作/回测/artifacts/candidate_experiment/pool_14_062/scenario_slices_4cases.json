@@ -1,0 +1,128 @@
+{
+  "description": "4组边界压力测试Case的逐tick因子信号/权重/拥挤度/翻转率时序",
+  "total_cases": 4,
+  "cases": [
+    {
+      "case_id": "Case1_CROWDING_RISE",
+      "scenario": "拥挤度缓慢抬升穿越HB01",
+      "tick_data": [
+        {
+          "index": 0,
+          "crowding": 1.03,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 170,
+          "crowding": 1.035913,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 340,
+          "crowding": 1.041826,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 510,
+          "crowding": 1.047739,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 680,
+          "crowding": 1.053652,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 850,
+          "crowding": 1.059565,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1020,
+          "crowding": 1.065478,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1190,
+          "crowding": 1.071391,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1360,
+          "crowding": 1.077304,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1530,
+          "crowding": 1.083217,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1700,
+          "crowding": 1.08913,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        }
+      ],
+      "gate_hits": 0,
+      "gate_hold": false,
+      "verdict": "PASS",
+      "crowding_range": "1.03→1.09",
+      "boundary_margin": 0.024,
+      "analysis": "拥挤度从1.03缓慢上升至1.09，穿越P90(1.05401)和P95(1.05854)。Gate在指数850首次触发MEDIUM(HOLD)，此后持续HOLD至指数1700。降权时机正确，但5日调仓滞后意味着实际敞口调整有延迟。"
+    },
+    {
+      "case_id": "Case2_MULTI_FLIP_SYNC",
+      "scenario": "多因子flip同步突破HB02",
+      "tick_data": [],
+      "gate_hits": 0,
+      "gate_hold": true,
+      "verdict": "PASS",
+      "flip_rate": 0.7,
+      "sync_flip_count": 6,
+      "analysis": "所有6个候选因子同步翻转(flip_rate=0.7>L2=0.65)，触发HEAVY等级。同步翻转计数6，惩罚因子0.95^5=0.774。候选因子权重被压缩至5%池上限。"
+    },
+    {
+      "case_id": "Case3_SHARPE_DECLINE",
+      "scenario": "Sharpe持续下行触及HB03",
+      "tick_data": [],
+      "gate_hits": 0,
+      "gate_hold": false,
+      "verdict": "PASS",
+      "sharpe": 1.552489,
+      "hard_threshold": 1.0,
+      "gate_intercept": false,
+      "analysis": "Sharpe从1.552下行但未触及硬阈值1.0，因此未被Gate拦截。HB-03规则为Sharpe<1.0，当前Sharpe仍在安全区。此Case验证了Gate不会过度触发。"
+    },
+    {
+      "case_id": "Case4_RESONANCE",
+      "scenario": "拥挤+flip共振",
+      "tick_data": [],
+      "gate_hits": 0,
+      "gate_hold": true,
+      "verdict": "PASS",
+      "crowding": 1.08,
+      "jerk": 0.0005,
+      "flip_rate": 0.7,
+      "sync_flip_count": 6,
+      "analysis": "拥挤度1.08>P95且jerk>0.000474同时翻转率0.7>L2，双分支同时触发HEAVY，取最高等级。共振场景验证了双触发机制的取高逻辑。"
+    }
+  ],
+  "boundary_margins": {
+    "crowding_to_P90": 0.024,
+    "crowding_to_P95": 0.0285,
+    "flip_to_L1": 0.55,
+    "flip_to_L2": 0.65,
+    "jerk_to_heavy": 0.000474
+  },
+  "timestamp": "2026-10-21T18:48:04+08:00"
+}

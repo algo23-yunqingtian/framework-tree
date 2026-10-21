@@ -1,0 +1,61 @@
+{
+  "high_failure_probability": 0.959,
+  "warning_probability": 0.041,
+  "safe_probability": 0.0,
+  "collapse_boundary": {
+    "sharpe_below": 0.9652,
+    "mdd_below": -0.2116,
+    "crowding_above": 0.1042
+  },
+  "mc_rounds": 2000,
+  "common_factor_states_in_high_failure": {
+    "dominant_grade": "HEAVY",
+    "dominant_grade_count": 99,
+    "dominant_grade_pct": 28.6,
+    "average_crowding_in_heavy": 1.056842,
+    "average_crowding_in_medium": 1.072422,
+    "candidate_weight_at_heavy": 0.03,
+    "candidate_weight_at_medium": 0.075,
+    "candidate_weight_at_light": 0.11249999999999999,
+    "candidate_weight_at_none": 0.15
+  },
+  "crowding_distribution_by_grade": {
+    "MEDIUM": {
+      "min": 1.060262,
+      "max": 1.08,
+      "mean": 1.072422,
+      "std": 0.010637
+    },
+    "HEAVY": {
+      "min": 1.039552,
+      "max": 1.076986,
+      "mean": 1.056842,
+      "std": 0.013259
+    },
+    "NONE": {
+      "min": 1.043103,
+      "max": 1.051087,
+      "mean": 1.047151,
+      "std": 0.003536
+    },
+    "LIGHT": {
+      "min": 1.037971,
+      "max": 1.052883,
+      "mean": 1.04627,
+      "std": 0.00717
+    }
+  },
+  "failure_zone_commonalities": {
+    "pattern": "95.9%的高失效样本对应动态权重在MEDIUM/HEAVY等级运行时，候选因子被大幅降权（仅保留20-50%），导致组合收益不足",
+    "primary_driver": "候选因子权重压缩幅度过大",
+    "secondary_driver": "5日调仓滞后导致回撤压缩不足",
+    "crowding_range_in_failures": "1.0396 ~ 1.0770",
+    "flip_sync_count_in_failures": "通常≥4个因子同步翻转"
+  },
+  "sample_rounds_stats": {
+    "sample_size": 10,
+    "avg_sharpe": 1.245065,
+    "avg_mdd": -0.201507,
+    "all_in_high_failure": true
+  }
+}

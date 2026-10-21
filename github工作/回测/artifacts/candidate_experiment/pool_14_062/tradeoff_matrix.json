@@ -1,0 +1,82 @@
+{
+  "description": "Flip rate下降对应的收益取舍权衡矩阵",
+  "flip_rate_reduction": {
+    "control_flip_rate": 0.2351,
+    "experiment_flip_rate": 0.0,
+    "reduction_pct": 100.0,
+    "cost": "Sharpe下降0.696, 收益下降8.16%, MDD扩大0.076"
+  },
+  "tradeoff_table": [
+    {
+      "metric": "Sharpe Ratio",
+      "control": 1.964687,
+      "experiment": 1.268893,
+      "delta": -0.695794,
+      "winner": "control",
+      "direction": "higher_better"
+    },
+    {
+      "metric": "Total Return",
+      "control": 11.863654,
+      "experiment": 3.703173,
+      "delta": -8.160481,
+      "winner": "control",
+      "direction": "higher_better"
+    },
+    {
+      "metric": "Max Drawdown",
+      "control": -0.13568,
+      "experiment": -0.211626,
+      "delta": -0.075946,
+      "winner": "control",
+      "direction": "closer_to_zero_better"
+    },
+    {
+      "metric": "Flip Rate",
+      "control": 0.2351,
+      "experiment": 0.0,
+      "delta": -0.2351,
+      "winner": "experiment",
+      "direction": "lower_better"
+    },
+    {
+      "metric": "Win Rate",
+      "control": 0.195136,
+      "experiment": 0.097279,
+      "delta": -0.097857,
+      "winner": "control",
+      "direction": "higher_better"
+    },
+    {
+      "metric": "Profit/Loss Ratio",
+      "control": 1.57544,
+      "experiment": 1.613444,
+      "delta": 0.038004,
+      "winner": "experiment",
+      "direction": "higher_better"
+    },
+    {
+      "metric": "Trade Count",
+      "control": 142,
+      "experiment": 67,
+      "delta": -75,
+      "winner": "experiment",
+      "direction": "lower_better"
+    },
+    {
+      "metric": "Annual Volatility",
+      "control": 0.229908,
+      "experiment": 0.199756,
+      "delta": -0.030152,
+      "winner": "experiment",
+      "direction": "lower_better"
+    }
+  ],
+  "score": {
+    "experiment_wins": 4,
+    "control_wins": 4,
+    "total_metrics": 8,
+    "experiment_win_rate": 50.0
+  },
+  "conclusion": "实验组在4/8指标上胜出（50.0%），对照组在4/8指标上胜出。Flip rate从0.2351降至0.0（-0.2351），代价是Sharpe从1.964687降至1.268893，收益从11.863654降至3.703173。动态权重以牺牲收益换取了更低的换手率，但未能有效压缩回撤。"
+}

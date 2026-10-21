@@ -1,0 +1,68 @@
+{
+  "description": "按调仓等级拆分收益/回撤/IC分布",
+  "grade_distribution": {
+    "MEDIUM": 17,
+    "HEAVY": 99,
+    "NONE": 88,
+    "LIGHT": 142
+  },
+  "layer_table": [
+    {
+      "grade": "NONE",
+      "count": 5,
+      "avg_crowding": 1.047151,
+      "avg_jerk": 0.0254938,
+      "avg_total_return_segment": 0.003882,
+      "avg_sharpe_segment": 8.329016,
+      "avg_mdd_segment": -0.012971,
+      "candidate_weight_ratio": 0.127207,
+      "weight_factor_used": 1.0
+    },
+    {
+      "grade": "LIGHT",
+      "count": 4,
+      "avg_crowding": 1.04627,
+      "avg_jerk": -0.0019225,
+      "avg_total_return_segment": 0.004344,
+      "avg_sharpe_segment": 6.086319,
+      "avg_mdd_segment": -0.012979,
+      "candidate_weight_ratio": 0.089562,
+      "weight_factor_used": 0.75
+    },
+    {
+      "grade": "MEDIUM",
+      "count": 329,
+      "avg_crowding": 1.060373,
+      "avg_jerk": -0.02074436,
+      "avg_total_return_segment": -0.130187,
+      "avg_sharpe_segment": -102.040303,
+      "avg_mdd_segment": -0.396838,
+      "candidate_weight_ratio": 0.080983,
+      "weight_factor_used": 0.5
+    },
+    {
+      "grade": "HEAVY",
+      "count": 8,
+      "avg_crowding": 1.056842,
+      "avg_jerk": 0.00940087,
+      "avg_total_return_segment": -0.062321,
+      "avg_sharpe_segment": -36.974725,
+      "avg_mdd_segment": -0.085732,
+      "candidate_weight_ratio": 0.024209,
+      "weight_factor_used": 0.2
+    }
+  ],
+  "control_baseline": {
+    "sharpe": 1.964687,
+    "total_return": 11.863654,
+    "max_drawdown": -0.13568,
+    "flip_rate": 0.2351
+  },
+  "experiment_dynamic": {
+    "sharpe": 1.268893,
+    "total_return": 3.703173,
+    "max_drawdown": -0.211626,
+    "flip_rate": 0.0
+  },
+  "interpretation": "动态权重通过4级分级降权，在拥挤度高/翻转率高的时段主动缩减候选因子敞口。NONE级别保持完整敞口，HEAVY级别仅保留20%候选权重。整体Sharpe下滑源于候选因子在MEDIUM/HEAVY时段被大幅降权，导致总组合收益下降，但回撤压缩效果因降权滞后而未达到预期。"
+}

@@ -1,0 +1,94 @@
+{
+  "notification_id": "DSHA-TASK063-ATTRIBUTION-READY",
+  "generated_at": "2026-10-21T19:27:27+08:00",
+  "source_task": "DSHA-TASK-063",
+  "token": "DSHA-TASK-063-EXT-ATTRIBUTION-ARCHIVE-TOKEN",
+  "sync_type": "READ_ONLY_NOTIFICATION",
+  "mode": "AUDIT_READ_ONLY",
+  "write_to_dshd_monitors": false,
+  "modify_dshd_scripts": false,
+  "modify_dshd_ledger": false,
+  "dshd_task054_recommendation": "SUPPLEMENT_DRIFT_THRESHOLDS",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "key_metrics_for_drift_threshold": {
+    "dynamic_weight_sharpe": 1.268893,
+    "control_sharpe": 1.964687,
+    "sharpe_delta": -0.695794,
+    "mdd_compression_pct": -55.97,
+    "mc_safe_prob_pct": 0.0,
+    "mc_warning_prob_pct": 4.1,
+    "mc_failure_prob_pct": 95.9,
+    "mc_sharpe_p5": 0.9652,
+    "mc_mdd_p5": -0.2116,
+    "gate_valid": true,
+    "gate_hits": 0,
+    "gate_false_positives": 0,
+    "gate_missed": 0,
+    "grade_distribution": {
+      "NONE": 88,
+      "LIGHT": 142,
+      "MEDIUM": 17,
+      "HEAVY": 99
+    },
+    "avg_crowding": 1.048813,
+    "crowding_std": 0.008978,
+    "candidate_weight_factor_avg": 0.785,
+    "flip_rate_control": 0.2351,
+    "flip_rate_experiment": 0.0,
+    "snapshot_version": "V3-EXT-14POOL-062",
+    "adoption_status": "RECOMMEND_MONITORING"
+  },
+  "drift_threshold_suggestions": {
+    "sharpe_drift_threshold": {
+      "current_baseline": 1.268893,
+      "suggested_warning": 0.9652,
+      "suggested_halt": 1.0,
+      "description": "Sharpe跌破P5(0.9652)警告，跌破硬阈值(1.0)暂停"
+    },
+    "mdd_drift_threshold": {
+      "current_baseline": -0.211626,
+      "suggested_warning": -0.2,
+      "suggested_halt": -0.25,
+      "description": "MDD超过-20%警告，超过-25%暂停"
+    },
+    "crowding_drift_threshold": {
+      "current_p50": 1.048813,
+      "suggested_warning": 1.05401,
+      "suggested_halt": 1.05854,
+      "description": "拥挤度P90警告，P95暂停"
+    },
+    "flip_rate_drift_threshold": {
+      "current_baseline": 0.0,
+      "suggested_warning": 0.55,
+      "suggested_halt": 0.65,
+      "description": "翻转率L1警告，L2暂停"
+    },
+    "candidate_weight_drift_threshold": {
+      "current_avg": 0.785,
+      "suggested_min": 0.5,
+      "suggested_max": 1.0,
+      "description": "候选因子权重因子偏离0.785±20%需复核"
+    }
+  },
+  "red_lines": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "main_factor_frozen": true,
+    "candidate_only": true,
+    "exclude_3_deprecated": true,
+    "cross_write": false,
+    "experiment_only": true,
+    "overall_triggered": false
+  },
+  "branch": "feature/v88-g1",
+  "baseline_commit": "43edb78",
+  "audit_events": 18,
+  "chain_status": "062→063 CLOSED"
+}

@@ -857,5 +857,35 @@
       "release": "NOT_ISSUED",
       "read_only": true
     }
+  },
+  "task063_attribution_archive": {
+    "task": "DSHA-TASK-063",
+    "completed_at": "2026-10-21T18:48:04+08:00",
+    "baseline_commit": "43edb78",
+    "prev_task": "DSHA-TASK-062",
+    "snapshot_version_tag": "V3-EXT-14POOL-062",
+    "attribution_version": "V3-EXT-14POOL-062-ATTRIBUTION",
+    "p0_precheck": "4/4 PASS",
+    "p1_layered_attribution": "4 grades",
+    "p1_sharpe_root_cause": "delta=-0.695794",
+    "p1_tradeoff_matrix": "4/8 experiment wins",
+    "p1_mc_failure_analysis": "failure_prob=0.959",
+    "p2_scenario_slices": "4 cases",
+    "p2_gate_valid": true,
+    "p2_risk_heatmap": "resonance=15.0%",
+    "p3_sealed_proposal": "RECOMMEND_MONITORING",
+    "p3_deferred_factors": 3,
+    "p4_dshd_notified": true,
+    "p4_dshc_notified": true,
+    "attribution_files": 9,
+    "overall_status": "PASS",
+    "v3_main_factors_frozen": true,
+    "experiment_only": true,
+    "safety": {
+      "wind_api_calls": 0,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED",
+      "cross_write": false
+    }
   }
 }

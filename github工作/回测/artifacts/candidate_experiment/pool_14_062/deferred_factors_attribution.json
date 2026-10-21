@@ -1,0 +1,55 @@
+{
+  "description": "3个暂缓排除因子的归因表现确认与淘汰理由留存",
+  "deferred_factors": [
+    {
+      "factor": "price_momentum_2nd_diff",
+      "avg_ic": 0.001507,
+      "ic_std": 0.017333,
+      "information_ratio": 0.086939,
+      "signal_range": [
+        -0.7078001025233356,
+        0.4349039887324607
+      ],
+      "signal_mean": -0.003472,
+      "status": "DEFERRED",
+      "exclusion_reason": "TASK059评审暂缓"
+    },
+    {
+      "factor": "oi_momentum_divergence_20d",
+      "avg_ic": 0.020872,
+      "ic_std": 0.058461,
+      "information_ratio": 0.357026,
+      "signal_range": [
+        0.0,
+        1.0
+      ],
+      "signal_mean": 0.443287,
+      "status": "DEFERRED",
+      "exclusion_reason": "TASK059评审暂缓"
+    },
+    {
+      "factor": "price_vol_momentum",
+      "avg_ic": -0.07726,
+      "ic_std": 0.074396,
+      "information_ratio": -1.038493,
+      "signal_range": [
+        -0.2145805222702808,
+        2.6674130563719336
+      ],
+      "signal_mean": 0.005048,
+      "status": "DEFERRED",
+      "exclusion_reason": "TASK059评审暂缓"
+    }
+  ],
+  "exclusion_confirmation": {
+    "all_deferred": true,
+    "reasons": {
+      "price_momentum_2nd_diff": "TASK059评审暂缓，IR不足",
+      "oi_momentum_divergence_20d": "TASK059评审暂缓，高风险标记",
+      "price_vol_momentum": "TASK059评审暂缓，波动率衰减"
+    },
+    "archive_status": "已归档至attribution_sealed_proposal.json",
+    "v3_frozen_confirmed": true
+  },
+  "conclusion": "3个暂缓因子在动态权重归因中均未纳入运算。price_momentum_2nd_diff因IC/IR不足被暂缓；oi_momentum_divergence_20d因高风险标记被暂缓；price_vol_momentum因波动率衰减被暂缓。所有暂缓理由已归档留存，可随时复查。"
+}

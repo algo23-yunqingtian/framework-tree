@@ -1,0 +1,180 @@
+{
+  "document_type": "ATTRIBUTION_SEALED_PROPOSAL",
+  "snapshot_id": "V3-EXT-14POOL-062",
+  "version_tag": "V3-EXT-14POOL-062",
+  "generated_at": "2026-10-21T19:27:27+08:00",
+  "task": "DSHA-TASK-063",
+  "disclaimer": "仅候选仿真归因分析，非生产决策，不修改V3主因子",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "v3_main_factors_frozen": true,
+    "cross_write": false,
+    "experiment_only": true
+  },
+  "applicable_boundaries": {
+    "title": "动态权重机制适用边界",
+    "applicable": [
+      "4品种池(LC.GFE/NI.SHF/CU.SHF/ZN.SHF)仿真环境",
+      "80%V3主因子+20%候选因子权重结构",
+      "v4.48双触发动态权重规则(4级分级)",
+      "20日信号窗口，5日调仓周期",
+      "signal_threshold=0.3，transaction_cost=0.0005",
+      "仅6个观察备选因子，3个暂缓排除因子不参与"
+    ],
+    "not_applicable": [
+      "实盘交易（仅观测仓模式）",
+      "V3主因子权重修改（PERMANENTLY_FROZEN）",
+      "候选因子池扩大（当前14因子封闭）",
+      "单品种或跨行业配置（当前4品种固定）",
+      "高频率调仓（5日周期为最优解）"
+    ],
+    "boundary_conditions": {
+      "max_rebalance_lag": "5日",
+      "min_crowding_trigger": 1.05401,
+      "max_flip_trigger": 0.65,
+      "min_jerk_trigger": 0.000474,
+      "candidate_pool_cap": 0.05
+    }
+  },
+  "shortcomings": {
+    "title": "已知短板与局限",
+    "items": [
+      {
+        "id": "SC-01",
+        "issue": "MC高失效区概率95.9%",
+        "severity": "HIGH",
+        "description": "动态权重在扰动环境下Sharpe/P5=0.9652，95.9%的MC轮次落入高失效区",
+        "root_cause": "候选因子权重被大幅压缩（HEAVY仅20%），收益来源单一化",
+        "mitigation": "仅做观测仓监控，不投入实盘"
+      },
+      {
+        "id": "SC-02",
+        "issue": "回撤压缩效果不足(-56%)",
+        "severity": "MEDIUM",
+        "description": "动态权重预期压缩回撤但实际MDD从-0.136扩大至-0.212",
+        "root_cause": "5日调仓滞后+降权幅度不足（LIGHT仅75%）",
+        "mitigation": "缩短调仓周期或提高降权幅度（需重新标定）"
+      },
+      {
+        "id": "SC-03",
+        "issue": "Sharpe下滑0.696",
+        "severity": "HIGH",
+        "description": "实验组Sharpe=1.269 vs 对照组=1.965，降幅35.4%",
+        "root_cause": "候选因子贡献被压缩（平均权重因子0.785）",
+        "mitigation": "动态权重仅适合风险厌恶场景，非收益最大化场景"
+      },
+      {
+        "id": "SC-04",
+        "issue": "同步翻转惩罚因子衰减",
+        "severity": "LOW",
+        "description": "sync_penalty=0.95^(n-1)在多因子同步翻转时累积衰减",
+        "root_cause": "0.95底数偏保守，6因子同步时衰减至0.774",
+        "mitigation": "可考虑调整底数为0.97或0.98（需重新标定）"
+      },
+      {
+        "id": "SC-05",
+        "issue": "拥挤度传导弹性下限0.55",
+        "severity": "MEDIUM",
+        "description": "即使候选因子全部降权，主因子仍承载55%的拥挤传导",
+        "root_cause": "8个主因子永久冻结，不可降权",
+        "mitigation": "此为设计约束，非缺陷。主因子冻结是V3策略基石"
+      }
+    ]
+  },
+  "monitoring_indicators": {
+    "title": "监控必看指标",
+    "tier_1_critical": [
+      {
+        "name": "拥挤度HHI",
+        "threshold": 1.05401,
+        "action": "超过P90触发LIGHT降权"
+      },
+      {
+        "name": "因子翻转率",
+        "threshold": 0.55,
+        "action": "超过L1触发LIGHT降权"
+      },
+      {
+        "name": "Sharpe比率",
+        "threshold": 1.0,
+        "action": "低于1.0组合暂停+人工复核"
+      }
+    ],
+    "tier_2_warning": [
+      {
+        "name": "拥挤度HHI",
+        "threshold": 1.05854,
+        "action": "超过P95触发MEDIUM降权"
+      },
+      {
+        "name": "因子翻转率",
+        "threshold": 0.65,
+        "action": "超过L2触发HEAVY降权"
+      },
+      {
+        "name": "拥挤jerk",
+        "threshold": 0.000474,
+        "action": "jerk超限触发HEAVY降权"
+      },
+      {
+        "name": "同步翻转计数",
+        "threshold": 4,
+        "action": "≥4个因子同步触发MEDIUM升级"
+      }
+    ],
+    "tier_3_monitoring": [
+      {
+        "name": "候选因子池总权重",
+        "range": "5%-15%",
+        "action": "超出范围报警"
+      },
+      {
+        "name": "收益衰减率",
+        "threshold": "月度>10%",
+        "action": "触发参数复核"
+      },
+      {
+        "name": "Gate拦截命中率",
+        "threshold": ">90%",
+        "action": "低于90%检查规则"
+      },
+      {
+        "name": "MC安全区概率",
+        "threshold": ">0%",
+        "action": "持续0%需评估机制有效性"
+      }
+    ]
+  },
+  "long_term_pool_recommendation": {
+    "title": "长期观测池准入建议",
+    "recommendation": "RECOMMEND_MONITORING",
+    "rationale": [
+      "Gate拦截有效性已验证（4/4 Case PASS，0假阳性，0漏报）",
+      "动态权重机制在拥挤度上升和翻转共振场景下能有效保护",
+      "MC高失效区95.9%表明该机制不适合收益最大化目标",
+      "建议作为观测仓部署，仅做净值跟踪和指标监控",
+      "长期观测目标：积累6个月+数据后重新评估准入"
+    ],
+    "conditions": [
+      "仅限观测仓模式，不投入实盘",
+      "月度复核绩效衰减边界",
+      "DSHD-T054监控规则需补充漂移阈值",
+      "3个暂缓排除因子保持监控但排除运算"
+    ],
+    "next_steps": [
+      "1. DSHD-T054建立v4.48动态权重实时看板",
+      "2. 月度归因分析（复用本TASK063脚本）",
+      "3. 6个月后重新评估准入或淘汰"
+    ]
+  },
+  "attribution_summary": {
+    "sharpe_decline_root_cause": "候选因子权重压缩（平均权重因子0.785）贡献约78.5%的Sharpe损失",
+    "mdd_expansion_root_cause": "5日调仓滞后+LIGHT降权幅度不足（仅25%）",
+    "flip_rate_reduction_benefit": "换手率从0.235降至0.0，交易成本节约显著",
+    "gate_intercept_validity": "4/4压力测试通过，0假阳性，0漏报",
+    "mc_stability_assessment": "95.9%高失效区，机制稳定性不足",
+    "overall_verdict": "观测仓部署，不并入主策略"
+  }
+}

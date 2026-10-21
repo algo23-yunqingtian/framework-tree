@@ -1,0 +1,269 @@
+{
+  "description": "风险热图：高共振高危区间标记",
+  "heatmap_data": [
+    {
+      "crowding": 1.08,
+      "flip_grade": "NONE",
+      "crowd_grade": "MEDIUM",
+      "combined_grade": "MEDIUM",
+      "intensity": 3
+    },
+    {
+      "crowding": 1.077005,
+      "flip_grade": "NONE",
+      "crowd_grade": "MEDIUM",
+      "combined_grade": "MEDIUM",
+      "intensity": 3
+    },
+    {
+      "crowding": 1.071258,
+      "flip_grade": "NONE",
+      "crowd_grade": "HEAVY",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.076986,
+      "flip_grade": "NONE",
+      "crowd_grade": "HEAVY",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.045743,
+      "flip_grade": "NONE",
+      "crowd_grade": "NONE",
+      "combined_grade": "NONE",
+      "intensity": 1
+    },
+    {
+      "crowding": 1.05065,
+      "flip_grade": "NONE",
+      "crowd_grade": "NONE",
+      "combined_grade": "NONE",
+      "intensity": 1
+    },
+    {
+      "crowding": 1.043103,
+      "flip_grade": "NONE",
+      "crowd_grade": "NONE",
+      "combined_grade": "NONE",
+      "intensity": 1
+    },
+    {
+      "crowding": 1.051087,
+      "flip_grade": "NONE",
+      "crowd_grade": "NONE",
+      "combined_grade": "NONE",
+      "intensity": 1
+    },
+    {
+      "crowding": 1.051596,
+      "flip_grade": "LIGHT",
+      "crowd_grade": "NONE",
+      "combined_grade": "LIGHT",
+      "intensity": 2
+    },
+    {
+      "crowding": 1.052883,
+      "flip_grade": "LIGHT",
+      "crowd_grade": "NONE",
+      "combined_grade": "LIGHT",
+      "intensity": 2
+    },
+    {
+      "crowding": 1.037971,
+      "flip_grade": "LIGHT",
+      "crowd_grade": "NONE",
+      "combined_grade": "LIGHT",
+      "intensity": 2
+    },
+    {
+      "crowding": 1.041335,
+      "flip_grade": "HEAVY",
+      "crowd_grade": "NONE",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.059227,
+      "flip_grade": "HEAVY",
+      "crowd_grade": "HEAVY",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.039552,
+      "flip_grade": "HEAVY",
+      "crowd_grade": "NONE",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.050437,
+      "flip_grade": "HEAVY",
+      "crowd_grade": "NONE",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.042629,
+      "flip_grade": "LIGHT",
+      "crowd_grade": "NONE",
+      "combined_grade": "LIGHT",
+      "intensity": 2
+    },
+    {
+      "crowding": 1.061733,
+      "flip_grade": "LIGHT",
+      "crowd_grade": "HEAVY",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.054208,
+      "flip_grade": "NONE",
+      "crowd_grade": "HEAVY",
+      "combined_grade": "HEAVY",
+      "intensity": 4
+    },
+    {
+      "crowding": 1.045173,
+      "flip_grade": "NONE",
+      "crowd_grade": "NONE",
+      "combined_grade": "NONE",
+      "intensity": 1
+    },
+    {
+      "crowding": 1.060262,
+      "flip_grade": "LIGHT",
+      "crowd_grade": "MEDIUM",
+      "combined_grade": "MEDIUM",
+      "intensity": 3
+    }
+  ],
+  "heatmap_total_points": 20,
+  "resonance_analysis": {
+    "resonance_points": 3,
+    "resonance_ratio": 0.15,
+    "resonance_pct": 15.0,
+    "interpretation": "15.0%的时间点存在拥挤度-翻转共振（双分支同时触发），这些是风险最高区域。"
+  },
+  "high_risk_cells_sample": [
+    {
+      "date": "2025-01-16",
+      "crowding": 1.071258,
+      "jerk": 0.031441,
+      "crowd_grade": "HEAVY",
+      "flip_grade": "NONE",
+      "sync_flip_count": 0,
+      "effective_weight_factor": 0.2,
+      "candidate_weight_sum": 0.025442
+    },
+    {
+      "date": "2025-01-23",
+      "crowding": 1.076986,
+      "jerk": 0.005619,
+      "crowd_grade": "HEAVY",
+      "flip_grade": "NONE",
+      "sync_flip_count": 0,
+      "effective_weight_factor": 0.2,
+      "candidate_weight_sum": 0.025442
+    },
+    {
+      "date": "2025-03-28",
+      "crowding": 1.041335,
+      "jerk": -0.012149,
+      "crowd_grade": "NONE",
+      "flip_grade": "HEAVY",
+      "sync_flip_count": 3,
+      "effective_weight_factor": 0.1805,
+      "candidate_weight_sum": 0.022962
+    },
+    {
+      "date": "2025-04-07",
+      "crowding": 1.059227,
+      "jerk": 0.02709,
+      "crowd_grade": "HEAVY",
+      "flip_grade": "HEAVY",
+      "sync_flip_count": 4,
+      "effective_weight_factor": 0.1715,
+      "candidate_weight_sum": 0.021813
+    },
+    {
+      "date": "2025-04-14",
+      "crowding": 1.039552,
+      "jerk": -0.048141,
+      "crowd_grade": "NONE",
+      "flip_grade": "HEAVY",
+      "sync_flip_count": 3,
+      "effective_weight_factor": 0.1805,
+      "candidate_weight_sum": 0.022962
+    },
+    {
+      "date": "2025-04-21",
+      "crowding": 1.050437,
+      "jerk": 0.034504,
+      "crowd_grade": "NONE",
+      "flip_grade": "HEAVY",
+      "sync_flip_count": 2,
+      "effective_weight_factor": 0.19,
+      "candidate_weight_sum": 0.024169
+    },
+    {
+      "date": "2025-05-08",
+      "crowding": 1.061733,
+      "jerk": 0.005389,
+      "crowd_grade": "HEAVY",
+      "flip_grade": "LIGHT",
+      "sync_flip_count": 1,
+      "effective_weight_factor": 0.2,
+      "candidate_weight_sum": 0.025442
+    },
+    {
+      "date": "2025-05-15",
+      "crowding": 1.054208,
+      "jerk": 0.031454,
+      "crowd_grade": "HEAVY",
+      "flip_grade": "NONE",
+      "sync_flip_count": 0,
+      "effective_weight_factor": 0.2,
+      "candidate_weight_sum": 0.025442
+    }
+  ],
+  "high_risk_cell_total": 8,
+  "risk_zones": {
+    "zone_1_safe": {
+      "condition": "crowding <= P90 AND all flip < L1",
+      "grade": "NONE",
+      "count": 88,
+      "pct": 25.4
+    },
+    "zone_2_mild_stress": {
+      "condition": "P90 < crowding <= P95 OR flip > L1",
+      "grade": "LIGHT",
+      "count": 142,
+      "pct": 41.0
+    },
+    "zone_3_moderate_stress": {
+      "condition": "crowding > P95 OR sync_flip >= 4",
+      "grade": "MEDIUM",
+      "count": 17,
+      "pct": 4.9
+    },
+    "zone_4_critical": {
+      "condition": "jerk > 0.000474 AND crowding > P90 OR flip > L2",
+      "grade": "HEAVY",
+      "count": 99,
+      "pct": 28.6
+    }
+  },
+  "critical_zone_thresholds": {
+    "crowding_P90": 1.05401,
+    "crowding_P95": 1.05854,
+    "jerk_heavy": 0.000474,
+    "flip_L1": 0.55,
+    "flip_L2": 0.65,
+    "sync_escalate": 4
+  }
+}
