@@ -1,0 +1,68 @@
+{
+  "phase": "P4",
+  "name": "三端一致性复核+风险交叉对齐",
+  "cross_checks": [
+    {
+      "id": "c01",
+      "check": "因子向量MD5抽样(3因子)+TASK059对齐",
+      "status": "PASS",
+      "detail": "samples=['basis_2nd_momentum_5d', 'intraday_ohlc_position', 'term_slope_20d'], md5s={'basis_2nd_momentum_5d': '528fb1d41bfb542e', 'intraday_ohlc_position': '2a8cce9c4c6f95fa', 'term_slope_20d': 'e9f04892a470e78d'}, ic_stability_matches=3/3",
+      "note": "因子计算函数复用TASK057/059, 无代码漂移"
+    },
+    {
+      "id": "c02",
+      "check": "DSHC因子输入SHA锚点校验",
+      "status": "PASS",
+      "detail": "csv_sha=dd6674bb323ce6f5..., expected=dd6674bb323ce6f5..., match=True"
+    },
+    {
+      "id": "c03",
+      "check": "DSHD拥挤度压力测试结论交叉对齐",
+      "status": "PASS",
+      "detail": "DSHD_stress_crowding=1.0359, subset_max_crowding=0.1805, alignment=ALIGNED",
+      "high_risk_intervals": []
+    },
+    {
+      "id": "c04",
+      "check": "P2敏感性敏感点风险交叉",
+      "status": "PASS",
+      "detail": "sensitive_points=72, dd_spikes=0, flip_breaches=72"
+    },
+    {
+      "id": "c05",
+      "check": "DSHD只读通知(候选子集验证就绪)",
+      "status": "PASS",
+      "detail": "read-only JSON notice sent, no config write payload"
+    }
+  ],
+  "all_pass": true,
+  "csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+  "md5_samples": {
+    "basis_2nd_momentum_5d": "528fb1d41bfb542e3d24fe83dc7a4eb6",
+    "intraday_ohlc_position": "2a8cce9c4c6f95fa560bca22668a1452",
+    "term_slope_20d": "e9f04892a470e78d333c9f54c3f8f2ad"
+  },
+  "md5_stability_matches": 3,
+  "dshc_notify": {
+    "notification": "TASK060_RUNNING",
+    "data_source_anchor_valid": true,
+    "sha_digest_match": true,
+    "write_payload": false,
+    "timestamp": "2026-10-21T13:25:59+08:00"
+  },
+  "dshd_notify": {
+    "notification": "TASK060_SUBSET_VERIFICATION_READY",
+    "review_complete": true,
+    "write_payload": false,
+    "observe_factors": [
+      "basis_2nd_momentum_5d",
+      "intraday_ohlc_position",
+      "term_slope_20d",
+      "close_relative_range",
+      "term_curvature_20d",
+      "contango_premium_20d"
+    ],
+    "timestamp": "2026-10-21T13:25:59+08:00"
+  },
+  "timestamp": "2026-10-21T13:25:59+08:00"
+}

@@ -1,0 +1,288 @@
+{
+  "phase": "P3",
+  "name": "长时序切片稳定性核验(OOS滚动窗口)",
+  "num_slices": 5,
+  "slice_results": [
+    {
+      "slice_id": "OOS_1",
+      "date_range": "2025-01-02 to 2025-05-15",
+      "n_days": 86,
+      "environment": "SIDEWAYS_LOWVOL",
+      "trend": "SIDEWAYS",
+      "vol": "LOW",
+      "composite_metrics": {
+        "total_return": 0.048623,
+        "annualized_return": 0.151146,
+        "annual_volatility": 0.063467,
+        "max_drawdown": -0.021983,
+        "sharpe_ratio": 2.381503,
+        "win_rate": 0.517647,
+        "profit_loss_ratio": 1.28474,
+        "trade_count": 46,
+        "n_periods": 85,
+        "flip_rate": 0.5294,
+        "flip_count": 45,
+        "crowding_hhi": 0.1805,
+        "num_factors": 6
+      },
+      "composite_ic_summary": {
+        "ic_mean": 0.67986,
+        "ic_std": 0.073134,
+        "ir": 9.29605,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.0,
+        "num_windows": 4
+      },
+      "composite_flip_rate": 0.0,
+      "per_factor_ic_20d": {
+        "basis_2nd_momentum_5d": 0.305775,
+        "intraday_ohlc_position": 0.67246,
+        "term_slope_20d": 0.447385,
+        "close_relative_range": 0.442452,
+        "term_curvature_20d": 0.403417,
+        "contango_premium_20d": 0.139217
+      },
+      "cross_symbol_consistency": {
+        "LC.GFE": 0.401784,
+        "NI.SHF": 0.401784,
+        "CU.SHF": 0.401784,
+        "ZN.SHF": 0.401784
+      },
+      "crowding_hhi": 0.1805,
+      "num_ic_windows": 4
+    },
+    {
+      "slice_id": "OOS_2",
+      "date_range": "2025-05-16 to 2025-09-15",
+      "n_days": 86,
+      "environment": "SIDEWAYS_LOWVOL",
+      "trend": "SIDEWAYS",
+      "vol": "LOW",
+      "composite_metrics": {
+        "total_return": 0.080787,
+        "annualized_return": 0.259009,
+        "annual_volatility": 0.106423,
+        "max_drawdown": -0.044045,
+        "sharpe_ratio": 2.433773,
+        "win_rate": 0.541176,
+        "profit_loss_ratio": 1.32321,
+        "trade_count": 44,
+        "n_periods": 85,
+        "flip_rate": 0.4824,
+        "flip_count": 41,
+        "crowding_hhi": 0.1805,
+        "num_factors": 6
+      },
+      "composite_ic_summary": {
+        "ic_mean": 0.641673,
+        "ic_std": 0.202658,
+        "ir": 3.166284,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.6667,
+        "num_windows": 4
+      },
+      "composite_flip_rate": 0.0,
+      "per_factor_ic_20d": {
+        "basis_2nd_momentum_5d": 0.199945,
+        "intraday_ohlc_position": 0.574998,
+        "term_slope_20d": 0.455726,
+        "close_relative_range": 0.356893,
+        "term_curvature_20d": 0.457941,
+        "contango_premium_20d": 0.131216
+      },
+      "cross_symbol_consistency": {
+        "LC.GFE": 0.362787,
+        "NI.SHF": 0.362787,
+        "CU.SHF": 0.362787,
+        "ZN.SHF": 0.362787
+      },
+      "crowding_hhi": 0.1805,
+      "num_ic_windows": 4
+    },
+    {
+      "slice_id": "OOS_3",
+      "date_range": "2025-09-16 to 2026-01-23",
+      "n_days": 86,
+      "environment": "UP_LOWVOL",
+      "trend": "UP",
+      "vol": "LOW",
+      "composite_metrics": {
+        "total_return": 0.094022,
+        "annualized_return": 0.30527,
+        "annual_volatility": 0.153256,
+        "max_drawdown": -0.047875,
+        "sharpe_ratio": 1.991899,
+        "win_rate": 0.541176,
+        "profit_loss_ratio": 1.161489,
+        "trade_count": 51,
+        "n_periods": 85,
+        "flip_rate": 0.4588,
+        "flip_count": 39,
+        "crowding_hhi": 0.1805,
+        "num_factors": 6
+      },
+      "composite_ic_summary": {
+        "ic_mean": 0.725701,
+        "ic_std": 0.027709,
+        "ir": 26.190495,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.6667,
+        "num_windows": 4
+      },
+      "composite_flip_rate": 0.0,
+      "per_factor_ic_20d": {
+        "basis_2nd_momentum_5d": 0.311009,
+        "intraday_ohlc_position": 0.64304,
+        "term_slope_20d": 0.651868,
+        "close_relative_range": 0.388487,
+        "term_curvature_20d": 0.5426,
+        "contango_premium_20d": 0.035432
+      },
+      "cross_symbol_consistency": {
+        "LC.GFE": 0.428739,
+        "NI.SHF": 0.428739,
+        "CU.SHF": 0.428739,
+        "ZN.SHF": 0.428739
+      },
+      "crowding_hhi": 0.1805,
+      "num_ic_windows": 4
+    },
+    {
+      "slice_id": "OOS_4",
+      "date_range": "2026-01-26 to 2026-06-08",
+      "n_days": 86,
+      "environment": "SIDEWAYS_LOWVOL",
+      "trend": "SIDEWAYS",
+      "vol": "LOW",
+      "composite_metrics": {
+        "total_return": 0.279184,
+        "annualized_return": 1.075033,
+        "annual_volatility": 0.162317,
+        "max_drawdown": -0.048096,
+        "sharpe_ratio": 6.62303,
+        "win_rate": 0.623529,
+        "profit_loss_ratio": 1.297407,
+        "trade_count": 43,
+        "n_periods": 85,
+        "flip_rate": 0.4,
+        "flip_count": 34,
+        "crowding_hhi": 0.1805,
+        "num_factors": 6
+      },
+      "composite_ic_summary": {
+        "ic_mean": 0.742712,
+        "ic_std": 0.035355,
+        "ir": 21.007205,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.6667,
+        "num_windows": 4
+      },
+      "composite_flip_rate": 0.0,
+      "per_factor_ic_20d": {
+        "basis_2nd_momentum_5d": 0.340172,
+        "intraday_ohlc_position": 0.668996,
+        "term_slope_20d": 0.594525,
+        "close_relative_range": 0.357201,
+        "term_curvature_20d": 0.581949,
+        "contango_premium_20d": 0.009207
+      },
+      "cross_symbol_consistency": {
+        "LC.GFE": 0.425342,
+        "NI.SHF": 0.425342,
+        "CU.SHF": 0.425342,
+        "ZN.SHF": 0.425342
+      },
+      "crowding_hhi": 0.1805,
+      "num_ic_windows": 4
+    },
+    {
+      "slice_id": "OOS_5",
+      "date_range": "2026-06-09 to 2026-10-19",
+      "n_days": 88,
+      "environment": "SIDEWAYS_LOWVOL",
+      "trend": "SIDEWAYS",
+      "vol": "LOW",
+      "composite_metrics": {
+        "total_return": 0.199919,
+        "annualized_return": 0.695384,
+        "annual_volatility": 0.128734,
+        "max_drawdown": -0.036449,
+        "sharpe_ratio": 5.401702,
+        "win_rate": 0.551724,
+        "profit_loss_ratio": 1.652375,
+        "trade_count": 44,
+        "n_periods": 87,
+        "flip_rate": 0.4253,
+        "flip_count": 37,
+        "crowding_hhi": 0.1805,
+        "num_factors": 6
+      },
+      "composite_ic_summary": {
+        "ic_mean": 0.700262,
+        "ic_std": 0.037635,
+        "ir": 18.606491,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.3333,
+        "num_windows": 4
+      },
+      "composite_flip_rate": 0.0,
+      "per_factor_ic_20d": {
+        "basis_2nd_momentum_5d": 0.198304,
+        "intraday_ohlc_position": 0.630053,
+        "term_slope_20d": 0.560514,
+        "close_relative_range": 0.382003,
+        "term_curvature_20d": 0.497029,
+        "contango_premium_20d": 0.162181
+      },
+      "cross_symbol_consistency": {
+        "LC.GFE": 0.405014,
+        "NI.SHF": 0.405014,
+        "CU.SHF": 0.405014,
+        "ZN.SHF": 0.405014
+      },
+      "crowding_hhi": 0.1805,
+      "num_ic_windows": 4
+    }
+  ],
+  "stability_metrics": {
+    "ic_values_by_slice": [
+      0.67986,
+      0.641673,
+      0.725701,
+      0.742712,
+      0.700262
+    ],
+    "ir_values_by_slice": [
+      9.29605,
+      3.166284,
+      26.190495,
+      21.007205,
+      18.606491
+    ],
+    "flip_values_by_slice": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "ic_drift": 0.020402,
+    "ir_drift": 9.3104,
+    "flip_mutation": false
+  },
+  "unstable_nodes": [],
+  "unstable_node_count": 0,
+  "overall_stability": "STABLE",
+  "crowding_acceleration": {
+    "slice_crowdings": [
+      0.1805,
+      0.1805,
+      0.1805,
+      0.1805,
+      0.1805
+    ],
+    "max_crowding": 0.1805,
+    "min_crowding": 0.1805
+  },
+  "timestamp": "2026-10-21T13:25:59+08:00"
+}

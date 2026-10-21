@@ -1,0 +1,85 @@
+{
+  "snapshot_id": "V3-EXT-SUBSET-060",
+  "version_tag": "V3-EXT-SUBSET-060",
+  "generated_at": "2026-10-21T13:25:59+08:00",
+  "token": "DSHA-TASK-060-SUBSET-VERIFY-SCAN-TOKEN",
+  "disclaimer": "NOT_PRODUCTION — 仅候选子集仿真版本，不覆盖生产MANIFEST",
+  "base_version": "V3-EXT-CAND-059",
+  "files": [
+    {
+      "filename": "subset_backtest_report.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\subset_060\\subset_backtest_report.json",
+      "sha256": "c82f591f83f0ded01d224129c08e4b2cc8a396d56fd12295012d54958cfbf270",
+      "size_bytes": 23627
+    },
+    {
+      "filename": "sensitivity_scan_result.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\subset_060\\sensitivity_scan_result.json",
+      "sha256": "8c0113af1db45070b4575f5fa00aff5bb455abbed9afbca3605608272a2b4b93",
+      "size_bytes": 130101
+    },
+    {
+      "filename": "rolling_oos_stability.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\subset_060\\rolling_oos_stability.json",
+      "sha256": "59b7736f2a9792ad46f9f683200c00349f3f9119fcb04a7541869bd84893e2d5",
+      "size_bytes": 8082
+    },
+    {
+      "filename": "triple_consistency_task060.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\subset_060\\triple_consistency_task060.json",
+      "sha256": "a3aea21b4490019d2dc17a3849881356c5aeab313de759e9abdbaffaaec982eb",
+      "size_bytes": 2395
+    },
+    {
+      "filename": "v3_ext_subset_fingerprint.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\subset_060\\v3_ext_subset_fingerprint.json",
+      "sha256": "bbddc6b5ad82a48a263d2803978894edf920d8f819e9e6ecabf4ef0237c7c47f",
+      "size_bytes": 2790
+    }
+  ],
+  "total_files": 5,
+  "aggregate_sha256": "681440142838cd968abfc77126aef464997c7684a9d3b6be5294da0f2a4d7d03",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "v3_main_factors_frozen": true,
+  "readonly_protection": true,
+  "subset_summary": {
+    "observe_factors": [
+      "basis_2nd_momentum_5d",
+      "intraday_ohlc_position",
+      "term_slope_20d",
+      "close_relative_range",
+      "term_curvature_20d",
+      "contango_premium_20d"
+    ],
+    "deferred_factors": [
+      "price_momentum_2nd_diff",
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "observe_count": 6,
+    "deferred_count": 3,
+    "p1_groups_tested": 2,
+    "p2_grid_combinations": 72,
+    "p3_slices": 5,
+    "p3_stability": "STABLE",
+    "p4_all_pass": true
+  },
+  "subset_performance_summary": {
+    "group_a_14factor_vs_baseline": {
+      "return_delta": 0.900214,
+      "sharpe_delta": 1.247489,
+      "drawdown_delta": -0.028143
+    },
+    "group_b_6factor_vs_baseline": {
+      "return_delta": 1.347707,
+      "sharpe_delta": 2.37966,
+      "drawdown_delta": -0.044192
+    }
+  }
+}

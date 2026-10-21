@@ -1,0 +1,4493 @@
+{
+  "phase": "P2",
+  "name": "参数敏感性网格扫描(仅6观察备选)",
+  "scan_grid": {
+    "weight_caps": [
+      0.1,
+      0.12,
+      0.15
+    ],
+    "ir_adaptive_alphas": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "industry_neutral_thresholds": [
+      0.0,
+      0.05,
+      0.1,
+      0.15
+    ],
+    "total_combinations": 72
+  },
+  "grid_results": [
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.176574,
+        "intraday_ohlc_position": 0.176574,
+        "term_slope_20d": 0.176574,
+        "close_relative_range": 0.176574,
+        "term_curvature_20d": 0.176574,
+        "contango_premium_20d": 0.117131
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.567156,
+        "annualized_return": 0.735407,
+        "annual_volatility": 0.126555,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.810958,
+        "win_rate": 0.575406,
+        "profit_loss_ratio": 1.628918,
+        "trade_count": 207,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1696,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.176574,
+        "intraday_ohlc_position": 0.176574,
+        "term_slope_20d": 0.176574,
+        "close_relative_range": 0.176574,
+        "term_curvature_20d": 0.176574,
+        "contango_premium_20d": 0.117131
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.567156,
+        "annualized_return": 0.735407,
+        "annual_volatility": 0.126555,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.810958,
+        "win_rate": 0.575406,
+        "profit_loss_ratio": 1.628918,
+        "trade_count": 207,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1696,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.176574,
+        "intraday_ohlc_position": 0.176574,
+        "term_slope_20d": 0.176574,
+        "close_relative_range": 0.176574,
+        "term_curvature_20d": 0.176574,
+        "contango_premium_20d": 0.117131
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.567156,
+        "annualized_return": 0.735407,
+        "annual_volatility": 0.126555,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.810958,
+        "win_rate": 0.575406,
+        "profit_loss_ratio": 1.628918,
+        "trade_count": 207,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1696,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.176574,
+        "intraday_ohlc_position": 0.176574,
+        "term_slope_20d": 0.176574,
+        "close_relative_range": 0.176574,
+        "term_curvature_20d": 0.176574,
+        "contango_premium_20d": 0.117131
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.567156,
+        "annualized_return": 0.735407,
+        "annual_volatility": 0.126555,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.810958,
+        "win_rate": 0.575406,
+        "profit_loss_ratio": 1.628918,
+        "trade_count": 207,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1696,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.179676,
+        "intraday_ohlc_position": 0.190945,
+        "term_slope_20d": 0.190945,
+        "close_relative_range": 0.190945,
+        "term_curvature_20d": 0.190945,
+        "contango_premium_20d": 0.056543
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.597759,
+        "annualized_return": 0.747473,
+        "annual_volatility": 0.124706,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.993875,
+        "win_rate": 0.596288,
+        "profit_loss_ratio": 1.558127,
+        "trade_count": 219,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1813,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.179676,
+        "intraday_ohlc_position": 0.190945,
+        "term_slope_20d": 0.190945,
+        "close_relative_range": 0.190945,
+        "term_curvature_20d": 0.190945,
+        "contango_premium_20d": 0.056543
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.597759,
+        "annualized_return": 0.747473,
+        "annual_volatility": 0.124706,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.993875,
+        "win_rate": 0.596288,
+        "profit_loss_ratio": 1.558127,
+        "trade_count": 219,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1813,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.179676,
+        "intraday_ohlc_position": 0.190945,
+        "term_slope_20d": 0.190945,
+        "close_relative_range": 0.190945,
+        "term_curvature_20d": 0.190945,
+        "contango_premium_20d": 0.056543
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.597759,
+        "annualized_return": 0.747473,
+        "annual_volatility": 0.124706,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.993875,
+        "win_rate": 0.596288,
+        "profit_loss_ratio": 1.558127,
+        "trade_count": 219,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1813,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.179676,
+        "intraday_ohlc_position": 0.190945,
+        "term_slope_20d": 0.190945,
+        "close_relative_range": 0.190945,
+        "term_curvature_20d": 0.190945,
+        "contango_premium_20d": 0.056543
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.597759,
+        "annualized_return": 0.747473,
+        "annual_volatility": 0.124706,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.993875,
+        "win_rate": 0.596288,
+        "profit_loss_ratio": 1.558127,
+        "trade_count": 219,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1813,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.087547,
+        "intraday_ohlc_position": 0.227544,
+        "term_slope_20d": 0.227544,
+        "close_relative_range": 0.227544,
+        "term_curvature_20d": 0.227544,
+        "contango_premium_20d": 0.002275
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.480666,
+        "annualized_return": 0.700979,
+        "annual_volatility": 0.126582,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.537751,
+        "win_rate": 0.612529,
+        "profit_loss_ratio": 1.375097,
+        "trade_count": 209,
+        "n_periods": 431,
+        "flip_rate": 0.4594,
+        "flip_count": 198,
+        "crowding_hhi": 0.2148,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.087547,
+        "intraday_ohlc_position": 0.227544,
+        "term_slope_20d": 0.227544,
+        "close_relative_range": 0.227544,
+        "term_curvature_20d": 0.227544,
+        "contango_premium_20d": 0.002275
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.480666,
+        "annualized_return": 0.700979,
+        "annual_volatility": 0.126582,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.537751,
+        "win_rate": 0.612529,
+        "profit_loss_ratio": 1.375097,
+        "trade_count": 209,
+        "n_periods": 431,
+        "flip_rate": 0.4594,
+        "flip_count": 198,
+        "crowding_hhi": 0.2148,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.087547,
+        "intraday_ohlc_position": 0.227544,
+        "term_slope_20d": 0.227544,
+        "close_relative_range": 0.227544,
+        "term_curvature_20d": 0.227544,
+        "contango_premium_20d": 0.002275
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.480666,
+        "annualized_return": 0.700979,
+        "annual_volatility": 0.126582,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.537751,
+        "win_rate": 0.612529,
+        "profit_loss_ratio": 1.375097,
+        "trade_count": 209,
+        "n_periods": 431,
+        "flip_rate": 0.4594,
+        "flip_count": 198,
+        "crowding_hhi": 0.2148,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.087547,
+        "intraday_ohlc_position": 0.227544,
+        "term_slope_20d": 0.227544,
+        "close_relative_range": 0.227544,
+        "term_curvature_20d": 0.227544,
+        "contango_premium_20d": 0.002275
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.480666,
+        "annualized_return": 0.700979,
+        "annual_volatility": 0.126582,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.537751,
+        "win_rate": 0.612529,
+        "profit_loss_ratio": 1.375097,
+        "trade_count": 209,
+        "n_periods": 431,
+        "flip_rate": 0.4594,
+        "flip_count": 198,
+        "crowding_hhi": 0.2148,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002488,
+        "intraday_ohlc_position": 0.248756,
+        "term_slope_20d": 0.248756,
+        "close_relative_range": 0.248756,
+        "term_curvature_20d": 0.248756,
+        "contango_premium_20d": 0.002488
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2475,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.180089,
+        "intraday_ohlc_position": 0.180089,
+        "term_slope_20d": 0.180089,
+        "close_relative_range": 0.180089,
+        "term_curvature_20d": 0.180089,
+        "contango_premium_20d": 0.099553
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.557737,
+        "annualized_return": 0.731681,
+        "annual_volatility": 0.126085,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.80309,
+        "win_rate": 0.577726,
+        "profit_loss_ratio": 1.603955,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1721,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.180089,
+        "intraday_ohlc_position": 0.180089,
+        "term_slope_20d": 0.180089,
+        "close_relative_range": 0.180089,
+        "term_curvature_20d": 0.180089,
+        "contango_premium_20d": 0.099553
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.557737,
+        "annualized_return": 0.731681,
+        "annual_volatility": 0.126085,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.80309,
+        "win_rate": 0.577726,
+        "profit_loss_ratio": 1.603955,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1721,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.180089,
+        "intraday_ohlc_position": 0.180089,
+        "term_slope_20d": 0.180089,
+        "close_relative_range": 0.180089,
+        "term_curvature_20d": 0.180089,
+        "contango_premium_20d": 0.099553
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.557737,
+        "annualized_return": 0.731681,
+        "annual_volatility": 0.126085,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.80309,
+        "win_rate": 0.577726,
+        "profit_loss_ratio": 1.603955,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1721,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.180089,
+        "intraday_ohlc_position": 0.180089,
+        "term_slope_20d": 0.180089,
+        "close_relative_range": 0.180089,
+        "term_curvature_20d": 0.180089,
+        "contango_premium_20d": 0.099553
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.557737,
+        "annualized_return": 0.731681,
+        "annual_volatility": 0.126085,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.80309,
+        "win_rate": 0.577726,
+        "profit_loss_ratio": 1.603955,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4176,
+        "flip_count": 180,
+        "crowding_hhi": 0.1721,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.155866,
+        "intraday_ohlc_position": 0.198771,
+        "term_slope_20d": 0.198771,
+        "close_relative_range": 0.198771,
+        "term_curvature_20d": 0.198771,
+        "contango_premium_20d": 0.049051
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.585805,
+        "annualized_return": 0.742767,
+        "annual_volatility": 0.125139,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.935529,
+        "win_rate": 0.593968,
+        "profit_loss_ratio": 1.548733,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1847,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.155866,
+        "intraday_ohlc_position": 0.198771,
+        "term_slope_20d": 0.198771,
+        "close_relative_range": 0.198771,
+        "term_curvature_20d": 0.198771,
+        "contango_premium_20d": 0.049051
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.585805,
+        "annualized_return": 0.742767,
+        "annual_volatility": 0.125139,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.935529,
+        "win_rate": 0.593968,
+        "profit_loss_ratio": 1.548733,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1847,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.155866,
+        "intraday_ohlc_position": 0.198771,
+        "term_slope_20d": 0.198771,
+        "close_relative_range": 0.198771,
+        "term_curvature_20d": 0.198771,
+        "contango_premium_20d": 0.049051
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.585805,
+        "annualized_return": 0.742767,
+        "annual_volatility": 0.125139,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.935529,
+        "win_rate": 0.593968,
+        "profit_loss_ratio": 1.548733,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1847,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.155866,
+        "intraday_ohlc_position": 0.198771,
+        "term_slope_20d": 0.198771,
+        "close_relative_range": 0.198771,
+        "term_curvature_20d": 0.198771,
+        "contango_premium_20d": 0.049051
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.585805,
+        "annualized_return": 0.742767,
+        "annual_volatility": 0.125139,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.935529,
+        "win_rate": 0.593968,
+        "profit_loss_ratio": 1.548733,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1847,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.074065,
+        "intraday_ohlc_position": 0.231003,
+        "term_slope_20d": 0.231003,
+        "close_relative_range": 0.231003,
+        "term_curvature_20d": 0.231003,
+        "contango_premium_20d": 0.001925
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.522143,
+        "annualized_return": 0.71755,
+        "annual_volatility": 0.126177,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.686868,
+        "win_rate": 0.61949,
+        "profit_loss_ratio": 1.368134,
+        "trade_count": 210,
+        "n_periods": 431,
+        "flip_rate": 0.4548,
+        "flip_count": 196,
+        "crowding_hhi": 0.2189,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.074065,
+        "intraday_ohlc_position": 0.231003,
+        "term_slope_20d": 0.231003,
+        "close_relative_range": 0.231003,
+        "term_curvature_20d": 0.231003,
+        "contango_premium_20d": 0.001925
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.522143,
+        "annualized_return": 0.71755,
+        "annual_volatility": 0.126177,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.686868,
+        "win_rate": 0.61949,
+        "profit_loss_ratio": 1.368134,
+        "trade_count": 210,
+        "n_periods": 431,
+        "flip_rate": 0.4548,
+        "flip_count": 196,
+        "crowding_hhi": 0.2189,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.074065,
+        "intraday_ohlc_position": 0.231003,
+        "term_slope_20d": 0.231003,
+        "close_relative_range": 0.231003,
+        "term_curvature_20d": 0.231003,
+        "contango_premium_20d": 0.001925
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.522143,
+        "annualized_return": 0.71755,
+        "annual_volatility": 0.126177,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.686868,
+        "win_rate": 0.61949,
+        "profit_loss_ratio": 1.368134,
+        "trade_count": 210,
+        "n_periods": 431,
+        "flip_rate": 0.4548,
+        "flip_count": 196,
+        "crowding_hhi": 0.2189,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.074065,
+        "intraday_ohlc_position": 0.231003,
+        "term_slope_20d": 0.231003,
+        "close_relative_range": 0.231003,
+        "term_curvature_20d": 0.231003,
+        "contango_premium_20d": 0.001925
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.522143,
+        "annualized_return": 0.71755,
+        "annual_volatility": 0.126177,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.686868,
+        "win_rate": 0.61949,
+        "profit_loss_ratio": 1.368134,
+        "trade_count": 210,
+        "n_periods": 431,
+        "flip_rate": 0.4548,
+        "flip_count": 196,
+        "crowding_hhi": 0.2189,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.002075,
+        "intraday_ohlc_position": 0.248963,
+        "term_slope_20d": 0.248963,
+        "close_relative_range": 0.248963,
+        "term_curvature_20d": 0.248963,
+        "contango_premium_20d": 0.002075
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2479,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.18347,
+        "intraday_ohlc_position": 0.183811,
+        "term_slope_20d": 0.183811,
+        "close_relative_range": 0.183811,
+        "term_curvature_20d": 0.183811,
+        "contango_premium_20d": 0.081288
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.527468,
+        "annualized_return": 0.719669,
+        "annual_volatility": 0.125962,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.713397,
+        "win_rate": 0.584687,
+        "profit_loss_ratio": 1.566607,
+        "trade_count": 211,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1754,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.18347,
+        "intraday_ohlc_position": 0.183811,
+        "term_slope_20d": 0.183811,
+        "close_relative_range": 0.183811,
+        "term_curvature_20d": 0.183811,
+        "contango_premium_20d": 0.081288
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.527468,
+        "annualized_return": 0.719669,
+        "annual_volatility": 0.125962,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.713397,
+        "win_rate": 0.584687,
+        "profit_loss_ratio": 1.566607,
+        "trade_count": 211,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1754,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.18347,
+        "intraday_ohlc_position": 0.183811,
+        "term_slope_20d": 0.183811,
+        "close_relative_range": 0.183811,
+        "term_curvature_20d": 0.183811,
+        "contango_premium_20d": 0.081288
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.527468,
+        "annualized_return": 0.719669,
+        "annual_volatility": 0.125962,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.713397,
+        "win_rate": 0.584687,
+        "profit_loss_ratio": 1.566607,
+        "trade_count": 211,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1754,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.18347,
+        "intraday_ohlc_position": 0.183811,
+        "term_slope_20d": 0.183811,
+        "close_relative_range": 0.183811,
+        "term_curvature_20d": 0.183811,
+        "contango_premium_20d": 0.081288
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.527468,
+        "annualized_return": 0.719669,
+        "annual_volatility": 0.125962,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.713397,
+        "win_rate": 0.584687,
+        "profit_loss_ratio": 1.566607,
+        "trade_count": 211,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1754,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.130022,
+        "intraday_ohlc_position": 0.207265,
+        "term_slope_20d": 0.207265,
+        "close_relative_range": 0.207265,
+        "term_curvature_20d": 0.207265,
+        "contango_premium_20d": 0.040917
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.601731,
+        "annualized_return": 0.749035,
+        "annual_volatility": 0.125358,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.975181,
+        "win_rate": 0.607889,
+        "profit_loss_ratio": 1.4877,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1904,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.130022,
+        "intraday_ohlc_position": 0.207265,
+        "term_slope_20d": 0.207265,
+        "close_relative_range": 0.207265,
+        "term_curvature_20d": 0.207265,
+        "contango_premium_20d": 0.040917
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.601731,
+        "annualized_return": 0.749035,
+        "annual_volatility": 0.125358,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.975181,
+        "win_rate": 0.607889,
+        "profit_loss_ratio": 1.4877,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1904,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.130022,
+        "intraday_ohlc_position": 0.207265,
+        "term_slope_20d": 0.207265,
+        "close_relative_range": 0.207265,
+        "term_curvature_20d": 0.207265,
+        "contango_premium_20d": 0.040917
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.601731,
+        "annualized_return": 0.749035,
+        "annual_volatility": 0.125358,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.975181,
+        "win_rate": 0.607889,
+        "profit_loss_ratio": 1.4877,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1904,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.130022,
+        "intraday_ohlc_position": 0.207265,
+        "term_slope_20d": 0.207265,
+        "close_relative_range": 0.207265,
+        "term_curvature_20d": 0.207265,
+        "contango_premium_20d": 0.040917
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.601731,
+        "annualized_return": 0.749035,
+        "annual_volatility": 0.125358,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.975181,
+        "win_rate": 0.607889,
+        "profit_loss_ratio": 1.4877,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1904,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.060166,
+        "intraday_ohlc_position": 0.234568,
+        "term_slope_20d": 0.234568,
+        "close_relative_range": 0.234568,
+        "term_curvature_20d": 0.234568,
+        "contango_premium_20d": 0.001564
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.536038,
+        "annualized_return": 0.723077,
+        "annual_volatility": 0.126335,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.723486,
+        "win_rate": 0.62413,
+        "profit_loss_ratio": 1.341531,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4501,
+        "flip_count": 194,
+        "crowding_hhi": 0.2237,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.060166,
+        "intraday_ohlc_position": 0.234568,
+        "term_slope_20d": 0.234568,
+        "close_relative_range": 0.234568,
+        "term_curvature_20d": 0.234568,
+        "contango_premium_20d": 0.001564
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.536038,
+        "annualized_return": 0.723077,
+        "annual_volatility": 0.126335,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.723486,
+        "win_rate": 0.62413,
+        "profit_loss_ratio": 1.341531,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4501,
+        "flip_count": 194,
+        "crowding_hhi": 0.2237,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.060166,
+        "intraday_ohlc_position": 0.234568,
+        "term_slope_20d": 0.234568,
+        "close_relative_range": 0.234568,
+        "term_curvature_20d": 0.234568,
+        "contango_premium_20d": 0.001564
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.536038,
+        "annualized_return": 0.723077,
+        "annual_volatility": 0.126335,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.723486,
+        "win_rate": 0.62413,
+        "profit_loss_ratio": 1.341531,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4501,
+        "flip_count": 194,
+        "crowding_hhi": 0.2237,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.060166,
+        "intraday_ohlc_position": 0.234568,
+        "term_slope_20d": 0.234568,
+        "close_relative_range": 0.234568,
+        "term_curvature_20d": 0.234568,
+        "contango_premium_20d": 0.001564
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.536038,
+        "annualized_return": 0.723077,
+        "annual_volatility": 0.126335,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.723486,
+        "win_rate": 0.62413,
+        "profit_loss_ratio": 1.341531,
+        "trade_count": 206,
+        "n_periods": 431,
+        "flip_rate": 0.4501,
+        "flip_count": 194,
+        "crowding_hhi": 0.2237,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.05,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.1,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.15,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.001661,
+        "intraday_ohlc_position": 0.249169,
+        "term_slope_20d": 0.249169,
+        "close_relative_range": 0.249169,
+        "term_curvature_20d": 0.249169,
+        "contango_premium_20d": 0.001661
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.523048,
+        "annualized_return": 0.71791,
+        "annual_volatility": 0.126852,
+        "max_drawdown": -0.077577,
+        "sharpe_ratio": 5.659444,
+        "win_rate": 0.614849,
+        "profit_loss_ratio": 1.374254,
+        "trade_count": 201,
+        "n_periods": 431,
+        "flip_rate": 0.4455,
+        "flip_count": 192,
+        "crowding_hhi": 0.2483,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    }
+  ],
+  "sensitive_points": [
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.810958,
+      "total_return": 1.567156,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.810958,
+      "total_return": 1.567156,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.810958,
+      "total_return": 1.567156,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.810958,
+      "total_return": 1.567156,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.993875,
+      "total_return": 1.597759,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.993875,
+      "total_return": 1.597759,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.993875,
+      "total_return": 1.597759,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.993875,
+      "total_return": 1.597759,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.537751,
+      "total_return": 1.480666,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4594
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.537751,
+      "total_return": 1.480666,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4594
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.537751,
+      "total_return": 1.480666,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4594
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.537751,
+      "total_return": 1.480666,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4594
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.80309,
+      "total_return": 1.557737,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.80309,
+      "total_return": 1.557737,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.80309,
+      "total_return": 1.557737,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.80309,
+      "total_return": 1.557737,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4176
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.935529,
+      "total_return": 1.585805,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.935529,
+      "total_return": 1.585805,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.935529,
+      "total_return": 1.585805,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.935529,
+      "total_return": 1.585805,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.686868,
+      "total_return": 1.522143,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4548
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.686868,
+      "total_return": 1.522143,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4548
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.686868,
+      "total_return": 1.522143,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4548
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.686868,
+      "total_return": 1.522143,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4548
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.713397,
+      "total_return": 1.527468,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.713397,
+      "total_return": 1.527468,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.713397,
+      "total_return": 1.527468,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.713397,
+      "total_return": 1.527468,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.975181,
+      "total_return": 1.601731,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.975181,
+      "total_return": 1.601731,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.975181,
+      "total_return": 1.601731,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "sharpe": 5.975181,
+      "total_return": 1.601731,
+      "max_drawdown": -0.056291,
+      "flip_rate": 0.4408
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.723486,
+      "total_return": 1.536038,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4501
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.723486,
+      "total_return": 1.536038,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4501
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.723486,
+      "total_return": 1.536038,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4501
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.723486,
+      "total_return": 1.536038,
+      "max_drawdown": -0.085778,
+      "flip_rate": 0.4501
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.0,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.05,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.1,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "industry_neutral_threshold": 0.15,
+      "flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "sharpe": 5.659444,
+      "total_return": 1.523048,
+      "max_drawdown": -0.077577,
+      "flip_rate": 0.4455
+    }
+  ],
+  "sensitive_point_count": 72,
+  "heatmap_data": [
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.0,
+      "avg_sharpe": 5.811,
+      "avg_return": 1.5672,
+      "avg_max_drawdown": -0.0563
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "avg_sharpe": 5.9939,
+      "avg_return": 1.5978,
+      "avg_max_drawdown": -0.0563
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "avg_sharpe": 5.5378,
+      "avg_return": 1.4807,
+      "avg_max_drawdown": -0.0858
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.6,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.8,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 1.0,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.0,
+      "avg_sharpe": 5.8031,
+      "avg_return": 1.5577,
+      "avg_max_drawdown": -0.0563
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.2,
+      "avg_sharpe": 5.9355,
+      "avg_return": 1.5858,
+      "avg_max_drawdown": -0.0563
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.4,
+      "avg_sharpe": 5.6869,
+      "avg_return": 1.5221,
+      "avg_max_drawdown": -0.0858
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.6,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 0.8,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.12,
+      "ir_adaptive_alpha": 1.0,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.0,
+      "avg_sharpe": 5.7134,
+      "avg_return": 1.5275,
+      "avg_max_drawdown": -0.0563
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "avg_sharpe": 5.9752,
+      "avg_return": 1.6017,
+      "avg_max_drawdown": -0.0563
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.4,
+      "avg_sharpe": 5.7235,
+      "avg_return": 1.536,
+      "avg_max_drawdown": -0.0858
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.6,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.8,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    },
+    {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 1.0,
+      "avg_sharpe": 5.6594,
+      "avg_return": 1.523,
+      "avg_max_drawdown": -0.0776
+    }
+  ],
+  "optimal_config": {
+    "best_sharpe_config": {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.179676,
+        "intraday_ohlc_position": 0.190945,
+        "term_slope_20d": 0.190945,
+        "close_relative_range": 0.190945,
+        "term_curvature_20d": 0.190945,
+        "contango_premium_20d": 0.056543
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.597759,
+        "annualized_return": 0.747473,
+        "annual_volatility": 0.124706,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.993875,
+        "win_rate": 0.596288,
+        "profit_loss_ratio": 1.558127,
+        "trade_count": 219,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1813,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    "best_return_config": {
+      "weight_cap": 0.15,
+      "ir_adaptive_alpha": 0.2,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.130022,
+        "intraday_ohlc_position": 0.207265,
+        "term_slope_20d": 0.207265,
+        "close_relative_range": 0.207265,
+        "term_curvature_20d": 0.207265,
+        "contango_premium_20d": 0.040917
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.601731,
+        "annualized_return": 0.749035,
+        "annual_volatility": 0.125358,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.975181,
+        "win_rate": 0.607889,
+        "profit_loss_ratio": 1.4877,
+        "trade_count": 215,
+        "n_periods": 431,
+        "flip_rate": 0.4408,
+        "flip_count": 190,
+        "crowding_hhi": 0.1904,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH"
+      ],
+      "has_sensitive_flag": true
+    },
+    "lowest_dd_config": {
+      "weight_cap": 0.1,
+      "ir_adaptive_alpha": 0.4,
+      "industry_neutral_threshold": 0.0,
+      "adapted_weights": {
+        "basis_2nd_momentum_5d": 0.087547,
+        "intraday_ohlc_position": 0.227544,
+        "term_slope_20d": 0.227544,
+        "close_relative_range": 0.227544,
+        "term_curvature_20d": 0.227544,
+        "contango_premium_20d": 0.002275
+      },
+      "factor_irs": {
+        "basis_2nd_momentum_5d": 2.1507,
+        "intraday_ohlc_position": 7.1848,
+        "term_slope_20d": 3.7991,
+        "close_relative_range": 5.7291,
+        "term_curvature_20d": 3.9455,
+        "contango_premium_20d": 1.2402
+      },
+      "mean_ir": 4.0082,
+      "backtest": {
+        "total_return": 1.480666,
+        "annualized_return": 0.700979,
+        "annual_volatility": 0.126582,
+        "max_drawdown": -0.085778,
+        "sharpe_ratio": 5.537751,
+        "win_rate": 0.612529,
+        "profit_loss_ratio": 1.375097,
+        "trade_count": 209,
+        "n_periods": 431,
+        "flip_rate": 0.4594,
+        "flip_count": 198,
+        "crowding_hhi": 0.2148,
+        "num_factors": 6
+      },
+      "sensitive_flags": [
+        "PERF_JUMP_SHARPE",
+        "PERF_JUMP_RETURN",
+        "FLIP_BREACH",
+        "CROWDING_P95"
+      ],
+      "has_sensitive_flag": true
+    }
+  },
+  "disclaimer": "仅候选仿真，非生产参数，不修改V3主因子",
+  "timestamp": "2026-10-21T13:25:58+08:00"
+}

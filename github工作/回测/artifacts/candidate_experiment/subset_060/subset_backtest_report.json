@@ -1,0 +1,839 @@
+{
+  "phase": "P1",
+  "name": "6观察备选子集独立回测(20d/40d双窗口)",
+  "disclaimer": "⚠仅候选仿真，非生产权重，不修改V3主因子",
+  "observe_factors": [
+    "basis_2nd_momentum_5d",
+    "intraday_ohlc_position",
+    "term_slope_20d",
+    "close_relative_range",
+    "term_curvature_20d",
+    "contango_premium_20d"
+  ],
+  "deferred_factors": [
+    "price_momentum_2nd_diff",
+    "oi_momentum_divergence_20d",
+    "price_vol_momentum"
+  ],
+  "v3_baseline_metrics": {
+    "sharpe": 3.488982,
+    "total_return": 0.229334,
+    "annualized_return": 0.128311,
+    "max_drawdown": -0.012099,
+    "annual_volatility": 0.036776,
+    "profit_loss_ratio": 1.712786,
+    "trade_count": 251,
+    "crowding": 1.0359
+  },
+  "results": {
+    "group_a_14factor": {
+      "group_id": "group_a_14factor",
+      "factors": [
+        "contract_switch_flag",
+        "momentum_20d",
+        "oi_change_1d",
+        "oi_change_rate_7d",
+        "oi_level",
+        "realized_vol_20d",
+        "spread_cs",
+        "vol_regime_change",
+        "basis_2nd_momentum_5d",
+        "intraday_ohlc_position",
+        "term_slope_20d",
+        "close_relative_range",
+        "term_curvature_20d",
+        "contango_premium_20d"
+      ],
+      "num_factors": 14,
+      "backtest_20d": {
+        "total_return": 1.129548,
+        "annualized_return": 0.55577,
+        "annual_volatility": 0.117338,
+        "max_drawdown": -0.040242,
+        "sharpe_ratio": 4.736471,
+        "win_rate": 0.461717,
+        "profit_loss_ratio": 1.766662,
+        "trade_count": 124,
+        "n_periods": 431,
+        "flip_rate": 0.297,
+        "flip_count": 128,
+        "crowding_hhi": 0.1042,
+        "num_factors": 14
+      },
+      "backtest_20d_status": "OK",
+      "window_ics_20d": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-02-06",
+          "n_pairs": 76,
+          "ic": 0.688049,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": 0.560246,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": 0.546126,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": 0.310658,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": 0.475804,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.579677,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": 0.405547,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.439794,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": 0.379699,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": 0.566559,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.51994,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": 0.563608,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": 0.709483,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": 0.668966,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": 0.652354,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.526265,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": 0.538619,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": 0.74157,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": 0.61027,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": 0.612907,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": 0.504419,
+          "sign": 1
+        }
+      ],
+      "ic_summary_20d": {
+        "ic_mean": 0.552408,
+        "ic_std": 0.110279,
+        "ir": 5.009205,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.45,
+        "num_windows": 21
+      },
+      "flip_rate_20d": 0.0,
+      "flip_count_20d": 0,
+      "backtest_40d": {
+        "total_return": 1.129548,
+        "annualized_return": 0.55577,
+        "annual_volatility": 0.117338,
+        "max_drawdown": -0.040242,
+        "sharpe_ratio": 4.736471,
+        "win_rate": 0.461717,
+        "profit_loss_ratio": 1.766662,
+        "trade_count": 124,
+        "n_periods": 431,
+        "flip_rate": 0.297,
+        "flip_count": 128,
+        "crowding_hhi": 0.1042,
+        "num_factors": 14
+      },
+      "backtest_40d_status": "OK",
+      "window_ics_40d": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-03-06",
+          "n_pairs": 156,
+          "ic": 0.571821,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 160,
+          "ic": 0.393346,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-07-03",
+          "n_pairs": 160,
+          "ic": 0.509219,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-08-28",
+          "n_pairs": 160,
+          "ic": 0.407743,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-10-31",
+          "n_pairs": 160,
+          "ic": 0.48633,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-12-26",
+          "n_pairs": 160,
+          "ic": 0.548632,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-03-04",
+          "n_pairs": 160,
+          "ic": 0.669385,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-30",
+          "n_pairs": 160,
+          "ic": 0.594887,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-07-01",
+          "n_pairs": 160,
+          "ic": 0.616165,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-08-26",
+          "n_pairs": 160,
+          "ic": 0.611479,
+          "sign": 1
+        }
+      ],
+      "ic_summary_40d": {
+        "ic_mean": 0.540901,
+        "ic_std": 0.091025,
+        "ir": 5.942344,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.6667,
+        "num_windows": 10
+      },
+      "flip_rate_40d": 0.0,
+      "flip_count_40d": 0,
+      "vs_baseline_v3_1": {
+        "baseline_sharpe": 3.488982,
+        "baseline_total_return": 0.229334,
+        "baseline_max_drawdown": -0.012099,
+        "baseline_crowding": 1.0359,
+        "group_sharpe": 4.736471,
+        "group_total_return": 1.129548,
+        "group_max_drawdown": -0.040242,
+        "group_crowding": 0.1042,
+        "return_delta": 0.900214,
+        "drawdown_delta": -0.028143,
+        "sharpe_delta": 1.247489,
+        "crowding_uptrend": "DOWN",
+        "crowding_delta": -0.9317
+      },
+      "environment_breakdown": {
+        "ENV_1": {
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.096993,
+            "annualized_return": 0.243613,
+            "annual_volatility": 0.055738,
+            "max_drawdown": -0.014529,
+            "sharpe_ratio": 4.370702,
+            "win_rate": 0.542056,
+            "profit_loss_ratio": 1.494122,
+            "trade_count": 36,
+            "n_periods": 107,
+            "flip_rate": 0.3925,
+            "flip_count": 42,
+            "crowding_hhi": 0.1042,
+            "num_factors": 14
+          }
+        },
+        "ENV_2": {
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.125949,
+            "annualized_return": 0.322312,
+            "annual_volatility": 0.114205,
+            "max_drawdown": -0.042074,
+            "sharpe_ratio": 2.822229,
+            "win_rate": 0.53271,
+            "profit_loss_ratio": 1.367091,
+            "trade_count": 43,
+            "n_periods": 107,
+            "flip_rate": 0.2804,
+            "flip_count": 30,
+            "crowding_hhi": 0.1042,
+            "num_factors": 14
+          }
+        },
+        "ENV_3": {
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.38805,
+            "annualized_return": 1.164631,
+            "annual_volatility": 0.173274,
+            "max_drawdown": -0.031508,
+            "sharpe_ratio": 6.721343,
+            "win_rate": 0.560748,
+            "profit_loss_ratio": 1.727166,
+            "trade_count": 38,
+            "n_periods": 107,
+            "flip_rate": 0.2617,
+            "flip_count": 28,
+            "crowding_hhi": 0.1042,
+            "num_factors": 14
+          }
+        },
+        "ENV_4": {
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.126779,
+            "annualized_return": 0.324608,
+            "annual_volatility": 0.107446,
+            "max_drawdown": -0.024609,
+            "sharpe_ratio": 3.021115,
+            "win_rate": 0.411215,
+            "profit_loss_ratio": 1.636783,
+            "trade_count": 32,
+            "n_periods": 107,
+            "flip_rate": 0.271,
+            "flip_count": 29,
+            "crowding_hhi": 0.1042,
+            "num_factors": 14
+          }
+        }
+      },
+      "factor_vector_md5s": {
+        "contract_switch_flag": "2760ba4a76f89c8d",
+        "momentum_20d": "724e25ed9f0778b8",
+        "oi_change_1d": "df34353bc9d767d9",
+        "oi_change_rate_7d": "3b6626d0238d9b33",
+        "oi_level": "0d9c12ed2b95547d",
+        "realized_vol_20d": "2f0b810d1192f945",
+        "spread_cs": "659abab14b4652c0",
+        "vol_regime_change": "a8f7c509914ebd2e",
+        "basis_2nd_momentum_5d": "528fb1d41bfb542e",
+        "intraday_ohlc_position": "2a8cce9c4c6f95fa",
+        "term_slope_20d": "e9f04892a470e78d",
+        "close_relative_range": "bd4a02556733b7ed",
+        "term_curvature_20d": "0f82f700f6154a4b",
+        "contango_premium_20d": "e68f02dd6b13c979"
+      }
+    },
+    "group_b_6factor": {
+      "group_id": "group_b_6factor",
+      "factors": [
+        "basis_2nd_momentum_5d",
+        "intraday_ohlc_position",
+        "term_slope_20d",
+        "close_relative_range",
+        "term_curvature_20d",
+        "contango_premium_20d"
+      ],
+      "num_factors": 6,
+      "backtest_20d": {
+        "total_return": 1.577041,
+        "annualized_return": 0.739311,
+        "annual_volatility": 0.125976,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.868642,
+        "win_rate": 0.591647,
+        "profit_loss_ratio": 1.54596,
+        "trade_count": 211,
+        "n_periods": 431,
+        "flip_rate": 0.4362,
+        "flip_count": 188,
+        "crowding_hhi": 0.1805,
+        "num_factors": 6
+      },
+      "backtest_20d_status": "OK",
+      "window_ics_20d": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-02-06",
+          "n_pairs": 76,
+          "ic": 0.768964,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-02-07",
+          "window_end": "2025-03-06",
+          "n_pairs": 80,
+          "ic": 0.695348,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-04-03",
+          "n_pairs": 80,
+          "ic": 0.67353,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-04-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 80,
+          "ic": 0.617,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-06-05",
+          "n_pairs": 80,
+          "ic": 0.695457,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-06-06",
+          "window_end": "2025-07-03",
+          "n_pairs": 80,
+          "ic": 0.700088,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-07-31",
+          "n_pairs": 80,
+          "ic": 0.733607,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-01",
+          "window_end": "2025-08-28",
+          "n_pairs": 80,
+          "ic": 0.485352,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-09-25",
+          "n_pairs": 80,
+          "ic": 0.643268,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-09-26",
+          "window_end": "2025-10-31",
+          "n_pairs": 80,
+          "ic": 0.771756,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-11-28",
+          "n_pairs": 80,
+          "ic": 0.677769,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-01",
+          "window_end": "2025-12-26",
+          "n_pairs": 80,
+          "ic": 0.664061,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-01-27",
+          "n_pairs": 80,
+          "ic": 0.830213,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-01-28",
+          "window_end": "2026-03-04",
+          "n_pairs": 80,
+          "ic": 0.747416,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-01",
+          "n_pairs": 80,
+          "ic": 0.764144,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-04-02",
+          "window_end": "2026-04-30",
+          "n_pairs": 80,
+          "ic": 0.632313,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-06-02",
+          "n_pairs": 80,
+          "ic": 0.734289,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-06-03",
+          "window_end": "2026-07-01",
+          "n_pairs": 80,
+          "ic": 0.764247,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-07-29",
+          "n_pairs": 80,
+          "ic": 0.631518,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-30",
+          "window_end": "2026-08-26",
+          "n_pairs": 80,
+          "ic": 0.713431,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-08-27",
+          "window_end": "2026-09-23",
+          "n_pairs": 80,
+          "ic": 0.675493,
+          "sign": 1
+        }
+      ],
+      "ic_summary_20d": {
+        "ic_mean": 0.696155,
+        "ic_std": 0.073521,
+        "ir": 9.468746,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.5,
+        "num_windows": 21
+      },
+      "flip_rate_20d": 0.0,
+      "flip_count_20d": 0,
+      "backtest_40d": {
+        "total_return": 1.577041,
+        "annualized_return": 0.739311,
+        "annual_volatility": 0.125976,
+        "max_drawdown": -0.056291,
+        "sharpe_ratio": 5.868642,
+        "win_rate": 0.591647,
+        "profit_loss_ratio": 1.54596,
+        "trade_count": 211,
+        "n_periods": 431,
+        "flip_rate": 0.4362,
+        "flip_count": 188,
+        "crowding_hhi": 0.1805,
+        "num_factors": 6
+      },
+      "backtest_40d_status": "OK",
+      "window_ics_40d": [
+        {
+          "window_start": "2025-01-02",
+          "window_end": "2025-03-06",
+          "n_pairs": 156,
+          "ic": 0.727412,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-03-07",
+          "window_end": "2025-05-07",
+          "n_pairs": 160,
+          "ic": 0.610949,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-05-08",
+          "window_end": "2025-07-03",
+          "n_pairs": 160,
+          "ic": 0.694111,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-07-04",
+          "window_end": "2025-08-28",
+          "n_pairs": 160,
+          "ic": 0.613797,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-08-29",
+          "window_end": "2025-10-31",
+          "n_pairs": 160,
+          "ic": 0.71925,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-11-03",
+          "window_end": "2025-12-26",
+          "n_pairs": 160,
+          "ic": 0.671253,
+          "sign": 1
+        },
+        {
+          "window_start": "2025-12-29",
+          "window_end": "2026-03-04",
+          "n_pairs": 160,
+          "ic": 0.789384,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-03-05",
+          "window_end": "2026-04-30",
+          "n_pairs": 160,
+          "ic": 0.720671,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-05-06",
+          "window_end": "2026-07-01",
+          "n_pairs": 160,
+          "ic": 0.752053,
+          "sign": 1
+        },
+        {
+          "window_start": "2026-07-02",
+          "window_end": "2026-08-26",
+          "n_pairs": 160,
+          "ic": 0.670891,
+          "sign": 1
+        }
+      ],
+      "ic_summary_40d": {
+        "ic_mean": 0.696977,
+        "ic_std": 0.056986,
+        "ir": 12.230733,
+        "ic_positive_ratio": 1.0,
+        "monotonicity": 0.4444,
+        "num_windows": 10
+      },
+      "flip_rate_40d": 0.0,
+      "flip_count_40d": 0,
+      "vs_baseline_v3_1": {
+        "baseline_sharpe": 3.488982,
+        "baseline_total_return": 0.229334,
+        "baseline_max_drawdown": -0.012099,
+        "baseline_crowding": 1.0359,
+        "group_sharpe": 5.868642,
+        "group_total_return": 1.577041,
+        "group_max_drawdown": -0.056291,
+        "group_crowding": 0.1805,
+        "return_delta": 1.347707,
+        "drawdown_delta": -0.044192,
+        "sharpe_delta": 2.37966,
+        "crowding_uptrend": "DOWN",
+        "crowding_delta": -0.8554
+      },
+      "environment_breakdown": {
+        "ENV_1": {
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.167898,
+            "annualized_return": 0.441279,
+            "annual_volatility": 0.092914,
+            "max_drawdown": -0.024335,
+            "sharpe_ratio": 4.749314,
+            "win_rate": 0.626168,
+            "profit_loss_ratio": 1.322797,
+            "trade_count": 60,
+            "n_periods": 107,
+            "flip_rate": 0.5234,
+            "flip_count": 56,
+            "crowding_hhi": 0.1805,
+            "num_factors": 6
+          }
+        },
+        "ENV_2": {
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.148724,
+            "annualized_return": 0.386169,
+            "annual_volatility": 0.112179,
+            "max_drawdown": -0.035587,
+            "sharpe_ratio": 3.442424,
+            "win_rate": 0.504673,
+            "profit_loss_ratio": 1.657812,
+            "trade_count": 61,
+            "n_periods": 107,
+            "flip_rate": 0.4486,
+            "flip_count": 48,
+            "crowding_hhi": 0.1805,
+            "num_factors": 6
+          }
+        },
+        "ENV_3": {
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.366771,
+            "annualized_return": 1.087289,
+            "annual_volatility": 0.165362,
+            "max_drawdown": -0.043048,
+            "sharpe_ratio": 6.57522,
+            "win_rate": 0.570093,
+            "profit_loss_ratio": 1.667397,
+            "trade_count": 55,
+            "n_periods": 107,
+            "flip_rate": 0.4019,
+            "flip_count": 43,
+            "crowding_hhi": 0.1805,
+            "num_factors": 6
+          }
+        },
+        "ENV_4": {
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "backtest": {
+            "total_return": 0.231214,
+            "annualized_return": 0.632104,
+            "annual_volatility": 0.125368,
+            "max_drawdown": -0.036449,
+            "sharpe_ratio": 5.041999,
+            "win_rate": 0.53271,
+            "profit_loss_ratio": 1.746447,
+            "trade_count": 52,
+            "n_periods": 107,
+            "flip_rate": 0.4112,
+            "flip_count": 44,
+            "crowding_hhi": 0.1805,
+            "num_factors": 6
+          }
+        }
+      },
+      "factor_vector_md5s": {
+        "basis_2nd_momentum_5d": "528fb1d41bfb542e",
+        "intraday_ohlc_position": "2a8cce9c4c6f95fa",
+        "term_slope_20d": "e9f04892a470e78d",
+        "close_relative_range": "bd4a02556733b7ed",
+        "term_curvature_20d": "0f82f700f6154a4b",
+        "contango_premium_20d": "e68f02dd6b13c979"
+      }
+    }
+  },
+  "comparison_summary": {
+    "group_a_vs_baseline": {
+      "return_delta": 0.900214,
+      "sharpe_delta": 1.247489,
+      "drawdown_delta": -0.028143
+    },
+    "group_b_vs_baseline": {
+      "return_delta": 1.347707,
+      "sharpe_delta": 2.37966,
+      "drawdown_delta": -0.044192
+    }
+  },
+  "timestamp": "2026-10-21T13:25:17+08:00"
+}

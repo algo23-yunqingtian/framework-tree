@@ -1,0 +1,38 @@
+{
+  "notification_id": "DSHA-TASK060-SUBSET-VERIFICATION-READY",
+  "generated_at": "2026-10-21T13:25:59+08:00",
+  "token": "DSHA-TASK-060-SUBSET-VERIFY-SCAN-TOKEN",
+  "task": "DSHA-TASK-060",
+  "baseline_commit": "65885c1",
+  "status": "OBSERVE_SUBSET_VERIFICATION_COMPLETE",
+  "mode": "RESEARCH_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "summary": {
+    "observe_factors": 6,
+    "deferred_factors": 3,
+    "p0_all_pass": true,
+    "p1_groups_tested": 2,
+    "p1_observe_count": 6,
+    "p2_grid_combinations": 72,
+    "p2_sensitive_points": 72,
+    "p3_slices": 5,
+    "p3_stability": "STABLE",
+    "p4_triple_sha_consistent": true,
+    "p5_snapshot_version": "V3-EXT-SUBSET-060"
+  },
+  "v3_main_factors_frozen": true,
+  "candidate_only": true,
+  "watchdog_status": {
+    "dshc_process": "OK",
+    "dshd_process": "OK",
+    "process_restart": false,
+    "popup": false
+  },
+  "disclaimer": "候选子集仿真仅供DSHD评估, 不修改V3主策略"
+}
