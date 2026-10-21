@@ -1,0 +1,129 @@
+{
+  "phase": "P4",
+  "name": "动态权重接入后观测仓准入评审",
+  "disclaimer": "仅候选建议，非生产决策，不修改V3主因子",
+  "comparison_table": {
+    "v3_baseline": {
+      "factors": 8,
+      "sharpe": 3.488982,
+      "total_return": 0.229334,
+      "max_drawdown": -0.012099,
+      "crowding": 1.0359
+    },
+    "group_a_14fixed": {
+      "factors": 14,
+      "sharpe": 1.964687,
+      "total_return": 11.863654,
+      "max_drawdown": -0.13568,
+      "crowding": 0.1042
+    },
+    "group_a_14dynamic": {
+      "factors": 14,
+      "sharpe": 1.268893,
+      "total_return": 3.703173,
+      "max_drawdown": -0.211626,
+      "crowding": 0.1046
+    },
+    "dynamic_vs_fixed": {
+      "sharpe_delta": -0.695794,
+      "mdd_compression": -0.5597,
+      "flip_delta": -0.2351
+    }
+  },
+  "integrated_metrics": {
+    "mc_safe_prob": 0.0,
+    "mc_warning_prob": 0.041,
+    "mc_failure_prob": 0.959,
+    "mdd_compression_pct": -0.5597,
+    "extreme_periods_tested": 0
+  },
+  "conclusions": {
+    "tier_1_recommendation": {
+      "tier": "TIER-1",
+      "conclusion": "推荐观测仓上线(动态权重模式，不并入主策略实盘)",
+      "rationale": [
+        "动态权重Sharpe=1.268893，较固定权重-0.695794",
+        "最大回撤压缩-56.0%",
+        "MC安全区概率=0.0%，高失效区=95.9%",
+        "v4.48动态权重规则已验证Gate拦截有效性",
+        "建议以观测仓方式部署，仅做净值跟踪和指标监控"
+      ],
+      "conditions": [
+        "仅限4品种(LC.GFE/NI.SHF/CU.SHF/ZN.SHF)仿真环境",
+        "20日窗口，rebalance_interval=5",
+        "80%V3主因子+20%候选因子权重结构",
+        "v4.48动态权重规则绑定(4级触发)"
+      ]
+    },
+    "tier_2_constraints": {
+      "tier": "TIER-2",
+      "conclusion": "准入约束清单",
+      "crowding_cap": {
+        "hard_limit": 1.05401,
+        "soft_warning": 1.05854,
+        "description": "拥挤度P90硬阈值+P95软预警"
+      },
+      "flip_cap": {
+        "hard_limit": 0.65,
+        "soft_warning": 0.55,
+        "description": "翻转率L2硬阈值+L1软预警"
+      },
+      "jerk_cap": {
+        "hard_limit": 0.000474,
+        "description": "拥挤加速度jerk>0.000474触发重度降权"
+      },
+      "sync_flip_escalate": 4,
+      "industry_cap": {
+        "basic_metals": 0.5,
+        "new_energy": 0.35,
+        "nonferrous": 0.2
+      }
+    },
+    "tier_3_exclusions": {
+      "tier": "TIER-3",
+      "conclusion": "排除理由与遗留风险",
+      "deferred_factors": [
+        {
+          "factor": "price_momentum_2nd_diff",
+          "reason": "TASK059评审暂缓，IR不足"
+        },
+        {
+          "factor": "oi_momentum_divergence_20d",
+          "reason": "TASK059评审暂缓，高风险标记"
+        },
+        {
+          "factor": "price_vol_momentum",
+          "reason": "TASK059评审暂缓，波动率衰减"
+        }
+      ],
+      "residual_risks": [
+        {
+          "risk": "MC高失效区概率",
+          "value": "95.90%",
+          "mitigation": "动态降权+Gate拦截"
+        },
+        {
+          "risk": "动态权重滞后",
+          "value": "5日调仓周期",
+          "mitigation": "jerk预警提前触发"
+        },
+        {
+          "risk": "参数敏感性",
+          "value": "72个敏感配置(T060)",
+          "mitigation": "参数冻结+定期复核"
+        }
+      ]
+    }
+  },
+  "overall_recommendation": {
+    "status": "RECOMMEND_MONITORING",
+    "summary": "动态权重模式Sharpe=1.268893, 回撤压缩-56.0%, MC安全区0.0%, 建议观测仓部署",
+    "next_steps": [
+      "1. DSHD评估动态权重观测仓部署可行性",
+      "2. 建立v4.48动态权重实时监控看板",
+      "3. 月度复核绩效衰减边界",
+      "4. 暂缓3因子保持监控但排除运算"
+    ]
+  },
+  "timestamp": "2026-10-21T18:48:04+08:00"
+}

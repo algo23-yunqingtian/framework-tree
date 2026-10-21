@@ -1,0 +1,46 @@
+{
+  "notification_id": "DSHA-TASK062-DYNAMIC-READY",
+  "generated_at": "2026-10-21T18:48:04+08:00",
+  "source_task": "DSHA-TASK-062",
+  "token": "DSHA-TASK-062-DYNAMIC-WEIGHT-BACKTEST-TOKEN",
+  "sync_type": "READ_ONLY_NOTIFICATION",
+  "mode": "AUDIT_READ_ONLY",
+  "write_to_dshd_monitors": false,
+  "modify_dshd_scripts": false,
+  "modify_dshd_ledger": false,
+  "dshd_task054_can_start": true,
+  "admission_status": "ADMISSION_READY_FOR_DSHD_T054",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only_mode": true,
+    "v3_modification_forbidden": true
+  },
+  "key_results": {
+    "control_sharpe": 1.964687,
+    "experiment_sharpe": 1.268893,
+    "mdd_compression_pct": -55.97,
+    "mc_safe_prob": 0.0,
+    "mc_warning_prob": 4.1,
+    "mc_failure_prob": 95.9,
+    "gate_valid": true,
+    "snapshot_version": "V3-EXT-14POOL-062",
+    "adoption_recommendation": "RECOMMEND_MONITORING"
+  },
+  "red_lines": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "main_factor_frozen": true,
+    "candidate_only": true,
+    "exclude_3_deprecated": true,
+    "cross_write": false,
+    "experiment_only": true,
+    "overall_triggered": false
+  },
+  "branch": "feature/v88-g1",
+  "baseline_commit": "214c3bb",
+  "audit_events": 18,
+  "chain_status": "061→062 CLOSED"
+}

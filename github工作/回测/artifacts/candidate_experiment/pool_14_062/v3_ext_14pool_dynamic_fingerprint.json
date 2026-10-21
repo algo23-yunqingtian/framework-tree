@@ -1,0 +1,71 @@
+{
+  "snapshot_id": "V3-EXT-14POOL-062",
+  "version_tag": "V3-EXT-14POOL-062",
+  "generated_at": "2026-10-21T18:48:04+08:00",
+  "token": "DSHA-TASK-062-DYNAMIC-WEIGHT-BACKTEST-TOKEN",
+  "disclaimer": "NOT_PRODUCTION — 仅候选14因子动态权重版本",
+  "base_version": "V3-EXT-14POOL-061",
+  "files": [
+    {
+      "filename": "dual_backtest_comparison.json",
+      "sha256": "e901338a50bb12890af2d1509bef1a7a40a0e84cf3f81eb4af0001af411654cb",
+      "size_bytes": 3443
+    },
+    {
+      "filename": "dynamic_weight_14pool_ts.json",
+      "sha256": "1e2a0e28323cd29698c7d645cad87a32275092221ba7d6a9b19ddcce3d8900f1",
+      "size_bytes": 18304
+    },
+    {
+      "filename": "gate_intercept_log.json",
+      "sha256": "1415c54020e0906a2ea8d391852edbd3eb5726da8a0d30af9d76de608f31fc3e",
+      "size_bytes": 3057
+    },
+    {
+      "filename": "mc_simulation_dynamic.json",
+      "sha256": "8453431e41b11b49885539c898ca7643930a60b6342c37e69ff5971cbb07cef5",
+      "size_bytes": 1937
+    },
+    {
+      "filename": "performance_decay_boundary_dynamic.json",
+      "sha256": "33b59482836f769b473fc65a69ab791334e712b21753869622666755de829b3a",
+      "size_bytes": 4374
+    },
+    {
+      "filename": "v3_ext_14pool_dynamic_adoption_proposal.json",
+      "sha256": "5ea6ad799b3f0f77450ab848edc1cc0ed3365046424939da950e83646fcaf54f",
+      "size_bytes": 4020
+    }
+  ],
+  "total_files": 6,
+  "aggregate_sha256": "2d26081e8b25804bd8101d8459f8632377d237e4389613a59b6c8e8254a50e37",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "v3_main_factors_frozen": true,
+  "pool_summary": {
+    "observe_factors": [
+      "basis_2nd_momentum_5d",
+      "intraday_ohlc_position",
+      "term_slope_20d",
+      "close_relative_range",
+      "term_curvature_20d",
+      "contango_premium_20d"
+    ],
+    "deferred_factors": [
+      "price_momentum_2nd_diff",
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "observe_count": 6,
+    "deferred_count": 3,
+    "group_a_factors": 14,
+    "dynamic_weight_levels": 4,
+    "mc_rounds": 2000,
+    "adoption_status": "RECOMMEND_MONITORING"
+  }
+}

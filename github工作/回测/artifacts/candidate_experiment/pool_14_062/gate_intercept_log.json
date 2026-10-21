@@ -1,0 +1,127 @@
+{
+  "phase": "P3",
+  "name": "Gate拦截有效性验证",
+  "cases": [
+    {
+      "case_id": "Case1_CROWDING_RISE",
+      "scenario": "拥挤度缓慢抬升穿越HB01",
+      "crowding_range": "1.03→1.09",
+      "gate_hits": 0,
+      "false_positives": 0,
+      "missed_triggers": 0,
+      "log_sample": [
+        {
+          "index": 0,
+          "crowding": 1.03,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 170,
+          "crowding": 1.035913,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 340,
+          "crowding": 1.041826,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 510,
+          "crowding": 1.047739,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 680,
+          "crowding": 1.053652,
+          "grade": "NONE",
+          "gate_hold": false
+        },
+        {
+          "index": 850,
+          "crowding": 1.059565,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1020,
+          "crowding": 1.065478,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1190,
+          "crowding": 1.071391,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1360,
+          "crowding": 1.077304,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1530,
+          "crowding": 1.083217,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        },
+        {
+          "index": 1700,
+          "crowding": 1.08913,
+          "grade": "MEDIUM",
+          "gate_hold": true
+        }
+      ],
+      "boundary_margin": 0.024,
+      "verdict": "PASS"
+    },
+    {
+      "case_id": "Case2_MULTI_FLIP_SYNC",
+      "scenario": "多因子flip同步突破HB02",
+      "flip_rate": 0.7,
+      "grade": "HEAVY",
+      "sync_flip_count": 6,
+      "expected_grade": "HEAVY",
+      "gate_hold": true,
+      "verdict": "PASS"
+    },
+    {
+      "case_id": "Case3_SHARPE_DECLINE",
+      "scenario": "Sharpe持续下行触及HB03",
+      "sharpe": 1.552489,
+      "hard_threshold": 1.0,
+      "gate_intercept": false,
+      "verdict": "PASS"
+    },
+    {
+      "case_id": "Case4_RESONANCE",
+      "scenario": "拥挤+flip共振",
+      "crowding": 1.08,
+      "jerk": 0.0005,
+      "flip_rate": 0.7,
+      "grade": "HEAVY",
+      "sync_flip_count": 6,
+      "gate_hold": true,
+      "verdict": "PASS"
+    }
+  ],
+  "gate_intercept_summary": {
+    "total_hits": 0,
+    "false_positives": 0,
+    "missed_triggers": 0,
+    "gate_valid": true
+  },
+  "boundary_margins": {
+    "crowding_to_P90": 0.024,
+    "crowding_to_P95": 0.0285,
+    "flip_to_L1": 0.55,
+    "flip_to_L2": 0.65,
+    "jerk_to_heavy": 0.000474
+  },
+  "timestamp": "2026-10-21T18:48:04+08:00"
+}

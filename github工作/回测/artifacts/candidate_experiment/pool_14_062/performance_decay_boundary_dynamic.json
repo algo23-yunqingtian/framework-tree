@@ -1,0 +1,153 @@
+{
+  "phase": "P3",
+  "name": "动态权重衰减边界更新",
+  "base_rules_from_T061": {
+    "phase": "P3",
+    "name": "绩效衰减边界与参数鲁棒性汇总标定",
+    "disclaimer": "仅候选仿真，非生产规则，不修改V3主因子",
+    "boundary_rules": {
+      "hard_boundaries": [
+        {
+          "rule_id": "HB-01",
+          "dimension": "crowding_hhi",
+          "threshold": 1.0359,
+          "type": "HARD",
+          "description": "拥挤度超过DSHD压力基线",
+          "trigger_action": "动态降权+触发告警",
+          "dshd_aligned": true
+        },
+        {
+          "rule_id": "HB-02",
+          "dimension": "flip_rate",
+          "threshold": 0.35,
+          "type": "HARD",
+          "description": "翻转率超过硬上限0.35",
+          "trigger_action": "因子权重归零+告警",
+          "dshd_aligned": true
+        },
+        {
+          "rule_id": "HB-03",
+          "dimension": "sharpe_ratio",
+          "threshold": 1.0,
+          "type": "HARD",
+          "description": "夏普比率低于1.0(失效阈值)",
+          "trigger_action": "组合暂停+人工复核",
+          "dshd_aligned": true
+        }
+      ],
+      "soft_boundaries": [
+        {
+          "rule_id": "SB-01",
+          "dimension": "crowding_hhi",
+          "threshold": 0.2483,
+          "type": "SOFT",
+          "description": "拥挤度超过P95分位(软预警)",
+          "trigger_action": "监控加强+日志记录",
+          "dshd_aligned": true
+        },
+        {
+          "rule_id": "SB-02",
+          "dimension": "flip_rate",
+          "threshold": 0.3,
+          "type": "SOFT",
+          "description": "翻转率超过0.30(软预警)",
+          "trigger_action": "权重下调10%",
+          "dshd_aligned": true
+        },
+        {
+          "rule_id": "SB-03",
+          "dimension": "ir_decay",
+          "threshold": 0.2,
+          "type": "SOFT",
+          "description": "IR衰减至临界点",
+          "trigger_action": "因子权重下调20%",
+          "dshd_aligned": true
+        },
+        {
+          "rule_id": "SB-04",
+          "dimension": "industry_exposure",
+          "threshold": 0.15,
+          "type": "SOFT",
+          "description": "单一行业暴露超过15%",
+          "trigger_action": "行业中性化调整",
+          "dshd_aligned": true
+        }
+      ],
+      "total_rules": 7,
+      "dshd_p82_aligned": true
+    },
+    "robustness_metrics": {
+      "crowding_distribution": {
+        "p5": 0.1042,
+        "p25": 0.1805,
+        "p50": 0.2148,
+        "p75": 0.2479,
+        "p95": 0.2483,
+        "max": 0.2483
+      },
+      "flip_distribution": {
+        "p50": 0.4455,
+        "p95": 0.4594,
+        "max": 0.5294
+      },
+      "sharpe_distribution": {
+        "p10": 4.1071,
+        "p50": 5.6594,
+        "p90": 5.9355
+      },
+      "mdd_distribution": {
+        "p10": -0.0858,
+        "p50": -0.0776,
+        "p90": -0.0526
+      },
+      "ir_distribution": {
+        "min": 3.1663,
+        "p25": 0,
+        "p50": 0
+      }
+    },
+    "mc_failure_probability": 0.0,
+    "tail_risk_inflections": 6,
+    "task060_sensitivity_sensitive_points": 72,
+    "timestamp": "2026-10-21T15:35:35+08:00"
+  },
+  "dynamic_boundaries": {
+    "HB-01_dynamic": {
+      "threshold": 1.05401,
+      "type": "HARD",
+      "description": "拥挤度P90(动态权重触发LIGHT)"
+    },
+    "HB-02_dynamic": {
+      "threshold": 0.65,
+      "type": "HARD",
+      "description": "因子flip>L2(动态权重触发HEAVY)"
+    },
+    "HB-03_dynamic": {
+      "threshold": 1.0,
+      "type": "HARD",
+      "description": "Sharpe<1.0(组合暂停)"
+    },
+    "SB-01_dynamic": {
+      "threshold": 1.05854,
+      "type": "SOFT",
+      "description": "拥挤度P95(中度降权)"
+    },
+    "SB-02_dynamic": {
+      "threshold": 0.55,
+      "type": "SOFT",
+      "description": "flip>L1(轻度降权)"
+    },
+    "SB-03_dynamic": {
+      "threshold": 0.000474,
+      "type": "SOFT",
+      "description": "jerk>heavy(重度降权)"
+    },
+    "SB-04_dynamic": {
+      "threshold": 4,
+      "type": "SOFT",
+      "description": "sync_flip>=4(中度升级)"
+    }
+  },
+  "total_rules": 7,
+  "timestamp": "2026-10-21T18:48:04+08:00"
+}

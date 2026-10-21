@@ -1,0 +1,29 @@
+{
+  "phase": "P5",
+  "name": "三端一致性校验",
+  "checks": [
+    {
+      "check": "DSHC_global_sha",
+      "status": "PASS",
+      "detail": "sha=2784883E7B3368C0"
+    },
+    {
+      "check": "DSHD_v448_rule",
+      "status": "PASS",
+      "detail": "version=1.0.0-TASK053"
+    },
+    {
+      "check": "T061_fingerprint",
+      "status": "PASS",
+      "detail": "id=V3-EXT-14POOL-061"
+    }
+  ],
+  "cross_verification": {
+    "dshc_global_sha": "2784883E",
+    "dshd_v448_rule": "1.0.0-TASK053",
+    "t061_fingerprint": "V3-EXT-14POOL-061",
+    "all_pass": true
+  },
+  "all_pass": true,
+  "timestamp": "2026-10-21T18:48:04+08:00"
+}

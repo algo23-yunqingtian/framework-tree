@@ -1,0 +1,136 @@
+{
+  "phase": "P2",
+  "name": "双版本对照闭环回测 (固定权重 vs 动态权重)",
+  "disclaimer": "仅候选仿真，非生产权重，不修改V3主因子",
+  "control_A_14fixed": {
+    "total_return": 11.863654,
+    "annualized_return": 0.451697,
+    "annual_volatility": 0.229908,
+    "max_drawdown": -0.13568,
+    "sharpe_ratio": 1.964687,
+    "win_rate": 0.195136,
+    "profit_loss_ratio": 1.57544,
+    "trade_count": 142,
+    "n_periods": 1727,
+    "flip_rate": 0.2351,
+    "crowding_hhi": 0.1042,
+    "num_factors": 14
+  },
+  "experiment_B_dynamic": {
+    "total_return": 3.703173,
+    "annualized_return": 0.25347,
+    "annual_volatility": 0.199756,
+    "max_drawdown": -0.211626,
+    "sharpe_ratio": 1.268893,
+    "win_rate": 0.097279,
+    "profit_loss_ratio": 1.613444,
+    "trade_count": 67,
+    "n_periods": 1727,
+    "flip_rate": 0.0,
+    "crowding_hhi": 0.1046,
+    "num_factors": 14
+  },
+  "delta": {
+    "sharpe_ratio": -0.695794,
+    "total_return": -8.160481,
+    "max_drawdown": -0.075946,
+    "flip_rate": -0.2351,
+    "crowding_hhi": 0.0004,
+    "trade_count": -75
+  },
+  "mdd_compression_pct": -0.5597,
+  "turnover_delta": -75,
+  "cost_impact": -0.0375,
+  "extreme_market_subsets": [],
+  "mc_simulation": {
+    "rounds": 2000,
+    "valid_rounds": 2000,
+    "time_seconds": 269.8,
+    "safe_count": 0,
+    "warning_count": 82,
+    "high_failure_count": 1918,
+    "safe_prob": 0.0,
+    "warning_prob": 0.041,
+    "high_failure_prob": 0.959,
+    "sharpe_p5": 0.9652,
+    "mdd_p5": -0.2116,
+    "collapse_boundary": {
+      "sharpe_below": 0.9652,
+      "mdd_below": -0.2116,
+      "crowding_above": 0.1042
+    },
+    "sample_rounds": [
+      {
+        "round": 0,
+        "sharpe": 1.148831,
+        "max_drawdown": -0.206987,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 1,
+        "sharpe": 1.408358,
+        "max_drawdown": -0.186895,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 2,
+        "sharpe": 1.441953,
+        "max_drawdown": -0.203493,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 3,
+        "sharpe": 1.211094,
+        "max_drawdown": -0.202449,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 4,
+        "sharpe": 1.200289,
+        "max_drawdown": -0.202881,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 5,
+        "sharpe": 0.831512,
+        "max_drawdown": -0.211626,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 6,
+        "sharpe": 1.222369,
+        "max_drawdown": -0.202884,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 7,
+        "sharpe": 1.144389,
+        "max_drawdown": -0.202048,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 8,
+        "sharpe": 1.655713,
+        "max_drawdown": -0.188822,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      },
+      {
+        "round": 9,
+        "sharpe": 1.186145,
+        "max_drawdown": -0.206987,
+        "crowding": 0.1046,
+        "zone": "HIGH_FAILURE"
+      }
+    ]
+  },
+  "timestamp": "2026-10-21T18:48:03+08:00"
+}

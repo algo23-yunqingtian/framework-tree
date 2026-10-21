@@ -787,5 +787,75 @@
       "shard_readonly_locked": true,
       "no_history_rewrite": true
     }
+  },
+  "task063_observation_deploy": {
+    "task": "DSHA-TASK-063",
+    "completed_at": "2026-10-21T18:33:11+08:00",
+    "baseline_commit": "b4bbce1",
+    "prev_task": "DSHA-TASK-062",
+    "version_tag": "V3-EXT-OBSERVATION-063",
+    "observation_deploy": {
+      "dag_nodes": 7,
+      "factor_pool": "14 (8 main + 6 observe candidate)",
+      "deferred_factors": 3,
+      "trade_enabled": false,
+      "observation_only": true
+    },
+    "calibration": {
+      "regression_tests": 20,
+      "all_pass": true,
+      "max_error": "1e-10",
+      "tolerance": "1e-6"
+    },
+    "backfill": {
+      "total_days": 40,
+      "return_within_tolerance": true,
+      "mdd_within_tolerance": true,
+      "tolerance_pct": 0.05
+    },
+    "snapshot_version_tag": "V3-EXT-OBSERVATION-063",
+    "observation_agg_sha256": "02ac9a8ab58ef4be713bcca0661cbefca89c597e0257353f92890a5d6050175c",
+    "p5_triple_sha_consistent": true,
+    "p5_snapshot_locked": true,
+    "overall_status": "PASS",
+    "v3_main_factors_frozen": true,
+    "candidate_only": true,
+    "observation_only": true,
+    "trade_enabled": false,
+    "safety": {
+      "wind_api_calls": 0,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED",
+      "read_only": true,
+      "cross_write": false
+    }
+  },
+  "task062_dynamic_weight_backtest": {
+    "task": "DSHA-TASK-062",
+    "completed_at": "2026-10-21T18:48:04+08:00",
+    "baseline_commit": "214c3bb",
+    "prev_task": "DSHA-TASK-061",
+    "group_a_factors": 14,
+    "observe_factors_count": 6,
+    "deferred_factors_count": 3,
+    "dynamic_weight_levels": 4,
+    "p2_control_sharpe": 1.964687,
+    "p2_experiment_sharpe": 1.268893,
+    "p2_mdd_compression": -0.5597,
+    "p2_mc_rounds": 2000,
+    "p2_mc_safe_prob": 0.0,
+    "p3_gate_valid": true,
+    "p4_recommendation": "RECOMMEND_MONITORING",
+    "p5_triple_sha_consistent": true,
+    "snapshot_version_tag": "V3-EXT-14POOL-062",
+    "overall_status": "PASS",
+    "v3_main_factors_frozen": true,
+    "candidate_only": true,
+    "safety": {
+      "wind_api_calls": 0,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED",
+      "read_only": true
+    }
   }
 }
