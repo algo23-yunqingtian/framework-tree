@@ -1,0 +1,185 @@
+{
+  "dag_id": "DSHC-READONLY-REPLAY-DAG-021",
+  "workorder": "DSHC-TASK-021",
+  "token": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T16:56:43+08:00",
+  "version": "1.0.0",
+  "description": "只读回放DAG — 仅允许拉取分片快照, 禁止写入/覆盖/重写历史数据",
+  "mode": "READ_ONLY_REPLAY",
+  "based_on": {
+    "task020_commit": "1a350f5",
+    "global_sha": "D1FDDE483E824E38BEA10C0D14286D836D2BF7BDAA30CC87A849A6A847AF8962",
+    "dag_frozen_sha": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+    "shard_count": 559,
+    "sha_lock_digest": "2784883E7B3368C0D2B1D6B4D6ECAC1FFB42472E029E5C62DC6EEB01E9B5BE9C"
+  },
+  "replay_config": {
+    "data_sources": [
+      {
+        "id": "src_40d",
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_40d",
+        "phase": "P3_DUAL_WINDOW_40D",
+        "shard_count": 360,
+        "readonly": true
+      },
+      {
+        "id": "src_20d",
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_20d",
+        "phase": "P3_DUAL_WINDOW_20D",
+        "shard_count": 180,
+        "readonly": true
+      },
+      {
+        "id": "src_rollover",
+        "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\contract_rollover",
+        "phase": "P3_CONTRACT_ROLLOVER",
+        "shard_count": 19,
+        "readonly": true
+      }
+    ],
+    "sha_verification": {
+      "enabled": true,
+      "manifest": "global_sha_manifest.json",
+      "abort_on_mismatch": true,
+      "verify_each_read": true
+    }
+  },
+  "permission_whitelist": {
+    "allowed_readers": [
+      "DSHA-TASK061",
+      "DSHD-TASK053",
+      "DSHD-P82-WATCHER"
+    ],
+    "allowed_operations": [
+      "READ_ONLY_SNAPSHOT_PULL"
+    ],
+    "denied_operations": [
+      "WRITE",
+      "OVERWRITE",
+      "DELETE",
+      "MODIFY",
+      "APPEND",
+      "CREATE",
+      "RENAME"
+    ],
+    "write_blocked": true,
+    "cross_write_blocked": true,
+    "upstream_push_blocked": true
+  },
+  "breakpoint_resume": {
+    "enabled": true,
+    "max_segment_size_files": 50,
+    "chunking_strategy": "alphabetical_by_basename",
+    "progress_tracking": true,
+    "resume_from": "sha_map_checkpoint",
+    "segment_manifest": true
+  },
+  "dag_assert_protection": {
+    "enabled": true,
+    "sidecar": "dual_window_dag_pre_assert.json",
+    "dag_frozen_sha256": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+    "abort_on_sha_drift": true,
+    "deny_write_to_locked_file": true,
+    "deny_overwrite_history": true,
+    "require_readonly_bit": true
+  },
+  "nodes": [
+    {
+      "id": "node_00_replay_init",
+      "phase": "P0",
+      "action": "VERIFY_BASELINE",
+      "description": "验证基线完整性 (559分片SHA)",
+      "readonly": true
+    },
+    {
+      "id": "node_01_segment_pull_40d",
+      "phase": "P1",
+      "action": "PULL_40D_SHARDS",
+      "depends_on": [
+        "node_00_replay_init"
+      ],
+      "description": "分段拉取40d窗口分片 (360)",
+      "readonly": true,
+      "segment_size": 50
+    },
+    {
+      "id": "node_02_segment_pull_20d",
+      "phase": "P1",
+      "action": "PULL_20D_SHARDS",
+      "depends_on": [
+        "node_00_replay_init"
+      ],
+      "description": "分段拉取20d窗口分片 (180)",
+      "readonly": true,
+      "segment_size": 50
+    },
+    {
+      "id": "node_03_segment_pull_rollover",
+      "phase": "P1",
+      "action": "PULL_ROLLOVER_SHARDS",
+      "depends_on": [
+        "node_00_replay_init"
+      ],
+      "description": "分段拉取换月分片 (19)",
+      "readonly": true,
+      "segment_size": 50
+    },
+    {
+      "id": "node_04_sha_verify",
+      "phase": "P2",
+      "action": "VERIFY_ALL_SHAS",
+      "depends_on": [
+        "node_01_segment_pull_40d",
+        "node_02_segment_pull_20d",
+        "node_03_segment_pull_rollover"
+      ],
+      "description": "逐条SHA校验, 零差异=通过",
+      "readonly": true
+    },
+    {
+      "id": "node_05_cross_window",
+      "phase": "P2",
+      "action": "CROSS_WINDOW_CHECK",
+      "depends_on": [
+        "node_04_sha_verify"
+      ],
+      "description": "跨窗口联动校验 (20d⊆40d)",
+      "readonly": true
+    },
+    {
+      "id": "node_06_triple_fp",
+      "phase": "P3",
+      "action": "TRIPLE_FINGERPRINT_INSPECT",
+      "depends_on": [
+        "node_05_cross_window"
+      ],
+      "description": "三节点指纹一致性巡检",
+      "readonly": true
+    },
+    {
+      "id": "node_07_replay_verify",
+      "phase": "P4",
+      "action": "SNAPSHOT_REPLAY_VERIFY",
+      "depends_on": [
+        "node_06_triple_fp"
+      ],
+      "description": "基线快照回放验证",
+      "readonly": true
+    }
+  ],
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true,
+    "silent_mode": true,
+    "read_only": true,
+    "cross_write": false
+  },
+  "sandbox_isolation": {
+    "sandbox_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\sandbox_replay",
+    "production_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets",
+    "production_configs_untouched": true
+  }
+}

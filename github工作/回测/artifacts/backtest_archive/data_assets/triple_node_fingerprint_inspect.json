@@ -1,0 +1,163 @@
+{
+  "phase": "P3",
+  "name": "三节点全量指纹一致性巡检",
+  "workorder": "DSHC-TASK-021",
+  "token": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T16:56:43+08:00",
+  "baseline_ref": "global_sha_manifest.json (TASK020, D1FDDE48)",
+  "nodes": {
+    "DSHC": {
+      "total_entries": 572,
+      "aggregate_hash": "D1FDDE483E824E38BEA10C0D14286D836D2BF7BDAA30CC87A849A6A847AF8962",
+      "conflicts": 0,
+      "source_counts": {
+        "DSHC-ORIG": 559,
+        "DSHA-FACTOR": 5,
+        "DSHD-RISK": 8
+      }
+    },
+    "DSHA": {
+      "task057_files": 5,
+      "task061_files": 6,
+      "total": 11,
+      "task057_aggregate": 5,
+      "task061_aggregate": "fc2ae31f85db764ca63be275ecdfa7303770a95c6f9826e65f527051537c1600"
+    },
+    "DSHD": {
+      "task050_files": 0,
+      "p82_snapshots": 0,
+      "total": 0,
+      "task050_freeze_status": ""
+    }
+  },
+  "fingerprint_freshness": {
+    "checked": 31,
+    "exists": 31,
+    "matches": 30,
+    "drifted": 1,
+    "missing": 0,
+    "note": "仅审计事实, 不修改任何上游指纹文件; 漂移通常源于后续工单对研究制品的合法更新"
+  },
+  "cross_node_alignment": {
+    "dshc_total_entries": 572,
+    "dsha_task057_files": 5,
+    "dsha_task061_files": 6,
+    "dshd_task050_files": 0,
+    "dshd_p82_snapshots": 0,
+    "dshc_entries": 572,
+    "dsha_entries_total": 11,
+    "dshd_entries_total": 0,
+    "overlap_dshc_dsha": 5,
+    "overlap_dshc_dshd": 0,
+    "conflicts": 0,
+    "alignment_status": "DISJOINT_OK",
+    "note": "DSHC覆盖双窗口分片, DSHA/DSHD覆盖因子/风险制品, 路径无交集"
+  },
+  "fingerprint_alignment_list": [
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK057",
+      "filename": "single_factor_test_result.json",
+      "sha256": "66e96914642e2cac9ee70ad702a10bfd9e6ccf130fb0e00aec0078980335bcad",
+      "size_bytes": 228350,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK057",
+      "filename": "factor_correlation_clean_report.json",
+      "sha256": "3837698fe28e76fdfd263400dce570a45a688b5fe7d06219ed940100caebf383",
+      "size_bytes": 3817,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK057",
+      "filename": "factor_stability_timeline.json",
+      "sha256": "578c1cb3d15ddb6b3fc46d5a167cd7e9381bcbe62230a6899a973631def4bc57",
+      "size_bytes": 71484,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK057",
+      "filename": "triple_factor_consistency_report.json",
+      "sha256": "4d0de1806c91e820c995d11707e1ef0d549dc6a5987337873fa21f3522920a43",
+      "size_bytes": 1576,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK057",
+      "filename": "v3_candidate_factor_pool.json",
+      "sha256": "72ae7643872dbd458c8d21a5e0d52256a8bec1e65526b64941d7644164b468cf",
+      "size_bytes": 5424,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK061",
+      "filename": "tail_risk_backtest.json",
+      "sha256": "adb672a87790d27ebfa8d642683247dc84876497a532ce910f6f322ec875f458",
+      "size_bytes": 14768,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK061",
+      "filename": "monte_carlo_simulation.json",
+      "sha256": "d36a56a013ff05ac2d581ffaae956efbc39035ac2d8a004884dfd7e54b5af07d",
+      "size_bytes": 5953,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK061",
+      "filename": "performance_decay_boundary.json",
+      "sha256": "0c46ebf6bbecf8135f6d1729ec6508377ac7693bf463b5485a6bdff8077b8939",
+      "size_bytes": 3019,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK061",
+      "filename": "v3_ext_14pool_adoption_proposal.json",
+      "sha256": "1632f107b0687bc2eb3b853b615ea6a222a3e932d36529390028f8db2d0fe69d",
+      "size_bytes": 4405,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK061",
+      "filename": "triple_consistency_task061.json",
+      "sha256": "a3f1e67faace28cbbe22a1845d90a99077a0df334290a5bfd2bb5b29b21df19a",
+      "size_bytes": 2705,
+      "readonly_notification": true,
+      "force_rewrite": false
+    },
+    {
+      "node": "DSHA",
+      "source": "DSHA-TASK061",
+      "filename": "v3_ext_14pool_fingerprint.json",
+      "sha256": "9378d78ef100420b2f95d0671c905da1597a19e382da4ddc53833ba83f98a80e",
+      "size_bytes": 2898,
+      "readonly_notification": true,
+      "force_rewrite": false
+    }
+  ],
+  "notification_only": true,
+  "no_force_rewrite": true,
+  "no_local_file_modification": true,
+  "all_pass": true,
+  "report_path": "github工作/回测/artifacts/backtest_archive/data_assets/triple_node_fingerprint_inspect.json"
+}

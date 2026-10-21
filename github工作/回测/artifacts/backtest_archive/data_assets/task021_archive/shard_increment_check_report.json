@@ -1,0 +1,41 @@
+{
+  "phase": "P1",
+  "name": "双窗口分片增量一致性校验",
+  "workorder": "DSHC-TASK-021",
+  "token": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T16:56:43+08:00",
+  "baseline_ref": "global_sha_manifest.json (TASK020, D1FDDE48)",
+  "total_shards_checked": 559,
+  "shards_40d": {
+    "expected": 360,
+    "actual": 360,
+    "sha_matched": 360,
+    "sha_mismatched": 0,
+    "all_pass": true
+  },
+  "shards_20d": {
+    "expected": 180,
+    "actual": 180,
+    "sha_matched": 180,
+    "sha_mismatched": 0,
+    "all_pass": true
+  },
+  "shards_rollover": {
+    "expected": 19,
+    "actual": 19,
+    "sha_matched": 19,
+    "sha_mismatched": 0,
+    "all_pass": true
+  },
+  "cross_window_check": {
+    "shared_files": 180,
+    "expected_shared": 180,
+    "cross_window_match": 180,
+    "cross_window_mismatch": 0,
+    "all_pass": true
+  },
+  "incremental_drift_detected": false,
+  "all_pass": true,
+  "report_path": "github工作/回测/artifacts/backtest_archive/data_assets/shard_increment_check_report.json"
+}

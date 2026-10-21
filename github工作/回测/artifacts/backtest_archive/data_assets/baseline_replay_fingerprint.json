@@ -1,0 +1,88 @@
+{
+  "fingerprint_id": "DSHC-TASK021-BASELINE-REPLAY-FINGERPRINT",
+  "workorder": "DSHC-TASK-021",
+  "token": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T16:56:43+08:00",
+  "version_tag": "BASELINE-REPLAY-021",
+  "snapshot_type": "READ_ONLY_REPLAY_PIPELINE",
+  "baseline_ref": {
+    "task020_commit": "1a350f5",
+    "task019_commit": "6f5b46f",
+    "task018_commit": "b77a61e",
+    "global_sha": "D1FDDE483E824E38BEA10C0D14286D836D2BF7BDAA30CC87A849A6A847AF8962",
+    "dag_frozen_sha": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+    "sha_lock_digest": "2784883E7B3368C0D2B1D6B4D6ECAC1FFB42472E029E5C62DC6EEB01E9B5BE9C",
+    "shard_count": 559
+  },
+  "p0_recheck": {
+    "all_pass": true,
+    "passed": 12,
+    "total_checks": 12
+  },
+  "p1_increment_check": {
+    "all_pass": true,
+    "shards_40d_ok": true,
+    "shards_20d_ok": true,
+    "cross_window_ok": true
+  },
+  "p2_replay_dag": {
+    "all_pass": true,
+    "dag_id": "DSHC-READONLY-REPLAY-DAG-021",
+    "write_blocked": true,
+    "breakpoint_resume": true
+  },
+  "p3_triple_fp": {
+    "all_pass": true,
+    "conflicts": 0,
+    "dshc_entries": 572
+  },
+  "p4_replay_verify": {
+    "all_pass": true,
+    "replay_verified": true,
+    "dag_assert_pass": true
+  },
+  "archive": {
+    "archive_dir": "github工作/回测/artifacts/backtest_archive/data_assets/task021_archive",
+    "files": [
+      {
+        "file": "shard_increment_check_report.json",
+        "sha256": "E1D71CED2B0BD92E61901AAB4A0F27D6D54A9C97AAFB6C595E4055C721C561B3",
+        "size_bytes": 1106
+      },
+      {
+        "file": "triple_node_fingerprint_inspect.json",
+        "sha256": "AD8B59700BDE5B5EA81B9C816BB6F8D58218F3311B9B58A8435CE407EEFA11D0",
+        "size_bytes": 5338
+      },
+      {
+        "file": "snapshot_replay_verify_log.json",
+        "sha256": "1CF60D5CB1D1BBCBE2A9C83E5A3D3405BC119F12AC135FF1BE73B63F5B516330",
+        "size_bytes": 6147
+      },
+      {
+        "file": "readonly_replay_dag_config.json",
+        "sha256": "5C1D897E70047DA79E6843858DB950D637E8B63C95ED6C2FC1B467C3DA3C2C08",
+        "size_bytes": 5515
+      }
+    ],
+    "aggregate_sha256": "368BFFD991A74328D631534F4B74FEC601FD24E09B026FF14FEC471D78E12750",
+    "total_files": 4
+  },
+  "sandbox_isolation": {
+    "sandbox_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\sandbox_replay",
+    "production_configs_untouched": true
+  },
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true,
+    "silent_mode": true,
+    "read_only": true,
+    "no_history_rewrite": true,
+    "no_cross_write": true
+  },
+  "all_pass": true,
+  "m3_update_error": "Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)"
+}

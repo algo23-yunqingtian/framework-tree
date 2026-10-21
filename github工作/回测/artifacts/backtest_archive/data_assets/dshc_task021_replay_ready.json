@@ -1,0 +1,99 @@
+{
+  "report_id": "DSHC-TASK021-REPLAY-READY",
+  "workorder": "DSHC-TASK-021",
+  "token": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T16:56:56+08:00",
+  "status": "READ_ONLY_REPLAY_PIPELINE_VERIFIED",
+  "all_pass": true,
+  "p0_recheck": {
+    "all_pass": true,
+    "passed": 12,
+    "total": 12
+  },
+  "p1_increment": {
+    "all_pass": true,
+    "shards_40d": {
+      "expected": 360,
+      "actual": 360,
+      "sha_matched": 360,
+      "sha_mismatched": 0,
+      "all_pass": true
+    },
+    "shards_20d": {
+      "expected": 180,
+      "actual": 180,
+      "sha_matched": 180,
+      "sha_mismatched": 0,
+      "all_pass": true
+    },
+    "cross_window": {
+      "shared_files": 180,
+      "expected_shared": 180,
+      "cross_window_match": 180,
+      "cross_window_mismatch": 0,
+      "all_pass": true
+    }
+  },
+  "p2_replay_dag": {
+    "all_pass": true,
+    "dag_id": "DSHC-READONLY-REPLAY-DAG-021",
+    "write_blocked": true,
+    "breakpoint_resume": true,
+    "sandbox_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\sandbox_replay"
+  },
+  "p3_triple_fp": {
+    "all_pass": true,
+    "conflicts": 0,
+    "alignment_status": "DISJOINT_OK"
+  },
+  "p4_replay_verify": {
+    "all_pass": true,
+    "verified": 20,
+    "match_rate_pct": 100.0,
+    "dag_assert_pass": true
+  },
+  "p5_snapshot": {
+    "all_pass": true,
+    "version_tag": "BASELINE-REPLAY-021",
+    "archive_agg": "368BFFD991A74328"
+  },
+  "p6_audit": {
+    "events_emitted": 16,
+    "audit_chain": "TASK020→021 closed"
+  },
+  "p7_redlines": {
+    "checks": 5,
+    "passed": 5,
+    "all_pass": true
+  },
+  "chain": {
+    "TASK018": {
+      "events": 0,
+      "complete": true
+    },
+    "TASK019": {
+      "events": 0,
+      "complete": true
+    },
+    "TASK020": {
+      "events": 52,
+      "complete": true
+    },
+    "TASK021": {
+      "events": 16,
+      "started": true
+    },
+    "gap": "NONE"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true,
+    "silent_mode": true,
+    "read_only": true,
+    "no_history_rewrite": true,
+    "no_cross_write": true
+  }
+}

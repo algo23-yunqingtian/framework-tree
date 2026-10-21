@@ -1,0 +1,198 @@
+{
+  "phase": "P4",
+  "name": "基线快照全自动回放验证",
+  "workorder": "DSHC-TASK-021",
+  "token": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T16:56:43+08:00",
+  "replay_mode": "OFFLINE_SIMULATED",
+  "replay_segments": {
+    "total_sampled": 20,
+    "verified": 20,
+    "failed": 0,
+    "match_rate_pct": 100.0,
+    "segments": [
+      {
+        "file": "parallel_shard_AL_SHF_20260826.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "EA99C648422DB188",
+        "actual_sha": "EA99C648422DB188",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260827.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "B91A1E5E06E2CCC1",
+        "actual_sha": "B91A1E5E06E2CCC1",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260828.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "C8022C628660DCBB",
+        "actual_sha": "C8022C628660DCBB",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260831.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "BD3D473448FDA8A5",
+        "actual_sha": "BD3D473448FDA8A5",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260901.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "1C0C936EDCE15551",
+        "actual_sha": "1C0C936EDCE15551",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260902.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "71610F8623D9E3F9",
+        "actual_sha": "71610F8623D9E3F9",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260903.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "D4741CAE469EB043",
+        "actual_sha": "D4741CAE469EB043",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260904.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "3035C5DD3FA04675",
+        "actual_sha": "3035C5DD3FA04675",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260907.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "27C65322C173FA19",
+        "actual_sha": "27C65322C173FA19",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260908.csv",
+        "phase": "P3_DUAL_WINDOW_40d",
+        "expected_sha": "B453E238C7D1EED7",
+        "actual_sha": "B453E238C7D1EED7",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260923.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "6CC2C5A20CE8F15A",
+        "actual_sha": "6CC2C5A20CE8F15A",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260924.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "F73C0590C9AF7639",
+        "actual_sha": "F73C0590C9AF7639",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260925.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "10876484C60C3AB5",
+        "actual_sha": "10876484C60C3AB5",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260928.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "1CB6522A9CB13939",
+        "actual_sha": "1CB6522A9CB13939",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260929.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "532E575DD626DB28",
+        "actual_sha": "532E575DD626DB28",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20260930.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "6B3F75EB64D9A971",
+        "actual_sha": "6B3F75EB64D9A971",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20261001.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "DC32F29B3781806D",
+        "actual_sha": "DC32F29B3781806D",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20261002.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "6B0BF4E9F09C5679",
+        "actual_sha": "6B0BF4E9F09C5679",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20261005.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "29AB5E0BBD3F06A3",
+        "actual_sha": "29AB5E0BBD3F06A3",
+        "match": true,
+        "status": "MATCH"
+      },
+      {
+        "file": "parallel_shard_AL_SHF_20261006.csv",
+        "phase": "P3_DUAL_WINDOW_20d",
+        "expected_sha": "B43320CB73BA3454",
+        "actual_sha": "B43320CB73BA3454",
+        "match": true,
+        "status": "MATCH"
+      }
+    ]
+  },
+  "data_integrity": {
+    "total_sampled": 20,
+    "matched": 20,
+    "mismatched": 0,
+    "match_rate": 100.0,
+    "drift_detected": false,
+    "task052_compat": true,
+    "task060_compat": true
+  },
+  "dag_assert_intercept": {
+    "pass": true,
+    "detail": {},
+    "test_A_readonly_blocks_write": true,
+    "test_B_dag_assert_mechanism_in_place": true,
+    "victim": "parallel_shard_AL_SHF_20260826.csv",
+    "write_executed_on_probe_only": true,
+    "real_shards_untouched": true
+  },
+  "replay_verified": true,
+  "all_pass": true,
+  "log_path": "github工作/回测/artifacts/backtest_archive/data_assets/snapshot_replay_verify_log.json"
+}

@@ -4,10 +4,10 @@
   "version": "2.4.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-21T13:48:10+08:00",
+  "updated_at": "2026-10-21T16:56:43+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
   "registry_version": "v2.4.0",
-  "updated_by": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+  "updated_by": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
   "total_rows": 23328,
   "files": [
     {
@@ -859,6 +859,27 @@
       "offline_only": true,
       "core_code_unchanged": true,
       "no_upstream_write": true
+    },
+    "run_task021_replay_verify": {
+      "path": "code/run_task021_replay_verify.py",
+      "purpose": "双窗口分片增量校验+只读回放链路搭建+三节点指纹一致性巡检+基线快照自动回放验证",
+      "version": "1.0.0",
+      "workorder": "DSHC-TASK-021",
+      "token": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+      "authorization": "USER-A01",
+      "created_at": "2026-10-21T16:56:43+08:00",
+      "lock_id": "DSHC-READONLY-REPLAY-021",
+      "replay_dag": "artifacts/backtest_archive/data_assets/sandbox_replay/readonly_replay_dag_config.json",
+      "shard_increment_report": "artifacts/backtest_archive/data_assets/shard_increment_check_report.json",
+      "triple_fp_inspect": "artifacts/backtest_archive/data_assets/triple_node_fingerprint_inspect.json",
+      "replay_verify_log": "artifacts/backtest_archive/data_assets/snapshot_replay_verify_log.json",
+      "baseline_replay_fp": "artifacts/backtest_archive/data_assets/baseline_replay_fingerprint.json",
+      "sandbox_isolated": true,
+      "silent_mode": true,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "read_only": true,
+      "no_cross_write": true
     }
   },
   "governance": {
@@ -1054,7 +1075,25 @@
     "LAST_GLOBAL_SHA_SYNC_ARCHIVE_MANIFEST": "github工作/回测/artifacts/backtest_archive/data_assets/task020_archive_manifest.json",
     "LAST_GLOBAL_SHA_SYNC_ARCHIVE_AGGREGATE": "880917D9843E8014380B3008E1D9240F9260E704A451373E8ECA9321AFAA45D1",
     "LAST_GLOBAL_SHA_SYNC_TASK019_PRESERVED": true,
-    "LAST_GLOBAL_SHA_SYNC_NO_UPSTREAM_WRITE": true
+    "LAST_GLOBAL_SHA_SYNC_NO_UPSTREAM_WRITE": true,
+    "LAST_REPLAY_PIPELINE_RUN": "2026-10-21T16:56:43+08:00",
+    "LAST_REPLAY_PIPELINE_STATUS": "PASS",
+    "LAST_REPLAY_PIPELINE_WORKORDER": "DSHC-TASK-021",
+    "LAST_REPLAY_PIPELINE_TOKEN": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+    "LAST_REPLAY_PIPELINE_AUTHORIZATION": "USER-A01",
+    "LAST_REPLAY_PIPELINE_TAG": "BASELINE-REPLAY-021",
+    "LAST_REPLAY_PIPELINE_SHARDS_40D": 360,
+    "LAST_REPLAY_PIPELINE_SHARDS_20D": 180,
+    "LAST_REPLAY_PIPELINE_ROLLOVER": 19,
+    "LAST_REPLAY_PIPELINE_TOTAL": 559,
+    "LAST_REPLAY_PIPELINE_CROSS_WINDOW_OK": true,
+    "LAST_REPLAY_PIPELINE_CONFLICTS": 0,
+    "LAST_REPLAY_PIPELINE_DAG_ASSERT_PASS": true,
+    "LAST_REPLAY_PIPELINE_REPLAY_VERIFIED": true,
+    "LAST_REPLAY_PIPELINE_NO_HISTORY_REWRITE": true,
+    "LAST_REPLAY_PIPELINE_NO_CROSS_WRITE": true,
+    "LAST_REPLAY_PIPELINE_SANDBOX_ISOLATED": true,
+    "LAST_REPLAY_PIPELINE_ARCHIVE_AGG": "368BFFD991A74328D631534F4B74FEC601FD24E09B026FF14FEC471D78E12750"
   },
   "data_format": {
     "long_header": "date,symbol,indicator,value,source",
