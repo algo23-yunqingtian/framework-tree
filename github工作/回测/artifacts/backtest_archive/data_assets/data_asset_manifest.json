@@ -4,10 +4,10 @@
   "version": "2.4.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-21T01:16:19+08:00",
+  "updated_at": "2026-10-21T13:48:10+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
   "registry_version": "v2.4.0",
-  "updated_by": "DSHC-TASK019-PIPELINE-LINK-LOCK-TOKEN",
+  "updated_by": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
   "total_rows": 23328,
   "files": [
     {
@@ -840,6 +840,25 @@
       "core_code_unchanged": true,
       "frozen_task018_unchanged": true,
       "no_upstream_write": true
+    },
+    "shard_snapshot_freeze": {
+      "path": "code/shard_snapshot_freeze.py",
+      "purpose": "双窗口分片只读固化 + 全链路快照基线冻结 + 跨任务SHA台账统一归集",
+      "version": "1.0.0",
+      "workorder": "DSHC-TASK-020",
+      "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+      "authorization": "USER-A01",
+      "created_at": "2026-10-21T13:48:10+08:00",
+      "lock_id": "DSHC-DUAL-WINDOW-SHARD-FREEZE-020",
+      "lock_verify_report": "github工作/回测/artifacts/backtest_archive/data_assets/lock_verify_report.json",
+      "global_sha_manifest": "github工作/回测/artifacts/backtest_archive/data_assets/global_sha_manifest.json",
+      "archive_dir": "github工作/回测/artifacts/backtest_archive/data_assets/task020_archive",
+      "seal": "github工作/回测/artifacts/backtest_archive/data_assets/dshc_task020_baseline_sealed.json",
+      "silent_mode": true,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "core_code_unchanged": true,
+      "no_upstream_write": true
     }
   },
   "governance": {
@@ -1019,7 +1038,23 @@
     "LAST_PIPELINE_LINK_LOCK_SNAPSHOT": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_link_lock_snapshot.json",
     "LAST_PIPELINE_LINK_LOCK_SHA_LOCK_MANIFEST": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_sha_lock_manifest.json",
     "LAST_PIPELINE_LINK_LOCK_NOTICE": "github工作/回测/artifacts/backtest_archive/data_assets/dshc_task019_link_lock_notice.json",
-    "LAST_PIPELINE_LINK_LOCK_ARCHIVE_DIR": "github工作/回测/artifacts/backtest_archive/data_assets/task019_archive"
+    "LAST_PIPELINE_LINK_LOCK_ARCHIVE_DIR": "github工作/回测/artifacts/backtest_archive/data_assets/task019_archive",
+    "LAST_GLOBAL_SHA_SYNC": "TASK-020",
+    "LAST_GLOBAL_SHA_SYNC_RUN": "2026-10-21T13:48:10+08:00",
+    "LAST_GLOBAL_SHA_SYNC_STATUS": "SEALED",
+    "LAST_GLOBAL_SHA_SYNC_WORKORDER": "DSHC-TASK-020",
+    "LAST_GLOBAL_SHA_SYNC_TOKEN": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+    "LAST_GLOBAL_SHA_SYNC_AUTHORIZATION": "USER-A01",
+    "LAST_GLOBAL_SHA_SYNC_LOCK_ID": "DSHC-DUAL-WINDOW-SHARD-FREEZE-020",
+    "LAST_GLOBAL_SHA_SYNC_MODE": "READ_ONLY_SHARD_FREEZE",
+    "LAST_GLOBAL_SHA_SYNC_DAG_FROZEN_SHA256": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+    "LAST_GLOBAL_SHA_SYNC_SHA_LOCK_DIGEST": "2784883E7B3368C0D2B1D6B4D6ECAC1FFB42472E029E5C62DC6EEB01E9B5BE9C",
+    "LAST_GLOBAL_SHA_SYNC_GLOBAL_AGGREGATE_HASH": "D1FDDE483E824E38BEA10C0D14286D836D2BF7BDAA30CC87A849A6A847AF8962",
+    "LAST_GLOBAL_SHA_SYNC_GLOBAL_MANIFEST": "github工作/回测/artifacts/backtest_archive/data_assets/global_sha_manifest.json",
+    "LAST_GLOBAL_SHA_SYNC_ARCHIVE_MANIFEST": "github工作/回测/artifacts/backtest_archive/data_assets/task020_archive_manifest.json",
+    "LAST_GLOBAL_SHA_SYNC_ARCHIVE_AGGREGATE": "880917D9843E8014380B3008E1D9240F9260E704A451373E8ECA9321AFAA45D1",
+    "LAST_GLOBAL_SHA_SYNC_TASK019_PRESERVED": true,
+    "LAST_GLOBAL_SHA_SYNC_NO_UPSTREAM_WRITE": true
   },
   "data_format": {
     "long_header": "date,symbol,indicator,value,source",

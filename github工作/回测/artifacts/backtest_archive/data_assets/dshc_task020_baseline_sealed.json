@@ -1,0 +1,113 @@
+{
+  "seal_id": "DSHC-TASK020-BASELINE-SEAL",
+  "workorder": "DSHC-TASK-020",
+  "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T13:48:33+08:00",
+  "status": "GLOBAL_DATA_BASELINE_SEALED",
+  "p0_recheck": {
+    "all_pass": true,
+    "passed": 12,
+    "total": 12,
+    "locks_not_loosened": true
+  },
+  "lock_state": {
+    "total_protected": 559,
+    "readonly_ok": 559,
+    "sha_matched": 559,
+    "all_pass": true
+  },
+  "gate_intercept_test": {
+    "pass": true,
+    "test_A_readonly_bit_blocks_write": true,
+    "test_B_dag_pre_assert_aborts_on_sha_drift": true,
+    "victim": "github工作/回测/artifacts/backtest_archive/data_assets/incremental/dual_window_20d/parallel_shard_AL_SHF_20260923.csv",
+    "expected_sha256": "6CC2C5A20CE8F15A9A3AA60B03EB430DBD690DE565651BC774C621E110C21CBC",
+    "tampered_sha256": "DF93CC5568E378DF12497297853EEE9FD469EA007681E55B729B06FF6C5E643F",
+    "decision": "ABORT",
+    "reason": "HISTORY_SHA_DRIFT_DETECTED",
+    "write_executed_on_probe_only": true,
+    "real_shards_untouched": true,
+    "cleanup": true
+  },
+  "zero_byte_change": {
+    "raw_business_data_unchanged": true,
+    "raw_shards_sha_matched": 559,
+    "expected_sha_files": 559,
+    "task019_artifacts_unchanged": true,
+    "task019_artifact_detail": {
+      "dual_window_sha_lock_manifest.json": {
+        "exists": true,
+        "baseline_blob_at_task019": "ed8f0292892749b0be4af55ea518958820cf09c2",
+        "worktree_blob": "ed8f0292892749b0be4af55ea518958820cf09c2",
+        "identical_to_task019": true
+      },
+      "dual_window_link_lock_snapshot.json": {
+        "exists": true,
+        "baseline_blob_at_task019": "d170eea4150977a95f049c9dda3292590896108d",
+        "worktree_blob": "d170eea4150977a95f049c9dda3292590896108d",
+        "identical_to_task019": true
+      },
+      "dshc_task019_link_lock_notice.json": {
+        "exists": true,
+        "baseline_blob_at_task019": "76e6f276828d540851e2dcd7e6dcf37bbd160214",
+        "worktree_blob": "76e6f276828d540851e2dcd7e6dcf37bbd160214",
+        "identical_to_task019": true
+      }
+    },
+    "history_snapshots_locked_only": true,
+    "no_regenerate": true,
+    "no_rollback": true,
+    "no_repair": true
+  },
+  "raw_business_data_zero_byte_change": true,
+  "task019_artifacts_unchanged": true,
+  "additive_modifications": {
+    "dual_window_dag_config.json": {
+      "action": "PURE_ADDITIVE_GUARD_KEY",
+      "authorized_by": "P1.4 防止调度意外覆写 — 给DAG增加前置防护断言",
+      "guard_key": "shard_snapshot_freeze_guard",
+      "pure_additive_verified": true,
+      "dag_config_frozen_sha256_preserved": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+      "dag_config_sha256_now": "1E5644840240D1752B73D56C58E78E8F48A244AE3625F5E57E9B4309156678B8",
+      "original_keys_preserved": 16,
+      "total_keys_now": 17,
+      "sidecar": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_dag_pre_assert.json",
+      "rollback": "删除 shard_snapshot_freeze_guard 键即完全还原基线"
+    },
+    "dual_window_link_lock_report.json": {
+      "action": "APPEND_TASK020_LOCK_EVENTS",
+      "authorized_by": "P1.5 保留TASK019原始内容不覆盖",
+      "task019_content_preserved": true,
+      "task020_events_appended": 1
+    }
+  },
+  "archive": {
+    "archive_dir": "github工作/回测/artifacts/backtest_archive/data_assets/task020_archive",
+    "archive_manifest": "github工作/回测/artifacts/backtest_archive/data_assets/task020_archive_manifest.json",
+    "aggregate": "880917D9843E8014380B3008E1D9240F9260E704A451373E8ECA9321AFAA45D1"
+  },
+  "chain": {
+    "TASK018": {
+      "events": 20,
+      "complete": true
+    },
+    "TASK019": {
+      "events": 20,
+      "complete": true
+    },
+    "TASK020": {
+      "events": 50,
+      "started": true
+    },
+    "gap": "NONE"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true,
+    "silent_mode": true
+  },
+  "all_pass": true
+}

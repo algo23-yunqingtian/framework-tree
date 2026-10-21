@@ -583,5 +583,56 @@
     "release_permit": "NOT_ISSUED",
     "offline_only": true,
     "silent_mode": true
-  }
+  },
+  "task020_lock_events": [
+    {
+      "event": "DSHC-TASK020-SHARD-READONLY-FREEZE",
+      "workorder": "DSHC-TASK-020",
+      "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+      "authorization": "USER-A01",
+      "generated_at": "2026-10-21T13:48:07+08:00",
+      "lock_id": "DSHC-DUAL-WINDOW-SHARD-FREEZE-020",
+      "lock_mode": "READ_ONLY_SHARD_FREEZE",
+      "level1_file_readonly": {
+        "action": "APPLY_READONLY_BIT",
+        "protected_files": 559,
+        "failed": [],
+        "csv_content_unchanged": true
+      },
+      "level2_directory_sentinel": {
+        "40d": {
+          "sentinel": "github工作/回测/artifacts/backtest_archive/data_assets/incremental/dual_window_40d/shard_snapshot_freeze.lock.json",
+          "files": 360,
+          "aggregate": "4C80D3DF19513B74EF2EADDD4F41D8FE50498D51F236095BBCDB5ED8AE752E11"
+        },
+        "20d": {
+          "sentinel": "github工作/回测/artifacts/backtest_archive/data_assets/incremental/dual_window_20d/shard_snapshot_freeze.lock.json",
+          "files": 180,
+          "aggregate": "4C77FB883A4C339591D5F212B1665AF0B2D2AB4DEF5413BEA37043D86E6A15EF"
+        },
+        "rollover": {
+          "sentinel": "github工作/回测/artifacts/backtest_archive/data_assets/contract_rollover/shard_snapshot_freeze.lock.json",
+          "files": 19,
+          "aggregate": "798379A128299DE0AC04ED1D081E329C81EBB6BB7D5216B42684D58CC9821370"
+        }
+      },
+      "verify_integrity": {
+        "report": "github工作/回测/artifacts/backtest_archive/data_assets/lock_verify_report.json",
+        "total_protected": 559,
+        "readonly_ok": 559,
+        "sha_matched": 559,
+        "all_ok": true
+      },
+      "dag_protect_assert": {
+        "guard_id": "DSHC-DUAL-WINDOW-SHARD-FREEZE-020-PRE-DAG-ABORT-ASSERT",
+        "sidecar": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_dag_pre_assert.json",
+        "dag_config_sha256_before_guard": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+        "dag_config_sha256_after_guard": "1E5644840240D1752B73D56C58E78E8F48A244AE3625F5E57E9B4309156678B8",
+        "additive_only_verified": true,
+        "abort_on_sha_change": true
+      },
+      "task019_content_preserved": true,
+      "task019_report_sha256_before": "2BBABD12B7DFBED093AFEEC3D1D2ABBEB18682DE2B7A727A63F1A5E40FB03EE8"
+    }
+  ]
 }

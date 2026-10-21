@@ -201,5 +201,47 @@
   "downstream": {
     "dshd": "DSHD-TASK046 — 进程监控/告警接收",
     "dsha": "DSHA-TASK051 — 策略回放/翻转率评估"
+  },
+  "shard_snapshot_freeze_guard": {
+    "guard_id": "DSHC-DUAL-WINDOW-SHARD-FREEZE-020-PRE-DAG-ABORT-ASSERT",
+    "workorder": "DSHC-TASK-020",
+    "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+    "authorization": "USER-A01",
+    "added_at": "2026-10-21T13:48:05+08:00",
+    "guard_type": "PRE_DAG_ABORT_ASSERT",
+    "mode": "ABORT_ON_SHA_DRIFT",
+    "dag_id": "DSHC-DUAL-WINDOW-INCR-DAG",
+    "dag_config_frozen_sha256": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+    "dag_config_content_pinned": true,
+    "protected_file_count": 559,
+    "protected_shards": {
+      "dual_window_40d": 360,
+      "dual_window_20d": 180,
+      "contract_rollover": 19
+    },
+    "sha_lock_manifest_ref": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_sha_lock_manifest.json",
+    "sha_lock_manifest_aggregate_digest": "2784883E7B3368C0D2B1D6B4D6ECAC1FFB42472E029E5C62DC6EEB01E9B5BE9C",
+    "pre_assert_ref": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_dag_pre_assert.json",
+    "abort_on_sha_change": true,
+    "deny_write_attempt": true,
+    "additive_only": true,
+    "preserved_dag_keys": [
+      "authorization",
+      "baseline_branch",
+      "blacklist",
+      "constraints",
+      "dag_id",
+      "description",
+      "downstream",
+      "edges",
+      "frozen_rules",
+      "generated_at",
+      "nodes",
+      "schedule",
+      "symbols",
+      "token",
+      "version",
+      "workorder"
+    ]
   }
 }

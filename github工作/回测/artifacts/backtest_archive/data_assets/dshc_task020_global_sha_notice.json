@@ -1,0 +1,33 @@
+{
+  "workorder": "DSHC-TASK-020",
+  "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T13:48:10+08:00",
+  "notice_id": "DSHC-TASK020-GLOBAL-SHA-NOTICE",
+  "event": "GLOBAL_SHA_MANIFEST_READY",
+  "status": "GLOBAL_SHA_MANIFEST_READY",
+  "read_only_sync": true,
+  "write_to_dsha": false,
+  "write_to_dshd": false,
+  "modify_dsha_config": false,
+  "modify_dshd_config": false,
+  "global_manifest_path": "github工作/回测/artifacts/backtest_archive/data_assets/global_sha_manifest.json",
+  "global_aggregate_hash": "D1FDDE483E824E38BEA10C0D14286D836D2BF7BDAA30CC87A849A6A847AF8962",
+  "total_entries": 572,
+  "source_counts": {
+    "DSHC-ORIG": 559,
+    "DSHA-FACTOR": 5,
+    "DSHD-RISK": 8
+  },
+  "conflicts": 0,
+  "dedup_merged": 0,
+  "fingerprint_drifted": 3,
+  "purpose": "其它节点 (DSHA/DSHD) 只读校验参照",
+  "next_action": "NONE — 只读广播通知",
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true
+  }
+}

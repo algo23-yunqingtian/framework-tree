@@ -1,0 +1,37 @@
+{
+  "total_protected_files": 559,
+  "readonly_ok": 559,
+  "readonly_fail": [],
+  "sha_matched": 559,
+  "sha_mismatch": [],
+  "manifest_problems": [],
+  "sentinel_status": {
+    "40d": {
+      "exists": true,
+      "valid": true,
+      "protected_file_count": 360
+    },
+    "20d": {
+      "exists": true,
+      "valid": true,
+      "protected_file_count": 180
+    },
+    "rollover": {
+      "exists": true,
+      "valid": true,
+      "protected_file_count": 19
+    }
+  },
+  "all_pass": true,
+  "workorder": "DSHC-TASK-020",
+  "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+  "generated_at": "2026-10-21T13:48:05+08:00",
+  "lock_id": "DSHC-DUAL-WINDOW-SHARD-FREEZE-020",
+  "mode": "READ_ONLY_SHARD_FREEZE",
+  "verification": {
+    "business_shards_40d_ok": true,
+    "business_shards_20d_ok": true,
+    "rollover_aux_ok": true,
+    "all_ok": true
+  }
+}

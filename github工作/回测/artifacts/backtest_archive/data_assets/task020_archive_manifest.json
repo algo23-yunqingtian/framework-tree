@@ -1,0 +1,49 @@
+{
+  "manifest_id": "DSHC-TASK020-ARCHIVE-MANIFEST",
+  "workorder": "DSHC-TASK-020",
+  "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+  "authorization": "USER-A01",
+  "generated_at": "2026-10-21T13:48:10+08:00",
+  "archive_dir": "github工作/回测/artifacts/backtest_archive/data_assets/task020_archive",
+  "archive_aggregate_sha256": "880917D9843E8014380B3008E1D9240F9260E704A451373E8ECA9321AFAA45D1",
+  "archive_files": 5,
+  "archive_items": [
+    {
+      "file": "dual_window_sha_lock_manifest.json",
+      "src": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_sha_lock_manifest.json",
+      "sha256": "08C69BF521B5DE181C1C050182E8E86DFC6395809844C6B7107D14AABBA1C934",
+      "size_bytes": 290252,
+      "readonly": true
+    },
+    {
+      "file": "global_sha_manifest.json",
+      "src": "github工作/回测/artifacts/backtest_archive/data_assets/global_sha_manifest.json",
+      "sha256": "95029A14FA929B96E274460592DF7A67A677A7CE74080CC4BE6C4F2BC4D0FF2D",
+      "size_bytes": 256302,
+      "readonly": true
+    },
+    {
+      "file": "lock_verify_report.json",
+      "src": "github工作/回测/artifacts/backtest_archive/data_assets/lock_verify_report.json",
+      "sha256": "7074A0DBBBCECD9D4D0099EAEC7E8E7BBDE3BB6FD88A410ABD7773080423CAFB",
+      "size_bytes": 898,
+      "readonly": true
+    },
+    {
+      "file": "dual_window_link_lock_report.json",
+      "src": "github工作/回测/artifacts/backtest_archive/data_assets/dual_window_link_lock_report.json",
+      "sha256": "9666F81A4BD76C4EEE20BE07F373D9AF33C05A729F8D39CB907A22044B856A9D",
+      "size_bytes": 23750,
+      "readonly": true
+    },
+    {
+      "file": "dshc_task020_global_sha_notice.json",
+      "src": "github工作/回测/artifacts/backtest_archive/data_assets/dshc_task020_global_sha_notice.json",
+      "sha256": "1A518A37392866F9F41556D36968E10EDD2F00FEA4979366F7A819BEC1E91976",
+      "size_bytes": 1107,
+      "readonly": true
+    }
+  ],
+  "immutable": true,
+  "all_files_present": true
+}
