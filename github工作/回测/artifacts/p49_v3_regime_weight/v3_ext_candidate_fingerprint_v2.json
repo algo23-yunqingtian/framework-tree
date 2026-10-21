@@ -1,0 +1,73 @@
+{
+  "snapshot_id": "V3-EXT-CAND-059",
+  "version_tag": "V3-EXT-CAND-059",
+  "generated_at": "2026-10-21T10:08:23+08:00",
+  "token": "DSHA-TASK-059-FACTOR-ADMISSION-REVIEW-CLEAN-TOKEN",
+  "disclaimer": "NOT_PRODUCTION — 仅候选评审版本，不覆盖生产MANIFEST",
+  "base_version": "V3-EXT-CAND-058",
+  "files": [
+    {
+      "filename": "factor_scenario_rating.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\factor_scenario_rating.json",
+      "sha256": "7f4864ad6b9f4cf22784a10fdbe4ea2b221e7e10312c13dda50368233b746265",
+      "size_bytes": 22248
+    },
+    {
+      "filename": "factor_redundancy_clean_result.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\factor_redundancy_clean_result.json",
+      "sha256": "64ab67910ab3a71cb8430ae56f0191ef3c39419ae403707c223c4a7a76e85b71",
+      "size_bytes": 1337
+    },
+    {
+      "filename": "v3_ext_pool_admission_review.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\v3_ext_pool_admission_review.json",
+      "sha256": "4c1d2493262f5d2ec55eaf472f91a6db9329980f7d67e82df0f60af0ba90bfe5",
+      "size_bytes": 12027
+    },
+    {
+      "filename": "triple_consistency_task059.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\triple_consistency_task059.json",
+      "sha256": "06a83a785b29479bae112b920d5a5d21ad87cc5a5d8172df575a527f74d506a5",
+      "size_bytes": 2050
+    },
+    {
+      "filename": "v3_ext_candidate_fingerprint_v2.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_ext_candidate_fingerprint_v2.json",
+      "sha256": "ca1814bd5b0337fac1ad8f773ae355d8b5c45c459582dbdce10a769565fe3b6f",
+      "size_bytes": 2433
+    }
+  ],
+  "total_files": 5,
+  "aggregate_sha256": "150115b0989d1c6d759cd04d3672cd7808756256cc4ee8e2b56d24a9537fa62f",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "v3_main_factors_frozen": true,
+  "readonly_protection": true,
+  "admission_summary": {
+    "total_assessed": 9,
+    "优先入池": [],
+    "观察备选": [
+      "basis_2nd_momentum_5d",
+      "intraday_ohlc_position",
+      "term_slope_20d",
+      "close_relative_range",
+      "term_curvature_20d",
+      "contango_premium_20d"
+    ],
+    "暂缓入池": [
+      "price_momentum_2nd_diff",
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "high_risk_factors": [
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "total_recommended_admission": 6
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "phase": "P3",
+  "name": "入池可行性综合评审报告",
+  "disclaimer": "⚠仅评审建议，不生成正式生产权重，不覆盖MANIFEST",
+  "stress_test_source": "DSHD-TASK052-V3-PRE-RELEASE-REVIEW",
+  "stress_test_data": {
+    "source": "DSHD-TASK052-V3-PRE-RELEASE-REVIEW",
+    "stress_max_crowding": 1.0359,
+    "stress_min_sharpe": 1.693717,
+    "stress_scenarios": 5,
+    "boundary_max_crowding": null,
+    "high_corr_pairs": [],
+    "crowding_alert": false,
+    "crowding_ratio": 1.0359,
+    "hhi_equal": 0.125,
+    "hhi_dynamic_avg": 0.129488,
+    "sharpe": 3.488982,
+    "crowding": 1.0359,
+    "factor_count": 8
+  },
+  "baseline_v3_metrics": {
+    "sharpe_20d": 3.488982,
+    "crowding_20d": 1.0359,
+    "flip_20d": 0.5,
+    "return_20d": 0.229334,
+    "freeze_status": "PERMANENTLY_FROZEN"
+  },
+  "quantitative_impact": {
+    "price_momentum_2nd_diff": {
+      "rating": "RESERVE",
+      "ir_20d": 0.765778,
+      "flip_20d": 0.3,
+      "sharpe_20d": 1.121407,
+      "max_drawdown_20d": -0.151013,
+      "total_return_20d": 0.278807,
+      "trade_count": 131,
+      "estimated_crowding_lift": 0.0032,
+      "estimated_crowding_after": 1.0391,
+      "flip_rate_change": -0.2,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 0.942213,
+          "exposure_weight_estimate": 0.0942
+        },
+        "new_energy": {
+          "ir": 0.74314,
+          "exposure_weight_estimate": 0.0743
+        },
+        "industrial": {
+          "ir": 0.40228,
+          "exposure_weight_estimate": 0.0402
+        }
+      },
+      "ir_volatility_across_scenarios": 3.523,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 3.522984
+    },
+    "basis_2nd_momentum_5d": {
+      "rating": "PRIME",
+      "ir_20d": 2.150661,
+      "flip_20d": 0.0,
+      "sharpe_20d": 1.065692,
+      "max_drawdown_20d": -0.130838,
+      "total_return_20d": 0.234382,
+      "trade_count": 145,
+      "estimated_crowding_lift": 0.0031,
+      "estimated_crowding_after": 1.039,
+      "flip_rate_change": 0,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 2.03088,
+          "exposure_weight_estimate": 0.2031
+        },
+        "new_energy": {
+          "ir": 1.547062,
+          "exposure_weight_estimate": 0.1547
+        },
+        "industrial": {
+          "ir": 1.508878,
+          "exposure_weight_estimate": 0.1509
+        }
+      },
+      "ir_volatility_across_scenarios": 3.5645,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 3.564483
+    },
+    "intraday_ohlc_position": {
+      "rating": "CAUTION",
+      "ir_20d": 7.184793,
+      "flip_20d": 0.0,
+      "sharpe_20d": 5.38976,
+      "max_drawdown_20d": -0.068445,
+      "total_return_20d": 1.510789,
+      "trade_count": 202,
+      "estimated_crowding_lift": 0.0154,
+      "estimated_crowding_after": 1.0513,
+      "flip_rate_change": 0,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 8.203205,
+          "exposure_weight_estimate": 0.8203
+        },
+        "new_energy": {
+          "ir": 7.893444,
+          "exposure_weight_estimate": 0.7893
+        },
+        "industrial": {
+          "ir": 6.289179,
+          "exposure_weight_estimate": 0.6289
+        }
+      },
+      "ir_volatility_across_scenarios": 133.3899,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 133.389884
+    },
+    "term_slope_20d": {
+      "rating": "PRIME",
+      "ir_20d": 3.799075,
+      "flip_20d": 0.0,
+      "sharpe_20d": 4.160048,
+      "max_drawdown_20d": -0.106913,
+      "total_return_20d": 1.014284,
+      "trade_count": 128,
+      "estimated_crowding_lift": 0.0119,
+      "estimated_crowding_after": 1.0478,
+      "flip_rate_change": 0,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 2.563959,
+          "exposure_weight_estimate": 0.2564
+        },
+        "new_energy": {
+          "ir": 3.142041,
+          "exposure_weight_estimate": 0.3142
+        },
+        "industrial": {
+          "ir": 2.920025,
+          "exposure_weight_estimate": 0.292
+        }
+      },
+      "ir_volatility_across_scenarios": 14.825,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 14.824995
+    },
+    "close_relative_range": {
+      "rating": "PRIME",
+      "ir_20d": 5.729119,
+      "flip_20d": 0.0,
+      "sharpe_20d": 2.350576,
+      "max_drawdown_20d": -0.096628,
+      "total_return_20d": 0.705961,
+      "trade_count": 145,
+      "estimated_crowding_lift": 0.0067,
+      "estimated_crowding_after": 1.0426,
+      "flip_rate_change": 0,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 6.400755,
+          "exposure_weight_estimate": 0.6401
+        },
+        "new_energy": {
+          "ir": 2.813686,
+          "exposure_weight_estimate": 0.2814
+        },
+        "industrial": {
+          "ir": 3.055152,
+          "exposure_weight_estimate": 0.3055
+        }
+      },
+      "ir_volatility_across_scenarios": 8.3212,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 8.32121
+    },
+    "oi_momentum_divergence_20d": {
+      "rating": "CAUTION",
+      "ir_20d": 1.477365,
+      "flip_20d": 0.1,
+      "sharpe_20d": -0.226614,
+      "max_drawdown_20d": -0.144857,
+      "total_return_20d": -0.052456,
+      "trade_count": 163,
+      "estimated_crowding_lift": -0.0006,
+      "estimated_crowding_after": 1.0353,
+      "flip_rate_change": -0.4,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 2.39345,
+          "exposure_weight_estimate": 0.2393
+        },
+        "new_energy": {
+          "ir": 0.459252,
+          "exposure_weight_estimate": 0.0459
+        },
+        "industrial": {
+          "ir": 0.21404,
+          "exposure_weight_estimate": 0.0214
+        }
+      },
+      "ir_volatility_across_scenarios": 27.8615,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 27.861547
+    },
+    "price_vol_momentum": {
+      "rating": "CAUTION",
+      "ir_20d": 1.620911,
+      "flip_20d": 0.1,
+      "sharpe_20d": -0.331493,
+      "max_drawdown_20d": -0.160563,
+      "total_return_20d": -0.046736,
+      "trade_count": 63,
+      "estimated_crowding_lift": -0.001,
+      "estimated_crowding_after": 1.0349,
+      "flip_rate_change": -0.4,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 1.673184,
+          "exposure_weight_estimate": 0.1673
+        },
+        "new_energy": {
+          "ir": 1.344722,
+          "exposure_weight_estimate": 0.1345
+        },
+        "industrial": {
+          "ir": 1.147298,
+          "exposure_weight_estimate": 0.1147
+        }
+      },
+      "ir_volatility_across_scenarios": 6.0997,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 6.099746
+    },
+    "term_curvature_20d": {
+      "rating": "PRIME",
+      "ir_20d": 3.945453,
+      "flip_20d": 0.0,
+      "sharpe_20d": 2.867992,
+      "max_drawdown_20d": -0.105069,
+      "total_return_20d": 0.662721,
+      "trade_count": 156,
+      "estimated_crowding_lift": 0.0082,
+      "estimated_crowding_after": 1.0441,
+      "flip_rate_change": 0,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 3.057293,
+          "exposure_weight_estimate": 0.3057
+        },
+        "new_energy": {
+          "ir": 3.288379,
+          "exposure_weight_estimate": 0.3288
+        },
+        "industrial": {
+          "ir": 4.38972,
+          "exposure_weight_estimate": 0.439
+        }
+      },
+      "ir_volatility_across_scenarios": 12.7521,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 12.752133
+    },
+    "contango_premium_20d": {
+      "rating": "CAUTION",
+      "ir_20d": 1.240243,
+      "flip_20d": 0.2,
+      "sharpe_20d": 1.21401,
+      "max_drawdown_20d": -0.138271,
+      "total_return_20d": 0.354774,
+      "trade_count": 85,
+      "estimated_crowding_lift": 0.0035,
+      "estimated_crowding_after": 1.0394,
+      "flip_rate_change": -0.3,
+      "industry_exposure_delta": {
+        "basic_metals": {
+          "ir": 1.016982,
+          "exposure_weight_estimate": 0.1017
+        },
+        "new_energy": {
+          "ir": 0.494491,
+          "exposure_weight_estimate": 0.0494
+        },
+        "industrial": {
+          "ir": 0.077535,
+          "exposure_weight_estimate": 0.0078
+        }
+      },
+      "ir_volatility_across_scenarios": 4.1082,
+      "worst_scenario_ir": 0.0,
+      "best_scenario_ir": 4.108164
+    }
+  },
+  "recommendations": {
+    "price_momentum_2nd_diff": {
+      "rating": "RESERVE",
+      "recommendation": "暂缓入池",
+      "reason": "RESERVE级, 最差场景IR过低(0.000<0.2)",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)"
+      ],
+      "high_risk_factor": false
+    },
+    "basis_2nd_momentum_5d": {
+      "rating": "PRIME",
+      "recommendation": "观察备选",
+      "reason": "PRIME级但存在风险标记: 最差场景IR过低(0.000<0.2)",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)"
+      ],
+      "high_risk_factor": false
+    },
+    "intraday_ohlc_position": {
+      "rating": "CAUTION",
+      "recommendation": "观察备选",
+      "reason": "CAUTION级, Sharpe=5.390尚可, 建议监控",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)"
+      ],
+      "high_risk_factor": false
+    },
+    "term_slope_20d": {
+      "rating": "PRIME",
+      "recommendation": "观察备选",
+      "reason": "PRIME级但存在风险标记: 最差场景IR过低(0.000<0.2)",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)"
+      ],
+      "high_risk_factor": false
+    },
+    "close_relative_range": {
+      "rating": "PRIME",
+      "recommendation": "观察备选",
+      "reason": "PRIME级但存在风险标记: 最差场景IR过低(0.000<0.2)",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)"
+      ],
+      "high_risk_factor": false
+    },
+    "oi_momentum_divergence_20d": {
+      "rating": "CAUTION",
+      "recommendation": "暂缓入池",
+      "reason": "CAUTION级, 最差场景IR过低(0.000<0.2); Sharpe偏低(-0.227<1.0)",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)",
+        "Sharpe偏低(-0.227<1.0)"
+      ],
+      "high_risk_factor": true
+    },
+    "price_vol_momentum": {
+      "rating": "CAUTION",
+      "recommendation": "暂缓入池",
+      "reason": "CAUTION级, 最差场景IR过低(0.000<0.2); Sharpe偏低(-0.331<1.0)",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)",
+        "Sharpe偏低(-0.331<1.0)"
+      ],
+      "high_risk_factor": true
+    },
+    "term_curvature_20d": {
+      "rating": "PRIME",
+      "recommendation": "观察备选",
+      "reason": "PRIME级但存在风险标记: 最差场景IR过低(0.000<0.2)",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)"
+      ],
+      "high_risk_factor": false
+    },
+    "contango_premium_20d": {
+      "rating": "CAUTION",
+      "recommendation": "观察备选",
+      "reason": "CAUTION级, Sharpe=1.214尚可, 建议监控",
+      "risk_flags": [
+        "最差场景IR过低(0.000<0.2)"
+      ],
+      "high_risk_factor": false
+    }
+  },
+  "summary": {
+    "total_assessed": 9,
+    "优先入池": [],
+    "观察备选": [
+      "basis_2nd_momentum_5d",
+      "intraday_ohlc_position",
+      "term_slope_20d",
+      "close_relative_range",
+      "term_curvature_20d",
+      "contango_premium_20d"
+    ],
+    "暂缓入池": [
+      "price_momentum_2nd_diff",
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "high_risk_factors": [
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "total_recommended_admission": 6
+  },
+  "correlation_with_main_factors": {},
+  "timestamp": "2026-10-21T10:08:23+08:00"
+}

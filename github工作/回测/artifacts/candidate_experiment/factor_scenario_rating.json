@@ -1,0 +1,804 @@
+{
+  "phase": "P1",
+  "name": "9个备选因子分场景分层绩效复核",
+  "total_factors": 9,
+  "prime_count": 4,
+  "caution_count": 4,
+  "reserve_count": 1,
+  "prime_factors": [
+    "basis_2nd_momentum_5d",
+    "term_slope_20d",
+    "close_relative_range",
+    "term_curvature_20d"
+  ],
+  "caution_factors": [
+    "intraday_ohlc_position",
+    "oi_momentum_divergence_20d",
+    "price_vol_momentum",
+    "contango_premium_20d"
+  ],
+  "reserve_factors": [
+    "price_momentum_2nd_diff"
+  ],
+  "rating_criteria": {
+    "PRIME": {
+      "all_scenario_ir_min": 0.4,
+      "flip_max": 0.3,
+      "max_dominance_ratio": 3.0
+    },
+    "CAUTION": {
+      "most_scenario_ir_min": 0.3,
+      "max_decaying_scenarios": 1
+    },
+    "RESERVE": {
+      "ir_drop_scenarios_min": 2,
+      "flip_max": 0.35
+    }
+  },
+  "segment_environments": {
+    "OOS_1": {
+      "environment": "SIDEWAYS_LOWVOL",
+      "trend": "SIDEWAYS",
+      "vol": "LOW",
+      "scenario_label": "LOW_VOLATILITY",
+      "trend_mean": -0.000437,
+      "vol_mean": 0.007372
+    },
+    "OOS_2": {
+      "environment": "SIDEWAYS_LOWVOL",
+      "trend": "SIDEWAYS",
+      "vol": "LOW",
+      "scenario_label": "LOW_VOLATILITY",
+      "trend_mean": 0.000861,
+      "vol_mean": 0.006856
+    },
+    "OOS_3": {
+      "environment": "UP_LOWVOL",
+      "trend": "UP",
+      "vol": "LOW",
+      "scenario_label": "TREND_UP",
+      "trend_mean": 0.002242,
+      "vol_mean": 0.013468
+    },
+    "OOS_4": {
+      "environment": "DOWN_LOWVOL",
+      "trend": "DOWN",
+      "vol": "LOW",
+      "scenario_label": "TREND_DOWN",
+      "trend_mean": -0.001187,
+      "vol_mean": 0.007184
+    }
+  },
+  "results": {
+    "price_momentum_2nd_diff": {
+      "factor_name": "price_momentum_2nd_diff",
+      "is_v3_main": false,
+      "task058_oos_label": "N/A",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.031362,
+          "ir_mean": 0.195686,
+          "flip_rate": 1.0,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.128752,
+          "ir_mean": 3.522984,
+          "flip_rate": 0.25,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.16491,
+          "ir_mean": 1.356024,
+          "flip_rate": 0.125,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.13789,
+      "overall_ir_20d": 0.765778,
+      "overall_flip_20d": 0.3,
+      "backtest_20d": {
+        "total_return": 0.278807,
+        "annualized_return": 0.154642,
+        "annual_volatility": 0.1379,
+        "max_drawdown": -0.151013,
+        "sharpe_ratio": 1.121407,
+        "win_rate": 0.5058,
+        "profit_loss_ratio": 1.119613,
+        "trade_count": 131,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.142544,
+          "ir": 0.942213
+        },
+        "new_energy": {
+          "ic_mean": 0.15889,
+          "ir": 0.74314
+        },
+        "industrial": {
+          "ic_mean": 0.10229,
+          "ir": 0.40228
+        }
+      },
+      "rating": "RESERVE",
+      "rating_reason": "≥2个场景IR大幅下滑(2), flip=0.300",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 0.195686,
+          "TREND_DOWN": 3.522984,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 1.356024
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 1.0,
+          "TREND_DOWN": 0.25,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.125
+        },
+        "overall_flip_20d": 0.3,
+        "dominance_ratio": 18.0033,
+        "ir_min": 0.0,
+        "ir_max": 3.522984,
+        "ir_range": 3.522984
+      }
+    },
+    "basis_2nd_momentum_5d": {
+      "factor_name": "basis_2nd_momentum_5d",
+      "is_v3_main": false,
+      "task058_oos_label": "PRIME",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.354071,
+          "ir_mean": 3.564483,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.228138,
+          "ir_mean": 2.80492,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.286062,
+          "ir_mean": 3.252445,
+          "flip_rate": 0.125,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.276277,
+      "overall_ir_20d": 2.150661,
+      "overall_flip_20d": 0.0,
+      "backtest_20d": {
+        "total_return": 0.234382,
+        "annualized_return": 0.131017,
+        "annual_volatility": 0.122941,
+        "max_drawdown": -0.130838,
+        "sharpe_ratio": 1.065692,
+        "win_rate": 0.470998,
+        "profit_loss_ratio": 1.066686,
+        "trade_count": 145,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.278456,
+          "ir": 2.03088
+        },
+        "new_energy": {
+          "ic_mean": 0.244624,
+          "ir": 1.547062
+        },
+        "industrial": {
+          "ic_mean": 0.315492,
+          "ir": 1.508878
+        }
+      },
+      "rating": "PRIME",
+      "rating_reason": "全场景IR≥0.4, flip≤0.3, 无行情强依赖",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 3.564483,
+          "TREND_DOWN": 2.80492,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 3.252445
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.0,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.125
+        },
+        "overall_flip_20d": 0.0,
+        "dominance_ratio": 1.2708,
+        "ir_min": 0.0,
+        "ir_max": 3.564483,
+        "ir_range": 3.564483
+      }
+    },
+    "intraday_ohlc_position": {
+      "factor_name": "intraday_ohlc_position",
+      "is_v3_main": false,
+      "task058_oos_label": "PRIME",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.657798,
+          "ir_mean": 17.120984,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.654883,
+          "ir_mean": 133.389884,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.593595,
+          "ir_mean": 7.5453,
+          "flip_rate": 0.0,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.638936,
+      "overall_ir_20d": 7.184793,
+      "overall_flip_20d": 0.0,
+      "backtest_20d": {
+        "total_return": 1.510789,
+        "annualized_return": 0.713025,
+        "annual_volatility": 0.132293,
+        "max_drawdown": -0.068445,
+        "sharpe_ratio": 5.38976,
+        "win_rate": 0.593968,
+        "profit_loss_ratio": 1.453136,
+        "trade_count": 202,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.630563,
+          "ir": 8.203205
+        },
+        "new_energy": {
+          "ic_mean": 0.683798,
+          "ir": 7.893444
+        },
+        "industrial": {
+          "ic_mean": 0.745422,
+          "ir": 6.289179
+        }
+      },
+      "rating": "CAUTION",
+      "rating_reason": "多数场景IR≥0.3(满足3/4), 仅1个场景衰减, flip=0.000",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 17.120984,
+          "TREND_DOWN": 133.389884,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 7.5453
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.0,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.0
+        },
+        "overall_flip_20d": 0.0,
+        "dominance_ratio": 17.6785,
+        "ir_min": 0.0,
+        "ir_max": 133.389884,
+        "ir_range": 133.389884
+      }
+    },
+    "term_slope_20d": {
+      "factor_name": "term_slope_20d",
+      "is_v3_main": false,
+      "task058_oos_label": "PRIME",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.665968,
+          "ir_mean": 8.179614,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.567482,
+          "ir_mean": 14.824995,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.465506,
+          "ir_mean": 6.626564,
+          "flip_rate": 0.0,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.526263,
+      "overall_ir_20d": 3.799075,
+      "overall_flip_20d": 0.0,
+      "backtest_20d": {
+        "total_return": 1.014284,
+        "annualized_return": 0.505967,
+        "annual_volatility": 0.121625,
+        "max_drawdown": -0.106913,
+        "sharpe_ratio": 4.160048,
+        "win_rate": 0.519722,
+        "profit_loss_ratio": 1.384584,
+        "trade_count": 128,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.412739,
+          "ir": 2.563959
+        },
+        "new_energy": {
+          "ic_mean": 0.547061,
+          "ir": 3.142041
+        },
+        "industrial": {
+          "ic_mean": 0.496442,
+          "ir": 2.920025
+        }
+      },
+      "rating": "PRIME",
+      "rating_reason": "全场景IR≥0.4, flip≤0.3, 无行情强依赖",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 8.179614,
+          "TREND_DOWN": 14.824995,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 6.626564
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.0,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.0
+        },
+        "overall_flip_20d": 0.0,
+        "dominance_ratio": 2.2372,
+        "ir_min": 0.0,
+        "ir_max": 14.824995,
+        "ir_range": 14.824995
+      }
+    },
+    "close_relative_range": {
+      "factor_name": "close_relative_range",
+      "is_v3_main": false,
+      "task058_oos_label": "PRIME",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.370491,
+          "ir_mean": 4.370566,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.347912,
+          "ir_mean": 6.873649,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.384229,
+          "ir_mean": 8.32121,
+          "flip_rate": 0.0,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.393466,
+      "overall_ir_20d": 5.729119,
+      "overall_flip_20d": 0.0,
+      "backtest_20d": {
+        "total_return": 0.705961,
+        "annualized_return": 0.366562,
+        "annual_volatility": 0.155945,
+        "max_drawdown": -0.096628,
+        "sharpe_ratio": 2.350576,
+        "win_rate": 0.580046,
+        "profit_loss_ratio": 1.072827,
+        "trade_count": 145,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.39432,
+          "ir": 6.400755
+        },
+        "new_energy": {
+          "ic_mean": 0.388808,
+          "ir": 2.813686
+        },
+        "industrial": {
+          "ic_mean": 0.45346,
+          "ir": 3.055152
+        }
+      },
+      "rating": "PRIME",
+      "rating_reason": "全场景IR≥0.4, flip≤0.3, 无行情强依赖",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 4.370566,
+          "TREND_DOWN": 6.873649,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 8.32121
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.0,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.0
+        },
+        "overall_flip_20d": 0.0,
+        "dominance_ratio": 1.9039,
+        "ir_min": 0.0,
+        "ir_max": 8.32121,
+        "ir_range": 8.32121
+      }
+    },
+    "oi_momentum_divergence_20d": {
+      "factor_name": "oi_momentum_divergence_20d",
+      "is_v3_main": false,
+      "task058_oos_label": "PRIME",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.192543,
+          "ir_mean": 1.087253,
+          "flip_rate": 0.125,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.193323,
+          "ir_mean": 27.861547,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.139907,
+          "ir_mean": 2.542207,
+          "flip_rate": 0.0625,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.157867,
+      "overall_ir_20d": 1.477365,
+      "overall_flip_20d": 0.1,
+      "backtest_20d": {
+        "total_return": -0.052456,
+        "annualized_return": -0.031013,
+        "annual_volatility": 0.136853,
+        "max_drawdown": -0.144857,
+        "sharpe_ratio": -0.226614,
+        "win_rate": 0.487239,
+        "profit_loss_ratio": 1.018406,
+        "trade_count": 163,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.222533,
+          "ir": 2.39345
+        },
+        "new_energy": {
+          "ic_mean": 0.08077,
+          "ir": 0.459252
+        },
+        "industrial": {
+          "ic_mean": 0.061111,
+          "ir": 0.21404
+        }
+      },
+      "rating": "CAUTION",
+      "rating_reason": "多数场景IR≥0.3(满足3/4), 仅1个场景衰减, flip=0.100",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 1.087253,
+          "TREND_DOWN": 27.861547,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 2.542207
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.125,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.0625
+        },
+        "overall_flip_20d": 0.1,
+        "dominance_ratio": 25.6256,
+        "ir_min": 0.0,
+        "ir_max": 27.861547,
+        "ir_range": 27.861547
+      }
+    },
+    "price_vol_momentum": {
+      "factor_name": "price_vol_momentum",
+      "is_v3_main": false,
+      "task058_oos_label": "CAUTION",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.123972,
+          "ir_mean": 0.842944,
+          "flip_rate": 0.25,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.287085,
+          "ir_mean": 4.257141,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.250912,
+          "ir_mean": 6.099746,
+          "flip_rate": 0.0,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.227075,
+      "overall_ir_20d": 1.620911,
+      "overall_flip_20d": 0.1,
+      "backtest_20d": {
+        "total_return": -0.046736,
+        "annualized_return": -0.027597,
+        "annual_volatility": 0.083251,
+        "max_drawdown": -0.160563,
+        "sharpe_ratio": -0.331493,
+        "win_rate": 0.208817,
+        "profit_loss_ratio": 1.223365,
+        "trade_count": 63,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.236897,
+          "ir": 1.673184
+        },
+        "new_energy": {
+          "ic_mean": 0.240081,
+          "ir": 1.344722
+        },
+        "industrial": {
+          "ic_mean": 0.309349,
+          "ir": 1.147298
+        }
+      },
+      "rating": "CAUTION",
+      "rating_reason": "多数场景IR≥0.3(满足3/4), 仅1个场景衰减, flip=0.100",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 0.842944,
+          "TREND_DOWN": 4.257141,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 6.099746
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.25,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.0
+        },
+        "overall_flip_20d": 0.1,
+        "dominance_ratio": 7.2362,
+        "ir_min": 0.0,
+        "ir_max": 6.099746,
+        "ir_range": 6.099746
+      }
+    },
+    "term_curvature_20d": {
+      "factor_name": "term_curvature_20d",
+      "is_v3_main": false,
+      "task058_oos_label": "PRIME",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.582814,
+          "ir_mean": 12.752133,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.507802,
+          "ir_mean": 6.018226,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.43338,
+          "ir_mean": 5.309041,
+          "flip_rate": 0.0,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.48643,
+      "overall_ir_20d": 3.945453,
+      "overall_flip_20d": 0.0,
+      "backtest_20d": {
+        "total_return": 0.662721,
+        "annualized_return": 0.346202,
+        "annual_volatility": 0.120712,
+        "max_drawdown": -0.105069,
+        "sharpe_ratio": 2.867992,
+        "win_rate": 0.49652,
+        "profit_loss_ratio": 1.417087,
+        "trade_count": 156,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.371895,
+          "ir": 3.057293
+        },
+        "new_energy": {
+          "ic_mean": 0.479746,
+          "ir": 3.288379
+        },
+        "industrial": {
+          "ic_mean": 0.561812,
+          "ir": 4.38972
+        }
+      },
+      "rating": "PRIME",
+      "rating_reason": "全场景IR≥0.4, flip≤0.3, 无行情强依赖",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 12.752133,
+          "TREND_DOWN": 6.018226,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 5.309041
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.0,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.0
+        },
+        "overall_flip_20d": 0.0,
+        "dominance_ratio": 2.402,
+        "ir_min": 0.0,
+        "ir_max": 12.752133,
+        "ir_range": 12.752133
+      }
+    },
+    "contango_premium_20d": {
+      "factor_name": "contango_premium_20d",
+      "is_v3_main": false,
+      "task058_oos_label": "N/A",
+      "scenario_metrics": {
+        "TREND_UP": {
+          "ic_mean": 0.018422,
+          "ir_mean": 0.69725,
+          "flip_rate": 0.125,
+          "n_segments": 2
+        },
+        "TREND_DOWN": {
+          "ic_mean": 0.129038,
+          "ir_mean": 4.108164,
+          "flip_rate": 0.0,
+          "n_segments": 2
+        },
+        "WIDE_RANGE": {
+          "ic_mean": 0.0,
+          "ir_mean": 0.0,
+          "flip_rate": 0.0,
+          "n_segments": 0
+        },
+        "LOW_VOLATILITY": {
+          "ic_mean": 0.135988,
+          "ir_mean": 3.41929,
+          "flip_rate": 0.0,
+          "n_segments": 4
+        }
+      },
+      "overall_ic_mean_20d": 0.119598,
+      "overall_ir_20d": 1.240243,
+      "overall_flip_20d": 0.2,
+      "backtest_20d": {
+        "total_return": 0.354774,
+        "annualized_return": 0.194265,
+        "annual_volatility": 0.160019,
+        "max_drawdown": -0.138271,
+        "sharpe_ratio": 1.21401,
+        "win_rate": 0.538283,
+        "profit_loss_ratio": 1.074126,
+        "trade_count": 85,
+        "n_periods": 431
+      },
+      "backtest_20d_status": "OK",
+      "industry_breakdown": {
+        "basic_metals": {
+          "ic_mean": 0.111882,
+          "ir": 1.016982
+        },
+        "new_energy": {
+          "ic_mean": 0.074374,
+          "ir": 0.494491
+        },
+        "industrial": {
+          "ic_mean": 0.011032,
+          "ir": 0.077535
+        }
+      },
+      "rating": "CAUTION",
+      "rating_reason": "多数场景IR≥0.3(满足3/4), 仅1个场景衰减, flip=0.200",
+      "rating_detail": {
+        "primes_ir_by_scenario": {
+          "TREND_UP": 0.69725,
+          "TREND_DOWN": 4.108164,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 3.41929
+        },
+        "flips_by_scenario": {
+          "TREND_UP": 0.125,
+          "TREND_DOWN": 0.0,
+          "WIDE_RANGE": 0.0,
+          "LOW_VOLATILITY": 0.0
+        },
+        "overall_flip_20d": 0.2,
+        "dominance_ratio": 5.892,
+        "ir_min": 0.0,
+        "ir_max": 4.108164,
+        "ir_range": 4.108164
+      }
+    }
+  },
+  "timestamp": "2026-10-21T10:08:23+08:00"
+}

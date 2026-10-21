@@ -1,0 +1,54 @@
+{
+  "phase": "P2",
+  "name": "因子冗余与二次共线性清洗",
+  "pool_before": {
+    "main_factors": 8,
+    "candidate_factors": 9,
+    "total": 17
+  },
+  "pool_after": {
+    "main_factors": 8,
+    "candidate_factors": 9,
+    "total": 17
+  },
+  "correlation_threshold": 0.75,
+  "high_corr_pairs": [],
+  "removed": [],
+  "removed_count": 0,
+  "removed_candidates": [],
+  "kept_candidates": [
+    "price_momentum_2nd_diff",
+    "basis_2nd_momentum_5d",
+    "intraday_ohlc_position",
+    "term_slope_20d",
+    "close_relative_range",
+    "oi_momentum_divergence_20d",
+    "price_vol_momentum",
+    "term_curvature_20d",
+    "contango_premium_20d"
+  ],
+  "kept_candidates_count": 9,
+  "final_pool_factors": [
+    "contract_switch_flag",
+    "momentum_20d",
+    "oi_change_1d",
+    "oi_change_rate_7d",
+    "oi_level",
+    "realized_vol_20d",
+    "spread_cs",
+    "vol_regime_change",
+    "price_momentum_2nd_diff",
+    "basis_2nd_momentum_5d",
+    "intraday_ohlc_position",
+    "term_slope_20d",
+    "close_relative_range",
+    "oi_momentum_divergence_20d",
+    "price_vol_momentum",
+    "term_curvature_20d",
+    "contango_premium_20d"
+  ],
+  "final_pool_size": 17,
+  "correlation_matrix_17factor": {},
+  "correlation_matrix_kept": {},
+  "timestamp": "2026-10-21T10:08:23+08:00"
+}

@@ -1,0 +1,39 @@
+{
+  "notification_id": "DSHA-TASK059-POOL-REVIEW-FINISHED",
+  "generated_at": "2026-10-21T10:08:23+08:00",
+  "token": "DSHA-TASK-059-FACTOR-ADMISSION-REVIEW-CLEAN-TOKEN",
+  "task": "DSHA-TASK-059",
+  "baseline_commit": "99c2d98",
+  "status": "CANDIDATE_FACTOR_ADMISSION_REVIEW_COMPLETE",
+  "mode": "RESEARCH_READ_ONLY",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "summary": {
+    "candidate_factors_assessed": 9,
+    "prime_factors": 4,
+    "caution_factors": 4,
+    "reserve_factors": 1,
+    "redundancy_removed": 0,
+    "kept_candidates": 9,
+    "final_pool_size": 17,
+    "admission_priority": 0,
+    "admission_caution": 6,
+    "admission_hold": 3,
+    "triple_sha_consistent": true,
+    "snapshot_version": "V3-EXT-CAND-059"
+  },
+  "v3_main_factors_frozen": true,
+  "candidate_only": true,
+  "watchdog_status": {
+    "dshc_process": "OK",
+    "dshd_process": "OK",
+    "process_restart": false,
+    "popup": false
+  },
+  "disclaimer": "候选因子评审仅供DSHD评估, 不修改V3主策略"
+}

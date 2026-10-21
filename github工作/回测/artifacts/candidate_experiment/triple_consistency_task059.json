@@ -1,0 +1,58 @@
+{
+  "phase": "P4",
+  "name": "三端数据一致性二次核验",
+  "cross_checks": [
+    {
+      "id": "c01",
+      "check": "因子输出向量MD5抽样(3因子)",
+      "status": "PASS",
+      "detail": "samples=['intraday_ohlc_position', 'price_vol_momentum', 'term_slope_20d'], md5s={'intraday_ohlc_position': '2a8cce9c4c6f95fa', 'price_vol_momentum': 'a452c6b38325b757', 'term_slope_20d': 'e9f04892a470e78d'}, ic_matches=3/3",
+      "note": "与TASK058因子计算函数一致，无代码漂移"
+    },
+    {
+      "id": "c02",
+      "check": "DSHC因子输入SHA锚点校验",
+      "status": "PASS",
+      "detail": "csv_sha=dd6674bb323ce6f5..., expected=dd6674bb323ce6f5..., match=True"
+    },
+    {
+      "id": "c03",
+      "check": "DSHC只读通知(数据源锚点有效)",
+      "status": "PASS",
+      "detail": "read-only notify sent, no write payload"
+    },
+    {
+      "id": "c04",
+      "check": "DSHD压力测试结论交叉校验",
+      "status": "PASS",
+      "detail": "DSHD_stress_crowding=1.0359, estimated_max_after=1.0513, alignment=ALIGNED"
+    },
+    {
+      "id": "c05",
+      "check": "DSHD只读通知(评审结果就绪)",
+      "status": "PASS",
+      "detail": "read-only notify sent, no config write payload"
+    }
+  ],
+  "all_pass": true,
+  "csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+  "md5_samples": {
+    "intraday_ohlc_position": "2a8cce9c4c6f95fa560bca22668a1452",
+    "price_vol_momentum": "a452c6b38325b75711bf6d3e38583411",
+    "term_slope_20d": "e9f04892a470e78d333c9f54c3f8f2ad"
+  },
+  "dshc_notify": {
+    "notification": "TASK059_RUNNING",
+    "data_source_anchor_valid": true,
+    "sha_digest_match": true,
+    "write_payload": false,
+    "timestamp": "2026-10-21T10:08:23+08:00"
+  },
+  "dshd_notify": {
+    "notification": "TASK059_POOL_REVIEW_READY",
+    "review_complete": true,
+    "write_payload": false,
+    "timestamp": "2026-10-21T10:08:23+08:00"
+  },
+  "timestamp": "2026-10-21T10:08:23+08:00"
+}
