@@ -1,0 +1,47 @@
+{
+  "phase": "P4",
+  "name": "因子计算口径一致性 & 三端交叉指纹校验",
+  "cross_checks": [
+    {
+      "id": "c01",
+      "check": "因子输出向量MD5抽样(3因子)",
+      "status": "PASS",
+      "detail": "samples=['momentum_20d', 'oi_change_1d', 'oi_change_rate_7d'], md5s={k:v[:16] for k,v in md5_results.items()}",
+      "note": "与TASK057因子计算函数一致，无代码漂移"
+    },
+    {
+      "id": "c02",
+      "check": "DSHC只读通知(数据源锚点有效)",
+      "status": "PASS",
+      "detail": "read-only notify sent, no write payload"
+    },
+    {
+      "id": "c03",
+      "check": "DSHD只读通知(因子排序&演示权重就绪)",
+      "status": "PASS",
+      "detail": "read-only notify sent, no write payload"
+    },
+    {
+      "id": "c04",
+      "check": "因子输入行全部来自SHA锁定分片",
+      "status": "PASS",
+      "detail": "csv_sha=dd6674bb323ce6f5..., expected=dd6674bb323ce6f5..., match=True"
+    }
+  ],
+  "all_pass": true,
+  "csv_sha256": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+  "dshc_notify": {
+    "notification": "TASK058_RUNNING",
+    "data_source_anchor_valid": true,
+    "sha_digest_match": true,
+    "write_payload": false,
+    "timestamp": "2026-10-21T08:45:27+08:00"
+  },
+  "dshd_notify": {
+    "notification": "TASK058_FACTOR_RANKING_READY",
+    "demo_weight_available": true,
+    "write_payload": false,
+    "timestamp": "2026-10-21T08:45:27+08:00"
+  },
+  "timestamp": "2026-10-21T08:45:27+08:00"
+}

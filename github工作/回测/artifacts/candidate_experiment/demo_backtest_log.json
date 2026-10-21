@@ -1,0 +1,36 @@
+{
+  "phase": "P3",
+  "name": "演示权重只读回放日志",
+  "demo_weights": {
+    "price_momentum_2nd_diff": 0.036376,
+    "basis_2nd_momentum_5d": 0.114592,
+    "intraday_ohlc_position": 0.150001,
+    "term_slope_20d": 0.150001,
+    "close_relative_range": 0.150001,
+    "oi_momentum_divergence_20d": 0.070715,
+    "price_vol_momentum": 0.12754,
+    "term_curvature_20d": 0.150001,
+    "contango_premium_20d": 0.050771
+  },
+  "demo_backtest": {
+    "total_return": 1.465757,
+    "annualized_return": 0.694994,
+    "annual_volatility": 0.144703,
+    "max_drawdown": -0.113184,
+    "sharpe_ratio": 4.802895,
+    "win_rate": 0.605568,
+    "profit_loss_ratio": 1.281462,
+    "trade_count": 188,
+    "n_periods": 431,
+    "status": "OK"
+  },
+  "data_range": "2025-01-02 to 2026-10-19",
+  "symbols": [
+    "LC.GFE",
+    "NI.SHF",
+    "CU.SHF",
+    "ZN.SHF"
+  ],
+  "disclaimer": "只读回放，不生成永久主策略净值",
+  "timestamp": "2026-10-21T08:45:27+08:00"
+}

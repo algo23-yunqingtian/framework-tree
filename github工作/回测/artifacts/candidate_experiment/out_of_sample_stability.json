@@ -1,0 +1,1812 @@
+{
+  "phase": "P2",
+  "name": "8高稳定因子OOS分段稳定性检验",
+  "total_factors": 8,
+  "prime_count": 7,
+  "caution_count": 1,
+  "avoid_count": 0,
+  "segments": [
+    {
+      "seg_id": "OOS_1",
+      "start_date": "2025-01-02",
+      "end_date": "2025-06-17",
+      "n_days": 108
+    },
+    {
+      "seg_id": "OOS_2",
+      "start_date": "2025-06-18",
+      "end_date": "2025-11-24",
+      "n_days": 108
+    },
+    {
+      "seg_id": "OOS_3",
+      "start_date": "2025-11-25",
+      "end_date": "2026-05-11",
+      "n_days": 108
+    },
+    {
+      "seg_id": "OOS_4",
+      "start_date": "2026-05-12",
+      "end_date": "2026-10-19",
+      "n_days": 108
+    }
+  ],
+  "oos_ir_floor": -0.2,
+  "env_bias_threshold": 0.75,
+  "results": {
+    "spread_cs": {
+      "factor_name": "spread_cs",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.671087,
+          "ir": 20.851969,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.617312,
+              "ir": 6.622958
+            },
+            "new_energy": {
+              "ic_mean": 0.596103,
+              "ir": 5.443578
+            },
+            "industrial": {
+              "ic_mean": 0.816114,
+              "ir": 3.658923
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.693989,
+          "ir": 5.816085,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.55378,
+              "ir": 10.821335
+            },
+            "new_energy": {
+              "ic_mean": 0.607128,
+              "ir": 2.536054
+            },
+            "industrial": {
+              "ic_mean": 0.84148,
+              "ir": 14.763237
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.817584,
+          "ir": 19.10975,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.692862,
+              "ir": 12.89012
+            },
+            "new_energy": {
+              "ic_mean": 0.839752,
+              "ir": 19.340217
+            },
+            "industrial": {
+              "ic_mean": 0.753583,
+              "ir": 5.457323
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.765738,
+          "ir": 13.09133,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.595585,
+              "ir": 6.103242
+            },
+            "new_energy": {
+              "ic_mean": 0.804867,
+              "ir": 16.593424
+            },
+            "industrial": {
+              "ic_mean": 0.658209,
+              "ir": 4.474924
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.1792,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.649614,
+          "ir": 16.785298,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.568881,
+              "ir": 125.002987
+            },
+            "new_energy": {
+              "ic_mean": 0.538465,
+              "ir": 28.725179
+            },
+            "industrial": {
+              "ic_mean": 0.753848,
+              "ir": 3.685145
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.643523,
+          "ir": 90.285611,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.526683,
+              "ir": 204.683415
+            },
+            "new_energy": {
+              "ic_mean": 0.60789,
+              "ir": 41.728293
+            },
+            "industrial": {
+              "ic_mean": 0.842364,
+              "ir": 10.002955
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.81023,
+          "ir": 29.334604,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.690043,
+              "ir": 20.838956
+            },
+            "new_energy": {
+              "ic_mean": 0.815117,
+              "ir": 22.9897
+            },
+            "industrial": {
+              "ic_mean": 0.758309,
+              "ir": 33.8931
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.78624,
+          "ir": 20.109804,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.601851,
+              "ir": 5.244885
+            },
+            "new_energy": {
+              "ic_mean": 0.821077,
+              "ir": 31.534904
+            },
+            "industrial": {
+              "ic_mean": 0.742153,
+              "ir": 33.999444
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.2058,
+      "oos_label": "PRIME",
+      "oos_min_ir": 5.816085,
+      "oos_max_env_bias": 0.2058
+    },
+    "intraday_ohlc_position": {
+      "factor_name": "intraday_ohlc_position",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.682443,
+          "ir": 6.793789,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.650244,
+              "ir": 5.876396
+            },
+            "new_energy": {
+              "ic_mean": 0.718315,
+              "ir": 6.129186
+            },
+            "industrial": {
+              "ic_mean": 0.787379,
+              "ir": 4.215848
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.553825,
+          "ir": 7.306334,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.617364,
+              "ir": 23.283949
+            },
+            "new_energy": {
+              "ic_mean": 0.61464,
+              "ir": 6.303765
+            },
+            "industrial": {
+              "ic_mean": 0.761778,
+              "ir": 7.871741
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.657597,
+          "ir": 11.657402,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.613524,
+              "ir": 7.423499
+            },
+            "new_energy": {
+              "ic_mean": 0.671981,
+              "ir": 25.983943
+            },
+            "industrial": {
+              "ic_mean": 0.715601,
+              "ir": 5.283519
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.644179,
+          "ir": 12.309835,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.64352,
+              "ir": 9.231879
+            },
+            "new_energy": {
+              "ic_mean": 0.679096,
+              "ir": 10.114553
+            },
+            "industrial": {
+              "ic_mean": 0.652363,
+              "ir": 9.55208
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.1885,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.645083,
+          "ir": 4.823027,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.624948,
+              "ir": 4.341066
+            },
+            "new_energy": {
+              "ic_mean": 0.671229,
+              "ir": 9.083317
+            },
+            "industrial": {
+              "ic_mean": 0.738741,
+              "ir": 5.059682
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.493027,
+          "ir": 11.258049,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.613565,
+              "ir": 45.813725
+            },
+            "new_energy": {
+              "ic_mean": 0.539271,
+              "ir": 28.435659
+            },
+            "industrial": {
+              "ic_mean": 0.733573,
+              "ir": 15.133459
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.658,
+          "ir": 22.584565,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.612816,
+              "ir": 18.23227
+            },
+            "new_energy": {
+              "ic_mean": 0.654255,
+              "ir": 140.701991
+            },
+            "industrial": {
+              "ic_mean": 0.703935,
+              "ir": 61.311432
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.665588,
+          "ir": 254.469933,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.670929,
+              "ir": 37.009006
+            },
+            "new_energy": {
+              "ic_mean": 0.711894,
+              "ir": 13.176585
+            },
+            "industrial": {
+              "ic_mean": 0.681841,
+              "ir": 6.955756
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.2593,
+      "oos_label": "PRIME",
+      "oos_min_ir": 4.823027,
+      "oos_max_env_bias": 0.2593
+    },
+    "close_relative_range": {
+      "factor_name": "close_relative_range",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.428105,
+          "ir": 6.558763,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.408788,
+              "ir": 6.0368
+            },
+            "new_energy": {
+              "ic_mean": 0.503421,
+              "ir": 3.957388
+            },
+            "industrial": {
+              "ic_mean": 0.537381,
+              "ir": 4.897536
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.354314,
+          "ir": 4.683164,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.415792,
+              "ir": 10.92688
+            },
+            "new_energy": {
+              "ic_mean": 0.317208,
+              "ir": 3.148159
+            },
+            "industrial": {
+              "ic_mean": 0.375613,
+              "ir": 2.156285
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.373809,
+          "ir": 3.226816,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.348663,
+              "ir": 3.307859
+            },
+            "new_energy": {
+              "ic_mean": 0.316555,
+              "ir": 2.93465
+            },
+            "industrial": {
+              "ic_mean": 0.424826,
+              "ir": 2.666002
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.358549,
+          "ir": 7.16394,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.407042,
+              "ir": 7.581559
+            },
+            "new_energy": {
+              "ic_mean": 0.234344,
+              "ir": 2.491466
+            },
+            "industrial": {
+              "ic_mean": 0.327566,
+              "ir": 2.553864
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.1724,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.421686,
+          "ir": 7.440475,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.395728,
+              "ir": 5.447398
+            },
+            "new_energy": {
+              "ic_mean": 0.506011,
+              "ir": 6.019175
+            },
+            "industrial": {
+              "ic_mean": 0.53836,
+              "ir": 3.79218
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.332811,
+          "ir": 14.602439,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.401535,
+              "ir": 7.961867
+            },
+            "new_energy": {
+              "ic_mean": 0.276267,
+              "ir": 2.678843
+            },
+            "industrial": {
+              "ic_mean": 0.41481,
+              "ir": 16.794945
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.367173,
+          "ir": 5.514316,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.352894,
+              "ir": 9.175903
+            },
+            "new_energy": {
+              "ic_mean": 0.294507,
+              "ir": 2.317118
+            },
+            "industrial": {
+              "ic_mean": 0.387448,
+              "ir": 14.734545
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.337274,
+          "ir": 6.583358,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.375166,
+              "ir": 115.818719
+            },
+            "new_energy": {
+              "ic_mean": 0.272726,
+              "ir": 2.545546
+            },
+            "industrial": {
+              "ic_mean": 0.32924,
+              "ir": 2.534515
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.2108,
+      "oos_label": "PRIME",
+      "oos_min_ir": 3.226816,
+      "oos_max_env_bias": 0.2108
+    },
+    "price_vol_momentum": {
+      "factor_name": "price_vol_momentum",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.202687,
+          "ir": 1.34868,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.249631,
+              "ir": 1.298555
+            },
+            "new_energy": {
+              "ic_mean": 0.300756,
+              "ir": 1.820854
+            },
+            "industrial": {
+              "ic_mean": 0.153148,
+              "ir": 0.496166
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.373337,
+          "ir": 2.184034,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.352672,
+              "ir": 2.939337
+            },
+            "new_energy": {
+              "ic_mean": 0.313373,
+              "ir": 1.612067
+            },
+            "industrial": {
+              "ic_mean": 0.213956,
+              "ir": 0.989877
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.204071,
+          "ir": 0.76661,
+          "flip_rate": 0.5,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.151253,
+              "ir": 1.271861
+            },
+            "new_energy": {
+              "ic_mean": 0.180993,
+              "ir": 0.487504
+            },
+            "industrial": {
+              "ic_mean": 0.503511,
+              "ir": 4.830719
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.289417,
+          "ir": 3.27833,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.201322,
+              "ir": 2.670972
+            },
+            "new_energy": {
+              "ic_mean": 0.315553,
+              "ir": 2.291679
+            },
+            "industrial": {
+              "ic_mean": 0.339508,
+              "ir": 1.348306
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.4571,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.177842,
+          "ir": 13.758565,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.286094,
+              "ir": 3.431204
+            },
+            "new_energy": {
+              "ic_mean": 0.342082,
+              "ir": 10.594956
+            },
+            "industrial": {
+              "ic_mean": 0.205576,
+              "ir": 0.496235
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.249782,
+          "ir": 7.107704,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.396216,
+              "ir": 3.037008
+            },
+            "new_energy": {
+              "ic_mean": 0.24807,
+              "ir": 32.250778
+            },
+            "industrial": {
+              "ic_mean": 0.159006,
+              "ir": 0.924973
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.043873,
+          "ir": 0.919279,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.104363,
+              "ir": 1.68494
+            },
+            "new_energy": {
+              "ic_mean": -0.039526,
+              "ir": -0.516036
+            },
+            "industrial": {
+              "ic_mean": 0.433781,
+              "ir": 6.578649
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.284753,
+          "ir": 5.235951,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.18912,
+              "ir": 181.695699
+            },
+            "new_energy": {
+              "ic_mean": 0.333491,
+              "ir": 3.976327
+            },
+            "industrial": {
+              "ic_mean": 0.49633,
+              "ir": 324.660785
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.8459,
+      "oos_label": "CAUTION",
+      "oos_min_ir": 0.76661,
+      "oos_max_env_bias": 0.8459
+    },
+    "basis_2nd_momentum_5d": {
+      "factor_name": "basis_2nd_momentum_5d",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.307481,
+          "ir": 5.546335,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.333244,
+              "ir": 4.678053
+            },
+            "new_energy": {
+              "ic_mean": 0.242753,
+              "ir": 1.67601
+            },
+            "industrial": {
+              "ic_mean": 0.44169,
+              "ir": 2.014607
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.270933,
+          "ir": 1.281346,
+          "flip_rate": 0.5,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.290946,
+              "ir": 3.354958
+            },
+            "new_energy": {
+              "ic_mean": 0.236347,
+              "ir": 1.01874
+            },
+            "industrial": {
+              "ic_mean": 0.261461,
+              "ir": 0.970687
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.35686,
+          "ir": 2.371323,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.30147,
+              "ir": 1.945571
+            },
+            "new_energy": {
+              "ic_mean": 0.318564,
+              "ir": 1.783965
+            },
+            "industrial": {
+              "ic_mean": 0.394094,
+              "ir": 3.43221
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.218915,
+          "ir": 2.086893,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.232711,
+              "ir": 2.177483
+            },
+            "new_energy": {
+              "ic_mean": 0.21697,
+              "ir": 1.439108
+            },
+            "industrial": {
+              "ic_mean": 0.216846,
+              "ir": 0.878539
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.3866,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.298961,
+          "ir": 4.874164,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.297889,
+              "ir": 4.637692
+            },
+            "new_energy": {
+              "ic_mean": 0.175708,
+              "ir": 1.67013
+            },
+            "industrial": {
+              "ic_mean": 0.505515,
+              "ir": 6.135059
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.266873,
+          "ir": 1.307936,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.326372,
+              "ir": 26.346196
+            },
+            "new_energy": {
+              "ic_mean": 0.20638,
+              "ir": 0.573702
+            },
+            "industrial": {
+              "ic_mean": 0.23533,
+              "ir": 32.311347
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.351282,
+          "ir": 4.757644,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.366725,
+              "ir": 3.587747
+            },
+            "new_energy": {
+              "ic_mean": 0.288344,
+              "ir": 10.74859
+            },
+            "industrial": {
+              "ic_mean": 0.373273,
+              "ir": 2.27287
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.237362,
+          "ir": 3.522948,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.245302,
+              "ir": 1.720554
+            },
+            "new_energy": {
+              "ic_mean": 0.23298,
+              "ir": 2.33945
+            },
+            "industrial": {
+              "ic_mean": 0.346353,
+              "ir": 2.336074
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.3243,
+      "oos_label": "PRIME",
+      "oos_min_ir": 1.281346,
+      "oos_max_env_bias": 0.3866
+    },
+    "term_slope_20d": {
+      "factor_name": "term_slope_20d",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.433362,
+          "ir": 8.763174,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.378426,
+              "ir": 2.187522
+            },
+            "new_energy": {
+              "ic_mean": 0.428458,
+              "ir": 2.25012
+            },
+            "industrial": {
+              "ic_mean": 0.430194,
+              "ir": 2.015366
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.517478,
+          "ir": 4.520004,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.409515,
+              "ir": 3.905954
+            },
+            "new_energy": {
+              "ic_mean": 0.494014,
+              "ir": 2.517149
+            },
+            "industrial": {
+              "ic_mean": 0.557529,
+              "ir": 2.338608
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.650811,
+          "ir": 6.945883,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.555393,
+              "ir": 4.358881
+            },
+            "new_energy": {
+              "ic_mean": 0.674892,
+              "ir": 11.077088
+            },
+            "industrial": {
+              "ic_mean": 0.558482,
+              "ir": 4.60121
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.558377,
+          "ir": 10.175016,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.383439,
+              "ir": 2.540213
+            },
+            "new_energy": {
+              "ic_mean": 0.592664,
+              "ir": 7.992159
+            },
+            "industrial": {
+              "ic_mean": 0.444064,
+              "ir": 2.713783
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.3341,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.425048,
+          "ir": 8.266753,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.3977,
+              "ir": 3.349529
+            },
+            "new_energy": {
+              "ic_mean": 0.344388,
+              "ir": 14.142074
+            },
+            "industrial": {
+              "ic_mean": 0.429939,
+              "ir": 7.709799
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.486137,
+          "ir": 4.956323,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.420068,
+              "ir": 5.222649
+            },
+            "new_energy": {
+              "ic_mean": 0.460202,
+              "ir": 2.708074
+            },
+            "industrial": {
+              "ic_mean": 0.566628,
+              "ir": 1.643355
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.681126,
+          "ir": 9.413346,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.583767,
+              "ir": 4.517914
+            },
+            "new_energy": {
+              "ic_mean": 0.693136,
+              "ir": 10.208306
+            },
+            "industrial": {
+              "ic_mean": 0.535431,
+              "ir": 5.730651
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.576587,
+          "ir": 19.474974,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.407422,
+              "ir": 6.150662
+            },
+            "new_energy": {
+              "ic_mean": 0.612619,
+              "ir": 7.854279
+            },
+            "industrial": {
+              "ic_mean": 0.49912,
+              "ir": 5.744415
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.376,
+      "oos_label": "PRIME",
+      "oos_min_ir": 4.520004,
+      "oos_max_env_bias": 0.376
+    },
+    "term_curvature_20d": {
+      "factor_name": "term_curvature_20d",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.404894,
+          "ir": 6.505988,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.405902,
+              "ir": 4.361445
+            },
+            "new_energy": {
+              "ic_mean": 0.360348,
+              "ir": 3.097302
+            },
+            "industrial": {
+              "ic_mean": 0.55394,
+              "ir": 3.606746
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.468291,
+          "ir": 5.261131,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.335007,
+              "ir": 4.938294
+            },
+            "new_energy": {
+              "ic_mean": 0.403811,
+              "ir": 1.284794
+            },
+            "industrial": {
+              "ic_mean": 0.593069,
+              "ir": 4.702901
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.580905,
+          "ir": 5.361463,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.482154,
+              "ir": 5.405537
+            },
+            "new_energy": {
+              "ic_mean": 0.547035,
+              "ir": 3.209419
+            },
+            "industrial": {
+              "ic_mean": 0.55105,
+              "ir": 2.773213
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.510072,
+          "ir": 5.866441,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.357194,
+              "ir": 4.286829
+            },
+            "new_energy": {
+              "ic_mean": 0.555247,
+              "ir": 5.488473
+            },
+            "industrial": {
+              "ic_mean": 0.50065,
+              "ir": 5.072387
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.303,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.395184,
+          "ir": 4.711708,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.375992,
+              "ir": 14.505614
+            },
+            "new_energy": {
+              "ic_mean": 0.303419,
+              "ir": 5.982719
+            },
+            "industrial": {
+              "ic_mean": 0.507232,
+              "ir": 4.0353
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.465153,
+          "ir": 4.757338,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.328863,
+              "ir": 3.563763
+            },
+            "new_energy": {
+              "ic_mean": 0.439536,
+              "ir": 3.000239
+            },
+            "industrial": {
+              "ic_mean": 0.64641,
+              "ir": 7.599201
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.584723,
+          "ir": 20.142803,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.536856,
+              "ir": 23.972396
+            },
+            "new_energy": {
+              "ic_mean": 0.528354,
+              "ir": 14.220565
+            },
+            "industrial": {
+              "ic_mean": 0.615752,
+              "ir": 13.545172
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.505533,
+          "ir": 6.170012,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.359669,
+              "ir": 5.067333
+            },
+            "new_energy": {
+              "ic_mean": 0.519464,
+              "ir": 5.067313
+            },
+            "industrial": {
+              "ic_mean": 0.528979,
+              "ir": 9.583875
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.3242,
+      "oos_label": "PRIME",
+      "oos_min_ir": 4.711708,
+      "oos_max_env_bias": 0.3242
+    },
+    "oi_momentum_divergence_20d": {
+      "factor_name": "oi_momentum_divergence_20d",
+      "oos_20d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.157296,
+          "ir": 2.115856,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.227971,
+              "ir": 1.835382
+            },
+            "new_energy": {
+              "ic_mean": -0.01073,
+              "ir": -0.062852
+            },
+            "industrial": {
+              "ic_mean": -0.039625,
+              "ir": -0.159516
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.113567,
+          "ir": 0.852587,
+          "flip_rate": 0.25,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.198347,
+              "ir": 3.455483
+            },
+            "new_energy": {
+              "ic_mean": 0.056095,
+              "ir": 1.197229
+            },
+            "industrial": {
+              "ic_mean": 0.009195,
+              "ir": 0.03107
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.19045,
+          "ir": 0.873178,
+          "flip_rate": 0.25,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.237394,
+              "ir": 1.773569
+            },
+            "new_energy": {
+              "ic_mean": 0.1157,
+              "ir": 0.33755
+            },
+            "industrial": {
+              "ic_mean": 0.080348,
+              "ir": 0.193477
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.194427,
+          "ir": 1.79768,
+          "flip_rate": 0.0,
+          "num_windows": 5,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.221162,
+              "ir": 22.303936
+            },
+            "new_energy": {
+              "ic_mean": 0.176925,
+              "ir": 1.019934
+            },
+            "industrial": {
+              "ic_mean": 0.168656,
+              "ir": 0.399408
+            }
+          }
+        }
+      ],
+      "environment_bias_20d": 0.4159,
+      "oos_40d": [
+        {
+          "seg_id": "OOS_1",
+          "start_date": "2025-01-02",
+          "end_date": "2025-06-17",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.174685,
+          "ir": 3.204457,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.261053,
+              "ir": 9.421083
+            },
+            "new_energy": {
+              "ic_mean": -0.063332,
+              "ir": -0.688792
+            },
+            "industrial": {
+              "ic_mean": -0.090457,
+              "ir": -0.300825
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_2",
+          "start_date": "2025-06-18",
+          "end_date": "2025-11-24",
+          "environment": "SIDEWAYS_LOWVOL",
+          "trend": "SIDEWAYS",
+          "vol": "LOW",
+          "ic_mean": 0.114082,
+          "ir": 3.995928,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.206538,
+              "ir": 2.827195
+            },
+            "new_energy": {
+              "ic_mean": 0.059097,
+              "ir": 3.905626
+            },
+            "industrial": {
+              "ic_mean": 0.034037,
+              "ir": 2.104564
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_3",
+          "start_date": "2025-11-25",
+          "end_date": "2026-05-11",
+          "environment": "UP_LOWVOL",
+          "trend": "UP",
+          "vol": "LOW",
+          "ic_mean": 0.194636,
+          "ir": 1.301328,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.260192,
+              "ir": 2.823219
+            },
+            "new_energy": {
+              "ic_mean": 0.113817,
+              "ir": 0.826385
+            },
+            "industrial": {
+              "ic_mean": 0.054565,
+              "ir": 0.16757
+            }
+          }
+        },
+        {
+          "seg_id": "OOS_4",
+          "start_date": "2026-05-12",
+          "end_date": "2026-10-19",
+          "environment": "DOWN_LOWVOL",
+          "trend": "DOWN",
+          "vol": "LOW",
+          "ic_mean": 0.192219,
+          "ir": 53.925414,
+          "flip_rate": 0.0,
+          "num_windows": 2,
+          "industry_breakdown": {
+            "basic_metals": {
+              "ic_mean": 0.217577,
+              "ir": 24.476942
+            },
+            "new_energy": {
+              "ic_mean": 0.186663,
+              "ir": 2.655141
+            },
+            "industrial": {
+              "ic_mean": 0.295278,
+              "ir": 10.486072
+            }
+          }
+        }
+      ],
+      "environment_bias_40d": 0.4139,
+      "oos_label": "PRIME",
+      "oos_min_ir": 0.852587,
+      "oos_max_env_bias": 0.4159
+    }
+  },
+  "prime_factors": [
+    "spread_cs",
+    "intraday_ohlc_position",
+    "close_relative_range",
+    "basis_2nd_momentum_5d",
+    "term_slope_20d",
+    "term_curvature_20d",
+    "oi_momentum_divergence_20d"
+  ],
+  "caution_factors": [
+    "price_vol_momentum"
+  ],
+  "avoid_factors": [],
+  "timestamp": "2026-10-21T08:45:27+08:00"
+}

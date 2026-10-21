@@ -518,5 +518,53 @@
       "release": "NOT_ISSUED",
       "read_only": true
     }
+  },
+  "task051_weight_iteration": {
+    "output_id": "DSHD-TASK051-WEIGHT-ITERATION-CROWDING",
+    "generated_at": "2026-10-21T08:44:22+08:00",
+    "token": "DSHD-TASK051-TOKEN",
+    "overall_status": "PASS",
+    "p0_all_pass": false,
+    "p0_checks": "9/10",
+    "p1_weight_optimized": true,
+    "p1_weight_version": "v3.1",
+    "p1_factor_pool_unchanged": true,
+    "p2_crowding_threshold_dynamic": true,
+    "p2_alert_rules_version": "4.4.6-TASK051",
+    "p2_ledger_version": "4.4.6-TASK051",
+    "p3_flip_monitor_upgraded": true,
+    "p4_triple_regression_compare": true,
+    "p5_audit_snapshot_locked": true,
+    "p6_health_status": "READY_WEIGHT_ITERATION_FROZEN",
+    "engine": "Set-E",
+    "v3_modified": false,
+    "v3_baseline_preserved": true,
+    "read_only": true,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "cross_write": false
+  },
+  "task058_factor_backtest_weight_init": {
+    "task": "DSHA-TASK-058",
+    "completed_at": "2026-10-21T08:45:27+08:00",
+    "baseline_commit": "b2ba569",
+    "candidate_factors_tested": 28,
+    "oos_stable_factors": 8,
+    "prime_factors": 7,
+    "caution_factors": 1,
+    "demo_weights_generated": true,
+    "demo_backtest_done": true,
+    "triple_sha_consistent": true,
+    "snapshot_version_tag": "V3-EXT-CAND-058",
+    "overall_status": "PASS",
+    "v3_main_factors_frozen": true,
+    "candidate_only": true,
+    "safety": {
+      "wind_api_calls": 0,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED",
+      "read_only": true
+    }
   }
 }

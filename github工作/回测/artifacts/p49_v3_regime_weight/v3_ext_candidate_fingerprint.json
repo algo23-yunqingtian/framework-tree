@@ -1,0 +1,50 @@
+{
+  "snapshot_id": "V3-EXT-CAND-058",
+  "version_tag": "V3-EXT-CAND-058",
+  "generated_at": "2026-10-21T08:45:27+08:00",
+  "token": "DSHA-TASK-058-FACTOR-BACKTEST-WEIGHT-INIT-TOKEN",
+  "disclaimer": "NOT_PRODUCTION — 仅候选实验方案，不覆盖生产MANIFEST",
+  "files": [
+    {
+      "filename": "v3_candidate_factor_pool.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\v3_candidate_factor_pool.json",
+      "sha256": "72ae7643872dbd458c8d21a5e0d52256a8bec1e65526b64941d7644164b468cf",
+      "size_bytes": 5424
+    },
+    {
+      "filename": "factor_performance_report.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\factor_performance_report.json",
+      "sha256": "c254ba845c43b5df3f4947c0aea2faf61c5cfcd6ee751aab285a5f3e5ed0bc91",
+      "size_bytes": 228471
+    },
+    {
+      "filename": "out_of_sample_stability.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\out_of_sample_stability.json",
+      "sha256": "c46b836a010fb00cbb068820d9c415a37b8ead749daad1354dcd15ff9ef5b3b1",
+      "size_bytes": 50038
+    },
+    {
+      "filename": "factor_ranking_table.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\factor_ranking_table.json",
+      "sha256": "b0d520abe94a86333e7b3a4592c0354364e540004e0d6f35b537a7a5933027b1",
+      "size_bytes": 10167
+    },
+    {
+      "filename": "v3_candidate_demo_weight.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\v3_candidate_demo_weight.json",
+      "sha256": "c436dc3fa162ba9f7a74f9a08b81fccabdfe2aeccabffc4db299b8fb7c1dbe77",
+      "size_bytes": 4583
+    }
+  ],
+  "total_files": 5,
+  "aggregate_sha256": "2e34938629f5cf569dd9ff5e321b9f28a289bb48ea1c525b2df147ddd97334ca",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "v3_main_factors_frozen": true,
+  "readonly_protection": true
+}
