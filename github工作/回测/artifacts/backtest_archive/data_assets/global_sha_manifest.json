@@ -1,25 +1,29 @@
 {
-  "manifest_id": "DSHC-TASK020-GLOBAL-SHA-MANIFEST",
-  "workorder": "DSHC-TASK-020",
-  "token": "DSHC-TASK020-SNAPSHOT-BASELINE-FREEZE-TOKEN",
+  "manifest_id": "DSHC-TASK022-GLOBAL-SHA-MANIFEST-V2",
+  "workorder": "DSHC-TASK-022",
+  "token": "DSHC-TASK022-V3EXT-FULL-ARCHIVE-MERGE-TOKEN",
   "authorization": "USER-A01",
-  "generated_at": "2026-10-21T13:48:10+08:00",
+  "generated_at": "2026-10-21T17:57:14+08:00",
   "meta": {
-    "global_aggregate_hash": "D1FDDE483E824E38BEA10C0D14286D836D2BF7BDAA30CC87A849A6A847AF8962",
+    "global_aggregate_hash": "89290F2776171CAC34DC54B1DF13D464CDA4C9EA9578EF409BA8712FB39DCFF4",
     "digest_algo": "sha256(sorted 'path:sha256' join '|')",
-    "total_entries": 572,
+    "total_entries": 582,
     "sources": {
       "DSHC-ORIG": "dual_window_sha_lock_manifest.json (TASK-019, 559)",
       "DSHA-FACTOR": "factor_pool_fingerprint.json (DSHA-TASK057)",
-      "DSHD-RISK": "v3_baseline_fingerprint.json (DSHD-TASK050)"
+      "DSHD-RISK": "v3_baseline_fingerprint.json (DSHD-TASK050)",
+      "DSHA-T062": "v3_ext_14pool_fingerprint.json (DSHA-TASK061→062)",
+      "DSHD-T054": "sandbox_dynamic_weight (DSHD-TASK053→054 v449)"
     },
     "source_counts": {
       "DSHC-ORIG": 559,
       "DSHA-FACTOR": 5,
-      "DSHD-RISK": 8
+      "DSHD-RISK": 8,
+      "DSHA-T062": 6,
+      "DSHD-T054": 4
     },
     "dedup": {
-      "merged_multi_source": 0,
+      "merged_multi_source": 10,
       "conflicts": 0
     },
     "conflict_flags": 0,
@@ -6325,6 +6329,136 @@
       ],
       "phase": "DSHD_BASELINE",
       "filename": "manifest_v3",
+      "conflict": null
+    },
+    {
+      "path": "D:/DSH_WORK/github工作/回测/artifacts/candidate_experiment/pool_14_061/tail_risk_backtest.json",
+      "sha256": "adb672a87790d27ebfa8d642683247dc84876497a532ce910f6f322ec875f458",
+      "md5": "adb672a87790d27ebfa8d642683247dc84876497a532ce910f6f322ec875f458",
+      "size_bytes": 14768,
+      "source_tags": [
+        "DSHA-FACTOR",
+        "DSHA-EXPERIMENT"
+      ],
+      "phase": "V3-EXT-14POOL",
+      "filename": "tail_risk_backtest.json",
+      "conflict": null
+    },
+    {
+      "path": "D:/DSH_WORK/github工作/回测/artifacts/candidate_experiment/pool_14_061/monte_carlo_simulation.json",
+      "sha256": "d36a56a013ff05ac2d581ffaae956efbc39035ac2d8a004884dfd7e54b5af07d",
+      "md5": "d36a56a013ff05ac2d581ffaae956efbc39035ac2d8a004884dfd7e54b5af07d",
+      "size_bytes": 5953,
+      "source_tags": [
+        "DSHA-FACTOR",
+        "DSHA-EXPERIMENT"
+      ],
+      "phase": "V3-EXT-14POOL",
+      "filename": "monte_carlo_simulation.json",
+      "conflict": null
+    },
+    {
+      "path": "D:/DSH_WORK/github工作/回测/artifacts/candidate_experiment/pool_14_061/performance_decay_boundary.json",
+      "sha256": "0c46ebf6bbecf8135f6d1729ec6508377ac7693bf463b5485a6bdff8077b8939",
+      "md5": "0c46ebf6bbecf8135f6d1729ec6508377ac7693bf463b5485a6bdff8077b8939",
+      "size_bytes": 3019,
+      "source_tags": [
+        "DSHA-FACTOR",
+        "DSHA-EXPERIMENT"
+      ],
+      "phase": "V3-EXT-14POOL",
+      "filename": "performance_decay_boundary.json",
+      "conflict": null
+    },
+    {
+      "path": "D:/DSH_WORK/github工作/回测/artifacts/candidate_experiment/pool_14_061/v3_ext_14pool_adoption_proposal.json",
+      "sha256": "1632f107b0687bc2eb3b853b615ea6a222a3e932d36529390028f8db2d0fe69d",
+      "md5": "1632f107b0687bc2eb3b853b615ea6a222a3e932d36529390028f8db2d0fe69d",
+      "size_bytes": 4405,
+      "source_tags": [
+        "DSHA-FACTOR",
+        "DSHA-EXPERIMENT"
+      ],
+      "phase": "V3-EXT-14POOL",
+      "filename": "v3_ext_14pool_adoption_proposal.json",
+      "conflict": null
+    },
+    {
+      "path": "D:/DSH_WORK/github工作/回测/artifacts/candidate_experiment/pool_14_061/triple_consistency_task061.json",
+      "sha256": "a3f1e67faace28cbbe22a1845d90a99077a0df334290a5bfd2bb5b29b21df19a",
+      "md5": "a3f1e67faace28cbbe22a1845d90a99077a0df334290a5bfd2bb5b29b21df19a",
+      "size_bytes": 2705,
+      "source_tags": [
+        "DSHA-FACTOR",
+        "DSHA-EXPERIMENT"
+      ],
+      "phase": "V3-EXT-14POOL",
+      "filename": "triple_consistency_task061.json",
+      "conflict": null
+    },
+    {
+      "path": "D:/DSH_WORK/github工作/回测/artifacts/candidate_experiment/pool_14_061/v3_ext_14pool_fingerprint.json",
+      "sha256": "9378d78ef100420b2f95d0671c905da1597a19e382da4ddc53833ba83f98a80e",
+      "md5": "9378d78ef100420b2f95d0671c905da1597a19e382da4ddc53833ba83f98a80e",
+      "size_bytes": 2898,
+      "source_tags": [
+        "DSHA-FACTOR",
+        "DSHA-EXPERIMENT"
+      ],
+      "phase": "V3-EXT-14POOL",
+      "filename": "v3_ext_14pool_fingerprint.json",
+      "conflict": null
+    },
+    {
+      "path": "github工作/回测/artifacts/p49_v3_regime_weight/sandbox_dynamic_weight/dynamic_backtest_report.json",
+      "sha256": "5529665948F17BDD7D6E58DB5B917F1794C583241E179D8C3B1C0B81FCEE44C8",
+      "md5": "6acb23d8c9f0e3cd671561644e736a28",
+      "size_bytes": 45528,
+      "source_tags": [
+        "DSHD-RISK",
+        "DSHD-DYNAMIC-WEIGHT"
+      ],
+      "phase": "V449-DYNAMIC-WEIGHT",
+      "filename": "dynamic_backtest_report.json",
+      "conflict": null
+    },
+    {
+      "path": "github工作/回测/artifacts/p49_v3_regime_weight/sandbox_dynamic_weight/dynamic_weight_series_snapshot.json",
+      "sha256": "504933B260B9AF70445735A8CA3B785A7EA72C6AC5E6950A6D6EDC846115C7C0",
+      "md5": "313dc8afff133c6371000406def33b6e",
+      "size_bytes": 54635,
+      "source_tags": [
+        "DSHD-RISK",
+        "DSHD-DYNAMIC-WEIGHT"
+      ],
+      "phase": "V449-DYNAMIC-WEIGHT",
+      "filename": "dynamic_weight_series_snapshot.json",
+      "conflict": null
+    },
+    {
+      "path": "github工作/回测/artifacts/p49_v3_regime_weight/sandbox_dynamic_weight/dynamic_weight_trigger_rule.json",
+      "sha256": "543C7332C652129AEDAE5D094DF2A9709D8B2356480D9CD38CFD688F4D3AACBA",
+      "md5": "4a9b3baa8deb11a6291d9fff52e4fb2d",
+      "size_bytes": 8707,
+      "source_tags": [
+        "DSHD-RISK",
+        "DSHD-DYNAMIC-WEIGHT"
+      ],
+      "phase": "V449-DYNAMIC-WEIGHT",
+      "filename": "dynamic_weight_trigger_rule.json",
+      "conflict": null
+    },
+    {
+      "path": "github工作/回测/artifacts/p49_v3_regime_weight/sandbox_dynamic_weight/gate_intercept_verification_task053.json",
+      "sha256": "52A66B5D1368ECA0B700A7F57F01835E921CAE8065F4FA5C97D5F262BB569B7F",
+      "md5": "b5a08c74abc6076ca07e64dc75aa6397",
+      "size_bytes": 12116,
+      "source_tags": [
+        "DSHD-RISK",
+        "DSHD-DYNAMIC-WEIGHT"
+      ],
+      "phase": "V449-DYNAMIC-WEIGHT",
+      "filename": "gate_intercept_verification_task053.json",
       "conflict": null
     }
   ],

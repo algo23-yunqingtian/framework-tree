@@ -1,0 +1,380 @@
+﻿{
+  "verification_id": "DSHD-T053-GATE-INTERCEPT-VERIFICATION",
+  "version": "1.0.0-TASK053",
+  "tag": "V3.1-DYN-WEIGHT-053",
+  "generated_at": "2026-10-21T16:45:17+08:00",
+  "source": "DSHD-TASK053",
+  "token": "DSHD-TASK053-TOKEN",
+  "sandbox_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight",
+  "experiment_only": true,
+  "production_write": false,
+  "ruleset_version": "4.4.8-TASK053",
+  "thresholds": {
+    "crowding_p90": 1.05401,
+    "crowding_p95": 1.05854,
+    "jerk_heavy_threshold": 0.000474,
+    "flip_l1": 0.55,
+    "flip_l2": 0.65
+  },
+  "cases_total": 6,
+  "positive_cases": 3,
+  "negative_controls": 3,
+  "positive_cases_all_match": true,
+  "negative_controls_all_match": true,
+  "no_missed_trigger": true,
+  "no_false_positive": true,
+  "missed_triggers": 0,
+  "false_positives": 0,
+  "grade_match_count": 6,
+  "hit_rate": 1.0,
+  "hit_rate_pct": 100.0,
+  "intercept_pass_rate": "100%",
+  "test_result": "GATE_INTERCEPT_PASS",
+  "requirement": "触发条件100%命中，自动输出对应等级降权指令，无漏判、无误判",
+  "intercept_log": [
+    {
+      "case_id": "GATE_CASE_1_LIGHT",
+      "scenario": "轻度拥挤 + 单因子翻转",
+      "note": "一阶>P90 且 ≤P95；单因子>L1；无jerk超限 → 轻度降权",
+      "is_negative_control": false,
+      "input": {
+        "crowding": 1.056,
+        "accel_20d": -1e-05,
+        "jerk_20d": 0.0001,
+        "all_symbols_same_direction": false,
+        "flip_l1_factor_count": 1,
+        "flip_l2_factor_count": 0,
+        "flip_l1_factors": [
+          "realized_vol_20d"
+        ],
+        "flip_l2_factors": []
+      },
+      "expected_grade": "LIGHT",
+      "actual_grade": "LIGHT",
+      "crowding_branch_grade": "LIGHT",
+      "flip_branch_grade": "LIGHT",
+      "grade_match": true,
+      "de_weight_instruction": {
+        "grade_factor": 0.75,
+        "candidate_single_cap": 0.18,
+        "candidate_pool_sum_cap": 0.15,
+        "sync_penalty_factor": 1.0,
+        "effective_factor": 0.75,
+        "candidate_weight_total": 0.1125,
+        "main_factor_cap": 0.18,
+        "main_factors_actively_reduced": false,
+        "instruction_emitted": true
+      },
+      "industry_constraint": {
+        "tighten_ratio": 0.0,
+        "base_metals_effective_cap": 0.5,
+        "new_energy_effective_cap": 0.35
+      },
+      "rules_fired": [
+        "DYN_WEIGHT_MULTI_FACTOR_SYNC_FLIP_PENALTY"
+      ],
+      "gate_hold_triggered": true
+    },
+    {
+      "case_id": "GATE_CASE_2_MEDIUM",
+      "scenario": "中度拥挤 + 多因子翻转",
+      "note": "一阶>P95 且二阶加速度>0 → 中度；4因子同步翻转叠加惩罚",
+      "is_negative_control": false,
+      "input": {
+        "crowding": 1.061,
+        "accel_20d": 0.0003,
+        "jerk_20d": 0.0002,
+        "all_symbols_same_direction": true,
+        "flip_l1_factor_count": 4,
+        "flip_l2_factor_count": 0,
+        "flip_l1_factors": [
+          "oi_change_rate_7d",
+          "oi_level",
+          "realized_vol_20d",
+          "vol_regime_change"
+        ],
+        "flip_l2_factors": []
+      },
+      "expected_grade": "MEDIUM",
+      "actual_grade": "MEDIUM",
+      "crowding_branch_grade": "MEDIUM",
+      "flip_branch_grade": "MEDIUM",
+      "grade_match": true,
+      "de_weight_instruction": {
+        "grade_factor": 0.5,
+        "candidate_single_cap": 0.12,
+        "candidate_pool_sum_cap": 0.12,
+        "sync_penalty_factor": 0.857375,
+        "effective_factor": 0.428687,
+        "candidate_weight_total": 0.06430312,
+        "main_factor_cap": 0.18,
+        "main_factors_actively_reduced": false,
+        "instruction_emitted": true
+      },
+      "industry_constraint": {
+        "tighten_ratio": 0.0,
+        "base_metals_effective_cap": 0.5,
+        "new_energy_effective_cap": 0.35
+      },
+      "rules_fired": [
+        "DYN_WEIGHT_MULTI_FACTOR_SYNC_FLIP_PENALTY",
+        "CROWDING_P95_ALERT"
+      ],
+      "gate_hold_triggered": true
+    },
+    {
+      "case_id": "GATE_CASE_3_HEAVY",
+      "scenario": "三阶jerk + 全池同向拥挤",
+      "note": "jerk>0.000474 且一阶>P90 且全池同向；6因子>L2 → 重度降权+池整体封顶",
+      "is_negative_control": false,
+      "input": {
+        "crowding": 1.078,
+        "accel_20d": 0.00055,
+        "jerk_20d": 0.00062,
+        "all_symbols_same_direction": true,
+        "flip_l1_factor_count": 6,
+        "flip_l2_factor_count": 6,
+        "flip_l1_factors": [
+          "momentum_20d",
+          "oi_change_rate_7d",
+          "oi_level",
+          "realized_vol_20d",
+          "spread_cs",
+          "vol_regime_change"
+        ],
+        "flip_l2_factors": [
+          "momentum_20d",
+          "oi_change_rate_7d",
+          "oi_level",
+          "realized_vol_20d",
+          "spread_cs",
+          "vol_regime_change"
+        ]
+      },
+      "expected_grade": "HEAVY",
+      "actual_grade": "HEAVY",
+      "crowding_branch_grade": "HEAVY",
+      "flip_branch_grade": "HEAVY",
+      "grade_match": true,
+      "de_weight_instruction": {
+        "grade_factor": 0.2,
+        "candidate_single_cap": 0.1,
+        "candidate_pool_sum_cap": 0.05,
+        "sync_penalty_factor": 0.773781,
+        "effective_factor": 0.154756,
+        "candidate_weight_total": 0.02321341,
+        "main_factor_cap": 0.18,
+        "main_factors_actively_reduced": false,
+        "instruction_emitted": true
+      },
+      "industry_constraint": {
+        "tighten_ratio": 0.0,
+        "base_metals_effective_cap": 0.5,
+        "new_energy_effective_cap": 0.35
+      },
+      "rules_fired": [
+        "DYN_WEIGHT_CROWDING_JERK_DEWEIGHT",
+        "DYN_WEIGHT_MULTI_FACTOR_SYNC_FLIP_PENALTY",
+        "CROWDING_P95_ALERT"
+      ],
+      "gate_hold_triggered": true
+    },
+    {
+      "case_id": "NEG_CONTROL_1_COLD",
+      "scenario": "负向对照：低拥挤无翻转",
+      "note": "一阶<P90、无因子超L1、jerk未超限 → 必须不触发（验证无误判）",
+      "is_negative_control": true,
+      "input": {
+        "crowding": 1.045,
+        "accel_20d": -5e-05,
+        "jerk_20d": 1e-05,
+        "all_symbols_same_direction": false,
+        "flip_l1_factor_count": 0,
+        "flip_l2_factor_count": 0,
+        "flip_l1_factors": [],
+        "flip_l2_factors": []
+      },
+      "expected_grade": "NONE",
+      "actual_grade": "NONE",
+      "crowding_branch_grade": "NONE",
+      "flip_branch_grade": "NONE",
+      "grade_match": true,
+      "de_weight_instruction": {
+        "grade_factor": 1.0,
+        "candidate_single_cap": 0.18,
+        "candidate_pool_sum_cap": 0.15,
+        "sync_penalty_factor": 1.0,
+        "effective_factor": 1.0,
+        "candidate_weight_total": 0.15,
+        "main_factor_cap": 0.18,
+        "main_factors_actively_reduced": false,
+        "instruction_emitted": false
+      },
+      "industry_constraint": {
+        "tighten_ratio": 0.0,
+        "base_metals_effective_cap": 0.5,
+        "new_energy_effective_cap": 0.35
+      },
+      "rules_fired": [],
+      "gate_hold_triggered": false
+    },
+    {
+      "case_id": "NEG_CONTROL_2_ACCEL_ONLY",
+      "scenario": "负向对照：加速度单独不越级",
+      "note": "P90<一阶≤P95 时二阶加速度>0 不得单独升级为中度（验证分级单调性）",
+      "is_negative_control": true,
+      "input": {
+        "crowding": 1.057,
+        "accel_20d": 0.0003,
+        "jerk_20d": 2e-05,
+        "all_symbols_same_direction": false,
+        "flip_l1_factor_count": 0,
+        "flip_l2_factor_count": 0,
+        "flip_l1_factors": [],
+        "flip_l2_factors": []
+      },
+      "expected_grade": "LIGHT",
+      "actual_grade": "LIGHT",
+      "crowding_branch_grade": "LIGHT",
+      "flip_branch_grade": "NONE",
+      "grade_match": true,
+      "de_weight_instruction": {
+        "grade_factor": 0.75,
+        "candidate_single_cap": 0.18,
+        "candidate_pool_sum_cap": 0.15,
+        "sync_penalty_factor": 1.0,
+        "effective_factor": 0.75,
+        "candidate_weight_total": 0.1125,
+        "main_factor_cap": 0.18,
+        "main_factors_actively_reduced": false,
+        "instruction_emitted": true
+      },
+      "industry_constraint": {
+        "tighten_ratio": 0.0,
+        "base_metals_effective_cap": 0.5,
+        "new_energy_effective_cap": 0.35
+      },
+      "rules_fired": [],
+      "gate_hold_triggered": true
+    },
+    {
+      "case_id": "NEG_CONTROL_3_JERK_GUARD",
+      "scenario": "负向对照：jerk 联锁保护",
+      "note": "jerk 超阈但一阶<P90 → jerk 规则不触发（验证 v447 CROWDING_JERK_CRITICAL 同款联锁）",
+      "is_negative_control": true,
+      "input": {
+        "crowding": 1.052,
+        "accel_20d": 0.0002,
+        "jerk_20d": 0.0009,
+        "all_symbols_same_direction": false,
+        "flip_l1_factor_count": 0,
+        "flip_l2_factor_count": 0,
+        "flip_l1_factors": [],
+        "flip_l2_factors": []
+      },
+      "expected_grade": "NONE",
+      "actual_grade": "NONE",
+      "crowding_branch_grade": "NONE",
+      "flip_branch_grade": "NONE",
+      "grade_match": true,
+      "de_weight_instruction": {
+        "grade_factor": 1.0,
+        "candidate_single_cap": 0.18,
+        "candidate_pool_sum_cap": 0.15,
+        "sync_penalty_factor": 1.0,
+        "effective_factor": 1.0,
+        "candidate_weight_total": 0.15,
+        "main_factor_cap": 0.18,
+        "main_factors_actively_reduced": false,
+        "instruction_emitted": false
+      },
+      "industry_constraint": {
+        "tighten_ratio": 0.0,
+        "base_metals_effective_cap": 0.5,
+        "new_energy_effective_cap": 0.35
+      },
+      "rules_fired": [],
+      "gate_hold_triggered": false
+    }
+  ],
+  "persisted_log_entries": [
+    {
+      "timestamp": "2026-10-21T16:45:17+08:00",
+      "case_id": "GATE_CASE_1_LIGHT",
+      "grade": "LIGHT",
+      "expected": "LIGHT",
+      "match": true,
+      "instruction_emitted": true,
+      "rules_fired": [
+        "DYN_WEIGHT_MULTI_FACTOR_SYNC_FLIP_PENALTY"
+      ],
+      "gate_hold": true
+    },
+    {
+      "timestamp": "2026-10-21T16:45:17+08:00",
+      "case_id": "GATE_CASE_2_MEDIUM",
+      "grade": "MEDIUM",
+      "expected": "MEDIUM",
+      "match": true,
+      "instruction_emitted": true,
+      "rules_fired": [
+        "DYN_WEIGHT_MULTI_FACTOR_SYNC_FLIP_PENALTY",
+        "CROWDING_P95_ALERT"
+      ],
+      "gate_hold": true
+    },
+    {
+      "timestamp": "2026-10-21T16:45:17+08:00",
+      "case_id": "GATE_CASE_3_HEAVY",
+      "grade": "HEAVY",
+      "expected": "HEAVY",
+      "match": true,
+      "instruction_emitted": true,
+      "rules_fired": [
+        "DYN_WEIGHT_CROWDING_JERK_DEWEIGHT",
+        "DYN_WEIGHT_MULTI_FACTOR_SYNC_FLIP_PENALTY",
+        "CROWDING_P95_ALERT"
+      ],
+      "gate_hold": true
+    },
+    {
+      "timestamp": "2026-10-21T16:45:17+08:00",
+      "case_id": "NEG_CONTROL_1_COLD",
+      "grade": "NONE",
+      "expected": "NONE",
+      "match": true,
+      "instruction_emitted": false,
+      "rules_fired": [],
+      "gate_hold": false
+    },
+    {
+      "timestamp": "2026-10-21T16:45:17+08:00",
+      "case_id": "NEG_CONTROL_2_ACCEL_ONLY",
+      "grade": "LIGHT",
+      "expected": "LIGHT",
+      "match": true,
+      "instruction_emitted": true,
+      "rules_fired": [],
+      "gate_hold": true
+    },
+    {
+      "timestamp": "2026-10-21T16:45:17+08:00",
+      "case_id": "NEG_CONTROL_3_JERK_GUARD",
+      "grade": "NONE",
+      "expected": "NONE",
+      "match": true,
+      "instruction_emitted": false,
+      "rules_fired": [],
+      "gate_hold": false
+    }
+  ],
+  "log_persisted": true,
+  "red_lines": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "cross_write": false,
+    "production_write": false
+  },
+  "overall": "PASS"
+}

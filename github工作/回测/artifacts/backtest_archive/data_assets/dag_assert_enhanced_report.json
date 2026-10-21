@@ -1,0 +1,63 @@
+{
+  "report_id": "DSHC-TASK022-DAG-ASSERT-ENHANCED",
+  "workorder": "DSHC-TASK-022",
+  "token": "DSHC-TASK022-V3EXT-FULL-ARCHIVE-MERGE-TOKEN",
+  "generated_at": "2026-10-21T17:57:16+08:00",
+  "original_assert_id": "DSHC-DUAL-WINDOW-SHARD-FREEZE-020-PREASSERT",
+  "enhanced_assert_id": "DSHC-DUAL-WINDOW-SHARD-FREEZE-022-ENHANCED-PREASSERT",
+  "original_config_sha256": "E639C32BADA0292F8FF99A2F29B2D671FD16B2A7C65648CDC3798666486520C0",
+  "original_rules_preserved": true,
+  "original_rule_keys_count": 4,
+  "new_rule_keys": [
+    "abort_on_sha_change",
+    "deny_write_to_locked_file",
+    "deny_overwrite_history",
+    "require_readonly_bit",
+    "deny_write_to_baseline_shards",
+    "deny_modify_history_archive",
+    "task_id_scoped_experiment_write",
+    "deny_cross_task_overwrite"
+  ],
+  "directory_rules_added": 6,
+  "directory_categories": [
+    "baseline_shard_dir",
+    "history_archive_dir",
+    "experiment_sandbox_dir",
+    "production_baseline_dir",
+    "factor_experiment_dir",
+    "risk_rule_dir"
+  ],
+  "intercept_tests": [
+    {
+      "test_id": "IT-01",
+      "description": "尝试写入基线分片40d",
+      "target_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\incremental\\dual_window_40d\\test_write_block.csv",
+      "expected": "DENIED",
+      "result": "DENIED"
+    },
+    {
+      "test_id": "IT-02",
+      "description": "尝试修改旧归档包task021_archive",
+      "target_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\task021_archive\\test_modify_block.json",
+      "expected": "DENIED",
+      "result": "DENIED"
+    },
+    {
+      "test_id": "IT-03",
+      "description": "尝试跨任务覆写task022_archive",
+      "target_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\task022_archive\\test_cross_task.json",
+      "expected": "DENIED",
+      "result": "DENIED"
+    },
+    {
+      "test_id": "IT-04",
+      "description": "允许在sandbox_replay写入",
+      "target_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\backtest_archive\\data_assets\\sandbox_replay\\test_allowed_write.json",
+      "expected": "ALLOWED",
+      "result": "ALLOWED"
+    }
+  ],
+  "intercept_tests_passed": 4,
+  "intercept_tests_total": 4,
+  "pass": true
+}

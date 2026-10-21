@@ -1,0 +1,24 @@
+{
+  "broadcast_id": "DSHC-TASK022-CLUSTER-READY-BROADCAST",
+  "timestamp": "2026-10-21T17:57:19+08:00",
+  "status": "V3EXT_FULL_CHAIN_ARCHIVED",
+  "message": "V3-EXT 14因子+动态权重整套实验链路全部归档闭环, 主线Phase02完成",
+  "next_phase": "AWAITING_TASK_ISSUANCE",
+  "readonly_replay_dag": "ACTIVE_STANDBY",
+  "dag_config": "github工作/回测/artifacts/backtest_archive/data_assets/sandbox_replay/readonly_replay_dag_config.json",
+  "archive_version": "BASELINE-REPLAY-ARCHIVE-022",
+  "cluster_nodes": {
+    "DSHC": {
+      "status": "COMPLETE",
+      "task": "TASK-022"
+    },
+    "DSHA": {
+      "status": "COMPLETE",
+      "task": "TASK-062"
+    },
+    "DSHD": {
+      "status": "COMPLETE",
+      "task": "TASK-054"
+    }
+  }
+}

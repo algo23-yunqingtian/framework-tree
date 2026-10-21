@@ -1,4 +1,4 @@
-﻿{
+{
   "manifest_id": "DSHA-TASK050-STRATEGY-FREEZE-MANIFEST",
   "generated_at": "2026-10-20T15:48:50+08:00",
   "token": "DSHA-TASK050-STRATEGY-FREEZE-TOKEN",
@@ -761,6 +761,31 @@
       "gate": "CLOSED/HOLD",
       "release": "NOT_ISSUED",
       "read_only": true
+    }
+  },
+  "task022_archive_record": {
+    "task": "DSHC-TASK-022",
+    "completed_at": "2026-10-21T17:56:31+08:00",
+    "baseline_commit": "5bccfa7",
+    "prev_task": "DSHC-TASK-021",
+    "version_tag": "BASELINE-REPLAY-ARCHIVE-022",
+    "archive_agg_sha256": "93781108E7C84EB8",
+    "v3_ext_bundle": {
+      "dsha_t062_files": 8,
+      "dshd_t054_files": 4
+    },
+    "audit_events_merged": "SEE_P4",
+    "dag_assert_enhanced": true,
+    "asset_isolation": "THREE_DIR_PHYSICAL",
+    "overall_status": "PASS",
+    "safety": {
+      "wind_api_calls": 0,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED",
+      "read_only": true,
+      "no_cross_write": true,
+      "shard_readonly_locked": true,
+      "no_history_rewrite": true
     }
   }
 }

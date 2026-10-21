@@ -1,0 +1,82 @@
+{
+  "snapshot_id": "V3-EXT-14POOL-061",
+  "version_tag": "V3-EXT-14POOL-061",
+  "generated_at": "2026-10-21T15:35:35+08:00",
+  "token": "DSHA-TASK-061-RISK-MC-PROPOSAL-TOKEN",
+  "disclaimer": "NOT_PRODUCTION — 仅候选14因子组合版本，不覆盖生产MANIFEST",
+  "base_version": "V3-EXT-SUBSET-060",
+  "files": [
+    {
+      "filename": "tail_risk_backtest.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_061\\tail_risk_backtest.json",
+      "sha256": "adb672a87790d27ebfa8d642683247dc84876497a532ce910f6f322ec875f458",
+      "size_bytes": 14768
+    },
+    {
+      "filename": "monte_carlo_simulation.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_061\\monte_carlo_simulation.json",
+      "sha256": "d36a56a013ff05ac2d581ffaae956efbc39035ac2d8a004884dfd7e54b5af07d",
+      "size_bytes": 5953
+    },
+    {
+      "filename": "performance_decay_boundary.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_061\\performance_decay_boundary.json",
+      "sha256": "0c46ebf6bbecf8135f6d1729ec6508377ac7693bf463b5485a6bdff8077b8939",
+      "size_bytes": 3019
+    },
+    {
+      "filename": "v3_ext_14pool_adoption_proposal.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_061\\v3_ext_14pool_adoption_proposal.json",
+      "sha256": "1632f107b0687bc2eb3b853b615ea6a222a3e932d36529390028f8db2d0fe69d",
+      "size_bytes": 4405
+    },
+    {
+      "filename": "triple_consistency_task061.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_061\\triple_consistency_task061.json",
+      "sha256": "a3f1e67faace28cbbe22a1845d90a99077a0df334290a5bfd2bb5b29b21df19a",
+      "size_bytes": 2705
+    },
+    {
+      "filename": "v3_ext_14pool_fingerprint.json",
+      "path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_061\\v3_ext_14pool_fingerprint.json",
+      "sha256": "9378d78ef100420b2f95d0671c905da1597a19e382da4ddc53833ba83f98a80e",
+      "size_bytes": 2898
+    }
+  ],
+  "total_files": 6,
+  "aggregate_sha256": "fc2ae31f85db764ca63be275ecdfa7303770a95c6f9826e65f527051537c1600",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "v3_main_factors_frozen": true,
+  "readonly_protection": true,
+  "pool_summary": {
+    "observe_factors": [
+      "basis_2nd_momentum_5d",
+      "intraday_ohlc_position",
+      "term_slope_20d",
+      "close_relative_range",
+      "term_curvature_20d",
+      "contango_premium_20d"
+    ],
+    "deferred_factors": [
+      "price_momentum_2nd_diff",
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "observe_count": 6,
+    "deferred_count": 3,
+    "group_a_factors": 14,
+    "p1_extreme_periods": 5,
+    "p1_risk_inflections": 6,
+    "p2_mc_rounds": 2000,
+    "p2_failure_probability": 0.0,
+    "p3_boundary_rules": 7,
+    "p4_recommendation": "RECOMMEND_MONITORING",
+    "p5_all_pass": true
+  }
+}

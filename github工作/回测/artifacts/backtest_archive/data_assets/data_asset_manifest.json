@@ -4,10 +4,10 @@
   "version": "2.4.0",
   "total_size_bytes": 1760126,
   "created_at": "2026-10-19",
-  "updated_at": "2026-10-21T16:56:43+08:00",
+  "updated_at": "2026-10-21T17:57:18+08:00",
   "registry_id": "DSHC-DATA-ASSET-MANIFEST",
   "registry_version": "v2.4.0",
-  "updated_by": "DSHC-TASK021-READONLY-REPLAY-TOKEN",
+  "updated_by": "DSHC-TASK022-V3EXT-FULL-ARCHIVE-MERGE-TOKEN",
   "total_rows": 23328,
   "files": [
     {
@@ -1532,5 +1532,50 @@
     "path": "artifacts/backtest_archive/data_assets/parallel_schedule_config.json",
     "dual_pipeline": true,
     "serial_pipeline_untouched": true
+  },
+  "v3_ext_experiment_assets": {
+    "registration_id": "DSHC-TASK022-V3EXT-REGISTRATION",
+    "registered_at": "2026-10-21T17:56:31+08:00",
+    "lifecycle_tag": "归档封存、仅只读回放",
+    "assets": {
+      "V3-EXT-14POOL-062": {
+        "agent": "DSHA",
+        "task": "DSHA-TASK062",
+        "status": "ARCHIVED",
+        "location": "task022_archive/v3_ext_full_experiment_bundle/dsha_t062/"
+      },
+      "V449-RULE-FINGERPRINT": {
+        "agent": "DSHD",
+        "task": "DSHD-TASK054",
+        "status": "ARCHIVED",
+        "location": "task022_archive/v3_ext_full_experiment_bundle/dshd_t054/"
+      }
+    },
+    "isolation": {
+      "separated_from_production_baseline": true,
+      "separated_from_factor_experiment": true,
+      "separated_from_risk_rules": true
+    }
+  },
+  "governance_keys": {
+    "run_task022_archive_merge": {
+      "path": "code/run_task022_archive_merge.py",
+      "purpose": "V3-EXT全链路统一快照归档+多任务审计链合并+资产隔离固化",
+      "version": "1.0.0",
+      "workorder": "DSHC-TASK-022",
+      "token": "DSHC-TASK022-V3EXT-FULL-ARCHIVE-MERGE-TOKEN",
+      "created_at": "2026-10-21T17:57:18+08:00",
+      "lock_id": "DSHC-V3EXT-ARCHIVE-MERGE-022",
+      "archive_dir": "artifacts/backtest_archive/data_assets/task022_archive/",
+      "experiment_bundle": "artifacts/backtest_archive/data_assets/task022_archive/v3_ext_full_experiment_bundle/",
+      "audit_full": "artifacts/backtest_archive/data_assets/audit_snapshot_v88g1_full.jsonl",
+      "dag_enhanced": "artifacts/backtest_archive/data_assets/dual_window_dag_pre_assert_v2.json",
+      "sandbox_isolated": true,
+      "silent_mode": true,
+      "wind_api_calls": 0,
+      "offline_only": true,
+      "read_only": true,
+      "no_cross_write": true
+    }
   }
 }

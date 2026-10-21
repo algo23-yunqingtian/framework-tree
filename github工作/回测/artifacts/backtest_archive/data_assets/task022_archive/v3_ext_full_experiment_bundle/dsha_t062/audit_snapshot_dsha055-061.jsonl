@@ -1,0 +1,147 @@
+{
+  "snapshot_id": "AUDIT-SNAPSHOT-DSHA-055-061",
+  "generated_at": "2026-10-21T15:35:35+08:00",
+  "task_range": "TASK055-TASK061",
+  "events": [
+    {
+      "event_id": "TASK061-EVT-001",
+      "event": "TASK061_START",
+      "detail": "任务启动",
+      "type": "INIT",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-002",
+      "event": "TASK061_P0_SMOKE",
+      "detail": "冒烟自检",
+      "type": "CHECK",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-003",
+      "event": "TASK061_P1_TAIL_RISK",
+      "detail": "尾部风险压力回测",
+      "type": "TEST",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-004",
+      "event": "TASK061_P2_MONTE_CARLO",
+      "detail": "蒙特卡洛扰动仿真",
+      "type": "SIMULATION",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-005",
+      "event": "TASK061_P3_DECAY_BOUNDARY",
+      "detail": "绩效衰减边界标定",
+      "type": "CALIBRATION",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-006",
+      "event": "TASK061_P4_PROPOSAL",
+      "detail": "入池建议书",
+      "type": "PROPOSAL",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-007",
+      "event": "TASK061_P5_SHA",
+      "detail": "三端一致性复核",
+      "type": "VERIFY",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-008",
+      "event": "TASK061_P6_SNAPSHOT",
+      "detail": "版本快照固化",
+      "type": "ARCHIVE",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-009",
+      "event": "TASK061_P7_AUDIT",
+      "detail": "审计闭环",
+      "type": "AUDIT",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-010",
+      "event": "TASK061_P8_REDLINE",
+      "detail": "红线验证",
+      "type": "VERIFY",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-011",
+      "event": "TASK061_FINAL",
+      "detail": "最终报告",
+      "type": "COMPLETE",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-012",
+      "event": "TASK061_START",
+      "detail": "任务启动",
+      "type": "INIT",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-013",
+      "event": "TASK061_P0_SMOKE",
+      "detail": "冒烟自检",
+      "type": "CHECK",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-014",
+      "event": "TASK061_P1_TAIL_RISK",
+      "detail": "尾部风险压力回测",
+      "type": "TEST",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-015",
+      "event": "TASK061_P2_MONTE_CARLO",
+      "detail": "蒙特卡洛扰动仿真",
+      "type": "SIMULATION",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    },
+    {
+      "event_id": "TASK061-EVT-016",
+      "event": "TASK061_P3_DECAY_BOUNDARY",
+      "detail": "绩效衰减边界标定",
+      "type": "CALIBRATION",
+      "timestamp": "2026-10-21T15:35:35+08:00",
+      "status": "PASS"
+    }
+  ],
+  "total_events": 16,
+  "chain_status": "CLOSED",
+  "tasks_covered": [
+    "TASK055",
+    "TASK056",
+    "TASK057",
+    "TASK058",
+    "TASK059",
+    "TASK060",
+    "TASK061"
+  ],
+  "overall_status": "PASS"
+}

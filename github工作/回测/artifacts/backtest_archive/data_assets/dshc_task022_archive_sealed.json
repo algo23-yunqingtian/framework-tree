@@ -1,0 +1,53 @@
+{
+  "report_id": "DSHC-TASK022-ARCHIVE-SEALED",
+  "workorder": "DSHC-TASK-022",
+  "token": "DSHC-TASK022-V3EXT-FULL-ARCHIVE-MERGE-TOKEN",
+  "generated_at": "2026-10-21T17:57:18+08:00",
+  "status": "V3EXT_FULL_ARCHIVE_SEALED",
+  "all_pass": true,
+  "version_tag": "BASELINE-REPLAY-ARCHIVE-022",
+  "aggregate_sha256": "752D8FFF7C26DAA7",
+  "total_output_files": 19,
+  "archive_dir": "artifacts/backtest_archive/data_assets/task022_archive/",
+  "cluster_ready": true,
+  "phases_completed": {
+    "P0_preflight": "12/12",
+    "P1_manifest_update": true,
+    "P2_bundle_archive": true,
+    "P3_dag_enhanced": true,
+    "P4_audit_merged": true,
+    "P5_version_sealed": true,
+    "P6_self_check": "PASS"
+  },
+  "constraints": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release_permit": "NOT_ISSUED",
+    "offline_only": true,
+    "silent_mode": true,
+    "read_only": true,
+    "no_history_rewrite": true,
+    "no_cross_write": true,
+    "shard_readonly_locked": true
+  },
+  "asset_isolation": {
+    "production_baseline": "artifacts/p49_v3_backtest/ (READ_ONLY)",
+    "factor_experiment": "artifacts/candidate_experiment/pool_14_061/ (ARCHIVED)",
+    "risk_rules": "G7_ADJUDICATION_LEDGER/ (ARCHIVED)",
+    "dsnc_governance": "task022_archive/v3_ext_full_experiment_bundle/ (SEALED)"
+  },
+  "p6_redlines": {
+    "checks": 5,
+    "passed": 5,
+    "all_pass": true,
+    "redlines": {
+      "shard_readonly_locked": true,
+      "no_history_rewrite": true,
+      "no_cross_write": true,
+      "wind_api_calls": 0,
+      "gate": "CLOSED/HOLD",
+      "release": "NOT_ISSUED"
+    }
+  },
+  "overall_status": "PASS"
+}
