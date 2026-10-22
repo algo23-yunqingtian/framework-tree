@@ -1,0 +1,29 @@
+{
+  "awaiting": "DSHC-TASK-SNAP归档信号 (T067全套)",
+  "document_type": "WORKFLOW_EXTERNAL_WRITE_LOCK",
+  "external_write_switch": "DISABLED",
+  "generated_at": "2026-10-22T16:00:00+08:00",
+  "group": "pool_14_062",
+  "lead_factor_rating_scope": "仅供DSHD监控层, 绝不自动写入主策略加权逻辑",
+  "polling": "DISABLED",
+  "polling_note": "不主动轮询DSHD/DSHC, 阻塞等待外部通知",
+  "safety": {
+    "cross_write": false,
+    "experiment_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "task": "DSHA-TASK-067",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R02-REPORT-SKILL",
+  "write_scope": {
+    "allowed": [
+      "artifacts/sandbox_t067"
+    ],
+    "forbidden": [
+      "artifacts/p49_v3_backtest (生产目录)",
+      "DSH_MASTER_NOTEBOOK (MN主快照目录)",
+      "workflow_lock (工作流锁目录)"
+    ]
+  }
+}
