@@ -1,0 +1,362 @@
+{
+  "document_type": "LEAD_FACTOR_RATING",
+  "task": "DSHA-TASK-066",
+  "generated_at": "2026-10-22T14:00:00+08:00",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R02",
+  "rating_rules": {
+    "A": "|IC_1d|>=0.03 AND |IC_3d|>=0.02 AND |IC_5d|>=0.01 (稳定提前预警)",
+    "B": "|IC_1d|>=0.03 但3d/5d衰减 (仅阶段性有效)",
+    "C": "|IC_1d|<0.03 (无预测能力, 直接剔除)"
+  },
+  "factors": [
+    {
+      "factor_id": "basis_2nd_momentum_5d",
+      "ic_1d": -0.046904,
+      "ic_3d": 0.032877,
+      "ic_5d": 0.024025,
+      "ic_mean_abs": 0.034602,
+      "ic_decay_speed_per_day": 0.00572,
+      "flip_lead_days": 1,
+      "rating": "A",
+      "rating_desc": "稳定提前预警 (1d/3d/5d IC均有效)"
+    },
+    {
+      "factor_id": "intraday_ohlc_position",
+      "ic_1d": -0.049485,
+      "ic_3d": -0.023857,
+      "ic_5d": -0.005277,
+      "ic_mean_abs": 0.026206,
+      "ic_decay_speed_per_day": 0.011052,
+      "flip_lead_days": 1,
+      "rating": "B",
+      "rating_desc": "仅阶段性有效 (短期IC显著, 但3d/5d衰减)"
+    },
+    {
+      "factor_id": "term_slope_20d",
+      "ic_1d": -0.080793,
+      "ic_3d": -0.037742,
+      "ic_5d": -0.020167,
+      "ic_mean_abs": 0.046234,
+      "ic_decay_speed_per_day": 0.015156,
+      "flip_lead_days": 1,
+      "rating": "A",
+      "rating_desc": "稳定提前预警 (1d/3d/5d IC均有效)"
+    },
+    {
+      "factor_id": "close_relative_range",
+      "ic_1d": -0.002964,
+      "ic_3d": 0.010731,
+      "ic_5d": 0.005539,
+      "ic_mean_abs": 0.006411,
+      "ic_decay_speed_per_day": -0.000644,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "term_curvature_20d",
+      "ic_1d": -0.073431,
+      "ic_3d": -0.092991,
+      "ic_5d": -0.037304,
+      "ic_mean_abs": 0.067909,
+      "ic_decay_speed_per_day": 0.009032,
+      "flip_lead_days": 3,
+      "rating": "A",
+      "rating_desc": "稳定提前预警 (1d/3d/5d IC均有效)"
+    },
+    {
+      "factor_id": "contango_premium_20d",
+      "ic_1d": 0.001846,
+      "ic_3d": 0.001999,
+      "ic_5d": 0.006503,
+      "ic_mean_abs": 0.003449,
+      "ic_decay_speed_per_day": -0.001164,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "price_momentum_2nd_diff",
+      "ic_1d": 0.001488,
+      "ic_3d": -0.002723,
+      "ic_5d": 0.011145,
+      "ic_mean_abs": 0.005119,
+      "ic_decay_speed_per_day": -0.002414,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "oi_momentum_divergence_20d",
+      "ic_1d": 0.020827,
+      "ic_3d": -0.002315,
+      "ic_5d": -0.022878,
+      "ic_mean_abs": 0.01534,
+      "ic_decay_speed_per_day": -0.000513,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "price_vol_momentum",
+      "ic_1d": -0.077281,
+      "ic_3d": -0.052884,
+      "ic_5d": -0.035309,
+      "ic_mean_abs": 0.055158,
+      "ic_decay_speed_per_day": 0.010493,
+      "flip_lead_days": 1,
+      "rating": "A",
+      "rating_desc": "稳定提前预警 (1d/3d/5d IC均有效)"
+    },
+    {
+      "factor_id": "return_skewness_20d",
+      "ic_1d": -0.016777,
+      "ic_3d": -0.026709,
+      "ic_5d": -0.031254,
+      "ic_mean_abs": 0.024913,
+      "ic_decay_speed_per_day": -0.003619,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "return_kurtosis_20d",
+      "ic_1d": 0.03527,
+      "ic_3d": 0.067969,
+      "ic_5d": 0.072123,
+      "ic_mean_abs": 0.058454,
+      "ic_decay_speed_per_day": -0.009213,
+      "flip_lead_days": 5,
+      "rating": "A",
+      "rating_desc": "稳定提前预警 (1d/3d/5d IC均有效)"
+    },
+    {
+      "factor_id": "price_volume_divergence",
+      "ic_1d": 0.014489,
+      "ic_3d": 0.041612,
+      "ic_5d": -0.000452,
+      "ic_mean_abs": 0.018851,
+      "ic_decay_speed_per_day": 0.003509,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "volume_breakout",
+      "ic_1d": -0.015056,
+      "ic_3d": 0.052784,
+      "ic_5d": 0.035132,
+      "ic_mean_abs": 0.034324,
+      "ic_decay_speed_per_day": -0.005019,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "volume_squeeze",
+      "ic_1d": -0.01493,
+      "ic_3d": -0.030891,
+      "ic_5d": -0.029432,
+      "ic_mean_abs": 0.025084,
+      "ic_decay_speed_per_day": -0.003625,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "volume_deviation_from_mean",
+      "ic_1d": -0.026297,
+      "ic_3d": 0.050907,
+      "ic_5d": 0.04391,
+      "ic_mean_abs": 0.040371,
+      "ic_decay_speed_per_day": -0.004403,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "capital_inflow_intensity",
+      "ic_1d": -0.032463,
+      "ic_3d": 0.038546,
+      "ic_5d": 0.018888,
+      "ic_mean_abs": 0.029966,
+      "ic_decay_speed_per_day": 0.003394,
+      "flip_lead_days": 3,
+      "rating": "A",
+      "rating_desc": "稳定提前预警 (1d/3d/5d IC均有效)"
+    },
+    {
+      "factor_id": "volume_trend_ratio",
+      "ic_1d": -0.026297,
+      "ic_3d": 0.050907,
+      "ic_5d": 0.04391,
+      "ic_mean_abs": 0.040371,
+      "ic_decay_speed_per_day": -0.004403,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "quantile_volatility_20d",
+      "ic_1d": 0.020958,
+      "ic_3d": 0.034596,
+      "ic_5d": 0.042249,
+      "ic_mean_abs": 0.032601,
+      "ic_decay_speed_per_day": -0.005323,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "realized_volatility_40d",
+      "ic_1d": -0.003952,
+      "ic_3d": -0.01775,
+      "ic_5d": -0.027726,
+      "ic_mean_abs": 0.016476,
+      "ic_decay_speed_per_day": -0.005943,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "vol_fractal_dimension_20d",
+      "ic_1d": 0.03367,
+      "ic_3d": 0.075393,
+      "ic_5d": 0.087543,
+      "ic_mean_abs": 0.065535,
+      "ic_decay_speed_per_day": -0.013468,
+      "flip_lead_days": 5,
+      "rating": "A",
+      "rating_desc": "稳定提前预警 (1d/3d/5d IC均有效)"
+    },
+    {
+      "factor_id": "up_volatility_20d",
+      "ic_1d": 0.010554,
+      "ic_3d": 0.017211,
+      "ic_5d": 0.020852,
+      "ic_mean_abs": 0.016206,
+      "ic_decay_speed_per_day": -0.002574,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "down_volatility_20d",
+      "ic_1d": 0.015701,
+      "ic_3d": 0.017424,
+      "ic_5d": 0.011921,
+      "ic_mean_abs": 0.015015,
+      "ic_decay_speed_per_day": 0.000945,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "bollinger_bandwidth_20d",
+      "ic_1d": 0.024889,
+      "ic_3d": 0.045748,
+      "ic_5d": 0.052173,
+      "ic_mean_abs": 0.040937,
+      "ic_decay_speed_per_day": -0.006821,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "vol_clustering_20d",
+      "ic_1d": -0.016724,
+      "ic_3d": -0.061755,
+      "ic_5d": -0.091648,
+      "ic_mean_abs": 0.056709,
+      "ic_decay_speed_per_day": -0.018731,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "vol_asymmetry_20d",
+      "ic_1d": 0.000983,
+      "ic_3d": 0.018404,
+      "ic_5d": 0.017823,
+      "ic_mean_abs": 0.012403,
+      "ic_decay_speed_per_day": -0.00421,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "term_spread_volatility_20d",
+      "ic_1d": -0.013127,
+      "ic_3d": -0.03226,
+      "ic_5d": -0.050269,
+      "ic_mean_abs": 0.031885,
+      "ic_decay_speed_per_day": -0.009286,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "roll_return_stability_20d",
+      "ic_1d": -0.017718,
+      "ic_3d": 0.005094,
+      "ic_5d": 0.017226,
+      "ic_mean_abs": 0.013346,
+      "ic_decay_speed_per_day": 0.000123,
+      "flip_lead_days": 1,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "oi_2nd_growth_5d",
+      "ic_1d": 0.010834,
+      "ic_3d": 0.017709,
+      "ic_5d": 0.023105,
+      "ic_mean_abs": 0.017216,
+      "ic_decay_speed_per_day": -0.003068,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "institutional_concentration_20d",
+      "ic_1d": 0.004624,
+      "ic_3d": -0.045932,
+      "ic_5d": -0.039243,
+      "ic_mean_abs": 0.029933,
+      "ic_decay_speed_per_day": -0.008655,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "cross_symbol_oi_linkage",
+      "ic_1d": -0.009179,
+      "ic_3d": -0.000272,
+      "ic_5d": 0.01313,
+      "ic_mean_abs": 0.007527,
+      "ic_decay_speed_per_day": -0.000988,
+      "flip_lead_days": 5,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    },
+    {
+      "factor_id": "oi_vol_ratio_20d",
+      "ic_1d": -0.028457,
+      "ic_3d": -0.040302,
+      "ic_5d": -0.036435,
+      "ic_mean_abs": 0.035065,
+      "ic_decay_speed_per_day": -0.001995,
+      "flip_lead_days": 3,
+      "rating": "C",
+      "rating_desc": "无预测能力 (1d IC低于阈值, 直接剔除)"
+    }
+  ],
+  "scope": "仅供给DSHD监控层, 绝不自动写入主策略加权逻辑",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "cross_write": false,
+    "experiment_only": true
+  }
+}

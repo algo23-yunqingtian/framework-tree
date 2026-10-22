@@ -1,0 +1,155 @@
+{
+  "config": "GRADIENT_5LEVELS",
+  "summary": {
+    "G1": {
+      "level": "G1",
+      "name": "baseline_T065_x3",
+      "threshold": 3,
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.525876,
+        "std": 0.247233,
+        "p5": -0.943253,
+        "p25": -0.69416,
+        "p50": -0.489678,
+        "p75": -0.351621,
+        "p95": -0.168485,
+        "cv": 0.470136
+      },
+      "mdd_p5": -0.20881,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 0,
+        "rounds_with_events": 0,
+        "events_per_round": 0.0
+      }
+    },
+    "G2": {
+      "level": "G2",
+      "name": "threshold_x2",
+      "threshold": 2,
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.525876,
+        "std": 0.247233,
+        "p5": -0.943253,
+        "p25": -0.69416,
+        "p50": -0.489678,
+        "p75": -0.351621,
+        "p95": -0.168485,
+        "cv": 0.470136
+      },
+      "mdd_p5": -0.20881,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 0,
+        "rounds_with_events": 0,
+        "events_per_round": 0.0
+      }
+    },
+    "G3": {
+      "level": "G3",
+      "name": "threshold_x1",
+      "threshold": 1,
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.530283,
+        "std": 0.245647,
+        "p5": -0.944111,
+        "p25": -0.693326,
+        "p50": -0.496448,
+        "p75": -0.35793,
+        "p95": -0.174524,
+        "cv": 0.463237
+      },
+      "mdd_p5": -0.20881,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 616,
+        "rounds_with_events": 300,
+        "events_per_round": 2.0533
+      }
+    },
+    "G4": {
+      "level": "G4",
+      "name": "x1_relax_crowd",
+      "threshold": 1,
+      "p90": 1.06401,
+      "p95": 1.06854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.554462,
+        "std": 0.245115,
+        "p5": -0.945162,
+        "p25": -0.721959,
+        "p50": -0.541591,
+        "p75": -0.37896,
+        "p95": -0.179915,
+        "cv": 0.442077
+      },
+      "mdd_p5": -0.211626,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 1336,
+        "rounds_with_events": 300,
+        "events_per_round": 4.4533
+      }
+    },
+    "G5": {
+      "level": "G5",
+      "name": "x1_relax_all",
+      "threshold": 1,
+      "p90": 1.05401,
+      "p95": 1.05854,
+      "flip_l1": 0.4,
+      "flip_l2": 0.5,
+      "sharpe_delta": {
+        "mean": -0.7401,
+        "std": 0.246973,
+        "p5": -1.100661,
+        "p25": -0.886354,
+        "p50": -0.744477,
+        "p75": -0.571925,
+        "p95": -0.382482,
+        "cv": 0.333702
+      },
+      "mdd_p5": -0.211626,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.03,
+        "high_failure": 0.97
+      },
+      "lockdown": {
+        "total_events": 6694,
+        "rounds_with_events": 300,
+        "events_per_round": 22.3133
+      }
+    }
+  }
+}

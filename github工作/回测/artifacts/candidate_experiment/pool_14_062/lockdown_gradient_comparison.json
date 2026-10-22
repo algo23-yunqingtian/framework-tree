@@ -1,0 +1,251 @@
+{
+  "document_type": "LOCKDOWN_GRADIENT_COMPARISON",
+  "task": "DSHA-TASK-066",
+  "generated_at": "2026-10-22T14:00:00+08:00",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R02",
+  "mc_rounds": 300,
+  "mc_max_cap": 300,
+  "trigger_band": {
+    "lo": 3.0,
+    "hi": 8.0
+  },
+  "control_stats": {
+    "mean": -0.603564,
+    "p5": -0.988346,
+    "high_failure": 0.9767
+  },
+  "t065_baseline": {
+    "lockdown_total_events": 0,
+    "mean_delta": -0.528199,
+    "p5_delta": -0.904484
+  },
+  "stats_by_level": {
+    "G1": {
+      "level": "G1",
+      "name": "baseline_T065_x3",
+      "threshold": 3,
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.525876,
+        "std": 0.247233,
+        "p5": -0.943253,
+        "p25": -0.69416,
+        "p50": -0.489678,
+        "p75": -0.351621,
+        "p95": -0.168485,
+        "cv": 0.470136
+      },
+      "mdd_p5": -0.20881,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 0,
+        "rounds_with_events": 0,
+        "events_per_round": 0.0
+      }
+    },
+    "G2": {
+      "level": "G2",
+      "name": "threshold_x2",
+      "threshold": 2,
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.525876,
+        "std": 0.247233,
+        "p5": -0.943253,
+        "p25": -0.69416,
+        "p50": -0.489678,
+        "p75": -0.351621,
+        "p95": -0.168485,
+        "cv": 0.470136
+      },
+      "mdd_p5": -0.20881,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 0,
+        "rounds_with_events": 0,
+        "events_per_round": 0.0
+      }
+    },
+    "G3": {
+      "level": "G3",
+      "name": "threshold_x1",
+      "threshold": 1,
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.530283,
+        "std": 0.245647,
+        "p5": -0.944111,
+        "p25": -0.693326,
+        "p50": -0.496448,
+        "p75": -0.35793,
+        "p95": -0.174524,
+        "cv": 0.463237
+      },
+      "mdd_p5": -0.20881,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 616,
+        "rounds_with_events": 300,
+        "events_per_round": 2.0533
+      }
+    },
+    "G4": {
+      "level": "G4",
+      "name": "x1_relax_crowd",
+      "threshold": 1,
+      "p90": 1.06401,
+      "p95": 1.06854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "sharpe_delta": {
+        "mean": -0.554462,
+        "std": 0.245115,
+        "p5": -0.945162,
+        "p25": -0.721959,
+        "p50": -0.541591,
+        "p75": -0.37896,
+        "p95": -0.179915,
+        "cv": 0.442077
+      },
+      "mdd_p5": -0.211626,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.0367,
+        "high_failure": 0.9633
+      },
+      "lockdown": {
+        "total_events": 1336,
+        "rounds_with_events": 300,
+        "events_per_round": 4.4533
+      }
+    },
+    "G5": {
+      "level": "G5",
+      "name": "x1_relax_all",
+      "threshold": 1,
+      "p90": 1.05401,
+      "p95": 1.05854,
+      "flip_l1": 0.4,
+      "flip_l2": 0.5,
+      "sharpe_delta": {
+        "mean": -0.7401,
+        "std": 0.246973,
+        "p5": -1.100661,
+        "p25": -0.886354,
+        "p50": -0.744477,
+        "p75": -0.571925,
+        "p95": -0.382482,
+        "cv": 0.333702
+      },
+      "mdd_p5": -0.211626,
+      "zone_prob": {
+        "safe": 0.0,
+        "warning": 0.03,
+        "high_failure": 0.97
+      },
+      "lockdown": {
+        "total_events": 6694,
+        "rounds_with_events": 300,
+        "events_per_round": 22.3133
+      }
+    }
+  },
+  "selection": {
+    "best_level": {
+      "level": "G4",
+      "name": "x1_relax_crowd",
+      "threshold": 1,
+      "p90": 1.06401,
+      "p95": 1.06854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65
+    },
+    "reason": "触发带内且回撤达标, 取Sharpe_delta最高",
+    "scored": [
+      {
+        "level": "G1",
+        "name": "baseline_T065_x3",
+        "events_per_round": 0.0,
+        "in_trigger_band": false,
+        "mdd_within_tolerance": true,
+        "mdd_p5": -0.20881,
+        "delta_mean": -0.525876,
+        "delta_p5": -0.943253,
+        "dist": 5.5
+      },
+      {
+        "level": "G2",
+        "name": "threshold_x2",
+        "events_per_round": 0.0,
+        "in_trigger_band": false,
+        "mdd_within_tolerance": true,
+        "mdd_p5": -0.20881,
+        "delta_mean": -0.525876,
+        "delta_p5": -0.943253,
+        "dist": 5.5
+      },
+      {
+        "level": "G3",
+        "name": "threshold_x1",
+        "events_per_round": 2.0533,
+        "in_trigger_band": false,
+        "mdd_within_tolerance": true,
+        "mdd_p5": -0.20881,
+        "delta_mean": -0.530283,
+        "delta_p5": -0.944111,
+        "dist": 3.4467
+      },
+      {
+        "level": "G4",
+        "name": "x1_relax_crowd",
+        "events_per_round": 4.4533,
+        "in_trigger_band": true,
+        "mdd_within_tolerance": true,
+        "mdd_p5": -0.211626,
+        "delta_mean": -0.554462,
+        "delta_p5": -0.945162,
+        "dist": 1.0467000000000004,
+        "selection_reason": "触发带内且回撤达标, 取Sharpe_delta最高"
+      },
+      {
+        "level": "G5",
+        "name": "x1_relax_all",
+        "events_per_round": 22.3133,
+        "in_trigger_band": false,
+        "mdd_within_tolerance": true,
+        "mdd_p5": -0.211626,
+        "delta_mean": -0.7401,
+        "delta_p5": -1.100661,
+        "dist": 16.8133
+      }
+    ]
+  },
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "cross_write": false,
+    "experiment_only": true
+  }
+}

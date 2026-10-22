@@ -64,16 +64,16 @@
     "experiment_only": true
   },
   "revision": {
-    "revision_id": "R01",
-    "revised_by": "DSHA-TASK-065",
-    "revised_at": "2026-10-22T13:17:23+08:00",
-    "version_tag": "V3-EXT-14POOL-062-OBS-R01",
-    "commit_anchor": "7216221",
-    "commit_anchor_note": "TASK064 HEAD (7216221); T065提交哈希由DSHC-TASK-SNAP归档外部封印",
+    "revision_id": "R02",
+    "revised_by": "DSHA-TASK-066",
+    "revised_at": "2026-10-22T14:00:00+08:00",
+    "version_tag": "V3-EXT-14POOL-062-OBS-R02",
+    "commit_anchor": "75055e0",
+    "commit_anchor_note": "TASK065 HEAD (75055e0); T066提交哈希由DSHC-TASK-SNAP归档外部封印",
     "changes": [
-      "追加 T065 MC复验结论 (300轮小样本MC)",
-      "追加 三因子 PERMANENTLY_EXCLUDED 落地确认",
-      "追加 双分支共振LOCKDOWN逻辑启用确认"
+      "追加 T066 LOCKDOWN共振门槛梯度调优结论 (5档300轮MC, 最优档位固化)",
+      "追加 T066 领先因子时序筛选与A/B/C评级 (9观测槽位, 供DSHD监控层)",
+      "更新 v3_ext_boundary_declaration.json 共振参数 (保留T065版本溯源)"
     ]
   },
   "t065_mc_review": {
@@ -102,5 +102,41 @@
     ],
     "validity_aligned": "60 TRADING DAYS",
     "registry_file": "factor_exclusion_registry.json"
+  },
+  "t066_lockdown_tune": {
+    "mc_rounds": 300,
+    "mc_max_cap": 300,
+    "gradient_levels": [
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5"
+    ],
+    "trigger_band": {
+      "lo": 3.0,
+      "hi": 8.0
+    },
+    "best_level": {
+      "level": "G4",
+      "name": "x1_relax_crowd",
+      "events_per_round": 4.4533,
+      "delta_mean": -0.554462,
+      "delta_p5": -0.945162,
+      "mdd_p5": -0.211626,
+      "selection_reason": "触发带内且回撤达标, 取Sharpe_delta最高"
+    },
+    "t065_baseline_lockdown_events": 0,
+    "no_auto_param_change_beyond_experiment": true
+  },
+  "t066_lead_factor_rating": {
+    "purpose": "DSHD监控层领先因子评级, 绝不自动写入主策略加权逻辑",
+    "n_candidates": 31,
+    "n_a": 7,
+    "n_b": 1,
+    "n_c_eliminated": 23,
+    "slots": 9,
+    "slots_filled": 8,
+    "deliverable": "dsha_task064_lead_factor_list.json"
   }
 }

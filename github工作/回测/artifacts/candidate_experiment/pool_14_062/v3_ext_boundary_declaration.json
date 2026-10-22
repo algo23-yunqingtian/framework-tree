@@ -1,8 +1,8 @@
 {
   "document_type": "V3_EXT_BOUNDARY_DECLARATION",
-  "task": "DSHA-TASK-065",
-  "generated_at": "2026-10-22T13:17:23+08:00",
-  "version_tag": "V3-EXT-14POOL-062-OBS-R01",
+  "task": "DSHA-TASK-066",
+  "generated_at": "2026-10-22T14:00:00+08:00",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R02",
   "role": "OFFLINE_LONG_TERM_OBSERVATION_EXPERIMENT_ONLY",
   "boundaries": [
     "V3-EXT仅作为离线长期观测实验组, 永远不替换主策略V3 8因子基线",
@@ -33,5 +33,38 @@
     "v3_main_factors_frozen": true,
     "cross_write": false,
     "experiment_only": true
+  },
+  "t066_lockdown_tune": {
+    "document_type": "T066_LOCKDOWN_PARAM_UPDATE",
+    "updated_by": "DSHA-TASK-066",
+    "updated_at": "2026-10-22T14:00:00+08:00",
+    "best_level": "G4",
+    "new_params": {
+      "resonance_threshold": 1,
+      "crowding_p90": 1.06401,
+      "crowding_p95": 1.06854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65
+    },
+    "selection_evidence": {
+      "events_per_round": 4.4533,
+      "delta_mean": -0.554462,
+      "delta_p5": -0.945162,
+      "mdd_p5": -0.211626,
+      "reason": "触发带内且回撤达标, 取Sharpe_delta最高"
+    },
+    "previous_t065_params": {
+      "resonance_threshold": 3,
+      "crowding_p90": 1.07401,
+      "crowding_p95": 1.07854,
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "note": "T065定稿参数, 保留用于对比溯源"
+    },
+    "scope": "仅实验组风控参数, V3主基线8因子永久冻结"
+  },
+  "t066_lead_factor_rating_scope": {
+    "purpose": "领先因子评级仅供给DSHD监控层, 绝不自动写入主策略加权逻辑",
+    "deliverable": "dsha_task064_lead_factor_list.json"
   }
 }

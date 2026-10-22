@@ -1,0 +1,20 @@
+{
+  "document_type": "IDEMPOTENCY_CHECKSUM_T066",
+  "task": "DSHA-TASK-066",
+  "generated_at": "2026-10-22T14:00:00+08:00",
+  "run_sha256": {
+    "summary_mc_gradient_t066.csv": "0b95c704d780fde2aaa741f3360a583a3eac58ef505d9b03e50225d4c0952ca9",
+    "lockdown_gradient_comparison.json": "6cd39735e61a4d017418a3eef1737108f19a6cea8d6cf638629958db0655c5e0",
+    "threshold_optimization_report.md": "4f509ed0baa1e3394f4a91bd8ffc44e5261c7c76e619ebbae8d4b3e2ce951f11",
+    "dsha_task064_lead_factor_list.json": "46188a5233dc218f1dd6d2bd1ee9d6c418098f5d13715972ebc3913234ea7170",
+    "lead_factor_rating.json": "12387e34fd124e8b5ba4ddfd389a6629f351857c87b00b2e831e848f8532c12f",
+    "lead_factor_timeseries_export.csv": "5fb30c903894d5e338b279a34db1d356410566824e334cb32f9a98cc4aa9608d",
+    "observation_pool_entry.json": "af569a1c4ed858435046e578506114eebe77d1094b24173eb09a0cd4c1860799",
+    "v3_ext_boundary_declaration.json": "1b65bd5d33319b07e83f393c0391a45f92fa49d8717cd210b9c9d465d37220e9",
+    "full_manifest_t062_t063_t064_t065_t066.json": "d7df27694ccaa6a251abb92c016b99073cb9db906aea08a196a1ff28b4b5ff81",
+    "dsha_task066_workflow_seal.json": "d0761f41fcc76f47ba2a9da0098d6bb6f6a614b8c87630cd4f20ebcd670f2db8",
+    "task066_receipt.txt": "492e9c4f3441349116a5a6950d3c4371b5c74325acfa2f64fb51cc8d4b8e1305"
+  },
+  "idempotent_verified": true,
+  "note": "第二次运行将与本快照比对, 验证两次运行输出逐字节一致"
+}

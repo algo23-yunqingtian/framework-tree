@@ -1302,5 +1302,26 @@
     "release": "NOT_ISSUED",
     "cross_write": false,
     "execution_type": "research_sandbox"
+  },
+  "task066_lockdown_tune_lead_factor_rank": {
+    "task": "DSHA-TASK-066",
+    "version_tag": "V3-EXT-14POOL-062-OBS-R02",
+    "generated_at": "2026-10-22T14:00:00+08:00",
+    "outputs": [
+      "summary_mc_gradient_t066.csv",
+      "lockdown_gradient_comparison.json",
+      "threshold_optimization_report.md",
+      "dsha_task064_lead_factor_list.json",
+      "lead_factor_rating.json",
+      "lead_factor_timeseries_export.csv",
+      "observation_pool_entry.json",
+      "v3_ext_boundary_declaration.json",
+      "full_manifest_t062_t063_t064_t065_t066.json",
+      "dsha_task066_workflow_seal.json",
+      "task066_receipt.txt"
+    ],
+    "best_level": "G4",
+    "mc_rounds": 300,
+    "levels": 5
   }
 }
