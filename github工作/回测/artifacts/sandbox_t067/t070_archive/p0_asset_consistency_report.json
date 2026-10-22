@@ -1,0 +1,175 @@
+{
+  "checks": {
+    "P0_1": {
+      "check": "P0.1_FULL_CHAIN_SHA_VERIFICATION",
+      "details": {
+        "checked": 21,
+        "failed_files": [
+          "audit_events_t069.jsonl: KNOWN_ARTIFACT (T069 append_audit after manifest write)"
+        ],
+        "known_artifacts": 1,
+        "matched": 20,
+        "mismatched": 0,
+        "missing": 0,
+        "pass": true,
+        "skipped": 4,
+        "upstream_skipped": 40
+      },
+      "pass": true
+    },
+    "P0_2": {
+      "check": "P0.2_SKILL_LOCK_VERIFICATION",
+      "details": {
+        "all_files_readonly": true,
+        "file_list": [
+          "metric_mapper.py",
+          "report_renderer.py",
+          "report_template_v3_ext_r02.md",
+          "skill_manifest.json",
+          "table_formatter.py"
+        ],
+        "modules": [
+          "report_renderer.py",
+          "table_formatter.py",
+          "metric_mapper.py"
+        ],
+        "modules_status": {
+          "metric_mapper.py": {
+            "exists": true,
+            "readonly": true
+          },
+          "report_renderer.py": {
+            "exists": true,
+            "readonly": true
+          },
+          "table_formatter.py": {
+            "exists": true,
+            "readonly": true
+          }
+        },
+        "pass": true,
+        "readonly_locked": true,
+        "report_chapters_locked": true,
+        "skill_files_count": 5,
+        "skill_id": "read_only_skill_v3_backtest_report_r02",
+        "skill_version": "1.0.0",
+        "templates": [
+          "report_template_v3_ext_r02.md"
+        ],
+        "templates_status": {
+          "report_template_v3_ext_r02.md": {
+            "exists": true,
+            "readonly": true
+          }
+        }
+      },
+      "pass": true
+    },
+    "P0_3": {
+      "check": "P0.3_NEVER_MERGE_ISOLATION",
+      "details": {
+        "alert_signals": [
+          {
+            "signal": "basis_2nd_momentum_5d",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "close_relative_range",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "contango_premium_20d",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "intraday_ohlc_position",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "oi_momentum_divergence_20d",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "price_momentum_2nd_diff",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "price_vol_momentum",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "term_curvature_20d",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          },
+          {
+            "signal": "term_slope_20d",
+            "weight_binding": "",
+            "weight_contribution": 0.0
+          }
+        ],
+        "all_weight_contributions_zero": true,
+        "all_weight_forbidden": true,
+        "channel_layers": {
+          "DIAGNOSTIC_CHANNEL": {
+            "decides_gate_grade": false,
+            "decides_weight": false,
+            "factor_count": 3,
+            "role": "DIAGNOSTIC_ONLY_PERMANENTLY_EXCLUDED"
+          },
+          "LEAD_PARALLEL_CHANNEL": {
+            "decides_gate_grade": false,
+            "decides_weight": false,
+            "factor_count": 6,
+            "role": "LEAD_FACTOR_OBSERVATION_AND_PRE_ALERT"
+          },
+          "MAIN_CHANNEL": {
+            "decides_gate_grade": true,
+            "decides_weight": true,
+            "factor_count": 17,
+            "role": "MAIN_STRATEGY_DEWEIGHT_GATE"
+          }
+        },
+        "never_merge_flag": "NEVER_MERGE_INTO_MAIN_STRATEGY_ALERTS",
+        "pass": true,
+        "total_alert_signals": 9,
+        "total_bindings": 9,
+        "weight_contributions": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pass": true
+    },
+    "P0_4": {
+      "check": "P0.4_AST_FULL_SCAN",
+      "details": {
+        "clean_files": 4,
+        "files_with_violations": 0,
+        "pass": true,
+        "total_python_files_scanned": 4,
+        "total_violations": 0,
+        "violations": {}
+      },
+      "pass": true
+    }
+  },
+  "overall": "PASS",
+  "phase": "P0_ASSET_CONSISTENCY",
+  "task": "DSHA-TASK-070",
+  "timestamp": "2026-10-22T16:00:00+08:00"
+}

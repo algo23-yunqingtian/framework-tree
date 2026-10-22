@@ -1,0 +1,43 @@
+{
+  "baseline_commit": "9767162",
+  "description": "冻结前SHA锚点清单, 供DSHC用于SNAP-005快照核验",
+  "document_type": "PRE_LOCK_SHA_LIST",
+  "generated_at": "2026-10-22T16:00:00+08:00",
+  "safety": {
+    "cross_write": false,
+    "experiment_only": true,
+    "gate": "CLOSED/HOLD",
+    "production_write": false,
+    "release": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "sha_anchors": {
+    "factor_performance_ledger": "7fc204b3ef648f2f6e591d8eacad5b44265c11543e04504d1ee643a61d1f4175",
+    "factor_summary_table_csv": "1a0a8af7836831655747ce17732a2537e6ce6022701e71bfa4d16c2e39b1cecd",
+    "mainline_bundle": "92f9d0c8d4d8b7b8a340d30f857fe52baf9425654e76a218011ca5d530942a21",
+    "offline_snapshot": "6dc2b9bb667cfe4aa5bcb0e19603859997fefa9c4012ebe9679febf101107ea4",
+    "parameter_ledger": "d3fb15f6f0554ae4d5a073eac881305dbdceb8d0a2980c1f95e4cd08a95ff33a",
+    "receipts_archive": "d17a752c4c52753dee896fd5cdb56d5b556911f4ca61d1c95be4707c04a4f1e4",
+    "report_md": "f2859a6365482a05b83a4b38ef4619b7dbd0bf76f82b2809c427de78cf3bf676",
+    "report_pdf": "44ff7424fd8306d585d31b279d907227ccc29423196fbb0cb8f6ee89c77ac9ea",
+    "report_txt": "f2859a6365482a05b83a4b38ef4619b7dbd0bf76f82b2809c427de78cf3bf676",
+    "scenario_leak_coverage_csv": "813e2d54f700fb6a9f3ed4292c251e6ffc5be3bdc25dce31beea9662cfbe869f",
+    "skill_archive": "366f2161a7c1105c8e99787e0893dcb55802925ef0b610ed47125bad3cecdef6",
+    "skill_metric_mapper.py": "eec66c6654d14aaefadc575fb9d8330c9edd80bc1325922fec927adadd714ea8",
+    "skill_report_renderer.py": "ca43786c8ace53e90d0b4410d3a1a08b6751c1e1337fb5fdc8e459ba95565747",
+    "skill_report_template_v3_ext_r02.md": "ce25534eeedbd18884a82225ee6fdca129494b24da07c2237986c1af6496ba39",
+    "skill_skill_manifest.json": "6e06cfa82747885fcee8be9ee171213f7355aab5caadec910fcaaf7448d3680e",
+    "skill_table_formatter.py": "a0ef287e3d851db91975d96c2c74d1bdf5de8613973235ff180a5bb751e4d5af",
+    "t067_aggregate_sha": "68511978fbfd82081038039607037aaf11a203bca9bece8950321a5acf6dc2bd",
+    "t069_aggregate_sha": "bb08454ce9cc29f1d05c3025f8eecd63d849ecc09bc14b18b0e00681e52768f2",
+    "task067_receipt": "dd2ae3b838f8cc90079acc62747dc745f3903ff207a325ee0568628e1066f63e",
+    "task067_seal": "941866edb32aa632ad91ea09a3f85aae80c6566fafebbbf1a79fba8bcc3cffc7",
+    "task069_receipt": "29bbd73e66e13f355c09c5191cd96562366b0bf30d62b4ba4b22ac027a56d222",
+    "task069_seal": "c0a52c04a7164d32ed18eab5c1ecba94d2832bfaccb69795c1c95920dc654b6a",
+    "v3_csv_sha": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b",
+    "v3_csv_sha_match": true
+  },
+  "t067_aggregate_sha": "68511978fbfd82081038039607037aaf11a203bca9bece8950321a5acf6dc2bd",
+  "t069_aggregate_sha": "bb08454ce9cc29f1d05c3025f8eecd63d849ecc09bc14b18b0e00681e52768f2",
+  "task": "DSHA-TASK-070"
+}

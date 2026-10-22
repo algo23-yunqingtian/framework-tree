@@ -1,0 +1,19 @@
+SKILL ARCHIVE - PERMANENT SEAL
+================================
+Skill ID: read_only_skill_v3_backtest_report_r02
+Version: 1.0.0
+Status: 永久封版 (PERMANENTLY SEALED)
+Access: 只可调用, 不可编辑 (READ-ONLY, NO EDIT)
+Chapters: 10章节结构锁定 (report_chapters_locked=True)
+Source Task: DSHA-TASK-067
+Archive Task: DSHA-TASK-070
+
+此Skill模块已永久封版, 禁止任何后续修改。
+如需迭代, 必须从新工单开始, 创建新Skill版本。
+
+模块清单:
+- report_renderer.py (入口)
+- table_formatter.py (格式化器)
+- metric_mapper.py (指标映射器)
+- report_template_v3_ext_r02.md (模板)
+- skill_manifest.json (清单)

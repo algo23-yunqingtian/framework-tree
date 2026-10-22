@@ -1,0 +1,72 @@
+{
+  "boundary_fixed": true,
+  "boundary_note": "主线因子链路与T056监控支线边界固化, 不可混淆。T056数据仅供观测预警通道, 绝不可写入主策略权重链路。",
+  "description": "资产目录清单, 区分主线因子链路与T056监控支线",
+  "document_type": "ASSET_DIRECTORY_INDEX",
+  "generated_at": "2026-10-22T16:00:00+08:00",
+  "mainline_factor_chain": {
+    "baseline": "DSHA-TASK-067 (commit 621ae95)",
+    "deliverables": {
+      "factors": {
+        "a_obs": 7,
+        "b_obs": 1,
+        "base_frozen": 8,
+        "c_reject": 23,
+        "total": 39,
+        "v3_csv_sha": "dd6674bb323ce6f5b9c7b80c021e1d1a5cb2917f631a822b1104924232611b9b"
+      },
+      "ledgers": {
+        "factor_performance": "factor_performance_ledger.json",
+        "factor_summary_csv": "factor_summary_table.csv",
+        "parameter": "parameter_ledger.json"
+      },
+      "metrics": {
+        "leak_coverage_summary": "scenario_leak_coverage_summary.csv",
+        "offline_snapshot": "offline_metrics_snapshot_t069.json"
+      },
+      "report": {
+        "chapter_6_note": "T069: 第6章刷新为T056漏检实测数据, 其余9章零改动",
+        "chapters": 10,
+        "chapters_locked": true,
+        "md": "V3_EXT_R02_OFFICIAL_BACKTEST_REPORT.md",
+        "pdf": "V3_EXT_R02_OFFICIAL_BACKTEST_REPORT.pdf",
+        "txt": "V3_EXT_R02_OFFICIAL_BACKTEST_REPORT.txt"
+      }
+    },
+    "description": "V3-EXT R02 主线因子链路 - 8个BASE_FROZEN永久冻结因子 + 风控参数 + 回测报告",
+    "latest_update": "DSHA-TASK-069 (commit 9767162)"
+  },
+  "t056_monitoring_branch": {
+    "all_weight_bindings_forbidden": true,
+    "blind_spots": [
+      "SC4_WIDE_OSCILLATION_day3",
+      "SC4_WIDE_OSCILLATION_day24"
+    ],
+    "channel_architecture": {
+      "DIAGNOSTIC": {
+        "factors": 3,
+        "permanently_excluded": true
+      },
+      "LEAD_PARALLEL": {
+        "factors": 6,
+        "never_merged": true
+      },
+      "MAIN": {
+        "decides_weight_gate": true,
+        "factors": 17
+      }
+    },
+    "description": "DSHD-T056 监控支线 - 领先因子漏检修复与信号挂载 (独立于主线, NEVER_MERGE)",
+    "fn_events_covered": 31,
+    "fn_events_still_blind": 2,
+    "fn_events_total": 33,
+    "gate_regression": "18/18 PASS (identical to T055)",
+    "leak_coverage_pct": 93.94,
+    "never_merge_flag": "NEVER_MERGE_INTO_MAIN_STRATEGY_ALERTS",
+    "sealed_id": "DSHD-T056-LEAD-FACTOR-MOUNT-SEALED",
+    "source_task": "DSHD-TASK-056",
+    "t055_repro_match": "9/9",
+    "total_weight_contribution": 0.0
+  },
+  "task": "DSHA-TASK-070"
+}
