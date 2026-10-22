@@ -1,0 +1,106 @@
+{
+  "description": "拥挤度触发阈值±0.02扫描 (P90/P95 3x3组合), flip_rate vs Sharpe取舍曲线",
+  "control_baseline": {
+    "sharpe": 1.964687,
+    "flip_rate": 0.2351
+  },
+  "current_thresholds": {
+    "p90": 1.05401,
+    "p95": 1.05854
+  },
+  "sweep_rows": [
+    {
+      "p90": 1.03401,
+      "p95": 1.03854,
+      "sharpe_ratio": 1.113238,
+      "sharpe_delta": -0.851449,
+      "flip_rate": 0.0,
+      "trade_count": 67,
+      "max_drawdown": -0.211626
+    },
+    {
+      "p90": 1.03401,
+      "p95": 1.05854,
+      "sharpe_ratio": 1.214806,
+      "sharpe_delta": -0.749881,
+      "flip_rate": 0.0,
+      "trade_count": 69,
+      "max_drawdown": -0.211626
+    },
+    {
+      "p90": 1.03401,
+      "p95": 1.07854,
+      "sharpe_ratio": 1.214806,
+      "sharpe_delta": -0.749881,
+      "flip_rate": 0.0,
+      "trade_count": 69,
+      "max_drawdown": -0.211626
+    },
+    {
+      "p90": 1.05401,
+      "p95": 1.05854,
+      "sharpe_ratio": 1.268893,
+      "sharpe_delta": -0.695794,
+      "flip_rate": 0.0,
+      "trade_count": 67,
+      "max_drawdown": -0.211626
+    },
+    {
+      "p90": 1.05401,
+      "p95": 1.07854,
+      "sharpe_ratio": 1.268893,
+      "sharpe_delta": -0.695794,
+      "flip_rate": 0.0,
+      "trade_count": 67,
+      "max_drawdown": -0.211626
+    },
+    {
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "sharpe_ratio": 1.63094,
+      "sharpe_delta": -0.333747,
+      "flip_rate": 0.0,
+      "trade_count": 153,
+      "max_drawdown": -0.202884
+    }
+  ],
+  "flip_sharpe_curve": [
+    {
+      "p90": 1.03401,
+      "p95": 1.03854,
+      "flip_rate": 0.0,
+      "sharpe": 1.113238
+    },
+    {
+      "p90": 1.03401,
+      "p95": 1.05854,
+      "flip_rate": 0.0,
+      "sharpe": 1.214806
+    },
+    {
+      "p90": 1.03401,
+      "p95": 1.07854,
+      "flip_rate": 0.0,
+      "sharpe": 1.214806
+    },
+    {
+      "p90": 1.05401,
+      "p95": 1.05854,
+      "flip_rate": 0.0,
+      "sharpe": 1.268893
+    },
+    {
+      "p90": 1.05401,
+      "p95": 1.07854,
+      "flip_rate": 0.0,
+      "sharpe": 1.268893
+    },
+    {
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "flip_rate": 0.0,
+      "sharpe": 1.63094
+    }
+  ],
+  "conclusion": "阈值越高(P90=1.07401/P95=1.07854), 触发越晚, flip_rate越高接近控制组0.2351, Sharpe损失越小; 阈值越低触发越早, flip_rate越低但Sharpe损失越大。"
+}

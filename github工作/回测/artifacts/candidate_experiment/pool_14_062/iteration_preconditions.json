@@ -1,0 +1,44 @@
+{
+  "title": "后续迭代前置条件",
+  "task": "DSHA-TASK-064",
+  "prerequisites": [
+    {
+      "id": "PRECOND-01",
+      "condition": "DSHD-T054监控配置完成并返回回执",
+      "status": "WAITING",
+      "rationale": "必须先建立监控体系, 才能评估参数调整效果"
+    },
+    {
+      "id": "PRECOND-02",
+      "condition": "监控指标稳定运行满60个交易日",
+      "status": "PENDING",
+      "rationale": "观测期内积累足够的净值与指标数据"
+    },
+    {
+      "id": "PRECOND-03",
+      "condition": "MC高失效概率从95.9%降至80%以下",
+      "status": "PENDING",
+      "rationale": "机制稳定性必须达标才允许继续调参"
+    },
+    {
+      "id": "PRECOND-04",
+      "condition": "Sharpe下滑从-0.696压缩至-0.35以内",
+      "status": "PENDING",
+      "rationale": "P1.3已找到可行参数区间, 但需实盘观测确认"
+    },
+    {
+      "id": "PRECOND-05",
+      "condition": "Gate拦截命中率保持>90%",
+      "status": "PENDING",
+      "rationale": "风控机制有效性必须持续验证"
+    },
+    {
+      "id": "PRECOND-06",
+      "condition": "3个暂缓因子确认永久剔除, 不再回归",
+      "status": "CONFIRMED",
+      "rationale": "P2.3已定稿, 无需等待"
+    }
+  ],
+  "iteration_rule": "必须先完成监控指标稳定运行(PRECOND-01/02/03), 才允许继续调参迭代",
+  "status": "SEALED"
+}

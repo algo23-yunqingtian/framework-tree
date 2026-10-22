@@ -1,0 +1,151 @@
+{
+  "title": "短板优化方案定稿 (对应T063识别的5项短板)",
+  "generated_at": "2026-10-22T11:22:17+08:00",
+  "task": "DSHA-TASK-064",
+  "P2_1_weight_ceiling": {
+    "title": "分级权重上限约束方案",
+    "target_shortcomings": [
+      "SC-01 (MC高失效95.9%)",
+      "SC-03 (Sharpe下滑0.696)"
+    ],
+    "problem": "MEDIUM(50%)和HEAVY(20%)降权系数过于激进, 导致候选因子贡献被大幅压缩, 收益来源单一化",
+    "proposed_constraints": [
+      {
+        "grade": "MEDIUM",
+        "current_weight_factor": 0.5,
+        "proposed_floor": 0.4,
+        "constraint": "MEDIUM等级候选因子池权重不低于4.5% (0.40 * 15% * 0.75)",
+        "rationale": "保留至少60%的候选因子贡献, 避免收益崩塌"
+      },
+      {
+        "grade": "HEAVY",
+        "current_weight_factor": 0.2,
+        "proposed_floor": 0.3,
+        "constraint": "HEAVY等级候选因子池权重不低于3.0% (0.30 * 15% * 0.67)",
+        "rationale": "从0.2提升至0.3, 保留更多候选敞口, 同时维持风险压缩"
+      },
+      {
+        "grade": "NONE/LIGHT",
+        "current_weight_factor": "1.0 / 0.75",
+        "proposed": "保持不动",
+        "constraint": "NONE保持100%, LIGHT保持75%",
+        "rationale": "低风险时段不需要额外约束"
+      }
+    ],
+    "expected_effect": {
+      "sharpe_delta_improvement": "从-0.696提升至-0.35 ~ -0.40区间",
+      "mc_failure_prob_reduction": "从95.9%降至80%以下 (需重新MC验证)",
+      "flip_rate_impact": "flip_rate从0.0上升至0.10-0.15 (仍在0.26上限内)"
+    },
+    "status": "DRAFT_PLAN",
+    "requires_mc_validation": true,
+    "not_production": true
+  },
+  "P2_2_dual_trigger": {
+    "title": "拥挤+翻转共振双条件联合触发规则草案",
+    "target_shortcomings": [
+      "SC-01 (MC高失效95.9%)",
+      "SC-05 (拥挤度传导弹性下限0.55)"
+    ],
+    "problem": "当前取max(crowd_grade, flip_grade)的取高逻辑, 单分支触发即可HEAVY, 造成过度降权",
+    "proposed_rules": {
+      "rule_1_resonance_confirm": {
+        "condition": "HEAVY降级需要拥挤分支(>P95或jerk>阈值) 且 翻转分支(>L1) 同时满足",
+        "action": "仅双分支同时非NONE时允许HEAVY, 单分支触发最高MEDIUM",
+        "rationale": "消除单分支误触发, 减少不必要的权重压缩"
+      },
+      "rule_2_grade_cap": {
+        "condition": "单分支触发时等级上限=MEDIUM(0.5降权)",
+        "action": "双分支共振时等级上限=HEAVY(0.3降权, 新地板)",
+        "rationale": "与P2.1地板方案协同, 避免收益崩塌"
+      },
+      "rule_3_resonance_counter": {
+        "condition": "记录双分支共振次数, 连续3次共振升级为LOCKDOWN",
+        "action": "LOCKDOWN期间候选因子权重强制归零+告警",
+        "rationale": "极端共振场景提供硬保护"
+      },
+      "rule_4_monitoring": {
+        "condition": "共振时点全部写入监控日志, 标记risk_zone=CRITICAL",
+        "action": "DSHD-T054看板实时展示",
+        "rationale": "与T064监控体系联动"
+      }
+    },
+    "expected_effect": {
+      "resonance_false_trigger_reduction": "预计减少30-50%的HEAVY误触发",
+      "mc_failure_prob": "需重新MC验证, 目标<80%",
+      "sharpe_delta": "预计改善0.1-0.2"
+    },
+    "status": "DRAFT_RULES",
+    "requires_validation": true,
+    "not_production": true
+  },
+  "P2_3_deferred_exclusion": {
+    "title": "3个暂缓排除因子永久剔除结论",
+    "target": [
+      "price_momentum_2nd_diff",
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "conclusion": "PERMANENTLY_EXCLUDED",
+    "factors": [
+      {
+        "factor": "price_momentum_2nd_diff",
+        "avg_ic": 0.001507,
+        "information_ratio": 0.086939,
+        "exclusion_reason": "IC/IR不足 (IR=0.087 << 1.0阈值), 无预测能力",
+        "final_verdict": "PERMANENTLY_EXCLUDED"
+      },
+      {
+        "factor": "oi_momentum_divergence_20d",
+        "avg_ic": 0.020872,
+        "information_ratio": 0.357026,
+        "exclusion_reason": "高风险标记 (TASK059评审), 信号不稳定",
+        "final_verdict": "PERMANENTLY_EXCLUDED"
+      },
+      {
+        "factor": "price_vol_momentum",
+        "avg_ic": -0.07726,
+        "information_ratio": -1.038493,
+        "exclusion_reason": "负IC (IR=-1.04), 波动率衰减导致信号失效",
+        "final_verdict": "PERMANENTLY_EXCLUDED"
+      }
+    ],
+    "entry_document_written": true,
+    "observation_pool_note": "3因子永久剔除, 不再参与任何候选因子池运算",
+    "v3_frozen_confirmed": true,
+    "status": "FINALIZED"
+  },
+  "P2_4_v3_ext_boundary": {
+    "title": "V3-EXT分支严格边界",
+    "boundary_definition": {
+      "role": "仅作为离线观测实验组",
+      "never_replaces": "永远不替代主策略V3 8因子基线",
+      "production_access": "禁止接入实盘交易",
+      "write_scope": "仅允许写入pool_14_062实验沙箱",
+      "factor_scope": "仅6个观察备选因子可调参, 8主因子永久冻结",
+      "deferred_scope": "3个暂缓因子永久排除, 永不回归"
+    },
+    "hard_boundaries": [
+      "V3主策略8因子权重/规则/代码 PERMANENTLY_FROZEN, 任何情况下不可修改",
+      "V3-EXT任何实验输出不得写入p49_v3_backtest生产目录",
+      "V3-EXT参数调整仅限候选因子权重与动态权重触发参数",
+      "V3-EXT准入建议书结论RECOMMEND_MONITORING, 仅观测仓模式",
+      "观测期60个交易日内, 未完成监控指标稳定运行前禁止调参迭代"
+    ],
+    "isolation_marker": {
+      "branch": "feature/v88-g1",
+      "experiment_dir": "artifacts/candidate_experiment/pool_14_062",
+      "production_dir": "artifacts/p49_v3_backtest",
+      "cross_write_forbidden": true
+    },
+    "status": "FINALIZED"
+  },
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "v3_main_factors_frozen": true,
+    "cross_write": false,
+    "experiment_only": true
+  }
+}

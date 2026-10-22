@@ -1,0 +1,42 @@
+{
+  "signal_id": "DSHA-TASK064-FINAL-ARCHIVE-SIGNAL",
+  "generated_at": "2026-10-22T11:22:18+08:00",
+  "source_task": "DSHA-TASK-064",
+  "token": "DSHA-TASK-064-SENSITIVITY-ENTRY-DRAFT-TOKEN",
+  "sync_type": "ARCHIVE_SIGNAL",
+  "mode": "AUDIT_READ_ONLY",
+  "snapshot_id": "V3-EXT-14POOL-062",
+  "version_tag": "V3-EXT-14POOL-062-OBS-ENTRY",
+  "artifact_pool": "pool_14_062",
+  "artifact_count": 28,
+  "manifest_sha256": "c08b0cf59ba5c9a3da6f398472c6f8e54490165dc35563a60f465874e5339619",
+  "trigger": "DSHC-TASK-SNAP-002 FULL_SNAPSHOT",
+  "dsH_MASTER_NOTEBOOK": {
+    "index_status": "UPDATE_REQUESTED",
+    "snapshot_id": "V3-EXT-14POOL-062",
+    "version_tag": "V3-EXT-14POOL-062-OBS-ENTRY",
+    "task_ref": "DSHA-TASK-064",
+    "parent_task": "DSHA-TASK-063",
+    "baseline_commit": "a7caee7",
+    "branch": "feature/v88-g1",
+    "status": "OBSERVATION_ENTRY_SEALED",
+    "adoption": "RECOMMEND_MONITORING",
+    "observation_period": "60 TRADING DAYS"
+  },
+  "archive_contents": {
+    "t062_files": 10,
+    "t063_files": 10,
+    "t064_files": 8,
+    "total": 28,
+    "manifest_id": "DSHA-TASK064-FULL-MANIFEST-T062-T063-T064",
+    "manifest_path": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_062\\full_manifest_t062_t063_t064.json"
+  },
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  },
+  "v3_main_factors_frozen": true
+}

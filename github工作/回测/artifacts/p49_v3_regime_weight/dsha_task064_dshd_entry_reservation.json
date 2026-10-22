@@ -1,0 +1,26 @@
+{
+  "reservation_id": "DSHA-TASK064-DSHD-T054-RECEIPT-RESERVATION",
+  "generated_at": "2026-10-22T11:22:18+08:00",
+  "source_task": "DSHA-TASK-064",
+  "token": "DSHA-TASK-064-SENSITIVITY-ENTRY-DRAFT-TOKEN",
+  "sync_type": "PASSIVE_WAIT_RESERVATION",
+  "mode": "AUDIT_READ_ONLY",
+  "waiting_for": "DSHD-T054监控配置完成回执",
+  "receipt_entry": {
+    "status": "OPEN",
+    "expected_source": "DSHD-T054",
+    "expected_content": "监控阈值嵌入确认 (crowding/flip/sharpe/mdd/candidate_weight)",
+    "on_receipt_action": "自动将DSHD确认的监控阈值嵌入observation_pool_entry.json",
+    "embedding_field": "monitoring_indicators_bound"
+  },
+  "no_polling": true,
+  "polling_interval": null,
+  "resource_saving": "任务阻塞等待外部通知, 不抢占算力",
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "read_only": true,
+    "cross_write": false
+  }
+}

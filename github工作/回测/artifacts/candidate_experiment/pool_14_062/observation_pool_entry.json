@@ -1,0 +1,66 @@
+{
+  "document_type": "OBSERVATION_POOL_ENTRY",
+  "snapshot_id": "V3-EXT-14POOL-062",
+  "version_tag": "V3-EXT-14POOL-062-OBS-ENTRY",
+  "generated_at": "2026-10-22T11:22:17+08:00",
+  "task": "DSHA-TASK-064",
+  "token": "DSHA-TASK-064-SENSITIVITY-ENTRY-DRAFT-TOKEN",
+  "disclaimer": "NOT_PRODUCTION — 观测池准入评审定稿, 不修改V3主因子",
+  "admission_conclusion": {
+    "verdict": "RECOMMEND_MONITORING",
+    "mode": "OFFLINE_SANDBOX_LONG_TERM_OBSERVATION",
+    "production_deployment": "FORBIDDEN",
+    "validity_period": "60 TRADING DAYS",
+    "validity_start": "2026-10-22T11:22:17+08:00",
+    "validity_end": "(60个交易日后自动复核)"
+  },
+  "entry_conditions": [
+    "仅限4品种池(LC.GFE/NI.SHF/CU.SHF/ZN.SHF)仿真环境",
+    "仅限观测仓模式, 净值跟踪+指标监控, 禁止实盘交易",
+    "仅限离线沙箱运行, 不接入生产链路",
+    "动态权重仅作用于6个观察备选因子, 8个V3主因子永久冻结",
+    "3个暂缓排除因子永久剔除, 不参与运算",
+    "MC高失效概率95.9%状态下, 仅记录不决策"
+  ],
+  "risk_acknowledgment": {
+    "mc_failure_probability": 0.959,
+    "sharpe_decline": -0.695794,
+    "mdd_expansion": -0.075946,
+    "gate_valid": true,
+    "mitigation": "观测仓仅记录, 不接入实盘, 定期复核"
+  },
+  "monitoring_indicators_bound": [
+    {
+      "name": "拥挤度HHI",
+      "warning": 1.05401,
+      "halt": 1.05854
+    },
+    {
+      "name": "因子翻转率",
+      "warning": 0.55,
+      "halt": 0.65
+    },
+    {
+      "name": "Sharpe比率",
+      "warning": 0.9652,
+      "halt": 1.0
+    },
+    {
+      "name": "MDD",
+      "warning": -0.2,
+      "halt": -0.25
+    },
+    {
+      "name": "候选权重因子",
+      "range": "0.50-1.00"
+    }
+  ],
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "v3_main_factors_frozen": true,
+    "cross_write": false,
+    "experiment_only": true
+  }
+}

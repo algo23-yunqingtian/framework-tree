@@ -1,0 +1,48 @@
+{
+  "description": "HEAVY/MEDIUM降权系数梯度扫描 (当前0.5/0.2 vs 0.3/0.15 vs 0.6/0.25)",
+  "control_baseline": {
+    "sharpe": 1.964687,
+    "total_return": 11.863654,
+    "max_drawdown": -0.13568,
+    "flip_rate": 0.2351
+  },
+  "sweep_rows": [
+    {
+      "combo": "current_0.50_0.20",
+      "medium_weight_factor": 0.5,
+      "heavy_weight_factor": 0.2,
+      "sharpe_ratio": 1.268893,
+      "sharpe_delta": -0.695794,
+      "total_return": 3.703173,
+      "max_drawdown": -0.211626,
+      "flip_rate": 0.0,
+      "trade_count": 67,
+      "annual_volatility": 0.199756
+    },
+    {
+      "combo": "option_A_0.30_0.15",
+      "medium_weight_factor": 0.3,
+      "heavy_weight_factor": 0.15,
+      "sharpe_ratio": 1.268893,
+      "sharpe_delta": -0.695794,
+      "total_return": 3.703173,
+      "max_drawdown": -0.211626,
+      "flip_rate": 0.0,
+      "trade_count": 67,
+      "annual_volatility": 0.199756
+    },
+    {
+      "combo": "option_B_0.60_0.25",
+      "medium_weight_factor": 0.6,
+      "heavy_weight_factor": 0.25,
+      "sharpe_ratio": 1.627507,
+      "sharpe_delta": -0.33718,
+      "total_return": 6.972128,
+      "max_drawdown": -0.202884,
+      "flip_rate": 0.0,
+      "trade_count": 153,
+      "annual_volatility": 0.21739
+    }
+  ],
+  "conclusion": "降权系数越温和(0.6/0.25), Sharpe保留越多但flip_rate上升; 降权系数越激进(0.3/0.15), Sharpe损失越大但flip_rate更低。需要在两者间寻找平衡点。"
+}
