@@ -1,0 +1,93 @@
+{
+  "data_sources": {
+    "t056_isolation": "DSHD-T056 channel_isolation_verification.json",
+    "t056_leak_data": "DSHD-T056 sc4_leak_repair_report.json",
+    "t056_mount": "DSHD-T056 lead_signal_mount_manifest.json",
+    "t056_sealed": "DSHD-T056 dshd_task056_sealed.json",
+    "t067_base": "DSHA-TASK-067 sandbox_t067 deliverables"
+  },
+  "description": "离线回放指标快照, 含T056真实漏检统计",
+  "experiment_only": true,
+  "generated_at": "2026-10-22T16:00:00+08:00",
+  "metrics": {
+    "channel_isolation_t056": {
+      "all_weight_forbidden": true,
+      "channels": 3,
+      "diagnostic_factors": 3,
+      "lead_parallel_factors": 6,
+      "main_channel_factors": 17,
+      "total_weight_contribution": 0.0
+    },
+    "factor_performance": {
+      "a_obs": 7,
+      "avg_ic_1d_a_obs": 0.054259,
+      "avg_ic_1d_b_obs": 0.049485,
+      "avg_ic_1d_c_reject": 0.013855,
+      "b_obs": 1,
+      "base_frozen": 8,
+      "c_reject": 23,
+      "total_factors": 39
+    },
+    "fp_fn_statistics_t056": {
+      "confirmed_advisory": {
+        "FN": 39,
+        "FP": 58,
+        "TP": 197
+      },
+      "main_gate": {
+        "FN": 33,
+        "FP": 63,
+        "TP": 203
+      }
+    },
+    "gate_regression_t056": {
+      "all18_hit_rate_pct": 100.0,
+      "grade_identical_to_t055": true,
+      "t055_repro_match": "9/9",
+      "test_result": "GATE_REGRESSION_STABLE"
+    },
+    "leak_coverage_t056": {
+      "blind_spots": [
+        "SC4_WIDE_OSCILLATION_day3",
+        "SC4_WIDE_OSCILLATION_day24"
+      ],
+      "fn_events_covered": 31,
+      "fn_events_still_blind": 2,
+      "fn_events_total": 33,
+      "leak_coverage_pct": 93.94,
+      "mean_lead_days": 1.2812,
+      "pre_alert_false_alarm": 30,
+      "pre_alert_fired": 62,
+      "pre_alert_vindicated": 32,
+      "target_coverage_pct": 90.0
+    },
+    "lockdown_parameters": {
+      "g1": {
+        "lockdown_events_per_round": 0.0,
+        "mdd_p5": -0.20881,
+        "mean_delta": -0.525876,
+        "p90": 1.07401,
+        "p95": 1.07854,
+        "threshold": 3
+      },
+      "g4": {
+        "lockdown_events_per_round": 4.4533,
+        "mdd_p5": -0.211626,
+        "mean_delta": -0.554462,
+        "p90": 1.06401,
+        "p95": 1.06854,
+        "threshold": 1
+      }
+    }
+  },
+  "safety": {
+    "cross_write": false,
+    "experiment_only": true,
+    "gate": "CLOSED/HOLD",
+    "production_write": false,
+    "release": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "snapshot_id": "V3-EXT-R02-OFFLINE-SNAPSHOT-T069",
+  "source": "DSHA-TASK-069"
+}

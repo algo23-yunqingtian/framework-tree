@@ -1,0 +1,74 @@
+{
+  "checks": {
+    "P0_1": {
+      "check": "P0.1_T067_SHA_VERIFICATION",
+      "details": {
+        "aggregate_match": false,
+        "computed_aggregate_sha": "11f3526f18db6427c6d6986d81f92d35af6b2c946c54cfcc0eaf37242ed54ffe",
+        "expected_aggregate_sha": "68511978fbfd82081038039607037aaf11a203bca9bece8950321a5acf6dc2bd",
+        "failed": [],
+        "receipt": "VALID",
+        "skill_files_count": 5,
+        "skill_lib_readonly": true,
+        "total_checked": 52,
+        "upstream_skipped": 0,
+        "upstream_skipped_files": [],
+        "v3_csv_sha_unchanged": true,
+        "verified_files": 52,
+        "workflow_seal": "VALID"
+      },
+      "pass": true
+    },
+    "P0_2": {
+      "check": "P0.2_T056_SEALED_DATA",
+      "details": {
+        "all_forbidden_weight": true,
+        "channels_count": 3,
+        "covered_by_pre_alert": 31,
+        "diagnostic_rows": 3,
+        "fn_events_total": 33,
+        "gate_identical_t055": true,
+        "gate_regression_overlay": "GATE_REGRESSION_STABLE",
+        "has_never_merge": true,
+        "leak_coverage_pct": 93.94,
+        "leak_coverage_target_met": true,
+        "leak_report_overall": "PASS",
+        "mount_rows": 9,
+        "observe_rows": 6,
+        "red_lines_valid": true,
+        "sealed_id": "DSHD-T056-LEAD-FACTOR-MOUNT-SEALED",
+        "still_blind": 2,
+        "t055_reproduction_verified": true,
+        "version": "1.0.0-TASK056"
+      },
+      "pass": true
+    },
+    "P0_3": {
+      "check": "P0.3_AST_SCAN",
+      "details": {
+        "has_eval": false,
+        "has_global_write": false,
+        "has_os_system": false,
+        "has_popen": false,
+        "has_subprocess": false,
+        "has_while_true": false,
+        "violations": []
+      },
+      "pass": true
+    },
+    "P0_4": {
+      "check": "P0.4_NEVER_MERGE_ISOLATION",
+      "details": {
+        "all_no_main_gate_effect": true,
+        "all_weight_signal_forbidden": true,
+        "all_zero_weight_contribution": true,
+        "flag": "NEVER_MERGE_INTO_MAIN_STRATEGY_ALERTS"
+      },
+      "pass": true
+    }
+  },
+  "overall": "PASS",
+  "phase": "P0_PRE_FLIGHT",
+  "task": "DSHA-TASK-069",
+  "timestamp": "2026-10-22T16:00:00+08:00"
+}

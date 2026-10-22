@@ -1,0 +1,147 @@
+{
+  "baseline_commit": "3e2e914",
+  "comparison": {
+    "delta_change": -0.028586,
+    "lockdown_trigger_improvement": 4.4533,
+    "mdd_change": -0.002816000000000013,
+    "verdict": "G4优选上线: 触发频率从0提升至4.45次/轮, 回撤变化在容忍范围内"
+  },
+  "document_type": "PARAMETER_LEDGER",
+  "generated_at": "2026-10-22T16:00:00+08:00",
+  "parameters": [
+    {
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "hold_days": 20,
+      "level": "G1",
+      "mc_results": {
+        "failure_prob": 0.9633,
+        "lockdown_events_per_round": 0.0,
+        "lockdown_events_total": 0,
+        "mdd_p5": -0.20881,
+        "mean_delta": -0.525876,
+        "p5_delta": -0.943253
+      },
+      "name": "baseline_T065_x3",
+      "p90": 1.07401,
+      "p95": 1.07854,
+      "sha_anchor": "6cd39735e61a4d017418a3eef1737108f19a6cea8d6cf638629958db0655c5e0",
+      "source": "T066_G1_baseline_T065",
+      "threshold": 3
+    },
+    {
+      "flip_l1": 0.55,
+      "flip_l2": 0.65,
+      "hold_days": 20,
+      "level": "G4",
+      "mc_results": {
+        "failure_prob": 0.9633,
+        "lockdown_events_per_round": 4.4533,
+        "lockdown_events_total": 1336,
+        "mdd_p5": -0.211626,
+        "mean_delta": -0.554462,
+        "p5_delta": -0.945162
+      },
+      "name": "x1_relax_crowd",
+      "p90": 1.06401,
+      "p95": 1.06854,
+      "sha_anchor": "6cd39735e61a4d017418a3eef1737108f19a6cea8d6cf638629958db0655c5e0",
+      "source": "T066_G4_selected_optimal",
+      "threshold": 1
+    }
+  ],
+  "safety": {
+    "cross_write": false,
+    "experiment_only": true,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "t056_rule_version_notes": {
+    "conclusion": "T056 Gate分级与T055完全一致(18/18 PASS), 复现一致性9/9字段全匹配, 漏检覆盖率93.94%超过90%目标",
+    "fn_covered": 31,
+    "fn_events_total": 33,
+    "fn_still_blind": 2,
+    "gate_regression": {
+      "all18_hit_rate_pct": 100.0,
+      "grade_identical_to_t055": true,
+      "main_gate_untouched_by_lead_mount": true,
+      "new_fn_introduced": 0,
+      "new_fp_introduced": 0,
+      "test_result": "GATE_REGRESSION_STABLE"
+    },
+    "leak_coverage_pct": 93.94,
+    "ledger_version": "4.4.9-TASK056",
+    "parent_ruleset": "4.4.9-TASK054",
+    "pre_alert_fired": 62,
+    "pre_alert_vindicated": 32,
+    "ruleset_version": "4.4.9-TASK054+COMPENSATION-DRAFT-V055",
+    "source": "DSHD-TASK-056",
+    "t055_reproducibility": {
+      "all_match": true,
+      "comparison_summary": [
+        {
+          "field": "main FP",
+          "match": true,
+          "t055": 63,
+          "t056": 63
+        },
+        {
+          "field": "main FN",
+          "match": true,
+          "t055": 33,
+          "t056": 33
+        },
+        {
+          "field": "main TP",
+          "match": true,
+          "t055": 203,
+          "t056": 203
+        },
+        {
+          "field": "confirmed FP",
+          "match": true,
+          "t055": 58,
+          "t056": 58
+        },
+        {
+          "field": "confirmed FN",
+          "match": true,
+          "t055": 39,
+          "t056": 39
+        },
+        {
+          "field": "confirmed TP",
+          "match": true,
+          "t055": 197,
+          "t056": 197
+        },
+        {
+          "field": "pre-alert fired",
+          "match": true,
+          "t055": 62,
+          "t056": 62
+        },
+        {
+          "field": "pre-alert vindicated",
+          "match": true,
+          "t055": 32,
+          "t056": 32
+        },
+        {
+          "field": "missed events preceded",
+          "match": true,
+          "t055": 31,
+          "t056": 31
+        }
+      ],
+      "field_matches": 9,
+      "fields_compared": 9,
+      "verified": true
+    }
+  },
+  "task": "DSHA-TASK-067",
+  "update_task": "DSHA-TASK-069",
+  "updated_at": "2026-10-22T16:00:00+08:00",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R02-REPORT-SKILL"
+}

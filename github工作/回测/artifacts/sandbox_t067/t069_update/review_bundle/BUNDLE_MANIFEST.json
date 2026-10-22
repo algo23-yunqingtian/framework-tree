@@ -1,0 +1,76 @@
+{
+  "baseline": {
+    "commit": "621ae95",
+    "task": "DSHA-TASK-067"
+  },
+  "bundle_id": "V3-EXT-R02-REVIEW-BUNDLE-T069",
+  "files": [
+    {
+      "filename": "V3_EXT_R02_OFFICIAL_BACKTEST_REPORT.md",
+      "sha256": "f2859a6365482a05b83a4b38ef4619b7dbd0bf76f82b2809c427de78cf3bf676",
+      "size_bytes": 23008
+    },
+    {
+      "filename": "V3_EXT_R02_OFFICIAL_BACKTEST_REPORT.txt",
+      "sha256": "f2859a6365482a05b83a4b38ef4619b7dbd0bf76f82b2809c427de78cf3bf676",
+      "size_bytes": 23008
+    },
+    {
+      "filename": "factor_performance_ledger.json",
+      "sha256": "7fc204b3ef648f2f6e591d8eacad5b44265c11543e04504d1ee643a61d1f4175",
+      "size_bytes": 46066
+    },
+    {
+      "filename": "parameter_ledger.json",
+      "sha256": "d3fb15f6f0554ae4d5a073eac881305dbdceb8d0a2980c1f95e4cd08a95ff33a",
+      "size_bytes": 4060
+    },
+    {
+      "filename": "factor_summary_table.csv",
+      "sha256": "1a0a8af7836831655747ce17732a2537e6ce6022701e71bfa4d16c2e39b1cecd",
+      "size_bytes": 9253
+    },
+    {
+      "filename": "scenario_leak_coverage_summary.csv",
+      "sha256": "813e2d54f700fb6a9f3ed4292c251e6ffc5be3bdc25dce31beea9662cfbe869f",
+      "size_bytes": 852
+    },
+    {
+      "filename": "task069_receipt.txt",
+      "sha256": "29bbd73e66e13f355c09c5191cd96562366b0bf30d62b4ba4b22ac027a56d222",
+      "size_bytes": 287
+    },
+    {
+      "filename": "dsha_task069_workflow_seal.json",
+      "sha256": "c0a52c04a7164d32ed18eab5c1ecba94d2832bfaccb69795c1c95920dc654b6a",
+      "size_bytes": 972
+    },
+    {
+      "filename": "p0_preflight_report.json",
+      "sha256": "189577bbd75bff43becd7b358e585ebc8978c32ceb8dd2de9757da37d52c5f1f",
+      "size_bytes": 2264
+    }
+  ],
+  "fn_events_still_blind": 2,
+  "fn_events_total": 33,
+  "generated_at": "2026-10-22T16:00:00+08:00",
+  "leak_coverage_pct": 93.94,
+  "readme": {
+    "description": "V3-EXT R02评审包, 含更新后的报告、两份台账、汇总CSV",
+    "experiment_only": true,
+    "gate": "CLOSED/HOLD",
+    "notes": "漏检数据来自DSHD-T056正式实测, 覆盖率93.94%, 剩余2例盲区(SC4 day3/day24)待后续实验",
+    "skill_version": "1.0.0 (unchanged, chapters locked)"
+  },
+  "safety": {
+    "cross_write": false,
+    "experiment_only": true,
+    "gate": "CLOSED/HOLD",
+    "production_write": false,
+    "release": "NOT_ISSUED",
+    "wind_api_calls": 0
+  },
+  "source": "DSHA-TASK-069",
+  "t056_data_source": "DSHD-TASK-056 sealed pack (sc4_leak_repair_report.json)",
+  "version": "1.0.0-T069"
+}
