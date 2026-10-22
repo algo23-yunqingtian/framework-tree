@@ -1,0 +1,53 @@
+{
+  "document_type": "FACTOR_EXCLUSION_REGISTRY",
+  "task": "DSHA-TASK-065",
+  "source": "DSHA-T064",
+  "generated_at": "2026-10-22T13:17:23+08:00",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R01",
+  "validity": "60 TRADING DAYS",
+  "validity_aligned_with": "observation_pool_entry.json",
+  "excluded_factors": [
+    {
+      "factor_id": "price_momentum_2nd_diff",
+      "status": "PERMANENTLY_EXCLUDED",
+      "source": "DSHA-T064",
+      "avg_ic": 0.001507,
+      "information_ratio": 0.086939,
+      "exclusion_reason": "IC/IR不足 (IR=0.087 << 1.0阈值), 无预测能力",
+      "applied_to": "V3-EXT实验组配置, 不参与任何候选因子池运算"
+    },
+    {
+      "factor_id": "oi_momentum_divergence_20d",
+      "status": "PERMANENTLY_EXCLUDED",
+      "source": "DSHA-T064",
+      "avg_ic": 0.020872,
+      "information_ratio": 0.357026,
+      "exclusion_reason": "高风险标记 (TASK059评审), 信号不稳定",
+      "applied_to": "V3-EXT实验组配置, 不参与任何候选因子池运算"
+    },
+    {
+      "factor_id": "price_vol_momentum",
+      "status": "PERMANENTLY_EXCLUDED",
+      "source": "DSHA-T064",
+      "avg_ic": -0.07726,
+      "information_ratio": -1.038493,
+      "exclusion_reason": "负IC (IR=-1.04), 波动率衰减导致信号失效",
+      "applied_to": "V3-EXT实验组配置, 不参与任何候选因子池运算"
+    }
+  ],
+  "enforcement": {
+    "runtime_exclusion": true,
+    "excluded_from_signal_matrix": false,
+    "excluded_from_weight_engine": true,
+    "excluded_from_candidate_pool": true,
+    "never_returns": true
+  },
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "v3_main_factors_frozen": true,
+    "cross_write": false,
+    "experiment_only": true
+  }
+}

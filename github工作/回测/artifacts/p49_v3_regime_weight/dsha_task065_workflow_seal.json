@@ -1,0 +1,29 @@
+{
+  "document_type": "WORKFLOW_EXTERNAL_WRITE_LOCK",
+  "task": "DSHA-TASK-065",
+  "generated_at": "2026-10-22T13:17:23+08:00",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R01",
+  "external_write_switch": "DISABLED",
+  "polling": "DISABLED",
+  "polling_note": "不主动轮询DSHD/DSHC, 阻塞等待外部通知",
+  "awaiting": "DSHC-TASK-SNAP归档信号 (T062/T063/T064/T065 全套)",
+  "group": "pool_14_062",
+  "write_scope": {
+    "allowed": [
+      "artifacts/candidate_experiment/pool_14_062"
+    ],
+    "forbidden": [
+      "artifacts/p49_v3_backtest (生产目录)",
+      "DSH_MASTER_NOTEBOOK (MN主快照目录)",
+      "workflow_lock (工作流锁目录)"
+    ]
+  },
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "v3_main_factors_frozen": true,
+    "cross_write": false,
+    "experiment_only": true
+  }
+}

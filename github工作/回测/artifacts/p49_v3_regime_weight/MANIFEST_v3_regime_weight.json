@@ -969,20 +969,46 @@
     "p0_4_no_full_backtest": "banned_func_calls=0, no_mc_loop=True (structural AST check)",
     "p1_1_weight_sweep": {
       "combos": 3,
-      "current_0.50_0.20": {"sharpe": 1.268893, "sharpe_delta": -0.695794, "trade_count": 67},
-      "option_A_0.30_0.15": {"sharpe": 1.268893, "sharpe_delta": -0.695794, "trade_count": 67},
-      "option_B_0.60_0.25": {"sharpe": 1.627507, "sharpe_delta": -0.33718, "trade_count": 153},
+      "current_0.50_0.20": {
+        "sharpe": 1.268893,
+        "sharpe_delta": -0.695794,
+        "trade_count": 67
+      },
+      "option_A_0.30_0.15": {
+        "sharpe": 1.268893,
+        "sharpe_delta": -0.695794,
+        "trade_count": 67
+      },
+      "option_B_0.60_0.25": {
+        "sharpe": 1.627507,
+        "sharpe_delta": -0.33718,
+        "trade_count": 153
+      },
       "finding": "温和降权(0.6/0.25)显著收窄Sharpe损失(-0.696→-0.337); 激进降权(0.3/0.15)与基线0.5/0.20等价(均触底67笔)"
     },
     "p1_2_crowding_sweep": {
       "combos": 6,
       "thresholds": "P90/P95 ±0.02 (3x3, P95>P90约束)",
-      "best": {"p90": 1.07401, "p95": 1.07854, "sharpe": 1.63094, "sharpe_delta": -0.333747, "trade_count": 153},
-      "worst": {"p90": 1.03401, "p95": 1.03854, "sharpe": 1.113238, "sharpe_delta": -0.851449},
+      "best": {
+        "p90": 1.07401,
+        "p95": 1.07854,
+        "sharpe": 1.63094,
+        "sharpe_delta": -0.333747,
+        "trade_count": 153
+      },
+      "worst": {
+        "p90": 1.03401,
+        "p95": 1.03854,
+        "sharpe": 1.113238,
+        "sharpe_delta": -0.851449
+      },
       "finding": "阈值上移(P90+0.02/P95+0.02)使触发点后移, Sharpe损失从-0.696收窄至-0.334"
     },
     "p1_3_feasible_region": {
-      "target": {"sharpe_delta_floor": -0.35, "flip_rate_ceiling": 0.26},
+      "target": {
+        "sharpe_delta_floor": -0.35,
+        "flip_rate_ceiling": 0.26
+      },
       "total_combinations": 35,
       "feasible_count": 19,
       "feasible_ratio_pct": 54.3,
@@ -1005,7 +1031,11 @@
     },
     "p1_4_heatmap_3d": {
       "cells": 35,
-      "axes": ["medium/heavy weight factor", "p90/p95 threshold", "sharpe_delta/return/mdd"],
+      "axes": [
+        "medium/heavy weight factor",
+        "p90/p95 threshold",
+        "sharpe_delta/return/mdd"
+      ],
       "optimal_zone": "MEDIUM 0.55-0.70, HEAVY 0.23-0.30, P90 1.05401-1.07401, P95 1.05854-1.07854"
     },
     "p2_shortcoming_plan": {
@@ -1024,7 +1054,11 @@
     "p3_2_full_manifest": {
       "manifest_id": "DSHA-TASK064-FULL-MANIFEST-T062-T063-T064",
       "total_files": 28,
-      "files_by_source": {"t062": 10, "t063": 10, "t064": 8},
+      "files_by_source": {
+        "t062": 10,
+        "t063": 10,
+        "t064": 8
+      },
       "aggregate_sha256": "c08b0cf59ba5c9a3da6f398472c6f8e54490165dc35563a60f465874e5339619",
       "aggregate_scope": "非SELF/非PENDING条目 (27个文件)",
       "self_reference": "full_manifest_t062_t063_t064.json 标记SELF (自引用不可自证, DSHC外部校验)",
@@ -1045,6 +1079,216 @@
     "p5_3_changelog": "version_tag=V3-EXT-14POOL-062-OBS-ENTRY",
     "receipt_marker": "DSHA_TASK064_SENSITIVITY_ENTRY_DRAFT=COMPLETE",
     "receipt_path": "artifacts/p49_v3_regime_weight/task064_receipt.txt",
+    "v3_modified": false,
+    "main_factor_frozen": true,
+    "v3_baseline_preserved": true,
+    "experiment_only": true,
+    "observation_only": true,
+    "production_write": false,
+    "production_push": false,
+    "read_only": true,
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "cross_write": false,
+    "execution_type": "research_sandbox"
+  },
+  "task055_lead_factor_monitor_frame": {
+    "task_id": "DSHD-TASK-055-LEAD-FACTOR-MONITOR-FRAME",
+    "token": "DSHD-TASK055-TOKEN",
+    "tag": "V4.4.9-COMPENSATION-LEADFRAME-055",
+    "timestamp": "2026-10-22T12:02:23+08:00",
+    "baseline": {
+      "branch": "feature/v88-g1",
+      "commit_t052": "9237b8f",
+      "commit_t053": "214c3bb"
+    },
+    "ruleset_version": "4.4.9-TASK054+COMPENSATION-DRAFT-V055",
+    "parent_ruleset_version": "4.4.9-TASK054",
+    "ledger_version": "4.4.9-TASK055",
+    "status": "EXPERIMENT_ONLY",
+    "main_strategy_rule_unchanged": true,
+    "experiment_only": true,
+    "cross_write": false,
+    "production_write": false,
+    "sandbox": {
+      "dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55",
+      "locked": 9,
+      "total": 9,
+      "isolated_from": [
+        "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight",
+        "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v54"
+      ]
+    },
+    "compensation_rules": [
+      "COMP_RULE_V055_PERSISTENCE_CONFIRMATION",
+      "COMP_RULE_V055_JERK_PRE_ALERT",
+      "COMP_RULE_V055_GATE_ISOLATION"
+    ],
+    "lead_frame": {
+      "group_id": "PREDICTIVE_LEAD_FACTOR_GROUP",
+      "slots": 9,
+      "horizons": [
+        "1d",
+        "3d",
+        "5d"
+      ],
+      "status": "FRAME_READY_WAITING_DSHA_T064"
+    },
+    "version_switch": {
+      "v448_sha_match": true,
+      "v449_sha_match": true,
+      "v449_comp_composite_ok": true,
+      "all_three_switch_entries_verified": true,
+      "rollback_chain": "v4.4.9+COMP -> v4.4.9 -> v4.4.8 (reference re-point, no file rewrite)",
+      "rollback_invalidation_note": "回退不删除任何台账条目；补偿草案仅标记 SUPERSEDED"
+    },
+    "acceptance": {
+      "p0_v449_finger_verified": true,
+      "p0_md5_aligned": true,
+      "p0_weakness_reproduced": true,
+      "p1_compensate_rule_draft_done": true,
+      "p1_edge_cases_12_of_12": true,
+      "p2_lead_monitor_frame_prepared": true,
+      "p2_slots": 9,
+      "p2_route_isolated": true,
+      "p3_version_switch_verified": true,
+      "p3_ledger_append_only": true,
+      "p3_ledger_entries_after": 105,
+      "p4_gate_all18_hit_pct": 100.0,
+      "p4_gate_grade_identical_to_t054": true,
+      "p4_regression_hitrate_stable": true,
+      "p4_fp_reduction": 5,
+      "p4_watchdog_unchanged": true,
+      "p5_notify_dsha_dshc": true,
+      "p5_dsha064_status": "PENDING_RECEIPT",
+      "p6_audit_events": 22,
+      "p6_archive_lines": 382,
+      "sandbox_v55_locked": 9,
+      "sandbox_v55_total": 9
+    },
+    "deliverables": {
+      "compensation_rule_draft": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\compensation_rule_draft.json",
+      "compensation_edge_cases": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\compensation_edge_cases.json",
+      "lead_factor_monitor_frame": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\lead_factor_monitor_frame.json",
+      "lead_alert_channel": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\lead_alert_channel.json",
+      "dsha064_signal_inbox": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\dsha064_signal_inbox.json",
+      "version_switch_registry": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\version_switch_registry.json",
+      "rule_fingerprint_pack": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\rule_fingerprint_pack_t055.json",
+      "gate_regression_overlay": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\gate_regression_overlay.json",
+      "scenario_compensation_retest": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\sandbox_dynamic_weight_v55\\scenario_compensation_retest.json",
+      "risk_ledger": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\p82_risk_ledger.json",
+      "audit_archive": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\audit_archive_task046-055.jsonl",
+      "sealed": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_task055_lead_factor_sealed.json",
+      "notification": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\dshd_task055_lead_factor_notification.json",
+      "manifest_v3": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\p49_v3_regime_weight\\MANIFEST_v3_regime_weight.json",
+      "mn_snapshot": "D:\\DSH_WORK\\github工作\\回测\\DSH_MASTER_NOTEBOOK\\01_WORKFLOW_INDEX_SNAPSHOTS\\wf_index_snap_T055_LEAD_FRAME.json",
+      "receipt": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\task055_receipt.txt"
+    },
+    "audit": {
+      "events_appended": 22,
+      "archive": "D:\\DSH_WORK\\github工作\\回测\\G7_ADJUDICATION_LEDGER\\audit_archive_task046-055.jsonl",
+      "archive_lines": 382
+    },
+    "brief_section": 25,
+    "fingerprint_pack_id": "DSHD-T055-LEAD-FACTOR-FINGERPRINT-PACK",
+    "overall": "PASS"
+  },
+  "task065_mc_review_exclusion": {
+    "task": "DSHA-TASK-065",
+    "token": "DSHA-TASK-065-MC-REVIEW-EXCLUSION-LOCK-TOKEN",
+    "script": "artifacts/p49_v3_regime_weight/run_task065_mc_review_exclusion.py",
+    "baseline_commit": "7216221",
+    "prev_task": "DSHA-TASK-064",
+    "snapshot_version_tag": "V3-EXT-14POOL-062",
+    "version_tag": "V3-EXT-14POOL-062-OBS-R01",
+    "generated_at": "2026-10-22T13:17:23+08:00",
+    "execution_seconds": null,
+    "p0_precheck": "4/4 PASS",
+    "p0_1_t064_fingerprint": "version_tag=OBS-ENTRY, entry_sha_match, 27 non-SELF shas_match, agg_sha_match=c08b0cf5",
+    "p0_2_three_factor_ids": "price_momentum_2nd_diff / oi_momentum_divergence_20d / price_vol_momentum confirmed (T064 plan + T063 attribution cross-check)",
+    "p0_3_ast_scan": "mc_rounds=300(<=300), infinite_while=False, banned_func_calls=0, sandbox_isolated, mn_touched=False",
+    "p0_4_t064_params_imported": "MEDIUM=0.40 floor / HEAVY=0.30 floor / P90=1.07401 / P95=1.07854 / resonance+LOCKDOWN(3次,hold 20日)",
+    "p1_1_mc300": {
+      "rounds": 300,
+      "max_cap": 300,
+      "low_resource": true,
+      "t064_cfg_point": {
+        "sharpe": 1.268893,
+        "delta": -0.695794
+      },
+      "t065_cfg_point": {
+        "sharpe": 1.627507,
+        "delta": -0.33718
+      },
+      "sharpe_delta_dist": {
+        "t064_cfg_mean": -0.619011,
+        "t064_cfg_p5": -0.98204,
+        "t065_cfg_mean": -0.528199,
+        "t065_cfg_p5": -0.904484,
+        "t065_cfg_cv": 0.475855
+      },
+      "zone_prob": {
+        "t064_high_failure": 0.9633,
+        "t065_high_failure": 0.96
+      },
+      "stability": {
+        "meets_target_ge_-0.35": 0.2433,
+        "lockdown_events": 0
+      },
+      "engine_self_check": "T064_CFG point delta=-0.695794 == baseline EXACT",
+      "csv": "pool_14_062/summary_mc_t065.csv",
+      "detail": "sandbox_mc/mc_rounds_detail_t065.json (隔离, 不入清单)"
+    },
+    "p1_2_lockdown_utest": {
+      "passed": 6,
+      "total": 6,
+      "all_pass": true,
+      "no_deadlock": true,
+      "file": "pool_14_062/resonance_lockdown_unit_test.json"
+    },
+    "p1_3_review_report": {
+      "verdict": "不通过 (FAIL)",
+      "mean_delta": -0.528199,
+      "p5_delta": -0.904484,
+      "high_failure_t065": 0.96,
+      "risk_points": [
+        "Sharpe_delta均值-0.528低于-0.40目标线",
+        "Sharpe_delta 5%分位-0.904尾部风险大",
+        "LOCKDOWN保护300轮MC从未触发(0事件), 门槛过严保护未参与"
+      ],
+      "no_auto_param_change": true,
+      "file": "pool_14_062/T065_mc_review_report.md"
+    },
+    "p2_1_exclusion_registry": "3因子 PERMANENTLY_EXCLUDED, 来源=DSHA-T064, 有效期60交易日对齐观测池",
+    "p2_2_boundary": "V3-EXT仅离线长期观测, 永不替换V3-8主因子, 生产FORBIDDEN, 调参入口临时冻结",
+    "p2_3_entry_doc_revision": {
+      "revision_id": "R01",
+      "revised_at": "2026-10-22T13:17:23+08:00",
+      "commit_anchor": "7216221",
+      "file": "pool_14_062/observation_pool_entry.json"
+    },
+    "p3_1_full_manifest": {
+      "manifest_id": "DSHA-TASK065-FULL-MANIFEST-T062-T063-T064-T065",
+      "total_files": 34,
+      "files_by_source": {
+        "t062": 10,
+        "t063": 10,
+        "t064": 8,
+        "t065": 6
+      },
+      "aggregate_sha256": "5bf0f2fa70c9aa4880189deda235a59782edfbf0ad8138703b360d610c2e1e9c",
+      "aggregate_scope": "非SELF/非PENDING条目 (33个文件)",
+      "self_reference": "full_manifest_t062_t063_t064_t065.json 标记SELF (自引用不可自证, DSHC外部校验)",
+      "sha_verification": "33/33 on-disk SHA match, aggregate independently recomputed = MATCH",
+      "file": "pool_14_062/full_manifest_t062_t063_t064_t065.json"
+    },
+    "p3_2_workflow_seal": "external_write=DISABLED, polling=DISABLED, 等待DSHC-TASK-SNAP归档信号",
+    "p3_3_receipt": "artifacts/p49_v3_regime_weight/task065_receipt.txt",
+    "p4_1_redlines": "writes=22, unexpected=0, wind=0, gate=CLOSED/HOLD, cross_write=False, mn_touched=False",
+    "p4_2_outputs": "all_exist=True, deploy_violations=0, manifest_sha_recheck=True",
+    "receipt_marker": "DSHA_TASK065_MC_REVIEW_EXCLUSION_LOCK=COMPLETE",
+    "receipt_path": "artifacts/p49_v3_regime_weight/task065_receipt.txt",
     "v3_modified": false,
     "main_factor_frozen": true,
     "v3_baseline_preserved": true,

@@ -62,5 +62,45 @@
     "v3_main_factors_frozen": true,
     "cross_write": false,
     "experiment_only": true
+  },
+  "revision": {
+    "revision_id": "R01",
+    "revised_by": "DSHA-TASK-065",
+    "revised_at": "2026-10-22T13:17:23+08:00",
+    "version_tag": "V3-EXT-14POOL-062-OBS-R01",
+    "commit_anchor": "7216221",
+    "commit_anchor_note": "TASK064 HEAD (7216221); T065提交哈希由DSHC-TASK-SNAP归档外部封印",
+    "changes": [
+      "追加 T065 MC复验结论 (300轮小样本MC)",
+      "追加 三因子 PERMANENTLY_EXCLUDED 落地确认",
+      "追加 双分支共振LOCKDOWN逻辑启用确认"
+    ]
+  },
+  "t065_mc_review": {
+    "mc_rounds": 300,
+    "mc_max_cap": 300,
+    "verdict": "不通过",
+    "verdict_en": "FAIL",
+    "sharpe_delta_mean": -0.528199,
+    "sharpe_delta_p5": -0.904484,
+    "high_failure_prob_t065_cfg": 0.96,
+    "high_failure_prob_t064_cfg": 0.9633,
+    "risk_points": [
+      "Sharpe_delta均值 -0.528199 低于-0.40目标线",
+      "Sharpe_delta 5%分位 -0.904484 低于-0.65 (尾部风险较大)",
+      "LOCKDOWN保护在300轮MC中从未触发 (0事件): 双分支共振门槛(P90+0.02 + flip L1/L2) 在当前扰动强度下过于严格, 保护机制实际未参与运算, 需评估门槛灵敏度"
+    ],
+    "no_auto_param_change": true
+  },
+  "factor_exclusion": {
+    "status": "PERMANENTLY_EXCLUDED",
+    "source": "DSHA-T064",
+    "factors": [
+      "price_momentum_2nd_diff",
+      "oi_momentum_divergence_20d",
+      "price_vol_momentum"
+    ],
+    "validity_aligned": "60 TRADING DAYS",
+    "registry_file": "factor_exclusion_registry.json"
   }
 }

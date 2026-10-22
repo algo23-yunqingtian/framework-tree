@@ -1,0 +1,180 @@
+{
+  "title": "共振LOCKDOWN逻辑单元测试 (T064 P2.2)",
+  "task": "DSHA-TASK-065",
+  "generated_at": "2026-10-22T13:17:23+08:00",
+  "threshold": 3,
+  "hold_days": 20,
+  "hold_periods": 4,
+  "test_cases": [
+    {
+      "id": "T1",
+      "name": "连续3次共振触发LOCKDOWN",
+      "input": {
+        "crowd_grades": [
+          "MEDIUM",
+          "MEDIUM",
+          "MEDIUM",
+          "MEDIUM",
+          "MEDIUM"
+        ],
+        "flip_grades": [
+          "LIGHT",
+          "LIGHT",
+          "LIGHT",
+          "LIGHT",
+          "LIGHT"
+        ]
+      },
+      "expected": [
+        "MEDIUM",
+        "MEDIUM",
+        "LOCKDOWN",
+        "LOCKDOWN",
+        "LOCKDOWN"
+      ],
+      "actual": [
+        "MEDIUM",
+        "MEDIUM",
+        "LOCKDOWN",
+        "LOCKDOWN",
+        "LOCKDOWN"
+      ],
+      "lockdown_events": [
+        {
+          "i": 2,
+          "crowd_grade": "MEDIUM",
+          "flip_grade": "LIGHT",
+          "consecutive_resonance": 3
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "T2",
+      "name": "单分支触发上限MEDIUM(不误升HEAVY)",
+      "input": {
+        "crowd_grades": [
+          "HEAVY",
+          "HEAVY"
+        ],
+        "flip_grades": [
+          "NONE",
+          "NONE"
+        ]
+      },
+      "expected": [
+        "MEDIUM",
+        "MEDIUM"
+      ],
+      "actual": [
+        "MEDIUM",
+        "MEDIUM"
+      ],
+      "lockdown_events": [],
+      "pass": true
+    },
+    {
+      "id": "T3",
+      "name": "LOCKDOWN自动释放不卡死(20周期终止)",
+      "input": {
+        "crowd_grades": "MEDIUM x20",
+        "flip_grades": "LIGHT x20"
+      },
+      "expected": "terminates, has_release=True",
+      "actual": {
+        "len_decided": 20,
+        "n_lockdown": 14,
+        "lockdown_events": 3,
+        "has_release": true
+      },
+      "pass": true
+    },
+    {
+      "id": "T4",
+      "name": "共振计数中断重置(第3个非共振不误触发)",
+      "input": {
+        "crowd_grades": [
+          "MEDIUM",
+          "MEDIUM",
+          "NONE",
+          "MEDIUM",
+          "MEDIUM",
+          "MEDIUM"
+        ],
+        "flip_grades": [
+          "LIGHT",
+          "LIGHT",
+          "NONE",
+          "LIGHT",
+          "LIGHT",
+          "LIGHT"
+        ]
+      },
+      "expected": "no LOCKDOWN at i=2, LOCKDOWN at i=5",
+      "actual": {
+        "decided": [
+          "MEDIUM",
+          "MEDIUM",
+          "NONE",
+          "MEDIUM",
+          "MEDIUM",
+          "LOCKDOWN"
+        ],
+        "lockdown_events": [
+          {
+            "i": 5,
+            "crowd_grade": "MEDIUM",
+            "flip_grade": "LIGHT",
+            "consecutive_resonance": 3
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "T5",
+      "name": "LOCKDOWN候选因子权重归零+主因子接管",
+      "input": {
+        "grade": "LOCKDOWN",
+        "sync_flip_count": 0
+      },
+      "expected": "cand all 0, main_sum>0.8",
+      "actual": {
+        "candidate_weights": {
+          "basis_2nd_momentum_5d": 0.0,
+          "intraday_ohlc_position": 0.0,
+          "term_slope_20d": 0.0,
+          "close_relative_range": 0.0,
+          "term_curvature_20d": 0.0,
+          "contango_premium_20d": 0.0
+        },
+        "main_factor_sum": 1.0
+      },
+      "pass": true
+    },
+    {
+      "id": "T6",
+      "name": "双分支均非NONE时允许HEAVY",
+      "input": {
+        "crowd_grades": [
+          "HEAVY"
+        ],
+        "flip_grades": [
+          "MEDIUM"
+        ]
+      },
+      "expected": [
+        "HEAVY"
+      ],
+      "actual": [
+        "HEAVY"
+      ],
+      "lockdown_events": [],
+      "pass": true
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "all_pass": true,
+  "no_deadlock_confirmed": true
+}

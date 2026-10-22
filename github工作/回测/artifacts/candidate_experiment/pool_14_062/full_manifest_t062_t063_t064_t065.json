@@ -1,0 +1,242 @@
+{
+  "manifest_id": "DSHA-TASK065-FULL-MANIFEST-T062-T063-T064-T065",
+  "snapshot_id": "V3-EXT-14POOL-062",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R01",
+  "generated_at": "2026-10-22T13:17:23+08:00",
+  "task": "DSHA-TASK-065",
+  "baseline": {
+    "task": "DSHA-TASK-064",
+    "commit": "7216221"
+  },
+  "pool_dir": "D:\\DSH_WORK\\github工作\\回测\\artifacts\\candidate_experiment\\pool_14_062",
+  "total_files": 34,
+  "files_by_source": {
+    "t062": 10,
+    "t063": 10,
+    "t064": 8,
+    "t065": 6
+  },
+  "count_note": "T064基线28文件 + T065新增6文件 = 34文件 (observation_pool_entry.json 为T064文件但由T065 P2.3修订)",
+  "self_reference": {
+    "filename": "full_manifest_t062_t063_t064_t065.json",
+    "sha256": "SELF",
+    "reason": "清单文件自身无法在内部自证SHA, 由DSHC外部校验"
+  },
+  "files": [
+    {
+      "filename": "v3_ext_14pool_dynamic_fingerprint.json",
+      "sha256": "2e3e557d02e32d87c08a7334921a1ca82979e792bbc272737b2514ee02ca46b3",
+      "size_bytes": 2267,
+      "source": "T062"
+    },
+    {
+      "filename": "dual_backtest_comparison.json",
+      "sha256": "e901338a50bb12890af2d1509bef1a7a40a0e84cf3f81eb4af0001af411654cb",
+      "size_bytes": 3443,
+      "source": "T062"
+    },
+    {
+      "filename": "mc_simulation_dynamic.json",
+      "sha256": "8453431e41b11b49885539c898ca7643930a60b6342c37e69ff5971cbb07cef5",
+      "size_bytes": 1937,
+      "source": "T062"
+    },
+    {
+      "filename": "gate_intercept_log.json",
+      "sha256": "1415c54020e0906a2ea8d391852edbd3eb5726da8a0d30af9d76de608f31fc3e",
+      "size_bytes": 3057,
+      "source": "T062"
+    },
+    {
+      "filename": "performance_decay_boundary_dynamic.json",
+      "sha256": "33b59482836f769b473fc65a69ab791334e712b21753869622666755de829b3a",
+      "size_bytes": 4374,
+      "source": "T062"
+    },
+    {
+      "filename": "v3_ext_14pool_dynamic_adoption_proposal.json",
+      "sha256": "5ea6ad799b3f0f77450ab848edc1cc0ed3365046424939da950e83646fcaf54f",
+      "size_bytes": 4020,
+      "source": "T062"
+    },
+    {
+      "filename": "triple_consistency_task062.json",
+      "sha256": "0d092cf50fab38c0958ca7cf3380a26f729bacdaae9df4423a310aee714fb03a",
+      "size_bytes": 666,
+      "source": "T062"
+    },
+    {
+      "filename": "audit_snapshot_dsha055-062.jsonl",
+      "sha256": "a8938dae637f9e52a9af464003e176feaa6f0368c97f640e465274806f084bed",
+      "size_bytes": 4454,
+      "source": "T062"
+    },
+    {
+      "filename": "dynamic_weight_14pool_ts.json",
+      "sha256": "1e2a0e28323cd29698c7d645cad87a32275092221ba7d6a9b19ddcce3d8900f1",
+      "size_bytes": 18304,
+      "source": "T062"
+    },
+    {
+      "filename": "manifest_pool_14_062.json",
+      "sha256": "ed2ccba93bf859691d29265264400252c077c2a589534afc3e6102757eea89a5",
+      "size_bytes": 1341,
+      "source": "T062"
+    },
+    {
+      "filename": "layered_attribution_by_grade.json",
+      "sha256": "d0ef2c83311d59609b2cb3964e23cc02065d0b4cd8a999370e3639fe08e2506b",
+      "size_bytes": 2137,
+      "source": "T063"
+    },
+    {
+      "filename": "sharpe_decline_root_cause.json",
+      "sha256": "89cbb758aab82aa91c755030ac66a23e44cf051bd6eaf0d7788b2fac127e9de4",
+      "size_bytes": 1176,
+      "source": "T063"
+    },
+    {
+      "filename": "tradeoff_matrix.json",
+      "sha256": "87a0057efe7fed9f9b57de738f1e7f0a23eed6945067fdcc6abae13260883e44",
+      "size_bytes": 2312,
+      "source": "T063"
+    },
+    {
+      "filename": "mc_high_failure_analysis.json",
+      "sha256": "7820d3db03f6de4d3ed122539fbe3a927a131df71f24ca5ac366567754aee033",
+      "size_bytes": 1786,
+      "source": "T063"
+    },
+    {
+      "filename": "scenario_slices_4cases.json",
+      "sha256": "01595c7219c371453d7092a017a9f733f7b3920160bda5d9e3604cf3c9970c7e",
+      "size_bytes": 3859,
+      "source": "T063"
+    },
+    {
+      "filename": "gate_effectiveness_review.json",
+      "sha256": "f5f2836a2916c64ac0a429f073d3f6667625315e0f7fef83f45948e6fb145067",
+      "size_bytes": 1910,
+      "source": "T063"
+    },
+    {
+      "filename": "risk_heatmap.json",
+      "sha256": "584596cbb01a6f7455209c09f7176b4028af83231edca6de47ed5a2965b1b573",
+      "size_bytes": 6635,
+      "source": "T063"
+    },
+    {
+      "filename": "attribution_sealed_proposal.json",
+      "sha256": "25cb8b2aba2015403b045f6e0a8d1c8f014e9034f6aed97ee6e3d197a5469a06",
+      "size_bytes": 6646,
+      "source": "T063"
+    },
+    {
+      "filename": "deferred_factors_attribution.json",
+      "sha256": "e5b94bfd3dadeb28d2222cb6bbad3f81a68c1ba06c4a343f09999e4ec3c4fadc",
+      "size_bytes": 1848,
+      "source": "T063"
+    },
+    {
+      "filename": "attribution_fingerprint.json",
+      "sha256": "f50880560b770473857fd2dcabe7bbecf0b34460445417023a025d07286aa137",
+      "size_bytes": 4174,
+      "source": "T063"
+    },
+    {
+      "filename": "sensitivity_weight_sweep.json",
+      "sha256": "fdf2f927bc9ad1669f1711de78cbe128edf9f3c4bb1b7d75924d18e03753c28b",
+      "size_bytes": 1507,
+      "source": "T064"
+    },
+    {
+      "filename": "sensitivity_crowding_sweep.json",
+      "sha256": "50c8b6d4a899e6d294f4dabab0fe0ca6d671d33f25979a9c51ca3ef0760db2f9",
+      "size_bytes": 2461,
+      "source": "T064"
+    },
+    {
+      "filename": "sensitivity_feasible_region.json",
+      "sha256": "d173238c65de4ac1ca61e4ddc9f021dfe6ecc2c57611b007362751c308807e9e",
+      "size_bytes": 8644,
+      "source": "T064"
+    },
+    {
+      "filename": "sensitivity_heatmap_3d.json",
+      "sha256": "479d5fceb9f87c18d7b0deeabf7fdfac421fced3566b41e42ef0796d578223a8",
+      "size_bytes": 10867,
+      "source": "T064"
+    },
+    {
+      "filename": "shortcoming_optimization_plan.json",
+      "sha256": "4832155cf53e17e121dc0081fbb81a3cb8f203dc7ac191df80ffc9888a13637a",
+      "size_bytes": 6208,
+      "source": "T064"
+    },
+    {
+      "filename": "observation_pool_entry.json",
+      "sha256": "e471fa45baa7bdd915ede1174794aff32b2904f13b8ba2617790b153a5c45e13",
+      "size_bytes": 3568,
+      "source": "T064"
+    },
+    {
+      "filename": "full_manifest_t062_t063_t064.json",
+      "sha256": "7ec5585fba5a159cce5d029c93cee3bd21c2e768b278492ac27f1ddf96e93557",
+      "size_bytes": 6713,
+      "source": "T064"
+    },
+    {
+      "filename": "iteration_preconditions.json",
+      "sha256": "7e43c03b0e5fc2177719b41bfdbc224d315f4ccb978373043c39014f1d2cdace",
+      "size_bytes": 1455,
+      "source": "T064"
+    },
+    {
+      "filename": "summary_mc_t065.csv",
+      "sha256": "15c307fb4fc1d4a5a305911e594ca9052ec43595d1cb2e57a36e015d297f283f",
+      "size_bytes": 40703,
+      "source": "T065"
+    },
+    {
+      "filename": "resonance_lockdown_unit_test.json",
+      "sha256": "8abf905ebaa24c093489e0c53fea8b86e9b87c4d02f079015b40d84db778c24d",
+      "size_bytes": 3931,
+      "source": "T065"
+    },
+    {
+      "filename": "T065_mc_review_report.md",
+      "sha256": "24cf885345b902a3d2bc905b6d7101e6aab743af4d90d0ecad5906c3b3cb9f8b",
+      "size_bytes": 2831,
+      "source": "T065"
+    },
+    {
+      "filename": "factor_exclusion_registry.json",
+      "sha256": "12f96934bef91349943eb008775487523110b3492732ffb6324fdcc798603182",
+      "size_bytes": 1821,
+      "source": "T065"
+    },
+    {
+      "filename": "v3_ext_boundary_declaration.json",
+      "sha256": "119876c7e07f3b6dcce12bab1d252e214ccbfe6ec8b09a23fe983b4c2dd043a7",
+      "size_bytes": 1622,
+      "source": "T065"
+    },
+    {
+      "filename": "full_manifest_t062_t063_t064_t065.json",
+      "sha256": "SELF",
+      "size_bytes": 8168,
+      "source": "T065",
+      "note": "自引用项: 写入后自身SHA无法自证, 由外部校验"
+    }
+  ],
+  "aggregate_sha256": "5bf0f2fa70c9aa4880189deda235a59782edfbf0ad8138703b360d610c2e1e9c",
+  "aggregate_scope": "非SELF/非PENDING条目 (33个文件)",
+  "readonly_protection": true,
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "cross_write": false,
+    "experiment_only": true
+  }
+}

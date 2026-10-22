@@ -1,0 +1,37 @@
+{
+  "document_type": "V3_EXT_BOUNDARY_DECLARATION",
+  "task": "DSHA-TASK-065",
+  "generated_at": "2026-10-22T13:17:23+08:00",
+  "version_tag": "V3-EXT-14POOL-062-OBS-R01",
+  "role": "OFFLINE_LONG_TERM_OBSERVATION_EXPERIMENT_ONLY",
+  "boundaries": [
+    "V3-EXT仅作为离线长期观测实验组, 永远不替换主策略V3 8因子基线",
+    "生产部署 FORBIDDEN: 禁止接入实盘交易/生产链路",
+    "V3主策略8因子权重/规则/代码 PERMANENTLY_FROZEN, 任何情况下不可修改",
+    "调参入口: 临时冻结 (需满足 iteration_preconditions 前置条件后方可解冻)",
+    "输出范围: 仅允许写入 pool_14_062 实验沙箱",
+    "三因子 price_momentum_2nd_diff/oi_momentum_divergence_20d/price_vol_momentum 永久剔除, 永不回归",
+    "动态权重仅作用于6个观察备选因子 (80% V3固定 + 20% 候选demo权重结构不变)"
+  ],
+  "tuning_entry": "FROZEN_TEMPORARILY",
+  "tuning_unfreeze_conditions": [
+    "PRECOND-01 DSHD-T054监控配置完成并返回回执",
+    "PRECOND-02 监控指标稳定运行满60个交易日",
+    "PRECOND-03 MC高失效概率降至80%以下"
+  ],
+  "isolation_marker": {
+    "branch": "feature/v88-g1",
+    "experiment_dir": "artifacts/candidate_experiment/pool_14_062",
+    "production_dir": "artifacts/p49_v3_backtest",
+    "mn_snapshot_dir": "DSH_MASTER_NOTEBOOK",
+    "cross_write_forbidden": true
+  },
+  "safety": {
+    "wind_api_calls": 0,
+    "gate": "CLOSED/HOLD",
+    "release": "NOT_ISSUED",
+    "v3_main_factors_frozen": true,
+    "cross_write": false,
+    "experiment_only": true
+  }
+}
